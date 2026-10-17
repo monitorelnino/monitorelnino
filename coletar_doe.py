@@ -793,7 +793,47 @@ def edicoes_mg(buscar_fn, base):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
+# RJ (17/10/2026, runs 39037938143 e 39038338576): a IOERJ lista os cadernos de uma data em
+# `do_seleciona_edicao.php?data=<AAAAMMDD em base64>` (dia sem edição: nenhum caderno); cada caderno abre
+# `mostra_edicao.php?session=…`, um visualizador pdf.js que lê o PDF pela chamada que o próprio
+# `viewer-min.js` monta: `mostra_edicao.php?k=` + pd[:12] + "P" + pd[12:], com o `pd` da página. Lê-se só
+# a Parte I (Poder Executivo, onde sai o decreto do governador; 42 p. com texto em 16/10, 84 p. em 01/07).
+# O arquivo traz bytes depois do `%%EOF` que mudam a cada pedido: o PDF é cortado ali.
+CADERNOS_IOERJ = "{base}/portal/modules/conteudoonline/do_seleciona_edicao.php?data={d64}"
+RE_CADERNO_IOERJ = re.compile(r'href="(mostra_edicao\.php\?session=[^"]+)"[^>]*>\s*(Parte I \(Poder Executivo\)[^<]*)<')
+RE_PD_IOERJ = re.compile(r'var pd = "([0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12})"')
+
+
+def pdf_ate_o_fim(bruto: bytes) -> bytes:
+    """O PDF até o último `%%EOF`, sem o que a fonte acrescenta depois. Função pura."""
+    fim = bruto.rfind(b"%%EOF")
+    if bruto[:5] != b"%PDF-" or fim < 0:
+        raise FormatoDaBuscaMudou(f"não é um PDF inteiro ({len(bruto)} bytes)")
+    return bruto[:fim + 5]
+
+
+def edicoes_ioerj(buscar_fn, base, dormir=None):
+    pasta = base.rstrip("/") + "/portal/modules/conteudoonline/"
+    _dormir = dormir or time.sleep
+
+    def fn(data):
+        d64 = base64.b64encode(data.replace("-", "").encode()).decode()
+        html = buscar_fn(CADERNOS_IOERJ.format(base=base.rstrip("/"), d64=d64), timeout=60, origem="coletar_doe").decode("utf-8", "replace")
+        saida = []
+        for href, nome in RE_CADERNO_IOERJ.findall(html):
+            _dormir(RITMO_APIFRONT_S)
+            pd = RE_PD_IOERJ.search(buscar_fn(pasta + href, timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+            if not pd:
+                raise FormatoDaBuscaMudou("visualizador da IOERJ sem o identificador 'pd' do PDF")
+            url = f"{pasta}mostra_edicao.php?k={pd.group(1)[:12]}P{pd.group(1)[12:]}"
+            _dormir(RITMO_APIFRONT_S)
+            saida.append({"edicao": " ".join(nome.split()), "url": url,
+                          "pdf": pdf_ate_o_fim(buscar_fn(url, timeout=240, origem="coletar_doe"))})
+        return saida
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_ioerj": edicoes_ioerj, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg}
 
 
@@ -1158,6 +1198,10 @@ FIXTURE_EDICOES_SC = json.dumps({"error": False, "records": {"meta": {"total": 3
     {"vlNumero": "22862", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": False, "dsArquivo": "/2026/20261016/Jornal/22862.pdf"},
     {"vlNumero": "22862-B", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": True, "dsArquivo": "/2026/20261016/Jornal/22862-B.pdf"}]}}).encode()
 FIXTURE_EDICOES_AM_VAZIO = b'{"erro":true,"msg":"Edi\\u00e7\\u00e3o n\\u00e3o existente!","data":"2026-10-14","itens":[]}'
+# Recorte REAL dos cadernos da IOERJ em 16/10/2026 (run 39035891128; sessões encurtadas).
+FIXTURE_CADERNOS_IOERJ = (b'<li><a href="mostra_edicao.php?session=VWxWR1EwMXFSa1ZQ" ID="cor-texto"  target="_blank">Parte I (Poder Executivo)</a>'
+                          b'<li><a href="mostra_edicao.php?session=VG10Vk1VMTZXVE5P" ID="cor-texto"  target="_blank">Parte IB - (Tribunal de Contas)</a>'
+                          b'<li><a href="mostra_edicao.php?session=VDBWWk5FMHdXVEZO" ID="cor-texto"  target="_blank">Parte IV (Municipalidades)</a>')
 # Envelopes CMS na forma que o DOE-MG serve (BER, comprimento indefinido, conteúdo em pedaços) e em DER.
 FIXTURE_CMS_BER = (bytes.fromhex("3080060a2a864886f70d010702a0803080") + OID_DADOS_CMS
                    + bytes.fromhex("a0802480") + b"\x04\x05%PDF-" + b"\x04\x03abc" + bytes(10))
@@ -1420,6 +1464,15 @@ def autoteste() -> int:
                                   FormatoDaBuscaMudou)
                      and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": {"outro": 1}}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
+        "DOE-RJ: só a Parte I, PDF pela chamada do visualizador, cortado no %%EOF; dia sem caderno é vazio":
+            lambda: (edicoes_ioerj(lambda u, **k: {
+                        "c": FIXTURE_CADERNOS_IOERJ, "s": b'<script type="text/javascript">var pd = "EAB21D88-45BD-4CD0-BD2A-D4F0D229380A";</script>',
+                        "k": b"%PDF-1.3 corpo %%EOF\nAbCd==%"}[("c" if "seleciona" in u else "k" if "?k=" in u else "s")],
+                        "https://www.ioerj.com.br", dormir=lambda s: None)("2026-10-16") == [
+                        {"edicao": "Parte I (Poder Executivo)", "pdf": b"%PDF-1.3 corpo %%EOF",
+                         "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=EAB21D88-45BPD-4CD0-BD2A-D4F0D229380A"}]
+                     and edicoes_ioerj(lambda u, **k: b"<ul></ul>", "https://x", dormir=lambda s: None)("2026-10-11") == []
+                     and _levanta(lambda: pdf_ate_o_fim(b"<html>erro</html>"), FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
             lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {
                         "2026-10-08": [{"edicao": "12302", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/08/DO12302_08_10_2026.pdf"},
