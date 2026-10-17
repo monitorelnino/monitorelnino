@@ -72,7 +72,7 @@ Atualizado em 17/10/2026.
 | `coletar_desfechos_saude.py` | — | — | — | — | não |
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
-| `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 2 | não |
+| `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 3 | não |
 | `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 5 | não |
 | `coletar_espin.py` | — | `saude_sinais.json` | — | 1 | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
