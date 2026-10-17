@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-17 · #819 · Saúde: abertura aprovada, topo da inicial e consulta única
 
-A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O "Como ler" antigo sai; o link leva à metodologia até o texto novo da editoria.
+A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O "Como ler" antigo sai; o link leva à metodologia até o texto novo da editoria. No Monitor de riscos, o subtítulo do mapa de focos passa ao satélite de referência.
 
 ## 2026-10-17 · #816 · Mapa de fogo no satélite de referência; consulta do município com calor e reconhecimento
 
