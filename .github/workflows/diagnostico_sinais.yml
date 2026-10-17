@@ -22,12 +22,19 @@ jobs:
         continue-on-error: true
         timeout-minutes: 12
         run: python3 coletar_sih.py --sondar 2>&1
-      - name: Sondar óbitos (Registro Civil por causa, SIM no FTP e no portal)
+      - name: Tamanho dos RD do SIH por ano
         continue-on-error: true
-        timeout-minutes: 12
         run: |
-          python3 coletar_obitos.py 2>&1
           python3 -c "
-          import json;o=json.load(open('data/saude_desfechos/obitos.json'))
-          print('chaves',sorted(o));print('BR ultimos',list(o['serie']['BR'].items())[-4:]);print('ultimo SP',o['ultimo']['SP']);print('cortes',o['cortes_mapa']);print('lacunas',o['lacunas']);print('faixa AC 01',o['faixa_habitual']['AC'].get('01'))
+          from coletar_datasus_dbc import listar_ftp
+          import re,collections
+          t=collections.Counter();n=collections.Counter();uf=collections.Counter()
+          for nome,tam in listar_ftp('/dissemin/publicos/SIHSUS/200801_/Dados'):
+              m=re.match(r'RD([A-Z]{2})(\\d{2})(\\d{2})\\.DBC',nome.upper())
+              if m and tam:
+                  a=2000+int(m.group(2)); t[a]+=tam; n[a]+=1
+                  if a==2025: uf[m.group(1)]+=tam
+          for a in sorted(t):
+              if a>=2019: print(a, n[a], 'arquivos', round(t[a]/2**20), 'MB')
+          print('2025 por UF (MB):', {k: round(v/2**20) for k,v in uf.most_common()})
           "
