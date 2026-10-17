@@ -262,18 +262,22 @@ def problemas_de_componentes(d1280: dict, regras: dict, contrato: dict = None, p
         p += [f"seção numerada: {h!r}" for h in (d1280.get("h2") or []) if _RE_NUMERACAO.match(h)]
     fl = c.get("figura_larga") or {}
     fp = fl.get("figura_principal") or {}
-    declarada = (contrato or {}).get("figura_principal") or {}
+    from verificar_layout import ids_da_figura_principal
+    declarada = ids_da_figura_principal(contrato)
     teto = (fp.get("por_pagina_aprovada") or {}).get(pagina)
-    for tipo in declarada:
+    for tipo in sorted(set(declarada.values())):
+        n = list(declarada.values()).count(tipo)
         if tipo not in (fp.get("tipos") or []):
             p.append(f"figura_principal de tipo {tipo!r}; os tipos são {fp.get('tipos')}")
+        elif teto is not None and n > int(teto.get(tipo) or 0):
+            p.append(f"{n} figuras principais do tipo {tipo!r}; o teto de {pagina} é {teto.get(tipo) or 0}")
     if teto is None and len(declarada) > int(fp.get("por_pagina") or 0):
         p.append(f"{len(declarada)} figuras principais declaradas; o teto é {fp.get('por_pagina') or 0}")
     diagramas = []
     for f in d1280.get("figuras") or []:
         if not (fl.get("classe") and fl["classe"] in (f.get("classes") or []) and f.get("visivel", True)):
             continue
-        if f.get("id") in declarada.values():
+        if f.get("id") in declarada:
             continue
         if "figura--diagrama" in (f.get("classes") or []):
             diagramas.append(f.get("id") or "?")
@@ -377,7 +381,7 @@ def _autoteste() -> int:
     _c = {"componentes": {"secao_sem_numeracao": True, "figura_larga": {
         "classe": "cartao-mapa--largo", "diagrama_por_pagina": 1, "figura_principal": {
             "tipos": ["mapa", "serie"], "por_pagina": 1,
-            "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 1}}}}}}
+            "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 2}}}}}}
     _larga = {"id": "a", "classes": ["cartao-mapa--largo"], "visivel": True}
     _diag = {"id": "d", "classes": ["figura--diagrama", "cartao-mapa--largo"], "visivel": True}
     ok("A7-14: seção numerada e duas figuras largas não declaradas reprovam",
@@ -394,6 +398,12 @@ def _autoteste() -> int:
     ok("monitor de riscos: um mapa e uma série largos declarados passam",
        problemas_de_componentes({"figuras": [_larga, dict(_larga, id="b")]}, _c,
                                 {"figura_principal": {"mapa": "a", "serie": "b"}}, "monitor-de-riscos.html") == [])
+    ok("monitor de riscos: um mapa e duas séries (lista) largos declarados passam",
+       problemas_de_componentes({"figuras": [_larga, dict(_larga, id="b"), dict(_larga, id="c")]}, _c,
+                                {"figura_principal": {"mapa": "a", "serie": ["b", "c"]}}, "monitor-de-riscos.html") == [])
+    ok("monitor de riscos: três séries declaradas reprovam",
+       len(problemas_de_componentes({"figuras": []}, _c, {"figura_principal": {"serie": ["b", "c", "e"]}},
+                                    "monitor-de-riscos.html")) == 1)
     ok("figura principal de tipo fora da regra reprova",
        len(problemas_de_componentes({"figuras": []}, _c, {"figura_principal": {"tabela": "a"}}, "x.html")) == 1)
     _r["_verificacao"]["numeros.formato"] = "scripts/inexistente.py"

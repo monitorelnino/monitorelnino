@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #838 · Portões acompanham as páginas reformadas
+
+Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.
+
 ## 2026-10-17 · #827 · Defesa civil: evento declarado por município
 
 `gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.

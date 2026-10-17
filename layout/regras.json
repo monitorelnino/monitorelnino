@@ -117,7 +117,7 @@
     "ultima_linha_pode_ser_incompleta": true,
     "figura_larga": {
       "classe": "cartao-mapa--largo",
-      "quando": "Para DIAGRAMA (no máximo um por página) e para a FIGURA PRINCIPAL que o contrato da página declara em `figura_principal` ({\"mapa\": \"<id>\"} ou {\"serie\": \"<id>\"}): no máximo uma por página, mapa ou série, escolhida por ser a leitura central da página; em monitor-de-riscos.html, uma de cada tipo (um mapa e uma série), porque foi o desenho aprovado. Um diagrama de 960 de largura num cartão de um terço não é um diagrama menor: é um diagrama ilegível. Toda outra figura (mapa, série, cartão de número) se lê na grade de três; figura larga não declarada reprova.",
+      "quando": "Para DIAGRAMA (no máximo um por página) e para a FIGURA PRINCIPAL que o contrato da página declara em `figura_principal` ({\"mapa\": \"<id>\"} ou {\"serie\": \"<id>\"}): no máximo uma por página, mapa ou série, escolhida por ser a leitura central da página; em monitor-de-riscos.html, um mapa e até duas séries (RONI e Niño 3.4 semanal; central, 17/10/2026 12:05 UTC), porque foi o desenho aprovado; o contrato declara cada tipo com um id ou uma lista de ids. Um diagrama de 960 de largura num cartão de um terço não é um diagrama menor: é um diagrama ilegível. Toda outra figura (mapa, série, cartão de número) se lê na grade de três; figura larga não declarada reprova.",
       "exige": [
         "grid-column: 1 / -1",
         "svg com width:100% e height:auto",
@@ -127,7 +127,7 @@
       "figura_principal": {
         "tipos": ["mapa", "serie"],
         "por_pagina": 1,
-        "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 1}},
+        "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 2}},
         "registrado_em": "2026-10-16",
         "decidido_por": "editoria, por delegação à central (16/10/2026 22:15 UTC; HANDOVER_FINANCIAMENTO_16-10-2026 §11)"
       },
@@ -706,8 +706,7 @@
         "relData2",
         "citarAcesso"
       ],
-      "todas_as_ufs": 27,
-      "_nota": "Regra 0 da Imprensa (01/10/2026): nada escrito à mão que dependa do dado. Os ids em `obrigatorios` não podem ficar vazios nem em '—'; a versão do motor (data/indice.json, data/monitor_saude.json) NÃO aparece no texto (editoria, 05/10); a frase 'média dos N verificados' bate com monitor_saude.json e some aos 27; 'recalculados a cada publicação, N vezes por dia' bate com data/cadencia_publicacao.json."
+      "_nota": "Regra 0 da Imprensa (01/10/2026): nada escrito à mão que dependa do dado. Os ids em `obrigatorios` não podem ficar vazios nem em '—'; a versão do motor (data/indice.json, data/monitor_saude.json) NÃO aparece no texto (editoria, 05/10)."
     }
   },
   "numeros": {
