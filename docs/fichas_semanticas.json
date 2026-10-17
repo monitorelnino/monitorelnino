@@ -224,133 +224,26 @@
       "funcao_narrativa": "mostrar onde o risco de seca já é reconhecido pelo governo federal",
       "metodologia": "Contagem nominal por estado da lista do Semiárido, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
     },
-    "financiamento.html#boxCaminhos": {
-      "tipo": "diagrama de estrutura",
-      "pergunta_que_responde": "Por onde o dinheiro público chega a estados e municípios, e o que cada via exige?",
-      "universo": "vias de financiamento público a estados e municípios",
-      "unidade_de_analise": "via de financiamento",
-      "territorio": "Brasil",
-      "periodo": "estrutura vigente no ciclo 2026/2027",
-      "variavel_principal": "origem, destino e exigência de acesso de cada via",
-      "fonte": "leis e atos citados em cada via (via MARÉ)",
-      "metodologia": "Estrutura, não série: o diagrama descreve vias existentes e o que cada uma exige, pelas normas citadas. Nenhum valor é atribuído às vias aqui.",
-      "conclusoes_permitidas": "saber que vias existem e o que cada uma exige",
-      "conclusoes_nao_permitidas": "ler o diagrama como volume de recursos; supor que a via existente foi usada",
-      "funcao_narrativa": "explica o caminho antes de o leitor procurar o número"
-    },
-    "financiamento.html#boxComoLerGasto": {
-      "tipo": "cartão de texto",
-      "pergunta_que_responde": "O que o número do gasto próprio mede, e o que ele não mede?",
-      "universo": "municípios com declaração anual de contas",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "exercício 2025",
-      "variavel_principal": "definição da rubrica e do denominador por habitante",
-      "fonte": "Siconfi — Declaração de Contas Anuais (Anexo I-E)",
-      "metodologia": "Descrição da rubrica e do que a ausência de lançamento significa, sem interpretar o valor de nenhum município.",
-      "conclusoes_permitidas": "saber o que a rubrica reúne e o que a ausência de lançamento quer dizer",
-      "conclusoes_nao_permitidas": "tratar o texto como avaliação da gestão municipal",
-      "funcao_narrativa": "dá a régua antes do número"
-    },
-    "financiamento.html#boxFormaAplicacao": {
-      "tipo": "gráfico de barras",
-      "pergunta_que_responde": "Como os recursos das medidas federais do El Niño estão sendo aplicados?",
-      "universo": "valor desembolsado pelas ações reforçadas pelas medidas provisórias do ciclo",
-      "unidade_de_analise": "modalidade de aplicação do orçamento federal",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027",
-      "variavel_principal": "percentual do valor desembolsado em cada modalidade de aplicação",
-      "denominador": "valor total desembolsado pelas medidas do ciclo",
-      "fonte": "Portal da Transparência — Execução da Despesa (modalidade de aplicação)",
-      "metodologia": "Soma do valor desembolsado por modalidade de aplicação registrada no orçamento, agrupada em quatro categorias de leitor. O que não casa com um código conhecido entra como outras formas, para que a soma feche com o desembolsado.",
-      "conclusoes_permitidas": "dizer que parcela do desembolsado foi aplicada diretamente e que parcela foi transferida",
-      "conclusoes_nao_permitidas": "ler a modalidade como destino geográfico; somar modalidade com etapa do orçamento",
-      "funcao_narrativa": "mostra a quem o dinheiro foi, e não apenas quanto saiu"
-    },
-    "financiamento.html#boxGastoProprioUF": {
-      "tipo": "mapa coroplético por unidade da federação, com busca por município",
-      "pergunta_que_responde": "Quanto os municípios de cada estado gastaram do próprio orçamento em defesa civil, por habitante?",
-      "universo": "municípios com lançamento de despesa em defesa civil",
-      "unidade_de_analise": "unidade da federação, com detalhe por município",
-      "territorio": "Brasil",
-      "periodo": "exercício 2025",
-      "variavel_principal": "despesa própria em defesa civil por habitante",
-      "denominador": "população dos municípios com lançamento, pelo Censo 2022",
-      "fonte": "Siconfi — Declaração de Contas Anuais (Anexo I-E); IBGE — Censo 2022",
-      "metodologia": "Soma da despesa dos municípios com lançamento dividida pela população desses mesmos municípios. Dividir pela população inteira do estado diluiria o gasto de quem lançou entre quem não lançou. Município sem lançamento não entra na conta.",
-      "conclusoes_permitidas": "comparar o gasto por habitante entre estados no exercício",
-      "conclusoes_nao_permitidas": "ler sem lançamento como gasto zero; comparar com o dinheiro do ciclo, que é de outra natureza",
-      "funcao_narrativa": "dá o contexto do esforço próprio das prefeituras, antes do ciclo"
-    },
-    "financiamento.html#boxListaOrigens": {
-      "tipo": "lista de origens",
-      "pergunta_que_responde": "Qual ato criou cada origem de recursos, e quanto cada uma movimentou?",
-      "universo": "origens de recursos do ciclo",
-      "unidade_de_analise": "origem dos recursos",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027",
-      "variavel_principal": "ato, data e os três valores de cada origem",
-      "fonte": "atos citados em cada origem; Portal da Transparência (execução)",
-      "metodologia": "Uma linha por origem, com o ato que a criou e o endereço do documento. Origem sem execução coletada é dita.",
-      "conclusoes_permitidas": "ligar cada valor ao ato que o criou",
-      "conclusoes_nao_permitidas": "tratar o anunciado como dinheiro disponível",
-      "funcao_narrativa": "dá o documento atrás de cada número"
-    },
-    "financiamento.html#boxOrigens": {
-      "tipo": "gráfico de barras",
-      "pergunta_que_responde": "Quanto cada origem de recursos do ciclo anunciou, empenhou e desembolsou?",
-      "universo": "medidas provisórias e compromissos federais e estaduais do ciclo",
-      "unidade_de_analise": "origem dos recursos",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027",
-      "variavel_principal": "valor anunciado, empenhado e desembolsado de cada origem",
-      "fonte": "atos citados em cada origem; Portal da Transparência (execução)",
-      "metodologia": "Anunciado é o valor do ato; empenhado e desembolsado são a execução lida no Portal. Origem sem execução coletada aparece como tal, nunca como zero. A lista traz também o desembolsado mês a mês.",
-      "conclusoes_permitidas": "comparar as três etapas dentro de cada origem",
-      "conclusoes_nao_permitidas": "somar anunciado com desembolsado; tratar execução não coletada como zero",
-      "funcao_narrativa": "mostra a distância entre o que foi anunciado e o que saiu do caixa"
-    },
-    "financiamento.html#boxPortariasRecentes": {
-      "tipo": "lista de atos",
-      "pergunta_que_responde": "Quais portarias da defesa civil federal foram publicadas mais recentemente?",
-      "universo": "portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "portaria",
-      "territorio": "Brasil",
-      "periodo": "desde 29/06/2026",
-      "variavel_principal": "portaria, data, município, finalidade e valor autorizado",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "As vinte e cinco portarias mais recentes pela data do ato, com o endereço de cada uma. A lista completa está nos dados abertos.",
-      "conclusoes_permitidas": "ver o ato por trás de cada valor autorizado",
-      "conclusoes_nao_permitidas": "tratar a lista como o total do ciclo",
-      "funcao_narrativa": "mostra o que acabou de ser publicado, com o documento"
-    },
-    "financiamento.html#boxRespostaUF": {
-      "tipo": "mapa coroplético por unidade da federação, com busca por município",
-      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por portaria em cada estado no ciclo?",
-      "universo": "municípios citados em portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "unidade da federação, com detalhe por município",
-      "territorio": "Brasil",
-      "periodo": "desde 29/06/2026",
-      "variavel_principal": "valor autorizado em portarias, somado por estado",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "Soma do valor autorizado nas portarias publicadas, por estado. Município sem portaria aparece como sem registro, nunca como R$ 0. Autorizado por portaria não é dinheiro que saiu: a saída é outro registro.",
-      "conclusoes_permitidas": "comparar o valor autorizado entre estados no período",
-      "conclusoes_nao_permitidas": "ler autorizado como desembolsado; ler ausência de portaria como ausência de necessidade",
-      "funcao_narrativa": "mostra onde a defesa civil federal autorizou recursos no ciclo"
-    },
     "financiamento.html#boxSerieSemanal": {
-      "tipo": "gráfico de barras empilhadas",
-      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por semana desde o início do ciclo?",
-      "universo": "portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "semana",
+      "dimensao_da_preparacao": "resposta declarada",
       "territorio": "Brasil",
-      "periodo": "semanas desde 29/06/2026",
-      "variavel_principal": "valor autorizado por semana, por finalidade declarada no ato",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "Semanas contadas desde 29/06/2026, pela data da portaria. As finalidades são as que a fonte declara: resposta, recuperação e outra. Prevenção não é separada nessa fonte.",
-      "conclusoes_permitidas": "dizer quanto foi autorizado em cada semana e para que finalidade",
-      "conclusoes_nao_permitidas": "ler ausência de portaria na semana como ausência de necessidade; somar finalidades como se fossem a mesma coisa",
-      "funcao_narrativa": "mostra o ritmo da autorização ao longo do ciclo"
+      "tipo": "série temporal",
+      "pergunta_que_responde": "Quantos municípios decretaram, foram reconhecidos pela União e tiveram recurso autorizado, semana a semana desde 29/06/2026?",
+      "universo": "os municípios com decreto localizado desde 29/06/2026; nas outras linhas, os com portaria de reconhecimento e os com portaria de recurso",
+      "unidade_de_analise": "município, acumulado por semana",
+      "periodo": "semanas de 29/06/2026 até o corte",
+      "variavel_principal": "número acumulado de municípios em cada etapa, por semana",
+      "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
+      "conclusoes_permitidas": [
+        "quantos municípios acumulam em cada etapa, em cada semana"
+      ],
+      "conclusoes_nao_permitidas": [
+        "razão ou diferença entre as linhas: a figura não constrói comparação",
+        "que a distância entre as linhas mede demora: a data é a do ato publicado",
+        "que o município pediu recurso: o pedido não é publicado"
+      ],
+      "funcao_narrativa": "mostrar o caminho do decreto ao recurso no tempo",
+      "metodologia": "Semana do primeiro decreto, da primeira portaria de reconhecimento e da primeira portaria de recurso de cada município; acumulado desde 29/06/2026."
     },
     "monitor-de-riscos.html#boxAr": {
       "tipo": "mapa de pontos",
@@ -795,34 +688,6 @@
       "funcao_narrativa": "o ciclo em curso lido contra os episódios que o próprio dado define",
       "acao_relacionada": null
     },
-    "financiamento.html#boxFnsEmergenciaUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quanto o Fundo Nacional de Saúde repassou em 2026, em cada estado, em linhas ligadas a emergência?",
-      "universo": "repasses fundo a fundo do Fundo Nacional de Saúde (função Saúde) a fundos estaduais e municipais de saúde em 2026",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "meses de 2026 publicados no Portal da Transparência",
-      "variavel_principal": "valor repassado em linhas cujo nome de ação ou de plano orçamentário cita emergência, calamidade, El Niño, seca, estiagem, calor, crédito extraordinário, ESPIN ou a Força Nacional do SUS",
-      "fonte": "Portal da Transparência, download de dados abertos de transferências",
-      "metodologia": "Soma por estado das linhas do FNS cujo nome de ação ou de plano orçamentário, tal como a fonte o escreve, contém um dos termos. Estado sem linha assim aparece sem registro, nunca como R$ 0. Peso zero no índice.",
-      "conclusoes_permitidas": "comparar entre estados o valor repassado em linhas nomeadas como de emergência",
-      "conclusoes_nao_permitidas": "ler o total como todo o dinheiro da saúde para o El Niño; ler ausência de linha como ausência de gasto",
-      "funcao_narrativa": "mostra onde o dinheiro federal da saúde identificado como de emergência chegou no ano"
-    },
-    "financiamento.html#boxComoLerFns": {
-      "tipo": "lista de leitura (texto curto)",
-      "pergunta_que_responde": "Como ler os repasses do Fundo Nacional de Saúde nesta página?",
-      "universo": "repasses fundo a fundo do Fundo Nacional de Saúde em 2026",
-      "unidade_de_analise": "linha de repasse",
-      "territorio": "Brasil",
-      "periodo": "meses de 2026 publicados no Portal da Transparência",
-      "variavel_principal": "critério de leitura das linhas de repasse",
-      "fonte": "Portal da Transparência, download de dados abertos de transferências",
-      "metodologia": "Explica o recorte: favorecido fundo de saúde, esfera pelo nome do favorecido, ligação a emergência só pelo nome da ação ou do plano orçamentário.",
-      "conclusoes_permitidas": "entender o que entra e o que não entra no recorte",
-      "conclusoes_nao_permitidas": "tirar do recorte conclusão sobre gasto total em saúde",
-      "funcao_narrativa": "orienta a leitura do mapa do FNS"
-    },
     "monitor-de-riscos.html#boxListaIndicados": {
       "tipo": "mapa por estado",
       "pergunta_que_responde": "Quantos municípios de cada estado a União indicou ao cadastro nacional de áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A)?",
@@ -883,6 +748,88 @@
       ],
       "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
       "metodologia": "Contagem nominal por estado da lista em vigor do Ministério do Meio Ambiente, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
+    },
+    "financiamento.html#boxChega": {
+      "dimensao_da_preparacao": "resposta declarada",
+      "territorio": "Brasil",
+      "tipo": "mapa de círculos proporcionais",
+      "pergunta_que_responde": "Quanto dinheiro federal chegou a cada município desde 29/06/2026, pela defesa civil e pelo FNS em linhas de emergência?",
+      "universo": "municípios com portaria de recurso da defesa civil federal ou com repasse do FNS em linha ligada a emergência",
+      "unidade_de_analise": "município (círculo na sede)",
+      "periodo": "defesa civil desde 29/06/2026; FNS de janeiro ao último mês publicado de 2026",
+      "variavel_principal": "valor autorizado (defesa civil) ou repassado (FNS), em reais; área do círculo proporcional ao valor",
+      "fonte": "Defesa Civil nacional (portarias no Diário Oficial da União) e Fundo Nacional de Saúde (Portal da Transparência)",
+      "conclusoes_permitidas": [
+        "onde chegou dinheiro federal dessas duas origens e quanto"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o município sem círculo não recebeu dinheiro federal: o mapa mostra só essas duas origens",
+        "somar autorizado e repassado como a mesma etapa",
+        "que o gasto direto da União chegou ao município: ele não tem destino municipal registrado"
+      ],
+      "funcao_narrativa": "figura principal: o dinheiro por lugar",
+      "metodologia": "Círculo na sede municipal (municipios_ibge_referencia.json), raio proporcional à raiz do valor; cor pela origem."
+    },
+    "financiamento.html#boxMesAMes": {
+      "dimensao_da_preparacao": "resposta declarada",
+      "territorio": "Brasil",
+      "tipo": "barras por mês",
+      "pergunta_que_responde": "Quanto as ações reforçadas pelas medidas provisórias do fogo e da seca pagaram em cada mês desde junho de 2026?",
+      "universo": "as ações orçamentárias reforçadas pelas MPs 1.367/2026 e 1.384/2026",
+      "unidade_de_analise": "mês",
+      "periodo": "de junho de 2026 ao mês corrente, parcial",
+      "variavel_principal": "valor pago no mês, em R$ milhões",
+      "fonte": "Portal da Transparência, execução da despesa (arquivos mensais)",
+      "conclusoes_permitidas": [
+        "quanto foi pago em cada mês por ação reforçada"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o valor é só do crédito extraordinário: inclui a dotação ordinária da ação",
+        "comparar o mês parcial com os completos"
+      ],
+      "funcao_narrativa": "mostrar o ritmo do pago",
+      "metodologia": "Soma mensal do pago das ações reforçadas, como o gerador registra em por_mes; mês corrente marcado parcial."
+    },
+    "financiamento.html#boxAcoes": {
+      "dimensao_da_preparacao": "resposta declarada",
+      "territorio": "Brasil",
+      "tipo": "barras",
+      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por portaria desde 29/06/2026, por ação?",
+      "universo": "portarias de recurso da defesa civil federal com município e valor legíveis",
+      "unidade_de_analise": "ação (resposta, recuperação, outra)",
+      "periodo": "desde 29/06/2026",
+      "variavel_principal": "valor autorizado, em reais",
+      "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União",
+      "conclusoes_permitidas": [
+        "quanto foi autorizado em cada ação",
+        "quantos municípios têm ato"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o valor foi pago: autorizado não é pago",
+        "que portaria sem valor legível não existe: ela fica fora da soma"
+      ],
+      "funcao_narrativa": "o dinheiro da resposta, por ação",
+      "metodologia": "Soma do valor autorizado por ação nas portarias lidas (recursos_liberados.json)."
+    },
+    "financiamento.html#boxSemRecurso": {
+      "dimensao_da_preparacao": "resposta declarada",
+      "territorio": "Brasil",
+      "tipo": "número",
+      "pergunta_que_responde": "Quantos municípios foram reconhecidos pela União há mais de 30 dias e não têm portaria de recurso localizada?",
+      "universo": "municípios com reconhecimento federal desde 29/06/2026",
+      "unidade_de_analise": "município",
+      "periodo": "data de referência do consolidado",
+      "variavel_principal": "número de municípios com mais de 30 dias entre o primeiro reconhecimento e a data de referência, sem portaria de recurso",
+      "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União",
+      "conclusoes_permitidas": [
+        "quantos municípios estão nessa situação na data de referência"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o recurso foi negado ou não pedido: a figura conta portaria não localizada até o corte",
+        "demora de algum órgão"
+      ],
+      "funcao_narrativa": "onde o caminho do reconhecimento ao recurso parou",
+      "metodologia": "Primeiro reconhecimento no consolidado; sem portaria de recurso em recursos_liberados.json; mais de 30 dias até a data do consolidado."
     }
   }
 }

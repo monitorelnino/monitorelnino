@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato de layout do Financiamento minimalista (handover da editoria, 02/10/2026, rev. 2). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante — nenhum PR desta página é mesclado com ele vermelho. Escopo: só dinheiro do ciclo. Transferências gerais de todo mês saíram da página e aparecem como frase no rodapé recolhido.",
+  "_governanca": "Contrato de layout do Financiamento (HANDOVER_FINANCIAMENTO_16-10-2026, reforma de 17/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Verificado por scripts/verificar_layout.py. Ordem: abertura, cinco números, o dinheiro por risco declarado no ato, onde ele chega (figura principal), mês a mês, a consulta do município e a defesa civil depois do reconhecimento.",
   "pagina": "financiamento.html",
   "componentes": {
     "numeros": ".cartao-numero",
@@ -8,180 +8,156 @@
     "grade_figuras": ".grade-figuras--3",
     "figura_larga": ".cartao-mapa--largo"
   },
-  "_nota_componentes": "O handover nomeia `.cartao-destaque` para números. Esse seletor NÃO existe no repositório: o componente real de número é `.cartao-numero`, que a Imprensa reusa (está escrito em assets/base.css). Usar o que existe em vez de criar um segundo componente para a mesma coisa — divergência declarada.",
+  "figura_principal": {
+    "mapa": "boxChega"
+  },
+  "_nota_figura_principal": "Decisão de 16/10/2026 (LOTES 22:15 UTC; regra em #825): a figura principal desta página é o mapa 'onde o dinheiro chega', com o destaque do gasto direto e a legenda ao lado (`.figura--dupla`).",
   "secoes": [
     {
       "id": "dc-topo",
       "h2": null,
       "tipo": "numeros",
       "grade": ".grade-numeros--3",
-      "linhas": 1,
+      "linhas": 2,
+      "_nota_linhas": "O handover pede uma linha de cinco cartões compactos; a variante até seis por linha é da B1 (central 17/10 12:05, §3). Até lá, três e dois. Divergência declarada.",
       "cartoes": [
         {
-          "id": "desembolsado_mp_mes",
+          "id": "anunciado_nos_atos",
           "tipo": "numero",
           "chave": "financiamento/mps_2026.json",
-          "valor_el": "topoPagoMes"
+          "valor_el": "topoAnunciado"
         },
         {
-          "id": "resposta_autorizado_semana",
+          "id": "pago_ate_agora",
+          "tipo": "numero",
+          "chave": "financiamento/mps_2026.json",
+          "valor_el": "topoPago"
+        },
+        {
+          "id": "gasto_direto_uniao",
+          "tipo": "numero",
+          "chave": "financiamento/mps_2026.json#pct_gasto_direto",
+          "valor_el": "topoDireto"
+        },
+        {
+          "id": "defesa_civil_depois_do_decreto",
           "tipo": "numero",
           "chave": "resposta/recursos_liberados.json",
-          "valor_el": "topoRespostaSemana"
+          "valor_el": "topoDefesaCivil"
         },
         {
-          "id": "atos_federais_semana",
+          "id": "sus_repasses_emergencia",
           "tipo": "numero",
-          "chave": "financiamento/compromissos_federais.json",
-          "valor_el": "topoAtosSemana"
+          "chave": "financiamento/fns_2026.json",
+          "valor_el": "topoSus"
+        }
+      ],
+      "_nota": "Anunciado = soma das origens com valor no ato (as duas MPs e os repasses estaduais com valor); o 'Plano federal El Niño' é o anúncio que contém as MPs e não entra, para não somar o mesmo dinheiro duas vezes."
+    },
+    {
+      "id": "caminhos",
+      "h2": "Para cada risco, de onde vem o dinheiro",
+      "tipo": "cartoes",
+      "cartoes": [
+        {
+          "id": "colunas_por_risco",
+          "tipo": "texto",
+          "el": "colunasRisco"
+        },
+        {
+          "id": "faixa_resposta",
+          "tipo": "texto",
+          "el": "faixaResposta"
+        },
+        {
+          "id": "tabela_origens",
+          "tipo": "texto",
+          "el": "tblOrigens"
         }
       ],
       "exige_texto": [
-        "anunciam",
-        "desembolsado é o que já saiu do caixa"
+        "As duas medidas provisórias fazem parte do plano federal"
       ],
-      "_nota_zero": "Zero na semana é ZERO, com a janela dita — nunca travessão. O cartão de atos é fixo nesta revisão: a grade é de três, e três cartões a preenchem."
+      "_nota": "Quatro colunas (Fogo, Seca, Chuva forte, Saúde) em `.grade-cartoes--4` e a faixa da resposta a emergência reconhecida em `.cartao`. O risco é só o que o ato declara (`risco_declarado`, do gerador); sem ele, a fonte fica na tabela com 'risco não declarado no ato'. Etapa sem execução coletada = 'não localizado até o corte', nunca barra zero. Uma escala para a página. Âncoras #antes (título) e #caminhos (seção) mantidas: o Para gestores aponta para elas."
     },
     {
-      "id": "dinheiroElNino",
-      "h2": "O dinheiro do El Niño",
+      "id": "chega",
+      "h2": "Onde o dinheiro chega",
       "tipo": "figuras",
-      "grade": ".grade-figuras--3",
+      "grade": ".grade-figuras--1",
       "cartoes": [
         {
-          "id": "forma_de_aplicacao",
-          "tipo": "grafico",
-          "el": "boxFormaAplicacao",
-          "chave": "financiamento/mps_2026.json"
-        },
-        {
-          "id": "origem_anunciado_empenhado_desembolsado",
-          "tipo": "grafico",
-          "el": "boxOrigens",
-          "chave": "financiamento/compromissos_federais.json"
-        },
-        {
-          "id": "lista_origens",
-          "tipo": "lista",
-          "el": "boxListaOrigens",
-          "chave": "financiamento/compromissos_federais.json"
+          "id": "mapa_onde_chega",
+          "tipo": "mapa",
+          "el": "boxChega",
+          "chave": "resposta/recursos_liberados.json#municipios"
         }
       ]
     },
     {
-      "id": "defesaCivil",
-      "h2": "Defesa civil no ciclo: prevenção e resposta",
-      "tipo": "figuras",
-      "grade": ".grade-figuras--3",
-      "cartoes": [
-        {
-          "id": "mapa_uf_resposta",
-          "tipo": "mapa",
-          "el": "boxRespostaUF",
-          "chave": "resposta/recursos_liberados.json"
-        },
-        {
-          "id": "serie_semanal",
-          "tipo": "grafico",
-          "el": "boxSerieSemanal",
-          "chave": "resposta/recursos_liberados.json"
-        },
-        {
-          "id": "lista_portarias_recentes",
-          "tipo": "lista",
-          "el": "boxPortariasRecentes",
-          "chave": "resposta/recursos_liberados.json"
-        }
-      ],
-      "_nota_prevencao": "O handover previa um terceiro cartão com o mapa da PREVENÇÃO por estado, e previu a alternativa: 'se o dado não separar prevenção de resposta, o cartão vira lista_portarias_recentes'. ESCOLHA REGISTRADA: as portarias da SEDEC separam `resposta`, `recuperacao` e `outra` — prevenção não existe nessa fonte. Então o terceiro cartão é a lista das portarias recentes, e a série semanal mostra as duas finalidades que existem."
-    },
-    {
-      "id": "gastoProprio",
-      "h2": "Contexto: o que os municípios gastam por conta própria",
-      "tipo": "figuras",
-      "grade": ".grade-figuras--3",
-      "cartoes": [
-        {
-          "id": "mapa_uf_gasto_proprio",
-          "tipo": "mapa",
-          "el": "boxGastoProprioUF",
-          "chave": "financiamento/municipios/despesa_182.json"
-        },
-        {
-          "id": "como_ler_gasto",
-          "tipo": "texto",
-          "el": "boxComoLerGasto"
-        }
-      ],
-      "ultima_linha_incompleta": true
-    },
-    {
-      "id": "saudeFNS",
-      "h2": "Saúde: repasses do SUS ligados a emergência",
+      "id": "mesames",
+      "h2": "Mês a mês",
       "tipo": "figuras",
       "grade": ".grade-figuras--3",
       "ultima_linha_incompleta": true,
       "cartoes": [
         {
-          "id": "mapa_uf_fns_emergencia",
-          "tipo": "mapa",
-          "el": "boxFnsEmergenciaUF",
-          "chave": "financiamento/fns_2026.json"
-        },
-        {
-          "id": "como_ler_fns",
-          "tipo": "lista",
-          "el": "boxComoLerFns",
-          "chave": "financiamento/fns_2026.json"
+          "id": "pago_por_mes",
+          "tipo": "grafico",
+          "el": "boxMesAMes",
+          "chave": "financiamento/mps_2026.json#por_mes"
         }
       ],
-      "_nota": "11/10/2026 (HANDOVER_FINANCIAMENTO_SAUDE, item 3): repasses do FNS ligados a emergência pelo texto do ato; mesmo molde da seção do gasto próprio."
+      "_nota": "Só o pago, fogo e seca, desde junho, mês corrente marcado parcial (decisão da central, §6). A defesa civil (autorizado) é outra etapa e fica nos números, no mapa e na última seção."
     },
     {
-      "id": "caminhosSecao",
-      "h2": null,
-      "tipo": "recolhido",
-      "detalhes": "caminhos",
-      "fechado_por_padrao": true,
+      "id": "municipio",
+      "h2": "Quanto chegou ao seu município",
+      "tipo": "consulta",
       "cartoes": [
         {
-          "id": "diagrama_caminhos",
-          "tipo": "diagrama",
-          "el": "boxCaminhos"
-        },
-        {
-          "id": "antes",
+          "id": "consulta_do_municipio",
           "tipo": "texto",
-          "el": "antes"
-        },
-        {
-          "id": "depois",
-          "tipo": "texto",
-          "el": "depois"
+          "el": "consultaCard"
         }
       ],
-      "ancoras": [
-        "antes",
-        "depois",
-        "setores",
-        "caminhos"
-      ]
+      "_nota": "Módulo comum `assets/js/consulta-municipio.js`. Quatro `.cartao` (defesa civil, FNS de emergência, transferências da União, gasto próprio em defesa civil com a classe de ausência) e a linha do estado, só com soma e contagem do próprio estado."
+    },
+    {
+      "id": "defesaCivil",
+      "h2": "Defesa civil, depois do reconhecimento",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--3",
+      "cartoes": [
+        {
+          "id": "serie_semanal",
+          "tipo": "grafico",
+          "el": "boxSerieSemanal",
+          "chave": "resposta/recursos_liberados.json#semanas"
+        },
+        {
+          "id": "autorizado_por_acao",
+          "tipo": "grafico",
+          "el": "boxAcoes",
+          "chave": "resposta/recursos_liberados.json#total_por_acao"
+        },
+        {
+          "id": "reconhecido_sem_recurso",
+          "tipo": "grafico",
+          "el": "boxSemRecurso",
+          "chave": "resposta/municipios_decretados.json#primeiro_reconhecimento"
+        }
+      ],
+      "_nota": "O que saiu da página da Defesa civil (HANDOVER_DEFESA_CIVIL §7): a linha 'com recurso autorizado' na série semanal, o total por ação com o nº de municípios com ato, as portarias em 'Ver em tabela' e a pendência 'reconhecido há mais de 30 dias sem recurso autorizado'. Âncora #defesaCivil mantida; #depois é o título."
     }
   ],
   "texto_proibido": [
     "FIGURA",
     "Corte da edição",
     "corte de",
-    "defeso",
-    "chave que abre",
     "desastre",
-    "subfunção",
-    "unidade gestora",
-    "mês lido",
-    "meses lidos"
+    "ciclo",
+    "Como ler"
   ],
-  "_nota_texto_proibido": "A lista do handover inclui 'pago', 'rota' e 'nota' em singular. 'pago' é a ETAPA do orçamento e aparece dentro de 'Ver em lista' e na METODOLOGIA, por decisão do próprio handover; 'rota' e 'nota' aparecem em texto legítimo ('a rota constitucional' é vocabulário do dado declarado na METODOLOGIA; 'note' entra em classe de CSS). O portão barra o que o handover quer barrar — a palavra no texto que o leitor lê — e isso é conferido por `verificar_palavras_financiamento.py`, que olha o texto visível e sabe distinguir prosa de bloco de prova.",
-  "sem_grade_de_estados": true,
-  "_nota_sem_grade": "A grade dos 27 quadros (#regionsFin) SAIU da página por decisão da editoria: estados em mapa, municípios em lista dentro do mesmo cartão.",
-  "_nota_figura_larga": "04/10/2026: a figura dos caminhos usa a variante registrada `figura larga` — uma por página, declarada em layout/regras.json, NÃO por exceção. Ela fica no topo do rodapé recolhido 'Como o dinheiro público chega', que continua fechado até o leitor abrir, e abaixo dela vem a linha de três cartões. Abaixo de 640 px o desenho dá lugar à lista vertical dos oito caminhos, com a mesma cor e uma amostra do traço de cada um."
+  "_nota_texto_proibido": "'ciclo' sozinho saiu do texto (§1); os cartões 'Como ler' saíram."
 }
