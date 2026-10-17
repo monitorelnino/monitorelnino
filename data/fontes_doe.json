@@ -138,9 +138,9 @@
    "ultima_tentativa": "2026-10-16"
   },
   "AL": {
-   "adaptador": null,
-   "url": "https://imprensaoficial.al.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_apinova",
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
     "plataforma": null,
@@ -149,8 +149,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "o diário vive em diario.imprensaoficial.al.gov.br, SPA (React) que serve a mesma casca de 964 B para toda rota, inclusive /apifront e /busca; API não localizada",
-   "medido_em": "15/10/2026"
+   "medido_em": "17/10/2026",
+   "caminho": "API JSON do próprio sítio (aplicativo 'apinova'): editions/published/<ano>/<mês> lista as edições do mês, com suplemento; editions/downloadPdf/<id> serve o PDF (100 p. com texto em 15/10; runs 39022687465 e 39023131710)"
   },
   "BA": {
    "adaptador": null,
@@ -174,8 +174,8 @@
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "dool.egba.ba.gov.br não responde ao runner (timeout em 3 rotas, 30 s); www.egba.ba.gov.br/diario-oficial e a busca Solr respondem 404",
-   "medido_em": "15/10/2026"
+   "motivo": "dool.egba.ba.gov.br (Diário Oficial online da EGBA) não responde ao runner (timeout em 17/10, como em 15/10); legislabahia.ba.gov.br falha no TLS (handshake) — rota conhecida sem resposta, não é recusa",
+   "medido_em": "17/10/2026"
   },
   "CE": {
    "adaptador": "edicao_ce",
@@ -215,8 +215,8 @@
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "diariooficial.ma.gov.br responde HTTP 500 em todas as rotas (raiz, /busca/, /public/index.jsf)",
-   "medido_em": "15/10/2026"
+   "motivo": "diariooficial.ma.gov.br respondeu HTTP 500 e 503 e depois falhou no DNS, em 17/10 (runs 39021988900 a 39024168986) — servidor fora do ar, não é recusa",
+   "medido_em": "17/10/2026"
   },
   "PB": {
    "adaptador": "edicao_pb",
@@ -312,7 +312,7 @@
   },
   "SE": {
    "adaptador": null,
-   "url": "",
+   "url": "https://iose.se.gov.br",
    "status": "sem adaptador de busca",
    "ultima_tentativa": "2026-10-16",
    "sondagem": {
@@ -320,8 +320,8 @@
     "motivo": "nenhum endereço de diário registrado; os hosts conhecidos do diário de Sergipe (segrase.se.gov.br, doe.se.gov.br, diariooficial.se.gov.br) não resolvem na consulta de 02/10/2026. O portal do estado (www.se.gov.br) responde, mas portal de governo não é diário oficial e não entra como fonte.",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "nenhum host do diário resolve no DNS (segrase.se.gov.br, www.segrase, doe.se.gov.br, diariooficial.se.gov.br); www.se.gov.br inalcançável do runner",
-   "medido_em": "15/10/2026"
+   "motivo": "a Imprensa Oficial de Sergipe (iose.se.gov.br) roda a plataforma comum: a página inicial abre (200), mas /apifront/portal/edicoes, /busca e /diario-oficial respondem HTTP 403 ao cliente identificado do projeto (run 39021988900) — recusa respeitada",
+   "medido_em": "17/10/2026"
   },
   "DF": {
    "adaptador": "dodf",
@@ -382,8 +382,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "jornalminasgerais.mg.gov.br é SPA Angular; a API declarada no bundle (`/api/v1/`) responde 404 em toda rota tentada (raiz, edicoes, publicacoes); endpoints reais a ler no bundle",
-   "medido_em": "15/10/2026"
+   "motivo": "a API do Jornal Minas Gerais (www.jornalminasgerais.mg.gov.br/api/v1/: Jornal/ObterEdicaoPorDataPublicacao, Caderno/ObterArquivoCadernoPorId) responde HTTP 401 sem token; o sítio obtém token de sessão em Autenticacao/Autenticar — rota atrás de token, não se usa (runs 39019929474 e 39023721853)",
+   "medido_em": "17/10/2026"
   },
   "RJ": {
    "adaptador": null,
@@ -397,8 +397,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "ioerj.com.br/portal (XOOPS) — `conteudoonline/index.php` serve só o tema; `mostra_edicao.php` devolve 'Erro.' sem parâmetro de sessão; rota do PDF não localizada",
-   "medido_em": "15/10/2026"
+   "motivo": "o diário da IOERJ lista as datas (conteudoonline/do_seleciona_data.php) e os cadernos de cada data (mostra_edicao.php?session=<base64>), mas o PDF é aberto por um visualizador pdf.js cuja origem do arquivo não aparece no HTML; rota do PDF não localizada (run 39024168986)",
+   "medido_em": "17/10/2026"
   },
   "SP": {
    "adaptador": "busca_sp",
@@ -433,13 +433,13 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "diariooficial.rs.gov.br é SPA Angular (PROCERGS) que serve a mesma casca em toda rota; nenhuma URL de API no bundle (7,7 MB)",
-   "medido_em": "15/10/2026"
+   "motivo": "o sítio lê a API doe-backend.pro.rs.gov.br (public/diarios/consultar?tipoDiario=DOE&data=..., public/materias/?queryString=...), declarada em environments/environment.json; o host não responde ao runner (timeout, run 39023721853) — rota conhecida, sem resposta, não é recusa",
+   "medido_em": "17/10/2026"
   },
   "SC": {
-   "adaptador": null,
-   "url": "https://doe.sea.sc.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_sc",
+   "url": "https://portal.doe.sea.sc.gov.br/apis",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-17",
    "sondagem": {
     "plataforma": null,
@@ -448,8 +448,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "doe.sea.sc.gov.br redireciona por JavaScript para portal.doe.sea.sc.gov.br/v2.44.07/ (SPA Angular); API não localizada",
-   "medido_em": "15/10/2026"
+   "medido_em": "17/10/2026",
+   "caminho": "API pública que o portal chama: apis/jornal/?dtStart=<dia> 00:00:00&dtEnd=<dia> 23:59:59 lista as edições do dia (ordinária e extra) com dsArquivo; o PDF está em portal.doe.sea.sc.gov.br/repositorio<dsArquivo> (58 p. com texto em 16/10; runs 39023721853 e 39024168986)"
   }
  },
  "_medicao_01_10_2026": "Varredura dos 22 diários sem adaptador: cada host foi sondado com o cliente do projeto, e o status de cada UF passou a dizer o que respondeu e o que falta. DF e TO ganharam adaptador direto. Host que não responde, busca que não existe e busca que cobre o portal em vez do diário são coisas diferentes, e agora estão nomeadas separadamente — nenhuma delas é ausência de ato.",

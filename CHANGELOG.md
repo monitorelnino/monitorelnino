@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).
 
+## 2026-10-17 · #822 · Diários estaduais: 404 não é recusa; 20 UFs com rota provada
+
+Endereço errado (404) era gravado como recusa e fechava 17 diários. Agora é "rota não descoberta"; recusa só 401/403/429/451. O canal 2 passa a ler pelos adaptadores medidos do `fontes_doe.json`: edição por data e busca com os termos de declaração, por uma porta única. Rotas novas medidas do runner: PA, RO, RN, RR por data; AL e SC por API. "Consultado" exige o ciclo inteiro coberto.
+
 ## 2026-10-17 · #811 · Resposta sanitária: zero sem busca vira "não coletado"
 
 O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.

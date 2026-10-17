@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>17/10/2026 · A válvula de dia abre o próprio PR de dado</dt>
       <dd>Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).</dd>
+      <dt>17/10/2026 · Diários estaduais: 404 não é recusa; 20 UFs com rota provada</dt>
+      <dd>Endereço errado (404) era gravado como recusa e fechava 17 diários. Agora é &quot;rota não descoberta&quot;; recusa só 401/403/429/451. O canal 2 passa a ler pelos adaptadores medidos do `fontes_doe.json`: edição por data e busca com os termos de declaração, por uma porta única. Rotas novas medidas do runner: PA, RO, RN, RR por data; AL e SC por API. &quot;Consultado&quot; exige o ciclo inteiro coberto.</dd>
       <dt>17/10/2026 · Resposta sanitária: zero sem busca vira &quot;não coletado&quot;</dt>
       <dd>O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.</dd>
       <dt>17/10/2026 · Pista julgada guarda se o documento foi lido, não a cópia dos critérios</dt>
@@ -165,8 +167,6 @@
       <dd>`julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).</dd>
       <dt>16/10/2026 · Imprensa: páginas em cartões, perguntas em sanfona</dt>
       <dd>A Imprensa abre por &quot;O que cada página responde&quot;, agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem &quot;Quem está mais preparado?&quot;, &quot;A comparação é do leitor.&quot; e &quot;Os estados são comparáveis entre si?&quot;: o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.</dd>
-      <dt>16/10/2026 · DOE-SP pela API própria da busca (SE)</dt>
-      <dd>`coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/&lt;id&gt;`, sem HTML; endereço citável `doe.sp.gov.br/&lt;slug&gt;`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.</dd>
     </dl>
   </section>
 </main>
