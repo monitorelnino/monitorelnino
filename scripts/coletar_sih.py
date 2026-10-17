@@ -11,7 +11,8 @@ A segunda camada dos desfechos de saúde (HANDOVER_SUS_DESFECHOS §1, camada C) 
   editoria; o `datasus-dbc` (MIT) só existe como fonte em Rust, que o executor teria de compilar.
 - `ler_dbc` / `registros_dbf`: o DBF em fluxo, só com as colunas pedidas (o RD tem 113 colunas e o
   coletor precisa de quatro ou cinco).
-- `--sondar`: mede e imprime, sem escrever em `data/`: a lista do FTP (último mês publicado por UF,
+- `--sondar`: mede e imprime, sem escrever série nem banco (o único rastro em `data/` é o da porta
+  comum de rede, `robots_registro.json`, quando o robots pede que robôs não entrem): a lista do FTP (último mês publicado por UF,
   com a data do arquivo), um arquivo decodificado (colunas, registros, tempo) e a mesma célula no
   TabNet (internações do mês na UF), para bater o leitor contra a tabulação oficial.
 
@@ -48,6 +49,7 @@ FTP_SIH = "/dissemin/publicos/SIHSUS/200801_/Dados"
 TABNET = "http://tabnet.datasus.gov.br/cgi"
 BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
                   "monitor_saude.json")
+PAUSA = 2  # segundos entre pedidos ao mesmo servidor (§11); o Crawl-delay, quando houver, é da porta comum
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
 
 # ---------------------------------------------------------------------------------------------
@@ -224,6 +226,7 @@ def ler_dbc(bruto: bytes, colunas=None):
 # ---------------------------------------------------------------------------------------------
 def _ftp():
     from coletores_base import UA
+    time.sleep(PAUSA)
     f = ftplib.FTP(FTP_HOST, timeout=60)
     # FTP anônimo não tem User-Agent: a identificação vai na senha anônima, como manda o costume.
     f.login("anonymous", re.sub(r"[^\x20-\x7e]", "", UA)[:120])
@@ -297,23 +300,24 @@ def _tabnet_celula(uf: str, aamm: str) -> str:
     """Pede ao TabNet a tabela 'internações por ano/mês de competência' da UF, só o arquivo do
     mês. O formulário é lido da própria página (nomes de campo e opções), nunca adivinhado."""
     import urllib.parse
-    from coletores_base import buscar_uma_vez, ua_de
+    from coletores_base import buscar_uma_vez, detectar_muro_de_robo, ua_de
     import urllib.request
     defn = f"sih/cnv/nr{uf.lower()}.def"
     form = buscar_uma_vez(f"{TABNET}/deftohtm.exe?{defn}", timeout=60).decode("latin-1", "replace")
-    campos = []
+    campos, visto = [], {}
     for nome, corpo in re.findall(r'<select[^>]*name="?([^"\s>]+)"?[^>]*>(.*?)</select>', form, re.S | re.I):
         opcoes = re.findall(r'<option[^>]*value="([^"]*)"[^>]*>([^<]*)', corpo, re.I)
         sel = [v for v, _ in re.findall(r'<option[^>]*selected[^>]*value="([^"]*)"()', corpo, re.I)]
         rot = {v: t.strip() for v, t in opcoes}
+        visto[nome] = list(rot.values())
         if nome == "Linha":
-            esc = [v for v, t in rot.items() if "compet" in t.lower()][:1]
+            esc = [v for v, t in rot.items() if "compet" in t.lower() or t.lower().startswith("ano")][:1]
         elif nome == "Coluna":
             esc = [v for v, t in rot.items() if "ativa" in t.lower()][:1]
         elif nome == "Incremento":
             esc = [v for v, t in rot.items() if t.lower().startswith("interna")][:1]
         elif nome == "Arquivos":
-            esc = [v for v in rot if aamm in v][:1]
+            esc = [v for v in rot if aamm in v][:1] or list(rot)[:1]  # TabNet pode estar atrás do FTP
         else:
             esc = sel or [v for v in rot if "TODAS" in v.upper()][:1]
         campos += [(nome, v) for v in esc]
@@ -323,11 +327,18 @@ def _tabnet_celula(uf: str, aamm: str) -> str:
     req = urllib.request.Request(f"{TABNET}/tabcgi.exe?{defn}", data=corpo,
                                  headers={"User-Agent": ua_de("sondagem SIH"),
                                           "Content-Type": "application/x-www-form-urlencoded"})
+    time.sleep(PAUSA)
     with urllib.request.urlopen(req, timeout=90) as r:
-        html = r.read().decode("latin-1", "replace")
-    linhas = re.findall(r"<tr[^>]*>(.*?)</tr>", html, re.S | re.I)
-    celulas = [" | ".join(re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", ln, re.S | re.I)) for ln in linhas]
-    return f"campos={[(n, v) for n, v in campos if n in ('Linha', 'Coluna', 'Incremento', 'Arquivos')]}; " + " || ".join(celulas[:8])
+        bruto = r.read()
+    muro = detectar_muro_de_robo(bruto)
+    if muro:  # recusa servida com 200 é recusa: não se lê como tabela
+        raise RuntimeError(f"TabNet: muro de robô ({muro})")
+    html = bruto.decode("latin-1", "replace")
+    texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(script|style).*?</\1>", "", html)))
+    arq = visto.get("Arquivos", [])
+    return (f"campos={[(n, v) for n, v in campos if n in ('Linha', 'Coluna', 'Incremento', 'Arquivos')]}; "
+            f"Linha={visto.get('Linha', [])[:12]}; Arquivos={arq[:2]}…{arq[-1:]} ({len(arq)}); "
+            f"resposta {len(bruto)} bytes: {texto[:900]}")
 
 
 def sondar(uf: str = "AC", aamm: str | None = None) -> int:

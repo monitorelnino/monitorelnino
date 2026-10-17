@@ -11,7 +11,7 @@ outra perna que a decisão de 29/09/2026 pediu: óbito com causa. Duas rotas a m
   codificada; serve de sinal se a API responder por causa sem chave (HANDOVER_SUS_DESFECHOS §2.5).
 - OpenDataSUS: o que o portal publica do SIM, com a data de cada recurso.
 
-`--sondar` só mede e imprime; nada vai a `data/` até a estrutura comum da E1 estar na `main`.
+`--sondar` só mede e imprime (o rastro de robots é o da porta comum); nenhuma série vai a `data/` até a estrutura comum da E1 estar na `main`.
 
 TRAVAS: estrutural (nunca escreve em estados/saude_uf/municipios/indice/monitor_saude; o autoteste
 lê o fonte); de campo (não produz pista nem registro promovível); de processo (a sondagem não grava).
@@ -32,7 +32,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "scripts"))
 
-from coletar_sih import UFS, baixar_ftp, ler_dbc, listar_ftp  # noqa: E402
+from coletar_sih import PAUSA, UFS, baixar_ftp, ler_dbc, listar_ftp  # noqa: E402
 from coletar_obitos_registro_civil import API as API_REGISTRO  # noqa: E402
 
 BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
@@ -44,6 +44,7 @@ REGISTRO = "https://transparencia.registrocivil.org.br"
 # Rotas do painel por causa a sondar (não adivinhadas: as que o JavaScript do painel declara são
 # impressas antes, e só estas duas, do painel especial público, são pedidas diretamente).
 ROTAS_CAUSA = ("/api/covid-covid-registral", "/api/covid-cardiaco")
+GRAFICOS = ("chart1", "chart2", "chart3", "chart4")
 
 
 def ultimo_ano_por_uf(itens: list) -> dict:
@@ -72,7 +73,11 @@ def rotas_api_no_js(js: str) -> list:
 
 
 def sondar(uf: str = "AC") -> int:
-    from coletores_base import buscar_uma_vez
+    from coletores_base import buscar_uma_vez as _uma_vez
+
+    def buscar_uma_vez(url, timeout=60):  # pausa de §11 entre pedidos; o resto é a porta comum
+        time.sleep(PAUSA)
+        return _uma_vez(url, timeout=timeout)
     for rotulo, d in FTP_SIM.items():
         try:
             itens = listar_ftp(d)
@@ -94,7 +99,11 @@ def sondar(uf: str = "AC") -> int:
                 print(f"[obitos] {nome}: falhou ({type(e).__name__}: {str(e)[:200]})")
     for q in ("SIM", "mortalidade"):
         try:
-            r = json.loads(buscar_uma_vez(f"{CKAN}?q={q}&rows=15", timeout=60))
+            b = buscar_uma_vez(f"{CKAN}?q={q}&rows=15", timeout=60)
+            if not b.lstrip().startswith(b"{"):
+                print(f"[obitos] OpenDataSUS q={q}: não é JSON ({len(b)} bytes): {b[:300]!r}")
+                continue
+            r = json.loads(b)
             for p in r.get("result", {}).get("results", []):
                 recs = [(x.get("name"), x.get("url"), x.get("last_modified") or x.get("created"))
                         for x in p.get("resources", [])][-6:]
@@ -107,7 +116,9 @@ def sondar(uf: str = "AC") -> int:
         print(f"[obitos] Registro Civil base: falhou ({type(e).__name__}: {str(e)[:160]})")
     try:
         html = buscar_uma_vez(REGISTRO + "/especial-covid", timeout=60).decode("utf-8", "replace")
-        for src in re.findall(r'src="([^"]+\.js)"', html)[:8]:
+        print(f"[obitos] Registro Civil página: rotas no HTML {rotas_api_no_js(html)[:20]}; scripts "
+              f"{re.findall(r'src=.([^\"\' >]+)', html)[:12]}")
+        for src in re.findall(r'src="([^"]+\.js[^"]*)"', html)[:8]:
             url = src if src.startswith("http") else REGISTRO + "/" + src.lstrip("/")
             try:
                 rotas = rotas_api_no_js(buscar_uma_vez(url, timeout=60).decode("utf-8", "replace"))
@@ -117,12 +128,13 @@ def sondar(uf: str = "AC") -> int:
     except Exception as e:  # noqa: BLE001
         print(f"[obitos] Registro Civil página: falhou ({type(e).__name__}: {str(e)[:160]})")
     for rota in ROTAS_CAUSA:
-        url = (f"{REGISTRO}{rota}?start_date=2026-09-01&end_date=2026-09-30&state=Todos&city_id=Todos"
-               "&chart=chart5&places[]=HOSPITAL&places[]=DOMICILIO&places[]=VIA_PUBLICA&places[]=OUTROS")
-        try:
-            print(f"[obitos] Registro Civil {rota}: {buscar_uma_vez(url, timeout=60)[:600]!r}")
-        except Exception as e:  # noqa: BLE001
-            print(f"[obitos] Registro Civil {rota}: falhou ({type(e).__name__}: {str(e)[:200]})")
+        for g in GRAFICOS:
+            url = (f"{REGISTRO}{rota}?start_date=2026-09-01&end_date=2026-09-30&state=CE&city_id=Todos"
+                   f"&chart={g}&places[]=HOSPITAL&places[]=DOMICILIO&places[]=VIA_PUBLICA&places[]=OUTROS")
+            try:
+                print(f"[obitos] Registro Civil {rota} {g}: {buscar_uma_vez(url, timeout=60)[:500]!r}")
+            except Exception as e:  # noqa: BLE001
+                print(f"[obitos] Registro Civil {rota} {g}: falhou ({type(e).__name__}: {str(e)[:200]})")
     return 0
 
 

@@ -30,7 +30,7 @@ jobs:
       timeout_minutos: 45
       comandos: |
         scripts/coletar_sih.py --sondar --uf AC
-        scripts/coletar_sih.py --sondar --uf CE
+        scripts/coletar_sih.py --sondar --uf CE --aamm 2607
         scripts/coletar_obitos.py --sondar --uf AC
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
