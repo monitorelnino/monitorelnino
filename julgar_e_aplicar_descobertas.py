@@ -634,7 +634,8 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
         "fonte": f"classificado automaticamente ({hoje}) a partir de {url}",
         "url": url, "lat": municipio["lat"], "lon": municipio["lon"], "canal": "imprensa",
     })
-    gravar_em(atos_path, atos)
+    from coletores_base import carimbar_atos   # a porta do carimbo e do tipo de evento (17/10/2026)
+    gravar_em(atos_path, carimbar_atos(atos))
     return True, "aplicado"
 
 
@@ -948,6 +949,7 @@ def self_test():
     assert aplicar_resposta("PB", "", None, "2026", "u", "15/10/2026")[0] is False, \
         "ato sem data completa não entra no mapa (ano solto barrou a publicação em 15/10)"
     import inspect as _i2
+    assert "carimbar_atos(atos)" in _i2.getsource(aplicar_resposta), "ato sem tipo de evento nem carimbo"
     assert '"url": url' in _i2.getsource(aplicar_resposta), (
         "o evento de resposta leva a URL da fonte: verificar_resposta.py (g) exige url ou hash")
     ordem = sorted([{"data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT"},
