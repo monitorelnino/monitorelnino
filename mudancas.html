@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Desfechos do SUS: arquivo comum e leitor `.dbc`</dt>
+      <dd>Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.</dd>
       <dt>17/10/2026 · Consulta do município diz se ele está na rede do Cemaden</dt>
       <dd>`riscos_municipio/&lt;UF&gt;.json` ganha `rede_cemaden` por município, lido da lista oficial do Cemaden (dois PDFs, 1.038 + 95 municípios, publicada em 26/03/2024, data declarada na origem). Nome que não casa com o IBGE fica listado, nunca adivinhado (6 de 1.131 no executor). Sem resposta da fonte, o campo não vai e a origem diz por quê. Proteja-se §4.</dd>
       <dt>17/10/2026 · A válvula de dia abre o próprio PR de dado</dt>
@@ -165,8 +167,6 @@
       <dd>O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo &quot;Imprensa:&quot;. Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.</dd>
       <dt>16/10/2026 · Relógio e despachante com checkout esparso (F63)</dt>
       <dd>O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.</dd>
-      <dt>16/10/2026 · Juiz de saúde interrompido não avança o corte</dt>
-      <dd>`julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).</dd>
     </dl>
   </section>
 </main>

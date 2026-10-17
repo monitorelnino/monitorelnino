@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #PRNUM · Desfechos do SUS: arquivo comum e leitor `.dbc`
+## 2026-10-17 · #829 · Desfechos do SUS: arquivo comum e leitor `.dbc`
 Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.
 
 ## 2026-10-17 · #824 · Consulta do município diz se ele está na rede do Cemaden
