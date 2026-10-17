@@ -789,6 +789,8 @@ def _autoteste() -> int:
        and busca_de_declaracao("PB", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}}, {})
        == {"consultado_em": "02/10/2026", "edicoes_lidas": 1})
     ok("UF sem rota é lacuna da metade estadual", "lacuna" in busca_de_declaracao("XX", {}, {}))
+    ok("edição que o padrão não alcança (extraordinária de RO) deixa a metade em lacuna, com o que foi lido",
+       "fora da leitura" in busca_de_declaracao("RO", {"edicoes": {"d": dict(lida, termos_versao=VERSAO_DOS_TERMOS)}}, {})["lacuna"])
 
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escritas = [l.strip() for l in fonte.splitlines() if l.strip().startswith("gravar(")]
