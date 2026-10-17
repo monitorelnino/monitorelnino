@@ -78,35 +78,28 @@ def posta_json(url, corpo_json):
 
 if __name__ == "__main__":
     print("=== RN ===")
-    for u in ("https://webdisk.diariooficial.rn.gov.br/Jornal/12026-09-10.pdf", "https://webdisk.diariooficial.rn.gov.br/Jornal/12026-09-28E.pdf"):
-        corpo(u)
+    corpo("https://webdisk.diariooficial.rn.gov.br/Jornal/12026-07-01.pdf")
+    corpo("https://webdisk.diariooficial.rn.gov.br/Jornal/22026-09-10.pdf")
     print("=== RR ===")
-    corpo("https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=09", 600)
+    ctx("https://www.imprensaoficial.rr.gov.br/_visualizar-mes/?ano=2026&mes=09", r"\.pdf|_visualizar-doe/\?[^\"']+|onclick=\"[^\"]+\"", 120, 12)
+    corpo("https://www.imprensaoficial.rr.gov.br/_buscar/?termos=emerg%C3%AAncia+em+sa%C3%BAde+p%C3%BAblica&ano_pesquisa=2026&mes_pesquisa=09", 1500)
     print("=== RJ ===")
     ctx("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ==",
-        r"<option[^>]*>|\.pdf|DEFAULT_URL|file=|MudaEdicao", 200, 20)
-    print("=== AL ===")
-    corpo("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published/2026/9", 800)
-    corpo("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51925")
-    posta_json("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/searchES?page=1&bucket_size=10",
-               {"keywords": "emergência em saúde pública", "range": ["2026-06-29", "2026-10-17"],
-                "searchType": "frase_exata", "order": "novo"})
+        r"function MudaEdicao[^}]*\}|PDFView[^;]*;|\.pdf[^\"']*|DEFAULT_URL\s*=[^;]*;|pdf\.php[^\"']*", 200, 12)
     print("=== RS ===")
-    corpo("https://www.diariooficial.rs.gov.br/assets/config.json", 600)
-    corpo("https://www.diariooficial.rs.gov.br/assets/config/config.json", 600)
+    b = corpo("https://www.diariooficial.rs.gov.br/environments/environment.json", 800)
+    if b:
+        import json as _j
+        rest = _j.loads(b.decode("utf-8", "replace")).get("restEndPoint", "")
+        if rest:
+            corpo(rest + "public/diarios/lista?tipoDiario=DOE", 1200)
+            corpo(rest + "public/materias/?page=1&tipoDiario=DOE&texto=emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica", 1200)
     for s in scripts("https://www.diariooficial.rs.gov.br/"):
         if "main-" in s:
-            ctx(s, r"getRestEndpoint\(\)\{[^}]*\}|restEndpoint[^,;]{0,120}", 160, 8)
+            ctx(s, r"consultar\(Q,U,B=2\)\{[^}]*\}|pesquisa\(Q\)\{[^}]{0,600}", 40, 4)
     print("=== MG ===")
     for s in scripts("https://www.jornalminasgerais.mg.gov.br/"):
         if "main-" in s:
-            ctx(s, r"\.API\s*\+\s*[\"'`][^\"'`]+[\"'`]|\$\{[A-Za-z.]*API\}[^`]*`", 60, 40)
+            ctx(s, r"[\"'`](?:[A-Z][A-Za-z]+/)+[A-Za-z]+[\"'`?]", 40, 40)
     print("=== SC ===")
-    for s in scripts("https://portal.doe.sea.sc.gov.br/v2.44.07/"):
-        if "main." in s:
-            ctx(s, r"restPrefix\+\"/[^\"]*(?:ornal|dicao|ublica|aterias|portal)[^\"]*\"", 120, 25)
-    print("=== MA ===")
-    corpo("https://www.diariooficial.ma.gov.br/", 400)
-    print("=== BA ===")
-    corpo("http://www.legislabahia.ba.gov.br/", 600)
-    corpo("https://dool.egba.ba.gov.br/", 300)
+    corpo("https://portal.doe.sea.sc.gov.br/apis/jornal/?page=1&perPage=5", 1500)
