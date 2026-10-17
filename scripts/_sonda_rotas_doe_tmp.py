@@ -77,21 +77,8 @@ def posta_json(url, corpo_json):
 
 
 if __name__ == "__main__":
-    RJ = "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ=="
-    print("=== RJ ===")
-    ctx(RJ, r"PDFView\.open|PDFJS\.|\.open\(|DEFAULT_URL|file\s*=|url\s*=|\.pdf", 250, 12)
-    ctx("https://www.ioerj.com.br/portal/modules/conteudoonline/include/pdfjs/web/viewer-min.js", r"DEFAULT_URL|session|mostra_edicao|\.php", 200, 10)
-    print("=== RS ===")
-    for s in scripts("https://www.diariooficial.rs.gov.br/"):
-        if "main-" in s:
-            ctx(s, r"getDoeEndpoint\(\)[^;]{0,200}", 200, 6)
-    print("=== BA ===")
-    for u in ("https://dool.egba.ba.gov.br/dool/", "http://www.egba.ba.gov.br/diario/", "https://www.ba.gov.br/egba/diario-oficial"):
-        corpo(u, 400)
-    print("=== LEGISLACAO ===")
-    for u in ("https://legis.alepe.pe.gov.br/", "https://dadosabertos.almg.gov.br/ws/legislacao/pesquisa/avancada?tipo=DEC&ano=2026&expressao=emerg%C3%AAncia&formato=json",
-              "https://www.almg.gov.br/legislacao-mineira/", "http://alerjln1.alerj.rj.gov.br/decest.nsf", "https://www.al.rs.gov.br/legis/",
-              "https://al.se.leg.br/", "https://www.al.ma.leg.br/", "https://legislacao.pe.gov.br/"):
-        corpo(u, 500)
+    print("=== RJ ALERJ ===")
+    corpo("http://alerjln1.alerj.rj.gov.br/decest.nsf/decretoestadual?OpenView&Start=1&Count=15", 2500)
+    corpo("http://alerjln1.alerj.rj.gov.br/decest.nsf/decretoestadual?SearchView&Query=%22emerg%C3%AAncia%20em%20sa%C3%BAde%22&SearchOrder=4&Count=20", 2500)
     print("=== MA ===")
     corpo("https://www.diariooficial.ma.gov.br/", 300)
