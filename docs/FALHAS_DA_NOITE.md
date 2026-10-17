@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-16. 68 falhas; 62 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 70 falhas; 64 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -617,3 +617,21 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do run 38813432942 (coleta-dia/2026-10-15-saude-estadual): 16 URLError seguidas em editor.amapa.gov.br; fila de 16/10: 44 pistas pendentes e 16 recusadas por URLError no mesmo host
 - **Correção:** Host sem resposta de rede sai do resto da rodada; falha de rede é pendente (sem veredito, volta na rodada seguinte), HTTP continua recusa; veredito antigo de queda de rede volta à fila; o corte só avança sem pendente.
 - **Caso de teste:** `julgar_saude.py --autoteste (três casos F68)`
+
+## F70 · Juiz commitou na main às 09:24 UTC, fora da janela da noite
+
+- **Noite:** 2026-10-16→2026-10-17
+- **Sintoma:** commit 'juiz automático (17/10/2026 09:24 UTC)' na main; o elo disparado às 07:58 commitou 24 min depois do fim da janela.
+- **Causa:** O prazo da coleta era só teto do job menos margem; a guarda da janela olha só o início do elo. Elo de 90 min disparado perto das 08:00 passa das 09:00.
+- **Prova:** painel_da_noite: juiz 2026-10-17 07:58→08:47 e commit às 09:24 (rebase-e-push); 15/10: juiz 08:41→09:09
+- **Correção:** Na main, o prazo da coleta de todo elo termina no fim da janela menos a margem (`janela_da_noite.py --fim-da-janela`); o que sobra fica para a noite seguinte.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fila_maior_que_o_prazo`
+
+## F71 · Fila de pistas passou de 50 MB: URL gravada duas vezes em cada pista verificada
+
+- **Noite:** 2026-10-16→2026-10-17
+- **Sintoma:** main vermelha desde 09:24 (run 39021011449): data/pistas_imprensa.json com 50,1 MB, acima do teto do portão de tamanho.
+- **Causa:** verificar_pista_imprensa.py gravava em verificacao_fonte.url a mesma URL da pista (19.954 de 19.978), 5,8 MB que ninguém lia.
+- **Prova:** grep: verificacao_fonte.url sem leitor em .py/.js/.html; #815: 50,1 → 44,2 MB sem apagar pista
+- **Correção:** O verificador não grava mais a cópia; as cópias iguais saíram do dado (#815). O crescimento de ~2 MB/noite da fila segue a tratar.
+- **Caso de teste:** `scripts/verificar_tamanho_dos_dados.py`
