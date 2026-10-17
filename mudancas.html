@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
+      <dt>17/10/2026 · Para gestores: consulta do município, o que a lei exige, recursos em cartões</dt>
+      <dd>A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. &quot;O que a lei exige de cada governo&quot; vira três cartões de número, as listas perdem a caixa de marcar e &quot;Como os recursos chegam&quot; ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.</dd>
       <dt>17/10/2026 · Defesa civil: evento declarado por município</dt>
       <dd>`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como &quot;outro declarado&quot; (380 atos passam a &quot;sem tipo informado&quot;). Soma por família = 1.202 atos casados. Metodologia §32.5.</dd>
       <dt>17/10/2026 · Desfechos do SUS: arquivo comum e leitor `.dbc`</dt>
@@ -165,8 +167,6 @@
       <dd>Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), &quot;Como ler&quot; e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue &quot;Monitor&quot; (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.</dd>
       <dt>16/10/2026 · Cadastro Nacional: o MARÉ cobre os indicados pela União</dt>
       <dd>A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.</dd>
-      <dt>16/10/2026 · Todo texto público no catálogo, com portão</dt>
-      <dd>O portão do catálogo passa a reprovar texto público do `&lt;main&gt;` sem identificador (título, parágrafo, item, legenda, resumo), pela mesma regra do migrador; fora só formulário, diálogo, `noscript` e navegação (`layout/regras.json`). O migrador passa a levar texto com marcação e a não sobrescrever identificador existente. 138 trechos de dez páginas migrados sem mudar uma letra.</dd>
     </dl>
   </section>
 </main>
