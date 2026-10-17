@@ -98,9 +98,15 @@ def serie_existe(chave: str) -> bool:
     tem de calcular."""
     if not chave:
         return False
-    for alvo in (DADOS / chave, DADOS / "saude_desfechos" / chave):
+    # 17/10/2026: `arquivo.json#campo.sub` — o arquivo existir não prova que o campo foi coletado
+    # (zero ≠ não coletado): com caminho, a série existe só se o campo não for nulo.
+    arquivo, _, campo = chave.partition("#")
+    for alvo in (DADOS / arquivo, DADOS / "saude_desfechos" / arquivo):
         if alvo.exists():
-            return True
+            v = json.loads(alvo.read_text(encoding="utf-8")) if campo else True
+            for k in campo.split(".") if campo else ():
+                v = v.get(k) if isinstance(v, dict) else None
+            return v is not None
     return False
 
 
