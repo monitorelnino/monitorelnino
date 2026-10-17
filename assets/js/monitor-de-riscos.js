@@ -1159,18 +1159,13 @@ creditoPacifico('boxEpisodios');
    escolher o estado. Uma tabela, uma linha por sinal, cada uma com a fonte e a data; o que é do estado
    diz que é do estado; ausência no arquivo é dita como ausência, nunca como zero. */
 (function consultaMunicipio(){
-  const selUF = document.getElementById('consultaUF'), inp = document.getElementById('consultaMun');
-  const lista = document.getElementById('consultaLista'), card = document.getElementById('consultaCard');
-  if (!selUF || !inp || !card) return;
-  selUF.insertAdjacentHTML('beforeend', UFS.map(uf => '<option value="' + uf + '">' + esc(nomeUF(uf)) + '</option>').join(''));
-  const cache = {};
-  let dados = null;
+  const cache = {}, porUF = {};
   const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th> <td>' + valor + '</td> <td class="dica-fonte">' + esc(fonte) + '</td></tr>';
   const NOMES = {estiagem: 'seca', incendios: 'fogo', chuvas: 'chuva forte', calor: 'calor'};
   const SECA_NOME = {'sem seca': 'sem seca em metade ou mais da área', S0: 'seca fraca', S1: 'seca moderada', S2: 'seca grave', S3: 'seca extrema', S4: 'seca excepcional'};
   const hora = v => { const m = /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(String(v || '')); return m ? m[3] + '/' + m[2] + ' ' + m[4] + ':' + m[5] : ''; };
-  function mostrar(cod){
-    const uf = selUF.value, m = dados.municipios[cod], o = dados.origens || {};
+  function mostrar(uf, nome, card){
+    const dados = porUF[uf], m = Object.values(dados.municipios).find(x => x.nome === nome), o = dados.origens || {};
     const f = id => { const x = fonteDe(id); return (x.orgao || '') + (x.consultado_em ? ' · ' + x.consultado_em : ''); };
     const r = componentesDe(uf), sc = (SINAIS.uf[uf] || {}).secas;
     const est = m.ar_estacao && dados.estacoes[m.ar_estacao.indice], sen = m.ar_sensor && dados.sensores[m.ar_sensor.indice];
@@ -1193,22 +1188,12 @@ creditoPacifico('boxEpisodios');
       + linha('Situação de emergência desde 29/06/2026', dec.length ? dec.map(d => esc(d.data) + ' · ' + (d.url ? '<a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.decreto) + '</a>' : esc(d.decreto))).join('<br>') : 'não localizamos até o corte', 'DOU e diários oficiais' + ((o.decretos || {}).atualizado_em ? ' · ' + o.decretos.atualizado_em : ''))
       + linha('Plano de contingência', '<a href="index.html#' + esc(uf) + '">Ver a situação na ficha do estado, na página inicial →</a>', 'MARÉ Legal')
       + '</tbody></table></div>';
-    card.hidden = false;
   }
-  selUF.addEventListener('change', async () => {
-    const uf = selUF.value; card.hidden = true; inp.value = ''; lista.innerHTML = ''; inp.disabled = true; dados = null;
-    if (!uf) return;
-    dados = cache[uf] = cache[uf] || await fetch('data/riscos_municipio/' + uf + '.json').then(r => r.ok ? r.json() : null).catch(() => null);
-    if (!dados) { card.innerHTML = '<p class="lacuna">Consulta do estado: sem coleta até o corte.</p>'; card.hidden = false; return; }
-    lista.innerHTML = Object.values(dados.municipios).map(m => '<option value="' + esc(m.nome) + '">').join('');
-    inp.disabled = false; inp.focus();
-  });
-  inp.addEventListener('input', () => {
-    if (!dados) return;
-    const alvo = inp.value.trim().toLowerCase();
-    const cod = Object.keys(dados.municipios).find(c => dados.municipios[c].nome.toLowerCase() === alvo);
-    if (cod) mostrar(cod);
-  });
+  ConsultaMunicipio.montar({uf: 'consultaUF', municipio: 'consultaMun', lista: 'consultaLista', cartao: 'consultaCard',
+    estados: Object.fromEntries(UFS.map(uf => [uf, nomeUF(uf)])), mostrar,
+    semLista: 'Consulta do estado: sem coleta até o corte.',
+    municipios: uf => (cache[uf] = cache[uf] || fetch('data/riscos_municipio/' + uf + '.json').then(r => r.ok ? r.json() : null).catch(() => null))
+      .then(d => (porUF[uf] = d) && Object.values(d.municipios).map(x => x.nome))});
 })();
 }
 __load();
