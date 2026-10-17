@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas</dt>
+      <dd>`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.</dd>
       <dt>17/10/2026 · Para gestores: consulta do município, o que a lei exige, recursos em cartões</dt>
       <dd>A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. &quot;O que a lei exige de cada governo&quot; vira três cartões de número, as listas perdem a caixa de marcar e &quot;Como os recursos chegam&quot; ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.</dd>
       <dt>17/10/2026 · Defesa civil: evento declarado por município</dt>
@@ -165,8 +167,6 @@
       <dd>`verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.</dd>
       <dt>16/10/2026 · Inicial com os textos da editoria</dt>
       <dd>Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), &quot;Como ler&quot; e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue &quot;Monitor&quot; (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.</dd>
-      <dt>16/10/2026 · Cadastro Nacional: o MARÉ cobre os indicados pela União</dt>
-      <dd>A página do MIDR (28/07/2026) publica os 2.095 municípios indicados pela União ao Cadastro Nacional do art. 3º-A — a lista que o MARÉ já lia das notas técnicas — e entra no coletor como segunda fonte. Nova seção §107 e erratas em §54, §66 e §21; o portão passa a proibir afirmar inscrição ou dever. §5.3.1 explica como o município compõe a nota.</dd>
     </dl>
   </section>
 </main>
