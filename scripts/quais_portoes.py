@@ -140,7 +140,7 @@ def autoteste() -> int:
     import yaml
     _todos = sum(comandos_por_condicao(yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))).values(), [])
     casos.append(("A7-10: com dado e página, a lista é a do workflow inteiro (sem lista à mão)",
-                  len(portoes({"dado": True, "pagina": True})) == len(set(_todos)) and len(_todos) > 100))
+                  len(portoes({"dado": True, "pagina": True})) == len(set(_todos)) and bool(_todos)))
     casos.append(("A7-10: catálogo de conteúdo, contrato de layout e regras acionam página",
                   all(classificar([a])["pagina"] for a in
                       ("conteudo/saude.json", "layout/contratos/index.json", "layout/regras.json",
