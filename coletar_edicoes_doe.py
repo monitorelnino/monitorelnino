@@ -124,6 +124,10 @@ PADROES = {
     # página inicial lista também DOE-EXTRAORDINARIO-<data> e <data>-SUPLEMENTAR-<n>, fora do padrão.
     "RO": {"padrao": "https://diof.ro.gov.br/data/uploads/{ano}/{mm}/DOE-{dd}-{mm}-{ano}.pdf",
            "nota": "padrão por data da edição ordinária, medido do runner em 17/10/2026"},
+    # 17/10/2026 (runs 39023131710 e 39023721853): 01/07 (52 p.) e 10/09/2026 (43 p.) abrem por data, com
+    # texto. A edição extra sai como <data>E.pdf, fora do padrão.
+    "RN": {"padrao": "https://webdisk.diariooficial.rn.gov.br/Jornal/1{ano}-{mm}-{dd}.pdf",
+           "nota": "padrão por data da edição ordinária, medido do runner em 17/10/2026"},
 }
 
 

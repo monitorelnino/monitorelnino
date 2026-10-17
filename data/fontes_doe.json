@@ -382,8 +382,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "jornalminasgerais.mg.gov.br é SPA Angular; a API declarada no bundle (`/api/v1/`) responde 404 em toda rota tentada (raiz, edicoes, publicacoes); endpoints reais a ler no bundle",
-   "medido_em": "15/10/2026"
+   "motivo": "a API do Jornal Minas Gerais (www.jornalminasgerais.mg.gov.br/api/v1/: Jornal/ObterEdicaoPorDataPublicacao, Caderno/ObterArquivoCadernoPorId) responde HTTP 401 sem token; o sítio obtém token de sessão em Autenticacao/Autenticar — rota atrás de token, não se usa (runs 39019929474 e 39023721853)",
+   "medido_em": "17/10/2026"
   },
   "RJ": {
    "adaptador": null,
@@ -433,8 +433,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "diariooficial.rs.gov.br é SPA Angular (PROCERGS) que serve a mesma casca em toda rota; nenhuma URL de API no bundle (7,7 MB)",
-   "medido_em": "15/10/2026"
+   "motivo": "o sítio lê a API doe-backend.pro.rs.gov.br (public/diarios/consultar?tipoDiario=DOE&data=..., public/materias/?queryString=...), declarada em environments/environment.json; o host não responde ao runner (timeout, run 39023721853) — rota conhecida, sem resposta, não é recusa",
+   "medido_em": "17/10/2026"
   },
   "SC": {
    "adaptador": null,
