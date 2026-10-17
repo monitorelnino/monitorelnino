@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #831 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo
+
+`julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.
+
 ## 2026-10-17 · #838 · Saúde: risco previsto em etiquetas de sigla; grade dos estados com uma barra
 
 Na seção dos estados, o mapa de risco previsto vira etiquetas de sigla por família, o mesmo componente do Monitor de riscos (agora em `MonitorMapas.faixaPrevista`, sem cópia). A legenda do mapa do MARÉ Saúde mostra o intervalo de cada faixa, lido do dado. Os cartões dos 27 estados ficam com uma barra só. Números do topo: `.grade-numeros--compacta` põe até seis numa linha (três no tablet, dois no celular), já no Monitor de riscos e na Saúde.
