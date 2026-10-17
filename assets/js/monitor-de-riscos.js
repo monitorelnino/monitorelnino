@@ -3,7 +3,7 @@
    Regra desta página: nenhum valor é calculado aqui. Tudo vem de
    data/sinais_risco.json, escrito por coletar_sinais_risco.py, com fonte,
    documento e data. Fonte não coletada vira lacuna declarada na tela. */
-let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
+let BR_GEOJSON, SINAIS, MARE, AVISOS, FOCOS, NORMAIS, FOGO_REF, SECAS_MANCHAS, AR, ENQ;   // NORMAIS: normais do Inmet, para o DESVIO do mapa de calor
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];
 const NEUTRA = MonitorMapas.cor('sem-dado');           // estado sem dado coletado
 
@@ -25,6 +25,7 @@ async function __load(){
   FOGO_REF = await fetch('data/focos_referencia.json').then(r => r.ok ? r.json() : null).catch(() => null);
   SECAS_MANCHAS = await fetch('data/secas_manchas.json').then(r => r.ok ? r.json() : null).catch(() => null);
   AR = await fetch('data/ar_medido.json').then(r => r.ok ? r.json() : null).catch(() => null);
+  ENQ = await fetch('data/enquadramento_card.json').then(r => r.ok ? r.json() : null).catch(() => null);
   window.__refMunicipios = await fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : []).catch(() => []);
   /* 07/10/2026: o CATÁLOGO antes do desenho. O texto do topo e dos dois gráficos do Pacífico vive
      em conteudo/monitor-de-riscos.json, e `assets/catalogo.js` o carrega por conta própria, em
@@ -615,6 +616,28 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   }
   creditoDe('boxCemaden', 'cemaden_alertas');
   const t = document.getElementById('tituloAvisos'); if (t && AVISOS) t.textContent = 'Avisos de tempo severo em vigor, ' + AVISOS.gerado_em;
+})();
+
+// ---- Listas federais de risco (17/10/2026, HANDOVER_DEFESA_CIVIL §6: vieram da Defesa civil) ----
+/* Quantos municípios de cada estado constam de cada lista, de `enquadramento_card.json` (as marcas
+   por código IBGE; o estado vem da referência do IBGE). Indicados pela União = cadastro de enxurradas
+   e inundações (`ch`) mais os indicados só por deslizamento (`geo`). Sem o arquivo, lacuna declarada. */
+(function listasFederais(){
+  const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
+  const fontes = (ENQ && ENQ.fontes) || {};
+  [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023'],
+   ['boxListaSemiarido', 'mapListaSemiarido', 'legListaSemiarido', v => v.sa, 'seca', 'Sudene, Resolução Condel nº 176/2024'],
+   ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente']].forEach(([caixa, svg, leg, consta, chave, fonte]) => {
+    const f = fontes[chave] || {};
+    if (!ENQ) {
+      MonitorMapas.legenda(leg, [{cor: NEUTRA, rotulo: 'sem coleta até o corte'}]);
+      return MonitorMapas.credito(caixa, {fontes: [fonte], data: null});
+    }
+    const porUF = Object.fromEntries(UFS.map(uf => [uf, 0]));
+    Object.entries(ENQ.municipios).forEach(([cod, v]) => { if (consta(v) && UF_DE[cod] in porUF) porUF[UF_DE[cod]] += 1; });
+    MonitorMapas.mapaDeContagem(__ctx(), svg, leg, porUF, 'município');
+    MonitorMapas.credito(caixa, {fontes: [fonte], url: f.url, data: MonitorMapas.dataBR(f.consultado_em)});
+  });
 })();
 
 // ===== O topo "Situação atual" (07/10/2026, handover "Monitor de riscos, parte 1") ==========

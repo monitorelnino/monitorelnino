@@ -151,6 +151,17 @@ def pendente(p: dict, hoje=None) -> bool:
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
 
+def restantes(ler, hoje=None) -> int:
+    """O que o elo do juiz deixou para a rodada seguinte: as filas do codebook e as pendentes de
+    documento não julgadas hoje. Maior que zero, o elo grava `.parcial` em vez de `.feito` e a
+    reserva o redispara na janela (fila reentrante, 17/10/2026). `ler(nome)` é injetado."""
+    from julgar_e_aplicar_descobertas import a_julgar_nesta_noite
+    hoje = hoje or _hoje_data()
+    n = sum(1 for f in FILAS for p in pistas_da_fila(ler(f) or {}) if pendente(p, hoje))
+    return n + sum(1 for p in (ler("pistas_imprensa.json") or {}).get("pistas") or []
+                   if a_julgar_nesta_noite(p, hoje.strftime("%d/%m/%Y")))
+
+
 def julgar_uma(p: dict, buscar, preservar=None) -> dict:
     """Julga uma pista e devolve o veredito, sem aplicar nada.
 
@@ -652,6 +663,14 @@ def autoteste() -> int:
         else:
             sys.modules["busca_dirigida_do_ato"] = _mod
 
+    import datetime as _dt
+    _filas = {"pistas_imprensa.json": {"pistas": [
+        {"status": "pista — na fila"}, {"status": "pista — x", "juiz": {"codebook": CODEBOOK_VERSAO}},
+        {"status": "pendente_confirmacao_documento"},
+        {"status": "pendente_confirmacao_documento", "julgamento_automatico": {"data": "17/10/2026"}}]}}
+    casos.append(("o restante conta fila do codebook e pendente de documento não julgada hoje",
+                  restantes(_filas.get, _dt.date(2026, 10, 17)) == 2))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -667,6 +686,10 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if "--restante" in sys.argv:
+        from coletores_base import ler
+        print(restantes(ler))
+        return 0
 
     aplicar = "--aplicar" in sys.argv
     # A busca dirigida custa rede e tempo; fica ligada por padrão (é o que a decisão das 17:20

@@ -1108,6 +1108,45 @@ def ensaio_busca_web_pelo_coletor(diz) -> bool:
     return ok and um_dono and primeiro.startswith("julgar_saude.py")
 
 
+def ensaio_fila_maior_que_o_prazo(diz) -> bool:
+    """28. Fila de três prazos: três rodadas, um `.feito`, zero perda (fila reentrante, 17/10/2026).
+
+    14→16/10: a fila de pistas dependia de uma sessão que esperava cada run e congelou dois dias.
+    Agora o elo grava `.parcial` enquanto sobra fila e a reserva o redispara. Reprova se a reserva
+    não redisparar com `.parcial`, se redisparar depois do `.feito`, se alguma pista se perder ou se
+    o juiz deixar de declarar o restante no `_coletor.yml`."""
+    import datetime as dt
+    import pathlib
+    import tempfile
+    from despachar_temporizadores import plano_da_reserva
+    from marcador_de_elo import marcar, trabalhou
+    raiz = pathlib.Path(__file__).resolve().parents[1]
+    fila, julgadas, rodadas, prazo, noite = list(range(30)), [], [], 10, "2026-10-18"
+    with tempfile.TemporaryDirectory() as t:
+        tp = pathlib.Path(t)
+        def gravar(c, texto):
+            (tp / c).parent.mkdir(parents=True, exist_ok=True)
+            (tp / c).write_text(texto, encoding="utf-8", newline="\n")
+        while len(rodadas) < 4:
+            julgadas += fila[:prazo]
+            fila = fila[prazo:]
+            marcar("juiz", noite, f"juiz · run {len(rodadas)}", len(fila), gravar)
+            rodadas.append({"createdAt": f"2026-10-18T0{3 + len(rodadas)}:00:00Z", "status": "completed",
+                            "conclusion": "success"})
+            feitos = {"evidencias"} | ({"juiz"} if trabalhou("juiz", noite, lambda c: (tp / c).is_file(), [])[0] else set())
+            if not plano_da_reserva({"noturno_juiz.yml": rodadas}, feitos, dt.datetime(2026, 10, 18, 6)):
+                break
+        marcadores = sorted(x.name for x in (tp / "data/noite" / noite).iterdir())
+    wf = (raiz / ".github/workflows/noturno_juiz.yml").read_text(encoding="utf-8")
+    col = (raiz / ".github/workflows/_coletor.yml").read_text(encoding="utf-8")
+    ok = (len(rodadas) == 3 and marcadores == ["juiz.feito", "juiz.parcial"]
+          and sorted(julgadas) == list(range(30)) and "restante: julgar_filas.py --restante" in wf
+          and "--marcar" in col and "--fim-da-janela" in col)
+    diz(f"  {'✓' if ok else '✗'} fila de três prazos: {len(rodadas)} rodadas, marcadores {marcadores}, "
+        f"{len(julgadas)}/30 julgadas; restante declarado no juiz e prazo dentro da janela")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1144,6 +1183,7 @@ ENSAIOS = (
     ("25. segunda falha do calor mantém a lacuna", ensaio_segunda_falha_do_calor_mantem_a_lacuna),
     ("26. o ensaio real fixa a noite e respeita a hora", ensaio_ensaio_real_fixa_a_noite),
     ("27. a busca web coleta pelo `_coletor.yml`", ensaio_busca_web_pelo_coletor),
+    ("28. fila maior que o prazo: três rodadas, um `.feito`", ensaio_fila_maior_que_o_prazo),
 )
 
 

@@ -34,7 +34,6 @@ const ler = p => JSON.parse(fs.readFileSync(path.join(raiz, p), "utf-8"));
 
 const ALERTAS = ler("data/alertas/vigentes.json");
 const DECRETADOS = ler("data/resposta/municipios_decretados.json");
-const CADASTRO = ler("data/cadastro_prioritarios_federal.json");
 const REF = ler("data/municipios_ibge_referencia.json");
 
 /* As contagens ESPERADAS saem do dado, e com a mesma regra que a página usa: ponto só existe onde
@@ -52,7 +51,6 @@ const N = {
   decretados: comCoord(decretados),
   reconhecidos: comCoord(reconhecidos),
   cruzados: comCoord(cruzados),
-  cadastro: comCoord(Object.keys(CADASTRO.municipios || {})),
 };
 
 
@@ -87,8 +85,7 @@ setTimeout(() => {
   };
 
   const territorios = id => (q(id) ? q(id).querySelectorAll("path.uf-path").length : -1);
-  const MAPAS = ["mapAlertas", "mapCemaden", "mapDecretosUF", "mapRiscoEnchente",
-                 "mapRiscoSemiarido", "mapRiscoFogo"];
+  const MAPAS = ["mapAlertas", "mapCemaden", "mapDecretosUF"];
   /* Com a coleta de alertas vencida, a seção do Cemaden não desenha — é a regra das 24 horas em
      `defesa-civil.js`, e o mapa ausente é a consequência correta dela. Os outros cinco continuam
      cobrados, porque não dependem de alerta. */
@@ -122,8 +119,6 @@ setTimeout(() => {
     teste(`lista do Cemaden declara ${N.cemaden} municípios`,
       contaDaLista("boxCemaden") === N.cemaden);
   }
-  teste(`lista do cadastro da Casa Civil declara ${N.cadastro} municípios`,
-    contaDaLista("boxRiscoEnchente") === N.cadastro);
 
   /* 04/10/2026 — A COLETA VENCIDA NÃO BLOQUEIA A PUBLICAÇÃO.
    *
@@ -209,7 +204,7 @@ setTimeout(() => {
   // ── harmonização dos mapas (padrão único) ─────────────────────────────────────────────────
   const mapasSvg = [...d.querySelectorAll('#conteudo svg[id^="map"]')].filter(s => s.querySelector("path"));
   teste(`padrão de mapas: ${mapasSvg.length} mapa(s) com as 27 siglas de UF`,
-    mapasSvg.length === mapasCobrados.length && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
+    mapasCobrados.every(id => mapasSvg.some(s => s.id === id)) && mapasSvg.every(s => s.querySelectorAll("g.siglas text").length === 27));
   const legendas = [...d.querySelectorAll(".map-legend")].filter(l => l.children.length);
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`,
     legendas.every(l => [...l.children].every(c => c.tagName === "SPAN"
@@ -241,21 +236,33 @@ setTimeout(() => {
     voltou.length === 0);
   if (voltou.length) console.log("      voltaram:", voltou.join(", "));
   /* "Cadastro Nacional" é o do art. 3º-A da Lei 12.340: a INSCRIÇÃO, voluntária, é que gera o dever
-     de plano. 16/10/2026 (METODOLOGIA §107): a lista desta página são os 2.095 INDICADOS pela União
-     ao Cadastro Nacional (página do MIDR, 28/07/2026); quem se inscreveu não tem fonte pública. A
-     página pode nomear o cadastro só como indicação da União; afirmar inscrição ou dever é afirmar
-     o que nenhuma fonte pública diz. */
-  const visivel = d.getElementById("conteudo").textContent;
-  const semIndicacao = [...visivel.matchAll(/Cadastro Nacional/gi)]
-    .filter(m => !/indicad[oa]s?\b[^.]{0,60}$/i.test(visivel.slice(Math.max(0, m.index - 70), m.index)));
-  teste('"Cadastro Nacional" só aparece como indicação da União',
-    semIndicacao.length === 0);
-  teste("a página não afirma inscrição no Cadastro Nacional nem dever de plano",
-    !/(inscrit[oa]s?|cadastrad[oa]s?)\b[^.]{0,40}Cadastro Nacional|t[êe]m o dever\b/i.test(visivel));
-  teste("o cadastro é nomeado pela fonte certa (Casa Civil)",
-    /suscet[íi]veis a enxurradas e inunda[çc][õo]es/i.test(visivel) && /Casa Civil/i.test(visivel));
+     de plano. 16/10/2026 (METODOLOGIA §107): a lista são os 2.095 INDICADOS pela União ao Cadastro
+     Nacional (página do MIDR, 28/07/2026); quem se inscreveu não tem fonte pública. A página pode
+     nomear o cadastro só como indicação da União; afirmar inscrição ou dever é afirmar o que nenhuma
+     fonte pública diz. 17/10/2026 (HANDOVER_DEFESA_CIVIL §6): as três listas federais foram para o
+     Monitor de riscos, e a regra vale nas duas páginas. */
+  const regraDoCadastro = (pagina, visivel) => {
+    const semIndicacao = [...visivel.matchAll(/Cadastro Nacional/gi)]
+      .filter(m => !/indicad[oa]s?\b[^.]{0,60}$/i.test(visivel.slice(Math.max(0, m.index - 70), m.index)));
+    teste(`${pagina}: "Cadastro Nacional" só aparece como indicação da União`, semIndicacao.length === 0);
+    teste(`${pagina}: não afirma inscrição no Cadastro Nacional nem dever de plano`,
+      !/(inscrit[oa]s?|cadastrad[oa]s?)\b[^.]{0,40}Cadastro Nacional|t[êe]m o dever\b/i.test(visivel));
+  };
+  regraDoCadastro("Defesa civil", d.getElementById("conteudo").textContent);
 
-  if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
-  console.log("\n✓ RUNTIME (Defesa civil) OK — todas as verificações passaram.");
-  process.exit(0);
+  const mr = renderizar("monitor-de-riscos.html", raiz);
+  setTimeout(() => {
+    const qm = id => mr.dom.window.document.getElementById(id);
+    teste("Monitor de riscos: zero erros de runtime", mr.erros.length === 0);
+    const LISTAS = ["mapListaIndicados", "mapListaSemiarido", "mapListaFogo"];
+    teste("Monitor de riscos: as três listas federais têm os 27 territórios, sem ponto por município",
+      LISTAS.every(id => qm(id) && qm(id).querySelectorAll("path.uf-path").length === 27 && !qm(id).querySelector("circle")));
+    const visivel = qm("conteudo").textContent;
+    regraDoCadastro("Monitor de riscos", visivel);
+    teste("Monitor de riscos: a lista de indicados é nomeada pelas fontes certas (MIDR e Casa Civil)",
+      /indicados pela União/i.test(visivel) && /MIDR e Casa Civil/.test(visivel));
+    if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
+    console.log("\n✓ RUNTIME (Defesa civil e listas federais do Monitor de riscos) OK — todas as verificações passaram.");
+    process.exit(0);
+  }, 900);
 }, 900);

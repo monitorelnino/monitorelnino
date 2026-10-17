@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-17. 69 falhas; 63 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 71 falhas; 65 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -626,3 +626,21 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** data/fontes_consultadas.json em 17/10: 5.571 com entrada desde 03/10; 5.380 com resposta real; log do run 38989629349 (abertura da noite 16→17, central 02:20 UTC)
 - **Correção:** pendentes_na_janela ignora a marca de motor mudo; o livro não perde histórico; a fila volta a ter os 191 municípios. Fila vazia com nada devido continua sendo trabalho feito (regra 3).
 - **Caso de teste:** `monitorar_busca_web.py --autoteste`
+
+## F70 · Juiz commitou na main às 09:24 UTC, fora da janela da noite
+
+- **Noite:** 2026-10-16→2026-10-17
+- **Sintoma:** commit 'juiz automático (17/10/2026 09:24 UTC)' na main; o elo disparado às 07:58 commitou 24 min depois do fim da janela.
+- **Causa:** O prazo da coleta era só teto do job menos margem; a guarda da janela olha só o início do elo. Elo de 90 min disparado perto das 08:00 passa das 09:00.
+- **Prova:** painel_da_noite: juiz 2026-10-17 07:58→08:47 e commit às 09:24 (rebase-e-push); 15/10: juiz 08:41→09:09
+- **Correção:** Na main, o prazo da coleta de todo elo termina no fim da janela menos a margem (`janela_da_noite.py --fim-da-janela`); o que sobra fica para a noite seguinte.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_fila_maior_que_o_prazo`
+
+## F71 · Fila de pistas passou de 50 MB: URL gravada duas vezes em cada pista verificada
+
+- **Noite:** 2026-10-16→2026-10-17
+- **Sintoma:** main vermelha desde 09:24 (run 39021011449): data/pistas_imprensa.json com 50,1 MB, acima do teto do portão de tamanho.
+- **Causa:** verificar_pista_imprensa.py gravava em verificacao_fonte.url a mesma URL da pista (19.954 de 19.978), 5,8 MB que ninguém lia.
+- **Prova:** grep: verificacao_fonte.url sem leitor em .py/.js/.html; #815: 50,1 → 44,2 MB sem apagar pista
+- **Correção:** O verificador não grava mais a cópia; as cópias iguais saíram do dado (#815). O crescimento de ~2 MB/noite da fila segue a tratar.
+- **Caso de teste:** `scripts/verificar_tamanho_dos_dados.py`
