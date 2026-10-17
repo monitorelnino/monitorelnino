@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-10 a 2026-10-17 (1005 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-10 a 2026-10-17 (1011 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -26,7 +26,7 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
 | `gerar_saude_municipio.py` | essencial | 2026-10-16 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-17 05:32 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-17 05:49 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-17 03:47 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
@@ -69,7 +69,7 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | `julgar_filas.py` | coletor | 2026-10-17 03:22 | 1464 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-16 20:40 | 3583 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-17 04:11 | 227 s | 20488 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-10-16 01:12 | 2 s | 0 | ok | — |
+| `monitorar_busca_web.py` | coletor | 2026-10-17 05:44 | 2 s | 0 | ok | — |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-17 03:51 | 628 s | 40 | ok | — |
 | `monitorar_imprensa_saude.py` | coletor | 2026-10-17 04:01 | 608 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-17 04:15 | 5 s | 6660 | ok | — |
