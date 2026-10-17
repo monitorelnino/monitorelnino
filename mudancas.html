@@ -167,8 +167,6 @@
       <dd>`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.</dd>
       <dt>16/10/2026 · Saúde: sai o texto vazado</dt>
       <dd>Saem da página de saúde &quot;Estado das fontes&quot;, &quot;Bateria estadual executada em&quot; e a versão &quot;v0.3&quot;; &quot;não relaciona casos ao El Niño&quot; fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.</dd>
-      <dt>16/10/2026 · DOE-PI por edição; RR com o motivo medido</dt>
-      <dd>`coletar_doe.py` ganha `edicao_pi`: a listagem do dia do diário atual do Piauí (`www.diario.pi.gov.br/doe/`, a mesma rota que a tabela do sítio chama) dá cada edição, suplementar incluído, e o PDF. RR segue `sem adaptador de busca`: o PDF só sai por POST numa rota que não responde ao runner.</dd>
     </dl>
   </section>
 </main>
