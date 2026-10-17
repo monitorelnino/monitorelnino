@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Defesa civil: evento declarado por município</dt>
+      <dd>`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como &quot;outro declarado&quot; (380 atos passam a &quot;sem tipo informado&quot;). Soma por família = 1.202 atos casados. Metodologia §32.5.</dd>
       <dt>17/10/2026 · Portões: 119 para 92 comandos</dt>
       <dd>O autoteste do layout roda dentro da conformidade; a Imprensa usa o medidor de página do layout. Os `testar_*.py` sem flag e catorze autotestes puros do bloco &quot;sempre&quot; passam a rodar só em `verificar_autotestes_isolados.py`, que já os cobria e agora também prova que não alteram `data/`. Mesma cobertura, provada por mutação. Registro do #784: entrou junto a fusão `verificar_carimbo_da_rodada.py`.</dd>
       <dt>17/10/2026 · Figura principal larga</dt>
@@ -165,8 +167,6 @@
       <dd>Saem da página de saúde &quot;Estado das fontes&quot;, &quot;Bateria estadual executada em&quot; e a versão &quot;v0.3&quot;; &quot;não relaciona casos ao El Niño&quot; fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.</dd>
       <dt>16/10/2026 · DOE-PI por edição; RR com o motivo medido</dt>
       <dd>`coletar_doe.py` ganha `edicao_pi`: a listagem do dia do diário atual do Piauí (`www.diario.pi.gov.br/doe/`, a mesma rota que a tabela do sítio chama) dá cada edição, suplementar incluído, e o PDF. RR segue `sem adaptador de busca`: o PDF só sai por POST numa rota que não responde ao runner.</dd>
-      <dt>16/10/2026 · Rodapé só com o e-mail de contato</dt>
-      <dd>O rodapé de todas as páginas, inclusive as do blog (pelo gerador), traz só o e-mail de contato; sai o rótulo &quot;Imprensa:&quot;. Na Imprensa, o rodapé traz o e-mail de imprensa, que vive só nessa página.</dd>
     </dl>
   </section>
 </main>
