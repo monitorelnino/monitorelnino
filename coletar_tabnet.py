@@ -13,6 +13,7 @@ USO
 """
 import html as _html
 import re
+import urllib.parse
 import sys
 import time
 
@@ -92,7 +93,7 @@ def sondar_def(caminho_def: str, procura_linha: str, procura_incr: str = "") -> 
     if not (linha and arq):
         print("   sem linha/arquivo esperado: tela mudou?"); return
     corpo = consulta(f, linha, col, incr, arq)
-    acao = f["acao"] if f["acao"].startswith("http") else TABNET + f["acao"].split("/")[-1]
+    acao = urllib.parse.urljoin(url, f["acao"])
     t0 = time.time()
     try:
         r = enviar(acao, _codificar(corpo), timeout=120).decode("latin-1")
