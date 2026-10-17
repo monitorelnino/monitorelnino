@@ -60,9 +60,9 @@ def ultimo_ano_por_uf(nomes) -> dict:
 
 
 def sondar() -> int:
-    from coletores_base import buscar, robots_de
+    from coletores_base import buscar, hoje_editorial, robots_de
     from coletar_sg_esus import payload_do_portal
-    hoje = datetime.date.today()
+    hoje = hoje_editorial()
     print(f"== Registro Civil · {RC_BASE} · {hoje}")
     try:
         r = robots_de("transparencia.registrocivil.org.br")

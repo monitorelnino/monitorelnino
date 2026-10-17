@@ -160,8 +160,8 @@ def _ftp():
 
 
 def sondar() -> int:
-    from coletores_base import buscar, enviar
-    hoje = datetime.date.today()
+    from coletores_base import buscar, enviar, hoje_editorial
+    hoje = hoje_editorial()
     print(f"== SIH/SUS · FTP {FTP_HOST}{FTP_DIR_RD} · {hoje}")
     t0 = time.time()
     try:
