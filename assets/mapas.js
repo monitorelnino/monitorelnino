@@ -202,6 +202,31 @@
     return svg;
   }
 
+  /** Mapa de contagem por estado (Defesa civil, ajuste 10 de 09/10/2026; comum desde 17/10/2026).
+   *  Uma rampa (`contagem`, um matiz só) e faixas pelos QUANTIS da distribuição real, rotuladas com os
+   *  limites efetivos de cada faixa; a última é aberta. Cinza só para "nenhum": zero medido não é
+   *  ausência de dado, e a legenda diz qual dos dois é. `extra(uf)` acrescenta ao rótulo do estado. */
+  function mapaDeContagem(ctx, svgId, legendaId, porUF, unidade, extra) {
+    const rampa = PALETA.atmosfera.contagem.rampa, cinza = cor('zebra');
+    const v = Object.values(porUF).filter(x => x > 0).sort((a, b) => a - b);
+    const k = Math.min(rampa.length, new Set(v).size), grupos = [];
+    for (let i = 0; i < k; i++) {
+      const fatia = v.slice(Math.floor(i * v.length / k), Math.floor((i + 1) * v.length / k));
+      if (!fatia.length) continue;
+      const ult = grupos[grupos.length - 1];
+      if (ult && fatia[0] <= ult.ate) { ult.ate = Math.max(ult.ate, fatia[fatia.length - 1]); continue; }
+      grupos.push({de: fatia[0], ate: fatia[fatia.length - 1]});
+    }
+    grupos.forEach((g, i) => { g.cor = grupos.length === 1 ? rampa[rampa.length - 1]
+      : rampa[Math.round(i * (rampa.length - 1) / (grupos.length - 1))]; });
+    const faixa = x => x ? grupos.find(g => x >= g.de && x <= g.ate) || grupos[grupos.length - 1] : null;
+    const rotulo = uf => { const x = porUF[uf] || 0;
+      return (x ? numBR(x) + ' ' + unidade + (x === 1 ? '' : 's') : 'nenhum ' + unidade) + (extra ? extra(uf) : ''); };
+    const itens = grupos.map(g => ({cor: g.cor, rotulo: g.de === g.ate ? numBR(g.de) : numBR(g.de) + ' a ' + numBR(g.ate)}))
+      .concat([{cor: cinza, rotulo: 'nenhum'}]);
+    return desenharMapa(ctx, svgId, legendaId, uf => (faixa(porUF[uf] || 0) || {cor: cinza}).cor, rotulo, itens, 'contagem');
+  }
+
   /** Escala contínua canônica (gradiente) + itens discretos opcionais. */
   function legendaContinua(elId, gradiente, rotuloMin, rotuloMax, itens) {
     const el = document.getElementById(elId); if (!el) return;
@@ -404,5 +429,5 @@
     });
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, atmosfera, hachura, credito, dataBR, animarGauges };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);

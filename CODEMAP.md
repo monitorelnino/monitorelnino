@@ -20,7 +20,7 @@ Atualizado em 17/10/2026.
 | `imprensa.html` | imprensa.html | `cadencia_publicacao.json`, `meta.json`, `monitor_saude.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `index.html` | index.html | `atos_resposta.json`, `chuvas.json`, `cobertura_declarada_uf.json`, `cobertura_qd.json`, `consist.json`, `enquadramento_card.json` (+26) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `indice-de-conteudo.html` | indice-de-conteudo.html | — | — | — | não |
-| `monitor-de-riscos.html` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+78) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `monitor-de-riscos.html` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+79) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `mudancas.html` | mudancas.html | `blog/posts.json`, `publicacao.json` | — | — | não |
 | `prefeituras.html` | prefeituras.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `proteja-se.html` | proteja-se.html | `contatos_uf.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
@@ -36,7 +36,7 @@ Atualizado em 17/10/2026.
 | `assets/js/imprensa.js` | imprensa.html | `cadencia_publicacao.json`, `meta.json`, `monitor_saude.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/index.js` | index.html | `atos_resposta.json`, `chuvas.json`, `cobertura_declarada_uf.json`, `cobertura_qd.json`, `consist.json`, `enquadramento_card.json` (+25) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/mapas.js` | blog.html, defesa-civil.html, financiamento.html, index.html, monitor-de-riscos.html, mudancas.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/monitor-de-riscos.js` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+61) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `assets/js/monitor-de-riscos.js` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+62) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/prefeituras.js` | prefeituras.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
