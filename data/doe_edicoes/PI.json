@@ -1,11 +1,12 @@
 {
- "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
+ "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "sem_acesso_automatico",
+  "modo": "rota_nao_descoberta",
   "conta_como_consultado": false,
   "motivo": "/: URLError · /edicoes: URLError · /diarios: URLError",
   "em": "02/10/2026",
-  "tentativas": 2
+  "tentativas": 2,
+  "rotulo_corrigido_em": "17/10/2026 (404 e endereço errado não são recusa)"
  },
  "edicoes": {}
 }

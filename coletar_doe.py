@@ -734,10 +734,11 @@ def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, ter
     return itens, totais
 
 
-def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S) -> tuple:
+def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pausa: float = RITMO_APIFRONT_S,
+                   termos=None) -> tuple:
     """(itens no formato comum do coletor, total declarado por termo). Não grava nada."""
     itens, totais = [], {}
-    for termo in TERMOS_APIFRONT:
+    for termo in (termos or TERMOS_APIFRONT):
         total, acertos = varrer_busca_apifront(base, termo, desde, ate, buscar_fn=buscar_fn, pausa=pausa)
         totais[termo] = total
         for a in acertos:
@@ -745,6 +746,24 @@ def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pau
                           "url": PDF_APIFRONT.format(base=base.rstrip("/"), diario_id=a["diario_id"]),
                           "trechos": [a["conteudo"]], "territorio": uf})
     return itens, totais
+
+
+ADAPTADORES_DE_BUSCA = ("dodf", "apifront", "busca_sp", *EDICOES_POR_BUSCA)
+
+
+def itens_da_busca(uf: str, adaptador: str, url: str, desde: str, ate: str, termos=None) -> tuple:
+    """(itens, totais) pela rota de BUSCA do diário da UF. Uma porta para os três que perguntam ao
+    mesmo diário com palavras diferentes (17/10/2026): a defesa civil (`coletar_uf`), o funil de
+    saúde e a busca de declaração do canal 2. Os termos são de quem chama; a rota, daqui."""
+    if adaptador == "dodf":
+        return itens_dodf(uf, desde, ate, termos=termos)
+    if adaptador == "apifront":
+        return itens_apifront(uf, url, desde, ate, termos=termos)
+    if adaptador == "busca_sp":
+        return itens_sp(uf, desde, ate, termos=termos)
+    if adaptador in EDICOES_POR_BUSCA:
+        return itens_por_busca(uf, desde, EDICOES_POR_BUSCA[adaptador](desde, ate), termos=termos)
+    raise ValueError(f"{adaptador}: não é rota de busca")
 
 
 def iso_para_br(s: str) -> str:
@@ -815,25 +834,18 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         # 14/10/2026: "a_verificar" por 42 dias era lacuna não declarada — já se tentou, e o que
         # falta é o adaptador. O estado diz isso; a sondagem ao lado diz por onde começar.
         f["status"] = "sem adaptador de busca"; return "lacuna"
-    if f["adaptador"] in ("dodf", "apifront", "busca_sp", *EDICOES_POR_BUSCA, *EDICOES_POR_DATA):
+    if f["adaptador"] in (*ADAPTADORES_DE_BUSCA, *EDICOES_POR_DATA):
         # A evidência é o conjunto de trechos como a FONTE OFICIAL os serviu — na busca, o endereço
         # citável de cada acerto; na edição por data, a URL do PDF e a página. Preservar o PDF
         # inteiro de cada acerto passaria de meio gigabyte por varredura e não acrescentaria prova.
         url = f["url"]
         try:
-            if f["adaptador"] == "dodf":
-                itens, totais = itens_dodf(uf, desde, hoje)
-            elif f["adaptador"] == "apifront":
-                # §231: a busca entrega o TEXTO INTEGRAL da página que casou — sem teto de 20 kB e
-                # sem baixar um PDF de dez megabytes por acerto.
-                itens, totais = itens_apifront(uf, url, desde, hoje)
-            elif f["adaptador"] == "busca_sp":
-                itens, totais = itens_sp(uf, desde, hoje)
-            elif f["adaptador"] in EDICOES_POR_DATA:
+            if f["adaptador"] in EDICOES_POR_DATA:
                 itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
                                                  f.setdefault("lidas", {}))
             else:
-                itens, totais = itens_por_busca(uf, desde, EDICOES_POR_BUSCA[f["adaptador"]](desde, hoje))
+                # §231: a busca da plataforma comum entrega o TEXTO INTEGRAL da página que casou.
+                itens, totais = itens_da_busca(uf, f["adaptador"], url, desde, hoje)
         except FormatoDaBuscaMudou as e:
             registrar_lacuna(f"DOE/{uf}", f"formato da busca mudou: {e}", canal="repositorio_estadual",
                              camada=1, uf=uf, strings=[url])

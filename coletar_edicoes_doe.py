@@ -49,6 +49,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent
 PASTA = "doe_edicoes"
 INDICE = "doe_ocorrencias.json"
 INICIO_DO_CICLO = "2026-06-29"
+UFS = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split()
 # Teto por execução, para que uma recuperação não vire uma rodada de doze horas sem aviso.
 TETO_EDICOES = 400
 BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
@@ -98,8 +99,8 @@ JANELA_DE_CONTEXTO = 300
 
 # ── Padrões de endereço por data ───────────────────────────────────────────────────────────────
 # Cada padrão foi CONFERIDO contra uma edição real antes de entrar aqui; a conferência está na
-# nota de cada um. Padrão que depende do NÚMERO da edição (e não da data) precisa da listagem, e
-# por isso vive com `listagem` em vez de `padrao`.
+# nota de cada um. Padrão que depende do NÚMERO da edição (e não da data) leva a listagem junto. O AP
+# (edição por id, medido em 02/10/2026) sai pela busca da plataforma comum, declarada no fontes_doe.
 PADROES = {
     # Conferido pela central: abre sem bloqueio.
     "PB": {"padrao": "https://auniao.pb.gov.br/servicos/doe/{ano}/{mes_nome}/diario-oficial-{dd}-{mm}-{ano}-portal.pdf",
@@ -115,14 +116,6 @@ PADROES = {
            "ancoras": {"2026-09-03": 12270, "2026-10-02": 12293},
            "janela": 12,
            "nota": "nome do arquivo pelo número da edição; âncoras conferidas em 02/10/2026"},
-    # PDF baixável, visto pela central. O portal serve por data.
-    # MEDIDO em 02/10/2026 e RETIRADO: o endereço por data respondia 200 em todas as 70 datas,
-    # sempre com o mesmo arquivo de 2.016 bytes e uma página — página de erro servida como PDF. O
-    # portal do Amapá serve a edição por ID (`/portal/edicoes/download/{id}`), e a listagem que
-    # liga data a ID é montada por JavaScript. Entra quando a listagem for lida; até então o canal
-    # 2 do AP é rota sem acesso automático (lacuna declarada), com este motivo gravado.
-    "AP": {"listagem": "https://diofe.portal.ap.gov.br/portal/edicoes",
-           "nota": "edição por ID; a listagem que liga data a ID exige leitura da página"},
 }
 
 
@@ -285,39 +278,54 @@ def decidir_edicao(status: int, bytes_lidos: int, paginas_com_texto: int,
     return "lida"
 
 
-# Rota de edição que a máquina não alcança (muro de robô, 401/403/429/451, sem padrão nem listagem):
-# lacuna declarada com o motivo medido, e NÃO conta como canal consultado (A5-08, 10/10/2026).
+# Recusa REAL da fonte (muro de robô, 401/403/429/451, captcha, login): lacuna declarada com o motivo
+# medido, que NÃO conta como canal consultado (A5-08, 10/10/2026), e que nunca se contorna.
 MODO_SEM_ACESSO = "sem_acesso_automatico"
-GOVERNANCA_CANAL2 = ("Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, "
-                     "o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna "
-                     "declarada, que não conta como consultado (A5-08, 10/10/2026).")
+# 17/10/2026 (HANDOVER_ROTAS_DOE §0.1): 404 e endereço que não abre são palpite ERRADO de endereço, não
+# recusa. Até aqui viravam `sem_acesso_automatico`, e 17 diários sem recusa nenhuma pareciam fechados.
+MODO_SEM_ROTA = "rota_nao_descoberta"
+RECUSAS_HTTP = (401, 403, 429, 451)
+GOVERNANCA_CANAL2 = ("Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite "
+                     "de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro "
+                     "de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como "
+                     "consultado (A5-08, 10/10/2026; 17/10/2026).")
+
+
+def rota_da_uf(uf: str, adaptadores=None, padroes=None) -> dict:
+    """De onde sai a edição da UF. Função pura. Três rotas, na ordem em que valem: o padrão de
+    endereço deste arquivo; o adaptador de edição por data do `coletar_doe` (`edicao_<uf>`); a busca
+    do diário (`apifront`, `dodf`, `busca_<uf>`), que procura os termos de declaração. Os adaptadores
+    vêm do `fontes_doe.json`, onde cada um foi medido; não se copiam para cá."""
+    p = (padroes if padroes is not None else PADROES).get(uf) or {}
+    cfg = (adaptadores or {}).get(uf) or {}
+    ad = cfg.get("adaptador")
+    if p.get("padrao"):
+        return {"tipo": "padrao", "detalhe": p["padrao"]}
+    if ad:
+        return {"tipo": "edicao" if ad.startswith("edicao_") else "busca", "adaptador": ad,
+                "url": cfg.get("url"), "detalhe": f"adaptador {ad}"}
+    return {"tipo": None}
 
 
 def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -> dict:
     """Como o canal 2 é feito nesta UF. Função pura.
 
-    Quatro modos, na ordem em que valem: `padrao_por_data` (baixa a edição pelo endereço),
-    `listagem` (o número ou o id da edição vem de uma página de listagem), `busca_no_diario` (a
-    UF é uma das que oferecem busca, e o adaptador já existia) e `sem_acesso_automatico` (limitação
-    técnica de terceiro documentada — lacuna declarada, não conta como consultado). Sem nenhum deles,
-    `a_descobrir`: é ausência de **rota**, não ausência de diário.
+    `sem_acesso_automatico` (recusa real registrada) vale primeiro; depois a rota da UF —
+    `padrao_por_data` (padrão de endereço ou adaptador de edição por data) ou `busca_no_diario`.
+    Sem nenhuma, `rota_nao_descoberta`: ausência de **rota**, não de diário, e não recusa.
     """
-    p = (padroes if padroes is not None else PADROES).get(uf)
     reg = (registro or {}).get("canal2") or {}
     if reg.get("modo") == MODO_SEM_ACESSO and reg.get("motivo"):
         return {"uf": uf, "modo": MODO_SEM_ACESSO, "detalhe": reg["motivo"],
-                "nota": "lacuna declarada — não conta como canal consultado"}
-    if p and p.get("padrao"):
-        return {"uf": uf, "modo": "padrao_por_data", "detalhe": p["padrao"], "nota": p.get("nota")}
-    if p and p.get("listagem"):
-        return {"uf": uf, "modo": "listagem", "detalhe": p["listagem"], "nota": p.get("nota")}
-    adaptador = ((adaptadores or {}).get(uf) or {}).get("adaptador")
-    if adaptador:
-        return {"uf": uf, "modo": "busca_no_diario", "detalhe": f"adaptador {adaptador}",
-                "nota": "a busca no sítio continua valendo onde existe"}
-    return {"uf": uf, "modo": "a_descobrir",
-            "detalhe": "sem rota de edição conferida para esta UF",
-            "nota": "a listagem de edições precisa ser lida para derivar o padrão"}
+                "nota": "recusa da fonte — lacuna declarada, não conta como canal consultado"}
+    # O registro da UF guarda o adaptador com que foi lido: a situação se responde sem o fontes_doe.
+    rota = rota_da_uf(uf, adaptadores or {uf: {"adaptador": reg.get("adaptador")}}, padroes)
+    if rota["tipo"]:
+        return {"uf": uf, "modo": "busca_no_diario" if rota["tipo"] == "busca" else "padrao_por_data",
+                "detalhe": rota["detalhe"]}
+    return {"uf": uf, "modo": MODO_SEM_ROTA,
+            "detalhe": reg.get("motivo") or "sem rota de edição conferida para esta UF",
+            "nota": "palpite de endereço errado não é recusa: a rota segue a descobrir"}
 
 
 def a_reler(item) -> bool:
@@ -326,11 +334,19 @@ def a_reler(item) -> bool:
 
 
 def busca_de_declaracao(uf: str, registro: dict) -> dict:
-    """A metade estadual da resposta sanitária nesta UF: `consultado_em` só quando as edições lidas
-    do ciclo foram todas lidas com os termos de declaração; senão `lacuna` com o motivo. Pura."""
+    """A metade estadual da resposta sanitária nesta UF: `consultado_em` só quando o ciclo foi lido
+    com os termos de declaração — edição por edição, ou pela busca do diário desde o início do ciclo;
+    senão `lacuna`, com o motivo que distingue recusa de rota não descoberta. Função pura."""
     sit = situacao_do_canal2(uf, registro=registro)
     if sit["modo"] == MODO_SEM_ACESSO:
-        return {"lacuna": sit["detalhe"]}
+        return {"lacuna": f"recusa da fonte, respeitada: {sit['detalhe']}"}
+    if sit["modo"] == MODO_SEM_ROTA:
+        return {"lacuna": f"rota do diário não descoberta (não é recusa): {sit['detalhe']}"}
+    if sit["modo"] == "busca_no_diario":
+        b = (registro.get("canal2") or {}).get("busca_declaracao") or {}
+        if b.get("consultado_em") and b.get("termos_versao") == VERSAO_DOS_TERMOS and (b.get("desde") or "~") <= INICIO_DO_CICLO:
+            return {"consultado_em": b["consultado_em"], "via": f"busca do diário ({sit['detalhe']})"}
+        return {"lacuna": b.get("lacuna") or "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"}
     todas = [e for e in (registro.get("edicoes") or {}).values() if isinstance(e, dict)]
     lidas = [e for e in todas if e.get("decisao") == "lida"]
     velhas = sum(1 for e in lidas if a_reler(e))
@@ -363,22 +379,77 @@ def _texto_paginas(bruto: bytes) -> list:
         return []
 
 
-def coletar_uf(uf: str, desde: str, ate: str) -> dict:
-    """Baixa, lê e indexa as edições de uma UF no período. Devolve o resumo da execução."""
-    from coletores_base import (MuroDeRobo, buscar, gravar, hoje_editorial, ler, log_busca,
-                                preservar_evidencia, registrar_lacuna)
+def _recusa(e, url: str):
+    """O motivo, se a exceção é recusa real da fonte (muro, 401/403/429/451); senão None. Pura."""
+    if type(e).__name__ == "MuroDeRobo":
+        return f"muro de robô em {url[:90]}: {str(e)[:120]}"
+    codigo = getattr(e, "code", None) or 0
+    return f"HTTP {codigo} em {url[:90]} — recusa respeitada" if codigo in RECUSAS_HTTP else None
 
-    p = PADROES.get(uf)
-    if not p or not p.get("padrao"):
-        s = situacao_do_canal2(uf)
-        registrar_lacuna(f"DOE-{uf} (canal 2)", "sem padrão de endereço de edição conferido",
-                         canal="DOE", camada=1)
-        print(f"  {uf}: {s['modo']} — {s['detalhe']}")
-        return {"uf": uf, "modo": s["modo"], "lidas": 0, "decisao": "sem_padrao"}
+
+def _pela_busca(uf: str, rota: dict, desde: str, ate: str, ocorrencias: dict, hoje: str,
+                busca_fn=None, preservar_fn=None) -> tuple:
+    """A busca do diário com os termos de DECLARAÇÃO (17/10/2026, HANDOVER_ROTAS_DOE §0.2), pela porta
+    única do `coletar_doe` (`itens_da_busca`). Acerto que passa o contexto entra no índice, e o juiz
+    abre o documento como abre a edição. Devolve (resumo da busca, recusa ou None)."""
+    if busca_fn is None:
+        import coletar_doe
+        busca_fn = coletar_doe.itens_da_busca
+    if preservar_fn is None:
+        from coletores_base import preservar_evidencia as preservar_fn
+    # A busca indexa palavra, não contexto: perguntam-se as expressões com "saúde" (as outras casariam
+    # todo decreto de seca); o contexto de "declar" se confere no trecho, como na edição inteira.
+    termos = [t for t in TERMOS_DE_DECLARACAO if "saúde" in t and not any(u != t and u in t for u in TERMOS_DE_DECLARACAO)]
+    try:
+        itens, totais = busca_fn(uf, rota["adaptador"], rota["url"], desde, ate, termos=termos)
+    except Exception as e:  # noqa: BLE001
+        recusa = _recusa(e, rota.get("url") or "")
+        return {"lacuna": f"busca do diário falhou em {hoje}: {type(e).__name__}: {str(e)[:120]}"}, recusa
+    declaracoes = 0
+    for it in itens:
+        achados = ocorrencias_no_texto(" ".join(it.get("trechos") or []), tuple(TERMOS_DE_DECLARACAO))
+        if not achados:
+            continue
+        for a in achados:
+            a["pagina"] = it.get("pagina")
+        corpo = json.dumps(it, ensure_ascii=False).encode("utf-8")
+        chave = it.get("data") or hoje
+        while chave in ocorrencias and ocorrencias[chave].get("url") != it.get("url"):
+            chave = chave.split("#")[0] + f"#{int((chave.split('#') + ['1'])[1]) + 1}"
+        ocorrencias[chave] = {"url": it.get("url"), "via": f"busca {rota['adaptador']}",
+                              "hash_evidencia": preservar_fn(corpo, it.get("url") or "", "json", "coletar_edicoes_doe"),
+                              "paginas": it.get("paginas"), "achados": achados}
+        declaracoes += 1
+    return {"consultado_em": hoje, "desde": desde, "ate": ate, "termos": termos,
+            "termos_versao": VERSAO_DOS_TERMOS, "acertos": len(itens), "com_declaracao": declaracoes,
+            "totais_por_termo": totais}, None
+
+
+def _edicoes_da_data(rota: dict, padrao: dict, data: str, listagem: dict, ancoras: dict, edicoes_fn) -> list:
+    """As edições da data, cada uma como a lista de endereços alternativos a tentar (o primeiro que
+    abre vale). Padrão por número tenta a janela de números; adaptador devolve uma por caderno."""
+    if rota["tipo"] == "edicao":
+        return [[e] for e in edicoes_fn(data)]
+    if "{edicao}" in padrao["padrao"]:
+        numeros = numeros_a_tentar(data, listagem, ancoras, padrao.get("janela", 8))
+        return [[{"url": endereco_da_data(padrao["padrao"], data, str(n))} for n in numeros]] if numeros else []
+    return [[{"url": endereco_da_data(padrao["padrao"], data)}]]
+
+
+def coletar_uf(uf: str, desde: str, ate: str) -> dict:
+    """Baixa, lê e indexa as edições de uma UF no período (ou pergunta à busca do diário). Devolve o resumo."""
+    from coletores_base import buscar, gravar, hoje_editorial, ler, log_busca, preservar_evidencia, registrar_lacuna
 
     arquivo = f"{PASTA}/{uf}.json"
-    (RAIZ / "data" / PASTA).mkdir(parents=True, exist_ok=True)
     registro = ler(arquivo, {}) or {}
+    rota = rota_da_uf(uf, (ler("fontes_doe.json", {}) or {}).get("ufs"))
+    if not rota["tipo"]:
+        s = situacao_do_canal2(uf, registro=registro)
+        registrar_lacuna(f"DOE-{uf} (canal 2)", f"{s['modo']}: {s['detalhe'][:90]}", canal="DOE", camada=1)
+        print(f"  {uf}: {s['modo']} — {s['detalhe']}")
+        return {"uf": uf, "modo": s["modo"], "lidas": 0, "decisao": "sem_rota"}
+
+    (RAIZ / "data" / PASTA).mkdir(parents=True, exist_ok=True)
     registro.setdefault("_governanca", (
         "Edições do diário oficial deste estado baixadas por DATA (canal 2 do MARÉ Saúde, diretriz "
         "de 02/10/2026). Guarda-se o resumo de cada edição e as ocorrências dos termos de saúde, "
@@ -393,110 +464,131 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         "notícia cita a data, e o índice entrega a edição daquela data. Não promove nada a "
         "registro — promoção é do juiz, com documento primário lido."))
     ocorrencias = indice.setdefault("ufs", {}).setdefault(uf, {})
-
-    # Quando o nome do arquivo pede o NÚMERO da edição, lê-se a listagem uma vez (ela cobre as
-    # últimas) e o resto sai das âncoras, com a fonte confirmando pelo nome do arquivo.
-    listagem = {}
-    if "{edicao}" in p["padrao"] and p.get("listagem"):
-        try:
-            listagem = edicoes_da_listagem(buscar(p["listagem"], timeout=60).decode("utf-8", "replace"))
-            print(f"  {uf}: listagem com {len(listagem)} edição(ões) datadas")
-        except Exception as e:  # noqa: BLE001
-            print(f"  {uf}: listagem não lida ({type(e).__name__}) — segue pelas âncoras")
-
-    # As âncoras começam nas conferidas e crescem a cada acerto: a data seguinte estima a partir da
-    # vizinha, e não a partir de setembro.
-    ancoras_vivas = dict(p.get("ancoras") or {})
-    for data_lida, item in (edicoes or {}).items():
-        achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
-        if achado and (item or {}).get("decisao") == "lida":
-            ancoras_vivas[data_lida] = int(achado.group(1))
-    datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])][:TETO_EDICOES]
-    # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
-    # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
-    # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
-    if "{edicao}" in p["padrao"]:
-        datas = sorted(datas, reverse=True)
-    lidas = com_termo = 0
-    vistos = {e.get("impressao") for d, e in edicoes.items()
-              if isinstance(e, dict) and e.get("impressao") and d not in datas}
     hoje = hoje_editorial().strftime("%d/%m/%Y")
-    for data in datas:
-        if "{edicao}" in p["padrao"]:
-            numeros = numeros_a_tentar(data, listagem, ancoras_vivas, p.get("janela", 8))
-            tentativas = [endereco_da_data(p["padrao"], data, str(n)) for n in numeros]
-        else:
-            tentativas = [endereco_da_data(p["padrao"], data)]
-        if not tentativas:
-            edicoes[data] = {"decisao": "sem_numero_de_edicao", "em": hoje,
-                             "motivo": "o padrão pede o número da edição e não há âncora nem listagem"}
-            continue
-        url, bruto, status, erro = tentativas[0], None, 0, None
+    lidas = com_termo = 0
+    recusa, interrompido = None, False
+
+    if rota["tipo"] == "busca":
+        busca, recusa = _pela_busca(uf, rota, desde, ate, ocorrencias, hoje)
+        com_termo = busca.get("com_declaracao", 0)
+        if not recusa:
+            registro["canal2"] = {"modo": "busca_no_diario", "adaptador": rota["adaptador"], "em": hoje,
+                                  "conta_como_consultado": "consultado_em" in busca, "busca_declaracao": busca}
+        print(f"  {uf}: busca {rota['adaptador']} — " + (f"{busca['acertos']} acerto(s), {com_termo} com declaração"
+                                                          if "consultado_em" in busca else busca["lacuna"]))
+    else:
+        padrao = PADROES.get(uf) or {}
+        edicoes_fn = None
+        if rota["tipo"] == "edicao":
+            import coletar_doe
+            edicoes_fn = coletar_doe.EDICOES_POR_DATA[rota["adaptador"]](buscar, rota["url"])
+        # Quando o nome do arquivo pede o NÚMERO da edição, lê-se a listagem uma vez (ela cobre as
+        # últimas) e o resto sai das âncoras, com a fonte confirmando pelo nome do arquivo.
+        listagem = {}
+        if "{edicao}" in padrao.get("padrao", "") and padrao.get("listagem"):
+            try:
+                listagem = edicoes_da_listagem(buscar(padrao["listagem"], timeout=60).decode("utf-8", "replace"))
+                print(f"  {uf}: listagem com {len(listagem)} edição(ões) datadas")
+            except Exception as e:  # noqa: BLE001
+                print(f"  {uf}: listagem não lida ({type(e).__name__}) — segue pelas âncoras")
+        # As âncoras começam nas conferidas e crescem a cada acerto: a data seguinte estima a partir da
+        # vizinha, e não a partir de setembro.
+        ancoras_vivas = dict(padrao.get("ancoras") or {})
+        for data_lida, item in (edicoes or {}).items():
+            achado = re.search(r"DO(\d{4,6})_", str((item or {}).get("url") or ""))
+            if achado and (item or {}).get("decisao") == "lida":
+                ancoras_vivas[data_lida] = int(achado.group(1))
+        datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])][:TETO_EDICOES]
+        # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
+        # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
+        # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
+        if "{edicao}" in padrao.get("padrao", ""):
+            datas = sorted(datas, reverse=True)
+        vistos = {e.get("impressao") for d, e in edicoes.items()
+                  if isinstance(e, dict) and e.get("impressao") and d.split("#")[0] not in datas}
         try:
-            for candidato in tentativas:
-                url = candidato
+            for data in datas:
                 try:
-                    bruto = buscar(candidato, timeout=120)
-                    status = 200
-                    break
-                except MuroDeRobo:
-                    raise
+                    grupos = _edicoes_da_data(rota, padrao, data, listagem, ancoras_vivas, edicoes_fn)
                 except Exception as e:  # noqa: BLE001
-                    codigo = getattr(e, "code", None) or 0
-                    if codigo in (401, 403, 429, 451):
-                        raise
-                    erro, status = e, codigo
-            if bruto is None:
-                raise erro if erro else FileNotFoundError(url)
-        except MuroDeRobo as e:
-            registro["canal2"] = {"modo": MODO_SEM_ACESSO, "motivo": f"muro de robô: {str(e)[:140]}",
-                                  "em": hoje, "conta_como_consultado": False}
-            registrar_lacuna(f"DOE-{uf} (canal 2)", f"muro de robô em {url[:90]}", canal="DOE", camada=1)
-            print(f"  {uf}: muro de robô — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
-            break
-        except Exception as e:  # noqa: BLE001
-            status = getattr(e, "code", None) or 0
-            if status in (401, 403, 429, 451):
-                registro["canal2"] = {"modo": MODO_SEM_ACESSO,
-                                      "motivo": f"HTTP {status} na edição de {data} — recusa respeitada",
-                                      "em": hoje, "conta_como_consultado": False}
-                registrar_lacuna(f"DOE-{uf} (canal 2)", f"HTTP {status} — recusa respeitada",
-                                 canal="DOE", camada=1)
-                print(f"  {uf}: HTTP {status} — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
-                break
-            edicoes[data] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
-                             "motivo": f"{type(e).__name__}: {str(e)[:90]}"}
-            continue
+                    recusa = _recusa(e, rota.get("url") or "")
+                    if recusa:
+                        break
+                    edicoes[data] = {"decisao": "vazio", "em": hoje, "motivo": f"listagem da data: {type(e).__name__}: {str(e)[:90]}"}
+                    continue
+                if not grupos:
+                    edicoes[data] = ({"decisao": "sem_numero_de_edicao", "em": hoje,
+                                      "motivo": "o padrão pede o número da edição e não há âncora nem listagem"}
+                                     if rota["tipo"] == "padrao" else {"decisao": "sem_edicao_na_data", "em": hoje})
+                    continue
+                # Edição em vários cadernos (CE) ou com suplemento: um registro por caderno, a data na chave.
+                for k, alternativas in enumerate(grupos, start=1):
+                    chave = data if k == 1 else f"{data}#{k}"
+                    url, bruto, status, erro = alternativas[0]["url"], None, 0, None
+                    for candidato in alternativas:
+                        url = candidato["url"]
+                        try:
+                            bruto = candidato.get("pdf") or buscar(url, timeout=120)
+                            status = 200
+                            break
+                        except Exception as e:  # noqa: BLE001
+                            recusa = _recusa(e, url)
+                            if recusa:
+                                break
+                            erro, status = e, getattr(e, "code", None) or 0
+                    if recusa:
+                        break
+                    if bruto is None:
+                        edicoes[chave] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
+                                          "motivo": f"{type(erro).__name__}: {str(erro)[:90]}"}
+                        continue
+                    # Repetição pelo hash do conteúdo: o mesmo arquivo em duas datas não são duas edições.
+                    impressao = hashlib.sha256(bruto).hexdigest()
+                    repetido = impressao in vistos
+                    vistos.add(impressao)
+                    paginas = [] if repetido else _texto_paginas(bruto)
+                    com_texto = sum(1 for x in paginas if (x or "").strip())
+                    decisao = decidir_edicao(status, len(bruto), com_texto, len(paginas) or None, repetido)
+                    item = {"decisao": decisao, "em": hoje, "bytes": len(bruto), "paginas": len(paginas),
+                            "paginas_com_texto": com_texto, "url": url, "impressao": impressao,
+                            "termos_versao": VERSAO_DOS_TERMOS}
+                    if decisao == "nao_e_edicao":
+                        item["motivo"] = ("mesmo arquivo de outra data" if repetido else
+                                          f"{len(bruto)} bytes e {len(paginas)} página(s) — não é uma edição")
+                    if decisao == "sem_texto_extraivel":
+                        # PDF digitalizado vai à fila de OCR que já existe (`preservar_evidencias.alvos_ocr`
+                        # pega PDF preservado sem camada de texto). A cópia por OCR é PROVA (§177), não
+                        # insumo de classificação: a edição segue "não lida" até a fonte servir texto.
+                        item["hash_evidencia"] = preservar_evidencia(bruto, url, "pdf", "coletar_edicoes_doe")
+                    if decisao == "lida":
+                        achados = ocorrencias_no_texto("\n".join(paginas))
+                        if achados:
+                            item["hash_evidencia"] = preservar_evidencia(bruto, url, "pdf", "coletar_edicoes_doe")
+                            for a in achados:
+                                a["pagina"] = pagina_do_trecho(paginas, a["trecho"])
+                            ocorrencias[chave] = {"url": url, "hash_evidencia": item["hash_evidencia"],
+                                                  "paginas": len(paginas), "achados": achados}
+                            com_termo += 1
+                        item["termos_achados"] = [a["termo"] for a in achados]
+                        lidas += 1
+                    edicoes[chave] = item
+                    achado = re.search(r"DO(\d{4,6})_", url or "")
+                    if achado and decisao == "lida":
+                        ancoras_vivas[data] = int(achado.group(1))
+                if recusa:
+                    break
+        except KeyboardInterrupt:
+            # O prazo do elo interrompe com SIGINT (saude_pipeline): grava-se o que já foi lido, e para.
+            print(f"  {uf}: interrompido pelo prazo do elo — grava o lido até aqui")
+            interrompido = True
+        if not recusa:
+            registro["canal2"] = {"modo": "padrao_por_data", "em": hoje, "conta_como_consultado": True,
+                                  **({"adaptador": rota["adaptador"]} if rota["tipo"] == "edicao" else {})}
 
-        # Repetição pelo hash do conteúdo: o mesmo arquivo em duas datas não são duas edições.
-        impressao = hashlib.sha256(bruto).hexdigest()
-        repetido = impressao in vistos
-        vistos.add(impressao)
-        paginas = [] if repetido else _texto_paginas(bruto)
-        com_texto = sum(1 for x in paginas if (x or "").strip())
-        decisao = decidir_edicao(status, len(bruto), com_texto, len(paginas) or None, repetido)
-        item = {"decisao": decisao, "em": hoje, "bytes": len(bruto), "paginas": len(paginas),
-                "paginas_com_texto": com_texto, "url": url, "impressao": impressao,
-                "termos_versao": VERSAO_DOS_TERMOS}
-        if decisao == "nao_e_edicao":
-            item["motivo"] = ("mesmo arquivo de outra data" if repetido else
-                              f"{len(bruto)} bytes e {len(paginas)} página(s) — não é uma edição")
-        if decisao == "lida":
-            achados = ocorrencias_no_texto("\n".join(paginas))
-            if achados:
-                item["hash_evidencia"] = preservar_evidencia(bruto, url, "pdf", "coletar_edicoes_doe")
-                for a in achados:
-                    a["pagina"] = pagina_do_trecho(paginas, a["trecho"])
-                ocorrencias[data] = {"url": url, "hash_evidencia": item["hash_evidencia"],
-                                     "paginas": len(paginas), "achados": achados}
-                com_termo += 1
-            item["termos_achados"] = [a["termo"] for a in achados]
-            lidas += 1
-        edicoes[data] = item
-        achado = re.search(r"DO(\d{4,6})_", url or "")
-        if achado and decisao == "lida":
-            ancoras_vivas[data] = int(achado.group(1))
-
+    if recusa:
+        registro["canal2"] = {"modo": MODO_SEM_ACESSO, "motivo": recusa, "em": hoje, "conta_como_consultado": False}
+        registrar_lacuna(f"DOE-{uf} (canal 2)", recusa, canal="DOE", camada=1)
+        print(f"  {uf}: {recusa} — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
     if lidas:
         # 14/10/2026 (ciclo de 15 dias): o diário da UF foi LIDO, edição por edição — é verificação
         # real por DOE, e o livro de fontes a registra como o canal 1 já registra (`DOE/<UF>`).
@@ -504,17 +596,17 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         por_cod, _ = referencia_ibge()
         marcar_fonte_consultada([c for c, r in por_cod.items() if r["uf"] == uf], f"DOE/{uf}", "estadual",
                                 resultado=f"{lidas} edição(ões) lida(s) por data (canal 2)")
-    registro.setdefault("canal2", {"modo": "padrao_por_data", "em": hoje,
-                                   "conta_como_consultado": True})
     registro["atualizado_em"] = hoje
     gravar(arquivo, registro)
     indice["atualizado_em"] = hoje
     gravar(INDICE, indice)
-    log_busca("DOE", 1, [p["padrao"]], "registro" if com_termo else "consultado sem achado",
+    log_busca("DOE", 1, [rota["detalhe"]], "registro" if com_termo else "consultado sem achado",
               nivel="estadual", uf=uf, n_resultados=com_termo,
-              resultados=f"canal 2 em {uf}: {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
+              resultados=f"canal 2 em {uf} ({rota['tipo']}): {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     print(f"  {uf}: {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
-    return {"uf": uf, "modo": "padrao_por_data", "lidas": lidas, "com_termo": com_termo,
+    if interrompido:
+        raise KeyboardInterrupt
+    return {"uf": uf, "modo": registro["canal2"]["modo"], "lidas": lidas, "com_termo": com_termo,
             "decisao": "registro" if com_termo else "consultado sem achado"}
 
 
@@ -537,18 +629,18 @@ def moldes_para(base: str) -> list:
     return [m.format(base=base, ano="{ano}", mm="{mm}", dd="{dd}") for m in MOLDES_CONHECIDOS]
 
 
-def veredito_da_descoberta(achou_padrao: bool, achou_listagem: bool, motivo: str) -> dict:
+def veredito_da_descoberta(achou_padrao: bool, achou_listagem: bool, motivo: str, recusa: bool = False) -> dict:
     """O que registrar depois das duas tentativas. Funcao pura.
 
-    Sem padrao e sem listagem legivel, o canal 2 passa a ser rota sem acesso automatico — lacuna
-    declarada, que NAO conta como consultado (A5-08, 10/10/2026). O motivo medido vai junto, sempre:
-    sem ele, a lacuna seria desculpa, e nao medicao.
+    Sem padrao e sem listagem legivel, o canal 2 fica `rota_nao_descoberta` — palpite de endereco
+    errado (404) nao e recusa (17/10/2026). So recusa real da fonte e `sem_acesso_automatico`. As duas
+    sao lacuna declarada que NAO conta como consultado (A5-08), e o motivo medido vai junto, sempre.
     """
     if achou_padrao:
         return {"modo": "padrao_por_data", "conta_como_consultado": True}
     if achou_listagem:
         return {"modo": "listagem", "conta_como_consultado": True}
-    return {"modo": MODO_SEM_ACESSO, "conta_como_consultado": False,
+    return {"modo": MODO_SEM_ACESSO if recusa else MODO_SEM_ROTA, "conta_como_consultado": False,
             "motivo": motivo or "duas tentativas sem padrão de endereço nem listagem legível"}
 
 
@@ -558,7 +650,7 @@ def descobrir_rota(uf: str, buscar_fn=None, data_de_prova: str = None) -> dict:
     Tentativa 1: os moldes conhecidos, com uma data de prova em que houve edicao.
     Tentativa 2: a pagina de listagem, lida como pagina publica.
     """
-    from coletores_base import MuroDeRobo, buscar, ler
+    from coletores_base import buscar, ler
     buscar_fn = buscar_fn or buscar
     registro = ler("fontes_doe.json", {}) or {}
     cfg = ((registro.get("ufs") or {}).get(uf) or {})
@@ -568,19 +660,16 @@ def descobrir_rota(uf: str, buscar_fn=None, data_de_prova: str = None) -> dict:
         return {"uf": uf, "tentativas": 0,
                 "veredito": veredito_da_descoberta(False, False, "nenhum endereço de diário registrado")}
 
-    motivos = []
+    motivos, recusa = [], False
     # ── tentativa 1 · os moldes conhecidos ────────────────────────────────────────────────────
     for molde in moldes_para(base):
         url = endereco_da_data(molde, data)
         try:
             bruto = buscar_fn(url, timeout=90)
-        except MuroDeRobo as e:
-            motivos.append(f"muro de robô em {url[:70]}: {str(e)[:60]}")
-            break
         except Exception as e:  # noqa: BLE001
-            codigo = getattr(e, "code", None) or 0
-            if codigo in (401, 403, 429, 451):
-                motivos.append(f"HTTP {codigo} em {url[:70]} — recusa respeitada")
+            if _recusa(e, url):
+                motivos.append(_recusa(e, url))
+                recusa = True
                 break
             continue
         impressao = hashlib.sha256(bruto).hexdigest()
@@ -596,14 +685,15 @@ def descobrir_rota(uf: str, buscar_fn=None, data_de_prova: str = None) -> dict:
         try:
             html = buscar_fn(base.rstrip("/") + caminho, timeout=90).decode("utf-8", "replace")
         except Exception as e:  # noqa: BLE001
-            motivos.append(f"{caminho or '/'}: {type(e).__name__}")
+            recusa = recusa or bool(_recusa(e, base))
+            motivos.append(_recusa(e, base + caminho) or f"{caminho or '/'}: {type(e).__name__}")
             continue
         if edicoes_da_listagem(html):
             return {"uf": uf, "tentativas": 2, "listagem": base.rstrip("/") + caminho,
                      "veredito": veredito_da_descoberta(False, True, "")}
     motivos.append("listagem sem data e número de edição no HTML")
     return {"uf": uf, "tentativas": TENTATIVAS_POR_UF,
-            "veredito": veredito_da_descoberta(False, False, " · ".join(motivos[:3]))}
+            "veredito": veredito_da_descoberta(False, False, " · ".join(motivos[:3]), recusa)}
 
 
 def _autoteste() -> int:
@@ -681,13 +771,70 @@ def _autoteste() -> int:
        veredito_da_descoberta(True, False, "")["modo"] == "padrao_por_data")
     ok("listagem achada conta como consultado",
        veredito_da_descoberta(False, True, "")["modo"] == "listagem")
-    ok("sem rota, o canal 2 é lacuna sem acesso automático e NÃO conta como consultado",
+    ok("404 é palpite de endereço errado: rota não descoberta, nunca recusa, e NÃO conta como consultado",
        veredito_da_descoberta(False, False, "404 em tudo") == {
-           "modo": MODO_SEM_ACESSO, "conta_como_consultado": False, "motivo": "404 em tudo"})
+           "modo": MODO_SEM_ROTA, "conta_como_consultado": False, "motivo": "404 em tudo"})
+    ok("só recusa real (403, muro) é sem acesso automático",
+       veredito_da_descoberta(False, False, "HTTP 403", recusa=True)["modo"] == MODO_SEM_ACESSO)
+
+    class _Http(Exception):
+        def __init__(self, code):
+            self.code = code
+
+    class MuroDeRobo(Exception):
+        pass
+    ok("_recusa nomeia 401/403/429/451 e muro; 404 e erro de rede não são recusa",
+       all(_recusa(_Http(c), "u") for c in RECUSAS_HTTP) and _recusa(MuroDeRobo("x"), "u")
+       and not _recusa(_Http(404), "u") and not _recusa(OSError("dns"), "u"))
+    fontes = {"CE": {"adaptador": "edicao_ce", "url": "c"}, "ES": {"adaptador": "apifront", "url": "e"}}
+    ok("a rota da UF: padrão, adaptador de edição por data, busca do diário, nenhuma",
+       [rota_da_uf(u, fontes)["tipo"] for u in ("PB", "CE", "ES", "RJ")] == ["padrao", "edicao", "busca", None])
+    ok("o registro guarda o adaptador, e a situação se responde sem o fontes_doe",
+       situacao_do_canal2("CE", registro={"canal2": {"adaptador": "edicao_ce"}})["modo"] == "padrao_por_data"
+       and situacao_do_canal2("ES", registro={"canal2": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
+    ok("lacuna da declaração distingue recusa de rota não descoberta",
+       busca_de_declaracao("PE", {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 403"}})["lacuna"].startswith("recusa")
+       and "não é recusa" in busca_de_declaracao("RJ", {"canal2": {"modo": MODO_SEM_ROTA, "motivo": "404"}})["lacuna"])
+    bd = {"consultado_em": "17/10/2026", "desde": INICIO_DO_CICLO, "termos_versao": VERSAO_DOS_TERMOS}
+    ok("busca do diário desde o início do ciclo, com os termos de hoje, conta como consultada",
+       busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": bd}})
+       == {"consultado_em": "17/10/2026", "via": "busca do diário (adaptador apifront)"})
+    ok("busca que começou depois do ciclo, ou com termos velhos, é lacuna",
+       "lacuna" in busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": dict(bd, desde="2026-10-01")}})
+       and "lacuna" in busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": dict(bd, termos_versao="x")}}))
+    pedidos = []
+
+    def _busca(uf, ad, url, de, ate, termos):
+        pedidos.append(termos)
+        return ([{"data": "2026-09-10", "url": "doc1", "pagina": 3, "trechos": [
+                    "DECRETO Nº 9. O GOVERNADOR declara situação de emergência em saúde pública pela dengue"]},
+                 {"data": "2026-09-10", "url": "doc2", "pagina": 1, "trechos": ["o COE de emergência em saúde pública reuniu-se"]},
+                 {"data": "2026-09-11", "url": "doc3", "pagina": 2, "trechos": ["Fica declarada emergência em saúde pública"]}],
+                {"emergência em saúde pública": 3})
+    oc = {}
+    resumo, rec = _pela_busca("ES", {"adaptador": "apifront", "url": "e"}, INICIO_DO_CICLO, "2026-10-17", oc,
+                              "17/10/2026", busca_fn=_busca, preservar_fn=lambda *a: "h")
+    ok("a busca pergunta só as expressões com saúde, sem a contida em outra",
+       pedidos == [["emergência em saúde pública", "estado de emergência em saúde"]])
+    ok("acerto com declaração entra no índice com a classe; menção sem 'declar' fica fora; mesma data não colide",
+       sorted(oc) == ["2026-09-10", "2026-09-11"] and oc["2026-09-10"]["url"] == "doc1"
+       and all(a.get("classe") == "declaracao" for a in oc["2026-09-10"]["achados"]) and rec is None
+       and resumo["acertos"] == 3 and resumo["com_declaracao"] == 2 and resumo["termos_versao"] == VERSAO_DOS_TERMOS)
+
+    def _recusa_busca(*a, **k):
+        raise _Http(403)
+    r2, rec2 = _pela_busca("ES", {"adaptador": "apifront", "url": "e"}, INICIO_DO_CICLO, "2026-10-17", {},
+                           "17/10/2026", busca_fn=_recusa_busca, preservar_fn=lambda *a: "h")
+    ok("403 na busca é recusa nomeada e lacuna, nunca consultado", rec2 and "lacuna" in r2)
+    ok("o adaptador de edição devolve uma edição por caderno",
+       _edicoes_da_data({"tipo": "edicao"}, {}, "2026-10-14", {}, {},
+                        lambda d: [{"url": "p01"}, {"url": "p02"}]) == [[{"url": "p01"}], [{"url": "p02"}]])
+    ok("o padrão por data devolve uma edição com um endereço",
+       _edicoes_da_data({"tipo": "padrao"}, PADROES["PB"], "2026-09-09", {}, {}, None)[0][0]["url"].endswith("09-09-2026-portal.pdf"))
     ok("lacuna sem motivo recebe o motivo padrão",
        "duas tentativas" in veredito_da_descoberta(False, False, "")["motivo"])
-    ok("UF sem rota fica 'a descobrir', e não 'sem diário'",
-       situacao_do_canal2("XX")["modo"] == "a_descobrir")
+    ok("UF sem rota fica 'rota não descoberta', e não 'sem diário' nem recusa",
+       situacao_do_canal2("XX")["modo"] == MODO_SEM_ROTA)
     ok("UF com adaptador de busca entra como busca no diário",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
     ok("rota sem acesso automático registrada vence, e não conta como consultado",
@@ -779,9 +926,8 @@ def main() -> int:
     if "--relatorio" in sys.argv:
         from coletores_base import ler
         adaptadores = (ler("fontes_doe.json", {}) or {}).get("ufs") or {}
-        ufs = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
         contagem = {}
-        for uf in ufs:
+        for uf in UFS:
             reg = ler(f"{PASTA}/{uf}.json", {}) or {}
             sit = situacao_do_canal2(uf, None, adaptadores, reg)
             lidas = sum(1 for e in (reg.get("edicoes") or {}).values()
@@ -802,7 +948,11 @@ def main() -> int:
     desde = arg("--desde", INICIO_DO_CICLO)
     ate = arg("--ate", hoje_editorial().isoformat())
     if "--recuperacao" in sys.argv:
-        alvos = [uf for uf, p in PADROES.items() if p.get("padrao")]
+        # Toda UF com rota: a busca primeiro (minutos), as edições inteiras depois (o grosso do tempo).
+        from coletores_base import ler
+        fontes = (ler("fontes_doe.json", {}) or {}).get("ufs") or {}
+        alvos = sorted((uf for uf in UFS if rota_da_uf(uf, fontes)["tipo"]),
+                       key=lambda uf: rota_da_uf(uf, fontes)["tipo"] != "busca")
     else:
         uf = arg("--uf")
         if not uf:
