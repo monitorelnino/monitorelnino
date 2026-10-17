@@ -143,7 +143,7 @@ sai como **artefato do run**. Trabalho coletado nunca é descartado em silêncio
   aconteceu duas vezes: apagou 907 atos em 02/10 e seis execuções do log em 05/10. Por isso
   `gravar_lote`, `sincronizar` e `rejeitar` recebem `ler_fn`/`gravar_fn`, e **cada coletor passa o seu
   par**.
-  → Portão: **`scripts/verificar_autoteste_nao_escreve.py`** (10 coletores, 12 arquivos de banco).
+  → Portão: **`scripts/verificar_autotestes_isolados.py`** (`--rapido` no ensaio da noite: os coletores, contra todo `data/`).
 - **Função pura não escreve e não vai à rede.** A trava estrutural do autoteste confere isso lendo o
   bytecode — é o padrão de todos os portões do projeto, e vale a pena copiar.
 
