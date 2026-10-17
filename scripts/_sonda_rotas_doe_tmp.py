@@ -123,10 +123,20 @@ def rj(data):
         if pdf[:5] != b"%PDF-":
             print(f"    {nome.strip()}: não-PDF {len(pdf)} B {pdf[:120]!r}")
             continue
-        import pypdf
-        r = pypdf.PdfReader(io.BytesIO(pdf))
-        tx = r.pages[0].extract_text() or ""
-        print(f"    {nome.strip()}: PDF {len(pdf)} B, {len(r.pages)} p., p1: {re.sub(r'\s+', ' ', tx)[:160]}")
+        print(f"    {nome.strip()}: {len(pdf)} B; início {pdf[:40]!r}; fim {pdf[-160:]!r}")
+        try:
+            import pypdfium2
+            doc = pypdfium2.PdfDocument(pdf)
+            tx = doc[0].get_textpage().get_text_range()
+            print(f"    pdfium: {len(doc)} p., p1: {re.sub(r'\s+', ' ', tx)[:160]}")
+        except Exception as e:  # noqa: BLE001
+            print(f"    pdfium falhou: {type(e).__name__} {e}")
+        try:
+            import pypdf
+            r = pypdf.PdfReader(io.BytesIO(pdf), strict=False)
+            print(f"    pypdf tolerante: {len(r.pages)} p., p1: {re.sub(r'\s+', ' ', r.pages[0].extract_text() or '')[:120]}")
+        except Exception as e:  # noqa: BLE001
+            print(f"    pypdf falhou: {type(e).__name__} {e}")
         print(f"    url: {url}")
         time.sleep(2)
         de_novo = pega(url, 120)
