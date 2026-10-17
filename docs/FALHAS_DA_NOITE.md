@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-16. 70 falhas; 64 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-16. 71 falhas; 65 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -617,6 +617,15 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do run 38813432942 (coleta-dia/2026-10-15-saude-estadual): 16 URLError seguidas em editor.amapa.gov.br; fila de 16/10: 44 pistas pendentes e 16 recusadas por URLError no mesmo host
 - **Correção:** Host sem resposta de rede sai do resto da rodada; falha de rede é pendente (sem veredito, volta na rodada seguinte), HTTP continua recusa; veredito antigo de queda de rede volta à fila; o corte só avança sem pendente.
 - **Caso de teste:** `julgar_saude.py --autoteste (três casos F68)`
+
+## F69 · Busca web com fila vazia: marca de motor mudo de antes de 14/10 contava como município consultado
+
+- **Noite:** 2026-10-16→2026-10-17
+- **Sintoma:** run 38989629349: 5× monitorar_busca_web.py --tamanho 150 com '0 municípios consultados, 0 pistas' (10 s) e busca_web.feito gravado.
+- **Causa:** pendentes_na_janela contava qualquer entrada da fonte na janela de 15 dias. O livro ainda guarda 758 marcas 'decisão motor_sem_resposta' gravadas antes da regra de 14/10 (só resposta real marca); 191 municípios só tinham essa marca e saíam da fila.
+- **Prova:** data/fontes_consultadas.json em 17/10: 5.571 com entrada desde 03/10; 5.380 com resposta real; log do run 38989629349 (abertura da noite 16→17, central 02:20 UTC)
+- **Correção:** pendentes_na_janela ignora a marca de motor mudo; o livro não perde histórico; a fila volta a ter os 191 municípios. Fila vazia com nada devido continua sendo trabalho feito (regra 3).
+- **Caso de teste:** `monitorar_busca_web.py --autoteste`
 
 ## F70 · Juiz commitou na main às 09:24 UTC, fora da janela da noite
 
