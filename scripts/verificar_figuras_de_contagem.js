@@ -4,7 +4,6 @@
  * Renderiza defesa-civil.html num Chromium real e reprova:
  *   - número em formato inglês em figura ("1,000");
  *   - rótulo de barra cortado (largura de rolagem maior que a visível);
- *   - legenda de série única nas figuras de barras (legenda que só repete o título);
  *   - mapa de contagem com faixa vazia (item de legenda sem nenhum estado com aquela cor);
  *   - rampa de contagem com mais de um matiz (variação de matiz > 25° entre as faixas).
  *
@@ -13,7 +12,8 @@
  */
 const path = require("path"), fs = require("fs"), http = require("http");
 const RAIZ = path.join(__dirname, "..");
-const MAPAS = ["mapAlertas", "mapCemaden", "mapDecretosUF", "mapRiscoEnchente", "mapRiscoSemiarido", "mapRiscoFogo"];
+/* 17/10/2026 (HANDOVER_DEFESA_CIVIL): os mapas de contagem por estado saíram da página (o das emergências é de pontos); a regra da rampa segue aqui para o mapa de contagem que voltar. */
+const MAPAS = [];
 
 function matiz(hex) {
   const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(String(hex).trim()); if (!m) return null;
@@ -27,7 +27,6 @@ function problemas(f) {
   const p = [];
   (f.textos || []).forEach(t => { if (/\b\d{1,3},\d{3}\b/.test(t)) p.push(`número em formato inglês: "${t.slice(0, 40)}"`); });
   (f.cortados || []).forEach(t => p.push(`rótulo de barra cortado: "${t}"`));
-  (f.legendasUnicas || []).forEach(id => p.push(`legenda de série única em ${id}`));
   (f.mapas || []).forEach(m => {
     m.legenda.filter(l => !/nenhum|sem /i.test(l.rotulo)).forEach(l => { if (!m.cores.includes(l.cor)) p.push(`${m.id}: faixa "${l.rotulo}" vazia`); });
     const hs = m.legenda.filter(l => !/nenhum|sem /i.test(l.rotulo)).map(l => matiz(l.cor)).filter(h => h != null);
@@ -60,23 +59,22 @@ async function principal() {
   let falhas = [];
   try {
     await page.goto(`http://127.0.0.1:${srv.address().port}/defesa-civil.html`, { waitUntil: "networkidle" });
-    await page.waitForFunction(() => document.querySelectorAll("#mapRiscoFogo path.uf-path").length >= 27, null, { timeout: 20000 });
+    await page.waitForFunction(() => document.querySelectorAll("#mapEmergencias circle").length > 0, null, { timeout: 20000 });
     const f = await page.evaluate((MAPAS) => {
       const textos = [...document.querySelectorAll("#conteudo figure")].flatMap(fg => [...fg.querySelectorAll(".barra-valor, .map-legend span, text, .cartao-numero-valor")].map(e => e.textContent.trim()));
       const cortados = [...document.querySelectorAll(".barra-rotulo")].filter(e => e.scrollWidth > e.clientWidth + 1).map(e => e.textContent);
-      const legendasUnicas = ["boxAlertasTipo", "boxDecretosTipo"].filter(id => { const l = document.querySelector("#" + id + " .map-legend"); return l && l.querySelectorAll("span").length === 1; });
       const mapas = MAPAS.filter(id => document.getElementById(id) && document.querySelector("#" + id + " path.uf-path") && !document.getElementById(id).closest(".figura-midia--texto")).map(id => {
         const leg = document.getElementById(id).closest("figure").querySelector(".map-legend");
         return { id, cores: [...new Set([...document.querySelectorAll("#" + id + " path.uf-path")].map(p => getComputedStyle(p).fill))],
           legenda: leg ? [...leg.querySelectorAll("span")].map(s => ({ cor: getComputedStyle(s.querySelector("i")).backgroundColor, rotulo: s.textContent.trim() })) : [] };
       });
-      return { textos, cortados, legendasUnicas, mapas };
+      return { textos, cortados, mapas };
     }, MAPAS);
     f.mapas.forEach(m => { m.cores = m.cores.map(rgbHex); m.legenda.forEach(l => l.cor = rgbHex(l.cor)); });
     falhas = problemas(f);
   } finally { await b.close(); srv.close(); }
   falhas.forEach(x => console.log("  ✗ " + x));
-  console.log(falhas.length ? `✗ FIGURAS DE CONTAGEM: ${falhas.length} problema(s).` : "✓ FIGURAS DE CONTAGEM OK — números em pt-BR, rótulos inteiros, sem legenda de série única, faixas não vazias, rampa de um matiz.");
+  console.log(falhas.length ? `✗ FIGURAS DE CONTAGEM: ${falhas.length} problema(s).` : "✓ FIGURAS DE CONTAGEM OK — números em pt-BR, rótulos inteiros, faixas não vazias, rampa de um matiz.");
   return falhas.length ? 1 : 0;
 }
 if (process.argv.includes("--autoteste")) process.exit(autoteste());

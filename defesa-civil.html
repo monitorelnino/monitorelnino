@@ -46,157 +46,106 @@
   </header>
 <main id="conteudo">
   <h1 data-conteudo="defesa-civil.titulo_da_pagina">Defesa civil</h1>
-  <p class="hint" data-conteudo="defesa-civil.abertura">Os avisos e alertas em vigor, as emergências declaradas pelos municípios neste ciclo e o que o governo federal reconheceu, estado a estado e município a município.</p>
+  <!-- 17/10/2026 (HANDOVER_DEFESA_CIVIL_16-10-2026): a página na ordem do contrato
+       `layout/contratos/defesa-civil.json`: abertura, números do topo, consulta do município, mapa
+       municipal das emergências (figura principal) e o caminho do decreto ao reconhecimento. Valor em
+       reais só em Financiamento; as listas federais de risco estão no Monitor de riscos. -->
+  <p class="hint" data-conteudo="defesa-civil.abertura.p1">Desde o primeiro boletim oficial do El Niño 2026/2027, de 29 de junho, municípios de vários estados decretam situação de emergência ou estado de calamidade pública por seca, estiagem, chuva forte, vendaval e granizo.</p>
+  <p class="hint" data-conteudo="defesa-civil.abertura.p2">O decreto é o ato em que a prefeitura declara que o dano já aconteceu. Com ele, o município pede o reconhecimento do governo federal, publicado no Diário Oficial da União, e, reconhecido, pode receber recursos para socorro, assistência e recuperação. Antes do dano, o Inmet emite avisos de tempo severo e o Cemaden alerta os municípios que monitora sobre risco de deslizamento e inundação.</p>
+  <p class="hint" data-conteudo-html="defesa-civil.abertura.p3">Esta página mostra os avisos e alertas em vigor, onde estão os decretos e por qual evento e quantos foram reconhecidos, em cada estado e em cada município. O dinheiro federal autorizado depois do reconhecimento está na página de <a href="financiamento.html#defesaCivil">Financiamento</a>. Os decretos ficam num indicador separado do <a href="index.html">MARÉ Legal</a>, que mede a preparação. Cada registro traz o documento, a data e a fonte oficial; os critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
 
-  <!-- 02/10/2026 (handover "a cadeia do aviso ao recurso"): a página conta UMA cadeia — aviso →
-       alerta → decreto → reconhecimento → recurso. O que mudou, e por quê:
-         · os três mapas de PONTOS das emergências saíram. Ponto por município satura o país e não
-           responde "e a minha cidade?"; agora é um mapa POR ESTADO com a lista municipal embutida,
-           com busca, e cada município numa linha com as três marcas da cadeia;
-         · entrou a série semana a semana do decreto ao recurso, que é a cadeia vista no tempo;
-         · entraram as outras duas listas federais de risco (Semiárido e fogo), ao lado da de
-           enxurradas e inundações: as três são a mesma pergunta — onde o risco já é reconhecido;
-         · o rodapé recolhido explica a cadeia em cinco passos, para quem chega sem o vocabulário.
-       O layout desta página é contrato: `layout/contratos/defesa-civil.json`. -->
-  <section class="dc-topo" id="dc-topo" aria-labelledby="dcTopoTitulo">
-    <h2 id="dcTopoTitulo" class="sr-only">Os números da defesa civil</h2>
-    <p class="dc-topo-periodo" id="dcTopoConsulta" data-conteudo="defesa-civil.dc-topo.texto">Consulta mais recente</p>
+  <section class="dc-topo" id="dc-topo" aria-labelledby="alertas">
+    <h2 id="alertas" class="sr-only">Os números da defesa civil</h2>
     <div class="grade-numeros grade-numeros--3 grade-numeros--compacta">
-      <div class="cartao-numero cartao-numero--chuva" data-cartao="municipios_alerta_cemaden">
-        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_cemaden.rotulo">Municípios sob alerta do Cemaden</p>
-        <p class="cartao-numero-valor" id="topoCemaden">—</p>
-        <p class="cartao-numero-fonte" id="topoCemadenFonte">—</p>
-      </div>
       <div class="cartao-numero cartao-numero--chuva" data-cartao="municipios_aviso_inmet">
         <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_inmet.rotulo">Municípios sob aviso do Inmet</p>
-        <p class="cartao-numero-valor" id="topoInmet">—</p>
-        <p class="cartao-numero-fonte" id="topoInmetFonte">—</p>
+        <p class="cartao-numero-valor" id="topoInmet">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="topoInmetApoio"></p>
+        <p class="cartao-numero-fonte" id="topoInmetFonte"></p>
       </div>
-      <div class="cartao-numero cartao-numero--resposta" data-cartao="decreto_e_alerta_ao_mesmo_tempo">
-        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_cruzamento.rotulo">Municípios com decreto de emergência e alerta ao mesmo tempo</p>
-        <p class="cartao-numero-valor" id="topoCruzamento">—</p>
-        <p class="cartao-numero-fonte" id="topoCruzamentoFonte">—</p>
+      <div class="cartao-numero cartao-numero--chuva" data-cartao="municipios_alerta_cemaden">
+        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_cemaden.rotulo">Municípios sob alerta do Cemaden</p>
+        <p class="cartao-numero-valor" id="topoCemaden">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="topoCemadenApoio"></p>
+        <p class="cartao-numero-fonte" id="topoCemadenFonte"></p>
       </div>
-    </div>
-    <p class="dc-topo-periodo" data-conteudo="defesa-civil.dc-topo.topo_cruzamento.texto">Desde 29/06/2026</p>
-    <div class="grade-numeros grade-numeros--3 grade-numeros--compacta">
       <div class="cartao-numero cartao-numero--resposta" data-cartao="municipios_decretaram">
-        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_decretaram_variacao.rotulo">Municípios que decretaram emergência ou calamidade</p>
+        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_decretaram_variacao.rotulo">Municípios com decreto desde 29/06</p>
+        <p class="cartao-numero-valor" id="topoDecretaram">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="topoDecretaramVariacao"></p>
-        <p class="cartao-numero-valor" id="topoDecretaram">—</p>
-        <p class="cartao-numero-fonte" id="topoDecretaramFonte">—</p>
-      </div>
-      <div class="cartao-numero cartao-numero--resposta" data-cartao="populacao_sob_decreto">
-        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_populacao_variacao.rotulo">Pessoas que vivem nesses municípios</p>
-        <p class="cartao-numero-variacao" id="topoPopulacaoVariacao"></p>
-        <p class="cartao-numero-valor" id="topoPopulacao">—</p>
-        <p class="cartao-numero-fonte" id="topoPopulacaoFonte">—</p>
+        <p class="cartao-numero-fonte" id="topoDecretaramFonte"></p>
       </div>
       <div class="cartao-numero cartao-numero--resposta" data-cartao="reconhecidos_pelo_governo_federal">
-        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_reconhecidos_variacao.rotulo">Municípios com a emergência reconhecida pelo governo federal</p>
+        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_reconhecidos_variacao.rotulo">Reconhecidos pela União</p>
+        <p class="cartao-numero-valor" id="topoReconhecidos">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="topoReconhecidosVariacao"></p>
-        <p class="cartao-numero-valor" id="topoReconhecidos">—</p>
-        <p class="cartao-numero-fonte" id="topoReconhecidosFonte">—</p>
+        <p class="cartao-numero-fonte" id="topoReconhecidosFonte"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--resposta" data-cartao="populacao_sob_decreto">
+        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_populacao_variacao.rotulo">População nesses municípios</p>
+        <p class="cartao-numero-valor" id="topoPopulacao">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao" id="topoPopulacaoVariacao"></p>
+        <p class="cartao-numero-fonte" id="topoPopulacaoFonte"></p>
       </div>
     </div>
   </section>
 
-  <section id="alertas" aria-labelledby="tituloAlertas">
-    <h2 id="tituloAlertas" data-conteudo="defesa-civil.alertas.titulo_da_secao">Avisos e alertas em vigor</h2>
-    <p class="hint" data-conteudo="defesa-civil.alertas.abertura">Os avisos do Inmet são emitidos por área; os alertas do Cemaden, por município. O grau e o nível são os do órgão que emitiu.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxAlertas" data-chave="alertas/vigentes.json#aviso_ou_alerta">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.alertas.alertas.titulo">Municípios sob aviso ou alerta em vigor, por estado</h3>
-        <p class="figura-sub" id="subAlertas" data-conteudo="defesa-civil.alertas.sub_alertas.legenda">Consulta mais recente · nº de municípios do estado</p>
-        <div class="figura-midia"><svg id="mapAlertas" role="img" aria-label="Mapa do Brasil com o número de municípios sob aviso do Inmet ou alerta do Cemaden em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legAlertas"></div>
-        <div class="cartao-mapa-rodape" data-busca="alertas"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxCemaden" data-chave="alertas/vigentes.json#cemaden">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.alertas.cemaden.titulo">Alertas do Cemaden em vigor, por estado</h3>
-        <p class="figura-sub" id="subCemaden" data-conteudo="defesa-civil.alertas.sub_cemaden.legenda">Consulta mais recente · nº de municípios do estado · nível do órgão</p>
-        <div class="figura-midia"><svg id="mapCemaden" role="img" aria-label="Mapa do Brasil com o número de municípios sob alerta do Cemaden em vigor em cada estado" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legCemaden"></div>
-        <div class="cartao-mapa-rodape" data-busca="cemaden"></div>
-      </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxAlertasTipo" data-chave="alertas/vigentes.json#tipos">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.alertas.alertas_tipo.titulo">Municípios por tipo de aviso ou alerta em vigor</h3>
-        <p class="figura-sub" id="subAlertasTipo" data-conteudo="defesa-civil.alertas.alertas_tipo.legenda">Consulta mais recente · tipo nomeado pelo órgão · nº de municípios</p>
-        <div class="figura-midia figura-midia--barras" id="wrapAlertasTipo"></div>
-        
-        <div class="cartao-mapa-rodape" data-busca="tipos"></div>
-      </figure>
+  <section id="municipio" aria-labelledby="tituloMunicipio">
+    <div class="panel">
+    <h2 id="tituloMunicipio" data-conteudo="defesa-civil.municipio.titulo_da_secao">Como está o seu município</h2>
+    <p class="hint" id="municipioAbertura" data-conteudo="defesa-civil.municipio.abertura.molde">O cartão responde para qualquer um dos municípios: aviso ou alerta em vigor, decreto desde 29 de junho e reconhecimento federal, com o documento e a data quando há, e a situação do estado.</p>
+    <div class="tbl-controls">
+      <select id="consultaUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="consultaMun" type="text" list="consultaLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="consultaLista"></datalist>
     </div>
-    <p class="note u-mb-0" id="notaAlertas" data-conteudo-html="defesa-civil.alertas.nota_alertas.nota">Um município pode estar sob mais de um aviso ao mesmo tempo. Receba os alertas no celular: envie o CEP para 40199 por SMS. <a href="proteja-se.html">O que fazer em cada tipo de alerta</a>.</p>
+    <div id="consultaCard" class="meu-card" aria-live="polite" hidden></div>
+    </div>
   </section>
 
-  <section id="decretos" aria-labelledby="tituloDecretos">
-    <h2 id="tituloDecretos" data-conteudo="defesa-civil.decretos.titulo_da_secao">Emergências no ciclo</h2>
-    <p class="hint" data-conteudo="defesa-civil.decretos.abertura">Os municípios que decretaram situação de emergência ou calamidade pública desde 29 de junho, o que o governo federal reconheceu e o tipo de evento.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxDecretosUF" data-chave="resposta/municipios_decretados.json#por_uf">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.decretos.decretos_uf.titulo">Municípios com decreto no ciclo, por estado</h3>
-        <p class="figura-sub" id="subDecretosUF" data-conteudo="defesa-civil.decretos.sub_decretos_uf.legenda">Desde 29/06/2026 · parcela dos municípios do estado</p>
-        <div class="figura-midia"><svg id="mapDecretosUF" role="img" aria-label="Mapa do Brasil com a parcela dos municípios de cada estado que decretaram situação de emergência ou calamidade pública no ciclo" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legDecretosUF"></div>
-        <div class="cartao-mapa-rodape" data-busca="decretos"></div>
+  <section id="emergencias" aria-labelledby="tituloEmergencias">
+    <h2 id="tituloEmergencias" data-conteudo="defesa-civil.emergencias.titulo_da_secao">Onde estão as emergências</h2>
+    <p class="hint" data-conteudo="defesa-civil.emergencias.abertura">Cada ponto é um município com decreto de situação de emergência ou calamidade pública desde 29 de junho; a cor é o evento declarado no ato e o preenchimento diz se a União já reconheceu.</p>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa figura--dupla cartao-mapa r-chuva" id="boxEmergencias" data-chave="resposta/municipios_decretados.json#municipios">
+        <h3 class="figura-titulo" data-conteudo="defesa-civil.emergencias.mapa.titulo">Municípios com decreto de emergência desde 29/06/2026, por evento declarado e etapa</h3>
+        <p class="figura-sub" id="subEmergencias" data-conteudo="defesa-civil.emergencias.mapa.legenda">Evento declarado no ato · ponto cheio: reconhecido pela União · ponto vazado: só decreto</p>
+        <div class="figura-midia">
+          <div class="mapa-dupla"><svg id="mapEmergencias" role="img" aria-label="Mapa do Brasil com um ponto na sede de cada município que decretou situação de emergência ou calamidade pública desde 29 de junho de 2026, colorido pelo evento declarado no ato, cheio quando a União reconheceu" viewBox="0 0 480 460"></svg></div>
+          <div class="lado-dados">
+            <div class="map-legend" id="legEmergencias"></div>
+            <h4 class="barras-titulo" data-conteudo="defesa-civil.emergencias.barras.titulo">Decretos por tipo de evento declarado</h4>
+            <div class="figura-midia--barras" id="wrapDecretosTipo"></div>
+          </div>
+        </div>
+        <div class="cartao-mapa-rodape" data-busca="emergencias"></div>
       </figure>
+    </div>
+  </section>
+
+  <section id="reconhecimento" aria-labelledby="tituloReconhecimento">
+    <h2 id="tituloReconhecimento" data-conteudo="defesa-civil.reconhecimento.titulo_da_secao">Do decreto ao reconhecimento</h2>
+    <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxEtapas" data-chave="resposta/municipios_decretados.json#semanas">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.decretos.etapas.titulo">Do decreto ao recurso, semana a semana</h3>
-        <p class="figura-sub" data-conteudo="defesa-civil.decretos.etapas.legenda">Desde 29/06/2026 · nº acumulado por semana, em cada etapa</p>
-        <div class="figura-midia canvas-wrap canvas-wrap--mapa" id="wrapEtapas"><canvas id="cEtapas" aria-label="Número acumulado de municípios que decretaram emergência, que tiveram a emergência reconhecida pelo governo federal e que tiveram recursos de resposta autorizados, semana a semana"></canvas></div>
+        <h3 class="figura-titulo" data-conteudo="defesa-civil.reconhecimento.etapas.titulo">Do decreto ao reconhecimento, semana a semana</h3>
+        <p class="figura-sub" data-conteudo="defesa-civil.reconhecimento.etapas.legenda">Desde 29/06/2026 · nº acumulado de municípios por semana, em cada etapa</p>
+        <div class="figura-midia canvas-wrap canvas-wrap--mapa" id="wrapEtapas"><canvas id="cEtapas" aria-label="Número acumulado de municípios que decretaram emergência e que tiveram a emergência reconhecida pela União, semana a semana desde 29 de junho de 2026"></canvas></div>
         <div class="map-legend" id="legEtapas"></div>
+        <div class="figura-nota" data-conteudo-html="defesa-civil.reconhecimento.etapas.nota">Os recursos autorizados depois do reconhecimento estão em <a href="financiamento.html#defesaCivil">Financiamento</a>.</div>
         <div class="cartao-mapa-rodape" data-busca="etapas"></div>
       </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxDecretosTipo" data-chave="atos_resposta.json#tipo_de_evento">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.decretos.decretos_tipo.titulo">Decretos do ciclo por tipo de evento</h3>
-        <p class="figura-sub" data-conteudo="defesa-civil.decretos.decretos_tipo.legenda">Desde 29/06/2026 · tipo declarado no ato · nº</p>
-        <div class="figura-midia figura-midia--barras" id="wrapDecretosTipo"></div>
-        
-        <div class="cartao-mapa-rodape" data-busca="tipos_evento"></div>
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxPendencia" data-chave="resposta/municipios_decretados.json#dias_sem_reconhecimento">
+        <h3 class="figura-titulo" data-conteudo="defesa-civil.reconhecimento.pendencia.titulo">Onde a cadeia parou</h3>
+        <p class="figura-sub" id="subPendencia" data-conteudo="defesa-civil.reconhecimento.pendencia.legenda">Municípios com decreto e sem portaria de reconhecimento</p>
+        <div class="figura-midia figura-midia--texto">
+          <div class="cartao-numero cartao-numero--resposta" data-cartao="decreto_sem_reconhecimento_30_dias">
+            <div class="cartao-numero-rotulo" data-conteudo="defesa-civil.reconhecimento.pendencia.rotulo">Decreto há mais de 30 dias sem reconhecimento</div>
+            <div class="cartao-numero-valor" id="topoPendencia">sem coleta até o corte</div>
+            <div class="cartao-numero-fonte" id="topoPendenciaFonte"></div>
+          </div>
+        </div>
+        <div class="cartao-mapa-rodape" data-busca="pendencia"></div>
       </figure>
-    </div>
-    <p class="note u-mb-0" id="notaDecretos" data-conteudo-html="defesa-civil.decretos.nota_decretos.nota">Clicar em um estado filtra a lista de municípios. <a href="financiamento.html">Ver os recursos autorizados no ciclo</a>.</p>
-  </section>
-
-  <section id="cadastro" aria-labelledby="tituloCadastro">
-    <h2 id="tituloCadastro" data-conteudo="defesa-civil.cadastro.titulo_da_secao">Onde os riscos são conhecidos oficialmente</h2>
-    <p class="hint" data-conteudo="defesa-civil.cadastro.abertura">As listas federais de municípios por risco. Constar de uma lista não é decretar emergência; é ter o risco reconhecido pelo governo federal.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxRiscoEnchente" data-chave="cadastro_prioritarios_federal.json">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.cadastro.risco_enchente.titulo">Risco de enxurrada e inundação reconhecido</h3>
-        <p class="figura-sub" id="subRiscoEnchente" data-conteudo="defesa-civil.cadastro.sub_risco_enchente.legenda">Cadastro federal de suscetíveis a enxurradas e inundações (Casa Civil, 2025) · nº no estado</p>
-        <div class="figura-midia"><svg id="mapRiscoEnchente" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado no cadastro federal de suscetíveis a enxurradas e inundações" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoEnchente"></div>
-        <div class="cartao-mapa-rodape" data-busca="enchente"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxRiscoSemiarido" data-chave="enquadramento_card.json#semiarido">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.cadastro.risco_semiarido.titulo">Municípios do Semiárido</h3>
-        <p class="figura-sub" id="subRiscoSemiarido" data-conteudo="defesa-civil.cadastro.sub_risco_semiarido.legenda">Delimitação do Semiárido (Sudene, 2024) · nº no estado</p>
-        <div class="figura-midia"><svg id="mapRiscoSemiarido" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado na delimitação do Semiárido da Sudene" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoSemiarido"></div>
-        <div class="cartao-mapa-rodape" data-busca="semiarido"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa r-chuva" id="boxRiscoFogo" data-chave="enquadramento_card.json#fogo">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.cadastro.risco_fogo.titulo">Prioritários no controle do desmatamento e do fogo na Amazônia</h3>
-        <p class="figura-sub" id="subRiscoFogo" data-conteudo="defesa-civil.cadastro.sub_risco_fogo.legenda">Lista do Ministério do Meio Ambiente, portaria vigente · nº no estado</p>
-        <div class="figura-midia"><svg id="mapRiscoFogo" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado na lista de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legRiscoFogo"></div>
-        <div class="cartao-mapa-rodape" data-busca="fogo"></div>
-      </figure>
-    </div>
-  </section>
-
-  <section id="cadeiaSecao" aria-labelledby="tituloCadeia">
-    <h2 id="tituloCadeia" data-conteudo="defesa-civil.cadeiaSecao.cadeia_secao.titulo">Do aviso ao recurso</h2>
-    <div id="cadeia">
-      <ol class="passos">
-        <li data-conteudo-html="defesa-civil.cadeiaSecao.cadeia_secao.item"><b>1</b><span><strong>Aviso.</strong> O Inmet avisa, por área, sobre chuva forte, ventos, calor ou baixa umidade.</span></li>
-        <li data-conteudo-html="defesa-civil.cadeiaSecao.cadeia_secao.item_2"><b>2</b><span><strong>Alerta.</strong> O Cemaden alerta o município sobre risco de deslizamento ou de inundação.</span></li>
-        <li data-conteudo-html="defesa-civil.cadeiaSecao.cadeia_secao.item_3"><b>3</b><span><strong>Decreto.</strong> Quando o evento acontece, o prefeito pode decretar situação de emergência ou estado de calamidade pública.</span></li>
-        <li data-conteudo-html="defesa-civil.cadeiaSecao.cadeia_secao.item_4"><b>4</b><span><strong>Reconhecimento.</strong> O governo federal reconhece o decreto, por portaria no Diário Oficial da União.</span></li>
-        <li data-conteudo-html="defesa-civil.cadeiaSecao.cadeia_secao.item_5"><b>5</b><span><strong>Recurso.</strong> Com o reconhecimento, o município pode pedir recursos de resposta. <a href="financiamento.html">Os recursos autorizados no ciclo</a> · <a href="proteja-se.html">O que fazer em cada alerta</a></span></li>
-      </ol>
     </div>
   </section>
 </main>
@@ -209,6 +158,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
+<script src="assets/js/consulta-municipio.js?v=677bd154" defer></script>
 <script src="assets/js/defesa-civil.js?v=61c29b60" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).

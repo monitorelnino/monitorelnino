@@ -52,7 +52,6 @@ MAPA = (
     ("atos_federais_semana", "financiamento.html", "topoAtosSemana"),
     ("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),
     ("municipios_aviso_inmet", "defesa-civil.html", "topoInmet"),
-    ("decreto_e_alerta_ao_mesmo_tempo", "defesa-civil.html", "topoCruzamento"),
     ("dengue_casos_se", "saude.html", "nDengueSE"),
     ("srag_internacoes_se", "saude.html", "nSragSE"),
     ("ufs_dengue_alerta", "saude.html", "nUFsAlerta"),
