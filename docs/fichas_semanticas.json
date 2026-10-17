@@ -543,36 +543,6 @@
       "funcao_narrativa": "evidência do agora",
       "acao_relacionada": "consultar o painel do Ministério da Saúde"
     },
-    "saude.html#boxCalorMunicipios": {
-      "tipo": "busca por município",
-      "pergunta_que_responde": "Em que classe de excesso de calor está a minha cidade na consulta mais recente?",
-      "dimensao_da_preparacao": "o sinal de calor a que a rede de saúde responde",
-      "universo": "municípios lidos no painel do Ministério da Saúde",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "consulta mais recente ao painel",
-      "variavel_principal": "classe de excesso de calor do município",
-      "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
-      "metodologia": "Consulta direta à classe publicada. Cidade não lida na consulta aparece como não lida, nunca como classe normal.",
-      "conclusoes_permitidas": "dizer a classe da cidade na consulta mais recente",
-      "conclusoes_nao_permitidas": "ler a classe como previsão; ler ausência de leitura como ausência de calor",
-      "funcao_narrativa": "traz o sinal de calor à escala de quem lê"
-    },
-    "saude.html#boxChikMunicipios": {
-      "tipo": "busca por município",
-      "pergunta_que_responde": "Em que nível de alerta de chikungunya está a minha cidade na última semana consolidada?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "municípios acompanhados pelo InfoDengue",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "última semana consolidada",
-      "variavel_principal": "nível de alerta de chikungunya do município",
-      "fonte": "InfoDengue (Fiocruz/FGV)",
-      "metodologia": "Consulta direta ao nível publicado. Cidade fora dos municípios acompanhados aparece como não acompanhada, nunca como nível zero.",
-      "conclusoes_permitidas": "dizer o nível de alerta da cidade na semana consolidada",
-      "conclusoes_nao_permitidas": "ler ausência de acompanhamento como ausência de chikungunya; comparar níveis como se fossem contagem de casos",
-      "funcao_narrativa": "traz o dado nacional à escala de quem lê"
-    },
     "saude.html#boxChikSemana": {
       "tipo": "série semanal com faixa esperada para a época",
       "pergunta_que_responde": "Quantas notificações de chikungunya foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
@@ -606,21 +576,6 @@
       "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
       "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
       "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxDengueMunicipios": {
-      "tipo": "busca por município",
-      "pergunta_que_responde": "Em que nível de alerta de dengue está a minha cidade na última semana consolidada?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "municípios acompanhados pelo InfoDengue",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "última semana consolidada",
-      "variavel_principal": "nível de alerta de dengue do município",
-      "fonte": "InfoDengue (Fiocruz/FGV)",
-      "metodologia": "Consulta direta ao nível publicado. Cidade fora dos municípios acompanhados aparece como não acompanhada, nunca como nível zero.",
-      "conclusoes_permitidas": "dizer o nível de alerta da cidade na semana consolidada",
-      "conclusoes_nao_permitidas": "ler ausência de acompanhamento como ausência de dengue; comparar níveis como se fossem contagem de casos",
-      "funcao_narrativa": "traz o dado nacional à escala de quem lê"
     },
     "saude.html#boxDengueSemana": {
       "tipo": "série semanal com faixa esperada para a época",
