@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários</dt>
+      <dd>`detectar_muro_de_robo` reconhece a &quot;Verificação de segurança — Senado Federal&quot;, que a LexML serve com HTTP 200: é recusa, não conteúdo. Novo chamador do coletor, só por disparo, `recuperar_edicoes_doe.yml` (300 min, prazo de 280, grupo da noite), para a recuperação do canal 2, que não cabe no elo da saúde estadual.</dd>
       <dt>17/10/2026 · A válvula de dia abre o próprio PR de dado</dt>
       <dd>Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).</dd>
       <dt>17/10/2026 · Diários estaduais: 404 não é recusa; 20 UFs com rota provada</dt>
@@ -165,8 +167,6 @@
       <dd>O relógio da nuvem morreu no checkout completo da `main` (7 GB de evidências) dentro do teto de 5 min, na abertura de 16/10. Relógio (no ramo `relogio` e no espelho da `main`) e despachante passam a ler só `scripts/`, `config/` e `data/noite/`: checkout de 8 s. O ensaio 13 reprova checkout completo.</dd>
       <dt>16/10/2026 · Juiz de saúde interrompido não avança o corte</dt>
       <dd>`julgar_saude.py` só carimba o corte de `saude_uf.json` quando julga a fila inteira; interrompido pelo prazo, grava o julgado e mantém o corte (F64). Entram os 17 vereditos do julgamento estadual de 15/10 (nenhuma promoção).</dd>
-      <dt>16/10/2026 · Imprensa: páginas em cartões, perguntas em sanfona</dt>
-      <dd>A Imprensa abre por &quot;O que cada página responde&quot;, agora em cartões, um por página, com link; seguem o que é o MARÉ, o cálculo dos índices, as perguntas frequentes em sanfonas (a primeira de cada grupo aberta), como citar e o contato para redações. Fundo branco em tudo. Saem &quot;Quem está mais preparado?&quot;, &quot;A comparação é do leitor.&quot; e &quot;Os estados são comparáveis entre si?&quot;: o site não convida a comparar entes. Redesenho aprovado pela editoria em 15/10.</dd>
     </dl>
   </section>
 </main>
