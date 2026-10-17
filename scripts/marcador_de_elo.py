@@ -51,6 +51,24 @@ def caminho_do_marcador(elo: str, noite: str) -> str:
     return f"data/noite/{noite}/{elo}.feito"
 
 
+def marcar(elo: str, noite: str, assinatura: str, restante: int = 0, gravar=None) -> str:
+    """Grava o marcador do elo e devolve o caminho. `gravar(caminho, texto)` é injetado.
+
+    17/10/2026 (fila reentrante): elo de fila que acabou o prazo com fila sobrando grava
+    `<elo>.parcial`, com o que sobrou, e não `.feito` — sem `.feito` a reserva o redispara na janela;
+    a rodada que esvazia a fila grava `.feito`. Elo sem fila declarada passa `restante=0`."""
+    caminho = caminho_do_marcador(elo, noite)
+    if restante > 0:
+        caminho, assinatura = caminho[:-len(".feito")] + ".parcial", f"{assinatura} · restante {restante}"
+    (gravar or _gravar_na_arvore)(caminho, assinatura + "\n")
+    return caminho
+
+
+def _gravar_na_arvore(caminho: str, texto: str) -> None:
+    (RAIZ / caminho).parent.mkdir(parents=True, exist_ok=True)
+    (RAIZ / caminho).write_text(texto, encoding="utf-8")
+
+
 def trabalhou(elo: str, noite: str, existe_arquivo, artefatos) -> tuple:
     """(trabalhou, prova). Função pura: as duas provas entram por parâmetro.
 
@@ -109,10 +127,17 @@ def autoteste() -> int:
     ok("`coleta-perdida` NÃO é prova de coleta deste elo nesta noite",
        trabalhou("diarios", "2026-10-09", lambda c: False,
                  ["coleta-perdida-diarios-37875038703"])[0] is False)
+    gravados = {}
+    g = gravados.__setitem__
+    ok("fila esvaziada grava `.feito`",
+       marcar("juiz", "2026-10-18", "juiz · t · run 1", 0, g) == "data/noite/2026-10-18/juiz.feito")
+    ok("fila sobrando grava `.parcial` com o restante, e não `.feito`",
+       marcar("juiz", "2026-10-18", "juiz · t · run 2", 40, g) == "data/noite/2026-10-18/juiz.parcial"
+       and gravados["data/noite/2026-10-18/juiz.parcial"].strip().endswith("restante 40"))
     import inspect
     ok("trava estrutural: as funções puras não leem disco nem vão à rede",
        all(x not in inspect.getsource(trabalhou) for x in ("open(", "subprocess", "requests")))
-    print(f"autoteste: {10 - len(falhas)}/10")
+    print(f"autoteste: {12 - len(falhas)}/12")
     return 1 if falhas else 0
 
 
@@ -131,12 +156,18 @@ def main() -> int:
             else:
                 noite = valor
     if not elo:
-        print("uso: marcador_de_elo.py --elo <nome> [--noite AAAA-MM-DD]")
+        print("uso: marcador_de_elo.py --elo <nome> [--noite AAAA-MM-DD] "
+              "[--marcar <assinatura> [--restante N]]")
         return 2
     if not noite:
         import datetime as dt
         from janela_da_noite import noite_corrente
         noite = noite_corrente(dt.datetime.now(dt.timezone.utc).replace(tzinfo=None))
+    if "--marcar" in argv:
+        restante = argv[argv.index("--restante") + 1] if "--restante" in argv else "0"
+        print(marcar(elo, noite, argv[argv.index("--marcar") + 1],
+                     int(restante) if restante.strip().isdigit() else 0))
+        return 0
     feito, prova = trabalhou(elo, noite, lambda c: (RAIZ / c).is_file(),
                              artefatos_do_repositorio())
     print(f"{elo} · noite de {noite} · trabalhou={'sim' if feito else 'nao'} · {prova}")

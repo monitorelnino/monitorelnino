@@ -70,6 +70,13 @@ on:
         required: false
         default: false
         type: boolean
+      restante:
+        description: >-
+          Elo de fila (17/10/2026): comando que imprime quanto da fila sobrou. Maior que zero, o elo
+          grava `<elo>.parcial` em vez de `.feito`, e a reserva do despachante o redispara na janela.
+        required: false
+        default: ""
+        type: string
     secrets:
       ROBO_TOKEN:
         # 08/10/2026 (A2-28): sem ele, o tique oportunista roda com o `GITHUB_TOKEN`,
@@ -317,6 +324,12 @@ jobs:
           MARGEM=15
           if [ "$TETO" -lt 60 ]; then MARGEM=$(( TETO / 4 )); [ "$MARGEM" -lt 5 ] && MARGEM=5; fi
           PRAZO=$(( ${JOB_INICIO_EPOCH:-$(date -u +%s)} + (TETO - MARGEM) * 60 ))
+          # 17/10/2026: na `main`, o prazo também não passa do fim da janela da noite — o elo que a
+          # reserva redispara às 08:00 commita antes das 09:00, e o que sobrou espera a noite seguinte.
+          if [ "${RAMO}" = "main" ]; then
+            FIM=$(( $(python3 scripts/janela_da_noite.py --fim-da-janela) - MARGEM * 60 ))
+            if [ "$FIM" -lt "$PRAZO" ]; then PRAZO=$FIM; fi
+          fi
           echo "prazo da coleta: $(date -u -d "@$PRAZO" +%H:%M) UTC (teto ${TETO} min, margem ${MARGEM} min)"
           while IFS= read -r cmd; do
             # Linha só de espaço e linha de comentário não são comando (F39: em 11/10 cada
@@ -342,11 +355,19 @@ jobs:
       - name: Marcar que este elo trabalhou
         if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'coleta-dia/')
         id: feito
+        env:
+          RESTANTE_CMD: ${{ inputs.restante }}
         run: |
           NOITE="$(python3 scripts/janela_da_noite.py --noite)"
-          mkdir -p "data/noite/$NOITE"
-          echo "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}" \
-            > "data/noite/$NOITE/${{ inputs.nome }}.feito"
+          # Restante ilegível vale zero: na dúvida o elo conta como feito e não volta (17/10/2026).
+          RESTANTE=0
+          if [ -n "$RESTANTE_CMD" ] && [[ "${RAMO}" != ensaio-real/* ]]; then
+            RESTANTE="$(python3 $RESTANTE_CMD 2>/dev/null | tail -1)" || RESTANTE=0
+          fi
+          MARCADOR="$(python3 scripts/marcador_de_elo.py --elo "${{ inputs.nome }}" --noite "$NOITE" \
+            --restante "${RESTANTE:-0}" --marcar "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}")"
+          echo "trabalhou=1" >> "$GITHUB_OUTPUT"
+          case "$MARCADOR" in *.parcial) echo "marcador: $MARCADOR (fila sobrando: $RESTANTE)"; exit 0 ;; esac
           # 10/10/2026: o passo seguinte lê `env.NOITE`, e ninguém o exportava — o artefato saía
           # como `feito-<elo>-` com caminho `data/noite//<elo>.feito`, ou seja, não saía. A
           # segunda prova do marcador (`marcador_de_elo.py`) nunca existiu de fato.
@@ -389,7 +410,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 2
         env:
-          FEITO: ${{ steps.feito.outputs.feito }}
+          FEITO: ${{ steps.feito.outputs.trabalhou }}
         run: |
           # `--feito` vem do passo do marcador: é o elo dizendo "eu coletei". Sem ele, o painel
           # cai na conclusão do job, e um job cancelado passa a NÃO contar como noite aberta.

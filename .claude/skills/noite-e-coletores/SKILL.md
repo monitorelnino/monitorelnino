@@ -93,6 +93,8 @@ A guarda "esta noite já abriu?" conta só o run que **trabalhou**: `in_progress
 comandos de coleta e antes do commit**. A ordem é a regra: elo que coletou e perdeu o push trabalhou
 (refazê-lo duplicaria lote e commit); elo cancelado antes de coletar não trabalhou, e a reserva
 refaz. Quem decide é `painel_da_noite.trabalhou()`.
+Elo de fila (juiz) que acaba o prazo com fila sobrando grava `<elo>.parcial`, não `.feito`: a
+reserva o redispara até 08:00 UTC, e na `main` nenhum prazo passa das 09:00 (17/10/2026).
 
 **4 · Nenhum script cancela run de outro.**
 Grupo de concorrência é **fila**, não cancelamento: `cancel-in-progress: false` em todo elo. Só o
