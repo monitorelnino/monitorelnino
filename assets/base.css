@@ -459,7 +459,7 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    crista (E14). Só a tinta muda: antecipação/saúde = Argila → Âmbar → Mineral → Musgo (0 → 100);
    resposta = Mineral → Argila (frio → quente), decisão de 06/09 mantida. Variante: .gauge-fill--resposta. */
 .mare-metade{display:block;}
-#metadeResposta{border-top:1px solid var(--line); margin-top:var(--sp-4);}
+.mare-metade + .mare-metade{border-top:1px solid var(--line); margin-top:var(--sp-4);}
 .gauge-zone, .contador-zone{display:flex; flex-direction:column; gap:var(--sp-2);}
 .gauge-head{display:flex; align-items:baseline; gap:var(--sp-2); margin-bottom:0; flex-wrap:wrap;}
 .gauge-head .gnum{font-family:var(--font-titulo); font-size:var(--fs-display); line-height:1; font-weight:var(--peso-display); color:var(--ink);}
@@ -1238,9 +1238,16 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
   .caminhos-lista{display:block;}
 }
 /* ===== Defesa civil, ajuste 10 (09/10/2026) ============================================== */
-/* Topo compacto: a mesma anatomia do cartão de número, um degrau menor. */
+/* Topo compacto: a mesma anatomia do cartão de número, um degrau menor. Desde 17/10/2026 (central,
+   HANDOVER_NINO34_SEMANAL_E_CARTOES_COMPACTOS §3) é a variante dos números de topo de toda página:
+   até seis cartões numa linha no desktop, três no tablet, dois no celular; número em 28 px, rótulo
+   em 14 px. Fica depois da regra base e da de três colunas, e por isso vence as duas. */
+.grade-numeros--compacta{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr);}
 .grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
 .grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
+.grade-numeros--compacta .cartao-numero-rotulo{font-size:var(--fs-small); line-height:var(--lh-small);}
+@media (max-width: 1020px){ .grade-numeros--compacta{grid-auto-flow:row; grid-template-columns:repeat(3, minmax(0,1fr));} }
+@media (max-width: 640px){ .grade-numeros--compacta{grid-template-columns:repeat(2, minmax(0,1fr));} }
 /* Barras em HTML: rótulo inteiro, valor na ponta, painel por órgão. */
 .figura-midia--barras, .figura-midia--texto{overflow:visible;}
 /* Em uma coluna (até 1020 px) a mídia de texto ou de barras não reserva a proporção do mapa: sem par ao lado para alinhar, a reserva vira vão. */

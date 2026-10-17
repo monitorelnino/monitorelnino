@@ -227,6 +227,15 @@
     return desenharMapa(ctx, svgId, legendaId, uf => (faixa(porUF[uf] || 0) || {cor: cinza}).cor, rotulo, itens, 'contagem');
   }
 
+  /** Selo da faixa do índice (0–100), o mesmo no MARÉ Legal e no MARÉ Saúde, como elemento. Pares de
+   *  cor conferidos contra WCAG AA (4,5:1) em 31/08/2026. */
+  function pilulaDaFaixa(v) {
+    const fx = PALETA.faixaDe(v), el = document.createElement('span');
+    el.className = 'gfaixa-pill'; el.textContent = PALETA.faixaRotulo[fx];
+    el.style.background = PALETA.faixas[fx]; el.style.color = PALETA.faixasTexto[fx];
+    return el;
+  }
+
   /** Escala contínua canônica (gradiente) + itens discretos opcionais. */
   function legendaContinua(elId, gradiente, rotuloMin, rotuloMax, itens) {
     const el = document.getElementById(elId); if (!el) return;
@@ -429,5 +438,13 @@
     });
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, atmosfera, hachura, credito, dataBR, animarGauges };
+  /* Risco previsto em etiquetas de sigla (Monitor de riscos e Saúde): cada sigla leva à ficha do
+     estado na inicial; `grupos` = [[rótulo, [UFs]], ...], e família sem estado não aparece. */
+  const chipsDeUF = ufs => ufs.map(uf => '<a class="chip-risco" href="index.html#' + esc(uf) + '">' + esc(uf) + '</a>').join('');
+  function faixaPrevista(dl, grupos) {
+    dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs]) =>
+      '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
+  }
+
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);
