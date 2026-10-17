@@ -1772,6 +1772,7 @@ coletada, sem aparecer em lugar nenhum:
 
 - **Oceanic Niño Index (ONI)** — NOAA/CPC
 - **Anomalia mensal da temperatura do mar, região Niño 3.4** — NOAA/CPC
+- **Anomalia semanal da temperatura do mar, região Niño 3.4** — NOAA/CPC (17/10/2026): a anomalia da semana, sem o desconto do aquecimento tropical que define o RONI; não substitui o RONI e não entra em índice nenhum.
 - **Discussão diagnóstica do ENOS** — CPC/NCEP/NWS (NOAA)
 - **Prognóstico climático trimestral** — INMET/CPTEC-INPE A razão é de leitura, não de método — três gráficos do mesmo fenômeno lado a lado pediam do
 leitor uma comparação técnica que não é a pergunta da página.

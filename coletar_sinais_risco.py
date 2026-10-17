@@ -275,6 +275,16 @@ FONTES = {
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
     },
+    "noaa_nino34_semanal": {
+        # 17/10/2026 (HANDOVER_NINO34_SEMANAL §1): a anomalia SEMANAL da Niño 3.4, sem o desconto do
+        # aquecimento tropical que define o RONI. Apoio técnico até a página creditá-la (a B1 a desenha
+        # abaixo do RONI); não substitui o RONI e não entra em índice nenhum.
+        "nome": "Anomalia semanal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC",
+        "camada": "apoio_tecnico",
+        "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for",
+        "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for",
+        "papel": "Leitura semanal da anomalia na região Niño 3.4 (base 1991–2020 do arquivo wksst9120).",
+    },
     "iri_plume": {
         # 24/09/2026 (§209): varredura dos caminhos de DADO, com o resultado de que não há tabela
         # aberta. Registrado para ninguém repetir:
@@ -519,6 +529,24 @@ def parse_nino34_mensal(texto: str) -> list:
         except ValueError:
             continue
     return serie[-48:]
+
+
+MESES_CPC = ("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
+
+
+def parse_nino34_semanal(texto: str) -> list:
+    """[{'semana': AAAA-MM-DD, 'anomalia'}] do arquivo semanal do CPC (wksst9120.for): linha "03JAN1990"
+    seguida de SST e SSTA de Niño 1+2, 3, 3.4 e 4 — a anomalia da Niño 3.4 é o 6º número. Os números
+    vêm colados quando a anomalia é negativa ("26.6-0.4"); linha fora do formato não entra. Função pura."""
+    serie = []
+    for linha in (texto or "").splitlines():
+        m = re.match(r"^\s*(\d{2})([A-Z]{3})(\d{4})\s+(.+)$", linha)
+        numeros = re.findall(r"-?\d+\.\d+", m.group(4)) if m else []
+        if not m or m.group(2) not in MESES_CPC or len(numeros) != 8:
+            continue
+        semana = f"{m.group(3)}-{MESES_CPC.index(m.group(2)) + 1:02d}-{m.group(1)}"
+        serie.append({"semana": semana, "anomalia": float(numeros[5])})
+    return serie
 
 
 def parse_plume_iri(texto: str) -> list:
@@ -1634,6 +1662,11 @@ def coletar_fonte(chave: str):
             raise ValueError(f"série mensal Niño 3.4 curta demais ({len(serie)} pontos) — recusada")
         ultimo = serie[-1]
         return {"serie": serie}, f"Niño 3.4 mensal, último mês {ultimo['mes']:02d}/{ultimo['ano']}"
+    if chave == "noaa_nino34_semanal":
+        serie = [x for x in parse_nino34_semanal(bruto) if x["semana"] >= "2025-01-01"]
+        if len(serie) < 26:
+            raise ValueError(f"série semanal Niño 3.4 curta demais ({len(serie)} semanas) — recusada")
+        return {"serie": serie, "ultimo": serie[-1]}, f"Niño 3.4 semanal, semana de {serie[-1]['semana']}"
     if chave == "inmet_previsao_capitais":
         lido = parse_previsao_capitais_inmet(json.loads(_buscar_registrado(chave, fonte["endpoint"])))
         if not lido:
@@ -1871,6 +1904,9 @@ def coletar(registro: dict, camadas) -> dict:
             registro["enos"]["roni"] = {**payload, "fonte": chave, "documento": documento}
         elif chave == "noaa_nino34_mensal":
             registro["enos"]["nino34_mensal"] = {**payload, "fonte": chave, "documento": documento}
+        elif chave == "noaa_nino34_semanal":
+            registro["enos"]["nino34_semanal"] = {**payload, "fonte": chave, "documento": documento,
+                                                  "consultado_em": agora()}
         elif chave == "inmet_previsao_capitais":
             for uf, valor in (payload.get("por_uf") or {}).items():
                 if uf in registro["uf"]:
@@ -2557,6 +2593,11 @@ def autoteste() -> int:
     checar("RONI: a série inteira cabe muito abaixo do teto de 50 MB da trava de tamanho",
            len(json.dumps(_roni_longa, ensure_ascii=False)) < 200_000)
     _mensal_teste = parse_nino34_mensal(" YR   MON  TOTAL ClimAdjust ANOM\n2026   7   29.07   27.29    1.78\n2026   8   29.04   26.87    2.17\n")
+    checar("Niño 3.4 semanal: a 6ª leitura, com número negativo colado e linha estranha fora",
+           parse_nino34_semanal(" Week          SST SSTA     SST SSTA     SST SSTA     SST SSTA\n"
+                                " 08OCT2026     21.9 1.2     26.3 1.4     28.5 1.9     29.6 0.9\n"
+                                " 15OCT2026     21.0-0.1     25.1-0.3     26.6-0.4     28.6 0.1\n x\n")
+           == [{"semana": "2026-10-08", "anomalia": 1.9}, {"semana": "2026-10-15", "anomalia": -0.4}])
     checar("Niño 3.4 mensal: lê a 5ª coluna (ANOM), não a 3ª (TOTAL)", _mensal_teste == [
         {"ano": 2026, "mes": 7, "anomalia": 1.78}, {"ano": 2026, "mes": 8, "anomalia": 2.17}])
 
