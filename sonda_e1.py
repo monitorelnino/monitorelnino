@@ -94,5 +94,36 @@ def dbc_extra():
             print(f"[mdtm] {cam}: {f.sendcmd('MDTM ' + C.SINAN + '/' + cam)}")
 
 
+def sisab_post():
+    import http.cookiejar, urllib.request, urllib.parse
+    from coletores_base import ua_de
+    import coletar_sisab as S
+    cj = http.cookiejar.CookieJar()
+    op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+    ua = ua_de("SISAB relatorio publico")
+    h = op.open(urllib.request.Request(S.RELATORIO, headers={"User-Agent": ua}), timeout=180).read().decode("utf-8", "replace")
+    vs = re.search(r'name="javax\.faces\.ViewState"[^>]*value="([^"]+)"', h).group(1)
+    acao = re.search(r'<form id="j_idt44"[^>]*action="([^"]+)"', h).group(1)
+    ids = re.findall(r'id="cid-([A-Z0-9]+-[14])"', h)
+    alvo = [c for c in ids if c.split("-")[0] in ("D11", "D70", "D73", "A00", "A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09")]
+    print("[sisab-post] códigos de diarreia achados:", alvo, "de", len(ids))
+    comps = re.findall(r'<option value="(\d{6})">', h)
+    print("[sisab-post] competências:", comps[:3], "...", comps[-3:], len(comps))
+    campos = [("j_idt44", "j_idt44"), ("unidGeo", "brasil"), ("selectLinha", "ATD.CO_UF_IBGE"), ("selectcoluna", "NU_COMPETENCIA"),
+              ("tpProducao", "4"), ("lsCid", ",".join(alvo) + ","), ("javax.faces.ViewState", vs), ("j_idt192", "j_idt192")]
+    campos += [("j_idt76", c) for c in comps[:3]]
+    for e in re.findall(r'<option value="(eq-[a-z]+)"', h):
+        campos.append(("j_idt89", e))
+    url = urllib.parse.urljoin(S.RELATORIO, acao)
+    r = op.open(urllib.request.Request(url, data=urllib.parse.urlencode(campos).encode(), headers={"User-Agent": ua, "Content-Type": "application/x-www-form-urlencoded"}), timeout=300)
+    corpo = r.read()
+    print("[sisab-post] resposta:", r.status, r.headers.get("Content-Type"), r.headers.get("Content-Disposition"), len(corpo))
+    print("[sisab-post] início:", corpo[:3000].decode("latin-1"))
+    # sem códigos: total de atendimentos, para comparação
+    campos2 = [c for c in campos if c[0] != "lsCid"] + [("lsCid", "")]
+    r2 = op.open(urllib.request.Request(url, data=urllib.parse.urlencode(campos2).encode(), headers={"User-Agent": ua, "Content-Type": "application/x-www-form-urlencoded"}), timeout=300)
+    print("[sisab-post] sem filtro:", r2.read()[:1500].decode("latin-1"))
+
+
 if __name__ == "__main__":
-    {"fontes": fontes, "tabnet": tabnet, "sisab": sisab, "ckan": ckan, "sisab_html": sisab_html, "dbc_extra": dbc_extra}[sys.argv[1]]()
+    {"fontes": fontes, "tabnet": tabnet, "sisab": sisab, "ckan": ckan, "sisab_html": sisab_html, "dbc_extra": dbc_extra, "sisab_post": sisab_post}[sys.argv[1]]()
