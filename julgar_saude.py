@@ -52,7 +52,7 @@ import juiz
 # `oficial` vem do coletor que produziu as pistas, e não de uma cópia: a pergunta "este endereço é
 # de fonte oficial?" tem de ter UMA resposta nos dois lados. Duas cópias divergem na primeira
 # exceção de domínio que alguém acrescentar a um dos arquivos.
-from coletar_saude_estadual import oficial
+from coletar_saude_estadual import UFS, oficial
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
 from julgar_filas import julgar_lista
 
@@ -736,6 +736,99 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
     return mudou
 
 
+# ── Emergência sanitária declarada (HANDOVER_RESPOSTA_SANITARIA, 17/10/2026) ─────────────────
+# ESPIN é do Ministro da Saúde; decreto estadual, do governador. O verbo e o órgão vêm do ato lido,
+# com o teste do verbo de `coletar_espin` (um só); dúvida é abstenção registrada, nunca promoção.
+RE_GOVERNADOR = re.compile(r"\bgovernador(?:a)?\s+do\s+(?:estado|distrito)\b", re.I)
+JANELA_DO_ATO = 600   # a edição tem dezenas de atos: o verbo se lê em volta da declaração
+RE_DATA_DO_ATO = re.compile(r"\s*,?\s*DE\s+(\d{1,2})[ºo°]?\s+DE\s+([A-Za-zÇç]+)\s+DE\s+(\d{4})", re.I)
+MESES_DO_ATO = {m: i for i, m in enumerate(("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
+                                            "agosto", "setembro", "outubro", "novembro", "dezembro"), 1)}
+
+
+def julgar_declaracao(texto: str, item: dict, tipo: str, uf: str) -> tuple:
+    """(registro | None, motivo). Função pura: entra só o ato que declara, de quem pode, no ciclo."""
+    from coletar_espin import INICIO_CICLO, ORGAO_QUE_DECLARA, classificar_ato
+    c = classificar_ato(item, texto)
+    if c["classe"] != "declaracao":
+        return None, f"não declara ({c['classe']}{': ' + c['motivo'] if c.get('motivo') else ''})"
+    if not (ORGAO_QUE_DECLARA if tipo == "espin" else RE_GOVERNADOR).search(f"{item.get('orgao') or ''} {texto}"):
+        return None, "órgão sem competência para declarar"
+    d = str(item.get("data") or "")
+    iso = "-".join(reversed(d.split("/"))) if "/" in d else d
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", iso) or iso < INICIO_CICLO:
+        return None, "data ausente ou anterior ao ciclo"
+    return {"uf": uf, "tipo": tipo, "documento": c.get("ato") or c["titulo"], "data": d, "url": item.get("url")}, ""
+
+
+def julgar_emergencias(anteriores, espin_busca: dict, ocorrencias: dict, registros_doe: dict,
+                       buscar_fn=None, preservar_fn=None) -> tuple:
+    """(emergencias, busca). Lê cada candidato federal (`espin_busca`) e cada edição estadual com
+    ocorrência `classe: declaracao` (`doe_ocorrencias`); confirmada entra, o resto vira abstenção com
+    motivo. Confirmada antes não sai por falha de hoje. `busca` diz o que cada metade procurou."""
+    from coletar_edicoes_doe import busca_de_declaracao
+    from coletar_espin import PADRAO_ATO, PADRAO_DECLARA
+    confirmadas = [e for e in (anteriores or []) if isinstance(e, dict)]
+    abstencoes = []
+
+    nao_lidos = set()   # "BR" ou UF cuja leitura falhou: a metade vira lacuna, nunca "consultado"
+
+    def ler_ato(url, uf):
+        try:
+            corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
+        except Exception as e:  # noqa: BLE001 — falha de leitura é abstenção e lacuna, nunca ausência
+            corpo, motivo = None, f"documento não baixado: {type(e).__name__}"
+        texto = texto_do_documento(corpo, url) if corpo is not None else ""
+        if corpo is not None and not texto.strip():
+            corpo, motivo = None, "documento sem texto extraível"
+        if corpo is None:
+            abstencoes.append({"url": url, "uf": uf, "motivo": motivo})
+            nao_lidos.add(uf)
+        return corpo, texto
+
+    def decidir(corpo, texto, item, tipo, uf):
+        e, motivo = julgar_declaracao(texto, item, tipo, uf)
+        if not e:
+            abstencoes.append({"url": item.get("url"), "uf": uf, "motivo": motivo})
+        elif not any((x.get("url"), x.get("uf"), x.get("documento")) == (e["url"], uf, e["documento"]) for x in confirmadas):
+            e["hash_evidencia"] = (preservar_fn or preservar_evidencia)(
+                corpo, e["url"], "pdf" if corpo[:5] == b"%PDF-" else "html", "julgar_saude")
+            confirmadas.append(e)
+
+    fed = espin_busca or {}
+    for item in fed.get("declaracoes", []) + fed.get("pendente_leitura_automatica", []):
+        corpo, texto = ler_ato(item.get("url"), "BR")
+        if corpo is not None:
+            decidir(corpo, texto, item, "espin", "BR")
+    for uf, por_data in ((ocorrencias or {}).get("ufs") or {}).items():
+        for data, oc in sorted(por_data.items()):
+            if not any(a.get("classe") == "declaracao" for a in oc.get("achados") or []):
+                continue
+            corpo, texto = ler_ato(oc.get("url"), uf)
+            if corpo is not None and not PADRAO_DECLARA.search(texto):
+                abstencoes.append({"url": oc.get("url"), "uf": uf, "motivo": "edição sem verbo que declara (menção de passagem)"})
+            for m in (PADRAO_DECLARA.finditer(texto) if corpo is not None else ()):
+                # O ato é o último DECRETO antes do verbo: órgão e data se leem dele, não do vizinho.
+                atos = [a for a in PADRAO_ATO.finditer(texto, max(0, m.start() - JANELA_DO_ATO), m.start())
+                        if a.group(0).upper().startswith("DECRETO")]
+                d = atos and RE_DATA_DO_ATO.match(texto, atos[-1].end(), atos[-1].end() + 40)
+                if not d or d.group(2).lower() not in MESES_DO_ATO:
+                    abstencoes.append({"url": oc.get("url"), "uf": uf, "motivo": "declaração sem decreto datado identificado"})
+                    continue
+                data_ato = f"{int(d.group(1)):02d}/{MESES_DO_ATO[d.group(2).lower()]:02d}/{d.group(3)}"
+                decidir(corpo, texto[atos[-1].start():m.end() + 200],
+                        {"titulo": atos[-1].group(0), "url": oc.get("url"), "data": data_ato}, "decreto_estadual", uf)
+    federal = ({"consultado_em": fed.get("consultado_em"), "janela": fed.get("janela")}
+               if fed.get("situacao") in ("nenhuma_declaracao_localizada", "declaracao_localizada")
+               and not fed.get("leitura_parcial") and "BR" not in nao_lidos
+               else {"lacuna": f"busca federal incompleta: {fed.get('situacao') or 'não rodou'}"
+                     + ("; ato candidato não lido" if "BR" in nao_lidos else "")})
+    estadual = {uf: ({"lacuna": "edição com declaração não lida pelo juiz"} if uf in nao_lidos
+                     else busca_de_declaracao(uf, (registros_doe or {}).get(uf) or {})) for uf in sorted(registros_doe or {})}
+    return confirmadas, {"federal": federal, "estadual": estadual, "abstencoes": abstencoes,
+                         "julgado_em": hoje_editorial().strftime("%d/%m/%Y")}
+
+
 def autoteste() -> int:
     t_sala = ("PORTARIA Nº 0666/2024 — Dispõe sobre a instituição da Sala de Situação em Saúde para "
               "o enfrentamento das Mudanças Climáticas. O SECRETÁRIO DE ESTADO DE SAÚDE resolve:")
@@ -996,6 +1089,38 @@ def autoteste() -> int:
     def nega(url, **kw):
         raise urllib.error.HTTPError(url, 404, "nao achado", None, None)
 
+    # 17/10/2026 (HANDOVER_RESPOSTA_SANITARIA §2): emergência sanitária declarada.
+    ms = {"titulo": "PORTARIA GM/MS Nº 1.000, DE 1 DE AGOSTO DE 2026", "url": "u1", "data": "01/08/2026",
+          "orgao": "Ministério da Saúde/Gabinete do Ministro"}
+    t_espin = "Art. 1º Declarar Emergência em Saúde Pública de Importância Nacional em razão de arboviroses."
+    t_dec = ("DECRETO Nº 45.001, DE 10 DE SETEMBRO DE 2026. O GOVERNADOR DO ESTADO DA PARAÍBA, no uso das "
+             "atribuições, Art. 1º Fica declarada situação de emergência em saúde pública em razão da epidemia de dengue.")
+    casos["ESPIN lida, com verbo que declara e órgão MS, entra como BR"] = (
+        lambda: (julgar_declaracao(t_espin, ms, "espin", "BR")[0] or {}).get("uf") == "BR")
+    casos["prorrogação de ESPIN não entra"] = (
+        lambda: julgar_declaracao("Prorroga a Emergência em Saúde Pública de Importância Nacional.", ms, "espin", "BR")[0] is None)
+    casos["decreto estadual de saúde, do governador, entra com a UF"] = (
+        lambda: (julgar_declaracao(t_dec, {"titulo": "DECRETO Nº 45.001", "url": "u2", "data": "2026-09-10"},
+                                   "decreto_estadual", "PB")[0] or {}).get("uf") == "PB")
+    casos["menção de passagem não entra"] = (
+        lambda: julgar_declaracao("O COE acompanha a emergência em saúde pública vigente.", ms, "espin", "BR")[0] is None)
+    casos["órgão sem competência não entra"] = (
+        lambda: julgar_declaracao(t_espin, dict(ms, orgao="Tribunal de Contas da União"), "espin", "BR")[0] is None)
+    emerg, busca = julgar_emergencias(
+        None, {"situacao": "declaracao_localizada", "consultado_em": "12/10/2026", "declaracoes": [ms]},
+        {"ufs": {"PB": {"2026-09-10": {"url": "e.html", "achados": [{"classe": "declaracao"}]}}}}, {"AC": {}},
+        buscar_fn=lambda u, **k: (t_espin if u == "u1" else t_dec).encode(), preservar_fn=lambda *a: "h")
+    casos["o juiz lê as duas filas e diz o que cada metade procurou"] = (
+        lambda: sorted(e["uf"] for e in emerg) == ["BR", "PB"] and busca["federal"]["consultado_em"] == "12/10/2026"
+        and "lacuna" in busca["estadual"]["AC"])
+    def _cai(u, **k):
+        raise urllib.error.URLError("sem rota")
+    _, b2 = julgar_emergencias(None, {"situacao": "declaracao_localizada", "consultado_em": "12/10/2026", "declaracoes": [ms]},
+                               {}, {}, buscar_fn=_cai, preservar_fn=lambda *a: "h")
+    casos["ato candidato não lido: a metade federal é lacuna, nunca consultada"] = lambda: "lacuna" in b2["federal"]
+    e3, _ = julgar_emergencias(None, {}, {"ufs": {"PB": {"2026-09-10": {"url": "e.html", "achados": [{"classe": "declaracao"}]}}}}, {},
+                               buscar_fn=lambda u, **k: t_dec.replace("2026. O", "2025. O").encode(), preservar_fn=lambda *a: "h")
+    casos["decreto antigo republicado no ciclo não entra: vale a data do ato"] = lambda: e3 == []
     _HOSTS_SEM_RESPOSTA.clear()
     v1 = julgar_pista({"url": "https://morto.ap.gov.br/a.pdf", "uf": "AP"}, buscar_fn=cai)
     v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)

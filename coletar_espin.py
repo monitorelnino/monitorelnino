@@ -63,8 +63,10 @@ TERMOS = [
 # deles poderia declarar. O filtro é de competência, não de palpite.
 ORGAO_QUE_DECLARA = re.compile(r"Minist[ée]rio da Sa[úu]de", re.I)
 # O ato que DECLARA diz que declara. Prorrogação, encerramento e menção de passagem usam
-# outros verbos — e por isso não casam aqui.
-PADRAO_DECLARA = re.compile(r"\bdeclara(?:m|r|ção)?\b[^.]{0,160}\bemerg[êe]ncia em sa[úu]de p[úu]blica\b", re.I)
+# outros verbos — e por isso não casam aqui. "Fica declarada" é a fórmula do decreto estadual
+# (17/10/2026); "declarada pela Portaria", sem o "fica", é citação e não casa.
+PADRAO_DECLARA = re.compile(r"(?:\bdeclara(?:m|r|ção)?\b|\bfica(?:m)?\s+declarad[ao]s?\b)[^.]{0,160}"
+                            r"\bemerg[êe]ncia em sa[úu]de p[úu]blica\b", re.I)
 PADRAO_ENCERRA = re.compile(r"\b(encerra|declara o encerramento|revoga|torna sem efeito)\b", re.I)
 PADRAO_PRORROGA = re.compile(r"\bprorroga\b", re.I)
 PADRAO_ATO = re.compile(r"(PORTARIA|DECRETO)\s+(?:[A-ZÇ/\.]+\s+)?N[ºo°]\s*([\d\.]+)", re.I)
@@ -240,20 +242,15 @@ def coletar(args) -> int:
     f.update({"status": "coletado", "consultado_em": bloco["consultado_em"],
               "documento": f"DOU seção 1, {desde} a {ate}"})
     sinais["gerado_em"] = hoje_editorial().strftime("%d/%m/%Y")
+    # 17/10/2026 (HANDOVER_RESPOSTA_SANITARIA §1.1): `espin_revisar.json` era uma fila que ninguém
+    # lia. O juiz lê os candidatos deste bloco e as declarações estaduais do canal 2, com o ato
+    # aberto, e `emergencias` sai pelo escritor que já grava este arquivo (um escritor só).
+    from julgar_saude import UFS as UFS_DOE, julgar_emergencias
+    from coletar_edicoes_doe import PASTA as PASTA_DOE
+    sinais["emergencias"], sinais["emergencias_busca"] = julgar_emergencias(
+        sinais.get("emergencias"), bloco, ler("doe_ocorrencias.json", {}),
+        {uf: ler(f"{PASTA_DOE}/{uf}.json", {}) or {} for uf in UFS_DOE})
     gravar("saude_sinais.json", sinais)
-    # R7: nada entra no banco por classificação automática. O que o coletor achou — declaração
-    # inclusive — fica pendente de leitura automática (juiz com documento oficial, §106).
-    if bloco["declaracoes"] or bloco["pendente_leitura_automatica"]:
-        gravar("espin_revisar.json", {
-            "_governanca": ("Fila de leitura automática (R7, §106). Saída de classificação automática do "
-                            "coletar_espin.py: nada aqui é registro, e nada entra em "
-                            "data/saude_sinais.json['emergencias'] sem o juiz automático com o ato lido; "
-                            "na dúvida, abstenção registrada."),
-            "gerado_em": bloco["consultado_em"],
-            "janela": bloco["janela"],
-            "candidatos_a_declaracao": bloco["declaracoes"],
-            "em_duvida_ou_outro_ato": bloco["pendente_leitura_automatica"],
-        })
     for c in bloco["nao_lidos"]:
         registrar_lacuna("DOU/ESPIN — ato não aberto",
                          c["titulo"][:80] + ": leitura do ato falhou; classificação ficou incerta",

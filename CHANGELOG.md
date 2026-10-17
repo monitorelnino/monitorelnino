@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #811 · Resposta sanitária: zero sem busca vira "não coletado"
+
+O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.
+
 ## 2026-10-16 · #809 · Ar medido: hora de medição no futuro vira lacuna
 
 Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.
