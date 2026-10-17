@@ -10835,7 +10835,7 @@
     "resultado": "preparada"
    },
    "juiz": {
-    "codebook": "1.4 (09/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -10845,7 +10845,7 @@
      },
      "1_identidade": {
       "ok": true,
-      "trecho": "ESBARRETO SECRETÁRIADEEDUCAÇÃO CECÍLIACORTEZDACUNHACRUZ AUTARQUIADEURBANIZAÇÃODORECIFE–URB LUÍSHENRIQUEVEIGAFARIASDELIRA SECRETÁRIADEINFRAESTRUTURA BEATRIZCARNE"
+      "trecho": "TÁRIADECULTURA CARMENLÚCIASIMÕESMEGALENEVES CHEFEASSESSORIAESPECIALDOPREFEITODO RECIFE SECRETÁRIODERELAÇÕESINSTITUCIONAIS ANTÔNIOMÁRIODAMOTALIMEIRAFILHO RAULJEA"
      },
      "2_citacao": {
       "ok": false,
@@ -10860,7 +10860,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-09",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "b409b9279ddcaee1842fdee8e0140fc7a544333188d87ac0642967c9e4449dcf"
    },
    "busca_dirigida": [
@@ -10906,9 +10906,17 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf"
     }
    ],
-   "ultima_busca_em": "2026-10-09",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-09-28",
@@ -10945,6 +10953,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "verificacao_fonte": {
@@ -10960,9 +10974,8 @@
     },
     "url": "https://acaoinverno.recife.pe.gov.br/wp-content/uploads/2026/04/PLANO-DE-CONTINGENCIA-RECIFE-2026__final.pdf"
    },
-   "tentativas_de_busca_dirigida": 1,
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-17"
+   "tentativas_de_busca_dirigida": 2,
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "Paulista",
@@ -36565,9 +36578,17 @@
       "sitio_oficial"
      ],
      "encontrou": "http://www.rj.gov.br/drm/node/947"
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "http://www.rj.gov.br/drm/node/947"
     }
    ],
-   "ultima_busca_em": "2026-10-16",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-09-29",
@@ -36604,6 +36625,12 @@
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.6 (15/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
@@ -36636,9 +36663,9 @@
     "julgado_em": "2026-10-14",
     "hash_evidencia": "e0e17c7559e4670d828b144370d2a423f9672e1f30521f034c27131bfafb5008"
    },
-   "tentativas_de_busca_dirigida": 3,
+   "tentativas_de_busca_dirigida": 4,
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-17"
+   "proxima_tentativa_em": "2026-10-20"
   },
   {
    "municipio": "Duque de Caxias",
@@ -59058,11 +59085,15 @@
    "trecho": "Milena Rinaldo destacou a importância ... que ninguém fique desamparado. Estamos organizando abrigos, suprimentos e equipes de apoio para agir com rapidez e acolhimento, caso seja necessário....",
    "titulo": "PREFEITURA DE MONTE MOR SE ANTECIPA E LANÇA PLANO DE CONTINGÊNCIA ...",
    "registrado_em": "2026-09-25",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-10-17",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "22 dias na fila (prazo de 21)"
+   },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21)",
    "id": "b92e627686",
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -61750,11 +61781,15 @@
    "trecho": "3 days ago ... ... Plano de Contingência Fenômeno EL NINO e Riscos Climáticos Associados 2026 ... © 2025 Prefeitura de Goiânia. Todos os direitos reservados.",
    "titulo": "Orientações Fenômeno EL NINO - Goiânia - SME",
    "registrado_em": "2026-09-25",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-10-17",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "22 dias na fila (prazo de 21)"
+   },
    "autoridade": "indefinido",
    "objeto": "el_nino",
    "destino": "indefinido",
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21)",
    "id": "8c33d902f4",
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -62564,11 +62599,15 @@
    "trecho": "A Secretaria Municipal de Assistência ... Centro de Referência de Assistência Social (CRAS), com foco na elaboração do Plano de Contingência da Assistência Social (PLANCON)....",
    "titulo": "Barra Bonita elabora Plano de Contingência da Assistência Social ...",
    "registrado_em": "2026-09-25",
-   "triagem": "indefinido",
+   "triagem": {
+    "em": "2026-10-17",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "22 dias na fila (prazo de 21)"
+   },
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "fechada — sem documento oficial localizado: 22 dias na fila (prazo de 21)",
    "id": "176ba92e01",
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -102300,10 +102339,16 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "natureza_duvidosa",
     "criterios": {
@@ -102336,7 +102381,7 @@
     },
     "categoria": null,
     "data": "10/07/2026",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "00ea4b75abe52002125517c678af5b95292081a275bfaefbebf13900dc355bbd"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -102947,10 +102992,16 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -102979,7 +103030,7 @@
     },
     "categoria": null,
     "data": "27/03/2025",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "395f2d1715545d7e8f58d05dba6a004217be95e2eb84ddbbfb98f5fffb689740"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -104944,6 +104995,12 @@
      "classe": "promocao",
      "motivo": null,
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "municipio_atribuido_antes": {
@@ -104955,7 +105012,7 @@
    "atribuicao_corrigida_em": "2026-10-03",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": true,
     "motivo": null,
     "criterios": {
@@ -105004,7 +105061,7 @@
     },
     "categoria": "plano",
     "data": "2026",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "abbd67c4a59ebd86e51d36736c50730c20a1ec7374b345295c10b86ead200587"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -105459,10 +105516,16 @@
      "classe": "criterio",
      "motivo": "minuta_ou_rascunho",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "minuta_ou_rascunho",
     "criterios": {
@@ -105488,7 +105551,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "8e494fa48758f4aaccaa93a8f9200fdf0020ee50bfae91e10e4c952267503bdc"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -105625,10 +105688,16 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "natureza_duvidosa",
     "criterios": {
@@ -105661,7 +105730,7 @@
     },
     "categoria": null,
     "data": "10/07/2026",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "00ea4b75abe52002125517c678af5b95292081a275bfaefbebf13900dc355bbd"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -106767,10 +106836,16 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -106799,7 +106874,7 @@
     },
     "categoria": null,
     "data": "27/03/2025",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "395f2d1715545d7e8f58d05dba6a004217be95e2eb84ddbbfb98f5fffb689740"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -107028,10 +107103,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -107060,7 +107141,7 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "6222dfdb63d1544f6592f9dee79229519d258294784233ff06261c9897c409a8"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -107197,10 +107278,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -107229,7 +107316,7 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "a4ad6ecc8a498538e2cb5777fa23ad71b5d22a02ec6feef58851a8e3a1547f44"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -108390,10 +108477,16 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -108422,7 +108515,7 @@
     },
     "categoria": null,
     "data": "25/06/2014",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "c0baa067e7f199ae9e0f25e078813e4ac1cdaae5f76439a312f97d8b0477e674"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -108519,9 +108612,16 @@
       "querido_diario"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -108540,10 +108640,16 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -108568,11 +108674,11 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "43c64960c7e73f5e54d623cc7bd30ee09c1d4faf386ad13b08304a40e7f4a311"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Salete",
@@ -109722,9 +109828,18 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-15",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -109749,10 +109864,16 @@
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "sem_documento_primario",
     "criterios": {
@@ -109763,7 +109884,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": null
    },
    "seguimento": {
@@ -109773,8 +109894,7 @@
     "falhas": []
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 3,
-   "proxima_tentativa_em": "2026-10-15"
+   "tentativas_de_busca_dirigida": 4
   },
   {
    "municipio": "Major Vieira",
@@ -109948,10 +110068,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -109966,7 +110092,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "45f79dc39a9bd230840472745134e380a01c3d21464b7a73681ece83366af528"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -110114,9 +110240,17 @@
       "sitio_oficial"
      ],
      "encontrou": "https://majorvieira.sc.gov.br/uploads/sites/382/2022/05/1295832_Relatorio_Major_Vieira.pdf"
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://majorvieira.sc.gov.br/uploads/sites/382/2022/05/1295832_Relatorio_Major_Vieira.pdf"
     }
    ],
-   "ultima_busca_em": "2026-10-15",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -110141,10 +110275,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -110173,7 +110313,7 @@
     },
     "categoria": null,
     "data": "22/03/2018",
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "37bc9b5dd00b912911d4320d5281d45e8135c2e18cdc4aa872af2ce799393c21"
    },
    "seguimento": {
@@ -110183,8 +110323,7 @@
     "falhas": []
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 3,
-   "proxima_tentativa_em": "2026-10-15"
+   "tentativas_de_busca_dirigida": 4
   },
   {
    "municipio": "Major Vieira",
@@ -110268,10 +110407,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -110286,11 +110431,10 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "136e79a17c780a23bb5f8b0d80fa3ca284ec8dc96bf1945ce6b774967346c26e"
    },
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-15"
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "Major Vieira",
@@ -112167,10 +112311,16 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -112195,7 +112345,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "af77c70e97b2a51d862c392376b40aa6d6f40c559fbab66e472e56d290e060d6"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -112213,10 +112363,17 @@
       "querido_diario"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
-   "tentativas_de_busca_dirigida": 2
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Major Vieira",
@@ -113003,10 +113160,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -113035,7 +113198,7 @@
     },
     "categoria": null,
     "data": "07/07/2021",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "23b53d319078a12a4585161b5638655fe8aea37c2d6218a90d006cdba32719ad"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -113535,10 +113698,16 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -113563,7 +113732,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "ec3ffb0ff09af4ef75199ef36848dda7ffde37e53b3b8501e06aa93ef35a8f6f"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -113585,10 +113754,19 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
-   "tentativas_de_busca_dirigida": 2
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Treze de Maio",
@@ -113851,16 +114029,22 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "481457 caracteres de fonte oficial"
+      "trecho": "489317 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": false,
@@ -113869,11 +114053,10 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-15",
-    "hash_evidencia": "ce0cf2b197fc7d0af0df5094c30f6e42c6ed93ac0fdfaa106da9e7786e798c01"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "1a7503cd2d186758d4826dbf96bc9091bf82f9b35a52c338708b87855caae883"
    },
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-15"
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "Treze de Maio",
@@ -114240,10 +114423,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -114258,7 +114447,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "576f2cab4a831781310ca93d423de9c4408fd39f19c88506cc6b028d1709c7e9"
    },
    "preparacao": {
@@ -114670,10 +114859,16 @@
      "classe": "criterio",
      "motivo": "minuta_ou_rascunho",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "minuta_ou_rascunho",
     "criterios": {
@@ -114699,7 +114894,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "159c9db4cabe566e189013766fc24da8b2f43a8efbd79b06d408dd055ab83653"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -114881,10 +115076,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -114899,7 +115100,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "fa9ae2b513b490fb3c2e17cede76023e611215e2125f1d708032adc276eb72c5"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -115164,10 +115365,16 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -115192,7 +115399,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "209fda0d9cfa5ba6b40ccf53a002384bf88971fc4ebb5d47395d6b391e06ac64"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -115214,10 +115421,18 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://vigilanciasanitaria.saude.sc.gov.br/index.php/component/phocadownload/category/189-programas-de-monitoramento/190-vigidesastres/387-plano-municipais-de-preparacao-e-respostas-as-esp-e-cib/402-regional-de-saude-de-tubarao.html?download=1260%3A3-plano-treze-de-maio&Itemid=109"
     }
    ],
-   "ultima_busca_em": "2026-10-14",
-   "tentativas_de_busca_dirigida": 2
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Treze de Maio",
@@ -115372,10 +115587,16 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "resposta",
     "criterios": {
@@ -115412,7 +115633,7 @@
     },
     "categoria": null,
     "data": "15/08/2025",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "1ffea26647e3add16b054d6246737f2e2cb3b4a76e08a7552e96db0d53af8fe3"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -115783,10 +116004,16 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "resposta",
     "criterios": {
@@ -115823,7 +116050,7 @@
     },
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "a12d2800c6f4830c63efab76e0df3fea29dd89c58b097209087d1367412d03ab"
    },
    "preparacao": {
@@ -116131,10 +116358,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -116149,7 +116382,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "e68f3621065904fc4d1b05c4454e1b1e9a092c36d42760fcf3a297e8bcf3e554"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -117250,10 +117483,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -117282,7 +117521,7 @@
     },
     "categoria": null,
     "data": "07/07/2021",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "23b53d319078a12a4585161b5638655fe8aea37c2d6218a90d006cdba32719ad"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -121615,9 +121854,16 @@
       "querido_diario"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -121636,10 +121882,16 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -121664,11 +121916,11 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "d3d8a3e438f42ee76bffdc1a0e21930ef9475a0499cc2b7618e1e2db3201656f"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Timbó Grande",
@@ -121804,10 +122056,16 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -121836,7 +122094,7 @@
     },
     "categoria": null,
     "data": "13/01/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "c23b3b8f2bd97b9acde97787a31e1446a286add7b94eeeb64a8b0acfde1fc69a"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -122417,10 +122675,16 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "natureza_duvidosa",
     "criterios": {
@@ -122453,7 +122717,7 @@
     },
     "categoria": null,
     "data": "17/05/2023",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "987100678331ee093fd803488618e2c1d488e9fecbc7e2e241ac67b093f45cd3"
    },
    "status_anterior": "pista — recusada pelo juiz: citacao_incompleta",
@@ -194725,7 +194989,7 @@
    "hash_evidencia": "cdf1503bb2e368cee68ca65991bb949a2c83ebcd245f31046b2eff366d595c4d",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "id": "d38f64a88e",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMickFVX3lxTFBNTE53VFJtN1gzUUpncjR4NzllNmlseWl3MFhhcjI5VjR2cFItQjFCcU9ZejF1eTZ3aG1ocWhZN0JPTGtPQnpyOUk2X1Q5akUwUHJpY09vUzhhV3JQanVUWVJRUWVKYm1EQ2RiaEdiRC10UQ?oc=5",
    "julgamento_automatico": {
@@ -194779,6 +195043,12 @@
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.4 (09/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "reaplicada_em": "reaplicacao da noite",
@@ -194795,19 +195065,37 @@
    "atribuicao_corrigida_em": "2026-10-14",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
-    "motivo": "sem_documento_primario",
+    "motivo": "autoridade_nao_confirmada",
     "criterios": {
      "0_documento_primario": {
+      "ok": true,
+      "trecho": "4475 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": "União reconhece situação de emergência decretada por Ubatuba após vendaval &#8211; Prefeitura Municipal de Ubatuba Início A Cidade História Símbolos e Hino Turi"
+     },
+     "2_citacao": {
+      "ok": true,
+      "trecho": "ia do vendaval que atingiu o município em agosto. A medida foi formalizada pela Portaria nº 2.971, de 09 de setembro de 2026, da Secretaria Nacional de Proteção",
+      "dados": {
+       "tipo": "portaria",
+       "numero": "2.971",
+       "data": "09/09/2026",
+       "trecho": "ia do vendaval que atingiu o município em agosto. A medida foi formalizada pela Portaria nº 2.971, de 09 de setembro de 2026, da Secretaria Nacional de Proteção"
+      }
+     },
+     "3_autoridade": {
       "ok": false,
-      "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMickFVX3lxTFBNTE53VFJtN1gzUUpncjR4NzllNmlseWl3MFhhcjI5VjR2cFItQjFCcU9ZejF1eTZ3aG1ocWhZN0JPTGtPQnpyOUk2X1Q5akUwUHJpY09vUzhhV3JQanVUWVJRUWVKYm1EQ2RiaEdiRC10UQ?oc=5"
+      "trecho": "nenhuma autoridade do Executivo no texto"
      }
     },
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": null
+    "data": "09/09/2026",
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "d8e4b5b5a969907153f2c275d9ec664169ee3efe55a7c8bf869c59c0f77fb9f3"
    },
    "preparacao": {
     "data": "14/10/2026",
@@ -199044,7 +199332,7 @@
    "hash_evidencia": "46212656cc8f7fa78076b418129d42910779deab24d17f85c9c3ee7d675c96c7",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "id": "5207d4c2d2",
    "noites_sem_resolver_agregador": [
     "2026-10-14"
@@ -199088,22 +199376,46 @@
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.3 (03/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.3 (03/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
-    "motivo": "sem_documento_primario",
+    "motivo": "autoridade_nao_confirmada",
     "criterios": {
      "0_documento_primario": {
+      "ok": true,
+      "trecho": "5945 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": "nomeia \"Rio das Ostras\" (UF não citada no texto; identidade pelo nome)"
+     },
+     "2_citacao": {
+      "ok": true,
+      "trecho": "Prefeitura de Rio das Ostras A Prefeitura de Rio das Ostras publicou o Decreto nº 4.608, de 27 de fevereiro de 2026, que [&hellip;] \" name=\"description\"> O Port",
+      "dados": {
+       "tipo": "decreto",
+       "numero": "4.608",
+       "data": "27/02/2026",
+       "trecho": "Prefeitura de Rio das Ostras A Prefeitura de Rio das Ostras publicou o Decreto nº 4.608, de 27 de fevereiro de 2026, que [&hellip;] \" name=\"description\"> O Port"
+      }
+     },
+     "3_autoridade": {
       "ok": false,
-      "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMigwFBVV95cUxQb0c3dWpLVy1HbWdfUWJnRkdPRFMwUm9saXNHXzFaeDk1dXFlYktUakhiZmExV1pveWQ5Y2RadHFGMXgyRmtyV24zZEFoN2E5WG04clpPSGk2LTNwZS1DZ3N3VTByckV3SGJXejd2Qllxajd2eDVKWHczSndnak5iZG9ZTQ?oc=5"
+      "trecho": "sem fórmula de promulgação nem texto articulado"
      }
     },
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-10-06",
-    "hash_evidencia": null
+    "data": "27/02/2026",
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "f03e0355f7f194cc9677b01bd3da0f3df5e19765d0e0b1a2cadc165b7b02236f"
    },
    "reaplicada_em": "reaplicacao da noite",
    "alertas": [],
@@ -215438,10 +215750,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -215470,7 +215788,7 @@
     },
     "categoria": null,
     "data": "21/05/2026",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "9ebbd4421f4c29a43fe27964ca1289fb65b90c5f49d1bb05d92aeaf95a4d6cdd"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -215816,10 +216134,16 @@
      "classe": "criterio",
      "motivo": "noticia_institucional_nao_e_o_plano",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
     "criterios": {
@@ -215845,7 +216169,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "fa2115630c6ae291215cf0388f01c37d2552eec3cafb611329f740d2c5f5ba72"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -216970,10 +217294,16 @@
      "classe": "criterio",
      "motivo": "noticia_institucional_nao_e_o_plano",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
     "criterios": {
@@ -216999,7 +217329,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "31b30ea904e9e5b9721b31a8f6277874fffecb3a2c00b1d98c318254b6dd3a8b"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -217217,10 +217547,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -217249,7 +217585,7 @@
     },
     "categoria": null,
     "data": "11/11/2011",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "d03711eab9c9598ee429cf6e6e0bf6f119b12bbeb0f4d03d82dd6e4a9c696ac8"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -217482,9 +217818,18 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -217503,16 +217848,22 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "6007 caracteres de fonte oficial"
+      "trecho": "6006 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": true,
@@ -217531,11 +217882,11 @@
     },
     "categoria": null,
     "data": "12/06/2026",
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "c7a1d9f575209307f0f792787d4bb8b09690460799ba77c8be13a5454ad33d58"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "c65c0b93ee9b667fe861a00b1832abdf1d6ba6fa4330e42fd08234475fb9e078"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Santa Rosa",
@@ -217745,10 +218096,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -217763,7 +218120,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "70fc6f8d3ed7858412a95ecd5a492940c42961035102c46e41151cf66924950f"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -233030,7 +233387,7 @@
    "hash_evidencia": "1fca749514e80a13901977e20fcc890376f382bfb331144659822fa2eeba4d4e",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "id": "95a3334705",
    "noites_sem_resolver_agregador": [
     "2026-10-14"
@@ -233099,6 +233456,55 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.campobom.rs.gov.br/prefeitura-conclui-acoes-do-plano-de-contingencia-apos-cheia-do-rio-dos-sinos/"
+    }
+   ],
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.6 (15/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "criterios": {
+     "0_documento_primario": {
+      "ok": true,
+      "trecho": "6739 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": "tura conclui ações do Plano de Contingência após cheia do Rio dos Sinos &#8211; CAMPO BOM Ir para o conteúdo A CIDADE CAMPO BOM PIONEIRA DADOS DO MUNICÍPIO ENDE"
+     },
+     "2_citacao": {
+      "ok": false,
+      "trecho": "",
+      "dados": {
+       "tipo": "decreto",
+       "numero": "6.669",
+       "data": null,
+       "detalhe": "sem data completa no texto"
+      }
+     }
+    },
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "4a7133c717b877970f5916c24cad7e88e4751316a7051767a8d8d8b0eeb20a2d"
    }
   },
   {
@@ -266044,7 +266450,7 @@
    "hash_evidencia": "1d879505308f6f06a6ed2629df9c5d3dbdd81c0f84ba7176f9a1b4be6fe98051",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "id": "43e0aaa58a",
    "noites_sem_resolver_agregador": [
     "2026-10-14"
@@ -266112,6 +266518,55 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
+   },
+   "busca_dirigida": [
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.riodasostras.rj.gov.br/wp-content/uploads/2026/10/plano-de-contingencia-para-enfrentamento-do-fenomeno-el-nino-1.pdf"
+    }
+   ],
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.6 (15/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "criterios": {
+     "0_documento_primario": {
+      "ok": true,
+      "trecho": "95638 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": ".1) Chuvas Intensas (COBRADE 1.3.2.1.4) Vendaval (COBRADE 1.3.2.1.5) Município: Rio das Ostras – RJ Ano: 2026/2027 Atualização: Em atualização. SUMÁRIO 1. O QUE"
+     },
+     "2_citacao": {
+      "ok": false,
+      "trecho": "",
+      "dados": {
+       "tipo": "decreto",
+       "numero": "3267",
+       "data": null,
+       "detalhe": "sem data completa no texto"
+      }
+     }
+    },
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "15f339506a350963a105047a43e36ccd871039b21f58d46f5b423efc5974ef51"
    }
   },
   {
@@ -297795,7 +298250,7 @@
    "hash_evidencia": "46212656cc8f7fa78076b418129d42910779deab24d17f85c9c3ee7d675c96c7",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "id": "5207d4c2d2",
    "noites_sem_resolver_agregador": [
     "2026-10-14"
@@ -297839,22 +298294,46 @@
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.3 (03/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.3 (03/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
-    "motivo": "sem_documento_primario",
+    "motivo": "autoridade_nao_confirmada",
     "criterios": {
      "0_documento_primario": {
+      "ok": true,
+      "trecho": "5945 caracteres de fonte oficial"
+     },
+     "1_identidade": {
+      "ok": true,
+      "trecho": "nomeia \"Rio das Ostras\" (UF não citada no texto; identidade pelo nome)"
+     },
+     "2_citacao": {
+      "ok": true,
+      "trecho": "Prefeitura de Rio das Ostras A Prefeitura de Rio das Ostras publicou o Decreto nº 4.608, de 27 de fevereiro de 2026, que [&hellip;] \" name=\"description\"> O Port",
+      "dados": {
+       "tipo": "decreto",
+       "numero": "4.608",
+       "data": "27/02/2026",
+       "trecho": "Prefeitura de Rio das Ostras A Prefeitura de Rio das Ostras publicou o Decreto nº 4.608, de 27 de fevereiro de 2026, que [&hellip;] \" name=\"description\"> O Port"
+      }
+     },
+     "3_autoridade": {
       "ok": false,
-      "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMigwFBVV95cUxQb0c3dWpLVy1HbWdfUWJnRkdPRFMwUm9saXNHXzFaeDk1dXFlYktUakhiZmExV1pveWQ5Y2RadHFGMXgyRmtyV24zZEFoN2E5WG04clpPSGk2LTNwZS1DZ3N3VTByckV3SGJXejd2Qllxajd2eDVKWHczSndnak5iZG9ZTQ?oc=5"
+      "trecho": "sem fórmula de promulgação nem texto articulado"
      }
     },
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-10-06",
-    "hash_evidencia": null
+    "data": "27/02/2026",
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "f03e0355f7f194cc9677b01bd3da0f3df5e19765d0e0b1a2cadc165b7b02236f"
    },
    "reaplicada_em": "reaplicacao da noite",
    "alertas": [],
@@ -352950,6 +353429,12 @@
      "classe": "promocao",
      "motivo": null,
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
@@ -353005,7 +353490,8 @@
     "julgado_em": "2026-10-14",
     "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "proxima_tentativa_em": "2026-10-18"
   },
   {
    "municipio": "Manaus",
@@ -353074,10 +353560,16 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -353106,7 +353598,7 @@
     },
     "categoria": null,
     "data": "17/09/2025",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "4a16315486506041bd555c946d70ae2f3058cb081349560eabba7ae43a64c72d"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -353304,10 +353796,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -353336,7 +353834,7 @@
     },
     "categoria": null,
     "data": "05/04/2023",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "ed161e04845e283732505d9d5c1c1642eadf1b9ad0a347148bda1f5fb49e5f69"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -353702,9 +354200,17 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.rj.gov.br/secsocial/sites/default/files/arquivos_paginas/11667COLET%C3%82NEA%20-%20O%20SUAS%20NO%20ESTADO%20DO%20RIO%20DE%20JANEIRO%20NO%20CONTEXTO%20DA%20COVID-19%20-%20VOLUME%202_1.pdf"
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -353723,6 +354229,12 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
@@ -353755,7 +354267,8 @@
     "hash_evidencia": "639891f00ddcc480455a8582a5f1d3c01d58097930cd14a1594b0006d956a6fb"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3,
+   "proxima_tentativa_em": "2026-10-18"
   },
   {
    "municipio": "São João da Barra",
@@ -353838,10 +354351,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -353856,11 +354375,10 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "444cd6c210b54ed613a62fb4d08794c5dfb3f3c601ce4d294ad868bb40f89dcc"
    },
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-15"
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "São João da Barra",
@@ -353943,10 +354461,16 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "natureza_duvidosa",
     "criterios": {
@@ -353979,11 +354503,10 @@
     },
     "categoria": null,
     "data": "25/09/2026",
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "b9da56ca98e64a941e35c79650d2458e5aee096dbfa64b33a28e12f7362b221f"
    },
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-15"
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "São João da Barra",
@@ -354061,10 +354584,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -354079,7 +354608,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "4ae3c9f8721bf9d9dccff903b2ae12dbdfbf8fcf96b9fbba172b65b9455cbbff"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -354422,9 +354951,17 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.blumenau.sc.gov.br/secao/plano-contingencia-sedeci"
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -354443,27 +354980,33 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "36231 caracteres de fonte oficial"
+      "trecho": "9283 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": true,
-      "trecho": "à elaboração do projeto executivo de dragagem de trecho do leito natural do rio Itajaí-Mirim, localizado no município de Itajaí - SC. 1.1. Especificações e quan"
+      "trecho": "privacidade e dados. Situação da Cidade: Observação 27º 15º 3,08m Nível do Rio Itajaí-Açu Atualização: 17/10/26 00h + Mais informações -A A A+ Mapa do site Mai"
      },
      "2_citacao": {
       "ok": false,
       "trecho": "",
       "dados": {
-       "tipo": "instrução normativa",
-       "numero": "18",
+       "tipo": "decreto",
+       "numero": "13.352/2021",
        "data": null,
        "detalhe": "sem data completa no texto"
       }
@@ -354471,11 +355014,11 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "88b000b7dc4d9796fae4228c94b99ca2bdf2afc11c42628bb63f24b08244df7b"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "56b255552baddda3c98b9dac5025e4b54911be964ae4ff82d02ae2ee8f852da6"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Chapecó",
@@ -354656,10 +355199,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -354688,7 +355237,7 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "6667a17d41f236c4517de4c38d735729326326ca24730758840464e9eb522f68"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -354878,10 +355427,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -354896,7 +355451,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "c9a192db7dc34f7d7e3a70905b96c75eb902a5f72e7c671d553f124b040bbf1e"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -355086,10 +355641,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -355118,7 +355679,7 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "2b5064087a60adf3388ba66d6f11efd081cd2e08babee1b57e5c3835a18a9238"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -355206,10 +355767,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -355238,7 +355805,7 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "483400dd915061634bd85cb8bf132a74e4e146f92919a398d5c1e273c395defc"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -355324,10 +355891,16 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "natureza_duvidosa",
     "criterios": {
@@ -355360,11 +355933,10 @@
     },
     "categoria": null,
     "data": "07/05/2025",
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "7e437809e8196475f7647f8b40a829bd94fd57dd051d1e65773eeb5bd004ec09"
    },
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-15"
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "Criciúma",
@@ -355442,10 +356014,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -355475,7 +356053,7 @@
     },
     "categoria": null,
     "data": "13/11/2020",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "2056143a1db016e484e4992507035db090415e9d0d62688f68630e301cc2701d"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -355561,10 +356139,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -355593,11 +356177,10 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-15",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "bb70e10b5e8c8c02d9ec7e4bff7713edc7f828e97c1b9c343773f74ed0732eb2"
    },
-   "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-10-15"
+   "reaplicada_em": "reaplicacao da noite"
   },
   {
    "municipio": "Lages",
@@ -355883,10 +356466,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -355901,7 +356490,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "c84340afd6ec373123c03f7d1cf8d2768666107c121438798a3e5cd44f2e8dfa"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -355986,10 +356575,16 @@
      "classe": "promocao",
      "motivo": null,
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": true,
     "motivo": null,
     "criterios": {
@@ -356038,7 +356633,7 @@
     },
     "categoria": "plano_antigo",
     "data": "2020",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "f8f1aa0059f316ee44626279aae2b9bbb1452e01157434c27842d1a81ab4096c"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -356560,10 +357155,16 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
@@ -356588,7 +357189,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "9f928f795b1c2593f6911f9e3b521bae6d1bf99f618f254f154af240e972875a"
    },
    "reaplicada_em": "reaplicacao da noite",
@@ -356610,10 +357211,19 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
-   "tentativas_de_busca_dirigida": 2
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Camboriú",
@@ -357207,16 +357817,22 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "25649 caracteres de fonte oficial"
+      "trecho": "25700 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": true,
@@ -357235,8 +357851,8 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "49c29446f45f03c4b87ee145658285936eccd7179692ae4edb078bb6d49dcff6"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "af2edb53f13663dbd7d109345ecb4dbd3ca6188eb283812add8b4d5e7ad2cc90"
    },
    "reaplicada_em": "reaplicacao da noite",
    "busca_dirigida": [
@@ -357257,10 +357873,18 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial"
+     ],
+     "encontrou": "https://www.gov.br/agricultura/pt-br/assuntos/defesa-agropecuaria/gestao-das-emergencias-agropecuarias/planos-de-contingencias"
     }
    ],
-   "ultima_busca_em": "2026-10-14",
-   "tentativas_de_busca_dirigida": 2
+   "ultima_busca_em": "2026-10-17",
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Videira",
@@ -357338,10 +357962,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -357356,7 +357986,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "ae64e218fb82035c941eba7eca0b8f72f0ab0ade80b81514356fadfb8f8f95c6"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -357447,6 +358077,12 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "municipio_atribuido_antes": {
@@ -357479,7 +358115,7 @@
    ],
    "ultima_busca_em": "2026-10-03",
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -357508,7 +358144,7 @@
     },
     "categoria": null,
     "data": "10/04/2012",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "9c3187e8ec5833136712f55efd8696f053a78c7eddfd28f7931b1346e8af26cd"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -380382,9 +381018,18 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -380403,16 +381048,22 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "4778 caracteres de fonte oficial"
+      "trecho": "4733 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": true,
@@ -380431,11 +381082,11 @@
     },
     "categoria": null,
     "data": "25/04/2024",
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "a56a0812a03b069131a16c0833da024f1f9c6bd4b03b33fd9d4e6b2be0e9512e"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "10bf8e84d9c312e62911a967ea85d1e12d033e2375e7384d61897a2f4e41d2f2"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Chapada dos Guimarães",
@@ -380652,9 +381303,18 @@
       "busca_web"
      ],
      "encontrou": null
+    },
+    {
+     "em": "2026-10-17",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-14",
+   "ultima_busca_em": "2026-10-17",
    "juiz_tentativas": [
     {
      "em": "2026-10-03",
@@ -380673,16 +381333,22 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "citacao_incompleta",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "6389 caracteres de fonte oficial"
+      "trecho": "6388 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": true,
@@ -380701,11 +381367,11 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "b4af79f48d54123f447df39cfb19e9fa86b47863f6a6c1dad93ec3ef95f55bb3"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "712d2abe148caea8824a05499c35dff764c2d8846577c0dcbe05744b0ed73fdf"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 3
   },
   {
    "municipio": "Cascavel",
@@ -381543,10 +382209,16 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "natureza_duvidosa",
     "criterios": {
@@ -381579,7 +382251,7 @@
     },
     "categoria": null,
     "data": "10/12/2021",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "739aaf5990f8a96333d8855835361d1301e5f388184e0305a651e2fb2bd11651"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -381786,10 +382458,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -381818,7 +382496,7 @@
     },
     "categoria": null,
     "data": "13/08/2026",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "0656885b4af92f5fdfc5c635b5cd2b6b33a0833bc420aff9d851ec1ee189ecd7"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -381898,10 +382576,16 @@
      "classe": "criterio",
      "motivo": "executivo_pendente",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "executivo_pendente",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "executivo_pendente",
     "criterios": {
@@ -381930,7 +382614,7 @@
     },
     "categoria": null,
     "data": "27/10/2023",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "c95380f523815da4fa5b866a7d785bddf0f8b33cfaea2da1bf9d5bfb7d3b4b14"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -382316,16 +383000,22 @@
      "classe": "criterio",
      "motivo": "noticia_institucional_nao_e_o_plano",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "noticia_institucional_nao_e_o_plano",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "4374 caracteres de fonte oficial"
+      "trecho": "4378 caracteres de fonte oficial"
      },
      "1_identidade": {
       "ok": true,
@@ -382338,15 +383028,15 @@
        "tipo": null,
        "numero": null,
        "data": null,
-       "prova": "stá sendo protegido de spambots. Você precisa do JavaScript ativado para vê-lo. Últimas Notícias Outubro Rosa é tema de palestra para servidoras da SAS Secretár",
+       "prova": "stá sendo protegido de spambots. Você precisa do JavaScript ativado para vê-lo. Últimas Notícias Estado e municípios se reúnem em Braço do Norte para debater Po",
        "detalhe": "página de notícia no domínio do ente: a notícia diz que o plano existe, mas não é o plano"
       }
      }
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "01a1684ab372b8c1595c7394b499ccd59adf7744506342b5d665340cd804159c"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "92b8acc7fc32766f7180f04566744d96583769d963e82ad9eb49d873700dcd42"
    },
    "reaplicada_em": "reaplicacao da noite"
   },
@@ -382425,10 +383115,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -382443,7 +383139,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "f18931acdfabc7a720435df6e3bc705090607b18e8c9a0ef071b74f65acb4212"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -382525,10 +383221,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -382543,7 +383245,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "3d85acaf9b162702d51ac3302ac532dae822141e49f0cbd2b66ab480ea20738c"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -382620,10 +383322,16 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "plano_sem_identificacao",
     "criterios": {
@@ -382648,7 +383356,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "7518dc126e7ac88bb6955e50641cf4534a15920403ab5a09f3a9352ab72e147b"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -382839,6 +383547,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "municipio_atribuido_antes": {
@@ -382850,7 +383564,7 @@
    "atribuicao_corrigida_em": "2026-10-03",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "resposta",
     "criterios": {
@@ -382887,7 +383601,7 @@
     },
     "categoria": null,
     "data": "2021",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "075fd5cb5733daa3630a3440eff420e0a15121857dd5201138a7909d7f1cca6e"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -382969,10 +383683,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -382987,7 +383707,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "48b529ad06d16c409c8d53220b6797a0a3fad698c72bed467d3b6ea125d7041a"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -383069,10 +383789,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -383101,7 +383827,7 @@
     },
     "categoria": null,
     "data": "13/08/1990",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "cd6b1505f5b1ee797cc07c42eec9ad6324dc111ba76a0cc56486b1d17b6924b4"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -383462,10 +384188,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -383480,7 +384212,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "3aa4840955c4e9e4307297817a0b3182ed24345aa249a59cfe168d3323d17ef8"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -383642,10 +384374,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -383674,7 +384412,7 @@
     },
     "categoria": null,
     "data": "29/04/1996",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "6fb8bed1c49102aeb17a407f16ede57496daa54e0145cc6cbebeb88ea85be218"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -383760,17 +384498,23 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
      "0_documento_primario": {
       "ok": true,
-      "trecho": "12981 caracteres de fonte oficial",
-      "recorte_do_ato": "4195 de 12981 caracteres — ato recortado da edição pelo excerto"
+      "trecho": "12976 caracteres de fonte oficial",
+      "recorte_do_ato": "4195 de 12976 caracteres — ato recortado da edição pelo excerto"
      },
      "1_identidade": {
       "ok": true,
@@ -383793,8 +384537,8 @@
     },
     "categoria": null,
     "data": "29/03/2021",
-    "julgado_em": "2026-10-14",
-    "hash_evidencia": "0b07b2778cd53758870ea5480124a47dccdf01b4fcdd4dbe2243e2d86139fbb9"
+    "julgado_em": "2026-10-17",
+    "hash_evidencia": "3f04c2584069b388e9ced5d70648263046815749235fabf7f5f24c23270d6722"
    },
    "reaplicada_em": "reaplicacao da noite"
   },
@@ -384259,10 +385003,16 @@
      "classe": "criterio",
      "motivo": "autoridade_nao_confirmada",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "autoridade_nao_confirmada",
     "criterios": {
@@ -384291,7 +385041,7 @@
     },
     "categoria": null,
     "data": "03/12/2020",
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "5ce165365c9bbc8ce8a8cfc53df8da7dd37c64efddfabb659e7ce2336aea37e2"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -384379,10 +385129,16 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.5 (14/10/2026)"
+    },
+    {
+     "em": "2026-10-17",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "juiz": {
-    "codebook": "1.5 (14/10/2026)",
+    "codebook": "1.6 (15/10/2026)",
     "promove": false,
     "motivo": "ente_nao_confirmado",
     "criterios": {
@@ -384397,7 +385153,7 @@
     },
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-10-14",
+    "julgado_em": "2026-10-17",
     "hash_evidencia": "d8f66a6f708ecfec7514a631f09e88f5e83a9113109baa44b257a3c874080752"
    },
    "reaplicada_em": "reaplicacao da noite"
@@ -458106,7 +458862,7 @@
    "titulo": "Comissão Executiva do Plano de Contingência para a Serra do Mar ...",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 2 tentativas de busca dirigida sem documento",
    "pista_origem": "2e1bdf83ef",
    "id": "008cb28c11",
    "nivel_confianca": "B",
@@ -458236,7 +458992,12 @@
     "hash_evidencia": "49f22dcaacac6556f317ef0c7d3e8613dd410ae592de970706b099b532f48969"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "triagem": {
+    "em": "2026-10-17",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "2 tentativas de busca dirigida sem documento"
+   }
   },
   {
    "municipio": "Cubatão",
@@ -459504,7 +460265,7 @@
    "titulo": "Planejamento - Secretaria Municipal da Saúde - Prefeitura de Curitiba",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 2 tentativas de busca dirigida sem documento",
    "pista_origem": "6a630cc284",
    "id": "5d34a915be",
    "nivel_confianca": "B",
@@ -459627,7 +460388,12 @@
     "hash_evidencia": "646f67f1ab89b5c530136aa0a3d56925580a60e51babd34dac48e72085a12802"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "triagem": {
+    "em": "2026-10-17",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "2 tentativas de busca dirigida sem documento"
+   }
   },
   {
    "municipio": "Londrina",
@@ -459846,7 +460612,7 @@
    "titulo": "Prefeitura divulga Plano de Contingenciamento para Síndromes ...",
    "data": "30/09/2026",
    "origem": "seguimento_busca_oficial",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "fechada — sem documento oficial localizado: 2 tentativas de busca dirigida sem documento",
    "pista_origem": "89e500dcd9",
    "id": "3c9431e42b",
    "nivel_confianca": "B",
@@ -459970,7 +460736,12 @@
     "hash_evidencia": "f56afaefe3125efae9da78d9e9d02829c7be2b2b60cb71b2f05cfabf543be0dd"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "triagem": {
+    "em": "2026-10-17",
+    "desfecho": "sem documento oficial localizado",
+    "motivo": "2 tentativas de busca dirigida sem documento"
+   }
   },
   {
    "municipio": "Cascavel",
