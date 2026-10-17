@@ -30,6 +30,7 @@ Peso zero, nunca lido pelo motor do índice. O Monitor não atribui casos ao El 
 USO
   python3 desfechos_sus.py --autoteste
 """
+import re
 import statistics
 import sys
 from collections import defaultdict
@@ -133,7 +134,6 @@ def montar(desfecho: str, rotulo: str, unidade: str, periodo: str, territorio: s
            "faixa_habitual": faixa, "ressalva": RESSALVA, "lacunas": lacunas or []}
     if taxa:
         obj["por_100mil"] = taxa
-    validar(obj)
     return obj
 
 
@@ -258,10 +258,9 @@ def _t_ler_recusa_fora_do_esquema():
 
 def _t_valor_negativo_recusado():
     s = _serie_de_teste(); s["CE"]["2026-01"] = -1
-    try:
-        _montado(serie=s); return False
-    except ForaDoEsquema:
-        return True
+    escritos = []
+    return not gravar_desfecho(_montado(serie=s), gravar_fn=lambda n, o, compacto=False: escritos.append(n)) \
+        and escritos == ["saude_desfechos/quarentena/teste.json"]
 
 
 def _t_populacao():
@@ -271,10 +270,29 @@ def _t_populacao():
     return populacao_por_uf(ler_fn=f) == {"CE": 15, "PE": 7} and uf_por_codigo(ler_fn=f) == {"23": "CE", "26": "PE"}
 
 
+_BANCO = ("estados", "saude_uf", "municipios", "indice", "monitor_saude")
+
+
+def fonte_cita_banco(caminho: str) -> bool:
+    """Trava estrutural dos coletores de desfecho: o fonte cita, entre aspas simples ou duplas, algum
+    arquivo do índice? Lê o arquivo inteiro; os nomes aqui não levam a extensão, para não se acusarem."""
+    rx = re.compile(r"""["'](?:data/)?(?:%s)\.json["']""" % "|".join(_BANCO))
+    return bool(rx.search(open(caminho, encoding="utf-8").read()))
+
+
 def _t_fonte_nao_escreve_banco():
-    fonte = open(__file__, encoding="utf-8").read().split("def _t_fonte_nao_escreve_banco")[0]
-    return not any(f'"{p}"' in fonte for p in ("estados.json", "saude_uf.json", "municipios.json",
-                                                "indice.json", "monitor_saude.json"))
+    return not fonte_cita_banco(__file__) and fonte_cita_banco.__doc__ and _t_trava_acusa()
+
+
+def _t_trava_acusa():
+    import os
+    import tempfile
+    with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False, encoding="utf-8") as f:
+        f.write(f"gravar('data/{_BANCO[1]}.json', x)\n")
+    try:
+        return fonte_cita_banco(f.name)
+    finally:
+        os.unlink(f.name)
 
 
 TESTES = {

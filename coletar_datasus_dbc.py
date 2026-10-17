@@ -193,7 +193,11 @@ def ler_dbc(dados: bytes, campos=None):
 
 
 # ---------------------------------------------------------------- FTP
+PAUSA = 2  # segundos entre conexões ao mesmo servidor
+
+
 def _ftp(timeout: int = 60) -> ftplib.FTP:
+    time.sleep(PAUSA)
     f = ftplib.FTP(FTP_HOST, timeout=timeout)
     f.login("anonymous", SENHA_ANONIMA)
     return f
@@ -326,11 +330,15 @@ def coletar(nome: str, listar=None, baixar=None, ler_fn=None, gravar_fn=None, ho
         bruto = baixar(caminho)
         _, linhas = ler_dbc(bruto, cfg["campos"])
         s, su, ult = agregar(linhas, cfg["confirmado"], uf_de)
+        if ult is None:
+            raise DbcInvalido(f"{caminho}: nenhum registro com data de notificação; arquivo recusado")
         for uf, meses in s.items():
             for p, n in meses.items():
                 serie.setdefault(uf, {}); serie[uf][p] = serie[uf].get(p, 0) + n
         sem_uf += su; ate = max(filter(None, (ate, ult)), default=None)
         lidos.append({"arquivo": caminho, "sha256": hashlib.sha256(bruto).hexdigest(), "preliminar": prelim})
+    if len(uf_de) < 27:
+        raise DbcInvalido("referência IBGE sem as 27 UFs; nada a montar")
     hashes = [a["sha256"] for a in lidos]
     if anterior and [a.get("sha256") for a in anterior.get("fonte", {}).get("arquivos", [])] == hashes:
         print(f"{nome}: arquivos do FTP iguais aos da última leitura; nada a regravar"); return False
@@ -486,9 +494,19 @@ def _teste_funcoes_puras():
 
 def _teste_fonte_nao_escreve_banco():
     """Trava estrutural: este coletor nunca escreve nos arquivos do índice."""
-    fonte = open(__file__, encoding="utf-8").read()
-    proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
-    return not any(f'"{p}"' in fonte.split("def _teste_fonte_nao_escreve_banco")[0] for p in proibidos)
+    from desfechos_sus import fonte_cita_banco
+    return not fonte_cita_banco(__file__)
+
+
+def _teste_arquivo_vazio_recusa():
+    lst = {f"{SINAN}/FINAIS": [("LEPTBR19.dbc", 1)], f"{SINAN}/PRELIM": []}
+    vazio = _dbc_de_teste([], _CAMPOS_LEPT)
+    try:
+        coletar("leptospirose", listar=lambda c: lst[c], baixar=lambda c: vazio,
+                ler_fn=lambda n: None, gravar_fn=lambda *a, **k: None, hoje="2026-10-17")
+        return False
+    except DbcInvalido:
+        return True
 
 
 TESTES = {
@@ -498,6 +516,7 @@ TESTES = {
     "mês coberto sem caso é zero; mês não coberto não existe": _teste_completar_zero_e_lacuna,
     "ano com arquivo final não lê o preliminar": _teste_finais_antes_de_prelim,
     "coleta ponta a ponta offline; arquivo igual não regrava": _teste_coletar_offline_e_idempotente,
+    "arquivo sem data de notificação é recusado, nunca vira zeros": _teste_arquivo_vazio_recusa,
     "DBF: lê colunas, pula registro apagado": _teste_dbf,
     "DBF truncado é recusado, nunca lido pela metade": _teste_dbf_truncado_recusa,
     "DBC com cabeçalho implausível é recusado": _teste_dbc_invalido_recusa,
@@ -516,7 +535,9 @@ if __name__ == "__main__":
         try:
             coletar(nome)
         except Exception as e:  # noqa: BLE001 — falha de fonte é lacuna; o arquivo anterior fica
-            print(f"{nome}: lacuna nesta rodada ({type(e).__name__}: {e}); o arquivo anterior fica")
+            from coletores_base import registrar_lacuna
+            registrar_lacuna(f"ftp://{FTP_HOST}{SINAN}/ ({nome})", f"{type(e).__name__}: {e}; o arquivo anterior fica",
+                             canal="desfechos_sus", camada=3)
             sys.exit(1)
         sys.exit(0)
     print(__doc__)
