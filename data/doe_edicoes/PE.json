@@ -1,5 +1,5 @@
 {
- "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
+ "_governanca": "Canal 2 desta unidade. Recusa real de acesso (401, 403, 429, 451, captcha, muro de robô) é rota sem acesso automático; rota não achada é rota não descoberta. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
   "modo": "sem_acesso_automatico",
   "conta_como_consultado": false,

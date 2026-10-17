@@ -72,7 +72,7 @@ Atualizado em 17/10/2026.
 | `coletar_desfechos_saude.py` | — | — | — | — | não |
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
-| `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 2 | não |
+| `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 3 | não |
 | `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 5 | não |
 | `coletar_espin.py` | — | `saude_sinais.json` | — | 1 | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
@@ -85,7 +85,7 @@ Atualizado em 17/10/2026.
 | `coletar_recursos_resposta.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `resposta/recursos_liberados.json`, `saude_uf.json` | — | — | não |
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_saude.py` | — | `saude_federal.json`, `saude_sinais.json`, `saude_uf.json` | — | 1 | não |
-| `coletar_saude_estadual.py` | — | `pistas_imprensa_saude.json`, `saude_desfechos/fontes_uf.json` | — | 1 | não |
+| `coletar_saude_estadual.py` | — | `pistas_imprensa_saude.json`, `saude_desfechos/fontes_uf.json` | — | 2 | não |
 | `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | — | não |
 | `coletar_sg_esus.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_desfechos/sindrome_gripal_serie.json`, `saude_uf.json` | — | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | 1 | não |

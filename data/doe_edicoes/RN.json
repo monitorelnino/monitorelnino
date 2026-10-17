@@ -1,11 +1,13 @@
 {
- "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
+ "_governanca": "Canal 2 desta unidade. Recusa real de acesso (401, 403, 429, 451, captcha, muro de robô) é rota sem acesso automático; rota não achada é rota não descoberta. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "sem_acesso_automatico",
+  "modo": "rota_nao_descoberta",
   "conta_como_consultado": false,
   "motivo": "/edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError",
   "em": "02/10/2026",
-  "tentativas": 2
+  "tentativas": 2,
+  "reclassificado_em": "17/10/2026",
+  "nota_reclassificacao": "o motivo é endereço adivinhado que deu 404 ou outra resposta, não recusa (HANDOVER_ROTAS_DOE §0.1)"
  },
  "edicoes": {}
 }
