@@ -25,19 +25,12 @@ jobs:
   respiratorias:
     uses: ./.github/workflows/_coletor.yml
     with:
-      nome: respiratorias
-      # Escreve em data/saude_desfechos/ — grupo compartilhado da noite.
-      grupo_de_concorrencia: noturno
-      # O banco do SIVEP-Gripe tem centenas de megabytes por ano epidemiológico e é lido em fluxo;
-      # 60 minutos é o que a primeira leitura real pediu, com folga para a rede da fonte.
-      timeout_minutos: 60
+      nome: sonda-sih
+      # Válvula coleta-dia (janela E2, 17/10/2026): sondagem SIH/SIM/Registro Civil. Este ramo não vai à main.
+      timeout_minutos: 45
       comandos: |
-        # SRAG hospitalizada pela fonte primária (SIVEP-Gripe). Anos congelados saem do cache.
-        coletar_srag_sivep.py
-        # Síndrome gripal (e-SUS Notifica). Hoje mede e declara a lacuna: as duas rotas que o
-        # portal publica recusam acesso automatizado (API 401, CSV 403) e o conjunto por ano vai
-        # de 2020 a 2024, sem o ano do ciclo. Roda toda semana porque é a rodada que descobre
-        # quando a fonte abrir.
-        coletar_sg_esus.py
+        scripts/coletar_sih.py --sondar --uf AC
+        scripts/coletar_sih.py --sondar --uf CE
+        scripts/coletar_obitos.py --sondar --uf AC
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
