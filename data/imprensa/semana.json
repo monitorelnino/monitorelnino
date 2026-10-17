@@ -7,7 +7,7 @@
   "mare_legal": 40.1,
   "mare_saude": 31.9,
   "saude_verificadas": 21,
-  "decretaram_no_ciclo": 948
+  "decretaram_no_ciclo": 953
  },
  "cartoes": [
   {
@@ -114,7 +114,7 @@
    "id": "decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que decretaram emergência ou calamidade na semana",
-   "valor": 22,
+   "valor": 24,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -134,7 +134,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 461474,
+   "valor": 501578,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -214,7 +214,7 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 551,
+   "valor": 554,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -453,5 +453,5 @@
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Edição de 17/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,9 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 22 municípios decretaram situação de emergência ou calamidade; 461.474 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 948 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
+ "texto_pronto": "Edição de 17/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,9 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 24 municípios decretaram situação de emergência ou calamidade; 501.578 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 953 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
 }

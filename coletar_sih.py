@@ -13,31 +13,24 @@ entra depois, e o último mês publicado é sempre `parcial`.
 
 ROTA
 ----
-FTP público do DATASUS (anônimo, sem robots.txt por ser FTP; a senha anônima identifica o cliente).
-Arquivo `.dbc` = DBF comprimido; descompressão por `datasus-dbc` (MIT) e leitura por `dbfread`
-(MIT). `pyreaddbc` foi descartado por ser AGPL.
+FTP público do DATASUS. Leitor `.dbc` e FTP (senha anônima que identifica o cliente, pausa entre
+conexões, novas tentativas) são os de `coletar_datasus_dbc.py` (E1), importados.
 
 USO
   python3 coletar_sih.py --autoteste
   python3 coletar_sih.py --sondar          # só mede e imprime; não grava nada
 """
 import datetime
-import ftplib
-import io
 import pathlib
 import re
-import struct
 import sys
-import tempfile
 import time
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
-FTP_HOST = "ftp.datasus.gov.br"
 FTP_DIR_RD = "/dissemin/publicos/SIHSUS/200801_/Dados"
-FTP_SENHA = "monitorelnino.com.br"  # identificação do cliente no FTP anônimo
-FTP_DIRS_SINAN = ["/dissemin/publicos/SINAN/DADOS/PRELIM", "/dissemin/publicos/SINAN/DADOS/FINAIS"]
+CAMPOS = ("ANO_CMPT", "MES_CMPT", "IDENT", "DIAG_PRINC")
 TABNET_DEF = "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sih/cnv/niuf.def"
 TABNET_TAB = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sih/cnv/niuf.def"
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
@@ -112,21 +105,6 @@ def meses_de_atraso(competencia: str, hoje: datetime.date) -> int:
     return (hoje.year - a) * 12 + (hoje.month - m)
 
 
-def ler_dbf(dbf: bytes):
-    """Registros de um DBF (bytes) como dicts. Lê por arquivo temporário: `dbfread` só abre caminho."""
-    from dbfread import DBF
-    with tempfile.NamedTemporaryFile(suffix=".dbf") as t:
-        t.write(dbf)
-        t.flush()
-        return list(DBF(t.name, encoding="latin-1", char_decode_errors="replace"))
-
-
-def ler_dbc(dbc: bytes):
-    """Registros de um `.dbc` do DATASUS."""
-    import datasus_dbc
-    return ler_dbf(datasus_dbc.decompress_bytes(dbc))
-
-
 def celula_tabnet(html: str, rotulo: str):
     """Número que segue o rótulo na tabela do TabNet (texto sem marcação), ou None. Função pura.
 
@@ -153,21 +131,14 @@ def form_tabnet(html: str) -> dict:
 # ============================================================================================
 # Sondagem (rede; só mede e imprime)
 # ============================================================================================
-def _ftp():
-    f = ftplib.FTP(FTP_HOST, timeout=60)
-    f.login("anonymous", FTP_SENHA)
-    return f
-
-
 def sondar() -> int:
-    from coletores_base import buscar, enviar
-    hoje = datetime.date.today()
-    print(f"== SIH/SUS · FTP {FTP_HOST}{FTP_DIR_RD} · {hoje}")
+    from coletar_datasus_dbc import baixar_ftp, ler_dbc, listar_ftp
+    from coletores_base import buscar, enviar, hoje_editorial
+    hoje = hoje_editorial()
+    print(f"== SIH/SUS · FTP {FTP_DIR_RD} · {hoje}")
     t0 = time.time()
     try:
-        f = _ftp()
-        f.cwd(FTP_DIR_RD)
-        nomes = f.nlst()
+        nomes = [n for n, _t in listar_ftp(FTP_DIR_RD)]
     except Exception as e:  # noqa: BLE001
         print(f"FTP: falhou ({type(e).__name__}: {e})")
         return 0
@@ -178,46 +149,21 @@ def sondar() -> int:
         print(f"  {uf}: {c or 'sem RD'}" + (f" · atraso {meses_de_atraso(c, hoje)} meses" if c else ""))
     if not ult:
         return 0
-    uf_c, nome_c = "AP", "Amapá"  # UF pequena presente no TabNet (AC e RR faltavam em jul/2026)
-    comp = "2026-07"
-    nome = f"RD{uf_c}{comp[2:4]}{comp[5:7]}.dbc"
-    try:
-        mdtm = f.sendcmd(f"MDTM {nome}")
-    except Exception as e:  # noqa: BLE001
-        mdtm = f"MDTM indisponível ({e})"
-    buf = io.BytesIO()
-    t0 = time.time()
-    f.retrbinary(f"RETR {nome}", buf.write)
-    for d in FTP_DIRS_SINAN:  # hepatite A (SINAN HEPA): onde está e até que ano
-        try:
-            f.cwd(d)
-            hepa = sorted(n for n in f.nlst() if n.upper().startswith("HEPA"))
-            print(f"SINAN {d}: HEPA {hepa[-4:]} ({len(hepa)} arquivos)")
-            for n in hepa[-1:]:
-                print(f"  {n}: {f.sendcmd(f'MDTM {n}')} · {f.size(n)} bytes")
-        except Exception as e:  # noqa: BLE001
-            print(f"SINAN {d}: falhou ({type(e).__name__}: {e})")
-    f.quit()
-    dbc = buf.getvalue()
-    print(f"baixado {nome}: {len(dbc)} bytes em {time.time() - t0:.1f}s · {mdtm}")
-    regs = ler_dbc(dbc)
-    print(f"registros: {len(regs)} · colunas: {list(regs[0].keys()) if regs else []}")
-    idents = {}
-    for r in regs:
-        idents[str(r.get("IDENT"))] = idents.get(str(r.get("IDENT")), 0) + 1
-    print(f"IDENT: {idents}")
-    for r in regs:
-        r["_UF"] = uf_c
+    # Célula de conferência: UF pequena; em 17/10/2026 AC e RR faltavam no TabNet de jul/2026.
+    uf_c, nome_c = "AP", "Amapá"
+    comp = ult.get(uf_c) or max(ult.values())
+    dbc = baixar_ftp(f"{FTP_DIR_RD}/RD{uf_c}{comp[2:4]}{comp[5:7]}.dbc")
+    _desc, linhas = ler_dbc(dbc, CAMPOS)
+    regs = [dict(r, _UF=uf_c) for r in linhas]
+    print(f"registros: {len(regs)} · {len(dbc)} bytes")
     ag = agregar(regs)
     for g in ag:
         print(f"  {g}: {ag[g].get(uf_c)}")
-    # TabNet: uma célula (Acre, internações, competência do arquivo)
+    # TabNet: uma célula (UF de conferência, internações, competência do arquivo)
     try:
         form = form_tabnet(buscar(TABNET_DEF, timeout=60).decode("latin-1"))
-        print(f"TabNet: selects {list(form)}")
         aamm = f"{comp[2:4]}{comp[5:7]}"
         arq = [v for v, _t, _s in form.get("Arquivos", []) if aamm in v]
-        print(f"  Arquivos com {aamm}: {arq} (primeiros: {[v for v, _t, _s in form.get('Arquivos', [])][:4]})")
         linha = next((v for v, t, _s in form.get("Linha", []) if "Unidade da Federa" in t), None)
         incr = next((v for v, t, _s in form.get("Incremento", []) if t.startswith("Interna")), None)
         dados = {}
@@ -233,11 +179,6 @@ def sondar() -> int:
         tab = celula_tabnet(html, nome_c)
         meu = ag.get("total", {}).get(uf_c, {}).get(comp)
         print(f"TabNet {nome_c} {comp}: {tab} · arquivo decodificado: {meu} · bate: {tab == meu}")
-        if tab is None:
-            plano = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
-            i = plano.find("Norte")
-            print("  trecho:", plano[max(i - 300, 0):i + 500])
-            print("  filtros enviados:", {k.decode("latin-1"): v.decode("latin-1") for k, v in dados.items()})
     except Exception as e:  # noqa: BLE001
         print(f"TabNet: falhou ({type(e).__name__}: {str(e)[:200]})")
     return 0
@@ -246,19 +187,6 @@ def sondar() -> int:
 # ============================================================================================
 # Autoteste (sem rede, sem escrita)
 # ============================================================================================
-def _dbf_de(campos, linhas) -> bytes:
-    """DBF mínimo (dBase III, só campos C) para o autoteste."""
-    larg = [w for _n, w in campos]
-    tam_reg = 1 + sum(larg)
-    cab = struct.pack("<BBBBIHH20x", 3, 126, 10, 17, len(linhas), 32 + 32 * len(campos) + 1, tam_reg)
-    for n, w in campos:
-        cab += struct.pack("<11sc4xBB14x", n.encode(), b"C", w, 0)
-    cab += b"\r"
-    corpo = b"".join(b" " + b"".join(str(v).encode("latin-1").ljust(w)[:w] for v, w in zip(l, larg))
-                     for l in linhas)
-    return cab + corpo + b"\x1a"
-
-
 def autoteste() -> int:
     casos = []
     casos.append(("J18 é respiratória", grupo_do_cid("J189") == ["respiratorias"]))
@@ -280,13 +208,6 @@ def autoteste() -> int:
     ult = ultimo_por_uf(["RDAC2606.dbc", "RDAC2607.dbc", "RDSP2605.DBC", "LEIAME.txt", "RDBR2607.dbc"])
     casos.append(("última competência por UF", ult == {"AC": "2026-07", "SP": "2026-05", "BR": "2026-07"}))
     casos.append(("atraso em meses", meses_de_atraso("2026-07", datetime.date(2026, 10, 17)) == 3))
-    dbf = _dbf_de([("ANO_CMPT", 4), ("MES_CMPT", 2), ("IDENT", 1), ("DIAG_PRINC", 4)],
-                  [("2026", "07", "1", "J180"), ("2026", "07", "5", "I219")])
-    try:
-        lidos = ler_dbf(dbf)
-        casos.append(("lê DBF", [r["DIAG_PRINC"] for r in lidos] == ["J180", "I219"]))
-    except ImportError:
-        casos.append(("lê DBF (dbfread ausente: requirements)", False))
     html = ("<table><tr><th>UF</th><th>Interna&ccedil;&otilde;es</th></tr><tr><td>.. Acre<td>3.456"
             "<tr><td>Total</td><td>9.999</td></tr></table>")
     casos.append(("célula do TabNet com separador de milhar", celula_tabnet(html, "Acre") == 3456))
@@ -299,7 +220,8 @@ def autoteste() -> int:
     proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
     casos.append(("trava estrutural: não escreve nos arquivos do índice",
                   not any(p in fonte for p in proibidos)))
-    casos.append(("trava estrutural: a sondagem não grava", "gravar" not in fonte.split("def sondar")[1]))
+    casos.append(("trava estrutural: a sondagem não grava série (só o rastro de robots do `buscar`)",
+                  "gravar" not in fonte.split("def sondar")[1]))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")

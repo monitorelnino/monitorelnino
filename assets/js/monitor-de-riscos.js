@@ -553,8 +553,10 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
       + esc(R.dia.total ? (n / R.dia.total * 100).toLocaleString('pt-BR', {maximumFractionDigits: 1}) : '—') + '</td></tr>').join('');
 
   const sub = document.getElementById('fogoSub');
-  if (sub) sub.textContent = 'Números: ' + dBR(dia) + ', satélite de referência (Aqua, tarde)'
-    + (FOCOS && FOCOS.arquivo_de_origem ? ' · pontos: todos os satélites' : '') + ' · hachura: fogo previsto pelo boletim';
+  // 17/10/2026 (A1, #816): os pontos passam a ser do satélite de referência no mesmo dia dos números
+  // (`focos_pontos.satelite_referencia`); enquanto o arquivo for o antigo, a frase diz de onde são.
+  if (sub) sub.textContent = 'Até ' + dBR(dia) + ' · satélite de referência (Aqua, tarde)'
+    + (FOCOS && !FOCOS.satelite_referencia ? ' · pontos: todos os satélites' : '') + ' · hachura: estados com fogo previsto pelo boletim';
 })();
 (function creditoFogo(){
   const f = FOGO_REF || fonteDe('inpe_fogo');

@@ -24,6 +24,12 @@
           "valor_el": "nDengueSE"
         },
         {
+          "id": "chik_casos_se",
+          "tipo": "numero",
+          "chave": "chik_sinan_serie.json",
+          "valor_el": "nChikSE"
+        },
+        {
           "id": "srag_internacoes_se",
           "tipo": "numero",
           "chave": "srag_serie.json",
@@ -46,12 +52,6 @@
           "tipo": "numero",
           "chave": "monitor_saude.json#resposta.emergencias",
           "valor_el": "nEmergSaude"
-        },
-        {
-          "id": "mare_saude_indice",
-          "tipo": "numero",
-          "chave": "monitor_saude.json",
-          "valor_el": "nIndiceSaude"
         }
       ],
       "exige_texto": [
@@ -110,11 +110,6 @@
               "id": "mapa_uf_por_100mil",
               "tipo": "mapa",
               "el": "boxDengueUF"
-            },
-            {
-              "id": "lista_municipios_busca",
-              "tipo": "lista",
-              "el": "boxDengueMunicipios"
             }
           ]
         },
@@ -131,11 +126,6 @@
               "id": "mapa_uf_por_100mil",
               "tipo": "mapa",
               "el": "boxChikUF"
-            },
-            {
-              "id": "lista_municipios_busca",
-              "tipo": "lista",
-              "el": "boxChikMunicipios"
             }
           ]
         },
@@ -168,11 +158,6 @@
               "id": "mapa_uf_por_100mil",
               "tipo": "mapa",
               "el": "boxCalor"
-            },
-            {
-              "id": "lista_municipios_calor",
-              "tipo": "lista",
-              "el": "boxCalorMunicipios"
             }
           ]
         }
@@ -182,6 +167,18 @@
       "id": "saude-federal-painel",
       "h2": "O que o governo federal publicou",
       "tipo": "lista_simples"
+    },
+    {
+      "id": "consultaSaude",
+      "h2": "Consulte a situação do seu município",
+      "tipo": "texto",
+      "cartoes": [
+        {
+          "id": "consulta_municipio",
+          "tipo": "texto",
+          "el": "consultaSaudeControles"
+        }
+      ]
     }
   ],
   "texto_proibido": [

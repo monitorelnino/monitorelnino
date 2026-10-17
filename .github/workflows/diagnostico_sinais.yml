@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt datasus-dbc dbfread -q
+      - run: pip install -r requirements.txt -q
       - name: Sondar SIH (FTP, .dbc, TabNet)
         continue-on-error: true
         timeout-minutes: 12
@@ -25,4 +25,9 @@ jobs:
       - name: Sondar óbitos (Registro Civil por causa, SIM no FTP e no portal)
         continue-on-error: true
         timeout-minutes: 12
-        run: python3 coletar_obitos.py --sondar 2>&1
+        run: |
+          python3 coletar_obitos.py 2>&1
+          python3 -c "
+          import json;o=json.load(open('data/saude_desfechos/obitos.json'))
+          print('chaves',sorted(o));print('BR ultimos',list(o['serie']['BR'].items())[-4:]);print('ultimo SP',o['ultimo']['SP']);print('cortes',o['cortes_mapa']);print('lacunas',o['lacunas']);print('faixa AC 01',o['faixa_habitual']['AC'].get('01'))
+          "
