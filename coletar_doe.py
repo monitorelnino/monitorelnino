@@ -731,10 +731,11 @@ def edicoes_sc(buscar_fn, base):
     return fn
 
 
-# MG (17/10/2026, runs 39029434439, 39030190359 e 39034277638): a API pública que o sítio do Jornal Minas
-# Gerais chama (`Jornal/ObterEdicaoPorDataPublicacao`) devolve a edição da data sem token; o Diário do
-# Executivo vem em `dados.arquivoCadernoPrincipal.arquivo`, um envelope CMS/PKCS#7 assinado, em base64,
-# com o PDF dentro. Data que a API recusa (401) é recusa, e o coletor para nela, como em toda fonte.
+# MG (17/10/2026, runs 39029434439, 39030190359, 39034277638 e 39035891128): a API pública que o sítio do
+# Jornal Minas Gerais chama (`Jornal/ObterEdicaoPorDataPublicacao`) devolve a edição da data sem token; o
+# Diário do Executivo vem em `dados.arquivoCadernoPrincipal.arquivo`, um envelope CMS/PKCS#7 assinado, em
+# base64, com o PDF dentro. Domingo e feriado: `{"dados": null, "erros": []}`. Parte das datas responde 401
+# (sem padrão de janela: 15 e 17/09 abrem, 16 e 18/09 não): é recusa, e o coletor para nela.
 EDICAO_MG = "{base}/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao={data}"
 OID_DADOS_CMS = bytes.fromhex("06092a864886f70d010701")
 
@@ -780,7 +781,9 @@ def edicoes_mg(buscar_fn, base):
     def fn(data):
         url = EDICAO_MG.format(base=base.rstrip("/"), data=data)
         o = json.loads(buscar_fn(url, timeout=120, origem="coletar_doe").decode("utf-8", "replace"))
-        dados = o.get("dados") if isinstance(o, dict) else None
+        if not isinstance(o, dict) or o.get("erros"):
+            raise FormatoDaBuscaMudou(f"resposta do DOE-MG fora do contrato: {str(o)[:120]}")
+        dados = o.get("dados")
         if not dados:
             return []
         arquivo = (dados.get("arquivoCadernoPrincipal") or {}).get("arquivo") if isinstance(dados, dict) else None
@@ -1412,7 +1415,9 @@ def autoteste() -> int:
                         "arquivo": base64.b64encode(FIXTURE_CMS_BER).decode()}}}).encode(), "https://x/")("2026-10-16") == [
                         {"edicao": "Diário do Executivo", "pdf": b"%PDF-abc",
                          "url": "https://x/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16"}]
-                     and edicoes_mg(lambda u, **k: b'{"dados": null}', "https://x")("2026-10-18") == []
+                     and edicoes_mg(lambda u, **k: b'{"dados": null, "erros": []}', "https://x")("2026-10-11") == []
+                     and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": null, "erros": ["x"]}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)
                      and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": {"outro": 1}}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":

@@ -546,12 +546,12 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         # Data recente "sem edição" se tenta de novo: a edição do dia pode sair depois da leitura.
         recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
         datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])
-                 or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")][:TETO_EDICOES]
+                 or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")]
         # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
         # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
-        # Fonte que só abre as datas recentes (MG recusa com 401 o que passa de um mês, 17/10/2026) tem
-        # o recente lido antes da recusa, que para a UF como sempre; e o prazo do elo corta o mais velho.
-        datas = sorted(datas, reverse=True)
+        # Fonte que recusa parte das datas (MG, 401, 17/10/2026) tem o recente lido antes da recusa, que
+        # para a UF como sempre; e o prazo do elo corta o mais velho, não o recente.
+        datas = sorted(datas, reverse=True)[:TETO_EDICOES]
         vistos = {e.get("impressao") for d, e in edicoes.items()
                   if isinstance(e, dict) and e.get("impressao") and d.split("#")[0] not in datas}
         try:
@@ -638,7 +638,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         registro["canal2"] = {"modo": MODO_SEM_ACESSO, "motivo": recusa, "em": hoje, "conta_como_consultado": False}
         registrar_lacuna(f"DOE-{uf} (canal 2)", recusa, canal="DOE", camada=1)
         print(f"  {uf}: {recusa} — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
-    if lidas:
+    # Recusa no meio do ciclo (MG lê o recente e recusa o resto) não é verificação do diário: o livro de
+    # fontes e o log dizem o que houve, e a lacuna segue declarada (auditoria de lacuna, 17/10/2026).
+    decisao = "registro" if com_termo else ("acesso recusado" if recusa else "consultado sem achado")
+    if lidas and not recusa:
         # 14/10/2026 (ciclo de 15 dias): o diário da UF foi LIDO, edição por edição — é verificação
         # real por DOE, e o livro de fontes a registra como o canal 1 já registra (`DOE/<UF>`).
         from coletores_base import marcar_fonte_consultada, referencia_ibge
@@ -649,14 +652,14 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     gravar(arquivo, registro)
     indice["atualizado_em"] = hoje
     gravar(INDICE, indice)
-    log_busca("DOE", 1, [rota["detalhe"]], "registro" if com_termo else "consultado sem achado",
+    log_busca("DOE", 1, [rota["detalhe"]], decisao,
               nivel="estadual", uf=uf, n_resultados=com_termo,
               resultados=f"canal 2 em {uf} ({rota['tipo']}): {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     print(f"  {uf}: {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     if interrompido:
         raise KeyboardInterrupt
     return {"uf": uf, "modo": registro["canal2"]["modo"], "lidas": lidas, "com_termo": com_termo,
-            "decisao": "registro" if com_termo else "consultado sem achado"}
+            "decisao": decisao}
 
 
 # Padroes de endereco que as plataformas de diario costumam usar, para a PRIMEIRA tentativa. Cada
