@@ -22,19 +22,17 @@ jobs:
         continue-on-error: true
         timeout-minutes: 12
         run: python3 coletar_sih.py --sondar 2>&1
-      - name: Tamanho dos RD do SIH por ano
+      - name: Tempo de baixar e ler RD grandes
         continue-on-error: true
+        timeout-minutes: 20
         run: |
           python3 -c "
-          from coletar_datasus_dbc import listar_ftp
-          import re,collections
-          t=collections.Counter();n=collections.Counter();uf=collections.Counter()
-          for nome,tam in listar_ftp('/dissemin/publicos/SIHSUS/200801_/Dados'):
-              m=re.match(r'RD([A-Z]{2})(\\d{2})(\\d{2})\\.DBC',nome.upper())
-              if m and tam:
-                  a=2000+int(m.group(2)); t[a]+=tam; n[a]+=1
-                  if a==2025: uf[m.group(1)]+=tam
-          for a in sorted(t):
-              if a>=2019: print(a, n[a], 'arquivos', round(t[a]/2**20), 'MB')
-          print('2025 por UF (MB):', {k: round(v/2**20) for k,v in uf.most_common()})
+          import time
+          from coletar_datasus_dbc import baixar_ftp, ler_dbc
+          from coletar_sih import agregar, CAMPOS
+          for uf in ('PE','SP'):
+              t0=time.time(); b=baixar_ftp('/dissemin/publicos/SIHSUS/200801_/Dados/RD%s2501.dbc'%uf); t1=time.time()
+              _d,l=ler_dbc(b,CAMPOS); regs=[dict(r,_UF=uf) for r in l]; t2=time.time()
+              a=agregar(regs); t3=time.time()
+              print(uf, len(b)//2**20,'MB baixar %.1fs ler %.1fs agregar %.1fs'%(t1-t0,t2-t1,t3-t2), 'total', a['total'][uf])
           "
