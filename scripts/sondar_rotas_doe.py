@@ -256,11 +256,14 @@ def main() -> int:
                 r = veredito_da_recusa(e)
             print(f"== {uf} {base}\n" + json.dumps(r, ensure_ascii=False, indent=1))
         return 0
-    if "--trecho" in sys.argv:              # só mede e imprime: endereço~termo~termo; sem termo, o começo
+    if "--trecho" in sys.argv:              # só mede e imprime: endereço[~POST:a=1&b=2]~termo~termo
+        import urllib.parse
+        from coletores_base import enviar
         for alvo in arg("--trecho").split("|"):
             url, *termos = alvo.split("~")
+            corpo = dict(urllib.parse.parse_qsl(termos.pop(0)[5:])) if termos and termos[0].startswith("POST:") else None
             try:
-                t = buscar(url, timeout=60).decode("utf-8", "replace")
+                t = (enviar(url, corpo, timeout=60) if corpo is not None else buscar(url, timeout=60)).decode("utf-8", "replace")
             except Exception as e:  # noqa: BLE001
                 print(f"== {url}: {veredito_da_recusa(e)}")
                 continue
