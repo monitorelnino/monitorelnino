@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
 
+## 2026-10-17 · #828 · Portões: 119 para 92 comandos
+
+O autoteste do layout roda dentro da conformidade; a Imprensa usa o medidor de página do layout. Os `testar_*.py` sem flag e catorze autotestes puros do bloco "sempre" passam a rodar só em `verificar_autotestes_isolados.py`, que já os cobria e agora também prova que não alteram `data/`. Mesma cobertura, provada por mutação. Registro do #784: entrou junto a fusão `verificar_carimbo_da_rodada.py`.
+
 ## 2026-10-17 · #825 · Figura principal larga
 
 Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.
