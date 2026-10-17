@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #842 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
+
+Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
+
 ## 2026-10-17 · #831 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo
 
 `julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.
