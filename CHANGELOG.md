@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.
 
+## 2026-10-17 · #832 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
+
+A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. "O que a lei exige de cada governo" vira três cartões de número, as listas perdem a caixa de marcar e "Como os recursos chegam" ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.
+
 ## 2026-10-17 · #827 · Defesa civil: evento declarado por município
 
 `gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
