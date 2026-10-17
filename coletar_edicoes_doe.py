@@ -50,7 +50,8 @@ RAIZ = pathlib.Path(__file__).resolve().parent
 PASTA = "doe_edicoes"
 INDICE = "doe_ocorrencias.json"
 INICIO_DO_CICLO = "2026-06-29"
-UFS = "AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO".split()
+# Em ordem de população (Censo 2022): a recuperação lê primeiro onde mora mais gente (handover §2).
+UFS = "SP MG RJ BA PR RS PE CE PA SC GO MA AM ES PB MT RN AL PI DF MS SE RO TO AC AP RR".split()
 # Teto por execução, para que uma recuperação não vire uma rodada de doze horas sem aviso.
 TETO_EDICOES = 400
 BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
@@ -391,17 +392,9 @@ def busca_de_declaracao(uf: str, registro: dict) -> dict:
 
 # ── execução ───────────────────────────────────────────────────────────────────────────────────
 def _texto_paginas(bruto: bytes) -> list:
-    """Texto por página, pela porta canônica do projeto."""
-    try:
-        import io as _io
-
-        import pdfplumber
-        with pdfplumber.open(_io.BytesIO(bruto)) as pdf:
-            pgs = [(pg.extract_text() or "") for pg in pdf.pages]
-        if sum(len(t) for t in pgs) > 200:
-            return pgs
-    except Exception:  # noqa: BLE001
-        pass
+    """Texto por página, pela porta canônica do projeto (pypdf, pdfplumber de reserva). 17/10/2026: a
+    ordem inversa (pdfplumber primeiro) era cópia da porta, e o pdfplumber, o mais lento dos dois,
+    lendo toda página das edições de 200 a 500 páginas (PA, RO) não cabe no prazo do elo."""
     try:
         from preservar_evidencias import extrair_texto_por_pagina
         return extrair_texto_por_pagina(bruto)
