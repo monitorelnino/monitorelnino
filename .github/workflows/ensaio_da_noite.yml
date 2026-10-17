@@ -98,7 +98,7 @@ jobs:
             python3 scripts/unir_conflito_de_rodada.py --autoteste
             python3 scripts/janela_da_noite.py --autoteste
             python3 scripts/painel_da_noite.py --autoteste
-            python3 scripts/verificar_autoteste_nao_escreve.py
+            python3 scripts/verificar_autotestes_isolados.py --rapido
           } | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: A árvore do projeto ficou intocada?
