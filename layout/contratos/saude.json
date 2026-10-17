@@ -3,7 +3,7 @@
   "pagina": "saude.html",
   "componentes": {
     "numeros": ".cartao-numero",
-    "grade_numeros": ".grade-numeros--3",
+    "grade_numeros": ".grade-numeros--compacta",
     "figura": ".cartao-mapa",
     "grade_figuras": ".grade-figuras--3",
     "estados": "#regionsSaude"
@@ -14,8 +14,8 @@
       "id": "numerosSaude",
       "h2": null,
       "tipo": "numeros",
-      "grade": ".grade-numeros--3",
-      "linhas": 2,
+      "grade": ".grade-numeros--compacta",
+      "linhas": 1,
       "cartoes": [
         {
           "id": "dengue_casos_se",

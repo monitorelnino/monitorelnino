@@ -51,12 +51,12 @@
   <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
   <!-- 16/10/2026 (editoria, lote 2): "Situação atual" em painel próprio, separada da abertura; a faixa
-       de números de agora (`.cartao-numero` em `.grade-numeros--3`, regra de layout/regras.json). Cada
+       de números de agora (`.cartao-numero` em `.grade-numeros--compacta`, até seis numa linha, regra de layout/regras.json). Cada
        número sai do dado já coletado, com órgão e data; variação só onde há leitura anterior gravada. -->
   <div class="panel" id="situacao">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao">Situação atual</h2>
     <p class="hint" id="stResumo" data-conteudo="monitor-de-riscos.situacao.abertura" aria-live="polite">Condição de El Niño declarada pelos órgãos federais em 29/06/2026.</p>
-    <div class="grade-numeros grade-numeros--3 grade-numeros--empilha" id="situacaoGrade">
+    <div class="grade-numeros grade-numeros--compacta" id="situacaoGrade">
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="roni_mais_recente">
         <p class="cartao-numero-rotulo" id="stRoniRotulo" data-conteudo="monitor-de-riscos.situacao.roni.rotulo">RONI mais recente</p>
         <p class="cartao-numero-valor" id="stRoniValor">sem coleta até o corte</p>
