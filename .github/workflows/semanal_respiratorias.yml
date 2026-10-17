@@ -13,10 +13,19 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-        with: { persist-credentials: false, sparse-checkout-cone-mode: false, sparse-checkout: "/*.py\n/requirements.txt\n/scripts/\n/config/\n/data/robots_registro.json\n/data/painel_coletores.json" }
+        with: { persist-credentials: false, sparse-checkout-cone-mode: false, sparse-checkout: "/*.py\n/requirements.txt\n/scripts/\n/config/\n/data/robots_registro.json\n/data/painel_coletores.json\n/data/geo_uf.json\n/data/municipios_ibge_referencia.json\n/data/populacao_censo2022.json" }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
       - name: Sondar
         run: |
-          python3 sonda_e1.py sisab_post || true
+          python3 - <<'PY' || true
+          import json, time, coletar_sisab as S
+          from coletores_base import ler
+          t0 = time.time()
+          serie, comps = S.baixar_serie(S.DESFECHOS["diarreias"]["codigos"], S.siglas_de(ler("geo_uf.json")))
+          print("[sisab-serie]", round(time.time() - t0), "s;", len(serie), "UFs;", comps[0], comps[-1])
+          for uf in ("SP", "CE", "RS", "AC"):
+              s = serie[uf]; ks = sorted(s)
+              print("[sisab-serie]", uf, ks[0], ks[-1], len(ks), "nulos", sum(v is None for v in s.values()), [(k, s[k]) for k in ks[-4:]], [(k, s[k]) for k in ks[:2]])
+          PY
