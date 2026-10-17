@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #825 · Figura principal larga
+
+Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.
+
 ## 2026-10-17 · #824 · Consulta do município diz se ele está na rede do Cemaden
 
 `riscos_municipio/<UF>.json` ganha `rede_cemaden` por município, lido da lista oficial do Cemaden (dois PDFs, 1.038 + 95 municípios, publicada em 26/03/2024, data declarada na origem). Nome que não casa com o IBGE fica listado, nunca adivinhado (6 de 1.131 no executor). Sem resposta da fonte, o campo não vai e a origem diz por quê. Proteja-se §4.
