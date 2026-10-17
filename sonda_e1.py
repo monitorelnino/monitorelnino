@@ -3,7 +3,7 @@ import io, json, re, sys
 from coletores_base import buscar
 import coletar_tabnet as T
 
-CHAVES = r"(fumaça|respirat|diarr|água tratada|Aedes|dengue|chikungunya|armazen|reservat|calor|cardi|renal|rins|idos|crian|leptospir|hepatite)"
+CHAVES = __import__("os").environ.get("CHAVES") or r"(fumaça|respirat|diarr|água tratada|Aedes|dengue|chikungunya|armazen|reservat|calor|cardi|renal|rins|idos|crian|leptospir|hepatite)"
 
 def texto(url):
     b = buscar(url, timeout=90)
@@ -27,8 +27,8 @@ def fontes():
             t1 = re.sub(r"\s+", " ", t)
             for m in re.finditer(CHAVES, t1, re.I):
                 print(f"   p{n} …{t1[max(0, m.start()-160):m.end()+160]}…"); vistos += 1
-                if vistos > 60: break
-            if vistos > 60: break
+                if vistos > 80: break
+            if vistos > 80: break
 
 def tabnet():
     T.sondar_def("sinannet/cnv/leptobr.def", "UF de resid")
