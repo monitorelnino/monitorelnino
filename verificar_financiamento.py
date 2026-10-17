@@ -124,14 +124,15 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     # tinha campo de data — `na_janela` devolvia lista vazia, e o zero virava fato publicado, no
     # Financiamento e na Imprensa. Zero medido e campo inexistente são coisas diferentes.
     semana_fin = arquivos_fin.get("semana.json") or ""
-    comp_fin = arquivos_fin.get("compromissos_federais.json") or ""
+    # 17/10/2026: a origem do cartão passou a ser a MP (`publicada_em`), não a lista de contexto.
+    comp_fin = arquivos_fin.get("mps_2026.json") or ""
     if semana_fin and comp_fin:
         try:
             import json as _js
             _sem = _js.loads(semana_fin)
             _comp = _js.loads(comp_fin)
-            _tem_data = any(str((i or {}).get("data") or (i or {}).get("publicado_em") or "")[:4]
-                            .isdigit() for i in (_comp.get("itens") or []))
+            _tem_data = any(str((i or {}).get("publicada_em") or "")[:2].isdigit()
+                            for i in (_comp.get("mps") or []))
             for _c in _sem.get("cartoes") or []:
                 # 09/10/2026: a ausencia passou a ter CLASSE propria (`sem_data_na_origem`), em
                 # vez de `sem_coleta`: a serie existe e foi lida, e dizer "sem coleta" dela seria
@@ -143,7 +144,7 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
                              "nenhum item da origem traz data — zero por campo inexistente não é "
                              "zero medido (A3-10)")
         except ValueError:
-            e.append("(m) semana.json ou compromissos_federais.json ilegível")
+            e.append("(m) semana.json ou mps_2026.json ilegível")
     resp = {r["id"] for r in rotas["rotas"] if not r["ex_ante"]}
     if resp != {"r3", "r4"}: e.append(f"(e) rotas de resposta devem ser exatamente r3 e r4; achou {sorted(resp)}")
     if "somaPreparacao" not in html or "filter(r => r.ex_ante)" not in html: e.append("(e) página sem somaPreparacao restrita a rotas ex_ante")

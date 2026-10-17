@@ -125,7 +125,9 @@ def numero_do_texto(texto: str):
     t = re.sub(r"\d{1,2}/\d{1,2}/\d{4}(?:\s+\d{1,2}:\d{2})?", " ", t)
     m = re.search(r"(-?\d[\d.  ]*(?:,\d+)?)", t)
     if not m:
-        return None
+        # 17/10/2026: zero em cartão se escreve por extenso (regra `zero_por_extenso_em_cartao`);
+        # "nenhum" publica zero, e é zero que a Imprensa compara.
+        return (0.0, 0, 1) if re.match(r"(?i)\s*(nenhum|nenhuma|zero)\b", t) else None
     cru = m.group(1).replace(".", "").replace(" ", "").replace(" ", "")
     casas = len(cru.split(",")[1]) if "," in cru else 0
     try:
@@ -282,6 +284,7 @@ def _autoteste() -> int:
     ok("semana divergente reprova", any("semana 37" in x for x in d))
     ok("a semana 33 de 2026 é de 16 a 22 de agosto (regra do Ministério da Saúde)",
        semana_em_datas(2026, 33) == ["16 a 22 de agosto de 2026", "16–22/ago"])
+    ok("zero por extenso no cartão ('nenhum') é o número zero", mesmo_numero(0, "nenhum") and not mesmo_numero(1, "nenhum"))
     ok("a semana 1 de 2025 começa em 29 de dezembro de 2024",
        semana_em_datas(2025, 1)[0] == "29 de dezembro de 2024 a 4 de janeiro de 2025")
     sem = dict(cartoes); sem["desembolsado_no_mes"] = {"valor": None, "sem_coleta": True}
