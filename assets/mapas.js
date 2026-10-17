@@ -166,8 +166,10 @@
   function legenda(elId, itens) {
     const el = document.getElementById(elId); if (!el) return;
     // `hachura`: amostra listrada, a mesma marca do mapa (cor das listras sobre `fundo`).
+    // `vazado`: círculo só de contorno, a marca do ponto vazado do mapa (cor no traço).
     const fundo = i => i.hachura ? 'repeating-linear-gradient(45deg,' + i.cor + ' 0 3px,' + (i.fundo || 'transparent') + ' 3px 6px)' : i.cor;
-    el.innerHTML = itens.map(i => '<span><i style="background:' + fundo(i) + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
+    el.innerHTML = itens.map(i => '<span><i' + (i.vazado ? ' class="leg-vazado" style="color:' + i.cor : ' style="background:' + fundo(i))
+      + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
   /** Mapa coroplético por UF + legenda, num só passo (consolidado 17/09/2026 — antes
