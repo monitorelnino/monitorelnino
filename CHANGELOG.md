@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #818 · Imprensa da saúde usa o parser, a fonte e o cursor da imprensa regional
+
+`monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.
+
 ## 2026-10-17 · #814 · Fila de pistas reentrante: o juiz volta na noite até esvaziar
 
 O juiz julga até o prazo; sobrando fila, grava `juiz.parcial` com o restante em vez de `juiz.feito`, e a reserva do despachante o redispara até 08:00 UTC. Pendente de documento julgada hoje não é rejulgada na mesma noite. Na `main`, o prazo de todo elo termina antes das 09:00. Sem sessão esperando run. Ensaio 28.

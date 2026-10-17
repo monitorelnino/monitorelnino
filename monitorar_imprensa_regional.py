@@ -75,7 +75,6 @@ import urllib.request
 
 RAIZ = pathlib.Path(__file__).parent
 sys.path.insert(0, str(RAIZ / "scripts"))
-from validar_dicionario import get_sinalizadores_resposta  # noqa: E402 (import após sys.path)
 from coletores_base import ua_de, gravar_em, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
 
 FILA = RAIZ / "data" / "pistas_imprensa.json"
@@ -213,19 +212,20 @@ def montar_universo(estados_json):
     return alvos
 
 
-def carregar_cursor(total):
+def carregar_cursor(total, caminho=None):
     """Lê a posição do rodízio; reinicia do zero quando o universo muda de tamanho."""
-    if CURSOR.exists():
-        c = json.load(open(CURSOR, encoding="utf-8"))
+    caminho = caminho or CURSOR
+    if caminho.exists():
+        c = json.load(open(caminho, encoding="utf-8"))
         if c.get("tamanho_universo") == total:
             return c.get("posicao", 0)
     return 0
 
 
-def salvar_cursor(posicao, total):
+def salvar_cursor(posicao, total, caminho=None):
     """Grava a posição do rodízio para a próxima execução continuar dali."""
     # §229 (atômico) e §227 (data da redação, não do runner).
-    gravar_em(CURSOR, {"posicao": posicao, "tamanho_universo": total,
+    gravar_em(caminho or CURSOR, {"posicao": posicao, "tamanho_universo": total,
                        "atualizado_em": hoje_editorial().isoformat()})
 
 
@@ -355,7 +355,7 @@ def self_test():
     print(f"✓ priorização em camadas (A-lac, B-capital, C-estado-amplo, D-município-prioritário: "
           f"{len(alvos_d)} alvos) OK")
 
-    import tempfile, os
+    import tempfile
     with tempfile.TemporaryDirectory() as d:
         cur = pathlib.Path(d) / "cursor.json"
         gravar_em(cur, {"posicao": 5, "tamanho_universo": 10})
