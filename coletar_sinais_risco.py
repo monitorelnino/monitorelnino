@@ -2137,10 +2137,31 @@ def gravar_focos_referencia() -> None:
 RISCOS_MUNICIPIO = RAIZ / "data" / "riscos_municipio"
 RISCOS_DECRETOS_MAX = 3
 RISCOS_RAIO_AR_KM = 50.0    # além disso a estação mede outra cidade: o município fica sem bloco de ar
+# A rede do Cemaden (Proteja-se §4: "Município fora da rede do Cemaden"): a lista oficial publicada
+# em 26/03/2024, 1.038 + 95 municípios, em dois PDFs. Sem lista nova, a data dela vai junto.
+CEMADEN_REDE = ("https://www.gov.br/cemaden/pt-br/cemaden-amplia-a-lista-de-municipios-monitorados-de-1038-para-1133/",
+                ("MunicipiosMonitorados2021.pdf", "95_munic_Lista_.pdf"), "2024-03-26")
+
+
+def parse_rede_cemaden(texto: str, ref: list) -> tuple:
+    """(códigos IBGE da lista, linhas sem casamento). Linhas "[código] Nome UF"; o código, quando
+    vem, vale; sem ele, casa nome e UF na referência do IBGE. Função pura."""
+    por_nome = {(normalizar_nome(str(m["nome"])), m["uf"]): str(m["codigo_ibge"]) for m in ref}
+    achados, sem = set(), []
+    for linha in (texto or "").splitlines():
+        m = re.match(r"^\s*(\d{7})?\s*(.+?)\s+([A-Z]{2})\s*$", linha)
+        if not m or m.group(3) not in UFS:
+            continue
+        cod = m.group(1) or por_nome.get((normalizar_nome(m.group(2).replace("´", "'")), m.group(3)))
+        if cod:
+            achados.add(cod)
+        else:
+            sem.append(linha.strip())
+    return achados, sem
 
 
 def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, atos: dict,
-                            calor: dict = None, decretados: dict = None) -> dict:
+                            calor: dict = None, decretados: dict = None, rede_cemaden=None) -> dict:
     """{UF: {"estacoes": [...], "sensores": [...], "municipios": {IBGE: {...}}}}. Função pura.
 
     Focos ausentes no acumulado de 30 dias são 0 só quando a série tem os 30 dias; com menos, o
@@ -2181,6 +2202,8 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
             item.setdefault("avisos_inmet", []).append(bloco["avisos_inmet"].index(aviso))
         if v.get("cemaden"):
             item["alertas_cemaden"] = v["cemaden"]
+        if rede_cemaden is not None:
+            item["rede_cemaden"] = cod in rede_cemaden
         dec = sorted(decretos.get((normalizar_nome(m["nome"]), uf)) or [],
                      key=lambda d: "".join(reversed(str(d.get("data") or "").split("/"))), reverse=True)
         if dec:
@@ -2217,7 +2240,19 @@ def gravar_riscos_municipio() -> None:
                                  abrir("ar_medido.json"), abrir("atos_resposta.json"))
     calor, decretados = abrir("saude_sinais.json").get("calor_excesso") or {}, abrir("resposta/municipios_decretados.json")
     ref = json.loads(MUNICIPIOS_REF.read_text(encoding="utf-8"))
-    por_uf = montar_riscos_municipio(ref, focos, vigentes, ar, atos, calor, decretados)
+    rede, sem = None, []
+    try:   # fonte externa: sem resposta, o campo não vai, e a origem diz por quê
+        from preservar_evidencias import extrair_texto_por_pagina
+        base, arquivos, publicada = CEMADEN_REDE
+        texto = ""
+        for nome in arquivos:
+            bruto = _buscar(base + nome, binario=True)
+            registrar_consulta("cemaden_rede", base + nome, bruto)
+            texto += "\n".join(extrair_texto_por_pagina(bruto, pdfplumber_primeiro=True)) + "\n"
+        rede, sem = parse_rede_cemaden(texto, ref)
+    except Exception as e:  # noqa: BLE001
+        print(f"[aviso] rede do Cemaden: {type(e).__name__}: {str(e)[:160]} — campo rede_cemaden fora desta rodada.")
+    por_uf = montar_riscos_municipio(ref, focos, vigentes, ar, atos, calor, decretados, rede)
     cabeca = {
         "_governanca": ("Consulta do município no Monitor de riscos: junta, por código IBGE, o que os "
                         "arquivos de origem guardam. Nada é recalculado; o plano do município está em "
@@ -2230,7 +2265,10 @@ def gravar_riscos_municipio() -> None:
                     "decretos": {"arquivo": "atos_resposta.json", "atualizado_em": atos.get("atualizado_em")},
                     "reconhecimento": {"arquivo": "resposta/municipios_decretados.json",
                                        "gerado_em": decretados.get("gerado_em")},
-                    "calor": {"arquivo": "saude_sinais.json", "data": calor.get("data"), "fonte": calor.get("orgao")}},
+                    "calor": {"arquivo": "saude_sinais.json", "data": calor.get("data"), "fonte": calor.get("orgao")},
+                    "rede_cemaden": ({"url": CEMADEN_REDE[0], "lista_publicada_em": CEMADEN_REDE[2],
+                                      "municipios": len(rede), "linhas_sem_casamento": sem}
+                                     if rede is not None else {"lacuna": "lista do Cemaden não lida nesta rodada"})},
     }
     for uf, bloco in sorted(por_uf.items()):
         escrever_json(RISCOS_MUNICIPIO / f"{uf}.json", {**cabeca, "uf": uf, **bloco}, compacto=True)
@@ -2822,6 +2860,10 @@ def autoteste() -> int:
     checar("Município: estação de ar a até 50 km com distância; capital mais próxima com distância",
            _df["ar_estacao"]["distancia_km"] == 21 and _rm["DF"]["estacoes"][0]["iqar"]["valor"] == 52.0
            and _go["capital_mais_proxima"]["nome"] == "Brasília" and "ar_sensor" not in _df)
+    _rede, _sem = parse_rede_cemaden("MUNICÍPIO UF\nBrasília DF\n5217609 Planaltina GO\nInexistente DF\n", _ref)
+    checar("Rede do Cemaden: código vale, nome casa na referência, sem casamento fica declarado",
+           _rede == {"5300108", "5217609"} and _sem == ["Inexistente DF"]
+           and montar_riscos_municipio(_ref, {}, {}, {}, {}, rede_cemaden={"5300108"})["GO"]["municipios"]["5217609"]["rede_cemaden"] is False)
     checar("Município: calor e reconhecimento só para quem está na fonte (Proteja-se §7.3)",
            _df["calor"] == "Severo" and _df["reconhecimento"]["primeiro_reconhecimento"] == "09/09/2026"
            and "calor" not in _go and "reconhecimento" not in _go)

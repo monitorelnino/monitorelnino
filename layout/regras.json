@@ -117,12 +117,20 @@
     "ultima_linha_pode_ser_incompleta": true,
     "figura_larga": {
       "classe": "cartao-mapa--largo",
-      "quando": "Só para DIAGRAMA, e no máximo UMA por página. Um diagrama de 960 de largura num cartão de um terço da coluna não é um diagrama menor: é um diagrama ilegível — a figura dos caminhos do dinheiro passou três dias assim, sem as curvas, espremida a 327 px. Mapa, gráfico de série e cartão de número NÃO usam esta variante: eles se leem na grade de três, e largura total neles é desperdício de coluna.",
+      "quando": "Para DIAGRAMA (no máximo um por página) e para a FIGURA PRINCIPAL que o contrato da página declara em `figura_principal` ({\"mapa\": \"<id>\"} ou {\"serie\": \"<id>\"}): no máximo uma por página, mapa ou série, escolhida por ser a leitura central da página; em monitor-de-riscos.html, uma de cada tipo (um mapa e uma série), porque foi o desenho aprovado. Um diagrama de 960 de largura num cartão de um terço não é um diagrama menor: é um diagrama ilegível. Toda outra figura (mapa, série, cartão de número) se lê na grade de três; figura larga não declarada reprova.",
       "exige": [
         "grid-column: 1 / -1",
         "svg com width:100% e height:auto",
         "alternativa em lista vertical abaixo de 640 px"
       ],
+      "diagrama_por_pagina": 1,
+      "figura_principal": {
+        "tipos": ["mapa", "serie"],
+        "por_pagina": 1,
+        "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 1}},
+        "registrado_em": "2026-10-16",
+        "decidido_por": "editoria, por delegação à central (16/10/2026 22:15 UTC; HANDOVER_FINANCIAMENTO_16-10-2026 §11)"
+      },
       "registrado_em": "2026-10-04",
       "decidido_por": "editoria (item 7 do handover dos temporizadores)"
     }
@@ -807,7 +815,7 @@
     "componentes.figura": "scripts/verificar_layout.py",
     "componentes.grade_figuras": "scripts/verificar_layout.py",
     "componentes.estados": "scripts/verificar_layout.py",
-    "componentes.fracao_maxima_da_largura": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
+    "componentes.fracao_maxima_da_largura": "scripts/verificar_layout.py",
     "componentes.secao_sem_caixa": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
     "componentes.secao_sem_numeracao": "scripts/verificar_conformidade.py",
     "componentes.ultima_linha_pode_ser_incompleta": "só texto até 12/10/2026 (A7-14): nenhum portão a julga ainda",
