@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-16",
+ "atualizado_em": "2026-10-17",
  "falhas": [
   {
    "id": "F01",
@@ -947,6 +947,19 @@
    ],
    "correcao": "Host sem resposta de rede sai do resto da rodada; falha de rede é pendente (sem veredito, volta na rodada seguinte), HTTP continua recusa; veredito antigo de queda de rede volta à fila; o corte só avança sem pendente.",
    "caso_de_teste": "julgar_saude.py --autoteste (três casos F68)"
+  },
+  {
+   "id": "F69",
+   "noite": "2026-10-16→2026-10-17",
+   "titulo": "Busca web com fila vazia: marca de motor mudo de antes de 14/10 contava como município consultado",
+   "sintoma": "run 38989629349: 5× monitorar_busca_web.py --tamanho 150 com '0 municípios consultados, 0 pistas' (10 s) e busca_web.feito gravado.",
+   "causa": "pendentes_na_janela contava qualquer entrada da fonte na janela de 15 dias. O livro ainda guarda 758 marcas 'decisão motor_sem_resposta' gravadas antes da regra de 14/10 (só resposta real marca); 191 municípios só tinham essa marca e saíam da fila.",
+   "prova": [
+    "data/fontes_consultadas.json em 17/10: 5.571 com entrada desde 03/10; 5.380 com resposta real",
+    "log do run 38989629349 (abertura da noite 16→17, central 02:20 UTC)"
+   ],
+   "correcao": "pendentes_na_janela ignora a marca de motor mudo; o livro não perde histórico; a fila volta a ter os 191 municípios. Fila vazia com nada devido continua sendo trabalho feito (regra 3).",
+   "caso_de_teste": "monitorar_busca_web.py --autoteste"
   }
  ]
 }
