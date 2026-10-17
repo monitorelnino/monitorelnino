@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O juiz julga até o prazo; sobrando fila, grava `juiz.parcial` com o restante em vez de `juiz.feito`, e a reserva do despachante o redispara até 08:00 UTC. Pendente de documento julgada hoje não é rejulgada na mesma noite. Na `main`, o prazo de todo elo termina antes das 09:00. Sem sessão esperando run. Ensaio 28.
 
+## 2026-10-17 · #813 · Consulta do município: um componente comum
+
+`assets/js/consulta-municipio.js` monta a consulta estado → município (lista do estado, campo que abre com o estado, clique que esvazia, frase do nome fora da lista); cada página dá só a lista e o conteúdo do cartão. A inicial e o Monitor de riscos passam a usá-lo, sem mudança visual; as outras páginas o usarão nas reformas.
+
 ## 2026-10-17 · #812 · Busca web: marca de motor mudo não tira o município da fila (F69)
 
 Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas "motor_sem_resposta" gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.
