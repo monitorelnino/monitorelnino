@@ -130,7 +130,7 @@ Atualizado em 17/10/2026.
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
 | `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 4 | não |
-| `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
+| `monitorar_imprensa_regional.py` | — | — | — | 7 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
 | `monitorar_redes_oficiais.py` | — | — | — | — | não |
