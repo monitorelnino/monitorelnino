@@ -21,7 +21,7 @@ USO
   python coletar_doe.py --regiao NE            # lote por região (§13: NE, N, CO, SE, S)
   python coletar_doe.py --uf SC --desde 2026-06-29
 """
-import json, pathlib, re, sys, time, urllib.parse
+import base64, json, pathlib, re, sys, time, urllib.parse
 from datetime import date, timedelta
 import funil
 # 16/10/2026: o endereço da edição por data é o do canal 2 (saúde) — um padrão por UF, conferido
@@ -731,8 +731,67 @@ def edicoes_sc(buscar_fn, base):
     return fn
 
 
+# MG (17/10/2026, runs 39029434439, 39030190359 e 39034277638): a API pública que o sítio do Jornal Minas
+# Gerais chama (`Jornal/ObterEdicaoPorDataPublicacao`) devolve a edição da data sem token; o Diário do
+# Executivo vem em `dados.arquivoCadernoPrincipal.arquivo`, um envelope CMS/PKCS#7 assinado, em base64,
+# com o PDF dentro. Data que a API recusa (401) é recusa, e o coletor para nela, como em toda fonte.
+EDICAO_MG = "{base}/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao={data}"
+OID_DADOS_CMS = bytes.fromhex("06092a864886f70d010701")
+
+
+def conteudo_do_envelope_cms(der: bytes) -> bytes:
+    """O conteúdo (eContent) de um envelope CMS/PKCS#7 assinado, em BER ou DER: a OCTET STRING depois
+    do tipo `data` (1.2.840.113549.1.7.1), primitiva ou em pedaços. Não confere a assinatura: o
+    documento é o que a fonte publica, preservado inteiro pelo hash. Função pura."""
+    def tlv(i):
+        tag = der[i]
+        i += 1
+        if tag & 0x1F == 0x1F:
+            while der[i] & 0x80:
+                i += 1
+            i += 1
+        n = der[i]
+        i += 1
+        if n == 0x80:
+            return tag, i, None
+        if n & 0x80:
+            n, i = int.from_bytes(der[i:i + (n & 0x7F)], "big"), i + (n & 0x7F)
+        return tag, i, i + n
+
+    def octetos(i):
+        tag, ini, fim = tlv(i)
+        if tag == 0x04:
+            return der[ini:fim], fim
+        if tag != 0x24:
+            raise FormatoDaBuscaMudou(f"envelope CMS: esperava OCTET STRING, veio 0x{tag:02x}")
+        partes, j = [], ini
+        while (der[j:j + 2] != b"\x00\x00") if fim is None else (j < fim):
+            p, j = octetos(j)
+            partes.append(p)
+        return b"".join(partes), (j + 2 if fim is None else fim)
+
+    i = der.find(OID_DADOS_CMS)
+    if i < 0 or tlv(i + len(OID_DADOS_CMS))[0] != 0xA0:
+        raise FormatoDaBuscaMudou("envelope CMS sem o conteúdo embutido")
+    return octetos(tlv(i + len(OID_DADOS_CMS))[1])[0]
+
+
+def edicoes_mg(buscar_fn, base):
+    def fn(data):
+        url = EDICAO_MG.format(base=base.rstrip("/"), data=data)
+        o = json.loads(buscar_fn(url, timeout=120, origem="coletar_doe").decode("utf-8", "replace"))
+        dados = o.get("dados") if isinstance(o, dict) else None
+        if not dados:
+            return []
+        arquivo = (dados.get("arquivoCadernoPrincipal") or {}).get("arquivo") if isinstance(dados, dict) else None
+        if not arquivo:
+            raise FormatoDaBuscaMudou("edição do DOE-MG sem 'arquivoCadernoPrincipal.arquivo'")
+        return [{"edicao": "Diário do Executivo", "url": url, "pdf": conteudo_do_envelope_cms(base64.b64decode(arquivo))}]
+    return fn
+
+
 EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
-                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi}
+                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg}
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
@@ -1096,6 +1155,10 @@ FIXTURE_EDICOES_SC = json.dumps({"error": False, "records": {"meta": {"total": 3
     {"vlNumero": "22862", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": False, "dsArquivo": "/2026/20261016/Jornal/22862.pdf"},
     {"vlNumero": "22862-B", "dtPublicacao": "2026-10-16T00:00:00.000Z", "stCancelado": True, "dsArquivo": "/2026/20261016/Jornal/22862-B.pdf"}]}}).encode()
 FIXTURE_EDICOES_AM_VAZIO = b'{"erro":true,"msg":"Edi\\u00e7\\u00e3o n\\u00e3o existente!","data":"2026-10-14","itens":[]}'
+# Envelopes CMS na forma que o DOE-MG serve (BER, comprimento indefinido, conteúdo em pedaços) e em DER.
+FIXTURE_CMS_BER = (bytes.fromhex("3080060a2a864886f70d010702a0803080") + OID_DADOS_CMS
+                   + bytes.fromhex("a0802480") + b"\x04\x05%PDF-" + b"\x04\x03abc" + bytes(10))
+FIXTURE_CMS_DER = bytes.fromhex("3010") + OID_DADOS_CMS + bytes.fromhex("a00304012a")
 
 
 # Recortes REAIS da API do DOE-SP, 15/10/2026 (run 38825296534; excerto encurtado).
@@ -1339,6 +1402,18 @@ def autoteste() -> int:
                         {"edicao": "22862-A", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862-A.pdf"},
                         {"edicao": "22862", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862.pdf"}]
                      and _levanta(lambda: edicoes_sc(lambda u, **k: b'{"error": true}', "https://x")("2026-10-16"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-MG: o PDF sai do envelope CMS em BER (pedaços) e em DER; sem conteúdo embutido LEVANTA":
+            lambda: (conteudo_do_envelope_cms(FIXTURE_CMS_BER) == b"%PDF-abc"
+                     and conteudo_do_envelope_cms(FIXTURE_CMS_DER) == b"*"
+                     and _levanta(lambda: conteudo_do_envelope_cms(b"\x30\x00"), FormatoDaBuscaMudou)),
+        "DOE-MG: a edição da data traz o Diário do Executivo; dia sem edição é lista vazia; sem arquivo LEVANTA":
+            lambda: (edicoes_mg(lambda u, **k: json.dumps({"dados": {"arquivoCadernoPrincipal": {
+                        "arquivo": base64.b64encode(FIXTURE_CMS_BER).decode()}}}).encode(), "https://x/")("2026-10-16") == [
+                        {"edicao": "Diário do Executivo", "pdf": b"%PDF-abc",
+                         "url": "https://x/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16"}]
+                     and edicoes_mg(lambda u, **k: b'{"dados": null}', "https://x")("2026-10-18") == []
+                     and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": {"outro": 1}}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
             lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {

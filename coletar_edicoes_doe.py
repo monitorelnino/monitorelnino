@@ -547,11 +547,11 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
         datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])
                  or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")][:TETO_EDICOES]
-        # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
-        # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
-        # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
-        if "{edicao}" in padrao.get("padrao", ""):
-            datas = sorted(datas, reverse=True)
+        # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
+        # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
+        # Fonte que só abre as datas recentes (MG recusa com 401 o que passa de um mês, 17/10/2026) tem
+        # o recente lido antes da recusa, que para a UF como sempre; e o prazo do elo corta o mais velho.
+        datas = sorted(datas, reverse=True)
         vistos = {e.get("impressao") for d, e in edicoes.items()
                   if isinstance(e, dict) and e.get("impressao") and d.split("#")[0] not in datas}
         try:
@@ -575,7 +575,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                     url, bruto, status, erro = alternativas[0]["url"], None, 0, None
                     for candidato in alternativas:
                         url = candidato["url"]
-                        time.sleep(0 if candidato.get("pdf") else RITMO_S)
+                        time.sleep(RITMO_S)  # §11, também quando o adaptador já trouxe o PDF (MG, CE)
                         try:
                             bruto = candidato.get("pdf") or buscar(url, timeout=120)
                             status = 200

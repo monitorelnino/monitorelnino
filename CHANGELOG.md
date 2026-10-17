@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #PR · Diário de Minas Gerais lido por data
+
+O canal 2 lê o Diário do Executivo de MG pela API pública que o próprio sítio chama (`edicao_mg`): o PDF sai do envelope assinado (CMS, BER) por função pura. Datas de 10/09 para trás respondem 401: recusa respeitada, registrada. As edições passam a ser lidas da mais nova para a mais velha em toda UF, e o ritmo de 2 s vale também quando o adaptador já traz o PDF.
+
 ## 2026-10-17 · #827 · Defesa civil: evento declarado por município
 
 `gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
