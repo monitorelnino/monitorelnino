@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Diário de Minas Gerais lido por data</dt>
+      <dd>O canal 2 lê o Diário do Executivo de MG pela API pública que o próprio sítio chama (`edicao_mg`): o PDF sai do envelope assinado (CMS, BER) por função pura. Parte das datas responde 401: o canal para ali e registra a recusa, sem marcar o diário como consultado. As edições passam a ser lidas da mais nova para a mais velha em toda UF, e o ritmo de 2 s vale também quando o adaptador já traz o PDF.</dd>
       <dt>17/10/2026 · Consulta do município: a situação do plano numa função comum</dt>
       <dd>A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).</dd>
       <dt>17/10/2026 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado</dt>
@@ -165,8 +167,6 @@
       <dd>A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.</dd>
       <dt>16/10/2026 · A definição do índice tem dono, e o texto público é conferido contra ela</dt>
       <dd>O motor grava em `meta.json` os componentes, pesos e faixas do índice e que a antecedência está fora da nota. O portão de versão passa a ler o texto público do MARÉ Legal: antecedência como medida da nota e &quot;pesam igual&quot; escrito à mão reprovam. A inicial com os textos novos (#770) já passa sem exceção.</dd>
-      <dt>16/10/2026 · &quot;Envie pelo formulário&quot; leva ao formulário</dt>
-      <dd>O convite do cartão da cidade apontava para &quot;Para gestores&quot;, sem formulário. Agora rola até o formulário da própria inicial e o preenche pela mesma função que lê os parâmetros do endereço. O portão de âncoras passa a ler também os links montados nos scripts — e achou uma nota de financiamento morta, que sai.</dd>
     </dl>
   </section>
 </main>
