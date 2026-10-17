@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A página abre com os três parágrafos aprovados e com os dois medidores da inicial: preparação publicada na saúde (média das UFs verificadas) e emergências em saúde pública (índice nulo vira lacuna). Uma consulta do município, no componente comum, substitui as três buscas por bloco. O "Como ler" antigo sai; o link leva à metodologia até o texto novo da editoria.
 
+## 2026-10-17 · #814 · Fila de pistas reentrante: o juiz volta na noite até esvaziar
+
+O juiz julga até o prazo; sobrando fila, grava `juiz.parcial` com o restante em vez de `juiz.feito`, e a reserva do despachante o redispara até 08:00 UTC. Pendente de documento julgada hoje não é rejulgada na mesma noite. Na `main`, o prazo de todo elo termina antes das 09:00. Sem sessão esperando run. Ensaio 28.
+
 ## 2026-10-17 · #817 · Monitor de riscos recebe as três listas federais de risco
 
 Os mapas dos indicados pela União ao cadastro nacional (deslizamento e enchente), do Semiárido e dos prioritários do fogo saem da Defesa civil e entram no Monitor de riscos, como contexto dos blocos de chuva, seca e fogo, sem lista embaixo. O link da inicial e o índice de conteúdo apontam para `#boxListaIndicados`; o portão de mapas cobra as listas no Monitor. `mapaDeContagem` passa a ser do componente comum de mapas.

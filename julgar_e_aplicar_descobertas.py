@@ -706,6 +706,15 @@ def encaminhar_pendente(p, hoje_iso, resolver=None):
     return None
 
 
+def a_julgar_nesta_noite(p, hoje: str) -> bool:
+    """Pendente de documento ainda não julgada hoje (`hoje` em dd/mm/aaaa). Função pura.
+
+    17/10/2026 (fila reentrante): o elo do juiz roda de novo na mesma noite enquanto sobrar fila, e a
+    abstenção de hoje fica pendente; sem esta regra a rodada seguinte julgaria as mesmas de novo."""
+    return (p.get("status") == "pendente_confirmacao_documento"
+            and (p.get("julgamento_automatico") or {}).get("data") != hoje)
+
+
 def _quando(p):
     """Data de publicação ordenável (RFC 822 do feed, dd/mm/aaaa ou ISO). "" quando ilegível."""
     from email.utils import parsedate_to_datetime
@@ -944,6 +953,8 @@ def self_test():
     ordem = sorted([{"data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT"},
                     {"data_publicacao": "01/10/2026"}, {"data_publicacao": "lixo"}], key=_quando, reverse=True)
     assert [_quando(o) for o in ordem] == ["2026-10-01", "2026-08-25", ""], ordem
+    ja = {"status": "pendente_confirmacao_documento", "julgamento_automatico": {"data": "17/10/2026"}}
+    assert not a_julgar_nesta_noite(ja, "17/10/2026") and a_julgar_nesta_noite(ja, "18/10/2026")
 
     print("\n✓ self-test do orquestrador OK — 6 cenários cobertos (aplicar exigiria banco real; "
           "ver classificador_natureza.py e verificar_recorrencia_uf.py para os self-tests de aplicação).")
@@ -973,7 +984,7 @@ if __name__ == "__main__":
 
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     fila = json.load(open(PISTAS_IMPRENSA, encoding="utf-8"))
-    pendentes = [p for p in fila["pistas"] if p.get("status") == "pendente_confirmacao_documento"]
+    pendentes = [p for p in fila["pistas"] if a_julgar_nesta_noite(p, hoje)]
     pendentes.sort(key=_quando, reverse=True)
     hoje_iso = hoje_editorial().isoformat()
     resolver, resolucoes, encaminhadas = _resolver_da_rodada(), 0, {}

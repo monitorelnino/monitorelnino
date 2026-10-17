@@ -1,28 +1,7 @@
-# O juiz automático — 3h de Brasília (06:00 UTC), DEPOIS dos diários e da descoberta.
-#
-# Item 1 do handover de desacoplamento e cadência do item 1b. "Depois" aqui é por HORÁRIO, não por
-# dependência de job: se os diários falharem, o juiz roda sobre a fila que existe. A regra do item 1 é
-# explícita — nenhum job espera pelo término de outro; o que não chegou fica com a data anterior,
-# declarada.
-#
-# O juiz precisa de Node porque a rede de proteção roda a suíte de portões (jsdom) antes de aplicar, e
-# desfaz em disco se algum reprovar (§262, Etapa 7).
-# 30/09/2026 (item 7 da rodada 2 — certificação dos coletores). O cron do GitHub é de MELHOR
-# ESFORÇO: atrasa sob carga e descarta. Medido em 30/09: `noturno_diarios`, com cron de 01:30 UTC,
-# começou às 06:59 (5h30 de atraso) e morreu no teto; a busca web, com cinco crons por noite, rodou
-# duas vezes por dia, uma delas às 13:22 UTC — dentro do horário de trabalho da editoria, que é
-# justamente o que a janela noturna existe para evitar.
-#
-# A noite passa a ser UMA CORRENTE: um disparo cedo (00:05 UTC) e cada elo acionado quando o
-# anterior TERMINA. Cinco horários independentes davam cinco oportunidades de atrasar; um disparo e
-# uma corrente dão uma. A ordem é:
-#
-#   diários → descoberta → busca web → evidências → juiz → sinais
-#
-# RECUPERAÇÃO, de propósito: o gatilho NÃO filtra por conclusão. Se o elo anterior falhou ou foi
-# cancelado, o seguinte roda assim mesmo — cada coletor processa a fila pendente independentemente
-# do horário, e uma noite perdida não pode levar a seguinte junto. `workflow_dispatch` continua em
-# todos, para rodar à mão quando preciso.
+# O juiz automático: nasce do fim das evidências e julga a fila de pistas até o prazo, reentrante.
+# Node: a rede de proteção roda a suíte de portões (jsdom) antes de aplicar (§262, Etapa 7).
+# Elo da corrente noturna: ordem, gatilho e reserva na skill `noite-e-coletores` (história:
+# docs/HISTORICO_DE_REGIMES.md).
 name: Noturno — juiz automático
 
 on:
@@ -47,45 +26,20 @@ jobs:
       nome: juiz
       # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
       grupo_de_concorrencia: noturno
-      timeout_minutos: 90
+      # 17/10/2026 (fila reentrante, HANDOVER_FILA_DE_PISTAS_SEM_SESSAO): o juiz julga até o prazo e
+      # grava o que julgou; sobrando fila, o marcador é `juiz.parcial` e a reserva do despachante
+      # redispara o elo até 08:00 UTC (três tentativas por noite). Os tetos fixos de 28/09 saem do
+      # codebook: `julgar_filas` para no `prazo` e grava o julgado (14/10, lote 7 da janela C).
+      timeout_minutos: 135
+      restante: julgar_filas.py --restante
       precisa_node: true
-      # 28/09/2026 (bloco das 17:20): a busca dirigida do ato consulta o metabuscador nas
-      # rotas 2 e 3. Ligar o coletor sem a instância que ele consulta produziria lacuna
-      # toda noite com cara de 'fonte fora do ar' — foi o erro do §278, e não se repete.
+      # A busca dirigida do ato consulta o metabuscador (28/09/2026, §278).
       precisa_searxng: true
-      # 28/09/2026 (item 1 do bloco de frescor): três defeitos aqui, e o efeito somado era um juiz
-      # que nunca promoveu nada desde que foi criado.
-      #
-      # 1. `julgar_filas.py` rodava com `--relatorio`. Sem `--aplicar` ele imprime o veredito e não
-      #    escreve: nem na fila, nem em `promocoes_automaticas.json`, nem no log. Mesmo terminando,
-      #    a noite inteira não deixava traço — e era por isso que `data/promocoes_automaticas.json`
-      #    não existia.
-      # 2. Nenhum dos dois tinha teto. A fila de imprensa tem 1.495 pendentes de documento e 1.174
-      #    pendentes de codebook, cada uma com busca na rede; o job de 90 min foi CANCELADO no meio
-      #    em 28/09 às 12h08. O `_coletor.yml` só commita ao final, então o trabalho feito até ali
-      #    foi perdido inteiro. Teto que termina e commita vale mais que fila inteira que não chega
-      #    ao fim — e o que sobra fica declarado na saída de cada script.
-      # 3. O aplicador rodava ANTES do juiz de codebook. Agora o codebook julga primeiro: ele só
-      #    aperta o critério (recusa mais, nunca promove por conta própria), e recusa lida antes
-      #    poupa o aplicador de buscar documento de pista que o codebook já descartou.
-      #
-      # Os tetos são conservadores de propósito, para caber com folga nos 90 min e serem medidos na
-      # primeira noite antes de subir.
-      #
-      # 28/09/2026: o teto do codebook caiu de 250 para 150 porque a busca dirigida entrou no
-      # caminho. Cada recusa por falta de documento passa a custar até quatro consultas de rede,
-      # com o ritmo de 3 s da rodada entre elas — e a noite anterior mostrou que 74% das recusas
-      # são desse tipo. Teto que termina e commita vale mais que fila inteira que não chega ao fim.
-      # 09/10/2026 (A1-10): o corretor de atribuicao por dominio existia desde 03/10 e NAO RODAVA
-      # em lugar nenhum — nem na noite, nem a mao. Ele reatribui a pista ao dono do dominio oficial
-      # do documento (o plano servido em `taio.sc.gov.br` e de Taio, nao do municipio que o texto
-      # menciona) e a devolve ao juiz. Roda ANTES de julgar, porque julgar um par que nunca existiu
-      # gasta busca na rede para recusar por identidade. Na arvore de hoje ele corrige 4 de 13.503
-      # pistas, duas delas so depois de `prefeitura.<nome>` passar a resolver.
+      # Ordem: corrige a atribuição por domínio, prepara, codebook, aplicador (28/09 e 09/10/2026).
       comandos: |
         scripts/corrigir_atribuicao_por_dominio.py --aplicar
         revisar_pistas.py --preparar
-        julgar_filas.py --aplicar --limite 150
+        prazo=75min julgar_filas.py --aplicar
         julgar_e_aplicar_descobertas.py --limite 150
         aplicar_promocoes_do_juiz.py --aplicar
         scripts/amostra_auditoria_semanal.py
