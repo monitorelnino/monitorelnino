@@ -9,9 +9,21 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #816 · Monitor de riscos recebe as três listas federais de risco
+
+Os mapas dos indicados pela União ao cadastro nacional (deslizamento e enchente), do Semiárido e dos prioritários do fogo saem da Defesa civil e entram no Monitor de riscos, como contexto dos blocos de chuva, seca e fogo, sem lista embaixo. O link da inicial e o índice de conteúdo apontam para `#boxListaIndicados`; o portão de mapas cobra as listas no Monitor. `mapaDeContagem` passa a ser do componente comum de mapas.
+
 ## 2026-10-17 · #813 · Consulta do município: um componente comum
 
 `assets/js/consulta-municipio.js` monta a consulta estado → município (lista do estado, campo que abre com o estado, clique que esvazia, frase do nome fora da lista); cada página dá só a lista e o conteúdo do cartão. A inicial e o Monitor de riscos passam a usá-lo, sem mudança visual; as outras páginas o usarão nas reformas.
+
+## 2026-10-17 · #812 · Busca web: marca de motor mudo não tira o município da fila (F69)
+
+Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas "motor_sem_resposta" gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.
+
+## 2026-10-17 · #815 · Main vermelha: a fila de pistas passou de 50 MB com a URL gravada duas vezes
+
+`data/pistas_imprensa.json` chegou a 50,1 MB no commit do juiz das 09:24 e o portão de tamanho reprovou a `main`. Causa: `verificacao_fonte.url` repetia a URL da própria pista em 19.954 pistas (5,8 MB) e ninguém a lia. O verificador deixa de gravá-la; as cópias iguais saem do dado (46,4 MB). As 24 que diferem ficam.
 
 ## 2026-10-17 · #810 · Autoteste vermelho mostra o traceback no log do portão
 
@@ -1598,7 +1610,6 @@ A lista é atualizada todo ano e cada portaria revoga a anterior. Não há fonte
 máquina que declare a vigente, então o coletor grava a data de publicação do ato que leu e **avisa**
 quando a janela da atualização anual já passou, em vez de presumir vigência.
 
-
 ## §319 · Semiárido: a lista nominal dos 1.477 municípios, pela tabela do IBGE · 30/09/2026
 
 Classe **dado de contexto, peso zero**. PR 2 do enquadramento federal de risco.
@@ -1616,7 +1627,6 @@ a tabela é do IBGE, e o site declara as duas coisas.
 Estar no Semiárido é contexto: não pontua e não entra no índice. Cadência semanal, com gravação só
 quando o hash do arquivo muda ou a última conferência passa de sete dias — para o carimbo de
 consulta não congelar numa data velha.
-
 
 ## §320 · Municípios prioritários do MMA: a lista do Anexo I, pelo DOU · 30/09/2026
 
@@ -1722,7 +1732,6 @@ quais portões rodar antes do commit pelo **mesmo critério da CI** — nem meno
 vermelho depois de esperar a fila; nem mais, e pagar quatro minutos de navegador à toa. Sem lista
 de arquivos, ele manda rodar tudo: "não sei o que mudou" não é "nada mudou". 16 casos de autoteste;
 a suíte vai a **126**.
-
 
 **E uma trava que nasceu do meu próprio erro neste PR.** A primeira versão do detector tinha **dois
 `else` seguidos** — YAML válido, shell inválido. Passou pelo `validar_workflows.py`, pelo pyyaml e
@@ -7065,7 +7074,6 @@ python3 -c "import re;from pathlib import Path;n=[int(x) for x in re.findall(r'^
 
 **Teste.** Portão 12 em árvore limpa (o `CHANGELOG.md` entra no manifesto), consistência e workflows verdes.
 
-
 ## §178 · A escrita portável deixa de depender de atenção: 78 sítios corrigidos e um portão que impede a volta · 23/09/2026
 
 Classe **encanamento com efeito na auditabilidade**. Nenhum dado, número ou página muda — no runner (Linux) o comportamento é idêntico byte a byte. O que muda é quem pode reproduzir o que o robô publica.
@@ -7082,7 +7090,6 @@ Classe **encanamento com efeito na auditabilidade**. Nenhum dado, número ou pá
 **Testado nas duas direções.** Portão verde sobre os 121 arquivos Python do repositório. Depois, tirando de propósito o `newline` de uma linha (`atualizar.py:336`, o que grava `data/meta.json`), o portão fecha vermelho apontando arquivo e linha; restaurada, verde.
 
 **Teste.** Os 31 portões de dado verdes (o 17 não roda nesta máquina: exige privilégio de link simbólico no Windows), incluindo os autotestes dos oito coletores, do juiz, das sondas e das três rotinas de evidência tocadas aqui; portão 12 em árvore limpa; workflows válidos. O repositório passa a ter **51 portões**.
-
 
 ## §177 · OCR do PLANCON escaneado: a cópia legível que faltava, e a regra que vem com ela · 23/09/2026
 
@@ -7104,7 +7111,6 @@ Classe **prova preservada**. Nenhum número do índice muda, e nenhuma leitura d
 
 **Teste.** Portão 6 verde com os autotestes novos (prova por OCR com piso de caracteres, integridade do `.ocr.txt`, CRLF na cópia preservada, OCR que não ocupa o lugar da camada de texto) e **93 de 93 pontuáveis com prova**; autoteste do OCR sem rede e sem Tesseract, bloqueante em `portoes.yml`; autoteste da leitura automática de saúde com o caso do OCR; workflows válidos com teto em todo job; portão 12 em árvore limpa; `pip install -r requirements.txt` com os pins novos. Amostra conferida à mão: a página 2 do PLANCON de São José do Calçado lê "PREFEITURA MUNICIPAL DE SÃO JOSÉ DO CALÇADO … COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL (COMPDEC) … DECRETO nº 7.717/2024" — com acentuação correta, que é o que o modelo inglês não entregava.
 
-
 ## §176 · O texto integral do diário oficial não guardava hash nenhum — e quatro itens prometiam um arquivo que não existia · 23/09/2026
 
 Classe **correção de segurança do dado**. Nenhum número do índice muda. Fecha a lacuna que o §175 deixou nomeada.
@@ -7120,7 +7126,6 @@ Classe **correção de segurança do dado**. Nenhum número do índice muda. Fec
 **Rodado aqui.** Os quatro textos foram recuperados a partir do `.json` preservado (as URLs de edição do Querido Diário continuam no ar): 2,4 MB, 553 kB, 108 kB e 103 kB. Dois deles trouxeram CPF na edição e saíram redigidos na preservação, 2 em cada, com a redação registrada no log v2 — o defeito de 12/09 não republicou dado pessoal, porque a causa raiz já estava corrigida desde então. E **144 hashes** foram selados, fechando os 148. Como a autocura já está pendurada na cadência, a selagem e a recuperação passam a acontecer sozinhas a cada rodada.
 
 **Teste.** Portão 6 vermelho antes do conserto, nomeando os quatro pelo hash, e verde depois (89 de 93 pontuáveis com prova, 4 em lacuna declarada do §174, 2.059 itens íntegros). Dois autotestes negativos novos e bloqueantes em `portoes.yml` (agora 30 portões de dado, 49 no total). Portão 12 em árvore limpa; log `data/log_buscas.json` cresceu de 26.774 para 26.776 execuções, append-only conferido.
-
 
 ## §175 · O hash do texto preservado não era conferido — e a rotina de redação de CPF o deixava para trás · 23/09/2026
 
@@ -7139,7 +7144,6 @@ Classe **correção de segurança do dado**. Nenhum número do índice muda; um 
 **Lacuna registrada, com número.** Os **148** itens que guardam `texto_integral` (edição inteira de diário oficial) não registram hash nenhum desse texto — a integridade deles se apoia no `.json` da resposta da API, cuja chave o portão confere (147 dos 148). Quatro desses itens apontam para um `.txt` que **não está em disco**. Fica nomeado para a correção seguinte, que precisa de campo novo no índice e de reindexação dos 148.
 
 **Teste.** Portão 6 verde, agora com a integridade do texto (89 de 93 pontuáveis com prova, 4 em lacuna declarada, 2.059 itens íntegros) — e vermelho, conferido antes do conserto, apontando o item de Maricá pelo nome. Os 29 portões de dado do executor local verdes, incluindo o portão 12 em árvore limpa e o autoteste novo. Os portões `.js` ficam com o CI.
-
 
 ## §174 · "Tentativa falhou" contava como prova preservada — e cinco registros pontuáveis viviam só disso · 23/09/2026
 
@@ -7220,7 +7224,6 @@ Classe **encanamento operacional**; nenhum dado, número ou página muda. *Entra
 
 **Trava.** O portão de cadência (`scripts/testar_cadencia_publicacao.py`) fixa as quatro propriedades e reprova se qualquer uma cair: destrava ausente do código, entrada ausente do workflow, destrava solta de cron, ou destrava acrescentada à condição do commit — que a transformaria em ensaio disfarçado. Testado nos dois sentidos.
 
-
 ## §170 · Os planos do AM pela reserva de arquivo, com procedência declarada — e a recusa que não se contorna · 23/09/2026
 
 **O problema.** A rodada de 23/09 leu os 62 municípios do painel, e **nenhum** documento abriu: `Connection reset by peer` nas 62 tentativas. O painel Power BI respondia normalmente no mesmo runner, o que localiza o problema — quem recusa não é a Microsoft, é o hospedeiro dos planos.
@@ -7252,7 +7255,6 @@ Agora `401`, `402`, `403`, `429` e `451` propagam sem reserva. A reserva vale pa
 **Limite desta correção, declarado.** Isto corrige a `main`; **não** apaga a string do histórico do git, que é público e onde ela permanece nos commits anteriores. Reescrever histórico de ramo público é ação destrutiva e não se faz sem decisão da editoria.
 
 ---
-
 
 ## §168 · A rodada real do painel do AM: 62 de 62 municípios lidos, e a eliminação que faltava no caminho principal · 23/09/2026
 
@@ -7398,7 +7400,6 @@ Classe **encanamento operacional**; nenhum dado, número ou página muda. Decis�
 **Interação com os tetos de tempo do §172.** Cada rodada tem teto de 180 min por job e tetos por etapa; com 6 horas de intervalo, nem a rodada mais longa (75–105 min, mais o OCR do §177) alcança a seguinte.
 
 **Teste.** Workflows válidos com teto em todo job; portão de cadência verde (dia de publicação medido no fuso da redação, cron semanal no dia certo em Brasília, promessa pública igual nas duas páginas); portão 12 em árvore limpa. `docs/PROTOCOLO_ATUALIZACAO.md` passa a descrever a cadência nova — era o único lugar que ainda dizia "duas rodadas por dia".
-
 
 ## §159 · Da notícia ao documento: cada pista de imprensa é seguida até candidatos a ato oficial, que passam pelo mesmo portão e juiz · 22/09/2026
 

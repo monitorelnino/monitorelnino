@@ -548,7 +548,9 @@ def autoteste():
         """Quem a busca web respondeu na janela sai da vez; mudo e antigo voltam, na ordem dada."""
         livro = {"municipios": {"0000001": {"fontes": [{"fonte": FONTE_BUSCA_WEB, "data": "2026-10-14"}]},
                                 "0000002": {"fontes": [{"fonte": FONTE_BUSCA_WEB, "data": "2026-09-01"}]},
-                                "0000003": {"fontes": [{"fonte": "DOE/SC", "data": "2026-10-14"}]}}}
+                                "0000003": {"fontes": [{"fonte": "DOE/SC", "data": "2026-10-14"}]},
+                                "0000004": {"fontes": [{"fonte": FONTE_BUSCA_WEB, "data": "2026-10-13",   # F69
+                                                        "resultado": "0 pista(s); decisão motor_sem_resposta"}]}}}
         return pendentes_na_janela(["0000001", "0000002", "0000003", "0000004"], livro,
                                    FONTE_BUSCA_WEB, "2026-09-30") == ["0000002", "0000003", "0000004"]
 

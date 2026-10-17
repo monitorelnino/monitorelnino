@@ -748,7 +748,7 @@ def verificar(pagina_html: str, pista: dict, contexto: dict) -> dict:
         from coletores_base import hoje_editorial
         hoje = hoje_editorial()
     veredito = {"versao": VERSAO, "exibivel": False, "motivo": None, "criterios": {},
-                "lido_em": hoje.isoformat(), "url": pista.get("url")}
+                "lido_em": hoje.isoformat()}
 
     ok, motivo, trecho = b5_veiculo(pista.get("url"), contexto.get("veiculos") or {})
     veredito["criterios"]["B5_veiculo"] = {"ok": ok, "trecho": trecho}
@@ -1402,7 +1402,7 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
             contagem["por_motivo"][m] = contagem["por_motivo"].get(m, 0) + 1
             pista["verificacao_fonte"] = {
                 "versao": VERSAO, "exibivel": False, "motivo": m, "lido_em": hoje.isoformat(),
-                "url": pista["url"], "criterios": {"B5_veiculo": {
+                "criterios": {"B5_veiculo": {
                     "ok": False, "trecho": f"{dom_do_feed} (do `<source url>` do feed) não está em "
                                            "data/veiculos_imprensa.json"}}}
             continue
@@ -1428,7 +1428,7 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
                 "redirecionamento_nao_resolvido", 0) + 1
             pista["verificacao_fonte"] = {
                 "versao": VERSAO, "exibivel": False, "motivo": "redirecionamento_nao_resolvido",
-                "lido_em": hoje.isoformat(), "url": pista["url"], "criterios": {}}
+                "lido_em": hoje.isoformat(), "criterios": {}}
             continue
         if alvo_url != pista["url"]:
             # Não se reatribui `pista`: ela é o objeto DENTRO de `doc`, e a cópia perderia a
@@ -1447,12 +1447,11 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
         pre = b5_veiculo(pista["url"], veiculos)
         if not pre[0]:
             v = {"versao": VERSAO, "exibivel": False, "motivo": pre[1], "lido_em": hoje.isoformat(),
-                 "criterios": {"B5_veiculo": {"ok": False, "trecho": pre[2]}}, "url": pista["url"]}
+                 "criterios": {"B5_veiculo": {"ok": False, "trecho": pre[2]}}}
         elif not pode:
             contagem["nao_lidas_por_orcamento"] += 1
             v = {"versao": VERSAO, "exibivel": False, "motivo": "nao_lido_esta_noite",
-                 "lido_em": hoje.isoformat(), "criterios": {}, "orcamento": motivo_orc,
-                 "url": pista["url"]}
+                 "lido_em": hoje.isoformat(), "criterios": {}, "orcamento": motivo_orc}
             pista["verificacao_fonte"] = v
             continue
         else:
@@ -1466,7 +1465,7 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
                 orcamento.registrar(pista["url"], recusada=True)
                 contagem["inacessiveis"] += 1
                 v = {"versao": VERSAO, "exibivel": False, "motivo": "inacessivel",
-                     "lido_em": hoje.isoformat(), "url": pista["url"],
+                     "lido_em": hoje.isoformat(),
                      "criterios": {"A4_acesso": {"ok": False, "trecho": type(e).__name__}}}
 
         # Sindicação: a mesma matéria em vários domínios exibe uma vez só, a do veículo mais local.
