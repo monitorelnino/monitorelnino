@@ -256,6 +256,20 @@ def main() -> int:
                 r = veredito_da_recusa(e)
             print(f"== {uf} {base}\n" + json.dumps(r, ensure_ascii=False, indent=1))
         return 0
+    if "--trecho" in sys.argv:              # só mede e imprime: endereço~termo~termo; sem termo, o começo
+        for alvo in arg("--trecho").split("|"):
+            url, *termos = alvo.split("~")
+            try:
+                t = buscar(url, timeout=60).decode("utf-8", "replace")
+            except Exception as e:  # noqa: BLE001
+                print(f"== {url}: {veredito_da_recusa(e)}")
+                continue
+            print(f"== {url} ({len(t)} caracteres)")
+            for termo in termos or [""]:
+                for m in list(re.finditer(re.escape(termo), t))[:12] if termo else [None]:
+                    i = m.start() if m else 0
+                    print(f"-- {termo or 'início'} @{i}: " + t[max(0, i - 160):i + 340].replace("\n", " "))
+        return 0
     if "--lexml" in sys.argv:               # só mede e imprime: uma consulta CQL por linha de --lexml
         import urllib.parse
         for q in arg("--lexml").replace("+", " ").split("|"):   # "+" é espaço: a linha do elo não leva aspas
