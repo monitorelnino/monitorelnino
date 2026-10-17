@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Para gestores: consulta do município, o que a lei exige, recursos em cartões</dt>
+      <dd>A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. &quot;O que a lei exige de cada governo&quot; vira três cartões de número, as listas perdem a caixa de marcar e &quot;Como os recursos chegam&quot; ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.</dd>
       <dt>17/10/2026 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários</dt>
       <dd>`detectar_muro_de_robo` reconhece a &quot;Verificação de segurança — Senado Federal&quot;, que a LexML serve com HTTP 200: é recusa, não conteúdo. Novo chamador do coletor, só por disparo, `recuperar_edicoes_doe.yml` (300 min, prazo de 280, grupo da noite), para a recuperação do canal 2, que não cabe no elo da saúde estadual.</dd>
       <dt>17/10/2026 · Portões: 119 para 92 comandos</dt>
@@ -165,8 +167,6 @@
       <dd>`data_da_edicao()` (data de `meta.json`) sai de dez arquivos para `coletores_base` — em dois a reserva chamava `datetime._hoje()`, que não existe; a leitura de PDF com pdfplumber primeiro dos quatro boletins estaduais vira opção de `extrair_texto_por_pagina`; `_gh` dos quatro scripts de temporizador fica só no despachante. −144 linhas.</dd>
       <dt>16/10/2026 · Saúde: sai o texto vazado</dt>
       <dd>Saem da página de saúde &quot;Estado das fontes&quot;, &quot;Bateria estadual executada em&quot; e a versão &quot;v0.3&quot;; &quot;não relaciona casos ao El Niño&quot; fica uma vez. Na verificação por estado, cada linha diz título, órgão, data do documento e link; o que não é título vai para `nota_interna`, que nenhuma página mostra (notas, pontuação inalterada). O contrato reprova os termos vazados.</dd>
-      <dt>16/10/2026 · DOE-PI por edição; RR com o motivo medido</dt>
-      <dd>`coletar_doe.py` ganha `edicao_pi`: a listagem do dia do diário atual do Piauí (`www.diario.pi.gov.br/doe/`, a mesma rota que a tabela do sítio chama) dá cada edição, suplementar incluído, e o PDF. RR segue `sem adaptador de busca`: o PDF só sai por POST numa rota que não responde ao runner.</dd>
     </dl>
   </section>
 </main>
