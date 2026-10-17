@@ -37,7 +37,8 @@ def tabnet():
                 "https://datasus.saude.gov.br/informacoes-de-saude-tabnet/"):
         try:
             h = buscar(pag, timeout=60).decode("utf-8", "replace")
-            print(f"[tabnet] {pag}: links {sorted(set(re.findall(r'href=[\"\\']([^\"\\']*(?:tabnet|tabcgi|deftohtm|\\.def)[^\"\\']*)', h, re.I)))[:80]}")
+            rx = re.compile(r"href=[\"']([^\"']*(?:tabnet|tabcgi|deftohtm|[.]def)[^\"']*)", re.I)
+            print(f"[tabnet] {pag}: links {sorted(set(rx.findall(h)))[:80]}")
         except Exception as e:
             print(f"[tabnet] {pag}: FALHA {type(e).__name__}: {e}")
 

@@ -19,6 +19,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Sondar
         run: |
-          python3 coletar_datasus_dbc.py --sondar || true
-          python3 coletar_tabnet.py --sondar || true
-          python3 coletar_sisab.py --sondar || true
+          python3 sonda_e1.py tabnet || true
+          python3 sonda_e1.py ckan || true
+          python3 sonda_e1.py sisab || true
+          python3 sonda_e1.py fontes "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf" "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/e/enchentes" "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/calor" "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/notas-tecnicas/2023/nota-tecnica-conjunta-onda-calor.pdf" || true
