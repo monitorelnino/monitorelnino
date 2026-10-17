@@ -438,5 +438,13 @@
     });
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, atmosfera, hachura, credito, dataBR, animarGauges };
+  /* Risco previsto em etiquetas de sigla (Monitor de riscos e Saúde): cada sigla leva à ficha do
+     estado na inicial; `grupos` = [[rótulo, [UFs]], ...], e família sem estado não aparece. */
+  const chipsDeUF = ufs => ufs.map(uf => '<a class="chip-risco" href="index.html#' + esc(uf) + '">' + esc(uf) + '</a>').join('');
+  function faixaPrevista(dl, grupos) {
+    dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs]) =>
+      '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
+  }
+
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);

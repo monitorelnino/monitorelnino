@@ -142,18 +142,16 @@ const FAMILIAS_PREVISTAS = [
   ['Fogo', c => c.length === 1 && c[0] === 'incendios'],
   ['Sem sinal elevado', c => !c.length],
 ];
-const siglasLigadas = ufs => ufs.map(uf => '<a class="chip-risco" href="index.html#' + esc(uf) + '">'
-  + esc(uf) + '</a>').join('');
 const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf)));
 (function faixaRiscoPrevisto(){
   const dl = document.getElementById('faixaRiscoPrevisto'); if (!dl) return;
   const pe = fonteDe('painel_el_nino');
   if (pe.status !== 'coletado') { lacuna('faixaRiscoPrevisto', 'Sem coleta até o corte.'); return; }
   const usados = new Set();
-  dl.innerHTML = FAMILIAS_PREVISTAS.map(([rotulo, teste]) => {
+  MonitorMapas.faixaPrevista(dl, FAMILIAS_PREVISTAS.map(([rotulo, teste]) => {
     const ufs = ufsCom(teste).filter(uf => !usados.has(uf)); ufs.forEach(uf => usados.add(uf));
-    return ufs.length ? '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + siglasLigadas(ufs) + '</dd></div>' : '';
-  }).join('');
+    return [rotulo, ufs];
+  }));
   const doc = pe.documento ? String(pe.documento).replace(/^.*?(Boletim)/, '$1') : 'Boletim do Painel El Niño';
   const sub = document.getElementById('riscoPrevistoSub');
   if (sub) sub.textContent = doc + ' · até março de 2027 · previsão, não observação';
@@ -161,7 +159,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   // "Boletim prevê para", ao lado do título de cada bloco de família.
   const preve = (id, teste) => { const el = document.getElementById(id); if (!el) return;
     const ufs = ufsCom(teste);
-    el.innerHTML = ufs.length ? '<span>Boletim prevê para:</span> <span class="chips">' + siglasLigadas(ufs) + '</span>' : ''; };
+    el.innerHTML = ufs.length ? '<span>Boletim prevê para:</span> <span class="chips">' + MonitorMapas.chipsDeUF(ufs) + '</span>' : ''; };
   preve('preveSeca', c => c.includes('estiagem') || c.includes('incendios') || c.includes('calor'));
   preve('preveChuva', c => c.includes('chuvas'));
 })();

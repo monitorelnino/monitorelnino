@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #PR · Saúde: risco previsto em etiquetas de sigla; grade dos estados com uma barra
+
+Na seção dos estados, o mapa de risco previsto vira etiquetas de sigla por família, o mesmo componente do Monitor de riscos (agora em `MonitorMapas.faixaPrevista`, sem cópia). A legenda do mapa do MARÉ Saúde mostra o intervalo de cada faixa, lido do dado. Os cartões dos 27 estados ficam com uma barra só: a resposta tem medidor próprio no topo. HANDOVER_SAUDE_PAGINA §2.5–§2.6.
+
 ## 2026-10-17 · #832 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
 
 A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. "O que a lei exige de cada governo" vira três cartões de número, as listas perdem a caixa de marcar e "Como os recursos chegam" ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.
