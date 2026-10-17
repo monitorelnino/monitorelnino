@@ -32,9 +32,7 @@ from __future__ import annotations
 import json
 import pathlib
 import re
-import subprocess
 import sys
-import tempfile
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
@@ -339,25 +337,16 @@ def _autoteste() -> int:
     return 1 if falhas else 0
 
 
-def despejar(pagina: str) -> dict:
-    with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
-        alvo = pathlib.Path(f.name)
-    r = subprocess.run(["node", str(RAIZ / "scripts" / "_layout_dump.js"), pagina, str(alvo)],
-                       capture_output=True, text=True, cwd=str(RAIZ))
-    if r.returncode != 0:
-        raise RuntimeError((r.stderr or r.stdout or "").strip()[:300])
-    return json.loads(alvo.read_text(encoding="utf-8"))
-
-
 def main() -> int:
     if "--autoteste" in sys.argv:
         return _autoteste()
+    import verificar_layout
     semana = json.loads((RAIZ / "data" / "imprensa" / "semana.json").read_text(encoding="utf-8"))
     cartoes = {c["id"]: c for c in semana.get("cartoes") or []}
     indices = semana.get("indices") or {}
     numeros, textos = {}, {}
     for pagina in sorted({x[1] for x in MAPA} | {x[1] for x in MAPA_INDICES}):
-        d = despejar(pagina)
+        d = verificar_layout.despejar(pagina)   # o mesmo medidor, com a repetição do render incompleto
         largura = (d.get("larguras") or {}).get("1280") or {}
         numeros[pagina] = {n.get("valor_id"): n.get("valor") for n in largura.get("numeros") or []}
         textos[pagina] = largura.get("texto_visivel") or ""

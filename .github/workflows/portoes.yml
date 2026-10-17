@@ -120,28 +120,11 @@ jobs:
           # assunto: cor texto
           node scripts/verificar_runtime_financiamento.js
           # assunto: dado
-          python3 scripts/registrar_faixas.py --autoteste
-          # assunto: dado
-          python3 coletar_edicoes_doe.py --autoteste
-          # assunto: dado
-          python3 robustez_saude.py --autoteste
-          # assunto: dado
-          python3 registrar_saude_central.py --autoteste
-          # assunto: dado
-          python3 scripts/sondar_rotas_doe.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_financiamento_coerencia.py
           # assunto: dado
           # 16/10/2026 (consolidação item 6): um medidor de frescor para Financiamento, Defesa civil e
           # Saúde — um leitor de carimbo, um relógio, três famílias declaradas; o autoteste roda dentro.
           python3 scripts/verificar_frescor.py
-          # assunto: dado
-          python3 scripts/rodar_coletores_defesa_civil.py --autoteste
-          # 04/10/2026: a janela da noite. Duas noites seguidas não abriram porque o cron do
-          # GitHub não disparou, e a abertura passou a ter reserva e vigia — que só são
-          # seguros porque esta função pura decide, sem adivinhar, se a noite já abriu.
-          # assunto: dado
-          python3 scripts/janela_da_noite.py --autoteste
           # 04/10/2026 (garantia dos temporizadores): o registro, o despachante, o
           # orçamento da noite e o painel. O registro é BLOQUEANTE: workflow agendado que
           # falte nele é temporizador que ninguém recupera.
@@ -154,8 +137,6 @@ jobs:
           # o caso de teste que a reproduz (que tem de existir na árvore) — e a checagem pré-noite.
           # assunto: dado
           python3 scripts/catalogo_de_falhas.py
-          # assunto: dado
-          python3 scripts/checagem_pre_noite.py --autoteste
           # 10/10/2026 (item 2-bis.2): o ensaio real da noite (veredito e condução) e o elo de ensaio.
           # 04/10/2026 (20:30): o GitHub rejeitou dois workflows por cinco horas, e nenhum
           # portão viu — `run` e `with` no mesmo passo é válido para o YAML e inválido para
@@ -174,8 +155,6 @@ jobs:
           python3 scripts/verificar_texto_blog.py
           # assunto: texto
           python3 scripts/gerar_mudancas.py --check
-          # assunto: texto
-          python3 gerar_blog.py --autoteste
           # assunto: dado
           # barra_publicacao: sim
           # 16/10/2026 (consolidação item 6): as quatro réguas das fichas municipais (D1 documento lido e
@@ -220,18 +199,8 @@ jobs:
           python3 scripts/verificar_catalogo.py
           # assunto: texto
           python3 scripts/migrar_para_catalogo.py --autoteste
-          # assunto: texto
-          python3 scripts/aplicar_edicoes.py --autoteste
-          # assunto: texto
-          python3 scripts/renderizar_figura.py --autoteste
-          # assunto: texto
-          python3 scripts/gerar_indice_de_conteudo.py --autoteste
           # assunto: dado
           python3 scripts/ensaio_da_noite.py
-          # assunto: dado
-          python3 scripts/verificar_autoteste_nao_escreve.py
-          # assunto: cor texto
-          python3 scripts/verificar_layout.py --autoteste
           # assunto: texto rapido
           python3 scripts/verificar_ausencia_declarada.py
           # §281 (28/09/2026): canal de DESCOBERTA exibido como canal de registro. "imprensa"
@@ -261,8 +230,6 @@ jobs:
           python3 scripts/gerar_codemap.py --conferir
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --autoteste
-          # assunto: texto rapido
-          python3 scripts/quais_portoes.py --autoteste
           # 30/09/2026 (§317): entrada nova de CHANGELOG é curta e tem chave por data e PR.
           # assunto: texto rapido
           python3 scripts/verificar_changelog_curto.py
@@ -289,12 +256,6 @@ jobs:
           # assunto: dado rapido
           python3 scripts/verificar_relogio_dos_derivados.py
 
-      # Causa F: a regra "nenhum commit automatico na `main` de dia" passa a ter guarda no codigo.
-      - name: Janela da noite — a guarda da coleta na `main`
-        timeout-minutes: 2
-        run: |
-          # assunto: dado rapido
-          python3 scripts/guarda_da_janela.py --autoteste
       # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
       # 07/10/2026: este passo rodava SO quando a pagina mudava, e o portao da corrida do medidor
       # roda SEMPRE. Num PR que nao toca pagina -- um de documentacao, por exemplo -- o cache nao
@@ -525,7 +486,6 @@ jobs:
           python3 verificar_evidencias.py
           python3 verificar_financiamento.py
           python3 verificar_painel.py
-          python3 scripts/testar_detector_defeso.py
           # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
           # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
           python3 verificar_resposta.py
@@ -622,11 +582,7 @@ jobs:
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |
           set -e
-          python3 scripts/testar_cadencia_publicacao.py
           python3 scripts/testar_contador_varredura.py
-          python3 scripts/testar_nivel_log_buscas.py
-          python3 scripts/testar_reposicao_dominio.py
-          python3 scripts/testar_ordem_prioridade_ufs.py
           # §127 (20/09/2026): sondas passam a ter autoteste bloqueante.
           # Não incluídos nos PRs #305/#306 para não conflitar com #303 (§123).
           pip install openpyxl==3.1.5 --break-system-packages -q
@@ -641,7 +597,6 @@ jobs:
           # §185 (23/09/2026): a política de robots.txt decidida pela editoria — ler, respeitar o
           # Crawl-delay, acessar documento público com cliente identificado e DEIXAR RASTRO. O
           # autoteste roda sem rede e trava as quatro partes, inclusive o rastro do canal renderizado.
-          python3 scripts/testar_robots.py
           # §228 (26/09/2026): um cliente só, e nunca disfarçado. Uma auditoria contou VINTE E UMA
           # strings de User-Agent no repositório, seis delas começando com token de navegador e
           # duas com o agente completo de um Chrome no Windows — uma delas com a justificativa
@@ -656,50 +611,10 @@ jobs:
           # por isso não entra na rotina automatizada: entra como portão, para que a estrutura de
           # data/financiamento_uf.json e o vocabulário de status continuem válidos.
           python3 buscar_financiamento_preventivo.py --check
-          # §209 (24/09/2026): leitor único da página de consulta do DOU. O DOU trocou o
-          # <input value="{json}"> por um <script type="application/json"> e as duas cópias do
-          # regex passaram a devolver LISTA VAZIA, caladas: 132 reconhecimentos reais lidos como
-          # zero. O autoteste é offline e trava a lição — ausência de estrutura LEVANTA, o trecho
-          # da busca é excerto e não é prova, e janela lida pela metade volta declarada.
-          python3 scripts/testar_busca_dou.py
-          # §209 (24/09/2026): a escrita de data/. Além da atomicidade de 21/09, agora trava a
-          # espera curta no cadeado momentâneo do Windows (WinError 5), que derrubou o
-          # coletar_s2id em evidencias.json — sem engolir falta de permissão de verdade.
-          python3 scripts/testar_escrita_atomica.py
-          # §212 (25/09/2026): os lotes de escrita do log de buscas e do livro de fontes.
-          # Os dois arquivos eram lidos e regravados a cada município; numa varredura de
-          # 2.965, dezenas de GB de E/S e outras tantas janelas de corrupção. O autoteste é
-          # offline e trava o que não pode falhar: sem lote nada muda, com lote nada se perde.
-          python3 scripts/testar_lote_de_escrita.py
-          # §226 (26/09/2026): a espera de rede compartilhada. Em 25/09 uma varredura nacional
-          # mediu 63 lacunas por HTTP 503 nos 505 primeiros municípios — 12 %, nenhuma delas
-          # bloqueio. A correção ficou dentro de um coletor e os outros quinze seguiram desistindo
-          # na primeira tentativa. O autoteste é offline e trava as duas metades da regra: repetir
-          # onde repetir ajuda (429, 5xx) e NUNCA repetir onde a fonte disse não (401, 403, 451,
-          # muro de robô) — e que a política não volte a existir em cópia.
-          python3 scripts/testar_espera_de_rede.py
-          # §245 (27/09/2026): a fila de pistas em imprensa tem DOIS produtores no mesmo
-          # arquivo, e um deles grava sem `hash`. Ler o conjunto de vistos exigindo `hash` de
-          # todos quebrava com KeyError três vezes por rodada, nos três monitores que chamam a
-          # função, e derrubava a rodada inteira. O autoteste é offline, não toca em data/, e
-          # trava as duas metades: esquema alheio não quebra nem se perde, e a dedução continua.
-          python3 scripts/testar_fila_de_pistas.py
-          # §246 (27/09/2026): a resolução do conflito de rebase da rodada. O laço abortava e
-          # repetia seis vezes com o mesmo conteúdo — e conflitava igual nas seis, porque
-          # data/log_buscas.json tem 20,7 MB em UMA linha. O autoteste monta repositórios git de
-          # verdade, provoca conflitos de verdade, e trava as duas metades: une o log que só
-          # cresce pela BASE COMUM, e RECUSA tudo o que não tem política decidida. A asserção que
-          # mais importa é a de 23/09 — duas execuções idênticas são DUAS tentativas, não uma;
-          # sem ela o autoteste passava com a dedução por conteúdo dentro, e foi assim que quase
-          # 3.000 execuções sumiram caladas.
-          # §251 (27/09/2026): o registro de erros de LOCALIZAÇÃO e as sete fixtures de 27/09.
-          # Entram aqui os dois AUTOTESTES, que passam. A CORRIDA das fixtures
-          # (`scripts/testar_fixtures_localizacao.py --seco`) fica DE FORA de propósito: ela é
-          # vermelha por desenho — 0 de 7 hoje — porque os coletores que deveriam achar os
-          # documentos não existem, e o pedido §I da editoria manda que o vermelho inicial seja
-          # evidência registrada, não erro a esconder. Pôr uma corrida vermelha na lista
-          # derrubaria o CI e contrariaria "nada sobe com portão vermelho".
-          # Ela entra na lista no PR que fizer as sete passarem — e só então.
+          # 17/10/2026: os testes do DOU (§209), da escrita (§209, §212), da espera de rede (§226), da
+          # fila de pistas (§245), do robots (§185) e os de regressão rodam em `verificar_autotestes_isolados.py`
+          # (`scripts/testar_*.py` sem `--autoteste`). A corrida das fixtures de localização (§251) segue fora.
+          # A história de cada um: docs/HISTORICO_DE_REGIMES.md e o CHANGELOG da data.
           # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
           # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
           # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
@@ -720,6 +635,10 @@ jobs:
           # aciona `dado_mudou`. Ficam no bloco "sempre" os autotestes que leem `layout/`,
           # `conteudo/`, `schemas/`, página ou workflow de verdade (mudam sem `.py` mudar), os em
           # JavaScript (fora deste comando) e os `--self-test`/`--check`.
+          # 17/10/2026 (janela D): catorze comandos `--autoteste` que voltaram ao bloco "sempre" em 16/10
+          # saem pela mesma prova (gancho de auditoria: não abrem arquivo fora de `.py` nem subprocesso;
+          # `quais_portoes` lê só `portoes.yml`, que aciona `dado_mudou`).
+          # Quem acrescentar autoteste novo: ele já roda aqui; só vai ao "sempre" se ler arquivo não `.py`.
           python3 scripts/verificar_autotestes_isolados.py
           # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
           # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido

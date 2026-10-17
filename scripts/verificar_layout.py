@@ -28,10 +28,8 @@ despeja a forma do DOM em JSON. A divisão é de propósito: a REGRA é texto le
 navegador só mede. Assim o portão tem autoteste offline — ele julga um despejo de fixture, sem rede
 e sem navegador.
 
-USO
-    python3 scripts/verificar_layout.py                      # todas as páginas contratadas
-    python3 scripts/verificar_layout.py saude.html
-    python3 scripts/verificar_layout.py --despejo d.json saude.html   # julga um despejo pronto
+USO (17/10/2026: a conferência das páginas é a de `verificar_conformidade.py`, que importa daqui)
+    python3 scripts/verificar_conformidade.py [saude.html] [--despejo d.json]
     python3 scripts/verificar_layout.py --autoteste
 """
 import json
@@ -431,43 +429,7 @@ def autoteste() -> int:
     return 0
 
 
-def main() -> int:
-    args = sys.argv[1:]
-    if "--autoteste" in args:
-        return autoteste()
-    despejo_pronto = None
-    if "--despejo" in args:
-        i = args.index("--despejo")
-        despejo_pronto = pathlib.Path(args[i + 1])
-        args = args[:i] + args[i + 2:]
-    alvos = [a for a in args if a.endswith(".html")]
-    arquivos = ([CONTRATOS / (a.replace(".html", "") + ".json") for a in alvos] if alvos
-                else contratos())
-    if not arquivos:
-        print("✗ LAYOUT: nenhum contrato em layout/contratos/")
-        return 1
-    falhas = 0
-    for arq in arquivos:
-        contrato = json.loads(pathlib.Path(arq).read_text(encoding="utf-8"))
-        pagina = contrato["pagina"]
-        try:
-            despejo = (json.loads(despejo_pronto.read_text(encoding="utf-8")) if despejo_pronto
-                       else despejar(pagina))
-        except Exception as e:  # noqa: BLE001
-            print(f"✗ LAYOUT ({pagina}): não foi possível medir a página — {e}")
-            falhas += 1
-            continue
-        ruins = problemas_do_despejo(contrato, despejo)
-        if ruins:
-            falhas += 1
-            print(f"✗ LAYOUT ({pagina}): {len(ruins)} divergência(s) do contrato:")
-            for r in ruins:
-                print("   -", r)
-        else:
-            print(f"✓ LAYOUT OK ({pagina}) — ordem, componentes, grades, larguras e textos "
-                  f"conforme layout/contratos/{pathlib.Path(arq).name}.")
-    return 1 if falhas else 0
-
-
 if __name__ == "__main__":
-    sys.exit(main())
+    # 17/10/2026 (consolidação item 6): a conferência das páginas é a de
+    # `verificar_conformidade.py`, que chama `problemas_do_despejo` e roda este autoteste.
+    sys.exit(autoteste())
