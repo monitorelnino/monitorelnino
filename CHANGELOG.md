@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #824 · Consulta do município diz se ele está na rede do Cemaden
+
+`riscos_municipio/<UF>.json` ganha `rede_cemaden` por município, lido da lista oficial do Cemaden (dois PDFs, 1.038 + 95 municípios, publicada em 26/03/2024, data declarada na origem). Nome que não casa com o IBGE fica listado, nunca adivinhado (6 de 1.131 no executor). Sem resposta da fonte, o campo não vai e a origem diz por quê. Proteja-se §4.
+
 ## 2026-10-17 · #823 · A válvula de dia abre o próprio PR de dado
 
 Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).
