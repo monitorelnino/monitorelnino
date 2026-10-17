@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
+      <dt>17/10/2026 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo</dt>
+      <dd>`julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.</dd>
       <dt>17/10/2026 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas</dt>
       <dd>`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.</dd>
       <dt>17/10/2026 · Para gestores: consulta do município, o que a lei exige, recursos em cartões</dt>
@@ -165,8 +167,6 @@
       <dd>Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência passam a rodar o autoteste antes de conferir, em todo uso (publicador incluído); os 16 comandos `--autoteste` saem de `portoes.yml`: 141 → 125 comandos, mesma cobertura. Linhas líquidas 0 (+29 nos scripts, −29 no workflow): a chamada mudou de lugar, não de número.</dd>
       <dt>16/10/2026 · Portões: 131 comandos `--autoteste` redundantes saem (consolidação item 6)</dt>
       <dd>`verificar_autotestes_isolados.py` já roda todo `.py` com `--autoteste` (210) e reprova em qualquer vermelho; os comandos repetidos um a um — todos os do job de dado, o laço dos coletores e os do bloco &quot;sempre&quot; cujo autoteste não abre arquivo real (medido com gancho de auditoria) — saem de `portoes.yml`. Ficam os que leem `layout/`, `conteudo/`, `schemas/`, página ou workflow, os em JavaScript e os `--self-test`/`--check`. 259 → 141 comandos, mesma cobertura.</dd>
-      <dt>16/10/2026 · Um verificador de texto público (consolidação item 3)</dt>
-      <dd>`verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.</dd>
     </dl>
   </section>
 </main>
