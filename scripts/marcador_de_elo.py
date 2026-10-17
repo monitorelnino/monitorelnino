@@ -66,7 +66,7 @@ def marcar(elo: str, noite: str, assinatura: str, restante: int = 0, gravar=None
 
 def _gravar_na_arvore(caminho: str, texto: str) -> None:
     (RAIZ / caminho).parent.mkdir(parents=True, exist_ok=True)
-    (RAIZ / caminho).write_text(texto, encoding="utf-8")
+    (RAIZ / caminho).write_text(texto, encoding="utf-8", newline="\n")
 
 
 def trabalhou(elo: str, noite: str, existe_arquivo, artefatos) -> tuple:

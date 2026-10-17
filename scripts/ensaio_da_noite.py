@@ -1126,7 +1126,7 @@ def ensaio_fila_maior_que_o_prazo(diz) -> bool:
         tp = pathlib.Path(t)
         def gravar(c, texto):
             (tp / c).parent.mkdir(parents=True, exist_ok=True)
-            (tp / c).write_text(texto, encoding="utf-8")
+            (tp / c).write_text(texto, encoding="utf-8", newline="\n")
         while len(rodadas) < 4:
             julgadas += fila[:prazo]
             fila = fila[prazo:]
