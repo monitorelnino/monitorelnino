@@ -120,6 +120,10 @@ PADROES = {
     # 17/10/2026 (janela A3, run 39019929474): a edição de 10/09/2026 abre por data, 209 páginas com texto.
     "PA": {"padrao": "https://www.ioepa.com.br/pages/{ano}/{ano}.{mm}.{dd}.DOE.pdf",
            "nota": "padrão por data, medido do runner em 17/10/2026"},
+    # 17/10/2026 (run 39022687465): 01/07 (399 p.) e 10/09/2026 (488 p.) abrem por data, com texto. A
+    # página inicial lista também DOE-EXTRAORDINARIO-<data> e <data>-SUPLEMENTAR-<n>, fora do padrão.
+    "RO": {"padrao": "https://diof.ro.gov.br/data/uploads/{ano}/{mm}/DOE-{dd}-{mm}-{ano}.pdf",
+           "nota": "padrão por data da edição ordinária, medido do runner em 17/10/2026"},
 }
 
 
