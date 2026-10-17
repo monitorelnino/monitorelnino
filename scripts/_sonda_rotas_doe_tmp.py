@@ -129,6 +129,10 @@ def rj(data):
             doc = pypdfium2.PdfDocument(pdf)
             tx = doc[0].get_textpage().get_text_range()
             print(f"    pdfium: {len(doc)} p., p1: {re.sub(r'\s+', ' ', tx)[:160]}")
+            com_texto = sum(1 for k in range(len(doc)) if doc[k].get_textpage().get_text_range().strip())
+            ult = doc[len(doc) - 1].get_textpage().get_text_range()
+            print(f"    pdfium: {com_texto} p. com texto; última p.: {re.sub(r'\s+', ' ', ult)[-200:]}")
+            print(f"    '%%EOF' no arquivo: {pdf.count(b'%%EOF')}; 'startxref': {pdf.count(b'startxref')}; 'xref': {pdf.count(b'xref')}")
         except Exception as e:  # noqa: BLE001
             print(f"    pdfium falhou: {type(e).__name__} {e}")
         try:
@@ -140,10 +144,10 @@ def rj(data):
         print(f"    url: {url}")
         time.sleep(2)
         de_novo = pega(url, 120)
-        print(f"    mesma url de novo: {'PDF igual' if de_novo == pdf else ('outro' if de_novo else 'falhou')}")
+        print(f"    mesma url de novo: {len(de_novo or b'')} B, início {(de_novo or b'')[:60]!r}")
 
 
 if __name__ == "__main__":
     print("=== RJ por data ===")
-    for d in ["2026-10-16", "2026-07-01", "2026-10-11"]:
+    for d in ["2026-10-16"]:
         rj(d)
