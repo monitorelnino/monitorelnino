@@ -84,6 +84,8 @@ Evite colocar automaticamente cada gráfico dentro de um card.
 
 **CARD NÃO É UNIDADE NARRATIVA.** Use cards somente quando a informação realmente possuir natureza modular.
 
+Cada página pode ter uma figura principal em largura total — um mapa ou uma série —, escolhida por ser a leitura central da página; no Monitor de riscos, uma de cada tipo. As demais figuras seguem a grade de três. O diagrama largo continua permitido, um por página. (Decisão de 16/10/2026, editoria por delegação à central.) O contrato da página declara qual é (`figura_principal`); a regra verificável vive em `layout/regras.json` → `componentes.figura_larga`.
+
 ## 7. DIFERENTES DADOS, DIFERENTES FORMAS
 
 Não force todos os dados para o mesmo formato visual. Escolha a representação a partir da pergunta.

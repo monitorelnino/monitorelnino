@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-10 a 2026-10-17 (1064 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-10 a 2026-10-17 (1072 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -25,8 +25,8 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
 | `gerar_saude_municipio.py` | essencial | 2026-10-16 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-17 09:11 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-17 08:46 | 1 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-17 12:05 | 3 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-17 09:23 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-12 07:33 | 11 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-13 06:56 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-16 01:36 | 0 s | — | ok | — |
@@ -64,8 +64,8 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | `descobrir_dominios.py` | coletor | 2026-10-13 08:05 | 3546 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-17 06:55 | 392 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-17 06:55 | 1 s | 0 | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-17 08:36 | 622 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-17 08:13 | 1361 s | — | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-17 09:08 | 927 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-17 09:08 | 2 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-16 20:40 | 3583 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-17 06:53 | 116 s | 6660 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-10-17 07:57 | 4 s | 0 | ok | — |
@@ -76,9 +76,9 @@ cobertura 15d: 4038/5571 com verificação real até 2026-10-17 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-10-17 06:55 | 4 s | 10 | ok | — |
 | `motores_busca.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `preservar_evidencias.py` | coletor | 2026-10-17 07:50 | 1 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-17 07:59 | 874 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-17 08:46 | 0 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-17 07:58 | 21 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-10-17 08:51 | 1036 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-17 09:23 | 1 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-17 08:51 | 12 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-16 21:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-17 07:50 | 2 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-13 06:52 | 86 s | — | ok | — |
