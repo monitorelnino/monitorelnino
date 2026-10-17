@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
+`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
+
 ## 2026-10-17 · #845 · Legenda de mapa com amostra de ponto vazado
 
 `MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.
