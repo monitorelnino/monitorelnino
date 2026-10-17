@@ -570,6 +570,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                                      if rota["tipo"] == "padrao" else {"decisao": "sem_edicao_na_data", "em": hoje})
                     continue
                 # Edição em vários cadernos (CE) ou com suplemento: um registro por caderno, a data na chave.
+                da_data = set()
                 for k, alternativas in enumerate(grupos, start=1):
                     chave = data if k == 1 else f"{data}#{k}"
                     url, bruto, status, erro = alternativas[0]["url"], None, 0, None
@@ -593,6 +594,11 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                         continue
                     # Repetição pelo hash do conteúdo: o mesmo arquivo em duas datas não são duas edições.
                     impressao = hashlib.sha256(bruto).hexdigest()
+                    if impressao in da_data:
+                        # MEDIDO em 17/10/2026 (CE, 08 e 09/07): depois do último caderno o servidor serve
+                        # de novo o caderno 1 com 200. Caderno repetido na mesma data é o fim da edição.
+                        break
+                    da_data.add(impressao)
                     repetido = impressao in vistos
                     vistos.add(impressao)
                     paginas = [] if repetido else _texto_paginas(bruto)
