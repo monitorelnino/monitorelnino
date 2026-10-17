@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.
 
+## 2026-10-17 · #831 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo
+
+`julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.
+
+## 2026-10-17 · #830 · Leitor dos arquivos .dbc do DATASUS e rotas de internações e óbitos medidas
+
+`coletar_sih.py` lê os arquivos mensais de internação do SIH/SUS (`datasus-dbc` e `dbfread`, ambos MIT) e agrega por grupo de causa, UF e mês; `coletar_obitos.py` estende os óbitos registrados até 2019 importando o coletor existente. Ainda não gravam dado. Sondagem no executor: Amapá, jul/2026, 6.160 internações no arquivo e no TabNet. O catálogo passa seis desfechos hospitalares a candidato.
+
 ## 2026-10-17 · #832 · Para gestores: consulta do município, o que a lei exige, recursos em cartões
 
 A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. "O que a lei exige de cada governo" vira três cartões de número, as listas perdem a caixa de marcar e "Como os recursos chegam" ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.
