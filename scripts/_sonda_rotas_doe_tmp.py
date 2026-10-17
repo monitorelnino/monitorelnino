@@ -64,39 +64,32 @@ def b64(d):
 
 
 if __name__ == "__main__":
-    print("=== PA ===")
-    for d in ("2026/2026.07.01", "2026/2026.10.15", "2026/2026.10.16"):
-        corpo(f"https://www.ioepa.com.br/pages/{d}.DOE.pdf")
-    print("=== SE ===")
-    corpo("https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json", 800)
-    corpo("https://iose.se.gov.br/busca/busca/buscar/query/0/di:2026-09-01/df:2026-09-30/?1=1&q=%22situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22", 800)
-    corpo("https://iose.se.gov.br/diario-oficial", 800)
+    print("=== RO ===")
+    for u in ("https://diof.ro.gov.br/data/uploads/2026/09/DOE-10-09-2026.pdf", "https://diof.ro.gov.br/data/uploads/2026/07/DOE-01-07-2026.pdf"):
+        corpo(u)
+    corpo("https://diof.ro.gov.br/busca", 600)
     print("=== RJ ===")
-    corpo(f"https://www.ioerj.com.br/portal/modules/conteudoonline/do_seleciona_edicao.php?data={b64('20260910')}", 2500)
+    corpo("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VDBWR1JrNXFhM3BQUkZsMFQwUlNRazE1TURCTk1FMHpURlJzUlU5VlJYUk5ha0V6VFRCRk5VMXJXWGxSYTA1RVRWUmpOVTFxU1hwTlJFVjVUa0U5UFE9PQ==", 2500)
+    print("=== RR ===")
+    corpo("https://www.imprensaoficial.rr.gov.br/_inicial/", 1500)
+    print("=== RN ===")
+    corpo("https://www.diariooficial.rn.gov.br/dei/dorn3/", 1500)
+    corpo("http://diariooficial.rn.gov.br/dei/dorn3/", 800)
     print("=== AL ===")
+    corpo("https://diario.imprensaoficial.al.gov.br/apinova/api/editions/published?page=1", 1500)
     for s in scripts("https://diario.imprensaoficial.al.gov.br/"):
-        ctx(s, r"apinova|editions/|ver-edicao|/edicoes")
+        ctx(s, r"searchES|formBusca:|formBusca=|populateSearch", 300, 12)
     print("=== RS ===")
     for s in scripts("https://www.diariooficial.rs.gov.br/"):
         if "main-" in s:
-            ctx(s, r"https?://[a-z0-9.\-]*procergs[^\"'`]*|apiUrl|baseUrl|/diario[\"'`/?]|/pdf[\"'`/?]|\.get\(`", maximo=40)
+            ctx(s, r"API_URL\s*[=:]|apiUrl\s*[=:]|https://[a-z0-9.\-]*rs\.gov\.br/[a-z0-9_\-/]*api[^\"'`]*", 200, 15)
     print("=== MG ===")
     for s in scripts("https://www.jornalminasgerais.mg.gov.br/"):
         if "main-" in s:
-            ctx(s, r"api/v1[^\"'`]*|apiUrl|baseUrl|environment", maximo=40)
+            ctx(s, r"[\"'`][^\"'`\s]{0,80}(?:/api/|api\.|Api)[^\"'`\s]{0,80}[\"'`]", 120, 25)
     print("=== SC ===")
-    corpo("https://portal.doe.sea.sc.gov.br/", 1200)
     for s in scripts("https://portal.doe.sea.sc.gov.br/v2.44.07/"):
-        ctx(s, r"https?://[a-z0-9.\-]*sc\.gov\.br[^\"'`]*|apiUrl|baseUrl|/api/", maximo=30)
-    print("=== RR ===")
-    corpo("https://www.imprensaoficial.rr.gov.br/", 600)
-    print("=== RN ===")
-    corpo("http://www.diariooficial.rn.gov.br/dei/dorn3/", 2000)
-    print("=== RO ===")
-    corpo("https://diof.ro.gov.br/", 300)
+        if "main." in s:
+            ctx(s, r"restPrefix\+\"[^\"]*\"|restPrefix\}[^`]*`|cdJornal|/jornal[^\"'`]{0,60}", 160, 25)
     print("=== MA ===")
-    corpo("https://diariooficial.ma.gov.br/", 600)
-    corpo("http://www.diariooficial.ma.gov.br/", 600)
-    print("=== BA ===")
-    corpo("http://dool.egba.ba.gov.br/", 600)
-    corpo("https://www.egba.ba.gov.br/egba/noticias/2025-01/331/diario-oficial-online", 1500)
+    corpo("https://www.diariooficial.ma.gov.br/public/index.xhtml", 400)
