@@ -29,6 +29,6 @@ jobs:
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       # Válvula coleta-dia (janela A3, 17/10/2026): sondagem das rotas dos diários. Este ramo não vai à main.
       comandos: |
-        scripts/sondar_rotas_doe.py --trecho https://doe-backend.pro.rs.gov.br/public/materias/?page=1&tipoDiario=doe&queryString=emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica|https://doe-backend.pro.rs.gov.br/robots.txt|https://www.diariooficial.rs.gov.br/main-WOM4SM2S.js~ngbDateToUrl(F){~tiposDiario|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~.get("~.get(`~DataPublicacao(|https://www.jornalminasgerais.mg.gov.br/robots.txt|https://diario.imprensaoficial.al.gov.br/robots.txt
+        scripts/sondar_rotas_doe.py --trecho https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=16/10/2026|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ListarEdicoesParaCalendario?MesPublicacao=9&AnoPublicacao=2026|https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterUltimaEdicao|https://www.jornalminasgerais.mg.gov.br/main-A77B4DKJ.js~formatDateToString(~ObterConteudoCadernoPorId
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
