@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #PR · Diário de Minas Gerais lido por data
+## 2026-10-17 · #840 · Diário de Minas Gerais lido por data
 
 O canal 2 lê o Diário do Executivo de MG pela API pública que o próprio sítio chama (`edicao_mg`): o PDF sai do envelope assinado (CMS, BER) por função pura. Parte das datas responde 401: o canal para ali e registra a recusa, sem marcar o diário como consultado. As edições passam a ser lidas da mais nova para a mais velha em toda UF, e o ritmo de 2 s vale também quando o adaptador já traz o PDF.
 
