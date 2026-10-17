@@ -338,7 +338,9 @@ def busca_de_declaracao(uf: str, registro: dict, adaptadores=None) -> dict:
         falta = ("a busca do diário não rodou com os termos de declaração" if b.get("termos_versao") != VERSAO_DOS_TERMOS
                  else f"a busca começou em {b.get('desde')}, depois do início do ciclo" if (b.get("desde") or "9") > INICIO_DO_CICLO
                  else b.get("erro") or b.get("parcial"))
-        return {"lacuna": falta} if falta else {"consultado_em": b["em"], "acertos": b.get("acertos_de_declaracao", 0)}
+        if not falta and (b.get("ate") or "") < dt.datetime.strptime(b["em"], "%d/%m/%Y").date().isoformat():
+            falta = f"a busca terminou em {b.get('ate')}, antes do dia em que rodou"
+        return {"lacuna": falta} if falta else {"consultado_em": b["em"], "acertos": b["acertos_de_declaracao"]}
     todas = [e for e in (registro.get("edicoes") or {}).values() if isinstance(e, dict)]
     lidas = [e for e in todas if e.get("decisao") == "lida"]
     velhas = sum(1 for e in lidas if a_reler(e))
@@ -473,8 +475,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                                  canal="DOE", camada=1)
                 print(f"  {uf}: HTTP {status} — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
                 break
-            edicoes[data] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
-                             "motivo": f"{type(e).__name__}: {str(e)[:90]}"}
+            # 404 num endereço que a própria fonte listou não é "sem edição": é edição não lida.
+            decisao = decidir_edicao(status, 0, 0)
+            edicoes[data] = {"decisao": "vazio" if decisao == "sem_edicao_na_data" and not p.get("padrao") else decisao,
+                             "em": hoje, "motivo": f"{type(e).__name__}: {str(e)[:90]}"}
             continue
 
         for n_ed, (url, bruto) in enumerate(baixadas):
@@ -516,17 +520,17 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         marcar_fonte_consultada([c for c, r in por_cod.items() if r["uf"] == uf], f"DOE/{uf}", "estadual",
                                 resultado=f"{lidas} edição(ões) lida(s) por data (canal 2)")
     if (registro.get("canal2") or {}).get("modo") != MODO_SEM_ACESSO:
-        registro["canal2"] = {"modo": sit["modo"], "em": hoje, "conta_como_consultado": True}
+        registro["canal2"] = {"modo": sit["modo"], "em": hoje, "conta_como_consultado": bool(lidas)}
     registro["atualizado_em"] = hoje
     gravar(arquivo, registro)
     indice["atualizado_em"] = hoje
     gravar(INDICE, indice)
-    log_busca("DOE", 1, [sit["detalhe"]], "registro" if com_termo else "consultado sem achado",
+    log_busca("DOE", 1, [sit["detalhe"]], "registro" if com_termo else "consultado sem achado" if lidas else "sem_edicao_no_periodo",
               nivel="estadual", uf=uf, n_resultados=com_termo,
               resultados=f"canal 2 em {uf}: {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     print(f"  {uf}: {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     return {"uf": uf, "modo": sit["modo"], "lidas": lidas, "com_termo": com_termo,
-            "decisao": "registro" if com_termo else "consultado sem achado"}
+            "decisao": "registro" if com_termo else "consultado sem achado" if lidas else "sem_edicao_no_periodo"}
 
 
 def _baixar(tentativas: list, buscar_fn, muro) -> tuple:
@@ -558,7 +562,9 @@ def ocorrencias_da_busca(itens: list) -> dict:
         chave, n = it["data"], 2
         while chave in fora and fora[chave]["url"] != it.get("url"):
             chave, n = f"{it['data']}#{n}", n + 1
-        fora.setdefault(chave, {"url": it.get("url"), "pagina": it.get("pagina"), "achados": []})["achados"] += achados
+        for a in achados:
+            a["pagina"] = it.get("pagina")        # a mesma edição casa em mais de uma página
+        fora.setdefault(chave, {"url": it.get("url"), "achados": []})["achados"] += achados
     return fora
 
 
@@ -581,10 +587,13 @@ def coletar_por_busca(uf: str, desde: str, ate: str, cfg: dict, registro: dict) 
                                   "motivo": f"{'muro de robô' if isinstance(e, MuroDeRobo) else f'HTTP {codigo}'} na busca do diário — recusa respeitada"}
         busca["erro"] = f"busca do diário falhou: {type(e).__name__}: {str(e)[:120]}"
         registrar_lacuna(f"DOE-{uf} (canal 2)", busca["erro"], canal="DOE", camada=1)
-    teto = {"busca_to": coletar_doe.TETO_EDICOES_TO, "busca_ac": coletar_doe.TETO_EDICOES_TO,
-            "apifront": coletar_doe.TETO_PAGINAS_APIFRONT * coletar_doe.TETO_PAGINA_APIFRONT}.get(ad)
-    if teto and any((t or 0) > teto for t in (busca.get("totais") or {}).values()):
-        busca["parcial"] = f"a busca aponta mais de {teto} resultado(s) para um termo e o teto lê só {teto}"
+    t = busca.get("totais") or {}
+    if t.get("_truncado") or t.get("_nao_baixadas"):
+        busca["parcial"] = (f"leitura parcial: teto da busca em {', '.join(t.get('_truncado') or [])}" if t.get("_truncado")
+                            else f"{t['_nao_baixadas']} edição(ões) apontada(s) pela busca não baixada(s)")
+    sem_data = sum(1 for it in itens if not it.get("data"))
+    if sem_data:
+        busca["parcial"] = f"{sem_data} página(s) da busca sem data"
     indice = ler(INDICE, {}) or {}
     novas = ocorrencias_da_busca(itens)
     indice.setdefault("ufs", {}).setdefault(uf, {}).update(novas)
@@ -592,7 +601,8 @@ def coletar_por_busca(uf: str, desde: str, ate: str, cfg: dict, registro: dict) 
     registro["busca_declaracao"] = busca
     registro.setdefault("_governanca", GOVERNANCA_CANAL2)
     if (registro.get("canal2") or {}).get("modo") != MODO_SEM_ACESSO:
-        registro["canal2"] = {"modo": "busca_no_diario", "em": hoje, "conta_como_consultado": not busca.get("erro")}
+        registro["canal2"] = {"modo": "busca_no_diario", "em": hoje,
+                              "conta_como_consultado": not (busca.get("erro") or busca.get("parcial"))}
     registro["atualizado_em"] = indice["atualizado_em"] = hoje
     (RAIZ / "data" / PASTA).mkdir(parents=True, exist_ok=True)
     arquivo = f"{PASTA}/{uf}.json"
@@ -732,17 +742,18 @@ def _autoteste() -> int:
     oc_busca = ocorrencias_da_busca(paginas_busca)
     ok("a busca indexa só a página com declaração no contexto exigido",
        sorted(oc_busca) == ["2026-09-10", "2026-09-11"] and oc_busca["2026-09-10"]["url"] == "u1"
-       and oc_busca["2026-09-10"]["pagina"] == 3)
+       and oc_busca["2026-09-10"]["achados"][0]["pagina"] == 3)
     ok("duas páginas com declaração na mesma data viram duas chaves, e nenhuma se perde",
        sorted(ocorrencias_da_busca(paginas_busca[:1] + [dict(paginas_busca[0], url="u9")])) == ["2026-09-10", "2026-09-10#2"])
     b_ok = {"canal2": {"modo": "busca_no_diario"}, "busca_declaracao": {
-        "desde": INICIO_DO_CICLO, "em": "17/10/2026", "termos_versao": VERSAO_DOS_TERMOS, "acertos_de_declaracao": 0}}
+        "desde": INICIO_DO_CICLO, "ate": "2026-10-17", "em": "17/10/2026", "termos_versao": VERSAO_DOS_TERMOS, "acertos_de_declaracao": 0}}
     ad = {"XX": {"adaptador": "dodf"}}
     ok("busca do diário com os termos desde o início do ciclo conta como consultada",
        busca_de_declaracao("XX", b_ok, ad) == {"consultado_em": "17/10/2026", "acertos": 0})
-    ok("busca que não rodou, que falhou, começou tarde ou bateu no teto é lacuna",
+    ok("busca que não rodou, que falhou, começou tarde, parou antes do dia ou bateu no teto é lacuna",
        all("lacuna" in busca_de_declaracao("XX", r, ad) for r in (
            {}, {"busca_declaracao": dict(b_ok["busca_declaracao"], erro="falhou")},
+           {"busca_declaracao": dict(b_ok["busca_declaracao"], ate="2026-09-30")},
            {"busca_declaracao": dict(b_ok["busca_declaracao"], desde="2026-09-01")},
            {"busca_declaracao": dict(b_ok["busca_declaracao"], parcial="teto")})))
     ok("a lacuna diz se é recusa ou rota não descoberta",
@@ -846,7 +857,10 @@ def main() -> int:
 
     print(f"canal 2 · {len(alvos)} UF(s) de {desde} a {ate}")
     for uf in alvos:
-        coletar_uf(uf, desde, ate)
+        try:
+            coletar_uf(uf, desde, ate)
+        except Exception as e:  # noqa: BLE001 — uma UF que cai não leva as seguintes; o registro dela fica como estava
+            print(f"  {uf}: ✗ {type(e).__name__}: {str(e)[:160]}")
     return 0
 
 

@@ -405,6 +405,8 @@ def itens_dodf(uf: str, desde: str, ate: str, enviar_fn=None, termos=None,
             if len(vistos) >= (total or 0):
                 break
             pagina += 1
+        if pagina > TETO_PAGINAS_DODF:
+            totais.setdefault("_truncado", []).append(termo)   # o teto parou a leitura: lida em parte
     return itens, totais
 
 
@@ -512,6 +514,8 @@ def itens_sp(uf: str, desde: str, ate: str, termos=None, buscar_fn=None,
                               "trechos": [f"{it.get('title') or ''} · {it.get('hierarchy') or ''}: {texto[:20000]}"],
                               "territorio": uf})
             pagina += 1
+        if proxima:
+            totais.setdefault("_truncado", []).append(termo)   # o teto parou a leitura: lida em parte
     return itens, totais
 
 
@@ -543,11 +547,16 @@ def itens_por_busca(uf: str, desde: str, edicoes_fn, termos=None, buscar_fn=None
             _dormir(pausa)
         edicoes = sorted((e for e in edicoes_fn(termo) if e["data"] >= desde), key=lambda e: e["data"], reverse=True)
         totais[termo] = len(edicoes)
+        if len(edicoes) > TETO_EDICOES_TO:
+            totais.setdefault("_truncado", []).append(termo)
         for e in edicoes[:TETO_EDICOES_TO]:
             _dormir(pausa)
             try:
                 pdf = _buscar(e["url"], timeout=240, origem="coletar_doe")
-            except Exception:  # noqa: BLE001 — edição que não baixa é lacuna de uma edição, não da UF
+            except Exception as ex:  # noqa: BLE001 — edição que não baixa é lacuna de uma edição, não da UF
+                if (getattr(ex, "code", None) or 0) in (401, 403, 429, 451):
+                    raise                                   # recusa real se respeita, não se pula
+                totais["_nao_baixadas"] = totais.get("_nao_baixadas", 0) + 1
                 continue
             achadas = paginas_com_termo(pdf if isinstance(pdf, bytes) else pdf.encode("utf-8"), termo)
             for pag, texto in achadas:
@@ -741,6 +750,8 @@ def itens_apifront(uf: str, base: str, desde: str, ate: str, buscar_fn=None, pau
     for termo in termos or TERMOS_APIFRONT:
         total, acertos = varrer_busca_apifront(base, termo, desde, ate, buscar_fn=buscar_fn, pausa=pausa)
         totais[termo] = total
+        if total > len(acertos):
+            totais.setdefault("_truncado", []).append(termo)
         for a in acertos:
             itens.append({"data": a["data"], "pagina": a["pagina"], "paginas": a["paginas"],
                           "url": PDF_APIFRONT.format(base=base.rstrip("/"), diario_id=a["diario_id"]),
@@ -1250,10 +1261,14 @@ def autoteste() -> int:
                  "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzkxOTgyNTkyMjMxMy5wZGY="},
                 {"edicao": "14100", "data": "2026-08-20",
                  "url": "https://diario.ac.gov.br/download.php?arquivo=QUJD"}],
-        "DOE-AC: só edição da janela desce ao PDF, a mais nova primeiro":
+        "DOE-AC: só edição da janela desce ao PDF, e a que não baixa fica contada":
             lambda: itens_por_busca("AC", "2026-09-01", lambda t: parse_busca_ac(FIXTURE_BUSCA_AC), termos=["x"],
                                     buscar_fn=lambda u, **k: (_ for _ in ()).throw(OSError(u)),
-                                    dormir=lambda s: None) == ([], {"x": 1}),
+                                    dormir=lambda s: None) == ([], {"x": 1, "_nao_baixadas": 1}),
+        "DOE-AC: recusa no PDF da edição levanta, não se pula":
+            lambda: _levanta(lambda: itens_por_busca("AC", "2026-09-01", lambda t: parse_busca_ac(FIXTURE_BUSCA_AC),
+                                                     termos=["x"], buscar_fn=lambda u, **k: (_ for _ in ()).throw(_erro_http(u, 403)),
+                                                     dormir=lambda s: None), Exception),
         "DOE-TO: só as páginas do PDF em que o termo aparece entram":
             lambda: paginas_com_termo(b"x", "emergência",
                                       extrair_fn=lambda _: ["nada", "SITUAÇÃO DE EMERGÊNCIA aqui",
