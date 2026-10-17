@@ -325,6 +325,10 @@ def main() -> int:
     if "--inicio-da-janela" in argv:
         print(inicio_da_janela(agora))
         return 0
+    if "--fim-da-janela" in argv:   # epoch: o prazo do elo na `main` não passa daqui (17/10/2026)
+        base = dt.date.fromisoformat(noite_de(agora)) + dt.timedelta(days=JANELA_UTC[1] <= JANELA_UTC[0])
+        print(int(dt.datetime(base.year, base.month, base.day, JANELA_UTC[1], tzinfo=dt.timezone.utc).timestamp()))
+        return 0
     from coletores_base import ler
     linhas = (ler("painel_da_noite.json") or {}).get("noites") or []
     if "--atraso" in argv:
