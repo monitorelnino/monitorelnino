@@ -30,6 +30,7 @@ Peso zero, nunca lido pelo motor do índice. O Monitor não atribui casos ao El 
 
 USO
   python3 desfechos_sus.py --autoteste
+  python3 desfechos_sus.py --derivar [dengue chikungunya srag]
 """
 import re
 import statistics
@@ -206,6 +207,58 @@ def ler_desfecho(desfecho: str, ler_fn=ler):
     return obj
 
 
+# ------------------------------------------------------------------ derivados dos arquivos que já existem
+# Dengue, chikungunya e SRAG já têm coletor (`coletar_arboviroses_sinan.py`, `coletar_srag_sivep.py`).
+# A forma comum nasce LENDO o arquivo deles, sem nova coleta e sem mexer no arquivo que a página de
+# hoje lê. As semanas que eles vazam como incompletas (`nowcasting`, contagem sem estimativa) voltam
+# como valor e ficam marcadas `parcial`.
+DERIVADOS = {
+    "dengue": {"origem": "dengue_sinan_serie.json", "rotulo": "Dengue, notificações", "unidade": "notificações"},
+    "chikungunya": {"origem": "chik_sinan_serie.json", "rotulo": "Chikungunya, notificações", "unidade": "notificações"},
+    "srag": {"origem": "srag_serie.json", "rotulo": "SRAG hospitalizada, notificações", "unidade": "notificações"},
+}
+
+
+def de_serie_existente(orig: dict) -> tuple:
+    """(série com as semanas vazadas devolvidas, quantas semanas vazadas). Função pura."""
+    serie = {}
+    for uf, s in (orig.get("serie") or {}).items():
+        if uf == "BR":
+            continue
+        now = (orig.get("nowcasting") or {}).get(uf, {})
+        serie[uf] = {p: (v if v is not None else now.get(p)) for p, v in s.items()}
+        for p, v in now.items():
+            serie[uf].setdefault(p, v)
+    return serie, int(orig.get("se_incompletas") or 0)
+
+
+def derivar(nome: str, ler_fn=ler, gravar_fn=gravar) -> bool:
+    """Grava `<nome>.json` na forma comum a partir do arquivo do coletor existente."""
+    cfg = DERIVADOS[nome]
+    orig = ler_fn(f"{PASTA}/{cfg['origem']}")
+    if not orig or not orig.get("serie"):
+        print(f"{nome}: {cfg['origem']} ausente ou vazio; o arquivo anterior fica"); return False
+    serie, n = de_serie_existente(orig)
+    anterior = ler_fn(caminho(nome))
+    if anterior and {u: v for u, v in anterior.get("serie", {}).items() if u != "BR"} == serie:
+        print(f"{nome}: {cfg['origem']} sem mudança; nada a regravar"); return False
+    fonte = {"sistema": orig.get("sistema"), "url": orig.get("fonte"), "arquivo_de_origem": f"data/{PASTA}/{cfg['origem']}",
+             "gerado_em_na_origem": orig.get("gerado_em"), "uf": "residência", "data_do_periodo": "início dos sintomas"}
+    data = data_iso(orig.get("gerado_em"))
+    obj = montar(desfecho=nome, rotulo=cfg["rotulo"], unidade=cfg["unidade"], periodo="semana",
+                 territorio="UF de residência", serie=serie, fonte=fonte,
+                 cadencia="a do coletor de origem", coletado_em=data,
+                 anos_preliminares=[orig.get("ano_corrente")] if orig.get("ano_corrente") else [],
+                 n_parciais=n, populacao=populacao_por_uf(ler_fn), anterior=anterior)
+    return gravar_desfecho(obj, gravar_fn=gravar_fn)
+
+
+def data_iso(br) -> str:
+    """'16/10/2026' → '2026-10-16'; o que não for data volta como veio. Função pura."""
+    m = re.fullmatch(r"(\d{2})/(\d{2})/(\d{4})", str(br or ""))
+    return f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else str(br or "")
+
+
 # ------------------------------------------------------------------ autoteste
 def _serie_de_teste(ufs=("CE", "PE"), anos=range(2019, 2027), meses=12):
     return {uf: {f"{a}-{m:02d}": (i + m + (a - 2019)) for m in range(1, meses + 1) for a in anos}
@@ -312,7 +365,22 @@ def _t_trava_acusa():
         os.unlink(f.name)
 
 
+def _t_derivar():
+    orig = {"sistema": "SINAN", "fonte": "https://x", "gerado_em": "16/10/2026", "ano_corrente": 2026, "se_incompletas": 2,
+            "serie": {"CE": {"2019-01": 3, "2026-38": None, "2026-39": None}, "BR": {"2019-01": 3}},
+            "nowcasting": {"CE": {"2026-38": 7, "2026-39": 1}}}
+    banco = {f"{PASTA}/dengue_sinan_serie.json": orig}
+    escritos = []
+    def g(n, o, compacto=False): banco[n] = o; escritos.append(n)
+    ok1 = derivar("dengue", ler_fn=banco.get, gravar_fn=g); ok2 = derivar("dengue", ler_fn=banco.get, gravar_fn=g)
+    o = banco[caminho("dengue")]
+    return (ok1 and not ok2 and escritos == [caminho("dengue")] and o["serie"]["CE"]["2026-39"] == 1
+            and o["parcial"] == ["2026-38", "2026-39"] and o["periodo"] == "semana" and o["coletado_em"] == "2026-10-16"
+            and orig["serie"]["CE"]["2026-38"] is None)
+
+
 TESTES = {
+    "derivado: semanas vazadas voltam como parcial; origem intocada": _t_derivar,
     "forma comum: parcial, último, taxa, quintis, faixa habitual": _t_forma,
     "cortes do mapa congelados na regravação": _t_cortes_congelados,
     "cortes recalculam só se a métrica muda": _t_cortes_recalculam_se_metrica_muda,
@@ -328,4 +396,8 @@ TESTES = {
 if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(rodar_autoteste(TESTES))
+    if "--derivar" in sys.argv:
+        for nome in sys.argv[sys.argv.index("--derivar") + 1:] or list(DERIVADOS):
+            derivar(nome)
+        sys.exit(0)
     print(__doc__)
