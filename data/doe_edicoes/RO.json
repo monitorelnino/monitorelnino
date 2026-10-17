@@ -1,13 +1,134 @@
 {
  "_governanca": "Canal 2 desta unidade. Recusa real de acesso (401, 403, 429, 451, captcha, muro de robô) é rota sem acesso automático; rota não achada é rota não descoberta. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "/edicoes: HTTPError · listagem sem data e número de edição no HTML",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "reclassificado_em": "17/10/2026",
-  "nota_reclassificacao": "reclassificado de sem_acesso_automatico: o motivo gravado não é recusa medida (401, 403, 429, 451, muro de robô) — HANDOVER_ROTAS_DOE §0.1"
+  "modo": "padrao_por_data",
+  "em": "17/10/2026",
+  "conta_como_consultado": true
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4429026,
+   "paginas": 581,
+   "paginas_com_texto": 581,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-01-10-2026.pdf",
+   "impressao": "6a7af696dae55d763571c230ddcff4c036405073b6bafd4063cb275a9444a9f3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4362773,
+   "paginas": 486,
+   "paginas_com_texto": 486,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-05-10-2026.pdf",
+   "impressao": "63db3efbcfc1cc13ba3940e452b3c206d5d2c05ce2078244c4f1dc79cece944c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4083655,
+   "paginas": 530,
+   "paginas_com_texto": 530,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-06-10-2026.pdf",
+   "impressao": "1f2494e852a5a80721d249203f77f676c9365b5e74ff4d5dc2d1afbc393b1826",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5775161,
+   "paginas": 437,
+   "paginas_com_texto": 437,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-07-10-2026.pdf",
+   "impressao": "057688f07be9684bebe39f7e266de511c6748f59a00cbc50e792f6cf1f1437e6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2761273,
+   "paginas": 367,
+   "paginas_com_texto": 367,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-08-10-2026.pdf",
+   "impressao": "533d2307014b696ed5742d09333a63455d2b191987fb8a93c08e3e4b00e31958",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9780957,
+   "paginas": 513,
+   "paginas_com_texto": 513,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-09-10-2026.pdf",
+   "impressao": "a538c24c8889ef514a0cc9e5132fed8905a4f92d4134d7e908c004eb9b7c946f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1690280,
+   "paginas": 201,
+   "paginas_com_texto": 201,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-13-10-2026.pdf",
+   "impressao": "5c5ae9f1467a23b89a7886d4385be148ce31d062bd3f70826c8832817c2cc8d2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3467321,
+   "paginas": 483,
+   "paginas_com_texto": 483,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-14-10-2026.pdf",
+   "impressao": "ee7d1b2d06dcaeafff5a2b0d1e3ead336e52c817d8d132488c3df7e44570a142",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "ee7d1b2d06dcaeafff5a2b0d1e3ead336e52c817d8d132488c3df7e44570a142",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5677791,
+   "paginas": 500,
+   "paginas_com_texto": 500,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-15-10-2026.pdf",
+   "impressao": "2a17d4fb1e68d343aecf9eb56b0a632587f09eb81bdbfb1d92761b14feb56f5e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2695310,
+   "paginas": 377,
+   "paginas_com_texto": 377,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-16-10-2026.pdf",
+   "impressao": "a47215ea7cd376fa31b9d3da1f5e318624829b18aef587433a1ba96afe827edb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }

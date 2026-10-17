@@ -1,13 +1,246 @@
 {
  "_governanca": "Canal 2 desta unidade. Recusa real de acesso (401, 403, 429, 451, captcha, muro de robô) é rota sem acesso automático; rota não achada é rota não descoberta. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "https://imprensaoficial.al.gov.br/portal/download/2026/09/10.pdf: nao_e_edicao · https://imprensaoficial.al.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://imprensaoficial.al.gov.br/diario/20260910.pdf: nao_e_edicao",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "reclassificado_em": "17/10/2026",
-  "nota_reclassificacao": "reclassificado de sem_acesso_automatico: o motivo gravado não é recusa medida (401, 403, 429, 451, muro de robô) — HANDOVER_ROTAS_DOE §0.1"
+  "modo": "edicao_por_adaptador",
+  "em": "17/10/2026",
+  "conta_como_consultado": true
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1394523,
+   "paginas": 16,
+   "paginas_com_texto": 16,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51893",
+   "impressao": "39eb37e2782c02256329cd77dd0e1f4a488d3a55693586dc6ea3cc8779a1865d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-01#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4326514,
+   "paginas": 96,
+   "paginas_com_texto": 96,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51892",
+   "impressao": "0e4188cca6a09526bcfb43ab5d590fa2b96aeb3d10d20b9085820ac6c9cc63f2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1441444,
+   "paginas": 24,
+   "paginas_com_texto": 24,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51897",
+   "impressao": "008c73e133f89573c5b8a7be62da5be201848052fdfc89c6cb50a6e6d29cc0ad",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4280386,
+   "paginas": 116,
+   "paginas_com_texto": 116,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51896",
+   "impressao": "c01cb2a404e8ef56f9dc9acfc93a5a4f0c863cbeef28352c724cc78f49c7a7db",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2652225,
+   "paginas": 60,
+   "paginas_com_texto": 60,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51898",
+   "impressao": "126f48d7d7d1a62f204c2b68bc98d4bab248555b86a3ed8785da19b2712a2070",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4830595,
+   "paginas": 124,
+   "paginas_com_texto": 124,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51901",
+   "impressao": "63ac928f2702bdf5afc68553ac93edabb1fae58b20bd52ad221f74924b5d4b29",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "63ac928f2702bdf5afc68553ac93edabb1fae58b20bd52ad221f74924b5d4b29",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-06#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 560994,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51902",
+   "impressao": "baa9e346f17a07fa02164e5a6e7d364ce3f4efea281770f1d48870e781108312",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 657861,
+   "paginas": 16,
+   "paginas_com_texto": 16,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51906",
+   "impressao": "734dfd6096aedf98c2fce71734c60c64d189e335744a4fde96ed1c4ce565d444",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3711601,
+   "paginas": 100,
+   "paginas_com_texto": 100,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51905",
+   "impressao": "f734b8920d94a96ce01f41fd7906a94d4ff6beeacbf17d36f483d0c2518997e1",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1138411,
+   "paginas": 20,
+   "paginas_com_texto": 20,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51909",
+   "impressao": "52cda8c7808de8a095a8e233368326cc3af0506604c6ad2de33371b762565d38",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3919460,
+   "paginas": 132,
+   "paginas_com_texto": 132,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51908",
+   "impressao": "f7bcb60056541a595e3dc7339b028dae9efd1cb28c1c27a98cc5d122bdb03f54",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2579152,
+   "paginas": 12,
+   "paginas_com_texto": 12,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51914",
+   "impressao": "79e0e251bafb20818a67a9d4baabd8d0f03754ad6fba2070143faf7bbbd6d6cd",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-09#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3997791,
+   "paginas": 124,
+   "paginas_com_texto": 124,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51913",
+   "impressao": "b6d451072c403140ed72e20c056ad39badc57f9da65d445dbf51193723bd9f77",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "a listagem da fonte não traz edição nesta data"
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1019030,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51919",
+   "impressao": "7641a4ed2ff5b25e75678765a2821ec137bb6eab426fa2e88164166c52521faa",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-13#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3548198,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51918",
+   "impressao": "994d91a12cf6f19e258fda5458a6b21533244c86a6565b4cad1af3baefea60eb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1999694,
+   "paginas": 12,
+   "paginas_com_texto": 12,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51924",
+   "impressao": "86c60a514b5b2477b2d8d7fb80ca3d4c42a29f8f715c0e28192d55dd5f6cde8a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6625859,
+   "paginas": 168,
+   "paginas_com_texto": 168,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51923",
+   "impressao": "28281766a64519843f78955670912850a404fc677643642c52d75994d0405c10",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "28281766a64519843f78955670912850a404fc677643642c52d75994d0405c10",
+   "termos_achados": [
+    "emergência climática",
+    "El Niño"
+   ]
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3289351,
+   "paginas": 100,
+   "paginas_com_texto": 100,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51925",
+   "impressao": "75adc6d14461c435c9c7d9cb31d1c9d5ecc94ccede9685c302cefeda073ce1e0",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "75adc6d14461c435c9c7d9cb31d1c9d5ecc94ccede9685c302cefeda073ce1e0",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3549355,
+   "paginas": 76,
+   "paginas_com_texto": 76,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51928",
+   "impressao": "6e300ade9b4588f47c33a5caaba053bee3a2d216816ffa0e20e009d9a2d4b3f7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16#2": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1646900,
+   "paginas": 40,
+   "paginas_com_texto": 40,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51929",
+   "impressao": "c6c71101392202dafd26d5c5ca734525ff855bc4a9b27af166860e940b800ed5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }

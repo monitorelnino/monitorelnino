@@ -1,13 +1,23 @@
 {
  "_governanca": "Canal 2 desta unidade. Recusa real de acesso (401, 403, 429, 451, captcha, muro de robô) é rota sem acesso automático; rota não achada é rota não descoberta. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "https://www.jornalminasgerais.mg.gov.br/portal/download/2026/09/10.pdf: sem_texto_extraivel · https://www.jornalminasgerais.mg.gov.br/arquivos/2026/09/10.pdf: sem_texto_extraivel · https://www.jornalminasgerais.mg.gov.br/diario/20260910.pdf: sem_texto_extraivel",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "reclassificado_em": "17/10/2026",
-  "nota_reclassificacao": "reclassificado de sem_acesso_automatico: o motivo gravado não é recusa medida (401, 403, 429, 451, muro de robô) — HANDOVER_ROTAS_DOE §0.1"
+  "modo": "sem_acesso_automatico",
+  "motivo": "HTTP 401 na edição de 2026-10-02 — recusa respeitada",
+  "em": "17/10/2026",
+  "conta_como_consultado": false
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2458006,
+   "paginas": 54,
+   "paginas_com_texto": 54,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-01",
+   "impressao": "7e8bfd43111c9e895b812b055f1077d887e2a20df85718a9ed395b884f2cea58",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }
