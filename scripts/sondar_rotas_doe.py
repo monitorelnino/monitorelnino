@@ -146,6 +146,17 @@ def leitura_sru(xml: str) -> dict:
     return {"total": int(m.group(1)) if m else None, "urns": list(dict.fromkeys(RE_SRU_URN.findall(xml or "")))}
 
 
+def esqueleto(o, fundo: int = 0):
+    """A forma de uma resposta JSON — chaves, tipos, tamanho, um exemplo curto. Função pura."""
+    if isinstance(o, dict):
+        return {k: esqueleto(v, fundo + 1) for k, v in list(o.items())[:40]} if fundo < 6 else "{…}"
+    if isinstance(o, list):
+        return [f"lista de {len(o)}", esqueleto(o[0], fundo + 1)] if o else "lista vazia"
+    if isinstance(o, str):
+        return f"texto de {len(o)}: {o[:60]}"
+    return o
+
+
 def sondar_codigo(buscar, base: str, teto_bytes: int = 12_000_000) -> dict:
     import urllib.parse
     html = buscar(base, timeout=45).decode("utf-8", "replace")
@@ -223,6 +234,9 @@ def _autoteste() -> int:
     ok("a resposta SRU do LexML dá o total e as URNs",
        leitura_sru("<srw:numberOfRecords>2</srw:numberOfRecords><x>urn:lex:br;parana:estadual:decreto:2026-09-10;123</x>")
        == {"total": 2, "urns": ["urn:lex:br;parana:estadual:decreto:2026-09-10;123"]})
+    ok("o esqueleto de um JSON mostra chaves, tipos e um exemplo, sem o conteúdo inteiro",
+       esqueleto({"dados": {"cadernos": [{"id": 1}, {"id": 2}], "arquivo": "x" * 500}})
+       == {"dados": {"cadernos": ["lista de 2", {"id": 1}], "arquivo": "texto de 500: " + "x" * 60}})
     ok("resposta SRU sem total não vira zero", leitura_sru("<html>erro</html>")["total"] is None)
     ok("trava estrutural: uma escrita só, e é o registro de fontes",
        len(escritas) == 1 and escritas[0].strip().startswith("gravar(ARQUIVO"))
@@ -268,6 +282,12 @@ def main() -> int:
                 print(f"== {url}: {veredito_da_recusa(e)}")
                 continue
             print(f"== {url} ({len(t)} caracteres)")
+            if t.lstrip()[:1] in "{[" and not termos:
+                try:
+                    print(json.dumps(esqueleto(json.loads(t)), ensure_ascii=False, indent=1)[:6000])
+                    continue
+                except ValueError:
+                    pass
             for termo in termos or [""]:
                 for m in list(re.finditer(re.escape(termo), t))[:12] if termo else [None]:
                     i = m.start() if m else 0
