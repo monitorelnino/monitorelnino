@@ -37,6 +37,7 @@ sys.path.insert(0, str(RAIZ))
 FTP_HOST = "ftp.datasus.gov.br"
 FTP_DIR_RD = "/dissemin/publicos/SIHSUS/200801_/Dados"
 FTP_SENHA = "monitorelnino.com.br"  # identificação do cliente no FTP anônimo
+FTP_DIRS_SINAN = ["/dissemin/publicos/SINAN/DADOS/PRELIM", "/dissemin/publicos/SINAN/DADOS/FINAIS"]
 TABNET_DEF = "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sih/cnv/niuf.def"
 TABNET_TAB = "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sih/cnv/niuf.def"
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
@@ -81,6 +82,13 @@ def agregar(registros) -> dict:
         for g in ["total"] + grupo_do_cid(r.get("DIAG_PRINC")):
             d = out.setdefault(g, {}).setdefault(uf, {})
             d[chave] = d.get(chave, 0) + 1
+    # Mês lido sem caso do grupo é ZERO medido (o arquivo inteiro foi lido); mês sem arquivo não
+    # aparece em lugar nenhum — essa é a ausência, e ela não vira zero.
+    for uf, por_mes in out.get("total", {}).items():
+        for g in GRUPOS:
+            d = out.setdefault(g, {}).setdefault(uf, {})
+            for chave in por_mes:
+                d.setdefault(chave, 0)
     return out
 
 
@@ -120,16 +128,13 @@ def ler_dbc(dbc: bytes):
 
 
 def celula_tabnet(html: str, rotulo: str):
-    """Primeiro número da linha cujo rótulo contém `rotulo` na tabela do TabNet, ou None. Pura."""
-    for linha in re.findall(r"<tr[^>]*>(.*?)</tr>", html or "", re.S | re.I):
-        cels = [re.sub(r"<[^>]+>|&nbsp;", " ", c).strip()
-                for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", linha, re.S | re.I)]
-        if cels and rotulo.lower() in cels[0].lower():
-            for c in cels[1:]:
-                n = c.replace(".", "").strip()
-                if n.isdigit():
-                    return int(n)
-    return None
+    """Número que segue o rótulo na tabela do TabNet (texto sem marcação), ou None. Função pura.
+
+    O TabNet nem sempre fecha `<td>`; ler o texto plano evita depender da marcação."""
+    import html as _h
+    plano = re.sub(r"\s+", " ", _h.unescape(re.sub(r"<[^>]+>", " ", html or "")))
+    m = re.search(re.escape(rotulo) + r"\s+([\d.]+)(?!\d)", plano, re.I)
+    return int(m.group(1).replace(".", "")) if m else None
 
 
 def form_tabnet(html: str) -> dict:
@@ -182,6 +187,15 @@ def sondar() -> int:
     buf = io.BytesIO()
     t0 = time.time()
     f.retrbinary(f"RETR {nome}", buf.write)
+    for d in FTP_DIRS_SINAN:  # hepatite A (SINAN HEPA): onde está e até que ano
+        try:
+            f.cwd(d)
+            hepa = sorted(n for n in f.nlst() if n.upper().startswith("HEPA"))
+            print(f"SINAN {d}: HEPA {hepa[-4:]} ({len(hepa)} arquivos)")
+            for n in hepa[-1:]:
+                print(f"  {n}: {f.sendcmd(f'MDTM {n}')} · {f.size(n)} bytes")
+        except Exception as e:  # noqa: BLE001
+            print(f"SINAN {d}: falhou ({type(e).__name__}: {e})")
     f.quit()
     dbc = buf.getvalue()
     print(f"baixado {nome}: {len(dbc)} bytes em {time.time() - t0:.1f}s · {mdtm}")
@@ -219,7 +233,9 @@ def sondar() -> int:
         print(f"TabNet Acre {comp}: {tab} · arquivo decodificado: {ag.get('total', {}).get('AC', {}).get(comp)}"
               f" · bate: {tab == ag.get('total', {}).get('AC', {}).get(comp)}")
         if tab is None:
-            print("  trecho:", re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))[:600])
+            plano = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
+            i = plano.find("Acre")
+            print("  trecho:", plano[max(i - 200, 0):i + 400] if i >= 0 else plano[-800:])
     except Exception as e:  # noqa: BLE001
         print(f"TabNet: falhou ({type(e).__name__}: {str(e)[:200]})")
     return 0
@@ -257,7 +273,8 @@ def autoteste() -> int:
     casos.append(("total conta AIH não de longa permanência", ag["total"]["AC"] == {"2026-07": 2}))
     casos.append(("grupo conta só o seu CID", ag["respiratorias"]["AC"] == {"2026-07": 1}))
     casos.append(("competência ilegível não vira mês", "2026-00" not in ag["total"]["AC"]))
-    casos.append(("grupo sem caso não aparece (ausência ≠ zero)", "cardio" not in ag))
+    casos.append(("mês lido sem caso do grupo é zero medido", ag["cardio"]["AC"] == {"2026-07": 0}))
+    casos.append(("UF sem arquivo lido não aparece (ausência ≠ zero)", "RR" not in ag["cardio"]))
     ult = ultimo_por_uf(["RDAC2606.dbc", "RDAC2607.dbc", "RDSP2605.DBC", "LEIAME.txt", "RDBR2607.dbc"])
     casos.append(("última competência por UF", ult == {"AC": "2026-07", "SP": "2026-05", "BR": "2026-07"}))
     casos.append(("atraso em meses", meses_de_atraso("2026-07", datetime.date(2026, 10, 17)) == 3))
@@ -268,7 +285,7 @@ def autoteste() -> int:
         casos.append(("lê DBF", [r["DIAG_PRINC"] for r in lidos] == ["J180", "I219"]))
     except ImportError:
         casos.append(("lê DBF (dbfread ausente: requirements)", False))
-    html = ("<table><tr><th>UF</th><th>Internações</th></tr><tr><td>12 Acre</td><td>3.456</td></tr>"
+    html = ("<table><tr><th>UF</th><th>Interna&ccedil;&otilde;es</th></tr><tr><td>.. Acre<td>3.456"
             "<tr><td>Total</td><td>9.999</td></tr></table>")
     casos.append(("célula do TabNet com separador de milhar", celula_tabnet(html, "Acre") == 3456))
     casos.append(("rótulo ausente é None, não zero", celula_tabnet(html, "Roraima") is None))

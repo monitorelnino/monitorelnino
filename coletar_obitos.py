@@ -12,6 +12,7 @@ USO
 """
 import datetime
 import ftplib
+import io
 import json
 import pathlib
 import re
@@ -35,6 +36,7 @@ RC_CAUSAS = {
 FTP_HOST = "ftp.datasus.gov.br"
 FTP_SENHA = "monitorelnino.com.br"
 FTP_SIM = ["/dissemin/publicos/SIM/PRELIM/DORES", "/dissemin/publicos/SIM/CID10/DORES"]
+PORTAL_CONJUNTO = "https://dadosabertos.saude.gov.br/dataset/sim"
 PORTAL_BUSCA = "https://dadosabertos.saude.gov.br/dataset?q={q}"
 RE_DO = re.compile(r"^DO([A-Z]{2})(\d{4})\.DBC$", re.I)
 INICIO_FAIXA = datetime.date(2019, 1, 1)
@@ -96,18 +98,49 @@ def sondar() -> int:
                 print(f"  {d}: {len(nomes)} nomes · anos mais recentes {anos[-3:]} · "
                       f"UFs no último: {sorted(u for u, a in ult.items() if anos and a == anos[-1])}")
                 print(f"    amostra: {sorted(nomes)[-6:]}")
-                if ult:
-                    alvo = sorted(n for n in nomes if n.upper().startswith("DOAC"))[-1:]
-                    for n in alvo:
-                        try:
-                            print(f"    {n}: {f.sendcmd(f'MDTM {n}')} · {f.size(n)} bytes")
-                        except Exception as e:  # noqa: BLE001
-                            print(f"    {n}: MDTM/SIZE falhou ({e})")
+                if ult and "PRELIM" in d:
+                    from coletar_sih import ler_dbc
+                    for n in sorted(x for x in nomes if x.upper().startswith("DOAC"))[-1:]:
+                        print(f"    {n}: {f.sendcmd(f'MDTM {n}')} · {f.size(n)} bytes")
+                        buf = io.BytesIO()
+                        f.retrbinary(f"RETR {n}", buf.write)
+                        regs = ler_dbc(buf.getvalue())
+                        por_mes = {}
+                        for r in regs:
+                            dt = str(r.get("DTOBITO") or "")
+                            por_mes[dt[4:8] + "-" + dt[2:4]] = por_mes.get(dt[4:8] + "-" + dt[2:4], 0) + 1
+                        print(f"    registros {len(regs)} · colunas {list(regs[0])[:40] if regs else []}")
+                        print(f"    óbitos por mês de ocorrência (DTOBITO): {dict(sorted(por_mes.items()))}")
             except Exception as e:  # noqa: BLE001
                 print(f"  {d}: falhou ({type(e).__name__}: {e})")
         f.quit()
     except Exception as e:  # noqa: BLE001
         print(f"FTP: falhou ({type(e).__name__}: {e})")
+
+    print("== Registro Civil · endereços /api/ que o próprio portal chama")
+    try:
+        pag = buscar(RC_BASE + "/especial-covid", timeout=60).decode("utf-8", "replace")
+        js = sorted(set(re.findall(r'src="([^"]+\.js)"', pag)))
+        print(f"  scripts: {js[:8]}")
+        apis = set()
+        for s_ in js[:8]:
+            u = s_ if s_.startswith("http") else RC_BASE + "/" + s_.lstrip("/")
+            apis |= set(re.findall(r'["\'`](/api/[A-Za-z0-9_\-/]+)', buscar(u, timeout=60).decode("utf-8", "replace")))
+        print(f"  /api/ no código do portal: {sorted(apis)}")
+    except Exception as e:  # noqa: BLE001
+        print(f"  falhou ({type(e).__name__}: {str(e)[:160]})")
+
+    print("== SIM · conjunto 'sim' no portal")
+    try:
+        p = payload_do_portal(buscar(PORTAL_CONJUNTO, timeout=60).decode("utf-8", "replace"))
+        pp = ((p.get("props") or {}).get("pageProps") or {})
+        pac = pp.get("package") or pp
+        print(f"  modificado {pac.get('metadata_modified')} · recursos:")
+        for r in (pac.get("resources") or [])[:40]:
+            print(f"    {r.get('format')} · {r.get('name')} · {r.get('url') or ''} · "
+                  f"{(r.get('description') or '')[:200]!r}")
+    except Exception as e:  # noqa: BLE001
+        print(f"  falhou ({type(e).__name__}: {str(e)[:160]})")
 
     print("== SIM · Portal de Dados Abertos do SUS")
     for q in ("mortalidade", "sim", "obitos"):
