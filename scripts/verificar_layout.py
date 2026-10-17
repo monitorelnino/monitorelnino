@@ -28,10 +28,8 @@ despeja a forma do DOM em JSON. A divisão é de propósito: a REGRA é texto le
 navegador só mede. Assim o portão tem autoteste offline — ele julga um despejo de fixture, sem rede
 e sem navegador.
 
-USO
-    python3 scripts/verificar_layout.py                      # todas as páginas contratadas
-    python3 scripts/verificar_layout.py saude.html
-    python3 scripts/verificar_layout.py --despejo d.json saude.html   # julga um despejo pronto
+USO (17/10/2026: a conferência das páginas é a de `verificar_conformidade.py`, que importa daqui)
+    python3 scripts/verificar_conformidade.py [saude.html] [--despejo d.json]
     python3 scripts/verificar_layout.py --autoteste
 """
 import json
@@ -43,7 +41,9 @@ import tempfile
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CONTRATOS = RAIZ / "layout" / "contratos"
 DADOS = RAIZ / "data"
-TOLERANCIA_LARGURA = 0.40     # um terço com folga de arredondamento e gap da grade
+# Um terço com folga de arredondamento e gap da grade: o número vive em layout/regras.json.
+TOLERANCIA_LARGURA = float((json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
+                            .get("componentes") or {}).get("fracao_maxima_da_largura") or 0.40)
 
 
 def contratos():
@@ -196,7 +196,8 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
                 continue
             if not f.get("cartao_mapa"):
                 p.append(f"cartão '{c['id']}' ({el}) fora do componente .cartao-mapa")
-            if f.get("tem_midia") or f.get("tem_lista"):
+            if (f.get("tem_midia") or f.get("tem_lista")) and \
+                    el not in (contrato.get("figura_principal") or {}).values():
                 largura_grade = next((g["largura"] for g in grades if el in (g.get("ids") or [])), None)
                 if largura_grade and f.get("largura", 0) > largura_grade * TOLERANCIA_LARGURA:
                     p.append(f"cartão '{c['id']}' ({el}) ocupa {f['largura']}px de uma grade de "
@@ -362,6 +363,9 @@ def autoteste() -> int:
         ("cartão maior que um terço reprova",
          any("um terço" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d["figuras"][0].update(largura=800))))),
+        ("a figura_principal declarada passa da largura de um terço",
+         problemas_do_despejo(dict(contrato, figura_principal={"mapa": "boxM1"}),
+                              com(lambda d: d["figuras"][0].update(largura=800))) == []),
         ("grade de três com um cartão reprova",
          any("coluna vazia" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d["grades"][1].update(filhos=1))))),
@@ -425,43 +429,7 @@ def autoteste() -> int:
     return 0
 
 
-def main() -> int:
-    args = sys.argv[1:]
-    if "--autoteste" in args:
-        return autoteste()
-    despejo_pronto = None
-    if "--despejo" in args:
-        i = args.index("--despejo")
-        despejo_pronto = pathlib.Path(args[i + 1])
-        args = args[:i] + args[i + 2:]
-    alvos = [a for a in args if a.endswith(".html")]
-    arquivos = ([CONTRATOS / (a.replace(".html", "") + ".json") for a in alvos] if alvos
-                else contratos())
-    if not arquivos:
-        print("✗ LAYOUT: nenhum contrato em layout/contratos/")
-        return 1
-    falhas = 0
-    for arq in arquivos:
-        contrato = json.loads(pathlib.Path(arq).read_text(encoding="utf-8"))
-        pagina = contrato["pagina"]
-        try:
-            despejo = (json.loads(despejo_pronto.read_text(encoding="utf-8")) if despejo_pronto
-                       else despejar(pagina))
-        except Exception as e:  # noqa: BLE001
-            print(f"✗ LAYOUT ({pagina}): não foi possível medir a página — {e}")
-            falhas += 1
-            continue
-        ruins = problemas_do_despejo(contrato, despejo)
-        if ruins:
-            falhas += 1
-            print(f"✗ LAYOUT ({pagina}): {len(ruins)} divergência(s) do contrato:")
-            for r in ruins:
-                print("   -", r)
-        else:
-            print(f"✓ LAYOUT OK ({pagina}) — ordem, componentes, grades, larguras e textos "
-                  f"conforme layout/contratos/{pathlib.Path(arq).name}.")
-    return 1 if falhas else 0
-
-
 if __name__ == "__main__":
-    sys.exit(main())
+    # 17/10/2026 (consolidação item 6): a conferência das páginas é a de
+    # `verificar_conformidade.py`, que chama `problemas_do_despejo` e roda este autoteste.
+    sys.exit(autoteste())
