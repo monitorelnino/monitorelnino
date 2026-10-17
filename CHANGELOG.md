@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #842 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
+## 2026-10-17 · #844 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
 
