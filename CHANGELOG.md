@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-17 · #900 · Para gestores: o cartão do plano diz a situação do município
+## 2026-10-17 · #846 · Para gestores: o cartão do plano diz a situação do município
 
 O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.
 
