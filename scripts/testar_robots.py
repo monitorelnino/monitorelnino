@@ -166,6 +166,8 @@ def t_muro_de_robo_e_recusa_nao_conteudo():
     """A página de bloqueio não pode virar evidência preservada — seria prova falsa."""
     return (cb.detectar_muro_de_robo(MURO_IMPERVA) == "pardon our interruption"
             and cb.detectar_muro_de_robo(MURO_CLOUDFLARE) is not None
+            and cb.detectar_muro_de_robo("<html><head><title>Verificação de segurança — Senado Federal</title>"
+                                         "</head></html>".encode()) is not None
             and cb.detectar_muro_de_robo(DOCUMENTO) is None)
 
 
