@@ -342,13 +342,14 @@
    "nome": "Água Doce",
    "uf": "SC",
    "decreto": true,
-   "primeiro_decreto": "11/09/2026",
+   "primeiro_decreto": "05/03/2026",
    "primeiro_reconhecimento": "15/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -358,9 +359,17 @@
      "data": "15/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.535",
      "hash": "35581bd1dce85b1efb2ff0edd522ae6868c867e36829f392a86461f5152257b8"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-10-cidades-afetadas-por-desastres-7",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-10-cidades-afetadas-por-desastres-7",
+     "data": "05/03/2026",
+     "decreto": "ato de resposta — Portaria nº 684",
+     "hash": null
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4300059": {
    "ibge": "4300059",
@@ -3145,6 +3154,31 @@
    ],
    "n_eventos": 1
   },
+  "1501600": {
+   "ibge": "1501600",
+   "nome": "Bonito",
+   "uf": "PA",
+   "decreto": true,
+   "primeiro_decreto": "13/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-45-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-45-cidades-afetadas-por-desastres",
+     "data": "13/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.474",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1
+  },
   "5002209": {
    "ibge": "5002209",
    "nome": "Bonito",
@@ -3441,9 +3475,33 @@
      "data": "13/02/2026",
      "decreto": "ato de resposta — Portaria nº 486",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres",
+     "data": "16/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.535",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-45-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-45-cidades-afetadas-por-desastres",
+     "data": "13/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.474",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-17-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-17-cidades-afetadas-por-desastres-1",
+     "data": "09/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.435",
+     "hash": null
     }
    ],
-   "n_eventos": 4
+   "n_eventos": 7
   },
   "2602506": {
    "ibge": "2602506",
@@ -11462,13 +11520,14 @@
    "nome": "Jaçanã",
    "uf": "RN",
    "decreto": true,
-   "primeiro_decreto": "03/08/2026",
+   "primeiro_decreto": "13/02/2026",
    "primeiro_reconhecimento": "19/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -11478,9 +11537,17 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-nove-cidades-afetadas-por-desastres-5",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-nove-cidades-afetadas-por-desastres-5",
+     "data": "13/02/2026",
+     "decreto": "ato de resposta — Portaria nº 486",
+     "hash": null
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2703403": {
    "ibge": "2703403",
@@ -15656,6 +15723,31 @@
    ],
    "n_eventos": 1
   },
+  "1600501": {
+   "ibge": "1600501",
+   "nome": "Oiapoque",
+   "uf": "AP",
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres",
+     "data": "16/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.535",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1
+  },
   "2705705": {
    "ibge": "2705705",
    "nome": "Olho d'Água das Flores",
@@ -15945,6 +16037,31 @@
      "data": "16/09/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.072, nº 3.073, nº 3.073, nº 3.074, nº 3.074, nº 3.084)",
      "hash": "e6e4ae099af13fbaabef02fbd11df4adb85f2985f7da97788d20d6edd88dd09c"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "5215504": {
+   "ibge": "5215504",
+   "nome": "Ouvidor",
+   "uf": "GO",
+   "decreto": true,
+   "primeiro_decreto": "05/03/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-10-cidades-afetadas-por-desastres-7",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-10-cidades-afetadas-por-desastres-7",
+     "data": "05/03/2026",
+     "decreto": "ato de resposta — Portaria nº 684",
+     "hash": null
     }
    ],
    "n_eventos": 1
@@ -18039,6 +18156,31 @@
      "data": "23/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.382",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2311009": {
+   "ibge": "2311009",
+   "nome": "Poranga",
+   "uf": "CE",
+   "decreto": true,
+   "primeiro_decreto": "05/03/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-10-cidades-afetadas-por-desastres-7",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-10-cidades-afetadas-por-desastres-7",
+     "data": "05/03/2026",
+     "decreto": "ato de resposta — Portaria nº 684",
+     "hash": null
     }
    ],
    "n_eventos": 1
@@ -20472,9 +20614,17 @@
      "data": "15/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.535",
      "hash": "35581bd1dce85b1efb2ff0edd522ae6868c867e36829f392a86461f5152257b8"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres",
+     "data": "16/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.535",
+     "hash": null
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "2612554": {
    "ibge": "2612554",
@@ -22447,9 +22597,17 @@
      "data": "07/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.435",
      "hash": "76ba135ec64656fc180bfc99f03e647dce9a7f7776c5a5086f286f06b5237957"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-17-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-17-cidades-afetadas-por-desastres-1",
+     "data": "09/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.435",
+     "hash": null
     }
    ],
-   "n_eventos": 4
+   "n_eventos": 5
   },
   "4319604": {
    "ibge": "4319604",
@@ -22755,6 +22913,31 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    }
+   ],
+   "n_eventos": 1
+  },
+  "2312700": {
+   "ibge": "2312700",
+   "nome": "Senador Pompeu",
+   "uf": "CE",
+   "decreto": true,
+   "primeiro_decreto": "02/02/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-11-cidades-afetadas-por-desastres-7",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-11-cidades-afetadas-por-desastres-7",
+     "data": "02/02/2026",
+     "decreto": "ato de resposta — Portaria nº 338",
+     "hash": null
     }
    ],
    "n_eventos": 1
@@ -25618,10 +25801,11 @@
    "primeiro_decreto": "14/09/2026",
    "primeiro_reconhecimento": "08/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "fontes": [
     {
@@ -25631,9 +25815,17 @@
      "data": "08/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.446",
      "hash": "c16c38e414add01cb893f6951694db2acffc1d36767d1f6d67a7737f2093efd5"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (17/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-17-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-17-cidades-afetadas-por-desastres-1",
+     "data": "09/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.435",
+     "hash": null
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2933406": {
    "ibge": "2933406",
