@@ -43,7 +43,9 @@ import tempfile
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 CONTRATOS = RAIZ / "layout" / "contratos"
 DADOS = RAIZ / "data"
-TOLERANCIA_LARGURA = 0.40     # um terço com folga de arredondamento e gap da grade
+# Um terço com folga de arredondamento e gap da grade: o número vive em layout/regras.json.
+TOLERANCIA_LARGURA = float((json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
+                            .get("componentes") or {}).get("fracao_maxima_da_largura") or 0.40)
 
 
 def contratos():
@@ -196,7 +198,8 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
                 continue
             if not f.get("cartao_mapa"):
                 p.append(f"cartão '{c['id']}' ({el}) fora do componente .cartao-mapa")
-            if f.get("tem_midia") or f.get("tem_lista"):
+            if (f.get("tem_midia") or f.get("tem_lista")) and \
+                    el not in (contrato.get("figura_principal") or {}).values():
                 largura_grade = next((g["largura"] for g in grades if el in (g.get("ids") or [])), None)
                 if largura_grade and f.get("largura", 0) > largura_grade * TOLERANCIA_LARGURA:
                     p.append(f"cartão '{c['id']}' ({el}) ocupa {f['largura']}px de uma grade de "
@@ -362,6 +365,9 @@ def autoteste() -> int:
         ("cartão maior que um terço reprova",
          any("um terço" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d["figuras"][0].update(largura=800))))),
+        ("a figura_principal declarada passa da largura de um terço",
+         problemas_do_despejo(dict(contrato, figura_principal={"mapa": "boxM1"}),
+                              com(lambda d: d["figuras"][0].update(largura=800))) == []),
         ("grade de três com um cartão reprova",
          any("coluna vazia" in x for x in problemas_do_despejo(
              contrato, com(lambda d: d["grades"][1].update(filhos=1))))),
