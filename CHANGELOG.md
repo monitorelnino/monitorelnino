@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.
 
+## 2026-10-17 · #843 · Consulta do município: a situação do plano numa função comum
+
+A classificação do plano de contingência do município (encontrado, estadual, citado, não localizado, decreto, em elaboração, outro ato, ainda não verificado) sai de `index.js` e vira `ConsultaMunicipio.situacaoDoPlano`, que a inicial já usa e Para gestores pode usar sem copiar. Nenhuma frase muda. Pedido da B2 (12:11).
+
 ## 2026-10-17 · #835 · Niño 3.4 semanal no coletor de sinais; o apoio técnico volta a ser coletado
 
 Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.
