@@ -1902,27 +1902,51 @@
   "PE/defesa_civil": {
    "uf": "PE",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
-   "dominio": "www.defesacivil.pe.gov.br",
+   "verificado_em": "2026-10-17",
+   "dominio": "www.bombeiros.pe.gov.br",
    "confianca": "alta",
-   "titulo": "Página Inicial - Defesa Civil - Governo do PE",
+   "titulo": "Início - Corpo de Bombeiros Militar de Pernambuco",
    "motivo_sem_dominio": null,
    "tentativas": [
     {
      "dominio": "defesacivil.pe.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-17",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.defesacivil.pe.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-17",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.pe.gov.br",
+     "tentado_em": "2026-10-17",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.pe.gov.br",
+     "tentado_em": "2026-10-17",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.pe.gov.br",
+     "tentado_em": "2026-10-17",
      "respondeu": true,
      "http": 200,
-     "bytes": 180418,
-     "titulo": "Página Inicial - Defesa Civil - Governo do PE",
+     "bytes": 59656,
+     "titulo": "Início - Corpo de Bombeiros Militar de Pernambuco",
      "confianca": "alta",
      "identidade_em": "titulo"
     }
@@ -1931,26 +1955,34 @@
   "PE/saude": {
    "uf": "PE",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
-   "dominio": "www.saude.pe.gov.br",
+   "verificado_em": "2026-10-18",
+   "dominio": "portal.saude.pe.gov.br",
    "confianca": "alta",
    "titulo": "Início - Secretaria de Saúde do Estado de Pernambuco",
    "motivo_sem_dominio": null,
    "tentativas": [
     {
      "dominio": "saude.pe.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-17",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error timed out>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.saude.pe.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-17",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.saude.pe.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 314681,
+     "bytes": 372210,
      "titulo": "Início - Secretaria de Saúde do Estado de Pernambuco",
      "confianca": "alta",
      "identidade_em": "titulo"
@@ -1960,100 +1992,36 @@
   "PI/defesa_civil": {
    "uf": "PI",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
-   "dominio": "www.pi.gov.br",
-   "confianca": "media",
-   "titulo": "Home Período Eleitoral &#8211; pi.gov",
+   "verificado_em": "2026-10-18",
+   "dominio": "www.defesacivil.pi.gov.br",
+   "confianca": "alta",
+   "titulo": "Defesa Civil",
    "motivo_sem_dominio": null,
    "tentativas": [
     {
      "dominio": "defesacivil.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.defesacivil.pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "cbm.pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "bombeiros.pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "www.bombeiros.pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "cedec.pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "sedec.pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "defesacivil.pi.def.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
-     "http": null,
-     "recusa": false
-    },
-    {
-     "dominio": "www.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 526710,
-     "titulo": "Home Período Eleitoral &#8211; pi.gov",
-     "confianca": "media",
-     "identidade_em": "corpo"
-    },
-    {
-     "dominio": "pi.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
-     "http": null,
-     "recusa": false
+     "bytes": 107212,
+     "titulo": "Defesa Civil",
+     "confianca": "alta",
+     "identidade_em": "titulo"
     }
    ]
   },
   "PI/saude": {
    "uf": "PI",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": "saude.pi.gov.br",
    "confianca": "media",
    "titulo": "SESAPI",
@@ -2061,71 +2029,89 @@
    "tentativas": [
     {
      "dominio": "saude.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 118189,
+     "bytes": 130337,
      "titulo": "SESAPI",
      "confianca": "media",
      "identidade_em": "corpo"
     },
     {
      "dominio": "www.saude.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 118189,
+     "bytes": 130337,
      "titulo": "SESAPI",
      "confianca": "media",
      "identidade_em": "corpo"
     },
     {
-     "dominio": "ses.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "dominio": "portal.saude.pi.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.pi.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesa.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
-     "dominio": "www.pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "dominio": "portal.pi.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 526710,
-     "titulo": "Home Período Eleitoral &#8211; pi.gov",
+     "bytes": 335818,
+     "titulo": "Governo do Piauí - Portal de Serviços do Governo do Estado do Piauí",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.pi.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 606180,
+     "titulo": "pi.gov &#8211; Governo do Piauí &#8211; Site Oficial do Governo do Estado do Piauí",
      "confianca": "media",
      "identidade_em": "corpo"
     },
     {
      "dominio": "pi.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     }
@@ -2134,7 +2120,7 @@
   "RJ/defesa_civil": {
    "uf": "RJ",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": "defesacivil.rj.gov.br",
    "confianca": "alta",
    "titulo": "Defesa Civil RJ",
@@ -2142,10 +2128,10 @@
    "tentativas": [
     {
      "dominio": "defesacivil.rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 143448,
+     "bytes": 143223,
      "titulo": "Defesa Civil RJ",
      "confianca": "alta",
      "identidade_em": "titulo"
@@ -2155,76 +2141,94 @@
   "RJ/saude": {
    "uf": "RJ",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": null,
    "confianca": null,
    "titulo": null,
-   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 4 endereço(s) não existe(m) no DNS; 2 com certificado TLS que não valida (não se contorna)",
+   "motivo_sem_dominio": "2 respondeu(ram) sem se identificar como a instituição",
    "tentativas": [
     {
      "dominio": "saude.rj.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
-     "http": null,
-     "recusa": false
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 935,
+     "titulo": "Saúde",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
     },
     {
      "dominio": "www.saude.rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 935,
+     "titulo": "Saúde",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "portal.saude.rj.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "ses.rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesa.rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.rj.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.rj.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 7705,
-     "titulo": "Governo do Estado do Rio de Janeiro",
-     "confianca": "baixa",
-     "identidade_em": "nenhuma"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in vio",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "rj.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "HTTPError: HTTP Error 503: Service Unavailable",
-     "http": 503,
+     "erro": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in vio",
+     "http": null,
      "recusa": false
     }
    ]
@@ -2232,91 +2236,105 @@
   "RN/defesa_civil": {
    "uf": "RN",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
-   "dominio": "www.rn.gov.br",
-   "confianca": "media",
-   "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "nenhuma tentativa registrada",
    "tentativas": [
     {
      "dominio": "defesacivil.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.defesacivil.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "cbm.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "bombeiros.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.bombeiros.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "cedec.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sedec.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "HTTPError: HTTP Error 503: Service Unavailable",
-     "http": 503,
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
      "recusa": false
     },
     {
      "dominio": "defesacivil.rn.def.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.defesacivil.rn.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.rn.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.rn.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 100750,
-     "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     }
@@ -2325,75 +2343,89 @@
   "RN/saude": {
    "uf": "RN",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
-   "dominio": "www.rn.gov.br",
-   "confianca": "media",
-   "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "nenhuma tentativa registrada",
    "tentativas": [
     {
      "dominio": "saude.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.saude.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly cl",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.saude.rn.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "ses.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesa.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.rn.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.rn.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 100750,
-     "titulo": "Portal do Governo do Estado do Rio Grande do Norte &#8211; Portal do Governo do RN",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "rn.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     }
@@ -2402,7 +2434,7 @@
   "RS/defesa_civil": {
    "uf": "RS",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": "defesacivil.rs.gov.br",
    "confianca": "alta",
    "titulo": "Defesa Civil do Rio Grande do Sul",
@@ -2410,10 +2442,10 @@
    "tentativas": [
     {
      "dominio": "defesacivil.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 97033,
+     "bytes": 81177,
      "titulo": "Defesa Civil do Rio Grande do Sul",
      "confianca": "alta",
      "identidade_em": "titulo"
@@ -2423,35 +2455,43 @@
   "RS/saude": {
    "uf": "RS",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
-   "dominio": "saude.rs.gov.br",
-   "confianca": "media",
-   "titulo": "Secretaria da Sa&uacute;de",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "4 respondeu(ram) sem se identificar como a instituição; 2 com certificado TLS que não valida (não se contorna)",
    "tentativas": [
     {
      "dominio": "saude.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 84107,
+     "bytes": 104260,
      "titulo": "Secretaria da Sa&uacute;de",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
     },
     {
      "dominio": "www.saude.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 84107,
+     "bytes": 104260,
      "titulo": "Secretaria da Sa&uacute;de",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "portal.saude.rs.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "ses.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
      "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
      "http": null,
@@ -2459,44 +2499,52 @@
     },
     {
      "dominio": "sesa.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.rs.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 115287,
+     "bytes": 118803,
      "titulo": "RS.GOV.BR - Portal de Servi&ccedil;os Digitais",
      "confianca": "baixa",
      "identidade_em": "nenhuma"
     },
     {
      "dominio": "rs.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 115275,
+     "bytes": 118791,
      "titulo": "RS.GOV.BR - Portal de Servi&ccedil;os Digitais",
      "confianca": "baixa",
      "identidade_em": "nenhuma"
@@ -2506,79 +2554,95 @@
   "RO/defesa_civil": {
    "uf": "RO",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": null,
    "confianca": null,
    "titulo": null,
-   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 7 endereço(s) não existe(m) no DNS; 2 com certificado TLS que não valida (não se contorna)",
+   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 1 com certificado TLS que não valida (não se contorna)",
    "tentativas": [
     {
      "dominio": "defesacivil.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.defesacivil.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "cbm.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error timed out>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "bombeiros.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.bombeiros.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "cedec.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sedec.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "defesacivil.ro.def.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.defesacivil.ro.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.ro.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
      "bytes": 36391,
@@ -2588,7 +2652,7 @@
     },
     {
      "dominio": "ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
      "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
      "http": null,
@@ -2599,63 +2663,79 @@
   "RO/saude": {
    "uf": "RO",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": null,
    "confianca": null,
    "titulo": null,
-   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 6 endereço(s) não existe(m) no DNS; 1 com certificado TLS que não valida (não se contorna)",
+   "motivo_sem_dominio": "1 respondeu(ram) sem se identificar como a instituição; 1 com certificado TLS que não valida (não se contorna)",
    "tentativas": [
     {
      "dominio": "saude.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.saude.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.saude.ro.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "ses.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesa.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.ro.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
      "bytes": 36391,
@@ -2665,7 +2745,7 @@
     },
     {
      "dominio": "ro.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
      "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
      "http": null,
@@ -2676,7 +2756,7 @@
   "RR/defesa_civil": {
    "uf": "RR",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": "cbm.rr.gov.br",
    "confianca": "alta",
    "titulo": "Corpo de Bombeiros Militar de Roraima - Emergência 193",
@@ -2684,7 +2764,7 @@
    "tentativas": [
     {
      "dominio": "defesacivil.rr.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
      "erro": "HTTPError: HTTP Error 523: <none>",
      "http": 523,
@@ -2692,7 +2772,7 @@
     },
     {
      "dominio": "www.defesacivil.rr.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
      "erro": "HTTPError: HTTP Error 523: <none>",
      "http": 523,
@@ -2700,7 +2780,7 @@
     },
     {
      "dominio": "cbm.rr.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
      "bytes": 36095,
@@ -2713,7 +2793,7 @@
   "RR/saude": {
    "uf": "RR",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": "saude.rr.gov.br",
    "confianca": "alta",
    "titulo": ":: SESAU &#8211; Secretaria de Estado da Saúde de Roraima ::",
@@ -2721,10 +2801,10 @@
    "tentativas": [
     {
      "dominio": "saude.rr.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 137787,
+     "bytes": 152661,
      "titulo": ":: SESAU &#8211; Secretaria de Estado da Saúde de Roraima ::",
      "confianca": "alta",
      "identidade_em": "titulo"
@@ -2734,88 +2814,95 @@
   "SC/defesa_civil": {
    "uf": "SC",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
-   "dominio": "defesacivil.sc.gov.br",
-   "confianca": "alta",
-   "titulo": "Início - Secretaria de Estado da Proteção e Defesa Civil de Santa Catarina",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "2 respondeu(ram) sem se identificar como a instituição",
    "tentativas": [
     {
      "dominio": "defesacivil.sc.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 330732,
-     "titulo": "Início - Secretaria de Estado da Proteção e Defesa Civil de Santa Catarina",
-     "confianca": "alta",
-     "identidade_em": "titulo"
-    }
-   ]
-  },
-  "SC/saude": {
-   "uf": "SC",
-   "setor": "saude",
-   "verificado_em": "2026-09-23",
-   "dominio": "saude.sc.gov.br",
-   "confianca": "media",
-   "titulo": "HOME - Portal SES/SC",
-   "motivo_sem_dominio": null,
-   "tentativas": [
-    {
-     "dominio": "saude.sc.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 158665,
-     "titulo": "HOME - Portal SES/SC",
-     "confianca": "media",
-     "identidade_em": "corpo"
-    },
-    {
-     "dominio": "www.saude.sc.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 158697,
-     "titulo": "HOME - Portal SES/SC",
-     "confianca": "media",
-     "identidade_em": "corpo"
-    },
-    {
-     "dominio": "ses.sc.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error timed out>",
      "http": null,
      "recusa": false
     },
     {
-     "dominio": "sesa.sc.gov.br",
-     "tentado_em": "2026-09-23",
+     "dominio": "www.defesacivil.sc.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error timed out>",
      "http": null,
      "recusa": false
     },
     {
-     "dominio": "sesau.sc.gov.br",
-     "tentado_em": "2026-09-23",
+     "dominio": "cbm.sc.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error timed out>",
      "http": null,
      "recusa": false
     },
     {
-     "dominio": "sus.sc.gov.br",
-     "tentado_em": "2026-09-23",
+     "dominio": "bombeiros.sc.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.sc.def.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.defesacivil.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.sc.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
      "bytes": 5051,
@@ -2825,7 +2912,106 @@
     },
     {
      "dominio": "sc.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 5051,
+     "titulo": "Portal de Serviços",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    }
+   ]
+  },
+  "SC/saude": {
+   "uf": "SC",
+   "setor": "saude",
+   "verificado_em": "2026-10-18",
+   "dominio": "saude.sc.gov.br",
+   "confianca": "media",
+   "titulo": "HOME - Portal SES/SC",
+   "motivo_sem_dominio": null,
+   "tentativas": [
+    {
+     "dominio": "saude.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 166844,
+     "titulo": "HOME - Portal SES/SC",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "www.saude.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 166876,
+     "titulo": "HOME - Portal SES/SC",
+     "confianca": "media",
+     "identidade_em": "corpo"
+    },
+    {
+     "dominio": "portal.saude.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "ses.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesa.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sesau.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sus.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.sc.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": true,
+     "http": 200,
+     "bytes": 5051,
+     "titulo": "Portal de Serviços",
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
+    },
+    {
+     "dominio": "sc.gov.br",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
      "bytes": 5051,
@@ -2838,7 +3024,7 @@
   "SP/defesa_civil": {
    "uf": "SP",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
+   "verificado_em": "2026-10-18",
    "dominio": "defesacivil.sp.gov.br",
    "confianca": "alta",
    "titulo": "Secretaria da Defesa Civil | Governo do Estado de SP",
@@ -2846,10 +3032,10 @@
    "tentativas": [
     {
      "dominio": "defesacivil.sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 107754,
+     "bytes": 127089,
      "titulo": "Secretaria da Defesa Civil | Governo do Estado de SP",
      "confianca": "alta",
      "identidade_em": "titulo"
@@ -2859,104 +3045,202 @@
   "SP/saude": {
    "uf": "SP",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
-   "dominio": "saude.sp.gov.br",
-   "confianca": "media",
-   "titulo": "Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "2 respondeu(ram) sem se identificar como a instituição",
    "tentativas": [
     {
      "dominio": "saude.sp.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 56008,
-     "titulo": "Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "www.saude.sp.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 56016,
-     "titulo": "Cidadão - Secretaria da Saúde - Governo do Estado de São Paulo",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.saude.sp.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "ses.sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesa.sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.sp.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 123819,
+     "bytes": 147781,
      "titulo": "SP.GOV.BR | Governo do Estado de São Paulo",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
     },
     {
      "dominio": "sp.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": true,
      "http": 200,
-     "bytes": 123819,
+     "bytes": 147780,
      "titulo": "SP.GOV.BR | Governo do Estado de São Paulo",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "confianca": "baixa",
+     "identidade_em": "nenhuma"
     }
    ]
   },
   "SE/defesa_civil": {
    "uf": "SE",
    "setor": "defesa_civil",
-   "verificado_em": "2026-09-23",
-   "dominio": "defesacivil.se.gov.br",
-   "confianca": "alta",
-   "titulo": "Página inicial - Defesa Civil - SUPDEC",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "nenhuma tentativa registrada",
    "tentativas": [
     {
      "dominio": "defesacivil.se.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 202340,
-     "titulo": "Página inicial - Defesa Civil - SUPDEC",
-     "confianca": "alta",
-     "identidade_em": "titulo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.defesacivil.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cbm.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "bombeiros.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.bombeiros.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "cedec.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "sedec.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "defesacivil.se.def.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.defesacivil.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "www.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
+     "recusa": false
     }
    ]
   },
