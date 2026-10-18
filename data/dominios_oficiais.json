@@ -3247,79 +3247,89 @@
   "SE/saude": {
    "uf": "SE",
    "setor": "saude",
-   "verificado_em": "2026-09-23",
-   "dominio": "saude.se.gov.br",
-   "confianca": "media",
-   "titulo": "Página inicial - Saúde",
-   "motivo_sem_dominio": null,
+   "verificado_em": "2026-10-18",
+   "dominio": null,
+   "confianca": null,
+   "titulo": null,
+   "motivo_sem_dominio": "nenhuma tentativa registrada",
    "tentativas": [
     {
      "dominio": "saude.se.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 74810,
-     "titulo": "Página inicial - Saúde",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "www.saude.se.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 74810,
-     "titulo": "Página inicial - Saúde",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error timed out>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.saude.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "ses.se.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesa.se.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sesau.se.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "sus.se.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
+     "http": null,
+     "recusa": false
+    },
+    {
+     "dominio": "portal.se.gov.br",
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno -2] Name or service not known>",
      "http": null,
      "recusa": false
     },
     {
      "dominio": "www.se.gov.br",
-     "tentado_em": "2026-09-23",
-     "respondeu": true,
-     "http": 200,
-     "bytes": 1204156,
-     "titulo": "Portal de Serviços de Sergipe",
-     "confianca": "media",
-     "identidade_em": "corpo"
+     "tentado_em": "2026-10-18",
+     "respondeu": false,
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
+     "http": null,
+     "recusa": false
     },
     {
      "dominio": "se.gov.br",
-     "tentado_em": "2026-09-23",
+     "tentado_em": "2026-10-18",
      "respondeu": false,
-     "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai",
+     "erro": "URLError: <urlopen error [Errno 101] Network is unreachable>",
      "http": null,
      "recusa": false
     }

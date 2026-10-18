@@ -2879,14 +2879,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 4449,
+   "total_acessos": 4450,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=21-09-2026&publishTo=04-10-2026&delta=50",
-     "quando": "2026-10-18T03:08:24Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=05-10-2026&publishTo=18-10-2026&delta=50",
      "quando": "2026-10-18T03:08:31Z",
@@ -4078,6 +4072,12 @@
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-mma-n-1.717-de-19-de-junho-de-2026-714110982",
      "quando": "2026-10-18T01:36:01Z",
+     "origem": "coletar_prioritarios_mma",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-mma-n-1.717-de-19-de-junho-de-2026-714110982",
+     "quando": "2026-10-18T03:52:06Z",
      "origem": "coletar_prioritarios_mma",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
