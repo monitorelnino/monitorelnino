@@ -174,9 +174,9 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 13,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "16/10/2026 22:13",
    "fonte": "Cemaden",
@@ -194,9 +194,9 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3435,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "16/10/2026 22:13",
    "fonte": "Inmet",
@@ -214,9 +214,9 @@
    "id": "decreto_e_alerta_ao_mesmo_tempo",
    "grupo": "risco_agora",
    "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 554,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "16/10/2026 22:13",
    "fonte": "MARÉ (cruzamento das duas consultas)",
@@ -428,7 +428,11 @@
    "pagina_de_origem": "saude.html"
   }
  ],
- "sem_dado_nesta_edicao": [],
+ "sem_dado_nesta_edicao": [
+  "Municípios sob alerta do Cemaden",
+  "Municípios sob aviso do Inmet",
+  "Municípios com decreto de emergência e alerta ao mesmo tempo"
+ ],
  "nao_calculaveis": [
   {
    "id": "planos_localizados_no_periodo",
