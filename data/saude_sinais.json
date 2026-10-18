@@ -48,8 +48,8 @@
    "orgao": "DOU / diários municipais",
    "papel": "RESPOSTA, peso zero",
    "status": "coletado",
-   "consultado_em": "12/10/2026",
-   "documento": "DOU seção 1, 2026-06-29 a 2026-10-12"
+   "consultado_em": "17/10/2026",
+   "documento": "DOU seção 1, 2026-06-29 a 2026-10-17"
   },
   "painel_calor_ms": {
    "nome": "Painel Nacional de Excesso de Calor",
@@ -416,7 +416,7 @@
    "hash_evidencia": "897b5ca0c083a8009dc0b17d66e347d7fb43d74fc0820dfa24c18cfe66460c39"
   }
  },
- "gerado_em": "16/10/2026",
+ "gerado_em": "17/10/2026",
  "serie_capitais": {
   "medida": "casos estimados de dengue por semana epidemiológica, soma das 27 capitais (InfoDengue) — não é o total nacional",
   "capitais": 27,
@@ -580,14 +580,14 @@
   "orgao": "Ministério da Saúde (DOU, seção 1)",
   "janela": {
    "de": "2026-06-29",
-   "ate": "2026-10-12"
+   "ate": "2026-10-17"
   },
   "strings_buscadas": [
    "\"Emergência em Saúde Pública de Importância Nacional\"",
    "\"emergência em saúde pública\""
   ],
-  "consultado_em": "12/10/2026",
-  "resultados_lidos": 32,
+  "consultado_em": "17/10/2026",
+  "resultados_lidos": 33,
   "declaracoes": [],
   "pendente_leitura_automatica": [],
   "nao_lidos": [],
@@ -67913,5 +67913,100 @@
   "url": "https://clima.saude.gov.br/",
   "coletado_em": "16/10/2026",
   "hash_evidencia": "2d63f2a83087a2749f0b13620c253d9ede10a3206b46334cdf8414631b6314be"
+ },
+ "emergencias": [],
+ "emergencias_busca": {
+  "federal": {
+   "consultado_em": "17/10/2026",
+   "janela": {
+    "de": "2026-06-29",
+    "ate": "2026-10-17"
+   }
+  },
+  "estadual": {
+   "AC": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError"
+   },
+   "AL": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://imprensaoficial.al.gov.br/portal/download/2026/09/10.pdf: nao_e_edicao · https://imprensaoficial.al.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://imprensaoficial.al.gov.br/diario/20260910.pdf: nao_e_edicao"
+   },
+   "AM": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://diario.imprensaoficial.am.gov.br/portal/download/2026/09/10.pd: nao_e_edicao · https://diario.imprensaoficial.am.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://diario.imprensaoficial.am.gov.br/diario/20260910.pdf: nao_e_edicao"
+   },
+   "AP": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): o endereço por data respondia 200 em todas as datas com o MESMO arquivo de 2.016 bytes e uma página — página de erro servida como PDF, medido em 02/10/2026; o padrão por data do AP está retirado até a listagem de edições ser lida"
+   },
+   "BA": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML"
+   },
+   "CE": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML"
+   },
+   "DF": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   },
+   "ES": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   },
+   "GO": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   },
+   "MA": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML"
+   },
+   "MG": {
+    "lacuna": "recusa da fonte, respeitada: HTTP 401 na API do Jornal Minas Gerais (api/v1/Jornal/ObterEdicaoPorDataPublicacao): a edição só sai com token de sessão — rota atrás de token, respeitada (run 39019929474)"
+   },
+   "MS": {
+    "lacuna": "67 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+   },
+   "MT": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   },
+   "PA": {
+    "lacuna": "nenhuma edição lida por data (padrao_por_data)"
+   },
+   "PB": {
+    "lacuna": "51 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
+   },
+   "PE": {
+    "lacuna": "recusa da fonte, respeitada: HTTP 403 em https://diariooficial.cepe.com.br/arquivos/2026/09/10.pdf — recusa respeitada · /edicoes: HTTPError · /diarios: HTTPError"
+   },
+   "PI": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /: URLError · /edicoes: URLError · /diarios: URLError"
+   },
+   "PR": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   },
+   "RJ": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError"
+   },
+   "RN": {
+    "lacuna": "nenhuma edição lida por data (padrao_por_data)"
+   },
+   "RO": {
+    "lacuna": "nenhuma edição lida por data (padrao_por_data)"
+   },
+   "RR": {
+    "lacuna": "nenhuma edição lida por data (padrao_por_data)"
+   },
+   "RS": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): API do DOE-RS (doe-backend.pro.rs.gov.br) sem resposta ao runner (timeout, run 39023721853); o sítio é casca Angular"
+   },
+   "SC": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://doe.sea.sc.gov.br/portal/download/2026/09/10.pdf: nao_e_edicao · https://doe.sea.sc.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://doe.sea.sc.gov.br/diario/20260910.pdf: nao_e_edicao"
+   },
+   "SE": {
+    "lacuna": "recusa da fonte, respeitada: HTTP 403 em https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json, /busca e /diario-oficial — recusa respeitada (run 39021988900)"
+   },
+   "SP": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://doe.sp.gov.br/diario/20260910.pdf: sem_texto_extraivel · https://doe.sp.gov.br/edicoes/2026-09-10.pdf: sem_texto_extraivel · /edicoes: HTTPError"
+   },
+   "TO": {
+    "lacuna": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   }
+  },
+  "abstencoes": [],
+  "julgado_em": "17/10/2026"
  }
 }
