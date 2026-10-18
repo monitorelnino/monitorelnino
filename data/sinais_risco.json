@@ -222,7 +222,7 @@
    "licenca": "Dados abertos INMET",
    "status": "coletado",
    "consultado_em": "18/10/2026",
-   "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
+   "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
    "detalhe": "Máxima e mínima medidas na estação automática da capital.",
    "serie_historica_publica": "https://portal.inmet.gov.br/uploads/dadoshistoricos/{ano}.zip",
    "serie_historica_medida": "26/09/2026: 27 ZIPs anuais, públicos, sem credencial. O de 2026 tem 64 MB e 639 CSVs de estação (01/01 a 31/08), com máxima e mínima horárias, precipitação, umidade, radiação e vento. Nenhum token é necessário — a página oficial do INMET declara os dados públicos e gratuitos."
@@ -6346,7 +6346,7 @@
    },
    "fonte": "noaa_nino34_semanal",
    "documento": "Niño 3.4 semanal, semana de 2026-10-07",
-   "consultado_em": "18/10/2026 00:10"
+   "consultado_em": "18/10/2026 05:40"
   }
  },
  "uf": {
@@ -6400,7 +6400,7 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
     "focos_24h": 0,
@@ -6414,13 +6414,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Rio Branco",
     "data": "18/10/2026",
-    "tmax": 34.0,
-    "tmin": 23.0,
+    "tmax": 33.0,
+    "tmin": 22.0,
     "resumo": "Muitas nuvens com pancadas de chuva isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6438,16 +6438,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.4,
-     "tmin": 23.3,
-     "umin_pct": 91.0,
+     "tmax": 23.6,
+     "tmin": 22.6,
+     "umin_pct": 89.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -6496,10 +6496,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 5,
+    "focos_24h": 11,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -6510,13 +6510,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Maceió",
     "data": "18/10/2026",
-    "tmax": 34.0,
-    "tmin": 22.0,
+    "tmax": 35.0,
+    "tmin": 23.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6535,15 +6535,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 23.9,
-     "tmin": 23.6,
+     "tmin": 23.3,
      "umin_pct": 93.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -6597,10 +6597,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 240,
+    "focos_24h": 435,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -6611,13 +6611,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Manaus",
     "data": "18/10/2026",
-    "tmax": 34.0,
-    "tmin": 25.0,
+    "tmax": 36.0,
+    "tmin": 26.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6634,9 +6634,17 @@
      "lon": -60.01638888
     },
     "natureza": "medição",
+    "medida": {
+     "tmax": 32.5,
+     "tmin": 29.0,
+     "umin_pct": 49.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-10-18"
+    },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 5040030,
@@ -6650,7 +6658,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "AP": {
@@ -6698,10 +6706,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 103,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -6712,13 +6720,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Macapá",
     "data": "18/10/2026",
     "tmax": 36.0,
-    "tmin": 23.0,
+    "tmin": 24.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6735,9 +6743,17 @@
      "lon": -51.08888888
     },
     "natureza": "medição",
+    "medida": {
+     "tmax": 28.8,
+     "tmin": 26.4,
+     "umin_pct": 75.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-10-18"
+    },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -6791,10 +6807,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 12,
+    "focos_24h": 50,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -6810,12 +6826,12 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Salvador",
     "data": "18/10/2026",
-    "tmax": 35.0,
+    "tmax": 32.0,
     "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -6834,8 +6850,8 @@
     },
     "natureza": "medição",
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 3911519,
@@ -6849,7 +6865,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "CE": {
@@ -6901,10 +6917,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 4,
+    "focos_24h": 49,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -6915,7 +6931,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Fortaleza",
@@ -6941,7 +6957,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "DF": {
@@ -6989,10 +7005,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7003,13 +7019,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Brasília",
     "data": "18/10/2026",
-    "tmax": 31.0,
-    "tmin": 17.0,
+    "tmax": 32.0,
+    "tmin": 18.0,
     "resumo": "Muitas nuvens com pancadas de chuva isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7028,15 +7044,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 20.2,
-     "tmin": 19.6,
-     "umin_pct": 92.0,
+     "tmin": 18.9,
+     "umin_pct": 89.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7087,7 +7103,7 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
     "focos_24h": 0,
@@ -7101,13 +7117,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Vitória",
     "data": "18/10/2026",
-    "tmax": 29.0,
-    "tmin": 22.0,
+    "tmax": 27.0,
+    "tmin": 21.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7126,15 +7142,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 22.5,
-     "tmin": 22.0,
+     "tmin": 21.2,
      "umin_pct": 97.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 6126992,
@@ -7148,7 +7164,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "GO": {
@@ -7201,10 +7217,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 56,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7215,13 +7231,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Goiânia",
     "data": "18/10/2026",
     "tmax": 31.0,
-    "tmin": 17.0,
+    "tmin": 18.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7240,15 +7256,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 24.9,
-     "tmin": 22.2,
+     "tmin": 19.3,
      "umin_pct": 66.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7302,10 +7318,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 143,
+    "focos_24h": 319,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7316,13 +7332,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "São Luís",
     "data": "18/10/2026",
-    "tmax": 37.0,
-    "tmin": 26.0,
+    "tmax": 36.0,
+    "tmin": 25.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7381,10 +7397,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 30,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7402,13 +7418,13 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
     "data": "18/10/2026",
-    "tmax": 29.0,
-    "tmin": 15.0,
+    "tmax": 30.0,
+    "tmin": 17.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7427,15 +7443,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 21.5,
-     "tmin": 20.8,
+     "tmin": 18.1,
      "umin_pct": 75.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7485,10 +7501,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7499,13 +7515,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Campo Grande",
     "data": "18/10/2026",
     "tmax": 27.0,
-    "tmin": 13.0,
+    "tmin": 14.0,
     "resumo": "Poucas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7523,16 +7539,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 16.9,
-     "tmin": 14.6,
-     "umin_pct": 71.0,
+     "tmax": 17.4,
+     "tmin": 13.8,
+     "umin_pct": 67.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7585,10 +7601,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 37,
+    "focos_24h": 179,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7599,12 +7615,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Cuiabá",
     "data": "18/10/2026",
-    "tmax": 30.0,
+    "tmax": 32.0,
     "tmin": 20.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -7622,9 +7638,17 @@
      "lon": -56.06083333
     },
     "natureza": "medição",
+    "medida": {
+     "tmax": 25.1,
+     "tmin": 22.4,
+     "umin_pct": 64.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-10-18"
+    },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7678,10 +7702,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 459,
+    "focos_24h": 2967,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7692,13 +7716,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Belém",
     "data": "18/10/2026",
     "tmax": 35.0,
-    "tmin": 24.0,
+    "tmin": 23.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7717,15 +7741,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 25.9,
-     "tmin": 25.5,
+     "tmin": 24.7,
      "umin_pct": 86.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 3852932,
@@ -7739,7 +7763,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "PB": {
@@ -7787,10 +7811,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 4,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7801,13 +7825,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "João Pessoa",
     "data": "18/10/2026",
-    "tmax": 33.0,
-    "tmin": 24.0,
+    "tmax": 32.0,
+    "tmin": 23.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7825,16 +7849,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.4,
-     "tmin": 25.9,
-     "umin_pct": 69.0,
+     "tmax": 26.5,
+     "tmin": 24.7,
+     "umin_pct": 67.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7887,10 +7911,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -7901,13 +7925,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Recife",
     "data": "18/10/2026",
     "tmax": 33.0,
-    "tmin": 23.0,
+    "tmin": 22.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7926,15 +7950,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 24.2,
-     "tmin": 23.5,
+     "tmin": 23.2,
      "umin_pct": 83.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -7988,10 +8012,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 44,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8002,13 +8026,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Teresina",
     "data": "18/10/2026",
-    "tmax": 38.0,
-    "tmin": 26.0,
+    "tmax": 39.0,
+    "tmin": 24.0,
     "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8027,15 +8051,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 29.7,
-     "tmin": 28.5,
+     "tmin": 25.6,
      "umin_pct": 55.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -8084,7 +8108,7 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
     "focos_24h": 0,
@@ -8098,13 +8122,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Curitiba",
     "data": "18/10/2026",
     "tmax": 20.0,
-    "tmin": 6.0,
+    "tmin": 9.0,
     "resumo": "Poucas nuvens com possibilidade de geada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8123,15 +8147,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 15.0,
-     "tmin": 13.9,
-     "umin_pct": 67.0,
+     "tmin": 10.5,
+     "umin_pct": 66.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -8178,7 +8202,7 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
     "focos_24h": 0,
@@ -8199,12 +8223,12 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
     "data": "18/10/2026",
-    "tmax": 26.0,
+    "tmax": 27.0,
     "tmin": 18.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8224,15 +8248,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 20.9,
-     "tmin": 20.5,
+     "tmin": 19.9,
      "umin_pct": 87.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 5110511,
@@ -8246,7 +8270,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "RN": {
@@ -8294,10 +8318,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8308,12 +8332,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Natal",
     "data": "18/10/2026",
-    "tmax": 32.0,
+    "tmax": 31.0,
     "tmin": 26.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8332,16 +8356,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.8,
-     "tmin": 25.6,
-     "umin_pct": 80.0,
+     "tmax": 26.1,
+     "tmin": 25.5,
+     "umin_pct": 78.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -8395,10 +8419,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 4,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8409,12 +8433,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Porto Velho",
     "data": "18/10/2026",
-    "tmax": 36.0,
+    "tmax": 35.0,
     "tmin": 23.0,
     "resumo": "Muitas nuvens com pancadas de chuva isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8433,16 +8457,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.3,
-     "tmin": 23.1,
+     "tmax": 23.9,
+     "tmin": 22.7,
      "umin_pct": 97.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 5616182,
@@ -8456,7 +8480,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "RR": {
@@ -8508,10 +8532,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 25,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8522,12 +8546,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Boa Vista",
     "data": "18/10/2026",
-    "tmax": 39.0,
+    "tmax": 37.0,
     "tmin": 26.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8583,10 +8607,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8603,7 +8627,7 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Porto Alegre",
@@ -8628,15 +8652,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 13.9,
-     "tmin": 13.6,
-     "umin_pct": 79.0,
+     "tmin": 12.7,
+     "umin_pct": 76.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -8685,10 +8709,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8699,13 +8723,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Florianópolis",
     "data": "18/10/2026",
     "tmax": 22.0,
-    "tmin": 11.0,
+    "tmin": 13.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8724,15 +8748,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 16.6,
-     "tmin": 16.0,
+     "tmin": 13.1,
      "umin_pct": 81.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-18"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   },
@@ -8781,7 +8805,7 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
     "focos_24h": 0,
@@ -8795,13 +8819,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Aracaju",
     "data": "18/10/2026",
     "tmax": 34.0,
-    "tmin": 25.0,
+    "tmin": 24.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8856,7 +8880,7 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
     "focos_24h": 0,
@@ -8881,13 +8905,13 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "São Paulo",
     "data": "18/10/2026",
-    "tmax": 23.0,
-    "tmin": 12.0,
+    "tmax": 24.0,
+    "tmin": 13.0,
     "resumo": "Muitas nuvens com pancadas de chuva isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8905,8 +8929,8 @@
     },
     "natureza": "medição",
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": {
     "id": 5282,
@@ -8920,7 +8944,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "18/10/2026 00:10"
+    "consultado_em": "18/10/2026 05:40"
    }
   },
   "TO": {
@@ -8973,10 +8997,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 45,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261018.csv",
     "consultado_em": "18/10/2026"
@@ -8987,13 +9011,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "18/10/2026 00:09"
+    "consultado_em": "18/10/2026 05:40"
    },
    "temperatura": {
     "capital": "Palmas",
     "data": "18/10/2026",
-    "tmax": 36.0,
-    "tmin": 23.0,
+    "tmax": 32.0,
+    "tmin": 22.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -9010,9 +9034,17 @@
      "lon": -48.31444444
     },
     "natureza": "medição",
+    "medida": {
+     "tmax": 29.0,
+     "tmin": 24.1,
+     "umin_pct": 63.0,
+     "pmax_mm": null,
+     "marcado_pela_fonte": true,
+     "data": "2026-10-18"
+    },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 17 capital(is) com máxima/mínima medidas em 2026-10-18",
-    "consultado_em": "18/10/2026 00:10"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-18",
+    "consultado_em": "18/10/2026 05:40"
    },
    "ar_medido": null
   }
