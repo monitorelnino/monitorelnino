@@ -319,8 +319,8 @@
      "encontrou": "https://prefeitura.pbh.gov.br/obras-e-infraestruturadefesa-civil/plano-de-contingencia"
     }
    ],
-   "ultima_busca_em": "2026-10-17",
-   "tentativas_de_busca_dirigida": 1
+   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-10-17"
   },
   {
    "municipio": "Indaial",
@@ -185198,7 +185198,7 @@
    "hash_evidencia": "cdf1503bb2e368cee68ca65991bb949a2c83ebcd245f31046b2eff366d595c4d",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
+   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
    "id": "d38f64a88e",
    "url_do_agregador": "https://news.google.com/rss/articles/CBMickFVX3lxTFBNTE53VFJtN1gzUUpncjR4NzllNmlseWl3MFhhcjI5VjR2cFItQjFCcU9ZejF1eTZ3aG1ocWhZN0JPTGtPQnpyOUk2X1Q5akUwUHJpY09vUzhhV3JQanVUWVJRUWVKYm1EQ2RiaEdiRC10UQ?oc=5",
    "julgamento_automatico": {
@@ -185251,12 +185251,6 @@
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.4 (09/10/2026)"
-    },
-    {
-     "em": "2026-10-17",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "reaplicada_em": "reaplicacao da noite",
@@ -185273,14 +185267,14 @@
    "atribuicao_corrigida_em": "2026-10-14",
    "atribuicao_corrigida_por": "dominio_oficial_do_documento",
    "juiz": {
-    "codebook": "1.6 (15/10/2026)",
+    "codebook": "1.5 (14/10/2026)",
     "promove": false,
-    "motivo": "autoridade_nao_confirmada",
-    "leu_documento": true,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
     "categoria": null,
-    "data": "09/09/2026",
-    "julgado_em": "2026-10-17",
-    "hash_evidencia": "4508de88a6caebe2c9dc6d2064733299a5fe34b21565adf729e2046fcf59548b"
+    "data": null,
+    "julgado_em": "2026-10-14",
+    "hash_evidencia": null
    },
    "preparacao": {
     "data": "14/10/2026",
@@ -202913,7 +202907,7 @@
    "hash_evidencia": "5c325a0d1fe5c2640eb707b17354a8f8932daccd1b3a717a11e362057520dcb0",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
    "id": "f96cccbb57",
    "nivel_confianca": "B",
    "pontos_confianca": 5,
@@ -202946,16 +202940,9 @@
      "em": "2026-10-06",
      "fontes": [],
      "encontrou": null
-    },
-    {
-     "em": "2026-10-17",
-     "fontes": [
-      "querido_diario"
-     ],
-     "encontrou": null
     }
    ],
-   "ultima_busca_em": "2026-10-17",
+   "ultima_busca_em": "2026-10-06",
    "juiz_tentativas": [
     {
      "em": "2026-10-06",
@@ -202974,12 +202961,6 @@
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.5 (14/10/2026)"
-    },
-    {
-     "em": "2026-10-17",
-     "classe": "criterio",
-     "motivo": "citacao_incompleta",
-     "codebook": "1.6 (15/10/2026)"
     }
    ],
    "reaplicada_em": "reaplicacao da noite",
@@ -203023,17 +203004,6 @@
      "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
     },
     "resultado": "preparada"
-   },
-   "tentativas_de_busca_dirigida": 1,
-   "juiz": {
-    "codebook": "1.6 (15/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
-    "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-10-17",
-    "hash_evidencia": "daaa6a2042d1136d79e64ce5656573cfa6a1d1bbcb0e66c66050abc245cbd0d3"
    }
   },
   {
