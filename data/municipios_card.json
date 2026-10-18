@@ -2,7 +2,7 @@
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-18",
  "total": 2451,
- "com_registro": 253,
+ "com_registro": 254,
  "com_imprensa": 381,
  "prioritarios": 2095,
  "com_despesa_182": 2451,
@@ -4733,6 +4733,11 @@
    "nome": "Imperatriz",
    "uf": "MA",
    "prioritario": true,
+   "categoria": "plano_antigo",
+   "documento": "Plano de contingência municipal — Prefeitura de Imperatriz, 2025",
+   "url": "http://novo.imperatriz.ma.gov.br/media/site/download/legislacao/068_-_DECRETO.pdf",
+   "data": "18/08/2025",
+   "fonte": "Portal oficial (novo.imperatriz.ma.gov.br) — ato lido e classificado pelo juiz automático em 18/10/2026 (codebook 1.6 (1",
    "imprensa": [
     {
      "titulo": "Plano de contingência em ação em Imperatriz Desde a ... - Instagram",
@@ -4750,8 +4755,7 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   },
-   "categoria": "nao_verificado"
+   }
   },
   "2105401": {
    "nome": "Itapecuru Mirim",
