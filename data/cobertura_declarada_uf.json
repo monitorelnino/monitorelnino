@@ -1,6 +1,6 @@
 {
  "_governanca": "Cobertura declarada por UF e por canal (§166, 23/09/2026). DERIVADO de data/log_buscas.json — não editar à mão; rode gerar_cobertura_declarada.py. Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e status, jamais texto ou registro de pedido (regra editorial). A ficha do estado (index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026).",
- "gerado_em": "2026-10-17",
+ "gerado_em": "2026-10-18",
  "fonte": "data/log_buscas.json (log v2)",
  "nota_publica": null,
  "canais": [
@@ -18,8 +18,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-10-17",
-     "ultima_tentativa": "2026-10-17",
-     "execucoes": 312,
+     "ultima_tentativa": "2026-10-18",
+     "execucoes": 313,
      "verificacoes": 205,
      "canais_do_log": [
       "DOM",
@@ -173,8 +173,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-10-17",
-     "ultima_tentativa": "2026-10-17",
-     "execucoes": 209,
+     "ultima_tentativa": "2026-10-18",
+     "execucoes": 210,
      "verificacoes": 147,
      "canais_do_log": [
       "DOM",
@@ -370,8 +370,8 @@
      "verificado": true,
      "ultima_verificacao": "2026-10-17",
      "ultima_tentativa": "2026-10-17",
-     "execucoes": 1931,
-     "verificacoes": 281,
+     "execucoes": 1983,
+     "verificacoes": 333,
      "canais_do_log": [
       "busca_web",
       "motor_de_busca"
@@ -988,10 +988,10 @@
     },
     "busca_web": {
      "verificado": true,
-     "ultima_verificacao": "2026-10-16",
-     "ultima_tentativa": "2026-10-16",
-     "execucoes": 3967,
-     "verificacoes": 737,
+     "ultima_verificacao": "2026-10-17",
+     "ultima_tentativa": "2026-10-17",
+     "execucoes": 3998,
+     "verificacoes": 766,
      "canais_do_log": [
       "busca_web",
       "descobrir_planos",
@@ -1723,8 +1723,8 @@
     "diario_oficial": {
      "verificado": true,
      "ultima_verificacao": "2026-10-17",
-     "ultima_tentativa": "2026-10-17",
-     "execucoes": 148,
+     "ultima_tentativa": "2026-10-18",
+     "execucoes": 150,
      "verificacoes": 115,
      "canais_do_log": [
       "DOM",
