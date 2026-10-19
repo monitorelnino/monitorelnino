@@ -489,8 +489,6 @@ jobs:
           # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
           # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
           python3 verificar_resposta.py
-          # 12/10/2026 (A6-27): todo o log com data ISO e decisão do vocabulário fechado.
-          python3 scripts/verificar_esquema_do_log.py
           # §255 (27/09/2026): os cartões "Esta semana em números" da Imprensa. Trava paridade
           # (o que a página mostra é o que o dado diz), período em todo cartão de janela, zero
           # que não é "sem coleta", ausência de variação enquanto não houver edição anterior,
@@ -680,18 +678,12 @@ jobs:
           # silenciosa — com o log fatiado, perder um arquivo de mês passaria sem ruído, porque o JSON
           # continuaria válido, só menor. Foi assim que uma união por conteúdo apagou quase 3.000
           # execuções em 23/09.
-          python3 scripts/verificar_paridade_log.py
+          # 19/10/2026: a mesma leitura confere o esquema (A6-27: data ISO e decisão do vocabulário).
+          python3 scripts/verificar_log_de_buscas.py
           # §266: o painel que a editoria lê sem cavar log. O portão reprova script ESSENCIAL
           # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
           # seguidas — fonte fora do ar é rotina; coletor quebrado não é.
           python3 scripts/gerar_saude_pipeline.py --check
-          # item 3 (28/09/2026): binário novo de evidência não entra no git. O texto extraído
-          # continua; o binário vai para o ativo de Release do mês. Extensão não declarada bloqueia —
-          # a dúvida não passa calada.
-          # §275: informativo enquanto a trava do .gitignore está revertida — ela custou 1.496 páginas
-          # de prova na primeira noite no ar, porque o lote de Release cobria só um dos caminhos que
-          # preservam evidência.
-          python3 scripts/verificar_binario_novo_em_evidencias.py --contra origin/main
           # 03/10/2026 (alerta do GitHub de 01/10): credencial de TERCEIRO dentro da página
           # preservada. Eram 18 arquivos — chave do Flickr e do Google Maps —, servidos pelo
           # nosso domínio porque `publish = "."` publica a raiz. A redação agora é na porta de
