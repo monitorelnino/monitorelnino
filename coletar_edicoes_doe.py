@@ -239,7 +239,10 @@ def ocorrencias_no_texto(texto: str, termos=TERMOS) -> list:
                 perto = t[max(0, m.start() - JANELA_DE_CONTEXTO):m.end() + JANELA_DE_CONTEXTO]
                 if not contexto.search(perto):
                     continue
-            fora.append({"termo": termo, "trecho": t[ini:m.end() + 220].strip(),
+            from coletores_base import redigir_dados_pessoais
+            # LGPD art. 6º III: o trecho em volta do termo pode citar CPF de terceiro; redige na origem.
+            trecho = redigir_dados_pessoais(t[ini:m.end() + 220].strip())[0]
+            fora.append({"termo": termo, "trecho": trecho,
                          **({"classe": "declaracao"} if termo in TERMOS_DE_DECLARACAO else {})})
             break   # um trecho por termo por edição: o que importa é a edição ter o termo
     return fora
@@ -790,6 +793,8 @@ def _autoteste() -> int:
     ok("acha os termos, sem repetir o mesmo termo",
        sorted(x["termo"] for x in oc) == ["El Niño", "grupo condutor"])
     ok("guarda o trecho em volta", all(len(x["trecho"]) > 20 for x in oc))
+    oc_cpf = ocorrencias_no_texto("Fica declarada emergência em saúde pública. Servidor CPF 123.456.789-09 nomeado.", ("emergência em saúde pública",))
+    ok("trecho não carrega CPF de terceiro", oc_cpf and "123.456.789-09" not in oc_cpf[0]["trecho"] and "[CPF REDIGIDO]" in oc_cpf[0]["trecho"])
     ok("texto sem termo devolve vazio", ocorrencias_no_texto("Portaria de nomeação de servidor.") == [])
     ok("sigla curta não casa dentro de tabela de licitação",
        ocorrencias_no_texto("PAULO CESA L R T D D A E MENDONCA COESTE 53777136000179") == [])
