@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
 
+## 2026-10-19 · #868 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias
+
+O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.
+
+## 2026-10-19 · #871 · MUNIC 2020: bloco de risco inteiro como fonte futura
+
+O coletor passa a guardar as 160 variáveis do bloco de gestão de riscos da MUNIC 2020, com a pergunta de cada uma, em `data/fontes_futuras/`, com peso zero. Conferido contra a leitura publicada: plano de enchentes 1.407 e habitacional 16,7% iguais; mapeamento e alerta não reproduzidos, declarado. Mgrd184 é plano de enchentes, não geral. METODOLOGIA §114.
+
 ## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
 
 A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.

@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=8acca11c"></script>
+<script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=96ba4901">
+<link rel="stylesheet" href="assets/base.css?v=7f40421d">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias</dt>
+      <dd>O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.</dd>
+      <dt>19/10/2026 · MUNIC 2020: bloco de risco inteiro como fonte futura</dt>
+      <dd>O coletor passa a guardar as 160 variáveis do bloco de gestão de riscos da MUNIC 2020, com a pergunta de cada uma, em `data/fontes_futuras/`, com peso zero. Conferido contra a leitura publicada: plano de enchentes 1.407 e habitacional 16,7% iguais; mapeamento e alerta não reproduzidos, declarado. Mgrd184 é plano de enchentes, não geral. METODOLOGIA §114.</dd>
       <dt>19/10/2026 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS</dt>
       <dd>A página deixa de chamar o risco de &quot;fogo&quot;: a abertura diz &quot;chuvas fortes, incêndio, seca e calor&quot; e a aba vira &quot;Incêndio e fumaça&quot;, como o título da seção. Na emergência, &quot;a Defesa Civil avisa sem cadastro&quot; passa a &quot;a Defesa Civil envia os alertas automaticamente&quot;, no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.</dd>
       <dt>19/10/2026 · Consulta do município: decreto só do município e rede do Cemaden sem falso &quot;fora&quot;</dt>
@@ -163,10 +167,6 @@
       <dd>O bloco &quot;Chuva forte&quot; troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem &quot;Ver estados&quot;, &quot;Ver em lista&quot; e &quot;Como ler&quot; e o código morto que os montava. Open-Meteo e lista do OpenAQ passam a apoio técnico no catálogo (conserta a main do #802). HANDOVER_MONITOR_DE_RISCOS §4 e §7.</dd>
       <dt>16/10/2026 · Monitor de riscos: seca em manchas, ar medido e cartão do ar</dt>
       <dd>A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão &quot;Ar&quot; só com cidade em IQAr Ruim ou pior.</dd>
-      <dt>16/10/2026 · Monitor de riscos: risco previsto em faixa e bloco do fogo</dt>
-      <dd>O mapa do risco previsto vira faixa de siglas por família, cada uma ligada à ficha do estado. Os blocos &quot;Seca, fogo, ar e calor&quot; e &quot;Chuva forte&quot; abrem com &quot;Boletim prevê para&quot;. O fogo ocupa a largura inteira: hachura nos estados com fogo previsto, números do satélite de referência, 30 dias e tabelas por estado e bioma. HANDOVER_MONITOR_DE_RISCOS §2–§3.6.</dd>
-      <dt>16/10/2026 · Monitor de riscos: um só gráfico do Pacífico, na largura inteira</dt>
-      <dd>Sai a série contínua do RONI (barras desde 1950) e o código que a desenhava; fica a comparação entre episódios, na largura inteira e com metade da altura, com a definição do RONI na nota. Sai também o bloco desativado do plume e o Chart.js da página. Abertura ajustada ao gráfico que fica. HANDOVER_MONITOR_DE_RISCOS §1.3.</dd>
     </dl>
   </section>
 </main>
