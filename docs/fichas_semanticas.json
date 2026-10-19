@@ -626,26 +626,6 @@
       "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
       "metodologia": "Contagem nominal por estado do cadastro federal, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado. 'Plano localizado' exclui plano em elaboração, estrutura (comitê ou gabinete) e cobertura estadual."
     },
-    "monitor-de-riscos.html#boxListaSemiarido": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado integram a delimitação do Semiárido?",
-      "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os 1.477 municípios da delimitação do Semiárido",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Brasil",
-      "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado na delimitação do Semiárido",
-      "fonte": "Sudene, Resolução Condel nº 176/2024, com a tabela nominal publicada pelo IBGE",
-      "conclusoes_permitidas": [
-        "quantos municípios de cada estado integram a delimitação oficial"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que integrar a delimitação é estar em seca: a delimitação é político-administrativa e permanente",
-        "que a delimitação mede a seca deste ciclo"
-      ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado da lista do Semiárido, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
-    },
     "monitor-de-riscos.html#boxListaFogo": {
       "tipo": "mapa por estado",
       "pergunta_que_responde": "Quantos municípios de cada estado constam da lista federal de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia?",
