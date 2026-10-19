@@ -11,6 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-19 · #885 · Portões: sete regras de dado num só, nove arquivos a menos
 
+Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
 
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
