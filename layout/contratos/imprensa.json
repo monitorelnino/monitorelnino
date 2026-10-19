@@ -1,79 +1,127 @@
 {
- "_governanca": "Contrato de layout da Imprensa (handover da preparação programática, itens 7, 7-B e 7-C, 05/10/2026). A página é o título “Imprensa” e, imediatamente, as seções. Ordem final: O que é o MARÉ · Como os índices são calculados · O que cada página responde · Perguntas frequentes · Como citar · Para redações. Saíram, sem substituição: a abertura com o contato (o e-mail fica só em “Para redações”), o bloco “Os índices nesta edição” e o bloco “Textos desta semana”. “O que cada página mostra” e “Perguntas de fato” foram substituídas. O texto público vive em conteudo/imprensa.json. Quem verifica é scripts/verificar_conformidade.py.",
+ "_governanca": "Contrato de layout da Imprensa. Reforma de 19/10/2026 (HANDOVER_IMPRENSA_16-10-2026, §1 e §2, aprovados pela editoria em 16/10). Ordem: título e abertura · Esta semana no MARÉ · O que recomendamos e não recomendamos concluir · Como citar e reproduzir · Quando o site é atualizado · Como os índices funcionam · Glossário · Erratas e nome. Saíram, sem substituição: a grade \"O que cada página responde\" (o menu do topo faz isso), \"O que é o MARÉ\" (virou a abertura), a sanfona de perguntas frequentes (o que valia virou os cartões de recomendação) e \"Como citar\" e \"Para redações\" antigos (fundidos em \"Como citar e reproduzir\"). Nenhuma figura larga: esta página não tem figura principal. O texto público vive em conteudo/imprensa.json. Quem verifica é scripts/verificar_conformidade.py.",
  "pagina": "imprensa.html",
  "componentes": {
   "numeros": ".cartao-numero",
-  "grade_numeros": ".grade-numeros--3",
+  "grade_numeros": ".grade-numeros--compacta",
   "figura": ".cartao-mapa",
-  "grade_figuras": ".grade-figuras--3"
+  "grade_figuras": ".grade-figuras--2"
  },
- "_nota_componentes": "O handover nomeia `.cartao-destaque` e pede cada grupo em `.grade-figuras--3`. Duas divergências declaradas, pelas mesmas razões dos outros contratos: (1) `.cartao-destaque` não existe no repositório — o componente de número é `.cartao-numero`; (2) número não mora na grade de FIGURAS: a regra (i) do portão de layout cobra que cartão de número esteja dentro do componente de números, e `.grade-numeros--3` dá exatamente o mesmo ritmo de três colunas que o handover quer. Grupo de seis preenche duas linhas de três.",
+ "_nota_componentes": "Os seis números do topo usam a variante compacta criada pela B1 para o Monitor de riscos (.grade-numeros--compacta: até seis numa linha, três no tablet, dois no celular), que é o ritmo que o handover pede, sem classe nova. Os cartões de texto (recomendações, citação, atualização, índices, glossário, erratas) são `.cartao.cartao-mapa` em `.grade-figuras--2` (três colunas só em \"Quando o site é atualizado\", que tem três cartões): não são `.figura`, porque não há mídia, legenda nem fonte, e o portão de figuras cobraria as três. Nenhum bloco novo nasceu nesta página.",
  "secoes": [
   {
-   "id": "paginas",
-   "h2": "O que cada página responde",
-   "tipo": "lista_simples",
-   "exige_texto": [
-    "textos da editoria sobre o que está acontecendo no ciclo"
+   "id": "semana",
+   "h2": "Esta semana no MARÉ",
+   "tipo": "numeros",
+   "grade": ".grade-numeros--compacta",
+   "linhas": 1,
+   "cartoes": [
+    {
+     "id": "capitais_com_plano",
+     "valor_el": "semanaValor_capitais_com_plano"
+    },
+    {
+     "id": "decretos_na_semana",
+     "valor_el": "semanaValor_decretos_na_semana"
+    },
+    {
+     "id": "reconhecimentos_na_semana",
+     "valor_el": "semanaValor_reconhecimentos_na_semana"
+    },
+    {
+     "id": "municipios_aviso_inmet",
+     "valor_el": "semanaValor_municipios_aviso_inmet"
+    },
+    {
+     "id": "desembolsado_no_mes",
+     "valor_el": "semanaValor_desembolsado_no_mes"
+    },
+    {
+     "id": "ufs_dengue_alerta",
+     "valor_el": "semanaValor_ufs_dengue_alerta"
+    }
    ],
-   "_nota": "Um `.cartao.cartao-mapa` por página em `.grade-figuras--3`: h3 com o nome, uma frase, link “Abrir a página →” (`.cartao-a`). Não é `.figura`: não há mídia, legenda nem fonte, e o portão de figuras cobraria as três. Fundo branco, como todo cartão."
+   "_nota": "Rótulo no catálogo (texto editorial); valor, referência de período e fonte escritos por assets/js/imprensa.js a partir de data/imprensa/semana.json. Sem `chave`: a procedência de cada cartão é o campo `sem_coleta` do gerador da edição, não a existência do arquivo — o arquivo existe sempre, e um cartão pode estar sem coleta dentro dele."
   },
   {
-   "id": "o-que-e",
-   "h2": "O que é o MARÉ",
+   "id": "concluir",
+   "h2": "O que recomendamos e não recomendamos concluir",
    "tipo": "lista_simples",
    "exige_texto": [
-    "É uma criação da"
-   ]
+    "Não recomendamos essa leitura.",
+    "acima da faixa habitual para a época",
+    "qual das três etapas o número representa"
+   ],
+   "_nota": "Três grupos (Preparação · Saúde · Financiamento), rótulo do grupo em versalete (`p.rotulo`, o componente de rótulo que já existe) e as perguntas em grade de dois cartões, a pergunta como título do cartão. A faixa lateral por grupo é a variante de acento que já existe: `cartao--acento-musgo` na preparação, `--acento-neutro` na saúde, `--acento-argila` no financiamento."
   },
   {
-   "id": "como-calculados",
-   "h2": "Como os índices são calculados",
+   "id": "citar",
+   "h2": "Como citar e reproduzir",
+   "tipo": "lista_simples",
+   "exige_texto": [
+    "Fonte: MARÉ / Futura Evidence Lab",
+    "A metodologia é pública."
+   ],
+   "_nota": "Dois cartões: na matéria com a referência completa (data da edição e data de acesso vindas do dado, nos ids relData2 e citarAcesso que o portão de texto público cobra) e mapas e gráficos com os pedidos de recorte. Sem a versão dos índices, por decisão da editoria (05/10)."
+  },
+  {
+   "id": "atualizacao",
+   "h2": "Quando o site é atualizado",
+   "tipo": "lista_simples",
+   "grade": ".grade-figuras--3",
+   "exige_texto": [
+    "Os dados são coletados e publicados todas as noites"
+   ],
+   "_nota": "Três cartões. A cadência deixou de ser molde gerado: a resposta da editoria é \"todas as noites\", e com isso a página não lê mais data/cadencia_publicacao.json."
+  },
+  {
+   "id": "indices",
+   "h2": "Como os índices funcionam",
    "tipo": "lista_simples",
    "exige_texto": [
     "O que os índices não dizem."
    ],
-   "_nota": "A frase do MARÉ Saúde traz molde gerado: enquanto os 27 estados não estiverem verificados, ela diz de quantos é a média, e some quando os 27 estiverem."
+   "_nota": "Dois cartões (MARÉ Legal · MARÉ Saúde, com o que os índices não dizem no segundo). Hoje é o texto aprovado no §2, que é o que a definição em vigor produz; quando a função única da definição (HANDOVER_IMPRENSA §4.2, janela A) entrar, os dois passam a ser gerados de data/meta.json e data/monitor_saude.json. Nenhum número de versão aparece ao leitor."
   },
   {
-   "id": "perguntas",
-   "h2": "Perguntas frequentes",
-   "tipo": "lista_simples",
-   "_nota": "Cada pergunta é `details.acc` nativo (pergunta no summary, resposta no parágrafo), a primeira de cada grupo aberta. As perguntas iniciais abrem a seção sem subtítulo; depois, em h3: Sobre o método · Sobre as fontes · O que se pode e o que não se pode concluir · Contato. A resposta sobre a frequência traz molde gerado, lido do gatilho do publicador."
-  },
-  {
-   "id": "citar",
-   "h2": "Como citar",
+   "id": "glossario",
+   "h2": "Glossário",
    "tipo": "lista_simples",
    "exige_texto": [
-    "Fonte: MARÉ / Futura Evidence Lab.",
-    "A metodologia é pública.",
-    "o crédito \"MARÉ / Futura Evidence Lab\""
+    "não encontrado nas fontes consultadas até a data de corte"
    ],
-   "_nota": "Sem a versão dos índices, por decisão da editoria (item 7-B): o código não é distribuído, e a versão não serve ao leitor."
+   "_nota": "Dez cartões, termo no título e definição no corpo, em grade de dois."
   },
   {
-   "id": "redacoes",
-   "h2": "Para redações",
+   "id": "erratas",
+   "h2": "Erratas e nome",
    "tipo": "lista_simples",
    "exige_texto": [
-    "com fonte e data em cada entrega"
-   ]
+    "mantemos o anterior no histórico"
+   ],
+   "_nota": "Dois cartões lado a lado."
   }
  ],
  "texto_proibido": [
   "A comparação é do leitor.",
   "Backlog",
   "CC BY",
+  "Como os índices são calculados",
   "Corte da edição",
   "FIGURA",
   "O que cada página mostra",
+  "O que cada página responde",
+  "O que é o MARÉ",
   "Os índices nesta edição",
   "Para entender o que está vendo",
+  "Para redações",
   "Perguntas de fato",
   "Perguntas de repórter",
+  "Perguntas frequentes",
   "Quem está mais preparado?",
+  "Sobre as fontes",
   "Sobre o MARÉ e o contato",
+  "Sobre o método",
   "Textos desta semana",
   "Todos os textos",
   "como ele se sustenta",
@@ -86,8 +134,9 @@
   "não é distribuído",
   "recursos próprios"
  ],
- "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só. Em 05/10 entram os títulos revogados pelos itens 7 e 7-C: título revogado volta por hábito se nada o barrar. Na revisão da editoria de 05/10 entram os títulos revogados da seção de perguntas e as expressões da pergunta retirada: nenhuma menção a financiamento, recursos próprios ou vínculos entra no site.",
- "_divergencia_do_handover": "Divergência declarada (03/10/2026): o handover pedia um `.cartao-destaque` largo para o boletim. Essa classe não existe no sistema de design — não há uma linha dela em assets/base.css —, e a hierarquia de regras põe o sistema acima do handover. O boletim usa o componente que existe para isso, `.cartao cartao--status` com `.grade-numeros--3`, que é o mesmo de todo cartão de números do site. Criar uma classe nova para um só lugar é exatamente o 'ajuste manual' que o § Design proíbe.",
- "_nota_rotina_semanal": "04/10/2026: o ponteiro 'O boletim desta semana' virou 'Textos desta semana'. O Boletim saiu com a rotina de dois textos por semana.",
- "_nota_15_10": "15/10/2026 (redesenho B aprovado pela editoria): ordem passa a ser O que cada página responde (cartões) · O que é o MARÉ · Como os índices são calculados · Perguntas frequentes (sanfonas) · Como citar · Para redações; fundo branco em tudo. Saem “A comparação é do leitor.” e “Quem está mais preparado?”: o site nunca convida a comparar entes. Divergência: o pedido mandava alinhar o cálculo à v3.2, mas a METODOLOGIA §105 diz que a v3.2 roda em paralelo e nenhuma página a lê (`versao_indice` v3.1); o texto do cálculo fica o da v3.1, em vigor."
+ "_nota_texto_proibido": "03/10/2026 (regra 1 da editoria): nenhuma frase sobre código, base de dados ou licença de dados entra no texto público — nem para dizer que existe, nem para dizer que não existe. A metodologia se anuncia numa frase, e é só. Em 05/10 entram os títulos revogados pelos itens 7 e 7-C: título revogado volta por hábito se nada o barrar. Na revisão da editoria de 05/10 entram os títulos revogados da seção de perguntas e as expressões da pergunta retirada: nenhuma menção a financiamento, recursos próprios ou vínculos entra no site. 19/10/2026 (reforma): entram os títulos revogados por esta rodada — \"O que cada página responde\", \"O que é o MARÉ\", \"Perguntas frequentes\", \"Como os índices são calculados\", \"Para redações\", \"Sobre o método\" e \"Sobre as fontes\" —, porque título revogado volta por hábito se nada o barrar. \"Como citar\" não entra: é trecho do título em vigor, \"Como citar e reproduzir\".",
+ "_divergencias": [
+  "19/10/2026: o §2 do handover traz `{data}` e `{risco}` como marcas literais da recomendação ao repórter. Essa é a notação de molde do site, e `verificar_texto_publico.js --forma` reprova chave de molde não preenchida — com razão, porque é assim que um molde quebrado chega ao leitor. A regra vence o handover: a marca aparece como `[data]` e `[risco]`, que diz ao repórter a mesma coisa e não é molde. Nenhuma outra palavra do texto aprovado mudou (além de um espaço que faltava antes de uma citação em \"Nome e descrição\").",
+  "19/10/2026: \"Esta semana no MARÉ\" entra nesta rodada só com os seis cartões. O texto da semana em duas colunas (§1, item 2) espera o gerador do §4.1(e): o `texto_pronto` de hoje traz \"ciclo\" sozinho, que a editoria tirou desta página, e a página não reescreve texto gerado. Os seis cartões escolhidos são os que o gerador já publica em forma aprovada; os de dengue e de síndrome respiratória grave esperam o mesmo item, porque o rótulo deles ainda traz \"semana epidemiológica\", proibida em texto público desde 07/10."
+ ]
 }

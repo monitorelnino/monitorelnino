@@ -1,131 +1,86 @@
 /* A7-17 (12/10/2026): erro de bloco que não renderiza não é engolido em silêncio — vai ao
    console com o lugar, onde o portão de runtime e quem abre o DevTools o veem. */
 function _erroImp(onde) { return function (e) { try { console.error("[MARÉ] falha em " + onde + ":", e); } catch (_) {} }; }
-const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-// ===== imprensa.html · release da edição (handover de 01/10/2026) =====
-// O release é o texto aprovado, e todo número dele vem do banco — inclusive os da SEMANA, que são
-// os MESMOS cartões da grade acima: mesma janela, mesma fonte, mesmo critério. Dois números iguais
-// na mesma página com contas diferentes é o defeito que a regra 0 existe para impedir.
-/* 03/10/2026 (handover do blog e da imprensa): o release gerado e a grade "Esta semana em
-   números" SAÍRAM da Imprensa. O que muda toda semana vive no boletim do blog, escrito pela
-   editoria; aqui fica o PONTEIRO — a data da edição, três números congelados nela e o caminho.
-   O motor da semana continua existindo: é dele que o boletim tira os números. */
 
-
-// 03/10/2026: os blocos que escreviam em `listaNaoSuspenso` e `listaSuspenso` saíram. Os dois
-// `id` não existem em nenhuma página desde que a editoria tirou o período eleitoral da
-// Imprensa e de Prefeituras (01/10) — eram código escrevendo no vazio, e um deles era uma
-// metade órfã, deixada por um corte meu de 03/10. O canário do site publicado procurava
-// justamente essa lista para provar que o script da página roda.
 window.addEventListener('load', function(){ if (window.VLibras && window.VLibras.Widget) { try { new window.VLibras.Widget('https://vlibras.gov.br/app'); } catch (e) {} } });
 
-// 14/09/2026 (pedido de Patricia, 13/09): "O que a lei deixa aberto" vira nota para a imprensa — mesma fonte e o
-// mesmo desenho de linha da página do calendário (data/calendario/dispositivos.json, campo nao_suspenso).
-
-// 30/09/2026: o calendário compacto da imprensa saiu do código, com as outras duas telas de
-// calendário (decisão da editoria). O que ele mostrava vive na METODOLOGIA.
-
-// ===== imprensa.html · "Esta semana em números" (handover de 01/10/2026) =====
-// A grade é DESENHADA a partir de data/imprensa/semana.json, na ordem dos grupos que o arquivo
-// declara. Não há cartão escrito no HTML: é assim que a regra 0 da página ("nada escrito à mão que
-// dependa do dado") deixa de depender de vigilância e passa a ser estrutural.
-//
-// Variação ao lado do número, com seta e valor, SEM cor de bom/ruim: a página não diz ao leitor se
-// subir é bom. Cartão sem coleta mostra "sem dado nesta edição" e o motivo — nunca zero.
-/* ===== Os seis números do topo (01/10/2026) =====
-   Regra 0 da página: nada escrito à mão que dependa do dado. Os dois índices, os quatro contadores,
-   as duas versões e as datas vêm todos do banco, a cada publicação.
-
-   "Última semana" são os 7 dias até a data da edição, contados PELA DATA DO ATO — a data em que o
-   plano saiu no diário, ou em que o decreto foi assinado —, e não pela data em que o MARÉ o
-   localizou. As duas podem distar semanas, e a segunda mede o nosso trabalho, não o do ente. */
-(function numerosDoTopo(){
+/* ===== A referência completa (HANDOVER_IMPRENSA §1, item 4) =====
+   Regra 0 da página: nada escrito à mão que dependa do dado. A data da edição vem do banco; a de
+   acesso é a de hoje, de quem está lendo, que é o que uma referência pede. */
+(function datasDaReferencia(){
   const põe = (id, v) => { const e = document.getElementById(id); if (e && v != null && v !== '') e.textContent = v; };
 
-  /* 05/10/2026 (itens 7 e 7-B): o bloco "Os indices nesta edicao" e a VERSAO na referencia
-     sairam da pagina. A manchete sai da imprensa (os indices vivem nas paginas) e a versao nao
-     serve ao leitor, porque o codigo nao e distribuido. O codigo que lia `data/indice.json` e
-     `data/monitor_saude.json` so para escreve-los sai junto -- menos a leitura de saude, que
-     continua, porque o molde do "Como os indices sao calculados" depende de quantos estados
-     estao verificados. */
   fetch('data/meta.json').then(r => r.ok ? r.json() : null).then(M => {
     if (!M) return;
-    ['relData', 'relData2', 'relDataRelease'].forEach(i => põe(i, M.atualizado_em || M.corte));
-  }).catch(_erroImp("imprensa:58"));
+    põe('relData2', M.atualizado_em || M.corte);
+  }).catch(_erroImp("imprensa:16"));
 
-  // "Acesso em" é a data de HOJE, de quem está lendo — é isso que uma referência pede.
   const hoje = new Date();
   põe('citarAcesso', String(hoje.getDate()).padStart(2, '0') + '/'
     + String(hoje.getMonth() + 1).padStart(2, '0') + '/' + hoje.getFullYear());
 })();
 
-/* Copiar o release: o texto que a redação leva é o que está na tela, já com os números do dia. */
-(function copiarRelease(){
-  const b = document.getElementById('copiarRelease'), alvo = document.getElementById('releaseTexto');
-  if (!b || !alvo || !navigator.clipboard) return;
-  b.addEventListener('click', () => {
-    const txt = alvo.textContent.replace(/\s+/g, ' ').trim();
-    navigator.clipboard.writeText(txt).then(() => {
-      const antes = b.textContent;
-      b.textContent = 'Texto copiado';
-      setTimeout(() => { b.textContent = antes; }, 2000);
-    }).catch(_erroImp("imprensa:76"));
-  });
-})();
-
-/* ===== Os dois moldes gerados da pagina (handover de 05/10/2026, itens 7-B e 7-C) =====
+/* ===== "Esta semana no MARÉ" (HANDOVER_IMPRENSA §1, item 2) =====
  *
- * Frase que depende do dado nao se escreve a mao: e molde no catalogo, resolvido aqui com o dado
- * em maos. Sao dois.
+ * Seis cartões compactos. O RÓTULO é texto editorial e vive no catálogo; o VALOR, a referência de
+ * período e a fonte vêm de `data/imprensa/semana.json`, escritos aqui — nenhum número desta seção
+ * está no HTML. Quais seis a página mostra é decisão de layout, e por isso a lista está aqui e no
+ * contrato da página; o que cada um vale é do gerador da edição.
  *
- *   1. "Como os indices sao calculados", MARE Saude: enquanto os 27 estados nao estiverem
- *      verificados, a frase diz de quantos e a media. Quando os 27 estiverem, a frase SOME --
- *      porque ai a media ja e nacional, e o qualificador passaria a negar o que o numero e.
- *   2. "Com que frequencia o site e atualizado?": a cadencia vem de
- *      `data/cadencia_publicacao.json`, que o gerador le do gatilho do publicador. Trocar um
- *      horario no workflow muda a frase sozinho.
- *
- * Quem resolve e escreve e o leitor do catalogo: esta funcao so poe os VALORES no elemento e
- * pede uma nova passada. Ver o comentario dentro da funcao.
+ * Cartão que o gerador marcou sem coleta, ou que não veio na edição, diz "sem coleta até o corte" —
+ * nunca zero, nunca travessão (regra dos números: zero medido e ausência de dado são coisas
+ * distintas). Zero medido sai por extenso.
  */
-(function moldesGerados(){
-  const C = window.MonitorCatalogo;
-  if (!C || !C.pronto || !C.aplicar) return;
+(function estaSemana(){
+  const IDS = ['capitais_com_plano', 'decretos_na_semana', 'reconhecimentos_na_semana',
+               'municipios_aviso_inmet', 'desembolsado_no_mes', 'ufs_dengue_alerta'];
+  const M = window.MonitorMapas;
+  if (!M) return;
 
-  /* Quem resolve o molde e ESCREVE e o proprio leitor do catalogo, nao este arquivo. A pagina so
-     poe os VALORES no elemento, em `data-conteudo-valores`, e pede uma nova passada.
-     Duas razoes, nesta ordem:
-       1. a entrada do catalogo tem marcacao (`<strong>`), entao ela entra por `innerHTML` -- e
-          `innerHTML` escrito aqui seria `innerHTML` sem escape no meio do codigo da pagina, que e
-          exatamente o que o portao de seguranca reprova, com razao: o proximo a mexer nao tem como
-          saber de onde veio aquela string;
-       2. com os valores NO elemento, qualquer `aplicar` posterior recalcula o mesmo texto. Nao
-          existe corrida a fechar, e por isso aqui nao se marca `data-conteudo-fixado`: a marca
-          serve a quem compoe fora do leitor, e esta funcao deixou de compor. */
-  function comValores(elemento, valores) {
-    if (!elemento) return;
-    elemento.dataset.conteudoValores = JSON.stringify(valores);
-    C.aplicar(elemento.parentNode || document);
+  /* Dinheiro em cartão compacto vai em milhões com uma casa, a mesma forma do "mês a mês" do
+     Financiamento; abaixo de um milhão, o valor inteiro. */
+  function valorDoCartao(c) {
+    if (c.valor === 0) return 'zero';
+    if (c.unidade === 'reais') {
+      return c.valor >= 1e6 ? 'R$ ' + M.numBR(c.valor / 1e6, 1) + ' milhões'
+                            : 'R$ ' + M.numBR(c.valor);
+    }
+    return M.numBR(c.valor, Number.isInteger(c.valor) ? 0 : 1);
   }
 
-  C.pronto.then(function () {
-    const TODAS = 27;
+  /* A data do cartão é a da consulta à fonte, e só ela. O gerador às vezes põe PROSA nesse campo
+     ("desde 29/06/2026", que é o início do El Niño, e "nível atual"): dali sai uma data que não é a
+     da consulta, e o cartão passaria a dizer que foi atualizado em junho. Então o campo só vale
+     quando é uma data inteira, com hora ou sem; fora disso fica a data da edição, que é quando o
+     número foi lido. */
+  function dataDaConsulta(c) {
+    const v = String(c.consultado_em || '').trim();
+    return /^\d{2}\/\d{2}\/\d{4}( \d{2}:\d{2})?$/.test(v) ? M.dataBR(v) : null;
+  }
 
-    fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(sa => {
-      const verificadas = ((sa || {}).resumo || {}).verificadas;
-      if (verificadas == null) return;        /* sem o numero, fica o texto de reserva */
-      /* Com os 27 verificados a frase SOME: a media ja e nacional, e o qualificador passaria a
-         negar o que o numero e. */
-      const parcial = verificadas >= TODAS
-        ? ''
-        : (C.texto('imprensa.calculo.saude_parcial', { n: verificadas }) || '');
-      comValores(document.getElementById('calculoSaude'), { parcial: parcial });
-    }).catch(_erroImp("imprensa:127"));
+  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
+    if (!S) return;
+    const porId = {};
+    (S.cartoes || []).forEach(c => { porId[c.id] = c; });
+    const edicao = (S.indices || {}).edicao || S.gerado_em || null;
 
-    fetch('data/cadencia_publicacao.json').then(r => r.ok ? r.json() : null).then(cad => {
-      const vezes = (cad || {}).publicacoes_por_dia;
-      if (!vezes) return;                     /* zero nao vira frase: fica o texto de reserva */
-      comValores(document.getElementById('perguntaFrequencia'), { n: vezes });
-    }).catch(_erroImp("imprensa:133"));
-  });
+    IDS.forEach(id => {
+      const valor = document.getElementById('semanaValor_' + id);
+      const ref = document.getElementById('semanaRef_' + id);
+      const c = porId[id];
+      if (!valor) return;
+      if (!c || c.sem_coleta || c.valor == null) {
+        valor.textContent = 'sem coleta até o corte';
+        if (ref) ref.textContent = '';
+        if (c) M.credito('semanaFonte_' + id, {fontes: c.fonte, data: null, url: c.url_fonte || null});
+        return;
+      }
+      valor.textContent = valorDoCartao(c);
+      /* Horário não entra nesta página (editoria): referência com data e hora sai só com a data. */
+      if (ref) ref.textContent = (M.dataBR(c.referencia) && /\d{2}:\d{2}/.test(c.referencia))
+        ? M.dataBR(c.referencia) : (c.referencia || '');
+      M.credito('semanaFonte_' + id, {fontes: c.fonte, data: dataDaConsulta(c) || edicao,
+                                      url: c.url_fonte || null});
+    });
+  }).catch(_erroImp("imprensa:62"));
 })();
