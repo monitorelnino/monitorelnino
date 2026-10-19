@@ -4254,7 +4254,7 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 
 **O que a série conta.** Registros de óbito lavrados em cartório no mês, por UF, como o Portal da Transparência do Registro Civil (ARPEN/CNJ) agrega, de janeiro de 2019 ao mês corrente, em `data/saude_desfechos/obitos.json`, na forma do §108. É a mesma consulta do coletor de 29/09 (`coletar_obitos_registro_civil.py`), estendida até 2019 para a faixa habitual e os cortes do mapa; o arquivo antigo, que a página lê, não muda. Não é óbito ocorrido no mês nem óbito por causa. O mês corrente é parcial: o registro entra ao longo dos dias. Mês que a fonte não respondeu fica sem valor e declarado, nunca zero.
 
-**Leitura de 17/10/2026, no executor.** 94 meses e 27 UFs; setembro de 2026, 120.473 registros no país. A faixa habitual de 2019 a 2025 inclui 2020 e 2021, anos da pandemia de covid-19, que elevam o percentil superior da série.
+**Leitura de 17/10/2026, no executor.** 94 meses e 27 UFs; setembro de 2026, 120.473 registros no país. A faixa habitual dos óbitos usa 2019 e 2022 a 2025, com 2024 à parte: 2020 e 2021, anos da pandemia de covid-19, ficam fora (decisão da editoria de 17/10/2026) e a exclusão é declarada no arquivo (`faixa_sem_anos`). Os cortes do mapa não mudam.
 
 **O que ficou de fora.** O painel por causa (doenças respiratórias, cardíacas) não está mais no portal: os endereços antigos respondem com erro do servidor, e o código do portal não os chama. O SIM preliminar, com causa básica, está no FTP do DATASUS por UF e ano, com defasagem de cerca de dois meses; entra como série com causa numa próxima etapa. O Monitor não atribui óbitos ao El Niño.
 

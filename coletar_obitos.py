@@ -38,6 +38,7 @@ from coletar_obitos_registro_civil import API, meses, serie_de  # noqa: E402
 DESFECHO = "obitos"
 INICIO = datetime.date(2019, 1, 1)
 REPEDIR = 3  # meses mais recentes pedidos de novo a cada rodada
+ANOS_FORA_DA_FAIXA = (2020, 2021)  # pandemia: fora da faixa habitual dos óbitos (editoria, 17/10/2026)
 RC_BASE = "https://transparencia.registrocivil.org.br"
 FONTE = {"sistema": "Portal da Transparência do Registro Civil (ARPEN/CNJ)", "url": RC_BASE + "/",
          "conta": "registros de óbito lavrados no mês, sem causa"}
@@ -47,6 +48,17 @@ def janelas(hoje: datetime.date) -> list:
     """Janelas mensais de jan/2019 até o mês de `hoje`, pela função do coletor existente. Pura."""
     n = (hoje.year - INICIO.year) * 12 + hoje.month - INICIO.month + 1
     return meses(hoje, n) if n > 0 else []
+
+
+def sem_pandemia(obj: dict) -> dict:
+    """Refaz a faixa habitual sem os anos da pandemia e declara a exclusão no arquivo. Os cortes do mapa
+    não mudam. Pura (muda e devolve `obj`)."""
+    from desfechos_sus import canal_endemico
+    base = obj.get("por_100mil") or obj["serie"]
+    obj["faixa_habitual"] = {uf: canal_endemico({p: {"casos": v} for p, v in s.items()
+                                                 if int(p[:4]) not in ANOS_FORA_DA_FAIXA}) for uf, s in base.items()}
+    obj["faixa_sem_anos"] = list(ANOS_FORA_DA_FAIXA)
+    return obj
 
 
 def a_pedir(todas: list, anterior: dict) -> list:
@@ -95,7 +107,7 @@ def coletar(buscar_fn=None, ler_fn=None, gravar_fn=None, hoje: datetime.date = N
                     serie=serie, fonte=FONTE, cadencia="diária; o mês corrente cresce ao longo dos dias",
                     coletado_em=hoje.isoformat(), n_parciais=1, populacao=ds.populacao_por_uf(ler_fn),
                     anterior=anterior, lacunas=lacunas)
-    ok = ds.gravar_desfecho(obj, gravar_fn=gravar_fn)
+    ok = ds.gravar_desfecho(sem_pandemia(obj), gravar_fn=gravar_fn)
     print(f"óbitos: {len(respostas)} mês(es) pedidos e respondidos, {len(falhas)} falha(s); "
           f"{len(serie)} UFs, {len(todas)} meses; gravado: {ok}")
     return ok
@@ -150,6 +162,13 @@ def _t_primeira_rodada():
             and o["parcial"] == ["2026-10"] and o["por_100mil"]["AC"]["2026-01"] == 10.0)
 
 
+def _t_faixa_sem_pandemia():
+    ler_fn, gravar_fn, buscar_fn, g, _p = _falsos()
+    coletar(buscar_fn, ler_fn, gravar_fn, hoje=datetime.date(2026, 10, 17))
+    o = g["saude_desfechos/obitos.json"]
+    return o["faixa_sem_anos"] == [2020, 2021] and o["faixa_habitual"]["AC"]["01"]["n_anos"] == 4  # 2019, 2022, 2023, 2025
+
+
 def _t_incremental():
     ler_fn, gravar_fn, buscar_fn, g, _p = _falsos()
     coletar(buscar_fn, ler_fn, gravar_fn, hoje=datetime.date(2026, 10, 17))
@@ -189,6 +208,7 @@ def _t_trava_estrutural():
 
 TESTES = {
     "primeira rodada: 94 meses desde jan/2019, BR = soma das 27, mês corrente parcial, taxa": _t_primeira_rodada,
+    "faixa habitual sem 2020 e 2021, exclusão declarada no arquivo": _t_faixa_sem_pandemia,
     "segunda rodada pede só os 3 últimos meses e mantém os cortes congelados": _t_incremental,
     "mês que falhou fica null (lacuna declarada), nunca zero": _t_falha_vira_lacuna_nao_zero,
     "nenhuma resposta: nada regravado": _t_falha_total_nao_regrava,
