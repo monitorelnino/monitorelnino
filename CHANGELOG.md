@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
 
+## 2026-10-19 · #888 · Diário oficial do RJ lido por data
+
+O Rio de Janeiro passa a ter rota de leitura: a página de cadernos da data e o identificador do visualizador dão o PDF da Parte I (Poder Executivo), sem cookie (4,7 MB em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +30 (adaptador novo, recurso novo, com autoteste offline).
+
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
 O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
