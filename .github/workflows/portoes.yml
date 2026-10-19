@@ -46,47 +46,12 @@ jobs:
       - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
         id: diff
         run: |
-          # 21/09/2026 (pedido editorial: PRs de texto/gráfico/estrutura demoravam o mesmo que PRs
-          # de dado — a suíte inteira sempre rodava, sem olhar o que mudou de fato). Convenção já
-          # em uso no projeto: .py na raiz/scripts é coleta/verificação de DADO; .js em scripts/ é
-          # verificação de PÁGINA (roda a página em jsdom/Chromium). data/, requirements.txt e o
-          # workflow semanal também sinalizam dado. Falso positivo (marcar como "mudou dado" um PR
-          # que na verdade só mexeu em página) é seguro — só roda a suíte inteira à toa; falso
-          # negativo seria o risco real, por isso o padrão é amplo de propósito.
-          BASE="${{ github.event.pull_request.base.sha }}"
-          if [ -z "$BASE" ]; then
-            echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
-            echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
-            echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"
-          else
-            ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
-            echo "arquivos alterados:"; echo "$ARQUIVOS"
-            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/'; then
-              echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
-            else
-              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
-            fi
-            # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
-            # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
-            # min juntos e só podem ser afetados por página, folha de estilo, script de página ou
-            # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
-            # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
-            # custa um defeito no ar.
-            # A7-10 (12/10/2026): catálogo de conteúdo, contratos e regras de layout, o medidor e
-            # o netlify.toml mudam a página; `config/` muda a corrente. `quais_portoes.py` LÊ estas
-            # duas regex daqui — não há cópia.
-            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$|^conteudo/|^layout/|^netlify\.toml$'; then
-              echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
-            else
-              echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
-            fi
-          fi
+          python3 scripts/quais_portoes.py --ci "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}"
       - name: Portões — página e estrutura (sempre)
         run: |
           set -e
+          # `git add -A` marca conflito como resolvido: o marcador já subiu duas vezes no CHANGELOG (28/09/2026).
           # assunto: cor texto rapido
-          # 28/09/2026: `git add -A` marca o caminho como RESOLVIDO mesmo com           # commit passa sem reclamar — o CHANGELOG.md subiu assim duas vezes neste dia. Portão
-          # barato, repositório inteiro, antes de qualquer outra coisa.
           # assunto: cor texto rapido
           # barra_publicacao: sim
           python3 scripts/verificar_marcadores_de_conflito.py
@@ -94,14 +59,11 @@ jobs:
           python3 scripts/validar_workflows.py
           # assunto: texto rapido
           python3 scripts/verificar_scripts_dos_workflows.py
-          # §178 (23/09/2026): escrita em modo texto sem newline fixado corrompe todo derivado
-          # regenerado fora do runner (CRLF contra o LF que o manifesto sela). Roda sempre, não só
-          # quando dado muda: o defeito entra por *.py, e é aí que ele precisa ser barrado.
+          # Escrita em modo texto sem newline fixado corrompe derivado regenerado fora do runner (§178).
           # assunto: texto rapido
           # barra_publicacao: sim
           python3 scripts/verificar_escrita_portavel.py
-          # A7-11 (12/10/2026): credencial e CPF nas linhas acrescentadas pelo PR; e credencial de terceiro
-          # nas evidências preservadas (03/10, alerta do GitHub). Repositório público, publicado pela raiz.
+          # Credencial e CPF nas linhas acrescentadas; credencial de terceiro nas evidências (A7-11, alerta de 01/10/2026).
           # assunto: texto rapido
           python3 scripts/verificar_segredos.py --contra origin/main
           # assunto: cor texto rapido
@@ -121,45 +83,29 @@ jobs:
           node scripts/verificar_runtime_financiamento.js
           # assunto: dado
           python3 scripts/verificar_financiamento_coerencia.py
+          # Um medidor de frescor para Financiamento, Defesa civil e Saúde.
           # assunto: dado
-          # 16/10/2026 (consolidação item 6): um medidor de frescor para Financiamento, Defesa civil e
-          # Saúde — um leitor de carimbo, um relógio, três famílias declaradas; o autoteste roda dentro.
           python3 scripts/verificar_frescor.py
-          # 04/10/2026 (garantia dos temporizadores): o registro, o despachante, o
-          # orçamento da noite e o painel. O registro é BLOQUEANTE: workflow agendado que
-          # falte nele é temporizador que ninguém recupera.
+          # Todo `schedule:` está no registro; sinal diário não cai em cadência semanal (§307).
           # assunto: dado
           python3 scripts/verificar_temporizadores.py
-          # 10/10/2026: a vez na noite — grupo por elo e fila por ordem de chegada no job `vez`.
           # assunto: dado
           python3 scripts/vez_na_noite.py --autoteste
-          # 10/10/2026 (item 2-bis): catálogo das falhas da noite — toda falha com causa, prova e
-          # o caso de teste que a reproduz (que tem de existir na árvore) — e a checagem pré-noite.
           # assunto: dado
           python3 scripts/catalogo_de_falhas.py
-          # 10/10/2026 (item 2-bis.2): o ensaio real da noite (veredito e condução) e o elo de ensaio.
-          # 04/10/2026 (20:30): o GitHub rejeitou dois workflows por cinco horas, e nenhum
-          # portão viu — `run` e `with` no mesmo passo é válido para o YAML e inválido para
-          # ele. A trava estrutural está em `validar_workflows.py`; este portão pergunta ao
-          # próprio GitHub se ele conseguiu ler cada arquivo.
+          # O GitHub rejeitou dois workflows por cinco horas e nenhum portão viu (04/10/2026): pergunta a ele.
           # assunto: dado
           python3 scripts/verificar_workflow_aceito.py
-          # 04/10/2026: a migração das sobras do DOE e a porta de gravação do coletor. A
-          # publicação da noite de 03→04 morreu duas vezes por 10 sobras fora do esquema.
           # assunto: dado
           python3 scripts/migrar_sobras_do_doe.py --autoteste
-          # 04/10/2026 (rotina semanal do blog): o gerador do pacote e o verificador do
-          # texto. O verificador roda sobre os textos aprovados e reprova TEXTO, não o
-          # site — um texto fora do pacote fica de fora e o resto publica.
+          # Reprova TEXTO do blog, não o site.
           # assunto: texto
           python3 scripts/verificar_texto_blog.py
           # assunto: texto
           python3 scripts/gerar_mudancas.py --check
+          # As quatro réguas das fichas municipais leem o banco uma vez.
           # assunto: dado
           # barra_publicacao: sim
-          # 16/10/2026 (consolidação item 6): as quatro réguas das fichas municipais (D1 documento lido e
-          # preservado, `documento` em forma de título, data do instrumento, capital com uma fonte) leem o
-          # banco uma vez; o autoteste (34 casos) roda dentro.
           python3 scripts/verificar_fichas_municipais.py
           # 19/10/2026 (consolidação item 6): sete regras de dado num executor — ausência declarada, rótulo
           # do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa.
@@ -179,21 +125,16 @@ jobs:
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_tamanho_dos_dados.py
+          # UM verificador de texto público, uma renderização por página; roda SEMPRE porque palavra proibida e semana chegam por dado e ele barra a publicação.
           # assunto: texto
           # barra_publicacao: sim
-          # 16/10/2026 (consolidação item 3): UM verificador de texto público, uma renderização por
-          # página — jargão, refrão, vocabulário proibido (global, por página, contrato e o que os scripts
-          # escrevem), semana epidemiológica, legendas e prosa (portão 19), componente de figura, fichas
-          # semânticas, palavras por página, enquadramento federal e a regra 0 da Imprensa. Roda SEMPRE
-          # porque é regra de DADO: palavra proibida e semana chegam por dado externo, e ele barra a
-          # publicação. Regras em layout/regras.json; o autoteste (72 mutações) roda antes das páginas.
           node scripts/verificar_texto_publico.js
           # assunto: dado
           python3 scripts/pistas.py --autoteste
           # assunto: dado
           python3 scripts/verificar_escritor_de_pista.py
+          # Nenhuma fila espera por pessoa; pendente > 21 dias reprova (09/10/2026).
           # assunto: dado
-          # 09/10/2026 (lote 2.9): nenhuma fila espera por pessoa; pendente > 21 dias reprova depois do prazo do estoque.
           python3 scripts/verificar_fila_nao_humana.py
           # assunto: dado
           python3 scripts/verificar_escritores.py
@@ -210,31 +151,21 @@ jobs:
           node scripts/verificar_seguranca.js
           # assunto: cor rapido
           node scripts/verificar_seo.js
-          # §258 (27/09/2026): a página "Pesquisadores" foi arquivada por decisão da editoria,
-          # para reconstrução depois do preprint. `publish = "."` serve a raiz inteira, então
-          # mover o arquivo para `arquivo/` NÃO o retira do ar por si: sem a regra de 404 ele
-          # segue acessível por URL, só sem link apontando — que é pior, porque ninguém olharia.
-          # O portão trava quatro coisas: nenhum HTML publicado linka a página, os arquivos não
-          # voltaram à raiz, a regra de 404 existe, e voltar exige linha no CHANGELOG — o
-          # arquivo de volta, sozinho, não basta.
+          # Página arquivada não volta ao ar por descuido: `publish = "."` serve a raiz (§258).
           # assunto: texto rapido
           python3 scripts/verificar_pagina_arquivada.py
-          # 30/09/2026: o CODEMAP é gerado do código e reprova quando envelhece — mapa que
-          # mente manda ler o arquivo errado com a confiança de quem conferiu.
+          # O CODEMAP é gerado do código e reprova quando envelhece (30/09/2026).
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --conferir
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --autoteste
-          # 30/09/2026 (§317): entrada nova de CHANGELOG é curta e tem chave por data e PR.
+          # Entrada nova de CHANGELOG é curta e tem chave por data e PR (§317).
           # assunto: texto rapido
           python3 scripts/verificar_changelog_curto.py
-          # 30/09/2026: o corte é a data da rodada. Ele congelou 20 dias com o arquivo de
-          # transferências, e o site dizia "dados até 10/09" com o índice recebendo planos todo dia.
+          # O corte é a data da rodada: o que o carimbo diz e quando é escrito.
           # assunto: texto rapido
-          # 16/10/2026 (consolidação item 6): o que o carimbo diz e quando é escrito, num portão só.
           python3 scripts/verificar_carimbo_da_rodada.py
-          # 12/10/2026 (A3-29): vigência dos decretos com data só de ano decide pelo intervalo.
-          # 12/10/2026 (A7-14): toda regra de layout/regras.json diz quem a julga.
+          # Toda regra de layout/regras.json diz quem a julga (A7-14).
           # assunto: texto rapido
           python3 scripts/verificar_conformidade.py --regras-cobertas
       # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
@@ -295,47 +226,12 @@ jobs:
       - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
         id: diff
         run: |
-          # 21/09/2026 (pedido editorial: PRs de texto/gráfico/estrutura demoravam o mesmo que PRs
-          # de dado — a suíte inteira sempre rodava, sem olhar o que mudou de fato). Convenção já
-          # em uso no projeto: .py na raiz/scripts é coleta/verificação de DADO; .js em scripts/ é
-          # verificação de PÁGINA (roda a página em jsdom/Chromium). data/, requirements.txt e o
-          # workflow semanal também sinalizam dado. Falso positivo (marcar como "mudou dado" um PR
-          # que na verdade só mexeu em página) é seguro — só roda a suíte inteira à toa; falso
-          # negativo seria o risco real, por isso o padrão é amplo de propósito.
-          BASE="${{ github.event.pull_request.base.sha }}"
-          if [ -z "$BASE" ]; then
-            echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
-            echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
-            echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"
-          else
-            ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
-            echo "arquivos alterados:"; echo "$ARQUIVOS"
-            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/'; then
-              echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
-            else
-              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
-            fi
-            # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
-            # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
-            # min juntos e só podem ser afetados por página, folha de estilo, script de página ou
-            # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
-            # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
-            # custa um defeito no ar.
-            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$|^conteudo/|^layout/|^netlify\.toml$'; then
-              echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
-            else
-              echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
-            fi
-          fi
-      # 30/09/2026 (§316): os portões de TEXTO saíram do bloco "sempre"; 16/10/2026: o verificador
-      # único de texto público voltou para lá (regra de dado, barra a publicação) e aqui fica só o
-      # que é de PR — a forma e as rampas.
+          python3 scripts/quais_portoes.py --ci "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}"
       - name: Portões de texto (só se página, estilo ou ficha mudaram)
         if: steps.diff.outputs.pagina_mudou == 'true'
         run: |
           set -e
-          # A7-03 (12/10/2026): regras de FORMA (data ISO, undefined, {x}, texto interno, ponto
-          # decimal) só no PR, sem barrar a publicação do dia — o mesmo verificador, com `--forma`.
+          # UM verificador de texto público, uma renderização por página; roda SEMPRE porque palavra proibida e semana chegam por dado e ele barra a publicação.
           # assunto: texto
           node scripts/verificar_texto_publico.js --forma
           # assunto: cor — as rampas dos mapas passam em contraste e em daltonismo
@@ -366,23 +262,16 @@ jobs:
         run: |
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
           # assunto: cor texto — CONFORMIDADE (03/10/2026): um portão para todas as páginas
-          # contratadas, que INCORPORA o de layout e acrescenta tipografia, as quatro funções da
-          # figura, vocabulário, forma dos números e acessibilidade. Ele lê layout/regras.json e o
-          # contrato de cada página; exceção só por layout/excecoes.json, com motivo e data.
           # assunto: texto
-          # 09/10/2026 (ajuste 7): o guia em PDF e a imagem do Proteja-se, gerados no navegador.
           # assunto: texto
           node scripts/verificar_guia_proteja_se.js
           # assunto: texto
-          # 09/10/2026 (ajustes 3 e 5): grade de números sem cartão órfão; figura com um título só.
           # assunto: texto
           python3 scripts/verificar_grades_de_numeros.py
           # assunto: texto
-          # 09/10/2026 (ajuste 6): texto do mouse dos mapas sem dado cru; um marcador por capital.
           # assunto: texto
           node scripts/verificar_dicas_dos_mapas.js
           # assunto: cor texto
-          # 09/10/2026 (ajuste 10): figuras de contagem da Defesa civil (Chromium real).
           node scripts/verificar_figuras_de_contagem.js
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
@@ -429,38 +318,7 @@ jobs:
       - name: Detectar se a mudança envolve dado/coleta (evita rodar portões de dado em edição só de página)
         id: diff
         run: |
-          # 21/09/2026 (pedido editorial: PRs de texto/gráfico/estrutura demoravam o mesmo que PRs
-          # de dado — a suíte inteira sempre rodava, sem olhar o que mudou de fato). Convenção já
-          # em uso no projeto: .py na raiz/scripts é coleta/verificação de DADO; .js em scripts/ é
-          # verificação de PÁGINA (roda a página em jsdom/Chromium). data/, requirements.txt e o
-          # workflow semanal também sinalizam dado. Falso positivo (marcar como "mudou dado" um PR
-          # que na verdade só mexeu em página) é seguro — só roda a suíte inteira à toa; falso
-          # negativo seria o risco real, por isso o padrão é amplo de propósito.
-          BASE="${{ github.event.pull_request.base.sha }}"
-          if [ -z "$BASE" ]; then
-            echo "sem contexto de PR (disparo manual) — suíte completa por segurança"
-            echo "dado_mudou=true" >> "$GITHUB_OUTPUT"
-            echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"
-          else
-            ARQUIVOS=$(git diff --name-only "$BASE" "${{ github.sha }}")
-            echo "arquivos alterados:"; echo "$ARQUIVOS"
-            if echo "$ARQUIVOS" | grep -qE '(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/'; then
-              echo "dado_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ dado/coleta mudou: suíte completa"
-            else
-              echo "dado_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ só página/estrutura: pulando portões de dado"
-            fi
-            # 30/09/2026 (§316, item 3 do handover de otimização): a segunda pergunta. Os portões de
-            # TEXTO (legendas, vocabulário, voz, fichas, figuras) e os dois de navegador custam ~4
-            # min juntos e só podem ser afetados por página, folha de estilo, script de página ou
-            # ficha semântica. Um PR que só toca `.py` de coletor não abre navegador nem varre
-            # legenda. O padrão é amplo de propósito: falso positivo custa tempo, falso negativo
-            # custa um defeito no ar.
-            if echo "$ARQUIVOS" | grep -qE '\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$|^conteudo/|^layout/|^netlify\.toml$'; then
-              echo "pagina_mudou=true" >> "$GITHUB_OUTPUT"; echo "→ página/estilo mudou: portões de texto e de navegador entram"
-            else
-              echo "pagina_mudou=false" >> "$GITHUB_OUTPUT"; echo "→ nenhuma página tocada: pulando portões de texto e de navegador"
-            fi
-          fi
+          python3 scripts/quais_portoes.py --ci "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}"
       - name: Portões — dado e coleta (só se dado mudou)
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |
@@ -472,52 +330,13 @@ jobs:
           python3 verificar_evidencias.py
           python3 verificar_financiamento.py
           python3 verificar_painel.py
-          # §182 (23/09/2026): a reavaliação de suspensão por defeso tem régua própria — evidência
-          # truncada não reabre fonte, e notícia institucional suspensa não fecha o canal de documento.
           python3 verificar_resposta.py
-          # §255 (27/09/2026): os cartões "Esta semana em números" da Imprensa. Trava paridade
-          # (o que a página mostra é o que o dado diz), período em todo cartão de janela, zero
-          # que não é "sem coleta", ausência de variação enquanto não houver edição anterior,
-          # frase pronta sem cláusula de valor zero, e peso zero nos índices. Trava também que
-          # TODA data de dados-abertos/atos_resposta.csv seja legível: o arquivo tem 740 datas em
-          # dd/mm/aaaa e 71 em ISO, e um parser de um formato só mediu "71 decretos sem data" —
-          # quase virou lacuna falsa no CHANGELOG.
+          # Cartões da Imprensa: paridade com `semana.json`, período, zero nunca é "sem coleta" (§255).
           python3 scripts/verificar_imprensa.py
-          # O portão de COERÊNCIA da imprensa precisa de navegador (ele compara o número da
-          # imprensa com o número renderizado na página de origem), e por isso vive no portão de
-          # layout, depois da instalação do Chromium. Aqui fica só o autoteste dele, que é offline.
-          # §256 (27/09/2026): paridade entre data/cobertura_qd.json e o bloco
-          # varredura_diarios de data/verificacao_resumo.json. Os dois contam a MESMA coisa —
-          # municípios com diário indexado no Querido Diário — e nada garantia que concordassem.
-          # Pendência aberta desde 14/09 e cobrada pelo T1 do preprint: o número entra lá como
-          # limitação quantificada do E6, e uma divergência viraria duas afirmações incompatíveis
-          # publicadas no mesmo trabalho. Reprova também zero indexado: 5.571 em false é falha
-          # de coleta, não um fato.
+          # `cobertura_qd.json` e `verificacao_resumo.json` contam a mesma coisa e têm de concordar; zero indexado é falha de coleta (§256).
           python3 scripts/verificar_paridade_cobertura_qd.py
-          # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
-          # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
           python3 saude_opendatasus.py
-          # Bloco A do MARÉ Saúde (01/10/2026): o funil dos planos de saúde estaduais. O
-          # autoteste é offline e puro; a trava que ele cobra é a que importa aqui — zero
-          # resultado de motor NUNCA pode produzir a decisão que autoriza "não localizado".
-          # Bloco B do MARÉ Saúde (01/10/2026): a v0.4, calculada em paralelo. O autoteste cobra
-          # a trava central — sem coordenação verificada a UF NÃO recebe número, porque somar um
-          # terço de zero afirmaria ausência de sala de situação por ausência de busca — e a trava
-          # estrutural de que este gerador não escreve no índice nem no arquivo que a página lê.
-          # O juiz da saúde (01/10/2026). O autoteste cobra a classificação do que o ato
-          # institui, o degrau de coordenação — ato de 2026 que NÃO nomeia o ciclo é permanente,
-          # não criado para ele — e que o degrau nunca conclua ausência: este juiz só vê
-          # documentos que existem, e marcar ausência exige bateria completa, que é outro passo.
-          # O coletor de transferências por município (01/10/2026). O autoteste cobra as
-          # travas que importam: só linha de administração MUNICIPAL entra (as outras inflariam o
-          # número da cidade), valor ilegível levanta em vez de virar zero, município que não casa
-          # fica declarado com o valor, reler o mesmo mês é idempotente, e o mês em curso não é
-          # coletado — o Portal publica o arquivo fechado.
-          # Regra de sincronia do "Para gestores" (01/10/2026): a seção de recursos é só
-          # ponteiro para o Financiamento, e ponteiro quebra em SILÊNCIO — link para arquivo
-          # inexistente o navegador acusa, âncora para `id` inexistente não. Já aconteceu duas
-          # vezes: a seção do período eleitoral apontando para um calendário apagado, e a imprensa
-          # prometendo um modelo de LAI que saiu do site.
+          # Ponteiro quebra em silêncio: âncora para `id` inexistente o navegador não acusa.
           python3 scripts/verificar_ancoras_internas.py
 
       - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
@@ -532,7 +351,6 @@ jobs:
         continue-on-error: true
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
-            # Na `main`: comparação estrita com o git — derivado obsoleto é bloqueio.
             # assunto: dado
             bash scripts/verificar_derivados.sh
           else
@@ -561,113 +379,26 @@ jobs:
         run: |
           set -e
           python3 scripts/testar_contador_varredura.py
-          # §127 (20/09/2026): sondas passam a ter autoteste bloqueante.
-          # Não incluídos nos PRs #305/#306 para não conflitar com #303 (§123).
           pip install openpyxl==3.1.5 --break-system-packages -q
       - name: Autotestes dos coletores
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |
           python3 gerar_feeds.py --self-test
-          # §164 (22/09/2026): sonda de camada (painéis) — autoteste bloqueante desde a entrada.
-          # §184 (23/09/2026): busca ativa de domínio por UF. O autoteste é offline (rede injetada) e
-          # trava a ordem de prova — título > curadoria humana > corpo > palpite — mais a regra que
-          # impede endereço que responde sem se identificar de virar domínio oficial.
-          # §185 (23/09/2026): a política de robots.txt decidida pela editoria — ler, respeitar o
-          # Crawl-delay, acessar documento público com cliente identificado e DEIXAR RASTRO. O
-          # autoteste roda sem rede e trava as quatro partes, inclusive o rastro do canal renderizado.
-          # §228 (26/09/2026): um cliente só, e nunca disfarçado. Uma auditoria contou VINTE E UMA
-          # strings de User-Agent no repositório, seis delas começando com token de navegador e
-          # duas com o agente completo de um Chrome no Windows — uma delas com a justificativa
-          # escrita na própria docstring. O CLAUDE.md não abre exceção, e a política de robots do
-          # §185 depende do cliente que é REALMENTE enviado: quem mandava outra string era medido
-          # contra a regra de um agente e registrado no rastro como outro. A leitura é por AST
-          # para que docstring e comentário possam contar a história sem reprovar o portão.
+          # Um cliente só, e nunca disfarçado (§228); a leitura é por AST.
           python3 scripts/verificar_cliente_identificado.py
-          # §234 (26/09/2026): três módulos que existiam, tinham teste próprio e não eram
-          # invocados por nada — nem no pipeline, nem aqui. `buscar_financiamento_preventivo` é
-          # auxílio humano (imprime os quatro gabaritos de busca de uma sessão de verificação), e
-          # por isso não entra na rotina automatizada: entra como portão, para que a estrutura de
-          # data/financiamento_uf.json e o vocabulário de status continuem válidos.
           python3 buscar_financiamento_preventivo.py --check
-          # 17/10/2026: os testes do DOU (§209), da escrita (§209, §212), da espera de rede (§226), da
-          # fila de pistas (§245), do robots (§185) e os de regressão rodam em `verificar_autotestes_isolados.py`
-          # (`scripts/testar_*.py` sem `--autoteste`). A corrida das fixtures de localização (§251) segue fora.
-          # A história de cada um: docs/HISTORICO_DE_REGIMES.md e o CHANGELOG da data.
-          # §226 (26/09/2026): o coletor de transferências do Portal da Transparência estava no
-          # pipeline SEM autoteste e sem portão — o único assim entre os que pedem rede. O
-          # autoteste trava os três defeitos corrigidos: 504 transitório perdia o município, 429
-          # era laço infinito, e desistir era um print em vez de lacuna declarada.
-          # §220 (25/09/2026): autoteste que escreve no banco não é autoteste offline. Um
-          # deles gravou OITO execuções no log real — mockava rede e arquivos, e não
-          # `registrar_lacuna`, que chama `log_busca`, que grava. As travas estruturais dos
-          # coletores leem o próprio fonte e não enxergam escrita três chamadas abaixo, dentro
-          # de coletores_base: só a execução mostra. Este portão roda os 51 autotestes e
-          # compara data/ antes e depois, por CONTEÚDO — regravar idêntico é aviso, alterar
-          # reprova. Achou também um autoteste vermelho que nenhum outro portão rodava.
-          # 16/10/2026 (consolidação item 6, janela D): este comando roda TODO `*.py` e `scripts/*.py`
-          # que aceita `--autoteste` (210 na data) e reprova em qualquer vermelho (§228). Por isso os
-          # 131 comandos `python3 <script>.py --autoteste` que a suíte repetia um a um — todos os do
-          # job de dado, o laço dos coletores e os do bloco "sempre" cujo autoteste não abre arquivo
-          # real nenhum (medido com gancho de auditoria do Python) — saíram: nenhum deles pegava
-          # regressão que este não pega, e autoteste de `.py` só muda quando um `.py` muda, o que
-          # aciona `dado_mudou`. Ficam no bloco "sempre" os autotestes que leem `layout/`,
-          # `conteudo/`, `schemas/`, página ou workflow de verdade (mudam sem `.py` mudar), os em
-          # JavaScript (fora deste comando) e os `--self-test`/`--check`.
-          # 17/10/2026 (janela D): catorze comandos `--autoteste` que voltaram ao bloco "sempre" em 16/10
-          # saem pela mesma prova (gancho de auditoria: não abrem arquivo fora de `.py` nem subprocesso;
-          # `quais_portoes` lê só `portoes.yml`, que aciona `dado_mudou`).
-          # Quem acrescentar autoteste novo: ele já roda aqui; só vai ao "sempre" se ler arquivo não `.py`.
+          # Roda TODO `*.py` com `--autoteste` e reprova em qualquer vermelho ou em alteração de `data/` (§220, §228).
+          # Autoteste de `.py` não se repete aqui; fica no bloco "sempre" só o que lê layout/, conteúdo, schemas, página ou workflow.
           python3 scripts/verificar_autotestes_isolados.py
-          # §165 (23/09/2026): coletor do painel do AM. O autoteste é offline por construção
-          # (rede, evidência, log e livro de fontes injetados) e confere a regra que dá sentido
-          # ao coletor: ano no painel é `declarado`, nunca `documentado`.
-          # §166 (23/09/2026): cobertura declarada por canal. Estrutura inerte (nenhuma página
-          # a lê ainda); o autoteste trava a regra que lhe dá sentido: erro de acesso é
-          # tentativa, nunca verificação — senão a nota de rodapé repetiria o erro que corrige.
-          # §163 (22/09/2026): o self-test do juiz passa a ser bloqueante. O cenário 6 confere que a
-          # cadeia de derivados que ele regenera é a MESMA de scripts/verificar_derivados.sh —
-          # divergir foi o que deixou o portão 12 vermelho na main.
+          # O self-test do juiz é bloqueante (§163): a cadeia que ele regenera é a de `verificar_derivados.sh`.
           python3 julgar_e_aplicar_descobertas.py --self-test
-          # §175 (23/09/2026): a rotina de redação de CPF regravava o texto preservado sem recalcular
-          # `texto_hash` — e o portão 6 nunca conferia o hash do texto, só o da cópia binária. O
-          # autoteste trava as quatro regras: contagem sem marcadores, escrita em LF, reindexação pelo
-          # arquivo em disco (que é a verdade) e `tamanho` intacto (ele descreve `arquivo`).
-          # §176 (23/09/2026): o texto integral do diário oficial não guardava hash nenhum (148 itens),
-          # e quatro apontavam para um .txt que nunca entrou no commit da rodada. O autoteste trava as
-          # duas regras: fila pelo índice (não só pelas pistas) e hash ausente selado, divergente acusado.
-          # §177 (23/09/2026): OCR do PDF escaneado. O autoteste roda sem rede e sem Tesseract, e trava
-          # as regras que dão sentido ao recurso: a fila só chama escaneado, o texto de OCR tem arquivo
-          # próprio (não sobrescreve a camada de texto), CPF redigido antes do hash, marcador e LF.
-          # 27/09/2026 (PR 1 do juiz automático): zero resultado bruto na busca web não é ausência.
-          # O autoteste do coletor trava a regra de decisão (motor_sem_resposta, duas rodadas para
-          # coberto_sem_mencao) e o conjunto de nove consultas; o portão do funil trava a contagem
-          # por etapa da rodada, com o teto de 25% de motor sem resposta.
+          # Funil: contagem por etapa da rodada, teto de 25% de motor sem resposta, canários do juiz.
           python3 scripts/verificar_funil.py
-          # 28/09/2026 (item 7b): o disjuntor por motor de origem. O autoteste trava o que dá sentido
-          # a ele — o teto é "acima de 50%" e não "a partir de", uma sentinela muda não derruba e duas
-          # derrubam, sucesso zera a sequência, e NUNCA sobram menos de dois motores ativos.
-          # 27/09/2026 (PR 2 do juiz automático): a regra R7 revisada. Os dez canários são um
-          # documento por desfecho — plano novo, readaptado, de elaboração, decreto de resposta,
-          # aprovação por conselho, plano de geada, notícia sem documento, PDF ilegível, ente errado
-          # e citação incompleta. Falso positivo é pior que falso negativo: é isso que eles travam.
-          # 28/09/2026 (§265, itens 1 e 1a do desacoplamento): a linha de saúde por script. O
-          # autoteste trava o que dá sentido a ela — itens nulo é "não medido" e nunca zero, o resumo
-          # do erro é a linha decisiva e não o log inteiro, a poda mantém sete dias, e o próprio
-          # autoteste não escreve em data/.
-          # item 4 (28/09/2026): o log vira JSONL mensal. O portão de paridade é o que impede a perda
-          # silenciosa — com o log fatiado, perder um arquivo de mês passaria sem ruído, porque o JSON
-          # continuaria válido, só menor. Foi assim que uma união por conteúdo apagou quase 3.000
-          # execuções em 23/09.
-          # 19/10/2026: a mesma leitura confere o esquema (A6-27: data ISO e decisão do vocabulário).
+          # Log mensal em JSONL: perder um mês não passa calado (paridade); confere o esquema (A6-27).
           python3 scripts/verificar_log_de_buscas.py
-          # §266: o painel que a editoria lê sem cavar log. O portão reprova script ESSENCIAL
-          # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
-          # seguidas — fonte fora do ar é rotina; coletor quebrado não é.
+          # Script essencial com erro reprova; coletor que erra duas rodadas só alerta (§266).
           python3 scripts/gerar_saude_pipeline.py --check
-          # 28/09/2026 (decisão da editoria, item 1): o Querido Diário volta ao funil. O autoteste do
-          # juiz trava o recorte do ato — a pista do QD aponta a EDIÇÃO, e o documento primário do
-          # §5.2.1 é o ATO. O da fila trava que ela gera ALVOS, não pistas: a primeira tentativa montou
-          # pistas com o excerto errado, e a medição mostrou antes de confiar.
+          # O QD aponta a EDIÇÃO; o documento primário é o ATO (§5.2.1).
           python3 consultar_querido_diario.py --check
 
 
