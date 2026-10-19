@@ -1,0 +1,91 @@
+https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=EAB21D88-45BD-4CD0-BD2A-D4F0D229P380A
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" mozdisallowselectionprint moznomarginboxes>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>D.O. Digital : Imprensa Oficial do Estado do Rio de Janeiro</title>
+    <script type="text/javascript">
+      //Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8531359-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+      
+      //resize para o tamamho certo
+      function resize_iframe()
+      {
+        var height=window.innerWidth;//Firefox
+        if (document.body.clientHeight)
+        {
+          height=document.body.clientHeight;//IE
+        }
+        document.getElementById("ContDo").style.height=parseInt(height-
+        document.getElementById("ContDo").offsetTop-6)+"px";
+      }
+      window.onresize=resize_iframe; 
+
+      function fim_load(){
+       resize_iframe();
+       //window.alert("lala");
+      }
+            setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 1000);
+
+    </script>
+<style type="text/css">
+<!--
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height: 100%;
+}
+img{
+border:none;  
+}
+.fundo {
+  background-image: url(/portal/modules/conteudoonline/images/visualiza_edicao/topo.png);
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+  height: 70px;
+  width: 100%;
+  text-align: right;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 570px) {
+    .fundo{ display:none;}
+}
+
+.divdo{
+  width: 100%  ;
+  height: 90%;
+  margin:0;
+  padding:0;
+  border:0;
+}
+
+-->
+</style>
+</head>
+<body tabindex="1" class="loadingInProgress" onload="fim_load();" >
+  <div class="fundo">
+  &nbsp;
+  </div>
+  <iframe id="ContDo" name="ContDo" class="divdo" src="?k=EAB21D88-45BF-4CD0-BD2A-D4F0D229P380A" />
+</body>
+
+</html>
+
+
+
