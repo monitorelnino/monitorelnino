@@ -793,7 +793,6 @@ def edicoes_mg(buscar_fn, base):
     return fn
 
 
-<<<<<<< HEAD
 # RJ (17/10/2026, runs 39037938143 e 39038338576): a IOERJ lista os cadernos de uma data em
 # `do_seleciona_edicao.php?data=<AAAAMMDD em base64>` (dia sem edição: nenhum caderno); cada caderno abre
 # `mostra_edicao.php?session=…`, um visualizador pdf.js que lê o PDF pela chamada que o próprio
@@ -834,9 +833,6 @@ def edicoes_ioerj(buscar_fn, base, dormir=None):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_ioerj": edicoes_ioerj, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
-                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg}
-=======
 # RS (19/10/2026, runs 39253212830 a 39255284211): a API que o portal do DOE-RS chama
 # (`public/diarios/lista?data=AAAA-MM-DD`, lida no `main.js` do sítio) lista os diários da data — a
 # edição do Executivo (tipoDiario 1, com as extras dentro das páginas) e o outro caderno (tipoDiario
@@ -855,10 +851,9 @@ def edicoes_rs(buscar_fn, base):
     return fn
 
 
-EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_ioerj": edicoes_ioerj, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg,
                     "edicao_rs": edicoes_rs}
->>>>>>> origin/main
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
