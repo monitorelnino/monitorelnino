@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Defesa civil: o que lemos e o que o reconhecimento pressupõe
+## 2026-10-19 · #879 · Defesa civil: o que lemos e o que o reconhecimento pressupõe
 
 Em 722 dos 953 municípios o ato municipal não foi localizado: eles entram pela portaria federal, e a data do decreto vinha inferida dela. O cartão do município e a tabela da figura passam a dizer "ato municipal não localizado até o corte" e a data em que a União reconheceu, em vez de apresentar como lida uma data que não foi lida. Quem tem o ato segue com documento, data e fonte. Contagem do topo e mapa não mudam.
 
