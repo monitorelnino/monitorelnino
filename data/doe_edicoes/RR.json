@@ -1,12 +1,782 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "/edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "rotulo_corrigido_em": "17/10/2026 (404, erro de rede e arquivo que não é edição não são recusa medida)"
+  "modo": "padrao_por_data",
+  "em": "17/10/2026",
+  "conta_como_consultado": true
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-06-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3022002,
+   "paginas": 106,
+   "paginas_com_texto": 106,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/06/doe-20260629.pdf",
+   "impressao": "d213f532d64b29c30b6b4d72f81323470fc8aabdf4bbc5280fd3bdc88518ce41",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-06-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3269264,
+   "paginas": 156,
+   "paginas_com_texto": 156,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/06/doe-20260630.pdf",
+   "impressao": "255327e781e6830d04905a389731fca63c481be0fc29f58602db8d8001b0f7ea",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2276025,
+   "paginas": 81,
+   "paginas_com_texto": 81,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260701.pdf",
+   "impressao": "50b4290119c99274326106e5837e3bab925a62bc47941d5a584794a478dd4a81",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3943305,
+   "paginas": 196,
+   "paginas_com_texto": 196,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260702.pdf",
+   "impressao": "a837d256dfc54a519c2b02c7ba6dd5b71956e94b744b21852d45c44cdd14c081",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11106708,
+   "paginas": 292,
+   "paginas_com_texto": 292,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260703.pdf",
+   "impressao": "1ae3b6be8dce85b7c361f3e69780326e3b06164b5df310ae6bf8eec756ddfe21",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2817809,
+   "paginas": 144,
+   "paginas_com_texto": 144,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260706.pdf",
+   "impressao": "b1c025a7b14ccd6e998da17001f7aaf5a34382d85d2d1db163baadbeb999d3fc",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6558122,
+   "paginas": 283,
+   "paginas_com_texto": 283,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260707.pdf",
+   "impressao": "db3535e8d4dcb90304b0b153bdfacdda71c070dd3648edb57e16063381a475d6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3195525,
+   "paginas": 124,
+   "paginas_com_texto": 124,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260708.pdf",
+   "impressao": "4021306c7c9cd01143a2e345e137d5b1bbf92c1a9544dc497fa9d5b73bc2b2a0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-09": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-07-10": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-07-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1927053,
+   "paginas": 53,
+   "paginas_com_texto": 53,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260713.pdf",
+   "impressao": "b52ff166fb38756270d1ce53e07d5eb3e51b15e9bbacc9eb16764dcc8def77ad",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3827725,
+   "paginas": 139,
+   "paginas_com_texto": 139,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260714.pdf",
+   "impressao": "a62dc658bd7f1fdb11868486aafcba4071ef10b4b2d73d9b84a4c20a1191da59",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2563217,
+   "paginas": 127,
+   "paginas_com_texto": 127,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260715.pdf",
+   "impressao": "190c5fd53a18b57a13baed6f3864b316c6c7cca633132ee0150b0e2dee80dc3a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5458830,
+   "paginas": 260,
+   "paginas_com_texto": 260,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260716.pdf",
+   "impressao": "d81ae8bed82b4a6f623b58bf234b4ac68a53667b5e07edc8b059beb8edcf1d6e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3901196,
+   "paginas": 108,
+   "paginas_com_texto": 108,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260717.pdf",
+   "impressao": "9291a8dfeeb20b72d61bdfa84d5a3f528c4c5c9cf00067d58c690ca92b26d096",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3120359,
+   "paginas": 137,
+   "paginas_com_texto": 137,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260720.pdf",
+   "impressao": "393125bb58eb335f250d364de6949a03b8969134068ac2c40feb6bddc78beb86",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5545199,
+   "paginas": 208,
+   "paginas_com_texto": 208,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260721.pdf",
+   "impressao": "7692455673913d98d974646fb332a9236c79c414336596b39ed61e8fdc70d26f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2766074,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260722.pdf",
+   "impressao": "7f6a1bb50e81a25a067f1943a97290370d03544eda813e3aadacc924c4e7f94c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2413666,
+   "paginas": 87,
+   "paginas_com_texto": 87,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260723.pdf",
+   "impressao": "4754441a6294a8e3b34c5e620cac32de6a13592c4883120f0b88f5c8a556590b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2587047,
+   "paginas": 102,
+   "paginas_com_texto": 102,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260724.pdf",
+   "impressao": "1c1c8e7dcc054542946cdf033208548082ab506f8ccb2f1292fc232bcbe65b6d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 20387639,
+   "paginas": 367,
+   "paginas_com_texto": 367,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260727.pdf",
+   "impressao": "c43f54798b032678a5db323e71c363dbbe5bccea4468d54d8987f33a14d0abd9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5278813,
+   "paginas": 166,
+   "paginas_com_texto": 166,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260728.pdf",
+   "impressao": "efce1372711a41a7a1e115f9aeed14bae7a6a40dc19feda8f0bff239db0466ba",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3705774,
+   "paginas": 101,
+   "paginas_com_texto": 101,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260729.pdf",
+   "impressao": "b696a882636ce5fc256e7eccac5f14268cde9f1d8002a3e242cfc87e6691587d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2231419,
+   "paginas": 84,
+   "paginas_com_texto": 84,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260730.pdf",
+   "impressao": "9267ff55dfdee9bc1c59c85fc73c03d300e689977e1b237f26ebd68d938e7c1d",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "9267ff55dfdee9bc1c59c85fc73c03d300e689977e1b237f26ebd68d938e7c1d",
+   "termos_achados": [
+    "vigilância em saúde ambiental"
+   ]
+  },
+  "2026-07-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2826168,
+   "paginas": 117,
+   "paginas_com_texto": 117,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/07/doe-20260731.pdf",
+   "impressao": "0c2f6d9e4913c5eb80649e543046014c60824f8340752bfd83ca8b760e94aa80",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3089661,
+   "paginas": 141,
+   "paginas_com_texto": 141,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260803.pdf",
+   "impressao": "230b1d6a921980a0d6854273a197162aa8b1071ab1ae75798ab9b9415b362b95",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2709675,
+   "paginas": 107,
+   "paginas_com_texto": 107,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260804.pdf",
+   "impressao": "4ac25932f8b3854ce2c47f92b036e78e4927cc42e5b11e5b6dd33c9016f3e61b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3981284,
+   "paginas": 162,
+   "paginas_com_texto": 162,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260805.pdf",
+   "impressao": "b515bbe1b8830b53d713ae762c1a03c03f2293636e10cc6ea888f2bafca9c22b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2992277,
+   "paginas": 152,
+   "paginas_com_texto": 152,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260806.pdf",
+   "impressao": "6bba5f94881a9bced5f907b910c675a7ec04dc8855a513173f68f9059bd45570",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "6bba5f94881a9bced5f907b910c675a7ec04dc8855a513173f68f9059bd45570",
+   "termos_achados": [
+    "emergência em saúde pública"
+   ]
+  },
+  "2026-08-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2329443,
+   "paginas": 89,
+   "paginas_com_texto": 89,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260807.pdf",
+   "impressao": "e8c7eb4333c5c3240b105980990ddc01cb2f624d84c2938c67f0379552660a97",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4551665,
+   "paginas": 234,
+   "paginas_com_texto": 234,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260810.pdf",
+   "impressao": "721fe4033d8c9d005f17f382b159dd4dbfab08131087b40505cbf0305971b9ca",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2871090,
+   "paginas": 128,
+   "paginas_com_texto": 128,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260811.pdf",
+   "impressao": "3705912c6729d75f6b0aff6c8231991784eef1c8e23cfbd7380532fcb2e81465",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-12": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4090739,
+   "paginas": 186,
+   "paginas_com_texto": 186,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260812.pdf",
+   "impressao": "224b6fe181979db9bac1bcd50ecc8f50047f4479ce4eeadf19f1aacb1bce010f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3388140,
+   "paginas": 114,
+   "paginas_com_texto": 114,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260813.pdf",
+   "impressao": "9dc602d29273c8986220359f62701b93ce350ce31cae97cdc39bf819faf1435b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3144645,
+   "paginas": 134,
+   "paginas_com_texto": 134,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260814.pdf",
+   "impressao": "f26cd1c7583457fd6172e12e6de9d7db1e272b1cd5da4bd35ceda52d1001e863",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3810885,
+   "paginas": 185,
+   "paginas_com_texto": 185,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260817.pdf",
+   "impressao": "42d8c825d730d1a6912d69c0f2cc3a52a8f403c78b077734b73297a538138f50",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6919934,
+   "paginas": 367,
+   "paginas_com_texto": 367,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260818.pdf",
+   "impressao": "1dafe75e18a074572b768a341f658bb930f7679b8733ac820eba5717b12ff140",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-19": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2690230,
+   "paginas": 93,
+   "paginas_com_texto": 93,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260819.pdf",
+   "impressao": "1237c0837c670ec17ee7caf853bfb16f5dd041fe21b34a8cc53ddaec637d94b7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5221378,
+   "paginas": 146,
+   "paginas_com_texto": 146,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260820.pdf",
+   "impressao": "0db65f5655019889ffe87245b3fc2bad996e8286579db796116966eb75774a39",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2657050,
+   "paginas": 80,
+   "paginas_com_texto": 80,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260821.pdf",
+   "impressao": "5450c50b0e1fd4802b0bca0123d4cccc8a548470d8d64c3f2056e9eb8e7d6c51",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2022037,
+   "paginas": 74,
+   "paginas_com_texto": 74,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260824.pdf",
+   "impressao": "ffcc2f58a2603a5b26b3d28097603126d5bc8a1f54364bc8373e47b65eaa16a7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9752828,
+   "paginas": 243,
+   "paginas_com_texto": 243,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260825.pdf",
+   "impressao": "fec0b2ddac843e8bf379b729533755d4123ff86b029f20957ee00bcef8497d60",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-26": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3380482,
+   "paginas": 170,
+   "paginas_com_texto": 170,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260826.pdf",
+   "impressao": "50a1bc6f9c62d90aa049120dd657f91ff8fea4e3c3101fff41eb9525658b9ae3",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "50a1bc6f9c62d90aa049120dd657f91ff8fea4e3c3101fff41eb9525658b9ae3",
+   "termos_achados": [
+    "vigilância em saúde ambiental"
+   ]
+  },
+  "2026-08-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 7656370,
+   "paginas": 138,
+   "paginas_com_texto": 138,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260827.pdf",
+   "impressao": "2b671067151fbf55aff789f4a189bbe42bb03b6753b9e9bd7e9a89ea2ff9340a",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "2b671067151fbf55aff789f4a189bbe42bb03b6753b9e9bd7e9a89ea2ff9340a",
+   "termos_achados": [
+    "vigilância em saúde ambiental"
+   ]
+  },
+  "2026-08-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2490914,
+   "paginas": 95,
+   "paginas_com_texto": 95,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260828.pdf",
+   "impressao": "9ce38f8e758820bcda88112217d9af902b581b40f6389abf8c579099a39508d3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4215774,
+   "paginas": 168,
+   "paginas_com_texto": 168,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260831.pdf",
+   "impressao": "2f5223ea16ba458fb270fe9ff129272c23c296c2f9b5a250e51aab8039ff233b",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "2f5223ea16ba458fb270fe9ff129272c23c296c2f9b5a250e51aab8039ff233b",
+   "termos_achados": [
+    "sala de situação",
+    "El Niño"
+   ]
+  },
+  "2026-09-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3678010,
+   "paginas": 125,
+   "paginas_com_texto": 125,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260901.pdf",
+   "impressao": "cf0911c161d70c2449ee78cd875b4b2390ba490121f3c0be5154753b9b918129",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2661207,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260902.pdf",
+   "impressao": "7c8f6addd55dfe2984c29a4ecdaa4721b74f023f155522d806f311d0c238b858",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2569564,
+   "paginas": 83,
+   "paginas_com_texto": 83,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260903.pdf",
+   "impressao": "895d75bbdbc99e731664d7f0ddaa537fa348b51356be53872f94c1f8a9349161",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3452615,
+   "paginas": 163,
+   "paginas_com_texto": 163,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260904.pdf",
+   "impressao": "0b81f18097d20e58b8c05198368f85390d1c7e58cfcc5cff01b32b8900ec011c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-07": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-09-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4751692,
+   "paginas": 215,
+   "paginas_com_texto": 215,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260908.pdf",
+   "impressao": "835832d3a0d89adac4a6fee36c27beac49081d242fa6e2c49d1ba23a9f111165",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4414169,
+   "paginas": 199,
+   "paginas_com_texto": 199,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260909.pdf",
+   "impressao": "35cefb4a06d32870ba1beb7af9d8ca3362da294c7dbacdfd191dc39a8c687159",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "35cefb4a06d32870ba1beb7af9d8ca3362da294c7dbacdfd191dc39a8c687159",
+   "termos_achados": [
+    "sala de situação",
+    "plano de contingência",
+    "El Niño"
+   ]
+  },
+  "2026-09-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3613923,
+   "paginas": 170,
+   "paginas_com_texto": 170,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260910.pdf",
+   "impressao": "ce2836d9bbfab1ae0fe79a0013c2b00fd7eca1dac537321ed7c05c0f4dc9f1f5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3338264,
+   "paginas": 156,
+   "paginas_com_texto": 156,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260911.pdf",
+   "impressao": "df63e921a11d5d8b41f645e851c98cbd8da5ac4d215d0596de96f39e4dbb34f9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2878938,
+   "paginas": 134,
+   "paginas_com_texto": 134,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260914.pdf",
+   "impressao": "958b02b2275b20b60d059a6eb6602f767b2447a2216e17480cc53f07481ceab8",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "958b02b2275b20b60d059a6eb6602f767b2447a2216e17480cc53f07481ceab8",
+   "termos_achados": [
+    "sala de situação",
+    "plano estadual de preparação",
+    "El Niño",
+    "emergência em saúde pública"
+   ]
+  },
+  "2026-09-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3083561,
+   "paginas": 126,
+   "paginas_com_texto": 126,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260915.pdf",
+   "impressao": "21bf94b6a1fe21550c6658de5e8d16e1de23935f66a8ab9d37dc509d3b297620",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6157164,
+   "paginas": 191,
+   "paginas_com_texto": 191,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260916.pdf",
+   "impressao": "57e45ced3750cbb4f75bb33f38b58dc2e49b32b5f804eba69d33bd2d711f6dc7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2817664,
+   "paginas": 114,
+   "paginas_com_texto": 114,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260917.pdf",
+   "impressao": "e4ca4cf6d069361562cab74c8d40e03ee139b114800daa220d0e4964dc55131a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2612671,
+   "paginas": 108,
+   "paginas_com_texto": 108,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260918.pdf",
+   "impressao": "7a8a716262ca82db294de2e562a37e2a4f114d541ad22be541c3aab515b484dd",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3305290,
+   "paginas": 165,
+   "paginas_com_texto": 165,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260921.pdf",
+   "impressao": "f02ee5ba53f095364bebfad8ad53525ee3762f646661f1650c71b037956b7f1a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3040191,
+   "paginas": 106,
+   "paginas_com_texto": 106,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260922.pdf",
+   "impressao": "cd696a38cdc46e537a23277f5430aa01de140f055a658d86adfb735402caf929",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3863619,
+   "paginas": 135,
+   "paginas_com_texto": 135,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260923.pdf",
+   "impressao": "5f93aa080713fcb96602c7ebd2530dfea521e7c55359df28ce016156be72a0aa",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3101307,
+   "paginas": 129,
+   "paginas_com_texto": 129,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260924.pdf",
+   "impressao": "a37e2b9a420193f53c3bcab2f2ccd92a0c7d27ccac3679ed05e4bd956501e14b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3532732,
+   "paginas": 196,
+   "paginas_com_texto": 196,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260925.pdf",
+   "impressao": "3b33acfdeb0ae6ab4c8332a91d7ad71ec8cf30e84e1eea89c33eae3b78b329ca",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3382778,
+   "paginas": 117,
+   "paginas_com_texto": 117,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260928.pdf",
+   "impressao": "1bc6cb3dae38721ccefba5ef3a3cef65e3efd8638ad9d6082b5372eeb0d30b62",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3804845,
+   "paginas": 159,
+   "paginas_com_texto": 159,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260929.pdf",
+   "impressao": "3eaf03c1bb32a8433b6643778e7517274018ca136f7f3b22a85ab1ea8f0bb68c",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "3eaf03c1bb32a8433b6643778e7517274018ca136f7f3b22a85ab1ea8f0bb68c",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-09-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4123453,
+   "paginas": 130,
+   "paginas_com_texto": 130,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/09/doe-20260930.pdf",
+   "impressao": "c00c71f4e22f5a60ec207c3d2484f0141d2485e52df107dab668049038694017",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3717928,
+   "paginas": 147,
+   "paginas_com_texto": 147,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261001.pdf",
+   "impressao": "e349343ed43f0eb8c353e7ff75f56bc1998c4a990a10653721a7e022438b14b5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }

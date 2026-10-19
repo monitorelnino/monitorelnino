@@ -13,6 +13,17 @@ não pontuados permanecem na versão corrente.
 
 O coletor passa a guardar as 160 variáveis do bloco de gestão de riscos da MUNIC 2020, com a pergunta de cada uma, em `data/fontes_futuras/`, com peso zero. Conferido contra a leitura publicada: plano de enchentes 1.407 e habitacional 16,7% iguais; mapeamento e alerta não reproduzidos, declarado. Mgrd184 é plano de enchentes, não geral. METODOLOGIA §114.
 
+## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
+
+A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
+
+## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
+
+Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
+## 2026-10-19 · #858 · Financiamento: o dinheiro por risco, onde chega e o mês a mês
+
+Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.
+
 ## 2026-10-19 · #861 · Defesa civil: sai o cartão de decreto e alerta ao mesmo tempo
 
 O instantâneo do topo da Defesa civil deixa de gerar o cartão que cruzava decreto e alerta; a Imprensa já não o usava. Restam cinco cartões. Gerador −13 linhas, sem outro efeito.
@@ -32,9 +43,17 @@ A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.ht
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
 
+## 2026-10-19 · #864 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura
+
+Saem a frase sobre a data do dado, o "previsão, não observação", o parágrafo das listas federais, a nota do mapa de qualidade do ar (vai para a metodologia) e o gráfico do Semiárido. As siglas de UF viram etiqueta, sem link. No topo, a frase do prognóstico sai do cartão e vai para o texto da seção; rodapé preso na base e até seis por linha acabam com o vão branco.
+
 ## 2026-10-19 · #852 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação
 
 Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão "Resposta" dos números e a figura "O que foi localizado em cada estado", que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.
+## 2026-10-19 · #862 · Fila de pistas: recusada pelo juiz também perde o texto de trabalho
+
+A pista recusada só volta ao juiz quando o codebook muda, e ele relê o documento pelo endereço. A compactação da triagem passa a cobri-la, junto com as encerradas: 4.549 pistas, `pistas_imprensa.json` de 46,8 para 41,6 MiB (teto 50). A decisão do juiz fica. Histórico no git.
+
 ## 2026-10-19 · #857 · Saem seis scripts sem chamador
 
 Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.
@@ -78,6 +97,10 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 ## 2026-10-17 · #839 · Portões acompanham as páginas reformadas
 
 Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.
+
+## 2026-10-17 · #841 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc
+
+`coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.
 
 ## 2026-10-17 · #842 · Ensaio da noite confere o isolamento dos autotestes pelo portão único
 

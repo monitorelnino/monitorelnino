@@ -68,7 +68,24 @@ const PAGINA = "financiamento.html";
 // reduzir isto achando que ganha tempo, e para ninguem reintroduzir a busca repetida achando que
 // e so uma requisicao a mais.
 const ATRASO_MS = 5000;
-const ALVO = "desembolsado é o que já saiu do caixa";
+
+// 19/10/2026 (reforma do Financiamento, #858): a frase que este teste vigiava
+// ("desembolsado é o que já saiu do caixa") era uma CÓPIA do texto da página dentro do teste, e
+// morreu quando o texto mudou -- o teste reprovou por texto, não por corrida. Duas correções, uma
+// por causa:
+//
+//   1. O alvo não se copia mais: vem do catálogo, a mesma entrada que a página escreve. Texto que
+//      mude amanhã muda nos dois lugares de uma vez, porque é um lugar só.
+//   2. O arquivo atrasado passa a ser `financiamento/semana.json`. Medido em 19/10: bloquear
+//      `compromissos_federais.json` não tira NENHUMA linha visível da página reformada (os
+//      compromissos só aparecem na coluna do risco que o ato declara, e esse campo ainda não é
+//      coletado), enquanto bloquear `semana.json` tira 43. Atrasar um arquivo que não altera a
+//      tela não reproduz corrida nenhuma: seria um portão verde sem assunto.
+const ARQUIVO_ATRASADO = /financiamento\/semana\.json/;
+const CHAVE_ALVO = "financiamento.dc-topo.topo_direto.apoio";
+const ALVO = JSON.parse(fs.readFileSync(path.join(RAIZ, "conteudo", "financiamento.json"), "utf-8"))
+  .textos[CHAVE_ALVO];
+if (!ALVO) { console.error(`✗ CORRIDA DO MEDIDOR: ${CHAVE_ALVO} não está em conteudo/financiamento.json`); process.exit(1); }
 
 const TIPOS = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
                 ".json": "application/json", ".svg": "image/svg+xml" };
@@ -100,7 +117,7 @@ async function medir(porta, esperarPorCondicao) {
   // -- essa era a pagina buscar o arquivo quatro vezes --, mas era ruido real entre as duas
   // medicoes, e medicao nao se faz com a anterior ainda rodando.
   const pendentes = [];
-  await page.route(/compromissos_federais\.json/, async (rota) => {
+  await page.route(ARQUIVO_ATRASADO, async (rota) => {
     const dormir = new Promise(r => setTimeout(r, ATRASO_MS));
     pendentes.push(dormir);
     await dormir;
