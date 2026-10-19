@@ -77,7 +77,10 @@ FONTES_PADRAO = {
         "coluna_plano": "Mgrd184",
         "coluna_plano_seca": "Mgrd05",
         "_nota": "2017 e 2020 são as únicas edições recentes com este bloco (módulos rotativos "
-                 "da MUNIC); 2020 é a mais recente. Verificado por download real em 20/09/2026.",
+                 "da MUNIC); 2020 é a mais recente. Verificado por download real em 20/09/2026. "
+                 "19/10/2026: pelo dicionário da própria MUNIC, Mgrd184 é o plano de contingência "
+                 "do gerenciamento de risco de ENCHENTES ou inundações (não plano geral); "
+                 "Mgrd05 é o da seca.",
     },
     "icm": {
         "nome": "ICM/SEDEC — Indicador de Capacidade Municipal, base completa",
