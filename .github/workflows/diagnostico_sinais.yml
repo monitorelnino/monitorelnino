@@ -36,12 +36,10 @@ jobs:
           PY
           python3 - <<'PY'
           import collections, coletar_datasus_dbc as d
-          dados = open("/tmp/tb.dbc", "rb").read()
-          n = 0; c = collections.Counter(); campos = None
-          for r in d.ler_dbc(dados):
-              n += 1
-              if campos is None: campos = list(r)
-              c[r.get("SITUA_ENCE")] += 1
-          print("registros", n); print("campos", campos[:80] if campos else None)
-          print("SITUA_ENCE", c.most_common(12))
+          desc, linhas = d.ler_dbc(open("/tmp/tb.dbc", "rb").read())
+          print("campos", [x["nome"] for x in desc])
+          c = collections.Counter(); n = 0; ano = collections.Counter()
+          for r in linhas:
+              n += 1; c[r.get("SITUA_ENCE")] += 1; ano[(r.get("DT_NOTIFIC") or "")[:4]] += 1
+          print("registros", n, "anos", ano.most_common(4)); print("SITUA_ENCE", c.most_common(12))
           PY
