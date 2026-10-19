@@ -837,9 +837,57 @@ def edicoes_rj(buscar_fn, base):
     return fn
 
 
+# DF (19/10/2026, run 39272209875 e seguintes): o DODF sai do SINJ-DF (legislação do Distrito Federal), cuja
+# lista de diários vem de `ashx/Datatable/ResultadoDePesquisaDiarioDatatable.ashx` (a chamada que a própria
+# página faz), em ordem de data decrescente; o filtro de data do servidor não age, então a data se acha
+# varrendo as páginas do topo para baixo. O PDF sai em `BaixarArquivoDiario.aspx?id_file=` (2,7 MB em 19/10).
+# Só o DODF (Executivo) entra; DCL, TCDF e boletins ficam fora. O dodf.df.gov.br estoura tempo no runner.
+def edicoes_df(buscar_fn, base, pausa=RITMO_APIFRONT_S, dormir=None):
+    pagina = 100
+    memo = {}
+    dormir = dormir or time.sleep
+
+    def lote(inicio):
+        if inicio not in memo:
+            if memo:
+                dormir(pausa)
+            u = (f"{base.rstrip('/')}/ashx/Datatable/ResultadoDePesquisaDiarioDatatable.ashx?tipo_pesquisa=diario"
+                 f"&bbusca=sinj_diario&sEcho=1&iDisplayStart={inicio}&iDisplayLength={pagina}")
+            o = json.loads(buscar_fn(u, timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
+            if not isinstance(o, dict) or not isinstance(o.get("aaData"), list):
+                raise FormatoDaBuscaMudou("lista de diários do SINJ-DF fora do contrato (sem aaData)")
+            memo[inicio] = [r.get("_source") for r in o["aaData"] if isinstance(r, dict) and isinstance(r.get("_source"), dict)]
+        return memo[inicio]
+
+    def fn(data):
+        alvo = f"{data[8:10]}/{data[5:7]}/{data[:4]}"
+        achados, inicio = [], 0
+        for _ in range(60):
+            src = lote(inicio)
+            if not src:
+                raise FormatoDaBuscaMudou("lista do SINJ-DF acabou antes de alcançar a data pedida")
+            for d in src:
+                if not re.fullmatch(r"\d\d/\d\d/\d{4}", str(d.get("dt_assinatura"))):
+                    raise FormatoDaBuscaMudou("diário do SINJ-DF sem dt_assinatura no formato esperado")
+                if d["dt_assinatura"] == alvo and d.get("nm_tipo_fonte") == "DODF":
+                    for a in d.get("arquivos") or []:
+                        f = (a or {}).get("arquivo_diario") or {}
+                        if f.get("id_file"):
+                            achados.append({"edicao": f"DODF {d.get('nr_diario')}" + (" (suplemento)" if d.get("st_suplemento") else ""),
+                                            "url": f"{base.rstrip('/')}/BaixarArquivoDiario.aspx?id_file={f['id_file']}"})
+            ordem = [str(d["dt_assinatura"])[6:] + str(d["dt_assinatura"])[3:5] + str(d["dt_assinatura"])[:2] for d in src]
+            if min(ordem) < alvo[6:] + alvo[3:5] + alvo[:2]:
+                break
+            inicio += pagina
+        else:
+            raise FormatoDaBuscaMudou("varredura do SINJ-DF não alcançou a data em 60 páginas (limite)")
+        return achados
+    return fn
+
+
 EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg,
-                    "edicao_rs": edicoes_rs, "edicao_rj": edicoes_rj}
+                    "edicao_rs": edicoes_rs, "edicao_rj": edicoes_rj, "edicao_df": edicoes_df}
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
@@ -1137,6 +1185,20 @@ BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.js
                   "monitor_saude.json")
 
 
+def _pausas_df():
+    """Cada página nova do SINJ-DF depois da primeira espera a pausa por domínio; página repetida não."""
+    dorme = []
+    pg = lambda ini: json.dumps({"aaData": [{"_source": {"nm_tipo_fonte": "DODF", "nr_diario": ini, "dt_assinatura": d, "arquivos": []}}
+                                              for d in ("19/10/2026",)]}).encode()
+    n = {"i": 0}
+
+    def buscar(u, **k):
+        n["i"] += 1
+        return pg(n["i"]) if n["i"] < 3 else FIXTURE_DIARIOS_DF
+    edicoes_df(buscar, "https://x/sinj", pausa=0.0, dormir=dorme.append)("2026-10-14")
+    return dorme
+
+
 def _levanta(fn, excecao) -> bool:
     """True quando `fn` levanta `excecao`. Existe para o caso negativo não virar try/except solto
     dentro de um lambda, onde ele não cabe."""
@@ -1198,6 +1260,18 @@ FIXTURE_CADERNOS_RJ = (b'<p>Voc\xc3\xaa est\xc3\xa1 visualizando os cadernos do 
                        b'<li><a href="mostra_edicao.php?session=QUJD" ID="cor-texto"  target="_blank">Parte I (Poder Executivo)</a></li>'
                        b'<li><a href="mostra_edicao.php?session=REVG" ID="cor-texto"  target="_blank">Parte IB - (Tribunal de Contas)</a></li>')
 FIXTURE_PAGINA_RJ = b'<script type="text/javascript">var pd = "EAB21D88-45BD-4CD0-BD2A-D4F0D229380A";</script>'
+
+FIXTURE_DIARIOS_DF = json.dumps({"aaData": [
+    {"_source": {"nm_tipo_fonte": "DODF", "nr_diario": 194, "dt_assinatura": "19/10/2026", "st_suplemento": False,
+                 "arquivos": [{"arquivo_diario": {"id_file": "aaa-1"}}]}},
+    {"_source": {"nm_tipo_fonte": "DCL", "nr_diario": 218, "dt_assinatura": "19/10/2026", "st_suplemento": False,
+                 "arquivos": [{"arquivo_diario": {"id_file": "bbb-2"}}]}},
+    {"_source": {"nm_tipo_fonte": "DODF", "nr_diario": 193, "dt_assinatura": "16/10/2026", "st_suplemento": False,
+                 "arquivos": [{"arquivo_diario": {"id_file": "ccc-3"}}]}},
+    {"_source": {"nm_tipo_fonte": "DODF", "nr_diario": 117, "dt_assinatura": "16/10/2026", "st_suplemento": True,
+                 "arquivos": [{"arquivo_diario": {"id_file": "ddd-4"}}]}},
+    {"_source": {"nm_tipo_fonte": "DODF", "nr_diario": 190, "dt_assinatura": "13/10/2026", "st_suplemento": False,
+                 "arquivos": [{"arquivo_diario": {"id_file": "eee-5"}}]}}]}).encode("utf-8")
 
 FIXTURE_EDICOES_RS = (b'[{"id":54767,"dataPublicacao":"16-10-2026","dataString":"2026-10-16","tipoDiario":0,'
                       b'"numeroEdicao":200,"anoEdicao":53,"qtdPaginas":4,"edicoes":[],"paginas":null},'
@@ -1471,6 +1545,17 @@ def autoteste() -> int:
                      and _levanta(lambda: edicoes_rj(lambda u, **k: b"Erro.", "https://x")("2026-10-16"), FormatoDaBuscaMudou)
                      and _levanta(lambda: edicoes_rj(lambda u, **k: b"sem pd" if "session=" in u else FIXTURE_CADERNOS_RJ,
                                                      "https://x")("2026-10-16"), FormatoDaBuscaMudou)),
+        "DOE-DF: o DODF da data sai da lista do SINJ por varredura; DCL fica fora; data sem DODF e lista fora do contrato":
+            lambda: (edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj")("2026-10-16") == [
+                        {"edicao": "DODF 193", "url": "https://x/sinj/BaixarArquivoDiario.aspx?id_file=ccc-3"},
+                        {"edicao": "DODF 117 (suplemento)", "url": "https://x/sinj/BaixarArquivoDiario.aspx?id_file=ddd-4"}]
+                     and edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj")("2026-10-14") == []
+                     and _levanta(lambda: edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj", dormir=lambda s: None)("2026-10-01"), FormatoDaBuscaMudou)
+                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData": []}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
+                     and _pausas_df() == [0.0, 0.0]
+                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"outra": 1}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
+                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData":[{"_source":{"dt_assinatura":"2026-10-16"}}]}',
+                                                     "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)),
         "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
             lambda: (edicoes_sc(lambda u, **k: FIXTURE_EDICOES_SC, "https://x/apis")("2026-10-16") == [
                         {"edicao": "22862-A", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862-A.pdf"},
