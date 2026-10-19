@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 O cartão do município na inicial passa a dizer antes a varredura registrada no livro de verificação e depois o que não foi localizado, numa frase só — a mesma do ladrilho da capital. Município cujo registro nomeia um documento fica com a frase de antes. E no Monitor de riscos, acima de 500 km da capital mais próxima, a temperatura máxima prevista declara lacuna em vez de valor.
 
+## 2026-10-19 · #912 · Proteja-se: a aba de dengue, com o que a fonte oficial diz
+
+O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.
+
+## 2026-10-19 · #915 · O teto do guia em PDF sobe para três páginas
+
+O portão do guia "Leve com você" cobrava no máximo duas páginas, teto escrito com quatro famílias de risco. Com a quinta (dengue e chikungunya) o guia passa a ter três; o teto vira a constante `PAGINAS_MAX = 3`, com caso de teste para o limite. Pedido da B2, destrava o #912. Linhas líquidas: +4.
+
 ## 2026-10-19 · #914 · O desfecho que falta na Saúde é dito em uma linha
 
 A seção de desfechos passa a declarar, abaixo da grade, qual dos seis desfechos em evidência ainda não tem série na forma comum. O nome vem do catálogo dos desfechos, não da página, e a linha some sozinha quando o arquivo nascer. Hoje ela diz: "Mortalidade geral entra quando a série estiver completa."
