@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
+
+A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
+
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
