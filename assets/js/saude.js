@@ -10,7 +10,7 @@ function _qtdCartao(v) {
   return x === 0 ? 'zero' : x.toLocaleString('pt-BR');
 }
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
-let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA, SRAG;
+let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE, DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA;
 // Lote 6, §2: a frase do dado nasce oculta e só aparece com texto — nunca "—" nem linha vazia.
 const mostrarFrase = (alvo, texto) => { alvo.textContent = texto; alvo.hidden = !texto; };
 /* Número em texto público com vírgula decimal (A4-16); não-número passa como veio ("—", nulo). */
@@ -74,8 +74,6 @@ function primeiraSemanaComValor(ano, comValor) {
 // 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
 let DESF_CHIK = null, DESF_CANAL_CHIK = null;
-let SG = null;   // 14/09/2026: síndrome gripal (sindrome_gripal_serie.json, mesmo coletor do SRAG); nulo = lacuna declarada
-let DDA = null;  // 14/09/2026: doenças diarreicas agudas (dda_serie.json, Sivep-DDA via LAI/Zenodo); nulo = lacuna declarada
 const DOENCAS_DESF = {
   dengue:      {rotulo: 'dengue',      dados: () => ({serie: DESF,      canal: DESF_CANAL}),      capitais: true},
   chikungunya: {rotulo: 'chikungunya', dados: () => ({serie: DESF_CHIK, canal: DESF_CANAL_CHIK}), capitais: false}   // sem série por capitais ainda (coletar_saude.py é só dengue)
@@ -93,16 +91,13 @@ async function __load(){
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   try { [DESF, DESF_CANAL, DESF_COMP, PAINEL_LISTA] = await Promise.all(['data/saude_desfechos/serie_painel.json','data/saude_desfechos/canal_endemico.json','data/saude_desfechos/completude.json','data/municipios_ibge_referencia.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF = DESF_CANAL = DESF_COMP = PAINEL_LISTA = null; }
   try { [DESF_CHIK, DESF_CANAL_CHIK] = await Promise.all(['data/saude_desfechos/chik_serie_painel.json','data/saude_desfechos/chik_canal_endemico.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null))); } catch(e) { DESF_CHIK = DESF_CANAL_CHIK = null; }
-  // 13/09/2026 (proposta de enxugamento, Manus AI): catálogo de 20 desfechos e tabela de gatilhos
-  // migraram para pesquisadores.html — "é backlog metodológico; pertence a Pesquisadores". SRAG
-  // continua aqui: alimenta o gráfico 'SRAG por semana', mantido na página principal.
-  try { SRAG = await fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SRAG = null; }
-  try { SG = await fetch('data/saude_desfechos/sindrome_gripal_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { SG = null; }
-  try { DDA = await fetch('data/saude_desfechos/dda_serie.json').then(r => r.ok ? r.json() : null); } catch(e) { DDA = null; }
+  // 19/10/2026 (HANDOVER_SAUDE_DESFECHOS_BLOCO): as séries dos desfechos deixam de ser carregadas
+  // aqui. Quem as lê é a seção "O que os órgãos de saúde registram", ao fim deste arquivo, e cada
+  // uma só é buscada quando o cartão dela é desenhado.
   __init();
-  // 02/10/2026 (bloco A.3): a amostra de 313 municípios saiu do mapa e a série duplicada
-  // saiu da página. Dengue e chikungunya passam a ser contadas pelo SINAN, no bloco
-  // `arbovirosesPelaPrimaria`, ao fim deste arquivo.
+  secaoDosDesfechos();   // 19/10/2026: a seção dos desfechos, com a malha e a lista já em mão
+  // 02/10/2026 (bloco A.3): a amostra de 313 municípios saiu do mapa e a série duplicada saiu da
+  // página. Dengue e chikungunya são contadas pelo SINAN, na seção dos desfechos ao fim do arquivo.
   try { titulosFatoSaude(); } catch (e) {}   // 15/09/2026 (§2.10): depois de tudo carregado
 
     /* Contadores do topo (bloco C.1 do handover de 01/10/2026).
@@ -141,9 +136,6 @@ async function __load(){
       // emergência em saúde pública tem medidor próprio no topo, e zero não vira cartão.
     })();
 
-  renderSRAG('srag');
-  renderSG();
-  renderDDA();
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -252,56 +244,12 @@ function __init(){
   // levando consigo o mapa de calor, que vem depois e não tem nada a ver.
   const fD = SSIN.fontes.infodengue;
 
-  /* CALOR (24/09/2026) — classe de excesso de calor do Ministério da Saúde, por município, agregada
-     por UF. Substitui a contagem de avisos do INMET que estava aqui: aviso é ALERTA e mora na
-     Defesa civil. E aquela contagem estava quebrada desde que foi escrita — lia `a.lista`/`a.avisos`
-     em `avisos_inmet`, campos que o agregado nunca teve, então pintava ZERO nos 27 estados sempre,
-     em qualquer dia, inclusive com aviso de calor em vigor. Zero silencioso é o pior defeito
-     possível numa figura de risco: parece informação.
-     O vocabulário (Normal, Baixo, Severo, Extremo) é o do MS; o projeto não reescala nada. */
-  const CALOR = SSIN.calor_excesso || null;
-  const fCalor = (SSIN.fontes || {}).painel_calor_ms || {};
-  const semCalor = fCalor.ultima_coleta_ok ? 'sem leitura desde a coleta de ' + fCalor.ultima_coleta_ok : 'sem coleta até o corte';
-  const CAL = [MonitorMapas.PALETA.zero, MonitorMapas.PALETA.ordinal4[1], MonitorMapas.PALETA.ordinal4[2], MonitorMapas.PALETA.ordinal4[3]];
-  const calorUf = uf => (CALOR && CALOR.por_uf && CALOR.por_uf[uf]) || null;
-  const nAcima = uf => { const c = calorUf(uf); return c ? (c.severo || 0) + (c.extremo || 0) : null; };
-  desenharMapa('mapaCalor', 'legCalor',
-    uf => { const n = nAcima(uf); return n == null ? NEUTRA : CAL[Math.min(3, n)]; },
-    uf => { const c = calorUf(uf);
-      if(!c) return semCalor[0].toUpperCase() + semCalor.slice(1);
-      return 'Severo: ' + (c.severo || 0) + ' · Extremo: ' + (c.extremo || 0)
-           + '<br>Baixo: ' + (c.baixo || 0) + ' · Normal: ' + (c.normal || 0)
-           + '<br>' + (c.total || 0) + (Number(c.total || 0) === 1 ? ' município lido' : ' municípios lidos'); },
-    [{cor:CAL[0], rotulo:'nenhum município em severo ou extremo'}, {cor:CAL[1], rotulo:'1'},
-     {cor:CAL[2], rotulo:'2'}, {cor:CAL[3], rotulo:'3 ou mais'}, {cor:NEUTRA, rotulo:semCalor}]);
-  fonteFigura('boxCalor', {fontes: fCalor.nome || 'Painel Nacional de Excesso de Calor',
-                           url: fCalor.url_publica, data: CALOR ? CALOR.coletado_em : fCalor.ultima_coleta_ok});
-  (function listaCalor(){
-    const corpo = document.querySelector('#tblCalor tbody');
-    if(!corpo) return;
-    corpo.innerHTML = UFS.map(function(uf){
-      const c = calorUf(uf);
-      if(!c) return '<tr><td><strong>' + esc(uf) + '</strong></td><td colspan="5">' + semCalor + '</td></tr>';
-      return '<tr><td><strong>' + esc(uf) + '</strong></td><td>' + (c.normal || 0) + '</td><td>' + (c.baixo || 0)
-           + '</td><td>' + (c.severo || 0) + '</td><td>' + (c.extremo || 0) + '</td><td>' + (c.total || 0) + '</td></tr>';
-    }).join('');
-  })();
-  (function resumoCalor(){
-    const el = document.getElementById('calorResumo');
-    if(!el) return;
-    if(CALOR && CALOR.resumo){
-      const r = CALOR.resumo;
-      el.textContent = (r.severo || 0) + (Number(r.severo || 0) === 1 ? ' município' : ' municípios') + ' em classe severa e ' + (r.extremo || 0)
-        + ' em extrema, de ' + (CALOR.municipios_lidos || Object.keys(CALOR.municipios || {}).length)
-        + ' lidos no dia ' + (CALOR.data || '') + ', segundo o Ministério da Saúde.';
-      return;
-    }
-    /* Sem coleta, a seção diz POR QUE não há número. O painel do MS não publica API: o endereço é
-       função interna do aplicativo e, medido em 24/09/2026, responde HTTP 200 com corpo vazio
-       quando recusa. Recusa servida com 200 é recusa, nunca "nenhum município em excesso de calor". */
-    el.textContent = 'Classe de excesso de calor por município: ' + semCalor + '.'
-      + (fCalor.ultima_tentativa_falhou ? ' Última tentativa em ' + fCalor.ultima_tentativa_falhou + '.' : '');
-  })();
+  /* CALOR — o mapa de excesso de calor, a tabela por classe e o resumo saíram da página em
+     19/10/2026 (HANDOVER_SAUDE_DESFECHOS_BLOCO): calor é EXPOSIÇÃO, não desfecho, e exposição vive
+     nas páginas de risco; o painel por município continua no Monitor de riscos, e a contagem de
+     municípios em classe severa ou extrema continua no cartão do topo desta página. O código
+     desenhava em `mapaCalor`, `tblCalor` e `calorResumo`, que não existem mais — e deixá-lo aqui
+     derrubava `__load` inteiro (d3 em elemento nulo), levando consigo a grade dos 27. */
 
   // 13/09/2026 (proposta de enxugamento, Manus AI): quadrante 'Defesa civil × saúde' retirado —
   // "mistura prontidão documental com risco projetado e não mede efeito na população".
@@ -528,91 +476,6 @@ function renderDesfechos(doenca, ids){
 // tabela de gatilhos, §36) migrou por completo para pesquisadores.js.
 
 
-// ===== SRAG por semana, Brasil (§36; InfoGripe). Peso zero. O Monitor não atribui casos ao El Niño. =====
-// 14/09/2026: parametrizada por indicador (SRAG | SG) — mesmo CSV do InfoGripe, mesmo desenho; sem arquivo = lacuna declarada
-const __serieCharts = {};
-const INDICADORES_RESP = {
-  // 01/10/2026: rótulo, eixo e fonte no vocabulário público — sigla traduzida (bloco D) e a fonte
-  // é a PRIMÁRIA. O InfoGripe deixou de ser a origem da série em 29/09 (§ do coletor): as duas URLs
-  // dele exigem login desde setembro, e quem entrega a série é o SIVEP-Gripe, do Ministério da
-  // Saúde, sem estimativa de dados recentes — por isso também sai o "nowcasting".
-  srag: {rotulo: 'síndrome respiratória grave', eixo: 'casos · Brasil',
-         fonte: ['SIVEP-Gripe (Ministério da Saúde)'], dados: () => SRAG,
-         motivo: 'A série do SIVEP-Gripe ainda não foi coletada até o corte.',
-         // A fonte primária NÃO publica nowcasting: as últimas semanas são parciais (valor
-         // bruto, atraso de notificação), e é isso que a segunda barra diz — mesmo tratamento
-         // da série de diarreicas, pela mesma razão.
-         segunda: 'parciais (últimas semanas — sem estimativa)', chaveSegunda: 'parcial'},
-  // 01/10/2026: a fonte da síndrome gripal passa a ser a PRIMÁRIA (e-SUS Notifica). O motivo
-  // da lacuna diz o que foi medido em 01/10: as duas rotas que o portal publica recusam
-  // acesso automatizado, e o conjunto por ano vai de 2020 a 2024 — sem o ano do ciclo.
-  sg:   {rotulo: 'síndrome gripal', eixo: 'casos · Brasil',
-         fonte: ['e-SUS Notifica (Ministério da Saúde)'], dados: () => SG,
-         motivo: 'A fonte recusa acesso automatizado e não publica o ano do ciclo: lacuna declarada.'},
-};
-// 14/09/2026: DDA usa o MESMO componente e o mesmo renderizador da figura respiratória (série nacional sobre o canal
-// endêmico); só mudam os textos e a segunda barra — a fonte não publica nowcasting, então as últimas 4 semanas são
-// mostradas como 'parciais' (valor bruto, atraso de digitação), nunca como estimativa.
-const INDICADOR_DDA = {rotulo: 'diarreicas agudas',
-  eixo: 'atendimentos em unidades sentinela · Brasil', fonte: ['Sivep-DDA (Ministério da Saúde) via LAI, depósito Zenodo (Saldanha/Fiocruz)'], dados: () => DDA,
-  motivo: 'A série da vigilância das diarreicas não pôde ser lida nas últimas tentativas de coleta.', segunda: 'parciais (últimas 4 semanas — sem estimativa)', chaveSegunda: 'parcial'};
-function renderSerieNacional(cfg, ids){
-  const D = cfg.dados();
-  const cv = document.getElementById(ids.canvas), svg = document.getElementById(ids.svg);
-  if (__serieCharts[ids.canvas]) { if (typeof __serieCharts[ids.canvas].destroy === 'function') __serieCharts[ids.canvas].destroy(); __serieCharts[ids.canvas] = null; }
-  const br = D && D.serie && D.serie.BR;
-  if (!br) {
-    // 11/09/2026: sem arquivo a figura ficava como moldura vazia, sem dizer nada a quem lê — o pior desfecho possível.
-    // Ausência é DECLARADA na própria mídia (o portão de figuras só admite título, legenda e crédito no cartão): canvas some, SVG de lacuna aparece.
-    if (cv) cv.hidden = true;
-    if (svg) { svg.hidden = false; svg.setAttribute('aria-label', 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada; ' + cfg.motivo);
-      const t1 = document.getElementById(ids.txt1), t2 = document.getElementById(ids.txt2);
-      if (t1) { t1.textContent = 'Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada'; t1.setAttribute('fill', MonitorMapas.cor('muted')); }
-      if (t2) { t2.textContent = cfg.motivo; t2.setAttribute('fill', MonitorMapas.cor('muted')); } }
-    MonitorMapas.legenda(ids.leg, [{cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta de ' + cfg.rotulo + ' até o corte'}]);
-    ids.credito({fontes: cfg.fonte, data: null});
-    return;
-  }
-  if (svg) svg.hidden = true; if (cv) cv.hidden = false;
-  const canal = (D.canal_endemico || {}).BR || {}; const seg = (D[cfg.chaveSegunda] || {}).BR || {};
-  const ano = D.ano_corrente; const semanas = Array.from({length: 53}, (_, i) => String(i + 1).padStart(2, '0'));
-  const ate = Math.max(...Object.keys(br).concat(Object.keys(seg)).filter(k => k.startsWith(String(ano))).map(k => +k.split('-')[1]));
-  const labels = semanas.slice(0, ate);
-  MonitorMapas.padraoGraficos(window.Chart);
-  const eixoSerie = eixoDeMeses(String(ano), labels);
-  const opSerie = opcoesDeEixoSemanal(eixoSerie.titulos);
-  __serieCharts[ids.canvas] = new Chart(cv, {data: {labels: eixoSerie.labels, datasets: [
-      {type: 'bar', label: 'consolidado', data: labels.map(w => (br[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, order: 2},
-      {type: 'bar', label: cfg.segunda, data: labels.map(w => (seg[ano + '-' + w] ?? null)), backgroundColor: MonitorMapas.PALETA.anos['2024'], order: 2},
-      {type: 'line', label: 'mediana 2019–2025', data: labels.map(w => (canal[w] || {}).mediana ?? null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, order: 1},
-      {type: 'line', label: 'p90', data: labels.map(w => (canal[w] || {}).p90 ?? null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, order: 1}]},
-    options: {animation: false, responsive: true, maintainAspectRatio: false,
-      plugins: {legend: {display: false}, tooltip: {callbacks: {title: opSerie.tooltipTitulo}}},
-      scales: {x: opSerie.x, y: {beginAtZero: true, title: {display: true, text: cfg.eixo}}}}});
-  // Entrada de legenda sem rótulo é quadradinho de cor sem nome: a legenda deixa de explicar e
-  // passa a decorar. Indicador sem segunda barra simplesmente não a declara.
-  // Item 8: "mediana" e "p90" saem da legenda — são o nome do cálculo, não o do que se vê.
-  MonitorMapas.legenda(ids.leg, [
-    {cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.anos.canal, rotulo: 'consolidado'},
-    ...(cfg.segunda ? [{cor: MonitorMapas.PALETA.anos['2024'], rotulo: cfg.segunda}] : []),
-    {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'faixa habitual para a época: menor valor esperado'},
-    {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'faixa habitual para a época: maior valor esperado'}]);
-  ids.credito({fontes: cfg.fonte, data: D.gerado_em, url: D.fonte});
-}
-function renderSRAG(ind){
-  ind = INDICADORES_RESP[ind] ? ind : 'srag';
-  renderSerieNacional(INDICADORES_RESP[ind], {credito: p => fonteFigura('boxSRAG', p), canvas: 'cSRAG', svg: 'svgSRAGLacuna', txt1: 'txtSRAGLacuna1', txt2: 'txtSRAGLacuna2', leg: 'legSRAG'});
-}
-function renderSG(){
-  if (!document.getElementById('boxSG')) return;
-  renderSerieNacional(INDICADORES_RESP.sg, {credito: p => fonteFigura('boxSG', p), canvas: 'cSG', svg: 'svgSGLacuna', txt1: 'txtSGLacuna1', txt2: 'txtSGLacuna2', leg: 'legSG'});
-}
-function renderDDA(){
-  if (!document.getElementById('boxDDA')) return;
-  renderSerieNacional(INDICADOR_DDA, {credito: p => fonteFigura('boxDDA', p), canvas: 'cDDA', svg: 'svgDDALacuna', txt1: 'txtDDALacuna1', txt2: 'txtDDALacuna2', leg: 'legDDA'});
-}
-(function(){ const sel = document.getElementById('selIndicadorSRAG'); if (sel) sel.addEventListener('change', () => renderSRAG(sel.value)); })();
-
 // 15/09/2026 (auditoria editorial §2.10): títulos-fato calculados dos dados já carregados — nunca digitados.
 function titulosFatoSaude(){
   const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
@@ -760,176 +623,6 @@ const AREAS = [
 
 })();
 
-/* ===== Dengue e chikungunya pela fonte primária (bloco A.3) =====
- * Série semanal do país contra a faixa esperada para a época, e mapa por estado em notificações por
- * 100 mil habitantes. Por 100 mil porque o total bruto só ordena os estados por tamanho.
- *
- * A faixa esperada é a mediana e o p90 das semanas equivalentes de 2019 a 2025, calculados aqui a
- * partir da própria série — não há "estimativa de dados recentes": o SINAN publica contagem, e o
- * que falta nas últimas semanas é notificação que ainda vai chegar.
- */
-(function arbovirosesPelaPrimaria(){
-  const CONFIG = [
-    {chave: 'dengue', arquivo: 'data/saude_desfechos/dengue_sinan_serie.json', rotulo: 'dengue',
-     canvas: 'cDengueSemana', leg: 'legDengueSemana', box: 'boxDengueSemana',
-     linha: 'linhaDengueSemana', mapa: 'mapaDengueUF', legMapa: 'legDengueUF',
-     boxMapa: 'boxDengueUF', linhaMapa: 'linhaDengueUF', dl: 'dlDengueUF', frase: 'fraseDengue'},
-    {chave: 'chikungunya', arquivo: 'data/saude_desfechos/chik_sinan_serie.json',
-     rotulo: 'chikungunya', canvas: 'cChikSemana', leg: 'legChikSemana', box: 'boxChikSemana',
-     linha: 'linhaChikSemana', mapa: 'mapaChikUF', legMapa: 'legChikUF', boxMapa: 'boxChikUF',
-     linhaMapa: 'linhaChikUF', dl: 'dlChikUF', frase: 'fraseChik'},
-  ];
-  const el = id => document.getElementById(id);
-  const n = v => Number(v || 0).toLocaleString('pt-BR');
-  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
-
-  const faixa = (serie, anos, se) => {
-    const vs = anos.map(a => serie[a + '-' + se]).filter(v => typeof v === 'number').sort((x, y) => x - y);
-    if (!vs.length) return null;
-    const mediana = vs[Math.floor(vs.length / 2)];
-    const p90 = vs[Math.min(vs.length - 1, Math.floor(vs.length * 0.9))];
-    return {mediana, p90};
-  };
-
-  Promise.all([
-    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
-    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-  ]).then(([GEO, POP, REF]) => {
-    const popUF = {};
-    if (POP && REF) {
-      const ref = Array.isArray(REF) ? REF : Object.values(REF);
-      ref.forEach(m => {
-        const cod = String(m.codigo_ibge).padStart(7, '0');
-        popUF[m.uf] = (popUF[m.uf] || 0) + Number(POP[cod] || 0);
-      });
-    }
-    CONFIG.forEach(cfg => {
-      fetch(cfg.arquivo).then(r => r.ok ? r.json() : null).then(D => {
-        const serie = (D || {}).serie;
-        const legEl = el(cfg.leg);
-        if (!serie || !serie.BR) {
-          if (legEl) legEl.innerHTML = '<span class="escala">Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada.</span>';
-          if (el(cfg.frase)) mostrarFrase(el(cfg.frase), 'Série de ' + cfg.rotulo + ' ainda não coletada até o corte.');
-          return;
-        }
-        const ano = String(D.ano_corrente);
-        const anos = (D.anos_canal || []).map(String);
-        const br = serie.BR;
-        const ses = Object.keys(br).filter(k => k.startsWith(ano)).sort();
-        const comValor = ses.filter(k => br[k] != null);
-        const ultima = comValor[comValor.length - 1];
-        const rotulos = ses.map(k => k.split('-')[1]);
-
-        /* A frase do dado: "{n} notificações na semana {SE}, dentro / acima da faixa esperada". A
-         * comparação é com a faixa da própria série, e por isso é fato, não juízo. */
-        if (ultima && el(cfg.frase)) {
-          const f = faixa(br, anos, ultima.split('-')[1]);
-          const v = br[ultima];
-          const posicao = !f ? 'sem faixa esperada para a época'
-            : (v > f.p90 ? 'acima da faixa esperada para a época'
-               : (v >= f.mediana ? 'dentro da faixa esperada para a época, acima da mediana'
-                  : 'dentro da faixa esperada para a época'));
-          mostrarFrase(el(cfg.frase), n(v) + ' notificações de ' + cfg.rotulo + ' na semana '
-            + semanaEmDatas(ano, ultima) + ', ' + posicao + '. As '
-            + 'semanas seguintes ainda recebem notificações e aparecem sem valor.');
-        }
-        if (el(cfg.linha)) {
-          // Era "{n} semana(s) fechada(s) de {ano}": contava semanas, trazia o "(s)" que o item 2
-          // proíbe e não dizia ao leitor de quando é o dado. Agora diz o período coberto.
-          const ini = primeiraSemanaComValor(ano, comValor);
-          el(cfg.linha).textContent = (ini && ultima)
-            ? 'de ' + ini + ' a ' + (window.MonitorSemana
-                ? MonitorSemana.fimPorExtenso(Number(ano), Number(ultima.split('-')[1])) : '')
-            : '';
-        }
-
-        const cv = el(cfg.canvas);
-        if (cv && typeof Chart !== 'undefined' && window.MonitorMapas) {
-          MonitorMapas.padraoGraficos(window.Chart);
-          const med = ses.map(k => { const f = faixa(br, anos, k.split('-')[1]); return f ? f.mediana : null; });
-          const p90 = ses.map(k => { const f = faixa(br, anos, k.split('-')[1]); return f ? f.p90 : null; });
-          // EIXO DE MESES, não de números de semana (item 0). O rótulo aparece só na primeira
-          // semana de cada mês; nas outras fica vazio, e assim o eixo se lê como um calendário
-          // em vez de uma régua de 1 a 52. Quem precisa da semana exata tem o tooltip, que diz o
-          // intervalo de datas — que é como a leitora pensa a data, e não "a semana 33".
-          const rotulosMes = rotulosDeMes(ano, ses);
-          const titulosData = ses.map(k => semanaEmDatas(ano, k, true));
-          new Chart(cv, {data: {labels: rotulosMes, datasets: [
-            {type: 'line', label: 'p90 de 2019–2025', data: p90, borderColor: MonitorMapas.PALETA.anos.p90, backgroundColor: MonitorMapas.PALETA.anos.p90, fill: false, pointRadius: 0, borderWidth: 1},
-            {type: 'line', label: 'mediana de 2019–2025', data: med, borderColor: MonitorMapas.PALETA.anos.canal, backgroundColor: MonitorMapas.PALETA.anos.canal, fill: false, pointRadius: 0, borderWidth: 1},
-            {type: 'bar', label: 'notificações de ' + ano, data: ses.map(k => br[k]), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.serie[0]},
-          ]}, options: {animation: false, responsive: true, maintainAspectRatio: false,
-            plugins: {legend: {display: false},
-              tooltip: {callbacks: {title: itens => (itens && itens[0] ? titulosData[itens[0].dataIndex] : '')}}},
-            scales: {y: {beginAtZero: true, title: {display: true, text: 'notificações'}},
-                     x: {ticks: {autoSkip: false, maxRotation: 0}}}}});
-          // "mediana" e "p90" saem da legenda (item 8): são o nome do cálculo, não o nome do
-          // que o leitor vê. O cálculo fica na metodologia; aqui fica o que as duas linhas
-          // delimitam, que é uma faixa de valores habituais para aquela época do ano.
-          const faixaAnos = anos.length ? ' (' + anos[0] + ' a ' + anos[anos.length - 1] + ')' : '';
-          MonitorMapas.legenda(cfg.leg, [
-            {cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.serie[0], rotulo: 'notificações de ' + ano},
-            {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'faixa habitual para a época' + faixaAnos + ': menor valor esperado'},
-            {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'faixa habitual para a época' + faixaAnos + ': maior valor esperado'}]);
-        }
-
-
-        /* Mapa por estado: acumulado do ano até a última semana fechada, por 100 mil habitantes. */
-        const acum = {};
-        Object.entries(serie).forEach(([uf, porSE]) => {
-          if (uf === 'BR' || !porSE) return;
-          acum[uf] = Object.entries(porSE).filter(([k, v]) => k.startsWith(ano) && typeof v === 'number')
-            .reduce((a, [, v]) => a + v, 0);
-        });
-        const taxa = {};
-        Object.keys(acum).forEach(uf => { if (popUF[uf]) taxa[uf] = acum[uf] / popUF[uf] * 1e5; });
-        if (el(cfg.mapa) && GEO && window.MonitorMapas) {
-          const ctx = MonitorMapas.contexto(GEO, 480, 460);
-          const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
-          const max = Math.max(1, ...Object.values(taxa));
-          MonitorMapas.fundo && MonitorMapas.fundo(cfg.mapa, 'chuva_claro');
-          MonitorMapas.ufs(ctx, cfg.mapa,
-            uf => taxa[uf] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(taxa[uf] / max * rampa.length))],
-            uf => taxa[uf] == null ? uf + ': sem coleta'
-              : uf + ': ' + umaCasa(taxa[uf]) + ' por 100 mil habitantes (' + n(acum[uf]) + ' notificações)');
-          MonitorMapas.legenda(cfg.legMapa, [
-            ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
-            {cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta'}]);
-        }
-        // O crédito é da FIGURA, não do desenho: sem ele, uma figura sem malha carregada ficaria
-        // sem fonte declarada, e o portão de saúde reprova — com razão.
-        /* Os créditos vão com o id LITERAL de propósito: `verificar_saude.py` confere a presença
-         * do crédito lendo o fonte do JS, e um id em variável é invisível para ele. Perder a
-         * conferência para economizar quatro linhas seria trocar prova por elegância. */
-        if (window.MonitorMapas) {
-          const fS = {fontes: ['SINAN (Ministério da Saúde)'], data: D.gerado_em};
-          const fM = {fontes: ['SINAN (Ministério da Saúde)', 'Censo 2022 (IBGE)'], data: D.gerado_em};
-          if (cfg.chave === 'dengue') {
-            MonitorMapas.credito('boxDengueSemana', fS);
-            MonitorMapas.credito('boxDengueUF', fM);
-          } else {
-            MonitorMapas.credito('boxChikSemana', fS);
-            MonitorMapas.credito('boxChikUF', fM);
-          }
-        }
-        if (el(cfg.linhaMapa)) {
-          const ate = ultima && window.MonitorSemana
-            ? MonitorSemana.fimPorExtenso(Number(ano), Number(ultima.split('-')[1])) : null;
-          // Rótulo vazio em vez de "—" (item 2): sem data, a linha não aparece.
-          el(cfg.linhaMapa).textContent = ate ? 'de 1º de janeiro a ' + ate : '';
-        }
-        if (el(cfg.dl)) {
-          const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-          el(cfg.dl).innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
-            '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' notificações</dd>').join('');
-        }
-      }).catch(_erroSaude("saude:1027"));
-    });
-  }).catch(_erroSaude("saude:1029"));
-})();
-
-
 /* ===== Cartões e figuras criados pelo contrato de layout (02/10/2026) =====
  * Um só lugar para o que o contrato acrescentou: o número do índice no topo, a lista do que foi
  * localizado em cada estado, o mapa do risco previsto, o mapa de síndrome respiratória grave por
@@ -1001,75 +694,6 @@ const AREAS = [
     MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)'], data: SUFd.corte});
   }).catch(_erroSaude("saude:1136"));
 
-  /* 4 · Síndrome respiratória grave por estado, por 100 mil habitantes. */
-  Promise.all([
-    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-    fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null),
-    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
-    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-  ]).then(([GEO, S, POP, REF]) => {
-    const leg = el('legSragUF');
-    if (!S || !S.serie) {
-      if (leg) leg.innerHTML = '<span class="escala">Série de síndrome respiratória grave ainda não coletada — lacuna declarada.</span>';
-      return;
-    }
-    const popUF = {};
-    if (POP && REF) {
-      (Array.isArray(REF) ? REF : Object.values(REF)).forEach(m => {
-        popUF[m.uf] = (popUF[m.uf] || 0) + Number(POP[String(m.codigo_ibge).padStart(7, '0')] || 0);
-      });
-    }
-    const ano = String(S.ano_corrente || new Date().getFullYear());
-    const acum = {}, taxa = {};
-    Object.entries(S.serie).forEach(([uf, porSE]) => {
-      if (!porSE || typeof porSE !== 'object' || uf === 'BR') return;
-      acum[uf] = Object.entries(porSE).filter(([k, v]) => k.startsWith(ano) && typeof v === 'number')
-        .reduce((a, [, v]) => a + v, 0);
-      if (popUF[uf]) taxa[uf] = acum[uf] / popUF[uf] * 1e5;
-    });
-    if (el('mapaSragUF') && GEO && window.MonitorMapas) {
-      const ctx = MonitorMapas.contexto(GEO, 480, 460);
-      const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
-      const max = Math.max(1, ...Object.values(taxa));
-      MonitorMapas.fundo && MonitorMapas.fundo('mapaSragUF', 'chuva_claro');
-      MonitorMapas.ufs(ctx, 'mapaSragUF',
-        uf => taxa[uf] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(taxa[uf] / max * rampa.length))],
-        uf => taxa[uf] == null ? uf + ': sem coleta'
-          : uf + ': ' + umaCasa(taxa[uf]) + ' por 100 mil habitantes (' + n(acum[uf]) + ' internações)');
-      MonitorMapas.legenda('legSragUF', [
-        ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
-        {cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta'}]);
-      MonitorMapas.credito('boxSragUF', {fontes: ['SIVEP-Gripe (Ministério da Saúde)', 'Censo 2022 (IBGE)'], data: S.gerado_em});
-    }
-    if (el('dlSragUF')) {
-      el('dlSragUF').innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
-        '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' internações</dd>').join('');
-    }
-    if (el('linhaSragUF')) el('linhaSragUF').textContent = 'acumulado de ' + ano + ' · ' + Object.keys(taxa).length + ' estados com dado';
-  }).catch(_erroSaude("saude:1183"));
-
-  /* 5 · Calor. O Painel do MS publica FOTOGRAFIA por município, não série. Lote 6, §5 (16/10/2026):
-   * o gráfico de barras "municípios por classe" saiu (5,5 mil em "normal" contra dezenas nas
-   * outras classes não informa nada); fica o mapa por estado, e a frase diz o total. */
-  fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
-    const C = ((SS || {}).calor_excesso) || null;
-    const r = (C || {}).resumo || null;
-    if (!r) {
-      const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
-      const desde = ult ? (MonitorMapas.dataBR(ult) || ult) : null;
-      if (el('fraseCalor')) mostrarFrase(el('fraseCalor'), desde
-        ? 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, não devolve leitura desde a coleta de ' + desde + '.'
-        : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.');
-      return;
-    }
-    if (el('fraseCalor')) {
-      mostrarFrase(el('fraseCalor'), n((r.severo || 0) + (r.extremo || 0))
-        + ((r.severo || 0) + (r.extremo || 0) === 1 ? ' município' : ' municípios') + ' em classe severa ou extrema de excesso de calor na consulta mais recente, '
-        + 'de ' + n(C.municipios_lidos || 0) + ' lidos. O vocabulário das classes é o do Ministério '
-        + 'da Saúde.');
-    }
-  }).catch(_erroSaude("saude:1228"));
-
   /* 6 · Consulta do município (HANDOVER_SAUDE_PAGINA §4): uma só, no componente comum. Dengue,
    * chikungunya, calor e plano vêm de `data/saude_municipio/<UF>.json`, por código IBGE; município
    * sem bloco não foi lido pela fonte, e é dito assim, nunca zero. Respiratória grave e o MARÉ Saúde
@@ -1124,3 +748,282 @@ const AREAS = [
     }).join('');
   }).catch(_erroSaude("saude:1338"));
 })();
+
+/* ===== "O que os órgãos de saúde registram": uma seção, um cartão por desfecho =====
+ *
+ * HANDOVER_SAUDE_DESFECHOS_BLOCO (editoria, 16/10/2026, mockup aprovado). Substitui os quatro
+ * blocos por agravo — dengue, chikungunya, respiratórias e calor, cada um com duas ou três
+ * figuras — por UMA seção: um seletor de estado, um cartão por desfecho e UM detalhe por vez.
+ *
+ * O que é cartão: DESFECHO EM PESSOAS (casos, internações, óbitos). Exposição não é cartão —
+ * calor, fumaça, chuva e seca vivem nas páginas de risco, e por isso o mapa de excesso de calor
+ * saiu desta página com a reforma. Desfecho sem arquivo não ganha cartão (§36): é nomeado na
+ * linha de lacuna, com o nome que o catálogo lhe dá.
+ *
+ * A faixa habitual é o canal endêmico que os próprios arquivos trazem (mediana e p90 das semanas
+ * equivalentes de 2019 a 2025, da mesma UF), nunca um cálculo novo aqui; série sem canal — os
+ * óbitos registrados, que têm 18 meses — diz "sem faixa habitual", em vez de inventar uma.
+ * Nenhuma frase relaciona caso a El Niño, e nenhuma semana aparece como número: data por extenso,
+ * por `assets/semana.js`, e eixo em meses.
+ */
+function secaoDosDesfechos(){
+  const grade = document.getElementById('gradeDesfechos'); if (!grade) return;
+  const el = id => document.getElementById(id);
+  const n = v => Number(v || 0).toLocaleString('pt-BR');
+  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
+  const C = () => window.MonitorCatalogo;
+  const txt = (id, valores) => (C() && C().texto(id, valores)) || '';
+
+  /* A tabela dos desfechos EM EVIDÊNCIA do handover (§2). `arquivo` é o que a página lê, que é a
+   * fonte primária decidida em 02/10 (SINAN para as arboviroses, não o painel amostral). A
+   * cadência é a da fonte, e é ela que decide se a série é por semana ou por mês. */
+  const DESFECHOS = [
+    {id: 'dengue', rotulo: 'Dengue', unidade: 'notificações', conta: 'notificações', cadencia: 'semana',
+     arquivo: 'data/saude_desfechos/dengue_sinan_serie.json', fonte: ['SINAN (Ministério da Saúde)'], mapa: 'acumulado'},
+    {id: 'chik', rotulo: 'Chikungunya', unidade: 'notificações', conta: 'notificações', cadencia: 'semana',
+     arquivo: 'data/saude_desfechos/chik_sinan_serie.json', fonte: ['SINAN (Ministério da Saúde)'], mapa: 'acumulado'},
+    {id: 'srag', rotulo: 'Síndrome respiratória grave', unidade: 'internações', conta: 'internações', cadencia: 'semana',
+     arquivo: 'data/saude_desfechos/srag_serie.json', fonte: ['SIVEP-Gripe (Ministério da Saúde)'], mapa: 'acumulado'},
+    {id: 'obitos', rotulo: 'Óbitos registrados', unidade: 'registros de óbito', conta: 'registros', cadencia: 'mês',
+     arquivo: 'data/saude_desfechos/obitos_registro_civil.json',
+     fonte: ['Portal da Transparência do Registro Civil (ARPEN/CNJ)'], mapa: 'ultimo',
+     ressalva: 'registro, não ocorrência; sem causa'},
+  ];
+  const UFS_SEL = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
+  const NOMES = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
+
+  let POP_UF = {}, CATALOGO = null, grafico = null;
+  let uf = 'BR', escolhido = null;
+  const dados = {};   // id → arquivo lido (ou null quando a fonte não respondeu)
+
+  /* ---- leitura da série de um desfecho, na forma comum que os dois formatos já têm ---- */
+  // Períodos com valor da UF escolhida, em ordem; chave "2026-33" (semana) ou "2026-09" (mês).
+  const periodos = (D, u) => {
+    const s = (D && D.serie && D.serie[u]) || null;
+    return s ? Object.keys(s).filter(k => s[k] != null).sort() : [];
+  };
+  const valor = (D, u, k) => ((D.serie[u] || {})[k]);
+  /* O QUE É PERÍODO FECHADO. A fonte continua recebendo notificação atrasada: as séries semanais
+   * declaram `se_incompletas` (quatro semanas, nas três) e a mensal declara qual é o mês corrente
+   * incompleto. Valor e faixa do cartão saem do último período FECHADO, com a data dele na linha
+   * de fonte — comparar período incompleto com a faixa habitual daria "abaixo do habitual" para o
+   * que é só notificação que ainda não chegou. Os períodos incompletos não entram nem no gráfico
+   * nem no mapa, pela mesma razão. */
+  const fechados = (D, d, ks) => d.cadencia === 'semana'
+    ? ks.slice(0, Math.max(0, ks.length - (D.se_incompletas || 0)))
+    : ks.filter(k => k !== D.mes_corrente_incompleto);
+  // A faixa habitual vem do canal endêmico do arquivo: {mediana, p90} por semana da UF.
+  const faixa = (D, u, k) => {
+    const canal = (D.canal_endemico || {})[u];
+    if (!canal) return null;
+    const c = canal[String(k).split('-')[1]];
+    return (c && c.mediana != null && c.p90 != null) ? {de: c.mediana, ate: c.p90} : null;
+  };
+  // O período por extenso: a semana vira intervalo de datas; o mês, nome e ano.
+  const periodoEmTexto = (d, k) => {
+    if (!k) return '';
+    const [ano, nn] = String(k).split('-');
+    if (d.cadencia === 'semana') return semanaEmDatas(ano, k) || '';
+    return (window.MonitorSemana ? MonitorSemana.MESES[Number(nn) - 1] + ' de ' + ano : '');
+  };
+  /* O intervalo coberto pela série desenhada: do começo do primeiro período ao fim do último. Para
+   * semanas usa as datas das pontas (não "de <semana> a <semana>", que repetiria a preposição). */
+  const intervaloEmTexto = (d, ks) => {
+    if (!ks.length) return '';
+    const fim = ks[ks.length - 1], [af, nf] = String(fim).split('-');
+    if (d.cadencia === 'semana') {
+      const ini = primeiraSemanaComValor(String(ks[0]).split('-')[0], [ks[0]]);
+      const ate = window.MonitorSemana ? MonitorSemana.fimPorExtenso(Number(af), Number(nf)) : '';
+      return (ini && ate) ? 'de ' + ini + ' a ' + ate : '';
+    }
+    return 'de ' + periodoEmTexto(d, ks[0]) + ' a ' + periodoEmTexto(d, fim);
+  };
+
+  /* ---- a linha das semanas (ou meses) recentes, dentro do cartão ----
+   * SVG inline, sem biblioteca: faixa habitual como polígono, a série como linha, o último ponto
+   * marcado. Escala própria do cartão (o eixo não é legível neste tamanho), e é por isso que o
+   * valor e a faixa aparecem em número logo acima. */
+  const QUANTOS = {semana: 52, mes: 24};
+  function linhaDoCartao(d, D, chaves) {
+    const ks = chaves.slice(-QUANTOS[d.cadencia]);
+    if (ks.length < 2) return '';
+    const vs = ks.map(k => Number(valor(D, uf, k)) || 0);
+    const fs = ks.map(k => faixa(D, uf, k));
+    const topo = Math.max(1, ...vs, ...fs.filter(Boolean).map(f => f.ate));
+    const x = i => (i / (ks.length - 1) * 100).toFixed(2);
+    const y = v => (100 - v / topo * 100).toFixed(2);
+    const linha = vs.map((v, i) => x(i) + ',' + y(v)).join(' ');
+    let faixaPoli = '';
+    if (fs.every(Boolean)) {
+      const cima = fs.map((f, i) => x(i) + ',' + y(f.ate));
+      const baixo = fs.map((f, i) => x(i) + ',' + y(f.de)).reverse();
+      faixaPoli = '<polygon class="faixa" points="' + cima.concat(baixo).join(' ') + '"></polygon>';
+    }
+    return '<svg class="cartao-numero-serie" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'
+      + faixaPoli + '<polyline class="linha" points="' + linha + '"></polyline>'
+      + '<circle class="ponto" cx="' + x(vs.length - 1) + '" cy="' + y(vs[vs.length - 1]) + '" r="2.5"></circle></svg>';
+  }
+
+  /* ---- os cartões ---- */
+  function desenharCartoes() {
+    const esc = MonitorMapas.esc;
+    grade.innerHTML = DESFECHOS.map(d => {
+      const D = dados[d.id]; const ks = D ? fechados(D, d, periodos(D, uf)) : [];
+      const ultimo = ks[ks.length - 1];
+      const v = ultimo ? valor(D, uf, ultimo) : null;
+      const f = ultimo ? faixa(D, uf, ultimo) : null;
+      const posicao = !f ? txt('saude.observado.cartao.faixa_sem')
+        : txt(v > f.ate ? 'saude.observado.cartao.faixa_acima'
+              : (v < f.de ? 'saude.observado.cartao.faixa_abaixo' : 'saude.observado.cartao.faixa_dentro'),
+              {de: f.de, ate: f.ate});
+      return '<button type="button" class="cartao-numero cartao-numero--saude" data-desfecho="' + d.id + '"'
+        + ' aria-pressed="' + (d.id === escolhido ? 'true' : 'false') + '">'
+        + '<p class="cartao-numero-rotulo"><strong>' + esc(d.rotulo) + '</strong> · '
+        + esc(txt('saude.observado.cartao.unidade',
+                  {unidade: d.unidade, cadencia: d.cadencia, periodo: periodoEmTexto(d, ultimo)})) + '</p>'
+        + '<p class="cartao-numero-valor" id="vDesf' + d.id + '">' + esc(_qtdCartao(v)) + '</p>'
+        + '<p class="cartao-numero-variacao">' + esc(posicao) + '</p>'
+        + (D ? linhaDoCartao(d, D, ks) : '')
+        + '<p class="cartao-numero-fonte" id="fDesf' + d.id + '"></p>'
+        + '</button>';
+    }).join('');
+    // A linha de fonte é a MESMA da figura, escrita pelo mesmo lugar (`MonitorMapas.credito`):
+    // "Fonte: … · Atualização: dd/mm/aaaa". Cartão sem arquivo diz "sem coleta até o corte".
+    DESFECHOS.forEach(d => MonitorMapas.credito('fDesf' + d.id,
+      {fontes: d.fonte.concat(d.ressalva ? [d.ressalva] : []), data: (dados[d.id] || {}).gerado_em || null}));
+    grade.querySelectorAll('[data-desfecho]').forEach(b =>
+      b.addEventListener('click', () => { escolhido = b.dataset.desfecho; desenharCartoes(); desenharDetalhe(); }));
+    MonitorMapas.legenda('legDesfechos', [
+      {cor: MonitorMapas.PALETA.anos['2026'], rotulo: txt('saude.observado.legenda.observado')},
+      {cor: MonitorMapas.PALETA.anos.canal, rotulo: txt('saude.observado.legenda.faixa')}]);
+  }
+
+  /* ---- o detalhe: a série inteira sobre a faixa, e o mapa por estado ---- */
+  function desenharDetalhe() {
+    const d = DESFECHOS.find(x => x.id === escolhido); if (!d) return;
+    const D = dados[d.id]; if (!D) return;
+    const todos = fechados(D, d, periodos(D, uf));
+    /* O gráfico cobre o ano do ciclo nas séries semanais — é o que o eixo em meses sabe rotular, e
+     * é o recorte que a página já publicava — e os 24 meses mais recentes na mensal. */
+    const anoCiclo = String(todos[todos.length - 1] || '').split('-')[0];
+    const ks = d.cadencia === 'semana' ? todos.filter(k => k.startsWith(anoCiclo)) : todos.slice(-QUANTOS.mes);
+    const ultimo = ks[ks.length - 1];
+    const anos = (D.anos_canal || []).map(String);
+    const faixaAnos = anos.length ? anos[0] + ' a ' + anos[anos.length - 1] : '';
+    const territorio = uf === 'BR' ? 'Brasil' : (NOMES[uf] || uf);
+    const parciais = d.cadencia === 'semana'
+      ? txt('saude.observado.detalhe.parciais_semana', {n: D.se_incompletas || 0})
+      : txt('saude.observado.detalhe.parciais_mes');
+
+    _poe('tituloSerieDesfecho', 'saude.observado.detalhe.titulo',
+         {desfecho: d.rotulo, unidade: d.unidade, cadencia: d.cadencia, territorio: territorio});
+    _poe('subSerieDesfecho', 'saude.observado.detalhe.legenda',
+         {medida: d.conta, cadencia: d.cadencia, anos: faixaAnos, parciais: parciais});
+    _poe('linhaSerieDesfecho', 'saude.observado.detalhe.periodo', {periodo: intervaloEmTexto(d, ks)});
+    MonitorMapas.credito('boxSerieDesfecho', {fontes: d.fonte, url: D.fonte, data: D.gerado_em});
+
+    const cv = el('cDesfecho');
+    if (cv && typeof Chart !== 'undefined') {
+      if (grafico && typeof grafico.destroy === 'function') grafico.destroy();
+      MonitorMapas.padraoGraficos(window.Chart);
+      const rotulos = d.cadencia === 'semana'
+        ? rotulosDeMes(String(ks[ks.length - 1] || '').split('-')[0], ks)
+        : ks.map(k => periodoEmTexto(d, k));
+      const titulos = ks.map(k => periodoEmTexto(d, k));
+      const fs = ks.map(k => faixa(D, uf, k));
+      grafico = new Chart(cv, {data: {labels: rotulos, datasets: [
+        {type: 'bar', label: d.conta, data: ks.map(k => valor(D, uf, k)), backgroundColor: MonitorMapas.PALETA.anos['2026']},
+        {type: 'line', label: 'menor valor esperado', data: fs.map(f => f ? f.de : null), borderColor: MonitorMapas.PALETA.anos.canal, borderWidth: 2, pointRadius: 0, fill: false},
+        {type: 'line', label: 'maior valor esperado', data: fs.map(f => f ? f.ate : null), borderColor: MonitorMapas.PALETA.anos.p90, borderWidth: 1.5, pointRadius: 0, fill: false}]},
+        options: {animation: false, responsive: true, maintainAspectRatio: false,
+          plugins: {legend: {display: false},
+            tooltip: {callbacks: {title: itens => (itens && itens[0] ? (titulos[itens[0].dataIndex] || '') : '')}}},
+          scales: {y: {beginAtZero: true, title: {display: true, text: d.unidade}},
+                   x: {ticks: {autoSkip: false, maxRotation: 0}}}}});
+    }
+    MonitorMapas.legenda('legSerieDesfecho', [
+      {cor: MonitorMapas.PALETA.anos['2026'], rotulo: d.conta},
+      {cor: MonitorMapas.PALETA.anos.canal, rotulo: txt('saude.observado.legenda.menor', {anos: faixaAnos})},
+      {cor: MonitorMapas.PALETA.anos.p90, rotulo: txt('saude.observado.legenda.maior', {anos: faixaAnos})}]);
+
+    /* O mapa é sempre por estado — é o que ele é —, e não muda com o seletor: o que muda é o
+     * desfecho. Acumulado do ano para as séries semanais; último período fechado para as mensais,
+     * que é o que o handover pede e o que a fonte mensal sustenta. */
+    const fechadosBR = fechados(D, d, periodos(D, 'BR'));
+    const ultimoBR = fechadosBR[fechadosBR.length - 1] || '';
+    const ano = String(ultimoBR).split('-')[0];
+    const bruto = {}, taxa = {};
+    UFS_SEL.forEach(u => {
+      const s = (D.serie || {})[u]; if (!s) return;
+      const kFechados = fechados(D, d, Object.keys(s).filter(k => s[k] != null).sort());
+      bruto[u] = d.mapa === 'acumulado'
+        ? kFechados.filter(k => k.startsWith(ano)).reduce((a, k) => a + Number(s[k]), 0)
+        : (kFechados.indexOf(ultimoBR) >= 0 ? Number(s[ultimoBR]) : null);
+      if (bruto[u] == null) { delete bruto[u]; return; }
+      if (POP_UF[u]) taxa[u] = bruto[u] / POP_UF[u] * 1e5;
+    });
+    _poe('tituloMapaDesfecho', 'saude.observado.mapa.titulo', {desfecho: d.rotulo});
+    _poe('subMapaDesfecho', d.mapa === 'acumulado' ? 'saude.observado.mapa.legenda_acumulado' : 'saude.observado.mapa.legenda_ultimo',
+         {ano: ano, ate: periodoEmTexto(d, ultimoBR), medida: d.conta});
+    _poe('linhaMapaDesfecho', 'saude.observado.mapa.periodo', {periodo: periodoEmTexto(d, ultimoBR)});
+    if (el('mapaDesfechoUF') && BR_GEOJSON) {
+      const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
+      const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
+      const max = Math.max(1, ...Object.values(taxa));
+      MonitorMapas.fundo && MonitorMapas.fundo('mapaDesfechoUF', 'chuva_claro');
+      MonitorMapas.ufs(ctx, 'mapaDesfechoUF',
+        u => taxa[u] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(taxa[u] / max * rampa.length))],
+        u => taxa[u] == null ? u + ': sem coleta'
+          : u + ': ' + umaCasa(taxa[u]) + ' por 100 mil habitantes (' + n(bruto[u]) + ' ' + d.conta + ')');
+      MonitorMapas.legenda('legMapaDesfecho', [
+        ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
+        {cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta'}]);
+      MonitorMapas.credito('boxMapaDesfecho', {fontes: d.fonte.concat(['Censo 2022 (IBGE)']), data: D.gerado_em});
+    }
+    if (el('dlDesfechoUF')) {
+      const esc = MonitorMapas.esc;
+      el('dlDesfechoUF').innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(u =>
+        '<dt>' + esc(u) + '</dt><dd>' + umaCasa(taxa[u]) + ' por 100 mil habitantes · ' + n(bruto[u]) + ' ' + esc(d.conta) + '</dd>').join('');
+    }
+  }
+  function _poe(id, catalogoId, valores) { const e = el(id); if (e) e.textContent = txt(catalogoId, valores); }
+
+  /* ---- a lacuna da classe: desfecho em evidência sem arquivo, nomeado pelo catálogo ---- */
+  function declararLacuna() {
+    const p = el('desfechosLacuna'); if (!p || !CATALOGO) return;
+    const semArquivo = (CATALOGO.desfechos || []).filter(x => ['dda', 'lepto'].indexOf(x.id) >= 0 && x.status_coleta !== 'coletado');
+    const nomes = semArquivo.map(x => String(x.nome).replace(/\s*\(.*\)$/, ''))
+      .map((s, i) => i === 0 ? s : s.charAt(0).toLowerCase() + s.slice(1));
+    const texto = nomes.length ? txt('saude.observado.lacuna', {faltam: nomes.join(' e ')}) : '';
+    p.textContent = texto; p.hidden = !texto;
+  }
+
+  /* ---- arranque: a malha e a lista de municípios são as que `__load` já buscou (é por isso que
+   * esta seção é chamada no fim dele, e não um bloco solto: duas buscas do mesmo arquivo atrasavam
+   * o desenho da grade dos 27). Daqui saem só a população, o catálogo e os quatro arquivos. ---- */
+  Promise.all([
+    (window.MonitorCatalogo && window.MonitorCatalogo.pronto) || Promise.resolve(),
+    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch('data/saude_desfechos/catalogo.json').then(r => r.ok ? r.json() : null).catch(() => null),
+  ].concat(DESFECHOS.map(d => fetch(d.arquivo).then(r => r.ok ? r.json() : null).catch(() => null))))
+  .then(resultado => {
+    const [, pop, cat] = resultado;
+    CATALOGO = cat;
+    const ref = PAINEL_LISTA;
+    if (pop && ref) (Array.isArray(ref) ? ref : Object.values(ref)).forEach(m => {
+      POP_UF[m.uf] = (POP_UF[m.uf] || 0) + Number(pop[String(m.codigo_ibge).padStart(7, '0')] || 0);
+    });
+    DESFECHOS.forEach((d, i) => { dados[d.id] = resultado[3 + i]; });
+    // O primeiro cartão com arquivo abre o detalhe (o handover pede dengue aberto por padrão; se a
+    // série de dengue faltar, abre o primeiro que tiver arquivo, nunca uma figura vazia).
+    escolhido = (DESFECHOS.find(d => dados[d.id]) || {}).id || null;
+    const sel = el('desfechosUF');
+    if (sel) {
+      UFS_SEL.slice().sort((a, b) => (NOMES[a] || a).localeCompare(NOMES[b] || b)).forEach(u => {
+        const o = document.createElement('option'); o.value = u; o.textContent = (NOMES[u] || u) + ' (' + u + ')'; sel.appendChild(o);
+      });
+      sel.addEventListener('change', () => { uf = sel.value || 'BR'; desenharCartoes(); desenharDetalhe(); });
+    }
+    desenharCartoes(); desenharDetalhe(); declararLacuna();
+  }).catch(_erroSaude("saude:secaoDosDesfechos"));
+}

@@ -223,6 +223,9 @@
   --radius-pill: 999px;   /* pílulas, trilhos de barra */
   --mapa-proporcao: 480 / 460;  /* viewBox único dos mapas */
   --grafico-altura: 260px;      /* .figura--grafico padrão */
+  /* A linha dos períodos recentes dentro do cartão de número (seção dos desfechos da Saúde):
+     40 px, a mesma altura do trilho de barras do cartão, para os quatro cartões ficarem iguais. */
+  --serie-cartao-altura: 40px;
   --grafico-altura-largo: 340px;/* .figura--largo (dispersões e séries em largura total) */
   --tabela-altura-max: 480px;   /* .tbl-wrap rolável dentro da figura */
   --diagrama-altura: 300px;     /* diagrama das MPs (rotas por órgão) */

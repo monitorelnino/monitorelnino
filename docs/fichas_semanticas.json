@@ -202,98 +202,6 @@
       "funcao_narrativa": "evidência do agora",
       "acao_relacionada": null
     },
-    "saude.html#boxCalor": {
-      "tipo": "mapa e lista",
-      "pergunta_que_responde": "Quantos municípios de cada estado estão em classe severa ou extrema de excesso de calor?",
-      "dimensao_da_preparacao": "exposição observada",
-      "universo": "municípios lidos pelo painel do Ministério da Saúde",
-      "unidade_de_analise": "município, agregado por UF",
-      "territorio": "Brasil",
-      "periodo": "dia da consulta",
-      "variavel_principal": "classe de excesso de calor (Normal, Baixo, Severo, Extremo), no vocabulário do MS",
-      "denominador": "municípios lidos no dia",
-      "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
-      "metodologia": "Classe calculada pelo MS a partir do índice EHF. O Monitor reproduz a classe publicada e não reescala. Fonte sem resposta entra como lacuna declarada, nunca como zero.",
-      "conclusoes_permitidas": [
-        "quantos municípios o MS classificou em cada classe de excesso de calor no dia"
-      ],
-      "conclusoes_nao_permitidas": [
-        "efeito sobre casos ou óbitos",
-        "atribuição do calor ao El Niño",
-        "ausência de classificação como ausência de calor",
-        "comparação da classe com temperatura medida"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": "consultar o painel do Ministério da Saúde"
-    },
-    "saude.html#boxChikSemana": {
-      "tipo": "série semanal com faixa esperada para a época",
-      "pergunta_que_responde": "Quantas notificações de chikungunya foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "chikungunya",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de chikungunya por semana epidemiológica de primeiros sintomas",
-      "denominador": "nenhum: é contagem",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
-      "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxChikUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quantas notificações de chikungunya por 100 mil habitantes cada estado registrou em 2026?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "chikungunya",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de chikungunya acumuladas no ano, por 100 mil habitantes",
-      "denominador": "população do Censo 2022, por estado",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
-      "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxDengueSemana": {
-      "tipo": "série semanal com faixa esperada para a época",
-      "pergunta_que_responde": "Quantas notificações de dengue foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "dengue",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de dengue por semana epidemiológica de primeiros sintomas",
-      "denominador": "nenhum: é contagem",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
-      "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxDengueUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quantas notificações de dengue por 100 mil habitantes cada estado registrou em 2026?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "dengue",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de dengue acumuladas no ano, por 100 mil habitantes",
-      "denominador": "população do Censo 2022, por estado",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
-      "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
     "saude.html#boxMonitor": {
       "tipo": "mapa",
       "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
@@ -331,68 +239,6 @@
       "conclusoes_permitidas": "dizer que família de risco o boletim prevê para o estado",
       "conclusoes_nao_permitidas": "ler previsão como ocorrência; comparar intensidade entre estados",
       "funcao_narrativa": "mostra a que o preparo de cada estado deveria responder"
-    },
-    "saude.html#boxSG": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como síndrome gripal evolui frente à faixa esperada para a época?",
-      "dimensao_da_preparacao": null,
-      "universo": "Brasil",
-      "unidade_de_analise": "semana epidemiológica",
-      "territorio": "Brasil",
-      "periodo": "semanas de 2026",
-      "variavel_principal": "nº de casos",
-      "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
-      "fonte": "Ministério da Saúde",
-      "metodologia": "as quatro últimas semanas ficam fora do consolidado",
-      "conclusoes_permitidas": [
-        "posição da série frente à faixa esperada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "atribuição ao El Niño",
-        "semanas recentes como tendência consolidada",
-        "gravidade dos casos"
-      ],
-      "funcao_narrativa": "camada observada: peso zero no índice",
-      "acao_relacionada": null
-    },
-    "saude.html#boxSRAG": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como síndrome respiratória aguda grave (SRAG) evolui frente à faixa esperada para a época?",
-      "dimensao_da_preparacao": null,
-      "universo": "Brasil",
-      "unidade_de_analise": "semana epidemiológica",
-      "territorio": "Brasil",
-      "periodo": "semanas de 2026",
-      "variavel_principal": "nº de casos",
-      "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
-      "fonte": "Ministério da Saúde",
-      "metodologia": "as quatro últimas semanas ficam fora do consolidado",
-      "conclusoes_permitidas": [
-        "posição da série frente à faixa esperada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "atribuição ao El Niño",
-        "semanas recentes como tendência consolidada",
-        "gravidade dos casos"
-      ],
-      "funcao_narrativa": "camada observada: peso zero no índice",
-      "acao_relacionada": null
-    },
-    "saude.html#boxSragUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quantas internações por síndrome respiratória grave por 100 mil habitantes cada estado registrou no ano?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; internações notificadas no SIVEP-Gripe",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas do ano corrente",
-      "variavel_principal": "internações por síndrome respiratória grave acumuladas no ano, por 100 mil habitantes",
-      "denominador": "população do Censo 2022, por estado",
-      "fonte": "SIVEP-Gripe (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Soma das semanas do ano corrente por estado, dividida pela população. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
-      "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
-      "conclusoes_nao_permitidas": "atribuir as internações ao El Niño; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado em doença respiratória, sem ligar ao El Niño"
     },
     "monitor-de-riscos.html#boxEpisodios": {
       "tipo": "série temporal",
@@ -586,6 +432,38 @@
       ],
       "funcao_narrativa": "onde o caminho do reconhecimento ao recurso parou",
       "metodologia": "Primeiro reconhecimento no consolidado; sem portaria de recurso em recursos_liberados.json; mais de 30 dias até a data do consolidado."
+    },
+    "saude.html#boxSerieDesfecho": {
+      "tipo": "série temporal em barras com a faixa habitual da época, do desfecho escolhido no cartão",
+      "pergunta_que_responde": "Como o desfecho escolhido se comporta ao longo do ciclo, comparado com a faixa habitual para a mesma época?",
+      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+      "universo": "os desfechos em evidência com série coletada: dengue e chikungunya (SINAN), síndrome respiratória grave (SIVEP-Gripe) e óbitos registrados (Registro Civil)",
+      "unidade_de_analise": "o desfecho escolhido no cartão, no território escolhido no seletor",
+      "territorio": "Brasil ou uma unidade da federação, à escolha de quem lê",
+      "periodo": "o ano do ciclo nas séries semanais; os 24 meses mais recentes na mensal — só períodos fechados",
+      "variavel_principal": "casos, internações ou registros do desfecho escolhido, por semana ou por mês",
+      "fonte": "SINAN (Ministério da Saúde); SIVEP-Gripe (Ministério da Saúde); Portal da Transparência do Registro Civil (ARPEN/CNJ)",
+      "metodologia": "A faixa habitual é o canal endêmico que o próprio arquivo de cada desfecho traz: mediana e p90 das semanas equivalentes de 2019 a 2025, da mesma unidade da federação. Os períodos ainda em notificação (quatro semanas nas séries semanais, o mês corrente na mensal) ficam fora do desenho, porque subiriam depois. Série sem canal não recebe faixa inventada: o cartão diz \"sem faixa habitual\".",
+      "conclusoes_permitidas": "comparar o valor de um período com a faixa habitual da mesma época; ler a forma da série ao longo do ciclo",
+      "conclusoes_nao_permitidas": "atribuir casos ao El Niño; tratar notificação como caso confirmado; comparar desfechos diferentes entre si; ler os períodos recentes como queda, porque ainda recebem notificação",
+      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño"
+    },
+    "saude.html#boxMapaDesfecho": {
+      "tipo": "mapa coroplético por unidade da federação, com lista, do desfecho escolhido no cartão",
+      "pergunta_que_responde": "Quanto do desfecho escolhido cada estado registrou, por 100 mil habitantes?",
+      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+      "universo": "os desfechos em evidência com série coletada, por unidade da federação",
+      "unidade_de_analise": "o desfecho escolhido no cartão",
+      "territorio": "Brasil, por unidade da federação",
+      "periodo": "acumulado do ano do ciclo nas séries semanais; último período fechado na mensal",
+      "variavel_principal": "casos, internações ou registros do desfecho escolhido, por 100 mil habitantes",
+      "denominador": "população do Censo 2022, por estado",
+      "fonte": "SINAN (Ministério da Saúde); SIVEP-Gripe (Ministério da Saúde); Portal da Transparência do Registro Civil (ARPEN/CNJ); IBGE — Censo 2022",
+      "metodologia": "Soma dos períodos fechados do ano (ou o último período fechado, na série mensal), dividida pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho. Estado sem dado fica em cinza e é dito \"sem coleta\", nunca zero.",
+      "conclusoes_permitidas": "comparar a taxa entre estados no mesmo período",
+      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler cinza como ausência do desfecho",
+      "funcao_narrativa": "mostra onde o que é registrado se concentra, sem ligar ao El Niño",
+      "acao_relacionada": "a lista por estado, no pé da figura"
     }
   }
 }

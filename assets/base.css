@@ -1183,6 +1183,18 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   font-size:var(--fs-display); line-height:var(--lh-display); margin:0;}
 .cartao-numero-fonte{font-family:var(--font-dado); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted); margin:auto 0 0;}
+/* 19/10/2026 (HANDOVER_SAUDE_DESFECHOS_BLOCO): duas variantes do MESMO cartão de número, para a
+   seção dos desfechos da Saúde. (1) A linha dos períodos recentes dentro do cartão: SVG inline,
+   faixa habitual em mineral translúcido, série em tinta, último período em argila; altura fixa
+   porque aqui ela é sinal de forma, não figura com eixo — quem precisa do eixo abre o detalhe.
+   (2) O cartão é o seletor da seção, então é um `button`: ganha a mesma caixa, o alvo de toque e
+   a borda da família quando está escolhido. Nenhuma cor nova e nenhum tamanho fora da escala. */
+.cartao-numero-serie{display:block; width:100%; height:var(--serie-cartao-altura);}
+.cartao-numero-serie .faixa{fill:var(--slate); opacity:.28;}
+.cartao-numero-serie .linha{fill:none; stroke:var(--ink); stroke-width:1.25px; vector-effect:non-scaling-stroke;}
+.cartao-numero-serie .ponto{fill:var(--rust);}
+button.cartao-numero{text-align:left; font:inherit; color:inherit; cursor:pointer;}
+button.cartao-numero[aria-pressed="true"]{border-color:var(--green);}
 .link-pequeno{background:none; border:0; padding:0; color:var(--link); cursor:pointer;
   /* 03/10/2026: alvo de toque de 44 px (portão de conformidade). O desenho continua o de LINK —
      sem fundo e sem borda —, e o que cresce é a área sensível, não a tipografia. */

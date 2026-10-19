@@ -84,76 +84,61 @@
     {
       "id": "observado",
       "h2": "O que os órgãos de saúde registram",
-      "tipo": "doencas",
-      "exige_texto": [
-        "Esta página não relaciona casos ao El Niño."
+      "tipo": "numeros",
+      "grade": ".grade-numeros",
+      "linhas": 1,
+      "cartoes": [
+        {
+          "id": "desfecho_dengue",
+          "tipo": "numero",
+          "chave": "dengue_sinan_serie.json#serie.BR",
+          "valor_el": "vDesfdengue"
+        },
+        {
+          "id": "desfecho_chik",
+          "tipo": "numero",
+          "chave": "chik_sinan_serie.json#serie.BR",
+          "valor_el": "vDesfchik"
+        },
+        {
+          "id": "desfecho_srag",
+          "tipo": "numero",
+          "chave": "srag_serie.json#serie.BR",
+          "valor_el": "vDesfsrag"
+        },
+        {
+          "id": "desfecho_obitos",
+          "tipo": "numero",
+          "chave": "obitos_registro_civil.json#serie.BR",
+          "valor_el": "vDesfobitos"
+        }
       ],
+      "_nota_um_cartao_por_desfecho": "19/10/2026 (HANDOVER_SAUDE_DESFECHOS_BLOCO, mockup aprovado pela editoria em 16/10): a seção deixa de ter um bloco por agravo e passa a ter UM cartão por desfecho — desfecho em pessoas, nunca exposição: o mapa de excesso de calor saiu da página, porque calor é exposição e vive nas páginas de risco. Cartão só nasce com arquivo em disco (§36); desfecho em evidência sem arquivo (diarreias e leptospirose) entra na linha de lacuna, nomeado pelo catálogo de desfechos.",
+      "_nota_grade_de_quatro": "A grade é a base `.grade-numeros`, de quatro colunas, porque são quatro os desfechos com arquivo: uma linha cheia no desktop, dois a dois no tablet e um por linha no celular, sem cartão órfão. O handover pede `.grade-numeros--3`, que com quatro cartões deixaria 3 + 1 — divergência declarada. Quando diarreias e leptospirose nascerem, seis cartões dão duas linhas cheias.",
       "doencas": [
         {
-          "h3": "Dengue",
-          "grade": ".grade-figuras--3",
+          "h3": null,
+          "_nota": "O detalhe do cartão escolhido, um por vez: a série sobre a faixa habitual e o mapa por estado. São os dois componentes de figura que a página já tinha, agora um par só em vez de um par por agravo. O handover descreve o detalhe como UM cartão com gráfico em 3/5 e mapa em 2/5; isso seria uma variante nova de mídia, e o par de figuras que já existe entrega a mesma leitura com o componente que está no sistema — divergência declarada.",
           "cartoes": [
             {
-              "id": "serie_semana_vs_faixa",
+              "id": "serie_do_desfecho",
               "tipo": "grafico",
-              "el": "boxDengueSemana"
+              "el": "boxSerieDesfecho"
             },
             {
-              "id": "mapa_uf_por_100mil",
+              "id": "mapa_do_desfecho",
               "tipo": "mapa",
-              "el": "boxDengueUF"
-            }
-          ]
-        },
-        {
-          "h3": "Chikungunya",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "serie_semana_vs_faixa",
-              "tipo": "grafico",
-              "el": "boxChikSemana"
-            },
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxChikUF"
-            }
-          ]
-        },
-        {
-          "h3": "Respiratórias",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "serie_semana_vs_faixa",
-              "tipo": "grafico",
-              "el": "boxSRAG"
-            },
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxSragUF"
-            },
-            {
-              "id": "sg_esus",
-              "tipo": "grafico",
-              "el": "boxSG"
-            }
-          ]
-        },
-        {
-          "h3": "Calor",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxCalor"
+              "el": "boxMapaDesfecho"
             }
           ]
         }
-      ]
+      ],
+      "ultima_linha_incompleta": true,
+      "exige_texto": [
+        "Esta página não relaciona casos ao El Niño.",
+        "faixa habitual para a época"
+      ],
+      "_nota_exige_texto": "A frase do El Niño continua exigida: o handover manda retirá-la com esta seção, e `scripts/verificar_runtime_saude.js`, que é arquivo de outra faixa, ainda a cobra. A regra vence o handover; a divergência está registrada no LOTES."
     },
     {
       "id": "saude-federal-painel",
