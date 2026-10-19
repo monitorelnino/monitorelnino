@@ -17,6 +17,14 @@ Entra a consulta do município, no módulo comum, com seis cartões lidos do dad
 
 A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
 
+## 2026-10-19 · #853 · Imprensa: a semana em seis números, e o que recomendamos concluir
+
+A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
+
+## 2026-10-17 · #846 · Para gestores: o cartão do plano diz a situação do município
+
+O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.
+
 ## 2026-10-19 · #851 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos
 
 `aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.
