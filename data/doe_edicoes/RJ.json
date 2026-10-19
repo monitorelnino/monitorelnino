@@ -1,12 +1,149 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "/edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "rotulo_corrigido_em": "17/10/2026 (404, erro de rede e arquivo que não é edição não são recusa medida)"
+  "modo": "padrao_por_data",
+  "em": "19/10/2026",
+  "conta_como_consultado": true,
+  "adaptador": "edicao_rj"
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-10-19": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 4966275,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=0608902C-0EAP7-4932-9177-870D72BB91BC",
+   "impressao": "f5f1507a62479add4c0723ea6fef3727ec502513f04184da6fb932dfa95f99df",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "f5f1507a62479add4c0723ea6fef3727ec502513f04184da6fb932dfa95f99df"
+  },
+  "2026-10-16": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 4683274,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=EAB21D88-45BPD-4CD0-BD2A-D4F0D229380A",
+   "impressao": "23151efd43939154abcb7d6180c7c1407a5515008e92d973a9c39919a81d96f0",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "23151efd43939154abcb7d6180c7c1407a5515008e92d973a9c39919a81d96f0"
+  },
+  "2026-10-15": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 5526313,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=63229BCF-8F2P8-4CBD-98FB-D1608F45ACDA",
+   "impressao": "5b0985073b7cf7322de6560c61f5245b08a39260eca0183004b5488a15d0ca7e",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "5b0985073b7cf7322de6560c61f5245b08a39260eca0183004b5488a15d0ca7e"
+  },
+  "2026-10-14": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 8867113,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=1C6288F3-E80PF-409B-AB53-8D41A82292C3",
+   "impressao": "3312560db6db2e6e2cfd45731700702b2043493a1a29d1dcda87f65a0348e5f9",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "3312560db6db2e6e2cfd45731700702b2043493a1a29d1dcda87f65a0348e5f9"
+  },
+  "2026-10-13": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 5245434,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=1B78ACDA-FA6P9-4FF9-9187-09E4B98269B9",
+   "impressao": "62eb8064e5ddbc204fea1cc3b2906fa60c7894a374bf97b00f6d35a71bd777b0",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "62eb8064e5ddbc204fea1cc3b2906fa60c7894a374bf97b00f6d35a71bd777b0"
+  },
+  "2026-10-13#2": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 833617,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=71B7B54C-933P9-4BC6-B6DB-3FB8282F8DEB",
+   "impressao": "cad4b454a3306846a612acd954fb7a40b14152af50bdd45112405a9bafb469ab",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "cad4b454a3306846a612acd954fb7a40b14152af50bdd45112405a9bafb469ab"
+  },
+  "2026-10-12": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: FormatoDaBuscaMudou: página de cadernos do DOE-RJ fora do contrato"
+  },
+  "2026-10-09": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 3929197,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=D511E2E8-1D7P5-45AB-9519-6EEEF76B0DA2",
+   "impressao": "1a2d1b7d1128c71d8b82ce70b7ca1462b2236e62ac2ee15df5b37a2aa6906073",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "1a2d1b7d1128c71d8b82ce70b7ca1462b2236e62ac2ee15df5b37a2aa6906073"
+  },
+  "2026-10-08": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 3181061,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=A61E4C38-9B6PE-4F05-BDAE-CF1DA0AF4174",
+   "impressao": "e5e0236fa8091126cf971016087c33d5705fec32cb9b5ba5f99b05324d3e1f17",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "e5e0236fa8091126cf971016087c33d5705fec32cb9b5ba5f99b05324d3e1f17"
+  },
+  "2026-10-07": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 7071990,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=6C09BFB9-E02P9-4EB1-BCE0-C9EE6ADBF195",
+   "impressao": "bfb5c40ca2069d0267c1d92426b0f894373346444185b725bd6b0ca0b1e796a2",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "bfb5c40ca2069d0267c1d92426b0f894373346444185b725bd6b0ca0b1e796a2"
+  },
+  "2026-10-07#2": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 924084,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=56567272-E4DP3-4355-B6A2-C7E9FEDAC47E",
+   "impressao": "c7e6d97b5d6ca99982795073e4f928847eb595567fac6ace42ddd10466ea8535",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "c7e6d97b5d6ca99982795073e4f928847eb595567fac6ace42ddd10466ea8535"
+  },
+  "2026-10-06": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 6351107,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=E3E52C1D-592P1-4523-BF43-775274B67C36",
+   "impressao": "6c8208e263427864adb2724a4dbe1eb1ee54e06f03b7ebc71e1f88ccaa133920",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "6c8208e263427864adb2724a4dbe1eb1ee54e06f03b7ebc71e1f88ccaa133920"
+  },
+  "2026-10-05": {
+   "decisao": "sem_texto_extraivel",
+   "em": "19/10/2026",
+   "bytes": 5190187,
+   "paginas": 0,
+   "paginas_com_texto": 0,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=095D7A7F-2DFP3-48DA-AD26-54BF6717E8D3",
+   "impressao": "c00399bcef222dda50e28767e07742a5b3368d28d93d6372b6cd826b6023383c",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "c00399bcef222dda50e28767e07742a5b3368d28d93d6372b6cd826b6023383c"
+  }
+ },
+ "atualizado_em": "19/10/2026"
 }

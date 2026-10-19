@@ -1,14 +1,212 @@
 {
  "_governanca": "Edições do diário oficial deste estado baixadas por DATA (canal 2 do MARÉ Saúde, diretriz de 02/10/2026). Guarda-se o resumo de cada edição e as ocorrências dos termos de saúde, com o trecho e a página; o PDF vive em evidencias/, pelo hash. Edição digitalizada como imagem sai como 'sem_texto_extraivel', que NÃO é 'edição sem o termo'.",
- "edicoes": {},
- "canal2": {
-  "modo": "busca_no_diario",
-  "adaptador": "dodf",
-  "em": "19/10/2026",
-  "conta_como_consultado": false,
-  "busca_declaracao": {
-   "lacuna": "busca do diário falhou em 19/10/2026: URLError: <urlopen error timed out>"
+ "edicoes": {
+  "2026-10-19": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2819458,
+   "paginas": 71,
+   "paginas_com_texto": 71,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=772845c7-eda5-3dfa-8f2c-2767e99d7e2a",
+   "impressao": "0125f9349a9525485398fb14a233573c1cc33346752d26d08e536a280e5f8ab4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 10706538,
+   "paginas": 17,
+   "paginas_com_texto": 17,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=4b43fd9f-f1ec-310d-b14b-c488b63257f2",
+   "impressao": "09bc0b1e020101155eef6d62f0932148f2e44b688894a338031a666683f75e50",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2104512,
+   "paginas": 74,
+   "paginas_com_texto": 73,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=854f09fd-3e63-3b78-908b-42d8a98e2ab2",
+   "impressao": "0563db4a0b08c470fcce235a2ac3b2a9d9196473f23e40bdcfb6d8423fd786ce",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 18418574,
+   "paginas": 100,
+   "paginas_com_texto": 100,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=b7fcf397-3409-327c-b325-4d6ef89d8c29",
+   "impressao": "253b4c5d67bee44498a5a29d98cd0bedcba1127f1ed471a465d276adaf3816ac",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1642568,
+   "paginas": 2,
+   "paginas_com_texto": 2,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=ee5a0f27-6508-307d-8a7a-8075610fe263",
+   "impressao": "677567a97d0df35bcc13e04309cca7343cb60fb238b304c08c2d4fbf980672b7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 5602079,
+   "paginas": 74,
+   "paginas_com_texto": 74,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=73130132-7184-3f4b-a72a-713ea74ee11a",
+   "impressao": "3c5112c4e0e7b7c3397503b486a856ee5cb255343237c2dd7dfed4ee932fb294",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1527227,
+   "paginas": 71,
+   "paginas_com_texto": 71,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=cd339892-7c0c-3ef9-b287-1b81aff88c2c",
+   "impressao": "b8eb6c1775612c6248bb7cabea4a4c58d804b2c67a2f545fb13eaba4c959f404",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "b8eb6c1775612c6248bb7cabea4a4c58d804b2c67a2f545fb13eaba4c959f404",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-13#2": {
+   "decisao": "nao_e_edicao",
+   "em": "19/10/2026",
+   "bytes": 550931,
+   "paginas": 1,
+   "paginas_com_texto": 1,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=8f885ed8-d757-326e-a298-898c3096ab3a",
+   "impressao": "d87bf2e4a7e5cf623bbae275e8a6e91f9904c13ec281d66c262cc104bb074c06",
+   "termos_versao": "2026-10-17",
+   "motivo": "550931 bytes e 1 página(s) — não é uma edição"
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026"
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 8243246,
+   "paginas": 86,
+   "paginas_com_texto": 86,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=88eb7933-a7ac-31eb-a2b6-85db4d84f271",
+   "impressao": "e6be421a168b099ae6abe62de7f5355a60d055be323850a5fff31aaee73cff58",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-09#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1046444,
+   "paginas": 3,
+   "paginas_com_texto": 3,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=c04982e7-2e0e-3d8a-8eea-2eee7520525f",
+   "impressao": "0167e1673a4fef6ce2a8e0d6f519b20b05647f1b91ff38be1ac3ddded86655e3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2537366,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=b56483c8-b62e-3076-b864-ef82c2a55677",
+   "impressao": "3e5a324af9cecb6f6e36a322f2074658e72727e9a8e866510f36e6db0162f7c7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 8316868,
+   "paginas": 74,
+   "paginas_com_texto": 74,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=4348ff59-9abb-31d1-aaa0-7f4164e24225",
+   "impressao": "999d66e246932fa07b331d3555c33d246c26d4d7a016c54980ee9eed57f2cc32",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 728403,
+   "paginas": 2,
+   "paginas_com_texto": 2,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=5aed7573-106e-3c6c-8d8d-2a3cde6c8f31",
+   "impressao": "9013d8cef794313b62dfd1da84b450f254d892d899deac781ead2fdd862d55a9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 4806587,
+   "paginas": 67,
+   "paginas_com_texto": 64,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=2cfe9e8a-d8cb-3e62-bdf2-387c550ecd10",
+   "impressao": "57fedc5a8a0a61156f7edfd0cba208c3637b80ada5d32cfdc73ed408c686ce2b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 4775583,
+   "paginas": 100,
+   "paginas_com_texto": 100,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=d0f6b97b-f701-393d-bc62-8143ecf3283d",
+   "impressao": "3bac7555f262972cb8888a765d71a5320897682b41b6f8a0e8fe40de28bfb7f4",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "3bac7555f262972cb8888a765d71a5320897682b41b6f8a0e8fe40de28bfb7f4",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 48772734,
+   "paginas": 92,
+   "paginas_com_texto": 92,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=e5725ccc-81cd-35c1-8ddd-9d027a09e982",
+   "impressao": "313ea6848e83e95c20477f7e91974fbf1bdbc0754292f683de08832ecbb1e2a2",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "313ea6848e83e95c20477f7e91974fbf1bdbc0754292f683de08832ecbb1e2a2",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-05#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 5488424,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://www.sinj.df.gov.br/sinj/BaixarArquivoDiario.aspx?id_file=f02c4032-9a91-3855-bfae-ca530792f0ac",
+   "impressao": "2bedeb51fbc94fb36e51a05ac55b4a1e8603051829bea7e5e45d052fb7dbdc5b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
   }
+ },
+ "canal2": {
+  "modo": "padrao_por_data",
+  "em": "19/10/2026",
+  "conta_como_consultado": true,
+  "adaptador": "edicao_df"
  },
  "atualizado_em": "19/10/2026"
 }
