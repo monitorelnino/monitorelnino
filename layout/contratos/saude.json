@@ -46,14 +46,9 @@
           "tipo": "numero",
           "chave": "saude_sinais.json",
           "valor_el": "nCalorMun"
-        },
-        {
-          "id": "emergencias_saude_ciclo",
-          "tipo": "numero",
-          "chave": "monitor_saude.json#resposta.emergencias",
-          "valor_el": "nEmergSaude"
         }
       ],
+      "_nota_cinco_cartoes": "19/10/2026 (HANDOVER_SAUDE_PAGINA §1.3, §1.4 e §7): o cartão 'Resposta' saiu — a emergência em saúde pública tem medidor próprio no topo, e zero não vira cartão fora dele. Ficam cinco cartões numa linha, na variante compacta.",
       "exige_texto": [
         "são parciais e sobem com as notificações atrasadas",
         "não indica relação com o El Niño"
@@ -71,16 +66,13 @@
           "el": "boxMonitor"
         },
         {
-          "id": "lista_estados_verificacao",
-          "tipo": "lista",
-          "el": "boxVerificacaoUF"
-        },
-        {
           "id": "risco_previsto_uf",
           "tipo": "lista",
           "el": "boxRiscoSan"
         }
       ],
+      "ultima_linha_incompleta": true,
+      "_nota_duas_figuras": "19/10/2026 (HANDOVER_SAUDE_PAGINA §2.6 e §7): a figura 'O que foi localizado em cada estado' (lista dos 27) saiu — o documento, o órgão e a data de cada estado abrem na ficha, pelo mapa e pela grade. A grade de três fica com duas figuras, e esta é a última linha da seção.",
       "estados": {
         "grade": "#regionsSaude",
         "cartoes": 27,
