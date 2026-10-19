@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Monitor de riscos: textos do topo mais curtos e quatro trechos a menos</dt>
+      <dd>Os sete cartões de &quot;Situação atual&quot; ganham rótulo e apoio curtos, e a frase da previsão da NOAA/CPC desce do cartão para o texto da seção. Saem da página a nota longa do mapa de qualidade do ar (vai à METODOLOGIA §41.7), o parágrafo das listas federais, o gráfico do Semiárido e duas frases redundantes. A sigla de UF deixa de ser link. &quot;Ar&quot; passa a &quot;qualidade do ar&quot;. A abertura da inicial fica um degrau menor, menos no celular.</dd>
       <dt>19/10/2026 · Financiamento: o dinheiro por risco, onde chega e o mês a mês</dt>
       <dd>Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.</dd>
       <dt>19/10/2026 · Defesa civil: sai o cartão de decreto e alerta ao mesmo tempo</dt>
@@ -165,8 +167,6 @@
       <dd>O elo dos sinais grava `data/riscos_municipio/&lt;UF&gt;.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.</dd>
       <dt>16/10/2026 · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria</dt>
       <dd>O elo dos sinais grava `data/secas_manchas.json`: manchas S0–S4 do shapefile mensal do Monitor de Secas (repositório de arquivos da ANA), anéis simplificados a ~2 km, mês do mapa e hash do original. Baixa uma vez por mês. Leitor de .shp/.dbf sem dependência nova. METODOLOGIA §41.9.</dd>
-      <dt>16/10/2026 · Focos pelo satélite de referência; avisos por UF e grau</dt>
-      <dd>O elo dos sinais grava `data/focos_referencia.json`: focos do satélite de referência do INPE por dia, UF, bioma e município (IBGE), série de 400 dias com o mesmo dia do ano anterior (arquivo anual de referência), mês e 30 dias com o número de dias com dado. `alertas/vigentes.json` ganha municípios sob aviso por UF e grau. METODOLOGIA §41.8.</dd>
     </dl>
   </section>
 </main>

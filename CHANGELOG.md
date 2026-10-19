@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Monitor de riscos: textos do topo mais curtos e quatro trechos a menos
+## 2026-10-19 · #866 · Monitor de riscos: textos do topo mais curtos e quatro trechos a menos
 
 Os sete cartões de "Situação atual" ganham rótulo e apoio curtos, e a frase da previsão da NOAA/CPC desce do cartão para o texto da seção. Saem da página a nota longa do mapa de qualidade do ar (vai à METODOLOGIA §41.7), o parágrafo das listas federais, o gráfico do Semiárido e duas frases redundantes. A sigla de UF deixa de ser link. "Ar" passa a "qualidade do ar". A abertura da inicial fica um degrau menor, menos no celular.
 
