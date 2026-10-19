@@ -191,8 +191,8 @@
    "comprometimento": "psicossocial",
    "sistema": "SIH / SIM / Sinan (violência autoprovocada)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações com CID-10 principal F00 a F99 (transtornos mentais e comportamentais), por UF de residência e mês; suicídio e violência autoprovocada ficam fora desta rota (SIM e Sinan, sem rota provada). Grupo novo em `coletar_sih.py` ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "obitos",
@@ -210,8 +210,8 @@
    "comprometimento": "serviços",
    "sistema": "SIH/SUS",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações cujo CID-10 principal está na Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). A lista oficial precisa ser transcrita da portaria com conferência antes de entrar como grupo em `coletar_sih.py`; coletor ainda não escrito.",
+   "status_coleta": "candidato"
   },
   {
    "id": "tb_continuidade",
@@ -219,8 +219,8 @@
    "comprometimento": "serviços",
    "sistema": "Sinan-TB",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
-   "status_coleta": "nao_coletavel_por_maquina"
+   "fonte_aberta": "SINAN-TB (.dbc no FTP do DATASUS): `TUBEBR12`–`TUBEBR19` finais e `TUBEBR20`–`TUBEBR25` preliminares, um arquivo por ano de notificação, todo o país. Decodificado em 19/10/2026 pelo leitor `coletar_datasus_dbc.py`: TUBEBR25 com 112.482 notificações (110.969 de 2025, 1.513 de 2026) e `SITUA_ENCE` lido (cura, abandono, óbito, transferência; 44.410 sem encerramento). Rota: proporção de abandono entre os casos encerrados, por UF de residência e ano. Conferência de uma célula com o TabNet e coletor ainda não feitos.",
+   "status_coleta": "candidato"
   },
   {
    "id": "hepatite_a",
@@ -311,6 +311,13 @@
    "tabnet": "leptobr.def responde ao POST de formulário (0,8 s); sem página de DDA no índice público",
    "sisab": "RelSauProducao.xhtml público, 5,9 MB, ViewState JSF; robots.txt 404",
    "opendatasus": "API de busca (package_search) sem resposta JSON em opendatasus.saude.gov.br; ckan-dadosabertos.saude.gov.br não resolve"
+  },
+  {
+   "data": "19/10/2026",
+   "janela": "E2",
+   "sinan_tb": "FINAIS TUBEBR12–19, PRELIM TUBEBR20–25; TUBEBR25 (5,8 MB) baixado e decodificado em ~20 s no executor; 112.482 registros; SITUA_ENCE com 10 códigos",
+   "sih": "leitura por máquina já provada em 17/10 e 19/10; F00–F99 usa o mesmo DIAG_PRINC dos grupos coletados",
+   "ftp_do_ambiente_de_edicao": "ftp.datasus.gov.br não resolve fora do executor; sondas só pelo executor"
   }
  ]
 }
