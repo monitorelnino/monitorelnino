@@ -17,8 +17,10 @@ USO
   python3 scripts/quais_portoes.py                 # compara com origin/main
   python3 scripts/quais_portoes.py --contra HEAD~1
   python3 scripts/quais_portoes.py --comando       # imprime a linha pronta para rodar
+  python3 scripts/quais_portoes.py --ci BASE SHA   # passo da CI (portoes.yml)
   python3 scripts/quais_portoes.py --autoteste
 """
+import os
 import pathlib
 import re
 import subprocess
@@ -32,15 +34,12 @@ WORKFLOW = RAIZ / ".github" / "workflows" / "portoes.yml"
 # primeiro `grep -qE` é a de dado, a do segundo é a de página; os comandos são os dos passos do
 # workflow, classificados pelo `if:` do passo (sem `if` → sempre; `pagina_mudou` → página;
 # `dado_mudou` → dado). Lista paralela sai de sincronia — foi assim que ela nasceu errada.
-_RE_GREP = re.compile(r"grep -qE '([^']+)'")
-
-
-def regexes_do_workflow(texto: str) -> tuple:
-    """(regex_de_dado, regex_de_pagina) lidas do YAML. Função pura."""
-    achadas = _RE_GREP.findall(texto or "")
-    if len(achadas) < 2:
-        raise ValueError("portoes.yml sem as duas regex de disparo (dado, página)")
-    return re.compile(achadas[0]), re.compile(achadas[1])
+# A regra de disparo vive AQUI (13/10: era copiada em três passos do yml e lida de volta por regex).
+# Padrão amplo de propósito: falso positivo custa tempo, falso negativo custa um defeito no ar.
+RE_DADO = re.compile(r"(^|/)data/|\.py$|^requirements\.txt$|^\.github/workflows/atualizar\.yml$"
+                     r"|^\.github/workflows/portoes\.yml$|^package(-lock)?\.json$|^config/")
+RE_PAGINA = re.compile(r"\.html$|^assets/|^docs/fichas_semanticas\.json$|^scripts/[^/]+\.js$"
+                       r"|^conteudo/|^layout/|^netlify\.toml$")
 
 
 def comandos_por_condicao(wf: dict) -> dict:
@@ -61,13 +60,7 @@ def comandos_por_condicao(wf: dict) -> dict:
     return fora
 
 
-def _do_workflow():
-    import yaml
-    texto = WORKFLOW.read_text(encoding="utf-8")
-    return regexes_do_workflow(texto), comandos_por_condicao(yaml.safe_load(texto))
-
-
-(RE_DADO, RE_PAGINA), _CMDS = _do_workflow()
+_CMDS = comandos_por_condicao(__import__("yaml").safe_load(WORKFLOW.read_text(encoding="utf-8")))
 SEMPRE, DE_PAGINA, DE_DADO = _CMDS["sempre"], _CMDS["pagina"], _CMDS["dado"]
 
 
@@ -98,6 +91,23 @@ def alterados(contra: str) -> list:
     r2 = subprocess.run(["git", "diff", "--name-only"], capture_output=True, text=True, cwd=RAIZ)
     fora += [a.strip() for a in r2.stdout.split("\n") if a.strip()]
     return sorted(set(fora))
+
+
+def ci(base: str, sha: str) -> int:
+    """Passo da CI: escreve dado_mudou/pagina_mudou em $GITHUB_OUTPUT. Sem base (disparo manual) = tudo."""
+    arquivos = []
+    if base:
+        r = subprocess.run(["git", "diff", "--name-only", base, sha], capture_output=True, text=True,
+                           cwd=RAIZ, check=True)
+        arquivos = [a for a in r.stdout.split("\n") if a.strip()]
+        print("arquivos alterados:\n" + r.stdout)
+    marcas = classificar(arquivos)
+    for k, v in marcas.items():
+        print(f"{k}_mudou={'true' if v else 'false'}")
+        if os.environ.get("GITHUB_OUTPUT"):
+            with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+                f.write(f"{k}_mudou={'true' if v else 'false'}\n")
+    return 0
 
 
 def autoteste() -> int:
@@ -160,6 +170,8 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if "--ci" in sys.argv:
+        return ci(*sys.argv[sys.argv.index("--ci") + 1:][:2]) if len(sys.argv) > sys.argv.index("--ci") + 2 else ci("", "")
     contra = "origin/main"
     if "--contra" in sys.argv:
         contra = sys.argv[sys.argv.index("--contra") + 1]
