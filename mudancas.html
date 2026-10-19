@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=a15e2732">
+<link rel="stylesheet" href="assets/base.css?v=8fc22d79">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Seis números numa linha, e a busca cobrada onde há lista</dt>
+      <dd>A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.</dd>
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
       <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
@@ -165,8 +167,6 @@
       <dd>Endereço errado (404) era gravado como recusa e fechava 17 diários. Agora é &quot;rota não descoberta&quot;; recusa só 401/403/429/451. O canal 2 passa a ler pelos adaptadores medidos do `fontes_doe.json`: edição por data e busca com os termos de declaração, por uma porta única. Rotas novas medidas do runner: PA, RO, RN, RR por data; AL e SC por API. &quot;Consultado&quot; exige o ciclo inteiro coberto.</dd>
       <dt>17/10/2026 · Resposta sanitária: zero sem busca vira &quot;não coletado&quot;</dt>
       <dd>O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.</dd>
-      <dt>17/10/2026 · Pista julgada guarda se o documento foi lido, não a cópia dos critérios</dt>
-      <dd>`julgar_filas` copiava `criterios` do veredito para cada pista, em duplicata com `promocoes_automaticas.json`, e não gravava `leu_documento`. O fechamento por prazo de 09/10 (A1-16), que lê `leu_documento` na pista, nunca o encontrava. Agora a pista guarda `leu_documento`, e as 7.333 cópias idênticas saem do dado. A fila de pistas cai de 44,2 para 40,9 MB antes de a fila reentrante julgar 14 mil pistas.</dd>
     </dl>
   </section>
 </main>
