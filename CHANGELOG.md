@@ -13,7 +13,7 @@ não pontuados permanecem na versão corrente.
 
 Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.
 
-## 2026-10-19 · #PR · Orientações oficiais: as listas de dengue entram no dado
+## 2026-10-19 · #908 · Orientações oficiais: as listas de dengue entram no dado
 
 A página de dengue do Ministério da Saúde chegava só com os dois cabeçalhos ("Sinais e sintomas mais comuns", "Sinais e sintomas de alerta"): os itens da lista têm menos de 25 caracteres e a seleção de frases os descartava. O extrator agora leva a lista sob cada cabeçalho com dois-pontos, até o parágrafo seguinte. Passam a constar seis sintomas comuns, seis sinais de alerta e a conduta de procurar atendimento, com o hash da página preservada. `coletar_orientacoes_oficiais.py` +22 −4.
 
