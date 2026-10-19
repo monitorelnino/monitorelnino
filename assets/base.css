@@ -1048,7 +1048,10 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .g-pac .tkl{stroke:var(--pacifico-grade);}
 .g-pac .zero{stroke:var(--pacifico-zero); stroke-width:1;}
 .g-pac .lim{stroke:var(--pacifico-grade); stroke-width:1; stroke-dasharray:3 4;}
-.g-pac .limt{fill:var(--pacifico-tinta); font-family:var(--font-dado); font-size:var(--fs-caption);}
+/* Na coluna estreita o rótulo do limiar cai dentro do desenho, por vezes em cima da série: o mesmo
+   contorno na cor do fundo que a anotação usa é o que o mantém legível, nos dois gráficos. */
+.g-pac .limt{fill:var(--pacifico-tinta); font-family:var(--font-dado); font-size:var(--fs-caption);
+  paint-order:stroke; stroke:var(--grafico-oceano); stroke-width:4px; stroke-linejoin:round;}
 .g-pac .div{stroke:var(--pacifico-divisoria); stroke-width:1;}
 .g-pac .q{fill:var(--pacifico-barra-quente);}
 .g-pac .f{fill:var(--pacifico-barra-fria);}
