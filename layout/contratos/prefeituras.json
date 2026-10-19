@@ -12,7 +12,7 @@
    "id": "municipio",
    "h2": "Como está o seu município",
    "tipo": "lista_simples",
-   "_nota": "`.panel` com o componente comum da consulta (`assets/js/consulta-municipio.js`); o `.meu-card` traz quatro `.cartao` de faixa lateral em `.grade-figuras` (2×2; 1 coluna no celular): plano, cadastro nacional, risco previsto, recursos federais. O plano leva à ficha do estado na inicial até a classificação da inicial estar no módulo comum (pedido à B1, 17/10)."
+   "_nota": "`.panel` com o componente comum da consulta (`assets/js/consulta-municipio.js`); o `.meu-card` traz quatro `.cartao` de faixa lateral em `.grade-figuras` (2×2; 1 coluna no celular): plano, cadastro nacional, risco previsto, recursos federais. O plano vem de `municipios_card.json` pela classificação comum (`ConsultaMunicipio.situacaoDoPlano`): localizado, não localizado até o corte, ainda não verificado."
   },
   {
    "id": "quem-deve",
