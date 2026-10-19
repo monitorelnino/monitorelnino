@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · SIH: internações por grupo de causa na forma comum
+## 2026-10-19 · #870 · SIH: internações por grupo de causa na forma comum
 
 `coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.
 
