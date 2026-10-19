@@ -420,9 +420,9 @@
    "ultima_tentativa": "2026-10-18"
   },
   "RS": {
-   "adaptador": null,
-   "url": "https://www.diariooficial.rs.gov.br",
-   "status": "sem adaptador de busca",
+   "adaptador": "edicao_rs",
+   "url": "https://doe-backend.pro.rs.gov.br",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-18",
    "sondagem": {
     "plataforma": "angular",
@@ -431,8 +431,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "o sítio lê a API doe-backend.pro.rs.gov.br (public/diarios/consultar?tipoDiario=DOE&data=..., public/materias/?queryString=...), declarada em environments/environment.json; o host não responde ao runner (timeout, run 39023721853) — rota conhecida, sem resposta, não é recusa",
-   "medido_em": "17/10/2026"
+   "medido_em": "19/10/2026",
+   "caminho": "API que o portal do DOE-RS chama (main.js): public/diarios/lista?data=<dia> lista os diários da data (Executivo e o outro caderno) e public/diarios/download/<id>/pdf serve o PDF (252 p. em 16/10; runs 39253212830 a 39255284211)"
   },
   "SC": {
    "adaptador": "edicao_sc",
