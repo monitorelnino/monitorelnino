@@ -137,6 +137,10 @@ function __init(){
        : '<span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.005, v / escala).toFixed(4) + ');background:' + corBarra + '"></span><span class="barra-valor">' + esc(reais(v)) + '</span>')
     + '</span></div>';
   const colunas = document.getElementById('colunasRisco');
+  /* Coluna vazia tem DUAS causas, e elas não são a mesma coisa: ou o gerador ainda não escreveu
+     `risco_declarado` em ato nenhum (não coletado), ou escreveu e nenhum ato declara este risco.
+     A conta é sobre os ATOS: o risco do FNS é a linha de repasse, não declaração em ato. */
+  const riscoColetado = mps.concat(comp).some(o => riscoDe(o) != null);
   if (colunas) colunas.innerHTML = RISCOS.map(r => {
     const fontes = origens.filter(o => o.risco === r.chave);
     const corR = r.chave === 'saude' ? P.setores.saude : P.familia[r.chave];
@@ -144,7 +148,8 @@ function __init(){
       + (fontes.map(o => '<b class="cartao-t">' + esc(o.nome) + '</b><span class="cartao-s">' + esc([o.orgao, o.data].filter(Boolean).join(' · ')) + '</span>'
           + '<div class="barras-painel">' + barra('anunciado', o.anunciado, corR) + barra('empenhado', o.empenhado, corR) + barra('pago', o.pago, corR) + '</div>'
           + (o.notaMp ? '<span class="cartao-s">' + esc(tx('financiamento.caminhos.nota_mp')) + '</span>' : '')).join('')
-         || '<span class="cartao-s">Nenhuma fonte com este risco declarado no ato, até o corte.</span>')
+         || '<span class="cartao-s">' + esc(tx(riscoColetado ? 'financiamento.caminhos.coluna.sem_fonte'
+                                                     : 'financiamento.caminhos.coluna.risco_nao_coletado')) + '</span>')
       + '</div>';
   }).join('');
   const faixa = document.getElementById('faixaResposta');
