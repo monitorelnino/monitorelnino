@@ -31,8 +31,8 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=fa8bc307">
-<script src="assets/mapas.js?v=f8c391ea"></script>
+<link rel="stylesheet" href="assets/base.css?v=73322c35">
+<script src="assets/mapas.js?v=cc0114f1"></script>
 <script src="assets/semana.js?v=f42ab28a"></script>
 </head>
 <body class="pagina-dados">
@@ -174,6 +174,13 @@
   <section id="observado">
     <h2 data-conteudo="saude.observado.titulo_da_secao">O que os órgãos de saúde registram</h2>
     <p class="hint" data-conteudo="saude.observado.abertura">Esta página não relaciona casos ao El Niño.</p>
+    <div id="desfechos" hidden>
+      <p data-conteudo="saude.observado.registram.abertura">Cada cartão mostra o último valor de uma doença ou agravo, a faixa habitual para a época e os períodos mais recentes; a cadência e a fonte estão no rodapé de cada um.</p>
+      <p class="hint"><label for="ufDesfechos" data-conteudo="saude.observado.registram.seletor">Território</label>
+        <select id="ufDesfechos" class="seletor"></select>
+        <span data-conteudo="saude.observado.registram.legenda">Linha: valor observado · faixa cinza: habitual para a época (2019–2025)</span></p>
+      <div class="grade-numeros grade-numeros--3 grade-numeros--empilha" id="gradeDesfechos"></div>
+    </div>
     <h3 class="u-mt-4" data-conteudo="saude.observado.risco_san.titulo">Dengue</h3>
     <p class="note" id="fraseDengue" hidden></p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
@@ -294,7 +301,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=214e0816" defer></script><script src="assets/js/saude.js?v=d32682f5" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=214e0816" defer></script><script src="assets/js/saude.js?v=a587dfae" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
