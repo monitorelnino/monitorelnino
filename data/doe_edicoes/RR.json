@@ -2,7 +2,7 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "17/10/2026",
+  "em": "19/10/2026",
   "conta_como_consultado": true
  },
  "edicoes": {
@@ -776,7 +776,127 @@
    "impressao": "e349343ed43f0eb8c353e7ff75f56bc1998c4a990a10653721a7e022438b14b5",
    "termos_versao": "2026-10-17",
    "termos_achados": []
+  },
+  "2026-10-19": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-16": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3142142,
+   "paginas": 124,
+   "paginas_com_texto": 124,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261015.pdf",
+   "impressao": "385c89f2c26d92810228bf06426617a1e0592e1d582663dba9d75b269fb528a6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3587346,
+   "paginas": 146,
+   "paginas_com_texto": 146,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261014.pdf",
+   "impressao": "2e72790e05d90daa85fe27e9a1c2d9940d6b79e3405f5fa3fb3b37cff03c6894",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "2e72790e05d90daa85fe27e9a1c2d9940d6b79e3405f5fa3fb3b37cff03c6894",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2962225,
+   "paginas": 123,
+   "paginas_com_texto": 123,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261013.pdf",
+   "impressao": "9825024b5d43a9379d7a46eb40709c3d42af81dfe825de18adc1ffada91c8368",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2536610,
+   "paginas": 114,
+   "paginas_com_texto": 114,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261009.pdf",
+   "impressao": "8207770a5caefa21bb45fb48d45312b89208cd9a2e1ccd7509776a252114b883",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "8207770a5caefa21bb45fb48d45312b89208cd9a2e1ccd7509776a252114b883",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 5636641,
+   "paginas": 235,
+   "paginas_com_texto": 235,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261008.pdf",
+   "impressao": "5e641653d3b7f7b60461b129d8ab42a38683e62031201c3810467dd0317117d8",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2142568,
+   "paginas": 59,
+   "paginas_com_texto": 59,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261007.pdf",
+   "impressao": "b857021f2625007a54e773056ffea0840be7c592cd3056f1e434b484cf3e5a01",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "b857021f2625007a54e773056ffea0840be7c592cd3056f1e434b484cf3e5a01",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 4121309,
+   "paginas": 135,
+   "paginas_com_texto": 135,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261006.pdf",
+   "impressao": "55d7c25ecdb6af50fdddd65678cf6a1a2c743f94431da8bbd29c63aa5ca67008",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-05": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-02": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 6084824,
+   "paginas": 340,
+   "paginas_com_texto": 340,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/10/doe-20261002.pdf",
+   "impressao": "ba0fb8aa23097ffea93f9ef90c6ae27e99632ddcfb96b73ee9e76742b5d4a863",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "ba0fb8aa23097ffea93f9ef90c6ae27e99632ddcfb96b73ee9e76742b5d4a863",
+   "termos_achados": [
+    "emergência climática"
+   ]
   }
  },
- "atualizado_em": "17/10/2026"
+ "atualizado_em": "19/10/2026"
 }
