@@ -22,6 +22,7 @@ USO
   python3 coletar_datasus_dbc.py --autoteste
   python3 coletar_datasus_dbc.py --sondar          # só mede e imprime; não escreve em data/
   python3 coletar_datasus_dbc.py --desfecho leptospirose
+  python3 coletar_datasus_dbc.py --desfecho malaria
 """
 import ftplib
 import hashlib
@@ -263,6 +264,18 @@ DESFECHOS = {
         # Investigação do SINAN fecha em até 60 dias: os três últimos meses ainda crescem.
         "n_parciais": 3,
     },
+    # Malária fora da Amazônia Legal (ficha MALABR do SINAN). Confirmado = CLASSI_FIN 1: no arquivo
+    # preliminar de 2026, CLASSI_FIN 1 cruza com resultado de exame positivo (RESULT 2, 4, 5, 8) e
+    # CLASSI_FIN 2 com negativo (RESULT 1), medido em 19/10/2026. A malária da Amazônia Legal vai ao
+    # SIVEP-Malária, que não tem rota de máquina: a série não a cobre e a lacuna vai no arquivo.
+    "malaria": {
+        "sistema": "SINAN", "prefixo": "MALA", "rotulo": "Malária fora da Amazônia, casos confirmados",
+        "criterio": "CLASSI_FIN = 1 (confirmado)", "campos": ("CLASSI_FIN", "SG_UF", "DT_SIN_PRI", "DT_NOTIFIC"),
+        "confirmado": lambda r: r.get("CLASSI_FIN") == "1",
+        "n_parciais": 3,
+        "lacunas": ["Malária na Amazônia Legal (SIVEP-Malária): sem rota de máquina; a série cobre só a "
+                    "ficha do SINAN fora da Amazônia e nas UFs amazônicas traz apenas o que essa ficha recebeu."],
+    },
 }
 ANO_INICIAL = 2019
 
@@ -354,7 +367,8 @@ def coletar(nome: str, listar=None, baixar=None, ler_fn=None, gravar_fn=None, ho
                     fonte=fonte, cadencia="semanal; o DATASUS republica o arquivo preliminar sem data fixa",
                     coletado_em=hoje or data_da_edicao().isoformat(),
                     anos_preliminares=[2000 + int(c[-6:-4]) for c, p in arquivos if p],
-                    n_parciais=cfg["n_parciais"], populacao=ds.populacao_por_uf(ler_fn), anterior=anterior)
+                    n_parciais=cfg["n_parciais"], populacao=ds.populacao_por_uf(ler_fn), anterior=anterior,
+                    lacunas=cfg.get("lacunas"))
     return ds.gravar_desfecho(obj, gravar_fn=gravar_fn)
 
 
@@ -433,7 +447,7 @@ def _teste_finais_antes_de_prelim():
         (f"{SINAN}/FINAIS/LEPTBR24.dbc", False), (f"{SINAN}/PRELIM/LEPTBR25.dbc", True)]
 
 
-def _teste_coletar_offline_e_idempotente():
+def _teste_coletar_offline_e_idempotente(nome="leptospirose", pref="LEPT"):
     """Ponta a ponta sem rede e sem disco: o par ler/gravar é falso; segunda leitura igual não regrava."""
     ufs = [("11", "RO"), ("12", "AC"), ("13", "AM"), ("14", "RR"), ("15", "PA"), ("16", "AP"), ("17", "TO"),
            ("21", "MA"), ("22", "PI"), ("23", "CE"), ("24", "RN"), ("25", "PB"), ("26", "PE"), ("27", "AL"),
@@ -445,19 +459,24 @@ def _teste_coletar_offline_e_idempotente():
     escritos = []
     def gravar_falso(nome, obj, compacto=False):
         banco[nome] = obj; escritos.append(nome)
-    lst = {f"{SINAN}/FINAIS": [("LEPTBR19.dbc", 1)], f"{SINAN}/PRELIM": [("LEPTBR26.dbc", 1)]}
+    lst = {f"{SINAN}/FINAIS": [(f"{pref}BR19.dbc", 1)], f"{SINAN}/PRELIM": [(f"{pref}BR26.dbc", 1)]}
     linhas = [(("1", c, f"2019{m:02d}10", f"2019{m:02d}12"), False) for c, _ in ufs for m in (1, 6, 12)]
-    arqs = {f"{SINAN}/FINAIS/LEPTBR19.dbc": _dbc_de_teste(linhas, _CAMPOS_LEPT),
-            f"{SINAN}/PRELIM/LEPTBR26.dbc": _dbc_de_teste([(("1", "23", "20260201", "20260305"), False)], _CAMPOS_LEPT)}
+    arqs = {f"{SINAN}/FINAIS/{pref}BR19.dbc": _dbc_de_teste(linhas, _CAMPOS_LEPT),
+            f"{SINAN}/PRELIM/{pref}BR26.dbc": _dbc_de_teste([(("1", "23", "20260201", "20260305"), False)], _CAMPOS_LEPT)}
     kw = dict(listar=lambda c: lst[c], baixar=lambda c: arqs[c], ler_fn=banco.get, gravar_fn=gravar_falso, hoje="2026-10-17")
-    ok1 = coletar("leptospirose", **kw)
-    o = banco.get("saude_desfechos/leptospirose.json") or {}
-    ok2 = coletar("leptospirose", **kw)
-    return (ok1 and not ok2 and escritos == ["saude_desfechos/leptospirose.json"]
+    ok1 = coletar(nome, **kw)
+    o = banco.get(f"saude_desfechos/{nome}.json") or {}
+    ok2 = coletar(nome, **kw)
+    return (ok1 and not ok2 and escritos == [f"saude_desfechos/{nome}.json"]
             and o["serie"]["CE"]["2026-02"] == 1 and "2026-03" not in o["serie"]["CE"]
             and "2023-06" not in o["serie"]["CE"] and o["serie"]["BR"]["2019-06"] == 27
             and o["anos_preliminares"] == [2026] and o["parcial"] == ["2026-01", "2026-02"]
-            and o["ultimo"]["CE"]["consolidado"]["periodo"] == "2019-12")
+            and o["ultimo"]["CE"]["consolidado"]["periodo"] == "2019-12"
+            and bool(o["lacunas"]) == ("lacunas" in DESFECHOS[nome]))
+
+
+def _teste_malaria_offline():
+    return _teste_coletar_offline_e_idempotente("malaria", "MALA")
 
 
 def _teste_vetor_do_blast():
@@ -521,6 +540,7 @@ TESTES = {
     "mês coberto sem caso é zero; ano sem arquivo e mês da extração não existem": _teste_completar_zero_e_lacuna,
     "ano com arquivo final não lê o preliminar": _teste_finais_antes_de_prelim,
     "coleta ponta a ponta offline; arquivo igual não regrava": _teste_coletar_offline_e_idempotente,
+    "malária: mesma coleta offline, com a lacuna da Amazônia declarada": _teste_malaria_offline,
     "arquivo sem data de notificação é recusado, nunca vira zeros": _teste_arquivo_vazio_recusa,
     "DBF: lê colunas, pula registro apagado": _teste_dbf,
     "DBF truncado é recusado, nunca lido pela metade": _teste_dbf_truncado_recusa,

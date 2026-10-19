@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Escolher um cartão da seção de desfechos da Saúde abre, abaixo da grade, a série inteira do território sobre a faixa habitual para a época, com título, legenda, fonte e data lidos do arquivo. Um detalhe por vez: escolher outro troca o conteúdo e a página não cresce. O seletor de território vale para a grade e para a série.
 
+## 2026-10-19 · #905 · Malária fora da Amazônia na forma comum dos desfechos
+
+Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.
+
 ## 2026-10-19 · #903 · Saúde de Rondônia: o link oficial do plano entra no canal 4
 
 O endereço oficial do Plano de Adaptação na Saúde de Rondônia (SESAU/RO, resposta de 15/10/2026) entra em `ACRESCIMOS_DE_CANAL4["RO"]`. Na próxima noite o coletor o consulta, e o julgamento do documento segue o fluxo existente. O endereço não abre da nuvem de trabalho (túnel 403); a verificação fica para o coletor. Linhas líquidas: +2.
