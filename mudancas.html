@@ -59,6 +59,8 @@
       <dd>Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).</dd>
       <dt>19/10/2026 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação</dt>
       <dd>Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão &quot;Resposta&quot; dos números e a figura &quot;O que foi localizado em cada estado&quot;, que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.</dd>
+      <dt>19/10/2026 · Saem seis scripts sem chamador</dt>
+      <dd>Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.</dd>
       <dt>19/10/2026 · Sai o portão de autoteste sem chamador</dt>
       <dd>`verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.</dd>
       <dt>19/10/2026 · Portões: três a menos</dt>
@@ -165,8 +167,6 @@
       <dd>O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do &quot;não há índice nacional aberto&quot;. A figura vem depois.</dd>
       <dt>16/10/2026 · A chave do OpenAQ chega ao elo dos sinais (F67)</dt>
       <dd>A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.</dd>
-      <dt>16/10/2026 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas</dt>
-      <dd>A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. &quot;Situação atual&quot; ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.</dd>
     </dl>
   </section>
 </main>
