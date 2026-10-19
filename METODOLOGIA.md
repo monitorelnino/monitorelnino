@@ -3794,9 +3794,9 @@ primeira vez que rodou. A primeira correção foi um ajudante que **carimbava e 
 arquivo foi reposto por **união pela base comum** (907 do HEAD mais os 17 novos da rodada = 924).
 
 Duas correções de fundo: `carimbar_atos()` passou a ser **pura** — ela só carimba, e cada coletor
-continua chamando o seu próprio `gravar`, que é o que o teste consegue interceptar — e nasceu o
-portão `scripts/verificar_autoteste_nao_escreve.py`, que guarda o resumo dos arquivos de banco,
-roda os autotestes e exige que nenhum tenha mudado. A lição não é sobre aquele ajudante: é que o
+continua chamando o seu próprio `gravar`, que é o que o teste consegue interceptar — e nasceu um
+portão que guarda o resumo dos arquivos de banco, roda os autotestes e exige que nenhum tenha mudado
+(hoje `scripts/verificar_autotestes_isolados.py`, que o absorveu; o original saiu em 19/10/2026, sem chamador). A lição não é sobre aquele ajudante: é que o
 isolamento do autoteste **não era verificado**.
 
 ### 99.7 O 40199 volta, e passa a ser contrato
