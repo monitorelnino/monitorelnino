@@ -30,9 +30,8 @@ jobs:
       grupo_de_concorrencia: noturno
       # O banco do SIVEP-Gripe tem centenas de megabytes por ano epidemiológico e é lido em fluxo;
       # 60 minutos é o que a primeira leitura real pediu, com folga para a rede da fonte.
-      timeout_minutos: 150
+      timeout_minutos: 90
       comandos: |
-        coletar_obitos.py
-        coletar_sih.py --orcamento 6600
+        coletar_sih.py --orcamento 3000
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
