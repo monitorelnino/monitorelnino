@@ -110,6 +110,12 @@ def serie_existe(chave: str) -> bool:
     return False
 
 
+def ids_da_figura_principal(contrato: dict) -> dict:
+    """{id: tipo} da `figura_principal` do contrato; cada tipo traz um id ou uma lista de ids."""
+    return {i: t for t, v in ((contrato or {}).get("figura_principal") or {}).items()
+            for i in ([v] if isinstance(v, str) else v)}
+
+
 def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
     """As divergências entre o contrato e o despejo. FUNÇÃO PURA — é ela que o autoteste exercita."""
     p = []
@@ -196,8 +202,7 @@ def problemas_do_despejo(contrato: dict, despejo: dict) -> list:
                 continue
             if not f.get("cartao_mapa"):
                 p.append(f"cartão '{c['id']}' ({el}) fora do componente .cartao-mapa")
-            if (f.get("tem_midia") or f.get("tem_lista")) and \
-                    el not in (contrato.get("figura_principal") or {}).values():
+            if (f.get("tem_midia") or f.get("tem_lista")) and el not in ids_da_figura_principal(contrato):
                 largura_grade = next((g["largura"] for g in grades if el in (g.get("ids") or [])), None)
                 if largura_grade and f.get("largura", 0) > largura_grade * TOLERANCIA_LARGURA:
                     p.append(f"cartão '{c['id']}' ({el}) ocupa {f['largura']}px de uma grade de "

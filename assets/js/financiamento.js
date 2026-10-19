@@ -697,7 +697,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       MonitorMapas.credito('topoAtosSemanaFonte', {fontes: [atos.fonte], data: S.corte});
     } else if (atos && !atos.sem_coleta) {
       /* Zero é ZERO, com a janela dita — o handover proíbe travessão aqui. */
-      if (el('topoAtosSemana')) el('topoAtosSemana').textContent = n(atos.valor);
+      if (el('topoAtosSemana')) el('topoAtosSemana').textContent = Number(atos.valor) === 0 ? 'nenhum' : n(atos.valor);
       if (el('topoAtosRotulo')) {
         el('topoAtosRotulo').textContent = Number(atos.valor) === 0
           ? 'nenhum ato federal de financiamento publicado nos últimos sete dias'
