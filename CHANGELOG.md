@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #876 · Diário oficial do RS lido por data
 
 O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
+## 2026-10-19 · #870 · SIH: internações por grupo de causa na forma comum
+
+`coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.
 
 ## 2026-10-19 · #868 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias
 

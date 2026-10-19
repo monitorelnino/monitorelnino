@@ -4266,6 +4266,15 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 **O que ficou de fora.** O painel por causa (doenças respiratórias, cardíacas) não está mais no portal: os endereços antigos respondem com erro do servidor, e o código do portal não os chama. O SIM preliminar, com causa básica, está no FTP do DATASUS por UF e ano, com defasagem de cerca de dois meses; entra como série com causa numa próxima etapa. O Monitor não atribui óbitos ao El Niño.
 
 
+
+## 110. Internações do SUS por grupo de causa, na forma comum dos desfechos (19/10/2026)
+
+**O que cada série conta.** Autorizações de internação hospitalar (AIH) aprovadas no SIH/SUS, por UF do hospital e mês de processamento, sem as de longa permanência, com o diagnóstico principal (CID-10) no grupo: doenças respiratórias agudas (J00 a J22), doença isquêmica do coração e cerebrovascular (I20 a I25 e I60 a I64), insuficiência renal (N17 a N19), desidratação (E86), efeito tóxico de gases, fumaças e vapores (T59), efeitos do calor e da luz (T67) e hepatite aguda A (B15). Um arquivo por grupo em `data/saude_desfechos/`, na forma do §108, a partir de janeiro de 2019. A hepatite A é contagem de internações, não de casos notificados: o arquivo mais recente do SINAN para hepatite A no FTP do DATASUS é de 2023 (sondagem de 17/10/2026).
+
+**Como é lida.** Um arquivo por UF e mês no FTP do DATASUS, pelo leitor do §108. A rodada lê do mês mais recente ao mais antigo até o tempo reservado acabar; o mês que não foi lido fica sem valor e a lacuna é declarada no arquivo, nunca zero. Os três meses mais recentes são lidos de novo quando o tamanho do arquivo mudou, porque a competência cresce com AIH reapresentada. Enquanto houver mês por ler, os cortes do mapa são recalculados; completa a leitura, ficam congelados. O último mês publicado é parcial. AC e RR publicam com um mês a mais de atraso (16/10/2026).
+
+**O que a série não conta.** Residência do paciente (a UF é a do hospital), óbitos e internações em hospitais fora do SUS. O número do TabNet para a mesma competência foi conferido em duas UFs: bateu em AP (6.160, julho de 2026) e ficou 2,0% abaixo em CE (52.091 contra 53.588 registros em julho de 2026), sem que a regra de contagem do TabNet tenha sido identificada. O Monitor não atribui internações ao El Niño.
+
 ## 111. A semana da Imprensa em datas e a definição dos índices numa só função (19/10/2026)
 
 Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, não no texto da página.
