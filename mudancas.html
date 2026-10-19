@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · RO saúde: plano recebido por LAI, registrado sem julgamento</dt>
+      <dd>`data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.</dd>
       <dt>19/10/2026 · Proteja-se: páginas oficiais de orientação preservadas por hash</dt>
       <dd>`coletar_orientacoes_oficiais.py` lê 13 páginas do Ministério da Saúde e da Defesa Civil nacional, preserva cada uma por hash e grava o trecho que sustenta cada item do guia em `data/orientacoes_oficiais.json`: 6 itens com fonte, 29 sem (lacuna declarada, a página não os publica). Reconfere o diretório estadual da Defesa Civil: DF e RO divergem, registrado sem reescrever. Peso zero.</dd>
       <dt>19/10/2026 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento</dt>
@@ -165,8 +167,6 @@
       <dd>Sai do topo de todas as páginas a linha &quot;2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab&quot; e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).</dd>
       <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
       <dd>O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece &quot;Recebido. Obrigado pela contribuição.&quot; no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).</dd>
-      <dt>16/10/2026 · Saúde: calor em uma medida por lugar</dt>
-      <dd>Sai o gráfico de barras &quot;municípios por classe&quot; (5,5 mil em &quot;normal&quot; contra dezenas nas outras classes). Fica o mapa, agora &quot;Municípios em classe severa ou extrema de excesso de calor, por estado&quot;, e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.</dd>
     </dl>
   </section>
 </main>
