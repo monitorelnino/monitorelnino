@@ -712,9 +712,8 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    eles ganharam a classe `.ficha-rotulo` para dizê-lo, e é por ela que o portão de conformidade
    sabe que ali a família é a de DADO, e não a de display. */
 .ficha-col h3, .ficha-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-2); padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
-.ficha-col ul{list-style:none; margin:0; padding:0;}
-.ficha-col li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
-.ficha-col li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted); font-size:var(--fs-body);}
+.ficha-col ul{margin:0; padding-left:var(--sp-5);}
+.ficha-col li{margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
 /* .ficha-alerta era branco dentro de um card que também era branco (cinza antes) — sem contraste próprio
    para um aviso que precisa se destacar. Vira caixa com fundo neutro e borda esquerda na cor do risco. */
 .ficha-alerta{background:var(--surface-2); border-left:4px solid var(--mineral); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
@@ -877,11 +876,11 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    saber o que enviar; os de telefone nao levam, porque discar nao exige instrucao. */
 .emerg-cartoes--cinco{grid-template-columns:repeat(5, minmax(0,1fr));}
 .emerg-cartao--sms{border-top-color:var(--musgo);}
-.emerg-cartao--sms .emerg-numero{font-size:var(--fs-h1); line-height:var(--lh-h1);}
+.emerg-cartao--sms .emerg-numero{font-size:var(--fs-h3); line-height:var(--lh-h3);}
 .emerg-cartao small{font-family:var(--font-corpo); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted);}
 .emerg-cartao{display:flex; flex-direction:column; align-items:flex-start; gap:var(--sp-1);
-  padding:var(--sp-3) var(--sp-4); border:1px solid var(--line); border-radius:12px;
+  padding:var(--sp-2) var(--sp-4); border:1px solid var(--line); border-radius:12px;
   border-top:4px solid var(--line); text-decoration:none; color:var(--ink); background:var(--branco);}
 .emerg-cartao:hover, .emerg-cartao:focus-visible{border-color:var(--ink);}
 .emerg-cartao--defesa{border-top-color:var(--chuva);}
@@ -889,7 +888,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .emerg-cartao--samu{border-top-color:var(--rust);}
 .emerg-cartao--policia{border-top-color:var(--ink);}
 .emerg-icone{color:var(--muted);}
-.emerg-numero{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display);}
+.emerg-numero{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h1); line-height:var(--lh-h1);}
 .emerg-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted);}
 
 /* "Leve com você": cartão de borda fina e dois botões de verdade. */
@@ -935,7 +934,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .emerg-cartoes{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-cartoes--cinco{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-cartao--sms{grid-column:1 / -1;}
-  .emerg-numero{font-size:var(--fs-h1);}
   .levar-botoes .btn-pilula{width:100%; justify-content:center;}
 }
 
