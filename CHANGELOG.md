@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #876 · Diário do RJ lido por data
+## 2026-10-19 · #877 · Diário do RJ lido por data
 
 O Diário Oficial do Rio de Janeiro passa a ser lido por data: a IOERJ lista os cadernos do dia, abre o visualizador de cada um e baixa a Parte I (Poder Executivo), cortada no último `%%EOF`. Dia sem caderno não é edição. Rota provada nos runs 39037938143 e 39038338576; autoteste offline com recorte real. Adaptador +55 linhas, recurso novo.
 
