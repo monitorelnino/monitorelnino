@@ -74,6 +74,10 @@
       estado: !reg ? 'nao_verificado' : PLANO_ENCONTRADO.includes(c) ? 'encontrado' : (ESTADO_DA_CATEGORIA[c] || 'nao_verificado'),
       categoria: c || null, documento: (reg && reg.documento) || null, data: (reg && reg.data) || null,
       fonte: (reg && reg.fonte) || null, url: (reg && reg.url) || null,
+      /* 19/10/2026 (editoria, §3.3 da auditoria da coleta municipal): dizer o que foi feito, não
+         só o que falta. A varredura do livro de verificação vem junto com o estado, e cada página
+         escreve a frase a partir dela. Município sem varredura no livro devolve `null`. */
+      varredura: (reg && reg.varredura) || null,
       sem_ato_de_aprovacao: !!(reg && reg.sem_ato_de_aprovacao),
     };
   }

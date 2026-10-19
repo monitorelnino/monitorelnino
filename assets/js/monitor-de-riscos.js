@@ -1287,6 +1287,8 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
   const cache = {}, porUF = {};
   const linha = (rotulo, valor, fonte) => '<tr><th scope="row">' + esc(rotulo) + '</th> <td>' + valor + '</td> <td class="dica-fonte">' + esc(fonte) + '</td></tr>';
   const NOMES = {estiagem: 'seca', incendios: 'fogo', chuvas: 'chuva forte', calor: 'calor'};
+  /* Limiar da previsão de temperatura na consulta do município (editoria, 19/10/2026). */
+  const KM_MAX_PREVISAO = 500;
   const SECA_NOME = {'sem seca': 'sem seca em metade ou mais da área', S0: 'seca fraca', S1: 'seca moderada', S2: 'seca grave', S3: 'seca extrema', S4: 'seca excepcional'};
   const hora = v => { const m = /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(String(v || '')); return m ? m[3] + '/' + m[2] + ' ' + m[4] + ':' + m[5] : ''; };
   function mostrar(uf, nome, card){
@@ -1299,6 +1301,10 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
       : sen && sen.pm25 ? 'PM2,5 ' + esc(n1(sen.pm25.valor)) + ' µg/m³ — sensor ' + esc(sen.nome) + ' (IPAM/RedeAr, não gera IQAr), a ' + esc(String(m.ar_sensor.distancia_km)) + ' km'
       : 'sem estação oficial nem sensor na rede até 50 km';
     const cap = m.capital_mais_proxima || {}, t = (SINAIS.uf[cap.uf] || {}).temperatura;
+    /* 19/10/2026 (editoria): acima de KM_MAX_PREVISAO a previsão da capital não descreve o
+       município — são cem municípios, quase todos no Amazonas, e a distância chega a 783 km. A
+       linha declara a lacuna, com a mesma fonte. Até o limiar, nada muda. */
+    const longeDaCapital = Number(cap.distancia_km) > KM_MAX_PREVISAO;
     const avisos = (m.avisos_inmet || []).map(i => dados.avisos_inmet[i]).filter(Boolean);
     const cem = m.alertas_cemaden || [];
     const dec = m.decretos || [];
@@ -1308,7 +1314,9 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
       + linha('Seca observada (estado)', esc(sc && (sc.categoria_mediana || sc.categoria) ? SECA_NOME[sc.categoria_mediana || sc.categoria] + ', categoria que cobre pelo menos metade da área do estado' + (sc.mapa ? ' · mapa de ' + String(sc.mapa).toLowerCase() : '') : 'sem dado do Monitor de Secas para o estado'), f('monitor_secas'))
       + linha('Focos de fogo no município, últimos 30 dias', esc(n1(m.focos_30_dias)), 'INPE, satélite de referência' + ((o.focos || {}).ultimo_dia ? ' · até ' + MonitorMapas.dataBR(o.focos.ultimo_dia) : ''))
       + linha('Qualidade do ar (mais próxima)', ar, 'MMA/MonitorAr · IPAM/RedeAr' + ((o.ar || {}).gerado_em ? ' · ' + o.ar.gerado_em : ''))
-      + linha('Temperatura máxima prevista', esc(t && t.tmax != null ? n1(t.tmax) + ' °C em ' + (t.capital || cap.nome) + ', a ' + cap.distancia_km + ' km' + (t.data ? ', para ' + diaMes(t.data) : '') : 'sem previsão para a capital mais próxima'), f('inmet_previsao_capitais'))
+      + linha('Temperatura máxima prevista', esc(longeDaCapital ? 'sem previsão a menos de ' + KM_MAX_PREVISAO + ' km do município'
+        : t && t.tmax != null ? n1(t.tmax) + ' °C em ' + (t.capital || cap.nome) + ', a ' + cap.distancia_km + ' km' + (t.data ? ', para ' + diaMes(t.data) : '')
+        : 'sem previsão para a capital mais próxima'), f('inmet_previsao_capitais'))
       + linha('Avisos de tempo severo que cobrem o município', esc(avisos.length ? avisos.map(a => a.tipo + ' · ' + a.severidade + (a.fim ? ' · até ' + hora(a.fim) : '')).join('; ') : 'nenhum aviso em vigor na consulta'), 'INMET' + ((o.avisos_e_alertas || {}).gerado_em ? ' · ' + o.avisos_e_alertas.gerado_em : ''))
       + linha('Alerta do Cemaden', esc(cem.length ? cem.map(a => a.evento || (a.tipo + ' · ' + a.nivel)).join('; ') : 'nenhum alerta vigente na consulta'), 'Cemaden' + ((o.avisos_e_alertas || {}).gerado_em ? ' · ' + o.avisos_e_alertas.gerado_em : ''))
       // 19/10/2026 (auditoria da consulta, item 2): o cartão mostrava até três atos e calava o resto,

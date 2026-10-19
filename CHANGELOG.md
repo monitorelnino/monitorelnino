@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #916 · A consulta do município diz o que foi feito, e cala o que não sabe
+
+O cartão do município na inicial passa a dizer antes a varredura registrada no livro de verificação e depois o que não foi localizado, numa frase só — a mesma do ladrilho da capital. Município cujo registro nomeia um documento fica com a frase de antes. E no Monitor de riscos, acima de 500 km da capital mais próxima, a temperatura máxima prevista declara lacuna em vez de valor.
+
 ## 2026-10-19 · #912 · Proteja-se: a aba de dengue, com o que a fonte oficial diz
 
 O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.
