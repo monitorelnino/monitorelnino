@@ -793,6 +793,7 @@ def edicoes_mg(buscar_fn, base):
     return fn
 
 
+<<<<<<< HEAD
 # RJ (17/10/2026, runs 39037938143 e 39038338576): a IOERJ lista os cadernos de uma data em
 # `do_seleciona_edicao.php?data=<AAAAMMDD em base64>` (dia sem edição: nenhum caderno); cada caderno abre
 # `mostra_edicao.php?session=…`, um visualizador pdf.js que lê o PDF pela chamada que o próprio
@@ -835,6 +836,29 @@ def edicoes_ioerj(buscar_fn, base, dormir=None):
 
 EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_ioerj": edicoes_ioerj, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg}
+=======
+# RS (19/10/2026, runs 39253212830 a 39255284211): a API que o portal do DOE-RS chama
+# (`public/diarios/lista?data=AAAA-MM-DD`, lida no `main.js` do sítio) lista os diários da data — a
+# edição do Executivo (tipoDiario 1, com as extras dentro das páginas) e o outro caderno (tipoDiario
+# 0) —, e `public/diarios/download/<id>/pdf` serve o PDF (252 p. em 16/10). Sem `/pdf` o servidor dá 500.
+def edicoes_rs(buscar_fn, base):
+    def fn(data):
+        o = json.loads(buscar_fn(f"{base.rstrip('/')}/public/diarios/lista?data={data}", timeout=60,
+                                 origem="coletar_doe").decode("utf-8", "replace"))
+        if not isinstance(o, list):
+            raise FormatoDaBuscaMudou("lista do DOE-RS fora do contrato (esperava uma lista de diários)")
+        if any(isinstance(d, dict) and d.get("id") and not d.get("dataString") for d in o):
+            raise FormatoDaBuscaMudou("lista do DOE-RS sem dataString (contrato mudou)")
+        return [{"edicao": f"{d.get('numeroEdicao')}/{d.get('anoEdicao')}",
+                 "url": f"{base.rstrip('/')}/public/diarios/download/{d['id']}/pdf"}
+                for d in o if isinstance(d, dict) and d.get("id") and d.get("dataString") == data]
+    return fn
+
+
+EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
+                    "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg,
+                    "edicao_rs": edicoes_rs}
+>>>>>>> origin/main
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
@@ -1189,6 +1213,10 @@ FIXTURE_LISTAGEM_MS = """<a href="https://assets.imprensaoficial.ms.gov.br/publi
 # Recortes REAIS da rota (a) do DOE-AM, 15/10/2026.
 FIXTURE_EDICOES_AM = (b'{"erro":false,"msg":"","data":"2026-10-13","numero":null,"ano":"","itens":[{"id":18246,'
                       b'"data":"13\\/10\\/2026","suplemento":0,"numero":35804,"tipo_edicao_id":1,"capa":1,"paginas":48}]}')
+FIXTURE_EDICOES_RS = (b'[{"id":54767,"dataPublicacao":"16-10-2026","dataString":"2026-10-16","tipoDiario":0,'
+                      b'"numeroEdicao":200,"anoEdicao":53,"qtdPaginas":4,"edicoes":[],"paginas":null},'
+                      b'{"id":54768,"dataPublicacao":"16-10-2026","dataString":"2026-10-16","tipoDiario":1,'
+                      b'"numeroEdicao":200,"anoEdicao":84,"qtdPaginas":252,"edicoes":[],"paginas":null}]')
 FIXTURE_EDICOES_AL = (b'{"status":"success","editions":[{"id":51928,"number":2905,"suplement":false,'
                       b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51929,"number":2905,"suplement":true,'
                       b'"publication_date":"2026-10-16T03:00:00.000000Z"},{"id":51925,"number":2904,"suplement":false,'
@@ -1443,6 +1471,14 @@ def autoteste() -> int:
                         {"edicao": "2905 suplemento", "url": "https://x.al.gov.br/api/editions/downloadPdf/51929"}]
                      and edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x")("2026-10-17") == []
                      and _levanta(lambda: edicoes_apinova(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                                  FormatoDaBuscaMudou)),
+        "DOE-RS: a lista da data dá os diários e o PDF sai de download/<id>/pdf; data sem diário é lista vazia; formato novo LEVANTA":
+            lambda: (edicoes_rs(lambda u, **k: FIXTURE_EDICOES_RS, "https://x.rs.gov.br/")("2026-10-16") == [
+                        {"edicao": "200/53", "url": "https://x.rs.gov.br/public/diarios/download/54767/pdf"},
+                        {"edicao": "200/84", "url": "https://x.rs.gov.br/public/diarios/download/54768/pdf"}]
+                     and edicoes_rs(lambda u, **k: FIXTURE_EDICOES_RS, "https://x")("2026-10-17") == []
+                     and _levanta(lambda: edicoes_rs(lambda u, **k: b'[{"id":1,"data":"x"}]', "https://x")("2026-10-16"), FormatoDaBuscaMudou)
+                     and _levanta(lambda: edicoes_rs(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
             lambda: (edicoes_sc(lambda u, **k: FIXTURE_EDICOES_SC, "https://x/apis")("2026-10-16") == [
