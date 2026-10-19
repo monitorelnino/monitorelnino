@@ -369,9 +369,9 @@
    "ultima_tentativa": "2026-10-18"
   },
   "MG": {
-   "adaptador": null,
+   "adaptador": "edicao_mg",
    "url": "https://www.jornalminasgerais.mg.gov.br",
-   "status": "sem adaptador de busca",
+   "status": "a_verificar",
    "ultima_tentativa": "2026-10-18",
    "sondagem": {
     "plataforma": "angular",
@@ -380,8 +380,8 @@
     "veredito": "sem_rota_na_pagina_inicial",
     "sondado_em": "02/10/2026"
    },
-   "motivo": "a API do Jornal Minas Gerais (www.jornalminasgerais.mg.gov.br/api/v1/: Jornal/ObterEdicaoPorDataPublicacao, Caderno/ObterArquivoCadernoPorId) responde HTTP 401 sem token; o sítio obtém token de sessão em Autenticacao/Autenticar — rota atrás de token, não se usa (runs 39019929474 e 39023721853)",
-   "medido_em": "17/10/2026"
+   "medido_em": "17/10/2026",
+   "caminho": "API pública que o sítio do Jornal Minas Gerais chama, sem token: api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=AAAA-MM-DD devolve o Diário do Executivo em dados.arquivoCadernoPrincipal.arquivo (envelope CMS/PKCS#7 em base64 com o PDF dentro; 15/09 a 17/10/2026 lidos, 41 a 83 p. com texto; domingo e feriado = dados null). Parte das datas responde HTTP 401 sem padrão de janela (16, 18 e 22/09 e as de 10/09 para trás, mas 15 e 17/09 abrem): recusa respeitada, o canal para nela (runs 39029434439, 39030190359, 39034277638 e 39035891128)"
   },
   "RJ": {
    "adaptador": null,
