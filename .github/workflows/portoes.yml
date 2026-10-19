@@ -168,24 +168,14 @@ jobs:
           # Toda regra de layout/regras.json diz quem a julga (A7-14).
           # assunto: texto rapido
           python3 scripts/verificar_conformidade.py --regras-cobertas
-      # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
-      # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
-      # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
+      # Antes do portão 12: carimbo pelo relógio da parede faz o derivado mudar sozinho na virada do dia.
       - name: Relógio dos derivados — nenhum carimbo pela parede
         timeout-minutes: 3
         run: |
           # assunto: dado rapido
           python3 scripts/verificar_relogio_dos_derivados.py
 
-      # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
-      # 07/10/2026: este passo rodava SO quando a pagina mudava, e o portao da corrida do medidor
-      # roda SEMPRE. Num PR que nao toca pagina -- um de documentacao, por exemplo -- o cache nao
-      # era restaurado, o `playwright install` do passo da corrida baixava tudo do zero e gastava
-      # os 8 minutos inteiros do teto: o processo era morto como orfao e o teste nem chegava a
-      # rodar. Reprovava por infraestrutura, com a mensagem de tempo esgotado, que nao se parece
-      # com a causa. Restaurar o cache nao depende de a pagina ter mudado; depende de alguem
-      # precisar do navegador, e quem precisa roda sempre. Sem a condicao, o `install` dos passos
-      # abaixo vira no-op.
+      # Cache por versão do navegador; sem condição, porque a corrida do medidor roda sempre (07/10/2026).
       - name: Cache do navegador (Playwright)
         uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
         with:
@@ -193,16 +183,11 @@ jobs:
           key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json', 'package.json') }}
           restore-keys: playwright-${{ runner.os }}-
 
-      # Item 3 (06/10/2026): a IDEMPOTENCIA vira portao de PR, que e onde o gerador muda. No
-      # publicador, regenerar e a funcao -- "havia derivado obsoleto" nao pode barrar a publicacao
-      # de dado. Entre 03 e 06/10 foram 29 publicacoes perdidas por essa confusao.
-      # Item 2: o teste que reproduz a corrida. O medidor antigo tem de reprovar; o novo, passar.
+      # Idempotência é portão de PR (onde o gerador muda); o medidor antigo tem de reprovar e o novo passar.
       - name: Corrida do medidor — espera por condição, não por relógio
         timeout-minutes: 8
         run: |
-          # O passo roda sempre. Com o cache restaurado (acima, tambem sempre desde 07/10/2026)
-          # esta instalacao e no-op; ela fica porque a primeira execucao depois de uma troca de
-          # versao do Playwright ainda precisa dela.
+          # no-op com o cache restaurado; fica para a primeira execução após troca de versão.
           npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
           # assunto: texto
           node scripts/testar_corrida_do_medidor.js
@@ -236,15 +221,7 @@ jobs:
           node scripts/verificar_texto_publico.js --forma
           # assunto: cor — as rampas dos mapas passam em contraste e em daltonismo
           python3 scripts/verificar_rampas_dos_mapas.py
-      # O navegador do Playwright era baixado a cada execução. O cache o guarda por versão.
-      # 07/10/2026: este passo rodava SO quando a pagina mudava, e o portao da corrida do medidor
-      # roda SEMPRE. Num PR que nao toca pagina -- um de documentacao, por exemplo -- o cache nao
-      # era restaurado, o `playwright install` do passo da corrida baixava tudo do zero e gastava
-      # os 8 minutos inteiros do teto: o processo era morto como orfao e o teste nem chegava a
-      # rodar. Reprovava por infraestrutura, com a mensagem de tempo esgotado, que nao se parece
-      # com a causa. Restaurar o cache nao depende de a pagina ter mudado; depende de alguem
-      # precisar do navegador, e quem precisa roda sempre. Sem a condicao, o `install` dos passos
-      # abaixo vira no-op.
+      # Cache por versão do navegador; sem condição, porque a corrida do medidor roda sempre (07/10/2026).
       - name: Cache do navegador (Playwright)
         uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684  # v4.2.3
         with:
@@ -282,14 +259,8 @@ jobs:
         run: |
           # assunto: cor
           node scripts/verificar_consistencia_visual.js
-      # 30/09/2026 (§314): no PR, o portão 12 confere que a cadeia REGENERA sem erro; a comparação
-      # com o git é do publicador, a partir do `main`. O manifesto sela o hash de todo arquivo
-      # versionado, então qualquer mudança o deixa obsoleto — cobrar isso aqui custava um segundo
-      # ciclo de CI por entrega e criava conflito de manifesto em toda união com o `main`.
-      # 30/09/2026 (§318, item 5 do handover): as capturas do PR deixam de ser tiradas à mão. Os
-      # dois portões de navegador já renderizam as dez páginas nas três larguras; agora salvam o
-      # PNG, e o run os oferece como artefato. `if: always()` de propósito: quando o portão visual
-      # REPROVA é que a captura mais interessa, e é justamente aí que o passo seria pulado.
+      # §314: no PR o portão 12 confere que a cadeia regenera; a comparação com o git é do publicador.
+      # §318: os portões de navegador salvam o PNG das dez páginas; `if: always()` porque a captura interessa quando reprova.
       - name: Capturas das páginas (desktop, tablet, mobile)
         if: always() && steps.diff.outputs.pagina_mudou == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
