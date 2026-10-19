@@ -1139,9 +1139,13 @@ const AREAS = [
  * Território sem série no arquivo declara a lacuna da sua classe, com as palavras da classe.
  * Nenhuma frase relaciona caso a El Niño: o que a página não diz, não precisa estar escrito.
  */
+/* Os seis desfechos em evidência: o nome do arquivo na forma comum e o id do mesmo desfecho no
+   catálogo, que é de onde sai o NOME quando ainda não há arquivo para dar o rótulo. */
 const DESFECHOS_DA_SECAO = ['dengue', 'chikungunya', 'srag', 'obitos', 'diarreias', 'leptospirose'];
+const NO_CATALOGO = {dengue: 'dengue', chikungunya: 'chik', srag: 'srag', obitos: 'obitos',
+                     diarreias: 'dda', leptospirose: 'lepto'};
 const FAIXA_COR = {acima: MonitorMapas.PALETA.serie_habitual.acima, dentro: MonitorMapas.cor('vazio')};
-let DESFECHOS_LIDOS = [], DESFECHO_ESCOLHIDO = null;
+let DESFECHOS_LIDOS = [], DESFECHO_ESCOLHIDO = null, DESF_CATALOGO = null;
 const __graficoDesfecho = {};
 
 /* "2026-08" → "agosto de 2026"; "2026-33" → a semana em datas (a palavra não chega ao leitor). */
@@ -1359,16 +1363,36 @@ function pintarDetalhe(d, uf) {
   fonteFigura('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
 }
 
+/* Desfecho em evidência que ainda não tem arquivo na forma comum não vira cartão vazio: a seção
+   declara a lacuna da CLASSE numa linha, e o nome vem do catálogo dos desfechos — não daqui.
+   Enquanto nenhum faltar, a linha não existe. */
+function declararDesfechoSemArquivo(lidos) {
+  const linha = document.getElementById('desfechosLacuna'), C = window.MonitorCatalogo;
+  if (!linha || !C) return;
+  const temArquivo = new Set((lidos || []).filter(Boolean).map(d => d.desfecho));
+  const faltam = DESFECHOS_DA_SECAO.filter(id => !temArquivo.has(id)).map(id => NO_CATALOGO[id]);
+  if (!faltam.length || !DESF_CATALOGO) { mostrarFrase(linha, ''); return; }
+  const nomes = (DESF_CATALOGO.desfechos || [])
+    .filter(x => faltam.indexOf(x.id) >= 0)
+    .map(x => String(x.nome || '').replace(/\s*\(.*\)\s*$/, ''))
+    .map((nome, i) => (i === 0 ? nome : nome.charAt(0).toLowerCase() + nome.slice(1)));
+  const lista = nomes.length > 1 ? nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1] : nomes[0];
+  mostrarFrase(linha, nomes.length ? C.texto('saude.observado.registram.lacuna', {faltam: lista}) : '');
+}
+
 async function montarDesfechos() {
   const grade = document.getElementById('gradeDesfechos');
   if (!grade) return;
   if (window.MonitorCatalogo && window.MonitorCatalogo.pronto) { try { await window.MonitorCatalogo.pronto; } catch (e) {} }
   const lidos = await Promise.all(DESFECHOS_DA_SECAO.map(id =>
     fetch('data/saude_desfechos/' + id + '.json').then(r => (r.ok ? r.json() : null)).catch(() => null)));
+  DESF_CATALOGO = await fetch('data/saude_desfechos/catalogo.json')
+    .then(r => (r.ok ? r.json() : null)).catch(() => null);
   DESFECHOS_LIDOS = lidos.filter(d => d && d.esquema === 1 && d.ultimo && d.por_100mil);
   const bloco = document.getElementById('desfechos');
-  if (!DESFECHOS_LIDOS.length) { if (bloco) bloco.hidden = true; pintarDetalhe(null); return; }
+  if (!DESFECHOS_LIDOS.length) { if (bloco) bloco.hidden = true; pintarDetalhe(null); return; }   // bloco inteiro recolhido: a lacuna não aparece sozinha numa seção sem grade
   if (bloco) bloco.hidden = false;
+  declararDesfechoSemArquivo(lidos);
   const seletor = document.getElementById('ufDesfechos');
   if (seletor && !seletor.options.length) {
     seletor.innerHTML = '<option value="BR">Brasil</option>'
