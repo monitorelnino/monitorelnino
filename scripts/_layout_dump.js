@@ -121,7 +121,8 @@ const COLETA = () => {
     filhos: [...g.children].filter(c => vis(c)).length,
     ids: [...g.children].map(c => c.id || ""),
     largura: Math.round(g.getBoundingClientRect().width),
-    colunas: getComputedStyle(g).gridTemplateColumns.split(" ").filter(Boolean).length,
+    /* `auto-fit` colapsa a trilha que ficou sem cartão: ela sai em 0px e não é coluna na tela. */
+    colunas: getComputedStyle(g).gridTemplateColumns.split(" ").filter(v => parseFloat(v) > 0).length,
     secao: (() => { let e = g.parentElement; while (e && !e.id) e = e.parentElement; return e ? e.id : ""; })(),
   }));
   // 08/10/2026 (A4-13): o travessao e proibido como VALOR em cartao, e o portao olhava so

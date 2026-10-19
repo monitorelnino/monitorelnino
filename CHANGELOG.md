@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · Seis números numa linha, e a busca cobrada onde há lista
+
+A faixa de números compactos cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão 34 px mais baixo que a Imprensa mostrava a 1280 px (três por linha no tablet, dois no celular, sem mudança). No verificador de runtime, o campo de busca passa a ser cobrado em cada lista que a página declara, e não em todo cartão de mapa. O medidor deixa de contar como coluna a trilha que a grade colapsou por falta de cartão.
+
 ## 2026-10-19 · #891 · Diário oficial do DF lido por data
 
 O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF lista os diários da data e serve o PDF do DODF (2,7 MB em 19/10), enquanto o endereço próprio do diário não responde ao coletor. Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +86 (adaptador novo, recurso novo, com autoteste offline).
