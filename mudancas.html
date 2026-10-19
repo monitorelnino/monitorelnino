@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=a15e2732">
+<link rel="stylesheet" href="assets/base.css?v=8fc22d79">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>19/10/2026 · Portões: comentários de cache e corrida no YAML, em uma linha</dt>
       <dd>Consolidação, item 6. Os blocos longos de história sobre o cache do navegador, a idempotência, a corrida do medidor e as capturas, em `portoes.yml`, viram uma linha de porquê cada; a história fica no histórico. Lista de comandos, assuntos e marcadores de publicação idêntica (83 comandos). Linhas líquidas −29.</dd>
+      <dt>19/10/2026 · Seis números numa linha, e a busca cobrada onde há lista</dt>
+      <dd>A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.</dd>
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
       <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
@@ -165,8 +167,6 @@
       <dd>Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).</dd>
       <dt>17/10/2026 · Diários estaduais: 404 não é recusa; 20 UFs com rota provada</dt>
       <dd>Endereço errado (404) era gravado como recusa e fechava 17 diários. Agora é &quot;rota não descoberta&quot;; recusa só 401/403/429/451. O canal 2 passa a ler pelos adaptadores medidos do `fontes_doe.json`: edição por data e busca com os termos de declaração, por uma porta única. Rotas novas medidas do runner: PA, RO, RN, RR por data; AL e SC por API. &quot;Consultado&quot; exige o ciclo inteiro coberto.</dd>
-      <dt>17/10/2026 · Resposta sanitária: zero sem busca vira &quot;não coletado&quot;</dt>
-      <dd>O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.</dd>
     </dl>
   </section>
 </main>
