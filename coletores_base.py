@@ -104,6 +104,40 @@ def hoje_editorial(agora=None) -> date:
     return (agora or datetime.now(FUSO_EDITORIAL)).astimezone(FUSO_EDITORIAL).date()
 
 
+MESES_POR_EXTENSO = ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
+                     "setembro", "outubro", "novembro", "dezembro")
+MESES_CURTOS = ("jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez")
+
+
+def semana_em_datas(ano: int, n: int) -> list:
+    """A semana `n` do `ano` escrita em datas: [por extenso, curta]. Função pura.
+
+    O leitor não vê "semana epidemiológica" nem número de semana (regra do site inteiro, 07/10/2026):
+    vê o intervalo. Mesma regra de `assets/semana.js` (Ministério da Saúde): domingo a sábado, e a
+    semana 1 é a que tem a quarta-feira entre 1 e 7 de janeiro. É a única cópia em Python: gerador
+    e portão importam esta."""
+    base = next(date(ano, 1, d) - timedelta(days=3) for d in range(1, 8)
+                if date(ano, 1, d).weekday() == 2)
+    ini = base + timedelta(days=7 * (n - 1))
+    fim = ini + timedelta(days=6)
+    mi, mf = MESES_POR_EXTENSO[ini.month - 1], MESES_POR_EXTENSO[fim.month - 1]
+    if ini.year != fim.year:
+        ext = f"{ini.day} de {mi} de {ini.year} a {fim.day} de {mf} de {fim.year}"
+    elif ini.month != fim.month:
+        ext = f"{ini.day} de {mi} a {fim.day} de {mf} de {ini.year}"
+    else:
+        ext = f"{ini.day} a {fim.day} de {mi} de {ini.year}"
+    ci, cf = MESES_CURTOS[ini.month - 1], MESES_CURTOS[fim.month - 1]
+    curta = f"{ini.day}–{fim.day}/{ci}" if ini.month == fim.month else f"{ini.day}/{ci}–{fim.day}/{cf}"
+    return [ext, curta]
+
+
+def semana_do_rotulo(referencia) -> str | None:
+    """'2026-38' -> 'de 14 a 20 de setembro de 2026', pronto para 'na semana …'. None se não for semana."""
+    m = re.fullmatch(r"(\d{4})-(\d{1,2})", str(referencia or ""))
+    return ("de " + semana_em_datas(int(m.group(1)), int(m.group(2)))[0]) if m else None
+
+
 RE_DATA_ISO = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
 RE_DATA_BR = re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b")
 MESES_PT = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5,
