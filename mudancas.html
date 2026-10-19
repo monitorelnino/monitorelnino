@@ -53,6 +53,8 @@
       <dd>`MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.</dd>
       <dt>17/10/2026 · Portões acompanham as páginas reformadas</dt>
       <dd>Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.</dd>
+      <dt>17/10/2026 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc</dt>
+      <dd>`coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.</dd>
       <dt>17/10/2026 · Ensaio da noite confere o isolamento dos autotestes pelo portão único</dt>
       <dd>O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.</dd>
       <dt>17/10/2026 · Consulta do município: a situação do plano numa função comum</dt>
@@ -165,8 +167,6 @@
       <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
       <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
       <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
-      <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
-      <dd>Sai do cartão de cada estado a linha do feed, e dos textos do blog o &quot;· Feed&quot; e a menção no aviso sem JavaScript (decisão da editoria de 16/10). &quot;feed&quot; entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.</dd>
     </dl>
   </section>
 </main>
