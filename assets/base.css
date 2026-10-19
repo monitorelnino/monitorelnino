@@ -302,7 +302,10 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .figura-num{display:block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--muted); margin:0;}
 .figura-dados{margin:var(--esp-figura-legenda) 0 0;}
 .figura-dados .tbl-wrap{margin-top:var(--sp-2);}
-.uf-path{stroke:var(--gauge-osso); stroke-width:.6; cursor:default; transition:opacity .12s;}
+/* 19/10/2026 (editoria, item 9): o contorno de UF quase sumia nos mapas de qualidade do ar e de
+   temperatura. A espessura é UMA, para todos os mapas — o contraste de cada um vem da atmosfera,
+   em `mapas.js`. Nada de ajuste por mapa. */
+.uf-path{stroke:var(--gauge-osso); stroke-width:1; cursor:default; transition:opacity .12s;}
 .uf-path:hover{opacity:.8;}
 .map-tooltip{position:fixed; pointer-events:none; background:var(--tooltip-bg); border:1px solid var(--muted); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--tooltip-ink); z-index:200; display:none; max-width:80vw;}
 .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:var(--radius); padding:var(--sp-4); text-align:center; font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted); background:var(--surface-2);}
@@ -709,9 +712,10 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
    eles ganharam a classe `.ficha-rotulo` para dizê-lo, e é por ela que o portão de conformidade
    sabe que ali a família é a de DADO, e não a de display. */
 .ficha-col h3, .ficha-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-2); padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
-.ficha-col ul{list-style:none; margin:0; padding:0;}
-.ficha-col li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
-.ficha-col li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted); font-size:var(--fs-body);}
+/* 19/10/2026 (pedido da B2, guia do Proteja-se): sai o glifo de caixa (☐). Ele prometia marcar item
+   cumprido, interação que a lista não tem, e a página não dá instrução de uso. Volta a lista padrão. */
+.ficha-col ul{margin:0; padding-left:var(--sp-5);}
+.ficha-col li{margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
 /* .ficha-alerta era branco dentro de um card que também era branco (cinza antes) — sem contraste próprio
    para um aviso que precisa se destacar. Vira caixa com fundo neutro e borda esquerda na cor do risco. */
 .ficha-alerta{background:var(--surface-2); border-left:4px solid var(--mineral); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
@@ -874,11 +878,11 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
    saber o que enviar; os de telefone nao levam, porque discar nao exige instrucao. */
 .emerg-cartoes--cinco{grid-template-columns:repeat(5, minmax(0,1fr));}
 .emerg-cartao--sms{border-top-color:var(--musgo);}
-.emerg-cartao--sms .emerg-numero{font-size:var(--fs-h1); line-height:var(--lh-h1);}
+.emerg-cartao--sms .emerg-numero{font-size:var(--fs-h3); line-height:var(--lh-h3);}
 .emerg-cartao small{font-family:var(--font-corpo); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--muted);}
 .emerg-cartao{display:flex; flex-direction:column; align-items:flex-start; gap:var(--sp-1);
-  padding:var(--sp-3) var(--sp-4); border:1px solid var(--line); border-radius:12px;
+  padding:var(--sp-2) var(--sp-4); border:1px solid var(--line); border-radius:12px;
   border-top:4px solid var(--line); text-decoration:none; color:var(--ink); background:var(--branco);}
 .emerg-cartao:hover, .emerg-cartao:focus-visible{border-color:var(--ink);}
 .emerg-cartao--defesa{border-top-color:var(--chuva);}
@@ -886,7 +890,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .emerg-cartao--samu{border-top-color:var(--rust);}
 .emerg-cartao--policia{border-top-color:var(--ink);}
 .emerg-icone{color:var(--muted);}
-.emerg-numero{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display);}
+.emerg-numero{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h1); line-height:var(--lh-h1);}
 .emerg-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted);}
 
 /* "Leve com você": cartão de borda fina e dois botões de verdade. */
@@ -932,7 +936,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .emerg-cartoes{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-cartoes--cinco{grid-template-columns:repeat(2, minmax(0,1fr));}
   .emerg-cartao--sms{grid-column:1 / -1;}
-  .emerg-numero{font-size:var(--fs-h1);}
   .levar-botoes .btn-pilula{width:100%; justify-content:center;}
 }
 
@@ -1012,6 +1015,9 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   margin:var(--sp-2) 0 0;}
 /* A fonte fica colada no pé do cartão, para os seis terminarem na mesma linha. */
 .cartao-mapa > .fonte-figura{margin-top:auto; padding-top:var(--sp-3);}
+/* 19/10/2026 (editoria, item 13): as tabelas dentro de cartão de mapa ficam compactas — o que
+   encolhe é o respiro da célula, não a letra: a escala tipográfica não muda. */
+.cartao-mapa .mun-table th, .cartao-mapa .mun-table td{padding-top:var(--sp-1); padding-bottom:var(--sp-1);}
 /* "FIGURA n" sai destes cartões: seis numerações numa grade viram ruído, e a figura já se nomeia
    pelo título. A numeração automática continua nas outras páginas. */
 .cartao-mapa{counter-increment:none;}
@@ -1337,6 +1343,11 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 @media (max-width: 640px){ .faixa-previsto > div{grid-template-columns:minmax(0, 1fr); gap:var(--sp-1);} }
 /* Cartão de mapa com dados ao lado (fogo) e cartão de tabela: a mídia não tem a proporção do mapa. */
 .cartao-mapa.figura--dupla .figura-midia, .cartao-mapa.figura--tabela .figura-midia{aspect-ratio:auto; overflow:visible; align-items:start;}
+/* 19/10/2026 (editoria, item 12): a coluna do mapa era mais baixa que a dos números e sobrava
+   uma faixa branca sob ele. A coluna passa a ocupar a altura inteira e o mapa se centra nela:
+   as duas colunas terminam juntas, sem esticar o desenho do mapa. */
+.cartao-mapa.figura--dupla .figura-midia{align-items:stretch;}
+.mapa-dupla{display:flex; align-items:center; min-width:0;}
 .mapa-dupla > svg{width:100%; height:auto; display:block;}
 .map-legend i.leg-losango{width:8px; height:8px; transform:rotate(45deg); border:1px solid var(--muted); background:none;}
 .map-legend i.leg-vazado{border-radius:50%; border:2px solid currentColor; background:none;}
@@ -1351,6 +1362,8 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .lado-serie .serie-linha{fill:none; stroke:var(--fogo); stroke-width:1.5;}
 .lado-serie .serie-alvo{fill:transparent;}
 .lado-serie .tk{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--muted);}
+/* 19/10/2026 (item 11): grade discreta atrás da série, no mesmo filete dos outros gráficos. */
+.lado-serie .grade{stroke:var(--line); stroke-width:.5;}
 .dica-fonte{color:var(--muted); font-size:var(--fs-caption);}
 .lista-estados{margin:var(--sp-2) 0 0; padding-left:var(--sp-4); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--ink);}

@@ -13,13 +13,14 @@
    "comprometimento": "água; saneamento",
    "sistema": "Sivep-DDA / Sinan (surtos DTHA); SISAB (atendimentos APS)",
    "periodicidade": "semanal",
-   "fonte_aberta": "MDDA/SIVEP-DDA só por TabNet (consulta interativa); o OpenDataSUS hospeda apenas o módulo indígena (Siasi). O Zenodo que alimentava a série está parado.",
-   "status_coleta": "nao_coletavel_por_maquina",
+   "fonte_aberta": "SISAB, relatório público de produção (formulário sem login, exportação CSV): atendimentos individuais na atenção primária com CIAP-2 D11, D70, D73 ou CID-10 A00–A09, por UF e mês, de 2013 em diante. O Sivep-DDA não tem conjunto aberto nem página no TabNet público (17/10/2026).",
+   "status_coleta": "candidato",
    "rota": {
-    "sistema": "SISAB, relatório público de produção (formulário, sem login)",
+    "sistema": "SISAB (relatório público de produção)",
     "url": "https://sisab.saude.gov.br/paginas/acessoRestrito/relatorio/federal/saude/RelSauProducao.xhtml",
-    "provado_em": null,
-    "prova": "formulário lido em 17/10/2026: linha Estado, coluna Competência (jan/2023 a ago/2026), filtro CIAP/CID; consulta ainda não feita. TabNet do DATASUS sem página de DDA no índice público."
+    "provado_em": "17/10/2026",
+    "prova": "executor (run 39033172689): 27 UFs, jan/2019 a ago/2026, nenhuma célula vazia, 200 s; o CSV devolve os filtros aplicados e o coletor confere",
+    "coletor": "coletar_sisab.py --desfecho diarreias"
    }
   },
   {
@@ -81,7 +82,7 @@
    "sistema": "Sinan",
    "periodicidade": "semanal",
    "fonte_aberta": "SINAN, microdados .dbc no FTP do DATASUS (finais até 2024, preliminares 2025–2026); o TabNet dá o mesmo número.",
-   "status_coleta": "nao_coletavel_por_maquina",
+   "status_coleta": "candidato",
    "rota": {
     "sistema": "SINAN (.dbc no FTP do DATASUS)",
     "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/",
@@ -97,7 +98,7 @@
    "comprometimento": "água; calor",
    "sistema": "SISAB (APS) / SIH",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_desidratacao.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
    "status_coleta": "candidato"
   },
   {
@@ -136,7 +137,7 @@
    "comprometimento": "ar; fumaça",
    "sistema": "SIH/SUS (CID J)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_respiratorias.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
    "status_coleta": "candidato"
   },
   {
@@ -145,7 +146,7 @@
    "comprometimento": "fumaça",
    "sistema": "Sinan (intoxicação exógena) / CIATox",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_fumaca.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
    "status_coleta": "candidato"
   },
   {
@@ -154,7 +155,7 @@
    "comprometimento": "calor; fumaça",
    "sistema": "SIH/SUS (CID I)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_cardio.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
    "status_coleta": "candidato"
   },
   {
@@ -163,7 +164,7 @@
    "comprometimento": "água; calor",
    "sistema": "SIH/SUS (CID N)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_renal.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
    "status_coleta": "candidato"
   },
   {
@@ -172,7 +173,7 @@
    "comprometimento": "calor",
    "sistema": "SIH / SIM / Painel Nacional de Excesso de Calor",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_calor.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
    "status_coleta": "candidato"
   },
   {
@@ -220,6 +221,15 @@
    "periodicidade": "mensal",
    "fonte_aberta": "SIH/SUS por TabNet ou arquivos .dbc no FTP do DATASUS (formato proprietário comprimido); o Portal de Dados Abertos publica só indicadores agregados da RIPSA. Conferido em 29/09/2026.",
    "status_coleta": "nao_coletavel_por_maquina"
+  },
+  {
+   "id": "hepatite_a",
+   "nome": "Hepatite A (internações)",
+   "comprometimento": "água; saneamento",
+   "sistema": "SIH/SUS (CID B15)",
+   "periodicidade": "mensal",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, diagnóstico principal B15, por UF e mês de processamento. Contagem de internações, não de casos notificados: o SINAN de hepatite A no FTP tem como mais recente o arquivo de 2023 (sondagem de 17/10/2026). Coletor escrito (`coletar_sih.py`, grava `saude_desfechos/hepatite_a.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
+   "status_coleta": "candidato"
   }
  ],
  "_vocabulario_status": {

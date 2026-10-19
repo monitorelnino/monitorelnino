@@ -9,6 +9,48 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
+
+O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
+## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
+
+A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
+
+## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
+`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
+
+## 2026-10-19 · #879 · Defesa civil: o que lemos e o que o reconhecimento pressupõe
+
+Em 722 dos 953 municípios o ato municipal não foi localizado: eles entram pela portaria federal, e a data do decreto vinha inferida dela. O cartão do município e a tabela da figura passam a dizer "ato municipal não localizado até o corte" e a data em que a União reconheceu, em vez de apresentar como lida uma data que não foi lida. Quem tem o ato segue com documento, data e fonte. Contagem do topo e mapa não mudam.
+
+## 2026-10-19 · #875 · Cartões de emergência um degrau abaixo
+
+Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.
+
+## 2026-10-19 · #874 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos
+
+Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.
+
+## 2026-10-19 · #870 · SIH: internações por grupo de causa na forma comum
+
+`coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.
+
+## 2026-10-19 · #868 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias
+
+O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.
+
+## 2026-10-19 · #871 · MUNIC 2020: bloco de risco inteiro como fonte futura
+
+O coletor passa a guardar as 160 variáveis do bloco de gestão de riscos da MUNIC 2020, com a pergunta de cada uma, em `data/fontes_futuras/`, com peso zero. Conferido contra a leitura publicada: plano de enchentes 1.407 e habitacional 16,7% iguais; mapeamento e alerta não reproduzidos, declarado. Mgrd184 é plano de enchentes, não geral. METODOLOGIA §114.
+
+## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
+
+A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.
+
+## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
+
+A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
+
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
@@ -34,6 +76,10 @@ A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.ht
 ## 2026-10-19 · #844 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
+
+## 2026-10-19 · #867 · Sai o glifo de caixa das listas da ficha; o cartão do ar lê o catálogo
+
+As listas de "Antes, durante e depois" voltam ao marcador padrão: o glifo ☐ prometia marcar item cumprido, interação que a lista não tem. Vale na inicial e no guia do Proteja-se. No Monitor de riscos, o cartão de cidades com IQAr alto passa a ler rótulo, valor e apoio do catálogo, como os outros seis da mesma grade, e o rótulo volta a trazer o dia da medição.
 
 ## 2026-10-19 · #864 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura
 
@@ -78,6 +124,10 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 
 `semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem "semana epidemiológica". `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o "ciclo". Metodologia §111.
 
+## 2026-10-19 · #876 · Diário oficial do RS lido por data
+
+O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
+
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
 
 `semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.
@@ -89,6 +139,10 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 ## 2026-10-17 · #839 · Portões acompanham as páginas reformadas
 
 Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.
+
+## 2026-10-17 · #841 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc
+
+`coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.
 
 ## 2026-10-17 · #842 · Ensaio da noite confere o isolamento dos autotestes pelo portão único
 
@@ -1269,14 +1323,6 @@ vírgula; o texto visível em 1280 e 390 px ficou idêntico nas duas páginas. V
 portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice
 interno.
 
-## 2026-10-05 · #561 · Pacote por tipo de evento, e duas travas do blog que não travavam
-
-Nova linha `tipos_de_evento` no gerador de pacote, sobre o ciclo inteiro. `para_iso` só lia
-`dd/mm/aaaa` e descartava calado 97 dos 929 atos, que vêm em ISO do diário consorciado. O
-verificador do blog reprovava por pacote ausente mesmo onde a pasta não é alcançável, e o gerador
-publicava texto citando pacote inexistente: agora um distingue ausente de fora de alcance, e o outro
-recusa pacote declarado que não existe.
-
 ## 2026-10-05 · #560 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo
 
 Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal
@@ -1439,10 +1485,6 @@ Emergências por estado, com a cidade na lista e as três marcas da cadeia; sér
 
 Canal 2 fechado com duas tentativas por unidade e verificação humana registrada na falta; canal 3 com o domínio atual de AM, AP, RN e RO, e o 503 do RJ agendado para a terceira medição. Quatro canais: de 8 para **27 de 27**. O plano do Pará entra como revisado em 2026; o MS confirmado em 50. Os 27 estados passam ao componente da inicial. METODOLOGIA §98.
 
-## 2026-10-02 · #527 · Financiamento minimalista: só o dinheiro do ciclo
-
-A página passa a mostrar só dinheiro do ciclo: medidas federais e defesa civil federal. Saem as transferências gerais, a grade dos 27 quadros e a seção de casos; entram a forma de aplicação, as origens com os três valores e a defesa civil por estado, com município em lista dentro do cartão. Vocabulário fixo: desembolsado, não pago. METODOLOGIA §97.
-
 ## 2026-10-02 · #526 · Coletores do Financiamento rodados, e o frescor por arquivo
 
 Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.
@@ -1482,14 +1524,6 @@ O componente "coordenação" passa a ser construto formativo de duas capacidades
 ## 2026-10-02 · #518 · Coleta de doença respiratória confiável
 
 O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.
-
-## 2026-10-02 · #518 · Financiamento ao contrato, com o recorte que a fonte permite
-
-Página reconstruída ao contrato: três cartões por seção, listas no lugar do diagrama das rotas e dos mapas municipais, grade com os 27 estados. Os cartões do topo passam a vir de `gerar_financiamento_semana.py`: mês fechado onde o Portal publica por mês, sete dias onde o ato tem data — nada de "sem dado" com série em disco. Portão novo confere a coerência com a imprensa. Em `financiamento.html`, `assets/js/financiamento.js`, `scripts/`.
-
-## 2026-10-02 · #518 · Contrato de layout: a forma da página sai do HTML
-
-A forma de cada página passa a viver em `layout/contratos/<pagina>.json` — seções, ordem, cartões, grades e texto proibido — e um portão novo mede a página renderizada em 1280 e 390 px, reprovando a divergência. A editoria apontava o mesmo defeito cartão a cartão; a regra agora está num lugar só. Saúde reconstruída ao contrato. Em `layout/`, `scripts/`, `saude.html`, `assets/js/saude.js`, `CODEMAP.md`.
 
 ## 2026-10-02 · #515 · Recursos federais de defesa civil por município
 
@@ -1689,13 +1723,6 @@ O portão media 527 contra 524 e chamava de divergência uma diferença de defin
 quem o acervo indexa, o outro quem foi indexado e lido. Os três que faltavam são indexados com log
 ilegível, e já viviam em `cobertura_indefinida`. Passa a comparar acervo com acervo. A `main` estava
 vermelha por isso.
-
-## 2026-10-01 · #489 · Imprensa refeita: nada escrito à mão que dependa do dado
-
-Topo com os dois índices e quatro contadores, todos do banco; "O que é o MARÉ", "Como os índices são
-calculados" e "O que cada página mostra" com os textos aprovados; "Como citar" com direitos e
-licença. Saem o sobretítulo, o kit que prometia PDFs inexistentes, o resto do calendário eleitoral e
-duas perguntas com base legal errada. Portão novo confere versão, data e números contra o banco.
 
 ## 2026-10-01 · #488 · Monitor de riscos: um componente de cartão de mapa, seis vezes
 

@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=8acca11c"></script>
+<script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=96ba4901">
+<link rel="stylesheet" href="assets/base.css?v=a15e2732">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,28 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Consulta do município: o cartão diz quantos atos não couberam</dt>
+      <dd>O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer &quot;e mais N atos no período&quot;. Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.</dd>
+      <dt>19/10/2026 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde</dt>
+      <dd>A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.</dd>
+      <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
+      <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
+      <dt>19/10/2026 · Defesa civil: o que lemos e o que o reconhecimento pressupõe</dt>
+      <dd>Em 722 dos 953 municípios o ato municipal não foi localizado: eles entram pela portaria federal, e a data do decreto vinha inferida dela. O cartão do município e a tabela da figura passam a dizer &quot;ato municipal não localizado até o corte&quot; e a data em que a União reconheceu, em vez de apresentar como lida uma data que não foi lida. Quem tem o ato segue com documento, data e fonte. Contagem do topo e mapa não mudam.</dd>
+      <dt>19/10/2026 · Cartões de emergência um degrau abaixo</dt>
+      <dd>Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.</dd>
+      <dt>19/10/2026 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos</dt>
+      <dd>Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.</dd>
+      <dt>19/10/2026 · SIH: internações por grupo de causa na forma comum</dt>
+      <dd>`coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.</dd>
+      <dt>19/10/2026 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias</dt>
+      <dd>O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.</dd>
+      <dt>19/10/2026 · MUNIC 2020: bloco de risco inteiro como fonte futura</dt>
+      <dd>O coletor passa a guardar as 160 variáveis do bloco de gestão de riscos da MUNIC 2020, com a pergunta de cada uma, em `data/fontes_futuras/`, com peso zero. Conferido contra a leitura publicada: plano de enchentes 1.407 e habitacional 16,7% iguais; mapeamento e alerta não reproduzidos, declarado. Mgrd184 é plano de enchentes, não geral. METODOLOGIA §114.</dd>
+      <dt>19/10/2026 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS</dt>
+      <dd>A página deixa de chamar o risco de &quot;fogo&quot;: a abertura diz &quot;chuvas fortes, incêndio, seca e calor&quot; e a aba vira &quot;Incêndio e fumaça&quot;, como o título da seção. Na emergência, &quot;a Defesa Civil avisa sem cadastro&quot; passa a &quot;a Defesa Civil envia os alertas automaticamente&quot;, no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.</dd>
+      <dt>19/10/2026 · Consulta do município: decreto só do município e rede do Cemaden sem falso &quot;fora&quot;</dt>
+      <dd>A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca &quot;fora da rede&quot;. Código: +65 −10, com autoteste.</dd>
       <dt>19/10/2026 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição</dt>
       <dd>Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.</dd>
       <dt>19/10/2026 · Financiamento: o dinheiro por risco, onde chega e o mês a mês</dt>
@@ -61,6 +83,8 @@
       <dd>`coletar_orientacoes_oficiais.py` lê 13 páginas do Ministério da Saúde e da Defesa Civil nacional, preserva cada uma por hash e grava o trecho que sustenta cada item do guia em `data/orientacoes_oficiais.json`: 6 itens com fonte, 29 sem (lacuna declarada, a página não os publica). Reconfere o diretório estadual da Defesa Civil: DF e RO divergem, registrado sem reescrever. Peso zero.</dd>
       <dt>19/10/2026 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento</dt>
       <dd>Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).</dd>
+      <dt>19/10/2026 · Sai o glifo de caixa das listas da ficha; o cartão do ar lê o catálogo</dt>
+      <dd>As listas de &quot;Antes, durante e depois&quot; voltam ao marcador padrão: o glifo ☐ prometia marcar item cumprido, interação que a lista não tem. Vale na inicial e no guia do Proteja-se. No Monitor de riscos, o cartão de cidades com IQAr alto passa a ler rótulo, valor e apoio do catálogo, como os outros seis da mesma grade, e o rótulo volta a trazer o dia da medição.</dd>
       <dt>19/10/2026 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura</dt>
       <dd>Saem a frase sobre a data do dado, o &quot;previsão, não observação&quot;, o parágrafo das listas federais, a nota do mapa de qualidade do ar (vai para a metodologia) e o gráfico do Semiárido. As siglas de UF viram etiqueta, sem link. No topo, a frase do prognóstico sai do cartão e vai para o texto da seção; rodapé preso na base e até seis por linha acabam com o vão branco.</dd>
       <dt>19/10/2026 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação</dt>
@@ -83,12 +107,16 @@
       <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
       <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
       <dd>`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem &quot;semana epidemiológica&quot;. `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o &quot;ciclo&quot;. Metodologia §111.</dd>
+      <dt>19/10/2026 · Diário oficial do RS lido por data</dt>
+      <dd>O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
       <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
       <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
       <dd>`MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.</dd>
       <dt>17/10/2026 · Portões acompanham as páginas reformadas</dt>
       <dd>Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.</dd>
+      <dt>17/10/2026 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc</dt>
+      <dd>`coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.</dd>
       <dt>17/10/2026 · Ensaio da noite confere o isolamento dos autotestes pelo portão único</dt>
       <dd>O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.</dd>
       <dt>17/10/2026 · Consulta do município: a situação do plano numa função comum</dt>
@@ -139,34 +167,6 @@
       <dd>Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas &quot;motor_sem_resposta&quot; gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.</dd>
       <dt>17/10/2026 · Main vermelha: a fila de pistas passou de 50 MB com a URL gravada duas vezes</dt>
       <dd>`data/pistas_imprensa.json` chegou a 50,1 MB no commit do juiz das 09:24 e o portão de tamanho reprovou a `main`. Causa: `verificacao_fonte.url` repetia a URL da própria pista em 19.954 pistas (5,8 MB) e ninguém a lia. O verificador deixa de gravá-la; as cópias iguais saem do dado (46,4 MB). As 24 que diferem ficam.</dd>
-      <dt>17/10/2026 · Autoteste vermelho mostra o traceback no log do portão</dt>
-      <dd>Na `main` (run 38976908995) o autoteste de `unir_conflito_de_rodada.py` caiu e o log só trazia o último ✓: o portão descartava o stderr. Agora a linha do autoteste vermelho junta a última saída e as três últimas linhas do erro. Linhas líquidas 0.</dd>
-      <dt>16/10/2026 · Ar medido: hora de medição no futuro vira lacuna</dt>
-      <dd>Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.</dd>
-      <dt>16/10/2026 · Juiz da saúde estadual: duas rodadas pela válvula (dado)</dt>
-      <dd>Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.</dd>
-      <dt>16/10/2026 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país</dt>
-      <dd>`topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.</dd>
-      <dt>16/10/2026 · Regra das quatro funções da figura passa a ter portão (A7-14)</dt>
-      <dd>`figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.</dd>
-      <dt>16/10/2026 · Saem as fontes Open-Meteo de tempo e de ar (main vermelha do #802)</dt>
-      <dd>Nenhuma página as mostrava: temperatura vem do INMET desde 27/09, ar vem do MMA/OpenAQ/RedeAr desde o #802. Saem do coletor (catálogo, leitores, coleta em lote, clima municipal), do arquivo de sinais, do cartão europeu do topo e do cartão morto da Imprensa. METODOLOGIA §41.7 com errata.</dd>
-      <dt>16/10/2026 · Monitor de riscos: consulta do município</dt>
-      <dd>Nova seção ao fim da página: estado e município, com os mesmos controles da inicial, e uma tabela com risco previsto e seca do estado, focos de 30 dias, ar e temperatura da estação ou capital mais próxima, avisos, alerta do Cemaden, emergência desde 29/06 e o link para o plano na ficha do estado. Cada linha com fonte e data; o arquivo do estado carrega só quando escolhido. HANDOVER_MONITOR_DE_RISCOS §5.</dd>
-      <dt>16/10/2026 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas</dt>
-      <dd>O bloco &quot;Chuva forte&quot; troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem &quot;Ver estados&quot;, &quot;Ver em lista&quot; e &quot;Como ler&quot; e o código morto que os montava. Open-Meteo e lista do OpenAQ passam a apoio técnico no catálogo (conserta a main do #802). HANDOVER_MONITOR_DE_RISCOS §4 e §7.</dd>
-      <dt>16/10/2026 · Monitor de riscos: seca em manchas, ar medido e cartão do ar</dt>
-      <dd>A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão &quot;Ar&quot; só com cidade em IQAr Ruim ou pior.</dd>
-      <dt>16/10/2026 · Monitor de riscos: risco previsto em faixa e bloco do fogo</dt>
-      <dd>O mapa do risco previsto vira faixa de siglas por família, cada uma ligada à ficha do estado. Os blocos &quot;Seca, fogo, ar e calor&quot; e &quot;Chuva forte&quot; abrem com &quot;Boletim prevê para&quot;. O fogo ocupa a largura inteira: hachura nos estados com fogo previsto, números do satélite de referência, 30 dias e tabelas por estado e bioma. HANDOVER_MONITOR_DE_RISCOS §2–§3.6.</dd>
-      <dt>16/10/2026 · Monitor de riscos: um só gráfico do Pacífico, na largura inteira</dt>
-      <dd>Sai a série contínua do RONI (barras desde 1950) e o código que a desenhava; fica a comparação entre episódios, na largura inteira e com metade da altura, com a definição do RONI na nota. Sai também o bloco desativado do plume e o Chart.js da página. Abertura ajustada ao gráfico que fica. HANDOVER_MONITOR_DE_RISCOS §1.3.</dd>
-      <dt>16/10/2026 · Juiz da saúde estadual: host morto sai da rodada; queda de rede fica pendente (F68)</dt>
-      <dd>Em 15/10 o juiz gastou 72 minutos em 16 pistas do mesmo host morto e parou na 17ª de 251. Host sem resposta de rede sai do resto da rodada; queda de rede deixa a pista pendente, não recusada; recusas antigas por queda voltam à fila; o corte só avança sem pendente.</dd>
-      <dt>16/10/2026 · Consulta do município na Saúde: um arquivo por UF</dt>
-      <dd>O elo da saúde grava `data/saude_municipio/&lt;UF&gt;.json` (`gerar_saude_municipio.py`): por município, alerta de dengue e chikungunya do InfoDengue, classe de calor do MS e degrau de saúde do plano. Município não lido fica sem o bloco, nunca zero. A resposta sanitária do `monitor_saude.json` passa a trazer a lista de eventos. METODOLOGIA §41.11.</dd>
-      <dt>16/10/2026 · Consulta do município no Monitor de riscos: um arquivo por UF</dt>
-      <dd>O elo dos sinais grava `data/riscos_municipio/&lt;UF&gt;.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.</dd>
     </dl>
   </section>
 </main>

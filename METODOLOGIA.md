@@ -4257,6 +4257,28 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 
 **O que a sondagem de 17/10 mediu, e o que ficou de fora.** No FTP do SINAN há arquivos de surto de DTA (`SDTA`), malária fora da Amazônia (`MALA`) e hepatite A só até 2023 no preliminar. O relatório público de produção do SISAB é formulário aberto, sem login, com atendimentos por CIAP/CID, por estado e mês até agosto de 2026: é a rota candidata das diarreias. O TabNet do DATASUS (último recurso, decisão da editoria de 16/10) não tem página de diarreias agudas no índice público. A busca por máquina do portal de dados abertos do SUS não respondeu em formato legível. O Monitor não atribui casos ao El Niño.
 
+**Diarreias pelo SISAB (17/10/2026).** Atendimentos individuais na atenção primária registrados com CIAP-2 D11 (diarreia), D70 (infecção gastrointestinal) ou D73 (gastroenterite, presumível infecção), ou CID-10 A00 a A09, por UF do estabelecimento e mês, do relatório público de produção do SISAB, desde janeiro de 2019. É atendimento, não caso: a mesma pessoa pode voltar, e a série também acompanha a adoção do registro eletrônico na atenção primária ao longo dos anos. As duas últimas competências são parciais ("dados sujeitos à alteração", diz o próprio relatório). O CSV traz a lista dos filtros que aplicou; o coletor confere que ela é exatamente a pedida, que as 27 UFs vieram e que o cabeçalho tem as competências, e qualquer diferença é lacuna declarada, com o arquivo anterior mantido.
+
+**O mês da extração não é mês coberto (correção de 17/10/2026).** O arquivo preliminar do SINAN é extraído no meio de um mês: na leitura de 17/10, o de 2026 tinha notificações até os primeiros dias de julho. A série da leptospirose passa a terminar no último mês inteiro de notificação (junho), e só os anos com arquivo lido entram com zero medido. O `ultimo` de cada UF traz também o `consolidado`, o último mês que já não é parcial.
+
+## 109. Óbitos registrados na forma comum dos desfechos (17/10/2026)
+
+**O que a série conta.** Registros de óbito lavrados em cartório no mês, por UF, como o Portal da Transparência do Registro Civil (ARPEN/CNJ) agrega, de janeiro de 2019 ao mês corrente, em `data/saude_desfechos/obitos.json`, na forma do §108. É a mesma consulta do coletor de 29/09 (`coletar_obitos_registro_civil.py`), estendida até 2019 para a faixa habitual e os cortes do mapa; o arquivo antigo, que a página lê, não muda. Não é óbito ocorrido no mês nem óbito por causa. O mês corrente é parcial: o registro entra ao longo dos dias. Mês que a fonte não respondeu fica sem valor e declarado, nunca zero.
+
+**Leitura de 17/10/2026, no executor.** 94 meses e 27 UFs; setembro de 2026, 120.473 registros no país. A faixa habitual dos óbitos usa 2019 e 2022 a 2025, com 2024 à parte: 2020 e 2021, anos da pandemia de covid-19, ficam fora (decisão da editoria de 17/10/2026) e a exclusão é declarada no arquivo (`faixa_sem_anos`). Os cortes do mapa não mudam.
+
+**O que ficou de fora.** O painel por causa (doenças respiratórias, cardíacas) não está mais no portal: os endereços antigos respondem com erro do servidor, e o código do portal não os chama. O SIM preliminar, com causa básica, está no FTP do DATASUS por UF e ano, com defasagem de cerca de dois meses; entra como série com causa numa próxima etapa. O Monitor não atribui óbitos ao El Niño.
+
+
+
+## 110. Internações do SUS por grupo de causa, na forma comum dos desfechos (19/10/2026)
+
+**O que cada série conta.** Autorizações de internação hospitalar (AIH) aprovadas no SIH/SUS, por UF do hospital e mês de processamento, sem as de longa permanência, com o diagnóstico principal (CID-10) no grupo: doenças respiratórias agudas (J00 a J22), doença isquêmica do coração e cerebrovascular (I20 a I25 e I60 a I64), insuficiência renal (N17 a N19), desidratação (E86), efeito tóxico de gases, fumaças e vapores (T59), efeitos do calor e da luz (T67) e hepatite aguda A (B15). Um arquivo por grupo em `data/saude_desfechos/`, na forma do §108, a partir de janeiro de 2019. A hepatite A é contagem de internações, não de casos notificados: o arquivo mais recente do SINAN para hepatite A no FTP do DATASUS é de 2023 (sondagem de 17/10/2026).
+
+**Como é lida.** Um arquivo por UF e mês no FTP do DATASUS, pelo leitor do §108. A rodada lê do mês mais recente ao mais antigo até o tempo reservado acabar; o mês que não foi lido fica sem valor e a lacuna é declarada no arquivo, nunca zero. Os três meses mais recentes são lidos de novo quando o tamanho do arquivo mudou, porque a competência cresce com AIH reapresentada. Enquanto houver mês por ler, os cortes do mapa são recalculados; completa a leitura, ficam congelados. O último mês publicado é parcial. AC e RR publicam com um mês a mais de atraso (16/10/2026).
+
+**O que a série não conta.** Residência do paciente (a UF é a do hospital), óbitos e internações em hospitais fora do SUS. O número do TabNet para a mesma competência foi conferido em duas UFs: bateu em AP (6.160, julho de 2026) e ficou 2,0% abaixo em CE (52.091 contra 53.588 registros em julho de 2026), sem que a regra de contagem do TabNet tenha sido identificada. O Monitor não atribui internações ao El Niño.
+
 ## 111. A semana da Imprensa em datas e a definição dos índices numa só função (19/10/2026)
 
 Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, não no texto da página.
@@ -4279,3 +4301,10 @@ Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, 
 
 A Ouvidoria Geral do SUS da SESAU/RO respondeu em 15/10/2026 ao pedido de 18/09/2026 com um plano de adaptação da saúde ao El Niño de 96 páginas, em versão revisada, sem número de processo nem data de aprovação. O MARÉ guarda o registro em `data/notas_lai.json` (`documentos_de_estado`), com o endereço que o órgão informou e `verificacao_link: pendente`: o link só passa a verificado quando o endereço responde e título e órgão conferem com o documento recebido. O registro ainda não foi julgado (`veredito: null`) e não altera o que o índice registra para o estado. Os documentos que o plano cita e que o MARÉ não localizou viram buscas dirigidas de nível A. Marcos e valores do plano ficam guardados, sem comparação com o que ocorrer depois.
 
+## 114. Fontes futuras e autodeclaração municipal: o bloco de risco da MUNIC 2020 (19/10/2026)
+
+O bloco inteiro de gestão de riscos da MUNIC/IBGE 2020 (160 variáveis, 5.570 municípios, com o texto da pergunta tirado do dicionário da planilha) fica em `data/fontes_futuras/munic_gestao_de_riscos_2020.json`, com fonte, edição, data da consulta e hash da cópia preservada. É fonte futura: peso zero, fora do índice e de texto público até decisão da editoria. É autodeclaração do município, não verificação. A MUNIC 2024 não traz esse bloco; a edição de 2020 é a mais recente com ele.
+
+Conferência contra a leitura publicada do bloco: plano de contingência de enchentes (Mgrd184) 1.407, igual; programa habitacional de realocação (Mgrd182) 930 municípios, 16,7%, igual; controle e fiscalização da ocupação (Mgrd183) 1.032 contra 1.031, diferença de um; mapeamento de áreas de risco (2.562) e sistema de alerta (1.301) não reproduzidos, pois as variáveis de mapeamento somam 2.299 municípios e as de alerta 615 em união; a diferença fica declarada, sem ajuste.
+
+Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de enchentes ou inundações, e não um plano geral; Mgrd05 é o da seca. A camada declarada (vigência na nota em 26/10/2026) lê Mgrd184 como "plano declarado"; se essa leitura vale para o desconto de 50% é decisão da editoria.

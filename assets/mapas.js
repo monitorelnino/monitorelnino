@@ -182,16 +182,19 @@
    *  frequente do mapa virando mancha sem informação.
    *
    *  Devolve `url(#id)`, pronto para `fill`. O mesmo par de cores reusa o mesmo padrão. */
-  function hachura(svgId, corA, corB) {
+  /** `forca` (0 a 1, padrão 1) baixa a opacidade só do traço: a hachura continua dizendo o que dizia
+   *  e deixa de competir com o dado desenhado por cima dela. */
+  function hachura(svgId, corA, corB, forca) {
     const svg = d3.select('#' + svgId);
-    const id = 'hachura-' + svgId + '-' + (corA + corB).replace(/[^a-z0-9]/gi, '');
+    const f = forca == null ? 1 : forca;
+    const id = 'hachura-' + svgId + '-' + (corA + corB + f).replace(/[^a-z0-9]/gi, '');
     if (!document.getElementById(id)) {
       let defs = svg.select('defs');
       if (defs.empty()) defs = svg.append('defs');
       const p = defs.append('pattern').attr('id', id).attr('width', 8).attr('height', 8)
         .attr('patternUnits', 'userSpaceOnUse').attr('patternTransform', 'rotate(45)');
       p.append('rect').attr('width', 8).attr('height', 8).attr('fill', corA);
-      p.append('rect').attr('width', 4).attr('height', 8).attr('fill', corB);
+      p.append('rect').attr('width', 4).attr('height', 8).attr('fill', corB).attr('opacity', f);
     }
     return 'url(#' + id + ')';
   }
@@ -208,8 +211,10 @@
    *  Uma rampa (`contagem`, um matiz só) e faixas pelos QUANTIS da distribuição real, rotuladas com os
    *  limites efetivos de cada faixa; a última é aberta. Cinza só para "nenhum": zero medido não é
    *  ausência de dado, e a legenda diz qual dos dois é. `extra(uf)` acrescenta ao rótulo do estado. */
-  function mapaDeContagem(ctx, svgId, legendaId, porUF, unidade, extra) {
-    const rampa = PALETA.atmosfera.contagem.rampa, cinza = cor('zebra');
+  function mapaDeContagem(ctx, svgId, legendaId, porUF, unidade, extra, atm) {
+    // `atm` escolhe a família de cor da contagem; sem ele, a de sempre (azul-ardósia).
+    const nome = atm || 'contagem';
+    const rampa = PALETA.atmosfera[nome].rampa, cinza = cor('zebra');
     const v = Object.values(porUF).filter(x => x > 0).sort((a, b) => a - b);
     const k = Math.min(rampa.length, new Set(v).size), grupos = [];
     for (let i = 0; i < k; i++) {
@@ -226,7 +231,7 @@
       return (x ? numBR(x) + ' ' + unidade + (x === 1 ? '' : 's') : 'nenhum ' + unidade) + (extra ? extra(uf) : ''); };
     const itens = grupos.map(g => ({cor: g.cor, rotulo: g.de === g.ate ? numBR(g.de) : numBR(g.de) + ' a ' + numBR(g.ate)}))
       .concat([{cor: cinza, rotulo: 'nenhum'}]);
-    return desenharMapa(ctx, svgId, legendaId, uf => (faixa(porUF[uf] || 0) || {cor: cinza}).cor, rotulo, itens, 'contagem');
+    return desenharMapa(ctx, svgId, legendaId, uf => (faixa(porUF[uf] || 0) || {cor: cinza}).cor, rotulo, itens, nome);
   }
 
   /** Selo da faixa do índice (0–100), o mesmo no MARÉ Legal e no MARÉ Saúde, como elemento. Pares de
@@ -351,13 +356,13 @@
               rampa:['#EFE6D3', '#E7C98E', '#D9A05B', '#B9702F', '#86461F', '#4E2812'], claro:true},
       chuva: {fundo:'#1B2630', uf:'#2B3A46', contorno:'#3A4A57',
               rampa:['#2B3A46', '#4F7A97', '#7FA6C4', '#C6B8E8'], claro:false},
-      calor: {fundo:'#FFFDF9', uf:'#FFFFFF', contorno:'#E3D7C8',
+      calor: {fundo:'#FFFDF9', uf:'#FFFFFF', contorno:'#B59A74',
               rampa:['#F4D9A8', '#EDA35A', '#D8561F', '#9C1F12'], claro:true},
       // O mapa nacional do risco PREVISTO: fundo branco, UFs pintadas pela família (as cores
       // já vêm do próprio dado), contorno discreto. Ele não tem rampa porque não mede
       // intensidade — mede a qual família o boletim atribui cada estado.
       previsto: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C5CFCE', rampa:[], claro:true},
-      ar:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#CFCFD8',   // 09/10/2026: fundo branco
+      ar:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#8F8F9C',   // 09/10/2026: fundo branco
               rampa:['#C9D6D1', '#A7A9B8', '#8A76A6', '#5B3F7A', '#2E1B45'], claro:true},
       // 01/10/2026 (desenho da Defesa civil, decisão da editoria): duas atmosferas CLARAS, para a
       // página de alertas e emergências. A `chuva` existente é noturna e vive no Monitor de riscos;
@@ -372,6 +377,11 @@
       // violeta se lia como duas categorias.
       contagem:    {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
                     rampa:['#D3E0EA', '#9DBBD1', '#5E88A8', '#2C5373'], claro:true},
+      // 19/10/2026 (editoria, item 14): contagem por estado de uma lista de risco de FOGO. Mesma
+      // construção da rampa azul acima — um matiz só, do claro ao escuro —, no âmbar da família
+      // do fogo. Deslizamento e enchente ficam no azul da chuva; desmatamento e fogo, aqui.
+      contagem_fogo: {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#E0CDB8',
+                    rampa:['#F3E3D2', '#E0BE97', '#C9814B', '#8A5330'], claro:true},
       // 09/10/2026 (Monitor de riscos, ajuste 6): avisos do INMET sobre fundo branco — "sem aviso"
       // em tom neutro claro e os três graus na rampa azul da chuva, do mais claro ao mais escuro.
       avisos:      {fundo:'#FFFFFF', uf:'#FFFFFF', contorno:'#C3D2DD',
