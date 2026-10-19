@@ -1,12 +1,889 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "/edicoes: HTTPError · listagem sem data e número de edição no HTML",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "rotulo_corrigido_em": "17/10/2026 (404, erro de rede e arquivo que não é edição não são recusa medida)"
+  "modo": "padrao_por_data",
+  "em": "17/10/2026",
+  "conta_como_consultado": true
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-06-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3771825,
+   "paginas": 438,
+   "paginas_com_texto": 438,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/06/DOE-29-06-2026.pdf",
+   "impressao": "173ee41dfbf4eda09385a2fc41953429270fd0e19353dac423f5b35aa2c545ae",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-06-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6951208,
+   "paginas": 313,
+   "paginas_com_texto": 313,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/06/DOE-30-06-2026.pdf",
+   "impressao": "1b2bfd2d4977a4f41a9779621aba95a3db5ec43e4443e3cc2bff54eaf94bef16",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3020040,
+   "paginas": 399,
+   "paginas_com_texto": 399,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-01-07-2026.pdf",
+   "impressao": "ecad63f7181799c59ee851c88830686e9c6d396b2e22a515762fddd56ead1909",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3388920,
+   "paginas": 375,
+   "paginas_com_texto": 375,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-02-07-2026.pdf",
+   "impressao": "35130c39593da92295646a593b589967e14460d93c0108d66cc5eca8a8973a92",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4906318,
+   "paginas": 715,
+   "paginas_com_texto": 715,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-03-07-2026.pdf",
+   "impressao": "8388e077af6950b93addf0a42c3db502dc8bb5c67ac365b2d4d76e961fcf11e1",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3731931,
+   "paginas": 531,
+   "paginas_com_texto": 531,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-06-07-2026.pdf",
+   "impressao": "b2a30c8ca546dc1b9ab6a7cc988c5fcd1a560a8a0676be43f2bcda309d4e87fe",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "b2a30c8ca546dc1b9ab6a7cc988c5fcd1a560a8a0676be43f2bcda309d4e87fe",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-07-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2697454,
+   "paginas": 360,
+   "paginas_com_texto": 360,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-07-07-2026.pdf",
+   "impressao": "e200e8e5bc6b22f6f2e077052b61761061c2e86447c3366b4447306d84bf4419",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3200710,
+   "paginas": 422,
+   "paginas_com_texto": 422,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-08-07-2026.pdf",
+   "impressao": "017a8740460e58442965a8f53fdff5e4109961ecfafbe2a43ec3decec3a44353",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2411873,
+   "paginas": 307,
+   "paginas_com_texto": 307,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-09-07-2026.pdf",
+   "impressao": "86b593ccb097b971e9be2391f466658c0518611075ac4fefd5ac499d7de4e8e4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2528740,
+   "paginas": 341,
+   "paginas_com_texto": 341,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-10-07-2026.pdf",
+   "impressao": "5300d4e938b2355510a31bd6a265e2be22442272b651fb4a49af482799c95aac",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2836869,
+   "paginas": 409,
+   "paginas_com_texto": 409,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-13-07-2026.pdf",
+   "impressao": "5db394303be1356398da20cd33bd6a8250b1bd7ad43e21042d66bee498c44853",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3077039,
+   "paginas": 410,
+   "paginas_com_texto": 410,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-14-07-2026.pdf",
+   "impressao": "62ffc57677b4608c8267fb9915b09634f49f17004597c058b1eb0b46f1e3884e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2482535,
+   "paginas": 329,
+   "paginas_com_texto": 329,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-15-07-2026.pdf",
+   "impressao": "18ceda91ff1259fbee42d857160d4939327db3f6b77e33e1d9485a1f1de0a195",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3443768,
+   "paginas": 422,
+   "paginas_com_texto": 422,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-16-07-2026.pdf",
+   "impressao": "10d0d2940f565dc3f155b6741796a94635add3a967a544315b3229c9bc5859d0",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "10d0d2940f565dc3f155b6741796a94635add3a967a544315b3229c9bc5859d0",
+   "termos_achados": [
+    "vigilância em saúde ambiental"
+   ]
+  },
+  "2026-07-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2699826,
+   "paginas": 290,
+   "paginas_com_texto": 290,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-17-07-2026.pdf",
+   "impressao": "ef2b04f899ddb7b2bdb1c91c8f16333daa5b59bd2505684225004e4e05021845",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-20": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-07-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3080286,
+   "paginas": 405,
+   "paginas_com_texto": 405,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-21-07-2026.pdf",
+   "impressao": "2907b590d5f01b4c533530aeb8e0663b3868e1b396c5e3199bc323fbbc85d1be",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3017397,
+   "paginas": 399,
+   "paginas_com_texto": 399,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-22-07-2026.pdf",
+   "impressao": "05d81943569227b33ab739cceb64b5944717c3e5889a83fd4a0b2878dd587a03",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "05d81943569227b33ab739cceb64b5944717c3e5889a83fd4a0b2878dd587a03",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-07-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3585343,
+   "paginas": 498,
+   "paginas_com_texto": 498,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-23-07-2026.pdf",
+   "impressao": "dfb4e4e9b78280d4461a4a466a2d9b54b169d1958e2b3bf76987a7f1fd7a8613",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6455620,
+   "paginas": 393,
+   "paginas_com_texto": 393,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-24-07-2026.pdf",
+   "impressao": "25bc7044760b438403e875dac58296c551396509b9cb7360dd203405047a81fe",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3283323,
+   "paginas": 413,
+   "paginas_com_texto": 413,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-27-07-2026.pdf",
+   "impressao": "c1d513d3c764027fe5f8c663ebd5dafbd811a8b198b190bedd7edf78dbf97022",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2940446,
+   "paginas": 346,
+   "paginas_com_texto": 346,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-28-07-2026.pdf",
+   "impressao": "b206ec5d20306621dbddf2cc033855c5018d085118650da7f32eb47cef0bc767",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3028439,
+   "paginas": 412,
+   "paginas_com_texto": 412,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-29-07-2026.pdf",
+   "impressao": "0df088faaae6069f1861dc05ce90c5c4a27aa59d82e5554d7160bea187c774db",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4628858,
+   "paginas": 410,
+   "paginas_com_texto": 410,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-30-07-2026.pdf",
+   "impressao": "fa416b57d49a705c50d20d9f74161e16b8bb77620e15185ef4dfaacdb5ddbd68",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3131891,
+   "paginas": 443,
+   "paginas_com_texto": 443,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/07/DOE-31-07-2026.pdf",
+   "impressao": "e876985b26b22900ca128906f6e26db398fe3d3a87dd7e11a15a98f424e0ef87",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3353406,
+   "paginas": 422,
+   "paginas_com_texto": 422,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-03-08-2026.pdf",
+   "impressao": "30b596235cb3714a5e2e74bd8dfcd38bbd5ad06321e534e7bd7f7f4021928fb4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3167007,
+   "paginas": 433,
+   "paginas_com_texto": 433,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-04-08-2026.pdf",
+   "impressao": "2db09d16a8fc13c2c1f9aca0e88523d883365f807e3421b3991f3a94645f1dda",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3188223,
+   "paginas": 450,
+   "paginas_com_texto": 450,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-05-08-2026.pdf",
+   "impressao": "d86f65366bdf63ff93d0cf46feaa5ee883dadaff7f9c866627ba0f6ff8dd2907",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2571515,
+   "paginas": 344,
+   "paginas_com_texto": 344,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-06-08-2026.pdf",
+   "impressao": "53a56c40b54f15d37e07eff2cb3dfd34fbe56328aefe77505adfa1c0fb97d027",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3703612,
+   "paginas": 373,
+   "paginas_com_texto": 373,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-07-08-2026.pdf",
+   "impressao": "50804b11daa3e763f8e4ac35e137b22c2c832b300f49344d3902dc0856900544",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3528761,
+   "paginas": 457,
+   "paginas_com_texto": 457,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-10-08-2026.pdf",
+   "impressao": "c76d4470af2efe611b429de4fd65587bfaf7738f9f20ddb162344d70095a5636",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2645379,
+   "paginas": 356,
+   "paginas_com_texto": 356,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-11-08-2026.pdf",
+   "impressao": "c5928b9b91836dd69c7a733b859f65e37b69789514bddb2418e3db5719662fd6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-12": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2626579,
+   "paginas": 353,
+   "paginas_com_texto": 353,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-12-08-2026.pdf",
+   "impressao": "71faeaab0b059eb9d745306097316f281b90f0ab224d73892043e6176f4830b0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3066034,
+   "paginas": 404,
+   "paginas_com_texto": 404,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-13-08-2026.pdf",
+   "impressao": "d1c2bf96c6cd5880662500d2f05b83891e7729ab1b563f58fad3692d6142aa54",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3219567,
+   "paginas": 437,
+   "paginas_com_texto": 437,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-14-08-2026.pdf",
+   "impressao": "1d21b39a757f77dceca7a3d67dcd4b22eb750be4509729eefa3cffb5fff5b5f0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3970659,
+   "paginas": 544,
+   "paginas_com_texto": 544,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-17-08-2026.pdf",
+   "impressao": "63136fc9ad03856259e6f7eb565585e8dfa68a144a5b369d47e0eca3fccd060f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4248355,
+   "paginas": 574,
+   "paginas_com_texto": 574,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-18-08-2026.pdf",
+   "impressao": "6c158e8633e844556fc46a4a814c1a7a86c701bba954b73c88b660372ea7d380",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-19": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3562426,
+   "paginas": 476,
+   "paginas_com_texto": 476,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-19-08-2026.pdf",
+   "impressao": "f81904b0303a7bdf31aa70d20573bf633388e9e6c4b009049770db73fafa21f5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3865796,
+   "paginas": 487,
+   "paginas_com_texto": 487,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-20-08-2026.pdf",
+   "impressao": "852a79b15f64e6c42ecea74f936e74354f60a0756f1816df6683650fa7e753a1",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5194149,
+   "paginas": 491,
+   "paginas_com_texto": 491,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-21-08-2026.pdf",
+   "impressao": "d0f3a9eff6a0f5b5dd3d1f3cfcc3e3ba15b785229dfb0e6bf41678cef106c1c2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3141421,
+   "paginas": 418,
+   "paginas_com_texto": 418,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-24-08-2026.pdf",
+   "impressao": "c82d174aed283a5e4d720663abe2f5a4d08775d4b5b37edbd72f5aff56db8f21",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6096756,
+   "paginas": 820,
+   "paginas_com_texto": 820,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-25-08-2026.pdf",
+   "impressao": "e8cdd438a91a85424006106b9d5c20c22ee2d900cdc8ceca01437ee01147ee90",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-26": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3385616,
+   "paginas": 451,
+   "paginas_com_texto": 451,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-26-08-2026.pdf",
+   "impressao": "1c2f76210e279821edf54a537df618dc7953d1b1526bc3e72f1a6924f2c4552b",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "1c2f76210e279821edf54a537df618dc7953d1b1526bc3e72f1a6924f2c4552b",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-08-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3677674,
+   "paginas": 504,
+   "paginas_com_texto": 504,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-27-08-2026.pdf",
+   "impressao": "e21b4ec2f2520bedf1c9eafe7271380bbfa253d79a6c3a5380bb3191b9957ee4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3543044,
+   "paginas": 480,
+   "paginas_com_texto": 480,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-28-08-2026.pdf",
+   "impressao": "bc2bcbb91d908c1fd704135ee9d7edaee742543ff534c003cf4c678df287283d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4547172,
+   "paginas": 522,
+   "paginas_com_texto": 522,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/08/DOE-31-08-2026.pdf",
+   "impressao": "753ad0447a1b8fc707680ec43edac041af5052e9af29d0821b71010c596a534a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3607875,
+   "paginas": 497,
+   "paginas_com_texto": 497,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-01-09-2026.pdf",
+   "impressao": "07e40ef9664e574bc7e0fa1aa4807e882834801777f54c65b72dc54a5412a469",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2882607,
+   "paginas": 377,
+   "paginas_com_texto": 377,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-02-09-2026.pdf",
+   "impressao": "bd39301c3cdab23995dec19fc3748d0c509da9e12113f37f90a03a25c899e1f5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2605624,
+   "paginas": 352,
+   "paginas_com_texto": 352,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-03-09-2026.pdf",
+   "impressao": "839520d1afcd20138b0a9d4df496cfed13d4e55fc7392803a135f12834736bf9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2865995,
+   "paginas": 373,
+   "paginas_com_texto": 373,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-04-09-2026.pdf",
+   "impressao": "cd0a2429b0d90e990170bb0b7222bd6ee792f11a601bf638e272e4a7e03d7236",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-07": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-09-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3637600,
+   "paginas": 457,
+   "paginas_com_texto": 457,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-08-09-2026.pdf",
+   "impressao": "7cfc2daa321de360c7dbeccdd7ce0b6a23d1243d017a05ff43f6162d5038ed1f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3265866,
+   "paginas": 439,
+   "paginas_com_texto": 439,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-09-09-2026.pdf",
+   "impressao": "861f4c45db6541279fd061f5c5021d24584729c068ecfa3fdd39bc0d56b27afb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3901403,
+   "paginas": 488,
+   "paginas_com_texto": 488,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-10-09-2026.pdf",
+   "impressao": "146cafed75f5f9a3993f7bd3eb4ee7c7a6359ae315f2647644eefa761a9198a3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3702080,
+   "paginas": 510,
+   "paginas_com_texto": 510,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-11-09-2026.pdf",
+   "impressao": "802961f7d06171a391adb6f01c4b46876c06fc546b9a6ef8c5f48ccfe0332b4e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3128208,
+   "paginas": 405,
+   "paginas_com_texto": 405,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-14-09-2026.pdf",
+   "impressao": "2b3337aadf14c140a5a23f46d7f07f3f4be440fde47a98a4a152b95e6104cae5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3395292,
+   "paginas": 460,
+   "paginas_com_texto": 460,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-15-09-2026.pdf",
+   "impressao": "340a7bae61d32f1fb8387ff4553a39fc0e4111e622d9392669ef9392cde2575d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3665245,
+   "paginas": 475,
+   "paginas_com_texto": 475,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-16-09-2026.pdf",
+   "impressao": "7908b24fee5725486721115eb61d93df448429bbea93005308f16890e420c8be",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3586130,
+   "paginas": 489,
+   "paginas_com_texto": 489,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-17-09-2026.pdf",
+   "impressao": "5ecb9e8e839abb037497031ae6a61e7518b9455db39cafbcd9464fd3185dfd1b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4641450,
+   "paginas": 538,
+   "paginas_com_texto": 538,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-18-09-2026.pdf",
+   "impressao": "3f2bf25b448dc7fddbe986f476dcf9fc45143f9cf9fb9bec5a9034bbb05e2a79",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3038553,
+   "paginas": 390,
+   "paginas_com_texto": 390,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-21-09-2026.pdf",
+   "impressao": "2e97cfee561c3293fcb1d07eb31ec1dd2c13b278bc5533d9e7793e211e4a189c",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "2e97cfee561c3293fcb1d07eb31ec1dd2c13b278bc5533d9e7793e211e4a189c",
+   "termos_achados": [
+    "grupo condutor",
+    "El Niño"
+   ]
+  },
+  "2026-09-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3062344,
+   "paginas": 394,
+   "paginas_com_texto": 394,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-22-09-2026.pdf",
+   "impressao": "497872ed9ff8e8f7fc09f4ba8fddc099f3c47a542a4874e6da2f3451adb713bf",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3641724,
+   "paginas": 471,
+   "paginas_com_texto": 471,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-23-09-2026.pdf",
+   "impressao": "efdcf5577b9eb89fd095729c7b55de64e2d6dd056d5b621196422e204735ea2c",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "efdcf5577b9eb89fd095729c7b55de64e2d6dd056d5b621196422e204735ea2c",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-09-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2824883,
+   "paginas": 372,
+   "paginas_com_texto": 372,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-24-09-2026.pdf",
+   "impressao": "57bf9770a3d21beb924b91046d7bc00e105ae10aaf710e5f494466e8a6941883",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3871867,
+   "paginas": 421,
+   "paginas_com_texto": 421,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-25-09-2026.pdf",
+   "impressao": "28c58068c0c17761b50a6caeecf87499739afd7cbeca9c1caa1eb9591bad52ea",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3976110,
+   "paginas": 531,
+   "paginas_com_texto": 531,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-28-09-2026.pdf",
+   "impressao": "f6b8283f5af36428d990d3d8d64938e922125e2c8a1d92ee35327ce2da585722",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4404072,
+   "paginas": 532,
+   "paginas_com_texto": 532,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-29-09-2026.pdf",
+   "impressao": "4cd1fcc92fa8678988c3af1664cf67d13d8155b4d1d4ed13b0ad75a84a0ddd36",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 7877088,
+   "paginas": 359,
+   "paginas_com_texto": 359,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/09/DOE-30-09-2026.pdf",
+   "impressao": "63c96affa925eacaeeb91c162cea35b6d962aa54599934f4d3cd31d610338ade",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4429026,
+   "paginas": 581,
+   "paginas_com_texto": 581,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-01-10-2026.pdf",
+   "impressao": "6a7af696dae55d763571c230ddcff4c036405073b6bafd4063cb275a9444a9f3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4362773,
+   "paginas": 486,
+   "paginas_com_texto": 486,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-05-10-2026.pdf",
+   "impressao": "63db3efbcfc1cc13ba3940e452b3c206d5d2c05ce2078244c4f1dc79cece944c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4083655,
+   "paginas": 530,
+   "paginas_com_texto": 530,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-06-10-2026.pdf",
+   "impressao": "1f2494e852a5a80721d249203f77f676c9365b5e74ff4d5dc2d1afbc393b1826",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5775161,
+   "paginas": 437,
+   "paginas_com_texto": 437,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-07-10-2026.pdf",
+   "impressao": "057688f07be9684bebe39f7e266de511c6748f59a00cbc50e792f6cf1f1437e6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2761273,
+   "paginas": 367,
+   "paginas_com_texto": 367,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-08-10-2026.pdf",
+   "impressao": "533d2307014b696ed5742d09333a63455d2b191987fb8a93c08e3e4b00e31958",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9780957,
+   "paginas": 513,
+   "paginas_com_texto": 513,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-09-10-2026.pdf",
+   "impressao": "a538c24c8889ef514a0cc9e5132fed8905a4f92d4134d7e908c004eb9b7c946f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1690280,
+   "paginas": 201,
+   "paginas_com_texto": 201,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-13-10-2026.pdf",
+   "impressao": "5c5ae9f1467a23b89a7886d4385be148ce31d062bd3f70826c8832817c2cc8d2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3467321,
+   "paginas": 483,
+   "paginas_com_texto": 483,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-14-10-2026.pdf",
+   "impressao": "ee7d1b2d06dcaeafff5a2b0d1e3ead336e52c817d8d132488c3df7e44570a142",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "ee7d1b2d06dcaeafff5a2b0d1e3ead336e52c817d8d132488c3df7e44570a142",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5677791,
+   "paginas": 500,
+   "paginas_com_texto": 500,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-15-10-2026.pdf",
+   "impressao": "2a17d4fb1e68d343aecf9eb56b0a632587f09eb81bdbfb1d92761b14feb56f5e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2695310,
+   "paginas": 377,
+   "paginas_com_texto": 377,
+   "url": "https://diof.ro.gov.br/data/uploads/2026/10/DOE-16-10-2026.pdf",
+   "impressao": "a47215ea7cd376fa31b9d3da1f5e318624829b18aef587433a1ba96afe827edb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }

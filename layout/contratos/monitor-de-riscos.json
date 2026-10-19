@@ -7,9 +7,9 @@
   },
   "figura_principal": {
     "mapa": "boxFogo",
-    "serie": "boxEpisodios"
+    "serie": ["boxEpisodios", "boxNino34Semanal"]
   },
-  "_nota_figura_principal": "16/10/2026 (editoria, por delegação à central; HANDOVER_FINANCIAMENTO §11): as duas figuras em largura total desta página são o mapa de focos (único mapa largo) e o RONI comparativo (única série larga, em faixa baixa). Toda outra figura segue a grade de três.",
+  "_nota_figura_principal": "16/10/2026 (editoria, por delegação à central; HANDOVER_FINANCIAMENTO §11): as figuras em largura total desta página são o mapa de focos (único mapa largo) e as séries do Pacífico, em faixa baixa. Toda outra figura segue a grade de três. | 17/10/2026 (central, 12:05 UTC; HANDOVER_NINO34_SEMANAL §2): as séries largas passam de uma para duas — o RONI comparativo e a anomalia semanal da Niño 3.4, logo abaixo dele, no mesmo componente e na mesma moldura. É o par permitido aqui, e `layout/regras.json` já o declara.",
   "h2_esperados": [
     "Situação atual",
     "Os riscos no Brasil",
@@ -19,6 +19,9 @@
   "figuras_esperadas": [
     {
       "el": "boxEpisodios"
+    },
+    {
+      "el": "boxNino34Semanal"
     },
     {
       "el": "boxRiscoPrevisto"
@@ -43,9 +46,6 @@
     },
     {
       "el": "boxListaIndicados"
-    },
-    {
-      "el": "boxListaSemiarido"
     },
     {
       "el": "boxListaFogo"

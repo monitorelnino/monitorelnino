@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=9105a8ac"></script>
+<script src="assets/mapas.js?v=8acca11c"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=889a2620">
+<link rel="stylesheet" href="assets/base.css?v=96ba4901">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,42 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição</dt>
+      <dd>Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.</dd>
+      <dt>19/10/2026 · Financiamento: o dinheiro por risco, onde chega e o mês a mês</dt>
+      <dd>Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.</dd>
+      <dt>19/10/2026 · Defesa civil: sai o cartão de decreto e alerta ao mesmo tempo</dt>
+      <dd>O instantâneo do topo da Defesa civil deixa de gerar o cartão que cruzava decreto e alerta; a Imprensa já não o usava. Restam cinco cartões. Gerador −13 linhas, sem outro efeito.</dd>
+      <dt>19/10/2026 · RO saúde: plano recebido por LAI, registrado sem julgamento</dt>
+      <dd>`data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.</dd>
+      <dt>19/10/2026 · Ajustes de texto: a entrada repetida da Imprensa sai do histórico</dt>
+      <dd>A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.html`, uma delas sem o número do PR. Fica a do #853. Três títulos que a união colou ao parágrafo anterior voltam a ter linha em branco antes, que é o que o gerador do histórico espera.</dd>
+      <dt>19/10/2026 · Proteja-se: páginas oficiais de orientação preservadas por hash</dt>
+      <dd>`coletar_orientacoes_oficiais.py` lê 13 páginas do Ministério da Saúde e da Defesa Civil nacional, preserva cada uma por hash e grava o trecho que sustenta cada item do guia em `data/orientacoes_oficiais.json`: 6 itens com fonte, 29 sem (lacuna declarada, a página não os publica). Reconfere o diretório estadual da Defesa Civil: DF e RO divergem, registrado sem reescrever. Peso zero.</dd>
+      <dt>19/10/2026 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento</dt>
+      <dd>Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).</dd>
+      <dt>19/10/2026 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura</dt>
+      <dd>Saem a frase sobre a data do dado, o &quot;previsão, não observação&quot;, o parágrafo das listas federais, a nota do mapa de qualidade do ar (vai para a metodologia) e o gráfico do Semiárido. As siglas de UF viram etiqueta, sem link. No topo, a frase do prognóstico sai do cartão e vai para o texto da seção; rodapé preso na base e até seis por linha acabam com o vão branco.</dd>
+      <dt>19/10/2026 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação</dt>
+      <dd>Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão &quot;Resposta&quot; dos números e a figura &quot;O que foi localizado em cada estado&quot;, que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.</dd>
+      <dt>19/10/2026 · Fila de pistas: recusada pelo juiz também perde o texto de trabalho</dt>
+      <dd>A pista recusada só volta ao juiz quando o codebook muda, e ele relê o documento pelo endereço. A compactação da triagem passa a cobri-la, junto com as encerradas: 4.549 pistas, `pistas_imprensa.json` de 46,8 para 41,6 MiB (teto 50). A decisão do juiz fica. Histórico no git.</dd>
+      <dt>19/10/2026 · Saem seis scripts sem chamador</dt>
+      <dd>Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.</dd>
+      <dt>19/10/2026 · Sai o portão de autoteste sem chamador</dt>
+      <dd>`verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.</dd>
+      <dt>19/10/2026 · Portões: três a menos</dt>
+      <dd>Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.</dd>
+      <dt>19/10/2026 · Proteja-se: a consulta do município responde pelo seu lugar</dt>
+      <dd>Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. &quot;Leve com você&quot; vai para o fim.</dd>
+      <dt>19/10/2026 · Imprensa: a semana em seis números, e o que recomendamos concluir</dt>
+      <dd>A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; &quot;Como citar&quot; e &quot;Para redações&quot; viram &quot;Como citar e reproduzir&quot;; entram &quot;Quando o site é atualizado&quot;, &quot;Como os índices funcionam&quot;, glossário e erratas. Saem a grade de páginas e a sanfona.</dd>
+      <dt>17/10/2026 · Para gestores: o cartão do plano diz a situação do município</dt>
+      <dd>O cartão &quot;Plano para o El Niño 2026/2027&quot; da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.</dd>
+      <dt>19/10/2026 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos</dt>
+      <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
+      <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
+      <dd>`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem &quot;semana epidemiológica&quot;. `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o &quot;ciclo&quot;. Metodologia §111.</dd>
       <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
       <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
       <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
@@ -131,42 +167,6 @@
       <dd>Em 15/10 o juiz gastou 72 minutos em 16 pistas do mesmo host morto e parou na 17ª de 251. Host sem resposta de rede sai do resto da rodada; queda de rede deixa a pista pendente, não recusada; recusas antigas por queda voltam à fila; o corte só avança sem pendente.</dd>
       <dt>16/10/2026 · Consulta do município na Saúde: um arquivo por UF</dt>
       <dd>O elo da saúde grava `data/saude_municipio/&lt;UF&gt;.json` (`gerar_saude_municipio.py`): por município, alerta de dengue e chikungunya do InfoDengue, classe de calor do MS e degrau de saúde do plano. Município não lido fica sem o bloco, nunca zero. A resposta sanitária do `monitor_saude.json` passa a trazer a lista de eventos. METODOLOGIA §41.11.</dd>
-      <dt>16/10/2026 · Consulta do município no Monitor de riscos: um arquivo por UF</dt>
-      <dd>O elo dos sinais grava `data/riscos_municipio/&lt;UF&gt;.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.</dd>
-      <dt>16/10/2026 · Manchas do Monitor de Secas: o mapa mensal da ANA vira geometria</dt>
-      <dd>O elo dos sinais grava `data/secas_manchas.json`: manchas S0–S4 do shapefile mensal do Monitor de Secas (repositório de arquivos da ANA), anéis simplificados a ~2 km, mês do mapa e hash do original. Baixa uma vez por mês. Leitor de .shp/.dbf sem dependência nova. METODOLOGIA §41.9.</dd>
-      <dt>16/10/2026 · Focos pelo satélite de referência; avisos por UF e grau</dt>
-      <dd>O elo dos sinais grava `data/focos_referencia.json`: focos do satélite de referência do INPE por dia, UF, bioma e município (IBGE), série de 400 dias com o mesmo dia do ano anterior (arquivo anual de referência), mês e 30 dias com o número de dias com dado. `alertas/vigentes.json` ganha municípios sob aviso por UF e grau. METODOLOGIA §41.8.</dd>
-      <dt>16/10/2026 · Ar medido por estação: IQAr do MMA, PM2,5 do OpenAQ e da RedeAr</dt>
-      <dd>O elo dos sinais grava `data/ar_medido.json`: IQAr de cada estação do MonitorAr como o órgão publica, PM2,5 do OpenAQ casado à mesma estação (≤ 300 m), PM2,5 dos sensores IPAM/RedeAr sem índice. Medição com mais de 36 h é lacuna; resposta preservada por hash. METODOLOGIA §41.7 traz as três réguas e a errata do &quot;não há índice nacional aberto&quot;. A figura vem depois.</dd>
-      <dt>16/10/2026 · A chave do OpenAQ chega ao elo dos sinais (F67)</dt>
-      <dd>A medição do ar estava apagada havia três semanas: o elo noturno dos sinais e a rotina semanal rodavam o coletor sem repassar as chaves do OpenAQ e do INMET ao invólucro dos coletores. Os dois passam a repassá-las, e o validador de workflows reprova quem roda coletor que lê uma chave sem repassá-la.</dd>
-      <dt>16/10/2026 · Monitor de riscos: abertura nova e números de agora; textos longos sem colunas</dt>
-      <dd>A abertura do Monitor de riscos passa ao texto da editoria, em quatro parágrafos. &quot;Situação atual&quot; ganha painel próprio com os números de agora: oceano, probabilidade, focos de fogo, estados com seca grave, maior diferença de calor numa capital e estados com aviso de tempo severo, cada um com órgão e data. Sai o cartão dos riscos previstos. Os textos longos deixam de ser divididos em duas colunas no site inteiro.</dd>
-      <dt>16/10/2026 · Topo sem a linha &quot;2026/2027 · Monitoramento independente…&quot;; cidade troca sem botão</dt>
-      <dd>Sai do topo de todas as páginas a linha &quot;2026/2027 · Monitoramento independente · Uma publicação Futura Evidence Lab&quot; e a faixa logo abaixo dela; a informação segue no rodapé. No cartão da cidade sai o botão ×: ao clicar de novo no campo do município, a lista do estado volta inteira e o cartão anterior fica até a nova escolha (editoria, 16/10).</dd>
-      <dt>16/10/2026 · O envio do formulário fica na inicial; sai a página Obrigado</dt>
-      <dd>O formulário da inicial passa a enviar sem trocar de página: depois do envio aparece &quot;Recebido. Obrigado pela contribuição.&quot; no mesmo lugar. O texto que vivia em `obrigado.html` (a conferência automática e o que acontece com o documento) vai para o próprio formulário. `obrigado.html` sai, e endereços antigos levam ao formulário (decisão da editoria de 16/10).</dd>
-      <dt>16/10/2026 · Saúde: calor em uma medida por lugar</dt>
-      <dd>Sai o gráfico de barras &quot;municípios por classe&quot; (5,5 mil em &quot;normal&quot; contra dezenas nas outras classes). Fica o mapa, agora &quot;Municípios em classe severa ou extrema de excesso de calor, por estado&quot;, e uma linha fixa diz que a classe é do Ministério da Saúde, por município, e que a temperatura prevista nas capitais está no Monitor de riscos.</dd>
-      <dt>16/10/2026 · Saúde: a frase do dado não aparece vazia</dt>
-      <dd>As quatro frases do dado da página de saúde (dengue, chikungunya, respiratórias e calor) nasciam com um travessão e ficavam assim quando a série não carregava. Agora nascem ocultas e só aparecem com texto, por uma função só.</dd>
-      <dt>16/10/2026 · Inicial: sai a legenda das barras; barras sem régua; cartão da cidade branco e com um só componente</dt>
-      <dd>Sai a legenda &quot;Barra de cima… Barra de baixo…&quot; e a linha acima dela, na inicial e na Saúde, com a função que a escrevia. A barra do MARÉ Legal perde o quadriculado de fundo (ficam as marcas 25, 50, 70); a dos decretos, sem marcas, fica mais alta. O cartão da cidade fica branco, sem o link &quot;consultar outro município&quot;; as listas federais usam o cartão da projeção, com o texto do cadastro nacional (Lei 12.340, art. 3º-A).</dd>
-      <dt>16/10/2026 · Saúde: a tabela do índice com as colunas do leitor</dt>
-      <dd>A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano (situação e data), coordenação na saúde e ligação com o governo do estado. Saem as colunas de componente interno (&quot;cobertura sanitária 0,1 · 1 lido / 1 sem leitura&quot;, antecedência, dengue na capital, risco) e o travessão em célula vazia.</dd>
-      <dt>16/10/2026 · Uma renderização de página para os portões de jsdom (consolidação item 6)</dt>
-      <dd>`_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.</dd>
-      <dt>16/10/2026 · Duas regras de componente passam a ser julgadas</dt>
-      <dd>O portão de conformidade passa a reprovar seção numerada (&quot;1.&quot;, &quot;II ·&quot;) e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.</dd>
-      <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
-      <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
-      <dt>16/10/2026 · Inicial: links da abertura e sai a linha da checagem</dt>
-      <dd>Na abertura do MARÉ Legal, &quot;os municípios inscritos no cadastro nacional&quot; leva ao cadastro do MDR e &quot;a União já indicou … municípios&quot; volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha &quot;Cada registro vem com a sua fonte · Última checagem em …&quot; (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.</dd>
-      <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
-      <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
-      <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
-      <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
     </dl>
   </section>
 </main>

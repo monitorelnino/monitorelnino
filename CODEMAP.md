@@ -8,38 +8,38 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_conformidade.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 17/10/2026.
+Atualizado em 19/10/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
 | arquivo | telas que afeta | dados que usa | portões que o cobrem | importado por | toca o índice? |
 |---|---|---|---|---|---|
 | `blog.html` | blog.html | `blog/posts.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
-| `defesa-civil.html` | defesa-civil.html | `Desde.json`, `Município.json`, `Nível.json`, `Tipo.json`, `UF.json`, `alertas/vigentes.json` (+28) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `financiamento.html` | financiamento.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+55) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `imprensa.html` | imprensa.html | `cadencia_publicacao.json`, `meta.json`, `monitor_saude.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `defesa-civil.html` | defesa-civil.html | `Decretaram.json`, `Reconhecidos.json`, `Semana.json`, `alertas/vigentes.json`, `meta.json`, `publicacao.json` (+3) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `financiamento.html` | financiamento.html | `financiamento/compromissos_federais.json`, `financiamento/mps_2026.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `financiamento/semana.json` (+5) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `imprensa.html` | imprensa.html | `imprensa/semana.json`, `meta.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `index.html` | index.html | `atos_resposta.json`, `chuvas.json`, `cobertura_declarada_uf.json`, `cobertura_qd.json`, `consist.json`, `enquadramento_card.json` (+21) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `indice-de-conteudo.html` | indice-de-conteudo.html | — | — | — | não |
 | `monitor-de-riscos.html` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+79) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `mudancas.html` | mudancas.html | `blog/posts.json`, `publicacao.json` | — | — | não |
-| `prefeituras.html` | prefeituras.html | `enquadramento_card.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `geo_uf.json`, `meta.json` (+3) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `proteja-se.html` | proteja-se.html | `contatos_uf.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `prefeituras.html` | prefeituras.html | `enquadramento_card.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `geo_uf.json`, `meta.json` (+4) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `proteja-se.html` | proteja-se.html | `contatos_uf.json`, `geo_uf.json`, `municipios_ibge_referencia.json`, `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `saude.html` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+59) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/acesso.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/blog.js` | blog.html, mudancas.html | `blog/posts.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/catalogo.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/colunas.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/consulta-municipio.js` | index.html, monitor-de-riscos.html, prefeituras.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/defesa-civil.js` | defesa-civil.html | `Desde.json`, `Município.json`, `Nível.json`, `Tipo.json`, `UF.json`, `alertas/vigentes.json` (+27) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/financiamento.js` | financiamento.html | `atos_resposta.json`, `financiamento/caminhos.json`, `financiamento/compromissos_federais.json`, `financiamento/consultas.json`, `financiamento/contadores_uf.json`, `financiamento/emendas.json` (+17) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/consulta-municipio.js` | defesa-civil.html, financiamento.html, index.html, monitor-de-riscos.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/defesa-civil.js` | defesa-civil.html | `Decretaram.json`, `Reconhecidos.json`, `Semana.json`, `alertas/vigentes.json`, `meta.json`, `resposta/municipios_decretados.json` (+2) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/financiamento.js` | financiamento.html | `financiamento/compromissos_federais.json`, `financiamento/mps_2026.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `financiamento/semana.json` (+4) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/grade-estados.js` | index.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/imprensa.js` | imprensa.html | `cadencia_publicacao.json`, `meta.json`, `monitor_saude.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `assets/js/imprensa.js` | imprensa.html | `imprensa/semana.json`, `meta.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/index.js` | index.html | `atos_resposta.json`, `chuvas.json`, `cobertura_declarada_uf.json`, `cobertura_qd.json`, `consist.json`, `enquadramento_card.json` (+20) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/mapas.js` | blog.html, defesa-civil.html, financiamento.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/mapas.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/monitor-de-riscos.js` | monitor-de-riscos.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+62) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
-| `assets/js/prefeituras.js` | prefeituras.html | `enquadramento_card.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `geo_uf.json`, `meta.json` (+2) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
-| `assets/js/proveniencia.js` | financiamento.html, monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/prefeituras.js` | prefeituras.html | `enquadramento_card.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `geo_uf.json`, `meta.json` (+3) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json`, `geo_uf.json`, `municipios_ibge_referencia.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `assets/js/proveniencia.js` | monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+44) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/semana.js` | saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
@@ -74,7 +74,7 @@ Atualizado em 17/10/2026.
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 3 | não |
-| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 5 | não |
+| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 4 | não |
 | `coletar_espin.py` | — | `saude_sinais.json` | — | 1 | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
 | `coletar_financiamento.py` | — | `compromissos_federais.json`, `consultas.json`, `emendas.json`, `financiamento_uf.json`, `por_uf.json`, `recursos_uf.json` (+2) | — | — | não |
@@ -82,6 +82,7 @@ Atualizado em 17/10/2026.
 | `coletar_normais_inmet.py` | — | `normais_capitais.json` | — | — | não |
 | `coletar_obitos.py` | — | — | — | — | não |
 | `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | 1 | não |
+| `coletar_orientacoes_oficiais.py` | — | `contatos_uf.json`, `orientacoes_oficiais.json` | — | — | não |
 | `coletar_painel_am.py` | — | `pistas_painel_am.json` | — | — | não |
 | `coletar_prioritarios_mma.py` | — | `enquadramento_federal.json` | — | — | não |
 | `coletar_recursos_resposta.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `resposta/recursos_liberados.json`, `saude_uf.json` | — | — | não |
@@ -97,7 +98,7 @@ Atualizado em 17/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **184** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **179** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -115,7 +116,7 @@ Atualizado em 17/10/2026.
 | `gerar_financiamento_semana.py` | — | `financiamento/semana.json` | — | — | não |
 | `gerar_imprensa_semana.py` | — | `semana.json` | — | 1 | não |
 | `gerar_lai.py` | — | — | — | — | não |
-| `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | 5 | não |
+| `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | 4 | não |
 | `gerar_monitor_saude_v04.py` | — | `monitor_saude_v04.json` | — | — | não |
 | `gerar_pacote_blog.py` | — | `financiamento/caminhos.json` | — | — | não |
 | `gerar_painel.py` | — | `agregados.json`, `atos_resposta.json`, `fichas.json`, `lista.json`, `municipios.json`, `verificacao_municipal.json` | — | — | não |
@@ -128,7 +129,7 @@ Atualizado em 17/10/2026.
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
-| `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 2 | não |
+| `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
@@ -145,7 +146,6 @@ Atualizado em 17/10/2026.
 | `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 7 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
 | `recalcular_mare.py` | — | — | — | 7 | SIM |
-| `registrar_saude_central.py` | — | `saude_uf.json` | — | — | não |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | 2 | não |
@@ -172,7 +172,6 @@ Atualizado em 17/10/2026.
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/migrar_sobras_do_doe.py` | — | `pistas_doe.json` | — | — | não |
 | `scripts/migrar_zero_humano.py` | — | `saude_desfechos/fontes_uf.json`, `saude_desfechos/gatilhos.json`, `saude_sinais.json` | — | — | não |
-| `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 4 | não |
 | `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 14 | não |
@@ -202,7 +201,7 @@ Atualizado em 17/10/2026.
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
 | `verificar_links.py` | — | `links_historico.json` | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |
-| `verificar_pista_imprensa.py` | — | `veiculos_imprensa.json` | — | 2 | não |
+| `verificar_pista_imprensa.py` | — | — | — | 2 | não |
 | `verificar_recorrencia_uf.py` | — | — | — | 1 | não |
 | `verificar_resposta.py` | — | — | — | — | não |
 | `verificar_saude.py` | — | — | — | — | não |

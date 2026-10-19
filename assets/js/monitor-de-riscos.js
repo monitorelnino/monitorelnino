@@ -154,7 +154,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   }));
   const doc = pe.documento ? String(pe.documento).replace(/^.*?(Boletim)/, '$1') : 'Boletim do Painel El Niño';
   const sub = document.getElementById('riscoPrevistoSub');
-  if (sub) sub.textContent = doc + ' · até março de 2027 · previsão, não observação';
+  if (sub) sub.textContent = doc + ' · até março de 2027';
   credito('boxRiscoPrevisto', 'painel_el_nino');
   // "Boletim prevê para", ao lado do título de cada bloco de família.
   const preve = (id, teste) => { const el = document.getElementById(id); if (!el) return;
@@ -626,7 +626,6 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
   const fontes = (ENQ && ENQ.fontes) || {};
   [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023'],
-   ['boxListaSemiarido', 'mapListaSemiarido', 'legListaSemiarido', v => v.sa, 'seca', 'Sudene, Resolução Condel nº 176/2024'],
    ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente']].forEach(([caixa, svg, leg, consta, chave, fonte]) => {
     const f = fontes[chave] || {};
     if (!ENQ) {
@@ -791,10 +790,17 @@ function põeCat(elId, id, valores, reserva){
     const sinopse = String(pg.sinopse || '').toLowerCase();
     const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
     const f = fonte('cpc_ensodisc');
-    põeCat('stPrevisaoVariacao',
-      I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
+    // 19/10/2026 (editoria): a frase do prognóstico SAIU do cartão e entrou no texto da seção. No
+    // cartão ela ocupava seis linhas e era o que deixava a grade desigual; e, sendo leitura de
+    // probabilidade, é interpretação — que por regra vive no texto narrativo, não no cartão.
+    const apoio = txtCat(I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
       {limiar: pg.limiar === 'acima de' ? 'acima de' : 'de', probabilidade: pg.probabilidade,
-       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em});
+       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em}, null);
+    const resumo = document.getElementById('stResumo');
+    if (apoio && resumo) {
+      resumo.textContent = resumo.textContent.trim() + ' ' + apoio;
+      resumo.setAttribute('data-conteudo-fixado', '1');
+    }
   }
 
   // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
@@ -846,10 +852,14 @@ function põeCat(elId, id, valores, reserva){
   if (ruins.length && grade) {
     const ult = ruins.map(c => c.pior.iqar.medido_em).sort().pop();
     grade.insertAdjacentHTML('beforeend', '<div class="cartao-numero cartao-numero--risco_agora" data-cartao="ar_iqar_ruim">'
-      + '<p class="cartao-numero-rotulo">Cidades com IQAr Ruim, Muito Ruim ou Péssima' + (hora(ult) ? ', ' + esc(hora(ult)) : '') + '</p>'
+      // 19/10/2026 (editoria): a hora sai do rótulo e vai para o rodapé, com a atualização.
+      // DIVERGÊNCIA: o rótulo pedido era "Cidades com IQAr ruim ou pior"; "pior" é avaliativo e o
+      // portão de texto público reprova. Ficam os nomes das classes, que são os da própria fonte.
+      + '<p class="cartao-numero-rotulo">Cidades com IQAr Ruim, Muito Ruim ou Péssima</p>'
       + '<p class="cartao-numero-valor">' + esc(String(ruins.length)) + '</p>'
       + '<p class="cartao-numero-variacao">primeira leitura</p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
-    MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr'], data: (fontesAr.monitorar || {}).consultado_em});
+    MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr', hora(ult) ? 'medição de ' + hora(ult) : ''].filter(Boolean),
+      data: (fontesAr.monitorar || {}).consultado_em});
   }
 })();
 
@@ -897,8 +907,8 @@ function comValor(el, texto){
 /** A moldura comum: escala, linha do zero e os DOIS limiares oficiais. Nada além disso — a régua
  *  de força não é da NOAA, e por isso não há faixa nenhuma no fundo destes gráficos. */
 function molduraPacifico(g, geo){
-  const {L, T, pw, ph, y, estreito} = geo;
-  for (let v = RONI_MIN; v <= RONI_MAX + 1e-9; v += 0.5) {
+  const {L, T, pw, ph, y, estreito, min, max} = geo;
+  for (let v = min; v <= max + 1e-9; v += 0.5) {
     const r = Math.round(v * 10) / 10;
     g.appendChild(svgEl('text', {x: L - 8, y: (y(r) + 4).toFixed(1), class: 'tk',
                                  'text-anchor': 'end'}, r === 0 ? '0' : PAC.num(r)));
@@ -916,31 +926,38 @@ function molduraPacifico(g, geo){
   });
 }
 
-/** Geometria do desenho, na largura real. `baixo` reserva espaço extra sob o eixo horizontal. */
-function geometriaPacifico(largura, baixo){
+/** Geometria do desenho, na largura real. `baixo` reserva espaço extra sob o eixo horizontal;
+ *  `faixa` é a escala vertical, em °C — a do RONI por padrão. O semanal da Niño 3.4 chega a +3,3 °C,
+ *  acima do teto do RONI, e escala fixa cortaria o dado: a faixa vem de quem desenha, com passo de
+ *  0,5 °C, e a moldura (zero e os dois limiares) é a mesma nos dois gráficos. */
+function geometriaPacifico(largura, baixo, faixa){
+  const [min, max] = faixa || [RONI_MIN, RONI_MAX];
   const W = Math.max(280, Math.round(largura || 0) || 560);
   const estreito = W < 480;
   const L = 42, R = estreito ? 14 : 104, T = estreito ? 24 : 16, B = 36 + (baixo || 0);
   // 16/10/2026 (editoria): na largura inteira, metade da altura de antes; no celular, a de antes.
   const H = (estreito ? 260 : 200) + (baixo || 0);
   const pw = Math.max(40, W - L - R), ph = Math.max(40, H - T - B);
-  return {W, H, L, R, T, B, pw, ph, estreito,
-          y: v => T + (RONI_MAX - v) / (RONI_MAX - RONI_MIN) * ph};
+  return {W, H, L, R, T, B, pw, ph, estreito, min, max,
+          y: v => T + (max - v) / (max - min) * ph};
 }
 
 /** Desenha dentro do contêiner e redesenha quando a largura muda. `pinta(g, geo)` faz a figura. */
-function desenharNaLargura(wrapId, baixo, rotulo, pinta){
+function desenharNaLargura(wrapId, baixo, rotulo, pinta, faixa){
   const wrap = document.getElementById(wrapId); if (!wrap) return;
   let ultimaLargura = null;
   function render(){
     const largura = wrap.clientWidth || wrap.getBoundingClientRect().width || 560;
     if (ultimaLargura !== null && Math.abs(largura - ultimaLargura) < 8) return;
     ultimaLargura = largura;
-    const geo = geometriaPacifico(largura, baixo);
+    const geo = geometriaPacifico(largura, baixo, faixa);
     const svg = svgEl('svg', {viewBox: '0 0 ' + geo.W + ' ' + geo.H, width: geo.W, height: geo.H,
                               class: 'g-pac', role: 'img', 'aria-label': rotulo});
     molduraPacifico(svg, geo);
     pinta(svg, geo);
+    // O rótulo do limiar é a última coisa pintada: na coluna estreita ele cai DENTRO do desenho, e
+    // ficar por baixo da série o deixava ilegível. Vale para os dois gráficos do Pacífico.
+    svg.querySelectorAll('.limt').forEach(t => svg.appendChild(t));
     wrap.innerHTML = '';
     wrap.appendChild(svg);
   }
@@ -956,15 +973,16 @@ const RONI = SINAIS.enos.roni;
 const PACIFICO = PAC.episodios((RONI && RONI.serie) || []);
 const IP = 'monitor-de-riscos.pacifico.';
 
-// A fonte dos dois é a mesma, e diz qual é o último dado — não só quando consultamos.
-function creditoPacifico(caixaId){
-  const f = (SINAIS.fontes || {})['noaa_roni'] || {};
+// A fonte diz qual é o último dado — não só quando consultamos. Serve às duas figuras do Pacífico:
+// cada uma passa a sua fonte e o período do seu último ponto.
+function creditoPacifico(caixaId, fonteId, ultimoDado){
+  const f = (SINAIS.fontes || {})[fonteId] || {};
   MonitorMapas.credito(caixaId, {
     fontes: [f.orgao, f.nome].filter(Boolean).join(' · ')
-      + (PACIFICO.ultimo ? ' · último dado: ' + PAC.periodo(PACIFICO.ultimo) : ''),
+      + (ultimoDado ? ' · último dado: ' + ultimoDado : ''),
     url: f.url_publica, data: f.consultado_em});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura');
-  if (d) d.dataset.credito = 'noaa_roni';
+  if (d) d.dataset.credito = fonteId;
 }
 
 if (PACIFICO.serie.length) {
@@ -1169,7 +1187,60 @@ if (PACIFICO.serie.length) {
 } else {
   lacuna('wrapEpisodios', txtCat(IP + 'episodios.lacuna', null, 'Sem coleta até o corte.'));
 }
-creditoPacifico('boxEpisodios');
+creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIFICO.ultimo) : null);
+
+// ---- Niño 3.4 semanal, logo abaixo do RONI (17/10/2026, HANDOVER_NINO34_SEMANAL §2) ----
+/* Mesmo componente, mesma moldura (zero e os dois limiares da NOAA/CPC), mesmos tokens e a mesma
+   função de desenho do gráfico do RONI. O que muda é o passo do dado — semana, não trimestre — e a
+   escala vertical, que a faixa do próprio dado define: o semanal passa de +3 °C, e o teto do RONI
+   cortaria o dado. Eixo em meses, pela regra do site. Sem série coletada, lacuna declarada. */
+(function nino34Semanal(){
+  const IN = IP + 'nino34.';
+  const dataBR = s => String(s).slice(8, 10) + '/' + String(s).slice(5, 7) + '/' + String(s).slice(0, 4);
+  const pts = ((SINAIS.enos.nino34_semanal || {}).serie || []).map(p => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(p.semana || ''));
+    return m && p.anomalia != null
+      ? {t: +m[1] * 12 + (+m[2] - 1) + (+m[3] - 1) / 31, anomalia: p.anomalia, semana: p.semana} : null;
+  }).filter(Boolean).sort((a, b) => a.t - b.t);
+  creditoPacifico('boxNino34Semanal', 'noaa_nino34_semanal',
+    pts.length ? 'semana de ' + dataBR(pts[pts.length - 1].semana) : null);
+  if (!pts.length) {
+    lacuna('wrapNino34', txtCat(IN + 'lacuna', null, 'Sem coleta até o corte.'));
+    return;
+  }
+  const ultimo = pts[pts.length - 1], primeiro = pts[0];
+  const vals = pts.map(p => p.anomalia);
+  // A escala sai do dado, em passos de 0,5 °C, com meio grau de respiro de cada lado, e nunca
+  // menor que ±1,0 °C — assim os limiares de ±0,5 °C aparecem sempre.
+  const faixa = [Math.min(-1, Math.floor(Math.min.apply(null, vals) * 2) / 2 - 0.5),
+                 Math.max(1, Math.ceil(Math.max.apply(null, vals) * 2) / 2 + 0.5)];
+  const t0 = Math.floor(primeiro.t), t1 = Math.ceil(ultimo.t);
+  põeCat('nino34Sub', IN + 'molde_legenda', {data: dataBR(ultimo.semana)});
+  põeCat('nino34Leitura', IN + 'molde_leitura',
+    {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia), inicio: dataBR(primeiro.semana)});
+  desenharNaLargura('wrapNino34', 14,
+    txtCat(IN + 'rotulo_acessivel', null, 'Anomalia semanal da região Niño 3.4, em graus Celsius'),
+    function (g, geo) {
+      const {L, T, pw, ph, y, estreito} = geo;
+      const x = t => L + (t - t0) / (t1 - t0) * pw;
+      const passo = estreito ? 3 : 2;
+      for (let t = t0; t <= t1; t++) {
+        const mes = ((t % 12) + 12) % 12;
+        if (mes === 0 && t > t0) g.appendChild(svgEl('line', {x1: x(t).toFixed(1), x2: x(t).toFixed(1),
+          y1: T, y2: T + ph + 10, class: 'div'}));
+        if (mes === 0 || t === t0) g.appendChild(svgEl('text', {x: x(t).toFixed(1), y: T + ph + 32,
+          class: 'tk2', 'text-anchor': t === t0 ? 'start' : 'middle'}, String((t - mes) / 12)));
+        if ((t - t0) % passo === 0) g.appendChild(svgEl('text', {x: x(t).toFixed(1), y: T + ph + 18,
+          class: 'tk', 'text-anchor': 'middle'}, PAC.MES[mes]));
+      }
+      const traco = pts.map((p, i) => (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.anomalia).toFixed(1)).join(' ');
+      g.appendChild(svgEl('path', {d: traco, class: 'l-agora'}));
+      g.appendChild(svgEl('circle', {cx: x(ultimo.t).toFixed(1), cy: y(ultimo.anomalia).toFixed(1),
+        r: 4, class: 'agora'}));
+    }, faixa);
+  // Sem "Ver em lista" aqui: o §7 do handover do Monitor de riscos tirou essas listas da página. O
+  // que a figura mostra se lê pelo `aria-label` do desenho e pela linha de leitura abaixo dele.
+})();
 
 // O gráfico de estados por tipo de risco (#cTipos) saiu da página em 27/09/2026 com o risco projetado;
 // a montagem que sobrou aqui mirava um canvas inexistente e foi retirada (A4-21, 10/10/2026).

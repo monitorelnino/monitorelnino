@@ -1373,6 +1373,10 @@ A API do Monitor de Secas entrega a tabela por UF (§ dos dados tabulares) e as 
 
 `data/saude_municipio/<UF>.json`, escrito pelo elo da saúde depois dos coletores que ele lê, junta por código IBGE: o nível de alerta de dengue e de chikungunya do InfoDengue na semana mais recente que a fonte publica, com os casos estimados e a última semana com notificações registradas (a capital que a série municipal não traz recebe o alerta por capital, da mesma fonte); a classe de excesso de calor do Painel do Ministério da Saúde, no vocabulário dele; e o degrau de saúde do plano municipal na leitura automática (§10.1), casado pela URL do documento registrado. Município que a fonte não leu fica sem o bloco, e a página diz que não foi lido — nunca zero. Respiratória grave e MARÉ Saúde são do estado e a página os diz como do estado.
 
+### 41.12 O que o mapa de qualidade do ar não diz (19/10/2026)
+
+A nota saiu da página por decisão da editoria (19/10/2026): é limitação de método, e método vive aqui. Cidade **sem ponto no mapa** é cidade sem estação oficial nem sensor da rede — não é ar limpo, é ausência de medição. **Estação regulatória e sensor de baixo custo medem na mesma unidade, não com a mesma confiabilidade**, e por isso o mapa não os compara entre si: cada ponto diz de qual das duas origens vem. O padrão brasileiro de PM2,5 em 24 horas é de **50 µg/m³** (PI-1, CONAMA 506/2024), e é contra ele que a leitura do mapa se faz.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.
@@ -3794,9 +3798,9 @@ primeira vez que rodou. A primeira correção foi um ajudante que **carimbava e 
 arquivo foi reposto por **união pela base comum** (907 do HEAD mais os 17 novos da rodada = 924).
 
 Duas correções de fundo: `carimbar_atos()` passou a ser **pura** — ela só carimba, e cada coletor
-continua chamando o seu próprio `gravar`, que é o que o teste consegue interceptar — e nasceu o
-portão `scripts/verificar_autoteste_nao_escreve.py`, que guarda o resumo dos arquivos de banco,
-roda os autotestes e exige que nenhum tenha mudado. A lição não é sobre aquele ajudante: é que o
+continua chamando o seu próprio `gravar`, que é o que o teste consegue interceptar — e nasceu um
+portão que guarda o resumo dos arquivos de banco, roda os autotestes e exige que nenhum tenha mudado
+(hoje `scripts/verificar_autotestes_isolados.py`, que o absorveu; o original saiu em 19/10/2026, sem chamador). A lição não é sobre aquele ajudante: é que o
 isolamento do autoteste **não era verificado**.
 
 ### 99.7 O 40199 volta, e passa a ser contrato
@@ -4270,3 +4274,26 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 **Como é lida.** Um arquivo por UF e mês no FTP do DATASUS, pelo leitor do §108. A rodada lê do mês mais recente ao mais antigo até o tempo reservado acabar; o mês que não foi lido fica sem valor e a lacuna é declarada no arquivo, nunca zero. Os três meses mais recentes são lidos de novo quando o tamanho do arquivo mudou, porque a competência cresce com AIH reapresentada. Enquanto houver mês por ler, os cortes do mapa são recalculados; completa a leitura, ficam congelados. O último mês publicado é parcial. AC e RR publicam com um mês a mais de atraso (16/10/2026).
 
 **O que a série não conta.** Residência do paciente (a UF é a do hospital), óbitos e internações em hospitais fora do SUS. O número do TabNet para a mesma competência foi conferido em duas UFs: bateu em AP (6.160, julho de 2026) e ficou 2,0% abaixo em CE (52.091 contra 53.588 registros em julho de 2026), sem que a regra de contagem do TabNet tenha sido identificada. O Monitor não atribui internações ao El Niño.
+
+## 111. A semana da Imprensa em datas e a definição dos índices numa só função (19/10/2026)
+
+Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, não no texto da página.
+
+**A semana, em datas.** A fonte guarda dengue e SRAG por semana epidemiológica; o leitor vê o intervalo, de domingo a sábado, pela regra do Ministério da Saúde (a semana 1 é a que tem a quarta-feira entre 1 e 7 de janeiro). A conversão tem uma só cópia em Python, `coletores_base.semana_em_datas`, a mesma regra de `assets/semana.js`; o gerador do topo da Saúde e o da Imprensa escrevem o rótulo por ela, e o portão de coerência a importa. A semana publicada continua sendo a última com valor na série, e o rótulo da página a declara parcial.
+
+**A definição dos índices.** `scripts/gerar_topo_das_paginas.definicao_dos_indices` escreve o parágrafo do MARÉ Legal a partir de `data/meta.json` (componentes, pesos e escala) e o do MARÉ Saúde a partir de `data/monitor_saude.json` (componentes e pesos em vigor). O resultado fica em `data/saude_desfechos/topo_saude.json` → `definicao_dos_indices` e é copiado para `data/imprensa/semana.json`: a Imprensa e a abertura da Saúde leem o mesmo campo. Componente que a função não sabe dizer, peso desigual ou escala diferente deixa o texto em lacuna (`null`), nunca um texto que descreva outra coisa. Nenhum número de versão chega ao leitor.
+
+**O que saiu do gerador da Imprensa.** O cruzamento decreto e alerta (saiu da Defesa civil) e o código dos cartões que a página já não lê. O texto da semana não usa "ciclo" sozinho.
+
+## 112. Orientações oficiais do guia Proteja-se e o diretório estadual da Defesa Civil (19/10/2026)
+
+**O que se guarda.** `coletar_orientacoes_oficiais.py` consulta páginas oficiais do Ministério da Saúde e da Defesa Civil nacional (chuvas, fogo, seca, calor, dengue), preserva cada uma por hash em `evidencias/` e, para cada item do guia do Proteja-se, procura a frase da fonte que o sustenta. O item só tem fonte quando a frase cobre as palavras que o definem; o registro traz URL, data da consulta, trecho e hash. Sem frase, o item entra em `itens_sem_fonte`: é lacuna declarada, e a página não o publica sem fonte. Fonte que recusa ou não responde mantém o registro anterior e declara `motivo_da_falha`. O arquivo tem peso zero e o cálculo do índice não o lê.
+
+**O diretório estadual.** O coletor reconfere os telefones e e-mails de `data/contatos_uf.json` contra o diretório da Defesa Civil no site do MIDR. Divergência (contato do MARÉ ausente do diretório) fica em `conferencia`, por UF, sem reescrever o contato; `fonte.consultado_em` e `hash_da_consulta` registram a data e a versão lida. Na primeira consulta (19/10/2026) 25 UFs conferem; DF e RO divergem.
+
+**Limite.** A frase de fonte é a que o texto da página traz, não uma recomendação nova do MARÉ. Página que mudar de endereço ou for retirada passa a lacuna na consulta seguinte.
+
+## 113. Plano de saúde de Rondônia recebido por acesso à informação (19/10/2026)
+
+A Ouvidoria Geral do SUS da SESAU/RO respondeu em 15/10/2026 ao pedido de 18/09/2026 com um plano de adaptação da saúde ao El Niño de 96 páginas, em versão revisada, sem número de processo nem data de aprovação. O MARÉ guarda o registro em `data/notas_lai.json` (`documentos_de_estado`), com o endereço que o órgão informou e `verificacao_link: pendente`: o link só passa a verificado quando o endereço responde e título e órgão conferem com o documento recebido. O registro ainda não foi julgado (`veredito: null`) e não altera o que o índice registra para o estado. Os documentos que o plano cita e que o MARÉ não localizou viram buscas dirigidas de nível A. Marcos e valores do plano ficam guardados, sem comparação com o que ocorrer depois.
+
