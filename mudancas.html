@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>17/10/2026 · Para gestores: o cartão do plano diz a situação do município</dt>
+      <dd>O cartão &quot;Plano para o El Niño 2026/2027&quot; da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.</dd>
       <dt>19/10/2026 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos</dt>
       <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
       <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
@@ -165,8 +167,6 @@
       <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
       <dt>16/10/2026 · Inicial: links da abertura e sai a linha da checagem</dt>
       <dd>Na abertura do MARÉ Legal, &quot;os municípios inscritos no cadastro nacional&quot; leva ao cadastro do MDR e &quot;a União já indicou … municípios&quot; volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha &quot;Cada registro vem com a sua fonte · Última checagem em …&quot; (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.</dd>
-      <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
-      <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
     </dl>
   </section>
 </main>
