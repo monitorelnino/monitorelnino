@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=889a2620">
+<link rel="stylesheet" href="assets/base.css?v=f6defbc0">
 <script src="assets/mapas.js?v=9105a8ac"></script>
 </head>
 <body class="pagina-dados">
@@ -107,6 +107,16 @@
         <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapEpisodios"></div>
         <div class="leg-pacifico" id="legEpisodios"></div>
         <p class="figura-leitura" id="episodiosLeitura"></p>
+      </figure>
+      <!-- 17/10/2026 (editoria, HANDOVER_NINO34_SEMANAL §2): a leitura semanal da Niño 3.4 logo
+           abaixo do RONI, no mesmo componente e com a mesma moldura. São as duas séries largas
+           que o contrato declara como figura principal desta página. -->
+      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxNino34Semanal">
+        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.pacifico.nino34.titulo">Anomalia semanal da temperatura da superfície do mar na região Niño 3.4</h3>
+        <p class="figura-sub" id="nino34Sub" data-conteudo="monitor-de-riscos.pacifico.nino34.legenda">Anomalia em °C ante a média de referência · valores semanais, sem o desconto do aquecimento tropical usado no RONI</p>
+        <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.nino34.eixo">Niño 3.4, °C</p>
+        <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapNino34"></div>
+        <p class="figura-leitura" id="nino34Leitura"></p>
       </figure>
     </div>
     <p class="hint" data-conteudo-html="monitor-de-riscos.pacifico.ponte_metodologia">Para especialistas: o índice ONI está na <a href="METODOLOGIA.pdf">metodologia</a> →</p>
@@ -241,7 +251,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/consulta-municipio.js?v=214e0816" defer></script><script src="assets/js/monitor-de-riscos.js?v=45798c4e" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/consulta-municipio.js?v=214e0816" defer></script><script src="assets/js/monitor-de-riscos.js?v=45672f28" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

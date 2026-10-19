@@ -971,6 +971,16 @@ def _idade_h(quando: datetime, agora_dt: datetime):
     return (agora_dt - quando).total_seconds() / 3600 if quando else None
 
 
+def _nome_de_rede(nome):
+    """Nome da rede de medição sem a caixa alta da fonte ("USINA TERMELETRICA PAMPA SUL S/A" →
+    "Usina Termeletrica Pampa Sul S/A"). Sigla de uma palavra só fica como veio. Função pura."""
+    t = str(nome or "").strip()
+    if not t or " " not in t or not t.isupper():
+        return nome
+    liga = {"DE", "DA", "DO", "DAS", "DOS", "E"}
+    return " ".join(w.lower() if w in liga else w if w in ("S/A", "LTDA") else w.capitalize() for w in t.split())
+
+
 def _num(v):
     try:
         return float(v)
@@ -999,7 +1009,7 @@ def parse_monitorar(dados, agora_dt: datetime) -> list:
         idade = _idade_h(quando, agora_dt)
         valor = _num(med.get("indiceQualidadeAr"))
         item = {
-            "id": e.get("idEstacao"), "nome": e.get("noEstacao"), "rede": e.get("noFonteDados"),
+            "id": e.get("idEstacao"), "nome": e.get("noEstacao"), "rede": _nome_de_rede(e.get("noFonteDados")),
             "ibge": mun.get("idMunicipio"), "municipio": mun.get("noMunicipio"), "uf": mun.get("sgUf"),
             "lat": _num(e.get("nuLatitude")), "lon": _num(e.get("nuLongitude")),
             "categoria": (e.get("categoriaEstacao") or {}).get("descricao"),
@@ -2891,6 +2901,10 @@ def autoteste() -> int:
         {"municipios": {"5300108": {"classe": "Severo"}}},
         {"municipios": {"5300108": {"reconhecido": True, "primeiro_reconhecimento": "09/09/2026"}}})
     _df, _go = _rm["DF"]["municipios"]["5300108"], _rm["GO"]["municipios"]["5217609"]
+    checar("Rede da estação: caixa alta da fonte vira nome próprio; sigla e nome já bem escrito ficam",
+           _nome_de_rede("USINA TERMELETRICA PAMPA SUL S/A") == "Usina Termeletrica Pampa Sul S/A"
+           and _nome_de_rede("IBRAM") == "IBRAM" and _nome_de_rede("CETREL e Inema") == "CETREL e Inema"
+           and _nome_de_rede(None) is None)
     checar("Município: focos de 30 dias; sem foco com série completa é 0", _df["focos_30_dias"] == 4 and _go["focos_30_dias"] == 0)
     checar("Município: série incompleta deixa focos em None (não sabemos), nunca 0",
            montar_riscos_municipio(_ref[:1], {"resumo": {"ultimos_30_dias": {"dias_com_dado": 12}}}, {}, {}, {})

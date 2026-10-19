@@ -1,10 +1,10 @@
 {
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-18",
+ "gerado_em": "2026-10-19",
  "janela_dias": 7,
  "indices": {
-  "edicao": "18/10/2026",
-  "mare_legal": 40.1,
+  "edicao": "19/10/2026",
+  "mare_legal": 40.2,
   "mare_saude": 31.9,
   "saude_verificadas": 21,
   "decretaram_no_ciclo": 953
@@ -17,8 +17,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-11",
-    "fim": "2026-10-18"
+    "ini": "2026-10-12",
+    "fim": "2026-10-19"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -46,7 +46,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-10-16 e 2026-10-17, nos dois índices",
+   "nota": "entre as edições de 2026-10-17 e 2026-10-19, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -174,14 +174,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 21,
+   "valor": 16,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "17/10/2026 22:36",
+   "referencia": "19/10/2026 05:50",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "17/10/2026 22:36",
+   "consultado_em": "19/10/2026 05:50",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -194,34 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 2458,
+   "valor": 1599,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "17/10/2026 22:36",
+   "referencia": "19/10/2026 05:50",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "17/10/2026 22:36",
-   "primeira_medicao": true,
-   "valor_semana_anterior": null,
-   "variacao": null,
-   "nota": null,
-   "secundaria": null,
-   "lista": [],
-   "pagina_de_origem": "defesa-civil.html"
-  },
-  {
-   "id": "decreto_e_alerta_ao_mesmo_tempo",
-   "grupo": "risco_agora",
-   "rotulo": "Municípios com decreto de emergência e alerta ao mesmo tempo",
-   "valor": 260,
-   "unidade": null,
-   "sem_coleta": false,
-   "periodo": null,
-   "referencia": "17/10/2026 22:36",
-   "fonte": "MARÉ (cruzamento das duas consultas)",
-   "url_fonte": null,
-   "consultado_em": "17/10/2026 22:36",
+   "consultado_em": "19/10/2026 05:50",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -234,52 +214,88 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 330,
+   "valor": 957,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "17/10/2026",
+   "consultado_em": "19/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261018.csv",
+   "nota": "Focos do dia — focos_diario_br_20261019.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 148
-    },
-    {
-     "uf": "AM",
-     "valor": 86
+     "valor": 717
     },
     {
      "uf": "MA",
      "valor": 61
     },
     {
-     "uf": "MT",
-     "valor": 20
-    },
-    {
-     "uf": "BA",
-     "valor": 8
-    },
-    {
-     "uf": "CE",
-     "valor": 3
-    },
-    {
-     "uf": "RR",
-     "valor": 2
+     "uf": "AL",
+     "valor": 36
     },
     {
      "uf": "MG",
-     "valor": 1
+     "valor": 29
+    },
+    {
+     "uf": "PI",
+     "valor": 22
+    },
+    {
+     "uf": "MT",
+     "valor": 19
     },
     {
      "uf": "TO",
+     "valor": 17
+    },
+    {
+     "uf": "PB",
+     "valor": 12
+    },
+    {
+     "uf": "GO",
+     "valor": 11
+    },
+    {
+     "uf": "BA",
+     "valor": 9
+    },
+    {
+     "uf": "CE",
+     "valor": 7
+    },
+    {
+     "uf": "PE",
+     "valor": 7
+    },
+    {
+     "uf": "RR",
+     "valor": 4
+    },
+    {
+     "uf": "RO",
+     "valor": 2
+    },
+    {
+     "uf": "AM",
+     "valor": 1
+    },
+    {
+     "uf": "RN",
+     "valor": 1
+    },
+    {
+     "uf": "SC",
+     "valor": 1
+    },
+    {
+     "uf": "SP",
      "valor": 1
     }
    ],
@@ -291,18 +307,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 3.9,
+   "valor": 4.9,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "17/10/2026",
+   "referencia": "19/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "17/10/2026",
+   "consultado_em": "19/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 37.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 38.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -342,7 +358,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "para 71 município(s) com ato no ciclo",
+   "nota": "desde 29 de junho, 71 município(s) com ato de portaria",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "financiamento.html"
@@ -370,7 +386,7 @@
   {
    "id": "dengue_casos_se",
    "grupo": "saude",
-   "rotulo": "Casos prováveis de dengue na semana epidemiológica 35",
+   "rotulo": "Casos prováveis de dengue na semana de 30 de agosto a 5 de setembro de 2026",
    "valor": 7013,
    "unidade": null,
    "sem_coleta": false,
@@ -390,15 +406,15 @@
   {
    "id": "srag_internacoes_se",
    "grupo": "saude",
-   "rotulo": "Internações por síndrome respiratória grave na semana epidemiológica 35",
-   "valor": 4267,
+   "rotulo": "Internações por síndrome respiratória grave na semana de 20 a 26 de setembro de 2026",
+   "valor": 3624,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "2026-35",
+   "referencia": "2026-38",
    "fonte": "Ministério da Saúde (SIVEP-Gripe)",
    "url_fonte": null,
-   "consultado_em": "2026-35",
+   "consultado_em": "2026-38",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -445,15 +461,19 @@
    "por_que_nao": "não existe fotografia da edição anterior (`data/edicao_anterior/`). Sem o par, o diff seria inventado."
   },
   {
-   "id": "dengue_no_periodo",
-   "rotulo": "Municípios que entraram em alerta de dengue no período",
-   "por_que_nao": "o handover marca como calculável, mas a medição desmente: `dengue_capitais` tem 27 CAPITAIS com uma única semana epidemiológica corrente, e `serie_capitais` é série agregada das 27, não nível por município por SE. Sem o nível da SE anterior, a passagem para laranja/vermelho seria inventada."
-  },
-  {
    "id": "paginas_fora_do_ar",
    "rotulo": "Páginas oficiais fora do ar por aviso eleitoral",
    "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."
   }
  ],
- "texto_pronto": "Edição de 18/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,1 de 100; o MARÉ Saúde, em 31,9 de 100, média dos 21 estados verificados. Na semana, nenhum município publicou plano para o ciclo e 24 municípios decretaram situação de emergência ou calamidade; 501.578 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde o início do ciclo, em 29 de junho, 6 de 27 capitais têm plano localizado e 953 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação da Futura Evidence Lab."
+ "definicao_dos_indices": {
+  "legal": "Cada estado recebe uma nota de 0 a 100, com três partes de mesmo peso: o plano estadual para o risco previsto (vale mais quando feito para este El Niño, menos quando é o plano de todo ano revisado, zero quando não localizamos), a estrutura de coordenação (quem foi designado para conduzir a resposta) e a cobertura (quanta gente do estado vive em município com plano localizado). A nota do Brasil é a média dos estados. Decretos não entram.",
+  "saude": "A mesma escala, para o que a secretaria estadual de saúde publicou: o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), quando ele saiu em relação ao primeiro boletim e quanta gente vive em município cujo plano trata a saúde. A nota nacional é a média dos estados já verificados.",
+  "saude_partes": [
+   "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)",
+   "quando ele saiu em relação ao primeiro boletim",
+   "quanta gente vive em município cujo plano trata a saúde"
+  ]
+ },
+ "texto_pronto": "Edição de 19/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 31,9 de 100, média dos estados já verificados. Na semana, nenhum município publicou plano para o El Niño e 24 municípios decretaram situação de emergência ou calamidade; 501.578 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 953 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

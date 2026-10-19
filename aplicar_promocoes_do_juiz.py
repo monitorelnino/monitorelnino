@@ -84,11 +84,7 @@ def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
     09/10/2026 (A1-01): veredito cujo domínio aponta outro município não é aplicável.
     """
     if resolver is None:
-        try:
-            from municipio_do_dominio import municipio_de as resolver
-        except ImportError:
-            def resolver(_url):
-                return None
+        from scripts.municipio_do_dominio import municipio_de as resolver
     fora = []
     for v in decisoes:
         if not (v.get("promove") and v.get("codebook") == versao):
@@ -357,6 +353,7 @@ def main() -> int:
         return autoteste()
 
     from coletores_base import gravar_em, hoje_editorial
+    from scripts.verificar_fichas_municipais import problemas_de_documento
     from juiz import CODEBOOK_VERSAO
     from julgar_e_aplicar_descobertas import (backup_dados, buscar_lat_lon, canal_e_fonte,
                                               restaurar_dados, rodar_portoes)
@@ -388,6 +385,9 @@ def main() -> int:
             continue
         if ja_no_banco(municipios, v["municipio"], v["uf"]):
             recusados.append((v, "já consta no banco — abstenção registrada (atualização não se presume)"))
+            continue
+        if (nao_documento := problemas_de_documento([{**v, "nome": v["municipio"], "hash_evidencia": "-"}])):
+            recusados.append((v, nao_documento[0].split(": ", 1)[1] + " (D1: o ato é o documento, não a notícia)"))
             continue
         lat, lon = buscar_lat_lon(v["municipio"], v["uf"])
         if lat is None:

@@ -2,1212 +2,6 @@
  "formato_versao": 1,
  "execucoes": [
   {
-   "data": "2026-10-11",
-   "script": "coletar_s2id.py",
-   "inicio": "2026-10-11T02:50:33",
-   "duracao_s": 1030.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_recursos_resposta.py",
-   "inicio": "2026-10-11T03:07:43",
-   "duracao_s": 9.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/triar_fila.py",
-   "inicio": "2026-10-11T03:11:03",
-   "duracao_s": 1.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "julgar_filas.py",
-   "inicio": "2026-10-11T03:11:04",
-   "duracao_s": 1371.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T03:14:53",
-   "duracao_s": 2.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "aplicar_promocoes_do_juiz.py",
-   "inicio": "2026-10-11T03:33:55",
-   "duracao_s": 0.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/verificar_esquema_de_pista.py",
-   "inicio": "2026-10-11T03:33:55",
-   "duracao_s": 2.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_srag_sivep.py",
-   "inicio": "2026-10-11T03:36:44",
-   "duracao_s": 33.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_sg_esus.py",
-   "inicio": "2026-10-11T03:37:17",
-   "duracao_s": 8.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/triar_fila.py",
-   "inicio": "2026-10-11T03:41:29",
-   "duracao_s": 1.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "julgar_filas.py",
-   "inicio": "2026-10-11T03:41:30",
-   "duracao_s": 1215.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "aplicar_promocoes_do_juiz.py",
-   "inicio": "2026-10-11T04:01:45",
-   "duracao_s": 0.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/verificar_esquema_de_pista.py",
-   "inicio": "2026-10-11T04:01:45",
-   "duracao_s": 2.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T04:04:24",
-   "duracao_s": 3.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_imprensa_regional.py",
-   "inicio": "2026-10-11T04:04:39",
-   "duracao_s": 121.3,
-   "itens": 40,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_imprensa_saude.py",
-   "inicio": "2026-10-11T04:06:40",
-   "duracao_s": 0.8,
-   "itens": null,
-   "status": "erro",
-   "erro": "KeyError: 'hash'"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_atos_resposta.py",
-   "inicio": "2026-10-11T04:06:40",
-   "duracao_s": 162.0,
-   "itens": 3442,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_politica_por_inteiro.py",
-   "inicio": "2026-10-11T04:09:22",
-   "duracao_s": 2.2,
-   "itens": 3442,
-   "status": "erro",
-   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_sinais_federais.py",
-   "inicio": "2026-10-11T04:09:24",
-   "duracao_s": 3.8,
-   "itens": 10,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "detectar_marcos_federais.py",
-   "inicio": "2026-10-11T04:09:27",
-   "duracao_s": 1.7,
-   "itens": 0,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "descobrir_planos.py",
-   "inicio": "2026-10-11T04:09:28",
-   "duracao_s": 978.9,
-   "itens": 42,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_redes_oficiais.py",
-   "inicio": "2026-10-11T04:25:46",
-   "duracao_s": 1694.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "seguir_pistas.py",
-   "inicio": "2026-10-11T04:54:00",
-   "duracao_s": 89.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "triar_confianca_pistas.py",
-   "inicio": "2026-10-11T04:55:29",
-   "duracao_s": 1.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "verificar_pista_imprensa.py",
-   "inicio": "2026-10-11T04:55:31",
-   "duracao_s": 140.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T05:00:59",
-   "duracao_s": 3.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/corrigir_atribuicao_por_dominio.py",
-   "inicio": "2026-10-11T05:01:02",
-   "duracao_s": 11.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "revisar_pistas.py",
-   "inicio": "2026-10-11T05:01:13",
-   "duracao_s": 265.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "julgar_filas.py",
-   "inicio": "2026-10-11T05:05:38",
-   "duracao_s": 2969.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "julgar_e_aplicar_descobertas.py",
-   "inicio": "2026-10-11T05:55:07",
-   "duracao_s": 643.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "aplicar_promocoes_do_juiz.py",
-   "inicio": "2026-10-11T06:05:51",
-   "duracao_s": 0.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/amostra_auditoria_semanal.py",
-   "inicio": "2026-10-11T06:05:51",
-   "duracao_s": 0.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T06:09:39",
-   "duracao_s": 4.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T06:09:43",
-   "duracao_s": 93.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T06:11:16",
-   "duracao_s": 1501.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/preservar_textos_integrais.py",
-   "inicio": "2026-10-11T06:36:17",
-   "duracao_s": 0.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T06:42:21",
-   "duracao_s": 3.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/corrigir_atribuicao_por_dominio.py",
-   "inicio": "2026-10-11T06:42:30",
-   "duracao_s": 7.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "revisar_pistas.py",
-   "inicio": "2026-10-11T06:42:37",
-   "duracao_s": 1.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "julgar_filas.py",
-   "inicio": "2026-10-11T06:42:38",
-   "duracao_s": 934.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "julgar_e_aplicar_descobertas.py",
-   "inicio": "2026-10-11T06:58:12",
-   "duracao_s": 632.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T07:03:47",
-   "duracao_s": 3.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "aplicar_promocoes_do_juiz.py",
-   "inicio": "2026-10-11T07:08:44",
-   "duracao_s": 30.3,
-   "itens": 1,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/amostra_auditoria_semanal.py",
-   "inicio": "2026-10-11T07:09:14",
-   "duracao_s": 0.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T07:09:35",
-   "duracao_s": 3.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_imprensa_regional.py",
-   "inicio": "2026-10-11T07:15:33",
-   "duracao_s": 124.6,
-   "itens": 40,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_imprensa_saude.py",
-   "inicio": "2026-10-11T07:17:37",
-   "duracao_s": 1.0,
-   "itens": null,
-   "status": "erro",
-   "erro": "KeyError: 'hash'"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_atos_resposta.py",
-   "inicio": "2026-10-11T07:17:38",
-   "duracao_s": 166.0,
-   "itens": 3442,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_politica_por_inteiro.py",
-   "inicio": "2026-10-11T07:20:24",
-   "duracao_s": 2.2,
-   "itens": 3442,
-   "status": "erro",
-   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_sinais_federais.py",
-   "inicio": "2026-10-11T07:20:26",
-   "duracao_s": 4.0,
-   "itens": 10,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "detectar_marcos_federais.py",
-   "inicio": "2026-10-11T07:20:30",
-   "duracao_s": 1.1,
-   "itens": 0,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "descobrir_planos.py",
-   "inicio": "2026-10-11T07:20:31",
-   "duracao_s": 883.9,
-   "itens": 42,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_redes_oficiais.py",
-   "inicio": "2026-10-11T07:35:14",
-   "duracao_s": 1253.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T07:50:12",
-   "duracao_s": 4.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "seguir_pistas.py",
-   "inicio": "2026-10-11T07:56:07",
-   "duracao_s": 36.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "triar_confianca_pistas.py",
-   "inicio": "2026-10-11T07:56:43",
-   "duracao_s": 2.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "verificar_pista_imprensa.py",
-   "inicio": "2026-10-11T07:56:45",
-   "duracao_s": 80.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T08:01:02",
-   "duracao_s": 3.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_imprensa_regional.py",
-   "inicio": "2026-10-11T08:01:45",
-   "duracao_s": 166.4,
-   "itens": 40,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_imprensa_saude.py",
-   "inicio": "2026-10-11T08:04:31",
-   "duracao_s": 0.9,
-   "itens": null,
-   "status": "erro",
-   "erro": "KeyError: 'hash'"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_atos_resposta.py",
-   "inicio": "2026-10-11T08:04:31",
-   "duracao_s": 117.8,
-   "itens": 3464,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_politica_por_inteiro.py",
-   "inicio": "2026-10-11T08:06:28",
-   "duracao_s": 2.9,
-   "itens": 3464,
-   "status": "erro",
-   "erro": "NameError: name 'ler' is not defined. Did you mean: 'len'?"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_sinais_federais.py",
-   "inicio": "2026-10-11T08:06:30",
-   "duracao_s": 4.4,
-   "itens": 10,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "detectar_marcos_federais.py",
-   "inicio": "2026-10-11T08:06:34",
-   "duracao_s": 1.5,
-   "itens": 0,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "descobrir_planos.py",
-   "inicio": "2026-10-11T08:06:35",
-   "duracao_s": 1050.8,
-   "itens": 42,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "monitorar_redes_oficiais.py",
-   "inicio": "2026-10-11T08:24:05",
-   "duracao_s": 1270.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "seguir_pistas.py",
-   "inicio": "2026-10-11T08:45:15",
-   "duracao_s": 76.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "triar_confianca_pistas.py",
-   "inicio": "2026-10-11T08:46:31",
-   "duracao_s": 3.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "verificar_pista_imprensa.py",
-   "inicio": "2026-10-11T08:46:34",
-   "duracao_s": 77.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T08:51:23",
-   "duracao_s": 3.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T08:52:01",
-   "duracao_s": 5.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T08:52:06",
-   "duracao_s": 0.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/preservar_textos_integrais.py",
-   "inicio": "2026-10-11T08:52:52",
-   "duracao_s": 1.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T08:58:51",
-   "duracao_s": 3.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T08:59:17",
-   "duracao_s": 5.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T08:59:22",
-   "duracao_s": 1.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-11T08:59:23",
-   "duracao_s": 48.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/preservar_textos_integrais.py",
-   "inicio": "2026-10-11T09:00:11",
-   "duracao_s": 1.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T09:06:39",
-   "duracao_s": 4.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T09:16:36",
-   "duracao_s": 3.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T10:02:57",
-   "duracao_s": 3.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T10:11:59",
-   "duracao_s": 3.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_sinais_risco.py",
-   "inicio": "2026-10-11T11:03:05",
-   "duracao_s": 70.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_transferencias_municipais.py",
-   "inicio": "2026-10-11T11:04:15",
-   "duracao_s": 166.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T11:39:27",
-   "duracao_s": 3.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_saude.py",
-   "inicio": "2026-10-11T13:03:02",
-   "duracao_s": 414.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_desfechos_saude.py",
-   "inicio": "2026-10-11T13:09:56",
-   "duracao_s": 495.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_desfechos_saude.py",
-   "inicio": "2026-10-11T13:18:11",
-   "duracao_s": 490.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_dda.py",
-   "inicio": "2026-10-11T13:26:22",
-   "duracao_s": 57.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_ms_dengue.py",
-   "inicio": "2026-10-11T13:27:19",
-   "duracao_s": 23.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_df_arboviroses.py",
-   "inicio": "2026-10-11T13:27:42",
-   "duracao_s": 505.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_pe_arboviroses.py",
-   "inicio": "2026-10-11T13:36:07",
-   "duracao_s": 9.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_pb_arboviroses.py",
-   "inicio": "2026-10-11T13:36:16",
-   "duracao_s": 193.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_arboviroses_sinan.py",
-   "inicio": "2026-10-11T13:39:29",
-   "duracao_s": 61.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_obitos_registro_civil.py",
-   "inicio": "2026-10-11T13:40:30",
-   "duracao_s": 41.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "classificar_saude_no_plano.py",
-   "inicio": "2026-10-11T13:41:11",
-   "duracao_s": 4.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T14:22:04",
-   "duracao_s": 3.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T14:27:48",
-   "duracao_s": 3.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T14:34:34",
-   "duracao_s": 3.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T14:40:12",
-   "duracao_s": 4.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T15:03:46",
-   "duracao_s": 3.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T15:12:14",
-   "duracao_s": 3.4,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T15:33:00",
-   "duracao_s": 4.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_sinais_risco.py",
-   "inicio": "2026-10-11T15:36:04",
-   "duracao_s": 70.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_transferencias_municipais.py",
-   "inicio": "2026-10-11T15:37:14",
-   "duracao_s": 58.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T17:47:03",
-   "duracao_s": 3.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T19:16:59",
-   "duracao_s": 3.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T19:31:27",
-   "duracao_s": 3.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-11T20:36:27",
-   "duracao_s": 3.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-12T01:12:51",
-   "duracao_s": 3.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_sinais_risco.py",
-   "inicio": "2026-10-12T01:13:12",
-   "duracao_s": 80.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_transferencias_municipais.py",
-   "inicio": "2026-10-12T01:14:32",
-   "duracao_s": 73.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-12T01:18:50",
-   "duracao_s": 3.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-12T02:59:11",
-   "duracao_s": 2.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_saude.py",
-   "inicio": "2026-10-12T01:12:55",
-   "duracao_s": 196.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_desfechos_saude.py",
-   "inicio": "2026-10-12T01:16:11",
-   "duracao_s": 422.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_desfechos_saude.py",
-   "inicio": "2026-10-12T01:23:13",
-   "duracao_s": 413.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_dda.py",
-   "inicio": "2026-10-12T01:30:06",
-   "duracao_s": 54.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_ms_dengue.py",
-   "inicio": "2026-10-12T01:31:00",
-   "duracao_s": 19.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_df_arboviroses.py",
-   "inicio": "2026-10-12T01:31:19",
-   "duracao_s": 446.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_pe_arboviroses.py",
-   "inicio": "2026-10-12T01:38:45",
-   "duracao_s": 8.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_boletim_pb_arboviroses.py",
-   "inicio": "2026-10-12T01:38:53",
-   "duracao_s": 192.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_arboviroses_sinan.py",
-   "inicio": "2026-10-12T01:42:05",
-   "duracao_s": 60.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_obitos_registro_civil.py",
-   "inicio": "2026-10-12T01:43:05",
-   "duracao_s": 34.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "classificar_saude_no_plano.py",
-   "inicio": "2026-10-12T01:43:39",
-   "duracao_s": 0.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "consultar_querido_diario.py",
-   "inicio": "2026-10-12T01:14:14",
-   "duracao_s": 781.4,
-   "itens": null,
-   "status": "erro",
-   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_diarios_municipais.py",
-   "inicio": "2026-10-12T01:27:15",
-   "duracao_s": 711.9,
-   "itens": 50,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_diarios_municipais.py",
-   "inicio": "2026-10-12T01:39:06",
-   "duracao_s": 489.2,
-   "itens": 50,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_diarios_municipais.py",
-   "inicio": "2026-10-12T01:47:15",
-   "duracao_s": 108.7,
-   "itens": 50,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_diarios_consorciados.py",
-   "inicio": "2026-10-12T01:49:03",
-   "duracao_s": 2028.3,
-   "itens": 34,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_doe.py",
-   "inicio": "2026-10-12T02:22:51",
-   "duracao_s": 841.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_s2id.py",
-   "inicio": "2026-10-12T02:36:52",
-   "duracao_s": 915.5,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "coletar_recursos_resposta.py",
-   "inicio": "2026-10-12T02:52:07",
-   "duracao_s": 8.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-11",
-   "script": "scripts/triar_fila.py",
-   "inicio": "2026-10-12T02:55:07",
-   "duracao_s": 1.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
    "data": "2026-10-12",
    "script": "julgar_filas.py",
    "inicio": "2026-10-12T02:55:08",
@@ -11340,7 +10134,799 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_saude.py",
+   "inicio": "2026-10-19T01:44:29",
+   "duracao_s": 79.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-10-19T01:45:49",
+   "duracao_s": 471.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-10-19T01:53:40",
+   "duracao_s": 467.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_dda.py",
+   "inicio": "2026-10-19T02:01:27",
+   "duracao_s": 56.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_boletim_ms_dengue.py",
+   "inicio": "2026-10-19T02:02:24",
+   "duracao_s": 29.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_boletim_df_arboviroses.py",
+   "inicio": "2026-10-19T02:02:53",
+   "duracao_s": 344.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_boletim_pe_arboviroses.py",
+   "inicio": "2026-10-19T02:08:37",
+   "duracao_s": 8.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_boletim_pb_arboviroses.py",
+   "inicio": "2026-10-19T02:08:45",
+   "duracao_s": 2.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_arboviroses_sinan.py",
+   "inicio": "2026-10-19T02:08:47",
+   "duracao_s": 59.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_obitos_registro_civil.py",
+   "inicio": "2026-10-19T02:09:46",
+   "duracao_s": 19.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "classificar_saude_no_plano.py",
+   "inicio": "2026-10-19T02:10:05",
+   "duracao_s": 0.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "gerar_saude_municipio.py",
+   "inicio": "2026-10-19T02:10:05",
+   "duracao_s": 0.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T01:44:09",
+   "duracao_s": 727.3,
+   "itens": 83,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T01:56:16",
+   "duracao_s": 317.2,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-18",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T02:01:33",
+   "duracao_s": 317.3,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-18",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T02:06:50",
+   "duracao_s": 315.6,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-18",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T02:12:05",
+   "duracao_s": 317.1,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-18",
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-19T01:45:11",
+   "duracao_s": 40.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-19T01:45:51",
+   "duracao_s": 3.6,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_diarios_consorciados.py",
+   "inicio": "2026-10-19T01:45:54",
+   "duracao_s": 2039.9,
+   "itens": 38,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-18",
+   "script": "coletar_doe.py",
+   "inicio": "2026-10-19T02:19:53",
+   "duracao_s": 1678.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_s2id.py",
+   "inicio": "2026-10-19T02:47:51",
+   "duracao_s": 1016.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_recursos_resposta.py",
+   "inicio": "2026-10-19T03:04:47",
+   "duracao_s": 24.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/triar_fila.py",
+   "inicio": "2026-10-19T03:09:18",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-19T03:09:20",
+   "duracao_s": 1967.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-19T03:42:07",
+   "duracao_s": 1.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/verificar_esquema_de_pista.py",
+   "inicio": "2026-10-19T03:42:08",
+   "duracao_s": 21.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-19T03:46:29",
+   "duracao_s": 161.6,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-19T03:49:10",
+   "duracao_s": 106.8,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-19T03:50:56",
+   "duracao_s": 390.6,
+   "itens": 15301,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-19T03:57:26",
+   "duracao_s": 4.8,
+   "itens": 15301,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-19T03:57:30",
+   "duracao_s": 4.9,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-19T03:57:34",
+   "duracao_s": 2.0,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-19T03:57:36",
+   "duracao_s": 568.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-19T04:07:04",
+   "duracao_s": 1156.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-19T04:26:20",
+   "duracao_s": 152.2,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-19T04:28:53",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-19T04:28:53",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-19T04:32:20",
+   "duracao_s": 275.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-19T04:36:55",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-19T04:36:56",
+   "duracao_s": 46.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/preservar_textos_integrais.py",
+   "inicio": "2026-10-19T04:37:43",
+   "duracao_s": 1.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-19T04:47:23",
+   "duracao_s": 33.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-19T04:47:56",
+   "duracao_s": 467.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-19T04:55:43",
+   "duracao_s": 4502.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-19T06:10:45",
+   "duracao_s": 614.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-19T06:20:59",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-19T06:20:59",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T06:22:32",
+   "duracao_s": 747.6,
+   "itens": 83,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T06:34:59",
+   "duracao_s": 317.2,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T06:40:16",
+   "duracao_s": 317.2,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T06:45:33",
+   "duracao_s": 317.1,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-19T06:50:50",
+   "duracao_s": 316.9,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-19T06:24:32",
+   "duracao_s": 275.9,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-19T06:29:08",
+   "duracao_s": 101.5,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-19T06:30:49",
+   "duracao_s": 314.3,
+   "itens": 15301,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-19T06:36:03",
+   "duracao_s": 4.2,
+   "itens": 15301,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-19T06:36:07",
+   "duracao_s": 4.2,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-19T06:36:11",
+   "duracao_s": 1.5,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-19T06:36:12",
+   "duracao_s": 528.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-19T06:45:00",
+   "duracao_s": 1193.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-19T07:04:53",
+   "duracao_s": 118.4,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-19T07:06:52",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-19T07:06:52",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-19T07:10:58",
+   "duracao_s": 63.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-19T07:12:01",
+   "duracao_s": 658.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-19T07:22:59",
+   "duracao_s": 4503.9,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-19T08:38:03",
+   "duracao_s": 417.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-19T08:45:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-19T08:45:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "monitorar_redes_oficiais.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-10-19T08:49:00",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-10-19T08:49:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-10-19T08:49:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-19T08:49:03",
+   "duracao_s": 107.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-10-19T08:50:50",
+   "duracao_s": 42.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-19T08:52:55",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-19T08:52:55",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-19T08:52:55",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/preservar_textos_integrais.py",
+   "inicio": "2026-10-19T08:52:55",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-19T10:20:10",
+   "duracao_s": 2.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-19T01:45:55"
+ "atualizado_em": "2026-10-19T10:20:10"
 }
