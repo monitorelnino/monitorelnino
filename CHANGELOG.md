@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A figura do desfecho escolhido passa a trazer, ao lado da série, o mapa do último período fechado por estado, pintado pelos cortes fixos que o próprio arquivo guarda — os quintis de 2019 a 2025, congelados na primeira gravação. A legenda diz os cortes em números, estado sem período fechado fica nomeado, e a lista por estado abre embaixo. Gráfico e mapa usam só período fechado.
 
+## 2026-10-19 · sondagem · Boletins estaduais de arboviroses: rotas e recusa no catálogo
+
+Sondagem pelo executor (19/10): Goiás recusa com 403, respeitado; Paraná, Amazonas e Pará têm página de boletim localizada; Santa Catarina sem endereço; Rondônia inalcançável do executor. Só o catálogo de desfechos mudou; nenhum dado novo. Saldo: +13/−0.
+
 ## 2026-10-19 · #904 · O cartão de desfecho escolhido abre a série inteira
 
 Escolher um cartão da seção de desfechos da Saúde abre, abaixo da grade, a série inteira do território sobre a faixa habitual para a época, com título, legenda, fonte e data lidos do arquivo. Um detalhe por vez: escolher outro troca o conteúdo e a página não cresce. O seletor de território vale para a grade e para a série.
