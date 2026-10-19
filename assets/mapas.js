@@ -442,7 +442,9 @@
 
   /* Risco previsto em etiquetas de sigla (Monitor de riscos e Saúde): cada sigla leva à ficha do
      estado na inicial; `grupos` = [[rótulo, [UFs]], ...], e família sem estado não aparece. */
-  const chipsDeUF = ufs => ufs.map(uf => '<a class="chip-risco" href="index.html#' + esc(uf) + '">' + esc(uf) + '</a>').join('');
+  // 19/10/2026 (editoria): a sigla é ETIQUETA, não ligação. O link levava à página anterior e
+  // obrigava o leitor a voltar; o `span` é a mesma forma que a inicial já usa nos seus chips.
+  const chipsDeUF = ufs => ufs.map(uf => '<span class="chip-risco">' + esc(uf) + '</span>').join('');
   function faixaPrevista(dl, grupos) {
     dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs]) =>
       '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
