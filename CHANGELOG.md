@@ -11,7 +11,6 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-19 · #885 · Portões: sete regras de dado num só, nove arquivos a menos
 
-Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
 
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
@@ -127,6 +126,10 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 ## 2026-10-19 · #849 · Imprensa: semana em datas, definição dos índices numa só função
 
 `semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem "semana epidemiológica". `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o "ciclo". Metodologia §111.
+
+## 2026-10-19 · #876 · Diário oficial do RS lido por data
+
+O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
 
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
 
