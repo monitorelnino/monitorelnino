@@ -811,9 +811,35 @@ def edicoes_rs(buscar_fn, base):
     return fn
 
 
+# RJ (19/10/2026, runs 39268518381 e anteriores): o diário da IOERJ lista os cadernos de uma data em
+# `do_seleciona_edicao.php?data=<AAAAMMDD em base64>`; cada caderno abre `mostra_edicao.php?session=...`,
+# cuja página traz `var pd = "<GUID>"`, e o visualizador pede o PDF em `mostra_edicao.php?k=` + o GUID com
+# um "P" depois dos 12 primeiros caracteres (lido em `viewer-min.js`). Sem cookie; 4,7 MB no caderno do
+# Executivo de 16/10. Só a Parte I (Poder Executivo) entra: é onde saem os decretos do governador.
+def edicoes_rj(buscar_fn, base):
+    def fn(data):
+        b = f"{base.rstrip('/')}/portal/modules/conteudoonline/"
+        cod = base64.b64encode(data.replace("-", "").encode()).decode()
+        t = buscar_fn(f"{b}do_seleciona_edicao.php?data={cod}", timeout=60, origem="coletar_doe").decode("utf-8", "replace")
+        if "cadernos do Di" not in t:
+            raise FormatoDaBuscaMudou("página de cadernos do DOE-RJ fora do contrato")
+        out = []
+        for ses, nome in re.findall(r'mostra_edicao\.php\?session=([A-Za-z0-9+/=]+)"[^>]*>\s*([^<]*?)\s*<', t):
+            if not nome.startswith("Parte I ("):
+                continue
+            pag = buscar_fn(f"{b}mostra_edicao.php?session={ses}", timeout=60, origem="coletar_doe").decode("utf-8", "replace")
+            m = re.search(r'var pd = "([0-9A-Fa-f-]{36})"', pag)
+            if not m:
+                raise FormatoDaBuscaMudou("caderno do DOE-RJ sem o identificador do PDF (var pd)")
+            pd = m.group(1)
+            out.append({"edicao": nome, "url": f"{b}mostra_edicao.php?k={pd[:12]}P{pd[12:]}"})
+        return out
+    return fn
+
+
 EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_apinova": edicoes_apinova, "edicao_sc": edicoes_sc,
                     "edicao_apifront": edicoes_apifront, "edicao_ms": edicoes_ms, "edicao_pi": edicoes_pi, "edicao_mg": edicoes_mg,
-                    "edicao_rs": edicoes_rs}
+                    "edicao_rs": edicoes_rs, "edicao_rj": edicoes_rj}
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
@@ -1168,6 +1194,11 @@ FIXTURE_LISTAGEM_MS = """<a href="https://assets.imprensaoficial.ms.gov.br/publi
 # Recortes REAIS da rota (a) do DOE-AM, 15/10/2026.
 FIXTURE_EDICOES_AM = (b'{"erro":false,"msg":"","data":"2026-10-13","numero":null,"ano":"","itens":[{"id":18246,'
                       b'"data":"13\\/10\\/2026","suplemento":0,"numero":35804,"tipo_edicao_id":1,"capa":1,"paginas":48}]}')
+FIXTURE_CADERNOS_RJ = (b'<p>Voc\xc3\xaa est\xc3\xa1 visualizando os cadernos do Di\xc3\xa1rio Oficial de <b>sexta, 16 de outubro de 2026</b>.</p>'
+                       b'<li><a href="mostra_edicao.php?session=QUJD" ID="cor-texto"  target="_blank">Parte I (Poder Executivo)</a></li>'
+                       b'<li><a href="mostra_edicao.php?session=REVG" ID="cor-texto"  target="_blank">Parte IB - (Tribunal de Contas)</a></li>')
+FIXTURE_PAGINA_RJ = b'<script type="text/javascript">var pd = "EAB21D88-45BD-4CD0-BD2A-D4F0D229380A";</script>'
+
 FIXTURE_EDICOES_RS = (b'[{"id":54767,"dataPublicacao":"16-10-2026","dataString":"2026-10-16","tipoDiario":0,'
                       b'"numeroEdicao":200,"anoEdicao":53,"qtdPaginas":4,"edicoes":[],"paginas":null},'
                       b'{"id":54768,"dataPublicacao":"16-10-2026","dataString":"2026-10-16","tipoDiario":1,'
@@ -1431,6 +1462,15 @@ def autoteste() -> int:
                      and _levanta(lambda: edicoes_rs(lambda u, **k: b'[{"id":1,"data":"x"}]', "https://x")("2026-10-16"), FormatoDaBuscaMudou)
                      and _levanta(lambda: edicoes_rs(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
+        "DOE-RJ: a Parte I do dia vira o PDF pelo identificador do visualizador; outros cadernos ficam fora; página fora do contrato levanta":
+            lambda: (edicoes_rj(lambda u, **k: FIXTURE_PAGINA_RJ if "session=QUJD" in u else FIXTURE_CADERNOS_RJ,
+                                "https://x.rj.gov.br/")("2026-10-16") == [
+                        {"edicao": "Parte I (Poder Executivo)",
+                         "url": "https://x.rj.gov.br/portal/modules/conteudoonline/mostra_edicao.php?k=EAB21D88-45BPD-4CD0-BD2A-D4F0D229380A"}]
+                     and edicoes_rj(lambda u, **k: b"<p>cadernos do Di\xc3\xa1rio Oficial de <b>x</b></p>", "https://x")("2026-10-17") == []
+                     and _levanta(lambda: edicoes_rj(lambda u, **k: b"Erro.", "https://x")("2026-10-16"), FormatoDaBuscaMudou)
+                     and _levanta(lambda: edicoes_rj(lambda u, **k: b"sem pd" if "session=" in u else FIXTURE_CADERNOS_RJ,
+                                                     "https://x")("2026-10-16"), FormatoDaBuscaMudou)),
         "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
             lambda: (edicoes_sc(lambda u, **k: FIXTURE_EDICOES_SC, "https://x/apis")("2026-10-16") == [
                         {"edicao": "22862-A", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862-A.pdf"},

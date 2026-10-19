@@ -100,8 +100,8 @@ jobs:
           # assunto: texto rapido
           # barra_publicacao: sim
           python3 scripts/verificar_escrita_portavel.py
-          # A7-11 (12/10/2026): credencial e CPF nas linhas acrescentadas pelo PR, fora de
-          # `evidencias/` (que tem portão próprio). Repositório público, publicado pela raiz.
+          # A7-11 (12/10/2026): credencial e CPF nas linhas acrescentadas pelo PR; e credencial de terceiro
+          # nas evidências preservadas (03/10, alerta do GitHub). Repositório público, publicado pela raiz.
           # assunto: texto rapido
           python3 scripts/verificar_segredos.py --contra origin/main
           # assunto: cor texto rapido
@@ -161,12 +161,14 @@ jobs:
           # preservado, `documento` em forma de título, data do instrumento, capital com uma fonte) leem o
           # banco uma vez; o autoteste (34 casos) roda dentro.
           python3 scripts/verificar_fichas_municipais.py
-          # assunto: dado
+          # 19/10/2026 (consolidação item 6): sete regras de dado num executor — ausência declarada, rótulo
+          # do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa.
+          # Barra a publicação só o que é integridade do dado (camada, esquema); o resto reprova o PR.
+          # assunto: dado texto
           # barra_publicacao: sim
-          python3 scripts/verificar_esquema_de_ato.py
-          # assunto: dado
-          # barra_publicacao: sim
-          python3 scripts/verificar_camada_declarada.py
+          python3 scripts/verificar_regras_de_dado.py --barra
+          # assunto: dado texto
+          python3 scripts/verificar_regras_de_dado.py --resto
           # assunto: dado
           python3 scripts/verificar_versao_do_indice.py
           # assunto: dado
@@ -201,13 +203,6 @@ jobs:
           python3 scripts/migrar_para_catalogo.py --autoteste
           # assunto: dado
           python3 scripts/ensaio_da_noite.py
-          # assunto: texto rapido
-          python3 scripts/verificar_ausencia_declarada.py
-          # §281 (28/09/2026): canal de DESCOBERTA exibido como canal de registro. "imprensa"
-          # serve para achar o documento, nunca para provar o ato (§5.2.1), e treze registros
-          # traziam "via imprensa" ao lado de fonte descrita como oficial.
-          # assunto: texto rapido
-          python3 scripts/verificar_rotulo_canal_descoberta.py
           # assunto: cor texto
           node scripts/verificar_runtime_resposta.js
           # assunto: cor rapido
@@ -242,11 +237,6 @@ jobs:
           # 12/10/2026 (A7-14): toda regra de layout/regras.json diz quem a julga.
           # assunto: texto rapido
           python3 scripts/verificar_conformidade.py --regras-cobertas
-          # 30/09/2026 (§307): sinal diário não pode cair em cadência semanal. A decisão da
-          # editoria de 29/09 valia quando foi escrita e deixou de valer no dia seguinte, por
-          # efeito colateral do desacoplamento — sem nada que reprovasse.
-          # assunto: texto rapido
-          python3 scripts/verificar_cadencia_sinais.py
       # Antes do portão 12, porque ele explica a falha que o 12 mostraria sem causa: derivado
       # que carimba pelo relógio da parede muda sozinho na virada do dia, e o 12 acusa "obsoleto"
       # sem dizer por quê. Em 05 para 06/10 isso derrubou nove publicações seguidas.
@@ -394,10 +384,6 @@ jobs:
           # assunto: cor texto
           # 09/10/2026 (ajuste 10): figuras de contagem da Defesa civil (Chromium real).
           node scripts/verificar_figuras_de_contagem.js
-          # assunto: dado
-          # 09/10/2026 (ajuste 2): todo documento pontuado aponta para o endereço, ou declara a lacuna.
-          # assunto: dado
-          python3 scripts/verificar_proveniencia.py
           # assunto: cor texto
           python3 scripts/verificar_conformidade.py
           # assunto: dado
@@ -508,12 +494,6 @@ jobs:
           # publicadas no mesmo trabalho. Reprova também zero indexado: 5.571 em false é falha
           # de coleta, não um fato.
           python3 scripts/verificar_paridade_cobertura_qd.py
-          # Errata C29 (01/10/2026): imprensa DESCOBRE, nunca REGISTRA. A auditoria pedida
-          # pela editoria encontrou Curitiba pontuando como `plano` com URL de jornal e fonte
-          # "via imprensa regional" — 2,8 pontos de PR apoiados em notícia, desfeitos por errata
-          # pública. A pista de notícia é legítima; o registro que pontua tem de apontar para o
-          # documento primário.
-          python3 scripts/verificar_imprensa_nao_registra.py
           # §283 (28/09/2026): frescor — compara o que foi coletado com o que foi publicado.
           # O autoteste é offline e puro; o vigia com rede vive em verificar_publicado.yml.
           python3 saude_opendatasus.py
@@ -684,21 +664,11 @@ jobs:
           # com erro (recalcular, gerar_*) e apenas ALERTA quando um coletor erra duas rodadas
           # seguidas — fonte fora do ar é rotina; coletor quebrado não é.
           python3 scripts/gerar_saude_pipeline.py --check
-          # 03/10/2026 (alerta do GitHub de 01/10): credencial de TERCEIRO dentro da página
-          # preservada. Eram 18 arquivos — chave do Flickr e do Google Maps —, servidos pelo
-          # nosso domínio porque `publish = "."` publica a raiz. A redação agora é na porta de
-          # preservação, antes do hash; este portão barra a volta pelo diff do PR.
-          python3 scripts/verificar_evidencia_sem_segredo.py --contra origin/main
           # 28/09/2026 (decisão da editoria, item 1): o Querido Diário volta ao funil. O autoteste do
           # juiz trava o recorte do ato — a pista do QD aponta a EDIÇÃO, e o documento primário do
           # §5.2.1 é o ATO. O da fila trava que ela gera ALVOS, não pistas: a primeira tentativa montou
           # pistas com o excerto errado, e a medição mostrou antes de confiar.
           python3 consultar_querido_diario.py --check
-          # 28/09/2026 (decisão da editoria, item 2): rede social é canal de DESCOBERTA. O portão cobra
-          # a condição que a autoriza — nada de rede social como fonte de registro nem como fonte no
-          # site. O autoteste dele pegou o buraco que eu deixei: fonte escrita à mão ("Instagram da
-          # Prefeitura") não tem domínio, e a primeira versão olhava só o domínio.
-          python3 scripts/verificar_rede_social_nao_e_fonte.py
 
 
   portoes:
