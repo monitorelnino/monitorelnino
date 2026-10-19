@@ -10710,7 +10710,61 @@
    "itens": null,
    "status": "pulado",
    "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-19T07:10:58",
+   "duracao_s": 63.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-19T07:12:01",
+   "duracao_s": 658.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-19T07:22:59",
+   "duracao_s": 4503.9,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-19T08:38:03",
+   "duracao_s": 417.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-19T08:45:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-19T08:45:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-10-19T07:06:52"
+ "atualizado_em": "2026-10-19T08:45:01"
 }
