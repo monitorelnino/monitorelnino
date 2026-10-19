@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #894 · Diário oficial do RJ: PDF assinado deixa de sair sem texto
 
 A edição do RJ traz a assinatura depois do fim do PDF, e o leitor a descartava como se fosse imagem: 42 páginas lidas como zero. O coletor passa a ler o PDF até o fim marcado e a decodificar os nomes de glifo da fonte (`/U0044`), e as edições do RJ voltam a casar com os termos de declaração. Código: `coletar_edicoes_doe.py` +17 (correção na leitura, com autoteste).
+## 2026-10-19 · #890 · Portões: a detecção de dado e página sai do YAML; comentários enxutos
+
+Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.
 
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
