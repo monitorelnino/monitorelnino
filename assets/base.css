@@ -999,6 +999,9 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa .figura-midia{aspect-ratio:480 / 460; position:relative; overflow:hidden;}
 .cartao-mapa .figura-midia > svg, .cartao-mapa .figura-midia > .canvas-wrap{width:100%; height:100%;}
 .cartao-mapa .figura-midia > .canvas-wrap{position:absolute; inset:0;}
+/* Na figura dupla, as duas mídias dividem a linha: a tela do gráfico volta ao fluxo, senão ela
+   é tirada da grade e desenha por cima do mapa. */
+.cartao-mapa.figura--dupla .figura-midia > .canvas-wrap{position:relative; inset:auto;}
 .canvas-wrap--mapa{aspect-ratio:480 / 460; position:relative;}
 .canvas-wrap--mapa > canvas{position:absolute; inset:0;}
 .cartao-mapa-rodape{display:flex; flex-wrap:wrap; gap:var(--sp-3); margin-top:var(--sp-2);}

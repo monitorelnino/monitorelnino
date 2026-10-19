@@ -1153,6 +1153,15 @@ function periodoEmPalavras(chave, cadencia) {
   return (meses[Number(parte) - 1] || '') + ' de ' + ano;
 }
 
+/* O mesmo período, curto o bastante para caber numa legenda de 140 caracteres. */
+function periodoCompacto(chave, cadencia) {
+  if (!chave) return 'sem período fechado';
+  if (cadencia !== 'semana') return periodoEmPalavras(chave, cadencia);
+  const [ano] = String(chave).split('-');
+  const curta = semanaEmDatas(Number(ano), chave, true);
+  return curta ? curta + ' de ' + ano : chave;
+}
+
 /* A linha dos períodos recentes sobre a faixa habitual, em SVG: polígono da faixa em mineral,
    linha em tinta, último ponto em argila. Sem eixo e sem número: quem mede é o cartão. */
 function serieEmSvg(valores, faixas, rotulo, estado) {
@@ -1231,6 +1240,38 @@ function cartaoDesfecho(d, uf) {
     + '<p class="cartao-numero-fonte">' + rodape + '</p></div>';
 }
 
+/* O mapa do detalhe: o último período FECHADO de cada estado, pintado pelos cortes que o próprio
+   arquivo traz — os quintis de 2019 a 2025, congelados na primeira gravação (METODOLOGIA §108).
+   Cortes congelados são o que permite comparar o mapa de hoje com o de outro dia; recalculá-los a
+   cada rodada mudaria a cor sem mudar o dado. Estado sem período fechado fica em sem-dado e a
+   legenda nomeia a classe — nunca zero. */
+function pintarMapaDoDesfecho(d) {
+  const svgId = 'mapaDesfecho';
+  if (!document.getElementById(svgId) || !BR_GEOJSON) return;
+  const cortes = ((d.cortes_mapa || {}).cortes || []).slice();
+  const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
+  const faixaDe = v => cortes.reduce((i, corte) => (v > corte ? i + 1 : i), 0);
+  const valor = {};
+  Object.keys(d.ultimo || {}).forEach(u => {
+    const c = (d.ultimo[u] || {}).consolidado;
+    if (u !== 'BR' && c && c.por_100mil != null) valor[u] = c.por_100mil;
+  });
+  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
+  MonitorMapas.ufs(ctx, svgId,
+    u => valor[u] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, faixaDe(valor[u]))],
+    u => valor[u] == null ? 'sem período fechado até o corte'
+      : decBR(valor[u]) + ' ' + d.unidade + ' por 100 mil habitantes');
+  const rotuloDaFaixa = i => (i === 0 ? 'até ' + decBR(cortes[0])
+    : i === cortes.length ? decBR(cortes[cortes.length - 1]) + ' ou mais'
+    : decBR(cortes[i - 1]) + ' a ' + decBR(cortes[i]));
+  MonitorMapas.legenda('legMapaDesfecho', rampa.map((cor, i) => ({cor: cor, rotulo: rotuloDaFaixa(i)}))
+    .concat([{cor: MonitorMapas.NEUTRA, rotulo: 'sem período fechado'}]));
+  const lista = document.getElementById('dlDesfechoUF');
+  if (lista) lista.innerHTML = Object.keys(valor).sort((a, b) => valor[b] - valor[a]).map(u =>
+    '<dt>' + esc(NOME_UF[u] || u) + '</dt><dd>' + esc(decBR(valor[u])) + ' ' + esc(d.unidade)
+    + ' por 100 mil habitantes</dd>').join('');
+}
+
 function pintarDesfechos() {
   const grade = document.getElementById('gradeDesfechos');
   const seletor = document.getElementById('ufDesfechos');
@@ -1263,7 +1304,10 @@ function pintarDetalhe(d, uf) {
     return;
   }
   fig.hidden = false;
-  const chaves = Object.keys((d.por_100mil || {})[uf] || {}).sort();
+  /* Só período FECHADO, na linha e no mapa: período parcial ainda recebe registro e, comparado
+     com a faixa habitual, desenha queda onde há notificação a caminho. */
+  const parciais = new Set(d.parcial || []);
+  const chaves = Object.keys((d.por_100mil || {})[uf] || {}).sort().filter(ch => !parciais.has(ch));
   const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
   const doAno = ch => faixas[String(ch).split('-')[1]] || {};
   /* Eixo em meses, como manda a régua do site; o período inteiro, por extenso, fica no texto do
@@ -1281,10 +1325,11 @@ function pintarDetalhe(d, uf) {
   const anos = chaves.length ? (chaves[0].split('-')[0] + ' a ' + chaves[chaves.length - 1].split('-')[0]) : 'sem série';
   campo('tituloDesfecho', molde('titulo', {desfecho: d.rotulo,
     territorio: uf === 'BR' ? 'Brasil' : NOME_UF[uf], periodo: anos}));
-  campo('legendaDesfecho', molde('legenda', {unidade: d.unidade,
-    cadencia: d.periodo === 'semana' ? 'semana' : 'mês',
+  const ultimoBR = ((d.ultimo || {}).BR || {}).consolidado || {};
+  campo('legendaDesfecho', molde('legenda', {
+    periodo: periodoCompacto(ultimoBR.periodo, d.periodo),
     parciais: (d.parcial || []).length
-      ? 'últimos ' + (d.parcial || []).length + ' períodos ainda em registro'
+      ? 'os ' + (d.parcial || []).length + ' períodos ainda em registro ficam fora'
       : 'série fechada até o último período'}));
   MonitorMapas.padraoGraficos(window.Chart);
   if (__graficoDesfecho.g && typeof __graficoDesfecho.g.destroy === 'function') __graficoDesfecho.g.destroy();
@@ -1307,6 +1352,10 @@ function pintarDetalhe(d, uf) {
   MonitorMapas.legenda('legDesfecho', [
     {cor: MonitorMapas.cor('vazio'), rotulo: 'valor observado'},
     {cor: MonitorMapas.PALETA.serie_habitual.faixa, rotulo: 'faixa habitual para a época (2019–2025)'}]);
+  pintarMapaDoDesfecho(d);
+  /* O gráfico nasce antes de o mapa ocupar a segunda coluna da figura dupla: sem este ajuste, a
+     tela do Chart.js guarda a largura da figura inteira e passa por cima do mapa. */
+  if (__graficoDesfecho.g && typeof __graficoDesfecho.g.resize === 'function') __graficoDesfecho.g.resize();
   fonteFigura('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
 }
 
