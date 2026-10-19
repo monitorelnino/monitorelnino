@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · A consulta do município diz o que foi feito, e cala o que não sabe</dt>
+      <dd>O cartão do município na inicial passa a dizer antes a varredura registrada no livro de verificação e depois o que não foi localizado, numa frase só — a mesma do ladrilho da capital. Município cujo registro nomeia um documento fica com a frase de antes. E no Monitor de riscos, acima de 500 km da capital mais próxima, a temperatura máxima prevista declara lacuna em vez de valor.</dd>
       <dt>19/10/2026 · O desfecho que falta na Saúde é dito em uma linha</dt>
       <dd>A seção de desfechos passa a declarar, abaixo da grade, qual dos seis desfechos em evidência ainda não tem série na forma comum. O nome vem do catálogo dos desfechos, não da página, e a linha some sozinha quando o arquivo nascer. Hoje ela diz: &quot;Mortalidade geral entra quando a série estiver completa.&quot;</dd>
       <dt>19/10/2026 · O cartão escolhido na Saúde fica visível</dt>
@@ -165,8 +167,6 @@
       <dd>Fonte nova `noaa_nino34_semanal` (arquivo `wksst9120.for` do CPC) em `sinais_risco.json → enos.nino34_semanal`, de 2025 em diante, para o gráfico abaixo do RONI. Achado no caminho: desde 30/09 a rodada completa pulava a camada de apoio técnico, e ONI, Niño 3.4 mensal e a discussão do CPC estavam parados em 30/09. Voltam a ser coletados.</dd>
       <dt>17/10/2026 · Ato de resposta aplicado pelo juiz passa pela porta do carimbo</dt>
       <dd>`julgar_e_aplicar_descobertas.aplicar_resposta` gravava `atos_resposta.json` sem `carimbar_atos`, a porta única do carimbo e do tipo de evento: 13 atos de imprensa ficaram com `tipo_evento` nulo (achado da A2). Agora grava pela porta; a próxima escrita de qualquer coletor recarimba os 13. Trava no autoteste.</dd>
-      <dt>17/10/2026 · Saúde: risco previsto em etiquetas de sigla; grade dos estados com uma barra</dt>
-      <dd>Na seção dos estados, o mapa de risco previsto vira etiquetas de sigla por família, o mesmo componente do Monitor de riscos (agora em `MonitorMapas.faixaPrevista`, sem cópia). A legenda do mapa do MARÉ Saúde mostra o intervalo de cada faixa, lido do dado. Os cartões dos 27 estados ficam com uma barra só. Números do topo: `.grade-numeros--compacta` põe até seis numa linha (três no tablet, dois no celular), já no Monitor de riscos e na Saúde.</dd>
     </dl>
   </section>
 </main>
