@@ -23,7 +23,7 @@ Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária
 
 ## 2026-10-19 · #908 · Orientações oficiais: as listas de dengue entram no dado
 
-A página de dengue do Ministério da Saúde chegava só com os dois cabeçalhos ("Sinais e sintomas mais comuns", "Sinais e sintomas de alerta"): os itens da lista têm menos de 25 caracteres e a seleção de frases os descartava. O extrator agora leva a lista sob cada cabeçalho com dois-pontos, até o parágrafo seguinte. Passam a constar seis sintomas comuns, seis sinais de alerta e a conduta de procurar atendimento, com o hash da página preservada. `coletar_orientacoes_oficiais.py` +22 −4.
+A página de dengue do Ministério da Saúde chegava só com os dois cabeçalhos ("Sinais e sintomas mais comuns", "Sinais e sintomas de alerta"): os itens da lista têm menos de 25 caracteres e a seleção de frases os descartava. O extrator agora leva a lista sob cada cabeçalho com dois-pontos, até o parágrafo seguinte. Passam a constar seis sintomas comuns, seis sinais de alerta e a conduta de procurar atendimento, com o hash da página preservada. `coletar_orientacoes_oficiais.py` +22 −4. O autoteste da união de conflitos deixa de falhar na limpeza do diretório temporário (gc em segundo plano do git desligado): +4.
 
 ## 2026-10-19 · #903 · Saúde de Rondônia: o link oficial do plano entra no canal 4
 

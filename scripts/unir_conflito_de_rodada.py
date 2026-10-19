@@ -596,7 +596,10 @@ def _repo_com_conflito(tmp, caminho, base, nosso, deles):
     """Monta um repositório de verdade e provoca um conflito de verdade no caminho pedido."""
     r = pathlib.Path(tmp)
     amb = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
-           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t",
+           # sem gc/manutenção em segundo plano: ela escrevia em `.git` durante o rmtree do tempdir
+           "GIT_CONFIG_COUNT": "2", "GIT_CONFIG_KEY_0": "gc.auto", "GIT_CONFIG_VALUE_0": "0",
+           "GIT_CONFIG_KEY_1": "maintenance.auto", "GIT_CONFIG_VALUE_1": "false"}
 
     def g(*a, ok_falhar=False):
         p = subprocess.run(["git", *a], cwd=str(r), capture_output=True, env=amb)
