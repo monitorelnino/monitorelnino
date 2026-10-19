@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
+
+`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.
+
+## 2026-10-17 · #845 · Legenda de mapa com amostra de ponto vazado
+
+`MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.
+
+## 2026-10-17 · #839 · Portões acompanham as páginas reformadas
+
+Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.
+
 ## 2026-10-17 · #841 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc
 
 `coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.

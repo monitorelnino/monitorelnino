@@ -162,8 +162,8 @@ setTimeout(() => {
       // a de antes, que só olhava se os acordeões estavam fechados.
       const abasP = [...dP.querySelectorAll('#riscoEscolha [role="tab"]')];
       const paineisP = ["guia-chuvas","guia-fogo","guia-seca","guia-calor"].map(qP);
-      teste("proteja-se: quatro fichas de risco, uma por aba",
-        abasP.length === 4 && paineisP.every(Boolean));
+      teste("proteja-se: as quatro fichas de risco, cada aba com o seu painel",
+        abasP.length >= 4 && paineisP.every(Boolean) && abasP.every(a => qP(a.getAttribute("aria-controls"))));
       teste("proteja-se: exatamente uma ficha aberta por vez",
         paineisP.filter(x => x && !x.hidden).length === 1);
       teste("proteja-se: a ficha aberta é a da aba selecionada", (() => {
@@ -173,29 +173,9 @@ setTimeout(() => {
       // 17/09/2026 (pedido da editoria): "Qual é o risco projetado no seu estado" saiu da página — o mesmo
       // mapa já mora em monitor-de-riscos.html; nada a fazer aqui além de conferir que a seção sumiu.
       teste("proteja-se: seção de risco por estado não existe mais (mora em monitor-de-riscos.html)", !qP("selUFProteja") && !qP("riscoDoEstado"));
-      // 15/09/2026: "Defesa Civil do seu estado" — 27 cartões do dado (contatos_uf.json), cada um com telefone tocável
-      const C = JSON.parse(fs.readFileSync(path.join(raiz, "data", "contatos_uf.json"), "utf8"));
-      // 09/10/2026 (ajuste 8): UM controle — a grade das 27 siglas. Escolher três estados abre o cartão
-      // de cada um, com telefone (tel:), e-mail (mailto:) quando houver e o portal; nada abaixo da
-      // grade sem estado escolhido; socorro (199, 193, 192) logo abaixo do título.
-      const botoes = [...(qP("contatoSiglas") || {querySelectorAll: () => []}).querySelectorAll("button[data-uf]")];
-      teste("proteja-se: 27 siglas na grade da Defesa Civil, em ordem alfabética",
-        botoes.length === 27 && botoes.map(b => b.dataset.uf).join() === Object.keys(C.uf).sort().join());
-      teste("proteja-se: sem estado escolhido, nada abaixo da grade", qP("contatoDestaque").hidden);
+      // 17/10/2026 (HANDOVER_PROTEJA_SE §1): saem a grade das 27 siglas, a segunda grade de telefones
+      // e os cartões de navegação; o socorro fica uma vez só, nos cartões de emergência abaixo.
       teste("proteja-se: sem seletor nem 'Ver todos os estados'", !qP("selUFContato") && !qP("accTodosContatos") && !qP("contatoVazio"));
-      const amostra = [Object.keys(C.uf).sort()[0], "PE", "SP"];
-      teste("proteja-se: escolher três estados abre o cartão de cada um com tel:, e-mail e portal", amostra.every(uf => {
-        const b = botoes.find(x => x.dataset.uf === uf); if (!b) return false;
-        b.dispatchEvent(new domP.window.MouseEvent("click", { bubbles: true }));
-        const d = qP("contatoDestaque"), c = C.uf[uf];
-        return !d.hidden && b.getAttribute("aria-pressed") === "true" && d.textContent.includes(c.telefones[0])
-          && d.querySelector('a[href^="tel:"]') && (!c.email || d.querySelector('a[href^="mailto:"]'))
-          && (!c.portal || d.querySelector('a[target="_blank"]'));
-      }));
-      teste("proteja-se: socorro imediato na seção da Defesa Civil (199, 193, 192, tocáveis)",
-        ["199","193","192"].every(n => qP("quem-chamar").querySelector('a[href="tel:' + n + '"]')));
-      teste("proteja-se: a seção 'Alertas de saúde agora' saiu, e o recado aponta os destinos",
-        !qP("alertas-saude") && ["saude.html", "defesa-civil.html#alertas"].every(h => dP.querySelector('.recado-destinos a[href="' + h + '"]')));
       // 30/09/2026: o texto aprovado traz QUATRO números e não traz mais o 40199 — o SMS saiu
       // da barra e a frase passou a apontar o alerta que não pede cadastro. O 40199 continua
       // dentro da ficha de chuva, que é conteúdo reproduzido do órgão e não mudou.
@@ -324,7 +304,7 @@ setTimeout(() => {
     const IDS_DADO = {
       "index.html": ["heroProcura", "respNum", "metaAtualizado", "corteDados"],
       // 02/10/2026 (bloco A): os medidores e o corte saíram do topo; os cartões do topo são outros.
-      "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta", "nCalorMun", "nEmergSaude"],
+      "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta", "nCalorMun"],
       // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
       // 02/10/2026: `corteFin` saiu da página (a data da página é a da última coleta e vive
       // nos cartões da semana). Campo que o portão cobra e a página não tem reprova para sempre.

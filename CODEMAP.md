@@ -6,7 +6,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **O que ele não é:** análise de dependência completa. Não segue `import` transitivo nem chamada dinâmica — é um índice de primeira ordem, tirado dos `fetch(...)`, dos `gravar(...)` e das listas de páginas dos portões. Para "por onde começo", basta; para "nada mais pode ser afetado", quem responde é o portão de runtime.
 
-**Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_layout.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
+**Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_conformidade.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
 Atualizado em 17/10/2026.
 
@@ -189,7 +189,7 @@ Atualizado em 17/10/2026.
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
-| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 2 | não |
+| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 3 | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
 | `scripts/unir_conflito_de_rodada.py` | — | `cobertura_declarada_uf.json`, `evidencias.json`, `fontes_consultadas.json`, `funil/2026-10-05.json`, `funil/x.json`, `historico_mudancas.json` (+16) | — | 3 | não |
 | `seguir_pistas.py` | — | — | — | — | não |
