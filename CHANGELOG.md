@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · Sai o portão de autoteste sem chamador
+
+`verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.
+
 ## 2026-10-19 · #851 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos
 
 `aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.
