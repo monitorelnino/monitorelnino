@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · A Saúde ganha a seção única de desfechos</dt>
+      <dd>A seção &quot;O que os órgãos de saúde registram&quot; passa a abrir com um cartão por desfecho, todos lidos da mesma forma de arquivo: último valor por 100 mil, faixa habitual para a época, a série recente em linha e a fonte com a data. Um seletor escolhe Brasil ou estado. Desfecho sem arquivo não vira cartão vazio. Estreia com diarreias e leptospirose; os demais entram quando a série nascer.</dd>
       <dt>19/10/2026 · Seis números numa linha, e a busca cobrada onde há lista</dt>
       <dd>A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.</dd>
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
@@ -165,8 +167,6 @@
       <dd>Fim do run em `coleta-dia/*` com push: o `_coletor.yml` abre o PR de dado com o `ROBO_TOKEN` (o `GITHUB_TOKEN` não dispara os Portões), sem sessão esperando run (HANDOVER_FILA_DE_PISTAS_SEM_SESSAO §1.3). Sem token, avisa; PR já aberto, não duplica. Provado no executor: o run 39027347586 abriu o #821 (de teste, fechado).</dd>
       <dt>17/10/2026 · Diários estaduais: 404 não é recusa; 20 UFs com rota provada</dt>
       <dd>Endereço errado (404) era gravado como recusa e fechava 17 diários. Agora é &quot;rota não descoberta&quot;; recusa só 401/403/429/451. O canal 2 passa a ler pelos adaptadores medidos do `fontes_doe.json`: edição por data e busca com os termos de declaração, por uma porta única. Rotas novas medidas do runner: PA, RO, RN, RR por data; AL e SC por API. &quot;Consultado&quot; exige o ciclo inteiro coberto.</dd>
-      <dt>17/10/2026 · Resposta sanitária: zero sem busca vira &quot;não coletado&quot;</dt>
-      <dd>O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.</dd>
     </dl>
   </section>
 </main>
