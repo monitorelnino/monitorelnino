@@ -319,6 +319,19 @@
    "sinan_tb": "FINAIS TUBEBR12–19, PRELIM TUBEBR20–25; TUBEBR25 (5,8 MB) baixado e decodificado em ~20 s no executor; 112.482 registros; SITUA_ENCE com 10 códigos",
    "sih": "leitura por máquina já provada em 17/10 e 19/10; F00–F99 usa o mesmo DIAG_PRINC dos grupos coletados",
    "ftp_do_ambiente_de_edicao": "ftp.datasus.gov.br não resolve fora do executor; sondas só pelo executor"
+  },
+  {
+   "data": "19/10/2026",
+   "janela": "E1",
+   "cievs_estaduais": {
+    "GO": "recusa nomeada: goias.gov.br/saude/boletins-epidemiologicos respondeu HTTP 403 ao cliente identificado; bloqueio respeitado, sem contorno",
+    "PR": "rota nomeada: saude.pr.gov.br/Pagina/Dengue abre (HTTP 200) e aponta para o sítio dengue.pr.gov.br; boletim ainda não lido; adaptador pendente",
+    "SC": "sem rota localizada: dive.sc.gov.br/index.php/dengue e /boletins responderam 404; endereço do boletim a descobrir",
+    "AM": "rota nomeada: fvs.am.gov.br abre e aponta para fvs.am.gov.br/boletim-epidemiologico; boletim ainda não lido",
+    "PA": "rota nomeada: saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/ (páginas de boletim de arboviroses e de malária); boletim ainda não lido",
+    "RO": "rota de rede: inalcançável a partir do executor; nomeada como rota, não como recusa"
+   },
+   "executor": "válvula coleta-dia, cliente identificado, 28 s; nenhum dado gravado"
   }
  ]
 }
