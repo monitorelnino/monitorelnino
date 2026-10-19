@@ -48,9 +48,6 @@
       "el": "boxListaIndicados"
     },
     {
-      "el": "boxListaSemiarido"
-    },
-    {
       "el": "boxListaFogo"
     }
   ],
@@ -64,6 +61,7 @@
     "defeso",
     "Hemisfério Norte"
   ],
+  "_ajustes_19_10": "19/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS_AJUSTES): saem o gráfico dos municípios do Semiárido (as duas listas que ficam vão na grade de dois), a nota longa do mapa de qualidade do ar (passou à METODOLOGIA §41.7), o parágrafo de abertura das listas federais e a frase \"Cada mapa diz de quando é o dado\"; a sigla de UF da faixa de risco previsto deixa de ser link; o cartão do ar entra em `numeros_esperados`, com o texto no catálogo. Divergência medida: o pedido supunha que o cartão de número não prendia o rodapé na base — `.cartao-numero-fonte` já traz `margin:auto 0 0`, e o vão vinha só do comprimento do texto, que é o que encurtou; teto de linhas em CSS não entrou, porque cortar texto aprovado criaria texto invisível, que o portão de acessibilidade proíbe.",
   "secoes": [],
   "_nota_pacifico": "03/10/2026: as duas figuras do Pacífico (`boxRoni`, `boxAnomalia`) estavam FORA do componente `.cartao-mapa` — eram as duas únicas figuras com mídia do site fora dele. O portão de conformidade apontou, e a correção foi pôr as duas no componente, e não abrir exceção: a regra de componente existe para que figura equivalente tenha a mesma moldura. | 07/10/2026: `boxAnomalia` (anomalia mensal do Niño 3.4) SAIU da página e entrou `boxEpisodios` — os dois gráficos passam a medir o MESMO índice (RONI), na mesma escala e no mesmo eixo. O dado da anomalia mensal continua coletado. Os dois são SVG desenhado na largura real do contêiner, e não canvas escalado: é o que mantém a letra em 12 px no celular, como o pedido exige.",
   "numeros_esperados": {
@@ -76,7 +74,8 @@
       "focos_24h",
       "seca_grave_estados",
       "calor_desvio_capital",
-      "avisos_estados"
+      "avisos_estados",
+      "ar_iqar_ruim"
     ],
     "exige_fonte_e_data": true,
     "_divergencia_09_10": "09/10/2026 (ajuste 3, editoria): de quatro para TRÊS cartões numa linha. O pedido de 07/10 (quatro cartões) fica superado: a previsão da NOAA/CPC deixou de ser cartão e virou linha de apoio do cartão de probabilidade. O cartão do boletim mostra os três riscos com a mesma hierarquia, em ordem alfabética (chuva, fogo, seca), escolhida pelo Code por ser neutra.",

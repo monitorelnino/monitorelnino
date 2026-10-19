@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · Monitor de riscos: textos do topo mais curtos e quatro trechos a menos
+
+Os sete cartões de "Situação atual" ganham rótulo e apoio curtos, e a frase da previsão da NOAA/CPC desce do cartão para o texto da seção. Saem da página a nota longa do mapa de qualidade do ar (vai à METODOLOGIA §41.7), o parágrafo das listas federais, o gráfico do Semiárido e duas frases redundantes. A sigla de UF deixa de ser link. "Ar" passa a "qualidade do ar". A abertura da inicial fica um degrau menor, menos no celular.
+
 ## 2026-10-19 · #860 · RO saúde: plano recebido por LAI, registrado sem julgamento
 `data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.
 

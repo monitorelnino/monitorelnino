@@ -1355,6 +1355,8 @@ O painel do MS **não publica API**: o endereço é função interna do aplicati
 
 **Apoio técnico (16/10/2026).** Com a figura do ar medido, a fonte "Qualidade do ar medida" (lista de locais do OpenAQ) deixa de ser exibida no Monitor de riscos e passa a apoio técnico: é usada só para casar as estações oficiais em `data/ar_medido.json`.
 
+**O que o mapa de qualidade do ar não diz (19/10/2026, pedido da editoria).** A nota longa saiu da página — limite de método vive aqui — e o que ela dizia fica registrado: cidade **sem ponto no mapa** é cidade sem estação oficial nem sensor da rede, e não cidade com ar limpo; estação regulatória e sensor de baixo custo medem na mesma unidade, **não** com a mesma confiabilidade, e o mapa não os compara entre si; o padrão brasileiro de PM2,5 em 24 h é de **50 µg/m³** (PI-1, CONAMA 506/2024).
+
 ### 41.8 Focos de calor: o satélite de referência como base de comparação (16/10/2026)
 
 O arquivo diário do INPE traz a detecção de **todos** os satélites, e o mesmo fogo aparece em vários deles: em 15/10/2026 foram 35.850 linhas no dia, 569 do satélite de referência (`AQUA_M-T`). Somar satélites conta o mesmo fogo mais de uma vez e muda com o número de satélites em órbita; por isso toda **comparação entre dias e entre anos** usa só o satélite de referência, que é o que o INPE usa na sua própria série histórica e o único que o arquivo anual de referência traz.

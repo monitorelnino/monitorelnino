@@ -30,8 +30,8 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=f6defbc0">
-<script src="assets/mapas.js?v=9105a8ac"></script>
+<link rel="stylesheet" href="assets/base.css?v=6c87bf5e">
+<script src="assets/mapas.js?v=c289784a"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -67,23 +67,22 @@
         <p class="cartao-numero-rotulo" id="stDuracaoRotulo" data-conteudo="monitor-de-riscos.situacao.duracao.rotulo">Probabilidade de El Niño (IRI/CPC)</p>
         <p class="cartao-numero-valor" id="stDuracaoValor">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="stDuracaoVariacao"></p>
-        <p class="cartao-numero-variacao" id="stPrevisaoVariacao"></p>
         <p class="cartao-numero-fonte" id="stDuracaoFonte"></p>
       </div>
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="focos_24h">
-        <p class="cartao-numero-rotulo" id="stFogoRotulo" data-conteudo="monitor-de-riscos.situacao.fogo.rotulo">Focos de fogo no Brasil nas últimas 24 horas</p>
+        <p class="cartao-numero-rotulo" id="stFogoRotulo" data-conteudo="monitor-de-riscos.situacao.fogo.rotulo">Focos de fogo no Brasil, últimas 24 horas</p>
         <p class="cartao-numero-valor" id="stFogoValor">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="stFogoApoio"></p>
         <p class="cartao-numero-fonte" id="stFogoFonte"></p>
       </div>
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="seca_grave_estados">
-        <p class="cartao-numero-rotulo" id="stSecaRotulo" data-conteudo="monitor-de-riscos.situacao.seca.rotulo">Estados com seca grave, extrema ou excepcional em pelo menos metade da área</p>
+        <p class="cartao-numero-rotulo" id="stSecaRotulo" data-conteudo="monitor-de-riscos.situacao.seca.rotulo">Estados com seca grave ou mais intensa em metade da área</p>
         <p class="cartao-numero-valor" id="stSecaValor">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="stSecaApoio"></p>
         <p class="cartao-numero-fonte" id="stSecaFonte"></p>
       </div>
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="calor_desvio_capital">
-        <p class="cartao-numero-rotulo" id="stCalorRotulo" data-conteudo="monitor-de-riscos.situacao.calor.rotulo">Maior diferença entre a máxima prevista e o normal, numa capital</p>
+        <p class="cartao-numero-rotulo" id="stCalorRotulo" data-conteudo="monitor-de-riscos.situacao.calor.rotulo">Maior desvio da máxima prevista numa capital</p>
         <p class="cartao-numero-valor" id="stCalorValor">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="stCalorApoio"></p>
         <p class="cartao-numero-fonte" id="stCalorFonte"></p>
@@ -124,7 +123,7 @@
 
   <div class="panel" id="riscos">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao_2">Os riscos no Brasil</h2>
-    <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño. Cada mapa diz de quando é o dado.</p>
+    <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño.</p>
 
     <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto deixa de ser mapa e
          vira uma faixa de etiquetas por família; cada bloco de família abre com "Boletim prevê para".
@@ -137,7 +136,7 @@
       </figure>
     </div>
     <div class="faixa-selo faixa-selo--familia">
-      <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_seca">Seca, fogo, ar e calor</p>
+      <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_seca">Seca, fogo, qualidade do ar e calor</p>
       <p class="boletim-preve" id="preveSeca"></p>
     </div>
     <div class="grade-figuras grade-figuras--1">
@@ -170,7 +169,6 @@
         <p class="figura-sub" id="arSub">IQAr das estações oficiais, por cidade · sensores de PM2,5 em µg/m³</p>
         <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil com o IQAr das estações oficiais por cidade e os sensores de baixo custo de PM2,5" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAr"></div>
-        <p class="figura-nota" data-conteudo="monitor-de-riscos.ar.nota">Sem ponto no mapa: cidade sem estação oficial nem sensor na rede — não significa ar limpo. Estação regulatória e sensor de baixo custo medem na mesma unidade, não com a mesma confiabilidade; o mapa não os compara entre si. Padrão brasileiro de PM2,5 (24 h): 50 µg/m³ (PI-1, CONAMA 506/2024).</p>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxTemperatura">
         <h3 class="figura-titulo" id="tituloTemperatura">Temperatura máxima prevista nas capitais</h3>
@@ -199,20 +197,15 @@
     </div>
 
     <!-- 17/10/2026 (HANDOVER_DEFESA_CIVIL §6): as três listas federais de risco vieram da Defesa civil,
-         como contexto dos blocos de chuva, seca e fogo; sem lista embaixo (§10 deste handover). -->
-    <p class="hint" data-conteudo="monitor-de-riscos.listas.abertura">As listas federais de municípios por risco. Constar de uma lista não é decretar emergência; é ter o risco reconhecido pelo governo federal. Constar da lista de indicados não é estar inscrito no cadastro: a inscrição é ato do município, e a lista de inscritos não é pública.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
+         como contexto dos blocos de chuva, seca e fogo; sem lista embaixo (§10 deste handover).
+         19/10/2026 (editoria, ajuste 7): o gráfico dos municípios do Semiárido saiu; ficam duas listas,
+         na grade de dois, que é o componente de grade que o site já tem para um par de figuras. -->
+    <div class="grade-figuras grade-figuras--2 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxListaIndicados" data-chave="enquadramento_card.json#chuva">
         <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.indicados.titulo">Risco de deslizamento ou enchente indicado pela União</h3>
         <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.indicados.sub">Municípios indicados pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A; MIDR e Casa Civil, 2025) · nº no estado</p>
         <div class="figura-midia"><svg id="mapListaIndicados" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado indicados pela União ao cadastro nacional de áreas suscetíveis a deslizamento e enchente" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legListaIndicados"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa" id="boxListaSemiarido" data-chave="enquadramento_card.json#seca">
-        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.semiarido.titulo">Municípios do Semiárido</h3>
-        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.semiarido.sub">Delimitação do Semiárido (Sudene, 2024) · nº no estado</p>
-        <div class="figura-midia"><svg id="mapListaSemiarido" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado na delimitação do Semiárido da Sudene" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legListaSemiarido"></div>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxListaFogo" data-chave="enquadramento_card.json#fogo">
         <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.fogo.titulo">Prioritários no controle do desmatamento e do fogo na Amazônia</h3>
@@ -251,7 +244,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/consulta-municipio.js?v=214e0816" defer></script><script src="assets/js/monitor-de-riscos.js?v=45672f28" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/consulta-municipio.js?v=214e0816" defer></script><script src="assets/js/monitor-de-riscos.js?v=d87f1f79" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

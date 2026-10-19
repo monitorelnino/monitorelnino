@@ -181,7 +181,7 @@ header.masthead{display:block; margin-bottom:var(--sp-6);}
 .mast-marca{min-width:0;}
 .site-nome-p{margin:0;}
 .site-nome{display:block; font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-titulo); color:var(--ink); max-width:none; margin:var(--sp-4) 0 0;}
-.site-intro{font-size:var(--fs-body); line-height:var(--lh-body); color:var(--muted); max-width:52ch; margin:0;}
+.site-intro{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted); max-width:52ch; margin:0;}
 .masthead--mini .site-title--logo{margin:0 0 var(--sp-1);}
 .masthead--mini .site-title--logo svg{width:210px;}
 .masthead--mini .site-nome{font-size:var(--fs-h4); line-height:var(--lh-h4); margin-top:var(--sp-1);}
@@ -585,7 +585,6 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .risco-box .k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); text-transform:uppercase; letter-spacing:var(--ls-caps); margin:0 0 var(--sp-1);}
 .risco-box .v{font-size:var(--fs-body); line-height:var(--lh-body); margin:0 0 var(--sp-2);}
 .chips{display:flex; flex-wrap:wrap; gap:var(--sp-1);}
-a.chip-risco{text-decoration:none;}
 .chip-risco{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); padding:2px var(--sp-2); border-radius:999px; background:var(--branco); border:1px solid currentColor;}
 .risco-box .fonte{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:var(--sp-2) 0 0;}
 .meu-card{background:var(--branco); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-4) var(--sp-5); margin-top:var(--sp-3); box-shadow:var(--sombra);}
@@ -708,9 +707,10 @@ a.chip-risco{text-decoration:none;}
    eles ganharam a classe `.ficha-rotulo` para dizê-lo, e é por ela que o portão de conformidade
    sabe que ali a família é a de DADO, e não a de display. */
 .ficha-col h3, .ficha-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-2); padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
-.ficha-col ul{list-style:none; margin:0; padding:0;}
-.ficha-col li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
-.ficha-col li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted); font-size:var(--fs-body);}
+/* 19/10/2026 (pedido da B2, guia do Proteja-se): sai o glifo de caixa (☐). Ele prometia uma
+   interação que a lista não tem, e a página não dá instrução de uso. Volta a lista padrão. */
+.ficha-col ul{margin:0; padding-left:var(--sp-5);}
+.ficha-col li{margin:0 0 var(--sp-2); font-size:var(--fs-small); line-height:var(--lh-small);}
 /* .ficha-alerta era branco dentro de um card que também era branco (cinza antes) — sem contraste próprio
    para um aviso que precisa se destacar. Vira caixa com fundo neutro e borda esquerda na cor do risco. */
 .ficha-alerta{background:var(--surface-2); border-left:4px solid var(--mineral); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); margin:var(--sp-3) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
@@ -836,6 +836,10 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .prazo-rel{grid-template-columns:56px 1fr;}
   .prazo-rel .relogio{width:56px; height:56px;}
   .mast-body{margin-bottom:var(--sp-3);}
+  /* 19/10/2026 (editoria): a abertura da inicial fica um degrau menor da escala, mas no celular um
+     parágrafo de quatro frases em 14 px aperta — aqui ele volta a 16 px. O breakpoint é o canônico
+     do site (640 px); a decisão da central dizia 767 px, que este CSS não tem. */
+  .site-intro{font-size:var(--fs-body); line-height:var(--lh-body);}
 }
 
 /* ===== 19. Impressão ===== */

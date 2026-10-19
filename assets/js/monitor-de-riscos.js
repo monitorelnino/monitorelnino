@@ -133,7 +133,8 @@ const componentesDe = uf => {
   return c.filter(x => x !== 'sem_sinal');
 };
 // 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2): o risco previsto é uma FAIXA de etiquetas por
-// família, na ordem pedida; cada sigla abre a ficha do estado na inicial. Previsão, não observação.
+// família, na ordem pedida. 19/10/2026 (editoria, ajuste 6): a sigla é etiqueta, não link — ela levava
+// de volta à página anterior; quem desenha a etiqueta é `MonitorMapas.chipsDeUF`, para todas as páginas.
 const FAMILIAS_PREVISTAS = [
   ['Seca', c => c.length === 1 && c[0] === 'estiagem'],
   ['Seca e fogo', c => c.includes('estiagem') && c.includes('incendios')],
@@ -154,7 +155,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   }));
   const doc = pe.documento ? String(pe.documento).replace(/^.*?(Boletim)/, '$1') : 'Boletim do Painel El Niño';
   const sub = document.getElementById('riscoPrevistoSub');
-  if (sub) sub.textContent = doc + ' · até março de 2027 · previsão, não observação';
+  if (sub) sub.textContent = doc + ' · até março de 2027';
   credito('boxRiscoPrevisto', 'painel_el_nino');
   // "Boletim prevê para", ao lado do título de cada bloco de família.
   const preve = (id, teste) => { const el = document.getElementById(id); if (!el) return;
@@ -619,14 +620,14 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
 })();
 
 // ---- Listas federais de risco (17/10/2026, HANDOVER_DEFESA_CIVIL §6: vieram da Defesa civil) ----
-/* Quantos municípios de cada estado constam de cada lista, de `enquadramento_card.json` (as marcas
+/* (19/10/2026, ajuste 7: o Semiárido saiu; ficam duas listas.)
+   Quantos municípios de cada estado constam de cada lista, de `enquadramento_card.json` (as marcas
    por código IBGE; o estado vem da referência do IBGE). Indicados pela União = cadastro de enxurradas
    e inundações (`ch`) mais os indicados só por deslizamento (`geo`). Sem o arquivo, lacuna declarada. */
 (function listasFederais(){
   const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
   const fontes = (ENQ && ENQ.fontes) || {};
   [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023'],
-   ['boxListaSemiarido', 'mapListaSemiarido', 'legListaSemiarido', v => v.sa, 'seca', 'Sudene, Resolução Condel nº 176/2024'],
    ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente']].forEach(([caixa, svg, leg, consta, chave, fonte]) => {
     const f = fontes[chave] || {};
     if (!ENQ) {
@@ -791,10 +792,13 @@ function põeCat(elId, id, valores, reserva){
     const sinopse = String(pg.sinopse || '').toLowerCase();
     const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
     const f = fonte('cpc_ensodisc');
-    põeCat('stPrevisaoVariacao',
-      I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
+    // 19/10/2026 (editoria): a frase da previsão deixa o cartão — seis linhas de apoio esticavam a
+    // grade inteira — e entra no texto da seção, onde interpretação pode viver. Mesmo texto, outro lugar.
+    const frase = txtCat(I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
       {limiar: pg.limiar === 'acima de' ? 'acima de' : 'de', probabilidade: pg.probabilidade,
        orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em});
+    const resumo = el('stResumo');
+    if (frase && resumo) resumo.textContent = (resumo.textContent || '').trim() + ' ' + frase;
   }
 
   // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
@@ -841,14 +845,19 @@ function põeCat(elId, id, valores, reserva){
   }
 
   // Cartão "Ar" (HANDOVER_TEXTOS_B §10.3.6): só existe quando há cidade com IQAr Ruim ou pior no MMA.
+  // 19/10/2026 (editoria): o rótulo encurta e leva só o dia; a hora da medição desce para a linha de
+  // apoio, logo acima da fonte. O texto saiu do JS e vive no catálogo, como o das outras seis.
   const ruins = cidadesAr.filter(c => faixaIqar(c.pior) >= 2);
   const grade = document.getElementById('situacaoGrade');
   if (ruins.length && grade) {
     const ult = ruins.map(c => c.pior.iqar.medido_em).sort().pop();
     grade.insertAdjacentHTML('beforeend', '<div class="cartao-numero cartao-numero--risco_agora" data-cartao="ar_iqar_ruim">'
-      + '<p class="cartao-numero-rotulo">Cidades com IQAr Ruim, Muito Ruim ou Péssima' + (hora(ult) ? ', ' + esc(hora(ult)) : '') + '</p>'
-      + '<p class="cartao-numero-valor">' + esc(String(ruins.length)) + '</p>'
-      + '<p class="cartao-numero-variacao">primeira leitura</p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
+      + '<p class="cartao-numero-rotulo" id="stArRotulo"></p>'
+      + '<p class="cartao-numero-valor" id="stArValor"></p>'
+      + '<p class="cartao-numero-variacao" id="stArApoio"></p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
+    põeCat('stArRotulo', I + (diaMes(ult) ? 'ar.molde_rotulo' : 'ar.rotulo'), {data: diaMes(ult)});
+    põeCat('stArValor', I + 'ar.molde_valor', {n: ruins.length});
+    if (hora(ult)) põeCat('stArApoio', I + 'ar.molde_apoio', {hora: hora(ult)});
     MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr'], data: (fontesAr.monitorar || {}).consultado_em});
   }
 })();
