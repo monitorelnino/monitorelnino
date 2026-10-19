@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-16",
+ "atualizado_em": "2026-10-19",
  "falhas": [
   {
    "id": "F01",
@@ -986,6 +986,32 @@
    ],
    "correcao": "O verificador não grava mais a cópia; as cópias iguais saíram do dado (#815). O crescimento de ~2 MB/noite da fila segue a tratar.",
    "caso_de_teste": "scripts/verificar_tamanho_dos_dados.py"
+  },
+  {
+   "id": "F72",
+   "noite": "2026-10-17→2026-10-18",
+   "titulo": "Juiz promoveu plano com endereço de notícia e a rede de proteção estava desligada",
+   "sintoma": "main vermelha desde 18/10 02:36 e Publicar dados barrado: verificar_fichas_municipais reprova Ilhabela/SP (plano com endereço de notícia).",
+   "causa": "aplicar_promocoes_do_juiz gravava o registro sem a régua D1 (rodar_portoes não inclui o portão das fichas) e o resolvedor de domínio caía em `except ImportError → None` porque `municipio_do_dominio` vive em scripts/.",
+   "prova": [
+    "python3 scripts/verificar_fichas_municipais.py na main: 1 problema (Ilhabela/SP)",
+    "`from municipio_do_dominio import` falha fora de scripts/ (ModuleNotFoundError)"
+   ],
+   "correcao": "A promoção valida o registro com problemas_de_documento antes de gravar e importa scripts.municipio_do_dominio sem fallback; o registro saiu do banco (#851).",
+   "caso_de_teste": "scripts/verificar_fichas_municipais.py"
+  },
+  {
+   "id": "F73",
+   "noite": "2026-10-18→2026-10-19",
+   "titulo": "Fila de pistas voltou a passar de 50 MB: texto de trabalho de pista encerrada",
+   "sintoma": "data/pistas_imprensa.json com 52,7 MB em 18/10 e 56,1 MB em 19/10 07:07; portão de tamanho vermelho.",
+   "causa": "Pista encerrada guardava título, trecho, verificação, preparação e histórico de tentativas, que só serviram para julgá-la; a fila cresce 1–3 MB por elo de busca.",
+   "prova": [
+    "20 MB dos 56 MB eram texto de pistas encerradas (medida por aberta())",
+    "trecho_documento e criterios de veiculo_nao_listado sem leitor"
+   ],
+   "correcao": "limpar_fila_de_pistas.compactar tira o texto de trabalho da pista encerrada, aplicado pela triagem toda noite; 56,1 → 45,9 MB (#851). A poda das 9.165 pistas de decreto sem leitor aguarda a editoria.",
+   "caso_de_teste": "scripts/limpar_fila_de_pistas.py"
   }
  ]
 }
