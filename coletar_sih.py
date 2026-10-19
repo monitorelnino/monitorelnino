@@ -73,7 +73,7 @@ DESFECHOS = {
     "hepatite_a": ("hepatite_a", "Internações por hepatite aguda A (CID-10 B15)"),
 }
 INICIO = "2019-01"
-ORCAMENTO_S = 1800   # tempo de leitura por rodada
+ORCAMENTO_S = 3000   # tempo de leitura por rodada (medido: 4,5 s por arquivo com três downloads à frente)
 REPEDIR = 3          # meses mais recentes relidos quando o arquivo mudou de tamanho
 PARADA_APOS = 5      # falhas seguidas: a fonte caiu, a rodada para
 JANELA = 3           # downloads em voo ao mesmo tempo
