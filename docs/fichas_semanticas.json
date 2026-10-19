@@ -1,714 +1,661 @@
 {
-  "_governanca": "Fichas semânticas por figura (§35 da AI_EDITORIAL_NARRATIVE_GOVERNANCE.md, instaladas em 23/09/2026). NÃO aparecem na interface: são memória semântica, para que uma alteração futura não perca o significado da figura. A chave é '<pagina>#<id da figura>'. Preenchidas a partir do que foi verificado na auditoria — título, legenda, fonte, código e dado; onde não foi possível estabelecer com segurança, o campo é null, porque o §6 proíbe transformar incerteza interna em afirmação. O portão scripts/verificar_fichas_semanticas.js reprova figura sem ficha, ficha órfã e campo obrigatório vazio.",
-  "campos_obrigatorios": [
-    "tipo",
-    "pergunta_que_responde",
-    "universo",
-    "unidade_de_analise",
-    "territorio",
-    "periodo",
-    "variavel_principal",
-    "fonte",
-    "conclusoes_permitidas",
-    "conclusoes_nao_permitidas",
-    "funcao_narrativa"
-  ],
-  "campos_opcionais": [
-    "dimensao_da_preparacao",
-    "denominador",
-    "metodologia",
-    "acao_relacionada"
-  ],
-  "registrado_em": "02/10/2026",
-  "fichas": {
-    "defesa-civil.html#boxEtapas": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Quantos municípios decretaram e quantos foram reconhecidos pela União, semana a semana desde 29/06/2026?",
-      "dimensao_da_preparacao": "resposta declarada",
-      "universo": "os municípios com decreto localizado desde 29/06/2026 e, na segunda linha, os que têm portaria de reconhecimento",
-      "unidade_de_analise": "município, acumulado por semana",
-      "territorio": "Brasil",
-      "periodo": "semanas de 29/06/2026 até o corte da edição",
-      "variavel_principal": "número acumulado de municípios em cada etapa, por semana",
-      "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
-      "conclusoes_permitidas": [
-        "quantos municípios acumulam em cada etapa, em cada semana",
-        "que as duas etapas têm datas próprias: decreto e portaria de reconhecimento"
-      ],
-      "conclusoes_nao_permitidas": [
-        "razão ou diferença entre as linhas: a figura mostra as duas etapas e não constrói comparação",
-        "que a distância entre as linhas mede demora de algum órgão: a data é a do ato publicado, não a do pedido",
-        "que o acumulado cai: ele não cai, porque município que entrou não sai"
-      ],
-      "funcao_narrativa": "mostrar o caminho do decreto ao reconhecimento no tempo; a etapa do recurso está em Financiamento",
-      "metodologia": "A semana de cada município é a do primeiro ato de cada etapa no consolidado resposta/municipios_decretados.json: primeiro decreto e primeiro reconhecimento. Acumulado por semana desde 29/06/2026."
-    },
-    "financiamento.html#boxCaminhos": {
-      "tipo": "diagrama de estrutura",
-      "pergunta_que_responde": "Por onde o dinheiro público chega a estados e municípios, e o que cada via exige?",
-      "universo": "vias de financiamento público a estados e municípios",
-      "unidade_de_analise": "via de financiamento",
-      "territorio": "Brasil",
-      "periodo": "estrutura vigente no ciclo 2026/2027",
-      "variavel_principal": "origem, destino e exigência de acesso de cada via",
-      "fonte": "leis e atos citados em cada via (via MARÉ)",
-      "metodologia": "Estrutura, não série: o diagrama descreve vias existentes e o que cada uma exige, pelas normas citadas. Nenhum valor é atribuído às vias aqui.",
-      "conclusoes_permitidas": "saber que vias existem e o que cada uma exige",
-      "conclusoes_nao_permitidas": "ler o diagrama como volume de recursos; supor que a via existente foi usada",
-      "funcao_narrativa": "explica o caminho antes de o leitor procurar o número"
-    },
-    "financiamento.html#boxComoLerGasto": {
-      "tipo": "cartão de texto",
-      "pergunta_que_responde": "O que o número do gasto próprio mede, e o que ele não mede?",
-      "universo": "municípios com declaração anual de contas",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "exercício 2025",
-      "variavel_principal": "definição da rubrica e do denominador por habitante",
-      "fonte": "Siconfi — Declaração de Contas Anuais (Anexo I-E)",
-      "metodologia": "Descrição da rubrica e do que a ausência de lançamento significa, sem interpretar o valor de nenhum município.",
-      "conclusoes_permitidas": "saber o que a rubrica reúne e o que a ausência de lançamento quer dizer",
-      "conclusoes_nao_permitidas": "tratar o texto como avaliação da gestão municipal",
-      "funcao_narrativa": "dá a régua antes do número"
-    },
-    "financiamento.html#boxFormaAplicacao": {
-      "tipo": "gráfico de barras",
-      "pergunta_que_responde": "Como os recursos das medidas federais do El Niño estão sendo aplicados?",
-      "universo": "valor desembolsado pelas ações reforçadas pelas medidas provisórias do ciclo",
-      "unidade_de_analise": "modalidade de aplicação do orçamento federal",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027",
-      "variavel_principal": "percentual do valor desembolsado em cada modalidade de aplicação",
-      "denominador": "valor total desembolsado pelas medidas do ciclo",
-      "fonte": "Portal da Transparência — Execução da Despesa (modalidade de aplicação)",
-      "metodologia": "Soma do valor desembolsado por modalidade de aplicação registrada no orçamento, agrupada em quatro categorias de leitor. O que não casa com um código conhecido entra como outras formas, para que a soma feche com o desembolsado.",
-      "conclusoes_permitidas": "dizer que parcela do desembolsado foi aplicada diretamente e que parcela foi transferida",
-      "conclusoes_nao_permitidas": "ler a modalidade como destino geográfico; somar modalidade com etapa do orçamento",
-      "funcao_narrativa": "mostra a quem o dinheiro foi, e não apenas quanto saiu"
-    },
-    "financiamento.html#boxGastoProprioUF": {
-      "tipo": "mapa coroplético por unidade da federação, com busca por município",
-      "pergunta_que_responde": "Quanto os municípios de cada estado gastaram do próprio orçamento em defesa civil, por habitante?",
-      "universo": "municípios com lançamento de despesa em defesa civil",
-      "unidade_de_analise": "unidade da federação, com detalhe por município",
-      "territorio": "Brasil",
-      "periodo": "exercício 2025",
-      "variavel_principal": "despesa própria em defesa civil por habitante",
-      "denominador": "população dos municípios com lançamento, pelo Censo 2022",
-      "fonte": "Siconfi — Declaração de Contas Anuais (Anexo I-E); IBGE — Censo 2022",
-      "metodologia": "Soma da despesa dos municípios com lançamento dividida pela população desses mesmos municípios. Dividir pela população inteira do estado diluiria o gasto de quem lançou entre quem não lançou. Município sem lançamento não entra na conta.",
-      "conclusoes_permitidas": "comparar o gasto por habitante entre estados no exercício",
-      "conclusoes_nao_permitidas": "ler sem lançamento como gasto zero; comparar com o dinheiro do ciclo, que é de outra natureza",
-      "funcao_narrativa": "dá o contexto do esforço próprio das prefeituras, antes do ciclo"
-    },
-    "financiamento.html#boxListaOrigens": {
-      "tipo": "lista de origens",
-      "pergunta_que_responde": "Qual ato criou cada origem de recursos, e quanto cada uma movimentou?",
-      "universo": "origens de recursos do ciclo",
-      "unidade_de_analise": "origem dos recursos",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027",
-      "variavel_principal": "ato, data e os três valores de cada origem",
-      "fonte": "atos citados em cada origem; Portal da Transparência (execução)",
-      "metodologia": "Uma linha por origem, com o ato que a criou e o endereço do documento. Origem sem execução coletada é dita.",
-      "conclusoes_permitidas": "ligar cada valor ao ato que o criou",
-      "conclusoes_nao_permitidas": "tratar o anunciado como dinheiro disponível",
-      "funcao_narrativa": "dá o documento atrás de cada número"
-    },
-    "financiamento.html#boxOrigens": {
-      "tipo": "gráfico de barras",
-      "pergunta_que_responde": "Quanto cada origem de recursos do ciclo anunciou, empenhou e desembolsou?",
-      "universo": "medidas provisórias e compromissos federais e estaduais do ciclo",
-      "unidade_de_analise": "origem dos recursos",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027",
-      "variavel_principal": "valor anunciado, empenhado e desembolsado de cada origem",
-      "fonte": "atos citados em cada origem; Portal da Transparência (execução)",
-      "metodologia": "Anunciado é o valor do ato; empenhado e desembolsado são a execução lida no Portal. Origem sem execução coletada aparece como tal, nunca como zero. A lista traz também o desembolsado mês a mês.",
-      "conclusoes_permitidas": "comparar as três etapas dentro de cada origem",
-      "conclusoes_nao_permitidas": "somar anunciado com desembolsado; tratar execução não coletada como zero",
-      "funcao_narrativa": "mostra a distância entre o que foi anunciado e o que saiu do caixa"
-    },
-    "financiamento.html#boxPortariasRecentes": {
-      "tipo": "lista de atos",
-      "pergunta_que_responde": "Quais portarias da defesa civil federal foram publicadas mais recentemente?",
-      "universo": "portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "portaria",
-      "territorio": "Brasil",
-      "periodo": "desde 29/06/2026",
-      "variavel_principal": "portaria, data, município, finalidade e valor autorizado",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "As vinte e cinco portarias mais recentes pela data do ato, com o endereço de cada uma. A lista completa está nos dados abertos.",
-      "conclusoes_permitidas": "ver o ato por trás de cada valor autorizado",
-      "conclusoes_nao_permitidas": "tratar a lista como o total do ciclo",
-      "funcao_narrativa": "mostra o que acabou de ser publicado, com o documento"
-    },
-    "financiamento.html#boxRespostaUF": {
-      "tipo": "mapa coroplético por unidade da federação, com busca por município",
-      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por portaria em cada estado no ciclo?",
-      "universo": "municípios citados em portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "unidade da federação, com detalhe por município",
-      "territorio": "Brasil",
-      "periodo": "desde 29/06/2026",
-      "variavel_principal": "valor autorizado em portarias, somado por estado",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "Soma do valor autorizado nas portarias publicadas, por estado. Município sem portaria aparece como sem registro, nunca como R$ 0. Autorizado por portaria não é dinheiro que saiu: a saída é outro registro.",
-      "conclusoes_permitidas": "comparar o valor autorizado entre estados no período",
-      "conclusoes_nao_permitidas": "ler autorizado como desembolsado; ler ausência de portaria como ausência de necessidade",
-      "funcao_narrativa": "mostra onde a defesa civil federal autorizou recursos no ciclo"
-    },
-    "financiamento.html#boxSerieSemanal": {
-      "tipo": "gráfico de barras empilhadas",
-      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por semana desde o início do ciclo?",
-      "universo": "portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "semana",
-      "territorio": "Brasil",
-      "periodo": "semanas desde 29/06/2026",
-      "variavel_principal": "valor autorizado por semana, por finalidade declarada no ato",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "Semanas contadas desde 29/06/2026, pela data da portaria. As finalidades são as que a fonte declara: resposta, recuperação e outra. Prevenção não é separada nessa fonte.",
-      "conclusoes_permitidas": "dizer quanto foi autorizado em cada semana e para que finalidade",
-      "conclusoes_nao_permitidas": "ler ausência de portaria na semana como ausência de necessidade; somar finalidades como se fossem a mesma coisa",
-      "funcao_narrativa": "mostra o ritmo da autorização ao longo do ciclo"
-    },
-    "monitor-de-riscos.html#boxAr": {
-      "tipo": "mapa de pontos",
-      "pergunta_que_responde": "Qual o IQAr medido nas estações oficiais de cada cidade, e o PM2,5 dos sensores de baixo custo, na última leitura?",
-      "dimensao_da_preparacao": "fenômeno observado",
-      "universo": "estações oficiais com IQAr na consulta (MMA/MonitorAr) e sensores IPAM/RedeAr com leitura",
-      "unidade_de_analise": "cidade com estação oficial; sensor",
-      "territorio": "Brasil",
-      "periodo": "última leitura publicada pela fonte, com data e hora",
-      "variavel_principal": "IQAr (faixa e valor, calculado pelo órgão); PM2,5 em µg/m³",
-      "denominador": null,
-      "fonte": "MMA/MonitorAr; OpenAQ; IPAM/RedeAr",
-      "metodologia": "IQAr nunca recalculado (CONAMA 506/2024); cidade pela pior estação; PM2,5 do OpenAQ só da mesma estação oficial; sensor sem índice. METODOLOGIA §41.7.",
-      "conclusoes_permitidas": [
-        "a faixa do IQAr publicada pelo órgão em cada cidade com estação",
-        "o PM2,5 medido por sensor, com a natureza do sensor declarada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "comparar estação regulatória e sensor de baixo custo",
-        "que cidade sem ponto tenha ar limpo",
-        "atribuição da poluição ao El Niño",
-        "efeito sobre a saúde de pessoas identificadas"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxAvisos": {
-      "tipo": "tabela",
-      "pergunta_que_responde": "Quantos municípios estão cobertos por aviso de tempo severo do INMET em vigor, por grau do aviso?",
-      "dimensao_da_preparacao": "alerta em vigor",
-      "universo": "os municípios do Brasil, na consulta mais recente",
-      "unidade_de_analise": "município, agregado por grau",
-      "territorio": "Brasil",
-      "periodo": "consulta mais recente, com data e hora declaradas",
-      "variavel_principal": "número de municípios cobertos por aviso em vigor, por grau",
-      "denominador": null,
-      "fonte": "INMET, avisos meteorológicos",
-      "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes com aviso de cada grau; um município com avisos de dois graus conta nos dois. Grau e fenômeno no vocabulário do INMET.",
-      "conclusoes_permitidas": [
-        "quantos municípios estão sob aviso de cada grau na consulta declarada",
-        "quais estados e fenômenos aparecem em cada grau"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o aviso mede dano ocorrido",
-        "comparação entre estados como medida de risco",
-        "que município sem aviso esteja seguro"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxCemaden": {
-      "tipo": "tabela",
-      "pergunta_que_responde": "Quais municípios estão sob alerta do Cemaden em vigor agora, e em que nível?",
-      "dimensao_da_preparacao": "alerta em vigor",
-      "universo": "os municípios com alerta do Cemaden em vigor na consulta mais recente",
-      "unidade_de_analise": "município, agrupado por nível e estado",
-      "territorio": "Brasil",
-      "periodo": "consulta mais recente, com data e hora declaradas",
-      "variavel_principal": "nível do alerta e municípios nomeados",
-      "denominador": null,
-      "fonte": "Cemaden, alertas vigentes",
-      "metodologia": "Lista direta do arquivo de alertas vigentes; nível no vocabulário do Cemaden.",
-      "conclusoes_permitidas": [
-        "quais municípios estão sob alerta e em que nível, na consulta declarada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o estado inteiro está sob alerta: o alerta é municipal",
-        "que a ausência de alerta indica segurança"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxFogo": {
-      "tipo": "mapa e contagem",
-      "pergunta_que_responde": "Onde há foco de calor ativo nas últimas 24 horas?",
-      "dimensao_da_preparacao": null,
-      "universo": "27 UFs",
-      "unidade_de_analise": "célula de ~11 km (0,1° de latitude e longitude); a lista traz a contagem por UF",
-      "territorio": "Brasil",
-      "periodo": "último dia disponível",
-      "variavel_principal": "contagem de focos na célula, em 24 h",
-      "denominador": null,
-      "fonte": "INPE (satélite de referência)",
-      "metodologia": "focos detectados por satélite, na posição publicada pelo INPE, agrupados numa grade de 0,1° apenas para desenho — o dado bruto, foco a foco, é do INPE e não é redistribuído aqui. Sem escala de intensidade: o CSV traz potência radiativa, e ela não sustenta comparação foco a foco",
-      "conclusoes_permitidas": [
-        "distribuição de focos no dia"
-      ],
-      "conclusoes_nao_permitidas": [
-        "atribuição ao El Niño",
-        "comparação entre satélites distintos",
-        "intensidade do fogo em cada foco",
-        "área queimada"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxRiscoPrevisto": {
-      "tipo": "mapa",
-      "pergunta_que_responde": "Que risco o boletim do Painel El Niño prevê para cada estado neste ciclo?",
-      "dimensao_da_preparacao": null,
-      "universo": "27 UFs",
-      "unidade_de_analise": "UF",
-      "territorio": "Brasil",
-      "periodo": "ciclo 2026/2027, até março de 2027",
-      "variavel_principal": "família de risco projetada (seca, fogo, chuva forte, calor)",
-      "denominador": null,
-      "fonte": "Painel El Niño 2026-2027 (Inmet, Cemaden, Inpe, ANA, Serviço Geológico do Brasil, Defesa Civil nacional)",
-      "metodologia": "risco projetado declarado no boletim, por estado; estado com mais de uma família recebe marca própria",
-      "conclusoes_permitidas": [
-        "qual família de risco o boletim projeta para cada estado",
-        "quantos estados o boletim coloca em cada família"
-      ],
-      "conclusoes_nao_permitidas": [
-        "tratar previsão como observação",
-        "inferir dano ocorrido a partir do risco projetado",
-        "comparar estados por gravidade do risco"
-      ],
-      "funcao_narrativa": "o que se espera do ciclo: previsão, não observação",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxSecas": {
-      "tipo": "mapa",
-      "pergunta_que_responde": "Onde há seca observada, e em que categoria?",
-      "dimensao_da_preparacao": null,
-      "universo": "27 UFs",
-      "unidade_de_analise": "UF",
-      "territorio": "Brasil",
-      "periodo": "mapa mensal mais recente",
-      "variavel_principal": "categoria de seca (S0–S4)",
-      "denominador": "metade da área da UF",
-      "fonte": "Monitor de Secas (ANA)",
-      "metodologia": "categoria atingida em pelo menos metade da área da UF",
-      "conclusoes_permitidas": [
-        "seca observada por UF no mês do mapa"
-      ],
-      "conclusoes_nao_permitidas": [
-        "atribuir a seca ao El Niño",
-        "projeção de seca futura"
-      ],
-      "funcao_narrativa": "evidência do agora: condição observada",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxTemperatura": {
-      "tipo": "mapa com seletor de camada e lista",
-      "pergunta_que_responde": "Qual a temperatura máxima prevista para amanhã — na capital de cada estado, ou em cada município?",
-      "dimensao_da_preparacao": "fenômeno observado",
-      "universo": "27 capitais (camada 1) · os 5.570 municípios (camada 2, cobertura declarada na seção)",
-      "unidade_de_analise": "capital, ou município",
-      "territorio": "Brasil",
-      "periodo": "dia anterior e próximos dias, consulta com hora",
-      "variavel_principal": "temperatura máxima prevista, em °C",
-      "denominador": null,
-      "fonte": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
-      "metodologia": "Estimativa de modelo numa grade de cerca de 11 km, não medição de estação. O valor é da CAPITAL e não a média do estado; a UF é pintada para localizar. A camada municipal traz um ponto por município, só com a máxima e a mínima previstas e a máxima de ontem — a série inteira continua só por capital. Município sem leitura não é desenhado: ausência é ausência. A cobertura de cada variável é declarada em texto, porque o teto diário do Open-Meteo conta por localidade e nem sempre alcança os 5.570 numa rodada.",
-      "conclusoes_permitidas": [
-        "qual a máxima prevista para a capital, segundo o modelo",
-        "como a máxima prevista se compara à do dia anterior na mesma capital"
-      ],
-      "conclusoes_nao_permitidas": [
-        "temperatura do estado inteiro",
-        "atribuição da temperatura ao El Niño",
-        "leitura como medição de estação",
-        "previsão do Monitor",
-        "que município não desenhado tenha temperatura baixa — ele não foi lido"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "saude.html#boxCalor": {
-      "tipo": "mapa e lista",
-      "pergunta_que_responde": "Quantos municípios de cada estado estão em classe severa ou extrema de excesso de calor?",
-      "dimensao_da_preparacao": "exposição observada",
-      "universo": "municípios lidos pelo painel do Ministério da Saúde",
-      "unidade_de_analise": "município, agregado por UF",
-      "territorio": "Brasil",
-      "periodo": "dia da consulta",
-      "variavel_principal": "classe de excesso de calor (Normal, Baixo, Severo, Extremo), no vocabulário do MS",
-      "denominador": "municípios lidos no dia",
-      "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
-      "metodologia": "Classe calculada pelo MS a partir do índice EHF. O Monitor reproduz a classe publicada e não reescala. Fonte sem resposta entra como lacuna declarada, nunca como zero.",
-      "conclusoes_permitidas": [
-        "quantos municípios o MS classificou em cada classe de excesso de calor no dia"
-      ],
-      "conclusoes_nao_permitidas": [
-        "efeito sobre casos ou óbitos",
-        "atribuição do calor ao El Niño",
-        "ausência de classificação como ausência de calor",
-        "comparação da classe com temperatura medida"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": "consultar o painel do Ministério da Saúde"
-    },
-    "saude.html#boxChikSemana": {
-      "tipo": "série semanal com faixa esperada para a época",
-      "pergunta_que_responde": "Quantas notificações de chikungunya foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "chikungunya",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de chikungunya por semana epidemiológica de primeiros sintomas",
-      "denominador": "nenhum: é contagem",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
-      "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxChikUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quantas notificações de chikungunya por 100 mil habitantes cada estado registrou em 2026?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "chikungunya",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de chikungunya acumuladas no ano, por 100 mil habitantes",
-      "denominador": "população do Censo 2022, por estado",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
-      "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxDengueSemana": {
-      "tipo": "série semanal com faixa esperada para a época",
-      "pergunta_que_responde": "Quantas notificações de dengue foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "dengue",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de dengue por semana epidemiológica de primeiros sintomas",
-      "denominador": "nenhum: é contagem",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
-      "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxDengueUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quantas notificações de dengue por 100 mil habitantes cada estado registrou em 2026?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; notificações no SINAN",
-      "unidade_de_analise": "dengue",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas de 2026",
-      "variavel_principal": "notificações de dengue acumuladas no ano, por 100 mil habitantes",
-      "denominador": "população do Censo 2022, por estado",
-      "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
-      "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
-      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
-      "acao_relacionada": "a lista por município, no fim da seção"
-    },
-    "saude.html#boxMonitor": {
-      "tipo": "mapa",
-      "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
-      "dimensao_da_preparacao": "planejamento e instrumento estadual de saúde",
-      "universo": "27 UFs, das quais as verificadas recebem número",
-      "unidade_de_analise": "UF",
-      "territorio": "Brasil",
-      "periodo": "corte da edição",
-      "variavel_principal": "prontidão sanitária, de 0 a 100",
-      "denominador": "média de três componentes: instrumento, cobertura populacional sanitária e antecipação",
-      "fonte": "banco de registros do Monitor",
-      "metodologia": "Metodologia §31; UF não verificada fica cinza e sem número",
-      "conclusoes_permitidas": [
-        "extensão do arcabouço sanitário publicado e verificado em cada UF"
-      ],
-      "conclusoes_nao_permitidas": [
-        "estado de saúde da população",
-        "capacidade de resposta efetiva",
-        "UF cinza como UF sem plano"
-      ],
-      "funcao_narrativa": "síntese da dimensão de saúde, depois da camada observada",
-      "acao_relacionada": null
-    },
-    "saude.html#boxRiscoSan": {
-      "tipo": "etiquetas de sigla por família de risco",
-      "pergunta_que_responde": "Qual família de risco sanitário os boletins preveem para cada estado neste ciclo?",
-      "dimensao_da_preparacao": "o risco previsto a que o estado deveria responder",
-      "universo": "27 unidades da federação",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "boletins nº 1 a 3 do ciclo 2026/2027",
-      "variavel_principal": "família de risco sanitário previsto (seca, calor e fogo; chuvas extremas; as duas)",
-      "fonte": "Painel El Niño 2026-2027 (CEMADEN/INPE), boletins nº 1 a 3",
-      "metodologia": "Agrupamento das doenças citadas no boletim em duas famílias climáticas; estado citado nas duas aparece como tal. Estado sem citação aparece sem risco previsto registrado.",
-      "conclusoes_permitidas": "dizer que família de risco o boletim prevê para o estado",
-      "conclusoes_nao_permitidas": "ler previsão como ocorrência; comparar intensidade entre estados",
-      "funcao_narrativa": "mostra a que o preparo de cada estado deveria responder"
-    },
-    "saude.html#boxSG": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como síndrome gripal evolui frente à faixa esperada para a época?",
-      "dimensao_da_preparacao": null,
-      "universo": "Brasil",
-      "unidade_de_analise": "semana epidemiológica",
-      "territorio": "Brasil",
-      "periodo": "semanas de 2026",
-      "variavel_principal": "nº de casos",
-      "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
-      "fonte": "Ministério da Saúde",
-      "metodologia": "as quatro últimas semanas ficam fora do consolidado",
-      "conclusoes_permitidas": [
-        "posição da série frente à faixa esperada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "atribuição ao El Niño",
-        "semanas recentes como tendência consolidada",
-        "gravidade dos casos"
-      ],
-      "funcao_narrativa": "camada observada: peso zero no índice",
-      "acao_relacionada": null
-    },
-    "saude.html#boxSRAG": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como síndrome respiratória aguda grave (SRAG) evolui frente à faixa esperada para a época?",
-      "dimensao_da_preparacao": null,
-      "universo": "Brasil",
-      "unidade_de_analise": "semana epidemiológica",
-      "territorio": "Brasil",
-      "periodo": "semanas de 2026",
-      "variavel_principal": "nº de casos",
-      "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
-      "fonte": "Ministério da Saúde",
-      "metodologia": "as quatro últimas semanas ficam fora do consolidado",
-      "conclusoes_permitidas": [
-        "posição da série frente à faixa esperada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "atribuição ao El Niño",
-        "semanas recentes como tendência consolidada",
-        "gravidade dos casos"
-      ],
-      "funcao_narrativa": "camada observada: peso zero no índice",
-      "acao_relacionada": null
-    },
-    "saude.html#boxSragUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quantas internações por síndrome respiratória grave por 100 mil habitantes cada estado registrou no ano?",
-      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
-      "universo": "Brasil; internações notificadas no SIVEP-Gripe",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "semanas epidemiológicas do ano corrente",
-      "variavel_principal": "internações por síndrome respiratória grave acumuladas no ano, por 100 mil habitantes",
-      "denominador": "população do Censo 2022, por estado",
-      "fonte": "SIVEP-Gripe (Ministério da Saúde); IBGE — Censo 2022",
-      "metodologia": "Soma das semanas do ano corrente por estado, dividida pela população. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
-      "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
-      "conclusoes_nao_permitidas": "atribuir as internações ao El Niño; ler as últimas semanas como queda, porque elas ainda recebem notificação",
-      "funcao_narrativa": "mostra o que é registrado em doença respiratória, sem ligar ao El Niño"
-    },
-    "monitor-de-riscos.html#boxEpisodios": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como o RONI do ciclo em curso se compara ao dos episódios de El Niño anteriores da série, mês a mês do início do ciclo?",
-      "dimensao_da_preparacao": null,
-      "universo": "os episódios de El Niño identificados na própria série do RONI pelo critério da NOAA/CPC, mais o ciclo em curso",
-      "unidade_de_analise": "trimestre móvel, alinhado pelo mês desde janeiro do ano de início",
-      "territorio": "região Niño 3.4",
-      "periodo": "de janeiro do ano de início de cada episódio a junho do ano seguinte",
-      "variavel_principal": "anomalia relativa da temperatura da superfície do mar (°C)",
-      "denominador": "média do oceano tropical, período de referência 1991–2020",
-      "fonte": "NOAA/CPC — índice RONI",
-      "metodologia": "episódio é definido como cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC, aplicado à própria série; a lista não é escrita à mão. O trecho que alcança o último ponto da série é o ciclo em curso, e não entra na lista de episódios.",
-      "conclusoes_permitidas": [
-        "em que posição do calendário cada episódio esteve mais alto",
-        "quantas médias trimestrais seguidas acima de +0,5 °C o ciclo em curso já acumulou"
-      ],
-      "conclusoes_nao_permitidas": [
-        "ordenar os episódios por intensidade, que é comparação construída",
-        "prever o desfecho do ciclo em curso a partir da forma das linhas anteriores",
-        "chamar o ciclo em curso de episódio antes de completadas as cinco médias trimestrais"
-      ],
-      "funcao_narrativa": "o ciclo em curso lido contra os episódios que o próprio dado define",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxNino34Semanal": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como a anomalia semanal da temperatura do mar na região Niño 3.4 variou desde o início da série publicada?",
-      "dimensao_da_preparacao": null,
-      "universo": "todas as semanas do arquivo semanal vigente do CPC/NOAA, de janeiro de 2025 em diante",
-      "unidade_de_analise": "semana",
-      "territorio": "região Niño 3.4",
-      "periodo": "da primeira semana da série ao último valor publicado",
-      "variavel_principal": "anomalia da temperatura da superfície do mar (°C)",
-      "denominador": "média de referência 1991–2020, declarada pelo próprio arquivo",
-      "fonte": "NOAA/CPC — índices semanais de temperatura da superfície do mar",
-      "metodologia": "Leitura direta do arquivo semanal do CPC/NOAA, sem cálculo nosso. A escala vertical cobre a faixa do próprio dado, em passos de 0,5 °C, e traz os limiares de +0,5 °C e −0,5 °C da NOAA/CPC.",
-      "conclusoes_permitidas": [
-        "dizer qual foi a anomalia de cada semana publicada",
-        "dizer há quantas semanas a série está acima do limiar de +0,5 °C"
-      ],
-      "conclusoes_nao_permitidas": [
-        "tratar o valor semanal como classificação de episódio, que é do RONI",
-        "projetar as semanas seguintes a partir da forma da linha",
-        "ler o semanal e o RONI como se medissem a mesma coisa"
-      ],
-      "funcao_narrativa": "a leitura semanal mais recente do Pacífico, ao lado do índice que classifica o episódio",
-      "acao_relacionada": null
-    },
-    "financiamento.html#boxFnsEmergenciaUF": {
-      "tipo": "mapa coroplético por unidade da federação, com lista",
-      "pergunta_que_responde": "Quanto o Fundo Nacional de Saúde repassou em 2026, em cada estado, em linhas ligadas a emergência?",
-      "universo": "repasses fundo a fundo do Fundo Nacional de Saúde (função Saúde) a fundos estaduais e municipais de saúde em 2026",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "meses de 2026 publicados no Portal da Transparência",
-      "variavel_principal": "valor repassado em linhas cujo nome de ação ou de plano orçamentário cita emergência, calamidade, El Niño, seca, estiagem, calor, crédito extraordinário, ESPIN ou a Força Nacional do SUS",
-      "fonte": "Portal da Transparência, download de dados abertos de transferências",
-      "metodologia": "Soma por estado das linhas do FNS cujo nome de ação ou de plano orçamentário, tal como a fonte o escreve, contém um dos termos. Estado sem linha assim aparece sem registro, nunca como R$ 0. Peso zero no índice.",
-      "conclusoes_permitidas": "comparar entre estados o valor repassado em linhas nomeadas como de emergência",
-      "conclusoes_nao_permitidas": "ler o total como todo o dinheiro da saúde para o El Niño; ler ausência de linha como ausência de gasto",
-      "funcao_narrativa": "mostra onde o dinheiro federal da saúde identificado como de emergência chegou no ano"
-    },
-    "financiamento.html#boxComoLerFns": {
-      "tipo": "lista de leitura (texto curto)",
-      "pergunta_que_responde": "Como ler os repasses do Fundo Nacional de Saúde nesta página?",
-      "universo": "repasses fundo a fundo do Fundo Nacional de Saúde em 2026",
-      "unidade_de_analise": "linha de repasse",
-      "territorio": "Brasil",
-      "periodo": "meses de 2026 publicados no Portal da Transparência",
-      "variavel_principal": "critério de leitura das linhas de repasse",
-      "fonte": "Portal da Transparência, download de dados abertos de transferências",
-      "metodologia": "Explica o recorte: favorecido fundo de saúde, esfera pelo nome do favorecido, ligação a emergência só pelo nome da ação ou do plano orçamentário.",
-      "conclusoes_permitidas": "entender o que entra e o que não entra no recorte",
-      "conclusoes_nao_permitidas": "tirar do recorte conclusão sobre gasto total em saúde",
-      "funcao_narrativa": "orienta a leitura do mapa do FNS"
-    },
-    "monitor-de-riscos.html#boxListaIndicados": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado a União indicou ao cadastro nacional de áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A)?",
-      "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os 2.095 municípios indicados pela União (Nota Técnica nº 2/2025 e nº 1/2023; cadastro nacional, MIDR)",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Brasil",
-      "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado indicados pela União",
-      "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
-      "conclusoes_permitidas": [
-        "quantos municípios de cada estado constam da lista federal"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que constar da lista é estar em emergência",
-        "que município fora da lista não tem risco: a lista é de um risco específico"
-      ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado do cadastro federal, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado. 'Plano localizado' exclui plano em elaboração, estrutura (comitê ou gabinete) e cobertura estadual."
-    },
-    "monitor-de-riscos.html#boxListaSemiarido": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado integram a delimitação do Semiárido?",
-      "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os 1.477 municípios da delimitação do Semiárido",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Brasil",
-      "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado na delimitação do Semiárido",
-      "fonte": "Sudene, Resolução Condel nº 176/2024, com a tabela nominal publicada pelo IBGE",
-      "conclusoes_permitidas": [
-        "quantos municípios de cada estado integram a delimitação oficial"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que integrar a delimitação é estar em seca: a delimitação é político-administrativa e permanente",
-        "que a delimitação mede a seca deste ciclo"
-      ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado da lista do Semiárido, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
-    },
-    "monitor-de-riscos.html#boxListaFogo": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado constam da lista federal de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia?",
-      "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os municípios da lista de prioritários do Ministério do Meio Ambiente em vigor",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Amazônia Legal",
-      "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado na lista de prioritários",
-      "fonte": "Ministério do Meio Ambiente, portaria vigente",
-      "conclusoes_permitidas": [
-        "quantos municípios de cada estado constam da lista em vigor"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que constar da lista mede o desmatamento ou o fogo do ciclo",
-        "que município fora da lista não tem risco de fogo",
-        "que a lista cobre o país: ela é da Amazônia Legal"
-      ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado da lista em vigor do Ministério do Meio Ambiente, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
-    },
-    "defesa-civil.html#boxEmergencias": {
-      "tipo": "mapa de pontos",
-      "pergunta_que_responde": "Onde estão os municípios com decreto de emergência desde 29/06/2026, por qual evento declarado e se a União já reconheceu?",
-      "dimensao_da_preparacao": "resposta declarada",
-      "universo": "os municípios com decreto de situação de emergência ou estado de calamidade pública localizado desde 29/06/2026",
-      "unidade_de_analise": "município (ponto na sede)",
-      "territorio": "Brasil",
-      "periodo": "de 29/06/2026 até o corte do consolidado",
-      "variavel_principal": "evento declarado no ato (família de cor) e etapa (reconhecido ou só decreto)",
-      "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
-      "conclusoes_permitidas": [
-        "onde há município com decreto, por evento declarado",
-        "quais desses municípios têm portaria de reconhecimento"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o evento declarado é o evento observado pela ciência: é o que o ato declara",
-        "que município sem ponto não teve dano: é município sem decreto localizado até o corte",
-        "que ponto vazado é pedido negado: é reconhecimento não localizado até o corte"
-      ],
-      "funcao_narrativa": "figura principal da página: mostrar onde estão as emergências e em que etapa",
-      "metodologia": "Ponto na sede municipal (municipios_ibge_referencia.json). Evento do município é o do(s) ato(s) que o casam no consolidado; sem classificação, a classe é nomeada. Cor pela família do evento (seca, chuva, fogo, outro); cheio quando há portaria de reconhecimento."
-    },
-    "defesa-civil.html#boxPendencia": {
-      "tipo": "número",
-      "pergunta_que_responde": "Quantos municípios têm decreto há mais de 30 dias sem portaria de reconhecimento localizada?",
-      "dimensao_da_preparacao": "resposta declarada",
-      "universo": "os municípios com decreto localizado desde 29/06/2026 e sem portaria de reconhecimento localizada",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "data de referência do consolidado",
-      "variavel_principal": "número de municípios com mais de 30 dias entre o primeiro decreto e a data de referência, sem reconhecimento",
-      "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
-      "conclusoes_permitidas": [
-        "quantos municípios estão nessa situação na data de referência"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o reconhecimento foi negado: a figura conta portaria não localizada até o corte",
-        "que o município pediu o reconhecimento: o pedido não é publicado",
-        "demora de algum órgão: a contagem parte da data do decreto, não do pedido"
-      ],
-      "funcao_narrativa": "mostrar onde o caminho do decreto ao reconhecimento parou",
-      "metodologia": "Campo dias_sem_reconhecimento do consolidado (data de referência menos a data do primeiro decreto, só para quem não tem reconhecimento); a figura conta os maiores que 30."
-    }
+ "_governanca": "Fichas semânticas por figura (§35 da AI_EDITORIAL_NARRATIVE_GOVERNANCE.md, instaladas em 23/09/2026). NÃO aparecem na interface: são memória semântica, para que uma alteração futura não perca o significado da figura. A chave é '<pagina>#<id da figura>'. Preenchidas a partir do que foi verificado na auditoria — título, legenda, fonte, código e dado; onde não foi possível estabelecer com segurança, o campo é null, porque o §6 proíbe transformar incerteza interna em afirmação. O portão scripts/verificar_fichas_semanticas.js reprova figura sem ficha, ficha órfã e campo obrigatório vazio.",
+ "campos_obrigatorios": [
+  "tipo",
+  "pergunta_que_responde",
+  "universo",
+  "unidade_de_analise",
+  "territorio",
+  "periodo",
+  "variavel_principal",
+  "fonte",
+  "conclusoes_permitidas",
+  "conclusoes_nao_permitidas",
+  "funcao_narrativa"
+ ],
+ "campos_opcionais": [
+  "dimensao_da_preparacao",
+  "denominador",
+  "metodologia",
+  "acao_relacionada"
+ ],
+ "registrado_em": "02/10/2026",
+ "fichas": {
+  "defesa-civil.html#boxEtapas": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Quantos municípios decretaram e quantos foram reconhecidos pela União, semana a semana desde 29/06/2026?",
+   "dimensao_da_preparacao": "resposta declarada",
+   "universo": "os municípios com decreto localizado desde 29/06/2026 e, na segunda linha, os que têm portaria de reconhecimento",
+   "unidade_de_analise": "município, acumulado por semana",
+   "territorio": "Brasil",
+   "periodo": "semanas de 29/06/2026 até o corte da edição",
+   "variavel_principal": "número acumulado de municípios em cada etapa, por semana",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
+   "conclusoes_permitidas": [
+    "quantos municípios acumulam em cada etapa, em cada semana",
+    "que as duas etapas têm datas próprias: decreto e portaria de reconhecimento"
+   ],
+   "conclusoes_nao_permitidas": [
+    "razão ou diferença entre as linhas: a figura mostra as duas etapas e não constrói comparação",
+    "que a distância entre as linhas mede demora de algum órgão: a data é a do ato publicado, não a do pedido",
+    "que o acumulado cai: ele não cai, porque município que entrou não sai"
+   ],
+   "funcao_narrativa": "mostrar o caminho do decreto ao reconhecimento no tempo; a etapa do recurso está em Financiamento",
+   "metodologia": "A semana de cada município é a do primeiro ato de cada etapa no consolidado resposta/municipios_decretados.json: primeiro decreto e primeiro reconhecimento. Acumulado por semana desde 29/06/2026."
+  },
+  "financiamento.html#boxSerieSemanal": {
+   "dimensao_da_preparacao": "resposta declarada",
+   "territorio": "Brasil",
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Quantos municípios decretaram, foram reconhecidos pela União e tiveram recurso autorizado, semana a semana desde 29/06/2026?",
+   "universo": "os municípios com decreto localizado desde 29/06/2026; nas outras linhas, os com portaria de reconhecimento e os com portaria de recurso",
+   "unidade_de_analise": "município, acumulado por semana",
+   "periodo": "semanas de 29/06/2026 até o corte",
+   "variavel_principal": "número acumulado de municípios em cada etapa, por semana",
+   "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
+   "conclusoes_permitidas": [
+    "quantos municípios acumulam em cada etapa, em cada semana"
+   ],
+   "conclusoes_nao_permitidas": [
+    "razão ou diferença entre as linhas: a figura não constrói comparação",
+    "que a distância entre as linhas mede demora: a data é a do ato publicado",
+    "que o município pediu recurso: o pedido não é publicado"
+   ],
+   "funcao_narrativa": "mostrar o caminho do decreto ao recurso no tempo",
+   "metodologia": "Semana do primeiro decreto, da primeira portaria de reconhecimento e da primeira portaria de recurso de cada município; acumulado desde 29/06/2026."
+  },
+  "monitor-de-riscos.html#boxAr": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Qual o IQAr medido nas estações oficiais de cada cidade, e o PM2,5 dos sensores de baixo custo, na última leitura?",
+   "dimensao_da_preparacao": "fenômeno observado",
+   "universo": "estações oficiais com IQAr na consulta (MMA/MonitorAr) e sensores IPAM/RedeAr com leitura",
+   "unidade_de_analise": "cidade com estação oficial; sensor",
+   "territorio": "Brasil",
+   "periodo": "última leitura publicada pela fonte, com data e hora",
+   "variavel_principal": "IQAr (faixa e valor, calculado pelo órgão); PM2,5 em µg/m³",
+   "denominador": null,
+   "fonte": "MMA/MonitorAr; OpenAQ; IPAM/RedeAr",
+   "metodologia": "IQAr nunca recalculado (CONAMA 506/2024); cidade pela pior estação; PM2,5 do OpenAQ só da mesma estação oficial; sensor sem índice. METODOLOGIA §41.7.",
+   "conclusoes_permitidas": [
+    "a faixa do IQAr publicada pelo órgão em cada cidade com estação",
+    "o PM2,5 medido por sensor, com a natureza do sensor declarada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "comparar estação regulatória e sensor de baixo custo",
+    "que cidade sem ponto tenha ar limpo",
+    "atribuição da poluição ao El Niño",
+    "efeito sobre a saúde de pessoas identificadas"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxAvisos": {
+   "tipo": "tabela",
+   "pergunta_que_responde": "Quantos municípios estão cobertos por aviso de tempo severo do INMET em vigor, por grau do aviso?",
+   "dimensao_da_preparacao": "alerta em vigor",
+   "universo": "os municípios do Brasil, na consulta mais recente",
+   "unidade_de_analise": "município, agregado por grau",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente, com data e hora declaradas",
+   "variavel_principal": "número de municípios cobertos por aviso em vigor, por grau",
+   "denominador": null,
+   "fonte": "INMET, avisos meteorológicos",
+   "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes com aviso de cada grau; um município com avisos de dois graus conta nos dois. Grau e fenômeno no vocabulário do INMET.",
+   "conclusoes_permitidas": [
+    "quantos municípios estão sob aviso de cada grau na consulta declarada",
+    "quais estados e fenômenos aparecem em cada grau"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o aviso mede dano ocorrido",
+    "comparação entre estados como medida de risco",
+    "que município sem aviso esteja seguro"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxCemaden": {
+   "tipo": "tabela",
+   "pergunta_que_responde": "Quais municípios estão sob alerta do Cemaden em vigor agora, e em que nível?",
+   "dimensao_da_preparacao": "alerta em vigor",
+   "universo": "os municípios com alerta do Cemaden em vigor na consulta mais recente",
+   "unidade_de_analise": "município, agrupado por nível e estado",
+   "territorio": "Brasil",
+   "periodo": "consulta mais recente, com data e hora declaradas",
+   "variavel_principal": "nível do alerta e municípios nomeados",
+   "denominador": null,
+   "fonte": "Cemaden, alertas vigentes",
+   "metodologia": "Lista direta do arquivo de alertas vigentes; nível no vocabulário do Cemaden.",
+   "conclusoes_permitidas": [
+    "quais municípios estão sob alerta e em que nível, na consulta declarada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o estado inteiro está sob alerta: o alerta é municipal",
+    "que a ausência de alerta indica segurança"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxFogo": {
+   "tipo": "mapa e contagem",
+   "pergunta_que_responde": "Onde há foco de calor ativo nas últimas 24 horas?",
+   "dimensao_da_preparacao": null,
+   "universo": "27 UFs",
+   "unidade_de_analise": "célula de ~11 km (0,1° de latitude e longitude); a lista traz a contagem por UF",
+   "territorio": "Brasil",
+   "periodo": "último dia disponível",
+   "variavel_principal": "contagem de focos na célula, em 24 h",
+   "denominador": null,
+   "fonte": "INPE (satélite de referência)",
+   "metodologia": "focos detectados por satélite, na posição publicada pelo INPE, agrupados numa grade de 0,1° apenas para desenho — o dado bruto, foco a foco, é do INPE e não é redistribuído aqui. Sem escala de intensidade: o CSV traz potência radiativa, e ela não sustenta comparação foco a foco",
+   "conclusoes_permitidas": [
+    "distribuição de focos no dia"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição ao El Niño",
+    "comparação entre satélites distintos",
+    "intensidade do fogo em cada foco",
+    "área queimada"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxRiscoPrevisto": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Que risco o boletim do Painel El Niño prevê para cada estado neste ciclo?",
+   "dimensao_da_preparacao": null,
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "ciclo 2026/2027, até março de 2027",
+   "variavel_principal": "família de risco projetada (seca, fogo, chuva forte, calor)",
+   "denominador": null,
+   "fonte": "Painel El Niño 2026-2027 (Inmet, Cemaden, Inpe, ANA, Serviço Geológico do Brasil, Defesa Civil nacional)",
+   "metodologia": "risco projetado declarado no boletim, por estado; estado com mais de uma família recebe marca própria",
+   "conclusoes_permitidas": [
+    "qual família de risco o boletim projeta para cada estado",
+    "quantos estados o boletim coloca em cada família"
+   ],
+   "conclusoes_nao_permitidas": [
+    "tratar previsão como observação",
+    "inferir dano ocorrido a partir do risco projetado",
+    "comparar estados por gravidade do risco"
+   ],
+   "funcao_narrativa": "o que se espera do ciclo: previsão, não observação",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxSecas": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Onde há seca observada, e em que categoria?",
+   "dimensao_da_preparacao": null,
+   "universo": "27 UFs",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "mapa mensal mais recente",
+   "variavel_principal": "categoria de seca (S0–S4)",
+   "denominador": "metade da área da UF",
+   "fonte": "Monitor de Secas (ANA)",
+   "metodologia": "categoria atingida em pelo menos metade da área da UF",
+   "conclusoes_permitidas": [
+    "seca observada por UF no mês do mapa"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuir a seca ao El Niño",
+    "projeção de seca futura"
+   ],
+   "funcao_narrativa": "evidência do agora: condição observada",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxTemperatura": {
+   "tipo": "mapa com seletor de camada e lista",
+   "pergunta_que_responde": "Qual a temperatura máxima prevista para amanhã — na capital de cada estado, ou em cada município?",
+   "dimensao_da_preparacao": "fenômeno observado",
+   "universo": "27 capitais (camada 1) · os 5.570 municípios (camada 2, cobertura declarada na seção)",
+   "unidade_de_analise": "capital, ou município",
+   "territorio": "Brasil",
+   "periodo": "dia anterior e próximos dias, consulta com hora",
+   "variavel_principal": "temperatura máxima prevista, em °C",
+   "denominador": null,
+   "fonte": "Open-Meteo (modelos ECMWF, DWD, NOAA)",
+   "metodologia": "Estimativa de modelo numa grade de cerca de 11 km, não medição de estação. O valor é da CAPITAL e não a média do estado; a UF é pintada para localizar. A camada municipal traz um ponto por município, só com a máxima e a mínima previstas e a máxima de ontem — a série inteira continua só por capital. Município sem leitura não é desenhado: ausência é ausência. A cobertura de cada variável é declarada em texto, porque o teto diário do Open-Meteo conta por localidade e nem sempre alcança os 5.570 numa rodada.",
+   "conclusoes_permitidas": [
+    "qual a máxima prevista para a capital, segundo o modelo",
+    "como a máxima prevista se compara à do dia anterior na mesma capital"
+   ],
+   "conclusoes_nao_permitidas": [
+    "temperatura do estado inteiro",
+    "atribuição da temperatura ao El Niño",
+    "leitura como medição de estação",
+    "previsão do Monitor",
+    "que município não desenhado tenha temperatura baixa — ele não foi lido"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": null
+  },
+  "saude.html#boxCalor": {
+   "tipo": "mapa e lista",
+   "pergunta_que_responde": "Quantos municípios de cada estado estão em classe severa ou extrema de excesso de calor?",
+   "dimensao_da_preparacao": "exposição observada",
+   "universo": "municípios lidos pelo painel do Ministério da Saúde",
+   "unidade_de_analise": "município, agregado por UF",
+   "territorio": "Brasil",
+   "periodo": "dia da consulta",
+   "variavel_principal": "classe de excesso de calor (Normal, Baixo, Severo, Extremo), no vocabulário do MS",
+   "denominador": "municípios lidos no dia",
+   "fonte": "Painel Nacional de Excesso de Calor (Ministério da Saúde)",
+   "metodologia": "Classe calculada pelo MS a partir do índice EHF. O Monitor reproduz a classe publicada e não reescala. Fonte sem resposta entra como lacuna declarada, nunca como zero.",
+   "conclusoes_permitidas": [
+    "quantos municípios o MS classificou em cada classe de excesso de calor no dia"
+   ],
+   "conclusoes_nao_permitidas": [
+    "efeito sobre casos ou óbitos",
+    "atribuição do calor ao El Niño",
+    "ausência de classificação como ausência de calor",
+    "comparação da classe com temperatura medida"
+   ],
+   "funcao_narrativa": "evidência do agora",
+   "acao_relacionada": "consultar o painel do Ministério da Saúde"
+  },
+  "saude.html#boxChikSemana": {
+   "tipo": "série semanal com faixa esperada para a época",
+   "pergunta_que_responde": "Quantas notificações de chikungunya foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "chikungunya",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de chikungunya por semana epidemiológica de primeiros sintomas",
+   "denominador": "nenhum: é contagem",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
+   "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxChikUF": {
+   "tipo": "mapa coroplético por unidade da federação, com lista",
+   "pergunta_que_responde": "Quantas notificações de chikungunya por 100 mil habitantes cada estado registrou em 2026?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "chikungunya",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de chikungunya acumuladas no ano, por 100 mil habitantes",
+   "denominador": "população do Censo 2022, por estado",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
+   "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxDengueSemana": {
+   "tipo": "série semanal com faixa esperada para a época",
+   "pergunta_que_responde": "Quantas notificações de dengue foram registradas em cada semana de 2026, e como isso se compara às mesmas semanas de 2019 a 2025?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "dengue",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de dengue por semana epidemiológica de primeiros sintomas",
+   "denominador": "nenhum: é contagem",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Mediana e p90 das semanas equivalentes de 2019 a 2025, calculados da própria série. Semana sem valor fica sem barra: ausência de notificação registrada não é zero caso.",
+   "conclusoes_permitidas": "comparar a semana com a faixa das mesmas semanas dos anos anteriores",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxDengueUF": {
+   "tipo": "mapa coroplético por unidade da federação, com lista",
+   "pergunta_que_responde": "Quantas notificações de dengue por 100 mil habitantes cada estado registrou em 2026?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; notificações no SINAN",
+   "unidade_de_analise": "dengue",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas de 2026",
+   "variavel_principal": "notificações de dengue acumuladas no ano, por 100 mil habitantes",
+   "denominador": "população do Censo 2022, por estado",
+   "fonte": "SINAN (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Acumulado do ano até a última semana fechada, dividido pela população do estado. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
+   "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
+   "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; tratar notificação como caso confirmado; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño",
+   "acao_relacionada": "a lista por município, no fim da seção"
+  },
+  "saude.html#boxMonitor": {
+   "tipo": "mapa",
+   "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
+   "dimensao_da_preparacao": "planejamento e instrumento estadual de saúde",
+   "universo": "27 UFs, das quais as verificadas recebem número",
+   "unidade_de_analise": "UF",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "prontidão sanitária, de 0 a 100",
+   "denominador": "média de três componentes: instrumento, cobertura populacional sanitária e antecipação",
+   "fonte": "banco de registros do Monitor",
+   "metodologia": "Metodologia §31; UF não verificada fica cinza e sem número",
+   "conclusoes_permitidas": [
+    "extensão do arcabouço sanitário publicado e verificado em cada UF"
+   ],
+   "conclusoes_nao_permitidas": [
+    "estado de saúde da população",
+    "capacidade de resposta efetiva",
+    "UF cinza como UF sem plano"
+   ],
+   "funcao_narrativa": "síntese da dimensão de saúde, depois da camada observada",
+   "acao_relacionada": null
+  },
+  "saude.html#boxRiscoSan": {
+   "tipo": "etiquetas de sigla por família de risco",
+   "pergunta_que_responde": "Qual família de risco sanitário os boletins preveem para cada estado neste ciclo?",
+   "dimensao_da_preparacao": "o risco previsto a que o estado deveria responder",
+   "universo": "27 unidades da federação",
+   "unidade_de_analise": "unidade da federação",
+   "territorio": "Brasil",
+   "periodo": "boletins nº 1 a 3 do ciclo 2026/2027",
+   "variavel_principal": "família de risco sanitário previsto (seca, calor e fogo; chuvas extremas; as duas)",
+   "fonte": "Painel El Niño 2026-2027 (CEMADEN/INPE), boletins nº 1 a 3",
+   "metodologia": "Agrupamento das doenças citadas no boletim em duas famílias climáticas; estado citado nas duas aparece como tal. Estado sem citação aparece sem risco previsto registrado.",
+   "conclusoes_permitidas": "dizer que família de risco o boletim prevê para o estado",
+   "conclusoes_nao_permitidas": "ler previsão como ocorrência; comparar intensidade entre estados",
+   "funcao_narrativa": "mostra a que o preparo de cada estado deveria responder"
+  },
+  "saude.html#boxSG": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como síndrome gripal evolui frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "Brasil",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de casos",
+   "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
+   "fonte": "Ministério da Saúde",
+   "metodologia": "as quatro últimas semanas ficam fora do consolidado",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição ao El Niño",
+    "semanas recentes como tendência consolidada",
+    "gravidade dos casos"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice",
+   "acao_relacionada": null
+  },
+  "saude.html#boxSRAG": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como síndrome respiratória aguda grave (SRAG) evolui frente à faixa esperada para a época?",
+   "dimensao_da_preparacao": null,
+   "universo": "Brasil",
+   "unidade_de_analise": "semana epidemiológica",
+   "territorio": "Brasil",
+   "periodo": "semanas de 2026",
+   "variavel_principal": "nº de casos",
+   "denominador": "faixa esperada para a época, das mesmas semanas em anos anteriores",
+   "fonte": "Ministério da Saúde",
+   "metodologia": "as quatro últimas semanas ficam fora do consolidado",
+   "conclusoes_permitidas": [
+    "posição da série frente à faixa esperada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "atribuição ao El Niño",
+    "semanas recentes como tendência consolidada",
+    "gravidade dos casos"
+   ],
+   "funcao_narrativa": "camada observada: peso zero no índice",
+   "acao_relacionada": null
+  },
+  "saude.html#boxSragUF": {
+   "tipo": "mapa coroplético por unidade da federação, com lista",
+   "pergunta_que_responde": "Quantas internações por síndrome respiratória grave por 100 mil habitantes cada estado registrou no ano?",
+   "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+   "universo": "Brasil; internações notificadas no SIVEP-Gripe",
+   "unidade_de_analise": "unidade da federação",
+   "territorio": "Brasil",
+   "periodo": "semanas epidemiológicas do ano corrente",
+   "variavel_principal": "internações por síndrome respiratória grave acumuladas no ano, por 100 mil habitantes",
+   "denominador": "população do Censo 2022, por estado",
+   "fonte": "SIVEP-Gripe (Ministério da Saúde); IBGE — Censo 2022",
+   "metodologia": "Soma das semanas do ano corrente por estado, dividida pela população. Por 100 mil habitantes porque o total bruto só ordena os estados por tamanho.",
+   "conclusoes_permitidas": "comparar a taxa entre estados no período acumulado",
+   "conclusoes_nao_permitidas": "atribuir as internações ao El Niño; ler as últimas semanas como queda, porque elas ainda recebem notificação",
+   "funcao_narrativa": "mostra o que é registrado em doença respiratória, sem ligar ao El Niño"
+  },
+  "monitor-de-riscos.html#boxEpisodios": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como o RONI do ciclo em curso se compara ao dos episódios de El Niño anteriores da série, mês a mês do início do ciclo?",
+   "dimensao_da_preparacao": null,
+   "universo": "os episódios de El Niño identificados na própria série do RONI pelo critério da NOAA/CPC, mais o ciclo em curso",
+   "unidade_de_analise": "trimestre móvel, alinhado pelo mês desde janeiro do ano de início",
+   "territorio": "região Niño 3.4",
+   "periodo": "de janeiro do ano de início de cada episódio a junho do ano seguinte",
+   "variavel_principal": "anomalia relativa da temperatura da superfície do mar (°C)",
+   "denominador": "média do oceano tropical, período de referência 1991–2020",
+   "fonte": "NOAA/CPC — índice RONI",
+   "metodologia": "episódio é definido como cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC, aplicado à própria série; a lista não é escrita à mão. O trecho que alcança o último ponto da série é o ciclo em curso, e não entra na lista de episódios.",
+   "conclusoes_permitidas": [
+    "em que posição do calendário cada episódio esteve mais alto",
+    "quantas médias trimestrais seguidas acima de +0,5 °C o ciclo em curso já acumulou"
+   ],
+   "conclusoes_nao_permitidas": [
+    "ordenar os episódios por intensidade, que é comparação construída",
+    "prever o desfecho do ciclo em curso a partir da forma das linhas anteriores",
+    "chamar o ciclo em curso de episódio antes de completadas as cinco médias trimestrais"
+   ],
+   "funcao_narrativa": "o ciclo em curso lido contra os episódios que o próprio dado define",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxNino34Semanal": {
+   "tipo": "série temporal",
+   "pergunta_que_responde": "Como a anomalia semanal da temperatura do mar na região Niño 3.4 variou desde o início da série publicada?",
+   "dimensao_da_preparacao": null,
+   "universo": "todas as semanas do arquivo semanal vigente do CPC/NOAA, de janeiro de 2025 em diante",
+   "unidade_de_analise": "semana",
+   "territorio": "região Niño 3.4",
+   "periodo": "da primeira semana da série ao último valor publicado",
+   "variavel_principal": "anomalia da temperatura da superfície do mar (°C)",
+   "denominador": "média de referência 1991–2020, declarada pelo próprio arquivo",
+   "fonte": "NOAA/CPC — índices semanais de temperatura da superfície do mar",
+   "metodologia": "Leitura direta do arquivo semanal do CPC/NOAA, sem cálculo nosso. A escala vertical cobre a faixa do próprio dado, em passos de 0,5 °C, e traz os limiares de +0,5 °C e −0,5 °C da NOAA/CPC.",
+   "conclusoes_permitidas": [
+    "dizer qual foi a anomalia de cada semana publicada",
+    "dizer há quantas semanas a série está acima do limiar de +0,5 °C"
+   ],
+   "conclusoes_nao_permitidas": [
+    "tratar o valor semanal como classificação de episódio, que é do RONI",
+    "projetar as semanas seguintes a partir da forma da linha",
+    "ler o semanal e o RONI como se medissem a mesma coisa"
+   ],
+   "funcao_narrativa": "a leitura semanal mais recente do Pacífico, ao lado do índice que classifica o episódio",
+   "acao_relacionada": null
+  },
+  "monitor-de-riscos.html#boxListaIndicados": {
+   "tipo": "mapa por estado",
+   "pergunta_que_responde": "Quantos municípios de cada estado a União indicou ao cadastro nacional de áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A)?",
+   "dimensao_da_preparacao": "risco reconhecido oficialmente",
+   "universo": "os 2.095 municípios indicados pela União (Nota Técnica nº 2/2025 e nº 1/2023; cadastro nacional, MIDR)",
+   "unidade_de_analise": "município, agregado por estado",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "número de municípios do estado indicados pela União",
+   "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
+   "conclusoes_permitidas": [
+    "quantos municípios de cada estado constam da lista federal"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que constar da lista é estar em emergência",
+    "que município fora da lista não tem risco: a lista é de um risco específico"
+   ],
+   "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
+   "metodologia": "Contagem nominal por estado do cadastro federal, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado. 'Plano localizado' exclui plano em elaboração, estrutura (comitê ou gabinete) e cobertura estadual."
+  },
+  "monitor-de-riscos.html#boxListaSemiarido": {
+   "tipo": "mapa por estado",
+   "pergunta_que_responde": "Quantos municípios de cada estado integram a delimitação do Semiárido?",
+   "dimensao_da_preparacao": "risco reconhecido oficialmente",
+   "universo": "os 1.477 municípios da delimitação do Semiárido",
+   "unidade_de_analise": "município, agregado por estado",
+   "territorio": "Brasil",
+   "periodo": "corte da edição",
+   "variavel_principal": "número de municípios do estado na delimitação do Semiárido",
+   "fonte": "Sudene, Resolução Condel nº 176/2024, com a tabela nominal publicada pelo IBGE",
+   "conclusoes_permitidas": [
+    "quantos municípios de cada estado integram a delimitação oficial"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que integrar a delimitação é estar em seca: a delimitação é político-administrativa e permanente",
+    "que a delimitação mede a seca deste ciclo"
+   ],
+   "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
+   "metodologia": "Contagem nominal por estado da lista do Semiárido, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
+  },
+  "monitor-de-riscos.html#boxListaFogo": {
+   "tipo": "mapa por estado",
+   "pergunta_que_responde": "Quantos municípios de cada estado constam da lista federal de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia?",
+   "dimensao_da_preparacao": "risco reconhecido oficialmente",
+   "universo": "os municípios da lista de prioritários do Ministério do Meio Ambiente em vigor",
+   "unidade_de_analise": "município, agregado por estado",
+   "territorio": "Amazônia Legal",
+   "periodo": "corte da edição",
+   "variavel_principal": "número de municípios do estado na lista de prioritários",
+   "fonte": "Ministério do Meio Ambiente, portaria vigente",
+   "conclusoes_permitidas": [
+    "quantos municípios de cada estado constam da lista em vigor"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que constar da lista mede o desmatamento ou o fogo do ciclo",
+    "que município fora da lista não tem risco de fogo",
+    "que a lista cobre o país: ela é da Amazônia Legal"
+   ],
+   "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
+   "metodologia": "Contagem nominal por estado da lista em vigor do Ministério do Meio Ambiente, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
+  },
+  "defesa-civil.html#boxEmergencias": {
+   "tipo": "mapa de pontos",
+   "pergunta_que_responde": "Onde estão os municípios com decreto de emergência desde 29/06/2026, por qual evento declarado e se a União já reconheceu?",
+   "dimensao_da_preparacao": "resposta declarada",
+   "universo": "os municípios com decreto de situação de emergência ou estado de calamidade pública localizado desde 29/06/2026",
+   "unidade_de_analise": "município (ponto na sede)",
+   "territorio": "Brasil",
+   "periodo": "de 29/06/2026 até o corte do consolidado",
+   "variavel_principal": "evento declarado no ato (família de cor) e etapa (reconhecido ou só decreto)",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
+   "conclusoes_permitidas": [
+    "onde há município com decreto, por evento declarado",
+    "quais desses municípios têm portaria de reconhecimento"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o evento declarado é o evento observado pela ciência: é o que o ato declara",
+    "que município sem ponto não teve dano: é município sem decreto localizado até o corte",
+    "que ponto vazado é pedido negado: é reconhecimento não localizado até o corte"
+   ],
+   "funcao_narrativa": "figura principal da página: mostrar onde estão as emergências e em que etapa",
+   "metodologia": "Ponto na sede municipal (municipios_ibge_referencia.json). Evento do município é o do(s) ato(s) que o casam no consolidado; sem classificação, a classe é nomeada. Cor pela família do evento (seca, chuva, fogo, outro); cheio quando há portaria de reconhecimento."
+  },
+  "defesa-civil.html#boxPendencia": {
+   "tipo": "número",
+   "pergunta_que_responde": "Quantos municípios têm decreto há mais de 30 dias sem portaria de reconhecimento localizada?",
+   "dimensao_da_preparacao": "resposta declarada",
+   "universo": "os municípios com decreto localizado desde 29/06/2026 e sem portaria de reconhecimento localizada",
+   "unidade_de_analise": "município",
+   "territorio": "Brasil",
+   "periodo": "data de referência do consolidado",
+   "variavel_principal": "número de municípios com mais de 30 dias entre o primeiro decreto e a data de referência, sem reconhecimento",
+   "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
+   "conclusoes_permitidas": [
+    "quantos municípios estão nessa situação na data de referência"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o reconhecimento foi negado: a figura conta portaria não localizada até o corte",
+    "que o município pediu o reconhecimento: o pedido não é publicado",
+    "demora de algum órgão: a contagem parte da data do decreto, não do pedido"
+   ],
+   "funcao_narrativa": "mostrar onde o caminho do decreto ao reconhecimento parou",
+   "metodologia": "Campo dias_sem_reconhecimento do consolidado (data de referência menos a data do primeiro decreto, só para quem não tem reconhecimento); a figura conta os maiores que 30."
+  },
+  "financiamento.html#boxChega": {
+   "dimensao_da_preparacao": "resposta declarada",
+   "territorio": "Brasil",
+   "tipo": "mapa de círculos proporcionais",
+   "pergunta_que_responde": "Quanto dinheiro federal chegou a cada município desde 29/06/2026, pela defesa civil e pelo FNS em linhas de emergência?",
+   "universo": "municípios com portaria de recurso da defesa civil federal ou com repasse do FNS em linha ligada a emergência",
+   "unidade_de_analise": "município (círculo na sede)",
+   "periodo": "defesa civil desde 29/06/2026; FNS de janeiro ao último mês publicado de 2026",
+   "variavel_principal": "valor autorizado (defesa civil) ou repassado (FNS), em reais; área do círculo proporcional ao valor",
+   "fonte": "Defesa Civil nacional (portarias no Diário Oficial da União) e Fundo Nacional de Saúde (Portal da Transparência)",
+   "conclusoes_permitidas": [
+    "onde chegou dinheiro federal dessas duas origens e quanto"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o município sem círculo não recebeu dinheiro federal: o mapa mostra só essas duas origens",
+    "somar autorizado e repassado como a mesma etapa",
+    "que o gasto direto da União chegou ao município: ele não tem destino municipal registrado"
+   ],
+   "funcao_narrativa": "figura principal: o dinheiro por lugar",
+   "metodologia": "Círculo na sede municipal (municipios_ibge_referencia.json), raio proporcional à raiz do valor; cor pela origem."
+  },
+  "financiamento.html#boxMesAMes": {
+   "dimensao_da_preparacao": "resposta declarada",
+   "territorio": "Brasil",
+   "tipo": "barras por mês",
+   "pergunta_que_responde": "Quanto as ações reforçadas pelas medidas provisórias do fogo e da seca pagaram em cada mês desde junho de 2026?",
+   "universo": "as ações orçamentárias reforçadas pelas MPs 1.367/2026 e 1.384/2026",
+   "unidade_de_analise": "mês",
+   "periodo": "de junho de 2026 ao mês corrente, parcial",
+   "variavel_principal": "valor pago no mês, em R$ milhões",
+   "fonte": "Portal da Transparência, execução da despesa (arquivos mensais)",
+   "conclusoes_permitidas": [
+    "quanto foi pago em cada mês por ação reforçada"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o valor é só do crédito extraordinário: inclui a dotação ordinária da ação",
+    "comparar o mês parcial com os completos"
+   ],
+   "funcao_narrativa": "mostrar o ritmo do pago",
+   "metodologia": "Soma mensal do pago das ações reforçadas, como o gerador registra em por_mes; mês corrente marcado parcial."
+  },
+  "financiamento.html#boxAcoes": {
+   "dimensao_da_preparacao": "resposta declarada",
+   "territorio": "Brasil",
+   "tipo": "barras",
+   "pergunta_que_responde": "Quanto a defesa civil federal autorizou por portaria desde 29/06/2026, por ação?",
+   "universo": "portarias de recurso da defesa civil federal com município e valor legíveis",
+   "unidade_de_analise": "ação (resposta, recuperação, outra)",
+   "periodo": "desde 29/06/2026",
+   "variavel_principal": "valor autorizado, em reais",
+   "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União",
+   "conclusoes_permitidas": [
+    "quanto foi autorizado em cada ação",
+    "quantos municípios têm ato"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o valor foi pago: autorizado não é pago",
+    "que portaria sem valor legível não existe: ela fica fora da soma"
+   ],
+   "funcao_narrativa": "o dinheiro da resposta, por ação",
+   "metodologia": "Soma do valor autorizado por ação nas portarias lidas (recursos_liberados.json)."
+  },
+  "financiamento.html#boxSemRecurso": {
+   "dimensao_da_preparacao": "resposta declarada",
+   "territorio": "Brasil",
+   "tipo": "número",
+   "pergunta_que_responde": "Quantos municípios foram reconhecidos pela União há mais de 30 dias e não têm portaria de recurso localizada?",
+   "universo": "municípios com reconhecimento federal desde 29/06/2026",
+   "unidade_de_analise": "município",
+   "periodo": "data de referência do consolidado",
+   "variavel_principal": "número de municípios com mais de 30 dias entre o primeiro reconhecimento e a data de referência, sem portaria de recurso",
+   "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União",
+   "conclusoes_permitidas": [
+    "quantos municípios estão nessa situação na data de referência"
+   ],
+   "conclusoes_nao_permitidas": [
+    "que o recurso foi negado ou não pedido: a figura conta portaria não localizada até o corte",
+    "demora de algum órgão"
+   ],
+   "funcao_narrativa": "onde o caminho do reconhecimento ao recurso parou",
+   "metodologia": "Primeiro reconhecimento no consolidado; sem portaria de recurso em recursos_liberados.json; mais de 30 dias até a data do consolidado."
   }
+ }
 }

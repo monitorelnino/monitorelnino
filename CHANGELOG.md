@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
 
+## 2026-10-19 · #858 · Financiamento: o dinheiro por risco, onde chega e o mês a mês
+
+Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.
+
+## 2026-10-19 · #861 · Defesa civil: sai o cartão de decreto e alerta ao mesmo tempo
+
+O instantâneo do topo da Defesa civil deixa de gerar o cartão que cruzava decreto e alerta; a Imprensa já não o usava. Restam cinco cartões. Gerador −13 linhas, sem outro efeito.
+
 ## 2026-10-19 · #860 · RO saúde: plano recebido por LAI, registrado sem julgamento
 `data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.
 
@@ -31,6 +39,10 @@ Abertura aprovada, cinco números na variante compacta, consulta pelo módulo co
 ## 2026-10-19 · #852 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação
 
 Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão "Resposta" dos números e a figura "O que foi localizado em cada estado", que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.
+## 2026-10-19 · #862 · Fila de pistas: recusada pelo juiz também perde o texto de trabalho
+
+A pista recusada só volta ao juiz quando o codebook muda, e ele relê o documento pelo endereço. A compactação da triagem passa a cobri-la, junto com as encerradas: 4.549 pistas, `pistas_imprensa.json` de 46,8 para 41,6 MiB (teto 50). A decisão do juiz fica. Histórico no git.
+
 ## 2026-10-19 · #857 · Saem seis scripts sem chamador
 
 Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.
