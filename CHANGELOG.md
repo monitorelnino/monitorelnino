@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Imprensa: a semana em seis números, e o que recomendamos concluir
+## 2026-10-19 · #853 · Imprensa: a semana em seis números, e o que recomendamos concluir
 
 A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
 
