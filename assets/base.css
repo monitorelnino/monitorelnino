@@ -1268,6 +1268,8 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
 .grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 .grade-numeros--compacta .cartao-numero-rotulo{font-size:var(--fs-small); line-height:var(--lh-small);}
+/* A série recente dentro do cartão de número (seção de desfechos da Saúde): altura fixa, sem eixo. */
+.cartao-numero-serie{display:block; width:100%; height:48px; margin:var(--sp-1) 0 0;}
 @media (max-width: 1020px){ .grade-numeros--compacta{grid-auto-flow:row; grid-template-columns:repeat(3, minmax(0,1fr));} }
 @media (max-width: 640px){ .grade-numeros--compacta{grid-template-columns:repeat(2, minmax(0,1fr));} }
 /* Barras em HTML: rótulo inteiro, valor na ponta, painel por órgão. */
