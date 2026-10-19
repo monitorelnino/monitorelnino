@@ -209,7 +209,7 @@ def preparar(fila: dict, hoje: str, buscar=juiz.buscar_texto, processar=juiz.pro
         numero, data = numero or n_t, data or d_t   # documento manda; trecho completa o que faltar
         natureza, motivo = classificar(texto)
         prep.update({"numero": numero, "data_ato": data, "citacao_completa": citacao_completa(f"{numero or ''} {data or ''}"),
-                     "natureza": natureza, "motivo_natureza": motivo, "trecho_documento": texto[:600]})
+                     "natureza": natureza, "motivo_natureza": motivo})
         ok_auto, motivo_auto = portao_automatico(p, prep, texto)
         prep["portao_automatico"] = {"ok": ok_auto, "motivo": motivo_auto}
         if ok_auto:

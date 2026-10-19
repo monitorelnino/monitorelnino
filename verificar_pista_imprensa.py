@@ -1402,9 +1402,7 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
             contagem["por_motivo"][m] = contagem["por_motivo"].get(m, 0) + 1
             pista["verificacao_fonte"] = {
                 "versao": VERSAO, "exibivel": False, "motivo": m, "lido_em": hoje.isoformat(),
-                "criterios": {"B5_veiculo": {
-                    "ok": False, "trecho": f"{dom_do_feed} (do `<source url>` do feed) não está em "
-                                           "data/veiculos_imprensa.json"}}}
+                "criterios": {}}   # o motivo e o domínio da pista dizem tudo; o trecho só repetia (19/10/2026)
             continue
 
         # Item 1: o link do agregador é caminho, não fonte. Resolve-se primeiro; sem resolver, a
@@ -1447,7 +1445,7 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
         pre = b5_veiculo(pista["url"], veiculos)
         if not pre[0]:
             v = {"versao": VERSAO, "exibivel": False, "motivo": pre[1], "lido_em": hoje.isoformat(),
-                 "criterios": {"B5_veiculo": {"ok": False, "trecho": pre[2]}}}
+                 "criterios": {}}
         elif not pode:
             contagem["nao_lidas_por_orcamento"] += 1
             v = {"versao": VERSAO, "exibivel": False, "motivo": "nao_lido_esta_noite",
