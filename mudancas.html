@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · O detalhe do desfecho ganha o mapa por estado</dt>
+      <dd>A figura do desfecho escolhido passa a trazer, ao lado da série, o mapa do último período fechado por estado, pintado pelos cortes fixos que o próprio arquivo guarda — os quintis de 2019 a 2025, congelados na primeira gravação. A legenda diz os cortes em números, estado sem período fechado fica nomeado, e a lista por estado abre embaixo. Gráfico e mapa usam só período fechado.</dd>
       <dt>19/10/2026 · O cartão de desfecho escolhido abre a série inteira</dt>
       <dd>Escolher um cartão da seção de desfechos da Saúde abre, abaixo da grade, a série inteira do território sobre a faixa habitual para a época, com título, legenda, fonte e data lidos do arquivo. Um detalhe por vez: escolher outro troca o conteúdo e a página não cresce. O seletor de território vale para a grade e para a série.</dd>
       <dt>19/10/2026 · Malária fora da Amazônia na forma comum dos desfechos</dt>
@@ -165,8 +167,6 @@
       <dd>A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. &quot;O que a lei exige de cada governo&quot; vira três cartões de número, as listas perdem a caixa de marcar e &quot;Como os recursos chegam&quot; ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.</dd>
       <dt>17/10/2026 · Defesa civil: evento declarado por município</dt>
       <dd>`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como &quot;outro declarado&quot; (380 atos passam a &quot;sem tipo informado&quot;). Soma por família = 1.202 atos casados. Metodologia §32.5.</dd>
-      <dt>17/10/2026 · Desfechos do SUS: arquivo comum e leitor `.dbc`</dt>
-      <dd>Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.</dd>
     </dl>
   </section>
 </main>
