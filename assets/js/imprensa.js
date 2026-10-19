@@ -84,3 +84,24 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     });
   }).catch(_erroImp("imprensa:62"));
 })();
+
+/* ===== "Como os índices funcionam" (HANDOVER_IMPRENSA §3 e §4.2) =====
+ *
+ * A definição de cada índice é escrita por uma função só, a partir de `meta.json` e
+ * `monitor_saude.json`, e publicada em `data/imprensa/semana.json` → `definicao_dos_indices`. A
+ * página só a exibe: quando a definição mudar, o texto muda sozinho, aqui e na Saúde, e nunca
+ * divergem. Enquanto o campo não existir no dado, fica o texto do catálogo, que é o que a
+ * definição em vigor produz — lacuna declarada da classe, sem nada inventado e sem quebrar.
+ * Nenhum número de versão sai para o leitor (editoria, 05/10).
+ */
+(function definicaoDosIndices(){
+  const alvos = {legal: 'indicesLegalTexto', saude: 'indicesSaudeTexto'};
+  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
+    const def = (S || {}).definicao_dos_indices;
+    if (!def) return;
+    Object.keys(alvos).forEach(k => {
+      const e = document.getElementById(alvos[k]);
+      if (e && def[k]) { e.textContent = def[k]; e.setAttribute('data-conteudo-fixado', '1'); }
+    });
+  }).catch(_erroImp("imprensa:definicao"));
+})();

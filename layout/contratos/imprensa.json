@@ -81,7 +81,7 @@
    "exige_texto": [
     "O que os índices não dizem."
    ],
-   "_nota": "Dois cartões (MARÉ Legal · MARÉ Saúde, com o que os índices não dizem no segundo). Hoje é o texto aprovado no §2, que é o que a definição em vigor produz; quando a função única da definição (HANDOVER_IMPRENSA §4.2, janela A) entrar, os dois passam a ser gerados de data/meta.json e data/monitor_saude.json. Nenhum número de versão aparece ao leitor."
+   "_nota": "Dois cartões (MARÉ Legal · MARÉ Saúde, com o que os índices não dizem no segundo). Hoje é o texto aprovado no §2, que é o que a definição em vigor produz; a página já lê `data/imprensa/semana.json` → `definicao_dos_indices.{legal,saude}`, escrito pela função única (HANDOVER_IMPRENSA §4.2) a partir de data/meta.json e data/monitor_saude.json; enquanto o campo não existir no dado, fica o texto do catálogo. Nenhum número de versão aparece ao leitor."
   },
   {
    "id": "glossario",
