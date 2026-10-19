@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Saúde de Rondônia: o link oficial do plano entra no canal 4</dt>
+      <dd>O endereço oficial do Plano de Adaptação na Saúde de Rondônia (SESAU/RO, resposta de 15/10/2026) entra em `ACRESCIMOS_DE_CANAL4[&quot;RO&quot;]`. Na próxima noite o coletor o consulta, e o julgamento do documento segue o fluxo existente. O endereço não abre da nuvem de trabalho (túnel 403); a verificação fica para o coletor. Linhas líquidas: +2.</dd>
       <dt>19/10/2026 · Fileira compacta de cartões sem órfão</dt>
       <dd>A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas cheias. Sai também do mapa de focos a ressalva &quot;pontos: todos os satélites&quot;, que o dado tornou falsa.</dd>
       <dt>19/10/2026 · Dengue, chikungunya e SRAG na forma comum dos desfechos</dt>
@@ -165,8 +167,6 @@
       <dd>`detectar_muro_de_robo` reconhece a &quot;Verificação de segurança — Senado Federal&quot;, que a LexML serve com HTTP 200: é recusa, não conteúdo. Novo chamador do coletor, só por disparo, `recuperar_edicoes_doe.yml` (300 min, prazo de 280, grupo da noite), para a recuperação do canal 2, que não cabe no elo da saúde estadual.</dd>
       <dt>17/10/2026 · Portões: 119 para 92 comandos</dt>
       <dd>O autoteste do layout roda dentro da conformidade; a Imprensa usa o medidor de página do layout. Os `testar_*.py` sem flag e catorze autotestes puros do bloco &quot;sempre&quot; passam a rodar só em `verificar_autotestes_isolados.py`, que já os cobria e agora também prova que não alteram `data/`. Mesma cobertura, provada por mutação. Registro do #784: entrou junto a fusão `verificar_carimbo_da_rodada.py`.</dd>
-      <dt>17/10/2026 · Figura principal larga</dt>
-      <dd>Cada página pode ter uma figura principal em largura total (mapa ou série), declarada no contrato, além do diagrama; no Monitor de riscos, o mapa de focos e o RONI. `verificar_conformidade.py` reprova figura larga não declarada; `verificar_layout.py` lê a fração de um terço de `regras.json`. Decisão de 16/10/2026.</dd>
     </dl>
   </section>
 </main>
