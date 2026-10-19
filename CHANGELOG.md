@@ -9,8 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+<<<<<<< HEAD
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
+=======
+## 2026-10-19 · #856 · Proteja-se: a consulta do município responde pelo seu lugar
+
+Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. "Leve com você" vai para o fim.
+
+## 2026-10-19 · #PR · Imprensa: a semana em seis números, e o que recomendamos concluir
+
+A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
+>>>>>>> origin/main
 
 ## 2026-10-19 · #853 · Imprensa: a semana em seis números, e o que recomendamos concluir
 
