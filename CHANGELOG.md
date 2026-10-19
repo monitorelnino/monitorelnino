@@ -12,6 +12,14 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #852 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação
 
 Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão "Resposta" dos números e a figura "O que foi localizado em cada estado", que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.
+## 2026-10-19 · #856 · Proteja-se: a consulta do município responde pelo seu lugar
+
+Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. "Leve com você" vai para o fim.
+
+## 2026-10-19 · #PR · Imprensa: a semana em seis números, e o que recomendamos concluir
+
+A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
+
 ## 2026-10-19 · #853 · Imprensa: a semana em seis números, e o que recomendamos concluir
 
 A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
