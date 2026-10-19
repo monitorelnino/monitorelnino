@@ -107,6 +107,8 @@
       <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
       <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
       <dd>`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem &quot;semana epidemiológica&quot;. `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o &quot;ciclo&quot;. Metodologia §111.</dd>
+      <dt>19/10/2026 · Diário oficial do RS lido por data</dt>
+      <dd>O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
       <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
       <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
@@ -165,8 +167,6 @@
       <dd>Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas &quot;motor_sem_resposta&quot; gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.</dd>
       <dt>17/10/2026 · Main vermelha: a fila de pistas passou de 50 MB com a URL gravada duas vezes</dt>
       <dd>`data/pistas_imprensa.json` chegou a 50,1 MB no commit do juiz das 09:24 e o portão de tamanho reprovou a `main`. Causa: `verificacao_fonte.url` repetia a URL da própria pista em 19.954 pistas (5,8 MB) e ninguém a lia. O verificador deixa de gravá-la; as cópias iguais saem do dado (46,4 MB). As 24 que diferem ficam.</dd>
-      <dt>17/10/2026 · Autoteste vermelho mostra o traceback no log do portão</dt>
-      <dd>Na `main` (run 38976908995) o autoteste de `unir_conflito_de_rodada.py` caiu e o log só trazia o último ✓: o portão descartava o stderr. Agora a linha do autoteste vermelho junta a última saída e as três últimas linhas do erro. Linhas líquidas 0.</dd>
     </dl>
   </section>
 </main>
