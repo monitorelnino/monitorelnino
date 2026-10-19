@@ -139,13 +139,21 @@ const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => nul
  * reconferência rodar, a linha acompanha. Sem o registro, fica a data de reserva do HTML.
  */
 (function dataDaFonteDoGuia() {
-  const C = window.MonitorCatalogo, alvo = document.getElementById('fonteDoCalor');
-  if (!C || !alvo) return;
-  const URL_CALOR = 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor';
+  const C = window.MonitorCatalogo;
+  if (!C) return;
+  /* Uma linha por aba cujo texto a janela A preserva: elemento, URL preservada e chave do catálogo. */
+  const LINHAS = [
+    ['fonteDoCalor', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor', 'proteja-se.guia-calor.texto_3'],
+    ['fonteDaDengue', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue', 'proteja-se.guia-dengue.texto']
+  ].filter(l => document.getElementById(l[0]));
+  if (!LINHAS.length) return;
   Promise.all([json('data/orientacoes_oficiais.json'), C.pronto])
     .then(([reg]) => {
-      const f = ((reg || {}).fontes || []).find(x => x && x.url === URL_CALOR);
-      if (f && f.consultado_em) C.escrever(alvo, 'proteja-se.guia-calor.texto_3', {data: f.consultado_em});
+      const fontes = (reg || {}).fontes || [];
+      LINHAS.forEach(([id, url, chave]) => {
+        const f = fontes.find(x => x && x.url === url);
+        if (f && f.consultado_em) C.escrever(document.getElementById(id), chave, {data: f.consultado_em});
+      });
     }).catch(_erroPS('proteja-se:fonte-do-guia'));
 })();
 

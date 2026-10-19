@@ -103,8 +103,31 @@
   "proteja-se.municipio.estado.sem_contato": "Contato da Defesa Civil estadual não localizado no diretório oficial até o corte.",
   "proteja-se.municipio.inmet.nota_nenhum": "Avisos em vigor consultados em {data} · Inmet",
   "proteja-se.municipio.cemaden.nota_nenhum": "Alertas em vigor consultados em {data} · Cemaden",
-  "proteja-se.municipio.decreto.nota_nenhum": "Decretos e reconhecimentos consultados em {data} · Defesa Civil nacional, no Diário Oficial da União"
+  "proteja-se.municipio.decreto.nota_nenhum": "Decretos e reconhecimentos consultados em {data} · Defesa Civil nacional, no Diário Oficial da União",
+  "proteja-se.guia-dengue.titulo_da_secao": "Dengue e chikungunya",
+  "proteja-se.guia-dengue.titulo": "Prevenção",
+  "proteja-se.guia-dengue.item": "Use telas nas janelas e repelentes em áreas de transmissão reconhecida",
+  "proteja-se.guia-dengue.item_2": "Remova dos domicílios os recipientes que possam virar criadouro de mosquitos",
+  "proteja-se.guia-dengue.item_3": "Vede os reservatórios e as caixas de água",
+  "proteja-se.guia-dengue.item_4": "Desobstrua calhas, lajes e ralos",
+  "proteja-se.guia-dengue.titulo_2": "Sinais e sintomas mais comuns de dengue",
+  "proteja-se.guia-dengue.item_5": "Febre alta",
+  "proteja-se.guia-dengue.item_6": "Dor de cabeça e/ou atrás dos olhos",
+  "proteja-se.guia-dengue.item_7": "Enjoo",
+  "proteja-se.guia-dengue.item_8": "Moleza",
+  "proteja-se.guia-dengue.item_9": "Dor nas articulações",
+  "proteja-se.guia-dengue.item_10": "Manchas vermelhas no corpo",
+  "proteja-se.guia-dengue.titulo_3": "Sinais de alerta para dengue grave",
+  "proteja-se.guia-dengue.item_11": "Dor na barriga intensa",
+  "proteja-se.guia-dengue.item_12": "Vômitos frequentes",
+  "proteja-se.guia-dengue.item_13": "Tontura ou sensação de desmaio",
+  "proteja-se.guia-dengue.item_14": "Dificuldade de respirar",
+  "proteja-se.guia-dengue.item_15": "Sangramento no nariz, gengivas e fezes",
+  "proteja-se.guia-dengue.item_16": "Cansaço e/ou irritabilidade",
+  "proteja-se.guia-dengue.alerta": "<b>Quando procurar atendimento</b>Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.",
+  "proteja-se.guia-dengue.texto": "Fonte oficial: Ministério da Saúde, \"Dengue\" · consultado em {data} · <a href=\"https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue\" target=\"_blank\" rel=\"noopener\">ver na fonte →</a>"
  },
  "_nota_municipio": "19/10/2026 (HANDOVER_PROTEJA_SE §4): os seis cartões da consulta e a linha do estado são escritos por assets/js/proteja-se.js com o dado de data/riscos_municipio/<UF>.json e data/contatos_uf.json; os textos e os moldes vivem aqui. Ausência é a frase da classe, nunca vazio nem travessão. O cartão de dengue fica na lacuna declarada até o nível por município entrar no dado (pedido à janela A). Os identificadores do painel \"Defesa Civil do seu estado\" e do painel \"Se a sua cidade decretou emergência\" apontam, em conteudo/_renomeacoes.json, para a linha do estado e para o cartão de decreto da consulta, que é onde o conteúdo deles passou a viver.",
- "_nota_fonte_do_guia": "19/10/2026: a data da fonte da aba de calor deixa de ser escrita à mão. O Ministério da Saúde \"Ondas de Calor\" é a mesma página que a janela A preserva por hash em data/orientacoes_oficiais.json (HANDOVER_PROTEJA_SE §7.1), e a data do molde {data} vem de lá: quando a reconferência rodar, a linha da aba acompanha sozinha. Sem o registro, fica a data de reserva do HTML. As outras três abas seguem com a fonte de hoje, porque a página preservada delas é outra e o trecho por item ainda não existe."
+ "_nota_fonte_do_guia": "19/10/2026: a data da fonte da aba de calor deixa de ser escrita à mão. O Ministério da Saúde \"Ondas de Calor\" é a mesma página que a janela A preserva por hash em data/orientacoes_oficiais.json (HANDOVER_PROTEJA_SE §7.1), e a data do molde {data} vem de lá: quando a reconferência rodar, a linha da aba acompanha sozinha. Sem o registro, fica a data de reserva do HTML. As outras três abas seguem com a fonte de hoje, porque a página preservada delas é outra e o trecho por item ainda não existe.",
+ "_nota_dengue": "19/10/2026 (HANDOVER_PROTEJA_SE §5): a quinta aba vem inteira de data/orientacoes_oficiais.json, fontes[familia=dengue] (página-mãe do Ministério da Saúde, preservada por hash, 20 trechos). Prevenção, sinais e sintomas e sinais de alerta são os trechos da fonte, em forma de instrução; a data da linha de fonte sai do consultado_em do registro, pelo molde {data}, como na aba de calor. Nada aqui é escrito sem trecho correspondente."
 }

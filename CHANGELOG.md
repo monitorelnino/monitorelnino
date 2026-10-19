@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #912 · Proteja-se: a aba de dengue, com o que a fonte oficial diz
+
+O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.
+
 ## 2026-10-19 · #915 · O teto do guia em PDF sobe para três páginas
 
 O portão do guia "Leve com você" cobrava no máximo duas páginas, teto escrito com quatro famílias de risco. Com a quinta (dengue e chikungunya) o guia passa a ter três; o teto vira a constante `PAGINAS_MAX = 3`, com caso de teste para o limite. Pedido da B2, destrava o #912. Linhas líquidas: +4.
