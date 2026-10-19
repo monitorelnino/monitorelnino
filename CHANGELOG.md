@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
+
+Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
+=======
+## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
+`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
+
 ## 2026-10-19 · #891 · Diário oficial do DF lido por data
 
 O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF lista os diários da data e serve o PDF do DODF (2,7 MB em 19/10), enquanto o endereço próprio do diário não responde ao coletor. Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +86 (adaptador novo, recurso novo, com autoteste offline).
