@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
+## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
 
 A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
 
