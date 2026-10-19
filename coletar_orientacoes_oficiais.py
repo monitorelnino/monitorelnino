@@ -40,10 +40,13 @@ FONTES = [  # (família, órgão, URL)
     ("fogo", MIDR, G + "mdr/pt-br/noticias/conheca-as-medidas-de-autoprotecao-que-a-populacao-deve-tomar-em-casos-de-incendios-florestais"),
     ("fogo", MIDR, G + "mdr/pt-br/assuntos/protecao-e-defesa-civil/IncndiosFlorestais.pdf"),
     ("fogo", MS, G + "saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca"),
+    ("fogo", MS, G + "saude/pt-br/canais-de-atendimento/sala-de-imprensa/notas-a-imprensa/2024/orientacoes-para-evitar-a-exposicao-a-fumaca-intensa-causada-por-queimadas"),
     ("seca", MS, G + "saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf"),
     ("calor", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor"),
+    ("calor", MS, G + "saude/pt-br/assuntos/noticias/2023/setembro/confira-cuidados-com-a-saude-para-se-proteger-das-altas-temperaturas"),
     ("dengue", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/d/dengue"),
-    ("dengue", MS + " (via Agência Gov)", "https://agenciagov.ebc.com.br/noticias/202402/confira-10-passos-para-eliminar-focos-do-mosquito-da-dengue"),
+    ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2024/dezembro/dengue-conheca-os-sintomas-da-doenca-e-saiba-como-prevenir"),
+    ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2025/novembro/dez-dicas-para-eliminar-focos-do-mosquito-da-dengue"),
 ]
 # A aba de dengue ainda não tem item no catálogo: a página oficial entra com as frases que tratam do que o
 # guia vai orientar (água parada, recipientes, lixo, sintomas, quando procurar atendimento).

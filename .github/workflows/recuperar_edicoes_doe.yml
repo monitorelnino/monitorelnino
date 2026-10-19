@@ -23,7 +23,6 @@ jobs:
       timeout_minutos: 30
       comandos: |
         coletar_orientacoes_oficiais.py
-        coletar_execucao_mps.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
