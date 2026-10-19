@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=a15e2732">
+<link rel="stylesheet" href="assets/base.css?v=fc02d797">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Fileira compacta de cartões sem órfão</dt>
+      <dd>A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas cheias. Sai também do mapa de focos a ressalva &quot;pontos: todos os satélites&quot;, que o dado tornou falsa.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
       <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde. =======</dd>
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
@@ -165,8 +167,6 @@
       <dd>O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.</dd>
       <dt>17/10/2026 · Pista julgada guarda se o documento foi lido, não a cópia dos critérios</dt>
       <dd>`julgar_filas` copiava `criterios` do veredito para cada pista, em duplicata com `promocoes_automaticas.json`, e não gravava `leu_documento`. O fechamento por prazo de 09/10 (A1-16), que lê `leu_documento` na pista, nunca o encontrava. Agora a pista guarda `leu_documento`, e as 7.333 cópias idênticas saem do dado. A fila de pistas cai de 44,2 para 40,9 MB antes de a fila reentrante julgar 14 mil pistas.</dd>
-      <dt>17/10/2026 · Imprensa da saúde usa o parser, a fonte e o cursor da imprensa regional</dt>
-      <dd>`monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.</dd>
     </dl>
   </section>
 </main>

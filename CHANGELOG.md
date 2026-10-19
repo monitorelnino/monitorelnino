@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #894 · Fileira compacta de cartões sem órfão
+
+A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por
+aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da
+Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas
+cheias. Sai também do mapa de focos a ressalva "pontos: todos os satélites", que o dado tornou
+falsa.
+
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
