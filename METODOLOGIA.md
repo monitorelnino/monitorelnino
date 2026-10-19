@@ -4275,3 +4275,7 @@ Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, 
 
 **Limite.** A frase de fonte é a que o texto da página traz, não uma recomendação nova do MARÉ. Página que mudar de endereço ou for retirada passa a lacuna na consulta seguinte.
 
+## 113. Plano de saúde de Rondônia recebido por acesso à informação (19/10/2026)
+
+A Ouvidoria Geral do SUS da SESAU/RO respondeu em 15/10/2026 ao pedido de 18/09/2026 com um plano de adaptação da saúde ao El Niño de 96 páginas, em versão revisada, sem número de processo nem data de aprovação. O MARÉ guarda o registro em `data/notas_lai.json` (`documentos_de_estado`), com o endereço que o órgão informou e `verificacao_link: pendente`: o link só passa a verificado quando o endereço responde e título e órgão conferem com o documento recebido. O registro ainda não foi julgado (`veredito: null`) e não altera o que o índice registra para o estado. Os documentos que o plano cita e que o MARÉ não localizou viram buscas dirigidas de nível A. Marcos e valores do plano ficam guardados, sem comparação com o que ocorrer depois.
+

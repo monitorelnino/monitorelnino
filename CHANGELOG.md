@@ -12,7 +12,19 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-19 · #861 · Defesa civil: sai o cartão de decreto e alerta ao mesmo tempo
+
+O instantâneo do topo da Defesa civil deixa de gerar o cartão que cruzava decreto e alerta; a Imprensa já não o usava. Restam cinco cartões. Gerador −13 linhas, sem outro efeito.
+
+## 2026-10-19 · #860 · RO saúde: plano recebido por LAI, registrado sem julgamento
+`data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.
+
+## 2026-10-19 · #859 · Ajustes de texto: a entrada repetida da Imprensa sai do histórico
+
+A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.html`, uma delas sem o número do PR. Fica a do #853. Três títulos que a união colou ao parágrafo anterior voltam a ter linha em branco antes, que é o que o gerador do histórico espera.
+
 ## 2026-10-19 · #854 · Proteja-se: páginas oficiais de orientação preservadas por hash
+
 `coletar_orientacoes_oficiais.py` lê 13 páginas do Ministério da Saúde e da Defesa Civil nacional, preserva cada uma por hash e grava o trecho que sustenta cada item do guia em `data/orientacoes_oficiais.json`: 6 itens com fonte, 29 sem (lacuna declarada, a página não os publica). Reconfere o diretório estadual da Defesa Civil: DF e RO divergem, registrado sem reescrever. Peso zero.
 
 ## 2026-10-19 · #844 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
@@ -22,19 +34,21 @@ Abertura aprovada, cinco números na variante compacta, consulta pelo módulo co
 ## 2026-10-19 · #852 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação
 
 Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão "Resposta" dos números e a figura "O que foi localizado em cada estado", que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.
+## 2026-10-19 · #857 · Saem seis scripts sem chamador
+
+Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.
+
 ## 2026-10-19 · #855 · Sai o portão de autoteste sem chamador
 
 `verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.
+
 ## 2026-10-19 · #847 · Portões: três a menos
 
 Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.
+
 ## 2026-10-19 · #856 · Proteja-se: a consulta do município responde pelo seu lugar
 
 Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. "Leve com você" vai para o fim.
-
-## 2026-10-19 · #PR · Imprensa: a semana em seis números, e o que recomendamos concluir
-
-A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; "Como citar" e "Para redações" viram "Como citar e reproduzir"; entram "Quando o site é atualizado", "Como os índices funcionam", glossário e erratas. Saem a grade de páginas e a sanfona.
 
 ## 2026-10-19 · #853 · Imprensa: a semana em seis números, e o que recomendamos concluir
 
@@ -49,6 +63,7 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 `aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.
 
 ## 2026-10-19 · #849 · Imprensa: semana em datas, definição dos índices numa só função
+
 `semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem "semana epidemiológica". `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o "ciclo". Metodologia §111.
 
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
@@ -96,6 +111,7 @@ A página passa a ter a consulta do município (módulo comum) com quatro cartõ
 `gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como "outro declarado" (380 atos passam a "sem tipo informado"). Soma por família = 1.202 atos casados. Metodologia §32.5.
 
 ## 2026-10-17 · #829 · Desfechos do SUS: arquivo comum e leitor `.dbc`
+
 Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.
 
 ## 2026-10-17 · #826 · Pedidos da A3: muro da LexML e elo próprio para recuperar as edições dos diários
@@ -363,6 +379,7 @@ A Imprensa abre por "O que cada página responde", agora em cartões, um por pá
 `coletar_doe.py` ganha `busca_sp`: a API que o sítio do DOE-SP chama (`do-api-web-search`, termos e janela de datas, paginada) aponta as publicações e cada uma é lida inteira em `/v2/publications/<id>`, sem HTML; endereço citável `doe.sp.gov.br/<slug>`. MG, RJ, RS e SC seguem `sem adaptador de busca` com o motivo medido (15/10); PI e RR têm rota exposta a medir.
 
 ## 2026-10-16 · #759 · Data do ato nunca depois da edição que o publica
+
 - `data_do_ato_no_trecho` ignora data posterior à edição: a abertura de uma dispensa (21/10) virou `data_ato` do decreto de Santiago/RS e barrou a publicação desde 04:42. O evento perde a data errada (fica a de publicação); caso no autoteste do consorciado.
 
 ## 2026-10-16 · #757 · Blog sem abertura; texto na coluna inteira
