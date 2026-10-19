@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #902 · Cartão do município: a varredura entra no dado
+## 2026-10-19 · #901 · Dengue, chikungunya e SRAG na forma comum dos desfechos
 
-Cada município varrido em `verificacao_municipal.json` ganha no cartão `varredura` (nível estadual ou nacional e a data da própria varredura). Sem registro e com varredura, a categoria é `nao_localizado`; 3.120 municípios sem cartão passam a ter um. Sem varredura no livro, segue `nao_verificado`. O índice não muda: as duas categorias pesam igual. As frases das páginas são de B1 e B2.
+`desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.
 
 ## 2026-10-19 · #900 · A Saúde ganha a seção única de desfechos
 
