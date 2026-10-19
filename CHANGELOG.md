@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
+
+A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
+
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
@@ -89,6 +93,10 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 ## 2026-10-17 · #839 · Portões acompanham as páginas reformadas
 
 Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.
+
+## 2026-10-17 · #841 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc
+
+`coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.
 
 ## 2026-10-17 · #842 · Ensaio da noite confere o isolamento dos autotestes pelo portão único
 
