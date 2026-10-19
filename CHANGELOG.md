@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #894 · Diário oficial do RJ: PDF assinado deixa de sair sem texto
 
 A edição do RJ traz a assinatura depois do fim do PDF, e o leitor a descartava como se fosse imagem: 42 páginas lidas como zero. O coletor passa a ler o PDF até o fim marcado e a decodificar os nomes de glifo da fonte (`/U0044`), e as edições do RJ voltam a casar com os termos de declaração. Código: `coletar_edicoes_doe.py` +17 (correção na leitura, com autoteste).
+## 2026-10-19 · #896 · Seis números numa linha, e a busca cobrada onde há lista
+
+A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.
+
 ## 2026-10-19 · #890 · Portões: a detecção de dado e página sai do YAML; comentários enxutos
 
 Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.
