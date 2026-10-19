@@ -108,10 +108,9 @@ def _com_populacao_errada(despesa: dict) -> dict:
 def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, censo=None) -> list:
     e = []
     if CHAVE.search(html) or CHAVE.search(motor) or any(CHAVE.search(t) for t in arquivos_fin.values()): e.append("(a) chave de API em código ou dados")
-    # 02/10/2026 (contrato de layout): o diagrama das rotas por setor saiu da pagina, e com ele
-    # #boxPreventivoSetor. As figuras vivas que este portao cobra sao as que continuam na tela.
-    for cid in ["boxRede"]:
-        if f"fonteFigura('{cid}'" not in html: e.append(f"(b) figura sem crédito: #{cid}")
+    # (b) saiu em 19/10/2026 com a reforma da pagina (#boxRede foi a ultima figura da lista, e a
+    # lista nomeava figura por figura). Quem cobra credito agora e `verificar_conformidade.py`,
+    # para TODA .figura renderizada ("sem linha de fonte"), provado por mutacao no PR.
     ids = [r["id"] for r in rotas["rotas"]]
     for s in serie.get("semanas", []):
         soma = sum(float(s.get(i) or 0) for i in ids)
@@ -147,7 +146,6 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
             e.append("(m) semana.json ou mps_2026.json ilegível")
     resp = {r["id"] for r in rotas["rotas"] if not r["ex_ante"]}
     if resp != {"r3", "r4"}: e.append(f"(e) rotas de resposta devem ser exatamente r3 e r4; achou {sorted(resp)}")
-    if "somaPreparacao" not in html or "filter(r => r.ex_ante)" not in html: e.append("(e) página sem somaPreparacao restrita a rotas ex_ante")
     # 14/09/2026 (rota preventiva do fogo): (f) toda rota tem `objeto` ∈ {preventivo, resposta, livre}; (g) rotas_preventivas.json:
     # toda linha com lei, artigo, fonte e hash, objeto válido; frase de não-existência para seca/chuva só enquanto não houver linha
     # com esses riscos; (h) o motor do índice nunca lê financiamento/fogo nem rotas_preventivas.
@@ -193,6 +191,9 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     # registro (endpoint, parâmetro, data, itens, hash), e era essa a forma da página de origem. A
     # exceção segue o marcador `data-proveniencia="1"`, que viaja com o bloco — mesmo critério já
     # aplicado em `scripts/verificar_runtime_financiamento.js`.
+    # 19/10/2026: entra junto o `details[data-alternativa="dados"]`, que `layout/regras.json` já
+    # nomeia alternativa acessível da figura (o "Ver em tabela" que a Saúde usa cinco vezes). Ali a
+    # tabela também É o dado, e não prosa; a exceção não cresce além do que a regra do site define.
     # O fim de cada bloco de prova sai por PROFUNDIDADE de <div>, não por "até o próximo painel".
     # Duas tentativas anteriores erraram: subtrair por regex `.*?` deixou a tabela fora do recorte, e
     # fatiar até o painel seguinte fazia o ÚLTIMO painel engolir o resto da página — uma tabela
@@ -204,10 +205,11 @@ def checar(html, rotas, serie, poruf, motor, arquivos_fin: dict, despesa=None, c
     html_sem_js = re.sub(r"<script\b.*?</script>",
                          lambda m: " " * len(m.group(0)), html, flags=re.S | re.I)
     faixas = []
-    for m in re.finditer(r'<div[^>]*data-proveniencia="1"[^>]*>', html_sem_js):
+    for m in re.finditer(r'<(?:div|details)[^>]*(?:data-proveniencia="1"|data-alternativa="dados")[^>]*>', html_sem_js):
+        abre = "details" if m.group(0).startswith("<details") else "div"
         prof, i = 1, m.end()
-        for tag in re.finditer(r"<div\b|</div>", html_sem_js[m.end():]):
-            prof += 1 if tag.group(0) != "</div>" else -1
+        for tag in re.finditer(rf"<{abre}\b|</{abre}>", html_sem_js[m.end():]):
+            prof += 1 if not tag.group(0).startswith("</") else -1
             if prof == 0:
                 i = m.end() + tag.end()
                 break
@@ -291,7 +293,6 @@ def negativos() -> int:
     html, rotas, serie, poruf, motor, arqs, despesa, censo = carregar(); import copy
     casos = {
         "chave de API no motor": lambda: checar(html, rotas, serie, poruf, motor + '\nchave-api-dados = "0123456789abcdef0123456789abcdef"', arqs),
-        "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxRede'", "fonteFigura('boxX'"), rotas, serie, poruf, motor, arqs),
         # 27/09/2026 (§258): a checagem (j) agora tolera tabela DENTRO de bloco de prova. Os dois
         # negativos abaixo cobrem o que ela não pode tolerar — tabela na prosa, antes e depois dos
         # blocos —, senão a exceção poderia crescer até engolir a regra sem nenhum teste reclamar.
@@ -309,8 +310,12 @@ def negativos() -> int:
         # (i) o negativo que o pedido exige: forçar rs_hab = 0 num município sem lançamento.
         "ausência convertida em zero": lambda: checar(html, rotas, serie, poruf, motor, arqs, _com_zero(despesa), censo),
         "população que não é a do Censo 2022": lambda: checar(html, rotas, serie, poruf, motor, arqs, _com_populacao_errada(despesa), censo),
-        "ressalva da subfunção 182 ausente da página": lambda: checar(
-            html.replace(RESSALVA_182, "inclui o que a fonte trouxer"), rotas, serie, poruf, motor, arqs, despesa, censo),
+        # 19/10/2026: o negativo que mutava a RESSALVA_182 no HTML morreu com a checagem que ele
+        # vigiava (02/10, a ressalva passou ao cartão gerado); reprovava na `main` desde então.
+        # Ele volta onde a checagem de fato mora: no `_formato` do dado.
+        "ressalva da subfunção 182 ausente do dado": lambda: checar(
+            html, rotas, serie, poruf, motor, arqs,
+            {**despesa, "_formato": {**(despesa.get("_formato") or {}), "ressalva_obrigatoria": "inclui o que a fonte trouxer"}}, censo),
     }
     f = 0
     for n, fn in casos.items():
