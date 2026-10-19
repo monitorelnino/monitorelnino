@@ -166,13 +166,6 @@ function imprensa(d) {
   const saude = ler("data/monitor_saude.json"), corpo = t(d.querySelector("main") || d.body);
   for (const [rot, v] of [["MARÉ Legal", vm && vm[1]], ["MARÉ Saúde", saude.versao != null ? String(saude.versao) : null]])
     if (v && new RegExp("vers[aã]o[^.]{0,20}" + v.replace(/\./g, "\\.")).test(corpo)) falhas.push(`a versão do ${rot} ("${v}") aparece no texto, e a editoria a tirou da página em 05/10/2026`);
-  const verificadas = (saude.resumo || {}).verificadas;
-  if (verificadas != null) { const m = /m[ée]dia dos (\d+) verificados/.exec(corpo);
-    if (verificadas >= I.todas_as_ufs && m) falhas.push(`os ${I.todas_as_ufs} estados estão verificados e a página ainda diz "média dos ${m[1]} verificados"`);
-    if (verificadas < I.todas_as_ufs && (!m || Number(m[1]) !== Number(verificadas))) falhas.push(`a página diz "${m ? m[1] : "—"}" estados verificados e data/monitor_saude.json diz "${verificadas}"`); }
-  const vezes = ler("data/cadencia_publicacao.json").publicacoes_por_dia;
-  if (vezes) { const m = /recalculados a cada publica[çc][ãa]o,\s*([^,.]+?)\s*vezes? por dia/.exec(corpo);
-    if (!m || String(m[1]).trim() !== String(vezes)) falhas.push(`a página diz "${m ? m[1].trim() : "—"}" publicações por dia e data/cadencia_publicacao.json diz "${vezes}"`); }
   return falhas;
 }
 
