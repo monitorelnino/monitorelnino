@@ -32,9 +32,10 @@ setTimeout(() => {
   const SUF = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_uf.json"), "utf-8"));
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
-  // 02/10/2026 (bloco A): os três mapas de estado viraram UM (`mapaMonitor`), a amostra de 313
-// municípios saiu do mapa e entraram os dois mapas do SINAN, por 100 mil habitantes.
-for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
+  // 19/10/2026 (remoção aprovada pela editoria): os quadros por agravo saíram e com eles os três
+// mapas de doença. Sobra o mapa de prontidão; o mapa do detalhe do desfecho é cobrado abaixo,
+// junto do cartão e da lista, porque ele e eles são a mesma seção única.
+for (const id of ["mapaMonitor"]) {
     teste(`${id}: 27 estados desenhados`, q(id) && q(id).querySelectorAll("path").length === 27);
     teste(`${id}: legenda preenchida`, q(id.replace("mapa", "leg")) && q(id.replace("mapa", "leg")).children.length >= 1);
   }
@@ -149,20 +150,20 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
       && !/antecipação/i.test(t);
   })());
 
-  // As séries do SINAN: frase do dado, gráfico contra a faixa e mapa por 100 mil.
-  for (const [frase, mapa, dl] of [["fraseDengue", "mapaDengueUF", "dlDengueUF"],
-                                   ["fraseChik", "mapaChikUF", "dlChikUF"]]) {
-    teste(`${frase}: frase gerada do dado, com as datas da semana e a posição na faixa`,
-      /notificações de \w+ na semana de \d{1,2}[^.]{0,60}\d{4}/.test(txt(frase))
-      && /faixa esperada para a época/.test(txt(frase))
-      && !/semana epidemiológica|\bSE ?\d/.test(txt(frase)));
-    teste(`${mapa}: 27 estados e legenda com 'sem coleta'`,
-      q(mapa).querySelectorAll("path").length === 27 && /sem coleta/.test(txt(mapa.replace("mapa", "leg"))));
-    teste(`${dl}: lista por estado com a taxa e o total`,
-      q(dl).querySelectorAll("dt").length >= 26 && /por 100 mil habitantes/.test(txt(dl)));
-  }
-  teste("a série duplicada de dengue saiu, e a contagem vem do SINAN",
-    !q("cDesfAcum") && !q("selComparadorDengue") && !!q("cDengueSemana"));
+  // A seção única de desfechos, no cartão escolhido: a posição na faixa habitual é a frase do
+  // dado (ela está no cartão, não numa nota à parte), e o detalhe traz o mapa por 100 mil e a
+  // lista por estado. Um detalhe por vez: o portão confere o que está aberto na carga.
+  teste("gradeDesfechos: um cartão por desfecho com arquivo, com a posição na faixa habitual",
+    q("gradeDesfechos").querySelectorAll("[data-desfecho]").length >= 1
+    && /(da faixa habitual \(|sem faixa habitual para a época)/.test(txt("gradeDesfechos"))
+    && !/semana epidemiológica|\bSE ?\d/.test(txt("gradeDesfechos")));
+  teste("mapaDesfecho: 27 estados e legenda com a ausência declarada",
+    q("mapaDesfecho").querySelectorAll("path").length === 27
+    && /sem período fechado/.test(txt("legMapaDesfecho")));
+  teste("dlDesfechoUF: lista por estado com a taxa por 100 mil",
+    q("dlDesfechoUF").querySelectorAll("dt").length >= 26 && /por 100 mil habitantes/.test(txt("dlDesfechoUF")));
+  teste("os quadros por agravo saíram, e o desfecho escolhido tem um gráfico só",
+    !q("cDesfAcum") && !q("cDengueSemana") && !q("cSRAG") && !q("mapaCalor") && !!q("cDesfecho"));
 
   // 15/09/2026 (§2.10): títulos-fato de Saúde vêm do dado
   try {
@@ -179,11 +180,11 @@ for (const id of ["mapaMonitor", "mapaDengueUF", "mapaChikUF", "mapaCalor"]) {
     const linhasMon = [...d.querySelectorAll("#tblMonitor tbody tr")];
     teste("saúde: tabela do índice com 27 linhas de 6 colunas, sem travessão nem componente interno",
       linhasMon.length === 27 && linhasMon.every((tr) => tr.children.length === 6 && ![...tr.children].some((td) => td.textContent.trim() === "—") && !/lido\(s\)|cobertura sanit/.test(tr.textContent)));
-    teste("saúde: interpretação fixa do InfoDengue fora da figura", /InfoDengue/.test(q("interpObservado").textContent));
-    // Bloco das 23h20: a série respiratória não cita mais o InfoGripe como fonte dela.
+    // 19/10/2026: a nota do InfoDengue saiu com os quadros por agravo (decisão da editoria) — ela
+    // explicava um nível que a página não mostra mais. O que o portão continua guardando é a fonte
+    // da série respiratória, que é primária e vive no cartão do topo, não no InfoGripe.
     teste("respiratórias: a fonte declarada é o SIVEP-Gripe, não o InfoGripe",
-      (() => { const t = d.getElementById("observado").textContent;
-               return /SIVEP-Gripe/.test(t) && !/InfoGripe/.test(t); })());
+      /SIVEP-Gripe/.test(txt("fonteSragSE")) && !/InfoGripe/.test(d.querySelector("main").textContent));
   } catch (e) { teste("saúde: títulos-fato (" + e.message + ")", false); }
   console.log(falhas.length ? `\n✗ ${falhas.length} verificação(ões) falharam.` : "\n✓ RUNTIME (saúde) OK — mapas, cartões, tooltip, créditos e lacunas declaradas.");
   process.exit(falhas.length ? 1 : 0);
