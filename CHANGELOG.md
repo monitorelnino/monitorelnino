@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #876 · Diário oficial do RS lido por data
 
 O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
+## 2026-10-19 · #874 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos
+
+Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.
+
 ## 2026-10-19 · #870 · SIH: internações por grupo de causa na forma comum
 
 `coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.
@@ -57,6 +61,10 @@ A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.ht
 ## 2026-10-19 · #844 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
+
+## 2026-10-19 · #867 · Sai o glifo de caixa das listas da ficha; o cartão do ar lê o catálogo
+
+As listas de "Antes, durante e depois" voltam ao marcador padrão: o glifo ☐ prometia marcar item cumprido, interação que a lista não tem. Vale na inicial e no guia do Proteja-se. No Monitor de riscos, o cartão de cidades com IQAr alto passa a ler rótulo, valor e apoio do catálogo, como os outros seis da mesma grade, e o rótulo volta a trazer o dia da medição.
 
 ## 2026-10-19 · #864 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura
 
