@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · Proteja-se: a aba de dengue, com o que a fonte oficial diz
+
+O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.
+
 ## 2026-10-19 · #910 · O detalhe do desfecho ganha o mapa por estado
 
 A figura do desfecho escolhido passa a trazer, ao lado da série, o mapa do último período fechado por estado, pintado pelos cortes fixos que o próprio arquivo guarda — os quintis de 2019 a 2025, congelados na primeira gravação. A legenda diz os cortes em números, estado sem período fechado fica nomeado, e a lista por estado abre embaixo. Gráfico e mapa usam só período fechado.
