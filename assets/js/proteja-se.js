@@ -128,52 +128,162 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
 
-// 15/09/2026 (pedido da editoria): "Defesa Civil do seu estado" — um cartão por UF, com telefones, plantão, e-mail, portal
-// e expediente lidos de data/contatos_uf.json (transcrição do diretório oficial do MIDR). Nada digitado aqui.
-// 09/10/2026 (ajuste 8, editoria): UM controle — a grade das 27 siglas, em ordem alfabética, com
-// `aria-pressed`. Ao escolher, o cartão do estado abre logo abaixo, na largura da grade. Sem estado
-// escolhido, nada abaixo da grade (nenhuma instrução). A fonte diz as duas datas separadas.
-(function(){
-  const siglas = document.getElementById('contatoSiglas'), dest = document.getElementById('contatoDestaque');
-  if (!siglas || !dest) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const tel = t => '<a href="tel:+55' + String(t).replace(/\D/g, '') + '">' + esc(t) + '</a>';
-  const cartao = (uf, c) => {
-    const host = c.portal ? c.portal.replace(/^https?:\/\//, '').replace(/\/$/, '') : '';
-    return '<article class="contato contato--grande" id="contato-' + uf + '">' +
-      '<div class="contato-topo"><span class="contato-uf">' + esc(uf) + '</span><span class="contato-nome">' + esc(c.nome) + '</span>'
-      + (c.plantao_24h && c.plantao_24h.length ? '<span class="selo-plantao">plantão 24 h</span>' : '') + '</div>' +
-      '<p class="contato-orgao">' + esc(c.orgao) + '</p>' +
-      '<dl class="contato-lista">' +
-      '<dt>Telefone' + (c.telefones.length > 1 ? 's' : '') + '</dt><dd>' + c.telefones.map(tel).join(' · ') + (c.expediente ? ' <span class="u-muted">(' + esc(c.expediente) + ')</span>' : '') + '</dd>' +
-      (c.plantao_24h && c.plantao_24h.length ? '<dt>Plantão 24 h</dt><dd>' + c.plantao_24h.map(tel).join(' · ') + '</dd>' : '') +
-      (c.email ? '<dt>E-mail</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + '</a></dd>' : '') +
-      (c.portal ? '<dt>Portal</dt><dd><a href="' + esc(c.portal) + '" target="_blank" rel="noopener">' + esc(host) + '</a></dd>' : '') +
-      '</dl></article>';
+/* Erro de bloco que não renderiza vai ao console com o lugar, onde o portão de runtime o vê. */
+function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falha em ' + onde + ':', e); } catch (_) {} }; }
+
+/* ===== A consulta do município (19/10/2026, HANDOVER_PROTEJA_SE §4) =====
+ *
+ * Mesmo módulo das outras páginas (`ConsultaMunicipio`), e nada recalculado aqui: os seis cartões
+ * leem `data/riscos_municipio/<UF>.json`, que o gerador do Monitor de riscos já produz, e a linha
+ * do estado lê `data/contatos_uf.json`, a transcrição do diretório do MIDR. Esta seção substitui a
+ * grade das 27 siglas, o segundo bloco de telefones e o painel "Se a sua cidade decretou
+ * emergência": o que eles mostravam para o país inteiro agora responde pelo município consultado.
+ *
+ * Ausência é sempre a frase da CLASSE, nunca vazio nem travessão, e as classes são distintas:
+ * "nenhum aviso em vigor" (medido e não há), "município fora da rede do Cemaden" (o órgão não
+ * monitora ali) e "sem coleta até o corte" (o MARÉ ainda não tem o dado) dizem coisas diferentes.
+ */
+(function consultaDoMunicipio() {
+  const C = window.MonitorCatalogo, M = window.MonitorMapas, P = 'proteja-se.municipio.';
+  if (!window.ConsultaMunicipio || !document.getElementById('munCard')) return;
+  const tx = (id, v) => (C && C.texto && C.texto(P + id, v)) || '';
+  const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => null);
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  const REF = json('data/municipios_ibge_referencia.json'), CONTATOS = json('data/contatos_uf.json');
+  const risco = {};                                   // UF → promessa do arquivo daquele estado
+  const doEstado = uf => risco[uf] = risco[uf] || json('data/riscos_municipio/' + uf + '.json');
+
+  /* A qual orientação o aviso do Inmet leva: a família do tipo que o próprio aviso declara. */
+  const ABAS = {chuva: 'guia-chuvas', fogo: 'guia-fogo', seca: 'guia-seca', calor: 'guia-calor'};
+  function familiaDoAviso(tipo) {
+    const t = String(tipo || '').toLowerCase();
+    if (t.indexOf('umidade') >= 0 || t.indexOf('seca') >= 0 || t.indexOf('estiagem') >= 0) return 'seca';
+    if (t.indexOf('calor') >= 0 || t.indexOf('temperatura') >= 0) return 'calor';
+    return 'chuva';
+  }
+  const hora = v => (M && M.dataBR(v)) || null;
+  const comHora = v => {
+    const d = hora(v), m = String(v || '').match(/[T ](\d{2}:\d{2})/);
+    return d ? (m ? d + ', ' + m[1] : d) : null;
   };
-  fetch('data/contatos_uf.json').then(r => r.ok ? r.json() : null).then(D => {
-    if (!D || !D.uf) { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; return; }
-    const ufs = Object.keys(D.uf).sort();
-    siglas.innerHTML = ufs.map(uf => '<button type="button" aria-pressed="false" data-uf="' + esc(uf)
-      + '" aria-label="' + esc(D.uf[uf].nome) + '">' + esc(uf) + '</button>').join('');
-    siglas.addEventListener('click', ev => {
-      const b = ev.target.closest('button[data-uf]'); if (!b) return;
-      const ja = b.getAttribute('aria-pressed') === 'true';
-      siglas.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', 'false'));
-      if (ja) { dest.hidden = true; dest.innerHTML = ''; return; }
-      b.setAttribute('aria-pressed', 'true');
-      dest.innerHTML = cartao(b.dataset.uf, D.uf[b.dataset.uf]); dest.hidden = false;
+
+  const cartao = (acento, rotulo, valor, nota, aba) => '<div class="cartao cartao--acento-' + acento + '">'
+    + '<p class="cartao-numero-rotulo">' + esc(rotulo) + '</p><p>' + esc(valor) + '</p>'
+    + (nota ? '<p class="note' + (aba ? '' : ' u-mb-0') + '">' + nota + '</p>' : '')
+    + (aba ? '<p class="u-mb-0"><a href="#' + aba + '">' + esc(tx('o_que_fazer')) + '</a></p>' : '')
+    + '</div>';
+
+  /* Todo cartão leva fonte e data, inclusive o que não tem o que mostrar: "nenhum aviso em vigor"
+     é uma medição, e medição sem data não se confere. */
+  const consultaDe = (d, origem) => {
+    const o = (d.origens || {})[origem] || {};
+    return (M && M.dataBR(o.gerado_em || o.atualizado_em || o.data)) || d.gerado_em || '';
+  };
+
+  function cartaoInmet(d, m) {
+    const av = (m.avisos_inmet || []).map(i => (d.avisos_inmet || [])[i]).filter(Boolean)[0];
+    if (!av) return cartao('chuva', tx('inmet.rotulo'), tx('inmet.nenhum'),
+      esc(tx('inmet.nota_nenhum', {data: consultaDe(d, 'avisos_e_alertas')})), null);
+    const fim = comHora(av.fim);
+    return cartao('chuva', tx('inmet.rotulo'), tx('inmet.valor', {tipo: av.tipo, grau: av.severidade}),
+      esc(fim ? tx('inmet.nota', {fim: fim}) : tx('inmet.nota_sem_fim')), ABAS[familiaDoAviso(av.tipo)]);
+  }
+
+  function cartaoCemaden(d, m) {
+    if (!m.rede_cemaden) return cartao('chuva', tx('cemaden.rotulo'), tx('cemaden.fora_da_rede'),
+      esc(tx('cemaden.nota_fora')), null);
+    const al = (m.alertas_cemaden || [])[0];
+    if (!al) return cartao('chuva', tx('cemaden.rotulo'), tx('cemaden.nenhum'),
+      esc(tx('cemaden.nota_nenhum', {data: consultaDe(d, 'avisos_e_alertas')})), null);
+    const ini = comHora(al.inicio);
+    return cartao('chuva', tx('cemaden.rotulo'), tx('cemaden.valor', {tipo: al.tipo, nivel: al.nivel}),
+      ini ? esc(tx('cemaden.nota', {inicio: ini})) : '', ABAS.chuva);
+  }
+
+  /* Nunca se misturam as duas escalas do ar: a estação do MMA traz índice, classificação e
+     poluente; o sensor da RedeAr traz concentração e nenhum índice. */
+  function cartaoAr(d, m) {
+    const e = m.ar_estacao && (d.estacoes || [])[m.ar_estacao.indice];
+    if (e && e.iqar) {
+      return cartao('fogo', tx('ar.rotulo'),
+        tx('ar.valor', {classificacao: e.iqar.classificacao, valor: e.iqar.valor, poluente: e.iqar.poluente}),
+        esc(tx('ar.nota', {estacao: e.nome, distancia: m.ar_estacao.distancia_km,
+                           hora: comHora(e.iqar.medido_em) || tx('calor.sem_coleta')})), ABAS.fogo);
+    }
+    const sen = m.ar_sensor && (d.sensores || [])[m.ar_sensor.indice];
+    if (sen) {
+      return cartao('fogo', tx('ar.rotulo'), tx('ar.valor_sensor', {valor: sen.pm25 != null ? sen.pm25 : sen.valor}),
+        esc(tx('ar.nota_sensor', {distancia: m.ar_sensor.distancia_km})), ABAS.fogo);
+    }
+    return cartao('fogo', tx('ar.rotulo'), tx('ar.sem_estacao'), esc(tx('ar.nota_sem_estacao')), null);
+  }
+
+  const CALOR_EXCESSO = ['Severo', 'Extremo'];
+  function cartaoCalor(d, m) {
+    const data = ((d.origens || {}).calor || {}).data;
+    const valor = m.calor == null ? tx('calor.sem_coleta')
+      : (CALOR_EXCESSO.indexOf(m.calor) >= 0 ? tx('calor.com_excesso') : tx('calor.sem_excesso'));
+    return cartao('argila', tx('calor.rotulo'), valor,
+      esc(tx('calor.nota', {data: (M && M.dataBR(data)) || tx('calor.sem_coleta')})), ABAS.calor);
+  }
+
+  function cartaoDecreto(d, m) {
+    const n = m.decretos_no_ciclo || 0, primeiro = (m.reconhecimento || {}).primeiro_decreto;
+    if (!n) return cartao('musgo', tx('decreto.rotulo'), tx('decreto.nenhum'),
+      esc(tx('decreto.nota_nenhum', {data: consultaDe(d, 'decretos')})), null);
+    const valor = n > 1 ? tx('decreto.valor_plural', {n: n, data: primeiro}) : tx('decreto.valor', {data: primeiro});
+    const rec = m.reconhecimento || {};
+    const nota = rec.reconhecido
+      ? esc(tx('decreto.reconhecido', {data: rec.primeiro_reconhecimento})) + ' ' + tx('decreto.fgts')
+      : esc(tx('decreto.sem_reconhecimento'));
+    return cartao('musgo', tx('decreto.rotulo'), valor, nota, null);
+  }
+
+  /* "Defesa Civil do {estado}" é o texto aprovado, mas o artigo muda com o nome do estado
+     ("de Goiás", "da Bahia", "do Acre"): a concordância é gramática, e sai desta tabela fixa. */
+  const ARTIGO = {AC: 'do', AL: 'de', AM: 'do', AP: 'do', BA: 'da', CE: 'do', DF: 'do', ES: 'do',
+    GO: 'de', MA: 'do', MG: 'de', MS: 'do', MT: 'do', PA: 'do', PB: 'da', PE: 'de', PI: 'do',
+    PR: 'do', RJ: 'do', RN: 'do', RO: 'de', RR: 'de', RS: 'do', SC: 'de', SE: 'de', SP: 'de', TO: 'do'};
+
+  function linhaDoEstado(uf, contatos) {
+    const alvo = document.getElementById('munEstado');
+    if (!alvo) return;
+    const c = ((contatos || {}).uf || {})[uf];
+    if (!c || !c.telefones || !c.telefones.length) { alvo.textContent = tx('estado.sem_contato'); return; }
+    alvo.innerHTML = tx('estado.linha', {artigo: ARTIGO[uf] || 'de', estado: esc(c.nome), telefone: esc(c.telefones[0]),
+      email: esc(c.email || ''), portal: esc(c.portal || '')});
+    if (M) {
+      const f = (contatos || {}).fonte || {};
+      M.credito('munFonte', {fontes: 'Diretório da Defesa Civil nos Estados (MIDR)', url: f.url, data: f.consultado_em});
+    }
+  }
+
+  Promise.all([REF, json('data/geo_uf.json'), C && C.pronto]).then(([ref, geo]) => {
+    const NOME_UF = {};
+    ((geo || {}).features || []).forEach(f => { NOME_UF[f.properties.sigla] = f.properties.name; });
+    const porUF = {}, codigo = {};
+    (ref || []).forEach(x => {
+      (porUF[x.uf] = porUF[x.uf] || []).push(x.nome);
+      codigo[x.uf + '|' + x.nome] = String(x.codigo_ibge);
     });
-    const f = D.fonte || {};
-    // As duas datas separadas e nomeadas, no formato único de crédito do site (a regra de crédito
-    // vence o texto literal do pedido; divergência registrada no PR): o órgão atualizou o diretório
-    // em uma data, e o MARÉ o transcreveu em outra.
-    if (window.MonitorMapas) MonitorMapas.credito('contatoFonte', {
-      fontes: ['Diretório da Defesa Civil nos Estados (MIDR)'
-        + (f.atualizado_pelo_orgao_em ? ', atualizado pelo órgão em ' + f.atualizado_pelo_orgao_em : '')
-        + (f.consultado_em ? ', transcrito em ' + f.consultado_em : '')],
-      url: f.url, data: f.consultado_em});
-  }).catch(() => { siglas.innerHTML = '<p class="note">Contatos não carregados.</p>'; });
+    if (ref && ref.length && C) C.escrever(document.getElementById('municipioAbertura'),
+      P + 'abertura.molde', {n_municipios: ref.length});
+
+    ConsultaMunicipio.montar({uf: 'munUF', municipio: 'munNome', lista: 'munLista', cartao: 'munCard',
+      estados: NOME_UF, semLista: tx('sem_lista'),
+      municipios: uf => (porUF[uf] || []).slice().sort((a, b) => a.localeCompare(b)),
+      mostrar: (uf, nome, card) => {
+        Promise.all([doEstado(uf), CONTATOS]).then(([d, contatos]) => {
+          const m = ((d || {}).municipios || {})[codigo[uf + '|' + nome]] || {};
+          card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras grade-figuras--3">'
+            + cartaoInmet(d || {}, m) + cartaoCemaden(d || {}, m) + cartaoAr(d || {}, m)
+            + cartaoCalor(d || {}, m)
+            + cartao('neutro', tx('dengue.rotulo'), tx('dengue.sem_coleta'), esc(tx('dengue.nota')), null)
+            + cartaoDecreto(d || {}, m) + '</div>';
+          linhaDoEstado(uf, contatos);
+        }).catch(_erroPS('proteja-se:consulta'));
+      }});
+  }).catch(_erroPS('proteja-se:municipio'));
 })();
 
 // 18/09/2026 (pedido da editoria): a imagem só tinha os telefones — precisa das dicas por risco também.
