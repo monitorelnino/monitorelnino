@@ -12,6 +12,11 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
+
+## 2026-10-19 · #861 · Defesa civil: sai o cartão de decreto e alerta ao mesmo tempo
+
+O instantâneo do topo da Defesa civil deixa de gerar o cartão que cruzava decreto e alerta; a Imprensa já não o usava. Restam cinco cartões. Gerador −13 linhas, sem outro efeito.
+
 ## 2026-10-19 · #860 · RO saúde: plano recebido por LAI, registrado sem julgamento
 `data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.
 
