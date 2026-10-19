@@ -1,0 +1,781 @@
+https://www.al.to.leg.br/diario
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-21403211-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-21403211-1');
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Site da Assembleia Legislativa do Estado do Tocantins">
+	<meta name="author" content="CODES">
+	<meta property="og:locale" content="pt_BR"/>
+	<meta property="og:title" content="Assembleia Legislativa do Estado do Tocantins"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content="https://www.al.to.leg.br/assets/img/logo_share.jpg"/>
+	<meta property="og:description" content="Site da Assembleia Legislativa do Estado do Tocantins"/>
+	
+	<link rel="icon" href="/img/favicon.ico">
+
+	<title>Assembleia Legislativa do Estado do Tocantins</title>
+
+	<!-- Icons for this template -->
+	<link href="/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/assets/fonts/assembleia/css/font-assembleia.css" rel="stylesheet" type="text/css">
+	<!-- Stylesheet -->
+	<!-- build:css -->
+	<link href="/assets/css/vendor/component-chosen.min.css" rel="stylesheet">
+	<link href="/assets/css/vendor/aos.css" rel="stylesheet">
+	<link href="/assets/css/app.css" rel="stylesheet">
+	<!-- endbuild -->
+	
+	
+
+<style type="text/css" id="css-text-resize" rel="stylesheet" data-increase="0" ></style>
+</head>
+<body>
+<!-- 
+				<div class="col-2 bg-white">
+					
+				</div>
+	 -->
+	 
+<header>
+	<div class="container">
+		
+		<nav class="navbar navbar-expand-lg navbar-dark py-0">
+		  
+		  <a class="navbar-brand al-header-brand" href="/" alt="Assembleia Legislativa do Tocantins">
+		  	<img src="/assets/img/logo.png" />
+		  	<span class="sr-only">Assembleia Legislativa do Tocantins</span>
+		  </a>
+		  
+		  <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  
+		  	<div class="d-flex flex-column">
+				<div class="text-right order-md-1 order-lg-0 ">
+			 		<div class="social-icons d-inline-flex pr-4">
+						<a href="https://www.instagram.com/assembleiato/" class="instagram" rel="externo"><i class="fa fa-instagram"></i></a>
+						<a href="https://twitter.com/AssembleiaTO" class="twitter" rel="externo"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.youtube.com/@TVAleto" class="youtube" rel="externo"><i class="fa fa-youtube-play"></i></a>
+						<a href="https://www.facebook.com/assembleiatocantins" class="facebook" rel="externo"><i class="fa fa-facebook"></i></a>
+						<a href="/rss" ><i class="fa fa-rss"></i></a>
+					</div>
+					
+					<div class="acessibilidade-icons d-inline-flex pr-4">
+						<div class="btn-group" role="group" aria-label="Acessibilidade">
+						  <button class="btn btn-outline-info altocontraste" ><i class="fa fa-adjust" aria-hidden="true"></i></button>
+						  <button class="btn btn-outline-info acessibilidade-text-minus" title="Reduzir fonte do texto" >A-</button>
+						  <button class="btn btn-outline-info acessibilidade-text-normal" title="Tamanho de fonte padrão" >A&nbsp; </button>
+						  <button class="btn btn-outline-info acessibilidade-text-plus" title="Aumentar fonte do texto">A+</button>
+						</div>
+					</div>
+				
+					<form class="form-inline d-inline-flex my-2 text-right" action="/pesquisa" method="post">
+				       <input class="form-control" name="documento.texto" type="search" placeholder="Busca" id="pesquisar">
+				    </form>
+				</div>
+				
+				<div class="text-right order-md-0 order-lg-1">
+				    <ul class="navbar-nav mr-auto"><li class="nav-item dropdown"><a class="nav-link dropdown-toggle py-2 mx-1" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Institucional</a><div class="dropdown-menu" aria-labelledby="dropdown07"><a class="dropdown-item" href="/galeriaHistorica/historia">História Geral</a><a class="dropdown-item" href="/galeriaHistorica/legislaturas">Legislaturas</a><a class="dropdown-item" href="/galeriaHistorica/acoesSociais">Ações Sociais</a><a class="dropdown-item" href="/galeriaHistorica/homenagens">Homenagens do Legislativo</a><a class="dropdown-item" href="/galeriaHistorica/papel">Papel da Assembleia</a><a class="dropdown-item" href="/galeriaHistorica/instalacoes">Instalações Definitivas</a></div></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle py-2 mx-1" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Parlamentares</a><div class="dropdown-menu" aria-labelledby="dropdown07"><a class="dropdown-item" href="/perfil">Perfil</a><a class="dropdown-item" href="/mesaDiretora">Mesa Diretora</a><a class="dropdown-item" href="/comissao">Comissões</a><a class="dropdown-item" href="/lideranca">Lideranças</a></div></li><li class="nav-item dropdown active"><a class="nav-link dropdown-toggle py-2 mx-1" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atividade Parlamentar</a><div class="dropdown-menu" aria-labelledby="dropdown07"><a class="dropdown-item" href="/legislacaoEstadual">Legislação Estadual</a><a class="dropdown-item active" href="/diario">Diário da Assembleia</a><a class="dropdown-item" href="/materiasLegislativas">Matérias Legislativas</a><a class="dropdown-item" href="/documento">Constituição / Regimento / Outros</a><a class="dropdown-item" href="/glossario">Glossário</a></div></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle py-2 mx-1" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunicação</a><div class="dropdown-menu" aria-labelledby="dropdown07"><a class="dropdown-item" href="/noticia">Notícias</a><a class="dropdown-item" href="/galeria">Banco de Imagens</a><a class="dropdown-item" href="/contato">Contatos</a><a class="dropdown-item" href="/ouvidoria">Ouvidoria</a><a class="dropdown-item" href="/revista">Revista Eletrônica</a></div></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle py-2 mx-1" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Intranet</a><div class="dropdown-menu" aria-labelledby="dropdown07"><a class="dropdown-item" href="/login">Portal do Servidor</a><a class="dropdown-item" href="/sapl" rel="externo">SAPL</a><a class="dropdown-item" href="/loginExterno/sic">Acesso à informação</a><a class="dropdown-item" href="/relatorioErro">Relatar Erro</a><a class="dropdown-item" href="/validarContracheque">Validar Contracheque</a><a class="dropdown-item" href="/folhaPagamento">Folha de Pagamento</a><a class="dropdown-item" href="/legis">LEGIS</a><a class="dropdown-item" href="/ged">GED</a><a class="dropdown-item" href="/documentos">Formulários</a><a class="dropdown-item" href="/documentos/manuais">Manuais</a><a class="dropdown-item" href="/sei">SEI - Processo Eletrônico</a></div></li><li class="nav-item"><a class="nav-link py-2 mr-1" href="/transparencia">Transparência</a></li><li class="nav-item"><a class="nav-link py-2 mr-1" href="/loginExterno">e-SIC</a></li></ul>
+</div>
+		  		
+			</div>
+			
+		  </div>
+		 
+		</nav>
+	</div>	
+</header>
+<div class="bg-warning">
+	<div class="container xxl">
+		<h1 class="page-title">Diários</h1>
+	</div>
+</div>
+
+<section class="bg-light">
+	<div class="container">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form id="" action="/diario" method="post" class="py-4">
+	<div class="form-group">
+		<label for="termoPesquisa" class="control-label">Pesquisar por</label>
+			<div class="input-group">
+				<input type="text" id="termoPesquisa"  class="form-control"
+					name="documento.texto"
+					placeholder="Digite os termos que deseja pesquisar"
+					value='' />
+			</div>
+			<small id="termoPesquisaHelp" class="form-text text-muted">Coloque os termos de busca entre aspas para restringir ainda mais a pesquisa, ex.: "termo de pesquisa"</small>
+	</div>
+	<div class="form-row">  
+	    
+        	<div class="form-group col-md-2">
+				<label for="numero" class="control-label">Número</label>
+				<input id="numero" class="form-control numero" name="documento.numero" value=""/>
+			</div>	
+	
+        	<div class="form-group col-md-2">
+				<label for="ano" class="control-label">Ano</label>
+				<input id="ano" class="form-control numero-curto" name="documento.ano" value=""/>
+			</div>	
+		
+		      
+        
+        	<div class="form-group col-md-3">
+				<label for="dataInicio" class="control-label">Data início</label>
+				<input type="date" id="dataInicio" class="form-control" name="documento.dataInicio" value=""/>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="dataFinal" class="control-label">Data fim</label>		   
+				<input type="date" id="dataFinal" class="form-control"  name="documento.dataFinal" value=""/>
+			</div>
+		
+		
+		
+			<div class="form-group col-md-3">
+				<label for="tipo">Tipo</label>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<select id="tipo" name="documento.tipo" data-placeholder="Selecione o tipo" class="chosen-select form-control"   data-value="">
+	
+		<option value="">Selecionar</option>
+	
+	
+		
+			<option value="normal" >Normal</option>
+		
+		
+	
+		
+			<option value="suplemento" >Sumplemento</option>
+		
+		
+	
+</select>
+			</div>
+		
+		
+		
+		
+		
+		
+		
+			<div class="form-group col-md-2">
+				<label class="control-label">&nbsp;</label>
+				<button class="btn btn-primary form-control" type="submit">
+					<i class="fa fa-search"></i> Pesquisar
+				</button>
+			</div>
+		
+		
+		
+		
+		
+	</div>
+</form></div>
+</section>	
+
+
+<div class="container">
+	<a name="dados"></a><div class="alert alert-primary my-3" role="alert"><a class="close" data-dismiss="alert" href="#">×</a>Registros encontrados: <strong>3026</strong><br/><em><strong>DICA:</strong> Tente refinar a pesquisa para que esta retorne menos registros facilitando a localização da informação desejada.</em></div><div class="box">
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82549">Diário nº 4361 de 19 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 19/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+
+2
+
+DIÁRIO DA ASSEMBLEIA | EDIÇÃO Nº 4361
+
+DECRETO ADMINISTRATIVO Nº 1.207/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+
+DECRETO ADMINISTRATIVO Nº 1.205/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82549"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82541">Diário nº 4360 de 16 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 16/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.203/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+Art. 1º EXONERAR Luana Rodrigues Carneiro, matrícula
+1187748, do cargo em comissão de Secretário Parlamentar - SP-13, do
+Gabinete do Deputado Gipão, retroativamente ao dia 14 de outubro de
+2026.
+Gabinete...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82541"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82508">Diário nº 4359 de 15 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 15/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.188/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+Art. 1º EXONERAR Glaucia Goncalves Pelizari, matrícula
+90905, do cargo em comissão de Secretário Parlamentar - SP11, do
+Gabinete do Deputado Gutierres Torquato, a partir de 31 de outubro
+de 2026.
+Gabinete...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82508"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82476">Diário nº 4358 de 14 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 14/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.150/2026
+*Republicado por incorreção
+
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+Art. 1º NOMEAR para os respectivos cargos em comissão, os
+seguintes servidores no Gabinete do Deputado Olyntho Neto, a partir
+de 7 de outubro de 2026:
+
+2
+
+DIÁRIO...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82476"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82463">Diário nº 4357 de 13 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 13/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.156/2026
+*Republicado por incorreção
+
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209/2023, e considerando o
+que consta do Processo Administrativo nº 00326/2026,
+RESOLVE:
+Art. 1º TORNAR sem efeito, por perda do prazo para posse, nos
+termos do art. 14, § 1º e § 5º, da Lei nº 1.818/2007, a nomeação de Bruno
+Paz dos Santos,...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82463"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82431">Diário nº 4356 de 09 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 09/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.156/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209/2023, e considerando o
+que consta do Processo Administrativo nº 00326/2026,
+RESOLVE:
+Art. 1º TORNAR sem efeito, por perda do prazo para posse, nos
+termos do art. 14, § 1º e § 5º, da Lei nº 1.818/2007, a nomeação de Bruno
+Paz dos Santos, CPF: 059.***.***-06, no Analista...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82431"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82395">Diário nº 4355 de 08 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 08/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+
+2
+
+DIÁRIO DA ASSEMBLEIA | EDIÇÃO Nº 4355
+
+- Joao Luiz Pereira Costa, matrícula 1188210, SP-8;
+- Kardna da Silva Santos, matrícula 1188216, SP-8.
+
+Decretos Administrativos
+
+Gabinete da Presidência da Assembleia Legislativa do Estado
+do Tocantins, aos 7 dias do mês de outubro de 2026.
+
+DECRETO ADMINISTRATIVO Nº 1.140/2026
+
+Deputado AMÉLIO CAYRES
+Presidente
+
+*Republicado por incorreção
+
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82395"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82381">Diário nº 4354 de 07 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 07/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS LEGISLATIVOS
+
+2
+
+DIÁRIO DA ASSEMBLEIA | EDIÇÃO Nº 4354
+
+PROJETO DE LEI Nº 246/2026 - PLO
+Autoriza o controle populacional e o manejo
+sustentável do javali-europeu (Sus scrofa) e seus
+híbridos e institui a Política Estadual de Incentivo
+ao Controle Populacional da espécie e dá outras
+providências.
+
+Projetos de Lei Ordinária
+Poder Legislativo
+PROJETO DE LEI Nº 245/2026 - PLO
+Declara de Utilidade Pública Estadual a Associação
+de Mulheres Independentes Gerando Amor e
+Solidariedade - A.M.I.G.A.S, localizada no município
+de Ananás/TO.
+A ASSEMBLEIA LEGISLATIVA DO ESTADO DO
+TOCANTINS decreta:
+Art....<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82381"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82377">Diário nº 4353 de 06 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 06/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.139/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+Art. 1º NOMEAR Silmara Farias de Melo para o cargo em
+comissão de Secretário Parlamentar - SP13, no Gabinete do Deputado
+Amelio Cayres, retroativamente ao dia 2 de outubro de 2026.
+Gabinete da...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82377"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82370">Diário nº 4352 de 02 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 02/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.135/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+Art. 1º REVOGAR o Decreto Administrativo nº 1.086/2026,
+publicado no Diário da Assembleia nº 4335, de 9 de setembro de 2026,
+e republicado no Diário Oficial nº 4336, de 10 de setembro de 2026,...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82370"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82353">Diário nº 4351 de 01 de outubro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 01/10/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.134/2026.
+*Republicado por incorreção
+
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+Considerando a vacância do cargo de Diretor de Área
+Orçamentária e Financeira da Assembleia Legislativa do Estado do
+Tocantins,
+RESOLVE:
+Art. 1º DESIGNAR o servidor Waldir...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82353"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82338">Diário nº 4350 de 30 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 30/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.131/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+Art. 1º EXONERAR Thiago Coutinho de Sa, matrícula
+1186712, do cargo em comissão de Secretário Parlamentar - SP-13, do
+Gabinete do Deputado Dr. Danilo Alencar, a partir de 1º de outubro de
+2026.
+Gabinete...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82338"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82329">Diário nº 4349 de 29 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 29/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Portarias da Diretoria-Geral
+PORTARIA Nº 729/2026 - DG
+O Diretor-Geral da Assembleia Legislativa do Estado do
+Tocantins, no uso de suas atribuições legais, em consonância com o
+disposto no art. 116, IX, da Lei nº 4.209, de 11 de agosto de 2023 e,
+
+2
+
+DIÁRIO DA ASSEMBLEIA | EDIÇÃO Nº 4349
+
+RESOLVE:
+Art. 1º LOTAR o servidor MATHEUS FIGUEIREDO DE
+SOUZA, Analista Legislativo - Revisão, na Diretoria de Operações
+Legislativas.
+Art. 2º Esta Portaria entra em vigor na data de sua publicação.
+Diretoria-Geral da Assembleia Legislativa do Estado do
+Tocantins, aos 28 dias do mês de setembro...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82329"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82321">Diário nº 4348 de 28 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 28/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+
+ERRATA
+
+Portarias da Presidência
+PORTARIA Nº 067/2026 - P
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023, tendo em vista o disposto no
+art. 14, § 1º, da Lei Estadual nº 1.818/2007, bem como o que consta nos
+autos do Processo Administrativo nº 353/2026,
+RESOLVE:
+
+Dispõe sobre correções nos textos dos Decretos...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82321"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82311">Diário nº 4347 de 25 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 25/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Portarias da Diretoria-Geral
+PORTARIA Nº 724/2026 - DG
+O Diretor-Geral da Assembleia Legislativa do Estado do
+Tocantins, no uso de suas atribuições legais, em consonância com o
+disposto no art. 141, IV, da Lei nº 4.209/2023,
+RESOLVE:
+Art. 1º ALTERAR os níveis de remuneração dos servidores
+abaixo relacionados, do Gabinete do Deputado Moisemar Marinho, a
+partir de 24 de setembro de 2026:
+- Eni Pereira Dias, matrícula 1187497, de SP-6 para SP-7;
+- Rejanio Pereira de Souza, matrícula 163831, de SP-2 para SP-3;
+- Rubens Alves da Silva Neto, matrícula 1186743, de SP-2
+para SP-3;
+
+2
+
+DIÁRIO...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82311"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82298">Diário nº 4346 de 24 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 24/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Decretos Administrativos
+DECRETO ADMINISTRATIVO Nº 1.128/2026
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023,
+RESOLVE:
+
+2
+
+DIÁRIO DA ASSEMBLEIA | EDIÇÃO Nº 4346
+
+CONSIDERANDO a necessidade de gestão e administração
+do Sistema Eletrônico de Informações - SEI no âmbito desta Casa
+Legislativa;
+CONSIDERANDO a importância...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82298"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82288">Diário nº 4345 de 23 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 23/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS LEGISLATIVOS
+Medidas Provisórias
+MENSAGEM Nº 78/2026
+Palmas, 24 de agosto de 2026.
+A Sua Excelência o Senhor
+Deputado Estadual AMÉLIO CAYRES DE ALMEIDA
+Presidente da ASSEMBLEIA LEGISLATIVA DO ESTADO DO
+TOCANTINS
+N E S TA
+Senhor Presidente,
+Encaminho, por intermédio de Vossa Excelência, à elevada
+deliberação dessa Augusta Assembleia Legislativa, a Medida Provisória
+nº 33, de 24 de agosto de 2026, que institui a Declaração Estadual de
+Direitos de Liberdade Econômica e dispõe sobre medidas de simplificação
+administrativa no âmbito do Poder Executivo estadual.
+A medida decorre dos trabalhos do...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82288"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82269">Diário nº 4344 de 22 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 22/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Portarias da Presidência
+PORTARIA Nº 062/2026 - P
+*Republicado por incorreção
+
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023, tendo em vista o disposto no
+art. 14, § 1º, da Lei Estadual nº 1.818/2007, bem como o que consta nos
+autos do Processo Administrativo nº 354/2026,
+RESOLVE:
+Art. 1º PRORROGAR até 18 de...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82269"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82261">Diário nº 4343 de 21 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 21/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS ADMINISTRATIVOS
+Portarias da Presidência
+PORTARIA Nº 062/2026 - P
+O Presidente da Assembleia Legislativa do Estado do Tocantins,
+no uso de suas atribuições constitucionais, de conformidade com o art. 28
+do Regimento Interno, (Resolução nº 201, de 18 de setembro de 1997),
+e em consonância com o art. 3º da Lei nº 4.209, de 2023, alterada pela
+Lei nº 4.250, de 22 de novembro de 2023, tendo em vista o disposto no
+art. 14, § 1º, da Lei Estadual nº 1.818/2007, bem como o que consta nos
+autos do Processo Administrativo nº 354/2026,
+RESOLVE:
+Art. 1º PRORROGAR até 18 de outubro de 2026 o prazo
+para...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82261"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div>
+<div class="row">
+		<div class="col-12">
+			<h4><a href="/arquivo/82254">Diário nº 4342 de 18 de setembro de 2026</a></h4>
+			<p><small>Categoria: <span class="badge badge-info p-1">Diários da Assembleia
+			</span></small>
+			<small> | Data: 18/09/2026</small></p>
+		</div>
+  	<div class="col-12">ATOS LEGISLATIVOS
+Atas das Comissões
+COMISSÃO DE DESENVOLVIMENTO RURAL,
+COOPERATIVISMO, CIÊNCIA, TECNOLOGIA E
+ECONOMIA
+10ª LEGISLATURA - 3ª SESSÃO LEGISLATIVA
+ATA DA PRIMEIRA REUNIÃO EXTRAORDINÁRIA
+EM 1º DE JULHO DE 2025
+Às dezesseis horas e vinte e dois minutos do dia primeiro do mês de
+julho, do ano de dois mil e vinte e cinco, a Comissão de Desenvolvimento
+Rural, Cooperativismo, Ciência, Tecnologia e Economia reuniu-se
+extraordinariamente no Plenarinho da Assembleia Legislativa, nesta
+Capital, com a presença dos Senhores Deputados Cleiton Cardoso,
+Eduardo Fortes, Gutierres Torquato, Jorge Frederico...<div class="my-2 dblock text-right"><a class="ml-auto btn btn-primary" rel="externo" title="Download" href="/arquivo/82254"><i class="fa fa-file-pdf-o"></i></a></div></div>
+</div><nav aria-label="Grupo paginação" class="mt-4"><ul class="pagination justify-content-center"><li class="page-item disabled"><a class="page-link" href="#dados">Anterior</a></li><li class="page-item active"><a class="page-link" href="#dados">1-10</a></li><li class="page-item"><a class="page-link" href="?pagPaginaAtual=11#dados">11-20</a></li><li class="page-item"><a class="page-link" href="?pagPaginaAtual=21#dados">21-30</a></li><li class="page-item"><a class="page-link" href="?pagPaginaAtual=31#dados">31-40</a></li><li class="page-item"><a class="page-link" href="?pagPaginaAtual=41#dados">41-50</a></li><li class="page-item"><a class="page-link" href="?pagPaginaAtual=11#dados">Próximo</a></li></ul></nav><nav aria-label="Paginação" ><ul class="pagination justify-content-center"><li class="page-item disabled "><a class="page-link" href="#dados">Anterior</a></li><li class="page-item active"><a class="page-link" href="#dados">1</a></li><li><a class="page-link" href="?pagPaginaAtual=2#dados">2</a></li><li><a class="page-link" href="?pagPaginaAtual=3#dados">3</a></li><li><a class="page-link" href="?pagPaginaAtual=4#dados">4</a></li><li><a class="page-link" href="?pagPaginaAtual=5#dados">5</a></li><li><a class="page-link" href="?pagPaginaAtual=6#dados">6</a></li><li><a class="page-link" href="?pagPaginaAtual=7#dados">7</a></li><li><a class="page-link" href="?pagPaginaAtual=8#dados">8</a></li><li><a class="page-link" href="?pagPaginaAtual=9#dados">9</a></li><li><a class="page-link" href="?pagPaginaAtual=10#dados">10</a></li><li class="page-item"><a class="page-link" href="?pagPaginaAtual=2#dados">Próximo</a></li></ul></nav></div>
+</div>
+<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col"><h5>Institucional</h5><ul><li><a href="/galeriaHistorica/historia">História Geral</a></li><li><a href="/galeriaHistorica/legislaturas">Legislaturas</a></li><li><a href="/galeriaHistorica/acoesSociais">Ações Sociais</a></li><li><a href="/galeriaHistorica/homenagens">Homenagens do Legislativo</a></li><li><a href="/galeriaHistorica/papel">Papel da Assembleia</a></li><li><a href="/galeriaHistorica/instalacoes">Instalações Definitivas</a></li></ul></div><div class="col"><h5>Parlamentares</h5><ul><li><a href="/perfil">Perfil</a></li><li><a href="/mesaDiretora">Mesa Diretora</a></li><li><a href="/comissao">Comissões</a></li><li><a href="/lideranca">Lideranças</a></li></ul></div><div class="col"><h5>Atividade Parlamentar</h5><ul><li><a href="/legislacaoEstadual">Legislação Estadual</a></li><li><a href="/diario">Diário da Assembleia</a></li><li><a href="/materiasLegislativas">Matérias Legislativas</a></li><li><a href="/documento">Constituição / Regimento / Outros</a></li><li><a href="/glossario">Glossário</a></li></ul></div><div class="col"><h5>Comunicação</h5><ul><li><a href="/noticia">Notícias</a></li><li><a href="/galeria">Banco de Imagens</a></li><li><a href="/contato">Contatos</a></li><li><a href="/ouvidoria">Ouvidoria</a></li><li><a href="/revista">Revista Eletrônica</a></li></ul></div><div class="col"><h5>Intranet</h5><ul><li><a href="/login">Portal do Servidor</a></li><li><a href="/sapl" rel="externo">SAPL</a></li><li><a href="/loginExterno/sic">Acesso à informação</a></li><li><a href="/relatorioErro">Relatar Erro</a></li><li><a href="/validarContracheque">Validar Contracheque</a></li><li><a href="/folhaPagamento">Folha de Pagamento</a></li><li><a href="/legis">LEGIS</a></li><li><a href="/ged">GED</a></li><li><a href="/documentos">Formulários</a></li><li><a href="/documentos/manuais">Manuais</a></li><li><a href="/sei">SEI - Processo Eletrônico</a></li></ul></div><div class="col"><h5>Transparência</h5><ul><li><a href="/transparencia">Portal da Transparência</a></li><li><a href="/loginExterno">e-SIC</a></li></ul></div>
+</div>
+		</div>
+
+		<div class="second-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<ul class="vcard py-2">
+							<li><a href="https://www.al.to.leg.br">Assembleia Legislativa do Estado do Tocantins</a></li>
+							<li>Horário de funcionamento: Segunda-feira à Sexta-feira, das 8h às 18h</li>
+							<li>Palácio Deputado João D'Abreu - Praça dos Girassóis</li>
+							<li>Palmas - TO CEP: 77.001-902</li>
+							<li>(63) 3212-5162</li>
+						</ul>
+					</div>
+					<div class="col-md-4">	
+						<div class="social-icons text-right">
+							<a href="https://www.instagram.com/assembleiato/" class="instagram" rel="externo"><i class="fa fa-instagram"></i></a>
+							<a href="https://twitter.com/AssembleiaTO" class="twitter" rel="externo"><i class="fa fa-twitter"></i></a>
+							<a href="https://www.facebook.com/assembleiatocantins" class="facebook" rel="externo"><i class="fa fa-facebook"></i></a>
+							<a href="https://www.youtube.com/@TVAleto" class="youtube" rel="externo"><i class="fa fa-youtube-play"></i></a>
+							<a href="/rss" ><i class="fa fa-rss"></i></a>
+							<a href="https://goo.gl/maps/eR3pzGYTJ5LJyKqz7" class="googlemaps"rel="externo"><i class="fa fa-map"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	<!-- mensagens do sistema -->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/assets/js/vendor/jquery.min.js"></script>
+	<script src="/assets/js/vendor/popper.min.js"></script>
+	<script src="/assets/js/vendor/bootstrap.min.js"></script>
+	<script src="/assets/js/vendor/chosen.jquery.min.js"></script>
+	<script src="/assets/js/vendor/jquery.mask.min.js"></script>
+	<script src="/assets/js/vendor/aos.js"></script>
+
+	<!-- build:js -->
+	<script src="/assets/js/app.js"></script>
+	<!-- endbuild -->
+	
+	<script type="text/javascript">		
+		var contexto = '/';
+		AOS.init();
+
+	</script>
+</body>
+</html>
