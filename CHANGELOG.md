@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · Diário oficial do RS lido por data
+
+O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
+
 ## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
 
 A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.
