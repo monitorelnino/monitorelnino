@@ -47,9 +47,6 @@ from coletores_base import semana_em_datas  # noqa: E402  (a única cópia da se
 # contra as páginas de origem, porque é dele que o boletim tira os números. Se o motor divergir da
 # página, o boletim nasce errado — e o portão pega antes de nascer.
 MAPA = (
-    ("desembolsado_no_mes", "financiamento.html", "topoPagoMes"),
-    ("resposta_autorizado_semana", "financiamento.html", "topoRespostaSemana"),
-    ("atos_federais_semana", "financiamento.html", "topoAtosSemana"),
     ("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),
     ("municipios_aviso_inmet", "defesa-civil.html", "topoInmet"),
     ("dengue_casos_se", "saude.html", "nDengueSE"),
