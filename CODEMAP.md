@@ -103,7 +103,7 @@ Atualizado em 19/10/2026.
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
 | `descobrir_planos.py` | — | — | — | 2 | não |
-| `desfechos_sus.py` | — | — | — | 2 | não |
+| `desfechos_sus.py` | — | — | — | 3 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 11 | não |
 | `gerar_blog.py` | — | — | — | — | não |
