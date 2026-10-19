@@ -4266,3 +4266,12 @@ Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, 
 **A definição dos índices.** `scripts/gerar_topo_das_paginas.definicao_dos_indices` escreve o parágrafo do MARÉ Legal a partir de `data/meta.json` (componentes, pesos e escala) e o do MARÉ Saúde a partir de `data/monitor_saude.json` (componentes e pesos em vigor). O resultado fica em `data/saude_desfechos/topo_saude.json` → `definicao_dos_indices` e é copiado para `data/imprensa/semana.json`: a Imprensa e a abertura da Saúde leem o mesmo campo. Componente que a função não sabe dizer, peso desigual ou escala diferente deixa o texto em lacuna (`null`), nunca um texto que descreva outra coisa. Nenhum número de versão chega ao leitor.
 
 **O que saiu do gerador da Imprensa.** O cruzamento decreto e alerta (saiu da Defesa civil) e o código dos cartões que a página já não lê. O texto da semana não usa "ciclo" sozinho.
+
+## 112. Orientações oficiais do guia Proteja-se e o diretório estadual da Defesa Civil (19/10/2026)
+
+**O que se guarda.** `coletar_orientacoes_oficiais.py` consulta páginas oficiais do Ministério da Saúde e da Defesa Civil nacional (chuvas, fogo, seca, calor, dengue), preserva cada uma por hash em `evidencias/` e, para cada item do guia do Proteja-se, procura a frase da fonte que o sustenta. O item só tem fonte quando a frase cobre as palavras que o definem; o registro traz URL, data da consulta, trecho e hash. Sem frase, o item entra em `itens_sem_fonte`: é lacuna declarada, e a página não o publica sem fonte. Fonte que recusa ou não responde mantém o registro anterior e declara `motivo_da_falha`. O arquivo tem peso zero e o cálculo do índice não o lê.
+
+**O diretório estadual.** O coletor reconfere os telefones e e-mails de `data/contatos_uf.json` contra o diretório da Defesa Civil no site do MIDR. Divergência (contato do MARÉ ausente do diretório) fica em `conferencia`, por UF, sem reescrever o contato; `fonte.consultado_em` e `hash_da_consulta` registram a data e a versão lida. Na primeira consulta (19/10/2026) 25 UFs conferem; DF e RO divergem.
+
+**Limite.** A frase de fonte é a que o texto da página traz, não uma recomendação nova do MARÉ. Página que mudar de endereço ou for retirada passa a lacuna na consulta seguinte.
+
