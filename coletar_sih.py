@@ -207,7 +207,7 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     fila = a_ler(listagem, lidos, base.get("fonte", {}).get("tamanhos_recentes", {}))
     novos = {g: {} for g in GRUPOS}
     falhas, seguidas, feitos, inicio = [], 0, set(), relogio()
-    # Os downloads (a maior parte do tempo, medida em 19/10/2026: ~11 s por arquivo, 2 s de CPU) correm
+    # Os downloads (a maior parte do tempo; medido em 19/10/2026: 11 s por arquivo em fila, 4,5 s com três à frente) correm
     # `JANELA` à frente da decodificação; a decodificação e a agregação seguem em ordem, numa linha só.
     with ThreadPoolExecutor(JANELA) as ex:
         voo, itens = deque(), iter(fila)
