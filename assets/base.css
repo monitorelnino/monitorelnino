@@ -1264,7 +1264,7 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    demais e o rótulo era cortado. Com `auto-fit` e um mínimo por cartão, até seis continuam
    dividindo a linha como antes e o sétimo desce para a linha seguinte, que é o que a regra
    sempre quis dizer. O mínimo é largura de trilha, não tipografia: a escala não muda. */
-.grade-numeros--compacta{grid-template-columns:repeat(auto-fit, minmax(12rem, 1fr)); grid-auto-flow:row;}
+.grade-numeros--compacta{grid-template-columns:repeat(auto-fit, minmax(11rem, 1fr)); grid-auto-flow:row;}
 .grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
 .grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 .grade-numeros--compacta .cartao-numero-rotulo{font-size:var(--fs-small); line-height:var(--lh-small);}
