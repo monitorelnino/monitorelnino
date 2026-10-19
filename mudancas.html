@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Leptospirose e diarreias: primeiros arquivos de desfecho</dt>
+      <dd>Primeira coleta real pela válvula: `leptospirose.json` (SINAN, casos confirmados) e `diarreias.json` (SISAB, atendimentos por CIAP-2/CID-10), por UF e mês, na estrutura comum. Últimos meses parciais declarados. Nenhum arquivo lido pela página muda.</dd>
       <dt>19/10/2026 · Consulta do município: o cartão diz quantos atos não couberam</dt>
       <dd>O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer &quot;e mais N atos no período&quot;. Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.</dd>
       <dt>19/10/2026 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde</dt>
@@ -165,8 +167,6 @@
       <dd>`assets/js/consulta-municipio.js` monta a consulta estado → município (lista do estado, campo que abre com o estado, clique que esvazia, frase do nome fora da lista); cada página dá só a lista e o conteúdo do cartão. A inicial e o Monitor de riscos passam a usá-lo, sem mudança visual; as outras páginas o usarão nas reformas.</dd>
       <dt>17/10/2026 · Busca web: marca de motor mudo não tira o município da fila (F69)</dt>
       <dd>Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas &quot;motor_sem_resposta&quot; gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.</dd>
-      <dt>17/10/2026 · Main vermelha: a fila de pistas passou de 50 MB com a URL gravada duas vezes</dt>
-      <dd>`data/pistas_imprensa.json` chegou a 50,1 MB no commit do juiz das 09:24 e o portão de tamanho reprovou a `main`. Causa: `verificacao_fonte.url` repetia a URL da própria pista em 19.954 pistas (5,8 MB) e ninguém a lia. O verificador deixa de gravá-la; as cópias iguais saem do dado (46,4 MB). As 24 que diferem ficam.</dd>
     </dl>
   </section>
 </main>

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #884 · Leptospirose e diarreias: primeiros arquivos de desfecho
+
+Primeira coleta real pela válvula: `leptospirose.json` (SINAN, casos confirmados) e `diarreias.json` (SISAB, atendimentos por CIAP-2/CID-10), por UF e mês, na estrutura comum. Últimos meses parciais declarados. Nenhum arquivo lido pela página muda.
+
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
 O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
