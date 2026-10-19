@@ -1,8 +1,11 @@
 /* ===== defesa-civil.html · do aviso ao reconhecimento, por município ======================
  *
- * Reforma de 17/10/2026 (robo-registro/notas/HANDOVER_DEFESA_CIVIL_16-10-2026.md). A ordem é a do
- * contrato `layout/contratos/defesa-civil.json`: números do topo, consulta do município, mapa
- * municipal das emergências (figura principal) e o caminho do decreto ao reconhecimento.
+ * Reforma de 17/10/2026 (robo-registro/notas/HANDOVER_DEFESA_CIVIL_16-10-2026.md), ajustes de
+ * 19/10/2026 (HANDOVER_DEFESA_CIVIL_AJUSTES). A ordem é a do contrato
+ * `layout/contratos/defesa-civil.json`: números do topo, consulta do município e mapa municipal das
+ * emergências (figura principal). A seção "Do decreto ao reconhecimento" saiu: o gráfico semanal
+ * dizia em duas etapas o que os dois cartões do topo já dizem, e o número dos 30 dias virou o sexto
+ * cartão da faixa. Com ela saiu a única dependência de `Chart` desta página.
  *
  * UMA fonte para o conjunto dos municípios com decreto: `data/resposta/municipios_decretados.json`,
  * o consolidado de `gerar_resposta.py`. O evento declarado no ato (`evento_declarado`), as datas e a
@@ -19,7 +22,6 @@
 let BR_GEOJSON, RESP, DECRETADOS, ALERTAS, TOPO,
     MUN_COD = {}, LATLON_POR_CODIGO = {}, NOMES_POR_UF = {};
 
-const INICIO_CICLO = '2026-06-29';
 const LIMITE_ALERTA_HORAS = 24;
 const DIAS_PENDENCIA = 30;
 /* Preposição de cada estado, para a linha do estado ("No Ceará", "Na Bahia", "Em Pernambuco"). */
@@ -103,7 +105,6 @@ const nomeDoEvento = v => NOME_DO_CODIGO[v] || (/não declarado|^$/i.test(String
 const familiaDe = ev => ev ? FAMILIAS.find(f => f.re.test(ev)) : FAMILIAS[3];
 
 function __init(totalMunicipios){
-  MonitorMapas.padraoGraficos(window.Chart);
   const esc = MonitorMapas.esc, cor = MonitorMapas.cor, C = window.MonitorCatalogo;
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   const texto = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
@@ -198,6 +199,12 @@ function __init(totalMunicipios){
   variacao('topoPopulacaoVariacao', variacaoDe('populacao_sob_decreto'));
   cred('topoDecretaramFonte', [FONTE_DECRETO], corteDecretos);
   cred('topoReconhecidosFonte', [FONTE_DECRETO], corteDecretos);
+  /* O sexto cartão: decreto há mais de 30 dias sem reconhecimento (19/10/2026, ajuste 4). A
+     pendência é campo do gerador (`dias_sem_reconhecimento`); sem ele, a classe é "não calculado". */
+  const calculado = decretados.some(m => m.dias !== undefined);
+  const pendentes = decretados.filter(m => !m.reconhecida && m.dias > DIAS_PENDENCIA);
+  texto('topoPendencia', calculado ? (pendentes.length ? n(pendentes.length) : 'nenhum') : 'não calculado até o corte');
+  cred('topoPendenciaFonte', [FONTE_DECRETO], corteDecretos);
   /* População em milhões com uma casa (regra de número do site). */
   const pop = N.pop_sob_decreto;
   if (pop != null) texto('topoPopulacao', pop >= 1e6
@@ -243,9 +250,6 @@ function __init(totalMunicipios){
       + cartao('cartao--acento-musgo', 'defesa-civil.municipio.reconhecimento.titulo', corpoRec)
       + '</div><p class="hint">' + ((C && C.texto('defesa-civil.municipio.recurso.linha')) || '') + '</p>'
       + (estado ? '<p class="hint">' + estado + '</p>' : '');
-    const ver = card.querySelector('a[href="#boxEmergencias"]');
-    if (ver) ver.addEventListener('click', ev => { ev.preventDefault(); if (filtrarEmergencias) filtrarEmergencias(uf);
-      document.getElementById('boxEmergencias').scrollIntoView({behavior: 'smooth', block: 'start'}); });
   }
   ConsultaMunicipio.montar({uf: 'consultaUF', municipio: 'consultaMun', lista: 'consultaLista', cartao: 'consultaCard',
     estados: NOME_UF, mostrar, semLista: 'Lista de municípios do estado: sem coleta até o corte.',
@@ -300,10 +304,10 @@ function __init(totalMunicipios){
     const max = Math.max.apply(null, barras.map(b => b[1]).concat([1]));
     alvoBarras.innerHTML = barras.length ? '<div class="barras-painel">' + barras.map(b => '<div class="barra-linha"><span class="barra-rotulo">' + esc(b[0])
       + '</span><span class="barra-trilho"><span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.01, b[1] / max).toFixed(4)
-      + ');background:' + MonitorMapas.PALETA.atmosfera.contagem.rampa[2] + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('') + '</div>'
+      + ');background:' + cor(familiaDe(b[0]).cor) + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('') + '</div>'
       : '<div class="lacuna">Evento declarado em classificação até o corte (' + esc(corteDecretos || 'sem registro') + ').</div>';
   }
-  const filtrarEmergencias = listaBuscavel('boxEmergencias', {
+  listaBuscavel('boxEmergencias', {
     colunas: ['Município', 'UF', 'Evento declarado', 'Decreto', 'Reconhecimento', 'Documento'],
     rotulo: 'Buscar município com decreto',
     linhas: decretados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
@@ -313,44 +317,6 @@ function __init(totalMunicipios){
         [docLink(m.atoMunicipal), docLink(m.portaria)].filter(Boolean).join('<br>') || 'não localizado até o corte'],
     })),
   });
-
-  // =========================================================
-  // 4. Do decreto ao reconhecimento, semana a semana + onde a cadeia parou
-  // =========================================================
-  const paraISO = v => { const m = String(v || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? m[3] + '-' + m[2] + '-' + m[1] : null; };
-  const semanas = [];
-  for (let d = new Date(INICIO_CICLO + 'T12:00:00'); d <= new Date(); d = new Date(d.getTime() + 7 * 864e5)) semanas.push(d.toISOString().slice(0, 10));
-  const semanaDe = iso => { if (!iso || iso < INICIO_CICLO) return INICIO_CICLO;
-    const base = new Date(INICIO_CICLO + 'T12:00:00');
-    return new Date(base.getTime() + Math.floor((new Date(iso + 'T12:00:00') - base) / (7 * 864e5)) * 7 * 864e5).toISOString().slice(0, 10); };
-  const acumulado = datas => { const por = {}; datas.filter(Boolean).forEach(iso => { const s = semanaDe(iso); por[s] = (por[s] || 0) + 1; });
-    let soma = 0; return semanas.map(s => (soma += por[s] || 0)); };
-  const RAMPA = MonitorMapas.PALETA.atmosfera.resposta.rampa;
-  const SERIES = [
-    {rotulo: 'decretaram', cor: RAMPA[1], dados: acumulado(decretados.map(m => paraISO(m.decreto)))},
-    {rotulo: 'reconhecidos pela União', cor: RAMPA[RAMPA.length - 1], dados: acumulado(reconhecidos.map(m => paraISO(m.reconhecimento)))},
-  ];
-  const cvE = document.getElementById('cEtapas');
-  if (cvE && window.Chart && semanas.length) new Chart(cvE, {type: 'line',
-    data: {labels: semanas.map(s => s.slice(8) + '/' + s.slice(5, 7)),
-           datasets: SERIES.map(s => ({label: s.rotulo, data: s.dados, borderColor: s.cor, backgroundColor: s.cor, tension: 0.2, pointRadius: 2}))},
-    options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true}}}});
-  MonitorMapas.legenda('legEtapas', SERIES.map(s => ({cor: s.cor, rotulo: s.rotulo})));
-  MonitorMapas.credito('boxEtapas', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: corteDecretos});
-  listaBuscavel('boxEtapas', {colunas: ['Semana', 'Decretaram', 'Reconhecidos'], rotulo: 'Buscar semana', unidade: 'semana',
-    linhas: semanas.map((s, i) => ({busca: s.slice(8) + '/' + s.slice(5, 7) + ' ' + s,
-      celulas: [s.slice(8) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4), n(SERIES[0].dados[i]), n(SERIES[1].dados[i])]}))});
-
-  /* A pendência é campo do gerador (`dias_sem_reconhecimento`); sem ele, a classe é "não calculado". */
-  const calculado = decretados.some(m => m.dias !== undefined);
-  const pendentes = decretados.filter(m => !m.reconhecida && m.dias > DIAS_PENDENCIA).sort((a, b) => b.dias - a.dias);
-  texto('topoPendencia', calculado ? (pendentes.length ? n(pendentes.length) : 'nenhum') : 'não calculado até o corte');
-  molde('subPendencia', 'defesa-civil.reconhecimento.pendencia.legenda', {data: corteDecretos || 'sem registro'});
-  cred('topoPendenciaFonte', [FONTE_DECRETO], corteDecretos);
-  MonitorMapas.credito('boxPendencia', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: corteDecretos});
-  listaBuscavel('boxPendencia', {colunas: ['Município', 'UF', 'Decreto', 'Dias sem reconhecimento'], rotulo: 'Buscar município sem reconhecimento',
-    linhas: pendentes.map(m => ({busca: m.nome + ' ' + m.uf,
-      celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(m.decreto || ''), n(m.dias)]}))});
 }
 
 __load().catch(err => {

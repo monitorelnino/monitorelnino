@@ -21,28 +21,6 @@
   ],
   "registrado_em": "02/10/2026",
   "fichas": {
-    "defesa-civil.html#boxEtapas": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Quantos municípios decretaram e quantos foram reconhecidos pela União, semana a semana desde 29/06/2026?",
-      "dimensao_da_preparacao": "resposta declarada",
-      "universo": "os municípios com decreto localizado desde 29/06/2026 e, na segunda linha, os que têm portaria de reconhecimento",
-      "unidade_de_analise": "município, acumulado por semana",
-      "territorio": "Brasil",
-      "periodo": "semanas de 29/06/2026 até o corte da edição",
-      "variavel_principal": "número acumulado de municípios em cada etapa, por semana",
-      "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
-      "conclusoes_permitidas": [
-        "quantos municípios acumulam em cada etapa, em cada semana",
-        "que as duas etapas têm datas próprias: decreto e portaria de reconhecimento"
-      ],
-      "conclusoes_nao_permitidas": [
-        "razão ou diferença entre as linhas: a figura mostra as duas etapas e não constrói comparação",
-        "que a distância entre as linhas mede demora de algum órgão: a data é a do ato publicado, não a do pedido",
-        "que o acumulado cai: ele não cai, porque município que entrou não sai"
-      ],
-      "funcao_narrativa": "mostrar o caminho do decreto ao reconhecimento no tempo; a etapa do recurso está em Financiamento",
-      "metodologia": "A semana de cada município é a do primeiro ato de cada etapa no consolidado resposta/municipios_decretados.json: primeiro decreto e primeiro reconhecimento. Acumulado por semana desde 29/06/2026."
-    },
     "financiamento.html#boxSerieSemanal": {
       "tipo": "gráfico de barras empilhadas",
       "pergunta_que_responde": "Quanto a defesa civil federal autorizou por semana desde o início do ciclo?",
@@ -526,27 +504,6 @@
       ],
       "funcao_narrativa": "figura principal da página: mostrar onde estão as emergências e em que etapa",
       "metodologia": "Ponto na sede municipal (municipios_ibge_referencia.json). Evento do município é o do(s) ato(s) que o casam no consolidado; sem classificação, a classe é nomeada. Cor pela família do evento (seca, chuva, fogo, outro); cheio quando há portaria de reconhecimento."
-    },
-    "defesa-civil.html#boxPendencia": {
-      "tipo": "número",
-      "pergunta_que_responde": "Quantos municípios têm decreto há mais de 30 dias sem portaria de reconhecimento localizada?",
-      "dimensao_da_preparacao": "resposta declarada",
-      "universo": "os municípios com decreto localizado desde 29/06/2026 e sem portaria de reconhecimento localizada",
-      "unidade_de_analise": "município",
-      "territorio": "Brasil",
-      "periodo": "data de referência do consolidado",
-      "variavel_principal": "número de municípios com mais de 30 dias entre o primeiro decreto e a data de referência, sem reconhecimento",
-      "fonte": "Defesa Civil nacional, no Diário Oficial da União, e diários oficiais dos estados e dos municípios",
-      "conclusoes_permitidas": [
-        "quantos municípios estão nessa situação na data de referência"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o reconhecimento foi negado: a figura conta portaria não localizada até o corte",
-        "que o município pediu o reconhecimento: o pedido não é publicado",
-        "demora de algum órgão: a contagem parte da data do decreto, não do pedido"
-      ],
-      "funcao_narrativa": "mostrar onde o caminho do decreto ao reconhecimento parou",
-      "metodologia": "Campo dias_sem_reconhecimento do consolidado (data de referência menos a data do primeiro decreto, só para quem não tem reconhecimento); a figura conta os maiores que 30."
     },
     "financiamento.html#boxChega": {
       "dimensao_da_preparacao": "resposta declarada",
