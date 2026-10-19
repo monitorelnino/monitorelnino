@@ -19,10 +19,10 @@ jobs:
   edicoes-doe:
     uses: ./.github/workflows/_coletor.yml
     with:
-      nome: orientacoes
+      nome: sonda
       timeout_minutos: 30
       comandos: |
-        coletar_orientacoes_oficiais.py
+        sondar_munic_estrutura.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
