@@ -40,17 +40,14 @@ FONTES = [  # (família, órgão, URL)
     ("fogo", MIDR, G + "mdr/pt-br/noticias/conheca-as-medidas-de-autoprotecao-que-a-populacao-deve-tomar-em-casos-de-incendios-florestais"),
     ("fogo", MIDR, G + "mdr/pt-br/assuntos/protecao-e-defesa-civil/IncndiosFlorestais.pdf"),
     ("fogo", MS, G + "saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca"),
-    ("fogo", MS, G + "saude/pt-br/canais-de-atendimento/sala-de-imprensa/notas-a-imprensa/2024/orientacoes-para-evitar-a-exposicao-a-fumaca-intensa-causada-por-queimadas"),
     ("seca", MS, G + "saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf"),
     ("calor", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor"),
-    ("calor", MS, G + "saude/pt-br/assuntos/noticias/2023/setembro/confira-cuidados-com-a-saude-para-se-proteger-das-altas-temperaturas"),
     ("dengue", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/d/dengue"),
-    ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2024/dezembro/dengue-conheca-os-sintomas-da-doenca-e-saiba-como-prevenir"),
-    ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2025/novembro/dez-dicas-para-eliminar-focos-do-mosquito-da-dengue"),
+    ("dengue", MS + " (via Agência Gov)", "https://agenciagov.ebc.com.br/noticias/202402/confira-10-passos-para-eliminar-focos-do-mosquito-da-dengue"),
 ]
 # A aba de dengue ainda não tem item no catálogo: a página oficial entra com as frases que tratam do que o
 # guia vai orientar (água parada, recipientes, lixo, sintomas, quando procurar atendimento).
-CHAVES_DENGUE = ("agua parada", "recipiente", "tampa", "lixo", "sintoma", "procure", "atendimento", "pneu", "caixa d")
+CHAVES_DENGUE = ("agua parada", "agua acumulada", "recipiente", "tamp", "lixo", "sintoma", "procure", "pneu", "caixa", "calha", "repelente")
 MINIMO_DE_COBERTURA = 0.7   # fração das palavras do item que a frase da fonte precisa ter
 
 
@@ -128,12 +125,21 @@ def conferir_contatos(contatos: dict, texto: str) -> dict:
     return saida
 
 
+def devolveu_outra_pagina(corpo: bytes, url: str):
+    """O canônico que a própria página declara, se não for o endereço pedido (o gov.br serve a
+    inicial no lugar de notícia removida, com 200). Sem canônico: None. Função pura."""
+    m = re.search(rb'<link rel="canonical" href="([^"]+)"', corpo[:200000])
+    norm = lambda u: u.strip().lower().split("?")[0].rstrip("/")
+    return m.group(1).decode("utf-8", "replace") if m and norm(m.group(1).decode("utf-8", "replace")) != norm(url) else None
+
+
 def buscar_pagina(url: str, buscar=cb.buscar):
     """(corpo, None) ou (None, motivo). Recusa e falha viram motivo, nunca exceção."""
     try:
         corpo = buscar(url)
         aviso = cb.detectar_muro_de_robo(corpo) if not url.endswith(".pdf") else None
-        return (None, f"muro de robô: {aviso}") if aviso else (corpo, None)
+        outra = None if url.endswith(".pdf") else devolveu_outra_pagina(corpo, url)
+        return (None, f"muro de robô: {aviso}") if aviso else (None, f"a URL devolve outra página ({outra})") if outra else (corpo, None)
     except Exception as e:  # noqa: BLE001 — qualquer falha é resultado a registrar
         return None, f"{type(e).__name__}: {e}"[:200]
 
@@ -148,7 +154,8 @@ def coletar(buscar=cb.buscar, preservar=cb.preservar_evidencia, ler=cb.ler, grav
     for familia, orgao, url in FONTES:
         corpo, motivo = buscar_pagina(url, buscar)
         if corpo is None:
-            reg = dict(antes.get(url) or {"familia": familia, "orgao": orgao, "url": url})
+            base = {"familia": familia, "orgao": orgao, "url": url}
+            reg = base if motivo.startswith("a URL devolve") else dict(antes.get(url) or base)
             reg.update(tentativa_em=hoje, motivo_da_falha=motivo)
             fontes.append(reg)
             print(f"  ✗ {url[:90]}: {motivo}")
@@ -232,6 +239,12 @@ def autoteste() -> int:
         "telefone diferente do diretório é divergência": lambda: conf["AL"]["telefones_fora_do_diretorio"]
         == ["(82) 9999-0000"] and not conf["AC"]["telefones_fora_do_diretorio"]
         and not conf["AC"]["email_fora_do_diretorio"],
+        "página que devolve a inicial não é a pedida": lambda: devolveu_outra_pagina(
+            b'<link rel="canonical" href="https://www.gov.br/saude" />', "https://www.gov.br/saude/pt-br/x")
+        and not devolveu_outra_pagina(b'<link rel="canonical" href="https://www.gov.br/saude/pt-br/x/" />',
+                                      "https://www.gov.br/saude/pt-br/x") and not devolveu_outra_pagina(b"<p>sem canonico</p>", "u"),
+        "dengue: lista de passos entra, telefone não": lambda: trechos_de_dengue(
+            "Tampe caixas d’água, ralos e pias;\nTeleatendimento: de segunda a sexta, das 8h às 20h.\nColoque areia nos vasos de plantas;") == ["Tampe caixas d’água, ralos e pias;"],
         "recusa vira motivo, não exceção": lambda: buscar_pagina(
             "x", lambda u: (_ for _ in ()).throw(OSError("recusado")))[1].startswith("OSError"),
         "trava estrutural: não escreve no índice": lambda: not any(
