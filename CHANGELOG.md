@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #900 · A Saúde ganha a seção única de desfechos
+
+A seção "O que os órgãos de saúde registram" passa a abrir com um cartão por desfecho, todos lidos da mesma forma de arquivo: último valor por 100 mil, faixa habitual para a época, a série recente em linha e a fonte com a data. Um seletor escolhe Brasil ou estado. Desfecho sem arquivo não vira cartão vazio. Estreia com diarreias e leptospirose; os demais entram quando a série nascer.
+
 ## 2026-10-19 · #897 · Portões: comentários de cache e corrida no YAML, em uma linha
 
 Consolidação, item 6. Os blocos longos de história sobre o cache do navegador, a idempotência, a corrida do medidor e as capturas, em `portoes.yml`, viram uma linha de porquê cada; a história fica no histórico. Lista de comandos, assuntos e marcadores de publicação idêntica (83 comandos). Linhas líquidas −29.

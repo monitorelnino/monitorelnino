@@ -129,7 +129,8 @@ async function __load(){
          * há coleta — nunca zero. */
         fetch('data/monitor_saude_v04.json').then(r => r.ok ? r.json() : null).then(V => {
           const u = (V && V.uf) || null;
-          if (!u) { el('nCoordSaude').textContent = '—';
+          /* Travessão em cartão é proibido (layout/regras.json): a ausência diz a sua classe. */
+          if (!u) { el('nCoordSaude').textContent = 'sem coleta';
                     el('fonteCoordSaude').textContent = 'Sem coleta até o corte.'; return; }
           const comCoord = Object.values(u).filter(x => x && x.coordenacao && x.coordenacao.doc).length;
           el('nCoordSaude').textContent = n(comCoord) + ' de 27';
@@ -144,6 +145,7 @@ async function __load(){
   renderSRAG('srag');
   renderSG();
   renderDDA();
+  montarDesfechos().catch(_erroSaude("saude:desfechos"));
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -1124,3 +1126,118 @@ const AREAS = [
     }).join('');
   }).catch(_erroSaude("saude:1338"));
 })();
+
+/* ===== Seção única de desfechos ============================================================
+ * HANDOVER_SAUDE_DESFECHOS_BLOCO (editoria, 16/10/2026) e prioridade da editoria de 19/10.
+ *
+ * Um cartão por desfecho, todos lidos da MESMA forma: `data/saude_desfechos/<id>.json`, como
+ * `desfechos_sus.py` a escreve (série por UF, por 100 mil, faixa habitual da época, último
+ * período e o último já fechado). A página não sabe de onde veio cada número: o arquivo diz o
+ * rótulo, a unidade, a cadência, a fonte e a data.
+ *
+ * Desfecho sem arquivo na forma comum não vira cartão vazio nem zero — ele ainda não tem cartão.
+ * Território sem série no arquivo declara a lacuna da sua classe, com as palavras da classe.
+ * Nenhuma frase relaciona caso a El Niño: o que a página não diz, não precisa estar escrito.
+ */
+const DESFECHOS_DA_SECAO = ['dengue', 'chikungunya', 'srag', 'obitos', 'diarreias', 'leptospirose'];
+const FAIXA_COR = {acima: MonitorMapas.PALETA.serie_habitual.acima, dentro: MonitorMapas.cor('vazio')};
+let DESFECHOS_LIDOS = [];
+
+/* "2026-08" → "agosto de 2026"; "2026-33" → a semana em datas (a palavra não chega ao leitor). */
+function periodoEmPalavras(chave, cadencia) {
+  const [ano, parte] = String(chave || '').split('-');
+  if (cadencia === 'semana') return semanaEmDatas(Number(ano), chave, true) || '';
+  const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto',
+                 'setembro', 'outubro', 'novembro', 'dezembro'];
+  return (meses[Number(parte) - 1] || '') + ' de ' + ano;
+}
+
+/* A linha dos períodos recentes sobre a faixa habitual, em SVG: polígono da faixa em mineral,
+   linha em tinta, último ponto em argila. Sem eixo e sem número: quem mede é o cartão. */
+function serieEmSvg(valores, faixas, rotulo, estado) {
+  const L = 240, A = 48, n = valores.length;
+  if (n < 2) return '';
+  const tetos = faixas.map(f => (f && f.p90) || 0);
+  const alto = Math.max(1, Math.max.apply(null, valores.concat(tetos).filter(v => v != null)));
+  const x = i => (i * L) / (n - 1), y = v => A - (Math.max(0, v || 0) / alto) * (A - 2);
+  const faixaCima = faixas.map((f, i) => x(i) + ',' + y(f && f.p90)).join(' ');
+  const faixaBaixo = faixas.map((f, i) => x(i) + ',' + y(f && f.mediana)).reverse().join(' ');
+  const temFaixa = faixas.some(f => f && f.p90 != null);
+  const linha = valores.map((v, i) => (v == null ? null : x(i) + ',' + y(v)))
+    .filter(Boolean).join(' ');
+  const ultimo = valores[n - 1];
+  return '<svg class="cartao-numero-serie" viewBox="0 0 ' + L + ' ' + A + '" preserveAspectRatio="none"'
+    + ' role="img" aria-label="' + esc(rotulo) + '">'
+    + (temFaixa ? '<polygon points="' + faixaCima + ' ' + faixaBaixo + '" fill="' + MonitorMapas.PALETA.serie_habitual.faixa + '" fill-opacity="0.28"></polygon>' : '')
+    + '<polyline points="' + linha + '" fill="none" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1.5"></polyline>'
+    + (ultimo == null ? '' : '<circle cx="' + L + '" cy="' + y(ultimo) + '" r="3" fill="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro) + '"></circle>')
+    + '</svg>';
+}
+
+/* Os períodos recentes do território, na ordem do calendário: 52 semanas ou 24 meses. */
+function recorteRecente(d, uf) {
+  const serie = (d.por_100mil || {})[uf] || {};
+  const chaves = Object.keys(serie).sort();
+  const quantos = d.periodo === 'semana' ? 52 : 24;
+  return chaves.slice(-quantos);
+}
+
+function cartaoDesfecho(d, uf) {
+  const u = (d.ultimo || {})[uf];
+  const fonte = d.fonte || {};
+  const cadencia = d.periodo === 'semana' ? ' · por semana · ' : ' · por mês · ';
+  const rodape = 'Fonte: ' + esc((fonte.sistema || '').split(',')[0]) + ' · Atualização: ' + esc(MonitorMapas.dataBR(d.coletado_em) || d.coletado_em);
+  if (!u || !u.consolidado) {
+    return '<div class="cartao-numero cartao-numero--saude">'
+      + '<p class="cartao-numero-familia">' + esc(d.rotulo) + '</p>'
+      + '<p class="cartao-numero-valor">sem coleta</p>'
+      + '<p class="cartao-numero-rotulo">' + esc(d.unidade) + ' por 100 mil' + cadencia
+      + 'sem série para este território até o corte</p>'
+      + '<p class="cartao-numero-fonte">' + rodape + '</p></div>';
+  }
+  const c = u.consolidado, chaves = recorteRecente(d, uf);
+  const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
+  const doAno = ch => faixas[String(ch).split('-')[1]] || null;
+  const f = doAno(c.periodo);
+  const dentro = !f || f.p90 == null ? null : (c.por_100mil > f.p90 ? 'acima' : 'dentro');
+  const texto = !dentro ? 'sem faixa habitual para a época'
+    : (dentro === 'acima' ? 'acima' : 'dentro') + ' da faixa habitual ('
+      + decBR(f.mediana) + ' a ' + decBR(f.p90) + ')';
+  return '<div class="cartao-numero cartao-numero--saude">'
+    + '<p class="cartao-numero-familia">' + esc(d.rotulo) + '</p>'
+    + '<p class="cartao-numero-valor">' + esc(decBR(c.por_100mil)) + '</p>'
+    + '<p class="cartao-numero-rotulo">' + esc(d.unidade) + ' por 100 mil' + cadencia
+    + esc(periodoEmPalavras(c.periodo, d.periodo)) + '</p>'
+    + '<p class="cartao-numero-variacao"' + (dentro === 'acima' ? ' style="color:' + FAIXA_COR.acima + '"' : '')
+    + '>' + esc(texto) + '</p>'
+    + serieEmSvg(chaves.map(ch => serie[ch]), chaves.map(doAno),
+        d.rotulo + ', ' + (d.periodo === 'semana' ? 'últimas 52 semanas' : 'últimos 24 meses')
+        + ', sobre a faixa habitual para a época', dentro)
+    + '<p class="cartao-numero-fonte">' + rodape + '</p></div>';
+}
+
+function pintarDesfechos() {
+  const grade = document.getElementById('gradeDesfechos');
+  const seletor = document.getElementById('ufDesfechos');
+  if (!grade || !DESFECHOS_LIDOS.length) return;
+  const uf = (seletor && seletor.value) || 'BR';
+  grade.innerHTML = DESFECHOS_LIDOS.map(d => cartaoDesfecho(d, uf)).join('');
+}
+
+async function montarDesfechos() {
+  const grade = document.getElementById('gradeDesfechos');
+  if (!grade) return;
+  const lidos = await Promise.all(DESFECHOS_DA_SECAO.map(id =>
+    fetch('data/saude_desfechos/' + id + '.json').then(r => (r.ok ? r.json() : null)).catch(() => null)));
+  DESFECHOS_LIDOS = lidos.filter(d => d && d.esquema === 1 && d.ultimo && d.por_100mil);
+  const bloco = document.getElementById('desfechos');
+  if (!DESFECHOS_LIDOS.length) { if (bloco) bloco.hidden = true; return; }
+  if (bloco) bloco.hidden = false;
+  const seletor = document.getElementById('ufDesfechos');
+  if (seletor && !seletor.options.length) {
+    seletor.innerHTML = '<option value="BR">Brasil</option>'
+      + UFS.map(u => '<option value="' + u + '">' + esc(NOME_UF[u]) + '</option>').join('');
+    seletor.addEventListener('change', pintarDesfechos);
+  }
+  pintarDesfechos();
+}
