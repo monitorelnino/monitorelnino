@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #847 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
+
+Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
+
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
 
 `semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.

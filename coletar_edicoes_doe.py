@@ -546,12 +546,12 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         # Data recente "sem edição" se tenta de novo: a edição do dia pode sair depois da leitura.
         recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
         datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])
-                 or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")][:TETO_EDICOES]
-        # Quando o nome do arquivo pede o NÚMERO da edição, percorre-se do mais novo para o mais velho:
-        # a âncora de cada data passa a ser a vizinha, e a deriva por passo é de uma ou duas edições.
-        # Da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404.
-        if "{edicao}" in padrao.get("padrao", ""):
-            datas = sorted(datas, reverse=True)
+                 or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")]
+        # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
+        # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
+        # Fonte que recusa parte das datas (MG, 401, 17/10/2026) tem o recente lido antes da recusa, que
+        # para a UF como sempre; e o prazo do elo corta o mais velho, não o recente.
+        datas = sorted(datas, reverse=True)[:TETO_EDICOES]
         vistos = {e.get("impressao") for d, e in edicoes.items()
                   if isinstance(e, dict) and e.get("impressao") and d.split("#")[0] not in datas}
         try:
@@ -570,12 +570,13 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                                      if rota["tipo"] == "padrao" else {"decisao": "sem_edicao_na_data", "em": hoje})
                     continue
                 # Edição em vários cadernos (CE) ou com suplemento: um registro por caderno, a data na chave.
+                da_data = set()
                 for k, alternativas in enumerate(grupos, start=1):
                     chave = data if k == 1 else f"{data}#{k}"
                     url, bruto, status, erro = alternativas[0]["url"], None, 0, None
                     for candidato in alternativas:
                         url = candidato["url"]
-                        time.sleep(0 if candidato.get("pdf") else RITMO_S)
+                        time.sleep(RITMO_S)  # §11, também quando o adaptador já trouxe o PDF (MG, CE)
                         try:
                             bruto = candidato.get("pdf") or buscar(url, timeout=120)
                             status = 200
@@ -593,6 +594,11 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                         continue
                     # Repetição pelo hash do conteúdo: o mesmo arquivo em duas datas não são duas edições.
                     impressao = hashlib.sha256(bruto).hexdigest()
+                    if impressao in da_data:
+                        # MEDIDO em 17/10/2026 (CE, 08 e 09/07): depois do último caderno o servidor serve
+                        # de novo o caderno 1 com 200. Caderno repetido na mesma data é o fim da edição.
+                        break
+                    da_data.add(impressao)
                     repetido = impressao in vistos
                     vistos.add(impressao)
                     paginas = [] if repetido else _texto_paginas(bruto)
@@ -638,7 +644,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         registro["canal2"] = {"modo": MODO_SEM_ACESSO, "motivo": recusa, "em": hoje, "conta_como_consultado": False}
         registrar_lacuna(f"DOE-{uf} (canal 2)", recusa, canal="DOE", camada=1)
         print(f"  {uf}: {recusa} — canal 2 sem acesso automático, lacuna declarada (não conta como consultado)")
-    if lidas:
+    # Recusa no meio do ciclo (MG lê o recente e recusa o resto) não é verificação do diário: o livro de
+    # fontes e o log dizem o que houve, e a lacuna segue declarada (auditoria de lacuna, 17/10/2026).
+    decisao = "registro" if com_termo else ("acesso recusado" if recusa else "consultado sem achado")
+    if lidas and not recusa:
         # 14/10/2026 (ciclo de 15 dias): o diário da UF foi LIDO, edição por edição — é verificação
         # real por DOE, e o livro de fontes a registra como o canal 1 já registra (`DOE/<UF>`).
         from coletores_base import marcar_fonte_consultada, referencia_ibge
@@ -649,14 +658,14 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     gravar(arquivo, registro)
     indice["atualizado_em"] = hoje
     gravar(INDICE, indice)
-    log_busca("DOE", 1, [rota["detalhe"]], "registro" if com_termo else "consultado sem achado",
+    log_busca("DOE", 1, [rota["detalhe"]], decisao,
               nivel="estadual", uf=uf, n_resultados=com_termo,
               resultados=f"canal 2 em {uf} ({rota['tipo']}): {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     print(f"  {uf}: {lidas} edição(ões) lida(s), {com_termo} com termo de saúde")
     if interrompido:
         raise KeyboardInterrupt
     return {"uf": uf, "modo": registro["canal2"]["modo"], "lidas": lidas, "com_termo": com_termo,
-            "decisao": "registro" if com_termo else "consultado sem achado"}
+            "decisao": decisao}
 
 
 # Padroes de endereco que as plataformas de diario costumam usar, para a PRIMEIRA tentativa. Cada
