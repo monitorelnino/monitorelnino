@@ -1,0 +1,693 @@
+https://www.sinj.df.gov.br/sinj/ResultadoDePesquisa?tipo_pesquisa=geral&all=emerg%C3%AAncia+sa%C3%BAde+decreto
+<!DOCTYPE html>
+<html>
+<head><meta content="IE=Edge" http-equiv="X-UA-Compatible"/><meta content="pt-br" http-equiv="Content-Language"/><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><meta content="O SINJ é uma ferramenta que possibilita a pesquisa de leis, portarias, decretos e outras normas jurídicas e atos do Executivo e Legislativo do DF." name="description"/><meta content="sinj, decreto, lei, resolução, portaria, distrito federal" name="keywords"/><meta content="index,follow" name="robots"/><meta content="index,follow" name="googlebot"/><meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/><link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Jquery-ui/jquery-ui.min.css />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/jquery.dataTables.min.css />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/dataTables.responsive.css />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/stacktable.css />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/table_jui.css />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/autocompletelight.css?4.4.00134 />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/jquery.modalLight.css?4.4.00134 />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/default.css?4.4.00134 />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Styles/sinj.css?4.4.00134 />
+    <link rel="stylesheet" type="text/css" href=http://www.sinj.df.gov.br/sinjpadrao/Themes/cinza/css/colors.css?4.4.00134 />
+
+    <script type="text/javascript" charset="utf-8">   var _urlApps = 'Criar_Chave_apps_No_Config';  var _urlPadrao = 'http://www.sinj.df.gov.br/sinjpadrao';  var _urlPadrao_imagens = 'http://www.sinj.df.gov.br/sinjpadrao/Imagens';  var _ambiente = 'PR';  var _aplicacao = 'PORTAL';  var _versao = '4.4.00134';  var _extensoes = ['html','pdf'];  var _ambitos = [{"id_ambito":1,"nm_ambito":"Distrito Federal","_metadata":{"id_doc":1,"dt_doc":"27/04/2015 13:39:06","dt_last_up":"28/04/2015 13:55:31","dt_del":null,"dt_idx":null}},{"id_ambito":2,"nm_ambito":"Federal","_metadata":{"id_doc":2,"dt_doc":"27/04/2015 13:39:15","dt_last_up":"28/04/2015 13:56:11","dt_del":null,"dt_idx":null}},{"id_ambito":3,"nm_ambito":"Estadual","_metadata":{"id_doc":3,"dt_doc":"27/04/2015 13:39:21","dt_last_up":"28/04/2015 13:56:50","dt_del":null,"dt_idx":null}},{"id_ambito":4,"nm_ambito":"Municipal","_metadata":{"id_doc":4,"dt_doc":"27/04/2015 13:39:28","dt_last_up":"28/04/2015 14:02:38","dt_del":null,"dt_idx":null}}];  var _orgaos_cadastradores = [{"id_ambito":1,"nm_ambito":"Distrito Federal","_metadata":{"id_doc":1,"dt_doc":"27/04/2015 13:39:06","dt_last_up":"28/04/2015 13:55:31","dt_del":null,"dt_idx":null}},{"id_ambito":2,"nm_ambito":"Federal","_metadata":{"id_doc":2,"dt_doc":"27/04/2015 13:39:15","dt_last_up":"28/04/2015 13:56:11","dt_del":null,"dt_idx":null}},{"id_ambito":3,"nm_ambito":"Estadual","_metadata":{"id_doc":3,"dt_doc":"27/04/2015 13:39:21","dt_last_up":"28/04/2015 13:56:50","dt_del":null,"dt_idx":null}},{"id_ambito":4,"nm_ambito":"Municipal","_metadata":{"id_doc":4,"dt_doc":"27/04/2015 13:39:28","dt_last_up":"28/04/2015 14:02:38","dt_del":null,"dt_idx":null}}];  var _notifiqueme = null;  var _nm_cookie_push = 'neoLightSinjPush';  try {      if (!(((typeof (JSON) !== 'undefined') && (typeof (JSON.stringify) === 'function') && (typeof (JSON.parse) === 'function'))) || (/MSIE [567]/.test(navigator.userAgent))) {        var s = document.createElement('script');        s.type = 'text/javascript';        s.async = true;        s.src = 'http://www.sinj.df.gov.br/sinjpadrao/Scripts/json3.min.js' ;        document.getElementsByTagName('head')[0].appendChild(s);     }   } catch (e) {      top.document.location.href = '/errorjson.html';  } </script>
+
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.form.min.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/on_error.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/liblight.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/stacktrace.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.ajaxLight.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.autocompleteLight.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jMenu.jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.modalLight.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/login_notifiqueme.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/funcoes_sinj.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/stacktable.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.dataTablesLight.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/columns_datatables_pesquisa.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/platform.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/tooltip.js"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/funcoes_fale_conosco.js?4.4.00134"></script>
+    <script type="text/javascript" src="http://www.sinj.df.gov.br/sinjpadrao/html2canvas-1.4.1/html2canvas.min.js"></script>
+
+    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js?onload=onLoadCaptchaCallback' async defer></script>
+
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "hfuopqtz0f");
+    </script>
+
+	<link rel="shortcut icon" type="image/x-icon" href=http://www.sinj.df.gov.br/sinjpadrao/Imagens/favicon.png />
+
+    <title>
+	
+</title><script type="text/javascript">
+
+        var onLoadCaptchaCallback = function () {
+            $('#div_captcha').remove();
+            $('#form_fale_conosco input[name=tpv]').val('g');
+        }
+
+        function fAdaptive() {
+            if ($('div.right-top').offset().left < $('div.logo').width()) {
+                $('div.right-top').addClass('mobile');
+            }
+            else {
+                $('div.right-top').removeClass('mobile');
+            }
+            if ($(document).scrollTop() > 72 && window.innerWidth >= 800) {
+                $('#div_top').addClass('fix');
+            }
+            else {
+                $('#div_top').removeClass('fix');
+            }
+        }
+
+        $(document).ready(function () {
+            if (history.length <= 0) {
+                $('#div_voltar').hide();
+            }
+            $('#span_versao').text(_versao);
+
+            var onShowTop = $('#slave').hasClass('on-show-top');
+            $('.ancora a').click(function () {
+                var alvo = $(this).attr('href').split('#').pop();
+                if (IsNotNullOrEmpty(alvo)) {
+                    $('html, body').animate({ scrollTop: ($('#' + alvo).offset().top - 113) }, 1000);
+                }
+                else {
+                    $('html, body').animate({ scrollTop: 0 }, 500);
+                }
+                return false;
+            });
+
+            $('#lbOK').click(function () {
+                if (Pesquisar('form_pesquisa_master')) {
+                    $("#form_pesquisa_master").submit();
+                }
+            });
+
+            var h_body = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+            var h_page = window.innerHeight;
+            var w_body = Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);
+
+            $(document).scroll(function () {
+                if (h_body > h_page && onShowTop) {
+                    $('#show_top').show();
+                }
+                else {
+                    $('#show_top').hide();
+                }
+                fAdaptive();
+            });
+            fAdaptive();
+            $(window).resize(function () {
+                fAdaptive();
+            });
+
+            // Se o clique for na parte do conteúdo da página, o menu não deve estar aberto. (mobile)
+            $('div.content').click(function () {
+                $('#div_top .menu').removeClass('open');
+            });
+
+            $('[data-toggle="tooltip"]').tooltip({ container: "#div_tooltip", trigger: "hover" });
+
+            $('#nr_cpf_fale_conosco').attr('onKeypress', 'mascara(this,mcpf)');
+            $('#nr_telefone_fale_conosco').attr('onKeypress', 'mascara(this,mtel)');
+
+        });
+
+        function clickTopoFaleConosco(_ch) {
+
+            if ($('#div_fale_conosco').hasClass('closed')) {
+                if (!IsNotNullOrEmpty(_ch)) {
+                    html2canvas(document.body, {
+                        onrendered: function (canvas) {
+                            $('#form_fale_conosco input[name=print]').val(canvas.toDataURL('image/png'));
+                        }
+                    });
+                }
+                $('#div_fale_conosco').removeClass('closed');
+                $('#div_fale_conosco').addClass('opened');
+
+            }
+            else {
+                closeFaleConosco();
+            }
+        }
+
+        function closeFaleConosco() {
+            $('#div_fale_conosco').addClass('closed');
+            $('#div_fale_conosco').removeClass('opened');
+        }
+    </script>
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/jquery.highlight.js"></script>
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/funcoes_norma.js?4.4.00134"></script>
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Scripts/funcoes_resultado_de_pesquisa.js?4.4.00134"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.sinj.df.gov.br/sinjpadrao/Captcha/css/epicaptcha.css?4.4.00134" />
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/Captcha/js/epicaptcha.js?4.4.00134"></script>
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/ckeditor/adapters/jquery.js"></script>
+
+    <script type="text/javascript" language="javascript" src="http://www.sinj.df.gov.br/sinjpadrao/jsPDF-2.5.1/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js?onload=onLoadCaptcha_enviar_relatorio_emailCallback' async defer></script>
+
+    <script type="text/javascript">
+        var onLoadCaptcha_enviar_relatorio_emailCallback = function () {
+            $('#div_captcha_enviar_relatorio_email').remove();
+            $('#form_enviar_relatorio_email input[name=tpv]').val('g');
+        }
+
+        window.html2canvas = html2canvas;
+        window.jsPDF = window.jspdf.jsPDF;
+
+        var date_now = '19/10/2026';
+
+        $(document).ready(function () {
+
+        });
+
+    </script>
+
+    <style type="text/css">
+        #tbody_termos_modal {
+            background-color: red !important;
+        }
+
+        .dataRelatorio {
+            font-weight: bold;
+            float: right;
+        }
+
+        #img_import {
+            border-color: red;
+        }
+
+        #modal_indexacao caption {
+            margin-top: 10px;
+        }
+
+        @media (max-width:640px) {
+            #modal_indexacao caption {
+                font-size: 20px !important;
+            }
+        }
+    </style>
+
+</head>
+<body class="master">
+	<!--[if lte IE 9]><script>alert('Esse site não é compatível com o seu navegador. <br/>Atualize seu navegador ou instale um mais moderno.');</script><![endif]--><div class="page">
+        <div id="div_top" class="top">
+            <div class="art-top">
+                <div class="right-top">
+                    <span id="span_versao"></span>
+                </div>
+                <div class="logo" style="display: inline-block;">
+                    <a href="./" title="Página Inicial"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/logo_sinj.png" alt="sinj" /></a>
+                </div>
+                <div class="orgao" style="display: inline-block; top:0px; right: 300px; position: absolute;">
+                    <span style="font-weight:bold; vertical-align:bottom;">Cooperação técnica:</span>
+                    <a href="https://www.cl.df.gov.br/" target="_blank" title="Câmara Legislativa do Distrito Federal"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/cldf.jpg" alt="sinj" height="65" width="auto" style="margin: 0 20px 0 20px"/></a>
+                    <a href="http://www.pg.df.gov.br/" target="_blank" title="Procuradoria-Geral do Distrito Federal"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/pgdf.jpg" alt="sinj" height="65" width="auto" style="margin: 0 20px 0 20px"/></a>
+                    <a href="https://www.economia.df.gov.br/" target="_blank" title="Secretaria de Planejamento, Orçamento e Administração"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/seec.png" alt="sinj" height="65" width="auto" style="margin: 0 20px 0 20px"/></a>
+                    <a href="https://www.tc.df.gov.br/" target="_blank" title="TCDF"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/Marca_TCDF_Vertical_Azul.png" alt="sinj" height="65" width="auto" style="margin: 0 20px 0 20px"/></a>
+                </div>
+                <div class="top-bottom">                    
+                    <div class="top-bottom-left">
+                        <div id="div_menu_lateral_mobile" >
+                            <a href="javascript:Nada();" onclick="javascript:ToggleMenu();" >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top-bottom-center">
+                        <div class="top-search">
+                            <div>
+                                <form id="form_pesquisa_master" name="formPesquisaMaster" action="./ResultadoDePesquisa" method="get">
+                                    <div>
+                                        <input name="tipo_pesquisa" type="hidden" value="geral" />
+                                        <input class="ui-corner-all"  type="text" id="txtBusca" name="all" />
+                                        <button type="submit" class="fl" title="Pesquisar" >
+                                            <img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico-lupa-p_green.png" alt="pesquisar" />
+                                        </button>
+                                        <a href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title='Pesquisa rápida, mesma característica da Pesquisa Geral.' style="float:left; padding:4px 1px 4px 1px;"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_help.png" alt="info" width="12px" height="12px" /></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-bottom-right">
+                        <div id="menuUser" class="user">
+                            
+                        </div>
+                    </div>
+                    <form method="post" action="ResultadoDePesquisa?tipo_pesquisa=geral&amp;all=emerg%C3%AAncia+sa%C3%BAde+decreto" id="form_menu">
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEMDAwQAgAADgEMBQAMEAIAAA4BDAUADBACAAAOAQwFBAwQAg8BAQdjb250ZW50ATtzaW5qLCBkZWNyZXRvLCBsZWksIHJlc29sdcOnw6NvLCBwb3J0YXJpYSwgZGlzdHJpdG8gZmVkZXJhbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM7yw0T7YNiezXb5eMLHdrVFx7E8QnCrAhxqfzyhnSAy" />
+</div>
+
+                        <div class="menu">
+                            <ul id="navPage" class="ul-menu">
+                                <li id="li_pesquisas"><a title="Pesquisas" class="lnkmenu" id="aPesquisas" href="./">Pesquisas  </a>          </li>
+                                
+                                <li id="li_historico">              <a title="Histórico de Pesquisas" class="lnkmenu" id="aHistorico" href="./HistoricoDePesquisa">Histórico</a></li>
+                                <li id="li_notifiqueme">            <a title="Receba e-mails sobre normas e diários oficiais" class="lnkmenu" id="aNotifiqueme" href="./Notifiqueme">Notifique-me</a></li>
+                                <li id="li_favoritos">              <a title="Meus Favoritos" class="lnkmenu" id="aFavoritos" href="./Favoritos">Meus Favoritos</a></li> <li id="li_fale_conosco">           <a title="Fale Conosco" class="lnkmenu" id="aFaleConosco" href="./FaleConosco">Fale Conosco</a></li>
+                                <li id="li_contato">                <a title="Contatos" class="lnkmenu" id="aContatos" href="./Contatos">Contatos</a></li>
+                                <li id="li_tutorial">               <a title="Tutorial" class="lnkmenu" id="aTutorial" href="./Tutorial">Tutorial</a></li>
+                                
+                                <li id="li_Sobre"><a title="Sobre"             class="lnkmenu" id="aSobre"       href="./SinjSobre.aspx">Sobre</a></li>
+                                
+                                <li id="li_origin"><a title="Histórico das Estruturas Administrativas" class="lnkmenu" id="aOrigin" href="./HistoricoDeOrigem">Histórico das Estruturas Administrativas</a></li>
+                            </ul>
+                            <div id="div_user_notifiqueme">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="div_body" class="body">
+            <div class="inner-body">
+                <div id="div_communication" st="0" title="manutencao1" style="display:none; font-size:14px; font-family: Trebuchet MS, Verdana, Arial; text-align: center; background-color: #EEE; width:650px; margin:auto;">
+                    <button class="clean" onclick="closeCommunication();" title="Fechar o comunicado" style="float:right; padding:0px; font-weight: bold; background: #DDD; width: 15px; height: 15px; border-radius:0px;">x</button>
+                    <h2 style="font-size: 18px; color:#DD0000;">COMUNICADO</h2>
+                    <span>No dia 16/04/2021, sexta-feira, às 20h, para a realização de manutenção, o SINJ ficará indisponível. Estaremos de volta em 48 horas. Por favor, aguarde!.</span>
+                </div>
+                <div id="div_voltar" class="w-100-pc text-right"><a href="javascript:void(0);" onclick="javascript:voltar()" title="Voltar" class="back"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_back.png" alt="&lt;" />&nbsp;Voltar</a></div>
+                <div class="content">
+                    
+    <div>
+        <div class="divIdentificadorDePagina table w-100-pc">
+            <div class="line" style="display: flex; justify-content: space-between;">
+                <div class="column">
+                    <label>.: Resultado de Pesquisa</label>
+                </div>
+                <div class="column">
+                    <div id="div_ds_pesquisa" style="text-align: right;"><span id="span_ds_historico"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal_texto" style="display: none;">
+            <div class="loading" style="display: none;"></div>
+            <div class="notify" style="display: none;"></div>
+            <div class="text"></div>
+        </div>
+
+        <div>
+            <div style="height: 32px;">
+                <a href="javascript:void(0);" onclick="javascript:RelatorioPDF();" class="fr" title="Salvar planilha" id="a_relatorio">
+                    <img alt="xls" src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_xls_p.png" /></a>
+                <a href="javascript:void(0);" onclick="javascript:EnviarRelatorioEmail(); " class="fr" title="Enviar Relatório" id="enviar_relatorio">
+                    <img alt="xls" src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico-mail.png" /></a>
+                <a href="javascript:void(0);" onclick="javascript:RelatorioHtml(event);" class="fr" title="Imprimir Relatorio" id="a_relatoriaHtml" style="display: inline-block;">
+                    <img id="img_import" width="30" height="32" alt="xls" src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_import_file.png" /></a>
+            </div>
+
+            <form id="form_highlight" name="form_highlight" method="post" action="#" onsubmit="return fn_submit_highlight()">
+                <div id="tabs_pesquisa" class="tabs_datatable"></div>
+                <input type="hidden" name="highlight" id="highlight" value="" />
+            </form>
+        </div>
+    </div>
+
+    <div id="modal_email_relatorio" class="modal" style="display: none;">
+        <form id="modal_notifiqueme" name="modal_notifiqueme" action="#" method="post">
+            <div class="table w-100-pc">
+                <div class="line">
+                    <div class="column w-100-pc">
+                        <div class="cell">
+                            <label>Alteração dos dados do notifique-me feita com sucesso!</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="modal_indexacao" style="display: none;">
+        <div class="table w-100-pc">
+            <div class="line">
+                <div class="column w-30-pc">
+                    <div class="cell fr">
+                        <label></label>
+                    </div>
+                </div>
+                <div class="column w-70-pc">
+                    <div class="cell w-100-pc">
+                        <!--<!--<input type="checkbox" onclick="javascript:fnAutocompleteVocabulario(this);-->
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <div class="column w-30-pc">
+                    <div class="cell fr">
+                        <label></label>
+                    </div>
+                </div>
+                <!--<!--<div class="column w-70-
+                         <div id="div_autocomplete_termo_modal" class="cell w-100
+                              <input id="ch_termo_modal" type="hidden" value
+                               <input id="ch_tipo_termo_modal" type="hidden" valu
+                                <input autofocus id="nm_termo_modal" type="text" value="" class="w-80-pc" /><a title="Listar" id="a_ter
+                                 <a href="javascript:void(0);" onclick="javascript:AdicionarTermo();"><img valign="absmiddle" alt="Adicionar" src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_add_p.png
+                          
+                      -->
+            </div>
+            <div class="line">
+                <div class="column w-100-pc">
+                    <div class="cell w-100-pc">
+
+
+                       
+                        <div>
+                            <h3></h3>
+                        </div>
+
+                        <span class="dataRelatorio">Data 19\10\2026</span>
+                        <a href="javascript:void(0);" onclick="javascript:fffuncao_pdf();" class="fr" style="margin-right: 10px" title="Salvar Relatorio" id="relatoriaHtmlPDF">
+                            <img alt="xls" src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/pdff.png" /></a>
+                        <!--<!--<button type="button" class="btn btn-primary" onclick="javascript:makePDFImprimirimir</but-->
+                       
+
+                        <table class="mauto w-90-pc">
+                            <caption style="font-size: 23px; background-color: white !important">.: Relatorio de pesquisa</caption>
+                            <thead>
+                                <tr>
+                                    <th style="background-color: white !important; color: black;" id="a_thead_termos_modal"></th>
+                                    <!--<!--<th style="width:40
+                                         -->
+                                </tr>
+                            </thead>
+                            <tbody id="a_tbody_termos_modal" class="a_tbody_termos_modal">
+                                <tr class="tr_vazia">
+                                    <td colspan="2"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify" style="display: none;"></div>
+    </div>
+
+    <div id="modal_enviar_relatorio_email" class="modal" style="display: none; overflow: hidden;">
+
+        <form id="form_enviar_relatorio_email" name="formEnviarRelatorioEmail" action="#" method="POST">
+            <input type="hidden" id="bbusca" name="bbusca" />
+            <input type="hidden" id="b" name="b" />
+            <input type="hidden" id="tp" name="tp" />
+            <input type="hidden" id="all" name="all" />
+            <input type="hidden" id="cesta" name="cesta" />
+            <input type="hidden" id="search" name="search" />
+            <input type="hidden" id="tipo_pesquisa" name="tipo_pesquisa" />
+            <input type="hidden" id="link" name="link" />
+            <input type="hidden" id="registros" name="registros" />
+            <input type="hidden" id="ch_tipo_norma" name="ch_tipo_norma" />
+            <input type="hidden" id="argumento" name="argumento" />
+            <input type="hidden" id="st_habilita_pesquisa" name="st_habilita_pesquisa" />
+            <input type="hidden" id="st_habilita_email" name="st_habilita_email" />
+            <input type="hidden" id="nm_orgao_cadastrador" name="nm_orgao_cadastrador" />
+            <input type="hidden" id="nm_tipo_norma" name="nm_tipo_norma" />
+            <input type="hidden" id="nr_norma" name="nr_norma" />
+            <input type="hidden" id="ano_assinatura" name="ano_assinatura" />
+            <input type="hidden" id="ch_orgao" name="ch_orgao" />
+            <input type="hidden" id="ch_hierarquia" name="ch_hierarquia" />
+            <input type="hidden" id="sg_hierarquia_nm_vigencia" name="sg_hierarquia_nm_vigencia" />
+            <input type="hidden" id="origem_por" name="origem_por" />
+            <input type="hidden" id="nm_orgao_cadastrador" name="nm_orgao_cadastrador" />
+            <input name="tpv" type="hidden" value="c" />
+
+            <div class="table">
+                <div id="notify_enviar_relatorio" class="notify_relatorio_pesquisa" style="display: none;"></div>
+                <div class="line">
+                    <div class="column w-30-pc">
+                        <div class="cell fr">
+                            <label style="margin-right: 10px">E-Mail:</label>
+                        </div>
+                    </div>
+                    <div class="column w-70-pc">
+                        <div class="cell w-200-pc">
+                            <input label="E-Mail" type="text" obrigatorio="sim" id="email" name="email" class="w-200-pc" style="max-width: 100%;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="column w-30-pc">
+                        <div class="cell fr">
+                            <label style="margin-right: 10px">Formato:</label>
+                        </div>
+                    </div>
+                    <div class="column w-70-pc">
+                        <input type="radio" label="Formato" obrigatorio="sim" id="pdf" name="format" style="max-width: 100%;" value="pdf" checked />PDF
+                        <input type="radio" label="Formato" obrigatorio="sim" id="xls" name="format" style="max-width: 100%; margin-left: 5px;" value="xls" />XLS
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="column w-100-pc">
+                        <div id="div_captcha_enviar_relatorio_email" class="line">
+                            <div class="column">
+                                <div class="cell fl">
+                                    <label>*Digite os caracteres da imagem:</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="loading_capctha" style="display: none;">
+                                    <img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/loading003300.gif" width="25" />
+                                </div>
+                                <div class="column captcha"></div>
+                            </div>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6LfzvVwUAAAAAHh_0bcm-_RFp7Xmn0fsf2QKLhWX"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <form id="form_relatorio" name="form_relatorio" action="./RelatorioDePesquisa.aspx" method="post" target="iframe_relatorio"></form>
+    <iframe name="iframe_relatorio" src="" style="display: none;"></iframe>
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div id="show_top" class="ancora" >
+        <a href="#" title="topo"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/show_top.png" alt="topo" /></a>
+    </div>
+  
+    <span class="info">
+        <script type="text/javascript">document.write(version_browser())</script>
+        <br />
+        PR.4.4.00134.1:91
+    </span>
+	<div id="super_loading" style="display:none;"><div class="block"></div><div class="wait"><img alt="carregando..." src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/loading003300.gif"  width="50px" height="50px"/><br />Aguarde...</div></div>
+    <div id="div_tooltip"></div>
+    <div id="div_fale_conosco" class="fale_conosco closed">
+        <button type="button" class="clean topo" onclick="clickTopoFaleConosco()">Fale Conosco <img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_min.png" class="min"/><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_max.png" class="max"/></button>
+        <div class="corpo">
+            <form id="form_fale_conosco" name="form_fale_conosco" method="post" action="#" onsubmit="return enviarMsgFaleConosco('form_fale_conosco');" >
+				<input id="ch_chamado_fale_conosco" name="ch_chamado" type="hidden" value="" />
+				<input name="tpv" type="hidden" value="c" />
+                <input name="print" type="hidden" value="" />
+                <div class="table w-100-pc">
+                    <div class="head">
+                        <div>
+                            <h2>Como podemos te ajudar?</h2>                                            
+                        </div>
+                    </div>
+                    <div class="line resposta">
+                        <div class="column">
+                            <div class="cell fl">
+                                <p style="width: 95%; text-align: justify;">Este serviço <b>não</b> é destinado a fornecer assistência ou consultoria jurídicas (resolução de
+                                casos concretos). Tal serviço se destina ao registro de sugestões, críticas, solicitação de
+                                atualizações de atos e correções do conteúdo disponibilizado no Sistema. Nos pedidos pelo
+                                Fale Conosco, forneça o máximo de informações para que o resultado da pesquisa seja o
+                                mais preciso possível.</p>
+                                <br>
+                                <p>Preencha os campos para dirimir dúvidas, registrar elogios, críticas e sugestões.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line resposta">
+                        <div class="column">
+                            <div class="cell fl">
+                                <label>*Nome:</label>
+                            </div>
+                        </div>
+                        <div class="column w-100-pc">
+							<input  label="Nome" obrigatorio="sim" id="nm_user_fale_conosco" name="nm_user" type="text" value="" class="w-60-pc" placeholder="Digite seu nome" />
+                        </div>
+                    </div>
+                    <div class="line resposta">
+                        <div class="column">
+                            <div class="cell fl">
+                                <label>*E-mail:</label>
+                            </div>
+                        </div>
+                        <div class="column w-100-pc">
+							<input label="E-mail" obrigatorio="sim" specials="email" id="ds_email_fale_conosco" name="ds_email" type="text" value="" class="w-60-pc" placeholder="Digite seu e-mail" />
+                        </div>
+                    </div>
+                    <div class="line resposta">
+                        <div class="column">
+                            <div class="cell fl">
+                                <label>Telefone:</label>
+                            </div>
+                        </div>
+                        <div class="column w-100-pc">
+							<input id="nr_telefone_fale_conosco" name="nr_telefone" type="text" value="" class="w-60-pc" placeholder="Digite seu telefone" />
+                        </div>
+                    </div>
+                    <div class="line resposta">
+                        <div class="column">
+                            <div class="cell fl">
+                                <label>*Assunto:</label>
+                            </div>
+                        </div>
+                        <div class="column w-100-pc">
+                            <select id="ds_assunto_fale_conosco" name="ds_assunto" obrigatorio="sim" label="Assunto">
+                                <option value="">Escolha um assunto...</option>
+                                <option value="Dúvida">Dúvida</option>
+                                <option value="Sugestão">Sugestão</option>
+                                <option value="Crítica">Crítica</option>
+                                <option value="Elogio">Elogio</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="column">
+                            <div class="cell fl">
+                                <label>*Mensagem:</label>
+                            </div>
+                        </div>
+                        <div class="column w-100-pc">
+                            <textarea label="Mensagem" obrigatorio="sim" id="ds_msg_fale_conosco" name="ds_msg" class="w-80-pc" rows="5" placeholder="Escreva aqui a sua mensagem" ></textarea>
+                        </div>
+                    </div>
+                    <div id="div_captcha" class="line">
+                        <div class="column">
+                            <div class="cell fl">
+                                <label>*Digite os caracteres da imagem:</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="column w-100-pc">
+                                <div class="loading_capctha" style="display:none;"><img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/loading003300.gif" width="25" /></div>
+                                <div class="column captcha"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <div class="column w-100-pc">
+                            <div class="captcha-fale-conosco g-recaptcha" data-sitekey="6LfzvVwUAAAAAHh_0bcm-_RFp7Xmn0fsf2QKLhWX"></div>
+                        </div>
+                    </div>
+
+                    <div class="line">
+                        <div class="column w-100-pc text-center">
+                            <button id="button_submit_form_fale_conosco">
+                                <img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_check.png" width="20px" height="20" /> Enviar
+                            </button>
+                            <button type="button" onclick="clickTopoFaleConosco()">
+                                <img src="http://www.sinj.df.gov.br/sinjpadrao/Imagens/ico_close.png" width="20px" height="20" /> Fechar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+             m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-20776101-1', 'auto');
+        ga('create', 'UA-90051523-1', 'auto', 'brlightTracker');
+        ga('send', 'pageview');
+        ga('brlightTracker.send', 'pageview');
+    </script>
+     
+    <script type="text/javascript">
+        
+        jQuery(document).ready(adicionaEventoFiltroBuscaNorma);
+        
+        function adicionaEventoFiltroBuscaNorma() {
+            if ($('#datatable_normas_filter').find("input[type='search']").is(':visible')) {
+                var campoSearchFiltroNorma = $('#datatable_normas_filter').find("input[type='search']");
+                
+                campoSearchFiltroNorma.on('input', (function(){
+                    var normas = $('#datatable_normas_wrapper').find('tbody .table');
+
+                    for(var i = 0; i < normas.length; i++) {
+                        var norma = $(normas[i]).parent().parent();
+                        var textoNorma = norma.text().replace('Origem:', '').replace('Ementa:', '').replace(/Texto Integral:(.*)/, '').toLowerCase().replace(/[áàâã]/g,'a').replace(/[éèê]/g,'e').replace(/[óòôõ]/g,'o').replace(/[úùû]/g,'u').replace(/[ç]/g,'c').replace(/[íì]/g,'i');
+                        var textoDigitado = campoSearchFiltroNorma.val().toLowerCase().replace(/[áàâã]/g,'a').replace(/[éèê]/g,'e').replace(/[óòôõ]/g,'o').replace(/[úùû]/g,'u').replace(/[ç]/g,'c').replace(/[íì]/g,'i');
+                        
+                        if (textoNorma.includes(textoDigitado)) {
+                            norma.css('display', 'table-row');
+                        } else {
+                            norma.css('display', 'none');
+                        }
+                    }
+                }));
+            } else {
+               setTimeout(adicionaEventoFiltroBuscaNorma, 50);
+            }
+        };
+    </script>        
+        
+    <script type="text/javascript">
+            jQuery(document).ready(adicionaEventoFiltroBuscaDiario);
+            
+            function adicionaEventoFiltroBuscaDiario() {
+                if ($('#datatable_diarios_filter').find("input[type='search']").is(':visible')) {
+                    var campoSearchFiltroDiario = $('#datatable_diarios_filter').find("input[type='search']");
+                    
+                    campoSearchFiltroDiario.on('input', (function(){
+                        var diarios = $('#datatable_diarios_wrapper').find('tbody .table');
+
+                        for(var i = 0; i < diarios.length; i++) {
+                            var diario = $(diarios[i]).parent().parent();
+                            var textoDiario = diario.text().replace('Origem:', '').replace('Ementa:', '').replace(/Texto Integral:(.*)/, '').toLowerCase().replace(/[áàâã]/g,'a').replace(/[éèê]/g,'e').replace(/[óòôõ]/g,'o').replace(/[úùû]/g,'u').replace(/[ç]/g,'c').replace(/[íì]/g,'i');
+                            var textoDigitado = campoSearchFiltroDiario.val().toLowerCase().replace(/[áàâã]/g,'a').replace(/[éèê]/g,'e').replace(/[óòôõ]/g,'o').replace(/[úùû]/g,'u').replace(/[ç]/g,'c').replace(/[íì]/g,'i');
+                            if (textoDiario.includes(textoDigitado)) {
+                                diario.css('display', 'table-row');
+                            } else {
+                                diario.css('display', 'none');
+                            }
+                        }
+                    }));
+                } else {
+                   setTimeout(adicionaEventoFiltroBuscaDiario, 50);
+                }
+            };
+        </script>
+        
+ </body>
+</html>
