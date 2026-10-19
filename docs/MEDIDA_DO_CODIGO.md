@@ -2,15 +2,15 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **97.825 linhas** em **326 arquivos** .py/.js; **34 workflows**.
+- **97.794 linhas** em **326 arquivos** .py/.js; **34 workflows**.
 - **90 comandos de portão**: dados/portão 27, paginas/autoteste 5, paginas/portão 58.
-- **154 nomes de função** definidos em mais de um arquivo.
+- **151 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 51744 |
+| `(raiz)` | 51713 |
 | `scripts` | 38508 |
 | `assets` | 6860 |
 | `arquivo` | 445 |
@@ -51,7 +51,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | função | arquivos | onde |
 |---|---:|---|
 | `problemas` | 30 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
-| `coletar` | 24 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
+| `coletar` | 25 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
 | `self_test` | 15 | `atualizar_marcos_severidade.py`, `classificador_natureza.py`, `detectar_marcos_federais.py`, `gerar_dados_abertos.py` … |
 | `gerar` | 13 | `classificar_planos_municipais.py`, `gerar_blog.py`, `gerar_card_municipios.py`, `gerar_contadores_financiamento.py` … |
 | `montar` | 13 | `buscar_protocolo_calor.py`, `desfechos_sus.py`, `gerar_card_municipios.py`, `gerar_erros_localizacao.py` … |
