@@ -586,6 +586,22 @@
       ],
       "funcao_narrativa": "onde o caminho do reconhecimento ao recurso parou",
       "metodologia": "Primeiro reconhecimento no consolidado; sem portaria de recurso em recursos_liberados.json; mais de 30 dias até a data do consolidado."
+    },
+    "saude.html#boxDesfecho": {
+      "tipo": "série do desfecho escolhido sobre a faixa habitual para a época",
+      "pergunta_que_responde": "Como a série do desfecho escolhido se comporta no território escolhido, diante da faixa habitual das mesmas épocas de 2019 a 2025?",
+      "dimensao_da_preparacao": "o que os órgãos de saúde registram",
+      "universo": "o desfecho escolhido na grade, no território escolhido no seletor; arquivo da forma comum de `data/saude_desfechos/`",
+      "unidade_de_analise": "período da cadência do desfecho (mês ou semana)",
+      "territorio": "Brasil ou a UF escolhida",
+      "periodo": "a série inteira do arquivo, desde 2019",
+      "variavel_principal": "valor do desfecho por 100 mil habitantes, por período",
+      "denominador": "população do Censo 2022 do território",
+      "fonte": "a declarada no arquivo do desfecho (SINAN, SISAB, SIVEP-Gripe, Registro Civil, conforme o caso); IBGE — Censo 2022",
+      "metodologia": "Mediana e p90 das mesmas épocas de 2019 a 2025, calculados da própria série por `desfechos_sus.py`. Período sem valor fica sem ponto: ausência de registro não é zero.",
+      "conclusoes_permitidas": "comparar o período com a faixa das mesmas épocas dos anos anteriores, no mesmo território",
+      "conclusoes_nao_permitidas": "atribuir os casos ao El Niño; comparar territórios entre si pela figura; ler os períodos mais recentes como queda, porque eles ainda recebem registro",
+      "funcao_narrativa": "mostra o que é registrado, sem ligar ao El Niño"
     }
   }
 }
