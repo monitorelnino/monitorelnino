@@ -90,6 +90,10 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 
 Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.
 
+## 2026-10-17 · #841 · Óbitos registrados na forma comum dos desfechos; um só leitor .dbc
+
+`coletar_obitos.py` grava `saude_desfechos/obitos.json` pela forma comum: óbitos registrados em cartório por UF e mês desde jan/2019, por 100 mil, faixa habitual sem 2020 e 2021 e cortes congelados; depois da primeira rodada pede só os três últimos meses. No executor: 94 meses, 27 UFs. `coletar_sih.py` passa a usar o leitor e o FTP do `coletar_datasus_dbc.py`; saem as duas dependências que o #830 trouxe. O arquivo que a página lê não muda.
+
 ## 2026-10-17 · #842 · Ensaio da noite confere o isolamento dos autotestes pelo portão único
 
 O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.
