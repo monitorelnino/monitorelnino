@@ -20,6 +20,7 @@ Uso:  python3 coletar_orientacoes_oficiais.py              # rede (runner)
       python3 coletar_orientacoes_oficiais.py --autoteste  # sem rede e sem escrever em data/
 """
 import io
+import itertools
 import json
 import re
 import sys
@@ -50,7 +51,7 @@ FONTES = [  # (família, órgão, URL)
 ]
 # A aba de dengue ainda não tem item no catálogo: a página oficial entra com as frases que tratam do que o
 # guia vai orientar (água parada, recipientes, lixo, sintomas, quando procurar atendimento).
-CHAVES_DENGUE = ("agua parada", "agua acumulada", "recipiente", "tamp", "lixo", "sintoma", "procure", "pneu", "caixa", "calha", "repelente")
+CHAVES_DENGUE = ("agua parada", "agua acumulada", "recipiente", "tamp", "lixo", "sintoma", "procur", "pneu", "caixa", "calha", "repelente")
 MINIMO_DE_COBERTURA = 0.7   # fração das palavras do item que a frase da fonte precisa ter
 
 
@@ -100,12 +101,25 @@ def trecho_que_sustenta(item: str, texto: str):
 
 
 def trechos_de_dengue(texto: str) -> list:
+    """Frases de orientação da página de dengue e, sob cada cabeçalho com dois-pontos que as palavras-chave
+    pegam ("Sinais e sintomas de alerta:"), os itens da lista que o segue, que são curtos demais para `frases`.
+    A lista acaba no primeiro parágrafo longo ou no cabeçalho seguinte. Função pura."""
+    linhas = texto.split("\n")
     vistos, saida = set(), []
-    for f in frases(texto):
-        if any(k in sem_acento(f) for k in CHAVES_DENGUE) and f not in vistos and len(f) <= 400:
+
+    def anota(f):
+        if f not in vistos and len(f) <= 400:
             vistos.add(f)
             saida.append(f)
-    return saida[:12]
+
+    for i, l in enumerate(linhas):
+        for f in frases(l):
+            if any(k in sem_acento(f) for k in CHAVES_DENGUE):
+                anota(f)
+        if l.endswith(":") and len(l) <= 80 and any(k in sem_acento(l) for k in CHAVES_DENGUE):
+            for item in itertools.takewhile(lambda x: len(x) <= 120 and not x.endswith(":"), linhas[i + 1:]):
+                anota(item)
+    return saida[:30]
 
 
 def itens_do_guia(catalogo: dict) -> dict:
@@ -248,6 +262,10 @@ def autoteste() -> int:
                                       "https://www.gov.br/saude/pt-br/x") and not devolveu_outra_pagina(b"<p>sem canonico</p>", "u"),
         "dengue: lista de passos entra, telefone não": lambda: trechos_de_dengue(
             "Tampe caixas d’água, ralos e pias;\nTeleatendimento: de segunda a sexta, das 8h às 20h.\nColoque areia nos vasos de plantas;") == ["Tampe caixas d’água, ralos e pias;"],
+        "dengue: a lista sob o cabeçalho entra inteira e para no parágrafo": lambda: trechos_de_dengue(
+            "Sinais e sintomas de alerta:\nDor na barriga;\nVômitos frequentes;\nOutro cabeçalho de sintomas:\nFebre;\n"
+            + "Texto corrido longo " * 8) == ["Sinais e sintomas de alerta:", "Dor na barriga;", "Vômitos frequentes;",
+                                              "Outro cabeçalho de sintomas:", "Febre;"],
         "recusa vira motivo, não exceção": lambda: buscar_pagina(
             "x", lambda u: (_ for _ in ()).throw(OSError("recusado")))[1].startswith("OSError"),
         "trava estrutural: não escreve no índice": lambda: not any(
