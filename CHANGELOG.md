@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #910 · O detalhe do desfecho ganha o mapa por estado
+
+A figura do desfecho escolhido passa a trazer, ao lado da série, o mapa do último período fechado por estado, pintado pelos cortes fixos que o próprio arquivo guarda — os quintis de 2019 a 2025, congelados na primeira gravação. A legenda diz os cortes em números, estado sem período fechado fica nomeado, e a lista por estado abre embaixo. Gráfico e mapa usam só período fechado.
+
 ## 2026-10-19 · sondagem · Boletins estaduais de arboviroses: rotas e recusa no catálogo
 
 Sondagem pelo executor (19/10): Goiás recusa com 403, respeitado; Paraná, Amazonas e Pará têm página de boletim localizada; Santa Catarina sem endereço; Rondônia inalcançável do executor. Só o catálogo de desfechos mudou; nenhum dado novo. Saldo: +13/−0.
