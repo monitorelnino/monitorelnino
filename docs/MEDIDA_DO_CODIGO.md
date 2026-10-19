@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **98.042 linhas** em **319 arquivos** .py/.js; **34 workflows**.
+- **98.143 linhas** em **319 arquivos** .py/.js; **34 workflows**.
 - **83 comandos de portão**: dados/portão 24, paginas/autoteste 5, paginas/portão 54.
 - **152 nomes de função** definidos em mais de um arquivo.
 
@@ -10,7 +10,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 52392 |
+| `(raiz)` | 52493 |
 | `scripts` | 38036 |
 | `assets` | 6901 |
 | `arquivo` | 445 |
@@ -23,7 +23,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `coletar_sinais_risco.py` | 3099 |
 | `coletores_base.py` | 2171 |
 | `verificar_pista_imprensa.py` | 1703 |
-| `coletar_doe.py` | 1568 |
+| `coletar_doe.py` | 1653 |
 | `juiz.py` | 1422 |
 | `assets/js/monitor-de-riscos.js` | 1331 |
 | `assets/js/index.js` | 1232 |

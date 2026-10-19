@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #899 · Cartão do município: arquivo compacto
+## 2026-10-19 · #897 · Portões: comentários de cache e corrida no YAML, em uma linha
 
-`municipios_card.json`, que a página carrega inteiro, deixa de ser gravado com indentação: de 1,2 para 0,97 MB, mesmo conteúdo. Prepara a entrada da varredura de cada município no cartão, que coube no limite de crescimento do portão de tamanho só com o arquivo já compacto.
+Consolidação, item 6. Os blocos longos de história sobre o cache do navegador, a idempotência, a corrida do medidor e as capturas, em `portoes.yml`, viram uma linha de porquê cada; a história fica no histórico. Lista de comandos, assuntos e marcadores de publicação idêntica (83 comandos). Linhas líquidas −29.
 
 ## 2026-10-19 · #896 · Seis números numa linha, e a busca cobrada onde há lista
 
