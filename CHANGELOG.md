@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Primeira coleta real pela válvula: `leptospirose.json` (SINAN, casos confirmados) e `diarreias.json` (SISAB, atendimentos por CIAP-2/CID-10), por UF e mês, na estrutura comum. Últimos meses parciais declarados. Nenhum arquivo lido pela página muda.
 
+## 2026-10-19 · #890 · Portões: a detecção de dado e página sai do YAML; comentários enxutos
+
+Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.
+
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
