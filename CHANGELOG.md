@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · Consulta do município: o cartão diz quantos atos não couberam
+
+O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
+
 ## 2026-10-19 · #874 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos
 
 Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.
