@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
 
+## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
+
+O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
 ## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
 
 A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
