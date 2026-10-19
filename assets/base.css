@@ -1164,6 +1164,12 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   border:1px solid var(--line); border-radius:12px; padding:var(--sp-3) var(--sp-4);
   border-top:4px solid var(--line); background:var(--branco);}
 .cartao-numero--chuva{border-top-color:var(--chuva);}
+/* Cartão que é alvo de escolha (seção de desfechos da Saúde): o ponteiro diz que ele responde,
+   e o escolhido fica com a borda em musgo — a faixa do topo continua sendo a da família. A cor
+   não vai sozinha: `aria-pressed` leva o estado a quem usa leitor de tela, e o título do detalhe
+   abaixo da grade nomeia o desfecho escolhido. */
+.cartao-numero[role="button"]{cursor:pointer;}
+.cartao-numero[aria-pressed="true"]{border-left-color:var(--green); border-right-color:var(--green); border-bottom-color:var(--green);}
 /* 02/10/2026 (redesenho da Imprensa): faixa superior de cor por GRUPO de cartao. A cor nomeia o
    grupo — preparacao, emergencias, risco agora, dinheiro, saude —, e nao julga o numero: nenhuma
    delas e verde de bom nem vermelha de ruim, e a variacao ao lado do numero continua sem cor. */
