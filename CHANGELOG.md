@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
+
+Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
 ## 2026-10-19 · #858 · Financiamento: o dinheiro por risco, onde chega e o mês a mês
 
 Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.
