@@ -4295,7 +4295,7 @@ Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, 
 
 **O diretório estadual.** O coletor reconfere os telefones e e-mails de `data/contatos_uf.json` contra o diretório da Defesa Civil no site do MIDR. Divergência (contato do MARÉ ausente do diretório) fica em `conferencia`, por UF, sem reescrever o contato; `fonte.consultado_em` e `hash_da_consulta` registram a data e a versão lida. Na primeira consulta (19/10/2026) 25 UFs conferem; DF e RO divergem.
 
-**Limite.** A frase de fonte é a que o texto da página traz, não uma recomendação nova do MARÉ. Página que mudar de endereço ou for retirada passa a lacuna na consulta seguinte.
+**Limite.** A frase de fonte é a que o texto da página traz, não uma recomendação nova do MARÉ. Página que mudar de endereço ou for retirada passa a lacuna na consulta seguinte. **Atualização (19/10/2026):** o gov.br serve a página inicial, com status 200, no lugar de notícia que não está no ar; quatro das treze URLs estavam nesse caso (três notícias do Ministério da Saúde e uma nota à imprensa) e foram preservadas como se fossem a fonte. O coletor passa a comparar o endereço canônico que a página declara com o pedido: diferente, a fonte vira `motivo_da_falha`, o registro anterior não se mantém e a URL segue na lista, para voltar sozinha se a página voltar. A página da Agência Gov com os dez passos contra a dengue também serve aviso de página indisponível, por isso não foi adotada.
 
 ## 113. Plano de saúde de Rondônia recebido por acesso à informação (19/10/2026)
 
