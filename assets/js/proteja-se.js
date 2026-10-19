@@ -128,6 +128,24 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
 
+/* ===== A data da fonte do guia vem do registro de preservação (HANDOVER_PROTEJA_SE §7.1) =====
+ *
+ * A aba de calor cita a página "Ondas de Calor" do Ministério da Saúde, que é a mesma que a janela A
+ * preserva por hash em `data/orientacoes_oficiais.json`. A data da consulta estava escrita à mão na
+ * linha de fonte e envelhecia sozinha; agora é molde, resolvido com a data do registro — quando a
+ * reconferência rodar, a linha acompanha. Sem o registro, fica a data de reserva do HTML.
+ */
+(function dataDaFonteDoGuia() {
+  const C = window.MonitorCatalogo, alvo = document.getElementById('fonteDoCalor');
+  if (!C || !alvo) return;
+  const URL_CALOR = 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor';
+  Promise.all([fetch('data/orientacoes_oficiais.json').then(r => r.ok ? r.json() : null), C.pronto])
+    .then(([reg]) => {
+      const f = ((reg || {}).fontes || []).find(x => x && x.url === URL_CALOR);
+      if (f && f.consultado_em) C.escrever(alvo, 'proteja-se.guia-calor.texto_3', {data: f.consultado_em});
+    }).catch(_erroPS('proteja-se:fonte-do-guia'));
+})();
+
 /* Erro de bloco que não renderiza vai ao console com o lugar, onde o portão de runtime o vê. */
 function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falha em ' + onde + ':', e); } catch (_) {} }; }
 
