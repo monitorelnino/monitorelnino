@@ -88,79 +88,20 @@
     {
       "id": "observado",
       "h2": "O que os órgãos de saúde registram",
-      "tipo": "doencas",
+      "tipo": "figuras",
       "exige_texto": [
         "Esta página não relaciona casos ao El Niño."
       ],
-      "doencas": [
+      "cartoes": [
         {
-          "h3": "Dengue",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "serie_semana_vs_faixa",
-              "tipo": "grafico",
-              "el": "boxDengueSemana"
-            },
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxDengueUF"
-            }
-          ]
-        },
-        {
-          "h3": "Chikungunya",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "serie_semana_vs_faixa",
-              "tipo": "grafico",
-              "el": "boxChikSemana"
-            },
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxChikUF"
-            }
-          ]
-        },
-        {
-          "h3": "Respiratórias",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "serie_semana_vs_faixa",
-              "tipo": "grafico",
-              "el": "boxSRAG"
-            },
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxSragUF"
-            },
-            {
-              "id": "sg_esus",
-              "tipo": "grafico",
-              "el": "boxSG"
-            }
-          ]
-        },
-        {
-          "h3": "Calor",
-          "grade": ".grade-figuras--3",
-          "cartoes": [
-            {
-              "id": "mapa_uf_por_100mil",
-              "tipo": "mapa",
-              "el": "boxCalor"
-            }
-          ]
+          "id": "detalhe_do_desfecho",
+          "tipo": "grafico",
+          "el": "boxDesfecho"
         }
       ],
       "grade": ".grade-numeros--3",
       "ultima_linha_incompleta": true,
-      "_nota_registram": "19/10/2026 (HANDOVER_SAUDE_DESFECHOS_BLOCO e prioridade da editoria das 15:45): a seção ganha a grade única de desfechos, um cartão por arquivo da forma comum de `data/saude_desfechos/`. A última linha fica incompleta porque o número de cartões cresce à medida que cada desfecho nasce; desfecho sem arquivo não vira cartão vazio. Os blocos por agravo saem quando o desfecho equivalente tiver arquivo na forma comum — tirar número publicado antes disso seria eliminar evidência (governança §29)."
+      "_nota_registram": "19/10/2026 (remoção aprovada pela editoria em 19/10, sobre o mapa medido pela B1): a seção é a grade única de desfechos, um cartão por arquivo da forma comum de `data/saude_desfechos/`, mais o detalhe do cartão escolhido. Os cinco quadros por agravo (dengue, chikungunya, respiratórias, síndrome gripal e calor) saíram: o que eles mostravam a seção nova mostra por desfecho, e desfecho sem arquivo é lacuna declarada numa linha, nunca cartão vazio. A última linha fica incompleta porque o número de cartões cresce à medida que cada desfecho nasce."
     },
     {
       "id": "saude-federal-painel",
