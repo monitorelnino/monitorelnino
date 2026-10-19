@@ -852,12 +852,16 @@ function põeCat(elId, id, valores, reserva){
   if (ruins.length && grade) {
     const ult = ruins.map(c => c.pior.iqar.medido_em).sort().pop();
     grade.insertAdjacentHTML('beforeend', '<div class="cartao-numero cartao-numero--risco_agora" data-cartao="ar_iqar_ruim">'
-      // 19/10/2026 (editoria): a hora sai do rótulo e vai para o rodapé, com a atualização.
+      // 19/10/2026 (editoria): a hora sai do rótulo e vai para o rodapé, com a atualização; o rótulo
+      // leva o dia da medição. O TEXTO vem do catálogo, como o dos outros seis cartões desta grade.
       // DIVERGÊNCIA: o rótulo pedido era "Cidades com IQAr ruim ou pior"; "pior" é avaliativo e o
-      // portão de texto público reprova. Ficam os nomes das classes, que são os da própria fonte.
-      + '<p class="cartao-numero-rotulo">Cidades com IQAr Ruim, Muito Ruim ou Péssima</p>'
-      + '<p class="cartao-numero-valor">' + esc(String(ruins.length)) + '</p>'
-      + '<p class="cartao-numero-variacao">primeira leitura</p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
+      // portão de texto público reprova. "Ruim ou mais alto" é a mesma régua do cartão da seca.
+      + '<p class="cartao-numero-rotulo" id="stArRotulo"></p>'
+      + '<p class="cartao-numero-valor" id="stArValor"></p>'
+      + '<p class="cartao-numero-variacao" id="stArApoio"></p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
+    põeCat('stArRotulo', I + (diaMes(ult) ? 'ar.molde_rotulo' : 'ar.rotulo'), {data: diaMes(ult)});
+    põeCat('stArValor', I + 'ar.molde_valor', {n: ruins.length});
+    põeCat('stArApoio', I + 'ar.apoio');
     MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr', hora(ult) ? 'medição de ' + hora(ult) : ''].filter(Boolean),
       data: (fontesAr.monitorar || {}).consultado_em});
   }

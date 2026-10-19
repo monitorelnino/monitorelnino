@@ -32,6 +32,10 @@ A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.ht
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
 
+## 2026-10-19 · #PR · Sai o glifo de caixa das listas da ficha; o cartão do ar lê o catálogo
+
+As listas de "Antes, durante e depois" voltam ao marcador padrão: o glifo ☐ prometia marcar item cumprido, interação que a lista não tem. Vale na inicial e no guia do Proteja-se. No Monitor de riscos, o cartão de cidades com IQAr alto passa a ler rótulo, valor e apoio do catálogo, como os outros seis da mesma grade, e o rótulo volta a trazer o dia da medição.
+
 ## 2026-10-19 · #864 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura
 
 Saem a frase sobre a data do dado, o "previsão, não observação", o parágrafo das listas federais, a nota do mapa de qualidade do ar (vai para a metodologia) e o gráfico do Semiárido. As siglas de UF viram etiqueta, sem link. No topo, a frase do prognóstico sai do cartão e vai para o texto da seção; rodapé preso na base e até seis por linha acabam com o vão branco.
