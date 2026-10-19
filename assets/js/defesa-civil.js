@@ -109,6 +109,8 @@ function __init(totalMunicipios){
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   const texto = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   const molde = (id, chave, valores) => C && C.escrever(id, chave, valores);
+  /* O mesmo catálogo, devolvendo texto em vez de escrever num elemento (o corpo do cartão é montado). */
+  const texto_molde = (chave, valores) => (C && C.texto(chave, valores)) || '';
   const lacunaDe = corte => (C && C.texto('defesa-civil.municipio.lacuna.molde', {corte: corte || 'sem registro'}))
     || 'Não localizado até o corte (' + (corte || 'sem registro') + ')';
   const UFS = BR_GEOJSON.features.map(f => f.properties.sigla);
@@ -141,6 +143,7 @@ function __init(totalMunicipios){
         return {cod: m.ibge, nome: m.nome, uf: m.uf, eventos: eventos, classificado: Array.isArray(ev),
                 familia: familiaDe(eventos[0]), decreto: m.primeiro_decreto || null, reconhecimento: m.primeiro_reconhecimento || null,
                 reconhecida: !!m.reconhecido, tipos: m.tipos || [], dias: m.dias_sem_reconhecimento,
+                atoLocalizado: !!m.decretado,
                 atoMunicipal: fontes.find(f => f.canal !== 'DOU') || null, portaria: fontes.find(f => f.canal === 'DOU') || null};
       })
     : [];
@@ -227,9 +230,16 @@ function __init(totalMunicipios){
     const corpoAviso = alertasVelhos ? linhaT(esc(semAtualizacao)) : (avisos.join('') || linhaT(esc(lacunaDe(carimbo))));
     let corpoDecreto, corpoRec;
     if (m) {
+      /* 19/10/2026 (ajuste 6.2): a página separa o que VIMOS do que o reconhecimento pressupõe. Em 722
+         dos 953 municípios o ato municipal não foi localizado (`decretado: false`, só a portaria
+         federal no consolidado) e a data do decreto vem inferida do reconhecimento — dizer "Decreto
+         de dd/mm" nesses casos apresenta como lido o que não foi lido. */
       const nat = m.tipos.map(t => NATUREZA[t]).filter(Boolean)[0];
-      corpoDecreto = linhaT(esc((nat ? nat + ' · ' : '') + eventoTexto(m)),
-        (m.atoMunicipal ? docLink(m.atoMunicipal) + ', de ' + esc(m.atoMunicipal.data || m.decreto || '') : 'Decreto de ' + esc(m.decreto || '') + ' · ato municipal: ' + esc(lacunaDe(corteDecretos))));
+      corpoDecreto = linhaT(esc((nat ? nat + ' · ' : '') + eventoTexto(m)), m.atoLocalizado
+        ? texto_molde('defesa-civil.municipio.decreto.ato_localizado.molde',
+            {documento: docLink(m.atoMunicipal) || 'Decreto', data: esc(m.atoMunicipal && m.atoMunicipal.data || m.decreto || '')})
+        : texto_molde('defesa-civil.municipio.decreto.ato_inferido.molde',
+            {corte: esc(corteDecretos || 'sem registro'), data: esc(m.reconhecimento || (m.portaria || {}).data || '')}));
       corpoRec = m.reconhecida
         ? linhaT('Reconhecido em ' + esc(m.reconhecimento || (m.portaria || {}).data || ''), m.portaria ? docLink(m.portaria) : '')
         : linhaT(esc(lacunaDe(corteDecretos)));
@@ -312,7 +322,8 @@ function __init(totalMunicipios){
     rotulo: 'Buscar município com decreto',
     linhas: decretados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
       busca: m.nome + ' ' + m.uf,
-      celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(eventoTexto(m)), esc(m.decreto || 'não localizado até o corte'),
+      celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(eventoTexto(m)),
+        esc(m.atoLocalizado ? (m.decreto || 'não localizado até o corte') : 'ato não localizado até o corte'),
         esc(m.reconhecida ? m.reconhecimento || '' : 'não localizado até o corte'),
         [docLink(m.atoMunicipal), docLink(m.portaria)].filter(Boolean).join('<br>') || 'não localizado até o corte'],
     })),
