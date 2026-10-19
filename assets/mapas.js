@@ -321,6 +321,9 @@
     verificacao: { nao_verificado: COR['cinza-quente'], nacional: COR.mineral, estadual: COR.sintetico, municipal_completo: COR.musgo, fonte_suspensa: COR.argila },
     // famílias de risco do ciclo — a tríade de tokens.css (--chuva, --seca, --fogo) vale em todas as páginas
     risco: { chuvas: COR.sintetico, seca: COR.ambar, fogo: COR.argila, multi: COR['areia-escura'], sem_sinal: COR.areia },
+    // série de desfecho sobre a faixa habitual da época (seção de desfechos da Saúde): a faixa
+    // habitual é o recorrente (mineral); o valor que passa dela é calor de dado (argila).
+    serie_habitual: { faixa: COR.mineral, acima: COR.argila },
     // consistência risco × instrumento (mapa 5 da Defesa civil)
     consistencia: { COBRE: COR.musgo, PARCIAL: COR.mineral, DIFERE: COR.argila, SEM: COR.argila, NEUTRO: COR.areia },
     // 24/09/2026: grau do aviso do INMET e nível do alerta do CEMADEN, tal como os órgãos os nomeiam
