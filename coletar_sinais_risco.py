@@ -36,6 +36,7 @@ As três camadas (METODOLOGIA §23.2):
   observado  — Monitor de Secas (ANA), avisos INMET, risco de fogo (INPE), alertas CEMADEN
   enos       — ONI/CPC-NOAA, plume IRI, prognóstico trimestral INMET/CPTEC
 """
+import difflib
 import hashlib
 import html
 import json
@@ -2182,6 +2183,7 @@ def gravar_focos_referencia() -> None:
 # ---------------------------------------------------------------------------
 RISCOS_MUNICIPIO = RAIZ / "data" / "riscos_municipio"
 RISCOS_DECRETOS_MAX = 3
+RISCOS_DECRETOS_DESDE = "2026-06-29"   # início da janela que o cartão anuncia
 RISCOS_RAIO_AR_KM = 50.0    # além disso a estação mede outra cidade: o município fica sem bloco de ar
 # A rede do Cemaden (Proteja-se §4: "Município fora da rede do Cemaden"): a lista oficial publicada
 # em 26/03/2024, 1.038 + 95 municípios, em dois PDFs. Sem lista nova, a data dela vai junto.
@@ -2189,16 +2191,23 @@ CEMADEN_REDE = ("https://www.gov.br/cemaden/pt-br/cemaden-amplia-a-lista-de-muni
                 ("MunicipiosMonitorados2021.pdf", "95_munic_Lista_.pdf"), "2024-03-26")
 
 
+def _chave_rede(nome: str, uf: str) -> tuple:
+    """Chave de casamento nome × IBGE: sem hífen, apóstrofo e preposição, s = z; a lista do Cemaden
+    grafa "Ceará Mirim", "Eldorado dos Carajás", "São Luiz Gonzaga" onde o IBGE grafa de outro jeito."""
+    n = re.sub(r"[-'´]", " ", normalizar_nome(nome)).replace("Z", "S")
+    return " ".join(t for t in n.split() if t not in ("DE", "DO", "DA", "DOS", "DAS")), uf
+
+
 def parse_rede_cemaden(texto: str, ref: list) -> tuple:
     """(códigos IBGE da lista, linhas sem casamento). Linhas "[código] Nome UF"; o código, quando
-    vem, vale; sem ele, casa nome e UF na referência do IBGE. Função pura."""
-    por_nome = {(normalizar_nome(str(m["nome"])), m["uf"]): str(m["codigo_ibge"]) for m in ref}
+    vem, vale; sem ele, casa nome e UF na referência do IBGE por `_chave_rede`. Função pura."""
+    por_nome = {_chave_rede(str(m["nome"]), m["uf"]): str(m["codigo_ibge"]) for m in ref}
     achados, sem = set(), []
     for linha in (texto or "").splitlines():
         m = re.match(r"^\s*(\d{7})?\s*(.+?)\s+([A-Z]{2})\s*$", linha)
         if not m or m.group(3) not in UFS:
             continue
-        cod = m.group(1) or por_nome.get((normalizar_nome(m.group(2).replace("´", "'")), m.group(3)))
+        cod = m.group(1) or por_nome.get(_chave_rede(m.group(2), m.group(3)))
         if cod:
             achados.add(cod)
         else:
@@ -2206,8 +2215,38 @@ def parse_rede_cemaden(texto: str, ref: list) -> tuple:
     return achados, sem
 
 
+def rede_incerta(sem: list, ref: list) -> set:
+    """Códigos dos municípios parecidos (mesma UF, nome ≥ 80% igual) com linha da lista que não casou:
+    não se sabe se estão na rede, então ficam sem afirmação (`rede_cemaden: None`), nunca "fora"."""
+    achados = set()
+    for linha in sem:
+        nome, uf = re.match(r"^\s*(?:\d{7})?\s*(.+?)\s+([A-Z]{2})\s*$", linha).groups()
+        c = _chave_rede(nome, uf)[0]
+        achados |= {str(m["codigo_ibge"]) for m in ref if m["uf"] == uf
+                    and difflib.SequenceMatcher(None, c, _chave_rede(str(m["nome"]), uf)[0]).ratio() >= 0.8}
+    return achados
+
+
+def _iso(dia) -> str:
+    p = str(dia or "").split("/")
+    return "-".join(reversed(p)) if len(p) == 3 else ""
+
+
+def ato_municipal(ev: dict):
+    """O ato do MUNICÍPIO num evento de `atos_resposta`, com a data dele, ou None. Portaria federal
+    sem decreto municipal é reconhecimento (vive em `reconhecimento`); ato sem data ou anterior à
+    janela do monitor não entra, para a linha não exibir data fora do que anuncia."""
+    if ev.get("decreto_municipal"):
+        ato = {"data": ev.get("data_decreto_municipal"), "decreto": f"Decreto municipal nº {ev['decreto_municipal']}"}
+    elif ev.get("portaria"):
+        return None
+    else:
+        ato = {"data": ev.get("data"), "decreto": ev.get("decreto")}
+    return {**ato, "url": ev.get("url")} if _iso(ato["data"]) >= RISCOS_DECRETOS_DESDE else None
+
+
 def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, atos: dict,
-                            calor: dict = None, decretados: dict = None, rede_cemaden=None) -> dict:
+                            calor: dict = None, decretados: dict = None, rede_cemaden=None, rede_duvida=()) -> dict:
     """{UF: {"estacoes": [...], "sensores": [...], "municipios": {IBGE: {...}}}}. Função pura.
 
     Focos ausentes no acumulado de 30 dias são 0 só quando a série tem os 30 dias; com menos, o
@@ -2227,8 +2266,9 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
     reconhecimento = {str(cod): x for cod, x in ((decretados or {}).get("municipios") or {}).items()}
     decretos = {}
     for ev in (atos or {}).get("eventos") or []:
-        decretos.setdefault((normalizar_nome(str(ev.get("nome") or "")), ev.get("uf")), []).append(
-            {k: ev.get(k) for k in ("data", "decreto", "url")})
+        ato = ato_municipal(ev)
+        if ato:
+            decretos.setdefault((normalizar_nome(str(ev.get("nome") or "")), ev.get("uf")), []).append(ato)
 
     def mais_proximo(lista, ponto):
         return min(((dist_km(ponto, (x["lat"], x["lon"])), i) for i, x in enumerate(lista)), default=None)
@@ -2249,7 +2289,7 @@ def montar_riscos_municipio(ref: list, focos: dict, vigentes: dict, ar: dict, at
         if v.get("cemaden"):
             item["alertas_cemaden"] = v["cemaden"]
         if rede_cemaden is not None:
-            item["rede_cemaden"] = cod in rede_cemaden
+            item["rede_cemaden"] = True if cod in rede_cemaden else None if cod in rede_duvida else False
         dec = sorted(decretos.get((normalizar_nome(m["nome"]), uf)) or [],
                      key=lambda d: "".join(reversed(str(d.get("data") or "").split("/"))), reverse=True)
         if dec:
@@ -2298,7 +2338,7 @@ def gravar_riscos_municipio() -> None:
         rede, sem = parse_rede_cemaden(texto, ref)
     except Exception as e:  # noqa: BLE001
         print(f"[aviso] rede do Cemaden: {type(e).__name__}: {str(e)[:160]} — campo rede_cemaden fora desta rodada.")
-    por_uf = montar_riscos_municipio(ref, focos, vigentes, ar, atos, calor, decretados, rede)
+    por_uf = montar_riscos_municipio(ref, focos, vigentes, ar, atos, calor, decretados, rede, rede_incerta(sem, ref))
     cabeca = {
         "_governanca": ("Consulta do município no Monitor de riscos: junta, por código IBGE, o que os "
                         "arquivos de origem guardam. Nada é recalculado; o plano do município está em "
@@ -2897,7 +2937,11 @@ def autoteste() -> int:
         {"estacoes": [{"nome": "Fercal", "municipio": "Brasília", "uf": "DF", "rede": "IBRAM", "lat": -15.6, "lon": -47.87,
                        "iqar": {"valor": 52.0}}]},
         {"eventos": [{"nome": "BRASILIA", "uf": "DF", "data": "01/09/2026", "decreto": "SE", "url": "u1"},
-                     {"nome": "Brasília", "uf": "DF", "data": "20/09/2026", "decreto": "SE 2", "url": "u2"}]},
+                     {"nome": "Brasília", "uf": "DF", "data": "20/09/2026", "decreto": "SE 2", "url": "u2"},
+                     {"nome": "Brasília", "uf": "DF", "data": "05/03/2026", "decreto": "SE antigo", "url": "u0"},
+                     {"nome": "Brasília", "uf": "DF", "data": "22/09/2026", "decreto": "Portaria SEDEC/MIDR", "portaria": "P", "url": "u3"},
+                     {"nome": "Brasília", "uf": "DF", "data": "23/09/2026", "decreto": "Portaria", "portaria": "P",
+                      "decreto_municipal": "4.246", "data_decreto_municipal": "17/08/2026", "url": "u4"}]},
         {"municipios": {"5300108": {"classe": "Severo"}}},
         {"municipios": {"5300108": {"reconhecido": True, "primeiro_reconhecimento": "09/09/2026"}}})
     _df, _go = _rm["DF"]["municipios"]["5300108"], _rm["GO"]["municipios"]["5217609"]
@@ -2911,7 +2955,10 @@ def autoteste() -> int:
            ["DF"]["municipios"]["5300108"]["focos_30_dias"] is None)
     checar("Município: aviso vai como índice da lista da UF; decreto mais recente primeiro, casado pelo nome",
            _rm["DF"]["avisos_inmet"][_df["avisos_inmet"][0]]["tipo"] == "Baixa Umidade"
-           and _df["decretos"][0]["url"] == "u2" and _df["decretos_no_ciclo"] == 2)
+           and _df["decretos"][0]["url"] == "u2" and _df["decretos_no_ciclo"] == 3)
+    checar("Município: decreto é só o ato do município, com a data dele e dentro da janela; portaria e ato antigo ficam fora",
+           [d["url"] for d in _df["decretos"]] == ["u2", "u1", "u4"] and _df["decretos"][2]["data"] == "17/08/2026"
+           and _df["decretos"][2]["decreto"] == "Decreto municipal nº 4.246")
     checar("Município: estação de ar a até 50 km com distância; capital mais próxima com distância",
            _df["ar_estacao"]["distancia_km"] == 21 and _rm["DF"]["estacoes"][0]["iqar"]["valor"] == 52.0
            and _go["capital_mais_proxima"]["nome"] == "Brasília" and "ar_sensor" not in _df)
@@ -2919,6 +2966,14 @@ def autoteste() -> int:
     checar("Rede do Cemaden: código vale, nome casa na referência, sem casamento fica declarado",
            _rede == {"5300108", "5217609"} and _sem == ["Inexistente DF"]
            and montar_riscos_municipio(_ref, {}, {}, {}, {}, rede_cemaden={"5300108"})["GO"]["municipios"]["5217609"]["rede_cemaden"] is False)
+    _ref6 = [{"nome": n, "uf": u, "codigo_ibge": 1000000 + i, "lat": 0, "lon": 0} for i, (n, u) in enumerate([
+        ("Boa Vista do Ramos", "AM"), ("Santa Maria de Jetibá", "ES"), ("São Luís Gonzaga do Maranhão", "MA"),
+        ("Eldorado do Carajás", "PA"), ("Ceará-Mirim", "RN"), ("São Luiz do Paraitinga", "SP"), ("Sertânia", "PE")])]
+    _r6, _s6 = parse_rede_cemaden("Boa Vista dos Ramos AM\nSanta Maria do Jetiba ES\nSão Luiz Gonzaga do Maranhão MA\n"
+                                  "Eldorado dos Carajás PA\nCeará Mirim RN\nSão Luís do Paraitinga SP\nSertaneja PE\n", _ref6)
+    checar("Rede do Cemaden: as seis grafias que perdiam o casamento casam por chave; sem casamento fica em dúvida, não 'fora'",
+           _r6 == {str(1000000 + i) for i in range(6)} and _s6 == ["Sertaneja PE"] and rede_incerta(_s6, _ref6) == {"1000006"}
+           and montar_riscos_municipio(_ref6, {}, {}, {}, {}, rede_cemaden=_r6, rede_duvida={"1000006"})["PE"]["municipios"]["1000006"]["rede_cemaden"] is None)
     checar("Município: calor e reconhecimento só para quem está na fonte (Proteja-se §7.3)",
            _df["calor"] == "Severo" and _df["reconhecimento"]["primeiro_reconhecimento"] == "09/09/2026"
            and "calor" not in _go and "reconhecimento" not in _go)
