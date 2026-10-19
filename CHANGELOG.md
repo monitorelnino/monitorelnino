@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #915 · O teto do guia em PDF sobe para três páginas
+
+O portão do guia "Leve com você" cobrava no máximo duas páginas, teto escrito com quatro famílias de risco. Com a quinta (dengue e chikungunya) o guia passa a ter três; o teto vira a constante `PAGINAS_MAX = 3`, com caso de teste para o limite. Pedido da B2, destrava o #912. Linhas líquidas: +4.
+
 ## 2026-10-19 · #911 · O cartão escolhido na Saúde fica visível
 
 Na seção de desfechos, o cartão escolhido passa a trazer a borda em musgo, e o ponteiro do mouse diz que o cartão responde ao clique. A faixa do topo continua sendo a da família. O estado já ia a quem usa leitor de tela; agora também está na tela, e o título da figura abaixo da grade segue nomeando o desfecho escolhido.

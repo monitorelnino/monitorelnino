@@ -3,7 +3,7 @@
  *
  * Gera o PDF e a imagem num Chromium real, pelos próprios geradores da página, e reprova:
  *   PDF — glifo que a fonte do PDF não tem ("→"), marca d'água, título de seção nas três últimas
- *         linhas da página, mais de 2 páginas; e, havendo `pdftotext`, glifo substituto no texto
+ *         linhas da página, mais de 3 páginas; e, havendo `pdftotext`, glifo substituto no texto
  *         extraído ("!’", "�");
  *   imagem — texto desenhado com família que não estava carregada (document.fonts.check), e título
  *         de risco a menos de 40 px do primeiro item. Sem as fontes (sem rede), o gerador tem de
@@ -16,6 +16,7 @@ const path = require("path"), fs = require("fs"), http = require("http"), os = r
 const { execFileSync } = require("child_process");
 const RAIZ = path.join(__dirname, "..");
 const ALTURA_A4 = 841.89, PE = 60, LINHA = 14.5;
+const PAGINAS_MAX = 3;   // 19/10/2026: cinco famílias (a de dengue entrou); era 2 com quatro, escrito em 09/10
 
 function problemasPdf(log, paginas) {
   const p = [];
@@ -24,7 +25,7 @@ function problemasPdf(log, paginas) {
     if (e.size >= 60) p.push(`marca d'água: "${e.txt}" em ${e.size} pt`);
     if (e.titulo && e.y > ALTURA_A4 - PE - 3 * LINHA) p.push(`título "${e.txt}" sem três linhas abaixo na página ${e.page}`);
   });
-  if (paginas > 2) p.push(`${paginas} páginas`);
+  if (paginas > PAGINAS_MAX) p.push(`${paginas} páginas`);
   return p;
 }
 function problemasImagem(log) {
@@ -41,6 +42,7 @@ function autoteste() {
     ["marca d'água reprova", problemasPdf([{ txt: "MARÉ", y: 400, size: 120 }], 2).length === 1],
     ["título no pé da página reprova", problemasPdf([{ txt: "Incêndios e fumaça", y: 770, size: 13.5, titulo: true, page: 1 }], 2).length === 1],
     ["PDF limpo passa", problemasPdf([{ txt: "ver na fonte", y: 300, size: 9 }], 2).length === 0],
+    ["PDF no teto de páginas passa e acima reprova", problemasPdf([], PAGINAS_MAX).length === 0 && problemasPdf([], PAGINAS_MAX + 1).length === 1],
     ["fonte não carregada reprova", problemasImagem([{ txt: "Proteja-se", font: "300 42px Fraunces", carregada: false, y: 10 }]).length === 1],
     ["título colado reprova", problemasImagem([{ txt: "Chuvas", titulo: true, carregada: true, y: 100 }, { txt: "item", carregada: true, y: 124 }]).length === 1],
     ["imagem limpa passa", problemasImagem([{ txt: "Chuvas", titulo: true, carregada: true, y: 100 }, { txt: "item", carregada: true, y: 168 }]).length === 0],
