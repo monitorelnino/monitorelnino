@@ -4253,7 +4253,6 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 
 **O que a sondagem de 17/10 mediu, e o que ficou de fora.** No FTP do SINAN há arquivos de surto de DTA (`SDTA`), malária fora da Amazônia (`MALA`) e hepatite A só até 2023 no preliminar. O relatório público de produção do SISAB é formulário aberto, sem login, com atendimentos por CIAP/CID, por estado e mês até agosto de 2026: é a rota candidata das diarreias. O TabNet do DATASUS (último recurso, decisão da editoria de 16/10) não tem página de diarreias agudas no índice público. A busca por máquina do portal de dados abertos do SUS não respondeu em formato legível. O Monitor não atribui casos ao El Niño.
 
-<<<<<<< HEAD
 ## 109. Óbitos registrados na forma comum dos desfechos (17/10/2026)
 
 **O que a série conta.** Registros de óbito lavrados em cartório no mês, por UF, como o Portal da Transparência do Registro Civil (ARPEN/CNJ) agrega, de janeiro de 2019 ao mês corrente, em `data/saude_desfechos/obitos.json`, na forma do §108. É a mesma consulta do coletor de 29/09 (`coletar_obitos_registro_civil.py`), estendida até 2019 para a faixa habitual e os cortes do mapa; o arquivo antigo, que a página lê, não muda. Não é óbito ocorrido no mês nem óbito por causa. O mês corrente é parcial: o registro entra ao longo dos dias. Mês que a fonte não respondeu fica sem valor e declarado, nunca zero.
@@ -4262,7 +4261,7 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 
 **O que ficou de fora.** O painel por causa (doenças respiratórias, cardíacas) não está mais no portal: os endereços antigos respondem com erro do servidor, e o código do portal não os chama. O SIM preliminar, com causa básica, está no FTP do DATASUS por UF e ano, com defasagem de cerca de dois meses; entra como série com causa numa próxima etapa. O Monitor não atribui óbitos ao El Niño.
 
-=======
+
 ## 111. A semana da Imprensa em datas e a definição dos índices numa só função (19/10/2026)
 
 Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, não no texto da página.
@@ -4272,4 +4271,3 @@ Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, 
 **A definição dos índices.** `scripts/gerar_topo_das_paginas.definicao_dos_indices` escreve o parágrafo do MARÉ Legal a partir de `data/meta.json` (componentes, pesos e escala) e o do MARÉ Saúde a partir de `data/monitor_saude.json` (componentes e pesos em vigor). O resultado fica em `data/saude_desfechos/topo_saude.json` → `definicao_dos_indices` e é copiado para `data/imprensa/semana.json`: a Imprensa e a abertura da Saúde leem o mesmo campo. Componente que a função não sabe dizer, peso desigual ou escala diferente deixa o texto em lacuna (`null`), nunca um texto que descreva outra coisa. Nenhum número de versão chega ao leitor.
 
 **O que saiu do gerador da Imprensa.** O cruzamento decreto e alerta (saiu da Defesa civil) e o código dos cartões que a página já não lê. O texto da semana não usa "ciclo" sozinho.
->>>>>>> origin/main
