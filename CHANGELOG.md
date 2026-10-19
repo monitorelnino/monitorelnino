@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #860 · RO saúde: plano recebido por LAI, registrado sem julgamento
+`data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.
+
 ## 2026-10-19 · #859 · Ajustes de texto: a entrada repetida da Imprensa sai do histórico
 
 A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.html`, uma delas sem o número do PR. Fica a do #853. Três títulos que a união colou ao parágrafo anterior voltam a ter linha em branco antes, que é o que o gerador do histórico espera.
