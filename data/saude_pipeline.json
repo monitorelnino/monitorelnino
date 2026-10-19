@@ -10512,7 +10512,61 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-19T04:47:23",
+   "duracao_s": 33.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-19T04:47:56",
+   "duracao_s": 467.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-19T04:55:43",
+   "duracao_s": 4502.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-19T06:10:45",
+   "duracao_s": 614.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-19T06:20:59",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-19T06:20:59",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-19T04:37:43"
+ "atualizado_em": "2026-10-19T06:20:59"
 }
