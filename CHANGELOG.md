@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 As listas do guia do Proteja-se voltam ao marcador padrão: sai o glifo de caixa e saem as declarações que existiam só para abrir espaço a ele. Nos cinco cartões de emergência o número cai de 48 para 36 px, o do 40199 para 22 px e o respiro vertical para 8 px: a fileira cai de 194 px para 173 px a 1280. Uma regra de 640 px sem efeito medido sai.
 
+## 2026-10-19 · #870 · SIH: internações por grupo de causa na forma comum
+
+`coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.
+
 ## 2026-10-19 · #868 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias
 
 O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.
