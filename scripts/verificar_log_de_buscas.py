@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-verificar_paridade_log.py
+verificar_log_de_buscas.py
 =========================
 O log só cresce: a contagem de hoje nunca é menor que a maior já registrada.
 
@@ -9,7 +9,7 @@ com script e portão de paridade (contagem antes = depois)". Este é o portão, 
 depois da migração: com o log fatiado em `data/log_buscas/AAAA-MM.jsonl`, perder um arquivo de mês
 passaria sem ruído nenhum — o JSON continuaria válido, só menor.
 
-TRÊS INVARIANTES
+QUATRO INVARIANTES
 ----------------
 1. **Nunca encolhe.** A marca d'água (`data/log_buscas_marca.json`) guarda o maior total já visto e a
    contagem por mês. Total menor que a marca reprova. Foi exatamente esse o defeito de 23/09, quando
@@ -19,21 +19,27 @@ TRÊS INVARIANTES
    também.
 3. **Nenhuma linha inválida.** JSONL truncado por interrupção perde a última linha; `ler_log()` a
    ignora para não estourar, mas o portão acusa, porque linha perdida é dado perdido.
+4. **Esquema (A6-27, ex-`verificar_esquema_do_log.py`).** Toda execução tem `data` em AAAA-MM-DD e a
+   primeira palavra de `decisao` em `DECISOES_LOG`. Houve quem escrevesse por fora da porta
+   `coletores_base.log_busca`: 14 execuções de 27–29/08 com a decisão em prosa e 150 de 28/09 com data
+   `dd/mm/aaaa`, que `_caminho_do_mes` mandaria para `sem-data.jsonl`.
 
 USO
-  python3 scripts/verificar_paridade_log.py             # confere
-  python3 scripts/verificar_paridade_log.py --marcar    # atualiza a marca d'água (após crescer)
-  python3 scripts/verificar_paridade_log.py --autoteste
+  python3 scripts/verificar_log_de_buscas.py             # confere
+  python3 scripts/verificar_log_de_buscas.py --marcar    # atualiza a marca d'água (após crescer)
+  python3 scripts/verificar_log_de_buscas.py --autoteste
 """
 import collections
 import json
 import pathlib
+import re
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
 
 MARCA = RAIZ / "data" / "log_buscas_marca.json"
+RE_ISO = re.compile(r"\d{4}-\d{2}-\d{2}")
 
 
 def contar(doc: dict) -> tuple:
@@ -58,6 +64,18 @@ def conferir(total: int, por_mes: dict, invalidas: int, marca: dict) -> list:
     if invalidas:
         falhas.append(f"{invalidas} linha(s) inválida(s) no JSONL — linha perdida é dado perdido")
     return falhas
+
+
+def esquema(log: dict, vocabulario) -> list:
+    """Uma linha por execução fora do esquema. Função pura."""
+    fora = []
+    for i, e in enumerate((log or {}).get("execucoes") or []):
+        data, dec = str(e.get("data") or ""), str(e.get("decisao") or "")
+        if not RE_ISO.fullmatch(data):
+            fora.append(f"execução {i} ({e.get('canal')}): data fora de AAAA-MM-DD: {data!r}")
+        if dec.split(" ")[0] not in vocabulario:
+            fora.append(f"execução {i} ({e.get('canal')}): decisão fora do vocabulário: {dec[:60]!r}")
+    return fora
 
 
 def autoteste() -> int:
@@ -89,6 +107,18 @@ def autoteste() -> int:
     casos.append(("data ausente conta como sem-data", por_mes.get("sem-dat") == 1
                   or por_mes.get("sem-data") == 1 or "sem" in "".join(por_mes)))
 
+    V = ("registro", "pista", "consultado", "nada")
+    for nome, log, esperado in [
+            ("esquema: log no esquema passa", {"execucoes": [{"data": "2026-10-12", "decisao": "pista"},
+                                                              {"data": "2026-10-12", "decisao": "nada localizado"}]}, 0),
+            ("esquema: data dd/mm/aaaa reprova", {"execucoes": [{"data": "28/09/2026", "decisao": "pista"}]}, 1),
+            ("esquema: decisão em prosa reprova", {"execucoes": [{"data": "2026-08-27", "decisao": "+6 registros"}]}, 1),
+            ("esquema: log vazio passa", {}, 0)]:
+        casos.append((nome, len(esquema(log, V)) == esperado))
+    import dis
+    casos.append(("trava: a função pura do esquema não lê nem grava", not any(
+        i.argval in ("gravar", "open", "write_text") for i in dis.get_instructions(esquema))))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -103,9 +133,10 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
 
-    from coletores_base import gravar_em, ler_log
+    from coletores_base import DECISOES_LOG, gravar_em, ler_log
 
-    total, por_mes, invalidas = contar(ler_log())
+    log = ler_log()
+    total, por_mes, invalidas = contar(log)
     marca = json.loads(MARCA.read_text(encoding="utf-8")) if MARCA.exists() else {}
 
     if "--marcar" in sys.argv:
@@ -118,14 +149,14 @@ def main() -> int:
         print(f"✓ marca d'água em {nova['total']} execução(ões), {len(nova['por_mes'])} mês(es)")
         return 0
 
-    falhas = conferir(total, por_mes, invalidas, marca)
+    falhas = conferir(total, por_mes, invalidas, marca) + esquema(log, DECISOES_LOG)[:20]
     if falhas:
-        print("✗ PARIDADE DO LOG:")
+        print("✗ LOG DE BUSCAS:")
         for f in falhas:
             print(f"   - {f}")
         return 1
-    print(f"✓ PARIDADE DO LOG OK — {total} execução(ões) em {len(por_mes)} mês(es), nenhuma perdida "
-          f"(marca d'água: {int(marca.get('total') or 0)}).")
+    print(f"✓ LOG DE BUSCAS OK — {total} execução(ões) em {len(por_mes)} mês(es), nenhuma perdida "
+          f"(marca d'água: {int(marca.get('total') or 0)}), data ISO e decisão do vocabulário.")
     return 0
 
 
