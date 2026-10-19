@@ -22,7 +22,7 @@ jobs:
       nome: sonda
       timeout_minutos: 30
       comandos: |
-        sondar_munic_estrutura.py
+        coletar_declarado_nacional.py
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

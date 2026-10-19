@@ -63,7 +63,7 @@ import io, sys
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge,
-                            ler, gravar, rodar_autoteste, hoje_editorial)
+                            ler, gravar, rodar_autoteste, hoje_editorial, DATA)
 
 FONTES_PADRAO = {
     "_governanca": "Fontes da camada declarada nacional (v2.2.4, §3.9). Sem url confirmada → lacuna.",
@@ -140,6 +140,57 @@ def parse_munic_xlsx(bruto: bytes, aba: str, col_ibge: str, col_plano: str,
     finally:
         wb.close()
     return out
+
+
+def parse_munic_bloco_risco(bruto: bytes, aba: str, col_ibge: str, aba_dic: str = "Dicionário") -> dict:
+    """Bloco Mgrd inteiro da MUNIC, FONTE FUTURA (peso zero, não entra no índice).
+
+    {variaveis: {COD: "pergunta › item"}, valores: [texto, ...], municipios: {ibge7: "cadeia"}}.
+    A cadeia tem 1 caractere por variável (índice em `valores`, '_' = célula vazia), na ordem de
+    `variaveis`: 5.570 × 160 em texto cru passaria de 5 MB; assim fica abaixo de 1 MB. O texto da
+    pergunta vem do dicionário (leitura não-read_only: read_only trunca a dimensão da aba) e o
+    código lá é MGRD01, no cabeçalho Mgrd01 — compara-se sem caixa."""
+    import openpyxl, re
+    wb = openpyxl.load_workbook(io.BytesIO(bruto), read_only=False, data_only=True)
+    try:
+        if aba not in wb.sheetnames:
+            return {}
+        rot = {}
+        if aba_dic in wb.sheetnames:
+            pilha = []
+            for r in wb[aba_dic].iter_rows(values_only=True):
+                cel = [str(c).replace("\n", " ").strip() if c not in (None, "") else "" for c in r[:5]]
+                nivel = next((i for i in range(4) if cel[i]), None)
+                if nivel is None:
+                    continue
+                pilha = pilha[:nivel] + [cel[nivel]]
+                if re.fullmatch(r"(?i)mgrd\d+", cel[4] if len(cel) > 4 else ""):
+                    rot[cel[4].upper()] = " › ".join(pilha)
+        ws = wb[aba]
+        linhas = ws.iter_rows(values_only=True)
+        cab = list(next(linhas))
+        if col_ibge not in cab:
+            return {}
+        idx = [i for i, c in enumerate(cab) if re.fullmatch(r"(?i)mgrd\d+", str(c or ""))]
+        cods = [str(cab[i]).upper() for i in idx]
+        tabela, pos, mun = [], {}, {}
+        for linha in linhas:
+            cod = str(linha[cab.index(col_ibge)] or "").strip()
+            if len(cod) != 7 or not cod.isdigit():
+                continue
+            cad = []
+            for i in idx:
+                v = linha[i]
+                if v is None or str(v).strip() == "":
+                    cad.append("_"); continue
+                v = str(v).strip()
+                if v not in pos:
+                    pos[v] = len(tabela); tabela.append(v)
+                cad.append(chr(48 + pos[v]))
+            mun[cod] = "".join(cad)
+        return {"variaveis": {c: rot.get(c, "") for c in cods}, "valores": tabela, "municipios": mun}
+    finally:
+        wb.close()
 
 
 def normalizar_binario_icm(v) -> str:
@@ -265,6 +316,15 @@ def coletar() -> int:
         ext = "xlsx"
         h = preservar_evidencia(bruto, f["url"], ext, "coletar_declarado_nacional")
         if chave == "munic":
+            bloco = parse_munic_bloco_risco(bruto, f["aba"], f["coluna_ibge"])
+            if len(bloco.get("municipios", {})) >= PISO_MUNICIPIOS:
+                (DATA / "fontes_futuras").mkdir(exist_ok=True)
+                gravar(f"fontes_futuras/munic_gestao_de_riscos_{f.get('edicao')}.json", {
+                    "_governanca": "FONTE FUTURA, peso zero: autodeclaração municipal (MUNIC/IBGE). "
+                                   "Não entra no índice nem em texto público sem decisão da editoria.",
+                    "fonte": f["nome"], "url": f["url"], "edicao": f.get("edicao"),
+                    "consultado_em": hoje_editorial().isoformat(), "hash_evidencia": h,
+                    "n_municipios": len(bloco["municipios"]), **bloco}, compacto=True)
             dados = parse_munic_xlsx(bruto, f["aba"], f["coluna_ibge"], f["coluna_plano"],
                                      f.get("coluna_plano_seca", ""), f.get("edicao"))
             campo, fato = "munic_plano_contingencia", "plano_declarado_munic"
@@ -400,7 +460,23 @@ def autoteste() -> int:
         novo_criado = (livro["municipios"]["3106200"]["nivel_verificacao"] == "nao_verificado"
                       and livro["municipios"]["3106200"]["plano_declarado_munic"] is False)
         return existente_preservado and novo_criado
-    return rodar_autoteste({"parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM (xlsx, var8 inteiro 0/1)": t2,
+    def t7():  # bloco Mgrd inteiro + rótulos do dicionário (código MGRD01 x cabeçalho Mgrd01)
+        import openpyxl
+        wb = openpyxl.load_workbook(io.BytesIO(_xlsx_fixture()))
+        d = wb.create_sheet("Dicionário")
+        d.append(["Fonte: IBGE"]); d.append(["O município foi atingido pela seca", "", "", "", "MGRD01"])
+        d.append(["", "Ano da seca", "", "", "MGRD05"]); d.append(["", "", "Perdas", "", "MGRD184"])
+        buf = io.BytesIO(); wb.save(buf)
+        b = parse_munic_bloco_risco(buf.getvalue(), "Gestão de riscos", "CodMun")
+        v = b["valores"]
+        return (list(b["variaveis"]) == ["MGRD01", "MGRD05", "MGRD184"] and len(b["municipios"]) == 2
+                and b["variaveis"]["MGRD05"].endswith("Ano da seca")
+                and [v[ord(c) - 48] for c in b["municipios"]["4202404"]] == ["Sim", "Não", "Sim"])
+    def t7b():  # negativo: aba ausente → vazio; zero municípios nunca vira dado
+        return parse_munic_bloco_risco(_xlsx_fixture(), "Aba Inexistente", "CodMun") == {}
+    return rodar_autoteste({"bloco Mgrd inteiro com rótulos do dicionário": t7,
+                            "negativo: bloco com aba inexistente": t7b,
+                            "parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM (xlsx, var8 inteiro 0/1)": t2,
                             "§208 ICM var11 (dotação na LOA) lida à parte da var8, sem trocar coluna": t2b,
                             "§208 negativo: coluna de dotação não pedida ou ausente não vira 'nao'": t2c,
                             "valores fora do vocabulário viram NA; binário ICM trata 0 int corretamente": t3,
