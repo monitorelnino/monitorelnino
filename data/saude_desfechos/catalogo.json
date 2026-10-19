@@ -66,13 +66,14 @@
    "sistema": "Sivep-Malária",
    "periodicidade": "semanal",
    "fonte_aberta": "SIVEP-Malária só por BI público e TabNet; nenhum conjunto no Portal de Dados Abertos (busca de 29/09/2026 devolveu zero).",
-   "status_coleta": "nao_coletavel_por_maquina",
+   "status_coleta": "coletado",
    "rota": {
     "sistema": "SINAN malária fora da Amazônia (.dbc no FTP do DATASUS)",
     "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINAN/DADOS/",
     "arquivos": "FINAIS/MALA* (20), PRELIM/MALA* (3)",
-    "provado_em": null,
-    "prova": "arquivos listados em 17/10/2026; a Amazônia é SIVEP-Malária, sem rota de máquina"
+    "provado_em": "19/10/2026",
+    "prova": "MALABR26 preliminar: CLASSI_FIN=1 (225) cruza com exame positivo (RESULT 2, 4, 5, 8) e CLASSI_FIN=2 (485) com exame negativo (RESULT 1); 8 arquivos lidos, 2019–2026; a Amazônia Legal é SIVEP-Malária, sem rota de máquina e declarada como lacuna no arquivo",
+    "coletor": "coletar_datasus_dbc.py --desfecho malaria"
    }
   },
   {
