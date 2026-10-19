@@ -12,6 +12,12 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-19 · #855 · Sai o portão de autoteste sem chamador
+
+`verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.
+## 2026-10-19 · #847 · Portões: três a menos
+
+Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.
 ## 2026-10-19 · #856 · Proteja-se: a consulta do município responde pelo seu lugar
 
 Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. "Leve com você" vai para o fim.
