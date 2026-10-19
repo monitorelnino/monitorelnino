@@ -369,6 +369,30 @@ def sondar() -> int:
     return 0
 
 
+def campos_do(prefixo: str, listar=None, baixar=None) -> int:
+    """Só mede e imprime: campos e contagem das colunas curtas do arquivo mais recente do prefixo."""
+    import collections
+    arqs = arquivos_do_sinan(prefixo, listar)
+    if not arqs:
+        print(f"{prefixo}: nenhum arquivo"); return 1
+    caminho, prelim = arqs[-1]
+    bruto = (baixar or baixar_ftp)(caminho)
+    desc, linhas = ler_dbc(bruto)
+    print(f"{caminho} preliminar={prelim} bytes={len(bruto)}")
+    print("campos:", [(d["nome"], d["tamanho"]) for d in desc])
+    cont = {d["nome"]: collections.Counter() for d in desc if d["tamanho"] <= 2}
+    n = 0
+    for r in linhas:
+        n += 1
+        for k, c in cont.items():
+            c[r.get(k)] += 1
+    print("registros:", n)
+    for k, c in cont.items():
+        if len(c) <= 12:
+            print(k, dict(c.most_common()))
+    return 0
+
+
 # ---------------------------------------------------------------- autoteste
 def _dbf_de_teste(linhas, campos=(("UF", 2), ("MES", 2))) -> bytes:
     t_reg = 1 + sum(t for _, t in campos)
@@ -533,6 +557,8 @@ TESTES = {
 if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(rodar_autoteste(TESTES))
+    if "--campos" in sys.argv:
+        sys.exit(campos_do(sys.argv[sys.argv.index("--campos") + 1]))
     if "--sondar" in sys.argv:
         sys.exit(sondar())
     if "--desfecho" in sys.argv:
