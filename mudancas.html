@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=a2fc06dd">
+<link rel="stylesheet" href="assets/base.css?v=a15e2732">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,6 +49,10 @@
     <dl class="mudancas-lista">
       <dt>19/10/2026 · Diário do RJ lido por data</dt>
       <dd>O Diário Oficial do Rio de Janeiro passa a ser lido por data: a IOERJ lista os cadernos do dia, abre o visualizador de cada um e baixa a Parte I (Poder Executivo), cortada no último `%%EOF`. Dia sem caderno não é edição. Rota provada nos runs 39037938143 e 39038338576; autoteste offline com recorte real. Adaptador +55 linhas, recurso novo.</dd>
+      <dt>19/10/2026 · Defesa civil: o que lemos e o que o reconhecimento pressupõe</dt>
+      <dd>Em 722 dos 953 municípios o ato municipal não foi localizado: eles entram pela portaria federal, e a data do decreto vinha inferida dela. O cartão do município e a tabela da figura passam a dizer &quot;ato municipal não localizado até o corte&quot; e a data em que a União reconheceu, em vez de apresentar como lida uma data que não foi lida. Quem tem o ato segue com documento, data e fonte. Contagem do topo e mapa não mudam.</dd>
+      <dt>19/10/2026 · Cartões de emergência um degrau abaixo</dt>
+      <dd>Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.</dd>
       <dt>19/10/2026 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos</dt>
       <dd>Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.</dd>
       <dt>19/10/2026 · SIH: internações por grupo de causa na forma comum</dt>
@@ -163,10 +167,6 @@
       <dd>Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.</dd>
       <dt>16/10/2026 · Juiz da saúde estadual: duas rodadas pela válvula (dado)</dt>
       <dd>Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.</dd>
-      <dt>16/10/2026 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país</dt>
-      <dd>`topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.</dd>
-      <dt>16/10/2026 · Regra das quatro funções da figura passa a ter portão (A7-14)</dt>
-      <dd>`figura.quatro_funcoes_separadas` (título, legenda, nota, fonte) deixa de ser só texto: quem a julga é `verificar_texto_publico.js`, que já reprova nota, dica ou parágrafo dentro da figura e exige um título, um subtítulo e um crédito. Restam 13 regras só texto.</dd>
     </dl>
   </section>
 </main>
