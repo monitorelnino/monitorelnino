@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
+
+A aba de calor dizia "consultado em 01/10/2026", data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.
+
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
 O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
