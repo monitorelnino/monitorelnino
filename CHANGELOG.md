@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Proteja-se: a consulta do município responde pelo seu lugar
+## 2026-10-19 · #856 · Proteja-se: a consulta do município responde pelo seu lugar
 
 Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. "Leve com você" vai para o fim.
 
