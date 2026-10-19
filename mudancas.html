@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=9105a8ac"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=f6defbc0">
+<link rel="stylesheet" href="assets/base.css?v=889a2620">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,8 +47,14 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>19/10/2026 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação</dt>
-      <dd>Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão &quot;Resposta&quot; dos números e a figura &quot;O que foi localizado em cada estado&quot;, que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.</dd>
+      <dt>19/10/2026 · Imprensa: a semana em seis números, e o que recomendamos concluir</dt>
+      <dd>A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; &quot;Como citar&quot; e &quot;Para redações&quot; viram &quot;Como citar e reproduzir&quot;; entram &quot;Quando o site é atualizado&quot;, &quot;Como os índices funcionam&quot;, glossário e erratas. Saem a grade de páginas e a sanfona.</dd>
+      <dt>17/10/2026 · Para gestores: o cartão do plano diz a situação do município</dt>
+      <dd>O cartão &quot;Plano para o El Niño 2026/2027&quot; da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.</dd>
+      <dt>19/10/2026 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos</dt>
+      <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
+      <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
+      <dd>`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem &quot;semana epidemiológica&quot;. `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o &quot;ciclo&quot;. Metodologia §111.</dd>
       <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
       <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
       <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
@@ -161,12 +167,6 @@
       <dd>O portão de conformidade passa a reprovar seção numerada (&quot;1.&quot;, &quot;II ·&quot;) e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.</dd>
       <dt>16/10/2026 · Triagem e preparação de pistas com um dono só (F66)</dt>
       <dd>O juiz de 16/10 perdeu o commit porque a busca web de cadência, fora da vez da noite, regravou o nível de confiança de pistas que a descoberta já tinha triado. Triagem fica só na descoberta e preparação só no juiz; a cadência e a rodada semanal apenas acrescentam pistas. O ensaio da noite reprova um segundo dono.</dd>
-      <dt>16/10/2026 · Inicial: links da abertura e sai a linha da checagem</dt>
-      <dd>Na abertura do MARÉ Legal, &quot;os municípios inscritos no cadastro nacional&quot; leva ao cadastro do MDR e &quot;a União já indicou … municípios&quot; volta a levar ao mapa da Defesa civil (link perdido no #770). Sai a linha &quot;Cada registro vem com a sua fonte · Última checagem em …&quot; (editoria, 16/10), com o script, o fallback, o estilo e as checagens que a alimentavam.</dd>
-      <dt>16/10/2026 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)</dt>
-      <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
-      <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
-      <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
     </dl>
   </section>
 </main>

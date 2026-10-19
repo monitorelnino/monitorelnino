@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-16. 71 falhas; 65 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-19. 73 falhas; 67 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -644,3 +644,21 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** grep: verificacao_fonte.url sem leitor em .py/.js/.html; #815: 50,1 → 44,2 MB sem apagar pista
 - **Correção:** O verificador não grava mais a cópia; as cópias iguais saíram do dado (#815). O crescimento de ~2 MB/noite da fila segue a tratar.
 - **Caso de teste:** `scripts/verificar_tamanho_dos_dados.py`
+
+## F72 · Juiz promoveu plano com endereço de notícia e a rede de proteção estava desligada
+
+- **Noite:** 2026-10-17→2026-10-18
+- **Sintoma:** main vermelha desde 18/10 02:36 e Publicar dados barrado: verificar_fichas_municipais reprova Ilhabela/SP (plano com endereço de notícia).
+- **Causa:** aplicar_promocoes_do_juiz gravava o registro sem a régua D1 (rodar_portoes não inclui o portão das fichas) e o resolvedor de domínio caía em `except ImportError → None` porque `municipio_do_dominio` vive em scripts/.
+- **Prova:** python3 scripts/verificar_fichas_municipais.py na main: 1 problema (Ilhabela/SP); `from municipio_do_dominio import` falha fora de scripts/ (ModuleNotFoundError)
+- **Correção:** A promoção valida o registro com problemas_de_documento antes de gravar e importa scripts.municipio_do_dominio sem fallback; o registro saiu do banco (#851).
+- **Caso de teste:** `scripts/verificar_fichas_municipais.py`
+
+## F73 · Fila de pistas voltou a passar de 50 MB: texto de trabalho de pista encerrada
+
+- **Noite:** 2026-10-18→2026-10-19
+- **Sintoma:** data/pistas_imprensa.json com 52,7 MB em 18/10 e 56,1 MB em 19/10 07:07; portão de tamanho vermelho.
+- **Causa:** Pista encerrada guardava título, trecho, verificação, preparação e histórico de tentativas, que só serviram para julgá-la; a fila cresce 1–3 MB por elo de busca.
+- **Prova:** 20 MB dos 56 MB eram texto de pistas encerradas (medida por aberta()); trecho_documento e criterios de veiculo_nao_listado sem leitor
+- **Correção:** limpar_fila_de_pistas.compactar tira o texto de trabalho da pista encerrada, aplicado pela triagem toda noite; 56,1 → 45,9 MB (#851). A poda das 9.165 pistas de decreto sem leitor aguarda a editoria.
+- **Caso de teste:** `scripts/limpar_fila_de_pistas.py`
