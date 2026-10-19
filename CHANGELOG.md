@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.
 
+## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
+
+A aba de calor dizia "consultado em 01/10/2026", data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.
+
 ## 2026-10-19 · #885 · Portões: sete regras de dado num só, nove arquivos a menos
 
 Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
