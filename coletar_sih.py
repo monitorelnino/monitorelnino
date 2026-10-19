@@ -39,6 +39,8 @@ import pathlib
 import re
 import sys
 import time
+from collections import deque
+from concurrent.futures import ThreadPoolExecutor
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
@@ -74,6 +76,7 @@ INICIO = "2019-01"
 ORCAMENTO_S = 1800   # tempo de leitura por rodada
 REPEDIR = 3          # meses mais recentes relidos quando o arquivo mudou de tamanho
 PARADA_APOS = 5      # falhas seguidas: a fonte caiu, a rodada para
+JANELA = 3           # downloads em voo ao mesmo tempo
 
 
 # ============================================================================================
@@ -204,19 +207,29 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     fila = a_ler(listagem, lidos, base.get("fonte", {}).get("tamanhos_recentes", {}))
     novos = {g: {} for g in GRUPOS}
     falhas, seguidas, feitos, inicio = [], 0, set(), relogio()
-    for uf, comp, nome in fila:
-        if relogio() - inicio > orcamento_s or seguidas >= PARADA_APOS:
-            break
-        try:
-            _desc, linhas = decodificar(baixar(f"{FTP_DIR_RD}/{nome}"), CAMPOS)
-            ag = agregar({**r, "_UF": uf} for r in linhas)
-            if comp not in ag.get("total", {}).get(uf, {}):
-                raise ValueError("arquivo sem registro da competência")
-            for g in GRUPOS:
-                novos[g].setdefault(uf, {})[comp] = ag[g][uf][comp]
-            feitos.add((uf, comp)); seguidas = 0
-        except Exception as e:  # noqa: BLE001
-            falhas.append(f"{nome}: {type(e).__name__}"); seguidas += 1
+    # Os downloads (a maior parte do tempo, medida em 19/10/2026: ~11 s por arquivo, 2 s de CPU) correm
+    # `JANELA` à frente da decodificação; a decodificação e a agregação seguem em ordem, numa linha só.
+    with ThreadPoolExecutor(JANELA) as ex:
+        voo, itens = deque(), iter(fila)
+        while True:
+            while len(voo) < JANELA and relogio() - inicio <= orcamento_s and seguidas < PARADA_APOS:
+                t = next(itens, None)
+                if t is None:
+                    break
+                voo.append((t, ex.submit(baixar, f"{FTP_DIR_RD}/{t[2]}")))
+            if not voo:
+                break
+            (uf, comp, nome), pedido = voo.popleft()
+            try:
+                _desc, linhas = decodificar(pedido.result(), CAMPOS)
+                ag = agregar({**r, "_UF": uf} for r in linhas)
+                if comp not in ag.get("total", {}).get(uf, {}):
+                    raise ValueError("arquivo sem registro da competência")
+                for g in GRUPOS:
+                    novos[g].setdefault(uf, {})[comp] = ag[g][uf][comp]
+                feitos.add((uf, comp)); seguidas = 0
+            except Exception as e:  # noqa: BLE001
+                falhas.append(f"{nome}: {type(e).__name__}"); seguidas += 1
     if not feitos:
         print(f"SIH: nenhum arquivo lido ({len(fila)} na fila, {len(falhas)} falha(s)); os arquivos anteriores ficam")
         return False
@@ -392,7 +405,7 @@ def autoteste() -> int:
     caiu = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19),
                    lambda d, c: (_ for _ in ()).throw(OSError("fora")))
     casos.append(("fonte fora do ar: nada gravado e a rodada para na 5ª falha seguida",
-                  caiu is False and not gravados and len(lidos_n) == PARADA_APOS))
+                  caiu is False and not gravados and PARADA_APOS <= len(lidos_n) < PARADA_APOS + JANELA))
     fila = a_ler(dict(listagem), set(), {})
     casos.append(("fila vai do mês mais recente ao mais antigo", fila[0][1] == "2025-08" and fila[-1][1] == "2025-07"))
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8").split("def autoteste")[0]
