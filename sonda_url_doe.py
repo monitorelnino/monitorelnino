@@ -9,7 +9,12 @@ for url in sys.argv[1:]:
     if "#ctx=" in url:
         url, ctx = url.split("#ctx=", 1)
     try:
-        b = cb.buscar_uma_vez(url, timeout=12, origem="sonda_doe")
+        if url.startswith("POST:"):
+            url = url[5:]
+            base, _, qs = url.partition("?")
+            b = cb.enviar_uma_vez(base, dict(urllib.parse.parse_qsl(qs)), timeout=30, origem="sonda_doe")
+        else:
+            b = cb.buscar_uma_vez(url, timeout=12, origem="sonda_doe")
     except urllib.error.HTTPError as e:
         print(f"HTTP {e.code} {e.reason}"); continue
     except Exception as e:
