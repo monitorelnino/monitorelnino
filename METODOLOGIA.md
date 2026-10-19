@@ -1373,6 +1373,10 @@ A API do Monitor de Secas entrega a tabela por UF (§ dos dados tabulares) e as 
 
 `data/saude_municipio/<UF>.json`, escrito pelo elo da saúde depois dos coletores que ele lê, junta por código IBGE: o nível de alerta de dengue e de chikungunya do InfoDengue na semana mais recente que a fonte publica, com os casos estimados e a última semana com notificações registradas (a capital que a série municipal não traz recebe o alerta por capital, da mesma fonte); a classe de excesso de calor do Painel do Ministério da Saúde, no vocabulário dele; e o degrau de saúde do plano municipal na leitura automática (§10.1), casado pela URL do documento registrado. Município que a fonte não leu fica sem o bloco, e a página diz que não foi lido — nunca zero. Respiratória grave e MARÉ Saúde são do estado e a página os diz como do estado.
 
+### 41.12 O que o mapa de qualidade do ar não diz (19/10/2026)
+
+A nota saiu da página por decisão da editoria (19/10/2026): é limitação de método, e método vive aqui. Cidade **sem ponto no mapa** é cidade sem estação oficial nem sensor da rede — não é ar limpo, é ausência de medição. **Estação regulatória e sensor de baixo custo medem na mesma unidade, não com a mesma confiabilidade**, e por isso o mapa não os compara entre si: cada ponto diz de qual das duas origens vem. O padrão brasileiro de PM2,5 em 24 horas é de **50 µg/m³** (PI-1, CONAMA 506/2024), e é contra ele que a leitura do mapa se faz.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.

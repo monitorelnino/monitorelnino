@@ -154,7 +154,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   }));
   const doc = pe.documento ? String(pe.documento).replace(/^.*?(Boletim)/, '$1') : 'Boletim do Painel El Niño';
   const sub = document.getElementById('riscoPrevistoSub');
-  if (sub) sub.textContent = doc + ' · até março de 2027 · previsão, não observação';
+  if (sub) sub.textContent = doc + ' · até março de 2027';
   credito('boxRiscoPrevisto', 'painel_el_nino');
   // "Boletim prevê para", ao lado do título de cada bloco de família.
   const preve = (id, teste) => { const el = document.getElementById(id); if (!el) return;
@@ -626,7 +626,6 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
   const fontes = (ENQ && ENQ.fontes) || {};
   [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023'],
-   ['boxListaSemiarido', 'mapListaSemiarido', 'legListaSemiarido', v => v.sa, 'seca', 'Sudene, Resolução Condel nº 176/2024'],
    ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente']].forEach(([caixa, svg, leg, consta, chave, fonte]) => {
     const f = fontes[chave] || {};
     if (!ENQ) {
@@ -791,10 +790,17 @@ function põeCat(elId, id, valores, reserva){
     const sinopse = String(pg.sinopse || '').toLowerCase();
     const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
     const f = fonte('cpc_ensodisc');
-    põeCat('stPrevisaoVariacao',
-      I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
+    // 19/10/2026 (editoria): a frase do prognóstico SAIU do cartão e entrou no texto da seção. No
+    // cartão ela ocupava seis linhas e era o que deixava a grade desigual; e, sendo leitura de
+    // probabilidade, é interpretação — que por regra vive no texto narrativo, não no cartão.
+    const apoio = txtCat(I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
       {limiar: pg.limiar === 'acima de' ? 'acima de' : 'de', probabilidade: pg.probabilidade,
-       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em});
+       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em}, null);
+    const resumo = document.getElementById('stResumo');
+    if (apoio && resumo) {
+      resumo.textContent = resumo.textContent.trim() + ' ' + apoio;
+      resumo.setAttribute('data-conteudo-fixado', '1');
+    }
   }
 
   // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
@@ -846,10 +852,14 @@ function põeCat(elId, id, valores, reserva){
   if (ruins.length && grade) {
     const ult = ruins.map(c => c.pior.iqar.medido_em).sort().pop();
     grade.insertAdjacentHTML('beforeend', '<div class="cartao-numero cartao-numero--risco_agora" data-cartao="ar_iqar_ruim">'
-      + '<p class="cartao-numero-rotulo">Cidades com IQAr Ruim, Muito Ruim ou Péssima' + (hora(ult) ? ', ' + esc(hora(ult)) : '') + '</p>'
+      // 19/10/2026 (editoria): a hora sai do rótulo e vai para o rodapé, com a atualização.
+      // DIVERGÊNCIA: o rótulo pedido era "Cidades com IQAr ruim ou pior"; "pior" é avaliativo e o
+      // portão de texto público reprova. Ficam os nomes das classes, que são os da própria fonte.
+      + '<p class="cartao-numero-rotulo">Cidades com IQAr Ruim, Muito Ruim ou Péssima</p>'
       + '<p class="cartao-numero-valor">' + esc(String(ruins.length)) + '</p>'
       + '<p class="cartao-numero-variacao">primeira leitura</p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
-    MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr'], data: (fontesAr.monitorar || {}).consultado_em});
+    MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr', hora(ult) ? 'medição de ' + hora(ult) : ''].filter(Boolean),
+      data: (fontesAr.monitorar || {}).consultado_em});
   }
 })();
 
