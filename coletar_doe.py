@@ -842,12 +842,15 @@ def edicoes_rj(buscar_fn, base):
 # página faz), em ordem de data decrescente; o filtro de data do servidor não age, então a data se acha
 # varrendo as páginas do topo para baixo. O PDF sai em `BaixarArquivoDiario.aspx?id_file=` (2,7 MB em 19/10).
 # Só o DODF (Executivo) entra; DCL, TCDF e boletins ficam fora. O dodf.df.gov.br estoura tempo no runner.
-def edicoes_df(buscar_fn, base):
+def edicoes_df(buscar_fn, base, pausa=RITMO_APIFRONT_S, dormir=None):
     pagina = 100
     memo = {}
+    dormir = dormir or time.sleep
 
     def lote(inicio):
         if inicio not in memo:
+            if memo:
+                dormir(pausa)
             u = (f"{base.rstrip('/')}/ashx/Datatable/ResultadoDePesquisaDiarioDatatable.ashx?tipo_pesquisa=diario"
                  f"&bbusca=sinj_diario&sEcho=1&iDisplayStart={inicio}&iDisplayLength={pagina}")
             o = json.loads(buscar_fn(u, timeout=60, origem="coletar_doe").decode("utf-8", "replace"))
@@ -862,7 +865,7 @@ def edicoes_df(buscar_fn, base):
         for _ in range(60):
             src = lote(inicio)
             if not src:
-                break
+                raise FormatoDaBuscaMudou("lista do SINJ-DF acabou antes de alcançar a data pedida")
             for d in src:
                 if not re.fullmatch(r"\d\d/\d\d/\d{4}", str(d.get("dt_assinatura"))):
                     raise FormatoDaBuscaMudou("diário do SINJ-DF sem dt_assinatura no formato esperado")
@@ -876,6 +879,8 @@ def edicoes_df(buscar_fn, base):
             if min(ordem) < alvo[6:] + alvo[3:5] + alvo[:2]:
                 break
             inicio += pagina
+        else:
+            raise FormatoDaBuscaMudou("varredura do SINJ-DF não alcançou a data em 60 páginas (limite)")
         return achados
     return fn
 
@@ -1178,6 +1183,20 @@ def fonte_do_coletor() -> str:
 # A lista canônica do projeto, num só lugar: trava que cobre três dos cinco arquivos não é trava.
 BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
                   "monitor_saude.json")
+
+
+def _pausas_df():
+    """Cada página nova do SINJ-DF depois da primeira espera a pausa por domínio; página repetida não."""
+    dorme = []
+    pg = lambda ini: json.dumps({"aaData": [{"_source": {"nm_tipo_fonte": "DODF", "nr_diario": ini, "dt_assinatura": d, "arquivos": []}}
+                                              for d in ("19/10/2026",)]}).encode()
+    n = {"i": 0}
+
+    def buscar(u, **k):
+        n["i"] += 1
+        return pg(n["i"]) if n["i"] < 3 else FIXTURE_DIARIOS_DF
+    edicoes_df(buscar, "https://x/sinj", pausa=0.0, dormir=dorme.append)("2026-10-14")
+    return dorme
 
 
 def _levanta(fn, excecao) -> bool:
@@ -1531,6 +1550,9 @@ def autoteste() -> int:
                         {"edicao": "DODF 193", "url": "https://x/sinj/BaixarArquivoDiario.aspx?id_file=ccc-3"},
                         {"edicao": "DODF 117 (suplemento)", "url": "https://x/sinj/BaixarArquivoDiario.aspx?id_file=ddd-4"}]
                      and edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj")("2026-10-14") == []
+                     and _levanta(lambda: edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj", dormir=lambda s: None)("2026-10-01"), FormatoDaBuscaMudou)
+                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData": []}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
+                     and _pausas_df() == [0.0, 0.0]
                      and _levanta(lambda: edicoes_df(lambda u, **k: b'{"outra": 1}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
                      and _levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData":[{"_source":{"dt_assinatura":"2026-10-16"}}]}',
                                                      "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)),

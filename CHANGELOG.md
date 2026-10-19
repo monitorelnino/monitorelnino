@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-19 · #889 · Diário oficial do DF lido por data
 
-O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF lista os diários da data e serve o PDF do DODF (2,7 MB em 19/10), enquanto o endereço próprio do diário não responde ao coletor. Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +60 (adaptador novo, recurso novo, com autoteste offline).
+O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF lista os diários da data e serve o PDF do DODF (2,7 MB em 19/10), enquanto o endereço próprio do diário não responde ao coletor. Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +86 (adaptador novo, recurso novo, com autoteste offline).
 
 ## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
 
