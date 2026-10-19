@@ -251,11 +251,9 @@ def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_
     # copiava. A regra passa a estar no instantâneo, que é a fonte das duas superfícies.
     if alertas_pararam((alertas or {}).get("gerado_em")):
         res = {}
-    muns_alerta = set(((alertas or {}).get("municipios") or {}).keys())
     quando = (alertas or {}).get("gerado_em")
     decret = {k: v for k, v in ((decretados or {}).get("municipios") or {}).items() if v.get("decreto")}
     reconhecidos = {k: v for k, v in decret.items() if v.get("reconhecido")}
-    cruzados = [k for k in decret if k in muns_alerta]
     limite = (dt.date.fromisoformat(hoje_iso) - dt.timedelta(days=7)).isoformat()
 
     def iso(v):
@@ -278,10 +276,6 @@ def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_
         {"id": "municipios_aviso_inmet", "valor": res.get("municipios_inmet"),
          "referencia": quando, "rotulo": "municípios sob aviso do Inmet",
          "fonte": "Inmet", "sem_coleta": not res},
-        {"id": "decreto_e_alerta_ao_mesmo_tempo", "valor": len(cruzados) if res else None,
-         "referencia": quando,
-         "rotulo": "municípios com decreto de emergência e alerta ao mesmo tempo",
-         "fonte": "MARÉ (cruzamento das duas consultas)", "sem_coleta": not res},
         {"id": "municipios_decretaram", "valor": len(decret) or nacional.get("n_municipios"),
          "referencia": "desde 29/06/2026", "variacao": novos,
          "rotulo": "municípios que decretaram emergência ou calamidade",
@@ -530,8 +524,6 @@ def _autoteste() -> int:
     pid = {c["id"]: c for c in dc}
     ok("alerta do Cemaden vem do resumo", pid["municipios_alerta_cemaden"]["valor"] == 13)
     ok("aviso do Inmet vem do resumo", pid["municipios_aviso_inmet"]["valor"] == 2886)
-    ok("o cruzamento conta quem decretou E está sob alerta",
-       pid["decreto_e_alerta_ao_mesmo_tempo"]["valor"] == 1)
     ok("quem decretou conta o conjunto do consolidado", pid["municipios_decretaram"]["valor"] == 2)
     ok("a variação da semana conta o ato dos últimos sete dias",
        pid["municipios_decretaram"]["variacao"] == 1)
@@ -541,10 +533,9 @@ def _autoteste() -> int:
        cartoes_da_defesa_civil(
            {"gerado_em": "x", "resumo": {"municipios_cemaden": 1}, "municipios": {}},
            {"municipios": {"1": {"decreto": True, "primeiro_decreto": "01/10/2026"}}},
-           {"nacional": {"pop_sob_decreto": 10}}, "2026-10-02")[4]["variacao"] is None)
+           {"nacional": {"pop_sob_decreto": 10}}, "2026-10-02")[3]["variacao"] is None)
     ok("os cartões de agora não trazem variação",
-       all("variacao" not in pid[i] for i in ("municipios_alerta_cemaden", "municipios_aviso_inmet",
-                                              "decreto_e_alerta_ao_mesmo_tempo")))
+       all("variacao" not in pid[i] for i in ("municipios_alerta_cemaden", "municipios_aviso_inmet")))
     ok("sem alerta coletado o cartão é sem_coleta",
        cartoes_da_defesa_civil({}, {}, {}, "2026-10-02")[0]["sem_coleta"] is True)
 
