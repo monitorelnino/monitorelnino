@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS</dt>
+      <dd>A página deixa de chamar o risco de &quot;fogo&quot;: a abertura diz &quot;chuvas fortes, incêndio, seca e calor&quot; e a aba vira &quot;Incêndio e fumaça&quot;, como o título da seção. Na emergência, &quot;a Defesa Civil avisa sem cadastro&quot; passa a &quot;a Defesa Civil envia os alertas automaticamente&quot;, no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.</dd>
       <dt>19/10/2026 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição</dt>
       <dd>Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.</dd>
       <dt>19/10/2026 · Financiamento: o dinheiro por risco, onde chega e o mês a mês</dt>
@@ -165,8 +167,6 @@
       <dd>Em 15/10 o juiz gastou 72 minutos em 16 pistas do mesmo host morto e parou na 17ª de 251. Host sem resposta de rede sai do resto da rodada; queda de rede deixa a pista pendente, não recusada; recusas antigas por queda voltam à fila; o corte só avança sem pendente.</dd>
       <dt>16/10/2026 · Consulta do município na Saúde: um arquivo por UF</dt>
       <dd>O elo da saúde grava `data/saude_municipio/&lt;UF&gt;.json` (`gerar_saude_municipio.py`): por município, alerta de dengue e chikungunya do InfoDengue, classe de calor do MS e degrau de saúde do plano. Município não lido fica sem o bloco, nunca zero. A resposta sanitária do `monitor_saude.json` passa a trazer a lista de eventos. METODOLOGIA §41.11.</dd>
-      <dt>16/10/2026 · Consulta do município no Monitor de riscos: um arquivo por UF</dt>
-      <dd>O elo dos sinais grava `data/riscos_municipio/&lt;UF&gt;.json`: por município, focos de 30 dias, avisos e alertas em vigor, decretos de resposta recentes, estação de ar e sensor a até 50 km e capital mais próxima, com distância. Aviso e estação vão por índice. METODOLOGIA §41.10.</dd>
     </dl>
   </section>
 </main>
