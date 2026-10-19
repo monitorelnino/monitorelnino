@@ -120,7 +120,6 @@ O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha 
 ## 2026-10-19 · #876 · Diário oficial do RS lido por data
 
 O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).
-=======
 
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
 
