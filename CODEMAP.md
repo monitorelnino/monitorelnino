@@ -40,7 +40,7 @@ Atualizado em 19/10/2026.
 | `assets/js/prefeituras.js` | prefeituras.html | `enquadramento_card.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `geo_uf.json`, `meta.json` (+3) | `verificar_acessibilidade.js`, `verificar_ancoras_internas.py`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json`, `geo_uf.json`, `municipios_ibge_referencia.json`, `orientacoes_oficiais.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/proveniencia.js` | monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+74) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+75) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/semana.js` | saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | 2 | não |
