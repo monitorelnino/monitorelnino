@@ -9,6 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #885 · Portões: sete regras de dado num só, nove arquivos a menos
+
+Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
+
+## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
+
+A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
+
+## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
+`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
+
 ## 2026-10-19 · #879 · Defesa civil: o que lemos e o que o reconhecimento pressupõe
 
 Em 722 dos 953 municípios o ato municipal não foi localizado: eles entram pela portaria federal, e a data do decreto vinha inferida dela. O cartão do município e a tabela da figura passam a dizer "ato municipal não localizado até o corte" e a data em que a União reconheceu, em vez de apresentar como lida uma data que não foi lida. Quem tem o ato segue com documento, data e fonte. Contagem do topo e mapa não mudam.
