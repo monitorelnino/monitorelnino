@@ -35,7 +35,7 @@ A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.ht
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
 
-## 2026-10-19 · #PR · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias
+## 2026-10-19 · #868 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias
 
 O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.
 
