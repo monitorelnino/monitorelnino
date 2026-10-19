@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato de layout da Defesa civil (HANDOVER_DEFESA_CIVIL_16-10-2026, reforma de 17/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante. Ordem: abertura, números do topo, consulta do município, mapa municipal das emergências (figura principal), do decreto ao reconhecimento. Valor em reais só em Financiamento; as listas federais de risco estão no Monitor de riscos.",
+  "_governanca": "Contrato de layout da Defesa civil (HANDOVER_DEFESA_CIVIL_16-10-2026, reforma de 17/10/2026; ajustes de 19/10/2026, HANDOVER_DEFESA_CIVIL_AJUSTES). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Quem verifica é scripts/verificar_layout.py, portão bloqueante. Ordem: abertura, números do topo, consulta do município e mapa municipal das emergências (figura principal). Valor em reais só em Financiamento; as listas federais de risco estão no Monitor de riscos.",
   "pagina": "defesa-civil.html",
   "componentes": {
     "numeros": ".cartao-numero",
@@ -16,8 +16,8 @@
       "id": "dc-topo",
       "h2": null,
       "tipo": "numeros",
-      "grade": ".grade-numeros--compacta",
-      "linhas": 1,
+      "grade": ".grade-numeros--3",
+      "linhas": 2,
       "cartoes": [
         {
           "id": "municipios_aviso_inmet",
@@ -44,6 +44,12 @@
           "valor_el": "topoReconhecidos"
         },
         {
+          "id": "decreto_sem_reconhecimento_30_dias",
+          "tipo": "numero",
+          "chave": "resposta/municipios_decretados.json",
+          "valor_el": "topoPendencia"
+        },
+        {
           "id": "populacao_sob_decreto",
           "tipo": "numero",
           "chave": "resposta/por_uf.json",
@@ -53,7 +59,8 @@
       "exige_texto": [
         "Defesa Civil nacional, no Diário Oficial da União"
       ],
-      "_nota_variacao": "Variação da semana só nos cartões desde 29/06, lida do instantâneo resposta/topo_defesa_civil.json (uma definição, no gerador; a Imprensa lê o mesmo). Os cartões de aviso e alerta não têm variação: a página não guarda retrato do que estava em vigor há sete dias."
+      "_nota_variacao": "Variação da semana só nos cartões desde 29/06, lida do instantâneo resposta/topo_defesa_civil.json (uma definição, no gerador; a Imprensa lê o mesmo). Os cartões de aviso e alerta não têm variação: a página não guarda retrato do que estava em vigor há sete dias.",
+      "_nota_pendencia": "Ajuste 4 de 19/10/2026: o número dos 30 dias sem reconhecimento saiu da figura 'Onde a cadeia parou' e virou o sexto cartão, logo depois de 'Reconhecidos pela União' — a ordem do pedido vence a palavra 'sexto', que descreve o tamanho da faixa. Sem variação da semana: o instantâneo não guarda a pendência de sete dias atrás. MEDIDO no navegador: com `.grade-numeros--compacta` os seis cartões dão CINCO colunas em 1280 px (1.132 px de grade / 12rem de mínimo = 5,9) e sobra um cartão órfão na segunda linha, que é o que o pedido proíbe. A faixa passa à grade de três, que já existe: duas linhas de três no desktop, duas colunas no tablet e no celular, nenhum órfão. PARA A B1: se a variante compacta ganhar teto de três colunas acima de 1020 px (ou 11rem no `minmax`, que faria caber seis), esta faixa volta a ela."
     },
     {
       "id": "municipio",
@@ -81,32 +88,8 @@
           "chave": "resposta/municipios_decretados.json#municipios"
         }
       ],
-      "_nota": "Ponto na sede municipal (municipios_ibge_referencia.json), cor pela família do evento declarado no ato (tokens chuva, seca, fogo, cinza-quente), cheio quando reconhecido pela União e vazado quando só decreto. Evento ainda não classificado no consolidado aparece como classe nomeada ('evento em classificação até o corte'), nunca vazio. Barras por tipo: valor na ponta; 'Tipo não declarado no ato' e 'Outros tipos declarados' por último. Sem valor em reais no tooltip."
-    },
-    {
-      "id": "reconhecimento",
-      "h2": "Do decreto ao reconhecimento",
-      "tipo": "figuras",
-      "grade": ".grade-figuras--3",
-      "ultima_linha_incompleta": true,
-      "cartoes": [
-        {
-          "id": "etapas_semana_a_semana",
-          "tipo": "grafico",
-          "el": "boxEtapas",
-          "chave": "resposta/municipios_decretados.json#semanas"
-        },
-        {
-          "id": "onde_a_cadeia_parou",
-          "tipo": "grafico",
-          "el": "boxPendencia",
-          "chave": "resposta/municipios_decretados.json#dias_sem_reconhecimento"
-        }
-      ],
-      "exige_texto": [
-        "Do decreto ao reconhecimento, semana a semana"
-      ],
-      "_nota": "O handover pede o gráfico em 2/3 e a pendência em 1/3; a variante de 2/3 na grade de três foi pedida à B1 (LOTES, 17/10). Até lá, a grade de três com a última linha incompleta. A linha 'com recurso autorizado' e a pendência 'reconhecido sem recurso' estão em Financiamento (#defesaCivil). Divergência declarada."
+      "_nota": "Ponto na sede municipal (municipios_ibge_referencia.json), cor pela família do evento declarado no ato (tokens chuva, seca, fogo, cinza-quente), cheio quando reconhecido pela União e vazado quando só decreto. Evento ainda não classificado no consolidado aparece como classe nomeada ('evento em classificação até o corte'), nunca vazio. Barras por tipo: valor na ponta; 'Tipo não declarado no ato' e 'Outros tipos declarados' por último. Sem valor em reais no tooltip.",
+      "_nota_ajustes_19_10": "Ajustes 1 a 3 de 19/10/2026: a abertura da seção saiu (repetia a legenda da figura); cada barra usa o token do seu evento, o mesmo do mapa e da legenda; cada figura declara a sua unidade na legenda ('nº de municípios' no mapa, 'nº de decretos' nas barras). A lista buscável do rodapé CONTINUA: scripts/verificar_runtime_mapas.js exige um campo de busca em todo .cartao-mapa (linha 127) e a tabela filtrável dentro de #boxEmergencias (linha 142), e o arquivo é da B1. Divergência declarada; pedido registrado no LOTES."
     }
   ],
   "texto_proibido": [
