@@ -530,21 +530,6 @@
       "conclusoes_nao_permitidas": "atribuir as internações ao El Niño; ler as últimas semanas como queda, porque elas ainda recebem notificação",
       "funcao_narrativa": "mostra o que é registrado em doença respiratória, sem ligar ao El Niño"
     },
-    "saude.html#boxVerificacaoUF": {
-      "tipo": "lista por unidade da federação",
-      "pergunta_que_responde": "O que foi localizado em cada estado: plano de saúde, coordenação na saúde e ligação com o governo do estado?",
-      "dimensao_da_preparacao": "o que o estado publicou",
-      "universo": "27 unidades da federação",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "até o corte da edição",
-      "variavel_principal": "documento oficial localizado em cada um dos três itens, com data",
-      "fonte": "MARÉ, sobre diários oficiais e portais das secretarias estaduais de saúde",
-      "metodologia": "Leitura de documento oficial em cada estado. O que não foi localizado aparece como não localizado até o corte, nunca como inexistente.",
-      "conclusoes_permitidas": "dizer o que foi localizado em cada estado e quando",
-      "conclusoes_nao_permitidas": "afirmar que o estado não tem o documento; somar os três itens num escore próprio",
-      "funcao_narrativa": "abre a prova de cada estado, documento por documento"
-    },
     "monitor-de-riscos.html#boxEpisodios": {
       "tipo": "série temporal",
       "pergunta_que_responde": "Como o RONI do ciclo em curso se compara ao dos episódios de El Niño anteriores da série, mês a mês do início do ciclo?",
@@ -567,6 +552,30 @@
         "chamar o ciclo em curso de episódio antes de completadas as cinco médias trimestrais"
       ],
       "funcao_narrativa": "o ciclo em curso lido contra os episódios que o próprio dado define",
+      "acao_relacionada": null
+    },
+    "monitor-de-riscos.html#boxNino34Semanal": {
+      "tipo": "série temporal",
+      "pergunta_que_responde": "Como a anomalia semanal da temperatura do mar na região Niño 3.4 variou desde o início da série publicada?",
+      "dimensao_da_preparacao": null,
+      "universo": "todas as semanas do arquivo semanal vigente do CPC/NOAA, de janeiro de 2025 em diante",
+      "unidade_de_analise": "semana",
+      "territorio": "região Niño 3.4",
+      "periodo": "da primeira semana da série ao último valor publicado",
+      "variavel_principal": "anomalia da temperatura da superfície do mar (°C)",
+      "denominador": "média de referência 1991–2020, declarada pelo próprio arquivo",
+      "fonte": "NOAA/CPC — índices semanais de temperatura da superfície do mar",
+      "metodologia": "Leitura direta do arquivo semanal do CPC/NOAA, sem cálculo nosso. A escala vertical cobre a faixa do próprio dado, em passos de 0,5 °C, e traz os limiares de +0,5 °C e −0,5 °C da NOAA/CPC.",
+      "conclusoes_permitidas": [
+        "dizer qual foi a anomalia de cada semana publicada",
+        "dizer há quantas semanas a série está acima do limiar de +0,5 °C"
+      ],
+      "conclusoes_nao_permitidas": [
+        "tratar o valor semanal como classificação de episódio, que é do RONI",
+        "projetar as semanas seguintes a partir da forma da linha",
+        "ler o semanal e o RONI como se medissem a mesma coisa"
+      ],
+      "funcao_narrativa": "a leitura semanal mais recente do Pacífico, ao lado do índice que classifica o episódio",
       "acao_relacionada": null
     },
     "financiamento.html#boxFnsEmergenciaUF": {
