@@ -17,7 +17,7 @@ jobs:
       timeout_minutos: 60
       comandos: |
         coletar_datasus_dbc.py --desfecho leptospirose
-        coletar_sisab.py
+        coletar_sisab.py --desfecho diarreias
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
