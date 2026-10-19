@@ -74,7 +74,7 @@ Atualizado em 19/10/2026.
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `estados.json`, `fontes_doe.json`, `indice.json`, `monitor_saude.json`, `municipios.json` (+2) | — | 3 | não |
-| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 5 | não |
+| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 4 | não |
 | `coletar_espin.py` | — | `saude_sinais.json` | — | 1 | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
 | `coletar_financiamento.py` | — | `compromissos_federais.json`, `consultas.json`, `emendas.json`, `financiamento_uf.json`, `por_uf.json`, `recursos_uf.json` (+2) | — | — | não |
@@ -97,7 +97,7 @@ Atualizado em 19/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **184** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `evidencias.json`, `fontes_consultadas.json`, `log_buscas.json`, `robots_registro.json` (+1) | — | **178** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 1 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -115,7 +115,7 @@ Atualizado em 19/10/2026.
 | `gerar_financiamento_semana.py` | — | `financiamento/semana.json` | — | — | não |
 | `gerar_imprensa_semana.py` | — | `semana.json` | — | 1 | não |
 | `gerar_lai.py` | — | — | — | — | não |
-| `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | 5 | não |
+| `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | 4 | não |
 | `gerar_monitor_saude_v04.py` | — | `monitor_saude_v04.json` | — | — | não |
 | `gerar_pacote_blog.py` | — | `financiamento/caminhos.json` | — | — | não |
 | `gerar_painel.py` | — | `agregados.json`, `atos_resposta.json`, `fichas.json`, `lista.json`, `municipios.json`, `verificacao_municipal.json` | — | — | não |
@@ -128,7 +128,7 @@ Atualizado em 19/10/2026.
 | `juiz.py` | — | — | — | 9 | SIM |
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
-| `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 2 | não |
+| `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
@@ -145,7 +145,6 @@ Atualizado em 19/10/2026.
 | `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 7 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
 | `recalcular_mare.py` | — | — | — | 7 | SIM |
-| `registrar_saude_central.py` | — | `saude_uf.json` | — | — | não |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | 2 | não |
@@ -172,7 +171,6 @@ Atualizado em 19/10/2026.
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/migrar_sobras_do_doe.py` | — | `pistas_doe.json` | — | — | não |
 | `scripts/migrar_zero_humano.py` | — | `saude_desfechos/fontes_uf.json`, `saude_desfechos/gatilhos.json`, `saude_sinais.json` | — | — | não |
-| `scripts/orcamento_da_noite.py` | — | `cursor_da_noite.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 4 | não |
 | `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 14 | não |
