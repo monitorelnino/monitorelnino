@@ -803,6 +803,8 @@ def edicoes_rs(buscar_fn, base):
                                  origem="coletar_doe").decode("utf-8", "replace"))
         if not isinstance(o, list):
             raise FormatoDaBuscaMudou("lista do DOE-RS fora do contrato (esperava uma lista de diários)")
+        if any(isinstance(d, dict) and d.get("id") and not d.get("dataString") for d in o):
+            raise FormatoDaBuscaMudou("lista do DOE-RS sem dataString (contrato mudou)")
         return [{"edicao": f"{d.get('numeroEdicao')}/{d.get('anoEdicao')}",
                  "url": f"{base.rstrip('/')}/public/diarios/download/{d['id']}/pdf"}
                 for d in o if isinstance(d, dict) and d.get("id") and d.get("dataString") == data]
@@ -1426,6 +1428,7 @@ def autoteste() -> int:
                         {"edicao": "200/53", "url": "https://x.rs.gov.br/public/diarios/download/54767/pdf"},
                         {"edicao": "200/84", "url": "https://x.rs.gov.br/public/diarios/download/54768/pdf"}]
                      and edicoes_rs(lambda u, **k: FIXTURE_EDICOES_RS, "https://x")("2026-10-17") == []
+                     and _levanta(lambda: edicoes_rs(lambda u, **k: b'[{"id":1,"data":"x"}]', "https://x")("2026-10-16"), FormatoDaBuscaMudou)
                      and _levanta(lambda: edicoes_rs(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
