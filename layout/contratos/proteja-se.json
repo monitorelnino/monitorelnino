@@ -19,7 +19,7 @@
     "40199",
     "Envie o CEP da sua região para 40199 e receba os avisos da Defesa Civil.",
     "Para cancelar, envie SAIR e o CEP.",
-    "a Defesa Civil avisa sem cadastro"
+    "a Defesa Civil envia os alertas automaticamente"
    ],
    "_nota": "Os quatro números que o handover exige (192, 199, 190, 40199) mais o 193 dos Bombeiros, que já estava na barra e que o handover não mandou tirar — tirar número de socorro de uma página de emergência por causa de uma lista ilustrativa seria a leitura menos conservadora. Divergência declarada."
   },
@@ -51,6 +51,8 @@
  "_divergencias": [
   "19/10/2026: o §3 pede os cinco telefones \"no formato compacto do Monitor de riscos\". Eles ficam em `.emerg-cartao`, o componente que esta página já tem para número de emergência: ele é um link `tel:` (o cartão de número não é), já entrega uma linha no desktop e duas colunas no celular, e carrega a instrução de envio e cancelamento do 40199. Trocar por `.cartao-numero` tiraria o toque para ligar de uma página de emergência.",
   "19/10/2026: o glifo de caixa (☐) das listas do guia vem de `.ficha-col li::before`, em `assets/base.css`, que não é desta faixa. Pedido registrado no LOTES (PARA A B1); até lá o glifo fica.",
+  "19/10/2026 (§1 do HANDOVER_PROTEJA_SE_E_COLETA_MUNICIPAL): os cinco cartões de emergência são para ficar um degrau menores, mas `.emerg-cartao` vive em `assets/base.css`, que não é desta faixa. Degraus pedidos e repassados à B1 no LOTES: número de `--fs-display` para `--fs-h1`, o do 40199 de `--fs-h1` para `--fs-h3`, preenchimento vertical um degrau abaixo, os cinco da mesma altura. Até lá o tamanho fica.",
+  "19/10/2026: \"fogo\" sai do texto público desta página (abertura e rótulo da aba), menos em \"não queime lixo nem use fogo para limpar terrenos e pastagens\": ali a palavra nomeia o ato de queimar, não a classe de risco, e \"incêndio\" no lugar dela diria outra coisa. Identificador do evento, token de cor e chave do catálogo seguem `fogo`, por serem código.",
   "19/10/2026: a abertura aprovada no §2 e a reforma do guia (§5, com a aba de dengue e a troca da fonte) não entram nesta rodada: a abertura descreve orientações que só existem depois que a janela A preservar as páginas oficiais do MIDR e do Ministério da Saúde (§7.1), e nada se escreve sem fonte. A abertura de hoje fica; as duas entram juntas no PR seguinte."
  ]
 }
