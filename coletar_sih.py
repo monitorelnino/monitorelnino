@@ -16,9 +16,23 @@ ROTA
 FTP público do DATASUS. Leitor `.dbc` e FTP (senha anônima que identifica o cliente, pausa entre
 conexões, novas tentativas) são os de `coletar_datasus_dbc.py` (E1), importados.
 
+LEITURA EM RODADAS
+------------------
+Um arquivo por UF e mês (27 × 94 desde jan/2019, alguns MB cada). A rodada lê do mês mais recente ao
+mais antigo até o orçamento de tempo acabar; o que não foi lido fica fora da série (ausência, nunca
+zero) e a lacuna é declarada no arquivo. Os três meses mais recentes são relidos quando o tamanho do
+arquivo no FTP mudou (AIH reapresentada). Enquanto houver mês por ler, os cortes do mapa são
+recalculados; completa a leitura, congelam (§108).
+
+DESFECHOS (um arquivo por grupo, na forma comum de `desfechos_sus.py`)
+`internacoes_respiratorias`, `internacoes_cardio`, `internacoes_renal`, `internacoes_desidratacao`,
+`internacoes_fumaca`, `internacoes_calor` e `hepatite_a` (internações com diagnóstico principal B15:
+internações, não casos notificados; o SINAN de hepatite A no FTP parou em 2023).
+
 USO
   python3 coletar_sih.py --autoteste
   python3 coletar_sih.py --sondar          # só mede e imprime; não grava nada
+  python3 coletar_sih.py [--orcamento S]   # lê o FTP por até S segundos e grava os sete arquivos comuns
 """
 import datetime
 import pathlib
@@ -44,7 +58,22 @@ GRUPOS = {
     "desidratacao": [("E86", "E86")],
     "fumaca": [("T59", "T59")],
     "calor": [("T67", "T67")],
+    "hepatite_a": [("B15", "B15")],
 }
+# grupo -> (desfecho do arquivo comum, rótulo). O rótulo descreve a contagem, sem interpretar.
+DESFECHOS = {
+    "respiratorias": ("internacoes_respiratorias", "Internações por doenças respiratórias agudas (CID-10 J00 a J22)"),
+    "cardio": ("internacoes_cardio", "Internações por doença isquêmica do coração e cerebrovascular (CID-10 I20 a I25 e I60 a I64)"),
+    "renal": ("internacoes_renal", "Internações por insuficiência renal (CID-10 N17 a N19)"),
+    "desidratacao": ("internacoes_desidratacao", "Internações por desidratação (CID-10 E86)"),
+    "fumaca": ("internacoes_fumaca", "Internações por efeito tóxico de gases, fumaças e vapores (CID-10 T59)"),
+    "calor": ("internacoes_calor", "Internações por efeitos do calor e da luz (CID-10 T67)"),
+    "hepatite_a": ("hepatite_a", "Internações por hepatite aguda A (CID-10 B15)"),
+}
+INICIO = "2019-01"
+ORCAMENTO_S = 1800   # tempo de leitura por rodada
+REPEDIR = 3          # meses mais recentes relidos quando o arquivo mudou de tamanho
+PARADA_APOS = 5      # falhas seguidas: a fonte caiu, a rodada para
 
 
 # ============================================================================================
@@ -131,6 +160,95 @@ def form_tabnet(html: str) -> dict:
 # ============================================================================================
 # Sondagem (rede; só mede e imprime)
 # ============================================================================================
+def _arquivos_por_uf(listagem: dict) -> dict:
+    """{UF: {'AAAA-MM': nome}} dos RD de 2019 em diante, a partir de {nome: bytes}. Função pura."""
+    out = {}
+    for nome in listagem:
+        m = RE_RD.match(nome.strip())
+        if m and m.group(1).upper() in UFS and f"{2000 + int(m.group(2)):04d}-{m.group(3)}" >= INICIO:
+            out.setdefault(m.group(1).upper(), {})[f"{2000 + int(m.group(2)):04d}-{m.group(3)}"] = nome
+    return out
+
+
+def a_ler(listagem: dict, lidos: set, tamanhos: dict, repetir: int = REPEDIR) -> list:
+    """[(uf, 'AAAA-MM', nome)] a baixar, do mês mais recente ao mais antigo (as UFs de um mês antes do
+    mês anterior): o que ainda não foi lido e, entre os `repetir` meses mais recentes de cada UF, o que
+    mudou de tamanho desde a última leitura. Função pura."""
+    fila = []
+    for uf, d in _arquivos_por_uf(listagem).items():
+        recentes = sorted(d)[-repetir:]
+        fila += [(uf, c, n) for c, n in d.items()
+                 if (uf, c) not in lidos or (c in recentes and listagem[n] != tamanhos.get(n))]
+    return sorted(fila, key=lambda t: (t[1], t[0]), reverse=True)
+
+
+def tamanhos_recentes(listagem: dict, lidos: set, repetir: int = REPEDIR) -> dict:
+    """{nome: bytes} dos `repetir` meses mais recentes já lidos de cada UF. Função pura."""
+    return {n: listagem[n] for uf, d in _arquivos_por_uf(listagem).items()
+            for c, n in d.items() if c in sorted(d)[-repetir:] and (uf, c) in lidos}
+
+
+def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, decodificar=None,
+            orcamento_s: int = ORCAMENTO_S, relogio=None) -> bool:
+    """Lê o que falta no FTP e grava os sete arquivos comuns. Sem nenhum arquivo lido, nada é regravado."""
+    import desfechos_sus as ds
+    from coletar_datasus_dbc import baixar_ftp, ler_dbc, listar_ftp
+    from coletores_base import gravar, hoje_editorial, ler
+    listar = listar or listar_ftp; baixar = baixar or baixar_ftp; decodificar = decodificar or ler_dbc
+    ler_fn = ler_fn or ler; gravar_fn = gravar_fn or gravar; relogio = relogio or time.monotonic
+    hoje = hoje or hoje_editorial()
+    ant = {g: ds.ler_desfecho(d, ler_fn) for g, (d, _r) in DESFECHOS.items()}
+    base = ant["respiratorias"] or {}
+    lidos = {(uf, p) for uf, s in base.get("serie", {}).items() if uf != "BR" for p, v in s.items() if v is not None}
+    listagem = dict(listar(FTP_DIR_RD))
+    fila = a_ler(listagem, lidos, base.get("fonte", {}).get("tamanhos_recentes", {}))
+    novos = {g: {} for g in GRUPOS}
+    falhas, seguidas, feitos, inicio = [], 0, set(), relogio()
+    for uf, comp, nome in fila:
+        if relogio() - inicio > orcamento_s or seguidas >= PARADA_APOS:
+            break
+        try:
+            _desc, linhas = decodificar(baixar(f"{FTP_DIR_RD}/{nome}"), CAMPOS)
+            ag = agregar({**r, "_UF": uf} for r in linhas)
+            if comp not in ag.get("total", {}).get(uf, {}):
+                raise ValueError("arquivo sem registro da competência")
+            for g in GRUPOS:
+                novos[g].setdefault(uf, {})[comp] = ag[g][uf][comp]
+            feitos.add((uf, comp)); seguidas = 0
+        except Exception as e:  # noqa: BLE001
+            falhas.append(f"{nome}: {type(e).__name__}"); seguidas += 1
+    if not feitos:
+        print(f"SIH: nenhum arquivo lido ({len(fila)} na fila, {len(falhas)} falha(s)); os arquivos anteriores ficam")
+        return False
+    pendentes = [t for t in fila if (t[0], t[1]) not in lidos | feitos]
+    ultimo = ultimo_por_uf(listagem)
+    atrasadas = sorted(u for u, c in ultimo.items() if u != "BR" and c < max(ultimo.values()))
+    lacunas = ([f"{len(pendentes)} arquivo(s) de UF e mês ainda não lidos; a leitura segue nas próximas rodadas"]
+               if pendentes else []) + \
+              ([f"falha de leitura nesta rodada: {', '.join(falhas[:5])}" + (" e outras" if len(falhas) > 5 else "")]
+               if falhas else []) + \
+              ([f"UF cujo último mês publicado é anterior ao do país: {', '.join(atrasadas)}"] if atrasadas else [])
+    fonte = {"sistema": "SIH/SUS, AIH reduzida (arquivos RD), Ministério da Saúde, microdados no FTP do DATASUS",
+             "url": f"ftp://ftp.datasus.gov.br{FTP_DIR_RD}/",
+             "criterio": "AIH aprovadas, exceto longa permanência (IDENT 5); diagnóstico principal (DIAG_PRINC)",
+             "data_do_periodo": "competência de processamento (ANO_CMPT e MES_CMPT)", "uf": "UF do hospital",
+             "tamanhos_recentes": tamanhos_recentes(listagem, lidos | feitos)}
+    ufs = sorted(ds.uf_por_codigo(ler_fn).values())
+    populacao = ds.populacao_por_uf(ler_fn)
+    ok = True
+    for g, (desfecho, rotulo) in DESFECHOS.items():
+        velho = (ant[g] or {}).get("serie", {})
+        serie = {uf: {**velho.get(uf, {}), **novos[g].get(uf, {})} for uf in ufs}
+        obj = ds.montar(desfecho=desfecho, rotulo=rotulo, unidade="internações", periodo="mes",
+                        territorio="UF do hospital", serie={u: s for u, s in serie.items() if s}, fonte=fonte,
+                        cadencia="mensal; o DATASUS publica o mês cerca de 45 dias depois do fim e ele cresce com AIH reapresentada",
+                        coletado_em=hoje.isoformat(), anos_preliminares=[hoje.year], n_parciais=1,
+                        populacao=populacao, anterior=None if pendentes else ant[g], lacunas=lacunas)
+        ok = ds.gravar_desfecho(obj, gravar_fn=gravar_fn) and ok
+    print(f"SIH: {len(feitos)} arquivo(s) lido(s), {len(falhas)} falha(s), {len(pendentes)} por ler; gravado: {ok}")
+    return ok
+
+
 def sondar() -> int:
     from coletar_datasus_dbc import baixar_ftp, ler_dbc, listar_ftp
     from coletores_base import buscar, enviar, hoje_editorial
@@ -216,6 +334,67 @@ def autoteste() -> int:
                        '<option value="niuf2606.dbf">Jun/2026</select>')
     casos.append(("lê o formulário", form == {"Arquivos": [("niuf2607.dbf", "Jul/2026", True),
                                                            ("niuf2606.dbf", "Jun/2026", False)]}))
+    # ---- gravação na forma comum (fixtures; ler, gravar, listar, baixar e decodificar são falsos)
+    gravados, lidos_n = {}, []
+
+    def fake_ler(c):
+        if c == "municipios_ibge_referencia.json":
+            return [{"codigo_ibge": f"{i + 11}00000", "uf": u} for i, u in enumerate(UFS)]
+        if c == "populacao_censo2022.json":
+            return {f"{i + 11}00000": 100000 for i in range(27)}
+        return gravados.get(c)
+
+    def fake_gravar(c, obj, **_kw):
+        gravados[c] = obj
+
+    meses = ("2025-07", "2025-08")
+    listagem = [(f"RD{u}{m[2:4]}{m[5:]}.dbc", 1000) for u in UFS for m in meses]
+
+    def fake_baixar(caminho):
+        lidos_n.append(caminho)
+        return caminho
+
+    def fake_decod(dados, campos):
+        aa, mm = dados[-8:-6], dados[-6:-4]
+        if "AC2507" in dados:
+            raise OSError("fora do ar")
+        reg = [{"ANO_CMPT": f"20{aa}", "MES_CMPT": mm, "IDENT": "1", "DIAG_PRINC": c}
+               for c in ("J180", "J189", "I219", "A09", "B150")]
+        return None, iter(reg)
+
+    ok1 = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod)
+    o = gravados.get("saude_desfechos/internacoes_respiratorias.json", {})
+    casos.append(("1ª rodada grava os sete arquivos comuns", ok1 and len(gravados) == 7))
+    casos.append(("grupo conta só o seu CID; BR soma só onde as 27 UFs têm valor",
+                  o["serie"]["SP"]["2025-08"] == 2 and o["serie"]["BR"]["2025-08"] == 54 and o["serie"]["BR"].get("2025-07") is None))
+    casos.append(("mês que falhou (AC 2025-07) fica fora, não vira zero; lacuna declarada",
+                  "2025-07" not in o["serie"]["AC"] and any("AC2507" in x for x in o["lacunas"])))
+    casos.append(("hepatite A por B15 é zero medido onde o arquivo foi lido",
+                  gravados["saude_desfechos/hepatite_a.json"]["serie"]["SP"]["2025-08"] == 1))
+    casos.append(("cortes do mapa calculados sobre 2019 a 2025", len(o["cortes_mapa"]["cortes"]) == 4))
+    # segunda rodada: nada novo, tamanhos iguais → só o mês que falhou é pedido de novo
+    lidos_n.clear()
+    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 20), fake_decod)
+    casos.append(("2ª rodada pede só o que faltou", len(lidos_n) == 1 and lidos_n[0].endswith("RDAC2507.dbc")))
+    # arquivo recente que mudou de tamanho é relido
+    lidos_n.clear()
+    listagem2 = [(n, 2000 if n.startswith("RDSP") else t) for n, t in listagem]
+    coletar(lambda c: listagem2, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 21), fake_decod)
+    casos.append(("mês recente com tamanho novo é relido", sum("RDSP" in x for x in lidos_n) == 2))
+    # orçamento de tempo e queda da fonte
+    gravados.clear(); lidos_n.clear(); t = iter(range(0, 10 ** 6, 100))
+    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod,
+            orcamento_s=350, relogio=lambda: next(t))
+    casos.append(("orçamento acaba: lê o mais recente primeiro e declara os pendentes",
+                  len(lidos_n) == 3 and all("2508" in x for x in lidos_n)
+                  and any("ainda não lidos" in x for x in gravados["saude_desfechos/hepatite_a.json"]["lacunas"])))
+    gravados.clear(); lidos_n.clear()
+    caiu = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19),
+                   lambda d, c: (_ for _ in ()).throw(OSError("fora")))
+    casos.append(("fonte fora do ar: nada gravado e a rodada para na 5ª falha seguida",
+                  caiu is False and not gravados and len(lidos_n) == PARADA_APOS))
+    fila = a_ler(dict(listagem), set(), {})
+    casos.append(("fila vai do mês mais recente ao mais antigo", fila[0][1] == "2025-08" and fila[-1][1] == "2025-07"))
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8").split("def autoteste")[0]
     proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
     casos.append(("trava estrutural: não escreve nos arquivos do índice",
@@ -237,8 +416,8 @@ def main() -> int:
         return autoteste()
     if "--sondar" in sys.argv:
         return sondar()
-    print("coletar_sih: a série espera a estrutura comum de desfechos (E1); use --sondar ou --autoteste")
-    return 0
+    orcamento = int(sys.argv[sys.argv.index("--orcamento") + 1]) if "--orcamento" in sys.argv else ORCAMENTO_S
+    return 0 if coletar(orcamento_s=orcamento) else 1
 
 
 if __name__ == "__main__":
