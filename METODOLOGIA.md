@@ -4261,6 +4261,8 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 
 **O mês da extração não é mês coberto (correção de 17/10/2026).** O arquivo preliminar do SINAN é extraído no meio de um mês: na leitura de 17/10, o de 2026 tinha notificações até os primeiros dias de julho. A série da leptospirose passa a terminar no último mês inteiro de notificação (junho), e só os anos com arquivo lido entram com zero medido. O `ultimo` de cada UF traz também o `consolidado`, o último mês que já não é parcial.
 
+**Dengue, chikungunya e SRAG na forma comum (19/10/2026).** Os três já têm coletor (`coletar_arboviroses_sinan.py`, `coletar_srag_sivep.py`), e o arquivo que a página de hoje lê não muda. A forma comum (`dengue.json`, `chikungunya.json`, `srag.json`) nasce lendo esses arquivos, sem nova coleta: notificações por UF de residência e semana de início dos sintomas, com as semanas que o coletor de origem marca como incompletas devolvidas como valor e marcadas `parcial`. A faixa habitual e os cortes do mapa seguem as regras desta seção.
+
 ## 109. Óbitos registrados na forma comum dos desfechos (17/10/2026)
 
 **O que a série conta.** Registros de óbito lavrados em cartório no mês, por UF, como o Portal da Transparência do Registro Civil (ARPEN/CNJ) agrega, de janeiro de 2019 ao mês corrente, em `data/saude_desfechos/obitos.json`, na forma do §108. É a mesma consulta do coletor de 29/09 (`coletar_obitos_registro_civil.py`), estendida até 2019 para a faixa habitual e os cortes do mapa; o arquivo antigo, que a página lê, não muda. Não é óbito ocorrido no mês nem óbito por causa. O mês corrente é parcial: o registro entra ao longo dos dias. Mês que a fonte não respondeu fica sem valor e declarado, nunca zero.
