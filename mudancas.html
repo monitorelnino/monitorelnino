@@ -49,6 +49,10 @@
     <dl class="mudancas-lista">
       <dt>19/10/2026 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota</dt>
       <dd>Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida. =======</dd>
+      <dt>19/10/2026 · Portões: sete regras de dado num só, nove arquivos a menos</dt>
+      <dd>Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.</dd>
+      <dt>19/10/2026 · Diário oficial do RJ lido por data</dt>
+      <dd>O Rio de Janeiro passa a ter rota de leitura: a página de cadernos da data e o identificador do visualizador dão o PDF da Parte I (Poder Executivo), sem cookie (4,7 MB em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +30 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>19/10/2026 · Consulta do município: o cartão diz quantos atos não couberam</dt>
       <dd>O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer &quot;e mais N atos no período&quot;. Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.</dd>
       <dt>19/10/2026 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde</dt>
@@ -163,10 +167,6 @@
       <dd>O juiz julga até o prazo; sobrando fila, grava `juiz.parcial` com o restante em vez de `juiz.feito`, e a reserva do despachante o redispara até 08:00 UTC. Pendente de documento julgada hoje não é rejulgada na mesma noite. Na `main`, o prazo de todo elo termina antes das 09:00. Sem sessão esperando run. Ensaio 28.</dd>
       <dt>17/10/2026 · Monitor de riscos recebe as três listas federais de risco</dt>
       <dd>Os mapas dos indicados pela União ao cadastro nacional (deslizamento e enchente), do Semiárido e dos prioritários do fogo saem da Defesa civil e entram no Monitor de riscos, como contexto dos blocos de chuva, seca e fogo, sem lista embaixo. O link da inicial e o índice de conteúdo apontam para `#boxListaIndicados`; o portão de mapas cobra as listas no Monitor. `mapaDeContagem` passa a ser do componente comum de mapas.</dd>
-      <dt>17/10/2026 · Consulta do município: um componente comum</dt>
-      <dd>`assets/js/consulta-municipio.js` monta a consulta estado → município (lista do estado, campo que abre com o estado, clique que esvazia, frase do nome fora da lista); cada página dá só a lista e o conteúdo do cartão. A inicial e o Monitor de riscos passam a usá-lo, sem mudança visual; as outras páginas o usarão nas reformas.</dd>
-      <dt>17/10/2026 · Busca web: marca de motor mudo não tira o município da fila (F69)</dt>
-      <dd>Na noite 16→17 a busca web rodou com fila vazia: 191 municípios só tinham, na janela de 15 dias, marcas &quot;motor_sem_resposta&quot; gravadas antes da regra de 14/10. `pendentes_na_janela` passa a ignorar essas marcas; o livro guarda o histórico. F69 no catálogo; caso no autoteste da busca web.</dd>
     </dl>
   </section>
 </main>

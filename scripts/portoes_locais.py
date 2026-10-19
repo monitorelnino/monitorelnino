@@ -121,34 +121,9 @@ def rodar(cmd: str, verboso: bool) -> tuple:
 #
 # Os portoes NAO mudam: continuam todos bloqueantes no PR, e a conformidade diaria do site
 # publicado segue igual. O que muda e so o que barra a PUBLICACAO.
-BARRAM_A_PUBLICACAO = (
-    "verificar_esquema_de_pista",      # integridade do dado: quarentena por arquivo
-    "verificar_seguranca",             # segredo e dado pessoal
-    "verificar_evidencia_sem_segredo",
-    "verificar_texto_publico",         # texto público inteiro: palavra proibida, semana, refrão, legendas, palavras
-    "verificar_runtime",               # pagina que nao renderiza
-    "verificar_tamanho_dos_dados",     # arquivo que estourou nao sobe
-    "verificar_marcadores_de_conflito",
-    "verificar_escrita_portavel",
-)
-
-
-def barra_a_publicacao(comando: str, declarados=None) -> bool:
-    """Este portao pode impedir a publicacao do dado do dia? Funcao pura.
-
-    08/10/2026 (A2-14): quem decide e a DECLARACAO no `portoes.yml` -- a linha
-    `# barra_publicacao: sim` acima do comando --, nao o casamento por substring. O casamento
-    mentia nos dois sentidos: pegava o `--autoteste` do portao do esquema em vez do portao,
-    incluia `verificar_legendas` (que mede texto de pagina, nao dado) e deixava fora o
-    `texto_proibido`, que vive em `verificar_conformidade.py`.
-
-    `declarados` e o conjunto de comandos declarados, injetado por quem leu o YAML. Sem ele, cai
-    na lista antiga -- que serve de rede, nao de regra.
-    """
-    cmd = str(comando or "")
-    if declarados is not None:
-        return cmd.strip() in declarados
-    return any(nome in cmd for nome in BARRAM_A_PUBLICACAO)
+# Quem decide e a DECLARACAO no `portoes.yml` -- a linha `# barra_publicacao: sim` acima do comando
+# (A2-14, 08/10/2026) --, nao o casamento por substring, que mentia nos dois sentidos. A lista paralela
+# que existia aqui como rede saiu em 19/10/2026: lista paralela sai de sincronia.
 
 
 def declarados_no_yaml(texto_do_yaml: str) -> set:
@@ -191,8 +166,7 @@ def main() -> int:
     elif pedido == "publicacao":
         declarados = declarados_no_yaml(
             (RAIZ / ".github" / "workflows" / "portoes.yml").read_text(encoding="utf-8"))
-        cmds = [(g, c, a) for g, c, a in todos
-                if barra_a_publicacao(c, declarados if declarados else None)]
+        cmds = [(g, c, a) for g, c, a in todos if c.strip() in declarados]
     else:
         cmds = [(g, c, a) for g, c, a in todos if pedido == "tudo" or g == pedido]
     if rapido:

@@ -23,7 +23,10 @@ O QUE ELE REPROVA
     disparar por horário, que é o problema que se quer resolver;
   · entrada sem `idempotencia` — sem isso o disparo repetido duplicaria coleta e commit;
   · entrada que aponte para um workflow que não existe mais;
-  · cron declarado no registro que não exista no workflow (o registro mentindo sobre o horário).
+  · cron declarado no registro que não exista no workflow (o registro mentindo sobre o horário);
+  · coleta de sinais físicos sem cadência diária (§307, 30/09/2026): sinal diário não pode cair em
+    cadência semanal. Trava a propriedade, não o arranjo — existe pelo menos um workflow com cron
+    diário, próprio ou herdado pela corrente (`workflow_run`), que chama `coletar_sinais_risco.py`.
 
 USO
   python3 scripts/verificar_temporizadores.py --autoteste
@@ -56,6 +59,52 @@ def crons_do_workflow(texto: str) -> list:
 def tem_agendamento(texto: str) -> bool:
     """O workflow tem gatilho de horário? Função pura."""
     return bool(re.search(r"^\s*schedule:\s*$", texto or "", re.M))
+
+
+SCRIPT_DOS_SINAIS = "coletar_sinais_risco.py"
+RE_NOME = re.compile(r"^name:\s*(.+?)\s*$", re.M)
+RE_ACIONADO_POR = re.compile(r"workflow_run:\s*\n\s*workflows:\s*\[([^\]]*)\]")
+
+
+def eh_diario(cron: str) -> bool:
+    """Cron que roda todo dia: dia-do-mês, mês e dia-da-semana livres. `0 8 * * 0` (domingo) não é."""
+    campos = str(cron or "").split()
+    return len(campos) == 5 and all(c.strip() == "*" for c in campos[2:])
+
+
+def nome_do_fluxo(texto: str) -> str:
+    m = RE_NOME.search(texto or "")
+    return m.group(1).strip().strip("\"'") if m else ""
+
+
+def acionado_por(texto: str) -> list:
+    m = RE_ACIONADO_POR.search(texto or "")
+    return [x.strip().strip("\"'") for x in m.group(1).split(",") if x.strip()] if m else []
+
+
+def tem_cadencia_diaria(arquivo: str, fluxos: dict, visitados=frozenset()) -> bool:
+    """Cron diário PRÓPRIO ou herdado: a noite é corrente (cada elo acionado pelo término do anterior),
+    e ler só o cron do próprio arquivo diria "sem cadência" sobre elo que roda todo dia. `visitados`
+    corta corrente circular, que não tem cadência."""
+    if arquivo in visitados:
+        return False
+    texto = (fluxos or {}).get(arquivo, "")
+    if any(eh_diario(c) for c in crons_do_workflow(texto)):
+        return True
+    por_nome = {nome_do_fluxo(t): n for n, t in (fluxos or {}).items() if nome_do_fluxo(t)}
+    return any(por_nome.get(a) and tem_cadencia_diaria(por_nome[a], fluxos, visitados | {arquivo})
+               for a in acionado_por(texto))
+
+
+def problemas_dos_sinais(fluxos: dict) -> list:
+    chamam = {n: t for n, t in (fluxos or {}).items() if SCRIPT_DOS_SINAIS in t}
+    if not chamam:
+        return [f"nenhum workflow chama {SCRIPT_DOS_SINAIS} — a coleta de sinais físicos sumiu"]
+    if any(tem_cadencia_diaria(n, fluxos) for n in chamam):
+        return []
+    return [f"{SCRIPT_DOS_SINAIS} só aparece em workflow sem cadência diária ({', '.join(sorted(chamam))}) — "
+            f"nem por cron próprio nem por corrente que nasça de um cron diário. Os sinais físicos são "
+            f"diários na fonte (decisão da editoria, 29/09/2026) e não podem cair em cadência semanal"]
 
 
 def problemas(registro: dict, workflows: dict) -> list:
@@ -155,11 +204,43 @@ def _autoteste() -> int:
        any("janela sem" in x for x in problemas(
            {"temporizadores": [dict(bom, janela={"inicio_utc": "01:00"})]}, wfs)))
 
+
+    # §307: sinal diário não cai em cadência semanal (era `verificar_cadencia_sinais.py`).
+    S = SCRIPT_DOS_SINAIS
+    diario = 'schedule:\n    - cron: "0 8 * * *"\n' + S
+    semanal = 'schedule:\n    - cron: "30 7 * * 0"\n' + S
+    ok("cron de todo dia é diário; de domingo, de dia 1 e de dia útil, não",
+       eh_diario("0 8 * * *") and eh_diario("0 1,3,5 * * *") and not eh_diario("30 7 * * 0")
+       and not eh_diario("0 8 1 * *") and not eh_diario("0 8 * * 1-5"))
+    ok("texto que não é cron e cron vazio não são diários", not eh_diario("todo dia") and not eh_diario(""))
+    ok("workflow diário passa; só semanal reprova; semanal + diário passa",
+       problemas_dos_sinais({"a.yml": diario}) == [] and len(problemas_dos_sinais({"a.yml": semanal})) == 1
+       and problemas_dos_sinais({"a.yml": semanal, "b.yml": diario}) == [])
+    ok("só manual e nenhum workflow chamando o coletor reprovam",
+       len(problemas_dos_sinais({"a.yml": "workflow_dispatch:\n" + S})) == 1
+       and len(problemas_dos_sinais({"a.yml": "nada aqui"})) == 1)
+    ok("a falha do semanal nomeia onde ele está e diz que a decisão é da editoria, em 29/09/2026",
+       "a.yml" in problemas_dos_sinais({"a.yml": semanal})[0] and "29/09/2026" in problemas_dos_sinais({"a.yml": semanal})[0])
+    cabeca = 'name: Cabeça\non:\n  schedule:\n    - cron: "5 0 * * *"\n'
+    elo = 'name: Elo\non:\n  workflow_run:\n    workflows: ["Cabeça"]\n    types: [completed]\n' + S
+    elo_s = elo.replace("Cabeça", "Semanal")
+    sem_nomeado = 'name: Semanal\non:\n  schedule:\n    - cron: "30 7 * * 0"\n'
+    ok("lê o nome do workflow e quem o aciona por workflow_run",
+       nome_do_fluxo(cabeca) == "Cabeça" and nome_do_fluxo("on:\n  push:") == ""
+       and acionado_por(elo) == ["Cabeça"] and acionado_por(cabeca) == [])
+    ok("elo de corrente diária passa; de corrente SEMANAL e de acionador inexistente reprovam",
+       problemas_dos_sinais({"cabeca.yml": cabeca, "elo.yml": elo}) == []
+       and len(problemas_dos_sinais({"s.yml": sem_nomeado, "elo.yml": elo_s})) == 1
+       and len(problemas_dos_sinais({"elo.yml": elo})) == 1)
+    ok("corrente circular não trava e reprova",
+       len(problemas_dos_sinais({"a.yml": 'name: A\non:\n  workflow_run:\n    workflows: ["B"]\n' + S,
+                                 "b.yml": 'name: B\non:\n  workflow_run:\n    workflows: ["A"]\n'})) == 1)
+
     # O estado real do repositório tem de passar.
     reg = json.loads(REGISTRO.read_text(encoding="utf-8")) if REGISTRO.exists() else {}
     reais = {p.name: p.read_text(encoding="utf-8", errors="replace")
              for p in WORKFLOWS.glob("*.yml")}
-    p_reais = problemas(reg, reais)
+    p_reais = problemas(reg, reais) + problemas_dos_sinais(reais)
     ok("o estado atual do repositório passa", p_reais == [])
     if p_reais:
         for x in p_reais[:6]:
@@ -192,7 +273,7 @@ def main() -> int:
     reg = json.loads(REGISTRO.read_text(encoding="utf-8"))
     wfs = {p.name: p.read_text(encoding="utf-8", errors="replace")
            for p in WORKFLOWS.glob("*.yml")}
-    p = problemas(reg, wfs)
+    p = problemas(reg, wfs) + problemas_dos_sinais(wfs)
     if p:
         print(f"✗ TEMPORIZADORES: {len(p)} problema(s):")
         for x in p:
