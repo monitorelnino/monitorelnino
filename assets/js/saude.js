@@ -137,11 +137,8 @@ async function __load(){
             + 'sala de situação ou centro de operações de emergência';
         }).catch(_erroSaude("saude:125"));
       }
-      if (el('nEmergSaude')) {
-        const r = (MSAUDE && MSAUDE.resposta) || {};
-        el('nEmergSaude').textContent = _qtdCartao(r.emergencias);
-        MonitorMapas.credito('fonteEmergSaude', {fontes: ['Diário Oficial da União e diários oficiais estaduais', 'emergência em saúde pública de importância nacional e decretos estaduais', r.desde ? 'desde ' + r.desde : ''].filter(Boolean), data: (MSAUDE || {}).gerado_em});
-      }
+      // O cartão "Resposta" saiu dos números em 19/10/2026 (HANDOVER_SAUDE_PAGINA §1.3 e §7): a
+      // emergência em saúde pública tem medidor próprio no topo, e zero não vira cartão.
     })();
 
   renderSRAG('srag');
@@ -982,44 +979,9 @@ const AREAS = [
     MonitorMapas.animarGauges(el('topoSaude'));
   }).catch(_erroSaude("saude:1066"));
 
-  /* 2 · O que foi localizado em cada estado: plano, coordenação na saúde e ligação com o governo
-   * do estado. Em linguagem de leitor — o leitor não precisa saber que internamente são F1 e F2. */
-  Promise.all([
-    fetch('data/saude_uf.json').then(r => r.ok ? r.json() : null),
-    fetch('data/monitor_saude_v04.json').then(r => r.ok ? r.json() : null),
-  ]).then(([SUFd, V04]) => {
-    const alvo = el('dlVerificacaoUF');
-    if (!alvo || !SUFd) return;
-    const uf04 = (V04 || {}).uf || {};
-    /* Cada linha: título · órgão · data do documento · link. O que não é título vive em `nota_interna`. */
-    const doc = o => (o && o.doc) ? [esc(o.doc), o.orgao && esc(o.orgao), o.data ? esc(o.data) : 'sem data no documento',
-      o.url && '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">Abrir o documento</a>'].filter(Boolean).join(' · ') : null;
-    alvo.innerHTML = UFS.map(uf => {
-      const u = (SUFd.uf || {})[uf] || {};
-      const inst = ((u.instrumentos || [])[0]) || {};
-      const c = uf04[uf] || {};
-      /* Não verificado não é "não localizado": sem bateria executada, o rótulo é o de "ainda não
-       * verificado", o mesmo do resto da página; "não localizado até o corte" só depois de verificar. */
-      const f1 = (c.coordenacao || {}).f1 || c.coordenacao, f2 = (c.coordenacao || {}).f2;
-      const nv = o => !o || o.status === 'NAO_VERIFICADO';
-      const linhas = [
-        ['Plano de saúde', doc(inst), nv(inst) ? 'ainda não verificado' : null],
-        ['Coordenação na saúde', doc(f1), nv(f1) ? 'ainda não verificada' : null],
-        ['Ligação com o governo do estado', doc(f2), nv(f2) ? 'ainda não verificada' : null],
-      ].map(([rot, v, semVerif]) => rot + ': ' + (v || semVerif || 'não localizado até o corte'));
-      return '<dt>' + esc(uf) + '</dt><dd>' + linhas.join('<br>') + '</dd>';
-    }).join('');
-    const linha = el('linhaVerificacaoUF');
-    if (linha) {
-      const comPlano = UFS.filter(uf => (((SUFd.uf || {})[uf] || {}).instrumentos || [{}])[0].doc).length;
-      linha.textContent = comPlano + ' de 27 com plano localizado · atualizado em ' + (SUFd.corte || '—');
-    }
-    const leg = el('legVerificacaoUF');
-    if (leg) leg.innerHTML = '<span class="escala">Documento oficial lido em cada estado; o que não foi localizado aparece como tal.</span>';
-    if (window.MonitorMapas) {
-      MonitorMapas.credito('boxVerificacaoUF', {fontes: ['MARÉ, sobre diários oficiais e portais das secretarias'], data: SUFd.corte});
-    }
-  }).catch(_erroSaude("saude:1103"));
+  /* A figura "O que foi localizado em cada estado" (lista dos 27) saiu da página em
+   * 19/10/2026 (HANDOVER_SAUDE_PAGINA §2.6 e §7): o documento, o órgão e a data de cada
+   * estado abrem na ficha do estado, pelo mapa e pela grade. */
 
   /* 3 · Risco previsto por estado (HANDOVER_SAUDE_PAGINA §2.5): as famílias dos boletins do Painel
    * El Niño em etiquetas de sigla, o mesmo componente do Monitor de riscos. */
