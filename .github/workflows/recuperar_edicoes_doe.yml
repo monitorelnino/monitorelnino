@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: orientacoes
-            timeout_minutos: 30
+      timeout_minutos: 30
       comandos: |
         coletar_orientacoes_oficiais.py
     secrets:
