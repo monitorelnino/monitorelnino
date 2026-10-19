@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #901 · Dengue, chikungunya e SRAG na forma comum dos desfechos
+
+`desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.
+
 ## 2026-10-19 · #897 · Portões: comentários de cache e corrida no YAML, em uma linha
 
 Consolidação, item 6. Os blocos longos de história sobre o cache do navegador, a idempotência, a corrida do medidor e as capturas, em `portoes.yml`, viram uma linha de porquê cada; a história fica no histórico. Lista de comandos, assuntos e marcadores de publicação idêntica (83 comandos). Linhas líquidas −29.
