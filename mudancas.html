@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>19/10/2026 · Diário oficial do RS lido por data</dt>
       <dd>O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).</dd>
+      <dt>19/10/2026 · Defesa civil: o que lemos e o que o reconhecimento pressupõe</dt>
+      <dd>Em 722 dos 953 municípios o ato municipal não foi localizado: eles entram pela portaria federal, e a data do decreto vinha inferida dela. O cartão do município e a tabela da figura passam a dizer &quot;ato municipal não localizado até o corte&quot; e a data em que a União reconheceu, em vez de apresentar como lida uma data que não foi lida. Quem tem o ato segue com documento, data e fonte. Contagem do topo e mapa não mudam.</dd>
       <dt>19/10/2026 · Cartões de emergência um degrau abaixo</dt>
       <dd>Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.</dd>
       <dt>19/10/2026 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos</dt>
@@ -165,8 +167,6 @@
       <dd>Na coleta das 15:46, 51 estações (INEA, CPRH, Ibram) traziam hora 4 a 5 h adiante da consulta e saíam como leitura atual. `parse_monitorar` passa a declarar lacuna quando a hora publicada passa da consulta em mais de 1 h (IQAr e sensores RedeAr); não se reinterpreta fuso que a fonte não declara. METODOLOGIA §41.7; autoteste novo.</dd>
       <dt>16/10/2026 · Juiz da saúde estadual: duas rodadas pela válvula (dado)</dt>
       <dd>Duas rodadas do juiz da saúde estadual com o código do #799: cerca de 140 pistas oficiais julgadas (contra 17 em 15/10), nenhuma promovida; 113 seguem pendentes, entre elas as do host do Amapá sem resposta. O corte da verificação segue 02/10, porque a fila não terminou.</dd>
-      <dt>16/10/2026 · Monitor de riscos: números de agora com a leitura anterior; avisos distintos no país</dt>
-      <dd>`topo_monitor_riscos.json` passa a trazer fogo, seca, avisos e probabilidade além do calor, cada cartão com `anterior` (valor e referência da leitura anterior). Avisos contam avisos distintos no país. A linha de fonte das listas federais nomeia MIDR e Casa Civil com a página do cadastro. Comentários sem `obrigado.html`.</dd>
     </dl>
   </section>
 </main>
