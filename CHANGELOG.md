@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O portão do guia "Leve com você" cobrava no máximo duas páginas, teto escrito com quatro famílias de risco. Com a quinta (dengue e chikungunya) o guia passa a ter três; o teto vira a constante `PAGINAS_MAX = 3`, com caso de teste para o limite. Pedido da B2, destrava o #912. Linhas líquidas: +4.
 
+## 2026-10-19 · #914 · O desfecho que falta na Saúde é dito em uma linha
+
+A seção de desfechos passa a declarar, abaixo da grade, qual dos seis desfechos em evidência ainda não tem série na forma comum. O nome vem do catálogo dos desfechos, não da página, e a linha some sozinha quando o arquivo nascer. Hoje ela diz: "Mortalidade geral entra quando a série estiver completa."
+
 ## 2026-10-19 · #911 · O cartão escolhido na Saúde fica visível
 
 Na seção de desfechos, o cartão escolhido passa a trazer a borda em musgo, e o ponteiro do mouse diz que o cartão responde ao clique. A faixa do topo continua sendo a da família. O estado já ia a quem usa leitor de tela; agora também está na tela, e o título da figura abaixo da grade segue nomeando o desfecho escolhido.
