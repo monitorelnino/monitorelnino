@@ -188,10 +188,14 @@ function __init(){
   // 4. Mês a mês: só o pago, fogo e seca
   // =========================================================
   /* Série do gerador (`semana.json` → `mes_a_mes`): só o pago, por MP, com o mês parcial marcado. */
-  const SERIES_MES = ((S && S.mes_a_mes) || []).map(m => {
-    const r = m.risco_declarado && (m.risco_declarado.risco || m.risco_declarado);
-    const fam = r || (m.id === 'mp1367' ? 'fogo' : m.id === 'mp1384' ? 'seca' : null);
-    return {numero: m.numero, rotulo: fam || m.tema, cor: P.familia[fam] || cor('cinza-quente'), meses: Object.fromEntries((m.meses || []).map(x => [x.mes, x]))};
+  /* O risco de uma série é o que o ATO declara. Enquanto `risco_declarado` não vier, a série se
+     nomeia pelo tema do próprio ato e usa a paleta de séries, que não carrega significado de risco:
+     dizer "fogo" e "seca" por id de MP seria classificação nossa, e as colunas acima dizem, com
+     razão, que essa classificação ainda não foi coletada. */
+  const SERIES_MES = ((S && S.mes_a_mes) || []).map((m, i) => {
+    const fam = m.risco_declarado && (m.risco_declarado.risco || m.risco_declarado);
+    return {numero: m.numero, rotulo: fam || m.tema, cor: P.familia[fam] || P.serie[i % P.serie.length],
+      meses: Object.fromEntries((m.meses || []).map(x => [x.mes, x]))};
   });
   const meses = [...new Set(SERIES_MES.flatMap(s => Object.keys(s.meses)))].sort();
   const rotMes = k => mesDe(k) + (SERIES_MES.some(s => (s.meses[k] || {}).parcial) ? ' (parcial)' : '');
@@ -223,8 +227,12 @@ function __init(){
         + link(a.url, 'Portaria nº ' + a.portaria) + ', de ' + esc(MonitorMapas.dataBR(a.data) || '')).join('<br>'))
       : linhaT(esc(lacuna(RECURSOS && RECURSOS.atualizado_em)));
     const fm = ((FNS_MUN && FNS_MUN.municipios) || {})[cod];
-    const corpoSus = !FNS_MUN ? linhaT(esc(lacuna(null))) : fm && fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), 'jan–' + esc(mesDe((sus || {}).ultimo_mes)) + '/2026')
-      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), 'jan–' + esc(mesDe((sus || {}).ultimo_mes)) + '/2026');
+    /* Três estados, não dois: arquivo não carregado, município fora do arquivo (o FNS cobre 5.533
+       dos 5.571) e município no arquivo com `emergencia` zero, que é zero medido. */
+    const janAte = 'jan–' + esc(mesDe((sus || {}).ultimo_mes)) + '/2026';
+    const corpoSus = !FNS_MUN || !fm ? linhaT(esc(lacuna(FNS_MUN && FNS_MUN.atualizado_em)))
+      : fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), janAte)
+      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), janAte);
     const t = ((TRANSF && TRANSF.municipios) || {})[cod];
     const mesesT = Object.keys((TRANSF && TRANSF.meses_lidos) || {}).sort();
     const corpoT = t ? linhaT(esc(reais(t.total)), Object.entries(t.por_rota || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => esc((ROTAS[k] || k) + ' ' + reais(v))).join(' · ')
@@ -237,8 +245,8 @@ function __init(){
       : linhaT(esc(classes[d.classe] || d.classe), esc(String(DESPESA.exercicio)));
     const doUF = Object.values((RECURSOS && RECURSOS.municipios) || {}).filter(m => m.uf === uf);
     const estaduais = comp.filter(i => new RegExp('Estadual \\(' + uf + '\\)').test(i.esfera || '') && i.valor_total);
-    const estado = tx('financiamento.municipio.estado.molde', {no_estado: (PREPOSICAO[uf] || 'Em') + ' ' + (NOME_UF[uf] || uf),
-      valor: reais(doUF.reduce((s, m) => s + (m.total_autorizado || 0), 0)) || 'R$ 0', n_mun: doUF.length,
+    const estado = !RECURSOS ? '' : tx('financiamento.municipio.estado.molde', {no_estado: (PREPOSICAO[uf] || 'Em') + ' ' + (NOME_UF[uf] || uf),
+      valor: reais(doUF.reduce((s, m) => s + (m.total_autorizado || 0), 0)), n_mun: doUF.length,
       estaduais: estaduais.map(i => '; ' + i.nome.split(' — ')[0] + ', ' + reais(i.valor_total) + ' declarados no ato estadual').join('')});
     card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-cartoes grade-cartoes--4">'
       + cartao('cartao--acento-argila', tx('financiamento.municipio.defesa_civil.titulo'), corpoDc)
