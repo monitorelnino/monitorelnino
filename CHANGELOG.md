@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #853 · Proteja-se: páginas oficiais de orientação preservadas por hash
+`coletar_orientacoes_oficiais.py` lê 13 páginas do Ministério da Saúde e da Defesa Civil nacional, preserva cada uma por hash e grava o trecho que sustenta cada item do guia em `data/orientacoes_oficiais.json`: 6 itens com fonte, 29 sem (lacuna declarada, a página não os publica). Reconfere o diretório estadual da Defesa Civil: DF e RO divergem, registrado sem reescrever. Peso zero.
+
 ## 2026-10-19 · #851 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos
 
 `aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.
