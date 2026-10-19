@@ -38,6 +38,7 @@ import datetime
 import pathlib
 import re
 import sys
+import threading
 import time
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor
@@ -191,15 +192,30 @@ def tamanhos_recentes(listagem: dict, lidos: set, repetir: int = REPEDIR) -> dic
             for c, n in d.items() if c in sorted(d)[-repetir:] and (uf, c) in lidos}
 
 
+def espacar(baixar, pausa: float, dormir=time.sleep, agora=time.monotonic):
+    """`baixar` com no mínimo `pausa` segundos entre o início de dois downloads, mesmo em threads
+    diferentes (a pausa do `_ftp` é por thread e não impede três conexões no mesmo instante)."""
+    trava, ultimo = threading.Lock(), [None]
+
+    def com_pausa(caminho):
+        with trava:
+            if ultimo[0] is not None and agora() - ultimo[0] < pausa:
+                dormir(pausa - (agora() - ultimo[0]))
+            ultimo[0] = agora()
+        return baixar(caminho)
+    return com_pausa
+
+
 def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, decodificar=None,
-            orcamento_s: int = ORCAMENTO_S, relogio=None) -> bool:
+            orcamento_s: int = ORCAMENTO_S, relogio=None, pausa: float = None) -> bool:
     """Lê o que falta no FTP e grava os sete arquivos comuns. Sem nenhum arquivo lido, nada é regravado."""
     import desfechos_sus as ds
-    from coletar_datasus_dbc import baixar_ftp, ler_dbc, listar_ftp
+    from coletar_datasus_dbc import PAUSA, baixar_ftp, ler_dbc, listar_ftp
     from coletores_base import gravar, hoje_editorial, ler
     listar = listar or listar_ftp; baixar = baixar or baixar_ftp; decodificar = decodificar or ler_dbc
     ler_fn = ler_fn or ler; gravar_fn = gravar_fn or gravar; relogio = relogio or time.monotonic
     hoje = hoje or hoje_editorial()
+    baixar = espacar(baixar, PAUSA if pausa is None else pausa)
     ant = {g: ds.ler_desfecho(d, ler_fn) for g, (d, _r) in DESFECHOS.items()}
     base = ant["respiratorias"] or {}
     lidos = {(uf, p) for uf, s in base.get("serie", {}).items() if uf != "BR" for p, v in s.items() if v is not None}
@@ -375,7 +391,7 @@ def autoteste() -> int:
                for c in ("J180", "J189", "I219", "A09", "B150")]
         return None, iter(reg)
 
-    ok1 = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod)
+    ok1 = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod, pausa=0)
     o = gravados.get("saude_desfechos/internacoes_respiratorias.json", {})
     casos.append(("1ª rodada grava os sete arquivos comuns", ok1 and len(gravados) == 7))
     casos.append(("grupo conta só o seu CID; BR soma só onde as 27 UFs têm valor",
@@ -387,25 +403,30 @@ def autoteste() -> int:
     casos.append(("cortes do mapa calculados sobre 2019 a 2025", len(o["cortes_mapa"]["cortes"]) == 4))
     # segunda rodada: nada novo, tamanhos iguais → só o mês que falhou é pedido de novo
     lidos_n.clear()
-    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 20), fake_decod)
+    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 20), fake_decod, pausa=0)
     casos.append(("2ª rodada pede só o que faltou", len(lidos_n) == 1 and lidos_n[0].endswith("RDAC2507.dbc")))
     # arquivo recente que mudou de tamanho é relido
     lidos_n.clear()
     listagem2 = [(n, 2000 if n.startswith("RDSP") else t) for n, t in listagem]
-    coletar(lambda c: listagem2, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 21), fake_decod)
+    coletar(lambda c: listagem2, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 21), fake_decod, pausa=0)
     casos.append(("mês recente com tamanho novo é relido", sum("RDSP" in x for x in lidos_n) == 2))
     # orçamento de tempo e queda da fonte
     gravados.clear(); lidos_n.clear(); t = iter(range(0, 10 ** 6, 100))
     coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod,
-            orcamento_s=350, relogio=lambda: next(t))
+            orcamento_s=350, relogio=lambda: next(t), pausa=0)
     casos.append(("orçamento acaba: lê o mais recente primeiro e declara os pendentes",
                   len(lidos_n) == 3 and all("2508" in x for x in lidos_n)
                   and any("ainda não lidos" in x for x in gravados["saude_desfechos/hepatite_a.json"]["lacunas"])))
     gravados.clear(); lidos_n.clear()
     caiu = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19),
-                   lambda d, c: (_ for _ in ()).throw(OSError("fora")))
+                   lambda d, c: (_ for _ in ()).throw(OSError("fora")), pausa=0)
     casos.append(("fonte fora do ar: nada gravado e a rodada para na 5ª falha seguida",
                   caiu is False and not gravados and PARADA_APOS <= len(lidos_n) < PARADA_APOS + JANELA))
+    dormidas, relo = [], [0.0]
+    e = espacar(lambda c: c, 2, dormir=lambda x: (dormidas.append(x), relo.__setitem__(0, relo[0] + x)),
+                agora=lambda: relo[0])
+    e("a"); e("b"); e("c")
+    casos.append(("três downloads iniciam com no mínimo 2 s entre si", dormidas == [2, 2]))
     fila = a_ler(dict(listagem), set(), {})
     casos.append(("fila vai do mês mais recente ao mais antigo", fila[0][1] == "2025-08" and fila[-1][1] == "2025-07"))
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8").split("def autoteste")[0]
