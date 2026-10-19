@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR_MALARIA · Malária fora da Amazônia na forma comum dos desfechos
+## 2026-10-19 · #905 · Malária fora da Amazônia na forma comum dos desfechos
 
 Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.
 
