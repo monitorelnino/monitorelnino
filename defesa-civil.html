@@ -26,12 +26,11 @@
 <meta name="description" content="Preparação publicada, avisos do INMET e alertas do CEMADEN em vigor e decretos de emergência do El Niño 2026/2027, por estado e por município, com mapas e fontes citadas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/vendor/chart.umd.min.js?v=ecc3cd1e"></script>
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=a2fc06dd">
+<link rel="stylesheet" href="assets/base.css?v=a15e2732">
 <script src="assets/mapas.js?v=f8c391ea"></script>
 </head>
 <body class="pagina-dados">
@@ -56,7 +55,7 @@
 
   <section class="dc-topo" id="dc-topo" aria-labelledby="alertas">
     <h2 id="alertas" class="sr-only">Os números da defesa civil</h2>
-    <div class="grade-numeros grade-numeros--compacta">
+    <div class="grade-numeros grade-numeros--3">
       <div class="cartao-numero cartao-numero--chuva" data-cartao="municipios_aviso_inmet">
         <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_inmet.rotulo">Municípios sob aviso do Inmet</p>
         <p class="cartao-numero-valor" id="topoInmet">sem coleta até o corte</p>
@@ -80,6 +79,12 @@
         <p class="cartao-numero-valor" id="topoReconhecidos">sem coleta até o corte</p>
         <p class="cartao-numero-variacao" id="topoReconhecidosVariacao"></p>
         <p class="cartao-numero-fonte" id="topoReconhecidosFonte"></p>
+      </div>
+      <div class="cartao-numero cartao-numero--resposta" data-cartao="decreto_sem_reconhecimento_30_dias">
+        <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_pendencia.rotulo">Decreto há mais de 30 dias sem reconhecimento</p>
+        <p class="cartao-numero-valor" id="topoPendencia">sem coleta até o corte</p>
+        <p class="cartao-numero-variacao"></p>
+        <p class="cartao-numero-fonte" id="topoPendenciaFonte"></p>
       </div>
       <div class="cartao-numero cartao-numero--resposta" data-cartao="populacao_sob_decreto">
         <p class="cartao-numero-rotulo" data-conteudo="defesa-civil.dc-topo.topo_populacao_variacao.rotulo">População nesses municípios</p>
@@ -105,7 +110,6 @@
 
   <section id="emergencias" aria-labelledby="tituloEmergencias">
     <h2 id="tituloEmergencias" data-conteudo="defesa-civil.emergencias.titulo_da_secao">Onde estão as emergências</h2>
-    <p class="hint" data-conteudo="defesa-civil.emergencias.abertura">Cada ponto é um município com decreto de situação de emergência ou calamidade pública desde 29 de junho; a cor é o evento declarado no ato e o preenchimento diz se a União já reconheceu.</p>
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--mapa figura--dupla cartao-mapa r-chuva" id="boxEmergencias" data-chave="resposta/municipios_decretados.json#municipios">
         <h3 class="figura-titulo" data-conteudo="defesa-civil.emergencias.mapa.titulo">Municípios com decreto de emergência desde 29/06/2026, por evento declarado e etapa</h3>
@@ -123,31 +127,6 @@
     </div>
   </section>
 
-  <section id="reconhecimento" aria-labelledby="tituloReconhecimento">
-    <h2 id="tituloReconhecimento" data-conteudo="defesa-civil.reconhecimento.titulo_da_secao">Do decreto ao reconhecimento</h2>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxEtapas" data-chave="resposta/municipios_decretados.json#semanas">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.reconhecimento.etapas.titulo">Do decreto ao reconhecimento, semana a semana</h3>
-        <p class="figura-sub" data-conteudo="defesa-civil.reconhecimento.etapas.legenda">Desde 29/06/2026 · nº acumulado de municípios por semana, em cada etapa</p>
-        <div class="figura-midia canvas-wrap canvas-wrap--mapa" id="wrapEtapas"><canvas id="cEtapas" aria-label="Número acumulado de municípios que decretaram emergência e que tiveram a emergência reconhecida pela União, semana a semana desde 29 de junho de 2026"></canvas></div>
-        <div class="map-legend" id="legEtapas"></div>
-        <figcaption class="figura-nota" data-conteudo-html="defesa-civil.reconhecimento.etapas.nota">Os recursos autorizados depois do reconhecimento estão em <a href="financiamento.html#defesaCivil">Financiamento</a>.</figcaption>
-        <div class="cartao-mapa-rodape" data-busca="etapas"></div>
-      </figure>
-      <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxPendencia" data-chave="resposta/municipios_decretados.json#dias_sem_reconhecimento">
-        <h3 class="figura-titulo" data-conteudo="defesa-civil.reconhecimento.pendencia.titulo">Onde a cadeia parou</h3>
-        <p class="figura-sub" id="subPendencia" data-conteudo="defesa-civil.reconhecimento.pendencia.legenda">Municípios com decreto e sem portaria de reconhecimento</p>
-        <div class="figura-midia figura-midia--texto">
-          <div class="cartao-numero cartao-numero--resposta" data-cartao="decreto_sem_reconhecimento_30_dias">
-            <div class="cartao-numero-rotulo" data-conteudo="defesa-civil.reconhecimento.pendencia.rotulo">Decreto há mais de 30 dias sem reconhecimento</div>
-            <div class="cartao-numero-valor" id="topoPendencia">sem coleta até o corte</div>
-            <div class="cartao-numero-fonte" id="topoPendenciaFonte"></div>
-          </div>
-        </div>
-        <div class="cartao-mapa-rodape" data-busca="pendencia"></div>
-      </figure>
-    </div>
-  </section>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
@@ -159,7 +138,7 @@
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
 <script src="assets/js/consulta-municipio.js?v=214e0816" defer></script>
-<script src="assets/js/defesa-civil.js?v=ab7fac94" defer></script>
+<script src="assets/js/defesa-civil.js?v=9382530a" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

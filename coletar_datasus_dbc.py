@@ -287,16 +287,17 @@ def agregar(linhas, confirmado, uf_de: dict, ano_inicial: int = ANO_INICIAL) -> 
     return serie, sem_uf, (f"{ultimo_notif[:4]}-{ultimo_notif[4:]}" if ultimo_notif else None)
 
 
-def completar(serie: dict, ufs, ate: str, desde: str = f"{ANO_INICIAL}-01") -> dict:
-    """Zero medido em todo mês coberto pelos arquivos lidos (até o último mês notificado); depois
-    dele, nada: mês não coberto é lacuna, não zero. Função pura."""
-    meses = []
-    a, m = int(desde[:4]), int(desde[5:])
-    while f"{a}-{m:02d}" <= ate:
-        meses.append(f"{a}-{m:02d}"); m += 1
-        if m == 13:
-            a, m = a + 1, 1
+def completar(serie: dict, ufs, ate: str, anos) -> dict:
+    """Zero medido em todo mês coberto: ano com arquivo lido e mês até `ate`, o último mês inteiro de
+    notificação. O resto não existe na série: mês não coberto é lacuna, não zero. Função pura."""
+    meses = [f"{a}-{m:02d}" for a in sorted(anos) for m in range(1, 13) if f"{a}-{m:02d}" <= ate]
     return {uf: {p: serie.get(uf, {}).get(p, 0) for p in meses} for uf in ufs}
+
+
+def mes_anterior(per: str) -> str:
+    """'AAAA-MM' do mês anterior. O mês da extração do arquivo está cortado no meio. Função pura."""
+    a, m = int(per[:4]), int(per[5:])
+    return f"{a - 1}-12" if m == 1 else f"{a}-{m - 1:02d}"
 
 
 def arquivos_do_sinan(prefixo: str, listar=None) -> list:
@@ -347,7 +348,9 @@ def coletar(nome: str, listar=None, baixar=None, ler_fn=None, gravar_fn=None, ho
              "data_do_periodo": "início dos sintomas (DT_SIN_PRI)", "uf": "residência (SG_UF)",
              "sem_uf_de_residencia": sem_uf, "arquivos": lidos}
     obj = ds.montar(desfecho=nome, rotulo=cfg["rotulo"], unidade="casos", periodo="mes",
-                    territorio="UF de residência", serie=completar(serie, sorted(set(uf_de.values())), ate),
+                    territorio="UF de residência",
+                    serie=completar(serie, sorted(set(uf_de.values())), mes_anterior(ate),
+                                    {2000 + int(c[-6:-4]) for c, _ in arquivos}),
                     fonte=fonte, cadencia="semanal; o DATASUS republica o arquivo preliminar sem data fixa",
                     coletado_em=hoje or data_da_edicao().isoformat(),
                     anos_preliminares=[2000 + int(c[-6:-4]) for c, p in arquivos if p],
@@ -418,8 +421,9 @@ def _teste_agregar():
 
 
 def _teste_completar_zero_e_lacuna():
-    c = completar({"CE": {"2019-02": 3}}, ["CE", "PE"], ate="2019-03")
-    return c == {"CE": {"2019-01": 0, "2019-02": 3, "2019-03": 0}, "PE": {"2019-01": 0, "2019-02": 0, "2019-03": 0}}
+    c = completar({"CE": {"2019-02": 3}}, ["CE", "PE"], ate="2021-02", anos={2019, 2021})
+    return (c["CE"]["2019-02"] == 3 and c["PE"]["2019-12"] == 0 and c["CE"]["2021-02"] == 0
+            and "2020-06" not in c["CE"] and "2021-03" not in c["CE"] and mes_anterior("2026-01") == "2025-12")
 
 
 def _teste_finais_antes_de_prelim():
@@ -450,9 +454,10 @@ def _teste_coletar_offline_e_idempotente():
     o = banco.get("saude_desfechos/leptospirose.json") or {}
     ok2 = coletar("leptospirose", **kw)
     return (ok1 and not ok2 and escritos == ["saude_desfechos/leptospirose.json"]
-            and o["serie"]["CE"]["2026-02"] == 1 and o["serie"]["CE"]["2026-03"] == 0
-            and "2026-04" not in o["serie"]["CE"] and o["serie"]["BR"]["2019-06"] == 27
-            and o["anos_preliminares"] == [2026] and o["parcial"] == ["2026-01", "2026-02", "2026-03"])
+            and o["serie"]["CE"]["2026-02"] == 1 and "2026-03" not in o["serie"]["CE"]
+            and "2023-06" not in o["serie"]["CE"] and o["serie"]["BR"]["2019-06"] == 27
+            and o["anos_preliminares"] == [2026] and o["parcial"] == ["2026-01", "2026-02"]
+            and o["ultimo"]["CE"]["consolidado"]["periodo"] == "2019-12")
 
 
 def _teste_vetor_do_blast():
@@ -513,7 +518,7 @@ TESTES = {
     "blast: vetor de teste do blast.c": _teste_vetor_do_blast,
     "DBC: ida e volta pelo formato": _teste_dbc_ida_e_volta,
     "agregação: confirmados, sem UF declarado à parte, antes de 2019 fora": _teste_agregar,
-    "mês coberto sem caso é zero; mês não coberto não existe": _teste_completar_zero_e_lacuna,
+    "mês coberto sem caso é zero; ano sem arquivo e mês da extração não existem": _teste_completar_zero_e_lacuna,
     "ano com arquivo final não lê o preliminar": _teste_finais_antes_de_prelim,
     "coleta ponta a ponta offline; arquivo igual não regrava": _teste_coletar_offline_e_idempotente,
     "arquivo sem data de notificação é recusado, nunca vira zeros": _teste_arquivo_vazio_recusa,
