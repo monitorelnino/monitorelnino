@@ -40,16 +40,12 @@ import pathlib
 import sys
 from datetime import date, datetime, timedelta
 
-from coletores_base import gravar_em, hoje_editorial
+from coletores_base import gravar_em, hoje_editorial, semana_do_rotulo
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 DATA = RAIZ / "data"
 SAIDA = DATA / "imprensa" / "semana.json"
 JANELA = 7
-JANELA_SECUNDARIA = 14
-
-# Acima deste valor a escala europeia sai da faixa "bom/razoável". A banda é DA FONTE (EAQI), não
-# nossa — o cartão cita a escala e não adjetiva.
 
 
 def data_do_ato(valor) -> date | None:
@@ -76,27 +72,8 @@ def ler(nome: str, padrao=None):
     return json.loads(caminho.read_text(encoding="utf-8"))
 
 
-def ler_atos() -> list[dict]:
-    caminho = RAIZ / "dados-abertos" / "atos_resposta.csv"
-    if not caminho.exists():
-        return []
-    with io.open(caminho, encoding="utf-8") as f:
-        return list(csv.DictReader(f))
-
-
 def periodo(corte: date) -> dict:
     return {"ini": (corte - timedelta(days=JANELA)).isoformat(), "fim": corte.isoformat()}
-
-
-def na_janela(itens, corte: date, dias: int = JANELA, desloca: int = 0):
-    """Os itens cuja DATA DO ATO cai na janela de `dias` que termina em `corte - desloca`.
-
-    `desloca=JANELA` dá a semana ANTERIOR, que é a base da variação. A data é sempre a do ato, e
-    nunca a da localização pelo MARÉ — a regra do handover, e a que separa "publicou" de
-    "encontramos"."""
-    fim = corte - timedelta(days=desloca)
-    ini = fim - timedelta(days=dias)
-    return [x for x in itens if (d := data_do_ato(x.get("data"))) and ini < d <= fim]
 
 
 def variacao_de(valor, anterior):
@@ -151,46 +128,6 @@ def sem_dado(ident, rotulo, grupo, motivo, fonte=None, url_fonte=None):
 
 # ── os cartões ──────────────────────────────────────────────────────────────────────────────
 
-def cartao_decretos(atos, corte):
-    """1 · Municípios que entraram em emergência no período."""
-    decretos = [a for a in atos if "reconhecimento" not in (a.get("causa") or "").lower()]
-    def na_janela(dias):
-        limite = corte - timedelta(days=dias)
-        return [a for a in decretos if (d := data_do_ato(a.get("data"))) and limite < d <= corte]
-    j7, j14 = na_janela(JANELA), na_janela(JANELA_SECUNDARIA)
-    lista = [{"uf": a["uf"], "municipio": a["municipio"],
-              "data": data_do_ato(a["data"]).isoformat(), "causa": a.get("causa"),
-              "documento": a.get("decreto"), "url": a.get("url")}
-             for a in sorted(j7, key=lambda x: (data_do_ato(x["data"]), x["uf"], x["municipio"]),
-                             reverse=True)]
-    return cartao(
-        "decretos_no_periodo",
-        "Municípios que decretaram emergência ou calamidade no período",
-        len(j7), "Diários oficiais e diários consorciados (via MARÉ)",
-        None, per=periodo(corte), lista=lista,
-        secundaria={"rotulo": f"em {JANELA_SECUNDARIA} dias", "valor": len(j14)} if j14 else None)
-
-
-def cartao_reconhecimentos(atos, corte):
-    """2 · Reconhecidos pelo governo federal no período.
-
-    O handover marca este cartão como "a construir", porque o adaptador do S2iD guardaria só o
-    total. Medido em 27/09: `atos_resposta.csv` tem data em TODOS os 653 reconhecimentos. O cartão
-    é calculável hoje, e a premissa do handover está desmentida no CHANGELOG.
-    """
-    rec = [a for a in atos if "reconhecimento" in (a.get("causa") or "").lower()]
-    limite = corte - timedelta(days=JANELA)
-    na = [a for a in rec if (d := data_do_ato(a.get("data"))) and limite < d <= corte]
-    lista = [{"uf": a["uf"], "municipio": a["municipio"],
-              "data": data_do_ato(a["data"]).isoformat(),
-              "documento": a.get("decreto"), "url": a.get("url")}
-             for a in sorted(na, key=lambda x: (data_do_ato(x["data"]), x["uf"]), reverse=True)]
-    return cartao("reconhecimentos_no_periodo",
-                  "Municípios reconhecidos pelo governo federal no período",
-                  len(na), "Portarias SEDEC/MIDR publicadas no DOU", None,
-                  per=periodo(corte), lista=lista)
-
-
 def cartao_planos(municipios, corte):
     """3 · Planos municipais com data de ato no período."""
     limite = corte - timedelta(days=JANELA)
@@ -224,72 +161,6 @@ def cartao_focos(sinais):
                   "Programa Queimadas (INPE)", consultado, lista=lista, nota=documento)
 
 
-def cartao_avisos(sinais):
-    """5 · Avisos meteorológicos em vigor, por grau."""
-    ufs = (sinais or {}).get("uf") or {}
-    com_dado = [(uf, u.get("avisos_inmet") or {}) for uf, u in ufs.items()]
-    com_dado = [(uf, a) for uf, a in com_dado if a.get("total") is not None]
-    if not com_dado:
-        return cartao("avisos_inmet", "Avisos meteorológicos em vigor", None,
-                      "INMET", None, sem_coleta=True)
-    total = sum(a["total"] for _, a in com_dado)
-    graus = {}
-    for _, a in com_dado:
-        for grau, n in (a.get("graus") or {}).items():
-            graus[grau] = graus.get(grau, 0) + n
-    consultado = next((a.get("consultado_em") for _, a in com_dado if a.get("consultado_em")), None)
-    lista = [{"uf": uf, "valor": a["total"], "graus": a.get("graus") or {}}
-             for uf, a in sorted(com_dado, key=lambda x: -x[1]["total"]) if a["total"]]
-    return cartao("avisos_inmet", "Avisos meteorológicos em vigor", total,
-                  "INMET — avisos ativos no momento da consulta", consultado, lista=lista,
-                  secundaria={"rotulo": "por grau", "valor": graus} if graus else None)
-
-
-def cartao_alertas(sinais):
-    """5b · Alertas do CEMADEN em vigor, por nível."""
-    ufs = (sinais or {}).get("uf") or {}
-    com_dado = [(uf, u.get("alertas_cemaden") or {}) for uf, u in ufs.items()]
-    com_dado = [(uf, a) for uf, a in com_dado if a.get("total") is not None]
-    if not com_dado:
-        return cartao("alertas_cemaden", "Alertas do CEMADEN em vigor", None,
-                      "CEMADEN", None, sem_coleta=True)
-    total = sum(a["total"] for _, a in com_dado)
-    niveis = {}
-    for _, a in com_dado:
-        for nivel, n in (a.get("niveis") or {}).items():
-            niveis[nivel] = niveis.get(nivel, 0) + n
-    consultado = next((a.get("consultado_em") for _, a in com_dado if a.get("consultado_em")), None)
-    lista = [{"uf": uf, "valor": a["total"], "municipios": (a.get("municipios") or [])[:20]}
-             for uf, a in sorted(com_dado, key=lambda x: -x[1]["total"]) if a["total"]]
-    return cartao("alertas_cemaden", "Alertas do CEMADEN em vigor", total,
-                  "CEMADEN — alertas vigentes", consultado, lista=lista,
-                  secundaria={"rotulo": "por nível", "valor": niveis} if niveis else None)
-
-
-def cartao_temperatura(sinais):
-    """9 · Maior máxima prevista entre as capitais.
-
-    O handover pede `tmax_amanha`. O dado guarda `tmax` com a `data` a que se refere — o cartão
-    diz a data que está no dado, nunca "amanhã" sem base.
-    """
-    ufs = (sinais or {}).get("uf") or {}
-    com_dado = [(uf, u.get("temperatura") or {}) for uf, u in ufs.items()]
-    com_dado = [(uf, t) for uf, t in com_dado if t.get("tmax") is not None]
-    if not com_dado:
-        return cartao("temperatura_maxima", "Maior máxima prevista entre as capitais", None,
-                      "INMET", None, sem_coleta=True)
-    ordenado = sorted(com_dado, key=lambda x: -x[1]["tmax"])
-    uf, t = ordenado[0]
-    lista = [{"uf": u, "capital": tt.get("capital"), "valor": tt["tmax"], "data": tt.get("data")}
-             for u, tt in ordenado[:5]]
-    return cartao("temperatura_maxima",
-                  "Maior máxima prevista entre as capitais, em grau Celsius",
-                  t["tmax"], t.get("publicado_por") or "INMET — previsão para as capitais",
-                  t.get("data"), lista=lista,
-                  nota=f"{t.get('capital')} ({uf}), previsão para {t.get('data')}; "
-                       f"critério: {t.get('criterio')}")
-
-
 # ── cartões que o handover pede e que NÃO são calculáveis hoje ──────────────────────────────
 
 NAO_CALCULAVEIS = [
@@ -301,65 +172,11 @@ NAO_CALCULAVEIS = [
      "rotulo": "Estados que mudaram de categoria nesta edição",
      "por_que_nao": "não existe fotografia da edição anterior (`data/edicao_anterior/`). Sem o par, "
                     "o diff seria inventado."},
-    {"id": "dengue_no_periodo",
-     "rotulo": "Municípios que entraram em alerta de dengue no período",
-     "por_que_nao": "o handover marca como calculável, mas a medição desmente: `dengue_capitais` "
-                    "tem 27 CAPITAIS com uma única semana epidemiológica corrente, e "
-                    "`serie_capitais` é série agregada das 27, não nível por município por SE. "
-                    "Sem o nível da SE anterior, a passagem para laranja/vermelho seria inventada."},
     {"id": "paginas_fora_do_ar",
      "rotulo": "Páginas oficiais fora do ar por aviso eleitoral",
      "por_que_nao": "depende do campo `escopo` em data/calendario/fontes_suspensas.json, que hoje "
                     "é nulo nos 38 registros (bloco E do pedido de 27/09, não executado)."},
 ]
-
-
-# ── cartões novos do handover de 01/10/2026 ─────────────────────────────────────────────────
-
-def cartao_populacao_decretos(atos, municipios, corte):
-    """Emergências · quanta gente vive nos municípios que decretaram no período.
-
-    A população vem de `data/populacao_censo2022.json`, a MESMA fonte que `gerar_resposta.py` usa
-    para a página de Defesa civil — o handover exige que o mesmo número não tenha duas origens.
-
-    O pareamento é por código do IBGE, e o código vem do nome e da UF pela referência do IBGE,
-    porque `atos_resposta` não guarda código. Município que não casa entra na contagem de
-    municípios (cartão acima) e **não** na de pessoas, e a nota diz quantos ficaram fora: somar
-    zero habitante por falta de pareamento seria subnotificar com cara de medida — foi o que a
-    primeira versão deste cartão fez, com 37 municípios no período e "0 pessoas" na tela.
-    """
-    pop = ler("populacao_censo2022.json", {}) or {}
-    ref = ler("municipios_ibge_referencia.json", []) or []
-    ref = ref if isinstance(ref, list) else list(ref.values())
-    codigo = {(r["uf"], str(r["nome"]).strip().lower()): str(r["codigo_ibge"]).zfill(7)
-              for r in ref if r.get("uf") and r.get("nome")}
-    decretos = [a for a in atos if "reconhecimento" not in (a.get("causa") or "").lower()]
-
-    def soma(desloca):
-        total, sem = 0, 0
-        for a in na_janela(decretos, corte, desloca=desloca):
-            cod = str(a.get("ibge") or "").zfill(7)
-            if cod == "0000000":
-                cod = codigo.get((a.get("uf"), str(a.get("municipio") or "").strip().lower()), "")
-            valor = pop.get(cod) if cod else None
-            if valor in (None, ""):
-                sem += 1
-                continue
-            try:
-                total += int(float(valor))
-            except (TypeError, ValueError):
-                sem += 1
-        return total, sem
-
-    atual, sem_pareamento = soma(0)
-    anterior, _ = soma(JANELA)
-    return cartao("populacao_decretos_no_periodo",
-                  "Pessoas que vivem nos municípios que decretaram no período",
-                  atual, "Censo 2022 (IBGE) sobre os decretos lidos pelo MARÉ", None,
-                  per=periodo(corte), grupo="emergencias",
-                  url_fonte="https://censo2022.ibge.gov.br/", anterior=anterior,
-                  nota=(f"{sem_pareamento} município(s) do período sem código do IBGE pareado "
-                        f"ficaram fora desta soma" if sem_pareamento else None))
 
 
 def cartao_capitais_com_plano(municipios):
@@ -433,150 +250,6 @@ def cartao_mudaram_faixa():
                   lista=[{"uf": x["uf"], "de": x["de"], "para": x["para"]} for x in lista])
 
 
-def cartao_municipios_sob_alerta():
-    """Risco agora · municípios sob alerta do Cemaden, na MESMA unidade da Defesa civil.
-
-    O cartão antigo contava AVISOS; a Defesa civil conta MUNICÍPIOS. Dois números para a mesma
-    coisa em páginas vizinhas é o defeito nomeado no item 0 do handover, e a correção é ler o mesmo
-    arquivo que ela lê."""
-    al = ler("alertas/vigentes.json", {}) or {}
-    res = al.get("resumo") or {}
-    if not res:
-        return sem_dado("municipios_sob_alerta_cemaden", "Municípios sob alerta do Cemaden",
-                        "risco_agora",
-                        "o arquivo de alertas vigentes não foi coletado nesta edição")
-    return cartao("municipios_sob_alerta_cemaden", "Municípios sob alerta do Cemaden",
-                  res.get("municipios_cemaden"), "Cemaden (alertas vigentes)", al.get("gerado_em"),
-                  grupo="risco_agora", url_fonte="https://www.gov.br/cemaden/pt-br",
-                  nota="mesma consulta e mesma unidade da página Defesa civil")
-
-
-def cartao_dengue_semana():
-    """Saúde · casos de dengue na última semana epidemiológica com dado, nos acompanhados."""
-    serie = ler("saude_desfechos/serie_uf.json", {}) or {}
-    uf = serie.get("uf") or {}
-    if not uf:
-        return sem_dado("dengue_casos_se", "Casos de dengue notificados na semana epidemiológica",
-                        "saude", "a série por estado não foi coletada nesta edição")
-    semanas = sorted({se for v in uf.values() for se, d in v.items()
-                      if isinstance(d, dict) and d.get("casos") is not None})
-    if not semanas:
-        return sem_dado("dengue_casos_se", "Casos de dengue notificados na semana epidemiológica",
-                        "saude", "a série por estado não traz casos notificados nesta edição")
-    ultima = semanas[-1]
-    anterior_se = semanas[-2] if len(semanas) > 1 else None
-
-    def soma(se):
-        if not se:
-            return None
-        return int(sum((v.get(se) or {}).get("casos") or 0 for v in uf.values()))
-
-    return cartao("dengue_casos_se",
-                  f"Casos de dengue notificados na semana epidemiológica {ultima.split('-')[-1]}",
-                  soma(ultima), "InfoDengue (Fiocruz/FGV), municípios acompanhados pelo MARÉ",
-                  serie.get("gerado_em"), grupo="saude", url_fonte="https://info.dengue.mat.br/",
-                  anterior=soma(anterior_se),
-                  nota=("as últimas semanas são parciais e sobem com as notificações atrasadas; "
-                        "este número não indica relação com o El Niño"))
-
-
-def cartao_srag_semana():
-    """Saúde · internações por síndrome respiratória grave na última semana epidemiológica.
-
-    A forma do arquivo é `serie: {UF: {"2026-37": n}}` — foi assim que o SIVEP-Gripe chegou em
-    02/10/2026, e não como a lista que eu havia suposto antes de ele existir. O cartão soma o país
-    por semana, usa a última semana do ano corrente e compara com a anterior.
-
-    As últimas semanas são PARCIAIS, e quantas são é o próprio arquivo que diz (`se_incompletas`):
-    notificação e resultado laboratorial chegam depois. A nota declara isso — sem ela, a queda do
-    fim da série seria lida como melhora."""
-    srag = ler("saude_desfechos/srag_serie.json", None)
-    rotulo = "Internações por síndrome respiratória grave na semana epidemiológica"
-    if not srag or not srag.get("serie"):
-        return sem_dado("srag_internacoes_se", rotulo, "saude",
-                        "a série do SIVEP-Gripe ainda não foi coletada até o corte",
-                        fonte="SIVEP-Gripe (Ministério da Saúde)")
-    ano = str(srag.get("ano_corrente") or hoje_editorial().year)
-    total = {}
-    for semanas in srag["serie"].values():
-        if not isinstance(semanas, dict):
-            continue
-        for se, n in semanas.items():
-            if str(se).startswith(ano) and isinstance(n, (int, float)):
-                total[se] = total.get(se, 0) + n
-    if not total:
-        return sem_dado("srag_internacoes_se", rotulo, "saude",
-                        f"a série não traz semanas de {ano} até o corte",
-                        fonte="SIVEP-Gripe (Ministério da Saúde)")
-    semanas = sorted(total)
-    ultima = semanas[-1]
-    anterior = total[semanas[-2]] if len(semanas) > 1 else None
-    incompletas = srag.get("se_incompletas")
-    nota = ("as últimas semanas são parciais e sobem com as notificações atrasadas"
-            + (f" (a fonte declara {incompletas} semana(s) incompleta(s))" if incompletas else "")
-            + "; este número não indica relação com o El Niño")
-    return cartao("srag_internacoes_se", f"{rotulo} {ultima.split('-')[-1]}",
-                  int(total[ultima]), "SIVEP-Gripe (Ministério da Saúde)", srag.get("gerado_em"),
-                  grupo="saude", url_fonte=srag.get("fonte"),
-                  anterior=None if anterior is None else int(anterior), nota=nota)
-
-
-def cartao_ufs_dengue_alerta():
-    """Saúde · estados com dengue em nível de alerta, pelo InfoDengue.
-
-    A régua é da fonte (níveis 3 e 4). A agregação por estado é NOSSA, e a nota diz qual é — sem
-    ela, o leitor entenderia que o InfoDengue publica um nível por estado, e ele não publica."""
-    painel = ler("saude_desfechos/serie_painel.json", {}) or {}
-    M = painel.get("municipios") or {}
-    if not M:
-        return sem_dado("ufs_dengue_alerta", "Estados com dengue em nível de alerta", "saude",
-                        "o painel municipal não foi coletado nesta edição")
-    ufs = sorted({m.get("uf") for m in M.values()
-                  if (m.get("nivel_ultima_se") or 0) >= 3 and m.get("uf")})
-    return cartao("ufs_dengue_alerta", "Estados com dengue em nível de alerta", len(ufs),
-                  "InfoDengue (Fiocruz/FGV)", painel.get("gerado_em"), grupo="saude",
-                  url_fonte="https://info.dengue.mat.br/", lista=[{"uf": u} for u in ufs],
-                  nota=("nível de alerta calculado pelo InfoDengue a partir das notificações; o "
-                        "estado entra quando ao menos um município acompanhado está em nível 3 "
-                        "ou 4"))
-
-
-def cartoes_do_dinheiro(corte):
-    """Dinheiro · os três do handover, e o que cada um pode dizer hoje.
-
-    Nenhum deles vira zero. Os dois primeiros não são calculáveis por semana, e o motivo é da
-    FONTE: as medidas federais publicam empenhado e pago em agregados sem data de pagamento, e o
-    Portal da Transparência publica transferência a município por MÊS — medido em 01/10/2026."""
-    atos = (ler("financiamento/compromissos_federais.json", {}) or {}).get("itens") or []
-    tres = [
-        sem_dado("pago_na_semana",
-                 "Desembolsado no período em recursos oriundos das medidas federais do El Niño",
-                 "dinheiro",
-                 "as medidas federais publicam empenhado e pago em agregados sem data de "
-                 "pagamento: não há como recortar sete dias sem inventar a data",
-                 fonte="Portal da Transparência e atos federais"),
-        sem_dado("transferido_na_semana", "Transferido pela União a municípios no período",
-                 "dinheiro",
-                 "o Portal da Transparência publica a transferência a município por MÊS: a "
-                 "fonte entrega o mês, e não a semana",
-                 fonte="Portal da Transparência (transferências)",
-                 url_fonte="https://portaldatransparencia.gov.br/download-de-dados/transferencias"),
-    ]
-    if not atos:
-        tres.append(sem_dado("atos_federais_no_periodo",
-                             "Novos atos federais de financiamento no período", "dinheiro",
-                             "o arquivo de compromissos federais não foi coletado nesta edição"))
-        return tres
-    na = na_janela(atos, corte)
-    tres.append(cartao("atos_federais_no_periodo",
-                       "Novos atos federais de financiamento no período", len(na),
-                       "Atos federais lidos pelo MARÉ", None, per=periodo(corte), grupo="dinheiro",
-                       anterior=len(na_janela(atos, corte, desloca=JANELA)),
-                       lista=[{"documento": a.get("instrumento"), "nome": a.get("nome"),
-                               "url": a.get("url")} for a in na]))
-    return tres
-
-
 # -- cartoes IMPORTADOS das paginas de origem (handover de 02/10/2026, item 1) ----------------
 # A Imprensa nao recalcula mais nada que outra pagina ja publica. Cada numero abaixo e LIDO do
 # instantaneo que o gerador da pagina de origem escreve:
@@ -597,14 +270,6 @@ FONTE_LEITOR = {
     "Portarias da SEDEC no Diário Oficial da União": "Defesa Civil nacional, no Diário Oficial da União",
     "Atos federais lidos pelo MARÉ": "atos federais lidos pelo MARÉ",
 }
-
-
-def _reais(v):
-    """R$ com separador de milhar brasileiro. Funcao pura."""
-    if v is None:
-        return None
-    inteiro = f"{round(float(v)):,}".replace(",", ".")
-    return "R$ " + inteiro
 
 
 def importado(ident, rotulo, fonte_card, *, grupo, valor=None, referencia=None, variacao=None,
@@ -681,10 +346,11 @@ def cartoes_das_emergencias(dc):
 
 
 def cartoes_do_risco_agora(dc, riscos, sinais):
-    """Risco agora: cinco cartoes. Tres da Defesa civil, um do Monitor de riscos, um do fogo.
-    16/10/2026: o das capitais com o ar ruim saiu com o indice europeu (CAMS) que o alimentava."""
+    """Risco agora: quatro cartoes. Dois da Defesa civil, um do Monitor de riscos, um do fogo.
+    16/10/2026: o do ar saiu com o indice europeu (CAMS) que o alimentava. O cruzamento decreto e
+    alerta saiu da Defesa civil na reforma de 16/10 e sai daqui com ele."""
     d, r = por_id(dc), por_id(riscos)
-    # Os tres primeiros cartoes vem do instantaneo da Defesa civil, que desde 08/10/2026 ja
+    # Os dois primeiros cartoes vem do instantaneo da Defesa civil, que desde 08/10/2026 ja
     # declara a parada das 24 horas (scripts/gerar_topo_das_paginas.alertas_pararam). A Imprensa
     # nao repete a regra: ela copia o instantaneo, e por isso para junto.
     cartoes = [
@@ -694,10 +360,6 @@ def cartoes_do_risco_agora(dc, riscos, sinais):
         importado("municipios_aviso_inmet", "Municípios sob aviso do Inmet",
                   d.get("municipios_aviso_inmet"), grupo="risco_agora",
                   url_fonte="https://portal.inmet.gov.br/", origem="defesa-civil.html"),
-        importado("decreto_e_alerta_ao_mesmo_tempo",
-                  "Municípios com decreto de emergência e alerta ao mesmo tempo",
-                  d.get("decreto_e_alerta_ao_mesmo_tempo"), grupo="risco_agora",
-                  origem="defesa-civil.html"),
         cartao_focos(sinais),
         importado("temperatura_desvio_capital",
                   "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
@@ -728,7 +390,7 @@ def cartoes_do_dinheiro_importados(fin, recursos):
         importado("resposta_autorizado_semana",
                   "Autorizados pela defesa civil federal nos últimos 7 dias", resp,
                   grupo="dinheiro", unidade="reais", referencia="últimos 7 dias",
-                  nota=(f"para {n_mun} município(s) com ato no ciclo" if n_mun else None)
+                  nota=(f"desde 29 de junho, {n_mun} município(s) com ato de portaria" if n_mun else None)
                        or resp.get("detalhe"),
                   origem="financiamento.html"),
         importado("atos_federais_semana",
@@ -741,22 +403,24 @@ def cartoes_do_dinheiro_importados(fin, recursos):
 def cartoes_da_saude_importados(saude):
     """Saude: tres cartoes, lidos do instantaneo do MARE Saude.
 
-    A semana epidemiologica fechada e a do gerador da saude — uma definicao so, como o handover
-    exige. Era aqui que a Imprensa publicava a semana 37 do InfoDengue enquanto a pagina publicava
-    a semana 33 do Sinan.
+    A semana fechada e a do gerador da saude (`gerar_topo_das_paginas`): uma definicao so, como o
+    handover exige. Era aqui que a Imprensa publicava a semana 37 do InfoDengue enquanto a pagina
+    publicava a semana 33 do Sinan. O rotulo diz as datas da semana, nunca o numero dela.
     """
     s_ = por_id(saude)
     den = s_.get("dengue_casos_se") or {}
     srag = s_.get("srag_internacoes_se") or {}
     ufs = s_.get("uf_dengue_alerta") or {}
-    se = lambda c: (str(c.get("referencia") or "").split("-")[-1] or "—")
+
+    def na_semana(c):
+        quando = semana_do_rotulo(c.get("referencia"))
+        return f" na semana {quando}" if quando else ""
     return [
-        importado("dengue_casos_se",
-                  f"Casos prováveis de dengue na semana epidemiológica {se(den)}", den,
+        importado("dengue_casos_se", "Casos prováveis de dengue" + na_semana(den), den,
                   grupo="saude", origem="saude.html"),
         importado("srag_internacoes_se",
-                  "Internações por síndrome respiratória grave na semana epidemiológica "
-                  + se(srag), srag, grupo="saude", origem="saude.html"),
+                  "Internações por síndrome respiratória grave" + na_semana(srag), srag,
+                  grupo="saude", origem="saude.html"),
         importado("ufs_dengue_alerta", "Estados com dengue em nível de alerta", ufs,
                   grupo="saude", origem="saude.html"),
     ]
@@ -794,10 +458,10 @@ def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
             return "1 município " + verbo_sing
         return f"{n} municípios " + verbo_plur
 
-    # As frases do release são as do texto aprovado, e a pontuação é a dele: o parágrafo do ciclo
-    # começa com "Desde o início do ciclo". Juntar tudo com ponto e vírgula produzia "…verificadas;
-    # Na semana", com maiúscula depois de ponto e vírgula — erro de idioma num texto que sai em
-    # release de imprensa.
+    # As frases do release são as do texto aprovado, e a pontuação é a dela: cada frase termina em
+    # ponto. Juntar tudo com ponto e vírgula produzia "…verificadas; Na semana", com maiúscula
+    # depois de ponto e vírgula — erro de idioma num texto que sai em release de imprensa. "Ciclo"
+    # sozinho não aparece (regra da Imprensa de 16/10/2026).
     frases = []
     edicao = I.get("edicao")
     legal, saude_i = I.get("mare_legal"), I.get("mare_saude")
@@ -805,8 +469,7 @@ def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
     if edicao:
         frases.append(f"Edição de {edicao}.")
     if legal is not None and saude_i is not None:
-        media = ("" if (verificadas or 0) >= 27 or not verificadas
-                 else f", média dos {verificadas} estados verificados")
+        media = "" if (verificadas or 0) >= 27 or not verificadas else ", média dos estados já verificados"
         frases.append(
             "O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios "
             f"para o El Niño 2026/2027, está em {str(legal).replace('.', ',')} de 100; o MARÉ "
@@ -814,8 +477,8 @@ def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
     planos, decretos = v("planos_na_semana"), v("decretos_na_semana")
     pop = v("populacao_decretos_na_semana")
     if planos is not None and decretos is not None:
-        frase = ("Na semana, " + mun(planos, "publicou plano para o ciclo",
-                                     "publicaram plano para o ciclo")
+        frase = ("Na semana, " + mun(planos, "publicou plano para o El Niño",
+                                     "publicaram plano para o El Niño")
                  + " e " + mun(decretos, "decretou situação de emergência ou calamidade",
                                "decretaram situação de emergência ou calamidade"))
         if pop:
@@ -836,11 +499,11 @@ def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
     capitais = v("capitais_com_plano")
     ciclo = I.get("decretaram_no_ciclo")
     if capitais is not None and ciclo is not None:
-        segundo.append(f"Desde o início do ciclo, em 29 de junho, {capitais} de 27 capitais têm "
+        segundo.append(f"Desde 29 de junho, {capitais} de 27 capitais têm "
                        "plano localizado e " + mun(ciclo, "decretou emergência ou calamidade",
                                                    "decretaram emergência ou calamidade") + ".")
     segundo.append("Cada registro, com documento, data e fonte, está em monitorelnino.com.br. "
-                   "O MARÉ é uma criação da Futura Evidence Lab.")
+                   "O MARÉ é uma criação do Futura Evidence Lab.")
     return (primeiro + chr(10)*2 + " ".join(segundo)).strip()
 
 
@@ -923,6 +586,7 @@ def montar(corte: date) -> dict:
         "cartoes": cartoes,
         "sem_dado_nesta_edicao": sem_dado,
         "nao_calculaveis": NAO_CALCULAVEIS,
+        "definicao_dos_indices": saude.get("definicao_dos_indices"),
         "texto_pronto": texto_pronto(cartoes, indices),
     }
 
@@ -998,8 +662,7 @@ def autoteste() -> int:
         {"id": "populacao_sob_decreto", "valor": 21547599, "variacao": 1500000},
         {"id": "reconhecidos_pelo_governo_federal", "valor": 670, "variacao": 58},
         {"id": "municipios_alerta_cemaden", "valor": 14, "referencia": "02/10/2026 11:22"},
-        {"id": "municipios_aviso_inmet", "valor": 2876},
-        {"id": "decreto_e_alerta_ao_mesmo_tempo", "valor": 333}]}
+        {"id": "municipios_aviso_inmet", "valor": 2876}]}
     SAU = {"cartoes": [
         {"id": "dengue_casos_se", "valor": 8146, "referencia": "2026-33",
          "fonte": "Ministério da Saúde (Sinan)"},
@@ -1011,8 +674,7 @@ def autoteste() -> int:
         {"id": "resposta_liberado_semana", "valor": 0, "periodo": "últimos 7 dias",
          "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias"},
         {"id": "atos_federais_semana", "valor": 0, "periodo": "últimos 7 dias"}]}
-    RIS = {"cartoes": [{"id": "temperatura_desvio_capital", "valor": 2.9, "capital": "Belém"},
-                       {"id": "capitais_ar_ruim_ou_pior", "valor": 11}]}
+    RIS = {"cartoes": [{"id": "temperatura_desvio_capital", "valor": 2.9, "capital": "Belém"}]}
 
     emerg = cartoes_das_emergencias(DC)
     checar("emergências publicam a SEMANA, não o acumulado do ciclo",
@@ -1020,9 +682,10 @@ def autoteste() -> int:
     checar("todo cartão importado declara a página de origem",
            all(c["pagina_de_origem"] == "defesa-civil.html" for c in emerg))
     risco = cartoes_do_risco_agora(DC, RIS, {"uf": {"PA": {"fogo": {"focos_24h": 9, "consultado_em": "x"}}}})
-    checar("risco agora tem cinco cartões", len(risco) == 5)
+    checar("risco agora tem quatro cartões, sem o cruzamento decreto e alerta",
+           len(risco) == 4 and not any("decreto" in c["id"] for c in risco))
     checar("o calor da imprensa é o DESVIO, e vem do Monitor de riscos",
-           risco[4]["valor"] == 2.9 and risco[4]["pagina_de_origem"] == "monitor-de-riscos.html")
+           risco[3]["valor"] == 2.9 and risco[3]["pagina_de_origem"] == "monitor-de-riscos.html")
     din = cartoes_do_dinheiro_importados(FIN, {"municipios_com_ato": 68})
     checar("o dinheiro deixa de ser 'sem dado': ele vem do Financiamento",
            din[0]["valor"] == 150887172.93 and not din[0]["sem_coleta"])
@@ -1031,8 +694,10 @@ def autoteste() -> int:
     checar("zero autorizado na semana é ZERO, não sem dado",
            din[1]["valor"] == 0 and din[1]["sem_coleta"] is False)
     sau = cartoes_da_saude_importados(SAU)
-    checar("a dengue da imprensa é a do MARÉ Saúde, na mesma semana",
-           sau[0]["valor"] == 8146 and "33" in sau[0]["rotulo"])
+    checar("a dengue da imprensa é a do MARÉ Saúde, na mesma semana, dita em datas",
+           sau[0]["valor"] == 8146
+           and sau[0]["rotulo"] == "Casos prováveis de dengue na semana de 16 a 22 de agosto de 2026"
+           and "epidemiol" not in sau[1]["rotulo"])
     checar("as respiratórias não vêm dobradas", sau[1]["valor"] == 4267)
     checar("cartão sem valor no instantâneo vira sem_coleta, nunca zero",
            cartoes_da_saude_importados({"cartoes": [{"id": "dengue_casos_se", "sem_coleta": True}]})[0]["sem_coleta"] is True)
@@ -1048,7 +713,7 @@ def autoteste() -> int:
     checar("os cinco grupos existem na edição",
            {c["grupo"] for c in CARTOES_DO_TESTE} == {"preparacao", "emergencias", "risco_agora",
                                                       "dinheiro", "saude"})
-    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 5),
+    for grupo, quantos in (("preparacao", 3), ("emergencias", 3), ("risco_agora", 4),
                            ("dinheiro", 3), ("saude", 3)):
         checar(f"o grupo '{grupo}' tem {quantos} cartões",
                sum(1 for c in CARTOES_DO_TESTE if c["grupo"] == grupo) == quantos)
@@ -1068,9 +733,10 @@ def autoteste() -> int:
     checar("o release escreve zero por extenso", "nenhum município publicou plano" in rel)
     checar("o release concorda no singular", "1 município decretou" in rel)
     checar("o release arredonda a população", "1,5 milhão" in rel)
-    checar("o release diz quantos estados a média da saúde cobre",
-           "média dos 21 estados verificados" in rel)
-    checar("o release traz a assinatura da Futura", "Futura Evidence Lab" in rel)
+    checar("o release diz que a média da saúde cobre os estados já verificados, sem o número",
+           "média dos estados já verificados" in rel and "21" not in rel)
+    checar("o release não usa 'ciclo' sozinho", "ciclo" not in rel)
+    checar("o release traz a assinatura do Futura", "criação do Futura Evidence Lab" in rel)
     rel_vazio = texto_pronto([{"id": "planos_na_semana", "valor": None, "sem_coleta": True}], {})
     checar("frase sem dado é omitida", "plano" not in rel_vazio)
 

@@ -247,6 +247,8 @@ def main() -> int:
     for p, (desfecho, motivo) in vencidas:
         p["status"] = f"fechada — {desfecho}: {motivo}"
         p["triagem"] = {"em": hoje, "desfecho": desfecho, "motivo": motivo}
+    from limpar_fila_de_pistas import compactar
+    doc["pistas"] = [compactar(p) for p in pistas]
     gravar(FILA, doc)
     print(f"\n{len(vencidas)} pista(s) fechada(s) por prazo; o resto segue para o juiz nesta rodada")
     return 0
