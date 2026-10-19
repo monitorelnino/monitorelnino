@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #899 · Cartão do município: arquivo compacto
+
+`municipios_card.json`, que a página carrega inteiro, deixa de ser gravado com indentação: de 1,2 para 0,97 MB, mesmo conteúdo. Prepara a entrada da varredura de cada município no cartão, que coube no limite de crescimento do portão de tamanho só com o arquivo já compacto.
+
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
