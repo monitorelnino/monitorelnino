@@ -16,6 +16,10 @@ Quatro das treze páginas preservadas para o guia do Proteja-se eram a página i
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-19 · #885 · Portões: sete regras de dado num só, nove arquivos a menos
+
+Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
+
 ## 2026-10-19 · #888 · Diário oficial do RJ lido por data
 
 O Rio de Janeiro passa a ter rota de leitura: a página de cadernos da data e o identificador do visualizador dão o PDF da Parte I (Poder Executivo), sem cookie (4,7 MB em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +30 (adaptador novo, recurso novo, com autoteste offline).

@@ -51,6 +51,8 @@
       <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde. =======</dd>
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
+      <dt>19/10/2026 · Portões: sete regras de dado num só, nove arquivos a menos</dt>
+      <dd>Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.</dd>
       <dt>19/10/2026 · Diário oficial do RJ lido por data</dt>
       <dd>O Rio de Janeiro passa a ter rota de leitura: a página de cadernos da data e o identificador do visualizador dão o PDF da Parte I (Poder Executivo), sem cookie (4,7 MB em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +30 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>19/10/2026 · Consulta do município: o cartão diz quantos atos não couberam</dt>
@@ -165,8 +167,6 @@
       <dd>Os pontos do mapa vinham de todos os satélites e do arquivo do dia corrente, enquanto os números saem do satélite de referência no último dia completo. `focos_pontos.json` passa a nascer do mesmo CSV e do mesmo satélite que `focos_referencia.json`, no mesmo coletor. METODOLOGIA §41.8. `riscos_municipio/&lt;UF&gt;.json` ganha a classe de calor do MS e o reconhecimento federal (Proteja-se §7.3).</dd>
       <dt>17/10/2026 · Fila de pistas reentrante: o juiz volta na noite até esvaziar</dt>
       <dd>O juiz julga até o prazo; sobrando fila, grava `juiz.parcial` com o restante em vez de `juiz.feito`, e a reserva do despachante o redispara até 08:00 UTC. Pendente de documento julgada hoje não é rejulgada na mesma noite. Na `main`, o prazo de todo elo termina antes das 09:00. Sem sessão esperando run. Ensaio 28.</dd>
-      <dt>17/10/2026 · Monitor de riscos recebe as três listas federais de risco</dt>
-      <dd>Os mapas dos indicados pela União ao cadastro nacional (deslizamento e enchente), do Semiárido e dos prioritários do fogo saem da Defesa civil e entram no Monitor de riscos, como contexto dos blocos de chuva, seca e fogo, sem lista embaixo. O link da inicial e o índice de conteúdo apontam para `#boxListaIndicados`; o portão de mapas cobra as listas no Monitor. `mapaDeContagem` passa a ser do componente comum de mapas.</dd>
     </dl>
   </section>
 </main>
