@@ -1259,12 +1259,14 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    HANDOVER_NINO34_SEMANAL_E_CARTOES_COMPACTOS §3) é a variante dos números de topo de toda página:
    até seis cartões numa linha no desktop, três no tablet, dois no celular; número em 28 px, rótulo
    em 14 px. Fica depois da regra base e da de três colunas, e por isso vence as duas. */
-/* 19/10/2026, duas voltas. A primeira trocou `grid-auto-flow:column` por `auto-fit` com mínimo de
+/* 19/10/2026, três voltas (as duas primeiras desta faixa, a terceira no #896). A primeira trocou `grid-auto-flow:column` por `auto-fit` com mínimo de
    trilha, porque com SETE cartões (o Monitor de riscos ganhou o do IQAr) o fluxo em coluna punha
    os sete na mesma linha e cortava o rótulo. Mas `auto-fit` decide o número de colunas por
    aritmética: 12rem de mínimo em 1.132 px de grade dá 5,9 colunas, e o SEXTO cartão descia
    sozinho, 34 px mais baixo (medido na Defesa civil e na Imprensa), enquanto a fileira de cinco
    da Saúde quebrava em 4 + 1 a 1021 px, contra o `linhas: 1` do contrato dela.
+   O #896 baixou o mínimo para 11rem, o que faz caber seis a 1280 px mas não a 1021, onde a grade
+   tem 973 px e 11rem de mínimo ainda dá cinco colunas — medido. Daí esta terceira volta.
    Agora a CSS diz o que a variante declara, sem contar pixels: no desktop os cartões vão todos
    numa linha (fluxo em coluna, trilhas iguais), e o limite de seis é a única exceção — com sete
    ou mais a fileira passa a quatro colunas e vira duas linhas cheias (4 + 3), em vez de deixar o
