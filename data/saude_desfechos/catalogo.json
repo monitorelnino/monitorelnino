@@ -99,8 +99,17 @@
    "comprometimento": "água; calor",
    "sistema": "SISAB (APS) / SIH",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_desidratacao.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/internacoes_desidratacao.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal E86",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "internacoes_desidratacao.json"
   },
   {
    "id": "desnutricao",
@@ -138,8 +147,17 @@
    "comprometimento": "ar; fumaça",
    "sistema": "SIH/SUS (CID J)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_respiratorias.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/internacoes_respiratorias.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal J00–J22",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "internacoes_respiratorias.json"
   },
   {
    "id": "intox_fumaca",
@@ -147,8 +165,17 @@
    "comprometimento": "fumaça",
    "sistema": "Sinan (intoxicação exógena) / CIATox",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_fumaca.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/internacoes_fumaca.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal T59",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "internacoes_fumaca.json"
   },
   {
    "id": "cardio",
@@ -156,8 +183,17 @@
    "comprometimento": "calor; fumaça",
    "sistema": "SIH/SUS (CID I)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_cardio.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/internacoes_cardio.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal I20–I25 e I60–I64",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "internacoes_cardio.json"
   },
   {
    "id": "renal",
@@ -165,8 +201,17 @@
    "comprometimento": "água; calor",
    "sistema": "SIH/SUS (CID N)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_renal.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/internacoes_renal.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal N17–N19",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "internacoes_renal.json"
   },
   {
    "id": "calor_agravo",
@@ -174,8 +219,17 @@
    "comprometimento": "calor",
    "sistema": "SIH / SIM / Painel Nacional de Excesso de Calor",
    "periodicidade": "semanal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor escrito (`coletar_sih.py`, grava `saude_desfechos/internacoes_calor.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, por UF e mês de processamento; leitura por máquina provada em 17/10/2026, com uma célula conferida no TabNet. Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/internacoes_calor.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal T67",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "internacoes_calor.json"
   },
   {
    "id": "pele_olhos",
@@ -201,9 +255,17 @@
    "comprometimento": "todos",
    "sistema": "SIM",
    "periodicidade": "mensal (preliminar)",
-   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF desde 2019 — sinal precoce sem causa; o painel por causa não está mais no portal (17/10/2026). SIM preliminar com causa básica: arquivos por UF e ano no FTP do DATASUS, defasagem de cerca de 2 meses, provado em 17/10/2026; coletor ainda não escrito.",
+   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF desde 2019 — sinal precoce sem causa; o painel por causa não está mais no portal (17/10/2026). SIM preliminar com causa básica: arquivos por UF e ano no FTP do DATASUS, defasagem de cerca de 2 meses, provado em 17/10/2026; SIM preliminar ainda sem coletor. Série na forma comum em `saude_desfechos/obitos.json` (94 meses, jan/2019 a out/2026, Registro Civil, primeira leitura em 19/10/2026).",
    "status_coleta": "coletado",
-   "arquivo": "obitos_registro_civil.json"
+   "arquivo": "obitos_registro_civil.json",
+   "rota": {
+    "sistema": "Portal da Transparência do Registro Civil (ARPEN/CNJ)",
+    "url": "https://transparencia.registrocivil.org.br/",
+    "arquivos": "API mensal por UF, registros de óbito lavrados no mês, sem causa",
+    "provado_em": "19/10/2026",
+    "prova": "94 meses de jan/2019 a out/2026 nas 27 UFs, faixa habitual sem 2020 e 2021; mês corrente parcial; o painel por causa saiu do portal (17/10/2026)",
+    "coletor": "coletar_obitos.py"
+   }
   },
   {
    "id": "icsap",
@@ -229,8 +291,17 @@
    "comprometimento": "água; saneamento",
    "sistema": "SIH/SUS (CID B15)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, diagnóstico principal B15, por UF e mês de processamento. Contagem de internações, não de casos notificados: o SINAN de hepatite A no FTP tem como mais recente o arquivo de 2023 (sondagem de 17/10/2026). Coletor escrito (`coletar_sih.py`, grava `saude_desfechos/hepatite_a.json`); o arquivo nasce na primeira rodada do elo dos desfechos.",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS, diagnóstico principal B15, por UF e mês de processamento. Contagem de internações, não de casos notificados: o SINAN de hepatite A no FTP tem como mais recente o arquivo de 2023 (sondagem de 17/10/2026). Defasagem de 2 a 3 meses; coletor `coletar_sih.py`, série em `saude_desfechos/hepatite_a.json` (primeira leitura em 19/10/2026).",
+   "status_coleta": "coletado",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, diagnóstico principal B15",
+    "provado_em": "19/10/2026",
+    "prova": "RD<UF><AAMM>.dbc lidos pelo leitor da E1: 69 meses (dez/2020 a ago/2026) nas 27 UFs, em duas rodadas de 19/10/2026 no executor; soma do Brasil e taxa por 100 mil; TabNet conferido em 17/10/2026 em jul/2026: AP igual, CE 2,0% abaixo (METODOLOGIA §110). Faixa habitual preenchida; 644 arquivos (jan/2019 a nov/2020) por ler; último mês publicado parcial.",
+    "coletor": "coletar_sih.py"
+   },
+   "arquivo": "hepatite_a.json"
   }
  ],
  "_vocabulario_status": {

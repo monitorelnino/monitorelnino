@@ -4283,6 +4283,8 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 
 **O que a série não conta.** Residência do paciente (a UF é a do hospital), óbitos e internações em hospitais fora do SUS. O número do TabNet para a mesma competência foi conferido em duas UFs: bateu em AP (6.160, julho de 2026) e ficou 2,0% abaixo em CE (52.091 contra 53.588 registros em julho de 2026), sem que a regra de contagem do TabNet tenha sido identificada. O Monitor não atribui internações ao El Niño.
 
+**Primeira leitura (19/10/2026).** Duas rodadas no executor leram 69 meses (dezembro de 2020 a agosto de 2026) nas 27 UFs e gravaram os sete arquivos de internações; restam 644 arquivos (janeiro de 2019 a novembro de 2020), que as próximas rodadas leem do mais recente ao mais antigo. Com isso a faixa habitual existe para todos os territórios (ela pede ao menos três anos de referência entre 2019 a 2023 e 2025; 2024 fica à parte), mas os cortes do mapa seguem provisórios, calculados só sobre os anos já lidos, até a leitura chegar a 2019. Os óbitos registrados têm 94 meses (janeiro de 2019 a outubro de 2026) e faixa habitual sem 2020 e 2021. Em calor, fumaça e hepatite A os valores mensais são muito pequenos e vários cortes do mapa coincidem em zero; a legenda do mapa deve dizê-lo.
+
 ## 111. A semana da Imprensa em datas e a definição dos índices numa só função (19/10/2026)
 
 Duas regras da reforma da Imprensa (16/10/2026) passam a viver na raiz do dado, não no texto da página.
