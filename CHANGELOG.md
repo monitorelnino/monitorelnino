@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #875 · Guia sem glifo de caixa e cartões de emergência um degrau abaixo
+## 2026-10-19 · #875 · Cartões de emergência um degrau abaixo
 
-As listas do guia do Proteja-se voltam ao marcador padrão: sai o glifo de caixa e saem as declarações que existiam só para abrir espaço a ele. Nos cinco cartões de emergência o número cai de 48 para 36 px, o do 40199 para 22 px e o respiro vertical para 8 px: a fileira cai de 194 px para 173 px a 1280. Uma regra de 640 px sem efeito medido sai.
+Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.
 
 ## 2026-10-19 · #870 · SIH: internações por grupo de causa na forma comum
 
