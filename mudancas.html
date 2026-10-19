@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Portões: três a menos</dt>
+      <dd>Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.</dd>
       <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
       <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
       <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
@@ -165,8 +167,6 @@
       <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
       <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
       <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
-      <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
-      <dd>Sai do cartão de cada estado a linha do feed, e dos textos do blog o &quot;· Feed&quot; e a menção no aviso sem JavaScript (decisão da editoria de 16/10). &quot;feed&quot; entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.</dd>
     </dl>
   </section>
 </main>

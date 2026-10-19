@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #847 · Portões: três a menos
+
+Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.
+
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
 
 `semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.
