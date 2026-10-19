@@ -387,6 +387,10 @@ def campos_do(prefixo: str, listar=None, baixar=None) -> int:
         for k, c in cont.items():
             c[r.get(k)] += 1
     print("registros:", n)
+    cr = collections.Counter()
+    for r in ler_dbc(bruto)[1]:
+        cr[(r.get("CLASSI_FIN"), r.get("RESULT"))] += 1
+    print("CLASSI_FIN x RESULT:", sorted(cr.items(), key=lambda kv: -kv[1])[:20])
     for k, c in cont.items():
         if len(c) <= 12:
             print(k, dict(c.most_common()))
