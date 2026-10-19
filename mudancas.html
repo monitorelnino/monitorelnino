@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=cc0114f1"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=e22e14ce">
+<link rel="stylesheet" href="assets/base.css?v=73322c35">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,8 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>19/10/2026 · Diário oficial do RJ: PDF assinado deixa de sair sem texto</dt>
-      <dd>A edição do RJ traz a assinatura depois do fim do PDF, e o leitor a descartava como se fosse imagem: 42 páginas lidas como zero. O coletor passa a ler o PDF até o fim marcado e a decodificar os nomes de glifo da fonte (`/U0044`), e as edições do RJ voltam a casar com os termos de declaração. Código: `coletar_edicoes_doe.py` +17 (correção na leitura, com autoteste).</dd>
+      <dt>19/10/2026 · Fileira compacta de cartões sem órfão</dt>
+      <dd>A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas cheias. Sai também do mapa de focos a ressalva &quot;pontos: todos os satélites&quot;, que o dado tornou falsa.</dd>
       <dt>19/10/2026 · Dengue, chikungunya e SRAG na forma comum dos desfechos</dt>
       <dd>`desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.</dd>
       <dt>19/10/2026 · A Saúde ganha a seção única de desfechos</dt>
@@ -60,7 +60,7 @@
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
       <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
-      <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.</dd>
+      <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde. =======</dd>
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
       <dt>19/10/2026 · Diário oficial do DF lido por data</dt>

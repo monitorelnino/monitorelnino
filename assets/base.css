@@ -1259,12 +1259,22 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    HANDOVER_NINO34_SEMANAL_E_CARTOES_COMPACTOS §3) é a variante dos números de topo de toda página:
    até seis cartões numa linha no desktop, três no tablet, dois no celular; número em 28 px, rótulo
    em 14 px. Fica depois da regra base e da de três colunas, e por isso vence as duas. */
-/* 19/10/2026: a regra dizia "até seis numa linha", mas `grid-auto-flow:column` põe TODOS numa
-   linha só — com sete cartões (o Monitor de riscos ganhou o do IQAr) cada um ficava estreito
-   demais e o rótulo era cortado. Com `auto-fit` e um mínimo por cartão, até seis continuam
-   dividindo a linha como antes e o sétimo desce para a linha seguinte, que é o que a regra
-   sempre quis dizer. O mínimo é largura de trilha, não tipografia: a escala não muda. */
-.grade-numeros--compacta{grid-template-columns:repeat(auto-fit, minmax(11rem, 1fr)); grid-auto-flow:row;}
+/* 19/10/2026, três voltas. A primeira trocou `grid-auto-flow:column` por `auto-fit` com mínimo
+   de trilha, porque com SETE cartões (o Monitor de riscos ganhou o do IQAr) o fluxo em coluna punha
+   os sete na mesma linha e cortava o rótulo. Mas `auto-fit` decide o número de colunas por
+   aritmética: 12rem de mínimo em 1.132 px de grade dá 5,9 colunas, e o SEXTO cartão descia
+   sozinho, 34 px mais baixo (medido na Defesa civil e na Imprensa), enquanto a fileira de cinco
+   da Saúde quebrava em 4 + 1 a 1021 px, contra o `linhas: 1` do contrato dela.
+   O #896 baixou o mínimo para 11rem, o que faz caber seis a 1280 px mas não a 1021, onde a grade
+   tem 973 px e 11rem de mínimo ainda dá cinco colunas — medido. Daí esta terceira volta.
+   Agora a CSS diz o que a variante declara, sem contar pixels: no desktop os cartões vão todos
+   numa linha (fluxo em coluna, trilhas iguais), e o limite de seis é a única exceção — com sete
+   ou mais a fileira passa a quatro colunas e vira duas linhas cheias (4 + 3), em vez de deixar o
+   sétimo órfão. Abaixo de 1021 px valem as duas regras de empilhamento, logo adiante. */
+@media (min-width: 1021px){
+  .grade-numeros--compacta{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr);}
+  .grade-numeros--compacta:has(> :nth-child(7)){grid-auto-flow:row; grid-template-columns:repeat(4, minmax(0,1fr));}
+}
 .grade-numeros--compacta .cartao-numero{padding:var(--sp-2) var(--sp-3);}
 .grade-numeros--compacta .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 .grade-numeros--compacta .cartao-numero-rotulo{font-size:var(--fs-small); line-height:var(--lh-small);}
