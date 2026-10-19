@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=2f4b16f8"></script>
+<script src="assets/mapas.js?v=9105a8ac"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=4128bee5">
+<link rel="stylesheet" href="assets/base.css?v=889a2620">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,8 +47,14 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>17/10/2026 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento</dt>
+      <dt>19/10/2026 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento</dt>
       <dd>Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).</dd>
+      <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
+      <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
+      <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
+      <dd>`MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.</dd>
+      <dt>17/10/2026 · Portões acompanham as páginas reformadas</dt>
+      <dd>Imprensa: saem as duas conferências de frases que a editoria tirou (média dos N verificados; N vezes por dia). Proteja-se: saem as da grade de 27 siglas, da segunda grade de telefones e dos cartões de navegação; as abas aceitam a quinta ficha. Saúde: o cartão de emergências só é cobrado se existir. Monitor de riscos: figura principal aceita um mapa e até duas séries, com lista de ids no contrato.</dd>
       <dt>17/10/2026 · Ensaio da noite confere o isolamento dos autotestes pelo portão único</dt>
       <dd>O workflow do ensaio chamava `verificar_autoteste_nao_escreve.py` (27 coletores, 12 arquivos de banco); passa a chamar `verificar_autotestes_isolados.py --rapido`, que cobre os mesmos coletores contra todo `data/`. Pedido da D, que remove o portão antigo em seguida.</dd>
       <dt>17/10/2026 · Consulta do município: a situação do plano numa função comum</dt>
@@ -161,12 +167,6 @@
       <dd>`verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.</dd>
       <dt>16/10/2026 · Saúde: títulos e subtítulos dizem o que a figura é</dt>
       <dd>O mapa do índice passa a &quot;MARÉ Saúde por estado, de 0 a 100&quot;, com o subtítulo do cálculo em uso; &quot;prontidão&quot; sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como &quot;não foi lido pelo MARÉ nesta semana&quot;. Sai a busca municipal antiga, sem elemento na página.</dd>
-      <dt>16/10/2026 · Nenhum texto sobre feed no site</dt>
-      <dd>Sai do cartão de cada estado a linha do feed, e dos textos do blog o &quot;· Feed&quot; e a menção no aviso sem JavaScript (decisão da editoria de 16/10). &quot;feed&quot; entra no vocabulário proibido, que vale para a página, o catálogo e o texto escrito pelos scripts. Os arquivos do feed seguem no cabeçalho das páginas, para leitura por máquina.</dd>
-      <dt>16/10/2026 · DOE-SP: o texto da publicação é decodificado e a homologação paulista casa</dt>
-      <dd>A API do DOE-SP serve o ato com entidades HTML (`Situa&amp;ccedil;&amp;atilde;o`, `Pre&amp;shy;feito`); sem decodificar, nenhum padrão de homologação casava. A forma paulista (&quot;Homologa, por 180 dias, o decreto do Prefeito do Município de Guariba … Decreto municipal nº 5.019&quot;) entra como quarto padrão, com caso de teste do texto medido do Decreto 70.765.</dd>
-      <dt>16/10/2026 · Descoberta nos sítios oficiais: três noites cobrem os 54 alvos</dt>
-      <dd>A descoberta de planos nos sítios estaduais andava 6 alvos por noite e revia os mesmos; agora a fatia anda 20 por dia e os 54 (27 UFs, saúde e defesa civil) passam em três noites. O comando ganha prazo próprio de 12 minutos e grava o que achou ao ser interrompido; alvo só conta como verificado quando a API do sítio respondeu.</dd>
     </dl>
   </section>
 </main>

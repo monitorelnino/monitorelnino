@@ -1,0 +1,42 @@
+{
+ "data": "2026-10-19",
+ "formato_versao": 1,
+ "etapas": {
+  "funil_recursos_resposta": {
+   "consultas": 1,
+   "com_resultado_bruto": 1,
+   "pistas": 2
+  },
+  "juiz": {
+   "pistas_recebidas": 1488,
+   "com_documento": 76,
+   "promovidas": 1,
+   "recusa_documento_inacessivel": 55,
+   "recusa_texto_nao_extraivel": 5,
+   "recusa_ente_nao_confirmado": 42,
+   "recusa_citacao_incompleta": 6,
+   "recusa_executivo_pendente": 3,
+   "recusa_autoridade_nao_confirmada": 10,
+   "recusa_plano_sem_identificacao": 1,
+   "recusa_minuta_ou_rascunho": 2,
+   "recusa_noticia_institucional_nao_e_o_plano": 3,
+   "recusa_natureza_duvidosa": 4,
+   "recusa_resposta": 4,
+   "recusa_sem_documento_primario": 1352
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "alvos_verificados": 2,
+   "achados_novos": 3,
+   "fila_acumulada": 42
+  },
+  "rede_social": {
+   "entes_consultados": 20,
+   "perfis_confirmados": 60,
+   "pistas": 0,
+   "sem_perfil": 3,
+   "lacunas": 1
+  }
+ },
+ "atualizado_em": "2026-10-19T06:10:44"
+}
