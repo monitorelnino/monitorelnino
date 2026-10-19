@@ -1373,6 +1373,10 @@ A API do Monitor de Secas entrega a tabela por UF (§ dos dados tabulares) e as 
 
 `data/saude_municipio/<UF>.json`, escrito pelo elo da saúde depois dos coletores que ele lê, junta por código IBGE: o nível de alerta de dengue e de chikungunya do InfoDengue na semana mais recente que a fonte publica, com os casos estimados e a última semana com notificações registradas (a capital que a série municipal não traz recebe o alerta por capital, da mesma fonte); a classe de excesso de calor do Painel do Ministério da Saúde, no vocabulário dele; e o degrau de saúde do plano municipal na leitura automática (§10.1), casado pela URL do documento registrado. Município que a fonte não leu fica sem o bloco, e a página diz que não foi lido — nunca zero. Respiratória grave e MARÉ Saúde são do estado e a página os diz como do estado.
 
+### 41.12 O que o mapa de qualidade do ar não diz (19/10/2026)
+
+A nota saiu da página por decisão da editoria (19/10/2026): é limitação de método, e método vive aqui. Cidade **sem ponto no mapa** é cidade sem estação oficial nem sensor da rede — não é ar limpo, é ausência de medição. **Estação regulatória e sensor de baixo custo medem na mesma unidade, não com a mesma confiabilidade**, e por isso o mapa não os compara entre si: cada ponto diz de qual das duas origens vem. O padrão brasileiro de PM2,5 em 24 horas é de **50 µg/m³** (PI-1, CONAMA 506/2024), e é contra ele que a leitura do mapa se faz.
+
 ## 42. O dinheiro próprio do município em defesa civil: três camadas, e a que existe para todos (24/09/2026)
 
 Peso zero nos dois índices, provado por portão e pelo teste de estresse que renomeia `data/financiamento/` inteira e confere que o índice recomputado é idêntico bit a bit.
@@ -4256,6 +4260,15 @@ Pedido da editoria (16/10/2026): coletar os desfechos do SUS de todas as fontes 
 **Diarreias pelo SISAB (17/10/2026).** Atendimentos individuais na atenção primária registrados com CIAP-2 D11 (diarreia), D70 (infecção gastrointestinal) ou D73 (gastroenterite, presumível infecção), ou CID-10 A00 a A09, por UF do estabelecimento e mês, do relatório público de produção do SISAB, desde janeiro de 2019. É atendimento, não caso: a mesma pessoa pode voltar, e a série também acompanha a adoção do registro eletrônico na atenção primária ao longo dos anos. As duas últimas competências são parciais ("dados sujeitos à alteração", diz o próprio relatório). O CSV traz a lista dos filtros que aplicou; o coletor confere que ela é exatamente a pedida, que as 27 UFs vieram e que o cabeçalho tem as competências, e qualquer diferença é lacuna declarada, com o arquivo anterior mantido.
 
 **O mês da extração não é mês coberto (correção de 17/10/2026).** O arquivo preliminar do SINAN é extraído no meio de um mês: na leitura de 17/10, o de 2026 tinha notificações até os primeiros dias de julho. A série da leptospirose passa a terminar no último mês inteiro de notificação (junho), e só os anos com arquivo lido entram com zero medido. O `ultimo` de cada UF traz também o `consolidado`, o último mês que já não é parcial.
+
+## 109. Óbitos registrados na forma comum dos desfechos (17/10/2026)
+
+**O que a série conta.** Registros de óbito lavrados em cartório no mês, por UF, como o Portal da Transparência do Registro Civil (ARPEN/CNJ) agrega, de janeiro de 2019 ao mês corrente, em `data/saude_desfechos/obitos.json`, na forma do §108. É a mesma consulta do coletor de 29/09 (`coletar_obitos_registro_civil.py`), estendida até 2019 para a faixa habitual e os cortes do mapa; o arquivo antigo, que a página lê, não muda. Não é óbito ocorrido no mês nem óbito por causa. O mês corrente é parcial: o registro entra ao longo dos dias. Mês que a fonte não respondeu fica sem valor e declarado, nunca zero.
+
+**Leitura de 17/10/2026, no executor.** 94 meses e 27 UFs; setembro de 2026, 120.473 registros no país. A faixa habitual dos óbitos usa 2019 e 2022 a 2025, com 2024 à parte: 2020 e 2021, anos da pandemia de covid-19, ficam fora (decisão da editoria de 17/10/2026) e a exclusão é declarada no arquivo (`faixa_sem_anos`). Os cortes do mapa não mudam.
+
+**O que ficou de fora.** O painel por causa (doenças respiratórias, cardíacas) não está mais no portal: os endereços antigos respondem com erro do servidor, e o código do portal não os chama. O SIM preliminar, com causa básica, está no FTP do DATASUS por UF e ano, com defasagem de cerca de dois meses; entra como série com causa numa próxima etapa. O Monitor não atribui óbitos ao El Niño.
+
 
 ## 111. A semana da Imprensa em datas e a definição dos índices numa só função (19/10/2026)
 
