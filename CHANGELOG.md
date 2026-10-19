@@ -28,7 +28,7 @@ A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.ht
 
 Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).
 
-## 2026-10-19 · #PR · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura
+## 2026-10-19 · #864 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura
 
 Saem a frase sobre a data do dado, o "previsão, não observação", o parágrafo das listas federais, a nota do mapa de qualidade do ar (vai para a metodologia) e o gráfico do Semiárido. As siglas de UF viram etiqueta, sem link. No topo, a frase do prognóstico sai do cartão e vai para o texto da seção; rodapé preso na base e até seis por linha acabam com o vão branco.
 
