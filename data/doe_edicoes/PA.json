@@ -1,12 +1,936 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "/edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError",
-  "em": "02/10/2026",
-  "tentativas": 2,
-  "rotulo_corrigido_em": "17/10/2026 (404, erro de rede e arquivo que não é edição não são recusa medida)"
+  "modo": "padrao_por_data",
+  "em": "17/10/2026",
+  "conta_como_consultado": true
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-06-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 16343601,
+   "paginas": 131,
+   "paginas_com_texto": 131,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.06.29.DOE.pdf",
+   "impressao": "12e55eb6b08a8d773565828a4eda168c27f411bd5c5c1eba37b8c0bd40f9f4ce",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-06-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 8198687,
+   "paginas": 87,
+   "paginas_com_texto": 87,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.06.30.DOE.pdf",
+   "impressao": "dd33f2e72db9d77479d802ea7b67cf0d63f5d81e7431390dc5537ceff369d9fb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3766213,
+   "paginas": 236,
+   "paginas_com_texto": 236,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.01.DOE.pdf",
+   "impressao": "6ba36ec67bb23a3de6b99b320a6e895131c11b600edc036ff25ff888404cf586",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2636200,
+   "paginas": 128,
+   "paginas_com_texto": 128,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.02.DOE.pdf",
+   "impressao": "ba62d6390e500c0f619cdcf442acc23aa00e24319d77abd9a091eb2bd239cb25",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3163135,
+   "paginas": 139,
+   "paginas_com_texto": 139,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.03.DOE.pdf",
+   "impressao": "d221f2788e6fff256714882c8aa22563a576f83f2ba5e0f4002d94e0aec9ae12",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "d221f2788e6fff256714882c8aa22563a576f83f2ba5e0f4002d94e0aec9ae12",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-07-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2734201,
+   "paginas": 151,
+   "paginas_com_texto": 151,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.06.DOE.pdf",
+   "impressao": "920fe5c8dd8232da5a554582f8a5692426c0ed18d8ef4104fe7f209a52c551f0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 18486564,
+   "paginas": 141,
+   "paginas_com_texto": 141,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.07.DOE.pdf",
+   "impressao": "4cfd370494090e9eb1443adadec72782aab3f7f0dc4419de3ec4a19f5bd6a571",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "4cfd370494090e9eb1443adadec72782aab3f7f0dc4419de3ec4a19f5bd6a571",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-07-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3114822,
+   "paginas": 140,
+   "paginas_com_texto": 140,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.08.DOE.pdf",
+   "impressao": "f2c5eae19e4856d17f56af9f9e3296fe011ef2326b5b9b3206134cad2ddf88e8",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2578396,
+   "paginas": 132,
+   "paginas_com_texto": 132,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.09.DOE.pdf",
+   "impressao": "9fcce29b4120317cbb8cb76bd8564628a11488a8a521d009e60b4df2cc9f2a0f",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "9fcce29b4120317cbb8cb76bd8564628a11488a8a521d009e60b4df2cc9f2a0f",
+   "termos_achados": [
+    "sala de situação",
+    "centro de operações",
+    "vigilância em saúde ambiental"
+   ]
+  },
+  "2026-07-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5462759,
+   "paginas": 183,
+   "paginas_com_texto": 183,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.10.DOE.pdf",
+   "impressao": "b3baf8884253437d6b164ce3af576a7aec98c1c7885d754fb9011d1383c2b070",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "b3baf8884253437d6b164ce3af576a7aec98c1c7885d754fb9011d1383c2b070",
+   "termos_achados": [
+    "sala de situação",
+    "centro de operações",
+    "vigilância em saúde ambiental"
+   ]
+  },
+  "2026-07-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1003735,
+   "paginas": 34,
+   "paginas_com_texto": 34,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.13.DOE.pdf",
+   "impressao": "06f7a490029f1947227b93ec0803dd050d68021799ae96e7ede20485ff25e6c9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2877802,
+   "paginas": 145,
+   "paginas_com_texto": 145,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.14.DOE.pdf",
+   "impressao": "9d639ce1d3f55f403b39a7e6da491683e7ed6ddc65803c92d63d5b9a602b06cd",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 15349760,
+   "paginas": 135,
+   "paginas_com_texto": 135,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.15.DOE.pdf",
+   "impressao": "1883322adde0592201b9b0beb45ce49f4fa2ae9639d4302738a9f709d8700f3d",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "1883322adde0592201b9b0beb45ce49f4fa2ae9639d4302738a9f709d8700f3d",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-07-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2727545,
+   "paginas": 118,
+   "paginas_com_texto": 118,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.16.DOE.pdf",
+   "impressao": "39aac5cc16cc614dc3edce4538d6164f119e72787a32b605600f9915b04df30f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2665646,
+   "paginas": 122,
+   "paginas_com_texto": 122,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.17.DOE.pdf",
+   "impressao": "3c0bed822692ebcc5868da81dcdd3dc415a4e9c279716a6f534a85fc7569326f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1292154,
+   "paginas": 50,
+   "paginas_com_texto": 50,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.20.DOE.pdf",
+   "impressao": "0ff30c34a5783cb5f8f6bca86fcd2cd31320d6fbc76fc2ad99145251e3fac858",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2474711,
+   "paginas": 106,
+   "paginas_com_texto": 106,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.21.DOE.pdf",
+   "impressao": "f998d81d74290f56b1241a80b48e29097d51a3d9b06aa7f68ecd1d5d06b2a6a4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2689044,
+   "paginas": 111,
+   "paginas_com_texto": 111,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.22.DOE.pdf",
+   "impressao": "262927d4948f61bd0b0748d32a0b9380c89f12132026a7da46333321c225a095",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2678462,
+   "paginas": 114,
+   "paginas_com_texto": 114,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.23.DOE.pdf",
+   "impressao": "5289ba4afdc700bfa3228bc4cc67d0eceacb7365bc966e6a9545189d4bd7abb5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 13469498,
+   "paginas": 109,
+   "paginas_com_texto": 109,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.24.DOE.pdf",
+   "impressao": "271e5583e3eaf7c23c2ced1fb18fcba721fd7d4f62353bb803e51c3a45ab7a74",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1080282,
+   "paginas": 40,
+   "paginas_com_texto": 40,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.27.DOE.pdf",
+   "impressao": "c3ec17c6a7726d24d101e8a3328af2511d80134eb4f27eb54fa1721165f188e7",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "c3ec17c6a7726d24d101e8a3328af2511d80134eb4f27eb54fa1721165f188e7",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-07-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 6400738,
+   "paginas": 95,
+   "paginas_com_texto": 95,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.28.DOE.pdf",
+   "impressao": "1037417f12d41106f6c1be7afc1a1222bc9355af68de69b09892b28308193d35",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2210169,
+   "paginas": 98,
+   "paginas_com_texto": 98,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.29.DOE.pdf",
+   "impressao": "4d96f8d12359a2867fd3b01cdfcfb5c8560f9cf14c80873e6b0029b65d7d27c0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3455789,
+   "paginas": 121,
+   "paginas_com_texto": 121,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.30.DOE.pdf",
+   "impressao": "2e6f2fdf603eee2acc966912fcee9c316845ea0227a7f5d40bde25ed871c108e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 16517663,
+   "paginas": 142,
+   "paginas_com_texto": 142,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.07.31.DOE.pdf",
+   "impressao": "8872e6d826436399dd1c9abf80a29c28aaabe0e9b1ae319315f9cfa313fa2fc7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1305987,
+   "paginas": 51,
+   "paginas_com_texto": 51,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.03.DOE.pdf",
+   "impressao": "7fd08e55dd30134347afd72f83ed733e7a526f846de119a29369059650a3a277",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2459799,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.04.DOE.pdf",
+   "impressao": "2c60dd3b7459eff98f152f73246ad2050275bf46237ea1c396010bf81696416c",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "2c60dd3b7459eff98f152f73246ad2050275bf46237ea1c396010bf81696416c",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-08-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2693383,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.05.DOE.pdf",
+   "impressao": "b682df441806ee0efa68c65b91274997c617df258d2fd08ad699d57e030337a6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 10803155,
+   "paginas": 101,
+   "paginas_com_texto": 101,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.06.DOE.pdf",
+   "impressao": "e19dff320c343e41da446f273735b778ec40cf38db295df5e670bf9c6d378d2c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 21137142,
+   "paginas": 139,
+   "paginas_com_texto": 139,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.07.DOE.pdf",
+   "impressao": "72163ada9368fa7cb24827dc4f3a08dd92ddf20d6e47ef28c0659d816876d2d9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 32096189,
+   "paginas": 190,
+   "paginas_com_texto": 190,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.10.DOE.pdf",
+   "impressao": "b1e8dbdc89cd8d57592a8e2168d9553e75ba8fb7cb833878aded4b9015690585",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11336989,
+   "paginas": 106,
+   "paginas_com_texto": 106,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.11.DOE.pdf",
+   "impressao": "4258506c53d74f20a0354c62f3eb5c7259325f176fb0a11176e96e72aeea9b80",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "4258506c53d74f20a0354c62f3eb5c7259325f176fb0a11176e96e72aeea9b80",
+   "termos_achados": [
+    "sala de situação"
+   ]
+  },
+  "2026-08-12": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 28139568,
+   "paginas": 178,
+   "paginas_com_texto": 178,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.12.DOE.pdf",
+   "impressao": "677d221bc78942bee47b99d140c0217c422509237e76e52330acb819ededbfc0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2507670,
+   "paginas": 110,
+   "paginas_com_texto": 110,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.13.DOE.pdf",
+   "impressao": "d253b21e6ddf22d0a0f96bd529de7d18e0d943cda8755acdc325434f2bbd0eaa",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2638730,
+   "paginas": 117,
+   "paginas_com_texto": 117,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.14.DOE.pdf",
+   "impressao": "5b2e4629df4aefac41d5b9bc51ec2a18365e9f010710cdac83d9328e239ee623",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2666089,
+   "paginas": 104,
+   "paginas_com_texto": 104,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.17.DOE.pdf",
+   "impressao": "27b4828f78be88affe5f4a0e393e66d49186f1775d5ba0dde517e71cb2a2c1f9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2436388,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.18.DOE.pdf",
+   "impressao": "4d2ae65d8ed60b666242510e4a5f6e297d36ad48b2a63740dbc0f8cd08381859",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-19": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 13512391,
+   "paginas": 124,
+   "paginas_com_texto": 124,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.19.DOE.pdf",
+   "impressao": "d6b71c3d70d3278b7b65b6e43993d9de3e7df9e29845e418482185990847ed8a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-20": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 10842918,
+   "paginas": 109,
+   "paginas_com_texto": 109,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.20.DOE.pdf",
+   "impressao": "fec89ab36b7c5c54cba0fc0bffa9ab82fd0f057ee74a5adc3a05da955714b7d2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 9972253,
+   "paginas": 106,
+   "paginas_com_texto": 106,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.21.DOE.pdf",
+   "impressao": "b6399844ead1d140e2e1b60a751393dd69911fe868a52c0db19f86590daea353",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 18038415,
+   "paginas": 157,
+   "paginas_com_texto": 157,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.24.DOE.pdf",
+   "impressao": "19d3a8ca64d18d23ed1da05033cac93e8123f760d80cdf6b8b3ca9fc764afdc6",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "19d3a8ca64d18d23ed1da05033cac93e8123f760d80cdf6b8b3ca9fc764afdc6",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-08-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 10306628,
+   "paginas": 104,
+   "paginas_com_texto": 104,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.25.DOE.pdf",
+   "impressao": "9b3285afb1d82adca72ec4cdd25e011e7f63e3676eb2f843d473adcba47a0b43",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "9b3285afb1d82adca72ec4cdd25e011e7f63e3676eb2f843d473adcba47a0b43",
+   "termos_achados": [
+    "sala de situação",
+    "emergência climática",
+    "El Niño"
+   ]
+  },
+  "2026-08-26": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3357653,
+   "paginas": 221,
+   "paginas_com_texto": 221,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.26.DOE.pdf",
+   "impressao": "4f9890ebdc701ffd556c341b57502d813ab4b3088ae150ede803032e725b3966",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-27": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2076211,
+   "paginas": 100,
+   "paginas_com_texto": 100,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.27.DOE.pdf",
+   "impressao": "19e050c31ba46a122063a18995b1093bcba141ae41bcf21984a6ca906ffec03e",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "19e050c31ba46a122063a18995b1093bcba141ae41bcf21984a6ca906ffec03e",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-08-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2466563,
+   "paginas": 106,
+   "paginas_com_texto": 106,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.28.DOE.pdf",
+   "impressao": "5490c92ca9b75ea81a3085fcd49e56de2b49993c0caf37063dafe62e58fdd823",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-31": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3430226,
+   "paginas": 164,
+   "paginas_com_texto": 164,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.08.31.DOE.pdf",
+   "impressao": "be0b480a7d9848fa0d0272110f68aa337a888bf44d76c7f58b189e8bbbf30909",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "be0b480a7d9848fa0d0272110f68aa337a888bf44d76c7f58b189e8bbbf30909",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-09-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2482830,
+   "paginas": 136,
+   "paginas_com_texto": 136,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.01.DOE.pdf",
+   "impressao": "e006b7ba875be372d6e58fff51cfc0e13971cb5ea18744e8b3e1b0f888e6fa8c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2116161,
+   "paginas": 102,
+   "paginas_com_texto": 102,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.02.DOE.pdf",
+   "impressao": "115003aa17432cbd74b7c68a036772b45e17ac9a69f496f507d8436b7db1c88e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-03": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2758967,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.03.DOE.pdf",
+   "impressao": "b5c8295883c142590197174844ba0adf8c1a4a1f41e39b770e5c9361db06d63f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-04": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 14979485,
+   "paginas": 125,
+   "paginas_com_texto": 125,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.04.DOE.pdf",
+   "impressao": "de110a2bb189ca9518d61d40c3e5c64f2d0ad5b6c1cae71d68ed7190f3ace922",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-07": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-09-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2685836,
+   "paginas": 119,
+   "paginas_com_texto": 119,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.08.DOE.pdf",
+   "impressao": "214bac45eac01de59acdde39124a3f710f2ad6f941a9f16f8e379a568786fbc4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2818899,
+   "paginas": 104,
+   "paginas_com_texto": 104,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.09.DOE.pdf",
+   "impressao": "0b0ea8e36bfc171c0a28bbea2d5ae0e3de6aadf580510a1233d2822152584685",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-10": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4417320,
+   "paginas": 209,
+   "paginas_com_texto": 209,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.10.DOE.pdf",
+   "impressao": "7bfa0912b9d1364e89161b58e10ef721a38de3e301a85a6adf6b55e6ae9a8ca2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-11": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2365932,
+   "paginas": 104,
+   "paginas_com_texto": 104,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.11.DOE.pdf",
+   "impressao": "813cc0df772a5f569686100cec5887a9c3c18b4266bc410f382e0326dcea90c2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11509071,
+   "paginas": 114,
+   "paginas_com_texto": 114,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.14.DOE.pdf",
+   "impressao": "38c1963e78d6fe5fe314b617783ebd43487f161271b81dc78fc7757da8e4a462",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2627714,
+   "paginas": 95,
+   "paginas_com_texto": 95,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.15.DOE.pdf",
+   "impressao": "1b26d74fa8d13c9e057f6a866e6e5d5577f0971ed380aa4ba6b7c633ac6345f8",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 3597560,
+   "paginas": 157,
+   "paginas_com_texto": 157,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.16.DOE.pdf",
+   "impressao": "d6de3055f7f31cdf269087eb8de56e8b51d38d3d362829fd48a8b3ac9dc3aecf",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "d6de3055f7f31cdf269087eb8de56e8b51d38d3d362829fd48a8b3ac9dc3aecf",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-09-17": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2515807,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.17.DOE.pdf",
+   "impressao": "3dcf433cd585cb0e22898222e292355dd40740e03e2818d372c0cc6ff662e8ae",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-18": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2663325,
+   "paginas": 125,
+   "paginas_com_texto": 125,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.18.DOE.pdf",
+   "impressao": "bb18fff1c124df4da3c337732c6c16f56294f1ddc8028b03e2ecd861f0af449a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-21": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 18868671,
+   "paginas": 150,
+   "paginas_com_texto": 150,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.21.DOE.pdf",
+   "impressao": "c1180ae27d2d474eb2b5aa42fb076739e2dfd49ee2ab89178b8c40a78ac0428b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-22": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2149024,
+   "paginas": 104,
+   "paginas_com_texto": 104,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.22.DOE.pdf",
+   "impressao": "56e6b8c557fbdb7a2bb1559dd3902b788334eb86f009a08cabcd2bf9d0881271",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "56e6b8c557fbdb7a2bb1559dd3902b788334eb86f009a08cabcd2bf9d0881271",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-09-23": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1884819,
+   "paginas": 75,
+   "paginas_com_texto": 75,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.23.DOE.pdf",
+   "impressao": "0b6a45eefe6c3b8e4c8c53226486e2c6229d347993c53183d53857a5949e6fec",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-24": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1819104,
+   "paginas": 83,
+   "paginas_com_texto": 83,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.24.DOE.pdf",
+   "impressao": "cff32427f7d00ae14efa0d3dcbcc46dede323a64628ed3696b05e5041a9fe3dc",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-25": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 11835444,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.25.DOE.pdf",
+   "impressao": "087e68a4a15a258e6be4e51f011f53bfcb139957e525d06a91c3c8e34c4eecf7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-28": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 7915520,
+   "paginas": 82,
+   "paginas_com_texto": 82,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.28.DOE.pdf",
+   "impressao": "f2e63f5939c627fa7dfe5d8bb4115b57792b9be4bde1c620a51ae5ce8bb1a5c5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-29": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 4125773,
+   "paginas": 212,
+   "paginas_com_texto": 212,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.29.DOE.pdf",
+   "impressao": "31aa07c42d83c1b331a74cdf094c2c755f9a880bb6562a86816d9fbd88348aec",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-30": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1891682,
+   "paginas": 85,
+   "paginas_com_texto": 85,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.09.30.DOE.pdf",
+   "impressao": "dfe6a4ef91c3bc1ad8e7a8ce405b0c29a14bda0431c77d69b283eb4235193d60",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "dfe6a4ef91c3bc1ad8e7a8ce405b0c29a14bda0431c77d69b283eb4235193d60",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2750823,
+   "paginas": 122,
+   "paginas_com_texto": 122,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.01.DOE.pdf",
+   "impressao": "dfdf7732a896726354d6a5228b381373f4ec630c385ea0387c8f2b87cdf557c1",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 14087643,
+   "paginas": 111,
+   "paginas_com_texto": 111,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.02.DOE.pdf",
+   "impressao": "cda9ca6c55bf7ac709c703e24cc6a15c96825580a65ea79ca759eeb8ff389727",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1867211,
+   "paginas": 76,
+   "paginas_com_texto": 76,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.05.DOE.pdf",
+   "impressao": "3592f6a1677004a40bca02582df693ca4c0e31239e9d605075f083631d5b429d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 1774492,
+   "paginas": 82,
+   "paginas_com_texto": 82,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.06.DOE.pdf",
+   "impressao": "98955c635e170fa5ce910b7c3b6da41ce79016e72c765152c9ebd23591f0c26d",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "98955c635e170fa5ce910b7c3b6da41ce79016e72c765152c9ebd23591f0c26d",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2112794,
+   "paginas": 103,
+   "paginas_com_texto": 103,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.07.DOE.pdf",
+   "impressao": "9520ed5fd5039e7c72a7fbb9b0e99333028f1943654ee657e5ab6e04037df345",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 2381491,
+   "paginas": 95,
+   "paginas_com_texto": 95,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.08.DOE.pdf",
+   "impressao": "03c279c6b46b7dc4a1038a58c8dd2288b5a47aac065137da92ce94bf6300b53e",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "03c279c6b46b7dc4a1038a58c8dd2288b5a47aac065137da92ce94bf6300b53e",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 7486249,
+   "paginas": 167,
+   "paginas_com_texto": 167,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.09.DOE.pdf",
+   "impressao": "33fd1df830c3289bd189c39515ae58d16f1e1903917b62f1cb63ff1a3ebabfe4",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "17/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 5740346,
+   "paginas": 62,
+   "paginas_com_texto": 62,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.13.DOE.pdf",
+   "impressao": "823f3830c1dbd9d4992119befaeeda635d47720de87baebeddebeac18c39ddf5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 14782885,
+   "paginas": 130,
+   "paginas_com_texto": 130,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.14.DOE.pdf",
+   "impressao": "3729a749b86603e6abb4c3e76829f5327e50ae5f446bcb452ca3f2d0526dfba5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 14841253,
+   "paginas": 129,
+   "paginas_com_texto": 129,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.15.DOE.pdf",
+   "impressao": "6156eca637804cb48505cefdbbb2739384f1270b5d1c2d58ea100fc44e832174",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16": {
+   "decisao": "lida",
+   "em": "17/10/2026",
+   "bytes": 10998171,
+   "paginas": 109,
+   "paginas_com_texto": 109,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.16.DOE.pdf",
+   "impressao": "669f0ea69fbfdbbda3ba508dc45333ceb18eed25eda1727599a238d7ef1a0cf0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "17/10/2026"
 }
