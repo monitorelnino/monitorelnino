@@ -324,10 +324,12 @@
    "medido_em": "17/10/2026"
   },
   "DF": {
-   "adaptador": "dodf",
-   "url": "https://www.dodf.df.gov.br",
-   "status": "erro: URLError",
-   "ultima_tentativa": "2026-10-18"
+   "adaptador": "edicao_df",
+   "url": "https://www.sinj.df.gov.br/sinj",
+   "status": "a_verificar",
+   "ultima_tentativa": "2026-10-18",
+   "medido_em": "19/10/2026",
+   "caminho": "o dodf.df.gov.br estoura tempo no runner; o SINJ-DF lista os diários (ashx/Datatable/ResultadoDePesquisaDiarioDatatable.ashx, ordem de data decrescente, o filtro de data do servidor não age) e serve o PDF em BaixarArquivoDiario.aspx?id_file= (DODF 194 de 19/10 = 2,7 MB; run 39272209875 e seguintes)"
   },
   "GO": {
    "adaptador": "apifront",
