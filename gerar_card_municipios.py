@@ -54,12 +54,17 @@ def _data_key(d):
         return "0"
 
 
-def montar(referencia, prioritarios, municipios, pistas, despesa_182=None):
+def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verificacao=None):
     """Pura. Devolve dict codigo_ibge(str) → card.
 
     `despesa_182` é a camada A do dinheiro próprio do município (§207): peso ZERO, uma linha só,
     com a classe quando não há valor. Ausente, o card simplesmente não tem a linha — e não tem
-    zero, que é o que um leitor leria como "não gasta nada"."""
+    zero, que é o que um leitor leria como "não gasta nada".
+
+    `verificacao` é o livro de varredura (`verificacao_municipal.json`). Todo município varrido ganha
+    `varredura: {nivel, data}` (a `ultima_verificacao` dele, não a da rodada) e, se nada foi
+    localizado, a categoria `nao_localizado`; sem varredura no livro, segue `nao_verificado`
+    (editoria, 19/10/2026: o cartão diz o que foi feito e o que falta)."""
     por_nome = {(m["nome"], m["uf"]): int(m["codigo_ibge"]) for m in referencia}
     prior = {int(m["codigo_ibge"]) for m in prioritarios}
     cards = {}
@@ -117,12 +122,23 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None):
             "ressalva": "inclui preparação e resposta",
             "peso_no_indice": "nenhum",
         }
+    for r in verificacao or []:
+        try:
+            cod = int(r.get("ibge"))
+        except (TypeError, ValueError):
+            continue
+        if not r.get("nivel_verificacao") or not r.get("ultima_verificacao"):
+            continue
+        c = cards.setdefault(cod, {"nome": r.get("nome"), "uf": r.get("uf"), "prioritario": cod in prior})
+        c["varredura"] = {"nivel": r["nivel_verificacao"], "data": r["ultima_verificacao"]}
+        if c.get("categoria") in (None, "nao_verificado"):
+            c["categoria"] = "nao_localizado"
     for c in cards.values():
         if "imprensa" in c:
             c["imprensa"].sort(key=lambda x: _data_key(x.get("data")), reverse=True)
             c["imprensa"] = c["imprensa"][:MAX_IMPRENSA]
-        # A3-13 (12/10/2026): "nao_localizado" é o teto público de ausência e exige a bateria
-        # municipal completa (§2.1) — nenhum município a tem. Sem registro, é "nao_verificado".
+        # Sem registro e sem varredura no livro, é "nao_verificado"; com varredura, o laço acima já
+        # pôs "nao_localizado" (editoria, 19/10/2026, HANDOVER_PROTEJA_SE_E_COLETA_MUNICIPAL §3.3).
         c.setdefault("categoria", "nao_verificado")
     return {str(k): v for k, v in sorted(cards.items())}
 
@@ -133,11 +149,12 @@ def gerar():
     mun = ler("municipios.json") or []
     pis = (ler("pistas_imprensa.json") or {}).get("pistas", [])
     dsp = ler("financiamento/municipios/despesa_182.json") or {}
-    cards = montar(ref, prior, mun, pis, dsp)
+    cards = montar(ref, prior, mun, pis, dsp, ler("verificacao_municipal.json") or [])
     out = {"_governanca": ("Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. "
                            "`prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). "
                            "`imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o "
-                           "leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. "
+                           "leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro e sem varredura = não verificado; "
+                           "`varredura` = nível e data da última varredura do município. "
                            "`defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, "
                            "peso ZERO; classe de ausência nunca vira zero."),
            "gerado_em": data_de_geracao(), "total": len(cards),
@@ -169,9 +186,13 @@ def autoteste():
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "pista — promover…", "nivel_confianca": "C", "titulo": "ruído", "url": "https://x", "data": "16/09/2026"},
            {"ibge": "3529005", "municipio": "Marília", "uf": "SP", "status": "rejeitada_pelo_juiz", "nivel_confianca": "A", "titulo": "rejeitada", "url": "https://y", "data": "17/09/2026"},
            {"ibge": "4301602", "municipio": "Bagé", "uf": "RS", "status": "pista — promover…", "nivel_confianca": "A", "titulo": "Bagé lança plano", "url": "https://g1.globo.com/b", "data": "01/09/2026"}]
-    c = montar(ref, prior, mun, pis, dsp)
+    ver = [{"ibge": "1301803", "nome": "Ipixuna", "uf": "AM", "nivel_verificacao": "nacional", "ultima_verificacao": "2026-10-18"},
+           {"ibge": "4301602", "nome": "Bagé", "uf": "RS", "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-19"},
+           {"ibge": "3500002", "nome": "Só Varrido", "uf": "SP", "nivel_verificacao": "estadual", "ultima_verificacao": "2026-10-18"},
+           {"ibge": "3529005", "nome": "Marília", "uf": "SP", "nivel_verificacao": None, "ultima_verificacao": None}]
+    c = montar(ref, prior, mun, pis, dsp, ver)
 
-    def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and c["1301803"]["categoria"] == "nao_verificado"
+    def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and "varredura" in c["1301803"]
     def t_sem_nada_nao_entra(): return "3500001" not in c
 
     def t_despesa_182_entra_com_a_ressalva():
@@ -188,6 +209,16 @@ def autoteste():
     def t_despesa_182_nao_cria_card():
         """Município que só tem despesa e nada mais não passa a existir no card por causa dela."""
         return "9999999" not in c
+    def t_varredura_sem_achado_vira_nao_localizado():
+        a = c["1301803"]
+        return a["categoria"] == "nao_localizado" and a["varredura"] == {"nivel": "nacional", "data": "2026-10-18"}
+    def t_varredura_nao_apaga_registro():
+        b = c["4301602"]
+        return b["categoria"] == "plano" and b["varredura"] == {"nivel": "estadual", "data": "2026-10-19"}
+    def t_varrido_sem_card_ganha_card():
+        return c["3500002"]["categoria"] == "nao_localizado" and c["3500002"]["varredura"]["nivel"] == "estadual"
+    def t_sem_varredura_segue_nao_verificado():
+        return "varredura" not in c["3529005"] and c["3529005"]["categoria"] == "nao_verificado"
     def t_registro_e_tag(): return c["4301602"]["categoria"] == "plano" and c["4301602"]["prioritario"] is False and c["4301602"]["url"]
     def t_imprensa_so_A_B_pendentes(): return [x["titulo"] for x in c["3529005"]["imprensa"]] == ["Marília prepara plano"] and c["3529005"]["categoria"] == "nao_verificado"
     def t_imprensa_nao_vira_categoria(): return c["3529005"].get("categoria") == "nao_verificado"   # peso zero, por construção
@@ -213,7 +244,11 @@ def autoteste():
 
     return rodar_autoteste({
         "§193 carimbo do derivado segue o relógio fixado, não o da parede": t_carimbo_segue_o_relogio_fixado,
-        "prioritário sem registro entra, categoria nao_verificado (A3-13)": t_prioritario_sozinho_entra,
+        "prioritário sem registro entra, com a varredura do livro": t_prioritario_sozinho_entra,
+        "varredura sem achado: nao_localizado com nível e data do município": t_varredura_sem_achado_vira_nao_localizado,
+        "varredura não apaga o registro que existe": t_varredura_nao_apaga_registro,
+        "município varrido sem card ganha card": t_varrido_sem_card_ganha_card,
+        "sem varredura no livro segue nao_verificado, sem data": t_sem_varredura_segue_nao_verificado,
         "município sem nada não entra (ausência = nada localizado)": t_sem_nada_nao_entra,
         "registro no MARÉ + tag prioritário false": t_registro_e_tag,
         "imprensa: só pistas pendentes de nível A/B (C e rejeitadas ficam fora)": t_imprensa_so_A_B_pendentes,
