@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O coletor passa a guardar as 160 variáveis do bloco de gestão de riscos da MUNIC 2020, com a pergunta de cada uma, em `data/fontes_futuras/`, com peso zero. Conferido contra a leitura publicada: plano de enchentes 1.407 e habitacional 16,7% iguais; mapeamento e alerta não reproduzidos, declarado. Mgrd184 é plano de enchentes, não geral. METODOLOGIA §114.
 
+## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
+
+A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.
+
 ## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
 
 A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
@@ -1281,14 +1285,6 @@ vírgula; o texto visível em 1280 e 390 px ficou idêntico nas duas páginas. V
 portão do catálogo, o renderizador de uma figura por vez, o aplicador de edição aprovada e o índice
 interno.
 
-## 2026-10-05 · #561 · Pacote por tipo de evento, e duas travas do blog que não travavam
-
-Nova linha `tipos_de_evento` no gerador de pacote, sobre o ciclo inteiro. `para_iso` só lia
-`dd/mm/aaaa` e descartava calado 97 dos 929 atos, que vêm em ISO do diário consorciado. O
-verificador do blog reprovava por pacote ausente mesmo onde a pasta não é alcançável, e o gerador
-publicava texto citando pacote inexistente: agora um distingue ausente de fora de alcance, e o outro
-recusa pacote declarado que não existe.
-
 ## 2026-10-05 · #560 · O CODEMAP mentia por omissão, e agora diz quantos importam cada arquivo
 
 Comparado com o grafo de dependências, o mapa tinha um ponto cego: só via o nome do dado **literal
@@ -1451,10 +1447,6 @@ Emergências por estado, com a cidade na lista e as três marcas da cadeia; sér
 
 Canal 2 fechado com duas tentativas por unidade e verificação humana registrada na falta; canal 3 com o domínio atual de AM, AP, RN e RO, e o 503 do RJ agendado para a terceira medição. Quatro canais: de 8 para **27 de 27**. O plano do Pará entra como revisado em 2026; o MS confirmado em 50. Os 27 estados passam ao componente da inicial. METODOLOGIA §98.
 
-## 2026-10-02 · #527 · Financiamento minimalista: só o dinheiro do ciclo
-
-A página passa a mostrar só dinheiro do ciclo: medidas federais e defesa civil federal. Saem as transferências gerais, a grade dos 27 quadros e a seção de casos; entram a forma de aplicação, as origens com os três valores e a defesa civil por estado, com município em lista dentro do cartão. Vocabulário fixo: desembolsado, não pago. METODOLOGIA §97.
-
 ## 2026-10-02 · #526 · Coletores do Financiamento rodados, e o frescor por arquivo
 
 Todos os coletores da página rodaram hoje. `coletar_siconfi_182.py` estava morrendo com `TypeError` desde a migração do §229 — uma função local `gravar` sombreava a importada. A execução passou a coletar a modalidade de aplicação. Portão novo mede coletor pelo relógio (9 dias) e curadoria por declaração. METODOLOGIA §96.
@@ -1494,14 +1486,6 @@ O componente "coordenação" passa a ser construto formativo de duas capacidades
 ## 2026-10-02 · #518 · Coleta de doença respiratória confiável
 
 O banco anual do SIVEP-Gripe passa a ser baixado com retomada por `Range`, três tentativas com espera crescente e conferência do tamanho declarado — conexão cortada entregava CSV truncado lido como série inteira. Ano que falha é republicado do último agregado bom, com a lacuna declarada; cada tentativa entra num painel de saúde dos coletores. Autoteste simula falha de rede. Em `coletores_base.py`, `coletar_srag_sivep.py`, `coletar_sg_esus.py`.
-
-## 2026-10-02 · #518 · Financiamento ao contrato, com o recorte que a fonte permite
-
-Página reconstruída ao contrato: três cartões por seção, listas no lugar do diagrama das rotas e dos mapas municipais, grade com os 27 estados. Os cartões do topo passam a vir de `gerar_financiamento_semana.py`: mês fechado onde o Portal publica por mês, sete dias onde o ato tem data — nada de "sem dado" com série em disco. Portão novo confere a coerência com a imprensa. Em `financiamento.html`, `assets/js/financiamento.js`, `scripts/`.
-
-## 2026-10-02 · #518 · Contrato de layout: a forma da página sai do HTML
-
-A forma de cada página passa a viver em `layout/contratos/<pagina>.json` — seções, ordem, cartões, grades e texto proibido — e um portão novo mede a página renderizada em 1280 e 390 px, reprovando a divergência. A editoria apontava o mesmo defeito cartão a cartão; a regra agora está num lugar só. Saúde reconstruída ao contrato. Em `layout/`, `scripts/`, `saude.html`, `assets/js/saude.js`, `CODEMAP.md`.
 
 ## 2026-10-02 · #515 · Recursos federais de defesa civil por município
 
@@ -1701,13 +1685,6 @@ O portão media 527 contra 524 e chamava de divergência uma diferença de defin
 quem o acervo indexa, o outro quem foi indexado e lido. Os três que faltavam são indexados com log
 ilegível, e já viviam em `cobertura_indefinida`. Passa a comparar acervo com acervo. A `main` estava
 vermelha por isso.
-
-## 2026-10-01 · #489 · Imprensa refeita: nada escrito à mão que dependa do dado
-
-Topo com os dois índices e quatro contadores, todos do banco; "O que é o MARÉ", "Como os índices são
-calculados" e "O que cada página mostra" com os textos aprovados; "Como citar" com direitos e
-licença. Saem o sobretítulo, o kit que prometia PDFs inexistentes, o resto do calendário eleitoral e
-duas perguntas com base legal errada. Portão novo confere versão, data e números contra o banco.
 
 ## 2026-10-01 · #488 · Monitor de riscos: um componente de cartão de mapa, seis vezes
 
