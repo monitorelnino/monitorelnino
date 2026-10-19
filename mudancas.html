@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=f8c391ea"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=a15e2732">
+<link rel="stylesheet" href="assets/base.css?v=8fc22d79">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,8 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>19/10/2026 · Leptospirose e diarreias: primeiros arquivos de desfecho</dt>
-      <dd>Primeira coleta real pela válvula: `leptospirose.json` (SINAN, casos confirmados) e `diarreias.json` (SISAB, atendimentos por CIAP-2/CID-10), por UF e mês, na estrutura comum. Últimos meses parciais declarados. Nenhum arquivo lido pela página muda.</dd>
+      <dt>19/10/2026 · Seis números numa linha, e a busca cobrada onde há lista</dt>
+      <dd>A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.</dd>
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
       <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>

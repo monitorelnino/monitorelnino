@@ -76,19 +76,15 @@ setTimeout(() => {
     if (declaraVencido(id)) { teste(`${rotulo}: coleta vencida, e a página declara a ausência`, true); return; }
     teste(rotulo, numero(id) === esperado);
   };
-  const vencido = declaraVencido("topoCemaden") || declaraVencido("topoInmet");
   const mapasCobrados = ["mapEmergencias"];
   teste("o mapa das emergências tem os 27 territórios", (q("mapEmergencias") || d).querySelectorAll("path.uf-path").length === 27);
   teste(`o mapa das emergências tem ${N.decretados} pontos (municípios com decreto e sede)`, circulos("mapEmergencias") === N.decretados);
   const BRANCO = dom.window.MonitorMapas.cor("branco");
   const reconhecidosNoMapa = q("mapEmergencias") ? [...q("mapEmergencias").querySelectorAll("circle")].filter(c => c.getAttribute("stroke") === BRANCO).length : -1;
   teste(`pontos cheios = ${N.reconhecidos} municípios reconhecidos`, reconhecidosNoMapa === N.reconhecidos);
-  const contaDaLista = caixa => {
-    const el = d.querySelector("#" + caixa + " .busca-mun-conta");
-    const m = el ? (el.textContent || "").replace(/\./g, "").match(/(\d+)/) : null;
-    return m ? Number(m[1]) : -1;
-  };
-  teste(`lista das emergências declara ${decretados.length} municípios`, contaDaLista("boxEmergencias") === decretados.length);
+  const contaDeclarada = el => Number((((el.textContent || "").replace(/\./g, "").match(/(\d+)/)) || [])[1]);
+  teste(`toda lista buscável declara os ${decretados.length} municípios do consolidado`,
+    [...d.querySelectorAll(".busca-mun-conta")].every(el => contaDeclarada(el) === decretados.length));
   contadorDeAlerta("topoCemaden", (ALERTAS.resumo || {}).municipios_cemaden, "contador do Cemaden = resumo do arquivo de alertas");
   contadorDeAlerta("topoInmet", (ALERTAS.resumo || {}).municipios_inmet, "contador do Inmet = resumo do arquivo de alertas");
   teste("contador de quem decretou = municípios com decreto no consolidado", numero("topoDecretaram") === decretados.length);
@@ -119,12 +115,14 @@ setTimeout(() => {
       !card.hidden && card.querySelectorAll(".cartao").length === 3 && /municípios decretaram emergência/.test(card.textContent));
   } else teste("consulta do município existe", false);
 
-  // ── busca por município em todo cartão (pedido da editoria, 01/10/2026) ────────────────────
+  /* ── lista buscável: cobrada onde a página declara uma (`[data-busca]`), não em todo cartão ──
+     Editoria, 01/10/2026: município se consulta por busca. Editoria, 19/10/2026 (item 3 dos ajustes
+     da Defesa civil): a lista do rodapé da figura sai, porque a consulta da página faz o mesmo com
+     menos recurso. Cobrar o campo por cartão cobrava a página de ontem e barrava a de hoje; o que
+     vale é que onde há lista, ela tenha campo, rótulo, contagem e filtro. */
+  const listas = [...d.querySelectorAll("#conteudo [data-busca]")];
   const campos = [...d.querySelectorAll(".busca-mun input")];
-  // Cartão de alerta com a coleta vencida declara a parada e não tem lista para buscar (F28).
-  const cartoes = [...d.querySelectorAll("#conteudo .cartao-mapa")]
-    .filter(c => !(vencido && SEM_ATUALIZACAO.test(c.textContent)));
-  teste(`busca por município em todos os ${cartoes.length} cartões`, campos.length === cartoes.length);
+  teste(`campo de busca em cada lista declarada (${listas.length})`, campos.length === listas.length);
   teste("todo campo de busca tem rótulo associado e visível",
     campos.every(i => {
       const l = d.querySelector('label[for="' + i.id + '"]');
@@ -135,22 +133,14 @@ setTimeout(() => {
     && d.querySelectorAll(".busca-mun-conta").length === campos.length);
   /* Filtrar tem de FILTRAR: um campo que não liga em nada é pior que campo nenhum, porque promete
      resposta e devolve a lista inteira. */
-  /* 02/10/2026: o cartão dos decretos passou a ser `#boxDecretosUF` — o mapa por estado com a lista
-     municipal embutida —, no lugar dos três mapas de pontos. E o teste passa a FALHAR em vez de
-     estourar quando o cartão não existe: `querySelector` devolve `null`, e chamar método em `null`
-     derrubava o portão inteiro com TypeError, escondendo todas as verificações seguintes. */
-  const cartaoDec = d.querySelector("#boxEmergencias details.cartao-mapa-dados");
-  if (!cartaoDec) {
-    teste("digitar no campo filtra a lista", false);
-  } else {
-    const antes = cartaoDec.querySelectorAll("tbody tr").length;
-    const campoDec = cartaoDec.querySelector("input");
-    campoDec.value = "zzzzzz-nao-existe";
-    campoDec.dispatchEvent(new dom.window.Event("input"));
-    const depois = cartaoDec.querySelectorAll("tbody tr").length;
-    teste("digitar no campo filtra a lista", antes > 1 && depois === 1
-      && /nenhum município/.test(cartaoDec.querySelector("tbody").textContent));
-  }
+  teste("digitar no campo filtra a lista", listas.every(l => {
+    const campo = l.querySelector("input"), corpo = l.querySelector("tbody");
+    if (!campo || !corpo) return false;
+    const antes = corpo.querySelectorAll("tr").length;
+    campo.value = "zzzzzz-nao-existe";
+    campo.dispatchEvent(new dom.window.Event("input"));
+    return antes > 1 && corpo.querySelectorAll("tr").length === 1 && /nenhum município/.test(corpo.textContent);
+  }));
 
   // ── harmonização dos mapas (padrão único) ─────────────────────────────────────────────────
   const mapasSvg = [...d.querySelectorAll('#conteudo svg[id^="map"]')].filter(s => s.querySelector("path"));

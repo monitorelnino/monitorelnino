@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #884 · Leptospirose e diarreias: primeiros arquivos de desfecho
+## 2026-10-19 · #896 · Seis números numa linha, e a busca cobrada onde há lista
 
-Primeira coleta real pela válvula: `leptospirose.json` (SINAN, casos confirmados) e `diarreias.json` (SISAB, atendimentos por CIAP-2/CID-10), por UF e mês, na estrutura comum. Últimos meses parciais declarados. Nenhum arquivo lido pela página muda.
+A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.
 
 ## 2026-10-19 · #890 · Portões: a detecção de dado e página sai do YAML; comentários enxutos
 
