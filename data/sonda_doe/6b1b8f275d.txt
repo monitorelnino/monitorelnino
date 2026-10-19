@@ -1,0 +1,860 @@
+https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?session=VWxWR1EwMXFSa1ZQUkdkMFRrUldRMUpETURCUk1GRjNURlZLUlUxclJYUlNSRkpIVFVWUmVVMXFhM3BQUkVKQ1RWUmpOVTFxVVhoT1JFRXlUbmM5UFE9PQ==
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" mozdisallowselectionprint moznomarginboxes>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>D.O. Digital : Imprensa Oficial do Estado do Rio de Janeiro</title>
+    <script type="text/javascript">
+      //Analytics
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8531359-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+      //Passa os parametros iniciais para o pdf.js
+      
+      //var DEFAULT_URL = 'include/pdfjs/web/tmp.pdf';
+      //var InitialBookmark = "page=";
+	  var InitialBookmark = "page=1";
+
+
+
+      function fim_load(){
+        resize_iframe();
+      }
+
+
+    </script>
+    <link rel="stylesheet" href="include/pdfjs/web/viewer.css">
+
+    <script src="include/pdfjs/web/compatibility.js"></script>
+    <!-- This snippet is used in production (included from viewer.html) -->
+    <link rel="resource" type="application/l10n" href="include/pdfjs/web/locale/locale.properties">
+    <script src="include/pdfjs/web/l10n.js"></script>
+    <script src="include/pdfjs/build/pdf.js"></script>
+
+    <script src="include/pdfjs/web/viewer-min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" title="Color" href="/portal/class/thickbox/thickbox.css" />
+    <script type="text/javascript" src="/portal/class/thickbox/jquery-latest.pack.js"></script>
+    <script type="text/javascript" src="/portal/class/thickbox/thickbox-comp.js"></script>
+    <style type="text/css" media="print">
+	* { display: none; }
+    </style>
+<style type="text/css">
+<!--
+
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height: 100%;
+}
+
+img{
+border:none;  
+}
+.fundo {
+  background-image: url(/portal/modules/conteudoonline/images/visualiza_edicao/topo.png);
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+  height: 70px;
+  width: 100%;
+  text-align: right;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 570px) {
+    .fundo{ display:none;}
+}
+
+.edicoes,  .sumario,.data{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #003399;
+  border: 1px solid #225196;
+   margin-bottom: 3px;
+}
+
+.calendario img {
+padding:0;
+margin:0;
+
+}
+.calendario  {
+padding:0;
+margin:0;
+text-decoration:none;
+}
+
+.data {
+  height: 15px;
+  width: 280px;
+  margin-top: 5px;
+ 
+}
+.edicoes,  .sumario  {
+  height: 18px;
+  width: 310px;
+}
+.frame1{
+  width: 99%  ;
+  
+}
+.caixapdf {
+  width:300px;
+  top: 70px;
+  left: 10px;
+  color: white;
+}
+
+.divdo{
+  width: 99,5%  ;
+  height: 300px;
+  pargin:0;
+  padding:0;
+}
+
+/*Sumario das edicoes de pdf*/
+.sum1n {
+  font-weight:bold;
+}
+
+-->
+</style>
+</head>
+<body tabindex="1" class="loadingInProgress" onload="fim_load();">
+  <div class="fundo">
+    Data:
+    <input name="input" type="text" disabled="disabled" class="data" value="sexta, 16 de outubro de 2026" />
+    <a href="/portal/modules/conteudoonline/mostra_edicao.php?session=VWxWR1EwMXFSa1ZQUkdkMFRrUldRMUpETURCUk1GRjNURlZLUlUxclJYUlNSRkpIVFVWUmVVMXFhM3BQUkVKQw==&calendario=true&keepThis=true&TB_iframe=true&height=300&width=550" title="Selecionar uma nova data" class="thickbox calendario" ><img src="/portal/modules/conteudoonline/images/visualiza_swf/calendario.gif" width="23" height="15"  /></a>
+    <br>
+    Caderno: 
+      <label>
+        <select name="edicoes" id="edicoes" class="edicoes" onchange='javascript:MudaEdicao(this);' >
+                      <option value="VWxWR1EwMXFSa1ZQUkdkMFRrUldRMUpETURCUk1GRjNURlZLUlUxclJYUlNSRkpIVFVWUmVVMXFhM3BQUkVKQw=="  selected="selected">Parte I (Poder Executivo)</option>
+                      <option value="VG10Vk1VMTZXVE5PVkVGMFVWUkJNMDFETURCU1JFMTRURlJzUTA1cVJYUlBWRWw0VVdwak0wNXFXVEZTYWxwRQ==" >Parte IB - (Tribunal de Contas)</option>
+                      <option value="VG5wWmVrOUZVWGhPYW10MFVYcFpORTlETURCUmVrcEZURlZGZUU1NlVYUlNSR2Q2VVZSVk1GSnJWVEZQUkdoSA==" >Parte II (Poder Legislativo)</option>
+                      <option value="VDBWWk5FMHdXVEZOUlZsMFVWUktRMDVwTURCUk1GVXpURlZHUTA0d1dYUlBSR3QzVGtWVk0wMTZXWGxPZWtFeg==" >Parte IV (Municipalidades)</option>
+                      <option value="VVd0Tk5VOUVTa05SYW1kMFRWVkZkMDE1TURCUk1FWkhURlZKTTA5VVNYUlNha0UxVDFSa1JVNXJVWGhOYWtVeA==" >Parte V (Publicações a Pedido)</option>
+               
+        </select>
+      </label>
+    <br>
+    Sumário:
+      <label>
+        <select name="sumario" id="sumario" class="sumario" onchange='javascript:MudaPagina(this);' >
+                                                    <option class="sum1n" value="6">Poder Executivo</option>
+                                  
+                                          <option class="sum1n" value="6">Atos do Governador</option>
+                                  
+                                          <option class="sum1n" value="6">Secretaria de Estado da Casa Civil</option>
+                                  
+                                          <option value="6">- - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="6">- - - Subsecretaria de Gestão Administrativa e Patrimonial</option>
+                                  
+                                          <option value="6">- - Administração Vinculada</option>
+                                  
+                                          <option value="6">- - - Departamento de Trânsito do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="6">- - - - Presidente</option>
+                                  
+                                          <option value="7">- - - - Diretoria de Habilitação</option>
+                                  
+                                          <option value="7">- - - Instituto de Pesos e Medidas</option>
+                                  
+                                          <option class="sum1n" value="7">Secretaria de Estado de Governo</option>
+                                  
+                                          <option class="sum1n" value="7">Secretaria de Estado de Planejamento e Gestão</option>
+                                  
+                                          <option class="sum1n" value="8">Secretaria de Estado de Fazenda</option>
+                                  
+                                          <option value="8">- - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="8">- - - Subsecretaria Geral de Fazenda e Planejamento</option>
+                                  
+                                          <option value="8">- - - - Superintendência de Recursos Humanos</option>
+                                  
+                                          <option value="8">- - - Subsecretaria de Estado de Receita</option>
+                                  
+                                          <option value="8">- - - - Superintendência de Tributação</option>
+                                  
+                                          <option value="8">- - Órgãos e/ou Fundos Colegiados</option>
+                                  
+                                          <option value="8">- - - Conselho de Contribuintes</option>
+                                  
+                                          <option class="sum1n" value="8">Secretaria de Estado de Desenvolvimento Econômico</option>
+                                  
+                                          <option value="8">- - Administração Vinculada</option>
+                                  
+                                          <option value="8">- - - Junta Comercial do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="9">- - - Agência de Fomento do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="9">- - - Agência Reguladora de Energia e Saneamento Básico do Estado do Rio de Janeiro</option>
+                                  
+                                          <option class="sum1n" value="11">Secretaria de Estado de Polícia Militar</option>
+                                  
+                                          <option class="sum1n" value="13">Secretaria de Estado de Polícia Civil</option>
+                                  
+                                          <option value="14">- - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="14">- - - Departamento Geral de Administração e Finanças</option>
+                                  
+                                          <option value="14">- - - - Serviço de Suporte Administrativo</option>
+                                  
+                                          <option value="14">- - - Departamento Geral de Gestão de Pessoas</option>
+                                  
+                                          <option value="14">- - - - Divisão de Administração de Pessoal</option>
+                                  
+                                          <option value="14">- - - - - Serviço de Direitos e Vantagens</option>
+                                  
+                                          <option class="sum1n" value="14">Secretaria de Estado de Polícia Penal</option>
+                                  
+                                          <option value="14">- - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option class="sum1n" value="15">Secretaria de Estado de Defesa Civil</option>
+                                  
+                                          <option value="15">- - Corpo de Bombeiros Militar do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="15">- - - Diretoria Geral de Pessoal</option>
+                                  
+                                          <option value="15">- - - Diretoria de Pessoal Inativo e Pensionista</option>
+                                  
+                                          <option class="sum1n" value="16">Secretaria de Estado de Saúde</option>
+                                  
+                                          <option value="16">- - Chefia de Gabinete</option>
+                                  
+                                          <option value="24">- - Administração Vinculada</option>
+                                  
+                                          <option value="24">- - - Fundação Saúde</option>
+                                  
+                                          <option class="sum1n" value="25">Secretaria de Estado de Educação</option>
+                                  
+                                          <option value="25">- - Gabinete do Secretário</option>
+                                  
+                                          <option value="27">- - Subsecretaria de Gestão da Rede e de Ensino</option>
+                                  
+                                          <option value="27">- - - Coordenadoria Regional</option>
+                                  
+                                          <option value="27">- - - - Coordenadoria Regional Centro Sul I</option>
+                                  
+                                          <option value="27">- - - - Coordenadoria Regional Metropolitana III</option>
+                                  
+                                          <option value="28">- - Departamento Geral de Ações Socio-Educativas</option>
+                                  
+                                          <option value="28">- - - Corregedor</option>
+                                  
+                                          <option class="sum1n" value="29">Secretaria de Estado de Ciência, Tecnologia e Inovação</option>
+                                  
+                                          <option value="29">- - Administração Vinculada</option>
+                                  
+                                          <option value="29">- - - Fundação de Apoio à Escola Técnica</option>
+                                  
+                                          <option value="29">- - - Universidade Estadual do Norte Fluminense Darcy Ribeiro</option>
+                                  
+                                          <option class="sum1n" value="29">Secretaria de Estado de Transporte e Mobilidade Urbana</option>
+                                  
+                                          <option value="29">- - Administração Vinculada</option>
+                                  
+                                          <option value="29">- - - Departamento de Transportes Rodoviários do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="29">- - - Companhia Estadual de Engenharia de Transportes e Logística</option>
+                                  
+                                          <option value="29">- - - - Presidente</option>
+                                  
+                                          <option class="sum1n" value="29">Secretaria de Estado de  Agricultura, Pecuária, Pesca, Abastecimento e Desenvolvimento do Interior</option>
+                                  
+                                          <option value="29">- - Chefia de Gabinete</option>
+                                  
+                                          <option value="30">- - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="30">- - - Subsecretaria de Gestão e Desenvolvimento Rural Sustentável</option>
+                                  
+                                          <option value="30">- - Administração Vinculada</option>
+                                  
+                                          <option value="30">- - - Centrais de Abastecimento do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="30">- - - Empresa de Pesquisa Agropecuária do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="30">- - - - Presidente</option>
+                                  
+                                          <option class="sum1n" value="30">Secretaria de Estado de Cultura e Economia Criativa</option>
+                                  
+                                          <option value="30">- - Secretário de Estado</option>
+                                  
+                                          <option value="30">- - Ordenador de Despesas</option>
+                                  
+                                          <option value="30">- - Administração Vinculada</option>
+                                  
+                                          <option value="30">- - - Fundação Theatro Municipal</option>
+                                  
+                                          <option value="30">- - - - Presidente</option>
+                                  
+                                          <option class="sum1n" value="30">Secretaria de Estado de Esporte e Lazer</option>
+                                  
+                                          <option class="sum1n" value="30">Gabinete de Segurança Institucional do Governo do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="30">- - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="30">- - - Subsecretaria  Militar</option>
+                                  
+                                          <option class="sum1n" value="31">Secretaria de Estado de Transformação Digital</option>
+                                  
+                                          <option value="31">- - Administração Vinculada</option>
+                                  
+                                          <option value="31">- - - Centro de Tecnologia de Informação e Comunicação do Estado do Rio de Janeiro</option>
+                                  
+                                          <option class="sum1n" value="31">Secretaria de Estado de Infraestrutura e Obras Públicas</option>
+                                  
+                                          <option value="31">- - Administração Vinculada</option>
+                                  
+                                          <option value="31">- - - Fundação Departamento de Estradas de Rodagem do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="31">- - - - Presidente</option>
+                                  
+                                          <option class="sum1n" value="31">Secretaria de Estado de Habitação de Interesse Social</option>
+                                  
+                                          <option value="31">- - Administração Vinculada</option>
+                                  
+                                          <option value="31">- - - Companhia Estadual de Habitação do Estado do Rio de Janeiro</option>
+                                  
+                                          <option class="sum1n" value="31">Secretaria de Estado de Defesa do Consumidor</option>
+                                  
+                                          <option value="31">- - Administração Vinculada</option>
+                                  
+                                          <option value="31">- - - Autarquia de Proteção e Defesa do Consumidor do Estado do Rio de Janeiro</option>
+                                  
+                                          <option class="sum1n" value="31">Secretaria de Estado de Segurança Pública</option>
+                                  
+                                          <option value="34">- - Administração Vinculada</option>
+                                  
+                                          <option value="34">- - - Instituto de Segurança Pública</option>
+                                  
+                                          <option value="34">- - - - Diretoria Administrativo Financeira</option>
+                                  
+                                          <option class="sum1n" value="34">Procuradoria Geral do Estado</option>
+                                  
+                                          <option value="34">- - Coordenadoria Geral de Recursos Humanos, Administração e Finanças</option>
+                                  
+                                          <option class="sum1n" value="1">Avisos, Editais e Termos de Contrato</option>
+                                  
+                                          <option value="1">- - Secretaria de Estado da Casa Civil</option>
+                                  
+                                          <option value="35">- - - Administração Vinculada</option>
+                                  
+                                          <option value="35">- - - - Imprensa Oficial do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="35">- - - - Companhia Estadual de Águas e Esgotos</option>
+                                  
+                                          <option value="35">- - - - Departamento de Trânsito do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="35">- - Secretaria de Estado de Fazenda</option>
+                                  
+                                          <option value="35">- - - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="35">- - - - Subsecretaria de Estado de Receita</option>
+                                  
+                                          <option value="35">- - - - - Junta de Revisão Fiscal</option>
+                                  
+                                          <option value="36">- - Secretaria de Estado de Polícia Militar</option>
+                                  
+                                          <option value="36">- - - Órgãos e/ou Fundos Colegiados</option>
+                                  
+                                          <option value="36">- - Secretaria de Estado de Polícia Civil</option>
+                                  
+                                          <option value="36">- - Secretaria de Estado de Defesa Civil</option>
+                                  
+                                          <option value="36">- - - Corpo de Bombeiros Militar do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="36">- - - - Diretoria de Pessoal Inativo e Pensionista</option>
+                                  
+                                          <option value="36">- - Secretaria de Estado de Saúde</option>
+                                  
+                                          <option value="36">- - - Chefia de Gabinete</option>
+                                  
+                                          <option value="37">- - - Administração Vinculada</option>
+                                  
+                                          <option value="37">- - - - Instituto de Assistência dos Servidores do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="38">- - - - Instituto Vital Brazil SA</option>
+                                  
+                                          <option value="26">- - Secretaria de Estado de Educação</option>
+                                  
+                                          <option value="38">- - - Gabinete do Secretário</option>
+                                  
+                                          <option value="39">- - - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="39">- - - - Departamento de Ações Socioeducativas</option>
+                                  
+                                          <option value="39">- - Secretaria de Estado de Ciência, Tecnologia e Inovação</option>
+                                  
+                                          <option value="39">- - - Administração Vinculada</option>
+                                  
+                                          <option value="39">- - - - Fundação Centro de Ciências e de Educação Superior à Distância do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="39">- - - - Fundação Universidade do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="39">- - Secretaria de Estado de Transporte e Mobilidade Urbana</option>
+                                  
+                                          <option value="39">- - - Administração Vinculada</option>
+                                  
+                                          <option value="39">- - - - Companhia de Transportes Sobre Trilhos do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="39">- - - - Departamento de Transportes Rodoviários do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="39">- - - - Companhia Estadual de Engenharia de Transportes e Logística</option>
+                                  
+                                          <option value="39">- - Secretaria de Estado do Ambiente e Sustentabilidade</option>
+                                  
+                                          <option value="39">- - - Administração Vinculada</option>
+                                  
+                                          <option value="39">- - - - Instituto Estadual do Ambiente</option>
+                                  
+                                          <option value="40">- - Secretaria de Estado de  Agricultura, Pecuária, Pesca, Abastecimento e Desenvolvimento do Interior</option>
+                                  
+                                          <option value="40">- - - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="40">- - - - Subsecretaria de Gestão e Desenvolvimento Rural Sustentável</option>
+                                  
+                                          <option value="40">- - Secretaria de Estado de Cultura e Economia Criativa</option>
+                                  
+                                          <option value="40">- - - Comissão de Pregão</option>
+                                  
+                                          <option value="40">- - - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="40">- - - - Subsecretaria de Cultura</option>
+                                  
+                                          <option value="41">- - - Administração Vinculada</option>
+                                  
+                                          <option value="41">- - - - Fundação Anita Mantuano de Artes do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="41">- - Secretaria de Estado de Desenvolvimento Social e Direitos Humanos</option>
+                                  
+                                          <option value="41">- - - Administração Vinculada</option>
+                                  
+                                          <option value="41">- - - - Fundação Leão XIII</option>
+                                  
+                                          <option value="41">- - Secretaria de Estado de Turismo</option>
+                                  
+                                          <option value="41">- - Gabinete de Segurança Institucional do Governo do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="41">- - - Subsecretarias e Órgãos da Administração Direta</option>
+                                  
+                                          <option value="41">- - - - Subsecretaria Militar</option>
+                                  
+                                          <option value="41">- - Secretaria de Estado de Trabalho e Renda</option>
+                                  
+                                          <option value="31">- - Secretaria de Estado de Infraestrutura e Obras Públicas</option>
+                                  
+                                          <option value="41">- - - Administração Vinculada</option>
+                                  
+                                          <option value="41">- - - - Empresa de Obras Públicas do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="41">- - - - Fundação Departamento de Estradas de Rodagem do Estado do Rio de Janeiro</option>
+                                  
+                                          <option value="41">- - Secretaria de Estado de Habitação  de Interesse Social</option>
+                                  
+                                          <option value="42">- - Secretaria de Estado de Segurança Pública</option>
+                                  
+                                          <option value="42">- - Procuradoria Geral do Estado</option>
+                                  
+                                          <option value="42">- - - Centro de Estudos Jurídicos</option>
+                                  
+                                          <option value="42">- - Controladoria Geral do Estado</option>
+                                  
+               
+                  </select>
+      </label><br/>
+  </div>
+
+  <div id="ContDo" name="ContDo" class="divdo" >
+    <div id="outerContainer">
+      <div id="sidebarContainer">
+        <div id="toolbarSidebar">
+          <div class="splitToolbarButton toggled">
+            <button id="viewThumbnail" class="toolbarButton group toggled" title="Show Thumbnails" tabindex="2" data-l10n-id="thumbs">
+               <span data-l10n-id="thumbs_label">Thumbnails</span>
+            </button>
+            <button id="viewOutline" class="toolbarButton group" title="Show Document Outline" tabindex="3" data-l10n-id="outline">
+               <span data-l10n-id="outline_label">Document Outline</span>
+            </button>
+            <button id="viewAttachments" class="toolbarButton group" title="Show Attachments" tabindex="4" data-l10n-id="attachments">
+               <span data-l10n-id="attachments_label">Attachments</span>
+            </button>
+          </div>
+        </div>
+        <div id="sidebarContent">
+          <div id="thumbnailView">
+          </div>
+          <div id="outlineView" class="hidden">
+          </div>
+          <div id="attachmentsView" class="hidden">
+          </div>
+        </div>
+      </div>  <!-- sidebarContainer -->
+
+      <div id="mainContainer">
+        <div class="findbar hidden doorHanger hiddenSmallView" id="findbar">
+          <label for="findInput" class="toolbarLabel" data-l10n-id="find_label">Find:</label>
+          <input id="findInput" class="toolbarField" value="" tabindex="91">
+          <div class="splitToolbarButton">
+            <button class="toolbarButton findPrevious" title="" id="findPrevious" tabindex="92" data-l10n-id="find_previous">
+              <span data-l10n-id="find_previous_label">Previous</span>
+            </button>
+            <div class="splitToolbarButtonSeparator"></div>
+            <button class="toolbarButton findNext" title="" id="findNext" tabindex="93" data-l10n-id="find_next">
+              <span data-l10n-id="find_next_label">Next</span>
+            </button>
+          </div>
+          <input type="checkbox" id="findHighlightAll" class="toolbarField" tabindex="94" checked>
+          <label for="findHighlightAll" class="toolbarLabel" data-l10n-id="find_highlight" >Highlight all</label>
+          <input type="checkbox" id="findMatchCase" class="toolbarField" tabindex="95">
+          <label for="findMatchCase" class="toolbarLabel" data-l10n-id="find_match_case_label">Match case</label>
+          <span id="findResultsCount" class="toolbarLabel hidden"></span>
+          <span id="findMsg" class="toolbarLabel"></span>
+        </div>  <!-- findbar -->
+
+        <div id="secondaryToolbar" class="secondaryToolbar hidden doorHangerRight">
+          <div id="secondaryToolbarButtonContainer">
+            <button id="secondaryPresentationMode" class="secondaryToolbarButton presentationMode visibleLargeView" title="Switch to Presentation Mode" tabindex="51" data-l10n-id="presentation_mode">
+              <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+            </button>
+
+            <button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView hidden" title="Open File" tabindex="52" data-l10n-id="open_file">
+              <span data-l10n-id="open_file_label">Open</span>
+            </button>
+
+            <button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView hidden" title="Print" tabindex="53" data-l10n-id="print">
+              <span data-l10n-id="print_label">Print</span>
+            </button>
+
+            <button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" title="Download" tabindex="54" data-l10n-id="download">
+              <span data-l10n-id="download_label">Download</span>
+            </button>
+
+            <a href="#" id="secondaryViewBookmark" class="secondaryToolbarButton bookmark visibleSmallView hidden" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark">
+              <span data-l10n-id="bookmark_label">Current View</span>
+            </a>
+
+            <div class="horizontalToolbarSeparator visibleLargeView"></div>
+
+            <button id="firstPage" class="secondaryToolbarButton firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page">
+              <span data-l10n-id="first_page_label">Go to First Page</span>
+            </button>
+            <button id="lastPage" class="secondaryToolbarButton lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page">
+              <span data-l10n-id="last_page_label">Go to Last Page</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="pageRotateCw" class="secondaryToolbarButton rotateCw" title="Rotate Clockwise" tabindex="58" data-l10n-id="page_rotate_cw">
+              <span data-l10n-id="page_rotate_cw_label">Rotate Clockwise</span>
+            </button>
+            <button id="pageRotateCcw" class="secondaryToolbarButton rotateCcw" title="Rotate Counterclockwise" tabindex="59" data-l10n-id="page_rotate_ccw">
+              <span data-l10n-id="page_rotate_ccw_label">Rotate Counterclockwise</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="toggleHandTool" class="secondaryToolbarButton handTool" title="Enable hand tool" tabindex="60" data-l10n-id="hand_tool_enable">
+              <span data-l10n-id="hand_tool_enable_label">Enable hand tool</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="documentProperties" class="secondaryToolbarButton documentProperties" title="Document Properties…" tabindex="61" data-l10n-id="document_properties">
+              <span data-l10n-id="document_properties_label">Document Properties…</span>
+            </button>
+          </div>
+        </div>  <!-- secondaryToolbar -->
+
+        <div class="toolbar">
+          <div id="toolbarContainer">
+            <div id="toolbarViewer">
+              <div id="toolbarViewerLeft">
+                <button id="sidebarToggle" class="toolbarButton" title="Toggle Sidebar" tabindex="11" data-l10n-id="toggle_sidebar">
+                  <span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
+                </button>
+                <div class="toolbarButtonSpacer"></div>
+                <button id="viewFind" class="toolbarButton group hiddenSmallView" title="Find in Document" tabindex="12" data-l10n-id="findbar">
+                   <span data-l10n-id="findbar_label">Find</span>
+                </button>
+                <div class="splitToolbarButton">
+                  <button class="toolbarButton pageUp" title="Previous Page" id="previous" tabindex="13" data-l10n-id="previous">
+                    <span data-l10n-id="previous_label">Previous</span>
+                  </button>
+                  <div class="splitToolbarButtonSeparator"></div>
+                  <button class="toolbarButton pageDown" title="Next Page" id="next" tabindex="14" data-l10n-id="next">
+                    <span data-l10n-id="next_label">Next</span>
+                  </button>
+                </div>
+                <label id="pageNumberLabel" class="toolbarLabel" for="pageNumber" data-l10n-id="page_label">Page: </label>
+         
+		   <input type="number" id="pageNumber" class="toolbarField pageNumber" value="1" size="4" min="1" tabindex="15">
+         
+               <!-- <input type="number" id="pageNumber" class="toolbarField pageNumber" value="1" size="4" min="1" tabindex="15">-->
+                <span id="numPages" class="toolbarLabel"></span>
+              </div>
+              <div id="toolbarViewerRight">
+                <button id="presentationMode" class="toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
+                  <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+                </button>
+
+                <button id="openFile" class="toolbarButton openFile hiddenLargeView hidden" title="Open File" tabindex="32" data-l10n-id="open_file">
+                  <span data-l10n-id="open_file_label">Open</span>
+                </button>
+
+                <button id="print" class="toolbarButton print hiddenMediumView hidden" title="Print" tabindex="33" data-l10n-id="print">
+                  <span data-l10n-id="print_label">Print</span>
+                </button>
+
+                <button id="download" class="toolbarButton download hiddenMediumView" title="Download" tabindex="34" data-l10n-id="download">
+                  <span data-l10n-id="download_label">Download</span>
+                </button>
+                <a href="#" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView hidden" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
+                  <span data-l10n-id="bookmark_label">Current View</span>
+                </a>
+
+                <div class="verticalToolbarSeparator hiddenSmallView"></div>
+
+                <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="36" data-l10n-id="tools">
+                  <span data-l10n-id="tools_label">Tools</span>
+                </button>
+              </div>
+              <div class="outerCenter">
+                <div class="innerCenter" id="toolbarViewerMiddle">
+                  <div class="splitToolbarButton">
+                    <button id="zoomOut" class="toolbarButton zoomOut" title="Zoom Out" tabindex="21" data-l10n-id="zoom_out">
+                      <span data-l10n-id="zoom_out_label">Zoom Out</span>
+                    </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button id="zoomIn" class="toolbarButton zoomIn" title="Zoom In" tabindex="22" data-l10n-id="zoom_in">
+                      <span data-l10n-id="zoom_in_label">Zoom In</span>
+                     </button>
+                  </div>
+                  <span id="scaleSelectContainer" class="dropdownToolbarButton">
+                     <select id="scaleSelect" title="Zoom" tabindex="23" data-l10n-id="zoom">
+                      <option id="pageAutoOption" title="" value="auto" selected="selected" data-l10n-id="page_scale_auto">Automatic Zoom</option>
+                      <option id="pageActualOption" title="" value="page-actual" data-l10n-id="page_scale_actual">Actual Size</option>
+                      <option id="pageFitOption" title="" value="page-fit" data-l10n-id="page_scale_fit">Fit Page</option>
+                      <option id="pageWidthOption" title="" value="page-width" data-l10n-id="page_scale_width">Full Width</option>
+                      <option id="customScaleOption" title="" value="custom" hidden="true"></option>
+4                      <option title="" value="0.5" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 50 }'>50%</option><option title="" value="0.75" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 75 }'>75%</option><script type="text/javascript">var pd = "EAB21D88-45BD-4CD0-BD2A-D4F0D229380A";</script><option title="" value="1" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 100 }'>100%</option>
+                      <option title="" value="1.25" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 125 }'>125%</option>
+                      <option title="" value="1.5" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 150 }'>150%</option>
+                      <option title="" value="2" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 200 }'>200%</option>
+                      <option title="" value="3" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 300 }'>300%</option>
+                      <option title="" value="4" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 400 }'>400%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div id="loadingBar">
+              <div class="progress">
+                <div class="glimmer">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <menu type="context" id="viewerContextMenu">
+          <menuitem id="contextFirstPage" label="First Page"
+                    data-l10n-id="first_page"></menuitem>
+          <menuitem id="contextLastPage" label="Last Page"
+                    data-l10n-id="last_page"></menuitem>
+          <menuitem id="contextPageRotateCw" label="Rotate Clockwise"
+                    data-l10n-id="page_rotate_cw"></menuitem>
+          <menuitem id="contextPageRotateCcw" label="Rotate Counter-Clockwise"
+                    data-l10n-id="page_rotate_ccw"></menuitem>
+        </menu>
+
+        <div id="viewerContainer" tabindex="0">
+          <div id="viewer" class="pdfViewer"></div>
+        </div>
+
+        <div id="errorWrapper" hidden='true'>
+          <div id="errorMessageLeft">
+            <span id="errorMessage"></span>
+            <button id="errorShowMore" data-l10n-id="error_more_info">
+              More Information
+            </button>
+            <button id="errorShowLess" data-l10n-id="error_less_info" hidden='true'>
+              Less Information
+            </button>
+          </div>
+          <div id="errorMessageRight">
+            <button id="errorClose" data-l10n-id="error_close">
+              Close
+            </button>
+          </div>
+          <div class="clearBoth"></div>
+          <textarea id="errorMoreInfo" hidden='true' readonly="readonly"></textarea>
+        </div>
+      </div> <!-- mainContainer -->
+
+      <div id="overlayContainer" class="hidden">
+        <div id="passwordOverlay" class="container hidden">
+          <div class="dialog">
+            <div class="row">
+              <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file:</p>
+            </div>
+            <div class="row">
+              <!-- The type="password" attribute is set via script, to prevent warnings in Firefox for all http:// documents. -->
+              <input id="password" class="toolbarField">
+            </div>
+            <div class="buttonRow">
+              <button id="passwordCancel" class="overlayButton"><span data-l10n-id="password_cancel">Cancel</span></button>
+              <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span></button>
+            </div>
+          </div>
+        </div>
+        <div id="documentPropertiesOverlay" class="container hidden">
+          <div class="dialog">
+            <div class="row">
+              <span data-l10n-id="document_properties_file_name">File name:</span> <p id="fileNameField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_file_size">File size:</span> <p id="fileSizeField">-</p>
+            </div>
+            <div class="separator"></div>
+            <div class="row">
+              <span data-l10n-id="document_properties_title">Title:</span> <p id="titleField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_author">Author:</span> <p id="authorField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_subject">Subject:</span> <p id="subjectField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_keywords">Keywords:</span> <p id="keywordsField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_creation_date">Creation Date:</span> <p id="creationDateField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_modification_date">Modification Date:</span> <p id="modificationDateField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_creator">Creator:</span> <p id="creatorField">-</p>
+            </div>
+            <div class="separator"></div>
+            <div class="row">
+              <span data-l10n-id="document_properties_producer">PDF Producer:</span> <p id="producerField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_version">PDF Version:</span> <p id="versionField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_page_count">Page Count:</span> <p id="pageCountField">-</p>
+            </div>
+            <div class="buttonRow">
+              <button id="documentPropertiesClose" class="overlayButton"><span data-l10n-id="document_properties_close">Close</span></button>
+            </div>
+          </div>
+        </div>
+      </div>  <!-- overlayContainer -->
+    </div> <!-- outerContainer -->
+    <div id="printContainer"></div>
+    <div id="mozPrintCallback-shim" hidden>
+    <style>
+      @media print {
+        #printContainer div {
+          page-break-after: always;
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+    <style scoped>
+#mozPrintCallback-shim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999;
+
+  display: block;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#mozPrintCallback-shim[hidden] {
+  display: none;
+}
+@media print {
+  #mozPrintCallback-shim {
+    display: none;
+  }
+}
+
+#mozPrintCallback-shim .mozPrintCallback-dialog-box {
+  display: inline-block;
+  margin: -50px auto 0;
+  position: relative;
+  top: 45%;
+  left: 0;
+  min-width: 220px;
+  max-width: 400px;
+
+  padding: 9px;
+
+  border: 1px solid hsla(0, 0%, 0%, .5);
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+  background-color: #474747;
+
+  color: hsl(0, 0%, 85%);
+  font-size: 16px;
+  line-height: 20px;
+}
+#mozPrintCallback-shim .progress-row {
+  clear: both;
+  padding: 1em 0;
+}
+#mozPrintCallback-shim progress {
+  width: 100%;
+}
+#mozPrintCallback-shim .relative-progress {
+  clear: both;
+  float: right;
+}
+#mozPrintCallback-shim .progress-actions {
+  clear: both;
+}
+    </style>
+    <div class="mozPrintCallback-dialog-box">
+    <!-- TODO: Localise the following strings -->
+    Preparing document for printing...
+      <div class="progress-row">
+        <progress value="0" max="100"></progress>
+        <span class="relative-progress">0%</span>
+      </div>
+      <div class="progress-actions">
+        <input type="button" value="Cancel" class="mozPrintCallback-cancel">
+      </div>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'>
+
+</script> 
+</body>
+</html>
+
+
+
