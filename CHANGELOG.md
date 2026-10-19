@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #894 · Cartão do município: a varredura entra no dado
+
+Cada município varrido em `verificacao_municipal.json` ganha no cartão `varredura` (nível estadual ou nacional e a data da própria varredura). Sem registro e com varredura, a categoria é `nao_localizado`; 3.120 municípios sem cartão passam a ter um. Sem varredura no livro, segue `nao_verificado`. O índice não muda: as duas categorias pesam igual. As frases das páginas são de B1 e B2.
+
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.

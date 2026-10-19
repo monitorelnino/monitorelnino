@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Cartão do município: a varredura entra no dado</dt>
+      <dd>Cada município varrido em `verificacao_municipal.json` ganha no cartão `varredura` (nível estadual ou nacional e a data da própria varredura). Sem registro e com varredura, a categoria é `nao_localizado`; 3.120 municípios sem cartão passam a ter um. Sem varredura no livro, segue `nao_verificado`. O índice não muda: as duas categorias pesam igual. As frases das páginas são de B1 e B2.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
       <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde. =======</dd>
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
@@ -165,8 +167,6 @@
       <dd>O índice lia `saude_sinais.emergencias`, que ninguém gravava, e publicava 0,0. Agora o juiz (`julgar_emergencias`) lê com o ato aberto os candidatos da ESPIN e os decretos estaduais achados pelo canal 2, que ganha termos de declaração e relê as edições. O gerador separa não coletado, parcial e verificado: sem as duas buscas datadas, índice nulo e a metade que falta nomeada. Sai `espin_revisar.json`, fila sem leitor.</dd>
       <dt>17/10/2026 · Pista julgada guarda se o documento foi lido, não a cópia dos critérios</dt>
       <dd>`julgar_filas` copiava `criterios` do veredito para cada pista, em duplicata com `promocoes_automaticas.json`, e não gravava `leu_documento`. O fechamento por prazo de 09/10 (A1-16), que lê `leu_documento` na pista, nunca o encontrava. Agora a pista guarda `leu_documento`, e as 7.333 cópias idênticas saem do dado. A fila de pistas cai de 44,2 para 40,9 MB antes de a fila reentrante julgar 14 mil pistas.</dd>
-      <dt>17/10/2026 · Imprensa da saúde usa o parser, a fonte e o cursor da imprensa regional</dt>
-      <dd>`monitorar_imprensa_saude.py` tinha cópias de `montar_url`, `extrair_itens_rss`, `parece_fonte_oficial`, `_hash` e do cursor de `monitorar_imprensa_regional.py`; passa a importá-las (o cursor recebe o caminho). As pistas da saúde ganham o domínio do veículo, que o parser regional já lia. Saem também três imports sem uso. Consolidação, item 5. −57 linhas.</dd>
     </dl>
   </section>
 </main>
