@@ -274,9 +274,13 @@ function __init(totalMunicipios){
   /* Legenda: contagem por família; sem evento classificado no consolidado, a classe é nomeada. */
   const porFamilia = {};
   decretados.forEach(m => { const k = m.classificado ? m.familia.chave : EM_CLASSIFICACAO; porFamilia[k] = (porFamilia[k] || 0) + 1; });
+  /* A última amostra é a FORMA, não uma família: círculo só de contorno (#845), a mesma marca do
+     ponto sem reconhecimento no mapa. Em cor neutra, porque no mapa ela aparece em qualquer cor. */
+  const soDecreto = decretados.length - reconhecidos.length;
   MonitorMapas.legenda('legEmergencias', FAMILIAS.filter(f => porFamilia[f.chave])
     .map(f => ({cor: cor(f.cor), rotulo: f.rotulo + ' · ' + n(porFamilia[f.chave])}))
-    .concat(porFamilia[EM_CLASSIFICACAO] ? [{cor: cor('cinza-quente'), rotulo: 'em classificação até o corte · ' + n(porFamilia[EM_CLASSIFICACAO])}] : []));
+    .concat(porFamilia[EM_CLASSIFICACAO] ? [{cor: cor('cinza-quente'), rotulo: 'em classificação até o corte · ' + n(porFamilia[EM_CLASSIFICACAO])}] : [])
+    .concat(soDecreto ? [{cor: cor('cinza-quente'), rotulo: 'só decreto, sem reconhecimento · ' + n(soDecreto), vazado: true}] : []));
   molde('subEmergencias', 'defesa-civil.emergencias.mapa.legenda', {n: decretados.length, data: corteDecretos || 'sem registro'});
   MonitorMapas.credito('boxEmergencias', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: corteDecretos});
 

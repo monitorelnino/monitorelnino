@@ -160,7 +160,11 @@ setTimeout(() => {
   teste(`padrão de legendas: ${legendas.length} legenda(s) no formato <span><i></i>rótulo</span>`,
     legendas.every(l => [...l.children].every(c => c.tagName === "SPAN"
       && (c.classList.contains("escala") || (c.firstElementChild && c.firstElementChild.tagName === "I"))
-      && /background:/.test((c.firstElementChild || {}).getAttribute && c.firstElementChild.getAttribute("style") || "")
+      // 19/10/2026: a amostra vazada (#845) leva a cor no traço, por `.leg-vazado` + `color:`,
+      // e não em `background:`. As duas formas são as que `assets/mapas.js` sabe desenhar.
+      && (/background:/.test((c.firstElementChild || {}).getAttribute && c.firstElementChild.getAttribute("style") || "")
+          || (c.firstElementChild && c.firstElementChild.classList.contains("leg-vazado")
+              && /color:/.test(c.firstElementChild.getAttribute("style") || "")))
       && c.textContent.trim().length > 0)));
   teste("nenhuma legenda sobrescreve o alinhamento padrão",
     [...d.querySelectorAll(".map-legend")].every(el => !/justify-content/.test(el.getAttribute("style") || "")));
