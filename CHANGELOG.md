@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.
 
+## 2026-10-19 · #903 · Saúde de Rondônia: o link oficial do plano entra no canal 4
+
+O endereço oficial do Plano de Adaptação na Saúde de Rondônia (SESAU/RO, resposta de 15/10/2026) entra em `ACRESCIMOS_DE_CANAL4["RO"]`. Na próxima noite o coletor o consulta, e o julgamento do documento segue o fluxo existente. O endereço não abre da nuvem de trabalho (túnel 403); a verificação fica para o coletor. Linhas líquidas: +2.
+
 ## 2026-10-19 · #898 · Fileira compacta de cartões sem órfão
 
 A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por

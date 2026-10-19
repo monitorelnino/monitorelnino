@@ -144,6 +144,8 @@ ACRESCIMOS_DE_CANAL4 = {
     "MT": ["https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",
            "https://www.saude.mt.gov.br/storage/files/RDtdQBfGbCiRYiJ1BIRtq6KUg32oNI4cKBWaQaiS.pdf"],
     "PA": ["https://www.saude.pa.gov.br/wp-content/uploads/2026/02/plano-emergencias-_26.02.pdf"],
+    # Link oficial do Plano de Adaptação na Saúde (SESAU/RO, LAI de 15/10/2026), registrado em notas_lai.
+    "RO": ["https://rondonia.ro.gov.br/publicacao/plano-de-adaptacao-na-saude-de-rondonia-ao-enfrentamento-aos-impactos-do-el-nino-2026-ate-2027/"],
 }
 # Raiz alternativa, quando a raiz padrão da SES não respondeu e a editoria indicou outra. O modo de
 # acesso fica declarado: `sem_acesso_automatico` quer dizer que o sítio serve muro de robô (ou erro)

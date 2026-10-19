@@ -404,7 +404,15 @@ def _texto_paginas(bruto: bytes) -> list:
     lendo toda página das edições de 200 a 500 páginas (PA, RO) não cabe no prazo do elo."""
     try:
         from preservar_evidencias import extrair_texto_por_pagina
-        return extrair_texto_por_pagina(bruto)
+        # 19/10/2026 (RJ, IOERJ): o PDF assinado traz bytes depois do último %%EOF (a assinatura), o
+        # pypdf não acha o `startxref` e a edição saía com 0 página — "sem_texto_extraivel" por defeito
+        # de leitura, não de imagem. Lê-se o PDF até o %%EOF. A fonte também nomeia os glifos como
+        # `/U0044`, que o pypdf devolve literais; decodificados, o texto casa com os termos.
+        fim = bruto.rfind(b"%%EOF")
+        if fim > 0 and len(bruto) - fim > 8:
+            bruto = bruto[:fim + 5]
+        return [re.sub(r"/U([0-9A-Fa-f]{4})", lambda m: chr(int(m.group(1), 16)), t)
+                for t in extrair_texto_por_pagina(bruto)]
     except Exception:  # noqa: BLE001
         return []
 
@@ -771,6 +779,14 @@ def _autoteste() -> int:
         if not cond:
             falhas.append(nome)
 
+    def _pdf_assinado():
+        import io
+        from pypdf import PdfWriter
+        w = PdfWriter(); w.add_blank_page(width=200, height=200)
+        b = io.BytesIO(); w.write(b)
+        return b.getvalue() + b"\n" + b"eJwtj8FOxDAMRH8lygkEdWM3T" * 13 + b"%"  # assinatura depois do %%EOF, como no IOERJ
+    ok("PDF com bytes depois do %%EOF não vira 'sem texto' por falha do leitor (IOERJ)",
+       len(_texto_paginas(_pdf_assinado())) == 1)
     d = datas_do_periodo("2026-06-29", "2026-07-05")
     ok("o período é por dia útil", d == ["2026-06-29", "2026-06-30", "2026-07-01",
                                              "2026-07-02", "2026-07-03"])
