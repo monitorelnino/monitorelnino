@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Imprensa: semana em datas, definição dos índices numa só função
+## 2026-10-19 · #849 · Imprensa: semana em datas, definição dos índices numa só função
 `semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem "semana epidemiológica". `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o "ciclo". Metodologia §111.
 
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
