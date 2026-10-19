@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
+
+A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.
+
 ## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
 
 A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
@@ -9113,8 +9117,4 @@ Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCO
 - **Fonte fora do ar, não erro do coletor.** Verificado em navegador no Brasil: `gitlab.procc.fiocruz.br` (host do CSV canônico do InfoGripe, `serie_temporal_com_estimativas_recentes.csv`) devolve `ERR_CONNECTION_TIMED_OUT`. Não é bloqueio ao runner: não responde de lugar nenhum.
 - **Pista de migração, ainda não confirmada:** o InfoGripe aparece agora em `gitlab.fiocruz.br/marcelo.gomes/infogripe`, mas esse host **exige login** — não serve para coleta anônima. Por isso a URL **não** foi trocada às cegas; quatro endereços (host antigo e novo, raiz e CSV) entraram na sonda `scripts/diagnostico_fontes_saude.py` para medir antes de decidir.
 - **Correção visível agora:** a ausência de série é **declarada dentro da figura** ("Série ainda não coletada — lacuna declarada", com a razão), no mesmo padrão já usado em `financiamento.js`. A mensagem vai na mídia, não como parágrafo no cartão, porque o portão de figuras só admite título, legenda e crédito.
-
-## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
-
-A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.
 
