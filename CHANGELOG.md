@@ -13,6 +13,22 @@ não pontuados permanecem na versão corrente.
 
 Escolher um cartão da seção de desfechos da Saúde abre, abaixo da grade, a série inteira do território sobre a faixa habitual para a época, com título, legenda, fonte e data lidos do arquivo. Um detalhe por vez: escolher outro troca o conteúdo e a página não cresce. O seletor de território vale para a grade e para a série.
 
+## 2026-10-19 · #903 · Saúde de Rondônia: o link oficial do plano entra no canal 4
+
+O endereço oficial do Plano de Adaptação na Saúde de Rondônia (SESAU/RO, resposta de 15/10/2026) entra em `ACRESCIMOS_DE_CANAL4["RO"]`. Na próxima noite o coletor o consulta, e o julgamento do documento segue o fluxo existente. O endereço não abre da nuvem de trabalho (túnel 403); a verificação fica para o coletor. Linhas líquidas: +2.
+
+## 2026-10-19 · #898 · Fileira compacta de cartões sem órfão
+
+A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por
+aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da
+Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas
+cheias. Sai também do mapa de focos a ressalva "pontos: todos os satélites", que o dado tornou
+falsa.
+
+## 2026-10-19 · #901 · Dengue, chikungunya e SRAG na forma comum dos desfechos
+
+`desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.
+
 ## 2026-10-19 · #900 · A Saúde ganha a seção única de desfechos
 
 A seção "O que os órgãos de saúde registram" passa a abrir com um cartão por desfecho, todos lidos da mesma forma de arquivo: último valor por 100 mil, faixa habitual para a época, a série recente em linha e a fonte com a data. Um seletor escolhe Brasil ou estado. Desfecho sem arquivo não vira cartão vazio. Estreia com diarreias e leptospirose; os demais entram quando a série nascer.
