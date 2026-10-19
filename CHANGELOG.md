@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #918 · Internações do SUS e óbitos registrados entram como séries
+
+Sete grupos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor e hepatite A) e os óbitos registrados em cartório passam a ter série por UF na forma comum dos desfechos, com faixa habitual, cortes do mapa, fonte e data. Internações: 69 meses lidos, restam 644 arquivos de 2019 e 2020, e os cortes seguem provisórios. Sem causa de óbito: o portal não a publica mais.
+
 ## 2026-10-19 · #917 · Os cinco quadros por agravo saem da Saúde, e a seção única fica
 
 Aprovado pela editoria em 19/10. Saem da Saúde os quadros de dengue, chikungunya,
