@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · O desfecho que falta na Saúde é dito em uma linha
+## 2026-10-19 · #914 · O desfecho que falta na Saúde é dito em uma linha
 
 A seção de desfechos passa a declarar, abaixo da grade, qual dos seis desfechos em evidência ainda não tem série na forma comum. O nome vem do catálogo dos desfechos, não da página, e a linha some sozinha quando o arquivo nascer. Hoje ela diz: "Mortalidade geral entra quando a série estiver completa."
 
