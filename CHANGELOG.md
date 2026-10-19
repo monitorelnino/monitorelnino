@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #PR · Proteja-se: a aba de dengue, com o que a fonte oficial diz
+## 2026-10-19 · #912 · Proteja-se: a aba de dengue, com o que a fonte oficial diz
 
 O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.
 
