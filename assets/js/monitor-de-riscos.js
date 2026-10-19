@@ -574,10 +574,12 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
       + esc(R.dia.total ? (n / R.dia.total * 100).toLocaleString('pt-BR', {maximumFractionDigits: 1}) : '—') + '</td></tr>').join('');
 
   const sub = document.getElementById('fogoSub');
-  // 17/10/2026 (A1, #816): os pontos passam a ser do satélite de referência no mesmo dia dos números
-  // (`focos_pontos.satelite_referencia`); enquanto o arquivo for o antigo, a frase diz de onde são.
+  // 19/10/2026 (pedido da A1 no LOTES): `focos_pontos.json` passou a trazer `dia` e
+  // `satelite_referencia` — os pontos são do mesmo satélite e do mesmo dia dos números, e a
+  // ressalva "pontos: todos os satélites", que valia enquanto o arquivo fosse o antigo, sai com o
+  // ramo que a testava. Quem declara o satélite e o dia é a própria frase, abaixo.
   if (sub) sub.textContent = 'Até ' + dBR(dia) + ' · satélite de referência (Aqua, tarde)'
-    + (FOCOS && !FOCOS.satelite_referencia ? ' · pontos: todos os satélites' : '') + ' · hachura: estados com fogo previsto pelo boletim';
+    + ' · hachura: estados com fogo previsto pelo boletim';
 })();
 (function creditoFogo(){
   const f = FOGO_REF || fonteDe('inpe_fogo');

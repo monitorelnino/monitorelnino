@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #898 · Fileira compacta de cartões sem órfão
+
+A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por
+aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da
+Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas
+cheias. Sai também do mapa de focos a ressalva "pontos: todos os satélites", que o dado tornou
+falsa.
+
 ## 2026-10-19 · #901 · Dengue, chikungunya e SRAG na forma comum dos desfechos
 
 `desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.
