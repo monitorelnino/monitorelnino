@@ -16,6 +16,10 @@ Quatro das treze páginas preservadas para o guia do Proteja-se eram a página i
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
+## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
+
+A aba de calor dizia "consultado em 01/10/2026", data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.
+
 ## 2026-10-19 · #885 · Portões: sete regras de dado num só, nove arquivos a menos
 
 Consolidação, item 6. `verificar_regras_de_dado.py` reúne ausência declarada, rótulo do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa (57 casos); a cadência dos sinais vai para `verificar_temporizadores.py` e as evidências para `verificar_segredos.py`. A suíte vai de 90 para 83 comandos; `portoes_locais.py` perde a lista paralela. Linhas líquidas −514.
