@@ -1,32 +1,32 @@
 {
  "_governanca": "INSTANTÂNEO dos números de agora do Monitor de riscos, para a Imprensa e a página lerem em vez de recalcular (handover de 02/10/2026, item 1; HANDOVER_TEXTOS_B §10.3). Não é fonte de nada. Cada cartão guarda em `anterior` o valor e a referência da leitura anterior; sem leitura anterior, o campo não existe. Avisos: avisos distintos no país. O de temperatura é o maior DESVIO em relação à normal 1991–2020 do Inmet, e não a máxima absoluta: 35 °C é normal em Cuiabá e muito quente em Porto Alegre, e publicar a máxima absoluta era publicar geografia como se fosse notícia — mesma régua do mapa de calor da página.",
- "gerado_em": "17/10/2026",
+ "gerado_em": "19/10/2026",
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 3.9,
-   "referencia": "17/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Rio Branco",
-   "capital": "Rio Branco",
-   "uf": "AC",
+   "valor": 4.9,
+   "referencia": "19/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belém",
+   "capital": "Belém",
+   "uf": "PA",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 37.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 38.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 2.9,
-    "referencia": "16/10/2026"
+    "valor": 3.9,
+    "referencia": "17/10/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 330,
-   "referencia": "Focos do dia — focos_diario_br_20261018.csv",
+   "valor": 957,
+   "referencia": "Focos do dia — focos_diario_br_20261019.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 493,
-    "referencia": "Focos do dia — focos_diario_br_20261017.csv"
+    "valor": 330,
+    "referencia": "Focos do dia — focos_diario_br_20261018.csv"
    }
   },
   {
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 3,
-   "perigo_ou_maior": 2,
-   "referencia": "17/10/2026 22:36",
+   "valor": 2,
+   "perigo_ou_maior": 0,
+   "referencia": "19/10/2026 05:50",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 4,
-    "referencia": "16/10/2026 22:13"
+    "valor": 3,
+    "referencia": "17/10/2026 22:36"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 99,
    "trimestre": "MAM 2027",
-   "referencia": "17/10/2026",
+   "referencia": "19/10/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 99,
-    "referencia": "16/10/2026"
+    "referencia": "17/10/2026"
    }
   }
  ]

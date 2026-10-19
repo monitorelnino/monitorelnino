@@ -35,6 +35,8 @@ import re
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))
+from coletores_base import semana_em_datas  # noqa: E402  (a única cópia da semana em datas)
 
 # (id do cartão da Imprensa, página de origem, id do elemento do número naquela página)
 # 03/10/2026 (handover do blog e da imprensa): "Esta semana em números" SAIU da Imprensa, e com ela
@@ -47,7 +49,6 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 MAPA = (
     ("municipios_alerta_cemaden", "defesa-civil.html", "topoCemaden"),
     ("municipios_aviso_inmet", "defesa-civil.html", "topoInmet"),
-    ("decreto_e_alerta_ao_mesmo_tempo", "defesa-civil.html", "topoCruzamento"),
     ("dengue_casos_se", "saude.html", "nDengueSE"),
     ("srag_internacoes_se", "saude.html", "nSragSE"),
     ("ufs_dengue_alerta", "saude.html", "nUFsAlerta"),
@@ -76,36 +77,10 @@ MAPA_VARIACAO = (
 # que essa consulta não seja mais nova do que a da página de origem — imprensa adiantada seria
 # número inventado; imprensa atrasada é a edição sendo o que ela é, um retrato datado. Divergência
 # de valor com referência igual continua reprovando.
-DE_AGORA = ("municipios_alerta_cemaden", "municipios_aviso_inmet", "decreto_e_alerta_ao_mesmo_tempo")
+DE_AGORA = ("municipios_alerta_cemaden", "municipios_aviso_inmet")
 MULTIPLICADOR = {"mil": 1e3, "mi": 1e6, "bi": 1e9, "milhão": 1e6, "milhões": 1e6}
 
 
-
-MESES = ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro",
-         "outubro", "novembro", "dezembro")
-MES_CURTO = ("jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez")
-
-
-def semana_em_datas(ano: int, n: int) -> list:
-    """As formas com que a página escreve a semana `n` do `ano`. Função pura.
-
-    Mesma regra de `assets/semana.js` (Ministério da Saúde): domingo a sábado, e a semana 1 é a que
-    tem a quarta-feira entre 1 e 7 de janeiro. Devolve a forma por extenso (sem preposição) e a curta.
-    """
-    import datetime as _dt
-    base = next(_dt.date(ano, 1, d) - _dt.timedelta(days=3) for d in range(1, 8)
-                if _dt.date(ano, 1, d).weekday() == 2)
-    ini = base + _dt.timedelta(days=7 * (n - 1))
-    fim = ini + _dt.timedelta(days=6)
-    if ini.year != fim.year:
-        ext = f"{ini.day} de {MESES[ini.month - 1]} de {ini.year} a {fim.day} de {MESES[fim.month - 1]} de {fim.year}"
-    elif ini.month != fim.month:
-        ext = f"{ini.day} de {MESES[ini.month - 1]} a {fim.day} de {MESES[fim.month - 1]} de {ini.year}"
-    else:
-        ext = f"{ini.day} a {fim.day} de {MESES[ini.month - 1]} de {ini.year}"
-    curta = (f"{ini.day}–{fim.day}/{MES_CURTO[ini.month - 1]}" if ini.month == fim.month
-             else f"{ini.day}/{MES_CURTO[ini.month - 1]}–{fim.day}/{MES_CURTO[fim.month - 1]}")
-    return [ext, curta]
 
 def numero_do_texto(texto: str):
     """O número que o texto publica, com a escala que ele declara. Função pura.
