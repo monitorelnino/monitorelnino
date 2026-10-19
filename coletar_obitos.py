@@ -89,7 +89,10 @@ def coletar(buscar_fn=None, ler_fn=None, gravar_fn=None, hoje: datetime.date = N
     respostas, falhas = {}, []
     for ini, fim in a_pedir(todas, anterior):
         try:
-            respostas[(ini, fim)] = json.loads(buscar_fn(f"{API}?start_date={ini}&end_date={fim}", timeout=60))
+            r = json.loads(buscar_fn(f"{API}?start_date={ini}&end_date={fim}", timeout=60))
+            # UF sem `total` na resposta é lacuna, não zero: `serie_de` converteria nulo em 0.
+            r["data"] = [i for i in r.get("data", []) if i.get("total") is not None]
+            respostas[(ini, fim)] = r
         except Exception as e:  # noqa: BLE001
             falhas.append(f"{ini:%Y-%m}: {type(e).__name__}")
     novos = {uf: s for uf, s in serie_de(respostas).items() if uf != "BR"}
@@ -169,6 +172,18 @@ def _t_faixa_sem_pandemia():
     return o["faixa_sem_anos"] == [2020, 2021] and o["faixa_habitual"]["AC"]["01"]["n_anos"] == 4  # 2019, 2022, 2023, 2025
 
 
+def _t_total_nulo_nao_vira_zero():
+    ler_fn, gravar_fn, buscar_fn0, g, _p = _falsos()
+
+    def buscar_fn(url, timeout=60):
+        r = json.loads(buscar_fn0(url, timeout))
+        r["data"] = [{**i, "total": None} if i["name"] == "AC" else i for i in r["data"]]
+        return json.dumps(r).encode()
+    coletar(buscar_fn, ler_fn, gravar_fn, hoje=datetime.date(2026, 10, 17))
+    o = g["saude_desfechos/obitos.json"]
+    return o["serie"]["AC"]["2026-01"] is None and o["serie"]["SP"]["2026-01"] == 10
+
+
 def _t_incremental():
     ler_fn, gravar_fn, buscar_fn, g, _p = _falsos()
     coletar(buscar_fn, ler_fn, gravar_fn, hoje=datetime.date(2026, 10, 17))
@@ -209,6 +224,7 @@ def _t_trava_estrutural():
 TESTES = {
     "primeira rodada: 94 meses desde jan/2019, BR = soma das 27, mês corrente parcial, taxa": _t_primeira_rodada,
     "faixa habitual sem 2020 e 2021, exclusão declarada no arquivo": _t_faixa_sem_pandemia,
+    "UF com total nulo na resposta fica null (lacuna), nunca zero": _t_total_nulo_nao_vira_zero,
     "segunda rodada pede só os 3 últimos meses e mantém os cortes congelados": _t_incremental,
     "mês que falhou fica null (lacuna declarada), nunca zero": _t_falha_vira_lacuna_nao_zero,
     "nenhuma resposta: nada regravado": _t_falha_total_nao_regrava,
