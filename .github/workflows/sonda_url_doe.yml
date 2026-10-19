@@ -1,0 +1,22 @@
+name: Sonda de URLs dos diários (válvula)
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URLs separadas por espaço"
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  sonda:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: sonda-doe
+      timeout_minutos: 20
+      comandos: |
+        sonda_url_doe.py ${{ inputs.urls }}
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
