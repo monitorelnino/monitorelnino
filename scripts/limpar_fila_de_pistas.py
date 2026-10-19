@@ -142,6 +142,22 @@ def aberta(pista: dict) -> bool:
     return not status.startswith(("fechada", "aplicada", "rejeitada", "pista de decreto"))
 
 
+# Pista encerrada guarda o que a reabertura precisa (endereço, alvo, status, decisão do juiz, tentativas)
+# e perde o texto de trabalho que só serviu para julgá-la (19/10/2026: 20 MB da fila eram texto de
+# pista que já não tem o que decidir; o arquivo passava do teto de 50 MB do portão de tamanho). O
+# histórico completo continua no git.
+TEXTO_DE_TRABALHO = ("titulo", "trecho", "verificacao_fonte", "preparacao", "pontos_confianca", "sinais",
+                     "alertas", "juiz_tentativas", "busca_dirigida", "query",
+                     "degrau_do_redirecionamento", "fonte_veiculo")
+
+
+def compactar(pista: dict) -> dict:
+    """A pista encerrada sem o texto de trabalho; a aberta, intacta. Função pura."""
+    if aberta(pista):
+        return pista
+    return {k: v for k, v in pista.items() if k not in TEXTO_DE_TRABALHO}
+
+
 def decidir(pistas: list, decretados: set, hoje_iso: str) -> list:
     """(pista, novo_status, motivo_curto) para cada pista que muda. FUNÇÃO PURA.
 
@@ -229,6 +245,12 @@ def _autoteste() -> int:
     ok("sem data, sem dias", dias_na_fila({}, "2026-10-03") is None)
     ok("pista fechada não está aberta", not aberta({"status": "fechada — x"}))
     ok("pista de decreto não está aberta", not aberta({"status": "pista de decreto — y"}))
+    enc = {"id": "1", "url": "https://x", "status": "fechada — y", "titulo": "t", "trecho": "r", "juiz": {"promove": False}}
+    ok("encerrada perde o texto de trabalho e guarda endereço, status e decisão",
+       compactar(enc) == {"id": "1", "url": "https://x", "status": "fechada — y", "juiz": {"promove": False}})
+    ok("aberta fica intacta; compactar não muda o original",
+       compactar({"status": "pista — na fila", "titulo": "t"}) == {"status": "pista — na fila", "titulo": "t"}
+       and "titulo" in enc)
     ok("pista pendente está aberta", aberta({"status": "pista — pendente"}))
 
     # artigo genérico: o mesmo id em três municípios

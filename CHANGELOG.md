@@ -13,6 +13,13 @@ não pontuados permanecem na versão corrente.
 
 O cartão "Plano para o El Niño 2026/2027" da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.
 
+## 2026-10-19 · #851 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos
+
+`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.
+
+## 2026-10-19 · #849 · Imprensa: semana em datas, definição dos índices numa só função
+`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem "semana epidemiológica". `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o "ciclo". Metodologia §111.
+
 ## 2026-10-17 · #837 · Financiamento: números do topo, mês a mês e mapa municipal
 
 `semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.
@@ -227,6 +234,7 @@ A tabela que acompanha o mapa do MARÉ Saúde passa a ter UF, nota, faixa, plano
 ## 2026-10-16 · #784 · Uma renderização de página para os portões de jsdom (consolidação item 6)
 
 `_inline_js.renderizar` passa a montar o jsdom (d3, Chart simulado com rótulos, `fetch` do disco, erros da página) para os seis verificadores de runtime e o de texto público, sempre com a URL da página: quatro deles renderizavam com `/` e o catálogo servia o texto da inicial. Na Financiamento a URL `/` fica declarada: com a certa, o catálogo sobrescreve o rótulo do cartão de atos sem data (defeito da página, pedido à janela A). Linhas .js −137.
+
 ## 2026-10-16 · #782 · Duas regras de componente passam a ser julgadas
 
 O portão de conformidade passa a reprovar seção numerada ("1.", "II ·") e mais de uma figura larga por página; as duas regras só existiam no texto de `layout/regras.json`. Dívida declarada: 16 → 14 regras só texto.
@@ -242,6 +250,7 @@ Na abertura do MARÉ Legal, "os municípios inscritos no cadastro nacional" leva
 ## 2026-10-16 · #777 · Um medidor de frescor e um portão das fichas municipais (consolidação item 6)
 
 `verificar_frescor.py` absorve os três portões de frescor (Financiamento, Defesa civil, Saúde): um leitor de carimbo, um relógio, três famílias declaradas, 33 casos. `verificar_fichas_municipais.py` absorve `documento_de_plano`, `documento_publicado`, `datas_de_instrumento` e `capital`: `data/municipios.json` lido uma vez, quatro réguas, 34 casos. Sete scripts saem; 125 → 120 comandos. Linhas .py/.yml −515.
+
 ## 2026-10-16 · #779 · Saúde: títulos e subtítulos dizem o que a figura é
 
 O mapa do índice passa a "MARÉ Saúde por estado, de 0 a 100", com o subtítulo do cálculo em uso; "prontidão" sai da página. Os semanais nomeiam o ano e os anos da faixa habitual (2019 a 2025). A cidade fora da leitura semanal aparece como "não foi lido pelo MARÉ nesta semana". Sai a busca municipal antiga, sem elemento na página.
@@ -277,6 +286,7 @@ Dezesseis `verificar_*` que ainda tinham o par `--autoteste` + conferência pass
 ## 2026-10-16 · #772 · Um verificador de texto público (consolidação item 3)
 
 `verificar_texto_publico.js` absorve legendas e prosa (portão 19), semana epidemiológica, palavras por página, componente de figura, fichas semânticas, regra 0 da Imprensa, enquadramento federal, vocabulário dos scripts e o `--so-texto-proibido`: nove scripts que renderizavam as mesmas páginas (dois com a URL errada, lendo o texto de reserva) saem. Regras em `layout/regras.json`; 72 casos de mutação no autoteste. Linhas .py/.js/.yml: −842; portões 272 → 259.
+
 ## 2026-10-16 · #770 · Inicial com os textos da editoria
 
 Inicial: título, metadescrição, introdução, abertura em quatro parágrafos (indicados pela União lidos do dado), "Como ler" e cartão da cidade com o texto da editoria, tudo no catálogo; formulário diz que a conferência é automática. Nome por extenso segue "Monitor" (correção da central, 16/10); só `CLAUDE.md:28` acompanha. Teto de palavras da inicial 950 → 1.050.
@@ -339,6 +349,7 @@ Sobre o adaptador de edição por data: AM pela rota (a) da plataforma comum (ed
 ## 2026-10-15 · #PR · CLAUDE.md só com regras em vigor
 
 `CLAUDE.md` cai de 664 para 227 linhas: cada regra em uma frase, com o portão que a prova. A história e os relatos de incidente vão, sem perder linha, para `docs/HISTORICO_DE_REGIMES.md`; a marca pessoal, para `docs/MARCA_PESSOAL.md` (skill e `layout/regras.json` apontam para lá). Pedido da central de 15/10, custo de leitura por sessão.
+
 ## 2026-10-15 · #PR · Ficha do estado fecha no componente; grade com espaço
 
 A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, em `grade-estados.js`; na saúde ela não fechava pelo × e a inicial tinha um bloco próprio, que sai. `.regions` ganha `--esp-secao` acima e `--sp-2` entre cartões, nas duas páginas. Divergência: ouvinte no documento, não parâmetro de `montar` — a inicial não usa `montar`.
@@ -346,6 +357,7 @@ A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, 
 ## 2026-10-15 · #PR · Juiz 1.6: domínio do ente e plano de setor
 
 Plano sem ato só vale no domínio do próprio município (Cubatão/SP: relatório do BNDES em `bndes.gov.br`), e plano de contingência de rede de ensino, escola ou unidade de saúde é `fora_do_objeto` (Toledo/PR, METODOLOGIA §222). Aplica a régua declarada; casos de teste com os dois documentos. O rejulgamento passa a ler o texto extraído, não o PDF cru.
+
 ## 2026-10-15 · #PR · Juiz de saúde estadual primeiro (F62)
 
 `julgar_saude.py` passa a ser o primeiro comando do elo de saúde estadual e grava o que julgou quando o prazo o interrompe, pela mesma `julgar_lista` do juiz do Legal. Último da lista, ele era pulado toda semana (14/10: `--fontes` 52 min em hosts mortos) e `saude_uf.json` parou em 02/10. Ensaio 27 e catálogo F62.
@@ -857,6 +869,7 @@ grãos" virava seca, "fogo de artifício" virava fogo); "instrução normativa" 
 instrumento pela etapa 2 e recusada por `citacao_completa`, duas regras da mesma régua
 discordando; e a data do ato era a primeira data do texto, que num diário é a da edição — a regra
 da janela existia num caminho e não no outro. Onde: juiz.py, classificador_natureza.py.
+
 ## 2026-10-09 · #PR · Monitor de riscos: três cartões, episódios com ano, mapas por natureza
 
 Ajustes 3 a 6 de 09/10. Topo com três cartões numa linha, fora da moldura; a previsão da NOAA/CPC
@@ -878,6 +891,7 @@ está lá: 13.330 sem `url_final`, 3.354 sem alvo, 3.177 com data fora de format
 conferida em todas, bloqueando a nova e nomeando o passivo. O portão do escritor só via o literal
 na mesma linha; agora vê escrita por variável e em linha partida — achou 18, quatro em fila do
 juiz, registradas com o que falta.
+
 ## 2026-10-09 · #PR · nenhuma fila espera por uma pessoa
 
 Lote 2.9. Saem a decisão humana de pista (`--aceitar/--rejeitar/--adiar`), a fila de revisão
@@ -892,6 +906,7 @@ consertos: o passo 1a guardava o trabalho num artefato que ninguém reaplicava, 
 reaplica antes de coletar; o marcador `.feito` morria com o push perdido, e passa a subir como
 artefato, com um dono só; e o despachante ganhou observador por `push`, fora do cron. Casos 11, 12
 e 13 no ensaio.
+
 ## 2026-10-09 · #PR · a fila do Querido Diário chega ao juiz
 
 Lote 2 (A1-12). A consulta ao diário gravava as pistas num formato que o juiz não lê, num arquivo
@@ -906,6 +921,7 @@ Lote 2.8. Medido pista por pista: 12.309 das 13.503 pistas ativas tinham origem 
 recusa origem fora do esquema e rede social fora de domínio de rede ou `.gov.br`; o teto por
 município vale por classe de domínio; e um portão novo confere que todo script citado por
 workflow existe.
+
 ## 2026-10-09 · #PR · Proteja-se: guia sem marca d'água, Defesa Civil num controle só, alertas na casa deles
 
 Ajustes 7 a 9 de 09/10. O guia em PDF perde a marca d'água e a seta quebrada, não deixa título
@@ -927,6 +943,7 @@ tupla era atribuída inteira a `ok`, sempre verdadeira — portão vermelho conf
 desfazer. E o caminho das descobertas gravava sempre `categoria: "plano"`, sem evidência nem
 proveniência, enquanto o caminho do juiz grava a categoria do veredito: um `plano_antigo` entrava
 como plano novo. Onde: aplicar_promocoes_do_juiz.py, julgar_e_aplicar_descobertas.py.
+
 ## 2026-10-09 · #PR · metodologia e regras: o juiz 1.4 e o fim da etapa humana
 
 Lote 8. METODOLOGIA §106 descreve o codebook 1.4, as filas sem etapa humana e a regra de
@@ -945,15 +962,19 @@ scripts/municipio_do_dominio.py, aplicar_promocoes_do_juiz.py, noturno_juiz.yml.
 ## 2026-10-08 · #PR · Lote 4.6: uma frase só sobre a conferência, a do processo real
 
 O formulário prometia "conferência da nossa equipe"; a página seguinte dizia que ela é automática e "semanal, normalmente no domingo", enquanto o rodapé diz que o site publica às 6h e às 22h — três cadências para o mesmo envio, e uma etapa humana que não existe. Os três lugares passam a dizer a frase aprovada. Saem "banco público" (regra de 03/10) e a frase do e-mail, que o formulário não pede.
+
 ## 2026-10-08 · #PR · Lote 1.14: o PDF público passa a descrever o índice que existe
 
 A análise de sensibilidade tinha a conta da cobertura copiada do motor, e a cópia divergiu: ignorava a camada declarada nacional e usava 0,3 onde o motor usa 0,5. O PDF publicava a tabela de camadas errada (DF 100% documentado contra 38/62 do motor), escrevia a cobertura na coluna da estrutura, nomeava "Antecipação" como componente e trazia o crédito antigo do plano de ciclo anterior. Conta única `cobertura_de_uf`; índice reproduzido sem mudança. Portão novo.
+
 ## 2026-10-08 · #PR · Lote 4.5: o travessão sai da tela, e o diário de bordo da coleta também
 
 Quinze linhas de boletim do MARÉ Saúde nasciam com "—", a face do ladrilho dizia "capital —" e os campos da ficha mostravam "—" sem data: o sinal que a regra proíbe, em vinte lugares. Agora ausência se escreve em palavras ou não aparece, e a varredura do portão passa a cobrir a linha de boletim, a face do ladrilho e o campo da ficha — antes só o cartão de número. Saem também "em classificação", "link oficial em verificação" e "bateria".
+
 ## 2026-10-08 · #PR · Lote 4.1: os medidores voltam a mostrar número
 
 Os 21 estados verificados do MARÉ Saúde mostravam **0,0** na grade, e a ficha aberta por `index.html#UF` — o caminho do selo embutido em outro site — abria com 0,0/100: a função que escreve o número vivia no escopo de um módulo, e a outra página chamava uma função que não existia, com a guarda engolindo a ausência. O valor estava certo no atributo todo esse tempo. Um dono só, em `assets/mapas.js`, e o portão passa a exigir o número escrito.
+
 ## 2026-10-09 · #604 · cartão de atos federais: ausência da classe certa
 
 O cartão dizia "sem coleta" de uma série que está em disco, e o portão de layout reprovava com
@@ -965,33 +986,43 @@ assets/js/financiamento.js, scripts/verificar_financiamento_coerencia.py.
 ## 2026-10-08 · #PR · Lote 4.2: o cartão para de dizer "ainda não verificamos" sobre quem foi verificado
 
 Município com decreto de emergência, com ato alheio ao ciclo ou com estrutura de coordenação recebia a frase do não verificado — 102 cartões —, e no caso do decreto o cartão escondia a única informação de resposta que existia sobre o município. Cada categoria passa a ter a sua frase, nas palavras aprovadas na seção C do handover, e a data só aparece quando é completa: "em 2026" não é data.
+
 ## 2026-10-08 · #PR · Lote 3.7: autoteste em todos, com o nome certo e dentro do portão
 
 Quatro scripts tinham autoteste que ninguém rodava, porque a flag se chamava `--self-test` e o portão chama `--autoteste`; dois ignoravam a flag e iam à rede — `atualizar_recursos` chegava a gravar. Três não tinham autoteste nenhum. Agora: flag canônica em todos, autoteste puro onde faltava, a varredura de escrita cobre 27 scripts (eram 10) e cobra o nome da flag, e os cinco que estavam fora do `portoes.yml` entraram. De passagem, um defeito de canal.
+
 ## 2026-10-08 · #PR · Lote 1.15: C11 revogada, versão com dono, v3.2 calculada em paralelo
 
 A C11 tiraria 142 dos 151 registros pontuáveis em 26/10 por falta de número de ato em documento já lido, contra a decisão de 03/10: revogada (D3), e a fila de citação passa a ser informação de ficha regenerada pela cadeia. `versao_indice` nasce em `meta.json` e alimenta CITATION e datapackage, que diziam "2.3". A **v3.2** (arranjo permanente de resposta à seca, degrau 45) está **decidida e implementada em paralelo**: 191 municípios cumprem as três condições, média 45,3 → 45,6, e nenhuma página lê o resultado. Metodologia §105.
+
 ## 2026-10-08 · #PR · Lote 1.16: sete achados do A3, do feed ao selo
 
 Reconhecimento federal deixa de gerar dois itens no feed e os títulos saem em dd/mm/aaaa (97 pares da migração ficam marcados no log, que só cresce, e fora do feed). "288.729 de pessoas" vira "288.729 pessoas". Umuarama/PR sai duplicado do mapa. O CSV de atos ganha `ibge` e as datas em colunas próprias. Os selos param de falar de licença. O painel para de chamar a camada declarada de "simulado". A reserva de data que chamava função inexistente foi corrigida.
+
 ## 2026-10-08 · #PR · Lote 1.13: o cartão de atos federais para de publicar um zero que não foi medido
 
 Nenhum dos cinco compromissos federais tinha campo de data: a janela de sete dias devolvia lista vazia e o cartão publicava "0 atos" como fato, no Financiamento e na Imprensa. O cartão passa a declarar a lacuna; o coletor registra a ausência da data na origem, com o motivo; e a regra (m) do portão de financiamento reprova cartão de janela com valor quando a origem não tem data. Zero medido e campo inexistente são coisas diferentes.
+
 ## 2026-10-08 · #PR · Lote 1.10: a capital passa a ter uma fonte só
 
 `estados.json` guardava um status e um texto da capital escritos à mão, e o banco guardava a categoria que pontua: as duas se contradiziam em nove UFs, e o leitor via no mesmo clique "Novo, base da pontuação" e "ainda não verificado" (Rio Branco). `capital` passa a guardar só o nome; o rótulo e a frase saem do registro do banco, pela mesma função do cartão do município. A frase comparativa sai. Portão novo `verificar_capital.py`.
+
 ## 2026-10-08 · #PR · Lote 1.6: 71 reconhecimentos federais que a União publicou e o banco não tinha
 
 A planilha da Operação Carro-Pipa, recebida do MIDR em 05/10, lista as portarias de reconhecimento por município. Setenta e uma portarias do ciclo não tinham par no banco e 70 municípios não tinham evento nenhum — 69 na mesma portaria, a nº 2.203, vizinha de duas que o banco já tinha. Contador de resposta: 726 → 796 municípios, 10,2% → 11,4% da população; PE de 40 para 107 municípios. Entram com `documento_nao_localizado`. Portão: regra (h).
+
 ## 2026-10-08 · #PR · Lote 1.8: a camada declarada deixa de contar a mesma população duas vezes
 
 O excedente declarado descontava só as categorias de plano e ignorava `estrutura` e `coberto_estadual`, já creditadas; e o contador de planos desatualizados era somado ao de planos sem desconto nem teto — 398 declarantes num levantamento de 485 respondentes no RS, cobertura 80 no DF, que tem um município. Passa a um termo só, com teto no número de municípios da UF. Média nacional 45,3 → 44,6; seis estados mudam de nota. Portão novo; errata C31.
+
 ## 2026-10-08 · #PR · Lote 1.11: nomeado não é localizado (D1)
 
 Quarenta e sete registros municipais recebiam crédito no índice sem documento: 41 sem endereço, 6 com notícia no lugar do documento. Categoria nova `plano_nomeado`, crédito 0 — a classe de ausência aplicada a quem estava na de presença, sem mudança de peso ou componente. Média nacional do MARÉ Legal de 45,3 para 40,8; 17 estados mudam de nota (SE 87,7→71,5, RR 48,1→26,5). Portão `verificar_documento_de_plano.py`. Metodologia §104.
+
 ## 2026-10-08 · #PR · Lote 1.3: uma porta só para a data do ato, em dd/mm/aaaa
 
 As 97 datas de ato vindas do diário consorciado estavam em ISO, e o resto do arquivo em dd/mm/aaaa. O gerador compara strings: o que não casava virava ausência. Vinte e sete fichas publicavam o primeiro decreto em branco, a de Roraima também, e a série semanal parava em 629 em vez de 656. Nova porta `coletores_base.data_br_de`, `data_ato` e `data_publicacao` no evento, esquema `schemas/ato_resposta.json` e portão que reprova data em ISO. Erratas: 29.
+
 ## 2026-10-08 · #PR · Lote 1.9: a data do plano é a do documento, não a da nossa consulta
 
 Oitenta e quatro fichas de ES e SE publicavam 26/08/2026 como data do plano: era o dia em que o Monitor abriu o repositório estadual. Nove delas são planos antigos, e diziam 2026 — contradição entre a categoria e a data. `data` passa a ser o ano da edição do documento (ou o da atualização, quando declarada) e a consulta ganha campo próprio, `localizado_em`. Portão novo `verificar_datas_de_instrumento.py`, com fixtures de ES e SE.
@@ -1019,6 +1050,7 @@ número em qualquer lugar do diário —, e o município era o do cabeçalho ant
 preservados: 18 estavam no município errado (30%), corrigidos com errata por município. Os 36 cuja
 edição não está preservada saem do contador até a recoleta (D1): 749 → 723 municípios, 10,6% →
 10,1% da população. Um autoteste reproduz o caso Arapiraca × Piranhas.
+
 ## 2026-10-08 · #PR · Lote 1.4: a data do decreto deixa de ser a da portaria
 
 Nos 732 atos vindos do DOU, o campo `data` é a data da portaria de reconhecimento federal, e 674
@@ -1026,6 +1058,7 @@ deles traziam a data do decreto municipal num campo que nenhuma superfície lia.
 publicava a data da portaria como "primeiro decreto" — AM mostrava 30/06 quando o decreto é de
 08/06. Agora as duas datas aparecem separadas e nomeadas, a regra está no §32.6 da METODOLOGIA, e
 dois autotestes a provam. Quem conta não muda.
+
 ## 2026-10-08 · #PR · Lote 1.5: três municípios de MT voltam ao contador de resposta
 
 Evento sem `ibge` era descartado em silêncio por um `continue`: oito eventos de órgão estadual não
@@ -1033,6 +1066,7 @@ traziam o código, e Itaúba, Colniza e Várzea Grande (MT) não tinham nenhum o
 contador. MT publicava índice de resposta 0,2 quando é 9,2. Agora o código é casado por (nome, UF)
 na malha, o descarte sai nomeado, e `verificar_resposta.py` reprova evento sem `ibge` casável.
 Nacional: 749 → 752 municípios, 10,6% → 10,8% da população.
+
 ## 2026-10-08 · #PR · Lote 1.1: quatro registros falsos saem do banco
 
 O juiz havia promovido quatro planos de outro ente ou de outro objeto: o PDF de Rio do Oeste/SC é
@@ -1136,6 +1170,7 @@ lista de referência dos 5.571. Com isso o quadro das listas federais de risco a
 2.916 municípios que constam de alguma lista e não têm registro no banco. O escape de texto
 passou a acontecer uma vez só, na saída: escapado duas vezes, "Olho d'Água das Flores" saía com
 a entidade visível e o nome não casava com a lista oficial. Em `assets/js/index.js`.
+
 ## 2026-10-07 · #PR · A página do Financiamento busca o mesmo arquivo uma vez, não quatro
 
 Cinco trechos pediam `compromissos_federais.json` com o seu próprio `fetch`, e quatro disparavam

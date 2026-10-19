@@ -37,7 +37,7 @@ sys.path.insert(0, str(RAIZ))
 
 GOV_SAUDE = ("INSTANTÂNEO dos cartões do topo do MARÉ Saúde, para a Imprensa ler em vez de "
              "recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce das mesmas "
-             "séries que a página lê. 'Semana epidemiológica fechada' é a última com valor na "
+             "séries que a página lê. A semana fechada é a última com valor na "
              "série — nunca a última do calendário, porque semana recente existe no arquivo com "
              "valor nulo e tratar nulo como zero publicaria uma queda que é só atraso de "
              "notificação.")
@@ -105,6 +105,13 @@ def nacional_da_serie(serie_por_uf: dict, ano: str):
     return total
 
 
+def _na_semana(referencia) -> str:
+    """' na semana de 30 de agosto a 5 de setembro de 2026' para '2026-35'; vazio sem semana."""
+    from coletores_base import semana_do_rotulo
+    quando = semana_do_rotulo(referencia)
+    return f" na semana {quando}" if quando else ""
+
+
 def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monitor: dict) -> list:
     """Os seis cartões do topo do MARÉ Saúde. Função pura — é ela que o autoteste exercita."""
     cartoes = []
@@ -112,8 +119,7 @@ def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monit
     se_d, v_d = ultima_fechada(((dengue or {}).get("serie") or {}).get("BR") or {}, ano_d)
     cartoes.append({
         "id": "dengue_casos_se", "valor": v_d, "referencia": se_d,
-        "rotulo": ("notificações de dengue na semana epidemiológica " + se_d.split("-")[-1])
-                  if se_d else "notificações de dengue na semana epidemiológica",
+        "rotulo": "notificações de dengue" + _na_semana(se_d),
         "fonte": "Ministério da Saúde (Sinan)", "sem_coleta": se_d is None,
         "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com "
                 "as notificações atrasadas; este número não indica relação com o El Niño",
@@ -123,9 +129,7 @@ def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monit
     se_s, v_s = ultima_fechada(nac, ano_s)
     cartoes.append({
         "id": "srag_internacoes_se", "valor": v_s, "referencia": se_s,
-        "rotulo": ("internações por síndrome respiratória grave na semana epidemiológica "
-                   + se_s.split("-")[-1]) if se_s else
-                  "internações por síndrome respiratória grave na semana epidemiológica",
+        "rotulo": "internações por síndrome respiratória grave" + _na_semana(se_s),
         "fonte": "Ministério da Saúde (SIVEP-Gripe)", "sem_coleta": se_s is None,
         "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas; este "
                 "número não indica relação com o El Niño",
@@ -176,6 +180,59 @@ def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monit
                  else f"média dos {verificadas} estados verificados"),
     })
     return cartoes
+
+
+# Como o leitor lê cada componente. Chave = nome no dado (`meta.json` para o MARÉ Legal,
+# `monitor_saude.json` para o MARÉ Saúde); componente que não está aqui deixa o texto em lacuna.
+PARTES_LEGAL = {
+    "instrumento operacional estadual": "o plano estadual para o risco previsto (vale mais quando "
+        "feito para este El Niño, menos quando é o plano de todo ano revisado, zero quando não "
+        "localizamos)",
+    "estrutura de coordenação": "a estrutura de coordenação (quem foi designado para conduzir a "
+        "resposta)",
+    "cobertura populacional": "a cobertura (quanta gente do estado vive em município com plano "
+        "localizado)"}
+PARTES_SAUDE = {   # na ordem em que o leitor as lê
+    "instrumento": "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)",
+    "antecipacao": "quando ele saiu em relação ao primeiro boletim",
+    "coordenacao": "quem coordena a resposta na saúde, sala de situação ou centro de operações",
+    "cobertura": "quanta gente vive em município cujo plano trata a saúde"}
+NUMERO_POR_EXTENSO = {2: "duas", 3: "três", 4: "quatro", 5: "cinco"}
+
+
+def _lista(partes: list) -> str:
+    return partes[0] if len(partes) == 1 else ", ".join(partes[:-1]) + " e " + partes[-1]
+
+
+def definicao_dos_indices(meta: dict, monitor: dict) -> dict:
+    """O parágrafo "como o índice funciona" do MARÉ Legal e do MARÉ Saúde. Função pura.
+
+    UMA função para a Imprensa e para a abertura da Saúde (HANDOVER_IMPRENSA §4.2): o texto nasce
+    dos componentes e pesos que o dado declara, e as duas páginas leem o mesmo campo. Mudou o dado,
+    mudaram os dois textos. Nenhum número de versão chega ao leitor. Componente que a função não
+    sabe dizer, peso desigual ou escala que não é a do Legal deixa o texto `None`: lacuna, nunca
+    texto que descreva outra coisa.
+    """
+    d = (meta or {}).get("definicao_indice") or {}
+    comp = d.get("componentes") or []
+    faixas = d.get("faixas") or []
+    legal = None
+    if (comp and faixas and all(c.get("nome") in PARTES_LEGAL for c in comp)
+            and len({c.get("peso") for c in comp}) == 1 and len(comp) in NUMERO_POR_EXTENSO):
+        legal = (f"Cada estado recebe uma nota de {faixas[0][0]} a {faixas[-1][1]}, com "
+                 f"{NUMERO_POR_EXTENSO[len(comp)]} partes de mesmo peso: "
+                 f"{_lista([PARTES_LEGAL[c['nome']] for c in comp])}. A nota do Brasil é a média "
+                 "dos estados. Decretos não entram.")
+    pesos = ((monitor or {}).get("metodo") or {}).get("pesos") or {}
+    partes = [PARTES_SAUDE[k] for k in PARTES_SAUDE if k in pesos]
+    mesma_escala = [str(f[0]) + "–" + str(f[1]) for f in faixas] == list(
+        (((monitor or {}).get("metodo") or {}).get("faixas") or {}).values())
+    saude = None
+    if (partes and len(partes) == len(pesos) and len(set(pesos.values())) == 1
+            and mesma_escala):
+        saude = ("A mesma escala, para o que a secretaria estadual de saúde publicou: "
+                 f"{_lista(partes)}. A nota nacional é a média dos estados já verificados.")
+    return {"legal": legal, "saude": saude, "saude_partes": partes if saude else None}
 
 
 def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_iso: str,
@@ -417,6 +474,28 @@ def _autoteste() -> int:
     ok("o índice diz quantos estados a média cobre",
        por_id["mare_saude_indice"]["unidades_verificadas"] == 21
        and "21 estados verificados" in por_id["mare_saude_indice"]["nota"])
+    ok("o rótulo diz as datas da semana, nunca 'semana epidemiológica'",
+       por_id["dengue_casos_se"]["rotulo"] == "notificações de dengue na semana de 16 a 22 de "
+       "agosto de 2026" and not any("epidemiol" in c["rotulo"] for c in saude))
+    meta = {"definicao_indice": {"componentes": [
+        {"nome": n, "peso": "1/3"} for n in PARTES_LEGAL],
+        "faixas": [[0, 25, "a"], [25, 50, "b"], [50, 70, "c"], [70, 100, "d"]]}}
+    mon = {"metodo": {"pesos": {"instrumento": 1 / 3, "cobertura": 1 / 3, "antecipacao": 1 / 3},
+                      "faixas": {"a": "0–25", "b": "25–50", "c": "50–70", "d": "70–100"}}}
+    df = definicao_dos_indices(meta, mon)
+    ok("a definição do Legal sai do dado, com três partes de mesmo peso",
+       df["legal"].startswith("Cada estado recebe uma nota de 0 a 100, com três partes de mesmo "
+                              "peso: o plano estadual") and "versão" not in df["legal"])
+    ok("a definição da Saúde v0.3 diz quando o plano saiu",
+       "quando ele saiu em relação ao primeiro boletim e quanta gente" in df["saude"])
+    mon["metodo"]["pesos"] = {"instrumento": 1 / 3, "coordenacao": 1 / 3, "cobertura": 1 / 3}
+    ok("mudar o componente no dado muda o texto da Saúde",
+       "quem coordena a resposta na saúde" in definicao_dos_indices(meta, mon)["saude"]
+       and "primeiro boletim" not in definicao_dos_indices(meta, mon)["saude"])
+    ok("componente que a função não conhece deixa lacuna, não texto",
+       definicao_dos_indices({"definicao_indice": {"componentes": [{"nome": "novo", "peso": "1"}],
+                                                   "faixas": [[0, 100, "x"]]}}, mon)["legal"] is None
+       and definicao_dos_indices(meta, {})["saude"] is None)
     ok("série ausente vira sem_coleta, nunca zero",
        cartoes_da_saude({}, {}, {}, {}, {})[0]["sem_coleta"] is True
        and cartoes_da_saude({}, {}, {}, {}, {})[0]["valor"] is None)
@@ -536,7 +615,9 @@ def main() -> int:
         ler("saude_sinais.json", {}) or {},
         ler("monitor_saude.json", {}) or {})
     gravar("saude_desfechos/topo_saude.json",
-           {"_governanca": GOV_SAUDE, "gerado_em": hoje.strftime("%d/%m/%Y"), "cartoes": saude})
+           {"_governanca": GOV_SAUDE, "gerado_em": hoje.strftime("%d/%m/%Y"), "cartoes": saude,
+            "definicao_dos_indices": definicao_dos_indices(ler("meta.json", {}) or {},
+                                                           ler("monitor_saude.json", {}) or {})})
     dc = cartoes_da_defesa_civil(
         ler("alertas/vigentes.json", {}) or {},
         ler("resposta/municipios_decretados.json", {}) or {},
