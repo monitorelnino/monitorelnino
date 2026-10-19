@@ -7,11 +7,11 @@ import coletores_base as cb
 def _rj(dia):
     import base64, re
     b = "https://www.ioerj.com.br/portal/modules/conteudoonline/"
-    t = cb.buscar_uma_vez(b + "do_seleciona_edicao.php?data=" + base64.b64encode(dia.encode()).decode(), timeout=30, origem="sonda_doe").decode("utf-8", "replace")
+    t = cb.buscar_uma_vez(b + "do_seleciona_edicao.php?data=" + base64.b64encode(dia.encode()).decode(), timeout=60, origem="sonda_doe").decode("utf-8", "replace")
     ses = re.findall(r'mostra_edicao\.php\?session=([A-Za-z0-9+/=]+)"[^>]*>([^<]+)<', t)
     print("RJ cadernos:", [(n.strip(), s[:20]) for s, n in ses])
     if not ses: return
-    pag = cb.buscar_uma_vez(b + "mostra_edicao.php?session=" + ses[0][0], timeout=30, origem="sonda_doe").decode("utf-8", "replace")
+    pag = cb.buscar_uma_vez(b + "mostra_edicao.php?session=" + ses[0][0], timeout=60, origem="sonda_doe").decode("utf-8", "replace")
     m = re.search(r'var pd = "([^"]+)"', pag)
     print("RJ pd:", m.group(1) if m else None)
     if not m: return
@@ -33,7 +33,7 @@ for url in sys.argv[1:]:
     if "#ctx=" in url:
         url, ctx = url.split("#ctx=", 1)
     try:
-        b = cb.buscar_uma_vez(url, timeout=12, origem="sonda_doe")
+        b = cb.buscar_uma_vez(url, timeout=60, origem="sonda_doe")
     except urllib.error.HTTPError as e:
         print(f"HTTP {e.code} {e.reason}"); continue
     except Exception as e:
