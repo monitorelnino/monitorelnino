@@ -105,7 +105,7 @@ def ci(base: str, sha: str) -> int:
     for k, v in marcas.items():
         print(f"{k}_mudou={'true' if v else 'false'}")
         if os.environ.get("GITHUB_OUTPUT"):
-            with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+            with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8", newline="\n") as f:
                 f.write(f"{k}_mudou={'true' if v else 'false'}\n")
     return 0
 
