@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.
 
+## 2026-10-19 · #860 · RO saúde: plano recebido por LAI, registrado sem julgamento
+`data/notas_lai.json` ganha o registro do plano de saúde estadual de Rondônia, recebido da SESAU/RO em 15/10/2026 (título, órgão, mês do documento, 96 páginas, hash, endereço informado com `verificacao_link: pendente`) e quatro buscas dirigidas aos documentos que o plano cita. Não pontua; ainda não julgado.
+
 ## 2026-10-19 · #859 · Ajustes de texto: a entrada repetida da Imprensa sai do histórico
 
 A união de ramos do dia deixou a entrada da Imprensa duas vezes em `mudancas.html`, uma delas sem o número do PR. Fica a do #853. Três títulos que a união colou ao parágrafo anterior voltam a ter linha em branco antes, que é o que o gerador do histórico espera.
