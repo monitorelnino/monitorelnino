@@ -64,6 +64,22 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     (S.cartoes || []).forEach(c => { porId[c.id] = c; });
     const edicao = (S.indices || {}).edicao || S.gerado_em || null;
 
+    /* O texto da semana (dois parágrafos) é do gerador da edição, não desta página: aqui ele só
+       aparece. Entra quando o gerador é o da reforma — o que se prova pela presença de
+       `definicao_dos_indices`, que só ele escreve. Antes disso o texto trazia "ciclo" sozinho, que a
+       editoria tirou desta página, e a seção fica com os seis cartões.
+       Em coluna única, e não nas duas colunas do handover: a colunação dos textos saiu do site
+       inteiro em 16/10 (editoria), e a regra vence o handover. Divergência no contrato. */
+    const texto = document.getElementById('semanaTexto');
+    if (texto && S.definicao_dos_indices && S.texto_pronto) {
+      texto.replaceChildren(...String(S.texto_pronto).split(/\n\s*\n/).map(par => {
+        const p = document.createElement('p');
+        p.textContent = par.trim();
+        return p;
+      }).filter(p => p.textContent));
+      texto.hidden = false;
+    }
+
     IDS.forEach(id => {
       const valor = document.getElementById('semanaValor_' + id);
       const ref = document.getElementById('semanaRef_' + id);
