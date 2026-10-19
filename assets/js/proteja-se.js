@@ -128,6 +128,27 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 // handler do botão de PDF (era onclick inline; CSP sem unsafe-inline)
 { const b = document.getElementById('btnPdfGuia'); if (b && typeof gerarPDFGuia === 'function') b.addEventListener('click', gerarPDFGuia); }
 
+/* Leitura de JSON da própria origem, um lugar só: devolve null em erro ou resposta ruim. */
+const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => null);
+
+/* ===== A data da fonte do guia vem do registro de preservação (HANDOVER_PROTEJA_SE §7.1) =====
+ *
+ * A aba de calor cita a página "Ondas de Calor" do Ministério da Saúde, que é a mesma que a janela A
+ * preserva por hash em `data/orientacoes_oficiais.json`. A data da consulta estava escrita à mão na
+ * linha de fonte e envelhecia sozinha; agora é molde, resolvido com a data do registro — quando a
+ * reconferência rodar, a linha acompanha. Sem o registro, fica a data de reserva do HTML.
+ */
+(function dataDaFonteDoGuia() {
+  const C = window.MonitorCatalogo, alvo = document.getElementById('fonteDoCalor');
+  if (!C || !alvo) return;
+  const URL_CALOR = 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor';
+  Promise.all([json('data/orientacoes_oficiais.json'), C.pronto])
+    .then(([reg]) => {
+      const f = ((reg || {}).fontes || []).find(x => x && x.url === URL_CALOR);
+      if (f && f.consultado_em) C.escrever(alvo, 'proteja-se.guia-calor.texto_3', {data: f.consultado_em});
+    }).catch(_erroPS('proteja-se:fonte-do-guia'));
+})();
+
 /* Erro de bloco que não renderiza vai ao console com o lugar, onde o portão de runtime o vê. */
 function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falha em ' + onde + ':', e); } catch (_) {} }; }
 
@@ -147,7 +168,6 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
   const C = window.MonitorCatalogo, M = window.MonitorMapas, P = 'proteja-se.municipio.';
   if (!window.ConsultaMunicipio || !document.getElementById('munCard')) return;
   const tx = (id, v) => (C && C.texto && C.texto(P + id, v)) || '';
-  const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => null);
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const REF = json('data/municipios_ibge_referencia.json'), CONTATOS = json('data/contatos_uf.json');
   const risco = {};                                   // UF → promessa do arquivo daquele estado
