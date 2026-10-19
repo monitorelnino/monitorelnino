@@ -2,8 +2,8 @@
  "_governanca": "Card por município (§155). DERIVADO — regenerado a cada rodada por gerar_card_municipios.py. `prioritario` = aproximação populacional do Cadastro Nacional (não a lista oficial). `imprensa` = pistas pendentes de nível A/B: NÃO pontuam no MARÉ; entram como link para que o leitor peça o documento ao gestor. Só municípios com algo a dizer; sem registro = não verificado. `defesa_civil_orcamento` (§207) = despesa liquidada na subfunção 06.182 declarada ao SICONFI, peso ZERO; classe de ausência nunca vira zero.",
  "gerado_em": "2026-10-18",
  "total": 2451,
- "com_registro": 254,
- "com_imprensa": 381,
+ "com_registro": 253,
+ "com_imprensa": 380,
  "prioritarios": 2095,
  "com_despesa_182": 2451,
  "municipios": {
@@ -29833,15 +29833,6 @@
    "nome": "Saquarema",
    "uf": "RJ",
    "prioritario": true,
-   "imprensa": [
-    {
-     "titulo": "Especialista resume alertas sobre El Niño e cobra ações urgentes ...",
-     "url": "https://www.serramarnews.com.br/noticia/11506/saquarema/politica/especialista-resume-alertas-sobre-el-nino-e-cobra-acoes-urgentes-do-poder-publico.html",
-     "data": "27/09/2026",
-     "veiculo": "serramarnews.com.br",
-     "nivel": "A"
-    }
-   ],
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -30958,12 +30949,6 @@
    "nome": "Ilhabela",
    "uf": "SP",
    "prioritario": true,
-   "categoria": "plano",
-   "documento": "Plano de contingência municipal — Prefeitura de Ilhabela, 2026",
-   "url": "https://www.ilhabela.sp.gov.br/portal/noticias/0/3/17590/defesa-civil-de-ilhabela-regulamenta-novo-plano-municipal-de-contingencia",
-   "data": "2026",
-   "fonte": "Portal oficial (www.ilhabela.sp.gov.br) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz auto",
-   "sem_ato_de_aprovacao": true,
    "defesa_civil_orcamento": {
     "exercicio": 2025,
     "classe": "com_lancamento",
@@ -30972,7 +30957,8 @@
     "fonte": "SICONFI (Tesouro Nacional)",
     "ressalva": "inclui preparação e resposta",
     "peso_no_indice": "nenhum"
-   }
+   },
+   "categoria": "nao_verificado"
   },
   "3520509": {
    "nome": "Indaiatuba",
