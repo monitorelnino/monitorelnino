@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=cc0114f1"></script>
+<script src="assets/mapas.js?v=0a7eef30"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
 <link rel="stylesheet" href="assets/base.css?v=73322c35">
 </head>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · O cartão de desfecho escolhido abre a série inteira</dt>
+      <dd>Escolher um cartão da seção de desfechos da Saúde abre, abaixo da grade, a série inteira do território sobre a faixa habitual para a época, com título, legenda, fonte e data lidos do arquivo. Um detalhe por vez: escolher outro troca o conteúdo e a página não cresce. O seletor de território vale para a grade e para a série.</dd>
       <dt>19/10/2026 · Malária fora da Amazônia na forma comum dos desfechos</dt>
       <dd>Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.</dd>
       <dt>19/10/2026 · Orientações oficiais: as listas de dengue entram no dado</dt>
@@ -165,8 +167,6 @@
       <dd>A página passa a ter a consulta do município (módulo comum) com quatro cartões: plano, cadastro nacional, risco previsto do estado e recursos federais de 2026. &quot;O que a lei exige de cada governo&quot; vira três cartões de número, as listas perdem a caixa de marcar e &quot;Como os recursos chegam&quot; ganha três cartões com as âncoras de sempre. Sai o ponteiro para a consulta da inicial.</dd>
       <dt>17/10/2026 · Defesa civil: evento declarado por município</dt>
       <dd>`gerar_resposta.py` grava `evento_declarado` (famílias dos atos casados, pela função única do tipo), `dias_sem_reconhecimento` e, por UF, `eventos_declarados` e `evento_mais_declarado`. O nome do ato deixa de contar como &quot;outro declarado&quot; (380 atos passam a &quot;sem tipo informado&quot;). Soma por família = 1.202 atos casados. Metodologia §32.5.</dd>
-      <dt>17/10/2026 · Desfechos do SUS: arquivo comum e leitor `.dbc`</dt>
-      <dd>Nasce a forma comum dos desfechos novos em `data/saude_desfechos/` (`desfechos_sus.py`): série por UF, taxa por 100 mil, faixa habitual do canal endêmico, quintis de 2019–2025 congelados para o mapa, último valor, parcial e preliminar, quarentena para arquivo fora da forma. Leitor `.dbc` do DATASUS em Python puro; leptospirose do SINAN conferida contra o TabNet (1.594 = 1.594). Catálogo com a sondagem e as fontes da abertura da Saúde. Detalhe: METODOLOGIA §108.</dd>
     </dl>
   </section>
 </main>

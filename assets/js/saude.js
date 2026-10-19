@@ -1141,12 +1141,13 @@ const AREAS = [
  */
 const DESFECHOS_DA_SECAO = ['dengue', 'chikungunya', 'srag', 'obitos', 'diarreias', 'leptospirose'];
 const FAIXA_COR = {acima: MonitorMapas.PALETA.serie_habitual.acima, dentro: MonitorMapas.cor('vazio')};
-let DESFECHOS_LIDOS = [];
+let DESFECHOS_LIDOS = [], DESFECHO_ESCOLHIDO = null;
+const __graficoDesfecho = {};
 
 /* "2026-08" → "agosto de 2026"; "2026-33" → a semana em datas (a palavra não chega ao leitor). */
 function periodoEmPalavras(chave, cadencia) {
   const [ano, parte] = String(chave || '').split('-');
-  if (cadencia === 'semana') return semanaEmDatas(Number(ano), chave, true) || '';
+  if (cadencia === 'semana') return semanaEmDatas(Number(ano), chave, false) || '';
   const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto',
                  'setembro', 'outubro', 'novembro', 'dezembro'];
   return (meses[Number(parte) - 1] || '') + ' de ' + ano;
@@ -1170,14 +1171,21 @@ function serieEmSvg(valores, faixas, rotulo, estado) {
     + ' role="img" aria-label="' + esc(rotulo) + '">'
     + (temFaixa ? '<polygon points="' + faixaCima + ' ' + faixaBaixo + '" fill="' + MonitorMapas.PALETA.serie_habitual.faixa + '" fill-opacity="0.28"></polygon>' : '')
     + '<polyline points="' + linha + '" fill="none" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1.5"></polyline>'
-    + (ultimo == null ? '' : '<circle cx="' + L + '" cy="' + y(ultimo) + '" r="3" fill="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro) + '"></circle>')
+    /* O último período fechado é marcado por um traço vertical, não por um ponto: a caixa é
+       esticada (`preserveAspectRatio="none"`) e um círculo sairia deformado. */
+    + (ultimo == null ? '' : '<line x1="' + (L - 1) + '" x2="' + (L - 1) + '" y1="' + (y(ultimo) - 4)
+       + '" y2="' + (y(ultimo) + 4) + '" stroke="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro)
+       + '" stroke-width="2"></line>')
     + '</svg>';
 }
 
-/* Os períodos recentes do território, na ordem do calendário: 52 semanas ou 24 meses. */
+/* Os períodos recentes do território, na ordem do calendário: 52 semanas ou 24 meses, SEM os
+   períodos que o arquivo declara parciais. Eles ainda recebem registro, e desenhá-los faria a
+   linha do cartão cair no fim — ao lado de um valor que é o do último período fechado. */
 function recorteRecente(d, uf) {
+  const parciais = new Set(d.parcial || []);
   const serie = (d.por_100mil || {})[uf] || {};
-  const chaves = Object.keys(serie).sort();
+  const chaves = Object.keys(serie).sort().filter(ch => !parciais.has(ch));
   const quantos = d.periodo === 'semana' ? 52 : 24;
   return chaves.slice(-quantos);
 }
@@ -1199,11 +1207,18 @@ function cartaoDesfecho(d, uf) {
   const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
   const doAno = ch => faixas[String(ch).split('-')[1]] || null;
   const f = doAno(c.periodo);
-  const dentro = !f || f.p90 == null ? null : (c.por_100mil > f.p90 ? 'acima' : 'dentro');
+  /* Três posições, cada uma dita como é: acima do maior valor esperado, dentro da faixa, ou
+     abaixo do menor. Dizer "dentro" de um valor que está abaixo da faixa seria descrever errado
+     o que o leitor vê no gráfico. */
+  /* A comparação é feita nos MESMOS números que o leitor lê (uma casa decimal): comparar no valor
+     cheio escreve "abaixo da faixa habitual (0,2 a 0,2)" para um cartão que mostra 0,2. */
+  const uma = x => Number(Number(x).toFixed(1));
+  const dentro = !f || f.p90 == null ? null
+    : (uma(c.por_100mil) > uma(f.p90) ? 'acima' : (uma(c.por_100mil) < uma(f.mediana) ? 'abaixo' : 'dentro'));
   const texto = !dentro ? 'sem faixa habitual para a época'
-    : (dentro === 'acima' ? 'acima' : 'dentro') + ' da faixa habitual ('
-      + decBR(f.mediana) + ' a ' + decBR(f.p90) + ')';
-  return '<div class="cartao-numero cartao-numero--saude">'
+    : dentro + ' da faixa habitual (' + decBR(f.mediana) + ' a ' + decBR(f.p90) + ')';
+  return '<div class="cartao-numero cartao-numero--saude" role="button" tabindex="0"'
+    + ' data-desfecho="' + esc(d.desfecho) + '" aria-pressed="' + (d.desfecho === DESFECHO_ESCOLHIDO) + '">'
     + '<p class="cartao-numero-familia">' + esc(d.rotulo) + '</p>'
     + '<p class="cartao-numero-valor">' + esc(decBR(c.por_100mil)) + '</p>'
     + '<p class="cartao-numero-rotulo">' + esc(d.unidade) + ' por 100 mil' + cadencia
@@ -1221,17 +1236,89 @@ function pintarDesfechos() {
   const seletor = document.getElementById('ufDesfechos');
   if (!grade || !DESFECHOS_LIDOS.length) return;
   const uf = (seletor && seletor.value) || 'BR';
+  if (!DESFECHOS_LIDOS.some(d => d.desfecho === DESFECHO_ESCOLHIDO)) DESFECHO_ESCOLHIDO = DESFECHOS_LIDOS[0].desfecho;
   grade.innerHTML = DESFECHOS_LIDOS.map(d => cartaoDesfecho(d, uf)).join('');
+  pintarDetalhe(DESFECHOS_LIDOS.find(d => d.desfecho === DESFECHO_ESCOLHIDO), uf);
+}
+
+/* Um ouvinte na grade, não um por cartão: a grade se repinta inteira a cada troca de território. */
+function escolherDesfecho(ev) {
+  const alvo = ev.target.closest('[data-desfecho]');
+  if (!alvo || (ev.type === 'keydown' && ev.key !== 'Enter' && ev.key !== ' ')) return;
+  if (ev.type === 'keydown') ev.preventDefault();
+  DESFECHO_ESCOLHIDO = alvo.getAttribute('data-desfecho');
+  pintarDesfechos();
+}
+
+/* O detalhe do cartão escolhido: a série inteira do território sobre a faixa habitual da época.
+   Um detalhe por vez — escolher outro cartão troca o conteúdo, e a página não cresce. */
+function pintarDetalhe(d, uf) {
+  const fig = document.getElementById('boxDesfecho'), cv = document.getElementById('cDesfecho');
+  if (!fig || !cv || !window.Chart) return;
+  /* Sem desfecho escolhido não há o que detalhar: a figura recolhe, e declara a lacuna na própria
+     linha de fonte — sem nomear sistema que não foi lido. Moldura vazia e muda é o pior desfecho. */
+  if (!d) {
+    fig.hidden = true;
+    fonteFigura('boxDesfecho', {fontes: ['os sistemas de registro declarados em cada desfecho'], data: null});
+    return;
+  }
+  fig.hidden = false;
+  const chaves = Object.keys((d.por_100mil || {})[uf] || {}).sort();
+  const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
+  const doAno = ch => faixas[String(ch).split('-')[1]] || {};
+  /* Eixo em meses, como manda a régua do site; o período inteiro, por extenso, fica no texto do
+     mouse — a série pode ter oito anos de semanas, e o rótulo por extenso não cabe no eixo. */
+  const MES3 = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  const noEixo = ch => {
+    if (d.periodo !== 'semana') return MES3[Number(ch.split('-')[1]) - 1] + '/' + ch.split('-')[0];
+    const por = periodoEmPalavras(ch, 'semana').match(/de (\w+) de (\d{4})$/);
+    return por ? por[1].slice(0, 3) + '/' + por[2] : ch;
+  };
+  const rotulos = chaves.map(noEixo);
+  const C = window.MonitorCatalogo;
+  const campo = (id, texto) => { const el = document.getElementById(id); if (el) el.textContent = texto; };
+  const molde = (chave, vals) => (C && C.texto('saude.observado.registram.detalhe.' + chave, vals)) || '';
+  const anos = chaves.length ? (chaves[0].split('-')[0] + ' a ' + chaves[chaves.length - 1].split('-')[0]) : 'sem série';
+  campo('tituloDesfecho', molde('titulo', {desfecho: d.rotulo,
+    territorio: uf === 'BR' ? 'Brasil' : NOME_UF[uf], periodo: anos}));
+  campo('legendaDesfecho', molde('legenda', {unidade: d.unidade,
+    cadencia: d.periodo === 'semana' ? 'semana' : 'mês',
+    parciais: (d.parcial || []).length
+      ? 'últimos ' + (d.parcial || []).length + ' períodos ainda em registro'
+      : 'série fechada até o último período'}));
+  MonitorMapas.padraoGraficos(window.Chart);
+  if (__graficoDesfecho.g && typeof __graficoDesfecho.g.destroy === 'function') __graficoDesfecho.g.destroy();
+  __graficoDesfecho.g = new Chart(cv, {data: {labels: rotulos, datasets: [
+      {type: 'line', label: 'valor observado', data: chaves.map(ch => serie[ch] ?? null),
+       borderColor: MonitorMapas.cor('vazio'), borderWidth: 1.5, pointRadius: 0, order: 1},
+      /* A faixa é uma FAIXA, não duas linhas: o traço de cima preenche até o de baixo, como a
+         legenda aprovada diz ("faixa cinza") e como a linha dentro do cartão já desenha. */
+      {type: 'line', label: 'faixa habitual para a época', fill: '+1',
+       data: chaves.map(ch => doAno(ch).p90 ?? null), borderColor: MonitorMapas.PALETA.serie_habitual.faixa,
+       backgroundColor: MonitorMapas.PALETA.serie_habitual.faixa_fundo, borderWidth: 1, pointRadius: 0, order: 2},
+      {type: 'line', label: 'faixa habitual para a época',
+       data: chaves.map(ch => doAno(ch).mediana ?? null), borderColor: MonitorMapas.PALETA.serie_habitual.faixa,
+       borderWidth: 1, pointRadius: 0, order: 2}]},
+    options: {animation: false, responsive: true, maintainAspectRatio: false,
+      plugins: {legend: {display: false},
+        tooltip: {callbacks: {title: it => periodoEmPalavras(chaves[it[0].dataIndex], d.periodo)}}},
+      scales: {x: {ticks: {maxTicksLimit: 8, autoSkip: true}},
+               y: {beginAtZero: true, title: {display: true, text: d.unidade + ' por 100 mil'}}}}});
+  MonitorMapas.legenda('legDesfecho', [
+    {cor: MonitorMapas.cor('vazio'), rotulo: 'valor observado'},
+    {cor: MonitorMapas.PALETA.serie_habitual.faixa, rotulo: 'faixa habitual para a época (2019–2025)'}]);
+  fonteFigura('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
 }
 
 async function montarDesfechos() {
   const grade = document.getElementById('gradeDesfechos');
   if (!grade) return;
+  if (window.MonitorCatalogo && window.MonitorCatalogo.pronto) { try { await window.MonitorCatalogo.pronto; } catch (e) {} }
   const lidos = await Promise.all(DESFECHOS_DA_SECAO.map(id =>
     fetch('data/saude_desfechos/' + id + '.json').then(r => (r.ok ? r.json() : null)).catch(() => null)));
   DESFECHOS_LIDOS = lidos.filter(d => d && d.esquema === 1 && d.ultimo && d.por_100mil);
   const bloco = document.getElementById('desfechos');
-  if (!DESFECHOS_LIDOS.length) { if (bloco) bloco.hidden = true; return; }
+  if (!DESFECHOS_LIDOS.length) { if (bloco) bloco.hidden = true; pintarDetalhe(null); return; }
   if (bloco) bloco.hidden = false;
   const seletor = document.getElementById('ufDesfechos');
   if (seletor && !seletor.options.length) {
@@ -1239,5 +1326,7 @@ async function montarDesfechos() {
       + UFS.map(u => '<option value="' + u + '">' + esc(NOME_UF[u]) + '</option>').join('');
     seletor.addEventListener('change', pintarDesfechos);
   }
+  grade.addEventListener('click', escolherDesfecho);
+  grade.addEventListener('keydown', escolherDesfecho);
   pintarDesfechos();
 }

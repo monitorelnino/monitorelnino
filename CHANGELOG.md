@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #904 · O cartão de desfecho escolhido abre a série inteira
+
+Escolher um cartão da seção de desfechos da Saúde abre, abaixo da grade, a série inteira do território sobre a faixa habitual para a época, com título, legenda, fonte e data lidos do arquivo. Um detalhe por vez: escolher outro troca o conteúdo e a página não cresce. O seletor de território vale para a grade e para a série.
+
 ## 2026-10-19 · #905 · Malária fora da Amazônia na forma comum dos desfechos
 
 Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.
