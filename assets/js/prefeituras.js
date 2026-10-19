@@ -3,8 +3,8 @@
  * arquivos de origem já guardam: listas federais (enquadramento_card), risco previsto do boletim
  * (sinais_risco), transferências da União e do FNS e a despesa própria na rubrica de defesa civil.
  * Nada é recalculado nem classificado aqui; ausência é a frase da classe, nunca zero nem vazio.
- * O plano do município fica na ficha do estado da inicial até a classificação dela estar no módulo
- * comum (pedido à B1 em 17/10). */
+ * O plano do município sai de `municipios_card.json` pela classificação comum
+ * (`ConsultaMunicipio.situacaoDoPlano`, a mesma da inicial). */
 function _erroGest(onde) { return function (e) { try { console.error('[MARÉ] falha em ' + onde + ':', e); } catch (_) {} }; }
 window.addEventListener('load', function(){
   if (window.VLibras && window.VLibras.Widget){
@@ -22,6 +22,7 @@ window.addEventListener('load', function(){
   const NOMES = {estiagem: 'seca', incendios: 'fogo', chuvas: 'chuva forte', calor: 'calor'};
 
   const REF = json('data/municipios_ibge_referencia.json'), ENQ = json('data/enquadramento_card.json');
+  const CARD = json('data/municipios_card.json'), META = json('data/meta.json');
   let financeiro = null;   // só na primeira consulta: são os arquivos grandes da página de Financiamento
   const carregarFinanceiro = () => financeiro = financeiro || Promise.all([
     json('data/financiamento/municipios/transferencias_uniao.json'),
@@ -47,7 +48,17 @@ window.addEventListener('load', function(){
     + '<p class="cartao-numero-rotulo">' + esc(rotulo) + '</p><p>' + valor + '</p>'
     + (nota ? '<p class="note u-mb-0">' + nota + '</p>' : '') + '</div>';
 
-  function mostrar(uf, nome, card, ref, enq, sinais, fin) {
+  /* Três valores, como no handover: localizado (com o ato e o documento), não localizado até o corte
+     (verificado, sem documento de plano) e ainda não verificado. */
+  function cartaoPlano(sp, corte) {
+    if (sp.estado === 'encontrado' || sp.estado === 'estadual')
+      return cartao('argila', tx('plano.rotulo'), esc(tx('plano.localizado', {ato: sp.documento || sp.fonte || '', data: sp.data || ''}).replace(/,\s*$/, '')),
+        sp.url ? '<a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>' : '');
+    if (sp.estado === 'nao_verificado') return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_verificado')), esc(tx('plano.nao_verificado_nota')));
+    return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_localizado', {corte: corte || tx('sem_coleta')})), tx('plano.nao_localizado_nota'));
+  }
+
+  function mostrar(uf, nome, card, ref, enq, sinais, fin, plano, corte) {
     const reg = (ref || []).find(x => x.uf === uf && x.nome === nome) || {}, cod = String(reg.codigo_ibge || '');
     const marcas = ((enq || {}).municipios || {})[cod] || {};
     const risco = ((sinais || {}).uf || {})[uf] || {}, rp = risco.risco_projetado || {};
@@ -70,7 +81,7 @@ window.addEventListener('load', function(){
         ano: String((D || {}).exercicio || ''), classe: esc(classe)});
     }
     card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras">'
-      + cartao('argila', tx('plano.rotulo'), '<a href="index.html#' + esc(uf) + '">' + esc(tx('plano.ficha')) + '</a>', tx('plano.enviar'))
+      + cartaoPlano(ConsultaMunicipio.situacaoDoPlano((((plano || {}).municipios) || {})[cod]), corte)
       + cartao('neutro', tx('cadastro.rotulo'), esc(tx(marcas.ch || marcas.geo ? 'cadastro.indicado' : 'cadastro.fora')), tx('cadastro.nota'))
       + cartao('musgo', tx('risco.rotulo'), esc(familias.length ? tx('risco.valor', {familias: familias.join(', ').replace(/^./, c => c.toUpperCase())}) : tx('risco.sem_sinal')),
           doc ? tx('risco.nota', {data_boletim: esc(doc.split(/\s+[—-]\s+/).pop())}) : '')
@@ -87,9 +98,10 @@ window.addEventListener('load', function(){
       estados: NOME_UF, semLista: tx('sem_lista'),
       municipios: uf => (porUF[uf] || []).slice().sort((a, b) => a.localeCompare(b)),
       mostrar: (uf, nome, card) => {
-        Promise.all([REF, ENQ, SINAIS]).then(([r, e, s]) => {
-          mostrar(uf, nome, card, r, e, s, null);
-          return carregarFinanceiro().then(fin => { if (card.querySelector('h4') && card.querySelector('h4').textContent.startsWith(nome + ' · ')) mostrar(uf, nome, card, r, e, s, fin); });
+        Promise.all([REF, ENQ, SINAIS, CARD, META]).then(([r, e, s, p, m]) => {
+          const corte = (m || {}).corte || '';
+          mostrar(uf, nome, card, r, e, s, null, p, corte);
+          return carregarFinanceiro().then(fin => { if (card.querySelector('h4') && card.querySelector('h4').textContent.startsWith(nome + ' · ')) mostrar(uf, nome, card, r, e, s, fin, p, corte); });
         }).catch(_erroGest('gestores:cartao'));
       }});
   }).catch(_erroGest('gestores:consulta'));
