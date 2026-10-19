@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #886 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota
+
+Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida.
+=======
 ## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
 
 A aba de calor dizia "consultado em 01/10/2026", data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.
