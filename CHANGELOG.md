@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #894 · Diário oficial do RJ: PDF assinado deixa de sair sem texto
 
 A edição do RJ traz a assinatura depois do fim do PDF, e o leitor a descartava como se fosse imagem: 42 páginas lidas como zero. O coletor passa a ler o PDF até o fim marcado e a decodificar os nomes de glifo da fonte (`/U0044`), e as edições do RJ voltam a casar com os termos de declaração. Código: `coletar_edicoes_doe.py` +17 (correção na leitura, com autoteste).
+## 2026-10-19 · #901 · Dengue, chikungunya e SRAG na forma comum dos desfechos
+
+`desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.
+
 ## 2026-10-19 · #900 · A Saúde ganha a seção única de desfechos
 
 A seção "O que os órgãos de saúde registram" passa a abrir com um cartão por desfecho, todos lidos da mesma forma de arquivo: último valor por 100 mil, faixa habitual para a época, a série recente em linha e a fonte com a data. Um seletor escolhe Brasil ou estado. Desfecho sem arquivo não vira cartão vazio. Estreia com diarreias e leptospirose; os demais entram quando a série nascer.

@@ -147,7 +147,7 @@ def gerar():
            "prioritarios": sum(1 for c in cards.values() if c.get("prioritario")),
            "com_despesa_182": sum(1 for c in cards.values() if c.get("defesa_civil_orcamento")),
            "municipios": cards}
-    gravar("municipios_card.json", out)
+    gravar("municipios_card.json", out, compacto=True)   # a página o carrega inteiro (§221)
     return out
 
 
