@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-19 · #893 · Diário oficial do RJ: PDF assinado deixa de sair sem texto
+## 2026-10-19 · #894 · Diário oficial do RJ: PDF assinado deixa de sair sem texto
 
 A edição do RJ traz a assinatura depois do fim do PDF, e o leitor a descartava como se fosse imagem: 42 páginas lidas como zero. O coletor passa a ler o PDF até o fim marcado e a decodificar os nomes de glifo da fonte (`/U0044`), e as edições do RJ voltam a casar com os termos de declaração. Código: `coletar_edicoes_doe.py` +17 (correção na leitura, com autoteste).
 
