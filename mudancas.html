@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>19/10/2026 · Diário oficial do RS lido por data</dt>
+      <dd>O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>19/10/2026 · Monitor de riscos: o foco aparece no mapa, a série ganha eixos e a cor separa as famílias</dt>
       <dd>O ponto do foco sobe de 0,9 para 1,8–7 px e a hachura da previsão recua: num dia de 222 focos o mapa mostrava o país hachurado e quase nenhum foco. A legenda nomeia a contagem de cada degrau e omite o que não existe no dia. A série de 30 dias ganha eixos. O contorno de estado tem uma espessura só, para todos os mapas. A lista de desmatamento e fogo sai do azul da chuva para o âmbar.</dd>
       <dt>19/10/2026 · MUNIC 2020: bloco de risco inteiro como fonte futura</dt>
@@ -165,8 +167,6 @@
       <dd>Nova seção ao fim da página: estado e município, com os mesmos controles da inicial, e uma tabela com risco previsto e seca do estado, focos de 30 dias, ar e temperatura da estação ou capital mais próxima, avisos, alerta do Cemaden, emergência desde 29/06 e o link para o plano na ficha do estado. Cada linha com fonte e data; o arquivo do estado carrega só quando escolhido. HANDOVER_MONITOR_DE_RISCOS §5.</dd>
       <dt>16/10/2026 · Monitor de riscos: chuva forte em tabelas; saem as listas dos mapas</dt>
       <dd>O bloco &quot;Chuva forte&quot; troca o mapa de avisos por estado por duas tabelas: avisos do INMET por grau, com municípios cobertos, estados e fenômeno, e alertas do Cemaden por nível, com os municípios nomeados. Saem &quot;Ver estados&quot;, &quot;Ver em lista&quot; e &quot;Como ler&quot; e o código morto que os montava. Open-Meteo e lista do OpenAQ passam a apoio técnico no catálogo (conserta a main do #802). HANDOVER_MONITOR_DE_RISCOS §4 e §7.</dd>
-      <dt>16/10/2026 · Monitor de riscos: seca em manchas, ar medido e cartão do ar</dt>
-      <dd>A seca observada passa a ser as manchas do mapa mensal do Monitor de Secas, com contorno dos estados e hachura onde o boletim prevê seca. O mapa do ar mostra o IQAr das estações oficiais por cidade (cores oficiais) e os sensores IPAM/RedeAr; sai o índice europeu e a camada municipal morta. Cartão &quot;Ar&quot; só com cidade em IQAr Ruim ou pior.</dd>
     </dl>
   </section>
 </main>
