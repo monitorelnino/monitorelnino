@@ -453,7 +453,10 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
      ele exige os 27 estados desenhados, e estava certo em exigir. */
   // Hachura = estado com fogo previsto pelo boletim (único significado da hachura no site).
   const previstoFogo = uf => componentesDe(uf).includes('incendios');
-  const HACHURA_FOGO = MonitorMapas.hachura('mapaFogo', ATM.fogo.uf, ATM.fogo.contorno);
+  /* A hachura continua querendo dizer só "fogo previsto pelo boletim", mas deixa de competir com
+     o dado: o traço passa do contorno claro para o próprio tom da UF um degrau acima, de modo que
+     ela se lê de perto e o foco é o que salta. */
+  const HACHURA_FOGO = MonitorMapas.hachura('mapaFogo', ATM.fogo.uf, ATM.fogo.contorno, .45);
   desenharMapa('mapaFogo', 'legFogo', uf => previstoFogo(uf) ? HACHURA_FOGO : ATM.fogo.uf,
     uf => { const f = fogo(uf); const n = f ? f.focos_24h : null; const [d, o] = fonteLinha('inpe_fogo');
             return MonitorMapas.dica({semTitulo: true, linhas: [n == null
@@ -465,7 +468,11 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   /* Raiz quadrada: a área do círculo fica proporcional à contagem, que é como o olho compara
      círculo. Teto de 4,2 px para a célula mais cheia — acima disso as manchas do arco do
      desmatamento viram um borrão só. */
-  const raio = d3.scaleSqrt().domain([1, maxCel]).range([0.9, 4.2]).clamp(true);
+  /* 19/10/2026 (editoria, item 8): a escala não mostrava o que existe — com 0,9 px o foco isolado
+     sumia debaixo da hachura, e o mapa parecia vazio num dia de 222 focos. A faixa sobe para
+     1,8–7 px, mantendo a área proporcional à contagem (raiz quadrada), e os limiares da legenda
+     passam a dizer quantos focos cada degrau representa. */
+  const raio = d3.scaleSqrt().domain([1, maxCel]).range([1.8, 7]).clamp(true);
   /* 30/09/2026 (item 8, escolha A da editoria): fundo noturno e brasa. A cor do ponto sobe na
      rampa com a contagem da célula, e a célula com 30 focos ou mais recebe o núcleo claro — é o
      degrau que a legenda aprovada nomeia. A mescla `screen` faz células vizinhas somarem luz em
@@ -485,12 +492,15 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   d3.select('#mapaFogo').select('g.focos').attr('style', 'mix-blend-mode: screen');
   d3.select('#mapaFogo').selectAll('g.focos circle').attr('stroke', 'none');
   // Os três degraus da marca, que são as categorias do mapa e os rótulos aprovados do R8.
+  /* Os degraus dizem a contagem que representam, e só aparecem se existirem no dia: com o máximo
+     da série abaixo do limiar do núcleo, nomear a classe do núcleo seria descrever o que o mapa
+     não mostra. */
   MonitorMapas.legenda('legFogo', [
-    {cor: ATM.fogo.rampa[0], rotulo: 'Poucos focos'},
-    {cor: ATM.fogo.rampa[2], rotulo: 'Muitos focos'},
-    {cor: ATM.fogo.nucleo, rotulo: 'Área com ' + NUCLEO_A_PARTIR_DE + ' focos ou mais'},
-    {cor: ATM.fogo.contorno, fundo: ATM.fogo.uf, rotulo: 'Fogo previsto pelo boletim', hachura: true},
-  ]);
+    {cor: ATM.fogo.rampa[0], rotulo: '1 foco na área'},
+    {cor: ATM.fogo.rampa[2], rotulo: MonitorMapas.numBR(maxCel) + (maxCel === 1 ? ' foco' : ' focos') + ' na área'},
+  ].concat(maxCel >= NUCLEO_A_PARTIR_DE
+      ? [{cor: ATM.fogo.nucleo, rotulo: 'Área com ' + NUCLEO_A_PARTIR_DE + ' focos ou mais'}] : [])
+   .concat([{cor: ATM.fogo.contorno, fundo: ATM.fogo.uf, rotulo: 'Fogo previsto pelo boletim', hachura: true}]));
 })();
 /* 16/10/2026 (HANDOVER_MONITOR_DE_RISCOS §3.6): ao lado do mapa, os números do satélite de
    referência — dia, mesma data do ano anterior, mês, estados — a série de 30 dias e as tabelas por
@@ -522,19 +532,32 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   dl.innerHTML = itens.map(([k, v, a]) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd>'
     + (a ? '<dd class="lado-var">' + esc(a) + '</dd>' : '') + '</div>').join('');
 
-  // Série de 30 dias: linha simples, sem eixo Y numerado, datas nas pontas.
+  /* Série de 30 dias (19/10/2026, editoria, item 11): a linha ganha os dois eixos rotulados. Eixo y
+     em focos, com zero e topo arredondado para cima na dezena/centena da própria série, e uma linha
+     de grade em cada marca; eixo x em datas, uma a cada cinco dias. Unidade declarada no rótulo da
+     figura, acima. Tamanho aprovado: o que muda é o que se lê, não o quanto ocupa. */
   const pd = (R.ultimos_30_dias || {}).por_dia || [];
   const alvo = document.getElementById('fogoSerie');
   if (alvo && pd.length > 1) {
-    const W = 480, H = 72, max = Math.max(...pd.map(p => p[1])) || 1;
-    const x = i => 4 + i * (W - 8) / (pd.length - 1), y = v => H - 18 - v / max * (H - 26);
+    const W = 480, H = 108, L = 40, B = 20, T = 8, bruto = Math.max(...pd.map(p => p[1])) || 1;
+    const passo = Math.pow(10, Math.floor(Math.log10(bruto))) / 2;
+    const max = Math.ceil(bruto / passo) * passo;
+    const x = i => L + i * (W - L - 6) / (pd.length - 1), y = v => H - B - v / max * (H - B - T);
+    const marcas = [0, max / 2, max];
+    const grade = marcas.map(v => '<line class="grade" x1="' + L + '" x2="' + (W - 6)
+      + '" y1="' + y(v).toFixed(1) + '" y2="' + y(v).toFixed(1) + '"/>'
+      + '<text class="tk" x="' + (L - 6) + '" y="' + (y(v) + 4).toFixed(1) + '" text-anchor="end">' + esc(fmt(v)) + '</text>').join('');
+    const diasX = pd.map((p, i) => [p, i]).filter(([, i]) => i % 5 === 0 || i === pd.length - 1)
+      .map(([p, i]) => '<text class="tk" x="' + x(i).toFixed(1) + '" y="' + (H - 4)
+        + '" text-anchor="' + (i === 0 ? 'start' : i === pd.length - 1 ? 'end' : 'middle') + '">'
+        + esc(dBR(p[0]).slice(0, 5)) + '</text>').join('');
     const pts = pd.map((p, i) => x(i).toFixed(1) + ',' + y(p[1]).toFixed(1)).join(' ');
     alvo.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Focos por dia de '
-      + esc(dBR(pd[0][0])) + ' a ' + esc(dBR(pd[pd.length - 1][0])) + '"><polyline class="serie-linha" points="' + pts + '"/>'
+      + esc(dBR(pd[0][0])) + ' a ' + esc(dBR(pd[pd.length - 1][0])) + ', de 0 a ' + esc(fmt(max)) + ' focos">'
+      + grade + '<polyline class="serie-linha" points="' + pts + '"/>'
       + pd.map((p, i) => '<circle class="serie-alvo" r="5" cx="' + x(i).toFixed(1) + '" cy="' + y(p[1]).toFixed(1)
         + '"><title>' + esc(dBR(p[0]) + ': ' + fmt(p[1]) + ' focos') + '</title></circle>').join('')
-      + '<text class="tk" x="4" y="' + (H - 2) + '">' + esc(dBR(pd[0][0]).slice(0, 5)) + '</text>'
-      + '<text class="tk" x="' + (W - 4) + '" y="' + (H - 2) + '" text-anchor="end">' + esc(dBR(pd[pd.length - 1][0]).slice(0, 5)) + '</text></svg>';
+      + diasX + '</svg>';
   }
 
   // Por estado: os seis com mais focos no dia (fato do dia), com dia anterior, mês e previsão.
@@ -625,8 +648,10 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
 (function listasFederais(){
   const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
   const fontes = (ENQ && ENQ.fontes) || {};
-  [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023'],
-   ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente']].forEach(([caixa, svg, leg, consta, chave, fonte]) => {
+  // 19/10/2026 (editoria, item 14): a cor separa as famílias — deslizamento e enchente no azul da
+  // chuva, desmatamento e fogo no âmbar do fogo. A sexta posição é a família de cor da contagem.
+  [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023', 'contagem'],
+   ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente', 'contagem_fogo']].forEach(([caixa, svg, leg, consta, chave, fonte, familia]) => {
     const f = fontes[chave] || {};
     if (!ENQ) {
       MonitorMapas.legenda(leg, [{cor: NEUTRA, rotulo: 'sem coleta até o corte'}]);
@@ -634,7 +659,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
     }
     const porUF = Object.fromEntries(UFS.map(uf => [uf, 0]));
     Object.entries(ENQ.municipios).forEach(([cod, v]) => { if (consta(v) && UF_DE[cod] in porUF) porUF[UF_DE[cod]] += 1; });
-    MonitorMapas.mapaDeContagem(__ctx(), svg, leg, porUF, 'município');
+    MonitorMapas.mapaDeContagem(__ctx(), svg, leg, porUF, 'município', null, familia);
     MonitorMapas.credito(caixa, {fontes: [fonte], url: f.url, data: MonitorMapas.dataBR(f.consultado_em)});
   });
 })();
