@@ -12,6 +12,13 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #884 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota
 
 Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida.
+=======
+## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
+
+A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
+
+## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
+`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
 ## 2026-10-19 · #879 · Defesa civil: o que lemos e o que o reconhecimento pressupõe
 
