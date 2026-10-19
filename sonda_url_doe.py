@@ -15,6 +15,9 @@ for url in sys.argv[1:]:
     except Exception as e:
         print(f"{type(e).__name__}: {str(e)[:200]}"); continue
     t = b.decode("utf-8", "replace")
+    import pathlib, hashlib
+    pasta = pathlib.Path("data/sonda_doe"); pasta.mkdir(parents=True, exist_ok=True)
+    (pasta / (hashlib.sha1(url.encode()).hexdigest()[:10] + ".txt")).write_text(url + "\n" + t[:3_000_000], encoding="utf-8")
     if ctx:
         for m in list(re.finditer(re.escape(ctx), t))[:6]:
             print("  ctx·", re.sub(r"\s+", " ", t[max(0, m.start() - 350):m.end() + 450]))
