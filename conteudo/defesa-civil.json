@@ -12,6 +12,7 @@
   "defesa-civil.dc-topo.topo_cemaden.apoio.molde": "nível mais alto: {nivel} · {ufs}",
   "defesa-civil.dc-topo.topo_decretaram_variacao.rotulo": "Municípios com decreto desde 29/06",
   "defesa-civil.dc-topo.topo_reconhecidos_variacao.rotulo": "Reconhecidos pela União",
+  "defesa-civil.dc-topo.topo_pendencia.rotulo": "Decreto há mais de 30 dias sem reconhecimento",
   "defesa-civil.dc-topo.topo_populacao_variacao.rotulo": "População nesses municípios",
   "defesa-civil.municipio.titulo_da_secao": "Como está o seu município",
   "defesa-civil.municipio.abertura.molde": "O cartão responde para qualquer um dos {n_municipios} municípios: aviso ou alerta em vigor, decreto desde 29 de junho e reconhecimento federal, com o documento e a data quando há, e a situação do estado.",
@@ -20,19 +21,11 @@
   "defesa-civil.municipio.reconhecimento.titulo": "Reconhecimento federal",
   "defesa-civil.municipio.lacuna.molde": "Não localizado até o corte ({corte})",
   "defesa-civil.municipio.recurso.linha": "Recursos federais para este município: <a href=\"financiamento.html#defesaCivil\">ver em Financiamento →</a>",
-  "defesa-civil.municipio.estado.molde": "<strong>{no_estado}:</strong> {n_dec} dos {n_mun} municípios decretaram emergência desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}. <a href=\"#boxEmergencias\">Ver a lista do estado →</a>",
+  "defesa-civil.municipio.estado.molde": "<strong>{no_estado}:</strong> {n_dec} dos {n_mun} municípios decretaram emergência desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}.",
   "defesa-civil.emergencias.titulo_da_secao": "Onde estão as emergências",
-  "defesa-civil.emergencias.abertura": "Cada ponto é um município com decreto de situação de emergência ou calamidade pública desde 29 de junho; a cor é o evento declarado no ato e o preenchimento diz se a União já reconheceu.",
   "defesa-civil.emergencias.mapa.titulo": "Municípios com decreto de emergência desde 29/06/2026, por evento declarado e etapa",
-  "defesa-civil.emergencias.mapa.legenda": "{n} municípios · evento declarado no ato · ponto cheio: reconhecido pela União · ponto vazado: só decreto · consulta de {data}",
-  "defesa-civil.emergencias.barras.titulo": "Decretos por tipo de evento declarado",
-  "defesa-civil.reconhecimento.titulo_da_secao": "Do decreto ao reconhecimento",
-  "defesa-civil.reconhecimento.etapas.titulo": "Do decreto ao reconhecimento, semana a semana",
-  "defesa-civil.reconhecimento.etapas.legenda": "Desde 29/06/2026 · nº acumulado de municípios por semana, em cada etapa",
-  "defesa-civil.reconhecimento.etapas.nota": "Os recursos autorizados depois do reconhecimento estão em <a href=\"financiamento.html#defesaCivil\">Financiamento</a>.",
-  "defesa-civil.reconhecimento.pendencia.titulo": "Onde a cadeia parou",
-  "defesa-civil.reconhecimento.pendencia.legenda": "Situação em {data} · nº de municípios",
-  "defesa-civil.reconhecimento.pendencia.rotulo": "Decreto há mais de 30 dias sem reconhecimento"
+  "defesa-civil.emergencias.mapa.legenda": "nº de municípios: {n} · evento declarado no ato · ponto cheio: reconhecido pela União · ponto vazado: só decreto · consulta de {data}",
+  "defesa-civil.emergencias.barras.titulo": "Decretos por tipo de evento declarado · nº de decretos"
  },
  "_nota": "A lista de eventos do 1º parágrafo da abertura é a que os decretos registram em 16/10/2026; se surgir tipo novo relevante, a central revê o texto (HANDOVER_DEFESA_CIVIL §1)."
 }
