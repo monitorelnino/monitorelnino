@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · A consulta do município diz o que foi feito, e cala o que não sabe
+
+O cartão do município na inicial passa a dizer antes a varredura registrada no livro de verificação e depois o que não foi localizado, numa frase só — a mesma do ladrilho da capital. Município cujo registro nomeia um documento fica com a frase de antes. E no Monitor de riscos, acima de 500 km da capital mais próxima, a temperatura máxima prevista declara lacuna em vez de valor.
+
 ## 2026-10-19 · #914 · O desfecho que falta na Saúde é dito em uma linha
 
 A seção de desfechos passa a declarar, abaixo da grade, qual dos seis desfechos em evidência ainda não tem série na forma comum. O nome vem do catálogo dos desfechos, não da página, e a linha some sozinha quando o arquivo nascer. Hoje ela diz: "Mortalidade geral entra quando a série estiver completa."

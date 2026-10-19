@@ -438,6 +438,19 @@ const CAT_ROTULO = {
   nao_el_nino: 'ato alheio aos riscos do ciclo', nao_localizado: 'não localizado',
   nao_verificado: 'ainda não verificada'
 };
+/* 19/10/2026 (editoria, §3.3 da auditoria da coleta municipal): "não localizamos" calava o que foi
+   feito. A frase passa a dizer as duas coisas, nesta ordem — a varredura do livro de verificação e
+   o que não se achou —, e é UMA só na inicial: o ladrilho da capital e o cartão do município liam o
+   mesmo registro e escreviam frases diferentes. Sem varredura no livro, fica a frase de não
+   verificado, sem data. O texto vem do catálogo; aqui só se decide quando ele se aplica. */
+const NIVEL_DA_VARREDURA = {estadual: 'estadual', nacional: 'nacional', municipal_completo: 'municipal'};
+function fraseDeVarredura(s, doLivro) {
+  const v = (s && s.varredura) || doLivro, C = window.MonitorCatalogo;
+  if (!v || !NIVEL_DA_VARREDURA[v.nivel] || !v.data || !C) return '';
+  return C.texto('index.municipio.varredura.molde',
+    {nivel: NIVEL_DA_VARREDURA[v.nivel], data: dataBR(v.data) || v.data}) || '';
+}
+
 function textoDaCapital(reg){
   if (!reg) return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
   const st = ConsultaMunicipio.situacaoDoPlano(reg).estado;
@@ -450,7 +463,9 @@ function textoDaCapital(reg){
   }
   if (reg.categoria === 'plano_elaboracao') return 'Plano de contingência em elaboração; o documento final não foi localizado até o corte.';
   if (reg.categoria === 'estrutura') return 'Estrutura de coordenação localizada; não é plano de contingência para os riscos deste ciclo.';
-  if (reg.categoria === 'nao_localizado') return 'Não localizamos plano de contingência para esta capital até a data de corte.';
+  if (reg.categoria === 'nao_localizado')
+    return fraseDeVarredura(ConsultaMunicipio.situacaoDoPlano(reg))
+      || 'Não localizamos plano de contingência para esta capital até a data de corte.';
   return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
 }
 function rotuloDaCapital(reg){
@@ -780,6 +795,27 @@ function temData(v){
 function dataCompleta(v){
   return /^\d{2}\/\d{2}\/\d{4}$/.test(String(dataBR(v) || '').trim());
 }
+/* O LIVRO DE VERIFICAÇÃO, só para a frase da varredura (editoria, §3.3 de 19/10/2026).
+   `data/municipios.json`, que esta página lê, traz os 279 municípios COM registro; quem varreu os
+   5.571 é `municipios_card.json`, o mesmo arquivo que Prefeituras usa — e é dele que sai o que foi
+   feito em cada cidade. Ele entra DEPOIS do carregamento da página, sem bloquear nada, e quando
+   chega repinta o cartão que estiver aberto. Sem ele, a frase é a de antes: nada quebra. */
+let VARREDURA = null, __repintarMeuCard = null, __pedindoLivro = false;
+function carregarLivroDeVarredura(){
+  if (VARREDURA || __pedindoLivro) return;
+  __pedindoLivro = true;
+  fetch('data/municipios_card.json').then(r => (r.ok ? r.json() : null)).then(d => {
+    VARREDURA = (d && d.municipios) || null;
+    if (VARREDURA && __repintarMeuCard) __repintarMeuCard();
+  }).catch(e => console.error('[MARÉ] livro de verificação não carregou (a frase da varredura fica com a de antes):', e));
+}
+/* A varredura do município, pelo código do IBGE. */
+function varreduraDe(uf, nome){
+  const cod = MUN_COD[uf + '|' + nome];
+  const reg = VARREDURA && cod ? VARREDURA[String(cod)] : null;
+  return (reg && reg.varredura) || null;
+}
+
 // O cartão do município da inicial. O nome chega já como a lista de referência do IBGE o escreve
 // (`ConsultaMunicipio`), e é por ele que se chega ao código.
 function renderMinha(uf, nome, card){
@@ -795,7 +831,10 @@ function renderMinha(uf, nome, card){
 
   let html = `<h4>${esc(nome)} · ${esc(uf)}</h4>`;
 
-  const status = ConsultaMunicipio.situacaoDoPlano(m).estado;
+  __repintarMeuCard = () => renderMinha(uf, nome, card);
+  carregarLivroDeVarredura();   // na primeira consulta, não na carga da página
+  const situacao = ConsultaMunicipio.situacaoDoPlano(m), status = situacao.estado;
+  const varrido = fraseDeVarredura(situacao, varreduraDe(uf, m ? m.nome : nome));
   if (status === 'encontrado' || status === 'estadual'){
     html += `<p class="fv"><strong>Plano de contingência localizado${status === 'estadual' ? ', no âmbito estadual' : ''}.</strong></p>`;
     /* DECISÃO DA EDITORIA, 03/10/2026: plano publicado em domínio oficial do ente conta no degrau
@@ -811,8 +850,10 @@ function renderMinha(uf, nome, card){
     html += `<p class="fv"><strong>Plano de contingência citado em fonte oficial (${q1}${d1}); documento não localizado até o corte.</strong></p>`;
   } else if (status === 'nao_localizado'){
     // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
-    // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou.
-    html += `<p class="fv"><strong>Não localizamos plano de contingência para este município até a data de corte.</strong></p>`;
+    // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou. E, desde
+    // 19/10, a frase diz antes o que foi feito, quando o livro registra a varredura.
+    html += `<p class="fv"><strong>${esc(varrido
+      || 'Não localizamos plano de contingência para este município até a data de corte.')}</strong></p>`;
   } else if (status === 'decreto'){
     /* 08/10/2026 (A4-07), texto aprovado na secao C do handover: 97 municipios com decreto de
        emergencia recebiam a frase do NAO VERIFICADO -- e o cartao escondia a unica informacao de
@@ -833,7 +874,12 @@ function renderMinha(uf, nome, card){
     // §6 (v2.2.4), trava de prova: município que ainda não passou pela bateria completa de fontes
     // — inclusive o que sequer tem registro no banco, que é a maioria dos 5.571 — NÃO pode receber
     // "não localizamos": isso afirmaria uma busca que não houve. O padrão é o que o dado sustenta.
-    html += `<p class="fv"><strong>Ainda não verificamos este município com todas as fontes.</strong> Isso não é uma afirmação sobre a existência do plano.</p>`;
+    /* A frase da varredura afirma que o plano NÃO foi localizado — então ela não vale para o
+       registro que nomeia um documento e ainda não foi verificado com todas as fontes: ali, dizer
+       "não localizado" seria falso. Esse caso fica com a frase de antes. */
+    html += (varrido && !(m && m.documento))
+      ? `<p class="fv"><strong>${esc(varrido)}</strong></p>`
+      : `<p class="fv"><strong>Ainda não verificamos este município com todas as fontes.</strong> Isso não é uma afirmação sobre a existência do plano.</p>`;
   }
 
   html += riscoBox(uf);
