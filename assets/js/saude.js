@@ -1147,7 +1147,7 @@ const __graficoDesfecho = {};
 /* "2026-08" → "agosto de 2026"; "2026-33" → a semana em datas (a palavra não chega ao leitor). */
 function periodoEmPalavras(chave, cadencia) {
   const [ano, parte] = String(chave || '').split('-');
-  if (cadencia === 'semana') return semanaEmDatas(Number(ano), chave, true) || '';
+  if (cadencia === 'semana') return semanaEmDatas(Number(ano), chave, false) || '';
   const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto',
                  'setembro', 'outubro', 'novembro', 'dezembro'];
   return (meses[Number(parte) - 1] || '') + ' de ' + ano;
@@ -1171,14 +1171,21 @@ function serieEmSvg(valores, faixas, rotulo, estado) {
     + ' role="img" aria-label="' + esc(rotulo) + '">'
     + (temFaixa ? '<polygon points="' + faixaCima + ' ' + faixaBaixo + '" fill="' + MonitorMapas.PALETA.serie_habitual.faixa + '" fill-opacity="0.28"></polygon>' : '')
     + '<polyline points="' + linha + '" fill="none" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1.5"></polyline>'
-    + (ultimo == null ? '' : '<circle cx="' + L + '" cy="' + y(ultimo) + '" r="3" fill="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro) + '"></circle>')
+    /* O último período fechado é marcado por um traço vertical, não por um ponto: a caixa é
+       esticada (`preserveAspectRatio="none"`) e um círculo sairia deformado. */
+    + (ultimo == null ? '' : '<line x1="' + (L - 1) + '" x2="' + (L - 1) + '" y1="' + (y(ultimo) - 4)
+       + '" y2="' + (y(ultimo) + 4) + '" stroke="' + (estado === 'acima' ? FAIXA_COR.acima : FAIXA_COR.dentro)
+       + '" stroke-width="2"></line>')
     + '</svg>';
 }
 
-/* Os períodos recentes do território, na ordem do calendário: 52 semanas ou 24 meses. */
+/* Os períodos recentes do território, na ordem do calendário: 52 semanas ou 24 meses, SEM os
+   períodos que o arquivo declara parciais. Eles ainda recebem registro, e desenhá-los faria a
+   linha do cartão cair no fim — ao lado de um valor que é o do último período fechado. */
 function recorteRecente(d, uf) {
+  const parciais = new Set(d.parcial || []);
   const serie = (d.por_100mil || {})[uf] || {};
-  const chaves = Object.keys(serie).sort();
+  const chaves = Object.keys(serie).sort().filter(ch => !parciais.has(ch));
   const quantos = d.periodo === 'semana' ? 52 : 24;
   return chaves.slice(-quantos);
 }
@@ -1200,10 +1207,16 @@ function cartaoDesfecho(d, uf) {
   const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
   const doAno = ch => faixas[String(ch).split('-')[1]] || null;
   const f = doAno(c.periodo);
-  const dentro = !f || f.p90 == null ? null : (c.por_100mil > f.p90 ? 'acima' : 'dentro');
+  /* Três posições, cada uma dita como é: acima do maior valor esperado, dentro da faixa, ou
+     abaixo do menor. Dizer "dentro" de um valor que está abaixo da faixa seria descrever errado
+     o que o leitor vê no gráfico. */
+  /* A comparação é feita nos MESMOS números que o leitor lê (uma casa decimal): comparar no valor
+     cheio escreve "abaixo da faixa habitual (0,2 a 0,2)" para um cartão que mostra 0,2. */
+  const uma = x => Number(Number(x).toFixed(1));
+  const dentro = !f || f.p90 == null ? null
+    : (uma(c.por_100mil) > uma(f.p90) ? 'acima' : (uma(c.por_100mil) < uma(f.mediana) ? 'abaixo' : 'dentro'));
   const texto = !dentro ? 'sem faixa habitual para a época'
-    : (dentro === 'acima' ? 'acima' : 'dentro') + ' da faixa habitual ('
-      + decBR(f.mediana) + ' a ' + decBR(f.p90) + ')';
+    : dentro + ' da faixa habitual (' + decBR(f.mediana) + ' a ' + decBR(f.p90) + ')';
   return '<div class="cartao-numero cartao-numero--saude" role="button" tabindex="0"'
     + ' data-desfecho="' + esc(d.desfecho) + '" aria-pressed="' + (d.desfecho === DESFECHO_ESCOLHIDO) + '">'
     + '<p class="cartao-numero-familia">' + esc(d.rotulo) + '</p>'
@@ -1253,7 +1266,15 @@ function pintarDetalhe(d, uf) {
   const chaves = Object.keys((d.por_100mil || {})[uf] || {}).sort();
   const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
   const doAno = ch => faixas[String(ch).split('-')[1]] || {};
-  const rotulos = chaves.map(ch => periodoEmPalavras(ch, d.periodo));
+  /* Eixo em meses, como manda a régua do site; o período inteiro, por extenso, fica no texto do
+     mouse — a série pode ter oito anos de semanas, e o rótulo por extenso não cabe no eixo. */
+  const MES3 = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  const noEixo = ch => {
+    if (d.periodo !== 'semana') return MES3[Number(ch.split('-')[1]) - 1] + '/' + ch.split('-')[0];
+    const por = periodoEmPalavras(ch, 'semana').match(/de (\w+) de (\d{4})$/);
+    return por ? por[1].slice(0, 3) + '/' + por[2] : ch;
+  };
+  const rotulos = chaves.map(noEixo);
   const C = window.MonitorCatalogo;
   const campo = (id, texto) => { const el = document.getElementById(id); if (el) el.textContent = texto; };
   const molde = (chave, vals) => (C && C.texto('saude.observado.registram.detalhe.' + chave, vals)) || '';
@@ -1279,7 +1300,8 @@ function pintarDetalhe(d, uf) {
        data: chaves.map(ch => doAno(ch).mediana ?? null), borderColor: MonitorMapas.PALETA.serie_habitual.faixa,
        borderWidth: 1, pointRadius: 0, order: 2}]},
     options: {animation: false, responsive: true, maintainAspectRatio: false,
-      plugins: {legend: {display: false}},
+      plugins: {legend: {display: false},
+        tooltip: {callbacks: {title: it => periodoEmPalavras(chaves[it[0].dataIndex], d.periodo)}}},
       scales: {x: {ticks: {maxTicksLimit: 8, autoSkip: true}},
                y: {beginAtZero: true, title: {display: true, text: d.unidade + ' por 100 mil'}}}}});
   MonitorMapas.legenda('legDesfecho', [
