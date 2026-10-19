@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-19 · #PR · O cartão escolhido na Saúde fica visível
+
+Na seção de desfechos, o cartão escolhido passa a trazer a borda em musgo, e o ponteiro do mouse diz que o cartão responde ao clique. A faixa do topo continua sendo a da família. O estado já ia a quem usa leitor de tela; agora também está na tela, e o título da figura abaixo da grade segue nomeando o desfecho escolhido.
+
 ## 2026-10-19 · #910 · O detalhe do desfecho ganha o mapa por estado
 
 A figura do desfecho escolhido passa a trazer, ao lado da série, o mapa do último período fechado por estado, pintado pelos cortes fixos que o próprio arquivo guarda — os quintis de 2019 a 2025, congelados na primeira gravação. A legenda diz os cortes em números, estado sem período fechado fica nomeado, e a lista por estado abre embaixo. Gráfico e mapa usam só período fechado.
