@@ -13,6 +13,14 @@ não pontuados permanecem na versão corrente.
 
 Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.
 
+## 2026-10-19 · #872 · Proteja-se: incêndio no texto público e a frase certa do alerta por SMS
+
+A página deixa de chamar o risco de "fogo": a abertura diz "chuvas fortes, incêndio, seca e calor" e a aba vira "Incêndio e fumaça", como o título da seção. Na emergência, "a Defesa Civil avisa sem cadastro" passa a "a Defesa Civil envia os alertas automaticamente", no catálogo, no texto de reserva e no contrato, que é quem a conformidade lê. Identificador, token e chave seguem fogo: são código.
+
+## 2026-10-19 · #865 · Consulta do município: decreto só do município e rede do Cemaden sem falso "fora"
+
+A linha de emergência passa a trazer só o ato do município, com a data dele e desde 29/06/2026; a portaria federal fica em `reconhecimento`. A lista do Cemaden casa por nome sem hífen, preposição e s/z; linha sem casamento deixa o município sem afirmação, nunca "fora da rede". Código: +65 −10, com autoteste.
+
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
