@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-19 · #PR · Consulta do município: o cartão diz quantos atos não couberam
 
 O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
+## 2026-10-19 · #875 · Cartões de emergência um degrau abaixo
+
+Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.
 
 ## 2026-10-19 · #874 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos
 
