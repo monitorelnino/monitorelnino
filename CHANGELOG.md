@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #923 · Seis portões do repositório viram um executor
+
+`verificar_repositorio.py` reúne marcadores de conflito, escrita portável, página arquivada, changelog curto, carimbo da rodada e scripts dos workflows; seis arquivos saem e o `pre-commit` chama o executor. Comandos de portão 80→76; linhas líquidas −425; 95 casos de autoteste e mutantes provados.
+
 ## 2026-10-20 · #921 · Três portões viram regras do executor de dado
 
 Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.
