@@ -2,40 +2,42 @@
  "data": "2026-10-20",
  "formato_versao": 1,
  "etapas": {
-  "juiz": {
-   "pistas_recebidas": 2996,
-   "com_documento": 144,
-   "promovidas": 0,
-   "recusa_sem_documento_primario": 2764,
-   "recusa_documento_inacessivel": 84,
-   "recusa_ente_nao_confirmado": 71,
-   "recusa_citacao_incompleta": 24,
-   "recusa_executivo_pendente": 8,
-   "recusa_autoridade_nao_confirmada": 21,
-   "recusa_noticia_institucional_nao_e_o_plano": 1,
-   "recusa_texto_nao_extraivel": 4,
-   "recusa_natureza_duvidosa": 15,
-   "recusa_familia_de_risco_nao_identificada": 1,
-   "recusa_resposta": 3
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 1620,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 81,
+   "consultas": 91,
+   "lacunas": 0,
+   "motor_sem_resposta": 10,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 748
   },
   "descobrir_planos": {
+   "achados_novos": 0,
    "alvos_consultados": 20,
    "alvos_verificados": 3,
-   "achados_novos": 0,
    "fila_acumulada": 42
   },
-  "busca_web": {
-   "consultas": 91,
-   "com_resultado_bruto": 81,
-   "motor_sem_resposta": 10,
-   "pistas": 748,
-   "coberto_sem_mencao": 0,
-   "nao_localizado_ate_o_momento": 0,
-   "lacunas": 0,
-   "brutos_plancon": 1620,
-   "brutos_periodo_ou_seca": 0,
-   "brutos_siglas_e_variantes": 0
+  "juiz": {
+   "com_documento": 232,
+   "pistas_recebidas": 3474,
+   "promovidas": 0,
+   "recusa_autoridade_nao_confirmada": 46,
+   "recusa_citacao_incompleta": 33,
+   "recusa_documento_inacessivel": 139,
+   "recusa_ente_nao_confirmado": 111,
+   "recusa_executivo_pendente": 8,
+   "recusa_familia_de_risco_nao_identificada": 1,
+   "recusa_minuta_ou_rascunho": 2,
+   "recusa_natureza_duvidosa": 20,
+   "recusa_noticia_institucional_nao_e_o_plano": 3,
+   "recusa_plano_sem_identificacao": 2,
+   "recusa_resposta": 6,
+   "recusa_sem_documento_primario": 3097,
+   "recusa_texto_nao_extraivel": 6
   }
  },
- "atualizado_em": "2026-10-20T06:44:52"
+ "atualizado_em": "2026-10-20T07:30:04"
 }
