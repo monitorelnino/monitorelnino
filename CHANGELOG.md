@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.
 
+## 2026-10-20 · #926 · Cliente identificado vira regra do executor do repositório
+
+`verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.
+
 ## 2026-10-20 · #925 · Paridade da cobertura QD e log de buscas viram regras do executor de dado
 
 `verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d'água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.

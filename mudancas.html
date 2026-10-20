@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>20/10/2026 · Consolidação dos coletores: um lugar só para o que se repetia</dt>
       <dd>A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.</dd>
+      <dt>20/10/2026 · Cliente identificado vira regra do executor do repositório</dt>
+      <dd>`verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.</dd>
       <dt>20/10/2026 · Paridade da cobertura QD e log de buscas viram regras do executor de dado</dt>
       <dd>`verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d&#x27;água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.</dd>
       <dt>20/10/2026 · Imprensa e âncoras viram regras do executor de dado</dt>
@@ -165,8 +167,6 @@
       <dd>A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; &quot;Como citar&quot; e &quot;Para redações&quot; viram &quot;Como citar e reproduzir&quot;; entram &quot;Quando o site é atualizado&quot;, &quot;Como os índices funcionam&quot;, glossário e erratas. Saem a grade de páginas e a sanfona.</dd>
       <dt>17/10/2026 · Para gestores: o cartão do plano diz a situação do município</dt>
       <dd>O cartão &quot;Plano para o El Niño 2026/2027&quot; da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.</dd>
-      <dt>19/10/2026 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos</dt>
-      <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
     </dl>
   </section>
 </main>
