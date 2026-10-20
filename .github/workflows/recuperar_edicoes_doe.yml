@@ -14,9 +14,11 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: sonda-doe
-      timeout_minutos: 20
+      timeout_minutos: 90
       comandos: |
         sonda_url_doe.py ${{ inputs.urls }}
+        prazo=25min coletar_edicoes_doe.py --uf DF --desde 2026-10-12
+        prazo=25min coletar_edicoes_doe.py --uf TO --desde 2026-10-12
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
