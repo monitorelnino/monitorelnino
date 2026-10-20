@@ -33,11 +33,11 @@
    "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias",
    "sem_coleta": false,
    "municipios_semana": 0,
-   "valor_ciclo": 178343650.33,
-   "municipios_ciclo": 60,
+   "valor_ciclo": 180108650.33,
+   "municipios_ciclo": 61,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 157443689.67,
+    "recuperacao": 159208689.67,
     "resposta": 7021172.66
    },
    "desde": "29/06/2026"
@@ -89,17 +89,17 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 178343650.33,
+   "valor": 180108650.33,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "60 municípios",
+   "detalhe": "61 municípios",
    "sem_coleta": false,
-   "municipios": 60,
+   "municipios": 61,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 157443689.67,
+    "recuperacao": 159208689.67,
     "resposta": 7021172.66
    }
   },
@@ -924,6 +924,19 @@
    "lat": -27.6139,
    "lon": -52.8437,
    "nome": "Três Palmeiras",
+   "uf": "RS"
+  },
+  {
+   "ibge": "4322608",
+   "origem": "defesa_civil",
+   "valor": 1765000.0,
+   "ato": "Portaria 3.555",
+   "data": "2026-10-16",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.555-de-16-de-outubro-de-2026-738858018",
+   "n_atos": 1,
+   "lat": -29.6143,
+   "lon": -52.1932,
+   "nome": "Venâncio Aires",
    "uf": "RS"
   },
   {

@@ -9,11 +9,11 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-12 a 2026-10-19 (1243 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-12 a 2026-10-19 (1250 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- consultar_querido_diario.py: erro em 2 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
+- consultar_querido_diario.py: erro em 3 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
 - descobrir_dominios.py: erro em 4 rodadas seguidas — interrompido pelo prazo do elo
 - julgar_filas.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
@@ -21,7 +21,7 @@ Janela: 2026-10-12 a 2026-10-19 (1243 execução(ões) registrada(s), 7 dias de 
 
 ## Cobertura em 15 dias
 
-cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: web 1148 · QD 527 · consorciado 1612 · DOE 2732
+cobertura 15d: 4820/5571 com verificação real até 2026-10-19 · por canal: web 1148 · QD 527 · consorciado 1634 · DOE 3586
 
 ## Última execução de cada script
 
@@ -29,7 +29,7 @@ cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-19 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-19 01:49 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-19 02:51 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-19 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -45,9 +45,9 @@ cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: we
 | `coletar_cobertura_qd.py` | coletor | 2026-10-18 03:56 | 6883 s | — | ok | — |
 | `coletar_dda.py` | coletor | 2026-10-19 01:29 | 54 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-10-19 01:21 | 475 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-10-18 01:45 | 2040 s | 38 | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-10-18 01:45 | 4 s | 0 | ok | — |
-| `coletar_doe.py` | coletor | 2026-10-18 02:19 | 1678 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-10-19 01:13 | 2356 s | 46 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-10-19 01:13 | 4 s | 0 | ok | — |
+| `coletar_doe.py` | coletor | 2026-10-19 01:52 | 1540 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-10-19 12:18 | 1322 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-17 01:56 | 124 s | — | ok | — |
 | `coletar_execucao_mps.py` | coletor | 2026-10-12 07:51 | 16 s | — | ok | — |
@@ -55,8 +55,8 @@ cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: we
 | `coletar_obitos_registro_civil.py` | coletor | 2026-10-19 01:35 | 44 s | — | ok | — |
 | `coletar_orientacoes_oficiais.py` | coletor | 2026-10-19 18:05 | 25 s | 6 | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-10-18 03:52 | 4 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-10-19 03:04 | 24 s | — | ok | — |
-| `coletar_s2id.py` | coletor | 2026-10-19 02:47 | 1017 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-10-19 02:35 | 25 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-10-19 02:18 | 1023 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-10-19 01:13 | 77 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-10-16 21:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-18 03:52 | 3 s | — | ok | — |
@@ -67,7 +67,7 @@ cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: we
 | `coletar_srag_sivep.py` | coletor | 2026-10-18 03:25 | 39 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-10-12 07:50 | 36 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-19 01:14 | 61 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-10-18 01:45 | 40 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
+| `consultar_querido_diario.py` | coletor | 2026-10-19 01:13 | 2 s | — | **erro** (3 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_dominios.py` | coletor | 2026-10-18 05:50 | 823 s | — | **erro** (4 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-19 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `detectar_marcos_federais.py` | coletor | 2026-10-19 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
