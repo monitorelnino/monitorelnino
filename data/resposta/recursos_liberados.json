@@ -1680,15 +1680,36 @@
     }
    ],
    "total_autorizado": 1019011.81
+  },
+  "4322608": {
+   "nome": "Venâncio Aires",
+   "uf": "RS",
+   "por_acao": {
+    "recuperacao": 1765000.0
+   },
+   "atos": [
+    {
+     "municipio": "Venâncio Aires",
+     "uf": "RS",
+     "portaria": "3.555",
+     "data": "2026-10-16",
+     "acao": "recuperacao",
+     "acao_no_ato": "Recuperação",
+     "valor_autorizado": 1765000.0,
+     "processo_sei": "59053.018311/2024-38",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.555-de-16-de-outubro-de-2026-738858018"
+    }
+   ],
+   "total_autorizado": 1765000.0
   }
  },
  "nao_casados": {
   "BA|Cacequi": 9226995.1
  },
  "janela_lida": {
-  "desde": "2026-10-11",
+  "desde": "2026-10-12",
   "ate": "2026-10-19",
-  "atos_na_busca": 15,
+  "atos_na_busca": 16,
   "janelas_incompletas": []
  },
  "recusas": {
@@ -1698,14 +1719,14 @@
   "sem_valor_declarado": 6,
   "ato_nao_lido": 0
  },
- "atos_novos_nesta_rodada": 0,
+ "atos_novos_nesta_rodada": 1,
  "atualizado_em": "19/10/2026",
  "total_por_acao": {
-  "recuperacao": 195170384.52,
+  "recuperacao": 196935384.52,
   "resposta": 7021172.66,
   "outra": 13878788.0
  },
- "municipios_com_ato": 71,
+ "municipios_com_ato": 72,
  "_governanca": "Recursos federais de defesa civil AUTORIZADOS por município, lidos das portarias da Secretaria Nacional de Proteção e Defesa Civil no DOU (consulta \"Autoriza a transferência de recursos\"). `valor_autorizado` é o que a portaria autoriza transferir — a saída do dinheiro é outro fato, e quem o registra é o Portal da Transparência: a página diz 'liberado', nunca 'pago'. As ações de RESPOSTA e de RECUPERAÇÃO ficam separadas em `por_acao`, com o rótulo que o próprio ato usou, porque somá-las num cartão de resposta inflaria o número com dinheiro de outra finalidade. Ato sem valor declarado não vira zero: entra em `recusas.sem_valor_declarado`. Município que não casa com a referência do IBGE entra em `nao_casados`, com o nome como o ato o escreveu. Derivado de coletar_recursos_resposta.py — não se edita à mão.",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a)."
 }

@@ -11187,7 +11187,61 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-20T01:13:25",
+   "duracao_s": 1.6,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_diarios_municipais.py",
+   "inicio": "2026-10-20T01:13:26",
+   "duracao_s": 3.6,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_diarios_consorciados.py",
+   "inicio": "2026-10-20T01:13:29",
+   "duracao_s": 2356.3,
+   "itens": 46,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_doe.py",
+   "inicio": "2026-10-20T01:52:45",
+   "duracao_s": 1540.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_s2id.py",
+   "inicio": "2026-10-20T02:18:25",
+   "duracao_s": 1023.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-19",
+   "script": "coletar_recursos_resposta.py",
+   "inicio": "2026-10-20T02:35:28",
+   "duracao_s": 24.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-20T01:49:47"
+ "atualizado_em": "2026-10-20T02:35:28"
 }
