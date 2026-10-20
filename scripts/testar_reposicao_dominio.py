@@ -5,7 +5,7 @@ Criado em 20/09/2026 (§120), quando o domínio passou sete horas servindo a cor
 no lugar do site completo. Desde 14/10/2026 (decisão 2 da editoria) a rodada semanal não publica
 cortina nem repõe o domínio: ela é um elo como os outros, e quem repõe é o publicador
 (`publicar_dados.yml`, por `workflow_run` depois do commit). Este portão cobra do publicador:
-o passo de reposição existe, lê a declaração em vez de fixar um modo, e tira a credencial de segredo.
+o passo de reposição existe e chama o script único, que lê a declaração em vez de fixar um modo e tira a credencial de segredo.
 
 `data/publicacao.json` declara qual estado o domínio deve ter (`dominio`):
   "cortina" · "senha" (site completo atrás de Basic-Auth, noindex) · "aberto" (lançamento)
@@ -47,14 +47,17 @@ def main() -> int:
     else:
         fim = wf.find("\n      - name:", i_repor)
         trecho = wf[i_repor:fim if fim != -1 else len(wf)]
-        if "data/publicacao.json" not in trecho:
-            falhas.append("o passo de reposição não lê data/publicacao.json — o modo do domínio "
-                          "ficaria codificado no workflow em vez de declarado pela editoria")
+        if "scripts/repor_dominio.sh" not in trecho:
+            falhas.append("o passo de reposição não chama scripts/repor_dominio.sh — o deploy do domínio é UM só")
         if "PREVIA_BASIC_AUTH" not in trecho:
-            falhas.append("o passo de reposição não usa o segredo PREVIA_BASIC_AUTH")
-        if re.search(r"Basic-Auth:\s*[A-Za-z0-9]", trecho):
-            falhas.append("credencial literal de Basic-Auth no workflow — ela precisa vir "
-                          "do segredo, o repositório é público")
+            falhas.append("o passo de reposição não repassa o segredo PREVIA_BASIC_AUTH")
+    sh = (RAIZ / "scripts" / "repor_dominio.sh").read_text(encoding="utf-8")
+    if "data/publicacao.json" not in sh:
+        falhas.append("repor_dominio.sh não lê data/publicacao.json — o modo do domínio ficaria "
+                      "codificado em vez de declarado pela editoria")
+    if re.search(r"Basic-Auth:\s*[A-Za-z0-9]", sh):
+        falhas.append("credencial literal de Basic-Auth em repor_dominio.sh — ela precisa vir "
+                      "do segredo, o repositório é público")
     if falhas:
         for f in falhas:
             print(f"✗ {f}")

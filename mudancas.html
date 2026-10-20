@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/10/2026 · Um só deploy para o domínio</dt>
+      <dd>O deploy de produção no domínio estava escrito três vezes: no publicador, na reposição urgente e no ensaio por botão. Agora é `scripts/repor_dominio.sh`, e o ensaio por botão sai, porque o domínio acompanha a `main` desde o #919. Quando e em que modo o domínio é reposto não muda; a reversão para a cortina segue pelo ramo `publico`. Saldo de código: −121 linhas.</dd>
       <dt>20/10/2026 · Consolidação dos coletores: um lugar só para o que se repetia</dt>
       <dd>A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.</dd>
       <dt>20/10/2026 · Negativos de painel, saúde e financiamento passam a rodar na CI</dt>
@@ -165,8 +167,6 @@
       <dd>Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.</dd>
       <dt>19/10/2026 · Proteja-se: a consulta do município responde pelo seu lugar</dt>
       <dd>Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. &quot;Leve com você&quot; vai para o fim.</dd>
-      <dt>19/10/2026 · Imprensa: a semana em seis números, e o que recomendamos concluir</dt>
-      <dd>A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; &quot;Como citar&quot; e &quot;Para redações&quot; viram &quot;Como citar e reproduzir&quot;; entram &quot;Quando o site é atualizado&quot;, &quot;Como os índices funcionam&quot;, glossário e erratas. Saem a grade de páginas e a sanfona.</dd>
     </dl>
   </section>
 </main>

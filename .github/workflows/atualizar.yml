@@ -52,32 +52,7 @@ jobs:
           PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
-          MODO=$(python3 -c "import json;print(json.load(open('data/publicacao.json')).get('dominio',''))" 2>/dev/null || echo "")
-          echo "modo declarado em data/publicacao.json: '${MODO}'"
-          if [ "$MODO" != "senha" ]; then
-            echo "::error::Domínio não está declarado como 'senha' em data/publicacao.json — abortando para não reforçar um estado que a editoria não pediu."; exit 1
-          fi
-          if [ -z "$PREVIA_BASIC_AUTH" ] || [ -z "$NETLIFY_AUTH_TOKEN" ]; then
-            echo "::error::Segredo ausente (PREVIA_BASIC_AUTH ou NETLIFY_AUTH_TOKEN) — não é possível repor."; exit 1
-          fi
-          set +e
-          {
-            echo "passo=repor_dominio_manual commit=${GITHUB_SHA::7} execucao=$(date -u +%Y-%m-%dT%H:%M:%SZ) modo=${MODO}"
-            printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
-            printf 'User-agent: *\nDisallow: /\n' > robots.txt
-            npx --yes netlify-cli@17 deploy --prod --dir=. --message "Reposição URGENTE do site no domínio (pedido editorial 21/09) — commit ${GITHUB_SHA::7}" > /tmp/repor_out.txt 2>&1
-            echo "codigo_saida=$?"
-            rm -f _headers; git checkout -- robots.txt 2>/dev/null
-            grep -vE "npm warn" /tmp/repor_out.txt | grep -E "Error|error|422|Deploy is live|Website URL" | head -c 1200
-          } > /tmp/repor_relatorio.txt 2>&1
-          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/repor_relatorio.txt
-          [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/repor_relatorio.txt
-          cat /tmp/repor_relatorio.txt
-          if grep -q "Deploy is live" /tmp/repor_relatorio.txt; then
-            echo "Domínio reposto com o site completo, atrás de senha, sobre o main atual."
-          else
-            echo "::error::Reposição falhou — ver relatório acima."; exit 1
-          fi
+          bash scripts/repor_dominio.sh "Reposição manual do site no domínio — commit ${GITHUB_SHA::7}" --estrito
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
           mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio_manual.txt"
           cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio manual ${GITHUB_SHA::7}" && git push -q

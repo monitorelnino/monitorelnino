@@ -413,36 +413,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
-        run: |
-          MODO=$(python3 -c "import json;print(json.load(open('data/publicacao.json')).get('dominio',''))" 2>/dev/null || echo "")
-          echo "modo declarado em data/publicacao.json: '${MODO}'"
-          if [ "$MODO" != "senha" ]; then
-            echo "Domínio não está em modo senha — nada a repor."; exit 0
-          fi
-          if [ -z "$PREVIA_BASIC_AUTH" ] || [ -z "$NETLIFY_AUTH_TOKEN" ]; then
-            echo "::warning::Segredo ausente — domínio fica como está; repor pelo workflow de ensaio."; exit 0
-          fi
-          set +e
-          {
-            printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
-            printf 'User-agent: *\nDisallow: /\n' > robots.txt
-            npx --yes netlify-cli@17 deploy --prod --dir=. --message "Publicação ${GITHUB_SHA::7}" > /tmp/repor_out.txt 2>&1
-            echo "codigo_saida=$?"
-            rm -f _headers; git checkout -- robots.txt 2>/dev/null
-            grep -vE "npm warn" /tmp/repor_out.txt | grep -E "Error|error|422|Deploy is live|Website URL" | head -c 1200
-          } > /tmp/repor_relatorio.txt 2>&1
-          sed -i "s/${NETLIFY_AUTH_TOKEN}/[TOKEN]/g" /tmp/repor_relatorio.txt
-          [ -n "$PREVIA_BASIC_AUTH" ] && sed -i "s/${PREVIA_BASIC_AUTH}/[SENHA]/g" /tmp/repor_relatorio.txt
-          cat /tmp/repor_relatorio.txt
-          # 11/10/2026 (F42): era `::warning::` e o passo saía verde — o domínio ficou parado das
-          # 10:00 às 18:00 UTC com "Unauthorized: could not retrieve site" e todo publicador verde.
-          # O commit do dado já foi empurrado no passo anterior; o vermelho aqui é só do domínio.
-          if grep -q "Deploy is live" /tmp/repor_relatorio.txt; then
-            echo "Domínio reposto com o site completo, atrás de senha."
-          else
-            echo "::error::Reposição do domínio falhou (sem 'Deploy is live') — ver o relatório acima."
-            exit 1
-          fi
+        run: bash scripts/repor_dominio.sh "Publicação ${GITHUB_SHA::7}"
 
       # A linha do elo `publicar` no painel da noite, com a conclusão do job. Falha aqui é
       # diferente de ausência: "publicou e reprovou no portão" tem conserto (o portão diz qual) e
