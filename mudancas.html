@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/10/2026 · Dado do diário do DF</dt>
+      <dd>DF: 134 edições lidas em 143 datas, de 29/06 a 20/10, pelo JSON público do SINJ; 16 trazem termo de saúde. Dado da válvula unido à `main` pela base comum. Código: 0 linhas.</dd>
       <dt>20/10/2026 · Dado dos diários de RJ e RS</dt>
       <dd>RS: 91 edições lidas em 104 datas, de 27/07 a 19/10. RJ: acesso à edição por data provado, 89 edições sem texto extraível seguem para o OCR existente. Dado da válvula de 19/10 unido à `main` pela base comum. Código: 0 linhas.</dd>
       <dt>20/10/2026 · Um só deploy para o domínio</dt>
@@ -165,8 +167,6 @@
       <dd>Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.</dd>
       <dt>19/10/2026 · Sai o portão de autoteste sem chamador</dt>
       <dd>`verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.</dd>
-      <dt>19/10/2026 · Portões: três a menos</dt>
-      <dd>Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.</dd>
     </dl>
   </section>
 </main>
