@@ -164,17 +164,6 @@ FILAS_DE_PISTA = (
 )
 
 
-def _chave_de_pista(pista: dict) -> str:
-    """A identidade da pista. A MESMA de `scripts/pistas.chave_da_pista` — duas definições de
-    identidade produziriam duas filas diferentes que se acham iguais."""
-    p = pista or {}
-    ident = str(p.get("id") or "").strip()
-    if ident:
-        return "id:" + ident
-    url = str(p.get("url_final") or p.get("url") or "").strip()
-    return "url:" + url + "|" + str(p.get("alvo") or p.get("ibge") or p.get("uf") or "")
-
-
 def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
     """A pista com os campos dos dois lados. Levanta `Recusa` no conflito real. Função pura.
 
@@ -221,6 +210,9 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
     if chave is None:
         raise Recusa("os dois lados não trazem a mesma lista de pistas no formato esperado")
 
+    if str(RAIZ) not in sys.path:
+        sys.path.insert(0, str(RAIZ))
+    from scripts.pistas import chave_da_pista as _chave_de_pista  # a identidade é UMA só
     lb = base.get(chave) if isinstance(base.get(chave), list) else []
     ln, ld = nosso[chave], deles[chave]
     por_chave_base = {_chave_de_pista(p): p for p in lb}

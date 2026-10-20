@@ -44,14 +44,13 @@ import math
 import os
 import pathlib
 import re
-import ssl
 import sys
 import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
-from coletores_base import ua_de, hoje_editorial  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, hoje_editorial, contexto_tls  # noqa: E402  (§228: um cliente só, com propósito)
 from coletores_base import normalizar_nome  # §233
 
 # Fuso da redação: a hora que a figura mostra ao leitor é a de Brasília, não a do runner
@@ -445,28 +444,13 @@ def credencial_de(chave: str) -> str | None:
     return os.environ.get(nome) if nome else None
 
 
-def _contexto_tls():
-    """Contexto TLS com o pacote de CAs do `certifi` quando ele existe, e o do sistema quando não.
-
-    24/09/2026: `gsc.cemaden.gov.br` serve uma cadeia que a loja de certificados desta máquina
-    Windows não completa, e a coleta morria com CERTIFICATE_VERIFY_FAILED — o que parecia fonte
-    fora do ar e era ambiente. Isto NÃO afrouxa a verificação: continua validando o certificado,
-    contra um conjunto de raízes mais completo e igual em qualquer máquina. Fonte que recusa de
-    verdade continua recusando."""
-    try:
-        import certifi
-        return ssl.create_default_context(cafile=certifi.where())
-    except ImportError:
-        return None
-
-
 def _buscar(url: str, extra: dict = None, binario: bool = False):
     """GET simples com cabeçalho identificado e tempo limite; erros sobem para quem chamou tratar.
 
     `extra` acrescenta cabeçalho (é por onde a chave do OpenAQ viaja). O User-Agent identificado
     NUNCA é substituído: disfarçar o cliente é proibido no projeto."""
     req = urllib.request.Request(url, headers={**CABECALHO, **(extra or {})})
-    with urllib.request.urlopen(req, timeout=TEMPO_LIMITE, context=_contexto_tls()) as r:
+    with urllib.request.urlopen(req, timeout=TEMPO_LIMITE, context=contexto_tls()) as r:
         corpo = r.read()
     return corpo if binario else corpo.decode("utf-8", errors="replace")
 
@@ -1329,7 +1313,7 @@ def parse_alertas_cemaden_detalhado(dados) -> list:
 
     Nomes reais dos campos, medidos com rede em 24/09/2026 (a camada só respondeu depois de
     apontar a verificação de certificado para o pacote de CAs do `certifi` — a loja desta máquina
-    não tem a cadeia do gsc.cemaden.gov.br; ver `_contexto_tls`):
+    não tem a cadeia do gsc.cemaden.gov.br; ver `coletores_base.contexto_tls`):
       `codibge` (7 dígitos), `cidade`, `uf`, `nivel`, `evento`, `vigencia`, `datahoracriacao`.
 
     O TIPO vem em `evento` no formato "Movimentos de Massa - Moderado", que REPETE o nível: o

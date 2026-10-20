@@ -981,6 +981,27 @@ def contexto_tls():
         return None
 
 
+# Os arquivos do banco: nenhum coletor ou gerador de camada de contexto escreve neles, e o autoteste de
+# cada um lê o PRÓPRIO código-fonte para conferir que não ganhou essa escrita numa edição futura.
+# Lista única do projeto (era copiada em oito arquivos, em duas versões — cinco e seis nomes).
+BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
+                  "monitor_saude.json", "monitor_saude_v04.json")
+
+
+def fonte_do_coletor(arquivo: str) -> str:
+    """O código OPERACIONAL do coletor `arquivo` (passe `__file__`), como texto: tudo o que vem antes do
+    `def autoteste`. O corte importa: sem ele os nomes proibidos que o teste procura aparecem no texto
+    procurado e o teste reprova por se encontrar."""
+    texto = pathlib.Path(arquivo).read_text(encoding="utf-8")
+    corte = texto.find("def autoteste")
+    return texto[:corte] if corte > 0 else texto
+
+
+def grava_no_banco(fonte: str) -> bool:
+    """Há `gravar("<arquivo do banco>` no texto? Trava estrutural dos autotestes."""
+    return any(f'gravar("{b}' in fonte for b in BANCO_PROIBIDO)
+
+
 def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
     """GET simples com User-Agent do projeto, UMA tentativa (ver `buscar`, que repete). Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
@@ -2155,6 +2176,18 @@ def marcar_fato_municipal(ibge, campo: str, valor):
 
 
 # ── autoteste ────────────────────────────────────────────────────────────────
+
+def levanta(fn, excecao) -> bool:
+    """True quando `fn` levanta `excecao`. Existe para o caso negativo do autoteste não virar
+    try/except solto dentro de um lambda, onde ele não cabe."""
+    try:
+        fn()
+    except excecao:
+        return True
+    except Exception:  # noqa: BLE001
+        return False
+    return False
+
 
 def rodar_autoteste(testes: dict) -> int:
     """`testes` = {nome: callable→bool}. Imprime ✓/✗ e devolve o código de saída."""
