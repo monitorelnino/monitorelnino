@@ -1,12 +1,1110 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "rota_nao_descoberta",
-  "conta_como_consultado": false,
-  "motivo": "API do DOE-RS (doe-backend.pro.rs.gov.br) sem resposta ao runner (timeout, run 39023721853); o sítio é casca Angular",
-  "em": "17/10/2026",
-  "tentativas": 2,
-  "rotulo_corrigido_em": "17/10/2026 (404, erro de rede e arquivo que não é edição não são recusa medida)"
+  "modo": "padrao_por_data",
+  "em": "19/10/2026",
+  "conta_como_consultado": true,
+  "adaptador": "edicao_rs"
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-10-19": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 152183,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54769/pdf",
+   "impressao": "2fffded936c4afc5f11603c8674dba4bb92526bece5c6d3c04c960b4f9403965",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-19#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2345480,
+   "paginas": 165,
+   "paginas_com_texto": 165,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54770/pdf",
+   "impressao": "bb340bcb9912c8d3440191c8ef1df2a901e7ed470eafae2de2cccfac7762899b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 149728,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54767/pdf",
+   "impressao": "ef0cb315d30d3c58942c9ae626af77ea316f86f696b0dbad9b7f2b0875a6de88",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-16#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2119042,
+   "paginas": 252,
+   "paginas_com_texto": 252,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54768/pdf",
+   "impressao": "a7c0d4f91b8e017b69cbb499cbe3500462caae23c4ffe8757f9a872be877d162",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-15": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 154729,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54765/pdf",
+   "impressao": "b1e192d402a9bd81711241a250b5cb1679ce009d0a70816e21ddb27d44470560",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-15#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2200351,
+   "paginas": 250,
+   "paginas_com_texto": 250,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54766/pdf",
+   "impressao": "dc146fee33f6cb48ba0b1089deb2cc06c9bfe49246df63a3804f5a2ae2bf399d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 150272,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54763/pdf",
+   "impressao": "3ab0cfa30c6a60e56a3199c1ed406c6152a4018c0b17926c93dae804f2d8ca9a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-14#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2480734,
+   "paginas": 338,
+   "paginas_com_texto": 338,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54764/pdf",
+   "impressao": "882746ed6d30ae2fe71def15e16634cbfb63ca1dca8a605ac1a543519cdfa4e6",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-13": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 157466,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54761/pdf",
+   "impressao": "732b2104c7113845419c975bfc5f41f898b6badc3a17946ee1307d4752091dfa",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-13#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1448000,
+   "paginas": 160,
+   "paginas_com_texto": 160,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54762/pdf",
+   "impressao": "78ac4b5f97ea06c5bb290b394c8609e2795b57fa1685fcf3c76ab865bcc98b82",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-12": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026"
+  },
+  "2026-10-09": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 5847938,
+   "paginas": 317,
+   "paginas_com_texto": 317,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54760/pdf",
+   "impressao": "50f849a1531c43b8eae1af613b68520fff0378b6a0d2a578b31fca261ea3cb9f",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "50f849a1531c43b8eae1af613b68520fff0378b6a0d2a578b31fca261ea3cb9f",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-08": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1773995,
+   "paginas": 191,
+   "paginas_com_texto": 191,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54759/pdf",
+   "impressao": "626f0494ac53eeac72d990642a19c53ee4171d61342db8ccf554edfaa7c20c86",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 154393,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54757/pdf",
+   "impressao": "fd5db82cd863d21ecd7c1c1e2b7e8b9f5cf3e717490a795d3571c41981ba3216",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-07#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3606499,
+   "paginas": 415,
+   "paginas_com_texto": 415,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54758/pdf",
+   "impressao": "c5064cce6da576618bad109f4176ec7066a778f3ac1bc3ee99e26716d6b39999",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 187866,
+   "paginas": 6,
+   "paginas_com_texto": 6,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54755/pdf",
+   "impressao": "e0b8d612d6b920126d0d93d498431cafb17a33035082a004a34ab5025ad0b917",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-06#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2159488,
+   "paginas": 185,
+   "paginas_com_texto": 185,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54756/pdf",
+   "impressao": "c49f6629b0f7367e1805a47f05e376f3cc8e0c6349bd3e0b99db0834b8c8b037",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "c49f6629b0f7367e1805a47f05e376f3cc8e0c6349bd3e0b99db0834b8c8b037",
+   "termos_achados": [
+    "declara situação de emergência"
+   ]
+  },
+  "2026-10-05": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1542326,
+   "paginas": 128,
+   "paginas_com_texto": 128,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54754/pdf",
+   "impressao": "73d57d0d5afb42637300dac77d6b37817d2bf258e39201c2e2e4a9f92ac1d4a9",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-05#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 224548,
+   "paginas": 9,
+   "paginas_com_texto": 9,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54753/pdf",
+   "impressao": "180c6ee47a236de52a8bbdf0fcc1c8c6edce4eb0da9680c50f0f1d38d898ded0",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-02": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-10-01": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 232959,
+   "paginas": 9,
+   "paginas_com_texto": 9,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54749/pdf",
+   "impressao": "ca7b5b6dcf8c2de2525135ec4430f5f1d430a1bd2b5bc68ca9fbb67f88c895ce",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-10-01#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1698411,
+   "paginas": 159,
+   "paginas_com_texto": 159,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54750/pdf",
+   "impressao": "3925687339b21a83ebdf9283c66ef97e19da87a1fffe701cd515d5ed8c7efb0a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-30": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 211741,
+   "paginas": 8,
+   "paginas_com_texto": 8,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54747/pdf",
+   "impressao": "8028869047c0d1e6e5c9f8a16043f9082b458a097ec79863a1ba51cd0ae0f3c5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-30#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 5181671,
+   "paginas": 249,
+   "paginas_com_texto": 249,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54748/pdf",
+   "impressao": "75bfc10b1ee10507ffc40a8235b7e37f12c24ba850dc2832ef46e42aff51d0f7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-29": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 214239,
+   "paginas": 8,
+   "paginas_com_texto": 8,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54745/pdf",
+   "impressao": "3382d1d18d53c5000a8871c363524a3d1e7ad480e0504bf7542b9723aa894feb",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-29#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1943953,
+   "paginas": 234,
+   "paginas_com_texto": 234,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54746/pdf",
+   "impressao": "ccb583bb568093b57597dd4f6ec427cd0a0f6d6c7ac7e708c252d547cb38ad09",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "ccb583bb568093b57597dd4f6ec427cd0a0f6d6c7ac7e708c252d547cb38ad09",
+   "termos_achados": [
+    "declara situação de emergência"
+   ]
+  },
+  "2026-09-28": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 156225,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54743/pdf",
+   "impressao": "c0df280aa12d03bbf7a2da6e1e177d89c5454d0b07a429785f22fbddeb98a2ef",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-28#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1648203,
+   "paginas": 188,
+   "paginas_com_texto": 188,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54744/pdf",
+   "impressao": "ea0c9fa85c3525daa09e3eb8ad517a18eb8193b7119fedc247af1f3df78ebef3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-25": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 152533,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54741/pdf",
+   "impressao": "60da383305d1b3c538e61427307f5c5bb0124f28ff7c7a58ecfcb1e38a42fc4b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-25#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1917172,
+   "paginas": 167,
+   "paginas_com_texto": 167,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54742/pdf",
+   "impressao": "3def3e7a742e4895e186b4337330cee1434942c53db20f6b53d8761c6b7673dd",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "3def3e7a742e4895e186b4337330cee1434942c53db20f6b53d8761c6b7673dd",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-09-24": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2671173,
+   "paginas": 196,
+   "paginas_com_texto": 196,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54740/pdf",
+   "impressao": "334a28fbad2330b0cf75a445e434b62dbec9050eba2eca02b3a8f844a1f0a21e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-23": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2279301,
+   "paginas": 317,
+   "paginas_com_texto": 317,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54739/pdf",
+   "impressao": "2e21f28574a1127389092d38363d7e878c9b82650a0ae934c06ba439f3ae8349",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "2e21f28574a1127389092d38363d7e878c9b82650a0ae934c06ba439f3ae8349",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-09-23#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 160706,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54738/pdf",
+   "impressao": "42d4c1c029e5f9e4cdbbba62d93f9253d29ccf2e981b034fbf98f6b46163b7be",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-22": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 301696,
+   "paginas": 9,
+   "paginas_com_texto": 9,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54736/pdf",
+   "impressao": "13451c46f5af047fca69dded8ecfc22c42d937e8c009b5d5e433ad3c8130e6aa",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-22#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1529384,
+   "paginas": 201,
+   "paginas_com_texto": 201,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54737/pdf",
+   "impressao": "d0f6bfc241051e445a99fd3bffa7e43957e63abb03556b05aded8d2234686708",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-21": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 243505,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54734/pdf",
+   "impressao": "05895cc210e8e3f91238fcac4ced7cb215932cab5f677a7d2f57d4ecc7dae720",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-21#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1509686,
+   "paginas": 192,
+   "paginas_com_texto": 192,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54735/pdf",
+   "impressao": "a414d561af866726067ff2e3f72adb58bf5e358cc7570b2646efa815d268d401",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-18": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-09-17": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 179483,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54730/pdf",
+   "impressao": "9589ef0f4592cddd71b1fbc8a66811028807fc5ddc27b6fe868578996b6ed868",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-17#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2196857,
+   "paginas": 241,
+   "paginas_com_texto": 241,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54731/pdf",
+   "impressao": "6fedd392fe54de638e4e6ab6834ed39219d35946901de1ebcb6c07d8ba56a816",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-16": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2002815,
+   "paginas": 291,
+   "paginas_com_texto": 291,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54729/pdf",
+   "impressao": "7ee94f34062dbaee93db5ef069fa9289d56a8a48e9b5cd1d1b0881ead62efdbe",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-16#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 166372,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54728/pdf",
+   "impressao": "9e23d3c8e44c14c4f39e777f5bb232eb71a7eafaf28b2d06007383d9fc5fac06",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-15": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 161908,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54726/pdf",
+   "impressao": "a67dd3f0721b1f0b9b484936de5f23f60a5e5b6353a7e2493dc74f9e1a51bc29",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-15#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3555439,
+   "paginas": 316,
+   "paginas_com_texto": 316,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54727/pdf",
+   "impressao": "056d83e479568b028d398fad1ffbb155b1c43fd3a965a42d30fc6a1bb80ddded",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "056d83e479568b028d398fad1ffbb155b1c43fd3a965a42d30fc6a1bb80ddded",
+   "termos_achados": [
+    "grupo condutor",
+    "plano de contingência"
+   ]
+  },
+  "2026-09-14": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-09-11": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 152291,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54722/pdf",
+   "impressao": "dfc2398a92a295689936887db49379629f278521fd680a56ada24ff2cd1e505d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-11#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1861142,
+   "paginas": 178,
+   "paginas_com_texto": 178,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54723/pdf",
+   "impressao": "49c664fd35684e2fe55bdad66177503219c5bfc2a033b9b563fad7b298bd4a84",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "49c664fd35684e2fe55bdad66177503219c5bfc2a033b9b563fad7b298bd4a84",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-09-10": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 153769,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54720/pdf",
+   "impressao": "80aa19adf77cf4feabf40655c012688a5ef6b64716409b2972af08b728b17c4f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-10#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1463046,
+   "paginas": 166,
+   "paginas_com_texto": 166,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54721/pdf",
+   "impressao": "542fd776b697e9b6eaf49cd2965eef8fc10ceb939455799e4d9ef838e0ddf847",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-09": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-09-08": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 168040,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54716/pdf",
+   "impressao": "6ca275d8b121499049153ad4d64fcee4c8881d5b99983774369915d051cfd651",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-08#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1472377,
+   "paginas": 177,
+   "paginas_com_texto": 177,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54717/pdf",
+   "impressao": "ea9616defe358afe0d100d8cba512ca49aae4844d580c3b9c199719e13476f06",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-07": {
+   "decisao": "sem_edicao_na_data",
+   "em": "19/10/2026"
+  },
+  "2026-09-04": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-09-03": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 165280,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54712/pdf",
+   "impressao": "a846af7e03b5de118d9919ec31ab69c88b714811b6ee5c1bccaf6cc45d8f89a7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-03#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2310784,
+   "paginas": 268,
+   "paginas_com_texto": 268,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54713/pdf",
+   "impressao": "5d723dcca133a237c8085c351e29f91e07a19df98bb4648949af4cccea773954",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-02": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 194741,
+   "paginas": 6,
+   "paginas_com_texto": 6,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54710/pdf",
+   "impressao": "cd06990c383629e0edf6a3cab06e490413f324e6f64b740414c2c3634a03dd3a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-02#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2541178,
+   "paginas": 350,
+   "paginas_com_texto": 350,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54711/pdf",
+   "impressao": "db213d988e92b07aaca62190e80d14df4a8986a6ddfbfb07de8e628eab2799ad",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-09-01": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-08-31": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 192688,
+   "paginas": 7,
+   "paginas_com_texto": 7,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54706/pdf",
+   "impressao": "5ae7c1d2dec1b9dd03524626c0937836f2b3e73594087d7da2b22a4237f134fe",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-31#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1580303,
+   "paginas": 159,
+   "paginas_com_texto": 159,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54707/pdf",
+   "impressao": "68065dc035a9e5a3611bdde1ddf0a611bcac5762ae089052ac9930a92f8e1bd5",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-28": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 164297,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54704/pdf",
+   "impressao": "28a0708822060a230200de1c87389b97efa08ff7c95da5b193343cdaff6f8534",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-28#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2916788,
+   "paginas": 210,
+   "paginas_com_texto": 210,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54705/pdf",
+   "impressao": "edd9eef0eb1cb0d76cd3854efc24611309f5236eb62fb3859def1e98f0840478",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-27": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-08-26": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2523195,
+   "paginas": 336,
+   "paginas_com_texto": 336,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54701/pdf",
+   "impressao": "2967feb9302ba29ae47cb605a0990ec5a18cd00c2d6243c9ddb660bc3c77d345",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-25": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 167634,
+   "paginas": 5,
+   "paginas_com_texto": 5,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54699/pdf",
+   "impressao": "77f952a1d7c1a79604fb9d15ee858a77bf5d7d2b6067d43f005e21264d64324e",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-25#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2718626,
+   "paginas": 355,
+   "paginas_com_texto": 355,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54700/pdf",
+   "impressao": "fbf1b1400ef51066d2eb2783acf5aecd386df732f2b042ebad21d6ca407983b2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-24": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-08-21": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 153277,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54695/pdf",
+   "impressao": "9bab2cecb177a2de91afc67d978ce79ab9ea58c93d4611937f3396d9400aed9c",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-21#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2732732,
+   "paginas": 305,
+   "paginas_com_texto": 305,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54696/pdf",
+   "impressao": "9504e9ba502b890a859d44abf520a374c02ef32647020d99165b4f2498276107",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-20": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1954143,
+   "paginas": 237,
+   "paginas_com_texto": 237,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54694/pdf",
+   "impressao": "0a920d2b1dc9a8eae1fd669150cf7dfca86a4e2b3549610df5e056f959b63a58",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-20#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 210414,
+   "paginas": 8,
+   "paginas_com_texto": 8,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54693/pdf",
+   "impressao": "f8620c9433fca30f0c771af41a3731b1d17e4b552f3ad955564132565fa526ee",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-19": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 184712,
+   "paginas": 6,
+   "paginas_com_texto": 6,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54691/pdf",
+   "impressao": "2c289478773523d1ff9c3976ec29f6df2427d262cb20b41057aa7963c541e38f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-19#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2402425,
+   "paginas": 377,
+   "paginas_com_texto": 377,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54692/pdf",
+   "impressao": "dee2fd23d8723c01c21d10d9598c03c3bcc11686abb7ee294996bcaad59cd58b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-18": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 150376,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54689/pdf",
+   "impressao": "2094f8b9c642e38364c7f6b19c0449ec5eafffca71a42a29cf4d93a07a9d718f",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-18#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 7242478,
+   "paginas": 237,
+   "paginas_com_texto": 237,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54690/pdf",
+   "impressao": "50871eea0482df3e1949b8ad289c6ca21707b5392073907217727c167e6fba36",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-17": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-08-14": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 190585,
+   "paginas": 7,
+   "paginas_com_texto": 7,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54685/pdf",
+   "impressao": "182c25c73382744fb66b00037379314e0ccb42f92e601577ebfd6af424f58def",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-14#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1694744,
+   "paginas": 197,
+   "paginas_com_texto": 197,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54686/pdf",
+   "impressao": "b726fe42f50628cc55f46ae8cee3e8e8e1a4d62dea3c55e2c533e2a84f5c0ebf",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-13": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 157746,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54683/pdf",
+   "impressao": "a7cda0a52f057b6f592d80fb637338dd0a7f707a821587001728aaa018da6cfc",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-13#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2271929,
+   "paginas": 198,
+   "paginas_com_texto": 198,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54684/pdf",
+   "impressao": "4373e20594781e86173adf0bcee64735652daaef3680cc4e1013609cc8e79d49",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-12": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3797643,
+   "paginas": 474,
+   "paginas_com_texto": 474,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54682/pdf",
+   "impressao": "0ccd51e275b480d57b821e76428ac12bfcc1b0d6e6fcad52e58de75b81da2d24",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-11": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-08-10": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 203571,
+   "paginas": 9,
+   "paginas_com_texto": 9,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54678/pdf",
+   "impressao": "c478083d9b751a8325e7d38fafc7035302b6780bbab962e975bac2b29372c7d7",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-10#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2798237,
+   "paginas": 296,
+   "paginas_com_texto": 296,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54679/pdf",
+   "impressao": "4fbb6868e67efdf43a92414a7b188fa953ea10e7edd6d47a29f0f50feed7be41",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-07": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 156051,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54676/pdf",
+   "impressao": "5ad60df85f35ddc7bd9f39caaa2fd8895ac6cf20ba52b99262a3793447e1d29d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-07#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1737906,
+   "paginas": 181,
+   "paginas_com_texto": 181,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54677/pdf",
+   "impressao": "3f38ef542b5cd95735d8db8186a12faf1ca2296a48100c3e776ba955957f901b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-06": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 156441,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54674/pdf",
+   "impressao": "44f27a99e2d66e994a4d6b0558b435254ff15ba1f714af9184614c0f324bdb64",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-06#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3650953,
+   "paginas": 266,
+   "paginas_com_texto": 266,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54675/pdf",
+   "impressao": "7d15b894750f21bb778c19685239afeead53eba5f32d262848f84db0fc2bde4f",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "7d15b894750f21bb778c19685239afeead53eba5f32d262848f84db0fc2bde4f",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-08-05": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 169527,
+   "paginas": 6,
+   "paginas_com_texto": 6,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54672/pdf",
+   "impressao": "d4ce87ea401fead5bbfbb03b9802fd18031e18a8afbe5a6d06b845c5623e7724",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-05#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 2722894,
+   "paginas": 462,
+   "paginas_com_texto": 462,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54673/pdf",
+   "impressao": "220b8f9f9a4e34b66c25e80708e4896c99f07f09134ddd57124fa675f0d4cd6f",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "220b8f9f9a4e34b66c25e80708e4896c99f07f09134ddd57124fa675f0d4cd6f",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-08-04": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 178985,
+   "paginas": 6,
+   "paginas_com_texto": 6,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54670/pdf",
+   "impressao": "505683117ee8237a10d800ac4d048b2feac6b031ed5479164161ab51b06eb9b3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-04#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1534839,
+   "paginas": 197,
+   "paginas_com_texto": 197,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54671/pdf",
+   "impressao": "507667049ee967111b48dfc2b6a481585de3333e9b322264d1d2455f5cfb3462",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "507667049ee967111b48dfc2b6a481585de3333e9b322264d1d2455f5cfb3462",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-08-03": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 148045,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54668/pdf",
+   "impressao": "687660c777b72b2630b99a8510ca31a4da474d6d299a22152f2943978628b2e8",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-08-03#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1170609,
+   "paginas": 115,
+   "paginas_com_texto": 115,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54669/pdf",
+   "impressao": "95b0967edfa4a67ecab838ad009ea0cb7ab465f48208d3e1dddeb06b490ba52b",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-31": {
+   "decisao": "vazio",
+   "em": "19/10/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+  },
+  "2026-07-30": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 155913,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54664/pdf",
+   "impressao": "15e107822634833e0723bbbae8f693007f7a175d5221b321b410c47f60c4e176",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-30#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1263632,
+   "paginas": 142,
+   "paginas_com_texto": 142,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54665/pdf",
+   "impressao": "d9cbd98b861b3081e96194deb44490b587ac51b576c84bf21e28b135ba72f448",
+   "termos_versao": "2026-10-17",
+   "hash_evidencia": "d9cbd98b861b3081e96194deb44490b587ac51b576c84bf21e28b135ba72f448",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-07-29": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 152295,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54662/pdf",
+   "impressao": "43e8fc6b12666b424c4db20465da646c90bcb0496d8b96a2243525c266105e83",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-29#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3924979,
+   "paginas": 192,
+   "paginas_com_texto": 192,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54663/pdf",
+   "impressao": "e109ed13a5ba1e65d9fff6ebd290df790fd716e7828a6af5486e8fd5abfcd4a3",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-28": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 149386,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54660/pdf",
+   "impressao": "4c017096789d8e50d8e8ae7a9685b7a57f27a57e5985758c360b66aea2d9f35d",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-28#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 1782948,
+   "paginas": 191,
+   "paginas_com_texto": 191,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54661/pdf",
+   "impressao": "f1dcdca911ad5768ec2cc8b54141ddea4ca14e28c8fad6cd1d4aafb0d0a74703",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-27": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 157951,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54658/pdf",
+   "impressao": "d5251bcdea4919d8334649de888a8d46a8597801034502f6b340010bae4591f2",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  },
+  "2026-07-27#2": {
+   "decisao": "lida",
+   "em": "19/10/2026",
+   "bytes": 3275046,
+   "paginas": 206,
+   "paginas_com_texto": 206,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54659/pdf",
+   "impressao": "6b6b62a57e148265baf20643c2029cc98763f0f3266b82a25311a868fad4530a",
+   "termos_versao": "2026-10-17",
+   "termos_achados": []
+  }
+ },
+ "atualizado_em": "19/10/2026"
 }
