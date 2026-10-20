@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.
 
+## 2026-10-20 · #924 · Imprensa e âncoras viram regras do executor de dado
+
+Os cartões da semana da Imprensa e a conferência de âncoras internas passam a regras de `verificar_regras_de_dado.py`; dois arquivos saem. Âncora de link externo com fragmento deixa de ser cobrada como arquivo local. Comandos de portão 76→74; linhas líquidas −189; 123 casos de autoteste.
+
 ## 2026-10-20 · #923 · Seis portões do repositório viram um executor
 
 `verificar_repositorio.py` reúne marcadores de conflito, escrita portável, página arquivada, changelog curto, carimbo da rodada e scripts dos workflows; seis arquivos saem e o `pre-commit` chama o executor. Comandos de portão 80→76; linhas líquidas −425; 95 casos de autoteste e mutantes provados.

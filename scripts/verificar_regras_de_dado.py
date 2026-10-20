@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Regras de dado, num executor só (consolidação, item 6, 19–20/10/2026).
 
-Dez portões pequenos tinham o mesmo esqueleto (docstring, `problemas()`, autoteste, `main()`) e
+Doze portões pequenos tinham o mesmo esqueleto (docstring, `problemas()`, autoteste, `main()`) e
 liam `data/`. Aqui cada regra é um bloco de duas funções — `problemas_*` (pura) e `real_*` (lê o
 disco) — e uma lista de casos; o esqueleto existe uma vez. Cada regra e cada caso de teste dos
-dez foram preservados.
+doze foram preservados.
 
 AS REGRAS
   ausencia    `data/ausencia_declarada.json` (§201): órgão, data e canal nomeados; `efeito_no_indice`
@@ -27,9 +27,12 @@ AS REGRAS
   versao      a versão do índice é uma só (`meta.json`), repetida em datapackage e CITATION; o texto
               público não nomeia o que a definição do índice não tem (08 e 16/10/2026).
   pdf         análise de sensibilidade e PDF público usam a conta do motor (08/10/2026).
+  semana      cartões "Esta semana em números" da Imprensa: paridade com `semana.json`, zero ≠ sem
+              coleta, variação só com par, datas dos atos legíveis nos dois formatos (§253, §255).
+  ancoras     âncora interna citada por página ou script existe no destino (01/10 e 16/10/2026).
 
 BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `camada` e `esquema`: são integridade do dado. As
-outras oito reprovam o PR e não seguram o publicador. Por isso a CI chama o executor duas vezes:
+outras dez reprovam o PR e não seguram o publicador. Por isso a CI chama o executor duas vezes:
 `--barra` (as duas que barram) e `--resto`.
 
 USO
@@ -822,13 +825,229 @@ CASOS_PDF = [
 ]
 
 
+# ───────────────────── semana da imprensa (27/09/2026, §253; §255) ─────────────────────
+# Cartões "Esta semana em números": paridade com `data/imprensa/semana.json`, período nos de janela,
+# zero ≠ sem coleta, variação só com par (calculada deslocando a janela em sete dias), grupo, fonte,
+# modelo declarado, frase sem cláusula de valor zero, peso zero nos índices e data dos atos legível
+# nos dois formatos (`dd/mm/aaaa` e ISO; a mistura é nota, normalizá-la é decisão da editoria).
+GRUPOS_SEMANA = ("preparacao", "emergencias", "risco_agora", "dinheiro", "saude")
+DE_MODELO = ("temperatura_maxima", "qualidade_ar_indice")   # valor de modelo, não de medição
+
+
+def formatar(valor) -> str:
+    """O valor como a página o mostra (vírgula decimal, ponto de milhar): uma função para os dois lados."""
+    if valor is None:
+        return "sem coleta"
+    if isinstance(valor, float):
+        return f"{valor:.1f}".replace(".", ",")
+    return f"{valor:,}".replace(",", ".") if isinstance(valor, int) else str(valor)
+
+
+def problemas_semana(r: dict, html: str, leitores: dict) -> list:
+    """`r` é o semana.json; `html` a página; `leitores` {arquivo: texto} dos que não podem ler imprensa/."""
+    p, cartoes = [], r.get("cartoes") or []
+    if not cartoes:
+        p.append("semana.json sem nenhum cartão")
+    for c in cartoes:
+        i, v = c.get("id") or "(sem id)", c.get("valor")
+        par, var = c.get("valor_semana_anterior"), c.get("variacao")
+        if c.get("sem_coleta") and v is not None:
+            p.append(f"{i}: marcado sem_coleta mas com valor {v!r}")
+        if not c.get("sem_coleta") and v is None:
+            p.append(f"{i}: valor nulo sem declarar sem_coleta — ausência não é zero")
+        per = c.get("periodo") or {}
+        if ("periodo" in i or i.endswith("_no_periodo")) and not (per.get("ini") and per.get("fim")):
+            p.append(f"{i}: cartão de janela sem período declarado")
+        if var is not None and par is None:
+            p.append(f"{i}: tem variacao sem valor_semana_anterior — variação inventada")
+        if par is not None and var is None:
+            p.append(f"{i}: tem valor_semana_anterior e não diz a variação")
+        if bool(c.get("primeira_medicao")) == (par is not None):
+            p.append(f"{i}: primeira_medicao não espelha a existência do par comparável")
+        if None not in (var, v, par) and var != v - par:
+            p.append(f"{i}: a variação não fecha com os dois valores do cartão")
+        if c.get("grupo") not in GRUPOS_SEMANA:
+            p.append(f"{i}: grupo ausente ou fora dos cinco aprovados")
+        if i in DE_MODELO and not c.get("sem_coleta"):
+            texto = f"{c.get('nota') or ''} {c.get('fonte') or ''}".lower()
+            if not any(t in texto for t in ("previsão", "estimativ", "modelo", "cams", "escala")):
+                p.append(f"{i}: cartão de modelo sem dizer que é previsão ou estimativa")
+        if not c.get("fonte"):
+            p.append(f"{i}: sem fonte")
+        # Paridade, não ausência: o fallback estático escreve o número no HTML; ele tem de ser o do dado.
+        achado = re.search(rf'data-imprensa="{re.escape(str(c.get("id")))}"[^>]*>([^<]*)<', html)
+        na_pagina = achado.group(1).strip() if achado else ""
+        esperado = "sem coleta" if c.get("sem_coleta") else formatar(v)
+        if na_pagina not in ("", "—", esperado):
+            p.append(f"{i}: a página mostra {na_pagina!r} e o dado diz {esperado!r} — paridade rompida")
+    if re.search(r"\b0 [a-zà-ú]", r.get("texto_pronto") or ""):
+        p.append("texto_pronto traz cláusula de valor zero — o cartão mostra o zero, a frase não")
+    p += [f"{f} lê algo de imprensa/ — os cartões têm peso zero nos índices"
+          for f, texto in leitores.items() if "imprensa/" in texto]
+    return p
+
+
+def problemas_atos(datas: list, legivel) -> tuple:
+    """(problemas, formatos) das datas de atos_resposta.csv; `legivel(texto)` é o parser tolerante."""
+    ruins = [d for d in datas if not legivel(d)]
+    formatos = {}
+    for d in datas:
+        k = "dd/mm/aaaa" if "/" in d else ("ISO" if "-" in d else "outro")
+        formatos[k] = formatos.get(k, 0) + 1
+    p = [f"dados-abertos/atos_resposta.csv: {len(ruins)} ato(s) com data ilegível pelo parser "
+         f"tolerante; exemplo {ruins[0]!r}"] if ruins else []
+    return p, formatos
+
+
+def real_semana():
+    import csv
+    from gerar_imprensa_semana import data_do_ato
+    sem, pagina = RAIZ / "data/imprensa/semana.json", RAIZ / "imprensa.html"
+    if not sem.exists():
+        return [f"{sem.relative_to(RAIZ)} não existe — rode gerar_imprensa_semana.py"], ""
+    leitores = {f: (RAIZ / f).read_text(encoding="utf-8", errors="replace")
+                for f in ("recalcular_mare.py", "gerar_monitor_saude.py") if (RAIZ / f).exists()}
+    html = pagina.read_text(encoding="utf-8", errors="replace") if pagina.exists() else ""
+    falhas, formatos = problemas_semana(_json("data/imprensa/semana.json"), html, leitores), {}
+    csv_atos = RAIZ / "dados-abertos/atos_resposta.csv"
+    if csv_atos.exists():
+        with open(csv_atos, encoding="utf-8") as f:
+            p, formatos = problemas_atos([(l.get("data") or "").strip() for l in csv.DictReader(f)],
+                                         data_do_ato)
+        falhas += p
+    return falhas, ("paridade, período, zero ≠ sem coleta, sem variação inventada, frase sem cláusula "
+                    f"zero, peso zero nos índices, datas dos atos legíveis (formatos: {formatos})")
+
+
+def _casos_semana() -> list:
+    from datetime import date
+    from gerar_imprensa_semana import data_do_ato
+    bom = {"id": "x", "valor": 5, "fonte": "f", "grupo": "saude", "primeira_medicao": True}
+    com_par = dict(bom, valor_semana_anterior=2, variacao=3, primeira_medicao=False)
+
+    def acusa(texto, *cs, html="", leitores=None, **kw):
+        return any(texto in x for x in problemas_semana(dict({"cartoes": list(cs)}, **kw), html,
+                                                        leitores or {}))
+    return [
+        ("cartões sãos não acusam nada",
+         problemas_semana({"cartoes": [bom, com_par]}, "", {}) == []),
+        ("sem cartão nenhum reprova", acusa("sem nenhum cartão")),
+        ("sem_coleta com valor reprova", acusa("sem_coleta mas com valor", dict(bom, sem_coleta=True))),
+        ("valor nulo sem sem_coleta reprova", acusa("ausência não é zero", dict(bom, valor=None))),
+        ("zero declarado é número, não ausência", not acusa("ausência", dict(bom, valor=0))),
+        ("cartão de janela sem período reprova", acusa("sem período", dict(bom, id="dengue_periodo"))),
+        ("variação sem par reprova", acusa("variação inventada", dict(bom, variacao=3))),
+        ("par sem variação reprova", acusa("não diz a variação", dict(bom, valor_semana_anterior=2))),
+        ("primeira_medicao fora do espelho reprova",
+         acusa("não espelha", dict(com_par, primeira_medicao=True))),
+        ("variação que não fecha reprova", acusa("não fecha", dict(com_par, variacao=9))),
+        ("grupo fora dos cinco reprova", acusa("grupo ausente", dict(bom, grupo="outro"))),
+        ("cartão de modelo sem dizer que é estimativa reprova",
+         acusa("sem dizer", dict(bom, id="temperatura_maxima"))),
+        ("cartão de modelo que diz 'previsão' passa",
+         not acusa("sem dizer", dict(bom, id="temperatura_maxima", nota="previsão"))),
+        ("cartão sem fonte reprova", acusa("sem fonte", dict(bom, fonte=""))),
+        ("frase com cláusula de valor zero reprova",
+         acusa("cláusula de valor zero", bom, texto_pronto="e 0 planos foram publicados")),
+        ("página com número que não é o do dado reprova (paridade)",
+         acusa("paridade rompida", bom, html='<b data-imprensa="x">81</b>')),
+        ("página com o número do dado passa; placeholder passa",
+         not acusa("paridade", bom, html='<b data-imprensa="x">5</b>')
+         and not acusa("paridade", bom, html='<b data-imprensa="x">—</b>')),
+        ("formatação em português: milhar com ponto, decimal com vírgula",
+         formatar(12345) == "12.345" and formatar(3.14) == "3,1" and formatar(None) == "sem coleta"),
+        ("peso zero: leitor dos índices que lê imprensa/ reprova",
+         acusa("peso zero", bom, leitores={"recalcular_mare.py": "open('data/imprensa/x')"})),
+        ("o parser tolerante lê os dois formatos de data",
+         data_do_ato("2026-09-15") == date(2026, 9, 15) == data_do_ato("15/09/2026")),
+        ("data de ato ilegível reprova e a mistura de formatos é contada",
+         (lambda p, f: len(p) == 1 and f == {"ISO": 1, "dd/mm/aaaa": 1, "outro": 1})(
+             *problemas_atos(["2026-09-15", "15/09/2026", "x"], data_do_ato))),
+    ]
+
+
+# ─────────────────────── âncoras internas (01/10/2026; JS desde 16/10) ───────────────────────
+# `href="pagina.html#ancora"` (e `href="#ancora"`) em página ou script de assets/js/ tem de achar um
+# `id` no destino: o navegador acusa arquivo morto, mas abre no topo quando o `id` não existe. A
+# seção "Como os recursos chegam" de "Para gestores" é só ponteiro para o Financiamento.
+PADRAO = ["prefeituras.html", "financiamento.html"]   # o par cuja sincronia dá razão à regra (CODEMAP)
+RE_LINK = re.compile(r'href="([^"#]*)#([^"]+)"')
+RE_ID = re.compile(r'\sid="([^"]+)"')
+
+
+def problemas_ancoras(paginas: dict, scripts: dict, ler) -> list:
+    """`paginas` {nome.html: texto}, `scripts` {nome.js: texto}, `ler(arquivo)` → texto ou None."""
+    ids, falhas = {}, []
+
+    def ids_de(arq):
+        if arq not in ids:
+            texto = paginas[arq] if arq in paginas else ler(arq)
+            ids[arq] = None if texto is None else set(RE_ID.findall(texto))
+        return ids[arq]
+
+    def conferir(onde, texto, donos, js):
+        for arquivo, ancora in RE_LINK.findall(texto):
+            if ancora.startswith(("/", "http")) or ":" in arquivo + ancora or (
+                    js and ("${" in arquivo + ancora or "'" in arquivo + ancora)):
+                continue          # externo, ou destino montado por variável: não é literal
+            destinos = [arquivo] if arquivo else donos
+            if arquivo and ids_de(arquivo) is None:
+                falhas.append(f"{onde}: aponta para '{arquivo}#{ancora}' e o arquivo não existe")
+            elif ancora not in set().union(*(ids_de(d) for d in destinos)):
+                falhas.append(f"{onde}: aponta para '{arquivo}#{ancora}' e não existe id='{ancora}' "
+                              f"em {', '.join(destinos) or 'página nenhuma que o carregue'}")
+
+    for nome, texto in paginas.items():
+        conferir(nome, texto, [nome], False)
+    for nome, texto in scripts.items():
+        conferir(f"assets/js/{nome}", texto,
+                 [p for p, t in paginas.items() if f"assets/js/{nome}" in t], True)
+    return falhas
+
+
+def real_ancoras():
+    paginas = {p.name: p.read_text(encoding="utf-8") for p in sorted(RAIZ.glob("*.html"))}
+    scripts = {j.name: j.read_text(encoding="utf-8") for j in sorted((RAIZ / "assets/js").glob("*.js"))}
+    ler = lambda a: (RAIZ / a).read_text(encoding="utf-8") if (RAIZ / a).is_file() else None
+    return (problemas_ancoras(paginas, scripts, ler),
+            f"toda âncora citada nas {len(paginas)} páginas e nos scripts existe no destino")
+
+
+def _casos_ancoras() -> list:
+    pg = {"a.html": '<a href="b.html#x">1</a><a href="#y">2</a><i id="y"></i>',
+          "b.html": '<p id="x"></p><script src="assets/js/s.js">'}
+    nao = lambda a: None
+    em_pagina = lambda html: problemas_ancoras(dict(pg, **{"c.html": html}), {}, nao)
+    em_js = lambda js: problemas_ancoras(pg, {"s.js": js}, nao)
+    citadas = {a for arq, a in RE_LINK.findall((RAIZ / "prefeituras.html").read_text(encoding="utf-8"))
+               if arq == "financiamento.html"}
+    return [
+        ("âncoras que existem passam", problemas_ancoras(pg, {}, nao) == []),
+        ("âncora para id inexistente reprova", len(em_pagina('<a href="b.html#nao">x</a>')) == 1),
+        ("âncora da própria página sem id reprova", len(em_pagina('<a href="#nao">x</a>')) == 1),
+        ("arquivo inexistente reprova", len(em_pagina('<a href="z.html#x">x</a>')) == 1),
+        ("link externo com fragmento não é cobrado",
+         em_pagina('<a href="https://e.com/p#q">x</a><a href="mailto:a@b#c">y</a>') == []),
+        ("link montado em JS reprova se o id não existe na página que o carrega",
+         len(em_js('h=`<a href="#nao-existe">x</a>`')) == 1),
+        ("link do JS com id que existe na página que o carrega passa", em_js('<a href="#x">') == []),
+        ("destino montado por variável não é literal", em_js('<a href="#${id}">') == []),
+        ("o Para gestores cita as três âncoras do Financiamento, e elas existem",
+         citadas == {"antes", "depois", "caminhos"}
+         and citadas <= set(RE_ID.findall((RAIZ / "financiamento.html").read_text(encoding="utf-8")))),
+        ("o link do cartão da cidade é lido no JS",
+         ("", "formulario") in RE_LINK.findall((RAIZ / "assets/js/index.js").read_text(encoding="utf-8"))),
+    ]
+
+
 # ───────────────────────────── executor ─────────────────────────────
 # (nome, barra a publicação, confere o disco)
 REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
           ("camada", True, real_camada), ("esquema", True, real_esquema),
           ("proveniencia", False, real_proveniencia), ("redes", False, real_redes),
           ("imprensa", False, real_imprensa), ("financiamento", False, real_financiamento),
-          ("versao", False, real_versao), ("pdf", False, real_pdf)]
+          ("versao", False, real_versao), ("pdf", False, real_pdf),
+          ("semana", False, real_semana), ("ancoras", False, real_ancoras)]
 
 
 def autoteste() -> int:
@@ -837,7 +1056,9 @@ def autoteste() -> int:
                                              ("proveniencia", CASOS_PROVENIENCIA),
                                              ("redes", _casos_redes()), ("imprensa", CASOS_IMPRENSA),
                                              ("financiamento", CASOS_FINANCIAMENTO),
-                                             ("versao", CASOS_VERSAO), ("pdf", CASOS_PDF))
+                                             ("versao", CASOS_VERSAO), ("pdf", CASOS_PDF),
+                                             ("semana", _casos_semana()),
+                                             ("ancoras", _casos_ancoras()))
              for r, ok in cs]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
