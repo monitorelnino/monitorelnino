@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #925 · Paridade da cobertura QD e log de buscas viram regras do executor de dado
+
+`verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d'água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.
+
 ## 2026-10-20 · #924 · Imprensa e âncoras viram regras do executor de dado
 
 Os cartões da semana da Imprensa e a conferência de âncoras internas passam a regras de `verificar_regras_de_dado.py`; dois arquivos saem. Âncora de link externo com fragmento deixa de ser cobrada como arquivo local. Comandos de portão 76→74; linhas líquidas −189; 123 casos de autoteste.
@@ -25,6 +29,10 @@ Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF 
 ## 2026-10-20 · #919 · O domínio acompanha a main
 
 Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O "Publicar dados" agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.
+
+## 2026-10-20 · #922 · Helpers de coletor em um só lugar
+
+`BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.
 
 ## 2026-10-20 · #922 · Helpers de coletor em um só lugar
 

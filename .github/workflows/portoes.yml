@@ -103,9 +103,9 @@ jobs:
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_fichas_municipais.py
-          # 19–20/10/2026 (consolidação item 6): doze regras de dado num executor — ausência declarada, rótulo
+          # 19–20/10/2026 (consolidação item 6): catorze regras de dado num executor — ausência declarada, rótulo
           # do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social, imprensa,
-          # cartões do Financiamento, versão do índice, camadas do PDF, cartões da semana da Imprensa e âncoras internas.
+          # cartões do Financiamento, versão do índice, camadas do PDF, cartões da semana da Imprensa, âncoras internas, paridade da cobertura do Querido Diário e log de buscas que só cresce.
           # Barra a publicação só o que é integridade do dado (camada, esquema); o resto reprova o PR.
           # assunto: dado texto
           # barra_publicacao: sim
@@ -286,8 +286,6 @@ jobs:
           python3 verificar_financiamento.py
           python3 verificar_painel.py
           python3 verificar_resposta.py
-          # `cobertura_qd.json` e `verificacao_resumo.json` contam a mesma coisa e têm de concordar; zero indexado é falha de coleta (§256).
-          python3 scripts/verificar_paridade_cobertura_qd.py
           python3 saude_opendatasus.py
 
       - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
@@ -345,8 +343,6 @@ jobs:
           python3 julgar_e_aplicar_descobertas.py --self-test
           # Funil: contagem por etapa da rodada, teto de 25% de motor sem resposta, canários do juiz.
           python3 scripts/verificar_funil.py
-          # Log mensal em JSONL: perder um mês não passa calado (paridade); confere o esquema (A6-27).
-          python3 scripts/verificar_log_de_buscas.py
           # Script essencial com erro reprova; coletor que erra duas rodadas só alerta (§266).
           python3 scripts/gerar_saude_pipeline.py --check
           # O QD aponta a EDIÇÃO; o documento primário é o ATO (§5.2.1).

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/10/2026 · Paridade da cobertura QD e log de buscas viram regras do executor de dado</dt>
+      <dd>`verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d&#x27;água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.</dd>
       <dt>20/10/2026 · Imprensa e âncoras viram regras do executor de dado</dt>
       <dd>Os cartões da semana da Imprensa e a conferência de âncoras internas passam a regras de `verificar_regras_de_dado.py`; dois arquivos saem. Âncora de link externo com fragmento deixa de ser cobrada como arquivo local. Comandos de portão 76→74; linhas líquidas −189; 123 casos de autoteste.</dd>
       <dt>20/10/2026 · Seis portões do repositório viram um executor</dt>
@@ -55,6 +57,8 @@
       <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80. =======</dd>
       <dt>20/10/2026 · O domínio acompanha a main</dt>
       <dd>Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O &quot;Publicar dados&quot; agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.</dd>
+      <dt>20/10/2026 · Helpers de coletor em um só lugar</dt>
+      <dd>`BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.</dd>
       <dt>20/10/2026 · Helpers de coletor em um só lugar</dt>
       <dd>`BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.</dd>
       <dt>19/10/2026 · Internações do SUS e óbitos registrados entram como séries</dt>
@@ -163,10 +167,6 @@
       <dd>A página passa a abrir com os três parágrafos aprovados e seis cartões da edição (capitais com plano, decretos, reconhecimentos, avisos do Inmet, pago pelas medidas federais, estados com dengue em alerta), cada um com fonte e data. As perguntas frequentes viram cartões de recomendação em três grupos; &quot;Como citar&quot; e &quot;Para redações&quot; viram &quot;Como citar e reproduzir&quot;; entram &quot;Quando o site é atualizado&quot;, &quot;Como os índices funcionam&quot;, glossário e erratas. Saem a grade de páginas e a sanfona.</dd>
       <dt>17/10/2026 · Para gestores: o cartão do plano diz a situação do município</dt>
       <dd>O cartão &quot;Plano para o El Niño 2026/2027&quot; da consulta deixa de levar à ficha do estado e passa a dizer, pela mesma classificação da página inicial, se o plano foi localizado (com o ato, a data e o documento), não localizado até o corte, ou ainda não verificado.</dd>
-      <dt>19/10/2026 · Main verde pela raiz: promoção recusa notícia, fila sem campos mortos</dt>
-      <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
-      <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
-      <dd>`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem &quot;semana epidemiológica&quot;. `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o &quot;ciclo&quot;. Metodologia §111.</dd>
     </dl>
   </section>
 </main>
