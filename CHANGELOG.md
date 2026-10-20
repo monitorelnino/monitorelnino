@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #933 · Edição escaneada de diário entra na fila de OCR
+
+A fila de leitura e de OCR só aceitava URL terminada em `.pdf`; as edições do RJ, do DF e do RS não terminam assim, e as 89 edições escaneadas do RJ nunca entravam. Passam a entrar as preservadas pelo coletor de edições. Ensaio da noite 28/28. Código: +11 linhas.
+
 ## 2026-10-20 · #931 · Dado do diário do DF
 
 DF: 134 edições lidas em 143 datas, de 29/06 a 20/10, pelo JSON público do SINJ; 16 trazem termo de saúde. Dado da válvula unido à `main` pela base comum. Código: 0 linhas.
