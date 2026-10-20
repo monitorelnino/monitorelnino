@@ -13,6 +13,11 @@ não pontuados permanecem na versão corrente.
 
 A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.
 
+## 2026-10-20 · #921 · Três portões viram regras do executor de dado
+
+Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.
+=======
+
 ## 2026-10-20 · #919 · O domínio acompanha a main
 
 Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O "Publicar dados" agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.

@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>20/10/2026 · Consolidação dos coletores: um lugar só para o que se repetia</dt>
       <dd>A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.</dd>
+      <dt>20/10/2026 · Três portões viram regras do executor de dado</dt>
+      <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80. =======</dd>
       <dt>20/10/2026 · O domínio acompanha a main</dt>
       <dd>Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O &quot;Publicar dados&quot; agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.</dd>
       <dt>19/10/2026 · Internações do SUS e óbitos registrados entram como séries</dt>
@@ -165,8 +167,6 @@
       <dd>O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>17/10/2026 · Financiamento: números do topo, mês a mês e mapa municipal</dt>
       <dd>`semana.json` ganha `topo` (anunciado, pago, gasto direto pela União, defesa civil desde 29/06, SUS de emergência), `mes_a_mes` (pago por MP) e `mapa` (pontos por município na sede do IBGE). Defesa civil federal traz o total desde 29/06 ao lado da janela de sete dias; atos novos contam as MPs pela data de publicação. Metodologia §33.1.</dd>
-      <dt>17/10/2026 · Legenda de mapa com amostra de ponto vazado</dt>
-      <dd>`MonitorMapas.legenda` aceita `{cor, rotulo, vazado: true}`: a amostra é um círculo só de contorno, a mesma marca do ponto vazado no mapa municipal da Defesa civil (só decreto, sem reconhecimento). Variante no componente (`.leg-vazado`), sem estilo na página. Pedido da B3.</dd>
     </dl>
   </section>
 </main>

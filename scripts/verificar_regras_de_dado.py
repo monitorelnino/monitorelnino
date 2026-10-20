@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Regras de dado, num executor só (consolidação, item 6, 19/10/2026).
+"""Regras de dado, num executor só (consolidação, item 6, 19–20/10/2026).
 
-Sete portões pequenos tinham o mesmo esqueleto (docstring, `problemas()`, autoteste, `main()`) e
+Dez portões pequenos tinham o mesmo esqueleto (docstring, `problemas()`, autoteste, `main()`) e
 liam `data/`. Aqui cada regra é um bloco de duas funções — `problemas_*` (pura) e `real_*` (lê o
 disco) — e uma lista de casos; o esqueleto existe uma vez. Cada regra e cada caso de teste dos
-sete foram preservados.
+dez foram preservados.
 
 AS REGRAS
   ausencia    `data/ausencia_declarada.json` (§201): órgão, data e canal nomeados; `efeito_no_indice`
@@ -22,9 +22,14 @@ AS REGRAS
               28/09/2026, item 2).
   imprensa    imprensa DESCOBRE, nunca REGISTRA: registro que pontua aponta para domínio oficial ou
               diário (C10, errata C29, 01/10/2026).
+  financiamento  cartões do topo do Financiamento: lacuna declarada, nunca zero; o número da imprensa
+              é o mesmo onde a janela é a mesma (02/10/2026).
+  versao      a versão do índice é uma só (`meta.json`), repetida em datapackage e CITATION; o texto
+              público não nomeia o que a definição do índice não tem (08 e 16/10/2026).
+  pdf         análise de sensibilidade e PDF público usam a conta do motor (08/10/2026).
 
 BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `camada` e `esquema`: são integridade do dado. As
-outras cinco reprovam o PR e não seguram o publicador. Por isso a CI chama o executor duas vezes:
+outras oito reprovam o PR e não seguram o publicador. Por isso a CI chama o executor duas vezes:
 `--barra` (as duas que barram) e `--resto`.
 
 USO
@@ -35,6 +40,7 @@ import json
 import pathlib
 import re
 import sys
+from datetime import datetime
 from urllib.parse import urlparse
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -511,19 +517,327 @@ CASOS_IMPRENSA = [
 ]
 
 
+# ─────────────────────────── financiamento ───────────────────────────
+# Cartões do topo do Financiamento contra a edição da imprensa (item 4, 02/10/2026): os quatro
+# existem; lacuna tem motivo e valor nulo (ausência não é número; a classe de ausência de 09/10/2026
+# não exige período); recorte semanal igual ao da imprensa; corte não mais velho que o dela.
+ESPERADOS_FIN = ["pago_periodo_mp", "transferido_municipios_periodo", "resposta_liberado_semana",
+                 "atos_federais_semana"]
+MESMO_NUMERO = {"atos_federais_semana": "atos_federais_no_periodo"}   # cartão → cartão da imprensa
+
+
+def _data(s):
+    for fmt in ("%d/%m/%Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(str(s)[:10], fmt)
+        except (ValueError, TypeError):
+            continue
+    return None
+
+
+def problemas_financiamento(fin: dict, imp: dict) -> list:
+    ruins = []
+    cartoes = {c.get("id"): c for c in (fin or {}).get("cartoes") or []}
+    for ident in ESPERADOS_FIN:
+        if ident not in cartoes:
+            ruins.append(f"cartão '{ident}' não existe em financiamento/semana.json")
+    for ident, c in cartoes.items():
+        if c.get("sem_coleta"):
+            if c.get("valor") is not None:
+                ruins.append(f"cartão '{ident}': declarado sem coleta e com valor — ausência não é número")
+            if not c.get("detalhe"):
+                ruins.append(f"cartão '{ident}': sem coleta e sem motivo escrito (lacuna tem de ser declarada)")
+        elif c.get("classe"):
+            if c.get("valor") is not None:
+                ruins.append(f"cartão '{ident}': declarou classe de ausência e trouxe valor — "
+                             f"ausência não é número")
+            if not c.get("detalhe"):
+                ruins.append(f"cartão '{ident}': classe de ausência sem motivo escrito")
+        else:
+            if c.get("valor") is None:
+                ruins.append(f"cartão '{ident}': valor nulo sem declarar a lacuna")
+            if not c.get("periodo"):
+                ruins.append(f"cartão '{ident}': sem o período a que o número se refere")
+            if not c.get("fonte"):
+                ruins.append(f"cartão '{ident}': sem fonte")
+    por_id_imp = {c.get("id"): c for c in (imp or {}).get("cartoes") or []}
+    for aqui, la in MESMO_NUMERO.items():
+        a, b = cartoes.get(aqui), por_id_imp.get(la)
+        if not a or not b or a.get("sem_coleta") or b.get("sem_coleta"):
+            continue
+        if a.get("valor") != b.get("valor"):
+            ruins.append(f"mesmo número com valores diferentes: '{aqui}' = {a.get('valor')} e "
+                         f"imprensa '{la}' = {b.get('valor')}")
+    d_fin, d_imp = _data((fin or {}).get("corte")), _data((imp or {}).get("corte"))
+    if d_fin and d_imp and d_fin < d_imp:
+        ruins.append(f"corte do Financiamento ({fin.get('corte')}) mais velho que o da imprensa "
+                     f"({imp.get('corte')})")
+    return ruins
+
+
+def real_financiamento():
+    def ler(rel):
+        p = RAIZ / "data" / rel
+        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+    fin = ler("financiamento/semana.json")
+    if fin is None:
+        return (["data/financiamento/semana.json não existe — rode gerar_financiamento_semana.py"],
+                "")
+    return (problemas_financiamento(fin, ler("imprensa/semana.json") or {}),
+            f"{len(fin.get('cartoes') or [])} cartões com período, fonte e lacuna declarada, e o "
+            "mesmo número da imprensa onde a janela é a mesma")
+
+
+_FB = {"corte": "02/10/2026", "cartoes": [
+    {"id": i, "valor": 1, "periodo": "x", "fonte": "f", "sem_coleta": False} for i in ESPERADOS_FIN]}
+_FI = {"corte": "02/10/2026", "cartoes": []}
+
+
+def _fc(**campos):
+    return {"corte": "02/10/2026", "cartoes": [dict(_FB["cartoes"][0], **campos)] + _FB["cartoes"][1:]}
+
+
+def _fim(valor, sem_coleta=False):
+    return {"corte": "02/10/2026", "cartoes": [
+        {"id": "atos_federais_no_periodo", "valor": valor, "sem_coleta": sem_coleta}]}
+
+
+_CLASSE = dict(valor=None, periodo=None, sem_coleta=False, classe="sem_data_na_origem")
+CASOS_FINANCIAMENTO = [
+    ("arquivo completo passa", problemas_financiamento(_FB, _FI) == []),
+    ("cartão faltando reprova",
+     len(problemas_financiamento({"corte": "02/10/2026", "cartoes": _FB["cartoes"][:2]}, {})) == 2),
+    ("sem coleta com valor reprova", any("ausência não é número" in p for p in problemas_financiamento(
+        _fc(sem_coleta=True, valor=0, detalhe="x"), {}))),
+    ("sem coleta sem motivo reprova", any("sem motivo escrito" in p for p in problemas_financiamento(
+        _fc(sem_coleta=True, valor=None), {}))),
+    ("classe de ausencia declarada passa, e sem exigir periodo", problemas_financiamento(
+        _fc(detalhe="a origem nao datou o ato", **_CLASSE), _FI) == []),
+    ("classe de ausencia com valor reprova", any("ausência não é número" in p for p in
+        problemas_financiamento(_fc(detalhe="x", **dict(_CLASSE, valor=3)), {}))),
+    ("classe de ausencia sem motivo reprova", any("sem motivo escrito" in p for p in
+        problemas_financiamento(_fc(**_CLASSE), {}))),
+    ("valor sem período reprova", any("sem o período" in p for p in
+        problemas_financiamento(_fc(periodo=None), {}))),
+    ("mesmo número divergente reprova", any("valores diferentes" in p for p in
+        problemas_financiamento(_FB, _fim(9)))),
+    ("mesmo número igual passa", problemas_financiamento(_FB, _fim(1)) == []),
+    ("imprensa sem coleta não compara", problemas_financiamento(_FB, _fim(None, True)) == []),
+    ("corte mais velho reprova", any("mais velho" in p for p in problemas_financiamento(
+        dict(_FB, corte="29/09/2026"), _FI))),
+    ("corte ilegível não levanta", problemas_financiamento(dict(_FB, corte="ontem"), {"corte": "x"}) == []),
+]
+
+
+# ───────────────────────────── versão do índice ─────────────────────────────
+# A versão do índice é uma só, e tem dono (HANDOVER_CORRECAO_DEFINITIVA_08-10-2026, item 1.15):
+# `meta.json` (escrito por `recalcular_mare.py --write`) manda; datapackage e CITATION a repetem; nenhuma
+# régua extinta volta à tabela normativa; a v3.2 roda em paralelo e nenhuma página a lê; e (16/10/2026)
+# o texto público não nomeia o que `definicao_indice` não tem. Dispensa só por `layout/excecoes.json`
+# (regra `versao_do_indice.texto`); a página do MARÉ Saúde é outro índice e fica fora.
+TEMPO_NA_NOTA = re.compile(r"quando o plano foi publicado em rela[çc][ãa]o ao primeiro boletim", re.I)
+PESO_A_MAO = re.compile(r"pesam igual", re.I)
+
+
+def problemas_versao(meta, datapackage, citation, metodologia, paralelo_existe, lido_por_pagina) -> list:
+    fora = []
+    versao = str(meta.get("versao_indice") or "")
+    if not versao:
+        fora.append("data/meta.json sem `versao_indice` — a versão do índice tem de ter dono, e o "
+                    "dono é o motor (`recalcular_mare.py --write`)")
+    else:
+        curta = versao.split(" ")[0].lstrip("v")
+        if str(datapackage.get("version") or "") != curta:
+            fora.append(f"datapackage.json diz versão {datapackage.get('version')!r} e o índice "
+                        f"está em {curta!r}")
+        m = re.search(r'(?m)^version:\s*"?([^"\n]+)"?', citation)
+        if not m or m.group(1).strip() != curta:
+            fora.append(f"CITATION.cff diz versão {m.group(1) if m else None!r} e o índice está "
+                        f"em {curta!r}")
+    if re.search(r"(?m)^  Antecipação\s{2,}100 = instrumento", metodologia):
+        fora.append("a tabela §5.2 da METODOLOGIA ainda nomeia 'Antecipação' como componente; ela "
+                    "saiu do índice em 30/09/2026")
+    if re.search(r"crédito: plano 1,0 · plano_antigo 0,6", metodologia):
+        fora.append("o §5.3 da METODOLOGIA ainda grafa o crédito antigo do plano de ciclo anterior "
+                    "(0,6), revogado pelo §196 em 24/09/2026")
+    if not paralelo_existe:
+        fora.append("data/paralelo_v32.json não existe — a v3.2 está decidida desde 05/10/2026 e o "
+                    "cálculo paralelo é o que a sustenta (A3-12)")
+    if lido_por_pagina:
+        fora.append("alguma página ou script de página lê data/paralelo_v32.json; a v3.2 roda em "
+                    "paralelo e não publica nada")
+    return fora
+
+
+def problemas_versao_texto(meta: dict, catalogos: dict, dispensadas: set) -> list:
+    """`catalogos` é {pagina: {identificador: texto}}; `dispensadas`, as páginas com exceção."""
+    definicao = (meta or {}).get("definicao_indice") or {}
+    if not definicao:
+        return ["data/meta.json sem `definicao_indice` — a definição do índice tem dono, e é o motor "
+                "(`recalcular_mare.py --write`)"]
+    fora = []
+    for pagina, textos in sorted((catalogos or {}).items()):
+        if pagina == "saude" or f"{pagina}.html" in dispensadas:
+            continue
+        for ident, texto in sorted((textos or {}).items()):
+            t = str(texto or "")
+            if definicao.get("antecipacao_fora_da_nota") and TEMPO_NA_NOTA.search(t):
+                fora.append(f"{ident}: apresenta a antecedência como medida da nota; ela saiu da "
+                            f"nota na v3.1 (meta.json › definicao_indice)")
+            if PESO_A_MAO.search(t) and "{n_componentes}" not in t:
+                fora.append(f"{ident}: \"pesam igual\" escrito à mão; o número de componentes vem de "
+                            f"meta.json pelo molde {{n_componentes}}")
+    return fora
+
+
+def real_versao():
+    meta = _json("data/meta.json")
+    dp_path, cff_path = RAIZ / "dados-abertos" / "datapackage.json", RAIZ / "CITATION.cff"
+    dp = json.loads(dp_path.read_text(encoding="utf-8")) if dp_path.exists() else {}
+    cff = cff_path.read_text(encoding="utf-8") if cff_path.exists() else ""
+    lido = any("paralelo_v32" in p.read_text(encoding="utf-8", errors="ignore")
+               for p in sorted(RAIZ.glob("*.html")) + sorted((RAIZ / "assets").rglob("*.js")))
+    fora = problemas_versao(meta, dp, cff, (RAIZ / "METODOLOGIA.md").read_text(encoding="utf-8"),
+                            (RAIZ / "data" / "paralelo_v32.json").exists(), lido)
+    catalogos = {a.stem: (json.loads(a.read_text(encoding="utf-8")).get("textos") or {})
+                 for a in sorted((RAIZ / "conteudo").glob("*.json")) if not a.name.startswith("_")}
+    from verificar_conformidade import excecoes_de  # noqa: PLC0415 — a mesma leitura de exceção
+    exc_arq = RAIZ / "layout" / "excecoes.json"
+    exc = json.loads(exc_arq.read_text(encoding="utf-8")) if exc_arq.exists() else {}
+    dispensadas = {f"{p}.html" for p in catalogos
+                   if "versao_do_indice.texto" in excecoes_de(f"{p}.html", exc)}
+    return (fora + problemas_versao_texto(meta, catalogos, dispensadas),
+            f"versão {meta.get('versao_indice')} em meta.json, datapackage e CITATION; v3.2 "
+            f"calculada em paralelo e fora das páginas")
+
+
+_VM = {"versao_indice": "v3.1 (30/09/2026)"}
+_VDP, _VCFF, _VMET = {"version": "3.1"}, 'cff-version: 1.2.0\nversion: "3.1"\n', "tabela limpa"
+_VD = {"definicao_indice": {"antecipacao_fora_da_nota": True, "componentes": [1, 2, 3]}}
+CASOS_VERSAO = [
+    ("tudo alinhado passa", len(problemas_versao(_VM, _VDP, _VCFF, _VMET, True, False)) == 0),
+    ("meta sem versao_indice reprova", len(problemas_versao({}, _VDP, _VCFF, _VMET, True, False)) == 1),
+    ("datapackage desalinhado reprova",
+     len(problemas_versao(_VM, {"version": "2.3"}, _VCFF, _VMET, True, False)) == 1),
+    ("CITATION desalinhado reprova",
+     len(problemas_versao(_VM, _VDP, 'version: "2.3"\n', _VMET, True, False)) == 1),
+    ("Antecipação na tabela 5.2 reprova", len(problemas_versao(
+        _VM, _VDP, _VCFF, "  Antecipação                  100 = instrumento anterior ao Boletim",
+        True, False)) == 1),
+    ("crédito antigo no 5.3 reprova", len(problemas_versao(
+        _VM, _VDP, _VCFF, "crédito: plano 1,0 · plano_antigo 0,6 · plano_elaboracao 0,45",
+        True, False)) == 1),
+    ("paralelo ausente reprova", len(problemas_versao(_VM, _VDP, _VCFF, _VMET, False, False)) == 1),
+    ("paralelo lido por página reprova", len(problemas_versao(_VM, _VDP, _VCFF, _VMET, True, True)) == 1),
+    ("texto limpo passa",
+     len(problemas_versao_texto(_VD, {"index": {"i.a": "Três componentes."}}, set())) == 0),
+    ("antecedência como medida da nota reprova", len(problemas_versao_texto(_VD, {"index": {
+        "i.a": "e quando o plano foi publicado em relação ao primeiro boletim"}}, set())) == 1),
+    ("'pesam igual' à mão reprova; por molde passa", len(problemas_versao_texto(_VD, {"index": {
+        "i.a": "Os três pesam igual.", "i.b": "Os {n_componentes} pesam igual."}}, set())) == 1),
+    ("a página do MARÉ Saúde é outro índice",
+     len(problemas_versao_texto(_VD, {"saude": {"s.a": "Os três pesam igual."}}, set())) == 0),
+    ("exceção registrada dispensa a página", len(problemas_versao_texto(
+        _VD, {"index": {"i.a": "Os três pesam igual."}}, {"index.html"})) == 0),
+    ("meta sem definição reprova", len(problemas_versao_texto({}, {}, set())) == 1),
+]
+
+
+# ───────────────────────────── camadas do PDF ─────────────────────────────
+# A análise de sensibilidade e o PDF público usam a conta do MOTOR (HANDOVER_CORRECAO_DEFINITIVA_08-10-2026,
+# item 1.14, A3-05): a cobertura da análise é igual, UF por UF, à que o índice publica; as três camadas
+# somam a cobertura publicada; nem o gerador do PDF nem a análise trazem peso escrito à mão nem
+# componente extinto. Comentários não contam: o que explica o defeito corrigido cita o defeito.
+PROIBIDOS_NO_PDF = (
+    (re.compile(r"plano_antigo 0,6"), "crédito de plano_antigo extinto em 24/09/2026 (hoje 1,0)"),
+    (re.compile(r'"Antecipação"'), "antecipação como componente, extinta em 30/09/2026 (v3.1)"),
+    (re.compile(r"Valores de antecipação em uso"), "régua de antecipação como componente"),
+    (re.compile(r"explica 55% da variância"), "número de variância escrito à mão"),
+    (re.compile(r"com 44% da variância"), "número de contribuição escrito à mão"),
+    (re.compile(r"\+0,66"), "correlação escrita à mão"),
+)
+COLUNA_ERRADA = re.compile(r"Xv\[i,\s*1\]\s*=\s*round\(cobertura")
+
+
+def problemas_pdf_texto(pdf_py: str, analise_py: str) -> list:
+    sem_comentarios = lambda f: "\n".join(l for l in f.split("\n") if not l.strip().startswith("#"))  # noqa: E731
+    fora = []
+    pdf_py, analise_py = sem_comentarios(pdf_py), sem_comentarios(analise_py)
+    for regex, por_que in PROIBIDOS_NO_PDF:
+        if regex.search(pdf_py):
+            fora.append(f"gerar_pdf_indice.py traz {por_que}")
+    if COLUNA_ERRADA.search(analise_py):
+        fora.append("analise_sensibilidade.py escreve a cobertura na coluna 1, que na v3.1 é a "
+                    "estrutura (A3-05)")
+    if "rm.cobertura_de_uf" not in analise_py:
+        fora.append("analise_sensibilidade.py não usa `recalcular_mare.cobertura_de_uf` — a conta "
+                    "da cobertura tem um dono só")
+    return fora
+
+
+def problemas_pdf_numero(cobertura_da_analise: dict, cobertura_publicada: dict, camadas: dict) -> list:
+    fora = []
+    for uf, valor in sorted(cobertura_da_analise.items()):
+        publicado = cobertura_publicada.get(uf)
+        if publicado is None:
+            fora.append(f"{uf}: a análise calcula cobertura para uma UF que o índice não tem")
+        elif abs(valor - publicado) > 0.05:
+            fora.append(f"{uf}: a análise calcula cobertura {valor:.1f} e o índice publica "
+                        f"{publicado:.1f}")
+    for uf, (doc, agr, dec) in sorted(camadas.items()):
+        soma, publicado = doc + agr + dec, cobertura_publicada.get(uf)
+        if publicado is not None and abs(soma - publicado) > 0.15:
+            fora.append(f"{uf}: as três camadas somam {soma:.1f} e a cobertura publicada é "
+                        f"{publicado:.1f}")
+    return fora
+
+
+def real_pdf():
+    import analise_sensibilidade as asens  # noqa: PLC0415
+    fora = problemas_pdf_texto((RAIZ / "gerar_pdf_indice.py").read_text(encoding="utf-8"),
+                               (RAIZ / "analise_sensibilidade.py").read_text(encoding="utf-8"))
+    R = asens.rodar() if hasattr(asens, "rodar") else asens.analisar()
+    publicada = {uf: v["cobertura_pop"] for uf, v in _json("data/indice.json").items()}
+    coberturas, camadas = R.get("cobertura_por_uf") or {}, R.get("camadas_absolutas") or {}
+    return (fora + problemas_pdf_numero(coberturas, publicada, camadas),
+            f"a análise e o PDF usam a conta do motor; {len(coberturas)} UFs conferidas e "
+            f"{len(camadas)} decomposições somam a cobertura publicada")
+
+
+CASOS_PDF = [
+    ("texto limpo passa", len(problemas_pdf_texto("CREDITO_EM_USO", "rm.cobertura_de_uf(uf, c, w)")) == 0),
+    ("crédito à mão reprova",
+     len(problemas_pdf_texto("plano 1,0 · plano_antigo 0,6 ·", "rm.cobertura_de_uf()")) == 1),
+    ("antecipação como componente reprova",
+     len(problemas_pdf_texto('["Antecipação", "Tempestividade"]', "rm.cobertura_de_uf()")) == 1),
+    ("coluna 1 reprova", len(problemas_pdf_texto(
+        "CREDITO_EM_USO", "Xv[i, 1] = round(cobertura(u))\nrm.cobertura_de_uf()")) == 1),
+    ("análise sem a porta do motor reprova",
+     len(problemas_pdf_texto("CREDITO_EM_USO", "def cobertura(uf): ...")) == 1),
+    ("cobertura igual à publicada passa",
+     len(problemas_pdf_numero({"SE": 14.5}, {"SE": 14.5}, {"SE": (10.0, 0.0, 4.5)})) == 0),
+    ("cobertura divergente reprova", len(problemas_pdf_numero({"DF": 80.0}, {"DF": 30.0}, {})) == 1),
+    ("camadas que não somam a cobertura reprovam",
+     len(problemas_pdf_numero({}, {"PR": 29.4}, {"PR": (13.0, 0.0, 3.0)})) == 1),
+]
+
+
 # ───────────────────────────── executor ─────────────────────────────
 # (nome, barra a publicação, confere o disco)
 REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
           ("camada", True, real_camada), ("esquema", True, real_esquema),
           ("proveniencia", False, real_proveniencia), ("redes", False, real_redes),
-          ("imprensa", False, real_imprensa)]
+          ("imprensa", False, real_imprensa), ("financiamento", False, real_financiamento),
+          ("versao", False, real_versao), ("pdf", False, real_pdf)]
 
 
 def autoteste() -> int:
     casos = [(f"{n}: {r}", ok) for n, cs in (("ausencia", CASOS_AUSENCIA), ("rotulo", CASOS_ROTULO),
                                              ("camada", CASOS_CAMADA), ("esquema", CASOS_ESQUEMA),
                                              ("proveniencia", CASOS_PROVENIENCIA),
-                                             ("redes", _casos_redes()), ("imprensa", CASOS_IMPRENSA))
+                                             ("redes", _casos_redes()), ("imprensa", CASOS_IMPRENSA),
+                                             ("financiamento", CASOS_FINANCIAMENTO),
+                                             ("versao", CASOS_VERSAO), ("pdf", CASOS_PDF))
              for r, ok in cs]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
