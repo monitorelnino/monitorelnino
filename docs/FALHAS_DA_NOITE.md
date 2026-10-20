@@ -507,8 +507,8 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Sintoma:** `monitorar_politica_por_inteiro.py`: erro em 19 rodadas seguidas (`NameError: name 'ler'`); `monitorar_redes_oficiais.py`: erro em 4 (`NameError: name 'caidos'`), depois de gravar as pistas.
 - **Causa:** `ler` usado sem import; `caidos`/`motivos` sobraram do disjuntor removido no F52 (#706). Nenhum portão lia nome sem definição: o autoteste não passa pelo `main` desses coletores.
 - **Prova:** docs/SAUDE_PIPELINE.md (14/10): as duas linhas de erro com a contagem; pyflakes em todo .py versionado: 4 nomes sem definição (os dois acima, `gravar_em` em aplicar_c10_imprensa.py, `time` em coletar_sinais_risco.py)
-- **Correção:** Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_scripts_dos_workflows.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.
-- **Caso de teste:** `scripts/verificar_scripts_dos_workflows.py --autoteste: nome usado sem import reprova (F56)`
+- **Correção:** Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_repositorio.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.
+- **Caso de teste:** `scripts/verificar_repositorio.py --autoteste: nome usado sem import reprova (F56)`
 
 ## F57 · Ensaio real vermelho por disparo que falhou e contou como feito
 
