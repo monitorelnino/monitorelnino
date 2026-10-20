@@ -7,10 +7,10 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "19/10/2026 22:14",
+ "gerado_em": "20/10/2026 04:44",
  "resumo": {
-  "municipios": 1444,
-  "municipios_inmet": 1439,
+  "municipios": 1149,
+  "municipios_inmet": 1144,
   "municipios_cemaden": 7,
   "avisos_inmet": 2,
   "alertas_cemaden_em_vigor": 7,
@@ -37,17 +37,12 @@
    "AC": {
     "Perigo Potencial": 22
    },
-   "AL": {
-    "Perigo Potencial": 16
-   },
    "AM": {
     "Perigo Potencial": 62
    },
    "BA": {
-    "Perigo Potencial": 388
-   },
-   "CE": {
-    "Perigo Potencial": 68
+    "Perigo Potencial": 382,
+    "Perigo": 23
    },
    "ES": {
     "Perigo Potencial": 21
@@ -59,7 +54,8 @@
     "Perigo Potencial": 60
    },
    "MG": {
-    "Perigo Potencial": 114
+    "Perigo Potencial": 114,
+    "Perigo": 15
    },
    "MT": {
     "Perigo Potencial": 59
@@ -67,26 +63,17 @@
    "PA": {
     "Perigo Potencial": 56
    },
-   "PB": {
-    "Perigo Potencial": 101
-   },
    "PE": {
-    "Perigo Potencial": 65
+    "Perigo Potencial": 9
    },
    "PI": {
-    "Perigo Potencial": 133
-   },
-   "RN": {
-    "Perigo Potencial": 41
+    "Perigo Potencial": 127
    },
    "RO": {
     "Perigo Potencial": 43
    },
    "RR": {
     "Perigo Potencial": 10
-   },
-   "SE": {
-    "Perigo Potencial": 1
    },
    "TO": {
     "Perigo Potencial": 139
@@ -5680,20 +5667,6 @@
    ],
    "cemaden": []
   },
-  "2201051": {
-   "nome": "Assunção do Piauí",
-   "uf": "PI",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2201101": {
    "nome": "Avelino Lopes",
    "uf": "PI",
@@ -5844,20 +5817,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2202026": {
-   "nome": "Buriti dos Montes",
-   "uf": "PI",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -6292,20 +6251,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2204303": {
-   "nome": "Fronteiras",
-   "uf": "PI",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -6842,34 +6787,6 @@
    ],
    "cemaden": []
   },
-  "2208106": {
-   "nome": "Pimenteiras",
-   "uf": "PI",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2208205": {
-   "nome": "Pio IX",
-   "uf": "PI",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2208551": {
    "nome": "Porto Alegre do Piauí",
    "uf": "PI",
@@ -7220,20 +7137,6 @@
    ],
    "cemaden": []
   },
-  "2210409": {
-   "nome": "São Miguel do Tapuio",
-   "uf": "PI",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2210607": {
    "nome": "São Raimundo Nonato",
    "uf": "PI",
@@ -7444,2960 +7347,6 @@
    ],
    "cemaden": []
   },
-  "2300101": {
-   "nome": "Abaiara",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2300309": {
-   "nome": "Acopiara",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2300408": {
-   "nome": "Aiuaba",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2300606": {
-   "nome": "Altaneira",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2300705": {
-   "nome": "Alto Santo",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2300804": {
-   "nome": "Antonina do Norte",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301307": {
-   "nome": "Araripe",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301505": {
-   "nome": "Arneiroz",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301604": {
-   "nome": "Assaré",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301703": {
-   "nome": "Aurora",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301802": {
-   "nome": "Baixio",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301851": {
-   "nome": "Banabuiú",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2301901": {
-   "nome": "Barbalha",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2302008": {
-   "nome": "Barro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2302404": {
-   "nome": "Boa Viagem",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2302503": {
-   "nome": "Brejo Santo",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2302701": {
-   "nome": "Campos Sales",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2303204": {
-   "nome": "Caririaçu",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2303303": {
-   "nome": "Cariús",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2303600": {
-   "nome": "Catarina",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2303808": {
-   "nome": "Cedro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2304103": {
-   "nome": "Crateús",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2304202": {
-   "nome": "Crato",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2304269": {
-   "nome": "Deputado Irapuan Pinheiro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2304277": {
-   "nome": "Ererê",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2304301": {
-   "nome": "Farias Brito",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2304806": {
-   "nome": "Granjeiro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2305407": {
-   "nome": "Icó",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2305506": {
-   "nome": "Iguatu",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2305605": {
-   "nome": "Independência",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2305704": {
-   "nome": "Ipaumirim",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2306009": {
-   "nome": "Iracema",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2306702": {
-   "nome": "Jaguaretama",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2306801": {
-   "nome": "Jaguaribara",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2306900": {
-   "nome": "Jaguaribe",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2307106": {
-   "nome": "Jardim",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2307205": {
-   "nome": "Jati",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2307304": {
-   "nome": "Juazeiro do Norte",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2307403": {
-   "nome": "Jucás",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2307502": {
-   "nome": "Lavras da Mangabeira",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2308104": {
-   "nome": "Mauriti",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2308302": {
-   "nome": "Milagres",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2308351": {
-   "nome": "Milhã",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2308401": {
-   "nome": "Missão Velha",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2308500": {
-   "nome": "Mombaça",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2309201": {
-   "nome": "Nova Olinda",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2309409": {
-   "nome": "Novo Oriente",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2309508": {
-   "nome": "Orós",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2310308": {
-   "nome": "Parambu",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2310506": {
-   "nome": "Pedra Branca",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2310605": {
-   "nome": "Penaforte",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2310803": {
-   "nome": "Pereiro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2310902": {
-   "nome": "Piquet Carneiro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311108": {
-   "nome": "Porteiras",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311207": {
-   "nome": "Potengi",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311231": {
-   "nome": "Potiretama",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311264": {
-   "nome": "Quiterianópolis",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311355": {
-   "nome": "Quixelô",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311405": {
-   "nome": "Quixeramobim",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311900": {
-   "nome": "Saboeiro",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2311959": {
-   "nome": "Salitre",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2312106": {
-   "nome": "Santana do Cariri",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2312700": {
-   "nome": "Senador Pompeu",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2313005": {
-   "nome": "Solonópole",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2313252": {
-   "nome": "Tarrafas",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2313302": {
-   "nome": "Tauá",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2313708": {
-   "nome": "Umari",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2314003": {
-   "nome": "Várzea Alegre",
-   "uf": "CE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2400406": {
-   "nome": "Água Nova",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2400505": {
-   "nome": "Alexandria",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2400604": {
-   "nome": "Almino Afonso",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2400901": {
-   "nome": "Antônio Martins",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2402006": {
-   "nome": "Caicó",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2402907": {
-   "nome": "Coronel João Pessoa",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2403202": {
-   "nome": "Doutor Severiano",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2403301": {
-   "nome": "Encanto",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2403905": {
-   "nome": "Francisco Dantas",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2404002": {
-   "nome": "Frutuoso Gomes",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2404804": {
-   "nome": "Ipueira",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2405603": {
-   "nome": "Jardim de Piranhas",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2405900": {
-   "nome": "João Dias",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2406007": {
-   "nome": "José da Penha",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2406908": {
-   "nome": "Lucrécia",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2407005": {
-   "nome": "Luís Gomes",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2407252": {
-   "nome": "Major Sales",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2407302": {
-   "nome": "Marcelino Vieira",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2407401": {
-   "nome": "Martins",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2408508": {
-   "nome": "Ouro Branco",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2408607": {
-   "nome": "Paraná",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2409308": {
-   "nome": "Patu",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2409407": {
-   "nome": "Pau dos Ferros",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2410009": {
-   "nome": "Pilões",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2410207": {
-   "nome": "Portalegre",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2410504": {
-   "nome": "Rafael Fernandes",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2410603": {
-   "nome": "Rafael Godeiro",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2410702": {
-   "nome": "Riacho da Cruz",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2410801": {
-   "nome": "Riacho de Santana",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2411007": {
-   "nome": "Rodolfo Fernandes",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2411908": {
-   "nome": "São Francisco do Oeste",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2412104": {
-   "nome": "São João do Sabugi",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2412500": {
-   "nome": "São Miguel",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2413409": {
-   "nome": "Serra Negra do Norte",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2413557": {
-   "nome": "Serrinha dos Pintos",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2413805": {
-   "nome": "Taboleiro Grande",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2414100": {
-   "nome": "Tenente Ananias",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2414308": {
-   "nome": "Timbaúba dos Batistas",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2414506": {
-   "nome": "Umarizal",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2414753": {
-   "nome": "Venha-Ver",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2414902": {
-   "nome": "Viçosa",
-   "uf": "RN",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2500106": {
-   "nome": "Água Branca",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2500205": {
-   "nome": "Aguiar",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2500700": {
-   "nome": "São João do Rio do Peixe",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2500734": {
-   "nome": "Amparo",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2500775": {
-   "nome": "Aparecida",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2501153": {
-   "nome": "Areia de Baraúnas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502003": {
-   "nome": "Belém do Brejo do Cruz",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502052": {
-   "nome": "Bernardino Batista",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502102": {
-   "nome": "Boa Ventura",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502201": {
-   "nome": "Bom Jesus",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502300": {
-   "nome": "Bom Sucesso",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502409": {
-   "nome": "Bonito de Santa Fé",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502607": {
-   "nome": "Igaracy",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502805": {
-   "nome": "Brejo do Cruz",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2502904": {
-   "nome": "Brejo dos Santos",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2503308": {
-   "nome": "Cachoeira dos Índios",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2503407": {
-   "nome": "Cacimba de Areia",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2503555": {
-   "nome": "Cacimbas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2503704": {
-   "nome": "Cajazeiras",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2503753": {
-   "nome": "Cajazeirinhas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2503902": {
-   "nome": "Camalaú",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504108": {
-   "nome": "Carrapateira",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504207": {
-   "nome": "Catingueira",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504306": {
-   "nome": "Catolé do Rocha",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504405": {
-   "nome": "Conceição",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504504": {
-   "nome": "Condado",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504702": {
-   "nome": "Congo",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2504801": {
-   "nome": "Coremas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2505303": {
-   "nome": "Curral Velho",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2505402": {
-   "nome": "Desterro",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2505501": {
-   "nome": "Vista Serrana",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2505600": {
-   "nome": "Diamante",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2505907": {
-   "nome": "Emas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2506608": {
-   "nome": "Ibiara",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2506707": {
-   "nome": "Imaculada",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2507002": {
-   "nome": "Itaporanga",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2507408": {
-   "nome": "Jericó",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2508000": {
-   "nome": "Juru",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2508109": {
-   "nome": "Lagoa",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2508406": {
-   "nome": "Lastro",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2508505": {
-   "nome": "Livramento",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2508703": {
-   "nome": "Mãe d'Água",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2508802": {
-   "nome": "Malta",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2509008": {
-   "nome": "Manaíra",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2509156": {
-   "nome": "Marizópolis",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2509370": {
-   "nome": "Mato Grosso",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2509396": {
-   "nome": "Maturéia",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2509602": {
-   "nome": "Monte Horebe",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2509701": {
-   "nome": "Monteiro",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510006": {
-   "nome": "Nazarezinho",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510204": {
-   "nome": "Nova Olinda",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510402": {
-   "nome": "Olho d'Água",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510600": {
-   "nome": "Ouro Velho",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510709": {
-   "nome": "Passagem",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510808": {
-   "nome": "Patos",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2510907": {
-   "nome": "Paulista",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2511004": {
-   "nome": "Pedra Branca",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2511301": {
-   "nome": "Piancó",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512036": {
-   "nome": "Poço Dantas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512077": {
-   "nome": "Poço de José de Moura",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512101": {
-   "nome": "Pombal",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512200": {
-   "nome": "Prata",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512309": {
-   "nome": "Princesa Isabel",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512606": {
-   "nome": "Quixaba",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2512804": {
-   "nome": "Riacho dos Cavalos",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513000": {
-   "nome": "Salgadinho",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513208": {
-   "nome": "Santa Cruz",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513307": {
-   "nome": "Santa Helena",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513356": {
-   "nome": "Santa Inês",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513406": {
-   "nome": "Santa Luzia",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513505": {
-   "nome": "Santana de Mangueira",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513604": {
-   "nome": "Santana dos Garrotes",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513653": {
-   "nome": "Joca Claudino",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513802": {
-   "nome": "Santa Teresinha",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513901": {
-   "nome": "São Bento",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513927": {
-   "nome": "São Bentinho",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513968": {
-   "nome": "São Domingos",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2513984": {
-   "nome": "São Francisco",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514107": {
-   "nome": "São João do Tigre",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514206": {
-   "nome": "São José da Lagoa Tapada",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514305": {
-   "nome": "São José de Caiana",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514404": {
-   "nome": "São José de Espinharas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514503": {
-   "nome": "São José de Piranhas",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514552": {
-   "nome": "São José de Princesa",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514602": {
-   "nome": "São José do Bonfim",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514651": {
-   "nome": "São José do Brejo do Cruz",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514800": {
-   "nome": "São José dos Cordeiros",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2514909": {
-   "nome": "São Mamede",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2515203": {
-   "nome": "São Sebastião do Umbuzeiro",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2515500": {
-   "nome": "Serra Branca",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2515708": {
-   "nome": "Serra Grande",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516201": {
-   "nome": "Sousa",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516300": {
-   "nome": "Sumé",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516508": {
-   "nome": "Taperoá",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516607": {
-   "nome": "Tavares",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516706": {
-   "nome": "Teixeira",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516805": {
-   "nome": "Triunfo",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2516904": {
-   "nome": "Uiraúna",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2517100": {
-   "nome": "Várzea",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2517209": {
-   "nome": "Vieirópolis",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2517407": {
-   "nome": "Zabelê",
-   "uf": "PB",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2600104": {
-   "nome": "Afogados da Ingazeira",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2600203": {
    "nome": "Afrânio",
    "uf": "PE",
@@ -10408,34 +7357,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2600500": {
-   "nome": "Águas Belas",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2600609": {
-   "nome": "Alagoinha",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -10454,174 +7375,6 @@
    ],
    "cemaden": []
   },
-  "2601201": {
-   "nome": "Arcoverde",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2601607": {
-   "nome": "Belém do São Francisco",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2601805": {
-   "nome": "Betânia",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2602001": {
-   "nome": "Bodocó",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2602506": {
-   "nome": "Brejinho",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2602803": {
-   "nome": "Buíque",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2603009": {
-   "nome": "Cabrobó",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2603405": {
-   "nome": "Calumbi",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2603900": {
-   "nome": "Carnaíba",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2603926": {
-   "nome": "Carnaubeira da Penha",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2604304": {
-   "nome": "Cedro",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2605103": {
-   "nome": "Custódia",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2605152": {
    "nome": "Dormentes",
    "uf": "PE",
@@ -10632,188 +7385,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2605301": {
-   "nome": "Exu",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2605608": {
-   "nome": "Flores",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2605707": {
-   "nome": "Floresta",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2606309": {
-   "nome": "Granito",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2606507": {
-   "nome": "Iati",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2606606": {
-   "nome": "Ibimirim",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2606903": {
-   "nome": "Iguaracy",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2607000": {
-   "nome": "Inajá",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2607109": {
-   "nome": "Ingazeira",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2607406": {
-   "nome": "Itacuruba",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2607505": {
-   "nome": "Itaíba",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2607703": {
-   "nome": "Itapetim",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2608057": {
-   "nome": "Jatobá",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -10832,48 +7403,6 @@
    ],
    "cemaden": []
   },
-  "2609154": {
-   "nome": "Manari",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2609303": {
-   "nome": "Mirandiba",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2609808": {
-   "nome": "Orocó",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2609907": {
    "nome": "Ouricuri",
    "uf": "PE",
@@ -10884,76 +7413,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2610301": {
-   "nome": "Paranatama",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2610400": {
-   "nome": "Parnamirim",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2610806": {
-   "nome": "Pedra",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2610905": {
-   "nome": "Pesqueira",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2611002": {
-   "nome": "Petrolândia",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -10972,48 +7431,6 @@
    ],
    "cemaden": []
   },
-  "2611200": {
-   "nome": "Poção",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2611533": {
-   "nome": "Quixaba",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2612208": {
-   "nome": "Salgueiro",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2612455": {
    "nome": "Santa Cruz",
    "uf": "PE",
@@ -11024,20 +7441,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2612471": {
-   "nome": "Santa Cruz da Baixa Verde",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -11070,468 +7473,6 @@
    ],
    "cemaden": []
   },
-  "2612802": {
-   "nome": "Santa Terezinha",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2613503": {
-   "nome": "São José do Belmonte",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2613602": {
-   "nome": "São José do Egito",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2613909": {
-   "nome": "Serra Talhada",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2614006": {
-   "nome": "Serrita",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2614105": {
-   "nome": "Sertânia",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2614303": {
-   "nome": "Moreilândia",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2614402": {
-   "nome": "Solidão",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2614600": {
-   "nome": "Tabira",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2614808": {
-   "nome": "Tacaratu",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2615201": {
-   "nome": "Terra Nova",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2615706": {
-   "nome": "Triunfo",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2615805": {
-   "nome": "Tupanatinga",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2615904": {
-   "nome": "Tuparetama",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2616001": {
-   "nome": "Venturosa",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2616100": {
-   "nome": "Verdejante",
-   "uf": "PE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2700102": {
-   "nome": "Água Branca",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2701605": {
-   "nome": "Canapi",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2701803": {
-   "nome": "Carneiros",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2702405": {
-   "nome": "Delmiro Gouveia",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2703304": {
-   "nome": "Inhapi",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2704609": {
-   "nome": "Maravilha",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2705002": {
-   "nome": "Mata Grande",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2705804": {
-   "nome": "Olho d'Água do Casado",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2706109": {
-   "nome": "Ouro Branco",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2706406": {
-   "nome": "Pão de Açúcar",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2706422": {
-   "nome": "Pariconha",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2707107": {
-   "nome": "Piranhas",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2707206": {
-   "nome": "Poço das Trincheiras",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2708006": {
-   "nome": "Santana do Ipanema",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2708402": {
-   "nome": "São José da Tapera",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2708956": {
-   "nome": "Senador Rui Palmeira",
-   "uf": "AL",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2801207": {
-   "nome": "Canindé de São Francisco",
-   "uf": "SE",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2900108": {
    "nome": "Abaíra",
    "uf": "BA",
@@ -11542,20 +7483,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2900207": {
-   "nome": "Abaré",
-   "uf": "BA",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -11625,6 +7552,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -12059,6 +7993,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -12662,6 +8603,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -12760,20 +8708,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2907707": {
-   "nome": "Chorrochó",
-   "uf": "BA",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -13012,13 +8946,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -13130,6 +9057,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -13261,20 +9195,6 @@
    ],
    "cemaden": []
   },
-  "2911402": {
-   "nome": "Glória",
-   "uf": "BA",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2911501": {
    "nome": "Gongogi",
    "uf": "BA",
@@ -13340,6 +9260,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -13480,6 +9407,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -13769,6 +9703,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -13867,6 +9808,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -13922,6 +9870,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -13979,6 +9934,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14020,6 +9982,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14076,6 +10045,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14343,6 +10319,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14440,6 +10423,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14609,20 +10599,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2919900": {
-   "nome": "Macururé",
-   "uf": "BA",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -14847,6 +10823,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14986,6 +10969,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -15197,6 +11187,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -15323,20 +11320,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    }
-   ],
-   "cemaden": []
-  },
-  "2924009": {
-   "nome": "Paulo Afonso",
-   "uf": "BA",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
     }
    ],
    "cemaden": []
@@ -15561,6 +11544,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -15575,6 +11565,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -15588,6 +11585,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -15817,20 +11821,6 @@
    ],
    "cemaden": []
   },
-  "2927101": {
-   "nome": "Rodelas",
-   "uf": "BA",
-   "inmet": [
-    {
-     "id": "28518",
-     "tipo": "Baixa Umidade",
-     "severidade": "Perigo Potencial",
-     "inicio": "2026-10-19 08:46",
-     "fim": "2026-10-19 23:59"
-    }
-   ],
-   "cemaden": []
-  },
   "2927200": {
    "nome": "Ruy Barbosa",
    "uf": "BA",
@@ -15896,6 +11886,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -16569,6 +12566,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -16905,6 +12909,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -17017,6 +13028,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -17100,6 +13118,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -17403,6 +13428,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -17613,6 +13645,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -17724,6 +13763,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -18005,6 +14051,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18145,6 +14198,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18271,6 +14331,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18313,6 +14380,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18340,6 +14414,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -18369,6 +14450,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18383,6 +14471,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18396,6 +14491,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -18481,6 +14583,13 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
+     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -18536,6 +14645,13 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
+     "fim": "2026-10-20 23:59"
+    },
+    {
+     "id": "28520",
+     "tipo": "Acumulado de Chuva",
+     "severidade": "Perigo",
+     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
