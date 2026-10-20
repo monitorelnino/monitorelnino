@@ -25,8 +25,11 @@ AS REGRAS
               `atualizar.py` antes da primeira verificação (01/10/2026).
   scripts     todo script citado por workflow existe (A1-25), as listas de escritor de pista apontam
               para arquivos reais (09/10/2026) e nenhum `.py` usa nome indefinido (F56, pyflakes).
+  cliente     um cliente só e nunca disfarçado: nenhum `User-Agent` literal fora de `coletores_base`,
+              nenhum token de navegador, cabeçalho ASCII por propósito, pedido cru identifica o cliente
+              (§228, §235; por AST).
 
-BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `marcadores` e `escrita`; as outras quatro reprovam o PR e
+BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `marcadores` e `escrita`; as outras cinco reprovam o PR e
 não seguram o publicador. Por isso a CI chama o executor duas vezes: `--barra` e `--resto`.
 
 USO
@@ -613,6 +616,100 @@ def _casos_scripts() -> list:
             ("nome importado passa", nomes_indefinidos("from os import path\npath.join('a')\n") == [])]
 
 
+# ───────────── cliente identificado, nunca disfarçado (§228, §235; 26/09/2026) ─────────────
+# Uma auditoria achou 21 strings de User-Agent, seis com token de navegador: cópia que envelhece (o
+# `UA` canônico de `coletores_base` não mudava os outros arquivos, e a política de robots §185 mede
+# um agente e registra outro) e disfarce (CLAUDE.md: nunca disfarçar o cliente). Lê por AST, para que
+# docstring e comentário possam contar a história. (a) valor de `User-Agent` nunca é literal fora de
+# `coletores_base.py`; (b) nenhuma string de código traz token de navegador; (c) o `UA` canônico começa
+# com o nome do projeto; (c-bis) §235: `ua_de(propósito)` gera cabeçalho ASCII (RFC 7230 §3.2.4) para
+# cada propósito literal — `defesacivil.es.gov.br` deu HTTP 400 com acento e 200 sem; (d) todo módulo
+# com pedido de rede cru (`urlopen`, `build_opener`, `requests.get`…) identifica o cliente.
+TOKEN_NAVEGADOR = "Mozi" + "lla/"      # por pedaços: a regra não pode reprovar a si mesma
+CRUAS = ("urlopen", "build_opener")
+
+
+def _nome_ast(no) -> str:
+    """'coletores_base.ua_de' para um Attribute/Name, ou ''."""
+    if isinstance(no, ast.Attribute):
+        return f"{_nome_ast(no.value)}.{no.attr}".lstrip(".")
+    return no.id if isinstance(no, ast.Name) else ""
+
+
+def problemas_cliente(fonte: str, nome: str, ua_de, eh_base: bool = False) -> list:
+    """`nome` é o caminho relativo; `ua_de` a função canônica; `eh_base` isenta `coletores_base.py`."""
+    try:
+        arvore = ast.parse(fonte)
+    except SyntaxError as e:
+        return [f"{nome}: não compila ({e})"]
+    docs = {id(c.body[0].value) for c in ast.walk(arvore)
+            if isinstance(c, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef))
+            and c.body and isinstance(c.body[0], ast.Expr)
+            and isinstance(c.body[0].value, ast.Constant) and isinstance(c.body[0].value.value, str)}
+    falhas, nos = [], list(ast.walk(arvore))
+    for no in nos:
+        if not eh_base and isinstance(no, ast.Dict):
+            falhas += [f"{nome}:{no.lineno} User-Agent literal — use UA ou ua_de(\"propósito\"): "
+                       f"{str(v.value)[:50]!r}" for k, v in zip(no.keys, no.values)
+                       if isinstance(k, ast.Constant) and k.value == "User-Agent" and isinstance(v, ast.Constant)]
+        if not eh_base and isinstance(no, ast.Tuple) and len(no.elts) == 2:
+            a, b = no.elts
+            if isinstance(a, ast.Constant) and a.value == "User-Agent" and isinstance(b, ast.Constant):
+                falhas.append(f"{nome}:{no.lineno} User-Agent literal em addheaders — use UA ou ua_de(\"propósito\")")
+        if isinstance(no, ast.Constant) and isinstance(no.value, str) and id(no) not in docs \
+                and TOKEN_NAVEGADOR in no.value:
+            falhas.append(f"{nome}:{no.lineno} string de código com token de navegador — "
+                          "nunca disfarçar o cliente (CLAUDE.md)")
+        if isinstance(no, ast.Call) and _nome_ast(no.func).split(".")[-1] == "ua_de" and no.args \
+                and isinstance(no.args[0], ast.Constant) and isinstance(no.args[0].value, str) \
+                and not ua_de(no.args[0].value).isascii():
+            falhas.append(f"{nome}:{no.lineno} ua_de({no.args[0].value!r}) gera cabeçalho não-ASCII — "
+                          "cabeçalho HTTP é ASCII (RFC 7230); veja §235")
+    cru = any((isinstance(n, ast.Name) and n.id in CRUAS) or (isinstance(n, ast.Attribute) and (
+        n.attr in CRUAS or (isinstance(n.value, ast.Name) and n.value.id == "requests"
+                            and n.attr in ("get", "post", "head", "put", "request")))) for n in nos)
+    if cru and not eh_base and not any(t in fonte for t in ("User-Agent", "addheaders", "from coletores_base import")):
+        falhas.append(f"{nome} faz pedido de rede cru sem identificar o cliente — "
+                      "a política de robots (§185) depende do cliente enviado")
+    return falhas
+
+
+def real_cliente():
+    from coletores_base import UA, ua_de
+    if not UA.startswith("MonitorElNino") or TOKEN_NAVEGADOR in UA:
+        return [f"o UA canônico não começa com o nome do projeto ou traz token de navegador: {UA[:60]!r}"], ""
+    arquivos = sorted(list(RAIZ.glob("*.py")) + list(RAIZ.glob("scripts/*.py")))
+    falhas = [f for p in arquivos for f in problemas_cliente(
+        p.read_text(encoding="utf-8"), p.relative_to(RAIZ).as_posix(), ua_de, p.name == "coletores_base.py")]
+    return falhas, f"{len(arquivos)} arquivo(s), um cliente só, nenhum disfarce. UA: {UA}"
+
+
+def _casos_cliente() -> list:
+    ascii_ = lambda s: s
+    acusa = lambda fonte, texto, **kw: any(texto in x for x in problemas_cliente(fonte, "x.py", ascii_, **kw))
+    return [
+        ("User-Agent literal num dict reprova", acusa('h = {"User-Agent": "robo/1"}', "User-Agent literal")),
+        ("User-Agent literal em addheaders reprova",
+         acusa('o.addheaders = [("User-Agent", "robo/1")]', "addheaders")),
+        ("User-Agent vindo de UA ou ua_de passa",
+         problemas_cliente('h = {"User-Agent": UA}\ng = {"User-Agent": ua_de("x")}', "x.py", ascii_) == []),
+        ("coletores_base.py pode ter o literal", not acusa('h = {"User-Agent": "robo/1"}', "literal", eh_base=True)),
+        ("token de navegador em string de código reprova",
+         acusa(f'h = "{TOKEN_NAVEGADOR}5.0"', "token de navegador")),
+        ("token de navegador em docstring é história, não defeito",
+         problemas_cliente(f'"""{TOKEN_NAVEGADOR}5.0 era o disfarce."""', "x.py", ascii_) == []),
+        ("ua_de com propósito acentuado que vira cabeçalho não-ASCII reprova (§235)",
+         any("não-ASCII" in x for x in problemas_cliente('ua_de("coleta çã")', "x.py", lambda s: s))
+         and not acusa('ua_de("coleta")', "não-ASCII")),
+        ("pedido cru sem cliente identificado reprova",
+         acusa("import urllib.request\nurllib.request.urlopen('http://a')", "pedido de rede cru")),
+        ("pedido de requests sem cliente reprova", acusa("import requests\nrequests.get('http://a')", "pedido de rede cru")),
+        ("pedido cru com cliente importado de coletores_base passa",
+         not acusa("from coletores_base import UA\nurlopen('http://a')", "pedido de rede cru")),
+        ("fonte que não compila é acusada", acusa("def (", "não compila")),
+    ]
+
+
 # ───────────────────────────── executor ─────────────────────────────
 # (nome, barra a publicação, confere o disco, casos do autoteste, roda o autoteste antes da conferência)
 REGRAS = [("marcadores", True, real_marcadores, _casos_marcadores, False),
@@ -620,7 +717,8 @@ REGRAS = [("marcadores", True, real_marcadores, _casos_marcadores, False),
           ("arquivada", False, real_arquivada, _casos_arquivada, True),
           ("changelog", False, real_changelog, _casos_changelog, False),
           ("carimbo", False, real_carimbo, _casos_carimbo, True),
-          ("scripts", False, real_scripts, _casos_scripts, False)]
+          ("scripts", False, real_scripts, _casos_scripts, False),
+          ("cliente", False, real_cliente, _casos_cliente, False)]
 
 
 def _ruins(nome, casos) -> list:
