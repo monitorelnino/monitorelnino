@@ -54,7 +54,6 @@ canal que não rodou não é um canal que não achou: a UF segue não verificada
 que cada modo registra a sua própria decisão no log.
 """
 import json
-import pathlib
 import re
 import sys
 import urllib.parse
@@ -62,7 +61,7 @@ import urllib.request
 
 import funil
 import motores_busca
-from coletores_base import (buscar, gravar, hoje_editorial, ler, log_busca, preservar_evidencia,
+from coletores_base import (buscar, fonte_do_coletor, grava_no_banco, gravar, hoje_editorial, ler, log_busca, preservar_evidencia,
                             registrar_lacuna, rodar_autoteste, ua_de)
 
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
@@ -522,18 +521,6 @@ def ler_fontes(uf: str) -> dict:
 # =============================================================================================
 # Autoteste — offline, sem rede e sem escrever em data/
 # =============================================================================================
-def fonte_do_coletor() -> str:
-    """O código OPERACIONAL deste arquivo, como texto — tudo o que vem antes do autoteste.
-
-    É o que permite ao autoteste cobrar a trava estrutural: conferir o que o coletor PODE fazer,
-    não só o que ele fez nesta versão. O corte no `def autoteste` não é detalhe: sem ele, os nomes
-    de arquivo proibidos que o próprio teste procura aparecem no texto procurado, e o teste reprova
-    por se encontrar — foi o que aconteceu na primeira versão desta trava."""
-    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
-    corte = texto.find("def autoteste")
-    return texto[:corte] if corte > 0 else texto
-
-
 def autoteste() -> int:
     nascida = pista_de({"title": "t", "url": "https://saude.ac.gov.br/p.pdf", "content": "c"},
                        "AC", "plancon_elnino", "q")
@@ -634,10 +621,7 @@ def autoteste() -> int:
         # TRAVA ESTRUTURAL, conferida no próprio fonte: este coletor não pode ganhar, numa edição
         # futura, uma escrita no banco. Não basta "hoje não escrevo" — o portão tem de perceber.
         "o fonte não grava em nenhum arquivo do banco":
-            lambda: not any(destino in fonte_do_coletor()
-                            for destino in ('gravar("saude_uf', 'gravar("monitor_saude',
-                                            'gravar("indice', 'gravar("estados',
-                                            'gravar("municipios')),
+            lambda: not grava_no_banco(fonte_do_coletor(__file__)),
         # CANAL 3: o coletor segue o que o sítio declara, e não um caminho plausível.
         "link declarado pelo sítio é seguido, com endereço absoluto":
             lambda: ("https://saude.ac.gov.br/cievs" in [u for _, u in achados]
@@ -659,8 +643,8 @@ def autoteste() -> int:
         # O canal 2 reconhece TODO adaptador direto declarado, e não só o da plataforma comum:
         # foi o que limitou a primeira varredura a cinco UFs.
         "o canal 2 reconhece todos os adaptadores diretos do diário":
-            lambda: "coletar_doe.ADAPTADORES_DE_BUSCA" in fonte_do_coletor()
-                    and "coletar_doe.itens_da_busca" in fonte_do_coletor(),
+            lambda: "coletar_doe.ADAPTADORES_DE_BUSCA" in fonte_do_coletor(__file__)
+                    and "coletar_doe.itens_da_busca" in fonte_do_coletor(__file__),
         "todo canal novo tem tradução no vocabulário do log":
             lambda: set(DECISAO_NO_LOG) >= {"doe_sem_pista", "canais_sem_pista",
                                             "canal_nao_disponivel", "canal_nao_declarado",
@@ -672,7 +656,7 @@ def autoteste() -> int:
                                                               "canal_nao_declarado",
                                                               "canal_fora_do_ar")),
         "o fonte grava só na fila de pistas":
-            lambda: sorted(set(re.findall(r'gravar\((PISTAS|"[^"]+")', fonte_do_coletor()))) == ["PISTAS"],
+            lambda: sorted(set(re.findall(r'gravar\((PISTAS|"[^"]+")', fonte_do_coletor(__file__)))) == ["PISTAS"],
     }
     return rodar_autoteste(casos)
 

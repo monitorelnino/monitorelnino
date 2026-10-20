@@ -46,8 +46,8 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
-from coletores_base import (buscar, gravar, hoje_editorial, ler, log_busca,  # noqa: E402
-                            preservar_evidencia, registrar_lacuna, rodar_autoteste)
+from coletores_base import (buscar, fonte_do_coletor, grava_no_banco, gravar, levanta, hoje_editorial, ler,  # noqa: E402
+                            log_busca, preservar_evidencia, registrar_lacuna, rodar_autoteste)
 
 BUSCA = "https://dadosabertos.saude.gov.br/dataset?q=gripal"
 CONJUNTO = "https://dadosabertos.saude.gov.br/dataset/{slug}"
@@ -247,16 +247,6 @@ def coletar() -> dict:
 # =============================================================================================
 # Autoteste — offline, sem rede e sem escrever em data/
 # =============================================================================================
-def fonte_do_coletor() -> str:
-    """O código OPERACIONAL deste arquivo, como texto — tudo o que vem antes do autoteste."""
-    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
-    corte = texto.find("def autoteste")
-    return texto[:corte] if corte > 0 else texto
-
-
-BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json")
-
 # Recorte REAL do portal, 01/10/2026 (encurtado; a estrutura é a que veio).
 FIXTURE_BUSCA = ('<html><script id="__NEXT_DATA__" type="application/json">' + json.dumps({
     "props": {"pageProps": {"numberOfPackages": 11, "packages": [
@@ -305,7 +295,7 @@ def autoteste() -> int:
         "a API declarada é lida do recurso":
             lambda: api_declarada(payload_do_portal(FIXTURE_CONJUNTO)).endswith("/_search"),
         "página sem o bloco da fonte LEVANTA, em vez de devolver vazio":
-            lambda: _levanta(lambda: payload_do_portal("<html>nada</html>"), ValueError),
+            lambda: levanta(lambda: payload_do_portal("<html>nada</html>"), ValueError),
         # A trava central: recusa nas duas rotas nunca produz série.
         "as duas rotas recusando é fonte bloqueada":
             lambda: decidir({2024: "x"}, 2026, False, False) == "fonte_bloqueada",
@@ -322,12 +312,9 @@ def autoteste() -> int:
             lambda: decidir({2026: "x"}, 2026, True, False) == "agregar",
         # TRAVA ESTRUTURAL: o coletor não pode ganhar escrita no banco numa edição futura.
         "o fonte não grava em nenhum arquivo do banco":
-            lambda: not any(f'gravar("{nome}' in fonte_do_coletor() for nome in BANCO_PROIBIDO),
-        "a lista proibida é a canônica do projeto, com os cinco arquivos":
-            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
-                                            "indice.json", "monitor_saude.json"},
+            lambda: not grava_no_banco(fonte_do_coletor(__file__)),
         "o fonte grava só na própria série":
-            lambda: sorted(set(re.findall(r"gravar\((SAIDA|\"[^\"]+\")", fonte_do_coletor()))) == ["SAIDA"],
+            lambda: sorted(set(re.findall(r"gravar\((SAIDA|\"[^\"]+\")", fonte_do_coletor(__file__)))) == ["SAIDA"],
         # A ressalva é obrigatória: o leitor não pode receber série de doença sem ela.
         "a ressalva diz que o Monitor não atribui casos ao El Niño":
             lambda: "não atribui casos ao El Niño" in RESSALVA,
@@ -343,16 +330,6 @@ def autoteste() -> int:
             lambda: "escrever" in __import__("inspect").signature(registrar_tentativa_sg).parameters,
     }
     return rodar_autoteste(casos)
-
-
-def _levanta(fn, excecao) -> bool:
-    try:
-        fn()
-    except excecao:
-        return True
-    except Exception:  # noqa: BLE001
-        return False
-    return False
 
 
 def main() -> int:

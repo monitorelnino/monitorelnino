@@ -34,9 +34,6 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 ARQUIVO = "fontes_doe.json"
-# Trava estrutural: este script escreve UM arquivo, o registro de fontes, e nunca o banco.
-BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json", "monitor_saude_v04.json"}
 
 ASSINATURAS = (
     ("apifront", re.compile(r"apifront", re.I)),
@@ -120,6 +117,8 @@ def veredito_da_recusa(erro) -> dict:
 
 
 def _autoteste() -> int:
+    sys.path.insert(0, str(RAIZ))
+    from coletores_base import grava_no_banco
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
     # cobre, ou menos. Agora e contado.
@@ -176,7 +175,7 @@ def _autoteste() -> int:
     ok("trava estrutural: uma escrita só, e é o registro de fontes",
        len(escritas) == 1 and escritas[0].strip().startswith("gravar(ARQUIVO"))
     ok("trava estrutural: nenhum arquivo do banco é destino",
-       not any(f'gravar("{b}' in fonte for b in BANCO_PROIBIDO))
+       not grava_no_banco(fonte))
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")

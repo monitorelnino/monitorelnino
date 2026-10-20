@@ -43,17 +43,12 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "scripts"))
 
+from julgar_filas import pistas_da_fila  # noqa: E402  (a leitura das filas é UMA só)
+
 FILAS = ("pistas_imprensa.json", "pistas_descobertas.json", "pistas_doe.json",
          "pistas_querido_diario.json")
 STATUS_DE_VOLTA = ("pista — atribuição corrigida pelo domínio oficial do documento; "
                    "volta ao juiz com o ente dono do domínio")
-
-
-def pistas_da_fila(doc: dict) -> list:
-    for chave in ("pistas", "itens"):
-        if isinstance(doc.get(chave), list):
-            return doc[chave]
-    return []
 
 
 def precisa_corrigir(pista: dict, dono: dict) -> bool:

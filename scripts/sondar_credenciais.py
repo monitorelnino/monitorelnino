@@ -28,13 +28,12 @@ USO
 """
 import json
 import os
-import ssl
 import sys
 import urllib.error
 import urllib.request
 import pathlib as _pathlib, sys as _sys
 _sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, contexto_tls  # noqa: E402  (§228: um cliente só, com propósito)
 
 TEMPO_LIMITE = 25
 CABECALHO = {"User-Agent": ua_de("sonda de credenciais")}
@@ -117,14 +116,6 @@ def classificar(status, corpo: str, erro_http: int = None) -> str:
     return "aceita"
 
 
-def _contexto_tls():
-    try:
-        import certifi
-        return ssl.create_default_context(cafile=certifi.where())
-    except ImportError:
-        return None
-
-
 def sondar_uma(chave: str, fonte: dict, buscar_fn=None) -> dict:
     """Sonda UMA fonte e devolve {chave, credencial, estado, detalhe}. Sem credencial não bate
     na porta: levar 401 de propósito gastaria a fonte e sujaria o log com recusa já conhecida."""
@@ -142,7 +133,7 @@ def sondar_uma(chave: str, fonte: dict, buscar_fn=None) -> dict:
         return {**base, "estado": estado, "detalhe": detalhe}
     try:
         req = urllib.request.Request(url, headers={**CABECALHO, **extra})
-        with urllib.request.urlopen(req, timeout=TEMPO_LIMITE, context=_contexto_tls()) as r:
+        with urllib.request.urlopen(req, timeout=TEMPO_LIMITE, context=contexto_tls()) as r:
             corpo = r.read(2000).decode("utf-8", errors="replace")
             estado = classificar(r.status, corpo)
         return {**base, "estado": estado,

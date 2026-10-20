@@ -22,7 +22,7 @@ promove nada a registro: promoção é do `julgar_saude.py`, com documento prim�
   e são gravados como `sem_acesso_automatico`, com o motivo técnico — lacuna declarada que **não
   conta como canal 2 consultado** no fechamento (A5-08, 10/10/2026; até 09/10 a regra da Paraíba
   contava essa rota como consultada);
-- nada é escrito no banco (`BANCO_PROIBIDO`), e o autoteste offline confere isso lendo o próprio
+- nada é escrito no banco (`coletores_base.BANCO_PROIBIDO`), e o autoteste offline confere isso lendo o próprio
   código-fonte.
 
 **PDF sem texto.** Edição digitalizada como imagem sai como `sem_texto_extraivel`, com o número de
@@ -54,8 +54,6 @@ INICIO_DO_CICLO = "2026-06-29"
 UFS = "SP MG RJ BA PR RS PE CE PA SC GO MA AM ES PB MT RN AL PI DF MS SE RO TO AC AP RR".split()
 # Teto por execução, para que uma recuperação não vire uma rodada de doze horas sem aviso.
 TETO_EDICOES = 400
-BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json", "monitor_saude_v04.json"}
 
 MESES = {1: "janeiro", 2: "fevereiro", 3: "março", 4: "abril", 5: "maio", 6: "junho",
          7: "julho", 8: "agosto", 9: "setembro", 10: "outubro", 11: "novembro", 12: "dezembro"}
@@ -768,6 +766,7 @@ def descobrir_rota(uf: str, buscar_fn=None, data_de_prova: str = None) -> dict:
 
 
 def _autoteste() -> int:
+    from coletores_base import grava_no_banco
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
     # cobre, ou menos. Agora e contado.
@@ -972,7 +971,7 @@ def _autoteste() -> int:
     ok("trava estrutural: as escritas são o registro da UF e o índice",
        escritas and all(e.startswith(("gravar(arquivo", "gravar(INDICE")) for e in escritas))
     ok("trava estrutural: nenhum arquivo do banco é destino",
-       not any(f'gravar("{b}' in fonte for b in BANCO_PROIBIDO))
+       not grava_no_banco(fonte))
     # Promover a registro é do juiz. A trava confere no código COMPILADO: nenhuma função deste
     # módulo chama `aplicar` nem importa o juiz — e olhar o bytecode evita o laço em que a própria
     # linha do teste, por citar o nome, fazia o teste reprovar.

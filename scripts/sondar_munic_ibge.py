@@ -27,7 +27,7 @@ editorial, porque muda o ano de referência do que o site afirma.
 
 NÃO GRAVA NADA. Não toca `data/`. Roda na Action E localmente: em 24/09/2026 mediu-se que o
 impedimento local não era bloqueio de host, e sim a cadeia de certificados do `ftp.ibge.gov.br`,
-que a loja do Windows não completa — ver `_contexto_tls`.
+que a loja do Windows não completa — ver `coletores_base.contexto_tls`.
 
 Uso:
   python3 scripts/sondar_munic_ibge.py             # sonda (rede)
@@ -35,14 +35,13 @@ Uso:
 """
 import io
 import re
-import ssl
 import sys
 import urllib.error
 import urllib.request
 import zipfile
 import pathlib as _pathlib, sys as _sys
 _sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent.parent))
-from coletores_base import ua_de  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import ua_de, contexto_tls  # noqa: E402  (§228: um cliente só, com propósito)
 
 UA = {"User-Agent": ua_de("sonda MUNIC")}
 
@@ -65,26 +64,9 @@ PADRAO_IBGE = re.compile(r"^(cod|codigo|cd)[\s_]*(mun|municipio|ibge)|^a1$", re.
 PADRAO_FUNDO = re.compile(r"(fundo|fumpdec|fumdec|fundec|fmpdc|fmdc)", re.I)
 
 
-def _contexto_tls():
-    """Verificação de certificado contra o pacote de CAs do `certifi` quando ele existe.
-
-    24/09/2026: a docstring desta sonda dizia que o ambiente de edição respondia 403
-    `host_not_allowed` para os domínios do IBGE. O que ele responde de verdade, medido hoje, é
-    CERTIFICATE_VERIFY_FAILED — a loja de certificados da máquina Windows não completa a cadeia
-    do `ftp.ibge.gov.br`. Mesmo defeito, e mesma correção, do `gsc.cemaden.gov.br` no §206.
-    Não afrouxa verificação nenhuma: valida contra um conjunto de raízes mais completo e igual em
-    qualquer máquina. Com isto a sonda roda FORA da Action, o que era o único impedimento para
-    responder à editoria qual edição da MUNIC serve."""
-    try:
-        import certifi
-        return ssl.create_default_context(cafile=certifi.where())
-    except ImportError:
-        return None
-
-
 def baixar(url: str, limite: int = 40_000_000) -> bytes:
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=120,
-                                context=_contexto_tls()) as r:
+                                context=contexto_tls()) as r:
         return r.read(limite)
 
 
