@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #928 · Um só deploy para o domínio
+
+O deploy de produção no domínio estava escrito três vezes: no publicador, na reposição urgente e no ensaio por botão. Agora é `scripts/repor_dominio.sh`, e o ensaio por botão sai, porque o domínio acompanha a `main` desde o #919. Quando e em que modo o domínio é reposto não muda; a reversão para a cortina segue pelo ramo `publico`. Saldo de código: −121 linhas.
+
 ## 2026-10-20 · #920 · Consolidação dos coletores: um lugar só para o que se repetia
 
 A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.
