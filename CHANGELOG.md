@@ -12,6 +12,11 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-20 · #921 · Três portões viram regras do executor de dado
 
 Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.
+=======
+
+## 2026-10-20 · #919 · O domínio acompanha a main
+
+Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O "Publicar dados" agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.
 
 ## 2026-10-19 · #918 · Internações do SUS e óbitos registrados entram como séries
 

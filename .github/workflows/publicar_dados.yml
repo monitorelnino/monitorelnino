@@ -53,6 +53,10 @@ on:
       - "Semanal — sinais climáticos e links"
       - "Busca web — cadência automática"
       - "Atualização semanal de dados"
+      # 20/10/2026: merge de PR (committer web-flow) só movia a prévia; o domínio esperava o próximo cron
+      # (8 h sem publicar em 19/10). Portões verdes no push da main agora fecham o ciclo. Commit de robô
+      # já tem o seu elo acima (condição do job).
+      - "Portões (pull request)"
     # 08/10/2026 (A2-05): `workflow_run` dispara para run do workflow nomeado em QUALQUER
     # ramo. Sem esta linha, diários do `ensaio` puxavam a corrente inteira na `main` — quatro
     # descobertas medidas em 07/10, uma delas cancelando a triagem pendente.
@@ -76,7 +80,11 @@ jobs:
   publicar:
     # Coletor que falhou não tem dado novo para publicar; só o `success` dispara. Os outros
     # gatilhos (horário e botão) não têm `workflow_run` e passam sempre.
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       (github.event.workflow_run.name != 'Portões (pull request)' ||
+        github.event.workflow_run.head_commit.committer.name == 'GitHub'))
     runs-on: ubuntu-latest
     defaults:
       run:
