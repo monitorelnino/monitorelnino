@@ -92,8 +92,6 @@ jobs:
           # O GitHub rejeitou dois workflows por cinco horas e nenhum portão viu (04/10/2026): pergunta a ele.
           # assunto: dado
           python3 scripts/verificar_workflow_aceito.py
-          # assunto: dado
-          python3 scripts/migrar_sobras_do_doe.py --autoteste
           # Reprova TEXTO do blog, não o site.
           # assunto: texto
           python3 scripts/verificar_texto_blog.py
@@ -123,8 +121,6 @@ jobs:
           # barra_publicacao: sim
           node scripts/verificar_texto_publico.js
           # assunto: dado
-          python3 scripts/pistas.py --autoteste
-          # assunto: dado
           python3 scripts/verificar_escritor_de_pista.py
           # Nenhuma fila espera por pessoa; pendente > 21 dias reprova (09/10/2026).
           # assunto: dado
@@ -147,8 +143,6 @@ jobs:
           # O CODEMAP é gerado do código e reprova quando envelhece (30/09/2026).
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --conferir
-          # assunto: texto rapido
-          python3 scripts/gerar_codemap.py --autoteste
           # Toda regra de layout/regras.json diz quem a julga (A7-14).
           # assunto: texto rapido
           python3 scripts/verificar_conformidade.py --regras-cobertas
@@ -333,8 +327,6 @@ jobs:
         if: steps.diff.outputs.dado_mudou == 'true'
         run: |
           python3 gerar_feeds.py --self-test
-          # Um cliente só, e nunca disfarçado (§228); a leitura é por AST.
-          python3 scripts/verificar_cliente_identificado.py
           python3 buscar_financiamento_preventivo.py --check
           # Roda TODO `*.py` com `--autoteste` e reprova em qualquer vermelho ou em alteração de `data/` (§220, §228).
           # Autoteste de `.py` não se repete aqui; fica no bloco "sempre" só o que lê layout/, conteúdo, schemas, página ou workflow.
