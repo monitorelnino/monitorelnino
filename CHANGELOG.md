@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #927 · Negativos de painel, saúde e financiamento passam a rodar na CI
+
+Os testes negativos de `verificar_painel.py`, `verificar_saude.py` e `verificar_financiamento.py` existiam sob `--negativos` e nenhum portão os chamava; dois da saúde apodreceram (as figuras mudaram de id). Passam a `--autoteste`, que `verificar_autotestes_isolados.py` roda, os dois da saúde acham a figura na página e há um positivo que segura o alias do crédito. Linhas líquidas +10.
+
 ## 2026-10-20 · #926 · Cliente identificado vira regra do executor do repositório
 
 `verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.
@@ -33,6 +37,10 @@ Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF 
 ## 2026-10-20 · #919 · O domínio acompanha a main
 
 Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O "Publicar dados" agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.
+
+## 2026-10-20 · #922 · Helpers de coletor em um só lugar
+
+`BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.
 
 ## 2026-10-20 · #922 · Helpers de coletor em um só lugar
 

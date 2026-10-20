@@ -11,7 +11,7 @@ verificar_painel.py — portão 15 (v2.3, §10-bis / E11)
      indisponíveis declarados, não imputados;
  (f) nada de data/painel/ lido por recalcular_mare.py;
  (g) agregados = contagem das fichas (paridade).
-Uso: python3 verificar_painel.py [--negativos]
+Uso: python3 verificar_painel.py [--autoteste]
 """
 import hashlib, json, pathlib, re, sys
 
@@ -56,7 +56,7 @@ def carregar():
     return j(P / "lista.json"), j(P / "fichas.json"), j(P / "agregados.json"), open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), marc, caps
 
 
-def negativos():
+def autoteste():
     import copy
     lista, fichas, ag, motor, marc, caps = carregar()
     def troca():
@@ -75,7 +75,7 @@ def negativos():
 
 
 if __name__ == "__main__":
-    if "--negativos" in sys.argv: sys.exit(negativos())
+    if "--autoteste" in sys.argv: sys.exit(autoteste())
     e = checar(*carregar())
     if e:
         print("✗ PAINEL: publicação bloqueada:"); [print("   ", x) for x in e]; sys.exit(1)

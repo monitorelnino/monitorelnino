@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/10/2026 · Negativos de painel, saúde e financiamento passam a rodar na CI</dt>
+      <dd>Os testes negativos de `verificar_painel.py`, `verificar_saude.py` e `verificar_financiamento.py` existiam sob `--negativos` e nenhum portão os chamava; dois da saúde apodreceram (as figuras mudaram de id). Passam a `--autoteste`, que `verificar_autotestes_isolados.py` roda, os dois da saúde acham a figura na página e há um positivo que segura o alias do crédito. Linhas líquidas +10.</dd>
       <dt>20/10/2026 · Cliente identificado vira regra do executor do repositório</dt>
       <dd>`verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.</dd>
       <dt>20/10/2026 · Paridade da cobertura QD e log de buscas viram regras do executor de dado</dt>
@@ -59,6 +61,8 @@
       <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80. =======</dd>
       <dt>20/10/2026 · O domínio acompanha a main</dt>
       <dd>Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O &quot;Publicar dados&quot; agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.</dd>
+      <dt>20/10/2026 · Helpers de coletor em um só lugar</dt>
+      <dd>`BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.</dd>
       <dt>20/10/2026 · Helpers de coletor em um só lugar</dt>
       <dd>`BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.</dd>
       <dt>20/10/2026 · Helpers de coletor em um só lugar</dt>
@@ -163,10 +167,6 @@
       <dd>Migração e correção únicas do log de buscas, orçamento da noite, rodador da Defesa civil, declaração de evidência perdida e registro único da saúde de 02/10: nenhum workflow, módulo, configuração ou portão os chama, e o dado que produziam já está gravado. Histórico completo no git. −1.254 linhas, nenhuma cobertura perdida.</dd>
       <dt>19/10/2026 · Sai o portão de autoteste sem chamador</dt>
       <dd>`verificar_autoteste_nao_escreve.py` não tinha chamador desde que o ensaio da noite e o portão de PR passaram a rodar `verificar_autotestes_isolados.py`, que compara `data/` antes e depois de cada autoteste e já cobre o caso que o originou (02/10). Retirado: −173 linhas, nenhuma cobertura perdida. METODOLOGIA aponta para o portão que ficou.</dd>
-      <dt>19/10/2026 · Portões: três a menos</dt>
-      <dd>Saem o portão de binário novo em evidências (suspenso desde 28/09, só informava) e o autoteste que não escreve (sem chamador desde o #842, coberto por `verificar_autotestes_isolados.py`). Esquema e paridade do log viram `verificar_log_de_buscas.py`, uma leitura para as quatro invariantes, com os 15 casos de autoteste. Comandos de portão 92 → 89; linhas .py/.js/.yml −371.</dd>
-      <dt>19/10/2026 · Proteja-se: a consulta do município responde pelo seu lugar</dt>
-      <dd>Entra a consulta do município, no módulo comum, com seis cartões lidos do dado: aviso do Inmet, alerta do Cemaden, qualidade do ar da estação mais próxima, calor da semana, dengue e decreto de emergência, cada um com fonte e data, e a linha da Defesa Civil do estado. Saem os três cartões de navegação, o segundo bloco de telefones, a grade das 27 siglas e o painel do decreto. &quot;Leve com você&quot; vai para o fim.</dd>
     </dl>
   </section>
 </main>

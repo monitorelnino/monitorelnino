@@ -11,7 +11,7 @@ Prova, bloqueando a publicação se falhar:
  (f) lacunas exibidas como ausência declarada (fontes não coletadas têm status de lacuna, não valores);
  (g) registros de emergência nunca em categoria pontuável;
  (h) crédito InfoDengue presente onde a fonte é usada.
-Uso: python verificar_saude.py [--negativos] (os testes negativos quebram cópias em memória e exigem falha).
+Uso: python verificar_saude.py [--autoteste] (os testes negativos quebram cópias em memória e exigem falha).
 """
 import json, pathlib, re, sys
 from pagina_completa import ler_pagina
@@ -246,8 +246,15 @@ def carregar():
             j("saude_federal.json"), open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), j("indice.json"), j("atos_resposta.json"))
 
 
-def negativos() -> int:
-    import copy
+def _sem_credito(html: str, grafia: str) -> str:
+    """A página sem o crédito da primeira figura creditada só por `grafia`: a figura é achada na
+    página, e não nomeada aqui, para o negativo não apodrecer quando as figuras mudam de id."""
+    cid = next(c for c in re.findall(r'<figure class="figura[^"]*" id="([^"]+)"', html)
+               if f"{grafia}('{c}'" in html and not any(f"{o}('{c}'" in html for o in ("fonteFigura", "MonitorMapas.credito") if o != grafia))
+    return html.replace(f"{grafia}('{cid}'", f"{grafia}('fora_{cid}'")
+
+
+def autoteste() -> int:
     html, suf, ssin, sfed, motor, idx, atos = carregar()
     casos = {
         "status fora do vocabulário": lambda: checar(html, {**suf, "uf": {**suf["uf"], "SC": {**suf["uf"]["SC"], "status": "TALVEZ"}}}, ssin, sfed, motor, idx, atos),
@@ -255,21 +262,24 @@ def negativos() -> int:
         "motor lendo saude_uf": lambda: checar(html, suf, ssin, sfed, motor + "\nx = 'saude_uf.json'", idx, atos),
         "frase preditiva": lambda: checar(html.replace("</main>", "<p>Prevemos surto em outubro.</p></main>"), suf, ssin, sfed, motor, idx, atos),
         "cartão não localizado com URL": lambda: checar(html, suf, ssin, {"cartoes": [{"titulo": "X", "status": "anunciado_nao_localizado", "url": "https://x"}]}, motor, idx, atos),
-        "figura sem crédito": lambda: checar(html.replace("fonteFigura('boxStatus'", "fonteFigura('boxOutro'"), suf, ssin, sfed, motor, idx, atos),
+        "figura sem crédito": lambda: checar(_sem_credito(html, "fonteFigura"), suf, ssin, sfed, motor, idx, atos),
         # 27/09/2026 (§258): a checagem aceita as duas grafias do MESMO crédito; o negativo cobre a
         # segunda, senão alguém poderia remover o ramo do alias sem nenhum teste reclamar.
         "figura sem crédito na grafia MonitorMapas.credito":
-            lambda: checar(html.replace("MonitorMapas.credito('boxCatalogo'", "MonitorMapas.credito('boxOutro'"), suf, ssin, sfed, motor, idx, atos),
+            lambda: checar(_sem_credito(html, "MonitorMapas.credito"), suf, ssin, sfed, motor, idx, atos),
     }
     falhas = 0
     for nome, fn in casos.items():
         ok = bool(fn()); print(("  ✓ " if ok else "  ✗ ") + f"negativo acusado: {nome}"); falhas += (not ok)
+    # O positivo que segura as duas grafias do crédito: sem ele, tirar o alias passaria calado.
+    real = not checar(html, suf, ssin, sfed, motor, idx, atos)
+    print(("  ✓ " if real else "  ✗ ") + "a página real não é acusada"); falhas += (not real)
     return 1 if falhas else 0
 
 
 if __name__ == "__main__":
-    if "--negativos" in sys.argv:
-        sys.exit(negativos())
+    if "--autoteste" in sys.argv:
+        sys.exit(autoteste())
     e = checar(*carregar())
     if e:
         print("✗ SAÚDE: publicação bloqueada:"); [print("   ", x) for x in e]; sys.exit(1)
