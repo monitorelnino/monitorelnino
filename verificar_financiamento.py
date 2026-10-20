@@ -18,7 +18,7 @@ verificar_financiamento.py — portão 13 (v2.3, §7.8)
      Camada B declarada (§208): a dotação na LOA (ICM var 11) mora no mesmo registro que a camada
      declarada de plano, que pontua — a trava injeta a dotação num município sem plano e exige que
      a contagem não mude.
-Uso: python3 verificar_financiamento.py [--negativos]
+Uso: python3 verificar_financiamento.py [--autoteste]
 """
 import json, os, pathlib, re, shutil, sys, tempfile
 from pagina_completa import ler_pagina
@@ -289,7 +289,7 @@ def estresse() -> bool:
     return antes == depois and media == media2
 
 
-def negativos() -> int:
+def autoteste() -> int:
     html, rotas, serie, poruf, motor, arqs, despesa, censo = carregar(); import copy
     casos = {
         "chave de API no motor": lambda: checar(html, rotas, serie, poruf, motor + '\nchave-api-dados = "0123456789abcdef0123456789abcdef"', arqs),
@@ -324,7 +324,7 @@ def negativos() -> int:
 
 
 if __name__ == "__main__":
-    if "--negativos" in sys.argv: sys.exit(negativos())
+    if "--autoteste" in sys.argv: sys.exit(autoteste())
     e = checar(*carregar())
     if not estresse(): e.append("(f) TESTE DE ESTRESSE: índice mudou sem data/financiamento/")
     if not dinheiro_declarado_nao_pontua():
