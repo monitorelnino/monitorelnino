@@ -130,7 +130,7 @@ def autoteste() -> int:
     casos.append(("o próprio portão de texto público aciona os de página",
                   classificar(["scripts/verificar_texto_publico.js"])["pagina"] is True))
     casos.append(("portão de dado em .py aciona os de dado",
-                  classificar(["scripts/verificar_paridade_cobertura_qd.py"])["dado"] is True))
+                  classificar(["scripts/verificar_regras_de_dado.py"])["dado"] is True))
     casos.append(("arquivo desconhecido não aciona nada além do sempre",
                   classificar(["LEIA-ME.txt"]) == {"dado": False, "pagina": False}))
     casos.append(("NADA alterado manda rodar tudo — 'não sei' não é 'nada'",
