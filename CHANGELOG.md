@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #920 · Consolidação dos coletores: um lugar só para o que se repetia
+
+A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.
+
 ## 2026-10-19 · #918 · Internações do SUS e óbitos registrados entram como séries
 
 Sete grupos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor e hepatite A) e os óbitos registrados em cartório passam a ter série por UF na forma comum dos desfechos, com faixa habitual, cortes do mapa, fonte e data. Internações: 69 meses lidos, restam 644 arquivos de 2019 e 2020, e os cortes seguem provisórios. Sem causa de óbito: o portal não a publica mais.
