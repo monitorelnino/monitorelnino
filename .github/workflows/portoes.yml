@@ -81,8 +81,6 @@ jobs:
           node scripts/verificar_acessibilidade.js
           # assunto: cor texto
           node scripts/verificar_runtime_financiamento.js
-          # assunto: dado
-          python3 scripts/verificar_financiamento_coerencia.py
           # Um medidor de frescor para Financiamento, Defesa civil e Saúde.
           # assunto: dado
           python3 scripts/verificar_frescor.py
@@ -107,18 +105,15 @@ jobs:
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_fichas_municipais.py
-          # 19/10/2026 (consolidação item 6): sete regras de dado num executor — ausência declarada, rótulo
-          # do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social e imprensa.
+          # 19–20/10/2026 (consolidação item 6): dez regras de dado num executor — ausência declarada, rótulo
+          # do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social, imprensa,
+          # cartões do Financiamento, versão do índice e camadas do PDF.
           # Barra a publicação só o que é integridade do dado (camada, esquema); o resto reprova o PR.
           # assunto: dado texto
           # barra_publicacao: sim
           python3 scripts/verificar_regras_de_dado.py --barra
           # assunto: dado texto
           python3 scripts/verificar_regras_de_dado.py --resto
-          # assunto: dado
-          python3 scripts/verificar_versao_do_indice.py
-          # assunto: dado
-          python3 scripts/verificar_camadas_do_pdf.py
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_esquema_de_pista.py
