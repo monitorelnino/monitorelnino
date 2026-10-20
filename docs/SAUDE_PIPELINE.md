@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-12 a 2026-10-19 (1222 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-12 a 2026-10-19 (1225 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -29,7 +29,7 @@ cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-18 02:10 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-19 01:12 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-19 01:29 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-19 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -62,11 +62,11 @@ cobertura 15d: 4578/5571 com verificação real até 2026-10-19 · por canal: we
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-18 03:52 | 3 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-18 03:26 | 10 s | — | ok | — |
 | `coletar_siconfi_182.py` | coletor | 2026-10-12 07:51 | 1 s | 5571 | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-10-19 08:49 | 108 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-10-19 01:13 | 104 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-10-18 03:53 | 146 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-18 03:25 | 39 s | — | ok | — |
 | `coletar_transferegov.py` | coletor | 2026-10-12 07:50 | 36 s | — | ok | — |
-| `coletar_transferencias_municipais.py` | coletor | 2026-10-19 08:50 | 42 s | — | ok | — |
+| `coletar_transferencias_municipais.py` | coletor | 2026-10-19 01:14 | 61 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-18 01:45 | 40 s | — | **erro** (2 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_dominios.py` | coletor | 2026-10-18 05:50 | 823 s | — | **erro** (4 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-19 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |

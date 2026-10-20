@@ -174,14 +174,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 16,
+   "valor": 7,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "19/10/2026 05:50",
+   "referencia": "19/10/2026 22:14",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "19/10/2026 05:50",
+   "consultado_em": "19/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -194,14 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 1599,
+   "valor": 1439,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "19/10/2026 05:50",
+   "referencia": "19/10/2026 22:14",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "19/10/2026 05:50",
+   "consultado_em": "19/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -214,7 +214,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 957,
+   "valor": 231,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -223,80 +223,56 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261019.csv",
+   "nota": "Focos do dia — focos_diario_br_20261020.csv",
    "secundaria": null,
    "lista": [
     {
-     "uf": "PA",
-     "valor": 717
-    },
-    {
      "uf": "MA",
-     "valor": 61
+     "valor": 102
     },
     {
-     "uf": "AL",
-     "valor": 36
-    },
-    {
-     "uf": "MG",
-     "valor": 29
-    },
-    {
-     "uf": "PI",
-     "valor": 22
-    },
-    {
-     "uf": "MT",
-     "valor": 19
-    },
-    {
-     "uf": "TO",
-     "valor": 17
-    },
-    {
-     "uf": "PB",
-     "valor": 12
+     "uf": "PA",
+     "valor": 42
     },
     {
      "uf": "GO",
-     "valor": 11
+     "valor": 21
+    },
+    {
+     "uf": "PI",
+     "valor": 19
+    },
+    {
+     "uf": "CE",
+     "valor": 15
     },
     {
      "uf": "BA",
      "valor": 9
     },
     {
-     "uf": "CE",
+     "uf": "PB",
      "valor": 7
+    },
+    {
+     "uf": "AL",
+     "valor": 5
+    },
+    {
+     "uf": "MG",
+     "valor": 4
     },
     {
      "uf": "PE",
-     "valor": 7
-    },
-    {
-     "uf": "RR",
-     "valor": 4
+     "valor": 3
     },
     {
      "uf": "RO",
      "valor": 2
     },
     {
-     "uf": "AM",
-     "valor": 1
-    },
-    {
-     "uf": "RN",
-     "valor": 1
-    },
-    {
-     "uf": "SC",
-     "valor": 1
-    },
-    {
-     "uf": "SP",
-     "valor": 1
+     "uf": "SE",
+     "valor": 2
     }
    ],
    "pagina_de_origem": null,
@@ -307,7 +283,7 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 4.9,
+   "valor": 3.0,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
@@ -318,7 +294,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 38.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 32.0 °C contra a média de 29.0 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"

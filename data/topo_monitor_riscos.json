@@ -4,14 +4,14 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 4.9,
+   "valor": 3.0,
    "referencia": "19/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belém",
-   "capital": "Belém",
-   "uf": "PA",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Brasília",
+   "capital": "Brasília",
+   "uf": "DF",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 38.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 32.0 °C contra a média de 29.0 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
     "valor": 3.9,
     "referencia": "17/10/2026"
@@ -19,14 +19,14 @@
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 957,
-   "referencia": "Focos do dia — focos_diario_br_20261019.csv",
-   "uf_com_mais_focos": "PA",
+   "valor": 231,
+   "referencia": "Focos do dia — focos_diario_br_20261020.csv",
+   "uf_com_mais_focos": "MA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 330,
-    "referencia": "Focos do dia — focos_diario_br_20261018.csv"
+    "valor": 957,
+    "referencia": "Focos do dia — focos_diario_br_20261019.csv"
    }
   },
   {
@@ -44,18 +44,18 @@
    "id": "avisos_inmet_distintos",
    "valor": 2,
    "perigo_ou_maior": 0,
-   "referencia": "19/10/2026 05:50",
+   "referencia": "19/10/2026 22:14",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 3,
-    "referencia": "17/10/2026 22:36"
+    "valor": 2,
+    "referencia": "19/10/2026 05:50"
    }
   },
   {
    "id": "probabilidade_el_nino",
-   "valor": 99,
-   "trimestre": "MAM 2027",
+   "valor": 100,
+   "trimestre": "OND 2026",
    "referencia": "19/10/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
