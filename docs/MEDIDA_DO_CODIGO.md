@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **98.586 linhas** em **319 arquivos** .py/.js; **34 workflows**.
-- **83 comandos de portão**: dados/portão 24, paginas/autoteste 5, paginas/portão 54.
-- **153 nomes de função** definidos em mais de um arquivo.
+- **98.154 linhas** em **316 arquivos** .py/.js; **34 workflows**.
+- **80 comandos de portão**: dados/portão 24, paginas/autoteste 5, paginas/portão 51.
+- **151 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 52656 |
-| `scripts` | 38032 |
-| `assets` | 7185 |
+| `scripts` | 37836 |
+| `assets` | 6949 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -25,17 +25,18 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `verificar_pista_imprensa.py` | 1703 |
 | `coletar_doe.py` | 1653 |
 | `juiz.py` | 1422 |
-| `assets/js/saude.js` | 1405 |
-| `assets/js/monitor-de-riscos.js` | 1333 |
-| `assets/js/index.js` | 1232 |
+| `assets/js/monitor-de-riscos.js` | 1341 |
+| `assets/js/index.js` | 1278 |
 | `scripts/ensaio_da_noite.py` | 1219 |
 | `julgar_saude.py` | 1210 |
 | `coletar_painel_am.py` | 1135 |
+| `assets/js/saude.js` | 1103 |
 | `coletar_edicoes_doe.py` | 1075 |
 | `recalcular_mare.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `julgar_e_aplicar_descobertas.py` | 1024 |
 | `scripts/unir_conflito_de_rodada.py` | 1022 |
+| `scripts/verificar_regras_de_dado.py` | 872 |
 | `gerar_pacote_blog.py` | 830 |
 | `gerar_imprensa_semana.py` | 791 |
 | `julgar_filas.py` | 791 |
@@ -44,14 +45,13 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `scripts/pistas.py` | 701 |
 | `coletar_diarios_municipais.py` | 659 |
 | `scripts/gerar_topo_das_paginas.py` | 639 |
-| `coletar_boletim_pe_arboviroses.py` | 627 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 
 | função | arquivos | onde |
 |---|---:|---|
 | `coletar` | 27 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
-| `problemas` | 25 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
+| `problemas` | 23 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
 | `self_test` | 15 | `atualizar_marcos_severidade.py`, `classificador_natureza.py`, `detectar_marcos_federais.py`, `gerar_dados_abertos.py` … |
 | `gerar` | 13 | `classificar_planos_municipais.py`, `gerar_blog.py`, `gerar_card_municipios.py`, `gerar_contadores_financiamento.py` … |
 | `montar` | 13 | `buscar_protocolo_calor.py`, `desfechos_sus.py`, `gerar_card_municipios.py`, `gerar_erros_localizacao.py` … |
@@ -86,7 +86,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `tabela` | 4 | `assets/js/financiamento.js`, `gerar_pdf_indice.py`, `scripts/gerar_saude_pipeline.py`, `scripts/medir_revocacao_das_consultas.py` |
 | `w` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `_contexto_tls` | 3 | `coletar_sinais_risco.py`, `scripts/sondar_credenciais.py`, `scripts/sondar_munic_ibge.py` |
-| `_data` | 3 | `gerar_financiamento_semana.py`, `scripts/verificar_financiamento_coerencia.py`, `scripts/verificar_frescor.py` |
+| `_data` | 3 | `gerar_financiamento_semana.py`, `scripts/verificar_frescor.py`, `scripts/verificar_regras_de_dado.py` |
 | `_git` | 3 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_tamanho_dos_dados.py` |
 | `_iso` | 3 | `coletar_sinais_risco.py`, `gerar_dados_abertos.py`, `scripts/checagem_pre_noite.py` |
 | `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
