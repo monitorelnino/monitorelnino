@@ -222,13 +222,7 @@ relatórios). Relatórios de toda execução vão para o repositório **privado*
 `monitorelnino/robo-registro` — nunca para este repositório público, que não
 deve conter o nome do site nem o endereço reservado.
 
-**Ensaio de publicação (14/09/2026):** `publicar_dominio_ensaio.yml` (na `main`, só por botão, exige
-digitar PUBLICAR) faz um deploy de PRODUÇÃO do retrato da `main` com `noindex` (cabeçalho e `robots.txt`
-de bloqueio só nesse deploy) e roda `scripts/verificar_publicado.js` contra o domínio real (páginas do
-sitemap em 200, cabeçalhos, robots no modo esperado, SHA-256 de cada arquivo servido contra
-`docs/MANIFEST_SHA256.txt`, canários de `meta.json` e `indice.json`); relatórios no `robo-registro`.
-**Reversão do ensaio** = "Run workflow" de `publicar_dominio.yml` no ramo `publico` (~1 min) ou
-"Publish deploy" no deploy anterior da cortina, no painel do Netlify. O ensaio não é o lançamento.
+**Domínio acompanha a `main` (20/10/2026):** o ensaio por botão (`publicar_dominio_ensaio.yml`, 14/09) saiu. Quem repõe o domínio com senha e `noindex` é `scripts/repor_dominio.sh`, chamado pelo publicador (depois do dado e depois dos Portões verdes de merge de PR) e pela reposição urgente de `atualizar.yml`; `verificar_publicado.yml` confere o domínio real. **Reversão** = "Run workflow" de `publicar_dominio.yml` no ramo `publico` (~1 min) ou "Publish deploy" no deploy anterior da cortina, no painel do Netlify.
 
 **Lançamento** = PR no `main` que copie `publicar_dominio.yml` (ajustado para
 `branches: [main]`) e remova `publicar_previa.yml`; merge pela editoria.
