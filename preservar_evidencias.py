@@ -76,13 +76,20 @@ def gravar_texto(h: str, paginas: list) -> str:
     return hashlib.sha256(txt.encode("utf-8")).hexdigest()
 
 
+def e_pdf(it: dict) -> bool:
+    """O item é PDF? Pela URL, ou por ter sido preservado como edição de diário oficial: o endereço da
+    edição do RJ (`mostra_edicao.php?k=`), do DF e do RS não termina em `.pdf`, e a edição escaneada
+    nunca chegava à fila de leitura nem à de OCR (A3, 20/10/2026). Função pura."""
+    return (str(it.get("url", "")).lower().split("?")[0].endswith(".pdf")
+            or it.get("origem") == "coletar_edicoes_doe")
+
+
 def precisa_leitura(it: dict) -> bool:
     """O item do índice entra na fila de leitura de PDF? Função pura.
 
     Só PDF sem texto lido, sem texto manual e sem texto integral: os três moram em
     `evidencias/<h>.txt`, e ler de novo sobrescreveria o arquivo sob o mesmo nome (F41)."""
-    return (str(it.get("url", "")).lower().split("?")[0].endswith(".pdf")
-            and not it.get("texto_arquivo") and not it.get("texto_manual")
+    return (e_pdf(it) and not it.get("texto_arquivo") and not it.get("texto_manual")
             and not it.get("texto_integral"))
 
 
@@ -280,8 +287,7 @@ def alvos_ocr(itens: dict) -> list:
     """Itens cujo PDF foi lido e não tinha texto: `texto_arquivo` gravado com menos caracteres que
     o piso, e sem OCR ainda. Idempotente por construção — quem tem `ocr_arquivo` sai da fila."""
     return [(h, it) for h, it in itens.items()
-            if str(it.get("url", "")).lower().split("?")[0].endswith(".pdf")
-            and it.get("texto_arquivo") and (it.get("caracteres") or 0) < OCR_MIN_CARACTERES
+            if e_pdf(it) and it.get("texto_arquivo") and (it.get("caracteres") or 0) < OCR_MIN_CARACTERES
             and not it.get("ocr_arquivo") and not it.get("texto_manual")]
 
 
@@ -389,6 +395,11 @@ def autoteste_ocr() -> int:
         falhas.append("item com texto integral entrou na fila de leitura — sobrescreveria o .txt (F41)")
     if not precisa_leitura({"url": "http://x/p.pdf"}):
         falhas.append("PDF sem texto saiu da fila de leitura")
+    _rj = {"url": "https://x.gov.br/mostra_edicao.php?k=0608", "origem": "coletar_edicoes_doe"}
+    if not precisa_leitura(_rj) or precisa_leitura({"url": "https://x.gov.br/mostra_edicao.php?k=0608"}):
+        falhas.append("A3: edição de diário sem .pdf na URL fora da fila de leitura, ou página qualquer dentro dela")
+    if {h for h, _ in alvos_ocr({"r" * 64: dict(_rj, texto_arquivo="evidencias/r.txt", caracteres=0)})} != {"r" * 64}:
+        falhas.append("A3: edição escaneada sem .pdf na URL fora da fila de OCR")
     fila = {h for h, _ in alvos_ocr(itens)}
     if fila != {"a" * 64, "e" * 64}:
         falhas.append(f"alvos_ocr devolveu {sorted(x[:1] for x in fila)}, esperado o escaneado e o abaixo do piso")
