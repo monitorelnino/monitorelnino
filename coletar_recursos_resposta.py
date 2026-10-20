@@ -53,7 +53,7 @@ sys.path.insert(0, str(RAIZ))
 import funil  # noqa: E402
 from coletores_base import (buscar, gravar, hoje_editorial, ler, log_busca,  # noqa: E402
                             preservar_evidencia, referencia_ibge, registrar_lacuna,
-                            rodar_autoteste, varrer_busca_dou)
+                            rodar_autoteste, varrer_busca_dou, BANCO_PROIBIDO, fonte_operacional)
 
 SAIDA = "resposta/recursos_liberados.json"
 ORIGEM = "coletar_recursos_resposta"
@@ -95,9 +95,6 @@ MESES = {m: i + 1 for i, m in enumerate(
 ACOES = {"resposta": "resposta", "recuperação": "recuperacao", "recuperacao": "recuperacao"}
 
 # Arquivos do banco onde este coletor NUNCA escreve.
-BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json")
-
 
 # =============================================================================================
 # Leitura do ato — funções puras sobre o texto
@@ -302,12 +299,6 @@ def coletar(desde: datetime.date, ate: datetime.date = None, buscar_fn=None) -> 
 # =============================================================================================
 # Autoteste — offline, sem rede e sem escrever em data/
 # =============================================================================================
-def fonte_do_coletor() -> str:
-    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
-    corte = texto.find("def autoteste")
-    return texto[:corte] if corte > 0 else texto
-
-
 # Recorte REAL do ato lido em 02/10/2026 (texto encurtado; a estrutura é a que veio).
 FIXTURE = (
     "09/2026 | Edição: 182 | Seção: 1 | Página: 39 Órgão: Ministério da Integração e do "
@@ -388,12 +379,9 @@ def autoteste() -> int:
             lambda: "art. 73, VI, a" in um.get("frase_c18", ""),
         # TRAVA ESTRUTURAL: nenhuma escrita no banco, nem numa edição futura.
         "o fonte não grava em nenhum arquivo do banco":
-            lambda: not any(f'gravar("{nome}' in fonte_do_coletor() for nome in BANCO_PROIBIDO),
-        "a lista proibida é a canônica do projeto, com os cinco arquivos":
-            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
-                                            "indice.json", "monitor_saude.json"},
+            lambda: not any(f'gravar("{nome}' in fonte_operacional(__file__) for nome in BANCO_PROIBIDO),
         "o fonte grava só no próprio arquivo":
-            lambda: sorted(set(re.findall(r"gravar\((SAIDA|\"[^\"]+\")", fonte_do_coletor()))) == ["SAIDA"],
+            lambda: sorted(set(re.findall(r"gravar\((SAIDA|\"[^\"]+\")", fonte_operacional(__file__)))) == ["SAIDA"],
     }
     return rodar_autoteste(casos)
 

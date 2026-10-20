@@ -60,6 +60,9 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from pistas import chave_da_pista  # a identidade da pista tem UMA definição
+
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
 # Chave da lista que só cresce, por arquivo. Só entra aqui o que a regra do projeto declara
@@ -164,17 +167,6 @@ FILAS_DE_PISTA = (
 )
 
 
-def _chave_de_pista(pista: dict) -> str:
-    """A identidade da pista. A MESMA de `scripts/pistas.chave_da_pista` — duas definições de
-    identidade produziriam duas filas diferentes que se acham iguais."""
-    p = pista or {}
-    ident = str(p.get("id") or "").strip()
-    if ident:
-        return "id:" + ident
-    url = str(p.get("url_final") or p.get("url") or "").strip()
-    return "url:" + url + "|" + str(p.get("alvo") or p.get("ibge") or p.get("uf") or "")
-
-
 def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
     """A pista com os campos dos dois lados. Levanta `Recusa` no conflito real. Função pura.
 
@@ -223,16 +215,16 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 
     lb = base.get(chave) if isinstance(base.get(chave), list) else []
     ln, ld = nosso[chave], deles[chave]
-    por_chave_base = {_chave_de_pista(p): p for p in lb}
-    por_chave_nosso = {_chave_de_pista(p): p for p in ln}
-    por_chave_deles = {_chave_de_pista(p): p for p in ld}
+    por_chave_base = {chave_da_pista(p): p for p in lb}
+    por_chave_nosso = {chave_da_pista(p): p for p in ln}
+    por_chave_deles = {chave_da_pista(p): p for p in ld}
 
     # A ORDEM é a da base, depois os acréscimos nossos, depois os deles. Ordem estável mantém o
     # diff legível e faz a união ser a mesma qualquer que seja o lado em que o rebase corre.
-    ordem = [_chave_de_pista(p) for p in lb]
-    ordem += [k for k in (_chave_de_pista(p) for p in ln) if k not in por_chave_base]
+    ordem = [chave_da_pista(p) for p in lb]
+    ordem += [k for k in (chave_da_pista(p) for p in ln) if k not in por_chave_base]
     vistas = set(ordem)
-    ordem += [k for k in (_chave_de_pista(p) for p in ld)
+    ordem += [k for k in (chave_da_pista(p) for p in ld)
               if k not in por_chave_base and k not in vistas]
 
     uniao, mescladas = [], 0

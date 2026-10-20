@@ -71,7 +71,7 @@ import unicodedata
 import zipfile
 
 import funil
-from coletores_base import (buscar, gravar_em, hoje_editorial, ler, log_busca, preservar_evidencia,
+from coletores_base import (BANCO_PROIBIDO, buscar, gravar_em, hoje_editorial, ler, log_busca, preservar_evidencia,
                             registrar_lacuna, rodar_autoteste)
 
 RAIZ = pathlib.Path(__file__).resolve().parent
@@ -89,9 +89,6 @@ ROTAS = ("constitucional", "saude", "assistencia_social", "defesa_civil", "outra
 # Os cinco arquivos do banco, na mesma lista que `descobrir_planos.py` usa. Nenhum coletor de
 # camada de contexto pode escrever neles, e o autoteste confere que este não ganhou essa
 # escrita numa edição futura.
-BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json")
-
 
 def normalizar(nome: str) -> str:
     """Nome de município comparável: sem acento, sem pontuação, maiúsculas. Função pura.
@@ -557,9 +554,6 @@ def autoteste() -> int:
         "o fonte grava só no arquivo de transferências":
             lambda: ("grav" + "ar_em(SAIDA") in fonte
                      and not any(grava_em(n) for n in BANCO_PROIBIDO),
-        "a lista de proibidos é a do projeto, com os cinco arquivos do banco":
-            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
-                                            "indice.json", "monitor_saude.json"},
         "a saída é o arquivo por município, de peso zero":
             lambda: SAIDA.name == "transferencias_uniao.json" and "PESO ZERO" in fonte,
     }

@@ -21,7 +21,7 @@ USO
   python coletar_doe.py --regiao NE            # lote por região (§13: NE, N, CO, SE, S)
   python coletar_doe.py --uf SC --desde 2026-06-29
 """
-import base64, json, pathlib, re, sys, time, urllib.parse
+import base64, json, re, sys, time, urllib.parse
 from datetime import date, timedelta
 import funil
 # 16/10/2026: o endereço da edição por data é o do canal 2 (saúde) — um padrão por UF, conferido
@@ -31,7 +31,8 @@ from coletar_edicoes_doe import (PADROES as PADROES_CANAL2, MINIMO_BYTES_DE_EDIC
 from coletores_base import (carimbar_atos, buscar, enviar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
-                            ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial)
+                            ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial,
+                            BANCO_PROIBIDO, fonte_operacional, levanta)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO": "DF GO MS MT",
@@ -1169,22 +1170,6 @@ FIXTURE_APIFRONT_VAZIO = json.dumps({"hits": {"total": 0, "hits": []}}, ensure_a
 FIXTURE_APIFRONT_TOTAL_SEM_LISTA = json.dumps({"hits": {"total": 7, "hits": []}}, ensure_ascii=False).encode("utf-8")
 
 
-def fonte_do_coletor() -> str:
-    """O código OPERACIONAL deste arquivo, como texto — tudo o que vem antes do autoteste.
-
-    Mesma trava estrutural do coletor de saúde, e pela mesma razão: o portão tem de perceber se
-    uma edição futura ganhar escrita em arquivo do banco. O corte no `def autoteste` evita que o
-    teste se encontre a si mesmo nos nomes que procura."""
-    texto = pathlib.Path(__file__).read_text(encoding="utf-8")
-    corte = texto.find("def autoteste")
-    return texto[:corte] if corte > 0 else texto
-
-
-# A lista canônica do projeto, num só lugar: trava que cobre três dos cinco arquivos não é trava.
-BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json")
-
-
 def _pausas_df():
     """Cada página nova do SINJ-DF depois da primeira espera a pausa por domínio; página repetida não."""
     dorme = []
@@ -1197,18 +1182,6 @@ def _pausas_df():
         return pg(n["i"]) if n["i"] < 3 else FIXTURE_DIARIOS_DF
     edicoes_df(buscar, "https://x/sinj", pausa=0.0, dormir=dorme.append)("2026-10-14")
     return dorme
-
-
-def _levanta(fn, excecao) -> bool:
-    """True quando `fn` levanta `excecao`. Existe para o caso negativo não virar try/except solto
-    dentro de um lambda, onde ele não cabe."""
-    try:
-        fn()
-    except excecao:
-        return True
-    except Exception:  # noqa: BLE001
-        return False
-    return False
 
 
 def _erro_http(url, codigo=404):
@@ -1458,7 +1431,7 @@ def autoteste() -> int:
         "DODF: total e lista saem da resposta real":
             lambda: parse_dodf(FIXTURE_DODF)[0] == 7 and len(parse_dodf(FIXTURE_DODF)[1]) == 1,
         "DODF: total declarado com lista vazia LEVANTA (§210)":
-            lambda: _levanta(lambda: parse_dodf(
+            lambda: levanta(lambda: parse_dodf(
                 json.dumps({"totalMaterias": 5, "listaMaterias": []}).encode("utf-8")),
                 FormatoDaBuscaMudou),
         "DODF: zero declarado com lista vazia é zero, e não erro":
@@ -1512,29 +1485,29 @@ def autoteste() -> int:
         "data lida não se relê e a antiga sai de `lidas`": _t_edicao_por_data,
         "DOE-CE: os cadernos do dia vão até o primeiro 300/404": _t_cadernos_ce,
         "edição por data: arquivo que não é uma edição em PDF LEVANTA (§210)":
-            lambda: _levanta(lambda: itens_por_edicao(
+            lambda: levanta(lambda: itens_por_edicao(
                 "PB", "2026-10-14", "2026-10-14", lambda d: [{"edicao": None, "url": "u"}], {},
                 buscar_fn=lambda u, **k: b"<html>pagina de erro</html>", dormir=lambda s: None), FormatoDaBuscaMudou),
         "DOE-AM: a rota (a) dá número e id; o PDF é a rota (c) pelo id; dia sem edição é lista vazia":
             lambda: (edicoes_apifront(lambda u, **k: FIXTURE_EDICOES_AM, "https://x.am.gov.br/")("2026-10-13") == [
                         {"edicao": "35804", "url": "https://x.am.gov.br/portal/edicoes/download/18246"}]
                      and edicoes_apifront(lambda u, **k: FIXTURE_EDICOES_AM_VAZIO, "https://x.am.gov.br")("2026-10-14") == []
-                     and _levanta(lambda: edicoes_apifront(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                     and levanta(lambda: edicoes_apifront(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
                                   FormatoDaBuscaMudou)),
         "DOE-AL: o mês lista as edições, suplemento incluído; dia sem edição é lista vazia; formato novo LEVANTA":
             lambda: (edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x.al.gov.br/api/")("2026-10-16") == [
                         {"edicao": "2905", "url": "https://x.al.gov.br/api/editions/downloadPdf/51928"},
                         {"edicao": "2905 suplemento", "url": "https://x.al.gov.br/api/editions/downloadPdf/51929"}]
                      and edicoes_apinova(lambda u, **k: FIXTURE_EDICOES_AL, "https://x")("2026-10-17") == []
-                     and _levanta(lambda: edicoes_apinova(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
+                     and levanta(lambda: edicoes_apinova(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-14"),
                                   FormatoDaBuscaMudou)),
         "DOE-RS: a lista da data dá os diários e o PDF sai de download/<id>/pdf; data sem diário é lista vazia; formato novo LEVANTA":
             lambda: (edicoes_rs(lambda u, **k: FIXTURE_EDICOES_RS, "https://x.rs.gov.br/")("2026-10-16") == [
                         {"edicao": "200/53", "url": "https://x.rs.gov.br/public/diarios/download/54767/pdf"},
                         {"edicao": "200/84", "url": "https://x.rs.gov.br/public/diarios/download/54768/pdf"}]
                      and edicoes_rs(lambda u, **k: FIXTURE_EDICOES_RS, "https://x")("2026-10-17") == []
-                     and _levanta(lambda: edicoes_rs(lambda u, **k: b'[{"id":1,"data":"x"}]', "https://x")("2026-10-16"), FormatoDaBuscaMudou)
-                     and _levanta(lambda: edicoes_rs(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-16"),
+                     and levanta(lambda: edicoes_rs(lambda u, **k: b'[{"id":1,"data":"x"}]', "https://x")("2026-10-16"), FormatoDaBuscaMudou)
+                     and levanta(lambda: edicoes_rs(lambda u, **k: b'{"outra": 1}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-RJ: a Parte I do dia vira o PDF pelo identificador do visualizador; outros cadernos ficam fora; página fora do contrato levanta":
             lambda: (edicoes_rj(lambda u, **k: FIXTURE_PAGINA_RJ if "session=QUJD" in u else FIXTURE_CADERNOS_RJ,
@@ -1542,39 +1515,39 @@ def autoteste() -> int:
                         {"edicao": "Parte I (Poder Executivo)",
                          "url": "https://x.rj.gov.br/portal/modules/conteudoonline/mostra_edicao.php?k=EAB21D88-45BPD-4CD0-BD2A-D4F0D229380A"}]
                      and edicoes_rj(lambda u, **k: b"<p>cadernos do Di\xc3\xa1rio Oficial de <b>x</b></p>", "https://x")("2026-10-17") == []
-                     and _levanta(lambda: edicoes_rj(lambda u, **k: b"Erro.", "https://x")("2026-10-16"), FormatoDaBuscaMudou)
-                     and _levanta(lambda: edicoes_rj(lambda u, **k: b"sem pd" if "session=" in u else FIXTURE_CADERNOS_RJ,
+                     and levanta(lambda: edicoes_rj(lambda u, **k: b"Erro.", "https://x")("2026-10-16"), FormatoDaBuscaMudou)
+                     and levanta(lambda: edicoes_rj(lambda u, **k: b"sem pd" if "session=" in u else FIXTURE_CADERNOS_RJ,
                                                      "https://x")("2026-10-16"), FormatoDaBuscaMudou)),
         "DOE-DF: o DODF da data sai da lista do SINJ por varredura; DCL fica fora; data sem DODF e lista fora do contrato":
             lambda: (edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj")("2026-10-16") == [
                         {"edicao": "DODF 193", "url": "https://x/sinj/BaixarArquivoDiario.aspx?id_file=ccc-3"},
                         {"edicao": "DODF 117 (suplemento)", "url": "https://x/sinj/BaixarArquivoDiario.aspx?id_file=ddd-4"}]
                      and edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj")("2026-10-14") == []
-                     and _levanta(lambda: edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj", dormir=lambda s: None)("2026-10-01"), FormatoDaBuscaMudou)
-                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData": []}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
+                     and levanta(lambda: edicoes_df(lambda u, **k: FIXTURE_DIARIOS_DF, "https://x/sinj", dormir=lambda s: None)("2026-10-01"), FormatoDaBuscaMudou)
+                     and levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData": []}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
                      and _pausas_df() == [0.0, 0.0]
-                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"outra": 1}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
-                     and _levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData":[{"_source":{"dt_assinatura":"2026-10-16"}}]}',
+                     and levanta(lambda: edicoes_df(lambda u, **k: b'{"outra": 1}', "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)
+                     and levanta(lambda: edicoes_df(lambda u, **k: b'{"aaData":[{"_source":{"dt_assinatura":"2026-10-16"}}]}',
                                                      "https://x/sinj")("2026-10-16"), FormatoDaBuscaMudou)),
         "DOE-SC: a API do dia dá ordinária e extra com o PDF do repositório; cancelada fica fora":
             lambda: (edicoes_sc(lambda u, **k: FIXTURE_EDICOES_SC, "https://x/apis")("2026-10-16") == [
                         {"edicao": "22862-A", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862-A.pdf"},
                         {"edicao": "22862", "url": REPOSITORIO_SC + "/2026/20261016/Jornal/22862.pdf"}]
-                     and _levanta(lambda: edicoes_sc(lambda u, **k: b'{"error": true}', "https://x")("2026-10-16"),
+                     and levanta(lambda: edicoes_sc(lambda u, **k: b'{"error": true}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-MG: o PDF sai do envelope CMS em BER (pedaços) e em DER; sem conteúdo embutido LEVANTA":
             lambda: (conteudo_do_envelope_cms(FIXTURE_CMS_BER) == b"%PDF-abc"
                      and conteudo_do_envelope_cms(FIXTURE_CMS_DER) == b"*"
-                     and _levanta(lambda: conteudo_do_envelope_cms(b"\x30\x00"), FormatoDaBuscaMudou)),
+                     and levanta(lambda: conteudo_do_envelope_cms(b"\x30\x00"), FormatoDaBuscaMudou)),
         "DOE-MG: a edição da data traz o Diário do Executivo; dia sem edição é lista vazia; sem arquivo LEVANTA":
             lambda: (edicoes_mg(lambda u, **k: json.dumps({"dados": {"arquivoCadernoPrincipal": {
                         "arquivo": base64.b64encode(FIXTURE_CMS_BER).decode()}}}).encode(), "https://x/")("2026-10-16") == [
                         {"edicao": "Diário do Executivo", "pdf": b"%PDF-abc",
                          "url": "https://x/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16"}]
                      and edicoes_mg(lambda u, **k: b'{"dados": null, "erros": []}', "https://x")("2026-10-11") == []
-                     and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": null, "erros": ["x"]}', "https://x")("2026-10-14"),
+                     and levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": null, "erros": ["x"]}', "https://x")("2026-10-14"),
                                   FormatoDaBuscaMudou)
-                     and _levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": {"outro": 1}}', "https://x")("2026-10-16"),
+                     and levanta(lambda: edicoes_mg(lambda u, **k: b'{"dados": {"outro": 1}}', "https://x")("2026-10-16"),
                                   FormatoDaBuscaMudou)),
         "DOE-MS: a listagem dá o PDF por data, suplemento incluído; dia fora dela é lista vazia":
             lambda: (edicoes_ms_na_listagem(FIXTURE_LISTAGEM_MS) == {
@@ -1583,13 +1556,13 @@ def autoteste() -> int:
                         "2026-10-13": [{"edicao": "12304", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12304_13_10_2026.pdf"},
                                        {"edicao": "12305", "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/10/13/DO12305_13_10_2026.pdf"}]}
                      and edicoes_ms(lambda u, **k: FIXTURE_LISTAGEM_MS.encode("utf-8"))("2026-10-09") == []
-                     and _levanta(lambda: edicoes_ms(lambda u, **k: b"<html>nada</html>")("2026-10-09"), FormatoDaBuscaMudou)),
+                     and levanta(lambda: edicoes_ms(lambda u, **k: b"<html>nada</html>")("2026-10-09"), FormatoDaBuscaMudou)),
         # SP — a API própria do DOE-SP: busca paginada e publicação inteira.
         "DOE-SP: total, itens e 'há próxima' saem da resposta real; total sem lista LEVANTA (§210)":
             lambda: (parse_busca_sp(FIXTURE_BUSCA_SP)[0] == 1 and len(parse_busca_sp(FIXTURE_BUSCA_SP)[1]) == 1
                      and parse_busca_sp(FIXTURE_BUSCA_SP)[2] is False
-                     and _levanta(lambda: parse_busca_sp(b'{"items": [], "totalItems": 5}'), FormatoDaBuscaMudou)
-                     and _levanta(lambda: parse_busca_sp(b'{"outra": 1}'), FormatoDaBuscaMudou)
+                     and levanta(lambda: parse_busca_sp(b'{"items": [], "totalItems": 5}'), FormatoDaBuscaMudou)
+                     and levanta(lambda: parse_busca_sp(b'{"outra": 1}'), FormatoDaBuscaMudou)
                      and parse_busca_sp(b'{"items": [], "totalItems": 0}') == (0, [], False)),
         "DOE-SP: o texto da publicação sai sem HTML, estilo e título do SEI":
             lambda: (texto_da_publicacao_sp(FIXTURE_PUBLICACAO_SP).startswith("bem como o Decreto nº 70.765")
@@ -1609,18 +1582,15 @@ def autoteste() -> int:
                          {"edicao": "197/2026", "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/"
                           "5cc561ff-8ff1-4435-a0a6-d8b59c3c6249/0d2588a1-8ba2-4926-a4f8-c2a257a45015.pdf"}]
                      and edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"draw":1,"data":[]}')("2026-10-11") == []
-                     and _levanta(lambda: edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"data":[["sem link","1"]]}')("2026-10-14"), FormatoDaBuscaMudou)
-                     and _levanta(lambda: edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"erro":1}')("2026-10-14"), FormatoDaBuscaMudou)),
+                     and levanta(lambda: edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"data":[["sem link","1"]]}')("2026-10-14"), FormatoDaBuscaMudou)
+                     and levanta(lambda: edicoes_pi(None, "https://x/doe", lambda u, d, **k: b'{"erro":1}')("2026-10-14"), FormatoDaBuscaMudou)),
         "DOE-PB: o endereço da edição é o padrão do canal 2, preenchido pela data":
             lambda: edicoes_pb(None)("2026-10-14") == [{"edicao": None, "url":
                 "https://auniao.pb.gov.br/servicos/doe/2026/outubro/diario-oficial-14-10-2026-portal.pdf"}],
         # TRAVA ESTRUTURAL: este coletor escreve em atos_resposta, pistas_doe e fontes_doe, e em
         # nada mais. O teste confere o que ele PODE fazer, não só o que ele fez nesta versão.
         "o fonte não grava em nenhum arquivo do banco":
-            lambda: not any(f'gravar("{nome}' in fonte_do_coletor() for nome in BANCO_PROIBIDO),
-        "a lista proibida é a canônica do projeto, com os cinco arquivos":
-            lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json",
-                                            "indice.json", "monitor_saude.json"},
+            lambda: not any(f'gravar("{nome}' in fonte_operacional(__file__) for nome in BANCO_PROIBIDO),
         "§231 UF sem rota de busca não se registra como apifront": t12})
 
 

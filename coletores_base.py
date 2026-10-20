@@ -981,6 +981,31 @@ def contexto_tls():
         return None
 
 
+# A lista canônica do projeto, num só lugar: trava que cobre três dos cinco arquivos não é trava.
+BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
+                  "monitor_saude.json", "monitor_saude_v04.json")
+
+
+def fonte_operacional(arquivo: str) -> str:
+    """O código OPERACIONAL de um coletor, como texto: tudo o que vem antes do `def autoteste`. É o
+    que permite ao autoteste cobrar a trava estrutural (o que o coletor PODE fazer); o corte evita
+    que o teste se encontre a si mesmo nos nomes de arquivo proibidos que ele procura."""
+    texto = pathlib.Path(arquivo).read_text(encoding="utf-8")
+    corte = texto.find("def autoteste")
+    return texto[:corte] if corte > 0 else texto
+
+
+def levanta(fn, excecao) -> bool:
+    """True quando `fn` levanta `excecao`: o caso negativo do autoteste sem try/except solto num lambda."""
+    try:
+        fn()
+    except excecao:
+        return True
+    except Exception:  # noqa: BLE001
+        return False
+    return False
+
+
 def buscar_uma_vez(url: str, timeout: int = 40, origem: str = None) -> bytes:
     """GET simples com User-Agent do projeto, UMA tentativa (ver `buscar`, que repete). Levanta a exceção — quem chama decide
     se vira lacuna declarada (regra 1) ou aborta. Em sítio público (não API), testa o corpo
