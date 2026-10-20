@@ -103,9 +103,9 @@ jobs:
           # assunto: dado
           # barra_publicacao: sim
           python3 scripts/verificar_fichas_municipais.py
-          # 19–20/10/2026 (consolidação item 6): dez regras de dado num executor — ausência declarada, rótulo
+          # 19–20/10/2026 (consolidação item 6): doze regras de dado num executor — ausência declarada, rótulo
           # do canal de descoberta, camada declarada, esquema do ato, proveniência, rede social, imprensa,
-          # cartões do Financiamento, versão do índice e camadas do PDF.
+          # cartões do Financiamento, versão do índice, camadas do PDF, cartões da semana da Imprensa e âncoras internas.
           # Barra a publicação só o que é integridade do dado (camada, esquema); o resto reprova o PR.
           # assunto: dado texto
           # barra_publicacao: sim
@@ -286,13 +286,9 @@ jobs:
           python3 verificar_financiamento.py
           python3 verificar_painel.py
           python3 verificar_resposta.py
-          # Cartões da Imprensa: paridade com `semana.json`, período, zero nunca é "sem coleta" (§255).
-          python3 scripts/verificar_imprensa.py
           # `cobertura_qd.json` e `verificacao_resumo.json` contam a mesma coisa e têm de concordar; zero indexado é falha de coleta (§256).
           python3 scripts/verificar_paridade_cobertura_qd.py
           python3 saude_opendatasus.py
-          # Ponteiro quebra em silêncio: âncora para `id` inexistente o navegador não acusa.
-          python3 scripts/verificar_ancoras_internas.py
 
       - name: Idempotência dos derivados — o gerador dá sempre o mesmo resultado
         if: steps.diff.outputs.dado_mudou == 'true'
