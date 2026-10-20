@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · Releitura das edições sem texto
+
+O coletor dos diários oficiais relê uma vez as edições marcadas sem texto extraível quando muda a versão do leitor. Corrige as 89 edições do RJ lidas antes do ajuste de leitura.
+
 ## 2026-10-20 · #931 · Dado do diário do DF
 
 DF: 134 edições lidas em 143 datas, de 29/06 a 20/10, pelo JSON público do SINJ; 16 trazem termo de saúde. Dado da válvula unido à `main` pela base comum. Código: 0 linhas.
