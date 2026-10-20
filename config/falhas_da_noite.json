@@ -781,8 +781,8 @@
     "docs/SAUDE_PIPELINE.md (14/10): as duas linhas de erro com a contagem",
     "pyflakes em todo .py versionado: 4 nomes sem definição (os dois acima, `gravar_em` em aplicar_c10_imprensa.py, `time` em coletar_sinais_risco.py)"
    ],
-   "correcao": "Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_scripts_dos_workflows.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.",
-   "caso_de_teste": "scripts/verificar_scripts_dos_workflows.py --autoteste: nome usado sem import reprova (F56)",
+   "correcao": "Import de `ler`; sai o bloco do disjuntor; os outros dois imports. `verificar_repositorio.py` (portão que já cobria script de workflow) passa a reprovar nome sem definição em todo .py, pelo pyflakes.",
+   "caso_de_teste": "scripts/verificar_repositorio.py --autoteste: nome usado sem import reprova (F56)",
    "falta": null
   },
   {

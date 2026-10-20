@@ -51,18 +51,16 @@ jobs:
         run: |
           set -e
           # `git add -A` marca conflito como resolvido: o marcador já subiu duas vezes no CHANGELOG (28/09/2026).
-          # assunto: cor texto rapido
+          # Escrita em modo texto sem newline fixado corrompe derivado regenerado fora do runner (§178).
           # assunto: cor texto rapido
           # barra_publicacao: sim
-          python3 scripts/verificar_marcadores_de_conflito.py
+          python3 scripts/verificar_repositorio.py --barra
           # assunto: cor texto rapido
           python3 scripts/validar_workflows.py
+          # 20/10/2026 (consolidação item 6): seis regras do repositório num executor — script de workflow que
+          # existe, página arquivada, CHANGELOG curto e carimbo da rodada. O resto reprova o PR, não o publicador.
           # assunto: texto rapido
-          python3 scripts/verificar_scripts_dos_workflows.py
-          # Escrita em modo texto sem newline fixado corrompe derivado regenerado fora do runner (§178).
-          # assunto: texto rapido
-          # barra_publicacao: sim
-          python3 scripts/verificar_escrita_portavel.py
+          python3 scripts/verificar_repositorio.py --resto
           # Credencial e CPF nas linhas acrescentadas; credencial de terceiro nas evidências (A7-11, alerta de 01/10/2026).
           # assunto: texto rapido
           python3 scripts/verificar_segredos.py --contra origin/main
@@ -146,20 +144,11 @@ jobs:
           node scripts/verificar_seguranca.js
           # assunto: cor rapido
           node scripts/verificar_seo.js
-          # Página arquivada não volta ao ar por descuido: `publish = "."` serve a raiz (§258).
-          # assunto: texto rapido
-          python3 scripts/verificar_pagina_arquivada.py
           # O CODEMAP é gerado do código e reprova quando envelhece (30/09/2026).
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --conferir
           # assunto: texto rapido
           python3 scripts/gerar_codemap.py --autoteste
-          # Entrada nova de CHANGELOG é curta e tem chave por data e PR (§317).
-          # assunto: texto rapido
-          python3 scripts/verificar_changelog_curto.py
-          # O corte é a data da rodada: o que o carimbo diz e quando é escrito.
-          # assunto: texto rapido
-          python3 scripts/verificar_carimbo_da_rodada.py
           # Toda regra de layout/regras.json diz quem a julga (A7-14).
           # assunto: texto rapido
           python3 scripts/verificar_conformidade.py --regras-cobertas

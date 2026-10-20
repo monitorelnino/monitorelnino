@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `BANCO_PROIBIDO`, o leitor do fonte operacional e `levanta` viram uma definição em `coletores_base.py` (eram cópias em cinco coletores); `contexto_tls` e `chave_da_pista` perdem a segunda definição. Sem mudança de comportamento. Linhas líquidas −100.
 
+## 2026-10-20 · #923 · Seis portões do repositório viram um executor
+
+`verificar_repositorio.py` reúne marcadores de conflito, escrita portável, página arquivada, changelog curto, carimbo da rodada e scripts dos workflows; seis arquivos saem e o `pre-commit` chama o executor. Comandos de portão 80→76; linhas líquidas −425; 95 casos de autoteste e mutantes provados.
+
 ## 2026-10-20 · #921 · Três portões viram regras do executor de dado
 
 Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.
