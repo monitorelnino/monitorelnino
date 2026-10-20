@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Regras de dado, num executor só (consolidação, item 6, 19–20/10/2026).
 
-Doze portões pequenos tinham o mesmo esqueleto (docstring, `problemas()`, autoteste, `main()`) e
+Catorze portões pequenos tinham o mesmo esqueleto (docstring, `problemas()`, autoteste, `main()`) e
 liam `data/`. Aqui cada regra é um bloco de duas funções — `problemas_*` (pura) e `real_*` (lê o
 disco) — e uma lista de casos; o esqueleto existe uma vez. Cada regra e cada caso de teste dos
-doze foram preservados.
+catorze foram preservados.
 
 AS REGRAS
   ausencia    `data/ausencia_declarada.json` (§201): órgão, data e canal nomeados; `efeito_no_indice`
@@ -30,9 +30,13 @@ AS REGRAS
   semana      cartões "Esta semana em números" da Imprensa: paridade com `semana.json`, zero ≠ sem
               coleta, variação só com par, datas dos atos legíveis nos dois formatos (§253, §255).
   ancoras     âncora interna citada por página ou script existe no destino (01/10 e 16/10/2026).
+  paridade_qd `cobertura_qd.json` e `verificacao_resumo.json` contam o mesmo acervo; indefinido nunca
+              é `false`; partição de três parcelas (§256, §280).
+  log         o log de buscas só cresce (marca d'água total e por mês), sem linha inválida, com
+              data ISO e decisão do vocabulário (item 4, 28/09/2026; `--marcar-log` atualiza a marca).
 
 BARRA A PUBLICAÇÃO (editoria, 06/10/2026) só `camada` e `esquema`: são integridade do dado. As
-outras dez reprovam o PR e não seguram o publicador. Por isso a CI chama o executor duas vezes:
+outras doze reprovam o PR e não seguram o publicador. Por isso a CI chama o executor duas vezes:
 `--barra` (as duas que barram) e `--resto`.
 
 USO
@@ -1040,6 +1044,193 @@ def _casos_ancoras() -> list:
     ]
 
 
+# ───────────── paridade da cobertura do Querido Diário (27/09/2026, §256; 01/10 e 28/09) ─────────────
+# `data/cobertura_qd.json` e `data/verificacao_resumo.json` contam a mesma coisa — quantos municípios
+# têm diário indexado — e o número entra no preprint como limitação quantificada: divergência seria
+# duas afirmações incompatíveis. Compara acervo com acervo: indexados = lidos + indexados sem leitura
+# (`cobertura_indefinida`); indefinido (`None`) nunca é `false`; a partição dos indexados no resumo
+# tem TRÊS parcelas desde o §280 (com_mencao + coberto_sem_mencao + sem_edicao_no_periodo).
+def contar_qd(cobertura: dict) -> dict:
+    municipios = (cobertura or {}).get("municipios") or {}
+    valores = [r.get("cobertura_qd") if isinstance(r, dict) else r for r in municipios.values()]
+    return {"indexados": sum(v is True for v in valores), "nao_indexados": sum(v is False for v in valores),
+            "indefinidos": sum(v is not True and v is not False for v in valores), "total": len(municipios)}
+
+
+def problemas_paridade(cobertura: dict, resumo: dict) -> list:
+    c, v = contar_qd(cobertura), (resumo or {}).get("varredura_diarios") or {}
+    if not c["total"]:
+        return ["data/cobertura_qd.json sem municípios"]
+    if not v:
+        return ["data/verificacao_resumo.json sem o bloco varredura_diarios"]
+    p, lidos, sem_leitura = [], v.get("indexados"), v.get("cobertura_indefinida") or 0
+    if lidos is not None and c["indexados"] != lidos + sem_leitura:
+        p.append(f"indexados divergem: cobertura_qd.json conta {c['indexados']} e o resumo declara "
+                 f"{lidos} lido(s) mais {sem_leitura} indexado(s) sem leitura, que somam {lidos + sem_leitura}")
+    soma = c["indexados"] + c["nao_indexados"] + c["indefinidos"]
+    if soma != c["total"]:
+        p.append(f"as três classes somam {soma} e o arquivo tem {c['total']} municípios")
+    if v.get("total") is not None and c["total"] != v["total"]:
+        p.append(f"total de municípios diverge: cobertura_qd.json {c['total']} × "
+                 f"verificacao_resumo.json {v['total']}")
+    if v.get("sem_cobertura_qd") is not None and c["nao_indexados"] != v["sem_cobertura_qd"]:
+        p.append(f"não indexados divergem: cobertura_qd.json conta {c['nao_indexados']} e "
+                 f"verificacao_resumo.json declara {v['sem_cobertura_qd']}")
+    com, sem, vazio = v.get("com_mencao"), v.get("coberto_sem_mencao"), v.get("sem_edicao_no_periodo")
+    if None not in (com, sem, vazio):
+        if com + sem + vazio != v.get("indexados"):
+            p.append(f"no resumo, com_mencao {com} + coberto_sem_mencao {sem} + sem_edicao_no_periodo "
+                     f"{vazio} = {com + sem + vazio}, que não é indexados {v.get('indexados')}")
+    elif com is not None and sem is not None:
+        p.append("o resumo traz com_mencao e coberto_sem_mencao sem sem_edicao_no_periodo — a partição "
+                 "dos indexados tem três parcelas desde o §280; sem a terceira, os municípios com diário "
+                 "indexado e nenhuma edição na janela voltam a ser contados como tendo menção")
+    if c["indexados"] == 0:
+        p.append("nenhum município indexado — 5.571 em false é falha de coleta, não um fato; confira "
+                 "se a rotina que preenche cobertura_qd.json rodou")
+    return p
+
+
+def real_paridade():
+    arqs = [RAIZ / "data/cobertura_qd.json", RAIZ / "data/verificacao_resumo.json"]
+    if falta := [str(a.relative_to(RAIZ)) for a in arqs if not a.exists()]:
+        return [f"arquivo ausente: {', '.join(falta)}"], ""
+    cobertura, resumo = (json.loads(a.read_text(encoding="utf-8")) for a in arqs)
+    c = contar_qd(cobertura)
+    return (problemas_paridade(cobertura, resumo),
+            f"{c['indexados']} município(s) com diário indexado nos dois arquivos ({c['nao_indexados']} "
+            f"não indexados, {c['indefinidos']} indefinidos, total {c['total']})")
+
+
+def _cob(t, f, n):
+    ms = [True] * t + [False] * f + [None] * n
+    return {"municipios": {str(i): {"cobertura_qd": x} for i, x in enumerate(ms)}}
+
+
+CASOS_PARIDADE = [
+    ("o estado real de 28/09 passa: 527 / 5041 / 3 contra indexados 527",
+     problemas_paridade(_cob(527, 5041, 3), {"varredura_diarios": dict(
+         indexados=527, total=5571, sem_cobertura_qd=5041, com_mencao=260, coberto_sem_mencao=211,
+         sem_edicao_no_periodo=56)}) == []),
+    ("indexados divergentes reprovam",
+     any("indexados divergem" in x for x in problemas_paridade(
+         _cob(500, 5068, 3), {"varredura_diarios": dict(indexados=527, total=5571)}))),
+    ("zero indexado reprova, mesmo com os dois arquivos de acordo",
+     any("nenhum município indexado" in x for x in problemas_paridade(
+         _cob(0, 5571, 0), {"varredura_diarios": dict(indexados=0, total=5571, sem_cobertura_qd=5571)}))),
+    ("não indexados divergentes reprovam",
+     any("não indexados divergem" in x for x in problemas_paridade(
+         _cob(527, 5041, 3), {"varredura_diarios": dict(indexados=527, total=5571, sem_cobertura_qd=5000)}))),
+    ("partição interna do resumo que não fecha reprova",
+     any("não é indexados" in x for x in problemas_paridade(
+         _cob(527, 5041, 3), {"varredura_diarios": dict(indexados=527, total=5571, com_mencao=300,
+                                                        coberto_sem_mencao=180, sem_edicao_no_periodo=56)}))),
+    ("partição de DUAS parcelas reprova, mesmo fechando a soma (o defeito do §280)",
+     any("três parcelas" in x for x in problemas_paridade(
+         _cob(527, 5041, 3), {"varredura_diarios": dict(indexados=527, total=5571, sem_cobertura_qd=5041,
+                                                        com_mencao=347, coberto_sem_mencao=180)}))),
+    ("total divergente reprova",
+     any("total de municípios diverge" in x for x in problemas_paridade(
+         _cob(527, 5041, 3), {"varredura_diarios": dict(indexados=527, total=9999)}))),
+    ("indefinido é contado à parte, nunca como não indexado",
+     (lambda c: c["indefinidos"] == 5 and c["nao_indexados"] == 20)(contar_qd(_cob(10, 20, 5)))),
+]
+
+
+# ─────────────── log de buscas só cresce (28/09/2026, item 4; esquema A6-27) ───────────────
+# Marca d'água em `data/log_buscas_marca.json`: o total e cada mês nunca encolhem (a união por
+# conteúdo de 23/09 apagou quase 3.000 execuções sem aviso); linha de JSONL inválida é dado perdido;
+# toda execução tem `data` ISO e a primeira palavra de `decisao` no vocabulário (houve escrita por
+# fora de `coletores_base.log_busca`: decisão em prosa e data dd/mm/aaaa). Atualizar a marca depois
+# de crescer: `python3 scripts/verificar_regras_de_dado.py --marcar-log`.
+MARCA_LOG = RAIZ / "data" / "log_buscas_marca.json"
+
+
+def contar_log(doc: dict) -> tuple:
+    execucoes = doc.get("execucoes") or []
+    por_mes = {}
+    for e in execucoes:
+        mes = str(e.get("data") or "")[:7] or "sem-data"
+        por_mes[mes] = por_mes.get(mes, 0) + 1
+    return len(execucoes), por_mes, int(doc.get("linhas_invalidas") or 0)
+
+
+def problemas_log(total: int, por_mes: dict, invalidas: int, marca: dict) -> list:
+    marca_total = int((marca or {}).get("total") or 0)
+    falhas = [f"o log ENCOLHEU: {total} execuções contra {marca_total} da marca d'água "
+              f"({marca_total - total} a menos). Log é append-only."] if total < marca_total else []
+    falhas += [f"o mês {mes} encolheu: {por_mes.get(mes, 0)} contra {n} da marca d'água"
+               for mes, n in sorted(((marca or {}).get("por_mes") or {}).items())
+               if int(por_mes.get(mes, 0)) < int(n)]
+    if invalidas:
+        falhas.append(f"{invalidas} linha(s) inválida(s) no JSONL — linha perdida é dado perdido")
+    return falhas
+
+
+def problemas_log_esquema(log: dict, vocabulario) -> list:
+    fora = []
+    for i, e in enumerate((log or {}).get("execucoes") or []):
+        data, dec = str(e.get("data") or ""), str(e.get("decisao") or "")
+        if not RE_ISO.fullmatch(data):
+            fora.append(f"execução {i} ({e.get('canal')}): data fora de AAAA-MM-DD: {data!r}")
+        if dec.split(" ")[0] not in vocabulario:
+            fora.append(f"execução {i} ({e.get('canal')}): decisão fora do vocabulário: {dec[:60]!r}")
+    return fora
+
+
+def real_log():
+    from coletores_base import DECISOES_LOG, ler_log
+    log = ler_log()
+    total, por_mes, invalidas = contar_log(log)
+    marca = json.loads(MARCA_LOG.read_text(encoding="utf-8")) if MARCA_LOG.exists() else {}
+    return (problemas_log(total, por_mes, invalidas, marca) + problemas_log_esquema(log, DECISOES_LOG)[:20],
+            f"{total} execução(ões) em {len(por_mes)} mês(es), nenhuma perdida (marca d'água: "
+            f"{int(marca.get('total') or 0)}), data ISO e decisão do vocabulário")
+
+
+def marcar_log() -> int:
+    from coletores_base import gravar_em, ler_log
+    total, por_mes, _ = contar_log(ler_log())
+    antes = json.loads(MARCA_LOG.read_text(encoding="utf-8")) if MARCA_LOG.exists() else {}
+    meses = set(por_mes) | set(antes.get("por_mes") or {})
+    nova = {"_governanca": ("Marca d'água do log append-only (item 4, 28/09/2026): o maior total já "
+                            "visto, e por mês. O portão reprova se a contagem encolher."),
+            "total": max(total, int(antes.get("total") or 0)),
+            "por_mes": {m: max(por_mes.get(m, 0), int((antes.get("por_mes") or {}).get(m, 0))) for m in meses}}
+    gravar_em(MARCA_LOG, nova)
+    print(f"✓ marca d'água em {nova['total']} execução(ões), {len(nova['por_mes'])} mês(es)")
+    return 0
+
+
+_MARCA = {"total": 100, "por_mes": {"2026-08": 40, "2026-09": 60}}
+_VOCAB = ("registro", "pista", "consultado", "nada")
+CASOS_LOG = [
+    ("crescer passa", problemas_log(120, {"2026-08": 40, "2026-09": 80}, 0, _MARCA) == []),
+    ("ficar igual passa", problemas_log(100, {"2026-08": 40, "2026-09": 60}, 0, _MARCA) == []),
+    ("encolher o total reprova e diz quantas a menos",
+     (lambda f: any("ENCOLHEU" in x and "10 a menos" in x for x in f))(
+         problemas_log(90, {"2026-08": 40, "2026-09": 50}, 0, _MARCA))),
+    ("mês que encolhe reprova mesmo com o total crescendo",
+     any("2026-08 encolheu" in x for x in problemas_log(120, {"2026-08": 30, "2026-09": 90}, 0, _MARCA))),
+    ("linha inválida reprova",
+     any("inválida" in x for x in problemas_log(100, {"2026-08": 40, "2026-09": 60}, 1, _MARCA))),
+    ("sem marca d'água nada reprova (primeira execução)", problemas_log(10, {"2026-09": 10}, 0, {}) == []),
+    ("mês novo não reprova",
+     problemas_log(101, {"2026-08": 40, "2026-09": 60, "2026-10": 1}, 0, _MARCA) == []),
+    ("conta total, meses e inválidas; data ausente vira sem-data",
+     contar_log({"execucoes": [{"data": "2026-09-01"}, {"data": "2026-08-31"}, {"data": None}],
+                 "linhas_invalidas": 2}) == (3, {"2026-09": 1, "2026-08": 1, "sem-data": 1}, 2)),
+    ("esquema: log no esquema passa",
+     problemas_log_esquema({"execucoes": [{"data": "2026-10-12", "decisao": "pista"},
+                                          {"data": "2026-10-12", "decisao": "nada localizado"}]}, _VOCAB) == []),
+    ("esquema: data dd/mm/aaaa reprova",
+     len(problemas_log_esquema({"execucoes": [{"data": "28/09/2026", "decisao": "pista"}]}, _VOCAB)) == 1),
+    ("esquema: decisão em prosa reprova",
+     len(problemas_log_esquema({"execucoes": [{"data": "2026-08-27", "decisao": "+6 registros"}]}, _VOCAB)) == 1),
+    ("esquema: log vazio passa", problemas_log_esquema({}, _VOCAB) == []),
+]
+
+
 # ───────────────────────────── executor ─────────────────────────────
 # (nome, barra a publicação, confere o disco)
 REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
@@ -1047,7 +1238,8 @@ REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
           ("proveniencia", False, real_proveniencia), ("redes", False, real_redes),
           ("imprensa", False, real_imprensa), ("financiamento", False, real_financiamento),
           ("versao", False, real_versao), ("pdf", False, real_pdf),
-          ("semana", False, real_semana), ("ancoras", False, real_ancoras)]
+          ("semana", False, real_semana), ("ancoras", False, real_ancoras),
+          ("paridade_qd", False, real_paridade), ("log", False, real_log)]
 
 
 def autoteste() -> int:
@@ -1058,7 +1250,8 @@ def autoteste() -> int:
                                              ("financiamento", CASOS_FINANCIAMENTO),
                                              ("versao", CASOS_VERSAO), ("pdf", CASOS_PDF),
                                              ("semana", _casos_semana()),
-                                             ("ancoras", _casos_ancoras()))
+                                             ("ancoras", _casos_ancoras()),
+                                             ("paridade_qd", CASOS_PARIDADE), ("log", CASOS_LOG))
              for r, ok in cs]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -1071,6 +1264,8 @@ def autoteste() -> int:
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if "--marcar-log" in sys.argv:
+        return marcar_log()
     so_barra, so_resto = "--barra" in sys.argv, "--resto" in sys.argv
     ruim = False
     for nome, barra, real in REGRAS:
