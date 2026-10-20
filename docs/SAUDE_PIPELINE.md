@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-13 a 2026-10-20 (1225 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-13 a 2026-10-20 (1233 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,7 +27,7 @@ cobertura 15d: 4949/5571 com verificação real até 2026-10-20 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-19 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-20 18:08 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-20 19:09 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-20 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -46,7 +46,7 @@ cobertura 15d: 4949/5571 com verificação real até 2026-10-20 · por canal: we
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-19 01:13 | 2356 s | 46 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-19 01:13 | 4 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-19 01:52 | 1540 s | — | ok | — |
-| `coletar_edicoes_doe.py` | coletor | 2026-10-19 15:06 | 16801 s | — | **erro** | interrompido pelo prazo do elo |
+| `coletar_edicoes_doe.py` | coletor | 2026-10-20 18:06 | 1935 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-17 01:56 | 124 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-18 03:52 | 4 s | — | ok | — |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-10-19 01:35 | 44 s | — | ok | — |
@@ -77,7 +77,7 @@ cobertura 15d: 4949/5571 com verificação real até 2026-10-20 · por canal: we
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-20 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_sinais_federais.py` | coletor | 2026-10-20 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `motores_busca.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `preservar_evidencias.py` | coletor | 2026-10-20 05:48 | 44 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-10-20 18:38 | 1 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-20 07:45 | 532 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-20 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
@@ -90,6 +90,7 @@ cobertura 15d: 4949/5571 com verificação real até 2026-10-20 · por canal: we
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-20 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_funil.py` | coletor | 2026-10-18 08:12 | 1 s | — | ok | — |
 | `seguir_pistas.py` | coletor | 2026-10-20 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `sonda_url_doe.py` | coletor | 2026-10-20 18:03 | 202 s | — | ok | — |
 | `triar_confianca_pistas.py` | coletor | 2026-10-20 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_links.py` | coletor | 2026-10-17 02:09 | 296 s | — | **erro** (2 seguidas) | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
 | `verificar_pista_imprensa.py` | coletor | 2026-10-20 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
