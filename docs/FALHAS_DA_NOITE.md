@@ -229,7 +229,7 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Causa:** O cartão de atos federais do Financiamento dizia "sem coleta" sobre uma série em disco cuja origem não data os atos, ausência de outra classe.
 - **Prova:** 83db187 (#598); e4a718e (#599); f5f7850 (#600); 28e88c5 (#602); 9a72f76
 - **Correção:** PR #604 (classe `sem_data_na_origem`)
-- **Caso de teste:** `scripts/verificar_financiamento_coerencia.py --autoteste: classe de ausencia declarada passa, e sem exigir periodo`
+- **Caso de teste:** `scripts/verificar_regras_de_dado.py --autoteste: classe de ausencia declarada passa, e sem exigir periodo`
 
 ## F26 · Diários cancelados na fila e contados pelo despachante
 
