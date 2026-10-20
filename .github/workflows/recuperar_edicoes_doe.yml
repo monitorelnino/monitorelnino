@@ -15,7 +15,7 @@ jobs:
     with:
       nome: sonda-doe
       timeout_minutos: 30
-            comandos: |
+      comandos: |
         sonda_url_doe.py ${{ inputs.urls }}
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
