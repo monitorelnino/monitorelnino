@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-13 a 2026-10-20 (1156 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-13 a 2026-10-20 (1162 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -20,7 +20,7 @@ Janela: 2026-10-13 a 2026-10-20 (1156 execução(ões) registrada(s), 7 dias de 
 
 ## Cobertura em 15 dias
 
-cobertura 15d: 4820/5571 com verificação real até 2026-10-19 · por canal: web 1148 · QD 527 · consorciado 1634 · DOE 3586
+cobertura 15d: 4820/5571 com verificação real até 2026-10-20 · por canal: web 1229 · QD 527 · consorciado 1634 · DOE 3586
 
 ## Última execução de cada script
 
@@ -28,7 +28,7 @@ cobertura 15d: 4820/5571 com verificação real até 2026-10-19 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-19 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-20 06:35 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-20 06:51 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-20 05:30 | 1 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -71,7 +71,7 @@ cobertura 15d: 4820/5571 com verificação real até 2026-10-19 · por canal: we
 | `julgar_filas.py` | coletor | 2026-10-20 04:05 | 4503 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-16 20:40 | 3583 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-20 03:22 | 628 s | 16905 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-10-19 01:40 | 315 s | 2 | **erro** (4 seguidas) | ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4 |
+| `monitorar_busca_web.py` | coletor | 2026-10-20 06:39 | 315 s | 2 | **erro** (4 seguidas) | ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4 |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-20 03:10 | 637 s | 40 | ok | — |
 | `monitorar_imprensa_saude.py` | coletor | 2026-10-20 03:21 | 108 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-20 03:33 | 5 s | 16905 | ok | — |
