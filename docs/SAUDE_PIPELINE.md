@@ -9,14 +9,13 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-13 a 2026-10-20 (1172 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-13 a 2026-10-20 (1184 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - consultar_querido_diario.py: erro em 3 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
 - descobrir_dominios.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
-- julgar_filas.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
-- monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
+- julgar_filas.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
 - verificar_links.py: erro em 2 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Cobertura em 15 dias
@@ -29,8 +28,8 @@ cobertura 15d: 4820/5571 com verificação real até 2026-10-20 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-19 01:36 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-20 08:01 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-20 07:40 | 0 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-20 08:46 | 3 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-20 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-17 01:58 | 13 s | 3 | ok | — |
@@ -68,11 +67,11 @@ cobertura 15d: 4820/5571 com verificação real até 2026-10-20 · por canal: we
 | `descobrir_dominios.py` | coletor | 2026-10-18 05:50 | 823 s | — | **erro** (3 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-20 03:33 | 411 s | 42 | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-20 03:33 | 2 s | 0 | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-20 07:30 | 611 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-10-20 06:15 | 4503 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-20 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `julgar_filas.py` | coletor | 2026-10-20 07:54 | 3016 s | — | **erro** (3 seguidas) | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-16 20:40 | 3583 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-20 03:22 | 628 s | 16905 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-10-20 06:39 | 315 s | 2 | **erro** (4 seguidas) | ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4 |
+| `monitorar_busca_web.py` | coletor | 2026-10-20 08:44 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-20 03:10 | 637 s | 40 | ok | — |
 | `monitorar_imprensa_saude.py` | coletor | 2026-10-20 03:21 | 108 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-20 03:33 | 5 s | 16905 | ok | — |
@@ -81,9 +80,9 @@ cobertura 15d: 4820/5571 com verificação real até 2026-10-20 · por canal: we
 | `motores_busca.py` | coletor | 2026-10-13 09:39 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `preservar_evidencias.py` | coletor | 2026-10-20 05:48 | 44 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-20 06:01 | 822 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-20 07:40 | 1 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-20 06:00 | 62 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-10-20 07:45 | 532 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-20 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-20 07:45 | 38 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-16 21:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-20 05:49 | 1 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-10-17 01:58 | 659 s | — | ok | — |
