@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>20/10/2026 · Paridade da cobertura QD e log de buscas viram regras do executor de dado</dt>
+      <dd>`verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d&#x27;água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.</dd>
       <dt>20/10/2026 · Imprensa e âncoras viram regras do executor de dado</dt>
       <dd>Os cartões da semana da Imprensa e a conferência de âncoras internas passam a regras de `verificar_regras_de_dado.py`; dois arquivos saem. Âncora de link externo com fragmento deixa de ser cobrada como arquivo local. Comandos de portão 76→74; linhas líquidas −189; 123 casos de autoteste.</dd>
       <dt>20/10/2026 · Seis portões do repositório viram um executor</dt>
@@ -165,8 +167,6 @@
       <dd>`aplicar_promocoes_do_juiz` valida o registro pela régua D1 antes de gravar (a rede de proteção ligava o resolvedor de domínio a um import que falhava em silêncio). Ilhabela/SP, gravada com endereço de notícia, sai do banco. `pistas_imprensa.json` deixa de guardar `trecho_documento` e o trecho repetido do veículo não listado (52,7 → 49,7 MB). Rede do IQAr perde a caixa alta da fonte.</dd>
       <dt>19/10/2026 · Imprensa: semana em datas, definição dos índices numa só função</dt>
       <dd>`semana.json` e o topo da Saúde rotulam dengue e SRAG pelas datas da semana, sem &quot;semana epidemiológica&quot;. `definicao_dos_indices` (Legal e Saúde) nasce de `meta.json` e `monitor_saude.json`, um campo para as duas páginas. Saem o cruzamento decreto e alerta e catorze funções de cartões sem leitor; o texto da semana perde o &quot;ciclo&quot;. Metodologia §111.</dd>
-      <dt>19/10/2026 · Diário oficial do RS lido por data</dt>
-      <dd>O Rio Grande do Sul passa a ter rota de leitura: a API que o portal do diário oficial chama lista os diários da data e serve o PDF de cada um (252 páginas, com texto, em 16/10). Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +29 −1 (adaptador novo, recurso novo, com autoteste offline).</dd>
     </dl>
   </section>
 </main>
