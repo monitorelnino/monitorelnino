@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-20 · #931 · Dado do diário do DF
+
+DF: 134 edições lidas em 143 datas, de 29/06 a 20/10, pelo JSON público do SINJ; 16 trazem termo de saúde. Dado da válvula unido à `main` pela base comum. Código: 0 linhas.
+
 ## 2026-10-20 · #930 · Dado dos diários de RJ e RS
 
 RS: 91 edições lidas em 104 datas, de 27/07 a 19/10. RJ: acesso à edição por data provado, 89 edições sem texto extraível seguem para o OCR existente. Dado da válvula de 19/10 unido à `main` pela base comum. Código: 0 linhas.
