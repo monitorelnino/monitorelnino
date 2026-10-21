@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
+
+A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
+
 ## 2026-10-21 · #953 · Proteja-se: sem endereço, sem link de site oficial
 
 O diretório do MIDR traz telefone e e-mail das 27 Defesas Civis estaduais, mas não o endereço de
