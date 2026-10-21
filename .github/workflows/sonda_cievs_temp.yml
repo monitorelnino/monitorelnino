@@ -19,28 +19,15 @@ jobs:
       - name: Sondar
         run: |
           python3 - <<'PY'
-          import re, time
+          import re, collections
           import coletores_base as cb
-          ALVOS = {"PR": ["http://www.dengue.pr.gov.br/Pagina/Boletins-da-Dengue"]}
-          import collections
-          b = cb.buscar(ALVOS["PR"][0], timeout=40, origem="sonda_cievs"); t = b.decode("utf-8","replace")
+          u = "http://www.dengue.pr.gov.br/Pagina/Boletins-da-Dengue"
+          t = cb.buscar(u, timeout=40, origem="sonda_cievs").decode("utf-8", "replace")
           pdfs = list(dict.fromkeys(re.findall(r'href="([^"]+\.pdf)"', t, re.I)))
-          por_mes = collections.Counter(re.search(r"documento/(\d{4}-\d{2})", x).group(1) for x in pdfs if re.search(r"documento/(\d{4}-\d{2})", x))
-          print("PDFs distintos:", len(pdfs)); print("mais recentes por mês de upload:", sorted(por_mes.items())[-8:])
-          [print("  R", x) for x in pdfs if re.search(r"documento/202[56]", x)][:20]
-          ALVOS = {}
-                    for uf, urls in ALVOS.items():
-              for u in urls:
-                  print("=====", uf, u)
-                  try:
-                      b = cb.buscar(u, timeout=40, origem="sonda_cievs")
-                  except Exception as e:
-                      print("RECUSA/ERRO:", type(e).__name__, str(e)[:300]); continue
-                  t = b.decode("utf-8", "replace")
-                  print("bytes", len(b), "| título:", (re.search(r"<title[^>]*>(.*?)</title>", t, re.S|re.I) or [0,""])[1].strip()[:120])
-                  links = re.findall(r'href="([^"]+\.(?:pdf|csv|xlsx?))"', t, re.I)
-                  bol = re.findall(r'href="([^"]*(?:boletim|arbovir|dengue|chikung)[^"]*)"', t, re.I)
-                  print("anexos:", len(links)); print("pdf em qualquer atributo:", len(re.findall(r"\.pdf", t, re.I))); [print("  A", x[:160]) for x in links[:12]]
-                  print("links de boletim/arbovirose:", len(bol)); [print("  B", x[:160]) for x in list(dict.fromkeys(bol))[:15]]
-                  time.sleep(3)
+          mes = collections.Counter(m.group(1) for m in (re.search(r"documento/(\d{4}-\d{2})", x) for x in pdfs) if m)
+          print("PDFs distintos:", len(pdfs))
+          print("por mês de upload (últimos 10):", sorted(mes.items())[-10:])
+          for x in pdfs:
+              if re.search(r"documento/202[56]", x):
+                  print("  R", x)
           PY
