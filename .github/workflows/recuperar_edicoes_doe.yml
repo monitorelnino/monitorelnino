@@ -1,29 +1,22 @@
-# Recuperação do canal 2 da saúde estadual: as edições dos diários oficiais desde 29/06/2026.
-#
-# 17/10/2026 (pedido da A3): com 20 UFs por rota provada e edições de 50 a 500 páginas, a
-# recuperação não cabe no fim do elo `saude-estadual` (90 min, depois do juiz e da bateria). Elo
-# próprio, só por `workflow_dispatch` (sem horário, sem temporizador): na `main` roda só na janela
-# da noite, e de dia pela válvula `coleta-dia/*`, que abre o PR de dado. Retomável: o coletor grava
-# o que leu quando o prazo o interrompe e não relê. Grupo da noite: nunca escreve junto com a
-# saúde estadual, que roda o mesmo coletor.
 name: Recuperar edições dos diários estaduais
-
 on:
   workflow_dispatch:
-
+    inputs:
+      urls:
+        description: "URLs separadas por espaço"
+        required: true
+        type: string
 permissions:
   contents: read
-  actions: read        # o job `vez` do coletor lê a fila de runs
-
+  actions: read
 jobs:
-  edicoes-doe:
+  sonda:
     uses: ./.github/workflows/_coletor.yml
     with:
-      nome: edicoes-doe
-      grupo_de_concorrencia: noturno
-      timeout_minutos: 300
+      nome: sonda-doe
+      timeout_minutos: 30
       comandos: |
-        prazo=280min coletar_edicoes_doe.py --recuperacao --desde 2026-06-29
+        sonda_url_doe.py ${{ inputs.urls }}
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
