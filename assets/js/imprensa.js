@@ -20,7 +20,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     + String(hoje.getMonth() + 1).padStart(2, '0') + '/' + hoje.getFullYear());
 })();
 
-/* ===== "Esta semana no MARÉ" (HANDOVER_IMPRENSA §1, item 2) =====
+/* ===== "Esta semana no MARÉ" e "Como os índices funcionam" (HANDOVER_IMPRENSA §1 item 2, §3 e §4.2) =====
  *
  * Seis cartões compactos. O RÓTULO é texto editorial e vive no catálogo; o VALOR, a referência de
  * período e a fonte vêm de `data/imprensa/semana.json`, escritos aqui — nenhum número desta seção
@@ -30,12 +30,22 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
  * Cartão que o gerador marcou sem coleta, ou que não veio na edição, diz "sem coleta até o corte" —
  * nunca zero, nunca travessão (regra dos números: zero medido e ausência de dado são coisas
  * distintas). Zero medido sai por extenso.
+ *
+ * A definição de cada índice é escrita por uma função só, a partir de `meta.json` e
+ * `monitor_saude.json`, e publicada no mesmo arquivo em `definicao_dos_indices`. A página só a
+ * exibe: quando a definição mudar, o texto muda sozinho, aqui e na Saúde, e nunca divergem.
+ * Enquanto o campo não existir no dado, fica o texto do catálogo, que é o que a definição em vigor
+ * produz — lacuna declarada da classe, sem nada inventado e sem quebrar. Nenhum número de versão
+ * sai para o leitor (editoria, 05/10).
+ *
+ * As duas seções vivem do MESMO arquivo, então a página o lê UMA vez (lição do #889): dois `fetch`
+ * do mesmo JSON eram duas requisições e dois caminhos de erro para o mesmo dado.
  */
-(function estaSemana(){
+(function aSemanaEOsIndices(){
   const IDS = ['capitais_com_plano', 'decretos_na_semana', 'reconhecimentos_na_semana',
                'municipios_aviso_inmet', 'desembolsado_no_mes', 'ufs_dengue_alerta'];
+  const ALVOS = {legal: 'indicesLegalTexto', saude: 'indicesSaudeTexto'};
   const M = window.MonitorMapas;
-  if (!M) return;
 
   /* Dinheiro em cartão compacto vai em milhões com uma casa, a mesma forma do "mês a mês" do
      Financiamento; abaixo de um milhão, o valor inteiro. */
@@ -58,28 +68,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     return /^\d{2}\/\d{2}\/\d{4}( \d{2}:\d{2})?$/.test(v) ? M.dataBR(v) : null;
   }
 
-  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
-    if (!S) return;
+  function cartoes(S) {
     const porId = {};
     (S.cartoes || []).forEach(c => { porId[c.id] = c; });
     const edicao = (S.indices || {}).edicao || S.gerado_em || null;
-
-    /* O texto da semana (dois parágrafos) é do gerador da edição, não desta página: aqui ele só
-       aparece. Entra quando o gerador é o da reforma — o que se prova pela presença de
-       `definicao_dos_indices`, que só ele escreve. Antes disso o texto trazia "ciclo" sozinho, que a
-       editoria tirou desta página, e a seção fica com os seis cartões.
-       Em coluna única, e não nas duas colunas do handover: a colunação dos textos saiu do site
-       inteiro em 16/10 (editoria), e a regra vence o handover. Divergência no contrato. */
-    const texto = document.getElementById('semanaTexto');
-    if (texto && S.definicao_dos_indices && S.texto_pronto) {
-      texto.replaceChildren(...String(S.texto_pronto).split(/\n\s*\n/).map(par => {
-        const p = document.createElement('p');
-        p.textContent = par.trim();
-        return p;
-      }).filter(p => p.textContent));
-      texto.hidden = false;
-    }
-
     IDS.forEach(id => {
       const valor = document.getElementById('semanaValor_' + id);
       const ref = document.getElementById('semanaRef_' + id);
@@ -98,26 +90,30 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       M.credito('semanaFonte_' + id, {fontes: c.fonte, data: dataDaConsulta(c) || edicao,
                                       url: c.url_fonte || null});
     });
-  }).catch(_erroImp("imprensa:62"));
-})();
+  }
 
-/* ===== "Como os índices funcionam" (HANDOVER_IMPRENSA §3 e §4.2) =====
- *
- * A definição de cada índice é escrita por uma função só, a partir de `meta.json` e
- * `monitor_saude.json`, e publicada em `data/imprensa/semana.json` → `definicao_dos_indices`. A
- * página só a exibe: quando a definição mudar, o texto muda sozinho, aqui e na Saúde, e nunca
- * divergem. Enquanto o campo não existir no dado, fica o texto do catálogo, que é o que a
- * definição em vigor produz — lacuna declarada da classe, sem nada inventado e sem quebrar.
- * Nenhum número de versão sai para o leitor (editoria, 05/10).
- */
-(function definicaoDosIndices(){
-  const alvos = {legal: 'indicesLegalTexto', saude: 'indicesSaudeTexto'};
   fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
-    const def = (S || {}).definicao_dos_indices;
-    if (!def) return;
-    Object.keys(alvos).forEach(k => {
-      const e = document.getElementById(alvos[k]);
+    if (!S) return;
+    /* O texto da semana (dois parágrafos) é do gerador da edição, não desta página: aqui ele só
+       aparece. Entra quando o gerador é o da reforma — o que se prova pela presença de
+       `definicao_dos_indices`, que só ele escreve. Antes disso o texto trazia "ciclo" sozinho, que a
+       editoria tirou desta página, e a seção fica com os seis cartões.
+       Em coluna única, e não nas duas colunas do handover: a colunação dos textos saiu do site
+       inteiro em 16/10 (editoria), e a regra vence o handover. Divergência no contrato. */
+    const texto = document.getElementById('semanaTexto');
+    if (texto && S.definicao_dos_indices && S.texto_pronto) {
+      texto.replaceChildren(...String(S.texto_pronto).split(/\n\s*\n/).map(par => {
+        const p = document.createElement('p');
+        p.textContent = par.trim();
+        return p;
+      }).filter(p => p.textContent));
+      texto.hidden = false;
+    }
+    if (M) cartoes(S);
+    const def = S.definicao_dos_indices;
+    if (def) Object.keys(ALVOS).forEach(k => {
+      const e = document.getElementById(ALVOS[k]);
       if (e && def[k]) { e.textContent = def[k]; e.setAttribute('data-conteudo-fixado', '1'); }
     });
-  }).catch(_erroImp("imprensa:definicao"));
+  }).catch(_erroImp("imprensa:semana"));
 })();

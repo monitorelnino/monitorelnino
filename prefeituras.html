@@ -126,23 +126,27 @@
     </div>
   </section>
 
+  <!-- Em link para página local, `href` vai POR ÚLTIMO: o Netlify reescreve esse atributo ao
+       servir e o reemite no fim, com aspa simples. O vigia do domínio desfaz a aspa, não a
+       ordem, e prefeituras.html era o único arquivo do site com atributo depois do `href`:
+       divergia sempre e o vigia repunha o domínio todo dia à toa (21/10/2026). -->
   <section id="recursos" aria-labelledby="recursosTitulo">
     <h2 id="recursosTitulo" data-conteudo="prefeituras.recursos.titulo_da_secao">Como os recursos chegam</h2>
     <div class="grade-figuras grade-figuras--3">
       <article class="cartao cartao-mapa cartao--acento-musgo" id="antes">
         <h3 data-conteudo="prefeituras.recursos.antes.titulo">Antes da emergência</h3>
         <p data-conteudo="prefeituras.recursos.antes">Transferências voluntárias da União e do estado para prevenção (obras, mapeamento de risco, sistemas de alerta), por proposta no Transferegov; repasses do Fundo Nacional de Saúde.</p>
-        <a class="cartao-a" href="financiamento.html#antes" data-conteudo="prefeituras.recursos.antes.link">O que já chegou ao seu município →</a>
+        <a class="cartao-a" data-conteudo="prefeituras.recursos.antes.link" href="financiamento.html#antes">O que já chegou ao seu município →</a>
       </article>
       <article class="cartao cartao-mapa cartao--acento-argila" id="depois">
         <h3 data-conteudo="prefeituras.recursos.depois.titulo">Depois do decreto</h3>
         <p data-conteudo="prefeituras.recursos.depois">Com a situação de emergência reconhecida pelo governo federal via S2iD: transferência obrigatória para socorro, assistência e restabelecimento; Cartão de Pagamento de Defesa Civil; regime especial de compras.</p>
-        <a class="cartao-a" href="financiamento.html#depois" data-conteudo="prefeituras.recursos.depois.link">Decretos e reconhecimentos →</a>
+        <a class="cartao-a" data-conteudo="prefeituras.recursos.depois.link" href="financiamento.html#depois">Decretos e reconhecimentos →</a>
       </article>
       <article class="cartao cartao-mapa cartao--acento-neutro" id="caminhos">
         <h3 data-conteudo="prefeituras.recursos.caminhos.titulo">Os caminhos do dinheiro</h3>
         <p data-conteudo="prefeituras.recursos.caminhos">Quem paga, por onde passa e quanto chegou a cada estado e município em 2026, com fonte e data, está na página de Financiamento.</p>
-        <a class="cartao-a" href="financiamento.html#caminhos" data-conteudo="prefeituras.recursos.caminhos.link">Financiamento →</a>
+        <a class="cartao-a" data-conteudo="prefeituras.recursos.caminhos.link" href="financiamento.html#caminhos">Financiamento →</a>
       </article>
     </div>
   </section>
@@ -157,7 +161,7 @@
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
 <script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script>
-<script src="assets/js/prefeituras.js?v=36501dfa" defer></script>
+<script src="assets/js/prefeituras.js?v=f91777d6" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

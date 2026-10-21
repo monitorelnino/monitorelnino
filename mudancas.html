@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>21/10/2026 · Orientações oficiais: passos de chuvas e fogo preservados com a fonte</dt>
       <dd>`coletar_orientacoes_oficiais.py` passa a gravar, por página de chuvas e de fogo, os passos que a fonte oficial dá ao leitor (`trechos`), como já fazia com a dengue. Seca (protocolo técnico) e calor (sem passos) seguem sem trechos, lacuna declarada. Peso zero; o índice não lê. Linhas líquidas de código: +32.</dd>
+      <dt>21/10/2026 · A ordem dos atributos que repunha o domínio todo dia</dt>
+      <dd>Em `prefeituras.html`, `data-conteudo` passa a vir antes de `href` nos três links de cartão: o Netlify reemite o `href` no fim ao servir, e essa era a única divergência do site contra o manifesto — o vigia repunha o domínio uma vez por dia sem motivo. Os dois números de &quot;O que a lei exige&quot; passam a ser escritos quando a fonte existe, com zero por extenso. A Imprensa lê `semana.json` uma vez só.</dd>
       <dt>21/10/2026 · Defesa civil sem a tabela do rodapé do mapa</dt>
       <dd>A lista buscável do rodapé da figura das emergências sai. Ela respondia por município o que a seção &quot;Como está o seu município&quot; já responde com o módulo comum da consulta, por nome e com busca. Com ela saem a função que a montava e a declaração de busca da figura, 40 linhas a menos. O contrato da página perde a divergência registrada em 19/10, vencida desde o #896.</dd>
       <dt>21/10/2026 · MARÉ Saúde v0.5: índice nacional sobre as 27 UFs</dt>
@@ -76,7 +78,7 @@
       <dt>20/10/2026 · Seis portões do repositório viram um executor</dt>
       <dd>`verificar_repositorio.py` reúne marcadores de conflito, escrita portável, página arquivada, changelog curto, carimbo da rodada e scripts dos workflows; seis arquivos saem e o `pre-commit` chama o executor. Comandos de portão 80→76; linhas líquidas −425; 95 casos de autoteste e mutantes provados.</dd>
       <dt>20/10/2026 · Três portões viram regras do executor de dado</dt>
-      <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80. =======</dd>
+      <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.</dd>
       <dt>20/10/2026 · O domínio acompanha a main</dt>
       <dd>Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O &quot;Publicar dados&quot; agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.</dd>
       <dt>19/10/2026 · Internações do SUS e óbitos registrados entram como séries</dt>
@@ -116,7 +118,7 @@
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
       <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
-      <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde. =======</dd>
+      <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.</dd>
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
       <dt>19/10/2026 · Diário oficial do DF lido por data</dt>
@@ -165,8 +167,6 @@
       <dd>`coletar_orientacoes_oficiais.py` lê 13 páginas do Ministério da Saúde e da Defesa Civil nacional, preserva cada uma por hash e grava o trecho que sustenta cada item do guia em `data/orientacoes_oficiais.json`: 6 itens com fonte, 29 sem (lacuna declarada, a página não os publica). Reconfere o diretório estadual da Defesa Civil: DF e RO divergem, registrado sem reescrever. Peso zero.</dd>
       <dt>19/10/2026 · Defesa civil: consulta do município, mapa das emergências e do decreto ao reconhecimento</dt>
       <dd>Abertura aprovada, cinco números na variante compacta, consulta pelo módulo comum com aviso, decreto e reconhecimento, mapa de pontos por evento declarado e etapa como figura principal, série de duas linhas e decreto há mais de 30 dias sem reconhecimento. Saem os mapas por estado, o cruzamento, as listas federais (no Monitor de riscos) e todo valor em reais (em Financiamento).</dd>
-      <dt>19/10/2026 · Sai o glifo de caixa das listas da ficha; o cartão do ar lê o catálogo</dt>
-      <dd>As listas de &quot;Antes, durante e depois&quot; voltam ao marcador padrão: o glifo ☐ prometia marcar item cumprido, interação que a lista não tem. Vale na inicial e no guia do Proteja-se. No Monitor de riscos, o cartão de cidades com IQAr alto passa a ler rótulo, valor e apoio do catálogo, como os outros seis da mesma grade, e o rótulo volta a trazer o dia da medição.</dd>
     </dl>
   </section>
 </main>
