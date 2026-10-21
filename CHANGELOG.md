@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #941 · A ordem dos atributos que repunha o domínio todo dia
+
+Em `prefeituras.html`, `data-conteudo` passa a vir antes de `href` nos três links de cartão: o
+Netlify reemite o `href` no fim ao servir, e essa era a única divergência do site contra o
+manifesto — o vigia repunha o domínio uma vez por dia sem motivo. Os dois números de "O que a lei
+exige" passam a ser escritos quando a fonte existe, com zero por extenso. A Imprensa lê
+`semana.json` uma vez só.
+
 ## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
 
 A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
