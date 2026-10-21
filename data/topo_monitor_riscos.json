@@ -5,7 +5,7 @@
   {
    "id": "temperatura_desvio_capital",
    "valor": 3.0,
-   "referencia": "20/10/2026",
+   "referencia": "21/10/2026",
    "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Brasília",
    "capital": "Brasília",
    "uf": "DF",
@@ -14,12 +14,12 @@
    "nota": "máxima prevista de 32.0 °C contra a média de 29.0 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
     "valor": 3.0,
-    "referencia": "19/10/2026"
+    "referencia": "20/10/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 159,
+   "valor": 1110,
    "referencia": "Focos do dia — focos_diario_br_20261021.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 1,
+   "valor": 2,
    "perigo_ou_maior": 0,
-   "referencia": "20/10/2026 22:10",
+   "referencia": "21/10/2026 04:39",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 2,
-    "referencia": "20/10/2026 05:49"
+    "valor": 1,
+    "referencia": "20/10/2026 22:10"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "20/10/2026",
+   "referencia": "21/10/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "19/10/2026"
+    "referencia": "20/10/2026"
    }
   }
  ]
