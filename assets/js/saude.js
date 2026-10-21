@@ -656,7 +656,9 @@ const AREAS = [
     const fixa = (id, v) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
       f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + (id === 'gaugeFillSaude' ? 'MARÉ Saúde' : 'emergências em saúde pública') + ' em ' + umaCasa(v) + ' de 100'); };
     const media = res.indice_nacional;
-    if (media == null) { el('nIndiceSaude').textContent = '—'; el('linhaPreparoSaude').textContent = 'sem coleta até o corte'; }
+    /* Ausência se escreve em palavras, inclusive no número grande (layout/regras.json, numeros):
+       um travessão no lugar do índice deixaria o leitor sem saber se é zero ou se não houve coleta. */
+    if (media == null) { el('nIndiceSaude').textContent = 'sem coleta'; el('linhaPreparoSaude').textContent = 'sem coleta até o corte'; }
     else {
       el('nIndiceSaude').textContent = umaCasa(media); el('nIndiceSaude').dataset.contar = media;
       el('faixaSaude').replaceChildren(MonitorMapas.pilulaDaFaixa(media));
@@ -677,7 +679,7 @@ const AREAS = [
       MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever('saudeLeiIndice', 'saude.abertura.lei_e_indice_v04'));
     const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
     if (rp.indice == null) {
-      el('respNumSaude').textContent = '—';
+      el('respNumSaude').textContent = 'sem coleta';
       el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">sem coleta até o corte</span>';
     } else {
       el('respNumSaude').textContent = umaCasa(rp.indice); el('respNumSaude').dataset.contar = rp.indice;
