@@ -165,19 +165,21 @@ def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monit
         "fonte": "atos federais e estaduais lidos pelo MARÉ",
         "sem_coleta": resp.get("emergencias") is None,
     })
-    # O índice do MARÉ Saúde é a média das UFs VERIFICADAS, e o rótulo diz quantas são enquanto
-    # não forem 27 — é a régua que a página usa, e a Imprensa passa a ler a mesma.
+    # 21/10/2026 (editoria): o índice do MARÉ Saúde é NACIONAL, sobre as 27 UFs, pela regra do MARÉ
+    # Legal, e o rótulo conta o estatuto em vez de dizer sobre quantas UFs a média foi tirada — é a
+    # régua que a página usa, e a Imprensa lê a mesma (o portão de coerência compara as duas).
     res = (monitor or {}).get("resumo") or {}
     verificadas = res.get("verificadas")
+    com_plano = res.get("ufs_com_plano_localizado")
     cartoes.append({
-        "id": "mare_saude_indice", "valor": res.get("media_das_verificadas"),
+        "id": "mare_saude_indice", "valor": res.get("indice_nacional"),
         "referencia": (monitor or {}).get("gerado_em"),
         "rotulo": "MARÉ Saúde",
         "unidades_verificadas": verificadas,
         "fonte": "MARÉ (verificação própria)",
-        "sem_coleta": res.get("media_das_verificadas") is None,
-        "nota": (None if (verificadas or 0) >= 27
-                 else f"média dos {verificadas} estados verificados"),
+        "sem_coleta": res.get("indice_nacional") is None,
+        "nota": (None if com_plano is None
+                 else f"{com_plano} de {res.get('denominador') or 27} estados com plano localizado"),
     })
     return cartoes
 
@@ -452,7 +454,8 @@ def _autoteste() -> int:
         {"municipios": {"1": {"uf": "SP", "nivel_ultima_se": 3}, "2": {"uf": "RJ", "nivel_ultima_se": 1}}},
         {"calor_excesso": {"data": "2026-09-25",
                            "por_uf": {"PA": {"severo": 4, "extremo": 1}, "MG": {"severo": 0}}}},
-        {"resumo": {"media_das_verificadas": 38.5, "verificadas": 21},
+        {"resumo": {"indice_nacional": 24.8, "media_das_verificadas": 38.5, "verificadas": 21,
+                    "denominador": 27, "ufs_com_plano_localizado": 21},
          "resposta": {"emergencias": 2, "desde": "29/06/2026"}})
     por_id = {c["id"]: c for c in saude}
     ok("dengue sai do Sinan, pela última semana fechada",
@@ -461,13 +464,16 @@ def _autoteste() -> int:
     ok("respiratórias não dobram o país", por_id["srag_internacoes_se"]["valor"] == 4267)
     ok("estados em alerta contam estado, não município", por_id["uf_dengue_alerta"]["valor"] == 1)
     ok("calor soma severo e extremo", por_id["calor_municipios_severo"]["valor"] == 5)
-    ok("o índice é a média das verificadas", por_id["mare_saude_indice"]["valor"] == 38.5)
+    # 21/10/2026: o cartão é o índice NACIONAL. O caso guarda os dois campos de propósito — o antigo
+    # ainda existe no arquivo, e o cartão não pode voltar a ele.
+    ok("o índice é o nacional, não a média das verificadas",
+       por_id["mare_saude_indice"]["valor"] == 24.8)
     ok("emergência sem busca é sem coleta, não zero", next(c for c in cartoes_da_saude(
         {}, {}, {}, {}, {"resposta": {"situacao": "nao_coletado", "emergencias": None}})
         if c["id"] == "emergencias_saude_ciclo")["sem_coleta"])
-    ok("o índice diz quantos estados a média cobre",
+    ok("o índice conta o estatuto, sobre as 27",
        por_id["mare_saude_indice"]["unidades_verificadas"] == 21
-       and "21 estados verificados" in por_id["mare_saude_indice"]["nota"])
+       and por_id["mare_saude_indice"]["nota"] == "21 de 27 estados com plano localizado")
     ok("o rótulo diz as datas da semana, nunca 'semana epidemiológica'",
        por_id["dengue_casos_se"]["rotulo"] == "notificações de dengue na semana de 16 a 22 de "
        "agosto de 2026" and not any("epidemiol" in c["rotulo"] for c in saude))

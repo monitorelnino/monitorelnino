@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #944 · Medidor do MARÉ Saúde passa ao índice nacional
+
+O medidor da Saúde mostra o índice nacional das 27 unidades da federação, pela mesma régua do MARÉ Legal, e a linha ao lado conta o estatuto de cada uma: vinte e um estados com plano localizado, seis ainda não verificados. O cartão do topo, a página da imprensa e a reserva estática leem o mesmo campo. A escolha do parágrafo de abertura passa a seguir os componentes declarados no arquivo, não o número da versão.
+
 ## 2026-10-21 · #942 · Orientações oficiais: passos de chuvas e fogo preservados com a fonte
 
 `coletar_orientacoes_oficiais.py` passa a gravar, por página de chuvas e de fogo, os passos que a fonte oficial dá ao leitor (`trechos`), como já fazia com a dengue. Seca (protocolo técnico) e calor (sem passos) seguem sem trechos, lacuna declarada. Peso zero; o índice não lê. Linhas líquidas de código: +32.
