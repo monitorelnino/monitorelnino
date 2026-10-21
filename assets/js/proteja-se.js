@@ -272,7 +272,7 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
     const nivel = tx('dengue.nivel_' + dg.nivel) || tx('dengue.nivel_outro', {n: dg.nivel});
     const datas = semanaEmDatas(dg.semana);
     return cartao('neutro', tx('dengue.rotulo'), tx('dengue.valor', {nivel: nivel}),
-      datas ? esc(tx('dengue.nota', {semana: datas})) : esc(tx('dengue.nota_sem_coleta')), ABAS.dengue);
+      esc(datas ? tx('dengue.nota', {semana: datas}) : tx('dengue.nota_sem_semana', {data: consultaDe(s, 'dengue')})), ABAS.dengue);
   }
 
   function cartaoDecreto(d, m) {
