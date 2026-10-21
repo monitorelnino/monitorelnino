@@ -363,8 +363,8 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude_nada_localizado",
+   "data_verificacao": "21/10/2026",
+   "log_ref": "julgar_saude_21-10-2026",
    "instrumentos": [
     {
      "status": "NAO_VERIFICADO",
@@ -377,6 +377,19 @@
      "natureza_doc": "nenhum",
      "justificativa_ex_ante": null,
      "tipo": "especifico_ciclo"
+    },
+    {
+     "status": "VIG",
+     "orgao": "SES-MA",
+     "doc": "Plano de Contingência da Dengue e Outras Arboviroses” e “Manejo Clínico da Dengue e Outras arboviroses”",
+     "observacao": "sem ato de aprovação localizado",
+     "numero": "123",
+     "data": "4/03/2024",
+     "url": "https://egma.ma.gov.br/noticias/ses-realiza-capacitacao-para-multiplicadores-de-manejo-clinico-de-arboviroses-dos-municipios-da-regiao-metropolitana",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "df58507bc2bf5937218c466789b6e6e30f3429ab892b705c20c9968a554f94b2",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 21/10/2026, codebook 1.6 (15/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "NAO_VERIFICADO",

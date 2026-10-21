@@ -10495,7 +10495,20 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "coordenacao",
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AP",
@@ -15000,7 +15013,19 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -15085,7 +15110,19 @@
    "registrado_em": "13/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -15101,7 +15138,19 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -15114,10 +15163,22 @@
    "oficial": true,
    "origem": "funil_saude_estadual",
    "registrado_em": "13/10/2026",
-   "documento_oficial_confirmado": null,
-   "promovivel": false,
-   "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "documento_oficial_confirmado": "https://egma.ma.gov.br/noticias/ses-realiza-capacitacao-para-multiplicadores-de-manejo-clinico-de-arboviroses-dos-municipios-da-regiao-metropolitana",
+   "promovivel": true,
+   "status": "promovido_pelo_juiz",
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": true,
+    "motivo": null,
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": "plano_antigo",
+    "data": "4/03/2024",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": "VIG",
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -15349,7 +15410,19 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "executivo_pendente",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "24/01/2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -15365,7 +15438,19 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AL",
@@ -15433,7 +15518,17 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: HTTPError",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AM",
@@ -15449,7 +15544,17 @@
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: HTTPError",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/CE",
@@ -15929,7 +16034,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AC",
@@ -16034,7 +16149,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AL",
@@ -16094,7 +16221,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/AM",
@@ -16379,7 +16518,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -16394,7 +16543,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "resposta",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "28/06/2011",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -16469,7 +16630,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "30/12/2014",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -16484,7 +16657,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -16514,7 +16699,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: HTTPError",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -16559,7 +16754,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: HTTPError",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/BA",
@@ -16604,7 +16809,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/CE",
@@ -16634,7 +16851,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/CE",
@@ -16694,7 +16923,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "03/01/2002",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/DF",
@@ -16799,7 +17040,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "data não interpretável",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -16829,7 +17082,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "24/08/2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -16859,7 +17124,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": null,
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -16889,7 +17166,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento sem texto extraível (PDF sem OCR?)",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/ES",
@@ -16949,7 +17236,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "natureza_duvidosa",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "07/05/2022",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/GO",
@@ -17054,7 +17353,17 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "documento não baixado: HTTPError",
+    "codebook": null,
+    "categoria": null,
+    "data": null,
+    "institui": null,
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/GO",
@@ -17084,7 +17393,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "resposta",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "08/01/1997",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -17099,7 +17420,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "executivo_pendente",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "10/21/2026",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -17114,7 +17447,19 @@
    "registrado_em": "16/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pendente_confirmacao_documento"
+   "status": "pendente_confirmacao_documento",
+   "juiz": {
+    "promove": false,
+    "motivo": "executivo_pendente",
+    "codebook": "1.6 (15/10/2026)",
+    "categoria": null,
+    "data": "06/06/2005",
+    "institui": [
+     "instrumento"
+    ],
+    "status_instrumento": null,
+    "coordenacao": null
+   }
   },
   {
    "alvo": "funil-saude/MA",
@@ -17171,6 +17516,1431 @@
    "hash": "0415de7adb597ece",
    "fonte_provavel_oficial": false,
    "hash_evidencia": "0ab7ff16215f62de5d5027772a6e3c70f8b7537b17e6e3706e5431ca80b16799",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AC",
+   "uf": "AC",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Acre",
+   "titulo": "Governo do Acre reforça preparação contra impactos do Super El ...",
+   "url": "https://rb24horas.com.br/governo-do-acre-reforca-preparacao-contra-impactos-do-super-el-nino-em-terras-indigenas/",
+   "trecho": "Jun 26, 2026 ... ... plano de contingência para mitigar efeitos ... ACREGoverno do Acre reforça preparação contra impactos do Super El Niño em terras indígenas.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AC",
+   "uf": "AC",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Acre",
+   "titulo": "Danna Anute - Casa Civil :: Governo do Estado do Acre",
+   "url": "https://casacivil.ac.gov.br/portal/noticias/categoria/noticias/15088",
+   "trecho": "Jun 1, 2026 ... Plano de contingência incorpora análises sobre os impactos do El Niño e os riscos climáticos no Acre. Foto: Danna Anute/Sepi. “Nesse processo ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AC",
+   "uf": "AC",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Acre secretaria de saúde",
+   "titulo": "'Cesta básica não é solução'; sociedade civil cobra ações efetivas ...",
+   "url": "https://www.acritica.com/amazonia/cesta-basica-n-o-e-soluc-o-sociedade-civil-cobra-ac-es-efetivas-contra-o-el-ni-o-1.412911",
+   "trecho": "Aug 21, 2026 ... ... Saúde (MS), Defesa Civil, entre outros. Ações. Para enfrentar o El Niño, o governo brasileiro instituiu uma Sala de Situação para atualizar ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AC",
+   "uf": "AC",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Acre",
+   "titulo": "PROGRAMAÇÃO - Secretaria de Estado da Saúde",
+   "url": "https://saude.ac.gov.br/wp-content/uploads/2025/03/PROGRAMACAO_ANUAL_DE_SAUDE___2023.pdf",
+   "trecho": "CENTRO DE OPERAÇÕES DE EMERGÊNCIA EM SAÚDE - COES ... ESTADO DO ACRE AO CENÁRIO DE EMERGÊNCIA EM SAÚDE PÚBLICA. DENTRO DAS 03 REGIONAIS DE SAÚDE.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Alagoas",
+   "titulo": "O fortalecimento do El Niño tem agravado a seca no Espírito Santo ...",
+   "url": "https://www.instagram.com/reel/DesSGRDjS48/",
+   "trecho": "1 day ago ... Alagoas deve enfrentar os efeitos de um El Niño de forte ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Alagoas",
+   "titulo": "\"A Secretaria da Saúde do Estado de São Paulo lançou nesta ...",
+   "url": "https://www.instagram.com/p/DcwQWusgS-y/",
+   "trecho": "Sep 1, 2026 ... Photo by e7 Alagoas on September 04, 2026. May be ... O Brasil desenvolveu o Plano de Preparação e Resposta a Emergências em Saúde Pública ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Alagoas",
+   "titulo": "Nova edição do Projeto Alagoas Vigilante vai monitorar as ...",
+   "url": "https://www.saude.al.gov.br/nova-edicao-do-projeto-alagoas-vigilante-vai-monitorar-as-infeccoes-sexualmente-transmissiveis/",
+   "trecho": "Jun 15, 2026 ... ... Plano das Doenças Crônicas e Agravos Não Transmissíveis (DCNT) em Alagoas ... preparação e resposta a surtos e emergências em saúde pública.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Alagoas",
+   "titulo": "Mudanças Climáticas, Redução de Riscos de Desastres e ...",
+   "url": "https://saudeamanha.fiocruz.br/wp-content/uploads/2020/02/FREITAS-CARLOS-et-al-Mudan%C3%A7as-clim%C3%A1ticas-redu%C3%A7%C3%A3o-de-riscos-de-desastres-e-emerg%C3%AAncias-em-sa%C3%BAde-p%C3%BAblica.pdf",
+   "trecho": "... Plano de Resposta às Emergências em Saúde Pública ... Para tanto, prever e sistematizar as ações do setor saúde em um Plano de Preparação e Resposta – PPR-Saúde, ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Alagoas secretaria de saúde",
+   "titulo": "El Niño: Saúde de SP prevê medicamentos, soros e vacinas para ...",
+   "url": "https://jornalonlinealagoas.com/noticia/85983/el-nino-saude-de-sp-preve-medicamentos-soros-e-vacinas-para-municipios-atingidos-por-desastres-naturais",
+   "trecho": "4 days ago ... A Secretaria também conta com uma Sala de Situação e Monitoramento de Riscos e Desastres Naturais e Tecnológicos, que integra as ações de ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Alagoas",
+   "titulo": "Arboviroses - Secretaria de Estado da Saúde de Sergipe",
+   "url": "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano-de-Contingencia_2026-2027.pdf",
+   "trecho": "CENTRO DE OPERAÇÕES DE EMERGÊNCIA E SALA DE SITUAÇÃO ... fronteira com o estado da Bahia e Alagoas, e sendo banhado pelo Oceano Atlântico.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AL",
+   "uf": "AL",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Alagoas",
+   "titulo": "zika-virus-americas-association-with-microcephaly-rapid-risk ...",
+   "url": "https://www.ecdc.europa.eu/sites/default/files/media/en/publications/Publications/zika-virus-americas-association-with-microcephaly-rapid-risk-assessment.pdf",
+   "trecho": "Dec 10, 2015 ... Paraíba, Alagoas, Ceará and ... On 30 November 2015, the COES (Centro de Operações de Emergências em Saúde Pública sobre microcefalias).",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Amazonas",
+   "titulo": "El Niño 2026/2027 – informações e análises - Política por Inteiro",
+   "url": "https://politicaporinteiro.org/el-nino/",
+   "trecho": "... plano de contingência a desastres e El Niño. Público-alvo: Servidores da ... Amazonas em razão das projeções meteorológicas associadas ao fenômeno El Niño.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Amazonas",
+   "titulo": "El Niño: Brasil amplia força de resposta do SUS para enfrentar ...",
+   "url": "https://www.instagram.com/p/Dad568UlUKC/",
+   "trecho": "Jul 6, 2026 ... O Brasil desenvolveu o Plano de Preparação e Resposta a Emergências em Saúde Pública ... Amazonas e Bahia. Em escala mundial, o estudo ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Amazonas",
+   "titulo": "PDF - Amazonas",
+   "url": "https://www.amazonas.am.gov.br/wp-content/uploads/2025/01/5_Mensagem-Governamental-2024-%E2%80%93-Relatorio-de-Atividades-2023.pdf",
+   "trecho": "• Realização da oficina de resposta às emergências em saúde pública, em parceria com Ministério da Saúde ... INSTITUI o Plano Estadual de Juventude do Estado do ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Amazonas",
+   "titulo": "Brasil deverá ter centro para enfrentamento de emergências em ...",
+   "url": "https://portaldoamazonas.com/brasil-devera-ter-centro-para-enfrentamento-de-emergencias-em-saude/",
+   "trecho": "Jun 20, 2026 ... “Entendemos que uma estrutura permanente com foco em prevenção, preparação e resposta a emergências em saúde pública ... Prefeitura lança Plano ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Amazonas",
+   "titulo": "PDF - Amazonas",
+   "url": "https://www.amazonas.am.gov.br/wp-content/uploads/2025/04/6_Mensagem-Governamental-2025-%E2%80%93-Relatorio-de-Atividades-2024.pdf",
+   "trecho": "• Elaboração e divulgação do Plano de Contingência das Ações de Vigilância em Saúde para a Estiagem no Amazonas ... Secretaria de Estado de Saúde do Amazonas (SES) ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Amazonas secretaria de saúde",
+   "titulo": "Governo anuncia plano de enfrentamento aos impactos do El Niño ...",
+   "url": "https://valor.globo.com/brasil/noticia/2026/08/28/governo-anuncia-plano-de-enfrentamento-aos-impactos-do-el-nino-no-sus.ghtml",
+   "trecho": "Aug 28, 2026 ... Na governança interna, a pasta terá uma Sala de Situação Saúde e Clima. ... Aggreko compra seis termelétricas da Brasil Bio Fuels no Amazonas.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Amazonas secretaria de saúde",
+   "titulo": "Amazon Sat on Instagram: \"El Niño no radar, e o governo em alerta ...",
+   "url": "https://www.instagram.com/reel/Da09aT5huEf/",
+   "trecho": "Jul 15, 2026 ... Então toda essa vivência nos traz pra esse momento onde em maio o presidente já instalou a sala de situação ... El Niño coloca o Amazonas em ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Amazonas",
+   "titulo": "Caravana da Saúde intensifica o controle da dengue",
+   "url": "https://amazonas1.com.br/caravana-da-saude-intensifica-o-controle-da-dengue-em-22-municipios-de-12-estados/",
+   "trecho": "Feb 8, 2025 ... A iniciativa, conduzida pela equipe do Centro de Operações de Emergência em Saúde ... Vigilância em Saúde fortalece combate à dengue no Amazonas ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AM",
+   "uf": "AM",
+   "consulta": "doe_saude",
+   "query": "\"diário oficial\" Amazonas saúde \"plano de contingência\" 2026",
+   "titulo": "Amazonas , 20 de Outubro de 2026 • Diário Oficial Eletrônico dos ...",
+   "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+   "trecho": "2 days ago ... Page 1. Amazonas , 20 de Outubro de 2026 • Diário Oficial ... Plano de Contingência para Enfrentamento à. Estiagem Ocasionada pela ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Amapá",
+   "titulo": "Estratégia envolve os 17 Departamentos Regionais de Saúde ...",
+   "url": "https://www.instagram.com/p/DejXgJgnPGG/",
+   "trecho": "5 days ago ... Photo by Amapá Ordinário on October 16, 2026. May be an ... desenvolveu o Plano de Preparação e Resposta a Emergências em Saúde Pública ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Amapá",
+   "titulo": "anfes - associação nacional de fundações estatais de saúde",
+   "url": "https://anfes.org.br/anfes/",
+   "trecho": "A saúde pública do Amapá soma mais uma conquista de reconhecimento nacional. ... Plano de Preparação e Resposta a Emergências em Saúde Pública associadas ao.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Amapá secretaria de saúde",
+   "titulo": "Expofeira 2026: Governo do Amapá apresenta plano de prevenção ...",
+   "url": "https://agenciaamapa.com.br/noticia/36831/expofeira-2026-governo-do-amapa-apresenta-plano-de-prevencao-e-controle-para-periodo-de-estiagem-na-maior-feira-de-desenvolvimento-da-amazonia-legal",
+   "trecho": "Oct 10, 2026 ... A Coordenadoria de Monitoramento e a Sala de Situação acompanham informações como focos de calor, condições meteorológicas, previsão de ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Amapá secretaria de saúde",
+   "titulo": "Com a chegada do período de estiagem e os efeitos do El Niño ...",
+   "url": "https://www.instagram.com/reel/DdWdoMhoMyH/",
+   "trecho": "Sep 16, 2026 ... ... Amapá (PPCDAP). O encontro que reuniu gestores e representantes de órgãos estaduais e federais na Sala de Situação e Monitoramento da Secretaria ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Amapá",
+   "titulo": "Dengue: Seis estados respondem por 84% dos casos no Brasil - APM",
+   "url": "https://www.apm.org.br/dengue-seis-estados-respondem-por-84-dos-casos-no-brasil-saiba-quais-sao/",
+   "trecho": "Jan 10, 2025 ... ... Saúde. A pasta trouxe o alerta durante a abertura preventiva do Centro de Operações de Emergência ... Amapá, Paraná e Minas Gerais. “O ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Amapá",
+   "titulo": "Decreto Nº 3282 DE 28/09/2020 - Estadual - Amapá - LegisWeb",
+   "url": "https://www.legisweb.com.br/legislacao/?legislacao=402001",
+   "trecho": "Sep 28, 2020 ... ... CENTRO DE OPERAÇÕES DE EMERGÊNCIA EM SAÚDE PÚBLICA - COESP (Anexo IV). Art. 3º Este Decreto entra em vigor na data de sua publicação ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Amapá",
+   "titulo": "Seis estados terão incidência de dengue ainda maior em 2025 | VEJA",
+   "url": "https://veja.abril.com.br/saude/seis-estados-terao-incidencia-de-dengue-ainda-maior-em-2025/",
+   "trecho": "Jan 9, 2025 ... Ministério da Saúde lança Centro de Operações de Emergência (COE) para auxiliar combate. ... Amapá e Paraná. “É uma preocupação porque isso ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/AP",
+   "uf": "AP",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Amapá",
+   "titulo": "Plano de Contingência para Emergência em Saúde Pública ...",
+   "url": "https://bvsms.saude.gov.br/bvs/publicacoes/plano_contingencia_emergencia_saude_publica_doenca_virus_ebola.pdf",
+   "trecho": "Ativar Centro de Operações de Emergência em Saúde Pública (COES) para gestão coordenada da ... Amapá. Hospital de Especialidades Alberto Lima-. HCAL. Avenida ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Bahia",
+   "titulo": "El Niño coloca municípios em alerta e Prefeitura de Vitória da ...",
+   "url": "https://www.pmvc.ba.gov.br/el-nino-coloca-municipios-em-alerta-e-prefeitura-de-vitoria-da-conquista-reforca-planejamento-para-prevencao-de-riscos/",
+   "trecho": "Sep 10, 2026 ... Saúde · Segurança Pública e ... El Niño e as ações de cada secretaria. A partir daí, estamos elaborando o plano de contingência específico.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Bahia",
+   "titulo": "Governo de Sergipe adota estratégia integrada de monitoramento e ...",
+   "url": "https://reconcavobahia.com.br/noticia/56766/governo-de-sergipe-adota-estrategia-integrada-de-monitoramento-e-prevencao-diante-do-el-nino/amp",
+   "trecho": "2 days ago ... ... El Niño no território sergipano. A estratégia combina monitoramento ... Plano de Contingência Estadual, que orienta a atuação dos ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Bahia",
+   "titulo": "BAHIA PREVÊ R$ 30,5 MILHÕES PARA ENFRENTAR EFEITOS DO ...",
+   "url": "https://www.instagram.com/p/DdbeOn7xQ2s/",
+   "trecho": "Sep 18, 2026 ... O Brasil criou um plano de preparação e resposta para enfrentar possíveis emergências em saúde pública relacionadas ao fenômeno El Niño previsto ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "enfrentamento",
+   "query": "\"plano estadual de enfrentamento\" El Niño saúde Bahia",
+   "titulo": "️ Com 85% do território inserido no Semiárido, a Bahia está sujeita ...",
+   "url": "https://www.instagram.com/p/Dd6-bZwlhkD/",
+   "trecho": "Sep 30, 2026 ... O Governo da Bahia criou um comitê para elaborar um plano estadual de enfrentamento ... Bahia se antecipa aos impactos do El Niño e prepara ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "enfrentamento",
+   "query": "\"plano estadual de enfrentamento\" El Niño saúde Bahia",
+   "titulo": "Governo Lula reúne gestores do Nordeste para preparar ações ...",
+   "url": "https://www.instagram.com/p/Dcf13LpICdT/",
+   "trecho": "Aug 26, 2026 ... O Governo da Bahia criou um comitê para elaborar um plano estadual de enfrentamento ... El Niño sobre a saúde da população e os serviços de saúde.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Bahia",
+   "titulo": "SALVADOR PROMOVE SIMULADO PARA PLANO DE ...",
+   "url": "https://bahiaeconomica.com.br/2024/03/06/salvador-promove-simulado-para-plano-de-contingencia-das-arboviroses",
+   "trecho": "Mar 6, 2024 ... Um simulado para validação do novo Plano de Contingência das Arboviroses, promovido pela Secretaria Municipal de Saúde (SMS), vai reunir ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Bahia",
+   "titulo": "Novo plano de ação prevê reduzir impactos da dengue no Brasil",
+   "url": "https://atarde.com.br/politica/bahia/novo-plano-de-acao-preve-reduzir-impactos-da-dengue-no-brasil-1287716",
+   "trecho": "Sep 19, 2024 ... ... plano de contingência, focadas, sobretudo, no fortalecimento da rede ... arboviroses”, analisa a secretária da Saúde da Bahia. A ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Bahia secretaria de saúde",
+   "titulo": "O ministro da Saúde, Alexandre Padilha, falou sobre os impactos do ...",
+   "url": "https://www.instagram.com/reel/DdbquolvjI9/",
+   "trecho": "Sep 18, 2026 ... A Bahia está preparando a rede pública de saúde para possíveis impactos do El Niño ... Uma Sala de Situação, que reúne dados atualizados para ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Bahia secretaria de saúde",
+   "titulo": "O Estado da Bahia está intensificando a comunicação preventiva ...",
+   "url": "https://www.instagram.com/p/DeVJkpNIANS/",
+   "trecho": "Oct 10, 2026 ... A Sala de Situação do Instituto do Meio Ambiente e Recursos Hídricos ... Clima na Bahia apresenta forte instabilidade com calor e frio sob ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Bahia secretaria de saúde",
+   "titulo": "Seca ameaça oferta de água no Nordeste e de energia na Amazônia",
+   "url": "https://www1.folha.uol.com.br/cotidiano/2026/09/seca-ameaca-oferta-de-agua-no-nordeste-e-de-energia-na-amazonia.shtml",
+   "trecho": "Sep 28, 2026 ... ... Bahia, Pernambuco e ... sala de situação, adotando medidas preventivas para antecipar e reduzir os possíveis impactos do El Niño 2026/2027.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Bahia secretaria de saúde",
+   "titulo": "Sala de Situação | Inema - Instituto do Meio Ambiente e Recursos ...",
+   "url": "http://www.ba.gov.br/inema/iniciativas/sala-de-situacao",
+   "trecho": "El Niño e La Niña · Monitoramento · Qualidade das Águas · Qualidade das ... Sala de Situação. Body Iniciativa. Inaugurada em 2012, a Sala de Monitoramento ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Bahia secretaria de saúde",
+   "titulo": "Sala de Situação de Monitoramento Ambiental | Inema",
+   "url": "http://www.ba.gov.br/inema/sala",
+   "trecho": "El Niño e La Niña · Monitoramento · Qualidade das Águas · Qualidade das Praias ... Sala de Situação de Monitoramento Ambiental. Sala de Situação de ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/BA",
+   "uf": "BA",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Bahia",
+   "titulo": "GOVERNO DO ESTADO DA BAHIA SECRETARIA DA SAÚDE",
+   "url": "https://www.tce.ba.gov.br/images/resposta_9141_2020_4.pdf",
+   "trecho": "GABINETE DA SUBSECRETÁRIA DA SAÚDE DO ESTADO DA BAHIA -. SESAB/GAB ... Emergência em Saúde Pública (COES/BA), uma rotina de avaliação periódica das ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/CE",
+   "uf": "CE",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Ceará",
+   "titulo": "El Niño 2026–2027: potenciais impactos",
+   "url": "https://www.ce.gov.br/saude/wp-content/uploads/sites/64/2026/01/NOTA-TECNICA-IMPACTOS-DO-ELNINO-NA-SAUDE-1.pdf",
+   "trecho": "associados ao Fenômeno El Niño – Ceará 2026–2027. Page 5. 2 ... Plano de Contingência Nacional para Incêndios Florestais e Queimadas: Efeitos na. Saúde.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/CE",
+   "uf": "CE",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Ceará",
+   "titulo": "Plano de contingência para impactos do El Niño no Ceará é ...",
+   "url": "https://www.opovo.com.br/noticias/ceara/2024/01/03/plano-de-contingencia-para-impactos-do-el-nino-no-ceara-e-apresentado.html",
+   "trecho": "Jan 3, 2024 ... O plano de contingência para os impactos do El Niño no Ceará foi apresentado e discutido nesta quarta-feira, 3, no Palácio da Abolição, ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/CE",
+   "uf": "CE",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Ceará",
+   "titulo": "Elmano lidera reunião conjunta para elaborar plano de ... - Balada IN",
+   "url": "https://www.portalin.com.br/in-connection/elmano-lidera-reuniao-conjunta-para-elaborar-plano-de-contingencia-para-impactos-do-el-nino/",
+   "trecho": "Nov 28, 2023 ... Elmano lidera reunião conjunta para elaborar plano de contingência para impactos do El Niño ... CAACE e OAB Ceará reúnem advocacia em encontro ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/CE",
+   "uf": "CE",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Ceará",
+   "titulo": "O Ceará vem se preparando para enfrentar os impactos ... - Instagram",
+   "url": "https://www.instagram.com/reel/DdUwKXGNWTT/",
+   "trecho": "Sep 15, 2026 ... ... El Niño (COE El Niño) e o Plano de Contingência (Plancon El Niño). A iniciativa conta com a articulação de 32 secretarias o apoio científico ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/CE",
+   "uf": "CE",
+   "consulta": "enfrentamento",
+   "query": "\"plano estadual de enfrentamento\" El Niño saúde Ceará",
+   "titulo": "LEI N.º 19.851",
+   "url": "https://www2.al.ce.gov.br/legislativo/legislacao5/leis2026/19851.htm",
+   "trecho": "... Plano Estadual de enfrentamento das Arboviroses aprovado pela Secretaria da Saúde do Estado; ... § 3.º A arrecadação do Estado do Ceará disponibilizada na ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/CE",
+   "uf": "CE",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Ceará",
+   "titulo": "Ministra da Saúde sinaliza ampliação da vacina da dengue, mas ...",
+   "url": "https://g1.globo.com/saude/noticia/2024/02/03/ministra-da-saude-sinaliza-ampliacao-da-vacina-da-dengue-mas-nega-epidemia-em-nivel-nacional.ghtml",
+   "trecho": "Feb 3, 2024 ... ... Centro de Operações de Emergência (COE) contra a dengue, em Brasília ... Ceará. Nordeste Ceará; primeira página · bom dia ce · cetv 1ª edição ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/DF",
+   "uf": "DF",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Distrito Federal",
+   "titulo": "️ Eventos climáticos extremos também são um desafio de saúde ...",
+   "url": "https://www.instagram.com/p/DdBudHVO4vc/",
+   "trecho": "Sep 8, 2026 ... ... Distrito Federal para avançar na construção dos Planos ... Plano de contingência do Piauí para enfrentar o El Niño está na fase ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/DF",
+   "uf": "DF",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Distrito Federal secretaria de saúde",
+   "titulo": "Risco de 'super el niño' faz governo montar grupo de especialistas ...",
+   "url": "https://g1.globo.com/meio-ambiente/noticia/2026/05/31/risco-de-super-el-nino-faz-governo-montar-grupo-de-especialistas-para-monitorar-eventos-extremos.ghtml",
+   "trecho": "May 31, 2026 ... Governo também retomou sala de situação para incêndios florestais e ampliou o número de brigadistas ... Distrito Federal. Centro-Oeste",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/DF",
+   "uf": "DF",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Distrito Federal secretaria de saúde",
+   "titulo": "El Niño Agro — Ministério da Agricultura e Pecuária - Portal Gov.br",
+   "url": "https://www.gov.br/agricultura/pt-br/campanhas/el-nino-agro",
+   "trecho": "Oct 2, 2026 ... Distrito Federal · Espírito Santo · Goiás · Maranhão · Mato Grosso · Mato ... Sala de Situação do El Niño. 2.1 Como funciona. A Sala de Situação ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/DF",
+   "uf": "DF",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Distrito Federal",
+   "titulo": "Dengue: DF cria centro de operações e hospital de campanha por ...",
+   "url": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2024/02/02/dengue-epidemia-leva-df-a-criar-centro-de-operacoes-e-hospital-de-campanha.htm",
+   "trecho": "Feb 2, 2024 ... Na quinta-feira, 1º, o Ministério da Saúde anunciou a criação de um Centro de Operações de Emergência (COE) para responder à crise. O ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/DF",
+   "uf": "DF",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Distrito Federal",
+   "titulo": "Epidemiological and clinical characteristics of mpox cases - PMC - NIH",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/10069742",
+   "trecho": "... Centro de Operações de Emergência em Saúde Pública: COE Monkeypox [Internet] ... Distrito Federal, Brasil. Cien Saude Colet. 2019;24(6):2193–2201. doi ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "plano de contingência para proteção e defesa civil no municipio de ...",
+   "url": "https://linhares.es.gov.br/wp-content/uploads/2026/10/PLANCON-2026-2027-VERSAO-01rev01-1.pdf",
+   "trecho": "O Plano de Contingência para Proteção e Defesa Civil do ... Comando e Controle Estadual (CCC El Niño/ES), Corpo de Bombeiros Militar do Espírito Santo.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "Defesa Civil de Marataízes apresenta plano contra efeitos do super ...",
+   "url": "https://diaadiaes.com.br/defesa-civil-de-marataizes-apresenta-plano-contra-efeitos-do-super-el-nino/",
+   "trecho": "9 hours ago ... Defesa Civil de Marataízes apresenta plano de contingência para o super El Niño. ... Policiais civis do CORE do Espírito Santo reunidos.",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "Serra se prepara para possíveis impactos do Super El Niño e ...",
+   "url": "https://www.conexaoes.com.br/noticia/serra-se-prepara-para-possiveis-impactos-do-super-el-nino-e-reforca-acoes-na-zona-rural",
+   "trecho": "14 hours ago ... ... Espírito Santo. A Prefeitura anunciou a ampliação de ações de ... A iniciativa integra o Plano de Contingência para o El Niño e ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "EL NIÑO - SESA",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/Planos%20municipais/vitoria-plano-de-preparacao-do-setor-saude-de-vitoria-para-os-impactos-do-el-nino-2026-2027-31-08-2026.pdf",
+   "trecho": "Aug 31, 2026 ... No Espírito Santo, o cenário associado ao El Niño 2026–2027 aponta para a ... esses disponíveis nos links: Plano de Contingência da Saúde ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "plano de contingência da secretaria de estado da saúde - SESA",
+   "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+   "trecho": "Enfrentamento dos Impactos do El Niño (1 º Boletim CICC El Niño, ES, 2026c), ... • O Plano de Contingência da Secretaria de Estado da Saúde para o.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "Prefeitura de Ibatiba orienta população sobre prevenção aos ...",
+   "url": "https://www.ibatiba.es.gov.br/noticia/ler/3176/prefeitura-de-ibatiba-orienta-populao-sobre-preveno-aos-possveis-impactos-do-el-nio-em-2026-e-2027",
+   "trecho": "5 days ago ... Plano de Contingência Municipal · IBATIBA AprovaLegal · CORONAVÍRUS ... El Niño, previsto para o período de 2026 e 2027. O alerta tem como ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "O fortalecimento do El Niño tem agravado a seca no Espírito Santo ...",
+   "url": "https://www.instagram.com/reel/DesSGRDjS48/",
+   "trecho": "1 day ago ... EL NIÑO: ESPÍRITO SANTO DEVE MANTER ATENÇÃO AO CALOR E À SECA O El ... El Niño (COE El Niño) e um Plano de Contingência. O período mais ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Espírito Santo",
+   "titulo": "Marataízes identifica 14 áreas de risco para o El Niño - Aqui Notícias",
+   "url": "https://aquinoticias.com/2026/10/marataizes-identifica-14-areas-de-risco-e-se-prepara-para-possivel-super-el-nino/",
+   "trecho": "8 hours ago ... Marataízes identifica 14 áreas de risco e apresenta plano de contingência para enfrentar possíveis efeitos do super El Niño ... Espírito Santo ( ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Espírito Santo",
+   "titulo": "plano de contingência da secretaria de estado da saúde - SESA",
+   "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+   "trecho": "Secretaria de Estado da Saúde do Espírito Santo constrói o Plano de ... - Revisar e adequar o plano de preparação e resposta, os protocolos e procedimentos.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Espírito Santo",
+   "titulo": "Plano de Contingência da Secretaria de Estado da Saúde ... - SESA",
+   "url": "https://saude.es.gov.br/media/2025_plano-de-contingencia-sesa_-desastres-hidrometeorologicos-no-espirito-santo.pdf",
+   "trecho": "5.2 Eixo Vigilância de Gestão de Emergências em Saúde Pública ... Plano Estadual de Defesa Civil do Estado do Espírito. Santo. Vitória, ES ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Espírito Santo",
+   "titulo": "EL NIÑO - SESA",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/Planos%20municipais/vitoria-plano-de-preparacao-do-setor-saude-de-vitoria-para-os-impactos-do-el-nino-2026-2027-31-08-2026.pdf",
+   "trecho": "Aug 31, 2026 ... antecipação, preparação e resposta dos serviços essenciais. ... De acordo com o Plano Municipal de Redução de Riscos (PMRR) e o Plano Municipal.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Espírito Santo",
+   "titulo": "Plano de Contingência da Saúde para Desastres Naturais",
+   "url": "https://api-site.apiaca.es.gov.br/arquivos/editor/1602032024090466d8aeab6d9e8.pdf",
+   "trecho": "Esses planos direcionam as ações do sistema de saúde brasileiro e suas instituições parceiras durante emergências em saúde pública, oferecendo diretrizes claras ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Espírito Santo",
+   "titulo": "Vitória (ES), sexta-feira, 4 de Setembro de 2026. - SESA",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/documentos/portaria-no-106-r-02-09-2026-institui-sala-de-situacao-preparacao-e-resposta-aos-impactos-do-el-nino.pdf",
+   "trecho": "Sep 2, 2026 ... emergências em saúde pública. ... Plano Estadual de Preparação e Resposta da Saúde aos Impactos do El Niño;. II.Plano Operacional da SESA/ES ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Espírito Santo",
+   "titulo": "Arboviroses - Secretaria de Estado da Saúde - SESA",
+   "url": "https://mosquito.saude.es.gov.br/notastecnicas1",
+   "trecho": "Governo do Estado do Espírito Santo. Transparência |; Logo Acesso à ... Plano de Contingência Estadual das Arboviroses Dengue, Zika e Chikungunya 2021-2023 ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Espírito Santo",
+   "titulo": "Saúde cria Sala de Situação de Arboviroses",
+   "url": "https://www.pmbsf.es.gov.br/noticia/ler/4504/saude-cria-sala-de-situacao-de-arboviroses",
+   "trecho": "Feb 28, 2024 ... Visando atender as diretrizes do Ministério da Saúde e da Secretaria de Estado da Saúde ... do Plano de Contingência de Arboviroses. Estas doenças ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Espírito Santo",
+   "titulo": "NOTA INFORMATIVA: dengue, zika e chikungunya",
+   "url": "https://saude.aparecida.go.gov.br/wp-content/uploads/sites/6/2023/09/Nota-Informativa-no-12-DENGUE-ZIKA-E-CHIKUNGUNYA-1-2-1.pdf",
+   "trecho": "Sep 13, 2023 ... ESPIRITO SANTO. Plano de contingência Estadual das arboviroses Dengue, Zika e Chikungunya. Disponível em: https://mosquito.saude.es.gov.br ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Espírito Santo",
+   "titulo": "decreto nº 328, de 09 de setembro de 2021",
+   "url": "https://legislacao.vilavelha.es.gov.br/Arquivo/Documents/legislacao/html/D3282021.html",
+   "trecho": "Sep 10, 2021 ... ... Plano de Contingência para enfrentamento das arboviroses; decreta: ... da Secretaria de Saúde e os representantes das Secretarias ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Espírito Santo",
+   "titulo": "PLANO DE AÇÃO PARA ENFRENTAMENTO DOS IMPACTOS DO ...",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/Planos%20municipais/rio-novo-do-sul-plano-de-acao-el-nino-2026-semus.pdf",
+   "trecho": "Aug 24, 2026 ... Secretaria Municipal de Saúde. Plano de Contingência de Arboviroses. 2026 – 2027. CICC EL NIÑO 2026/2027 – ESPÍRITO SANTO. 8° Boletim de ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "calor",
+   "query": "\"plano\" OR \"protocolo\" \"onda de calor\" OR \"excesso de calor\" saúde Espírito Santo",
+   "titulo": "plano de contingência da secretaria de estado da saúde - SESA",
+   "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+   "trecho": "O Plano de Contingência para o Calor extremo foi elaborado a partir de dados e informações sobre o monitoramento estadual Alerta ES para o calor extremo,.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Espírito Santo secretaria de saúde",
+   "titulo": "El Niño pode pressionar preços e aumentar seca no Espírito Santo",
+   "url": "https://jpnewsvitoria.com.br/el-nino-impactos-espirito-santo-seca-precos/",
+   "trecho": "Oct 1, 2026 ... ... El Niño para orientar a população. Na área da saúde, a Secretaria de Estado da Saúde criou uma Sala de Situação do El Niño, com medidas de ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Espírito Santo secretaria de saúde",
+   "titulo": "Com a previsão de permanência do super El Niño ao longo do ciclo ...",
+   "url": "https://www.instagram.com/p/DeNDn18l0Zs/",
+   "trecho": "Oct 7, 2026 ... ... El Niño ao longo do ciclo 2026/2027, o Ministério Publico Estadual (MPE-ES) ... No Espírito Santo, o Governo também criou uma Sala de Situação para ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Espírito Santo secretaria de saúde",
+   "titulo": "El Niño 2026/2027 – informações e análises - Política por Inteiro",
+   "url": "https://politicaporinteiro.org/el-nino/",
+   "trecho": "... Espírito Santo (CBMES). A página do Estado reunindo as informações sobre El ... Sala de situação El Niño. 18/06/2026. Governo federal. O governo federal ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Espírito Santo secretaria de saúde",
+   "titulo": "EL NIÑO - SESA",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/Planos%20municipais/vitoria-plano-de-preparacao-do-setor-saude-de-vitoria-para-os-impactos-do-el-nino-2026-2027-31-08-2026.pdf",
+   "trecho": "Aug 31, 2026 ... No Espírito Santo, o cenário associado ao El Niño ... Monitorar a necessidade de acionamento da Sala de Situação em Saúde ou do Centro de.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Espírito Santo secretaria de saúde",
+   "titulo": "Vitória (ES), sexta-feira, 4 de Setembro de 2026. - SESA",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/documentos/portaria-no-106-r-02-09-2026-institui-sala-de-situacao-preparacao-e-resposta-aos-impactos-do-el-nino.pdf",
+   "trecho": "Sep 2, 2026 ... Institui a Sala de Situação do Setor Saúde - Preparação e Resposta aos Impactos do El Niño 2026/2027, no âmbito da Secretaria de Estado da ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Espírito Santo secretaria de saúde",
+   "titulo": "El Niño: Saúde de SP prevê medicamentos, soros e vacinas para ...",
+   "url": "https://conectshownoticias.com.br/noticia/66968/el-nino-saude-de-sp-preve-medicamentos-soros-e-vacinas-para-municipios-atingidos-por-desastres-naturais",
+   "trecho": "4 days ago ... A Secretaria também conta com uma Sala de Situação e Monitoramento ... Espírito Santo. Pedra Baiana, em Nova Belém, Recebe a Primeira ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "doe_saude",
+   "query": "\"diário oficial\" Espírito Santo saúde \"plano de contingência\" 2026",
+   "titulo": "plano de contingência da secretaria de estado da saúde - SESA",
+   "url": "https://saude.es.gov.br/media/plano-de-contingencia-calor-extremo-sesa-2026-2.pdf",
+   "trecho": "Vitória: Diário Oficial do Espírito Santo, 2019. Disponível em: https://ioes.dio.es.gov.br. Acesso em: 06 ago. 2026. ESPÍRITO SANTO. Decreto n.5.387, de 05 ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "doe_saude",
+   "query": "\"diário oficial\" Espírito Santo saúde \"plano de contingência\" 2026",
+   "titulo": "INSTRUMENTOS DE PLANEJAMENTO DO SUS - ES",
+   "url": "https://www.guarapari.es.gov.br/pagina/ler/2131/instrumentos-de-planejamento-do-sus",
+   "trecho": "Diário Oficial · Carta de Serviços · Transparência · Dados Abertos · Ouvidorias · e ... PLANO DE CONTINGENCIA CHIKUNGUNYA · PLANO DE CONTINGENCIA DENGUE · PLANO ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/ES",
+   "uf": "ES",
+   "consulta": "doe_saude",
+   "query": "\"diário oficial\" Espírito Santo saúde \"plano de contingência\" 2026",
+   "titulo": "Plano de Ação da Saúde para Enfrentamento ao EL NIÑO",
+   "url": "https://saude.es.gov.br/media/sala-de-situacao-el-nino/Planos%20municipais/anchieta-plano-de-acao-da-saude-para-enfrentamento-ao-el-nino-anchieta-es-2006-2027-versao-final-25-08-26.pdf",
+   "trecho": "Aug 7, 2026 ... Diário Oficial dos Poderes do Estado do Espírito Santo. ESPÍRITO ... Plano de Contingência de Desastres- Saúde https://www.anchieta.es ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Goiás",
+   "titulo": "Goiás cria força-tarefa para combater incêndios florestais e ...",
+   "url": "https://diaonline.com.br/2026/08/19/goias-cria-forca-tarefa-para-combater-incendios-florestais-e-impactos-do-el-nino/",
+   "trecho": "Aug 19, 2026 ... Ao todo, 20 setores participam do Plano de Contingência Estadual. ... Tags: climaclima em goiásEl Niñoestiagemgoiásincendiostempo em goiás ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "plancon_elnino",
+   "query": "\"plano de contingência\" \"El Niño\" secretaria de saúde Goiás",
+   "titulo": "Calor ganha força em Goiás e temperaturas máximas podem ...",
+   "url": "https://aredacao.com.br/calor-ganha-forca-em-goias-e-temperaturas-maximas-podem-chegar-a-40oc/",
+   "trecho": "Aug 24, 2026 ... ... El Niño, com medidas preventivas, ações emergenciais e a recuperação ... Ao todo, 20 setores estão envolvidos no Plano de Contingência ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "preparacao",
+   "query": "\"plano\" \"preparação e resposta\" \"emergências em saúde pública\" Goiás",
+   "titulo": "PlaCon Desastres Hidrológicos e Meteorológicos - Governo de Goiás",
+   "url": "https://goias.gov.br/saude/wp-content/uploads/sites/34/vigilancia-em-saude/emergencias-em-saude-publica/planos/Plano%20de%20Contig%C3%AAncia%20Hidrol%C3%B3gico-1.pdf",
+   "trecho": "Plano de Emergências em Saúde Pública. PLACON. Plano de Contingência. POP ... saúde estadual para a preparação e resposta às emergências em saúde pública.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Goiás",
+   "titulo": "Silvânia Implanta Ovitrampas e Lança Plano de Contingência no ...",
+   "url": "https://silvania.go.gov.br/silvania-implanta-ovitrampas-e-lanca-plano-de-contingencia-no-combate-ao-mosquito-aedes-aegypti/",
+   "trecho": "Sep 19, 2025 ... A ação faz parte do Plano de Contingência 2025/2026, que tem como objetivo fortalecer a prevenção e o controle das arboviroses no município.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Goiás",
+   "titulo": "NOTA INFORMATIVA: dengue, zika e chikungunya",
+   "url": "https://saude.aparecida.go.gov.br/wp-content/uploads/sites/6/2023/09/Nota-Informativa-no-12-DENGUE-ZIKA-E-CHIKUNGUNYA-1-2-1.pdf",
+   "trecho": "Sep 13, 2023 ... Plano de contingência Estadual das arboviroses Dengue, Zika e Chikungunya. ... SECRETARIA DE ESTADO DA SAÚDE DE GOIÁS. Indicadores de ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Goiás",
+   "titulo": "Com a possibilidade de o fenômeno El Niño ganhar intensidade ...",
+   "url": "https://www.instagram.com/reel/DbVrjCvmgBS/",
+   "trecho": "Jul 28, 2026 ... Diante desse cenário, um plano de contingência está sendo preparado em ... A Secretaria de Estado da Saúde de Goiás (SES-GO) já iniciou a ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Goiás secretaria de saúde",
+   "titulo": "Goiás pode enfrentar temperaturas acima da média e chuvas ...",
+   "url": "https://www.instagram.com/reel/DefASmDEapw/",
+   "trecho": "6 days ago ... Para enfrentar o cenário, a União estruturou uma sala de situação ... El niño em Goiás: nota técnica aponta riscos ao clima até 2027. Um ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "sala_situacao",
+   "query": "\"sala de situação\" saúde clima OR El Niño Goiás secretaria de saúde",
+   "titulo": "O Governo de São Paulo está organizando planos regionais para ...",
+   "url": "https://www.instagram.com/p/DekJcHqmwKJ/",
+   "trecho": "4 days ago ... A Secretaria de Estado da Saúde de Goiás (SES-GO) divulgou nota ... Governança interna, por meio da Sala de Situação Saúde e Clima;",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Goiás",
+   "titulo": "editorial",
+   "url": "https://www.revista.esap.go.gov.br/index.php/resap/article/download/880/435/2458",
+   "trecho": "Na ocasião, o Brasil, ativou o Centro de Operações de Emergência em Saúde Pública - ... Saúde de Goiás (SES-GO). REFERÊNCIAS. 1. BRASIL, Ministério da Saúde ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/GO",
+   "uf": "GO",
+   "consulta": "coe",
+   "query": "\"centro de operações de emergência\" OR COES saúde Goiás",
+   "titulo": "Dengue: Seis estados respondem por 84% dos casos no Brasil - APM",
+   "url": "https://www.apm.org.br/dengue-seis-estados-respondem-por-84-dos-casos-no-brasil-saiba-quais-sao/",
+   "trecho": "Jan 10, 2025 ... ... Goiás, Paraná e Santa Catarina ... Saúde. A pasta trouxe o alerta durante a abertura preventiva do Centro de Operações de Emergência ...",
+   "oficial": false,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/MA",
+   "uf": "MA",
+   "consulta": "enfrentamento",
+   "query": "\"plano estadual de enfrentamento\" El Niño saúde Maranhão",
+   "titulo": "LEI N.º 19.851",
+   "url": "https://www2.al.ce.gov.br/legislativo/legislacao5/leis2026/19851.htm",
+   "trecho": "... MA 95;. XXX ... c) comprovar a aderência às ações municipais do Plano Estadual de enfrentamento das Arboviroses aprovado pela Secretaria da Saúde do Estado;.",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/MA",
+   "uf": "MA",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Maranhão",
+   "titulo": "Arboviroses - Prefeitura Municipal de Aldeias Altas",
+   "url": "https://aldeiasaltas.ma.gov.br/noticia/575-secretaria-de-saude-divulga-plano-de-contingencia-para-prevencao-e-enfrentamento-de-epidemias-de-arboviroses-em-aldeias-altas",
+   "trecho": "May 15, 2023 ... Secretaria de Saúde divulga Plano de Contingência para Prevenção e Enfrentamento de Epidemias de Arboviroses em Aldeias Altas · Início · Notícias ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/MA",
+   "uf": "MA",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Maranhão",
+   "titulo": "Governo consolida ações de vigilância e resposta para ... - EGMA",
+   "url": "https://egma.ma.gov.br/noticias/governo-consolida-acoes-de-vigilancia-e-resposta-para-monitoramento-do-cenario-epidemiologico-da-dengue-e-de-outras-arboviroses",
+   "trecho": "Feb 20, 2024 ... A oficina sobre Manejo clínico das arboviroses e Plano de Contingência será realizada nesta quinta-feira (22) e sexta-feira (23), no ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/MA",
+   "uf": "MA",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Maranhão",
+   "titulo": "Programação Anual de Saúde 2024 - Prefeitura de Lajeado Novo",
+   "url": "https://www.lajeadonovo.ma.gov.br/portal2021/projeto/public/upload/programacao_anual_saude/80487.pdf",
+   "trecho": "Ação Nº 3 - Executar o Plano de Contingência de Arboviroses;. Ação Nº 4 ... Ação Nº 2 - Articular junto a Secretaria Estadual de Saúde/Regional de Saúde ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento"
+  },
+  {
+   "alvo": "funil-saude/MA",
+   "uf": "MA",
+   "consulta": "arbovirose",
+   "query": "\"plano de contingência\" arboviroses secretaria estadual de saúde Maranhão",
+   "titulo": "Boletim Epidemiológico - Prefeitura de Imperatriz",
+   "url": "https://sti.imperatriz.ma.gov.br/transparencia/boletim/",
+   "trecho": "Aug 31, 2026 ... Boletins Epidemiológicos. Transparência em saúde. Mais recente ... PLANO DE CONTINGENCIA. Enfrentamento de Epidemia por Arboviroses. Data ...",
+   "oficial": true,
+   "origem": "funil_saude_estadual",
+   "registrado_em": "21/10/2026",
    "documento_oficial_confirmado": null,
    "promovivel": false,
    "status": "pendente_confirmacao_documento"
