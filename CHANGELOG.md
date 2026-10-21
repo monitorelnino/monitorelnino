@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `coletar_orientacoes_oficiais.py` passa a gravar, por página de chuvas e de fogo, os passos que a fonte oficial dá ao leitor (`trechos`), como já fazia com a dengue. Seca (protocolo técnico) e calor (sem passos) seguem sem trechos, lacuna declarada. Peso zero; o índice não lê. Linhas líquidas de código: +32.
 
+## 2026-10-21 · #940 · Defesa civil sem a tabela do rodapé do mapa
+
+A lista buscável do rodapé da figura das emergências sai. Ela respondia por município o que a seção "Como está o seu município" já responde com o módulo comum da consulta, por nome e com busca. Com ela saem a função que a montava e a declaração de busca da figura, 40 linhas a menos. O contrato da página perde a divergência registrada em 19/10, vencida desde o #896.
+
 ## 2026-10-21 · #939 · MARÉ Saúde v0.5: índice nacional sobre as 27 UFs
 
 Decisão da editoria de 21/10: o MARÉ Saúde tem número nacional pela regra do MARÉ Legal. `data/monitor_saude.json` ganha `resumo.indice_nacional` (média das 27; hoje 24,8, contra 31,9 das 21 verificadas), `por_estatuto` (soma 27) e `prontidao_nacional` por UF; sem documento lido, crédito 0 e estatuto visível. Número por UF não muda. METODOLOGIA §115; portão `verificar_saude.py` confere a conta. Linhas líquidas de código: +62.

@@ -13,6 +13,10 @@
  * não casa ato por conta própria (antes casava `atos_resposta.json` aqui, uma segunda definição do
  * mesmo conjunto). Campo que o gerador ainda não escreve aparece como lacuna da sua classe.
  *
+ * A lista buscável do rodapé do mapa saiu em 21/10/2026 (item 3 do handover de ajustes): a seção "Como
+ * está o seu município" responde por município com o módulo comum, e repetir a mesma resposta numa
+ * tabela de 953 linhas era a segunda implementação da mesma pergunta.
+ *
  * Valor em reais não entra nesta página: o dinheiro autorizado depois do reconhecimento está em
  * `financiamento.html#defesaCivil`. As três listas federais de risco estão no Monitor de riscos.
  *
@@ -56,38 +60,6 @@ async function __load(){
     (NOMES_POR_UF[m.uf] = NOMES_POR_UF[m.uf] || []).push(m.nome);
   });
   __init(ref.length);
-}
-
-/* Lista buscável, o mesmo componente em todos os cartões. Devolve `filtrar(texto)`. */
-let __seqBusca = 0;
-function listaBuscavel(figuraId, opts){
-  const alvo = document.querySelector('#' + figuraId + ' [data-busca]');
-  if (!alvo) return null;
-  const esc = MonitorMapas.esc, id = 'busca' + (++__seqBusca), linhas = opts.linhas || [], cols = opts.colunas;
-  alvo.insertAdjacentHTML('afterbegin',
-    '<details class="cartao-mapa-dados"><summary>Ver em tabela</summary>'
-    + '<div class="busca-mun"><label for="' + id + '">' + esc(opts.rotulo || 'Buscar município') + '</label>'
-    + '<input id="' + id + '" type="search" autocomplete="off" spellcheck="false" placeholder="Digite o nome da cidade ou a sigla do estado">'
-    + '<p class="busca-mun-conta" role="status" aria-live="polite"></p></div>'
-    + '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">'
-    + '<table class="mun-table"><thead><tr>' + cols.map(c => '<th>' + esc(c) + '</th>').join('')
-    + '</tr></thead><tbody></tbody></table></div></details>');
-  const bloco = alvo.querySelector('details'), corpo = alvo.querySelector('tbody');
-  const campo = alvo.querySelector('#' + id), conta = alvo.querySelector('.busca-mun-conta');
-  /* Teto de linhas montadas: quem digita vê a sua cidade; a contagem diz quantas existem. */
-  const TETO = 200, unidade = opts.unidade || 'município';
-  function pinta(){
-    const q = (campo.value || '').trim().toLowerCase();
-    const achadas = q ? linhas.filter(l => (l.busca || '').toLowerCase().indexOf(q) >= 0) : linhas;
-    corpo.innerHTML = achadas.slice(0, TETO).map(l => '<tr>' + l.celulas.map(c => '<td>' + c + '</td>').join('') + '</tr>').join('')
-      || '<tr><td colspan="' + cols.length + '">nenhum município encontrado com esse texto</td></tr>';
-    conta.textContent = achadas.length === 1 ? '1 ' + unidade + (q ? ' encontrado' : '')
-      : achadas.length.toLocaleString('pt-BR') + ' ' + unidade + 's' + (q ? ' encontrados' : '')
-        + (achadas.length > TETO ? ' · mostrando os ' + TETO + ' primeiros; refine a busca' : '');
-  }
-  campo.addEventListener('input', pinta);
-  pinta();
-  return function filtrar(texto){ campo.value = texto || ''; if (bloco) bloco.open = true; pinta(); };
 }
 
 /* Família de cor do evento declarado (tokens de `assets/mapas.js`): seca, chuva, fogo, outro. Aceita
@@ -317,17 +289,6 @@ function __init(totalMunicipios){
       + ');background:' + cor(familiaDe(b[0]).cor) + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('') + '</div>'
       : '<div class="lacuna">Evento declarado em classificação até o corte (' + esc(corteDecretos || 'sem registro') + ').</div>';
   }
-  listaBuscavel('boxEmergencias', {
-    colunas: ['Município', 'UF', 'Evento declarado', 'Decreto', 'Reconhecimento', 'Documento'],
-    rotulo: 'Buscar município com decreto',
-    linhas: decretados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')).map(m => ({
-      busca: m.nome + ' ' + m.uf,
-      celulas: ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(eventoTexto(m)),
-        esc(m.atoLocalizado ? (m.decreto || 'não localizado até o corte') : 'ato não localizado até o corte'),
-        esc(m.reconhecida ? m.reconhecimento || '' : 'não localizado até o corte'),
-        [docLink(m.atoMunicipal), docLink(m.portaria)].filter(Boolean).join('<br>') || 'não localizado até o corte'],
-    })),
-  });
 }
 
 __load().catch(err => {
