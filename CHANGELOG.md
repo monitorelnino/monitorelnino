@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
+
+A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
+
 ## 2026-10-21 · #937 · Vigia repõe o domínio atrás da main
 
 O vigia diário (`verificar_publicado.yml`) passa a repor o domínio pelo `repor_dominio.sh` quando a integridade diverge da `main`, confere de novo e abre Issue no registro privado se a reposição falhar. O portão de reposição agora prova que o workflow de portões citado pelo publicador existe e dispara em `pull_request`.

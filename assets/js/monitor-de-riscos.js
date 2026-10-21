@@ -1307,7 +1307,7 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
     const longeDaCapital = Number(cap.distancia_km) > KM_MAX_PREVISAO;
     const avisos = (m.avisos_inmet || []).map(i => dados.avisos_inmet[i]).filter(Boolean);
     const cem = m.alertas_cemaden || [];
-    const dec = m.decretos || [];
+    const dec = m.decretos || [], rec = m.reconhecimento || null;
     const sobra = Math.max(0, (m.decretos_no_ciclo || 0) - dec.length);
     card.innerHTML = '<h4>' + esc(m.nome) + ' · ' + esc(uf) + '</h4><div class="tbl-wrap"><table class="mun-table"><tbody>'
       + linha('Risco previsto pelo boletim (estado)', esc(r.length ? r.map(c => NOMES[c] || c).join(' e ') : 'sem sinal elevado'), f('painel_el_nino'))
@@ -1321,9 +1321,13 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
       + linha('Alerta do Cemaden', esc(cem.length ? cem.map(a => a.evento || (a.tipo + ' · ' + a.nivel)).join('; ') : 'nenhum alerta vigente na consulta'), 'Cemaden' + ((o.avisos_e_alertas || {}).gerado_em ? ' · ' + o.avisos_e_alertas.gerado_em : ''))
       // 19/10/2026 (auditoria da consulta, item 2): o cartão mostrava até três atos e calava o resto,
       // com o total já gravado em `decretos_no_ciclo`. Agora o que não coube é dito.
-      // O item 1 (duas linhas, decreto do município e reconhecimento federal) espera o dado: a
-      // separação na origem entrou no #865 e só vale no arquivo que o elo dos sinais gravar.
-      + linha('Situação de emergência desde 29/06/2026', dec.length ? dec.map(d => esc(d.data) + ' · ' + (d.url ? '<a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.decreto) + '</a>' : esc(d.decreto))).join('<br>') + (sobra ? '<br>' + esc('e mais ' + plural(sobra, 'ato no período', 'atos no período')) : '') : 'não localizamos até o corte', 'DOU e diários oficiais' + ((o.decretos || {}).atualizado_em ? ' · ' + o.decretos.atualizado_em : ''))
+      // 21/10/2026 (item 1 da mesma auditoria): uma linha misturava duas naturezas — o decreto do
+      // município e a portaria federal de reconhecimento. Agora são duas, cada uma com a sua fonte;
+      // `decretos` já traz só o ato do município (nenhuma portaria SEDEC/MIDR nos 27 arquivos).
+      + linha('Decreto de emergência do município desde 29/06/2026', dec.length ? dec.map(d => esc(d.data) + ' · ' + (d.url ? '<a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.decreto) + '</a>' : esc(d.decreto))).join('<br>') + (sobra ? '<br>' + esc('e mais ' + plural(sobra, 'ato no período', 'atos no período')) : '') : 'não localizamos até o corte', 'DOU e diários oficiais' + ((o.decretos || {}).atualizado_em ? ' · ' + o.decretos.atualizado_em : ''))
+      + linha('Reconhecimento federal', esc(rec && rec.reconhecido && rec.primeiro_reconhecimento
+        ? 'reconhecido em ' + rec.primeiro_reconhecimento : 'não localizamos até o corte'),
+        'SEDEC/MIDR, portarias de reconhecimento' + ((o.reconhecimento || {}).gerado_em ? ' · ' + o.reconhecimento.gerado_em : ''))
       + linha('Plano de contingência', '<a href="index.html#' + esc(uf) + '">Ver a situação na ficha do estado, na página inicial →</a>', 'MARÉ Legal')
       + '</tbody></table></div>';
   }
