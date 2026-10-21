@@ -7,15 +7,15 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "20/10/2026 05:49",
+ "gerado_em": "20/10/2026 22:10",
  "resumo": {
-  "municipios": 1149,
+  "municipios": 1146,
   "municipios_inmet": 1144,
-  "municipios_cemaden": 7,
-  "avisos_inmet": 2,
-  "alertas_cemaden_em_vigor": 7,
+  "municipios_cemaden": 4,
+  "avisos_inmet": 1,
+  "alertas_cemaden_em_vigor": 4,
   "alertas_cemaden_cessados": 0,
-  "alertas_cemaden_devolvidos": 7,
+  "alertas_cemaden_devolvidos": 4,
   "alertas_cemaden_sem_codigo_ibge": 0,
   "campos_devolvidos_pelo_cemaden": [
    "cidade",
@@ -41,8 +41,7 @@
     "Perigo Potencial": 62
    },
    "BA": {
-    "Perigo Potencial": 382,
-    "Perigo": 23
+    "Perigo Potencial": 382
    },
    "ES": {
     "Perigo Potencial": 21
@@ -54,8 +53,7 @@
     "Perigo Potencial": 60
    },
    "MG": {
-    "Perigo Potencial": 114,
-    "Perigo": 15
+    "Perigo Potencial": 114
    },
    "MT": {
     "Perigo Potencial": 59
@@ -1325,7 +1323,15 @@
      "fim": "2026-10-20 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Movimentos de Massa",
+     "evento": "Movimentos de Massa - Moderado",
+     "inicio": "2026-10-20T22:59:39.943Z",
+     "fim": null
+    }
+   ]
   },
   "1301654": {
    "nome": "Guajará",
@@ -7553,13 +7559,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -7993,13 +7992,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -8603,13 +8595,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -9058,13 +9043,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -9261,13 +9239,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -9407,13 +9378,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -9703,13 +9667,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -9808,13 +9765,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -9870,13 +9820,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -9934,13 +9877,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -9982,13 +9918,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -10045,13 +9974,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -10319,13 +10241,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -10423,13 +10338,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -10823,13 +10731,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -10969,13 +10870,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -11186,13 +11080,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -11544,13 +11431,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -11565,13 +11445,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -11585,13 +11458,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -11886,13 +11752,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -12566,13 +12425,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -12909,13 +12761,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -13028,13 +12873,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -13118,13 +12956,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -13212,15 +13043,7 @@
      "fim": "2026-10-20 23:59"
     }
    ],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-19T11:45:00.717Z",
-     "fim": null
-    }
-   ]
+   "cemaden": []
   },
   "3115458": {
    "nome": "Catuji",
@@ -13390,20 +13213,6 @@
    ],
    "cemaden": []
   },
-  "3124203": {
-   "nome": "ESPERA FELIZ",
-   "uf": "MG",
-   "inmet": [],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-19T04:35:14.330Z",
-     "fim": null
-    }
-   ]
-  },
   "3124302": {
    "nome": "Espinosa",
    "uf": "MG",
@@ -13427,13 +13236,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -13645,13 +13447,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -13763,13 +13558,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14051,13 +13839,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14198,13 +13979,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14331,13 +14105,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14380,13 +14147,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14414,13 +14174,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14450,13 +14203,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14471,13 +14217,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14491,13 +14230,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14583,13 +14315,6 @@
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
      "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
-     "fim": "2026-10-20 23:59"
     }
    ],
    "cemaden": []
@@ -14645,13 +14370,6 @@
      "tipo": "Chuvas Intensas",
      "severidade": "Perigo Potencial",
      "inicio": "2026-10-19 08:51",
-     "fim": "2026-10-20 23:59"
-    },
-    {
-     "id": "28520",
-     "tipo": "Acumulado de Chuva",
-     "severidade": "Perigo",
-     "inicio": "2026-10-20 00:01",
      "fim": "2026-10-20 23:59"
     }
    ],
@@ -14769,20 +14487,6 @@
    ],
    "cemaden": []
   },
-  "3201803": {
-   "nome": "DIVINO DE SÃO LOURENÇO",
-   "uf": "ES",
-   "inmet": [],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-19T08:13:45.611Z",
-     "fim": null
-    }
-   ]
-  },
   "3202108": {
    "nome": "Ecoporanga",
    "uf": "ES",
@@ -14866,20 +14570,6 @@
     }
    ],
    "cemaden": []
-  },
-  "3203700": {
-   "nome": "MUNIZ FREIRE",
-   "uf": "ES",
-   "inmet": [],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-19T08:12:33.805Z",
-     "fim": null
-    }
-   ]
   },
   "3203908": {
    "nome": "Nova Venécia",
