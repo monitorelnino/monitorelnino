@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #941 · A ordem dos atributos que repunha o domínio todo dia
+
+Em `prefeituras.html`, `data-conteudo` passa a vir antes de `href` nos três links de cartão: o
+Netlify reemite o `href` no fim ao servir, e essa era a única divergência do site contra o
+manifesto — o vigia repunha o domínio uma vez por dia sem motivo. Os dois números de "O que a lei
+exige" passam a ser escritos quando a fonte existe, com zero por extenso. A Imprensa lê
+`semana.json` uma vez só.
+
 ## 2026-10-21 · #940 · Defesa civil sem a tabela do rodapé do mapa
 
 A lista buscável do rodapé da figura das emergências sai. Ela respondia por município o que a seção "Como está o seu município" já responde com o módulo comum da consulta, por nome e com busca. Com ela saem a função que a montava e a declaração de busca da figura, 40 linhas a menos. O contrato da página perde a divergência registrada em 19/10, vencida desde o #896.
@@ -68,7 +76,6 @@ Os cartões da semana da Imprensa e a conferência de âncoras internas passam a
 ## 2026-10-20 · #921 · Três portões viram regras do executor de dado
 
 Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.
-=======
 
 ## 2026-10-20 · #919 · O domínio acompanha a main
 
@@ -162,7 +169,6 @@ Consolidação, item 6. A regra de disparo (dado, página) estava copiada em tr�
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
-=======
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
