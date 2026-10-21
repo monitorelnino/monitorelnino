@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #943 · O cartão de dengue do Proteja-se passa a ler o município
+
+A consulta municipal do Proteja-se mostra o nível de alerta de dengue do InfoDengue para os 339
+municípios que a fonte publica, com a semana em datas. Para os demais, diz que a fonte não leu o
+município — não é zero, não é "sem coleta", e as três classes continuam distintas. O rótulo do
+nível é o mesmo que a página da Saúde usa, e o cartão leva à aba de dengue.
+
 ## 2026-10-21 · #941 · A ordem dos atributos que repunha o domínio todo dia
 
 Em `prefeituras.html`, `data-conteudo` passa a vir antes de `href` nos três links de cartão: o
