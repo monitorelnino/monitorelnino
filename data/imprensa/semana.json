@@ -1,9 +1,9 @@
 {
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-20",
+ "gerado_em": "2026-10-21",
  "janela_dias": 7,
  "indices": {
-  "edicao": "20/10/2026",
+  "edicao": "21/10/2026",
   "mare_legal": 40.2,
   "mare_saude": 31.9,
   "saude_verificadas": 21,
@@ -17,8 +17,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-13",
-    "fim": "2026-10-20"
+    "ini": "2026-10-14",
+    "fim": "2026-10-21"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -174,14 +174,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 7,
+   "valor": 4,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "20/10/2026 05:49",
+   "referencia": "20/10/2026 22:10",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "20/10/2026 05:49",
+   "consultado_em": "20/10/2026 22:10",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -198,10 +198,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "20/10/2026 05:49",
+   "referencia": "20/10/2026 22:10",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "20/10/2026 05:49",
+   "consultado_em": "20/10/2026 22:10",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -214,7 +214,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 874,
+   "valor": 159,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -223,83 +223,39 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261020.csv",
+   "nota": "Focos do dia — focos_diario_br_20261021.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 252
+     "valor": 78
     },
     {
      "uf": "MA",
-     "valor": 246
-    },
-    {
-     "uf": "GO",
-     "valor": 129
-    },
-    {
-     "uf": "MG",
-     "valor": 48
-    },
-    {
-     "uf": "CE",
-     "valor": 35
-    },
-    {
-     "uf": "PI",
-     "valor": 35
-    },
-    {
-     "uf": "BA",
-     "valor": 34
-    },
-    {
-     "uf": "RO",
-     "valor": 22
-    },
-    {
-     "uf": "PB",
-     "valor": 17
-    },
-    {
-     "uf": "AL",
-     "valor": 13
-    },
-    {
-     "uf": "RN",
-     "valor": 12
-    },
-    {
-     "uf": "SP",
-     "valor": 9
-    },
-    {
-     "uf": "AM",
-     "valor": 7
-    },
-    {
-     "uf": "PE",
-     "valor": 5
-    },
-    {
-     "uf": "TO",
-     "valor": 4
-    },
-    {
-     "uf": "SC",
-     "valor": 2
-    },
-    {
-     "uf": "SE",
-     "valor": 2
-    },
-    {
-     "uf": "AC",
-     "valor": 1
+     "valor": 43
     },
     {
      "uf": "MT",
+     "valor": 20
+    },
+    {
+     "uf": "AM",
+     "valor": 6
+    },
+    {
+     "uf": "MG",
+     "valor": 6
+    },
+    {
+     "uf": "RO",
+     "valor": 4
+    },
+    {
+     "uf": "GO",
+     "valor": 1
+    },
+    {
+     "uf": "PB",
      "valor": 1
     }
    ],
@@ -479,5 +435,5 @@
    "quanta gente vive em município cujo plano trata a saúde"
   ]
  },
- "texto_pronto": "Edição de 20/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 31,9 de 100, média dos estados já verificados. Na semana, nenhum município publicou plano para o El Niño e 24 municípios decretaram situação de emergência ou calamidade; 465.063 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 965 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 21/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 31,9 de 100, média dos estados já verificados. Na semana, nenhum município publicou plano para o El Niño e 24 municípios decretaram situação de emergência ou calamidade; 465.063 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 965 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
