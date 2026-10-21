@@ -2,7 +2,10 @@ name: Verificar o site publicado (domínio real)
 
 # 14/09/2026: camada pós-deploy. Roda por botão (modo escolhido) e todo dia às 10h UTC
 # em modo neutro (sem exigir robots): páginas do sitemap em 200, cabeçalhos, integridade
-# SHA-256 contra o manifesto da main, canários. Só relata — nunca publica nem reverte.
+# SHA-256 contra o manifesto da main, canários. 21/10/2026 (editoria: o domínio não pode ficar dias
+# parado, como ficou de 07 a 20/10): divergência de integridade é o sinal de domínio atrás da `main`;
+# o vigia repõe pelo script único (`repor_dominio.sh`, o do publicador), confere de novo e, se a
+# reposição falhar, abre Issue no `robo-registro`. Domínio em dia: só verifica, não faz nada.
 on:
   workflow_dispatch:
     inputs:
@@ -16,6 +19,11 @@ on:
 
 permissions:
   contents: read
+
+# Mesmo grupo do publicador: reposição do vigia e publicação nunca fazem deploy ao mesmo tempo.
+concurrency:
+  group: publicar-dados
+  cancel-in-progress: false
 
 jobs:
   verificar:
@@ -35,11 +43,23 @@ jobs:
         continue-on-error: true
         env:
           PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
           # 14/09/2026 (§1.1): sem input, o modo vem de data/publicacao.json (indexar=false → noindex OBRIGATÓRIO, cabeçalho e meta).
           M="${{ inputs.modo || 'flag' }}"; F=""
           [ "$M" = "noindex" ] && F="--esperar-noindex"; [ "$M" = "index" ] && F="--esperar-index"; [ "$M" = "neutro" ] && F="--neutro"
-          node scripts/verificar_publicado.js --base https://monitorelnino.com.br $F 2>&1 | tee /tmp/verificar_publicado.txt
+          verificar() { node scripts/verificar_publicado.js --base https://monitorelnino.com.br $F 2>&1 | tee /tmp/verificar_publicado.txt; }
+          if ! verificar && grep -q '✗ integridade' /tmp/verificar_publicado.txt; then
+            echo "::warning::domínio atrás da main: repondo"
+            if ! bash scripts/repor_dominio.sh "Vigia ${GITHUB_SHA::7}" --estrito; then
+              gh issue create --repo monitorelnino/robo-registro --title "Domínio atrás da main e a reposição do vigia falhou" \
+                --body "O vigia achou o domínio diferente da main em ${GITHUB_SHA::7} e repor_dominio.sh falhou: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" || true
+              exit 1
+            fi
+            verificar
+          fi
       # 14/09/2026: o verificador vê um script /.netlify/scripts/hud injetado em toda página. A editoria não acha o interruptor
       # ("Collaboration tools" pode não existir num projeto sem Git ligado). Pergunta ao Netlify, pela API, quais campos do
       # projeto falam de HUD/colaboração/injeção de snippet — só leitura; valores mascarados; nunca imprime o token.

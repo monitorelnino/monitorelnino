@@ -51,6 +51,17 @@ def main() -> int:
             falhas.append("o passo de reposição não chama scripts/repor_dominio.sh — o deploy do domínio é UM só")
         if "PREVIA_BASIC_AUTH" not in trecho:
             falhas.append("o passo de reposição não repassa o segredo PREVIA_BASIC_AUTH")
+    # 21/10/2026: o domínio segue a `main` porque o publicador espera o workflow de portões pelo NOME;
+    # se o nome mudar ou o gatilho sair, a dependência quebra calada (domínio parado de 07 a 20/10).
+    bloco = wf.split("workflow_run:", 1)[-1].split("concurrency:", 1)[0]
+    nome = next((n for n in re.findall(r'^\s*- "([^"]+)"', bloco, re.M) if n.startswith("Portões")), None)
+    if nome is None:
+        falhas.append("publicar_dados.yml não espera o workflow de portões — merge não republicaria o domínio")
+    else:
+        pr = [f for f in (RAIZ / ".github" / "workflows").glob("*.yml")
+              if re.search(rf"^name:\s*{re.escape(nome)}\s*$", f.read_text(encoding="utf-8"), re.M)]
+        if not pr or "pull_request" not in pr[0].read_text(encoding="utf-8"):
+            falhas.append(f"o publicador espera \"{nome}\", mas nenhum workflow com esse nome dispara em pull_request")
     sh = (RAIZ / "scripts" / "repor_dominio.sh").read_text(encoding="utf-8")
     if "data/publicacao.json" not in sh:
         falhas.append("repor_dominio.sh não lê data/publicacao.json — o modo do domínio ficaria "
