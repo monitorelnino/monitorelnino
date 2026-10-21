@@ -646,25 +646,34 @@ const AREAS = [
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const UFS = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
 
-  /* 1 · O topo (HANDOVER_SAUDE_PAGINA §1.2): os dois medidores da inicial. À esquerda, a média das
-   * UFs verificadas, nunca dita como nacional enquanto houver estado sem número (METODOLOGIA §1048);
-   * à direita, a parcela da população sob emergência em saúde pública. Índice nulo é lacuna
-   * declarada, nunca zero. A barra e o número sobem pelo mesmo `animarGauges` da inicial. */
+  /* 1 · O topo (HANDOVER_SAUDE_PAGINA §1.2): os dois medidores da inicial. À esquerda, o MARÉ Saúde
+   * NACIONAL, sobre as 27 UFs, pela mesma regra do MARÉ Legal (editoria, 21/10/2026, 06:54;
+   * METODOLOGIA §115, que revoga o alvo "média das verificadas"); à direita, a parcela da população
+   * sob emergência em saúde pública. Índice nulo é lacuna declarada, nunca zero. A barra e o número
+   * sobem pelo mesmo `animarGauges` da inicial. */
   fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
     const res = ((MS || {}).resumo) || {}, rp = ((MS || {}).resposta) || {};
     const fixa = (id, v) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
       f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + (id === 'gaugeFillSaude' ? 'MARÉ Saúde' : 'emergências em saúde pública') + ' em ' + umaCasa(v) + ' de 100'); };
-    const media = res.media_das_verificadas;
+    const media = res.indice_nacional;
     if (media == null) { el('nIndiceSaude').textContent = '—'; el('linhaPreparoSaude').textContent = 'sem coleta até o corte'; }
     else {
       el('nIndiceSaude').textContent = umaCasa(media); el('nIndiceSaude').dataset.contar = media;
       el('faixaSaude').replaceChildren(MonitorMapas.pilulaDaFaixa(media));
       fixa('gaugeFillSaude', media);
-      el('linhaPreparoSaude').textContent = 'média de ' + n(res.verificadas) + ' estados verificados · '
-        + n(27 - (res.verificadas || 0)) + ' ainda sem número · ' + ((MS || {}).corte || '');
+      /* A linha ao lado não lê mais o medidor como média parcial: ela conta o ESTATUTO, nas palavras
+         da classe. Estado sem plano localizado e estado ainda não verificado são coisas distintas, e
+         integrar o nacional não apaga a lacuna (handover do índice nacional, §2). */
+      if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
+        MonitorCatalogo.escrever('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
+          com_plano: n(res.ufs_com_plano_localizado), denominador: n(res.denominador || 27),
+          sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
-    // A frase do que se procura muda com a versão do método (v0.4: coordenação em vez de antecedência).
-    if (/^0\.4/.test(String((MS || {}).versao)) && window.MonitorCatalogo)
+    /* A frase do que se procura segue os COMPONENTES que o arquivo declara, não o número da versão:
+       a v0.5 mudou a agregação e manteve os componentes, e um teste de prefixo ("0.4") passaria a
+       escolher o parágrafo errado em silêncio a cada versão nova. Coordenação no lugar da
+       antecedência é o que separa a v0.4 da régua publicada. */
+    if ('coordenacao' in (((MS || {}).metodo || {}).pesos || {}) && window.MonitorCatalogo)
       MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever('saudeLeiIndice', 'saude.abertura.lei_e_indice_v04'));
     const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
     if (rp.indice == null) {

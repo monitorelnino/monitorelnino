@@ -566,7 +566,7 @@ def montar(corte: date) -> dict:
         # arquivo: a inicial o calcula na hora, e a Imprensa passa a usar a mesma régua.
         "mare_legal": (round(sum((v or {}).get("total") or 0 for v in mare.values()) / 27, 1)
                        if isinstance(mare, dict) and len(mare) >= 27 else None),
-        "mare_saude": resumo.get("media_das_verificadas"),
+        "mare_saude": resumo.get("indice_nacional"),
         "saude_verificadas": resumo.get("verificadas"),
         "decretaram_no_ciclo": (por_uf.get("nacional") or {}).get("n_municipios"),
     }
