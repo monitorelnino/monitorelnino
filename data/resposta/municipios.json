@@ -181,18 +181,19 @@
    "nome": "Abel Figueiredo",
    "uf": "PA",
    "decreto": true,
-   "primeiro_decreto": "01/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "30/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "seca"
    ],
-   "dias_sem_reconhecimento": 20,
+   "dias_sem_reconhecimento": null,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -201,9 +202,17 @@
      "data": "01/10/2026",
      "decreto": "Decreto nº 034/2026",
      "hash": "70df2b60e339db0f2006b423efbfcd16369888c453adcf58f6deb4f3d88e9cc9"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.594-de-19-de-outubro-de-2026-739148707",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.594",
+     "hash": "685d04a485fd0054d097b06b0da60dff728c048ca4cdd02591630dfd444254f4"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4200101": {
    "ibge": "4200101",
@@ -3231,9 +3240,17 @@
      "data": "06/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.422",
      "hash": "76ba135ec64656fc180bfc99f03e647dce9a7f7776c5a5086f286f06b5237957"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.592-de-19-de-outubro-de-2026-739145701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.592",
+     "hash": "290d371897ef644a38870fd80f2fe4cea4a84b46a5971338a601c205e3c2e345"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1700707": {
    "ibge": "1700707",
@@ -3409,17 +3426,30 @@
    "ibge": "1600105",
    "nome": "Amapá",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "2100550": {
    "ibge": "2100550",
@@ -5190,17 +5220,30 @@
    "ibge": "4101408",
    "nome": "Apucarana",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "22/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "vendaval"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "16e248d3063321923d7e67aa916e7dac3e63e3e4d485e28dc94542e489ac5c13"
+    }
+   ],
+   "n_eventos": 1
   },
   "1300144": {
    "ibge": "1300144",
@@ -7940,9 +7983,17 @@
      "data": "14/10/2026",
      "decreto": "Decreto nº 75",
      "hash": "8b1f9c8b7435180bc1386e3e732f68af559d728ec127a84d3fa5f71fb8f3af44"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 75",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3504305": {
    "ibge": "3504305",
@@ -9796,10 +9847,11 @@
    "primeiro_decreto": "17/09/2026",
    "primeiro_reconhecimento": "06/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "seca"
@@ -9813,9 +9865,17 @@
      "data": "06/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.421",
      "hash": "ef2d9d6d5f3281fdba4b92398dc17b44835a778c12ba1f3df7b6b594dc47ebe1"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 55.767",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2101707": {
    "ibge": "2101707",
@@ -16370,9 +16430,17 @@
      "data": "30/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.331",
      "hash": "c8031075aeccd33475d8ac1a4575d188bdfb9d70109cf23b8c23d6796d50f360"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17384",
+     "data": "19/10/2026",
+     "decreto": "Decreto municipal nº 280",
+     "hash": "a104d7c5f02adce03ca43e0082411da5b44f30fa628b195c179216930994d78f"
     }
    ],
-   "n_eventos": 5
+   "n_eventos": 6
   },
   "3508900": {
    "ibge": "3508900",
@@ -16872,17 +16940,30 @@
    "ibge": "1600204",
    "nome": "Calçoene",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "3110301": {
    "ibge": "3110301",
@@ -19663,17 +19744,30 @@
    "ibge": "4104501",
    "nome": "Capanema",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_sem_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17384",
+     "data": "19/10/2026",
+     "decreto": "Decreto municipal nº 8.187",
+     "hash": "a104d7c5f02adce03ca43e0082411da5b44f30fa628b195c179216930994d78f"
+    }
+   ],
+   "n_eventos": 1
   },
   "4203253": {
    "ibge": "4203253",
@@ -20195,18 +20289,19 @@
    "nome": "Capitão Leônidas Marques",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "13/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "07/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_sem_reconhecimento": 8,
+   "dias_sem_reconhecimento": null,
    "fontes": [
     {
      "canal": "repositorio_estadual",
@@ -20215,9 +20310,17 @@
      "data": "13/10/2026",
      "decreto": "Decreto municipal nº 401",
      "hash": "007a9039665a3e0de278efc8c2398127df60a3e83f0c0d91490bb2a1a7774954"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "9b10f215b7acbe44032a03df72bc54eb4018869a764c8077678df218e6a9b0fb"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1502301": {
    "ibge": "1502301",
@@ -21920,17 +22023,30 @@
    "ibge": "2504157",
    "nome": "Casserengue",
    "uf": "PB",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "06/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "seca"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.593-de-19-de-outubro-de-2026-739139233",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.593",
+     "hash": "4a915919d5205770a450812fd434e3300d24993958cdc551bd090b8d5711c0e4"
+    }
+   ],
+   "n_eventos": 1
   },
   "3115102": {
    "ibge": "3115102",
@@ -23121,9 +23237,17 @@
      "data": "15/10/2026",
      "decreto": "Decreto nº 351",
      "hash": "bc5fabd44973aa1557848c4595733d4b861a10f27497c49dd366962068789588"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118207_2026-10-19_e6c84e50e52c89ba2543b3ef35d5bd55.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 351",
+     "hash": "687c53ed07d856e40ca63672b1c7833fc95c784fb324a2334a0fc3336ce0263f"
     }
    ],
-   "n_eventos": 3
+   "n_eventos": 4
   },
   "4305132": {
    "ibge": "4305132",
@@ -24225,17 +24349,30 @@
    "ibge": "1301209",
    "nome": "Coari",
    "uf": "AM",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "20/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_sem_reconhecimento": 1,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 1318",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
+    }
+   ],
+   "n_eventos": 1
   },
   "2202703": {
    "ibge": "2202703",
@@ -27712,9 +27849,17 @@
      "data": "09/10/2026",
      "decreto": "Decreto municipal nº 6.622",
      "hash": "8da3753954dbf72645eb80e2c0ee46a6f39c0632848bd367013fffcd2c73eaea"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118207_2026-10-19_e6c84e50e52c89ba2543b3ef35d5bd55.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 6627/2026",
+     "hash": "687c53ed07d856e40ca63672b1c7833fc95c784fb324a2334a0fc3336ce0263f"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "4106605": {
    "ibge": "4106605",
@@ -33306,17 +33451,30 @@
    "ibge": "1600238",
    "nome": "Ferreira Gomes",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "2605509": {
    "ibge": "2605509",
@@ -35578,7 +35736,8 @@
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "chuva"
+    "chuva",
+    "vendaval"
    ],
    "dias_sem_reconhecimento": null,
    "fontes": [
@@ -35597,9 +35756,17 @@
      "data": "24/09/2026",
      "decreto": "Decreto nº 107",
      "hash": "18abd96ad958f85343a2482932406d48a54a74b9d694fbedf58df0ac16bfd5a4"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "16e248d3063321923d7e67aa916e7dac3e63e3e4d485e28dc94542e489ac5c13"
     }
    ],
-   "n_eventos": 2
+   "n_eventos": 3
   },
   "5103908": {
    "ibge": "5103908",
@@ -37490,17 +37657,30 @@
    "ibge": "4309407",
    "nome": "Guaporé",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "23/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "chuva"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "16e248d3063321923d7e67aa916e7dac3e63e3e4d485e28dc94542e489ac5c13"
+    }
+   ],
+   "n_eventos": 1
   },
   "4109104": {
    "ibge": "4109104",
@@ -45200,17 +45380,30 @@
    "ibge": "1600253",
    "nome": "Itaubal",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "5211404": {
    "ibge": "5211404",
@@ -48198,17 +48391,30 @@
    "ibge": "3136009",
    "nome": "Joaíma",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "15/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "seca"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.592-de-19-de-outubro-de-2026-739145701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.592",
+     "hash": "290d371897ef644a38870fd80f2fe4cea4a84b46a5971338a601c205e3c2e345"
+    }
+   ],
+   "n_eventos": 1
   },
   "3136108": {
    "ibge": "3136108",
@@ -49999,17 +50205,30 @@
    "ibge": "2406205",
    "nome": "Lagoa d'Anta",
    "uf": "RN",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.593-de-19-de-outubro-de-2026-739139233",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.593",
+     "hash": "4a915919d5205770a450812fd434e3300d24993958cdc551bd090b8d5711c0e4"
+    }
+   ],
+   "n_eventos": 1
   },
   "2704104": {
    "ibge": "2704104",
@@ -51102,17 +51321,30 @@
    "ibge": "1600279",
    "nome": "Laranjal do Jari",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "3526407": {
    "ibge": "3526407",
@@ -52671,17 +52903,30 @@
    "ibge": "1600303",
    "nome": "Macapá",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "2609006": {
    "ibge": "2609006",
@@ -53719,9 +53964,17 @@
      "data": "19/10/2026",
      "decreto": "Decreto nº 068/2026",
      "hash": "2fe7a88453b2b0ba9121db0322723f76878e878efbfeb924a6421b64b4f5bb02"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 044",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
     }
    ],
-   "n_eventos": 3
+   "n_eventos": 4
   },
   "2609154": {
    "ibge": "2609154",
@@ -56578,17 +56831,30 @@
    "ibge": "1600402",
    "nome": "Mazagão",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "3141306": {
    "ibge": "3141306",
@@ -61802,17 +62068,30 @@
    "ibge": "4116950",
    "nome": "Nova Esperança do Sudoeste",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_sem_reconhecimento": 2,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17384",
+     "data": "19/10/2026",
+     "decreto": "Decreto municipal nº 76",
+     "hash": "a104d7c5f02adce03ca43e0082411da5b44f30fa628b195c179216930994d78f"
+    }
+   ],
+   "n_eventos": 1
   },
   "4313037": {
    "ibge": "4313037",
@@ -63889,17 +64168,18 @@
    "uf": "AP",
    "decreto": true,
    "primeiro_decreto": "16/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "19/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
    ],
-   "dias_sem_reconhecimento": 5,
+   "dias_sem_reconhecimento": null,
    "fontes": [
     {
      "canal": "imprensa",
@@ -63908,9 +64188,17 @@
      "data": "16/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.535",
      "hash": null
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3145406": {
    "ibge": "3145406",
@@ -67353,10 +67641,11 @@
    "primeiro_decreto": "25/09/2026",
    "primeiro_reconhecimento": "15/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "seca"
@@ -67370,9 +67659,17 @@
      "data": "15/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.536",
      "hash": "579145b7d798146d9c771ca5738293a7eabd1eb119efe8d0cf4ce84d9fcec28e"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 70/2026",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2923803": {
    "ibge": "2923803",
@@ -68761,17 +69058,18 @@
    "uf": "AP",
    "decreto": true,
    "primeiro_decreto": "13/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "19/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
    ],
-   "dias_sem_reconhecimento": 8,
+   "dias_sem_reconhecimento": null,
    "fontes": [
     {
      "canal": "imprensa",
@@ -68780,9 +69078,17 @@
      "data": "13/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.474",
      "hash": null
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3148806": {
    "ibge": "3148806",
@@ -73883,17 +74189,30 @@
    "ibge": "1600535",
    "nome": "Porto Grande",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "4315008": {
    "ibge": "4315008",
@@ -74446,17 +74765,30 @@
    "ibge": "1600550",
    "nome": "Pracuúba",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "2925501": {
    "ibge": "2925501",
@@ -82408,18 +82740,19 @@
    "nome": "Santa Izabel do Oeste",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "07/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "06/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "vendaval"
    ],
-   "dias_sem_reconhecimento": 14,
+   "dias_sem_reconhecimento": null,
    "fontes": [
     {
      "canal": "repositorio_estadual",
@@ -82428,9 +82761,17 @@
      "data": "07/10/2026",
      "decreto": "Decreto municipal nº 3.978",
      "hash": "8da3753954dbf72645eb80e2c0ee46a6f39c0632848bd367013fffcd2c73eaea"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "16e248d3063321923d7e67aa916e7dac3e63e3e4d485e28dc94542e489ac5c13"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "1506500": {
    "ibge": "1506500",
@@ -83946,17 +84287,30 @@
    "ibge": "1600600",
    "nome": "Santana",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "4317004": {
    "ibge": "4317004",
@@ -84558,17 +84912,30 @@
    "ibge": "4215695",
    "nome": "Santiago do Sul",
    "uf": "SC",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "27/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "chuva"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "9b10f215b7acbe44032a03df72bc54eb4018869a764c8077678df218e6a9b0fb"
+    }
+   ],
+   "n_eventos": 1
   },
   "5107263": {
    "ibge": "5107263",
@@ -90493,10 +90860,11 @@
    "primeiro_decreto": "25/08/2026",
    "primeiro_reconhecimento": "16/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "seca"
@@ -90510,9 +90878,17 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.584",
      "hash": "9809e3a4251e41e8b14a16d043b49b21c38bd8ea8fa9a39b91d2f1862043d987"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 044/2026",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2412609": {
    "ibge": "2412609",
@@ -92255,17 +92631,30 @@
    "ibge": "4217501",
    "nome": "Seara",
    "uf": "SC",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "30/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "vendaval"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "9b10f215b7acbe44032a03df72bc54eb4018869a764c8077678df218e6a9b0fb"
+    }
+   ],
+   "n_eventos": 1
   },
   "3551306": {
    "ibge": "3551306",
@@ -93223,17 +93612,30 @@
    "ibge": "1600055",
    "nome": "Serra do Navio",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "2930154": {
    "ibge": "2930154",
@@ -99472,18 +99874,19 @@
    "nome": "Tupãssi",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "07/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_decreto": "06/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "vendaval"
    ],
-   "dias_sem_reconhecimento": 14,
+   "dias_sem_reconhecimento": null,
    "fontes": [
     {
      "canal": "repositorio_estadual",
@@ -99492,9 +99895,17 @@
      "data": "07/10/2026",
      "decreto": "Decreto municipal nº 59",
      "hash": "8da3753954dbf72645eb80e2c0ee46a6f39c0632848bd367013fffcd2c73eaea"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.591-de-19-de-outubro-de-2026-739142701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.591",
+     "hash": "16e248d3063321923d7e67aa916e7dac3e63e3e4d485e28dc94542e489ac5c13"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "3555109": {
    "ibge": "3555109",
@@ -99808,10 +100219,11 @@
    "primeiro_decreto": "12/06/2026",
    "primeiro_reconhecimento": "19/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
@@ -99825,9 +100237,17 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118969_2026-10-19_d1d109317029b28d36aff12f9b1c0c1b.pdf",
+     "data": "20/10/2026",
+     "decreto": "Decreto nº 062",
+     "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
     }
    ],
-   "n_eventos": 1
+   "n_eventos": 2
   },
   "2932002": {
    "ibge": "2932002",
@@ -101484,17 +101904,30 @@
    "ibge": "3170701",
    "nome": "Varginha",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/09/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "vendaval"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "http://www.in.gov.br/web/dou/-/portaria-n-3.592-de-19-de-outubro-de-2026-739145701",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.592",
+     "hash": "290d371897ef644a38870fd80f2fe4cea4a84b46a5971338a601c205e3c2e345"
+    }
+   ],
+   "n_eventos": 1
   },
   "5221908": {
    "ibge": "5221908",
@@ -103326,17 +103759,30 @@
    "ibge": "1600808",
    "nome": "Vitória do Jari",
    "uf": "AP",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "19/10/2026",
+   "primeiro_reconhecimento": "19/10/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_sem_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR), via notícia do MIDR",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "19/10/2026",
+     "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
+     "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    }
+   ],
+   "n_eventos": 1
   },
   "2112902": {
    "ibge": "2112902",
