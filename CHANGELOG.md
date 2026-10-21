@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #947 · Zero medido por extenso no cartão da Defesa civil
+
+Os seis cartões do topo passam por uma definição única de valor. Zero medido sai como "nenhum", a palavra que a página já usava; campo que o arquivo não traz deixa o cartão na classe nomeada, em vez de escrever zero; e o cartão de decretos deixa de depender do número para decidir se houve coleta. Três caminhos que o dado de hoje não exercita, provados no navegador com os arquivos interceptados.
+
 ## 2026-10-21 · #946 · Ausência em palavras no medidor e na tabela de focos
 
 Quando o índice do MARÉ Saúde não tem valor, o número grande do medidor passa a dizer "sem coleta" em vez de travessão. Na tabela de focos por estado, a coluna do dia anterior diz "sem arquivo" quando aquele dia não foi lido, palavra que a mesma figura já usava duas linhas acima. Nenhum número muda: são os caminhos de ausência, que o dado de hoje não alcança.
