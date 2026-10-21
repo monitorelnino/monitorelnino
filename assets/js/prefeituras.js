@@ -72,13 +72,14 @@ window.addEventListener('load', function(){
       const [T, F, D] = fin;
       const meses = Object.entries((T || {}).meses_lidos || {}).filter(([, v]) => !v.parcial).map(([m]) => m).sort();
       const ultimo = meses[meses.length - 1];
-      const tm = ((T || {}).municipios || {})[cod], fm = ((F || {}).municipios || {})[cod], dm = ((D || {}).municipios || {})[cod];
       const soma = (obj, f) => meses.reduce((a, m) => a + (obj && obj[m] ? f(obj[m]) : 0), 0);
-      const dc = tm ? reais(soma(tm.meses, x => x.defesa_civil || 0)) : tx('sem_coleta');
-      const sa = fm ? reais(soma(fm.meses, x => x[0] || 0)) : tx('sem_coleta');
-      const classe = dm ? (dm.classe === 'com_lancamento'
-        ? tx('recursos.classe.com_lancamento', {valor: reais(+(dm.valores || {}).liquidada || 0)})
-        : tx('recursos.classe.' + dm.classe)) || tx('sem_coleta') : tx('sem_coleta');
+      // arquivo ausente = sem coleta; município ausente do arquivo lido = não localizado (como no Financiamento)
+      const ler = (X, f) => !X ? tx('sem_coleta') : (X.municipios || {})[cod] ? f(X.municipios[cod]) : tx('recursos.nao_localizado');
+      const dc = ler(T, x => reais(soma(x.meses, r => r.defesa_civil || 0)));
+      const sa = ler(F, x => reais(soma(x.meses, r => r[0] || 0)));
+      const classe = ler(D, x => (x.classe === 'com_lancamento'
+        ? tx('recursos.classe.com_lancamento', {valor: reais(+(x.valores || {}).liquidada || 0)})
+        : tx('recursos.classe.' + x.classe)) || tx('sem_coleta'));
       recursos = esc(tx('recursos.valor', {defesa_civil: dc, saude: sa}));
       notaRec = tx('recursos.nota', {mes: ultimo ? MES[+ultimo.slice(4) - 1] + ' de ' + ultimo.slice(0, 4) : tx('sem_coleta'),
         ano: String((D || {}).exercicio || ''), classe: esc(classe)});

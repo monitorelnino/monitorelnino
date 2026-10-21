@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #945 · Para gestores: "não localizado" no lugar de "sem coleta"
+
+No cartão de recursos federais da consulta municipal, o município que não consta num arquivo lido
+passa a aparecer como "não localizado até o corte", a mesma frase da página de Financiamento; "sem
+coleta até o corte" fica para quando o arquivo não veio. São 40 municípios: 38 fora da lista do FNS,
+Brasília e Fernando de Noronha fora da lista da União.
+
 ## 2026-10-21 · #943 · O cartão de dengue do Proteja-se passa a ler o município
 
 A consulta municipal do Proteja-se mostra o nível de alerta de dengue do InfoDengue para os 339
