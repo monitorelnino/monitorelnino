@@ -9,12 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+<<<<<<< HEAD
 ## 2026-10-21 · #943 · O cartão de dengue do Proteja-se passa a ler o município
 
 A consulta municipal do Proteja-se mostra o nível de alerta de dengue do InfoDengue para os 339
 municípios que a fonte publica, com a semana em datas. Para os demais, diz que a fonte não leu o
 município — não é zero, não é "sem coleta", e as três classes continuam distintas. O rótulo do
 nível é o mesmo que a página da Saúde usa, e o cartão leva à aba de dengue.
+=======
+## 2026-10-21 · #942 · Orientações oficiais: passos de chuvas e fogo preservados com a fonte
+
+`coletar_orientacoes_oficiais.py` passa a gravar, por página de chuvas e de fogo, os passos que a fonte oficial dá ao leitor (`trechos`), como já fazia com a dengue. Seca (protocolo técnico) e calor (sem passos) seguem sem trechos, lacuna declarada. Peso zero; o índice não lê. Linhas líquidas de código: +32.
+>>>>>>> origin/main
 
 ## 2026-10-21 · #941 · A ordem dos atributos que repunha o domínio todo dia
 
