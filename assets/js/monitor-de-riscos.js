@@ -566,7 +566,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const corpo = document.querySelector('#tblFogo tbody');
   if (corpo) corpo.innerHTML = Object.entries(R.dia.uf || {}).sort((a, b) => b[1] - a[1]).slice(0, 6)
     .map(([uf, n]) => '<tr><td>' + esc(uf) + '</td> <td>' + esc(fmt(n)) + '</td> <td>'
-      + esc(ontemOk ? fmt(((ontem.uf || {})[uf]) || 0) : '—') + '</td> <td>' + esc(fmt(mesDe(uf)))
+      + esc(ontemOk ? fmt(((ontem.uf || {})[uf]) || 0) : 'sem arquivo') + '</td> <td>' + esc(fmt(mesDe(uf)))
       + '</td> <td>' + (componentesDe(uf).includes('incendios') ? 'sim' : 'não') + '</td></tr>').join('');
   const bio = document.querySelector('#tblFogoBioma tbody');
   if (bio) bio.innerHTML = Object.entries(R.dia.bioma || {}).sort((a, b) => b[1] - a[1])
