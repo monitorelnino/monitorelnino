@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #953 · Proteja-se: sem endereço, sem link de site oficial
+
+O diretório do MIDR traz telefone e e-mail das 27 Defesas Civis estaduais, mas não o endereço de
+todas; no corte, falta o do Rio Grande do Norte. A linha do estado passa a ter duas formas: sem
+endereço, sai o trecho "site oficial", em vez de um link que recarregava a própria página. Telefone
+e e-mail continuam.
+
 ## 2026-10-21 · #951 · SIH e óbitos: leitura completa de 2019–2020
 
 As internações (sete arquivos) passam a 92 meses, jan/2019–ago/2026, nas 27 UFs; óbitos registrados atualizados. Os cortes do mapa tinham congelado sobre leitura incompleta: `coletar_sih.py` só congela cortes sobre leitura completa, e eles foram recalculados sobre 2019–2025. METODOLOGIA §110. Código +13.
