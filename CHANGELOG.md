@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #951 · SIH e óbitos: leitura completa de 2019–2020
+
+As internações (sete arquivos) passam a 92 meses, jan/2019–ago/2026, nas 27 UFs; óbitos registrados atualizados. Os cortes do mapa tinham congelado sobre leitura incompleta: `coletar_sih.py` só congela cortes sobre leitura completa, e eles foram recalculados sobre 2019–2025. METODOLOGIA §110. Código +13.
+
 ## 2026-10-21 · #952 · Sondagem dos boletins de PR, AM e PA
 
 Catálogo dos desfechos do SUS registra a leitura de 21/10: o boletim do Paraná está parado desde agosto de 2022, o do Amazonas não resolve do executor e o do Pará não traz boletim anexado. Nenhum adaptador, nenhum dado novo.
