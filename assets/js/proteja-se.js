@@ -298,8 +298,10 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
     if (!alvo) return;
     const c = ((contatos || {}).uf || {})[uf];
     if (!c || !c.telefones || !c.telefones.length) { alvo.textContent = tx('estado.sem_contato'); return; }
-    alvo.innerHTML = tx('estado.linha', {artigo: ARTIGO[uf] || 'de', estado: esc(c.nome), telefone: esc(c.telefones[0]),
-      email: esc(c.email || ''), portal: esc(c.portal || '')});
+    // sem endereço no diretório, a frase sai sem o trecho do link: link vazio volta para esta página
+    alvo.innerHTML = tx('estado.linha' + (c.portal ? '' : '_sem_portal'),
+      {artigo: ARTIGO[uf] || 'de', estado: esc(c.nome), telefone: esc(c.telefones[0]),
+       email: esc(c.email || ''), portal: esc(c.portal || '')});
     if (M) {
       const f = (contatos || {}).fonte || {};
       M.credito('munFonte', {fontes: 'Diretório da Defesa Civil nos Estados (MIDR)', url: f.url, data: f.consultado_em});
