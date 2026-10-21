@@ -272,10 +272,15 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
                         territorio="UF do hospital", serie={u: s for u, s in serie.items() if s}, fonte=fonte,
                         cadencia="mensal; o DATASUS publica o mês cerca de 45 dias depois do fim e ele cresce com AIH reapresentada",
                         coletado_em=hoje.isoformat(), anos_preliminares=[hoje.year], n_parciais=1,
-                        populacao=populacao, anterior=None if pendentes else ant[g], lacunas=lacunas)
+                        populacao=populacao, anterior=ant[g] if not pendentes and _leitura_completa(ant[g]) else None, lacunas=lacunas)
         ok = ds.gravar_desfecho(obj, gravar_fn=gravar_fn) and ok
     print(f"SIH: {len(feitos)} arquivo(s) lido(s), {len(falhas)} falha(s), {len(pendentes)} por ler; gravado: {ok}")
     return ok
+
+
+def _leitura_completa(obj) -> bool:
+    """Cortes só congelam sobre leitura completa: o arquivo anterior não pode ter nascido com mês por ler (§108)."""
+    return bool(obj) and not any("ainda não lidos" in x for x in obj.get("lacunas", []))
 
 
 def sondar() -> int:
@@ -417,6 +422,14 @@ def autoteste() -> int:
     casos.append(("orçamento acaba: lê o mais recente primeiro e declara os pendentes",
                   len(lidos_n) == 3 and all("2508" in x for x in lidos_n)
                   and any("ainda não lidos" in x for x in gravados["saude_desfechos/hepatite_a.json"]["lacunas"])))
+    # leitura que completa depois de parcial: os cortes vêm de nova conta, não do arquivo que nasceu incompleto
+    gravados["saude_desfechos/hepatite_a.json"]["cortes_mapa"]["cortes"] = [9, 9, 9, 9]
+    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 20),
+            lambda d, c: (None, iter([{"ANO_CMPT": "20" + d[-8:-6], "MES_CMPT": d[-6:-4], "IDENT": "1", "DIAG_PRINC": "B150"}])),
+            pausa=0)
+    h = gravados["saude_desfechos/hepatite_a.json"]
+    casos.append(("completada a leitura, os cortes são recalculados e congelam",
+                  h["cortes_mapa"]["cortes"] != [9, 9, 9, 9] and not h["lacunas"]))
     gravados.clear(); lidos_n.clear()
     caiu = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19),
                    lambda d, c: (_ for _ in ()).throw(OSError("fora")), pausa=0)
