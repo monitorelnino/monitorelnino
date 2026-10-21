@@ -33,8 +33,11 @@ window.addEventListener('load', function(){
   Promise.all([REF, ENQ, C && C.pronto]).then(([ref, enq]) => {
     const n = (ref || []).length, ind = Object.values((enq || {}).municipios || {}).filter(v => v.ch || v.geo).length;
     if (n && C) C.escrever(document.getElementById('municipioAbertura'), 'prefeituras.municipio.abertura.molde', {n_municipios: n});
-    const pôr = (id, v) => { const e = document.getElementById(id); if (e && v) { e.textContent = v.toLocaleString('pt-BR'); e.setAttribute('data-conteudo-fixado', '1'); } };
-    pôr('leiValor_indicados', ind); pôr('leiValor_todos', n);
+    /* O guarda é a FONTE, não o valor: com o arquivo no ar e ninguém indicado, o cartão diz zero
+       por extenso; sem o arquivo, fica o texto de reserva, que é a lacuna declarada. Testar o valor
+       descartava o zero medido e deixava o 2.095 de reserva no ar como leitura de hoje. */
+    const pôr = (id, v) => { const e = document.getElementById(id); if (e && v != null) { e.textContent = v === 0 ? 'zero' : v.toLocaleString('pt-BR'); e.setAttribute('data-conteudo-fixado', '1'); } };
+    pôr('leiValor_indicados', enq ? ind : null); pôr('leiValor_todos', ref ? n : null);
   }).catch(_erroGest('gestores:numeros'));
   /* Fonte dos três cartões: o ato e a data da edição em que o MARÉ o conferiu. */
   Promise.all([json('data/meta.json'), C && C.pronto]).then(([M]) => {
