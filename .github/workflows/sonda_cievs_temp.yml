@@ -21,11 +21,15 @@ jobs:
           python3 - <<'PY'
           import re, time
           import coletores_base as cb
-          ALVOS = {
-            "PR": ["http://www.dengue.pr.gov.br/Pagina/Boletins-da-Dengue", "http://www.dengue.pr.gov.br/Pagina/Aspectos-epidemiologicos"],
-            "PA": ["http://www.saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/dengue/", "http://www.saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/chikungunya/"],
-          }
-          for uf, urls in ALVOS.items():
+          ALVOS = {"PR": ["http://www.dengue.pr.gov.br/Pagina/Boletins-da-Dengue"]}
+          import collections
+          b = cb.buscar(ALVOS["PR"][0], timeout=40, origem="sonda_cievs"); t = b.decode("utf-8","replace")
+          pdfs = list(dict.fromkeys(re.findall(r'href="([^"]+\.pdf)"', t, re.I)))
+          por_mes = collections.Counter(re.search(r"documento/(\d{4}-\d{2})", x).group(1) for x in pdfs if re.search(r"documento/(\d{4}-\d{2})", x))
+          print("PDFs distintos:", len(pdfs)); print("mais recentes por mês de upload:", sorted(por_mes.items())[-8:])
+          [print("  R", x) for x in pdfs if re.search(r"documento/202[56]", x)][:20]
+          ALVOS = {}
+                    for uf, urls in ALVOS.items():
               for u in urls:
                   print("=====", uf, u)
                   try:
