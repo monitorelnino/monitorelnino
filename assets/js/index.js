@@ -330,18 +330,13 @@ function enquadramentoBox(uf, nome, codigo){
 
 const regionsEl = document.getElementById('regions');
 
-// 26/09/2026: dentro de cada faixa de região, ordem decrescente pelo índice — não alfabética.
-// Alinhadas numa série, as barras só são comparáveis se a ordem for a da própria grandeza; em
-// ordem alfabética o leitor tem 27 valores e nenhuma leitura. Estado sem índice vai para o fim da
-// faixa, sem inventar posição para quem não tem número.
-const ufsOrdenadas = DATA.ufs.slice().sort((a, b) => {
-  const va = (typeof MARE !== 'undefined' && MARE[a.uf]) ? MARE[a.uf].total : null;
-  const vb = (typeof MARE !== 'undefined' && MARE[b.uf]) ? MARE[b.uf].total : null;
-  if (va == null && vb == null) return a.uf.localeCompare(b.uf, 'pt-BR');
-  if (va == null) return 1;
-  if (vb == null) return -1;
-  return vb - va;
-});
+// 21/10/2026 (editoria, emenda das 18:53), revogando a ordem posta em 26/09: ordem ALFABÉTICA. O
+// cartão de cada estado fica na sua posição territorial pelo `gridRow`/`gridColumn` que o dado
+// manda, então a ordem desta lista nunca foi a ordem que se vê — ela é a ordem em que a página é
+// LIDA, por teclado e por leitor de tela, e ordenada pelo índice ela entregava a posição entre
+// estados que o §13 da metodologia proíbe, só a quem não vê o mapa. Comparar segue possível pela
+// barra de cada cartão, que é o que a ordem de 26/09 queria e o mapa já dá.
+const ufsOrdenadas = DATA.ufs.slice().sort((a, b) => a.uf.localeCompare(b.uf, 'pt-BR'));
 ufsOrdenadas.forEach(item=>{
   const container = regionsEl;
   const tile = document.createElement('div');
