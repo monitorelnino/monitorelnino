@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #942 · Orientações oficiais: passos de chuvas e fogo preservados com a fonte
+
+`coletar_orientacoes_oficiais.py` passa a gravar, por página de chuvas e de fogo, os passos que a fonte oficial dá ao leitor (`trechos`), como já fazia com a dengue. Seca (protocolo técnico) e calor (sem passos) seguem sem trechos, lacuna declarada. Peso zero; o índice não lê. Linhas líquidas de código: +32.
+
 ## 2026-10-21 · #941 · A ordem dos atributos que repunha o domínio todo dia
 
 Em `prefeituras.html`, `data-conteudo` passa a vir antes de `href` nos três links de cartão: o

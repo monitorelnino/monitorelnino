@@ -122,6 +122,31 @@ def trechos_de_dengue(texto: str) -> list:
     return saida[:30]
 
 
+VERBOS_DE_ORIENTACAO = ("evit", "nao ", "nunca", "mantenh", "desligu", "coloqu", "fech", "procur", "siga", "acompanh",
+                        "aument", "tenh", "mont", "auxili", "garant", "lav", "volt", "beb", "use ", "utiliz", "verifi",
+                        "busc", "descart", "desinfet", "se houver", "se a ", "se o ", "se for", "sempre", "analis")
+
+
+def trechos_de_orientacao(texto: str) -> list:
+    """Passos que a página oficial dá ao leitor: item de lista (hífen, bolinha) ou frase que abre com verbo de
+    orientação. Só para página escrita ao cidadão (chuvas, fogo); protocolo técnico (seca) e página sem passos
+    ficam sem trechos, lacuna declarada. Linha de PDF quebrada em minúscula é emendada. Função pura."""
+    linhas = []
+    for l in (x.strip() for x in texto.split("\n") if x.strip()):
+        if linhas and l[0].islower() and not re.search(r"[.;:!?]$", linhas[-1]):
+            linhas[-1] += " " + l
+        else:
+            linhas.append(l)
+    saida = []
+    for l in linhas:
+        lista = bool(re.match(r"[-•·]\s*", l))
+        for f in re.split(r"(?<=[.!?;])\s+", re.sub(r"^[-•·]\s*", "", l)):
+            f = f.strip().rstrip(";")
+            if 20 <= len(f) <= 300 and (lista or sem_acento(f).startswith(VERBOS_DE_ORIENTACAO)) and f not in saida:
+                saida.append(f)
+    return saida[:40]
+
+
 def itens_do_guia(catalogo: dict) -> dict:
     """{id: texto} dos itens `guia-<família>.item*` do catálogo. Função pura."""
     return {k: v for k, v in (catalogo.get("textos") or {}).items()
@@ -184,6 +209,8 @@ def coletar(buscar=cb.buscar, preservar=cb.preservar_evidencia, ler=cb.ler, grav
         reg = {"familia": familia, "orgao": orgao, "url": url, "consultado_em": hoje, "hash": h}
         if familia == "dengue":
             reg["trechos"] = trechos_de_dengue(texto)
+        elif familia in ("chuvas", "fogo"):
+            reg["trechos"] = trechos_de_orientacao(texto)
         fontes.append(reg)
         print(f"  ✓ {url[:90]} · {len(texto)} caracteres")
     achados, sem_fonte = {}, []
@@ -266,6 +293,11 @@ def autoteste() -> int:
             "Sinais e sintomas de alerta:\nDor na barriga;\nVômitos frequentes;\nOutro cabeçalho de sintomas:\nFebre;\n"
             + "Texto corrido longo " * 8) == ["Sinais e sintomas de alerta:", "Dor na barriga;", "Vômitos frequentes;",
                                               "Outro cabeçalho de sintomas:", "Febre;"],
+        "orientação: passo entra, definição e título não": lambda: trechos_de_orientacao(
+            "Inundações\nSegundo a Cobrade, as inundações são a submersão de áreas.\n- Feche o registro de água\n"
+            "Nunca atravesse ruas inundadas, mesmo de carro\nProcure um local alto e espere o nível\nda água baixar.")
+        == ["Feche o registro de água", "Nunca atravesse ruas inundadas, mesmo de carro",
+            "Procure um local alto e espere o nível da água baixar."],
         "recusa vira motivo, não exceção": lambda: buscar_pagina(
             "x", lambda u: (_ for _ in ()).throw(OSError("recusado")))[1].startswith("OSError"),
         "trava estrutural: não escreve no índice": lambda: not any(
