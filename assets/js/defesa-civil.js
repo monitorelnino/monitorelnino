@@ -79,7 +79,13 @@ const familiaDe = ev => ev ? FAMILIAS.find(f => f.re.test(ev)) : FAMILIAS[3];
 function __init(totalMunicipios){
   const esc = MonitorMapas.esc, cor = MonitorMapas.cor, C = window.MonitorCatalogo;
   const n = v => Number(v || 0).toLocaleString('pt-BR');
-  const texto = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  /* Valor de CARTÃO de número, e as duas regras de `layout/regras.json` que ele atende de uma vez:
+     zero medido se escreve por extenso (`zero_por_extenso_em_cartao`, e o portão confere o cartão
+     renderizado, onde "0" reprova) e ausência nunca é zero (`sem_dado_nunca_e_zero`) — campo que o
+     arquivo não traz devolve null, e aí o cartão fica com a classe nomeada que o HTML já carrega.
+     "nenhum" é a palavra que esta página já usa no cartão da pendência; uma por página. */
+  const nCartao = v => v == null || v === '' || !isFinite(Number(v)) ? null : (Number(v) ? n(v) : 'nenhum');
+  const texto = (id, v) => { const e = document.getElementById(id); if (e && v != null) e.textContent = v; };
   const molde = (id, chave, valores) => C && C.escrever(id, chave, valores);
   /* O mesmo catálogo, devolvendo texto em vez de escrever num elemento (o corpo do cartão é montado). */
   const texto_molde = (chave, valores) => (C && C.texto(chave, valores)) || '';
@@ -143,8 +149,8 @@ function __init(totalMunicipios){
   if (alertasVelhos) {
     texto('topoInmet', semAtualizacao); texto('topoCemaden', semAtualizacao);
   } else {
-    texto('topoInmet', n(rAl.municipios_inmet));
-    texto('topoCemaden', n(rAl.municipios_cemaden));
+    texto('topoInmet', nCartao(rAl.municipios_inmet));
+    texto('topoCemaden', nCartao(rAl.municipios_cemaden));
     const lista = Object.values(ALERTAS.municipios);
     const conta = {};
     lista.forEach(m => new Set((m.inmet || []).map(a => a.tipo)).forEach(t => t && (conta[t] = (conta[t] || 0) + 1)));
@@ -165,9 +171,11 @@ function __init(totalMunicipios){
   cred('topoInmetFonte', ['Inmet'], carimbo);
   cred('topoCemadenFonte', ['Cemaden'], carimbo);
   const N = (RESP && RESP.nacional) || {};
-  if (decretados.length) {
-    texto('topoDecretaram', n(decretados.length));
-    texto('topoReconhecidos', n(reconhecidos.length));
+  /* O guarda é da FONTE, não do número: com o consolidado lido e nenhum decreto, o cartão diz
+     "nenhum" em vez de deixar no ar o "sem coleta até o corte" da reserva do HTML. */
+  if (DECRETADOS && DECRETADOS.municipios) {
+    texto('topoDecretaram', nCartao(decretados.length));
+    texto('topoReconhecidos', nCartao(reconhecidos.length));
   }
   variacao('topoDecretaramVariacao', variacaoDe('municipios_decretaram'));
   variacao('topoReconhecidosVariacao', variacaoDe('reconhecidos_pelo_governo_federal'));
@@ -178,12 +186,12 @@ function __init(totalMunicipios){
      pendência é campo do gerador (`dias_sem_reconhecimento`); sem ele, a classe é "não calculado". */
   const calculado = decretados.some(m => m.dias !== undefined);
   const pendentes = decretados.filter(m => !m.reconhecida && m.dias > DIAS_PENDENCIA);
-  texto('topoPendencia', calculado ? (pendentes.length ? n(pendentes.length) : 'nenhum') : 'não calculado até o corte');
+  texto('topoPendencia', calculado ? nCartao(pendentes.length) : 'não calculado até o corte');
   cred('topoPendenciaFonte', [FONTE_DECRETO], corteDecretos);
   /* População em milhões com uma casa (regra de número do site). */
   const pop = N.pop_sob_decreto;
-  if (pop != null) texto('topoPopulacao', pop >= 1e6
-    ? (Math.round(pop / 1e5) / 10).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + ' milhões' : n(pop));
+  texto('topoPopulacao', pop >= 1e6
+    ? (Math.round(pop / 1e5) / 10).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + ' milhões' : nCartao(pop));
   cred('topoPopulacaoFonte', ['Censo 2022, do IBGE'], RESP && RESP.gerado_em);
 
   // =========================================================
