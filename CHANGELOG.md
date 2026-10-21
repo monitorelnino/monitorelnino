@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #940 · Defesa civil sem a tabela do rodapé do mapa
+
+A lista buscável do rodapé da figura das emergências sai. Ela respondia por município o que a seção "Como está o seu município" já responde com o módulo comum da consulta, por nome e com busca. Com ela saem a função que a montava e a declaração de busca da figura, 40 linhas a menos. O contrato da página perde a divergência registrada em 19/10, vencida desde o #896.
+
 ## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
 
 A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
