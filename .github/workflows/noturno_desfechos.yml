@@ -1,0 +1,39 @@
+# Desfechos do SUS — uma vez por noite (E1, 21/10/2026; HANDOVER_SUS_DESFECHOS_16-10-2026 §2).
+#
+# POR QUE ESTE WORKFLOW EXISTE
+# Os coletores de desfecho (SINAN pelo FTP do DATASUS, SISAB, óbitos e SIH da E2) estão na `main`
+# desde 17–19/10, mas os arquivos de `data/saude_desfechos/` só nasciam por válvula `coleta-dia/*`,
+# à mão: a nuvem não tinha elo para eles e o dado envelhecia até alguém disparar. Aqui eles viram
+# elo diário, na janela, depois do elo da saúde (cron 05:50), de que a derivação de dengue,
+# chikungunya e SRAG lê.
+#
+# Cada comando roda pelo invólucro de saúde e nunca derruba o job; arquivo fora do esquema vai para
+# `data/saude_desfechos/quarentena/` (regra 5), e o arquivo anterior fica. O SIH retoma de onde
+# parou (`--orcamento` em segundos): o histórico de 2019 em diante fecha em poucas noites.
+name: Noturno — desfechos do SUS
+
+on:
+  schedule:
+    - cron: "5 7 * * *"   # 4h05 de Brasília: depois do elo da saúde (05:50, teto 60 min), antes dos sinais (08:00)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read        # o job `vez` do coletor pede `actions: read` (F35)
+
+jobs:
+  desfechos:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: desfechos
+      timeout_minutos: 100
+      comandos: |
+        coletar_datasus_dbc.py --desfecho leptospirose
+        coletar_datasus_dbc.py --desfecho malaria
+        coletar_sisab.py --desfecho diarreias
+        desfechos_sus.py --derivar
+        coletar_obitos.py
+        coletar_sih.py --orcamento 2400
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

@@ -4326,3 +4326,11 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **Efeito, medido.** Em 21/10/2026: 21 UFs com plano localizado, 0 com plano não localizado em bateria completa, 6 não verificadas. Média das 21 verificadas (v0.3): 31,9. Índice nacional (27): 24,8, que é 31,9 × 21 / 27. A diferença vem de seis UFs que entram com crédito 0 por não terem documento lido, não de piora de nenhuma UF medida. Provas: a conta refeita à mão bate com o derivado; os estatutos somam 27; o autoteste de `gerar_monitor_saude.py` e o portão `verificar_saude.py` (m) falham se uma UF sair da conta ou se `indice_nacional` não for a média.
 
 **O que não muda.** Peso zero no MARÉ (o motor do Legal não lê este arquivo). A v0.4 (coordenação) segue calculada em paralelo em `monitor_saude_v04.json`; `trocar_para_v04.py` não troca mais sozinho, porque a v0.5 o antecede, e a troca para os componentes da v0.4 depende de decisão da editoria sobre o crédito da coordenação sem documento. Resposta chegada por LAI melhora o número; não é mais condição para que ele exista. `media_das_verificadas` fica no arquivo só enquanto a página, a Imprensa e o topo não leem `indice_nacional`.
+
+## 116. O elo noturno dos desfechos do SUS (21/10/2026)
+
+**O que passa a rodar.** Todo dia às 07:05 UTC, depois do elo da saúde, o elo `noturno_desfechos` lê o SINAN (leptospirose e malária fora da Amazônia, pelo leitor `.dbc` do §108), o SISAB (diarreias), deriva dengue, chikungunya e SRAG da coleta já feita pela saúde, lê os óbitos registrados (§109) e as internações do SIH (§110, até 40 minutos por noite). Cada comando regrava só o arquivo da própria série, na forma comum de `desfechos_sus.py`; arquivo fora do esquema vai para a quarentena e o anterior fica.
+
+**O que muda para o leitor.** Nada no texto: as séries, a faixa habitual e os cortes do mapa são os mesmos. Muda a data: o dado deixa de depender de coleta manual e passa a chegar na cadência da fonte (SINAN semanal, SISAB e SIH mensais). Fonte que recusar ou mudar de forma deixa lacuna declarada e o arquivo anterior com a sua data.
+
+**O que não muda.** Peso zero no MARÉ; o Monitor não atribui casos ao El Niño.

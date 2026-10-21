@@ -145,6 +145,28 @@
    "_nota": "11/10/2026 (F40): saiu do monólito semanal, que não coletava nada desde 08/10; saude_sinais.json estava em 26/09."
   },
   {
+   "id": "desfechos_sus",
+   "workflow": "noturno_desfechos.yml",
+   "finalidade": "desfechos do SUS por UF (SINAN lepto/malária, SISAB diarreias, dengue/chik/SRAG derivados, óbitos, SIH), uma vez por noite, depois da saúde",
+   "cron_primario": "5 7 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução dos desfechos nesta janela",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "cada coletor regrava só o seu arquivo e só se o hash da fonte mudou; o SIH retoma do que já leu; rodar duas vezes dá o mesmo arquivo",
+   "orcamento_min": 100,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html (seção de desfechos)"
+   ],
+   "gravidade": "media"
+  },
+  {
    "id": "triagem_da_fila",
    "workflow": "noturno_triagem.yml",
    "finalidade": "tria a fila de pistas antes do publicador",

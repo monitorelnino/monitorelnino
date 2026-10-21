@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #949 · Elo noturno dos desfechos do SUS
+
+Novo elo `noturno_desfechos` (07:05 UTC, após a saúde): SINAN leptospirose e malária, SISAB diarreias, derivação de dengue, chikungunya e SRAG, óbitos e SIH. Escritores e temporizador declarados; METODOLOGIA §116. Sem mudança de página nem de dado publicado.
+
 ## 2026-10-21 · #947 · Zero medido por extenso no cartão da Defesa civil
 
 Os seis cartões do topo passam por uma definição única de valor. Zero medido sai como "nenhum", a palavra que a página já usava; campo que o arquivo não traz deixa o cartão na classe nomeada, em vez de escrever zero; e o cartão de decretos deixa de depender do número para decidir se houve coleta. Três caminhos que o dado de hoje não exercita, provados no navegador com os arquivos interceptados.
