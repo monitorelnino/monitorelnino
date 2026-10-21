@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
+
+A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
+
 ## 2026-10-20 · Releitura das edições sem texto
 
 O coletor dos diários oficiais relê uma vez as edições marcadas sem texto extraível quando muda a versão do leitor. Corrige as 89 edições do RJ lidas antes do ajuste de leitura.
