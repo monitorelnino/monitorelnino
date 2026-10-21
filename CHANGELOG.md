@@ -17,6 +17,10 @@ A lista buscável do rodapé da figura das emergências sai. Ela respondia por m
 
 Decisão da editoria de 21/10: o MARÉ Saúde tem número nacional pela regra do MARÉ Legal. `data/monitor_saude.json` ganha `resumo.indice_nacional` (média das 27; hoje 24,8, contra 31,9 das 21 verificadas), `por_estatuto` (soma 27) e `prontidao_nacional` por UF; sem documento lido, crédito 0 e estatuto visível. Número por UF não muda. METODOLOGIA §115; portão `verificar_saude.py` confere a conta. Linhas líquidas de código: +62.
 
+## 2026-10-21 · #944 · Medidor do MARÉ Saúde passa ao índice nacional
+
+O medidor da Saúde mostra o índice nacional das 27 unidades da federação, pela mesma régua do MARÉ Legal, e a linha ao lado conta o estatuto de cada uma: vinte e um estados com plano localizado, seis ainda não verificados. O cartão do topo, a página da imprensa e a reserva estática leem o mesmo campo. A escolha do parágrafo de abertura passa a seguir os componentes declarados no arquivo, não o número da versão.
+
 ## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
 
 A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
