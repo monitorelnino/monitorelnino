@@ -403,6 +403,16 @@
     "RO": "rota de rede: inalcançável a partir do executor; nomeada como rota, não como recusa"
    },
    "executor": "válvula coleta-dia, cliente identificado, 28 s; nenhum dado gravado"
+  },
+  {
+   "data": "21/10/2026",
+   "janela": "E1",
+   "cievs_estaduais": {
+    "PR": "página viva, boletim parado: dengue.pr.gov.br/Pagina/Boletins-da-Dengue lista 630 informes em PDF e o mais recente foi enviado em agosto de 2022; sem informe corrente, não há o que ler",
+    "AM": "rota de rede: fvs.am.gov.br não resolve (DNS) a partir do executor; nomeada como rota, não como recusa",
+    "PA": "página de arboviroses abre (HTTP 200) com subpáginas por doença e sem boletim anexado; as subpáginas de dengue e chikungunya deram tempo esgotado no executor; sem boletim lido"
+   },
+   "executor": "válvula coleta-dia, cliente identificado, quatro rodadas de leitura; nenhum dado gravado"
   }
  ]
 }
