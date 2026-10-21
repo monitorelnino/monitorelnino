@@ -22,9 +22,8 @@ jobs:
           import re, time
           import coletores_base as cb
           ALVOS = {
-            "AM": ["https://fvs.am.gov.br/boletim-epidemiologico"],
-            "PA": ["https://www.saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/"],
-            "PR": ["https://www.dengue.pr.gov.br/", "https://www.saude.pr.gov.br/Pagina/Dengue"],
+            "PR": ["http://www.dengue.pr.gov.br/Pagina/Boletins-da-Dengue", "http://www.dengue.pr.gov.br/Pagina/Aspectos-epidemiologicos"],
+            "PA": ["http://www.saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/dengue/", "http://www.saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/chikungunya/"],
           }
           for uf, urls in ALVOS.items():
               for u in urls:
@@ -37,7 +36,7 @@ jobs:
                   print("bytes", len(b), "| título:", (re.search(r"<title[^>]*>(.*?)</title>", t, re.S|re.I) or [0,""])[1].strip()[:120])
                   links = re.findall(r'href="([^"]+\.(?:pdf|csv|xlsx?))"', t, re.I)
                   bol = re.findall(r'href="([^"]*(?:boletim|arbovir|dengue|chikung)[^"]*)"', t, re.I)
-                  print("anexos:", len(links)); [print("  A", x[:160]) for x in links[:12]]
+                  print("anexos:", len(links)); print("pdf em qualquer atributo:", len(re.findall(r"\.pdf", t, re.I))); [print("  A", x[:160]) for x in links[:12]]
                   print("links de boletim/arbovirose:", len(bol)); [print("  B", x[:160]) for x in list(dict.fromkeys(bol))[:15]]
                   time.sleep(3)
           PY
