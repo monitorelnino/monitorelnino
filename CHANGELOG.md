@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #939 · MARÉ Saúde v0.5: índice nacional sobre as 27 UFs
+
+Decisão da editoria de 21/10: o MARÉ Saúde tem número nacional pela regra do MARÉ Legal. `data/monitor_saude.json` ganha `resumo.indice_nacional` (média das 27; hoje 24,8, contra 31,9 das 21 verificadas), `por_estatuto` (soma 27) e `prontidao_nacional` por UF; sem documento lido, crédito 0 e estatuto visível. Número por UF não muda. METODOLOGIA §115; portão `verificar_saude.py` confere a conta. Linhas líquidas de código: +80.
+
 ## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
 
 A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
