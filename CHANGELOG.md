@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #937 · Vigia repõe o domínio atrás da main
+
+O vigia diário (`verificar_publicado.yml`) passa a repor o domínio pelo `repor_dominio.sh` quando a integridade diverge da `main`, confere de novo e abre Issue no registro privado se a reposição falhar. O portão de reposição agora prova que o workflow de portões citado pelo publicador existe e dispara em `pull_request`.
+
 ## 2026-10-20 · Releitura das edições sem texto
 
 O coletor dos diários oficiais relê uma vez as edições marcadas sem texto extraível quando muda a versão do leitor. Corrige as 89 edições do RJ lidas antes do ajuste de leitura.
