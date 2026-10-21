@@ -90,8 +90,17 @@
   "proteja-se.municipio.calor.nota": "Painel de calor do Ministério da Saúde · {data}",
   "proteja-se.municipio.calor.sem_coleta": "Sem coleta até o corte",
   "proteja-se.municipio.dengue.rotulo": "Dengue",
+  "proteja-se.municipio.dengue.valor": "{nivel}",
+  "proteja-se.municipio.dengue.nivel_1": "Nível 1 (baixa atividade)",
+  "proteja-se.municipio.dengue.nivel_2": "Nível 2 (atenção)",
+  "proteja-se.municipio.dengue.nivel_3": "Nível 3 (alerta)",
+  "proteja-se.municipio.dengue.nivel_4": "Nível 4 (emergência)",
+  "proteja-se.municipio.dengue.nivel_outro": "Nível {n}",
+  "proteja-se.municipio.dengue.nota": "Semana {semana} · InfoDengue (Fiocruz e FGV)",
+  "proteja-se.municipio.dengue.nao_lido": "Município não lido pelo InfoDengue na semana",
+  "proteja-se.municipio.dengue.nota_nao_lido": "A fonte publica a série de parte dos municípios · InfoDengue (Fiocruz e FGV)",
+  "proteja-se.municipio.dengue.nota_sem_coleta": "Sem coleta até o corte · InfoDengue (Fiocruz e FGV)",
   "proteja-se.municipio.dengue.sem_coleta": "Sem coleta até o corte",
-  "proteja-se.municipio.dengue.nota": "O nível de alerta por município ainda não está no dado do MARÉ · InfoDengue (Fiocruz e FGV)",
   "proteja-se.municipio.decreto.rotulo": "Decreto de emergência",
   "proteja-se.municipio.decreto.nenhum": "Nenhum decreto desde 29 de junho",
   "proteja-se.municipio.decreto.valor": "Decretou em {data}",
@@ -129,5 +138,6 @@
  },
  "_nota_municipio": "19/10/2026 (HANDOVER_PROTEJA_SE §4): os seis cartões da consulta e a linha do estado são escritos por assets/js/proteja-se.js com o dado de data/riscos_municipio/<UF>.json e data/contatos_uf.json; os textos e os moldes vivem aqui. Ausência é a frase da classe, nunca vazio nem travessão. O cartão de dengue fica na lacuna declarada até o nível por município entrar no dado (pedido à janela A). Os identificadores do painel \"Defesa Civil do seu estado\" e do painel \"Se a sua cidade decretou emergência\" apontam, em conteudo/_renomeacoes.json, para a linha do estado e para o cartão de decreto da consulta, que é onde o conteúdo deles passou a viver.",
  "_nota_fonte_do_guia": "19/10/2026: a data da fonte da aba de calor deixa de ser escrita à mão. O Ministério da Saúde \"Ondas de Calor\" é a mesma página que a janela A preserva por hash em data/orientacoes_oficiais.json (HANDOVER_PROTEJA_SE §7.1), e a data do molde {data} vem de lá: quando a reconferência rodar, a linha da aba acompanha sozinha. Sem o registro, fica a data de reserva do HTML. As outras três abas seguem com a fonte de hoje, porque a página preservada delas é outra e o trecho por item ainda não existe.",
- "_nota_dengue": "19/10/2026 (HANDOVER_PROTEJA_SE §5): a quinta aba vem inteira de data/orientacoes_oficiais.json, fontes[familia=dengue] (página-mãe do Ministério da Saúde, preservada por hash, 20 trechos). Prevenção, sinais e sintomas e sinais de alerta são os trechos da fonte, em forma de instrução; a data da linha de fonte sai do consultado_em do registro, pelo molde {data}, como na aba de calor. Nada aqui é escrito sem trecho correspondente."
+ "_nota_dengue": "19/10/2026 (HANDOVER_PROTEJA_SE §5): a quinta aba vem inteira de data/orientacoes_oficiais.json, fontes[familia=dengue] (página-mãe do Ministério da Saúde, preservada por hash, 20 trechos). Prevenção, sinais e sintomas e sinais de alerta são os trechos da fonte, em forma de instrução; a data da linha de fonte sai do consultado_em do registro, pelo molde {data}, como na aba de calor. Nada aqui é escrito sem trecho correspondente.",
+ "_nota_dengue_cartao": "21/10/2026: o sexto cartão da consulta sai da lacuna. `data/saude_municipio/<UF>.json` traz `dengue` (nível, semana e casos estimados do InfoDengue) para 339 dos 5.571 municípios. Três classes distintas, nunca zero e nunca vazio: nível lido · município não lido pela fonte na semana · sem coleta até o corte (o arquivo da UF não respondeu). O rótulo de cada nível é o MESMO que a página da Saúde publica para o mesmo dado da mesma fonte. DIVERGÊNCIA do §4 do handover, que pede \"Nível de alerta: {cor}\": o InfoDengue não publica a cor junto do nível, e nenhuma fonte lida pelo MARÉ a documenta — escrever a cor seria inventar dado. A semana sai em datas por `assets/semana.js`."
 }

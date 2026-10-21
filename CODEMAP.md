@@ -41,7 +41,7 @@ Atualizado em 21/10/2026.
 | `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json`, `geo_uf.json`, `municipios_ibge_referencia.json`, `orientacoes_oficiais.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/proveniencia.js` | monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+76) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
-| `assets/semana.js` | saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/semana.js` | proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | 2 | não |
 | `aplicar_c10_imprensa.py` | — | — | — | — | não |
