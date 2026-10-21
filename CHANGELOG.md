@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #951 · SIH e óbitos: leitura completa de 2019–2020
+
+As internações (sete arquivos) passam a 92 meses, jan/2019–ago/2026, nas 27 UFs; óbitos registrados atualizados. Os cortes do mapa tinham congelado sobre leitura incompleta: `coletar_sih.py` só congela cortes sobre leitura completa, e eles foram recalculados sobre 2019–2025. METODOLOGIA §110. Código +13.
+
 ## 2026-10-21 · #949 · Elo noturno dos desfechos do SUS
 
 Novo elo `noturno_desfechos` (07:05 UTC, após a saúde): SINAN leptospirose e malária, SISAB diarreias, derivação de dengue, chikungunya e SRAG, óbitos e SIH. Escritores e temporizador declarados; METODOLOGIA §116. Sem mudança de página nem de dado publicado.
