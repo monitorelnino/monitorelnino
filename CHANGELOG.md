@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #946 · Ausência em palavras no medidor e na tabela de focos
+
+Quando o índice do MARÉ Saúde não tem valor, o número grande do medidor passa a dizer "sem coleta" em vez de travessão. Na tabela de focos por estado, a coluna do dia anterior diz "sem arquivo" quando aquele dia não foi lido, palavra que a mesma figura já usava duas linhas acima. Nenhum número muda: são os caminhos de ausência, que o dado de hoje não alcança.
+
 ## 2026-10-21 · #945 · Para gestores: "não localizado" no lugar de "sem coleta"
 
 No cartão de recursos federais da consulta municipal, o município que não consta num arquivo lido
