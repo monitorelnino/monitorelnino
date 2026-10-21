@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>21/10/2026 · A ordem dos atributos que repunha o domínio todo dia</dt>
       <dd>Em `prefeituras.html`, `data-conteudo` passa a vir antes de `href` nos três links de cartão: o Netlify reemite o `href` no fim ao servir, e essa era a única divergência do site contra o manifesto — o vigia repunha o domínio uma vez por dia sem motivo. Os dois números de &quot;O que a lei exige&quot; passam a ser escritos quando a fonte existe, com zero por extenso. A Imprensa lê `semana.json` uma vez só.</dd>
+      <dt>21/10/2026 · MARÉ Saúde v0.5: índice nacional sobre as 27 UFs</dt>
+      <dd>Decisão da editoria de 21/10: o MARÉ Saúde tem número nacional pela regra do MARÉ Legal. `data/monitor_saude.json` ganha `resumo.indice_nacional` (média das 27; hoje 24,8, contra 31,9 das 21 verificadas), `por_estatuto` (soma 27) e `prontidao_nacional` por UF; sem documento lido, crédito 0 e estatuto visível. Número por UF não muda. METODOLOGIA §115; portão `verificar_saude.py` confere a conta. Linhas líquidas de código: +62.</dd>
       <dt>21/10/2026 · Segunda camada de desfechos na Saúde</dt>
       <dd>A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.</dd>
       <dt>21/10/2026 · Vigia repõe o domínio atrás da main</dt>
@@ -72,7 +74,7 @@
       <dt>20/10/2026 · Seis portões do repositório viram um executor</dt>
       <dd>`verificar_repositorio.py` reúne marcadores de conflito, escrita portável, página arquivada, changelog curto, carimbo da rodada e scripts dos workflows; seis arquivos saem e o `pre-commit` chama o executor. Comandos de portão 80→76; linhas líquidas −425; 95 casos de autoteste e mutantes provados.</dd>
       <dt>20/10/2026 · Três portões viram regras do executor de dado</dt>
-      <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80. =======</dd>
+      <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.</dd>
       <dt>20/10/2026 · O domínio acompanha a main</dt>
       <dd>Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O &quot;Publicar dados&quot; agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.</dd>
       <dt>19/10/2026 · Internações do SUS e óbitos registrados entram como séries</dt>
@@ -112,7 +114,7 @@
       <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
       <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
       <dt>19/10/2026 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte</dt>
-      <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde. =======</dd>
+      <dd>Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.</dd>
       <dt>17/10/2026 · Diarreias pelo SISAB; o mês da extração sai da leptospirose</dt>
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
       <dt>19/10/2026 · Diário oficial do DF lido por data</dt>
@@ -165,8 +167,6 @@
       <dd>As listas de &quot;Antes, durante e depois&quot; voltam ao marcador padrão: o glifo ☐ prometia marcar item cumprido, interação que a lista não tem. Vale na inicial e no guia do Proteja-se. No Monitor de riscos, o cartão de cidades com IQAr alto passa a ler rótulo, valor e apoio do catálogo, como os outros seis da mesma grade, e o rótulo volta a trazer o dia da medição.</dd>
       <dt>19/10/2026 · Monitor de riscos: textos e ligações enxutos; cartões do topo da mesma altura</dt>
       <dd>Saem a frase sobre a data do dado, o &quot;previsão, não observação&quot;, o parágrafo das listas federais, a nota do mapa de qualidade do ar (vai para a metodologia) e o gráfico do Semiárido. As siglas de UF viram etiqueta, sem link. No topo, a frase do prognóstico sai do cartão e vai para o texto da seção; rodapé preso na base e até seis por linha acabam com o vão branco.</dd>
-      <dt>19/10/2026 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação</dt>
-      <dd>Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão &quot;Resposta&quot; dos números e a figura &quot;O que foi localizado em cada estado&quot;, que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.</dd>
     </dl>
   </section>
 </main>

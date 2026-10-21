@@ -17,6 +17,10 @@ manifesto — o vigia repunha o domínio uma vez por dia sem motivo. Os dois nú
 exige" passam a ser escritos quando a fonte existe, com zero por extenso. A Imprensa lê
 `semana.json` uma vez só.
 
+## 2026-10-21 · #939 · MARÉ Saúde v0.5: índice nacional sobre as 27 UFs
+
+Decisão da editoria de 21/10: o MARÉ Saúde tem número nacional pela regra do MARÉ Legal. `data/monitor_saude.json` ganha `resumo.indice_nacional` (média das 27; hoje 24,8, contra 31,9 das 21 verificadas), `por_estatuto` (soma 27) e `prontidao_nacional` por UF; sem documento lido, crédito 0 e estatuto visível. Número por UF não muda. METODOLOGIA §115; portão `verificar_saude.py` confere a conta. Linhas líquidas de código: +62.
+
 ## 2026-10-21 · #938 · Segunda camada de desfechos na Saúde
 
 A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.
@@ -68,7 +72,6 @@ Os cartões da semana da Imprensa e a conferência de âncoras internas passam a
 ## 2026-10-20 · #921 · Três portões viram regras do executor de dado
 
 Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.
-=======
 
 ## 2026-10-20 · #919 · O domínio acompanha a main
 
@@ -162,7 +165,6 @@ Consolidação, item 6. A regra de disparo (dado, página) estava copiada em tr�
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
-=======
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 

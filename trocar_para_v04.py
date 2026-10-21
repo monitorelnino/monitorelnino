@@ -155,6 +155,10 @@ def main() -> int:
               f"({pedido.get('com_plano', '—')} com plano, "
               f"{pedido.get('com_coordenacao', '—')} com coordenação). Nada foi alterado.")
         return 0
+    if float(monitor.get("versao") or 0) >= 0.5 and not ensaio:
+        print(f"MARÉ Saúde está na v{monitor['versao']} (índice nacional, METODOLOGIA §115): a troca para os "
+              f"componentes da v0.4 aguarda decisão da editoria sobre o crédito da coordenação sem documento. Nada foi alterado.")
+        return 0
     comp = comparar(monitor, v04)
     print(f"Troca v0.3 → v0.4 · média {comp['media_v03']} → {comp['media_v04']} "
           f"({comp['variacao_da_media']:+}) · {len(comp['ufs_que_mudam_de_faixa'])} UF(s) mudam de "

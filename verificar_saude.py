@@ -71,6 +71,13 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             # são sinalizadores internos (gatilho por marco federal) — nunca podem vazar ao índice público.
             if "requer_reverificacao" in m or "motivo_reverificacao" in m:
                 erros.append(f"(v) {uf}: sinalizador interno de reverificação vazou para monitor_saude.json")
+        # (m) v0.5 (21/10/2026, METODOLOGIA §115): o índice nacional é a média das 27 UFs, nenhuma fora da conta;
+        # os estatutos somam 27 e o número que a página lê bate com a conta refeita aqui.
+        _r, _u = (_ms.get("resumo") or {}), (_ms.get("ufs") or {})
+        _pn = [(_u.get(uf) or {}).get("prontidao_nacional") for uf in _u]
+        if len(_u) != 27 or any(x is None for x in _pn): erros.append("(m) monitor_saude: alguma das 27 UFs ficou fora da conta nacional")
+        elif _r.get("denominador") != 27 or abs(_r.get("indice_nacional", -1) - round(sum(_pn) / 27, 1)) > 0.05: erros.append("(m) monitor_saude: indice_nacional não é a média das 27 UFs")
+        if sum((_r.get("por_estatuto") or {}).values()) != 27: erros.append("(m) monitor_saude: os estatutos por UF não somam 27")
         if "monitor_saude" in motor: erros.append("(m) recalcular_mare.py referencia monitor_saude (proibido)")
         # (d) §8 desfechos: nunca lidos pelo motor; SE incompletas vazadas; ressalva de não-atribuição nas superfícies
         if re.search(r"saude_desfechos|saude_no_plano", motor): erros.append("(d) recalcular_mare.py referencia desfechos/saude_no_plano (proibido)")
