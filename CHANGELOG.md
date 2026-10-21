@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-21 · #943 · O cartão de dengue do Proteja-se passa a ler o município
+
+A consulta municipal do Proteja-se mostra o nível de alerta de dengue do InfoDengue para os 339
+municípios que a fonte publica, com a semana em datas. Para os demais, diz que a fonte não leu o
+município — não é zero, não é "sem coleta", e as três classes continuam distintas. O rótulo do
+nível é o mesmo que a página da Saúde usa, e o cartão leva à aba de dengue.
+
 ## 2026-10-21 · #944 · Medidor do MARÉ Saúde passa ao índice nacional
 
 O medidor da Saúde mostra o índice nacional das 27 unidades da federação, pela mesma régua do MARÉ Legal, e a linha ao lado conta o estatuto de cada uma: vinte e um estados com plano localizado, seis ainda não verificados. O cartão do topo, a página da imprensa e a reserva estática leem o mesmo campo. A escolha do parágrafo de abertura passa a seguir os componentes declarados no arquivo, não o número da versão.

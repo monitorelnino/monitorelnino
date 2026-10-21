@@ -178,11 +178,12 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
   const tx = (id, v) => (C && C.texto && C.texto(P + id, v)) || '';
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const REF = json('data/municipios_ibge_referencia.json'), CONTATOS = json('data/contatos_uf.json');
-  const risco = {};                                   // UF → promessa do arquivo daquele estado
+  const risco = {}, saude = {};                       // UF → promessa do arquivo daquele estado
   const doEstado = uf => risco[uf] = risco[uf] || json('data/riscos_municipio/' + uf + '.json');
+  const saudeDoEstado = uf => saude[uf] = saude[uf] || json('data/saude_municipio/' + uf + '.json');
 
   /* A qual orientação o aviso do Inmet leva: a família do tipo que o próprio aviso declara. */
-  const ABAS = {chuva: 'guia-chuvas', fogo: 'guia-fogo', seca: 'guia-seca', calor: 'guia-calor'};
+  const ABAS = {chuva: 'guia-chuvas', fogo: 'guia-fogo', seca: 'guia-seca', calor: 'guia-calor', dengue: 'guia-dengue'};
   function familiaDoAviso(tipo) {
     const t = String(tipo || '').toLowerCase();
     if (t.indexOf('umidade') >= 0 || t.indexOf('seca') >= 0 || t.indexOf('estiagem') >= 0) return 'seca';
@@ -255,6 +256,25 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
       esc(tx('calor.nota', {data: (M && M.dataBR(data)) || tx('calor.sem_coleta')})), ABAS.calor);
   }
 
+  /* Dengue. O InfoDengue publica a série de PARTE dos municípios, então são três classes, e as
+     três dizem coisas diferentes: nível lido · a fonte não leu este município na semana · o MARÉ
+     não tem o arquivo da UF. Nenhuma delas é zero. O nível vem como número e o número sozinho não
+     diz nada ao leitor: o rótulo é o mesmo que a página da Saúde publica para o mesmo dado, e vive
+     no catálogo. A semana sai em datas (`assets/semana.js`), nunca como semana epidemiológica. */
+  const semanaEmDatas = v => {
+    const m = /(\d{4})-(\d{1,2})/.exec(String(v || ''));
+    return (m && window.MonitorSemana && MonitorSemana.porExtenso(+m[1], +m[2])) || '';
+  };
+  function cartaoDengue(s, cod) {
+    const dg = (((s || {}).municipios || {})[cod] || {}).dengue;
+    if (!s) return cartao('neutro', tx('dengue.rotulo'), tx('dengue.sem_coleta'), esc(tx('dengue.nota_sem_coleta')), ABAS.dengue);
+    if (!dg) return cartao('neutro', tx('dengue.rotulo'), tx('dengue.nao_lido'), esc(tx('dengue.nota_nao_lido')), ABAS.dengue);
+    const nivel = tx('dengue.nivel_' + dg.nivel) || tx('dengue.nivel_outro', {n: dg.nivel});
+    const datas = semanaEmDatas(dg.semana);
+    return cartao('neutro', tx('dengue.rotulo'), tx('dengue.valor', {nivel: nivel}),
+      esc(datas ? tx('dengue.nota', {semana: datas}) : tx('dengue.nota_sem_semana', {data: consultaDe(s, 'dengue')})), ABAS.dengue);
+  }
+
   function cartaoDecreto(d, m) {
     const n = m.decretos_no_ciclo || 0, primeiro = (m.reconhecimento || {}).primeiro_decreto;
     if (!n) return cartao('musgo', tx('decreto.rotulo'), tx('decreto.nenhum'),
@@ -301,12 +321,12 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
       estados: NOME_UF, semLista: tx('sem_lista'),
       municipios: uf => (porUF[uf] || []).slice().sort((a, b) => a.localeCompare(b)),
       mostrar: (uf, nome, card) => {
-        Promise.all([doEstado(uf), CONTATOS]).then(([d, contatos]) => {
-          const m = ((d || {}).municipios || {})[codigo[uf + '|' + nome]] || {};
+        Promise.all([doEstado(uf), CONTATOS, saudeDoEstado(uf)]).then(([d, contatos, s]) => {
+          const cod = codigo[uf + '|' + nome], m = ((d || {}).municipios || {})[cod] || {};
           card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras grade-figuras--3">'
             + cartaoInmet(d || {}, m) + cartaoCemaden(d || {}, m) + cartaoAr(d || {}, m)
             + cartaoCalor(d || {}, m)
-            + cartao('neutro', tx('dengue.rotulo'), tx('dengue.sem_coleta'), esc(tx('dengue.nota')), null)
+            + cartaoDengue(s, cod)
             + cartaoDecreto(d || {}, m) + '</div>';
           linhaDoEstado(uf, contatos);
         }).catch(_erroPS('proteja-se:consulta'));
