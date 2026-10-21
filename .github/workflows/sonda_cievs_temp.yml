@@ -1,0 +1,43 @@
+# TEMPORÁRIO — nunca mesclar. Sonda de leitura dos boletins PR, AM e PA (E1, 21/10/2026). Só mede.
+name: Sonda CIEVS (temporário)
+on:
+  push:
+    branches: ["coleta-dia/2026-10-21-sonda-cievs"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Sondar
+        run: |
+          python3 - <<'PY'
+          import re, time
+          import coletores_base as cb
+          ALVOS = {
+            "AM": ["https://fvs.am.gov.br/boletim-epidemiologico"],
+            "PA": ["https://www.saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/"],
+            "PR": ["https://www.dengue.pr.gov.br/", "https://www.saude.pr.gov.br/Pagina/Dengue"],
+          }
+          for uf, urls in ALVOS.items():
+              for u in urls:
+                  print("=====", uf, u)
+                  try:
+                      b = cb.buscar(u, timeout=40, origem="sonda_cievs")
+                  except Exception as e:
+                      print("RECUSA/ERRO:", type(e).__name__, str(e)[:300]); continue
+                  t = b.decode("utf-8", "replace")
+                  print("bytes", len(b), "| título:", (re.search(r"<title[^>]*>(.*?)</title>", t, re.S|re.I) or [0,""])[1].strip()[:120])
+                  links = re.findall(r'href="([^"]+\.(?:pdf|csv|xlsx?))"', t, re.I)
+                  bol = re.findall(r'href="([^"]*(?:boletim|arbovir|dengue|chikung)[^"]*)"', t, re.I)
+                  print("anexos:", len(links)); [print("  A", x[:160]) for x in links[:12]]
+                  print("links de boletim/arbovirose:", len(bol)); [print("  B", x[:160]) for x in list(dict.fromkeys(bol))[:15]]
+                  time.sleep(3)
+          PY
