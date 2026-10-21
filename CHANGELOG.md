@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-21 · #951 · Sondagem dos boletins de PR, AM e PA
+## 2026-10-21 · #952 · Sondagem dos boletins de PR, AM e PA
 
 Catálogo dos desfechos do SUS registra a leitura de 21/10: o boletim do Paraná está parado desde agosto de 2022, o do Amazonas não resolve do executor e o do Pará não traz boletim anexado. Nenhum adaptador, nenhum dado novo.
 
