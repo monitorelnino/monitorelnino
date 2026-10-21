@@ -7,14 +7,19 @@ function _qtdCartao(v) {
   if (v === null || v === undefined || v === '') return 'sem dado';
   const x = Number(v);
   if (!Number.isFinite(x)) return 'sem dado';
-  return x === 0 ? 'zero' : x.toLocaleString('pt-BR');
+  return x === 0 ? 'zero' : decBR(x);
 }
 // ===== saude.html · bloco 1 (extraído em 06/09/2026, CSP sem unsafe-inline) =====
 let BR_GEOJSON, SUF, SSIN, SINAIS, MARE, MSAUDE;
 // Lote 6, §2: a frase do dado nasce oculta e só aparece com texto — nunca "—" nem linha vazia.
 const mostrarFrase = (alvo, texto) => { alvo.textContent = texto; alvo.hidden = !texto; };
-/* Número em texto público com vírgula decimal (A4-16); não-número passa como veio ("—", nulo). */
-const decBR = v => (v == null || v === '' || isNaN(Number(v))) ? v : Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 1});
+/* Número em texto público com vírgula decimal (A4-16); não-número passa como veio ("—", nulo).
+   21/10/2026: uma casa decimal, SALVO quando ela zeraria um valor medido — 0,037 internação por
+   100 mil saía "0", e dizer zero onde houve 75 internações é afirmar o que não se mediu. Abaixo de
+   0,05 vale um dígito significativo ("0,04", "0,009"), que é curto e não mente. */
+const decBR = v => (v == null || v === '' || isNaN(Number(v))) ? v
+  : Number(v).toLocaleString('pt-BR', Number(v) !== 0 && Math.abs(Number(v)) < 0.05
+      ? {maximumSignificantDigits: 1} : {maximumFractionDigits: 1});
 
 /* A SEMANA VIRA DATA — item 0 do handover de 07/10/2026, regra da editoria para o site inteiro.
  *
@@ -840,8 +845,17 @@ const AREAS = [
 /* Os seis desfechos em evidência: o nome do arquivo na forma comum e o id do mesmo desfecho no
    catálogo, que é de onde sai o NOME quando ainda não há arquivo para dar o rótulo. */
 const DESFECHOS_DA_SECAO = ['dengue', 'chikungunya', 'srag', 'obitos', 'diarreias', 'leptospirose'];
+/* A segunda camada (HANDOVER_SAUDE_DESFECHOS_BLOCO §2): cartão igual, nas linhas seguintes, SEM mapa
+   e sem detalhe, na ordem em que o dado nasceu. Os demais do catálogo (pele e olhos, saúde mental,
+   ICSAP, tuberculose, desnutrição, malária) ficam no catálogo até a editoria pedir cartão. */
+const SEGUNDA_CAMADA = ['internacoes_respiratorias', 'internacoes_cardio', 'internacoes_renal',
+                        'internacoes_desidratacao', 'hepatite_a', 'internacoes_fumaca', 'internacoes_calor'];
 const NO_CATALOGO = {dengue: 'dengue', chikungunya: 'chik', srag: 'srag', obitos: 'obitos',
-                     diarreias: 'dda', leptospirose: 'lepto'};
+                     diarreias: 'dda', leptospirose: 'lepto', internacoes_respiratorias: 'ira',
+                     internacoes_cardio: 'cardio', internacoes_renal: 'renal',
+                     internacoes_desidratacao: 'desidratacao', hepatite_a: 'hepatite_a',
+                     internacoes_fumaca: 'intox_fumaca', internacoes_calor: 'calor_agravo'};
+const EM_EVIDENCIA = d => DESFECHOS_DA_SECAO.indexOf(d.desfecho) >= 0;
 const FAIXA_COR = {acima: MonitorMapas.PALETA.serie_habitual.acima, dentro: MonitorMapas.cor('vazio')};
 let DESFECHOS_LIDOS = [], DESFECHO_ESCOLHIDO = null, DESF_CATALOGO = null;
 const __graficoDesfecho = {};
@@ -923,15 +937,21 @@ function cartaoDesfecho(d, uf) {
      o que o leitor vê no gráfico. */
   /* A comparação é feita nos MESMOS números que o leitor lê (uma casa decimal): comparar no valor
      cheio escreve "abaixo da faixa habitual (0,2 a 0,2)" para um cartão que mostra 0,2. */
-  const uma = x => Number(Number(x).toFixed(1));
+  /* Comparar NO NÚMERO EXIBIDO, lendo de volta o que `decBR` escreveu: a precisão do rótulo varia
+     com o tamanho do valor, e repetir aqui a régua do decBR seria copiar a mesma decisão em dois
+     lugares — o jeito de os dois nunca divergirem é só um deles decidir. */
+  const uma = x => Number(String(decBR(x)).replace(/\./g, '').replace(',', '.'));
   const dentro = !f || f.p90 == null ? null
     : (uma(c.por_100mil) > uma(f.p90) ? 'acima' : (uma(c.por_100mil) < uma(f.mediana) ? 'abaixo' : 'dentro'));
   const texto = !dentro ? 'sem faixa habitual para a época'
     : dentro + ' da faixa habitual (' + decBR(f.mediana) + ' a ' + decBR(f.p90) + ')';
-  return '<div class="cartao-numero cartao-numero--saude" role="button" tabindex="0"'
-    + ' data-desfecho="' + esc(d.desfecho) + '" aria-pressed="' + (d.desfecho === DESFECHO_ESCOLHIDO) + '">'
+  /* Só o desfecho em evidência abre detalhe (§2): o cartão da segunda camada não é botão, não entra
+     na ordem de tabulação e não promete um mapa que a seção não desenha para ele. */
+  return '<div class="cartao-numero cartao-numero--saude"'
+    + (EM_EVIDENCIA(d) ? ' role="button" tabindex="0" data-desfecho="' + esc(d.desfecho)
+        + '" aria-pressed="' + (d.desfecho === DESFECHO_ESCOLHIDO) + '"' : '') + '>'
     + '<p class="cartao-numero-familia">' + esc(d.rotulo) + '</p>'
-    + '<p class="cartao-numero-valor">' + esc(decBR(c.por_100mil)) + '</p>'
+    + '<p class="cartao-numero-valor">' + esc(_qtdCartao(c.por_100mil)) + '</p>'
     + '<p class="cartao-numero-rotulo">' + esc(d.unidade) + ' por 100 mil' + cadencia
     + esc(periodoEmPalavras(c.periodo, d.periodo)) + '</p>'
     + '<p class="cartao-numero-variacao"' + (dentro === 'acima' ? ' style="color:' + FAIXA_COR.acima + '"' : '')
@@ -979,9 +999,10 @@ function pintarDesfechos() {
   const seletor = document.getElementById('ufDesfechos');
   if (!grade || !DESFECHOS_LIDOS.length) return;
   const uf = (seletor && seletor.value) || 'BR';
-  if (!DESFECHOS_LIDOS.some(d => d.desfecho === DESFECHO_ESCOLHIDO)) DESFECHO_ESCOLHIDO = DESFECHOS_LIDOS[0].desfecho;
+  const comDetalhe = DESFECHOS_LIDOS.filter(EM_EVIDENCIA);
+  if (!comDetalhe.some(d => d.desfecho === DESFECHO_ESCOLHIDO)) DESFECHO_ESCOLHIDO = (comDetalhe[0] || {}).desfecho || null;
   grade.innerHTML = DESFECHOS_LIDOS.map(d => cartaoDesfecho(d, uf)).join('');
-  pintarDetalhe(DESFECHOS_LIDOS.find(d => d.desfecho === DESFECHO_ESCOLHIDO), uf);
+  pintarDetalhe(comDetalhe.find(d => d.desfecho === DESFECHO_ESCOLHIDO), uf);
 }
 
 /* Um ouvinte na grade, não um por cartão: a grade se repinta inteira a cada troca de território. */
@@ -1082,7 +1103,7 @@ async function montarDesfechos() {
   const grade = document.getElementById('gradeDesfechos');
   if (!grade) return;
   if (window.MonitorCatalogo && window.MonitorCatalogo.pronto) { try { await window.MonitorCatalogo.pronto; } catch (e) {} }
-  const lidos = await Promise.all(DESFECHOS_DA_SECAO.map(id =>
+  const lidos = await Promise.all(DESFECHOS_DA_SECAO.concat(SEGUNDA_CAMADA).map(id =>
     fetch('data/saude_desfechos/' + id + '.json').then(r => (r.ok ? r.json() : null)).catch(() => null)));
   DESF_CATALOGO = await fetch('data/saude_desfechos/catalogo.json')
     .then(r => (r.ok ? r.json() : null)).catch(() => null);
