@@ -177,15 +177,15 @@ def preencher_saude():
     # rotulo dizendo de quantos estados e a media enquanto nao forem 27 - a mesma frase que o
     # JavaScript escreve, para que a pagina sem JS nao diga menos nem mais.
     res = mon.get("resumo") or {}
-    media = res.get("media_das_verificadas")
+    media = res.get("indice_nacional")
     if media is not None:
-        verificadas = res.get("verificadas") or 0
+        com_plano = res.get("ufs_com_plano_localizado") or 0
+        de = res.get("denominador") or 27
         h = sub_id(h, "nIndiceSaude", fmt(media), n)
-        h = sub_id(h, "rotuloIndiceSaude",
-                   "de 100, na prepara\u00e7\u00e3o publicada em sa\u00fade" if verificadas >= 27
-                   else f"de 100, m\u00e9dia dos {verificadas} estados verificados", n)
+        h = sub_id(h, "rotuloIndiceSaude", "de 100, na prepara\u00e7\u00e3o publicada em sa\u00fade", n)
         h = sub_id(h, "fonteIndiceSaude",
-                   f"MAR\u00c9, sobre documentos oficiais lidos \u00b7 {verificadas} de 27 estados verificados", n)
+                   f"MAR\u00c9, sobre documentos oficiais lidos \u00b7 {com_plano} de {de} estados "
+                   "com plano localizado", n)
 
     if h != h0:
         p.write_text(h, encoding="utf-8", newline="\n")
