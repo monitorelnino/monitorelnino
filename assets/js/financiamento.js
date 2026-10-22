@@ -212,7 +212,9 @@ function __init(){
     data: {labels: meses.map(rotMes), datasets: SERIES_MES.map(s => ({label: s.rotulo, backgroundColor: s.cor,
       data: meses.map(k => pagoMes(s, k) == null ? null : Math.round(pagoMes(s, k) / 1e5) / 10)}))},
     options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true}}}});
-  MonitorMapas.legenda('legMesAMes', SERIES_MES.map(s => ({cor: s.cor, rotulo: s.rotulo + ' · ' + s.numero})));
+  /* Série nenhuma é o mesmo fato que figura sem legenda: a classe sai em palavras, como em `legChega`. */
+  MonitorMapas.legenda('legMesAMes', SERIES_MES.length ? SERIES_MES.map(s => ({cor: s.cor, rotulo: s.rotulo + ' · ' + s.numero}))
+    : [{cor: cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
   cred('boxMesAMes', [FONTE_TRANSP, 'execução da despesa'], S && S.corte);
   tabela('boxMesAMes', ['Mês'].concat(SERIES_MES.map(s => s.rotulo + ' · ' + s.numero)),
     meses.map(k => [esc(rotMes(k) + ' de ' + k.slice(0, 4))].concat(SERIES_MES.map(s => esc(reais(pagoMes(s, k)) || NAO_LOCALIZADO)))));
