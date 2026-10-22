@@ -1147,6 +1147,54 @@ def ensaio_fila_maior_que_o_prazo(diz) -> bool:
     return ok
 
 
+def ensaio_regime_de_prioridade_suspende_so_o_listado(diz) -> bool:
+    """29. Regime de prioridade (22/10/2026): o elo suspenso não é devido, não é refeito e para na guarda.
+
+    Reprova se: (a) o temporizador de um elo suspenso ficar devido, ou a reserva o refizer; (b) a
+    guarda deixar um elo suspenso coletar; (c) um elo MANTIDO (a Saúde) deixar de ser devido ou de
+    coletar; (d) sem o bloco `regime` a noite deixar de ser a de sempre.
+    """
+    import datetime as dt
+    import janela_da_noite as jn
+    from despachar_temporizadores import esta_devido, plano_da_reserva
+    from guarda_da_janela import deve_parar
+
+    noite = dt.datetime(2026, 10, 23, 2, 26)
+    janela = {"inicio_utc": "01:00", "fim_utc": "09:00"}
+    susp = {"id": "abertura", "workflow": "noturno_diarios.yml", "janela": janela,
+            "cron_primario": "7 1 * * *"}
+    mant = dict(susp, id="saude", workflow="noturno_saude.yml")
+    canc = {"createdAt": "2026-10-23T01:10:45Z", "status": "completed", "conclusion": "cancelled"}
+    antes, ok = jn.REGISTRO, True
+    try:
+        with tempfile.TemporaryDirectory() as t:
+            reg = pathlib.Path(t) / "r.json"
+            reg.write_text('{"regime": {"nome": "prioridade", "elos_suspensos": '
+                           '["noturno_diarios.yml"]}}', encoding="utf-8", newline="\n")
+            jn.REGISTRO = reg
+            if esta_devido(susp, [], noite) or plano_da_reserva({"noturno_diarios.yml": [canc]},
+                                                                 set(), noite):
+                diz("   ✗ elo suspenso ficou devido ou foi refeito pela reserva")
+                ok = False
+            if deve_parar("main", "diarios", noite, jn.dentro_da_janela,
+                          jn.elo_suspenso("noturno_diarios.yml")) is None:
+                diz("   ✗ a guarda deixou o elo suspenso coletar")
+                ok = False
+            if not esta_devido(mant, [], noite) or deve_parar(
+                    "main", "saude", noite, jn.dentro_da_janela, jn.elo_suspenso("noturno_saude.yml")):
+                diz("   ✗ o elo mantido (Saúde) deixou de rodar")
+                ok = False
+            jn.REGISTRO = pathlib.Path(t) / "nada.json"
+            if not esta_devido(susp, [], noite):
+                diz("   ✗ sem regime a noite deixou de ser a de sempre")
+                ok = False
+    finally:
+        jn.REGISTRO = antes
+    if ok:
+        diz("   ✓ regime suspende só o listado; a Saúde segue; sem regime, a noite é a de sempre")
+    return ok
+
+
 ENSAIOS = (
     ("dois elos em paralelo: zero conflito, zero perda", ensaio_dois_elos_em_paralelo),
     ("disparo duplicado: o segundo sai sem trabalho", ensaio_disparo_duplicado),
@@ -1184,6 +1232,8 @@ ENSAIOS = (
     ("26. o ensaio real fixa a noite e respeita a hora", ensaio_ensaio_real_fixa_a_noite),
     ("27. a busca web coleta pelo `_coletor.yml`", ensaio_busca_web_pelo_coletor),
     ("28. fila maior que o prazo: três rodadas, um `.feito`", ensaio_fila_maior_que_o_prazo),
+    ("29. o regime de prioridade suspende só o listado",
+     ensaio_regime_de_prioridade_suspende_so_o_listado),
 )
 
 
@@ -1191,7 +1241,10 @@ def main() -> int:
     print("ENSAIO DA NOITE — a noite em miniatura, de dia, sem tocar a `main`")
     print("=" * 78)
     falhas = []
+    import janela_da_noite
     for nome, fn in ENSAIOS:
+        # os ensaios 1–28 provam a noite normal; o regime real da configuração não os afeta
+        janela_da_noite.REGISTRO = RAIZ / "config" / "_noite_normal.json"
         print(f"\n· {nome}")
         try:
             if not fn(print):
