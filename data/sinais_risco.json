@@ -6343,7 +6343,7 @@
    },
    "fonte": "noaa_nino34_semanal",
    "documento": "Niño 3.4 semanal, semana de 2026-10-14",
-   "consultado_em": "21/10/2026 04:39"
+   "consultado_em": "21/10/2026 22:06"
   }
  },
  "uf": {
@@ -6397,10 +6397,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 522,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -6411,12 +6411,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Rio Branco",
     "data": "21/10/2026",
-    "tmax": 33.0,
+    "tmax": 34.0,
     "tmin": 23.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -6493,10 +6493,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 5,
+    "focos_24h": 28,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -6507,7 +6507,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Maceió",
@@ -6594,10 +6594,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 14,
+    "focos_24h": 433,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -6612,14 +6612,14 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Manaus",
     "data": "21/10/2026",
     "tmax": 35.0,
     "tmin": 25.0,
-    "resumo": "Muitas nuvens com pancadas de chuva",
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -6659,7 +6659,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "AP": {
@@ -6707,10 +6707,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 18,
+    "focos_24h": 418,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -6721,7 +6721,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Macapá",
@@ -6804,25 +6804,21 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 37,
+    "focos_24h": 1357,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Moderado": 1
-    },
-    "municipios": [
-     "ILHÉUS"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Salvador",
@@ -6861,7 +6857,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "CE": {
@@ -6909,10 +6905,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 8,
+    "focos_24h": 722,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -6923,7 +6919,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Fortaleza",
@@ -6949,7 +6945,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "DF": {
@@ -6997,10 +6993,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 10,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7011,13 +7007,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Brasília",
     "data": "21/10/2026",
     "tmax": 32.0,
-    "tmin": 19.0,
+    "tmin": 20.0,
     "resumo": "Poucas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7091,7 +7087,7 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
     "focos_24h": 0,
@@ -7105,13 +7101,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Vitória",
     "data": "21/10/2026",
     "tmax": 26.0,
-    "tmin": 21.0,
+    "tmin": 20.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7152,7 +7148,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "GO": {
@@ -7201,10 +7197,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 38,
+    "focos_24h": 847,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7215,12 +7211,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Goiânia",
     "data": "21/10/2026",
-    "tmax": 35.0,
+    "tmax": 36.0,
     "tmin": 20.0,
     "resumo": "Poucas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -7298,10 +7294,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 192,
+    "focos_24h": 4156,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7312,7 +7308,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "São Luís",
@@ -7373,10 +7369,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 39,
+    "focos_24h": 569,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7387,13 +7383,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
     "data": "21/10/2026",
-    "tmax": 30.0,
-    "tmin": 18.0,
+    "tmax": 28.0,
+    "tmin": 16.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7474,10 +7470,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 65,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7488,13 +7484,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Campo Grande",
     "data": "21/10/2026",
-    "tmax": 33.0,
-    "tmin": 21.0,
+    "tmax": 36.0,
+    "tmin": 23.0,
     "resumo": "Poucas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7574,10 +7570,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 63,
+    "focos_24h": 578,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7588,14 +7584,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Cuiabá",
     "data": "21/10/2026",
-    "tmax": 36.0,
-    "tmin": 25.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "tmax": 39.0,
+    "tmin": 26.0,
+    "resumo": "Poucas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7675,10 +7671,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 646,
+    "focos_24h": 6602,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7689,7 +7685,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Belém",
@@ -7736,7 +7732,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "PB": {
@@ -7784,10 +7780,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 3,
+    "focos_24h": 118,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7798,7 +7794,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "João Pessoa",
@@ -7880,10 +7876,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 142,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7894,7 +7890,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Recife",
@@ -7977,10 +7973,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 799,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -7991,7 +7987,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Teresina",
@@ -8077,10 +8073,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 15,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8091,13 +8087,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Curitiba",
     "data": "21/10/2026",
-    "tmax": 20.0,
-    "tmin": 11.0,
+    "tmax": 22.0,
+    "tmin": 13.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8171,7 +8167,7 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
     "focos_24h": 0,
@@ -8185,12 +8181,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
     "data": "21/10/2026",
-    "tmax": 26.0,
+    "tmax": 25.0,
     "tmin": 19.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8232,7 +8228,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "RN": {
@@ -8280,10 +8276,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 53,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8294,7 +8290,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Natal",
@@ -8381,10 +8377,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 17,
+    "focos_24h": 312,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8395,14 +8391,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Porto Velho",
     "data": "21/10/2026",
-    "tmax": 34.0,
+    "tmax": 36.0,
     "tmin": 25.0,
-    "resumo": "Muitas nuvens com pancadas de chuva",
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8442,7 +8438,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "RR": {
@@ -8494,10 +8490,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 210,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8508,12 +8504,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Boa Vista",
     "data": "21/10/2026",
-    "tmax": 36.0,
+    "tmax": 35.0,
     "tmin": 27.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8573,33 +8569,31 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 35,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
    },
    "alertas_cemaden": {
-    "total": 2,
+    "total": 1,
     "niveis": {
-     "Alto": 1,
      "Cessar": 1
     },
     "municipios": [
-     "ITAQUI",
      "URUGUAIANA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Porto Alegre",
     "data": "21/10/2026",
-    "tmax": 23.0,
-    "tmin": 13.0,
+    "tmax": 22.0,
+    "tmin": 14.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8679,7 +8673,7 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
     "focos_24h": 1,
@@ -8693,13 +8687,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Florianópolis",
     "data": "21/10/2026",
-    "tmax": 21.0,
-    "tmin": 11.0,
+    "tmax": 23.0,
+    "tmin": 15.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8775,10 +8769,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8789,7 +8783,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Aracaju",
@@ -8854,10 +8848,10 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 21,
+    "focos_24h": 156,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8868,13 +8862,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "São Paulo",
     "data": "21/10/2026",
-    "tmax": 24.0,
-    "tmin": 13.0,
+    "tmax": 25.0,
+    "tmin": 15.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8907,7 +8901,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    }
   },
   "TO": {
@@ -8956,10 +8950,10 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 272,
     "fonte": "inpe_fogo",
     "documento": "Focos do dia — focos_diario_br_20261021.csv",
     "consultado_em": "21/10/2026"
@@ -8970,14 +8964,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "21/10/2026 04:39"
+    "consultado_em": "21/10/2026 22:05"
    },
    "temperatura": {
     "capital": "Palmas",
     "data": "21/10/2026",
     "tmax": 36.0,
     "tmin": 25.0,
-    "resumo": "Muitas nuvens",
+    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",

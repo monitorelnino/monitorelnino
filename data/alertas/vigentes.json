@@ -7,15 +7,15 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "21/10/2026 04:39",
+ "gerado_em": "21/10/2026 22:06",
  "resumo": {
-  "municipios": 804,
+  "municipios": 802,
   "municipios_inmet": 802,
-  "municipios_cemaden": 3,
+  "municipios_cemaden": 1,
   "avisos_inmet": 2,
-  "alertas_cemaden_em_vigor": 3,
+  "alertas_cemaden_em_vigor": 1,
   "alertas_cemaden_cessados": 1,
-  "alertas_cemaden_devolvidos": 4,
+  "alertas_cemaden_devolvidos": 2,
   "alertas_cemaden_sem_codigo_ibge": 0,
   "campos_devolvidos_pelo_cemaden": [
    "cidade",
@@ -1995,20 +1995,6 @@
     }
    ],
    "cemaden": []
-  },
-  "2913606": {
-   "nome": "ILHÉUS",
-   "uf": "BA",
-   "inmet": [],
-   "cemaden": [
-    {
-     "nivel": "Moderado",
-     "tipo": "Movimentos de Massa",
-     "evento": "Movimentos de Massa - Moderado",
-     "inicio": "2026-10-18T12:05:44.391Z",
-     "fim": null
-    }
-   ]
   },
   "3539202": {
    "nome": "Pirapozinho",
@@ -10270,20 +10256,6 @@
    ],
    "cemaden": []
   },
-  "4322400": {
-   "nome": "URUGUAIANA",
-   "uf": "RS",
-   "inmet": [],
-   "cemaden": [
-    {
-     "nivel": "Alto",
-     "tipo": "Risco Hidrológico",
-     "evento": "Risco Hidrológico - Alto",
-     "inicio": "2026-10-09T13:02:43.792Z",
-     "fim": null
-    }
-   ]
-  },
   "4322905": {
    "nome": "Viadutos",
    "uf": "RS",
@@ -11336,12 +11308,12 @@
   }
  },
  "cessados": {
-  "4310603": [
+  "4322400": [
    {
     "nivel": "Cessar",
     "tipo": "Risco Hidrológico",
     "evento": "Risco Hidrológico - Cessar",
-    "inicio": "2026-10-21T03:42:15.035Z",
+    "inicio": "2026-10-21T22:34:41.979Z",
     "fim": null
    }
   ]
