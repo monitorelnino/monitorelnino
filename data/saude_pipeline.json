@@ -10800,7 +10800,25 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "atualizar_instrumentos_estaduais.py",
+   "inicio": "2026-10-22T23:52:53",
+   "duracao_s": 31.4,
+   "itens": null,
+   "status": "erro",
+   "erro": "[FALHA] não foi possível verificar SE: HTTPSConnectionPool(host='defesacivil.se.gov.br', port=443): Max retries exceeded with url: /planos-de-contigencia/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='defesacivil.se.gov.br', port=443) at 0x7ff90c5dcd40>, 'Connection to defesacivil.se.gov.br "
+  },
+  {
+   "data": "2026-10-22",
+   "script": "atualizar_instrumentos_estaduais.py",
+   "inicio": "2026-10-22T23:53:24",
+   "duracao_s": 2.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-22T22:48:14"
+ "atualizado_em": "2026-10-22T23:53:24"
 }
