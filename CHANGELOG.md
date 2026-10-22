@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #958 · MARÉ Saúde com dois componentes
+
+O MARÉ Saúde passa a ter dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil vira camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7. Definição dos índices, release da Imprensa e portão de saúde acompanham; METODOLOGIA §117. MARÉ Legal inalterado.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
