@@ -108,12 +108,12 @@ def consultar(ibge: str, nome: str, uf: str, hoje: str, obter=None, dormir=time.
     """Consulta um município. Devolve (registro, pistas). `obter`/`preservar` são injetáveis."""
     obter = obter or qd._get
     preservar = preservar or qd._preservar_achado
+    achados, pistas, vistos = [], [], set()
     try:
         base = obter({"territory_ids": ibge, "size": 1})
         dormir(1.1)
         if not base.get("total_gazettes"):
             return registro_do_municipio(False, [], "", hoje), []
-        achados, pistas, vistos = [], [], set()
         for termo in CONSULTAS:
             r = obter({"territory_ids": ibge, "querystring": termo, "published_since": JANELA_DESDE,
                        "size": 5, "excerpt_size": 300, "number_of_excerpts": 1})
@@ -130,9 +130,18 @@ def consultar(ibge: str, nome: str, uf: str, hoje: str, obter=None, dormir=time.
     except urllib.error.HTTPError as e:
         if e.code in RECUSAS_REAIS:
             raise Recusa(f"HTTP {e.code}") from e
-        return registro_do_municipio(None, [], f"consulta falhou: HTTP {e.code}", hoje), []
+        return _incompleta(achados, pistas, f"HTTP {e.code}", hoje)
     except Exception as e:  # noqa: BLE001 — falha de rede é lacuna declarada, nunca "não localizado"
-        return registro_do_municipio(None, [], f"consulta falhou: {type(e).__name__}", hoje), []
+        return _incompleta(achados, pistas, type(e).__name__, hoje)
+
+
+def _incompleta(achados: list, pistas: list, erro: str, hoje: str):
+    """Consulta interrompida: o que já foi preservado fica (menção real); sem achado, `não verificado`."""
+    if achados:
+        reg = registro_do_municipio(True, achados, "", hoje)
+        reg["motivo"] = f"consulta incompleta: {erro}"
+        return reg, [p for p in pistas if p]
+    return registro_do_municipio(None, [], f"consulta falhou: {erro}", hoje), []
 
 
 def casos_recentes() -> dict:
@@ -213,6 +222,15 @@ def autoteste() -> int:
 
     reg, pistas = cons([g, sem_assunto])
     reg0, _ = cons([])
+    n = {"i": 0}
+
+    def meio(params):
+        n["i"] += 1
+        if n["i"] == 3:
+            raise TimeoutError("t")
+        return falso([g])(params)
+    parcial, pp = consultar("1100001", "Alfa", "AA", "2026-10-22", obter=meio, dormir=lambda s: None,
+                            preservar=lambda gz: "h" * 64)
     regs, _ = cons(False)
     err, _ = consultar("1100001", "Alfa", "AA", "2026-10-22", dormir=lambda s: None,
                        obter=lambda p: (_ for _ in ()).throw(TimeoutError("t")))
@@ -235,6 +253,7 @@ def autoteste() -> int:
         "excerto sem arbovirose não conta como achado": lambda: len(reg["achados"]) == 1,
         "coberto e sem menção é 'não localizado até o corte'": lambda: reg0["estatuto"] == NAO_LOCALIZADO and reg0["motivo"] == "",
         "sem cobertura é 'não verificado', nunca 'não localizado'": lambda: regs["estatuto"] == NAO_VERIFICADO and "cobertura" in regs["motivo"],
+        "falha no meio não joga fora o que já foi preservado": lambda: parcial["estatuto"] == MENCAO and "incompleta" in parcial["motivo"] and len(pp) == 1,
         "consulta que falha é 'não verificado' com o erro": lambda: err["estatuto"] == NAO_VERIFICADO and "TimeoutError" in err["motivo"],
         "429 para a rodada (recusa real, sem insistir)": recusa,
         "trava de campo: pista não confirmada e não promovível": lambda: pistas[0]["documento_oficial_confirmado"] is None and pistas[0]["promovivel"] is False,
