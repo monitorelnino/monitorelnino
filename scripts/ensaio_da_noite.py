@@ -1170,7 +1170,7 @@ def ensaio_regime_de_prioridade_suspende_so_o_listado(diz) -> bool:
         with tempfile.TemporaryDirectory() as t:
             reg = pathlib.Path(t) / "r.json"
             reg.write_text('{"regime": {"nome": "prioridade", "elos_suspensos": '
-                           '["noturno_diarios.yml"]}}', encoding="utf-8")
+                           '["noturno_diarios.yml"]}}', encoding="utf-8", newline="\n")
             jn.REGISTRO = reg
             if esta_devido(susp, [], noite) or plano_da_reserva({"noturno_diarios.yml": [canc]},
                                                                  set(), noite):

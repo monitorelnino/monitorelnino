@@ -575,7 +575,7 @@ def _autoteste() -> int:
         with tempfile.TemporaryDirectory() as _t:
             _r = pathlib.Path(_t) / "r.json"
             _r.write_text('{"regime": {"nome": "prioridade", "elos_suspensos": '
-                          '["a.yml", "noturno_diarios.yml"]}}', encoding="utf-8")
+                          '["a.yml", "noturno_diarios.yml"]}}', encoding="utf-8", newline="\n")
             _j.REGISTRO = _r
             ok("regime: elo suspenso nunca está devido, mesmo na janela e sem execução",
                not esta_devido(t, [], agora))
