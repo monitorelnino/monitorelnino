@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #969 · Regime de prioridade como configuração
+
+A janela de merge de 24 h e os elos suspensos da noite eram frases em sete prompts e um número em código. Passam a ser o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py` (`--janela-de-merge`, `--elo-suspenso`), pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Sem o bloco, a noite é a de sempre. Ensaio 29 prova os dois lados.
+
 ## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
 `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB); dois CPF de terceiros saem do texto.

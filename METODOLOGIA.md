@@ -4336,3 +4336,9 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **O que muda para o leitor.** Nada no texto: as séries, a faixa habitual e os cortes do mapa são os mesmos. Muda a data: o dado deixa de depender de coleta manual e passa a chegar na cadência da fonte (SINAN semanal, SISAB e SIH mensais). Fonte que recusar ou mudar de forma deixa lacuna declarada e o arquivo anterior com a sua data.
 
 **O que não muda.** Peso zero no MARÉ; o Monitor não atribui casos ao El Niño.
+
+## 117. Regime de prioridade da corrente noturna, declarado em configuração (22/10/2026)
+
+**O que passa a valer.** A editoria pôs a Saúde v0.6 e a busca de planos municipais acima das coletas noturnas, contínuas, até ficarem prontas. O regime é o bloco `regime` de `config/temporizadores.json`, com decisão, data, prazo (`ou_data`, 05/11/2026) e a lista de workflows suspensos; `scripts/janela_da_noite.py` o lê, e o despachante e a guarda perguntam a ele. Elo suspenso não é devido, não é refeito pela reserva e para na guarda com motivo.
+
+**O que não muda.** Os elos de Saúde, desfechos e o publicador seguem na noite. Sem o bloco, ou com `nome: normal`, ou depois de `ou_data`, a noite é a de sempre. Nenhum dado, índice ou texto público muda.

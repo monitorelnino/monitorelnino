@@ -38,14 +38,18 @@ sys.path.insert(0, str(RAIZ / "scripts"))
 ELOS_SEM_JANELA = ("publicar", "publicar-dados")
 
 
-def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela) -> str | None:
+def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela,
+               suspenso: bool = False) -> str | None:
     """Motivo para não coletar, ou None. Função pura — `dentro_da_janela` é injetada.
 
-    Três perguntas, nesta ordem, e a primeira que responder decide:
+    Quatro perguntas, nesta ordem, e a primeira que responder decide:
+      0. o regime de prioridade suspendeu este workflow? Para em qualquer ramo (22/10/2026);
       1. é a `main`?           fora dela, nada barra — o ensaio roda de dia por desenho;
       2. é elo sem janela?     o publicador, quando a editoria chama;
       3. está na janela?       se não, para.
     """
+    if suspenso:
+        return f"`{elo}` suspenso pelo regime de prioridade (config/temporizadores.json)."
     if str(ramo or "").strip() != "main":
         return None
     if str(elo or "").strip().lower() in ELOS_SEM_JANELA:
@@ -85,6 +89,9 @@ def _autoteste() -> int:
     ok("maiúscula no nome do elo não burla", deve_parar("main", "PUBLICAR", dia, real) is None)
     ok("elo vazio na `main` de dia PARA", deve_parar("main", "", dia, real) is not None)
     ok("ramo vazio não é a `main`", deve_parar("", "diarios", dia, real) is None)
+    ok("regime: elo suspenso para até em ramo de edição, de noite ou de dia",
+       deve_parar("edicao/x", "diarios", noite, real, suspenso=True) is not None
+       and deve_parar("main", "diarios", noite, real, suspenso=True) is not None)
     ok("o motivo diz a hora e a regra",
        "27/09" in deve_parar("main", "diarios", dia, real))
 
@@ -115,7 +122,7 @@ def _autoteste() -> int:
 def main(argv: list) -> int:
     if "--autoteste" in argv:
         return _autoteste()
-    from janela_da_noite import dentro_da_janela
+    from janela_da_noite import dentro_da_janela, elo_suspenso
 
     def opcao(nome, padrao=""):
         return argv[argv.index(nome) + 1] if nome in argv and len(argv) > argv.index(nome) + 1 \
@@ -123,7 +130,8 @@ def main(argv: list) -> int:
 
     ramo = opcao("--ramo", os.environ.get("GITHUB_REF_NAME", ""))
     elo = opcao("--elo", os.environ.get("ELO", ""))
-    motivo = deve_parar(ramo, elo, dt.datetime.utcnow(), dentro_da_janela)
+    motivo = deve_parar(ramo, elo, dt.datetime.utcnow(), dentro_da_janela,
+                        elo_suspenso(os.environ.get("GITHUB_WORKFLOW_REF", "")))
     if motivo:
         print(f"· COLETA ADIADA: {motivo}")
         return 1
