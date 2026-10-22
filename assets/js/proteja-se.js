@@ -144,7 +144,8 @@ const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => nul
   /* Uma linha por aba cujo texto a janela A preserva: elemento, URL preservada e chave do catálogo. */
   const LINHAS = [
     ['fonteDoCalor', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/o/ondas-de-calor', 'proteja-se.guia-calor.texto_3'],
-    ['fonteDaDengue', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue', 'proteja-se.guia-dengue.texto']
+    ['fonteDaDengue', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue', 'proteja-se.guia-dengue.texto'],
+    ['fonteDoFogo', 'https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca', 'proteja-se.guia-fogo.texto']
   ].filter(l => document.getElementById(l[0]));
   if (!LINHAS.length) return;
   Promise.all([json('data/orientacoes_oficiais.json'), C.pronto])
