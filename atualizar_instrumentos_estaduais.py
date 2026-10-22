@@ -18,7 +18,7 @@ REGISTRO DE REPOSITÓRIOS (extensível):
   Cada UF mapeada tem uma função de parser própria, porque cada site estadual
   publica a lista em formato diferente. Adicionar uma UF = escrever um parser
   novo e registrá-lo em REPOSITORIOS; nada mais muda.
-  Implementadas: SE. Mapeadas mas SEM parser ainda (grafado no protocolo de
+  Implementadas: SE, ES, RS (pasta pública do OneDrive). Mapeadas mas SEM parser ainda (grafado no protocolo de
   busca como pendência): PR (SISDC), ES, AM — ver Metodologia §4.1.1(d).
 
 LIMITAÇÃO DE AMBIENTE (declarada, não escondida): o sandbox onde este projeto
@@ -114,6 +114,59 @@ def parse_se(texto: str):
         achados.append({"nome": nome, "ano_edicao": int(ano), "url": url})
     return achados
 
+def parse_rs(texto: str):
+    """Casa Militar/RS — pasta pública de PLANCONs recebidos (OneDrive, sem login). `texto` é o JSON da
+    listagem recursiva (`listar_onedrive`): [{name, webUrl}]. Nomes: 'MUNICÍPIO - PLANCON AAAA[ RASCUNHO].pdf'.
+    Arquivo sem ano no nome (laudo, anexo) não é plano e fica de fora; por município vale o plano mais
+    recente, e rascunho só vale quando não há plano. Quem decide o crédito é o juiz, não o nome do arquivo."""
+    padrao = re.compile(r"^(.+?)\s*[-–]\s*(?:PLANCON\s*)?(\d{4})\s*(RASCUNHO)?\s*\.pdf$", re.IGNORECASE)
+    melhor = {}
+    for it in json.loads(texto):
+        m = padrao.match(it["name"].strip())
+        if not m:
+            continue
+        nome = m.group(1).strip(" -–").title()
+        for prep in [" Da ", " De ", " Do ", " Das ", " Dos "]:
+            nome = nome.replace(prep, prep.lower())
+        rasc = bool(m.group(3))
+        ano = int(m.group(2))
+        a = {"nome": nome, "ano_edicao": ano, "url": it["webUrl"],
+             **({"categoria": "plano_elaboracao"} if rasc else {})}
+        k, peso = norm(nome), (not rasc, ano)
+        if k not in melhor or peso > melhor[k][0]:
+            melhor[k] = (peso, a)
+    return [a for _, a in melhor.values()]
+
+
+def listar_onedrive(link: str, pausa: float = 2.0):
+    """Lista, sem login, os PDFs de uma pasta pública do OneDrive/SharePoint pela API de compartilhamento
+    anônimo (cliente identificado; 401/403/429/451 é recusa e para: `raise_for_status`, sem nova via).
+    Devolve o JSON de [{name, webUrl}] de todas as subpastas. Rodada na Action, não no sandbox."""
+    import base64, time, requests
+    cab = {"User-Agent": ua_de("repositórios estaduais de planos")}
+    tok = "u!" + base64.urlsafe_b64encode(link.encode()).decode().rstrip("=")
+    def get(url):
+        time.sleep(pausa)
+        r = requests.get(url, timeout=30, headers=cab)
+        r.raise_for_status()
+        return r.json()
+    pastas, achados = [get(f"https://api.onedrive.com/v1.0/shares/{tok}/root?expand=children")], []
+    while pastas:
+        pasta = pastas.pop()
+        itens = pasta.get("children") or []
+        prox = pasta.get("children@odata.nextLink") or pasta.get("@odata.nextLink")
+        while prox:
+            pag = get(prox)
+            itens += pag.get("value", [])
+            prox = pag.get("@odata.nextLink")
+        for it in itens:
+            if "folder" in it:
+                ref = it["parentReference"]
+                pastas.append({"children": get(f"https://api.onedrive.com/v1.0/drives/{ref['driveId']}/items/{it['id']}/children").get("value", [])})
+            else:
+                achados.append({"name": it["name"], "webUrl": it["webUrl"]})
+    return json.dumps(achados)
+
 
 REPOSITORIOS = {
     "SE": {
@@ -128,13 +181,19 @@ REPOSITORIOS = {
         "canal": "repositorio_estadual",
         "parser": parse_es,
     },
+    "RS": {
+        "url": "https://rsgovbr-my.sharepoint.com/:f:/g/personal/casa-militar_casamilitar_rs_gov_br/IgDtPUo8By2jT7gAi9XGU-uQAeJRsR-iSsJyprJYV8Wb-mo?e=crxaoy",
+        "fonte": "Defesa Civil RS (Casa Militar/SUBPDEC) — pasta pública de PLANCONs recebidos, via Prepara RS (22/10/2026)",
+        "canal": "repositorio_estadual",
+        "parser": parse_rs,
+        "carregar": listar_onedrive,
+    },
     "PR": {"parser": None, "nota": "SISDC/CEPDEC-PR — planos gerados no sistema, sem lista pública de PDFs para parser (Protocolo de Busca v2, decisão pendente ii)"},
     "AM": {"parser": None, "nota": "repositório estadual conhecido, parser não implementado"},
     # Ausências VERIFICADAS em 26/08/2026 (registradas para não repetir a busca):
     # o estado publica material de orientação/modelo, mas NÃO um repositório dos
     # planos municipais recebidos. Rever se a página mudar.
     "SC": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.sc.gov.br/municipios/ publica apenas pacotes-modelo (PlanCon AS, PlanCon EduAgravi); sem repositório de planos municipais. Cobertura de SC vem do levantamento declarado do TCE-SC (Painel Farol)"},
-    "RS": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.rs.gov.br publica modelo de plano (.doc), sem repositório de planos municipais. Cobertura de RS vem do levantamento declarado do TCE-RS 2025"},
 
     # ---- Sondagem de 24/09/2026 (§195), pedido editorial de estender o canal ----------------
     # SE e ES são as duas UFs com repositório de PLANCONs municipais e parser, e juntas já deram 84
@@ -207,6 +266,8 @@ def carregar_texto(uf: str, fixture: str | None) -> str:
     except ImportError:
         sys.exit("Erro: pacote 'requests' ausente (deveria estar em requirements.txt).")
     url = REPOSITORIOS[uf]["url"]
+    if "carregar" in REPOSITORIOS[uf]:
+        return REPOSITORIOS[uf]["carregar"](url)
     resp = requests.get(url, timeout=30, headers={"User-Agent": ua_de("repositórios estaduais de planos")})
     resp.raise_for_status()
     return resp.text
@@ -220,7 +281,7 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     propostas = []
     for a in achados:
         chave = norm(a["nome"])
-        categoria_proposta = categoria_por_ano(a["ano_edicao"])
+        categoria_proposta = a.get("categoria") or categoria_por_ano(a["ano_edicao"])
         atual = base_uf.get(chave)
         registro_base = {
             "nome": a["nome"], "uf": uf, "categoria": categoria_proposta,
@@ -280,6 +341,22 @@ def autoteste() -> int:
     iguais = diagnosticar("SE", [{"nome": "Poço Redondo", "ano_edicao": 2026,
                                   "rotulo_ano": "2026", "url": "https://y.se.gov.br/p.pdf"}], base)
     casos.append(("plano já registrado com categoria igual não gera proposta", iguais == []))
+    rs = parse_rs(json.dumps([
+        {"name": "PORTO ALEGRE - PLANCON 2024.pdf", "webUrl": "https://x/a"},
+        {"name": "PORTO ALEGRE - PLANCON 2022.pdf", "webUrl": "https://x/b"},
+        {"name": "BALNEARIO PINHAL - 2023.pdf", "webUrl": "https://x/c"},
+        {"name": "DOM PEDRO DE ALCANTARA - PLANCON 2025 RASCUNHO.pdf", "webUrl": "https://x/d"},
+        {"name": "Laudo de avaliação geotécnica Dom Pedro de Alcântara.pdf", "webUrl": "https://x/e"},
+        {"name": "ARROIO DO SAL - PLANCON 2021.pdf", "webUrl": "https://x/f"},
+        {"name": "ARROIO DO SAL - PLANCON 2023 RASCUNHO.pdf", "webUrl": "https://x/g"}]))
+    por = {a["nome"]: a for a in rs}
+    casos.append(("RS: laudo sem ano não é plano; sobra um achado por município", len(rs) == 4))
+    casos.append(("RS: vale o plano mais recente", por["Porto Alegre"]["ano_edicao"] == 2024))
+    casos.append(("RS: nome sem a palavra PLANCON também casa", por["Balneario Pinhal"]["ano_edicao"] == 2023))
+    casos.append(("RS: rascunho sozinho é plano em elaboração",
+                  por["Dom Pedro de Alcantara"]["categoria"] == "plano_elaboracao"))
+    casos.append(("RS: rascunho não rebaixa plano existente",
+                  por["Arroio do Sal"]["ano_edicao"] == 2021 and "categoria" not in por["Arroio do Sal"]))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'✓' if ok else '✗'} {n}")
