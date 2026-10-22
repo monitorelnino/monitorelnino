@@ -278,7 +278,19 @@ def carregar_texto(uf: str, fixture: str | None) -> str:
         return REPOSITORIOS[uf]["carregar"](url)
     resp = requests.get(url, timeout=30, headers={"User-Agent": ua_de("repositórios estaduais de planos")})
     resp.raise_for_status()
-    return resp.text
+    return html_para_texto(resp.text, url)
+
+
+def html_para_texto(html: str, base: str) -> str:
+    """Os parsers de SE e ES leem texto com link em markdown e célula de tabela entre barras (a captura que
+    os motivou); a página chega em HTML. Sem esta ponte `parse_es` lia 0 instrumentos (22/10/2026)."""
+    from html import unescape
+    from urllib.parse import urljoin
+    html = re.sub(r"(?is)<(script|style)\b.*?</\1>", "", html)
+    html = re.sub(r"(?is)<a\b[^>]*?href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>",
+                  lambda m: "[%s](%s)" % (re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", unescape(m.group(2)))).strip(),
+                                         urljoin(base, unescape(m.group(1)).strip().replace(" ", "%20"))), html)
+    return unescape(re.sub(r"<[^>]+>", " ", re.sub(r"(?i)<t[dh]\b[^>]*>", " | ", html)))
 
 
 def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[dict]:
@@ -367,6 +379,15 @@ def autoteste() -> int:
     ok_ibge, orf = casar_com_ibge([dict(a) for a in rs], "RS", [{"nome": n, "uf": "RS"} for n in
                                   ["Mormaço", "Cerro Grande do Sul", "Itati"]])
     casos.append(("RS: nome não casado na malha IBGE volta como órfão, não entra", len(ok_ibge) == 3 and len(orf) == 7))
+    es_html = html_para_texto('<table><tr><td><a href="/media/p.pdf">LINHARES - PLANO DE CONTINGÊNCIA - 2025</a></td></tr></table>',
+                              "https://defesacivil.es.gov.br/planos")
+    se_html = html_para_texto('<li>PLANO DE CONTINGÊNCIA MUNICIPAL DE POÇO REDONDO – EDIÇÃO 2026 <a href="https://s/p.pdf"><b>Clique</b> aqui</a></li>',
+                              "https://defesacivil.se.gov.br/")
+    casos.append(("HTML da página alimenta o parser de ES (link relativo vira absoluto)",
+                  [(a["nome"], a["ano_edicao"], a["url"]) for a in parse_es(es_html)]
+                  == [("Linhares", 2025, "https://defesacivil.es.gov.br/media/p.pdf")]))
+    casos.append(("HTML da página alimenta o parser de SE",
+                  [(a["nome"], a["ano_edicao"]) for a in parse_se(se_html)] == [("Poço Redondo", 2026)]))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'✓' if ok else '✗'} {n}")
