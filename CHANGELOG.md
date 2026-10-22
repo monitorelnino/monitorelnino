@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #PR · A rodada semanal deixa de se pular
+
+A rodada completa de domingo encerrava em 90 s: `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e concluía que a edição já saíra. Financiamento ficou parado em 12/10 e o portão de frescor reprovou a `main` e os PRs. Sai a guarda `ja_publicou_hoje()` (−19 linhas); a vez, o `.feito` e o prazo do elo já impedem a segunda rodada.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
