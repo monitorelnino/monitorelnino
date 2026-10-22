@@ -329,7 +329,8 @@ def autoteste() -> int:
         return (d == ["saojoaodalianca.go.gov.br", "www.saojoaodalianca.go.gov.br"]
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
-                and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema"))
+                and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
+                and not identifica_prefeitura("Prefeitura de Careirodoce", "Careiro"))
 
     def t_links_da_home_so_candidatos_e_absolutos():
         html = ('<a href="/uploads/plano-de-contingencia.pdf">Plano de Contingência 2024</a>'
@@ -343,18 +344,20 @@ def autoteste() -> int:
                               [("https://bonito.ms.gov.br/plano.pdf", "Plano Municipal de Contingência", "2023-05-02", "h1")],
                               "2026-10-22")[0]
         return (pl["origem"] == "descoberta" and pl["ibge"] == "5002209"
+                and pl["documento_oficial_confirmado"] is None and pl["promovivel"] is False
                 and motivo_de_recusa(normalizar(pl)) == "")
 
     def t_portal_recusa_e_ausencia_nao_viram_plano():
         import unittest.mock as mock
         import urllib.error
         e403 = urllib.error.HTTPError("https://x", 403, "Forbidden", {}, None)
-        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=e403):
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=e403), \
+             mock.patch(f"{__name__}.registrar_lacuna"):
             recusa = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
         with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=OSError("dns")):
             mudo = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
         return (recusa["situacao"] == "recusa_de_fonte" and recusa["pistas"] == []
-                and mudo["situacao"] == "portal_nao_localizado" and mudo["pistas"] == [])
+                and mudo["situacao"] == "portal_nao_verificado" and mudo["pistas"] == [])
 
     def t_portal_le_wp_json_e_links_sem_escrever():
         import unittest.mock as mock
@@ -364,7 +367,7 @@ def autoteste() -> int:
                 "data_publicacao": "2024-03-01T10:00:00"}], True)
         with mock.patch(f"{__name__}.buscar_uma_vez", return_value=home), \
              mock.patch(f"{__name__}.consultar_wp_json", return_value=wp), \
-             mock.patch(f"{__name__}.buscar", return_value=b"%PDF"), \
+             mock.patch(f"{__name__}.time.sleep"), \
              mock.patch(f"{__name__}.preservar_evidencia", return_value="h-falso"):
             r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
         urls = [p["url"] for p in r["pistas"]]
@@ -550,6 +553,7 @@ TERMOS_MUNICIPIO = ("plano de contingência", "defesa civil")
 LIMITE_PDF_POR_MUNICIPIO = 3
 RECUSAS_DE_FONTE = (401, 403, 429, 451)
 RESULTADO_DA_RODADA = "s2id_busca_dirigida.json"
+PAUSA_POR_DOMINIO = 2.0
 
 
 def _so_letras(texto: str) -> str:
@@ -566,9 +570,13 @@ def dominios_do_municipio(nome: str, uf: str) -> list:
 
 def identifica_prefeitura(html: str, nome: str) -> bool:
     """A página diz ser a prefeitura do município (nome e a palavra "prefeitura" ou "município"). Pura."""
-    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(html or "")[:300000]))
-    alvo = _so_letras(t)
-    return _so_letras(nome) in alvo and ("prefeitura" in alvo or "municipio" in alvo)
+    import unicodedata
+    base = unicodedata.normalize("NFKD", re.sub(r"<[^>]+>", " ", str(html or "")[:300000]).lower())
+    t = " ".join(re.sub(r"[^a-z0-9]+", " ", "".join(c for c in base if not unicodedata.combining(c))).split())
+    palavras = re.sub(r"[^a-z0-9]+", " ", "".join(c for c in unicodedata.normalize("NFKD", nome.lower())
+                                                  if not unicodedata.combining(c))).split()
+    nome_inteiro = bool(palavras) and re.search(r"\b" + r"\s".join(palavras) + r"\b", t)
+    return bool(nome_inteiro) and ("prefeitura" in t or "municipio" in t)
 
 
 def links_da_pagina(html: str, base: str) -> list:
@@ -587,7 +595,8 @@ def links_da_pagina(html: str, base: str) -> list:
 def pistas_do_portal(nome: str, uf: str, ibge: str, dominio: str, itens: list, hoje: str) -> list:
     """Pistas no esquema da porta única, a partir de [(url, titulo, data, hash)]. Função pura."""
     from consultar_querido_diario import STATUS_DA_PISTA
-    return [{"municipio": nome, "uf": uf, "ibge": str(ibge).zfill(7), "url": url,
+    return [{"documento_oficial_confirmado": None, "promovivel": False,   # trava de campo (R7)
+             "municipio": nome, "uf": uf, "ibge": str(ibge).zfill(7), "url": url,
              "titulo": f"Portal da prefeitura de {nome}/{uf} ({dominio}): {titulo}"[:300],
              "trecho": " ".join(str(titulo or "").split())[:500], "data_publicacao": data or None,
              "origem": "descoberta", "hash_evidencia": h, "status": STATUS_DA_PISTA,
@@ -599,7 +608,10 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
     """Um município, um canal. Devolve {dominio, situacao, pistas}; nunca levanta.
 
     `situacao`: `recusa_de_fonte` (401/403/429/451 ou muro de robô: respeita-se e registra-se),
-    `portal_nao_localizado` (o endereço padrão não respondeu como a prefeitura) ou `lido`."""
+    `portal_nao_verificado` (o endereço padrão não respondeu como a prefeitura: tentativa, não
+    verificação), `nao_verificado` (a prefeitura respondeu, mas sem API e sem link de plano em HTML
+    estático: pode depender de JavaScript) ou `lido` (a API respondeu ou a home trouxe links).
+    Uma pausa de PAUSA_POR_DOMINIO s separa os pedidos ao mesmo host (§11)."""
     import urllib.error
     dominio = home = None
     for d in dominios_do_municipio(nome, uf):
@@ -607,9 +619,11 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
             corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
         except urllib.error.HTTPError as e:
             if e.code in RECUSAS_DE_FONTE:
+                registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
                 return {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
             continue
         except MuroDeRobo as e:
+            registrar_lacuna(f"portal de {nome}/{uf}", f"muro de robô em {d}", canal="portal da prefeitura", camada=1, uf=uf)
             return {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
         except Exception:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve, tenta o próximo
             continue
@@ -618,17 +632,20 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
             dominio, home = d, texto
             break
     if not dominio:
-        return {"dominio": None, "situacao": "portal_nao_localizado", "pistas": []}
-    itens, vistos = [], set()
+        return {"dominio": None, "situacao": "portal_nao_verificado", "pistas": []}
+    itens, vistos, respondeu = [], set(), False
     for termo in TERMOS_MUNICIPIO:
-        achados, _ = consultar_wp_json(dominio, termo)
+        time.sleep(PAUSA_POR_DOMINIO)
+        achados, ok = consultar_wp_json(dominio, termo)
+        respondeu = respondeu or ok
         for a in achados:
             if a["url"] in vistos or len(vistos) >= LIMITE_PDF_POR_MUNICIPIO:
                 continue
             vistos.add(a["url"])
             h = None
-            try:
-                h = preservar_evidencia(buscar(a["url"], timeout=40), a["url"], "pdf", "descobrir_planos")
+            time.sleep(PAUSA_POR_DOMINIO)
+            try:   # uma tentativa: 401/403/429/451 no PDF não se repete
+                h = preservar_evidencia(buscar_uma_vez(a["url"], timeout=40), a["url"], "pdf", "descobrir_planos")
             except Exception:  # noqa: BLE001 — sem a cópia a pista vale, declarada sem hash
                 pass
             itens.append((a["url"], a["titulo"], (a["data_publicacao"] or "")[:10], h))
@@ -636,7 +653,8 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
         if href not in vistos:
             vistos.add(href)
             itens.append((href, texto, None, None))
-    return {"dominio": dominio, "situacao": "lido", "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
+    situacao = "lido" if (respondeu or itens) else "nao_verificado"
+    return {"dominio": dominio, "situacao": situacao, "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
 
 
 def rodar_municipios(caminho: str, limite: int = None) -> int:
@@ -667,7 +685,8 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
     for v in feitos["municipios"].values():
         sit = v.get("situacao") or "sem_situacao"
         por_situacao[sit] = por_situacao.get(sit, 0) + 1
-    log_busca("descobrir_planos", 3, [caminho], "pista" if pistas else "consultado sem achado",
+    decisao = "pista" if pistas else "consultado sem achado" if por_situacao.get("lido") else "acesso"
+    log_busca("descobrir_planos", 3, [caminho], decisao,
               n_resultados=len(pistas),
               resultados=f"{lidos} município(s) pelo portal da prefeitura; {por_situacao}; "
                          f"fila: {balanco.get('gravadas')} gravada(s), {balanco.get('recusadas')} recusada(s)")

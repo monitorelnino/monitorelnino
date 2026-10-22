@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #964 · Busca dirigida pela relação do S2iD
+
+A relação nominal do módulo PLANCON do S2iD (SEDEC, por LAI) entra como camada declarada e datada, com o campo `s2id_plancon` em `declarado_nacional.json` e sem efeito na nota. A fila de 571 municípios sem documento ganha o portal da prefeitura como canal, ao lado do Querido Diário e da busca web, que passa a aceitar a fila. Toda pista entra pela porta única.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.

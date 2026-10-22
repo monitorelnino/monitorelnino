@@ -292,7 +292,7 @@ def marcar_fato_municipal_em_memoria(livro: dict, ibge, campo: str, valor) -> No
 def anexar_s2id(reg: dict, s2id: dict) -> int:
     """Põe `s2id_plancon` em cada município da relação do S2iD (`data/s2id_plancon.json`, SEDEC por LAI).
 
-    Só o campo, com data e protocolo: camada DECLARADA como a MUNIC e o ICM, nunca documento, e nenhuma
+    Só o campo, com a data mais recente e o protocolo da lista que a traz: camada DECLARADA como a MUNIC e o ICM, nunca documento, e nenhuma
     função da nota o lê (HANDOVER_REPOSITORIOS §1.8; o degrau do registro federal é decisão da
     editoria). Devolve quantos municípios receberam o campo."""
     n = 0
