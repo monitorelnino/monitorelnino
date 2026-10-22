@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #PR · Financiamento: a coleta de 12/10 é renovada
+
+`coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
