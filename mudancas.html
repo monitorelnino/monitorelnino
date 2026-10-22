@@ -48,7 +48,9 @@
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
       <dt>22/10/2026 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista</dt>
-      <dd>`atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez.</dd>
+      <dd>`atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB).</dd>
+      <dt>22/10/2026 · Financiamento: a coleta de 12/10 é renovada</dt>
+      <dd>`coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.</dd>
       <dt>21/10/2026 · Os estados da página inicial em ordem alfabética</dt>
       <dd>A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.</dd>
       <dt>21/10/2026 · Proteja-se: sem endereço, sem link de site oficial</dt>
@@ -165,8 +167,6 @@
       <dd>Nos cinco cartões de emergência do Proteja-se o número cai de 48 para 36 px e o do 40199 para 22 px, porque são cinco dígitos mais uma frase; o respiro vertical cai de 12 para 8 px. Medido a 1280: a fileira cai de 194 px para 173 px. Uma regra de 640 px que repetia o tamanho do número virou código morto e sai.</dd>
       <dt>19/10/2026 · Defesa civil: barras na cor do evento, unidade declarada e uma seção a menos</dt>
       <dd>Cada barra passa ao token do seu evento, o mesmo do mapa: seca no laranja, chuva e vendaval no azul, tipo não declarado no cinza. Cada figura declara a unidade na legenda, porque o mapa conta municípios e as barras contam decretos. Sai a abertura que repetia a legenda e sai a seção do decreto ao reconhecimento; o número dos 30 dias vira o sexto cartão do topo, em duas linhas de três.</dd>
-      <dt>19/10/2026 · SIH: internações por grupo de causa na forma comum</dt>
-      <dd>`coletar_sih.py` grava seis arquivos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor) e `hepatite_a` (B15) em `saude_desfechos/`, por UF e mês desde jan/2019, por 100 mil, com faixa habitual e cortes do mapa. Lê do mês mais recente ao mais antigo no tempo reservado; mês não lido fica sem valor, com a lacuna declarada. Catálogo atualizado.</dd>
     </dl>
   </section>
 </main>
