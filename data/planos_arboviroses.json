@@ -1,6 +1,6 @@
 {
  "_governanca": "Planos municipais de contingência de arboviroses (dengue, chikungunya, zika): onde cada município tem menção localizada, e em que norma o plano se apoia. Peso zero: não entra na nota da Saúde (HANDOVER_SAUDE_V06 §5, 22/10/2026). `municipios` é escrito só por `coletar_planos_arboviroses.py`; `bases` foi lida e registrada à mão em 22/10/2026 e só muda com leitura nova. Estatuto: menção localizada em diário oficial · não localizado até o corte · não verificado (município sem cobertura no acervo, ou consulta que falhou). Menção não é plano lido. Unidade da federação sem linha em `bases` não foi verificada; a ausência não afirma que não há norma.",
- "cursor": 0,
+ "cursor": 35,
  "bases": {
   "BR": {
    "documento": "Plano de Contingência Nacional para Dengue, Chikungunya e Zika (Ministério da Saúde)",
@@ -52,5 +52,540 @@
    "lido": false
   }
  },
- "municipios": {}
+ "municipios": {
+  "2800308": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Aracaju",
+   "uf": "SE"
+  },
+  "1501402": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Belém",
+   "uf": "PA"
+  },
+  "3106200": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Belo Horizonte",
+   "uf": "MG"
+  },
+  "1400100": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Boa Vista",
+   "uf": "RR"
+  },
+  "5300108": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5300108/2024-07-29/4cdcfe62e25bdb6ca46e8b4110eda065e3febb3d.pdf",
+     "data_publicacao": "2024-07-29",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "de Trabalho para revisão do “Plano para enfrentamento da dengue e outras arboviroses”, formalizado pela Ordem de Serviço nº 17, de 24 de maio de 2024, que elaborou o PLANO DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA, 2024/2025; Considerando que o processo",
+     "hash_evidencia": "55246ddf24f7d09039ef1271deebd1955293632fc0456da49fc9dc6c983350c5"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/5300108/2024-12-05/e106a35e2865691f3825d7f4ba886d5385a428be.pdf",
+     "data_publicacao": "2024-12-05",
+     "edicao": "232",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "DE SERVIÇO Nº 43, DE 03 DE DEZEMBRO DE 2024 Estabelece ações fiscais no âmbito do DF em atendimento ao PLANO DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA. O DIRETOR DE VIGILÂNCIA SANITÁRIA, DA SUBSECRETARIA DE VIGILÂNCIA À SAÚDE, DA SECRETARIA DE ESTADO",
+     "hash_evidencia": "0250efb1743a5130a15c93c99ebff662628cb0cd5b8ce4e8a585cabf0f1799ea"
+    }
+   ],
+   "nome": "Brasília",
+   "uf": "DF"
+  },
+  "5002704": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5002704/2024-10-23/8683167c5824b44dba41f33d3ea79ea9599fab89.pdf",
+     "data_publicacao": "2024-10-23",
+     "edicao": "7690",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "atendimento médico às emergências que não necessitam de internação. O hospital DIA tem capacidade de 14 leitos, sendo 8 leitos destinados ao Plano de Contingência da Dengue e 01 (um) leito de isolamento, o que denota que o maior número de leitos destinados ao SUS está centrado na rede conveniada.",
+     "hash_evidencia": "5d219a1c7adfaa71f690a527511574822074d365f26df87ee02a974c99d6f0e2"
+    }
+   ],
+   "nome": "Campo Grande",
+   "uf": "MS"
+  },
+  "5103403": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5103403/2025-03-31/d871522a0a3b1330a1646dc03489d45be4366853.pdf",
+     "data_publicacao": "2025-03-31",
+     "edicao": "1087",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Art. 1º - Homologar a Resolução “Ad Referendum” Nº. 01/2025/CMS de 06 de Fevereiro de 2025, que aprovou o Plano Municipal de Contingência para ARBOVIROSES 2025, conforme Parecer 01/2025 da Comissão de Modelo Assistencial do Conselho Municipal de Saúde de Cuiabá, datado de 27 de Fevereiro de 2025,",
+     "hash_evidencia": "2c4294706e2ec32b40754730479ad7bb69f3e5fc8bad7829f6dab39266c60aed"
+    }
+   ],
+   "nome": "Cuiabá",
+   "uf": "MT"
+  },
+  "4106902": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4106902/2024-01-17/8d9ae7119ae94e692e61e33790d806ce8a675990.pdf",
+     "data_publicacao": "2024-01-17",
+     "edicao": "11",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "cms@sms.curitiba.pr.gov.br Resolução nº 67, de dezembro de 2023. Aprova o Plano Municipal de Trabalho e Contingência para a Dengue, Zika e Chikungunya 2023/2024 da Secretaria Municipal de Saúde de Curitiba, O Presidente do Conselho Municipal de Saúde (CMS), no uso de suas competências",
+     "hash_evidencia": "b42188bd682caa578386970ab773543efafd820c2464c518ed40c20d395fdcab"
+    }
+   ],
+   "nome": "Curitiba",
+   "uf": "PR"
+  },
+  "4205407": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4205407/2026-05-26/7b11398855aa8fa5854eb2b35dd8b293415dc591.pdf",
+     "data_publicacao": "2026-05-26",
+     "edicao": "4184",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "77-L e 83 da Lei Municipal n. 1.224/1974; Considerando os arts. 1º e 3º do Decreto Municipal n. 16.047/2016; Considerando o disposto no Plano de Contingência das Arboviroses 2026, da Prefeitura Municipal de Florianópolis; Considerando o disposto na publicação “DIVE/SC esclarece sobre o potencial",
+     "hash_evidencia": "27f4f0594fd5bfdb4140158157faceaade03abdfcbd0f350e74d30e660356c0a"
+    }
+   ],
+   "nome": "Florianópolis",
+   "uf": "SC"
+  },
+  "2304400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Fortaleza",
+   "uf": "CE"
+  },
+  "5208707": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5208707/2025-05-06/72a2b1826c61fe351d07b95cbbb4bdf7e8318459.pdf",
+     "data_publicacao": "2025-05-06",
+     "edicao": "8530",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "2025, concordamos com a justificativa que esta ação passa a ser monitorada na ação 4.2.4 “Revisar e Publicar o Plano Municipal de Contingência para Arboviroses 2025 a 2026” - porque na justificativa o “Município de Goiânia possui um plano elaborado e monitorado, que precisa ser revisto a cada dois anos,",
+     "hash_evidencia": "7218e6d237cd9c23dcc4a30556869c77d1d1ec4fecb88fd4a913981108563cc8"
+    }
+   ],
+   "nome": "Goiânia",
+   "uf": "GO"
+  },
+  "2507507": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "João Pessoa",
+   "uf": "PB"
+  },
+  "1600303": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Macapá",
+   "uf": "AP"
+  },
+  "2704302": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Maceió",
+   "uf": "AL"
+  },
+  "1302603": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Manaus",
+   "uf": "AM"
+  },
+  "2408102": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Natal",
+   "uf": "RN"
+  },
+  "1721000": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/1721000/2024-01-15/2494f8edeb4fb84cdfa4de0e58df71b8f5966e5d.pdf",
+     "data_publicacao": "2024-01-15",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "MUNICÍPIO DE PALMAS Nº 3.383 - SEGUNDA-FEIRA, 15 DE JANEIRO DE 202410 RESOLUÇÃO Nº 47, DE 13 DE DEZEMBRO DE 2023. Dispõe sobre a aprovação do Plano de Contingência das Arboviroses para o ano de 2024. O Plenário do Conselho Municipal de Saúde de Palmas, em sua 12ª Reunião Ordinária do ano de 2023, realizada",
+     "hash_evidencia": "64620ec494dcc4815a215339d1225ddeff9a9ca7e3189e2c6287d53bb004e459"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/1721000/2025-02-07/9eb8cbc3056143cfc0aff1316ee5bf9e8638f868.pdf",
+     "data_publicacao": "2025-02-07",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Municipal de Saúde é soberano em suas decisões; RESOLVE: Art. 1º Aprovar o Plano de contingência das arboviroses no município de Palmas/TO – ano 2024/2025, destinado à redução da morbimortalidade por Chikungunya, Dengue e Zika, bem como mitigar os impactos das epidemias provocadas por essas arboviroses",
+     "hash_evidencia": "a1a8bd4a4531c42c6e9a5b246c5f035bc7b934c347551c3c315ebf453bf62607"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/1721000/2025-12-05/6f75f5d37f2160edaeb35a4c47ad9f4ea1ce160d.pdf",
+     "data_publicacao": "2025-12-05",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "maio de 2017. Dhieine Caminski Secretária Municipal de Saúde RESOLUÇÃO Nº 21, DE 19 DE NOVEMBRO DE 2025. Aprovação do Plano de Contingência para Prevenção e Controle das Arboviroses - 2025/2026. O Plenário do Conselho Municipal de Saúde de Palmas, em sua 11ª Reunião Ordinária do ano de 2025, realizada",
+     "hash_evidencia": "4d5ddf12fed1613e8bc3b51f0ba5e04bc33d4742862becc5622cbb44cd63901e"
+    }
+   ],
+   "nome": "Palmas",
+   "uf": "TO"
+  },
+  "4314902": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4314902/2025-04-14/7807a90d099244f9e17105a4a6d90a10e9b24abd.pdf",
+     "data_publicacao": "2025-04-14",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Emergências em Saúde Pública para Dengue e outras Arboviroses – COE Dengue, com a finalidade de, subsidiados pelo Plano Municipal de Contingência para Enfrentamento das Arboviroses, coordenar as ações de prevenção, vigilância e controle das arboviroses no Município de Porto Alegre, no sentido de planejar",
+     "hash_evidencia": "73d5e1a933f44167d6c6e9ae4c1f20b28c92707e14b85b899bb1ba12ee1504d4"
+    }
+   ],
+   "nome": "Porto Alegre",
+   "uf": "RS"
+  },
+  "1100205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Porto Velho",
+   "uf": "RO"
+  },
+  "2611606": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Recife",
+   "uf": "PE"
+  },
+  "1200401": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Branco",
+   "uf": "AC"
+  },
+  "3304557": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304557/2024-02-05/1924b344f34ae3c3962c480624515d110a95d1ca.pdf",
+     "data_publicacao": "2024-02-05",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Foto Fabio Costa / Prefeitura do Rio Plano de contingência é montado para enfrentar epidemia de dengue A cidade do Rio apresentou um plano de contingência para o enfrentamento da epidemia de dengue. O planejamento prevê uma série de medidas para a as- sistência da população e o combate ao",
+     "hash_evidencia": "7789b8ed60bf0e2c3efbb502a008579812ef48c640fde4667654d235aa662a1c"
+    }
+   ],
+   "nome": "Rio de Janeiro",
+   "uf": "RJ"
+  },
+  "2927408": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2927408/2024-03-15/6dace00245c74c0fef4b8af0fdf43f7698c5ecf3.pdf",
+     "data_publicacao": "2024-03-15",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "RESOLUÇÃO CMS Nº 05/2024 Aprova ad referendum o Plano de Contingência das Arboviroses 2024-2025. O Presidente do Conselho Municipal de Saúde de Salvador, no uso de suas atribuições. Resolve: Aprovar Ad Referendum o Plano de Contingência das Arboviroses 2024-2025 para a redução da morbimortalidade através",
+     "hash_evidencia": "6fe6609acac7ff9e6bef8c3187101d28bf494081dac26f7c55134460725763a9"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/2927408/2026-09-16/6e66e91b4d411057df2d0b85e0437bad91b54a04.pdf",
+     "data_publicacao": "2026-09-16",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "- SMS Conselho Municipal de Saúde do Salvador - CMSSSA RESOLUÇÃO CMS Nº 13/2026 Aprova o Plano de Enfrentamento e Contingência para Dengue, Chikungunya e Zika de Salvador - 2026-2029. O CONSELHO MUNICIPAL DE SAÚDE, no uso de suas atribuições legais e regimentais, conferidas pela Lei nº 8.142/1990",
+     "hash_evidencia": "86e20e6bf1554dee9224608abb9fa57e2964cf1b95bfd47633735f4dd54f3a8a"
+    }
+   ],
+   "nome": "Salvador",
+   "uf": "BA"
+  },
+  "2111300": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2111300/2026-01-06/21e76b20e8b07120ad48d30b8831fe9c36bd44e3.pdf",
+     "data_publicacao": "2026-01-06",
+     "edicao": "003",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "TCE/MA. PORTARIA N.º 14/2026 - GAB/SEMUS, DE 06 DE JANEIRO DE 2026 Institui o Plano Municipal de Contingência para Arboviroses Urbanas – Dengue, Chikungunya e Zika no Município de São Luís/MA, estabelece diretrizes para sua execução e dá outras providências. A SECRETÁRIA MUNICIPAL",
+     "hash_evidencia": "69628801bbcf90cff5f97533c876ca539d06e35c2a37ea60df7d60f85ee60e02"
+    }
+   ],
+   "nome": "São Luís",
+   "uf": "MA"
+  },
+  "3550308": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Paulo",
+   "uf": "SP"
+  },
+  "2211001": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2211001/2025-03-10/48850fb095a7a1e0c41cb4c9e5585eaf150bad1a.pdf",
+     "data_publicacao": "2025-03-10",
+     "edicao": "3963",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Pádua, Presidente da Fundação Municipal de Saúde. ID: 000450396300402025 RESOLUÇÃO Nº 218/2025. Dispõe sobre o Plano de Contingência do Programa Municipal de Controle das Aborviroses: Dengue, Chikungun- ya, e Zica – 2025. O PLENÁRIO DO CONSELHO MUNICIPAL DE SAÚDE DE TERESINA–PI, em sua 322ª Reunião",
+     "hash_evidencia": "2472426cf57e810e8472dacb174cd1b5f01528b79d66504f4adb839fafbcb67c"
+    }
+   ],
+   "nome": "Teresina",
+   "uf": "PI"
+  },
+  "3205309": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Vitória",
+   "uf": "ES"
+  },
+  "3509502": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Campinas",
+   "uf": "SP"
+  },
+  "2504009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Campina Grande",
+   "uf": "PB"
+  },
+  "3518800": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3518800/2024-02-06/596af84f5272b8d28a808635e305b18f87d19931.pdf",
+     "data_publicacao": "2024-02-06",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "08/03/2024 09 - Posse dos Eleitos 21/03/2024 CONSELHO MUNICIPAL DE SAÚDE Resolução nº 020/2023-CMS Dispõe sobre: Aprovação do Plano de Contingência de Guarulhos para Controle das Arboviroses 2023-2024. O Plenário do Conselho Municipal de Saúde de Guarulhos, em sua 488ª Reunião Ordinária do Pleno, realizada em",
+     "hash_evidencia": "254edbd70d5a53e2690667076e384db85cd7b83904e87c688e7ecf0807824af2"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3518800/2024-02-06/e5a466cf81cf268bcd6172b35b1f83a62f3b1942.pdf",
+     "data_publicacao": "2024-02-06",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "08/03/2024 09 - Posse dos Eleitos 21/03/2024 CONSELHO MUNICIPAL DE SAÚDE Resolução nº 020/2023-CMS Dispõe sobre: Aprovação do Plano de Contingência de Guarulhos para Controle das Arboviroses 2023-2024. O Plenário do Conselho Municipal de Saúde de Guarulhos, em sua 488ª Reunião Ordinária do Pleno, realizada em",
+     "hash_evidencia": "b9b8a8aca7f7f2459c1bc474e902f36b9a53dc7a334173fad6ea0503cb4ffe5b"
+    }
+   ],
+   "nome": "Guarulhos",
+   "uf": "SP"
+  },
+  "2700300": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Arapiraca",
+   "uf": "AL"
+  },
+  "3304904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Gonçalo",
+   "uf": "RJ"
+  },
+  "2408003": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Mossoró",
+   "uf": "RN"
+  },
+  "3548708": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Bernardo do Campo",
+   "uf": "SP"
+  },
+  "3301702": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3301702/2025-01-03/8940f9d87877b0521977fe62f5d2fd9359a31a3f.pdf",
+     "data_publicacao": "2025-01-03",
+     "edicao": "7535",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "EM tHJLtlIM OFICIAL Prefeitura Municipal de Duque de Caxias Secretaria Municipal de Duque de Caxias Departamento de Vigilância em Saúde PLANO DE CONTINGÊNCIA DE ARBOVIROSES 2024-2026 v .2 J Prefeitura Municipal de Duque de Caxias Secretaria Municipal de Duque de Caxias Departamento de Vigilância",
+     "hash_evidencia": "f50707d41e2870b369b009d44ff44c0fb2c8a8856e7df67805894454972edc48"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3301702/2025-01-22/b62072e319fe6626e4d1bc2119ca0c5b649f4afc.pdf",
+     "data_publicacao": "2025-01-22",
+     "edicao": "7543",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "contingências das Arboviroses, visto que é 252 uma exigência da Secretaria de Estado, para que os municípios saibam como proceder em caso de 253 epidemia de Dengue, Zica ou Chikungnia e também orientar ao usuário, sobre o que fazer, para qual 254 unidade deve se encaminhar, etc. Lembrou que durante a semana esteve",
+     "hash_evidencia": "665c555a3364389aaacfa844b3d1652bdf2b795b2b8aef9c0e313c392f636922"
+    }
+   ],
+   "nome": "Duque de Caxias",
+   "uf": "RJ"
+  }
+ },
+ "execucao": {
+  "data": "2026-10-22",
+  "consultados": 35,
+  "paradas": "orçamento de tempo",
+  "estatutos": {
+   "não localizado até o corte": 16,
+   "menção localizada em diário oficial": 14,
+   "não verificado": 5
+  }
+ }
 }
