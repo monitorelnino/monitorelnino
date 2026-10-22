@@ -1,0 +1,56 @@
+{
+ "_governanca": "Planos municipais de contingência de arboviroses (dengue, chikungunya, zika): onde cada município tem menção localizada, e em que norma o plano se apoia. Peso zero: não entra na nota da Saúde (HANDOVER_SAUDE_V06 §5, 22/10/2026). `municipios` é escrito só por `coletar_planos_arboviroses.py`; `bases` foi lida e registrada à mão em 22/10/2026 e só muda com leitura nova. Estatuto: menção localizada em diário oficial · não localizado até o corte · não verificado (município sem cobertura no acervo, ou consulta que falhou). Menção não é plano lido. Unidade da federação sem linha em `bases` não foi verificada; a ausência não afirma que não há norma.",
+ "cursor": 0,
+ "bases": {
+  "BR": {
+   "documento": "Plano de Contingência Nacional para Dengue, Chikungunya e Zika (Ministério da Saúde)",
+   "natureza": "orientação programática; norma não lida",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2025/07/23-Plano-de-contingencia-nacional-para-dengue-chikungunya-e-Zika-2.pdf",
+   "lido": false,
+   "observacao": "Cópia hospedada pela SES-MG; o arquivo não pôde ser lido como texto em 22/10/2026. O TCE-SC o cita como referência."
+  },
+  "MG": {
+   "documento": "Resolução SES/MG nº 10.440, de 17/09/2025",
+   "natureza": "norma estadual lida",
+   "dispositivo": "art. 5º: os municípios elaboram e mantêm atualizada a parte complementar do Plano Municipal de Contingência de Arboviroses, aprovada pelo Conselho Municipal de Saúde e apresentada à CIB-Macro; art. 8º: a parte padronizada é autodeclarada em formulário digital e lançada no painel de monitoramento da SES/MG; art. 9º: atualização anual.",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2025/12/RESOLUCAO-SES-10.440-PEC_PMC-2025_2027.pdf",
+   "lido": true,
+   "lido_em": "2026-10-22",
+   "observacao": "Os planos municipais ficam no painel da SES/MG; não há lista pública de documentos localizada até o corte."
+  },
+  "SC": {
+   "documento": "Decisão do Pleno do TCE-SC, processo @RLI 24/00395645, publicada no DOTC-e de 22/05/2024",
+   "natureza": "determinação de tribunal de contas, lida na notícia do próprio TCE",
+   "dispositivo": "Os municípios listados (82, dos quais 30 considerados infestados) enviam os planos de contingência de dengue em 15 dias; descumprimento pode gerar multa.",
+   "url": "https://www.tcesc.tc.br/tcesc-determina-municipios-catarinenses-que-elaborem-plano-de-contingencia-para-o-enfrentamento-da",
+   "lido": true,
+   "lido_em": "2026-10-22",
+   "observacao": "A notícia não cita dispositivo legal; refere o Plano Nacional de Contingência e a Nota Orientativa nº 04/2021 da Secretaria da Saúde do Paraná."
+  },
+  "SP": {
+   "documento": "Plano de contingência de arboviroses 2025-2026 do estado de São Paulo",
+   "natureza": "plano estadual localizado, não lido",
+   "url": "https://portal.saude.sp.gov.br/resources/ccd/homepage/2025/sala-de-situacao/planodecontingeencia_arbo_2025_2026_sp_final-coupia.pdf",
+   "lido": false
+  },
+  "GO": {
+   "documento": "Plano de contingência de arboviroses 2026-2027 do estado de Goiás",
+   "natureza": "plano estadual localizado, não lido",
+   "url": "https://goias.gov.br/saude/wp-content/uploads/sites/34/vigilancia-em-saude/emergencias-em-saude-publica/planos/Plano%20de%20Contig%C3%AAncia%20-%20Arboviroses%202026-2027-2.pdf",
+   "lido": false
+  },
+  "RS": {
+   "documento": "Plano de contingência de dengue 2024-2025 do estado do Rio Grande do Sul",
+   "natureza": "plano estadual localizado, não lido",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/29130911-plano-de-contingencia-dengue-2024-2025.pdf",
+   "lido": false
+  },
+  "SE": {
+   "documento": "Manual para elaboração de plano de contingência dos municípios (Secretaria de Saúde de Sergipe)",
+   "natureza": "orientação estadual aos municípios localizada, não lida",
+   "url": "https://saude.se.gov.br/wp-content/uploads/2025/03/Manual-para-elaboracao-de-plano-de-contigencia-dos-municipios.pdf",
+   "lido": false
+  }
+ },
+ "municipios": {}
+}
