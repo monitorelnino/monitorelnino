@@ -25,7 +25,7 @@ Por UF, três leituras — só a primeira é pontuada:
 Faixas (as mesmas do site): estágio inicial 0–25 · em construção 25–50 · consolidado 50–70 ·
 avançado 70–100. v0.5 (21/10/2026): o índice tem número NACIONAL, a média das 27 UFs, como o MARÉ
 Legal (`resumo_nacional`); a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto
-do número (METODOLOGIA §115). v0.6 (22/10/2026): a cobertura municipal sai da nota (METODOLOGIA §117).
+do número (METODOLOGIA §115). v0.6 (22/10/2026): a cobertura municipal sai da nota (METODOLOGIA §118).
   python gerar_monitor_saude.py            # grava data/monitor_saude.json
   python gerar_monitor_saude.py --autoteste
 """
@@ -52,7 +52,7 @@ BOLETIM_1_MAIS_30 = "29/07/2026"
 # conta — assimetria probatória), e a contagem de "planos sem leitura" é publicada ao lado. Pesos iguais (1/3).
 # v0.6 (22/10/2026, editoria): a cobertura sai da nota. Não há dever legal de plano municipal de saúde para o
 # fenômeno; o único plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede.
-# O Saúde não conta o mesmo documento duas vezes: a cobertura vira camada de peso zero, ao lado (METODOLOGIA §117).
+# O Saúde não conta o mesmo documento duas vezes: a cobertura vira camada de peso zero, ao lado (METODOLOGIA §118).
 VERSAO = "0.6"
 PESOS = {"instrumento": 0.5, "antecipacao": 0.5}   # metade cada; a cobertura NÃO tem peso aqui
 
@@ -385,7 +385,7 @@ def gerar() -> int:
                         "como o MARÉ Legal; a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto. A saúde no plano municipal de "
                         "defesa civil (população em município cujo plano localizado trata a saúde) é camada de peso zero, publicada ao lado e fora da "
                         "média: o plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede. Duas leituras de "
-                        "contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §117."),
+                        "contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §118."),
         "versao": VERSAO, "gerado_em": data_da_edicao().strftime("%d/%m/%Y"), "corte": su.get("corte"),
         "metodo": {"pesos": dict(PESOS), "escada": PONTOS_STATUS,
                    "cobertura": {"nome": "saúde no plano municipal de defesa civil", "peso": 0, "entra_na_nota": False, "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF", "creditos_municipais": {k: CRED_POP[k] for k in CATEGORIAS_MUNICIPAIS},
