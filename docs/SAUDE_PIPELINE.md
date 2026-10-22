@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-15 a 2026-10-22 (1134 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-15 a 2026-10-22 (1139 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 5043/5571 com verificação real até 2026-10-22 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-21 01:32 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-22 04:41 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-22 06:02 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-22 03:50 | 2 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -82,13 +82,13 @@ cobertura 15d: 5043/5571 com verificação real até 2026-10-22 · por canal: we
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-22 04:13 | 5 s | 20810 | ok | — |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-22 04:25 | 713 s | — | **erro** | interrompido pelo prazo do elo |
 | `monitorar_sinais_federais.py` | coletor | 2026-10-22 04:13 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-10-21 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `preservar_evidencias.py` | coletor | 2026-10-22 04:47 | 0 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-21 06:02 | 374 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-21 07:34 | 1 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-21 06:01 | 56 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-21 04:14 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-21 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-22 04:47 | 2 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-10-17 01:58 | 659 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-18 03:52 | 84 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-22 03:27 | 2 s | — | ok | — |
