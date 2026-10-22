@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-22 · #PR · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
+## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
 `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez.
 
