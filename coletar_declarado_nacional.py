@@ -59,7 +59,7 @@ USO
   python coletar_declarado_nacional.py --autoteste
   python coletar_declarado_nacional.py           # coleta (rede)
 """
-import io, sys
+import io, json, sys
 from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge,
@@ -289,6 +289,20 @@ def marcar_fato_municipal_em_memoria(livro: dict, ibge, campo: str, valor) -> No
     m[campo] = valor
 
 
+def anexar_s2id(reg: dict, s2id: dict) -> int:
+    """Põe `s2id_plancon` em cada município da relação do S2iD (`data/s2id_plancon.json`, SEDEC por LAI).
+
+    Só o campo, com data e protocolo: camada DECLARADA como a MUNIC e o ICM, nunca documento, e nenhuma
+    função da nota o lê (HANDOVER_REPOSITORIOS §1.8; o degrau do registro federal é decisão da
+    editoria). Devolve quantos municípios receberam o campo."""
+    n = 0
+    for cod, v in (s2id.get("municipios") or {}).items():
+        reg.setdefault("municipios", {}).setdefault(cod, {})["s2id_plancon"] = {
+            k: v.get(k) for k in ("ultima_versao", "envio_2023_2024", "protocolo")}
+        n += 1
+    return n
+
+
 def coletar() -> int:
     cfg = ler("fontes_declarado.json", None) or FONTES_PADRAO
     por_cod, _ = referencia_ibge()
@@ -361,8 +375,18 @@ def coletar() -> int:
                   resultados=f"{f['nome']}: {casados} municípios casados com IBGE", hash_evidencia=h)
         f["status"] = "ok"; f["ultima_coleta"] = hoje_editorial().isoformat()
         print(f"{f['nome']}: {casados} municípios")
+    anexar_s2id(reg, ler("s2id_plancon.json", {}))
     gravar("fontes_consultadas.json", livro_fatos)
     gravar("fontes_declarado.json", cfg); gravar("declarado_nacional.json", reg)
+    return 0
+
+
+def so_s2id() -> int:
+    """Só o campo do S2iD, sem rede: lê, anexa e grava `declarado_nacional.json`."""
+    reg = ler("declarado_nacional.json", {"municipios": {}})
+    n = anexar_s2id(reg, ler("s2id_plancon.json", {}))
+    gravar("declarado_nacional.json", reg)
+    print(f"s2id_plancon: {n} município(s)")
     return 0
 
 
@@ -477,7 +501,21 @@ def autoteste() -> int:
                 and [v[ord(c) - 48] for c in b["municipios"]["4202404"]] == ["Sim", "Não", "Sim"])
     def t7b():  # negativo: aba ausente → vazio; zero municípios nunca vira dado
         return parse_munic_bloco_risco(_xlsx_fixture(), "Aba Inexistente", "CodMun") == {}
-    return rodar_autoteste({"bloco Mgrd inteiro com rótulos do dicionário": t7,
+    def t8():  # S2iD: só o campo, sem tocar MUNIC/ICM; idempotente
+        reg = {"municipios": {"1": {"munic_plano_contingencia": "sim"}}}
+        s2id = {"municipios": {"1": {"ultima_versao": "2023-05-02", "envio_2023_2024": None,
+                                     "protocolo": "59009.000948/2023-22", "nome": "A"},
+                               "2": {"ultima_versao": "2018-02-15", "envio_2023_2024": None, "protocolo": "p"}}}
+        n = anexar_s2id(reg, s2id)
+        antes = json.dumps(reg, sort_keys=True)
+        anexar_s2id(reg, s2id)
+        return (n == 2 and reg["municipios"]["1"]["munic_plano_contingencia"] == "sim"
+                and reg["municipios"]["1"]["s2id_plancon"] == {"ultima_versao": "2023-05-02", "envio_2023_2024": None,
+                                                              "protocolo": "59009.000948/2023-22"}
+                and "nome" not in reg["municipios"]["1"]["s2id_plancon"]
+                and json.dumps(reg, sort_keys=True) == antes and anexar_s2id({}, {}) == 0)
+    return rodar_autoteste({"S2iD: só o campo, sem tocar a MUNIC; idempotente": t8,
+                            "bloco Mgrd inteiro com rótulos do dicionário": t7,
                             "negativo: bloco com aba inexistente": t7b,
                             "parser MUNIC (xlsx, aba nomeada)": t1, "parser ICM (xlsx, var8 inteiro 0/1)": t2,
                             "§208 ICM var11 (dotação na LOA) lida à parte da var8, sem trocar coluna": t2b,
@@ -491,4 +529,4 @@ def autoteste() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(autoteste() if "--autoteste" in sys.argv else coletar())
+    sys.exit(autoteste() if "--autoteste" in sys.argv else so_s2id() if "--s2id" in sys.argv else coletar())

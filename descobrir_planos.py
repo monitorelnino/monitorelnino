@@ -52,7 +52,7 @@ import urllib.parse
 import funil
 from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
-                             rodar_autoteste)
+                             rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
@@ -323,6 +323,81 @@ def autoteste() -> int:
         tres = [x for d in (100, 101, 102) for x in fatia_da_noite(alvos, 20, d)]
         return set(tres) == set(alvos) and fatia_da_noite([], 20, 1) == [] and len(fatia_da_noite(alvos, 99, 3)) == 54
 
+    def t_dominios_e_identidade_do_portal():
+        d = dominios_do_municipio("São João d'Aliança", "GO")
+        pref = "<title>Prefeitura Municipal de Santana do Ipanema</title><body>Gabinete</body>"
+        return (d == ["saojoaodalianca.go.gov.br", "www.saojoaodalianca.go.gov.br"]
+                and identifica_prefeitura(pref, "Santana do Ipanema")
+                and not identifica_prefeitura(pref, "Palmeira dos Índios")
+                and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema"))
+
+    def t_links_da_home_so_candidatos_e_absolutos():
+        html = ('<a href="/uploads/plano-de-contingencia.pdf">Plano de Contingência 2024</a>'
+                '<a href="/fale-conosco">Fale conosco</a><a href="/uploads/plano-de-contingencia.pdf">de novo</a>')
+        return links_da_pagina(html, "https://x.al.gov.br/") == [
+            ("https://x.al.gov.br/uploads/plano-de-contingencia.pdf", "Plano de Contingência 2024")]
+
+    def t_pista_do_portal_passa_pela_porta():
+        from scripts.pistas import motivo_de_recusa, normalizar
+        pl = pistas_do_portal("Bonito", "MS", "5002209", "bonito.ms.gov.br",
+                              [("https://bonito.ms.gov.br/plano.pdf", "Plano Municipal de Contingência", "2023-05-02", "h1")],
+                              "2026-10-22")[0]
+        return (pl["origem"] == "descoberta" and pl["ibge"] == "5002209"
+                and motivo_de_recusa(normalizar(pl)) == "")
+
+    def t_portal_recusa_e_ausencia_nao_viram_plano():
+        import unittest.mock as mock
+        import urllib.error
+        e403 = urllib.error.HTTPError("https://x", 403, "Forbidden", {}, None)
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=e403):
+            recusa = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=OSError("dns")):
+            mudo = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        return (recusa["situacao"] == "recusa_de_fonte" and recusa["pistas"] == []
+                and mudo["situacao"] == "portal_nao_localizado" and mudo["pistas"] == [])
+
+    def t_portal_le_wp_json_e_links_sem_escrever():
+        import unittest.mock as mock
+        home = ('<title>Prefeitura de Bonito</title>'
+                '<a href="/doc/plancon-2024.pdf">PLANCON 2024</a>').encode()
+        wp = ([{"url": "https://bonito.ms.gov.br/wp/plano.pdf", "titulo": "Plano de contingência",
+                "data_publicacao": "2024-03-01T10:00:00"}], True)
+        with mock.patch(f"{__name__}.buscar_uma_vez", return_value=home), \
+             mock.patch(f"{__name__}.consultar_wp_json", return_value=wp), \
+             mock.patch(f"{__name__}.buscar", return_value=b"%PDF"), \
+             mock.patch(f"{__name__}.preservar_evidencia", return_value="h-falso"):
+            r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        urls = [p["url"] for p in r["pistas"]]
+        return (r["situacao"] == "lido" and "https://bonito.ms.gov.br/wp/plano.pdf" in urls
+                and "https://bonito.ms.gov.br/doc/plancon-2024.pdf" in urls
+                and r["pistas"][0]["hash_evidencia"] == "h-falso" and r["pistas"][0]["data_publicacao"] == "2024-03-01")
+
+    def t_rodada_de_municipios_retoma_e_grava_no_prazo():
+        import unittest.mock as mock
+        import tempfile
+        gravados, lotes = {}, []
+        livro = {"municipios": {"2": {"consultado_em": "2026-10-22"}}}   # o 2 já foi lido hoje
+
+        def lido(nome, uf, cod, hoje):
+            if cod == "3":
+                raise KeyboardInterrupt()
+            return {"dominio": "x", "situacao": "lido", "pistas": []}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
+            json.dump({"fila": ["1", "2", "3", "4"]}, f)
+        ref = {c: {"nome": f"M{c}", "uf": "XX"} for c in "1234"}
+        with mock.patch(f"{__name__}.referencia_ibge", return_value=(ref, None)), \
+             mock.patch(f"{__name__}.hoje_editorial", return_value=__import__("datetime").date(2026, 10, 22)), \
+             mock.patch(f"{__name__}.ler", return_value=livro), \
+             mock.patch(f"{__name__}.gravar", side_effect=lambda n, o, compacto=False: gravados.update({n: o})), \
+             mock.patch(f"{__name__}.log_busca"), \
+             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lido), \
+             mock.patch("scripts.pistas.gravar_lote", side_effect=lambda p, origem="": lotes.append(p) or {"gravadas": 0, "recusadas": 0}):
+            rodar_municipios(f.name)
+        import os
+        os.unlink(f.name)
+        feitos = gravados.get(RESULTADO_DA_RODADA, {}).get("municipios", {})
+        return set(feitos) == {"1", "2"} and len(lotes) == 1   # 2 pulado (já lido), 3 interrompeu, 4 ficou para depois
+
     return rodar_autoteste({
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
         "§186 purga tira o ruído e preserva página e canal 1": t_purga_tira_ruido_e_preserva_pagina_e_canal_1,
@@ -333,6 +408,12 @@ def autoteste() -> int:
         "fatia anda por noite e cobre os 54 alvos em 3 noites": t_fatia_da_noite,
         "dedup por hash + trava absoluta (campos de nascença)": t_dedup_e_trava,
         "garantia estrutural: nunca escreve nos bancos": t_trava_estrutural,
+        "portal da prefeitura: endereço padrão e identidade da página": t_dominios_e_identidade_do_portal,
+        "portal da prefeitura: links da home, só candidatos e absolutos": t_links_da_home_so_candidatos_e_absolutos,
+        "portal da prefeitura: a pista passa pela porta única": t_pista_do_portal_passa_pela_porta,
+        "portal da prefeitura: recusa e endereço mudo não viram plano nem ausência de plano": t_portal_recusa_e_ausencia_nao_viram_plano,
+        "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
+        "rodada de municípios: retoma no dia e grava o lido no prazo": t_rodada_de_municipios_retoma_e_grava_no_prazo,
     })
 
 
@@ -456,6 +537,145 @@ def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None)
     return novos
 
 
+# ---------------------------------------------------------------------------------------------
+# Busca dirigida por município (22/10/2026, HANDOVER_REPOSITORIOS_DE_PLANOS_MUNICIPAIS §1.8).
+# Canal "portal da prefeitura" da rodada dirigida pela relação do S2iD (`data/s2id_plancon.json`).
+# O endereço é o padrão `<município>.<uf>.gov.br` e só vale se a página SE IDENTIFICA como a prefeitura
+# do município (mesma disciplina de `descobrir_dominios.py`): endereço que não responde assim é busca
+# não feita, nunca "sem plano". Acha-se por wp-json (PDF anexado) ou pelos links da home em HTML
+# estático; site que só monta a página por JavaScript fica "não verificado" (o renderizador grava na
+# fila por UF e setor, que não tem município). A pista entra pela porta única e segue ao juiz.
+# ---------------------------------------------------------------------------------------------
+TERMOS_MUNICIPIO = ("plano de contingência", "defesa civil")
+LIMITE_PDF_POR_MUNICIPIO = 3
+RECUSAS_DE_FONTE = (401, 403, 429, 451)
+RESULTADO_DA_RODADA = "s2id_busca_dirigida.json"
+
+
+def _so_letras(texto: str) -> str:
+    import unicodedata
+    base = unicodedata.normalize("NFKD", str(texto or "").lower())
+    return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
+
+
+def dominios_do_municipio(nome: str, uf: str) -> list:
+    """Os endereços padrão a tentar, em ordem. Função pura."""
+    base = f"{_so_letras(nome)}.{uf.lower()}.gov.br"
+    return [base, f"www.{base}"]
+
+
+def identifica_prefeitura(html: str, nome: str) -> bool:
+    """A página diz ser a prefeitura do município (nome e a palavra "prefeitura" ou "município"). Pura."""
+    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", str(html or "")[:300000]))
+    alvo = _so_letras(t)
+    return _so_letras(nome) in alvo and ("prefeitura" in alvo or "municipio" in alvo)
+
+
+def links_da_pagina(html: str, base: str) -> list:
+    """[(href, texto)] dos links candidatos a plano na página, no teto da página. Função pura."""
+    achados = []
+    for m in re.finditer(r'<a\s[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', str(html or ""), re.I | re.S):
+        href = urllib.parse.urljoin(base, m.group(1).strip())
+        texto = " ".join(re.sub(r"<[^>]+>", " ", m.group(2)).split())
+        if link_e_candidato(href, texto) and href not in [h for h, _ in achados]:
+            achados.append((href, texto))
+        if len(achados) >= MAXIMO_LINKS_POR_PAGINA:
+            break
+    return achados
+
+
+def pistas_do_portal(nome: str, uf: str, ibge: str, dominio: str, itens: list, hoje: str) -> list:
+    """Pistas no esquema da porta única, a partir de [(url, titulo, data, hash)]. Função pura."""
+    from consultar_querido_diario import STATUS_DA_PISTA
+    return [{"municipio": nome, "uf": uf, "ibge": str(ibge).zfill(7), "url": url,
+             "titulo": f"Portal da prefeitura de {nome}/{uf} ({dominio}): {titulo}"[:300],
+             "trecho": " ".join(str(titulo or "").split())[:500], "data_publicacao": data or None,
+             "origem": "descoberta", "hash_evidencia": h, "status": STATUS_DA_PISTA,
+             "data": hoje, "registrado_em": hoje}
+            for url, titulo, data, h in itens]
+
+
+def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
+    """Um município, um canal. Devolve {dominio, situacao, pistas}; nunca levanta.
+
+    `situacao`: `recusa_de_fonte` (401/403/429/451 ou muro de robô: respeita-se e registra-se),
+    `portal_nao_localizado` (o endereço padrão não respondeu como a prefeitura) ou `lido`."""
+    import urllib.error
+    dominio = home = None
+    for d in dominios_do_municipio(nome, uf):
+        try:
+            corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
+        except urllib.error.HTTPError as e:
+            if e.code in RECUSAS_DE_FONTE:
+                return {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
+            continue
+        except MuroDeRobo as e:
+            return {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
+        except Exception:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve, tenta o próximo
+            continue
+        texto = corpo[:300000].decode("utf-8", "replace")
+        if identifica_prefeitura(texto, nome):
+            dominio, home = d, texto
+            break
+    if not dominio:
+        return {"dominio": None, "situacao": "portal_nao_localizado", "pistas": []}
+    itens, vistos = [], set()
+    for termo in TERMOS_MUNICIPIO:
+        achados, _ = consultar_wp_json(dominio, termo)
+        for a in achados:
+            if a["url"] in vistos or len(vistos) >= LIMITE_PDF_POR_MUNICIPIO:
+                continue
+            vistos.add(a["url"])
+            h = None
+            try:
+                h = preservar_evidencia(buscar(a["url"], timeout=40), a["url"], "pdf", "descobrir_planos")
+            except Exception:  # noqa: BLE001 — sem a cópia a pista vale, declarada sem hash
+                pass
+            itens.append((a["url"], a["titulo"], (a["data_publicacao"] or "")[:10], h))
+    for href, texto in links_da_pagina(home, f"https://{dominio}/"):
+        if href not in vistos:
+            vistos.add(href)
+            itens.append((href, texto, None, None))
+    return {"dominio": dominio, "situacao": "lido", "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
+
+
+def rodar_municipios(caminho: str, limite: int = None) -> int:
+    """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
+    (`prazo=Nmin`) chega como SIGINT e o que foi lido é gravado."""
+    from scripts.pistas import gravar_lote
+    doc = json.load(open(caminho, encoding="utf-8"))
+    por_cod, _ = referencia_ibge()
+    hoje = hoje_editorial().isoformat()
+    feitos = ler(RESULTADO_DA_RODADA, {"municipios": {}})
+    feitos.setdefault("municipios", {})
+    fila = [c for c in doc.get("fila", []) if c in por_cod and feitos["municipios"].get(c, {}).get("consultado_em") != hoje]
+    pistas, lidos = [], 0
+    try:
+        for cod in fila[:limite] if limite else fila:
+            ref = por_cod[cod]
+            r = descobrir_no_portal(ref["nome"], ref["uf"], cod, hoje)
+            pistas.extend(r["pistas"])
+            feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
+                                         "motivo": r.get("motivo"), "pistas": len(r["pistas"])}
+            lidos += 1
+    except KeyboardInterrupt:
+        print(f"[prazo] interrompido depois de {lidos} município(s); gravando o que foi lido.")
+    balanco = gravar_lote(pistas, origem="descoberta")
+    feitos["gerado_em"] = hoje
+    gravar(RESULTADO_DA_RODADA, feitos)
+    por_situacao = {}
+    for v in feitos["municipios"].values():
+        sit = v.get("situacao") or "sem_situacao"
+        por_situacao[sit] = por_situacao.get(sit, 0) + 1
+    log_busca("descobrir_planos", 3, [caminho], "pista" if pistas else "consultado sem achado",
+              n_resultados=len(pistas),
+              resultados=f"{lidos} município(s) pelo portal da prefeitura; {por_situacao}; "
+                         f"fila: {balanco.get('gravadas')} gravada(s), {balanco.get('recusadas')} recusada(s)")
+    print(f"Portal da prefeitura: {lidos} município(s); {por_situacao}; porta única: "
+          f"{balanco.get('gravadas')} gravada(s), {balanco.get('recusadas')} recusada(s) {balanco.get('motivos') or ''}")
+    return 0
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
@@ -463,6 +683,9 @@ def main() -> int:
     limite = 10
     if "--limite" in sys.argv:
         limite = int(sys.argv[sys.argv.index("--limite") + 1])
+    if "--municipios" in sys.argv:   # busca dirigida pela relação do S2iD, canal do portal da prefeitura
+        return rodar_municipios(sys.argv[sys.argv.index("--municipios") + 1],
+                                int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None)
     setores = ["saude", "defesa_civil"]
     if "--setor" in sys.argv:
         setores = [sys.argv[sys.argv.index("--setor") + 1]]
