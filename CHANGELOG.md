@@ -9,9 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-22 · #PR · A rodada semanal deixa de se pular
+## 2026-10-22 · #PR · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
-A rodada completa de domingo encerrava em 90 s: `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e concluía que a edição já saíra. Financiamento ficou parado em 12/10 e o portão de frescor reprovou a `main` e os PRs. Sai a guarda `ja_publicou_hoje()` (−19 linhas); a vez, o `.feito` e o prazo do elo já impedem a segunda rodada.
+`atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez.
 
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
