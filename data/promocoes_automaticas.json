@@ -805163,6 +805163,417 @@
     ],
     "encontrou": null
    }
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "64525 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Nova Iguaçu\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANCON-NI: Plano de Contingências da Versão 8.0 Cidade de Nova Iguaçu Órgão: SMDC Ano: 2024-2025 PLANO DE CONTINGÊNCIAS PARA O ENFRENTAMENTO DAS EMERGÊNCIAS NA",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2024",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE CALAMIDADE",
+      "titulo": "PLANCON",
+      "trecho": "PLANCON-NI: Plano de Contingências da Versão 8.0 Cidade de Nova Iguaçu Órgão: SMDC Ano: 2024-2025 PLANO DE CONTINGÊNCIAS PARA O ENFRENTAMENTO DAS EMERGÊNCIAS NA",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Iguaçu possui um Sistema Municipal de Proteção e Defesa Civil, coordenado pela Secretaria Municipal Defesa Civil e fundamentado na visão sistêmica da ação muni"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "sinalizador 'situação de emergência' + recital de dano ocorrido"
+    }
+   },
+   "categoria": null,
+   "data": "2024",
+   "natureza": "RESPOSTA",
+   "ibge": "3303500",
+   "municipio": "Nova Iguaçu",
+   "uf": "RJ",
+   "url": "https://www.novaiguacu.rj.gov.br/smdc/wp-content/uploads/sites/27/2024/12/plancon-2024-2025.pdf",
+   "sem_ato_de_aprovacao": true,
+   "encaminhar": "atos_resposta",
+   "pista_id": "363c09aa4b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aa4f863288a487536db85d1631e3c1e05e955f21cc0034f51407bb8659a98b68"
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://g1.globo.com/rj/regiao-serrana/noticia/2026/05/23/prefeitura-de-petropolis-abre-consulta-publica-para-plano-de-contingencia-do-inverno-2026.ghtml"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303906",
+   "municipio": "Petrópolis",
+   "uf": "RJ",
+   "url": "https://g1.globo.com/rj/regiao-serrana/noticia/2026/05/23/prefeitura-de-petropolis-abre-consulta-publica-para-plano-de-contingencia-do-inverno-2026.ghtml",
+   "pista_id": "c47baae820",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://c76cb8e9857372607554e390f445ddd2.cdn.bubble.io/f1734639035085x778231441205703400/Plano%20de%20Contingencia%20Municipio%20de%20Serop%C3%A9dica%20-%20Chuvas%20Intensas%20-%20T%C3%A1tico-Operacional%202024-2025.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3305554",
+   "municipio": "Seropédica",
+   "uf": "RJ",
+   "url": "https://c76cb8e9857372607554e390f445ddd2.cdn.bubble.io/f1734639035085x778231441205703400/Plano%20de%20Contingencia%20Municipio%20de%20Serop%C3%A9dica%20-%20Chuvas%20Intensas%20-%20T%C3%A1tico-Operacional%202024-2025.pdf",
+   "pista_id": "001208a5d1",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-miguel-pereira.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302908",
+   "municipio": "Miguel Pereira",
+   "uf": "RJ",
+   "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-miguel-pereira.pdf",
+   "pista_id": "8ebb040da2",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-pinheiral.pdf"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303955",
+   "municipio": "Pinheiral",
+   "uf": "RJ",
+   "url": "https://www.ceivap.org.br/saneamento/pmsb-fluminenses/pmsb-pinheiral.pdf",
+   "pista_id": "a00a994768",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "6304 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Saúde de Cabo Frio estrutura plano de contingência para possíveis impactos do El Niño - Notícias --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> -->"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "18/09/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "18/09/2026",
+   "natureza": null,
+   "ibge": "3300704",
+   "municipio": "Cabo Frio",
+   "uf": "RJ",
+   "url": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+   "pista_id": "c59ccee271",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a5b39c446da1318ec48b77f56c6f99e92c11959cfd2d590c6d8a9df3c353b7e9",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://noticias.cabofrio.rj.gov.br/saude-de-cabo-frio-estrutura-plano-de-contingencia-para-possiveis-impactos-do-el-nino/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMi6AFBVV95cUxPekpkMEJ6TEp1MDBCbEo1bXhUblpFaHFSazVLTEVzUGxaRkVHSkxnb1Utd29pcm9mb0FScEVQMGIxa2JZb004a1ZMZkhOYWQ5MDk4c3ozV1JVcm42amNNWEw3OC1WY2ZyRXdQRWxXX0tvTE5ORXBXUnpSRUd4alVwYndrZW5Lb3ptMmQtUmZTVTkxck9UejBzUUxMbGo5S245ZUdVM29PZXFSRHhYeWw1aEF6WmpHYi1obnVXVEZEdkxaN29wTTZySzlmT2Q3SERFSWxnWTFPQWlOTkZhcy1XN3BLa1VMQVJt0gH3AUFVX3lxTE5lX2pBMk5VdXZ5cVAxTTN5Zjd6bGUtMHRzT3RaSUtDR0x5dXBsVDR4QzNIOUpfYmxEM0ZjdmRRcmxwb29ySVAwamZVcUpfbFhJUWNYZFhCc29oT18zWm9Ha0cwUG01dzFjTFNYWG5lRXNfRnVfTUhMMEFXVVQxQjJZYmI5Q0ZWOGpVWWV1TDVxTWYzODFxZTQtNjh4WHp0aUFrUUUzTXVFbW0zNTF5QnpxQ0Z0dV9mM2taTmZ0WGlCcmNQeWJ2S3JXTmJ1MHBGM0dhT2pDcDdhRmN2Q0lzZzBGeWQ4SjNDUGlyOUh1ak13UnRkNHdKdUU?oc=5"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPekpkMEJ6TEp1MDBCbEo1bXhUblpFaHFSazVLTEVzUGxaRkVHSkxnb1Utd29pcm9mb0FScEVQMGIxa2JZb004a1ZMZkhOYWQ5MDk4c3ozV1JVcm42amNNWEw3OC1WY2ZyRXdQRWxXX0tvTE5ORXBXUnpSRUd4alVwYndrZW5Lb3ptMmQtUmZTVTkxck9UejBzUUxMbGo5S245ZUdVM29PZXFSRHhYeWw1aEF6WmpHYi1obnVXVEZEdkxaN29wTTZySzlmT2Q3SERFSWxnWTFPQWlOTkZhcy1XN3BLa1VMQVJt0gH3AUFVX3lxTE5lX2pBMk5VdXZ5cVAxTTN5Zjd6bGUtMHRzT3RaSUtDR0x5dXBsVDR4QzNIOUpfYmxEM0ZjdmRRcmxwb29ySVAwamZVcUpfbFhJUWNYZFhCc29oT18zWm9Ha0cwUG01dzFjTFNYWG5lRXNfRnVfTUhMMEFXVVQxQjJZYmI5Q0ZWOGpVWWV1TDVxTWYzODFxZTQtNjh4WHp0aUFrUUUzTXVFbW0zNTF5QnpxQ0Z0dV9mM2taTmZ0WGlCcmNQeWJ2S3JXTmJ1MHBGM0dhT2pDcDdhRmN2Q0lzZzBGeWQ4SjNDUGlyOUh1ak13UnRkNHdKdUU?oc=5",
+   "pista_id": "e778f65e81",
+   "origem": null,
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMi1gFBVV95cUxPTnlnRHZaZ2NVUl8zd0RhNnFXVjhFem1iYzdJWWZfYndiVjk1Rk1ZbF9Wa1h3YUk5WGlIMDNPdVFZeFkwMllyVVYyLTV6cjJZVllIUVhTdEZvM3lmaGZUY2Vrbms0QUNrd3ZlaGpxMUFyWFRheWZPQjhBOGhtOWptQ05CUVllbTZZMUpxQV9qNmc2Y01Jd2w4bk1tMkJKMm1tMTROc1BJVExjRmNoV1FjVmZFR2l3Z1VDV2t1aUFWSU91S0UzX1o3NVBNdmd5VnlQMDFoSnF30gHkAUFVX3lxTE90TVRVZVZXaVBJZG5LakU4NFBVcmNTaW43LW05bmdjRWtCZV9oV1ZYZE54cFY2R2NrTEFoY1g3VzVucFB0ODBJWnprVjF0aWFLY0JsY1N4dllEWWNydm9Udms4WHd4RF9UTDNxZzhKUmVHMzB6WlZ1MGdGeWVCZkI2dTJtU2FCZndOLUd4czc0M1g1TjRjTzNfNW5yTmtWNm9RLUVWRHUwYnlOR2JkS05BbjFENTFoQjVyaEt4Q0o5cVFxQVp2YlpGZkl2dHkzbE5HSkhiWk9CXzB4b2tIanEzV0NGNg?oc=5"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPTnlnRHZaZ2NVUl8zd0RhNnFXVjhFem1iYzdJWWZfYndiVjk1Rk1ZbF9Wa1h3YUk5WGlIMDNPdVFZeFkwMllyVVYyLTV6cjJZVllIUVhTdEZvM3lmaGZUY2Vrbms0QUNrd3ZlaGpxMUFyWFRheWZPQjhBOGhtOWptQ05CUVllbTZZMUpxQV9qNmc2Y01Jd2w4bk1tMkJKMm1tMTROc1BJVExjRmNoV1FjVmZFR2l3Z1VDV2t1aUFWSU91S0UzX1o3NVBNdmd5VnlQMDFoSnF30gHkAUFVX3lxTE90TVRVZVZXaVBJZG5LakU4NFBVcmNTaW43LW05bmdjRWtCZV9oV1ZYZE54cFY2R2NrTEFoY1g3VzVucFB0ODBJWnprVjF0aWFLY0JsY1N4dllEWWNydm9Udms4WHd4RF9UTDNxZzhKUmVHMzB6WlZ1MGdGeWVCZkI2dTJtU2FCZndOLUd4czc0M1g1TjRjTzNfNW5yTmtWNm9RLUVWRHUwYnlOR2JkS05BbjFENTFoQjVyaEt4Q0o5cVFxQVp2YlpGZkl2dHkzbE5HSkhiWk9CXzB4b2tIanEzV0NGNg?oc=5",
+   "pista_id": "cad3d03fe3",
+   "origem": null,
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbjdsZnFPaFdfLW1MZVB4bFhucHliVUExWjNsc1BfeG1PcWkzUnRhUWZNRTNmam5nbFBRRWlCMVRSaWl0MHFocHlEWXI3Nk1pQXJ5ZWNRUE1WSlRZNGtZUy1ucnFLZVZGeFgzbWRDbXlhVlA4RHVUczFpQXV1eDhjWVlLdkF5SVNwUm1wSUgzSHpQbllHbjFVenhLckF5enJsTnNGVGx0ZU1HVmJGNDZtWmVlQXYybFNjX3RLUHVNSzdZUU03MnQ5MnZtUkc1VG81QVFfMEcwcDNoTnpaMUg40gHuAUFVX3lxTFBDaGE0WXUtN2JMZGo3RjB5TjVWOTRKNzd1SE56NUVmMk1lZ3U0YTltdkxzclRzUVVsMThNZWF1RlJYY0hGcGJCZHRjZlRiM291Sl9jOU1aaXJBM0N5cU9KRm1iSDNETFpWYV92MEc0RDh3SXZNM1VBRmtId3h0aDNid1QtRWV5U3dWbVN2dERIN1FjbU9JOVkwamI3V19BbEM5cWZ5X3c2NU14cFdqSVF0MEs0QTRvTDhhZWlSSGpuWEt4dk1MOENUbW9MWkwxdXZaX3FuWjhlVTU0emZ3SjJWTmRlbDJ2QUt3ZlkyakE?oc=5"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbjdsZnFPaFdfLW1MZVB4bFhucHliVUExWjNsc1BfeG1PcWkzUnRhUWZNRTNmam5nbFBRRWlCMVRSaWl0MHFocHlEWXI3Nk1pQXJ5ZWNRUE1WSlRZNGtZUy1ucnFLZVZGeFgzbWRDbXlhVlA4RHVUczFpQXV1eDhjWVlLdkF5SVNwUm1wSUgzSHpQbllHbjFVenhLckF5enJsTnNGVGx0ZU1HVmJGNDZtWmVlQXYybFNjX3RLUHVNSzdZUU03MnQ5MnZtUkc1VG81QVFfMEcwcDNoTnpaMUg40gHuAUFVX3lxTFBDaGE0WXUtN2JMZGo3RjB5TjVWOTRKNzd1SE56NUVmMk1lZ3U0YTltdkxzclRzUVVsMThNZWF1RlJYY0hGcGJCZHRjZlRiM291Sl9jOU1aaXJBM0N5cU9KRm1iSDNETFpWYV92MEc0RDh3SXZNM1VBRmtId3h0aDNid1QtRWV5U3dWbVN2dERIN1FjbU9JOVkwamI3V19BbEM5cWZ5X3c2NU14cFdqSVF0MEs0QTRvTDhhZWlSSGpuWEt4dk1MOENUbW9MWkwxdXZaX3FuWjhlVTU0emZ3SjJWTmRlbDJ2QUt3ZlkyakE?oc=5",
+   "pista_id": "e320d480e5",
+   "origem": null,
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "http://www3.maringa.pr.gov.br/site/imprensa/impressao.php?id=20880",
+   "pista_id": "872f97b918",
+   "origem": null,
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "http://www3.maringa.pr.gov.br/site/imprensa/impressao.php?id=20880",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "161163 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "pista sem nome de município"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://goias.gov.br/saude/wp-content/uploads/sites/34/vigilancia-em-saude/emergencias-em-saude-publica/planos/Plano%20de%20Contig%C3%AAncia%20-%20Arboviroses%202026-2027-2.pdf",
+   "pista_id": "25c29928e7",
+   "origem": null,
+   "leu_documento": true,
+   "hash_evidencia": "f364d74f405cabb79954198aa48fd25d700bc5334dafa1f6fc98d6baff8a2693",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://goias.gov.br/saude/wp-content/uploads/sites/34/vigilancia-em-saude/emergencias-em-saude-publica/planos/Plano%20de%20Contig%C3%AAncia%20-%20Arboviroses%202026-2027-2.pdf",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "18557 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "pista sem nome de município"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://www.propria.se.gov.br/sites/propria.se.gov.br/files/PLANEJAMENTO%20ESTRAT%C3%89GICO%20PROPRI%C3%81.pdf",
+   "pista_id": "d671eeebdf",
+   "origem": null,
+   "leu_documento": true,
+   "hash_evidencia": "e7dba82fa40593555132b0ec6e27ff81d0e7263afa6c70e3a9a8438c5ba1821d",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.propria.se.gov.br/sites/propria.se.gov.br/files/PLANEJAMENTO%20ESTRAT%C3%89GICO%20PROPRI%C3%81.pdf",
+    "recusa_original": "sem_documento_primario"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "sem_documento_primario",
+   "codebook": "1.6 (15/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "url fora dos padrões de fonte oficial: https://news.google.com/rss/articles/CBMi9AJBVV95cUxNS25tbDBxcjRwMzFIbjFNcDhjSUpGQnRPUWlpZU9ZNVFjUzZIVjdqRDZSdmJQYnNnWmNfOEVTdzZ5Z2l2UlRSenlHRzRBX3pOUHRjazhwbmdScmdOdEEtaXhaU05hWVRGa1QtcmZ1SnlGNzJTRG1JTEJlMy0yRE5WTEExajBUUXNiSTlJMkdTNl9DUUlWZ0xIaERrdkp3QzhXd3ExQUlRZUo0NWJDN3NFbDZKNUhKbGIzOW5kNDhtdFVIRmg5bjM2TS1UZzZQM1VBZERHeHZma040dUJjY25UWURWMmxyaVhpdTEyb3F5TFpRTHhrZnRnU3NrbkRhNU5iTGFLR2N0N0NKZG5GSkNIU2xDLWpwdkljT2ExN0d4M255WDUzM3YxZEFKU1J0RURPSmVuNklTTmNLSkRNNzhRTlNIeUxTNzA5X3h5QUZaZ3Q5ZVdkVldEaG1PemUzRW91Q2UySmZtdlkzSzc2bUR4czdUSUc?oc=5"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://news.google.com/rss/articles/CBMi9AJBVV95cUxNS25tbDBxcjRwMzFIbjFNcDhjSUpGQnRPUWlpZU9ZNVFjUzZIVjdqRDZSdmJQYnNnWmNfOEVTdzZ5Z2l2UlRSenlHRzRBX3pOUHRjazhwbmdScmdOdEEtaXhaU05hWVRGa1QtcmZ1SnlGNzJTRG1JTEJlMy0yRE5WTEExajBUUXNiSTlJMkdTNl9DUUlWZ0xIaERrdkp3QzhXd3ExQUlRZUo0NWJDN3NFbDZKNUhKbGIzOW5kNDhtdFVIRmg5bjM2TS1UZzZQM1VBZERHeHZma040dUJjY25UWURWMmxyaVhpdTEyb3F5TFpRTHhrZnRnU3NrbkRhNU5iTGFLR2N0N0NKZG5GSkNIU2xDLWpwdkljT2ExN0d4M255WDUzM3YxZEFKU1J0RURPSmVuNklTTmNLSkRNNzhRTlNIeUxTNzA5X3h5QUZaZ3Q5ZVdkVldEaG1PemUzRW91Q2UySmZtdlkzSzc2bUR4czdUSUc?oc=5",
+   "pista_id": "3c2f70f8e8",
+   "origem": null,
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
   }
  ]
 }
