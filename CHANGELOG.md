@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-22 · RS · Parser da pasta pública de planos de contingência do Rio Grande do Sul
 
-`atualizar_instrumentos_estaduais.py` passa a listar, sem login, a pasta pública de PLANCONs recebidos pela Defesa Civil do RS (497 municípios, publicada em 17/06/2026) e a propor cada município pelo plano mais recente; rascunho só vale sem plano. A nota "sem repositório" de 26/08 envelheceu e saiu. A rodada real corre na Action; o juiz classifica.
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS pelo link de compartilhamento (cookies da sessão e REST do SharePoint; a API anônima do OneDrive vinha vazia). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma; sem ano no nome a categoria é plano nomeado. Na listagem real, 484 de 497 municípios casam; 11 órfãos ficam declarados. O juiz classifica.
 
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
