@@ -63,30 +63,10 @@ jobs:
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: atualizar
-      timeout_minutos: 300
-      precisa_tesseract: true
-      precisa_searxng: true
-      precisa_node: true
+      timeout_minutos: 60
       comandos: |
-        atualizar_populacao.py --check
-        processar_contribuicoes.py
-        monitorar_sinais_federais.py
-        monitorar_busca_web.py --tamanho 150
-        scripts/verificar_funil.py --modo rodada
-        monitorar_imprensa_regional.py --limite 40
-        monitorar_imprensa_saude.py --limite 27
-        descobrir_planos.py --limite 20
-        detectar_marcos_federais.py
-        monitorar_atos_resposta.py --limite 10
-        monitorar_politica_por_inteiro.py
-        julgar_e_aplicar_descobertas.py
-        atualizar.py
-        preservar_evidencias.py --limite 20
-        preservar_evidencias.py --ler --limite 20
-        preservar_evidencias.py --ocr --limite 6
-        scripts/preservar_textos_integrais.py
-        # F66 (16/10/2026): triagem e preparação das pistas só na descoberta e no juiz, dentro da
-        # vez da noite — esta rodada corre fora dela e regravaria os mesmos campos.
+        coletar_transferegov.py
+        coletar_siconfi_182.py --lote 300
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
