@@ -4337,7 +4337,17 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **O que não muda.** Peso zero no MARÉ; o Monitor não atribui casos ao El Niño.
 
-## 117. Saúde mental e condições sensíveis à atenção primária nas internações do SUS (22/10/2026)
+## 117. Planos municipais de contingência de arboviroses (22/10/2026)
+
+**O que passa a ser coletado.** Todo dia, no elo dos desfechos, o Monitor procura no texto integral dos diários oficiais municipais (acervo do Querido Diário) menção a plano de contingência de dengue, chikungunya ou zika, em até 400 municípios por rodada, retomando de onde parou. A ordem é: capitais, depois alternando o município mais populoso (Censo 2022) e o de mais casos estimados de dengue na última semana lida. Cada menção preserva o diário por hash e entra na fila própria `pistas_arboviroses.json`, pela porta única de pistas.
+
+**Estatuto de cada município** (`data/planos_arboviroses.json`): *menção localizada em diário oficial*; *não localizado até o corte* (município coberto pelo acervo, sem menção desde 01/01/2024); *não verificado* (município sem cobertura no acervo ou consulta que falhou). Menção não é plano lido: o documento só vira plano localizado depois da leitura do texto. Ausência de menção não afirma que o plano não existe, porque prefeituras e secretarias publicam o plano fora do diário.
+
+**A base de cada plano.** Registrada por unidade da federação em `bases`, só com o que foi lido: Minas Gerais, Resolução SES/MG nº 10.440/2025, art. 5º (os municípios elaboram o plano e o mantêm atualizado); Santa Catarina, determinação do TCE-SC publicada em 22/05/2024 (a notícia não cita norma legal); nacional, o Plano de Contingência Nacional para Dengue, Chikungunya e Zika, tratado como orientação programática porque o texto não foi lido. Sem norma lida, o registro diz orientação programática ou norma não localizada; o Monitor não afirma obrigação legal.
+
+**O que não muda.** Peso zero: o arquivo não entra na nota da Saúde nem em índice algum. Acesso recusado (401, 403, 429, 451) encerra a rodada e é respeitado. Rotas por página de prefeitura e de secretaria estadual ficam para quando houver endereço verificado.
+
+## 118. Saúde mental e condições sensíveis à atenção primária nas internações do SUS (22/10/2026)
 
 **O que cada série conta.** As mesmas AIH do §110 (SIH/SUS, UF do hospital, mês de processamento, sem longa permanência), com o diagnóstico principal em dois grupos novos: transtornos mentais e comportamentais (CID-10 F00 a F99) e condições sensíveis à atenção primária (ICSAP), conforme a Lista Brasileira da Portaria SAS/MS nº 221, de 17 de abril de 2008. Suicídio e violência autoprovocada não são capítulo F e ficam fora. Um arquivo por grupo em `data/saude_desfechos/`, na forma do §108.
 

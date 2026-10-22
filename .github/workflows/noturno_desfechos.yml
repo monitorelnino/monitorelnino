@@ -5,7 +5,8 @@
 # desde 17–19/10, mas os arquivos de `data/saude_desfechos/` só nasciam por válvula `coleta-dia/*`,
 # à mão: a nuvem não tinha elo para eles e o dado envelhecia até alguém disparar. Aqui eles viram
 # elo diário, na janela, depois do elo da saúde (cron 05:50), de que a derivação de dengue,
-# chikungunya e SRAG lê.
+# chikungunya e SRAG lê. O último comando (22/10) procura, nos diários municipais, o plano de
+# contingência de arboviroses de cada município (peso zero).
 #
 # Cada comando roda pelo invólucro de saúde e nunca derruba o job; arquivo fora do esquema vai para
 # `data/saude_desfechos/quarentena/` (regra 5), e o arquivo anterior fica. O SIH retoma de onde
@@ -34,6 +35,7 @@ jobs:
         desfechos_sus.py --derivar
         coletar_obitos.py
         coletar_sih.py --orcamento 2400
+        coletar_planos_arboviroses.py --orcamento 1500
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

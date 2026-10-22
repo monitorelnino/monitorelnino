@@ -126,6 +126,8 @@
    "escritor": "noturno_saude.yml",
    "por_que": "Consulta do município na página de Saúde (HANDOVER_SAUDE_PAGINA §6b): um arquivo por UF, escrito só pelo elo da saúde (`gerar_saude_municipio.py`), depois dos coletores que ele lê."
   },
+  "data/planos_arboviroses.json": {"escritor": "noturno_desfechos.yml", "por_que": "Planos municipais de arboviroses (E1, 22/10/2026): escrito só por `coletar_planos_arboviroses.py` no elo dos desfechos; `bases` é leitura registrada à mão no PR."},
+  "data/pistas_arboviroses.json": {"escritor": "noturno_desfechos.yml", "por_que": "Fila própria dos planos de arboviroses, gravada pela porta única `scripts/pistas.py`; nenhum juiz do índice a lê."},
   "data/saude_desfechos/leptospirose.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Desfecho do SUS (E1/E2): escrito só pelo elo `noturno_desfechos.yml`, pela função comum `desfechos_sus.gravar_desfecho`; esquema fora da forma vai à quarentena."

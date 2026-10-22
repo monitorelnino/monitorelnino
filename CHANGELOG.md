@@ -11,7 +11,11 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
 
-`coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §117. Código +57/−13.
+`coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §118. Código +57/−13.
+
+## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
+
+Um coletor novo procura, nos diários oficiais municipais, o plano de contingência de dengue, chikungunya e zika de cada município, capitais e maiores primeiro, e guarda o diário por hash. Cada município recebe um estatuto: menção localizada, não localizado até o corte, ou não verificado. Registramos as normas lidas (Minas Gerais, TCE de Santa Catarina). Peso zero: não entra na nota da Saúde.
 
 ## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
