@@ -43,15 +43,15 @@ def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela,
     """Motivo para não coletar, ou None. Função pura — `dentro_da_janela` é injetada.
 
     Quatro perguntas, nesta ordem, e a primeira que responder decide:
-      0. o regime de prioridade suspendeu este workflow? Para em qualquer ramo (22/10/2026);
       1. é a `main`?           fora dela, nada barra — o ensaio roda de dia por desenho;
+      1b. o regime de prioridade suspendeu este workflow? Para na `main`, a qualquer hora (22/10/2026);
       2. é elo sem janela?     o publicador, quando a editoria chama;
       3. está na janela?       se não, para.
     """
-    if suspenso:
-        return f"`{elo}` suspenso pelo regime de prioridade (config/temporizadores.json)."
     if str(ramo or "").strip() != "main":
         return None
+    if suspenso:
+        return f"`{elo}` suspenso pelo regime de prioridade (config/temporizadores.json)."
     if str(elo or "").strip().lower() in ELOS_SEM_JANELA:
         return None
     if dentro_da_janela(agora):
@@ -89,9 +89,10 @@ def _autoteste() -> int:
     ok("maiúscula no nome do elo não burla", deve_parar("main", "PUBLICAR", dia, real) is None)
     ok("elo vazio na `main` de dia PARA", deve_parar("main", "", dia, real) is not None)
     ok("ramo vazio não é a `main`", deve_parar("", "diarios", dia, real) is None)
-    ok("regime: elo suspenso para até em ramo de edição, de noite ou de dia",
-       deve_parar("edicao/x", "diarios", noite, real, suspenso=True) is not None
-       and deve_parar("main", "diarios", noite, real, suspenso=True) is not None)
+    ok("regime: elo suspenso para na `main`, de noite ou de dia, e o ensaio fora dela segue",
+       deve_parar("main", "diarios", noite, real, suspenso=True) is not None
+       and deve_parar("main", "diarios", dia, real, suspenso=True) is not None
+       and deve_parar("ensaio-real/x", "diarios", noite, real, suspenso=True) is None)
     ok("o motivo diz a hora e a regra",
        "27/09" in deve_parar("main", "diarios", dia, real))
 
