@@ -10800,7 +10800,34 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-22T20:37:51",
+   "duracao_s": 2.5,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
+  },
+  {
+   "data": "2026-10-22",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-22T20:37:53",
+   "duracao_s": 848.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-22T20:52:01",
+   "duracao_s": 128.7,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-22T20:28:34"
+ "atualizado_em": "2026-10-22T20:52:01"
 }
