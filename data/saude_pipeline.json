@@ -10827,7 +10827,25 @@
    "itens": 27,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-22T22:44:56",
+   "duracao_s": 171.0,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-22T22:47:47",
+   "duracao_s": 2.6,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>"
   }
  ],
- "atualizado_em": "2026-10-22T20:52:01"
+ "atualizado_em": "2026-10-22T22:47:47"
 }
