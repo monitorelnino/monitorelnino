@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
-A janela de merge de 24 h e os elos suspensos da noite eram frases em sete prompts e um número em código. Passam a ser o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py` (`--janela-de-merge`, `--elo-suspenso`), pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Sem o bloco, a noite é a de sempre. Ensaio 29 prova os dois lados. O portão de escritores deixa de tomar título de PR com “diários” pelo elo dos diários (#960 reprovava a `main`).
+Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito; sem o bloco, a noite é a de sempre. O portão de escritores deixa de tomar título de PR com “diários” pelo elo dos diários, que reprovava a `main`.
 
 ## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
 
