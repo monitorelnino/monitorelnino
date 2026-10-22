@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #955 · A barra do medidor da Saúde vinha de outro número
+
+O preenchedor da reserva estática escrevia o número do MARÉ Saúde e nunca a barra ao lado dele,
+parada em 31,9 contra 24,8; e quatro das nove escritas daquela página caíam em identificadores já
+retirados. Uma função passa a escrever as três cópias do mesmo valor, nos dois medidores. Com isso,
+legenda, ficha do estado e dica do mapa seguem os pesos que o arquivo declara: componente de peso
+zero aparece rotulado, fora da média, nunca como zero por cento.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
