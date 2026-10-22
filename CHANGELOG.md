@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-22 · #958 · MARÉ Saúde: dois componentes e camada municipal de peso zero
+## 2026-10-22 · #959 · MARÉ Saúde: dois componentes e camada municipal de peso zero
 
 O MARÉ Saúde tem dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7, sobre as 27 UFs. Definição dos índices, release da Imprensa e portão de saúde seguem o mesmo método; METODOLOGIA §117.
 
