@@ -1,0 +1,50 @@
+# TEMPORÁRIO — válvula `coleta-dia/*`, nunca vai à `main`. Busca dirigida pela relação do S2iD
+# (HANDOVER_REPOSITORIOS_DE_PLANOS_MUNICIPAIS §1.8, editoria 22/10/2026): os três canais sobre a fila
+# de `data/s2id_plancon.json`, pela porta única das pistas. `smoke` prova os canais em escala mínima;
+# o completo segue de onde parou (o portal retoma no dia).
+name: Busca dirigida S2iD (válvula)
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke:
+        description: "true = só a prova em escala mínima"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  smoke:
+    if: ${{ inputs.smoke == 'true' }}
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: s2id-dirigida
+      grupo_de_concorrencia: noturno
+      timeout_minutos: 40
+      precisa_searxng: true
+      comandos: |
+        prazo=8min descobrir_planos.py --municipios data/s2id_plancon.json --limite 6
+        prazo=8min monitorar_busca_web.py --alvos data/s2id_plancon.json --tamanho 2
+        prazo=2min coletar_declarado_nacional.py --s2id
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+  completo:
+    if: ${{ inputs.smoke != 'true' }}
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: s2id-dirigida
+      grupo_de_concorrencia: noturno
+      timeout_minutos: 340
+      precisa_searxng: true
+      comandos: |
+        prazo=20min consultar_querido_diario.py --alvos data/s2id_plancon.json
+        prazo=140min descobrir_planos.py --municipios data/s2id_plancon.json
+        prazo=140min monitorar_busca_web.py --alvos data/s2id_plancon.json --tamanho 571
+        prazo=2min coletar_declarado_nacional.py --s2id
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
