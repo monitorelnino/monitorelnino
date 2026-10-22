@@ -23,7 +23,8 @@ jobs:
       grupo_de_concorrencia: noturno
       timeout_minutos: 300
       comandos: |
-        prazo=280min coletar_edicoes_doe.py --recuperacao --desde 2026-06-29
+        prazo=20min atualizar_instrumentos_estaduais.py --uf SE
+        prazo=20min atualizar_instrumentos_estaduais.py --uf ES
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
