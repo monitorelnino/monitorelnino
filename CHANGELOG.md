@@ -9,12 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-22 · #961 · Proteja-se: a linha da Defesa Civil estadual sai na troca do estado
+## 2026-10-22 · #961 · Páginas da faixa: ausência declarada onde ficava vazio
 
-A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado sem digitar
-um município deixava no ar a do estado anterior. Passou a sair na troca do estado, de quem ela
-depende. Na aba de incêndio e fumaça, a data da fonte vem do registro de preservação, como em calor
-e dengue; e a palavra "ciclo" sai das abas de fogo e de seca.
+A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado deixava no
+ar a do estado anterior. Passou a sair na troca do estado. Sem o arquivo da semana, os seis cartões
+da Imprensa ficavam vazios; agora dizem "sem coleta até o corte", frase que a página já escrevia.
+A data da fonte da aba de fogo vem do registro de preservação, e a palavra "ciclo" sai de duas abas.
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
