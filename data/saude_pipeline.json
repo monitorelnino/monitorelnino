@@ -10773,7 +10773,34 @@
    "itens": null,
    "status": "pulado",
    "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-22",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-22T20:25:38",
+   "duracao_s": 155.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-22T20:28:13",
+   "duracao_s": 21.6,
+   "itens": 0,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-22",
+   "script": "coletar_declarado_nacional.py",
+   "inicio": "2026-10-22T20:28:34",
+   "duracao_s": 0.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-22T08:53:49"
+ "atualizado_em": "2026-10-22T20:28:34"
 }
