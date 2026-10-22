@@ -150,7 +150,11 @@ def listar_onedrive(link: str, pausa: float = 2.0):
         r = requests.get(url, timeout=30, headers=cab)
         r.raise_for_status()
         return r.json()
-    pastas, achados = [get(f"https://api.onedrive.com/v1.0/shares/{tok}/root?expand=children")], []
+    raiz = get(f"https://api.onedrive.com/v1.0/shares/{tok}/root?expand=children")
+    if not raiz.get("children"):   # link do SharePoint: a expansão pode vir vazia; a rota direta lista a pasta
+        raiz["children"] = get(f"https://api.onedrive.com/v1.0/shares/{tok}/driveItem/children").get("value", [])
+    print(f"  [onedrive] raiz: {sorted(raiz)[:8]} · {len(raiz['children'])} filho(s)", file=sys.stderr)
+    pastas, achados = [raiz], []
     while pastas:
         pasta = pastas.pop()
         itens = pasta.get("children") or []
