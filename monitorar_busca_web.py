@@ -215,7 +215,15 @@ def relevante(resultado: dict, nome_municipio: str) -> bool:
     return tem_municipio and tem_termo_plano
 
 
-def rodar(lote: str | None, tamanho: int) -> int:
+def alvos_primeiro(ordem: list, alvos: list) -> list:
+    """`alvos` (códigos IBGE, na ordem dada) à frente de `ordem`; ninguém some nem repete. Pura."""
+    ja = set(ordem)
+    escolhidos = [c for c in dict.fromkeys(alvos) if c in ja]
+    fora = set(escolhidos)
+    return escolhidos + [c for c in ordem if c not in fora]
+
+
+def rodar(lote: str | None, tamanho: int, alvos: list | None = None) -> int:
     por_cod, _ = referencia_ibge()
     cadastro = ler("cadastro_prioritarios.json") or {}
     pop = ler("populacao_censo2022.json") or {}
@@ -231,6 +239,9 @@ def rodar(lote: str | None, tamanho: int) -> int:
     # semanas. Cobertura total continua a mesma no fim (nenhum município é descartado).
     prioritarios_cod = {str(m["codigo_ibge"]).zfill(7) for m in (ler("municipios_prioritarios.json") or {}).get("municipios", [])}
     ordem = [c for c in ordem_base if c in prioritarios_cod] + [c for c in ordem_base if c not in prioritarios_cod]
+    # 22/10/2026 (busca dirigida pela relação do S2iD): a fila dada vem primeiro; o resto segue a ordem de sempre.
+    if alvos:
+        ordem = alvos_primeiro(ordem, alvos)
 
     if lote is None:
         # 14/10/2026 (editoria: todo município verificado a cada 15 dias): os próximos sem resposta
@@ -569,7 +580,13 @@ def autoteste():
         primeiro_nao_prioritario = next((i for i, c in enumerate(ordem) if c not in prioritarios_cod), len(ordem))
         return all(c in prioritarios_cod for c in ordem[:primeiro_nao_prioritario])
 
+    def t20_alvos_vem_primeiro_sem_perder_ninguem():
+        ordem = ["1", "2", "3", "4"]
+        r = alvos_primeiro(ordem, ["3", "9", "3", "1"])   # 9 não existe; 3 repetido
+        return r == ["3", "1", "2", "4"] and alvos_primeiro(ordem, []) == ordem
+
     return rodar_autoteste({
+        "alvos dados vão à frente da fila, sem repetir nem perder município": t20_alvos_vem_primeiro_sem_perder_ninguem,
         "relevante(): aceita nome do município + termo de plano no título": t1_relevante_aceita,
         "relevante(): rejeita termo de plano sem o nome do município": t2_relevante_rejeita_sem_municipio,
         "relevante(): rejeita nome do município sem termo de plano": t3_relevante_rejeita_sem_termo_plano,
@@ -598,4 +615,7 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     lote = args[args.index("--lote") + 1] if "--lote" in args else None  # None => rotação automática
     tamanho = int(args[args.index("--tamanho") + 1]) if "--tamanho" in args else 60
-    sys.exit(rodar(lote, tamanho))
+    alvos = None
+    if "--alvos" in args:   # arquivo com `fila`: códigos IBGE em ordem (data/s2id_plancon.json)
+        alvos = [str(c).zfill(7) for c in (ler(args[args.index("--alvos") + 1].removeprefix("data/")) or {}).get("fila", [])]
+    sys.exit(rodar(lote, tamanho, alvos))
