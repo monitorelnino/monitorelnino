@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
+
+Um coletor novo procura, nos diários oficiais municipais, o plano de contingência de dengue, chikungunya e zika de cada município, capitais e maiores primeiro, e guarda o diário por hash. Cada município recebe um estatuto: menção localizada, não localizado até o corte, ou não verificado. Registramos as normas lidas (Minas Gerais, TCE de Santa Catarina). Peso zero: não entra na nota da Saúde.
+
 ## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
 `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB); dois CPF de terceiros saem do texto.
