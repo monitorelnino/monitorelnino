@@ -49,9 +49,10 @@ RAIZ = pathlib.Path(__file__).parent
 #     executa — ver §118, quando a cadência de sábado 22h40 carimbava domingo.
 #     A cadência é, por isso, ancorada em America/Sao_Paulo — o fuso do leitor,
 #     do texto público e da redação —, não no fuso do runner.
-#  2. DUPLICIDADE. O cron diário das 09h UTC também cai no dia de publicação
-#     (06h de Brasília, com a rodada semanal já encerrada). Sem guarda, o
-#     domingo teria DUAS rodadas completas. `ja_publicou_hoje()` encerra a segunda.
+#  2. DUPLICIDADE. Não há guarda aqui: a vez, o `.feito` e o "devido quando" do elo
+#     (config/temporizadores.json) já impedem a segunda rodada. A guarda antiga lia
+#     `data/meta.json`, que o publicador carimba todo dia; no domingo ela já valia hoje
+#     antes da rodada e a encerrava em 90 s (22/10/2026: financiamento parado em 12/10).
 #
 # Ao alterar o dia aqui, altere também: o cron do workflow, o texto público
 # (obrigado.html, pesquisadores.html) e a documentação. O portão
@@ -65,19 +66,6 @@ from coletores_base import FUSO_EDITORIAL, hoje_editorial, gravar_em  # noqa: E4
 DIA_PUBLICACAO = 6            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
 NOME_DIA_PUBLICACAO = "domingo"
 
-
-def ja_publicou_hoje():
-    """True se data/meta.json já registra atualização na data editorial de hoje.
-
-    Guarda contra rodada completa duplicada no mesmo dia: o cron diário e o cron
-    semanal caem ambos no dia de publicação, e sem isto a cadeia inteira (75–105 min)
-    rodaria duas vezes, gerando dois commits para a mesma edição.
-    """
-    try:
-        meta = json.loads((RAIZ / "data" / "meta.json").read_text(encoding="utf-8"))
-        return meta.get("atualizado_em", "") == hoje_editorial().strftime("%d/%m/%Y")
-    except Exception:  # noqa: BLE001 — meta ilegível nunca bloqueia a rodada
-        return False
 
 # TETO DE TEMPO POR ETAPA (23/09/2026). Achado real: a rodada diária de 23/09 ficou 45+ min
 # num passo que, fora do dia de publicação, só executa dois scripts antes de encerrar na
@@ -192,13 +180,6 @@ def main():
         print(f"[cadência] fora da semana intensiva e não é {NOME_DIA_PUBLICACAO} "
               f"(hoje é {hoje_editorial():%d/%m/%Y} no fuso da redação): "
               f"execução diária encerra sem coletar nem comitar.")
-        return 0
-
-    # Guarda contra rodada completa duplicada no mesmo dia editorial (ver topo):
-    # o cron diário e o cron semanal caem ambos no dia de publicação.
-    if not em_intensivo and ja_publicou_hoje():
-        print(f"[cadência] a edição de {hoje_editorial():%d/%m/%Y} já foi publicada nesta "
-              f"data (data/meta.json); execução encerra sem recoletar nem comitar.")
         return 0
 
     rodar([sys.executable, "atualizar_boletins.py"])
