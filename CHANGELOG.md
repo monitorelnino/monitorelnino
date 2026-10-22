@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
+
+Um coletor novo procura, nos diários oficiais municipais, o plano de contingência de dengue, chikungunya e zika de cada município, capitais e maiores primeiro, e guarda o diário por hash. Cada município recebe um estatuto: menção localizada, não localizado até o corte, ou não verificado. Registramos as normas lidas (Minas Gerais, TCE de Santa Catarina). Peso zero: não entra na nota da Saúde.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
