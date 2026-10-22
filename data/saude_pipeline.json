@@ -11223,7 +11223,61 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-21",
+   "script": "coletar_datasus_dbc.py",
+   "inicio": "2026-10-22T01:04:49",
+   "duracao_s": 55.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-21",
+   "script": "coletar_datasus_dbc.py",
+   "inicio": "2026-10-22T01:05:44",
+   "duracao_s": 40.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-21",
+   "script": "coletar_sisab.py",
+   "inicio": "2026-10-22T01:06:24",
+   "duracao_s": 214.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-21",
+   "script": "desfechos_sus.py",
+   "inicio": "2026-10-22T01:09:58",
+   "duracao_s": 0.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-21",
+   "script": "coletar_obitos.py",
+   "inicio": "2026-10-22T01:09:58",
+   "duracao_s": 14.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-21",
+   "script": "coletar_sih.py",
+   "inicio": "2026-10-22T01:10:12",
+   "duracao_s": 5.8,
+   "itens": null,
+   "status": "erro",
+   "erro": "SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam"
   }
  ],
- "atualizado_em": "2026-10-22T01:04:19"
+ "atualizado_em": "2026-10-22T01:10:12"
 }
