@@ -233,6 +233,12 @@ def normalizar(pista: dict, origem: str = "") -> dict:
     # e `validar_pista` só recusa o campo vazio. Corte desalinhado é pior que pista perdida.
     p["data"] = resolver_data(p)
     p["tipo"] = classificar_tipo(p)
+    # 22/10/2026: o trecho de Diário Oficial traz CPF de terceiros (prefeito, servidor); a pista vai a
+    # arquivo publicado. Minimização (LGPD art. 6º, III): redige-se na porta, como nas evidências.
+    from coletores_base import redigir_dados_pessoais
+    for campo in ("trecho", "titulo"):
+        if isinstance(p.get(campo), str):
+            p[campo] = redigir_dados_pessoais(p[campo])[0]
     return p
 
 
@@ -324,6 +330,9 @@ def _autoteste() -> int:
     ok("a data dd/mm/aaaa vira AAAA-MM-DD", n["data"] == "2026-10-04")
     ok("o tipo sai dos sinais do título", n["tipo"] == "plano")
     ok("nada do que o coletor pôs se perde", n["municipio"] == "Bonito" and n["uf"] == "MS")
+    ok("CPF no trecho é redigido na porta",
+       "[CPF REDIGIDO]" in normalizar(dict(REDE, trecho="Prefeito. CPF: 123.456.789-09. RG 1"))["trecho"]
+       and "123.456" not in normalizar(dict(REDE, trecho="CPF 123.456.789-09"))["trecho"])
     ok("a fixture de rede social passa a valer no esquema", motivo_de_recusa(n) == "")
     ok("a fixture de busca web passa a valer no esquema",
        motivo_de_recusa(normalizar(BUSCA)) == "")
