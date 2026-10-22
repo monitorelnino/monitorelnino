@@ -18,7 +18,7 @@ REGISTRO DE REPOSITÓRIOS (extensível):
   Cada UF mapeada tem uma função de parser própria, porque cada site estadual
   publica a lista em formato diferente. Adicionar uma UF = escrever um parser
   novo e registrá-lo em REPOSITORIOS; nada mais muda.
-  Implementadas: SE, ES, RS (pasta pública do OneDrive). Mapeadas mas SEM parser ainda (grafado no protocolo de
+  Implementadas: SE, ES, RS (pasta pública do SharePoint). Mapeadas mas SEM parser ainda (grafado no protocolo de
   busca como pendência): PR (SISDC), ES, AM — ver Metodologia §4.1.1(d).
 
 LIMITAÇÃO DE AMBIENTE (declarada, não escondida): o sandbox onde este projeto
@@ -115,60 +115,54 @@ def parse_se(texto: str):
     return achados
 
 def parse_rs(texto: str):
-    """Casa Militar/RS — pasta pública de PLANCONs recebidos (OneDrive, sem login). `texto` é o JSON da
-    listagem recursiva (`listar_onedrive`): [{name, webUrl}]. Nomes: 'MUNICÍPIO - PLANCON AAAA[ RASCUNHO].pdf'.
-    Arquivo sem ano no nome (laudo, anexo) não é plano e fica de fora; por município vale o plano mais
-    recente, e rascunho só vale quando não há plano. Quem decide o crédito é o juiz, não o nome do arquivo."""
-    padrao = re.compile(r"^(.+?)\s*[-–]\s*(?:PLANCON\s*)?(\d{4})\s*(RASCUNHO)?\s*\.pdf$", re.IGNORECASE)
+    """Casa Militar/RS — pasta pública de PLANCONs (SharePoint, sem login). `texto` é o JSON da listagem
+    (`listar_sharepoint`): [{name, webUrl}]. O nome do arquivo não tem padrão (535 arquivos: 'PLANCON - X.pdf',
+    'PlanCon_X_2025.pdf', 'Plano de Contingência Municipal 2025_X.pdf', só 'X.pdf'): tira-se o ruído e o
+    resto é o candidato a município, que `casar_com_ibge` confirma ou devolve como órfão. Sem ano no nome,
+    a categoria é `plano_nomeado` (existe, edição não lida); o juiz lê o documento. Por município vale o ano
+    mais recente; PDF antes de DOCX."""
+    ruido = re.compile(r"PLANO DE CONTING\w*(?: DE\b)?|PLAN ?CON\b|DEFESA CIVIL|MUNICIPAL|VERSAO\s*[\d.]+|\bRASCUNHO\b|\bCOMDEC\b")
     melhor = {}
     for it in json.loads(texto):
-        m = padrao.match(it["name"].strip())
-        if not m:
+        nome_arq, ext = it["name"].rsplit(".", 1) if "." in it["name"] else (it["name"], "")
+        if ext.lower() not in ("pdf", "doc", "docx", "url") or re.search(r"laudo|parecer|anexo", nome_arq, re.I):
             continue
-        nome = m.group(1).strip(" -–").title()
-        for prep in [" Da ", " De ", " Do ", " Das ", " Dos "]:
-            nome = nome.replace(prep, prep.lower())
-        rasc = bool(m.group(3))
-        ano = int(m.group(2))
-        a = {"nome": nome, "ano_edicao": ano, "url": it["webUrl"],
-             **({"categoria": "plano_elaboracao"} if rasc else {})}
-        k, peso = norm(nome), (not rasc, ano)
+        t = norm(re.sub(r"([a-zà-ÿ])([A-ZÀ-Ý])", r"\1 \2", nome_arq).replace("_", " "))
+        ano = re.search(r"\b(19|20)\d{2}\b", t)
+        nome = re.sub(r"[-–\d]+", " ", ruido.sub(" ", t)).strip()
+        if not nome:
+            continue
+        a = {"nome": nome.title(), "url": it["webUrl"],
+             **({"ano_edicao": int(ano.group(0))} if ano else
+                {"ano_edicao": 0, "rotulo_ano": "s/d", "categoria": "plano_nomeado"})}
+        k, peso = norm(nome), (a["ano_edicao"], ext.lower() == "pdf")
         if k not in melhor or peso > melhor[k][0]:
             melhor[k] = (peso, a)
     return [a for _, a in melhor.values()]
 
 
-def listar_onedrive(link: str, pausa: float = 2.0):
-    """Lista, sem login, os PDFs de uma pasta pública do OneDrive/SharePoint pela API de compartilhamento
-    anônimo (cliente identificado; 401/403/429/451 é recusa e para: `raise_for_status`, sem nova via).
-    Devolve o JSON de [{name, webUrl}] de todas as subpastas. Rodada na Action, não no sandbox."""
-    import base64, time, requests
-    cab = {"User-Agent": ua_de("repositórios estaduais de planos")}
-    tok = "u!" + base64.urlsafe_b64encode(link.encode()).decode().rstrip("=")
-    def get(url):
-        time.sleep(pausa)
-        r = requests.get(url, timeout=30, headers=cab)
-        r.raise_for_status()
-        return r.json()
-    raiz = get(f"https://api.onedrive.com/v1.0/shares/{tok}/root?expand=children")
-    if not raiz.get("children"):   # link do SharePoint: a expansão pode vir vazia; a rota direta lista a pasta
-        raiz["children"] = get(f"https://api.onedrive.com/v1.0/shares/{tok}/driveItem/children").get("value", [])
-    print(f"  [onedrive] raiz: {sorted(raiz)[:8]} · {len(raiz['children'])} filho(s)", file=sys.stderr)
-    pastas, achados = [raiz], []
+def listar_sharepoint(link: str, pausa: float = 2.0):
+    """Lista, sem login, os arquivos da pasta pública do SharePoint do link de compartilhamento: o GET do
+    link entrega os cookies da sessão anônima (a API anônima do OneDrive não os usa e devolve 0 filhos), e com
+    eles a REST do SharePoint lista cada pasta. Cliente identificado; 401/403/429/451 é recusa e para
+    (`raise_for_status`, sem nova via). Rodada na Action, não no sandbox."""
+    import time, requests
+    from urllib.parse import quote, urlparse
+    s = requests.Session()
+    s.headers["User-Agent"] = ua_de("repositórios estaduais de planos")
+    s.get(link, timeout=30).raise_for_status()
+    host, raiz = "https://" + urlparse(link).netloc, REPOSITORIOS["RS"]["pasta"]
+    site, pastas, achados = "/".join(raiz.split("/")[:3]), [raiz], []
     while pastas:
         pasta = pastas.pop()
-        itens = pasta.get("children") or []
-        prox = pasta.get("children@odata.nextLink") or pasta.get("@odata.nextLink")
-        while prox:
-            pag = get(prox)
-            itens += pag.get("value", [])
-            prox = pag.get("@odata.nextLink")
-        for it in itens:
-            if "folder" in it:
-                ref = it["parentReference"]
-                pastas.append({"children": get(f"https://api.onedrive.com/v1.0/drives/{ref['driveId']}/items/{it['id']}/children").get("value", [])})
-            else:
-                achados.append({"name": it["name"], "webUrl": it["webUrl"]})
+        time.sleep(pausa)
+        r = s.get(f"{host}{site}/_api/web/GetFolderByServerRelativeUrl('{quote(pasta.replace(chr(39), chr(39) * 2))}')",
+                  params={"$expand": "Folders,Files"}, headers={"Accept": "application/json;odata=verbose"}, timeout=30)
+        r.raise_for_status()
+        d = r.json()["d"]
+        pastas += [f["ServerRelativeUrl"] for f in d["Folders"]["results"] if f["Name"] != "Forms"]
+        achados += [{"name": f["Name"], "webUrl": host + quote(f["ServerRelativeUrl"])} for f in d["Files"]["results"]]
+    print(f"  [sharepoint] {len(achados)} arquivo(s)", file=sys.stderr)
     return json.dumps(achados)
 
 
@@ -190,7 +184,8 @@ REPOSITORIOS = {
         "fonte": "Defesa Civil RS (Casa Militar/SUBPDEC) — pasta pública de PLANCONs recebidos, via Prepara RS (22/10/2026)",
         "canal": "repositorio_estadual",
         "parser": parse_rs,
-        "carregar": listar_onedrive,
+        "pasta": "/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa Militar/SUBCHEFIAS/SUBCHEFIA DE PROTEÇÃO E DEFESA CIVIL/3. Departamento de Gestão de Riscos/Divisão Técnica de Riscos/Planos de contingência/TODOS PLANCONS RECEBIDOS",
+        "carregar": listar_sharepoint,
     },
     "PR": {"parser": None, "nota": "SISDC/CEPDEC-PR — planos gerados no sistema, sem lista pública de PDFs para parser (Protocolo de Busca v2, decisão pendente ii)"},
     "AM": {"parser": None, "nota": "repositório estadual conhecido, parser não implementado"},
@@ -244,6 +239,11 @@ def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
     for a in achados:
         chave = norm(a["nome"])
         oficial = oficiais.get(chave)
+        if oficial is None:   # o nome do arquivo traz o município e mais ruído: vale o maior nome oficial contido, por palavra inteira
+            dentro = [k for k in oficiais if re.search(rf"\b{re.escape(k)}\b", chave)]
+            junto = chave.replace(" ", "")   # 'TRESPALMEIRAS': espaço comido; só nomes longos, para não casar por acaso
+            dentro = dentro or [k for k in oficiais if len(k) > 9 and k.replace(" ", "") in junto]
+            oficial = oficiais[max(dentro, key=len)] if dentro else None
         if oficial is None:
             # tolerância a erro de grafia do órgão: similaridade alta e ÚNICA
             import difflib
@@ -258,7 +258,11 @@ def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
         if "lat" in oficial and "lon" in oficial:
             a["lat"], a["lon"] = oficial["lat"], oficial["lon"]
         casados.append(a)
-    return casados, orfaos
+    melhor = {}   # dois arquivos do mesmo município: fica o de edição mais recente
+    for a in casados:
+        if a["nome"] not in melhor or a["ano_edicao"] > melhor[a["nome"]]["ano_edicao"]:
+            melhor[a["nome"]] = a
+    return list(melhor.values()), orfaos
 
 
 def carregar_texto(uf: str, fixture: str | None) -> str:
@@ -345,22 +349,24 @@ def autoteste() -> int:
     iguais = diagnosticar("SE", [{"nome": "Poço Redondo", "ano_edicao": 2026,
                                   "rotulo_ano": "2026", "url": "https://y.se.gov.br/p.pdf"}], base)
     casos.append(("plano já registrado com categoria igual não gera proposta", iguais == []))
-    rs = parse_rs(json.dumps([
-        {"name": "PORTO ALEGRE - PLANCON 2024.pdf", "webUrl": "https://x/a"},
-        {"name": "PORTO ALEGRE - PLANCON 2022.pdf", "webUrl": "https://x/b"},
-        {"name": "BALNEARIO PINHAL - 2023.pdf", "webUrl": "https://x/c"},
-        {"name": "DOM PEDRO DE ALCANTARA - PLANCON 2025 RASCUNHO.pdf", "webUrl": "https://x/d"},
-        {"name": "Laudo de avaliação geotécnica Dom Pedro de Alcântara.pdf", "webUrl": "https://x/e"},
-        {"name": "ARROIO DO SAL - PLANCON 2021.pdf", "webUrl": "https://x/f"},
-        {"name": "ARROIO DO SAL - PLANCON 2023 RASCUNHO.pdf", "webUrl": "https://x/g"}]))
+    nomes = ["PLANCON - CERRO GRANDE DO SUL.pdf", "PlanCon_MORMAÇO_2025.pdf", "Saldanha Marinho.pdf",
+             "Plano de Contingência Municipal 2025_CachoeiraDoSul.pdf", "BRAGA_PLANCON.pdf",
+             "Plano de Contingencia de Nova Roma do Sul - Versão 1.0.pdf", "ITATI - PLANCON 2025.pdf",
+             "PLANCON - DOIS IRMÃOS.docx", "PLANCON - DOIS IRMÃOS.pdf", "PlanCon CAMPOS BORGES_2025.pdf",
+             "Plano de Contingência - Defesa Civil Farroupilha.docx", "anexo.xlsx"]
+    rs = parse_rs(json.dumps([{"name": n, "webUrl": "https://x/" + n} for n in nomes]))
     por = {a["nome"]: a for a in rs}
-    casos.append(("RS: laudo sem ano não é plano; sobra um achado por município", len(rs) == 4))
-    casos.append(("RS: vale o plano mais recente", por["Porto Alegre"]["ano_edicao"] == 2024))
-    casos.append(("RS: nome sem a palavra PLANCON também casa", por["Balneario Pinhal"]["ano_edicao"] == 2023))
-    casos.append(("RS: rascunho sozinho é plano em elaboração",
-                  por["Dom Pedro de Alcantara"]["categoria"] == "plano_elaboracao"))
-    casos.append(("RS: rascunho não rebaixa plano existente",
-                  por["Arroio do Sal"]["ano_edicao"] == 2021 and "categoria" not in por["Arroio do Sal"]))
+    casos.append(("RS: xlsx não é plano; um achado por município", len(rs) == 10))
+    casos.append(("RS: ruído do nome sai (PLANCON, plano de contingência, versão, defesa civil)",
+                  {"Cerro Grande Do Sul", "Nova Roma Do Sul", "Farroupilha", "Braga"} <= set(por)))
+    casos.append(("RS: camelCase e underscore viram nome", "Cachoeira Do Sul" in por and "Mormaco" in por))
+    casos.append(("RS: ano do nome vale; sem ano é plano nomeado, edição não lida",
+                  por["Itati"]["ano_edicao"] == 2025 and por["Braga"]["categoria"] == "plano_nomeado"
+                  and por["Braga"]["rotulo_ano"] == "s/d"))
+    casos.append(("RS: PDF vence DOCX do mesmo município", por["Dois Irmaos"]["url"].endswith(".pdf")))
+    ok_ibge, orf = casar_com_ibge([dict(a) for a in rs], "RS", [{"nome": n, "uf": "RS"} for n in
+                                  ["Mormaço", "Cerro Grande do Sul", "Itati"]])
+    casos.append(("RS: nome não casado na malha IBGE volta como órfão, não entra", len(ok_ibge) == 3 and len(orf) == 7))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'✓' if ok else '✗'} {n}")
