@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-22 · #963 · Financiamento: o que falta deixa de dizer "null"
 
-Três lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null" e a coluna de data ficava vazia em 78 células. O rótulo do risco passa a sair do que o ato declara; o número da portaria, a data e o período do repasse saem das palavras que a página já usa.
+Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null", a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura do mês a mês ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.
 
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
