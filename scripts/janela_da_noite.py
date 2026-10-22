@@ -31,8 +31,12 @@ USO
   python3 scripts/janela_da_noite.py --precisa-abrir    # "sim"/"nao" + código de saída
   python3 scripts/janela_da_noite.py --atraso           # minutos desde a hora prevista
   python3 scripts/janela_da_noite.py --abertura-atrasada # a abertura passou da tolerância?
+  python3 scripts/janela_da_noite.py --janela-de-merge  # "HH:MM HH:MM" UTC em que as faixas mesclam
+  python3 scripts/janela_da_noite.py --elo-suspenso noturno_diarios.yml  # código 0 se suspenso
 """
 import datetime as dt
+import json
+import os
 import pathlib
 import sys
 
@@ -42,6 +46,43 @@ sys.path.insert(0, str(RAIZ))
 JANELA_UTC = (1, 9)        # 01:00 às 09:00 UTC = 22h às 06h de Brasília
 ABERTURA_PREVISTA = "01:07"  # o cron principal da corrente, fora do minuto de pico
 ELO_DE_ABERTURA = "diarios"
+
+
+REGISTRO = RAIZ / "config" / "temporizadores.json"
+JANELA_DE_MERGE_NORMAL = ("09:00", "23:30")
+
+
+def regime(registro=None, hoje: dt.date = None) -> dict:
+    """O regime de prioridade vigente, ou {} quando a noite é a normal. Função pura se `registro` vem.
+
+    22/10/2026, editoria: Saúde e busca de planos acima da corrente noturna. O regime é DADO (bloco
+    `regime` de `config/temporizadores.json`), não número em código nem frase em prompt: este
+    arquivo, que já é o dono da janela, é quem o lê. Sem o bloco, ou com `nome: normal`, ou depois
+    de `vigente_ate.ou_data`, nada muda em relação à noite de sempre.
+    """
+    if registro is None:
+        try:
+            registro = json.loads(REGISTRO.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return {}
+    r = (registro or {}).get("regime") or {}
+    if str(r.get("nome") or "normal") == "normal":
+        return {}
+    fim = str((r.get("vigente_ate") or {}).get("ou_data") or "")
+    if fim and (hoje or dt.datetime.now(dt.timezone.utc).date()).isoformat() >= fim:
+        return {}
+    return r
+
+
+def janela_de_merge(registro=None, hoje: dt.date = None) -> tuple:
+    """(início, fim) UTC, "HH:MM", em que as faixas podem mesclar na `main`. Normal: 09:00–23:30."""
+    j = regime(registro, hoje).get("janela_de_merge_utc")
+    return tuple(j) if j and len(j) == 2 else JANELA_DE_MERGE_NORMAL
+
+
+def elo_suspenso(workflow: str, registro=None, hoje: dt.date = None) -> bool:
+    """Este workflow está suspenso pelo regime? Aceita o caminho e o `@ref` de GITHUB_WORKFLOW_REF."""
+    return os.path.basename(str(workflow or "").split("@")[0]) in (regime(registro, hoje).get("elos_suspensos") or [])
 
 
 TOLERANCIA_DA_ABERTURA_MIN = 25
@@ -293,6 +334,23 @@ def _autoteste() -> int:
        and not ensaio_pode_comecar(d(2026, 10, 13, 3, 0))
        and ensaio_pode_comecar(d(2026, 10, 12, 22, 59)))
 
+    # 22/10/2026: o regime de prioridade é dado, e sem ele a noite é a de sempre.
+    reg = {"regime": {"nome": "prioridade", "janela_de_merge_utc": ["00:00", "23:59"],
+                      "elos_suspensos": ["noturno_diarios.yml"],
+                      "vigente_ate": {"ou_data": "2026-11-05"}}}
+    h = dt.date(2026, 10, 22)
+    ok("sem bloco `regime` a janela de merge é 09:00–23:30 e nada está suspenso",
+       janela_de_merge({}, h) == ("09:00", "23:30") and not elo_suspenso("noturno_diarios.yml", {}, h))
+    ok("`nome: normal` equivale a sem regime",
+       regime({"regime": {"nome": "normal", "elos_suspensos": ["x.yml"]}}, h) == {})
+    ok("regime prioridade: merge 24 h", janela_de_merge(reg, h) == ("00:00", "23:59"))
+    ok("regime prioridade: suspende o listado, pelo caminho ou pelo nome, e só ele",
+       elo_suspenso("noturno_diarios.yml", reg, h)
+       and elo_suspenso("o/r/.github/workflows/noturno_diarios.yml@refs/heads/main", reg, h)
+       and elo_suspenso("noturno_saude.yml", reg, h) is False)
+    ok("o regime acaba sozinho em `ou_data`",
+       regime(reg, dt.date(2026, 11, 5)) == {} and janela_de_merge(reg, dt.date(2026, 11, 5)) == JANELA_DE_MERGE_NORMAL)
+
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
@@ -329,6 +387,11 @@ def main() -> int:
         base = dt.date.fromisoformat(noite_de(agora)) + dt.timedelta(days=JANELA_UTC[1] <= JANELA_UTC[0])
         print(int(dt.datetime(base.year, base.month, base.day, JANELA_UTC[1], tzinfo=dt.timezone.utc).timestamp()))
         return 0
+    if "--janela-de-merge" in argv:
+        print(" ".join(janela_de_merge()))
+        return 0
+    if "--elo-suspenso" in argv:    # código 0 = suspenso; o guarda e o despachante usam a mesma pergunta
+        return 0 if elo_suspenso(argv[argv.index("--elo-suspenso") + 1]) else 1
     from coletores_base import ler
     linhas = (ler("painel_da_noite.json") or {}).get("noites") or []
     if "--atraso" in argv:

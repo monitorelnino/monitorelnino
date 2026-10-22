@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #969 · Regime de prioridade como configuração
+
+Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
+
 ## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
 
 Um coletor novo procura, nos diários oficiais municipais, o plano de contingência de dengue, chikungunya e zika de cada município, capitais e maiores primeiro, e guarda o diário por hash. Cada município recebe um estatuto: menção localizada, não localizado até o corte, ou não verificado. Registramos as normas lidas (Minas Gerais, TCE de Santa Catarina). Peso zero: não entra na nota da Saúde.
