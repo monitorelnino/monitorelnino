@@ -9,7 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-22 · RS · Parser da pasta pública de planos de contingência do Rio Grande do Sul
+## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
+
+`atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB); dois CPF de terceiros saem do texto.
+## 2026-10-22 · #957 · Financiamento: a coleta de 12/10 é renovada
+
+`coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
+
+## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
 
 `atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS pelo link de compartilhamento (cookies da sessão e REST do SharePoint; a API anônima do OneDrive vinha vazia). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma; sem ano no nome a categoria é plano nomeado. Na listagem real, 484 de 497 municípios casam; 11 órfãos ficam declarados. O juiz classifica.
 
