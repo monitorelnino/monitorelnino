@@ -9,68 +9,74 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-14 a 2026-10-21 (1247 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-14 a 2026-10-21 (1273 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - consultar_querido_diario.py: erro em 4 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
 - descobrir_dominios.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
+- monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
 - verificar_links.py: erro em 2 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Cobertura em 15 dias
 
-cobertura 15d: 5007/5571 com verificação real até 2026-10-21 · por canal: web 1391 · QD 527 · consorciado 1651 · DOE 4175
+cobertura 15d: 5040/5571 com verificação real até 2026-10-21 · por canal: web 1472 · QD 527 · consorciado 1651 · DOE 4175
 
 ## Última execução de cada script
 
 | script | papel | última execução | duração | itens | status | erro |
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
-| `gerar_saude_municipio.py` | essencial | 2026-10-20 01:36 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-21 01:04 | 3 s | — | ok | — |
+| `gerar_saude_municipio.py` | essencial | 2026-10-21 01:32 | 0 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-21 01:41 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-21 08:48 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-17 01:58 | 13 s | 3 | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-18 03:56 | 1 s | — | ok | — |
-| `classificar_saude_no_plano.py` | coletor | 2026-10-20 01:36 | 1 s | — | ok | — |
-| `coletar_arboviroses_sinan.py` | coletor | 2026-10-20 01:35 | 61 s | — | ok | — |
-| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-20 01:27 | 421 s | — | ok | — |
-| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-20 01:27 | 21 s | — | ok | — |
-| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-20 01:35 | 3 s | — | ok | — |
-| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-20 01:34 | 8 s | — | ok | — |
+| `classificar_saude_no_plano.py` | coletor | 2026-10-21 01:32 | 1 s | — | ok | — |
+| `coletar_arboviroses_sinan.py` | coletor | 2026-10-21 01:31 | 16 s | — | ok | — |
+| `coletar_boletim_df_arboviroses.py` | coletor | 2026-10-21 01:23 | 281 s | — | ok | — |
+| `coletar_boletim_ms_dengue.py` | coletor | 2026-10-21 01:23 | 22 s | — | ok | — |
+| `coletar_boletim_pb_arboviroses.py` | coletor | 2026-10-21 01:31 | 4 s | — | ok | — |
+| `coletar_boletim_pe_arboviroses.py` | coletor | 2026-10-21 01:28 | 188 s | — | ok | — |
 | `coletar_cadastro_prioritarios.py` | coletor | 2026-10-18 03:51 | 34 s | — | ok | — |
 | `coletar_cobertura_qd.py` | coletor | 2026-10-18 03:56 | 6883 s | — | ok | — |
-| `coletar_dda.py` | coletor | 2026-10-20 01:26 | 56 s | — | ok | — |
-| `coletar_desfechos_saude.py` | coletor | 2026-10-20 01:18 | 474 s | — | ok | — |
+| `coletar_datasus_dbc.py` | coletor | 2026-10-21 01:05 | 41 s | — | ok | — |
+| `coletar_dda.py` | coletor | 2026-10-21 01:22 | 59 s | — | ok | — |
+| `coletar_desfechos_saude.py` | coletor | 2026-10-21 01:14 | 480 s | — | ok | — |
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-20 01:11 | 2897 s | 54 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-20 01:10 | 50 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-10-20 01:59 | 2339 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-10-21 04:14 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_espin.py` | coletor | 2026-10-17 01:56 | 124 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-18 03:52 | 4 s | — | ok | — |
-| `coletar_obitos_registro_civil.py` | coletor | 2026-10-20 01:36 | 34 s | — | ok | — |
+| `coletar_obitos.py` | coletor | 2026-10-21 01:09 | 15 s | — | ok | — |
+| `coletar_obitos_registro_civil.py` | coletor | 2026-10-21 01:31 | 51 s | — | ok | — |
 | `coletar_orientacoes_oficiais.py` | coletor | 2026-10-19 18:05 | 25 s | 6 | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-10-18 03:52 | 4 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-10-20 02:57 | 36 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-20 02:38 | 1141 s | — | ok | — |
-| `coletar_saude.py` | coletor | 2026-10-20 01:09 | 95 s | — | ok | — |
+| `coletar_saude.py` | coletor | 2026-10-21 01:04 | 94 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-10-21 04:14 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-18 03:52 | 3 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-10-18 03:26 | 10 s | — | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-10-21 07:38 | 93 s | — | ok | — |
+| `coletar_sih.py` | coletor | 2026-10-21 01:10 | 6 s | — | **erro** | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
+| `coletar_sinais_risco.py` | coletor | 2026-10-21 01:04 | 133 s | — | ok | — |
+| `coletar_sisab.py` | coletor | 2026-10-21 01:06 | 214 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-10-18 03:53 | 146 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-10-18 03:25 | 39 s | — | ok | — |
-| `coletar_transferencias_municipais.py` | coletor | 2026-10-21 07:40 | 63 s | — | ok | — |
+| `coletar_transferencias_municipais.py` | coletor | 2026-10-21 01:06 | 266 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-20 01:10 | 4 s | — | **erro** (4 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_dominios.py` | coletor | 2026-10-18 05:50 | 823 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
 | `descobrir_planos.py` | coletor | 2026-10-21 08:37 | 380 s | 42 | ok | — |
+| `desfechos_sus.py` | coletor | 2026-10-21 01:09 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-21 08:37 | 2 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-21 07:24 | 623 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-10-21 08:48 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_saude.py` | coletor | 2026-10-21 03:05 | 2328 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-21 08:31 | 358 s | 20027 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-10-21 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `monitorar_busca_web.py` | coletor | 2026-10-21 01:32 | 316 s | 2 | **erro** (4 seguidas) | ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4 |
 | `monitorar_imprensa_regional.py` | coletor | 2026-10-21 08:25 | 271 s | 40 | ok | — |
 | `monitorar_imprensa_saude.py` | coletor | 2026-10-21 08:29 | 104 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-10-21 08:37 | 4 s | 20027 | ok | — |
