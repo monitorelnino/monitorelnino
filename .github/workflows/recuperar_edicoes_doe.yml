@@ -21,7 +21,8 @@ jobs:
     with:
       nome: edicoes-doe
       grupo_de_concorrencia: noturno
-      timeout_minutos: 300
+      timeout_minutos: 340
+      precisa_searxng: true
       comandos: |
         prazo=20min consultar_querido_diario.py --alvos data/s2id_plancon.json
         prazo=140min descobrir_planos.py --municipios data/s2id_plancon.json
