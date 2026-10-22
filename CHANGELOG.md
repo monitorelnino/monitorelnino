@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #963 · Financiamento: o que falta deixa de dizer "null"
+
+Três lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null" e a coluna de data ficava vazia em 78 células. O rótulo do risco passa a sair do que o ato declara; o número da portaria, a data e o período do repasse saem das palavras que a página já usa.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
