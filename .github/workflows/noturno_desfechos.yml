@@ -29,13 +29,7 @@ jobs:
       nome: desfechos
       timeout_minutos: 100
       comandos: |
-        coletar_datasus_dbc.py --desfecho leptospirose
-        coletar_datasus_dbc.py --desfecho malaria
-        coletar_sisab.py --desfecho diarreias
-        desfechos_sus.py --derivar
-        coletar_obitos.py
-        coletar_sih.py --orcamento 2400
-        coletar_planos_arboviroses.py --orcamento 1500
+        coletar_planos_arboviroses.py --orcamento 600 --limite 40
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
