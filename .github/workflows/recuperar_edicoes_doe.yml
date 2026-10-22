@@ -21,13 +21,12 @@ jobs:
     with:
       nome: edicoes-doe
       grupo_de_concorrencia: noturno
-      timeout_minutos: 340
+      timeout_minutos: 70
       precisa_searxng: true
       comandos: |
-        prazo=20min consultar_querido_diario.py --alvos data/s2id_plancon.json
-        prazo=140min descobrir_planos.py --municipios data/s2id_plancon.json
-        prazo=140min monitorar_busca_web.py --alvos data/s2id_plancon.json --tamanho 571
-        prazo=2min coletar_declarado_nacional.py --s2id
+        prazo=10min consultar_querido_diario.py --alvos data/capitais_alvos.json
+        prazo=15min descobrir_planos.py --municipios data/capitais_alvos.json
+        prazo=30min monitorar_busca_web.py --alvos data/capitais_alvos.json --tamanho 27
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
