@@ -23,8 +23,9 @@ jobs:
       grupo_de_concorrencia: noturno
       timeout_minutos: 300
       comandos: |
-        prazo=8min descobrir_planos.py --municipios data/s2id_plancon.json --limite 6
-        prazo=8min monitorar_busca_web.py --alvos data/s2id_plancon.json --tamanho 2
+        prazo=20min consultar_querido_diario.py --alvos data/s2id_plancon.json
+        prazo=140min descobrir_planos.py --municipios data/s2id_plancon.json
+        prazo=140min monitorar_busca_web.py --alvos data/s2id_plancon.json --tamanho 571
         prazo=2min coletar_declarado_nacional.py --s2id
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
