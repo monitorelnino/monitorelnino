@@ -9,6 +9,11 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+
+## 2026-10-23 · Internações por saúde mental e por ICSAP, primeira leitura completa
+
+Rodada de dia pela válvula (coleta-dia): `internacoes_saude_mental.json` e `internacoes_icsap.json` nascem com a série mensal por UF, e os demais grupos do SIH e os óbitos registrados se atualizam. Agosto de 2026 segue parcial e fica declarado; ICSAP é piso (METODOLOGIA §120). Peso zero no MARÉ. Só dado, sem mudança de código nem de página.
+
 ## 2026-10-23 · #989 · Reconhecimento federal: o mesmo ato em dois links da notícia é um ato só
 
 `parse_noticia_midr` lia cada link de portaria da notícia do MIDR, e o mesmo ato aparece em mais de um: o lote de Acrelândia/AC saía "nº 2.659, nº 2.659" e a página do DOU era buscada duas vezes. O parser passa a ignorar o número já lido. Código +1/−0.
