@@ -200,7 +200,8 @@ function __init(){
     alvo.hidden = false;
   }
 
-  // 0 · MARÉ · Saúde (v0.3, Metodologia §31): prontidão = média (instrumento, cobertura populacional sanitária, antecipação); não verificada = cinza, sem número
+  // 0 · MARÉ · Saúde (v0.6, Metodologia §31): prontidão = média dos componentes que o arquivo declara
+  // com peso (hoje instrumento e antecipação, ½ cada); não verificada = cinza, sem número
   (function(){
     const M = (MSAUDE && MSAUDE.ufs) || {};
     const FX = {'estágio inicial': MonitorMapas.PALETA.faixas.inicial, 'em construção': MonitorMapas.PALETA.faixas.construcao, 'consolidado': MonitorMapas.PALETA.faixas.consolidado, 'avançado': MonitorMapas.PALETA.faixas.avancado, 'não verificado': MonitorMapas.PALETA.faixas.nao_verificado};
@@ -377,8 +378,8 @@ function titulosFatoSaude(){
   try {   // MARÉ · Saúde: estados por categoria do plano de saúde
     const UFS = Object.keys(SUF.uf || {}); const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
     const c = k => UFS.filter(u => k.includes(st(u))).length;
-    // 23/09/2026 (governança editorial §12, §32.8): este mapa pinta PRONTIDÃO SANITÁRIA — média de
-    // instrumento, cobertura populacional e antecipação (Metodologia §31). O título-fato anterior
+    // 23/09/2026 (governança editorial §12, §32.8): este mapa pinta PRONTIDÃO SANITÁRIA — média dos
+    // componentes de peso declarado (v0.6: instrumento e antecipação). O título-fato anterior
     // contava estados por STATUS DE INSTRUMENTO, que é o objeto da figura seguinte (boxStatus), e
     // saía quase idêntico ao dela. Título herdado da figura vizinha é o defeito que o §32.8 procura.
     // O fato agora é sobre o próprio objeto, e traz à tona a cobertura da verificação.
@@ -714,13 +715,6 @@ const AREAS = [
        antecedência é o que separa a v0.4 da régua publicada. */
     if ('coordenacao' in (((MS || {}).metodo || {}).pesos || {}) && window.MonitorCatalogo)
       MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever('saudeLeiIndice', 'saude.abertura.lei_e_indice_v04'));
-    /* A legenda do mapa do índice nomeia os componentes que ENTRAM na nota (v0.6, 22/10/2026):
-       quem decide é o peso declarado. O preenchedor estático escreve a mesma escolha na reserva do
-       HTML, para quem não roda JavaScript — os dois leem `metodo.pesos`, nenhum traz lista própria. */
-    if (!pesoSaude(MS, 'cobertura') && window.MonitorCatalogo)
-      MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever(
-        document.querySelector('[data-conteudo^="saude.estadual.monitor.legenda"]'),
-        'saude.estadual.monitor.legenda_dois_componentes'));
     const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
     if (rp.indice == null) {
       el('respNumSaude').textContent = 'sem coleta';

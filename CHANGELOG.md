@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #992 · Saúde: um identificador para a legenda do medidor
+
+A legenda da figura do MARÉ Saúde tinha duas entradas no catálogo — a da v0.5 ("um terço cada") e a da v0.6, escolhida em tempo de execução. O leitor via a certa; o índice de conteúdo, pelo qual a editoria aponta trechos, listava a da v0.5. Um identificador só, com o texto da v0.6, renomeação registrada, e o bloco que reescrevia a reserva em JavaScript sai. Código −6.
+
 ## 2026-10-23 · #991 · Brasília: o cartão do município mostra só o nome do ato
 
 O campo `documento` de Brasília/DF carregava a justificativa metodológica junto com o decreto, e o cartão a publicava ao leitor. A justificativa passa para `nota_metodologica`, que nenhuma página lê; o `documento` fica só com o decreto. Pontuação inalterada.
