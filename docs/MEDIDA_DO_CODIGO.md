@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **98.182 linhas** em **308 arquivos** .py/.js; **35 workflows**.
+- **98.997 linhas** em **309 arquivos** .py/.js; **36 workflows**.
 - **68 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 47.
-- **147 nomes de função** definidos em mais de um arquivo.
+- **149 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 53169 |
-| `scripts` | 37248 |
-| `assets` | 7052 |
+| `(raiz)` | 53954 |
+| `scripts` | 37270 |
+| `assets` | 7060 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -21,30 +21,30 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | arquivo | linhas |
 |---|---:|
 | `coletar_sinais_risco.py` | 3083 |
-| `coletores_base.py` | 2204 |
+| `coletores_base.py` | 2214 |
 | `verificar_pista_imprensa.py` | 1703 |
 | `coletar_doe.py` | 1627 |
-| `juiz.py` | 1422 |
-| `assets/js/monitor-de-riscos.js` | 1345 |
+| `juiz.py` | 1424 |
+| `assets/js/monitor-de-riscos.js` | 1349 |
 | `assets/js/index.js` | 1290 |
 | `scripts/verificar_regras_de_dado.py` | 1288 |
 | `scripts/ensaio_da_noite.py` | 1272 |
 | `julgar_saude.py` | 1210 |
-| `assets/js/saude.js` | 1179 |
+| `assets/js/saude.js` | 1173 |
 | `coletar_painel_am.py` | 1135 |
 | `coletar_edicoes_doe.py` | 1081 |
+| `julgar_e_aplicar_descobertas.py` | 1065 |
 | `recalcular_mare.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
-| `julgar_e_aplicar_descobertas.py` | 1024 |
 | `scripts/unir_conflito_de_rodada.py` | 1022 |
 | `gerar_pacote_blog.py` | 830 |
 | `julgar_filas.py` | 791 |
 | `gerar_imprensa_semana.py` | 789 |
+| `descobrir_planos.py` | 784 |
 | `scripts/verificar_repositorio.py` | 770 |
-| `coletar_s2id.py` | 762 |
+| `coletar_s2id.py` | 763 |
 | `scripts/pistas.py` | 710 |
 | `coletar_saude_estadual.py` | 702 |
-| `coletar_diarios_municipais.py` | 659 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 
@@ -85,8 +85,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `w` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `_data` | 3 | `gerar_financiamento_semana.py`, `scripts/verificar_frescor.py`, `scripts/verificar_regras_de_dado.py` |
 | `_iso` | 3 | `coletar_sinais_risco.py`, `gerar_dados_abertos.py`, `scripts/checagem_pre_noite.py` |
+| `_levanta` | 3 | `buscar_planos_fontes_abertas.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
 | `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
 | `_sem_acento` | 3 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py` |
 | `avaliar` | 3 | `scripts/checagem_pre_noite.py`, `scripts/testar_fixtures_localizacao.py`, `scripts/verificar_fila_nao_humana.py` |
 | `checar` | 3 | `verificar_financiamento.py`, `verificar_painel.py`, `verificar_saude.py` |
-| `classificar_tipo` | 3 | `coletar_sinais_risco.py`, `migrar_saude_instrumentos.py`, `scripts/pistas.py` |
