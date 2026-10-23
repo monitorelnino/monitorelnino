@@ -68,7 +68,7 @@ Atualizado em 23/10/2026.
 | `coletar_boletim_pe_arboviroses.py` | — | `saude_desfechos/ses_pe_arboviroses.json` | — | — | não |
 | `coletar_cadastro_prioritarios.py` | — | `cadastro_prioritarios_federal.json` | — | — | não |
 | `coletar_cobertura_qd.py` | — | `cobertura_qd.json` | — | — | não |
-| `coletar_datasus_dbc.py` | — | — | — | 1 | não |
+| `coletar_datasus_dbc.py` | — | — | — | 2 | não |
 | `coletar_dda.py` | — | `saude_desfechos/dda_cache.json`, `saude_desfechos/dda_serie.json`, `saude_desfechos/dda_serie_painel.json` | — | — | não |
 | `coletar_declarado_nacional.py` | — | `declarado_nacional.json`, `fontes_consultadas.json`, `fontes_declarado.json` | — | — | não |
 | `coletar_desfechos_saude.py` | — | — | — | 1 | não |
@@ -94,19 +94,20 @@ Atualizado em 23/10/2026.
 | `coletar_semiarido_sudene.py` | — | `enquadramento_federal.json` | — | — | não |
 | `coletar_sg_esus.py` | — | `saude_desfechos/sindrome_gripal_serie.json` | — | — | não |
 | `coletar_siconfi_182.py` | — | `despesa_182.json` | — | 1 | não |
-| `coletar_sih.py` | — | — | — | — | não |
+| `coletar_sih.py` | — | — | — | 1 | não |
+| `coletar_sim.py` | — | — | — | — | não |
 | `coletar_sinais_risco.py` | — | — | — | 1 | não |
 | `coletar_sisab.py` | — | — | — | — | não |
 | `coletar_srag_gripe.py` | — | `saude_desfechos/infogripe_diagnostico.json` | — | 3 | não |
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+7) | — | **179** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+7) | — | **180** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
 | `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 3 | não |
-| `desfechos_sus.py` | — | — | — | 4 | não |
+| `desfechos_sus.py` | — | — | — | 5 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 11 | não |
 | `gerar_blog.py` | — | — | — | — | não |

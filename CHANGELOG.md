@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.
 
+## 2026-10-23 · #1005 · Óbitos por causa básica (SIM)
+
+Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.
+
 ## 2026-10-23 · #1023 · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta
 
 No campo "Instrumento estadual de saúde", o estado sem documento localizado mostrava a etiqueta "ainda não verificado" e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.
@@ -29,7 +33,10 @@ A ficha de cada estado e o perfil do município publicavam "SE 202640": a sigla 
 
 O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis sem a linha "↑ n na semana", porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.
 
+## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários
+
 ## 2026-10-23 · #1012 · Busca de planos em fontes abertas lê os prioritários
+
 
 `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.
 
