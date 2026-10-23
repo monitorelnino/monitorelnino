@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #972 · A régua do valor pequeno mora no numBR
+
+O número em pt-BR arredondava para casas fixas, e valor medido abaixo de meia unidade da última casa saía como zero. A régua que separa zero de ausência vivia dentro da página da Saúde; passa para a função que todas as páginas usam: abaixo de meia unidade, um dígito significativo. A ficha da inicial e o formatador da Saúde deixam de repetir a decisão. Nenhum número muda com o dado de hoje.
+
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
