@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #1007 · Common Crawl: "No Captures found" é ausência com a consulta registrada
+
+O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.
+
 ## 2026-10-23 · #1003 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome
 
 A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-<nome>`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.
