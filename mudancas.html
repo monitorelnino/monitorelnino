@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Busca de planos: pasta oficial do RS reconhecida pelo juiz</dt>
+      <dd>A pasta da Casa Militar/Defesa Civil do RS (linkada por prepara.rs.gov.br) e os PDFs de casamilitar-rs.com.br entram nos padrões de fonte oficial do juiz; domínio parecido não casa. O portão do catálogo recusa chave de topo fora de `de_para`, e o índice de conteúdo entra na cadeia de derivados.</dd>
       <dt>23/10/2026 · Renomeações: um bloco só, o que o portão lê</dt>
       <dd>`conteudo/_renomeacoes.json` tinha um segundo bloco no fim, fora de `de_para`, e `verificar_catalogo.py` lê só `de_para`. A renomeação da legenda do medidor da Saúde, escrita ali ontem, ficava invisível ao portão: pedido de edição que a citasse viraria recusa sem explicação. As quatro entradas repetidas do Monitor de riscos saem e a da Saúde entra no bloco lido. Índice de conteúdo regenerado.</dd>
       <dt>23/10/2026 · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde</dt>
@@ -165,8 +167,6 @@
       <dd>O cartão do município na inicial passa a dizer antes a varredura registrada no livro de verificação e depois o que não foi localizado, numa frase só — a mesma do ladrilho da capital. Município cujo registro nomeia um documento fica com a frase de antes. E no Monitor de riscos, acima de 500 km da capital mais próxima, a temperatura máxima prevista declara lacuna em vez de valor.</dd>
       <dt>19/10/2026 · Proteja-se: a aba de dengue, com o que a fonte oficial diz</dt>
       <dd>O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.</dd>
-      <dt>19/10/2026 · O teto do guia em PDF sobe para três páginas</dt>
-      <dd>O portão do guia &quot;Leve com você&quot; cobrava no máximo duas páginas, teto escrito com quatro famílias de risco. Com a quinta (dengue e chikungunya) o guia passa a ter três; o teto vira a constante `PAGINAS_MAX = 3`, com caso de teste para o limite. Pedido da B2, destrava o #912. Linhas líquidas: +4.</dd>
     </dl>
   </section>
 </main>

@@ -100,6 +100,11 @@ CODEBOOK_VERSAO = "1.6 (15/10/2026)"
 PADROES_FONTE_PROVAVEL_OFICIAL = (
     ".gov.br", ".leg.br", ".jus.br", "diariomunicipal.com.br", "queridodiario.ok.org.br",
     "dosp.com.br", "sigpub.com.br", "imprensaoficial", "diariooficial", "doe.",
+    # 23/10/2026, central: pasta da Casa Militar/Defesa Civil do RS linkada por prepara.rs.gov.br (página
+    # oficial do Governo do RS, conferida em 22/10) e domínio dos atalhos da CREPDEC 07. Procedência, não
+    # regra do índice: o juiz segue lendo cada documento. Com `//` na frente, domínio parecido não casa.
+    "//rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/",
+    "//casamilitar-rs.com.br/pdfs/",
 )
 TEXTO_MINIMO = 400   # menos que isto não é documento: é resumo, menu de portal ou erro servido com 200
 # Piso do RECORTE do ato, que é outra pergunta: aqui já se sabe que a edição é documento, e ato curto
@@ -1270,6 +1275,12 @@ def autoteste() -> int:
         ("rota federal no texto derruba ex-ante para dúvida",
          etapa4_natureza(CANARIOS["plano_novo"]["texto"] + " Solicita-se reconhecimento federal "
                          "junto à SEDEC pelo S2iD.")[0] != "EX_ANTE"),
+        ("RS: pasta da Casa Militar e PDFs de casamilitar-rs.com.br são fonte oficial; domínio parecido não",
+         [etapa0_documento_primario(u, "x" * 500)[1] == "sem_documento_primario" for u in (
+             "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/_layouts/15/download.aspx?UniqueId=1",
+             "https://casamilitar-rs.com.br/pdfs/a.pdf",
+             "https://casamilitar-rs.com.br.falso.com/pdfs/a.pdf",
+             "https://rsgovbr-my.sharepoint.com/personal/outra_pessoa/x.pdf")] == [False, False, True, True]),
         ("fonte não oficial nunca chega à etapa 1",
          julgar(CANARIOS["plano_novo"]["texto"], nome="Bonito", uf="MS",
                 url="https://blog.exemplo.com/plano")["motivo"] == "sem_documento_primario"),
