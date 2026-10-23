@@ -198,10 +198,32 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
     return out
 
 
+ESPERAS_5XX = (30, 90)   # segundos; só indisponibilidade (5xx, timeout, conexão recusada), nunca 4xx nem muro
+
+
+def indisponivel(e: Exception) -> bool:
+    """Falha de serviço sobrecarregado, que se espera e se repete; recusa (4xx, muro) nunca. Pura."""
+    if isinstance(e, urllib.error.HTTPError):
+        return e.code >= 500
+    return isinstance(e, (TimeoutError, urllib.error.URLError, ConnectionError)) and not isinstance(e, MuroDeRobo)
+
+
+def com_espera(buscar, url: str, timeout: int, dormir=time.sleep) -> bytes:
+    for espera in (*ESPERAS_5XX, None):
+        try:
+            return buscar(url, timeout)
+        except Exception as e:  # noqa: BLE001
+            if espera is None or not indisponivel(e):
+                raise
+            dormir(espera)
+
+
 def buscar_pausado(url: str, timeout: int) -> bytes:
     """Uma pausa de PAUSA s antes de TODO pedido (o ritmo por host é de quem chama; ver `_respeitar_ritmo`)."""
-    time.sleep(PAUSA)
-    return buscar_uma_vez(url, timeout=timeout)
+    def uma(u, t):
+        time.sleep(PAUSA)
+        return buscar_uma_vez(u, timeout=t)
+    return com_espera(uma, url, timeout)
 
 
 def rodar(caminho: str, fontes: list, limite: int = None) -> int:
@@ -289,9 +311,30 @@ def autoteste() -> int:
         "401 e 451 também são recusa": lambda: all(classificar_erro(urllib.error.HTTPError("u", c, "x", {}, None))[0] == "recusa_de_fonte" for c in (401, 429, 451)),
         "muro de robô é recusa": lambda: classificar_erro(MuroDeRobo("u", "imperva"))[0] == "recusa_de_fonte",
         "nome só como palavra inteira": lambda: cita("Plano de Alfa", "Alfa") and not cita("Plano de Alfaville", "Alfa"),
+        "5xx espera e repete; 4xx e muro não": lambda: _espera_ok(),
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,
     }
     return rodar_autoteste(testes)
+
+
+def _espera_ok() -> bool:
+    n = {"c": 0}
+    def instavel(u, t):
+        n["c"] += 1
+        if n["c"] < 3:
+            raise urllib.error.HTTPError(u, 503, "x", {}, None)
+        return b"ok"
+    def recusa(u, t):
+        n["c"] += 1
+        raise urllib.error.HTTPError(u, 403, "x", {}, None)
+    esperas = []
+    ok = com_espera(instavel, "u", 1, dormir=esperas.append) == b"ok" and esperas == [30, 90]
+    n["c"] = 0
+    try:
+        com_espera(recusa, "u", 1, dormir=esperas.append)
+    except urllib.error.HTTPError:
+        return ok and n["c"] == 1
+    return False
 
 
 def _levanta(fn, *a) -> bool:
