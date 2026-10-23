@@ -64,8 +64,10 @@ const camadaMunicipalSaude = c => {
  * data, e não ganha um "2026-33" na cara do leitor. */
 function semanaEmDatas(ano, chave, curta) {
   if (!window.MonitorSemana || !chave) return '';
-  const n = Number(String(chave).split('-')[1]);
-  const a = Number(ano || String(chave).split('-')[0]);
+  // A chave vem "2026-33" nas séries e "202633" no sinal do InfoDengue: a leitura cobre as duas.
+  const parte = String(chave).includes('-') ? String(chave).split('-') : [String(chave).slice(0, 4), String(chave).slice(4)];
+  const n = Number(parte[1]);
+  const a = Number(ano || parte[0]);
   if (!a || !n) return '';
   // COM a preposição: quem chama escreve "na semana " e a função completa "de 16 a 22 de
   // agosto de 2026". Sem ela saía "na semana 16 a 22", que tropeça na leitura.
@@ -187,11 +189,11 @@ function __init(){
     if (!uf) { alvo.hidden = true; alvo.innerHTML = ''; return; }
     const m = (MSAUDE && MSAUDE.ufs && MSAUDE.ufs[uf]) || {};
     const riscos = (m.risco_projetado || []);
-    const dc = m.risco_atual || {};
+    const dc = m.risco_atual || {}; const semanaSinal = semanaEmDatas(null, dc.dengue_se);
     const cartaoCondicoes = '<div class="cartao"><h3 class="figura-titulo">Condições de risco projetadas</h3>'
       + (riscos.length ? '<p class="card-body">' + riscos.map(esc).join(', ') + '</p>' : '<p class="card-body u-muted">Ainda não verificado.</p>') + '</div>';
     const cartaoSinal = '<div class="cartao"><h3 class="figura-titulo">Sinal mais recente: dengue na capital</h3>'
-      + (dc.dengue_capital_nivel != null ? '<p class="card-body">Nível ' + dc.dengue_capital_nivel + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) + '.</p>' : '<p class="card-body u-muted">Ainda não coletado.</p>') + '</div>';
+      + (dc.dengue_capital_nivel != null ? '<p class="card-body">Nível ' + dc.dengue_capital_nivel + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + (semanaSinal ? ', na semana ' + semanaSinal : '') + '.</p>' : '<p class="card-body u-muted">Ainda não coletado.</p>') + '</div>';
     const cartaoCobertura = '<div class="cartao"><h3 class="figura-titulo">Cobertura do dado</h3>'
       + '<p class="card-body">Sinal de dengue: só a capital, não o estado inteiro. Documento estadual: ' + (m.verificado ? 'verificado' : 'ainda não verificado') + '.</p></div>';
     const cartaoInstitucional = '<div class="cartao"><h3 class="figura-titulo">MARÉ Saúde do estado</h3>'
@@ -294,12 +296,12 @@ function abrirDetalheSaude(uf){
    * isso não herda mais o escopo daquela função. */
   const M = (MSAUDE && MSAUDE.ufs) || {};
   const RS = (MSAUDE && MSAUDE.resposta) || {ufs: []};
-  const m = M[uf] || {}; const i = m.instrumento || {}; const c = m.cobertura || {}; const a = m.antecipacao || {}; const dc = m.risco_atual || {}; const u = (SUF.uf || {})[uf] || {};
+  const m = M[uf] || {}; const i = m.instrumento || {}; const c = m.cobertura || {}; const a = m.antecipacao || {}; const dc = m.risco_atual || {}; const semanaDengue = semanaEmDatas(null, dc.dengue_se); const u = (SUF.uf || {})[uf] || {};
   const linha = (k, v) => '<div class="field"><div class="k">' + k + '</div><div class="v">' + v + '</div></div>';
   document.getElementById('detailSaudeConteudo').innerHTML = '<div class="uf-name">' + esc(NOMES[uf] || uf) + ' <span class="sub">(' + uf + ')</span></div>'
     + (m.verificado ? '<div class="gauge-mini gauge-zone"><div class="gauge-head"><span class="gnum">' + String(m.prontidao).replace('.', ',') + '</span><span class="gden">/ 100 · ' + esc(m.faixa) + '</span></div><div class="gauge-track"><div class="gauge-fill" style="--galvo:' + Math.max(m.prontidao, 0.1) + '; width:' + m.prontidao + '%"></div></div></div>' : '<p class="placeholder">Ainda não verificado nesta camada: a bateria de busca de saúde não foi executada para o estado — não é ausência de documento.</p>')
     + '<div class="uf-region">' + esc(REG[uf] || '') + '</div>'
-    + linha('Instrumento estadual de saúde', '<span class="pill-nivel">' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + '</span> ' + esc(i.doc || u.doc || '—') + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao || u.orgao ? ' · ' + esc(i.orgao || u.orgao) : '') + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : ''))
+    + linha('Instrumento estadual de saúde', '<span class="pill-nivel">' + esc(ST_H[i.status] || i.status || 'ainda não verificado') + '</span>' + (i.doc || u.doc ? ' ' + esc(i.doc || u.doc) : '') + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao || u.orgao ? ' · ' + esc(i.orgao || u.orgao) : '') + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">fonte oficial →</a>' : ''))
     /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece em DUAS linhas, em linguagem
      * de leitor. O leitor não precisa saber que internamente são F1 e F2; precisa saber que
      * são duas coisas diferentes, e qual documento sustenta cada uma. Função não procurada
@@ -332,7 +334,7 @@ function abrirDetalheSaude(uf){
     + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
     + linha('Resposta sanitária', ((RS || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
     + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')
-    + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + ', SE ' + esc(String(dc.dengue_se || '—')) : 'sem coleta');
+    + linha('Dengue na capital', dc.dengue_capital_nivel != null ? 'nível ' + esc(dc.dengue_capital_nivel) + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + (semanaDengue ? ', na semana ' + semanaDengue : '') : 'sem coleta');
   const dlg = document.getElementById('detailSaude');
   if (!dlg) return;
   dlg.setAttribute('aria-label', 'Detalhe do estado');
@@ -750,7 +752,6 @@ const AREAS = [
       ['As duas famílias', 'multi'], ['Sem risco previsto registrado', 'nenhum']]
       .map(([rotulo, f]) => [rotulo, UFS.filter(uf => fam(uf) === f)]));
     // O dado não traz a numeração dos boletins lidos: a frase não a fixa (nº 1 a 3 envelhecia).
-    if (el('linhaRiscoSan')) el('linhaRiscoSan').textContent = 'boletins do Painel El Niño';
     MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)'], data: SUFd.corte});
   }).catch(_erroSaude("saude:1136"));
 

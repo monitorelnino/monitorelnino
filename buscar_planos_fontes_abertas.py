@@ -16,11 +16,13 @@ Trava estrutural: nunca escreve em estados.json, saude_uf.json, municipios.json,
 monitor_saude.json. Trava de campo: toda pista nasce com `documento_oficial_confirmado: null` e
 `promovivel: false`. Trava de processo: a saída vai à porta única (`scripts/pistas.gravar_lote`) e ao
 juiz; a camada declarada nunca vira documento. O resultado por município/fonte fica em
-`data/planos_busca_fontes.json`, que só este script escreve.
+`data/planos_busca/<UF>.json` (um arquivo por UF, só este script escreve): grupos de UF em paralelo não
+gravam o mesmo arquivo.
 
 Uso:
   python3 buscar_planos_fontes_abertas.py --autoteste
-  python3 buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json [--fontes S16,S25] [--limite N]
+  python3 buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json [--fontes S16,S25] [--limite N] [--uf SP]
+  (--alvos aceita `fila` de códigos ou `municipios` com `codigo_ibge`; retoma o que não foi consultado hoje)
 """
 import io
 import json
@@ -37,7 +39,7 @@ from descobrir_planos import dominios_do_municipio, identifica_prefeitura, RECUS
 from consultar_querido_diario import STATUS_DA_PISTA
 from scripts.pistas import gravar_lote
 
-RESULTADO = "planos_busca_fontes.json"
+PASTA = "planos_busca"
 PAUSA = 2.0
 TETO_POR_FONTE = 5
 PADRAO_PLANO = re.compile(r"plancon|placon|conting[eê]nc|plano[-_ /]*municipal[-_ /]*de[-_ /]*defesa|pdec", re.I)
@@ -242,27 +244,55 @@ def buscar_pausado(url: str, timeout: int) -> bytes:
     return com_espera(uma, url, timeout)
 
 
-def rodar(caminho: str, fontes: list, limite: int = None) -> int:
+ERROS_SEGUIDOS = 5   # a fonte que falha tantas vezes seguidas fica de fora do resto do run (cada falha custa 2 min de espera)
+
+
+def fontes_vivas(fontes: list, seguidos: dict) -> list:
+    """Fontes ainda consultáveis neste run; o que ficou de fora não é gravado e volta na próxima rodada. Pura."""
+    return [f for f in fontes if seguidos.get(f, 0) < ERROS_SEGUIDOS]
+
+
+def feito_hoje(feitos: dict, cod: str, fontes: list, hoje: str) -> bool:
+    m = feitos["municipios"].get(cod, {})
+    return all(m.get(f, {}).get("consultado_em") == hoje and m[f].get("situacao") != "erro" for f in fontes)
+
+
+def selecionar_fila(doc: dict, por_cod: dict, uf, feitos: dict, fontes: list, hoje: str) -> list:
+    """`fila` (códigos) ou `municipios` (com `codigo_ibge`, como em municipios_prioritarios.json); `--uf` recorta
+    e o que já foi consultado hoje é pulado, para o disparo seguinte retomar."""
+    fila = doc.get("fila") or [str(m["codigo_ibge"]) for m in doc.get("municipios", [])]
+    return [c for c in fila if c in por_cod and (not uf or por_cod[c]["uf"] == uf) and not feito_hoje(feitos, c, fontes, hoje)]
+
+
+def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int:
     doc = ler(caminho.removeprefix("data/"), {}) or {}
     por_cod, _ = referencia_ibge()
     hoje = hoje_editorial().isoformat()
-    feitos = ler(RESULTADO, {"municipios": {}})
-    feitos.setdefault("municipios", {})
-    fila = [c for c in doc.get("fila", []) if c in por_cod]
-    pistas, lidos = [], 0
+    ufs = [uf] if uf else sorted({r["uf"] for r in por_cod.values()})
+    feitos = {"municipios": {}}
+    for u in ufs:
+        feitos["municipios"].update(ler(f"{PASTA}/{u}.json", {}).get("municipios", {}))
+    fila = selecionar_fila(doc, por_cod, uf, feitos, fontes, hoje)
+    pistas, lidos, tocadas, seguidos = [], 0, set(), {}
     try:
         for cod in fila[:limite] if limite else fila:
             ref = por_cod[cod]
-            res = consultar_municipio(ref["nome"], ref["uf"], cod, fontes, buscar_pausado, hoje, lacunas=registrar_lacuna)
+            vivas = fontes_vivas(fontes, seguidos)
+            if not vivas:
+                print(f"[fontes] todas fora do ar depois de {ERROS_SEGUIDOS} erros seguidos; encerrando o run.")
+                break
+            res = consultar_municipio(ref["nome"], ref["uf"], cod, vivas, buscar_pausado, hoje, lacunas=registrar_lacuna)
             for f, r in res.items():
+                seguidos[f] = seguidos.get(f, 0) + 1 if r["situacao"] == "erro" else 0
                 pistas.extend(r.pop("pistas"))
                 feitos["municipios"].setdefault(cod, {})[f] = {"consultado_em": hoje, **r}
             lidos += 1
+            tocadas.add(ref["uf"])
     except KeyboardInterrupt:
         print(f"[prazo] interrompido depois de {lidos} município(s); gravando o que foi lido.")
     balanco = gravar_lote(pistas, origem="descoberta", ler_fn=ler, gravar_fn=gravar)
-    feitos["gerado_em"] = hoje
-    gravar(RESULTADO, feitos)
+    for u in tocadas:
+        gravar(f"{PASTA}/{u}.json", {"gerado_em": hoje, "municipios": {c: m for c, m in feitos["municipios"].items() if por_cod[c]["uf"] == u}})
     por = {}
     for m in feitos["municipios"].values():
         for f, r in m.items():
@@ -331,6 +361,16 @@ def autoteste() -> int:
         "muro de robô é recusa": lambda: classificar_erro(MuroDeRobo("u", "imperva"))[0] == "recusa_de_fonte",
         "nome só como palavra inteira": lambda: cita("Plano de Alfa", "Alfa") and not cita("Plano de Alfaville", "Alfa"),
         "5xx espera e repete; 4xx e muro não": lambda: _espera_ok(),
+        "fila: lê `municipios`, recorta a UF e retoma o que não foi consultado hoje": lambda: (lambda doc, ref, fe: (
+            selecionar_fila(doc, ref, None, fe, ["S16"], "d") == ["1", "2", "3"]
+            and selecionar_fila(doc, ref, "AC", fe, ["S16"], "d") == ["1", "2"]
+            and selecionar_fila(doc, ref, "AC", fe, ["S16", "S25"], "d") == ["1", "2"]
+            and selecionar_fila({"fila": ["1", "9"]}, ref, None, fe, ["S16"], "d") == ["1"]))(
+            {"municipios": [{"codigo_ibge": 1}, {"codigo_ibge": 2}, {"codigo_ibge": 3}]},
+            {"1": {"uf": "AC"}, "2": {"uf": "AC"}, "3": {"uf": "AL"}}, {"municipios": {}}) and
+            selecionar_fila({"fila": ["1", "2"]}, {"1": {"uf": "AC"}, "2": {"uf": "AC"}}, None,
+                            {"municipios": {"1": {"S16": {"consultado_em": "d"}}}}, ["S16"], "d") == ["2"],
+        "disjuntor: fonte com erros seguidos sai do run, as outras seguem": lambda: fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS}) == ["S16"] and fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS - 1}) == ["S16", "S25"],
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,
     }
     return rodar_autoteste(testes)
@@ -368,11 +408,11 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     if "--alvos" not in sys.argv:
-        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29] [--limite N]")
+        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29] [--limite N] [--uf SP]")
         return 1
     arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
     fontes = [f.strip().upper() for f in (arg("--fontes") or "S13,S16,S25,S29").split(",") if f.strip()]
-    return rodar(arg("--alvos"), fontes, int(arg("--limite")) if arg("--limite") else None)
+    return rodar(arg("--alvos"), fontes, int(arg("--limite")) if arg("--limite") else None, (arg("--uf") or "").upper() or None)
 
 
 if __name__ == "__main__":
