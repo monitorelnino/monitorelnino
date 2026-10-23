@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Óbitos por causa básica (SIM)</dt>
+      <dd>Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.</dd>
       <dt>23/10/2026 · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta</dt>
       <dd>No campo &quot;Instrumento estadual de saúde&quot;, o estado sem documento localizado mostrava a etiqueta &quot;ainda não verificado&quot; e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.</dd>
       <dt>23/10/2026 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado</dt>
@@ -54,7 +56,7 @@
       <dt>23/10/2026 · Busca de planos em fontes abertas: um arquivo por UF</dt>
       <dd>`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/&lt;UF&gt;.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.</dd>
       <dt>23/10/2026 · Defesa civil: o sexto cartão mostra a variação da semana</dt>
-      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.</dd>
+      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários</dd>
       <dt>23/10/2026 · Busca de planos em fontes abertas lê os prioritários</dt>
       <dd>`buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
@@ -165,8 +167,6 @@
       <dd>DF: 134 edições lidas em 143 datas, de 29/06 a 20/10, pelo JSON público do SINJ; 16 trazem termo de saúde. Dado da válvula unido à `main` pela base comum. Código: 0 linhas.</dd>
       <dt>20/10/2026 · Dado dos diários de RJ e RS</dt>
       <dd>RS: 91 edições lidas em 104 datas, de 27/07 a 19/10. RJ: acesso à edição por data provado, 89 edições sem texto extraível seguem para o OCR existente. Dado da válvula de 19/10 unido à `main` pela base comum. Código: 0 linhas.</dd>
-      <dt>20/10/2026 · Um só deploy para o domínio</dt>
-      <dd>O deploy de produção no domínio estava escrito três vezes: no publicador, na reposição urgente e no ensaio por botão. Agora é `scripts/repor_dominio.sh`, e o ensaio por botão sai, porque o domínio acompanha a `main` desde o #919. Quando e em que modo o domínio é reposto não muda; a reversão para a cortina segue pelo ramo `publico`. Saldo de código: −121 linhas.</dd>
     </dl>
   </section>
 </main>
