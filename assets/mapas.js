@@ -63,9 +63,15 @@
     if (pe) p.push('<span class="dica-fonte">' + esc(pe) + '</span>');
     return p.join('<br>');
   }
-  /** Número em pt-BR com casas fixas (vírgula decimal). */
+  /** Número em pt-BR com casas fixas (vírgula decimal). Valor pequeno não vira zero falso: abaixo de
+   *  meia unidade da última casa pedida, sai com um dígito significativo ("0,04", "0,009"), que é
+   *  curto e não mente. 23/10/2026, pedido da B2: a régua existia só dentro de `saude.js` e os
+   *  outros formatadores não a herdavam — agora mora aqui, onde todos passam. */
   function numBR(v, casas) {
-    return Number(v).toLocaleString('pt-BR', {minimumFractionDigits: casas || 0, maximumFractionDigits: casas || 0});
+    const x = Number(v), c = casas || 0;
+    return x.toLocaleString('pt-BR', x !== 0 && Math.abs(x) < 0.5 * Math.pow(10, -c)
+      ? {maximumSignificantDigits: 1}
+      : {minimumFractionDigits: c, maximumFractionDigits: c});
   }
 
   /** Contexto de projeção compartilhado por todos os mapas de uma página. */
