@@ -21,9 +21,10 @@ jobs:
     with:
       nome: edicoes-doe
       grupo_de_concorrencia: noturno
-      timeout_minutos: 300
+      timeout_minutos: 100
       comandos: |
-        prazo=280min coletar_edicoes_doe.py --recuperacao --desde 2026-06-29
+        prazo=60min buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json
+        prazo=10min consultar_querido_diario.py --alvos data/capitais_alvos.json
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
