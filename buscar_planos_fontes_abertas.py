@@ -20,7 +20,8 @@ juiz; a camada declarada nunca vira documento. O resultado por município/fonte 
 
 Uso:
   python3 buscar_planos_fontes_abertas.py --autoteste
-  python3 buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json [--fontes S16,S25] [--limite N]
+  python3 buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json [--fontes S16,S25] [--limite N] [--uf SP]
+  (--alvos aceita `fila` de códigos ou `municipios` com `codigo_ibge`; retoma o que não foi consultado hoje)
 """
 import io
 import json
@@ -242,13 +243,25 @@ def buscar_pausado(url: str, timeout: int) -> bytes:
     return com_espera(uma, url, timeout)
 
 
-def rodar(caminho: str, fontes: list, limite: int = None) -> int:
+def feito_hoje(feitos: dict, cod: str, fontes: list, hoje: str) -> bool:
+    m = feitos["municipios"].get(cod, {})
+    return all(m.get(f, {}).get("consultado_em") == hoje for f in fontes)
+
+
+def selecionar_fila(doc: dict, por_cod: dict, uf, feitos: dict, fontes: list, hoje: str) -> list:
+    """`fila` (códigos) ou `municipios` (com `codigo_ibge`, como em municipios_prioritarios.json); `--uf` recorta
+    e o que já foi consultado hoje é pulado, para o disparo seguinte retomar."""
+    fila = doc.get("fila") or [str(m["codigo_ibge"]) for m in doc.get("municipios", [])]
+    return [c for c in fila if c in por_cod and (not uf or por_cod[c]["uf"] == uf) and not feito_hoje(feitos, c, fontes, hoje)]
+
+
+def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int:
     doc = ler(caminho.removeprefix("data/"), {}) or {}
     por_cod, _ = referencia_ibge()
     hoje = hoje_editorial().isoformat()
     feitos = ler(RESULTADO, {"municipios": {}})
     feitos.setdefault("municipios", {})
-    fila = [c for c in doc.get("fila", []) if c in por_cod]
+    fila = selecionar_fila(doc, por_cod, uf, feitos, fontes, hoje)
     pistas, lidos = [], 0
     try:
         for cod in fila[:limite] if limite else fila:
@@ -331,6 +344,15 @@ def autoteste() -> int:
         "muro de robô é recusa": lambda: classificar_erro(MuroDeRobo("u", "imperva"))[0] == "recusa_de_fonte",
         "nome só como palavra inteira": lambda: cita("Plano de Alfa", "Alfa") and not cita("Plano de Alfaville", "Alfa"),
         "5xx espera e repete; 4xx e muro não": lambda: _espera_ok(),
+        "fila: lê `municipios`, recorta a UF e retoma o que não foi consultado hoje": lambda: (lambda doc, ref, fe: (
+            selecionar_fila(doc, ref, None, fe, ["S16"], "d") == ["1", "2", "3"]
+            and selecionar_fila(doc, ref, "AC", fe, ["S16"], "d") == ["1", "2"]
+            and selecionar_fila(doc, ref, "AC", fe, ["S16", "S25"], "d") == ["1", "2"]
+            and selecionar_fila({"fila": ["1", "9"]}, ref, None, fe, ["S16"], "d") == ["1"]))(
+            {"municipios": [{"codigo_ibge": 1}, {"codigo_ibge": 2}, {"codigo_ibge": 3}]},
+            {"1": {"uf": "AC"}, "2": {"uf": "AC"}, "3": {"uf": "AL"}}, {"municipios": {}}) and
+            selecionar_fila({"fila": ["1", "2"]}, {"1": {"uf": "AC"}, "2": {"uf": "AC"}}, None,
+                            {"municipios": {"1": {"S16": {"consultado_em": "d"}}}}, ["S16"], "d") == ["2"],
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,
     }
     return rodar_autoteste(testes)
@@ -368,11 +390,11 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     if "--alvos" not in sys.argv:
-        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29] [--limite N]")
+        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29] [--limite N] [--uf SP]")
         return 1
     arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
     fontes = [f.strip().upper() for f in (arg("--fontes") or "S13,S16,S25,S29").split(",") if f.strip()]
-    return rodar(arg("--alvos"), fontes, int(arg("--limite")) if arg("--limite") else None)
+    return rodar(arg("--alvos"), fontes, int(arg("--limite")) if arg("--limite") else None, (arg("--uf") or "").upper() or None)
 
 
 if __name__ == "__main__":
