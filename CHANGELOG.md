@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.
 
+## 2026-10-22 · #963 · Financiamento: o que falta deixa de dizer "null"
+
+Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null", a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.
+
 ## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
 `coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
 
