@@ -32,6 +32,10 @@ retirados. Uma função passa a escrever as três cópias do mesmo valor, nos do
 legenda, ficha do estado e dica do mapa seguem os pesos que o arquivo declara: componente de peso
 zero aparece rotulado, fora da média, nunca como zero por cento.
 
+## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
+
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
