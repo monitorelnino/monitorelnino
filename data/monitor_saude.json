@@ -1,13 +1,12 @@
 {
- "_governanca": "MARÉ · Saúde v0.3 (15/09/2026; v0.2 em 14/09; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Três componentes com pesos iguais (1/3), como no índice principal: instrumento estadual × cobertura populacional sanitária (população em município cujo plano localizado trata a saúde, crédito municipal do MARÉ × degrau/5 da leitura saude_no_plano; plano sem leitura = 0, contado) × antecipação. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número próprio. v0.5 (21/10/2026): índice nacional = média das 27 UFs, como o MARÉ Legal; a UF sem documento lido entra com crédito 0 nos componentes que dependem de documento e o estatuto dela viaja junto. Metodologia §31 e §115.",
- "versao": "0.5",
+ "_governanca": "MARÉ · Saúde v0.6: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Dois componentes, metade cada: instrumento estadual e antecipação. Índice nacional = média das 27 UFs, como o MARÉ Legal; a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil (população em município cujo plano localizado trata a saúde) é camada de peso zero, publicada ao lado e fora da média: o plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §118.",
+ "versao": "0.6",
  "gerado_em": "23/10/2026",
  "corte": "02/10/2026",
  "metodo": {
   "pesos": {
-   "instrumento": 0.3333333333333333,
-   "cobertura": 0.3333333333333333,
-   "antecipacao": 0.3333333333333333
+   "instrumento": 0.5,
+   "antecipacao": 0.5
   },
   "escada": {
    "NOVO": 100,
@@ -17,6 +16,9 @@
    "LAC": 0
   },
   "cobertura": {
+   "nome": "saúde no plano municipal de defesa civil",
+   "peso": 0,
+   "entra_na_nota": false,
    "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF",
    "creditos_municipais": {
     "plano": 1.0,
@@ -53,7 +55,7 @@
   "agregacao_nacional": {
    "formula": "Σ prontidao_nacional das 27 UFs / 27",
    "denominador": 27,
-   "uf_sem_documento_lido": "instrumento 0, antecipação 0, cobertura medida (credito_nacional)"
+   "uf_sem_documento_lido": "instrumento 0, antecipação 0 (credito_nacional)"
   },
   "faixas": {
    "estágio inicial": "0–25",
@@ -117,23 +119,20 @@
   "verificadas": 21,
   "nao_verificadas": 6,
   "por_faixa": {
-   "em construção": 9,
-   "avançado": 1,
-   "estágio inicial": 8,
-   "consolidado": 3
+   "em construção": 17,
+   "avançado": 4
   },
   "planos_municipais_lidos": 94,
   "planos_municipais_sem_leitura": 5,
   "denominador": 27,
-  "indice_nacional": 24.8,
+  "indice_nacional": 34.7,
   "por_estatuto": {
    "plano_localizado": 21,
    "plano_nao_localizado": 0,
    "nao_verificado": 6
   },
   "ufs_com_plano_localizado": 21,
-  "ufs_sem_plano_localizado": 6,
-  "media_das_verificadas": 31.9
+  "ufs_sem_plano_localizado": 6
  },
  "ufs": {
   "AC": {
@@ -150,7 +149,7 @@
     "temporada": null
    },
    "cobertura": {
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -180,7 +179,7 @@
   },
   "AL": {
    "verificado": true,
-   "prontidao": 28.4,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -192,7 +191,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": 0.1,
+    "peso": 0,
     "cobertura_pct": 0.1,
     "pop_coberta": 2289,
     "planos_lidos": 1,
@@ -218,11 +217,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 28.4
+   "prontidao_nacional": 42.5
   },
   "AM": {
    "verificado": true,
-   "prontidao": 84.1,
+   "prontidao": 100.0,
    "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
@@ -234,7 +233,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": 52.4,
+    "peso": 0,
     "cobertura_pct": 52.4,
     "pop_coberta": 2063547,
     "planos_lidos": 1,
@@ -260,7 +259,7 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 84.1
+   "prontidao_nacional": 100.0
   },
   "AP": {
    "verificado": false,
@@ -276,7 +275,7 @@
     "temporada": null
    },
    "cobertura": {
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -306,7 +305,7 @@
   },
   "BA": {
    "verificado": true,
-   "prontidao": 29.8,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -318,7 +317,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 4.4,
+    "peso": 0,
     "cobertura_pct": 4.4,
     "pop_coberta": 616279,
     "planos_lidos": 1,
@@ -344,11 +343,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 29.8
+   "prontidao_nacional": 42.5
   },
   "CE": {
    "verificado": true,
-   "prontidao": 28.3,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -360,7 +359,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -386,12 +385,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 28.3
+   "prontidao_nacional": 42.5
   },
   "DF": {
    "verificado": true,
-   "prontidao": 21.7,
-   "faixa": "estágio inicial",
+   "prontidao": 32.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -402,7 +401,7 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -428,11 +427,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 21.7
+   "prontidao_nacional": 32.5
   },
   "ES": {
    "verificado": true,
-   "prontidao": 39.6,
+   "prontidao": 32.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -444,7 +443,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "pontos": 53.8,
+    "peso": 0,
     "cobertura_pct": 53.8,
     "pop_coberta": 2062265,
     "planos_lidos": 72,
@@ -465,12 +464,12 @@
    },
    "risco_projetado": [],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 39.6
+   "prontidao_nacional": 32.5
   },
   "GO": {
    "verificado": true,
-   "prontidao": 50.0,
-   "faixa": "consolidado",
+   "prontidao": 75.0,
+   "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -481,7 +480,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -507,7 +506,7 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 50.0
+   "prontidao_nacional": 75.0
   },
   "MA": {
    "verificado": false,
@@ -523,7 +522,7 @@
     "temporada": null
    },
    "cobertura": {
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 1,
@@ -553,8 +552,8 @@
   },
   "MG": {
    "verificado": true,
-   "prontidao": 50.0,
-   "faixa": "consolidado",
+   "prontidao": 75.0,
+   "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -565,7 +564,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -591,11 +590,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 50.0
+   "prontidao_nacional": 75.0
   },
   "MS": {
    "verificado": true,
-   "prontidao": 28.3,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -607,7 +606,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -633,12 +632,12 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 28.3
+   "prontidao_nacional": 42.5
   },
   "MT": {
    "verificado": true,
-   "prontidao": 18.3,
-   "faixa": "estágio inicial",
+   "prontidao": 27.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -649,7 +648,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -675,11 +674,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 18.3
+   "prontidao_nacional": 27.5
   },
   "PA": {
    "verificado": true,
-   "prontidao": 28.3,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -691,7 +690,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -717,12 +716,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 28.3
+   "prontidao_nacional": 42.5
   },
   "PB": {
    "verificado": true,
-   "prontidao": 21.7,
-   "faixa": "estágio inicial",
+   "prontidao": 32.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -733,7 +732,7 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -759,11 +758,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 21.7
+   "prontidao_nacional": 32.5
   },
   "PE": {
    "verificado": true,
-   "prontidao": 31.6,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -775,7 +774,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 9.9,
+    "peso": 0,
     "cobertura_pct": 9.9,
     "pop_coberta": 893352,
     "planos_lidos": 1,
@@ -801,12 +800,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 31.6
+   "prontidao_nacional": 42.5
   },
   "PI": {
    "verificado": true,
-   "prontidao": 18.3,
-   "faixa": "estágio inicial",
+   "prontidao": 27.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -817,7 +816,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -843,12 +842,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 18.3
+   "prontidao_nacional": 27.5
   },
   "PR": {
    "verificado": true,
-   "prontidao": 24.1,
-   "faixa": "estágio inicial",
+   "prontidao": 32.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -859,7 +858,7 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "pontos": 7.4,
+    "peso": 0,
     "cobertura_pct": 7.4,
     "pop_coberta": 845017,
     "planos_lidos": 3,
@@ -885,12 +884,12 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 24.1
+   "prontidao_nacional": 32.5
   },
   "RJ": {
    "verificado": true,
-   "prontidao": 21.4,
-   "faixa": "estágio inicial",
+   "prontidao": 27.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -901,7 +900,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 9.2,
+    "peso": 0,
     "cobertura_pct": 9.2,
     "pop_coberta": 1470993,
     "planos_lidos": 4,
@@ -922,7 +921,7 @@
    },
    "risco_projetado": [],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 21.4
+   "prontidao_nacional": 27.5
   },
   "RN": {
    "verificado": false,
@@ -938,7 +937,7 @@
     "temporada": null
    },
    "cobertura": {
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -968,8 +967,8 @@
   },
   "RO": {
    "verificado": true,
-   "prontidao": 18.3,
-   "faixa": "estágio inicial",
+   "prontidao": 27.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -980,7 +979,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1006,7 +1005,7 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 18.3
+   "prontidao_nacional": 27.5
   },
   "RR": {
    "verificado": false,
@@ -1022,7 +1021,7 @@
     "temporada": null
    },
    "cobertura": {
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1052,7 +1051,7 @@
   },
   "RS": {
    "verificado": true,
-   "prontidao": 28.3,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -1064,7 +1063,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 3022,
     "planos_lidos": 1,
@@ -1090,11 +1089,11 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 28.3
+   "prontidao_nacional": 42.5
   },
   "SC": {
    "verificado": true,
-   "prontidao": 28.5,
+   "prontidao": 42.5,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -1106,7 +1105,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "pontos": 0.4,
+    "peso": 0,
     "cobertura_pct": 0.4,
     "pop_coberta": 29086,
     "planos_lidos": 4,
@@ -1132,12 +1131,12 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 28.5
+   "prontidao_nacional": 42.5
   },
   "SE": {
    "verificado": true,
-   "prontidao": 21.7,
-   "faixa": "estágio inicial",
+   "prontidao": 32.5,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -1148,7 +1147,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 1,
@@ -1174,12 +1173,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 21.7
+   "prontidao_nacional": 32.5
   },
   "SP": {
    "verificado": true,
-   "prontidao": 50.1,
-   "faixa": "consolidado",
+   "prontidao": 75.0,
+   "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -1190,7 +1189,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "pontos": 0.4,
+    "peso": 0,
     "cobertura_pct": 0.4,
     "pop_coberta": 193092,
     "planos_lidos": 4,
@@ -1216,7 +1215,7 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 50.1
+   "prontidao_nacional": 75.0
   },
   "TO": {
    "verificado": false,
@@ -1232,7 +1231,7 @@
     "temporada": null
    },
    "cobertura": {
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,

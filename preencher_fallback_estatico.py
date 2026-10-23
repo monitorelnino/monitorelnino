@@ -25,6 +25,12 @@ def ler(nome, padrao=None):
     return json.load(open(p, encoding="utf-8"))
 
 
+def ler_catalogo(pagina):
+    """Os textos públicos de uma página, da única fonte que os guarda (handover de 05/10/2026)."""
+    p = RAIZ / "conteudo" / f"{pagina}.json"
+    return (json.load(open(p, encoding="utf-8")).get("textos") or {}) if p.exists() else {}
+
+
 def fmt(v):
     return f"{v:.1f}".replace(".", ",")
 
@@ -47,6 +53,24 @@ def sub_attr(html, atributo, valor_do_atributo, novo_texto, contador=[0]):
     padrao = re.compile(r'(' + re.escape(atributo) + r'="' + re.escape(valor_do_atributo)
                         + r'"[^>]*>)[^<]*(<)')
     novo, n = padrao.subn(lambda m: m.group(1) + novo_texto + m.group(2), html, count=1)
+    contador[0] += n
+    return novo
+
+
+def medidor(html, fill_id, nome, rotulo, alvo, galvo, contador=[0]):
+    """Reescreve as TRÊS cópias do mesmo número num medidor: `data-alvo`, `--galvo` e o
+    `aria-label` do trilho.
+
+    Uma chamada por medidor, porque escrever só uma delas é o defeito: em 21/10 o número grande
+    do MARÉ Saúde passou a vir de `resumo.indice_nacional` e a barra ao lado dele ficou com o
+    valor anterior, escrito à mão. Quem lê sem JavaScript via a barra de um número e o número de
+    outro, e o leitor de tela ouvia o número velho.
+    """
+    padrao = re.compile(r'(id="' + re.escape(fill_id) + r'" data-alvo=")[\d.]+(" style="--galvo:)[\d.]+(;")')
+    novo, n = padrao.subn(
+        lambda m: m.group(1) + f"{alvo:.2f}" + m.group(2) + f"{galvo:.2f}" + m.group(3), html, count=1)
+    novo = re.sub(r'aria-label="Barra de progresso: ' + re.escape(nome) + r'[^"]*"',
+                  'aria-label="' + rotulo + '"', novo, count=1)
     contador[0] += n
     return novo
 
@@ -113,10 +137,9 @@ def preencher_index():
         h = sub_id(h, "respNum", ir_fmt, n)
         badge = f'<span class="gfaixa-pill">{n_mun_fmt} municípios · {fmt(fm)}% dos municípios</span>'
         h = re.sub(r'(<span class="gfaixa-badge" id="respBadge">)[^<]*(</span>)', lambda m: m.group(1) + badge + m.group(2), h, count=1)
-        h = re.sub(r'(id="respFill" data-alvo=")[\d.]+(" style="--galvo:)[\d.]+(;")', rf'\g<1>{alvo:.2f}\g<2>{max(ir, 0.1):.2f}\g<3>', h, count=1)
-        rotulo = f"Barra de progresso: índice de resposta em {ir_fmt} de 100 (população em municípios sob decreto)"
-        h = re.sub(r'aria-label="Barra de progresso: índice de resposta[^"]*"', f'aria-label="{rotulo}"', h, count=1)
-        n[0] += 1
+        h = medidor(h, "respFill", "índice de resposta",
+                    f"Barra de progresso: índice de resposta em {ir_fmt} de 100 "
+                    "(população em municípios sob decreto)", alvo, max(ir, 0.1), n)
 
     if h != h0:
         p.write_text(h, encoding="utf-8", newline="\n")
@@ -127,18 +150,6 @@ def preencher_saude():
     p = RAIZ / "saude.html"; h = p.read_text(encoding="utf-8"); h0 = h
     n = [0]
     mon = ler("monitor_saude.json", {}) or {}
-    suf = ler("saude_uf.json", {}) or {}
-    meta = ler("meta.json", {}) or {}
-    corte_saude = suf.get("corte") or "—"
-
-    h = sub_id(h, "corteSaude", corte_saude, n)
-
-    # 01/10/2026 (bloco C.1): o contador de semanas saiu do topo e no lugar entraram os três
-    # contadores. Eles contam DOCUMENTO LIDO, não categoria — e o fallback estático reproduz
-    # exatamente o que o JavaScript escreveria, para que a página sem JS não mostre "—".
-    ufs_saude = mon.get("ufs") or {}
-    com_plano = sum(1 for v in ufs_saude.values()
-                    if isinstance(v, dict) and (v.get("instrumento") or {}).get("doc"))
     # 02/10/2026 (bloco A): os cartões do topo passaram a ser os cinco indicadores dinâmicos. O
     # fallback escreve o que o JavaScript escreveria, para que a página sem JS não mostre "—".
     den = ler("saude_desfechos/dengue_sinan_serie.json", {}) or {}
@@ -169,23 +180,31 @@ def preencher_saude():
     if resumo_calor:
         acima = int(resumo_calor.get("severo") or 0) + int(resumo_calor.get("extremo") or 0)
         h = sub_id(h, "nCalorMun", f"{acima:,}".replace(",", "."), n)
-    # 17/10/2026: a mesma regra do `_qtdCartao` da página — sem busca não se imprime "0".
-    emerg = (mon.get("resposta") or {}).get("emergencias")
-    h = sub_id(h, "nEmergSaude", "sem dado" if emerg is None else ("zero" if emerg == 0 else str(emerg)), n)
-
-    # 02/10/2026 (contrato de layout): o sexto cartao e o proprio numero do MARE Saude, com o
-    # rotulo dizendo de quantos estados e a media enquanto nao forem 27 - a mesma frase que o
-    # JavaScript escreve, para que a pagina sem JS nao diga menos nem mais.
+    # 21/10/2026: o medidor do MARÉ Saúde no topo da página, pela mesma regra do MARÉ Legal. O
+    # número e a barra saem do MESMO valor: foi escrever só o número que deixou a barra em 31,9
+    # ao lado dele. Os três ids do antigo cartão (rótulo, fonte e o cartão de emergência) saíram
+    # da página em 02 e 19/10, e com eles as escritas que caíam no vazio.
     res = mon.get("resumo") or {}
     media = res.get("indice_nacional")
     if media is not None:
-        com_plano = res.get("ufs_com_plano_localizado") or 0
-        de = res.get("denominador") or 27
         h = sub_id(h, "nIndiceSaude", fmt(media), n)
-        h = sub_id(h, "rotuloIndiceSaude", "de 100, na prepara\u00e7\u00e3o publicada em sa\u00fade", n)
-        h = sub_id(h, "fonteIndiceSaude",
-                   f"MAR\u00c9, sobre documentos oficiais lidos \u00b7 {com_plano} de {de} estados "
-                   "com plano localizado", n)
+        h = medidor(h, "gaugeFillSaude", "MARÉ Saúde",
+                    f"Barra de progresso: MARÉ Saúde em {fmt(media)} de 100",
+                    media, max(media, 0.1), n)
+
+    # 22/10/2026 (v0.6, editoria): a legenda do mapa do índice nomeia os componentes que ENTRAM na
+    # nota, e quem decide isso é o peso declarado no arquivo, não uma lista escrita aqui. Trocar o
+    # identificador junto com o texto é o que faz o leitor do catálogo escrever a mesma frase: se
+    # só o texto trocasse, `MonitorCatalogo.aplicar` o sobrescreveria pela frase do identificador
+    # antigo antes de a página carregar o dado.
+    pesos = (mon.get("metodo") or {}).get("pesos") or {}
+    id_legenda = ("saude.estadual.monitor.legenda" if (pesos.get("cobertura") or 0) > 0
+                  else "saude.estadual.monitor.legenda_dois_componentes")
+    legenda = (ler_catalogo("saude").get(id_legenda) or "")
+    if legenda:
+        h = re.sub(r'data-conteudo="saude\.estadual\.monitor\.legenda[^"]*"',
+                   f'data-conteudo="{id_legenda}"', h, count=1)
+        h = sub_attr(h, "data-conteudo", id_legenda, legenda, n)
 
     if h != h0:
         p.write_text(h, encoding="utf-8", newline="\n")

@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **97.212 linhas** em **306 arquivos** .py/.js; **33 workflows**.
+- **98.182 linhas** em **308 arquivos** .py/.js; **35 workflows**.
 - **68 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 47.
-- **146 nomes de função** definidos em mais de um arquivo.
+- **147 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 52605 |
-| `scripts` | 36945 |
-| `assets` | 6949 |
+| `(raiz)` | 53169 |
+| `scripts` | 37248 |
+| `assets` | 7052 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -25,25 +25,25 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `verificar_pista_imprensa.py` | 1703 |
 | `coletar_doe.py` | 1627 |
 | `juiz.py` | 1422 |
-| `assets/js/monitor-de-riscos.js` | 1341 |
+| `assets/js/monitor-de-riscos.js` | 1345 |
+| `assets/js/index.js` | 1290 |
 | `scripts/verificar_regras_de_dado.py` | 1288 |
-| `assets/js/index.js` | 1278 |
-| `scripts/ensaio_da_noite.py` | 1219 |
+| `scripts/ensaio_da_noite.py` | 1272 |
 | `julgar_saude.py` | 1210 |
+| `assets/js/saude.js` | 1179 |
 | `coletar_painel_am.py` | 1135 |
-| `assets/js/saude.js` | 1103 |
-| `coletar_edicoes_doe.py` | 1074 |
+| `coletar_edicoes_doe.py` | 1081 |
 | `recalcular_mare.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `julgar_e_aplicar_descobertas.py` | 1024 |
-| `scripts/unir_conflito_de_rodada.py` | 1014 |
+| `scripts/unir_conflito_de_rodada.py` | 1022 |
 | `gerar_pacote_blog.py` | 830 |
-| `gerar_imprensa_semana.py` | 791 |
 | `julgar_filas.py` | 791 |
+| `gerar_imprensa_semana.py` | 789 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 762 |
+| `scripts/pistas.py` | 710 |
 | `coletar_saude_estadual.py` | 702 |
-| `scripts/pistas.py` | 701 |
 | `coletar_diarios_municipais.py` | 659 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)

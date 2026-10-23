@@ -18,8 +18,37 @@ const mostrarFrase = (alvo, texto) => { alvo.textContent = texto; alvo.hidden = 
    100 mil saía "0", e dizer zero onde houve 75 internações é afirmar o que não se mediu. Abaixo de
    0,05 vale um dígito significativo ("0,04", "0,009"), que é curto e não mente. */
 const decBR = v => (v == null || v === '' || isNaN(Number(v))) ? v
-  : Number(v).toLocaleString('pt-BR', Number(v) !== 0 && Math.abs(Number(v)) < 0.05
-      ? {maximumSignificantDigits: 1} : {maximumFractionDigits: 1});
+  : MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
+
+/* QUAIS COMPONENTES FORMAM A NOTA — 22/10/2026, decisão da editoria (v0.6).
+ *
+ * A cobertura municipal saiu da nota e passou a ser camada publicada ao lado dela. A página não
+ * traz a lista de componentes escrita aqui: ela lê o PESO que o arquivo declara. Componente de
+ * peso zero aparece com rótulo próprio e sem pontos, porque enumerá-lo entre os outros diria ao
+ * leitor que ele conta. É a mesma razão de o parágrafo de abertura não testar a versão: no dia em
+ * que o motor troca os pesos, a página já está certa, sem rodada.
+ */
+const pesoSaude = (o, c) => Number(((((o || {}).metodo || {}).pesos) || {})[c] || 0);
+const pesaSaude = c => pesoSaude(MSAUDE, c) > 0;
+const pesosIguaisSaude = () => { const v = Object.values((((MSAUDE || {}).metodo || {}).pesos) || {}).map(Number).filter(x => x > 0);
+  return v.length > 1 && v.every(x => Math.abs(x - v[0]) < 1e-9); };
+/* A camada, nas palavras da sua classe, pela régua de número do projeto (`_qtdCartao`): sem plano
+ * municipal localizado o percentual é ZERO POR CONSTRUÇÃO, e escrever "0 % da população" diria que
+ * se mediu cobertura nula onde não se leu documento nenhum — hoje seriam 15 das 27. Nenhuma classe
+ * é zero: percentual medido · localizado e não lido · não localizado até o corte. */
+const camadaMunicipalSaude = c => {
+  const lidos = Number(c.planos_lidos || 0), sem = Number(c.planos_sem_leitura || 0);
+  if (c.cobertura_pct == null) return 'sem leitura até o corte';
+  if (!lidos) return sem ? 'nenhum plano municipal lido até o corte · ' + sem + (sem === 1 ? ' localizado' : ' localizados')
+                         : 'nenhum plano municipal localizado até o corte';
+  /* Percentual abaixo da resolução do campo publicado também não é zero: no RS, 3.022 pessoas
+   * moram em município cujo plano trata a saúde e `cobertura_pct` traz 0,0. */
+  const pct = Number(c.cobertura_pct) === 0 && Number(c.pop_coberta || 0) > 0
+    ? 'menos de 0,1' : _qtdCartao(c.cobertura_pct);
+  return pct + ' % da população em município cujo plano trata a saúde ('
+    + lidos + (lidos === 1 ? ' plano municipal lido' : ' planos municipais lidos')
+    + (sem ? ' · ' + sem + ' sem leitura' : '') + ')';
+};
 
 /* A SEMANA VIRA DATA — item 0 do handover de 07/10/2026, regra da editoria para o site inteiro.
  *
@@ -179,7 +208,9 @@ function __init(){
     desenharMapa('mapaMonitor', 'legMonitor', uf => FX[(M[uf] || {}).faixa] || FX['não verificado'],
       uf => { const m = M[uf] || {}; if (!m.verificado) return '<em>ainda não verificado</em> — sem número'; const i = m.instrumento || {}, a = m.antecipacao || {};
         const c = m.cobertura || {};
-        return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + (Number(c.planos_lidos ?? 0) === 1 ? ' plano lido · ' : ' planos lidos · ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)' + '<br>quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
+        return '<em>' + esc(m.faixa) + ' · ' + esc(decBR(m.prontidao)) + '</em><br>instrumento ' + esc(decBR(i.pontos)) + ' (' + esc(ST_H[i.status] || i.status) + ')' + (i.data ? ' · ' + esc(i.data) : '') + '<br>' + (pesaSaude('cobertura')
+          ? 'cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0) + (Number(c.planos_lidos ?? 0) === 1 ? ' plano lido · ' : ' planos lidos · ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
+          : esc(camadaMunicipalSaude(c))) + '<br>quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)) + (i.temporada ? ' (edição ' + esc(i.temporada) + ')' : ''); },
       []);
     const R = (MSAUDE && MSAUDE.resumo) || {}; const pf = R.por_faixa || {};
     const lim = ((MSAUDE && MSAUDE.metodo) || {}).faixas || {};
@@ -286,11 +317,17 @@ function abrirDetalheSaude(uf){
       })()
     /* O handover de 02/10/2026 tirou a palavra "antecipação" da ficha: ela é nome interno de
      * componente, e o que o número mede é quando o ato saiu em relação ao primeiro boletim. */
-    + (m.verificado ? linha('Como o número é formado', 'documento estadual ' + esc(decBR(i.pontos))
-        + ' · cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0)
-        + (Number(c.planos_lidos ?? 0) === 1 ? ' plano municipal lido, ' : ' planos municipais lidos, ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'
-        + ' · quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos))
-        + ' → média ' + String(m.prontidao).replace('.', ',') + ' (pesos iguais)') : '')
+    + (m.verificado ? linha('Como o número é formado', [
+        'documento estadual ' + esc(decBR(i.pontos)),
+        ...(pesaSaude('cobertura') ? ['cobertura sanitária ' + esc(decBR(c.pontos) ?? '—') + ' (' + esc(c.planos_lidos ?? 0)
+          + (Number(c.planos_lidos ?? 0) === 1 ? ' plano municipal lido, ' : ' planos municipais lidos, ') + esc(c.planos_sem_leitura ?? 0) + ' sem leitura)'] : []),
+        'quando o ato saiu em relação ao primeiro boletim ' + esc(decBR(a.pontos)),
+      ].join(' · ') + ' → média ' + String(m.prontidao).replace('.', ',')
+        + (pesosIguaisSaude() ? ' (pesos iguais)' : '')) : '')
+    /* A camada de peso zero tem linha própria, rotulada, como o plano decenal já tinha: o leitor vê
+     * o que foi medido e que aquilo não entra na nota. */
+    + (m.verificado && !pesaSaude('cobertura')
+        ? linha('Saúde no plano municipal de defesa civil', esc(camadaMunicipalSaude(c)) + '; publicada ao lado da nota, não pontua') : '')
     + (m.camada === 'adaptacao' ? linha('Plano decenal de adaptação', 'registrado como estrutura; não pontua') : '')
     + linha('Resposta sanitária', ((RS || {}).ufs || []).includes(uf) ? 'emergência sanitária declarada no ciclo' : 'nenhuma emergência sanitária declarada localizada desde 29/06/2026')
     + linha('Risco sanitário projetado', (m.risco_projetado || []).length ? (m.risco_projetado || []).map(esc).join('; ') : 'sem registro')
@@ -677,6 +714,13 @@ const AREAS = [
        antecedência é o que separa a v0.4 da régua publicada. */
     if ('coordenacao' in (((MS || {}).metodo || {}).pesos || {}) && window.MonitorCatalogo)
       MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever('saudeLeiIndice', 'saude.abertura.lei_e_indice_v04'));
+    /* A legenda do mapa do índice nomeia os componentes que ENTRAM na nota (v0.6, 22/10/2026):
+       quem decide é o peso declarado. O preenchedor estático escreve a mesma escolha na reserva do
+       HTML, para quem não roda JavaScript — os dois leem `metodo.pesos`, nenhum traz lista própria. */
+    if (!pesoSaude(MS, 'cobertura') && window.MonitorCatalogo)
+      MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever(
+        document.querySelector('[data-conteudo^="saude.estadual.monitor.legenda"]'),
+        'saude.estadual.monitor.legenda_dois_componentes'));
     const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
     if (rp.indice == null) {
       el('respNumSaude').textContent = 'sem coleta';
