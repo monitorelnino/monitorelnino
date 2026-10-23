@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>22/10/2026 · Financiamento: o que falta deixa de dizer &quot;null&quot;</dt>
+      <dd>Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam &quot;nº null&quot;, a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.</dd>
       <dt>23/10/2026 · Alvos de SC na frente da busca de planos de arboviroses</dt>
       <dd>`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.</dd>
       <dt>23/10/2026 · Cartão do município corta em palavra inteira; portaria e data dos atos sem cabeçalho</dt>
@@ -165,8 +167,6 @@
       <dd>`coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.</dd>
       <dt>19/10/2026 · Diário oficial do DF lido por data</dt>
       <dd>O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF lista os diários da data e serve o PDF do DODF (2,7 MB em 19/10), enquanto o endereço próprio do diário não responde ao coletor. Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +86 (adaptador novo, recurso novo, com autoteste offline).</dd>
-      <dt>19/10/2026 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota</dt>
-      <dd>Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida.</dd>
     </dl>
   </section>
 </main>
