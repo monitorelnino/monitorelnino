@@ -1,6 +1,6 @@
 {
  "_governanca": "Cobertura declarada por UF e por canal (§166, 23/09/2026). DERIVADO de data/log_buscas.json — não editar à mão; rode gerar_cobertura_declarada.py. Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e status, jamais texto ou registro de pedido (regra editorial). A ficha do estado (index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026).",
- "gerado_em": "2026-10-22",
+ "gerado_em": "2026-10-23",
  "fonte": "data/log_buscas.json (log v2)",
  "nota_publica": null,
  "canais": [
@@ -77,12 +77,13 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-20",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 442,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 444,
      "verificacoes": 440,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico",
       "rede_social"
@@ -156,15 +157,17 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 1222,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 1224,
      "verificacoes": 1216,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico",
+      "portal da prefeitura",
       "rede_social"
      ]
     }
@@ -235,12 +238,13 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-19",
-     "ultima_tentativa": "2026-10-19",
-     "execucoes": 14,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 16,
      "verificacoes": 14,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico"
      ]
@@ -313,13 +317,14 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 285,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 286,
      "verificacoes": 283,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico"
      ]
@@ -392,13 +397,15 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 1798,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 1801,
      "verificacoes": 1781,
      "canais_do_log": [
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico",
+      "portal da prefeitura",
       "rede_social"
      ]
     }
@@ -470,13 +477,14 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-20",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 1258,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 1260,
      "verificacoes": 1226,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico",
       "rede_social"
@@ -626,14 +634,16 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 494,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 497,
      "verificacoes": 494,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -703,15 +713,17 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-20",
-     "ultima_tentativa": "2026-10-20",
-     "execucoes": 636,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 639,
      "verificacoes": 622,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico",
+      "portal da prefeitura",
       "rede_social"
      ]
     }
@@ -939,14 +951,16 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 375,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 378,
      "verificacoes": 374,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico",
+      "portal da prefeitura",
       "rede_social"
      ]
     }
@@ -1018,15 +1032,17 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-21",
-     "ultima_tentativa": "2026-10-21",
-     "execucoes": 316,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 362,
      "verificacoes": 308,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1096,15 +1112,16 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-20",
-     "ultima_tentativa": "2026-10-20",
-     "execucoes": 107,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 108,
      "verificacoes": 90,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1253,8 +1270,8 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 1161,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 1162,
      "verificacoes": 1148,
      "canais_do_log": [
       "DOE",
@@ -1262,7 +1279,8 @@
       "busca ativa de domínio",
       "descoberta renderizada",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1486,15 +1504,16 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 729,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 732,
      "verificacoes": 723,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1564,15 +1583,16 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 152,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 153,
      "verificacoes": 143,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1643,15 +1663,17 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 480,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 502,
      "verificacoes": 473,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1721,15 +1743,17 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-20",
-     "ultima_tentativa": "2026-10-20",
-     "execucoes": 107,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 110,
      "verificacoes": 98,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1799,15 +1823,16 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-19",
-     "ultima_tentativa": "2026-10-19",
-     "execucoes": 29,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 30,
      "verificacoes": 25,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1877,14 +1902,15 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 1738,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 1776,
      "verificacoes": 1738,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -1955,15 +1981,17 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 842,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 850,
      "verificacoes": 835,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
-      "julgamento_automatico"
+      "julgamento_automatico",
+      "portal da prefeitura"
      ]
     }
    },
@@ -2033,12 +2061,13 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-20",
-     "ultima_tentativa": "2026-10-20",
-     "execucoes": 174,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 175,
      "verificacoes": 174,
      "canais_do_log": [
       "busca ativa de domínio",
       "descoberta renderizada",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico"
      ]
@@ -2110,12 +2139,13 @@
     "outro": {
      "verificado": true,
      "ultima_verificacao": "2026-10-22",
-     "ultima_tentativa": "2026-10-22",
-     "execucoes": 623,
+     "ultima_tentativa": "2026-10-23",
+     "execucoes": 624,
      "verificacoes": 623,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
+      "fontes abertas",
       "juiz",
       "julgamento_automatico"
      ]
