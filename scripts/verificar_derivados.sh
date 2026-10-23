@@ -43,6 +43,7 @@ python3 scripts/gerar_mudancas.py >/dev/null   # 05/10/2026: `mudancas.html` e d
 # dia. O efeito era exato: PR que mexia no CHANGELOG passava no portao 12 e reprovava no de
 # pagina, com a instrucao de rodar um gerador que a cadeia nao conhecia. Derivado cobrado
 # tem de ser derivado regenerado aqui.
+python3 scripts/gerar_indice_de_conteudo.py >/dev/null   # 23/10/2026: derivado do catálogo, envelhecia a cada PR de texto
 python3 scripts/gerar_cadencia_de_publicacao.py >/dev/null   # 13/10/2026: a página lia o derivado e ninguém o regenerava
 python3 scripts/gerar_resumo_do_log.py >/dev/null   # item 4: resumo do log para a página (o log inteiro não vai ao navegador)
 # 28/09/2026 (§273): `scripts/gerar_saude_pipeline.py` SAIU desta cadeia. O painel é relatório da

@@ -100,6 +100,8 @@ CODEBOOK_VERSAO = "1.6 (15/10/2026)"
 PADROES_FONTE_PROVAVEL_OFICIAL = (
     ".gov.br", ".leg.br", ".jus.br", "diariomunicipal.com.br", "queridodiario.ok.org.br",
     "dosp.com.br", "sigpub.com.br", "imprensaoficial", "diariooficial", "doe.",
+    # 23/10/2026 (central): pasta de PLANCONs da Casa Militar/RS, linkada por prepara.rs.gov.br
+    "casamilitar_rs_gov_br", "casamilitar-rs.com.br/pdfs/",
 )
 TEXTO_MINIMO = 400   # menos que isto não é documento: é resumo, menu de portal ou erro servido com 200
 # Piso do RECORTE do ato, que é outra pergunta: aqui já se sabe que a edição é documento, e ato curto

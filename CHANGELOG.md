@@ -10,6 +10,45 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
+
+`casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.
+
+## 2026-10-23 · #999 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta
+
+`indice-de-conteudo.html` entra na cadeia de `verificar_derivados.sh`: deixa de envelhecer a cada PR de texto. `verificar_catalogo.py` recusa chave de topo de `_renomeacoes.json` fora de `de_para`, que o portão não lê. Código +6/−3.
+
+## 2026-10-23 · #997 · Renomeações: um bloco só, o que o portão lê
+
+`conteudo/_renomeacoes.json` tinha um segundo bloco no fim, fora de `de_para`, e
+`verificar_catalogo.py` lê só `de_para`. A renomeação da legenda do medidor da Saúde, escrita ali
+ontem, ficava invisível ao portão: pedido de edição que a citasse viraria recusa sem explicação.
+As quatro entradas repetidas do Monitor de riscos saem e a da Saúde entra no bloco lido. Índice de
+conteúdo regenerado.
+
+## 2026-10-23 · #995 · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde
+
+A resposta "o MARÉ Saúde mede a saúde da população?" ainda contava a cobertura municipal entre o
+que entra na nota. No método vigente ela é camada de peso zero, publicada ao lado do índice: a
+resposta passa a dizer plano, feitura para este El Niño e data, e a cobertura aparece ao lado, sem peso.
+Catálogo e texto de reserva da página.
+
+## 2026-10-23 · #994 · Os alertas do Cemaden e os avisos do Inmet voltam a ser coletados
+
+O regime de prioridade suspendeu o elo dos sinais físicos, único que reescreve os alertas vigentes. O arquivo passou de 24 horas, a Defesa civil mostrou "sem atualização desde 22/10" e os portões de frescor e de coerência da Imprensa reprovaram a `main`. O elo sai da lista de suspensos e entra na de mantidos: informação de agora não espera a noite.
+
+## 2026-10-23 · #993 · Espírito Santo: quatro planos do repositório estadual entram como pista
+
+Brejetuba, Domingos Martins, Dores do Rio Preto e Rio Bananal constavam na página da Defesa Civil estadual e não estavam na fila. Entram pela porta única de pistas, para o juiz ler; nenhum crédito antes disso. Dado apenas.
+
+## 2026-10-23 · #992 · Saúde: um identificador para a legenda do medidor
+
+A legenda da figura do MARÉ Saúde tinha duas entradas no catálogo — a da v0.5 ("um terço cada") e a da v0.6, escolhida em tempo de execução. O leitor via a certa; o índice de conteúdo, pelo qual a editoria aponta trechos, listava a da v0.5. Um identificador só, com o texto da v0.6, renomeação registrada, e o bloco que reescrevia a reserva em JavaScript sai. Código −6.
+
+## 2026-10-23 · #991 · Brasília: o cartão do município mostra só o nome do ato
+
+O campo `documento` de Brasília/DF carregava a justificativa metodológica junto com o decreto, e o cartão a publicava ao leitor. A justificativa passa para `nota_metodologica`, que nenhuma página lê; o `documento` fica só com o decreto. Pontuação inalterada.
+
 ## 2026-10-23 · Internações por saúde mental e por ICSAP, primeira leitura completa
 
 Rodada de dia pela válvula (coleta-dia): `internacoes_saude_mental.json` e `internacoes_icsap.json` nascem com a série mensal por UF, e os demais grupos do SIH e os óbitos registrados se atualizam. Agosto de 2026 segue parcial e fica declarado; ICSAP é piso (METODOLOGIA §120). Peso zero no MARÉ. Só dado, sem mudança de código nem de página.

@@ -273,11 +273,14 @@ def main() -> int:
     arq_comum = CATALOGO / "_comum.json"
     if arq_comum.exists():
         comum = (json.loads(arq_comum.read_text(encoding="utf-8")) or {}).get("textos") or {}
-    registradas = {}
+    registradas, problemas_ren = {}, []
     if RENOMEACOES.exists():
-        registradas = (json.loads(RENOMEACOES.read_text(encoding="utf-8")) or {}).get("de_para") or {}
+        _ren = json.loads(RENOMEACOES.read_text(encoding="utf-8")) or {}
+        registradas = _ren.get("de_para") or {}
+        problemas_ren = [f"_renomeacoes.json: chave de topo '{k}' fora de de_para (o portão não a lê)"
+                         for k in _ren if k not in ("_governanca", "de_para")]
 
-    problemas, paginas, entradas = [], 0, 0
+    problemas, paginas, entradas = list(problemas_ren), 0, 0
     for arq in sorted(CATALOGO.glob("*.json")):
         if arq.name.startswith("_"):
             continue
