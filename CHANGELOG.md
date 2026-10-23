@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · Busca de planos: o disparo cria os jobs
+
+`busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.
+
 ## 2026-10-23 · #964 · Fontes abertas de planos por município
 `buscar_planos_fontes_abertas.py` consulta, por município, LexML, Wayback, Common Crawl e dados.gov.br; achado entra pela porta única e vai ao juiz. Recusa e erro ficam nomeados, nunca viram "sem resultado". O Querido Diário passa a reportar todas as portas que falharam. Alvos das 27 capitais em `data/capitais_alvos.json`.
 

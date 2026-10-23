@@ -67,7 +67,9 @@ jobs:
     with:
       nome: busca-planos-${{ matrix.grupo }}
       grupo_de_concorrencia: busca-planos-${{ matrix.grupo }}
-      timeout_minutos: ${{ inputs.timeout_minutos }}
+      # `fromJSON`: o GitHub entrega o número do disparo como texto à entrada `number` do workflow
+      # chamado e recusa o job `buscar` sem criá-lo (23/10/2026, runs 39899121167 e 39899864972).
+      timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
       comandos: ${{ matrix.comandos }}
     secrets:
