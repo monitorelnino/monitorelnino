@@ -1,0 +1,75 @@
+# Busca de planos municipais: um job por grupo de UF, disparada de dia pela válvula.
+#
+# 22/10/2026 (regime de prioridade, HANDOVER_REGIME_DE_PRIORIDADE §6.1): a busca de planos corria
+# em um job só, em série por município, e pedi-la era trocar `comandos` de `recuperar_edicoes_doe.yml`
+# num ramo `coleta-dia/*`. Aqui os comandos são entrada do disparo e `scripts/expandir_busca_planos.py`
+# (dono da lista dos seis grupos) diz o que cada grupo roda: `{UF}` repete a linha por UF, `{UFS}` passa a
+# lista, linha sem marcador roda uma vez. Cada job é um `_coletor.yml`: rebase-e-push no próprio ramo,
+# marcador e prazo de sempre, e o PR de dado abre sozinho (um só, o passo confere se já existe).
+#
+# Disparo: `gh workflow run busca_planos.yml --ref coleta-dia/AAAA-MM-DD-tema -f comandos=...`, num
+# ramo `coleta-dia/*` criado da `main` (o ramo nunca é mesclado, só o PR de dado). Na `main` o
+# `_coletor.yml` só deixa coletar de noite. Sem horário e sem temporizador, como a válvula antiga.
+# Concorrência: um grupo por UF-grupo (`busca-planos-<grupo>`), fila, nunca cancelamento. A cadência
+# de acesso é a de sempre: Crawl-delay por host, cliente identificado, recusa respeitada.
+name: Busca de planos municipais (matriz por grupo de UF)
+
+on:
+  workflow_dispatch:
+    inputs:
+      comandos:
+        description: "Um comando por linha; {UF} repete por UF do grupo, {UFS} passa a lista, sem marcador roda uma vez"
+        required: true
+        type: string
+      grupos:
+        description: "todos, ou nomes separados por vírgula: N, NE1, NE2, CO, SE, S"
+        required: false
+        default: todos
+        type: string
+      timeout_minutos:
+        description: "Teto de cada job (máximo 340)"
+        required: false
+        default: 340
+        type: number
+      precisa_searxng:
+        description: "true quando algum comando consulta o metabuscador (busca web)"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read        # o job `vez` do coletor lê a fila de runs
+
+jobs:
+  partir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matriz: ${{ steps.matriz.outputs.matriz }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { persist-credentials: false, sparse-checkout: scripts }
+      - id: matriz
+        env:
+          COMANDOS: ${{ inputs.comandos }}
+          GRUPOS: ${{ inputs.grupos }}
+        run: |
+          matriz=$(printf '%s\n' "$COMANDOS" | python3 scripts/expandir_busca_planos.py --grupos "$GRUPOS")
+          echo "matriz=$matriz" >> "$GITHUB_OUTPUT"
+
+  buscar:
+    needs: partir
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.partir.outputs.matriz) }}
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: busca-planos-${{ matrix.grupo }}
+      grupo_de_concorrencia: busca-planos-${{ matrix.grupo }}
+      timeout_minutos: ${{ inputs.timeout_minutos }}
+      precisa_searxng: ${{ inputs.precisa_searxng }}
+      comandos: ${{ matrix.comandos }}
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

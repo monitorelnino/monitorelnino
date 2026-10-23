@@ -16,10 +16,43 @@ não pontuados permanecem na versão corrente.
 
 A relação nominal do módulo PLANCON do S2iD (SEDEC, por LAI) entra como camada declarada e datada, com o campo `s2id_plancon` em `declarado_nacional.json` e sem efeito na nota. A fila de 571 municípios sem documento ganha o portal da prefeitura como canal, ao lado do Querido Diário e da busca web, que passa a aceitar a fila. Toda pista entra pela porta única.
 
+## 2026-10-23 · #978 · Monitor de riscos: a tabela de avisos diz em palavras o que o travessão calava
+
+As colunas "Estados" e "Fenômeno" da tabela de avisos do Inmet saíam em travessão nas três linhas sem aviso. Grau com zero município passa a dizer "nenhum", que é o zero medido; a linha "Sem aviso", que não é grau de aviso, diz "não há aviso". O portão que já proibia travessão em cartão, ladrilho e ficha passa a olhar também a célula de tabela de figura, o quinto lugar onde o leitor o via.
+
+## 2026-10-23 · #976 · Repositórios estaduais de planos entram como pistas, não como plano direto
+
+`atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.
+## 2026-10-23 · #975 · Busca de planos em matriz por grupo de UF
+
+A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.
+
+## 2026-10-23 · #977 · Defesa civil: a variação da semana só ao lado do total que ela explica
+
+O instantâneo da variação nasce no publicador, fora da cadeia de derivados, e fica uma rodada atrás do consolidado que dá o número do cartão: em 23/10 o cartão trazia o total de hoje com a variação de ontem, sob a mesma data de atualização no crédito. A variação sai só quando o instantâneo descreve o mesmo total; ausente ou de outro total, o cartão declara a lacuna, com a data do instantâneo.
+
+## 2026-10-22 · #963 · Financiamento: o que falta deixa de dizer "null"
+
+Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null", a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.
+
+## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
+`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
+
+## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
+
+`coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
+
+## 2026-10-23 · #972 · A régua do valor pequeno mora no numBR
+
+O número em pt-BR arredondava para casas fixas, e valor medido abaixo de meia unidade da última casa saía como zero. A régua que separa zero de ausência vivia dentro da página da Saúde; passa para a função que todas as páginas usam: abaixo de meia unidade, um dígito significativo. A ficha da inicial e o formatador da Saúde deixam de repetir a decisão. Nenhum número muda com o dado de hoje.
 
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
+
+## 2026-10-22 · #959 · MARÉ Saúde: dois componentes e camada municipal de peso zero
+
+O MARÉ Saúde tem dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7, sobre as 27 UFs. Definição dos índices, release da Imprensa e portão de saúde seguem o mesmo método; METODOLOGIA §119.
 
 ## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
 
@@ -31,6 +64,27 @@ Um coletor novo procura, nos diários oficiais municipais, o plano de contingên
 ## 2026-10-22 · #957 · Financiamento: a coleta de 12/10 é renovada
 
 `coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
+
+## 2026-10-22 · #955 · A barra do medidor da Saúde vinha de outro número
+
+O preenchedor da reserva estática escrevia o número do MARÉ Saúde e nunca a barra ao lado dele,
+parada em 31,9 contra 24,8; e quatro das nove escritas daquela página caíam em identificadores já
+retirados. Uma função passa a escrever as três cópias do mesmo valor, nos dois medidores. Com isso,
+legenda, ficha do estado e dica do mapa seguem os pesos que o arquivo declara: componente de peso
+zero aparece rotulado, fora da média, nunca como zero por cento.
+
+## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
+
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
+
+## 2026-10-22 · #962 · Inicial: o universo de cada número, os quatro canais e duas listas a menos
+
+O medidor de decretos diz agora que o número grande é parcela da população, e a
+pílula ao lado, parcela dos municípios. O parágrafo das classes municipais ganha, do
+dado, quantos municípios cada canal alcançou e o que "verificação completa" significa.
+Pela raiz: portais e e-mails das Defesas Civis estaduais saem da transcrição à mão e
+vêm de `contatos_uf.json`; os dois mapas de categoria viram um, com `plano_nomeado`
+(47 municípios) e `decreto` (97) cobertos.
 
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 

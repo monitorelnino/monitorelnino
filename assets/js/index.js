@@ -63,7 +63,7 @@ function barraResposta(uf){
 // na saida dava "Olho d&amp;#39;Agua das Flores" no cartao, e fazia o nome do banco nao casar com o
 // da lista de referencia, que nao e escapada.
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, COBERTURA_UF, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, CONTATOS, COBERTURA_UF, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
   const cod = MUN_COD[uf + '|' + nome];
@@ -88,11 +88,18 @@ function renderContadorResposta(){
   const trilho = fill.closest('.gauge-track');
   if (trilho) trilho.setAttribute('aria-label', 'Barra de progresso: índice de resposta em ' + el('respNum').textContent + ' de 100 (população em municípios sob decreto)');
   MonitorMapas.credito('respFonte', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais estaduais e municipais'], data: RESP.gerado_em});
+  /* 22/10/2026 (§7.2 do handover da metodologia): o número grande é a parcela da POPULAÇÃO e a
+     pílula ao lado é a parcela dos MUNICÍPIOS — 17,0 e 17,7% são quase iguais e diziam coisas
+     diferentes sem que o cartão dissesse qual é qual. A linha nomeia o universo do número grande,
+     como a página da Saúde já faz no mesmo componente. */
+  if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
+    MonitorCatalogo.escrever('linhaResposta', 'index.resposta.linha',
+      {quando: RESP.gerado_em || ''}));
 }
 async function __load(){
   let __ref;
-  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO] = await Promise.all(
-    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta', 'verificacao_resumo']
+  [BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, __ref, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, CONTATOS] = await Promise.all(
+    ['geo_uf','percentual_uf','pontos_mapa','municipios','indice','estados','transferencias','municipios_ibge_referencia','meta','populacao_censo2022','recursos_uf','financiamento_uf','consist','atos_resposta', 'verificacao_resumo', 'contatos_uf']
       .map(f => fetch('data/' + f + '.json').then(r => {
         if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json');
         return r.json();
@@ -152,6 +159,13 @@ const kpiUFsLAC = Object.entries(MARE).filter(([uf,v]) => v.status_estadual === 
   if (C) C.pronto.then(() => {
     C.escrever('heroProcura', 'index.abertura.procura.molde', {n_municipios: total});
     C.escrever('cidadeAbertura', 'index.cidade.abertura.molde', {n_municipios: total});
+    /* 22/10/2026 (§7.3 do handover da metodologia): o que "verificação completa" quer dizer e
+       quantos municípios cada canal alcançou, sempre do dado — a METODOLOGIA afirmava o número e a
+       página não o mostrava. */
+    const niv = (VRESUMO && VRESUMO.totais_por_nivel) || {};
+    if (VRESUMO && VRESUMO.ultima_rodada_log) C.escrever('comoLerMunicipio', 'index.como_ler.municipio.molde',
+      {rodada: dataBR(VRESUMO.ultima_rodada_log), nacional: n(niv.nacional || 0),
+       estadual: n(niv.estadual || 0), completa: niv.municipal_completo || 0});
   });
   // 30/09/2026: o texto de abertura passou a ter UMA data só — a da última checagem. O "Dados até"
   // (corte) saiu: ele congelava com o arquivo de transferências e dizia ao leitor que o índice
@@ -430,6 +444,9 @@ const CAT_ROTULO = {
   plano_recorrente: 'plano recorrente', plano_antigo: 'plano vigente de ciclo anterior',
   plano_elaboracao: 'plano em elaboração', plano_nomeado: 'plano citado, documento não localizado',
   estrutura: 'estrutura de coordenação', coberto_estadual: 'coberta pelo plano estadual',
+  // `decreto` é o ato de RESPOSTA, peso zero (METODOLOGIA §170). Sem esta entrada, a capital que
+  // caísse nele seria rotulada "ainda não verificada" pela reserva — e o decreto foi localizado.
+  decreto: 'decreto de resposta localizado',
   nao_el_nino: 'ato alheio aos riscos do ciclo', nao_localizado: 'não localizado',
   nao_verificado: 'ainda não verificada'
 };
@@ -570,7 +587,8 @@ function selectUF(uf, tileEl){
       const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
       if (!m || m.instrumento === undefined) return '';
       // Vírgula decimal em texto público (A4-16).
-      const numBR = v => (v == null || isNaN(Number(v))) ? '—' : Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 1});
+      const numBR = v => (v == null || isNaN(Number(v))) ? '—'
+        : MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
       return `<div class="field"><div class="k">Componentes (um terço cada)</div><div class="v">instrumento operacional ${numBR(m.instrumento)} · estrutura de coordenação ${numBR(m.estrutura)} · cobertura populacional ${numBR(m.cobertura_pop)}</div></div>`;
     })()}
     ${(function(){ // INDICADOR, não componente: não entra na nota. Vazio quando não há data completa
@@ -616,13 +634,6 @@ const CANAL_LABEL = {DOM:'Diário Oficial dos Municípios', DOU:'Diário Oficial
   // oficial, e o leitor não tinha como saber que a matéria serviu para achar o documento, não
   // para provar o ato. Nenhum dos treze pontua — o rótulo era o problema inteiro.
   site_municipal:'site oficial do município', imprensa:'imprensa (descoberta)', '—':''};
-const CAT_LABEL_TBL = {
-  plano:['Plano preventivo',MonitorMapas.PALETA.categorias.plano], plano_antigo:['Plano vigente, de ciclo anterior',MonitorMapas.PALETA.categorias.plano_antigo],
-  plano_elaboracao:['Em elaboração',MonitorMapas.PALETA.categorias.plano_elaboracao], plano_novo:['Plano novo, dedicado ao ciclo',MonitorMapas.PALETA.categorias.plano_novo], plano_readaptado:['Plano readaptado para o ciclo',MonitorMapas.PALETA.categorias.plano_readaptado], plano_recorrente:['Plano recorrente, sazonal',MonitorMapas.PALETA.categorias.plano_recorrente], estrutura:['Estrutura de coordenação',MonitorMapas.PALETA.categorias.estrutura], decreto:['Decreto reativo',MonitorMapas.PALETA.categorias.decreto],
-  coberto_estadual:['Coberto pelo estado',MonitorMapas.PALETA.categorias.coberto_estadual], nao_el_nino:['Não é El Niño',MonitorMapas.PALETA.categorias.nao_el_nino],
-  nao_localizado:['Nada localizado',MonitorMapas.PALETA.categorias.nao_localizado],
-  nao_verificado:['Ainda não verificado',MonitorMapas.PALETA.categorias.nao_verificado],
-};
 // 15/09/2026: os relógios de prazo (renderPrazos) e a nota do período eleitoral saíram da página inicial; os prazos
 // vivem na METODOLOGIA desde 30/09/2026, quando as três telas de calendário saíram do código.
 MonitorMapas.credito('prazosFonte', {fontes: ['registro de marcos do Monitor (Lei 12.608, ADPF 743, MPs 1.367 e 1.384, calendário do TSE, boletins do Painel El Niño)'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
@@ -653,8 +664,10 @@ const UF_NOME = {}; BR_GEOJSON.features.forEach(f => UF_NOME[f.properties.sigla]
 const __estArr = Array.isArray(DATA) ? DATA : Object.values(DATA).flat();
 const EST = Object.fromEntries(__estArr.map(e => [e.uf, e]));
 const DOM_LINKS = {PB:'https://www.diariomunicipal.com.br/famup', AL:'https://www.diariomunicipal.com.br/ama', RN:'https://www.diariomunicipal.com.br/femurn', PA:'https://www.diariomunicipal.com.br/famep', SE:'https://www.diariomunicipal.com.br/sergipe'};
-const EMAILS = {AC:'defesacivil.acre.cepdec@gmail.com', AL:'defesacivil@bombeiros.al.gov.br', AP:'secretaria@defesacivil.ap.gov.br', AM:'comadec@comadec.am.gov.br', BA:'defesa.civil@sudec.ba.gov.br', CE:'defesacivil@cb.ce.gov.br', DF:'defesa.civil@ssp.df.gov.br', ES:'defesacivil@bombeiros.es.gov.br', GO:'cbmgo.codec@gmail.com', MA:'cbmma@cbm.ma.gov.br', MT:'gabinete@defesacivil.mt.gov.br', MS:'cedec@defesacivil.ms.gov.br', MG:'defesacivil@defesacivil.mg.gov.br', PA:'chefiagabinete@bombeiros.pa.gov.br', PB:'defesacivil.pb@gmail.com', PR:'defesacivil@defesacivil.pr.gov.br', PE:'codecipe@camil.pe.gov.br', PI:'defesacivilpiaui@gmail.com', RJ:'suop@defesacivil.rj.gov.br', RN:'defesacivil@rn.gov.br', RS:'defesa-civil@casamilitar.rs.gov.br', RO:'gabcmd@cbm.ro.gov.br', RR:'comandocbmrr@hotmail.com', SC:'gabinete@defesacivil.sc.gov.br', SP:'defesacivil@sp.gov.br', SE:'defesacivil@defesacivil.se.gov.br', TO:'defesacivil@bombeiros.to.gov.br'};
-const PORTAIS_UF = {AC:["https://defesacivil.ac.gov.br","defesacivil.ac.gov.br"], AL:["https://defesacivil.al.gov.br","defesacivil.al.gov.br"], AM:["https://www.defesacivil.am.gov.br","www.defesacivil.am.gov.br"], AP:["https://defesacivil.ap.gov.br","defesacivil.ap.gov.br"], BA:["https://defesacivil.ba.gov.br","defesacivil.ba.gov.br"], CE:["https://defesacivil.ce.gov.br","defesacivil.ce.gov.br"], DF:["https://defesacivil.df.gov.br","defesacivil.df.gov.br"], ES:["https://defesacivil.es.gov.br","defesacivil.es.gov.br"], GO:["https://bombeiros.go.gov.br","bombeiros.go.gov.br"], MA:["https://defesacivil.ma.gov.br","defesacivil.ma.gov.br"], MG:["https://defesacivil.mg.gov.br","defesacivil.mg.gov.br"], MS:["https://www.defesacivil.ms.gov.br/","www.defesacivil.ms.gov.br"], MT:["https://defesacivil.mt.gov.br","defesacivil.mt.gov.br"], PA:["https://www.bombeiros.pa.gov.br/defesacivil/","www.bombeiros.pa.gov.br/defesacivil"], PB:["https://paraiba.pb.gov.br/diretas/defesa-civil","paraiba.pb.gov.br/diretas/defesa-civil"], PE:["https://www.defesacivil.pe.gov.br/","www.defesacivil.pe.gov.br"], PI:["https://portal.pi.gov.br/defesacivil","portal.pi.gov.br/defesacivil"], PR:["https://www.defesacivil.pr.gov.br","www.defesacivil.pr.gov.br"], RJ:["https://www.defesacivil.rj.gov.br/","www.defesacivil.rj.gov.br"], RN:["tel:+558432325153","(84) 3232-5153 (sem portal)"], RO:["https://cbm.ro.gov.br","cbm.ro.gov.br"], RR:["https://www.cbm.rr.gov.br/","www.cbm.rr.gov.br"], RS:["https://defesacivil.rs.gov.br","defesacivil.rs.gov.br"], SC:["https://defesacivil.sc.gov.br","defesacivil.sc.gov.br"], SE:["https://defesacivil.se.gov.br","defesacivil.se.gov.br"], SP:["https://www.defesacivil.sp.gov.br","www.defesacivil.sp.gov.br"], TO:["https://defesacivil.to.gov.br","defesacivil.to.gov.br"]};   // 15/09/2026: espelho de data/contatos_uf.json (diretório oficial do MIDR; portais verificados e corrigidos por busca independente)   // 15/09/2026: espelho de data/contatos_uf.json (diretório oficial do MIDR; portais verificados e corrigidos por busca independente)   // 15/09/2026: espelho de data/contatos_uf.json (diretório oficial do MIDR; portais verificados)
+// 22/10/2026: a lista de portais e e-mails das Defesas Civis estaduais era um ESPELHO digitado à
+// mão de data/contatos_uf.json (errata de 15/09: duas listas do mesmo diretório já divergiram uma
+// vez). Passa a ler o arquivo, como proteja-se.js e proveniencia.js já fazem; com isso some também
+// o remendo do `tel:` no lugar do portal do RN, que o diretório do MIDR não traz.
 
 // ---- Conteúdo oficial reproduzido: guias de proteção por risco (fontes nomeadas) ----
 const GUIAS = {
@@ -970,9 +983,10 @@ function gerarRelatorioCidadao(uf, municipio){
   secao('Em emergência, ligue');
   par('199 — Defesa Civil     ·     193 — Corpo de Bombeiros     ·     192 — SAMU', {negrito:true, tam:12});
   item('Alertas oficiais no celular: envie seu CEP por SMS para 40199 (gratuito). O Defesa Civil Alerta avisa automaticamente, sem cadastro, em aparelhos 4G/5G.');
-  const p = PORTAIS_UF[uf];
+  const c = ((CONTATOS && CONTATOS.uf) || {})[uf] || {};
+  const endereco = c.portal ? c.portal.replace(/^https?:\/\//, '').replace(/\/$/, '') : (c.telefones || [])[0];
   const orgao = d.orgao || 'Defesa Civil estadual';
-  item(orgao + (p ? ' — ' + p[1] : '') + (EMAILS[uf] ? ' — ' + EMAILS[uf] : ''));
+  item(orgao + (endereco ? ' — ' + endereco : '') + (c.email ? ' — ' + c.email : ''));
 
   // ---- 2. Risco projetado ----
   secao('Risco projetado para ' + d.nome + ' neste ciclo');
@@ -987,7 +1001,10 @@ function gerarRelatorioCidadao(uf, municipio){
     item('Recurso preventivo estadual: ' + FIN[uf].instrumento + ' (' + FIN[uf].norma + '), repassado antes do dano, condicionado a ' + FIN[uf].condicionalidade + '.');
   if (municipio) {
     if (reg && reg.categoria !== 'nao_localizado') {
-      const lbl = CAT_LABEL_TBL[reg.categoria][0];
+      // 22/10/2026: havia DOIS mapas de categoria no mesmo arquivo. Este lia o segundo, que não
+      // aprendeu `plano_nomeado` (47 municípios, 08/10/2026) e estourava neles. Passa a ler
+      // `CAT_ROTULO`, o vocabulário que a página publica; o mapa duplicado saiu.
+      const lbl = CAT_ROTULO[reg.categoria] || CAT_ROTULO.nao_verificado;
       const doc_ = (reg.documento && reg.documento !== '—') ? ' — ' + reg.documento : '';
       const dat_ = (reg.data && reg.data !== '—') ? ' (' + reg.data + ')' : '';
       const fon_ = (reg.fonte && reg.fonte !== '—') ? '. Fonte: ' + reg.fonte : '';
@@ -1073,7 +1090,7 @@ function gerarRelatorioCidadao(uf, municipio){
 
   // ---- 6. Links úteis ----
   secao('Links úteis');
-  if (p && !/^tel:/.test(p[0])) link('Defesa Civil estadual', p[0]);
+  if (c.portal) link('Defesa Civil estadual', c.portal);
   if (reg && reg.url) link('Documento localizado (' + reg.fonte + ')', reg.url);
   if (DOM_LINKS[uf]) link('Diário Oficial dos Municípios', DOM_LINKS[uf]);
   link('Defesa Civil Alerta (cadastro e informações)', 'https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/defesa-civil-alerta');
