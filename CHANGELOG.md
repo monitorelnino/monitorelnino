@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #1017 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado
+
+A ficha de cada estado e o perfil do município publicavam "SE 202640": a sigla que saiu do site em 07/10 e a chave crua da fonte, que ali ainda se confunde com a sigla de Sergipe. Os dois passam a chamar `semanaEmDatas`, que já convertia a semana nas séries; sem o utilitário, a frase sai sem a data. Saem as duas linhas de boletim das figuras do mapa — uma nada escrevia, a outra repetia a legenda. Código −1.
+
 ## 2026-10-23 · #1011 · Busca de planos em fontes abertas: um arquivo por UF
 
 `buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/<UF>.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.
@@ -16,7 +20,8 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-23 · #1013 · Defesa civil: o sexto cartão mostra a variação da semana
 
 O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis sem a linha "↑ n na semana", porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.
-## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários
+
+## 2026-10-23 · #1012 · Busca de planos em fontes abertas lê os prioritários
 
 `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.
 
