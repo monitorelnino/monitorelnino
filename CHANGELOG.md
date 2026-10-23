@@ -10,6 +10,13 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #PR · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde
+
+A resposta "o MARÉ Saúde mede a saúde da população?" ainda contava a cobertura municipal entre o
+que entra na nota. No método vigente ela é camada de peso zero, publicada ao lado do índice: a
+resposta passa a dizer plano, feitura para este El Niño e data, e a cobertura aparece ao lado, sem peso.
+Catálogo e texto de reserva da página.
+
 ## 2026-10-23 · #993 · Espírito Santo: quatro planos do repositório estadual entram como pista
 
 Brejetuba, Domingos Martins, Dores do Rio Preto e Rio Bananal constavam na página da Defesa Civil estadual e não estavam na fila. Entram pela porta única de pistas, para o juiz ler; nenhum crédito antes disso. Dado apenas.
