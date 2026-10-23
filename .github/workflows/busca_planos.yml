@@ -65,8 +65,8 @@ jobs:
       matrix: ${{ fromJSON(needs.partir.outputs.matriz) }}
     uses: ./.github/workflows/_coletor.yml
     with:
-      nome: busca-planos-${{ matrix.grupo }}
-      grupo_de_concorrencia: busca-planos-${{ matrix.grupo }}
+      nome: busca-planos-x
+      grupo_de_concorrencia: busca-planos-x
       timeout_minutos: ${{ inputs.timeout_minutos }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
       comandos: ${{ matrix.comandos }}
