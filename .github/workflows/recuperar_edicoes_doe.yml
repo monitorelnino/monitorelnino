@@ -3,7 +3,7 @@
 # 17/10/2026 (pedido da A3): com 20 UFs por rota provada e edições de 50 a 500 páginas, a
 # recuperação não cabe no fim do elo `saude-estadual` (90 min, depois do juiz e da bateria). Elo
 # próprio, só por `workflow_dispatch` (sem horário, sem temporizador): na `main` roda só na janela
-# da noite, e de dia pela válvula `coleta-dia/*`, que abre o PR de dado. Retomável: o coletor grava
+# da noite. De dia a coleta vai por `coleta_de_dia.yml` (grupo próprio, não exclusivo). Retomável: o coletor grava
 # o que leu quando o prazo o interrompe e não relê. Grupo da noite: nunca escreve junto com a
 # saúde estadual, que roda o mesmo coletor.
 name: Recuperar edições dos diários estaduais
