@@ -465,15 +465,13 @@ def texto_pronto(cartoes: list[dict], indices: dict = None) -> str:
     frases = []
     edicao = I.get("edicao")
     legal, saude_i = I.get("mare_legal"), I.get("mare_saude")
-    verificadas = I.get("saude_verificadas")
     if edicao:
         frases.append(f"Edição de {edicao}.")
     if legal is not None and saude_i is not None:
-        media = "" if (verificadas or 0) >= 27 or not verificadas else ", média dos estados já verificados"
         frases.append(
             "O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios "
             f"para o El Niño 2026/2027, está em {str(legal).replace('.', ',')} de 100; o MARÉ "
-            f"Saúde, em {str(saude_i).replace('.', ',')} de 100{media}.")
+            f"Saúde, em {str(saude_i).replace('.', ',')} de 100.")
     planos, decretos = v("planos_na_semana"), v("decretos_na_semana")
     pop = v("populacao_decretos_na_semana")
     if planos is not None and decretos is not None:
@@ -733,8 +731,8 @@ def autoteste() -> int:
     checar("o release escreve zero por extenso", "nenhum município publicou plano" in rel)
     checar("o release concorda no singular", "1 município decretou" in rel)
     checar("o release arredonda a população", "1,5 milhão" in rel)
-    checar("o release diz que a média da saúde cobre os estados já verificados, sem o número",
-           "média dos estados já verificados" in rel and "21" not in rel)
+    checar("o release dá o índice nacional da saúde, sem a contagem de verificados",
+           "Saúde, em 31,8 de 100." in rel and "21" not in rel)
     checar("o release não usa 'ciclo' sozinho", "ciclo" not in rel)
     checar("o release traz a assinatura do Futura", "criação do Futura Evidence Lab" in rel)
     rel_vazio = texto_pronto([{"id": "planos_na_semana", "valor": None, "sem_coleta": True}], {})
