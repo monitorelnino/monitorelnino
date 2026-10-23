@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Defesa civil: sexto cartão do topo no instantâneo</dt>
+      <dd>O instantâneo `topo_defesa_civil.json` passa a guardar o cartão de decreto sem reconhecimento federal há mais de 30 dias (45 hoje, mesma régua da página) e a variação da semana (quem cruzou os 30 dias). Sem o campo `dias_sem_reconhecimento`, o cartão é sem coleta, nunca zero. Código +17/−0.</dd>
       <dt>23/10/2026 · Páginas da faixa: ausência declarada onde ficava vazio</dt>
       <dd>A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado deixava no ar a do estado anterior. Passou a sair na troca do estado. Sem o arquivo da semana, os seis cartões da Imprensa ficavam vazios; agora dizem &quot;sem coleta até o corte&quot;, frase que a página já escrevia. A data da fonte da aba de fogo vem do registro de preservação, e a palavra &quot;ciclo&quot; sai de duas abas.</dd>
       <dt>23/10/2026 · Fontes abertas de planos por município</dt>
@@ -165,8 +167,6 @@
       <dd>O endereço oficial do Plano de Adaptação na Saúde de Rondônia (SESAU/RO, resposta de 15/10/2026) entra em `ACRESCIMOS_DE_CANAL4[&quot;RO&quot;]`. Na próxima noite o coletor o consulta, e o julgamento do documento segue o fluxo existente. O endereço não abre da nuvem de trabalho (túnel 403); a verificação fica para o coletor. Linhas líquidas: +2.</dd>
       <dt>19/10/2026 · Fileira compacta de cartões sem órfão</dt>
       <dd>A variante compacta declarava até seis cartões numa linha, mas `auto-fit` decidia as colunas por aritmética: na Imprensa e na Defesa civil o sexto descia sozinho, 34 px mais baixo, e a fileira da Saúde quebrava a 1021 px. A CSS passa a declarar a linha e o limite de seis; com sete, duas linhas cheias. Sai também do mapa de focos a ressalva &quot;pontos: todos os satélites&quot;, que o dado tornou falsa.</dd>
-      <dt>19/10/2026 · Dengue, chikungunya e SRAG na forma comum dos desfechos</dt>
-      <dd>`desfechos_sus.py --derivar` escreve `dengue.json`, `chikungunya.json` e `srag.json` na forma comum, lendo os arquivos dos coletores que já existem, sem nova coleta e sem mudar o que a página lê. As semanas incompletas voltam como valor marcado parcial. METODOLOGIA §108.</dd>
     </dl>
   </section>
 </main>
