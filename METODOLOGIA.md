@@ -4384,3 +4384,13 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **O que passa a ser feito.** Cada diário em que o §117 localizou menção a plano de contingência de arboviroses já está preservado por hash, com o texto integral. Depois da busca, no mesmo elo, o texto é aberto e a edição recebe uma leitura em vocabulário fechado: *texto do plano na edição* (passagem sem ato antes dela e ao menos quatro seções típicas de plano nos 8.000 caracteres seguintes); *ato ou ata que cita o plano* (aprova, institui, considerando, artigo, ata, pauta); *citação sem ato identificado*; *passagem não reencontrada*; *texto integral indisponível*. Cada leitura traz o trecho citado (`data/planos_arboviroses_leitura.json`).
 
 **O que a leitura não afirma.** É leitura automática por regra. *Texto do plano na edição* é indício, não confirmação: o estatuto do município continua *menção localizada*, nenhuma pista é criada e a confirmação do documento é do juiz, pela porta única. Edição sem arquivo preservado é lacuna declarada, nunca ausência de plano. Peso zero.
+
+## 122. Óbitos por causa básica no SIM (23/10/2026)
+
+**O que cada série conta.** Óbitos não fetais da Declaração de Óbito (SIM, Ministério da Saúde), por mês de ocorrência e causa básica (CID-10), em sete arquivos: todas as causas e os seis grupos de causa do §110 que têm óbito (respiratórias J00 a J22, cardiovasculares I20 a I25 e I60 a I64, renal N17 a N19, desidratação E86, fumaça T59, calor T67). Saúde mental, ICSAP e hepatite A ficam só nas internações. Os grupos não se somam.
+
+**Rota.** Um arquivo por UF e ano no FTP público do DATASUS: o consolidado (`SIM/CID10/DORES`) onde existe, o preliminar (`SIM/PRELIM/DORES`, rota provada em 17/10/2026) nos anos seguintes. O ano preliminar só tem os meses até o último com registro; os seguintes não foram publicados e ficam fora da série, nunca como zero.
+
+**O que não está verificado, e vem dito no arquivo.** A UF é a do nome do arquivo; se é a de ocorrência ou a de residência, a medição (`coletar_sim.py --sondar`) ainda não foi lida. O atraso do registro do óbito também não: os dois meses mais recentes são marcados parciais por precaução. Nenhuma célula foi conferida contra o TabNet.
+
+**O que não muda.** Peso zero no MARÉ; o Monitor não atribui óbitos ao El Niño. O Registro Civil (`obitos.json`) segue como sinal precoce sem causa.

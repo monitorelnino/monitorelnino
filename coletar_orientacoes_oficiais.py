@@ -206,12 +206,13 @@ def coletar(buscar=cb.buscar, preservar=cb.preservar_evidencia, ler=cb.ler, grav
         pdf = url.endswith(".pdf")
         h = preservar(corpo, url, ".pdf" if pdf else ".html", "orientacoes_oficiais")
         texto = texto_do_pdf(corpo) if pdf else texto_do_html(corpo)
-        textos[url] = (familia, texto)
         reg = {"familia": familia, "orgao": orgao, "url": url, "consultado_em": hoje, "hash": h}
         if familia in ("dengue", "chikungunya"):
             reg["trechos"] = trechos_de_dengue(texto)
         elif familia in ("chuvas", "fogo"):
             reg["trechos"] = trechos_de_orientacao(texto)
+        # o item é conferido também contra os passos já extraídos (item de lista, quebra em `;`), que `frases` não separa
+        textos[url] = (familia, "\n".join([texto, *reg.get("trechos", [])]))
         fontes.append(reg)
         print(f"  ✓ {url[:90]} · {len(texto)} caracteres")
     achados, sem_fonte = {}, []
@@ -265,6 +266,7 @@ def autoteste() -> int:
             "derrubar um adulto.</p><ul><li>Evite deixar água parada em pneus e vasos.</li></ul>"
             "<script>x=1</script></html>").encode()
     t = texto_do_html(html)
+    item_quebrado = "Aumente ingestão de água, líquidos e membranas respiratórias úmidas"
     contatos = {"uf": {"AC": {"telefones": ["(68) 3215-4736"], "email": "a@ac.gov.br"},
                        "AL": {"telefones": ["(82) 9999-0000"], "email": "b@al.gov.br"}}}
     conf = conferir_contatos(contatos, "AC (68) 3215-4736 a@ac.gov.br · AL (82) 3315-2843 b@al.gov.br")
@@ -276,6 +278,10 @@ def autoteste() -> int:
             "Não atravesse áreas alagadas: água em movimento derruba um adulto", t) or "").startswith("Não atravesse"),
         "item que a fonte não diz fica sem trecho": lambda: trecho_que_sustenta(
             "Desligue a energia elétrica e feche o registro do gás", t) is None,
+        "linha de PDF quebrada: o passo emendado em `trechos` cobre o item": lambda: (
+            lambda pdf: trecho_que_sustenta(item_quebrado, pdf) is None
+            and trecho_que_sustenta(item_quebrado, "\n".join([pdf, *trechos_de_orientacao(pdf)])) is not None)(
+            "Aumente a ingestão de água e líquidos para manter as\nmembranas respiratórias úmidas e hidratadas."),
         "item curto demais não ganha fonte": lambda: trecho_que_sustenta("Beba água", t) is None,
         "só os itens do guia entram": lambda: sorted(itens_do_guia(cat)) == [
             "proteja-se.guia-chuvas.item", "proteja-se.guia-chuvas.item_12"],

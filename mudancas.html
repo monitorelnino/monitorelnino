@@ -48,7 +48,11 @@
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
       <dt>23/10/2026 · Portão de escritores: a válvula de busca de planos não é a busca web</dt>
-      <dd>O assunto &quot;busca-planos-N automático&quot; era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.</dd>
+      <dd>O assunto &quot;busca-planos-N automático&quot; era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso. ## 2026-10-23 · SIM · Primeira leitura dos óbitos por causa Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (respiratórias, cardiovasculares, renal, desidratação, fumaça, calor), 27 UFs, jan/2019 a ago/2026, pela válvula. Os dois meses mais recentes são parciais; território do arquivo e atraso do registro seguem não verificados. Dado puro, código 0.</dd>
+      <dt>23/10/2026 · Orientações oficiais: item do guia confere também contra os passos emendados</dt>
+      <dd>O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.</dd>
+      <dt>23/10/2026 · Óbitos por causa básica (SIM)</dt>
+      <dd>Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.</dd>
       <dt>23/10/2026 · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta</dt>
       <dd>No campo &quot;Instrumento estadual de saúde&quot;, o estado sem documento localizado mostrava a etiqueta &quot;ainda não verificado&quot; e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.</dd>
       <dt>23/10/2026 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado</dt>
@@ -56,7 +60,7 @@
       <dt>23/10/2026 · Busca de planos em fontes abertas: um arquivo por UF</dt>
       <dd>`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/&lt;UF&gt;.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.</dd>
       <dt>23/10/2026 · Defesa civil: o sexto cartão mostra a variação da semana</dt>
-      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.</dd>
+      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários</dd>
       <dt>23/10/2026 · Busca de planos em fontes abertas lê os prioritários</dt>
       <dd>`buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
@@ -163,10 +167,6 @@
       <dd>A seção única da Saúde passa a treze cartões: entram internações respiratórias, cardíacas, renais, desidratação, hepatite A, fumaça e calor, sem mapa e sem detalhe. Na consulta do município, decreto municipal e reconhecimento federal viram duas linhas, cada uma com a sua fonte. O número do cartão deixa de arredondar para zero um valor medido: abaixo de 0,05 vale um dígito significativo.</dd>
       <dt>21/10/2026 · Vigia repõe o domínio atrás da main</dt>
       <dd>O vigia diário (`verificar_publicado.yml`) passa a repor o domínio pelo `repor_dominio.sh` quando a integridade diverge da `main`, confere de novo e abre Issue no registro privado se a reposição falhar. O portão de reposição agora prova que o workflow de portões citado pelo publicador existe e dispara em `pull_request`. ## 2026-10-20 · Releitura das edições sem texto O coletor dos diários oficiais relê uma vez as edições marcadas sem texto extraível quando muda a versão do leitor. Corrige as 89 edições do RJ lidas antes do ajuste de leitura.</dd>
-      <dt>20/10/2026 · Dado do diário do DF</dt>
-      <dd>DF: 134 edições lidas em 143 datas, de 29/06 a 20/10, pelo JSON público do SINJ; 16 trazem termo de saúde. Dado da válvula unido à `main` pela base comum. Código: 0 linhas.</dd>
-      <dt>20/10/2026 · Dado dos diários de RJ e RS</dt>
-      <dd>RS: 91 edições lidas em 104 datas, de 27/07 a 19/10. RJ: acesso à edição por data provado, 89 edições sem texto extraível seguem para o OCR existente. Dado da válvula de 19/10 unido à `main` pela base comum. Código: 0 linhas.</dd>
     </dl>
   </section>
 </main>
