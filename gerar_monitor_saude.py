@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-gerar_monitor_saude.py — MARÉ · Saúde v0.3 (15/09/2026; v0.2 em 14/09; v0.1 em 05/09/2026)
+gerar_monitor_saude.py — MARÉ · Saúde v0.6 (22/10/2026; v0.5 em 21/10; v0.3 em 15/09; v0.1 em 05/09/2026)
 ==========================================================
 Prontidão sanitária ESTADUAL para o ciclo El Niño 2026/2027, com a mesma gramática do MARÉ
 (escada de status, régua de antecipação, faixas) mas SEPARADA dele: peso zero no índice,
 arquivo próprio (data/monitor_saude.json), nunca lido por recalcular_mare.py (portão).
 
 Por UF, três leituras — só a primeira é pontuada:
-  1. PRONTIDÃO (0–100, só para UF verificada): média com pesos iguais de dois sub-elementos,
+  1. PRONTIDÃO (0–100, só para UF verificada): dois componentes, metade cada,
      como no componente estadual do MARÉ v3.0 (Metodologia §30):
        • instrumento operacional — status do plano estadual de saúde (arboviroses/clima):
          NOVO 100 · READ 65 · VIG 45 · ELAB 35 · LAC 0;
@@ -16,14 +16,16 @@ Por UF, três leituras — só a primeira é pontuada:
          edição 2025/2026 (temporada que acabou de passar, ainda o instrumento vigente) → 45;
          edição anterior a 2025 → 20; sem instrumento → 0.
      UF não verificada NÃO recebe número — fica declarada como tal (não é zero).
+  A cobertura municipal (população em município com plano localizado que trata a saúde) NÃO entra na nota:
+  é a camada "saúde no plano municipal de defesa civil", de peso zero, publicada ao lado (v0.6).
   2. RISCO OBSERVADO AGORA — dengue na capital (nível InfoDengue), avisos de calor (INMET),
      focos de fogo (INPE): contexto, nunca pontua.
   3. RISCO PROJETADO — família sanitária derivada dos boletins do Painel: contexto, nunca pontua.
 
 Faixas (as mesmas do site): estágio inicial 0–25 · em construção 25–50 · consolidado 50–70 ·
 avançado 70–100. v0.5 (21/10/2026): o índice tem número NACIONAL, a média das 27 UFs, como o MARÉ
-Legal (`resumo_nacional`); a UF sem documento lido entra com crédito 0 nos componentes que dependem
-de documento e o estatuto dela viaja junto do número (METODOLOGIA §115).
+Legal (`resumo_nacional`); a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto
+do número (METODOLOGIA §115). v0.6 (22/10/2026): a cobertura municipal sai da nota (METODOLOGIA §119).
   python gerar_monitor_saude.py            # grava data/monitor_saude.json
   python gerar_monitor_saude.py --autoteste
 """
@@ -37,7 +39,6 @@ RAIZ = Path(__file__).resolve().parent
 
 UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"]
 PONTOS_STATUS = {"NOVO": 100, "READ": 65, "VIG": 45, "ELAB": 35, "LAC": 0}
-PESO_INSTRUMENTO = 0.5   # pesos iguais, como no §30
 JANELA_CRITICA_INICIO = "01/10/2026"
 # v0.2 (14/09/2026, §31): a régua de antecipação da saúde passa a usar as MESMAS âncoras do índice
 # principal (Boletim nº 1 do Painel El Niño, 29/06/2026; +30 dias = 29/07/2026), com a janela crítica
@@ -49,8 +50,11 @@ BOLETIM_1_MAIS_30 = "29/07/2026"
 # localizado para o ciclo trata a saúde, ponderada pelo crédito municipal do MARÉ (CRED_POP, §5) e pelo degrau da
 # variável de leitura `saude_no_plano` (0–5, §10; crédito = degrau/5). Plano ainda não lido = 0 (só o que foi lido
 # conta — assimetria probatória), e a contagem de "planos sem leitura" é publicada ao lado. Pesos iguais (1/3).
-VERSAO = "0.5"   # 21/10/2026: agregação nacional sobre as 27 UFs (§115); os componentes são os da v0.3
-PESOS = {"instrumento": 1 / 3, "cobertura": 1 / 3, "antecipacao": 1 / 3}
+# v0.6 (22/10/2026, editoria): a cobertura sai da nota. Não há dever legal de plano municipal de saúde para o
+# fenômeno; o único plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede.
+# O Saúde não conta o mesmo documento duas vezes: a cobertura vira camada de peso zero, ao lado (METODOLOGIA §119).
+VERSAO = "0.6"
+PESOS = {"instrumento": 0.5, "antecipacao": 0.5}   # metade cada; a cobertura NÃO tem peso aqui
 
 # ── v0.4 (01/10/2026, aprovada pela editoria; alinhada à v3.1 do MARÉ Legal) ──────────────────
 # Três mudanças, e nenhuma delas é de peso: (1) o instrumento ganha a MESMA escala de razão
@@ -172,25 +176,17 @@ def prontidao(status: str, doc: str, data: str, camada: str = "ciclo"):
     if status not in PONTOS_STATUS: return None, None, None
     if camada == "adaptacao": return None, None, None
     pi = PONTOS_STATUS[status]; pa = pontos_antecipacao(status, doc, data, camada)
-    return round(PESO_INSTRUMENTO * pi + (1 - PESO_INSTRUMENTO) * pa, 1), pi, pa
+    return round(PESOS["instrumento"] * pi + PESOS["antecipacao"] * pa, 1), pi, pa
 
 
-def prontidao_v03(status: str, doc: str, data: str, cobertura, camada: str = "ciclo"):
-    """v0.3: (prontidão, instrumento, cobertura, antecipação) com pesos iguais (1/3); (None, …) se a UF não foi
-    verificada no plano estadual. `cobertura` é a cobertura populacional sanitária 0–100 (função pura)."""
-    if status not in PONTOS_STATUS or camada == "adaptacao": return None, None, None, None
-    pi = PONTOS_STATUS[status]; pa = pontos_antecipacao(status, doc, data, camada); pc = round(float(cobertura or 0.0), 1)
-    return round(PESOS["instrumento"] * pi + PESOS["cobertura"] * pc + PESOS["antecipacao"] * pa, 1), pi, pc, pa
-
-
-def credito_nacional(prontidao_uf, cobertura):
+def credito_nacional(prontidao_uf):
     """Prontidão que a UF leva à média nacional. Função pura.
 
     UF com número entra com o dela. UF sem documento lido (não verificada, ou com plano que não é
     do ciclo) entra como o MARÉ Legal trata a UF sem plano localizado: instrumento e antecipação
-    valem 0 — nada pontua sem documento lido (§104) —, e a cobertura vale o que os planos
-    municipais lidos de fato cobrem. Não é nota de UF reprovada: o número exibido da UF segue nulo."""
-    return prontidao_uf if prontidao_uf is not None else prontidao_v03("LAC", "", "", cobertura)[0]
+    valem 0, porque nada pontua sem documento lido (§104). Não é nota de UF reprovada: o número
+    exibido da UF segue nulo."""
+    return prontidao_uf if prontidao_uf is not None else prontidao("LAC", "", "")[0]
 
 
 def estatuto_do_plano(status: str, prontidao_uf) -> str:
@@ -354,7 +350,7 @@ def gerar() -> int:
         melhor = melhor_instrumento(u.get("instrumentos") or []) or u   # sem instrumentos[] (dado velho, não migrado): usa o topo como sempre
         st = melhor.get("status", "NAO_VERIFICADO")
         camada = u.get("camada") or "ciclo"   # 'ciclo' (contingência/preparação) | 'adaptacao' (plano decenal → estrutura)
-        p, pi, pc, pa = prontidao_v03(st, melhor.get("doc") or "", melhor.get("data") or "", cob[uf]["cobertura"], camada)
+        p, pi, pa = prontidao(st, melhor.get("doc") or "", melhor.get("data") or "", camada)
         deng = (ss.get("dengue_capitais") or {}).get(uf) or {}
         sig = ((sr.get("uf") or {}).get(uf) or {})
         avisos = (sig.get("avisos_inmet") or {}); lista = avisos.get("lista") or avisos.get("avisos") or []
@@ -362,7 +358,7 @@ def gerar() -> int:
             "verificado": st != "NAO_VERIFICADO", "prontidao": p, "faixa": faixa(p),
             "instrumento": {"status": st, "pontos": pi, "doc": melhor.get("doc"), "data": melhor.get("data"), "orgao": melhor.get("orgao"), "url": melhor.get("url"),
                             "temporada": temporada_da_edicao(melhor.get("doc") or "", melhor.get("data") or "") if st in PONTOS_STATUS else None},
-            "cobertura": {"pontos": pc if st in PONTOS_STATUS and camada != "adaptacao" else None, "cobertura_pct": cob[uf]["cobertura"], "pop_coberta": cob[uf]["pop_coberta"],
+            "cobertura": {"peso": 0, "cobertura_pct": cob[uf]["cobertura"], "pop_coberta": cob[uf]["pop_coberta"],
                           "planos_lidos": cob[uf]["planos_lidos"], "planos_sem_leitura": cob[uf]["planos_sem_leitura"]},
             "antecipacao": {"pontos": pa, "boletim_1": BOLETIM_1, "janela_critica_inicio": JANELA_CRITICA_INICIO},
             "camada": camada,
@@ -370,7 +366,7 @@ def gerar() -> int:
                             "avisos_calor": sum(1 for x in lista if re.search(r"calor", json.dumps(x, ensure_ascii=False), re.I)),
                             "focos_24h": ((sig.get("fogo") or {}).get("focos_24h"))},
             "risco_projetado": u.get("risco_sanitario_projetado") or [],
-            "estatuto": estatuto_do_plano(st, p), "prontidao_nacional": credito_nacional(p, cob[uf]["cobertura"]),
+            "estatuto": estatuto_do_plano(st, p), "prontidao_nacional": credito_nacional(p),
         }
     # 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): RESPOSTA sanitária como índice 0–100 = 100 × população (Censo 2022)
     # dos estados com emergência sanitária declarada no ciclo (ESPIN federal ou decreto estadual, saude_sinais.emergencias)
@@ -384,16 +380,15 @@ def gerar() -> int:
     por_faixa = {}
     for uf in verificadas: por_faixa[ufs[uf]["faixa"]] = por_faixa.get(ufs[uf]["faixa"], 0) + 1
     saida = {
-        "_governanca": ("MARÉ · Saúde v0.3 (15/09/2026; v0.2 em 14/09; v0.1 em 05/09/2026): prontidão sanitária estadual para o ciclo, separada do MARÉ "
-                        "(peso zero no índice; nunca lida por recalcular_mare.py). Três componentes com pesos iguais (1/3), como no índice principal: "
-                        "instrumento estadual × cobertura populacional sanitária (população em município cujo plano localizado trata a saúde, "
-                        "crédito municipal do MARÉ × degrau/5 da leitura saude_no_plano; plano sem leitura = 0, contado) × antecipação. "
-                        "Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número próprio. v0.5 (21/10/2026): "
-                        "índice nacional = média das 27 UFs, como o MARÉ Legal; a UF sem documento lido entra com crédito 0 nos componentes que "
-                        "dependem de documento e o estatuto dela viaja junto. Metodologia §31 e §115."),
+        "_governanca": ("MARÉ · Saúde v0.6: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por "
+                        "recalcular_mare.py). Dois componentes, metade cada: instrumento estadual e antecipação. Índice nacional = média das 27 UFs, "
+                        "como o MARÉ Legal; a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto. A saúde no plano municipal de "
+                        "defesa civil (população em município cujo plano localizado trata a saúde) é camada de peso zero, publicada ao lado e fora da "
+                        "média: o plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede. Duas leituras de "
+                        "contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §118."),
         "versao": VERSAO, "gerado_em": data_da_edicao().strftime("%d/%m/%Y"), "corte": su.get("corte"),
         "metodo": {"pesos": dict(PESOS), "escada": PONTOS_STATUS,
-                   "cobertura": {"formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF", "creditos_municipais": {k: CRED_POP[k] for k in CATEGORIAS_MUNICIPAIS},
+                   "cobertura": {"nome": "saúde no plano municipal de defesa civil", "peso": 0, "entra_na_nota": False, "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF", "creditos_municipais": {k: CRED_POP[k] for k in CATEGORIAS_MUNICIPAIS},
                                  "degraus_saude_no_plano": {"0": "ausente", "1": "orgao_listado", "2": "resposta", "3": "vigilancia_pos", "4": "prevencao_epidemiologica", "5": "riscos_do_ciclo"},
                                  "plano_sem_leitura": "0 (contado em planos_sem_leitura)"},
                    "antecipacao": {"NOVO/READ antes de 29/06/2026": 100, "NOVO/READ até 29/07/2026": 60, "NOVO/READ até 30/09/2026": 50,
@@ -401,16 +396,14 @@ def gerar() -> int:
                                    "VIG edição anterior": 20, "ELAB": 20, "sem instrumento": 0,
                                    "plano de adaptação decenal (AdaptaSUS-UF)": "não pontua — estrutura"},
                    "ancoras": {"boletim_1": BOLETIM_1, "boletim_1_mais_30": BOLETIM_1_MAIS_30, "janela_critica_ms": JANELA_CRITICA_INICIO},
-                   "agregacao_nacional": {"formula": "Σ prontidao_nacional das 27 UFs / 27", "denominador": 27, "uf_sem_documento_lido": "instrumento 0, antecipação 0, cobertura medida (credito_nacional)"},
+                   "agregacao_nacional": {"formula": "Σ prontidao_nacional das 27 UFs / 27", "denominador": 27, "uf_sem_documento_lido": "instrumento 0, antecipação 0 (credito_nacional)"},
                    "faixas": {"estágio inicial": "0–25", "em construção": "25–50", "consolidado": "50–70", "avançado": "70–100"}},
         "resposta": resposta,
         "resumo": {"verificadas": len(verificadas), "nao_verificadas": 27 - len(verificadas), "por_faixa": por_faixa,
                    "planos_municipais_lidos": sum(v["planos_lidos"] for v in cob.values()), "planos_municipais_sem_leitura": sum(v["planos_sem_leitura"] for v in cob.values()),
                    **(nac := resumo_nacional(ufs)),
                    "ufs_com_plano_localizado": nac["por_estatuto"]["plano_localizado"],
-                   "ufs_sem_plano_localizado": 27 - nac["por_estatuto"]["plano_localizado"],
-                   # Transição: a página, a Imprensa e o topo ainda leem este campo até trocarem para `indice_nacional`.
-                   "media_das_verificadas": (round(sum(ufs[u]["prontidao"] for u in verificadas) / len(verificadas), 1) if verificadas else None)},
+                   "ufs_sem_plano_localizado": 27 - nac["por_estatuto"]["plano_localizado"]},
         "ufs": ufs,
     }
     gravar("monitor_saude.json", saida)
@@ -432,9 +425,11 @@ def autoteste() -> int:
     def t5(): return prontidao("NAO_VERIFICADO", "", "") == (None, None, None) and faixa(None) == "não verificado"
     def t6(): return faixa(24.9) == "estágio inicial" and faixa(25) == "em construção" and faixa(50) == "consolidado" and faixa(70) == "avançado"
     def t7():  # negativo: status fora do vocabulário não vira número
-        return prontidao("TALVEZ", "x", "2026") == (None, None, None) and prontidao_v03("TALVEZ", "x", "2026", 50) == (None, None, None, None)
-    def t10():  # v0.3: três componentes com pesos iguais; cobertura entra como está (0–100)
-        return prontidao_v03("VIG", "Plano 2025/2026", "01/07/2025", 30.0) == (38.3, 45, 30.0, 40) and prontidao_v03("NOVO", "Plano 2026-2027", "27/08/2026", 0) == (50.0, 100, 0.0, 50)
+        return prontidao("TALVEZ", "x", "2026") == (None, None, None)
+    def t10():  # v0.6: dois componentes, metade cada; a cobertura não tem peso e nenhuma função da nota a recebe
+        import inspect
+        return (PESOS == {"instrumento": 0.5, "antecipacao": 0.5} and sum(PESOS.values()) == 1
+                and "cobertura" not in inspect.signature(prontidao).parameters and "cobertura" not in PESOS)
     def t11():  # v0.3: cobertura sanitária = pop × crédito municipal × degrau/5; sem leitura = 0 e contado; confirmada vence a automática
         ref = [{"uf": "XX", "nome": "A", "codigo_ibge": 1}, {"uf": "XX", "nome": "B", "codigo_ibge": 2}, {"uf": "XX", "nome": "C", "codigo_ibge": 3}, {"uf": "XX", "nome": "D", "codigo_ibge": 4}]
         pop = {"0000001": 100, "0000002": 100, "0000003": 100, "0000004": 100}
@@ -443,13 +438,13 @@ def autoteste() -> int:
         conf = [{"nivel": "municipal", "uf": "XX", "municipio": "A", "categoria": 5}]
         c = cobertura_sanitaria(muns, ref, pop, auto, conf, {"plano": 1.0, "plano_antigo": 0.6})
         return c["XX"]["cobertura"] == 40.0 and c["XX"]["planos_lidos"] == 2 and c["XX"]["planos_sem_leitura"] == 1 and c["XX"]["pop_coberta"] == 160
-    def t16():  # v0.5: denominador 27, UF sem documento lido entra com crédito (cobertura/3), estatuto soma 27
+    def t16():  # v0.5: denominador 27, UF sem documento lido entra com crédito 0, estatuto soma 27
         ufs = {u: {"prontidao": 30.0, "estatuto": "plano_localizado"} for u in UFS}
         for u in ("AC", "AP"): ufs[u] = {"prontidao": None, "estatuto": "nao_verificado"}
-        for u in UFS: ufs[u]["prontidao_nacional"] = credito_nacional(ufs[u]["prontidao"], 30.0 if u == "AC" else 0.0)
+        for u in UFS: ufs[u]["prontidao_nacional"] = credito_nacional(ufs[u]["prontidao"])
         r = resumo_nacional(ufs)
-        return (credito_nacional(None, 30.0) == 10.0 and credito_nacional(41.2, 99) == 41.2
-                and r["indice_nacional"] == round((25 * 30.0 + 10.0 + 0.0) / 27, 1) and sum(r["por_estatuto"].values()) == 27)
+        return (credito_nacional(None) == 0.0 and credito_nacional(41.2) == 41.2
+                and r["indice_nacional"] == round(25 * 30.0 / 27, 1) and sum(r["por_estatuto"].values()) == 27)
     def t17():  # v0.5: UF fora da conta é erro, não média menor
         ufs = {u: {"estatuto": "plano_localizado", "prontidao_nacional": 30.0} for u in UFS if u != "TO"}
         try: resumo_nacional(ufs)
@@ -473,7 +468,7 @@ def autoteste() -> int:
                             "prontidão: edição antiga = 32,5; LAC = 0": t4, "não verificado não recebe número": t5,
                             "faixas nos limites": t6, "negativo: status inválido não pontua": t7,
                             "v0.2: âncoras do índice principal": t8, "v0.2: plano decenal não pontua": t9,
-                            "v0.3: três componentes, pesos iguais": t10,
+                            "v0.6: dois componentes, a cobertura fora da nota": t10,
                             "v0.5: média das 27, crédito sem documento, estatutos somam 27": t16,
                             "v0.5: UF fora do denominador é erro": t17, "v0.5: estatuto do plano": t18, "v0.3: cobertura sanitária por população": t11,
                             "resposta: campo ausente é não coletado, nunca 0": t12, "resposta: lista vazia com as duas buscas é 0 verificado": t13,

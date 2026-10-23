@@ -26,13 +26,16 @@ recalculados; completa a leitura, congelam (§108).
 
 DESFECHOS (um arquivo por grupo, na forma comum de `desfechos_sus.py`)
 `internacoes_respiratorias`, `internacoes_cardio`, `internacoes_renal`, `internacoes_desidratacao`,
-`internacoes_fumaca`, `internacoes_calor` e `hepatite_a` (internações com diagnóstico principal B15:
-internações, não casos notificados; o SINAN de hepatite A no FTP parou em 2023).
+`internacoes_fumaca`, `internacoes_calor`, `hepatite_a` (internações com diagnóstico principal B15:
+internações, não casos notificados; o SINAN de hepatite A no FTP parou em 2023),
+`internacoes_saude_mental` (F00 a F99; suicídio e violência autoprovocada ficam fora: não são F) e
+`internacoes_icsap` (Lista Brasileira de ICSAP, Portaria SAS/MS 221/2008, ver `GRUPOS`). Grupo novo
+sem série força a releitura de todo o histórico (um mês só está lido quando todos os grupos o têm).
 
 USO
   python3 coletar_sih.py --autoteste
   python3 coletar_sih.py --sondar          # só mede e imprime; não grava nada
-  python3 coletar_sih.py [--orcamento S]   # lê o FTP por até S segundos e grava os sete arquivos comuns
+  python3 coletar_sih.py [--orcamento S]   # lê o FTP por até S segundos e grava os nove arquivos comuns
 """
 import datetime
 import pathlib
@@ -62,6 +65,22 @@ GRUPOS = {
     "fumaca": [("T59", "T59")],
     "calor": [("T67", "T67")],
     "hepatite_a": [("B15", "B15")],
+    "saude_mental": [("F00", "F99")],
+    # Lista Brasileira de ICSAP, Portaria SAS/MS 221/2008 (17/04/2008). Transcrita de duas cópias que
+    # concordam (SES-SP, GAIS 83; COSEMS-SC), o texto da portaria no DOU de 18/04/2008 não foi lido. Faixas por
+    # prefixo do CID, de 3 ou 4 caracteres (sem ponto). Divergência entre as cópias: P35.0 (uma diz P35); fica
+    # a mais estreita. Diabetes (E10.0 a E14.9, todos os quartos dígitos) e tuberculose (A15.0 a A19, todas as
+    # subcategorias listadas) cobrem a categoria inteira. Registro de CID curto não casa faixa de 4 caracteres.
+    "icsap": [("A00", "A09"), ("A15", "A19"), ("A33", "A37"), ("A46", "A46"), ("A50", "A53"), ("A95", "A95"),
+              ("B05", "B06"), ("B16", "B16"), ("B26", "B26"), ("B50", "B54"), ("B77", "B77"),
+              ("D50", "D50"), ("E10", "E14"), ("E40", "E46"), ("E50", "E64"), ("E86", "E86"),
+              ("G000", "G000"), ("G40", "G41"), ("G45", "G46"), ("H66", "H66"), ("I00", "I02"), ("I10", "I11"),
+              ("I20", "I20"), ("I50", "I50"), ("I63", "I67"), ("I69", "I69"),
+              ("J00", "J03"), ("J06", "J06"), ("J13", "J14"), ("J153", "J154"), ("J158", "J159"), ("J181", "J181"),
+              ("J20", "J21"), ("J31", "J31"), ("J40", "J47"), ("J81", "J81"),
+              ("K25", "K28"), ("K920", "K922"), ("L01", "L04"), ("L08", "L08"),
+              ("N10", "N12"), ("N30", "N30"), ("N34", "N34"), ("N390", "N390"), ("N70", "N73"), ("N75", "N76"),
+              ("O23", "O23"), ("P350", "P350")],
 }
 # grupo -> (desfecho do arquivo comum, rótulo). O rótulo descreve a contagem, sem interpretar.
 DESFECHOS = {
@@ -72,6 +91,8 @@ DESFECHOS = {
     "fumaca": ("internacoes_fumaca", "Internações por efeito tóxico de gases, fumaças e vapores (CID-10 T59)"),
     "calor": ("internacoes_calor", "Internações por efeitos do calor e da luz (CID-10 T67)"),
     "hepatite_a": ("hepatite_a", "Internações por hepatite aguda A (CID-10 B15)"),
+    "saude_mental": ("internacoes_saude_mental", "Internações por transtornos mentais e comportamentais (CID-10 F00 a F99)"),
+    "icsap": ("internacoes_icsap", "Internações por condições sensíveis à atenção primária (Lista Brasileira, Portaria SAS/MS 221/2008)"),
 }
 INICIO = "2019-01"
 ORCAMENTO_S = 3000   # tempo de leitura por rodada (medido: 4,5 s por arquivo com três downloads à frente)
@@ -84,11 +105,13 @@ JANELA = 3           # downloads em voo ao mesmo tempo
 # Funções puras
 # ============================================================================================
 def grupo_do_cid(cid: str) -> list:
-    """Grupos aos quais o CID principal pertence (pelos três primeiros caracteres). Função pura."""
-    c = (cid or "").strip().upper()[:3]
-    if not re.fullmatch(r"[A-Z]\d{2}", c):
+    """Grupos aos quais o CID principal pertence, comparando tantos caracteres quanto a faixa tem (3 ou 4).
+    CID mais curto que a faixa não entra nela (nunca se adivinha o quarto dígito). Função pura."""
+    c = (cid or "").strip().upper().replace(".", "")[:4]
+    if not re.fullmatch(r"[A-Z]\d{2}\w?", c):
         return []
-    return [g for g, faixas in GRUPOS.items() if any(a <= c <= b for a, b in faixas)]
+    return [g for g, faixas in GRUPOS.items()
+            if any(len(c) >= len(a) and a <= c[:len(a)] <= b for a, b in faixas)]
 
 
 def agregar(registros) -> dict:
@@ -208,7 +231,7 @@ def espacar(baixar, pausa: float, dormir=time.sleep, agora=time.monotonic):
 
 def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, decodificar=None,
             orcamento_s: int = ORCAMENTO_S, relogio=None, pausa: float = None) -> bool:
-    """Lê o que falta no FTP e grava os sete arquivos comuns. Sem nenhum arquivo lido, nada é regravado."""
+    """Lê o que falta no FTP e grava os nove arquivos comuns. Sem nenhum arquivo lido, nada é regravado."""
     import desfechos_sus as ds
     from coletar_datasus_dbc import PAUSA, baixar_ftp, ler_dbc, listar_ftp
     from coletores_base import gravar, hoje_editorial, ler
@@ -218,7 +241,9 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     baixar = espacar(baixar, PAUSA if pausa is None else pausa)
     ant = {g: ds.ler_desfecho(d, ler_fn) for g, (d, _r) in DESFECHOS.items()}
     base = ant["respiratorias"] or {}
-    lidos = {(uf, p) for uf, s in base.get("serie", {}).items() if uf != "BR" for p, v in s.items() if v is not None}
+    # Um mês só está lido quando TODOS os grupos o têm: grupo novo sem série força a releitura do histórico.
+    lidos = set.intersection(*({(uf, p) for uf, s in (ant[g] or {}).get("serie", {}).items() if uf != "BR"
+                                for p, v in s.items() if v is not None} for g in GRUPOS))
     listagem = dict(listar(FTP_DIR_RD))
     fila = a_ler(listagem, lidos, base.get("fonte", {}).get("tamanhos_recentes", {}))
     novos = {g: {} for g in GRUPOS}
@@ -342,11 +367,20 @@ def sondar() -> int:
 def autoteste() -> int:
     casos = []
     casos.append(("J18 é respiratória", grupo_do_cid("J189") == ["respiratorias"]))
-    casos.append(("I21 e I63 são cardio", grupo_do_cid("I219") == ["cardio"] == grupo_do_cid("I64")))
+    casos.append(("I21 e I63 são cardio", grupo_do_cid("I219") == ["cardio"] and grupo_do_cid("I64") == ["cardio", "icsap"]))
     casos.append(("I26 não é cardio deste recorte", grupo_do_cid("I26") == []))
     casos.append(("E86, T59, T67 e N18", [grupo_do_cid(c) for c in ("E86", "T590", "T671", "N189")]
-                  == [["desidratacao"], ["fumaca"], ["calor"], ["renal"]]))
+                  == [["desidratacao", "icsap"], ["fumaca"], ["calor"], ["renal"]]))
     casos.append(("CID ilegível não entra em grupo", grupo_do_cid("") == grupo_do_cid("9XX") == []))
+    casos.append(("F00 a F99 é saúde mental; suicídio (X60) não", grupo_do_cid("F200") == ["saude_mental"] == grupo_do_cid("F99")
+                  and grupo_do_cid("X600") == []))
+    # ICSAP: faixas de 3 e de 4 caracteres; ponto e CID curto não enganam
+    sim = ("A09", "A150", "E109", "E149", "I10", "J153", "J159", "J181", "J45", "G000", "N390", "K921", "P350", "O23", "B16")
+    nao = ("J150", "J189", "J12", "G001", "N399", "N13", "K923", "P351", "P359", "I21", "E15", "J15", "F200")
+    casos.append(("ICSAP: códigos da lista entram", all("icsap" in grupo_do_cid(c) for c in sim)))
+    casos.append(("ICSAP: fora da lista, ou CID curto demais para a faixa de 4 caracteres, não", not any("icsap" in grupo_do_cid(c) for c in nao)))
+    casos.append(("CID com ponto vale como sem ponto", grupo_do_cid("J15.3") == grupo_do_cid("J153") and "icsap" in grupo_do_cid("J15.3")))
+    casos.append(("grupos não são exclusivos: E86 é desidratação e ICSAP", grupo_do_cid("E86") == ["desidratacao", "icsap"]))
     regs = [{"_UF": "AC", "ANO_CMPT": "2026", "MES_CMPT": "07", "IDENT": "1", "DIAG_PRINC": "J180"},
             {"_UF": "AC", "ANO_CMPT": "2026", "MES_CMPT": "07", "IDENT": "1", "DIAG_PRINC": "A09"},
             {"_UF": "AC", "ANO_CMPT": "2026", "MES_CMPT": "07", "IDENT": "5", "DIAG_PRINC": "J180"},
@@ -393,18 +427,21 @@ def autoteste() -> int:
         if "AC2507" in dados:
             raise OSError("fora do ar")
         reg = [{"ANO_CMPT": f"20{aa}", "MES_CMPT": mm, "IDENT": "1", "DIAG_PRINC": c}
-               for c in ("J180", "J189", "I219", "A09", "B150")]
+               for c in ("J180", "J189", "I219", "A09", "B150", "F200", "N390")]
         return None, iter(reg)
 
     ok1 = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19), fake_decod, pausa=0)
     o = gravados.get("saude_desfechos/internacoes_respiratorias.json", {})
-    casos.append(("1ª rodada grava os sete arquivos comuns", ok1 and len(gravados) == 7))
+    casos.append(("1ª rodada grava os nove arquivos comuns", ok1 and len(gravados) == 9))
     casos.append(("grupo conta só o seu CID; BR soma só onde as 27 UFs têm valor",
                   o["serie"]["SP"]["2025-08"] == 2 and o["serie"]["BR"]["2025-08"] == 54 and o["serie"]["BR"].get("2025-07") is None))
     casos.append(("mês que falhou (AC 2025-07) fica fora, não vira zero; lacuna declarada",
                   "2025-07" not in o["serie"]["AC"] and any("AC2507" in x for x in o["lacunas"])))
     casos.append(("hepatite A por B15 é zero medido onde o arquivo foi lido",
                   gravados["saude_desfechos/hepatite_a.json"]["serie"]["SP"]["2025-08"] == 1))
+    casos.append(("saúde mental e ICSAP nascem junto, contando só o seu CID",
+                  gravados["saude_desfechos/internacoes_saude_mental.json"]["serie"]["SP"]["2025-08"] == 1
+                  and gravados["saude_desfechos/internacoes_icsap.json"]["serie"]["SP"]["2025-08"] == 2))
     casos.append(("cortes do mapa calculados sobre 2019 a 2025", len(o["cortes_mapa"]["cortes"]) == 4))
     # segunda rodada: nada novo, tamanhos iguais → só o mês que falhou é pedido de novo
     lidos_n.clear()
@@ -430,6 +467,13 @@ def autoteste() -> int:
     h = gravados["saude_desfechos/hepatite_a.json"]
     casos.append(("completada a leitura, os cortes são recalculados e congelam",
                   h["cortes_mapa"]["cortes"] != [9, 9, 9, 9] and not h["lacunas"]))
+    # grupo novo sem série (arquivo ainda não existe): todo o histórico é lido de novo, mesmo estando o resto completo
+    del gravados["saude_desfechos/internacoes_icsap.json"]; lidos_n.clear()
+    coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 21),
+            lambda d, c: (None, iter([{"ANO_CMPT": "20" + d[-8:-6], "MES_CMPT": d[-6:-4], "IDENT": "1", "DIAG_PRINC": "N390"}])),
+            pausa=0)
+    casos.append(("grupo novo força a releitura do histórico e passa a existir",
+                  len(lidos_n) == len(listagem) and gravados["saude_desfechos/internacoes_icsap.json"]["serie"]["SP"]["2025-07"] == 1))
     gravados.clear(); lidos_n.clear()
     caiu = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19),
                    lambda d, c: (_ for _ in ()).throw(OSError("fora")), pausa=0)

@@ -9,12 +9,24 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-23 · #PR · Alvos de SC na frente da busca de planos de arboviroses
+## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
 `coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
+
+## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
+
+`coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
+
+## 2026-10-23 · #972 · A régua do valor pequeno mora no numBR
+
+O número em pt-BR arredondava para casas fixas, e valor medido abaixo de meia unidade da última casa saía como zero. A régua que separa zero de ausência vivia dentro da página da Saúde; passa para a função que todas as páginas usam: abaixo de meia unidade, um dígito significativo. A ficha da inicial e o formatador da Saúde deixam de repetir a decisão. Nenhum número muda com o dado de hoje.
 
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
+
+## 2026-10-22 · #959 · MARÉ Saúde: dois componentes e camada municipal de peso zero
+
+O MARÉ Saúde tem dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7, sobre as 27 UFs. Definição dos índices, release da Imprensa e portão de saúde seguem o mesmo método; METODOLOGIA §119.
 
 ## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
 
@@ -38,6 +50,15 @@ zero aparece rotulado, fora da média, nunca como zero por cento.
 ## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
 
 `atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
+
+## 2026-10-22 · #962 · Inicial: o universo de cada número, os quatro canais e duas listas a menos
+
+O medidor de decretos diz agora que o número grande é parcela da população, e a
+pílula ao lado, parcela dos municípios. O parágrafo das classes municipais ganha, do
+dado, quantos municípios cada canal alcançou e o que "verificação completa" significa.
+Pela raiz: portais e e-mails das Defesas Civis estaduais saem da transcrição à mão e
+vêm de `contatos_uf.json`; os dois mapas de categoria viram um, com `plano_nomeado`
+(47 municípios) e `decreto` (97) cobertos.
 
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 

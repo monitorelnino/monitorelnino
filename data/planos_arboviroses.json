@@ -1,6 +1,6 @@
 {
  "_governanca": "Planos municipais de contingência de arboviroses (dengue, chikungunya, zika): onde cada município tem menção localizada, e em que norma o plano se apoia. Peso zero: não entra na nota da Saúde (HANDOVER_SAUDE_V06 §5, 22/10/2026). `municipios` é escrito só por `coletar_planos_arboviroses.py`; `bases` foi lida e registrada à mão em 22/10/2026 e só muda com leitura nova. Estatuto: menção localizada em diário oficial · não localizado até o corte · não verificado (município sem cobertura no acervo, ou consulta que falhou). Menção não é plano lido. Unidade da federação sem linha em `bases` não foi verificada; a ausência não afirma que não há norma.",
- "cursor": 0,
+ "cursor": 400,
  "bases": {
   "BR": {
    "documento": "Plano de Contingência Nacional para Dengue, Chikungunya e Zika (Ministério da Saúde)",
@@ -52,5 +52,4690 @@
    "lido": false
   }
  },
- "municipios": {}
+ "municipios": {
+  "2800308": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Aracaju",
+   "uf": "SE"
+  },
+  "1501402": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Belém",
+   "uf": "PA"
+  },
+  "3106200": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Belo Horizonte",
+   "uf": "MG"
+  },
+  "1400100": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Boa Vista",
+   "uf": "RR"
+  },
+  "5300108": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5300108/2024-07-29/4cdcfe62e25bdb6ca46e8b4110eda065e3febb3d.pdf",
+     "data_publicacao": "2024-07-29",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "de Trabalho para revisão do “Plano para enfrentamento da dengue e outras arboviroses”, formalizado pela Ordem de Serviço nº 17, de 24 de maio de 2024, que elaborou o PLANO DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA, 2024/2025; Considerando que o processo",
+     "hash_evidencia": "55246ddf24f7d09039ef1271deebd1955293632fc0456da49fc9dc6c983350c5"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/5300108/2024-12-05/e106a35e2865691f3825d7f4ba886d5385a428be.pdf",
+     "data_publicacao": "2024-12-05",
+     "edicao": "232",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "DE SERVIÇO Nº 43, DE 03 DE DEZEMBRO DE 2024 Estabelece ações fiscais no âmbito do DF em atendimento ao PLANO DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA. O DIRETOR DE VIGILÂNCIA SANITÁRIA, DA SUBSECRETARIA DE VIGILÂNCIA À SAÚDE, DA SECRETARIA DE ESTADO",
+     "hash_evidencia": "0250efb1743a5130a15c93c99ebff662628cb0cd5b8ce4e8a585cabf0f1799ea"
+    }
+   ],
+   "nome": "Brasília",
+   "uf": "DF"
+  },
+  "5002704": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5002704/2024-10-23/8683167c5824b44dba41f33d3ea79ea9599fab89.pdf",
+     "data_publicacao": "2024-10-23",
+     "edicao": "7690",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "atendimento médico às emergências que não necessitam de internação. O hospital DIA tem capacidade de 14 leitos, sendo 8 leitos destinados ao Plano de Contingência da Dengue e 01 (um) leito de isolamento, o que denota que o maior número de leitos destinados ao SUS está centrado na rede conveniada.",
+     "hash_evidencia": "5d219a1c7adfaa71f690a527511574822074d365f26df87ee02a974c99d6f0e2"
+    }
+   ],
+   "nome": "Campo Grande",
+   "uf": "MS"
+  },
+  "5103403": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5103403/2025-03-31/d871522a0a3b1330a1646dc03489d45be4366853.pdf",
+     "data_publicacao": "2025-03-31",
+     "edicao": "1087",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Art. 1º - Homologar a Resolução “Ad Referendum” Nº. 01/2025/CMS de 06 de Fevereiro de 2025, que aprovou o Plano Municipal de Contingência para ARBOVIROSES 2025, conforme Parecer 01/2025 da Comissão de Modelo Assistencial do Conselho Municipal de Saúde de Cuiabá, datado de 27 de Fevereiro de 2025,",
+     "hash_evidencia": "2c4294706e2ec32b40754730479ad7bb69f3e5fc8bad7829f6dab39266c60aed"
+    }
+   ],
+   "nome": "Cuiabá",
+   "uf": "MT"
+  },
+  "4106902": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4106902/2024-01-17/8d9ae7119ae94e692e61e33790d806ce8a675990.pdf",
+     "data_publicacao": "2024-01-17",
+     "edicao": "11",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "cms@sms.curitiba.pr.gov.br Resolução nº 67, de dezembro de 2023. Aprova o Plano Municipal de Trabalho e Contingência para a Dengue, Zika e Chikungunya 2023/2024 da Secretaria Municipal de Saúde de Curitiba, O Presidente do Conselho Municipal de Saúde (CMS), no uso de suas competências",
+     "hash_evidencia": "b42188bd682caa578386970ab773543efafd820c2464c518ed40c20d395fdcab"
+    }
+   ],
+   "nome": "Curitiba",
+   "uf": "PR"
+  },
+  "4205407": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4205407/2026-05-26/7b11398855aa8fa5854eb2b35dd8b293415dc591.pdf",
+     "data_publicacao": "2026-05-26",
+     "edicao": "4184",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "77-L e 83 da Lei Municipal n. 1.224/1974; Considerando os arts. 1º e 3º do Decreto Municipal n. 16.047/2016; Considerando o disposto no Plano de Contingência das Arboviroses 2026, da Prefeitura Municipal de Florianópolis; Considerando o disposto na publicação “DIVE/SC esclarece sobre o potencial",
+     "hash_evidencia": "27f4f0594fd5bfdb4140158157faceaade03abdfcbd0f350e74d30e660356c0a"
+    }
+   ],
+   "nome": "Florianópolis",
+   "uf": "SC"
+  },
+  "2304400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Fortaleza",
+   "uf": "CE"
+  },
+  "5208707": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5208707/2025-05-06/72a2b1826c61fe351d07b95cbbb4bdf7e8318459.pdf",
+     "data_publicacao": "2025-05-06",
+     "edicao": "8530",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "2025, concordamos com a justificativa que esta ação passa a ser monitorada na ação 4.2.4 “Revisar e Publicar o Plano Municipal de Contingência para Arboviroses 2025 a 2026” - porque na justificativa o “Município de Goiânia possui um plano elaborado e monitorado, que precisa ser revisto a cada dois anos,",
+     "hash_evidencia": "7218e6d237cd9c23dcc4a30556869c77d1d1ec4fecb88fd4a913981108563cc8"
+    }
+   ],
+   "nome": "Goiânia",
+   "uf": "GO"
+  },
+  "2507507": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "João Pessoa",
+   "uf": "PB"
+  },
+  "1600303": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Macapá",
+   "uf": "AP"
+  },
+  "2704302": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Maceió",
+   "uf": "AL"
+  },
+  "1302603": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Manaus",
+   "uf": "AM"
+  },
+  "2408102": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Natal",
+   "uf": "RN"
+  },
+  "1721000": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/1721000/2024-01-15/2494f8edeb4fb84cdfa4de0e58df71b8f5966e5d.pdf",
+     "data_publicacao": "2024-01-15",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "MUNICÍPIO DE PALMAS Nº 3.383 - SEGUNDA-FEIRA, 15 DE JANEIRO DE 202410 RESOLUÇÃO Nº 47, DE 13 DE DEZEMBRO DE 2023. Dispõe sobre a aprovação do Plano de Contingência das Arboviroses para o ano de 2024. O Plenário do Conselho Municipal de Saúde de Palmas, em sua 12ª Reunião Ordinária do ano de 2023, realizada",
+     "hash_evidencia": "64620ec494dcc4815a215339d1225ddeff9a9ca7e3189e2c6287d53bb004e459"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/1721000/2025-02-07/9eb8cbc3056143cfc0aff1316ee5bf9e8638f868.pdf",
+     "data_publicacao": "2025-02-07",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Municipal de Saúde é soberano em suas decisões; RESOLVE: Art. 1º Aprovar o Plano de contingência das arboviroses no município de Palmas/TO – ano 2024/2025, destinado à redução da morbimortalidade por Chikungunya, Dengue e Zika, bem como mitigar os impactos das epidemias provocadas por essas arboviroses",
+     "hash_evidencia": "a1a8bd4a4531c42c6e9a5b246c5f035bc7b934c347551c3c315ebf453bf62607"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/1721000/2025-12-05/6f75f5d37f2160edaeb35a4c47ad9f4ea1ce160d.pdf",
+     "data_publicacao": "2025-12-05",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "maio de 2017. Dhieine Caminski Secretária Municipal de Saúde RESOLUÇÃO Nº 21, DE 19 DE NOVEMBRO DE 2025. Aprovação do Plano de Contingência para Prevenção e Controle das Arboviroses - 2025/2026. O Plenário do Conselho Municipal de Saúde de Palmas, em sua 11ª Reunião Ordinária do ano de 2025, realizada",
+     "hash_evidencia": "4d5ddf12fed1613e8bc3b51f0ba5e04bc33d4742862becc5622cbb44cd63901e"
+    }
+   ],
+   "nome": "Palmas",
+   "uf": "TO"
+  },
+  "4314902": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4314902/2025-04-14/7807a90d099244f9e17105a4a6d90a10e9b24abd.pdf",
+     "data_publicacao": "2025-04-14",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Emergências em Saúde Pública para Dengue e outras Arboviroses – COE Dengue, com a finalidade de, subsidiados pelo Plano Municipal de Contingência para Enfrentamento das Arboviroses, coordenar as ações de prevenção, vigilância e controle das arboviroses no Município de Porto Alegre, no sentido de planejar",
+     "hash_evidencia": "73d5e1a933f44167d6c6e9ae4c1f20b28c92707e14b85b899bb1ba12ee1504d4"
+    }
+   ],
+   "nome": "Porto Alegre",
+   "uf": "RS"
+  },
+  "1100205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Porto Velho",
+   "uf": "RO"
+  },
+  "2611606": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Recife",
+   "uf": "PE"
+  },
+  "1200401": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Branco",
+   "uf": "AC"
+  },
+  "3304557": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304557/2024-02-05/1924b344f34ae3c3962c480624515d110a95d1ca.pdf",
+     "data_publicacao": "2024-02-05",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Foto Fabio Costa / Prefeitura do Rio Plano de contingência é montado para enfrentar epidemia de dengue A cidade do Rio apresentou um plano de contingência para o enfrentamento da epidemia de dengue. O planejamento prevê uma série de medidas para a as- sistência da população e o combate ao",
+     "hash_evidencia": "7789b8ed60bf0e2c3efbb502a008579812ef48c640fde4667654d235aa662a1c"
+    }
+   ],
+   "nome": "Rio de Janeiro",
+   "uf": "RJ"
+  },
+  "2927408": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2927408/2024-03-15/6dace00245c74c0fef4b8af0fdf43f7698c5ecf3.pdf",
+     "data_publicacao": "2024-03-15",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "RESOLUÇÃO CMS Nº 05/2024 Aprova ad referendum o Plano de Contingência das Arboviroses 2024-2025. O Presidente do Conselho Municipal de Saúde de Salvador, no uso de suas atribuições. Resolve: Aprovar Ad Referendum o Plano de Contingência das Arboviroses 2024-2025 para a redução da morbimortalidade através",
+     "hash_evidencia": "6fe6609acac7ff9e6bef8c3187101d28bf494081dac26f7c55134460725763a9"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/2927408/2026-09-16/6e66e91b4d411057df2d0b85e0437bad91b54a04.pdf",
+     "data_publicacao": "2026-09-16",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "- SMS Conselho Municipal de Saúde do Salvador - CMSSSA RESOLUÇÃO CMS Nº 13/2026 Aprova o Plano de Enfrentamento e Contingência para Dengue, Chikungunya e Zika de Salvador - 2026-2029. O CONSELHO MUNICIPAL DE SAÚDE, no uso de suas atribuições legais e regimentais, conferidas pela Lei nº 8.142/1990",
+     "hash_evidencia": "86e20e6bf1554dee9224608abb9fa57e2964cf1b95bfd47633735f4dd54f3a8a"
+    }
+   ],
+   "nome": "Salvador",
+   "uf": "BA"
+  },
+  "2111300": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2111300/2026-01-06/21e76b20e8b07120ad48d30b8831fe9c36bd44e3.pdf",
+     "data_publicacao": "2026-01-06",
+     "edicao": "003",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "TCE/MA. PORTARIA N.º 14/2026 - GAB/SEMUS, DE 06 DE JANEIRO DE 2026 Institui o Plano Municipal de Contingência para Arboviroses Urbanas – Dengue, Chikungunya e Zika no Município de São Luís/MA, estabelece diretrizes para sua execução e dá outras providências. A SECRETÁRIA MUNICIPAL",
+     "hash_evidencia": "69628801bbcf90cff5f97533c876ca539d06e35c2a37ea60df7d60f85ee60e02"
+    }
+   ],
+   "nome": "São Luís",
+   "uf": "MA"
+  },
+  "3550308": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Paulo",
+   "uf": "SP"
+  },
+  "2211001": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2211001/2025-03-10/48850fb095a7a1e0c41cb4c9e5585eaf150bad1a.pdf",
+     "data_publicacao": "2025-03-10",
+     "edicao": "3963",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Pádua, Presidente da Fundação Municipal de Saúde. ID: 000450396300402025 RESOLUÇÃO Nº 218/2025. Dispõe sobre o Plano de Contingência do Programa Municipal de Controle das Aborviroses: Dengue, Chikungun- ya, e Zica – 2025. O PLENÁRIO DO CONSELHO MUNICIPAL DE SAÚDE DE TERESINA–PI, em sua 322ª Reunião",
+     "hash_evidencia": "2472426cf57e810e8472dacb174cd1b5f01528b79d66504f4adb839fafbcb67c"
+    }
+   ],
+   "nome": "Teresina",
+   "uf": "PI"
+  },
+  "3205309": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Vitória",
+   "uf": "ES"
+  },
+  "3509502": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Campinas",
+   "uf": "SP"
+  },
+  "2504009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Campina Grande",
+   "uf": "PB"
+  },
+  "3518800": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3518800/2024-02-06/596af84f5272b8d28a808635e305b18f87d19931.pdf",
+     "data_publicacao": "2024-02-06",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "08/03/2024 09 - Posse dos Eleitos 21/03/2024 CONSELHO MUNICIPAL DE SAÚDE Resolução nº 020/2023-CMS Dispõe sobre: Aprovação do Plano de Contingência de Guarulhos para Controle das Arboviroses 2023-2024. O Plenário do Conselho Municipal de Saúde de Guarulhos, em sua 488ª Reunião Ordinária do Pleno, realizada em",
+     "hash_evidencia": "254edbd70d5a53e2690667076e384db85cd7b83904e87c688e7ecf0807824af2"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3518800/2024-02-06/e5a466cf81cf268bcd6172b35b1f83a62f3b1942.pdf",
+     "data_publicacao": "2024-02-06",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "08/03/2024 09 - Posse dos Eleitos 21/03/2024 CONSELHO MUNICIPAL DE SAÚDE Resolução nº 020/2023-CMS Dispõe sobre: Aprovação do Plano de Contingência de Guarulhos para Controle das Arboviroses 2023-2024. O Plenário do Conselho Municipal de Saúde de Guarulhos, em sua 488ª Reunião Ordinária do Pleno, realizada em",
+     "hash_evidencia": "b9b8a8aca7f7f2459c1bc474e902f36b9a53dc7a334173fad6ea0503cb4ffe5b"
+    }
+   ],
+   "nome": "Guarulhos",
+   "uf": "SP"
+  },
+  "2700300": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Arapiraca",
+   "uf": "AL"
+  },
+  "3304904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Gonçalo",
+   "uf": "RJ"
+  },
+  "2408003": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Mossoró",
+   "uf": "RN"
+  },
+  "3548708": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Bernardo do Campo",
+   "uf": "SP"
+  },
+  "3301702": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3301702/2025-01-03/8940f9d87877b0521977fe62f5d2fd9359a31a3f.pdf",
+     "data_publicacao": "2025-01-03",
+     "edicao": "7535",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "EM tHJLtlIM OFICIAL Prefeitura Municipal de Duque de Caxias Secretaria Municipal de Duque de Caxias Departamento de Vigilância em Saúde PLANO DE CONTINGÊNCIA DE ARBOVIROSES 2024-2026 v .2 J Prefeitura Municipal de Duque de Caxias Secretaria Municipal de Duque de Caxias Departamento de Vigilância",
+     "hash_evidencia": "f50707d41e2870b369b009d44ff44c0fb2c8a8856e7df67805894454972edc48"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3301702/2025-01-22/b62072e319fe6626e4d1bc2119ca0c5b649f4afc.pdf",
+     "data_publicacao": "2025-01-22",
+     "edicao": "7543",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "contingências das Arboviroses, visto que é 252 uma exigência da Secretaria de Estado, para que os municípios saibam como proceder em caso de 253 epidemia de Dengue, Zica ou Chikungnia e também orientar ao usuário, sobre o que fazer, para qual 254 unidade deve se encaminhar, etc. Lembrou que durante a semana esteve",
+     "hash_evidencia": "665c555a3364389aaacfa844b3d1652bdf2b795b2b8aef9c0e313c392f636922"
+    }
+   ],
+   "nome": "Duque de Caxias",
+   "uf": "RJ"
+  },
+  "3303500": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Nova Iguaçu",
+   "uf": "RJ"
+  },
+  "3547809": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Santo André",
+   "uf": "SP"
+  },
+  "3557105": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3557105/2025-02-24/59fbbd184da5ae5d009ef40c5f753a0a1c7e1730.pdf",
+     "data_publicacao": "2025-02-24",
+     "edicao": "2318A",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Oficial Eletrônico de Votuporanga | 13 DELIBERAÇÃO CMS Nº. 006, DE 21 DE FEVEREIRO DE 2025 “Dispõe sobre a atualização do Plano de Contingência das Arboviroses: Dengue, Zika, Chikungunya e Febre Amarela 2025- 2028, e dá outras providências”. O Conselho Municipal de Saúde de Votuporanga/SP",
+     "hash_evidencia": "bef98e41bfbad6987f5e44850c0a4d53841234b9b031193ddef4a0c50f025ddb"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3557105/2025-02-24/1d488472f8ee65d9d3bee9f64868ae33456d1c6a.pdf",
+     "data_publicacao": "2025-02-24",
+     "edicao": "2318",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Oficial Eletrônico de Votuporanga | 8 DELIBERAÇÃO CMS Nº. 006, DE 21 DE FEVEREIRO DE 2025 “Dispõe sobre a atualização do Plano de Contingência das Arboviroses: Dengue, Zika, Chikungunya e Febre Amarela 2025- 2028, e dá outras providências”. O Conselho Municipal de Saúde de Votuporanga/SP",
+     "hash_evidencia": "e86287cdb8594b6c89735acf8cb24801d759b5a4c9a959e30eb30508c4d91707"
+    }
+   ],
+   "nome": "Votuporanga",
+   "uf": "SP"
+  },
+  "3534401": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Osasco",
+   "uf": "SP"
+  },
+  "2207702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Parnaíba",
+   "uf": "PI"
+  },
+  "3552205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sorocaba",
+   "uf": "SP"
+  },
+  "3170206": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Uberlândia",
+   "uf": "MG"
+  },
+  "3543402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ribeirão Preto",
+   "uf": "SP"
+  },
+  "3201308": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cariacica",
+   "uf": "ES"
+  },
+  "3549904": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São José dos Campos",
+   "uf": "SP"
+  },
+  "1501303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barcarena",
+   "uf": "PA"
+  },
+  "2607901": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Jaboatão dos Guararapes",
+   "uf": "PE"
+  },
+  "3118601": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3118601/2024-02-09/ef836603d7c6d8613fbe1dc9a45093ceacd8be1e.pdf",
+     "data_publicacao": "2024-02-09",
+     "edicao": "5737",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Contagem, 9 de fevereiro de 2024 Página 21 de 59 Diário Oficial de Contagem - Edição 5737 RESOLUÇÃO Nº 116 DE 07 DE FEVEREIRO DE 2024. Dispõe: Plano de Contingência de Enfrentamento das Arboviroses 2024. Considerando: o relatório da reunião ordinária do Conselho Municipal de Saúde de Contagem, realizada",
+     "hash_evidencia": "83bd066aa04ee6cf3ca9788c636d8d160f178c46c151c28c4703163a20946532"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3118601/2024-11-13/83e287a570f046ff2e9cbccae0c8c8d3e50dc173.pdf",
+     "data_publicacao": "2024-11-13",
+     "edicao": "5924",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "situada à Praça Tancredo Neves n° 200 – Camilo Alves Contagem/MG com as seguintes pautas: Discussão e votação da ata 006, Apresentação do Plano de Contingência de enfrentamento as Arboviroses e Informes do SSA - 21 anos da inauguração do HMC (Hospital Municipal de Contagem). Estavam presentes Conselheiros",
+     "hash_evidencia": "2f2f10354f6723a5546edd138e1a33795d6dc4bd2181820ba7e28f10a4765c1d"
+    }
+   ],
+   "nome": "Contagem",
+   "uf": "MG"
+  },
+  "1702109": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/1702109/2024-12-13/d7d24983443482a552e898a8a9541a94a6292de7.pdf",
+     "data_publicacao": "2024-12-13",
+     "edicao": "3177",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "POR UNIMIDADE Dia 07/11/2024. Seção Nº 3142024 Presidente CMS Agnaldo da Silva Teixeira Araguaína, 07 de novembro de 2024 DISPÕE SOBRE O PLANO DE CONTINGÊNCIA PARA PREVENÇÃO E CONTROLE DE EPIDEMIAS DE ARBOVIROSES DO MUNICÍPIO DE ARAGUAÍNA – ANO 2025. O Conselho Municipal de Saúde, no uso das suas",
+     "hash_evidencia": "22aa8528281dddd05799ab254ef1a24ef6430e0562cfca26299f2bd07315fc6d"
+    }
+   ],
+   "nome": "Araguaína",
+   "uf": "TO"
+  },
+  "4209102": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4209102/2024-04-23/6b2567ad8c709db73fd1f3ce9cdf3c9aad137098.pdf",
+     "data_publicacao": "2024-04-23",
+     "edicao": "2024",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Considerando o Plano de Contingência do município de Joinville para Enfrentamento da Dengue 2024, que busca direcionar as ações de gestão assistencial do cuidado, e ainda, organizar as ações de caráter ambiental e combate ao vetor; Considerando o Plano de Contingência para enfrentamento da Dengue, Chikungunya",
+     "hash_evidencia": "d792f79c3b1917bc9cbdde90d3fc749834232ec2cbf42967fb5a8d92c225cd74"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/4209102/2024-11-11/7a7e8877f5535fded32d56b54b2d6147b2f9a45f.pdf",
+     "data_publicacao": "2024-11-11",
+     "edicao": "2024",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Considerando o Plano de Contingência do município de Joinville para Enfrentamento da Dengue 2024, que busca direcionar as ações de gestão assistencial do cuidado, e ainda, organizar as ações de caráter ambiental e combate ao vetor; Considerando o Plano de Contingência para enfrentamento da Dengue, Chikungunya",
+     "hash_evidencia": "0501d374a0baa7df9214e688b301cd4e717396ca961cd50d7ebbe7ed310aefdc"
+    }
+   ],
+   "nome": "Joinville",
+   "uf": "SC"
+  },
+  "1200203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cruzeiro do Sul",
+   "uf": "AC"
+  },
+  "2910800": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2910800/2024-02-16/b626de56adc4406fb63110bc27da99a973b11722.pdf",
+     "data_publicacao": "2024-02-16",
+     "edicao": "2755",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "336ª no dia 07/02/2024, abaixo: RESOLVE: • Aprovação da Programação Anual de Saúde (PAS) 2024; • Aprovação do Plano de Contingência das Arboviroses Urbanas: Dengue, Chikungunya e Zika de",
+     "hash_evidencia": "3e1eaf83e88c5b2b1f5d2c7c5266b57081adb6c72cb0d5a13f015a8069a3f96c"
+    }
+   ],
+   "nome": "Feira de Santana",
+   "uf": "BA"
+  },
+  "2300507": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alcântaras",
+   "uf": "CE"
+  },
+  "3205101": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Viana",
+   "uf": "ES"
+  },
+  "4113700": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Londrina",
+   "uf": "PR"
+  },
+  "3136702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Juiz de Fora",
+   "uf": "MG"
+  },
+  "5212501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Luziânia",
+   "uf": "GO"
+  },
+  "3149309": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pedro Leopoldo",
+   "uf": "MG"
+  },
+  "5201405": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/5201405/2024-03-26/ca58adb54c0330df1841552e3902386191fdcede.pdf",
+     "data_publicacao": "2024-03-26",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "DE GOVERNANÇA CLÍNICA Tipo do documen- to Protocolo Organizacional PCDZC/VE 04 Versão01 Pág.: 1/35 Título do documen- to PLANO DE CONTINGÊNCIA DE ARBOVIROSES (DENGUE, ZIKA E CHIKUNGUNYA Data de emissão: 06/03/2024 Revisão sob demanda 1. Introdução A cidade de Aparecida de Goiânia, de acordo",
+     "hash_evidencia": "9774201981a179741c9f3154d378e54228249f1d361583eae95f2c45a1b1c4ec"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/5201405/2024-05-23/4d3ab6a527eecbe4ba7977dc69151a2ca7e8d655.pdf",
+     "data_publicacao": "2024-05-23",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "da Saúde (2024). Conclusão Portanto, conforme decisão da equipe Técnica do Grupo de Enfrentamento de Arboviroses Municipal, previsto no Plano de Contingência PCDZC/VE 04/24 a partir da presente data, as sorologias para arboviroses e testes de antígeno NS1, pelo Métodos Elisa, devem ser solicitados",
+     "hash_evidencia": "7bf7399892e4eba8e2843a3dcaefd5058a2cab910a73b06d21aeda0d4754a021"
+    }
+   ],
+   "nome": "Aparecida de Goiânia",
+   "uf": "GO"
+  },
+  "2615409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Toritama",
+   "uf": "PE"
+  },
+  "3205002": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3205002/2024-11-29/e91c81bb162b402ae176706932772c3b433f298a.pdf",
+     "data_publicacao": "2024-11-29",
+     "edicao": "957",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Monitoramento e Avaliação dos Instrumentos de Gestão do Conselho Municipal de Saúde de Serra, que sugeriu a aprovação do Plano de Contingência para Controle das Arboviroses (dengue, zika, chikungunya e febre amarela) e Assistência ao paciente 2024/2026. 8 DIÁRIO OFICIAL DO MUNICÍPIO DA SERRA A T",
+     "hash_evidencia": "4a83f230da03345bc1b4e6cce97a65c27bfae1882732f2f8c37f6ca3a02ccbb9"
+    }
+   ],
+   "nome": "Serra",
+   "uf": "ES"
+  },
+  "3301009": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Campos dos Goytacazes",
+   "uf": "RJ"
+  },
+  "3306107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Valença",
+   "uf": "RJ"
+  },
+  "3300456": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Belford Roxo",
+   "uf": "RJ"
+  },
+  "3504008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Assis",
+   "uf": "SP"
+  },
+  "3303302": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3303302/2024-04-19/28808516815400ec9f007d28305748d0d91fcf95.pdf",
+     "data_publicacao": "2024-04-19",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "MOTA MURTHA Licença Especial - Deferida 200/0223/2008 - MARIANGELA PINHEIRO E SILVA Resolução CMS/NIT nº 005 /2024 Plano de Contingência para as Arboviroses Dengue, Zika e Chikungunya - 2024/2025 A Secretaria Municipal de Saúde de Niterói torna publica a Resolução do Conselho Municipal de",
+     "hash_evidencia": "6646bfda5232c9a63cf8ab12b03340400e9f7a6d43a4fc66f15eefe21dd35bc6"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3303302/2025-03-27/afedc1b668deca99f7414f30641cd5176979fd87.pdf",
+     "data_publicacao": "2025-03-27",
+     "edicao": null,
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Portaria entra em vigor na data de sua publicação. CONSELHO MUNICIPAL DE SAÚDE DE NITERÓI – CMS Resolução CMS/NIT nº 004 /2025 Plano de Contingência para as Arboviroses Dengue, Zika e Chikungunya - 2024/2026 A Secretaria Municipal de Saúde de Niterói torna publica a Resolução do Conselho Municipal de",
+     "hash_evidencia": "becf6cebaae196d47c1cbb1614d32e22389478e26d8a922d23fac59341a72f06"
+    }
+   ],
+   "nome": "Niterói",
+   "uf": "RJ"
+  },
+  "1709500": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/1709500/2024-03-04/288f3cb9ffe8b4cd44163013ebc5e57e84d67d70.pdf",
+     "data_publicacao": "2024-03-04",
+     "edicao": "953",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "eletrônico: http://diariooficial.gurupi.to.gov.br Luana Nunes Garcia Secretária Municipal de Saúde RESOLUÇÃO CMS Nº 0007/2024 “Aprovação do Plano de Contingência Municipal para Prevenção e Controle das Arboviroses DEN- GUE, ZIKA VÍRUS E CHIKUNGUNYA – Exercício 2024 da secretaria municipal de saúde",
+     "hash_evidencia": "24d7408c4d2aebadaf68827bbffbb139f5465fa1cd7a29a59a21b0e9ecf62875"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/1709500/2024-12-26/4d770dc40023a07cc8df3ebaa6f92d0fde6914c5.pdf",
+     "data_publicacao": "2024-12-26",
+     "edicao": "1153",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "junho de 2018. Luana Nunes Garcia Secretária Municipal de Saúde RESOLUÇÃO CMS Nº 0027/2024 “Aprova o Plano de Contingência Municipal para Prevenção e Controle das Arboviroses – Chikun- gunya, Dengue e Zika Vírus- Exercício 2025 da Secretaria Municipal de Saúde do Município de Gurupi/TO”. O Conselho",
+     "hash_evidencia": "501af7e7b4dd19a22b436dd6a87acf41fa7ca686870510d04a6b06a651cedcb5"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/1709500/2024-01-29/a354ed0f699278cf09fb987f13c9522be5f73b7d.pdf",
+     "data_publicacao": "2024-01-29",
+     "edicao": "931",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "LUANA NUNES GARCIA Secretária Municipal de Saúde RESOLUÇÃO CMS Nº 0003/2024 “Aprovação do AD REFEREDUNDUM sobre o Plano Municipal de Contingência DENGUE, ZIKA VÍRUS E CHIKUNGUNYA, da secretaria municipal de saúde de Gurupi – TO”. O Conselho Municipal de Saúde de Gurupi/TO, no uso de suas atribuições",
+     "hash_evidencia": "056abcafa76b19b3b963428aac97f4aa0c3906c4fd14dcd0168795dddcb2c8b3"
+    }
+   ],
+   "nome": "Gurupi",
+   "uf": "TO"
+  },
+  "3549805": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José do Rio Preto",
+   "uf": "SP"
+  },
+  "3114105": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carmo de Minas",
+   "uf": "MG"
+  },
+  "1500800": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ananindeua",
+   "uf": "PA"
+  },
+  "4111902": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jaguapitã",
+   "uf": "PR"
+  },
+  "3205200": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Vila Velha",
+   "uf": "ES"
+  },
+  "5008305": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Três Lagoas",
+   "uf": "MS"
+  },
+  "4305108": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Caxias do Sul",
+   "uf": "RS"
+  },
+  "4118402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paranavaí",
+   "uf": "PR"
+  },
+  "5210000": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Inhumas",
+   "uf": "GO"
+  },
+  "3530607": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mogi das Cruzes",
+   "uf": "SP"
+  },
+  "3203056": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jaguaré",
+   "uf": "ES"
+  },
+  "3525904": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Jundiaí",
+   "uf": "SP"
+  },
+  "5006606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ponta Porã",
+   "uf": "MS"
+  },
+  "1400472": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rorainópolis",
+   "uf": "RR"
+  },
+  "3305109": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3305109/2024-05-09/6397a80beaf2ee57e884f1613730baeba4b24f5c.pdf",
+     "data_publicacao": "2024-05-09",
+     "edicao": "6314",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Conselho delibera favorável ao Plano de Contingência Arboviroses 2024/2025 devendo a Secretaria Municipal De Saúde no prazo Maximo de um ano apresentar o balancete de ações feitas no período e uma analise da execução do plano para este Conselho PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO ÀS ARBOVIROSES",
+     "hash_evidencia": "46b968a529f916d8018d763a0a5c068384dcc49f68a901a12372429e5943db3a"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3305109/2024-05-08/67420d51d9249ed3134fb8ac3d3c976738502ae7.pdf",
+     "data_publicacao": "2024-05-08",
+     "edicao": "6313",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "secretario passa a compor a mesa dire- tora do conselho o Sr. Jaciano Gomes Santiago que também foi dada boas vindas; Primeiro Ponto: Plano de Contingência Arboviroses, O secretario executivo Informou que todos os conselheiros tiveram acesso ao plano e passou a palavra a Subsecretaria Dr. Virginia que",
+     "hash_evidencia": "58074494034470605128ed799d0ed37cbd6223ba8bdcb4449a669eedd159c012"
+    }
+   ],
+   "nome": "São João de Meriti",
+   "uf": "RJ"
+  },
+  "2306405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapipoca",
+   "uf": "CE"
+  },
+  "3538709": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Piracicaba",
+   "uf": "SP"
+  },
+  "3204005": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pancas",
+   "uf": "ES"
+  },
+  "5210406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaberaí",
+   "uf": "GO"
+  },
+  "3548500": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Santos",
+   "uf": "SP"
+  },
+  "1100924": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chupinguaia",
+   "uf": "RO"
+  },
+  "3529401": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mauá",
+   "uf": "SP"
+  },
+  "1200104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Brasiléia",
+   "uf": "AC"
+  },
+  "3143302": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Montes Claros",
+   "uf": "MG"
+  },
+  "1301803": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ipixuna",
+   "uf": "AM"
+  },
+  "1400233": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caroebe",
+   "uf": "RR"
+  },
+  "3106705": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Betim",
+   "uf": "MG"
+  },
+  "2516300": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sumé",
+   "uf": "PB"
+  },
+  "4115200": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4115200/2024-03-26/d2084e6ea7b92ed321b4196fbe6ac7130f7c0b47.pdf",
+     "data_publicacao": "2024-03-26",
+     "edicao": "4312",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "fevereiro do ano passado; CONSIDERANDO a alta demanda de pacientes que procuram por atendimento nos serviços de saúde; CONSIDERANDO o Plano de Contingência para Arboviroses 2023/2024 elaborado pelo mun icípio; CONSIDERANDO a necessidade de medidas céleres para manter a qualidade de atendimento do período",
+     "hash_evidencia": "ae49f80353eacf1e6d7a0593251a4b08c94f3260ce29504d0275e727a2fb0c9e"
+    }
+   ],
+   "nome": "Maringá",
+   "uf": "PR"
+  },
+  "2709301": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "União dos Palmares",
+   "uf": "AL"
+  },
+  "5201108": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Anápolis",
+   "uf": "GO"
+  },
+  "3202603": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Iconha",
+   "uf": "ES"
+  },
+  "3513801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Diadema",
+   "uf": "SP"
+  },
+  "4125506": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José dos Pinhais",
+   "uf": "PR"
+  },
+  "3510609": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carapicuíba",
+   "uf": "SP"
+  },
+  "1200609": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tarauacá",
+   "uf": "AC"
+  },
+  "2611101": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Petrolina",
+   "uf": "PE"
+  },
+  "2606002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Garanhuns",
+   "uf": "PE"
+  },
+  "3506003": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bauru",
+   "uf": "SP"
+  },
+  "2806701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Cristóvão",
+   "uf": "SE"
+  },
+  "2604106": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caruaru",
+   "uf": "PE"
+  },
+  "3202207": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Fundão",
+   "uf": "ES"
+  },
+  "2933307": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vitória da Conquista",
+   "uf": "BA"
+  },
+  "3523107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaquaquecetuba",
+   "uf": "SP"
+  },
+  "5107040": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Primavera do Leste",
+   "uf": "MT"
+  },
+  "1200336": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mâncio Lima",
+   "uf": "AC"
+  },
+  "4202404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Blumenau",
+   "uf": "SC"
+  },
+  "1200427": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rodrigues Alves",
+   "uf": "AC"
+  },
+  "4119905": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ponta Grossa",
+   "uf": "PR"
+  },
+  "1400506": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São João da Baliza",
+   "uf": "RR"
+  },
+  "2303709": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2303709/2024-02-09/7c5324264d62fa54a528e115981ddc8c5fbb568f.pdf",
+     "data_publicacao": "2024-02-09",
+     "edicao": "2893",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Suziane Morais Silveira – Membro. Francisco Glailson Mota Nunes – Membro. Resolução Nº. 01/ 2024. Assunto: Dispõe pela Aprovação do Plano de Contingência para o Enfrentamento de Epidemia por Arboviroses do Município de Caucaia no ano de 2024. O Conselho Municipal de Saúde de Caucaia - CMS, instituído",
+     "hash_evidencia": "48d68182afccc90d15de9c04ce7f48d68248ac2d46bec76928d01181caf906d9"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/2303709/2025-02-10/3765236fb8c1942dd116aae36559dd01f2896882.pdf",
+     "data_publicacao": "2025-02-10",
+     "edicao": "3137",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "SAÚDE. RESOLUÇÃO Nº. 01/ 2025/CMS. Assunto: Dispõe pela Aprovação do Plano Municipal de Contingência para o Enfrentamento de Epidemia por Arboviroses do Município de Caucaia no ano de 2025. O Conselho Municipal de Saúde de Caucaia - CMS, instituído pela Lei Municipal Nº 585, de 09 de julho de",
+     "hash_evidencia": "3db9f172b5fbb3ca64cac737464a24677cdb4dfb0c09cdc330232d86230b129b"
+    }
+   ],
+   "nome": "Caucaia",
+   "uf": "CE"
+  },
+  "2704005": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Junqueiro",
+   "uf": "AL"
+  },
+  "1303536": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Presidente Figueiredo",
+   "uf": "AM"
+  },
+  "3516200": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Franca",
+   "uf": "SP"
+  },
+  "2606309": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Granito",
+   "uf": "PE"
+  },
+  "2609600": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Olinda",
+   "uf": "PE"
+  },
+  "2805703": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Propriá",
+   "uf": "SE"
+  },
+  "3541000": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Praia Grande",
+   "uf": "SP"
+  },
+  "1100015": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alta Floresta D'Oeste",
+   "uf": "RO"
+  },
+  "4104808": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cascavel",
+   "uf": "PR"
+  },
+  "1500909": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Augusto Corrêa",
+   "uf": "PA"
+  },
+  "4304606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Canoas",
+   "uf": "RS"
+  },
+  "1502806": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Curralinho",
+   "uf": "PA"
+  },
+  "2610707": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paulista",
+   "uf": "PE"
+  },
+  "1503457": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ipixuna do Pará",
+   "uf": "PA"
+  },
+  "3170107": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3170107/2024-03-04/cac6884cebb55ee46feee070454784b5a09bab4d.pdf",
+     "data_publicacao": "2024-03-04",
+     "edicao": "2394",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "requerimentos; 7. Apresentação de questionamentos referentes ao informativo financeiro do mês de novembro e dezembro; 8. Aprovação do Plano de Contingência de Arbovirose. 9. Indicação dos Membros das Comissões de Acompanhamento e Contratualização (CAC); 10.1 Hospital Beneficência Portuguesa; 10.2 Hospital",
+     "hash_evidencia": "662107cf54afbd6d201196632abb5b86aea875a8863f523653c8b901f9297f08"
+    }
+   ],
+   "nome": "Uberaba",
+   "uf": "MG"
+  },
+  "1600709": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Tartarugalzinho",
+   "uf": "AP"
+  },
+  "1506807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santarém",
+   "uf": "PA"
+  },
+  "2707305": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Porto Calvo",
+   "uf": "AL"
+  },
+  "3551009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Vicente",
+   "uf": "SP"
+  },
+  "2707602": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Quebrangulo",
+   "uf": "AL"
+  },
+  "3154606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ribeirão das Neves",
+   "uf": "MG"
+  },
+  "2804201": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Alegre de Sergipe",
+   "uf": "SE"
+  },
+  "2805604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Porto da Folha",
+   "uf": "SE"
+  },
+  "4314407": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pelotas",
+   "uf": "RS"
+  },
+  "2918001": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jequié",
+   "uf": "BA"
+  },
+  "3201605": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conceição da Barra",
+   "uf": "ES"
+  },
+  "3505708": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Barueri",
+   "uf": "SP"
+  },
+  "3203346": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Marechal Floriano",
+   "uf": "ES"
+  },
+  "3554102": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Taubaté",
+   "uf": "SP"
+  },
+  "3204104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pinheiros",
+   "uf": "ES"
+  },
+  "3552502": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Suzano",
+   "uf": "SP"
+  },
+  "3301207": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carmo",
+   "uf": "RJ"
+  },
+  "3502507": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Aparecida",
+   "uf": "SP"
+  },
+  "2905701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Camaçari",
+   "uf": "BA"
+  },
+  "3511508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cerquilho",
+   "uf": "SP"
+  },
+  "5108402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Várzea Grande",
+   "uf": "MT"
+  },
+  "5107198": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ribeirãozinho",
+   "uf": "MT"
+  },
+  "3526902": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Limeira",
+   "uf": "SP"
+  },
+  "5222054": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vicentinópolis",
+   "uf": "GO"
+  },
+  "3518701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guarujá",
+   "uf": "SP"
+  },
+  "2109809": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Helena",
+   "uf": "MA"
+  },
+  "2307304": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2307304/2025-01-31/387b166e59aa581978e6d02e4b2926451c712ca2.pdf",
+     "data_publicacao": "2025-01-31",
+     "edicao": "6411",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "dia 14 de janeiro de 2025 houve a Apresentação, Apreciação e Votação do PLANO DE CONTINGÊNCIA MUNICIPAL DE ARBOVIROSES 2025. RESOLVE: Art. 1º - Aprovar e homologar a Resolução nº 01/2025, que aprovou o PLANO DE CONTINGÊNCIA MUNICIPAL DE ARBOVIROSES 2025. Art.2 - Esta Resolução entra em vigor na",
+     "hash_evidencia": "645135f1e01eefcc50c2d9000fea43bed8cf36bf76805086eb828bdc8e9d5367"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/2307304/2026-01-22/b14540f87f9aae69359958c9ba703674440cb8cc.pdf",
+     "data_publicacao": "2026-01-22",
+     "edicao": "6646",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Saúde do dia 13 de janeiro de 2026 houve a Apresentação e Aprovação do Plano de Contingência Municipal de Arboviroses 2026. RESOLVE: Art. 1º - Aprovar e homologar a Resolução nº 01/2026, que aprovou o Plano de Contingência Municipal de Arboviroses 2026. Art.2 - Esta Resolução entra em vigor na",
+     "hash_evidencia": "cfe81fa18d59ad55a32263bbf7c2e405a9b76f11e1ef7c809120ce0288088be7"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/2307304/2024-02-20/52a1d0af9defef874405cd79c8b3f499a0b2f884.pdf",
+     "data_publicacao": "2024-02-20",
+     "edicao": "6176",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "20 de fevereiro de 2024 houve a Apresentação, Apreciação e Vot ação do PLANO DE CONTINGÊNCIA MUNICIPAL DE ARBOVIROSES 2024. RESOLVE: Art. 1º - Aprovar e homologar a Resolução nº 02/2024, que aprovou o PLANO DE CONTINGÊNCIA MUNICIPAL DE ARBOVIROSES 2024. Art.2 - Esta Resolução entra em vigor na",
+     "hash_evidencia": "7678b1d72ebe7f6d777cae9ab1c0712c5bf1d70983bd63e60d195e69a723731b"
+    }
+   ],
+   "nome": "Juazeiro do Norte",
+   "uf": "CE"
+  },
+  "2208007": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Picos",
+   "uf": "PI"
+  },
+  "4108304": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Foz do Iguaçu",
+   "uf": "PR"
+  },
+  "2300754": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Amontada",
+   "uf": "CE"
+  },
+  "3552403": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Sumaré",
+   "uf": "SP"
+  },
+  "2301406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Aratuba",
+   "uf": "CE"
+  },
+  "3303906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Petrópolis",
+   "uf": "RJ"
+  },
+  "2405801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "João Câmara",
+   "uf": "RN"
+  },
+  "3513009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cotia",
+   "uf": "SP"
+  },
+  "2515104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Sebastião de Lagoa de Roça",
+   "uf": "PB"
+  },
+  "3552809": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Taboão da Serra",
+   "uf": "SP"
+  },
+  "2613107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Caetano",
+   "uf": "PE"
+  },
+  "2105302": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Imperatriz",
+   "uf": "MA"
+  },
+  "2803500": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lagarto",
+   "uf": "SE"
+  },
+  "4316907": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Maria",
+   "uf": "RS"
+  },
+  "3143906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Muriaé",
+   "uf": "MG"
+  },
+  "4216602": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José",
+   "uf": "SC"
+  },
+  "3204807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José do Calçado",
+   "uf": "ES"
+  },
+  "1504208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Marabá",
+   "uf": "PA"
+  },
+  "4218004": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tijucas",
+   "uf": "SC"
+  },
+  "1505536": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Parauapebas",
+   "uf": "PA"
+  },
+  "5006200": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nova Andradina",
+   "uf": "MS"
+  },
+  "4309209": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Gravataí",
+   "uf": "RS"
+  },
+  "5106281": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Novo São Joaquim",
+   "uf": "MT"
+  },
+  "5200605": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alto Paraíso de Goiás",
+   "uf": "GO"
+  },
+  "4208203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itajaí",
+   "uf": "SC"
+  },
+  "3306305": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Volta Redonda",
+   "uf": "RJ"
+  },
+  "3127701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Governador Valadares",
+   "uf": "MG"
+  },
+  "3520509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Indaiatuba",
+   "uf": "SP"
+  },
+  "3548906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Carlos",
+   "uf": "SP"
+  },
+  "4204202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chapecó",
+   "uf": "SC"
+  },
+  "2403251": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Parnamirim",
+   "uf": "RN"
+  },
+  "3515004": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Embu das Artes",
+   "uf": "SP"
+  },
+  "3302403": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-07-08/2b1568c6d508082469c052d4bbd7d9651f4063c3.pdf",
+     "data_publicacao": "2025-07-08",
+     "edicao": "1241",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Plano Municipal de Contingência da Saúde para Desastres Naturais. Art. 2º - Tornar público a aprovação do Plano de Contingência para o controle das Arbo- viroses (Febre do Chikungunya, Dengue, Zika vírus e Febre Oropouche). Art. 3º - Esta resolução entra em vigor a partir da data da sua publicação.",
+     "hash_evidencia": "2720a69ecde7a45438970d086814ce4be43906f9b0568d7445d433cdc4c8160e"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3302403/2025-05-30/f30b4e8d70f4dad14204fdac7d35592c6696ed12.pdf",
+     "data_publicacao": "2025-05-30",
+     "edicao": "1217",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "na Rua Ten. Rui Lopes Ribeiro nº 78, Centro - Macaé-RJ. Pauta do dia: 1-Aprovação das Atas Anteriores. 2 - Apresentação do Plano de Contingência para prevenção de Arboviroses e Desas- tres Naturais. 3 – Assuntos Gerais. PEDRO PAULO PIRES CARVALHO Presidente do Conselho Municipal Conselho Municipal",
+     "hash_evidencia": "76850a40b7d6d7ffcabb24ca4f99b4d314bbe3b0b31c26d8461f9a2c7b4a8e44"
+    }
+   ],
+   "nome": "Macaé",
+   "uf": "RJ"
+  },
+  "5107602": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Rondonópolis",
+   "uf": "MT"
+  },
+  "2111201": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José de Ribamar",
+   "uf": "MA"
+  },
+  "5003702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Dourados",
+   "uf": "MS"
+  },
+  "3503208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araraquara",
+   "uf": "SP"
+  },
+  "3524402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jacareí",
+   "uf": "SP"
+  },
+  "3529005": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3529005/2025-06-24/a6d411273f7a2b69eed36d638be75923463d2563.pdf",
+     "data_publicacao": "2025-06-24",
+     "edicao": "3969",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "do Fundo Municipal de Saúde referente aos meses de Março e Abril de 2025; 3) Recomendações COFIN; 4) Vigilância Epidemiológica – Dengue 5) Plano de Contingência para Enfrentamento Síndrome Respiratória Aguda Grave (SRAG). Assuntos Gerais Atenciosamente, TEREZA APARECIDA MACHADO Presidente",
+     "hash_evidencia": "5974dd45033c04293e20d10139746a30a266face2218638acd174544a82939bc"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3529005/2025-06-27/0ad9bda107911e2236f46d6b5c21442073e816f5.pdf",
+     "data_publicacao": "2025-06-27",
+     "edicao": "3972",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "do Fundo Municipal de Saúde referente aos meses de Março e Abril de 2025; 3) Recomendações COFIN; 4) Vigilância Epidemiológica – Dengue 5) Plano de Contingência para Enfrentamento Síndrome Respiratória Aguda Grave (SRAG). 6) Inclusão de Pauta - a solicitação de credenciamento de 17 equipes de",
+     "hash_evidencia": "b20292765f4ba54f5c07111ea6499e69cf447e35b58c7429b25df29b1da799c2"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3529005/2024-11-05/1a9ba62e52bda0c200e94c7c4e5a4e2ed4a73e57.pdf",
+     "data_publicacao": "2024-11-05",
+     "edicao": "3816",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Chavantes - Serviços de Residência Terapêutica (SRT) dos meses de Julho e Agosto de 2024; 7) Recomendação – COFIN; e 8) Apreciação e Aprovação Plano de Contingência da Arboviroses. ASSUNTOS GERAIS: Considerando que após análise das Prestações de Contas- Convênios nos meses que compõe os",
+     "hash_evidencia": "b80c7dc505d2d1edfc70f72d25d864cfdbef17b4af63cd4ea9ed9934711a1704"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3529005/2024-09-21/485e8cd1220e736f26ae7643abb3af47b51bd116.pdf",
+     "data_publicacao": "2024-09-21",
+     "edicao": "3786",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Prestação de Contas do 2º Quadrimestre 2024 – Audiência Pública da Saúde; 2) Recomendação – COFIN; 3) Apreciação e Aprovação Plano de Contingência das Arboviroses; e 4) Apresentação Saúde Mental. ASSUNTOS GERAIS: Atenciosamente, Tereza Aparecida Machado Presidente - COMUS/M",
+     "hash_evidencia": "04340a40185823b9575dbe4648bda76300da34af91ca5ac968b1ce87c5f07dc5"
+    }
+   ],
+   "nome": "Marília",
+   "uf": "SP"
+  },
+  "3501608": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Americana",
+   "uf": "SP"
+  },
+  "3519071": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Hortolândia",
+   "uf": "SP"
+  },
+  "2918407": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Juazeiro",
+   "uf": "BA"
+  },
+  "2307650": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Maracanaú",
+   "uf": "CE"
+  },
+  "3522505": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Itapevi",
+   "uf": "SP"
+  },
+  "4105805": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Colombo",
+   "uf": "PR"
+  },
+  "3122306": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Divinópolis",
+   "uf": "MG"
+  },
+  "3302502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Magé",
+   "uf": "RJ"
+  },
+  "4313409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Novo Hamburgo",
+   "uf": "RS"
+  },
+  "3131307": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ipatinga",
+   "uf": "MG"
+  },
+  "3167202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sete Lagoas",
+   "uf": "MG"
+  },
+  "5218805": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Verde",
+   "uf": "GO"
+  },
+  "5200258": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Águas Lindas de Goiás",
+   "uf": "GO"
+  },
+  "3541406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Presidente Prudente",
+   "uf": "SP"
+  },
+  "3301900": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaboraí",
+   "uf": "RJ"
+  },
+  "4323002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Viamão",
+   "uf": "RS"
+  },
+  "4211900": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Palhoça",
+   "uf": "SC"
+  },
+  "3300704": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3300704/2024-12-06/fac3a4a3c0ee6734ae2a6912aa1e5b9c7cbb81dc.pdf",
+     "data_publicacao": "2024-12-06",
+     "edicao": "1081",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "para deliberarmos os 4 seguintes assuntos:Leitura e votação da Ata anterior; Votação da Alteração do 5 Regimento Interno; Apresentação do Plano de Contingência para Enfrentamento às 6 Arboviroses para 2022-2024; Informes da Mesa Diretora; Espaço dos Conselheiros e 7 Assuntos Gerais. As 9:30 horas",
+     "hash_evidencia": "2e53849df6d64455e48955369a22b998b33564d904b2590687d7b7a868d94a06"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3300704/2024-12-11/0184174c407a37be00e712c2a30a10c19a9f11e3.pdf",
+     "data_publicacao": "2024-12-11",
+     "edicao": "1087",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Conselho Municipal de Saúde Cabo Frio, 11 de novembro de 2024. Resolução CMS/CF - Nº 019/2024 APROVAÇÃO DO PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO ÀS ARBOVIROSES CABO FRIO – RJ 2024/2026. O Conselho Municipal de Saúde de Cabo Frio, por unanimidade de votos",
+     "hash_evidencia": "cb20a097056829c7b824d286c4b57925b7132dee0bdf9f05c2877b5357b46fa7"
+    }
+   ],
+   "nome": "Cabo Frio",
+   "uf": "RJ"
+  },
+  "3157807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Luzia",
+   "uf": "MG"
+  },
+  "4318705": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Leopoldo",
+   "uf": "RS"
+  },
+  "4204608": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Criciúma",
+   "uf": "SC"
+  },
+  "4314100": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Passo Fundo",
+   "uf": "RS"
+  },
+  "2919207": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2919207/2024-06-27/eb228d9a638a477a64d85522acdeb802067367a2.pdf",
+     "data_publicacao": "2024-06-27",
+     "edicao": "2879",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "NEU1Q0QWQJVFRJU3RERFQT Esta edição encontra-se no site oficial deste ente. RESOLUÇÃO CMS Nº 011, 27 DE JUNHO DE 2024 Aprova o Plano de Contingência Municipal das Arboviroses Dengue, Chikungunya e Zika 2024 - 2026, na forma que indica e dá outras providências. O CONSELHO MUNICIPAL DE SAÚDE DE LAURO",
+     "hash_evidencia": "1e8162729b8a1c15faaec3adaddc974b66d6a80e14792b4012b04ea64ce7a5bb"
+    }
+   ],
+   "nome": "Lauro de Freitas",
+   "uf": "BA"
+  },
+  "2602902": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cabo de Santo Agostinho",
+   "uf": "PE"
+  },
+  "2312908": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2312908/2024-03-26/288f4dac57bb008becfaaf725aa7bd0f1e38f919.pdf",
+     "data_publicacao": "2024-03-26",
+     "edicao": "1784",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Município de Sobral RESOLUÇÃO CMSS Nº 03, DE 22 DE MARÇO DE 2024. DISPÕE SOBRE APROVAÇÃO DO PLANO MUNICIPAL DE CONTINGÊNCIA PARA O ENFRENTAMENTO DAS ARBOVIROSES (DENGUE, CHIKUNGUNYA E ZIKA) EM SOBRAL - 2024. O Conselho Municipal de Saúde de Sobral - CMSS, no uso das atribuições que lhe são conferidas pela",
+     "hash_evidencia": "373f08314855834086ca8bcdb54aa597b5fa56b2116d1f1f3861d44095f8f759"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/2312908/2024-12-20/b3824afe661952faf6ac85fa35fd722616c9bbbc.pdf",
+     "data_publicacao": "2024-12-20",
+     "edicao": "1968",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "CMSS Nº 15, DE 19 DE DEZEMBRO DE 2024. DISPÕE SOBRE APROVAÇÃO DO PLANO MUNICIPAL DE CONTINGÊNCIA PARA O ENFRENTAMENTO DAS ARBOVIROSES (DENGUE, CHIKUNGUNYA E ZIKA) EM SOBRAL - 2025. O Conselho Municipal de Saúde de Sobral - CMSS, no uso das atribuições que lhe são conferidas pela Lei Municipal Nº 052/93",
+     "hash_evidencia": "9772db0f688e50ce96bb3240cb04faa5d2394629bc7c6de63b5fe9f4f6293693"
+    }
+   ],
+   "nome": "Sobral",
+   "uf": "CE"
+  },
+  "3543907": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3543907/2025-02-12/f5076f57c2835bf8106c7c7962d4762770519e09.pdf",
+     "data_publicacao": "2025-02-12",
+     "edicao": "1747",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "cinquenta) casos por 100 (cem) mil habitantes, caracterizando um estado de epidemia estabelecida, segundo os parâmetros do Ministério da Saúde e do Plano de contingência de Arboviroses de Rio Claro 2025, com a circulação simultânea de diversos tipos de sorotipos do vírus da dengue na cidade ao qual boa parte",
+     "hash_evidencia": "264025d6a01a7a3ad092b53b7d4f51ddf80a2636d27f4bc8dfa58d06e48ac555"
+    }
+   ],
+   "nome": "Rio Claro",
+   "uf": "SP"
+  },
+  "3502804": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3502804/2025-02-07/0f23b4f06507b6429a2ff5d6dc93caca63f1bd65.pdf",
+     "data_publicacao": "2025-02-07",
+     "edicao": "1187",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "C O M P R O V A, para os fins que se fizerem necessários, que face apresentação do Memorando n.º 5.571/2025, de 03/02/2025, SMSA, foi o Plano de Contingência Municipal para Prevenção e Controle das Arboviroses Urbanas do Município de Araçatuba-SP e sua inclusão no Plano Municipal de Saúde - PMS",
+     "hash_evidencia": "8e2982066005ee0baf7222bd43c619b9fc06053cbc43acb60ebed0328b253671"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3502804/2024-12-17/4655e55b31da4b1377d3a941ccbcceec7d0d0d2e.pdf",
+     "data_publicacao": "2024-12-17",
+     "edicao": "1151",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "epidemiológica 41 a 48/2024, conforme avaliação do diagrama de controle da Dengue na Sala de Situação de 27 de novembro de 2024; CONSIDERANDO o Plano de Contingência Municipal para Prevenção e Controle das Arboviroses Urbanas do município de Araçatuba/SP, que classifica o município como ALTO RISCO – NÍVEL",
+     "hash_evidencia": "48ef281563892cbef84347b785de397965b0ce447fe08f368ac01f681cef0f8b"
+    }
+   ],
+   "nome": "Araçatuba",
+   "uf": "SP"
+  },
+  "5221858": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Valparaíso de Goiás",
+   "uf": "GO"
+  },
+  "3302700": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3302700/2024-10-23/090bd0c6ea46649808f07a8b496e8c32dbb99771.pdf",
+     "data_publicacao": "2024-10-23",
+     "edicao": "1657",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "quadrimestre de 2023;04-Apresentação e Aprovação do Plano de Municipal de Contingência de Enfrentamento às Arboviroses Transmitidas Pelo Ae- des Aegypti, Dengue, Febre do Chikungunya e Zika Vírus;05-Apre- sentação e Aprovação da Resolução da Criação da CISTT, 06-Apro- vação da realização do Fórum Municipal",
+     "hash_evidencia": "5cbfe5ffeb2857f6ad1788ba10ac480a4f951a7ffbc11cf73cfbf4125fb95ef0"
+    }
+   ],
+   "nome": "Maricá",
+   "uf": "RJ"
+  },
+  "5107909": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sinop",
+   "uf": "MT"
+  },
+  "2804805": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Nossa Senhora do Socorro",
+   "uf": "SE"
+  },
+  "1502400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Castanhal",
+   "uf": "PA"
+  },
+  "4315602": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Grande",
+   "uf": "RS"
+  },
+  "3303401": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Nova Friburgo",
+   "uf": "RJ"
+  },
+  "4300604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alvorada",
+   "uf": "RS"
+  },
+  "2914802": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itabuna",
+   "uf": "BA"
+  },
+  "3201209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cachoeiro de Itapemirim",
+   "uf": "ES"
+  },
+  "3545803": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Bárbara d'Oeste",
+   "uf": "SP"
+  },
+  "4208906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jaraguá do Sul",
+   "uf": "SC"
+  },
+  "4109401": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guarapuava",
+   "uf": "PR"
+  },
+  "3515707": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ferraz de Vasconcelos",
+   "uf": "SP"
+  },
+  "2913606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ilhéus",
+   "uf": "BA"
+  },
+  "3507605": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Bragança Paulista",
+   "uf": "SP"
+  },
+  "2112209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Timon",
+   "uf": "MA"
+  },
+  "3129806": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibirité",
+   "uf": "MG"
+  },
+  "3300407": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Barra Mansa",
+   "uf": "RJ"
+  },
+  "3523909": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Itu",
+   "uf": "SP"
+  },
+  "2925303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Porto Seguro",
+   "uf": "BA"
+  },
+  "3300100": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3300100/2025-01-14/7822260b57b2f5683ccc2e50f162e4329a9a7691.pdf",
+     "data_publicacao": "2025-01-14",
+     "edicao": "2044",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "LEONARDO BASTOS PRESIDENTE DO CONSELHO MUNICIPAL DE SAÚDE RESOLUÇÃO 015/2024/CMS-AR - AD REFERENDUM APROVA O PLANO MUNICIPAL DE CONTINGÊNCIA DE ARBOVIROSES DO BIÊNIO 2024 - 2026. O PRESIDENTE DO CONSELHO MUNICIPAL DE SAÚ- DE, O SENHOR LEONARDO BASTOS, no uso de suas com- petências regimentais e legais",
+     "hash_evidencia": "70a024fa5e3e87bb3e69999dc62ca198801475472a2170efb2220a0864c39d2f"
+    }
+   ],
+   "nome": "Angra dos Reis",
+   "uf": "RJ"
+  },
+  "3302858": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Mesquita",
+   "uf": "RJ"
+  },
+  "3203205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Linhares",
+   "uf": "ES"
+  },
+  "3548807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Caetano do Sul",
+   "uf": "SP"
+  },
+  "3538006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pindamonhangaba",
+   "uf": "SP"
+  },
+  "3516309": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Francisco Morato",
+   "uf": "SP"
+  },
+  "3305802": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Teresópolis",
+   "uf": "RJ"
+  },
+  "4209300": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lages",
+   "uf": "SC"
+  },
+  "3151800": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Poços de Caldas",
+   "uf": "MG"
+  },
+  "2903201": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Barreiras",
+   "uf": "BA"
+  },
+  "3148004": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Patos de Minas",
+   "uf": "MG"
+  },
+  "3504107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Atibaia",
+   "uf": "SP"
+  },
+  "3522208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapecerica da Serra",
+   "uf": "SP"
+  },
+  "1500107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Abaetetuba",
+   "uf": "PA"
+  },
+  "3522307": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapetininga",
+   "uf": "SP"
+  },
+  "2103000": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Caxias",
+   "uf": "MA"
+  },
+  "3304524": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio das Ostras",
+   "uf": "RJ"
+  },
+  "5220454": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Senador Canedo",
+   "uf": "GO"
+  },
+  "3547304": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santana de Parnaíba",
+   "uf": "SP"
+  },
+  "3530706": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3530706/2024-03-28/6add78f5742985bd4806e9d4c590ed14cb3b26fb.pdf",
+     "data_publicacao": "2024-03-28",
+     "edicao": "545",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "integridade. PORTARIA Nº 022, DE 2024. I n s t i t u i o P l a n o d e Intensificação/Contingência, Assistência, Vigilância e Controle das Arboviroses no âmbito do Município de Mogi Guaçu. RODRIGO FALSETTI, Prefeito do Município de Mogi Guaçu, usando das atribuições que lhe são conferidas",
+     "hash_evidencia": "8e049baa8f6d055dbae88f4f7e046e8ff75ba0fe5a7f6ecf5afc577a320a17bc"
+    }
+   ],
+   "nome": "Mogi Guaçu",
+   "uf": "SP"
+  },
+  "3152501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pouso Alegre",
+   "uf": "MG"
+  },
+  "4101804": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araucária",
+   "uf": "PR"
+  },
+  "2900702": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2900702/2025-11-26/d0833c80577cef380f315afca65badfc51bd75c2.pdf",
+     "data_publicacao": "2025-11-26",
+     "edicao": "5.148",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "nº. 1.362/2000; Lei nº. 1.755/2005 em vigor a Lei nº 2.581/2021 RESOLUÇÃO N° 073, DE 13 DE NOVEMBRO DE 2025 DISPÕE SOBRE APROVAÇÃO DO PLANO DE CONTINGÊNCIA DAS ARBOVIROSES DE NOVEMBRO DE 2025 A OUTUBRO DE 2027, DO MUNICÍPIO DE ALAGOINHAS BAHIA. O Plenário do Conselho Municipal de Saúde",
+     "hash_evidencia": "e0bb6693bc4a54d8590487afafdf1eeb2fc4b9dd7ee7a6307895e784125c1314"
+    }
+   ],
+   "nome": "Alagoinhas",
+   "uf": "BA"
+  },
+  "4127700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Toledo",
+   "uf": "PR"
+  },
+  "2513703": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Rita",
+   "uf": "PB"
+  },
+  "4107652": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Fazenda Rio Grande",
+   "uf": "PR"
+  },
+  "2603454": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Camaragibe",
+   "uf": "PE"
+  },
+  "3303203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nilópolis",
+   "uf": "RJ"
+  },
+  "4118204": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paranaguá",
+   "uf": "PR"
+  },
+  "2107506": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paço do Lumiar",
+   "uf": "MA"
+  },
+  "2931350": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Teixeira de Freitas",
+   "uf": "BA"
+  },
+  "3507506": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Botucatu",
+   "uf": "SP"
+  },
+  "3516408": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Franco da Rocha",
+   "uf": "SP"
+  },
+  "5221403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Trindade",
+   "uf": "GO"
+  },
+  "4202909": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Brusque",
+   "uf": "SC"
+  },
+  "3304144": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304144/2024-05-09/dfcbffa480f3fd1a1b7faba92646f4fa433355ed.pdf",
+     "data_publicacao": "2024-05-09",
+     "edicao": "086",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Art.1º: O Plenário do Conselho Municipal de Saúde de Queimados aprovou o Plano Municipal de Contingência para Enfrentamento da Dengue e outras Arboviroses Transmitidas pelo Aedes aegypti, do período de 2024 a 2025. Art. 2º: Esta Resolução entrará em vigor na data de sua Publicação. Janaina",
+     "hash_evidencia": "1ec9fef168db7d333d390d47cbe8ab6168156b5ca3bb12be307ff9b66a07b464"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304144/2024-04-19/203e6221fa0fdb8d481d6b1a7bd7b077e0eb94ce.pdf",
+     "data_publicacao": "2024-04-19",
+     "edicao": "075",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "eletivas pelo Programa Estadual OPERA RJ; 4.4: Apresentação e Deliberação do Plano Municipal de Contingência para Enfrentamento da Dengue e outras Arboviroses Transmitidas pelo Aedes aegypti, referente ao período de 2024 a 2025; 4.5: Atualização das Comissões Permanentes do Conselho Municipal de Saúde",
+     "hash_evidencia": "46e5c46d58baefde6c7974914245ac309859b38020dedbe74a84885adf59389d"
+    }
+   ],
+   "nome": "Queimados",
+   "uf": "RJ"
+  },
+  "4202008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Balneário Camboriú",
+   "uf": "SC"
+  },
+  "3168606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Teófilo Otoni",
+   "uf": "MG"
+  },
+  "3170701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Varginha",
+   "uf": "MG"
+  },
+  "4104204": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Campo Largo",
+   "uf": "PR"
+  },
+  "4303103": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cachoeirinha",
+   "uf": "RS"
+  },
+  "3510500": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caraguatatuba",
+   "uf": "SP"
+  },
+  "3545209": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Salto",
+   "uf": "SP"
+  },
+  "1502103": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cametá",
+   "uf": "PA"
+  },
+  "2616407": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vitória de Santo Antão",
+   "uf": "PE"
+  },
+  "3525300": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3525300/2025-02-21/93904c052fa9c886f78fdef00d797ef995097bdf.pdf",
+     "data_publicacao": "2025-02-21",
+     "edicao": "1226",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Arboviroses Urbanas: Dengue, Chikungunya e Zika 2025-2026”, acessível através d o l i n k https://portal.saude.sp.gov.br/resources/cve-centro-de-vigil ancia-epidemiologica/areas-de-vigilancia/doencas-de- t r a n s m i s s a o - p o r - v e t o r e s - e - zoonoses/doc/dengue/planodecontingeencia_arbo_2025_20",
+     "hash_evidencia": "1aa69a9a7a05b128d39b15ef03dad21dc002f4a587726ab3a1c6cc21af625c51"
+    }
+   ],
+   "nome": "Jaú",
+   "uf": "SP"
+  },
+  "4316808": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Cruz do Sul",
+   "uf": "RS"
+  },
+  "4320008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sapucaia do Sul",
+   "uf": "RS"
+  },
+  "3118304": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conselheiro Lafaiete",
+   "uf": "MG"
+  },
+  "2304202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Crato",
+   "uf": "CE"
+  },
+  "3503307": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araras",
+   "uf": "SP"
+  },
+  "4101408": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4101408/2024-07-09/0e94c2c3751ea9a10b2a3790ed086f3b02a543d2.pdf",
+     "data_publicacao": "2024-07-09",
+     "edicao": "9802",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Drogas (CAPS AD).” Anexo IV – Resolução nº. 10, de 02 de julho de 2024, que “Dispõe sobre a aprovação do Plano de Contingência do município de Apucarana para enfrentamento dos casos da Dengue, Chikungunya e Zika.” Art. 2º Revogam-se as disposições em contrário, entrando este Decreto em vigor na",
+     "hash_evidencia": "970b1e29cdf20a1351ab528619d1d527287d66debc4c03114f5e96f7b09c7e48"
+    }
+   ],
+   "nome": "Apucarana",
+   "uf": "PR"
+  },
+  "3300209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araruama",
+   "uf": "RJ"
+  },
+  "3304201": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Resende",
+   "uf": "RJ"
+  },
+  "3156700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sabará",
+   "uf": "MG"
+  },
+  "3171204": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vespasiano",
+   "uf": "MG"
+  },
+  "3557006": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Votorantim",
+   "uf": "SP"
+  },
+  "4119152": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Pinhais",
+   "uf": "PR"
+  },
+  "3551702": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3551702/2026-01-29/a0a054c79bf7a5d47f271f179bd5d1fba7e3f06b.pdf",
+     "data_publicacao": "2026-01-29",
+     "edicao": "1489",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "001/2026/CMS, DE 28 DE JANEIRO DE 2026 CONSELHO MUNICIPAL DE SAÚDE Dispõe sobre a apreciação e deliberação do Plano Municipal de Contingência das Arboviroses – Exercício 2026 e dá outras providências. O Plenário do Conselho Municipal de Saúde de Sertãozinho, Estado de São Paulo, em reunião ordinária",
+     "hash_evidencia": "dc3413d40cda2e4e423d12dd9a39a629edd6362bc1e82c04639181f8a52c024a"
+    }
+   ],
+   "nome": "Sertãozinho",
+   "uf": "SP"
+  },
+  "3556206": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3556206/2024-03-21/5c607724065079b5d0e93d5d9cec2b1e1820bf33.pdf",
+     "data_publicacao": "2024-03-21",
+     "edicao": "2617",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "São Paulo em razão de epidemia de Dengue e dá outras providências; CONSIDERANDO o Plano Municipal de Contingência para o enfrentamen- to das Arboviroses Urbanas; CONSIDERANDO que a gestão do risco em emergências em Saúde Pública compreende ações de redução de risco (prevenção, mitigação e preparação)",
+     "hash_evidencia": "921c5e096fa7297ba1625bf76f2b054ce32230c21fb47d2b22cf0b39c239e5f5"
+    }
+   ],
+   "nome": "Valinhos",
+   "uf": "SP"
+  },
+  "1500602": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Altamira",
+   "uf": "PA"
+  },
+  "3105608": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barbacena",
+   "uf": "MG"
+  },
+  "3202405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guarapari",
+   "uf": "ES"
+  },
+  "1100122": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ji-Paraná",
+   "uf": "RO"
+  },
+  "3554003": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tatuí",
+   "uf": "SP"
+  },
+  "3204906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Mateus",
+   "uf": "ES"
+  },
+  "1503606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaituba",
+   "uf": "PA"
+  },
+  "4302105": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Bento Gonçalves",
+   "uf": "RS"
+  },
+  "1501709": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bragança",
+   "uf": "PA"
+  },
+  "3505500": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barretos",
+   "uf": "SP"
+  },
+  "3523404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itatiba",
+   "uf": "SP"
+  },
+  "3201506": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Colatina",
+   "uf": "ES"
+  },
+  "4100400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Almirante Tamandaré",
+   "uf": "PR"
+  },
+  "4101507": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Arapongas",
+   "uf": "PR"
+  },
+  "3506508": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Birigui",
+   "uf": "SP"
+  },
+  "4119509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Piraquara",
+   "uf": "PR"
+  },
+  "4126256": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sarandi",
+   "uf": "PR"
+  },
+  "3525003": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Jandira",
+   "uf": "SP"
+  },
+  "3518404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guaratinguetá",
+   "uf": "SP"
+  },
+  "4301602": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bagé",
+   "uf": "RS"
+  },
+  "3103504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araguari",
+   "uf": "MG"
+  },
+  "4322400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Uruguaiana",
+   "uf": "RS"
+  },
+  "4128104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Umuarama",
+   "uf": "PR"
+  },
+  "3302007": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3302007/2025-05-21/b7faa30577fb445a8d6628ed90833ab5b51dbb4f.pdf",
+     "data_publicacao": "2025-05-21",
+     "edicao": "1329",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Saúde de Itaguaí, conforme abaixo discriminadas: Deliberação nº 013/2024 - referente ao Parecer Favorável da PLANO MUNICIPAL DE CONTINGÊNCIA DAS ARBOVIROSES – BIÊNIO 2024- 2026; Deliberação nº 001/2025 - referente ao Parecer Favorável da PROGRAMAÇÃO ANUAL DE SAÚDE – PAS 2025; Deliberação nº 002/2025",
+     "hash_evidencia": "a0f777cd669d5312bb74d17fd3695456d2bafc15035c83581397dfcfff2a4ae7"
+    }
+   ],
+   "nome": "Itaguaí",
+   "uf": "RJ"
+  },
+  "2412005": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Gonçalo do Amarante",
+   "uf": "RN"
+  },
+  "3511102": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3511102/2026-03-26/3410e59336c6e5afeff0cfe70b58d0df64d4a945.pdf",
+     "data_publicacao": "2026-03-26",
+     "edicao": "3031",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Nº02, DE 25 DE MARÇO DE 2026. Aprova o Plano de Contingência Municipal para as Arboviroses para o BIÊNIO de 2026/2027. O Secretário Municipal de Saúde, Adriano Cesar de Araújo, no uso de suas atribuições legais, e Considerando a ocorrência da dengue no Estado de São Paulo, desde 1987; Considerando",
+     "hash_evidencia": "5e2bf7ab579fcd78e311214885778dd1d9ee84efd49431b9d8cb44b5676b5499"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3511102/2024-01-23/123bcf7049538beefd05b7941a3afcb23b485a19.pdf",
+     "data_publicacao": "2024-01-23",
+     "edicao": "2489",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Rua: Alvorada do Sul, 77 Vila Engrácia para a ARCOS – Associação e Rede de Cooperação Social. 9. Discussão e deliberação do Plano de Contingência Municipal para as Arboviroses para o Biênio de 2024/2025, da Secretaria Municipal de Saúde. 10. Explicações pessoais. - Informações da Secretaria Municipal",
+     "hash_evidencia": "1d703ad383c845f971c99ac89a35790c2376dd4ca0aea5d0c04f4b05e117654f"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3511102/2024-02-16/aa540b5b9642b31e1c4b95f3f9cceb6e402995f8.pdf",
+     "data_publicacao": "2024-02-16",
+     "edicao": "2505",
+     "consulta": "\"plano de contingência\" chikungunya",
+     "trecho": "veículos para atividades de controle vetorial SIM 39,50% SIM Valores Nº de Agentes de Controle de Endemias 72 PLANILHA 1 - PLANO DE CONTINGÊNCIA MUNICIPAL CONTRA DENGUE, CHIKUNGUNYA e ZIKA - 2024-2025 Município: Catanduva-SP 23/01/2024 115.791 Nº de atomizadores costais Nº de Agentes comunitário de",
+     "hash_evidencia": "648a97de9d9ef9e43a67bc95a071bfc0e6a2b3df5d773f5b2e01b787e440ceba"
+    }
+   ],
+   "nome": "Catanduva",
+   "uf": "SP"
+  },
+  "3556503": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Várzea Paulista",
+   "uf": "SP"
+  },
+  "5208004": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Formosa",
+   "uf": "GO"
+  },
+  "3543303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ribeirão Pires",
+   "uf": "SP"
+  },
+  "2606804": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Igarassu",
+   "uf": "PE"
+  },
+  "2930709": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Simões Filho",
+   "uf": "BA"
+  },
+  "5205109": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Catalão",
+   "uf": "GO"
+  },
+  "2103307": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Codó",
+   "uf": "MA"
+  },
+  "2910727": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Eunápolis",
+   "uf": "BA"
+  },
+  "3131703": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itabira",
+   "uf": "MG"
+  },
+  "2924009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paulo Afonso",
+   "uf": "BA"
+  },
+  "3522109": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itanhaém",
+   "uf": "SP"
+  },
+  "3513504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cubatão",
+   "uf": "SP"
+  },
+  "3147907": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Passos",
+   "uf": "MG"
+  },
+  "3144805": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nova Lima",
+   "uf": "MG"
+  },
+  "3104007": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araxá",
+   "uf": "MG"
+  },
+  "2613701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Lourenço da Mata",
+   "uf": "PE"
+  },
+  "5107925": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sorriso",
+   "uf": "MT"
+  },
+  "3536505": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Paulínia",
+   "uf": "SP"
+  },
+  "1504422": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Marituba",
+   "uf": "PA"
+  },
+  "4218707": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tubarão",
+   "uf": "SC"
+  },
+  "5211503": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itumbiara",
+   "uf": "GO"
+  },
+  "2919553": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2919553/2024-03-04/a3f6d92b6e2712026b4d7fd0ac5c19521b4bfc72.pdf",
+     "data_publicacao": "2024-03-04",
+     "edicao": "4629",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "SMS N° 003, DE 1° DE MARQO DE 2024 e 2a Jornadas de Direito da Saude do Conselho RESOLVE: Art. 2° Compete ao Comite Tecnico Intersetorial das Arboviroses Urbanas: I - monitorar e avaliar o Plano de Contingencia de combate ao ZEdes eegypti; III - apresentar propostas de politicas municipals e parcerias",
+     "hash_evidencia": "3d9a660cf740872713fb8d5b122e0d34ff5063dcdb7cad5857af879cdaf4dd70"
+    }
+   ],
+   "nome": "Luís Eduardo Magalhães",
+   "uf": "BA"
+  },
+  "1600600": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Santana",
+   "uf": "AP"
+  },
+  "4103701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cambé",
+   "uf": "PR"
+  },
+  "1501808": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Breves",
+   "uf": "PA"
+  },
+  "2100055": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Açailândia",
+   "uf": "MA"
+  },
+  "5107958": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tangará da Serra",
+   "uf": "MT"
+  },
+  "5211909": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jataí",
+   "uf": "GO"
+  },
+  "4307005": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Erechim",
+   "uf": "RS"
+  },
+  "3145208": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3145208/2025-03-06/435af89bf9b7b54d9c5a4b477b7b377e5f31fb54.pdf",
+     "data_publicacao": "2025-03-06",
+     "edicao": "2413",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Serrana - Ano XI - 2413 - 06/03/2025 12 Diversos PLANO MUNICIPAL DE CONTINGÊNCIA ARBOVIROSES URBANAS (DENGUE, CHIKUNGUNYA E ZIKA) E SILVESTRE (FEBRE AMARELA) PERÍODO DE VIGÊNCIA: 2025 MUNICÍPIO: Nova Serrana UNIDADE REGIONAL DE SAÚDE: Divinópolis",
+     "hash_evidencia": "a782f2701265b75bc6d5f6035d127b11793125b75e0967d06a8cd104eef43af5"
+    }
+   ],
+   "nome": "Nova Serrana",
+   "uf": "MG"
+  },
+  "1505502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paragominas",
+   "uf": "PA"
+  },
+  "2307700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Maranguape",
+   "uf": "CE"
+  },
+  "5217609": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Planaltina",
+   "uf": "GO"
+  },
+  "3138203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lavras",
+   "uf": "MG"
+  },
+  "3119401": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Coronel Fabriciano",
+   "uf": "MG"
+  },
+  "3305208": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Pedro da Aldeia",
+   "uf": "RJ"
+  },
+  "3534708": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Ourinhos",
+   "uf": "SP"
+  },
+  "5215231": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Novo Gama",
+   "uf": "GO"
+  },
+  "3539806": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Poá",
+   "uf": "SP"
+  },
+  "2101202": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Bacabal",
+   "uf": "MA"
+  },
+  "1301902": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itacoatiara",
+   "uf": "AM"
+  },
+  "2802908": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Itabaiana",
+   "uf": "SE"
+  },
+  "3169901": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ubá",
+   "uf": "MG"
+  },
+  "2510808": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Patos",
+   "uf": "PB"
+  },
+  "4203204": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Camboriú",
+   "uf": "SC"
+  },
+  "2928703": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santo Antônio de Jesus",
+   "uf": "BA"
+  },
+  "3134202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ituiutaba",
+   "uf": "MG"
+  },
+  "1302504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Manacapuru",
+   "uf": "AM"
+  },
+  "2101400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Balsas",
+   "uf": "MA"
+  },
+  "3302205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaperuna",
+   "uf": "RJ"
+  },
+  "4104303": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/4104303/2026-04-22/f11d986a9304e31fbda76f7ea096c7b28774be75.pdf",
+     "data_publicacao": "2026-04-22",
+     "edicao": "3352",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "– 14/03; Sisnor; Plano de Trabalho R$ 1.500.000,00 - Nº 22/2025 – 14/03; Apae; Plano de Trabalho R$ 50.615,00 - Nº 23/2025 – 27/03; SESAU; Plano de Contingência para o Enfrentamento da Dengue, Zika e Chikungunya 2024/2025 - Nº 24/2025 – 27/03; SESAU; Relatório Anual de Gestão (RAG) 2024 - Nº 25/2025",
+     "hash_evidencia": "53892f300df3fd6bd33272a08e3c1126bd671eaf368e40ffeaa666ca88f19844"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/4104303/2025-12-16/7b097da1712f5d5e49d0039166528d08d242e147.pdf",
+     "data_publicacao": "2025-12-16",
+     "edicao": "3289",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Diretoria Executiva do Conselho Municipal de Saúde RESOLVE: Aprovar “ad referendum” o Plano Municipal de Contingência para o enfrentamento de Arboviroses: Período Epidemiológico 2026. Campo Mourão, 04 de dezembro de 2025 Lenilda de Assis - Presidente Orgão Oficial Eletrônico - 1926 Campo",
+     "hash_evidencia": "479df65c1b4aad945a3577614e1854cea88062ccc07bc01ed0997bfa31577dba"
+    }
+   ],
+   "nome": "Campo Mourão",
+   "uf": "PR"
+  },
+  "2607208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ipojuca",
+   "uf": "PE"
+  },
+  "5204508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caldas Novas",
+   "uf": "GO"
+  },
+  "2600054": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Abreu e Lima",
+   "uf": "PE"
+  },
+  "2612505": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Cruz do Capibaribe",
+   "uf": "PE"
+  },
+  "3526704": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Leme",
+   "uf": "SP"
+  },
+  "2305506": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Iguatu",
+   "uf": "CE"
+  },
+  "3133808": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3133808/2024-12-27/3eb78d433690ef67f52871eb7407e298564d12e5.pdf",
+     "data_publicacao": "2024-12-27",
+     "edicao": "2451",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "Vinícius questionou sobre uma programação para dar estrutura referente a dengue para não sobrecarregar as unidades de saúde. A conselheira Vanésia o explica que as ações voltadas para a dengue entrará no plano de contingência, não na programação anual da saúde, Vinícius ressalta as dificuldades",
+     "hash_evidencia": "c5316761d500c41935870b036d4367a48ef3b9fbc087d0c9bb159a71ac3a33bf"
+    }
+   ],
+   "nome": "Itaúna",
+   "uf": "MG"
+  },
+  "3147105": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pará de Minas",
+   "uf": "MG"
+  },
+  "1100023": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ariquemes",
+   "uf": "RO"
+  },
+  "4108403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Francisco Beltrão",
+   "uf": "PR"
+  },
+  "1303403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Parintins",
+   "uf": "AM"
+  },
+  "3302270": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Japeri",
+   "uf": "RJ"
+  },
+  "5003207": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Corumbá",
+   "uf": "MS"
+  },
+  "3508504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caçapava",
+   "uf": "SP"
+  },
+  "1100304": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vilhena",
+   "uf": "RO"
+  },
+  "3509007": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-22",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caieiras",
+   "uf": "SP"
+  }
+ },
+ "execucao": {
+  "data": "2026-10-22",
+  "consultados": 400,
+  "paradas": null,
+  "estatutos": {
+   "não localizado até o corte": 69,
+   "menção localizada em diário oficial": 50,
+   "não verificado": 281
+  }
+ }
 }

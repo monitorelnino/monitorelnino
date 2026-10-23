@@ -18,8 +18,7 @@ const mostrarFrase = (alvo, texto) => { alvo.textContent = texto; alvo.hidden = 
    100 mil saía "0", e dizer zero onde houve 75 internações é afirmar o que não se mediu. Abaixo de
    0,05 vale um dígito significativo ("0,04", "0,009"), que é curto e não mente. */
 const decBR = v => (v == null || v === '' || isNaN(Number(v))) ? v
-  : Number(v).toLocaleString('pt-BR', Number(v) !== 0 && Math.abs(Number(v)) < 0.05
-      ? {maximumSignificantDigits: 1} : {maximumFractionDigits: 1});
+  : MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
 
 /* QUAIS COMPONENTES FORMAM A NOTA — 22/10/2026, decisão da editoria (v0.6).
  *
