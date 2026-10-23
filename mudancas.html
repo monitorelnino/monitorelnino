@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>23/10/2026 · Portão de escritores: a válvula de busca de planos não é a busca web</dt>
       <dd>O assunto &quot;busca-planos-N automático&quot; era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.</dd>
+      <dt>23/10/2026 · Busca de planos em fontes abertas: um arquivo por UF</dt>
+      <dd>`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/&lt;UF&gt;.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.</dd>
       <dt>23/10/2026 · Defesa civil: o sexto cartão mostra a variação da semana</dt>
       <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
@@ -165,8 +167,6 @@
       <dd>A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.</dd>
       <dt>20/10/2026 · Negativos de painel, saúde e financiamento passam a rodar na CI</dt>
       <dd>Os testes negativos de `verificar_painel.py`, `verificar_saude.py` e `verificar_financiamento.py` existiam sob `--negativos` e nenhum portão os chamava; dois da saúde apodreceram (as figuras mudaram de id). Passam a `--autoteste`, que `verificar_autotestes_isolados.py` roda, os dois da saúde acham a figura na página e há um positivo que segura o alias do crédito. Linhas líquidas +10.</dd>
-      <dt>20/10/2026 · Cliente identificado vira regra do executor do repositório</dt>
-      <dd>`verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.</dd>
     </dl>
   </section>
 </main>
