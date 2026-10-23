@@ -127,6 +127,7 @@
    "por_que": "Consulta do município na página de Saúde (HANDOVER_SAUDE_PAGINA §6b): um arquivo por UF, escrito só pelo elo da saúde (`gerar_saude_municipio.py`), depois dos coletores que ele lê."
   },
   "data/planos_arboviroses.json": {"escritor": "noturno_desfechos.yml", "por_que": "Planos municipais de arboviroses (E1, 22/10/2026): escrito só por `coletar_planos_arboviroses.py` no elo dos desfechos; `bases` é leitura registrada à mão no PR."},
+  "data/planos_arboviroses_leitura.json": {"escritor": "noturno_desfechos.yml", "por_que": "Leitura automática do texto integral preservado dos diários com menção a plano de arboviroses (E1, 23/10/2026): escrito só por `ler_planos_arboviroses.py`, depois de `coletar_planos_arboviroses.py` no mesmo elo; peso zero."},
   "data/pistas_arboviroses.json": {"escritor": "noturno_desfechos.yml", "por_que": "Fila própria dos planos de arboviroses, gravada pela porta única `scripts/pistas.py`; nenhum juiz do índice a lê."},
   "data/saude_desfechos/leptospirose.json": {
    "escritor": "noturno_desfechos.yml",
