@@ -48,7 +48,9 @@
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
       <dt>23/10/2026 · Orientações oficiais: item do guia confere também contra os passos emendados</dt>
-      <dd>O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
+      <dd>O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.</dd>
+      <dt>23/10/2026 · Defesa civil: o sexto cartão mostra a variação da semana</dt>
+      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
       <dd>`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.</dd>
       <dt>23/10/2026 · Juiz lê os PLANCONs do RS pela sessão do link</dt>
@@ -165,8 +167,6 @@
       <dd>Os testes negativos de `verificar_painel.py`, `verificar_saude.py` e `verificar_financiamento.py` existiam sob `--negativos` e nenhum portão os chamava; dois da saúde apodreceram (as figuras mudaram de id). Passam a `--autoteste`, que `verificar_autotestes_isolados.py` roda, os dois da saúde acham a figura na página e há um positivo que segura o alias do crédito. Linhas líquidas +10.</dd>
       <dt>20/10/2026 · Cliente identificado vira regra do executor do repositório</dt>
       <dd>`verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.</dd>
-      <dt>20/10/2026 · Paridade da cobertura QD e log de buscas viram regras do executor de dado</dt>
-      <dd>`verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d&#x27;água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.</dd>
     </dl>
   </section>
 </main>
