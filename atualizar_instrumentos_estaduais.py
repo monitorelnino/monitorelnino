@@ -330,6 +330,19 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     return propostas
 
 
+def pistas_das_propostas(propostas: list[dict], ref: list[dict]) -> list[dict]:
+    """Cada instrumento listado por repositório estadual vira PISTA na porta única: o documento só pontua
+    depois que o juiz o lê e o preserva (D1, hash); `aplicar_revisao` põe `plano` sem hash e o portão de
+    fichas reprova. Função pura. A pista nasce sem confirmação de documento oficial (trava de campo R7)."""
+    ibge = {(r["uf"], norm(r["nome"])): str(r["codigo_ibge"]).zfill(7) for r in ref}
+    hoje = hoje_editorial().isoformat()
+    return [{"documento_oficial_confirmado": None, "promovivel": False, "municipio": p["nome"], "uf": p["uf"],
+             "ibge": ibge[(p["uf"], norm(p["nome"]))], "url": p["url"], "tipo": "plano", "nivel": "A",
+             "titulo": f"{p['fonte']} · {p['nome']}/{p['uf']}: plano de contingência, {p['documento']}"[:300],
+             "trecho": p["documento"], "data_publicacao": None, "origem": "descoberta", "hash_evidencia": None,
+             "data": hoje, "registrado_em": hoje} for p in propostas if (p["uf"], norm(p["nome"])) in ibge]
+
+
 def autoteste() -> int:
     """Autoteste PURO (A3-30, A6-26, 08/10/2026): sem rede, sem ler `data/`, sem escrever nada.
 
@@ -388,6 +401,10 @@ def autoteste() -> int:
                   == [("Linhares", 2025, "https://defesacivil.es.gov.br/media/p.pdf")]))
     casos.append(("HTML da página alimenta o parser de SE",
                   [(a["nome"], a["ano_edicao"]) for a in parse_se(se_html)] == [("Poço Redondo", 2026)]))
+    pi = pistas_das_propostas(novos, [{"nome": "Cidade Nova", "uf": "ES", "codigo_ibge": 3201234}])
+    casos.append(("proposta vira pista na porta única, sem hash e sem confirmação de documento",
+                  len(pi) == 1 and pi[0]["ibge"] == "3201234" and pi[0]["hash_evidencia"] is None
+                  and pi[0]["documento_oficial_confirmado"] is None and pi[0]["origem"] == "descoberta"))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'✓' if ok else '✗'} {n}")
@@ -401,11 +418,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--uf", help="Rodar só esta UF (padrão: todas as implementadas)")
     ap.add_argument("--fixture", help="Arquivo local para testar sem rede (uso com --uf)")
+    ap.add_argument("--pistas", action="store_true", help="Grava as propostas como pistas (porta única) para o juiz ler, em vez de gravar data/instrumentos_revisar.json")
     args = ap.parse_args()
 
     ufs = [args.uf] if args.uf else [u for u, c in REPOSITORIOS.items() if c["parser"]]
     municipios = json.load(open(DATA / "municipios.json", encoding="utf-8"))
 
+    ref = json.load(open(DATA / "municipios_ibge_referencia.json", encoding="utf-8"))
     todas_propostas, falhas = [], []
     for uf in ufs:
         cfg = REPOSITORIOS.get(uf)
@@ -423,7 +442,6 @@ def main():
             continue
         achados = cfg["parser"](texto)
         print(f"  {len(achados)} instrumento(s) listado(s) no repositório")
-        ref = json.load(open(DATA / "municipios_ibge_referencia.json", encoding="utf-8"))
         achados, orfaos = casar_com_ibge(achados, uf, ref)
         if orfaos:
             print(f"  [atenção] {len(orfaos)} nome(s) não casaram com a malha IBGE — NÃO entram, conferir à mão:")
@@ -440,6 +458,12 @@ def main():
         else:
             print(f"  ✓ nenhuma diferença — base já reflete o repositório")
 
+    if args.pistas:
+        from scripts.pistas import gravar_lote
+        from coletores_base import ler, gravar
+        balanco = gravar_lote(pistas_das_propostas(todas_propostas, ref), origem="descoberta", ler_fn=ler, gravar_fn=gravar)
+        print(f"\n[pistas] {balanco['gravadas']} gravada(s), {balanco['recusadas']} recusada(s): {balanco['motivos']}")
+        return 1 if falhas else 0
     saida = DATA / "instrumentos_revisar.json"
     if todas_propostas:
         gravar_em(saida, todas_propostas)   # §229
