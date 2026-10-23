@@ -23,8 +23,7 @@ jobs:
       grupo_de_concorrencia: noturno
       timeout_minutos: 100
       comandos: |
-        prazo=60min buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json
-        prazo=10min consultar_querido_diario.py --alvos data/capitais_alvos.json
+        prazo=80min buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json --fontes S16,S25
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
