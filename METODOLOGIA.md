@@ -4379,7 +4379,13 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **Como entra.** O coletor trata um mês como lido só quando todos os grupos o têm; grupo novo sem série faz o elo reler o histórico (janeiro de 2019 em diante) do mês mais recente ao mais antigo; estimativa de cerca de cinco noites (2.484 arquivos, 4,5 s cada, 2.400 s por noite), ainda não medida. Até lá os arquivos nascem com a lacuna "arquivos ainda não lidos" e cortes do mapa provisórios, como no §110. Peso zero no MARÉ; o Monitor não atribui internações ao El Niño.
 
-## 121. Óbitos por causa básica no SIM (23/10/2026)
+## 121. Leitura do texto dos diários com menção a plano de arboviroses (23/10/2026)
+
+**O que passa a ser feito.** Cada diário em que o §117 localizou menção a plano de contingência de arboviroses já está preservado por hash, com o texto integral. Depois da busca, no mesmo elo, o texto é aberto e a edição recebe uma leitura em vocabulário fechado: *texto do plano na edição* (passagem sem ato antes dela e ao menos quatro seções típicas de plano nos 8.000 caracteres seguintes); *ato ou ata que cita o plano* (aprova, institui, considerando, artigo, ata, pauta); *citação sem ato identificado*; *passagem não reencontrada*; *texto integral indisponível*. Cada leitura traz o trecho citado (`data/planos_arboviroses_leitura.json`).
+
+**O que a leitura não afirma.** É leitura automática por regra. *Texto do plano na edição* é indício, não confirmação: o estatuto do município continua *menção localizada*, nenhuma pista é criada e a confirmação do documento é do juiz, pela porta única. Edição sem arquivo preservado é lacuna declarada, nunca ausência de plano. Peso zero.
+
+## 122. Óbitos por causa básica no SIM (23/10/2026)
 
 **O que cada série conta.** Óbitos não fetais da Declaração de Óbito (SIM, Ministério da Saúde), por mês de ocorrência e causa básica (CID-10), em sete arquivos: todas as causas e os seis grupos de causa do §110 que têm óbito (respiratórias J00 a J22, cardiovasculares I20 a I25 e I60 a I64, renal N17 a N19, desidratação E86, fumaça T59, calor T67). Saúde mental, ICSAP e hepatite A ficam só nas internações. Os grupos não se somam.
 

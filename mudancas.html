@@ -47,6 +47,12 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
+      <dd>`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.</dd>
+      <dt>23/10/2026 · Common Crawl: &quot;No Captures found&quot; é ausência com a consulta registrada</dt>
+      <dd>O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.</dd>
+      <dt>23/10/2026 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome</dt>
+      <dd>A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-&lt;nome&gt;`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.</dd>
       <dt>23/10/2026 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial</dt>
       <dd>`casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.</dd>
       <dt>23/10/2026 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta</dt>
@@ -161,12 +167,6 @@
       <dd>Financiamento (cartões contra a imprensa), versão do índice e camadas do PDF saem como scripts e entram em `verificar_regras_de_dado.py`, que passa de sete para dez regras. Os 35 casos dos três autotestes seguem, mais cinco mutantes mortos. Linhas líquidas −202; comandos de portão 83→80.</dd>
       <dt>20/10/2026 · O domínio acompanha a main</dt>
       <dd>Merge de PR só movia a prévia; o domínio esperava o próximo publicador (8 h sem publicar em 19/10). O &quot;Publicar dados&quot; agora também dispara quando os Portões do push de merge de PR fecham verdes, dentro da cortina (senha e noindex). Sem mudança em `publicacao.json`.</dd>
-      <dt>19/10/2026 · Internações do SUS e óbitos registrados entram como séries</dt>
-      <dd>Sete grupos de internações (respiratórias, cardio, renal, desidratação, fumaça, calor e hepatite A) e os óbitos registrados em cartório passam a ter série por UF na forma comum dos desfechos, com faixa habitual, cortes do mapa, fonte e data. Internações: 69 meses lidos, restam 644 arquivos de 2019 e 2020, e os cortes seguem provisórios. Sem causa de óbito: o portal não a publica mais.</dd>
-      <dt>19/10/2026 · Os cinco quadros por agravo saem da Saúde, e a seção única fica</dt>
-      <dd>Aprovado pela editoria em 19/10. Saem da Saúde os quadros de dengue, chikungunya, respiratórias, síndrome gripal e calor: o que eles mostravam a seção única de desfechos mostra por desfecho, e desfecho sem arquivo é lacuna declarada em uma linha. A nota do InfoDengue sai com eles, porque explicava um nível que a página não mostra mais. O portão de runtime passa a cobrar o cartão escolhido, o mapa do detalhe e a lista por estado.</dd>
-      <dt>19/10/2026 · A consulta do município diz o que foi feito, e cala o que não sabe</dt>
-      <dd>O cartão do município na inicial passa a dizer antes a varredura registrada no livro de verificação e depois o que não foi localizado, numa frase só — a mesma do ladrilho da capital. Município cujo registro nomeia um documento fica com a frase de antes. E no Monitor de riscos, acima de 500 km da capital mais próxima, a temperatura máxima prevista declara lacuna em vez de valor.</dd>
     </dl>
   </section>
 </main>

@@ -9,10 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #1006 · Leitura do texto dos diários com menção a plano de arboviroses
 
-## 2026-10-23 · coletar_sim · Óbitos por causa básica (SIM)
+`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
 
-Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados. Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.
+## 2026-10-23 · #1007 · Common Crawl: "No Captures found" é ausência com a consulta registrada
+
+O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.
+
+## 2026-10-23 · #1003 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome
+
+A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-<nome>`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.
 
 ## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
 
