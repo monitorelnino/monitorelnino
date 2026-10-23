@@ -30,7 +30,7 @@
    "exige_texto": [
     "O cartão responde para qualquer um dos"
    ],
-   "_nota": "Consulta no módulo comum (`ConsultaMunicipio`), dentro do `.panel` desta página (ver _nota_escopo). Seis cartões `.cartao` de faixa lateral, escritos por assets/js/proteja-se.js com `data/riscos_municipio/<UF>.json`, mais a linha do estado, de `data/contatos_uf.json`. Ausência é a frase da classe, nunca vazio nem travessão, e as classes são distintas: nenhum aviso em vigor, município fora da rede do Cemaden e sem coleta até o corte dizem coisas diferentes. O contrato exige só o texto que existe no carregamento: os seis cartões e a linha do estado só aparecem depois de o leitor escolher o município, e condição que nunca se cumpre sozinha faria o medidor esperar 20 s e reprovar a página por um defeito que ela não tem."
+   "_nota": "Consulta no módulo comum (`ConsultaMunicipio`), dentro do `.panel` desta página (ver _nota_escopo). Seis cartões `.cartao` de faixa lateral, escritos por assets/js/proteja-se.js com `data/riscos_municipio/<UF>.json`, mais a linha do estado, de `data/contatos_uf.json`. Ausência é a frase da classe, nunca vazio nem travessão, e as classes são distintas: nenhum aviso em vigor, município fora da rede do Cemaden e sem coleta até o corte dizem coisas diferentes. O contrato exige só o texto que existe no carregamento: os seis cartões só aparecem depois de o leitor escolher o município, e a linha do estado, na escolha do estado, e condição que nunca se cumpre sozinha faria o medidor esperar 20 s e reprovar a página por um defeito que ela não tem."
   },
   {
    "id": "levar",

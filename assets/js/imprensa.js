@@ -92,8 +92,11 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     });
   }
 
-  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : null).then(S => {
-    if (!S) return;
+  /* Arquivo que não vem, ou que vem quebrado, é o mesmo fato que arquivo sem cartão: cada cartão diz
+     "sem coleta até o corte", frase que `cartoes` já escreve. Sair antes dela deixava os seis cartões
+     VAZIOS, que é o que a régua dos números proíbe. O erro segue indo ao console, para o portão ver. */
+  fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : {})
+    .catch(e => (_erroImp('imprensa:semana')(e), {})).then(S => {
     /* O texto da semana (dois parágrafos) é do gerador da edição, não desta página: aqui ele só
        aparece. Entra quando o gerador é o da reforma — o que se prova pela presença de
        `definicao_dos_indices`, que só ele escreve. Antes disso o texto trazia "ciclo" sozinho, que a
