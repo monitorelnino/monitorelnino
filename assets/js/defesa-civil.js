@@ -193,6 +193,7 @@ function __init(totalMunicipios){
   const calculado = decretados.some(m => m.dias !== undefined);
   const pendentes = decretados.filter(m => !m.reconhecida && m.dias > DIAS_PENDENCIA);
   texto('topoPendencia', calculado ? nCartao(pendentes.length) : 'não calculado até o corte');
+  variacao('topoPendenciaVariacao', 'decreto_sem_reconhecimento_30_dias', calculado ? pendentes.length : null);
   cred('topoPendenciaFonte', [FONTE_DECRETO], corteDecretos);
   /* População em milhões com uma casa (regra de número do site). */
   const pop = N.pop_sob_decreto;
