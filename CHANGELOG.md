@@ -10,7 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
-## 2026-10-23 · #998 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta
+## 2026-10-23 · #999 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta
 
 `indice-de-conteudo.html` entra na cadeia de `verificar_derivados.sh`: deixa de envelhecer a cada PR de texto. `verificar_catalogo.py` recusa chave de topo de `_renomeacoes.json` fora de `de_para`, que o portão não lê. Código +6/−3.
 
