@@ -10809,7 +10809,25 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "buscar_planos_fontes_abertas.py",
+   "inicio": "2026-10-23T00:11:58",
+   "duracao_s": 1619.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-22",
+   "script": "consultar_querido_diario.py",
+   "inicio": "2026-10-23T00:38:57",
+   "duracao_s": 4.2,
+   "itens": null,
+   "status": "erro",
+   "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 500: Internal Server Error | queridodiario.ok.org.br: HTTPError HTTP Error 500: Internal Server Error | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failur"
   }
  ],
- "atualizado_em": "2026-10-22T23:44:10"
+ "atualizado_em": "2026-10-23T00:38:57"
 }
