@@ -17,6 +17,10 @@ Quatro lugares da página do Financiamento mostravam o campo ausente em vez da l
 
 `coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
 
+## 2026-10-23 · #972 · A régua do valor pequeno mora no numBR
+
+O número em pt-BR arredondava para casas fixas, e valor medido abaixo de meia unidade da última casa saía como zero. A régua que separa zero de ausência vivia dentro da página da Saúde; passa para a função que todas as páginas usam: abaixo de meia unidade, um dígito significativo. A ficha da inicial e o formatador da Saúde deixam de repetir a decisão. Nenhum número muda com o dado de hoje.
+
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
