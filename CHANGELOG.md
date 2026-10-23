@@ -9,13 +9,35 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários
+## 2026-10-23 · #1023 · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta
+
+No campo "Instrumento estadual de saúde", o estado sem documento localizado mostrava a etiqueta "ainda não verificado" e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.
+
+## 2026-10-23 · #1017 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado
+
+A ficha de cada estado e o perfil do município publicavam "SE 202640": a sigla que saiu do site em 07/10 e a chave crua da fonte, que ali ainda se confunde com a sigla de Sergipe. Os dois passam a chamar `semanaEmDatas`, que já convertia a semana nas séries; sem o utilitário, a frase sai sem a data. Saem as duas linhas de boletim das figuras do mapa — uma nada escrevia, a outra repetia a legenda. Código −1.
+
+## 2026-10-23 · #1011 · Busca de planos em fontes abertas: um arquivo por UF
+
+`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/<UF>.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.
+
+## 2026-10-23 · #1013 · Defesa civil: o sexto cartão mostra a variação da semana
+
+O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis sem a linha "↑ n na semana", porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.
+
+## 2026-10-23 · #1012 · Busca de planos em fontes abertas lê os prioritários
 
 `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.
 
 ## 2026-10-23 · #1006 · Leitura do texto dos diários com menção a plano de arboviroses
 
 `ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
+
+## 2026-10-23 · #1014 · Juiz lê os PLANCONs do RS pela sessão do link
+
+20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a
+sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a
+listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.
 
 ## 2026-10-23 · #1007 · Common Crawl: "No Captures found" é ausência com a consulta registrada
 
@@ -24,6 +46,14 @@ O índice do Common Crawl responde 404 com essa frase quando o domínio não tem
 ## 2026-10-23 · #1003 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome
 
 A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-<nome>`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.
+
+## 2026-10-23 · #1008 · Orientações oficiais: a chikungunya entra na coleta
+
+`coletar_orientacoes_oficiais.py` passa a consultar a página do Ministério da Saúde sobre chikungunya e a guardar os trechos de orientação, como já fazia com a dengue. Sem a página, o registro diz o motivo. Código +2/−1.
+
+## 2026-10-23 · #1001 · Páginas oficiais por hash: trechos de chuva e fogo
+
+A coleta de 23/10 preservou de novo as páginas da Defesa Civil nacional e do Ministério da Saúde: trechos de chuva e fogo preenchidos, nove itens do guia da dengue com frase de fonte. Só dado.
 
 ## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
 

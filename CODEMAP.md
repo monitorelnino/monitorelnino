@@ -49,13 +49,13 @@ Atualizado em 23/10/2026.
 | `aplicar_revisao.py` | — | — | — | — | não |
 | `atualizar.py` | — | — | — | — | não |
 | `atualizar_boletins.py` | — | `boletins.json` | — | — | não |
-| `atualizar_instrumentos_estaduais.py` | — | — | — | — | não |
+| `atualizar_instrumentos_estaduais.py` | — | — | — | 1 | não |
 | `atualizar_marcos_severidade.py` | — | — | — | — | não |
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
 | `atualizar_recursos.py` | — | — | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscar_financiamento_preventivo.py` | — | — | — | — | não |
-| `buscar_planos_fontes_abertas.py` | — | `planos_busca_fontes.json` | — | — | não |
+| `buscar_planos_fontes_abertas.py` | — | — | — | — | não |
 | `buscar_protocolo_calor.py` | — | `saude_desfechos/busca_protocolo_calor.json` | — | — | não |
 | `classificador_natureza.py` | — | — | — | 4 | não |
 | `classificar_pista_civil.py` | — | `pistas_imprensa.json` | — | 5 | não |
