@@ -10,6 +10,13 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #995 · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde
+
+A resposta "o MARÉ Saúde mede a saúde da população?" ainda contava a cobertura municipal entre o
+que entra na nota. No método vigente ela é camada de peso zero, publicada ao lado do índice: a
+resposta passa a dizer plano, feitura para este El Niño e data, e a cobertura aparece ao lado, sem peso.
+Catálogo e texto de reserva da página.
+
 ## 2026-10-23 · #994 · Os alertas do Cemaden e os avisos do Inmet voltam a ser coletados
 
 O regime de prioridade suspendeu o elo dos sinais físicos, único que reescreve os alertas vigentes. O arquivo passou de 24 horas, a Defesa civil mostrou "sem atualização desde 22/10" e os portões de frescor e de coerência da Imprensa reprovaram a `main`. O elo sai da lista de suspensos e entra na de mantidos: informação de agora não espera a noite.
