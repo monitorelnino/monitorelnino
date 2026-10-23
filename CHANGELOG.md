@@ -9,9 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-22 · #969 · Regime de prioridade como configuração
+
+Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
+
 ## 2026-10-22 · #959 · MARÉ Saúde: dois componentes e camada municipal de peso zero
 
-O MARÉ Saúde tem dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7, sobre as 27 UFs. Definição dos índices, release da Imprensa e portão de saúde seguem o mesmo método; METODOLOGIA §118.
+O MARÉ Saúde tem dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7, sobre as 27 UFs. Definição dos índices, release da Imprensa e portão de saúde seguem o mesmo método; METODOLOGIA §119.
 
 ## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
 

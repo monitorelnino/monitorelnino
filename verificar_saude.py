@@ -56,7 +56,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             erros.append(f"(u) {uf}: status do topo ({u.get('status')}) diverge do melhor instrumento ({melhor.get('status')})")
         if u.get("doc") != melhor.get("doc"):
             erros.append(f"(u) {uf}: doc do topo diverge do melhor instrumento")
-    # (m) Monitor Saúde (§31, §118): número só para UF verificada; prontidão = média dos dois componentes; motor não o lê
+    # (m) Monitor Saúde (§31, §119): número só para UF verificada; prontidão = média dos dois componentes; motor não o lê
     try:
         _ms = json.load(open(RAIZ / "data" / "monitor_saude.json", encoding="utf-8"))
         for uf, m in (_ms.get("ufs") or {}).items():
@@ -64,7 +64,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             if st == "NAO_VERIFICADO" and m.get("prontidao") is not None: erros.append(f"(m) monitor_saude: {uf} não verificada com número")
             if st != "NAO_VERIFICADO" and m.get("prontidao") is not None:
                 pi = (m.get("instrumento") or {}).get("pontos"); pa = (m.get("antecipacao") or {}).get("pontos")
-                # v0.6 (22/10/2026, METODOLOGIA §118): dois componentes, metade cada; a cobertura municipal é camada de peso zero
+                # v0.6 (22/10/2026, METODOLOGIA §119): dois componentes, metade cada; a cobertura municipal é camada de peso zero
                 if pi is None or pa is None or abs(m["prontidao"] - round((pi + pa) / 2.0, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos dois componentes")
             _c = m.get("cobertura") or {}
             if _c.get("peso") != 0 or "pontos" in _c or not (0 <= (_c.get("cobertura_pct") or 0) <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura municipal fora da camada de peso zero")

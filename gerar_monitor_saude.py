@@ -25,7 +25,7 @@ Por UF, três leituras — só a primeira é pontuada:
 Faixas (as mesmas do site): estágio inicial 0–25 · em construção 25–50 · consolidado 50–70 ·
 avançado 70–100. v0.5 (21/10/2026): o índice tem número NACIONAL, a média das 27 UFs, como o MARÉ
 Legal (`resumo_nacional`); a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto
-do número (METODOLOGIA §115). v0.6 (22/10/2026): a cobertura municipal sai da nota (METODOLOGIA §118).
+do número (METODOLOGIA §115). v0.6 (22/10/2026): a cobertura municipal sai da nota (METODOLOGIA §119).
   python gerar_monitor_saude.py            # grava data/monitor_saude.json
   python gerar_monitor_saude.py --autoteste
 """
@@ -52,7 +52,7 @@ BOLETIM_1_MAIS_30 = "29/07/2026"
 # conta — assimetria probatória), e a contagem de "planos sem leitura" é publicada ao lado. Pesos iguais (1/3).
 # v0.6 (22/10/2026, editoria): a cobertura sai da nota. Não há dever legal de plano municipal de saúde para o
 # fenômeno; o único plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede.
-# O Saúde não conta o mesmo documento duas vezes: a cobertura vira camada de peso zero, ao lado (METODOLOGIA §118).
+# O Saúde não conta o mesmo documento duas vezes: a cobertura vira camada de peso zero, ao lado (METODOLOGIA §119).
 VERSAO = "0.6"
 PESOS = {"instrumento": 0.5, "antecipacao": 0.5}   # metade cada; a cobertura NÃO tem peso aqui
 
