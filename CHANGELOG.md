@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · Busca de planos: o disparo cria os jobs
+
+`busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.
 ## 2026-10-23 · #986 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz
 
 A seção "Como os índices funcionam" descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados "já verificados". O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.
