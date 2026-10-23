@@ -35,6 +35,7 @@ jobs:
         coletar_sisab.py --desfecho diarreias
         desfechos_sus.py --derivar
         coletar_obitos.py
+        coletar_sim.py --orcamento 600
         coletar_sih.py --orcamento 2400
         coletar_planos_arboviroses.py --orcamento 1500
         ler_planos_arboviroses.py
