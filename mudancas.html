@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Renomeações: um bloco só, o que o portão lê</dt>
+      <dd>`conteudo/_renomeacoes.json` tinha um segundo bloco no fim, fora de `de_para`, e `verificar_catalogo.py` lê só `de_para`. A renomeação da legenda do medidor da Saúde, escrita ali ontem, ficava invisível ao portão: pedido de edição que a citasse viraria recusa sem explicação. As quatro entradas repetidas do Monitor de riscos saem e a da Saúde entra no bloco lido. Índice de conteúdo regenerado.</dd>
       <dt>23/10/2026 · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde</dt>
       <dd>A resposta &quot;o MARÉ Saúde mede a saúde da população?&quot; ainda contava a cobertura municipal entre o que entra na nota. No método vigente ela é camada de peso zero, publicada ao lado do índice: a resposta passa a dizer plano, feitura para este El Niño e data, e a cobertura aparece ao lado, sem peso. Catálogo e texto de reserva da página.</dd>
       <dt>23/10/2026 · Os alertas do Cemaden e os avisos do Inmet voltam a ser coletados</dt>
@@ -165,8 +167,6 @@
       <dd>O guia ganha a quinta aba. Prevenção, sinais e sintomas, sinais de alerta de dengue grave e quando procurar atendimento vêm dos trechos que o Monitor preservou da página de dengue do Ministério da Saúde, com data de consulta pelo registro. Nenhum item afirma algo sobre chikungunya: até o corte, só a página de dengue está preservada.</dd>
       <dt>19/10/2026 · O teto do guia em PDF sobe para três páginas</dt>
       <dd>O portão do guia &quot;Leve com você&quot; cobrava no máximo duas páginas, teto escrito com quatro famílias de risco. Com a quinta (dengue e chikungunya) o guia passa a ter três; o teto vira a constante `PAGINAS_MAX = 3`, com caso de teste para o limite. Pedido da B2, destrava o #912. Linhas líquidas: +4.</dd>
-      <dt>19/10/2026 · O desfecho que falta na Saúde é dito em uma linha</dt>
-      <dd>A seção de desfechos passa a declarar, abaixo da grade, qual dos seis desfechos em evidência ainda não tem série na forma comum. O nome vem do catálogo dos desfechos, não da página, e a linha some sozinha quando o arquivo nascer. Hoje ela diz: &quot;Mortalidade geral entra quando a série estiver completa.&quot;</dd>
     </dl>
   </section>
 </main>
