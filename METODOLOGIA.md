@@ -4345,6 +4345,8 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **A base de cada plano.** Registrada por unidade da federação em `bases`, só com o que foi lido: Minas Gerais, Resolução SES/MG nº 10.440/2025, art. 5º (os municípios elaboram o plano e o mantêm atualizado); Santa Catarina, determinação do TCE-SC publicada em 22/05/2024 (a notícia não cita norma legal); nacional, o Plano de Contingência Nacional para Dengue, Chikungunya e Zika, tratado como orientação programática porque o texto não foi lido. Sem norma lida, o registro diz orientação programática ou norma não localizada; o Monitor não afirma obrigação legal.
 
+**Alvos de Santa Catarina.** Depois das capitais, a busca consulta os 82 municípios que o TCE-SC determinou (decisão de 22/05/2024, @RLI 24/00395645) a elaborar plano de contingência da dengue; a lista, com fonte, é a entrada `data/alvos_planos_arboviroses.json`. A determinação é alvo de busca de cumprimento, não prova de plano existente.
+
 **O que não muda.** Peso zero: o arquivo não entra na nota da Saúde nem em índice algum. Acesso recusado (401, 403, 429, 451) encerra a rodada e é respeitado. Rotas por página de prefeitura e de secretaria estadual ficam para quando houver endereço verificado.
 
 ## 118. Regime de prioridade da corrente noturna, declarado em configuração (22/10/2026)

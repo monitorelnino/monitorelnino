@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #PR · Alvos de SC na frente da busca de planos de arboviroses
+`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
+
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
