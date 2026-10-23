@@ -10,7 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
-## 2026-10-23 · #1002 · Orientações oficiais: a chikungunya entra na coleta
+## 2026-10-23 · #1008 · Orientações oficiais: a chikungunya entra na coleta
 
 `coletar_orientacoes_oficiais.py` passa a consultar a página do Ministério da Saúde sobre chikungunya e a guardar os trechos de orientação, como já fazia com a dengue. Sem a página, o registro diz o motivo. Código +2/−1.
 
