@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-23 · #PR · Portão de escritores: a válvula de busca de planos não é a busca web
+## 2026-10-23 · #1020 · Portão de escritores: a válvula de busca de planos não é a busca web
 
 O assunto "busca-planos-N automático" era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.
 
