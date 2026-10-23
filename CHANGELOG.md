@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #1013 · Defesa civil: o sexto cartão mostra a variação da semana
+
+O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis sem a linha "↑ n na semana", porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.
+
 ## 2026-10-23 · #1006 · Leitura do texto dos diários com menção a plano de arboviroses
 
 `ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
