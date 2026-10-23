@@ -46,6 +46,8 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
 REGISTRO = RAIZ / "config" / "temporizadores.json"
+sys.path.insert(0, str(RAIZ / "scripts"))
+from janela_da_noite import elo_suspenso   # o regime de prioridade tem um dono só (22/10/2026)
 ORIGENS = ("github-cron", "relogio-claude", "oportunista", "vigia", "manual")
 SILENCIO_DO_RELOGIO_MIN = 130
 REPOSITORIO_PRIVADO = "monitorelnino/robo-registro"
@@ -140,7 +142,7 @@ def esta_devido(temporizador: dict, execucoes: list, agora: dt.datetime) -> bool
     o segundo observador de disparar o que o primeiro acabou de começar.
     """
     janela = temporizador.get("janela") or {}
-    if not na_janela(agora, janela):
+    if elo_suspenso(temporizador.get("workflow")) or not na_janela(agora, janela):
         return False
     if not e_dia_previsto(temporizador.get("cron_primario"), agora):
         return False
@@ -205,7 +207,7 @@ def plano_da_reserva(execucoes_por_workflow: dict, feitos: set, agora: dt.dateti
         return []
     desde = inicio_da_janela(agora, {"inicio_utc": "01:00", "fim_utc": "09:00"})
     for elo, workflow, anterior in elos:
-        if elo in feitos or workflow in set(ja_no_plano):
+        if elo in feitos or workflow in set(ja_no_plano) or elo_suspenso(workflow):
             continue
         if anterior and anterior not in feitos:
             continue
@@ -405,6 +407,8 @@ def abrir_issue(item: dict) -> None:
 
 
 def _autoteste() -> int:
+    import janela_da_noite as _jn
+    _jn.REGISTRO = RAIZ / "config" / "_sem_regime.json"   # os casos abaixo são da noite normal
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
     # cobre, ou menos. Agora e contado.
@@ -563,6 +567,24 @@ def _autoteste() -> int:
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
             nomes |= {i.argval for i in dis.get_instructions(codigo) if isinstance(i.argval, str)}
+    # 22/10/2026: regime de prioridade. O autoteste usa o registro real; sem regime, nada muda.
+    import janela_da_noite as _j
+    _antes = _j.REGISTRO
+    try:
+        import tempfile
+        with tempfile.TemporaryDirectory() as _t:
+            _r = pathlib.Path(_t) / "r.json"
+            _r.write_text('{"regime": {"nome": "prioridade", "elos_suspensos": '
+                          '["a.yml", "noturno_diarios.yml"]}}', encoding="utf-8", newline="\n")
+            _j.REGISTRO = _r
+            ok("regime: elo suspenso nunca está devido, mesmo na janela e sem execução",
+               not esta_devido(t, [], agora))
+            ok("regime: a reserva também não refaz o elo suspenso",
+               plano_da_reserva({"noturno_diarios.yml": [canc]}, set(), t_r) == [])
+            _j.REGISTRO = pathlib.Path(_t) / "nada.json"
+            ok("sem regime o mesmo elo está devido", esta_devido(t, [], agora))
+    finally:
+        _j.REGISTRO = _antes
     ok("trava estrutural: as funções puras não disparam nada",
        not ({"run", "disparar", "abrir_issue", "write_text"} & nomes))
 
