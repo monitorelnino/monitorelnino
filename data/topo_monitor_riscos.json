@@ -4,29 +4,29 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 3.0,
-   "referencia": "22/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Brasília",
-   "capital": "Brasília",
-   "uf": "DF",
+   "valor": 3.9,
+   "referencia": "23/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Cuiabá",
+   "capital": "Cuiabá",
+   "uf": "MT",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 32.0 °C contra a média de 29.0 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 39.0 °C contra a média de 35.1 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 3.9,
-    "referencia": "21/10/2026"
+    "valor": 3.0,
+    "referencia": "22/10/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 4540,
-   "referencia": "Focos do dia — focos_diario_br_20261022.csv",
+   "valor": 8556,
+   "referencia": "Focos do dia — focos_diario_br_20261023.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 18428,
-    "referencia": "Focos do dia — focos_diario_br_20261021.csv"
+    "valor": 4540,
+    "referencia": "Focos do dia — focos_diario_br_20261022.csv"
    }
   },
   {
@@ -42,14 +42,14 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 2,
-   "perigo_ou_maior": 0,
-   "referencia": "22/10/2026 05:50",
+   "valor": 4,
+   "perigo_ou_maior": 1,
+   "referencia": "23/10/2026 06:28",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
     "valor": 2,
-    "referencia": "21/10/2026 22:06"
+    "referencia": "22/10/2026 05:50"
    }
   },
   {
