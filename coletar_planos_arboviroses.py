@@ -35,6 +35,7 @@ import consultar_querido_diario as qd
 from coletores_base import RAIZ, ler, gravar, hoje_editorial, normalizar_nome, rodar_autoteste
 
 ARQUIVO = "planos_arboviroses.json"
+ARQUIVO_ALVOS = "alvos_planos_arboviroses.json"   # entrada: 82 municípios de SC (TCE-SC, @RLI 24/00395645)
 FILA = "pistas_arboviroses.json"
 JANELA_DESDE = "2024-01-01"   # plano de contingência vale por temporada; a anterior ainda orienta
 CONSULTAS = ('"plano de contingência" dengue', '"plano de contingência" arboviroses',
@@ -50,15 +51,15 @@ class Recusa(Exception):
     """A fonte recusou o acesso (401/403/429/451): a rodada termina, sem insistir."""
 
 
-def ordem_de_busca(ref: list, populacao: dict, casos: dict) -> list:
-    """Capitais, depois alternando o mais populoso e o de mais casos estimados na última semana lida,
+def ordem_de_busca(ref: list, populacao: dict, casos: dict, alvos: tuple = ()) -> list:
+    """Capitais, depois os alvos de determinação de tribunal de contas (ARQUIVO_ALVOS), depois alternando o mais populoso e o de mais casos estimados na última semana lida,
     sem repetir. Função pura; devolve [(ibge, nome, uf)]."""
     por_ibge = {f"{m['codigo_ibge']:07d}": (f"{m['codigo_ibge']:07d}", m["nome"], m["uf"]) for m in ref}
     capitais = [i for i, (_, n, u) in por_ibge.items() if qd.CAPITAIS.get(n) == u]
     por_pop = sorted(por_ibge, key=lambda i: (-populacao.get(i, 0), i))
     por_casos = sorted((i for i in por_ibge if casos.get(i)), key=lambda i: (-casos[i], i))
     ordem, vistos = [], set()
-    for i in capitais + [x for par in zip(por_pop, por_casos + por_pop) for x in par] + por_pop:
+    for i in capitais + [a for a in alvos if a in por_ibge] + [x for par in zip(por_pop, por_casos + por_pop) for x in par] + por_pop:
         if i not in vistos:
             vistos.add(i)
             ordem.append(por_ibge[i])
@@ -160,7 +161,8 @@ def casos_recentes() -> dict:
 def rodar(orcamento: int, limite: int) -> int:
     from scripts.pistas import gravar_lote
     ref = json.load(open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8"))
-    ordem = ordem_de_busca(ref, ler("populacao_censo2022.json", {}), casos_recentes())
+    ordem = ordem_de_busca(ref, ler("populacao_censo2022.json", {}), casos_recentes(),
+                          tuple((ler(ARQUIVO_ALVOS, {}) or {}).get("alvos", ())))
     doc = ler(ARQUIVO, {}) or {}
     doc.setdefault("municipios", {})
     hoje = hoje_editorial().isoformat()
@@ -244,6 +246,7 @@ def autoteste() -> int:
         return False
 
     ordem = ordem_de_busca(ref, {"1100003": 90, "1100002": 10, "1100001": 5}, {"1100002": 50})
+    com_alvo = ordem_de_busca(ref, {"1100003": 90, "1100002": 10, "1100001": 5}, {}, ("1100001", "9999999"))
     fonte = open(__file__, encoding="utf-8").read().split("def autoteste")[0].split('"""', 2)[2]
     proibidos = ("estados.json", "saude_uf.json", "municipios.json", "indice.json", "monitor_saude.json")
     escritas = [l for l in fonte.splitlines() if "gravar" in l and "import" not in l]
@@ -259,6 +262,7 @@ def autoteste() -> int:
         "trava de campo: pista não confirmada e não promovível": lambda: pistas[0]["documento_oficial_confirmado"] is None and pistas[0]["promovivel"] is False,
         "a pista passa na porta única como plano": lambda: motivo_de_recusa(normalizar(pistas[0], "querido_diario"), []) == "" and pistas[0]["tipo"] == "plano",
         "ordem: capital primeiro, depois alterna população e casos": lambda: [o[0] for o in ordem] == ["2611606", "1100003", "1100002", "1100001"],
+        "alvo vem depois da capital e antes dos maiores; alvo fora da referência é ignorado": lambda: [o[0] for o in com_alvo] == ["2611606", "1100001", "1100003", "1100002"],
         "ordem não repete município": lambda: len({o[0] for o in ordem}) == len(ordem) == 4,
         "trava estrutural: o fonte não cita arquivo do banco": lambda: not any(p in fonte for p in proibidos),
         "trava estrutural: só duas escritas, no arquivo e na fila": lambda: all(("ARQUIVO" in l or "gravar_lote" in l or "pistas.py" in l) for l in escritas),
