@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #991 · Brasília: o cartão do município mostra só o nome do ato
+
+O campo `documento` de Brasília/DF carregava a justificativa metodológica junto com o decreto, e o cartão a publicava ao leitor. A justificativa passa para `nota_metodologica`, que nenhuma página lê; o `documento` fica só com o decreto. Pontuação inalterada.
+
 ## 2026-10-23 · Internações por saúde mental e por ICSAP, primeira leitura completa
 
 Rodada de dia pela válvula (coleta-dia): `internacoes_saude_mental.json` e `internacoes_icsap.json` nascem com a série mensal por UF, e os demais grupos do SIH e os óbitos registrados se atualizam. Agosto de 2026 segue parcial e fica declarado; ICSAP é piso (METODOLOGIA §120). Peso zero no MARÉ. Só dado, sem mudança de código nem de página.
