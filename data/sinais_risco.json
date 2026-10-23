@@ -29,7 +29,7 @@
   },
   "validade_horas_sinal": 36
  },
- "gerado_em": "22/10/2026",
+ "gerado_em": "23/10/2026",
  "fontes": {
   "painel_el_nino": {
    "nome": "Painel El Niño 2026-2027",
@@ -50,7 +50,7 @@
    "url_publica": "https://monitordesecas.ana.gov.br/",
    "papel": "Categoria de seca observada (S0 a S4) por município, mensal.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
    "detalhe": "Fração da área de cada UF em cada categoria de seca (S0 a S4), no mapa mensal mais recente.",
    "recurso": {
@@ -117,7 +117,7 @@
    "url_publica": "https://alertas2.inmet.gov.br/",
    "papel": "Avisos vigentes por área, com grau e vigência declarados pelo INMET.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "Avisos ativos no momento da consulta",
    "detalhe": "Avisos vigentes por área, com grau e vigência declarados pelo INMET."
   },
@@ -128,8 +128,8 @@
    "url_publica": "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/",
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
-   "documento": "Focos do dia — focos_diario_br_20261022.csv",
+   "consultado_em": "23/10/2026",
+   "documento": "Focos do dia — focos_diario_br_20261023.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -139,7 +139,7 @@
    "url_publica": "https://www.gov.br/cemaden/pt-br/assuntos/monitoramento/alertas-vigentes",
    "papel": "Alertas vigentes emitidos aos municípios monitorados.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
    "detalhe": "Alertas vigentes emitidos aos municípios monitorados."
   },
@@ -150,7 +150,7 @@
    "url_publica": "https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
    "papel": "Série observada do índice que define oficialmente El Niño e La Niña.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "ONI v5, último trimestre JAS/2026",
    "detalhe": "Série observada do índice que define oficialmente El Niño e La Niña."
   },
@@ -183,7 +183,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
    "papel": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "RONI, último trimestre JAS/2026",
    "detalhe": "Métrica oficial de classificação de El Niño e La Niña desde agosto de 2026, substituindo o ONI clássico."
   },
@@ -194,7 +194,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
    "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "Niño 3.4 mensal, último mês 09/2026",
    "detalhe": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam."
   },
@@ -208,7 +208,7 @@
    "licenca": "CC BY 4.0 — crédito obrigatório do OpenAQ e da rede de origem",
    "credencial": "OPENAQ_API_KEY",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
    "detalhe": "PM2,5 medido por monitor oficial, onde existir monitor."
   },
@@ -221,8 +221,8 @@
    "natureza": "medição",
    "licenca": "Dados abertos INMET",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
-   "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
+   "consultado_em": "23/10/2026",
+   "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
    "detalhe": "Máxima e mínima medidas na estação automática da capital.",
    "serie_historica_publica": "https://portal.inmet.gov.br/uploads/dadoshistoricos/{ano}.zip",
    "serie_historica_medida": "26/09/2026: 27 ZIPs anuais, públicos, sem credencial. O de 2026 tem 64 MB e 639 CSVs de estação (01/01 a 31/08), com máxima e mínima horárias, precipitação, umidade, radiação e vento. Nenhum token é necessário — a página oficial do INMET declara os dados públicos e gratuitos."
@@ -234,7 +234,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
    "papel": "Estado oficial do alerta de El Niño e a probabilidade declarada, mês a mês.",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "ENOS: El Niño Advisory (emitida em 08/10/2026)",
    "detalhe": "Estado oficial do alerta de El Niño e a probabilidade declarada, mês a mês."
   },
@@ -246,7 +246,7 @@
    "papel": "Máxima e mínima previstas para cada capital, pelo instituto oficial brasileiro.",
    "natureza": "estimativa de modelo",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "INMET — previsão para 27 capital(is)",
    "detalhe": "Máxima e mínima previstas para cada capital, pelo instituto oficial brasileiro."
   },
@@ -257,7 +257,7 @@
    "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for",
    "papel": "Leitura semanal da anomalia na região Niño 3.4 (base 1991–2020 do arquivo wksst9120).",
    "status": "coletado",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "documento": "Niño 3.4 semanal, semana de 2026-10-14",
    "detalhe": "Leitura semanal da anomalia na região Niño 3.4 (base 1991–2020 do arquivo wksst9120)."
   }
@@ -6343,7 +6343,7 @@
    },
    "fonte": "noaa_nino34_semanal",
    "documento": "Niño 3.4 semanal, semana de 2026-10-14",
-   "consultado_em": "22/10/2026 05:50"
+   "consultado_em": "23/10/2026 06:28"
   }
  },
  "uf": {
@@ -6385,7 +6385,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6393,17 +6393,17 @@
      "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade"
+     "Chuvas Intensas"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6411,11 +6411,11 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Rio Branco",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 34.0,
     "tmin": 23.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
@@ -6435,16 +6435,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.9,
-     "tmin": 22.6,
-     "umin_pct": 83.0,
+     "tmax": 25.3,
+     "tmin": 23.5,
+     "umin_pct": 88.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -6485,7 +6485,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6497,13 +6497,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 7,
+    "focos_24h": 6,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6511,14 +6511,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Maceió",
-    "data": "22/10/2026",
-    "tmax": 30.0,
+    "data": "23/10/2026",
+    "tmax": 31.0,
     "tmin": 23.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -6535,16 +6535,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.0,
-     "tmin": 24.8,
-     "umin_pct": 87.0,
+     "tmax": 26.1,
+     "tmin": 25.3,
+     "umin_pct": 91.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -6586,7 +6586,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6594,35 +6594,31 @@
      "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade"
+     "Chuvas Intensas"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 168,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Moderado": 1
-    },
-    "municipios": [
-     "FONTE BOA"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Manaus",
-    "data": "22/10/2026",
-    "tmax": 35.0,
-    "tmin": 25.0,
+    "data": "23/10/2026",
+    "tmax": 34.0,
+    "tmin": 24.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -6640,16 +6636,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.6,
-     "tmin": 24.4,
-     "umin_pct": 89.0,
+     "tmax": 28.9,
+     "tmin": 26.9,
+     "umin_pct": 74.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 5040030,
@@ -6663,7 +6659,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "AP": {
@@ -6703,7 +6699,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -6711,13 +6707,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 55,
+    "focos_24h": 138,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6725,11 +6721,11 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Macapá",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 34.0,
     "tmin": 25.0,
     "resumo": "Muitas nuvens",
@@ -6751,14 +6747,14 @@
     "medida": {
      "tmax": 27.7,
      "tmin": 25.3,
-     "umin_pct": 78.0,
+     "umin_pct": 79.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -6800,7 +6796,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6812,13 +6808,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 271,
+    "focos_24h": 289,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6826,14 +6822,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Salvador",
-    "data": "22/10/2026",
-    "tmax": 31.0,
-    "tmin": 24.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "data": "23/10/2026",
+    "tmax": 29.0,
+    "tmin": 23.0,
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -6850,8 +6846,8 @@
     },
     "natureza": "medição",
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 3911519,
@@ -6865,7 +6861,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "CE": {
@@ -6905,7 +6901,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -6917,13 +6913,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 36,
+    "focos_24h": 34,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -6931,14 +6927,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Fortaleza",
-    "data": "22/10/2026",
-    "tmax": 33.0,
-    "tmin": 26.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "data": "23/10/2026",
+    "tmax": 32.0,
+    "tmin": 24.0,
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -6957,7 +6953,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "DF": {
@@ -6997,7 +6993,7 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -7005,13 +7001,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7019,14 +7015,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Brasília",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 32.0,
-    "tmin": 20.0,
-    "resumo": "Muitas nuvens",
+    "tmin": 22.0,
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7043,16 +7039,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.7,
-     "tmin": 22.8,
-     "umin_pct": 54.0,
+     "tmax": 22.1,
+     "tmin": 19.5,
+     "umin_pct": 71.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -7091,7 +7087,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -7103,13 +7099,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7117,14 +7113,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Vitória",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 26.0,
     "tmin": 20.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7142,15 +7138,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 21.2,
-     "tmin": 20.9,
+     "tmin": 20.5,
      "umin_pct": 97.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 6126992,
@@ -7164,7 +7160,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "GO": {
@@ -7205,7 +7201,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 2,
@@ -7213,18 +7209,18 @@
      "Perigo Potencial": 2
     },
     "exemplos": [
-     "Baixa Umidade",
-     "Tempestade"
+     "Tempestade",
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 154,
+    "focos_24h": 26,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7232,14 +7228,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Goiânia",
-    "data": "22/10/2026",
-    "tmax": 33.0,
-    "tmin": 24.0,
-    "resumo": "Muitas nuvens",
+    "data": "23/10/2026",
+    "tmax": 35.0,
+    "tmin": 22.0,
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7256,16 +7252,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 22.7,
-     "tmin": 21.1,
-     "umin_pct": 83.0,
+     "tmax": 20.1,
+     "tmin": 19.4,
+     "umin_pct": 92.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -7307,7 +7303,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -7319,13 +7315,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 771,
+    "focos_24h": 997,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7333,14 +7329,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "São Luís",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 32.0,
     "tmin": 26.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7386,7 +7382,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 2,
@@ -7394,18 +7390,18 @@
      "Perigo Potencial": 2
     },
     "exemplos": [
-     "Baixa Umidade",
-     "Tempestade"
+     "Tempestade",
+     "Baixa Umidade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 192,
+    "focos_24h": 45,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7413,14 +7409,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
-    "data": "22/10/2026",
-    "tmax": 28.0,
-    "tmin": 17.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "data": "23/10/2026",
+    "tmax": 29.0,
+    "tmin": 16.0,
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7437,16 +7433,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 20.5,
+     "tmax": 19.8,
      "tmin": 19.0,
-     "umin_pct": 76.0,
+     "umin_pct": 83.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -7488,25 +7484,26 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 11,
+    "focos_24h": 51,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7514,13 +7511,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Campo Grande",
-    "data": "22/10/2026",
-    "tmax": 33.0,
-    "tmin": 22.0,
+    "data": "23/10/2026",
+    "tmax": 35.0,
+    "tmin": 23.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7538,16 +7535,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.5,
-     "tmin": 23.8,
-     "umin_pct": 51.0,
+     "tmax": 23.9,
+     "tmin": 22.4,
+     "umin_pct": 73.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -7588,7 +7585,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -7600,13 +7597,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 39,
+    "focos_24h": 243,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7614,12 +7611,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Cuiabá",
-    "data": "22/10/2026",
-    "tmax": 36.0,
+    "data": "23/10/2026",
+    "tmax": 39.0,
     "tmin": 26.0,
     "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -7638,16 +7635,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 32.7,
-     "tmin": 29.7,
-     "umin_pct": 40.0,
+     "tmax": 33.0,
+     "tmin": 30.3,
+     "umin_pct": 38.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -7689,25 +7686,21 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 2619,
+    "focos_24h": 5731,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7715,12 +7708,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Belém",
-    "data": "22/10/2026",
-    "tmax": 35.0,
+    "data": "23/10/2026",
+    "tmax": 36.0,
     "tmin": 24.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -7739,16 +7732,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.6,
-     "tmin": 24.5,
-     "umin_pct": 79.0,
+     "tmax": 26.9,
+     "tmin": 23.8,
+     "umin_pct": 81.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 3852932,
@@ -7762,7 +7755,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "PB": {
@@ -7802,7 +7795,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -7814,13 +7807,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
     "focos_24h": 4,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7828,14 +7821,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "João Pessoa",
-    "data": "22/10/2026",
-    "tmax": 32.0,
-    "tmin": 25.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "data": "23/10/2026",
+    "tmax": 31.0,
+    "tmin": 24.0,
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7852,16 +7845,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.8,
-     "tmin": 24.9,
-     "umin_pct": 73.0,
+     "tmax": 27.0,
+     "tmin": 26.3,
+     "umin_pct": 76.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -7902,7 +7895,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -7914,13 +7907,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 4,
+    "focos_24h": 12,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -7928,14 +7921,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Recife",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 32.0,
-    "tmin": 25.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "tmin": 26.0,
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7952,16 +7945,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.2,
-     "tmin": 26.6,
-     "umin_pct": 72.0,
+     "tmax": 27.6,
+     "tmin": 25.8,
+     "umin_pct": 73.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -8003,7 +7996,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -8015,13 +8008,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 192,
+    "focos_24h": 447,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8029,13 +8022,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Teresina",
-    "data": "22/10/2026",
-    "tmax": 38.0,
-    "tmin": 24.0,
+    "data": "23/10/2026",
+    "tmax": 40.0,
+    "tmin": 26.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8053,16 +8046,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 28.5,
-     "tmin": 24.0,
-     "umin_pct": 63.0,
+     "tmax": 28.0,
+     "tmin": 23.3,
+     "umin_pct": 52.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -8103,25 +8096,26 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 1,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8129,13 +8123,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Curitiba",
-    "data": "22/10/2026",
-    "tmax": 21.0,
-    "tmin": 12.0,
+    "data": "23/10/2026",
+    "tmax": 22.0,
+    "tmin": 14.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8153,16 +8147,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 15.3,
-     "tmin": 14.6,
-     "umin_pct": 95.0,
+     "tmax": 15.8,
+     "tmin": 15.1,
+     "umin_pct": 93.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -8201,7 +8195,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -8213,13 +8207,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8227,14 +8221,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 26.0,
     "tmin": 19.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8251,16 +8245,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 21.5,
-     "tmin": 19.3,
-     "umin_pct": 79.0,
+     "tmax": 21.6,
+     "tmin": 19.9,
+     "umin_pct": 83.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 5110511,
@@ -8274,7 +8268,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "RN": {
@@ -8314,7 +8308,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -8326,13 +8320,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 7,
+    "focos_24h": 8,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8340,14 +8334,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Natal",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 30.0,
-    "tmin": 26.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "tmin": 25.0,
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8364,16 +8358,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.0,
-     "tmin": 25.4,
+     "tmax": 27.1,
+     "tmin": 26.4,
      "umin_pct": 79.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -8415,7 +8409,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -8423,17 +8417,17 @@
      "Perigo Potencial": 1
     },
     "exemplos": [
-     "Tempestade"
+     "Chuvas Intensas"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 0,
+    "focos_24h": 2,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8441,12 +8435,12 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Porto Velho",
-    "data": "22/10/2026",
-    "tmax": 34.0,
+    "data": "23/10/2026",
+    "tmax": 35.0,
     "tmin": 25.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
@@ -8465,16 +8459,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.7,
-     "tmin": 22.9,
-     "umin_pct": 97.0,
+     "tmax": 26.1,
+     "tmin": 23.8,
+     "umin_pct": 89.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 5616182,
@@ -8488,7 +8482,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "RR": {
@@ -8528,25 +8522,21 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 17,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8554,13 +8544,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Boa Vista",
-    "data": "22/10/2026",
-    "tmax": 35.0,
-    "tmin": 27.0,
+    "data": "23/10/2026",
+    "tmax": 36.0,
+    "tmin": 26.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8607,43 +8597,40 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 5,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
-    "total": 1,
-    "niveis": {
-     "Cessar": 1
-    },
-    "municipios": [
-     "URUGUAIANA"
-    ],
+    "total": 0,
+    "niveis": {},
+    "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Porto Alegre",
-    "data": "22/10/2026",
-    "tmax": 24.0,
-    "tmin": 15.0,
+    "data": "23/10/2026",
+    "tmax": 28.0,
+    "tmin": 17.0,
     "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -8661,16 +8648,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 17.6,
-     "tmin": 16.5,
-     "umin_pct": 88.0,
+     "tmax": 20.1,
+     "tmin": 17.9,
+     "umin_pct": 82.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -8711,25 +8698,26 @@
     "categoria_maxima": "sem seca",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8737,14 +8725,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Florianópolis",
-    "data": "22/10/2026",
-    "tmax": 22.0,
-    "tmin": 16.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "data": "23/10/2026",
+    "tmax": 23.0,
+    "tmin": 19.0,
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8761,16 +8749,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 19.8,
-     "tmin": 18.6,
-     "umin_pct": 79.0,
+     "tmax": 19.0,
+     "tmin": 18.2,
+     "umin_pct": 90.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   },
@@ -8811,7 +8799,7 @@
     "categoria_maxima": "S2",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 0,
@@ -8819,13 +8807,13 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8833,14 +8821,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Aracaju",
-    "data": "22/10/2026",
+    "data": "23/10/2026",
     "tmax": 31.0,
     "tmin": 25.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8886,25 +8874,26 @@
     "categoria_maxima": "S0",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
+    "total": 2,
     "graus": {
-     "Perigo Potencial": 1
+     "Perigo Potencial": 1,
+     "Perigo": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 9,
+    "focos_24h": 10,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -8912,14 +8901,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "São Paulo",
-    "data": "22/10/2026",
-    "tmax": 25.0,
+    "data": "23/10/2026",
+    "tmax": 23.0,
     "tmin": 17.0,
-    "resumo": "Muitas nuvens com pancadas de chuva isoladas",
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8936,8 +8925,8 @@
     },
     "natureza": "medição",
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": {
     "id": 5282,
@@ -8951,7 +8940,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    }
   },
   "TO": {
@@ -8992,7 +8981,7 @@
     "categoria_maxima": "S1",
     "fonte": "monitor_secas",
     "documento": "Monitor de Secas (ANA) — dados tabulares por UF, mapa Setembro de 2026",
-    "consultado_em": "22/10/2026"
+    "consultado_em": "23/10/2026"
    },
    "avisos_inmet": {
     "total": 1,
@@ -9004,13 +8993,13 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "fogo": {
-    "focos_24h": 159,
+    "focos_24h": 328,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261022.csv",
-    "consultado_em": "22/10/2026"
+    "documento": "Focos do dia — focos_diario_br_20261023.csv",
+    "consultado_em": "23/10/2026"
    },
    "alertas_cemaden": {
     "total": 0,
@@ -9018,14 +9007,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "22/10/2026 05:50"
+    "consultado_em": "23/10/2026 06:28"
    },
    "temperatura": {
     "capital": "Palmas",
-    "data": "22/10/2026",
-    "tmax": 37.0,
-    "tmin": 22.0,
-    "resumo": "Muitas nuvens",
+    "data": "23/10/2026",
+    "tmax": 38.0,
+    "tmin": 25.0,
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -9042,16 +9031,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.0,
-     "tmin": 23.3,
-     "umin_pct": 75.0,
+     "tmax": 27.4,
+     "tmin": 23.8,
+     "umin_pct": 57.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
-     "data": "2026-10-22"
+     "data": "2026-10-23"
     },
     "fonte": "inmet_estacoes",
-    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-22",
-    "consultado_em": "22/10/2026 05:50"
+    "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-23",
+    "consultado_em": "23/10/2026 06:28"
    },
    "ar_medido": null
   }
