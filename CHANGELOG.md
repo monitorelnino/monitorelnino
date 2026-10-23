@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #1010 · Busca de planos em fontes abertas: um arquivo por UF, `--uf` e retomada
+
+`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/<UF>.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos), lê alvos de `fila` ou de `municipios`, filtra por `--uf` e não repete o que já foi lido no dia (`erro` se tenta de novo). Dado migrado, 27 municípios.
+
 ## 2026-10-23 · #1006 · Leitura do texto dos diários com menção a plano de arboviroses
 
 `ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
