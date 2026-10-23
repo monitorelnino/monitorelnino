@@ -246,7 +246,7 @@
    "comprometimento": "psicossocial",
    "sistema": "SIH / SIM / Sinan (violência autoprovocada)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações com CID-10 principal F00 a F99 (transtornos mentais e comportamentais), por UF de residência e mês; suicídio e violência autoprovocada ficam fora desta rota (SIM e Sinan, sem rota provada). Grupo novo em `coletar_sih.py` ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações com CID-10 principal F00 a F99 (transtornos mentais e comportamentais), por UF do hospital e mês; suicídio e violência autoprovocada ficam fora desta rota (SIM e Sinan, sem rota provada). Grupo `saude_mental` escrito em `coletar_sih.py` em 22/10/2026; o arquivo `internacoes_saude_mental.json` nasce quando o elo ler o histórico (estimativa: cinco noites).",
    "status_coleta": "candidato"
   },
   {
@@ -273,7 +273,7 @@
    "comprometimento": "serviços",
    "sistema": "SIH/SUS",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações cujo CID-10 principal está na Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). A lista oficial precisa ser transcrita da portaria com conferência antes de entrar como grupo em `coletar_sih.py`; coletor ainda não escrito.",
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações cujo CID-10 principal está na Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Grupo `icsap` escrito em `coletar_sih.py` em 22/10/2026, com a lista transcrita de duas cópias da portaria que concordam (o texto do DOU não foi lido; divergências resolvidas pelo recorte mais estreito, ver o código); o arquivo `internacoes_icsap.json` nasce quando o elo ler o histórico (estimativa: cinco noites).",
    "status_coleta": "candidato"
   },
   {
