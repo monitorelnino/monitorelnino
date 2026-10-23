@@ -612,9 +612,13 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
       return [g, com.length, ufs, fen];
     });
     const comAviso = muns.filter(m => (m.inmet || []).length).length, total = (window.__refMunicipios || []).length;
+    /* 23/10/2026: as duas colunas que descrevem o aviso saíam em TRAVESSÃO nas três linhas sem
+       aviso — e travessão não é palavra: nega a regra de que ausência se escreve. Grau com zero
+       município tem zero estado e zero fenômeno (zero medido, "nenhum"); a linha "Sem aviso" não é
+       grau de aviso, e dizer "nenhum" ali leria-se como se os 2.004 municípios não tivessem estado. */
     document.querySelector('#tblAvisos tbody').innerHTML = linhas.map(([g, n, ufs, fen]) => '<tr><td>' + esc(g) + '</td> <td>'
-        + esc(fmt(n)) + '</td> <td>' + esc(ufs.join(', ') || '—') + '</td> <td>' + esc(fen.join(', ') || '—') + '</td></tr>').join('')
-      + (total ? '<tr><td>Sem aviso</td><td>' + esc(fmt(total - comAviso)) + '</td><td>—</td><td>—</td></tr>' : '');
+        + esc(fmt(n)) + '</td> <td>' + esc(ufs.join(', ') || 'nenhum') + '</td> <td>' + esc(fen.join(', ') || 'nenhum') + '</td></tr>').join('')
+      + (total ? '<tr><td>Sem aviso</td><td>' + esc(fmt(total - comAviso)) + '</td><td>não há aviso</td><td>não há aviso</td></tr>' : '');
     const previstos = UFS.filter(uf => componentesDe(uf).includes('chuvas'));
     const ufsComAviso = new Set(muns.filter(m => (m.inmet || []).length).map(m => m.uf));
     const nAvisos = new Set(muns.flatMap(m => (m.inmet || []).map(x => x.id))).size;

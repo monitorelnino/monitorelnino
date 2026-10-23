@@ -87,7 +87,7 @@ def _get(params, apis=None):
 
     Uma recusa de TLS numa das portas não é ausência de acervo: é uma porta fechada. Só quando
     todas fecham o erro sobe — e aí ele é real."""
-    ultimo = None
+    ultimo, falhas = None, []
     for base in (apis or APIS):
         url = base + "?" + urllib.parse.urlencode(params)
         req = urllib.request.Request(url,
@@ -97,7 +97,10 @@ def _get(params, apis=None):
                 return json.load(r)
         except (urllib.error.URLError, ssl.SSLError, TimeoutError) as e:
             ultimo = e
+            falhas.append(f"{urllib.parse.urlparse(base).netloc}: {type(e).__name__} {str(e)[:80]}")
             continue
+    # 22/10/2026: o traceback só mostrava a ÚLTIMA porta (TLS), escondendo por que as duas primeiras falharam.
+    ultimo.add_note("portas tentadas: " + " | ".join(falhas))   # o tipo original (HTTPError, SSLError) sobe intacto
     raise ultimo
 
 

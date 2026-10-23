@@ -128,8 +128,10 @@ const COLETA = () => {
   // 08/10/2026 (A4-13): o travessao e proibido como VALOR em cartao, e o portao olhava so
   // `.cartao-numero-valor`. O leitor o via em outros tres lugares: na linha do boletim de figura,
   // na face do ladrilho de estado e no campo da ficha. Entram na varredura.
+  // 23/10/2026 (B1): quinto lugar, medido nas onze páginas — a CÉLULA de tabela de figura, que
+  // escapava porque o portão olhava só cartão, ladrilho e ficha.
   const travessoes = [...document.querySelectorAll(
-    ".cartao-mapa-boletim, .tile-face span, .field .v, .cartao-numero-valor")]
+    ".cartao-mapa-boletim, .tile-face span, .field .v, .cartao-numero-valor, .mun-table td")]
     .filter(e => vis(e) && ["—", "-", "–"].includes((e.textContent || "").trim()))
     .map(e => ({
       classe: [...e.classList].join(" ") || e.tagName.toLowerCase(),

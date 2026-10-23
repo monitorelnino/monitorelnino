@@ -9,6 +9,20 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #964 · Fontes abertas de planos por município
+`buscar_planos_fontes_abertas.py` consulta, por município, LexML, Wayback, Common Crawl e dados.gov.br; achado entra pela porta única e vai ao juiz. Recusa e erro ficam nomeados, nunca viram "sem resultado". O Querido Diário passa a reportar todas as portas que falharam. Alvos das 27 capitais em `data/capitais_alvos.json`.
+
+## 2026-10-22 · #964 · Busca dirigida pela relação do S2iD
+
+A relação nominal do módulo PLANCON do S2iD (SEDEC, por LAI) entra como camada declarada e datada, com o campo `s2id_plancon` em `declarado_nacional.json` e sem efeito na nota. A fila de 571 municípios sem documento ganha o portal da prefeitura como canal, ao lado do Querido Diário e da busca web, que passa a aceitar a fila. Toda pista entra pela porta única.
+
+## 2026-10-23 · #978 · Monitor de riscos: a tabela de avisos diz em palavras o que o travessão calava
+
+As colunas "Estados" e "Fenômeno" da tabela de avisos do Inmet saíam em travessão nas três linhas sem aviso. Grau com zero município passa a dizer "nenhum", que é o zero medido; a linha "Sem aviso", que não é grau de aviso, diz "não há aviso". O portão que já proibia travessão em cartão, ladrilho e ficha passa a olhar também a célula de tabela de figura, o quinto lugar onde o leitor o via.
+
+## 2026-10-23 · #976 · Repositórios estaduais de planos entram como pistas, não como plano direto
+
+`atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.
 ## 2026-10-23 · #975 · Busca de planos em matriz por grupo de UF
 
 A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.
