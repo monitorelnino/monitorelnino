@@ -55,6 +55,7 @@ Atualizado em 23/10/2026.
 | `atualizar_recursos.py` | — | — | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscar_financiamento_preventivo.py` | — | — | — | — | não |
+| `buscar_planos_fontes_abertas.py` | — | `planos_busca_fontes.json` | — | — | não |
 | `buscar_protocolo_calor.py` | — | `saude_desfechos/busca_protocolo_calor.json` | — | — | não |
 | `classificador_natureza.py` | — | — | — | 4 | não |
 | `classificar_pista_civil.py` | — | `pistas_imprensa.json` | — | 5 | não |
@@ -100,11 +101,11 @@ Atualizado em 23/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+7) | — | **177** | não |
-| `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 2 | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+7) | — | **178** | não |
+| `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
-| `descobrir_planos.py` | — | — | — | 2 | não |
+| `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 3 | não |
 | `desfechos_sus.py` | — | — | — | 4 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 11 | não |
@@ -176,7 +177,7 @@ Atualizado em 23/10/2026.
 | `scripts/migrar_zero_humano.py` | — | `saude_desfechos/fontes_uf.json`, `saude_desfechos/gatilhos.json`, `saude_sinais.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 4 | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 17 | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 18 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/proveniencia_estadual.py` | — | `estados.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |

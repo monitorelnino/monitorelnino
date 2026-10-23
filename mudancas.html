@@ -47,6 +47,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Fontes abertas de planos por município</dt>
+      <dd>`buscar_planos_fontes_abertas.py` consulta, por município, LexML, Wayback, Common Crawl e dados.gov.br; achado entra pela porta única e vai ao juiz. Recusa e erro ficam nomeados, nunca viram &quot;sem resultado&quot;. O Querido Diário passa a reportar todas as portas que falharam. Alvos das 27 capitais em `data/capitais_alvos.json`.</dd>
+      <dt>22/10/2026 · Busca dirigida pela relação do S2iD</dt>
+      <dd>A relação nominal do módulo PLANCON do S2iD (SEDEC, por LAI) entra como camada declarada e datada, com o campo `s2id_plancon` em `declarado_nacional.json` e sem efeito na nota. A fila de 571 municípios sem documento ganha o portal da prefeitura como canal, ao lado do Querido Diário e da busca web, que passa a aceitar a fila. Toda pista entra pela porta única.</dd>
       <dt>23/10/2026 · Monitor de riscos: a tabela de avisos diz em palavras o que o travessão calava</dt>
       <dd>As colunas &quot;Estados&quot; e &quot;Fenômeno&quot; da tabela de avisos do Inmet saíam em travessão nas três linhas sem aviso. Grau com zero município passa a dizer &quot;nenhum&quot;, que é o zero medido; a linha &quot;Sem aviso&quot;, que não é grau de aviso, diz &quot;não há aviso&quot;. O portão que já proibia travessão em cartão, ladrilho e ficha passa a olhar também a célula de tabela de figura, o quinto lugar onde o leitor o via.</dd>
       <dt>23/10/2026 · Repositórios estaduais de planos entram como pistas, não como plano direto</dt>
@@ -163,10 +167,6 @@
       <dd>A seção &quot;O que os órgãos de saúde registram&quot; passa a abrir com um cartão por desfecho, todos lidos da mesma forma de arquivo: último valor por 100 mil, faixa habitual para a época, a série recente em linha e a fonte com a data. Um seletor escolhe Brasil ou estado. Desfecho sem arquivo não vira cartão vazio. Estreia com diarreias e leptospirose; os demais entram quando a série nascer.</dd>
       <dt>19/10/2026 · Portões: comentários de cache e corrida no YAML, em uma linha</dt>
       <dd>Consolidação, item 6. Os blocos longos de história sobre o cache do navegador, a idempotência, a corrida do medidor e as capturas, em `portoes.yml`, viram uma linha de porquê cada; a história fica no histórico. Lista de comandos, assuntos e marcadores de publicação idêntica (83 comandos). Linhas líquidas −29.</dd>
-      <dt>19/10/2026 · Seis números numa linha, e a busca cobrada onde há lista</dt>
-      <dd>A faixa compacta de números cabe em seis cartões numa linha no desktop, como o componente declara: o mínimo da coluna passa de 12rem a 11rem, e sai o cartão órfão, 34 px mais baixo, que a Imprensa mostrava a 1280 px. Tablet e celular seguem iguais. No verificador de runtime, o campo de busca é cobrado em cada lista declarada, não em todo cartão de mapa. O medidor deixa de contar trilha colapsada como coluna.</dd>
-      <dt>19/10/2026 · Portões: a detecção de dado e página sai do YAML; comentários enxutos</dt>
-      <dd>Consolidação, item 6. A regra de disparo (dado, página) estava copiada em três passos de `portoes.yml` e lida de volta por regex; passa a viver em `quais_portoes.py --ci`, que a CI chama. O YAML perde os comentários de história (vivem no histórico) e mantém um porquê por comando. Os 83 comandos e seus marcadores ficam idênticos. Linhas líquidas −257.</dd>
     </dl>
   </section>
 </main>
