@@ -40,6 +40,15 @@ zero aparece rotulado, fora da média, nunca como zero por cento.
 
 `atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
 
+## 2026-10-22 · #962 · Inicial: o universo de cada número, os quatro canais e duas listas a menos
+
+O medidor de decretos diz agora que o número grande é parcela da população, e a
+pílula ao lado, parcela dos municípios. O parágrafo das classes municipais ganha, do
+dado, quantos municípios cada canal alcançou e o que "verificação completa" significa.
+Pela raiz: portais e e-mails das Defesas Civis estaduais saem da transcrição à mão e
+vêm de `contatos_uf.json`; os dois mapas de categoria viram um, com `plano_nomeado`
+(47 municípios) e `decreto` (97) cobertos.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
