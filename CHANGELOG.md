@@ -10,7 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
-## 2026-10-23 · #998 · Busca de planos: pasta oficial do RS reconhecida pelo juiz
+## 2026-10-23 · #1002 · Busca de planos: pasta oficial do RS reconhecida pelo juiz
 
 A pasta da Casa Militar/Defesa Civil do RS (linkada por prepara.rs.gov.br) e os PDFs de
 casamilitar-rs.com.br entram nos padrões de fonte oficial do juiz; domínio parecido não casa.
