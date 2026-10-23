@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-23 · #PR · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta
+## 2026-10-23 · #1023 · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta
 
 No campo "Instrumento estadual de saúde", o estado sem documento localizado mostrava a etiqueta "ainda não verificado" e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.
 
