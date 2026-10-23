@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #PR · Saúde: a semana do sinal de dengue sai em datas na ficha do estado
+
+A ficha de cada estado e o perfil do município publicavam "SE 202640": a sigla que saiu do site em 07/10 e a chave crua da fonte, que ali ainda se confunde com a sigla de Sergipe. Os dois passam a chamar `semanaEmDatas`, que já convertia a semana nas séries; sem o utilitário, a frase sai sem a data. Saem as duas linhas de boletim das figuras do mapa — uma nada escrevia, a outra repetia a legenda. Código −1.
+
 ## 2026-10-23 · #1006 · Leitura do texto dos diários com menção a plano de arboviroses
 
 `ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
