@@ -18,7 +18,7 @@ REGISTRO DE REPOSITÓRIOS (extensível):
   Cada UF mapeada tem uma função de parser própria, porque cada site estadual
   publica a lista em formato diferente. Adicionar uma UF = escrever um parser
   novo e registrá-lo em REPOSITORIOS; nada mais muda.
-  Implementadas: SE. Mapeadas mas SEM parser ainda (grafado no protocolo de
+  Implementadas: SE, ES, RS (pasta pública do SharePoint). Mapeadas mas SEM parser ainda (grafado no protocolo de
   busca como pendência): PR (SISDC), ES, AM — ver Metodologia §4.1.1(d).
 
 LIMITAÇÃO DE AMBIENTE (declarada, não escondida): o sandbox onde este projeto
@@ -114,6 +114,57 @@ def parse_se(texto: str):
         achados.append({"nome": nome, "ano_edicao": int(ano), "url": url})
     return achados
 
+def parse_rs(texto: str):
+    """Casa Militar/RS — pasta pública de PLANCONs (SharePoint, sem login). `texto` é o JSON da listagem
+    (`listar_sharepoint`): [{name, webUrl}]. O nome do arquivo não tem padrão (535 arquivos: 'PLANCON - X.pdf',
+    'PlanCon_X_2025.pdf', 'Plano de Contingência Municipal 2025_X.pdf', só 'X.pdf'): tira-se o ruído e o
+    resto é o candidato a município, que `casar_com_ibge` confirma ou devolve como órfão. Sem ano no nome,
+    a categoria é `plano_nomeado` (existe, edição não lida); o juiz lê o documento. Por município vale o ano
+    mais recente; PDF antes de DOCX."""
+    ruido = re.compile(r"PLANO DE CONTING\w*(?: DE\b)?|PLAN ?CON\b|DEFESA CIVIL|MUNICIPAL|VERSAO\s*[\d.]+|\bRASCUNHO\b|\bCOMDEC\b")
+    melhor = {}
+    for it in json.loads(texto):
+        nome_arq, ext = it["name"].rsplit(".", 1) if "." in it["name"] else (it["name"], "")
+        if ext.lower() not in ("pdf", "doc", "docx", "url") or re.search(r"laudo|parecer|anexo", nome_arq, re.I):
+            continue
+        t = norm(re.sub(r"([a-zà-ÿ])([A-ZÀ-Ý])", r"\1 \2", nome_arq).replace("_", " "))
+        ano = re.search(r"\b(19|20)\d{2}\b", t)
+        nome = re.sub(r"[-–\d]+", " ", ruido.sub(" ", t)).strip()
+        if not nome:
+            continue
+        a = {"nome": nome.title(), "url": it["webUrl"],
+             **({"ano_edicao": int(ano.group(0))} if ano else
+                {"ano_edicao": 0, "rotulo_ano": "s/d", "categoria": "plano_nomeado"})}
+        k, peso = norm(nome), (a["ano_edicao"], ext.lower() == "pdf")
+        if k not in melhor or peso > melhor[k][0]:
+            melhor[k] = (peso, a)
+    return [a for _, a in melhor.values()]
+
+
+def listar_sharepoint(link: str, pausa: float = 2.0):
+    """Lista, sem login, os arquivos da pasta pública do SharePoint do link de compartilhamento: o GET do
+    link entrega os cookies da sessão anônima (a API anônima do OneDrive não os usa e devolve 0 filhos), e com
+    eles a REST do SharePoint lista cada pasta. Cliente identificado; 401/403/429/451 é recusa e para
+    (`raise_for_status`, sem nova via). Rodada na Action, não no sandbox."""
+    import time, requests
+    from urllib.parse import quote, urlparse
+    s = requests.Session()
+    s.headers["User-Agent"] = ua_de("repositórios estaduais de planos")
+    s.get(link, timeout=30).raise_for_status()
+    host, raiz = "https://" + urlparse(link).netloc, REPOSITORIOS["RS"]["pasta"]
+    site, pastas, achados = "/".join(raiz.split("/")[:3]), [raiz], []
+    while pastas:
+        pasta = pastas.pop()
+        time.sleep(pausa)
+        r = s.get(f"{host}{site}/_api/web/GetFolderByServerRelativeUrl('{quote(pasta.replace(chr(39), chr(39) * 2))}')",
+                  params={"$expand": "Folders,Files"}, headers={"Accept": "application/json;odata=verbose"}, timeout=30)
+        r.raise_for_status()
+        d = r.json()["d"]
+        pastas += [f["ServerRelativeUrl"] for f in d["Folders"]["results"] if f["Name"] != "Forms"]
+        achados += [{"name": f["Name"], "webUrl": host + quote(f["ServerRelativeUrl"])} for f in d["Files"]["results"]]
+    print(f"  [sharepoint] {len(achados)} arquivo(s)", file=sys.stderr)
+    return json.dumps(achados)
+
 
 REPOSITORIOS = {
     "SE": {
@@ -128,13 +179,20 @@ REPOSITORIOS = {
         "canal": "repositorio_estadual",
         "parser": parse_es,
     },
+    "RS": {
+        "url": "https://rsgovbr-my.sharepoint.com/:f:/g/personal/casa-militar_casamilitar_rs_gov_br/IgDtPUo8By2jT7gAi9XGU-uQAeJRsR-iSsJyprJYV8Wb-mo?e=crxaoy",
+        "fonte": "Defesa Civil RS (Casa Militar/SUBPDEC) — pasta pública de PLANCONs recebidos, via Prepara RS (22/10/2026)",
+        "canal": "repositorio_estadual",
+        "parser": parse_rs,
+        "pasta": "/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa Militar/SUBCHEFIAS/SUBCHEFIA DE PROTEÇÃO E DEFESA CIVIL/3. Departamento de Gestão de Riscos/Divisão Técnica de Riscos/Planos de contingência/TODOS PLANCONS RECEBIDOS",
+        "carregar": listar_sharepoint,
+    },
     "PR": {"parser": None, "nota": "SISDC/CEPDEC-PR — planos gerados no sistema, sem lista pública de PDFs para parser (Protocolo de Busca v2, decisão pendente ii)"},
     "AM": {"parser": None, "nota": "repositório estadual conhecido, parser não implementado"},
     # Ausências VERIFICADAS em 26/08/2026 (registradas para não repetir a busca):
     # o estado publica material de orientação/modelo, mas NÃO um repositório dos
     # planos municipais recebidos. Rever se a página mudar.
     "SC": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.sc.gov.br/municipios/ publica apenas pacotes-modelo (PlanCon AS, PlanCon EduAgravi); sem repositório de planos municipais. Cobertura de SC vem do levantamento declarado do TCE-SC (Painel Farol)"},
-    "RS": {"parser": None, "nota": "VERIFICADO 26/08/2026 — defesacivil.rs.gov.br publica modelo de plano (.doc), sem repositório de planos municipais. Cobertura de RS vem do levantamento declarado do TCE-RS 2025"},
 
     # ---- Sondagem de 24/09/2026 (§195), pedido editorial de estender o canal ----------------
     # SE e ES são as duas UFs com repositório de PLANCONs municipais e parser, e juntas já deram 84
@@ -181,6 +239,11 @@ def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
     for a in achados:
         chave = norm(a["nome"])
         oficial = oficiais.get(chave)
+        if oficial is None:   # o nome do arquivo traz o município e mais ruído: vale o maior nome oficial contido, por palavra inteira
+            dentro = [k for k in oficiais if re.search(rf"\b{re.escape(k)}\b", chave)]
+            junto = chave.replace(" ", "")   # 'TRESPALMEIRAS': espaço comido; só nomes longos, para não casar por acaso
+            dentro = dentro or [k for k in oficiais if len(k) > 9 and k.replace(" ", "") in junto]
+            oficial = oficiais[max(dentro, key=len)] if dentro else None
         if oficial is None:
             # tolerância a erro de grafia do órgão: similaridade alta e ÚNICA
             import difflib
@@ -195,7 +258,11 @@ def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
         if "lat" in oficial and "lon" in oficial:
             a["lat"], a["lon"] = oficial["lat"], oficial["lon"]
         casados.append(a)
-    return casados, orfaos
+    melhor = {}   # dois arquivos do mesmo município: fica o de edição mais recente
+    for a in casados:
+        if a["nome"] not in melhor or a["ano_edicao"] > melhor[a["nome"]]["ano_edicao"]:
+            melhor[a["nome"]] = a
+    return list(melhor.values()), orfaos
 
 
 def carregar_texto(uf: str, fixture: str | None) -> str:
@@ -207,9 +274,23 @@ def carregar_texto(uf: str, fixture: str | None) -> str:
     except ImportError:
         sys.exit("Erro: pacote 'requests' ausente (deveria estar em requirements.txt).")
     url = REPOSITORIOS[uf]["url"]
+    if "carregar" in REPOSITORIOS[uf]:
+        return REPOSITORIOS[uf]["carregar"](url)
     resp = requests.get(url, timeout=30, headers={"User-Agent": ua_de("repositórios estaduais de planos")})
     resp.raise_for_status()
-    return resp.text
+    return html_para_texto(resp.text, url)
+
+
+def html_para_texto(html: str, base: str) -> str:
+    """Os parsers de SE e ES leem texto com link em markdown e célula de tabela entre barras (a captura que
+    os motivou); a página chega em HTML. Sem esta ponte `parse_es` lia 0 instrumentos (22/10/2026)."""
+    from html import unescape
+    from urllib.parse import urljoin
+    html = re.sub(r"(?is)<(script|style)\b.*?</\1>", "", html)
+    html = re.sub(r"(?is)<a\b[^>]*?href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>",
+                  lambda m: "[%s](%s)" % (re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", unescape(m.group(2)))).strip(),
+                                         urljoin(base, unescape(m.group(1)).strip().replace(" ", "%20"))), html)
+    return unescape(re.sub(r"<[^>]+>", " ", re.sub(r"(?i)<t[dh]\b[^>]*>", " | ", html)))
 
 
 def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[dict]:
@@ -220,7 +301,7 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     propostas = []
     for a in achados:
         chave = norm(a["nome"])
-        categoria_proposta = categoria_por_ano(a["ano_edicao"])
+        categoria_proposta = a.get("categoria") or categoria_por_ano(a["ano_edicao"])
         atual = base_uf.get(chave)
         registro_base = {
             "nome": a["nome"], "uf": uf, "categoria": categoria_proposta,
@@ -280,6 +361,33 @@ def autoteste() -> int:
     iguais = diagnosticar("SE", [{"nome": "Poço Redondo", "ano_edicao": 2026,
                                   "rotulo_ano": "2026", "url": "https://y.se.gov.br/p.pdf"}], base)
     casos.append(("plano já registrado com categoria igual não gera proposta", iguais == []))
+    nomes = ["PLANCON - CERRO GRANDE DO SUL.pdf", "PlanCon_MORMAÇO_2025.pdf", "Saldanha Marinho.pdf",
+             "Plano de Contingência Municipal 2025_CachoeiraDoSul.pdf", "BRAGA_PLANCON.pdf",
+             "Plano de Contingencia de Nova Roma do Sul - Versão 1.0.pdf", "ITATI - PLANCON 2025.pdf",
+             "PLANCON - DOIS IRMÃOS.docx", "PLANCON - DOIS IRMÃOS.pdf", "PlanCon CAMPOS BORGES_2025.pdf",
+             "Plano de Contingência - Defesa Civil Farroupilha.docx", "anexo.xlsx"]
+    rs = parse_rs(json.dumps([{"name": n, "webUrl": "https://x/" + n} for n in nomes]))
+    por = {a["nome"]: a for a in rs}
+    casos.append(("RS: xlsx não é plano; um achado por município", len(rs) == 10))
+    casos.append(("RS: ruído do nome sai (PLANCON, plano de contingência, versão, defesa civil)",
+                  {"Cerro Grande Do Sul", "Nova Roma Do Sul", "Farroupilha", "Braga"} <= set(por)))
+    casos.append(("RS: camelCase e underscore viram nome", "Cachoeira Do Sul" in por and "Mormaco" in por))
+    casos.append(("RS: ano do nome vale; sem ano é plano nomeado, edição não lida",
+                  por["Itati"]["ano_edicao"] == 2025 and por["Braga"]["categoria"] == "plano_nomeado"
+                  and por["Braga"]["rotulo_ano"] == "s/d"))
+    casos.append(("RS: PDF vence DOCX do mesmo município", por["Dois Irmaos"]["url"].endswith(".pdf")))
+    ok_ibge, orf = casar_com_ibge([dict(a) for a in rs], "RS", [{"nome": n, "uf": "RS"} for n in
+                                  ["Mormaço", "Cerro Grande do Sul", "Itati"]])
+    casos.append(("RS: nome não casado na malha IBGE volta como órfão, não entra", len(ok_ibge) == 3 and len(orf) == 7))
+    es_html = html_para_texto('<table><tr><td><a href="/media/p.pdf">LINHARES - PLANO DE CONTINGÊNCIA - 2025</a></td></tr></table>',
+                              "https://defesacivil.es.gov.br/planos")
+    se_html = html_para_texto('<li>PLANO DE CONTINGÊNCIA MUNICIPAL DE POÇO REDONDO – EDIÇÃO 2026 <a href="https://s/p.pdf"><b>Clique</b> aqui</a></li>',
+                              "https://defesacivil.se.gov.br/")
+    casos.append(("HTML da página alimenta o parser de ES (link relativo vira absoluto)",
+                  [(a["nome"], a["ano_edicao"], a["url"]) for a in parse_es(es_html)]
+                  == [("Linhares", 2025, "https://defesacivil.es.gov.br/media/p.pdf")]))
+    casos.append(("HTML da página alimenta o parser de SE",
+                  [(a["nome"], a["ano_edicao"]) for a in parse_se(se_html)] == [("Poço Redondo", 2026)]))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'✓' if ok else '✗'} {n}")
