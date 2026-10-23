@@ -28,6 +28,18 @@ Um coletor novo procura, nos diários oficiais municipais, o plano de contingên
 
 `coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
 
+## 2026-10-22 · #955 · A barra do medidor da Saúde vinha de outro número
+
+O preenchedor da reserva estática escrevia o número do MARÉ Saúde e nunca a barra ao lado dele,
+parada em 31,9 contra 24,8; e quatro das nove escritas daquela página caíam em identificadores já
+retirados. Uma função passa a escrever as três cópias do mesmo valor, nos dois medidores. Com isso,
+legenda, ficha do estado e dica do mapa seguem os pesos que o arquivo declara: componente de peso
+zero aparece rotulado, fora da média, nunca como zero por cento.
+
+## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
+
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.
