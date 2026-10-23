@@ -12,6 +12,12 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-23 · #984 · Defesa civil: sexto cartão do topo no instantâneo
 
 O instantâneo `topo_defesa_civil.json` passa a guardar o cartão de decreto sem reconhecimento federal há mais de 30 dias (45 hoje, mesma régua da página) e a variação da semana (quem cruzou os 30 dias). Sem o campo `dias_sem_reconhecimento`, o cartão é sem coleta, nunca zero. Código +17/−0.
+## 2026-10-23 · #961 · Páginas da faixa: ausência declarada onde ficava vazio
+
+A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado deixava no
+ar a do estado anterior. Passou a sair na troca do estado. Sem o arquivo da semana, os seis cartões
+da Imprensa ficavam vazios; agora dizem "sem coleta até o corte", frase que a página já escrevia.
+A data da fonte da aba de fogo vem do registro de preservação, e a palavra "ciclo" sai de duas abas.
 
 ## 2026-10-23 · #964 · Fontes abertas de planos por município
 `buscar_planos_fontes_abertas.py` consulta, por município, LexML, Wayback, Common Crawl e dados.gov.br; achado entra pela porta única e vai ao juiz. Recusa e erro ficam nomeados, nunca viram "sem resultado". O Querido Diário passa a reportar todas as portas que falharam. Alvos das 27 capitais em `data/capitais_alvos.json`.
