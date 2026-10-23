@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #PR · Leitura do texto dos diários com menção a plano de arboviroses
+
+`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
+
 ## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
 
 `casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.
