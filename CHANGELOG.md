@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-23 · Busca de planos: o disparo cria os jobs
 
 `busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.
+## 2026-10-23 · #984 · Defesa civil: sexto cartão do topo no instantâneo
+
+O instantâneo `topo_defesa_civil.json` passa a guardar o cartão de decreto sem reconhecimento federal há mais de 30 dias (45 hoje, mesma régua da página) e a variação da semana (quem cruzou os 30 dias). Sem o campo `dias_sem_reconhecimento`, o cartão é sem coleta, nunca zero. Código +17/−0.
+
 ## 2026-10-23 · #961 · Páginas da faixa: ausência declarada onde ficava vazio
 
 A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado deixava no
