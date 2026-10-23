@@ -4353,6 +4353,8 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **O que passa a valer.** A editoria pôs a Saúde v0.6 e a busca de planos municipais acima das coletas noturnas, contínuas, até ficarem prontas. O regime é o bloco `regime` de `config/temporizadores.json`, com decisão, data, prazo (`ou_data`, 05/11/2026) e a lista de workflows suspensos; `scripts/janela_da_noite.py` o lê, e o despachante e a guarda perguntam a ele. Elo suspenso não é devido, não é refeito pela reserva e para na guarda com motivo.
 
+**A busca de planos em matriz.** `busca_planos.yml` dispara a busca de planos municipais de dia, num ramo `coleta-dia/*`, com um job por grupo de UF (N, NE1, NE2, CO, SE, S; as 27 UFs, cada uma uma vez, lista única em `scripts/expandir_busca_planos.py`). Os comandos são entrada do disparo, não edição do ramo; o acesso é o de sempre (Crawl-delay por host, cliente identificado, recusa respeitada) e o dado chega por um PR de dado só.
+
 **O que não muda.** Os elos de Saúde, desfechos e o publicador seguem na noite. Sem o bloco, ou com `nome: normal`, ou depois de `ou_data`, a noite é a de sempre. Nenhum dado, índice ou texto público muda.
 
 ## 119. MARÉ Saúde v0.6: dois componentes e a camada municipal de peso zero (22/10/2026)
