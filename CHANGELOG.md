@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #1027 · Busca de planos em fontes abertas: a fonte que falha cinco vezes seguidas sai do run
+
+Na rodada dos prioritários o Common Crawl derrubou a conexão em 59 municípios e cada falha custou 2 min de espera; só 149 de 2.095 foram lidos. `buscar_planos_fontes_abertas.py` deixa a fonte de fora após cinco erros seguidos e a retoma na rodada seguinte; as outras fontes seguem.
+
 ## 2026-10-23 · SIM · Primeira leitura dos óbitos por causa
 
 Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (respiratórias, cardiovasculares, renal, desidratação, fumaça, calor), 27 UFs, jan/2019 a ago/2026, pela válvula. Os dois meses mais recentes são parciais; território do arquivo e atraso do registro seguem não verificados. Dado puro, código 0.
