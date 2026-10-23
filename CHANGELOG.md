@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #994 · Os alertas do Cemaden e os avisos do Inmet voltam a ser coletados
+
+O regime de prioridade suspendeu o elo dos sinais físicos, único que reescreve os alertas vigentes. O arquivo passou de 24 horas, a Defesa civil mostrou "sem atualização desde 22/10" e os portões de frescor e de coerência da Imprensa reprovaram a `main`. O elo sai da lista de suspensos e entra na de mantidos: informação de agora não espera a noite.
+
 ## 2026-10-23 · #993 · Espírito Santo: quatro planos do repositório estadual entram como pista
 
 Brejetuba, Domingos Martins, Dores do Rio Preto e Rio Bananal constavam na página da Defesa Civil estadual e não estavam na fila. Entram pela porta única de pistas, para o juiz ler; nenhum crédito antes disso. Dado apenas.

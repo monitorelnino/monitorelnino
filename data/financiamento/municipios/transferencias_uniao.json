@@ -61183,7 +61183,7 @@
     },
     "202605": {
      "constitucional": 113138667.63,
-     "outras": 6923979.7
+     "outras": 8833979.7
     },
     "202606": {
      "constitucional": 120620597.6,
@@ -61205,10 +61205,10 @@
    },
    "por_rota": {
     "constitucional": 828102292.37,
-    "outras": 59809587.26,
+    "outras": 61719587.26,
     "saude": 401790.0
    },
-   "total": 888313669.63
+   "total": 890223669.63
   },
   "2507606": {
    "meses": {
@@ -80043,7 +80043,7 @@
     },
     "202606": {
      "constitucional": 5850567.79,
-     "outras": 551650.08
+     "outras": 1124650.08
     },
     "202607": {
      "constitucional": 3939598.41,
@@ -80060,9 +80060,9 @@
    },
    "por_rota": {
     "constitucional": 40901205.8,
-    "outras": 5945257.72
+    "outras": 6518257.72
    },
-   "total": 46846463.52
+   "total": 47419463.52
   },
   "2800308": {
    "meses": {
@@ -252270,7 +252270,7 @@
    "meses": {
     "202601": {
      "constitucional": 3270966.1,
-     "outras": 153119.52
+     "outras": 274550.08
     },
     "202602": {
      "constitucional": 3827828.48,
@@ -252307,9 +252307,9 @@
    },
    "por_rota": {
     "constitucional": 24782488.72,
-    "outras": 4764648.47
+    "outras": 4886079.03
    },
-   "total": 29547137.19
+   "total": 29668567.75
   },
   "5220686": {
    "meses": {
@@ -253223,13 +253223,13 @@
  },
  "meses_lidos": {
   "202601": {
-   "linhas_municipais": 43987,
-   "soma": 35976505737.38,
+   "linhas_municipais": 43988,
+   "soma": 35976627167.94,
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
    "sem_municipio_na_fonte": 0,
-   "hash_evidencia": "391993a56ec40df8acd82772b8de9ff4c68bd703d7fec7546ac50b81a8ecec8d"
+   "hash_evidencia": "ab9398465608f6b9d8a508ee30fa1dad946ae8126b6f4d496adab77566b70f95"
   },
   "202602": {
    "linhas_municipais": 51243,
@@ -253259,22 +253259,22 @@
    "hash_evidencia": "93d3a53344f3ba16c3a2c1e351e9a893bcc2be70e7777b253bec58ec061a2f61"
   },
   "202605": {
-   "linhas_municipais": 55171,
-   "soma": 37156327601.63,
+   "linhas_municipais": 55172,
+   "soma": 37158237601.63,
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
    "sem_municipio_na_fonte": 0,
-   "hash_evidencia": "6bacec2036465a86b1046fc8bec4c0cdaeeb6ea66a2b4e0d2d28360758f6095f"
+   "hash_evidencia": "36d05f4fc11402c637a32f81852ec3b16f76711f1197c7c61f1e0295295974f5"
   },
   "202606": {
-   "linhas_municipais": 49364,
-   "soma": 37182728928.89,
+   "linhas_municipais": 49365,
+   "soma": 37183301928.89,
    "municipios_casados": 5569,
    "nao_casados": 0,
    "valor_nao_casado": 0,
    "sem_municipio_na_fonte": 1536366.78,
-   "hash_evidencia": "f74e6e7d2454d0b045cdc6ce9d71f052b67d211be3fdcf89a6088e829e654409"
+   "hash_evidencia": "08f21c956edbdf03b2a18edfaa60d338ea0b3b14afdc441026db91455f11216d"
   },
   "202607": {
    "linhas_municipais": 55407,
@@ -253313,7 +253313,7 @@
  },
  "_formato": "Transferências da União a municípios, por mês e por rota, do download de DADOS ABERTOS do Portal da Transparência (sem chave de API: a API exige `chave-api-dados` e chave está proibida neste repositório). Só `TIPO FAVORECIDO = Administração Pública Municipal`. A rota é derivação declarada dos códigos de função e subfunção — constitucional (FPM, cotas, royalties) · saúde (função 10) · assistência social (função 08) · defesa civil (subfunção 182) · outras. Linha municipal SEM MUNICÍPIO identificado na fonte vive em `sem_municipio_na_fonte`, por UF, separada de `nao_casados`: não foi dito e não consegui ler são coisas diferentes. Mês muito abaixo da mediana de linhas dos demais é marcado `parcial`, porque o Portal publica o arquivo do mês e continua enchendo. EMENDA PARLAMENTAR NÃO É IDENTIFICÁVEL nesta fonte e por isso não existe como rota aqui. A chave do arquivo é o código SIAFI e o site é indexado por IBGE: o casamento é por UF e nome normalizado, e o que não casa fica em `nao_casados`, com o valor, nunca descartado. PESO ZERO: nunca lido por recalcular_mare.py nem por gerar_monitor_saude.py.",
  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
- "atualizado_em": "22/10/2026",
+ "atualizado_em": "23/10/2026",
  "rotas": [
   "constitucional",
   "saude",
