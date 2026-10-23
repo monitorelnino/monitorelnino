@@ -9,16 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-10-23 · #1005 · Óbitos por causa básica (SIM)
 
 Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.
 
-=======
 ## 2026-10-23 · #1013 · Defesa civil: o sexto cartão mostra a variação da semana
 
 O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis sem a linha "↑ n na semana", porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova.
->>>>>>> origin/main
+
 ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários
 
 `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.
