@@ -255,7 +255,7 @@
    "comprometimento": "todos",
    "sistema": "SIM",
    "periodicidade": "mensal (preliminar)",
-   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF desde 2019 — sinal precoce sem causa; o painel por causa não está mais no portal (17/10/2026). SIM preliminar com causa básica: arquivos por UF e ano no FTP do DATASUS, defasagem de cerca de 2 meses, provado em 17/10/2026; SIM por causa: coletor `coletar_sim.py` (§122), séries `saude_desfechos/obitos_*.json`, primeira leitura pela válvula ainda não feita. Série na forma comum em `saude_desfechos/obitos.json` (94 meses, jan/2019 a out/2026, Registro Civil, primeira leitura em 19/10/2026).",
+   "fonte_aberta": "Portal da Transparência do Registro Civil (ARPEN/CNJ), API aberta, mensal por UF desde 2019 — sinal precoce sem causa; o painel por causa não está mais no portal (17/10/2026). SIM preliminar com causa básica: arquivos por UF e ano no FTP do DATASUS, defasagem de cerca de 2 meses, provado em 17/10/2026; SIM por causa: coletor `coletar_sim.py` (§122), séries `saude_desfechos/obitos_*.json`, primeira leitura em 23/10/2026 pela válvula: 27 UFs, jan/2019 a ago/2026 (92 meses), sete grupos de causa. Série na forma comum em `saude_desfechos/obitos.json` (94 meses, jan/2019 a out/2026, Registro Civil, primeira leitura em 19/10/2026).",
    "status_coleta": "coletado",
    "arquivo": "obitos_registro_civil.json",
    "rota": {
