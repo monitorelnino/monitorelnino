@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
+`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
+
 ## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
 
 `coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
