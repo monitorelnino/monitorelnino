@@ -5,7 +5,7 @@
  "indices": {
   "edicao": "23/10/2026",
   "mare_legal": 40.2,
-  "mare_saude": 24.8,
+  "mare_saude": 34.7,
   "saude_verificadas": 21,
   "decretaram_no_ciclo": 988
  },
@@ -37,7 +37,7 @@
    "id": "mudaram_faixa",
    "grupo": "preparacao",
    "rotulo": "Estados que mudaram de faixa no MARÉ Legal ou no MARÉ Saúde",
-   "valor": 0,
+   "valor": 11,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "MARÉ, sobre os documentos lidos em cada estado",
@@ -48,7 +48,63 @@
    "variacao": null,
    "nota": "entre as edições de 2026-10-21 e 2026-10-22, nos dois índices",
    "secundaria": null,
-   "lista": [],
+   "lista": [
+    {
+     "uf": "DF",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "GO",
+     "de": "consolidado",
+     "para": "avançado"
+    },
+    {
+     "uf": "MG",
+     "de": "consolidado",
+     "para": "avançado"
+    },
+    {
+     "uf": "MT",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "PB",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "PI",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "PR",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "RJ",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "RO",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "SE",
+     "de": "estágio inicial",
+     "para": "em construção"
+    },
+    {
+     "uf": "SP",
+     "de": "consolidado",
+     "para": "avançado"
+    }
+   ],
    "pagina_de_origem": null,
    "referencia": null,
    "unidade": null
@@ -480,12 +536,11 @@
  ],
  "definicao_dos_indices": {
   "legal": "Cada estado recebe uma nota de 0 a 100, com três partes de mesmo peso: o plano estadual para o risco previsto (vale mais quando feito para este El Niño, menos quando é o plano de todo ano revisado, zero quando não localizamos), a estrutura de coordenação (quem foi designado para conduzir a resposta) e a cobertura (quanta gente do estado vive em município com plano localizado). A nota do Brasil é a média dos estados. Decretos não entram.",
-  "saude": "A mesma escala, para o que a secretaria estadual de saúde publicou: o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), quando ele saiu em relação ao primeiro boletim e quanta gente vive em município cujo plano trata a saúde. A nota nacional é a média dos estados já verificados.",
+  "saude": "A mesma escala, para o que a secretaria estadual de saúde publicou: o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça) e quando ele saiu em relação ao primeiro boletim. A nota nacional é a média dos estados.",
   "saude_partes": [
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)",
-   "quando ele saiu em relação ao primeiro boletim",
-   "quanta gente vive em município cujo plano trata a saúde"
+   "quando ele saiu em relação ao primeiro boletim"
   ]
  },
- "texto_pronto": "Edição de 23/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 24,8 de 100, média dos estados já verificados. Na semana, nenhum município publicou plano para o El Niño e 23 municípios decretaram situação de emergência ou calamidade; 908.590 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 23/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 34,7 de 100. Na semana, nenhum município publicou plano para o El Niño e 23 municípios decretaram situação de emergência ou calamidade; 908.590 pessoas vivem nos municípios que decretaram. 11 estados mudaram de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

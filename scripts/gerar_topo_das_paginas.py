@@ -233,7 +233,7 @@ def definicao_dos_indices(meta: dict, monitor: dict) -> dict:
     if (partes and len(partes) == len(pesos) and len(set(pesos.values())) == 1
             and mesma_escala):
         saude = ("A mesma escala, para o que a secretaria estadual de saúde publicou: "
-                 f"{_lista(partes)}. A nota nacional é a média dos estados já verificados.")
+                 f"{_lista(partes)}. A nota nacional é a média dos estados.")
     return {"legal": legal, "saude": saude, "saude_partes": partes if saude else None}
 
 
@@ -454,7 +454,7 @@ def _autoteste() -> int:
         {"municipios": {"1": {"uf": "SP", "nivel_ultima_se": 3}, "2": {"uf": "RJ", "nivel_ultima_se": 1}}},
         {"calor_excesso": {"data": "2026-09-25",
                            "por_uf": {"PA": {"severo": 4, "extremo": 1}, "MG": {"severo": 0}}}},
-        {"resumo": {"indice_nacional": 24.8, "media_das_verificadas": 38.5, "verificadas": 21,
+        {"resumo": {"indice_nacional": 24.8, "verificadas": 21,
                     "denominador": 27, "ufs_com_plano_localizado": 21},
          "resposta": {"emergencias": 2, "desde": "29/06/2026"}})
     por_id = {c["id"]: c for c in saude}
@@ -480,14 +480,15 @@ def _autoteste() -> int:
     meta = {"definicao_indice": {"componentes": [
         {"nome": n, "peso": "1/3"} for n in PARTES_LEGAL],
         "faixas": [[0, 25, "a"], [25, 50, "b"], [50, 70, "c"], [70, 100, "d"]]}}
-    mon = {"metodo": {"pesos": {"instrumento": 1 / 3, "cobertura": 1 / 3, "antecipacao": 1 / 3},
+    mon = {"metodo": {"pesos": {"instrumento": 0.5, "antecipacao": 0.5},
                       "faixas": {"a": "0–25", "b": "25–50", "c": "50–70", "d": "70–100"}}}
     df = definicao_dos_indices(meta, mon)
     ok("a definição do Legal sai do dado, com três partes de mesmo peso",
        df["legal"].startswith("Cada estado recebe uma nota de 0 a 100, com três partes de mesmo "
                               "peso: o plano estadual") and "versão" not in df["legal"])
-    ok("a definição da Saúde v0.3 diz quando o plano saiu",
-       "quando ele saiu em relação ao primeiro boletim e quanta gente" in df["saude"])
+    ok("a definição da Saúde tem duas partes, e a cobertura fica fora da nota",
+       "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça) e quando ele saiu em relação ao primeiro boletim." in df["saude"]
+       and "quanta gente" not in df["saude"] and "já verificados" not in df["saude"])
     mon["metodo"]["pesos"] = {"instrumento": 1 / 3, "coordenacao": 1 / 3, "cobertura": 1 / 3}
     ok("mudar o componente no dado muda o texto da Saúde",
        "quem coordena a resposta na saúde" in definicao_dos_indices(meta, mon)["saude"]
