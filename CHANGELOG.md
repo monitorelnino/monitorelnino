@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
+`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
+
 ## 2026-10-23 · #973 · Cartão do município corta em palavra inteira; portaria e data dos atos sem cabeçalho
 
 O texto do cartão do município (documento, fonte, título da imprensa) passa a ser cortado na última palavra inteira, com reticências, em vez de no meio dela. Os nove atos de recursos autorizados que vinham sem número e data trazem os dois do título que o DOU põe no endereço do ato; a coleta seguinte faz o mesmo sem duplicar.
