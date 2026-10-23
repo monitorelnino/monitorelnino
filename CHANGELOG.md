@@ -32,6 +32,10 @@ retirados. Uma função passa a escrever as três cópias do mesmo valor, nos do
 legenda, ficha do estado e dica do mapa seguem os pesos que o arquivo declara: componente de peso
 zero aparece rotulado, fora da média, nunca como zero por cento.
 
+## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
+
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
+
 ## 2026-10-22 · #962 · Inicial: o universo de cada número, os quatro canais e duas listas a menos
 
 O medidor de decretos diz agora que o número grande é parcela da população, e a
