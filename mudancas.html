@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>23/10/2026 · Busca de planos: o prazo do disparo chega ao coletor como número</dt>
+      <dd>`busca_planos.yml` passava `inputs.timeout_minutos` ao `_coletor.yml` como texto, e o chamado pede número: o GitHub recusava a matriz sem criar job (runs 39899121167 e 39904333654, só `partir`). `fromJSON` converte; o mesmo disparo com a conversão rodou os seis grupos. Código +1/−1.</dd>
       <dt>23/10/2026 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz</dt>
       <dd>A seção &quot;Como os índices funcionam&quot; descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados &quot;já verificados&quot;. O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.</dd>
       <dt>23/10/2026 · Defesa civil: sexto cartão do topo no instantâneo</dt>
@@ -165,8 +167,6 @@
       <dd>Novo `data/saude_desfechos/malaria.json`: casos confirmados na ficha de malária do SINAN (fora da Amazônia), por UF de residência e mês, 2019–2026, com a lacuna da Amazônia Legal (SIVEP-Malária, sem rota de máquina) declarada no arquivo. Critério conferido contra o resultado do exame. Coletor: `coletar_datasus_dbc.py --desfecho malaria`. Catálogo e METODOLOGIA §108 atualizados.</dd>
       <dt>19/10/2026 · Orientações oficiais: as listas de dengue entram no dado</dt>
       <dd>A página de dengue do Ministério da Saúde chegava só com os cabeçalhos das listas: os itens têm menos de 25 caracteres e eram descartados. O extrator agora leva a lista sob cada cabeçalho; entram seis sintomas, seis sinais de alerta e a conduta de procurar atendimento. O autoteste da união de conflitos deixa de falhar na limpeza do diretório temporário. `.py` +26 −4.</dd>
-      <dt>19/10/2026 · Saúde de Rondônia: o link oficial do plano entra no canal 4</dt>
-      <dd>O endereço oficial do Plano de Adaptação na Saúde de Rondônia (SESAU/RO, resposta de 15/10/2026) entra em `ACRESCIMOS_DE_CANAL4[&quot;RO&quot;]`. Na próxima noite o coletor o consulta, e o julgamento do documento segue o fluxo existente. O endereço não abre da nuvem de trabalho (túnel 403); a verificação fica para o coletor. Linhas líquidas: +2.</dd>
     </dl>
   </section>
 </main>

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #987 · Busca de planos: o prazo do disparo chega ao coletor como número
+
+`busca_planos.yml` passava `inputs.timeout_minutos` ao `_coletor.yml` como texto, e o chamado pede número: o GitHub recusava a matriz sem criar job (runs 39899121167 e 39904333654, só `partir`). `fromJSON` converte; o mesmo disparo com a conversão rodou os seis grupos. Código +1/−1.
+
 ## 2026-10-23 · #986 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz
 
 A seção "Como os índices funcionam" descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados "já verificados". O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.

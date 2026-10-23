@@ -67,7 +67,8 @@ jobs:
     with:
       nome: busca-planos-${{ matrix.grupo }}
       grupo_de_concorrencia: busca-planos-${{ matrix.grupo }}
-      timeout_minutos: ${{ inputs.timeout_minutos }}
+      # `inputs.*` do disparo chega ao chamado como texto; o `number` do `_coletor.yml` pede número (prova: runs 39899121167, 39904333654 sem job; `fromJSON` roda).
+      timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
       comandos: ${{ matrix.comandos }}
     secrets:
