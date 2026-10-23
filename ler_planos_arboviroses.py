@@ -79,7 +79,8 @@ def ler_achado(achado: dict, caminho_de=None) -> dict:
     """A leitura de um achado: lê o texto preservado pelo hash; sem arquivo, lacuna declarada."""
     caminho_de = caminho_de or (lambda h: EVID / f"{h}.txt")
     h = achado.get("hash_evidencia")
-    base = {"hash_evidencia": h, "data_publicacao": achado.get("data_publicacao"), "url": achado.get("url")}
+    base = {"hash_evidencia": h, "data_publicacao": achado.get("data_publicacao"), "url": achado.get("url"),
+            "documento_oficial_confirmado": None, "promovivel": False}   # trava de campo
     p = caminho_de(h) if h else None
     if not p or not p.exists():
         return {**base, "leitura": INDISPONIVEL, "trecho": "", "secoes": 0}
@@ -89,6 +90,9 @@ def ler_achado(achado: dict, caminho_de=None) -> dict:
 
 def rodar() -> int:
     fonte = ler(FONTE, {}) or {}
+    if not fonte.get("municipios"):   # fonte ausente é lacuna: o arquivo anterior fica, nada é gravado
+        print(f"{FONTE} ausente ou vazio: leitura não feita, arquivo anterior mantido")
+        return 0
     saida = {}
     for ibge, m in sorted((fonte.get("municipios") or {}).items()):
         if m.get("achados"):
@@ -132,6 +136,8 @@ def autoteste() -> int:
         "edição sem a passagem: passagem não reencontrada": lambda: leitura(vazio) == SEM_PASSAGEM,
         "trecho tem no máximo 300 caracteres e cita o plano": lambda: 0 < len(classificar(plano)[1]) <= 300
                                                                     and "CONTING" in classificar(plano)[1].upper(),
+        "trava de campo: leitura nasce não confirmada e não promovível":
+            lambda: all(x["documento_oficial_confirmado"] is None and x["promovivel"] is False for x in (sem_arquivo, ler_achado({"hash_evidencia": None}))),
         "sem arquivo preservado: texto integral indisponível, nunca 'sem plano'":
             lambda: sem_arquivo["leitura"] == INDISPONIVEL and sem_arquivo["trecho"] == "",
         "normalização mantém o comprimento (o trecho vem do original)":
