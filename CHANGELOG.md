@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
+
+`casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.
+
 ## 2026-10-23 · #999 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta
 
 `indice-de-conteudo.html` entra na cadeia de `verificar_derivados.sh`: deixa de envelhecer a cada PR de texto. `verificar_catalogo.py` recusa chave de topo de `_renomeacoes.json` fora de `de_para`, que o portão não lê. Código +6/−3.
