@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
       <dd>`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.</dd>
+      <dt>23/10/2026 · Juiz lê os PLANCONs do RS pela sessão do link</dt>
+      <dd>20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.</dd>
       <dt>23/10/2026 · Common Crawl: &quot;No Captures found&quot; é ausência com a consulta registrada</dt>
       <dd>O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.</dd>
       <dt>23/10/2026 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome</dt>
@@ -165,8 +167,6 @@
       <dd>`verificar_paridade_cobertura_qd.py` e `verificar_log_de_buscas.py` passam a regras `paridade_qd` e `log` de `verificar_regras_de_dado.py`; a marca d&#x27;água do log se atualiza com `--marcar-log`. O mês sem data deixa de aparecer truncado como `sem-dat`. Comandos de portão 74→72; linhas líquidas −183; 143 casos de autoteste.</dd>
       <dt>20/10/2026 · Imprensa e âncoras viram regras do executor de dado</dt>
       <dd>Os cartões da semana da Imprensa e a conferência de âncoras internas passam a regras de `verificar_regras_de_dado.py`; dois arquivos saem. Âncora de link externo com fragmento deixa de ser cobrada como arquivo local. Comandos de portão 76→74; linhas líquidas −189; 123 casos de autoteste.</dd>
-      <dt>20/10/2026 · Seis portões do repositório viram um executor</dt>
-      <dd>`verificar_repositorio.py` reúne marcadores de conflito, escrita portável, página arquivada, changelog curto, carimbo da rodada e scripts dos workflows; seis arquivos saem e o `pre-commit` chama o executor. Comandos de portão 80→76; linhas líquidas −425; 95 casos de autoteste e mutantes provados.</dd>
     </dl>
   </section>
 </main>
