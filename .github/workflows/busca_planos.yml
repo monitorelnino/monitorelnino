@@ -60,16 +60,13 @@ jobs:
 
   buscar:
     needs: partir
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.partir.outputs.matriz) }}
     uses: ./.github/workflows/_coletor.yml
     with:
       nome: busca-planos-x
       grupo_de_concorrencia: busca-planos-x
       timeout_minutos: 10
       precisa_searxng: ${{ inputs.precisa_searxng }}
-      comandos: ${{ matrix.comandos }}
+      comandos: expandir_busca_planos.py --autoteste
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
