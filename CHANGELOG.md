@@ -13,7 +13,7 @@ não pontuados permanecem na versão corrente.
 
 `ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
 
-## 2026-10-23 · #1010 · Juiz lê os PLANCONs do RS pela sessão do link
+## 2026-10-23 · #1014 · Juiz lê os PLANCONs do RS pela sessão do link
 
 20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a
 sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a
