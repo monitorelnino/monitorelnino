@@ -48,6 +48,7 @@ FONTES = [  # (família, órgão, URL)
     ("dengue", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/d/dengue"),
     ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2024/dezembro/dengue-conheca-os-sintomas-da-doenca-e-saiba-como-prevenir"),
     ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2025/novembro/dez-dicas-para-eliminar-focos-do-mosquito-da-dengue"),
+    ("chikungunya", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/c/chikungunya"),
 ]
 # A aba de dengue ainda não tem item no catálogo: a página oficial entra com as frases que tratam do que o
 # guia vai orientar (água parada, recipientes, lixo, sintomas, quando procurar atendimento).
@@ -207,7 +208,7 @@ def coletar(buscar=cb.buscar, preservar=cb.preservar_evidencia, ler=cb.ler, grav
         texto = texto_do_pdf(corpo) if pdf else texto_do_html(corpo)
         textos[url] = (familia, texto)
         reg = {"familia": familia, "orgao": orgao, "url": url, "consultado_em": hoje, "hash": h}
-        if familia == "dengue":
+        if familia in ("dengue", "chikungunya"):
             reg["trechos"] = trechos_de_dengue(texto)
         elif familia in ("chuvas", "fogo"):
             reg["trechos"] = trechos_de_orientacao(texto)
