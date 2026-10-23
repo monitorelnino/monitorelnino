@@ -17,6 +17,12 @@ não pontuados permanecem na versão corrente.
 
 `ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
 
+## 2026-10-23 · #1014 · Juiz lê os PLANCONs do RS pela sessão do link
+
+20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a
+sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a
+listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.
+
 ## 2026-10-23 · #1007 · Common Crawl: "No Captures found" é ausência com a consulta registrada
 
 O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.
