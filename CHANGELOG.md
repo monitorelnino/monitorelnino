@@ -13,6 +13,46 @@ não pontuados permanecem na versão corrente.
 
 Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null", a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.
 
+## 2026-10-22 · #969 · Regime de prioridade como configuração
+
+Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
+
+## 2026-10-22 · #959 · MARÉ Saúde: dois componentes e camada municipal de peso zero
+
+O MARÉ Saúde tem dois componentes de metade cada, instrumento estadual e antecipação. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado e fora da média. Índice nacional: 34,7, sobre as 27 UFs. Definição dos índices, release da Imprensa e portão de saúde seguem o mesmo método; METODOLOGIA §119.
+
+## 2026-10-22 · #960 · Planos municipais de arboviroses: coletor nos diários oficiais
+
+Um coletor novo procura, nos diários oficiais municipais, o plano de contingência de dengue, chikungunya e zika de cada município, capitais e maiores primeiro, e guarda o diário por hash. Cada município recebe um estatuto: menção localizada, não localizado até o corte, ou não verificado. Registramos as normas lidas (Minas Gerais, TCE de Santa Catarina). Peso zero: não entra na nota da Saúde.
+
+## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
+
+`atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB); dois CPF de terceiros saem do texto.
+## 2026-10-22 · #957 · Financiamento: a coleta de 12/10 é renovada
+
+`coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
+
+## 2026-10-22 · #955 · A barra do medidor da Saúde vinha de outro número
+
+O preenchedor da reserva estática escrevia o número do MARÉ Saúde e nunca a barra ao lado dele,
+parada em 31,9 contra 24,8; e quatro das nove escritas daquela página caíam em identificadores já
+retirados. Uma função passa a escrever as três cópias do mesmo valor, nos dois medidores. Com isso,
+legenda, ficha do estado e dica do mapa seguem os pesos que o arquivo declara: componente de peso
+zero aparece rotulado, fora da média, nunca como zero por cento.
+
+## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
+
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
+
+## 2026-10-22 · #962 · Inicial: o universo de cada número, os quatro canais e duas listas a menos
+
+O medidor de decretos diz agora que o número grande é parcela da população, e a
+pílula ao lado, parcela dos municípios. O parágrafo das classes municipais ganha, do
+dado, quantos municípios cada canal alcançou e o que "verificação completa" significa.
+Pela raiz: portais e e-mails das Defesas Civis estaduais saem da transcrição à mão e
+vêm de `contatos_uf.json`; os dois mapas de categoria viram um, com `plano_nomeado`
+(47 municípios) e `decreto` (97) cobertos.
+
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
 A lista de estados da página inicial passa a ser lida em ordem alfabética, e não pela nota. Cada cartão continua na mesma posição territorial no mapa — as vinte e sete posições foram medidas antes e depois, idênticas. O que era ordenado pela nota era a ordem de leitura por teclado e por leitor de tela, onde a metodologia não admite posição entre estados.

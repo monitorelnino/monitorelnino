@@ -221,11 +221,10 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 
     # A ORDEM é a da base, depois os acréscimos nossos, depois os deles. Ordem estável mantém o
     # diff legível e faz a união ser a mesma qualquer que seja o lado em que o rebase corre.
-    ordem = [_chave_de_pista(p) for p in lb]
-    ordem += [k for k in (_chave_de_pista(p) for p in ln) if k not in por_chave_base]
-    vistas = set(ordem)
-    ordem += [k for k in (_chave_de_pista(p) for p in ld)
-              if k not in por_chave_base and k not in vistas]
+    # Cada chave entra UMA vez: a identidade da pista é a chave. Com a lista da base inteira, uma
+    # chave repetida emitia a mesma pista mesclada tantas vezes quantas aparecia (22/10/2026:
+    # 20.569 cópias idênticas, 24 MB, e o portão de tamanho vermelho na `main`).
+    ordem = list(dict.fromkeys(_chave_de_pista(p) for p in (*lb, *ln, *ld)))
 
     uniao, mescladas = [], 0
     for k in ordem:
@@ -239,8 +238,9 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
         else:
             uniao.append(nossa if nossa is not None else (delas if delas is not None else na_base))
 
-    if len(uniao) < max(len(ln), len(ld)):
-        raise Recusa(f"a união deu {len(uniao)}, menor que um dos lados ({len(ln)} e {len(ld)}) — "
+    maior_lado = max(len(por_chave_nosso), len(por_chave_deles))
+    if len(uniao) < maior_lado:
+        raise Recusa(f"a união deu {len(uniao)} pistas, menos que um dos lados ({maior_lado}) — "
                      f"recusado")
 
     fundido = dict(deles)
@@ -788,6 +788,14 @@ def autoteste() -> int:
         doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
         checar("fila de pista: a união nunca é menor que o maior dos lados",
                not rec and len(doc["pistas"]) == 3)
+
+    # 22/10/2026: chave repetida na base não se replica na união; a pista fica uma vez.
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, "data/pistas_imprensa.json", _fila(A, A), _fila(A, A, C), _fila(A, A, B))
+        res, reg, rec = resolver(repo=r)
+        doc = json.loads((pathlib.Path(r) / "data/pistas_imprensa.json").read_text(encoding="utf-8"))
+        checar("fila de pista: chave repetida na base sai uma vez, sem replicar",
+               not rec and [x["id"] for x in doc["pistas"]] == ["a1", "c1", "b1"])
 
     # 05/10/2026 - as cinco classes que faltavam, e que pararam a triagem das 18:58.
     checar("JSONL do log de buscas tem classe", e_jsonl_que_so_cresce("data/log_buscas/2026-10.jsonl"))

@@ -319,6 +319,11 @@ def _autoteste() -> int:
     ok("caminho sem histórico não acusa nada",
        quem_commitou_de_fato({"data/novinho.json": {"escritor": "x.yml"}}, lambda c: set()) == [])
 
+    ok("assunto de PR de pessoa não é elo: \"diários\" no título não faz escritor",
+       _workflow_do_assunto("Planos: coletor nos diários oficiais (#960)") == ""
+       and _workflow_do_assunto("diarios automático (22/10/2026 01:12 UTC)") == "noturno_diarios.yml"
+       and _workflow_do_assunto("Publicação automática (22/10/2026 22:49 UTC)") == "publicar_dados.yml")
+
     # ---- a declaração real ----
     real = ler_declaracao()
     ok("config/escritores.json existe e declara arquivos", len(real) >= 10)
@@ -393,6 +398,11 @@ def _commits_de_borda_rasa() -> set:
 def _workflow_do_assunto(assunto: str) -> str:
     """O workflow que escreveu, pelo assunto do commit. Função pura."""
     a = str(assunto or "").lower()
+    # 22/10/2026: só commit de elo é "<elo> automático (…)". Assunto de PR de pessoa que cita
+    # "diários" ("coletor nos diários oficiais (#960)") fazia o portão ver o elo dos diários
+    # escrevendo `data/planos_arboviroses.json` e reprovava a `main`.
+    if "automátic" not in a and "automatic" not in a:
+        return ""
     for marca, wf in (("juiz", "noturno_juiz.yml"), ("evidencias", "noturno_evidencias.yml"),
                       ("evidências", "noturno_evidencias.yml"),
                       ("descoberta", "noturno_descoberta.yml"),
