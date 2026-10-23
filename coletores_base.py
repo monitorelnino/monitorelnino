@@ -33,6 +33,16 @@ LIMITE_EVIDENCIA = 5 * 1024 * 1024  # bytes
 UA = "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; coletor da Pista A)"
 
 
+def sessao_sharepoint(link: str, proposito: str):
+    """Sessão anônima de um link de compartilhamento do SharePoint: o GET do link entrega os cookies, e
+    sem eles a API devolve vazio/401. Cliente identificado; 401/403/429/451 levanta (recusa, sem nova via)."""
+    import requests
+    s = requests.Session()
+    s.headers["User-Agent"] = ua_de(proposito)
+    s.get(link, timeout=30).raise_for_status()
+    return s
+
+
 def ua_de(proposito: str = "") -> str:
     """O cliente do projeto, com o PROPÓSITO desta rotina declarado entre colchetes.
 
