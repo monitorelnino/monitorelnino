@@ -72,7 +72,7 @@ PRIMEIRA_CARGA_DIAS = 30
 # com a mesma expressão não entra — e não é descartado em silêncio: entra em `fora_do_orgao`.
 RE_ORGAO = re.compile(r"Prote[çc][ãa]o e Defesa Civil", re.I)
 # "PORTARIA Nº 3.181, DE 24 DE SETEMBRO DE 2026" — o número com ou sem ponto de milhar.
-RE_PORTARIA = re.compile(r"PORTARIA\s+N[ºo°]?\s*([\d.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-Za-zÇç]+)\s+DE\s+(\d{4})",
+RE_PORTARIA = re.compile(r"PORTARIA\s+N[ºo°]?\.?\s*([\d.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-Za-zÇç]+)\s+DE\s+(\d{4})",
                          re.I)
 # "ao município de Joaíma/MG" — a UF vem junto, com barra, e é isso que permite parear sem adivinhar.
 RE_MUNICIPIO = re.compile(r"munic[íi]pio de\s+([^,/]+?)\s*/\s*([A-Z]{2})\b", re.I)
@@ -138,6 +138,25 @@ def acao_de(texto: str) -> tuple:
     return "outra", achados[0]
 
 
+def titulo_da_url(url: str) -> str:
+    """O título que o DOU põe no endereço do ato ("portaria-n-2.108-de-1-de-julho-de-2026-716723949"),
+    para quando o texto lido não traz o cabeçalho. Função pura."""
+    slug = re.sub(r"-\d+$", "", (url or "").rstrip("/").rsplit("/", 1)[-1])
+    return slug.replace("-", " ")
+
+
+def portaria_e_data(texto: str, url: str = ""):
+    """(número, data) da portaria: do cabeçalho do texto; sem ele, do título no endereço. Função pura."""
+    mp = RE_PORTARIA.search(texto or "")
+    if mp:
+        return mp.group(1), data_do_ato(texto)
+    mp = RE_PORTARIA.search(titulo_da_url(url))
+    if not mp:
+        return None, None
+    n = mp.group(1).replace(".", "")
+    return (f"{int(n):,}".replace(",", ".") if n.isdigit() else mp.group(1)), data_do_ato(titulo_da_url(url))
+
+
 def data_do_ato(texto: str):
     """A data da portaria, do próprio título. Função pura."""
     m = RE_PORTARIA.search(texto or "")
@@ -164,17 +183,16 @@ def ler_ato(texto: str, url: str = "") -> dict:
         return {"motivo": "sem_municipio_legivel"}
     if RE_PRORROGACAO.search(texto or ""):
         return {"motivo": "prorrogacao_de_prazo"}
-    mp = RE_PORTARIA.search(texto or "")
+    portaria, d = portaria_e_data(texto, url)
     chave, rotulo = acao_de(texto)
     valor = valor_de(texto)
     if valor is None:
         return {"motivo": "sem_valor_declarado"}
-    d = data_do_ato(texto)
     sei = RE_SEI.search(texto or "")
     return {
         "municipio": re.sub(r"\s+", " ", mm.group(1)).strip(),
         "uf": mm.group(2).upper(),
-        "portaria": (mp.group(1) if mp else None),
+        "portaria": portaria,
         "data": d.isoformat() if d else None,
         "acao": chave,
         "acao_no_ato": rotulo,
@@ -193,6 +211,12 @@ def fundir(anterior: dict, registros: list, nao_casados: dict, janela: dict,
     silenciosa ao anterior."""
     saida = json.loads(json.dumps(anterior or {}))
     mun = saida.setdefault("municipios", {})
+    for m in mun.values():
+        for a in m.get("atos") or []:
+            if not a.get("portaria") or not a.get("data"):
+                n, d = portaria_e_data("", a.get("url"))
+                a["portaria"] = a.get("portaria") or n
+                a["data"] = a.get("data") or (d.isoformat() if d else None)
     vistos = {(a.get("portaria"), a.get("municipio"), a.get("uf"))
               for m in mun.values() for a in (m.get("atos") or [])}
     novos = 0
@@ -331,7 +355,18 @@ def autoteste() -> int:
     um = fundir({}, [r1], {}, {"desde": "x"}, {})
     dois = fundir(um, [r1, r2], {}, {"desde": "x"}, {})
 
+    sem_cab = ler_ato(FIXTURE.replace("PORTARIA Nº 3.181, DE 24 DE SETEMBRO DE 2026", "SEM CABEÇALHO"),
+                      "https://www.in.gov.br/web/dou/-/portaria-n.-3307-de-29-de-setembro-de-2026-735709410")
+    velho = {"municipios": {"3135605": {"nome": "Joaíma", "uf": "MG", "por_acao": {}, "atos": [
+        {"municipio": "Joaíma", "uf": "MG", "portaria": None, "data": None,
+         "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.108-de-1-de-julho-de-2026-716723949"}]}}}
+    curado = fundir(velho, [], {}, {}, {})["municipios"]["3135605"]["atos"][0]
+
     casos = {
+        "sem cabeçalho no texto, número e data vêm do título no endereço":
+            lambda: sem_cab["portaria"] == "3.307" and sem_cab["data"] == "2026-09-29",
+        "ato antigo sem número ganha número e data do endereço, sem duplicar":
+            lambda: curado["portaria"] == "2.108" and curado["data"] == "2026-07-01",
         "o ato real é lido: município, UF, portaria e data":
             lambda: (lido["municipio"] == "Joaíma" and lido["uf"] == "MG"
                      and lido["portaria"] == "3.181" and lido["data"] == "2026-09-24"),

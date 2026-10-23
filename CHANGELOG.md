@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #973 · Cartão do município corta em palavra inteira; portaria e data dos atos sem cabeçalho
+
+O texto do cartão do município (documento, fonte, título da imprensa) passa a ser cortado na última palavra inteira, com reticências, em vez de no meio dela. Os nove atos de recursos autorizados que vinham sem número e data trazem os dois do título que o DOU põe no endereço do ato; a coleta seguinte faz o mesmo sem duplicar.
+
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
