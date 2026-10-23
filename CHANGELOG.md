@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #1002 · Orientações oficiais: a chikungunya entra na coleta
+
+`coletar_orientacoes_oficiais.py` passa a consultar a página do Ministério da Saúde sobre chikungunya e a guardar os trechos de orientação, como já fazia com a dengue. Sem a página, o registro diz o motivo. Código +2/−1.
+
+## 2026-10-23 · #1001 · Páginas oficiais por hash: trechos de chuva e fogo
+
+A coleta de 23/10 preservou de novo as páginas da Defesa Civil nacional e do Ministério da Saúde: trechos de chuva e fogo preenchidos, nove itens do guia da dengue com frase de fonte. Só dado.
+
 ## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
 
 `casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.
