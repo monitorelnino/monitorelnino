@@ -10,7 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
-## 2026-10-23 · #1001 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome
+## 2026-10-23 · #1003 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome
 
 A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-<nome>`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.
 
