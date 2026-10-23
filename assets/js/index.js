@@ -587,7 +587,8 @@ function selectUF(uf, tileEl){
       const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
       if (!m || m.instrumento === undefined) return '';
       // Vírgula decimal em texto público (A4-16).
-      const numBR = v => (v == null || isNaN(Number(v))) ? '—' : Number(v).toLocaleString('pt-BR', {maximumFractionDigits: 1});
+      const numBR = v => (v == null || isNaN(Number(v))) ? '—'
+        : MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
       return `<div class="field"><div class="k">Componentes (um terço cada)</div><div class="v">instrumento operacional ${numBR(m.instrumento)} · estrutura de coordenação ${numBR(m.estrutura)} · cobertura populacional ${numBR(m.cobertura_pop)}</div></div>`;
     })()}
     ${(function(){ // INDICADOR, não componente: não entra na nota. Vazio quando não há data completa

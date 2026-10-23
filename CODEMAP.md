@@ -84,7 +84,7 @@ Atualizado em 23/10/2026.
 | `coletar_obitos_registro_civil.py` | — | `saude_desfechos/obitos_registro_civil.json` | — | 1 | não |
 | `coletar_orientacoes_oficiais.py` | — | `contatos_uf.json`, `orientacoes_oficiais.json` | — | — | não |
 | `coletar_painel_am.py` | — | `pistas_painel_am.json` | — | — | não |
-| `coletar_planos_arboviroses.py` | — | `pistas_arboviroses.json`, `planos_arboviroses.json` | — | — | não |
+| `coletar_planos_arboviroses.py` | — | `alvos_planos_arboviroses.json`, `pistas_arboviroses.json`, `planos_arboviroses.json` | — | — | não |
 | `coletar_prioritarios_mma.py` | — | `enquadramento_federal.json` | — | — | não |
 | `coletar_recursos_resposta.py` | — | `resposta/recursos_liberados.json` | — | — | não |
 | `coletar_s2id.py` | — | `atos_resposta.json` | — | — | não |

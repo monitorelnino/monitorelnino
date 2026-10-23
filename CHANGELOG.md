@@ -9,13 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-23 · Repositórios estaduais de planos entram como pistas, não como plano direto
+## 2026-10-23 · #976 · Repositórios estaduais de planos entram como pistas, não como plano direto
 
 `atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.
+## 2026-10-22 · #963 · Financiamento: o que falta deixa de dizer "null"
+
+Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam "nº null", a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.
+
+## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
+`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
 
 ## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
 
 `coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
+
+## 2026-10-23 · #972 · A régua do valor pequeno mora no numBR
+
+O número em pt-BR arredondava para casas fixas, e valor medido abaixo de meia unidade da última casa saía como zero. A régua que separa zero de ausência vivia dentro da página da Saúde; passa para a função que todas as páginas usam: abaixo de meia unidade, um dígito significativo. A ficha da inicial e o formatador da Saúde deixam de repetir a decisão. Nenhum número muda com o dado de hoje.
 
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
