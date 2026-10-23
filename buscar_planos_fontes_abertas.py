@@ -22,6 +22,7 @@ Uso:
   python3 buscar_planos_fontes_abertas.py --autoteste
   python3 buscar_planos_fontes_abertas.py --alvos data/capitais_alvos.json [--fontes S16,S25] [--limite N]
 """
+import io
 import json
 import re
 import sys
@@ -75,6 +76,14 @@ def consulta_common_crawl(api: str, dominio: str) -> str:
     q = {"url": f"{dominio}/*", "output": "json", "fl": "url,status,mime",
          "filter": ["=status:200", "url:.*(plancon|placon|contingenc).*"], "limit": 30}
     return api + "?" + urllib.parse.urlencode(q, doseq=True)
+
+
+def sem_capturas(e: Exception) -> bool:
+    """O índice do Common Crawl responde 404 com "No Captures found" quando o domínio não tem captura que
+    case: é resposta (ausência com a consulta registrada), não falha. 404 sem essa frase continua erro."""
+    if not (isinstance(e, urllib.error.HTTPError) and e.code == 404 and e.fp is not None):
+        return False
+    return b"no captures found" in e.read().lower()
 
 
 def ler_common_crawl(corpo: bytes) -> list:
@@ -182,7 +191,14 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
                     r["consulta"] = consulta_wayback(dominio); achados = ler_wayback(buscar(r["consulta"], 60))
                 elif f == "S25":
                     api = api_cc or indice_common_crawl(buscar("https://index.commoncrawl.org/collinfo.json", 30))
-                    r["consulta"] = consulta_common_crawl(api, dominio); achados = ler_common_crawl(buscar(r["consulta"], 60))
+                    r["consulta"] = consulta_common_crawl(api, dominio)
+                    try:
+                        corpo = buscar(r["consulta"], 60)
+                    except urllib.error.HTTPError as e:
+                        if not sem_capturas(e):
+                            raise
+                        corpo = b""
+                    achados = ler_common_crawl(corpo)
                 elif f == "S13":
                     r["consulta"] = consulta_lexml(nome); achados = ler_lexml(buscar(r["consulta"], 60), nome)
                 else:
@@ -296,6 +312,9 @@ def autoteste() -> int:
         "Wayback: só o endereço com plano vira cópia arquivada": lambda: ler_wayback(wb) == [("https://web.archive.org/web/20250101000000/http://x.gov.br/docs/PLANCON-2025.pdf", "Cópia arquivada: http://x.gov.br/docs/PLANCON-2025.pdf")],
         "Wayback: corpo que não é CDX levanta, não vira ausência": lambda: _levanta(ler_wayback, b'[["a","b"]]'),
         "Common Crawl: usa o rastreio mais novo e não repete URL": lambda: indice_common_crawl(base["collinfo"]) == "https://i/c2" and len(ler_common_crawl(cc)) == 1,
+        "Common Crawl: 404 'No Captures found' é sem_resultado; outro 404 é erro": lambda: (
+            um(["S25"], {**base, "i/c2": urllib.error.HTTPError("u", 404, "x", {}, io.BytesIO(b'{"message":"No Captures found for: a/*"}'))})["S25"]["situacao"] == "sem_resultado"
+            and um(["S25"], {**base, "i/c2": urllib.error.HTTPError("u", 404, "x", {}, io.BytesIO(b"nao existe"))})["S25"]["situacao"] == "erro"),
         "LexML: exige o plano e o município no registro": lambda: len(ler_lexml(sru, "Alfa")) == 1 and ler_lexml(sru, "Beta") == [],
         "LexML: XML que não é SRU levanta": lambda: _levanta(lambda c: ler_lexml(c, "Alfa"), b"<html/>"),
         "CKAN: só o conjunto que cita plano e município": lambda: len(ler_ckan(ckan, "Alfa")) == 1,
