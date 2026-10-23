@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-23 · #PR · Busca de planos em fontes abertas: a fonte que falha cinco vezes seguidas sai do run
+## 2026-10-23 · #1027 · Busca de planos em fontes abertas: a fonte que falha cinco vezes seguidas sai do run
 
 Na rodada dos prioritários o Common Crawl derrubou a conexão em 59 municípios e cada falha custou 2 min de espera; só 149 de 2.095 foram lidos. `buscar_planos_fontes_abertas.py` deixa a fonte de fora após cinco erros seguidos e a retoma na rodada seguinte; as outras fontes seguem.
 
