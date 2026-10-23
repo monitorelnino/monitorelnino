@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A seção "Como os índices funcionam" descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados "já verificados". O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.
 
+## 2026-10-23 · #984 · Defesa civil: sexto cartão do topo no instantâneo
+
+O instantâneo `topo_defesa_civil.json` passa a guardar o cartão de decreto sem reconhecimento federal há mais de 30 dias (45 hoje, mesma régua da página) e a variação da semana (quem cruzou os 30 dias). Sem o campo `dias_sem_reconhecimento`, o cartão é sem coleta, nunca zero. Código +17/−0.
+
 ## 2026-10-23 · #961 · Páginas da faixa: ausência declarada onde ficava vazio
 
 A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado deixava no
