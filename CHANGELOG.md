@@ -10,6 +10,14 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-23 · #997 · Renomeações: um bloco só, o que o portão lê
+
+`conteudo/_renomeacoes.json` tinha um segundo bloco no fim, fora de `de_para`, e
+`verificar_catalogo.py` lê só `de_para`. A renomeação da legenda do medidor da Saúde, escrita ali
+ontem, ficava invisível ao portão: pedido de edição que a citasse viraria recusa sem explicação.
+As quatro entradas repetidas do Monitor de riscos saem e a da Saúde entra no bloco lido. Índice de
+conteúdo regenerado.
+
 ## 2026-10-23 · #995 · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde
 
 A resposta "o MARÉ Saúde mede a saúde da população?" ainda contava a cobertura municipal entre o
