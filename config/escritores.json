@@ -195,6 +195,34 @@
   "data/saude_desfechos/internacoes_icsap.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Desfecho do SUS (E1/E2): escrito só pelo elo `noturno_desfechos.yml`, pela função comum `desfechos_sus.gravar_desfecho`; esquema fora da forma vai à quarentena."
+  },
+  "data/saude_desfechos/obitos_sim_total.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/obitos_respiratorias.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/obitos_cardio.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/obitos_renal.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/obitos_desidratacao.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/obitos_fumaca.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/obitos_calor.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."
