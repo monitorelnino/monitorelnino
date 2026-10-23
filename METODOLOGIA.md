@@ -4336,3 +4336,19 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **O que muda para o leitor.** Nada no texto: as séries, a faixa habitual e os cortes do mapa são os mesmos. Muda a data: o dado deixa de depender de coleta manual e passa a chegar na cadência da fonte (SINAN semanal, SISAB e SIH mensais). Fonte que recusar ou mudar de forma deixa lacuna declarada e o arquivo anterior com a sua data.
 
 **O que não muda.** Peso zero no MARÉ; o Monitor não atribui casos ao El Niño.
+
+## 117. Planos municipais de contingência de arboviroses (22/10/2026)
+
+**O que passa a ser coletado.** Todo dia, no elo dos desfechos, o Monitor procura no texto integral dos diários oficiais municipais (acervo do Querido Diário) menção a plano de contingência de dengue, chikungunya ou zika, em até 400 municípios por rodada, retomando de onde parou. A ordem é: capitais, depois alternando o município mais populoso (Censo 2022) e o de mais casos estimados de dengue na última semana lida. Cada menção preserva o diário por hash e entra na fila própria `pistas_arboviroses.json`, pela porta única de pistas.
+
+**Estatuto de cada município** (`data/planos_arboviroses.json`): *menção localizada em diário oficial*; *não localizado até o corte* (município coberto pelo acervo, sem menção desde 01/01/2024); *não verificado* (município sem cobertura no acervo ou consulta que falhou). Menção não é plano lido: o documento só vira plano localizado depois da leitura do texto. Ausência de menção não afirma que o plano não existe, porque prefeituras e secretarias publicam o plano fora do diário.
+
+**A base de cada plano.** Registrada por unidade da federação em `bases`, só com o que foi lido: Minas Gerais, Resolução SES/MG nº 10.440/2025, art. 5º (os municípios elaboram o plano e o mantêm atualizado); Santa Catarina, determinação do TCE-SC publicada em 22/05/2024 (a notícia não cita norma legal); nacional, o Plano de Contingência Nacional para Dengue, Chikungunya e Zika, tratado como orientação programática porque o texto não foi lido. Sem norma lida, o registro diz orientação programática ou norma não localizada; o Monitor não afirma obrigação legal.
+
+**O que não muda.** Peso zero: o arquivo não entra na nota da Saúde nem em índice algum. Acesso recusado (401, 403, 429, 451) encerra a rodada e é respeitado. Rotas por página de prefeitura e de secretaria estadual ficam para quando houver endereço verificado.
+
+## 118. Regime de prioridade da corrente noturna, declarado em configuração (22/10/2026)
+
+**O que passa a valer.** A editoria pôs a Saúde v0.6 e a busca de planos municipais acima das coletas noturnas, contínuas, até ficarem prontas. O regime é o bloco `regime` de `config/temporizadores.json`, com decisão, data, prazo (`ou_data`, 05/11/2026) e a lista de workflows suspensos; `scripts/janela_da_noite.py` o lê, e o despachante e a guarda perguntam a ele. Elo suspenso não é devido, não é refeito pela reserva e para na guarda com motivo.
+
+**O que não muda.** Os elos de Saúde, desfechos e o publicador seguem na noite. Sem o bloco, ou com `nome: normal`, ou depois de `ou_data`, a noite é a de sempre. Nenhum dado, índice ou texto público muda.
