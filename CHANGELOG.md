@@ -26,7 +26,7 @@ Um coletor novo procura, nos diários oficiais municipais, o plano de contingên
 
 ## 2026-10-22 · #966 · Parser da pasta pública de planos de contingência do Rio Grande do Sul
 
-`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS pelo link de compartilhamento (cookies da sessão e REST do SharePoint; a API anônima do OneDrive vinha vazia). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma; sem ano no nome a categoria é plano nomeado. Na listagem real, 484 de 497 municípios casam; 11 órfãos ficam declarados. O juiz classifica.
+`atualizar_instrumentos_estaduais.py` lista, sem login, a pasta pública de PLANCONs da Defesa Civil do RS (cookies da sessão e REST do SharePoint). O nome do arquivo não tem padrão: tira-se o ruído e a malha IBGE confirma. Na listagem real, 484 de 497 municípios casam. A página de SE e ES passa de HTML a texto antes do parser: o ES lia 0 instrumentos e agora propõe os 6 que faltavam. O juiz classifica.
 
 ## 2026-10-21 · #954 · Os estados da página inicial em ordem alfabética
 
