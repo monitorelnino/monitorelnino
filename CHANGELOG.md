@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #989 · Reconhecimento federal: o mesmo ato em dois links da notícia é um ato só
+
+`parse_noticia_midr` lia cada link de portaria da notícia do MIDR, e o mesmo ato aparece em mais de um: o lote de Acrelândia/AC saía "nº 2.659, nº 2.659" e a página do DOU era buscada duas vezes. O parser passa a ignorar o número já lido. Código +1/−0.
+
 ## 2026-10-23 · Busca de planos: o disparo cria os jobs
 
 `busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.
