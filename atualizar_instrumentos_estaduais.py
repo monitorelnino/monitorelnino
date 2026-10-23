@@ -146,11 +146,10 @@ def listar_sharepoint(link: str, pausa: float = 2.0):
     link entrega os cookies da sessão anônima (a API anônima do OneDrive não os usa e devolve 0 filhos), e com
     eles a REST do SharePoint lista cada pasta. Cliente identificado; 401/403/429/451 é recusa e para
     (`raise_for_status`, sem nova via). Rodada na Action, não no sandbox."""
-    import time, requests
+    import time
     from urllib.parse import quote, urlparse
-    s = requests.Session()
-    s.headers["User-Agent"] = ua_de("repositórios estaduais de planos")
-    s.get(link, timeout=30).raise_for_status()
+    from coletores_base import sessao_sharepoint
+    s = sessao_sharepoint(link, "repositórios estaduais de planos")
     host, raiz = "https://" + urlparse(link).netloc, REPOSITORIOS["RS"]["pasta"]
     site, pastas, achados = "/".join(raiz.split("/")[:3]), [raiz], []
     while pastas:

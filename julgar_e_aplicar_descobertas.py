@@ -61,7 +61,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de, hoje_editorial, gravar_em, log_busca
+from coletores_base import ua_de, hoje_editorial, gravar_em, log_busca, sessao_sharepoint
 import juiz
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
@@ -76,15 +76,39 @@ TETO_DA_LEITURA = 600000
 PAGINAS_DA_LEITURA = 300
 
 
+HOST_SHAREPOINT_RS = "//rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/"
+_SESSAO_RS = []
+
+
+def _ler_sharepoint_rs(url, timeout):
+    """Bytes de um arquivo da pasta pública da Casa Militar/RS. O endereço do arquivo não abre sem a
+    sessão do link de compartilhamento (23/10/2026: 20 de 20 pistas do RS saíam `documento_inacessivel`);
+    com ela, a REST do SharePoint entrega o conteúdo, como já entrega a listagem. 401/403 levanta."""
+    from urllib.parse import quote, unquote, urlparse
+    from atualizar_instrumentos_estaduais import REPOSITORIOS
+    if not _SESSAO_RS:
+        _SESSAO_RS.append(sessao_sharepoint(REPOSITORIOS["RS"]["url"], "julgamento de descobertas"))
+    p = urlparse(url)
+    caminho = unquote(p.path).replace("'", "''")
+    site = "/".join(p.path.split("/")[:3])
+    r = _SESSAO_RS[0].get(f"{p.scheme}://{p.netloc}{site}/_api/web/GetFileByServerRelativeUrl('{quote(caminho)}')/$value",
+                          timeout=timeout)
+    r.raise_for_status()
+    return r.content
+
+
 def buscar_texto(url, timeout=20):
     """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
     falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": ua_de("julgamento de descobertas")})
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            raw = resp.read()
-            tipo = (resp.headers.get("Content-Type") or "").lower()
+        if HOST_SHAREPOINT_RS in url:
+            raw, tipo = _ler_sharepoint_rs(url, timeout), ""
+        else:
+            req = urllib.request.Request(url, headers={"User-Agent": ua_de("julgamento de descobertas")})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                raw = resp.read()
+                tipo = (resp.headers.get("Content-Type") or "").lower()
         # 22/09/2026 (§154): diário oficial é PDF — 41/41 pistas do Querido Diário e 24 da busca web eram
         # invisíveis ao juiz, que só lia HTML. pdfplumber já é dependência (coletores de boletim); detecta
         # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
@@ -897,6 +921,23 @@ def self_test():
     do_portao = cadeia_do_portao12()
     assert do_portao and do_portao[-1] == ("scripts/gerar_manifesto.py",), do_portao
     print(f"✓ self-test OK — cadeia de derivados lida do portão 12 ({len(do_portao)} passos)")
+
+    # 23/10/2026: arquivo da pasta do RS lê-se pela REST com a sessão do link, nunca pelo endereço cru.
+    class _R:
+        content = b"%PDF-"
+        def raise_for_status(self): pass
+    class _S:
+        urls = []
+        def get(self, u, timeout=0):
+            self.urls.append(u); return _R()
+    _SESSAO_RS[:] = [_S()]
+    assert _ler_sharepoint_rs("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/"
+                              "Documents/Casa%20Militar/PLANCON%20-%20D'%C3%81VILA.pdf", 5) == b"%PDF-"
+    assert _S.urls[0].startswith("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/_api/web/"
+                                 "GetFileByServerRelativeUrl('/personal/casa-militar_casamilitar_rs_gov_br/Documents/"), _S.urls
+    assert _S.urls[0].endswith(")/$value") and "%27%27" in _S.urls[0], "aspa simples dobra na REST"
+    _SESSAO_RS.clear()
+    print("✓ self-test OK — arquivo do RS lido pela REST com a sessão do link")
 
     # 28/09/2026: o log do aplicador. As 150 linhas da primeira noite saíram sem `strings` e sem
     # `executor` e reprovaram `verificar_consistencia.py`; estas travas provam o esquema e o
