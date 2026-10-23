@@ -1,0 +1,55 @@
+# Válvula de dia: coleta de rede fora da janela da noite, uma por nome, em paralelo.
+#
+# 23/10/2026 (central, 12:15): a válvula era a troca de `comandos` em `recuperar_edicoes_doe.yml`,
+# que roda no grupo `noturno` (job `vez`, um run de cada vez): as faixas a tratavam como exclusiva e
+# paravam com "fila vazia". Aqui os comandos são entrada do disparo e o grupo de concorrência é
+# `dia-<nome>` (fila por nome, nunca cancelamento, nunca o grupo `noturno`), então faixas com nomes
+# diferentes rodam juntas. Cada faixa escreve no próprio ramo `coleta-dia/*`, e o `_coletor.yml`
+# abre o PR de dado ao fim. Sem horário, sem temporizador.
+#
+# Disparo: `gh workflow run coleta_de_dia.yml --ref coleta-dia/AAAA-MM-DD-faixa-tema -f nome=<faixa>
+# -f comandos=$'prazo=280min script.py ...'`, num ramo criado da `main` (o ramo nunca é mesclado, só
+# o PR de dado). Na `main` o `_coletor.yml` só deixa coletar de noite. Para a matriz de planos por
+# grupo de UF, `busca_planos.yml`. Acesso: Crawl-delay por host, cliente identificado, recusa respeitada.
+name: Coleta de dia (válvula, uma por nome)
+
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        description: "Nome curto da coleta (faixa-tema); define a fila `dia-<nome>`"
+        required: true
+        type: string
+      comandos:
+        description: "Um comando por linha, como no `_coletor.yml`"
+        required: true
+        type: string
+      timeout_minutos:
+        description: "Teto do job (máximo 340)"
+        required: false
+        default: 300
+        type: number
+      precisa_searxng:
+        description: "true quando algum comando consulta o metabuscador (busca web)"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read        # o job `vez` do coletor lê a fila de runs
+
+jobs:
+  coletar:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: ${{ inputs.nome }}
+      grupo_de_concorrencia: dia-${{ inputs.nome }}
+      # `fromJSON`: o GitHub entrega o número do disparo como texto à entrada `number` do workflow
+      # chamado (mesma razão de `busca_planos.yml`).
+      timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
+      precisa_searxng: ${{ inputs.precisa_searxng }}
+      comandos: ${{ inputs.comandos }}
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
