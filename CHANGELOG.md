@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O texto do cartão do município (documento, fonte, título da imprensa) passa a ser cortado na última palavra inteira, com reticências, em vez de no meio dela. Os nove atos de recursos autorizados que vinham sem número e data trazem os dois do título que o DOU põe no endereço do ato; a coleta seguinte faz o mesmo sem duplicar.
 
+## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
+
+`coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
+
 ## 2026-10-22 · #969 · Regime de prioridade como configuração
 
 Janela de merge de 24 h e elos suspensos da noite viram o bloco `regime` de `config/temporizadores.json`, lido por `janela_da_noite.py`, pelo despachante e pela guarda. Elo suspenso não é devido nem refeito. Dois vermelhos da `main` saem pela raiz: o portão de escritores tomava título de PR com “diários” pelo elo dos diários, e a instalação do navegador, sem prazo, travava a corrida do medidor; agora tem 240 s.
