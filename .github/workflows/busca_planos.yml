@@ -67,7 +67,7 @@ jobs:
     with:
       nome: busca-planos-${{ matrix.grupo }}
       grupo_de_concorrencia: busca-planos-${{ matrix.grupo }}
-      timeout_minutos: ${{ inputs.timeout_minutos }}
+      timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
       comandos: ${{ matrix.comandos }}
     secrets:
