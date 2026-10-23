@@ -49,8 +49,14 @@
     <dl class="mudancas-lista">
       <dt>23/10/2026 · Óbitos por causa básica (SIM)</dt>
       <dd>Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.</dd>
+      <dt>23/10/2026 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado</dt>
+      <dd>A ficha de cada estado e o perfil do município publicavam &quot;SE 202640&quot;: a sigla que saiu do site em 07/10 e a chave crua da fonte, que ali ainda se confunde com a sigla de Sergipe. Os dois passam a chamar `semanaEmDatas`, que já convertia a semana nas séries; sem o utilitário, a frase sai sem a data. Saem as duas linhas de boletim das figuras do mapa — uma nada escrevia, a outra repetia a legenda. Código −1.</dd>
+      <dt>23/10/2026 · Busca de planos em fontes abertas: um arquivo por UF</dt>
+      <dd>`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/&lt;UF&gt;.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.</dd>
       <dt>23/10/2026 · Defesa civil: o sexto cartão mostra a variação da semana</dt>
-      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
+      <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários</dd>
+      <dt>23/10/2026 · Busca de planos em fontes abertas lê os prioritários</dt>
+      <dd>`buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
       <dd>`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.</dd>
       <dt>23/10/2026 · Juiz lê os PLANCONs do RS pela sessão do link</dt>
@@ -161,12 +167,6 @@
       <dd>RS: 91 edições lidas em 104 datas, de 27/07 a 19/10. RJ: acesso à edição por data provado, 89 edições sem texto extraível seguem para o OCR existente. Dado da válvula de 19/10 unido à `main` pela base comum. Código: 0 linhas.</dd>
       <dt>20/10/2026 · Um só deploy para o domínio</dt>
       <dd>O deploy de produção no domínio estava escrito três vezes: no publicador, na reposição urgente e no ensaio por botão. Agora é `scripts/repor_dominio.sh`, e o ensaio por botão sai, porque o domínio acompanha a `main` desde o #919. Quando e em que modo o domínio é reposto não muda; a reversão para a cortina segue pelo ramo `publico`. Saldo de código: −121 linhas.</dd>
-      <dt>20/10/2026 · Consolidação dos coletores: um lugar só para o que se repetia</dt>
-      <dd>A lista de arquivos do banco que nenhum coletor pode escrever estava copiada em oito arquivos, em duas versões, e cinco deixavam `monitor_saude_v04.json` sem trava. Ela, o contexto TLS, a leitura do fonte para o autoteste, o auxiliar de caso negativo e a identidade da pista passam a viver em `coletores_base.py` e `scripts/pistas.py`. Saldo de código: −102 linhas. Nenhum dado nem texto público muda.</dd>
-      <dt>20/10/2026 · Negativos de painel, saúde e financiamento passam a rodar na CI</dt>
-      <dd>Os testes negativos de `verificar_painel.py`, `verificar_saude.py` e `verificar_financiamento.py` existiam sob `--negativos` e nenhum portão os chamava; dois da saúde apodreceram (as figuras mudaram de id). Passam a `--autoteste`, que `verificar_autotestes_isolados.py` roda, os dois da saúde acham a figura na página e há um positivo que segura o alias do crédito. Linhas líquidas +10.</dd>
-      <dt>20/10/2026 · Cliente identificado vira regra do executor do repositório</dt>
-      <dd>`verificar_cliente_identificado.py` passa a regra `cliente` de `verificar_repositorio.py`, agora com onze casos de autoteste por fonte em memória; três autotestes que o `portoes.yml` repetia (`pistas`, `migrar_sobras_do_doe`, `gerar_codemap`) saem porque `verificar_autotestes_isolados.py` já os roda. Comandos de portão 72→68; linhas líquidas −83.</dd>
     </dl>
   </section>
 </main>
