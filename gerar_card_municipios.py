@@ -46,6 +46,15 @@ def _host(u):
         return ""
 
 
+def _corte(texto, limite):
+    """O texto até `limite` caracteres, cortado na última palavra inteira e com reticências.
+    Corte cego no meio da palavra (\"cobertura populaciona\") era o defeito. Função pura."""
+    s = (texto or "").strip()
+    if len(s) <= limite:
+        return s
+    return s[:limite].rsplit(" ", 1)[0].rstrip(" ,;:.-") + "…"
+
+
 def _data_key(d):
     # "dd/mm/aaaa" → ordenável; ausente vai pro fim
     try:
@@ -77,8 +86,8 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
         if cod is None:
             continue
         c = cards.setdefault(cod, {"nome": r["nome"], "uf": r["uf"], "prioritario": cod in prior})
-        c.update({"categoria": r.get("categoria"), "documento": (r.get("documento") or "")[:220],
-                  "url": r.get("url"), "data": r.get("data"), "fonte": (r.get("fonte") or "")[:120]})
+        c.update({"categoria": r.get("categoria"), "documento": _corte(r.get("documento"), 220),
+                  "url": r.get("url"), "data": r.get("data"), "fonte": _corte(r.get("fonte"), 120)})
         # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta
         # no degrau da leitura, e a ficha diz isso. A marca viaja do registro para o card, que é o
         # que a página lê — sem ela, o leitor veria "plano localizado" sem saber que o ato que o
@@ -99,7 +108,7 @@ def montar(referencia, prioritarios, municipios, pistas, despesa_182=None, verif
         if not cod:
             continue
         c = cards.setdefault(cod, {"nome": p.get("municipio"), "uf": p.get("uf"), "prioritario": cod in prior})
-        c.setdefault("imprensa", []).append({"titulo": (p.get("titulo") or p.get("trecho") or "")[:140].strip(),
+        c.setdefault("imprensa", []).append({"titulo": _corte(p.get("titulo") or p.get("trecho"), 140),
                                              "url": p.get("url"), "data": p.get("data"), "veiculo": _host(p.get("url")),
                                              "nivel": p.get("nivel_confianca")})
     # §207: a linha do dinheiro próprio. Peso zero, e as três classes de ausência viajam como
@@ -195,6 +204,11 @@ def autoteste():
     def t_prioritario_sozinho_entra(): return c["1301803"]["prioritario"] is True and "varredura" in c["1301803"]
     def t_sem_nada_nao_entra(): return "3500001" not in c
 
+    def t_corte_em_palavra_inteira():
+        longo = "cobertura populacional " * 20
+        r = _corte(longo, 220)
+        return len(r) <= 221 and r.endswith("…") and r[:-1].split()[-1] in ("cobertura", "populacional") and _corte("curto", 220) == "curto" and _corte(None, 5) == ""
+
     def t_despesa_182_entra_com_a_ressalva():
         d = c["4301602"]["defesa_civil_orcamento"]
         return (d["rs_hab"] == 1.23 and d["liquidada"] == 100000.0 and d["exercicio"] == 2025
@@ -250,6 +264,7 @@ def autoteste():
         "município varrido sem card ganha card": t_varrido_sem_card_ganha_card,
         "sem varredura no livro segue nao_verificado, sem data": t_sem_varredura_segue_nao_verificado,
         "município sem nada não entra (ausência = nada localizado)": t_sem_nada_nao_entra,
+        "corte do texto em palavra inteira, com reticências": t_corte_em_palavra_inteira,
         "registro no MARÉ + tag prioritário false": t_registro_e_tag,
         "imprensa: só pistas pendentes de nível A/B (C e rejeitadas ficam fora)": t_imprensa_so_A_B_pendentes,
         "imprensa nunca vira categoria (peso zero por construção)": t_imprensa_nao_vira_categoria,

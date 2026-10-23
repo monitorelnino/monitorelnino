@@ -45,6 +45,10 @@ Quatro lugares da página do Financiamento mostravam o campo ausente em vez da l
 ## 2026-10-23 · #974 · Alvos de SC na frente da busca de planos de arboviroses
 `coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código.
 
+## 2026-10-23 · #973 · Cartão do município corta em palavra inteira; portaria e data dos atos sem cabeçalho
+
+O texto do cartão do município (documento, fonte, título da imprensa) passa a ser cortado na última palavra inteira, com reticências, em vez de no meio dela. Os nove atos de recursos autorizados que vinham sem número e data trazem os dois do título que o DOU põe no endereço do ato; a coleta seguinte faz o mesmo sem duplicar.
+
 ## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH
 
 `coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.
