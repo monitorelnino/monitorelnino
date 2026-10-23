@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-23 · #976 · Repositórios estaduais de planos entram como pistas, não como plano direto
 
 `atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.
+## 2026-10-23 · #975 · Busca de planos em matriz por grupo de UF
+
+A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.
+
 ## 2026-10-23 · #977 · Defesa civil: a variação da semana só ao lado do total que ela explica
 
 O instantâneo da variação nasce no publicador, fora da cadeia de derivados, e fica uma rodada atrás do consolidado que dá o número do cartão: em 23/10 o cartão trazia o total de hoje com a variação de ontem, sob a mesma data de atualização no crédito. A variação sai só quando o instantâneo descreve o mesmo total; ausente ou de outro total, o cartão declara a lacuna, com a data do instantâneo.
