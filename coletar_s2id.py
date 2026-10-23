@@ -289,6 +289,7 @@ def parse_noticia_midr(html_txt: str) -> dict:
         numero, dia, mes, ano = m.groups()
         try: data_iso = date(int(ano), MESES[mes.lower()], int(dia)).strftime("%d/%m/%Y")
         except (KeyError, ValueError): continue
+        if any(q["numero"] == numero for q in portarias): continue  # o mesmo ato em mais de um link da notícia é um ato só
         url = re.search(r"https?://[^\s\"']*" + re.escape(m.group(0)), html_txt)
         portarias.append({"numero": numero, "data": data_iso, "url": (url.group(0) if url else "https://www.in.gov.br/web/dou/-" + m.group(0).split("/web/dou/-")[-1])})
     # município/UF: segmentos "A, B e C, na Bahia" / "a cidade de X, no Amazonas" / "X, em Santa Catarina"
