@@ -174,14 +174,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": null,
+   "valor": 0,
    "unidade": null,
-   "sem_coleta": true,
+   "sem_coleta": false,
    "periodo": null,
-   "referencia": "22/10/2026 05:50",
+   "referencia": "23/10/2026 06:28",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "22/10/2026 05:50",
+   "consultado_em": "23/10/2026 06:28",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -194,14 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": null,
+   "valor": 3473,
    "unidade": null,
-   "sem_coleta": true,
+   "sem_coleta": false,
    "periodo": null,
-   "referencia": "22/10/2026 05:50",
+   "referencia": "23/10/2026 06:28",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "22/10/2026 05:50",
+   "consultado_em": "23/10/2026 06:28",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -214,101 +214,93 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 4540,
+   "valor": 8556,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261022.csv",
+   "nota": "Focos do dia — focos_diario_br_20261023.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 2619
+     "valor": 5731
     },
     {
      "uf": "MA",
-     "valor": 771
-    },
-    {
-     "uf": "BA",
-     "valor": 271
-    },
-    {
-     "uf": "MG",
-     "valor": 192
+     "valor": 997
     },
     {
      "uf": "PI",
-     "valor": 192
+     "valor": 447
     },
     {
      "uf": "TO",
-     "valor": 159
+     "valor": 328
     },
     {
-     "uf": "GO",
-     "valor": 154
-    },
-    {
-     "uf": "AP",
-     "valor": 55
+     "uf": "BA",
+     "valor": 289
     },
     {
      "uf": "MT",
-     "valor": 39
+     "valor": 243
     },
     {
-     "uf": "CE",
-     "valor": 36
+     "uf": "AM",
+     "valor": 168
+    },
+    {
+     "uf": "AP",
+     "valor": 138
     },
     {
      "uf": "MS",
-     "valor": 11
+     "valor": 51
+    },
+    {
+     "uf": "MG",
+     "valor": 45
+    },
+    {
+     "uf": "CE",
+     "valor": 34
+    },
+    {
+     "uf": "GO",
+     "valor": 26
+    },
+    {
+     "uf": "RR",
+     "valor": 17
+    },
+    {
+     "uf": "PE",
+     "valor": 12
     },
     {
      "uf": "SP",
-     "valor": 9
-    },
-    {
-     "uf": "AL",
-     "valor": 7
+     "valor": 10
     },
     {
      "uf": "RN",
-     "valor": 7
+     "valor": 8
     },
     {
-     "uf": "RS",
-     "valor": 5
+     "uf": "AL",
+     "valor": 6
     },
     {
      "uf": "PB",
      "valor": 4
     },
     {
-     "uf": "PE",
-     "valor": 4
-    },
-    {
-     "uf": "RR",
+     "uf": "RO",
      "valor": 2
-    },
-    {
-     "uf": "AC",
-     "valor": 1
-    },
-    {
-     "uf": "AM",
-     "valor": 1
-    },
-    {
-     "uf": "PR",
-     "valor": 1
     }
    ],
    "pagina_de_origem": null,
@@ -319,18 +311,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 3.0,
+   "valor": 3.9,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "22/10/2026",
+   "referencia": "23/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "22/10/2026",
+   "consultado_em": "23/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 32.0 °C contra a média de 29.0 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 39.0 °C contra a média de 35.1 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -460,10 +452,7 @@
    "pagina_de_origem": "saude.html"
   }
  ],
- "sem_dado_nesta_edicao": [
-  "Municípios sob alerta do Cemaden",
-  "Municípios sob aviso do Inmet"
- ],
+ "sem_dado_nesta_edicao": [],
  "nao_calculaveis": [
   {
    "id": "planos_localizados_no_periodo",
