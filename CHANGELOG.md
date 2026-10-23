@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · #1006 · Leitura do texto dos diários com menção a plano de arboviroses
+
+`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.
 
 ## 2026-10-23 · #1010 · Juiz lê os PLANCONs do RS pela sessão do link
 
@@ -23,6 +26,14 @@ O índice do Common Crawl responde 404 com essa frase quando o domínio não tem
 ## 2026-10-23 · #1003 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome
 
 A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-<nome>`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.
+
+## 2026-10-23 · #1008 · Orientações oficiais: a chikungunya entra na coleta
+
+`coletar_orientacoes_oficiais.py` passa a consultar a página do Ministério da Saúde sobre chikungunya e a guardar os trechos de orientação, como já fazia com a dengue. Sem a página, o registro diz o motivo. Código +2/−1.
+
+## 2026-10-23 · #1001 · Páginas oficiais por hash: trechos de chuva e fogo
+
+A coleta de 23/10 preservou de novo as páginas da Defesa Civil nacional e do Ministério da Saúde: trechos de chuva e fogo preenchidos, nove itens do guia da dengue com frase de fonte. Só dado.
 
 ## 2026-10-23 · #1000 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial
 
