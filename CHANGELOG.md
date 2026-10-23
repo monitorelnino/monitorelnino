@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O assunto "busca-planos-N automático" era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.
 
+## 2026-10-23 · #1027 · Busca de planos em fontes abertas: a fonte que falha cinco vezes seguidas sai do run
+
+Na rodada dos prioritários o Common Crawl derrubou a conexão em 59 municípios e cada falha custou 2 min de espera; só 149 de 2.095 foram lidos. `buscar_planos_fontes_abertas.py` deixa a fonte de fora após cinco erros seguidos e a retoma na rodada seguinte; as outras fontes seguem.
+
 ## 2026-10-23 · SIM · Primeira leitura dos óbitos por causa
 
 Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (respiratórias, cardiovasculares, renal, desidratação, fumaça, calor), 27 UFs, jan/2019 a ago/2026, pela válvula. Os dois meses mais recentes são parciais; território do arquivo e atraso do registro seguem não verificados. Dado puro, código 0.
@@ -20,7 +24,6 @@ Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (
 ## 2026-10-23 · #1021 · Orientações oficiais: item do guia confere também contra os passos emendados
 
 O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.
-
 
 ## 2026-10-23 · #1005 · Óbitos por causa básica (SIM)
 
@@ -45,7 +48,6 @@ O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis
 ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários
 
 ## 2026-10-23 · #1012 · Busca de planos em fontes abertas lê os prioritários
-
 
 `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.
 
@@ -125,6 +127,7 @@ Rodada de dia pela válvula (coleta-dia): `internacoes_saude_mental.json` e `int
 ## 2026-10-23 · Busca de planos: o disparo cria os jobs
 
 `busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.
+
 ## 2026-10-23 · #986 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz
 
 A seção "Como os índices funcionam" descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados "já verificados". O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.
@@ -154,6 +157,7 @@ As colunas "Estados" e "Fenômeno" da tabela de avisos do Inmet saíam em traves
 ## 2026-10-23 · #976 · Repositórios estaduais de planos entram como pistas, não como plano direto
 
 `atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.
+
 ## 2026-10-23 · #975 · Busca de planos em matriz por grupo de UF
 
 A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.
@@ -196,6 +200,7 @@ Um coletor novo procura, nos diários oficiais municipais, o plano de contingên
 ## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
 `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB); dois CPF de terceiros saem do texto.
+
 ## 2026-10-22 · #957 · Financiamento: a coleta de 12/10 é renovada
 
 `coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
@@ -434,6 +439,7 @@ Consolidação, item 6. A regra de disparo (dado, página) estava copiada em tr�
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
+
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
@@ -444,6 +450,7 @@ O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF 
 ## 2026-10-19 · #886 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota
 
 Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida.
+
 ## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
 
 A aba de calor dizia "consultado em 01/10/2026", data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.
@@ -459,6 +466,7 @@ O Rio de Janeiro passa a ter rota de leitura: a página de cadernos da data e o 
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
 O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
+
 ## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
 
 A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
@@ -501,6 +509,7 @@ A linha de emergência passa a trazer só o ato do município, com a data dele e
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
+
 ## 2026-10-19 · #858 · Financiamento: o dinheiro por risco, onde chega e o mês a mês
 
 Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.
@@ -535,6 +544,7 @@ Saem a frase sobre a data do dado, o "previsão, não observação", o parágraf
 ## 2026-10-19 · #852 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação
 
 Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão "Resposta" dos números e a figura "O que foi localizado em cada estado", que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.
+
 ## 2026-10-19 · #862 · Fila de pistas: recusada pelo juiz também perde o texto de trabalho
 
 A pista recusada só volta ao juiz quando o codebook muda, e ele relê o documento pelo endereço. A compactação da triagem passa a cobri-la, junto com as encerradas: 4.549 pistas, `pistas_imprensa.json` de 46,8 para 41,6 MiB (teto 50). A decisão do juiz fica. Histórico no git.
