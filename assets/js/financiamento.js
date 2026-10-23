@@ -95,7 +95,7 @@ function __init(){
   // ---------------------------------------------------------
   const mps = (MPS && MPS.mps) || [];
   const comp = ((COMPROMISSOS && COMPROMISSOS.itens) || []).filter(i => !PLANO_FEDERAL.test(i.nome || ''));
-  const riscoDe = o => (o.risco_declarado && (o.risco_declarado.risco || o.risco_declarado)) || null;
+  const riscoDe = o => (o.risco_declarado && o.risco_declarado.risco) || null;
   /* Os números do topo vêm prontos do gerador (`semana.json` → `topo`): uma definição só, a mesma que a
      Imprensa lê. Cartão ausente ou sem coleta fica com a lacuna da classe. */
   const topo = id => (((S && S.topo) || []).find(c => c.id === id) || null);
@@ -126,6 +126,12 @@ function __init(){
   [['topoAnunciadoFonte', anunciado], ['topoPagoFonte', pago], ['topoDiretoFonte', direto], ['topoDefesaCivilFonte', dcTopo], ['topoSusFonte', sus]]
     .forEach(([id, c]) => cred(id, [(c && c.fonte) || FONTE_TRANSP], S && S.corte));
   const tpa = (dcTopo && dcTopo.por_acao) || null;
+  /* Nove dos 89 atos do consolidado (22/10) chegam sem número e sem data: o documento tem link no DOU,
+     o que falta é o número lido dele. Uma função para a coluna e para o cartão, nunca "nº null". */
+  const atoNum = a => a.portaria ? 'nº ' + a.portaria : 'sem número localizado até o corte';
+  /* O repasse do FNS é soma de meses, não ato de um dia: onde a coluna pede data, o período responde;
+     sem o mês do gerador, a classe é a lacuna, nunca "jan–undefined". */
+  const PERIODO_FNS = mesDe((sus || {}).ultimo_mes) ? 'jan–' + mesDe((sus || {}).ultimo_mes) + '/2026' : NAO_LOCALIZADO;
 
   // =========================================================
   // 2. Para cada risco, de onde vem o dinheiro
@@ -138,9 +144,10 @@ function __init(){
     + '</span></div>';
   const colunas = document.getElementById('colunasRisco');
   /* Coluna vazia tem DUAS causas, e elas não são a mesma coisa: ou o gerador ainda não escreveu
-     `risco_declarado` em ato nenhum (não coletado), ou escreveu e nenhum ato declara este risco.
+     `risco_declarado` em ato nenhum (não coletado), ou escreveu e nenhum ato declara este risco. A
+     pergunta é pelo CAMPO: ato lido com `risco: null` declara que não declara, e isso é coleta feita.
      A conta é sobre os ATOS: o risco do FNS é a linha de repasse, não declaração em ato. */
-  const riscoColetado = mps.concat(comp).some(o => riscoDe(o) != null);
+  const riscoColetado = mps.concat(comp).some(o => o.risco_declarado != null);
   if (colunas) colunas.innerHTML = RISCOS.map(r => {
     const fontes = origens.filter(o => o.risco === r.chave);
     const corR = r.chave === 'saude' ? P.setores.saude : P.familia[r.chave];
@@ -157,7 +164,7 @@ function __init(){
     + (tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(ACOES[k].toLowerCase() + ', autorizado', tpa[k], P.resposta)).join('') + '</div>'
            : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>');
   const corpo = document.querySelector('#tblOrigens tbody');
-  if (corpo) corpo.innerHTML = origens.map(o => '<tr>' + [esc(o.nome), esc(o.ato || ''), esc(o.data || ''), esc(o.orgao || ''),
+  if (corpo) corpo.innerHTML = origens.map(o => '<tr>' + [esc(o.nome), esc(o.ato || ''), esc(o.data || NAO_LOCALIZADO), esc(o.orgao || ''),
       esc((RISCOS.find(r => r.chave === o.risco) || {}).rotulo || 'risco não declarado no ato'),
       esc(reais(o.anunciado) || NAO_LOCALIZADO), esc(reais(o.empenhado) || NAO_LOCALIZADO), esc(reais(o.pago) || NAO_LOCALIZADO),
       link(o.url, o.fonte || 'fonte')].map(c => '<td>' + c + '</td>').join('') + '</tr>').join('');
@@ -182,7 +189,7 @@ function __init(){
   if (sus && sus.ultimo_mes) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: mesDe(sus.ultimo_mes)});
   cred('boxChega', [FONTE_DC, 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
   tabela('boxChega', ['Município', 'UF', 'Origem', 'Ato', 'Data', 'Valor'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
-    .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), link(x.url, x.ato || ''), esc(MonitorMapas.dataBR(x.data) || ''), esc(reais(x.valor))]));
+    .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), link(x.url, x.ato || ''), esc(MonitorMapas.dataBR(x.data) || (x.origem === 'saude' ? PERIODO_FNS : NAO_LOCALIZADO)), esc(reais(x.valor))]));
 
   // =========================================================
   // 4. Mês a mês: só o pago, fogo e seca
@@ -193,7 +200,7 @@ function __init(){
      dizer "fogo" e "seca" por id de MP seria classificação nossa, e as colunas acima dizem, com
      razão, que essa classificação ainda não foi coletada. */
   const SERIES_MES = ((S && S.mes_a_mes) || []).map((m, i) => {
-    const fam = m.risco_declarado && (m.risco_declarado.risco || m.risco_declarado);
+    const fam = riscoDe(m);
     return {numero: m.numero, rotulo: fam || m.tema, cor: P.familia[fam] || P.serie[i % P.serie.length],
       meses: Object.fromEntries((m.meses || []).map(x => [x.mes, x]))};
   });
@@ -205,7 +212,9 @@ function __init(){
     data: {labels: meses.map(rotMes), datasets: SERIES_MES.map(s => ({label: s.rotulo, backgroundColor: s.cor,
       data: meses.map(k => pagoMes(s, k) == null ? null : Math.round(pagoMes(s, k) / 1e5) / 10)}))},
     options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true}}}});
-  MonitorMapas.legenda('legMesAMes', SERIES_MES.map(s => ({cor: s.cor, rotulo: s.rotulo + ' · ' + s.numero})));
+  /* Série nenhuma é o mesmo fato que figura sem legenda: a classe sai em palavras, como em `legChega`. */
+  MonitorMapas.legenda('legMesAMes', SERIES_MES.length ? SERIES_MES.map(s => ({cor: s.cor, rotulo: s.rotulo + ' · ' + s.numero}))
+    : [{cor: cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
   cred('boxMesAMes', [FONTE_TRANSP, 'execução da despesa'], S && S.corte);
   tabela('boxMesAMes', ['Mês'].concat(SERIES_MES.map(s => s.rotulo + ' · ' + s.numero)),
     meses.map(k => [esc(rotMes(k) + ' de ' + k.slice(0, 4))].concat(SERIES_MES.map(s => esc(reais(pagoMes(s, k)) || NAO_LOCALIZADO)))));
@@ -224,15 +233,14 @@ function __init(){
     const cod = MUN_COD[uf + '|' + nome];
     const dc = ((RECURSOS && RECURSOS.municipios) || {})[cod];
     const corpoDc = dc ? linhaT(esc(reais(dc.total_autorizado)), (dc.atos || []).map(a => esc(ACOES[a.acao] || a.acao_no_ato || '') + ' · '
-        + link(a.url, 'Portaria nº ' + a.portaria) + ', de ' + esc(MonitorMapas.dataBR(a.data) || '')).join('<br>'))
+        + link(a.url, 'Portaria ' + atoNum(a)) + (MonitorMapas.dataBR(a.data) ? ', de ' + esc(MonitorMapas.dataBR(a.data)) : '')).join('<br>'))
       : linhaT(esc(lacuna(RECURSOS && RECURSOS.atualizado_em)));
     const fm = ((FNS_MUN && FNS_MUN.municipios) || {})[cod];
     /* Três estados, não dois: arquivo não carregado, município fora do arquivo (o FNS cobre 5.533
        dos 5.571) e município no arquivo com `emergencia` zero, que é zero medido. */
-    const janAte = 'jan–' + esc(mesDe((sus || {}).ultimo_mes)) + '/2026';
     const corpoSus = !FNS_MUN || !fm ? linhaT(esc(lacuna(FNS_MUN && FNS_MUN.atualizado_em)))
-      : fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), janAte)
-      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), janAte);
+      : fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), esc(PERIODO_FNS))
+      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), esc(PERIODO_FNS));
     const t = ((TRANSF && TRANSF.municipios) || {})[cod];
     const mesesT = Object.keys((TRANSF && TRANSF.meses_lidos) || {}).sort();
     const corpoT = t ? linhaT(esc(reais(t.total)), Object.entries(t.por_rota || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => esc((ROTAS[k] || k) + ' ' + reais(v))).join(' · ')
@@ -295,7 +303,7 @@ function __init(){
   tabela('boxAcoes', ['Município', 'UF', 'Portaria', 'Data', 'Ação', 'Valor autorizado'],
     Object.values((RECURSOS && RECURSOS.municipios) || {}).flatMap(m => (m.atos || []).map(a => ({m: m, a: a})))
       .sort((x, y) => String(y.a.data).localeCompare(String(x.a.data)))
-      .map(({m, a}) => ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), link(a.url, 'nº ' + a.portaria), esc(MonitorMapas.dataBR(a.data) || ''), esc(ACOES[a.acao] || a.acao_no_ato || ''), esc(reais(a.valor_autorizado) || NAO_LOCALIZADO)]));
+      .map(({m, a}) => ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), link(a.url, atoNum(a)), esc(MonitorMapas.dataBR(a.data) || NAO_LOCALIZADO), esc(ACOES[a.acao] || a.acao_no_ato || ''), esc(reais(a.valor_autorizado) || NAO_LOCALIZADO)]));
 
   /* Pendência: reconhecido pela União há mais de 30 dias e sem portaria de recurso localizada. */
   const ref = paraISO(corteDec);

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>22/10/2026 · Financiamento: o que falta deixa de dizer &quot;null&quot;</dt>
+      <dd>Quatro lugares da página do Financiamento mostravam o campo ausente em vez da lacuna: a legenda e a tabela do gráfico mês a mês escreviam um objeto cru, nove linhas de portaria escreviam &quot;nº null&quot;, a coluna de data ficava vazia em 78 células e, sem o arquivo da semana, a figura ficava sem legenda. O rótulo do risco sai do que o ato declara; número, data, período e classe saem das palavras que a página já usa.</dd>
       <dt>23/10/2026 · Alvos de SC na frente da busca de planos de arboviroses</dt>
       <dd>`coletar_planos_arboviroses.py` consulta primeiro, depois das capitais, os 82 municípios que o TCE-SC determinou (@RLI 24/00395645) a elaborar plano de contingência da dengue. A lista é entrada em `data/alvos_planos_arboviroses.json`, com fonte. É alvo de busca, não prova de plano. Linhas líquidas: +4 de código. ## 2026-10-22 · Internações por saúde mental (F00 a F99) e por ICSAP, no coletor do SIH `coletar_sih.py` ganha dois grupos: saúde mental e a Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Mês só conta como lido quando todos os grupos o têm, então o elo relê o histórico (estimativa: cinco noites). ICSAP é um piso. Escritores declarados, METODOLOGIA §120. Código +57/−13.</dd>
       <dt>23/10/2026 · A régua do valor pequeno mora no numBR</dt>
@@ -165,8 +167,6 @@
       <dd>O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF lista os diários da data e serve o PDF do DODF (2,7 MB em 19/10), enquanto o endereço próprio do diário não responde ao coletor. Quem lê é o coletor de edições, no mesmo caminho das outras UFs. Código: `coletar_doe.py` +86 (adaptador novo, recurso novo, com autoteste offline).</dd>
       <dt>19/10/2026 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota</dt>
       <dd>Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida.</dd>
-      <dt>19/10/2026 · Proteja-se: a data da fonte do guia vem do registro preservado</dt>
-      <dd>A aba de calor dizia &quot;consultado em 01/10/2026&quot;, data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.</dd>
     </dl>
   </section>
 </main>
