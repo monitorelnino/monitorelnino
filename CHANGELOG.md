@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · SIM · Primeira leitura dos óbitos por causa
+
+Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (respiratórias, cardiovasculares, renal, desidratação, fumaça, calor), 27 UFs, jan/2019 a ago/2026, pela válvula. Os dois meses mais recentes são parciais; território do arquivo e atraso do registro seguem não verificados. Dado puro, código 0.
+
 ## 2026-10-23 · #1005 · Óbitos por causa básica (SIM)
 
 Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.
