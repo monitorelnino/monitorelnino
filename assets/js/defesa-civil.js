@@ -106,7 +106,7 @@ function __init(totalMunicipios){
   }
   const horas = horasDesde(carimbo);
   const alertasVelhos = !(ALERTAS && ALERTAS.municipios) || horas === null || horas > LIMITE_ALERTA_HORAS;
-  const semAtualizacao = 'Sem atualização desde ' + (carimbo || 'a última coleta registrada');
+  const semAtualizacao = marca => 'Sem atualização desde ' + (marca || 'a última coleta registrada');
   const alertasDe = cod => (!alertasVelhos && ALERTAS.municipios[cod]) || {inmet: [], cemaden: []};
 
   // ---------------------------------------------------------
@@ -136,18 +136,23 @@ function __init(totalMunicipios){
   // 1. Números do topo
   // =========================================================
   /* A variação da semana vem do instantâneo `resposta/topo_defesa_civil.json` (uma definição só, no
-     gerador; a Imprensa lê o mesmo). Sem instantâneo, o cartão fica sem variação. */
-  const variacaoDe = id => { const c = ((TOPO && TOPO.cartoes) || []).find(x => x.id === id) || {}; return c.variacao === undefined ? null : c.variacao; };
-  function variacao(id, valor){
+     gerador; a Imprensa lê o mesmo). O instantâneo nasce no publicador, fora da cadeia de derivados,
+     e fica uma rodada atrás do consolidado que dá o número do cartão (medido em 23/10/2026:
+     instantâneo de 22/10, consolidado de 23/10). Por isso a variação só sai ao lado do total que ela
+     explica: instantâneo ausente, sem a variação, ou de outro total é a lacuna que os cartões de
+     alerta já declaram, com a data do próprio instantâneo. */
+  function variacao(id, cartaoId, atual){
     const e = document.getElementById(id);
-    if (!e || valor === null || valor === undefined) return;
-    e.innerHTML = (valor > 0 ? '↑' : (valor < 0 ? '↓' : '=')) + ' ' + Math.abs(valor).toLocaleString('pt-BR')
+    if (!e) return;
+    const c = ((TOPO && TOPO.cartoes) || []).find(x => x.id === cartaoId) || {};
+    if (c.variacao === undefined || atual == null || c.valor !== atual) { e.textContent = semAtualizacao(TOPO && TOPO.gerado_em); return; }
+    e.innerHTML = (c.variacao > 0 ? '↑' : (c.variacao < 0 ? '↓' : '=')) + ' ' + Math.abs(c.variacao).toLocaleString('pt-BR')
       + ' na semana<span class="sr-only"> em relação à semana anterior</span>';
   }
   const cred = (id, fontes, data) => MonitorMapas.credito(id, {fontes: fontes, data: data});
   const rAl = (ALERTAS && ALERTAS.resumo) || {};
   if (alertasVelhos) {
-    texto('topoInmet', semAtualizacao); texto('topoCemaden', semAtualizacao);
+    texto('topoInmet', semAtualizacao(carimbo)); texto('topoCemaden', semAtualizacao(carimbo));
   } else {
     texto('topoInmet', nCartao(rAl.municipios_inmet));
     texto('topoCemaden', nCartao(rAl.municipios_cemaden));
@@ -177,9 +182,10 @@ function __init(totalMunicipios){
     texto('topoDecretaram', nCartao(decretados.length));
     texto('topoReconhecidos', nCartao(reconhecidos.length));
   }
-  variacao('topoDecretaramVariacao', variacaoDe('municipios_decretaram'));
-  variacao('topoReconhecidosVariacao', variacaoDe('reconhecidos_pelo_governo_federal'));
-  variacao('topoPopulacaoVariacao', variacaoDe('populacao_sob_decreto'));
+  const lido = DECRETADOS && DECRETADOS.municipios;
+  variacao('topoDecretaramVariacao', 'municipios_decretaram', lido ? decretados.length : null);
+  variacao('topoReconhecidosVariacao', 'reconhecidos_pelo_governo_federal', lido ? reconhecidos.length : null);
+  variacao('topoPopulacaoVariacao', 'populacao_sob_decreto', N.pop_sob_decreto);
   cred('topoDecretaramFonte', [FONTE_DECRETO], corteDecretos);
   cred('topoReconhecidosFonte', [FONTE_DECRETO], corteDecretos);
   /* O sexto cartão: decreto há mais de 30 dias sem reconhecimento (19/10/2026, ajuste 4). A
@@ -207,7 +213,7 @@ function __init(totalMunicipios){
     const cod = MUN_COD[uf + '|' + nome], a = alertasDe(cod), m = POR_COD[cod];
     const avisos = (a.cemaden || []).map(x => linhaT('Alerta do Cemaden · ' + esc(x.tipo || 'tipo não declarado') + ' · ' + esc(String(x.nivel || 'nível não declarado').toLowerCase()), x.inicio ? 'Emitido em ' + esc(horaBR(x.inicio)) : ''))
       .concat((a.inmet || []).map(x => linhaT('Aviso do Inmet · ' + esc(x.tipo || 'tipo não declarado') + ' · ' + esc(String(x.severidade || '').toLowerCase()), x.fim ? 'Válido até ' + esc(horaBR(x.fim)) : '')));
-    const corpoAviso = alertasVelhos ? linhaT(esc(semAtualizacao)) : (avisos.join('') || linhaT(esc(lacunaDe(carimbo))));
+    const corpoAviso = alertasVelhos ? linhaT(esc(semAtualizacao(carimbo))) : (avisos.join('') || linhaT(esc(lacunaDe(carimbo))));
     let corpoDecreto, corpoRec;
     if (m) {
       /* 19/10/2026 (ajuste 6.2): a página separa o que VIMOS do que o reconhecimento pressupõe. Em 722
