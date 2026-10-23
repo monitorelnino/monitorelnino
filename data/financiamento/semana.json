@@ -33,11 +33,11 @@
    "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias",
    "sem_coleta": false,
    "municipios_semana": 0,
-   "valor_ciclo": 180108650.33,
-   "municipios_ciclo": 61,
+   "valor_ciclo": 206846654.29,
+   "municipios_ciclo": 69,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 159208689.67,
+    "recuperacao": 185946693.63,
     "resposta": 7021172.66
    },
    "desde": "29/06/2026"
@@ -89,17 +89,17 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 180108650.33,
+   "valor": 206846654.29,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "61 municípios",
+   "detalhe": "69 municípios",
    "sem_coleta": false,
-   "municipios": 61,
+   "municipios": 69,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 159208689.67,
+    "recuperacao": 185946693.63,
     "resposta": 7021172.66
    }
   },
@@ -251,6 +251,45 @@
    "uf": "MA"
   },
   {
+   "ibge": "2101608",
+   "origem": "defesa_civil",
+   "valor": 4039949.12,
+   "ato": "Portaria 3.307",
+   "data": "2026-09-29",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n.-3307-de-29-de-setembro-de-2026-735709410",
+   "n_atos": 1,
+   "lat": -5.49682,
+   "lon": -45.2485,
+   "nome": "Barra do Corda",
+   "uf": "MA"
+  },
+  {
+   "ibge": "2103307",
+   "origem": "defesa_civil",
+   "valor": 4785161.8,
+   "ato": "Portaria 2.162",
+   "data": "2026-07-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.162-de-1-de-julho-de-2026-716713794",
+   "n_atos": 1,
+   "lat": -4.45562,
+   "lon": -43.8924,
+   "nome": "Codó",
+   "uf": "MA"
+  },
+  {
+   "ibge": "2104800",
+   "origem": "defesa_civil",
+   "valor": 10249855.96,
+   "ato": "Portaria 2.845",
+   "data": "2026-09-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.845-de-1-de-setembro-de-2026-729949545",
+   "n_atos": 1,
+   "lat": -5.81367,
+   "lon": -46.1462,
+   "nome": "Grajaú",
+   "uf": "MA"
+  },
+  {
    "ibge": "2106904",
    "origem": "defesa_civil",
    "valor": 1244094.4,
@@ -370,11 +409,11 @@
   {
    "ibge": "3121902",
    "origem": "defesa_civil",
-   "valor": 1576050.38,
+   "valor": 2639923.0,
    "ato": "Portaria 2.967",
    "data": "2026-09-09",
    "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.967-de-9-de-setembro-de-2026-731361841",
-   "n_atos": 1,
+   "n_atos": 2,
    "lat": -20.9917,
    "lon": -43.0003,
    "nome": "Divinésia",
@@ -472,6 +511,19 @@
    "uf": "MG"
   },
   {
+   "ibge": "3152808",
+   "origem": "defesa_civil",
+   "valor": 547936.3,
+   "ato": "Portaria 2.841",
+   "data": "2026-09-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.841-de-1-de-setembro-de-2026-729859856",
+   "n_atos": 1,
+   "lat": -19.3086,
+   "lon": -48.9276,
+   "nome": "Prata",
+   "uf": "MG"
+  },
+  {
    "ibge": "3154002",
    "origem": "defesa_civil",
    "valor": 519899.0,
@@ -495,6 +547,19 @@
    "lat": -15.3168,
    "lon": -42.0213,
    "nome": "São João do Paraíso",
+   "uf": "MG"
+  },
+  {
+   "ibge": "3167707",
+   "origem": "defesa_civil",
+   "valor": 1705816.82,
+   "ato": "Portaria 2.156",
+   "data": "2026-07-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.156-de-1-de-julho-de-2026-716692368",
+   "n_atos": 1,
+   "lat": -19.2345,
+   "lon": -42.0998,
+   "nome": "Sobrália",
    "uf": "MG"
   },
   {
@@ -654,6 +719,19 @@
    "uf": "RS"
   },
   {
+   "ibge": "4304713",
+   "origem": "defesa_civil",
+   "valor": 3079756.0,
+   "ato": "Portaria 2.111",
+   "data": "2026-07-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.111-de-1-de-julho-de-2026-716695184",
+   "n_atos": 1,
+   "lat": -29.7869,
+   "lon": -50.4316,
+   "nome": "Caraá",
+   "uf": "RS"
+  },
+  {
    "ibge": "4305587",
    "origem": "defesa_civil",
    "valor": 1019011.81,
@@ -755,6 +833,19 @@
    "lat": -28.9282,
    "lon": -52.1258,
    "nome": "Ilópolis",
+   "uf": "RS"
+  },
+  {
+   "ibge": "4310751",
+   "origem": "defesa_civil",
+   "valor": 313700.0,
+   "ato": "Portaria 2.108",
+   "data": "2026-07-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.108-de-1-de-julho-de-2026-716723949",
+   "n_atos": 1,
+   "lat": -29.5232,
+   "lon": -53.5842,
+   "nome": "Ivorá",
    "uf": "RS"
   },
   {
@@ -872,6 +963,19 @@
    "lat": -29.6868,
    "lon": -53.8149,
    "nome": "Santa Maria",
+   "uf": "RS"
+  },
+  {
+   "ibge": "4319711",
+   "origem": "defesa_civil",
+   "valor": 951955.34,
+   "ato": "Portaria 2.846",
+   "data": "2026-09-01",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.846-de-1-de-setembro-de-2026-729862765",
+   "n_atos": 1,
+   "lat": -29.0451,
+   "lon": -51.7684,
+   "nome": "São Valentim do Sul",
    "uf": "RS"
   },
   {
