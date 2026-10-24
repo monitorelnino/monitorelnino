@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-17 a 2026-10-24 (993 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-17 a 2026-10-24 (999 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-22 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-23 01:42 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-24 11:11 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-24 13:26 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-24 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -55,7 +55,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-22 · por canal: we
 | `coletar_obitos.py` | coletor | 2026-10-23 01:09 | 4 s | — | ok | — |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-10-23 01:42 | 40 s | — | ok | — |
 | `coletar_orientacoes_oficiais.py` | coletor | 2026-10-19 18:05 | 25 s | 6 | ok | — |
-| `coletar_planos_arboviroses.py` | coletor | 2026-10-24 04:20 | 1192 s | — | ok | — |
+| `coletar_planos_arboviroses.py` | coletor | 2026-10-24 09:51 | 1071 s | — | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-10-18 03:52 | 4 s | — | ok | — |
 | `coletar_recursos_resposta.py` | coletor | 2026-10-22 03:20 | 89 s | — | ok | — |
 | `coletar_s2id.py` | coletor | 2026-10-22 03:00 | 1229 s | — | ok | — |

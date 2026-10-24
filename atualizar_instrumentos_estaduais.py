@@ -52,7 +52,7 @@ ANO_LIMIAR_VIGENTE = 2024  # edição >= este ano => "plano"; menor => "plano_an
 
 def norm(s: str) -> str:
     """Normaliza nome de município (minúsculas, sem acento, sem pontuação) para comparação robusta contra a base IBGE."""
-    return unicodedata.normalize("NFD", s.upper()).encode("ascii", "ignore").decode()
+    return unicodedata.normalize("NFD", s.upper()).encode("ascii", "ignore").decode().replace("-", " ")  # 'Não-Me-Toque' = 'Nao Me Toque'
 
 
 def categoria_por_ano(ano: int) -> str:
@@ -121,7 +121,7 @@ def parse_rs(texto: str):
     resto é o candidato a município, que `casar_com_ibge` confirma ou devolve como órfão. Sem ano no nome,
     a categoria é `plano_nomeado` (existe, edição não lida); o juiz lê o documento. Por município vale o ano
     mais recente; PDF antes de DOCX."""
-    ruido = re.compile(r"PLANO DE CONTING\w*(?: DE\b)?|PLAN ?CON\b|DEFESA CIVIL|MUNICIPAL|VERSAO\s*[\d.]+|\bRASCUNHO\b|\bCOMDEC\b")
+    ruido = re.compile(r"PLANO DE CONTING\w*(?: DE\b)?|PLAN ?CON\b|DEFESA CIVIL|MUNICIPAL|VERSAO\s*[\d.]+|\bRASCUNHO\b|\bCOMDEC\b|\bATUALIZAD[OA]\b|\bOUTUBRO\b")
     melhor = {}
     for it in json.loads(texto):
         nome_arq, ext = it["name"].rsplit(".", 1) if "." in it["name"] else (it["name"], "")
@@ -409,6 +409,10 @@ def autoteste() -> int:
     ok_ibge, orf = casar_com_ibge([dict(a) for a in rs], "RS", [{"nome": n, "uf": "RS"} for n in
                                   ["Mormaço", "Cerro Grande do Sul", "Itati"]])
     casos.append(("RS: nome não casado na malha IBGE volta como órfão, não entra", len(ok_ibge) == 3 and len(orf) == 7))
+    rs2 = parse_rs(json.dumps([{"name": n, "webUrl": "https://x/" + n} for n in
+                               ["Plano de Contingência Municipal 2025_NãoMeToque.pdf", "plano_de_contingencia_Santana do Livramento_atualizado_.pdf"]]))
+    ok2, _ = casar_com_ibge(rs2, "RS", [{"nome": n, "uf": "RS"} for n in ["Não-Me-Toque", "Santana do Livramento"]])
+    casos.append(("RS: hífen do nome oficial e 'atualizado' no arquivo não geram órfão", len(ok2) == 2))
     es_html = html_para_texto('<table><tr><td><a href="/media/p.pdf">LINHARES - PLANO DE CONTINGÊNCIA - 2025</a></td></tr></table>',
                               "https://defesacivil.es.gov.br/planos")
     se_html = html_para_texto('<li>PLANO DE CONTINGÊNCIA MUNICIPAL DE POÇO REDONDO – EDIÇÃO 2026 <a href="https://s/p.pdf"><b>Clique</b> aqui</a></li>',
