@@ -81,14 +81,10 @@ def coordenacao_pontos(f1: str, f2: str, agregacao: str = "aritmetica", pesos=No
     return round(total, 1), p1, p2
 
 
-def coordenacao_da_uf(co: dict, lido: dict = None) -> dict:
-    """Bloco `coordenacao` da UF. Função pura. Peso zero até a v0.8. `co` é o que `saude_uf.json` guarda; `lido` é
-    o que a rotina da coordenação grava em `saude_desfechos/coordenacao_uf.json` (f1/f2 com status e documento
-    lido) e vale, função a função, sobre `co`."""
+def coordenacao_da_uf(co: dict) -> dict:
+    """Bloco `coordenacao` da UF a partir do que `saude_uf.json` guarda (crédito do juiz, com documento lido). Função
+    pura. Peso zero até a v0.8."""
     f1o, f2o = co.get("f1") or (co if co.get("status") else {}), co.get("f2") or {}   # forma antiga: um status só = F1
-    l1, l2 = (lido or {}).get("f1") or {}, (lido or {}).get("f2") or {}
-    f1o = l1 if l1.get("status") in F1_SCORE and l1.get("doc") else f1o
-    f2o = l2 if l2.get("status") in F2_SCORE and l2.get("doc") else f2o
     f1, f2 = f1o.get("status") or "NAO_VERIFICADO", f2o.get("status") or "NAO_VERIFICADO"
     pontos, p1, p2 = coordenacao_pontos(f1, f2)
     def funcao(o, status, p, citada):
@@ -237,7 +233,6 @@ def gerar() -> int:
     pop_uf = {}
     for m in (ler("municipios_ibge_referencia.json", []) or []):
         pop_uf[m["uf"]] = pop_uf.get(m["uf"], 0) + float(pop_censo.get(f"{int(m['codigo_ibge']):07d}", 0) or 0)
-    coord_lida = (ler("saude_desfechos/coordenacao_uf.json", {}) or {}).get("uf") or {}
     ufs = {}
     for uf in UFS:
         u = (su.get("uf") or {}).get(uf, {})
@@ -255,7 +250,7 @@ def gerar() -> int:
             "cobertura": {"peso": 0, "cobertura_pct": cob[uf]["cobertura"], "pop_coberta": cob[uf]["pop_coberta"],
                           "planos_lidos": cob[uf]["planos_lidos"], "planos_sem_leitura": cob[uf]["planos_sem_leitura"]},
             "tempo": {"peso": 0, "boletim_1": BOLETIM_1, "dias_apos_boletim_1": dias_apos_boletim_1(st, melhor.get("data") or "", camada)},
-            "coordenacao": coordenacao_da_uf(u.get("coordenacao") or {}, coord_lida.get(uf)),
+            "coordenacao": coordenacao_da_uf(u.get("coordenacao") or {}),
             "c_uf": c_uf(uf), "populacao": int(pop_uf.get(uf, 0)),
             "camada": camada,
             "risco_atual": {"dengue_capital_nivel": deng.get("nivel"), "dengue_capital": deng.get("municipio"), "dengue_se": deng.get("se"),
