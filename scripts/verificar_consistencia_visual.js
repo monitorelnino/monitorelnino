@@ -11,7 +11,7 @@
  *   (5) numeração visível de figura não começa em 1 ou não é sequencial;
  *   (6) há rolagem horizontal.
  * Uso: node scripts/verificar_consistencia_visual.js [--relatorio]  (imprime o inventário completo). */
-const { chromium } = require("playwright"); const http = require("http"), fs = require("fs"), path = require("path");
+const { chromium } = require("playwright"); const fs = require("fs"), path = require("path");
 const RAIZ = path.join(__dirname, "..");
 const PAGINAS = fs.readdirSync(RAIZ).filter(f => f.endsWith(".html")).sort();
 const LARGURAS = [1366, 900, 390];
@@ -46,10 +46,7 @@ const PROPS = ["fontSize", "fontWeight", "lineHeight", "letterSpacing", "fontFam
 // prosa: o espaçamento é do contêiner (último parágrafo sem margem, utilitários de ritmo), por isso compara só a tipografia
 const SO_TIPOGRAFIA = new Set(["corpo (parágrafo de painel)", "apoio (.hint)", "nota (.note)", "versalete (.selo)", "célula de tabela"]);
 const PROPS_TIPO = ["fontSize", "fontWeight", "lineHeight", "letterSpacing", "fontFamily", "textTransform"];
-const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".xml": "application/xml", ".png": "image/png", ".pdf": "application/pdf", ".md": "text/markdown" };
-const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.url.split("?")[0]); const f = path.join(RAIZ, u === "/" ? "index.html" : u);
-  if (!f.startsWith(RAIZ) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); }
-  res.writeHead(200, { "Content-Type": MIME[path.extname(f)] || "application/octet-stream" }); fs.createReadStream(f).pipe(res); });
+const srv = require("./_servidor.js")(RAIZ);
 
 (async () => {
   await new Promise(r => srv.listen(0, "127.0.0.1", r)); const porta = srv.address().port; const falhas = []; const inventario = {};
