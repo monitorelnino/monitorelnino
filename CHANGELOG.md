@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-24 · #1091 · Monitor de riscos sem a ponte; rodapé e formulário ajustados · Site
 
-Saem a ponte para a metodologia e a oração "se completa na quinta"; a leitura semanal fica só com a semana. Ciclo em curso nos dois gráficos do Pacífico em laranja avermelhado. Aberturas aprovadas do Monitor de riscos e da inicial. Rodapé: "Atualização · Corte · Coleta · Publicação" vem do catálogo. Formulário: observações em linha inteira.
+Na Situação atual saem o parágrafo de resumo e a linha "primeira leitura" do cartão do ar. Saem a ponte para a metodologia e a oração "se completa na quinta"; a leitura semanal fica só com a semana. Ciclo em curso nos dois gráficos do Pacífico em laranja avermelhado. Aberturas aprovadas do Monitor de riscos e da inicial. Rodapé: "Atualização · Corte · Coleta · Publicação" vem do catálogo. Formulário: observações em linha inteira.
 
 ## 2026-10-24 · #1090 · Rodapé novo em todas as páginas · Site
 

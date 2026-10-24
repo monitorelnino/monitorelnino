@@ -772,11 +772,6 @@ function põeCat(elId, id, valores, reserva){
   const u = serie.length ? serie[serie.length - 1] : null;
   const fonte = k => (SINAIS.fontes || {})[k] || {};
 
-  // 1 — a frase de abertura. A segunda oração só aparece quando o dado trouxer a data em que a
-  // NOAA/CPC passou a manter o alerta; hoje ele não a traz, e a frase não a inventa.
-  const alerta = (SINAIS.enos.prognostico || {}).alerta_desde;
-  if (alerta) põeCat('stResumo', I + 'abertura.molde_com_alerta', {desde: alerta});
-
   // 2 — o RONI mais recente, e a variação para a média móvel ANTERIOR: a série anda de mês em
   // mês, então o trimestre anterior a jul–set é jun–ago, e não jan–mar.
   if (u) {
@@ -816,24 +811,6 @@ function põeCat(elId, id, valores, reserva){
   // sinopse é a que ela descreve. Sem "Hemisfério Norte": o período em meses diz o mesmo fato.
   // A data da próxima discussão SAIU: uma data já passada aparecia como futura (09/10, "a próxima
   // sai em 08/10/2026"), e a página não tem como saber se a seguinte já saiu.
-  const pg = SINAIS.enos.prognostico;
-  if (pg && pg.probabilidade != null) {
-    const sinopse = String(pg.sinopse || '').toLowerCase();
-    const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
-    const f = fonte('cpc_ensodisc');
-    // 19/10/2026 (editoria): a frase do prognóstico SAIU do cartão e entrou no texto da seção. No
-    // cartão ela ocupava seis linhas e era o que deixava a grade desigual; e, sendo leitura de
-    // probabilidade, é interpretação — que por regra vive no texto narrativo, não no cartão.
-    const apoio = txtCat(I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
-      {limiar: pg.limiar === 'acima de' ? 'acima de' : 'de', probabilidade: pg.probabilidade,
-       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em}, null);
-    const resumo = document.getElementById('stResumo');
-    if (apoio && resumo) {
-      resumo.textContent = resumo.textContent.trim() + ' ' + apoio;
-      resumo.setAttribute('data-conteudo-fixado', '1');
-    }
-  }
-
   // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
   // mapas abaixo. Só descrição: valor, data e órgão. Variação só com leitura anterior gravada —
   // fogo, seca, calor e avisos ainda não a gravam, e o cartão não a inventa.
@@ -889,10 +866,9 @@ function põeCat(elId, id, valores, reserva){
       // portão de texto público reprova. "Ruim ou mais alto" é a mesma régua do cartão da seca.
       + '<p class="cartao-numero-rotulo" id="stArRotulo"></p>'
       + '<p class="cartao-numero-valor" id="stArValor"></p>'
-      + '<p class="cartao-numero-variacao" id="stArApoio"></p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
+      + '<p class="cartao-numero-fonte" id="stArFonte"></p></div>');
     põeCat('stArRotulo', I + (diaMes(ult) ? 'ar.molde_rotulo' : 'ar.rotulo'), {data: diaMes(ult)});
     põeCat('stArValor', I + 'ar.molde_valor', {n: ruins.length});
-    põeCat('stArApoio', I + 'ar.apoio');
     MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr', hora(ult) ? 'medição de ' + hora(ult) : ''].filter(Boolean),
       data: (fontesAr.monitorar || {}).consultado_em});
   }
