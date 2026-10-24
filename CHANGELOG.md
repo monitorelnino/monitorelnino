@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · RS no canal do repositório estadual · Juiz
+
+A pasta de PLANCONs da Casa Militar/RS passa a dar a autoridade do plano sem ato, como o repositório do ES e o de SE: o juiz já não exige domínio do município para documento do repositório estadual declarado. SharePoint fora da pasta continua recusado. Pesos e créditos do índice não mudam.
+
 ## 2026-10-24 · #1042 · Busca de planos: a fonte sai do run pelo saldo de erros, não só por erros seguidos
 
 Causa: o contador zerava a cada acerto, e o Common Crawl, que errou 113 de 154 consultas em 23/10, nunca chegava ao teto de cinco seguidos; cada erro custa dois minutos do run. Agora o erro soma um e qualquer outra situação tira um. Só código (+9/−2); nenhum dado muda.
