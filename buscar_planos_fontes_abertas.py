@@ -244,6 +244,14 @@ def buscar_pausado(url: str, timeout: int) -> bytes:
     return com_espera(uma, url, timeout)
 
 
+ERROS_SEGUIDOS = 5   # a fonte que falha tantas vezes seguidas fica de fora do resto do run (cada falha custa 2 min de espera)
+
+
+def fontes_vivas(fontes: list, seguidos: dict) -> list:
+    """Fontes ainda consultáveis neste run; o que ficou de fora não é gravado e volta na próxima rodada. Pura."""
+    return [f for f in fontes if seguidos.get(f, 0) < ERROS_SEGUIDOS]
+
+
 def feito_hoje(feitos: dict, cod: str, fontes: list, hoje: str) -> bool:
     m = feitos["municipios"].get(cod, {})
     return all(m.get(f, {}).get("consultado_em") == hoje and m[f].get("situacao") != "erro" for f in fontes)
@@ -265,12 +273,17 @@ def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int
     for u in ufs:
         feitos["municipios"].update(ler(f"{PASTA}/{u}.json", {}).get("municipios", {}))
     fila = selecionar_fila(doc, por_cod, uf, feitos, fontes, hoje)
-    pistas, lidos, tocadas = [], 0, set()
+    pistas, lidos, tocadas, seguidos = [], 0, set(), {}
     try:
         for cod in fila[:limite] if limite else fila:
             ref = por_cod[cod]
-            res = consultar_municipio(ref["nome"], ref["uf"], cod, fontes, buscar_pausado, hoje, lacunas=registrar_lacuna)
+            vivas = fontes_vivas(fontes, seguidos)
+            if not vivas:
+                print(f"[fontes] todas fora do ar depois de {ERROS_SEGUIDOS} erros seguidos; encerrando o run.")
+                break
+            res = consultar_municipio(ref["nome"], ref["uf"], cod, vivas, buscar_pausado, hoje, lacunas=registrar_lacuna)
             for f, r in res.items():
+                seguidos[f] = seguidos.get(f, 0) + 1 if r["situacao"] == "erro" else 0
                 pistas.extend(r.pop("pistas"))
                 feitos["municipios"].setdefault(cod, {})[f] = {"consultado_em": hoje, **r}
             lidos += 1
@@ -357,6 +370,7 @@ def autoteste() -> int:
             {"1": {"uf": "AC"}, "2": {"uf": "AC"}, "3": {"uf": "AL"}}, {"municipios": {}}) and
             selecionar_fila({"fila": ["1", "2"]}, {"1": {"uf": "AC"}, "2": {"uf": "AC"}}, None,
                             {"municipios": {"1": {"S16": {"consultado_em": "d"}}}}, ["S16"], "d") == ["2"],
+        "disjuntor: fonte com erros seguidos sai do run, as outras seguem": lambda: fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS}) == ["S16"] and fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS - 1}) == ["S16", "S25"],
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,
     }
     return rodar_autoteste(testes)
