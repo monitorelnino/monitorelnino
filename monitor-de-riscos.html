@@ -179,18 +179,21 @@
       <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_chuva">Chuva forte</p>
       <p class="boletim-preve" id="preveChuva"></p>
     </div>
-    <div class="grade-figuras grade-figuras--2">
-      <figure class="figura figura--tabela cartao-mapa" id="boxAvisos">
-        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos de tempo severo em vigor</h3>
-        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Por grau do aviso · municípios cobertos · INMET</p>
-        <div class="figura-midia" id="midiaAvisos"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Avisos por grau"><table class="mun-table" id="tblAvisos"><thead><tr><th>Grau</th><th>Municípios</th><th>Estados</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div></div>
-        <p class="figura-nota" id="avisosRodape"></p>
-      </figure>
-      <figure class="figura figura--tabela cartao-mapa" id="boxCemaden">
-        <h3 class="figura-titulo" id="tituloCemaden" data-conteudo="monitor-de-riscos.cemaden.titulo">Alertas do Cemaden vigentes</h3>
-        <p class="figura-sub" id="cemadenSub" data-conteudo="monitor-de-riscos.cemaden.sub">Por nível do alerta · estado · municípios nomeados pelo Cemaden</p>
-        <div class="figura-midia" id="midiaCemaden"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div></div>
-        <p class="figura-nota" id="cemadenRodape"></p>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa figura--dupla cartao-mapa" id="boxAvisos">
+        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos do INMET e alertas do Cemaden em vigor</h3>
+        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Um ponto por município, na cor do maior grau de aviso do INMET · alerta do Cemaden em círculo vazado</p>
+        <div class="figura-midia" id="midiaAvisos">
+          <div class="mapa-dupla"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil com um ponto por município sob aviso do INMET, na cor do maior grau do aviso, e círculo vazado nos municípios sob alerta do Cemaden" viewBox="0 0 480 460"></svg></div>
+          <div class="lado-dados" id="avisosLado">
+            <p class="figura-nota lado-rotulo" data-conteudo="monitor-de-riscos.avisos.escada_rotulo">Municípios por maior grau do aviso do INMET</p>
+            <ul class="escada" id="avisosEscada"></ul>
+            <p class="figura-nota" id="avisosSem"></p>
+            <p class="figura-nota lado-rotulo" data-conteudo="monitor-de-riscos.cemaden.rotulo">Alertas do Cemaden por nível e estado</p>
+            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div>
+          </div>
+        </div>
+        <div class="map-legend" id="legAvisos"></div>
       </figure>
     </div>
 

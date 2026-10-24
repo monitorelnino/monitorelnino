@@ -583,63 +583,59 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const d = document.querySelector('#boxFogo .fonte-figura'); if (d) d.dataset.credito = 'inpe_fogo';
 })();
 
-// ---- Chuva forte (16/10/2026, HANDOVER_MONITOR_DE_RISCOS §4): duas tabelas, sem mapa por estado ----
-/* Avisos do INMET por grau, com os MUNICÍPIOS cobertos (do índice por município do coletor) e os
-   alertas do CEMADEN por nível, com os municípios nomeados. Grau e nível no vocabulário do órgão.
-   Fonte que não respondeu = lacuna; resposta válida sem aviso tem texto próprio. */
+// ---- Chuva forte (24/10/2026, editoria): um cartão só, com mapa por município ----
+/* Um ponto por município sob aviso do INMET, na cor do MAIOR grau (um município pode ter mais de
+   um aviso); o alerta do CEMADEN entra como círculo vazado. A posição vem do cadastro de municípios
+   que a página já carrega para a consulta. Fonte que não respondeu = lacuna. */
 (function chuvaForte(){
   const GRAUS = ['Grande Perigo', 'Perigo', 'Perigo Potencial'];
+  const COR_GRAU = MonitorMapas.PALETA.grauAviso;
   const fmt = n => Number(n).toLocaleString('pt-BR');
-  const muns = Object.values((AVISOS || {}).municipios || {});
-  const lacunaEm = (tbl, midia, txt) => { const c = document.querySelector('#' + tbl);
-    if (c) c.closest('.tbl-wrap').remove(); lacuna(midia, txt); };
-  const creditoDe = (caixa, chave) => { const f = fonteDe(chave);
-    MonitorMapas.credito(caixa, {fontes: [f.orgao, f.nome].filter(Boolean).join(' · '), url: f.url_publica,
-      data: AVISOS ? AVISOS.gerado_em : f.consultado_em});
-    const d = document.querySelector('#' + caixa + ' .fonte-figura'); if (d) d.dataset.credito = chave; };
-  if (!AVISOS || !coletada('inmet_avisos')) {
-    lacunaEm('tblAvisos', 'midiaAvisos', 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso em vigor.');
-  } else {
-    const linhas = GRAUS.map(g => {
-      const com = muns.filter(m => (m.inmet || []).some(x => x.severidade === g));
-      const ufs = [...new Set(com.map(m => m.uf))].sort();
-      const fen = [...new Set(com.flatMap(m => m.inmet.filter(x => x.severidade === g).map(x => x.tipo)))].sort();
-      return [g, com.length, ufs, fen];
-    });
-    const comAviso = muns.filter(m => (m.inmet || []).length).length, total = (window.__refMunicipios || []).length;
-    /* 23/10/2026: as duas colunas que descrevem o aviso saíam em TRAVESSÃO nas três linhas sem
-       aviso — e travessão não é palavra: nega a regra de que ausência se escreve. Grau com zero
-       município tem zero estado e zero fenômeno (zero medido, "nenhum"); a linha "Sem aviso" não é
-       grau de aviso, e dizer "nenhum" ali leria-se como se os 2.004 municípios não tivessem estado. */
-    document.querySelector('#tblAvisos tbody').innerHTML = linhas.map(([g, n, ufs, fen]) => '<tr><td>' + esc(g) + '</td> <td>'
-        + esc(fmt(n)) + '</td> <td>' + esc(ufs.join(', ') || 'nenhum') + '</td> <td>' + esc(fen.join(', ') || 'nenhum') + '</td></tr>').join('')
-      + (total ? '<tr><td>Sem aviso</td><td>' + esc(fmt(total - comAviso)) + '</td><td>não há aviso</td><td>não há aviso</td></tr>' : '');
-    const previstos = UFS.filter(uf => componentesDe(uf).includes('chuvas'));
-    const ufsComAviso = new Set(muns.filter(m => (m.inmet || []).length).map(m => m.uf));
-    const nAvisos = new Set(muns.flatMap(m => (m.inmet || []).map(x => x.id))).size;
-    document.getElementById('avisosRodape').textContent = plural(nAvisos, 'aviso', 'avisos') + ' · '
-      + plural(comAviso, 'município', 'municípios') + ' · nos estados com chuva forte prevista: '
-      + (previstos.filter(uf => ufsComAviso.has(uf)).join(', ') || 'nenhum com aviso');
+  const muns = Object.entries((AVISOS || {}).municipios || {});
+  const f = id => fonteDe(id);
+  MonitorMapas.credito('boxAvisos', {fontes: ['inmet_avisos', 'cemaden_alertas'].map(k => [f(k).orgao, f(k).nome].filter(Boolean).join(' · ')),
+    url: f('inmet_avisos').url_publica, data: AVISOS ? AVISOS.gerado_em : f('inmet_avisos').consultado_em});
+  const d = document.querySelector('#boxAvisos .fonte-figura'); if (d) d.dataset.credito = 'inmet_avisos';
+  if (!AVISOS || !coletada('inmet_avisos') || !coletada('cemaden_alertas')) {
+    document.getElementById('midiaAvisos').innerHTML = '';
+    lacuna('midiaAvisos', 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso ou alerta em vigor.');
+    return;
   }
-  creditoDe('boxAvisos', 'inmet_avisos');
-  if (!AVISOS || !coletada('cemaden_alertas')) {
-    lacunaEm('tblCemaden', 'midiaCemaden', 'A fonte não respondeu nesta consulta — não quer dizer que não haja alerta vigente.');
-  } else {
-    const grupos = {};
-    muns.forEach(m => (m.cemaden || []).forEach(x => { const k = x.nivel + '|' + m.uf;
-      (grupos[k] = grupos[k] || new Set()).add(m.nome); }));
-    const chaves = Object.keys(grupos).sort();
-    document.querySelector('#tblCemaden tbody').innerHTML = chaves.length
-      ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td> <td>' + esc(uf) + '</td> <td>'
-          + esc([...grupos[k]].sort().join(', ')) + '</td></tr>'; }).join('')
-      : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
-    const r = AVISOS.resumo || {};
-    document.getElementById('cemadenRodape').textContent = plural(r.alertas_cemaden_em_vigor || 0, 'alerta', 'alertas')
-      + ' · ' + plural(r.municipios_cemaden || 0, 'município', 'municípios') + ' · '
-      + plural(new Set(chaves.map(k => k.split('|')[1])).size, 'estado', 'estados');
-  }
-  creditoDe('boxCemaden', 'cemaden_alertas');
-  const t = document.getElementById('tituloAvisos'); if (t && AVISOS) t.textContent = 'Avisos de tempo severo em vigor, ' + AVISOS.gerado_em;
+  const pos = {}; (window.__refMunicipios || []).forEach(m => pos[String(m.codigo_ibge).padStart(7, '0')] = [m.lat, m.lon]);
+  const maior = m => GRAUS.find(g => (m.inmet || []).some(x => x.severidade === g));
+  const sob = muns.filter(([, m]) => maior(m));
+  desenharMapa('mapaAvisos', 'legAvisos', () => ATM.avisos.uf, () => '', [], 'avisos');
+  const ctx = __ctx();
+  GRAUS.slice().reverse().forEach(g => {
+    const itens = sob.filter(([, m]) => maior(m) === g).map(([c]) => pos[c]).filter(Boolean).map(([lat, lon]) => ({lat, lon}));
+    MonitorMapas.pontosDensos(ctx, 'mapaAvisos', itens, COR_GRAU[g], 3.4, .85, 'densos-' + GRAUS.indexOf(g));
+  });
+  d3.select('#mapaAvisos').append('g').attr('class', 'alertasCemaden').selectAll('circle')
+    .data(muns.filter(([c, m]) => (m.cemaden || []).length && pos[c])).join('circle')
+    .attr('cx', ([c]) => ctx.projection([pos[c][1], pos[c][0]])[0]).attr('cy', ([c]) => ctx.projection([pos[c][1], pos[c][0]])[1])
+    .attr('r', 5).attr('fill', 'none').attr('stroke', COR_GRAU.cemaden).attr('stroke-width', 2)
+    .on('mouseenter', (evt, [, m]) => MonitorMapas.showTip(MonitorMapas.dica({titulo: m.nome + ' · ' + m.uf,
+      linhas: m.cemaden.map(x => x.tipo + ' · ' + x.nivel), fonte: 'Cemaden'}), evt))
+    .on('mouseleave', MonitorMapas.hideTip);
+  MonitorMapas.legenda('legAvisos', GRAUS.map(g => ({cor: COR_GRAU[g], rotulo: g}))
+    .concat([{cor: COR_GRAU.cemaden, rotulo: 'Alerta do Cemaden', vazado: true}]));
+  const maxN = Math.max(1, ...GRAUS.map(g => sob.filter(([, m]) => maior(m) === g).length));
+  document.getElementById('avisosEscada').innerHTML = GRAUS.map(g => {
+    const com = sob.filter(([, m]) => maior(m) === g).map(([, m]) => m);
+    const fen = [...new Set(com.flatMap(m => m.inmet.filter(x => x.severidade === g).map(x => x.tipo)))].sort();
+    return '<li style="--cor:' + COR_GRAU[g] + '"><span class="escada-grau">' + esc(g) + '</span><span class="escada-n">' + esc(fmt(com.length))
+      + '</span><span class="escada-barra"><i style="width:' + (100 * com.length / maxN).toFixed(1) + '%"></i></span><span class="escada-fen">'
+      + esc(fen.join(', ') || 'nenhum') + '</span></li>';
+  }).join('');
+  const total = (window.__refMunicipios || []).length;
+  if (total) põeCat('avisosSem', 'monitor-de-riscos.avisos.molde_sem_aviso', {n: total - sob.length});
+  const grupos = {};
+  muns.forEach(([, m]) => (m.cemaden || []).forEach(x => { const k = x.nivel + '|' + m.uf; (grupos[k] = grupos[k] || new Set()).add(m.nome); }));
+  const chaves = Object.keys(grupos).sort();
+  document.querySelector('#tblCemaden tbody').innerHTML = chaves.length
+    ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td> <td>' + esc(uf) + '</td> <td>'
+        + esc([...grupos[k]].sort().join(', ')) + '</td></tr>'; }).join('')
+    : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
 })();
 
 // ---- Listas federais de risco (17/10/2026, HANDOVER_DEFESA_CIVIL §6: vieram da Defesa civil) ----

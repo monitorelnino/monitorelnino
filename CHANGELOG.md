@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #PR · Monitor de riscos: um cartão de avisos e alertas, com mapa por município · Site
+
+As duas tabelas de chuva forte viram um cartão: mapa com um ponto por município sob aviso do INMET, na cor do maior grau, e círculo vazado nos alertas do Cemaden; escada por grau e lista do Cemaden ao lado. A posição vem do cadastro de municípios que a página já carrega.
+
 ## 2026-10-24 · #PR · Mapas do Monitor de riscos: legendas novas, sem grade, contorno mais firme · Site
 
 Seca, ar e temperatura têm legenda nova, escrita pelo catálogo; o terceiro mapa passa a se chamar "Desvio de temperatura previsto nas capitais". Sai a malha de 5° de todos os mapas. Divisas das UFs mais firmes e contorno do país mais forte, sem token novo.
