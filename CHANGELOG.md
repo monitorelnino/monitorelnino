@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #PR · Formulário da inicial sem campo recolhido; três textos da editoria · Site
+
+Os dois campos opcionais (número do ato, observações) passam a fazer parte do formulário aberto, com "(opcional)" no rótulo; sai o bloco recolhível, a nota do fim e a regra de CSS do bloco. Entram os textos aprovados da abertura do formulário, da abertura de "Sua cidade" e da varredura.
+
 ## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
 
 Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\"` do frontmatter (o link saía com aspas literais).

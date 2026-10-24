@@ -37,7 +37,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=eed8d038">
+<link rel="stylesheet" href="assets/base.css?v=b27bd5af">
 <script src="assets/mapas.js?v=c68d53ed"></script>
 </head>
 <body>
@@ -143,7 +143,7 @@
 
   <div class="panel" id="formulario">
     <h2 data-conteudo="index.titulo_da_secao_4">Você encontrou um plano ou decreto que ainda não está no MARÉ Legal?</h2>
-    <p class="hint" data-conteudo="index.formulario.abertura">Leva menos de um minuto. Não pedimos seu nome nem contato: pedimos as informações sobre o documento.</p>
+    <p class="hint" data-conteudo="index.formulario.abertura">Sua identificação não é necessária. Pedimos as informações sobre o documento. A conferência é automática e verificamos se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na atualização seguinte do MARÉ Legal, com fonte e link (quando disponível).</p>
     <form name="contribuicao" method="POST" action="/#formulario" data-netlify="true" netlify-honeypot="bot-field" id="formContrib">
       <input type="hidden" name="form-name" value="contribuicao">
       <input type="hidden" name="subject" value="Novo documento indicado — %{formName} (%{submissionId})">
@@ -164,13 +164,9 @@
           <option value="correcao">Correção de um dado já publicado</option>
         </select></label>
         <label class="fld">Onde ele está publicado<input type="url" name="link_oficial" required placeholder="Cole o link do documento"></label>
+        <label class="fld">Número e data do ato (opcional)<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
+        <label class="fld">Observações (opcional)<textarea name="observacoes" rows="3"></textarea></label>
       </div>
-      <details class="contrib-opcional">
-        <summary data-conteudo="index.resumo">Número do ato ou alguma observação sobre o documento (opcional)</summary>
-        <label class="fld">Número e data do ato<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
-        <label class="fld">Observações<textarea name="observacoes" rows="3"></textarea></label>
-      </details>
-      <p class="note" data-conteudo="index.formulario.nota">A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte, com fonte e canal; o que não passa não é publicado, e o motivo fica registrado.</p>
       <button type="submit" class="btn">Enviar</button>
       <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
     </form>
