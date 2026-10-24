@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-17 a 2026-10-24 (1027 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-17 a 2026-10-24 (1032 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-22 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-18 08:41 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-23 01:42 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-24 18:11 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-24 19:05 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-24 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-18 08:39 | 87 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
@@ -90,7 +90,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-22 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-10-24 06:55 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-24 07:50 | 90 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-18 08:00 | 1 s | — | ok | — |
-| `python3` | coletor | 2026-10-24 13:03 | 0 s | — | ok | — |
+| `python3` | coletor | 2026-10-24 13:48 | 16813 s | — | **erro** | interrompido pelo prazo do elo |
 | `revisar_pistas.py` | coletor | 2026-10-24 08:03 | 811 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-24 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-24 08:02 | 65 s | — | ok | — |
