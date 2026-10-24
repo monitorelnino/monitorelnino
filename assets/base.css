@@ -768,6 +768,8 @@ footer.site-footer .grad-line{margin:0 0 var(--sp-5);}
 footer.site-footer .logo-futura{height:18px; margin:0 auto var(--sp-2);}
 footer.site-footer .mast-logo{display:block; text-decoration:none;}
 footer.site-footer .rodape-linha{display:block;}
+footer.site-footer .rodape-assinatura{display:block; font-size:var(--fs-caption); line-height:var(--lh-caption);}
+footer.site-footer .rodape-redes{display:flex; flex-wrap:wrap; justify-content:center; gap:var(--sp-2) var(--sp-4); list-style:none; margin:var(--sp-2) 0 var(--sp-3); padding:0;}
 footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-size:var(--fs-caption); line-height:var(--lh-caption);}
 
 /* ===== 17. Utilitários (só tokens) ===== */
