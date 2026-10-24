@@ -474,7 +474,9 @@ PONTUAM = {"plano", "plano_novo", "plano_readaptado", "plano_recorrente",
 SUFIXOS_OFICIAIS = (".gov.br", ".leg.br", ".jus.br")
 # Entes que publicam ato oficial fora do `gov.br`. Lista curta de propósito: crescer por conveniência
 # é como a notícia entraria de volta.
-HOSTS_OFICIAIS = {"www.diariomunicipal.com.br", "diariomunicipal.com.br", "prefeitura.poa.br"}
+# O tenant `rsgovbr` é o do governo do RS: a pasta pública de PLANCONs da Casa Militar (REPOSITORIOS["RS"]).
+HOSTS_OFICIAIS = {"www.diariomunicipal.com.br", "diariomunicipal.com.br", "prefeitura.poa.br",
+                  "rsgovbr-my.sharepoint.com"}
 
 
 def host_oficial(host: str) -> bool:
