@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
+
+Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\"` do frontmatter (o link saía com aspas literais).
+
 ## 2026-10-24 · Cartão do estado: "MARÉ Legal do estado" e texto no catálogo · Inicial
 
 O rótulo da nota do estado passa a dizer "MARÉ Legal do estado", e o campo "Componentes (um terço cada)" sai do cartão; o peso segue descrito em `index.como_ler.nota`. As frases de "ainda não verificamos", o rótulo e a lista "O que ainda falta" saem de `assets/js/index.js` para `conteudo/index.json`, sem mudar uma palavra.
