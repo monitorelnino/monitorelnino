@@ -11,6 +11,13 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-24 · #PR · Imprensa: pergunta nova sobre casos de saúde e El Niño
+
+Em "O que recomendamos e não recomendamos concluir", na Saúde, entra a pergunta "Os casos mostrados na página de Saúde são causados pelo El Niño?": a página não faz essa relação e mostra o que os órgãos de saúde registram, com fonte e faixa habitual. Texto aprovado pela editoria.
+
+## 2026-10-24 · #PR · MARÉ Saúde v0.7: a nota da UF é o instrumento; o nacional pesa a população · Dados
+Nenhum componente da nota do Saúde depende de data: a nota do estado é o instrumento. O tempo (dias após o Boletim nº 1) e a coordenação saem como contexto de peso zero. O nacional passa a ponderar pela população (cobertura 1 nas 27 UFs): 61,3, era 34,7. Um só motor: o cálculo paralelo da v0.4 e a troca automática saem. Código −732 líquidas.
+
 ## 2026-10-24 · #PR · Coordenação em saúde: 13 atos oficiais lidos entram na fila do juiz · Dado
 Registra, pela porta única de pistas, os 13 atos de coordenação (COE, comitês, plano do PI) já lidos em domínio oficial na busca de 07/10. Só o juiz de saúde credita; nenhum índice muda. Script novo com autoteste offline; +65 linhas, sem remover remendo (a rotina da coordenação não tinha porta de entrada).
 

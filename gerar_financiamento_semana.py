@@ -35,7 +35,7 @@ MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "a
 ARQUIVO = "financiamento/semana.json"
 # Trava estrutural: este gerador escreve UM arquivo, e nunca o banco nem o índice.
 BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json", "monitor_saude_v04.json"}
+                  "monitor_saude.json"}
 
 
 def mes_legivel(aaaamm: str) -> str:
