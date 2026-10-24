@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Documento já preservado não se baixa de novo · Juiz
+
+A aplicação das 75 promoções do RS baixa PDFs de uma pasta lenta e estourou o prazo da coleta (38 guardados em 27 minutos), perdendo tudo. A passada passa a reaproveitar a evidência já indexada com arquivo em disco, e a seguinte continua de onde parou.
+
 ## 2026-10-24 · Falha de preservação não enterra a promoção · Juiz
 
 Quando o documento não podia ser preservado, a promoção ganhava a marca `nao_aplicado` e nunca mais voltava: as 75 do RS ficaram assim com o 403 já corrigido. Falha do nosso acesso deixa de marcar a decisão; a passada seguinte tenta de novo.
