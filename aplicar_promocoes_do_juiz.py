@@ -142,6 +142,13 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         return None
 
 
+def tem_copia(h: str) -> bool:
+    """O índice de evidências guarda o arquivo (em disco) ou um snapshot externo que deu certo."""
+    from coletores_base import RAIZ, ler
+    it = (ler("evidencias.json", {"itens": {}}).get("itens") or {}).get(h) or {}
+    return bool(it.get("arquivo") and (RAIZ / it["arquivo"]).exists()) or str(it.get("wayback") or "").startswith("https://")
+
+
 def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: str) -> dict:
     """O registro do banco, com a proveniência que permite conferir a decisão depois.
 
@@ -410,6 +417,12 @@ def main() -> int:
         if not hash_preservado:
             recusados.append((v, "documento não pôde ser preservado — registro pontuável exige "
                                  "evidência guardada (portão 26)"))
+            continue
+        if not tem_copia(hash_preservado):
+            # 24/10/2026: acima do limite de evidência a porta só pede o Wayback, que não lê pasta
+            # privada; 16 do RS entraram sem arquivo e o portão 26 barrou o PR de dado.
+            recusados.append((v, "documento acima do limite de evidência e sem cópia externa — "
+                                 "registro pontuável exige evidência guardada (portão 26)"))
             continue
         v["hash_evidencia"] = hash_preservado
         municipios.append(registro_do_veredito(v, lat, lon, canal, fonte_base,
