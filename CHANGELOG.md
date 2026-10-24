@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Cartão do estado: "MARÉ Legal do estado" e texto no catálogo · Inicial
+
+O rótulo da nota do estado passa a dizer "MARÉ Legal do estado", e o campo "Componentes (um terço cada)" sai do cartão; o peso segue descrito em `index.como_ler.nota`. As frases de "ainda não verificamos", o rótulo e a lista "O que ainda falta" saem de `assets/js/index.js` para `conteudo/index.json`, sem mudar uma palavra.
+
 ## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
 
 `aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.
