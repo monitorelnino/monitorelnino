@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **99.514 linhas** em **310 arquivos** .py/.js; **36 workflows**.
+- **99.620 linhas** em **310 arquivos** .py/.js; **36 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
 - **151 nomes de função** definidos em mais de um arquivo.
 
@@ -10,8 +10,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 54492 |
-| `scripts` | 37247 |
+| `(raiz)` | 54596 |
+| `scripts` | 37249 |
 | `assets` | 7062 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
@@ -24,21 +24,21 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `coletores_base.py` | 2214 |
 | `verificar_pista_imprensa.py` | 1703 |
 | `coletar_doe.py` | 1627 |
-| `juiz.py` | 1424 |
+| `juiz.py` | 1452 |
 | `assets/js/monitor-de-riscos.js` | 1349 |
 | `assets/js/index.js` | 1290 |
-| `scripts/verificar_regras_de_dado.py` | 1288 |
+| `scripts/verificar_regras_de_dado.py` | 1290 |
 | `scripts/ensaio_da_noite.py` | 1272 |
 | `julgar_saude.py` | 1210 |
 | `assets/js/saude.js` | 1174 |
 | `coletar_painel_am.py` | 1135 |
 | `coletar_edicoes_doe.py` | 1081 |
-| `julgar_e_aplicar_descobertas.py` | 1065 |
+| `julgar_e_aplicar_descobertas.py` | 1067 |
 | `recalcular_mare.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `scripts/unir_conflito_de_rodada.py` | 1022 |
 | `gerar_pacote_blog.py` | 830 |
-| `julgar_filas.py` | 791 |
+| `julgar_filas.py` | 794 |
 | `gerar_imprensa_semana.py` | 789 |
 | `descobrir_planos.py` | 784 |
 | `scripts/verificar_repositorio.py` | 770 |
