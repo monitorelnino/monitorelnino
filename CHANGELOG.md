@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
+
+`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.
+
 ## 2026-10-24 · Sem cópia da evidência, sem promoção · Juiz
 
 Dezesseis documentos do RS passam do limite de evidência e a pasta privada não aceita o Wayback; a aplicação os registrava mesmo sem arquivo e o portão de evidências barrou o dado. Agora a aplicação recusa e marca, em vez de depender do portão. O portão C10 passa a reconhecer a pasta pública do governo do RS como fonte oficial.

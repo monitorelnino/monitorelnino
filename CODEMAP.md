@@ -202,7 +202,7 @@ Atualizado em 24/10/2026.
 | `trocar_para_v04.py` | — | — | — | — | não |
 | `verificar_consistencia.py` | — | — | — | — | não |
 | `verificar_contribuicoes.py` | — | — | — | — | não |
-| `verificar_evidencias.py` | — | — | — | — | não |
+| `verificar_evidencias.py` | — | — | — | 1 | não |
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
 | `verificar_links.py` | — | `links_historico.json` | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |
