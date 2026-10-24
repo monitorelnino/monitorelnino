@@ -1,6 +1,6 @@
 {
  "_governanca": "Planos municipais de contingência de arboviroses (dengue, chikungunya, zika): onde cada município tem menção localizada, e em que norma o plano se apoia. Peso zero: não entra na nota da Saúde (HANDOVER_SAUDE_V06 §5, 22/10/2026). `municipios` é escrito só por `coletar_planos_arboviroses.py`; `bases` foi lida e registrada à mão em 22/10/2026 e só muda com leitura nova. Estatuto: menção localizada em diário oficial · não localizado até o corte · não verificado (município sem cobertura no acervo, ou consulta que falhou). Menção não é plano lido. Unidade da federação sem linha em `bases` não foi verificada; a ausência não afirma que não há norma.",
- "cursor": 1600,
+ "cursor": 2000,
  "bases": {
   "BR": {
    "documento": "Plano de Contingência Nacional para Dengue, Chikungunya e Zika (Ministério da Saúde)",
@@ -1512,7 +1512,7 @@
   },
   "1200336": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-22",
+   "consultado_em": "2026-10-24",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -1659,7 +1659,7 @@
   },
   "1100015": {
    "estatuto": "não verificado",
-   "consultado_em": "2026-10-22",
+   "consultado_em": "2026-10-24",
    "janela_desde": "2024-01-01",
    "rota": "querido_diario",
    "motivo": "município sem cobertura no acervo de diários",
@@ -16214,16 +16214,4088 @@
    "achados": [],
    "nome": "Nova Petrópolis",
    "uf": "RS"
+  },
+  "3117504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conceição do Mato Dentro",
+   "uf": "MG"
+  },
+  "5007109": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ribas do Rio Pardo",
+   "uf": "MS"
+  },
+  "2925006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Planalto",
+   "uf": "BA"
+  },
+  "2501500": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bananeiras",
+   "uf": "PB"
+  },
+  "2104677": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Governador Nunes Freire",
+   "uf": "MA"
+  },
+  "3520004": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3520004/2024-04-19/6130d804bd2fb18c9405676c6c36b432ad7a023c.pdf",
+     "data_publicacao": "2024-04-19",
+     "edicao": "171",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "936 de 11 de setembro de 2012. CONSIDERANDO as Diretrizes Nacionais para a Prevenção e Controle das Arboviroses Urbanas, CONSIDERANDO o Plano de Contingência Contra Arboviroses Urbanas do Estado de São Paulo, que organizam as ações para enfrentamento da transmissão das arboviroses, CONSIDERANDO",
+     "hash_evidencia": "3a763cbda8d36c322d50ae6dd42e78397cf95178845af98db8d64a2618ee20d4"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3520004/2024-04-19/4a9c8c6428a2fe2b36e7770b1f80bfa11038a52d.pdf",
+     "data_publicacao": "2024-04-19",
+     "edicao": "171",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "936 de 11 de setembro de 2012. CONSIDERANDO as Diretrizes Nacionais para a Prevenção e Controle das Arboviroses Urbanas, CONSIDERANDO o Plano de Contingência Contra Arboviroses Urbanas do Estado de São Paulo, que organizam as ações para enfrentamento da transmissão das arboviroses, CONSIDERANDO",
+     "hash_evidencia": "d5d3af56bf9c9477f1de63be34da926ae45d4901900d47cfc9acfd5bdc86afd5"
+    }
+   ],
+   "nome": "Igaraçu do Tietê",
+   "uf": "SP"
+  },
+  "2103802": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Dom Pedro",
+   "uf": "MA"
+  },
+  "2407807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Alegre",
+   "uf": "RN"
+  },
+  "5001904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bataguassu",
+   "uf": "MS"
+  },
+  "2610202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Panelas",
+   "uf": "PE"
+  },
+  "4310801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ivoti",
+   "uf": "RS"
+  },
+  "4306809": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Encantado",
+   "uf": "RS"
+  },
+  "3302106": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaocara",
+   "uf": "RJ"
+  },
+  "4105904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Colorado",
+   "uf": "PR"
+  },
+  "3510302": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Capela do Alto",
+   "uf": "SP"
+  },
+  "4320107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sarandi",
+   "uf": "RS"
+  },
+  "4126603": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Siqueira Campos",
+   "uf": "PR"
+  },
+  "3204609": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Teresa",
+   "uf": "ES"
+  },
+  "2610806": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pedra",
+   "uf": "PE"
+  },
+  "2308906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Morrinhos",
+   "uf": "CE"
+  },
+  "2702603": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Feira Grande",
+   "uf": "AL"
+  },
+  "3130903": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Inhapim",
+   "uf": "MG"
+  },
+  "3100203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Abaeté",
+   "uf": "MG"
+  },
+  "2501104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Areia",
+   "uf": "PB"
+  },
+  "2923100": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Olindina",
+   "uf": "BA"
+  },
+  "1721208": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Tocantinópolis",
+   "uf": "TO"
+  },
+  "2707107": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Piranhas",
+   "uf": "AL"
+  },
+  "2905602": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Camacan",
+   "uf": "BA"
+  },
+  "1507805": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Senador José Porfírio",
+   "uf": "PA"
+  },
+  "2105427": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itinga do Maranhão",
+   "uf": "MA"
+  },
+  "2112233": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Trizidela do Vale",
+   "uf": "MA"
+  },
+  "2905008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caculé",
+   "uf": "BA"
+  },
+  "2102309": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Buriti Bravo",
+   "uf": "MA"
+  },
+  "3538907": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pirajuí",
+   "uf": "SP"
+  },
+  "3304151": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304151/2024-03-19/28b9254d1c2a536f81aca0118d7cb904a0f56ef4.pdf",
+     "data_publicacao": "2024-03-19",
+     "edicao": "2674",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "suas atribuições legais, RESOLVE: Art. 1º Implantar o Comitê Gestor de Mobilização contra o Aedes aegypti para operacionalização do Plano de Contingência da Dengue, Chikungunya e Zika a ser composto pelos seguintes membros: Representação: Secretaria Municipal de Saúde Secretaria – Milena da Paixão",
+     "hash_evidencia": "f0031a643ff4679a91efedad1bfd62d4290ed30b1c41d8dd92c6ef56fd9b6343"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304151/2026-08-21/62ecdc438ea19a06f1ee1072422b23dcbc846704.pdf",
+     "data_publicacao": "2026-08-21",
+     "edicao": "3485",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "aprovação da Programação Anual de Saúde – PAS 2027; 2 – Apreciação e aprovação do Plano Municipal de Contingência de desastres 2026-2028 e Plano de Contingência das Arboviroses 2026-2028; 3 – Criação da comissão de organização da plenária municipal para preparativa da 18ª conferência de saúde; 4",
+     "hash_evidencia": "7088d554c185050b4a2733f14060608e669761d0012166fde7360f17bec02b4e"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304151/2026-08-28/0d072c822e8af816951b3361cbca56b77d3cc363.pdf",
+     "data_publicacao": "2026-08-28",
+     "edicao": "3490",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "RESOLVE 1 – Aprovar a Programação Anual de Saúde – PAS 2027; 2 – Aprovar o Plano Municipal de Contingência de desastres 2026-2028 e Plano de Contingência das Arboviroses 2026-2028. Quissamã, 26 de Agosto de 2026. Bruna Cristina Martins Ribeiro Presidente do CMSQ – Biênio 2024-2026 sswww.qui ama",
+     "hash_evidencia": "183115a1e53ff53f7bac80932a1e26537e0646ce6471f427514d8eb1936051c1"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304151/2024-11-08/54323fb7a7c1ca3862cc422d0d3b282bbb1eab2a.pdf",
+     "data_publicacao": "2024-11-08",
+     "edicao": "2930",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "dispositivos oriundos da Lei Municipal nº 2129 de 17 de novembro de 2021. RESOLVE Art. 1º – Aprovar o Plano Municipal de Contingência de Arboviroses de Quissamã 2024 – 2026. Art. 2º – Aprovar o Plano Municipal de Contingência de Desastres de Quissamã 2024 – 2026. Art. 3º",
+     "hash_evidencia": "f51e6ef1b796ecab8a2d7a10710a2e90df421375a493a4585e1e4e32e30e019a"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304151/2024-10-25/c2715c47bf59ba3114fce7d5c7fc82eb15334b1b.pdf",
+     "data_publicacao": "2024-10-25",
+     "edicao": "2915",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "Alto Alegre. PAUTAS: 1 – Plano Municipal de Contingência de Desastres de Quissamã – 2024 – 2026. 2 – Plano Municipal de Contingência de Arboviroses de Quissamã – 2024 – 2026. 3 – Lei do Conselho. 4 – Informativo sobre a votação da regional. 5 – Informes gerais. Quissamã, 24 de Outubro",
+     "hash_evidencia": "e36cc50f887dfe06ab9b3ec7190bb8af65ee82dff606f08a4bf204b3f8b5e304"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3304151/2024-11-26/fbef442da899a1c45d609a9d0f9fc7d9f64a6bae.pdf",
+     "data_publicacao": "2024-11-26",
+     "edicao": "2942",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "dispositivos oriundos da Lei Municipal nº 2129 de 17 de novembro de 2021. RESOLVE Art. 1º – Aprovar o Plano Municipal de Contingência de Arboviroses de Quissamã 2024 – 2026. Art. 2º – Aprovar o Plano Municipal de Contingência de Desastres de Quissamã 2024 – 2026. Art. 3º",
+     "hash_evidencia": "2ed166525bcf54000a8465c6fe4a6d7bf28d4d5927b36a92fd8b9221d3102b06"
+    }
+   ],
+   "nome": "Quissamã",
+   "uf": "RJ"
+  },
+  "2301950": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barreira",
+   "uf": "CE"
+  },
+  "2303808": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Cedro",
+   "uf": "CE"
+  },
+  "3204203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Piúma",
+   "uf": "ES"
+  },
+  "2211308": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Valença do Piauí",
+   "uf": "PI"
+  },
+  "3531407": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Aprazível",
+   "uf": "SP"
+  },
+  "5220603": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Silvânia",
+   "uf": "GO"
+  },
+  "1100809": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Candeias do Jamari",
+   "uf": "RO"
+  },
+  "3129509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibiá",
+   "uf": "MG"
+  },
+  "2921104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Medeiros Neto",
+   "uf": "BA"
+  },
+  "2411502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santo Antônio",
+   "uf": "RN"
+  },
+  "3554300": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Teodoro Sampaio",
+   "uf": "SP"
+  },
+  "2109502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Riachão",
+   "uf": "MA"
+  },
+  "3513603": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Cunha",
+   "uf": "SP"
+  },
+  "3305158": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/3305158/2026-10-13/4e26d8344b50e44eba850d8ec3e564a5090bc156.pdf",
+     "data_publicacao": "2026-10-13",
+     "edicao": "3958",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "membros para compor o Comitê Intersetorial para Acompanhamento e Monitoramento do Plano Municipal de Contingência para Enfretamento das Arboviroses, que passa a viger, a partir desta data, com os seguintes membros: SERVIDORES FUNÇÃO CLÁUDIA JUCÁ DA SILVA Secretária Municipal de Saúde – Coordenação",
+     "hash_evidencia": "efb0ab6f9fadac97643e51e3f226cbb5b367cd5b685287f27f1eff7d56e80f59"
+    },
+    {
+     "url": "https://data.queridodiario.ok.org.br/3305158/2025-01-31/c4f683366a6bff236939310f52020fa67941acc0.pdf",
+     "data_publicacao": "2025-01-31",
+     "edicao": "3328",
+     "consulta": "\"plano de contingência\" arboviroses",
+     "trecho": "relacionados para compor o Comitê Intersetorial para Acompanhamento e Monitoramento do Plano Municipal de Contingência para Enfretamento das Arboviroses 2024/2026, a partir desta data, os seguintes servidores: LUCAS DIAS CARDOSO MENEZES BETÂNIA TEDESCO DA SILVEIRA FONSECA KÁSSIA DE SOUZA AMORIM",
+     "hash_evidencia": "b41184450fe8fe5c65f84157ea375d495c0f234080d31525454122b6e8899b42"
+    }
+   ],
+   "nome": "São José do Vale do Rio Preto",
+   "uf": "RJ"
+  },
+  "4208104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaiópolis",
+   "uf": "SC"
+  },
+  "5205406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ceres",
+   "uf": "GO"
+  },
+  "2106508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Matinha",
+   "uf": "MA"
+  },
+  "3202108": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ecoporanga",
+   "uf": "ES"
+  },
+  "4212908": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pinhalzinho",
+   "uf": "SC"
+  },
+  "3521408": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Iracemápolis",
+   "uf": "SP"
+  },
+  "4301008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Arroio do Meio",
+   "uf": "RS"
+  },
+  "2616209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vertentes",
+   "uf": "PE"
+  },
+  "3167103": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Serro",
+   "uf": "MG"
+  },
+  "3507100": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bom Jesus dos Perdões",
+   "uf": "SP"
+  },
+  "5103502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Diamantino",
+   "uf": "MT"
+  },
+  "1600402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mazagão",
+   "uf": "AP"
+  },
+  "2917300": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ituberá",
+   "uf": "BA"
+  },
+  "5220207": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Miguel do Araguaia",
+   "uf": "GO"
+  },
+  "4318200": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Francisco de Paula",
+   "uf": "RS"
+  },
+  "3144102": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Muzambinho",
+   "uf": "MG"
+  },
+  "2108702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pio XII",
+   "uf": "MA"
+  },
+  "2705002": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Mata Grande",
+   "uf": "AL"
+  },
+  "5006002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nova Alvorada do Sul",
+   "uf": "MS"
+  },
+  "2609709": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Orobó",
+   "uf": "PE"
+  },
+  "2805505": {
+   "estatuto": "menção localizada em diário oficial",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [
+    {
+     "url": "https://data.queridodiario.ok.org.br/2805505/2024-03-04/0acfb30e9e9ec8c62648d9c60def6c3b529cdf83.pdf",
+     "data_publicacao": "2024-03-04",
+     "edicao": "247",
+     "consulta": "\"plano de contingência\" dengue",
+     "trecho": "correlatas. ● PLANO MUNICIPAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA - PLANO MUNICIPAL DE CONTINGÊNCIA PARA RESPOSTA ÀS EMERGÊNCIAS EM SAÚDE PÚBLICA POR DENGUE, CHIKUNGUNYA E ZIKA ● Aviso de Dispensa de Licitação Eletrônica Nº 002/2024 PMPV - Objeto:",
+     "hash_evidencia": "ced786e21a817d4947dc2654ae7e75dd96c0936ae597f8f6f360231f5267df00"
+    }
+   ],
+   "nome": "Poço Verde",
+   "uf": "SE"
+  },
+  "3147204": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paraguaçu",
+   "uf": "MG"
+  },
+  "2500601": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alhandra",
+   "uf": "PB"
+  },
+  "3517505": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guapiaçu",
+   "uf": "SP"
+  },
+  "2301604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Assaré",
+   "uf": "CE"
+  },
+  "2912103": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibicaraí",
+   "uf": "BA"
+  },
+  "2926202": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Riachão das Neves",
+   "uf": "BA"
+  },
+  "1100320": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Miguel do Guaporé",
+   "uf": "RO"
+  },
+  "5002100": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Bela Vista",
+   "uf": "MS"
+  },
+  "2919702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Macarani",
+   "uf": "BA"
+  },
+  "4310009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibirubá",
+   "uf": "RS"
+  },
+  "5200134": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Acreúna",
+   "uf": "GO"
+  },
+  "3204054": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pedro Canário",
+   "uf": "ES"
+  },
+  "3502754": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Araçariguama",
+   "uf": "SP"
+  },
+  "5005202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ladário",
+   "uf": "MS"
+  },
+  "2509107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mari",
+   "uf": "PB"
+  },
+  "3505807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bastos",
+   "uf": "SP"
+  },
+  "2408904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Parelhas",
+   "uf": "RN"
+  },
+  "3511409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cerqueira César",
+   "uf": "SP"
+  },
+  "1200450": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Senador Guiomard",
+   "uf": "AC"
+  },
+  "3553302": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tambaú",
+   "uf": "SP"
+  },
+  "2305357": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Icapuí",
+   "uf": "CE"
+  },
+  "2605400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Feira Nova",
+   "uf": "PE"
+  },
+  "2210003": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São João do Piauí",
+   "uf": "PI"
+  },
+  "2932705": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Uruçuca",
+   "uf": "BA"
+  },
+  "4112108": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jandaia do Sul",
+   "uf": "PR"
+  },
+  "3149903": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Perdões",
+   "uf": "MG"
+  },
+  "2703205": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Igreja Nova",
+   "uf": "AL"
+  },
+  "2913507": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Iguaí",
+   "uf": "BA"
+  },
+  "3305604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Silva Jardim",
+   "uf": "RJ"
+  },
+  "4316006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rolante",
+   "uf": "RS"
+  },
+  "4319604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Sepé",
+   "uf": "RS"
+  },
+  "2503001": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caaporã",
+   "uf": "PB"
+  },
+  "2701001": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Boca da Mata",
+   "uf": "AL"
+  },
+  "2931509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Teofilândia",
+   "uf": "BA"
+  },
+  "2106326": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Maracaçumé",
+   "uf": "MA"
+  },
+  "2512309": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Princesa Isabel",
+   "uf": "PB"
+  },
+  "3301405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conceição de Macabu",
+   "uf": "RJ"
+  },
+  "1507151": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Domingos do Araguaia",
+   "uf": "PA"
+  },
+  "1506351": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Bárbara do Pará",
+   "uf": "PA"
+  },
+  "5210901": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapaci",
+   "uf": "GO"
+  },
+  "4319000": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Marcos",
+   "uf": "RS"
+  },
+  "4105409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chopinzinho",
+   "uf": "PR"
+  },
+  "1400050": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alto Alegre",
+   "uf": "RR"
+  },
+  "2107605": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Palmeirândia",
+   "uf": "MA"
+  },
+  "3115508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caxambu",
+   "uf": "MG"
+  },
+  "2207801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paulistana",
+   "uf": "PI"
+  },
+  "2918803": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Laje",
+   "uf": "BA"
+  },
+  "3132701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itambacuri",
+   "uf": "MG"
+  },
+  "2106706": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mirador",
+   "uf": "MA"
+  },
+  "4318408": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Jerônimo",
+   "uf": "RS"
+  },
+  "2500403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alagoa Nova",
+   "uf": "PB"
+  },
+  "2931004": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tanhaçu",
+   "uf": "BA"
+  },
+  "5002902": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cassilândia",
+   "uf": "MS"
+  },
+  "3133501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapecerica",
+   "uf": "MG"
+  },
+  "3159803": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Vitória",
+   "uf": "MG"
+  },
+  "1400209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caracaraí",
+   "uf": "RR"
+  },
+  "3114402": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Carmo do Rio Claro",
+   "uf": "MG"
+  },
+  "2304004": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Coreaú",
+   "uf": "CE"
+  },
+  "2927507": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Bárbara",
+   "uf": "BA"
+  },
+  "4219002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Urussanga",
+   "uf": "SC"
+  },
+  "3143203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Santo de Minas",
+   "uf": "MG"
+  },
+  "2311504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Quixeré",
+   "uf": "CE"
+  },
+  "3137700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lajinha",
+   "uf": "MG"
+  },
+  "3118403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conselheiro Pena",
+   "uf": "MG"
+  },
+  "2708303": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São José da Laje",
+   "uf": "AL"
+  },
+  "2908200": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conceição da Feira",
+   "uf": "BA"
+  },
+  "2912202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibicoara",
+   "uf": "BA"
+  },
+  "3301504": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Cordeiro",
+   "uf": "RJ"
+  },
+  "1502509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chaves",
+   "uf": "PA"
+  },
+  "1300631": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Beruri",
+   "uf": "AM"
+  },
+  "2923209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Oliveira dos Brejinhos",
+   "uf": "BA"
+  },
+  "3122009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Divino",
+   "uf": "MG"
+  },
+  "3111002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Campestre",
+   "uf": "MG"
+  },
+  "2705705": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Olho d'Água das Flores",
+   "uf": "AL"
+  },
+  "1507474": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São João de Pirabas",
+   "uf": "PA"
+  },
+  "2600807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Altinho",
+   "uf": "PE"
+  },
+  "1300144": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Apuí",
+   "uf": "AM"
+  },
+  "2611705": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Riacho das Almas",
+   "uf": "PE"
+  },
+  "3139508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Manhumirim",
+   "uf": "MG"
+  },
+  "5003801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Fátima do Sul",
+   "uf": "MS"
+  },
+  "2911600": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Governador Mangabeira",
+   "uf": "BA"
+  },
+  "2906907": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caravelas",
+   "uf": "BA"
+  },
+  "2604502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chã Grande",
+   "uf": "PE"
+  },
+  "4104501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Capanema",
+   "uf": "PR"
+  },
+  "2108454": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Peritoró",
+   "uf": "MA"
+  },
+  "1504950": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nova Esperança do Piriá",
+   "uf": "PA"
+  },
+  "3526001": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Junqueirópolis",
+   "uf": "SP"
+  },
+  "3147303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paraisópolis",
+   "uf": "MG"
+  },
+  "2306603": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itatira",
+   "uf": "CE"
+  },
+  "3137809": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lambari",
+   "uf": "MG"
+  },
+  "3134608": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jaboticatubas",
+   "uf": "MG"
+  },
+  "3540754": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Potim",
+   "uf": "SP"
+  },
+  "3304110": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Porto Real",
+   "uf": "RJ"
+  },
+  "1506559": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santa Luzia do Pará",
+   "uf": "PA"
+  },
+  "2605608": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Flores",
+   "uf": "PE"
+  },
+  "2923605": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paramirim",
+   "uf": "BA"
+  },
+  "2108108": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paulo Ramos",
+   "uf": "MA"
+  },
+  "3142908": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Azul",
+   "uf": "MG"
+  },
+  "2929107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Felipe",
+   "uf": "BA"
+  },
+  "2806206": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Salgado",
+   "uf": "SE"
+  },
+  "3124005": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ervália",
+   "uf": "MG"
+  },
+  "3508009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Buri",
+   "uf": "SP"
+  },
+  "2311264": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Quiterianópolis",
+   "uf": "CE"
+  },
+  "3540002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pompéia",
+   "uf": "SP"
+  },
+  "2313807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Uruburetama",
+   "uf": "CE"
+  },
+  "3142809": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Alegre de Minas",
+   "uf": "MG"
+  },
+  "2303956": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chorozinho",
+   "uf": "CE"
+  },
+  "3141405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Medina",
+   "uf": "MG"
+  },
+  "3542404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Regente Feijó",
+   "uf": "SP"
+  },
+  "1303007": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nhamundá",
+   "uf": "AM"
+  },
+  "2800209": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Aquidabã",
+   "uf": "SE"
+  },
+  "2903409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Belmonte",
+   "uf": "BA"
+  },
+  "5105606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Matupá",
+   "uf": "MT"
+  },
+  "4313060": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nova Hartz",
+   "uf": "RS"
+  },
+  "2924306": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Piatã",
+   "uf": "BA"
+  },
+  "3105905": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barroso",
+   "uf": "MG"
+  },
+  "2707503": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Porto Real do Colégio",
+   "uf": "AL"
+  },
+  "2923407": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Palmas de Monte Alto",
+   "uf": "BA"
+  },
+  "3527405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lucélia",
+   "uf": "SP"
+  },
+  "4217402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Schroeder",
+   "uf": "SC"
+  },
+  "2613305": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Joaquim do Monte",
+   "uf": "PE"
+  },
+  "2922409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mutuípe",
+   "uf": "BA"
+  },
+  "2611903": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Formoso",
+   "uf": "PE"
+  },
+  "4322202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tupanciretã",
+   "uf": "RS"
+  },
+  "3169703": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Turmalina",
+   "uf": "MG"
+  },
+  "3511003": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Castilho",
+   "uf": "SP"
+  },
+  "3171006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vazante",
+   "uf": "MG"
+  },
+  "4127502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tibagi",
+   "uf": "PR"
+  },
+  "1502772": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Curionópolis",
+   "uf": "PA"
+  },
+  "2801405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carira",
+   "uf": "SE"
+  },
+  "2102606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cândido Mendes",
+   "uf": "MA"
+  },
+  "2603108": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cachoeirinha",
+   "uf": "PE"
+  },
+  "5108600": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vila Rica",
+   "uf": "MT"
+  },
+  "4101101": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Andirá",
+   "uf": "PR"
+  },
+  "4206900": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibirama",
+   "uf": "SC"
+  },
+  "5007406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Verde de Mato Grosso",
+   "uf": "MS"
+  },
+  "2916104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaparica",
+   "uf": "BA"
+  },
+  "5218904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rubiataba",
+   "uf": "GO"
+  },
+  "2301307": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araripe",
+   "uf": "CE"
+  },
+  "3167608": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Simonésia",
+   "uf": "MG"
+  },
+  "4218301": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Três Barras",
+   "uf": "SC"
+  },
+  "2909604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Crisópolis",
+   "uf": "BA"
+  },
+  "2505105": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cuité",
+   "uf": "PB"
+  },
+  "2309508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Orós",
+   "uf": "CE"
+  },
+  "2925956": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rafael Jambeiro",
+   "uf": "BA"
+  },
+  "2202000": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Buriti dos Lopes",
+   "uf": "PI"
+  },
+  "1301159": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Careiro da Várzea",
+   "uf": "AM"
+  },
+  "1501956": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cachoeira do Piriá",
+   "uf": "PA"
+  },
+  "5212204": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jussara",
+   "uf": "GO"
+  },
+  "4101002": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ampére",
+   "uf": "PR"
+  },
+  "1304104": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tapauá",
+   "uf": "AM"
+  },
+  "3535309": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Palmital",
+   "uf": "SP"
+  },
+  "2904753": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Buritirama",
+   "uf": "BA"
+  },
+  "2101905": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bequimão",
+   "uf": "MA"
+  },
+  "2402303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caraúbas",
+   "uf": "RN"
+  },
+  "3515152": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Engenheiro Coelho",
+   "uf": "SP"
+  },
+  "3205036": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Vargem Alta",
+   "uf": "ES"
+  },
+  "3113008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Caraí",
+   "uf": "MG"
+  },
+  "5209200": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guapó",
+   "uf": "GO"
+  },
+  "3131208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ipanema",
+   "uf": "MG"
+  },
+  "2111706": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "São Vicente Ferrer",
+   "uf": "MA"
+  },
+  "3529708": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Miguelópolis",
+   "uf": "SP"
+  },
+  "5004601": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaquiraí",
+   "uf": "MS"
+  },
+  "3533007": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nova Granada",
+   "uf": "SP"
+  },
+  "3535804": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paranapanema",
+   "uf": "SP"
+  },
+  "3301108": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cantagalo",
+   "uf": "RJ"
+  },
+  "2302008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barro",
+   "uf": "CE"
+  },
+  "1303502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pauini",
+   "uf": "AM"
+  },
+  "2202307": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Canto do Buriti",
+   "uf": "PI"
+  },
+  "1100254": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Presidente Médici",
+   "uf": "RO"
+  },
+  "2904100": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Boquira",
+   "uf": "BA"
+  },
+  "1400456": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pacaraima",
+   "uf": "RR"
+  },
+  "2202604": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Castelo do Piauí",
+   "uf": "PI"
+  },
+  "3204351": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Bananal",
+   "uf": "ES"
+  },
+  "1304237": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Tonantins",
+   "uf": "AM"
+  },
+  "4121406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Realeza",
+   "uf": "PR"
+  },
+  "2601052": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Araçoiaba",
+   "uf": "PE"
+  },
+  "2923357": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ourolândia",
+   "uf": "BA"
+  },
+  "3536208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pariquera-Açu",
+   "uf": "SP"
+  },
+  "5005681": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mundo Novo",
+   "uf": "MS"
+  },
+  "4128500": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Wenceslau Braz",
+   "uf": "PR"
+  },
+  "2908101": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cocos",
+   "uf": "BA"
+  },
+  "3133303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaobim",
+   "uf": "MG"
+  },
+  "3128303": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guaranésia",
+   "uf": "MG"
+  },
+  "4106209": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Contenda",
+   "uf": "PR"
+  },
+  "5200050": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Abadia de Goiás",
+   "uf": "GO"
+  },
+  "2910404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Encruzilhada",
+   "uf": "BA"
+  },
+  "4302709": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Butiá",
+   "uf": "RS"
+  },
+  "2924603": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pindobaçu",
+   "uf": "BA"
+  },
+  "3523503": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itatinga",
+   "uf": "SP"
+  },
+  "2514503": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José de Piranhas",
+   "uf": "PB"
+  },
+  "2911808": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guaratinga",
+   "uf": "BA"
+  },
+  "3511607": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cesário Lange",
+   "uf": "SP"
+  },
+  "2709103": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Taquarana",
+   "uf": "AL"
+  },
+  "2700102": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Água Branca",
+   "uf": "AL"
+  },
+  "2608503": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lagoa de Itaenga",
+   "uf": "PE"
+  },
+  "4103453": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Cafelândia",
+   "uf": "PR"
+  },
+  "5103007": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Chapada dos Guimarães",
+   "uf": "MT"
+  },
+  "2101509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barão de Grajaú",
+   "uf": "MA"
+  },
+  "3137502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lagoa Formosa",
+   "uf": "MG"
+  },
+  "3203502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Montanha",
+   "uf": "ES"
+  },
+  "3139300": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Manga",
+   "uf": "MG"
+  },
+  "1708205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Formoso do Araguaia",
+   "uf": "TO"
+  },
+  "4309605": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Horizontina",
+   "uf": "RS"
+  },
+  "3170909": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Varzelândia",
+   "uf": "MG"
+  },
+  "1300409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Barcelos",
+   "uf": "AM"
+  },
+  "2613404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José da Coroa Grande",
+   "uf": "PE"
+  },
+  "2108009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pastos Bons",
+   "uf": "MA"
+  },
+  "2912905": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ibirataia",
+   "uf": "BA"
+  },
+  "1507979": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Terra Santa",
+   "uf": "PA"
+  },
+  "2915502": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itajuípe",
+   "uf": "BA"
+  },
+  "3153400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Presidente Olegário",
+   "uf": "MG"
+  },
+  "1200252": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Epitaciolândia",
+   "uf": "AC"
+  },
+  "4100509": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Altônia",
+   "uf": "PR"
+  },
+  "2501302": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Aroeiras",
+   "uf": "PB"
+  },
+  "1400175": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cantá",
+   "uf": "RR"
+  },
+  "2600203": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Afrânio",
+   "uf": "PE"
+  },
+  "2111607": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Raimundo das Mangabeiras",
+   "uf": "MA"
+  },
+  "1505650": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Placas",
+   "uf": "PA"
+  },
+  "2603900": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carnaíba",
+   "uf": "PE"
+  },
+  "3543006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ribeirão Branco",
+   "uf": "SP"
+  },
+  "1304302": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Urucará",
+   "uf": "AM"
+  },
+  "2932101": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ubaíra",
+   "uf": "BA"
+  },
+  "2612406": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sanharó",
+   "uf": "PE"
+  },
+  "4217501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Seara",
+   "uf": "SC"
+  },
+  "3113701": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carlos Chagas",
+   "uf": "MG"
+  },
+  "2610400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Parnamirim",
+   "uf": "PE"
+  },
+  "2311702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Reriutaba",
+   "uf": "CE"
+  },
+  "3517703": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Guará",
+   "uf": "SP"
+  },
+  "2929255": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Gabriel",
+   "uf": "BA"
+  },
+  "1713205": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Miracema do Tocantins",
+   "uf": "TO"
+  },
+  "4205803": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Garuva",
+   "uf": "SC"
+  },
+  "2107100": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Morros",
+   "uf": "MA"
+  },
+  "3529906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Miracatu",
+   "uf": "SP"
+  },
+  "3140902": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Matipó",
+   "uf": "MG"
+  },
+  "2111003": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São João Batista",
+   "uf": "MA"
+  },
+  "4211207": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Morro da Fumaça",
+   "uf": "SC"
+  },
+  "2919926": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Madre de Deus",
+   "uf": "BA"
+  },
+  "5201306": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Anicuns",
+   "uf": "GO"
+  },
+  "3540804": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Potirendaba",
+   "uf": "SP"
+  },
+  "3512001": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Colina",
+   "uf": "SP"
+  },
+  "2100204": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alcântara",
+   "uf": "MA"
+  },
+  "2704104": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Lagoa da Canoa",
+   "uf": "AL"
+  },
+  "3100906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Águas Formosas",
+   "uf": "MG"
+  },
+  "4115606": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Matelândia",
+   "uf": "PR"
+  },
+  "2903508": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Belo Campo",
+   "uf": "BA"
+  },
+  "2104552": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Governador Edison Lobão",
+   "uf": "MA"
+  },
+  "2922656": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nordestina",
+   "uf": "BA"
+  },
+  "4121208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Quitandinha",
+   "uf": "PR"
+  },
+  "5201702": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Aragarças",
+   "uf": "GO"
+  },
+  "1506161": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Rio Maria",
+   "uf": "PA"
+  },
+  "2507101": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapororoca",
+   "uf": "PB"
+  },
+  "3539103": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pirapora do Bom Jesus",
+   "uf": "SP"
+  },
+  "3104908": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Baependi",
+   "uf": "MG"
+  },
+  "2110401": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Benedito do Rio Preto",
+   "uf": "MA"
+  },
+  "2603801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Capoeiras",
+   "uf": "PE"
+  },
+  "2511400": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Picuí",
+   "uf": "PB"
+  },
+  "4217808": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Taió",
+   "uf": "SC"
+  },
+  "2805802": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Riachão do Dantas",
+   "uf": "SE"
+  },
+  "2104008": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Esperantinópolis",
+   "uf": "MA"
+  },
+  "4116208": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Morretes",
+   "uf": "PR"
+  },
+  "5217708": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pontalina",
+   "uf": "GO"
+  },
+  "2601607": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Belém do São Francisco",
+   "uf": "PE"
+  },
+  "3101904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Alpinópolis",
+   "uf": "MG"
+  },
+  "1501006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Aveiro",
+   "uf": "PA"
+  },
+  "2107704": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Paraibano",
+   "uf": "MA"
+  },
+  "2504405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Conceição",
+   "uf": "PB"
+  },
+  "1200708": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Xapuri",
+   "uf": "AC"
+  },
+  "5103304": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Comodoro",
+   "uf": "MT"
+  },
+  "4311205": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Júlio de Castilhos",
+   "uf": "RS"
+  },
+  "2902609": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Baixa Grande",
+   "uf": "BA"
+  },
+  "2304301": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Farias Brito",
+   "uf": "CE"
+  },
+  "3532405": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Nazaré Paulista",
+   "uf": "SP"
+  },
+  "2605905": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Gameleira",
+   "uf": "PE"
+  },
+  "2614006": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Serrita",
+   "uf": "PE"
+  },
+  "2600906": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Amaraji",
+   "uf": "PE"
+  },
+  "2313005": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Solonópole",
+   "uf": "CE"
+  },
+  "3203700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Muniz Freire",
+   "uf": "ES"
+  },
+  "3531506": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Monte Azul Paulista",
+   "uf": "SP"
+  },
+  "2801009": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Campo do Brito",
+   "uf": "SE"
+  },
+  "2932507": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Una",
+   "uf": "BA"
+  },
+  "4127403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Terra Roxa",
+   "uf": "PR"
+  },
+  "5204904": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Campos Belos",
+   "uf": "GO"
+  },
+  "2313955": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Varjota",
+   "uf": "CE"
+  },
+  "1501451": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Belterra",
+   "uf": "PA"
+  },
+  "4101200": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Antonina",
+   "uf": "PR"
+  },
+  "2800506": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Areia Branca",
+   "uf": "SE"
+  },
+  "1500347": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Água Azul do Norte",
+   "uf": "PA"
+  },
+  "5106372": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pedra Preta",
+   "uf": "MT"
+  },
+  "1400308": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mucajaí",
+   "uf": "RR"
+  },
+  "2931202": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Taperoá",
+   "uf": "BA"
+  },
+  "3111101": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Campina Verde",
+   "uf": "MG"
+  },
+  "1501576": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Bom Jesus do Tocantins",
+   "uf": "PA"
+  },
+  "2930402": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Serra Preta",
+   "uf": "BA"
+  },
+  "3521705": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itaberá",
+   "uf": "SP"
+  },
+  "2608453": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Lagoa do Carro",
+   "uf": "PE"
+  },
+  "2500700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São João do Rio do Peixe",
+   "uf": "PB"
+  },
+  "2929602": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Sapeaçu",
+   "uf": "BA"
+  },
+  "3547700": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Santo Anastácio",
+   "uf": "SP"
+  },
+  "2925253": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ponto Novo",
+   "uf": "BA"
+  },
+  "2611507": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Quipapá",
+   "uf": "PE"
+  },
+  "2107407": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Olho d'Água das Cunhãs",
+   "uf": "MA"
+  },
+  "2917201": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Ituaçu",
+   "uf": "BA"
+  },
+  "1503044": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Floresta do Araguaia",
+   "uf": "PA"
+  },
+  "4312658": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Não-Me-Toque",
+   "uf": "RS"
+  },
+  "2910859": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Filadélfia",
+   "uf": "BA"
+  },
+  "2910750": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Fátima",
+   "uf": "BA"
+  },
+  "2512705": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Remígio",
+   "uf": "PB"
+  },
+  "3114501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Carmópolis de Minas",
+   "uf": "MG"
+  },
+  "3138807": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Luz",
+   "uf": "MG"
+  },
+  "1505403": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ourém",
+   "uf": "PA"
+  },
+  "2305209": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Hidrolândia",
+   "uf": "CE"
+  },
+  "5107107": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São José dos Quatro Marcos",
+   "uf": "MT"
+  },
+  "1600535": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Porto Grande",
+   "uf": "AP"
+  },
+  "2306504": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itapiúna",
+   "uf": "CE"
+  },
+  "3500501": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Águas de Lindóia",
+   "uf": "SP"
+  },
+  "2111409": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "São Luís Gonzaga do Maranhão",
+   "uf": "MA"
+  },
+  "2916005": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Itanhém",
+   "uf": "BA"
+  },
+  "2406106": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Jucurutu",
+   "uf": "RN"
+  },
+  "2905404": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Cairu",
+   "uf": "BA"
+  },
+  "1707009": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Dianópolis",
+   "uf": "TO"
+  },
+  "3305406": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Sapucaia",
+   "uf": "RJ"
+  },
+  "2104099": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Formosa da Serra Negra",
+   "uf": "MA"
+  },
+  "2108801": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Pirapemas",
+   "uf": "MA"
+  },
+  "2704401": {
+   "estatuto": "não localizado até o corte",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "",
+   "achados": [],
+   "nome": "Major Isidoro",
+   "uf": "AL"
+  },
+  "3514908": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Elias Fausto",
+   "uf": "SP"
+  },
+  "2506806": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Ingá",
+   "uf": "PB"
+  },
+  "2920106": {
+   "estatuto": "não verificado",
+   "consultado_em": "2026-10-24",
+   "janela_desde": "2024-01-01",
+   "rota": "querido_diario",
+   "motivo": "município sem cobertura no acervo de diários",
+   "achados": [],
+   "nome": "Mairi",
+   "uf": "BA"
   }
  },
  "execucao": {
-  "data": "2026-10-23",
+  "data": "2026-10-24",
   "consultados": 400,
   "paradas": null,
   "estatutos": {
-   "não localizado até o corte": 173,
-   "menção localizada em diário oficial": 76,
-   "não verificado": 1270
+   "não localizado até o corte": 213,
+   "menção localizada em diário oficial": 80,
+   "não verificado": 1624
   }
  }
 }
