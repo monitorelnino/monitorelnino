@@ -164,13 +164,9 @@
           <option value="correcao">Correção de um dado já publicado</option>
         </select></label>
         <label class="fld">Onde ele está publicado<input type="url" name="link_oficial" required placeholder="Cole o link do documento"></label>
+        <label class="fld">Número e data do ato (opcional)<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
+        <label class="fld">Observações (opcional)<textarea name="observacoes" rows="3"></textarea></label>
       </div>
-      <details class="contrib-opcional">
-        <summary data-conteudo="index.resumo">Número do ato ou alguma observação sobre o documento (opcional)</summary>
-        <label class="fld">Número e data do ato<input type="text" name="numero_data" placeholder="Ex.: Decreto nº 123, de 15/07/2026"></label>
-        <label class="fld">Observações<textarea name="observacoes" rows="3"></textarea></label>
-      </details>
-      <p class="note" data-conteudo="index.formulario.nota">A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte, com fonte e canal; o que não passa não é publicado, e o motivo fica registrado.</p>
       <button type="submit" class="btn">Enviar</button>
       <p class="note u-mt-2 u-mb-0" id="contribOffline"></p>
     </form>
