@@ -102,12 +102,13 @@
   function ufs(ctx, svgId, corDe, rotuloDe) {
     const svg = d3.select('#' + svgId);
     svg.selectAll('g.ufs').remove(); svg.selectAll('g.siglas').remove();
-    // Contorno do país: as UFs, traçadas grossas por baixo; o preenchimento das UFs por cima cobre
-    // a metade interna do traço e todas as divisas, e só a borda externa fica à vista.
-    svg.selectAll('g.pais').remove();
-    svg.append('g').attr('class', 'pais').attr('aria-hidden', 'true').selectAll('path').data(ctx.geo.features).join('path')
-      .attr('d', ctx.path).attr('fill', 'none').attr('stroke', COR.muted).attr('stroke-width', 2.4);
-    const g = svg.append('g').attr('class', 'ufs');
+    // Contorno do país: o filtro dilata a silhueta das UFs juntas e a pinta por baixo, então só a
+    // borda externa aparece; as divisas internas ficam com o traço da própria UF.
+    if (!document.getElementById('contorno-pais')) document.body.insertAdjacentHTML('beforeend',
+      '<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="contorno-pais" x="-3%" y="-3%" width="106%" height="106%">'
+      + '<feMorphology in="SourceAlpha" operator="dilate" radius="1.2" result="d"/><feFlood flood-color="' + COR.muted + '"/>'
+      + '<feComposite in2="d" operator="in" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>');
+    const g = svg.append('g').attr('class', 'ufs').attr('filter', 'url(#contorno-pais)');
     // 30/09/2026: com atmosfera, o contorno da UF vem dela — o filete escuro padrão desaparece
     // num fundo noturno e grita num fundo de papel. Sem atmosfera, tudo fica como sempre foi.
     const atm = PALETA.atmosfera[svg.attr('data-atmosfera')];
