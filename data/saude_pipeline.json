@@ -9669,6 +9669,42 @@
   },
   {
    "data": "2026-10-24",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-24T07:44:38",
+   "duracao_s": 278.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-24T07:49:16",
+   "duracao_s": 61.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-24T07:50:17",
+   "duracao_s": 89.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "scripts/preservar_textos_integrais.py",
+   "inicio": "2026-10-24T07:51:46",
+   "duracao_s": 1.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
    "script": "python3",
    "inicio": "2026-10-24T02:44:43",
    "duracao_s": 7235.6,
@@ -9777,49 +9813,85 @@
   },
   {
    "data": "2026-10-24",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-24T07:44:38",
-   "duracao_s": 278.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-24T07:49:16",
-   "duracao_s": 61.1,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "preservar_evidencias.py",
-   "inicio": "2026-10-24T07:50:17",
-   "duracao_s": 89.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "scripts/preservar_textos_integrais.py",
-   "inicio": "2026-10-24T07:51:46",
-   "duracao_s": 1.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
    "script": "recalcular_mare.py",
    "inicio": "2026-10-24T08:28:14",
    "duracao_s": 3.7,
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-24T08:02:54",
+   "duracao_s": 65.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-24T08:03:59",
+   "duracao_s": 811.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-24T08:17:30",
+   "duracao_s": 1652.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-24",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-24T08:45:03",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-24",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-24T08:45:03",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-24",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-24T08:45:03",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-24T08:48:37",
+   "duracao_s": 77.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-10-24T08:49:54",
+   "duracao_s": 64.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-24T08:28:14"
+ "atualizado_em": "2026-10-24T08:49:54"
 }
