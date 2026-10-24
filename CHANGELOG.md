@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-24 · #PR · Saúde: mapa por tipo de plano estadual, ficha da UF e faixa habitual por família · Página
+
+Mapa único dos 27 planos estaduais com lista por tipo e ficha (documento, data, órgão, coordenação); medidor de emergências no topo; faixa habitual na cor da família; texto de posição; grade de 27 tiles e cartão de risco saem da Saúde. Linhas líquidas: +272/−850.
+
 ## 2026-10-24 · #PR · MARÉ Saúde v0.7: a nota da UF é o instrumento; o nacional pesa a população · Dados
 Nenhum componente da nota do Saúde depende de data: a nota do estado é o instrumento. O tempo (dias após o Boletim nº 1) e a coordenação saem como contexto de peso zero. O nacional passa a ponderar pela população (cobertura 1 nas 27 UFs): 61,3, era 34,7. Um só motor: o cálculo paralelo da v0.4 e a troca automática saem. Código −732 líquidas.
 

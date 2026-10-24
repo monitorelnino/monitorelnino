@@ -82,10 +82,10 @@ for (const id of ["mapaMonitor"]) {
     !/semana epidemiológica|\bSE ?\d/.test(txt("rotuloDengueSE")));
   teste("cartão de dengue: diz que é notificação, não caso confirmado",
     /notificaç/i.test(txt("fonteDengueSE")));
-  teste("cartões de casos trazem a ressalva de parcialidade e a frase do El Niño", (() => {
+  teste("cartões de casos trazem a ressalva de parcialidade e a linha que diz o que cada cartão mostra", (() => {
     const t = q("numerosSaude").textContent;
     return /são parciais e sobem com as notificações atrasadas/.test(t)
-      && (t.match(/não indica relação com o El Niño/g) || []).length >= 2;
+      && /Cada cartão mostra a semana mais recente/.test(t);
   })());
   teste("cartão de estados em alerta: a agregação por estado é declarada",
     /nível 3 ou 4/.test(txt("fonteUFsAlerta")) && /de 27$/.test(txt("nUFsAlerta")));
@@ -98,56 +98,37 @@ for (const id of ["mapaMonitor"]) {
   teste("cartão de emergências, se a página o tiver: do agregado de resposta",
     !q("nEmergSaude") || txt("nEmergSaude") === (_emerg == null ? "sem dado" : _emerg === 0 ? "zero" : Number(_emerg).toLocaleString("pt-BR")));
 
-  // Um mapa só por estado, e a grade com ficha. Quantos cartoes a secao tem e em que ordem
-  // e materia do contrato (verificar_conformidade); aqui se cobra o que so o DOM mostra:
-  // a prontidao esta no mapa e o risco previsto tem figura propria.
-  teste("prontidão no mapa e risco previsto na seção do estado",
-    !!q("mapaMonitor") && !!q("boxRiscoSan"));
-  teste("grade dos 27 com ficha ao clicar", (() => {
-    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
-    if (tiles.length !== 27) return false;
-    tiles.find(t => t.dataset.uf === "GO").click();
-    return q("detailSaudeConteudo").textContent.length > 40;
+  // Um mapa só por estado (24/10/2026, aprovado pela editoria): categórico por TIPO de plano, com a
+  // lista dos seis tipos e as siglas como botões, que abrem a mesma ficha que o mapa. Saíram o
+  // cartão de risco previsto e a grade dos 27 ladrilhos.
+  const U = MSd2.ufs || {};
+  const ficha = uf => { const b = [...d.querySelectorAll("#listaTiposPlano button")].find(x => x.dataset.uf === uf); if (b) b.click(); return q("detailSaudeConteudo").textContent; };
+  teste("mapa por tipo de plano: legenda com os seis tipos e lista dos seis tipos", q("legMonitor").children.length === 6
+    && q("listaTiposPlano").querySelectorAll("dt").length === 6 && !q("boxRiscoSan") && !q("regionsSaude"));
+  teste("a lista tem as 27 siglas como botões, e a soma dos tipos é 27", q("listaTiposPlano").querySelectorAll("button[data-uf]").length === 27
+    && [...q("listaTiposPlano").querySelectorAll("dt")].reduce((t, e) => t + Number(e.textContent.split("·").pop()), 0) === 27);
+  teste("a nota escreve a escada do dado, não números digitados", Object.values(MSd2.metodo.escada).every(v => txt("notaEscadaSaude").includes(String(v))));
+  // A7-33 (12/10/2026): a ficha de MS, MT e PB lançava ReferenceError ao abrir com o portão verde.
+  // Abre as 27 pela lista, sem o mapa (SE, DF, AL e RN são pequenos demais no toque), e cobra
+  // conteúdo e nenhum erro novo.
+  teste("as 27 fichas de estado abrem pela lista, sem erro de script", (() => {
+    const antes = erros.length, vazias = [];
+    for (const uf of Object.keys(U)) { try { if (ficha(uf).length <= 20) vazias.push(uf); } catch (e) { erros.push(String(e)); } }
+    return vazias.length === 0 && erros.length === antes;
   })());
-  // A7-02 (12/10/2026): a grade mostrava 0,0 em 21 cartões (o número ficava só no
-  // `data-contar`) e nenhum portão comparava o cartão com o dado. Agora: todo estado verificado
-  // ESCREVE a prontidão de `monitor_saude.json`, e o não verificado diz isso, sem número.
-  teste("grade: cada cartão escreve a prontidão do dado, não 0,0", (() => {
-    const U = MSd2.ufs || {};
-    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
-    if (tiles.length !== 27) return false;
-    return tiles.every(t => {
-      const m = U[t.dataset.uf] || {};
-      const s = t.querySelector(".tile-score");
-      if (!s) return false;
-      if (!m.verificado) return /não verificado/.test(s.textContent);
-      const escrito = parseFloat((s.textContent || "").replace(",", "."));
-      return isFinite(escrito) && Math.abs(escrito - Number(m.prontidao)) < 0.06;
-    });
+  teste("ficha: a nota do dado, o tipo de plano e o órgão", (() => {
+    const uf = Object.keys(U).find(u => U[u].verificado && U[u].instrumento.orgao), m = U[uf], t = ficha(uf);
+    return t.includes(String(m.prontidao).replace(".", ",")) && t.includes(m.instrumento.orgao) && /Tipo de plano/.test(t);
   })());
-  // A4-33 (12/10/2026): o portão abria só a ficha de GO, e MS, MT e PB lançavam ReferenceError
-  // ao abrir (A4-02) com o portão verde. Agora abre as 27 e cobra conteúdo e nenhum erro novo.
-  teste("as 27 fichas de estado abrem, sem erro de script", (() => {
-    const antes = erros.length;
-    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
-    const vazias = [];
-    for (const t of tiles) {
-      try { t.click(); } catch (e) { erros.push(String(e)); }
-      if ((q("detailSaudeConteudo").textContent || "").length <= 40) vazias.push(t.dataset.uf);
-    }
-    return tiles.length === 27 && vazias.length === 0 && erros.length === antes;
-  })());
-  /* Bloco B.3 do handover de 02/10/2026: a coordenação aparece na ficha em DUAS linhas, em
-     linguagem de leitor, e a palavra interna "antecipação" não aparece. Função não procurada diz
-     "ainda não verificada" — nunca ausência de estrutura. */
-  teste("ficha do estado: coordenação em duas linhas, sem jargão", (() => {
-    const tiles = [...d.querySelectorAll("#regionsSaude .tile")];
-    const alvo = tiles.find(t => t.dataset.uf === "GO");
-    if (!alvo) return false;
-    alvo.click();
-    const t = q("detailSaudeConteudo").textContent;
-    return /Coordenação na saúde/.test(t) && /Ligação com o governo do estado/.test(t)
-      && !/antecipação/i.test(t);
+  /* "Se preenche sozinha": a linha Coordenação lê `ufs.<UF>.coordenacao` do motor. Injeta o ato num estado
+     sem registro e exige que a ficha o mostre; sem registro, a ficha diz "ainda não verificada". */
+  teste("ficha: a coordenação aparece quando o motor a traz e diz 'ainda não verificada' quando não", (() => {
+    const livre = Object.keys(U).find(u => !U[u].coordenacao.f1.doc && !U[u].coordenacao.f2.doc);
+    const sem = ficha(livre);
+    dom.window.eval("MSAUDE.ufs." + livre + ".coordenacao.f1 = {status: 'CRIADO_CICLO', doc: 'Portaria SES de teste do portão', data: '01/10/2026', url: 'https://exemplo.gov.br/ato'}");
+    const com = ficha(livre);
+    return /ainda não verificada/.test(sem) && !/Portaria SES de teste do portão/.test(sem)
+      && /Portaria SES de teste do portão/.test(com) && /criada para o ciclo/.test(com) && !/antecipação/i.test(com);
   })());
 
   // A seção única de desfechos, no cartão escolhido: a posição na faixa habitual é a frase do
@@ -155,7 +136,7 @@ for (const id of ["mapaMonitor"]) {
   // lista por estado. Um detalhe por vez: o portão confere o que está aberto na carga.
   teste("gradeDesfechos: um cartão por desfecho com arquivo, com a posição na faixa habitual",
     q("gradeDesfechos").querySelectorAll("[data-desfecho]").length >= 1
-    && /(da faixa habitual \(|sem faixa habitual para a época)/.test(txt("gradeDesfechos"))
+    && /((acima|dentro|abaixo) da faixa habitual para a época|sem faixa habitual para a época)/.test(txt("gradeDesfechos"))
     && !/semana epidemiológica|\bSE ?\d/.test(txt("gradeDesfechos")));
   teste("mapaDesfecho: 27 estados e legenda com a ausência declarada",
     q("mapaDesfecho").querySelectorAll("path").length === 27
@@ -175,11 +156,11 @@ for (const id of ["mapaMonitor"]) {
     // nunca digitado —, e a contagem agora sai do agregado autoritativo em monitor_saude.json.
     // 16/10/2026 (lote 6, bloco 3): o título identifica o objeto — "MARÉ Saúde por estado, de 0
     // a 100" —, e quem não foi verificado é dito no subtítulo; "prontidão" sai da página.
-    teste("saúde: o mapa do índice tem o título do catálogo, sem \"prontidão\"", q("boxMonitor").querySelector(".figura-titulo").textContent === "MARÉ Saúde por estado, de 0 a 100" && !/prontid/i.test(d.querySelector("main").textContent));
+    teste("saúde: o mapa tem o título do catálogo, sem \"prontidão\"", q("boxMonitor").querySelector(".figura-titulo").textContent === "Plano estadual de saúde para o El Niño, por estado" && !/prontid/i.test(d.querySelector("main").textContent));
     // Lote 6, §2: a tabela do mapa tem as seis colunas de leitor, uma linha por UF, sem travessão.
     const linhasMon = [...d.querySelectorAll("#tblMonitor tbody tr")];
-    teste("saúde: tabela do índice com 27 linhas de 6 colunas, sem travessão nem componente interno",
-      linhasMon.length === 27 && linhasMon.every((tr) => tr.children.length === 6 && ![...tr.children].some((td) => td.textContent.trim() === "—") && !/lido\(s\)|cobertura sanit/.test(tr.textContent)));
+    teste("saúde: tabela do mapa com 27 linhas de 4 colunas, sem travessão nem componente interno",
+      linhasMon.length === 27 && linhasMon.every((tr) => tr.children.length === 4 && ![...tr.children].some((td) => td.textContent.trim() === "—") && !/lido\(s\)|cobertura sanit/.test(tr.textContent)));
     // 19/10/2026: a nota do InfoDengue saiu com os quadros por agravo (decisão da editoria) — ela
     // explicava um nível que a página não mostra mais. O que o portão continua guardando é a fonte
     // da série respiratória, que é primária e vive no cartão do topo, não no InfoGripe.

@@ -693,7 +693,8 @@
         "^Sem atualização desde ",
         "^Onde há seca ",
         "^O índice de qualidade do ar medido ",
-        "^Quanto a temperatura máxima prevista "
+        "^Quanto a temperatura máxima prevista ",
+      "^Tipo de plano localizado em cada secretaria "
       ],
       "_nota_subtitulo_estados": "Frases das legendas de seca, ar e temperatura do Monitor de riscos: texto aprovado pela editoria em 24/10/2026 (12:39), uma frase em vez de 'período · variável · unidade'. Forma de ESTADO do subtítulo, aceita literalmente: quando a fonte de alertas para por mais de 24 h, defesa-civil.js escreve 'Sem atualização desde dd/mm/aaaa hh:mm' no lugar de 'período · variável · unidade' (decisão de 02/10/2026, fuso explícito). Não é metadado e não leva '·'. O portão 17 (robustez) envelhece os alertas de propósito e exercita esta forma; o portão antigo não a via porque renderizava com a URL da inicial.",
       "credito_maximo": 160,
