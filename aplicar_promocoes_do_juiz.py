@@ -123,7 +123,12 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
     if not url:
         return None
     try:
-        from coletores_base import buscar, preservar_evidencia
+        from coletores_base import RAIZ, buscar, ler, preservar_evidencia
+        # 24/10/2026: já preservado (índice + arquivo em disco) não se baixa de novo; sem isso a
+        # passada interrompida pelo prazo refazia do zero os PDFs que já tinha guardado.
+        for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
+            if it.get("url") == url and it.get("arquivo") and (RAIZ / it["arquivo"]).exists():
+                return h
         from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
         # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
         # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
