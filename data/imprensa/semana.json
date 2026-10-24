@@ -1,9 +1,9 @@
 {
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-23",
+ "gerado_em": "2026-10-24",
  "janela_dias": 7,
  "indices": {
-  "edicao": "23/10/2026",
+  "edicao": "24/10/2026",
   "mare_legal": 40.2,
   "mare_saude": 34.7,
   "saude_verificadas": 21,
@@ -17,8 +17,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-16",
-    "fim": "2026-10-23"
+    "ini": "2026-10-17",
+    "fim": "2026-10-24"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -178,10 +178,10 @@
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "23/10/2026 06:28",
+   "referencia": "23/10/2026 22:06",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "23/10/2026 06:28",
+   "consultado_em": "23/10/2026 22:06",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -194,14 +194,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3473,
+   "valor": 3024,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "23/10/2026 06:28",
+   "referencia": "23/10/2026 22:06",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "23/10/2026 06:28",
+   "consultado_em": "23/10/2026 22:06",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -214,7 +214,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 8556,
+   "valor": 205,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -223,84 +223,44 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261023.csv",
+   "nota": "Focos do dia — focos_diario_br_20261024.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 5731
-    },
-    {
-     "uf": "MA",
-     "valor": 997
-    },
-    {
-     "uf": "PI",
-     "valor": 447
+     "valor": 150
     },
     {
      "uf": "TO",
-     "valor": 328
-    },
-    {
-     "uf": "BA",
-     "valor": 289
+     "valor": 14
     },
     {
      "uf": "MT",
-     "valor": 243
+     "valor": 13
     },
     {
-     "uf": "AM",
-     "valor": 168
-    },
-    {
-     "uf": "AP",
-     "valor": 138
-    },
-    {
-     "uf": "MS",
-     "valor": 51
-    },
-    {
-     "uf": "MG",
-     "valor": 45
-    },
-    {
-     "uf": "CE",
-     "valor": 34
-    },
-    {
-     "uf": "GO",
-     "valor": 26
-    },
-    {
-     "uf": "RR",
-     "valor": 17
+     "uf": "MA",
+     "valor": 9
     },
     {
      "uf": "PE",
-     "valor": 12
-    },
-    {
-     "uf": "SP",
-     "valor": 10
-    },
-    {
-     "uf": "RN",
      "valor": 8
     },
     {
-     "uf": "AL",
-     "valor": 6
-    },
-    {
-     "uf": "PB",
+     "uf": "AM",
      "valor": 4
     },
     {
-     "uf": "RO",
+     "uf": "BA",
+     "valor": 4
+    },
+    {
+     "uf": "GO",
      "valor": 2
+    },
+    {
+     "uf": "PI",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
@@ -311,7 +271,7 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 3.9,
+   "valor": 3.0,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
@@ -322,7 +282,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 39.0 °C contra a média de 35.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 32.0 °C contra a média de 29.0 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -478,5 +438,5 @@
    "quando ele saiu em relação ao primeiro boletim"
   ]
  },
- "texto_pronto": "Edição de 23/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 34,7 de 100. Na semana, nenhum município publicou plano para o El Niño e 20 municípios decretaram situação de emergência ou calamidade; 863.860 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 24/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 34,7 de 100. Na semana, nenhum município publicou plano para o El Niño e 20 municípios decretaram situação de emergência ou calamidade; 863.860 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

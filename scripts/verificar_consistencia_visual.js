@@ -59,10 +59,14 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
     const porFamilia = {};   // família → { assinatura → [página…] }
     const tamanhos = {};     // font-size computado → páginas
     for (const p of PAGINAS) {
-      const page = await ctx.newPage();
+      const page = await ctx.newPage(); const erros = []; page.on("pageerror", e => erros.push(e.message));
       await page.route(/vlibras\.gov\.br|fonts\.g|netlify/, r => r.abort());
       try { await page.goto(`http://127.0.0.1:${porta}/${p}`, { waitUntil: "networkidle", timeout: 30000 }); } catch (e) { falhas.push(`${p}@${largura}: não carregou`); await page.close(); continue; }
       await page.waitForTimeout(900);
+      // absorvido do antigo portão móvel (verificar_movel.js): erro de JS e banner de erro de carregamento
+      const banner = await page.evaluate(() => [...document.querySelectorAll("div")].some(d => /Erro ao carregar os dados/.test(d.textContent || "") && d.children.length === 0));
+      if (banner) falhas.push(`${p}@${largura}: banner de erro de carregamento`);
+      const errosReais = erros.filter(e => !/jsPDF|VLibras|fonts/i.test(e)); if (errosReais.length) falhas.push(`${p}@${largura}: erro JS — ${errosReais[0].slice(0, 100)}`);
       const r = await page.evaluate(({ FAMILIAS, PROPS, SO_TIPOGRAFIA, PROPS_TIPO }) => {
         const vis = el => { const cs = getComputedStyle(el); if (cs.display === "none" || cs.visibility === "hidden") return false; const det = el.closest("details"); if (det && !det.open && !el.closest("summary")) return false; if (el.closest("[hidden]")) return false; return el.getClientRects().length > 0; };
         const out = { familias: {}, tamanhos: {}, figuras: [], creditos: [], numeros: [], scroll: document.documentElement.scrollWidth > innerWidth + 1 };
