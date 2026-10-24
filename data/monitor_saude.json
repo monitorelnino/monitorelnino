@@ -1,12 +1,12 @@
 {
- "_governanca": "MARÉ · Saúde v0.6: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Dois componentes, metade cada: instrumento estadual e antecipação. Índice nacional = média das 27 UFs, como o MARÉ Legal; a UF sem documento lido entra com crédito 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil (população em município cujo plano localizado trata a saúde) é camada de peso zero, publicada ao lado e fora da média: o plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §118.",
- "versao": "0.6",
+ "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Dois componentes, metade cada: instrumento estadual e cobertura populacional (população em município cujo plano de contingência localizado trata a saúde). Nenhum componente depende de data: o tempo é publicado à parte, de peso zero, e a coordenação na saúde entra na nota, um terço cada, quando as 27 UFs a tiverem verificada. Índice nacional = média das 27 UFs, como o MARÉ Legal; a UF sem documento lido entra com instrumento 0 e a cobertura que tem, e o estatuto dela viaja junto. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §119.",
+ "versao": "0.7",
  "gerado_em": "24/10/2026",
  "corte": "02/10/2026",
  "metodo": {
   "pesos": {
    "instrumento": 0.5,
-   "antecipacao": 0.5
+   "cobertura": 0.5
   },
   "escada": {
    "NOVO": 100,
@@ -16,9 +16,9 @@
    "LAC": 0
   },
   "cobertura": {
-   "nome": "saúde no plano municipal de defesa civil",
-   "peso": 0,
-   "entra_na_nota": false,
+   "nome": "cobertura populacional: saúde no plano municipal de defesa civil",
+   "peso": 0.5,
+   "entra_na_nota": true,
    "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF",
    "creditos_municipais": {
     "plano": 1.0,
@@ -36,26 +36,46 @@
    },
    "plano_sem_leitura": "0 (contado em planos_sem_leitura)"
   },
-  "antecipacao": {
-   "NOVO/READ antes de 29/06/2026": 100,
-   "NOVO/READ até 29/07/2026": 60,
-   "NOVO/READ até 30/09/2026": 50,
-   "NOVO/READ de 01/10/2026 em diante ou sem data": 30,
-   "VIG edição 2025/2026 (recorrente que cobre o risco)": 40,
-   "VIG edição anterior": 20,
-   "ELAB": 20,
-   "sem instrumento": 0,
-   "plano de adaptação decenal (AdaptaSUS-UF)": "não pontua — estrutura"
+  "tempo": {
+   "peso": 0,
+   "entra_na_nota": false,
+   "indicador": "dias_apos_boletim_1",
+   "ancora": "29/06/2026",
+   "regra": "dias entre o Boletim nº 1 e o ato do ciclo (NOVO ou READ); negativo = anterior ao boletim; sem dia fechado, sem número"
   },
-  "ancoras": {
-   "boletim_1": "29/06/2026",
-   "boletim_1_mais_30": "29/07/2026",
-   "janela_critica_ms": "01/10/2026"
+  "coordenacao": {
+   "peso": 0,
+   "entra_na_nota": false,
+   "escada_f1": {
+    "CRIADO_CICLO": 100,
+    "REATIVADO_CICLO": 65,
+    "PERMANENTE": 45,
+    "ANUNCIADO": 35,
+    "LAC": 0
+   },
+   "escada_f2": {
+    "NOMEADA_COM_ATRIBUICAO": 100,
+    "LISTADA_SEM_ATRIBUICAO": 50,
+    "LAC": 0
+   },
+   "pesos_das_funcoes": {
+    "f1": 0.5,
+    "f2": 0.5
+   },
+   "proxima_etapa": {
+    "versao": "0.8",
+    "pesos": {
+     "instrumento": 0.3333,
+     "coordenacao": 0.3333,
+     "cobertura": 0.3333
+    },
+    "condicao": "as 27 UFs com as duas funções verificadas (resumo.coordenacao_verificadas)"
+   }
   },
   "agregacao_nacional": {
    "formula": "Σ prontidao_nacional das 27 UFs / 27",
    "denominador": 27,
-   "uf_sem_documento_lido": "instrumento 0, antecipação 0 (credito_nacional)"
+   "uf_sem_documento_lido": "instrumento 0 e a cobertura da UF (credito_nacional)"
   },
   "faixas": {
    "estágio inicial": "0–25",
@@ -119,20 +139,23 @@
   "verificadas": 21,
   "nao_verificadas": 6,
   "por_faixa": {
-   "em construção": 17,
-   "avançado": 4
+   "estágio inicial": 14,
+   "avançado": 1,
+   "em construção": 3,
+   "consolidado": 3
   },
   "planos_municipais_lidos": 94,
   "planos_municipais_sem_leitura": 81,
   "denominador": 27,
-  "indice_nacional": 34.7,
+  "indice_nacional": 23.4,
   "por_estatuto": {
    "plano_localizado": 21,
    "plano_nao_localizado": 0,
    "nao_verificado": 6
   },
   "ufs_com_plano_localizado": 21,
-  "ufs_sem_plano_localizado": 6
+  "ufs_sem_plano_localizado": 6,
+  "coordenacao_verificadas": 2
  },
  "ufs": {
   "AC": {
@@ -149,16 +172,39 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": null,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": null,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -179,8 +225,8 @@
   },
   "AL": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 22.6,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -191,16 +237,39 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.1,
     "cobertura_pct": 0.1,
     "pop_coberta": 2289,
     "planos_lidos": 1,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -217,11 +286,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 22.6
   },
   "AM": {
    "verificado": true,
-   "prontidao": 100.0,
+   "prontidao": 76.2,
    "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
@@ -233,16 +302,39 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 52.4,
     "cobertura_pct": 52.4,
     "pop_coberta": 2063547,
     "planos_lidos": 1,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 100,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": -21
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -259,7 +351,7 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 100.0
+   "prontidao_nacional": 76.2
   },
   "AP": {
    "verificado": false,
@@ -275,16 +367,39 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": null,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": null,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -305,8 +420,8 @@
   },
   "BA": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 24.7,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -317,16 +432,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 4.4,
     "cobertura_pct": 4.4,
     "pop_coberta": 616279,
     "planos_lidos": 1,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -343,12 +481,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 24.7
   },
   "CE": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -359,16 +497,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -385,12 +546,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 22.5
   },
   "DF": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -401,16 +562,39 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -427,11 +611,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 32.5
+   "prontidao_nacional": 22.5
   },
   "ES": {
    "verificado": true,
-   "prontidao": 32.5,
+   "prontidao": 49.4,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -443,16 +627,39 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 53.8,
     "cobertura_pct": 53.8,
     "pop_coberta": 2062265,
     "planos_lidos": 72,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -464,12 +671,12 @@
    },
    "risco_projetado": [],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 32.5
+   "prontidao_nacional": 49.4
   },
   "GO": {
    "verificado": true,
-   "prontidao": 75.0,
-   "faixa": "avançado",
+   "prontidao": 50.0,
+   "faixa": "consolidado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -480,16 +687,39 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 50,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": 59
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -506,7 +736,7 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 75.0
+   "prontidao_nacional": 50.0
   },
   "MA": {
    "verificado": false,
@@ -522,16 +752,39 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": null,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 1,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": null,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -552,8 +805,8 @@
   },
   "MG": {
    "verificado": true,
-   "prontidao": 75.0,
-   "faixa": "avançado",
+   "prontidao": 50.0,
+   "faixa": "consolidado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -564,16 +817,39 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 50,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": 71
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -590,12 +866,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 75.0
+   "prontidao_nacional": 50.0
   },
   "MS": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -606,16 +882,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": true,
+    "pontos": 75.0,
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "pontos": 100,
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "citado": null
+    },
+    "f2": {
+     "status": "LISTADA_SEM_ATRIBUICAO",
+     "pontos": 50,
+     "doc": "Resolução SES/MS nº 1041/2026",
+     "data": "03/09/2026",
+     "url": "https://assets.imprensaoficial.ms.gov.br/public/prd/Diario%20Oficial/2026/09/03/DO12270_03_09_2026.pdf",
+     "citado": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci"
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -632,12 +931,12 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 22.5
   },
   "MT": {
    "verificado": true,
-   "prontidao": 27.5,
-   "faixa": "em construção",
+   "prontidao": 17.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -648,16 +947,39 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "PERMANENTE",
+     "pontos": null,
+     "doc": "Portaria nº 0195/2026/GBSES",
+     "data": "01/01/2026",
+     "url": "https://www.saude.mt.gov.br/storage/files/MmMbtQx9n43VPO23mMookK6LdUyD6h4QfMOvqx44.pdf",
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -674,12 +996,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 27.5
+   "prontidao_nacional": 17.5
   },
   "PA": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -690,16 +1012,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -716,12 +1061,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 22.5
   },
   "PB": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -732,16 +1077,39 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": true,
+    "pontos": 100.0,
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "pontos": 100,
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "citado": null
+    },
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "pontos": 100,
+     "doc": "Portaria nº 764/2026 – GS/SES/PB",
+     "data": "03/09/2026",
+     "url": "https://auniao.pb.gov.br/servicos/doe/2026/setembro/diario-oficial-09-09-2026-portal.pdf",
+     "citado": "planos de contingên- cia relacionados aos impactos do fenômeno El Niño; O SECRETÁRIO DE ESTADO DA SAÚDE, no uso de suas atribuições legais, IX – promover o compartilhamento oportuno de informações entre os setores envolvidos; CONSIDERANDO a"
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -758,11 +1126,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 32.5
+   "prontidao_nacional": 22.5
   },
   "PE": {
    "verificado": true,
-   "prontidao": 42.5,
+   "prontidao": 27.4,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -774,16 +1142,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 9.9,
     "cobertura_pct": 9.9,
     "pop_coberta": 893352,
     "planos_lidos": 1,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -800,12 +1191,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 27.4
   },
   "PI": {
    "verificado": true,
-   "prontidao": 27.5,
-   "faixa": "em construção",
+   "prontidao": 17.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -816,16 +1207,39 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -842,11 +1256,11 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 27.5
+   "prontidao_nacional": 17.5
   },
   "PR": {
    "verificado": true,
-   "prontidao": 32.5,
+   "prontidao": 26.2,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
@@ -858,16 +1272,39 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 7.4,
     "cobertura_pct": 7.4,
     "pop_coberta": 845017,
     "planos_lidos": 3,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -884,12 +1321,12 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 32.5
+   "prontidao_nacional": 26.2
   },
   "RJ": {
    "verificado": true,
-   "prontidao": 27.5,
-   "faixa": "em construção",
+   "prontidao": 22.1,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -900,16 +1337,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 9.2,
     "cobertura_pct": 9.2,
     "pop_coberta": 1470993,
     "planos_lidos": 4,
     "planos_sem_leitura": 2
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -921,7 +1381,7 @@
    },
    "risco_projetado": [],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 27.5
+   "prontidao_nacional": 22.1
   },
   "RN": {
    "verificado": false,
@@ -937,16 +1397,39 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": null,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": null,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -967,8 +1450,8 @@
   },
   "RO": {
    "verificado": true,
-   "prontidao": 27.5,
-   "faixa": "em construção",
+   "prontidao": 17.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "ELAB",
     "pontos": 35,
@@ -979,16 +1462,39 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -1005,7 +1511,7 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 27.5
+   "prontidao_nacional": 17.5
   },
   "RR": {
    "verificado": false,
@@ -1021,16 +1527,39 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": null,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": null,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -1051,8 +1580,8 @@
   },
   "RS": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -1063,16 +1592,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 3022,
     "planos_lidos": 1,
     "planos_sem_leitura": 76
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -1089,12 +1641,12 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 22.5
   },
   "SC": {
    "verificado": true,
-   "prontidao": 42.5,
-   "faixa": "em construção",
+   "prontidao": 22.7,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -1105,16 +1657,39 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.4,
     "cobertura_pct": 0.4,
     "pop_coberta": 29086,
     "planos_lidos": 4,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 40,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -1131,12 +1706,12 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 42.5
+   "prontidao_nacional": 22.7
   },
   "SE": {
    "verificado": true,
-   "prontidao": 32.5,
-   "faixa": "em construção",
+   "prontidao": 22.5,
+   "faixa": "estágio inicial",
    "instrumento": {
     "status": "VIG",
     "pontos": 45,
@@ -1147,16 +1722,39 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 1,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": 20,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -1173,12 +1771,12 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 32.5
+   "prontidao_nacional": 22.5
   },
   "SP": {
    "verificado": true,
-   "prontidao": 75.0,
-   "faixa": "avançado",
+   "prontidao": 50.2,
+   "faixa": "consolidado",
    "instrumento": {
     "status": "NOVO",
     "pontos": 100,
@@ -1189,16 +1787,39 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": 0.4,
     "cobertura_pct": 0.4,
     "pop_coberta": 193092,
     "planos_lidos": 4,
     "planos_sem_leitura": 3
    },
-   "antecipacao": {
-    "pontos": 50,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": 63
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {
@@ -1215,7 +1836,7 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 75.0
+   "prontidao_nacional": 50.2
   },
   "TO": {
    "verificado": false,
@@ -1231,16 +1852,39 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0,
+    "peso": 0.5,
+    "pontos": null,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
     "planos_sem_leitura": 0
    },
-   "antecipacao": {
-    "pontos": null,
+   "tempo": {
+    "peso": 0,
     "boletim_1": "29/06/2026",
-    "janela_critica_inicio": "01/10/2026"
+    "dias_apos_boletim_1": null
+   },
+   "coordenacao": {
+    "peso": 0,
+    "entra_na_nota": false,
+    "verificada": false,
+    "pontos": null,
+    "f1": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    },
+    "f2": {
+     "status": "NAO_VERIFICADO",
+     "pontos": null,
+     "doc": null,
+     "data": null,
+     "url": null,
+     "citado": null
+    }
    },
    "camada": "ciclo",
    "risco_atual": {

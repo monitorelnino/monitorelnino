@@ -63,11 +63,13 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             st = (m.get("instrumento") or {}).get("status")
             if st == "NAO_VERIFICADO" and m.get("prontidao") is not None: erros.append(f"(m) monitor_saude: {uf} não verificada com número")
             if st != "NAO_VERIFICADO" and m.get("prontidao") is not None:
-                pi = (m.get("instrumento") or {}).get("pontos"); pa = (m.get("antecipacao") or {}).get("pontos")
-                # v0.6 (22/10/2026, METODOLOGIA §119): dois componentes, metade cada; a cobertura municipal é camada de peso zero
-                if pi is None or pa is None or abs(m["prontidao"] - round((pi + pa) / 2.0, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos dois componentes")
+                pi = (m.get("instrumento") or {}).get("pontos"); pc = (m.get("cobertura") or {}).get("pontos")
+                # v0.7 (24/10/2026, METODOLOGIA §119): dois componentes, metade cada, nenhum datado; tempo e coordenação são contexto de peso zero
+                if pi is None or pc is None or abs(m["prontidao"] - round((pi + pc) / 2.0, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos dois componentes")
             _c = m.get("cobertura") or {}
-            if _c.get("peso") != 0 or "pontos" in _c or not (0 <= (_c.get("cobertura_pct") or 0) <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura municipal fora da camada de peso zero")
+            if _c.get("peso") != 0.5 or not (0 <= (_c.get("cobertura_pct") or 0) <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura populacional fora do componente de peso 0,5")
+            if "antecipacao" in m or (m.get("tempo") or {}).get("peso") != 0 or (m.get("coordenacao") or {}).get("peso") != 0:
+                erros.append(f"(m) monitor_saude: {uf} componente datado na nota ou tempo/coordenação com peso")
             # (v) 18/09/2026 (handover ponto cego saúde, §3.5): requer_reverificacao/motivo_reverificacao
             # são sinalizadores internos (gatilho por marco federal) — nunca podem vazar ao índice público.
             if "requer_reverificacao" in m or "motivo_reverificacao" in m:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Robustez do componente "coordenação" do MARÉ Saúde v0.4 (bloco A.5 e B.4, 02/10/2026).
+"""Robustez do componente "coordenação" do MARÉ Saúde, para a v0.8 (bloco A.5 e B.4, 02/10/2026; lê o motor único em 24/10/2026).
 
 Quatro testes, na ordem do manual OCDE/JRC para índices compostos, sobre as mesmas 27 unidades:
 
@@ -57,7 +57,7 @@ def coordenacao(p1, p2, agregacao="aritmetica", pesos=(0.5, 0.5)):
 
 
 def prontidao(instrumento, coord, cobertura):
-    """Prontidão v0.4 com um terço cada. Função pura; `None` em qualquer componente não verificado."""
+    """Prontidão v0.8 (instrumento + coordenação + cobertura) com um terço cada. Função pura; `None` em qualquer componente não verificado."""
     if instrumento is None or coord is None:
         return None
     return round((instrumento + coord + float(cobertura or 0.0)) / 3, 1)
@@ -158,39 +158,19 @@ def monte_carlo(ufs: dict, rodadas: int = 2000, degrau: float = 15.0, semente: i
 
 
 def ler_monitor():
-    """Lê o monitor publicado e devolve `{uf: {...}}`. Única porta de leitura do script."""
-    from gerar_monitor_saude import F1_SCORE, F2_SCORE, INSTRUMENTO_SCORE_V04
-    caminho = RAIZ / "data" / "monitor_saude_v04.json"
-    if not caminho.exists():
-        caminho = RAIZ / "data" / "monitor_saude.json"
+    """Lê o monitor publicado (motor único) e devolve `{uf: {...}}`. Única porta de leitura do script."""
+    caminho = RAIZ / "data" / "monitor_saude.json"
     if not caminho.exists():
         return {}
-    d = json.loads(caminho.read_text(encoding="utf-8"))
     fora = {}
-    for uf, v in (d.get("uf") or d.get("ufs") or {}).items():
-        coord = v.get("coordenacao") or {}
-        f1 = (coord.get("f1") or {}) if isinstance(coord, dict) else {}
-        f2 = (coord.get("f2") or {}) if isinstance(coord, dict) else {}
-        # O arquivo da v0.4 guarda o degrau em `instrumento.degrau`; a forma antiga usava `status`.
-        # Ler só uma das duas devolvia None e o teste de robustez saía sem número.
-        bruto_inst = v.get("instrumento")
-        inst = (bruto_inst.get("degrau") or bruto_inst.get("status")) if isinstance(bruto_inst, dict) else bruto_inst
-        fora[uf] = {
-            "f1": F1_SCORE.get(f1.get("status")) if f1.get("status") else None,
-            "f2": F2_SCORE.get(f2.get("status")) if f2.get("status") else None,
-            "f2_status": f2.get("status"),
-            "instrumento": INSTRUMENTO_SCORE_V04.get(inst),
-            # A cobertura vem como objeto (`cobertura.pontos`) no arquivo da v0.4.
-            "cobertura": ((v.get("cobertura") or {}).get("pontos")
-                          if isinstance(v.get("cobertura"), dict)
-                          else (v.get("cobertura_pontos") or v.get("cobertura"))),
-            # 03/10/2026: a marca "sem ato de aprovação localizado" do instrumento estadual, que a
-            # variante de 70% desconta. Ela pode estar no objeto do instrumento ou na raiz da UF,
-            # porque os dois caminhos de aplicação (juiz e descoberta estadual) a escrevem.
-            "sem_ato_de_aprovacao": bool(
-                (bruto_inst.get("sem_ato_de_aprovacao") if isinstance(bruto_inst, dict) else False)
-                or v.get("sem_ato_de_aprovacao")),
-        }
+    for uf, v in (json.loads(caminho.read_text(encoding="utf-8")).get("ufs") or {}).items():
+        co = v.get("coordenacao") or {}
+        f1, f2 = co.get("f1") or {}, co.get("f2") or {}
+        inst = v.get("instrumento") or {}
+        fora[uf] = {"f1": f1.get("pontos"), "f2": f2.get("pontos"), "f2_status": f2.get("status"),
+                    "instrumento": inst.get("pontos"), "cobertura": (v.get("cobertura") or {}).get("pontos"),
+                    # marca "sem ato de aprovação localizado" (03/10/2026), que a variante de 70% desconta
+                    "sem_ato_de_aprovacao": bool(inst.get("sem_ato_de_aprovacao") or v.get("sem_ato_de_aprovacao"))}
     return fora
 
 

@@ -2184,7 +2184,7 @@ coordenação **não tinha verificação em nenhum dos 27 estados** — o compon
 Trocar agora deixaria duas saídas, e as duas são proibidas: somar um terço de zero, que é afirmar
 que o estado não tem sala de situação porque ninguém procurou, ou publicar a página sem número, que
 é apagar o índice que existe. Vence a prova. A v0.3 segue no ar e a v0.4 é calculada **em paralelo**,
-em `data/monitor_saude_v04.json`, que a página não lê. A troca passa a ser ajuste de leitura quando
+em `data/monitor_saude_v04.json`, que a página não lê **[arquivo e cálculo paralelo absorvidos no motor único em 24/10/2026, §121]**. A troca passa a ser ajuste de leitura quando
 a coordenação estiver verificada — e quem a verifica é a bateria de `coletar_saude_estadual.py`,
 cujas oito consultas incluem `sala de situação` e `centro de operações de emergência`.
 
@@ -2880,6 +2880,8 @@ true` seria uma afirmação sobre o passado que ninguém confere; o log **é** o
 **0 de 27 com os quatro canais rodados** — porque o canal do diário estadual está indisponível em 22
 UFs e o canal de fontes declaradas só tem endereço para MT. Ou seja: hoje nenhuma UF pode ser
 marcada "não localizado", e o relatório diz isso UF por UF, com o motivo de cada uma.
+
+**[Superado em 24/10/2026 pelo §121: a troca automática saiu; a coordenação entra na nota, na v0.8, quando as 27 UFs a tiverem verificada.]**
 
 **A troca para a v0.4 acontece sozinha quando a condição se cumprir.** `trocar_para_v04.py` lê o
 pedido que o fechamento grava (`data/saude_troca_v04.json`) e, sem `trocar: true`, **não altera
@@ -4327,7 +4329,7 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **Efeito, medido.** Em 22/10/2026: 21 UFs com plano localizado, 0 com plano não localizado em bateria completa, 6 não verificadas. Índice nacional (27): 34,7; média das 21 verificadas: 44,6, que multiplicada por 21 e dividida por 27 dá o nacional. A diferença vem de seis UFs que entram com crédito 0 por não terem documento lido, não de piora de nenhuma UF medida. Provas: a conta refeita à mão bate com o derivado; os estatutos somam 27; o autoteste de `gerar_monitor_saude.py` e o portão `verificar_saude.py` (m) falham se uma UF sair da conta ou se `indice_nacional` não for a média.
 
-**O que não muda.** Peso zero no MARÉ (o motor do Legal não lê este arquivo). A v0.4 (coordenação) segue calculada em paralelo em `monitor_saude_v04.json`; `trocar_para_v04.py` não troca mais sozinho, porque a v0.5 o antecede, e a troca para os componentes da v0.4 depende de decisão da editoria sobre o crédito da coordenação sem documento. Resposta chegada por LAI melhora o número; não é mais condição para que ele exista.
+**O que não muda.** Peso zero no MARÉ (o motor do Legal não lê este arquivo). **[Superado em 24/10/2026 pelo §121: não há mais cálculo paralelo nem troca automática.]** A v0.4 (coordenação) seguia calculada em paralelo em `monitor_saude_v04.json`; `trocar_para_v04.py` não trocava mais sozinho, porque a v0.5 o antecede, e a troca para os componentes da v0.4 depende de decisão da editoria sobre o crédito da coordenação sem documento. Resposta chegada por LAI melhora o número; não é mais condição para que ele exista.
 
 ## 116. O elo noturno dos desfechos do SUS (21/10/2026)
 
@@ -4359,6 +4361,8 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 ## 119. MARÉ Saúde v0.6: dois componentes e a camada municipal de peso zero (22/10/2026)
 
+**[Substituído em 24/10/2026 pelo §121: a antecipação sai da nota e a cobertura populacional volta a ela.]**
+
 **Decisão.** A editoria decidiu em 22/10/2026, 06:09, que o MARÉ Saúde tem dois componentes, metade cada, instrumento estadual e antecipação, e que a cobertura municipal fica fora da nota. `monitor_saude.json` traz `versao: "0.6"`.
 
 **A conta.** Prontidão da UF verificada = 0,5 × instrumento + 0,5 × antecipação (escadas do §31). Índice nacional = soma de `prontidao_nacional` das 27 UFs dividida por 27 (§115); UF sem documento lido entra com instrumento 0 e antecipação 0, e o estatuto dela viaja junto. Em 22/10/2026: índice nacional 34,7; média das 21 UFs verificadas 44,6.
@@ -4367,7 +4371,7 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **Por que fica fora.** Não há dever legal de plano municipal de saúde para o fenômeno; o único plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede. O Saúde não conta o mesmo documento duas vezes.
 
-**O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal. Peso zero do Saúde no MARÉ (o motor não lê este arquivo). A escala de coordenação e o instrumento por degraus da v0.4 (§68) seguem calculados em paralelo em `monitor_saude_v04.json`, sem troca automática.
+**O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal. Peso zero do Saúde no MARÉ (o motor não lê este arquivo). A escala de coordenação da v0.4 (§68) passa ao motor único no §121.
 
 **Provas.** Conta refeita à mão para as 27 UFs; autoteste que reprova se `PESOS` ganhar a cobertura ou se a nota receber o argumento; portão `verificar_saude.py` (m): prontidão igual à média de dois componentes e `cobertura.peso` igual a zero, sem `pontos`.
 
@@ -4394,3 +4398,26 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **O que não está verificado, e vem dito no arquivo.** A UF é a do nome do arquivo; se é a de ocorrência ou a de residência, a medição (`coletar_sim.py --sondar`) ainda não foi lida. O atraso do registro do óbito também não: os dois meses mais recentes são marcados parciais por precaução. Nenhuma célula foi conferida contra o TabNet.
 
 **O que não muda.** Peso zero no MARÉ; o Monitor não atribui óbitos ao El Niño. O Registro Civil (`obitos.json`) segue como sinal precoce sem causa.
+
+## 121. MARÉ Saúde v0.7: instrumento e cobertura populacional, o tempo à parte e a coordenação como próxima entrada (24/10/2026)
+
+**Decisão.** A editoria decidiu em 24/10/2026, 17:33 e 17:39, que a nota do MARÉ Saúde não depende de data: sai a antecipação, fica a cobertura populacional, e a coordenação na saúde entra quando estiver verificada nas 27 UFs. `monitor_saude.json` traz `versao: "0.7"`. É o único cálculo do Saúde: o arquivo e o gerador paralelos da v0.4 (§68) e a troca automática (§84) foram retirados, e o que deles ainda valia (a escala da coordenação e o indicador de tempo) vive no mesmo motor.
+
+**A nota.** Prontidão da UF com instrumento verificado = 0,5 × instrumento + 0,5 × cobertura populacional, de 0 a 100, nas faixas do site (estágio inicial 0–25, em construção 25–50, consolidado 50–70, avançado 70–100).
+
+1. *Instrumento estadual.* Plano estadual de saúde para os riscos do ciclo (arboviroses, calor, água, fumaça), na escada do §31: novo 100 · readequado 65 · vigente-recorrente 45 · em elaboração 35 · não localizado, com bateria datada, 0. O plano estadual de adaptação do setor saúde, de horizonte decenal, é estrutura e não pontua.
+2. *Cobertura populacional.* Percentual da população da UF (Censo 2022) que vive em município cujo plano de contingência de defesa civil localizado trata a saúde: 100 × Σ(população do município × crédito municipal do MARÉ da categoria do plano × degrau de leitura `saude_no_plano` ÷ 5) ÷ população da UF. Plano ainda não lido pesa 0 e a contagem de planos sem leitura é publicada ao lado: só o que foi lido conta.
+
+Nenhum componente depende de data, de edição ou de antecedência: a lei pede plano existente e atualizado, não antecedência, e publicar cedo é atributo de conduta, não do arcabouço (mesma razão do §68 e do indicador do Legal).
+
+**O índice nacional.** Soma de `prontidao_nacional` das 27 UFs dividida por 27, sem excluir nenhuma (§115). A UF sem documento lido não recebe número próprio; entra na média com instrumento 0 e a cobertura que tem, e o estatuto dela (`plano_localizado`, `plano_nao_localizado`, `nao_verificado`; a soma é 27) viaja junto.
+
+**O tempo, à parte e de peso zero.** Para o instrumento do ciclo (novo ou readequado) com data de dia fechado, o arquivo traz `dias_apos_boletim_1`: dias entre o Boletim nº 1 do Painel El Niño (29/06/2026) e o ato, negativo quando o ato é anterior. Aparece como linha de contexto no cartão do estado, rotulada, e não entra em nota nem em média. Mês solto não vira dia, e plano recorrente, em elaboração ou não localizado não tem o indicador: lacuna declarada, nunca dia estimado.
+
+**A coordenação na saúde, próxima entrada (v0.8).** Construto formativo de duas funções (§91): comando interno da saúde, por estrutura própria da secretaria (sala de situação, centro de operações, comitê), e ligação da saúde com a coordenação do estado (comitê ou sala de governo com a secretaria nomeada). Mede-se a função, não o órgão; um ato pode cumprir as duas. Escada da primeira: criado no ciclo 100 · reativado 65 · permanente 45 · anunciado 35 · não localizado 0; da segunda: nomeada com atribuição 100 · apenas listada 50 · não localizada 0. Pesos iguais e média aritmética (faltar uma função reduz, não zera); a média geométrica serve só ao teste de robustez (`robustez_saude.py`). Base: Lei 8.080, art. 17; Lei 12.608, art. 3º, parágrafo único, e art. 7º. Hoje a coordenação é publicada por UF, com o documento que a sustenta, e tem peso zero, porque UF sem as duas funções verificadas levaria 0 e a nota cairia por falta de coleta, não de preparo. Quando `resumo.coordenacao_verificadas` chegar a 27, a nota passa a instrumento, coordenação e cobertura, um terço cada, com a versão `0.8` declarada antes de publicada.
+
+**Efeito, medido.** Em 24/10/2026: 21 UFs com instrumento verificado e 6 não verificadas; índice nacional 23,4 (era 34,7 na v0.6); média das 21 verificadas 30,1. A queda vem de a cobertura populacional, hoje baixa porque a maior parte dos planos municipais ainda não foi lida (94 lidos, 81 sem leitura), entrar na nota no lugar de um componente de data em que os estados pontuavam alto. Não é piora de nenhuma UF: nenhum documento mudou.
+
+**Provas.** Conta refeita à mão para as 27 UFs; o autoteste de `gerar_monitor_saude.py` reprova se a nota receber argumento de data ou se `PESOS` ganhar componente fora de instrumento e cobertura; o portão `verificar_saude.py` (m) exige prontidão igual à média dos dois componentes, `cobertura.peso` igual a 0,5 e nenhuma antecipação no arquivo; `definicao_dos_indices` lê `metodo.pesos` do arquivo, de modo que a Imprensa e a abertura da Saúde descrevem os dois componentes sem texto escrito à mão.
+
+**O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal. Peso zero do Saúde no MARÉ (o motor do Legal não lê este arquivo).
