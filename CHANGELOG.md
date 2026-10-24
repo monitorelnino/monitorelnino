@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Inicial: abertura do cartão da cidade e varredura sem a frase final · Site
+
+Dois pedidos aprovados da editoria aplicados pelo catálogo (`aplicar_edicoes.py`): abertura do cartão "Sua cidade" reescrita e saída da frase "Ainda não verificamos a cidade com todas as fontes" da varredura. Cópia estática do HTML alinhada. Linhas de código 0/0.
+
 ## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
 
 Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\"` do frontmatter (o link saía com aspas literais).
