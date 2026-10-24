@@ -275,6 +275,8 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .figura--mapa .figura-midia > svg{width:100%; height:100%; display:block;}
 /* 15/09/2026: figura dupla (mapa + gráfico no mesmo quadro, uma legenda) — duas colunas a partir do tablet, uma no celular */
 .figura--dupla .figura-midia{aspect-ratio:auto; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--esp-grade); align-items:center;}
+/* Mapa mais largo que os dados ao lado (24/10/2026, listas federais): os pontos crescem com o mapa. */
+.figura--dupla-larga .figura-midia{grid-template-columns:minmax(0, 3fr) minmax(0, 2fr);}
 .figura--dupla .midia-mapa{aspect-ratio:var(--mapa-proporcao); min-width:0;}
 .figura--dupla .midia-mapa > svg{width:100%; height:100%; display:block;}
 .figura--dupla .canvas-wrap{height:var(--grafico-altura); min-width:0;}

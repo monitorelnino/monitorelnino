@@ -268,46 +268,28 @@
       "funcao_narrativa": "a leitura semanal mais recente do Pacífico, ao lado do índice que classifica o episódio",
       "acao_relacionada": null
     },
-    "monitor-de-riscos.html#boxListaIndicados": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado a União indicou ao cadastro nacional de áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A)?",
+    "monitor-de-riscos.html#boxListas": {
+      "tipo": "mapa de pontos",
+      "pergunta_que_responde": "Que municípios constam da lista federal de deslizamento e enchente (Lei 12.340, art. 3º-A), da lista de prioritários do fogo na Amazônia, ou das duas?",
       "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os 2.095 municípios indicados pela União (Nota Técnica nº 2/2025 e nº 1/2023; cadastro nacional, MIDR)",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Brasil",
+      "universo": "os municípios indicados pela União ao cadastro nacional de áreas suscetíveis (Nota Técnica nº 2/2025 e nº 1/2023, MIDR e Casa Civil) e os da lista de prioritários do Ministério do Meio Ambiente em vigor",
+      "unidade_de_analise": "município (ponto no centro do município)",
+      "territorio": "Brasil; a lista do fogo cobre só a Amazônia Legal",
       "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado indicados pela União",
-      "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
+      "variavel_principal": "lista em que o município consta: deslizamento ou enchente, fogo, ou as duas",
+      "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023; Ministério do Meio Ambiente, portaria vigente",
       "conclusoes_permitidas": [
-        "quantos municípios de cada estado constam da lista federal"
+        "quantos municípios constam de cada lista e das duas",
+        "onde, no território, estão os municípios de cada lista"
       ],
       "conclusoes_nao_permitidas": [
         "que constar da lista é estar em emergência",
-        "que município fora da lista não tem risco: a lista é de um risco específico"
+        "que município fora da lista não tem risco: cada lista é de um risco específico",
+        "que a ausência do ponto de fogo fora da Amazônia Legal significa que o município não seja prioritário: a lista não o cobre",
+        "que município grande conte mais que pequeno: o ponto fica no centro de cada um"
       ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado do cadastro federal, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado. 'Plano localizado' exclui plano em elaboração, estrutura (comitê ou gabinete) e cobertura estadual."
-    },
-    "monitor-de-riscos.html#boxListaFogo": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado constam da lista federal de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia?",
-      "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os municípios da lista de prioritários do Ministério do Meio Ambiente em vigor",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Amazônia Legal",
-      "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado na lista de prioritários",
-      "fonte": "Ministério do Meio Ambiente, portaria vigente",
-      "conclusoes_permitidas": [
-        "quantos municípios de cada estado constam da lista em vigor"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que constar da lista mede o desmatamento ou o fogo do ciclo",
-        "que município fora da lista não tem risco de fogo",
-        "que a lista cobre o país: ela é da Amazônia Legal"
-      ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado da lista em vigor do Ministério do Meio Ambiente, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
+      "funcao_narrativa": "contexto oficial do risco, no fim da seção de chuva, seca e fogo do Monitor de riscos",
+      "metodologia": "Marcas por código IBGE de enquadramento_card.json; posição do cadastro de municípios do IBGE. Município nas duas listas é desenhado por cima."
     },
     "defesa-civil.html#boxEmergencias": {
       "tipo": "mapa de pontos",

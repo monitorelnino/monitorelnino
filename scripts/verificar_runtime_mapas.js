@@ -199,9 +199,9 @@ setTimeout(() => {
   setTimeout(() => {
     const qm = id => mr.dom.window.document.getElementById(id);
     teste("Monitor de riscos: zero erros de runtime", mr.erros.length === 0);
-    const LISTAS = ["mapListaIndicados", "mapListaFogo"];
-    teste("Monitor de riscos: as três listas federais têm os 27 territórios, sem ponto por município",
-      LISTAS.every(id => qm(id) && qm(id).querySelectorAll("path.uf-path").length === 27 && !qm(id).querySelector("circle")));
+    const ML = qm("mapaListas");
+    teste("Monitor de riscos: o mapa das listas federais tem os 27 territórios e um ponto por município, em três camadas",
+      ML && ML.querySelectorAll("path.uf-path").length === 27 && ["chuva", "fogo", "ambas"].every(k => ML.querySelector("path.densos-" + k)));
     const visivel = qm("conteudo").textContent;
     regraDoCadastro("Monitor de riscos", visivel);
     teste("Monitor de riscos: a lista de indicados é nomeada pelas fontes certas (MIDR e Casa Civil)",
