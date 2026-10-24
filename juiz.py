@@ -511,7 +511,10 @@ def trecho_em_volta(texto: str, achado, largura: int = 160) -> str:
     if i < 0:
         return ""
     a = max(0, i - largura // 2)
-    return re.sub(r"\s+", " ", texto[a:a + largura]).strip()
+    # 24/10/2026: o trecho vai para o registro público; planilha de contatos do RS trouxe CPF de
+    # coordenador municipal e o portão de segredos barrou. Redação na porta, como `gravar_texto`.
+    from coletores_base import redigir_dados_pessoais
+    return redigir_dados_pessoais(re.sub(r"\s+", " ", texto[a:a + largura]).strip())[0]
 
 
 # =============================================================================================

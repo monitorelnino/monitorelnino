@@ -129,7 +129,13 @@ def ler_pdfs(limite: int = 40, alvo: str | None = None) -> int:
         # numa captura provam coisas diferentes. A reserva não se aplica a recusa explícita
         # (401, 402, 403, 429, 451): ali a fonte disse não, e não se dá a volta por fora.
         try:
-            bruto, procedencia = buscar_com_procedencia(u, timeout=90)
+            # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa);
+            # sem ela as 16 leituras de PDF acima de 5 MB do RS (sem cópia binária) ficavam sem texto, logo sem prova.
+            from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
+            if HOST_SHAREPOINT_RS in u:
+                bruto, procedencia = _ler_sharepoint_rs(u, 90), "fonte direta"
+            else:
+                bruto, procedencia = buscar_com_procedencia(u, timeout=90)
         except urllib.error.HTTPError as e:
             if e.code in (401, 403):
                 recusados += 1; log_busca("site_municipal", 2, [u], "acesso recusado", resultados=f"HTTP {e.code} ao ler PDF — candidato a pedido de LAI")
