@@ -225,6 +225,9 @@ def coletar() -> int:
                           "meses_parciais": [m for m in meses_lidos if m >= ALVOS[mp["id"]]["primeiro_mes"] and mes_parcial(m, dia)],
                           "por_mes": dict(sorted(a["por_mes"].items())),
                           "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito"}
+        # A fonte não separa o crédito extraordinário da dotação ordinária: empenhado acima do valor do ato é
+        # esperado e não é erro de soma; o marcador deixa a página não pôr os dois lado a lado (24/10/2026).
+        mp["execucao"]["acima_do_valor_do_ato"] = acima_do_valor(mp.get("valor"), a["empenhado"])
         for org in mp["orgaos"]:
             cod = next((c for c, s in ALVOS[mp["id"]]["orgaos"].items() if s["nome"] == org["nome"]), None)
             if cod:
@@ -294,6 +297,10 @@ def ler_risco_declarado(mp: dict, buscar_fn=None) -> dict | None:
     return None
 
 
+def acima_do_valor(valor, empenhado) -> bool:
+    return isinstance(valor, (int, float)) and empenhado > valor
+
+
 def autoteste() -> int:
     L = [{"Código Órgão Superior": "44000", "Código Órgão Subordinado": "20701", "Código Ação": "214M", "Nome Unidade Gestora": "IBAMA - SUPERINTENDENCIA DO AMAPA/AP", "UF": "", "Valor Empenhado (R$)": "1.000,50", "Valor Liquidado (R$)": "500,00", "Valor Pago (R$)": "400,00"},
          {"Código Órgão Superior": "44000", "Código Órgão Subordinado": "20701", "Código Ação": "214N", "Nome Unidade Gestora": "IBAMA-INST.BRAS.", "UF": "", "Valor Empenhado (R$)": "-200,00", "Valor Liquidado (R$)": "0,00", "Valor Pago (R$)": "0,00"},
@@ -350,7 +357,9 @@ def autoteste() -> int:
             return ler_risco_declarado({"numero": "MP 1", "fontes": ["https://www.congressonacional.leg.br/x"]}, falha) is None
         finally:
             cb.registrar_lacuna = orig; globals()["registrar_lacuna"] = antes
-    return rodar_autoteste({"§9.3: risco declarado pela ementa; sem família, risco nulo com o trecho": t12,
+    def t14(): return acima_do_valor(337.0, 376.0) and not acima_do_valor(337.0, 300.0) and not acima_do_valor(None, 1.0)
+    return rodar_autoteste({"empenhado da ação acima do valor do ato é marcado, nunca escondido": t14,
+                            "§9.3: risco declarado pela ementa; sem família, risco nulo com o trecho": t12,
                             "§9.3: falha de rede não escreve risco": t13,
                             "agrega por MP e órgão (empenhado/pago)": t1, "destino por UF (nome da UG ou coluna)": t2,
                             "MP 1.384: MDS por órgão superior, Conab por subordinado": t3, "negativo: ação fora dos alvos ignorada": t4,

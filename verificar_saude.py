@@ -63,7 +63,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             st = (m.get("instrumento") or {}).get("status")
             if st == "NAO_VERIFICADO" and m.get("prontidao") is not None: erros.append(f"(m) monitor_saude: {uf} não verificada com número")
             if st != "NAO_VERIFICADO" and m.get("prontidao") is not None:
-                # v0.7 (24/10/2026, METODOLOGIA §121): a nota da UF é o instrumento; a cobertura municipal é camada de peso zero; tempo e coordenação são contexto de peso zero
+                # v0.7 (24/10/2026, METODOLOGIA §123): a nota da UF é o instrumento; a cobertura municipal é camada de peso zero; tempo e coordenação são contexto de peso zero
                 if m["prontidao"] != (m.get("instrumento") or {}).get("pontos"): erros.append(f"(m) monitor_saude: {uf} prontidão não é a nota do instrumento")
             _c = m.get("cobertura") or {}
             if _c.get("peso") != 0 or "pontos" in _c or not (0 <= (_c.get("cobertura_pct") or 0) <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura municipal fora da camada de peso zero")
@@ -74,7 +74,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             # são sinalizadores internos (gatilho por marco federal) — nunca podem vazar ao índice público.
             if "requer_reverificacao" in m or "motivo_reverificacao" in m:
                 erros.append(f"(v) {uf}: sinalizador interno de reverificação vazou para monitor_saude.json")
-        # (m) v0.7 (24/10/2026, METODOLOGIA §121): o índice nacional é Σ(nota × população × c_uf) ÷ Σ população, nenhuma das 27 UFs fora da conta;
+        # (m) v0.7 (24/10/2026, METODOLOGIA §123): o índice nacional é Σ(nota × população × c_uf) ÷ Σ população, nenhuma das 27 UFs fora da conta;
         # os estatutos somam 27 e o número que a página lê bate com a conta refeita aqui.
         _r, _u = (_ms.get("resumo") or {}), (_ms.get("ufs") or {})
         _pn = [(_u.get(uf) or {}).get("prontidao_nacional") for uf in _u]

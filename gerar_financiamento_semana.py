@@ -38,6 +38,13 @@ BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.js
                   "monitor_saude.json"}
 
 
+def emergencia_no_ciclo(v: dict) -> float:
+    """Repasse do FNS ligado a emergência desde o início do ciclo (29/06/2026). O FNS é mensal e não traz a
+    data do repasse: entram só os meses inteiros a partir do ciclo (o recorte conservador, julho em diante)."""
+    mes0 = INICIO_CICLO.strftime("%Y%m") if INICIO_CICLO.day == 1 else (INICIO_CICLO.replace(day=28) + timedelta(days=4)).strftime("%Y%m")
+    return round(sum(float(x[1] or 0.0) for k, x in ((v or {}).get("meses") or {}).items() if k >= mes0), 2)
+
+
 def mes_legivel(aaaamm: str) -> str:
     """'202608' → 'agosto de 2026'. Entrada malformada devolve ela mesma, sem levantar."""
     if not (isinstance(aaaamm, str) and len(aaaamm) == 6 and aaaamm.isdigit()):
@@ -303,6 +310,7 @@ def topo(mps: dict, comp: dict, rec: dict, fns_mun: dict, corte: datetime) -> li
                         "reais", "El Niño 2026/2027", "Texto das medidas provisórias e atos estaduais",
                         detalhe=f"{len(origens)} origens") if origens else
                  sem_coleta("anunciado_atos", "reais", "nenhum ato com valor lido até o corte", "Atos oficiais"))
+    if origens: anunciado["n_atos"] = len(origens)
     ex = _execucoes(mps)
     pagos = [float(m["execucao"]["pago"]) for m in ex if isinstance(m["execucao"].get("pago"), (int, float))]
     fonte_ex = "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)"
@@ -339,10 +347,10 @@ def topo(mps: dict, comp: dict, rec: dict, fns_mun: dict, corte: datetime) -> li
     fonte_fns = "Portal da Transparência, Transferências de Recursos (Fundo Nacional de Saúde)"
     if mun:
         meses = sorted({k for v in mun.values() for k in (v.get("meses") or {})})
-        com = {k: float(v.get("emergencia") or 0.0) for k, v in mun.items() if float(v.get("emergencia") or 0.0) > 0}
-        sus = cartao("sus_emergencia", round(sum(com.values()), 2), "reais",
-                     f"{mes_legivel(meses[0])} a {mes_legivel(meses[-1])}" if meses else None, fonte_fns,
-                     detalhe=f"{len(com)} municípios; fundos municipais, linhas cujo nome cita emergência")
+        com = {k: e for k, v in mun.items() if (e := emergencia_no_ciclo(v)) > 0}
+        sus = cartao("sus_emergencia", round(sum(com.values()), 2), "reais", f"desde {INICIO_CICLO.strftime('%d/%m/%Y')}", fonte_fns,
+                     detalhe=f"{len(com)} municípios; fundos municipais, linhas cujo nome cita emergência; "
+                             "meses inteiros a partir de julho (o FNS não traz a data do repasse)")
         sus.update(municipios=len(com), ultimo_mes=meses[-1] if meses else None)
     else:
         sus = sem_coleta("sus_emergencia", "reais", "os repasses do FNS por município não foram coletados até o corte", fonte_fns)
@@ -363,7 +371,7 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
                     "ato": ("Portaria " + str(ult.get("portaria"))) if ult.get("portaria") else None, "data": ult.get("data"), "url": ult.get("url"),
                     "n_atos": len(atos)})
     for ib, v in ((fns_mun or {}).get("municipios") or {}).items():
-        e = float(v.get("emergencia") or 0.0)
+        e = emergencia_no_ciclo(v)
         if e > 0:
             pts.append({"ibge": str(ib).zfill(7), "origem": "saude", "valor": round(e, 2), "ato": "repasse do FNS ligado a emergência",
                         "data": None, "url": (fns_mun or {}).get("fonte"), "n_atos": None})
@@ -474,13 +482,15 @@ def _autoteste() -> int:
                     "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 90.0}}}]}
     COMP = {"itens": [{"valor_total": 1000.0, "instrumento": "Anúncio; MP nº 1.367/2026"}, {"valor_total": 20.0, "instrumento": "Fundo estadual"},
                       {"valor_total": None, "instrumento": "Lei"}]}
-    FNS = {"municipios": {"1": {"meses": {"202601": [5, 0], "202609": [5, 2]}, "emergencia": 2.0}, "2": {"meses": {}, "emergencia": 0.0}}}
+    FNS = {"municipios": {"1": {"meses": {"202601": [5, 0], "202606": [5, 7], "202609": [5, 2]}, "emergencia": 9.0}, "2": {"meses": {}, "emergencia": 0.0}}}
     t = {x["id"]: x for x in topo(MPS, COMP, base, FNS, corte)}
-    ok("topo: anunciado nao soma o anuncio que contem a MP", t["anunciado_atos"]["valor"] == 320.0 and t["anunciado_atos"]["detalhe"] == "2 origens")
+    ok("topo: anunciado nao soma o anuncio que contem a MP", t["anunciado_atos"]["valor"] == 320.0 and t["anunciado_atos"]["detalhe"] == "2 origens" and t["anunciado_atos"]["n_atos"] == 2)
     ok("topo: pago e variacao do mes parcial", t["pago_ate_agora"]["valor"] == 100.0 and t["pago_ate_agora"]["variacao_mes"] == 40.0)
     ok("topo: gasto direto em % do pago", t["gasto_direto_uniao"]["valor"] == 90.0)
     ok("topo: defesa civil desde 29/06 e SUS de emergencia com municipios",
        t["defesa_civil_ciclo"]["valor"] == 1000.0 and t["sus_emergencia"]["valor"] == 2.0 and t["sus_emergencia"]["municipios"] == 1)
+    ok("SUS: repasse de junho (antes de 29/06) fica fora do total e do mapa",
+       t["sus_emergencia"]["periodo"] == "desde 29/06/2026" and emergencia_no_ciclo(FNS["municipios"]["1"]) == 2.0)
     ok("topo sem dado declara lacuna em cada cartao", all(x["sem_coleta"] for x in topo({}, {}, {}, {}, corte)))
     ok("mes a mes leva o risco que o ato declara (ou None)", mes_a_mes(MPS)[0]["risco_declarado"] is None)
     ok("mes a mes marca o parcial", mes_a_mes(MPS)[0]["meses"] == [{"mes": "202609", "pago": 60.0, "parcial": False},
