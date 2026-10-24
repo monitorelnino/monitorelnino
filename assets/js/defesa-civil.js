@@ -282,7 +282,7 @@ function __init(totalMunicipios){
     .map(f => ({cor: cor(f.cor), rotulo: f.rotulo + ' · ' + n(porFamilia[f.chave])}))
     .concat(porFamilia[EM_CLASSIFICACAO] ? [{cor: cor('cinza-quente'), rotulo: 'em classificação até o corte · ' + n(porFamilia[EM_CLASSIFICACAO])}] : [])
     .concat(soDecreto ? [{cor: cor('cinza-quente'), rotulo: 'só decreto, sem reconhecimento · ' + n(soDecreto), vazado: true}] : []));
-  molde('subEmergencias', 'defesa-civil.emergencias.mapa.legenda', {n: decretados.length, data: corteDecretos || 'sem registro'});
+  molde('subMunicipios', 'defesa-civil.emergencias.mapa.municipios', {n: n(decretados.length)});
   MonitorMapas.credito('boxEmergencias', {fontes: [FONTE_DECRETO, FONTE_DIARIOS], data: corteDecretos});
 
   /* Barras por tipo de evento declarado: valor na ponta; "Tipo não declarado no ato" e "Outros tipos
@@ -301,7 +301,9 @@ function __init(totalMunicipios){
     const max = Math.max.apply(null, barras.map(b => b[1]).concat([1]));
     alvoBarras.innerHTML = barras.length ? '<div class="barras-painel">' + barras.map(b => '<div class="barra-linha"><span class="barra-rotulo">' + esc(b[0])
       + '</span><span class="barra-trilho"><span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.01, b[1] / max).toFixed(4)
-      + ');background:' + cor(familiaDe(b[0]).cor) + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('') + '</div>'
+      + ');background:' + cor(familiaDe(b[0]).cor) + '"></span><span class="barra-valor">' + n(b[1]) + '</span></span></div>').join('')
+      + '<div class="barra-linha barra-linha--total"><span class="barra-rotulo">' + esc(texto_molde('defesa-civil.emergencias.barras.total')) + '</span><span class="barra-trilho"><span class="barra-valor">'
+      + n(barras.reduce((s, b) => s + b[1], 0)) + '</span></span></div></div>'
       : '<div class="lacuna">Evento declarado em classificação até o corte (' + esc(corteDecretos || 'sem registro') + ').</div>';
   }
 }
