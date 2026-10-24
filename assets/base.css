@@ -1385,3 +1385,11 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .dica-fonte{color:var(--muted); font-size:var(--fs-caption);}
 .lista-estados{margin:var(--sp-2) 0 0; padding-left:var(--sp-4); font-size:var(--fs-caption);
   line-height:var(--lh-caption); color:var(--ink);}
+/* Escada de gravidade do cartão de avisos: filete na cor do grau, nome, contagem e barra proporcional. */
+.escada{list-style:none; margin:0; padding:0; display:grid; gap:var(--sp-3);}
+.escada li{display:grid; grid-template-columns:1fr auto; gap:0 var(--sp-3); padding-left:var(--sp-3); border-left:4px solid var(--cor);}
+.escada-grau{font-weight:600; font-size:var(--fs-small);}
+.escada-n{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h3); line-height:var(--lh-h3); text-align:right;}
+.escada-barra{grid-column:1 / -1; height:6px; background:var(--gauge-trilho); border-radius:var(--radius);}
+.escada-barra i{display:block; height:100%; background:var(--cor); border-radius:var(--radius);}
+.escada-fen{grid-column:1 / -1; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}

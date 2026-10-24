@@ -61,47 +61,27 @@
       "acao_relacionada": null
     },
     "monitor-de-riscos.html#boxAvisos": {
-      "tipo": "tabela",
-      "pergunta_que_responde": "Quantos municípios estão cobertos por aviso de tempo severo do INMET em vigor, por grau do aviso?",
+      "tipo": "mapa e lista",
+      "pergunta_que_responde": "Que municípios estão sob aviso do INMET ou alerta do Cemaden em vigor, e em que grau ou nível?",
       "dimensao_da_preparacao": "alerta em vigor",
       "universo": "os municípios do Brasil, na consulta mais recente",
-      "unidade_de_analise": "município, agregado por grau",
+      "unidade_de_analise": "município; na escada, agregado pelo maior grau do aviso; na lista, por nível do alerta e estado",
       "territorio": "Brasil",
       "periodo": "consulta mais recente, com data e hora declaradas",
-      "variavel_principal": "número de municípios cobertos por aviso em vigor, por grau",
+      "variavel_principal": "maior grau de aviso do INMET por município e nível do alerta do Cemaden",
       "denominador": null,
-      "fonte": "INMET, avisos meteorológicos",
-      "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes com aviso de cada grau; um município com avisos de dois graus conta nos dois. Grau e fenômeno no vocabulário do INMET.",
+      "fonte": "INMET, avisos meteorológicos; Cemaden, alertas vigentes",
+      "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes, cada um no maior grau de aviso que tem; a posição é a do cadastro de municípios. Grau, fenômeno e nível no vocabulário de cada órgão.",
       "conclusoes_permitidas": [
         "quantos municípios estão sob aviso de cada grau na consulta declarada",
-        "quais estados e fenômenos aparecem em cada grau"
+        "quais fenômenos aparecem em cada grau",
+        "quais municípios estão sob alerta do Cemaden e em que nível"
       ],
       "conclusoes_nao_permitidas": [
         "que o aviso mede dano ocorrido",
         "comparação entre estados como medida de risco",
-        "que município sem aviso esteja seguro"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxCemaden": {
-      "tipo": "tabela",
-      "pergunta_que_responde": "Quais municípios estão sob alerta do Cemaden em vigor agora, e em que nível?",
-      "dimensao_da_preparacao": "alerta em vigor",
-      "universo": "os municípios com alerta do Cemaden em vigor na consulta mais recente",
-      "unidade_de_analise": "município, agrupado por nível e estado",
-      "territorio": "Brasil",
-      "periodo": "consulta mais recente, com data e hora declaradas",
-      "variavel_principal": "nível do alerta e municípios nomeados",
-      "denominador": null,
-      "fonte": "Cemaden, alertas vigentes",
-      "metodologia": "Lista direta do arquivo de alertas vigentes; nível no vocabulário do Cemaden.",
-      "conclusoes_permitidas": [
-        "quais municípios estão sob alerta e em que nível, na consulta declarada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o estado inteiro está sob alerta: o alerta é municipal",
-        "que a ausência de alerta indica segurança"
+        "que município sem aviso ou sem alerta esteja seguro",
+        "que o estado inteiro está sob alerta do Cemaden: o alerta é municipal"
       ],
       "funcao_narrativa": "evidência do agora",
       "acao_relacionada": null
