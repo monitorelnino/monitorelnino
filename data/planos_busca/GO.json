@@ -16,6 +16,276 @@
     "motivo": "HTTP 404",
     "dominio": "www.goiania.go.gov.br"
    }
+  },
+  "5201108": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22An%C3%A1polis%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22An%C3%A1polis%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "anapolis.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=anapolis.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "anapolis.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=anapolis.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "anapolis.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22An%C3%A1polis%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "anapolis.go.gov.br"
+   }
+  },
+  "5201405": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Aparecida+de+Goi%C3%A2nia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Aparecida+de+Goi%C3%A2nia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aparecida+de+Goi%C3%A2nia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "5204508": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Caldas+Novas%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Caldas+Novas%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "caldasnovas.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=caldasnovas.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "caldasnovas.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=caldasnovas.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "caldasnovas.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Caldas+Novas%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "caldasnovas.go.gov.br"
+   }
+  },
+  "5205109": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Catal%C3%A3o%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Catal%C3%A3o%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "catalao.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=catalao.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "catalao.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=catalao.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "catalao.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Catal%C3%A3o%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "catalao.go.gov.br"
+   }
+  },
+  "5205497": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cidade+Ocidental%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cidade+Ocidental%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "cidadeocidental.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cidadeocidental.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "TimeoutError: The read operation timed out",
+    "dominio": "cidadeocidental.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cidadeocidental.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "cidadeocidental.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cidade+Ocidental%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "cidadeocidental.go.gov.br"
+   }
+  },
+  "5206206": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cristalina%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cristalina%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "cristalina.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cristalina.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "cristalina.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cristalina.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cristalina.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cristalina%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "cristalina.go.gov.br"
+   }
+  },
+  "5208004": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Formosa%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Formosa%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "formosa.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=formosa.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "formosa.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=formosa.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "formosa.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Formosa%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "formosa.go.gov.br"
+   }
+  },
+  "5208806": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Goianira%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Goianira%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "goianira.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=goianira.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "goianira.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=goianira.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "goianira.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goianira%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "goianira.go.gov.br"
+   }
+  },
+  "5208608": {
+   "S13": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Goian%C3%A9sia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Goian%C3%A9sia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "goianesia.go.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=goianesia.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "goianesia.go.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=goianesia.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "goianesia.go.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-23",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goian%C3%A9sia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "goianesia.go.gov.br"
+   }
   }
  }
 }
