@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · RS: onze nomes de arquivo que o casamento deixava órfão perdem três · Coleta
+
+A pasta da Casa Militar/RS trazia 484 municípios casados e 11 órfãos; hífen do nome oficial ("Não-Me-Toque") e a palavra "atualizado" no arquivo impediam o casamento. Passam a casar Não-Me-Toque, Jaguarão e Santana do Livramento (487 casados, 8 órfãos declarados: nome ambíguo ou grafia distante). Linhas líquidas +4 no script; autoteste com um caso novo.
+
 ## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
 
 `aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.
