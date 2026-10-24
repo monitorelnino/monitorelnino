@@ -29,8 +29,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c68d53ed"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=ea82cfcf">
+<link rel="stylesheet" href="assets/tokens.css?v=8c4b27a2">
+<link rel="stylesheet" href="assets/base.css?v=80023389">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/10/2026 · Monitor de riscos sem a ponte; rodapé e formulário ajustados · Site</dt>
+      <dd>Na Situação atual saem o parágrafo de resumo e a linha &quot;primeira leitura&quot; do cartão do ar. Saem a ponte para a metodologia e a oração &quot;se completa na quinta&quot;; a leitura semanal fica só com a semana. Ciclo em curso nos dois gráficos do Pacífico em laranja avermelhado. Aberturas aprovadas do Monitor de riscos e da inicial. Rodapé: &quot;Atualização · Corte · Coleta · Publicação&quot; vem do catálogo. Formulário: observações em linha inteira.</dd>
       <dt>24/10/2026 · Rodapé novo em todas as páginas · Site</dt>
       <dd>Rodapé igual em todas as páginas: logotipo, &quot;por Patrícia Ferrini&quot; (com link), Instagram, LinkedIn, X, BlueSky e Medium, nome do MARÉ e as quatro datas (atualização, corte, coleta, publicação) numa linha só, preenchidas por `assets/js/rodape.js`. A Imprensa leva a linha dos pedidos no lugar das datas. ## 2026-10-24 · Inicial: abertura do cartão da cidade e varredura sem a frase final · Site Dois pedidos aprovados da editoria aplicados pelo catálogo (`aplicar_edicoes.py`): abertura do cartão &quot;Sua cidade&quot; reescrita e saída da frase &quot;Ainda não verificamos a cidade com todas as fontes&quot; da varredura. Cópia estática do HTML alinhada. Linhas de código 0/0. ## 2026-10-24 · Textos da inicial: cidade, varredura e formulário · Site Três pedidos aprovados da editoria aplicados pelo catálogo: abertura de &quot;Sua cidade&quot; com `{n_municipios}`, fim da frase &quot;Ainda não verificamos a cidade com todas as fontes&quot; na varredura e abertura nova do formulário (sem &quot;apenas&quot;: a regra de ênfase vence o texto aprovado). A nota do formulário sai; os dois campos opcionais deixam de ser recolhidos e levam &quot;(opcional)&quot; no rótulo. Código 0.</dd>
       <dt>24/10/2026 · Abertura da inicial reescrita pela editoria · Site</dt>
@@ -165,8 +167,6 @@
       <dd>Os seis cartões do topo passam por uma definição única de valor. Zero medido sai como &quot;nenhum&quot;, a palavra que a página já usava; campo que o arquivo não traz deixa o cartão na classe nomeada, em vez de escrever zero; e o cartão de decretos deixa de depender do número para decidir se houve coleta. Três caminhos que o dado de hoje não exercita, provados no navegador com os arquivos interceptados.</dd>
       <dt>21/10/2026 · Ausência em palavras no medidor e na tabela de focos</dt>
       <dd>Quando o índice do MARÉ Saúde não tem valor, o número grande do medidor passa a dizer &quot;sem coleta&quot; em vez de travessão. Na tabela de focos por estado, a coluna do dia anterior diz &quot;sem arquivo&quot; quando aquele dia não foi lido, palavra que a mesma figura já usava duas linhas acima. Nenhum número muda: são os caminhos de ausência, que o dado de hoje não alcança.</dd>
-      <dt>21/10/2026 · Para gestores: &quot;não localizado&quot; no lugar de &quot;sem coleta&quot;</dt>
-      <dd>No cartão de recursos federais da consulta municipal, o município que não consta num arquivo lido passa a aparecer como &quot;não localizado até o corte&quot;, a mesma frase da página de Financiamento; &quot;sem coleta até o corte&quot; fica para quando o arquivo não veio. São 40 municípios: 38 fora da lista do FNS, Brasília e Fernando de Noronha fora da lista da União.</dd>
     </dl>
   </section>
 </main>
@@ -176,7 +176,7 @@
     <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patrícia Ferrini</a></span>
     <ul class="rodape-redes"><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/Patty_Ferrini" target="_blank" rel="noopener">X</a></li><li><a href="https://bsky.app/profile/patty-ferrini.bsky.social" target="_blank" rel="noopener">BlueSky</a></li><li><a href="https://medium.com/@pattyferrini" target="_blank" rel="noopener">Medium</a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha">Última atualização: <span id="metaAtualizado">24/10/2026</span> · Corte dos dados: <span id="corteDados">24/10/2026</span> · Última coleta: <span id="metaColeta">24/10/2026</span> · Última publicação: <span id="metaPublicacao">24/10/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">24/10/2026</span> · Corte <span id="corteDados">24/10/2026</span> · Coleta <span id="metaColeta">24/10/2026</span> · Publicação <span id="metaPublicacao">24/10/2026</span></span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
@@ -192,7 +192,7 @@
     <div class="vw-plugin-top-wrapper"></div>
   </div>
 </div>
-<script src="assets/js/rodape.js?v=a28183d3" defer></script>
+<script src="assets/js/rodape.js?v=5fc12424" defer></script>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 
 

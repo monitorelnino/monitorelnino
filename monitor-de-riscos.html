@@ -29,8 +29,8 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=ea82cfcf">
+<link rel="stylesheet" href="assets/tokens.css?v=8c4b27a2">
+<link rel="stylesheet" href="assets/base.css?v=80023389">
 <script src="assets/mapas.js?v=c68d53ed"></script>
 </head>
 <body class="pagina-dados">
@@ -45,8 +45,8 @@
   </header>
 <main id="conteudo">
   <h1 data-conteudo="monitor-de-riscos.titulo_da_pagina">Monitor de riscos</h1>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente medem durante o El Niño 2026/2027, em duas partes.</p>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, mês a mês e na mesma escala, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente monitoram durante o El Niño 2026/2027, em duas partes.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra a situação atual. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
   <p class="hint" data-conteudo="monitor-de-riscos.abertura.3">A segunda parte mostra o que já acontece no Brasil: o risco previsto para cada estado até março de 2027, segundo os boletins oficiais; a seca observada em cada estado; os focos de fogo das últimas 24 horas; a qualidade do ar medida nas capitais com estação oficial e a temperatura máxima prevista nas capitais; e os avisos de tempo severo em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta.</p>
   <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
@@ -55,7 +55,6 @@
        número sai do dado já coletado, com órgão e data; variação só onde há leitura anterior gravada. -->
   <div class="panel" id="situacao">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao">Situação atual</h2>
-    <p class="hint" id="stResumo" data-conteudo="monitor-de-riscos.situacao.abertura" aria-live="polite">Condição de El Niño declarada pelos órgãos federais em 29/06/2026.</p>
     <div class="grade-numeros grade-numeros--compacta" id="situacaoGrade">
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="roni_mais_recente">
         <p class="cartao-numero-rotulo" id="stRoniRotulo" data-conteudo="monitor-de-riscos.situacao.roni.rotulo">RONI mais recente</p>
@@ -118,7 +117,6 @@
         <p class="figura-leitura" id="nino34Leitura"></p>
       </figure>
     </div>
-    <p class="hint" data-conteudo-html="monitor-de-riscos.pacifico.ponte_metodologia">Para especialistas: o índice ONI está na <a href="METODOLOGIA.pdf">metodologia</a> →</p>
   </div>
 
   <div class="panel" id="riscos">
@@ -239,13 +237,13 @@
     <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patrícia Ferrini</a></span>
     <ul class="rodape-redes"><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/Patty_Ferrini" target="_blank" rel="noopener">X</a></li><li><a href="https://bsky.app/profile/patty-ferrini.bsky.social" target="_blank" rel="noopener">BlueSky</a></li><li><a href="https://medium.com/@pattyferrini" target="_blank" rel="noopener">Medium</a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha">Última atualização: <span id="metaAtualizado">24/10/2026</span> · Corte dos dados: <span id="corteDados">24/10/2026</span> · Última coleta: <span id="metaColeta">24/10/2026</span> · Última publicação: <span id="metaPublicacao">24/10/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">24/10/2026</span> · Corte <span id="corteDados">24/10/2026</span> · Coleta <span id="metaColeta">24/10/2026</span> · Publicação <span id="metaPublicacao">24/10/2026</span></span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/monitor-de-riscos.js?v=f5dbd83a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/monitor-de-riscos.js?v=495ce981" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
@@ -255,7 +253,7 @@
     <div class="vw-plugin-top-wrapper"></div>
   </div>
 </div>
-<script src="assets/js/rodape.js?v=a28183d3" defer></script>
+<script src="assets/js/rodape.js?v=5fc12424" defer></script>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 
 </body>
