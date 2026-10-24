@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 A pasta de PLANCONs da Casa Militar/RS passa a dar a autoridade do plano sem ato, como o repositório do ES e o de SE: o juiz já não exige domínio do município para documento do repositório estadual declarado. SharePoint fora da pasta continua recusado. Pesos e créditos do índice não mudam.
 
+## 2026-10-24 · #1042 · Busca de planos: a fonte sai do run pelo saldo de erros, não só por erros seguidos
+
+Causa: o contador zerava a cada acerto, e o Common Crawl, que errou 113 de 154 consultas em 23/10, nunca chegava ao teto de cinco seguidos; cada erro custa dois minutos do run. Agora o erro soma um e qualquer outra situação tira um. Só código (+9/−2); nenhum dado muda.
+
 ## 2026-10-24 · #1040 · Portão móvel funde-se na consistência visual
 
 `verificar_movel.js` abria as mesmas páginas a 390 px que `verificar_consistencia_visual.js`, com a mesma captura e a mesma checagem de rolagem horizontal. Sobravam dois testes (erro de JS e banner de erro de carregamento), que passam ao portão 18 em todas as larguras. Sai um comando, uma passada de Chromium e 35 linhas; nenhuma regra muda. Linhas líquidas: código −37 (+7/−44).

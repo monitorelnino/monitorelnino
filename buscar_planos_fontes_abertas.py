@@ -244,7 +244,13 @@ def buscar_pausado(url: str, timeout: int) -> bytes:
     return com_espera(uma, url, timeout)
 
 
-ERROS_SEGUIDOS = 5   # a fonte que falha tantas vezes seguidas fica de fora do resto do run (cada falha custa 2 min de espera)
+ERROS_SEGUIDOS = 5   # a fonte cujos erros superam em tantos os acertos fica de fora do resto do run (cada falha custa 2 min de espera)
+
+
+def saldo_de_erros(n: int, situacao: str) -> int:
+    """Erro soma um; qualquer outra situação tira um (nunca abaixo de zero). Pura. Zerar no acerto deixava a fonte
+    que erra duas de cada três vezes (Common Crawl, 23/10: 113 erros em 154) nunca chegar ao teto."""
+    return n + 1 if situacao == "erro" else max(n - 1, 0)
 
 
 def fontes_vivas(fontes: list, seguidos: dict) -> list:
@@ -283,7 +289,7 @@ def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int
                 break
             res = consultar_municipio(ref["nome"], ref["uf"], cod, vivas, buscar_pausado, hoje, lacunas=registrar_lacuna)
             for f, r in res.items():
-                seguidos[f] = seguidos.get(f, 0) + 1 if r["situacao"] == "erro" else 0
+                seguidos[f] = saldo_de_erros(seguidos.get(f, 0), r["situacao"])
                 pistas.extend(r.pop("pistas"))
                 feitos["municipios"].setdefault(cod, {})[f] = {"consultado_em": hoje, **r}
             lidos += 1
@@ -371,6 +377,7 @@ def autoteste() -> int:
             selecionar_fila({"fila": ["1", "2"]}, {"1": {"uf": "AC"}, "2": {"uf": "AC"}}, None,
                             {"municipios": {"1": {"S16": {"consultado_em": "d"}}}}, ["S16"], "d") == ["2"],
         "disjuntor: fonte com erros seguidos sai do run, as outras seguem": lambda: fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS}) == ["S16"] and fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS - 1}) == ["S16", "S25"],
+        "disjuntor por saldo: dois erros em três chegam ao teto, um em dois não": lambda: (lambda cam: max(cam("eea" * 5)) >= ERROS_SEGUIDOS and max(cam("ea" * 10)) == 1)(lambda seq: __import__("itertools").accumulate(seq, lambda n, c: saldo_de_erros(n, "erro" if c == "e" else "lido"), initial=0)),
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,
     }
     return rodar_autoteste(testes)
