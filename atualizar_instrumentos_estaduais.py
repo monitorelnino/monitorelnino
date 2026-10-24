@@ -183,6 +183,7 @@ REPOSITORIOS = {
         "fonte": "Defesa Civil RS (Casa Militar/SUBPDEC) — pasta pública de PLANCONs recebidos, via Prepara RS (22/10/2026)",
         "canal": "repositorio_estadual",
         "parser": parse_rs,
+        "origens": ("casamilitar-rs.com.br/pdfs/",),  # destino dos atalhos .url da pasta
         "pasta": "/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa Militar/SUBCHEFIAS/SUBCHEFIA DE PROTEÇÃO E DEFESA CIVIL/3. Departamento de Gestão de Riscos/Divisão Técnica de Riscos/Planos de contingência/TODOS PLANCONS RECEBIDOS",
         "carregar": listar_sharepoint,
     },
@@ -223,6 +224,21 @@ REPOSITORIOS = {
     # ausência de repositório — a distinção é a mesma do §194 entre "procuramos e não há" e "não
     # havia onde procurar", e ela vale também para o que o Monitor ainda não procurou direito.
 }
+
+
+def documento_do_repositorio(url: str, uf: str) -> bool:
+    """O documento está no repositório estadual declarado de `uf` (canal `repositorio_estadual`)? O repositório
+    é o canal de prova do estado (ES, SE, RS; decisão da central, 24/10/2026): a autoridade vem dele, não do
+    domínio do município. RS: só a pasta da Casa Militar (e seus atalhos), nunca um SharePoint qualquer."""
+    from urllib.parse import unquote, urlparse
+    cfg = REPOSITORIOS.get(uf) or {}
+    if cfg.get("canal") != "repositorio_estadual" or not url:
+        return False
+    p, host = urlparse(url), urlparse(cfg["url"]).netloc
+    caminho = unquote(p.netloc + p.path)
+    if "pasta" in cfg:
+        return caminho.startswith(host + cfg["pasta"]) or any(o in caminho for o in cfg.get("origens", ()))
+    return p.netloc == host
 
 
 def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):

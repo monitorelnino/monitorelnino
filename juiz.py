@@ -711,7 +711,10 @@ def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
     aprovação de um conselho não é o plano publicado pelo Executivo.
     """
     if sem_ato_de_aprovacao:
-        if url and ente:
+        from atualizar_instrumentos_estaduais import documento_do_repositorio
+        # 24/10/2026 (central): o repositório estadual declarado é canal de prova (ES, SE, RS): a
+        # autoridade vem dele, não do domínio do município.
+        if url and ente and not documento_do_repositorio(url, str(ente[1]).upper()):
             # 1.6: o ato do ente É a publicação no domínio dele; em domínio de outro (BNDES, estado,
             # vizinho) não há ato do Executivo municipal (`ente` = (nome, uf)).
             from municipio_do_dominio import municipio_de
@@ -1006,6 +1009,9 @@ Concede licença a servidor do quadro efetivo, sem relação com o ciclo climát
 """
 
 URL_PDF_DE_PLANO = "https://defesacivil.taio.sc.gov.br/plano-2026.pdf"
+URL_PASTA_RS = ("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/"
+               "SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/"
+               "Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/PLANCON_SAPIRANGA_2024.pdf")
 
 PLANO_PUBLICADO_SEM_ATO = 'PREFEITURA MUNICIPAL DE TAIO - SC\nCOORDENADORIA MUNICIPAL DE PROTECAO E DEFESA CIVIL DE TAIO\nPLANO DE CONTINGENCIA DE PROTECAO E DEFESA CIVIL\nVersao 01/2026\nO presente plano estabelece os procedimentos de preparacao e de resposta para inundacao brusca,\ndeslizamento e estiagem no municipio, com pre-posicionamento de equipes, pontos de apoio e\nacionamento do sistema de alerta. Define as atribuicoes de cada orgao municipal na preparacao\npara o ciclo El Nino 2026/2027, a rotina de monitoramento e os abrigos. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
@@ -1309,6 +1315,11 @@ def autoteste() -> int:
         ("plano sem ato em domínio federal NÃO é ato do município (Cubatão/SP)",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url="https://www.bndes.gov.br/r.pdf",
                            ente=("Taió", "SC"))[1] == "autoridade_nao_confirmada"),
+        ("plano sem ato na pasta da Casa Militar/RS: autoridade dada pelo repositório; SharePoint qualquer, não",
+         etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"), url=URL_PASTA_RS)[0] is True
+         and etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"),
+                               url="https://rsgovbr-my.sharepoint.com/personal/outra_pessoa/Documents/x.pdf")[1]
+         == "autoridade_nao_confirmada"),
         ("plano sem ato no domínio do próprio município continua valendo",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url=URL_PDF_DE_PLANO,
                            ente=("Taió", "SC"))[0] is True),
