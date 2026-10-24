@@ -2,9 +2,7 @@
 """Sonda (24/10/2026, janela D): o Apêndice IV do relatório ICM-TCE/PE traz plano de contingência por município?
 Só lê e imprime; não grava em data/. Ramo coleta-dia/*, nunca mesclado."""
 import re
-import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -19,12 +17,11 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         print(f"FALHA: {type(e).__name__}: {e}")
         return 1
-    d = Path(tempfile.mkdtemp())
-    (d / "r.pdf").write_bytes(corpo)
+    import pypdfium2 as pdfium
+    doc = pdfium.PdfDocument(corpo)
     print("bytes:", len(corpo))
-    subprocess.run(["pdftotext", "-layout", str(d / "r.pdf"), str(d / "r.txt")], check=False)
-    t = (d / "r.txt").read_text(errors="replace")
-    pags = t.split("\f")
+    pags = [doc[i].get_textpage().get_text_range() for i in range(len(doc))]
+    t = "\f".join(pags)
     print("paginas:", len(pags), "caracteres:", len(t))
     for i, p in enumerate(pags, 1):
         if re.search(r"AP[ÊE]NDICE\s+IV", p, re.I):
