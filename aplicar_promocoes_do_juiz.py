@@ -123,11 +123,11 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
     if not url:
         return None
     try:
-        from coletores_base import RAIZ, buscar, ler, preservar_evidencia
+        from coletores_base import buscar, ler, preservar_evidencia
         # 24/10/2026: já preservado (índice + arquivo em disco) não se baixa de novo; sem isso a
         # passada interrompida pelo prazo refazia do zero os PDFs que já tinha guardado.
         for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
-            if it.get("url") == url and it.get("arquivo") and (RAIZ / it["arquivo"]).exists():
+            if it.get("url") == url and prova_do_item(it):
                 return h
         from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
         # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
@@ -142,11 +142,19 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         return None
 
 
+def prova_do_item(it: dict) -> bool:
+    """Há prova preservada do documento? A mesma régua do portão 26 (`prova_preservada`): cópia binária,
+    texto extraído ou captura datada do Wayback; a cópia binária indexada tem de existir em disco.
+    24/10/2026: a régua própria daqui só via binário e snapshot, então o PDF do RS acima de 5 MB,
+    já com texto preservado, seguia recusado."""
+    from coletores_base import RAIZ
+    from verificar_evidencias import prova_preservada
+    return prova_preservada(it) and (not it.get("arquivo") or (RAIZ / it["arquivo"]).exists())
+
+
 def tem_copia(h: str) -> bool:
-    """O índice de evidências guarda o arquivo (em disco) ou um snapshot externo que deu certo."""
-    from coletores_base import RAIZ, ler
-    it = (ler("evidencias.json", {"itens": {}}).get("itens") or {}).get(h) or {}
-    return bool(it.get("arquivo") and (RAIZ / it["arquivo"]).exists()) or str(it.get("wayback") or "").startswith("https://")
+    from coletores_base import ler
+    return prova_do_item((ler("evidencias.json", {"itens": {}}).get("itens") or {}).get(h) or {})
 
 
 def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: str) -> dict:
