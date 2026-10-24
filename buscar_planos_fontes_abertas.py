@@ -265,9 +265,11 @@ def feito_hoje(feitos: dict, cod: str, fontes: list, hoje: str) -> bool:
 
 def selecionar_fila(doc: dict, por_cod: dict, uf, feitos: dict, fontes: list, hoje: str) -> list:
     """`fila` (códigos) ou `municipios` (com `codigo_ibge`, como em municipios_prioritarios.json); `--uf` recorta
-    e o que já foi consultado hoje é pulado, para o disparo seguinte retomar."""
+    e o que já foi consultado hoje é pulado, para o disparo seguinte retomar. Quem nunca foi lido vem antes de quem
+    só precisa ser relido (dia novo): o prazo do run corta a releitura, não a cobertura."""
     fila = doc.get("fila") or [str(m["codigo_ibge"]) for m in doc.get("municipios", [])]
-    return [c for c in fila if c in por_cod and (not uf or por_cod[c]["uf"] == uf) and not feito_hoje(feitos, c, fontes, hoje)]
+    pendentes = [c for c in fila if c in por_cod and (not uf or por_cod[c]["uf"] == uf) and not feito_hoje(feitos, c, fontes, hoje)]
+    return sorted(pendentes, key=lambda c: c in feitos["municipios"])
 
 
 def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int:
@@ -376,6 +378,9 @@ def autoteste() -> int:
             {"1": {"uf": "AC"}, "2": {"uf": "AC"}, "3": {"uf": "AL"}}, {"municipios": {}}) and
             selecionar_fila({"fila": ["1", "2"]}, {"1": {"uf": "AC"}, "2": {"uf": "AC"}}, None,
                             {"municipios": {"1": {"S16": {"consultado_em": "d"}}}}, ["S16"], "d") == ["2"],
+        "fila: quem nunca foi lido vem antes de quem só precisa ser relido": lambda: selecionar_fila(
+            {"fila": ["1", "2", "3"]}, {c: {"uf": "AC"} for c in "123"}, "AC",
+            {"municipios": {"1": {"S16": {"consultado_em": "ontem"}}, "2": {"S16": {"consultado_em": "ontem"}}}}, ["S16"], "d") == ["3", "1", "2"],
         "disjuntor: fonte com erros seguidos sai do run, as outras seguem": lambda: fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS}) == ["S16"] and fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS - 1}) == ["S16", "S25"],
         "disjuntor por saldo: dois erros em três chegam ao teto, um em dois não": lambda: (lambda cam: max(cam("eea" * 5)) >= ERROS_SEGUIDOS and max(cam("ea" * 10)) == 1)(lambda seq: __import__("itertools").accumulate(seq, lambda n, c: saldo_de_erros(n, "erro" if c == "e" else "lido"), initial=0)),
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,

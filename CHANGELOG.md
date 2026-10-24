@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #1067 · Busca de planos em fontes abertas: quem nunca foi lido vem primeiro · Coleta
+A fila do dia relia primeiro os municípios lidos em dias anteriores e o prazo do run cortava a cobertura. Agora os nunca lidos vêm antes dos que só precisam de releitura. Código +5 líquidas, com autoteste; nenhum dado, regra ou peso do índice muda.
+
 ## 2026-10-24 · Válvula de dia aceita Node · Coleta
 
 A aplicação das 75 promoções do RS escreveu os registros, mas os portões em Node não rodavam na válvula (sem `npm ci`) e a aplicação foi desfeita, como deve. A válvula ganha a entrada `precisa_node`, já existente no coletor.
