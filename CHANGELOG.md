@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O rótulo da nota do estado passa a dizer "MARÉ Legal do estado", e o campo "Componentes (um terço cada)" sai do cartão; o peso segue descrito em `index.como_ler.nota`. As frases de "ainda não verificamos", o rótulo e a lista "O que ainda falta" saem de `assets/js/index.js` para `conteudo/index.json`, sem mudar uma palavra.
 
+## 2026-10-24 · RS: onze nomes de arquivo que o casamento deixava órfão perdem três · Coleta
+
+A pasta da Casa Militar/RS trazia 484 municípios casados e 11 órfãos; hífen do nome oficial ("Não-Me-Toque") e a palavra "atualizado" no arquivo impediam o casamento. Passam a casar Não-Me-Toque, Jaguarão e Santana do Livramento (487 casados, 8 órfãos declarados: nome ambíguo ou grafia distante). Linhas líquidas +4 no script; autoteste com um caso novo.
+
 ## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
 
 `aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.
