@@ -9,13 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-24 · #PR · Rodapé novo em todas as páginas · Site
+## 2026-10-24 · #1090 · Rodapé novo em todas as páginas · Site
 
 Rodapé igual em todas as páginas: logotipo, "por Patrícia Ferrini" (com link), Instagram, LinkedIn, X, BlueSky e Medium, nome do MARÉ e as quatro datas (atualização, corte, coleta, publicação) numa linha só, preenchidas por `assets/js/rodape.js`. A Imprensa leva a linha dos pedidos no lugar das datas.
 
 ## 2026-10-24 · Inicial: abertura do cartão da cidade e varredura sem a frase final · Site
 
 Dois pedidos aprovados da editoria aplicados pelo catálogo (`aplicar_edicoes.py`): abertura do cartão "Sua cidade" reescrita e saída da frase "Ainda não verificamos a cidade com todas as fontes" da varredura. Cópia estática do HTML alinhada. Linhas de código 0/0.
+
 ## 2026-10-24 · Textos da inicial: cidade, varredura e formulário · Site
 
 Três pedidos aprovados da editoria aplicados pelo catálogo: abertura de "Sua cidade" com `{n_municipios}`, fim da frase "Ainda não verificamos a cidade com todas as fontes" na varredura e abertura nova do formulário (sem "apenas": a regra de ênfase vence o texto aprovado). A nota do formulário sai; os dois campos opcionais deixam de ser recolhidos e levam "(opcional)" no rótulo. Código 0.
