@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-24 · #PR · Portão móvel funde-se na consistência visual
 
-`verificar_movel.js` abria as mesmas páginas a 390 px que `verificar_consistencia_visual.js`, com a mesma captura e a mesma checagem de rolagem horizontal. Sobravam dois testes (erro de JS e banner de erro de carregamento), que passam ao portão 18 em todas as larguras. Sai um comando, uma passada de Chromium e 35 linhas; nenhuma regra muda. Linhas líquidas: código −31.
+`verificar_movel.js` abria as mesmas páginas a 390 px que `verificar_consistencia_visual.js`, com a mesma captura e a mesma checagem de rolagem horizontal. Sobravam dois testes (erro de JS e banner de erro de carregamento), que passam ao portão 18 em todas as larguras. Sai um comando, uma passada de Chromium e 35 linhas; nenhuma regra muda. Linhas líquidas: código −37 (+7/−44).
 
 ## 2026-10-23 · Elo dos desfechos: entra a leitura incremental dos óbitos por causa
 
