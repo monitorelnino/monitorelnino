@@ -9,6 +9,27 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-23 · Elo dos desfechos: entra a leitura incremental dos óbitos por causa
+
+O elo `noturno_desfechos.yml` passa a rodar `coletar_sim.py --orcamento 600` depois de `coletar_obitos.py`: a primeira leitura cheia já veio da válvula, a noite só relê o ano preliminar. Os sete arquivos `obitos_*.json` já constam em `config/escritores.json` com esse elo.
+
+## 2026-10-23 · #1020 · Portão de escritores: a válvula de busca de planos não é a busca web
+
+O assunto "busca-planos-N automático" era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.
+
+## 2026-10-23 · #1027 · Busca de planos em fontes abertas: a fonte que falha cinco vezes seguidas sai do run
+
+Na rodada dos prioritários o Common Crawl derrubou a conexão em 59 municípios e cada falha custou 2 min de espera; só 149 de 2.095 foram lidos. `buscar_planos_fontes_abertas.py` deixa a fonte de fora após cinco erros seguidos e a retoma na rodada seguinte; as outras fontes seguem.
+
+## 2026-10-23 · SIM · Primeira leitura dos óbitos por causa
+
+Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (respiratórias, cardiovasculares, renal, desidratação, fumaça, calor), 27 UFs, jan/2019 a ago/2026, pela válvula. Os dois meses mais recentes são parciais; território do arquivo e atraso do registro seguem não verificados. Dado puro, código 0.
+
+## 2026-10-23 · #1021 · Orientações oficiais: item do guia confere também contra os passos emendados
+
+O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.
+
+
 ## 2026-10-23 · #1005 · Óbitos por causa básica (SIM)
 
 Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.
@@ -17,7 +38,6 @@ Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do F
 
 No campo "Instrumento estadual de saúde", o estado sem documento localizado mostrava a etiqueta "ainda não verificado" e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.
 
-
 ## 2026-10-23 · #1017 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado
 
 A ficha de cada estado e o perfil do município publicavam "SE 202640": a sigla que saiu do site em 07/10 e a chave crua da fonte, que ali ainda se confunde com a sigla de Sergipe. Os dois passam a chamar `semanaEmDatas`, que já convertia a semana nas séries; sem o utilitário, a frase sai sem a data. Saem as duas linhas de boletim das figuras do mapa — uma nada escrevia, a outra repetia a legenda. Código −1.
@@ -25,7 +45,6 @@ A ficha de cada estado e o perfil do município publicavam "SE 202640": a sigla 
 ## 2026-10-23 · #1011 · Busca de planos em fontes abertas: um arquivo por UF
 
 `buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/<UF>.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.
-
 
 ## 2026-10-23 · #1013 · Defesa civil: o sexto cartão mostra a variação da semana
 

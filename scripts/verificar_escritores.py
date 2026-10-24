@@ -319,6 +319,9 @@ def _autoteste() -> int:
     ok("caminho sem histórico não acusa nada",
        quem_commitou_de_fato({"data/novinho.json": {"escritor": "x.yml"}}, lambda c: set()) == [])
 
+    ok("válvula busca-planos não é a busca web",
+       _workflow_do_assunto("busca-planos-N automático (23/10/2026 13:58 UTC)") == ""
+       and _workflow_do_assunto("busca-web automático (23/10/2026 13:58 UTC)") == "busca_web_cadencia.yml")
     ok("assunto de PR de pessoa não é elo: \"diários\" no título não faz escritor",
        _workflow_do_assunto("Planos: coletor nos diários oficiais (#960)") == ""
        and _workflow_do_assunto("diarios automático (22/10/2026 01:12 UTC)") == "noturno_diarios.yml"
@@ -402,6 +405,11 @@ def _workflow_do_assunto(assunto: str) -> str:
     # "diários" ("coletor nos diários oficiais (#960)") fazia o portão ver o elo dos diários
     # escrevendo `data/planos_arboviroses.json` e reprovava a `main`.
     if "automátic" not in a and "automatic" not in a:
+        return ""
+    # 23/10/2026: "busca-planos-<grupo> automático" é a válvula `busca_planos.yml` rodando de dia o
+    # mesmo coletor que o elo declara (num ramo `coleta-dia/*` que nunca é mesclado); o "busca"
+    # abaixo a lia como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses`.
+    if "busca-planos" in a:
         return ""
     for marca, wf in (("juiz", "noturno_juiz.yml"), ("evidencias", "noturno_evidencias.yml"),
                       ("evidências", "noturno_evidencias.yml"),
