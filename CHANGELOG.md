@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #PR · Mapas do Monitor de riscos: legendas novas, sem grade, contorno mais firme · Site
+
+Seca, ar e temperatura têm legenda nova, escrita pelo catálogo; o terceiro mapa passa a se chamar "Desvio de temperatura previsto nas capitais". Sai a malha de 5° de todos os mapas. Divisas das UFs mais firmes e contorno do país mais forte, sem token novo.
+
 ## 2026-10-24 · #PR · Servidor estático dos portões de navegador em um só arquivo · Site
 
 Consolidação, item 6. Quatro portões de navegador (consistência visual, dicas dos mapas, figuras de contagem, guia do Proteja-se) copiavam o servidor estático e a tabela de tipos; passam a usar `scripts/_servidor.js`. Mesma cobertura; código líquido −3 linhas.

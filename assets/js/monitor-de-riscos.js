@@ -222,8 +222,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
 
   const fTemp = fonte('inmet_previsao_capitais');
   const diaPrev = (SINAIS.uf.SP && SINAIS.uf.SP.temperatura && SINAIS.uf.SP.temperatura.data) || fTemp.consultado_em;
-  if (diaPrev) põe('tituloTemperatura', 'Temperatura máxima prevista nas capitais, ' + String(diaPrev).slice(0, 10));
-  põe('temperaturaSub', (diaPrev ? 'Para ' + diaMes(diaPrev) + ' · ' : '') + 'diferença para a normal 1991–2020 do mês · uma capital por estado');
+  if (diaPrev) põeCat('temperaturaSub', 'monitor-de-riscos.temperatura.molde_sub', {data: diaMes(diaPrev)});
 
 })();
 
@@ -276,9 +275,7 @@ desenharMapa('mapaSecas', 'legSecas', () => MANCHAS.length ? ATM.seca.uf : NEUTR
   const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const nomeMes = mes ? MESES[Number(mes[2]) - 1] + ' de ' + mes[1] : '';
   const t = document.getElementById('tituloSecas'); if (t) t.textContent = 'Seca observada' + (nomeMes ? ', ' + nomeMes : '');
-  const sub = document.getElementById('secasSub');
-  if (sub) sub.textContent = (nomeMes ? nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1) + ' · ' : '')
-    + 'manchas do Monitor de Secas · hachura: estados com seca prevista pelo boletim';
+  if (nomeMes) põeCat('secasSub', 'monitor-de-riscos.secas.molde_sub', {mes: nomeMes});
   MonitorMapas.credito('boxSecas', {fontes: [SECAS_MANCHAS.fonte || 'Monitor de Secas — ANA', nomeMes ? 'mapa de ' + nomeMes : ''].filter(Boolean),
     url: SECAS_MANCHAS.url_publica, data: SECAS_MANCHAS.consultado_em});
   const d = document.querySelector('#boxSecas .fonte-figura'); if (d) d.dataset.credito = 'monitor_secas';
@@ -422,8 +419,6 @@ if (AR) {
     .on('mouseleave', MonitorMapas.hideTip);
   const leg = document.getElementById('legAr');
   if (leg) leg.insertAdjacentHTML('beforeend', '<span><i class="leg-losango" style="background:transparent"></i>Sensor de baixo custo (IPAM/RedeAr) · PM2,5 em µg/m³, média de 24 h</span>');
-  const sub = document.getElementById('arSub');
-  if (sub) sub.textContent = 'IQAr das estações oficiais por cidade (cor: faixa mais alta da cidade; tamanho: nº de estações) · sensores de PM2,5, µg/m³';
 }
 (function creditoAr(){
   const fm = fontesAr.monitorar || {};
