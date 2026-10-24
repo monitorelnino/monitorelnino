@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
 
-Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). Sem mudança de código.
+Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\"` do frontmatter (o link saía com aspas literais).
 
 ## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
 
