@@ -63,6 +63,9 @@ function barraResposta(uf){
 // na saida dava "Olho d&amp;#39;Agua das Flores" no cartao, e fazia o nome do banco nao casar com o
 // da lista de referencia, que nao e escapada.
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Texto público vem do catálogo (`conteudo/index.json`); vazio se ele não carregou (falha segura).
+const T = (id, valores) => (window.MonitorCatalogo && window.MonitorCatalogo.texto(id, valores)) || '';
+const naoVerificadaCapital = () => T('index.capital.nao_verificada') + ' ' + T('index.nao_verificado.ressalva');
 let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, CONTATOS, COBERTURA_UF, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
@@ -464,7 +467,7 @@ function fraseDeVarredura(s, doLivro) {
 }
 
 function textoDaCapital(reg){
-  if (!reg) return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
+  if (!reg) return naoVerificadaCapital();
   const st = ConsultaMunicipio.situacaoDoPlano(reg).estado;
   if (st === 'encontrado') return 'Plano de contingência localizado.';
   if (st === 'estadual') return 'Plano de contingência localizado, no âmbito estadual.';
@@ -478,7 +481,7 @@ function textoDaCapital(reg){
   if (reg.categoria === 'nao_localizado')
     return fraseDeVarredura(ConsultaMunicipio.situacaoDoPlano(reg))
       || 'Não localizamos plano de contingência para esta capital até a data de corte.';
-  return 'Ainda não verificamos esta capital com todas as fontes. Isso não é uma afirmação sobre a existência do plano.';
+  return naoVerificadaCapital();
 }
 function rotuloDaCapital(reg){
   return reg && CAT_ROTULO[reg.categoria] ? CAT_ROTULO[reg.categoria] : 'ainda não verificada';
@@ -518,7 +521,7 @@ function selectUF(uf, tileEl){
     : capReg && capReg.categoria === 'nao_localizado'
       ? `<div class="card-note">Nenhum documento localizado até o corte dos dados.</div>`
       : capReg && capReg.categoria === 'nao_verificado'
-        ? `<div class="card-note">Ainda não verificamos esta capital com todas as fontes.</div>`
+        ? `<div class="card-note">${T('index.capital.nao_verificada')}</div>`
         : `<div class="card-note">Documento não localizado até o corte.</div>`;
   const capitalBlock = d.capital ? `
     <div class="capital-box">
@@ -580,17 +583,6 @@ function selectUF(uf, tileEl){
     })()}
     ${d.adpf743 ? '<div class="field"><div class="k">ADPF 743 (STF)</div><div class="v"><span class="pill-nivel">' + ({homologado:'plano homologado', ajustes_exigidos:'ajustes exigidos em 30 dias', ajustes_exigidos_car:'ajustes exigidos (CAR)', apresentado:'plano apresentado'}[d.adpf743.status] || esc(d.adpf743.status)) + '</span> intimado em ' + esc(d.adpf743.intimado_em) + ' · decisão de ' + esc(d.adpf743.decisao) + (d.adpf743.status !== 'homologado' ? ' · resultado após 25/07 não localizado' + ((d.adpf743.resultado_verificado_em || d.adpf743.registrado_em) ? ' até ' + esc(d.adpf743.resultado_verificado_em || d.adpf743.registrado_em) : '') : '') + '</div></div>' : ''}
     ${barraResposta(d.uf)}
-    ${(function(){ // v3.1 (30/09/2026): três componentes com um terço cada, nomeados pelo que são.
-      // Na v3.0 estrutura e instrumento eram metades de um componente só; agora cada um vale por si,
-      // e a régua temporal saiu da nota. Descrição do que se vê — variável, unidade e valor —, sem
-      // juízo: a leitura vive no texto narrativo, não no cartão (portão 19).
-      const m = (typeof MARE !== 'undefined' && MARE[d.uf]) || null;
-      if (!m || m.instrumento === undefined) return '';
-      // Vírgula decimal em texto público (A4-16).
-      const numBR = v => (v == null || isNaN(Number(v))) ? '—'
-        : MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
-      return `<div class="field"><div class="k">Componentes (um terço cada)</div><div class="v">instrumento operacional ${numBR(m.instrumento)} · estrutura de coordenação ${numBR(m.estrutura)} · cobertura populacional ${numBR(m.cobertura_pop)}</div></div>`;
-    })()}
     ${(function(){ // INDICADOR, não componente: não entra na nota. Vazio quando não há data completa
       // do primeiro ato — mês solto e "Recorrente" não viram dia, e lacuna declarada é melhor do
       // que dia inventado.
@@ -740,7 +732,7 @@ function miniGauge(valor, rotulo, variante){
   return `<div class="gauge-mini gauge-zone${resposta ? ' gauge-zone--resposta' : ''}">
     <div class="gauge-head">
       <span class="gnum" data-contar="${valor}">0,0</span><span class="gden">/ 100</span>
-      <span class="glabel">${rotulo || 'MARÉ do estado'}</span>
+      <span class="glabel">${rotulo || T('index.estado.rotulo')}</span>
     </div>
     <div class="gauge-track">
       <div class="gauge-fill${resposta ? ' gauge-fill--resposta' : ''}" data-alvo="${valor}" style="--galvo:${Math.max(valor, 0.1)};"></div>
@@ -887,7 +879,7 @@ function renderMinha(uf, nome, card){
        "não localizado" seria falso. Esse caso fica com a frase de antes. */
     html += (varrido && !(m && m.documento))
       ? `<p class="fv"><strong>${esc(varrido)}</strong></p>`
-      : `<p class="fv"><strong>Ainda não verificamos este município com todas as fontes.</strong> Isso não é uma afirmação sobre a existência do plano.</p>`;
+      : `<p class="fv"><strong>${T('index.municipio.nao_verificado')}</strong> ${T('index.nao_verificado.ressalva')}</p>`;
   }
 
   html += riscoBox(uf);
@@ -1042,34 +1034,34 @@ function gerarRelatorioCidadao(uf, municipio){
   // ---- 4. O que ainda falta ----
   secao('O que ainda falta — e o que cobrar');
   const faltas = [];
-  if (v.status_estadual === 'LAC') faltas.push('O estado ainda não publicou plano estadual nominal para o El Niño. É o primeiro item a cobrar da Defesa Civil estadual.');
-  if (v.status_estadual === 'ELAB') faltas.push('O plano estadual está em elaboração e ainda não foi publicado. Pergunte a data prevista de publicação.');
-  if (v.status_estadual === 'VIG') faltas.push('O instrumento estadual é recorrente e não menciona o El Niño 2026/2027. Pergunte se haverá atualização específica para o ciclo.');
+  if (v.status_estadual === 'LAC') faltas.push(T('index.falta.estado_sem_plano'));
+  if (v.status_estadual === 'ELAB') faltas.push(T('index.falta.estado_em_elaboracao'));
+  if (v.status_estadual === 'VIG') faltas.push(T('index.falta.estado_recorrente'));
   if (municipio) {
     const cat = reg ? reg.categoria : null;
     const _nivF = nivelVerificacao(uf, municipio);
-    if (cat === 'nao_localizado' && _nivF === 'municipal_completo') faltas.push('Após verificação individual completa, não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.');
-    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push('Ainda não verificamos sua cidade com todas as fontes. Peça o documento à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011, resposta em até 20 dias) e envie pelo formulário no fim desta página.');
-    else if (cat === 'plano_antigo') faltas.push('O plano da sua cidade é de edição anterior. Pergunte à prefeitura se há atualização para 2026/2027.');
-    else if (cat === 'decreto') faltas.push('Sua cidade tem decreto de emergência (resposta a dano ocorrido), mas não localizamos plano preventivo. Pergunte à prefeitura se existe e onde está publicado.');
-    else if (cat === 'plano_elaboracao') faltas.push('O plano da sua cidade está em elaboração. Pergunte a data prevista.');
-    else if (cat === 'nao_el_nino') faltas.push('O ato localizado na sua cidade não trata do El Niño. Pergunte se há plano específico para o ciclo.');
-    else if (cat === 'coberto_estadual') faltas.push('Sua cidade está coberta pelo plano estadual, sem plano próprio. Cobertura estadual é operacional: o dever de ter plano municipal continua (Lei 12.608, art. 8º).');
-    if (emergs.length && cat !== 'plano') faltas.push('Sua cidade já precisou decretar emergência neste ciclo. Um plano preventivo publicado reduz o improviso da próxima vez.');
+    if (cat === 'nao_localizado' && _nivF === 'municipal_completo') faltas.push(T('index.falta.cidade_nao_localizado'));
+    else if (!cat || cat === 'nao_localizado' || cat === 'nao_verificado') faltas.push(T('index.falta.cidade_nao_verificado'));
+    else if (cat === 'plano_antigo') faltas.push(T('index.falta.cidade_plano_antigo'));
+    else if (cat === 'decreto') faltas.push(T('index.falta.cidade_decreto'));
+    else if (cat === 'plano_elaboracao') faltas.push(T('index.falta.cidade_em_elaboracao'));
+    else if (cat === 'nao_el_nino') faltas.push(T('index.falta.cidade_nao_el_nino'));
+    else if (cat === 'coberto_estadual') faltas.push(T('index.falta.cidade_coberta_estadual'));
+    if (emergs.length && cat !== 'plano') faltas.push(T('index.falta.cidade_ja_decretou'));
   } else if (d.capital) {
     // A lacuna da capital sai da MESMA fonte do resto: a categoria do banco, nunca o texto
     // escrito à mão em `estados.json` (A3-11).
     const regCap = regDaCapital(d);
     const catCap = regCap ? regCap.categoria : '';
-    if (!catCap || catCap === 'nao_verificado') faltas.push('Ainda não verificamos a capital com a bateria completa de fontes.');
-    else if (catCap === 'nao_localizado') faltas.push('Não localizamos plano de contingência da capital até o corte.');
-    else if (catCap === 'plano_elaboracao') faltas.push('O plano da capital está em elaboração; o documento final não foi localizado até o corte.');
-    else if (catCap === 'plano_nomeado') faltas.push('O plano da capital é citado em fonte oficial, e o documento não foi localizado até o corte.');
-    else if (catCap === 'estrutura') faltas.push('Na capital localizamos estrutura de coordenação, não plano de contingência para os riscos do ciclo.');
+    if (!catCap || catCap === 'nao_verificado') faltas.push(T('index.falta.capital_nao_verificada'));
+    else if (catCap === 'nao_localizado') faltas.push(T('index.falta.capital_nao_localizado'));
+    else if (catCap === 'plano_elaboracao') faltas.push(T('index.falta.capital_em_elaboracao'));
+    else if (catCap === 'plano_nomeado') faltas.push(T('index.falta.capital_nomeado'));
+    else if (catCap === 'estrutura') faltas.push(T('index.falta.capital_estrutura'));
   }
-  if (i.com_ato === 0) faltas.push('Nenhum ato municipal localizado no estado até o corte.');
-  else if (i.n_decreto > i.n_plano) faltas.push('No estado, predominam decretos de emergência sobre planos preventivos: a resposta vem depois do dano.');
-  if (!faltas.length) faltas.push('Nenhuma lacuna crítica localizada até o corte. Confirme se o plano está atualizado para 2026/2027 e conheça a rota de saída do seu bairro.');
+  if (i.com_ato === 0) faltas.push(T('index.falta.estado_sem_ato'));
+  else if (i.n_decreto > i.n_plano) faltas.push(T('index.falta.estado_predominam_decretos'));
+  if (!faltas.length) faltas.push(T('index.falta.nenhuma'));
   par('Nível de verificação desta cidade: ' + NIVEL_ROTULO[nivelVerificacao(uf, municipio)] + '.', {tam:9.5, cor:MUTED, espaco:4});
   faltas.forEach(item);
   par('O planejamento federal de 29/07/2026 (Sala de Situação do El Niño, 24 ministérios) prevê a atualização dos planos de contingência, com identificação de áreas de risco e fortalecimento das estruturas locais de resposta — é um compromisso público, e vale como argumento ao cobrar o estado e a prefeitura.', {tam:9.5, cor:MUTED, espaco:4});
