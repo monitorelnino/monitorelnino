@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/10/2026 · Abertura da inicial reescrita pela editoria · Site</dt>
+      <dd>Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). Sem mudança de código.</dd>
       <dt>24/10/2026 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta</dt>
       <dd>`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas. ## 2026-10-24 · Sem cópia da evidência, sem promoção · Juiz Dezesseis documentos do RS passam do limite de evidência e a pasta privada não aceita o Wayback; a aplicação os registrava mesmo sem arquivo e o portão de evidências barrou o dado. Agora a aplicação recusa e marca, em vez de depender do portão. O portão C10 passa a reconhecer a pasta pública do governo do RS como fonte oficial. ## 2026-10-24 · Trecho do juiz sem CPF · Juiz O trecho que o juiz guarda como prova passa pela redação de dado pessoal antes de entrar no registro público. Duas decisões do RS traziam o CPF de coordenadores municipais, copiado de uma planilha de contatos, e o portão de segredos barrou o dado.</dd>
       <dt>24/10/2026 · Registro do juiz sem CPF; PDF do RS lido pela sessão do link · Coleta</dt>
@@ -165,8 +167,6 @@
       <dd>No cartão de recursos federais da consulta municipal, o município que não consta num arquivo lido passa a aparecer como &quot;não localizado até o corte&quot;, a mesma frase da página de Financiamento; &quot;sem coleta até o corte&quot; fica para quando o arquivo não veio. São 40 municípios: 38 fora da lista do FNS, Brasília e Fernando de Noronha fora da lista da União.</dd>
       <dt>21/10/2026 · O cartão de dengue do Proteja-se passa a ler o município</dt>
       <dd>A consulta municipal do Proteja-se mostra o nível de alerta de dengue do InfoDengue para os 339 municípios que a fonte publica, com a semana em datas. Para os demais, diz que a fonte não leu o município — não é zero, não é &quot;sem coleta&quot;, e as três classes continuam distintas. O rótulo do nível é o mesmo que a página da Saúde usa, e o cartão leva à aba de dengue.</dd>
-      <dt>21/10/2026 · Medidor do MARÉ Saúde passa ao índice nacional</dt>
-      <dd>O medidor da Saúde mostra o índice nacional das 27 unidades da federação, pela mesma régua do MARÉ Legal, e a linha ao lado conta o estatuto de cada uma: vinte e um estados com plano localizado, seis ainda não verificados. O cartão do topo, a página da imprensa e a reserva estática leem o mesmo campo. A escolha do parágrafo de abertura passa a seguir os componentes declarados no arquivo, não o número da versão.</dd>
     </dl>
   </section>
 </main>
