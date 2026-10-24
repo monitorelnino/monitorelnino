@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=c68d53ed"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=eed8d038">
+<link rel="stylesheet" href="assets/base.css?v=ea82cfcf">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>24/10/2026 · Rodapé novo em todas as páginas · Site</dt>
+      <dd>Rodapé igual em todas as páginas: logotipo, &quot;por Patrícia Ferrini&quot; (com link), Instagram, LinkedIn, X, BlueSky e Medium, nome do MARÉ e as quatro datas (atualização, corte, coleta, publicação) numa linha só, preenchidas por `assets/js/rodape.js`. A Imprensa leva a linha dos pedidos no lugar das datas. ## 2026-10-24 · Inicial: abertura do cartão da cidade e varredura sem a frase final · Site Dois pedidos aprovados da editoria aplicados pelo catálogo (`aplicar_edicoes.py`): abertura do cartão &quot;Sua cidade&quot; reescrita e saída da frase &quot;Ainda não verificamos a cidade com todas as fontes&quot; da varredura. Cópia estática do HTML alinhada. Linhas de código 0/0. ## 2026-10-24 · Textos da inicial: cidade, varredura e formulário · Site Três pedidos aprovados da editoria aplicados pelo catálogo: abertura de &quot;Sua cidade&quot; com `{n_municipios}`, fim da frase &quot;Ainda não verificamos a cidade com todas as fontes&quot; na varredura e abertura nova do formulário (sem &quot;apenas&quot;: a regra de ênfase vence o texto aprovado). A nota do formulário sai; os dois campos opcionais deixam de ser recolhidos e levam &quot;(opcional)&quot; no rótulo. Código 0.</dd>
       <dt>24/10/2026 · Abertura da inicial reescrita pela editoria · Site</dt>
       <dd>Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\&quot;` do frontmatter (o link saía com aspas literais). ## 2026-10-24 · Cartão do estado: &quot;MARÉ Legal do estado&quot; e texto no catálogo · Inicial O rótulo da nota do estado passa a dizer &quot;MARÉ Legal do estado&quot;, e o campo &quot;Componentes (um terço cada)&quot; sai do cartão; o peso segue descrito em `index.como_ler.nota`. As frases de &quot;ainda não verificamos&quot;, o rótulo e a lista &quot;O que ainda falta&quot; saem de `assets/js/index.js` para `conteudo/index.json`, sem mudar uma palavra. ## 2026-10-24 · RS: onze nomes de arquivo que o casamento deixava órfão perdem três · Coleta A pasta da Casa Militar/RS trazia 484 municípios casados e 11 órfãos; hífen do nome oficial (&quot;Não-Me-Toque&quot;) e a palavra &quot;atualizado&quot; no arquivo impediam o casamento. Passam a casar Não-Me-Toque, Jaguarão e Santana do Livramento (487 casados, 8 órfãos declarados: nome ambíguo ou grafia distante). Linhas líquidas +4 no script; autoteste com um caso novo.</dd>
       <dt>24/10/2026 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta</dt>
@@ -165,15 +167,16 @@
       <dd>Quando o índice do MARÉ Saúde não tem valor, o número grande do medidor passa a dizer &quot;sem coleta&quot; em vez de travessão. Na tabela de focos por estado, a coluna do dia anterior diz &quot;sem arquivo&quot; quando aquele dia não foi lido, palavra que a mesma figura já usava duas linhas acima. Nenhum número muda: são os caminhos de ausência, que o dado de hoje não alcança.</dd>
       <dt>21/10/2026 · Para gestores: &quot;não localizado&quot; no lugar de &quot;sem coleta&quot;</dt>
       <dd>No cartão de recursos federais da consulta municipal, o município que não consta num arquivo lido passa a aparecer como &quot;não localizado até o corte&quot;, a mesma frase da página de Financiamento; &quot;sem coleta até o corte&quot; fica para quando o arquivo não veio. São 40 municípios: 38 fora da lista do FNS, Brasília e Fernando de Noronha fora da lista da União.</dd>
-      <dt>21/10/2026 · O cartão de dengue do Proteja-se passa a ler o município</dt>
-      <dd>A consulta municipal do Proteja-se mostra o nível de alerta de dengue do InfoDengue para os 339 municípios que a fonte publica, com a semana em datas. Para os demais, diz que a fonte não leu o município — não é zero, não é &quot;sem coleta&quot;, e as três classes continuam distintas. O rótulo do nível é o mesmo que a página da Saúde usa, e o cartão leva à aba de dengue.</dd>
     </dl>
   </section>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patrícia Ferrini</a></span>
+    <ul class="rodape-redes"><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/Patty_Ferrini" target="_blank" rel="noopener">X</a></li><li><a href="https://bsky.app/profile/patty-ferrini.bsky.social" target="_blank" rel="noopener">BlueSky</a></li><li><a href="https://medium.com/@pattyferrini" target="_blank" rel="noopener">Medium</a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
+    <span class="rodape-linha">Última atualização: <span id="metaAtualizado">24/10/2026</span> · Corte dos dados: <span id="corteDados">24/10/2026</span> · Última coleta: <span id="metaColeta">24/10/2026</span> · Última publicação: <span id="metaPublicacao">24/10/2026</span></span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
@@ -189,6 +192,7 @@
     <div class="vw-plugin-top-wrapper"></div>
   </div>
 </div>
+<script src="assets/js/rodape.js?v=a28183d3" defer></script>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 
 
