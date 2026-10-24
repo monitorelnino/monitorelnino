@@ -226,11 +226,13 @@ REPOSITORIOS = {
 }
 
 
-def documento_do_repositorio(url: str, uf: str) -> bool:
+def documento_do_repositorio(url: str, uf: str = None) -> bool:
     """O documento está no repositório estadual declarado de `uf` (canal `repositorio_estadual`)? O repositório
     é o canal de prova do estado (ES, SE, RS; decisão da central, 24/10/2026): a autoridade vem dele, não do
     domínio do município. RS: só a pasta da Casa Militar (e seus atalhos), nunca um SharePoint qualquer."""
     from urllib.parse import unquote, urlparse
+    if not uf:   # sem UF (etapa 2 do juiz): qualquer repositório declarado
+        return any(documento_do_repositorio(url, u) for u in REPOSITORIOS)
     cfg = REPOSITORIOS.get(uf) or {}
     if cfg.get("canal") != "repositorio_estadual" or not url:
         return False

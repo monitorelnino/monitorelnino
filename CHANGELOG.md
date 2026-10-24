@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Juiz 1.7 · PLANCON do repositório estadual não precisa de ato
+
+Documento do repositório estadual declarado (ES, SE, RS) é lido como plano publicado sem ato: lei ou portaria citada no corpo, como base legal, não vira o ato do plano. Causa: 47 PLANCONs do RS recusados por `autoridade_nao_confirmada`. O codebook sobe a 1.7 e devolve ao juiz o que foi recusado. Pesos e créditos não mudam.
+
 ## 2026-10-24 · RS no canal do repositório estadual · Juiz
 
 A pasta de PLANCONs da Casa Militar/RS passa a dar a autoridade do plano sem ato, como o repositório do ES e o de SE: o juiz já não exige domínio do município para documento do repositório estadual declarado. SharePoint fora da pasta continua recusado. Pesos e créditos do índice não mudam.
