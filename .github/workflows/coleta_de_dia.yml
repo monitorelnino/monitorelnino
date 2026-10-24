@@ -34,6 +34,11 @@ on:
         required: false
         default: false
         type: boolean
+      precisa_node:
+        description: "true quando algum comando roda portão em Node (ex.: aplicar_promocoes_do_juiz.py)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -49,6 +54,7 @@ jobs:
       # chamado (mesma razão de `busca_planos.yml`).
       timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
+      precisa_node: ${{ inputs.precisa_node }}
       comandos: ${{ inputs.comandos }}
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
