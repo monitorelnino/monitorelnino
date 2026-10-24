@@ -27,8 +27,9 @@
   "defesa-civil.municipio.estado.molde": "<strong>{no_estado}:</strong> {n_dec} dos {n_mun} municípios decretaram emergência desde 29 de junho ({pct}%), {n_rec} reconhecidos pela União; evento mais declarado: {evento}.",
   "defesa-civil.emergencias.titulo_da_secao": "Onde estão as emergências",
   "defesa-civil.emergencias.mapa.titulo": "Municípios com decreto de emergência desde 29/06/2026, por evento declarado e etapa",
-  "defesa-civil.emergencias.mapa.legenda": "nº de municípios: {n} · evento declarado no ato · ponto cheio: reconhecido pela União · ponto vazado: só decreto · consulta de {data}",
-  "defesa-civil.emergencias.barras.titulo": "Decretos por tipo de evento declarado · nº de decretos"
+  "defesa-civil.emergencias.barras.titulo": "Decretos por tipo de evento declarado · nº de decretos",
+  "defesa-civil.emergencias.mapa.municipios": "{n} municípios · evento declarado no ato",
+  "defesa-civil.emergencias.barras.total": "Total"
  },
  "_nota": "A abertura de quatro parágrafos é a aprovada pela editoria em 19/10/2026 (§7 do HANDOVER_DEFESA_CIVIL_AJUSTES). O p1 deixou de fechar a lista de eventos, porque o dado não a fecha: há também fogo e atos sem tipo declarado. Divergência de uma palavra: o p3 aprovado dizia \"depois do desastre\", e \"desastre\" é termo proibido em layout/regras.json e no texto_proibido do contrato desta página; ficou \"depois do evento\", a palavra que a própria página usa."
 }

@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+
+## 2026-10-24 · Onde estão as emergências: sem legenda de mapa, com total
+Sai a linha de legenda sob o título do mapa de decretos (a legenda do mapa já traz ponto cheio e ponto vazado). O gráfico ganha a linha Total, soma das barras na unidade delas, e "988 municípios" sob o título. Rótulos encostam no trilho, barras pequenas têm comprimento mínimo e o painel alinha ao topo.
+
 ## 2026-10-24 · #PR · Proteja-se: "O que fazer" abre a orientação certa · Site
 
 Os links do cartão da cidade e as URLs com âncora (#guia-dengue, #guia-calor e as outras três) agora abrem a aba do guia e rolam até ele; antes o painel escondido recebia o salto e nada acontecia. A correção mora no bloco das abas. Código +17 líquidas, com um caso novo no portão de execução.
