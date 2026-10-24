@@ -63,23 +63,24 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
             st = (m.get("instrumento") or {}).get("status")
             if st == "NAO_VERIFICADO" and m.get("prontidao") is not None: erros.append(f"(m) monitor_saude: {uf} não verificada com número")
             if st != "NAO_VERIFICADO" and m.get("prontidao") is not None:
-                pi = (m.get("instrumento") or {}).get("pontos"); pc = (m.get("cobertura") or {}).get("pontos")
-                # v0.7 (24/10/2026, METODOLOGIA §119): dois componentes, metade cada, nenhum datado; tempo e coordenação são contexto de peso zero
-                if pi is None or pc is None or abs(m["prontidao"] - round((pi + pc) / 2.0, 1)) > 0.05: erros.append(f"(m) monitor_saude: {uf} prontidão não é a média dos dois componentes")
+                # v0.7 (24/10/2026, METODOLOGIA §121): a nota da UF é o instrumento; a cobertura municipal é camada de peso zero; tempo e coordenação são contexto de peso zero
+                if m["prontidao"] != (m.get("instrumento") or {}).get("pontos"): erros.append(f"(m) monitor_saude: {uf} prontidão não é a nota do instrumento")
             _c = m.get("cobertura") or {}
-            if _c.get("peso") != 0.5 or not (0 <= (_c.get("cobertura_pct") or 0) <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura populacional fora do componente de peso 0,5")
+            if _c.get("peso") != 0 or "pontos" in _c or not (0 <= (_c.get("cobertura_pct") or 0) <= 100): erros.append(f"(m) monitor_saude: {uf} cobertura municipal fora da camada de peso zero")
             if "antecipacao" in m or (m.get("tempo") or {}).get("peso") != 0 or (m.get("coordenacao") or {}).get("peso") != 0:
                 erros.append(f"(m) monitor_saude: {uf} componente datado na nota ou tempo/coordenação com peso")
+            if m.get("c_uf") != 1: erros.append(f"(m) monitor_saude: {uf} c_uf deve valer 1 (o dever de plano é do estado e cobre a população inteira)")
             # (v) 18/09/2026 (handover ponto cego saúde, §3.5): requer_reverificacao/motivo_reverificacao
             # são sinalizadores internos (gatilho por marco federal) — nunca podem vazar ao índice público.
             if "requer_reverificacao" in m or "motivo_reverificacao" in m:
                 erros.append(f"(v) {uf}: sinalizador interno de reverificação vazou para monitor_saude.json")
-        # (m) v0.5 (21/10/2026, METODOLOGIA §115): o índice nacional é a média das 27 UFs, nenhuma fora da conta;
+        # (m) v0.7 (24/10/2026, METODOLOGIA §121): o índice nacional é Σ(nota × população × c_uf) ÷ Σ população, nenhuma das 27 UFs fora da conta;
         # os estatutos somam 27 e o número que a página lê bate com a conta refeita aqui.
         _r, _u = (_ms.get("resumo") or {}), (_ms.get("ufs") or {})
         _pn = [(_u.get(uf) or {}).get("prontidao_nacional") for uf in _u]
-        if len(_u) != 27 or any(x is None for x in _pn): erros.append("(m) monitor_saude: alguma das 27 UFs ficou fora da conta nacional")
-        elif _r.get("denominador") != 27 or abs(_r.get("indice_nacional", -1) - round(sum(_pn) / 27, 1)) > 0.05: erros.append("(m) monitor_saude: indice_nacional não é a média das 27 UFs")
+        _pop = sum((_u[uf].get("populacao") or 0) for uf in _u)
+        if len(_u) != 27 or any(x is None for x in _pn) or not _pop: erros.append("(m) monitor_saude: alguma das 27 UFs ficou fora da conta nacional")
+        elif _r.get("denominador") != 27 or abs(_r.get("indice_nacional", -1) - sum(_u[uf]["prontidao_nacional"] * _u[uf]["populacao"] * _u[uf]["c_uf"] for uf in _u) / _pop) > 0.05: erros.append("(m) monitor_saude: indice_nacional não é a média das 27 UFs ponderada pela população")
         if sum((_r.get("por_estatuto") or {}).values()) != 27: erros.append("(m) monitor_saude: os estatutos por UF não somam 27")
         if "monitor_saude" in motor: erros.append("(m) recalcular_mare.py referencia monitor_saude (proibido)")
         # (d) §8 desfechos: nunca lidos pelo motor; SE incompletas vazadas; ressalva de não-atribuição nas superfícies

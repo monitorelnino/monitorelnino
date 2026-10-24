@@ -11,8 +11,8 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-24 · #PR · MARÉ Saúde v0.7: instrumento e cobertura populacional, o tempo à parte · Dados
-A nota do Saúde passa a ser metade instrumento, metade cobertura populacional; nenhum componente depende de data. O tempo (dias após o Boletim nº 1) e a coordenação saem como contexto de peso zero. Um só motor: o cálculo paralelo da v0.4 e a troca automática saem. Índice nacional 23,4 (era 34,7): a cobertura, hoje baixa, entra na conta. Código −758 líquidas.
+## 2026-10-24 · #PR · MARÉ Saúde v0.7: a nota da UF é o instrumento; o nacional pesa a população · Dados
+Nenhum componente da nota do Saúde depende de data: a nota do estado é o instrumento. O tempo (dias após o Boletim nº 1) e a coordenação saem como contexto de peso zero. O nacional passa a ponderar pela população (cobertura 1 nas 27 UFs): 61,3, era 34,7. Um só motor: o cálculo paralelo da v0.4 e a troca automática saem. Código −732 líquidas.
 
 ## 2026-10-24 · Onde estão as emergências: sem legenda de mapa, com total
 Sai a linha de legenda sob o título do mapa de decretos (a legenda do mapa já traz ponto cheio e ponto vazado). O gráfico ganha a linha Total, soma das barras na unidade delas, e "988 municípios" sob o título. Rótulos encostam no trilho, barras pequenas têm comprimento mínimo e o painel alinha ao topo.

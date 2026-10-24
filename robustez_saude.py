@@ -56,11 +56,11 @@ def coordenacao(p1, p2, agregacao="aritmetica", pesos=(0.5, 0.5)):
     return round(w1 * p1 + w2 * p2, 1)
 
 
-def prontidao(instrumento, coord, cobertura):
-    """Prontidão v0.8 (instrumento + coordenação + cobertura) com um terço cada. Função pura; `None` em qualquer componente não verificado."""
+def prontidao(instrumento, coord):
+    """Nota da UF na v0.8 (instrumento e coordenação, metade cada). Função pura; `None` em qualquer componente não verificado."""
     if instrumento is None or coord is None:
         return None
-    return round((instrumento + coord + float(cobertura or 0.0)) / 3, 1)
+    return round((instrumento + coord) / 2, 1)
 
 
 def mudam_de_faixa(base: dict, alternativo: dict) -> list:
@@ -70,7 +70,7 @@ def mudam_de_faixa(base: dict, alternativo: dict) -> list:
 
 
 def cenarios(ufs: dict) -> dict:
-    """Roda os cenários de agregação, pesos e degrau sobre `{uf: {f1, f2, instrumento, cobertura}}`.
+    """Roda os cenários de agregação, pesos e degrau sobre `{uf: {f1, f2, instrumento}}`.
 
     Função pura: nenhuma leitura de disco aqui dentro.
     """
@@ -80,9 +80,7 @@ def cenarios(ufs: dict) -> dict:
             p2 = d.get("f2")
             if valor_listada is not None and d.get("f2_status") == "LISTADA_SEM_ATRIBUICAO":
                 p2 = valor_listada
-            fora[uf] = prontidao(d.get("instrumento"),
-                                 coordenacao(d.get("f1"), p2, agregacao, pesos),
-                                 d.get("cobertura"))
+            fora[uf] = prontidao(d.get("instrumento"), coordenacao(d.get("f1"), p2, agregacao, pesos))
         return fora
 
     base = monta()
@@ -97,9 +95,7 @@ def cenarios(ufs: dict) -> dict:
             inst = d.get("instrumento")
             if inst is not None and d.get("sem_ato_de_aprovacao"):
                 inst = inst * fator
-            fora[uf] = prontidao(inst,
-                                 coordenacao(d.get("f1"), d.get("f2")),
-                                 d.get("cobertura"))
+            fora[uf] = prontidao(inst, coordenacao(d.get("f1"), d.get("f2")))
         return fora
 
     alt_sem_ato = monta_sem_ato()
@@ -148,7 +144,7 @@ def monte_carlo(ufs: dict, rodadas: int = 2000, degrau: float = 15.0, semente: i
         for _ in range(rodadas):
             p1 = min(100.0, max(0.0, d["f1"] + rnd.uniform(-degrau, degrau)))
             p2 = min(100.0, max(0.0, d["f2"] + rnd.uniform(-degrau, degrau)))
-            valores.append(prontidao(d["instrumento"], coordenacao(p1, p2), d.get("cobertura")))
+            valores.append(prontidao(d["instrumento"], coordenacao(p1, p2)))
         valores.sort()
         fora[uf] = {"p05": round(valores[int(0.05 * rodadas)], 1),
                     "mediana": round(valores[rodadas // 2], 1),
@@ -168,7 +164,7 @@ def ler_monitor():
         f1, f2 = co.get("f1") or {}, co.get("f2") or {}
         inst = v.get("instrumento") or {}
         fora[uf] = {"f1": f1.get("pontos"), "f2": f2.get("pontos"), "f2_status": f2.get("status"),
-                    "instrumento": inst.get("pontos"), "cobertura": (v.get("cobertura") or {}).get("pontos"),
+                    "instrumento": inst.get("pontos"),
                     # marca "sem ato de aprovação localizado" (03/10/2026), que a variante de 70% desconta
                     "sem_ato_de_aprovacao": bool(inst.get("sem_ato_de_aprovacao") or v.get("sem_ato_de_aprovacao"))}
     return fora
@@ -190,16 +186,16 @@ def _autoteste() -> int:
     ok("geométrica: a falta de uma função zera", coordenacao(100, 0, "geometrica") == 0.0)
     ok("função não verificada devolve None", coordenacao(100, None) is None)
     ok("pesos desiguais pesam", coordenacao(100, 0, pesos=(0.6, 0.4)) == 60.0)
-    ok("prontidão é um terço cada", prontidao(90, 60, 30) == 60.0)
-    ok("prontidão com componente não verificado é None", prontidao(90, None, 30) is None)
+    ok("prontidão é metade cada", prontidao(90, 60) == 75.0)
+    ok("prontidão com componente não verificado é None", prontidao(90, None) is None)
     ok("faixa pelas réguas publicadas",
        [faixa(v) for v in (None, 10, 40, 60, 90)]
        == ["não verificado", "estágio inicial", "em construção", "consolidado", "avançado"])
 
     ufs = {
-        "AA": {"f1": 100, "f2": 0, "f2_status": "LAC", "instrumento": 100, "cobertura": 30},
-        "BB": {"f1": 45, "f2": 50, "f2_status": "LISTADA_SEM_ATRIBUICAO", "instrumento": 65, "cobertura": 20},
-        "CC": {"f1": None, "f2": None, "f2_status": None, "instrumento": 100, "cobertura": 10},
+        "AA": {"f1": 100, "f2": 0, "f2_status": "LAC", "instrumento": 100},
+        "BB": {"f1": 45, "f2": 50, "f2_status": "LISTADA_SEM_ATRIBUICAO", "instrumento": 65},
+        "CC": {"f1": None, "f2": None, "f2_status": None, "instrumento": 100},
     }
     c = cenarios(ufs)
     ok("cenário base calcula só quem tem as duas funções",
@@ -226,9 +222,9 @@ def _autoteste() -> int:
     ok("trava estrutural: nenhuma linha do script escreve em disco", not escritas)
 
     # a variante de 70% (03/10/2026)
-    ufs_sa = {"AA": {"f1": 100, "f2": 100, "instrumento": 100, "cobertura": 100,
+    ufs_sa = {"AA": {"f1": 100, "f2": 100, "instrumento": 100,
                      "sem_ato_de_aprovacao": True},
-              "BB": {"f1": 100, "f2": 100, "instrumento": 100, "cobertura": 100}}
+              "BB": {"f1": 100, "f2": 100, "instrumento": 100}}
     c_sa = cenarios(ufs_sa)["sem_ato_70"]
     ok("variante 70%: só a unidade marcada é descontada",
        c_sa["unidades_marcadas"] == ["AA"] and c_sa["maior_diferenca"] > 0)

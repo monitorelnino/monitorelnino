@@ -1,12 +1,11 @@
 {
- "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). Dois componentes, metade cada: instrumento estadual e cobertura populacional (população em município cujo plano de contingência localizado trata a saúde). Nenhum componente depende de data: o tempo é publicado à parte, de peso zero, e a coordenação na saúde entra na nota, um terço cada, quando as 27 UFs a tiverem verificada. Índice nacional = média das 27 UFs, como o MARÉ Legal; a UF sem documento lido entra com instrumento 0 e a cobertura que tem, e o estatuto dela viaja junto. Duas leituras de contexto (risco observado e projetado). UF não verificada não recebe número próprio. Metodologia §31, §115 e §119.",
+ "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). A nota de cada UF é o instrumento estadual; nenhum componente depende de data (o tempo é publicado à parte, de peso zero) e a coordenação na saúde entra na nota, metade com o instrumento, quando as 27 UFs a tiverem verificada. Índice nacional = Σ(nota × população × c_uf) ÷ Σ população, com as 27 UFs no denominador; c_uf é a cobertura do dever de plano (1 nas 27) e pesa o nacional, não a nota. A UF sem documento lido entra com nota 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado. UF não verificada não recebe número próprio. Metodologia §31, §115 e §121.",
  "versao": "0.7",
  "gerado_em": "24/10/2026",
  "corte": "02/10/2026",
  "metodo": {
   "pesos": {
-   "instrumento": 0.5,
-   "cobertura": 0.5
+   "instrumento": 1.0
   },
   "escada": {
    "NOVO": 100,
@@ -16,9 +15,9 @@
    "LAC": 0
   },
   "cobertura": {
-   "nome": "cobertura populacional: saúde no plano municipal de defesa civil",
-   "peso": 0.5,
-   "entra_na_nota": true,
+   "nome": "saúde no plano municipal de defesa civil",
+   "peso": 0,
+   "entra_na_nota": false,
    "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF",
    "creditos_municipais": {
     "plano": 1.0,
@@ -65,17 +64,19 @@
    "proxima_etapa": {
     "versao": "0.8",
     "pesos": {
-     "instrumento": 0.3333,
-     "coordenacao": 0.3333,
-     "cobertura": 0.3333
+     "instrumento": 0.5,
+     "coordenacao": 0.5
     },
     "condicao": "as 27 UFs com as duas funções verificadas (resumo.coordenacao_verificadas)"
    }
   },
   "agregacao_nacional": {
-   "formula": "Σ prontidao_nacional das 27 UFs / 27",
+   "formula": "Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf",
    "denominador": 27,
-   "uf_sem_documento_lido": "instrumento 0 e a cobertura da UF (credito_nacional)"
+   "ponderacao": "populacao",
+   "fonte_populacao": "Censo 2022 (IBGE)",
+   "c_uf": "1 nas 27 UFs: o dever de plano é do estado e cobre a população inteira; a falta de plano já está na nota",
+   "uf_sem_documento_lido": "nota 0 (credito_nacional)"
   },
   "faixas": {
    "estágio inicial": "0–25",
@@ -139,15 +140,15 @@
   "verificadas": 21,
   "nao_verificadas": 6,
   "por_faixa": {
-   "estágio inicial": 14,
-   "avançado": 1,
-   "em construção": 3,
-   "consolidado": 3
+   "em construção": 17,
+   "avançado": 4
   },
   "planos_municipais_lidos": 94,
   "planos_municipais_sem_leitura": 81,
   "denominador": 27,
-  "indice_nacional": 23.4,
+  "ponderacao": "populacao",
+  "populacao_total": 203062512,
+  "indice_nacional": 61.3,
   "por_estatuto": {
    "plano_localizado": 21,
    "plano_nao_localizado": 0,
@@ -172,8 +173,7 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -206,6 +206,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 830026,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -221,15 +223,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0
+   "prontidao_nacional": 0.0,
+   "peso_nacional": 0.0041,
+   "contribuicao_nacional": 0.0
   },
   "AL": {
    "verificado": true,
-   "prontidao": 22.6,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Enfrentamento das Arboviroses 2026",
     "data": "10/02/2026",
     "orgao": "Sesau/AL",
@@ -237,8 +241,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.1,
+    "peso": 0,
     "cobertura_pct": 0.1,
     "pop_coberta": 2289,
     "planos_lidos": 1,
@@ -271,6 +274,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 3127511,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -286,15 +291,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.6
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0154,
+   "contribuicao_nacional": 0.69
   },
   "AM": {
    "verificado": true,
-   "prontidao": 76.2,
+   "prontidao": 100.0,
    "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
-    "pontos": 100,
+    "pontos": 100.0,
     "doc": "Plano de Contingência para Emergências em Saúde Pública Relacionadas a Eventos Climáticos Sazonais de Seca e Estiagem",
     "data": "08/06/2026",
     "orgao": "SES-AM / FVS-RCP",
@@ -302,8 +309,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 52.4,
+    "peso": 0,
     "cobertura_pct": 52.4,
     "pop_coberta": 2063547,
     "planos_lidos": 1,
@@ -336,6 +342,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 3941175,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -351,7 +359,9 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 76.2
+   "prontidao_nacional": 100.0,
+   "peso_nacional": 0.0194,
+   "contribuicao_nacional": 1.94
   },
   "AP": {
    "verificado": false,
@@ -367,8 +377,7 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -401,6 +410,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 733508,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -416,15 +427,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0
+   "prontidao_nacional": 0.0,
+   "peso_nacional": 0.0036,
+   "contribuicao_nacional": 0.0
   },
   "BA": {
    "verificado": true,
-   "prontidao": 24.7,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano Estadual de Contingência das Arboviroses Urbanas — atualização 2025-2026",
     "data": "05/2025",
     "orgao": "SESAB/SUVISA/DIVEP",
@@ -432,8 +445,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 4.4,
+    "peso": 0,
     "cobertura_pct": 4.4,
     "pop_coberta": 616279,
     "planos_lidos": 1,
@@ -466,6 +478,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 14136417,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
@@ -481,15 +495,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 24.7
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0696,
+   "contribuicao_nacional": 3.13
   },
   "CE": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano Estadual de Enfrentamento das Arboviroses 2025/2026",
     "data": "01/07/2025",
     "orgao": "SESA-CE / SEVIR",
@@ -497,8 +513,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -531,6 +546,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 8791688,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -546,15 +563,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0433,
+   "contribuicao_nacional": 1.95
   },
   "DF": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Enfrentamento das Arboviroses do Distrito Federal",
     "data": "22/12/2023",
     "orgao": "SES-DF",
@@ -562,8 +581,7 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -596,6 +614,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 2817068,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -611,15 +631,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0139,
+   "contribuicao_nacional": 0.62
   },
   "ES": {
    "verificado": true,
-   "prontidao": 49.4,
+   "prontidao": 45.0,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Contingência Estadual das Arboviroses — Dengue, Zika e Chikungunya",
     "data": null,
     "orgao": "SESA-ES",
@@ -627,8 +649,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 53.8,
+    "peso": 0,
     "cobertura_pct": 53.8,
     "pop_coberta": 2062265,
     "planos_lidos": 72,
@@ -661,6 +682,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 3833486,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
@@ -671,15 +694,17 @@
    },
    "risco_projetado": [],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 49.4
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0189,
+   "contribuicao_nacional": 0.85
   },
   "GO": {
    "verificado": true,
-   "prontidao": 50.0,
-   "faixa": "consolidado",
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
-    "pontos": 100,
+    "pontos": 100.0,
     "doc": "Plano de Emergências em Saúde Pública de Goiás — cenários do El Niño 2026-2027",
     "data": "27/08/2026",
     "orgao": "SES-GO / SUVISA",
@@ -687,8 +712,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -721,6 +745,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 7055228,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -736,7 +762,9 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 50.0
+   "prontidao_nacional": 100.0,
+   "peso_nacional": 0.0347,
+   "contribuicao_nacional": 3.47
   },
   "MA": {
    "verificado": false,
@@ -752,8 +780,7 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 1,
@@ -786,6 +813,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 6775152,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
@@ -801,15 +830,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0
+   "prontidao_nacional": 0.0,
+   "peso_nacional": 0.0334,
+   "contribuicao_nacional": 0.0
   },
   "MG": {
    "verificado": true,
-   "prontidao": 50.0,
-   "faixa": "consolidado",
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
-    "pontos": 100,
+    "pontos": 100.0,
     "doc": "Plano de Enfrentamento ao El Niño do Estado de Minas Gerais: Preparação, Monitoramento e Resposta do Setor Saúde",
     "data": "08/09/2026",
     "orgao": "SES-MG / Subsecretaria de Vigilância em Saúde",
@@ -817,8 +848,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -851,6 +881,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 20538718,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 3,
@@ -866,15 +898,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 50.0
+   "prontidao_nacional": 100.0,
+   "peso_nacional": 0.1011,
+   "contribuicao_nacional": 10.11
   },
   "MS": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Contingência Estadual Arboviroses 2025-2026",
     "data": "08/10/2025",
     "orgao": "SES-MS",
@@ -882,8 +916,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -916,6 +949,8 @@
      "citado": "aúde de Mato Grosso do Sul, e dá outras providências. O SECRETÁRIO DE ESTADO DE SAÚDE DE MATO GROSSO DO SUL, no uso das atribuições legais e, Considerando que as mudanças climáticas representam crescente desafio à saúde pública, com potenci"
     }
    },
+   "c_uf": 1,
+   "populacao": 2756700,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -931,15 +966,17 @@
     "continuidade de serviços (diálise, oxigênio, rede de frio)"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0136,
+   "contribuicao_nacional": 0.61
   },
   "MT": {
    "verificado": true,
-   "prontidao": 17.5,
-   "faixa": "estágio inicial",
+   "prontidao": 35.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
-    "pontos": 35,
+    "pontos": 35.0,
     "doc": "Portaria nº 0195/2026/GBSES",
     "data": "30/03/2026",
     "orgao": "SES-MT / Gabinete do Secretário",
@@ -947,8 +984,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -981,6 +1017,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 3658813,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -996,15 +1034,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 17.5
+   "prontidao_nacional": 35.0,
+   "peso_nacional": 0.018,
+   "contribuicao_nacional": 0.63
   },
   "PA": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Contingência Estadual de Dengue, Chikungunya e Zika vírus",
     "data": "02/2025",
     "orgao": "SESPA / Coordenação Estadual de Arboviroses",
@@ -1012,8 +1052,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1046,6 +1085,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 8116132,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1061,15 +1102,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.04,
+   "contribuicao_nacional": 1.8
   },
   "PB": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano Estadual de Contingência para Controle das Arboviroses",
     "data": "15/02/2024",
     "orgao": "SES-PB / Vigilância em Saúde",
@@ -1077,8 +1120,7 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1111,6 +1153,8 @@
      "citado": "planos de contingên- cia relacionados aos impactos do fenômeno El Niño; O SECRETÁRIO DE ESTADO DA SAÚDE, no uso de suas atribuições legais, IX – promover o compartilhamento oportuno de informações entre os setores envolvidos; CONSIDERANDO a"
     }
    },
+   "c_uf": 1,
+   "populacao": 3974495,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1126,15 +1170,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0196,
+   "contribuicao_nacional": 0.88
   },
   "PE": {
    "verificado": true,
-   "prontidao": 27.4,
+   "prontidao": 45.0,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Enfrentamento das Arboviroses 2025/2026",
     "data": "22/01/2025",
     "orgao": "SES-PE",
@@ -1142,8 +1188,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 9.9,
+    "peso": 0,
     "cobertura_pct": 9.9,
     "pop_coberta": 893352,
     "planos_lidos": 1,
@@ -1176,6 +1221,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 9058155,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
@@ -1191,15 +1238,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 27.4
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0446,
+   "contribuicao_nacional": 2.01
   },
   "PI": {
    "verificado": true,
-   "prontidao": 17.5,
-   "faixa": "estágio inicial",
+   "prontidao": 35.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
-    "pontos": 35,
+    "pontos": 35.0,
     "doc": "Plano de contingência para o enfrentamento do El Niño",
     "data": null,
     "orgao": "Sesapi",
@@ -1207,8 +1256,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1241,6 +1289,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 3269200,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1256,15 +1306,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 17.5
+   "prontidao_nacional": 35.0,
+   "peso_nacional": 0.0161,
+   "contribuicao_nacional": 0.56
   },
   "PR": {
    "verificado": true,
-   "prontidao": 26.2,
+   "prontidao": 45.0,
    "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de ação e contingência de arboviroses para a sazonalidade 2024/2025",
     "data": "22/11/2024",
     "orgao": "SESA-PR",
@@ -1272,8 +1324,7 @@
     "temporada": "anterior"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 7.4,
+    "peso": 0,
     "cobertura_pct": 7.4,
     "pop_coberta": 845017,
     "planos_lidos": 3,
@@ -1306,6 +1357,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 11443208,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1321,15 +1374,17 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 26.2
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0564,
+   "contribuicao_nacional": 2.54
   },
   "RJ": {
    "verificado": true,
-   "prontidao": 22.1,
-   "faixa": "estágio inicial",
+   "prontidao": 35.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
-    "pontos": 35,
+    "pontos": 35.0,
     "doc": "Plano de Contingência para Enfrentamento às Arboviroses",
     "data": "12/2025",
     "orgao": "SES-RJ",
@@ -1337,8 +1392,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 9.2,
+    "peso": 0,
     "cobertura_pct": 9.2,
     "pop_coberta": 1470993,
     "planos_lidos": 4,
@@ -1371,6 +1425,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 16054524,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1381,7 +1437,9 @@
    },
    "risco_projetado": [],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.1
+   "prontidao_nacional": 35.0,
+   "peso_nacional": 0.0791,
+   "contribuicao_nacional": 2.77
   },
   "RN": {
    "verificado": false,
@@ -1397,8 +1455,7 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1431,6 +1488,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 3302406,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1446,15 +1505,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0
+   "prontidao_nacional": 0.0,
+   "peso_nacional": 0.0163,
+   "contribuicao_nacional": 0.0
   },
   "RO": {
    "verificado": true,
-   "prontidao": 17.5,
-   "faixa": "estágio inicial",
+   "prontidao": 35.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "ELAB",
-    "pontos": 35,
+    "pontos": 35.0,
     "doc": "Plano Operacional Integrado de Contingência Climática em Saúde",
     "data": null,
     "orgao": "Sesau/RO",
@@ -1462,8 +1523,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1496,6 +1556,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 1581016,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1511,7 +1573,9 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 17.5
+   "prontidao_nacional": 35.0,
+   "peso_nacional": 0.0078,
+   "contribuicao_nacional": 0.27
   },
   "RR": {
    "verificado": false,
@@ -1527,8 +1591,7 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1561,6 +1624,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 636303,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1576,15 +1641,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0
+   "prontidao_nacional": 0.0,
+   "peso_nacional": 0.0031,
+   "contribuicao_nacional": 0.0
   },
   "RS": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Contingência Dengue 2024-2025, 2ª versão (fevereiro/2025); plano para o verão 2025/2026 apresentado às coordenadorias em 29-31/10/2025, edição ainda não listada na página oficial",
     "data": "10/02/2025",
     "orgao": "SES-RS / CEVS",
@@ -1592,8 +1659,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 3022,
     "planos_lidos": 1,
@@ -1626,6 +1692,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 10880506,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1641,15 +1709,17 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0536,
+   "contribuicao_nacional": 2.41
   },
   "SC": {
    "verificado": true,
-   "prontidao": 22.7,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Contingência para o enfrentamento da dengue, zika e chikungunya — temporada 2025/2026",
     "data": "08/09/2025",
     "orgao": "SES-SC / DIVE",
@@ -1657,8 +1727,7 @@
     "temporada": "2025/2026"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.4,
+    "peso": 0,
     "cobertura_pct": 0.4,
     "pop_coberta": 29086,
     "planos_lidos": 4,
@@ -1691,6 +1760,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 7609601,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1706,15 +1777,17 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.7
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0375,
+   "contribuicao_nacional": 1.69
   },
   "SE": {
    "verificado": true,
-   "prontidao": 22.5,
-   "faixa": "estágio inicial",
+   "prontidao": 45.0,
+   "faixa": "em construção",
    "instrumento": {
     "status": "VIG",
-    "pontos": 45,
+    "pontos": 45.0,
     "doc": "Plano de Contingência para Enfrentamento e Controle de Epidemias por Arboviroses no Estado de Sergipe",
     "data": null,
     "orgao": "SES-SE",
@@ -1722,8 +1795,7 @@
     "temporada": "desconhecida"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.0,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 1,
@@ -1756,6 +1828,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 2209558,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 2,
@@ -1771,15 +1845,17 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 22.5
+   "prontidao_nacional": 45.0,
+   "peso_nacional": 0.0109,
+   "contribuicao_nacional": 0.49
   },
   "SP": {
    "verificado": true,
-   "prontidao": 50.2,
-   "faixa": "consolidado",
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
     "status": "NOVO",
-    "pontos": 100,
+    "pontos": 100.0,
     "doc": "Plano Estadual de Preparação e Resposta em Saúde para o Fenômeno El Niño",
     "data": "31/08/2026",
     "orgao": "SES-SP",
@@ -1787,8 +1863,7 @@
     "temporada": "2026/2027"
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": 0.4,
+    "peso": 0,
     "cobertura_pct": 0.4,
     "pop_coberta": 193092,
     "planos_lidos": 4,
@@ -1821,6 +1896,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 44420459,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 3,
@@ -1836,7 +1913,9 @@
     "abrigos e continuidade de serviços"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 50.2
+   "prontidao_nacional": 100.0,
+   "peso_nacional": 0.2188,
+   "contribuicao_nacional": 21.88
   },
   "TO": {
    "verificado": false,
@@ -1852,8 +1931,7 @@
     "temporada": null
    },
    "cobertura": {
-    "peso": 0.5,
-    "pontos": null,
+    "peso": 0,
     "cobertura_pct": 0.0,
     "pop_coberta": 0,
     "planos_lidos": 0,
@@ -1886,6 +1964,8 @@
      "citado": null
     }
    },
+   "c_uf": 1,
+   "populacao": 1511459,
    "camada": "ciclo",
    "risco_atual": {
     "dengue_capital_nivel": 1,
@@ -1901,7 +1981,9 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "nao_verificado",
-   "prontidao_nacional": 0.0
+   "prontidao_nacional": 0.0,
+   "peso_nacional": 0.0074,
+   "contribuicao_nacional": 0.0
   }
  }
 }

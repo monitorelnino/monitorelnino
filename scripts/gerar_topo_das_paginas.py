@@ -231,8 +231,10 @@ def definicao_dos_indices(meta: dict, monitor: dict) -> dict:
     saude = None
     if (partes and len(partes) == len(pesos) and len(set(pesos.values())) == 1
             and mesma_escala):
+        ponderada = (((monitor or {}).get("metodo") or {}).get("agregacao_nacional") or {}).get("ponderacao") == "populacao"
         saude = ("A mesma escala, para o que a secretaria estadual de saúde publicou: "
-                 f"{_lista(partes)}. A nota nacional é a média dos estados.")
+                 f"{_lista(partes)}. A nota nacional é a média dos estados"
+                 + (", ponderada pela população." if ponderada else "."))
     return {"legal": legal, "saude": saude, "saude_partes": partes if saude else None}
 
 
@@ -489,19 +491,22 @@ def _autoteste() -> int:
     meta = {"definicao_indice": {"componentes": [
         {"nome": n, "peso": "1/3"} for n in PARTES_LEGAL],
         "faixas": [[0, 25, "a"], [25, 50, "b"], [50, 70, "c"], [70, 100, "d"]]}}
-    mon = {"metodo": {"pesos": {"instrumento": 0.5, "cobertura": 0.5},
+    mon = {"metodo": {"pesos": {"instrumento": 1.0}, "agregacao_nacional": {"ponderacao": "populacao"},
                       "faixas": {"a": "0–25", "b": "25–50", "c": "50–70", "d": "70–100"}}}
     df = definicao_dos_indices(meta, mon)
     ok("a definição do Legal sai do dado, com três partes de mesmo peso",
        df["legal"].startswith("Cada estado recebe uma nota de 0 a 100, com três partes de mesmo "
                               "peso: o plano estadual") and "versão" not in df["legal"])
-    ok("a definição da Saúde tem duas partes, instrumento e cobertura, e nenhuma depende de data",
-       "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça) e quanta gente vive em município cujo plano trata a saúde." in df["saude"]
+    ok("a definição da Saúde tem uma parte, o instrumento, sem data, e o nacional pesa a população",
+       "publicou: o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça). A nota nacional é a média dos estados, ponderada pela população." in df["saude"]
        and "boletim" not in df["saude"] and "já verificados" not in df["saude"])
-    mon["metodo"]["pesos"] = {"instrumento": 1 / 3, "coordenacao": 1 / 3, "cobertura": 1 / 3}
+    mon["metodo"]["pesos"] = {"instrumento": 0.5, "coordenacao": 0.5}
     ok("mudar o componente no dado muda o texto da Saúde",
        "quem coordena a resposta na saúde" in definicao_dos_indices(meta, mon)["saude"]
        and "boletim" not in definicao_dos_indices(meta, mon)["saude"])
+    mon["metodo"]["agregacao_nacional"] = {}
+    ok("sem a ponderação no dado, o texto não a afirma",
+       definicao_dos_indices(meta, mon)["saude"].endswith("A nota nacional é a média dos estados."))
     ok("componente que a função não conhece deixa lacuna, não texto",
        definicao_dos_indices({"definicao_indice": {"componentes": [{"nome": "novo", "peso": "1"}],
                                                    "faixas": [[0, 100, "x"]]}}, mon)["legal"] is None
