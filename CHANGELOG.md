@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Válvula de dia aceita Node · Coleta
+
+A aplicação das 75 promoções do RS escreveu os registros, mas os portões em Node não rodavam na válvula (sem `npm ci`) e a aplicação foi desfeita, como deve. A válvula ganha a entrada `precisa_node`, já existente no coletor.
+
 ## 2026-10-24 · Documento já preservado não se baixa de novo · Juiz
 
 A aplicação das 75 promoções do RS baixa PDFs de uma pasta lenta e estourou o prazo da coleta (38 guardados em 27 minutos), perdendo tudo. A passada passa a reaproveitar a evidência já indexada com arquivo em disco, e a seguinte continua de onde parou.
