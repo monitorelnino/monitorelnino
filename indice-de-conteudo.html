@@ -878,7 +878,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.nao_verificado.ressalva</code></td><td>Isso não é uma afirmação sobre a existência do plano.</td></tr>
 </table>
-<h2>monitor-de-riscos <small>(83 trechos)</small></h2>
+<h2>monitor-de-riscos <small>(84 trechos)</small></h2>
 <h3>situacao · roni</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>monitor-de-riscos.situacao.roni.rotulo</code></td><td>RONI mais recente</td></tr>
@@ -1058,19 +1058,23 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>avisos</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>monitor-de-riscos.avisos.titulo</code></td><td>Avisos de tempo severo em vigor</td></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.avisos.titulo</code></td><td>Avisos do INMET e alertas do Cemaden em vigor</td></tr>
 </table>
 <h3>avisos · sub</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.avisos.sub</code></td><td>Por grau do aviso · municípios cobertos · INMET</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.avisos.sub</code></td><td>Um ponto por município, na cor do maior grau de aviso do INMET · alerta do Cemaden em círculo vazado</td></tr>
+</table>
+<h3>avisos · escada_rotulo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.avisos.escada_rotulo</code></td><td>Municípios por maior grau do aviso do INMET</td></tr>
+</table>
+<h3>avisos · molde_sem_aviso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.avisos.molde_sem_aviso</code></td><td><span class="molde">{n|Nenhum município sem aviso do INMET|1 município sem aviso do INMET|{n} municípios sem aviso do INMET}</span><br><span class="ex">exemplo: 3 municípios sem aviso do INMET</span></td></tr>
 </table>
 <h3>cemaden</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>monitor-de-riscos.cemaden.titulo</code></td><td>Alertas do Cemaden vigentes</td></tr>
-</table>
-<h3>cemaden · sub</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.cemaden.sub</code></td><td>Por nível do alerta · estado · municípios nomeados pelo Cemaden</td></tr>
+<tr><td>rotulo</td><td><code>monitor-de-riscos.cemaden.rotulo</code></td><td>Alertas do Cemaden por nível e estado</td></tr>
 </table>
 <h3>consulta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
