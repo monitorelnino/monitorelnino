@@ -145,18 +145,17 @@ async function __load(){
           + (faltam > 0 ? faltam + (faltam === 1 ? ' estado ainda não verificado' : ' estados ainda não verificados') : 'as 27 verificadas');
       }
       if (el('nCoordSaude')) {
-        /* A coordenação vive no arquivo da v0.4, que é quem a mede. Sem ele, o cartão diz que não
-         * há coleta — nunca zero. */
-        fetch('data/monitor_saude_v04.json').then(r => r.ok ? r.json() : null).then(V => {
-          const u = (V && V.uf) || null;
-          /* Travessão em cartão é proibido (layout/regras.json): a ausência diz a sua classe. */
-          if (!u) { el('nCoordSaude').textContent = 'sem coleta';
-                    el('fonteCoordSaude').textContent = 'Sem coleta até o corte.'; return; }
-          const comCoord = Object.values(u).filter(x => x && x.coordenacao && x.coordenacao.doc).length;
-          el('nCoordSaude').textContent = n(comCoord) + ' de 27';
+        /* A coordenação vive no motor único (monitor_saude.json, ufs[UF].coordenacao). Sem o arquivo,
+         * o cartão diz que não há coleta — nunca zero. Travessão em cartão é proibido
+         * (layout/regras.json): a ausência diz a sua classe. */
+        const u = (MSAUDE && MSAUDE.ufs) || null;
+        if (!u) { el('nCoordSaude').textContent = 'sem coleta';
+                  el('fonteCoordSaude').textContent = 'Sem coleta até o corte.'; }
+        else {
+          el('nCoordSaude').textContent = n(Object.values(u).filter(x => x && x.coordenacao && x.coordenacao.f1 && x.coordenacao.f1.doc).length) + ' de 27';
           el('fonteCoordSaude').textContent = 'Ato de criação ou de ativação lido em cada estado · '
             + 'sala de situação ou centro de operações de emergência';
-        }).catch(_erroSaude("saude:125"));
+        }
       }
       // O cartão "Resposta" saiu dos números em 19/10/2026 (HANDOVER_SAUDE_PAGINA §1.3 e §7): a
       // emergência em saúde pública tem medidor próprio no topo, e zero não vira cartão.
