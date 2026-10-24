@@ -500,5 +500,17 @@ function gerarImagemGuia(){
       if (destino) { ev.preventDefault(); mostrar(destino, true); }
     });
   });
-  mostrar(abas.find(a => a.getAttribute('aria-selected') === 'true') || abas[0], false);
+  /* O navegador não salta para elemento `hidden`: a âncora (#guia-dengue, do cartão da cidade ou de
+     uma URL direta) abre primeiro a aba do painel e só então rola até ele. */
+  const daAncora = () => abas.find(a => '#' + a.getAttribute('aria-controls') === location.hash);
+  function seguirAncora(){
+    const aba = daAncora();
+    if (!aba) return;
+    mostrar(aba, false);
+    const painel = painelDe(aba);
+    if (painel.scrollIntoView) painel.scrollIntoView();
+  }
+  window.addEventListener('hashchange', seguirAncora);
+  mostrar(daAncora() || abas.find(a => a.getAttribute('aria-selected') === 'true') || abas[0], false);
+  seguirAncora();
 })();

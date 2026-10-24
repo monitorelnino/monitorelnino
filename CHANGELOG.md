@@ -10,6 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 
+## 2026-10-24 · #PR · Proteja-se: "O que fazer" abre a orientação certa · Site
+
+Os links do cartão da cidade e as URLs com âncora (#guia-dengue, #guia-calor e as outras três) agora abrem a aba do guia e rolam até ele; antes o painel escondido recebia o salto e nada acontecia. A correção mora no bloco das abas. Código +17 líquidas, com um caso novo no portão de execução.
+
 ## 2026-10-24 · Monitor de riscos: listas federais num mapa por município
 As duas listas federais (deslizamento e enchente; fogo na Amazônia) viram um cartão só, com um ponto por município em três cores e as contagens ao lado; a ressalva da Amazônia Legal vai no cartão. A consulta do município sobe para logo depois do risco previsto. Código +6 líquidas: variante de CSS e rótulos no catálogo.
 
