@@ -205,7 +205,7 @@ def julgar_uma(p: dict, buscar, preservar=None) -> dict:
 MOTIVOS_TECNICOS = ("documento_inacessivel", "texto_nao_extraivel")
 # Back-off entre tentativas técnicas: `coletores_base.proxima_tentativa` (1, 3, 7 dias; na quinta,
 # `inacessivel_persistente`, que continua VISÍVEL no arquivo — some do processo, não do registro).
-from coletores_base import proxima_tentativa  # noqa: E402
+from coletores_base import proxima_tentativa, redigir_dados_pessoais  # noqa: E402
 
 
 def classe_da_recusa(v: dict) -> str:
@@ -771,7 +771,10 @@ def main() -> int:
             "por pista julgada, com os critérios 1-6 e o trecho que satisfez cada um. Errata por linha "
             "reverte a decisão. Este arquivo é o que alimenta a auditoria amostral semanal."),
             "decisoes": []}
-        registro["decisoes"] = (registro.get("decisoes") or []) + vereditos
+        # 24/10/2026: o `trecho` que satisfez um critério sai do PDF lido e traz CPF de terceiros
+        # (vice-prefeito, coordenador); o registro é publicado pela raiz. Redige-se na porta (LGPD art. 6º, III).
+        limpos = json.loads(redigir_dados_pessoais(json.dumps(vereditos, ensure_ascii=False))[0])
+        registro["decisoes"] = (registro.get("decisoes") or []) + limpos
         gravar_em(DATA / PROMOCOES, registro)
         for v in vereditos:
             log_busca("juiz", 5, [f"pista {v.get('pista_id')}"],

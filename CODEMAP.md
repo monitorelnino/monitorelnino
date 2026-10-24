@@ -131,7 +131,7 @@ Atualizado em 24/10/2026.
 | `gerar_saude_municipio.py` | — | — | — | — | não |
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
-| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
+| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 5 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 5 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
@@ -202,7 +202,7 @@ Atualizado em 24/10/2026.
 | `trocar_para_v04.py` | — | — | — | — | não |
 | `verificar_consistencia.py` | — | — | — | — | não |
 | `verificar_contribuicoes.py` | — | — | — | — | não |
-| `verificar_evidencias.py` | — | — | — | — | não |
+| `verificar_evidencias.py` | — | — | — | 1 | não |
 | `verificar_financiamento.py` | — | `financiamento/x.json` | — | — | não |
 | `verificar_links.py` | — | `links_historico.json` | — | — | não |
 | `verificar_painel.py` | — | `painel/lista.json` | — | — | não |

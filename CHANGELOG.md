@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
+
+`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.
+
 ## 2026-10-24 · Sem cópia da evidência, sem promoção · Juiz
 
 Dezesseis documentos do RS passam do limite de evidência e a pasta privada não aceita o Wayback; a aplicação os registrava mesmo sem arquivo e o portão de evidências barrou o dado. Agora a aplicação recusa e marca, em vez de depender do portão. O portão C10 passa a reconhecer a pasta pública do governo do RS como fonte oficial.
@@ -16,6 +20,10 @@ Dezesseis documentos do RS passam do limite de evidência e a pasta privada não
 ## 2026-10-24 · Trecho do juiz sem CPF · Juiz
 
 O trecho que o juiz guarda como prova passa pela redação de dado pessoal antes de entrar no registro público. Duas decisões do RS traziam o CPF de coordenadores municipais, copiado de uma planilha de contatos, e o portão de segredos barrou o dado.
+
+## 2026-10-24 · #1060 · Registro do juiz sem CPF; PDF do RS lido pela sessão do link · Coleta
+
+O `trecho` que o juiz grava em `promocoes_automaticas.json` saía do PDF com CPF de vice-prefeito; agora é redigido na porta (`julgar_filas.py`). `preservar_evidencias.py --ler` usa a sessão do link de compartilhamento para a pasta do RS: PDFs acima de 5 MB, sem cópia binária, ganham texto preservado. Código +11 líquidas.
 
 ## 2026-10-24 · #1067 · Busca de planos em fontes abertas: quem nunca foi lido vem primeiro · Coleta
 A fila do dia relia primeiro os municípios lidos em dias anteriores e o prazo do run cortava a cobertura. Agora os nunca lidos vêm antes dos que só precisam de releitura. Código +5 líquidas, com autoteste; nenhum dado, regra ou peso do índice muda.
