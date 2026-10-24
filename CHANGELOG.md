@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-24 · Sem cópia da evidência, sem promoção · Juiz
 
-Dezesseis documentos do RS passam do limite de evidência e a pasta privada não aceita o Wayback; a aplicação os registrava mesmo sem arquivo e o portão de evidências barrou o dado. Agora a aplicação recusa e marca, em vez de depender do portão.
+Dezesseis documentos do RS passam do limite de evidência e a pasta privada não aceita o Wayback; a aplicação os registrava mesmo sem arquivo e o portão de evidências barrou o dado. Agora a aplicação recusa e marca, em vez de depender do portão. O portão C10 passa a reconhecer a pasta pública do governo do RS como fonte oficial.
 
 ## 2026-10-24 · Trecho do juiz sem CPF · Juiz
 
