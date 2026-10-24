@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #PR · Servidor estático dos portões de navegador em um só arquivo · Site
+
+Consolidação, item 6. Quatro portões de navegador (consistência visual, dicas dos mapas, figuras de contagem, guia do Proteja-se) copiavam o servidor estático e a tabela de tipos; passam a usar `scripts/_servidor.js`. Mesma cobertura; código líquido −3 linhas.
+
 ## 2026-10-24 · #1091 · Monitor de riscos sem a ponte; rodapé e formulário ajustados · Site
 
 Na Situação atual saem o parágrafo de resumo e a linha "primeira leitura" do cartão do ar. Saem a ponte para a metodologia e a oração "se completa na quinta"; a leitura semanal fica só com a semana. Ciclo em curso nos dois gráficos do Pacífico em laranja avermelhado. Aberturas aprovadas do Monitor de riscos e da inicial. Rodapé: "Atualização · Corte · Coleta · Publicação" vem do catálogo. Formulário: observações em linha inteira.

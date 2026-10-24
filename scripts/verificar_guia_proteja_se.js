@@ -12,7 +12,7 @@
  *   node scripts/verificar_guia_proteja_se.js --autoteste
  *   node scripts/verificar_guia_proteja_se.js
  */
-const path = require("path"), fs = require("fs"), http = require("http"), os = require("os");
+const path = require("path"), fs = require("fs"), os = require("os");
 const { execFileSync } = require("child_process");
 const RAIZ = path.join(__dirname, "..");
 const ALTURA_A4 = 841.89, PE = 60, LINHA = 14.5;
@@ -54,10 +54,7 @@ function autoteste() {
 }
 async function principal() {
   const { chromium } = require("playwright");
-  const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png" };
-  const srv = http.createServer((q, r) => { const u = decodeURIComponent(q.url.split("?")[0]); const f = path.join(RAIZ, u === "/" ? "index.html" : u);
-    if (!f.startsWith(RAIZ) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { r.writeHead(404); return r.end(); }
-    r.writeHead(200, { "Content-Type": MIME[path.extname(f)] || "application/octet-stream" }); fs.createReadStream(f).pipe(r); });
+  const srv = require("./_servidor.js")(RAIZ);
   await new Promise(r => srv.listen(0, "127.0.0.1", r));
   const b = await chromium.launch(); const page = await b.newPage({ viewport: { width: 1280, height: 900 } });
   page.on("dialog", d => d.dismiss());
