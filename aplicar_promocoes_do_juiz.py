@@ -415,6 +415,8 @@ def main() -> int:
 
     for v, motivo in recusados:
         print(f"  não aplicado: {v['municipio']}/{v['uf']} — {motivo}")
+        if motivo.startswith("documento não pôde ser preservado"):
+            continue  # 24/10/2026: falha do nosso acesso, não decisão sobre o caso; a marca enterrou as 75 do RS
         v["nao_aplicado"] = {"em": hoje.isoformat(), "motivo": motivo}
 
     if not aplicados:

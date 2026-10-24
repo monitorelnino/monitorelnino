@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Falha de preservação não enterra a promoção · Juiz
+
+Quando o documento não podia ser preservado, a promoção ganhava a marca `nao_aplicado` e nunca mais voltava: as 75 do RS ficaram assim com o 403 já corrigido. Falha do nosso acesso deixa de marcar a decisão; a passada seguinte tenta de novo.
+
 ## 2026-10-24 · Evidência do RS preservada com a sessão do link · Juiz
 
 As 75 promoções do juiz para o RS ficavam sem aplicar: a preservação do documento pedia o PDF à pasta da Casa Militar sem a sessão do link de compartilhamento e levava HTTP 403. A preservação passa a usar o mesmo leitor do juiz. Recusa 401/403 de outro endereço segue respeitada.
