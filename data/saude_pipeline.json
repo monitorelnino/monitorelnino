@@ -8967,6 +8967,15 @@
   },
   {
    "data": "2026-10-23",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T01:03:14",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
    "script": "python3",
    "inicio": "2026-10-23T19:21:06",
    "duracao_s": 19207.4,
@@ -9012,15 +9021,6 @@
   },
   {
    "data": "2026-10-23",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T01:03:14",
-   "duracao_s": 2.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-23",
    "script": "coletar_sinais_risco.py",
    "inicio": "2026-10-24T01:05:49",
    "duracao_s": 93.9,
@@ -9045,7 +9045,115 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_saude.py",
+   "inicio": "2026-10-24T01:06:25",
+   "duracao_s": 98.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-10-24T01:08:03",
+   "duracao_s": 488.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-10-24T01:16:11",
+   "duracao_s": 487.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_dda.py",
+   "inicio": "2026-10-24T01:24:18",
+   "duracao_s": 59.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_boletim_ms_dengue.py",
+   "inicio": "2026-10-24T01:25:17",
+   "duracao_s": 22.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_boletim_df_arboviroses.py",
+   "inicio": "2026-10-24T01:25:39",
+   "duracao_s": 422.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_boletim_pe_arboviroses.py",
+   "inicio": "2026-10-24T01:32:41",
+   "duracao_s": 349.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_boletim_pb_arboviroses.py",
+   "inicio": "2026-10-24T01:38:30",
+   "duracao_s": 194.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_arboviroses_sinan.py",
+   "inicio": "2026-10-24T01:41:44",
+   "duracao_s": 15.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "coletar_obitos_registro_civil.py",
+   "inicio": "2026-10-24T01:42:00",
+   "duracao_s": 40.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "classificar_saude_no_plano.py",
+   "inicio": "2026-10-24T01:42:40",
+   "duracao_s": 0.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-23",
+   "script": "gerar_saude_municipio.py",
+   "inicio": "2026-10-24T01:42:40",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-24T01:37:16"
+ "atualizado_em": "2026-10-24T01:42:40"
 }
