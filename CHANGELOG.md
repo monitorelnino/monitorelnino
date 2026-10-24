@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · #PR · Três textos da inicial e formulário com campos abertos · Site
+
+Aplicados os pedidos aprovados pela editoria: abertura de "Sua cidade", frase da varredura (sai a final) e abertura do formulário. O bloco recolhível do formulário sai: número do ato e observações viram campos abertos com "(opcional)" no rótulo, e a nota sob os campos deixa de existir (ids baixados em `_renomeacoes.json`).
+
 ## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
 
 Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\"` do frontmatter (o link saía com aspas literais).
