@@ -125,7 +125,9 @@ def buscar_texto(url, timeout=20):
         # 09/10/2026 (lote 2.2, A1-20): o corte de 20.000 saiu daqui. Ele vinha ANTES do recorte do
         # ato, e o ato além do corte nunca era lido. O juiz corta o que julga (`juiz.TETO_DO_JULGAMENTO`).
         return texto[:TETO_DA_LEITURA]
-    except Exception:
+    except Exception as e:
+        # 24/10/2026: 170 de 481 PDFs do RS saíram `documento_inacessivel` sem a causa em lugar nenhum.
+        print(f"  [buscar_texto] {type(e).__name__}: {str(e)[:140]} · {url[-70:]}", file=sys.stderr)
         return None
 
 
