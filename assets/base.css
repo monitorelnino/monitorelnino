@@ -404,7 +404,7 @@ table th, .mun-table thead th{font-family:var(--font-dado); font-size:var(--fs-c
    que é opcional não deve disputar atenção com o que é obrigatório. */
 .contrib-campos{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:var(--sp-4); max-width:660px;}
 .contrib-campos .fld{margin:0;}
-.contrib-campos .fld:nth-child(3), .contrib-campos .fld:nth-child(4){grid-column:1 / -1;}
+.contrib-campos .fld:nth-child(4), .contrib-campos .fld:last-child{grid-column:1 / -1;}
 #formContrib{display:block;}
 #formContrib .note{max-width:660px;}
 #formContrib button[type="submit"]{margin-top:var(--sp-4);}
@@ -1063,8 +1063,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .g-pac .limt{fill:var(--pacifico-tinta); font-family:var(--font-dado); font-size:var(--fs-caption);
   paint-order:stroke; stroke:var(--grafico-oceano); stroke-width:4px; stroke-linejoin:round;}
 .g-pac .div{stroke:var(--pacifico-divisoria); stroke-width:1;}
-.g-pac .q{fill:var(--pacifico-barra-quente);}
-.g-pac .f{fill:var(--pacifico-barra-fria);}
 /* A anotação é escrita SOBRE o gráfico: o contorno na cor do fundo é o que a mantém legível
    quando ela cai em cima de uma barra. */
 .g-pac .ann{paint-order:stroke; stroke:var(--grafico-oceano); stroke-width:4px; stroke-linejoin:round;

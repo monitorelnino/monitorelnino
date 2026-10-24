@@ -1209,9 +1209,7 @@ if (PACIFICO.serie.length) {
       n: noAlvo.length,
       minimo: PAC.num(Math.min.apply(null, noAlvo)),
       maximo: PAC.num(Math.max.apply(null, noAlvo))}, null) : null;
-    // A contagem do ciclo em curso só é dita enquanto o critério NÃO se completou: depois das
-    // cinco, a frase "se completa na quinta" deixa de ser verdadeira.
-    if (PACIFICO.emCurso && PACIFICO.emCurso.pontos.length < 5) {
+    if (PACIFICO.emCurso) {
       const c = txtCat(IP + 'episodios.molde_contagem', {ano: String(PACIFICO.emCurso.ano),
         n: PACIFICO.emCurso.pontos.length, trimestre: PAC.periodoCurto(ultimo)}, null);
       if (c) texto = (texto ? texto + ' ' : '') + c;
@@ -1252,7 +1250,7 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
   const t0 = Math.floor(primeiro.t), t1 = Math.ceil(ultimo.t);
   põeCat('nino34Sub', IN + 'molde_legenda', {data: dataBR(ultimo.semana)});
   põeCat('nino34Leitura', IN + 'molde_leitura',
-    {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia), inicio: dataBR(primeiro.semana)});
+    {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia)});
   desenharNaLargura('wrapNino34', 14,
     txtCat(IN + 'rotulo_acessivel', null, 'Anomalia semanal da região Niño 3.4, em graus Celsius'),
     function (g, geo) {
