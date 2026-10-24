@@ -73,7 +73,7 @@ def ler_frontmatter(texto: str) -> dict:
         chave, valor = linha.split(":", 1)
         valor = valor.strip()
         if len(valor) >= 2 and valor[0] == valor[-1] and valor[0] in "\"'":
-            valor = valor[1:-1]
+            valor = valor[1:-1].replace('\\"', '"') if valor[0] == '"' else valor[1:-1]
         fora[chave.strip()] = valor
     return fora
 
@@ -157,6 +157,8 @@ def _autoteste() -> int:
     ok("frontmatter aberto e não fechado devolve vazio", ler_frontmatter("---\nid: x\n") == {})
     ok("valor com dois-pontos sobrevive",
        ler_frontmatter('---\nantes: "Ciclo: 2026"\n---\n').get("antes") == "Ciclo: 2026")
+    ok("aspas escapadas do valor viram aspas",
+       ler_frontmatter('---\ndepois: "<a href=\\"u\\">x</a>"\n---\n').get("depois") == '<a href="u">x</a>')
 
     ok("`aprovado: nao` não é aprovação", not aprovado({"aprovado": "nao"}))
     ok("sem a chave não é aprovação", not aprovado({}))
