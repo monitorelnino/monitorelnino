@@ -805904,7 +805904,11 @@
    "pista_id": "3f8922a3b6",
    "origem": "querido_diario",
    "leu_documento": true,
-   "hash_evidencia": "f447961e29c7958354a34a77f365815cfcf73a2991dac06b42d0aa145bd74db9"
+   "hash_evidencia": "f447961e29c7958354a34a77f365815cfcf73a2991dac06b42d0aa145bd74db9",
+   "nao_aplicado": {
+    "em": "2026-10-24",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
   },
   {
    "promove": false,
@@ -809789,14 +809793,15 @@
    "pista_id": "bf03df2920",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "422ebc78c3e7313bf24602cc1ac519c032fb924b9c5e9d29e1318f428c8183a3",
+   "hash_evidencia": "a8496e43cd3ec20b66ee9f73872f845cbeb8ed422f13a9e1566dd6047ec37900",
    "busca_dirigida": {
     "fontes": [
      "querido_diario"
     ],
     "encontrou": "https://data.queridodiario.ok.org.br/3506508/2026-03-23/33b13c5b167987f08f78b707c1c5ee95e14c7a40.txt",
     "recusa_original": "citacao_incompleta"
-   }
+   },
+   "aplicado_em": "2026-10-24"
   },
   {
    "promove": false,
@@ -809954,7 +809959,11 @@
    "pista_id": "d214752152",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "4b6388745794fafd007dca1bc970cd9250fd8613ee37233ba3ddeb3830a271b2"
+   "hash_evidencia": "4b6388745794fafd007dca1bc970cd9250fd8613ee37233ba3ddeb3830a271b2",
+   "nao_aplicado": {
+    "em": "2026-10-24",
+    "motivo": "plano com endereço de notícia, não de documento (https://www.ilhabela.sp.gov.br/portal/noticias/0/3/17590/defesa-civil-de-ilhabela-regulamenta-novo-plano-municipal-de-contingencia) (D1: o ato é o documento, não a notícia)"
+   }
   },
   {
    "promove": false,
@@ -810295,7 +810304,11 @@
    "pista_id": "93531db81d",
    "origem": "busca_web",
    "leu_documento": true,
-   "hash_evidencia": "575ddc1f6bb18feeec777c05a10aa2a36eb31dbfd11d394c9f3783e709161bde"
+   "hash_evidencia": "575ddc1f6bb18feeec777c05a10aa2a36eb31dbfd11d394c9f3783e709161bde",
+   "nao_aplicado": {
+    "em": "2026-10-24",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
   },
   {
    "promove": false,
