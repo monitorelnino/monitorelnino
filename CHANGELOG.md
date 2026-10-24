@@ -9,9 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-24 · #PR · Três textos da inicial e formulário com campos abertos · Site
+## 2026-10-24 · Inicial: abertura do cartão da cidade e varredura sem a frase final · Site
 
-Aplicados os pedidos aprovados pela editoria: abertura de "Sua cidade", frase da varredura (sai a final) e abertura do formulário. O bloco recolhível do formulário sai: número do ato e observações viram campos abertos com "(opcional)" no rótulo, e a nota sob os campos deixa de existir (ids baixados em `_renomeacoes.json`).
+Dois pedidos aprovados da editoria aplicados pelo catálogo (`aplicar_edicoes.py`): abertura do cartão "Sua cidade" reescrita e saída da frase "Ainda não verificamos a cidade com todas as fontes" da varredura. Cópia estática do HTML alinhada. Linhas de código 0/0.
+## 2026-10-24 · Textos da inicial: cidade, varredura e formulário · Site
+
+Três pedidos aprovados da editoria aplicados pelo catálogo: abertura de "Sua cidade" com `{n_municipios}`, fim da frase "Ainda não verificamos a cidade com todas as fontes" na varredura e abertura nova do formulário (sem "apenas": a regra de ênfase vence o texto aprovado). A nota do formulário sai; os dois campos opcionais deixam de ser recolhidos e levam "(opcional)" no rótulo. Código 0.
 
 ## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
 
