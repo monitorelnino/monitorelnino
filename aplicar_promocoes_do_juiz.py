@@ -124,7 +124,10 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         return None
     try:
         from coletores_base import buscar, preservar_evidencia
-        corpo = buscar(url)
+        from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
+        # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
+        # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
+        corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
         ext = (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
             ext = "html"
