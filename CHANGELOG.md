@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+
+## 2026-10-24 · Monitor de riscos: listas federais num mapa por município
+As duas listas federais (deslizamento e enchente; fogo na Amazônia) viram um cartão só, com um ponto por município em três cores e as contagens ao lado; a ressalva da Amazônia Legal vai no cartão. A consulta do município sobe para logo depois do risco previsto. Código +6 líquidas: variante de CSS e rótulos no catálogo.
+
 ## 2026-10-24 · #PR · Monitor de riscos: um cartão de avisos e alertas, com mapa por município · Site
 
 As duas tabelas de chuva forte viram um cartão: mapa com um ponto por município sob aviso do INMET, na cor do maior grau, e círculo vazado nos alertas do Cemaden; escada por grau e lista do Cemaden ao lado. A posição vem do cadastro de municípios que a página já carrega.

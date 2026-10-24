@@ -638,27 +638,31 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
     : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
 })();
 
-// ---- Listas federais de risco (17/10/2026, HANDOVER_DEFESA_CIVIL §6: vieram da Defesa civil) ----
-/* Quantos municípios de cada estado constam de cada lista, de `enquadramento_card.json` (as marcas
-   por código IBGE; o estado vem da referência do IBGE). Indicados pela União = cadastro de enxurradas
-   e inundações (`ch`) mais os indicados só por deslizamento (`geo`). Sem o arquivo, lacuna declarada. */
+// ---- Listas federais de risco (24/10/2026, editoria: um cartão, um ponto por município) ----
+/* As marcas por código IBGE são de `enquadramento_card.json` (`ch`/`geo` = deslizamento ou enchente;
+   `mma` = fogo); a posição, do cadastro de municípios que a página já carrega para a consulta. Quem
+   está nas duas listas é desenhado por cima, para não sumir sob os da lista mais numerosa. As contagens
+   saem do dado. Sem o arquivo, lacuna declarada. */
 (function listasFederais(){
-  const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
-  const fontes = (ENQ && ENQ.fontes) || {};
-  // 19/10/2026 (editoria, item 14): a cor separa as famílias — deslizamento e enchente no azul da
-  // chuva, desmatamento e fogo no âmbar do fogo. A sexta posição é a família de cor da contagem.
-  [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023', 'contagem'],
-   ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente', 'contagem_fogo']].forEach(([caixa, svg, leg, consta, chave, fonte, familia]) => {
-    const f = fontes[chave] || {};
-    if (!ENQ) {
-      MonitorMapas.legenda(leg, [{cor: NEUTRA, rotulo: 'sem coleta até o corte'}]);
-      return MonitorMapas.credito(caixa, {fontes: [fonte], data: null});
-    }
-    const porUF = Object.fromEntries(UFS.map(uf => [uf, 0]));
-    Object.entries(ENQ.municipios).forEach(([cod, v]) => { if (consta(v) && UF_DE[cod] in porUF) porUF[UF_DE[cod]] += 1; });
-    MonitorMapas.mapaDeContagem(__ctx(), svg, leg, porUF, 'município', null, familia);
-    MonitorMapas.credito(caixa, {fontes: [fonte], url: f.url, data: MonitorMapas.dataBR(f.consultado_em)});
+  const I = 'monitor-de-riscos.listas.', fontes = (ENQ && ENQ.fontes) || {};
+  const fmt = n => Number(n).toLocaleString('pt-BR');
+  const fCh = fontes.chuva || {}, fFg = fontes.fogo || {};
+  MonitorMapas.credito('boxListas', {fontes: ['MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023', 'Ministério do Meio Ambiente, portaria vigente'],
+    url: fCh.url, data: ENQ ? MonitorMapas.dataBR([fCh.consultado_em, fFg.consultado_em].sort().pop()) : null});
+  if (!ENQ) { document.getElementById('listasLado').innerHTML = ''; return lacuna('listasLado', 'Listas federais: sem coleta até o corte.'); }
+  const pos = {}; (window.__refMunicipios || []).forEach(m => pos[String(m.codigo_ibge).padStart(7, '0')] = {lat: m.lat, lon: m.lon});
+  const grupo = {chuva: [], fogo: [], ambas: []};
+  Object.entries(ENQ.municipios).forEach(([cod, v]) => {
+    const ch = v.ch !== undefined || v.geo, fg = !!v.mma;
+    if (pos[cod] && (ch || fg)) grupo[ch && fg ? 'ambas' : ch ? 'chuva' : 'fogo'].push(pos[cod]);
   });
+  const F = MonitorMapas.PALETA.familia, COR = {chuva: F.chuva, fogo: F.seca, ambas: MonitorMapas.COR.argila};
+  desenharMapa('mapaListas', 'legListas', () => ATM.contagem.uf, () => '', [], 'contagem');
+  const ctx = __ctx();
+  [['chuva', 4.4], ['fogo', 5.4], ['ambas', 5.4]].forEach(([k, w]) => MonitorMapas.pontosDensos(ctx, 'mapaListas', grupo[k], COR[k], w, .85, 'densos-' + k));
+  MonitorMapas.legenda('legListas', Object.keys(COR).map(k => ({cor: COR[k], rotulo: txtCat(I + 'legenda.' + k, null, k)})));
+  document.getElementById('listasNumeros').innerHTML = Object.keys(COR).map(k => '<div><dt>' + esc(txtCat(I + 'rotulo.' + k, null, k))
+    + '</dt><dd>' + esc(fmt(grupo[k].length)) + '</dd></div>').join('');
 })();
 
 // ===== O topo "Situação atual" (07/10/2026, handover "Monitor de riscos, parte 1") ==========
