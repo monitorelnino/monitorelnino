@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-24 · Cartão do estado: "MARÉ Legal do estado" e texto no catálogo · Inicial
+
+O rótulo da nota do estado passa a dizer "MARÉ Legal do estado", e o campo "Componentes (um terço cada)" sai do cartão; o peso segue descrito em `index.como_ler.nota`. As frases de "ainda não verificamos", o rótulo e a lista "O que ainda falta" saem de `assets/js/index.js` para `conteudo/index.json`, sem mudar uma palavra.
+
 ## 2026-10-24 · RS: onze nomes de arquivo que o casamento deixava órfão perdem três · Coleta
 
 A pasta da Casa Militar/RS trazia 484 municípios casados e 11 órfãos; hífen do nome oficial ("Não-Me-Toque") e a palavra "atualizado" no arquivo impediam o casamento. Passam a casar Não-Me-Toque, Jaguarão e Santana do Livramento (487 casados, 8 órfãos declarados: nome ambíguo ou grafia distante). Linhas líquidas +4 no script; autoteste com um caso novo.
