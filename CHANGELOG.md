@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Passos em linha: variante do componente `.passos`
+
+Variante `.passos--linha` em `base.css`: lista vertical ligada por fio, número em argila, título em Fraunces e bloco "o que precisa ter" em uma ou duas colunas. Nenhuma página muda; "Para gestores" passa a usá-la no caminho até o plano publicado.
+
 ## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
 
 Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.
