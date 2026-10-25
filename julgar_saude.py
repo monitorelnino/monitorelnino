@@ -618,12 +618,15 @@ RE_ENTE_MUNICIPAL = re.compile(
     r"|plano\s+municipal)", re.I)
 
 
-def e_do_municipio(texto: str, url: str):
-    """O que mostra que o documento é de um município (host ou cabeçalho), ou None. Função pura."""
+def e_do_municipio(texto: str, url: str, titulo: str = ""):
+    """O que mostra que o documento é de um município (host, título ou cabeçalho), ou None. Função pura.
+
+    O título entra porque a página do diário do estado abre com o cabeçalho do diário, não com o ato:
+    em 25/10/2026 o plano de Itapemirim só se denunciava no título do ato (27 págs. depois do topo)."""
     host = urllib.parse.urlparse(url or "").netloc.lower()
     if host_de_municipio(host):
         return f"host de município: {host}"
-    m = RE_ENTE_MUNICIPAL.search((texto or "")[:1200])
+    m = RE_ENTE_MUNICIPAL.search(f"{titulo or ''}\n{(texto or '')[:1200]}")
     return m.group(0) if m else None
 
 
@@ -668,7 +671,8 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
         # Condição (3) da decisão: a observação acompanha o registro, e sai quando o ato aparecer.
         v["excecao_autoridade"] = "sem ato de aprovação localizado"
 
-    municipal = e_do_municipio(texto, url)
+    titulo = titulo_do_documento(texto, titulo_da_pista, url)
+    municipal = e_do_municipio(texto, url, titulo)
     v["criterios"]["3b_ente_estadual"] = {"ok": not municipal, "trecho": municipal or "documento do estado"}
     if municipal:
         v["motivo"] = "ente_nao_confirmado"; return v
@@ -690,7 +694,6 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # Condição da CAMADA: o documento trata de risco deste ciclo. Um plano de sarampo de 2019 passou
     # por todas as etapas anteriores em 01/10/2026 e foi promovido como instrumento E coordenação de
     # MG — foi o que fez esta etapa existir.
-    titulo = titulo_do_documento(texto, titulo_da_pista, url)
     v["titulo_do_documento"] = titulo
     ok, casou = trata_de_risco_do_ciclo(titulo)
     v["criterios"]["5b_risco_do_ciclo"] = {"ok": ok, "titulo": titulo,
@@ -1217,8 +1220,9 @@ def autoteste() -> int:
         "régua (d): ativar o COE para um evento segue a régua vigente, sem crédito novo":
             lambda: not fn(d_coe.replace("Fica instituído o", "Ativa o")),
         "ente: o plano 'do município de Itapemirim' não é da SES, mesmo no diário do estado":
-            lambda: bool(e_do_municipio("Plano de Contingência das Arboviroses do município de Itapemirim 2026",
-                                        "https://ioes.dio.es.gov.br/portal/edicoes/download/11475")),
+            lambda: bool(e_do_municipio("DIÁRIO OFICIAL DOS PODERES DO ESTADO Vitória (ES), quarta-feira, 16 de "
+                                        "Setembro de 2026.", "https://ioes.dio.es.gov.br/portal/edicoes/download/11475",
+                                        "Plano de Contingência das Arboviroses para 2026/2027 do município de Itapemirim")),
         "ente: o host de município (Manaus) não entra na camada estadual":
             lambda: bool(e_do_municipio("Guia CIEVS", "https://www.manaus.am.gov.br/semsa/g.pdf")),
         "ente: documento da SES que fala dos municípios continua estadual":
