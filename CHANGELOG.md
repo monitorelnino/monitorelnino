@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-25 · #PR · Remove o módulo duplicado de estrutura dos desfechos
+## 2026-10-25 · #1146 · Remove o módulo duplicado de estrutura dos desfechos
 
 `scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.
 
