@@ -161,6 +161,33 @@ teste("mapaMonitor: 27 estados desenhados", q("mapaMonitor") && q("mapaMonitor")
   teste("mapaDesfecho: 27 estados e legenda com a ausência declarada",
     q("mapaDesfecho").querySelectorAll("path").length === 27
     && /sem período fechado/.test(txt("legMapaDesfecho")));
+  /* O detalhe do desfecho escolhido (dengue, o primeiro) lê os MESMOS campos do mesmo arquivo que o topo.
+     Três casos garantem que cada estado se atualiza certo: se o arquivo mudar e algum divergir, o PR não passa. */
+  {
+    const DD = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "dengue.json"), "utf8"));
+    const PAL = dom.window.MonitorMapas.PALETA.posicao;
+    const norm = s => String(s).replace(/\s+/g, " ");
+    // (a) a ficha de uma UF mostra o valor, a taxa e o intervalo da faixa do arquivo, e a semana do próprio valor
+    const c = DD.ultimo.SE.consolidado, f = DD.faixa_habitual.SE[c.periodo.split("-")[1]];
+    const caminhoSE = [...q("mapaDesfecho").querySelectorAll("path")].find(x => /^Sergipe:/.test(x.getAttribute("aria-label")));
+    const ficha = norm(caminhoSE.getAttribute("aria-label"));
+    const dec = v => dom.window.MonitorMapas.numBR(v, Number.isInteger(Number(v)) ? 0 : 1);
+    teste("detalhe do desfecho (a): a ficha traz valor, taxa, faixa e a semana do próprio valor",
+      ficha.includes(dec(c.valor) + " notificações · " + dec(c.por_100mil) + " por 100 mil habitantes")
+      && ficha.includes("(de " + dec(f.mediana) + " a " + dec(f.p90) + ")")
+      && ficha.includes(dom.window.MonitorSemana.porExtenso(Number(c.periodo.split("-")[0]), Number(c.periodo.split("-")[1]), true)));
+    // (b) as UFs pintadas em cada cor somam os três números da frase de leitura
+    const pintadas = cor => [...q("mapaDesfecho").querySelectorAll("path")].filter(x => x.getAttribute("fill") === cor).length;
+    const fr = /(\d+) acima, (\d+) dentro e (\d+) abaixo/.exec(txt("leituraDesfecho")) || [];
+    teste("detalhe do desfecho (b): as cores do mapa somam os números da frase de leitura",
+      fr.length === 4 && +fr[1] === pintadas(PAL.acima) && +fr[2] === pintadas(PAL.dentro) && +fr[3] === pintadas(PAL.abaixo));
+    // (c) o "acima" do mapa da dengue é o ufs_acima_faixa do topo
+    teste("detalhe do desfecho (c): o acima do mapa é o ufs_acima_faixa do topo",
+      pintadas(PAL.acima) === TS.desfechos.dengue.ufs_acima_faixa);
+    teste("detalhe do desfecho: sem rótulo de família, subtítulo com território e semana, ano mostrado no eixo",
+      !/Desfecho escolhido/.test(txt("boxDesfecho")) && /^Brasil · semana de /.test(txt("legendaDesfecho"))
+      && /por 100 mil habitantes$/.test(txt("tituloDesfecho")));
+  }
   teste("dlDesfechoUF: lista por estado com a taxa por 100 mil",
     q("dlDesfechoUF").querySelectorAll("dt").length >= 26 && /por 100 mil habitantes/.test(txt("dlDesfechoUF")));
   teste("os quadros por agravo saíram, e o desfecho escolhido tem um gráfico só",

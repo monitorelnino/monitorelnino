@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Saúde: detalhe do desfecho com o ano, a faixa na cor da família e o mapa pela posição
+
+O detalhe do desfecho escolhido mostra o ano de janeiro a dezembro (o anterior em linha fina, os períodos em registro tracejados) sobre a faixa habitual na cor clara da família, e o mapa pinta a posição de cada estado na sua faixa. Frase de leitura com a contagem dos 27, ficha por estado, lista recolhida. Três casos no portão ligam ficha, mapa, frase e topo ao mesmo dado.
+
 ## 2026-10-25 · #PR · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal
 
 A situação de cada estado vira um mapa pelo tipo de plano, com as siglas como botões que abrem a ficha; a coordenação se preenche com o dado. Saem a grade de ladrilhos, o cartão de risco previsto e a seção federal. A consulta sobe e usa cartões, como o Proteja-se. Abertura reescrita; o texto "sem tempo" vale.
