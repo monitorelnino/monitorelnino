@@ -65,14 +65,14 @@
       var textos = lista.filter(function (p) { return p.etiqueta === ed.etiqueta; });
       var corpo = textos.length
         ? '<ol class="blog-lista">' + textos.map(function (p) {
-            return '<li><span class="spec">' + esc(p.data_br || '') + '</span>'
+            return '<li><p class="spec">' + esc(p.data_br || '') + '</p>'
               + '<a href="' + esc(p.url) + '"><strong>' + esc(p.titulo) + '</strong></a>'
               + (p.resumo ? '<p class="hint">' + esc(p.resumo) + '</p>' : '') + '</li>';
           }).join('') + '</ol>'
         : '<p class="hint">' + esc(frase('blog.colunas.sem_texto', { data: corte },
             'Nenhum texto publicado nesta editoria até ' + corte + '.')) + '</p>';
       return '<section class="cartao-mapa ' + ed.classe + '">'
-        + '<h2 class="selo">' + esc(ed.etiqueta) + '</h2>'
+        + '<p class="selo">' + esc(ed.etiqueta) + '</p>'
         + '<p class="spec">' + esc(ed.quando) + '</p>'
         + corpo + '</section>';
     }).join('');
