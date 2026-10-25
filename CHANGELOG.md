@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Financiamento: série mensal do dinheiro do mapa · Dados
+
+`semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.
+
 ## 2026-10-25 · #PR · Lista do banco nos coletores sem arquivo que não existe mais
 A lista única `BANCO_PROIBIDO` deixa de citar `monitor_saude_v04.json`, removido com a v0.7; o autoteste do coletor de diários passa a exigir os cinco arquivos que existem. Sem mudança de dado ou de página.
 
