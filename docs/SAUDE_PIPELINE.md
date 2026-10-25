@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-18 a 2026-10-25 (1009 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-18 a 2026-10-25 (1056 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,11 +28,11 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-24 01:38 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-25 10:47 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-25 12:47 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
-| `buscar_planos_fontes_abertas.py` | coletor | 2026-10-24 02:07 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `buscar_planos_fontes_abertas.py` | coletor | 2026-10-25 08:22 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-24 01:16 | 120 s | — | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-24 01:24 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-24 01:38 | 1 s | — | ok | — |
