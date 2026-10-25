@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1145 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF
+
+`municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.
 ## 2026-10-25 · #1142 · Imprensa: acumulados do ciclo, uma função por número
 
 `data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.
