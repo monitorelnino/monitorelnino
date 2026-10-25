@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · B2 · Proteja-se: fonte por orientação
+
+Cada orientação do guia que o registro oficial preserva (15 de 50) mostra sua fonte e a data da consulta, lidas de `data/orientacoes_oficiais.json`. As demais seguem sem marca, até a fonte oficial ser localizada.
+
 ## 2026-10-25 · #1147 · Fila de descoberta reentrante
 
 A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.
