@@ -29,20 +29,21 @@ window.addEventListener('load', function(){
     json('data/financiamento/municipios/fns_municipios_2026.json'),
     json('data/financiamento/municipios/despesa_182.json')]);
 
-  /* Os dois números do "O que a lei exige" vêm do dado, como na inicial. */
+  /* Os números de "Os planos de cada governo" vêm do dado, como na inicial. */
   Promise.all([REF, ENQ, C && C.pronto]).then(([ref, enq]) => {
     const n = (ref || []).length, ind = Object.values((enq || {}).municipios || {}).filter(v => v.ch || v.geo).length;
-    if (n && C) C.escrever(document.getElementById('municipioAbertura'), 'prefeituras.municipio.abertura.molde', {n_municipios: n});
+    if (n && C) ['municipioAbertura', 'planosAbertura'].forEach(id => C.escrever(document.getElementById(id), id === 'planosAbertura' ? 'prefeituras.quem-deve.abertura.molde' : 'prefeituras.municipio.abertura.molde', {n_municipios: n}));
     /* O guarda é a FONTE, não o valor: com o arquivo no ar e ninguém indicado, o cartão diz zero
        por extenso; sem o arquivo, fica o texto de reserva, que é a lacuna declarada. Testar o valor
        descartava o zero medido e deixava o 2.095 de reserva no ar como leitura de hoje. */
     const pôr = (id, v) => { const e = document.getElementById(id); if (e && v != null) { e.textContent = v === 0 ? 'zero' : v.toLocaleString('pt-BR'); e.setAttribute('data-conteudo-fixado', '1'); } };
-    pôr('leiValor_indicados', enq ? ind : null); pôr('leiValor_todos', ref ? n : null);
+    pôr('leiValor_indicados', enq ? ind : null);
+    if (enq && C) C.escrever('leiEntra_indicados', 'prefeituras.quem-deve.indicados.entra.molde', {n_indicados: ind === 0 ? 'zero' : ind.toLocaleString('pt-BR')});
   }).catch(_erroGest('gestores:numeros'));
-  /* Fonte dos três cartões: o ato e a data da edição em que o MARÉ o conferiu. */
+  /* Fonte dos dois cartões: o ato e a data da edição em que o MARÉ o conferiu. */
   Promise.all([json('data/meta.json'), C && C.pronto]).then(([M]) => {
-    ['estados', 'indicados', 'todos'].forEach(k => {
-      if (window.MonitorMapas) MonitorMapas.credito('leiFonte_' + k, {fontes: C.texto('prefeituras.quem-deve.' + k + '.fonte'),
+    ['estados', 'indicados'].forEach(k => {
+      if (window.MonitorMapas) MonitorMapas.credito('leiFonte_' + k, {fontes: [C.texto('prefeituras.quem-deve.' + k + '.fonte'), C.texto('prefeituras.quem-deve.' + k + '.fonte_2')],
         url: C.texto('prefeituras.quem-deve.' + k + '.fonte_url'), data: (M || {}).atualizado_em || null});
     });
   }).catch(_erroGest('gestores:fontes'));
