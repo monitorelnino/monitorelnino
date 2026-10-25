@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Financiamento: do decreto ao recurso vira dado · Dados
+
+`semana.json` ganha `funil_defesa_civil`: decretaram, reconhecidos pela União, com portaria de recurso (mesma contagem do cartão do topo) e reconhecidos há mais de 30 dias sem portaria localizada até o corte. Antes o último número só existia calculado no navegador.
+
 ## 2026-10-25 · #PR · Financiamento: série mensal do dinheiro do mapa · Dados
 
 `semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.
