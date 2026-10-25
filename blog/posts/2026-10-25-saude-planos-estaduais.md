@@ -2,7 +2,7 @@
 titulo: "Amazonas, Goiás, São Paulo e Minas Gerais publicaram planos de saúde para o El Niño"
 abertura: "Quarenta dos 62 municípios do Amazonas estão sob decreto de emergência, e a secretaria de saúde do estado publicou em junho um plano para emergências ligadas à seca e à estiagem."
 etiqueta: Saúde
-data: 2026-10-29
+data: 2026-10-25
 pacote: 2026-10-24_saude
 fontes: "Secretarias estaduais de saúde (planos publicados e documentos lidos pelo MARÉ Saúde); registros federais da defesa civil (S2iD e Diário Oficial da União); Censo 2022 (IBGE); Ministério da Saúde (Sinan e SIVEP-Gripe). Consulta em 25/10/2026."
 aprovado: sim
