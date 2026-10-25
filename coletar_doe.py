@@ -1592,9 +1592,9 @@ def autoteste() -> int:
         # nada mais. O teste confere o que ele PODE fazer, não só o que ele fez nesta versão.
         "o fonte não grava em nenhum arquivo do banco":
             lambda: not grava_no_banco(fonte_do_coletor(__file__)),
-        "a lista proibida é a canônica do projeto, com os seis arquivos do banco":
+        "a lista proibida é a canônica do projeto, com os cinco arquivos do banco":
             lambda: set(BANCO_PROIBIDO) == {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                                            "monitor_saude.json", "monitor_saude_v04.json"},
+                                            "monitor_saude.json"},
         "§231 UF sem rota de busca não se registra como apifront": t12})
 
 
