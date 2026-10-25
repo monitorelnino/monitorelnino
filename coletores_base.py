@@ -119,6 +119,14 @@ MESES_POR_EXTENSO = ("janeiro", "fevereiro", "março", "abril", "maio", "junho",
 MESES_CURTOS = ("jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez")
 
 
+def semana_intervalo(ano: int, n: int) -> tuple:
+    """(domingo, sábado) da semana `n` do `ano`, como `date`. Função pura."""
+    base = next(date(ano, 1, d) - timedelta(days=3) for d in range(1, 8)
+                if date(ano, 1, d).weekday() == 2)
+    ini = base + timedelta(days=7 * (n - 1))
+    return ini, ini + timedelta(days=6)
+
+
 def semana_em_datas(ano: int, n: int) -> list:
     """A semana `n` do `ano` escrita em datas: [por extenso, curta]. Função pura.
 
@@ -126,10 +134,7 @@ def semana_em_datas(ano: int, n: int) -> list:
     vê o intervalo. Mesma regra de `assets/semana.js` (Ministério da Saúde): domingo a sábado, e a
     semana 1 é a que tem a quarta-feira entre 1 e 7 de janeiro. É a única cópia em Python: gerador
     e portão importam esta."""
-    base = next(date(ano, 1, d) - timedelta(days=3) for d in range(1, 8)
-                if date(ano, 1, d).weekday() == 2)
-    ini = base + timedelta(days=7 * (n - 1))
-    fim = ini + timedelta(days=6)
+    ini, fim = semana_intervalo(ano, n)
     mi, mf = MESES_POR_EXTENSO[ini.month - 1], MESES_POR_EXTENSO[fim.month - 1]
     if ini.year != fim.year:
         ext = f"{ini.day} de {mi} de {ini.year} a {fim.day} de {mf} de {fim.year}"

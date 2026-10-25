@@ -2184,7 +2184,7 @@ coordenação **não tinha verificação em nenhum dos 27 estados** — o compon
 Trocar agora deixaria duas saídas, e as duas são proibidas: somar um terço de zero, que é afirmar
 que o estado não tem sala de situação porque ninguém procurou, ou publicar a página sem número, que
 é apagar o índice que existe. Vence a prova. A v0.3 segue no ar e a v0.4 é calculada **em paralelo**,
-em `data/monitor_saude_v04.json`, que a página não lê **[arquivo e cálculo paralelo absorvidos no motor único em 24/10/2026, §121]**. A troca passa a ser ajuste de leitura quando
+em `data/monitor_saude_v04.json`, que a página não lê **[arquivo e cálculo paralelo absorvidos no motor único em 24/10/2026, §123]**. A troca passa a ser ajuste de leitura quando
 a coordenação estiver verificada — e quem a verifica é a bateria de `coletar_saude_estadual.py`,
 cujas oito consultas incluem `sala de situação` e `centro de operações de emergência`.
 
@@ -2881,7 +2881,7 @@ true` seria uma afirmação sobre o passado que ninguém confere; o log **é** o
 UFs e o canal de fontes declaradas só tem endereço para MT. Ou seja: hoje nenhuma UF pode ser
 marcada "não localizado", e o relatório diz isso UF por UF, com o motivo de cada uma.
 
-**[Superado em 24/10/2026 pelo §121: a troca automática saiu; a coordenação entra na nota, na v0.8, quando as 27 UFs a tiverem verificada.]**
+**[Superado em 24/10/2026 pelo §123: a troca automática saiu; a coordenação entra na nota, na v0.8, quando as 27 UFs a tiverem verificada.]**
 
 **A troca para a v0.4 acontece sozinha quando a condição se cumprir.** `trocar_para_v04.py` lê o
 pedido que o fechamento grava (`data/saude_troca_v04.json`) e, sem `trocar: true`, **não altera
@@ -4327,51 +4327,9 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **O crédito de quem não tem documento.** UF sem documento lido (hoje AC, AP, MA, RN, RR e TO, não verificadas) entra como o Legal trata a UF sem plano localizado: instrumento e antecipação valem 0, porque nada pontua sem documento lido (§104). Isso não é nota de UF reprovada: o `prontidao` dela segue nulo, a faixa segue "não verificado", e `estatuto` viaja com o número (`plano_localizado`, `plano_nao_localizado`, `nao_verificado`; a soma é 27). `resumo.ufs_com_plano_localizado` e `ufs_sem_plano_localizado` dão as duas contagens que a legenda cita.
 
-**Efeito, medido.** Em 22/10/2026: 21 UFs com plano localizado, 0 com plano não localizado em bateria completa, 6 não verificadas. Índice nacional (27): 34,7; média das 21 verificadas: 44,6, que multiplicada por 21 e dividida por 27 dá o nacional. A diferença vem de seis UFs que entram com crédito 0 por não terem documento lido, não de piora de nenhuma UF medida. Provas: a conta refeita à mão bate com o derivado; os estatutos somam 27; o autoteste de `gerar_monitor_saude.py` e o portão `verificar_saude.py` (m) falham se uma UF sair da conta ou se `indice_nacional` não for a média.
+**Efeito, medido.** Os números do efeito (índice nacional, UFs com instrumento verificado e não verificadas, contribuição de cada grupo de UFs, comparação com a média simples) vivem em `monitor_saude.json` (`resumo`, `ufs.<UF>.contribuicao_nacional`, `metodo`) e a página os lê de lá; este texto não os repete, para não envelhecer. Duas mudanças somam em relação à v0.6: a nota da UF deixa de misturar data e passa a ser o instrumento, e a ponderação pesa a população. Nenhum documento mudou: muda a regra.
 
-**O que não muda.** Peso zero no MARÉ (o motor do Legal não lê este arquivo). **[Superado em 24/10/2026 pelo §121: não há mais cálculo paralelo nem troca automática.]** A v0.4 (coordenação) seguia calculada em paralelo em `monitor_saude_v04.json`; `trocar_para_v04.py` não trocava mais sozinho, porque a v0.5 o antecede, e a troca para os componentes da v0.4 depende de decisão da editoria sobre o crédito da coordenação sem documento. Resposta chegada por LAI melhora o número; não é mais condição para que ele exista.
-
-## 116. O elo noturno dos desfechos do SUS (21/10/2026)
-
-**O que passa a rodar.** Todo dia às 07:05 UTC, depois do elo da saúde, o elo `noturno_desfechos` lê o SINAN (leptospirose e malária fora da Amazônia, pelo leitor `.dbc` do §108), o SISAB (diarreias), deriva dengue, chikungunya e SRAG da coleta já feita pela saúde, lê os óbitos registrados (§109) e as internações do SIH (§110, até 40 minutos por noite). Cada comando regrava só o arquivo da própria série, na forma comum de `desfechos_sus.py`; arquivo fora do esquema vai para a quarentena e o anterior fica.
-
-**O que muda para o leitor.** Nada no texto: as séries, a faixa habitual e os cortes do mapa são os mesmos. Muda a data: o dado deixa de depender de coleta manual e passa a chegar na cadência da fonte (SINAN semanal, SISAB e SIH mensais). Fonte que recusar ou mudar de forma deixa lacuna declarada e o arquivo anterior com a sua data.
-
-**O que não muda.** Peso zero no MARÉ; o Monitor não atribui casos ao El Niño.
-
-## 117. Planos municipais de contingência de arboviroses (22/10/2026)
-
-**O que passa a ser coletado.** Todo dia, no elo dos desfechos, o Monitor procura no texto integral dos diários oficiais municipais (acervo do Querido Diário) menção a plano de contingência de dengue, chikungunya ou zika, em até 400 municípios por rodada, retomando de onde parou. A ordem é: capitais, depois alternando o município mais populoso (Censo 2022) e o de mais casos estimados de dengue na última semana lida. Cada menção preserva o diário por hash e entra na fila própria `pistas_arboviroses.json`, pela porta única de pistas.
-
-**Estatuto de cada município** (`data/planos_arboviroses.json`): *menção localizada em diário oficial*; *não localizado até o corte* (município coberto pelo acervo, sem menção desde 01/01/2024); *não verificado* (município sem cobertura no acervo ou consulta que falhou). Menção não é plano lido: o documento só vira plano localizado depois da leitura do texto. Ausência de menção não afirma que o plano não existe, porque prefeituras e secretarias publicam o plano fora do diário.
-
-**A base de cada plano.** Registrada por unidade da federação em `bases`, só com o que foi lido: Minas Gerais, Resolução SES/MG nº 10.440/2025, art. 5º (os municípios elaboram o plano e o mantêm atualizado); Santa Catarina, determinação do TCE-SC publicada em 22/05/2024 (a notícia não cita norma legal); nacional, o Plano de Contingência Nacional para Dengue, Chikungunya e Zika, tratado como orientação programática porque o texto não foi lido. Sem norma lida, o registro diz orientação programática ou norma não localizada; o Monitor não afirma obrigação legal.
-
-**Alvos de Santa Catarina.** Depois das capitais, a busca consulta os 82 municípios que o TCE-SC determinou (decisão de 22/05/2024, @RLI 24/00395645) a elaborar plano de contingência da dengue; a lista, com fonte, é a entrada `data/alvos_planos_arboviroses.json`. A determinação é alvo de busca de cumprimento, não prova de plano existente.
-
-**O que não muda.** Peso zero: o arquivo não entra na nota da Saúde nem em índice algum. Acesso recusado (401, 403, 429, 451) encerra a rodada e é respeitado. Rotas por página de prefeitura e de secretaria estadual ficam para quando houver endereço verificado.
-
-## 118. Regime de prioridade da corrente noturna, declarado em configuração (22/10/2026)
-
-**O que passa a valer.** A editoria pôs a Saúde v0.6 e a busca de planos municipais acima das coletas noturnas, contínuas, até ficarem prontas. O regime é o bloco `regime` de `config/temporizadores.json`, com decisão, data, prazo (`ou_data`, 05/11/2026) e a lista de workflows suspensos; `scripts/janela_da_noite.py` o lê, e o despachante e a guarda perguntam a ele. Elo suspenso não é devido, não é refeito pela reserva e para na guarda com motivo.
-
-**A busca de planos em matriz.** `busca_planos.yml` dispara a busca de planos municipais de dia, num ramo `coleta-dia/*`, com um job por grupo de UF (N, NE1, NE2, CO, SE, S; as 27 UFs, cada uma uma vez, lista única em `scripts/expandir_busca_planos.py`). Os comandos são entrada do disparo, não edição do ramo; o acesso é o de sempre (Crawl-delay por host, cliente identificado, recusa respeitada) e o dado chega por um PR de dado só.
-
-**O que não muda.** Os elos de Saúde, desfechos e o publicador seguem na noite. Sem o bloco, ou com `nome: normal`, ou depois de `ou_data`, a noite é a de sempre. Nenhum dado, índice ou texto público muda.
-
-## 119. MARÉ Saúde v0.6: dois componentes e a camada municipal de peso zero (22/10/2026)
-
-**[Substituído em 24/10/2026 pelo §121: a antecipação sai da nota, a nota da UF é o instrumento e a cobertura pesa o nacional.]**
-
-**Decisão.** A editoria decidiu em 22/10/2026, 06:09, que o MARÉ Saúde tem dois componentes, metade cada, instrumento estadual e antecipação, e que a cobertura municipal fica fora da nota. `monitor_saude.json` traz `versao: "0.6"`.
-
-**A conta.** Prontidão da UF verificada = 0,5 × instrumento + 0,5 × antecipação (escadas do §31). Índice nacional = soma de `prontidao_nacional` das 27 UFs dividida por 27 (§115); UF sem documento lido entra com instrumento 0 e antecipação 0, e o estatuto dela viaja junto. Em 22/10/2026: índice nacional 34,7; média das 21 UFs verificadas 44,6.
-
-**A camada municipal.** A saúde no plano municipal de defesa civil, por UF, é o percentual da população que vive em município cujo plano localizado trata a saúde (fórmula e leitura do §31) e a contagem de planos municipais lidos. Tem peso zero, é publicada ao lado do índice e não entra na média nem na faixa.
-
-**Por que fica fora.** Não há dever legal de plano municipal de saúde para o fenômeno; o único plano municipal que a lei nomeia é o de contingência de defesa civil, e o MARÉ Legal já o mede. O Saúde não conta o mesmo documento duas vezes.
-
-**O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal. Peso zero do Saúde no MARÉ (o motor não lê este arquivo). A escala de coordenação da v0.4 (§68) passa ao motor único no §121.
+**O que a página mostra.** A página mostra o que os órgãos de saúde registram e não atribui casos ao El Niño: dengue, chikungunya, SRAG e as demais séries são contagens oficiais por semana e território, ao lado do que o estado preparou, sem relação causal construída por nós.
 
 **Provas.** Conta refeita à mão para as 27 UFs; autoteste que reprova se `PESOS` ganhar a cobertura ou se a nota receber o argumento; portão `verificar_saude.py` (m): prontidão igual à média de dois componentes e `cobertura.peso` igual a zero, sem `pontos`.
 
@@ -4399,7 +4357,7 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **O que não muda.** Peso zero no MARÉ; o Monitor não atribui óbitos ao El Niño. O Registro Civil (`obitos.json`) segue como sinal precoce sem causa.
 
-## 121. MARÉ Saúde v0.7: a nota da UF é o instrumento, o tempo fica à parte e a cobertura pesa o nacional (24/10/2026)
+## 123. MARÉ Saúde v0.7: a nota da UF é o instrumento, o tempo fica à parte e a cobertura pesa o nacional (24/10/2026)
 
 **Decisão.** A editoria decidiu em 24/10/2026 (17:33, 17:39 e 17:45, horário de Brasília) que a nota do MARÉ Saúde não depende de data, que a cobertura populacional é o peso do índice nacional, e não componente da nota do estado, e que a coordenação na saúde entra quando estiver verificada nas 27 UFs. `monitor_saude.json` traz `versao: "0.7"`. É o único cálculo do Saúde: o arquivo e o gerador paralelos da v0.4 (§68) e a troca automática (§84) foram retirados, e o que deles ainda valia (a escada da coordenação e o indicador de tempo) vive no mesmo motor.
 
@@ -4407,7 +4365,7 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 **A cobertura, `c_uf`.** É a parcela da população da UF a que o dever de plano alcança. Hoje vale 1 nas 27 UFs, tenham ou não plano localizado: o dever é do estado e cobre a população inteira, e a falta de plano já está na nota (não localizado vale 0, em elaboração vale 35). Zerar também `c_uf` puniria duas vezes e apagaria do nacional os 35 pontos das UFs em elaboração. O campo existe para que, se a lei passar a exigir plano municipal de saúde, `c_uf` vire a parcela da população coberta pelos planos municipais sem mudar a fórmula; nessa hora a agregação passa a ser produto (nota × cobertura), que não compensa uma coisa pela outra, e o método registra isso (manual OCDE/JRC).
 
-**O índice nacional.** Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf, com as 27 UFs no denominador e a população do Censo 2022, a mesma referência do MARÉ Legal. A UF sem documento lido entra com nota 0, e o estatuto dela (`plano_localizado`, `plano_nao_localizado`, `nao_verificado`; a soma é 27) viaja junto do número. Cada UF traz `peso_nacional` (pop × c_uf ÷ Σ pop) e `contribuicao_nacional`, e a soma das contribuições é o nacional. **O que muda para o leitor:** o nacional deixa de ser média simples e passa a pesar a população; São Paulo pesa cerca de um quinto (21,9%) e Roraima 0,3%. Com `c_uf` igual a 1, o nacional é a média ponderada pela população.
+**O índice nacional.** Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf, com as 27 UFs no denominador e a população do Censo 2022, a mesma referência do MARÉ Legal. A UF sem documento lido entra com nota 0, e o estatuto dela (`plano_localizado`, `plano_nao_localizado`, `nao_verificado`; a soma é 27) viaja junto do número. Cada UF traz `peso_nacional` (pop × c_uf ÷ Σ pop) e `contribuicao_nacional`, e a soma das contribuições é o nacional. **O que muda para o leitor:** o nacional deixa de ser média simples e passa a pesar a população; Cada UF pesa pela população: as mais populosas puxam o número e as menores quase não o movem, e o peso de cada uma está no arquivo. Com `c_uf` igual a 1, o nacional é a média ponderada pela população. **Não é comparável ao nacional do MARÉ Legal:** o do Saúde é a média das 27 notas ponderada pela população e responde à pergunta "quanto do brasileiro médio vive sob um estado com instrumento de saúde"; o do Legal é a média simples e responde "como é o estado médio". São duas perguntas, e a página não põe os dois lado a lado como se fossem a mesma escala. Quando `c_uf` variar entre as UFs, a agregação por produto (nota × cobertura) não deixa uma coisa compensar a outra; essa escolha fica declarada aqui, na hora em que ela passar a valer.
 
 **O tempo, à parte e de peso zero.** Para o instrumento do ciclo (novo ou readequado) com data de dia fechado, o arquivo traz `dias_apos_boletim_1`: dias entre o Boletim nº 1 do Painel El Niño (29/06/2026) e o ato, negativo quando o ato é anterior. Aparece como linha de contexto no cartão do estado, rotulada, e não entra em nota nem em média. Mês solto não vira dia, e plano recorrente, em elaboração ou não localizado não tem o indicador: lacuna declarada, nunca dia estimado.
 

@@ -25,7 +25,7 @@ Por UF, uma leitura pontuada e três de contexto:
 Faixas (as mesmas do site): estágio inicial 0–25 · em construção 25–50 · consolidado 50–70 ·
 avançado 70–100. Índice NACIONAL = Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf, com as 27 UFs no denominador
 (`resumo_nacional`); a UF sem documento lido entra com nota 0 e o estatuto dela viaja junto do número
-(METODOLOGIA §115, §121).
+(METODOLOGIA §115, §123).
   python gerar_monitor_saude.py            # grava data/monitor_saude.json
   python gerar_monitor_saude.py --autoteste
 """
@@ -274,7 +274,7 @@ def gerar() -> int:
                         "Índice nacional = Σ(nota × população × c_uf) ÷ Σ população, com as 27 UFs no denominador; c_uf é a cobertura do dever de plano "
                         "(1 nas 27) e pesa o nacional, não a nota. A UF sem documento lido entra com nota 0 e o estatuto dela viaja junto. A saúde no "
                         "plano municipal de defesa civil é camada de peso zero, publicada ao lado. UF não verificada não recebe número próprio. "
-                        "Metodologia §31, §115 e §121."),
+                        "Metodologia §31, §115 e §123."),
         "versao": VERSAO, "gerado_em": data_da_edicao().strftime("%d/%m/%Y"), "corte": su.get("corte"),
         "metodo": {"pesos": dict(PESOS), "escada": PONTOS_STATUS,
                    "cobertura": {"nome": "saúde no plano municipal de defesa civil", "peso": 0, "entra_na_nota": False, "formula": "100 × Σ(pop_mun × CRED_POP[categoria] × degrau/5) / pop_UF", "creditos_municipais": {k: CRED_POP[k] for k in CATEGORIAS_MUNICIPAIS},

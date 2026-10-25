@@ -112,6 +112,46 @@ def _na_semana(referencia) -> str:
     return f" na semana {quando}" if quando else ""
 
 
+def posicao_na_faixa(valor, faixa) -> str | None:
+    """'acima' | 'dentro' | 'abaixo' do valor na faixa habitual da MESMA semana; None sem os dois.
+    Mesma regra de `assets/js/saude.js` (acima do p90 de 2019 a 2025). Função pura."""
+    if not isinstance(valor, (int, float)) or not isinstance(faixa, dict) or faixa.get("p90") is None:
+        return None
+    return "acima" if valor > faixa["p90"] else ("dentro" if valor >= faixa.get("mediana", valor) else "abaixo")
+
+
+def posicoes_das_ufs(desfecho: dict) -> dict:
+    """{UF: posição} pela última semana CONSOLIDADA de cada UF contra a faixa da semana do valor
+    (nunca de outra). É a única conta de 'estados acima da faixa'; a página lê o resultado."""
+    out = {}
+    for uf, u in ((desfecho or {}).get("ultimo") or {}).items():
+        c = (u or {}).get("consolidado") or {}
+        sem = str(c.get("periodo") or "").split("-")[-1]
+        if uf != "BR" and sem:
+            out[uf] = posicao_na_faixa(c.get("por_100mil"), (((desfecho or {}).get("faixa_habitual") or {}).get(uf) or {}).get(sem))
+    return out
+
+
+def resumo_do_desfecho(desfecho: dict) -> dict:
+    """Linha do topo para um desfecho: estados acima da faixa, semana consolidada e consulta. Função pura."""
+    from coletores_base import semana_intervalo
+    pos = posicoes_das_ufs(desfecho)
+    per = {(((u or {}).get("consolidado") or {}).get("periodo")) for uf, u in ((desfecho or {}).get("ultimo") or {}).items() if uf != "BR"}
+    per.discard(None)
+    unico = next(iter(per)) if len(per) == 1 else None
+    ini = fim = None
+    if unico:
+        a, n = unico.split("-")
+        ini, fim = (d.isoformat() for d in semana_intervalo(int(a), int(n)))
+    br = (((desfecho or {}).get("ultimo") or {}).get("BR") or {}).get("consolidado") or {}
+    comparavel = pos and all(v is not None for v in pos.values())
+    return {"ufs_acima_faixa": sum(v == "acima" for v in pos.values()) if comparavel else None,
+            "ufs_comparadas": sum(v is not None for v in pos.values()),
+            "periodo": unico, "semana_inicio": ini, "semana_fim": fim,
+            "valor_br": br.get("valor") if unico and br.get("periodo") == unico else None,
+            "consultado_em": (desfecho or {}).get("coletado_em")}
+
+
 def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monitor: dict) -> list:
     """Os seis cartões do topo do MARÉ Saúde. Função pura — é ela que o autoteste exercita."""
     cartoes = []
@@ -450,6 +490,21 @@ def _autoteste() -> int:
     ok("última fechada ignora outro ano",
        ultima_fechada({"2025-50": 9, "2026-02": 3}, "2026") == ("2026-02", 3))
     ok("série vazia devolve nada", ultima_fechada({}, "2026") == (None, None))
+    D = {"coletado_em": "2026-10-18",
+         "ultimo": {"AC": {"consolidado": {"periodo": "2026-35", "por_100mil": 20.0}},
+                    "AL": {"consolidado": {"periodo": "2026-35", "por_100mil": 5.0}},
+                    "AM": {"consolidado": {"periodo": "2026-35", "por_100mil": 1.0}},
+                    "BR": {"consolidado": {"periodo": "2026-35", "valor": 99}}},
+         "faixa_habitual": {u: {"35": {"mediana": 4.0, "p90": 10.0}, "09": {"mediana": 0.0, "p90": 0.1}} for u in ("AC", "AL", "AM")}}
+    r = resumo_do_desfecho(D)
+    ok("estados acima da faixa: acima do p90 da semana do valor, dentro e abaixo não contam",
+       posicoes_das_ufs(D) == {"AC": "acima", "AL": "dentro", "AM": "abaixo"} and r["ufs_acima_faixa"] == 1 and r["ufs_comparadas"] == 3)
+    ok("semana consolidada em datas ISO (domingo a sábado) e BR só se for da mesma semana",
+       (r["semana_inicio"], r["semana_fim"]) == ("2026-08-30", "2026-09-05") and r["valor_br"] == 99)
+    D["ultimo"]["BR"]["consolidado"]["periodo"] = "2026-09"
+    ok("BR de outra semana não vira número do topo", resumo_do_desfecho(D)["valor_br"] is None)
+    del D["faixa_habitual"]["AC"]["35"]
+    ok("UF sem faixa na semana: o total vira lacuna, não zero", resumo_do_desfecho(D)["ufs_acima_faixa"] is None)
 
     com_br = {"BR": {"2026-35": 4267}, "SP": {"2026-35": 1000}, "RJ": {"2026-35": 500}}
     ok("com linha BR o país é a linha BR, e não a soma",
@@ -635,6 +690,8 @@ def main() -> int:
         ler("monitor_saude.json", {}) or {})
     gravar("saude_desfechos/topo_saude.json",
            {"_governanca": GOV_SAUDE, "gerado_em": hoje.strftime("%d/%m/%Y"), "cartoes": saude,
+            "desfechos": {n: resumo_do_desfecho(ler(f"saude_desfechos/{n}.json", {}) or {})
+                          for n in ("dengue", "chikungunya", "srag")},
             "definicao_dos_indices": definicao_dos_indices(ler("meta.json", {}) or {},
                                                            ler("monitor_saude.json", {}) or {})})
     dc = cartoes_da_defesa_civil(
