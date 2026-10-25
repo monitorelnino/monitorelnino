@@ -3,7 +3,7 @@
  "municipios": {
   "1501402": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -47,10 +47,10 @@
     "dominio": "abaetetuba.pa.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=abaetetuba.pa.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "abaetetuba.pa.gov.br"
    },
    "S29": {
@@ -77,10 +77,10 @@
     "dominio": "acara.pa.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "erro",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=acara.pa.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 504",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "acara.pa.gov.br"
    },
    "S29": {
@@ -107,10 +107,10 @@
     "dominio": "afua.pa.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=afua.pa.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "afua.pa.gov.br"
    },
    "S29": {
@@ -137,10 +137,10 @@
     "dominio": "alenquer.pa.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=alenquer.pa.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "alenquer.pa.gov.br"
    },
    "S29": {
@@ -160,17 +160,17 @@
     "dominio": "almeirim.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=almeirim.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "almeirim.pa.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=almeirim.pa.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "almeirim.pa.gov.br"
    },
    "S29": {
@@ -190,7 +190,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -220,10 +220,10 @@
     "dominio": "anajas.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=anajas.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "anajas.pa.gov.br"
    },
    "S25": {
@@ -250,10 +250,10 @@
     "dominio": "ananindeua.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ananindeua.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "TimeoutError: The read operation timed out",
+    "motivo": "HTTP 504",
     "dominio": "ananindeua.pa.gov.br"
    },
    "S25": {
@@ -280,10 +280,10 @@
     "dominio": "anapu.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=anapu.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "anapu.pa.gov.br"
    },
    "S25": {
@@ -310,10 +310,10 @@
     "dominio": "augustocorrea.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=augustocorrea.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "augustocorrea.pa.gov.br"
    },
    "S25": {
@@ -340,7 +340,7 @@
     "dominio": "auroradopara.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=auroradopara.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -370,7 +370,7 @@
     "dominio": "bagre.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bagre.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -400,10 +400,10 @@
     "dominio": "baiao.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=baiao.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "baiao.pa.gov.br"
    },
    "S25": {
@@ -430,10 +430,10 @@
     "dominio": "barcarena.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=barcarena.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "barcarena.pa.gov.br"
    },
    "S25": {
@@ -460,7 +460,7 @@
     "dominio": "benevides.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=benevides.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -490,10 +490,10 @@
     "dominio": "braganca.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=braganca.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "braganca.pa.gov.br"
    },
    "S25": {
@@ -520,10 +520,10 @@
     "dominio": "brasilnovo.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=brasilnovo.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "brasilnovo.pa.gov.br"
    },
    "S25": {
@@ -550,11 +550,11 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=breubranco.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
-    "dominio": null
+    "dominio": "breubranco.pa.gov.br"
    },
    "S25": {
     "consultado_em": "2026-10-23",
@@ -580,7 +580,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -610,7 +610,7 @@
     "dominio": "bujaru.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bujaru.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -640,7 +640,7 @@
     "dominio": "cachoeiradoarari.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cachoeiradoarari.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -670,7 +670,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -700,7 +700,7 @@
     "dominio": "canaadoscarajas.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=canaadoscarajas.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -730,10 +730,10 @@
     "dominio": "capanema.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=capanema.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "capanema.pa.gov.br"
    },
    "S25": {
@@ -760,7 +760,7 @@
     "dominio": "capitaopoco.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=capitaopoco.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -790,11 +790,11 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
-    "motivo": null,
-    "dominio": null
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=castanhal.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "castanhal.pa.gov.br"
    },
    "S25": {
     "consultado_em": "2026-10-23",
@@ -820,7 +820,7 @@
     "dominio": "conceicaodoaraguaia.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=conceicaodoaraguaia.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -850,10 +850,10 @@
     "dominio": "concordiadopara.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=concordiadopara.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "concordiadopara.pa.gov.br"
    },
    "S25": {
@@ -880,7 +880,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -910,7 +910,7 @@
     "dominio": "curuca.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=curuca.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -940,10 +940,10 @@
     "dominio": "domeliseu.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=domeliseu.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "domeliseu.pa.gov.br"
    },
    "S25": {
@@ -970,10 +970,10 @@
     "dominio": "eldoradodocarajas.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=eldoradodocarajas.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "eldoradodocarajas.pa.gov.br"
    },
    "S25": {
@@ -1000,7 +1000,7 @@
     "dominio": "garrafaodonorte.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=garrafaodonorte.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1030,7 +1030,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -1060,7 +1060,7 @@
     "dominio": "gurupa.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=gurupa.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1090,7 +1090,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -1120,7 +1120,7 @@
     "dominio": "igarapemiri.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=igarapemiri.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1150,10 +1150,10 @@
     "dominio": "ipixunadopara.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ipixunadopara.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "ipixunadopara.pa.gov.br"
    },
    "S25": {
@@ -1180,7 +1180,7 @@
     "dominio": "irituia.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=irituia.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1210,10 +1210,10 @@
     "dominio": "itaituba.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itaituba.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "itaituba.pa.gov.br"
    },
    "S25": {
@@ -1240,7 +1240,7 @@
     "dominio": "itupiranga.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itupiranga.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1270,7 +1270,7 @@
     "dominio": "jacareacanga.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=jacareacanga.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1293,10 +1293,10 @@
     "dominio": "jacunda.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=jacunda.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "jacunda.pa.gov.br"
    },
    "S29": {
@@ -1316,10 +1316,10 @@
     "dominio": "juruti.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=juruti.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "juruti.pa.gov.br"
    },
    "S29": {
@@ -1339,7 +1339,7 @@
     "dominio": "limoeirodoajuru.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=limoeirodoajuru.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1362,7 +1362,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -1385,7 +1385,7 @@
     "dominio": "maracana.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=maracana.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1408,7 +1408,7 @@
     "dominio": "marapanim.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=marapanim.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1431,10 +1431,10 @@
     "dominio": "marituba.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=marituba.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "marituba.pa.gov.br"
    },
    "S29": {
@@ -1454,10 +1454,10 @@
     "dominio": "medicilandia.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=medicilandia.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "medicilandia.pa.gov.br"
    },
    "S29": {
@@ -1477,7 +1477,7 @@
     "dominio": "melgaco.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=melgaco.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1500,7 +1500,7 @@
     "dominio": "mocajuba.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=mocajuba.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1523,10 +1523,10 @@
     "dominio": "moju.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=moju.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "moju.pa.gov.br"
    },
    "S29": {
@@ -1546,7 +1546,7 @@
     "dominio": "mojuidoscampos.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=mojuidoscampos.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1569,7 +1569,7 @@
     "dominio": "montealegre.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=montealegre.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1592,7 +1592,7 @@
     "dominio": "muana.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=muana.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": "HTTP 503",
@@ -1615,7 +1615,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -1638,10 +1638,10 @@
     "dominio": "novoprogresso.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=novoprogresso.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": "HTTP 503",
     "dominio": "novoprogresso.pa.gov.br"
    },
    "S29": {
@@ -1661,7 +1661,7 @@
     "dominio": "novorepartimento.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=novorepartimento.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1684,7 +1684,7 @@
     "dominio": "oeirasdopara.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=oeirasdopara.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1707,10 +1707,10 @@
     "dominio": "oriximina.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=oriximina.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "oriximina.pa.gov.br"
    },
    "S29": {
@@ -1730,7 +1730,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -1753,10 +1753,10 @@
     "dominio": "pacaja.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=pacaja.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "pacaja.pa.gov.br"
    },
    "S29": {
@@ -1776,10 +1776,10 @@
     "dominio": "paragominas.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=paragominas.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "paragominas.pa.gov.br"
    },
    "S29": {
@@ -1799,7 +1799,7 @@
     "dominio": "parauapebas.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=parauapebas.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1822,10 +1822,10 @@
     "dominio": "pontadepedras.pa.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=pontadepedras.pa.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "pontadepedras.pa.gov.br"
    },
    "S29": {
