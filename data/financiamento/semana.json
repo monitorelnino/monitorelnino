@@ -1291,5 +1291,43 @@
    "nome": "Dourados",
    "uf": "MS"
   }
- ]
+ ],
+ "serie_mensal": {
+  "meses": [
+   {
+    "mes": "202606",
+    "defesa_civil": 251656.02,
+    "saude": null,
+    "parcial": false
+   },
+   {
+    "mes": "202607",
+    "defesa_civil": 63628859.28,
+    "saude": 1825372.5,
+    "parcial": false
+   },
+   {
+    "mes": "202608",
+    "defesa_civil": 42391062.83,
+    "saude": 3344623.52,
+    "parcial": false
+   },
+   {
+    "mes": "202609",
+    "defesa_civil": 95963097.9,
+    "saude": 3077846.02,
+    "parcial": false
+   },
+   {
+    "mes": "202610",
+    "defesa_civil": 4611978.26,
+    "saude": null,
+    "parcial": true
+   }
+  ],
+  "saude_desde": "202607",
+  "saude_ultimo_mes": "202609",
+  "total_defesa_civil": 206846654.29,
+  "total_saude": 8247842.04
+ }
 }

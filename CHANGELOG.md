@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Financiamento: série mensal do dinheiro do mapa · Dados
+
+`semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.
+
 ## 2026-10-25 · #PR · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados
 
 O repasse do SUS para emergências passa a contar desde 29/06/2026 (meses inteiros, julho em diante): R$ 8,2 mi em 16 municípios, antes R$ 112 mi em 63. O topo da Saúde traz estados acima da faixa habitual por desfecho. O empenhado das MPs ganha marcador quando excede o valor do ato (a fonte mede a ação, não o crédito). `n_atos` numérico. METODOLOGIA: v0.7 vira §123, com as frases de comparação e de não atribuição.

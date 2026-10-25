@@ -38,11 +38,24 @@ BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.js
                   "monitor_saude.json"}
 
 
-def emergencia_no_ciclo(v: dict) -> float:
-    """Repasse do FNS ligado a emergência desde o início do ciclo (29/06/2026). O FNS é mensal e não traz a
+def emergencia_por_mes(v: dict) -> dict:
+    """Repasse do FNS ligado a emergência por mês, desde o início do ciclo (29/06/2026). O FNS é mensal e não traz a
     data do repasse: entram só os meses inteiros a partir do ciclo (o recorte conservador, julho em diante)."""
     mes0 = INICIO_CICLO.strftime("%Y%m") if INICIO_CICLO.day == 1 else (INICIO_CICLO.replace(day=28) + timedelta(days=4)).strftime("%Y%m")
-    return round(sum(float(x[1] or 0.0) for k, x in ((v or {}).get("meses") or {}).items() if k >= mes0), 2)
+    return {k: float(x[1] or 0.0) for k, x in ((v or {}).get("meses") or {}).items() if k >= mes0}
+
+
+def emergencia_no_ciclo(v: dict) -> float:
+    return round(sum(emergencia_por_mes(v).values()), 2)
+
+
+def atos_do_ciclo(rec: dict, corte: datetime):
+    """(ibge, ato, data) de cada portaria da SEDEC entre 29/06/2026 e o corte: a única seleção que soma o
+    cartão, o mapa e a série mensal."""
+    for ib, m in ((rec or {}).get("municipios") or {}).items():
+        for a in (m or {}).get("atos") or []:
+            if (d := _data(a.get("data"))) and INICIO_CICLO <= d <= corte:
+                yield ib, a, d
 
 
 def mes_legivel(aaaamm: str) -> str:
@@ -213,13 +226,10 @@ def cartao_resposta(rec: dict, corte: datetime) -> dict:
 def defesa_civil_ciclo(rec: dict, corte: datetime) -> dict:
     """Autorizado por portaria da SEDEC desde 29/06/2026, todas as ações. Função pura."""
     total, por_acao, cidades = 0.0, {}, set()
-    for m in ((rec or {}).get("municipios") or {}).values():
-        for a in (m or {}).get("atos") or []:
-            d = _data(a.get("data"))
-            if not d or not (INICIO_CICLO <= d <= corte): continue
-            v = float(a.get("valor_autorizado") or 0.0)
-            total += v; cidades.add((a.get("municipio"), a.get("uf")))
-            por_acao[a.get("acao") or "outra"] = round(por_acao.get(a.get("acao") or "outra", 0.0) + v, 2)
+    for _, a, _ in atos_do_ciclo(rec, corte):
+        v = float(a.get("valor_autorizado") or 0.0)
+        total += v; cidades.add((a.get("municipio"), a.get("uf")))
+        por_acao[a.get("acao") or "outra"] = round(por_acao.get(a.get("acao") or "outra", 0.0) + v, 2)
     return {"valor_ciclo": round(total, 2), "municipios_ciclo": len(cidades),
             "por_acao_ciclo": dict(sorted(por_acao.items())), "desde": INICIO_CICLO.strftime("%d/%m/%Y")}
 
@@ -363,9 +373,10 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
     contado em `sem_sede`. Função pura."""
     sede = {str(r.get("codigo_ibge")).zfill(7): (r.get("lat"), r.get("lon"), r.get("nome"), r.get("uf")) for r in ref or []}
     pts = []
-    for ib, m in ((rec or {}).get("municipios") or {}).items():
-        atos = [a for a in (m or {}).get("atos") or [] if (d := _data(a.get("data"))) and INICIO_CICLO <= d <= corte]
-        if not atos: continue
+    por_mun = {}
+    for ib, a, _ in atos_do_ciclo(rec, corte):
+        por_mun.setdefault(ib, []).append(a)
+    for ib, atos in por_mun.items():
         ult = max(atos, key=lambda a: a.get("data") or "")
         pts.append({"ibge": str(ib).zfill(7), "origem": "defesa_civil", "valor": round(sum(float(a.get("valor_autorizado") or 0) for a in atos), 2),
                     "ato": ("Portaria " + str(ult.get("portaria"))) if ult.get("portaria") else None, "data": ult.get("data"), "url": ult.get("url"),
@@ -385,6 +396,31 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
     return out
 
 
+def serie_mensal(rec: dict, fns_mun: dict, corte: datetime) -> dict:
+    """Série mensal do MESMO universo do mapa e dos cartões `defesa_civil_ciclo` e `sus_emergencia` (mesmas
+    funções de seleção): defesa civil = autorizado por portaria, no mês da portaria; SUS = repasse de emergência
+    do mês fechado do FNS. `saude` é None onde não há dado do FNS (junho, fora do recorte; meses ainda não
+    coletados): ausência não é zero. O mês do corte é `parcial`. Função pura."""
+    dc = {}
+    for _, a, d in atos_do_ciclo(rec, corte):
+        k = d.strftime("%Y%m"); dc[k] = dc.get(k, 0.0) + float(a.get("valor_autorizado") or 0.0)
+    fns = (fns_mun or {}).get("municipios") or {}
+    sus = {}
+    for v in fns.values():
+        for k, x in emergencia_por_mes(v).items(): sus[k] = sus.get(k, 0.0) + x
+    coletados = {k for v in fns.values() for k in emergencia_por_mes(v)}   # meses do FNS dentro do recorte
+    if not dc and not fns: return {}
+    ini, fim = INICIO_CICLO.strftime("%Y%m"), corte.strftime("%Y%m")
+    meses, k = [], ini
+    while k <= fim:
+        meses.append({"mes": k, "defesa_civil": round(dc.get(k, 0.0), 2),
+                      "saude": round(sus.get(k, 0.0), 2) if k in coletados else None,
+                      "parcial": k == fim})
+        k = (datetime(int(k[:4]), int(k[4:]), 1) + timedelta(days=32)).strftime("%Y%m")
+    return {"meses": meses, "saude_desde": (min(sus) if sus else None), "saude_ultimo_mes": max(coletados) if coletados else None,
+            "total_defesa_civil": round(sum(dc.values()), 2), "total_saude": round(sum(sus.values()), 2)}
+
+
 def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
            fns_mun: dict | None = None, ref: list | None = None) -> dict:
     cartoes = [cartao_pago(mps), cartao_transferido(transf), cartao_resposta(rec, corte),
@@ -397,7 +433,8 @@ def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
             "cartoes": cartoes,
             "topo": topo(mps, comp, rec, fns_mun, corte),
             "mes_a_mes": mes_a_mes(mps),
-            "mapa": mapa(rec, fns_mun, ref, corte)}
+            "mapa": mapa(rec, fns_mun, ref, corte),
+            "serie_mensal": serie_mensal(rec, fns_mun, corte)}
 
 
 def _autoteste() -> int:
@@ -501,6 +538,11 @@ def _autoteste() -> int:
        [(p["origem"], p["valor"], p["lat"]) for p in pts] == [("defesa_civil", 1000.0, -1.0), ("saude", 2.0, -1.0)]
        and mapa(base, {}, [], corte)[0]["sem_sede"] is True)
 
+    sm = serie_mensal(base, FNS, corte)
+    ok("serie mensal: soma = cartao defesa civil + SUS = mapa; junho do SUS fora do recorte (None, nao zero)",
+       sm["total_defesa_civil"] == t["defesa_civil_ciclo"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "defesa_civil")
+       and sm["total_saude"] == t["sus_emergencia"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "saude")
+       and sm["meses"][0]["saude"] is None and sm["meses"][-1]["parcial"] is True and serie_mensal({}, {}, corte) == {})
     d = montar({}, {}, {}, {}, corte)
     ok("montar devolve os quatro cartoes", [x["id"] for x in d["cartoes"]] == [
         "pago_periodo_mp", "transferido_municipios_periodo", "resposta_liberado_semana",
