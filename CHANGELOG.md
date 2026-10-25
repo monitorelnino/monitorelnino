@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Catálogo: SIH saúde mental e ICSAP marcados como coletados
+O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
+
 ## 2026-10-25 · D · Suíte de mutação dos portões
 
 `scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.
