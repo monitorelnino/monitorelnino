@@ -30,6 +30,10 @@ jobs:
       # Escreve em data/pistas_*.json — grupo compartilhado da noite (seção G1).
       grupo_de_concorrencia: noturno
       timeout_minutos: 60
+      # 25/10/2026 (fila reentrante, HANDOVER_FILA_DE_PISTAS_SEM_SESSAO, o mesmo do juiz): cada rodada
+      # segue até 20 notícias; sobrando notícia que a noite ainda não tocou, o marcador é
+      # `descoberta.parcial` e a reserva do despachante redispara o elo até 08:00 UTC.
+      restante: seguir_pistas.py --restante
       # §278: `monitorar_redes_oficiais.py` e `seguir_pistas.py` consultam o metabuscador.
       precisa_searxng: true
       comandos: |

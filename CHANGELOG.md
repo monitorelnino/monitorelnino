@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1147 · Fila de descoberta reentrante
+
+A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.
+
 ## 2026-10-25 · #1144 · Blog: link para a metodologia
 
 O aviso do blog ganha o link "Como os textos são produzidos", apontando para a seção da METODOLOGIA (PDF). Texto do link no catálogo (`blog.metodologia.link`).
