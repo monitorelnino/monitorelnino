@@ -560,7 +560,7 @@ function pintarDetalhe(d, uf) {
      linha de fonte — sem nomear sistema que não foi lido. Moldura vazia e muda é o pior desfecho. */
   if (!d) {
     fig.hidden = true;
-    fonteFigura('boxDesfecho', {fontes: ['os sistemas de registro declarados em cada desfecho'], data: null});
+    MonitorMapas.credito('boxDesfecho', {fontes: ['os sistemas de registro declarados em cada desfecho'], data: null});
     return;
   }
   fig.hidden = false;
@@ -618,7 +618,7 @@ function pintarDetalhe(d, uf) {
   /* O gráfico nasce antes de o mapa ocupar a segunda coluna da figura dupla: sem este ajuste, a
      tela do Chart.js guarda a largura da figura inteira e passa por cima do mapa. */
   if (__graficoDesfecho.g && typeof __graficoDesfecho.g.resize === 'function') __graficoDesfecho.g.resize();
-  fonteFigura('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
+  MonitorMapas.credito('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
 }
 
 /* Desfecho em evidência que ainda não tem arquivo na forma comum não vira cartão vazio: a seção
