@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+
+## 2026-10-25 · #PR · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada
+O nacional da chikungunya parava na semana 9 sem aviso porque o Tocantins não tem registro depois dela na fonte. `desfechos_sus.montar` agora declara em `lacunas` a UF defasada (último período) e marca `ultimo.BR.ufs_sem_dado_depois`; o nacional segue só com as 27 UFs. Dengue e SRAG inalterados. Código +31/−5.
 ## 2026-10-24 · #PR · Imprensa: pergunta nova sobre casos de saúde e El Niño
 
 Em "O que recomendamos e não recomendamos concluir", na Saúde, entra a pergunta "Os casos mostrados na página de Saúde são causados pelo El Niño?": a página não faz essa relação e mostra o que os órgãos de saúde registram, com fonte e faixa habitual. Texto aprovado pela editoria.

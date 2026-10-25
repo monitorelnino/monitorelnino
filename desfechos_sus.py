@@ -98,6 +98,15 @@ def _soma_br(serie: dict, ufs_esperadas: int = 27) -> dict:
             for per, vs in por_per.items()}
 
 
+def _defasadas(serie: dict, parciais: list) -> dict:
+    """UF -> último período com valor, para as UFs que a fonte deixou antes da janela parcial (ou antes do
+    período mais recente, se não há janela). Nelas o nacional não fecha: é lacuna, não zero. Função pura."""
+    todos = [p for s in serie.values() for p in s]
+    corte = min(parciais) if parciais else max(todos, default="")
+    ult = {uf: max((p for p, v in s.items() if v is not None), default="") for uf, s in serie.items() if uf != "BR"}
+    return {uf: p for uf, p in ult.items() if p < corte}
+
+
 def _taxa(serie: dict, populacao: dict) -> dict:
     return {uf: {per: (round(v * 1e5 / populacao[uf], 3) if v is not None else None) for per, v in s.items()}
             for uf, s in serie.items() if populacao.get(uf)}
@@ -133,6 +142,10 @@ def montar(desfecho: str, rotulo: str, unidade: str, periodo: str, territorio: s
         cortes = {"metrica": metrica, "quantis": [20, 40, 60, 80], "anos": [ANOS_CORTES[0], ANOS_CORTES[-1]],
                   "cortes": quintis(vals), "congelados_em": coletado_em}
     faixa = {uf: canal_endemico({p: {"casos": v} for p, v in s.items()}) for uf, s in base.items()}
+    atrasadas = _defasadas(serie, parciais)
+    lacunas = (lacunas or []) + [
+        {"territorio": uf, "ultimo_periodo": p, "motivo": "a fonte não traz registro desta UF depois deste período; "
+         "o nacional só soma o período em que as 27 UFs têm valor"} for uf, p in sorted(atrasadas.items())]
     ultimo = {}
     for uf, s in serie.items():
         com_valor = [p for p, v in s.items() if v is not None]
@@ -144,11 +157,13 @@ def montar(desfecho: str, rotulo: str, unidade: str, periodo: str, territorio: s
             if fechados:
                 q = fechados[-1]
                 ultimo[uf]["consolidado"] = {"periodo": q, "valor": s[q], "por_100mil": (taxa or {}).get(uf, {}).get(q)}
+    if atrasadas and "BR" in ultimo:
+        ultimo["BR"]["ufs_sem_dado_depois"] = sorted(atrasadas)
     obj = {"esquema": ESQUEMA, "desfecho": desfecho, "rotulo": rotulo, "unidade": unidade,
            "periodo": periodo, "territorio": territorio, "fonte": fonte, "cadencia": cadencia,
            "coletado_em": coletado_em, "anos_preliminares": sorted(set(anos_preliminares)),
            "parcial": parciais, "serie": serie, "ultimo": ultimo, "cortes_mapa": cortes,
-           "faixa_habitual": faixa, "ressalva": RESSALVA, "lacunas": lacunas or []}
+           "faixa_habitual": faixa, "ressalva": RESSALVA, "lacunas": lacunas}
     if taxa:
         obj["por_100mil"] = taxa
     return obj
@@ -240,16 +255,16 @@ def derivar(nome: str, ler_fn=ler, gravar_fn=gravar) -> bool:
         print(f"{nome}: {cfg['origem']} ausente ou vazio; o arquivo anterior fica"); return False
     serie, n = de_serie_existente(orig)
     anterior = ler_fn(caminho(nome))
-    if anterior and {u: v for u, v in anterior.get("serie", {}).items() if u != "BR"} == serie:
-        print(f"{nome}: {cfg['origem']} sem mudança; nada a regravar"); return False
     fonte = {"sistema": orig.get("sistema"), "url": orig.get("fonte"), "arquivo_de_origem": f"data/{PASTA}/{cfg['origem']}",
              "gerado_em_na_origem": orig.get("gerado_em"), "uf": "residência", "data_do_periodo": "início dos sintomas"}
-    data = data_iso(orig.get("gerado_em"))
     obj = montar(desfecho=nome, rotulo=cfg["rotulo"], unidade=cfg["unidade"], periodo="semana",
                  territorio="UF de residência", serie=serie, fonte=fonte,
-                 cadencia="a do coletor de origem", coletado_em=data,
+                 cadencia="a do coletor de origem", coletado_em=data_iso(orig.get("gerado_em")),
                  anos_preliminares=[orig.get("ano_corrente")] if orig.get("ano_corrente") else [],
                  n_parciais=n, populacao=populacao_por_uf(ler_fn), anterior=anterior)
+    if anterior and {u: v for u, v in anterior.get("serie", {}).items() if u != "BR"} == serie \
+            and anterior.get("lacunas") == obj["lacunas"]:
+        print(f"{nome}: {cfg['origem']} sem mudança; nada a regravar"); return False
     return gravar_desfecho(obj, gravar_fn=gravar_fn)
 
 
@@ -309,6 +324,16 @@ def _t_br_so_com_27():
     s = {u: {"2026-01": 1, "2026-02": 2} for u in ufs}; s[ufs[0]]["2026-02"] = None
     o = _montado(serie=s, populacao=None)
     return o["serie"]["BR"] == {"2026-01": 27, "2026-02": None}
+
+
+def _t_uf_defasada_vira_lacuna():
+    ufs = [f"A{chr(65 + i)}" for i in range(26)] + ["BA"]
+    s = {u: {"2026-01": 1, "2026-02": 2, "2026-03": 3} for u in ufs}
+    s["BA"]["2026-03"] = None; s["AB"]["2026-03"] = None   # BA parou em 02; AB também (mas dentro da janela parcial)
+    o = _montado(serie=s, populacao=None, n_parciais=1)
+    # janela parcial = 2026-03; BA e AB têm último 02 < 03 → ambas lacuna; o nacional para em 02 e diz por quê
+    return [l["territorio"] for l in o["lacunas"]] == ["AB", "BA"] and o["ultimo"]["BR"]["periodo"] == "2026-02" \
+        and o["ultimo"]["BR"]["ufs_sem_dado_depois"] == ["AB", "BA"] and _montado(serie=_serie_de_teste())["lacunas"] == []
 
 
 def _t_quarentena():
@@ -386,6 +411,7 @@ TESTES = {
     "cortes recalculam só se a métrica muda": _t_cortes_recalculam_se_metrica_muda,
     "lacuna fica null, nunca zero": _t_lacuna_nao_vira_zero,
     "BR só onde as 27 UFs têm valor": _t_br_so_com_27,
+    "UF que a fonte deixou para trás vira lacuna e o nacional diz por quê": _t_uf_defasada_vira_lacuna,
     "fora do esquema vai à quarentena; o bom fica": _t_quarentena,
     "leitura recusa arquivo fora do esquema": _t_ler_recusa_fora_do_esquema,
     "valor negativo é recusado": _t_valor_negativo_recusado,
