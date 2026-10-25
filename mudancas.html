@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>25/10/2026 · Rodada: união de conflito decide campo a campo</dt>
+      <dd>Decisão da central (item 7): quando os dois lados mudam o mesmo campo, o juiz vence pelo `julgado_em` mais recente e o veredito perdido vai para `juiz_historico`; `rejeitada_em` vence a data mais antiga; estado de fila (`busca_web_espera`, cursores) vence o lado da `main`. Outros campos continuam recusados, sem adivinhar. Autotestes por regra.</dd>
       <dt>25/10/2026 · Busca de planos em paralelo por host</dt>
       <dd>A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.</dd>
       <dt>25/10/2026 · Fila de descoberta reentrante</dt>
@@ -165,8 +167,6 @@
       <dd>`parse_noticia_midr` lia cada link de portaria da notícia do MIDR, e o mesmo ato aparece em mais de um: o lote de Acrelândia/AC saía &quot;nº 2.659, nº 2.659&quot; e a página do DOU era buscada duas vezes. O parser passa a ignorar o número já lido. Código +1/−0. ## 2026-10-23 · Busca de planos: o disparo cria os jobs `busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.</dd>
       <dt>23/10/2026 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz</dt>
       <dd>A seção &quot;Como os índices funcionam&quot; descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados &quot;já verificados&quot;. O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.</dd>
-      <dt>23/10/2026 · Defesa civil: sexto cartão do topo no instantâneo</dt>
-      <dd>O instantâneo `topo_defesa_civil.json` passa a guardar o cartão de decreto sem reconhecimento federal há mais de 30 dias (45 hoje, mesma régua da página) e a variação da semana (quem cruzou os 30 dias). Sem o campo `dias_sem_reconhecimento`, o cartão é sem coleta, nunca zero. Código +17/−0.</dd>
     </dl>
   </section>
 </main>

@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-25 · #PR · Rodada: união de conflito decide campo a campo
+## 2026-10-25 · #1153 · Rodada: união de conflito decide campo a campo
 
 Decisão da central (item 7): quando os dois lados mudam o mesmo campo, o juiz vence pelo `julgado_em` mais recente e o veredito perdido vai para `juiz_historico`; `rejeitada_em` vence a data mais antiga; estado de fila (`busca_web_espera`, cursores) vence o lado da `main`. Outros campos continuam recusados, sem adivinhar. Autotestes por regra.
 
