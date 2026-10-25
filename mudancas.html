@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>25/10/2026 · Fila de descoberta reentrante</dt>
       <dd>A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.</dd>
+      <dt>25/10/2026 · Blog: link para a metodologia</dt>
+      <dd>O aviso do blog ganha o link &quot;Como os textos são produzidos&quot;, apontando para a seção da METODOLOGIA (PDF). Texto do link no catálogo (`blog.metodologia.link`). ## 2026-10-25 · B3 · Defesa civil: prazo mediano no lugar do cartão de 30 dias O sexto cartão do topo passa a mostrar o prazo mediano entre decreto e reconhecimento, medido em `data/resposta/por_uf.json` (METODOLOGIA §32.6), com o mesmo componente. Sai a contagem de 30 dias, retirada pela A2 em #1137. Remove o campo `dias_sem_reconhecimento` da página e do verificador de runtime.</dd>
       <dt>25/10/2026 · Remove o módulo duplicado de estrutura dos desfechos</dt>
       <dd>`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.</dd>
       <dt>25/10/2026 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF</dt>
@@ -165,8 +167,6 @@
       <dd>O instantâneo `topo_defesa_civil.json` passa a guardar o cartão de decreto sem reconhecimento federal há mais de 30 dias (45 hoje, mesma régua da página) e a variação da semana (quem cruzou os 30 dias). Sem o campo `dias_sem_reconhecimento`, o cartão é sem coleta, nunca zero. Código +17/−0.</dd>
       <dt>23/10/2026 · Páginas da faixa: ausência declarada onde ficava vazio</dt>
       <dd>A linha da Defesa Civil do estado era escrita pelo cartão do município: trocar de estado deixava no ar a do estado anterior. Passou a sair na troca do estado. Sem o arquivo da semana, os seis cartões da Imprensa ficavam vazios; agora dizem &quot;sem coleta até o corte&quot;, frase que a página já escrevia. A data da fonte da aba de fogo vem do registro de preservação, e a palavra &quot;ciclo&quot; sai de duas abas.</dd>
-      <dt>23/10/2026 · Fontes abertas de planos por município</dt>
-      <dd>`buscar_planos_fontes_abertas.py` consulta, por município, LexML, Wayback, Common Crawl e dados.gov.br; achado entra pela porta única e vai ao juiz. Recusa e erro ficam nomeados, nunca viram &quot;sem resultado&quot;. O Querido Diário passa a reportar todas as portas que falharam. Alvos das 27 capitais em `data/capitais_alvos.json`.</dd>
     </dl>
   </section>
 </main>
