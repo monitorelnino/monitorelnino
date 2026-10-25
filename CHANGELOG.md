@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1144 · Blog: link para a metodologia
+
+O aviso do blog ganha o link "Como os textos são produzidos", apontando para a seção da METODOLOGIA (PDF). Texto do link no catálogo (`blog.metodologia.link`).
+
 ## 2026-10-25 · #1141 · Imprensa: variantes do componente
 
 Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.
