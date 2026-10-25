@@ -47,8 +47,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>25/10/2026 · Remove o módulo duplicado de estrutura dos desfechos</dt>
-      <dd>`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.</dd>
+      <dt>25/10/2026 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF</dt>
+      <dd>`municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.</dd>
+      <dt>25/10/2026 · Imprensa: acumulados do ciclo, uma função por número</dt>
+      <dd>`data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.</dd>
       <dt>25/10/2026 · Imprensa: variantes do componente</dt>
       <dd>Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.</dd>
       <dt>25/10/2026 · Defesa civil: escala menor só no topo</dt>
@@ -165,8 +167,6 @@
       <dd>A relação nominal do módulo PLANCON do S2iD (SEDEC, por LAI) entra como camada declarada e datada, com o campo `s2id_plancon` em `declarado_nacional.json` e sem efeito na nota. A fila de 571 municípios sem documento ganha o portal da prefeitura como canal, ao lado do Querido Diário e da busca web, que passa a aceitar a fila. Toda pista entra pela porta única.</dd>
       <dt>23/10/2026 · Monitor de riscos: a tabela de avisos diz em palavras o que o travessão calava</dt>
       <dd>As colunas &quot;Estados&quot; e &quot;Fenômeno&quot; da tabela de avisos do Inmet saíam em travessão nas três linhas sem aviso. Grau com zero município passa a dizer &quot;nenhum&quot;, que é o zero medido; a linha &quot;Sem aviso&quot;, que não é grau de aviso, diz &quot;não há aviso&quot;. O portão que já proibia travessão em cartão, ladrilho e ficha passa a olhar também a célula de tabela de figura, o quinto lugar onde o leitor o via.</dd>
-      <dt>23/10/2026 · Repositórios estaduais de planos entram como pistas, não como plano direto</dt>
-      <dd>`atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.</dd>
     </dl>
   </section>
 </main>

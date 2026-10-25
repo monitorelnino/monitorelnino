@@ -1,4 +1,50 @@
 {
+ "acumulado": [
+  {
+   "id": "focos_desde_29_06",
+   "valor": 39788,
+   "unidade": "focos",
+   "periodo_inicio": "2026-09-17",
+   "periodo_fim": "2026-10-24",
+   "n": 38,
+   "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "municipios_plano_localizado",
+   "valor": 100,
+   "unidade": "municípios",
+   "periodo_inicio": null,
+   "periodo_fim": "2026-10-25",
+   "n": 100,
+   "fonte": "MARÉ Legal (planos municipais localizados)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "dias_alerta_laranja_vermelho",
+   "valor": null,
+   "unidade": "dias",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": "2026-10-25",
+   "n": 0,
+   "fonte": "Inmet (avisos meteorológicos)",
+   "sem_coleta": true,
+   "motivo": "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes"
+  },
+  {
+   "id": "estados_acima_da_faixa_por_doenca",
+   "valor": null,
+   "unidade": "estados",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": "2026-10-25",
+   "n": 0,
+   "fonte": "MARÉ Saúde (semanas fechadas por UF e doença)",
+   "sem_coleta": true,
+   "motivo": "a série semanal por UF e doença não chega ao topo de saúde até o corte"
+  }
+ ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
  "gerado_em": "2026-10-25",
  "janela_dias": 7,

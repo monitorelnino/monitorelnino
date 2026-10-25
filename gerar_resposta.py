@@ -141,6 +141,14 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     return out
 
 
+def dias_sem_reconhecimento(m: dict, referencia) -> int | None:
+    """Dias de decreto sem reconhecimento: referência − primeiro decreto, só para quem decretou e não
+    foi reconhecido. Sem decreto ou já reconhecido, None (não se conta). Função pura (HANDOVER_DEFESA §8.2)."""
+    d = data_br(m.get("primeiro_decreto"))
+    if not m.get("decreto") or m.get("reconhecido") or d is None or referencia is None: return None
+    return (referencia - d).days
+
+
 def eventos_por_uf(municipios: dict, eventos: list) -> dict:
     """Por UF: atos casados por família e a família mais declarada (empate = lista). Conta o que
     `consolidar_municipios` casou: mesmo filtro, mesma função do tipo. Função pura."""
@@ -218,6 +226,7 @@ def gerar() -> int:
     por = agregar_uf(mun, pop); serie = serie_semanal(mun)
     for uf, v in eventos_por_uf(mun, atos["eventos"]).items(): por[uf].update(v)
     hoje = data_da_edicao().strftime("%d/%m/%Y")
+    for m in mun.values(): m["dias_sem_reconhecimento"] = dias_sem_reconhecimento(m, data_br(hoje))
     n_total = sum(v["n_municipios"] for v in por.values()); pop_total = sum(v["pop_uf"] for v in por.values()); pop_dec = sum(v["pop_sob_decreto"] for v in por.values())
     datas = [data_br(m["primeiro_decreto"]) for m in mun.values() if m["primeiro_decreto"] and data_br(m["primeiro_decreto"]) >= INICIO_CICLO]
     gov = ("RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois, e — desde 15/09/2026 (§32.4) — "
