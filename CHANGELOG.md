@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1131 · Evidências ausentes: commit que gravava o índice sem o texto
+
+A reaplicação e o rebase (`_coletor.yml`) gravavam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. O commit passa a incluir `evidencias/`.
+
 ## 2026-10-25 · #PR · Para gestores: Os planos de cada governo e o caminho até o plano publicado
 
 Ficam Estados e Municípios indicados, cada um com plano, atualização, acompanhamento e fonte; a fonte de Estados passa à Lei 12.608/2012, art. 7º, § 2º. "O que o plano pode conter" sai e seu conteúdo entra nos seis passos de "Do risco ao plano publicado", em lista ligada por fio. Código +9/−8.
