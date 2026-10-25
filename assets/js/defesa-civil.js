@@ -27,7 +27,6 @@ let BR_GEOJSON, RESP, DECRETADOS, ALERTAS, TOPO,
     MUN_COD = {}, LATLON_POR_CODIGO = {}, NOMES_POR_UF = {};
 
 const LIMITE_ALERTA_HORAS = 24;
-const DIAS_PENDENCIA = 30;
 /* Preposição de cada estado, para a linha do estado ("No Ceará", "Na Bahia", "Em Pernambuco"). */
 const PREPOSICAO = {AC: 'No', AL: 'Em', AM: 'No', AP: 'No', BA: 'Na', CE: 'No', DF: 'No', ES: 'No',
   GO: 'Em', MA: 'No', MG: 'Em', MS: 'No', MT: 'No', PA: 'No', PB: 'Na', PE: 'Em', PI: 'No', PR: 'No',
@@ -120,7 +119,7 @@ function __init(totalMunicipios){
         const fontes = m.fontes || [];
         return {cod: m.ibge, nome: m.nome, uf: m.uf, eventos: eventos, classificado: Array.isArray(ev),
                 familia: familiaDe(eventos[0]), decreto: m.primeiro_decreto || null, reconhecimento: m.primeiro_reconhecimento || null,
-                reconhecida: !!m.reconhecido, tipos: m.tipos || [], dias: m.dias_sem_reconhecimento,
+                reconhecida: !!m.reconhecido, tipos: m.tipos || [],
                 atoLocalizado: !!m.decretado,
                 atoMunicipal: fontes.find(f => f.canal !== 'DOU') || null, portaria: fontes.find(f => f.canal === 'DOU') || null};
       })
@@ -188,13 +187,13 @@ function __init(totalMunicipios){
   variacao('topoPopulacaoVariacao', 'populacao_sob_decreto', N.pop_sob_decreto);
   cred('topoDecretaramFonte', [FONTE_DECRETO], corteDecretos);
   cred('topoReconhecidosFonte', [FONTE_DECRETO], corteDecretos);
-  /* O sexto cartão: decreto há mais de 30 dias sem reconhecimento (19/10/2026, ajuste 4). A
-     pendência é campo do gerador (`dias_sem_reconhecimento`); sem ele, a classe é "não calculado". */
-  const calculado = decretados.some(m => m.dias !== undefined);
-  const pendentes = decretados.filter(m => !m.reconhecida && m.dias > DIAS_PENDENCIA);
-  texto('topoPendencia', calculado ? nCartao(pendentes.length) : 'não calculado até o corte');
-  variacao('topoPendenciaVariacao', 'decreto_sem_reconhecimento_30_dias', calculado ? pendentes.length : null);
-  cred('topoPendenciaFonte', [FONTE_DECRETO], corteDecretos);
+  /* O sexto cartão: prazo mediano entre decreto e reconhecimento, medido em `por_uf.json`
+     (METODOLOGIA §32.6). Sem o campo, a classe é "não calculado até o corte". */
+  const prazo = N.prazo_reconhecimento;
+  const temPrazo = prazo && prazo.mediana != null;
+  texto('topoPrazo', temPrazo ? prazo.mediana + ' dias' : 'não calculado até o corte');
+  texto('topoPrazoApoio', temPrazo ? 'entre ' + prazo.p25 + ' e ' + prazo.p75 + ' dias (' + prazo.n + ' reconhecidos)' : '');
+  cred('topoPrazoFonte', [FONTE_DECRETO], corteDecretos);
   /* População em milhões com uma casa (regra de número do site). */
   const pop = N.pop_sob_decreto;
   texto('topoPopulacao', pop >= 1e6
