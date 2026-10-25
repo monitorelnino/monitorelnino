@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
+
+Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita "consultado em" na fonte. Saem blocos de script sem elemento na página.
+
 ## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
 
 Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.
