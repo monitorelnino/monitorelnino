@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Evidências ausentes: commit que gravava o índice sem o texto
+
+O commit de reaplicação e o de rebase (`_coletor.yml`) e a publicação (`publicar_dados.yml`) incluíam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. Commit passa a incluir `evidencias/`.
+
 ## 2026-10-25 · #PR · Regime de prioridade: checagem pré-noite respeita os elos suspensos
 
 A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendendo o elo, e a sua falha ficava vermelha sem razão. Agora ela pergunta à mesma função que a guarda e o despachante usam (`janela_da_noite.py --elo-suspenso`) e pula as etapas quando está suspensa. Metodologia §102: uma linha sobre o regime. Linhas líquidas: código +6/−1 (workflow), texto +2.
