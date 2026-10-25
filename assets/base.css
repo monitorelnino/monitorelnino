@@ -56,6 +56,21 @@ main{display:block;}
 .passos li{display:flex; gap:var(--sp-3); align-items:flex-start; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:var(--sp-3) var(--sp-4); font-size:var(--fs-small); line-height:var(--lh-small);}
 .passos li b{flex:none; width:32px; height:32px; border-radius:50%; background:var(--musgo); color:var(--branco); font-family:var(--font-dado); font-weight:var(--peso-bold); display:flex; align-items:center; justify-content:center;}
 .passos li strong{display:block; margin-bottom:2px;}
+/* 25/10/2026: variante em linha (Para gestores): lista vertical ligada por fio; o bloco "tem" lista o que cada passo exige */
+.passos--linha{display:block;}
+.passos--linha li{position:relative; border:0; background:none; padding:0 0 var(--sp-5); font-size:var(--fs-body); line-height:var(--lh-body);}
+.passos--linha li::before{content:""; position:absolute; left:15px; top:36px; bottom:4px; width:2px; background:var(--line);}
+.passos--linha li:last-child::before{display:none;}
+.passos--linha li b{background:var(--rust);}
+.passos--linha li>span{flex:1; min-width:0;}
+.passos--linha strong{font-family:var(--font-titulo); font-size:var(--fs-h4); font-weight:400; margin-bottom:var(--sp-1);}
+.passos--linha .faz{margin:0 0 var(--sp-2); color:var(--muted);}
+.passos--linha .tem p{margin:0 0 var(--sp-1); font-family:var(--font-dado); font-size:var(--fs-caption); letter-spacing:.08em; text-transform:uppercase; color:var(--muted);}
+.passos--linha .tem .lei{margin:var(--sp-2) 0 0; font-family:inherit; letter-spacing:0; text-transform:none;}
+.passos--linha .tem ul{margin:0; padding-left:var(--sp-4); columns:2; column-gap:var(--sp-5); font-size:var(--fs-small);}
+.passos--linha .tem li{display:list-item; padding:0 0 var(--sp-1); font-size:var(--fs-small); break-inside:avoid;}
+.passos--linha .tem li::before{display:none;}
+.passos--linha .tem ul.curta{columns:1;}
 .checklist{list-style:none; margin:0; padding:0; columns:1; font-size:var(--fs-small); line-height:var(--lh-small);}
 .checklist li{position:relative; padding-left:var(--sp-5); margin:0 0 var(--sp-2);}
 .checklist li::before{content:"☐"; position:absolute; left:0; top:0; color:var(--muted);}
@@ -590,6 +605,12 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .risco-box .v{font-size:var(--fs-body); line-height:var(--lh-body); margin:0 0 var(--sp-2);}
 .chips{display:flex; flex-wrap:wrap; gap:var(--sp-1);}
 .chip-risco{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); padding:2px var(--sp-2); border-radius:999px; background:var(--branco); border:1px solid currentColor;}
+/* 25/10/2026 (Saúde v0.7): a sigla do estado como botão (seletor acessível do mapa de planos) e as três posições na faixa habitual, sempre com a palavra escrita ao lado da cor. A cor marca a posição numa escala (quente acima, frio abaixo); não julga. */
+button.chip-risco{min-width:var(--alvo-toque); min-height:var(--alvo-toque); color:inherit; cursor:pointer;}
+button.chip-risco[aria-pressed="true"]{background:var(--ink); color:var(--branco);}
+.posicao--acima{color:var(--rust);}
+.posicao--dentro{color:var(--muted);}
+.posicao--abaixo{color:var(--link);}
 .risco-box .fonte{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin:var(--sp-2) 0 0;}
 .meu-card{background:var(--branco); border:1px solid var(--line); border-radius:var(--radius); padding:var(--sp-4) var(--sp-5); margin-top:var(--sp-3); box-shadow:var(--sombra);}
 .meu-card ul{margin:var(--sp-2) 0 0; padding-left:var(--sp-4);}
@@ -807,6 +828,7 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
   .grade-figuras, .grade-figuras--3{grid-template-columns:minmax(0, 1fr);}
   .grade-cartoes--4{grid-template-columns:repeat(2, minmax(0, 1fr));}
   .passos{grid-template-columns:minmax(0, 1fr);}
+  .passos--linha .tem ul{columns:1;}
   .figura--largo{grid-column:auto;}
   .comoler-grid{grid-template-columns:1fr;}
   .mast-top{gap:var(--sp-3) var(--sp-4);}

@@ -184,41 +184,26 @@
     },
     "saude.html#boxMonitor": {
       "tipo": "mapa",
-      "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
+      "pergunta_que_responde": "Que tipo de plano de saúde para este El Niño cada secretaria estadual publicou?",
       "dimensao_da_preparacao": "planejamento e instrumento estadual de saúde",
-      "universo": "27 UFs, das quais as verificadas recebem número",
+      "universo": "27 UFs, cada uma num dos seis tipos de plano (inclusive não localizado e ainda não verificado)",
       "unidade_de_analise": "UF",
       "territorio": "Brasil",
       "periodo": "corte da edição",
-      "variavel_principal": "prontidão sanitária, de 0 a 100",
-      "denominador": "média de três componentes: instrumento, cobertura populacional sanitária e antecipação",
+      "variavel_principal": "tipo de plano estadual de saúde (feito para este El Niño, atualizado, recorrente, em elaboração, não localizado, ainda não verificado)",
+      "denominador": "27 UFs; a nota de cada estado no MARÉ Saúde é a do tipo de plano, pela escada do dado (metodo.escada)",
       "fonte": "banco de registros do Monitor",
-      "metodologia": "Metodologia §31; UF não verificada fica cinza e sem número",
+      "metodologia": "METODOLOGIA, seção do MARÉ Saúde v0.7; UF não verificada fica cinza-quente e não recebe tipo",
       "conclusoes_permitidas": [
-        "extensão do arcabouço sanitário publicado e verificado em cada UF"
+        "que tipo de plano estadual foi localizado em cada UF até o corte, com o documento, a data e o órgão na ficha"
       ],
       "conclusoes_nao_permitidas": [
         "estado de saúde da população",
         "capacidade de resposta efetiva",
-        "UF cinza como UF sem plano"
+        "UF não verificada como UF sem plano"
       ],
-      "funcao_narrativa": "síntese da dimensão de saúde, depois da camada observada",
+      "funcao_narrativa": "síntese da preparação estadual em saúde, antes da consulta por município",
       "acao_relacionada": null
-    },
-    "saude.html#boxRiscoSan": {
-      "tipo": "etiquetas de sigla por família de risco",
-      "pergunta_que_responde": "Qual família de risco sanitário os boletins preveem para cada estado neste ciclo?",
-      "dimensao_da_preparacao": "o risco previsto a que o estado deveria responder",
-      "universo": "27 unidades da federação",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "boletins nº 1 a 3 do ciclo 2026/2027",
-      "variavel_principal": "família de risco sanitário previsto (seca, calor e fogo; chuvas extremas; as duas)",
-      "fonte": "Painel El Niño 2026-2027 (CEMADEN/INPE), boletins nº 1 a 3",
-      "metodologia": "Agrupamento das doenças citadas no boletim em duas famílias climáticas; estado citado nas duas aparece como tal. Estado sem citação aparece sem risco previsto registrado.",
-      "conclusoes_permitidas": "dizer que família de risco o boletim prevê para o estado",
-      "conclusoes_nao_permitidas": "ler previsão como ocorrência; comparar intensidade entre estados",
-      "funcao_narrativa": "mostra a que o preparo de cada estado deveria responder"
     },
     "monitor-de-riscos.html#boxEpisodios": {
       "tipo": "série temporal",

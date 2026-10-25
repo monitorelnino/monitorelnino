@@ -11,6 +11,27 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Regime de prioridade: checagem pré-noite respeita os elos suspensos
+
+A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendendo o elo, e a sua falha ficava vermelha sem razão. Agora ela pergunta à mesma função que a guarda e o despachante usam (`janela_da_noite.py --elo-suspenso`) e pula as etapas quando está suspensa. Metodologia §102: uma linha sobre o regime. Linhas líquidas: código +6/−1 (workflow), texto +2.
+
+## 2026-10-25 · #PR · Saúde: detalhe do desfecho com o ano, a faixa na cor da família e o mapa pela posição
+
+O detalhe do desfecho escolhido mostra o ano de janeiro a dezembro (o anterior em linha fina, os períodos em registro tracejados) sobre a faixa habitual na cor clara da família, e o mapa pinta a posição de cada estado na sua faixa. Frase de leitura com a contagem dos 27, ficha por estado, lista recolhida. Três casos no portão ligam ficha, mapa, frase e topo ao mesmo dado.
+
+## 2026-10-25 · #PR · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal
+
+A situação de cada estado vira um mapa pelo tipo de plano, com as siglas como botões que abrem a ficha; a coordenação se preenche com o dado. Saem a grade de ladrilhos, o cartão de risco previsto e a seção federal. A consulta sobe e usa cartões, como o Proteja-se. Abertura reescrita; o texto "sem tempo" vale.
+## 2026-10-25 · #PR · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
+
+Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita "consultado em" na fonte. Saem blocos de script sem elemento na página.
+## 2026-10-25 · #PR · Passos em linha: variante do componente `.passos`
+
+Variante `.passos--linha` em `base.css`: lista vertical ligada por fio, número em argila, título em Fraunces e bloco "o que precisa ter" em uma ou duas colunas. Nenhuma página muda; "Para gestores" passa a usá-la no caminho até o plano publicado.
+## 2026-10-25 · #PR · Coordenação em saúde: o juiz lê estrutura permanente como estrutura, não como resposta
+
+O juiz de saúde ganha a trilha da estrutura, só depois da recusa da trilha do plano: decreto que institui comitê com a SES e a atribuição escrita credita F2, COE da saúde permanente credita F1, e ato que declara emergência, amarra-se a ela ou a extingue segue resposta. Estrutura de risco que a UF não projeta, CIEVS sozinho e ativação de COE não creditam. Peso zero até a v0.8.
+
 ## 2026-10-25 · #PR · METODOLOGIA: base legal do §1a e régua da coordenação em saúde
 
 O §1a passa a dizer que a atualização do plano municipal é anual e a do estadual, bienal (Lei 12.608, art. 7º, § 2º, IV), como na correção de 30/09. Entra a régua da coordenação em saúde decidida em 25/10 (estrutura permanente, seca vigente, CIEVS, COE, citação incompleta), com peso zero na v0.7. Linhas líquidas: +3/−1 de texto, código 0.

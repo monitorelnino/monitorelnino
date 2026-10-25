@@ -3987,6 +3987,8 @@ está sustentando o retrato sozinha.
 Handover da editoria — **três decisões de ROTINA, nenhuma de régua**. Nada aqui muda pontuação,
 critério ou categoria; muda a ordem em que o trabalho é feito e o que entra na fila.
 
+**Regime de prioridade (22/10/2026, editoria).** Saúde e busca de planos têm prioridade sobre a corrente noturna até ficarem prontas. O regime é declarado em `config/temporizadores.json` (bloco `regime`, com data e lista de elos suspensos); os elos suspensos não coletam, e a checagem pré-noite segue a mesma lista. Nenhuma régua muda.
+
 ### 102.1 A corrente começa às 22h, e a busca web sai dela
 
 A janela noturna é **22h–06h de Brasília** (01:00–09:00 UTC). O único cron da corrente passa para
