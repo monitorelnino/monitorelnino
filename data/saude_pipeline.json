@@ -9300,6 +9300,78 @@
   },
   {
    "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T20:41:28",
+   "duracao_s": 3.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "python3",
+   "inicio": "2026-10-24T21:16:21",
+   "duracao_s": 0.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "python3",
+   "inicio": "2026-10-24T21:16:21",
+   "duracao_s": 4720.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T21:23:17",
+   "duracao_s": 4.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T22:43:09",
+   "duracao_s": 4.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T23:33:33",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-25T00:13:47",
+   "duracao_s": 4.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-25T00:32:56",
+   "duracao_s": 2.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
    "script": "buscar_planos_fontes_abertas.py",
    "inicio": "2026-10-24T20:44:38",
    "duracao_s": 1.9,
@@ -9540,78 +9612,6 @@
    "itens": null,
    "status": "pulado",
    "erro": "prazo do elo esgotado antes de começar"
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T20:41:28",
-   "duracao_s": 3.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "python3",
-   "inicio": "2026-10-24T21:16:21",
-   "duracao_s": 0.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "python3",
-   "inicio": "2026-10-24T21:16:21",
-   "duracao_s": 4720.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T21:23:17",
-   "duracao_s": 4.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T22:43:09",
-   "duracao_s": 4.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T23:33:33",
-   "duracao_s": 2.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-25T00:13:47",
-   "duracao_s": 4.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-25T00:32:56",
-   "duracao_s": 2.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
   },
   {
    "data": "2026-10-24",
@@ -9918,6 +9918,87 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_cadastro_prioritarios.py",
+   "inicio": "2026-10-25T01:12:46",
+   "duracao_s": 29.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_prioritarios_mma.py",
+   "inicio": "2026-10-25T01:13:15",
+   "duracao_s": 310.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.HTTPError: HTTP Error 502: Bad Gateway"
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_normais_inmet.py",
+   "inicio": "2026-10-25T01:18:25",
+   "duracao_s": 3.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_semiarido_sudene.py",
+   "inicio": "2026-10-25T01:18:28",
+   "duracao_s": 2.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "scripts/sondar_boletim_infogripe.py",
+   "inicio": "2026-10-25T01:18:30",
+   "duracao_s": 83.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_srag_gripe.py",
+   "inicio": "2026-10-25T01:19:53",
+   "duracao_s": 282.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "classificar_planos_municipais.py",
+   "inicio": "2026-10-25T01:24:35",
+   "duracao_s": 0.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_cobertura_qd.py",
+   "inicio": "2026-10-25T01:24:35",
+   "duracao_s": 1105.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-25",
+   "script": "descobrir_dominios.py",
+   "inicio": "2026-10-25T01:43:00",
+   "duracao_s": 6141.2,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
   }
  ],
  "atualizado_em": "2026-10-25T02:56:51"
