@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Para gestores: Os planos de cada governo
+
+A seção deixa de repetir a lei em três cartões: ficam Estados e Municípios indicados, cada um com plano, atualização, acompanhamento e fonte em lista de definição. A fonte do cartão Estados passa à Lei 12.608/2012, art. 7º, § 2º (a anterior era a do plano municipal). Código +9/−8; catálogo e página, saldo negativo.
+
 ## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
 
 Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.
