@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Rodada: união de conflito decide campo a campo
+
+Decisão da central (item 7): quando os dois lados mudam o mesmo campo, o juiz vence pelo `julgado_em` mais recente e o veredito perdido vai para `juiz_historico`; `rejeitada_em` vence a data mais antiga; estado de fila (`busca_web_espera`, cursores) vence o lado da `main`. Outros campos continuam recusados, sem adivinhar. Autotestes por regra.
+
 ## 2026-10-25 · #1150 · Busca de planos em paralelo por host
 
 A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.
