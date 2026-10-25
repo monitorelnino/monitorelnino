@@ -125,7 +125,21 @@
    "hash_pagina_citada": "40e878f6bc663fd5ccd28485463f754e77e01287f73cd72a748d7fd29a55ca3f",
    "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
    "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "publicado em 08/06/2026; cinco estágios operacionais: normalidade, mobilização, alerta, situação de emergência e crise"
+   "nota_interna": "publicado em 08/06/2026; cinco estágios operacionais: normalidade, mobilização, alerta, situação de emergência e crise",
+   "coordenacao": {
+    "f2": {
+     "status": "NOMEADA_COM_ATRIBUICAO",
+     "doc": "guia - cievs manaus",
+     "numero": "54",
+     "data": "07/07/2005",
+     "url": "https://www.manaus.am.gov.br/semsa/wp-content/uploads/sites/8/2026/01/Guia-Cievs-2025-1.pdf",
+     "hash_evidencia": "63219cb06e7ef374e7004e71d242aa80dd54db899a1b46e39719267f763b584d",
+     "justificativa_degrau": "estrutura da saúde que integra a defesa civil na composição, com atribuição escrita no ato",
+     "atribuicao_citada": "ecialmente em um contexto em que a complexidade e a dinâmica das emergências em saúde pública exigem respostas rápidas, coordenadas e bem fundamentadas. Reconhecendo que o campo da vigilância em saúde está em constante evolução, impulsionad",
+     "data_verificacao": "25/10/2026",
+     "log_ref": "julgar_saude_25-10-2026"
+    }
+   }
   },
   "AP": {
    "risco_sanitario_projetado": [
@@ -284,8 +298,8 @@
   "ES": {
    "risco_sanitario_projetado": [],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "25/10/2026",
+   "log_ref": "julgar_saude_25-10-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -300,6 +314,19 @@
      "tipo": "recorrente_arboviroses",
      "procedencia_do_documento": "fonte direta",
      "nota_interna": "PDF no portal oficial 'mosquito.saude.es.gov.br'; sem data de edição no documento localizado"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-ES",
+     "doc": "Plano de Contingência das Arboviroses: Dengue, Zika, Chikungunya, Febre Amarela e Febre do Oropouche para os anos de 2026/2027 do município de Itapemirim",
+     "observacao": null,
+     "numero": "6505",
+     "data": "15/09/2026",
+     "url": "https://ioes.dio.es.gov.br/portal/edicoes/download/11475",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "4bc5034379d5b2e8d30b66d751a32efbe78208b8624490c30e21ddfc5c497c6e",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/10/2026, codebook 1.7 (24/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "VIG",
