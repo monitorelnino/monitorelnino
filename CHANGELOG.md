@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Para gestores: Os planos de cada governo e o caminho até o plano publicado
+
+Ficam Estados e Municípios indicados, cada um com plano, atualização, acompanhamento e fonte; a fonte de Estados passa à Lei 12.608/2012, art. 7º, § 2º. "O que o plano pode conter" sai e seu conteúdo entra nos seis passos de "Do risco ao plano publicado", em lista ligada por fio. Código +9/−8.
+
 ## 2026-10-25 · #PR · Regime de prioridade: checagem pré-noite respeita os elos suspensos
 
 A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendendo o elo, e a sua falha ficava vermelha sem razão. Agora ela pergunta à mesma função que a guarda e o despachante usam (`janela_da_noite.py --elo-suspenso`) e pula as etapas quando está suspensa. Metodologia §102: uma linha sobre o regime. Linhas líquidas: código +6/−1 (workflow), texto +2.
