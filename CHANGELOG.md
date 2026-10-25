@@ -14,6 +14,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-25 · #1133 · Defesa civil: escala menor só no topo
 
 Os seis cartões do topo da Defesa civil passam à escala menor pedida pela editoria (24/10): regra `.dc-topo .cartao-numero` e `.dc-topo .cartao-numero-valor` em `assets/base.css`, sem classe nova. Os demais cartões de número (Imprensa, Proteja-se, Saúde, Monitor de riscos) não mudam. Linhas líquidas: +4/−0.
+## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
+
+Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.
+
 ## 2026-10-25 · #1140 · Blog: índice com o texto mais recente
 
 O blog passa a índice, conforme o mockup aprovado pela editoria: aviso de autoria, o texto mais recente de qualquer editoria em destaque e, abaixo, uma coluna por editoria (Legal e financiamento às segundas, Saúde às quintas). Cada texto segue no seu endereço permanente. Entram os textos aprovados de 25/10, 04/10 e 06/10; sai o rascunho de 29/10. Contrato e catálogo atualizados.
