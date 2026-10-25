@@ -396,25 +396,17 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
     return out
 
 
-DIAS_PENDENCIA = 30
-
-
 def funil_defesa_civil(dec: dict, rec: dict, corte: datetime) -> dict:
     """Do decreto ao recurso, sobre os mesmos arquivos que a página lia: decretaram, reconhecidos pela União,
     com portaria de recurso no ciclo (a MESMA contagem do cartão `defesa_civil_ciclo`; `n_com_recurso_e_decretaram`
-    diz quantos deles constam nos decretos lidos) e reconhecidos há mais de 30 dias SEM portaria localizada até o
-    corte (`gerado_em` do arquivo de decretos). Função pura; sem decretos, {}."""
+    diz quantos deles constam nos decretos lidos). Sem prazo de 30 dias (decisão de 25/10/2026). Função pura; sem decretos, {}."""
     mun = [m for m in ((dec or {}).get("municipios") or {}).values() if m.get("decreto")]
     ref = _data((dec or {}).get("gerado_em"))
     if not mun or not ref: return {}
     com_recurso = {str(i).zfill(7) for i, v in ((rec or {}).get("municipios") or {}).items() if any(_data(a.get("data")) for a in (v or {}).get("atos") or [])}
-    def pendente(m):
-        r = _data(m.get("primeiro_reconhecimento"))
-        return bool(m.get("reconhecido") and r and str(m.get("ibge")).zfill(7) not in com_recurso and (ref - r).days > DIAS_PENDENCIA)
     return {"referencia": ref.strftime("%d/%m/%Y"), "n_decretaram": len(mun), "n_reconhecidos": sum(1 for m in mun if m.get("reconhecido")),
             "n_com_recurso": defesa_civil_ciclo(rec, corte)["municipios_ciclo"],
-            "n_com_recurso_e_decretaram": sum(1 for m in mun if str(m.get("ibge")).zfill(7) in com_recurso), "n_30d": sum(1 for m in mun if pendente(m)),
-            "dias_pendencia": DIAS_PENDENCIA}
+            "n_com_recurso_e_decretaram": sum(1 for m in mun if str(m.get("ibge")).zfill(7) in com_recurso)}
 
 
 def serie_mensal(rec: dict, fns_mun: dict, corte: datetime) -> dict:
@@ -569,8 +561,8 @@ def _autoteste() -> int:
            "b": {"ibge": "2", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},
            "c": {"ibge": "3", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "20/10/2026"},
            "d": {"ibge": "4", "decreto": True, "reconhecido": False, "primeiro_reconhecimento": None}}}
-    ok("funil: 4 decretaram, 3 reconhecidos, 1 com recurso, 1 pendente ha mais de 30 dias (recente e sem reconhecimento fora)",
-       funil_defesa_civil(DEC, base, corte) == {"referencia": "25/10/2026", "n_decretaram": 4, "n_reconhecidos": 3, "n_com_recurso": 1, "n_com_recurso_e_decretaram": 1, "n_30d": 1, "dias_pendencia": 30}
+    ok("funil: 4 decretaram, 3 reconhecidos, 1 com recurso, sem prazo de 30 dias",
+       funil_defesa_civil(DEC, base, corte) == {"referencia": "25/10/2026", "n_decretaram": 4, "n_reconhecidos": 3, "n_com_recurso": 1, "n_com_recurso_e_decretaram": 1}
        and funil_defesa_civil({}, base, corte) == {})
     d = montar({}, {}, {}, {}, corte)
     ok("montar devolve os quatro cartoes", [x["id"] for x in d["cartoes"]] == [

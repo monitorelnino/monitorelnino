@@ -312,12 +312,6 @@ def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_
     novos_rec = sum(1 for v in reconhecidos.values()
                     if (iso(((v.get("fontes") or [{}])[0]).get("data")) or "") >= limite)
     nacional = (por_uf or {}).get("nacional") or {}
-    # Sexto cartão: decreto sem reconhecimento há mais de 30 dias (mesma régua da página). Os dias
-    # são campo do consolidado; sem eles em nenhum município o cartão é "sem coleta", nunca zero.
-    # A variação são os que cruzaram os 30 dias na semana (de 31 a 37 dias), contagem bruta como
-    # a dos cartões do ciclo.
-    dias = [v["dias_sem_reconhecimento"] for v in decret.values()
-            if not v.get("reconhecido") and v.get("dias_sem_reconhecimento") is not None]
     return [
         {"id": "municipios_alerta_cemaden", "valor": res.get("municipios_cemaden"),
          "referencia": quando, "rotulo": "municípios sob alerta do Cemaden",
@@ -341,10 +335,6 @@ def cartoes_da_defesa_civil(alertas: dict, decretados: dict, por_uf: dict, hoje_
          "rotulo": "municípios com a emergência reconhecida pelo governo federal",
          "fonte": "Defesa Civil nacional, no Diário Oficial da União",
          "sem_coleta": not reconhecidos and nacional.get("reconhecidos") is None},
-        {"id": "decreto_sem_reconhecimento_30_dias", "valor": sum(d > 30 for d in dias) if dias else None,
-         "referencia": "desde 29/06/2026", "variacao": sum(30 < d <= 37 for d in dias) if dias else None,
-         "rotulo": "municípios com decreto há mais de 30 dias sem reconhecimento federal",
-         "fonte": "Defesa Civil nacional, no Diário Oficial da União", "sem_coleta": not dias},
     ]
 
 
@@ -610,13 +600,9 @@ def _autoteste() -> int:
            {"gerado_em": "x", "resumo": {"municipios_cemaden": 1}, "municipios": {}},
            {"municipios": {"1": {"decreto": True, "primeiro_decreto": "01/10/2026"}}},
            {"nacional": {"pop_sob_decreto": 10}}, "2026-10-02")[3]["variacao"] is None)
-    ok("o sexto cartão conta decreto sem reconhecimento há mais de 30 dias e quem cruzou na semana",
-       cartoes_da_defesa_civil({}, {"municipios": {
-           "1": {"decreto": True, "dias_sem_reconhecimento": 45}, "2": {"decreto": True, "dias_sem_reconhecimento": 33},
-           "3": {"decreto": True, "dias_sem_reconhecimento": 10},
-           "4": {"decreto": True, "reconhecido": True, "dias_sem_reconhecimento": 90}}}, {}, "2026-10-02")[5]
-       ["valor"] == 2 and cartoes_da_defesa_civil({}, {"municipios": {"1": {"decreto": True}}}, {},
-                                                  "2026-10-02")[5]["sem_coleta"] is True)
+    ok("sem a régua de 30 dias o topo tem cinco cartões, nenhum de prazo (decisão de 25/10/2026)",
+       [c["id"] for c in cartoes_da_defesa_civil({}, {"municipios": {"1": {"decreto": True, "dias_sem_reconhecimento": 45}}}, {}, "2026-10-02")]
+       == ["municipios_alerta_cemaden", "municipios_aviso_inmet", "municipios_decretaram", "populacao_sob_decreto", "reconhecidos_pelo_governo_federal"])
     ok("os cartões de agora não trazem variação",
        all("variacao" not in pid[i] for i in ("municipios_alerta_cemaden", "municipios_aviso_inmet")))
     ok("sem alerta coletado o cartão é sem_coleta",
