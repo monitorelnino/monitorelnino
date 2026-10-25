@@ -9300,6 +9300,96 @@
   },
   {
    "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T20:41:28",
+   "duracao_s": 3.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "python3",
+   "inicio": "2026-10-24T21:16:21",
+   "duracao_s": 0.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "python3",
+   "inicio": "2026-10-24T21:16:21",
+   "duracao_s": 4720.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T21:23:17",
+   "duracao_s": 4.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T22:43:09",
+   "duracao_s": 4.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-24T23:33:33",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-25T00:13:47",
+   "duracao_s": 4.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-25T00:32:56",
+   "duracao_s": 2.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_srag_sivep.py",
+   "inicio": "2026-10-25T01:12:33",
+   "duracao_s": 8.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_sg_esus.py",
+   "inicio": "2026-10-25T01:12:41",
+   "duracao_s": 7.4,
+   "itens": null,
+   "status": "erro",
+   "erro": "return opener.open(url, data, timeout)"
+  },
+  {
+   "data": "2026-10-24",
    "script": "buscar_planos_fontes_abertas.py",
    "inicio": "2026-10-24T20:44:38",
    "duracao_s": 1.9,
@@ -9540,96 +9630,6 @@
    "itens": null,
    "status": "pulado",
    "erro": "prazo do elo esgotado antes de começar"
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T20:41:28",
-   "duracao_s": 3.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "python3",
-   "inicio": "2026-10-24T21:16:21",
-   "duracao_s": 0.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "python3",
-   "inicio": "2026-10-24T21:16:21",
-   "duracao_s": 4720.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T21:23:17",
-   "duracao_s": 4.8,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T22:43:09",
-   "duracao_s": 4.2,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-24T23:33:33",
-   "duracao_s": 2.9,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-25T00:13:47",
-   "duracao_s": 4.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "recalcular_mare.py",
-   "inicio": "2026-10-25T00:32:56",
-   "duracao_s": 2.7,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "coletar_srag_sivep.py",
-   "inicio": "2026-10-25T01:12:33",
-   "duracao_s": 8.0,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-24",
-   "script": "coletar_sg_esus.py",
-   "inicio": "2026-10-25T01:12:41",
-   "duracao_s": 7.4,
-   "itens": null,
-   "status": "erro",
-   "erro": "return opener.open(url, data, timeout)"
   },
   {
    "data": "2026-10-24",
@@ -9915,6 +9915,177 @@
    "script": "recalcular_mare.py",
    "inicio": "2026-10-25T02:56:51",
    "duracao_s": 4.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "atualizar_populacao.py",
+   "inicio": "2026-10-25T01:14:06",
+   "duracao_s": 1.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "processar_contribuicoes.py",
+   "inicio": "2026-10-25T01:14:07",
+   "duracao_s": 1.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-10-25T01:14:08",
+   "duracao_s": 7.9,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-10-25T01:14:15",
+   "duracao_s": 773.1,
+   "itens": 83,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "scripts/verificar_funil.py",
+   "inicio": "2026-10-25T01:27:08",
+   "duracao_s": 0.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-10-25T01:27:08",
+   "duracao_s": 247.0,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-10-25T01:31:15",
+   "duracao_s": 102.8,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-10-25T01:32:57",
+   "duracao_s": 415.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-10-25T01:39:52",
+   "duracao_s": 1.5,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-10-25T01:39:53",
+   "duracao_s": 583.2,
+   "itens": 18477,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-10-25T01:49:36",
+   "duracao_s": 62.3,
+   "itens": 18477,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-25T01:50:38",
+   "duracao_s": 610.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-25T02:00:48",
+   "duracao_s": 107.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "gerar_monitor_saude.py",
+   "inicio": "2026-10-25T02:02:35",
+   "duracao_s": 0.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "atualizar.py",
+   "inicio": "2026-10-25T02:00:48",
+   "duracao_s": 107.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-25T02:02:35",
+   "duracao_s": 287.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-25T02:07:22",
+   "duracao_s": 840.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-25T02:21:22",
+   "duracao_s": 7.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "scripts/preservar_textos_integrais.py",
+   "inicio": "2026-10-25T02:21:29",
+   "duracao_s": 1.6,
    "itens": null,
    "status": "ok",
    "erro": ""
