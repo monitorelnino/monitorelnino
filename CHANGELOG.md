@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Financiamento: do decreto ao recurso vira dado · Dados
+
+`semana.json` ganha `funil_defesa_civil`: decretaram, reconhecidos pela União, com portaria de recurso (mesma contagem do cartão do topo) e reconhecidos há mais de 30 dias sem portaria localizada até o corte. Antes o último número só existia calculado no navegador.
+
 ## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
 
 Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.

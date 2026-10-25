@@ -396,6 +396,27 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
     return out
 
 
+DIAS_PENDENCIA = 30
+
+
+def funil_defesa_civil(dec: dict, rec: dict, corte: datetime) -> dict:
+    """Do decreto ao recurso, sobre os mesmos arquivos que a página lia: decretaram, reconhecidos pela União,
+    com portaria de recurso no ciclo (a MESMA contagem do cartão `defesa_civil_ciclo`; `n_com_recurso_e_decretaram`
+    diz quantos deles constam nos decretos lidos) e reconhecidos há mais de 30 dias SEM portaria localizada até o
+    corte (`gerado_em` do arquivo de decretos). Função pura; sem decretos, {}."""
+    mun = [m for m in ((dec or {}).get("municipios") or {}).values() if m.get("decreto")]
+    ref = _data((dec or {}).get("gerado_em"))
+    if not mun or not ref: return {}
+    com_recurso = {str(i).zfill(7) for i, v in ((rec or {}).get("municipios") or {}).items() if any(_data(a.get("data")) for a in (v or {}).get("atos") or [])}
+    def pendente(m):
+        r = _data(m.get("primeiro_reconhecimento"))
+        return bool(m.get("reconhecido") and r and str(m.get("ibge")).zfill(7) not in com_recurso and (ref - r).days > DIAS_PENDENCIA)
+    return {"referencia": ref.strftime("%d/%m/%Y"), "n_decretaram": len(mun), "n_reconhecidos": sum(1 for m in mun if m.get("reconhecido")),
+            "n_com_recurso": defesa_civil_ciclo(rec, corte)["municipios_ciclo"],
+            "n_com_recurso_e_decretaram": sum(1 for m in mun if str(m.get("ibge")).zfill(7) in com_recurso), "n_30d": sum(1 for m in mun if pendente(m)),
+            "dias_pendencia": DIAS_PENDENCIA}
+
+
 def serie_mensal(rec: dict, fns_mun: dict, corte: datetime) -> dict:
     """Série mensal do MESMO universo do mapa e dos cartões `defesa_civil_ciclo` e `sus_emergencia` (mesmas
     funções de seleção): defesa civil = autorizado por portaria, no mês da portaria; SUS = repasse de emergência
@@ -422,7 +443,7 @@ def serie_mensal(rec: dict, fns_mun: dict, corte: datetime) -> dict:
 
 
 def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
-           fns_mun: dict | None = None, ref: list | None = None) -> dict:
+           fns_mun: dict | None = None, ref: list | None = None, dec: dict | None = None) -> dict:
     cartoes = [cartao_pago(mps), cartao_transferido(transf), cartao_resposta(rec, corte),
                cartao_atos(mps, corte)]
     return {"_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte "
@@ -434,7 +455,8 @@ def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
             "topo": topo(mps, comp, rec, fns_mun, corte),
             "mes_a_mes": mes_a_mes(mps),
             "mapa": mapa(rec, fns_mun, ref, corte),
-            "serie_mensal": serie_mensal(rec, fns_mun, corte)}
+            "serie_mensal": serie_mensal(rec, fns_mun, corte),
+            "funil_defesa_civil": funil_defesa_civil(dec, rec, corte)}
 
 
 def _autoteste() -> int:
@@ -543,6 +565,13 @@ def _autoteste() -> int:
        sm["total_defesa_civil"] == t["defesa_civil_ciclo"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "defesa_civil")
        and sm["total_saude"] == t["sus_emergencia"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "saude")
        and sm["meses"][0]["saude"] is None and sm["meses"][-1]["parcial"] is True and serie_mensal({}, {}, corte) == {})
+    DEC = {"gerado_em": "25/10/2026", "municipios": {"a": {"ibge": "1", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},
+           "b": {"ibge": "2", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},
+           "c": {"ibge": "3", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "20/10/2026"},
+           "d": {"ibge": "4", "decreto": True, "reconhecido": False, "primeiro_reconhecimento": None}}}
+    ok("funil: 4 decretaram, 3 reconhecidos, 1 com recurso, 1 pendente ha mais de 30 dias (recente e sem reconhecimento fora)",
+       funil_defesa_civil(DEC, base, corte) == {"referencia": "25/10/2026", "n_decretaram": 4, "n_reconhecidos": 3, "n_com_recurso": 1, "n_com_recurso_e_decretaram": 1, "n_30d": 1, "dias_pendencia": 30}
+       and funil_defesa_civil({}, base, corte) == {})
     d = montar({}, {}, {}, {}, corte)
     ok("montar devolve os quatro cartoes", [x["id"] for x in d["cartoes"]] == [
         "pago_periodo_mp", "transferido_municipios_periodo", "resposta_liberado_semana",
@@ -576,7 +605,8 @@ def main() -> int:
                ler("financiamento/compromissos_federais.json", {}) or {},
                datetime(corte.year, corte.month, corte.day),
                ler("financiamento/municipios/fns_municipios_2026.json", {}) or {},
-               ler("municipios_ibge_referencia.json", []) or [])
+               ler("municipios_ibge_referencia.json", []) or [],
+               ler("resposta/municipios_decretados.json", {}) or {})
     gravar(ARQUIVO, d)
     for c in d["cartoes"]:
         print(f"  {c['id']}: " + ("sem coleta — " + str(c['detalhe']) if c["sem_coleta"]
