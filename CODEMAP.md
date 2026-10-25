@@ -160,6 +160,7 @@ Atualizado em 25/10/2026.
 | `scripts/deduplicar_fila_de_pistas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_rejeitadas.json`, `pistas_sinais.json` | — | — | não |
 | `scripts/diagnosticar_querido_diario.py` | — | `atos_resposta.json`, `municipios_ibge_referencia.json` | — | — | não |
 | `scripts/ensaio_da_noite.py` | — | `clima.json`, `outro.json` | — | — | não |
+| `scripts/estrutura_desfechos.py` | — | `outro/x.json` | — | — | não |
 | `scripts/fechar_saude.py` | — | `saude_fechamento.json` | — | — | não |
 | `scripts/fila_do_juiz_querido_diario.py` | — | `fila_qd_169.json` | — | — | não |
 | `scripts/gerar_boletim.py` | — | `blog/boletim_mais_recente.json` | — | — | não |
