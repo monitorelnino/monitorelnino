@@ -975,7 +975,7 @@ def _casos_semana() -> list:
 # ─────────────────────── âncoras internas (01/10/2026; JS desde 16/10) ───────────────────────
 # `href="pagina.html#ancora"` (e `href="#ancora"`) em página ou script de assets/js/ tem de achar um
 # `id` no destino: o navegador acusa arquivo morto, mas abre no topo quando o `id` não existe. A
-# seção "Como os recursos chegam" de "Para gestores" é só ponteiro para o Financiamento.
+# (até #1132, a seção "Como os recursos chegam" de "Para gestores" era só ponteiro para o Financiamento.)
 PADRAO = ["prefeituras.html", "financiamento.html"]   # o par cuja sincronia dá razão à regra (CODEMAP)
 RE_LINK = re.compile(r'href="([^"#]*)#([^"]+)"')
 RE_ID = re.compile(r'\sid="([^"]+)"')
@@ -1038,9 +1038,8 @@ def _casos_ancoras() -> list:
          len(em_js('h=`<a href="#nao-existe">x</a>`')) == 1),
         ("link do JS com id que existe na página que o carrega passa", em_js('<a href="#x">') == []),
         ("destino montado por variável não é literal", em_js('<a href="#${id}">') == []),
-        ("o Para gestores cita as três âncoras do Financiamento, e elas existem",
-         citadas == {"antes", "depois", "caminhos"}
-         and citadas <= set(RE_ID.findall((RAIZ / "financiamento.html").read_text(encoding="utf-8")))),
+        ("toda âncora que o Para gestores cita no Financiamento existe no Financiamento (#1132 tirou a seção ponteiro)",
+         citadas <= set(RE_ID.findall((RAIZ / "financiamento.html").read_text(encoding="utf-8")))),
         ("o link do cartão da cidade é lido no JS",
          ("", "formulario") in RE_LINK.findall((RAIZ / "assets/js/index.js").read_text(encoding="utf-8"))),
     ]
