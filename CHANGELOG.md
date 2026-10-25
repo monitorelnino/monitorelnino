@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1129 · Estrutura comum dos desfechos do SUS
+
+Novo `scripts/estrutura_desfechos.py`: série por UF com ausência declarada (nunca zero por omissão), último valor, faixa habitual por quintis sobre 2019–2025, congelada uma vez em arquivo de parâmetros. Funções puras com `ler`/`gravar` injetados e autoteste offline. Nenhuma página, figura ou texto público alterado; nenhum coletor existente tocado.
+
 ## 2026-10-25 · #PR · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
 
 Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita "consultado em" na fonte. Saem blocos de script sem elemento na página.
