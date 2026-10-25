@@ -1978,7 +1978,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(109 trechos)</small></h2>
+<h2>saude <small>(125 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · a mesma medida do MARÉ Legal, aplicada à saúde</td></tr>
@@ -2002,7 +2002,7 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>observado · registram</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>abertura</td><td><code>saude.observado.registram.abertura</code></td><td>Cada cartão mostra o último valor de uma doença ou agravo, a faixa habitual para a época e os períodos mais recentes; a cadência e a fonte estão no rodapé de cada um.</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.registram.legenda</code></td><td>Linha: valor observado · faixa cinza: habitual para a época (2019–2025)</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.registram.legenda</code></td><td>Linha: valor observado · faixa: habitual para a época (2019–2025)</td></tr>
 </table>
 <h3>observado · registram.lacuna</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2014,9 +2014,8 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>observado · registram.detalhe</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.observado.registram.detalhe.familia</code></td><td>Desfecho escolhido</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} · {territorio} · {periodo}</span><br><span class="ex">exemplo: 3 · 3 · 3</span></td></tr>
-<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Valor observado e faixa cinza habitual para a época · mapa: {periodo}, por estado · {parciais}</span><br><span class="ex">exemplo: Valor observado e faixa cinza habitual para a época · mapa: 3, por estado · 3</span></td></tr>
+<tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 por 100 mil habitantes</span></td></tr>
+<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Valor observado e faixa habitual para a época · mapa: {periodo}, por estado · {parciais}</span><br><span class="ex">exemplo: Valor observado e faixa habitual para a época · mapa: 3, por estado · 3</span></td></tr>
 </table>
 <h3>observado · registram.detalhe.lista</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2378,5 +2377,73 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>topo · resposta.pilula</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.topo.resposta.pilula</code></td><td><span class="molde">{n|nenhum decreto|um decreto · {pct}% da população|{n} decretos · {pct}% da população}</span><br><span class="ex">exemplo: {n|nenhum decreto|um decreto · 3% da população|3 decretos · 3% da população}</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_semana</code></td><td><span class="molde">{territorio} · semana {datas}</span><br><span class="ex">exemplo: 3 · semana 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_mes</code></td><td><span class="molde">{territorio} · mês de {mes}</span><br><span class="ex">exemplo: 3 · mês de 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.frase</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase</code></td><td><span class="molde">No {territorio}, {posicao}. Por estado: {acima}, {dentro} e {abaixo} da faixa habitual.</span><br><span class="ex">exemplo: No 3, 3. Por estado: 3, 3 e 3 da faixa habitual.</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.n_acima</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_acima</code></td><td><span class="molde">{k} acima</span><br><span class="ex">exemplo: 3 acima</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.n_dentro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_dentro</code></td><td><span class="molde">{k} dentro</span><br><span class="ex">exemplo: 3 dentro</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.n_abaixo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_abaixo</code></td><td><span class="molde">{k} abaixo</span><br><span class="ex">exemplo: 3 abaixo</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.parciais</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.parciais</code></td><td><span class="molde">{n|nenhum período ainda em registro|um período ainda em registro fica fora|{n} períodos ainda em registro ficam fora}</span><br><span class="ex">exemplo: 3 períodos ainda em registro ficam fora</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.parciais_nenhum</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.parciais_nenhum</code></td><td>série fechada até o último período</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_ano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_ano</code></td><td><span class="molde">valor observado em {ano}</span><br><span class="ex">exemplo: valor observado em 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_faixa</code></td><td>faixa habitual para a época (2019–2025)</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_incompleto_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_incompleto_semana</code></td><td>semanas com registro incompleto</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_incompleto_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_incompleto_mes</code></td><td>meses com registro incompleto</td></tr>
+</table>
+<h3>observado · registram.detalhe.sem_periodo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.sem_periodo</code></td><td>sem período fechado</td></tr>
+</table>
+<h3>observado · registram.detalhe.ficha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.ficha</code></td><td><span class="molde">{n} {unidade} · {taxa} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 3 · 3 por 100 mil habitantes</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.faixa</code></td><td><span class="molde">(de {mediana} a {p90})</span><br><span class="ex">exemplo: (de 3 a 3)</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.periodo_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.periodo_semana</code></td><td><span class="molde">semana {datas}</span><br><span class="ex">exemplo: semana 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.periodo_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.periodo_mes</code></td><td><span class="molde">mês de {mes}</span><br><span class="ex">exemplo: mês de 3</span></td></tr>
 </table>
 </body></html>

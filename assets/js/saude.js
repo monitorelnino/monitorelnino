@@ -358,6 +358,13 @@ const NO_CATALOGO = {dengue: 'dengue', chikungunya: 'chik', srag: 'srag', obitos
                      internacoes_fumaca: 'intox_fumaca', internacoes_calor: 'calor_agravo'};
 const EM_EVIDENCIA = d => DESFECHOS_DA_SECAO.indexOf(d.desfecho) >= 0;
 const FAIXA_COR = {acima: MonitorMapas.PALETA.serie_habitual.acima, dentro: MonitorMapas.cor('vazio')};
+/* A faixa habitual leva a cor da família de risco a que o desfecho pertence, bem clara, para não
+   disputar com a linha do valor observado. Só as famílias que a paleta já tem; desfecho sem família
+   (óbitos em geral) fica no tom da faixa habitual de sempre. */
+const FAMILIA_DO_DESFECHO = {dengue: 'calor', chikungunya: 'calor', internacoes_cardio: 'calor', internacoes_renal: 'calor',
+  internacoes_calor: 'calor', srag: 'fogo', internacoes_respiratorias: 'fogo', internacoes_fumaca: 'fogo',
+  diarreias: 'chuva', leptospirose: 'chuva', hepatite_a: 'chuva', internacoes_desidratacao: 'chuva'};
+const corDaFaixa = d => MonitorMapas.PALETA.familia[FAMILIA_DO_DESFECHO[d.desfecho]] || MonitorMapas.PALETA.serie_habitual.faixa;
 let DESFECHOS_LIDOS = [], DESFECHO_ESCOLHIDO = null, DESF_CATALOGO = null;
 const __graficoDesfecho = {};
 
@@ -379,9 +386,9 @@ function periodoCompacto(chave, cadencia) {
   return curta ? curta + ' de ' + ano : chave;
 }
 
-/* A linha dos períodos recentes sobre a faixa habitual, em SVG: polígono da faixa em mineral,
+/* A linha dos períodos recentes sobre a faixa habitual, em SVG: polígono da faixa na cor da família,
    linha em tinta, último ponto em argila. Sem eixo e sem número: quem mede é o cartão. */
-function serieEmSvg(valores, faixas, rotulo, estado) {
+function serieEmSvg(valores, faixas, rotulo, estado, corFaixa) {
   const L = 240, A = 48, n = valores.length;
   if (n < 2) return '';
   const tetos = faixas.map(f => (f && f.p90) || 0);
@@ -395,7 +402,7 @@ function serieEmSvg(valores, faixas, rotulo, estado) {
   const ultimo = valores[n - 1];
   return '<svg class="cartao-numero-serie" viewBox="0 0 ' + L + ' ' + A + '" preserveAspectRatio="none"'
     + ' role="img" aria-label="' + esc(rotulo) + '">'
-    + (temFaixa ? '<polygon points="' + faixaCima + ' ' + faixaBaixo + '" fill="' + MonitorMapas.PALETA.serie_habitual.faixa + '" fill-opacity="0.28"></polygon>' : '')
+    + (temFaixa ? '<polygon points="' + faixaCima + ' ' + faixaBaixo + '" fill="' + corFaixa + '" fill-opacity="0.22"></polygon>' : '')
     + '<polyline points="' + linha + '" fill="none" stroke="' + MonitorMapas.cor('vazio') + '" stroke-width="1.5"></polyline>'
     /* O último período fechado é marcado por um traço vertical, não por um ponto: a caixa é
        esticada (`preserveAspectRatio="none"`) e um círculo sairia deformado. */
@@ -460,40 +467,51 @@ function cartaoDesfecho(d, uf) {
     + '<p class="cartao-numero-variacao' + (p ? ' posicao posicao--' + dentro : '') + '">' + esc(texto) + '</p>'
     + serieEmSvg(chaves.map(ch => serie[ch]), chaves.map(doAno),
         d.rotulo + ', ' + (d.periodo === 'semana' ? 'últimas 52 semanas' : 'últimos 24 meses')
-        + ', sobre a faixa habitual para a época', dentro)
+        + ', sobre a faixa habitual para a época', dentro, corDaFaixa(d))
     + '<p class="cartao-numero-fonte">' + rodape + '</p></div>';
 }
 
-/* O mapa do detalhe: o último período FECHADO de cada estado, pintado pelos cortes que o próprio
-   arquivo traz — os quintis de 2019 a 2025, congelados na primeira gravação (METODOLOGIA §108).
-   Cortes congelados são o que permite comparar o mapa de hoje com o de outro dia; recalculá-los a
-   cada rodada mudaria a cor sem mudar o dado. Estado sem período fechado fica em sem-dado e a
-   legenda nomeia a classe — nunca zero. */
-function pintarMapaDoDesfecho(d) {
+/* A posição de cada UF na faixa habitual da semana do PRÓPRIO valor. O mapa, a frase de leitura e a
+   lista leem estas mesmas contas (`posicaoNaFaixa`, a mesma do cartão e da consulta), e o "acima" do
+   mapa é o `ufs_acima_faixa` do topo: nenhum número é recalculado em dois lugares. */
+function posicoesDasUFs(d) {
+  const r = {acima: [], dentro: [], abaixo: [], sem: []};
+  UFS.forEach(u => { const p = posicaoNaFaixa(d, u); r[p ? p.posicao : 'sem'].push(u); });
+  return r;
+}
+
+/* O mapa do detalhe pinta a posição de cada estado na sua faixa (acima, dentro ou abaixo), nas três
+   cores da posição; a taxa bruta fica na ficha. Estado sem período fechado ou sem faixa fica em
+   sem-dado, e a legenda nomeia a classe — nunca zero. */
+function pintarMapaDoDesfecho(d, pos) {
   const svgId = 'mapaDesfecho';
   if (!document.getElementById(svgId) || !BR_GEOJSON) return;
-  const cortes = ((d.cortes_mapa || {}).cortes || []).slice();
-  const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
-  const faixaDe = v => cortes.reduce((i, corte) => (v > corte ? i + 1 : i), 0);
-  const valor = {};
-  Object.keys(d.ultimo || {}).forEach(u => {
-    const c = (d.ultimo[u] || {}).consolidado;
-    if (u !== 'BR' && c && c.por_100mil != null) valor[u] = c.por_100mil;
-  });
+  const cor = MonitorMapas.PALETA.posicao;
+  const lugar = {};
+  ['acima', 'dentro', 'abaixo'].forEach(k => pos[k].forEach(u => { lugar[u] = k; }));
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  MonitorMapas.ufs(ctx, svgId,
-    u => valor[u] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, faixaDe(valor[u]))],
-    u => valor[u] == null ? 'sem período fechado até o corte'
-      : decBR(valor[u]) + ' ' + d.unidade + ' por 100 mil habitantes');
-  const rotuloDaFaixa = i => (i === 0 ? 'até ' + decBR(cortes[0])
-    : i === cortes.length ? decBR(cortes[cortes.length - 1]) + ' ou mais'
-    : decBR(cortes[i - 1]) + ' a ' + decBR(cortes[i]));
-  MonitorMapas.legenda('legMapaDesfecho', rampa.map((cor, i) => ({cor: cor, rotulo: rotuloDaFaixa(i)}))
-    .concat([{cor: MonitorMapas.NEUTRA, rotulo: 'sem período fechado'}]));
+  MonitorMapas.ufs(ctx, svgId, u => cor[lugar[u]] || MonitorMapas.NEUTRA, u => {
+    const c = ((d.ultimo || {})[u] || {}).consolidado;
+    if (!lugar[u] || !c) return esc(textoSaude('saude.observado.registram.detalhe.sem_periodo'));
+    const f = posicaoNaFaixa(d, u);
+    return esc(textoSaude('saude.observado.registram.detalhe.ficha', {n: _qtdCartao(c.valor), unidade: d.unidade, taxa: decBR(c.por_100mil)}))
+      + '<br><span class="posicao posicao--' + f.posicao + '">' + esc(textoSaude('saude.posicao.' + f.posicao)) + '</span> '
+      + esc(textoSaude('saude.observado.registram.detalhe.faixa', {mediana: decBR(f.mediana), p90: decBR(f.p90)}))
+      + '<br>' + esc(textoSaude('saude.observado.registram.detalhe.periodo_' + (d.periodo === 'semana' ? 'semana' : 'mes'),
+          {datas: periodoEmPalavras(c.periodo, d.periodo), mes: periodoEmPalavras(c.periodo, d.periodo)}));
+  });
+  MonitorMapas.legenda('legMapaDesfecho', ['acima', 'dentro', 'abaixo'].map(k => ({cor: cor[k],
+      rotulo: textoSaude('saude.posicao.' + k) + ' · ' + textoSaude('saude.estadual.lista.contagem', {n: pos[k].length})}))
+    .concat([{cor: MonitorMapas.NEUTRA, rotulo: textoSaude('saude.observado.registram.detalhe.sem_periodo') + ' · '
+      + textoSaude('saude.estadual.lista.contagem', {n: pos.sem.length})}]));
+  /* A lista recolhida é a alternativa acessível do mapa: os estados acima primeiro. */
   const lista = document.getElementById('dlDesfechoUF');
-  if (lista) lista.innerHTML = Object.keys(valor).sort((a, b) => valor[b] - valor[a]).map(u =>
-    '<dt>' + esc(NOME_UF[u] || u) + '</dt><dd>' + esc(decBR(valor[u])) + ' ' + esc(d.unidade)
-    + ' por 100 mil habitantes</dd>').join('');
+  if (lista) lista.innerHTML = ['acima', 'dentro', 'abaixo', 'sem'].map(k => pos[k].map(u => {
+    const c = ((d.ultimo || {})[u] || {}).consolidado;
+    return '<dt>' + esc(NOME_UF[u] || u) + '</dt><dd>' + (c ? esc(decBR(c.por_100mil)) + ' ' + esc(d.unidade) + ' por 100 mil habitantes'
+      + (k === 'sem' ? '' : ' · <span class="posicao posicao--' + k + '">' + esc(textoSaude('saude.posicao.' + k)) + '</span>')
+      : esc(textoSaude('saude.observado.registram.detalhe.sem_periodo'))) + '</dd>';
+  }).join('')).join('');
 }
 
 function pintarDesfechos() {
@@ -516,8 +534,25 @@ function escolherDesfecho(ev) {
   pintarDesfechos();
 }
 
-/* O detalhe do cartão escolhido: a série inteira do território sobre a faixa habitual da época.
-   Um detalhe por vez — escolher outro cartão troca o conteúdo, e a página não cresce. */
+/* O ano do canal endêmico: o ano do último valor fechado, mês a mês, sobre a faixa habitual da
+   época (mediana a p90 de 2019 a 2025), com o ano anterior em linha fina e os períodos que ainda
+   recebem registro tracejados. O eixo é do ano mostrado, não do pico de anos passados. */
+function dadosDoAno(d, uf) {
+  const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
+  const parciais = new Set(d.parcial || []);
+  const c = ((((d.ultimo || {})[uf] || {}).consolidado) || {}).periodo || Object.keys(serie).sort().filter(k => !parciais.has(k)).pop() || '';
+  const ano = Number(String(c).split('-')[0]) || null;
+  const posicoes = Object.keys(faixas).sort();
+  const de = (a, p) => a == null ? null : (serie[a + '-' + p] ?? null);
+  const fechado = p => parciais.has(ano + '-' + p) ? null : de(ano, p);
+  const ultimoFechado = posicoes.filter(p => fechado(p) != null).pop();
+  return {ano, posicoes, faixas, parciais,
+    faixaAlta: posicoes.map(p => faixas[p].p90 ?? null), faixaBaixa: posicoes.map(p => faixas[p].mediana ?? null),
+    atual: posicoes.map(fechado), anterior: posicoes.map(p => de(ano && ano - 1, p)),
+    incompleto: posicoes.map(p => (parciais.has(ano + '-' + p) || p === ultimoFechado) ? de(ano, p) : null)};
+}
+
+/* O detalhe do cartão escolhido, um por vez: escolher outro troca o conteúdo e a página não cresce. */
 function pintarDetalhe(d, uf) {
   const fig = document.getElementById('boxDesfecho'), cv = document.getElementById('cDesfecho');
   if (!fig || !cv || !window.Chart) return;
@@ -525,63 +560,65 @@ function pintarDetalhe(d, uf) {
      linha de fonte — sem nomear sistema que não foi lido. Moldura vazia e muda é o pior desfecho. */
   if (!d) {
     fig.hidden = true;
-    fonteFigura('boxDesfecho', {fontes: ['os sistemas de registro declarados em cada desfecho'], data: null});
+    MonitorMapas.credito('boxDesfecho', {fontes: ['os sistemas de registro declarados em cada desfecho'], data: null});
     return;
   }
   fig.hidden = false;
-  /* Só período FECHADO, na linha e no mapa: período parcial ainda recebe registro e, comparado
-     com a faixa habitual, desenha queda onde há notificação a caminho. */
-  const parciais = new Set(d.parcial || []);
-  const chaves = Object.keys((d.por_100mil || {})[uf] || {}).sort().filter(ch => !parciais.has(ch));
-  const serie = (d.por_100mil || {})[uf] || {}, faixas = (d.faixa_habitual || {})[uf] || {};
-  const doAno = ch => faixas[String(ch).split('-')[1]] || {};
-  /* Eixo em meses, como manda a régua do site; o período inteiro, por extenso, fica no texto do
-     mouse — a série pode ter oito anos de semanas, e o rótulo por extenso não cabe no eixo. */
-  const MES3 = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-  const noEixo = ch => {
-    if (d.periodo !== 'semana') return MES3[Number(ch.split('-')[1]) - 1] + '/' + ch.split('-')[0];
-    const por = periodoEmPalavras(ch, 'semana').match(/de (\w+) de (\d{4})$/);
-    return por ? por[1].slice(0, 3) + '/' + por[2] : ch;
-  };
-  const rotulos = chaves.map(noEixo);
+  const semanal = d.periodo === 'semana';
+  const A = dadosDoAno(d, uf);
   const C = window.MonitorCatalogo;
-  const campo = (id, texto) => { const el = document.getElementById(id); if (el) el.textContent = texto; };
   const molde = (chave, vals) => (C && C.texto('saude.observado.registram.detalhe.' + chave, vals)) || '';
-  const anos = chaves.length ? (chaves[0].split('-')[0] + ' a ' + chaves[chaves.length - 1].split('-')[0]) : 'sem série';
-  campo('tituloDesfecho', molde('titulo', {desfecho: d.rotulo,
-    territorio: uf === 'BR' ? 'Brasil' : NOME_UF[uf], periodo: anos}));
+  const campo = (id, texto) => { const el = document.getElementById(id); if (el) el.textContent = texto; };
+  const territorio = uf === 'BR' ? 'Brasil' : NOME_UF[uf];
+  const c = ((((d.ultimo || {})[uf] || {}).consolidado) || {});
+  campo('tituloDesfecho', molde('titulo', {desfecho: d.rotulo}));
+  const sub = document.getElementById('legendaDesfecho');
+  if (sub) sub.textContent = c.periodo ? molde(semanal ? 'subtitulo_semana' : 'subtitulo_mes',
+    {territorio: territorio, datas: periodoEmPalavras(c.periodo, d.periodo), mes: periodoEmPalavras(c.periodo, d.periodo)}) : territorio;
+  /* A frase de leitura: o país (ou o estado escolhido) e a contagem dos 27, cada posição na sua cor.
+     Os pedaços entram por marcadores e são trocados depois de escapados, para o catálogo escrever a frase inteira. */
+  const pos = posicoesDasUFs(d);
+  const p = posicaoNaFaixa(d, uf);
+  const span = (k, texto) => '<span class="posicao posicao--' + k + '">' + esc(texto) + '</span>';
+  const parte = k => molde('n_' + k, {k: pos[k].length});
+  const frase = esc(molde('frase', {territorio: territorio, posicao: '\u0001p', acima: '\u0001a', dentro: '\u0001d', abaixo: '\u0001b'}))
+    .replace('\u0001p', p ? span(p.posicao, textoSaude('saude.posicao.' + p.posicao)) : esc(textoSaude('saude.posicao.sem_faixa')))
+    .replace('\u0001a', span('acima', parte('acima'))).replace('\u0001d', span('dentro', parte('dentro')))
+    .replace('\u0001b', span('abaixo', parte('abaixo')));
+  const leitura = document.getElementById('leituraDesfecho');
+  if (leitura) { leitura.innerHTML = frase; leitura.hidden = !A.ano; }
   const ultimoBR = ((d.ultimo || {}).BR || {}).consolidado || {};
-  campo('legendaDesfecho', molde('legenda', {
-    periodo: periodoCompacto(ultimoBR.periodo, d.periodo),
-    parciais: (d.parcial || []).length
-      ? 'os ' + (d.parcial || []).length + ' períodos ainda em registro ficam fora'
-      : 'série fechada até o último período'}));
+  campo('notaDesfecho', molde('legenda', {periodo: periodoCompacto(ultimoBR.periodo, d.periodo),
+    parciais: (d.parcial || []).length ? molde('parciais', {n: (d.parcial || []).length}) : molde('parciais_nenhum')}));
+  /* Eixo: meses, como manda a régua do site; o tooltip traz o período por extenso. */
+  const MES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  const rotulos = !A.ano ? [] : semanal ? rotulosDeMes(A.ano, A.posicoes.map(x => A.ano + '-' + x)) : A.posicoes.map(x => MES[Number(x) - 1].slice(0, 3));
+  const titulo = it => { const x = A.posicoes[it[0].dataIndex]; return semanal ? semanaEmDatas(A.ano, A.ano + '-' + x, false) : MES[Number(x) - 1] + ' de ' + A.ano; };
+  const fam = corDaFaixa(d), ink = MonitorMapas.cor('vazio');
+  const linha = (label, data, extra) => Object.assign({type: 'line', label: label, data: data, pointRadius: 0, order: 1}, extra);
   MonitorMapas.padraoGraficos(window.Chart);
   if (__graficoDesfecho.g && typeof __graficoDesfecho.g.destroy === 'function') __graficoDesfecho.g.destroy();
   __graficoDesfecho.g = new Chart(cv, {data: {labels: rotulos, datasets: [
-      {type: 'line', label: 'valor observado', data: chaves.map(ch => serie[ch] ?? null),
-       borderColor: MonitorMapas.cor('vazio'), borderWidth: 1.5, pointRadius: 0, order: 1},
-      /* A faixa é uma FAIXA, não duas linhas: o traço de cima preenche até o de baixo, como a
-         legenda aprovada diz ("faixa cinza") e como a linha dentro do cartão já desenha. */
-      {type: 'line', label: 'faixa habitual para a época', fill: '+1',
-       data: chaves.map(ch => doAno(ch).p90 ?? null), borderColor: MonitorMapas.PALETA.serie_habitual.faixa,
-       backgroundColor: MonitorMapas.PALETA.serie_habitual.faixa_fundo, borderWidth: 1, pointRadius: 0, order: 2},
-      {type: 'line', label: 'faixa habitual para a época',
-       data: chaves.map(ch => doAno(ch).mediana ?? null), borderColor: MonitorMapas.PALETA.serie_habitual.faixa,
-       borderWidth: 1, pointRadius: 0, order: 2}]},
+      linha(molde('leg_ano', {ano: String(A.ano)}), A.atual, {borderColor: ink, borderWidth: 2}),
+      linha(molde('leg_ano', {ano: String((A.ano || 0) - 1)}), A.anterior, {borderColor: MonitorMapas.COR.muted, borderWidth: 1, order: 2}),
+      linha(molde(semanal ? 'leg_incompleto_semana' : 'leg_incompleto_mes'), A.incompleto, {borderColor: ink, borderWidth: 2, borderDash: [4, 3]}),
+      /* A faixa é uma FAIXA, não duas linhas: o traço de cima preenche até o de baixo. */
+      linha(molde('leg_faixa'), A.faixaAlta, {fill: '+1', borderColor: fam + '66', backgroundColor: fam + '38', borderWidth: 1, order: 3}),
+      linha(molde('leg_faixa'), A.faixaBaixa, {borderColor: fam + '66', borderWidth: 1, order: 3})]},
     options: {animation: false, responsive: true, maintainAspectRatio: false,
-      plugins: {legend: {display: false},
-        tooltip: {callbacks: {title: it => periodoEmPalavras(chaves[it[0].dataIndex], d.periodo)}}},
-      scales: {x: {ticks: {maxTicksLimit: 8, autoSkip: true}},
+      plugins: {legend: {display: false}, tooltip: {callbacks: {title: titulo}}},
+      scales: {x: {grid: {display: false}, ticks: {autoSkip: false, maxRotation: 0}},
                y: {beginAtZero: true, title: {display: true, text: d.unidade + ' por 100 mil'}}}}});
   MonitorMapas.legenda('legDesfecho', [
-    {cor: MonitorMapas.cor('vazio'), rotulo: 'valor observado'},
-    {cor: MonitorMapas.PALETA.serie_habitual.faixa, rotulo: 'faixa habitual para a época (2019–2025)'}]);
-  pintarMapaDoDesfecho(d);
+    {cor: ink, rotulo: molde('leg_ano', {ano: String(A.ano)})},
+    {cor: MonitorMapas.COR.muted, rotulo: molde('leg_ano', {ano: String((A.ano || 0) - 1)})},
+    {cor: fam, rotulo: molde('leg_faixa')},
+    {cor: ink, rotulo: molde(semanal ? 'leg_incompleto_semana' : 'leg_incompleto_mes')}]);
+  pintarMapaDoDesfecho(d, pos);
   /* O gráfico nasce antes de o mapa ocupar a segunda coluna da figura dupla: sem este ajuste, a
      tela do Chart.js guarda a largura da figura inteira e passa por cima do mapa. */
   if (__graficoDesfecho.g && typeof __graficoDesfecho.g.resize === 'function') __graficoDesfecho.g.resize();
-  fonteFigura('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
+  MonitorMapas.credito('boxDesfecho', {fontes: [(d.fonte || {}).sistema], data: d.coletado_em, url: (d.fonte || {}).url});
 }
 
 /* Desfecho em evidência que ainda não tem arquivo na forma comum não vira cartão vazio: a seção

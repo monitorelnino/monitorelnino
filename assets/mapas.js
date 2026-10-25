@@ -325,6 +325,8 @@
     // série de desfecho sobre a faixa habitual da época (seção de desfechos da Saúde): a faixa
     // habitual é o recorrente (mineral); o valor que passa dela é calor de dado (argila).
     serie_habitual: { faixa: COR.mineral, faixa_fundo: COR.mineral + '47', acima: COR.argila },
+    // posição de um valor na faixa habitual da época: quente acima, frio abaixo; a cor marca a posição, não julga
+    posicao: { acima: COR.argila, dentro: COR.mineral, abaixo: COR.sintetico },
     // consistência risco × instrumento (mapa 5 da Defesa civil)
     consistencia: { COBRE: COR.musgo, PARCIAL: COR.mineral, DIFERE: COR.argila, SEM: COR.argila, NEUTRO: COR.areia },
     // 24/09/2026: grau do aviso do INMET e nível do alerta do CEMADEN, tal como os órgãos os nomeiam
