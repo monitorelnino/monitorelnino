@@ -421,6 +421,10 @@
           "flags": "gi"
         },
         {
+          "padrao": "Internações respiratórias graves",
+          "flags": "g"
+        },
+        {
           "padrao": "janela crítica",
           "flags": "gi"
         },
@@ -698,7 +702,7 @@
       ],
       "_nota_subtitulo_estados": "Frases das legendas de seca, ar e temperatura do Monitor de riscos: texto aprovado pela editoria em 24/10/2026 (12:39); mais a do mapa por tipo de plano da Saúde, aprovada em 24/10/2026 (22:07 UTC), uma frase em vez de 'período · variável · unidade'. Forma de ESTADO do subtítulo, aceita literalmente: quando a fonte de alertas para por mais de 24 h, defesa-civil.js escreve 'Sem atualização desde dd/mm/aaaa hh:mm' no lugar de 'período · variável · unidade' (decisão de 02/10/2026, fuso explícito). Não é metadado e não leva '·'. O portão 17 (robustez) envelhece os alertas de propósito e exercita esta forma; o portão antigo não a via porque renderizava com a URL da inicial.",
       "credito_maximo": 160,
-      "credito": "^Fonte: .+ · Atualização: (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)$",
+      "credito": "^Fonte: .+ · (?:Atualização|consultado em)(?::)? (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)$",
       "credito_explicacao": "por que|confira|enquanto isso|lacuna declarada|contrariaria|regra de prova|aguard",
       "creditos_de_cartao": ".cartao .fonte-figura, .contador-zone .fonte-figura, #prazos .fonte-figura",
       "fichas": "docs/fichas_semanticas.json",
@@ -721,7 +725,7 @@
     "travessao_em_cartao_proibido": true,
     "sem_dado_nunca_e_zero": true,
     "fonte_com_data_em_cartao": true,
-    "_nota_fonte_com_data": "Decisão da central, 13/10/2026: a fonte do cartão de número é a mesma linha da figura — \"Fonte: … · Atualização: dd/mm/aaaa\" (ou \"sem coleta até o corte\"), escrita por MonitorMapas.credito.",
+    "_nota_fonte_com_data": "Decisão da central, 13/10/2026: a fonte do cartão de número é a mesma linha da figura — \"Fonte: … · Atualização: dd/mm/aaaa\" (ou \"sem coleta até o corte\"), escrita por MonitorMapas.credito. Desde 25/10/2026 a data também pode vir como \"consultado em dd/mm/aaaa\" (decisão da editoria nos cartões da Saúde e do Financiamento).",
     "_nota": "Zero medido e ausência de dado são coisas distintas, e nenhuma das duas é travessão. O portão confere o cartão RENDERIZADO: vazio ou '—' reprova, e 'sem dado' com a série em disco também."
   },
   "dados_na_pagina": {

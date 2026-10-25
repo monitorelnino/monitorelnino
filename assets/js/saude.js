@@ -196,99 +196,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
 
 
-/* ===== Cartões do topo (bloco A.1 do handover de 02/10/2026) =====
- * Cinco indicadores que mudam a cada coleta. Os dois primeiros vêm da FONTE PRIMÁRIA (SINAN e
- * SIVEP-Gripe) e trazem, no próprio cartão, a ressalva de parcialidade e a frase que a editoria
- * fixou: estes números não indicam relação com o El Niño.
- *
- * "Última semana epidemiológica fechada" é a última com valor na série — não a última do
- * calendário. A diferença importa: as semanas recentes existem no arquivo com valor nulo, e tratar
- * nulo como zero publicaria uma queda que é só atraso de notificação.
- */
-(function cartoesDoTopoSaude(){
-  const el = id => document.getElementById(id);
-  const n = v => Number(v || 0).toLocaleString('pt-BR');
-  const ultimaFechada = serie => {
-    const ses = Object.keys(serie || {}).filter(k => serie[k] != null).sort();
-    return ses.length ? {se: ses[ses.length - 1], valor: serie[ses[ses.length - 1]]} : null;
-  };
-
-  /* Dengue e chikungunya: o mesmo cartão, cada um do seu arquivo do SINAN. */
-  const cartaoSinan = (arquivo, doenca, idValor, idRotulo, idFonte) =>
-    fetch('data/saude_desfechos/' + arquivo).then(r => r.ok ? r.json() : null).then(D => {
-      const br = ((D || {}).serie || {}).BR;
-      const u = br ? ultimaFechada(Object.fromEntries(Object.entries(br).filter(([k]) => k.startsWith(String(D.ano_corrente))))) : null;
-      if (!u) { if (el(idValor)) el(idValor).textContent = 'sem coleta'; return; }
-      if (el(idValor)) el(idValor).textContent = n(u.valor);
-      if (el(idRotulo)) el(idRotulo).textContent = 'notificações de ' + doenca + ' na semana ' + semanaEmDatas(u.se.split('-')[0], u.se);
-      MonitorMapas.credito(idFonte, {fontes: ['SINAN (Ministério da Saúde)', D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : ''].filter(Boolean), data: D.gerado_em});
-    }).catch(_erroSaude("saude:777"));
-  cartaoSinan('dengue_sinan_serie.json', 'dengue', 'nDengueSE', 'rotuloDengueSE', 'fonteDengueSE');
-  cartaoSinan('chik_sinan_serie.json', 'chikungunya', 'nChikSE', 'rotuloChikSE', 'fonteChikSE');
-
-  fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null).then(S => {
-    const serie = (S || {}).serie;
-    if (!serie) { if (el('nSragSE')) el('nSragSE').textContent = 'sem coleta'; return; }
-    /* O arquivo é {UF: {SE: n}} — e traz a linha `BR` JUNTO das 27 UFs.
-       02/10/2026, defeito medido: somar `serie.values()` somava o país duas vezes, porque a linha
-       do país entrava na soma das UFs. O cartão publicava 8.534 internações onde a fonte diz 4.267.
-       Quando existe a linha `BR`, ela É o país; só na falta dela o país é a soma das UFs. A mesma
-       regra está em `scripts/gerar_topo_das_paginas.py`, que é quem a Imprensa lê. */
-    const ano = String(S.ano_corrente || new Date().getFullYear());
-    const total = {};
-    const somar = porSE => {
-      if (!porSE || typeof porSE !== 'object') return;
-      Object.entries(porSE).forEach(([se, v]) => {
-        if (se.startsWith(ano) && typeof v === 'number') total[se] = (total[se] || 0) + v;
-      });
-    };
-    if (serie.BR && typeof serie.BR === 'object') somar(serie.BR);
-    else Object.entries(serie).forEach(([uf, porSE]) => { if (uf !== 'BR') somar(porSE); });
-    const u = ultimaFechada(total);
-    if (!u) { if (el('nSragSE')) el('nSragSE').textContent = 'sem coleta'; return; }
-    if (el('nSragSE')) el('nSragSE').textContent = n(u.valor);
-    if (el('rotuloSragSE')) {
-      el('rotuloSragSE').textContent = 'internações por síndrome respiratória grave na semana '
-        + semanaEmDatas(u.se.split('-')[0], u.se);
-    }
-    MonitorMapas.credito('fonteSragSE', {fontes: ['SIVEP-Gripe (Ministério da Saúde)'], data: S.gerado_em});
-  }).catch(_erroSaude("saude:811"));
-
-  /* Estados com dengue em nível de alerta: a régua é do InfoDengue (níveis 3 e 4) e a agregação por
-   * estado é nossa — a nota diz qual é, porque o InfoDengue não publica um nível por estado. */
-  fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null).then(P => {
-    const M = (P || {}).municipios || {};
-    if (!Object.keys(M).length) { if (el('nUFsAlerta')) el('nUFsAlerta').textContent = 'sem coleta'; return; }
-    const ufs = new Set();
-    Object.values(M).forEach(m => { if ((m.nivel_ultima_se || 0) >= 3 && m.uf) ufs.add(m.uf); });
-    if (el('nUFsAlerta')) el('nUFsAlerta').textContent = ufs.size + ' de 27';
-    MonitorMapas.credito('fonteUFsAlerta', {fontes: ['InfoDengue (Fiocruz/FGV)', 'o estado entra quando ao menos um município acompanhado está em nível 3 ou 4'], data: P.gerado_em});
-  }).catch(_erroSaude("saude:825"));
-
-  /* O calor vem de `calor_excesso`, que é onde o coletor o escreve: `resumo` com as quatro classes
-   * do vocabulário do Ministério da Saúde e `municipios_lidos`. A primeira versão deste cartão
-   * procurou o dado em `uf[*].calor_ms`, caminho que o arquivo nunca teve — e dizia "sem coleta"
-   * com o dado em disco, que é o pior jeito de errar numa figura de risco. */
-  fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
-    const C = (SS || {}).calor_excesso || null;
-    const r = (C || {}).resumo || null;
-    if (!r) {
-      /* 11/10/2026: retrato com mais de 9 dias sai do ar (coletar_saude.vencer_calor); o cartão e a
-         fonte dizem desde quando não há leitura, em vez de mostrar o retrato velho como o mais recente. */
-      const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
-      if (el('nCalorMun')) el('nCalorMun').textContent = ult
-        ? 'sem leitura desde ' + String(MonitorMapas.dataBR(ult) || ult).slice(0, 5) : 'sem coleta';
-      MonitorMapas.credito('fonteCalorMun', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)', ult ? 'nenhum município lido desde então' : 'nenhum município lido até o corte'], data: ult});
-      return;
-    }
-    const acima = Number(r.severo || 0) + Number(r.extremo || 0);
-    if (el('nCalorMun')) el('nCalorMun').textContent = n(acima);
-    const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
-    MonitorMapas.credito('fonteCalorMun', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)', n(lidos) + (Number(lidos) === 1 ? ' município lido' : ' municípios lidos')], data: C.data});
-  }).catch(_erroSaude("saude:851"));
-
-})();
-
 /* ===== Cartões e figuras criados pelo contrato de layout (02/10/2026) =====
  * Um só lugar para o que o contrato acrescentou: o número do índice no topo, a lista do que foi
  * localizado em cada estado, o mapa do risco previsto, o mapa de síndrome respiratória grave por
@@ -302,14 +209,15 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
   const UFS = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
 
   /* 1 · O topo (HANDOVER_SAUDE_PAGINA §1.2): os dois medidores da inicial. À esquerda, o MARÉ Saúde
-   * NACIONAL, sobre as 27 UFs, pela mesma regra do MARÉ Legal (editoria, 21/10/2026, 06:54;
-   * METODOLOGIA §115, que revoga o alvo "média das verificadas"); à direita, a parcela da população
-   * sob emergência em saúde pública. Índice nulo é lacuna declarada, nunca zero. A barra e o número
-   * sobem pelo mesmo `animarGauges` da inicial. */
+   * NACIONAL, sobre as 27 UFs, ponderado pela população (v0.7, METODOLOGIA §123); à direita, a
+   * parcela da população sob decreto de emergência em saúde, no vocabulário do medidor da inicial.
+   * Sem dado, o número e o "/ 100" ficam vazios e a linha diz UMA vez "sem coleta até o corte". */
+  const T = (id, v) => (window.MonitorCatalogo && MonitorCatalogo.texto(id, v)) || '';
+  const escreve = (id, chave, v) => window.MonitorCatalogo && MonitorCatalogo.escrever(id, chave, v);
   fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
     const res = ((MS || {}).resumo) || {}, rp = ((MS || {}).resposta) || {};
-    const fixa = (id, v) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
-      f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + (id === 'gaugeFillSaude' ? 'MARÉ Saúde' : 'emergências em saúde pública') + ' em ' + umaCasa(v) + ' de 100'); };
+    const fixa = (id, v, nome) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
+      f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + nome + ' em ' + umaCasa(v) + ' de 100'); };
     const media = res.indice_nacional;
     /* Ausência se escreve em palavras, inclusive no número grande (layout/regras.json, numeros):
        um travessão no lugar do índice deixaria o leitor sem saber se é zero ou se não houve coleta. */
@@ -317,31 +225,60 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     else {
       el('nIndiceSaude').textContent = umaCasa(media); el('nIndiceSaude').dataset.contar = media;
       el('faixaSaude').replaceChildren(MonitorMapas.pilulaDaFaixa(media));
-      fixa('gaugeFillSaude', media);
-      /* A linha ao lado não lê mais o medidor como média parcial: ela conta o ESTATUTO, nas palavras
-         da classe. Estado sem plano localizado e estado ainda não verificado são coisas distintas, e
-         integrar o nacional não apaga a lacuna (handover do índice nacional, §2). */
+      fixa('gaugeFillSaude', media, 'MARÉ Saúde');
+      /* A linha ao lado conta o ESTATUTO, nas palavras da classe: estado sem plano localizado e
+         estado ainda não verificado são coisas distintas, e integrar o nacional não apaga a lacuna. */
       if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
-        MonitorCatalogo.escrever('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
+        escreve('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
           com_plano: n(res.ufs_com_plano_localizado), denominador: n(res.denominador || 27),
           sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
-    const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
-    if (rp.indice == null) {
-      el('respNumSaude').textContent = 'sem coleta';
-      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">sem coleta até o corte</span>';
-    } else {
+    if (rp.indice != null) {
       el('respNumSaude').textContent = umaCasa(rp.indice); el('respNumSaude').dataset.contar = rp.indice;
-      fixa('respFillSaude', rp.indice);
-      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(rp.emergencias
-        ? n(rp.emergencias) + (rp.emergencias === 1 ? ' emergência' : ' emergências') + ' · ' + umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1)) + ' % da população'
-        : 'nenhuma emergência declarada') + '</span>';
+      el('respDenSaude').textContent = '/ 100';
+      fixa('respFillSaude', rp.indice, 'decretos de emergência em saúde');
     }
-    el('linhaRespostaSaude').textContent = 'Parcela da população em estados ou municípios sob emergência em saúde pública declarada desde '
-      + (rp.desde || '29/06/2026') + ' · ' + (rp.indice == null ? 'sem coleta até o corte' : rp.emergencias ? 'até ' + quando : 'nenhuma localizada até ' + quando)
-      + ' · DOU e diários oficiais estaduais';
+    if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
+      if (rp.indice == null) return;   // a reserva do HTML ("sem coleta até o corte") já é a linha
+      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {
+        n: rp.emergencias || 0, pct: umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1))})) + '</span>';
+      escreve('linhaRespostaSaude', 'saude.topo.resposta.linha', {quando: (MS || {}).gerado_em || (MS || {}).corte || ''});
+    });
     MonitorMapas.animarGauges(el('topoSaude'));
-  }).catch(_erroSaude("saude:1066"));
+  }).catch(_erroSaude("saude:topo"));
+
+  /* 2 · Os cartões do topo (editoria, 24/10/2026): dengue, chikungunya e internações respiratórias
+   * graves vêm de `topo_saude.json`, que traz a semana consolidada, o valor do país e QUANTOS
+   * estados estão acima da faixa habitual pela MESMA função que o detalhe usa. Nada é recalculado
+   * aqui. País sem semana fechada em comum às 27 UFs é lacuna declarada, nunca soma de semanas
+   * diferentes. O calor não é desfecho: é exposição, e vira a linha de contexto abaixo da fileira. */
+  Promise.all([MonitorCatalogo.pronto, fetch('data/saude_desfechos/topo_saude.json').then(r => r.ok ? r.json() : null),
+               fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null)]).then(([, TS, SS]) => {
+    const D = (TS || {}).desfechos || {}, cartao = id => ((TS || {}).cartoes || []).find(c => c.id === id) || {};
+    const fonte = (idf, chave, dia) => escreve(idf, 'saude.numerosSaude.fonte.molde',
+      {fonte: T(chave), data: MonitorMapas.dataBR(dia) || dia || ''});
+    [['dengue', 'nDengueSE', 'estadosDengueSE', 'semanaDengueSE', 'fonteDengueSE', 'n_dengue_se'],
+     ['chikungunya', 'nChikSE', 'estadosChikSE', 'semanaChikSE', 'fonteChikSE', 'n_chik_se'],
+     ['srag', 'nSragSE', 'estadosSragSE', 'semanaSragSE', 'fonteSragSE', 'n_srag_se']].forEach(([d, nid, eid, sid, fid, chave]) => {
+      const x = D[d];
+      if (!x) return;
+      el(nid).textContent = x.valor_br == null ? T('saude.numerosSaude.valor.lacuna') : _qtdCartao(x.valor_br);
+      escreve(eid, 'saude.numerosSaude.estados_acima.molde', {k: x.ufs_acima_faixa, total: x.ufs_comparadas});
+      if (x.periodo) escreve(sid, 'saude.numerosSaude.semana.molde', {datas: semanaEmDatas(null, x.periodo)});
+      else escreve(sid, 'saude.numerosSaude.semana.lacuna');
+      fonte(fid, 'saude.numerosSaude.' + chave + '.fonte', x.consultado_em);
+    });
+    const al = cartao('uf_dengue_alerta');
+    if (al.valor != null) {
+      el('nUFsAlerta').textContent = _qtdCartao(al.valor) + ' de ' + n((D.dengue || {}).ufs_comparadas || 27);
+      fonte('fonteUFsAlerta', 'saude.numerosSaude.n_u_fs_alerta.fonte', (TS || {}).gerado_em);
+    }
+    const C = ((SS || {}).calor_excesso) || {}, r = C.resumo;
+    if (r) escreve('linhaCalorSaude', 'saude.numerosSaude.calor_contexto.molde', {
+      n: Number(r.severo || 0) + Number(r.extremo || 0), total: C.municipios_lidos || Object.keys(C.municipios || {}).length,
+      fonte: T('saude.numerosSaude.calor_contexto.fonte'), data: MonitorMapas.dataBR(C.data) || C.data || ''});
+    else escreve('linhaCalorSaude', 'saude.numerosSaude.calor_contexto.lacuna');
+  }).catch(_erroSaude("saude:cartoes-do-topo"));
 
   /* A figura "O que foi localizado em cada estado" (lista dos 27) saiu da página em
    * 19/10/2026 (HANDOVER_SAUDE_PAGINA §2.6 e §7): o documento, o órgão e a data de cada
@@ -351,7 +288,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
    * cartões do Proteja-se. Dengue, chikungunya, calor e plano vêm de `data/saude_municipio/<UF>.json`;
    * respiratória grave e MARÉ Saúde são do estado, e o rótulo diz que são. Município que a fonte não
    * leu diz a sua classe de ausência, nunca zero. Todo texto vive no catálogo. */
-  const T = (id, v) => textoSaude('saude.consulta.' + id, v);
+  const TC = (id, v) => textoSaude('saude.consulta.' + id, v);
   const semana = v => { const m = /(\d{4})-(\d{1,2})/.exec(String(v || '')); return (m && MonitorSemana.porExtenso(+m[1], +m[2], true)) || ''; };
   const json = f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null);
   const porUF = {}, extra = Promise.all([json('data/saude_desfechos/srag.json'), json('data/meta.json')]), cartas = () => cartas.p = cartas.p || json('data/municipios_card.json');
@@ -361,17 +298,17 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
      "não localizamos até a data de corte"; a leitura da saúde no plano é a segunda linha descritiva. */
   const cartaoPlanoDoMunicipio = (sp, pl, uf, meta) => {
     const achou = sp.estado === 'encontrado' || sp.estado === 'estadual';
-    const valor = sp.estado === 'nao_verificado' ? T('plano.nao_verificado')
-      : achou ? T(sp.data ? 'plano.com_plano_data' : 'plano.com_plano', {documento: sp.documento || sp.fonte || '', data: sp.data || ''}) : T('plano.sem_plano', {corte: (meta || {}).corte || ''});
-    const camada = achou && pl ? T(pl.pagina_citada ? 'plano.saude_no_plano' : 'plano.saude_no_plano_sem_pagina', {pagina: pl.pagina_citada}) : '';
-    return cartao('musgo', T('rotulo.plano_municipio'), esc(valor) + (achou && sp.url ? ' · <a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(T('plano.abrir')) + '</a>' : ''),
-      [camada && esc(camada), achou && sp.fonte && esc(sp.fonte), '<a href="index.html#' + esc(uf) + '">' + esc(T('plano.ver_inicial')) + '</a>'].filter(Boolean).join(' · '));
+    const valor = sp.estado === 'nao_verificado' ? TC('plano.nao_verificado')
+      : achou ? TC(sp.data ? 'plano.com_plano_data' : 'plano.com_plano', {documento: sp.documento || sp.fonte || '', data: sp.data || ''}) : TC('plano.sem_plano', {corte: (meta || {}).corte || ''});
+    const camada = achou && pl ? TC(pl.pagina_citada ? 'plano.saude_no_plano' : 'plano.saude_no_plano_sem_pagina', {pagina: pl.pagina_citada}) : '';
+    return cartao('musgo', TC('rotulo.plano_municipio'), esc(valor) + (achou && sp.url ? ' · <a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(TC('plano.abrir')) + '</a>' : ''),
+      [camada && esc(camada), achou && sp.fonte && esc(sp.fonte), '<a href="index.html#' + esc(uf) + '">' + esc(TC('plano.ver_inicial')) + '</a>'].filter(Boolean).join(' · '));
   };
   const cartaoArbo = (rotulo, x, d, semanaSemDado) => x
-    ? cartao('neutro', rotulo, esc(T('arbo.nivel_' + x.nivel) || T('arbo.nivel_outro', {n: x.nivel})), esc(T('arbo.nota', {semana: semana(x.semana)})))
-    : cartao('neutro', rotulo, esc(T('arbo.nao_lido', {semana: semanaSemDado})), esc(T('arbo.nota_nao_lido', {data: (d || {}).gerado_em || ''})));
+    ? cartao('neutro', rotulo, esc(TC('arbo.nivel_' + x.nivel) || TC('arbo.nivel_outro', {n: x.nivel})), esc(TC('arbo.nota', {semana: semana(x.semana)})))
+    : cartao('neutro', rotulo, esc(TC('arbo.nao_lido', {semana: semanaSemDado})), esc(TC('arbo.nota_nao_lido', {data: (d || {}).gerado_em || ''})));
   fetch('data/geo_uf.json').then(r => r.json()).then(GEO => ConsultaMunicipio.montar({uf: 'consultaSaudeUF', municipio: 'consultaSaudeMun', lista: 'consultaSaudeLista', cartao: 'consultaSaudeCard',
-    estados: Object.fromEntries(GEO.features.map(f => [f.properties.sigla, f.properties.name])), semLista: T('sem_lista'),
+    estados: Object.fromEntries(GEO.features.map(f => [f.properties.sigla, f.properties.name])), semLista: TC('sem_lista'),
     municipios: uf => (porUF[uf] = porUF[uf] || Promise.all([json('data/saude_municipio/' + uf + '.json'), extra, cartas()]))
       .then(([D, [S, meta], CARD]) => { porUF[uf].dados = {D, S, meta, CARD}; return D && Object.values(D.municipios).map(x => x.nome); }),
     mostrar: (uf, nome, card) => {
@@ -381,13 +318,13 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       const e = ufsDoMonitor()[uf] || {}, pl = m.saude_no_plano, calor = m.calor && m.calor !== 'Normal';
       const srag = S && S.ultimo && S.ultimo[uf] && S.ultimo[uf].consolidado, pos = srag && posicaoNaFaixa(S, uf);
       card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras grade-figuras--3">'
-        + cartaoArbo(T('rotulo.dengue'), m.dengue, o.dengue, quando) + cartaoArbo(T('rotulo.chikungunya'), m.chikungunya, o.chikungunya, quando)
-        + cartao('argila', T('rotulo.calor'), esc(m.calor == null ? T('calor.sem_coleta') : calor ? T('calor.com_excesso', {classe: String(m.calor).toLowerCase()}) : T('calor.sem_excesso')),
-            esc(T('calor.nota', {data: MonitorMapas.dataBR((o.calor || {}).data) || ''})))
-        + cartao('neutro', T('rotulo.srag'), srag ? esc(T('srag.valor', {n: srag.valor, semana: semana(srag.periodo)})) + (pos ? ' · <span class="posicao posicao--' + pos.posicao + '">' + esc(textoSaude('saude.posicao.' + pos.posicao)) + '</span>' : '') : esc(T('srag.sem_coleta')),
-            esc(T('srag.nota', {data: (S && MonitorMapas.dataBR(S.coletado_em)) || ''})))
-        + cartao('musgo', T('rotulo.plano_estado'), esc(textoSaude('saude.estadual.tipo.' + tipoDoEstado(uf))) + ' · <a href="#estadual" data-ficha="' + esc(uf) + '">' + esc(T('plano_estado.ficha')) + '</a>',
-            esc(T('plano_estado.nota', {data: MSAUDE.corte || ''})))
+        + cartaoArbo(TC('rotulo.dengue'), m.dengue, o.dengue, quando) + cartaoArbo(TC('rotulo.chikungunya'), m.chikungunya, o.chikungunya, quando)
+        + cartao('argila', TC('rotulo.calor'), esc(m.calor == null ? TC('calor.sem_coleta') : calor ? TC('calor.com_excesso', {classe: String(m.calor).toLowerCase()}) : TC('calor.sem_excesso')),
+            esc(TC('calor.nota', {data: MonitorMapas.dataBR((o.calor || {}).data) || ''})))
+        + cartao('neutro', TC('rotulo.srag'), srag ? esc(TC('srag.valor', {n: srag.valor, semana: semana(srag.periodo)})) + (pos ? ' · <span class="posicao posicao--' + pos.posicao + '">' + esc(textoSaude('saude.posicao.' + pos.posicao)) + '</span>' : '') : esc(TC('srag.sem_coleta')),
+            esc(TC('srag.nota', {data: (S && MonitorMapas.dataBR(S.coletado_em)) || ''})))
+        + cartao('musgo', TC('rotulo.plano_estado'), esc(textoSaude('saude.estadual.tipo.' + tipoDoEstado(uf))) + ' · <a href="#estadual" data-ficha="' + esc(uf) + '">' + esc(TC('plano_estado.ficha')) + '</a>',
+            esc(TC('plano_estado.nota', {data: MSAUDE.corte || ''})))
         + cartaoPlanoDoMunicipio(sp, pl, uf, meta) + '</div>';
       card.querySelector('[data-ficha]').addEventListener('click', ev => { ev.preventDefault(); abrirDetalheSaude(ev.target.dataset.ficha); });
     }})).catch(_erroSaude("saude:consulta"));

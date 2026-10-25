@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8c4b27a2">
-<link rel="stylesheet" href="assets/base.css?v=f8208dde">
+<link rel="stylesheet" href="assets/base.css?v=db202946">
 <script src="assets/mapas.js?v=c65183c3"></script>
 <script src="assets/semana.js?v=f42ab28a"></script>
 </head>
@@ -49,9 +49,9 @@
   <p class="selo" data-conteudo="saude.texto">MARÉ · Saúde · a mesma medida do MARÉ Legal, aplicada à saúde</p>
   <h1 data-conteudo-html="saude.titulo_da_pagina">MARÉ <em>Saúde</em></h1>
   <div class="mast-body" id="subSaude">
-    <p class="site-sub" data-conteudo-html="saude.abertura.cenarios">O El Niño 2026/2027 afeta a saúde por caminhos conhecidos. Seca e fogo trazem doenças respiratórias pela fumaça e, com a falta de água tratada, diarreias; chuva forte traz leptospirose, diarreias e hepatite A; o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya atravessam os três cenários: o calor favorece o mosquito, e a água guardada em casa na estiagem ou parada depois das chuvas vira criadouro. É o que diz o <a href="https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf" target="_blank" rel="noopener">plano federal de contingência para emergências em saúde por seca e estiagem</a>, publicado pelo Ministério da Saúde em 2026, com as páginas do Ministério da Saúde sobre enchentes, calor e Aedes aegypti.</p>
-    <p class="site-sub" id="saudeLeiIndice" data-conteudo-html="saude.abertura.lei_e_indice">A <a href="https://www.planalto.gov.br/ccivil_03/leis/l8080.htm" target="_blank" rel="noopener">lei</a> dá à secretaria de saúde de cada estado o dever de coordenar a vigilância e a resposta a emergências em saúde pública e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O MARÉ Saúde procura, nos diários oficiais e nos canais das 27 secretarias estaduais, se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para ele ou é o de todo ano, quando saiu em relação ao primeiro boletim, de 29 de junho, e quanta gente vive em município cujo plano trata a saúde. A nota vai de 0 a 100, nas faixas do MARÉ Legal, para os estados já verificados. Emergências em saúde declaradas desde 29 de junho ficam num indicador separado: são resposta, não preparação.</p>
-    <p class="site-sub" data-conteudo-html="saude.abertura.observacao">A página também mostra, como observação e com a fonte de cada número, os casos e os avisos que os órgãos de saúde registram, doença a doença. “Não localizado” quer dizer que o documento não estava nas fontes consultadas até a data de corte, não que ele não exista. Fontes e critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
+    <p class="site-sub" data-conteudo-html="saude.abertura.cenarios">O El Niño 2026/2027 afeta a saúde por caminhos conhecidos. Seca e fogo trazem doenças respiratórias pela inalação de fumaça e, com a falta de água tratada, facilitam o aparecimento de diarreias; chuva forte traz leptospirose, diarreias e hepatite A; o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya aparecem nos três cenários: o calor favorece o mosquito, e a água guardada em casa na estiagem ou parada depois das chuvas vira criadouro. É o que diz o <a href="https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf" target="_blank" rel="noopener">plano federal de contingência para emergências em saúde por seca e estiagem</a>, publicado pelo Ministério da Saúde em 2026.</p>
+    <p class="site-sub" id="saudeLeiIndice" data-conteudo-html="saude.abertura.lei_e_indice">A <a href="https://www.planalto.gov.br/ccivil_03/leis/l8080.htm" target="_blank" rel="noopener">lei</a> dá à secretaria de saúde de cada estado o dever de coordenar a vigilância e a resposta a emergências em saúde pública e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O MARÉ Saúde procura, nos diários oficiais e nos canais das 27 secretarias estaduais, se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para ele ou é recorrente, e quanta gente vive nos estados cujos planos tratam a saúde. Emergências em saúde declaradas desde 29 de junho ficam num indicador separado.</p>
+    <p class="site-sub" data-conteudo-html="saude.abertura.observacao">A página também mostra, como observação e com a fonte de cada número, os casos e os avisos que os órgãos de saúde registram, doença a doença. “Não localizado” quer dizer que o documento não estava nas fontes consultadas até a data de corte. Fontes e critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
   </div>
 
   <!-- 17/10/2026 (HANDOVER_SAUDE_PAGINA §1.2): o topo é o da inicial, mesmas classes e marcação; só
@@ -83,17 +83,17 @@
     </div>
 
     <div class="mare-metade" id="metadeRespostaSaude">
-      <p class="selo u-mt-4" data-conteudo="saude.topo.resposta.selo">Emergências em saúde pública</p>
-      <div class="gauge-zone gauge-zone--resposta gauge-zone--compacta" id="contadorRespostaSaude" role="group" aria-label="Resposta: parcela da população sob emergência em saúde pública declarada desde 29 de junho de 2026">
+      <p class="selo u-mt-4" data-conteudo="saude.topo.resposta.selo">Decretos de emergência em saúde</p>
+      <div class="gauge-zone gauge-zone--resposta gauge-zone--compacta" id="contadorRespostaSaude" role="group" aria-label="Resposta: parcela da população sob decreto de emergência em saúde desde 29 de junho de 2026">
         <div class="gauge-head">
-          <span class="gnum" id="respNumSaude">0,0</span><span class="gden">/ 100</span>
+          <span class="gnum" id="respNumSaude"></span><span class="gden" id="respDenSaude"></span>
           <span class="gfaixa-badge" id="respBadgeSaude"></span>
         </div>
-        <div class="gauge-track" role="img" aria-label="Barra de progresso: emergências em saúde pública em 0,0 de 100">
+        <div class="gauge-track" role="img" aria-label="Barra de progresso: decretos de emergência em saúde">
           <div class="gauge-fill gauge-fill--resposta" id="respFillSaude" data-alvo="0" style="--galvo:0.1;"></div>
         </div>
-        <div class="gauge-ends"><span>0 · nenhuma emergência</span><span>100</span></div>
-        <p class="note u-mt-2 u-mb-0" id="linhaRespostaSaude"></p>
+        <div class="gauge-ends"><span data-conteudo="saude.topo.resposta.ponta">0 · nenhum decreto</span><span>100</span></div>
+        <p class="note u-mt-2 u-mb-0" id="linhaRespostaSaude" data-conteudo="saude.topo.resposta.linha_reserva">sem coleta até o corte</p>
       </div>
     </div>
   </div>
@@ -103,40 +103,39 @@
   <section id="numerosSaude">
     <h2 class="sr-only">Os números desta edição</h2>
     <div class="grade-numeros grade-numeros--compacta">
-      <div class="cartao-numero">
+      <div class="cartao-numero" id="cartaoDengue">
         <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_dengue_se.familia">Dengue</p>
-        <p class="cartao-numero-valor"><span id="nDengueSE">7.013</span></p>
-        <p class="cartao-numero-rotulo" id="rotuloDengueSE">notificações de dengue na última semana com dado fechado</p>
-        <p class="cartao-numero-fonte" id="fonteDengueSE">—</p>
-        <p class="cartao-numero-fonte" data-conteudo="saude.numerosSaude.n_dengue_se.fonte">As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</p>
+        <p class="cartao-numero-valor"><span id="nDengueSE">sem dado</span></p>
+        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.notificacoes.rotulo">notificações</p>
+        <p class="cartao-numero-variacao" id="estadosDengueSE"></p>
+        <p class="cartao-numero-variacao" id="semanaDengueSE"></p>
+        <p class="cartao-numero-fonte" id="fonteDengueSE"></p>
       </div>
-      <div class="cartao-numero">
+      <div class="cartao-numero" id="cartaoChik">
         <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_chik_se.familia">Chikungunya</p>
-        <p class="cartao-numero-valor"><span id="nChikSE">—</span></p>
-        <p class="cartao-numero-rotulo" id="rotuloChikSE">notificações de chikungunya na última semana com dado fechado</p>
-        <p class="cartao-numero-fonte" id="fonteChikSE">—</p>
-        <p class="cartao-numero-fonte" data-conteudo="saude.numerosSaude.n_chik_se.fonte">As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</p>
+        <p class="cartao-numero-valor"><span id="nChikSE">sem dado</span></p>
+        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.notificacoes.rotulo">notificações</p>
+        <p class="cartao-numero-variacao" id="estadosChikSE"></p>
+        <p class="cartao-numero-variacao" id="semanaChikSE"></p>
+        <p class="cartao-numero-fonte" id="fonteChikSE"></p>
       </div>
-      <div class="cartao-numero">
-        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_srag_se.familia">Respiratórias</p>
-        <p class="cartao-numero-valor"><span id="nSragSE">4.410</span></p>
-        <p class="cartao-numero-rotulo" id="rotuloSragSE">internações por síndrome respiratória grave na última semana com dado fechado</p>
-        <p class="cartao-numero-fonte" id="fonteSragSE">—</p>
-        <p class="cartao-numero-fonte" data-conteudo="saude.numerosSaude.n_srag_se.fonte">As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</p>
+      <div class="cartao-numero" id="cartaoSrag">
+        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_srag_se.familia">Internações respiratórias graves</p>
+        <p class="cartao-numero-valor"><span id="nSragSE">sem dado</span></p>
+        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.internacoes.rotulo">internações</p>
+        <p class="cartao-numero-variacao" id="estadosSragSE"></p>
+        <p class="cartao-numero-variacao" id="semanaSragSE"></p>
+        <p class="cartao-numero-fonte" id="fonteSragSE"></p>
       </div>
-      <div class="cartao-numero">
-        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_u_fs_alerta.familia">Alerta</p>
-        <p class="cartao-numero-valor"><span id="nUFsAlerta">3 de 27</span></p>
-        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.n_u_fs_alerta.rotulo">estados com dengue em nível de alerta</p>
-        <p class="cartao-numero-fonte" id="fonteUFsAlerta">—</p>
-      </div>
-      <div class="cartao-numero">
-        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_calor_mun.familia">Calor</p>
-        <p class="cartao-numero-valor"><span id="nCalorMun">218</span></p>
-        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.n_calor_mun.rotulo">municípios em classe severa ou extrema de excesso de calor</p>
-        <p class="cartao-numero-fonte" id="fonteCalorMun">—</p>
+      <div class="cartao-numero" id="cartaoAlerta">
+        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_u_fs_alerta.familia">Dengue em alerta</p>
+        <p class="cartao-numero-valor"><span id="nUFsAlerta">sem dado</span></p>
+        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.n_u_fs_alerta.rotulo">estados com ao menos um município em nível 3 ou 4</p>
+        <p class="cartao-numero-fonte" id="fonteUFsAlerta"></p>
       </div>
     </div>
+    <p class="note u-mt-2 u-mb-0" data-conteudo="saude.numerosSaude.nota">Cada cartão mostra a semana mais recente com registros consolidados.</p>
+    <p class="note u-mt-2 u-mb-0" id="linhaCalorSaude"></p>
   </section>
 
 <dialog class="detail" id="detailSaude" aria-label="Detalhe do estado">
@@ -217,7 +216,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/saude.js?v=2254da49" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/saude.js?v=74544b66" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
