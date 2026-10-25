@@ -975,7 +975,7 @@ def _casos_semana() -> list:
 # ─────────────────────── âncoras internas (01/10/2026; JS desde 16/10) ───────────────────────
 # `href="pagina.html#ancora"` (e `href="#ancora"`) em página ou script de assets/js/ tem de achar um
 # `id` no destino: o navegador acusa arquivo morto, mas abre no topo quando o `id` não existe. A
-# seção "Como os recursos chegam" de "Para gestores" é só ponteiro para o Financiamento.
+# (até #1132, a seção "Como os recursos chegam" de "Para gestores" era só ponteiro para o Financiamento.)
 PADRAO = ["prefeituras.html", "financiamento.html"]   # o par cuja sincronia dá razão à regra (CODEMAP)
 RE_LINK = re.compile(r'href="([^"#]*)#([^"]+)"')
 RE_ID = re.compile(r'\sid="([^"]+)"')

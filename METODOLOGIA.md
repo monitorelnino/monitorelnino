@@ -4382,3 +4382,18 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 **Provas.** Conta refeita à mão para as 27 UFs, pelos dois caminhos (soma das contribuições e Σ nota × população ÷ Σ população); o autoteste de `gerar_monitor_saude.py` reprova se a nota receber argumento de data ou de cobertura, se `c_uf` entrar na nota, se uma UF sair do denominador ou se a contribuição das UFs em elaboração for zero; o portão `verificar_saude.py` (m) exige nota igual ao instrumento, `c_uf` igual a 1, nenhuma antecipação no arquivo e o nacional igual à conta ponderada; `definicao_dos_indices` lê `metodo.pesos` e `metodo.agregacao_nacional` do arquivo, de modo que a Imprensa e a abertura da Saúde descrevem o método sem texto escrito à mão.
 
 **O que não muda.** Nenhuma constante, peso ou denominador do MARÉ Legal, que segue com a média simples dos estados. Peso zero do Saúde no MARÉ (o motor do Legal não lê este arquivo).
+## 124. Blog do MARÉ: como os textos são produzidos (25/10/2026)
+
+*Regras aprovadas pela editoria em 25/10/2026.*
+
+Os textos do Blog do MARÉ são escritos integralmente por inteligência artificial e aprovados pela editoria antes da publicação. São duas editorias: Legal e financiamento, publicada às segundas, e Saúde, publicada às quintas.
+
+**Seleção.** A pauta prioriza os estados e as regiões mais atingidos por seca, estiagem, fogo, chuva forte, enchentes e inundações, segundo contagens publicadas no MARÉ: municípios sob decreto de emergência, população desses municípios, reconhecimentos federais, focos de calor e notificações acima da faixa habitual. A escolha do recorte é editorial; o texto informa as contagens do lugar escolhido.
+
+**Fontes e números.** Cada texto parte do pacote de fatos da semana, gerado a partir dos dados do MARÉ, com fonte, endereço e data de cada fato. Todo número e toda data do texto estão nesse pacote. Fato com mais de nove dias na data do pacote é declarado como lacuna.
+
+**Construção.** Fatos de fontes diferentes aparecem juntos quando compartilham território, risco, população, mecanismo legal ou decisão pública. O texto descreve os fatos e a relação entre eles que os documentos sustentam; causa, razão, percentual e ordenação entre estados ficam com o leitor.
+
+**Saúde.** Os textos informam que as semanas mais recentes são parciais e sobem com as notificações atrasadas, que notificação é diferente de caso confirmado e que os números não indicam relação com o El Niño.
+
+**Forma.** Seis parágrafos em prosa, título factual, linha fina e, ao final, as fontes com a data de consulta. Cada texto fica no seu endereço permanente.
