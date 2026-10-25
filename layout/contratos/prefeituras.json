@@ -16,9 +16,9 @@
   },
   {
    "id": "quem-deve",
-   "h2": "O que a lei exige de cada governo",
+   "h2": "Os planos de cada governo",
    "tipo": "numeros",
-   "grade": ".grade-numeros--3",
+   "grade": ".grade-numeros--2",
    "cartoes": [
     {
      "id": "estados",
@@ -28,11 +28,6 @@
      "id": "indicados",
      "valor_el": "leiValor_indicados",
      "chave": "enquadramento_card.json"
-    },
-    {
-     "id": "todos",
-     "valor_el": "leiValor_todos",
-     "chave": "municipios_ibge_referencia.json"
     }
    ]
   },
@@ -40,12 +35,6 @@
    "id": "caminho",
    "h2": "Do risco ao plano publicado",
    "tipo": "lista_simples"
-  },
-  {
-   "id": "conteudo-plano",
-   "h2": "O que o plano pode conter",
-   "tipo": "lista_simples",
-   "_nota": "Listas simples (`ul`), sem caixa de marcar."
   },
   {
    "id": "recursos",
