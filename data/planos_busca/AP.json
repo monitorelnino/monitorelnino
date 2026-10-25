@@ -6,14 +6,14 @@
     "consultado_em": "2026-10-24",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=macapa.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": "HTTP 504",
     "dominio": "macapa.ap.gov.br"
    },
    "S25": {
     "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=macapa.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "macapa.ap.gov.br"
    },
    "S13": {
@@ -349,8 +349,8 @@
    "S25": {
     "consultado_em": "2026-10-24",
     "situacao": "erro",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=serradonavio.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 504",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "serradonavio.ap.gov.br"
    },
    "S29": {
