@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1132 · Para gestores: sai "Como os recursos chegam"; os dois caminhos vão ao passo 6
+
+A seção #recursos sai de prefeituras.html. O passo 6 "Buscar os recursos" passa a ter os dois caminhos: antes da emergência e depois do reconhecimento federal, com link para o Financiamento. Texto no catálogo; sem CSS novo.
+
 ## 2026-10-25 · #1131 · Evidências ausentes: commit que gravava o índice sem o texto
 
 A reaplicação e o rebase (`_coletor.yml`) gravavam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. O commit passa a incluir `evidencias/`.
