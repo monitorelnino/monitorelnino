@@ -1,12 +1,12 @@
 {
- "gerado_em": "2026-10-24",
+ "gerado_em": "2026-10-25",
  "municipios": {
   "1600303": {
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=macapa.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": "TimeoutError: The read operation timed out",
     "dominio": "macapa.ap.gov.br"
    },
    "S25": {
@@ -40,17 +40,17 @@
     "dominio": "amapa.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=amapa.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "amapa.ap.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=amapa.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "amapa.ap.gov.br"
    },
    "S29": {
@@ -70,17 +70,17 @@
     "dominio": "calcoene.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=calcoene.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "calcoene.ap.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=calcoene.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "calcoene.ap.gov.br"
    },
    "S29": {
@@ -100,17 +100,17 @@
     "dominio": "ferreiragomes.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ferreiragomes.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "ferreiragomes.ap.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=ferreiragomes.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "ferreiragomes.ap.gov.br"
    },
    "S29": {
@@ -130,17 +130,17 @@
     "dominio": "itaubal.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itaubal.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "itaubal.ap.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=itaubal.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "itaubal.ap.gov.br"
    },
    "S29": {
@@ -160,17 +160,17 @@
     "dominio": "laranjaldojari.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=laranjaldojari.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "laranjaldojari.ap.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=laranjaldojari.ap.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "laranjaldojari.ap.gov.br"
    },
    "S29": {
@@ -190,7 +190,7 @@
     "dominio": "mazagao.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=mazagao.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -220,7 +220,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -250,7 +250,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -280,7 +280,7 @@
     "dominio": "portogrande.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=portogrande.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -310,7 +310,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -340,7 +340,7 @@
     "dominio": "serradonavio.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=serradonavio.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -370,7 +370,7 @@
     "dominio": "tartarugalzinho.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=tartarugalzinho.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -400,7 +400,7 @@
     "dominio": "vitoriadojari.ap.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-25",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=vitoriadojari.ap.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
