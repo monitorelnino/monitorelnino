@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Regime de prioridade: checagem pré-noite respeita os elos suspensos
+
+A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendendo o elo, e a sua falha ficava vermelha sem razão. Agora ela pergunta à mesma função que a guarda e o despachante usam (`janela_da_noite.py --elo-suspenso`) e pula as etapas quando está suspensa. Metodologia §102: uma linha sobre o regime. Linhas líquidas: código +6/−1 (workflow), texto +2.
+
 ## 2026-10-25 · #PR · Saúde: detalhe do desfecho com o ano, a faixa na cor da família e o mapa pela posição
 
 O detalhe do desfecho escolhido mostra o ano de janeiro a dezembro (o anterior em linha fina, os períodos em registro tracejados) sobre a faixa habitual na cor clara da família, e o mapa pinta a posição de cada estado na sua faixa. Frase de leitura com a contagem dos 27, ficha por estado, lista recolhida. Três casos no portão ligam ficha, mapa, frase e topo ao mesmo dado.
