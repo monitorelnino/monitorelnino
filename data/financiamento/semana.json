@@ -1,6 +1,6 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "24/10/2026",
+ "corte": "25/10/2026",
  "janela_dias": 7,
  "cartoes": [
   {
@@ -62,7 +62,8 @@
    "fonte": "Texto das medidas provisórias e atos estaduais",
    "url_fonte": null,
    "detalhe": "4 origens",
-   "sem_coleta": false
+   "sem_coleta": false,
+   "n_atos": 4
   },
   {
    "id": "pago_ate_agora",
@@ -105,14 +106,14 @@
   },
   {
    "id": "sus_emergencia",
-   "valor": 112388582.89,
+   "valor": 8247842.04,
    "unidade": "reais",
-   "periodo": "janeiro de 2026 a setembro de 2026",
+   "periodo": "desde 29/06/2026",
    "fonte": "Portal da Transparência, Transferências de Recursos (Fundo Nacional de Saúde)",
    "url_fonte": null,
-   "detalhe": "63 municípios; fundos municipais, linhas cujo nome cita emergência",
+   "detalhe": "16 municípios; fundos municipais, linhas cujo nome cita emergência; meses inteiros a partir de julho (o FNS não traz a data do repasse)",
    "sem_coleta": false,
-   "municipios": 63,
+   "municipios": 16,
    "ultimo_mes": "202609"
   }
  ],
@@ -1096,32 +1097,6 @@
    "uf": "RO"
   },
   {
-   "ibge": "1200401",
-   "origem": "saude",
-   "valor": 7931247.55,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -9.97499,
-   "lon": -67.8243,
-   "nome": "Rio Branco",
-   "uf": "AC"
-  },
-  {
-   "ibge": "1300060",
-   "origem": "saude",
-   "valor": 71876.28,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -3.37455,
-   "lon": -68.2005,
-   "nome": "Amaturá",
-   "uf": "AM"
-  },
-  {
    "ibge": "1300201",
    "origem": "saude",
    "valor": 488673.28,
@@ -1132,19 +1107,6 @@
    "lat": -4.37055,
    "lon": -70.1967,
    "nome": "Atalaia do Norte",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1300607",
-   "origem": "saude",
-   "valor": 233829.17,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -4.37768,
-   "lon": -70.0342,
-   "nome": "Benjamin Constant",
    "uf": "AM"
   },
   {
@@ -1159,149 +1121,6 @@
    "lon": -67.3919,
    "nome": "Boca do Acre",
    "uf": "AM"
-  },
-  {
-   "ibge": "1301209",
-   "origem": "saude",
-   "valor": 363946.69,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -4.09412,
-   "lon": -63.1441,
-   "nome": "Coari",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1301407",
-   "origem": "saude",
-   "valor": 271952.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -6.65677,
-   "lon": -69.8662,
-   "nome": "Eirunepé",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1301803",
-   "origem": "saude",
-   "valor": 20690.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -7.04791,
-   "lon": -71.6934,
-   "nome": "Ipixuna",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1302553",
-   "origem": "saude",
-   "valor": 19737.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -3.44078,
-   "lon": -60.4612,
-   "nome": "Manaquiri",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1302702",
-   "origem": "saude",
-   "valor": 580054.54,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -5.80462,
-   "lon": -61.2895,
-   "nome": "Manicoré",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1303106",
-   "origem": "saude",
-   "valor": 305983.22,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -3.90037,
-   "lon": -59.094,
-   "nome": "Nova Olinda do Norte",
-   "uf": "AM"
-  },
-  {
-   "ibge": "1500404",
-   "origem": "saude",
-   "valor": 120609.41,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -1.94623,
-   "lon": -54.7384,
-   "nome": "Alenquer",
-   "uf": "PA"
-  },
-  {
-   "ibge": "1500503",
-   "origem": "saude",
-   "valor": 25059.91,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -1.52904,
-   "lon": -52.5788,
-   "nome": "Almeirim",
-   "uf": "PA"
-  },
-  {
-   "ibge": "1501808",
-   "origem": "saude",
-   "valor": 404339.16,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -1.68036,
-   "lon": -50.4791,
-   "nome": "Breves",
-   "uf": "PA"
-  },
-  {
-   "ibge": "1506161",
-   "origem": "saude",
-   "valor": 43660.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -7.31236,
-   "lon": -50.0379,
-   "nome": "Rio Maria",
-   "uf": "PA"
-  },
-  {
-   "ibge": "1506807",
-   "origem": "saude",
-   "valor": 1708180.38,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -2.43849,
-   "lon": -54.6996,
-   "nome": "Santarém",
-   "uf": "PA"
   },
   {
    "ibge": "2513703",
@@ -1319,7 +1138,7 @@
   {
    "ibge": "2606200",
    "origem": "saude",
-   "valor": 486792.51,
+   "valor": 242870.78,
    "ato": "repasse do FNS ligado a emergência",
    "data": null,
    "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
@@ -1332,7 +1151,7 @@
   {
    "ibge": "2932002",
    "origem": "saude",
-   "valor": 79854.86,
+   "valor": 15401.61,
    "ato": "repasse do FNS ligado a emergência",
    "data": null,
    "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
@@ -1353,58 +1172,6 @@
    "lat": -21.0927,
    "lon": -45.5612,
    "nome": "Boa Esperança",
-   "uf": "MG"
-  },
-  {
-   "ibge": "3115300",
-   "origem": "saude",
-   "valor": 158713.19,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -21.3924,
-   "lon": -42.6896,
-   "nome": "Cataguases",
-   "uf": "MG"
-  },
-  {
-   "ibge": "3125002",
-   "origem": "saude",
-   "valor": 11593.4,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -21.5498,
-   "lon": -43.5068,
-   "nome": "Ewbank da Câmara",
-   "uf": "MG"
-  },
-  {
-   "ibge": "3136702",
-   "origem": "saude",
-   "valor": 11656552.59,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -21.7595,
-   "lon": -43.3398,
-   "nome": "Juiz de Fora",
-   "uf": "MG"
-  },
-  {
-   "ibge": "3140803",
-   "origem": "saude",
-   "valor": 522687.2,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -21.869,
-   "lon": -43.3135,
-   "nome": "Matias Barbosa",
    "uf": "MG"
   },
   {
@@ -1434,71 +1201,6 @@
    "uf": "MG"
   },
   {
-   "ibge": "3169901",
-   "origem": "saude",
-   "valor": 3273465.86,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -21.1204,
-   "lon": -42.9359,
-   "nome": "Ubá",
-   "uf": "MG"
-  },
-  {
-   "ibge": "3170206",
-   "origem": "saude",
-   "valor": 725674.3,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -18.9141,
-   "lon": -48.2749,
-   "nome": "Uberlândia",
-   "uf": "MG"
-  },
-  {
-   "ibge": "3300100",
-   "origem": "saude",
-   "valor": 278578.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -23.0011,
-   "lon": -44.3196,
-   "nome": "Angra dos Reis",
-   "uf": "RJ"
-  },
-  {
-   "ibge": "3515186",
-   "origem": "saude",
-   "valor": 26777.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -22.1909,
-   "lon": -46.7477,
-   "nome": "Espírito Santo do Pinhal",
-   "uf": "SP"
-  },
-  {
-   "ibge": "3517802",
-   "origem": "saude",
-   "valor": 8175.45,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -21.0292,
-   "lon": -51.2119,
-   "nome": "Guaraçaí",
-   "uf": "SP"
-  },
-  {
    "ibge": "3518800",
    "origem": "saude",
    "valor": 214404.98,
@@ -1509,45 +1211,6 @@
    "lat": -23.4538,
    "lon": -46.5333,
    "nome": "Guarulhos",
-   "uf": "SP"
-  },
-  {
-   "ibge": "3529005",
-   "origem": "saude",
-   "valor": 908110.09,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -22.2171,
-   "lon": -49.9501,
-   "nome": "Marília",
-   "uf": "SP"
-  },
-  {
-   "ibge": "3529401",
-   "origem": "saude",
-   "valor": 19835378.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -23.6677,
-   "lon": -46.4613,
-   "nome": "Mauá",
-   "uf": "SP"
-  },
-  {
-   "ibge": "3534757",
-   "origem": "saude",
-   "valor": 626.22,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -20.0061,
-   "lon": -50.3768,
-   "nome": "Ouroeste",
    "uf": "SP"
   },
   {
@@ -1564,19 +1227,6 @@
    "uf": "SP"
   },
   {
-   "ibge": "3546801",
-   "origem": "saude",
-   "valor": 131708.1,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -23.3172,
-   "lon": -46.2237,
-   "nome": "Santa Isabel",
-   "uf": "SP"
-  },
-  {
    "ibge": "3548708",
    "origem": "saude",
    "valor": 265078.0,
@@ -1587,32 +1237,6 @@
    "lat": -23.6914,
    "lon": -46.5646,
    "nome": "São Bernardo do Campo",
-   "uf": "SP"
-  },
-  {
-   "ibge": "3549805",
-   "origem": "saude",
-   "valor": 202689.72,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -20.8113,
-   "lon": -49.3758,
-   "nome": "São José do Rio Preto",
-   "uf": "SP"
-  },
-  {
-   "ibge": "3549904",
-   "origem": "saude",
-   "valor": 47632.03,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -23.1896,
-   "lon": -45.8841,
-   "nome": "São José dos Campos",
    "uf": "SP"
   },
   {
@@ -1629,45 +1253,6 @@
    "uf": "SP"
   },
   {
-   "ibge": "4113304",
-   "origem": "saude",
-   "valor": 71962.38,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -25.4077,
-   "lon": -52.4109,
-   "nome": "Laranjeiras do Sul",
-   "uf": "PR"
-  },
-  {
-   "ibge": "4117057",
-   "origem": "saude",
-   "valor": 56115.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -25.3054,
-   "lon": -52.5447,
-   "nome": "Nova Laranjeiras",
-   "uf": "PR"
-  },
-  {
-   "ibge": "4122404",
-   "origem": "saude",
-   "valor": 181897.34,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -23.3101,
-   "lon": -51.3659,
-   "nome": "Rolândia",
-   "uf": "PR"
-  },
-  {
    "ibge": "4204558",
    "origem": "saude",
    "valor": 22845.03,
@@ -1679,188 +1264,6 @@
    "lon": -50.3614,
    "nome": "Correia Pinto",
    "uf": "SC"
-  },
-  {
-   "ibge": "4205407",
-   "origem": "saude",
-   "valor": 448748.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -27.5945,
-   "lon": -48.5477,
-   "nome": "Florianópolis",
-   "uf": "SC"
-  },
-  {
-   "ibge": "4210001",
-   "origem": "saude",
-   "valor": 78240.29,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -26.7151,
-   "lon": -48.9322,
-   "nome": "Luiz Alves",
-   "uf": "SC"
-  },
-  {
-   "ibge": "4303004",
-   "origem": "saude",
-   "valor": 203427.07,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -30.033,
-   "lon": -52.8928,
-   "nome": "Cachoeira do Sul",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4303103",
-   "origem": "saude",
-   "valor": 370830.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.9472,
-   "lon": -51.1016,
-   "nome": "Cachoeirinha",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4304606",
-   "origem": "saude",
-   "valor": 5626932.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.9128,
-   "lon": -51.1857,
-   "nome": "Canoas",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4305108",
-   "origem": "saude",
-   "valor": 2026110.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.1629,
-   "lon": -51.1792,
-   "nome": "Caxias do Sul",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4306767",
-   "origem": "saude",
-   "valor": 5634393.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -30.0847,
-   "lon": -51.6187,
-   "nome": "Eldorado do Sul",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4307807",
-   "origem": "saude",
-   "valor": 3241776.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.5002,
-   "lon": -51.9495,
-   "nome": "Estrela",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4313375",
-   "origem": "saude",
-   "valor": 4809732.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.8525,
-   "lon": -51.2837,
-   "nome": "Nova Santa Rita",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4313706",
-   "origem": "saude",
-   "valor": 40931.97,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -27.9007,
-   "lon": -53.3134,
-   "nome": "Palmeira das Missões",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4314902",
-   "origem": "saude",
-   "valor": 13165014.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -30.0318,
-   "lon": -51.2065,
-   "nome": "Porto Alegre",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4315602",
-   "origem": "saude",
-   "valor": 719765.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -32.0349,
-   "lon": -52.1071,
-   "nome": "Rio Grande",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4318705",
-   "origem": "saude",
-   "valor": 15030085.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.7545,
-   "lon": -51.1498,
-   "nome": "São Leopoldo",
-   "uf": "RS"
-  },
-  {
-   "ibge": "4322004",
-   "origem": "saude",
-   "valor": 676262.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -29.9291,
-   "lon": -51.7075,
-   "nome": "Triunfo",
-   "uf": "RS"
   },
   {
    "ibge": "5002704",
@@ -1878,7 +1281,7 @@
   {
    "ibge": "5003702",
    "origem": "saude",
-   "valor": 1786618.21,
+   "valor": 548870.85,
    "ato": "repasse do FNS ligado a emergência",
    "data": null,
    "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
@@ -1887,19 +1290,53 @@
    "lon": -54.812,
    "nome": "Dourados",
    "uf": "MS"
-  },
-  {
-   "ibge": "5107602",
-   "origem": "saude",
-   "valor": 322871.0,
-   "ato": "repasse do FNS ligado a emergência",
-   "data": null,
-   "url": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-   "n_atos": null,
-   "lat": -16.4673,
-   "lon": -54.6372,
-   "nome": "Rondonópolis",
-   "uf": "MT"
   }
- ]
+ ],
+ "serie_mensal": {
+  "meses": [
+   {
+    "mes": "202606",
+    "defesa_civil": 251656.02,
+    "saude": null,
+    "parcial": false
+   },
+   {
+    "mes": "202607",
+    "defesa_civil": 63628859.28,
+    "saude": 1825372.5,
+    "parcial": false
+   },
+   {
+    "mes": "202608",
+    "defesa_civil": 42391062.83,
+    "saude": 3344623.52,
+    "parcial": false
+   },
+   {
+    "mes": "202609",
+    "defesa_civil": 95963097.9,
+    "saude": 3077846.02,
+    "parcial": false
+   },
+   {
+    "mes": "202610",
+    "defesa_civil": 4611978.26,
+    "saude": null,
+    "parcial": true
+   }
+  ],
+  "saude_desde": "202607",
+  "saude_ultimo_mes": "202609",
+  "total_defesa_civil": 206846654.29,
+  "total_saude": 8247842.04
+ },
+ "funil_defesa_civil": {
+  "referencia": "25/10/2026",
+  "n_decretaram": 988,
+  "n_reconhecidos": 887,
+  "n_com_recurso": 69,
+  "n_com_recurso_e_decretaram": 29,
+  "n_30d": 654,
+  "dias_pendencia": 30
+ }
 }

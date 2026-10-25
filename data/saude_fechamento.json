@@ -1,9 +1,9 @@
 {
- "_governanca": "Pedido de troca do MARÉ Saúde para a v0.4. Escrito por scripts/fechar_saude.py e lido pelo publicador. `trocar: true` só quando as 27 UFs tiverem documento lido no plano E na coordenação — a condição que a editoria fixou em 01/10/2026. Enquanto for false, nada muda na página além da contagem de verificadas.",
- "trocar": false,
+ "_governanca": "Fechamento medido do MARÉ Saúde. Escrito por scripts/fechar_saude.py. `promover_v08: true` só quando as 27 UFs tiverem documento lido no plano E as duas funções da coordenação verificadas; a promoção é do motor, nunca deste arquivo.",
+ "promover_v08": false,
  "medido_em": "2026-10-24",
  "com_plano": 21,
- "com_coordenacao": 3,
+ "com_coordenacao": 2,
  "com_quatro_canais": 6,
  "pendencias": {
   "AC": [
@@ -40,6 +40,9 @@
    "coordenação não verificada"
   ],
   "MG": [
+   "coordenação não verificada"
+  ],
+  "MT": [
    "coordenação não verificada"
   ],
   "PA": [

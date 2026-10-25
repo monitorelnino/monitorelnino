@@ -11,6 +11,38 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Financiamento: do decreto ao recurso vira dado · Dados
+
+`semana.json` ganha `funil_defesa_civil`: decretaram, reconhecidos pela União, com portaria de recurso (mesma contagem do cartão do topo) e reconhecidos há mais de 30 dias sem portaria localizada até o corte. Antes o último número só existia calculado no navegador.
+
+## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
+
+Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.
+
+## 2026-10-25 · #PR · Financiamento: série mensal do dinheiro do mapa · Dados
+
+`semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.
+
+## 2026-10-25 · #PR · Lista do banco nos coletores sem arquivo que não existe mais
+A lista única `BANCO_PROIBIDO` deixa de citar `monitor_saude_v04.json`, removido com a v0.7; o autoteste do coletor de diários passa a exigir os cinco arquivos que existem. Sem mudança de dado ou de página.
+
+## 2026-10-25 · #PR · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados
+
+O repasse do SUS para emergências passa a contar desde 29/06/2026 (meses inteiros, julho em diante): R$ 8,2 mi em 16 municípios, antes R$ 112 mi em 63. O topo da Saúde traz estados acima da faixa habitual por desfecho. O empenhado das MPs ganha marcador quando excede o valor do ato (a fonte mede a ação, não o crédito). `n_atos` numérico. METODOLOGIA: v0.7 vira §123, com as frases de comparação e de não atribuição.
+
+
+## 2026-10-25 · #PR · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada
+O nacional da chikungunya parava na semana 9 sem aviso porque o Tocantins não tem registro depois dela na fonte. `desfechos_sus.montar` agora declara em `lacunas` a UF defasada (último período) e marca `ultimo.BR.ufs_sem_dado_depois`; o nacional segue só com as 27 UFs. Dengue e SRAG inalterados. Código +31/−5.
+## 2026-10-24 · #PR · Imprensa: pergunta nova sobre casos de saúde e El Niño
+
+Em "O que recomendamos e não recomendamos concluir", na Saúde, entra a pergunta "Os casos mostrados na página de Saúde são causados pelo El Niño?": a página não faz essa relação e mostra o que os órgãos de saúde registram, com fonte e faixa habitual. Texto aprovado pela editoria.
+
+## 2026-10-24 · #PR · MARÉ Saúde v0.7: a nota da UF é o instrumento; o nacional pesa a população · Dados
+Nenhum componente da nota do Saúde depende de data: a nota do estado é o instrumento. O tempo (dias após o Boletim nº 1) e a coordenação saem como contexto de peso zero. O nacional passa a ponderar pela população (cobertura 1 nas 27 UFs): 61,3, era 34,7. Um só motor: o cálculo paralelo da v0.4 e a troca automática saem. Código −732 líquidas.
+
+## 2026-10-24 · #PR · Coordenação em saúde: 13 atos oficiais lidos entram na fila do juiz · Dado
+Registra, pela porta única de pistas, os 13 atos de coordenação (COE, comitês, plano do PI) já lidos em domínio oficial na busca de 07/10. Só o juiz de saúde credita; nenhum índice muda. Script novo com autoteste offline; +65 linhas, sem remover remendo (a rotina da coordenação não tinha porta de entrada).
+
 ## 2026-10-24 · Onde estão as emergências: sem legenda de mapa, com total
 Sai a linha de legenda sob o título do mapa de decretos (a legenda do mapa já traz ponto cheio e ponto vazado). O gráfico ganha a linha Total, soma das barras na unidade delas, e "988 municípios" sob o título. Rótulos encostam no trilho, barras pequenas têm comprimento mínimo e o painel alinha ao topo.
 
