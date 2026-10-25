@@ -9,14 +9,13 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-18 a 2026-10-25 (949 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-18 a 2026-10-25 (972 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - coletar_sim.py: erro em 2 rodadas seguidas — SIM: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
 - consultar_querido_diario.py: erro em 4 rodadas seguidas — urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>
 - descobrir_dominios.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
-- monitorar_redes_oficiais.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 
 ## Cobertura em 15 dias
 
@@ -28,7 +27,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-24 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-24 01:38 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-25 06:52 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-25 07:41 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-24 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-24 02:00 | 107 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-24 01:14 | 1 s | — | ok | — |
@@ -74,20 +73,20 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-24 · por canal: we
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-24 01:14 | 77 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-21 01:05 | 316 s | — | **erro** (4 seguidas) | urllib.error.URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)> |
 | `descobrir_dominios.py` | coletor | 2026-10-25 01:43 | 6141 s | — | **erro** (3 seguidas) | interrompido pelo prazo do elo |
-| `descobrir_planos.py` | coletor | 2026-10-24 01:32 | 415 s | — | ok | — |
+| `descobrir_planos.py` | coletor | 2026-10-25 07:07 | 376 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-10-24 01:16 | 1 s | — | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-10-24 01:39 | 2 s | 0 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-10-25 07:07 | 1 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-24 01:50 | 610 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-10-24 08:17 | 1652 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-21 03:05 | 2328 s | — | ok | — |
 | `ler_planos_arboviroses.py` | coletor | 2026-10-24 01:28 | 5 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-10-24 01:39 | 583 s | 18477 | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-10-25 07:03 | 242 s | 18481 | ok | — |
 | `monitorar_busca_web.py` | coletor | 2026-10-24 01:14 | 773 s | 83 | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-10-24 01:27 | 247 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-24 01:31 | 103 s | 27 | ok | — |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-24 01:49 | 62 s | 18477 | ok | — |
-| `monitorar_redes_oficiais.py` | coletor | 2026-10-24 07:04 | 993 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
-| `monitorar_sinais_federais.py` | coletor | 2026-10-24 01:14 | 8 s | 10 | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-10-25 06:56 | 337 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-25 07:01 | 106 s | 27 | ok | — |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-25 07:07 | 3 s | 18481 | ok | — |
+| `monitorar_redes_oficiais.py` | coletor | 2026-10-25 07:13 | 1070 s | — | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-10-25 07:07 | 8 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-24 02:21 | 7 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-24 01:14 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-10-24 21:16 | 4721 s | — | ok | — |
@@ -101,8 +100,8 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-24 · por canal: we
 | `scripts/triar_fila.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_funil.py` | coletor | 2026-10-24 01:27 | 0 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-10-24 07:20 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `seguir_pistas.py` | coletor | 2026-10-25 07:31 | 18 s | — | ok | — |
 | `sonda_url_doe.py` | coletor | 2026-10-20 18:03 | 202 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-10-24 07:20 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `triar_confianca_pistas.py` | coletor | 2026-10-25 07:32 | 3 s | — | ok | — |
 | `verificar_links.py` | coletor | 2026-10-24 01:29 | 230 s | — | **erro** | erro: https://www.macae.rj.gov.br/noticias/leitura/noticia/macae-participa-de-encontro-estadual-para-tracar-estrategias- |
-| `verificar_pista_imprensa.py` | coletor | 2026-10-24 07:20 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `verificar_pista_imprensa.py` | coletor | 2026-10-25 07:32 | 275 s | — | ok | — |
