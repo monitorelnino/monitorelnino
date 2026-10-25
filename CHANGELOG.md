@@ -11,10 +11,18 @@ não pontuados permanecem na versão corrente.
 
 
 
+<<<<<<< HEAD
 ## 2026-10-25 · #1132 · Para gestores: sai "Como os recursos chegam"; os dois caminhos vão ao passo 6
 
 A seção #recursos sai de prefeituras.html. O passo 6 "Buscar os recursos" passa a ter os dois caminhos: antes da emergência e depois do reconhecimento federal, com link para o Financiamento. Texto no catálogo; sem CSS novo.
 
+=======
+## 2026-10-25 · #1126 · Estrutura comum dos desfechos de saúde
+
+`scripts/estrutura_desfechos.py`: série por UF, faixa habitual 2019–2025 por quintis congelados, último valor, cortes do mapa e documento de desfecho com fonte, cadência, `preliminar`, `parcial` e lacunas declaradas. Escrita só de arquivo novo em `data/saude_desfechos/`, com autoteste offline. Nenhum arquivo existente muda e nenhum escritor é declarado. Código novo (+224 linhas): recurso novo, sem cópia de coletor existente.
+
+## 2026-10-25 · #1126 · Saúde: detalhe do desfecho com o ano, a faixa na cor da família e o mapa pela posição
+>>>>>>> origin/main
 ## 2026-10-25 · #1131 · Evidências ausentes: commit que gravava o índice sem o texto
 
 A reaplicação e o rebase (`_coletor.yml`) gravavam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. O commit passa a incluir `evidencias/`.
@@ -31,43 +39,43 @@ A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendend
 
 O detalhe do desfecho escolhido mostra o ano de janeiro a dezembro (o anterior em linha fina, os períodos em registro tracejados) sobre a faixa habitual na cor clara da família, e o mapa pinta a posição de cada estado na sua faixa. Frase de leitura com a contagem dos 27, ficha por estado, lista recolhida. Três casos no portão ligam ficha, mapa, frase e topo ao mesmo dado.
 
-## 2026-10-25 · #PR · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal
+## 2026-10-25 · #1126 · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal
 
 A situação de cada estado vira um mapa pelo tipo de plano, com as siglas como botões que abrem a ficha; a coordenação se preenche com o dado. Saem a grade de ladrilhos, o cartão de risco previsto e a seção federal. A consulta sobe e usa cartões, como o Proteja-se. Abertura reescrita; o texto "sem tempo" vale.
-## 2026-10-25 · #PR · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
+## 2026-10-25 · #1126 · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
 
 Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita "consultado em" na fonte. Saem blocos de script sem elemento na página.
-## 2026-10-25 · #PR · Passos em linha: variante do componente `.passos`
+## 2026-10-25 · #1126 · Passos em linha: variante do componente `.passos`
 
 Variante `.passos--linha` em `base.css`: lista vertical ligada por fio, número em argila, título em Fraunces e bloco "o que precisa ter" em uma ou duas colunas. Nenhuma página muda; "Para gestores" passa a usá-la no caminho até o plano publicado.
-## 2026-10-25 · #PR · Coordenação em saúde: o juiz lê estrutura permanente como estrutura, não como resposta
+## 2026-10-25 · #1126 · Coordenação em saúde: o juiz lê estrutura permanente como estrutura, não como resposta
 
 O juiz de saúde ganha a trilha da estrutura, só depois da recusa da trilha do plano: decreto que institui comitê com a SES e a atribuição escrita credita F2, COE da saúde permanente credita F1, e ato que declara emergência, amarra-se a ela ou a extingue segue resposta. Estrutura de risco que a UF não projeta, CIEVS sozinho e ativação de COE não creditam. Peso zero até a v0.8.
 
-## 2026-10-25 · #PR · METODOLOGIA: base legal do §1a e régua da coordenação em saúde
+## 2026-10-25 · #1126 · METODOLOGIA: base legal do §1a e régua da coordenação em saúde
 
 O §1a passa a dizer que a atualização do plano municipal é anual e a do estadual, bienal (Lei 12.608, art. 7º, § 2º, IV), como na correção de 30/09. Entra a régua da coordenação em saúde decidida em 25/10 (estrutura permanente, seca vigente, CIEVS, COE, citação incompleta), com peso zero na v0.7. Linhas líquidas: +3/−1 de texto, código 0.
-## 2026-10-25 · #PR · Financiamento: do decreto ao recurso vira dado · Dados
+## 2026-10-25 · #1126 · Financiamento: do decreto ao recurso vira dado · Dados
 
 `semana.json` ganha `funil_defesa_civil`: decretaram, reconhecidos pela União, com portaria de recurso (mesma contagem do cartão do topo) e reconhecidos há mais de 30 dias sem portaria localizada até o corte. Antes o último número só existia calculado no navegador.
 
-## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
+## 2026-10-25 · #1126 · Cartão de número: grade de duas colunas e lista de definição
 
 Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.
 
-## 2026-10-25 · #PR · Financiamento: série mensal do dinheiro do mapa · Dados
+## 2026-10-25 · #1126 · Financiamento: série mensal do dinheiro do mapa · Dados
 
 `semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.
 
-## 2026-10-25 · #PR · Lista do banco nos coletores sem arquivo que não existe mais
+## 2026-10-25 · #1126 · Lista do banco nos coletores sem arquivo que não existe mais
 A lista única `BANCO_PROIBIDO` deixa de citar `monitor_saude_v04.json`, removido com a v0.7; o autoteste do coletor de diários passa a exigir os cinco arquivos que existem. Sem mudança de dado ou de página.
 
-## 2026-10-25 · #PR · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados
+## 2026-10-25 · #1126 · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados
 
 O repasse do SUS para emergências passa a contar desde 29/06/2026 (meses inteiros, julho em diante): R$ 8,2 mi em 16 municípios, antes R$ 112 mi em 63. O topo da Saúde traz estados acima da faixa habitual por desfecho. O empenhado das MPs ganha marcador quando excede o valor do ato (a fonte mede a ação, não o crédito). `n_atos` numérico. METODOLOGIA: v0.7 vira §123, com as frases de comparação e de não atribuição.
 
 
-## 2026-10-25 · #PR · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada
+## 2026-10-25 · #1126 · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada
 O nacional da chikungunya parava na semana 9 sem aviso porque o Tocantins não tem registro depois dela na fonte. `desfechos_sus.montar` agora declara em `lacunas` a UF defasada (último período) e marca `ultimo.BR.ufs_sem_dado_depois`; o nacional segue só com as 27 UFs. Dengue e SRAG inalterados. Código +31/−5.
 ## 2026-10-24 · #PR · Imprensa: pergunta nova sobre casos de saúde e El Niño
 
