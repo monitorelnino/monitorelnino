@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal
+
+A situação de cada estado vira um mapa pelo tipo de plano, com as siglas como botões que abrem a ficha; a coordenação se preenche com o dado. Saem a grade de ladrilhos, o cartão de risco previsto e a seção federal. A consulta sobe e usa cartões, como o Proteja-se. Abertura reescrita; o texto "sem tempo" vale.
+
 ## 2026-10-25 · #PR · Cartão de número: grade de duas colunas e lista de definição
 
 Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.

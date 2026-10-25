@@ -5,13 +5,13 @@
     "numeros": ".cartao-numero",
     "grade_numeros": ".grade-numeros--compacta",
     "figura": ".cartao-mapa",
-    "grade_figuras": ".grade-figuras--3",
-    "estados": "#regionsSaude"
+    "grade_figuras": ".grade-figuras--3"
   },
   "figura_principal": {
+    "mapa": "boxMonitor",
     "serie": "boxDesfecho"
   },
-  "_nota_figura_principal": "19/10/2026 (seção única de desfechos): a única figura em largura total da Saúde é a série do desfecho escolhido — ela desenha a série inteira sobre a faixa habitual da época, que um terço de largura não comporta. Todas as outras figuras da página ficam em grade de três.",
+  "_nota_figura_principal": "19/10/2026 (seção única de desfechos): a única figura em largura total da Saúde é a série do desfecho escolhido — ela desenha a série inteira sobre a faixa habitual da época, que um terço de largura não comporta. Todas as outras figuras da página ficam em grade de três. | 25/10/2026 (Saúde v0.7, protótipo aprovado pela editoria em 24/10 22:07 UTC): o mapa por tipo de plano é a segunda figura em largura total, porque leva ao lado a lista dos seis tipos com as siglas dos estados como botões; a grade de 27 ladrilhos e o cartão de risco previsto saíram.",
   "_nota_componentes": "O handover nomeia o componente de números como `.cartao-destaque`, 'o de Proteja-se/Imprensa'. A classe com esse nome não existe no projeto: o componente de números que a Imprensa usa é `.cartao-numero` dentro de `.grade-numeros`, e é ele que o contrato nomeia. Criar uma classe nova só para casar com o nome do handover produziria dois componentes para a mesma coisa, que é exatamente o que o handover proíbe.",
   "secoes": [
     {
@@ -61,52 +61,15 @@
     {
       "id": "estadual",
       "h2": "A situação de cada estado",
-      "tipo": "figuras_mais_estados",
-      "grade": ".grade-figuras--3",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--1",
       "cartoes": [
         {
-          "id": "mapa_indice_uf",
+          "id": "mapa_planos_uf",
           "tipo": "mapa",
           "el": "boxMonitor"
-        },
-        {
-          "id": "risco_previsto_uf",
-          "tipo": "lista",
-          "el": "boxRiscoSan"
         }
-      ],
-      "ultima_linha_incompleta": true,
-      "_nota_duas_figuras": "19/10/2026 (HANDOVER_SAUDE_PAGINA §2.6 e §7): a figura 'O que foi localizado em cada estado' (lista dos 27) saiu — o documento, o órgão e a data de cada estado abrem na ficha, pelo mapa e pela grade. A grade de três fica com duas figuras, e esta é a última linha da seção.",
-      "estados": {
-        "grade": "#regionsSaude",
-        "cartoes": 27,
-        "largura": "total",
-        "componente": "mapa_cartoes_uf",
-        "_nota": "Item 7 do handover de 02/10/2026: os 27 estados no MESMO componente da inicial — o mapa de cartoes de assets/js/grade-estados.js, cada estado na sua posicao geografica, com uma barra (o indice; a resposta tem medidor proprio no topo, HANDOVER_SAUDE_PAGINA 16/10 §7) e a mesma ficha ao clicar. Sai a disposicao em colunas por regiao."
-      }
-    },
-    {
-      "id": "observado",
-      "h2": "O que os órgãos de saúde registram",
-      "tipo": "figuras",
-      "exige_texto": [
-        "Esta página não relaciona casos ao El Niño."
-      ],
-      "cartoes": [
-        {
-          "id": "detalhe_do_desfecho",
-          "tipo": "grafico",
-          "el": "boxDesfecho"
-        }
-      ],
-      "grade": ".grade-numeros--3",
-      "ultima_linha_incompleta": true,
-      "_nota_registram": "19/10/2026 (remoção aprovada pela editoria em 19/10, sobre o mapa medido pela B1): a seção é a grade única de desfechos, na forma comum de `data/saude_desfechos/`: um cartão por desfecho em evidência, que abre o detalhe com série e mapa, e um cartão igual por desfecho da segunda camada (§2 do handover), nas linhas seguintes, sem mapa e sem detalhe. Os cinco quadros por agravo (dengue, chikungunya, respiratórias, síndrome gripal e calor) saíram: o que eles mostravam a seção nova mostra por desfecho, e desfecho sem arquivo é lacuna declarada numa linha, nunca cartão vazio. A última linha fica incompleta porque o número de cartões cresce à medida que cada desfecho nasce."
-    },
-    {
-      "id": "saude-federal-painel",
-      "h2": "O que o governo federal publicou",
-      "tipo": "lista_simples"
+      ]
     },
     {
       "id": "consultaSaude",
@@ -119,6 +82,21 @@
           "el": "consultaSaudeControles"
         }
       ]
+    },
+    {
+      "id": "observado",
+      "h2": "O que os órgãos de saúde registram",
+      "tipo": "figuras",
+      "cartoes": [
+        {
+          "id": "detalhe_do_desfecho",
+          "tipo": "grafico",
+          "el": "boxDesfecho"
+        }
+      ],
+      "grade": ".grade-numeros--3",
+      "ultima_linha_incompleta": true,
+      "_nota_registram": "19/10/2026 (remoção aprovada pela editoria em 19/10, sobre o mapa medido pela B1): a seção é a grade única de desfechos, na forma comum de `data/saude_desfechos/`: um cartão por desfecho em evidência, que abre o detalhe com série e mapa, e um cartão igual por desfecho da segunda camada (§2 do handover), nas linhas seguintes, sem mapa e sem detalhe. Os cinco quadros por agravo (dengue, chikungunya, respiratórias, síndrome gripal e calor) saíram: o que eles mostravam a seção nova mostra por desfecho, e desfecho sem arquivo é lacuna declarada numa linha, nunca cartão vazio. A última linha fica incompleta porque o número de cartões cresce à medida que cada desfecho nasce."
     }
   ],
   "texto_proibido": [

@@ -127,9 +127,9 @@
       "figura_principal": {
         "tipos": ["mapa", "serie"],
         "por_pagina": 1,
-        "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 2}},
+        "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 2}, "saude.html": {"mapa": 1, "serie": 1}},
         "registrado_em": "2026-10-16",
-        "decidido_por": "editoria, por delegação à central (16/10/2026 22:15 UTC; HANDOVER_FINANCIAMENTO_16-10-2026 §11)"
+        "decidido_por": "editoria, por delegação à central (16/10/2026 22:15 UTC; HANDOVER_FINANCIAMENTO_16-10-2026 §11) · saude.html: mapa por tipo de plano com a lista das siglas ao lado, protótipo aprovado pela editoria em 24/10/2026 22:07 UTC (bloco da central no LOTES)"
       },
       "registrado_em": "2026-10-04",
       "decidido_por": "editoria (item 7 do handover dos temporizadores)"
@@ -693,9 +693,10 @@
         "^Sem atualização desde ",
         "^Onde há seca ",
         "^O índice de qualidade do ar medido ",
-        "^Quanto a temperatura máxima prevista "
+        "^Quanto a temperatura máxima prevista ",
+        "^Tipo de plano localizado em cada secretaria estadual "
       ],
-      "_nota_subtitulo_estados": "Frases das legendas de seca, ar e temperatura do Monitor de riscos: texto aprovado pela editoria em 24/10/2026 (12:39), uma frase em vez de 'período · variável · unidade'. Forma de ESTADO do subtítulo, aceita literalmente: quando a fonte de alertas para por mais de 24 h, defesa-civil.js escreve 'Sem atualização desde dd/mm/aaaa hh:mm' no lugar de 'período · variável · unidade' (decisão de 02/10/2026, fuso explícito). Não é metadado e não leva '·'. O portão 17 (robustez) envelhece os alertas de propósito e exercita esta forma; o portão antigo não a via porque renderizava com a URL da inicial.",
+      "_nota_subtitulo_estados": "Frases das legendas de seca, ar e temperatura do Monitor de riscos: texto aprovado pela editoria em 24/10/2026 (12:39); mais a do mapa por tipo de plano da Saúde, aprovada em 24/10/2026 (22:07 UTC), uma frase em vez de 'período · variável · unidade'. Forma de ESTADO do subtítulo, aceita literalmente: quando a fonte de alertas para por mais de 24 h, defesa-civil.js escreve 'Sem atualização desde dd/mm/aaaa hh:mm' no lugar de 'período · variável · unidade' (decisão de 02/10/2026, fuso explícito). Não é metadado e não leva '·'. O portão 17 (robustez) envelhece os alertas de propósito e exercita esta forma; o portão antigo não a via porque renderizava com a URL da inicial.",
       "credito_maximo": 160,
       "credito": "^Fonte: .+ · Atualização: (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)$",
       "credito_explicacao": "por que|confira|enquanto isso|lacuna declarada|contrariaria|regra de prova|aguard",
