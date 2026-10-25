@@ -243,7 +243,7 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
     if ssin.get("dengue_capitais"):
         for uf, d in ssin["dengue_capitais"].items():
             if "InfoDengue" not in str(d.get("fonte", "")): erros.append(f"(h) dengue {uf} sem crédito InfoDengue")
-    if "InfoDengue (Fiocruz/FGV)" not in html: erros.append("(h) página sem o crédito 'InfoDengue (Fiocruz/FGV)'")
+    if not re.search(r"InfoDengue \(Fiocruz (?:/|e) ?FGV\)", html): erros.append("(h) página sem o crédito 'InfoDengue (Fiocruz e FGV)'")
     # (g) atos de resposta sanitários nunca em municipios.json pontuável — checado por causa
     for e in atos.get("eventos", []):
         if re.search(r"espin|dengue|calor", str(e.get("causa", "")), re.I) and e.get("categoria") in ("plano", "plano_antigo", "plano_elaboracao", "coberto_estadual"):
@@ -253,7 +253,8 @@ def checar(html: str, suf: dict, ssin: dict, sfed: dict, motor: str, indice: dic
 
 def carregar():
     j = lambda n: json.load(open(D / n, encoding="utf-8"))
-    return (ler_pagina(RAIZ / "saude.html"), j("saude_uf.json"), j("saude_sinais.json"),
+    # A página + o catálogo: o crédito dos cartões (InfoDengue, Sinan…) mora em `conteudo/saude.json`.
+    return (ler_pagina(RAIZ / "saude.html") + open(RAIZ / "conteudo" / "saude.json", encoding="utf-8").read(), j("saude_uf.json"), j("saude_sinais.json"),
             j("saude_federal.json"), open(RAIZ / "recalcular_mare.py", encoding="utf-8").read(), j("indice.json"), j("atos_resposta.json"))
 
 

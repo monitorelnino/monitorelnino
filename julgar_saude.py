@@ -538,6 +538,78 @@ def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
     return limpo.strip() or (titulo_da_pista or "")
 
 
+# ── A trilha da ESTRUTURA (central, 25/10/2026, por delegação da editoria) ───────────────────
+# Decreto que cria comitê ou COE permanente é ato institucional, e não resposta; o que não pontua é o
+# decreto de situação de emergência. A trilha só roda DEPOIS da recusa da trilha do plano
+# (resposta, natureza_duvidosa, risco_fora_do_ciclo) e credita só a função que o texto prova;
+# na dúvida, a recusa original fica. Peso zero até a v0.8: nada muda na nota publicada.
+RE_ESTRUTURA_DA_RESPOSTA = re.compile(
+    r"(enquanto\s+(?:perdurar|durar|vigorar|persistir|houver)"
+    r"|at[ée]\s+(?:o\s+)?(?:fim|t[ée]rmino|encerramento|cessa[çc][ãa]o|normaliza[çc][ãa]o)\s+d[aeo]"
+    r"|cessad[ao]s?\s+(?:a|as)\s+(?:situa[çc][ãa]o|emerg[êe]ncia|causas)"
+    r"|\bextin(?:to|ta|[çc][ãa]o|gu\w+)"
+    r"|em\s+raz[ãa]o\s+d[aoe]\s+(?:situa[çc][ãa]o\s+de\s+emerg[êe]ncia|calamidade|desastre)"
+    r"|(?:homologa|reconhece)\w*\s+(?:a\s+)?situa[çc][ãa]o\s+de\s+emerg[êe]ncia|tempor[áa]ri[oa])", re.I)
+RE_INSTITUI_ESTRUTURA = re.compile(
+    r"(fica\s+(?:institu[íi]d|criad|constitu[íi]d)|\binstitui\b|\bcria\s+(?:o|a)\b)", re.I)
+RE_ATIVA_COE = re.compile(r"(fica\s+ativad|\bativa\s+(?:o|os|a|as)\b|determina\s+a\s+ativa[çc][ãa]o)", re.I)
+RE_COE = re.compile(r"(centro\s+de\s+opera[çc][õo]es\s+de\s+emerg[êe]ncia|\bCOES?\b)", re.I)
+# O risco que a estrutura nomeia tem de ser um dos que a UF projeta (`risco_sanitario_projetado`).
+FAMILIAS_DA_ESTRUTURA = {
+    "seca": re.compile(r"estiagem|\bseca\b|escassez\s+h[íi]drica", re.I),
+    "calor": re.compile(r"calor", re.I),
+    "fogo": re.compile(r"queimada|fuma[çc]a|inc[êe]ndio\s+florestal", re.I),
+    "arbovirose": re.compile(r"arbovirose|dengue|chikungunya|zika", re.I)}
+
+
+def estrutura_permanente(texto: str, riscos_da_uf=()) -> tuple:
+    """({'F1': bool, 'F2': bool} | None, motivo). Função pura; None quando nada se prova.
+
+    F2: o ato institui estrutura, cita a SES e lhe atribui função (`degrau_f2` cheio). F1: COE da
+    saúde instituído por ato próprio (CIEVS sozinho não credita; ativar COE para um evento é
+    resposta e segue a régua vigente). Nenhuma das duas quando o ato declara emergência, amarra a
+    estrutura a ela ou a extingue com ela. Estrutura que nomeia um risco só vale se a UF o projeta."""
+    t = texto or ""
+    corpo = corpo_do_ato(t)
+    if juiz.RE_DECLARA_ANORMALIDADE.search(corpo) or RE_ESTRUTURA_DA_RESPOSTA.search(corpo):
+        return None, "ato de resposta: declara a emergência ou amarra a estrutura a ela"
+    if not RE_INSTITUI_ESTRUTURA.search(corpo) or RE_ATIVA_COE.search(corpo):
+        return None, "o ato não institui estrutura permanente"
+    f2 = degrau_f2(t)[0] == "NOMEADA_COM_ATRIBUICAO"
+    f1 = "coordenacao" in o_que_institui(t) and bool(RE_COE.search(corpo))
+    if not (f1 or f2):
+        return None, "nem COE da saúde nem estrutura com a saúde e atribuição escrita"
+    nomeados = {f for f, r in FAMILIAS_DA_ESTRUTURA.items() if r.search(t[:1500])}
+    previstos = {f for f, r in FAMILIAS_DA_ESTRUTURA.items() if r.search(" ".join(riscos_da_uf or ()))}
+    if nomeados and not (nomeados & previstos):
+        return None, "risco_fora_do_ciclo"
+    onde = "+".join(x for x, ok in (("F1", f1), ("F2", f2)) if ok)
+    return {"F1": f1, "F2": f2}, f"estrutura permanente ({onde}); vigência presumida: sem cláusula de extinção"
+
+
+_RISCOS_DA_UF = {}
+
+
+def riscos_da_uf(uf: str) -> list:
+    """`risco_sanitario_projetado` da UF em saude_uf.json, lido uma vez. Lista vazia = desconhecido."""
+    if not _RISCOS_DA_UF:
+        _RISCOS_DA_UF["_"] = 1
+        _RISCOS_DA_UF.update({k: (u or {}).get("risco_sanitario_projetado") or []
+                              for k, u in ((ler(ALVO, {}) or {}).get("uf") or {}).items()})
+    return _RISCOS_DA_UF.get(uf) or []
+
+
+def ou_estrutura(v: dict, texto: str, uf: str, riscos=None) -> dict:
+    """O veredito recusado pela trilha do plano, relido pela trilha da estrutura. Sem prova, igual."""
+    f, motivo = estrutura_permanente(texto, riscos_da_uf(uf) if riscos is None else riscos)
+    if f is None:
+        return v
+    v.update(promove=True, motivo=None, natureza="ESTRUTURA_PERMANENTE", categoria="estrutura",
+             funcoes_da_estrutura=f)
+    v["criterios"]["4_natureza"] = {"ok": True, "trecho": motivo}
+    return v
+
+
 def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
                         titulo_da_pista: str = "") -> dict:
     """As sete etapas do juiz, com a etapa 3 da camada de saúde. Devolve o mesmo veredito.
@@ -583,9 +655,9 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     v["natureza"] = natureza
     v["criterios"]["4_natureza"] = {"ok": natureza == "EX_ANTE", "trecho": motivo_nat, **provas}
     if natureza == "RESPOSTA":
-        v["motivo"] = "resposta"; v["encaminhar"] = "atos_resposta"; return v
+        v["motivo"] = "resposta"; v["encaminhar"] = "atos_resposta"; return ou_estrutura(v, texto, uf)
     if natureza != "EX_ANTE":
-        v["motivo"] = "natureza_duvidosa"; return v
+        v["motivo"] = "natureza_duvidosa"; return ou_estrutura(v, texto, uf)
 
     ok, familia, trecho = juiz.etapa5_familia_de_risco(texto)
     v["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None, "trecho": trecho}
@@ -602,7 +674,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     v["criterios"]["5b_risco_do_ciclo"] = {"ok": ok, "titulo": titulo,
                                            "trecho": casou or "nenhum risco do ciclo no título"}
     if not ok:
-        v["motivo"] = "risco_fora_do_ciclo"; return v
+        v["motivo"] = "risco_fora_do_ciclo"; return ou_estrutura(v, texto, uf)
 
     categoria, motivo_cat = juiz.etapa6_categoria(texto, v["data"], True)
     v["criterios"]["6_categoria"] = {"ok": categoria is not None, "trecho": motivo_cat}
@@ -659,11 +731,12 @@ def julgar_pista(p: dict, buscar_fn=None) -> dict:
         # cumpre as duas pontua nas duas, e dois atos que cumprem uma cada pontuam o mesmo.
         # F2 nao depende de o ato instituir estrutura de saude — um decreto do governo que nomeia
         # a SES no comite intersetorial cumpre F2 sem instituir nada na saude.
+        est = v.get("funcoes_da_estrutura")      # trilha da estrutura: só a função que ela provou
         f2, motivo_f2 = degrau_f2(texto)
-        if f2 != "LAC":
+        if f2 != "LAC" and (est is None or est["F2"]):
             v["coordenacao_f2"] = {"degrau": f2, "motivo": motivo_f2,
                                    "atribuicao_citada": atribuicao_citada(texto)}
-        if "coordenacao" in v["institui"]:
+        if "coordenacao" in v["institui"] and (est is None or est["F1"]):
             v["coordenacao"] = dict(zip(("degrau", "motivo"), degrau_coordenacao(texto, v.get("data"))))
             v["coordenacao_f1"] = dict(v["coordenacao"])
         if "instrumento" in v["institui"]:
@@ -1079,6 +1152,52 @@ def autoteste() -> int:
                 (t_sala, "03/10/2024"), (t_dois, "30/03/2026"), (t_ciclo, "15/07/2026"),
                 ("", ""), ("texto qualquer", "01/01/2020"))),
     }
+    # Régua da coordenação (central, 25/10/2026): uma linha da decisão por caso, e os negativos.
+    d_comite = ("DECRETO Nº 100/2026 — O GOVERNADOR DECRETA: Art. 1º Fica instituído o Comitê Estadual "
+                "Intersetorial de Preparação para Eventos Climáticos. Art. 2º Compete à Secretaria de "
+                "Estado da Saúde coordenar o eixo sanitário. Art. 3º O Comitê tem caráter permanente.")
+    d_coe = ("PORTARIA SESA Nº 10/2026 — Secretaria de Estado da Saúde. RESOLVE: Art. 1º Fica instituído "
+             "o Centro de Operações de Emergência em Saúde (COE-Saúde), de caráter permanente.")
+    d_seca = d_comite.replace("Eventos Climáticos", "Estiagem e Seca")
+
+    def fn(txt, riscos=()):
+        return (estrutura_permanente(txt, riscos)[0] or {})
+
+    def ou(txt, riscos=()):
+        return ou_estrutura({"promove": False, "motivo": "resposta", "criterios": {}}, txt, "AM", riscos)
+    casos.update({
+        "régua (a): decreto que institui comitê com a SES e a atribuição escrita credita F2":
+            lambda: fn(d_comite) == {"F1": False, "F2": True},
+        "régua (a): comitê criado por causa da emergência declarada segue resposta":
+            lambda: not fn(d_comite.replace("permanente.", "enquanto perdurar a situação de emergência."))
+                    and not fn(d_comite.replace("Art. 2º", "Art. 2º Em razão da situação de emergência."))
+                    and not fn(d_comite.replace("permanente.", "Extinto o comitê com o fim do evento")),
+        "régua (a): o decreto de situação de emergência não vira estrutura":
+            lambda: not fn(d_comite + " Art. 4º Declara situação de emergência nos municípios afetados."),
+        "régua (a): SES só listada, sem atribuição, não credita":
+            lambda: not fn(d_comite.replace("Compete à Secretaria de Estado da Saúde coordenar o eixo "
+                                            "sanitário", "Composição: Casa Civil; Secretaria de Estado da Saúde")),
+        "régua (a): comitê que não nomeia a SES não credita":
+            lambda: not fn(d_comite.replace("Secretaria de Estado da Saúde", "Casa Civil")),
+        "régua (b): estrutura de seca conta quando a UF projeta seca":
+            lambda: fn(d_seca, ["qualidade da água em estiagem"]) == {"F1": False, "F2": True},
+        "régua (b): estrutura de seca não conta se a UF não projeta seca, nem sem projeção":
+            lambda: not fn(d_seca, ["ondas de calor"]) and not fn(d_seca, []),
+        "régua (c): sem a SES nomeada no ato (MG, GO) não há crédito":
+            lambda: not fn("DECRETO — Institui a Sala de Situação Integrada da Defesa Civil e o Comitê "
+                           "Gestor da Convivência com a Seca. DECRETA: Art. 1º Fica instituído o Comitê "
+                           "Gestor. Compete ao Comitê coordenar.", ["estiagem"]),
+        "régua (d): COE da saúde instituído por ato próprio e permanente credita F1":
+            lambda: fn(d_coe) == {"F1": True, "F2": False},
+        "régua (d): CIEVS sozinho não credita F1":
+            lambda: not fn("PORTARIA SESA — Secretaria de Estado da Saúde. RESOLVE: Art. 1º Fica "
+                           "instituído o Centro de Informações Estratégicas em Vigilância em Saúde (CIEVS)."),
+        "régua (d): ativar o COE para um evento segue a régua vigente, sem crédito novo":
+            lambda: not fn(d_coe.replace("Fica instituído o", "Ativa o")),
+        "trilha da estrutura: veredito recusado vira promovido só com a função provada":
+            lambda: ou(d_coe)["promove"] and ou(d_coe)["funcoes_da_estrutura"] == {"F1": True, "F2": False}
+                    and not ou("Portaria de nomeação de servidor")["promove"],
+    })
     # F68: falha de rede é pendente e derruba o host para o resto da rodada; HTTP é recusa.
     chamadas = []
 
