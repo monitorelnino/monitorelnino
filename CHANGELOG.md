@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1140 · Blog: índice com o texto mais recente
+
+O blog passa a índice, conforme o mockup aprovado pela editoria: aviso de autoria, o texto mais recente de qualquer editoria em destaque e, abaixo, uma coluna por editoria (Legal e financiamento às segundas, Saúde às quintas). Cada texto segue no seu endereço permanente. Entram os textos aprovados de 25/10, 04/10 e 06/10; sai o rascunho de 29/10. Contrato e catálogo atualizados.
+
 ## 2026-10-25 · #1137 · Prazo de reconhecimento medido, sem régua de 30 dias
 
 Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o intervalo entre o decreto e a portaria de reconhecimento (`dias_ate_reconhecimento`) e publica mediana e faixa por UF e no país (`prazo_reconhecimento`). Saem o sexto cartão do topo da Defesa civil e os campos de 30 dias do funil de financiamento. METODOLOGIA §32.6.
