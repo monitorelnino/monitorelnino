@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · D · Suíte de mutação dos portões
+
+`scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.
+
 ## 2026-10-25 · #1147 · Fila de descoberta reentrante
 
 A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.
