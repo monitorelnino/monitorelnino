@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Remove o módulo duplicado de estrutura dos desfechos
+
+`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.
+
 ## 2026-10-25 · #1141 · Imprensa: variantes do componente
 
 Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.
