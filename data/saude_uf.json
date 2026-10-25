@@ -284,8 +284,8 @@
   "ES": {
    "risco_sanitario_projetado": [],
    "consist": "NEUTRO",
-   "data_verificacao": "05/09/2026",
-   "log_ref": "bateria_saude_2026-09-05",
+   "data_verificacao": "25/10/2026",
+   "log_ref": "julgar_saude_25-10-2026",
    "instrumentos": [
     {
      "status": "VIG",
@@ -300,6 +300,19 @@
      "tipo": "recorrente_arboviroses",
      "procedencia_do_documento": "fonte direta",
      "nota_interna": "PDF no portal oficial 'mosquito.saude.es.gov.br'; sem data de edição no documento localizado"
+    },
+    {
+     "status": "NOVO",
+     "orgao": "SES-ES",
+     "doc": "Plano de Contingência das Arboviroses: Dengue, Zika, Chikungunya, Febre Amarela e Febre do Oropouche para os anos de 2026/2027 do município de Itapemirim",
+     "observacao": null,
+     "numero": "6505",
+     "data": "15/09/2026",
+     "url": "https://ioes.dio.es.gov.br/portal/edicoes/download/11475",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "4bc5034379d5b2e8d30b66d751a32efbe78208b8624490c30e21ddfc5c497c6e",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 25/10/2026, codebook 1.7 (24/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
    "status": "VIG",
