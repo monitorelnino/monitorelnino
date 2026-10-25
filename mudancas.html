@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>25/10/2026 · Catálogo: SIH saúde mental e ICSAP marcados como coletados</dt>
+      <dd>O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo. ## 2026-10-25 · D · Suíte de mutação dos portões `scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.</dd>
       <dt>25/10/2026 · Juiz de saúde: o ente municipal também se lê no título do ato</dt>
       <dd>A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.</dd>
       <dt>25/10/2026 · Busca de planos em paralelo por host</dt>
@@ -165,8 +167,6 @@
       <dd>O campo `documento` de Brasília/DF carregava a justificativa metodológica junto com o decreto, e o cartão a publicava ao leitor. A justificativa passa para `nota_metodologica`, que nenhuma página lê; o `documento` fica só com o decreto. Pontuação inalterada. ## 2026-10-23 · Internações por saúde mental e por ICSAP, primeira leitura completa Rodada de dia pela válvula (coleta-dia): `internacoes_saude_mental.json` e `internacoes_icsap.json` nascem com a série mensal por UF, e os demais grupos do SIH e os óbitos registrados se atualizam. Agosto de 2026 segue parcial e fica declarado; ICSAP é piso (METODOLOGIA §120). Peso zero no MARÉ. Só dado, sem mudança de código nem de página.</dd>
       <dt>23/10/2026 · Reconhecimento federal: o mesmo ato em dois links da notícia é um ato só</dt>
       <dd>`parse_noticia_midr` lia cada link de portaria da notícia do MIDR, e o mesmo ato aparece em mais de um: o lote de Acrelândia/AC saía &quot;nº 2.659, nº 2.659&quot; e a página do DOU era buscada duas vezes. O parser passa a ignorar o número já lido. Código +1/−0. ## 2026-10-23 · Busca de planos: o disparo cria os jobs `busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.</dd>
-      <dt>23/10/2026 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz</dt>
-      <dd>A seção &quot;Como os índices funcionam&quot; descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados &quot;já verificados&quot;. O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.</dd>
     </dl>
   </section>
 </main>

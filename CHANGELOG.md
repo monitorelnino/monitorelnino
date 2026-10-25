@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-25 · #PR · Catálogo: SIH saúde mental e ICSAP marcados como coletados
+## 2026-10-25 · #1154 · Catálogo: SIH saúde mental e ICSAP marcados como coletados
 O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
 
 ## 2026-10-25 · D · Suíte de mutação dos portões
