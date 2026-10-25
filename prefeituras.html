@@ -59,28 +59,40 @@
   </div></section>
 
   <section id="quem-deve" aria-labelledby="quemDeveTitulo">
-    <h2 id="quemDeveTitulo" data-conteudo="prefeituras.quem-deve.titulo_da_secao">O que a lei exige de cada governo</h2>
-    <div class="grade-numeros grade-numeros--3 grade-numeros--empilha">
+    <h2 id="quemDeveTitulo" data-conteudo="prefeituras.quem-deve.titulo_da_secao">Os planos de cada governo</h2>
+    <p class="hint" id="planosAbertura" data-conteudo="prefeituras.quem-deve.abertura.molde" data-conteudo-valores="{&quot;n_municipios&quot;:5571}">Quem precisa ter plano, em que prazo e como ele é acompanhado, segundo a legislação federal de proteção e defesa civil. O MARÉ procura plano de contingência em todos os 5.571 municípios.</p>
+    <div class="grade-numeros grade-numeros--2 grade-numeros--empilha">
       <div class="cartao-numero cartao-numero--preparacao" data-cartao="estados">
         <p class="cartao-numero-rotulo" data-conteudo="prefeituras.quem-deve.estados.rotulo">Estados</p>
         <p class="cartao-numero-valor" id="leiValor_estados" data-conteudo="prefeituras.quem-deve.estados.valor">27</p>
-        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.estados.dever">Plano estadual de proteção e defesa civil, revisado a cada dois anos</p>
+        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.estados.dever">Plano Estadual de Proteção e Defesa Civil</p>
+        <dl>
+          <dt data-conteudo="prefeituras.quem-deve.estados.atualizacao.rotulo">Atualização</dt>
+          <dd data-conteudo="prefeituras.quem-deve.estados.atualizacao.texto">A cada dois anos, adequado ao Plano Nacional em até 24 meses depois da publicação dele</dd>
+          <dt data-conteudo="prefeituras.quem-deve.estados.acompanhamento.rotulo">Acompanhamento</dt>
+          <dd data-conteudo="prefeituras.quem-deve.estados.acompanhamento.texto">Prestação de contas anual em audiência pública</dd>
+          <dt data-conteudo="prefeituras.quem-deve.estados.saude.rotulo">Na saúde</dt>
+          <dd data-conteudo-html="prefeituras.quem-deve.estados.saude.texto">A secretaria estadual coordena a vigilância e a resposta a emergências em saúde pública (<a href="https://www.planalto.gov.br/ccivil_03/leis/l8080.htm" target="_blank" rel="noopener">Lei 8.080/1990, art. 17</a>); o <a href="saude.html">MARÉ Saúde</a> registra os planos que os estados publicaram</dd>
+        </dl>
         <p class="cartao-numero-fonte" id="leiFonte_estados"></p>
       </div>
       <div class="cartao-numero cartao-numero--resposta" data-cartao="indicados">
         <p class="cartao-numero-rotulo" data-conteudo="prefeituras.quem-deve.indicados.rotulo">Municípios indicados pela União ao cadastro nacional</p>
         <p class="cartao-numero-valor" id="leiValor_indicados" data-conteudo="prefeituras.quem-deve.indicados.valor">2.095</p>
-        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.indicados.dever">Plano de contingência avaliado e atualizado todo ano, com audiência pública, para os que se inscrevem</p>
+        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.indicados.dever">Plano de contingência de proteção e defesa civil</p>
+        <dl>
+          <dt data-conteudo="prefeituras.quem-deve.indicados.entra.rotulo">Quem entra</dt>
+          <dd id="leiEntra_indicados" data-conteudo-html="prefeituras.quem-deve.indicados.entra.molde" data-conteudo-valores="{&quot;n_indicados&quot;:&quot;2.095&quot;}">Qualquer município com área de risco comprovada pode se inscrever no cadastro nacional, por iniciativa própria ou de outro ente; a União indicou 2.095 (<a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/decreto/d10692.htm" target="_blank" rel="noopener">Decreto 10.692/2021</a>)</dd>
+          <dt data-conteudo="prefeituras.quem-deve.indicados.prazo.rotulo">Prazo</dt>
+          <dd data-conteudo="prefeituras.quem-deve.indicados.prazo.texto">Um ano a partir da inscrição; atualização anual</dd>
+          <dt data-conteudo="prefeituras.quem-deve.indicados.acompanhamento.rotulo">Acompanhamento</dt>
+          <dd data-conteudo="prefeituras.quem-deve.indicados.acompanhamento.texto">Avaliação e prestação de contas anuais em audiência pública</dd>
+          <dt data-conteudo="prefeituras.quem-deve.indicados.conteudo.rotulo">Conteúdo</dt>
+          <dd data-conteudo-html="prefeituras.quem-deve.indicados.conteudo.texto">Oito itens mínimos, listados em <a href="#conteudo-plano">O que o plano pode conter</a></dd>
+        </dl>
         <p class="cartao-numero-fonte" id="leiFonte_indicados"></p>
       </div>
-      <div class="cartao-numero cartao-numero--saude" data-cartao="todos">
-        <p class="cartao-numero-rotulo" data-conteudo="prefeituras.quem-deve.todos.rotulo">Todos os municípios</p>
-        <p class="cartao-numero-valor" id="leiValor_todos" data-conteudo="prefeituras.quem-deve.todos.valor">5.571</p>
-        <p class="cartao-numero-variacao" data-conteudo="prefeituras.quem-deve.todos.dever">Dever geral de prevenção, sem prazo nem plano específico para seca, fogo e calor; o MARÉ procura plano em todos</p>
-        <p class="cartao-numero-fonte" id="leiFonte_todos"></p>
-      </div>
     </div>
-    <p class="note u-mb-0" data-conteudo-html="prefeituras.quem-deve.nota_saude">Na saúde, a lei dá à secretaria estadual o dever de coordenar a vigilância e a resposta a emergências em saúde pública (<a href="https://www.planalto.gov.br/ccivil_03/leis/l8080.htm" target="_blank" rel="noopener">Lei 8.080/1990, art. 17</a>) e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O <a href="saude.html">MARÉ Saúde</a> registra os planos e as estruturas de coordenação que os estados publicaram.</p>
   </section>
 
   <section id="caminho" aria-labelledby="caminhoTitulo">
