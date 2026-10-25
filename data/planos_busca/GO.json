@@ -6,14 +6,14 @@
     "consultado_em": "2026-10-24",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.goiania.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": "HTTP 504",
     "dominio": "www.goiania.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.goiania.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 404",
+    "motivo": null,
     "dominio": "www.goiania.go.gov.br"
    },
    "S13": {
@@ -41,13 +41,13 @@
    },
    "S16": {
     "consultado_em": "2026-10-24",
-    "situacao": "lido",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=anapolis.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "anapolis.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=anapolis.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -77,7 +77,7 @@
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -107,7 +107,7 @@
     "dominio": "caldasnovas.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=caldasnovas.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -131,13 +131,13 @@
    },
    "S16": {
     "consultado_em": "2026-10-24",
-    "situacao": "erro",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=catalao.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "TimeoutError: The read operation timed out",
+    "motivo": null,
     "dominio": "catalao.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=catalao.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -167,10 +167,10 @@
     "dominio": "cidadeocidental.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cidadeocidental.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "cidadeocidental.go.gov.br"
    },
    "S29": {
@@ -197,7 +197,7 @@
     "dominio": "cristalina.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cristalina.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -221,13 +221,13 @@
    },
    "S16": {
     "consultado_em": "2026-10-24",
-    "situacao": "erro",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=formosa.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "formosa.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=formosa.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -257,10 +257,10 @@
     "dominio": "goianira.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=goianira.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "goianira.go.gov.br"
    },
    "S29": {
@@ -281,13 +281,13 @@
    },
    "S16": {
     "consultado_em": "2026-10-24",
-    "situacao": "sem_resultado",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=goianesia.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "goianesia.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-24",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=goianesia.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -319,8 +319,8 @@
    "S25": {
     "consultado_em": "2026-10-24",
     "situacao": "erro",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=inhumas.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 504",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "inhumas.go.gov.br"
    },
    "S29": {
@@ -491,16 +491,16 @@
    },
    "S16": {
     "consultado_em": "2026-10-24",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=novogama.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
-    "dominio": null
+    "dominio": "novogama.go.gov.br"
    },
    "S25": {
     "consultado_em": "2026-10-24",
     "situacao": "erro",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=novogama.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "IncompleteRead: IncompleteRead(57 bytes read)",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "novogama.go.gov.br"
    },
    "S29": {
@@ -611,9 +611,9 @@
    },
    "S16": {
     "consultado_em": "2026-10-24",
-    "situacao": "erro",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=santoantoniododescoberto.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "santoantoniododescoberto.go.gov.br"
    },
    "S25": {
