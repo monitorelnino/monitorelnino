@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=8c4b27a2">
-<link rel="stylesheet" href="assets/base.css?v=db202946">
+<link rel="stylesheet" href="assets/base.css?v=faaf7981">
 <script src="assets/mapas.js?v=c65183c3"></script>
 <script src="assets/semana.js?v=f42ab28a"></script>
 </head>
@@ -144,33 +144,39 @@
   </dialog>
   <section id="estadual">
     <h2 data-conteudo="saude.estadual.titulo_da_secao">A situação de cada estado</h2>
-    <p class="hint" data-conteudo="saude.estadual.abertura">O MARÉ Saúde de cada estado e a faixa em que ele está. Na ficha: o plano de saúde publicado, quem coordena na saúde, a ligação com o governo do estado e o risco previsto nos boletins do Painel El Niño. Estado sem número ainda não foi verificado.</p>
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-<figure class="figura figura--mapa cartao-mapa r-chuva" id="boxMonitor">
+    <p class="hint" data-conteudo="saude.estadual.abertura">Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Escolha um estado no mapa para ver o documento, a data e a fonte.</p>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa figura--dupla cartao-mapa r-chuva" id="boxMonitor">
         <p class="cartao-mapa-familia" data-conteudo="saude.estadual.monitor.familia">MARÉ Saúde</p>
-        <h3 class="figura-titulo" data-conteudo="saude.estadual.monitor.titulo">MARÉ Saúde por estado, de 0 a 100</h3>
-        <p class="figura-sub" data-conteudo="saude.estadual.monitor.legenda">Plano estadual para o ciclo e antecedência, metade cada · estado sem número ainda não verificado</p>
-        <div class="figura-midia"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil com o MARÉ Saúde por estado, de 0 a 100" viewBox="0 0 480 460"></svg></div>
+        <h3 class="figura-titulo" data-conteudo="saude.estadual.monitor.titulo">Plano estadual de saúde para o El Niño, por estado</h3>
+        <p class="figura-sub" data-conteudo="saude.estadual.monitor.legenda">Tipo de plano localizado em cada secretaria estadual de saúde até o corte</p>
+        <div class="figura-midia">
+          <div class="mapa-dupla"><svg id="mapaMonitor" role="img" aria-label="Mapa do Brasil com o tipo de plano de saúde de cada estado" viewBox="0 0 480 460"></svg></div>
+          <div id="listaTiposPlano"></div>
+        </div>
         <div class="map-legend" id="legMonitor"></div>
+        <p class="figura-nota" id="escadaPlano"></p>
         <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.estadual.monitor.resumo">Ver em tabela</summary>
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>MARÉ Saúde</th><th>Faixa</th><th>Plano</th><th>Coordenação na saúde</th><th>Ligação com o governo do estado</th></tr></thead><tbody></tbody></table></div>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Plano</th><th>Coordenação na saúde</th><th>Ligação com o governo do estado</th></tr></thead><tbody></tbody></table></div>
         </details>
       </figure>
-      <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxRiscoSan">
-        <p class="cartao-mapa-familia" data-conteudo="saude.estadual.risco_san.familia">Risco previsto</p>
-        <h3 class="figura-titulo" data-conteudo="saude.estadual.risco_san.titulo">Risco previsto para cada estado</h3>
-        <p class="figura-sub" data-conteudo="saude.estadual.risco_san.legenda">Ciclo 2026/2027 · famílias de risco derivadas dos boletins do Painel El Niño, sem projeção própria</p>
-        <div class="figura-midia"><dl class="faixa-previsto" id="faixaRiscoSan"></dl></div>
-      </figure>
-
     </div>
-    <div class="regions" id="regionsSaude"></div>
-    <p class="note u-mb-0" data-conteudo="saude.estadual.risco_san.nota">Estado sem número ainda não foi verificado. O detalhe de cada um abre em uma janela.</p>
+  </section>
+
+  <!-- 17/10/2026 (HANDOVER_SAUDE_PAGINA §4): uma consulta só, com o componente comum da consulta do
+       município; saem as três buscas por bloco. O arquivo do estado é carregado só quando ele é escolhido. -->
+  <section id="consultaSaude" aria-labelledby="tituloConsultaSaude">
+    <h2 id="tituloConsultaSaude" data-conteudo="saude.consulta.titulo">Consulte a situação do seu município</h2>
+    <div class="tbl-controls" id="consultaSaudeControles">
+      <select id="consultaSaudeUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="consultaSaudeMun" type="text" list="consultaSaudeLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="consultaSaudeLista"></datalist>
+    </div>
+    <div id="consultaSaudeCard" class="meu-card" aria-live="polite" hidden></div>
   </section>
 
   <section id="observado">
     <h2 data-conteudo="saude.observado.titulo_da_secao">O que os órgãos de saúde registram</h2>
-    <p class="hint" data-conteudo="saude.observado.abertura">Esta página não relaciona casos ao El Niño.</p>
     <div id="desfechos" hidden>
       <p data-conteudo="saude.observado.registram.abertura">Cada cartão mostra o último valor de uma doença ou agravo, a faixa habitual para a época e os períodos mais recentes; a cadência e a fonte estão no rodapé de cada um.</p>
       <p class="hint"><label for="ufDesfechos" data-conteudo="saude.observado.registram.seletor">Território</label>
@@ -195,24 +201,7 @@
     </div>
   </section>
 
-  <section id="saude-federal-painel" data-proveniencia="1">
-    <h2 id="saude-federal-h2" data-conteudo="saude.saude-federal-painel.titulo_da_secao">O que o governo federal publicou</h2>
-    <p class="hint" data-conteudo="saude.saude-federal-painel.abertura">Documentos oficiais do governo federal para o ciclo, com link. O que foi anunciado e não localizamos até o corte aparece como linha própria.</p>
-    <ul class="fontes-list" id="listaFederalSaude"></ul>
-  </section>
 
-  <!-- 17/10/2026 (HANDOVER_SAUDE_PAGINA §4): uma consulta só, com o componente comum da consulta do
-       município; saem as três buscas por bloco. O arquivo do estado é carregado só quando ele é escolhido. -->
-  <section id="consultaSaude" aria-labelledby="tituloConsultaSaude">
-    <h2 id="tituloConsultaSaude" data-conteudo="saude.consulta.titulo">Consulte a situação do seu município</h2>
-    <div class="tbl-controls" id="consultaSaudeControles">
-      <select id="consultaSaudeUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
-      <input id="consultaSaudeMun" type="text" list="consultaSaudeLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
-      <datalist id="consultaSaudeLista"></datalist>
-    </div>
-    <div id="consultaSaudeCard" class="meu-card" aria-live="polite" hidden></div>
-    <p class="hint" data-conteudo="saude.consulta.nota">Dengue, chikungunya, calor e plano são do próprio município; síndrome respiratória grave e MARÉ Saúde são do estado, ditos como do estado. Município que a fonte não leu aparece como não lido.</p>
-  </section>
 
 </main>
   <footer class="site-footer">
@@ -227,7 +216,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/saude.js?v=74544b66" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/saude.js?v=8a6f3c97" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

@@ -1978,7 +1978,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(59 trechos)</small></h2>
+<h2>saude <small>(109 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · a mesma medida do MARÉ Legal, aplicada à saúde</td></tr>
@@ -2033,13 +2033,13 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>estadual</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>saude.estadual.titulo_da_secao</code></td><td>A situação de cada estado</td></tr>
-<tr><td>abertura</td><td><code>saude.estadual.abertura</code></td><td>O MARÉ Saúde de cada estado e a faixa em que ele está. Na ficha: o plano de saúde publicado, quem coordena na saúde, a ligação com o governo do estado e o risco previsto nos boletins do Painel El Niño. Estado sem número ainda não foi verificado.</td></tr>
+<tr><td>abertura</td><td><code>saude.estadual.abertura</code></td><td>Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Escolha um estado no mapa para ver o documento, a data e a fonte.</td></tr>
 </table>
 <h3>estadual · monitor</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.estadual.monitor.familia</code></td><td>MARÉ Saúde</td></tr>
-<tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>MARÉ Saúde por estado, de 0 a 100</td></tr>
-<tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>Plano estadual para o ciclo e antecedência, metade cada · estado sem número ainda não verificado</td></tr>
+<tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>Plano estadual de saúde para o El Niño, por estado</td></tr>
+<tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>Tipo de plano localizado em cada secretaria estadual de saúde até o corte</td></tr>
 <tr><td>resumo</td><td><code>saude.estadual.monitor.resumo</code></td><td>Ver em tabela</td></tr>
 </table>
 <h3>topo · preparacao.linha</h3>
@@ -2050,22 +2050,9 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.topo.preparacao.linha_reserva</code></td><td>sem coleta até o corte</td></tr>
 </table>
-<h3>estadual · risco_san</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.estadual.risco_san.familia</code></td><td>Risco previsto</td></tr>
-<tr><td>titulo</td><td><code>saude.estadual.risco_san.titulo</code></td><td>Risco previsto para cada estado</td></tr>
-<tr><td>legenda</td><td><code>saude.estadual.risco_san.legenda</code></td><td>Ciclo 2026/2027 · famílias de risco derivadas dos boletins do Painel El Niño, sem projeção própria</td></tr>
-<tr><td>nota</td><td><code>saude.estadual.risco_san.nota</code></td><td>Estado sem número ainda não foi verificado. O detalhe de cada um abre em uma janela.</td></tr>
-</table>
 <h3>observado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>saude.observado.titulo_da_secao</code></td><td>O que os órgãos de saúde registram</td></tr>
-<tr><td>abertura</td><td><code>saude.observado.abertura</code></td><td>Esta página não relaciona casos ao El Niño.</td></tr>
-</table>
-<h3>saude-federal-painel</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>saude.saude-federal-painel.titulo_da_secao</code></td><td>O que o governo federal publicou</td></tr>
-<tr><td>abertura</td><td><code>saude.saude-federal-painel.abertura</code></td><td>Documentos oficiais do governo federal para o ciclo, com link. O que foi anunciado e não localizamos até o corte aparece como linha própria.</td></tr>
 </table>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2094,12 +2081,243 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>consulta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>saude.consulta.titulo</code></td><td>Consulte a situação do seu município</td></tr>
-<tr><td>nota</td><td><code>saude.consulta.nota</code></td><td>Dengue, chikungunya, calor e plano são do próprio município; síndrome respiratória grave e MARÉ Saúde são do estado, ditos como do estado. Município que a fonte não leu aparece como não lido.</td></tr>
 </table>
 <h3>numerosSaude · n_chik_se</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.numerosSaude.n_chik_se.familia</code></td><td>Chikungunya</td></tr>
 <tr><td>fonte</td><td><code>saude.numerosSaude.n_chik_se.fonte</code></td><td>Sinan (Ministério da Saúde)</td></tr>
+</table>
+<h3>estadual · tipo.NOVO</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.NOVO</code></td><td>Plano feito para este El Niño</td></tr>
+</table>
+<h3>estadual · tipo.READ</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.READ</code></td><td>Plano anual atualizado para o ciclo</td></tr>
+</table>
+<h3>estadual · tipo.VIG</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.VIG</code></td><td>Plano recorrente, sem atualização para o ciclo</td></tr>
+</table>
+<h3>estadual · tipo.ELAB</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.ELAB</code></td><td>Plano em elaboração</td></tr>
+</table>
+<h3>estadual · tipo.LAC</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.LAC</code></td><td>Plano não localizado até o corte</td></tr>
+</table>
+<h3>estadual · tipo.NAO_VERIFICADO</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.NAO_VERIFICADO</code></td><td>Ainda não verificado</td></tr>
+</table>
+<h3>estadual · lista</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>saude.estadual.lista.titulo</code></td><td>Estados por tipo de plano</td></tr>
+</table>
+<h3>estadual · lista.contagem</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.lista.contagem</code></td><td><span class="molde">{n|zero estados|um estado|{n} estados}</span><br><span class="ex">exemplo: 3 estados</span></td></tr>
+</table>
+<h3>estadual · lista.botao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.lista.botao</code></td><td><span class="molde">Abrir a ficha de {estado}</span><br><span class="ex">exemplo: Abrir a ficha de 3</span></td></tr>
+</table>
+<h3>estadual · escada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.escada</code></td><td><span class="molde">A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, {NOVO}; atualizado, {READ}; recorrente, {VIG}; em elaboração, {ELAB}; não localizado, {LAC}.</span><br><span class="ex">exemplo: A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, 3; atualizado, 3; recorrente, 3; em elaboração, 3; não localizado, 3.</span></td></tr>
+</table>
+<h3>estadual · ficha.plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.plano</code></td><td>Plano estadual de saúde</td></tr>
+</table>
+<h3>estadual · ficha.coordenacao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.coordenacao</code></td><td>Coordenação na saúde</td></tr>
+</table>
+<h3>estadual · ficha.governo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.governo</code></td><td>Ligação com o governo do estado</td></tr>
+</table>
+<h3>estadual · ficha.nao_verificada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.nao_verificada</code></td><td>ainda não verificada</td></tr>
+</table>
+<h3>estadual · ficha.sem_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.sem_plano</code></td><td>Ainda não verificado nesta camada: a busca de saúde não foi executada para o estado, e isso não é ausência de documento.</td></tr>
+</table>
+<h3>estadual · ficha.camada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.camada</code></td><td>Saúde no plano municipal de defesa civil</td></tr>
+</table>
+<h3>estadual · ficha.camada_nota</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.camada_nota</code></td><td>publicada ao lado da nota, não pontua</td></tr>
+</table>
+<h3>estadual · ficha.resposta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.resposta</code></td><td>Emergência em saúde pública</td></tr>
+</table>
+<h3>estadual · ficha.resposta_sim</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.resposta_sim</code></td><td>declarada no ciclo</td></tr>
+</table>
+<h3>estadual · ficha.resposta_nao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.resposta_nao</code></td><td>nenhuma localizada desde 29 de junho de 2026</td></tr>
+</table>
+<h3>estadual · ficha.fonte_oficial</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.fonte_oficial</code></td><td>fonte oficial</td></tr>
+</table>
+<h3>consulta · rotulo.dengue</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.dengue</code></td><td>Dengue</td></tr>
+</table>
+<h3>consulta · rotulo.chikungunya</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.chikungunya</code></td><td>Chikungunya</td></tr>
+</table>
+<h3>consulta · rotulo.calor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.calor</code></td><td>Calor</td></tr>
+</table>
+<h3>consulta · rotulo.srag</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.srag</code></td><td>Internações respiratórias graves (estado)</td></tr>
+</table>
+<h3>consulta · rotulo.plano_estado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.plano_estado</code></td><td>MARÉ Saúde (estado)</td></tr>
+</table>
+<h3>consulta · rotulo.plano_municipio</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.plano_municipio</code></td><td>Plano de contingência do município</td></tr>
+</table>
+<h3>consulta · arbo.nivel_1</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_1</code></td><td>Nível 1 (baixa atividade)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_2</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_2</code></td><td>Nível 2 (atenção)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_3</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_3</code></td><td>Nível 3 (alerta)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_4</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_4</code></td><td>Nível 4 (emergência)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_outro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_outro</code></td><td><span class="molde">Nível {n}</span><br><span class="ex">exemplo: Nível 3</span></td></tr>
+</table>
+<h3>consulta · arbo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.arbo.nota</code></td><td><span class="molde">Semana {semana} · InfoDengue (Fiocruz e FGV)</span><br><span class="ex">exemplo: Semana 3 · InfoDengue (Fiocruz e FGV)</span></td></tr>
+</table>
+<h3>consulta · arbo.nao_lido</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nao_lido</code></td><td><span class="molde">Sem dado do InfoDengue para o município na semana {semana}</span><br><span class="ex">exemplo: Sem dado do InfoDengue para o município na semana 3</span></td></tr>
+</table>
+<h3>consulta · arbo.nota_nao_lido</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nota_nao_lido</code></td><td><span class="molde">InfoDengue (Fiocruz e FGV) · {data}</span><br><span class="ex">exemplo: InfoDengue (Fiocruz e FGV) · 3</span></td></tr>
+</table>
+<h3>consulta · calor.com_excesso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.calor.com_excesso</code></td><td><span class="molde">Excesso de calor {classe}</span><br><span class="ex">exemplo: Excesso de calor 3</span></td></tr>
+</table>
+<h3>consulta · calor.sem_excesso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.calor.sem_excesso</code></td><td>Sem excesso de calor nesta semana</td></tr>
+</table>
+<h3>consulta · calor.sem_coleta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.calor.sem_coleta</code></td><td>Sem coleta até o corte</td></tr>
+</table>
+<h3>consulta · calor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.calor.nota</code></td><td><span class="molde">Painel de calor do Ministério da Saúde · {data}</span><br><span class="ex">exemplo: Painel de calor do Ministério da Saúde · 3</span></td></tr>
+</table>
+<h3>consulta · srag.valor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.srag.valor</code></td><td><span class="molde">{n|zero internações|uma internação|{n} internações} no estado na semana {semana}</span><br><span class="ex">exemplo: 3 internações no estado na semana 3</span></td></tr>
+</table>
+<h3>consulta · srag.sem_coleta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.srag.sem_coleta</code></td><td>Sem coleta até o corte</td></tr>
+</table>
+<h3>consulta · srag</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.srag.nota</code></td><td><span class="molde">SIVEP-Gripe (Ministério da Saúde) · {data}</span><br><span class="ex">exemplo: SIVEP-Gripe (Ministério da Saúde) · 3</span></td></tr>
+</table>
+<h3>consulta · plano_estado.ficha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano_estado.ficha</code></td><td>ver a ficha do estado</td></tr>
+</table>
+<h3>consulta · plano_estado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.plano_estado.nota</code></td><td><span class="molde">MARÉ Saúde · {data}</span><br><span class="ex">exemplo: MARÉ Saúde · 3</span></td></tr>
+</table>
+<h3>consulta · plano.sem_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.sem_plano</code></td><td>Não localizamos plano de contingência para este município até a data de corte</td></tr>
+</table>
+<h3>consulta · plano.com_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.com_plano</code></td><td><span class="molde">Plano de contingência: {documento}</span><br><span class="ex">exemplo: Plano de contingência: 3</span></td></tr>
+</table>
+<h3>consulta · plano.com_plano_data</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.com_plano_data</code></td><td><span class="molde">Plano de contingência: {documento}, {data}</span><br><span class="ex">exemplo: Plano de contingência: 3, 3</span></td></tr>
+</table>
+<h3>consulta · plano.abrir</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.abrir</code></td><td>abrir o documento</td></tr>
+</table>
+<h3>consulta · plano.nao_verificado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.nao_verificado</code></td><td>Município ainda não verificado</td></tr>
+</table>
+<h3>consulta · plano.saude_no_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.saude_no_plano</code></td><td><span class="molde">O plano trata a saúde (leitura página {pagina})</span><br><span class="ex">exemplo: O plano trata a saúde (leitura página 3)</span></td></tr>
+</table>
+<h3>consulta · plano.saude_no_plano_sem_pagina</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.saude_no_plano_sem_pagina</code></td><td>O plano trata a saúde</td></tr>
+</table>
+<h3>consulta · plano.sem_leitura</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.sem_leitura</code></td><td>Sem leitura da saúde no plano até o corte</td></tr>
+</table>
+<h3>consulta · plano.ver_inicial</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.ver_inicial</code></td><td>ver a ficha na página inicial</td></tr>
+</table>
+<h3>posicao · acima</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.acima</code></td><td>acima da faixa habitual para a época</td></tr>
+</table>
+<h3>posicao · dentro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.dentro</code></td><td>dentro da faixa habitual para a época</td></tr>
+</table>
+<h3>posicao · abaixo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.abaixo</code></td><td>abaixo da faixa habitual para a época</td></tr>
+</table>
+<h3>posicao · sem_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.sem_faixa</code></td><td>sem faixa habitual para a época</td></tr>
+</table>
+<h3>consulta · sem_lista</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.sem_lista</code></td><td>Ainda não temos a lista de municípios deste estado.</td></tr>
 </table>
 <h3>numerosSaude · notificacoes</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
