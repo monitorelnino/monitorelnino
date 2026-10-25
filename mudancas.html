@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>25/10/2026 · Fila de descoberta reentrante</dt>
+      <dd>A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.</dd>
       <dt>25/10/2026 · Imprensa: variantes do componente</dt>
       <dd>Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.</dd>
       <dt>25/10/2026 · Defesa civil: escala menor só no topo</dt>
@@ -165,8 +167,6 @@
       <dd>As colunas &quot;Estados&quot; e &quot;Fenômeno&quot; da tabela de avisos do Inmet saíam em travessão nas três linhas sem aviso. Grau com zero município passa a dizer &quot;nenhum&quot;, que é o zero medido; a linha &quot;Sem aviso&quot;, que não é grau de aviso, diz &quot;não há aviso&quot;. O portão que já proibia travessão em cartão, ladrilho e ficha passa a olhar também a célula de tabela de figura, o quinto lugar onde o leitor o via.</dd>
       <dt>23/10/2026 · Repositórios estaduais de planos entram como pistas, não como plano direto</dt>
       <dd>`atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.</dd>
-      <dt>23/10/2026 · Busca de planos em matriz por grupo de UF</dt>
-      <dd>A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.</dd>
     </dl>
   </section>
 </main>
