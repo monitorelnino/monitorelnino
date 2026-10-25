@@ -14,6 +14,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-25 · B2 · Proteja-se: fonte por orientação
 
 Cada orientação do guia que o registro oficial preserva (15 de 50) mostra sua fonte e a data da consulta, lidas de `data/orientacoes_oficiais.json`. As demais seguem sem marca, até a fonte oficial ser localizada.
+## 2026-10-25 · #1149 · Juiz de saúde: o ente municipal também se lê no título do ato
+
+A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.
+
 ## 2026-10-25 · #1150 · Busca de planos em paralelo por host
 
 A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.
