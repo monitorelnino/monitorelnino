@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1137 · Prazo de reconhecimento medido, sem régua de 30 dias
+
+Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o intervalo entre o decreto e a portaria de reconhecimento (`dias_ate_reconhecimento`) e publica mediana e faixa por UF e no país (`prazo_reconhecimento`). Saem o sexto cartão do topo da Defesa civil e os campos de 30 dias do funil de financiamento. METODOLOGIA §32.6.
+
 ## 2026-10-25 · #1134 · Blog: como os textos são produzidos
 
 METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.
