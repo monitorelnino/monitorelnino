@@ -1,5 +1,5 @@
 {
-  "medido_em_utc": "2026-10-25T03:56:40Z",
+  "medido_em_utc": "2026-10-25T04:23:21Z",
   "ua": "Monitor El Nino Brasil (monitorelnino.com.br; contato@futuraevidencelab.com.br)",
   "sondagens": [
     {
@@ -7,7 +7,7 @@
       "alvo": "ftp.datasus.gov.br",
       "status": "ok",
       "entradas": 25,
-      "s": 2.2
+      "s": 2.3
     },
     {
       "id": "sinan_finais_listagem",
@@ -21,21 +21,85 @@
         "LEPTBR03.dbc",
         "LEPTBR04.dbc"
       ],
-      "s": 1.7
+      "s": 2.1
     },
     {
       "id": "sinan_lept_tamanho",
       "alvo": "/dissemin/publicos/SINAN/DADOS/FINAIS/LEPTBR00.dbc",
       "status": "ok",
       "bytes": 558018,
-      "s": 1.0
+      "s": 1.1
     },
     {
       "id": "sinan_lept_decodificar",
       "alvo": "/dissemin/publicos/SINAN/DADOS/FINAIS/LEPTBR00.dbc",
-      "status": "falha",
-      "detalhe": "ModuleNotFoundError: No module named 'dbc'",
-      "s": 3.5
+      "status": "ok",
+      "colunas_n": 100,
+      "colunas": [
+        "ID_MUNICIP",
+        "ID_UNIDADE",
+        "CS_RACA",
+        "DT_NOTIFIC",
+        "SG_UF_NOT",
+        "SEM_NOT",
+        "NU_ANO",
+        "CS_ESCOLAR",
+        "NU_IDADE",
+        "ANO_NASC",
+        "SEM_PRI",
+        "DT_SIN_PRI",
+        "ID_REGIONA",
+        "CS_SEXO",
+        "ID_MN_RESI",
+        "ID_RG_RESI",
+        "ID_EV_NOT",
+        "ID_DG_NOT",
+        "ID_PAIS",
+        "SG_UF",
+        "ANT_CB_LIM",
+        "ANT_CB_CAR",
+        "ANT_CB_CRI",
+        "ANT_CB_COR",
+        "ANT_CB_FOS",
+        "ANT_CB_LIX",
+        "ANT_CB_LAM",
+        "ANT_CB_LAV",
+        "ANT_OCUPAC",
+        "ANT_DT_INV",
+        "CLI_ICTERI",
+        "CLI_OUTRAS",
+        "CLI_MENING",
+        "CLI_HEMORR",
+        "CLI_CARDIA",
+        "CLI_RESPIR",
+        "CLI_DT_ATE",
+        "ANT_ANIMAI",
+        "ANT_HUMANO",
+        "ANT_CB_OUT",
+        "ANT_CB_ROE",
+        "ATE_MUNICI",
+        "ATE_UF",
+        "ATE_DT_ALT",
+        "ATE_HOSP",
+        "ATE_DT_INT",
+        "CLI_DESC_O",
+        "CLI_CONGES",
+        "CLI_VOMITO",
+        "CLI_RENAL",
+        "CLI_DIARRE",
+        "CLI_MIALGI",
+        "CLI_CEFALE",
+        "CLI_FEBRE",
+        "LAB_S_2",
+        "LAB_S_1",
+        "LAB_DT_2",
+        "LAB_MICRO",
+        "LAB_DT_1",
+        "LAB_MACRO"
+      ],
+      "linhas": 11098,
+      "bytes": 558018,
+      "s": 5.2
     },
     {
       "id": "sih_listagem",
@@ -47,21 +111,21 @@
         "RDAC0802.dbc",
         "RDAC0803.dbc"
       ],
-      "s": 2.5
+      "s": 2.6
     },
     {
       "id": "robots_sisab",
       "alvo": "sisab.saude.gov.br",
       "status": "http_erro",
       "http": 404,
-      "s": 0.9
+      "s": 0.7
     },
     {
       "id": "robots_tabnet",
       "alvo": "tabnet.datasus.gov.br",
       "status": "falha",
       "detalhe": "URLError: <urlopen error timed out>",
-      "s": 30.3
+      "s": 30.2
     }
   ]
 }
