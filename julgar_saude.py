@@ -610,6 +610,23 @@ def ou_estrutura(v: dict, texto: str, uf: str, riscos=None) -> dict:
     return v
 
 
+# Documento de MUNICÍPIO não entra na camada estadual, e o diário do estado publica atos dos dois: em
+# 25/10/2026, ao rejulgar a fila, o plano de arboviroses "do município de Itapemirim" (ioes.dio.es.gov.br)
+# virou instrumento da SES-ES e o guia do CIEVS de Manaus (semsa.manaus.am.gov.br) virou F2 do AM.
+RE_ENTE_MUNICIPAL = re.compile(
+    r"((?-i:[Mm]unic[íi]pio\s+de\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ])|prefeitura\s+municipal|secretaria\s+municipal\s+de\s+sa[úu]de"
+    r"|plano\s+municipal)", re.I)
+
+
+def e_do_municipio(texto: str, url: str):
+    """O que mostra que o documento é de um município (host ou cabeçalho), ou None. Função pura."""
+    host = urllib.parse.urlparse(url or "").netloc.lower()
+    if host_de_municipio(host):
+        return f"host de município: {host}"
+    m = RE_ENTE_MUNICIPAL.search((texto or "")[:1200])
+    return m.group(0) if m else None
+
+
 def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
                         titulo_da_pista: str = "") -> dict:
     """As sete etapas do juiz, com a etapa 3 da camada de saúde. Devolve o mesmo veredito.
@@ -650,6 +667,11 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if trecho.startswith("exceção de autoridade"):
         # Condição (3) da decisão: a observação acompanha o registro, e sai quando o ato aparecer.
         v["excecao_autoridade"] = "sem ato de aprovação localizado"
+
+    municipal = e_do_municipio(texto, url)
+    v["criterios"]["3b_ente_estadual"] = {"ok": not municipal, "trecho": municipal or "documento do estado"}
+    if municipal:
+        v["motivo"] = "ente_nao_confirmado"; return v
 
     natureza, motivo_nat, provas = juiz.etapa4_natureza(texto)
     v["natureza"] = natureza
@@ -1194,6 +1216,14 @@ def autoteste() -> int:
                            "instituído o Centro de Informações Estratégicas em Vigilância em Saúde (CIEVS)."),
         "régua (d): ativar o COE para um evento segue a régua vigente, sem crédito novo":
             lambda: not fn(d_coe.replace("Fica instituído o", "Ativa o")),
+        "ente: o plano 'do município de Itapemirim' não é da SES, mesmo no diário do estado":
+            lambda: bool(e_do_municipio("Plano de Contingência das Arboviroses do município de Itapemirim 2026",
+                                        "https://ioes.dio.es.gov.br/portal/edicoes/download/11475")),
+        "ente: o host de município (Manaus) não entra na camada estadual":
+            lambda: bool(e_do_municipio("Guia CIEVS", "https://www.manaus.am.gov.br/semsa/g.pdf")),
+        "ente: documento da SES que fala dos municípios continua estadual":
+            lambda: e_do_municipio("Secretaria de Estado da Saúde. Plano Estadual: apoio aos municípios e "
+                                   "ao município de referência regional.", "https://saude.es.gov.br/p.pdf") is None,
         "trilha da estrutura: veredito recusado vira promovido só com a função provada":
             lambda: ou(d_coe)["promove"] and ou(d_coe)["funcoes_da_estrutura"] == {"F1": True, "F2": False}
                     and not ou("Portaria de nomeação de servidor")["promove"],

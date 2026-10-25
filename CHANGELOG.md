@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
+
+Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.
+
 ## 2026-10-25 · #PR · Regime de prioridade: checagem pré-noite respeita os elos suspensos
 
 A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendendo o elo, e a sua falha ficava vermelha sem razão. Agora ela pergunta à mesma função que a guarda e o despachante usam (`janela_da_noite.py --elo-suspenso`) e pula as etapas quando está suspensa. Metodologia §102: uma linha sobre o regime. Linhas líquidas: código +6/−1 (workflow), texto +2.
