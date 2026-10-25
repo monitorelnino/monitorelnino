@@ -9369,7 +9369,25 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_srag_sivep.py",
+   "inicio": "2026-10-25T01:12:33",
+   "duracao_s": 8.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-24",
+   "script": "coletar_sg_esus.py",
+   "inicio": "2026-10-25T01:12:41",
+   "duracao_s": 7.4,
+   "itens": null,
+   "status": "erro",
+   "erro": "return opener.open(url, data, timeout)"
   }
  ],
- "atualizado_em": "2026-10-25T00:32:56"
+ "atualizado_em": "2026-10-25T01:12:41"
 }
