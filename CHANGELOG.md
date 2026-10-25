@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Imprensa: acumulados do ciclo, uma função por número
+
+`data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.
+
 ## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
 
 Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.

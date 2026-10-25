@@ -126,6 +126,53 @@ def sem_dado(ident, rotulo, grupo, motivo, fonte=None, url_fonte=None):
                   grupo=grupo)
 
 
+# ── acumulados do ciclo (HANDOVER_IMPRENSA_REDESENHO §2) ────────────────────────────────────
+# Uma função por número. Sem dado é `sem_coleta` com o motivo, nunca zero.
+INICIO_CICLO_IMP = date(2026, 6, 29)
+
+
+def acumulado(ident, valor, unidade, inicio, fim, n, fonte, motivo=None):
+    return {"id": ident, "valor": valor, "unidade": unidade, "periodo_inicio": inicio,
+            "periodo_fim": fim, "n": n, "fonte": fonte, "sem_coleta": valor is None, "motivo": motivo}
+
+
+def acumulado_focos(focos_ref, corte):
+    """Focos de calor do INPE, somados dia a dia desde 29/06 até o corte, na série publicada."""
+    fonte = "INPE — Programa Queimadas (série diária, satélite de referência)"
+    serie = (focos_ref or {}).get("serie") or {}
+    ini, fim = INICIO_CICLO_IMP.isoformat(), corte.isoformat()
+    dias = {k: v["total"] for k, v in serie.items()
+            if isinstance(v, dict) and v.get("total") is not None and ini <= k <= fim}
+    if not dias:
+        return acumulado("focos_desde_29_06", None, "focos", ini, fim, 0, fonte,
+                         "a série diária do INPE não cobre o período até o corte")
+    return acumulado("focos_desde_29_06", sum(dias.values()), "focos", min(dias), max(dias), len(dias), fonte)
+
+
+def acumulado_planos(municipios, corte):
+    """Municípios com plano localizado pelo MARÉ Legal, até o corte (sem recorte de data: é estoque)."""
+    n = sum(1 for m in municipios if m.get("categoria") == "plano")
+    return acumulado("municipios_plano_localizado", n, "municípios", None, corte.isoformat(), n,
+                     "MARÉ Legal (planos municipais localizados)")
+
+
+def acumulado_inmet(corte):
+    return acumulado("dias_alerta_laranja_vermelho", None, "dias", INICIO_CICLO_IMP.isoformat(), corte.isoformat(),
+                     0, "Inmet (avisos meteorológicos)",
+                     "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes")
+
+
+def acumulado_faixas(corte):
+    return acumulado("estados_acima_da_faixa_por_doenca", None, "estados", INICIO_CICLO_IMP.isoformat(),
+                     corte.isoformat(), 0, "MARÉ Saúde (semanas fechadas por UF e doença)",
+                     "a série semanal por UF e doença não chega ao topo de saúde até o corte")
+
+
+def acumulados(corte, focos_ref, municipios) -> list:
+    return [acumulado_focos(focos_ref, corte), acumulado_planos(municipios, corte),
+            acumulado_inmet(corte), acumulado_faixas(corte)]
+
+
 # ── os cartões ──────────────────────────────────────────────────────────────────────────────
 
 def cartao_planos(municipios, corte):
@@ -570,6 +617,7 @@ def montar(corte: date) -> dict:
     }
     sem_dado = [c["rotulo"] for c in cartoes if c["sem_coleta"]]
     return {
+        "acumulado": acumulados(corte, ler("focos_referencia.json", {}) or {}, municipios),
         "_governanca":
             "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. "
             "02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página "
@@ -751,6 +799,12 @@ def autoteste() -> int:
            linhas[1]["valor"] == "" and linhas[1]["referência"] == "sem dado nesta edição")
 
     # Os não calculáveis precisam DIZER por quê — senão viram silêncio.
+    # §2 do handover: cada acumulado soma só o que a fonte publica no período; sem dado é lacuna, nunca zero.
+    _ref = {"serie": {"2026-06-28": {"total": 9}, "2026-06-29": {"total": 4}, "2026-07-01": {"total": 6}}}
+    _f = acumulado_focos(_ref, date(2026, 7, 1))
+    checar("acumulado de focos soma só desde 29/06 e declara os dias", _f["valor"] == 10 and _f["n"] == 2 and _f["periodo_inicio"] == "2026-06-29")
+    checar("acumulado sem série é lacuna, nunca zero", acumulado_focos({}, date(2026, 7, 1))["sem_coleta"] is True)
+    checar("acumulado de planos conta só 'plano'", acumulado_planos([{"categoria": "plano"}, {"categoria": "nao_verificado"}], date(2026, 7, 1))["valor"] == 1)
     checar("todo não calculável declara o motivo",
            all(x.get("por_que_nao") for x in NAO_CALCULAVEIS))
 
