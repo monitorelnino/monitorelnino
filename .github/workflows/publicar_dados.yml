@@ -373,7 +373,7 @@ jobs:
               python3 recalcular_mare.py --write || true
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
               python3 scripts/commit_do_elo.py publicar --somente-indice 2>/dev/null \
-                || git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/ blog/ assets/ CITATION.cff *.html *.pdf 2>/dev/null \
+                || git add -A data/ dados-abertos/ feeds/ selos/ docs/ blog/ assets/ CITATION.cff *.html *.pdf 2>/dev/null \
                 || true
               if ! GIT_EDITOR=true git rebase --continue; then
                 git rebase --abort || true
