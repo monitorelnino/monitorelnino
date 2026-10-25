@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-25 · B3 · Defesa civil: prazo mediano no lugar do cartão de 30 dias
 O sexto cartão do topo passa a mostrar o prazo mediano entre decreto e reconhecimento, medido em `data/resposta/por_uf.json` (METODOLOGIA §32.6), com o mesmo componente. Sai a contagem de 30 dias, retirada pela A2 em #1137. Remove o campo `dias_sem_reconhecimento` da página e do verificador de runtime.
+## 2026-10-25 · #1146 · Remove o módulo duplicado de estrutura dos desfechos
+
+`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.
 ## 2026-10-25 · #1145 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF
 
 `municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>25/10/2026 · Remove o módulo duplicado de estrutura dos desfechos</dt>
+      <dd>`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.</dd>
       <dt>25/10/2026 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF</dt>
       <dd>`municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.</dd>
       <dt>25/10/2026 · Imprensa: acumulados do ciclo, uma função por número</dt>
@@ -165,8 +167,6 @@
       <dd>`buscar_planos_fontes_abertas.py` consulta, por município, LexML, Wayback, Common Crawl e dados.gov.br; achado entra pela porta única e vai ao juiz. Recusa e erro ficam nomeados, nunca viram &quot;sem resultado&quot;. O Querido Diário passa a reportar todas as portas que falharam. Alvos das 27 capitais em `data/capitais_alvos.json`.</dd>
       <dt>22/10/2026 · Busca dirigida pela relação do S2iD</dt>
       <dd>A relação nominal do módulo PLANCON do S2iD (SEDEC, por LAI) entra como camada declarada e datada, com o campo `s2id_plancon` em `declarado_nacional.json` e sem efeito na nota. A fila de 571 municípios sem documento ganha o portal da prefeitura como canal, ao lado do Querido Diário e da busca web, que passa a aceitar a fila. Toda pista entra pela porta única.</dd>
-      <dt>23/10/2026 · Monitor de riscos: a tabela de avisos diz em palavras o que o travessão calava</dt>
-      <dd>As colunas &quot;Estados&quot; e &quot;Fenômeno&quot; da tabela de avisos do Inmet saíam em travessão nas três linhas sem aviso. Grau com zero município passa a dizer &quot;nenhum&quot;, que é o zero medido; a linha &quot;Sem aviso&quot;, que não é grau de aviso, diz &quot;não há aviso&quot;. O portão que já proibia travessão em cartão, ladrilho e ficha passa a olhar também a célula de tabela de figura, o quinto lugar onde o leitor o via.</dd>
     </dl>
   </section>
 </main>
