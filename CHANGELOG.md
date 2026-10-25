@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1150 · Busca de planos em paralelo por host
+
+A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.
+
 ## 2026-10-25 · #1147 · Fila de descoberta reentrante
 
 A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.
