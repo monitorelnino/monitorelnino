@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-25 · #PR · Imprensa: acumulados do ciclo, uma função por número
+## 2026-10-25 · #1142 · Imprensa: acumulados do ciclo, uma função por número
 
 `data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.
 
