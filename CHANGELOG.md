@@ -13,6 +13,20 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-25 · B3 · Defesa civil: prazo mediano no lugar do cartão de 30 dias
 O sexto cartão do topo passa a mostrar o prazo mediano entre decreto e reconhecimento, medido em `data/resposta/por_uf.json` (METODOLOGIA §32.6), com o mesmo componente. Sai a contagem de 30 dias, retirada pela A2 em #1137. Remove o campo `dias_sem_reconhecimento` da página e do verificador de runtime.
+## 2026-10-25 · #1141 · Imprensa: variantes do componente
+
+Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.
+
+## 2026-10-25 · #1133 · Defesa civil: escala menor só no topo
+
+Os seis cartões do topo da Defesa civil passam à escala menor pedida pela editoria (24/10): regra `.dc-topo .cartao-numero` e `.dc-topo .cartao-numero-valor` em `assets/base.css`, sem classe nova. Os demais cartões de número (Imprensa, Proteja-se, Saúde, Monitor de riscos) não mudam. Linhas líquidas: +4/−0.
+## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
+
+Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.
+
+## 2026-10-25 · #1140 · Blog: índice com o texto mais recente
+
+O blog passa a índice, conforme o mockup aprovado pela editoria: aviso de autoria, o texto mais recente de qualquer editoria em destaque e, abaixo, uma coluna por editoria (Legal e financiamento às segundas, Saúde às quintas). Cada texto segue no seu endereço permanente. Entram os textos aprovados de 25/10, 04/10 e 06/10; sai o rascunho de 29/10. Contrato e catálogo atualizados.
 
 ## 2026-10-25 · #1137 · Prazo de reconhecimento medido, sem régua de 30 dias
 
@@ -21,6 +35,10 @@ Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o
 ## 2026-10-25 · #1134 · Blog: como os textos são produzidos
 
 METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.
+
+## 2026-10-25 · #1138 · Main verde: links do Para gestores lidos do catálogo
+
+O autoteste de âncoras reprovava a main desde o #1132, que moveu os links do Para gestores para o catálogo. Correção na origem: o passo "Antes da emergência" aponta para `financiamento.html#antes`, e o autoteste lê o catálogo e espera as âncoras `antes` e `depois`. Código +7/−4.
 
 ## 2026-10-25 · #1132 · Para gestores: sai "Como os recursos chegam"; os dois caminhos vão ao passo 6
 
