@@ -1134,6 +1134,10 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .dc-topo{margin:var(--sp-5) 0 var(--sp-6);}
 .dc-topo-periodo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
   text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0;}
+/* 24/10/2026 (editoria, correção 20:15): só o topo da Defesa civil usa a escala menor do cartão de
+   número; os demais cartões ficam como estão. Variante por contêiner, sem classe nova. */
+.dc-topo .cartao-numero{border-top-width:2px; padding:var(--sp-2) var(--sp-3); gap:var(--sp-1); border-radius:var(--radius);}
+.dc-topo .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 /* Busca por município dentro do "Ver em lista": o mapa responde "onde", o campo responde "e a
    minha cidade?". O rótulo é visível de propósito — quem abriu a lista precisa saber o que o campo
    faz, e um campo de busca sem rótulo visível obriga a adivinhar pelo placeholder, que desaparece
