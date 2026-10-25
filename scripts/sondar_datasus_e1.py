@@ -65,21 +65,27 @@ def _ftp_baixar(caminho: str, destino: str) -> None:
             ftp.retrbinary(f"RETR {caminho}", f.write)
 
 
+def _garantir_leitor() -> dict:
+    """Instala o leitor .dbc (pyreaddbc, GPL-3, só no runner de medição) e devolve o resultado do pip."""
+    import subprocess
+    r = subprocess.run([sys.executable, "-m", "pip", "install", "-q", "--break-system-packages", "pyreaddbc"],
+                       capture_output=True, text=True, timeout=300)
+    return {"pip_rc": r.returncode, "pip_erro": (r.stderr or "")[-300:], "python": sys.version.split()[0]}
+
+
 def _ler_dbc(caminho_local: str) -> dict:
     try:
-        import dbc as leitor  # pacote pyreaddbc
+        import pyreaddbc
+        import dbfread
     except ImportError:
-        import subprocess
-        subprocess.run([sys.executable, "-m", "pip", "install", "-q", "--break-system-packages", "pyreaddbc"], check=False)
-        import dbc as leitor  # noqa: F401
-    import dbfread  # dependência de pyreaddbc para ler o .dbf convertido
+        _garantir_leitor()
+        import pyreaddbc  # noqa: F401
+        import dbfread
     tmp_dbf = caminho_local + ".dbf"
-    leitor.dbc2dbf(caminho_local, tmp_dbf)
+    pyreaddbc.dbc2dbf(caminho_local, tmp_dbf)
     tabela = dbfread.DBF(tmp_dbf, load=False, encoding="latin-1")
     colunas = [c.name for c in tabela.fields]
-    n = 0
-    for _ in tabela:
-        n += 1
+    n = sum(1 for _ in tabela)
     return {"colunas_n": len(colunas), "colunas": colunas[:60], "linhas": n}
 
 
