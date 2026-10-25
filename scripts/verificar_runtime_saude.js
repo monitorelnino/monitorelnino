@@ -60,36 +60,34 @@ for (const id of ["mapaMonitor"]) {
   teste("saiu da página: os medidores de antecipação, o mapa de status e a amostra no mapa",
     !q("heroSaude") && !q("mapaStatus") && !q("mapaDesf") && !q("mapaChik") && !q("boxDDA"));
 
-  // Os cinco cartões do topo, cada um do seu arquivo primário.
-  const DEN = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "dengue_sinan_serie.json"), "utf8"));
-  const ultimaFechada = serie => {
-    const ses = Object.keys(serie).filter(k => serie[k] != null).sort();
-    return ses.length ? ses[ses.length - 1] : null;
-  };
-  const brDen = Object.fromEntries(Object.entries(DEN.serie.BR).filter(([k]) => k.startsWith(String(DEN.ano_corrente))));
-  const seDen = ultimaFechada(brDen);
-  // 08/10/2026 (item 0): a cobrança muda de FORMA junto com a página, e não afrouxa. Antes
-  // exigia "semana epidemiológica {n}"; agora exige o INTERVALO DE DATAS daquela mesma semana,
-  // calculado aqui de forma independente pelo utilitário, para o teste continuar sabendo qual
-  // semana a página deveria estar mostrando.
+  // Os quatro cartões do topo leem `topo_saude.json` (semana consolidada, valor do país e quantos
+  // estados estão acima da faixa habitual). A prova é independente: o valor e a semana do cartão
+  // têm de ser os do `consolidado` do arquivo comum do desfecho, que é de onde o topo nasce.
   const SEM = require("../assets/semana.js");
   const datasDe = (chave) => SEM.porExtenso(Number(String(chave).split("-")[0]),
                                             Number(String(chave).split("-")[1]), true);
-  teste("cartão de dengue: valor e datas da última semana fechada, do SINAN",
-    txt("nDengueSE").replace(/\./g, "") === String(brDen[seDen])
-    && txt("rotuloDengueSE").includes(datasDe(seDen)));
-  teste("cartão de dengue: o rótulo não traz a semana como número",
-    !/semana epidemiológica|\bSE ?\d/.test(txt("rotuloDengueSE")));
-  teste("cartão de dengue: diz que é notificação, não caso confirmado",
-    /notificaç/i.test(txt("fonteDengueSE")));
-  teste("cartões de casos trazem a ressalva de parcialidade e a frase do El Niño", (() => {
-    const t = q("numerosSaude").textContent;
-    return /são parciais e sobem com as notificações atrasadas/.test(t)
-      && (t.match(/não indica relação com o El Niño/g) || []).length >= 2;
-  })());
+  const TS = JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", "topo_saude.json"), "utf8"));
+  const comum = d => JSON.parse(fs.readFileSync(path.join(raiz, "data", "saude_desfechos", d + ".json"), "utf8")).ultimo.BR;
+  for (const [d, nid, eid, sid, fid] of [["dengue", "nDengueSE", "estadosDengueSE", "semanaDengueSE", "fonteDengueSE"],
+      ["srag", "nSragSE", "estadosSragSE", "semanaSragSE", "fonteSragSE"], ["chikungunya", "nChikSE", "estadosChikSE", "semanaChikSE", "fonteChikSE"]]) {
+    const x = TS.desfechos[d], c = comum(d).consolidado;
+    teste(`cartão de ${d}: valor e datas da semana consolidada, ou a lacuna dita`, x.valor_br == null
+      ? !/^\d/.test(txt(nid)) && /sem semana em comum/.test(txt(sid))
+      : txt(nid).replace(/\./g, "") === String(c.valor) && txt(sid) === "semana " + datasDe(c.periodo));
+    teste(`cartão de ${d}: quantos estados acima da faixa, pelo número do arquivo`,
+      x.ufs_acima_faixa === 0 ? /nenhum estado acima da faixa habitual para a época/.test(txt(eid))
+      : new RegExp(`${x.ufs_acima_faixa}.*estados? acima da faixa habitual para a época|um estado acima`).test(txt(eid)));
+    teste(`cartão de ${d}: fonte e data de consulta`, /^Fonte: .+ · consultado em \d{2}\/\d{2}\/\d{4}$/.test(txt(fid)));
+    teste(`cartão de ${d}: a semana não vem como número`, !/semana epidemiológica|\bSE ?\d/.test(txt(sid)));
+  }
+  teste("cartões de casos: a unidade é notificação (dengue, chikungunya) e internação (SRAG)",
+    /notificaç/i.test(q("cartaoDengue").textContent) && /internaç/i.test(q("cartaoSrag").textContent));
+  teste("a linha única sob a fileira não fala em El Niño nem em relação",
+    !/El Niño|relação/.test(q("numerosSaude").textContent));
   teste("cartão de estados em alerta: a agregação por estado é declarada",
-    /nível 3 ou 4/.test(txt("fonteUFsAlerta")) && /de 27$/.test(txt("nUFsAlerta")));
-  teste("cartão de calor: municípios lidos declarados", /município/.test(txt("fonteCalorMun")));
+    /nível 3 ou 4/.test(q("cartaoAlerta").textContent) && /de 27$/.test(txt("nUFsAlerta")));
+  teste("calor é linha de contexto com os municípios lidos, não cartão",
+    !q("nCalorMun") && /^Calor: .+ dos .+ municípios em classe severa ou extrema de excesso de calor \(.+, \d{2}\/\d{2}\/\d{4}\)\.$/.test(txt("linhaCalorSaude")));
   // Lê do DISCO: o `MSAUDE` do portão é declarado mais abaixo, e usá-lo aqui quebraria por ordem
   // de declaração — o mesmo tropeço do portão do Financiamento, e a mesma correção.
   const MSd2 = JSON.parse(fs.readFileSync(path.join(raiz, "data", "monitor_saude.json"), "utf8"));
