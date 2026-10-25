@@ -44,10 +44,10 @@
           "valor_el": "topoReconhecidos"
         },
         {
-          "id": "decreto_sem_reconhecimento_30_dias",
+          "id": "prazo_reconhecimento_mediano",
           "tipo": "numero",
-          "chave": "resposta/municipios_decretados.json",
-          "valor_el": "topoPendencia"
+          "chave": "resposta/por_uf.json",
+          "valor_el": "topoPrazo"
         },
         {
           "id": "populacao_sob_decreto",
@@ -60,7 +60,7 @@
         "Defesa Civil nacional, no Diário Oficial da União"
       ],
       "_nota_variacao": "Variação da semana só nos cartões desde 29/06, lida do instantâneo resposta/topo_defesa_civil.json (uma definição, no gerador; a Imprensa lê o mesmo). Os cartões de aviso e alerta não têm variação: a página não guarda retrato do que estava em vigor há sete dias. O instantâneo nasce no publicador, fora da cadeia de derivados, e pode ficar uma rodada atrás do consolidado: a variação só sai ao lado do total que ela explica, e instantâneo ausente ou de outro total vira lacuna declarada com a data do próprio instantâneo.",
-      "_nota_pendencia": "Ajuste 4 de 19/10/2026: o número dos 30 dias sem reconhecimento saiu da figura 'Onde a cadeia parou' e virou o sexto cartão, logo depois de 'Reconhecidos pela União' — a ordem do pedido vence a palavra 'sexto', que descreve o tamanho da faixa. Sem variação da semana: o instantâneo não guarda a pendência de sete dias atrás. MEDIDO no navegador: com `.grade-numeros--compacta` os seis cartões dão CINCO colunas em 1280 px (1.132 px de grade / 12rem de mínimo = 5,9) e sobra um cartão órfão na segunda linha, que é o que o pedido proíbe. A faixa passa à grade de três, que já existe: duas linhas de três no desktop, duas colunas no tablet e no celular, nenhum órfão. PARA A B1: se a variante compacta ganhar teto de três colunas acima de 1020 px (ou 11rem no `minmax`, que faria caber seis), esta faixa volta a ela."
+      "_nota_pendencia": "Sexto cartão: prazo mediano do decreto ao reconhecimento (METODOLOGIA §32.6, `data/resposta/por_uf.json` nacional). Substitui o cartão de 30 dias, retirado pela A2 em 25/10/2026 (#1137). Sem variação da semana: o instantâneo não guarda o prazo de sete dias atrás. A faixa segue na grade de três."
     },
     {
       "id": "municipio",

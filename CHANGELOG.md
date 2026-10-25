@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · B3 · Defesa civil: prazo mediano no lugar do cartão de 30 dias
+O sexto cartão do topo passa a mostrar o prazo mediano entre decreto e reconhecimento, medido em `data/resposta/por_uf.json` (METODOLOGIA §32.6), com o mesmo componente. Sai a contagem de 30 dias, retirada pela A2 em #1137. Remove o campo `dias_sem_reconhecimento` da página e do verificador de runtime.
+
 ## 2026-10-25 · #1137 · Prazo de reconhecimento medido, sem régua de 30 dias
 
 Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o intervalo entre o decreto e a portaria de reconhecimento (`dias_ate_reconhecimento`) e publica mediana e faixa por UF e no país (`prazo_reconhecimento`). Saem o sexto cartão do topo da Defesa civil e os campos de 30 dias do funil de financiamento. METODOLOGIA §32.6.
