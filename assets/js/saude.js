@@ -123,43 +123,6 @@ async function __load(){
   // 02/10/2026 (bloco A.3): a amostra de 313 municípios saiu do mapa e a série duplicada
   // saiu da página. Dengue e chikungunya passam a ser contadas pelo SINAN, no bloco
   // `arbovirosesPelaPrimaria`, ao fim deste arquivo.
-  try { titulosFatoSaude(); } catch (e) {}   // 15/09/2026 (§2.10): depois de tudo carregado
-
-    /* Contadores do topo (bloco C.1 do handover de 01/10/2026).
-     *
-     * Cada um conta DOCUMENTO LIDO, não categoria: "plano localizado" é a UF cujo instrumento tem
-     * documento no banco, e "coordenação" é a UF cujo degrau de coordenação tem documento. A
-     * diferença importa porque categoria muda de régua (foi o que a v0.4 fez) e documento lido não.
-     * Enquanto as 27 não estiverem verificadas, a linha de fonte diz quantas faltam — em vez de
-     * deixar o leitor ler 21 como se fosse o país inteiro. */
-  (function contadoresDoTopo(){
-      const el = id => document.getElementById(id);
-      const n = v => Number(v || 0).toLocaleString('pt-BR');
-      const ufs = (MSAUDE && MSAUDE.ufs) || {};
-      const comPlano = Object.values(ufs).filter(u => u && u.instrumento && u.instrumento.doc).length;
-      const verificadas = (MSAUDE && MSAUDE.resumo && MSAUDE.resumo.verificadas) || 0;
-      const faltam = 27 - verificadas;
-      if (el('nPlanoSaude')) {
-        el('nPlanoSaude').textContent = n(comPlano) + ' de 27';
-        el('fontePlanoSaude').textContent = 'Documento oficial lido em cada estado · '
-          + (faltam > 0 ? faltam + (faltam === 1 ? ' estado ainda não verificado' : ' estados ainda não verificados') : 'as 27 verificadas');
-      }
-      if (el('nCoordSaude')) {
-        /* A coordenação vive no motor único (monitor_saude.json, ufs[UF].coordenacao). Sem o arquivo,
-         * o cartão diz que não há coleta — nunca zero. Travessão em cartão é proibido
-         * (layout/regras.json): a ausência diz a sua classe. */
-        const u = (MSAUDE && MSAUDE.ufs) || null;
-        if (!u) { el('nCoordSaude').textContent = 'sem coleta';
-                  el('fonteCoordSaude').textContent = 'Sem coleta até o corte.'; }
-        else {
-          el('nCoordSaude').textContent = n(Object.values(u).filter(x => x && x.coordenacao && x.coordenacao.f1 && x.coordenacao.f1.doc).length) + ' de 27';
-          el('fonteCoordSaude').textContent = 'Ato de criação ou de ativação lido em cada estado · '
-            + 'sala de situação ou centro de operações de emergência';
-        }
-      }
-      // O cartão "Resposta" saiu dos números em 19/10/2026 (HANDOVER_SAUDE_PAGINA §1.3 e §7): a
-      // emergência em saúde pública tem medidor próprio no topo, e zero não vira cartão.
-    })();
 
   montarDesfechos().catch(_erroSaude("saude:desfechos"));
 }
@@ -169,37 +132,6 @@ const fonteFigura = MonitorMapas.credito;
 function __init(){
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460); const projection = ctx.projection;
   const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itens) => MonitorMapas.desenharMapa(ctx, svgId, legendaId, corDe, rotuloDe, itens);
-
-  // 13/09/2026 (proposta de enxugamento, Manus AI): 'Escolha um estado' logo após o título — perfil
-  // resumido usando dados já carregados (MSAUDE.ufs), sem fetch novo. Não substitui as tabelas e
-  // mapas nacionais abaixo (que seguem servindo a comparação entre estados); é um atalho para quem
-  // já sabe qual estado quer ver primeiro.
-  (function(){
-    const sel = document.getElementById('selEstadoSaude');
-    if (!sel) return;
-    UFS.slice().sort((a, b) => (NOME_UF[a] || a).localeCompare(NOME_UF[b] || b)).forEach(uf => {
-      const o = document.createElement('option'); o.value = uf; o.textContent = (NOME_UF[uf] || uf) + ' (' + uf + ')'; sel.appendChild(o);
-    });
-    sel.addEventListener('change', () => renderPerfilEstado(sel.value));   // (seletor retirado do HTML em 15/09/2026; cartões por estado no lugar)
-  })();
-  function renderPerfilEstado(uf){
-    const alvo = document.getElementById('perfilEstadoSaude');
-    if (!alvo) return;
-    if (!uf) { alvo.hidden = true; alvo.innerHTML = ''; return; }
-    const m = (MSAUDE && MSAUDE.ufs && MSAUDE.ufs[uf]) || {};
-    const riscos = (m.risco_projetado || []);
-    const dc = m.risco_atual || {}; const semanaSinal = semanaEmDatas(null, dc.dengue_se);
-    const cartaoCondicoes = '<div class="cartao"><h3 class="figura-titulo">Condições de risco projetadas</h3>'
-      + (riscos.length ? '<p class="card-body">' + riscos.map(esc).join(', ') + '</p>' : '<p class="card-body u-muted">Ainda não verificado.</p>') + '</div>';
-    const cartaoSinal = '<div class="cartao"><h3 class="figura-titulo">Sinal mais recente: dengue na capital</h3>'
-      + (dc.dengue_capital_nivel != null ? '<p class="card-body">Nível ' + dc.dengue_capital_nivel + ' (InfoDengue), ' + esc(dc.dengue_capital || '') + (semanaSinal ? ', na semana ' + semanaSinal : '') + '.</p>' : '<p class="card-body u-muted">Ainda não coletado.</p>') + '</div>';
-    const cartaoCobertura = '<div class="cartao"><h3 class="figura-titulo">Cobertura do dado</h3>'
-      + '<p class="card-body">Sinal de dengue: só a capital, não o estado inteiro. Documento estadual: ' + (m.verificado ? 'verificado' : 'ainda não verificado') + '.</p></div>';
-    const cartaoInstitucional = '<div class="cartao"><h3 class="figura-titulo">MARÉ Saúde do estado</h3>'
-      + (m.prontidao != null ? '<p class="card-body">' + decBR(m.prontidao) + '/100 · ' + esc(m.faixa || '—') + ' — mede documento e quando o ato saiu, não o estado de saúde da população.</p>' : '<p class="card-body u-muted">Ainda não verificado.</p>') + '</div>';
-    alvo.innerHTML = '<h3 class="figura-titulo u-largura-total">' + esc(NOME_UF[uf] || uf) + '</h3>' + cartaoCondicoes + cartaoSinal + cartaoCobertura + cartaoInstitucional;
-    alvo.hidden = false;
-  }
 
   // 0 · MARÉ · Saúde (v0.6, Metodologia §31): prontidão = média dos componentes que o arquivo declara
   // com peso (hoje instrumento e antecipação, ½ cada); não verificada = cinza, sem número
@@ -372,307 +304,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
 
 
 
-// 15/09/2026 (auditoria editorial §2.10): títulos-fato calculados dos dados já carregados — nunca digitados.
-function titulosFatoSaude(){
-  const titulo = (box, txt) => { const h = document.querySelector('#' + box + ' .figura-titulo'); if (h && txt) h.textContent = txt; };
-  const n = v => Number(v || 0).toLocaleString('pt-BR');
-  try {   // MARÉ · Saúde: estados por categoria do plano de saúde
-    const UFS = Object.keys(SUF.uf || {}); const st = uf => (SUF.uf[uf] || {}).status || 'NAO_VERIFICADO';
-    const c = k => UFS.filter(u => k.includes(st(u))).length;
-    // 23/09/2026 (governança editorial §12, §32.8): este mapa pinta PRONTIDÃO SANITÁRIA — média dos
-    // componentes de peso declarado (v0.6: instrumento e antecipação). O título-fato anterior
-    // contava estados por STATUS DE INSTRUMENTO, que é o objeto da figura seguinte (boxStatus), e
-    // saía quase idêntico ao dela. Título herdado da figura vizinha é o defeito que o §32.8 procura.
-    // O fato agora é sobre o próprio objeto, e traz à tona a cobertura da verificação.
-    // A contagem vem do agregado do próprio dado (MSAUDE.resumo), não de um recálculo aqui: o campo
-    // `verificado` não existe em SUF.uf, e uma primeira tentativa de derivá-lo dali imprimiu
-    // "0 de 27 estados verificados" numa página pública. Fato de título sai da fonte, nunca de palpite.
-    const Rsa = (typeof MSAUDE !== 'undefined' && MSAUDE && MSAUDE.resumo) || {};
-    titulo('boxStatus', `Plano de saúde por estado: ${c(['NOVO'])} para o ciclo, ${c(['VIG','READ'])} de todo ano, ${c(['NAO_VERIFICADO'])} não verificados`);
-  } catch (e) {}
-}
-
-// ===== tabela COBRADE (§258, 27/09/2026) =====
-// Migrada de assets/js/pesquisadores.js, que foi arquivado com a página. A tabela é// verificar_consistencia.py leu AREAS de pesquisadores.js desde 14/09 (§1.4 da auditoria
-// editorial); passa a ler daqui, e o portão foi atualizado no mesmo commit.
-(function(){
-  const tb = document.getElementById('tblAreas'); if (!tb) return;
-  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const AREAS = [
-  {label:'Grupo Seca (COBRADE 1.4.1): estiagem, seca e segurança hídrica', cor:MonitorMapas.PALETA.risco.seca, ufs:['AC','AL','AM','AP','BA','CE','DF','GO','PA','PE','PI','SE']},
-  {label:'Grupo Seca · frente de incêndio florestal (1.4.1.3)', cor:MonitorMapas.PALETA.risco.fogo, ufs:['BA','GO','MA','MS','MT','RO','RR','TO']},
-  {label:'Família das chuvas (1.2-1.3): chuvas intensas e enchentes', cor:MonitorMapas.PALETA.risco.chuvas, ufs:['ES','MG','PR','RJ','RS','SP']},
-  {label:'Multirrisco integrado', cor:MonitorMapas.PALETA.risco.multi, ufs:['SC']},
-];
-  tb.querySelector('tbody').innerHTML = AREAS.map(a => `<tr><td>${esc(a.label)}</td><td>${a.ufs.length}</td><td>${esc(a.ufs.join(', '))}</td></tr>`).join('');
-  MonitorMapas.credito('boxAreas', {fontes: ['MARÉ', 'classificação COBRADE'], data: (typeof META !== 'undefined' && META && (META.atualizado_em || META.corte)) || null});
-})();
-
-
-
-/* ===== Cartões do topo (bloco A.1 do handover de 02/10/2026) =====
- * Cinco indicadores que mudam a cada coleta. Os dois primeiros vêm da FONTE PRIMÁRIA (SINAN e
- * SIVEP-Gripe) e trazem, no próprio cartão, a ressalva de parcialidade e a frase que a editoria
- * fixou: estes números não indicam relação com o El Niño.
- *
- * "Última semana epidemiológica fechada" é a última com valor na série — não a última do
- * calendário. A diferença importa: as semanas recentes existem no arquivo com valor nulo, e tratar
- * nulo como zero publicaria uma queda que é só atraso de notificação.
- */
-(function cartoesDoTopoSaude(){
-  const el = id => document.getElementById(id);
-  const n = v => Number(v || 0).toLocaleString('pt-BR');
-  const ultimaFechada = serie => {
-    const ses = Object.keys(serie || {}).filter(k => serie[k] != null).sort();
-    return ses.length ? {se: ses[ses.length - 1], valor: serie[ses[ses.length - 1]]} : null;
-  };
-
-  /* Dengue e chikungunya: o mesmo cartão, cada um do seu arquivo do SINAN. */
-  const cartaoSinan = (arquivo, doenca, idValor, idRotulo, idFonte) =>
-    fetch('data/saude_desfechos/' + arquivo).then(r => r.ok ? r.json() : null).then(D => {
-      const br = ((D || {}).serie || {}).BR;
-      const u = br ? ultimaFechada(Object.fromEntries(Object.entries(br).filter(([k]) => k.startsWith(String(D.ano_corrente))))) : null;
-      if (!u) { if (el(idValor)) el(idValor).textContent = 'sem coleta'; return; }
-      if (el(idValor)) el(idValor).textContent = n(u.valor);
-      if (el(idRotulo)) el(idRotulo).textContent = 'notificações de ' + doenca + ' na semana ' + semanaEmDatas(u.se.split('-')[0], u.se);
-      MonitorMapas.credito(idFonte, {fontes: ['SINAN (Ministério da Saúde)', D.conta === 'notificacoes' ? 'notificações, não casos confirmados' : ''].filter(Boolean), data: D.gerado_em});
-    }).catch(_erroSaude("saude:777"));
-  cartaoSinan('dengue_sinan_serie.json', 'dengue', 'nDengueSE', 'rotuloDengueSE', 'fonteDengueSE');
-  cartaoSinan('chik_sinan_serie.json', 'chikungunya', 'nChikSE', 'rotuloChikSE', 'fonteChikSE');
-
-  fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null).then(S => {
-    const serie = (S || {}).serie;
-    if (!serie) { if (el('nSragSE')) el('nSragSE').textContent = 'sem coleta'; return; }
-    /* O arquivo é {UF: {SE: n}} — e traz a linha `BR` JUNTO das 27 UFs.
-       02/10/2026, defeito medido: somar `serie.values()` somava o país duas vezes, porque a linha
-       do país entrava na soma das UFs. O cartão publicava 8.534 internações onde a fonte diz 4.267.
-       Quando existe a linha `BR`, ela É o país; só na falta dela o país é a soma das UFs. A mesma
-       regra está em `scripts/gerar_topo_das_paginas.py`, que é quem a Imprensa lê. */
-    const ano = String(S.ano_corrente || new Date().getFullYear());
-    const total = {};
-    const somar = porSE => {
-      if (!porSE || typeof porSE !== 'object') return;
-      Object.entries(porSE).forEach(([se, v]) => {
-        if (se.startsWith(ano) && typeof v === 'number') total[se] = (total[se] || 0) + v;
-      });
-    };
-    if (serie.BR && typeof serie.BR === 'object') somar(serie.BR);
-    else Object.entries(serie).forEach(([uf, porSE]) => { if (uf !== 'BR') somar(porSE); });
-    const u = ultimaFechada(total);
-    if (!u) { if (el('nSragSE')) el('nSragSE').textContent = 'sem coleta'; return; }
-    if (el('nSragSE')) el('nSragSE').textContent = n(u.valor);
-    if (el('rotuloSragSE')) {
-      el('rotuloSragSE').textContent = 'internações por síndrome respiratória grave na semana '
-        + semanaEmDatas(u.se.split('-')[0], u.se);
-    }
-    MonitorMapas.credito('fonteSragSE', {fontes: ['SIVEP-Gripe (Ministério da Saúde)'], data: S.gerado_em});
-  }).catch(_erroSaude("saude:811"));
-
-  /* Estados com dengue em nível de alerta: a régua é do InfoDengue (níveis 3 e 4) e a agregação por
-   * estado é nossa — a nota diz qual é, porque o InfoDengue não publica um nível por estado. */
-  fetch('data/saude_desfechos/serie_painel.json').then(r => r.ok ? r.json() : null).then(P => {
-    const M = (P || {}).municipios || {};
-    if (!Object.keys(M).length) { if (el('nUFsAlerta')) el('nUFsAlerta').textContent = 'sem coleta'; return; }
-    const ufs = new Set();
-    Object.values(M).forEach(m => { if ((m.nivel_ultima_se || 0) >= 3 && m.uf) ufs.add(m.uf); });
-    if (el('nUFsAlerta')) el('nUFsAlerta').textContent = ufs.size + ' de 27';
-    MonitorMapas.credito('fonteUFsAlerta', {fontes: ['InfoDengue (Fiocruz/FGV)', 'o estado entra quando ao menos um município acompanhado está em nível 3 ou 4'], data: P.gerado_em});
-  }).catch(_erroSaude("saude:825"));
-
-  /* O calor vem de `calor_excesso`, que é onde o coletor o escreve: `resumo` com as quatro classes
-   * do vocabulário do Ministério da Saúde e `municipios_lidos`. A primeira versão deste cartão
-   * procurou o dado em `uf[*].calor_ms`, caminho que o arquivo nunca teve — e dizia "sem coleta"
-   * com o dado em disco, que é o pior jeito de errar numa figura de risco. */
-  fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
-    const C = (SS || {}).calor_excesso || null;
-    const r = (C || {}).resumo || null;
-    if (!r) {
-      /* 11/10/2026: retrato com mais de 9 dias sai do ar (coletar_saude.vencer_calor); o cartão e a
-         fonte dizem desde quando não há leitura, em vez de mostrar o retrato velho como o mais recente. */
-      const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
-      if (el('nCalorMun')) el('nCalorMun').textContent = ult
-        ? 'sem leitura desde ' + String(MonitorMapas.dataBR(ult) || ult).slice(0, 5) : 'sem coleta';
-      MonitorMapas.credito('fonteCalorMun', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)', ult ? 'nenhum município lido desde então' : 'nenhum município lido até o corte'], data: ult});
-      return;
-    }
-    const acima = Number(r.severo || 0) + Number(r.extremo || 0);
-    if (el('nCalorMun')) el('nCalorMun').textContent = n(acima);
-    const lidos = C.municipios_lidos || Object.keys(C.municipios || {}).length;
-    MonitorMapas.credito('fonteCalorMun', {fontes: ['Painel Nacional de Excesso de Calor (Ministério da Saúde)', n(lidos) + (Number(lidos) === 1 ? ' município lido' : ' municípios lidos')], data: C.data});
-  }).catch(_erroSaude("saude:851"));
-
-})();
-
-/* ===== Dengue e chikungunya pela fonte primária (bloco A.3) =====
- * Série semanal do país contra a faixa esperada para a época, e mapa por estado em notificações por
- * 100 mil habitantes. Por 100 mil porque o total bruto só ordena os estados por tamanho.
- *
- * A faixa esperada é a mediana e o p90 das semanas equivalentes de 2019 a 2025, calculados aqui a
- * partir da própria série — não há "estimativa de dados recentes": o SINAN publica contagem, e o
- * que falta nas últimas semanas é notificação que ainda vai chegar.
- */
-(function arbovirosesPelaPrimaria(){
-  const CONFIG = [
-    {chave: 'dengue', arquivo: 'data/saude_desfechos/dengue_sinan_serie.json', rotulo: 'dengue',
-     canvas: 'cDengueSemana', leg: 'legDengueSemana', box: 'boxDengueSemana',
-     linha: 'linhaDengueSemana', mapa: 'mapaDengueUF', legMapa: 'legDengueUF',
-     boxMapa: 'boxDengueUF', linhaMapa: 'linhaDengueUF', dl: 'dlDengueUF', frase: 'fraseDengue'},
-    {chave: 'chikungunya', arquivo: 'data/saude_desfechos/chik_sinan_serie.json',
-     rotulo: 'chikungunya', canvas: 'cChikSemana', leg: 'legChikSemana', box: 'boxChikSemana',
-     linha: 'linhaChikSemana', mapa: 'mapaChikUF', legMapa: 'legChikUF', boxMapa: 'boxChikUF',
-     linhaMapa: 'linhaChikUF', dl: 'dlChikUF', frase: 'fraseChik'},
-  ];
-  const el = id => document.getElementById(id);
-  const n = v => Number(v || 0).toLocaleString('pt-BR');
-  const umaCasa = v => Number(v || 0).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1});
-
-  const faixa = (serie, anos, se) => {
-    const vs = anos.map(a => serie[a + '-' + se]).filter(v => typeof v === 'number').sort((x, y) => x - y);
-    if (!vs.length) return null;
-    const mediana = vs[Math.floor(vs.length / 2)];
-    const p90 = vs[Math.min(vs.length - 1, Math.floor(vs.length * 0.9))];
-    return {mediana, p90};
-  };
-
-  Promise.all([
-    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
-    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-  ]).then(([GEO, POP, REF]) => {
-    const popUF = {};
-    if (POP && REF) {
-      const ref = Array.isArray(REF) ? REF : Object.values(REF);
-      ref.forEach(m => {
-        const cod = String(m.codigo_ibge).padStart(7, '0');
-        popUF[m.uf] = (popUF[m.uf] || 0) + Number(POP[cod] || 0);
-      });
-    }
-    CONFIG.forEach(cfg => {
-      fetch(cfg.arquivo).then(r => r.ok ? r.json() : null).then(D => {
-        const serie = (D || {}).serie;
-        const legEl = el(cfg.leg);
-        if (!serie || !serie.BR) {
-          if (legEl) legEl.innerHTML = '<span class="escala">Série de ' + cfg.rotulo + ' ainda não coletada — lacuna declarada.</span>';
-          if (el(cfg.frase)) mostrarFrase(el(cfg.frase), 'Série de ' + cfg.rotulo + ' ainda não coletada até o corte.');
-          return;
-        }
-        const ano = String(D.ano_corrente);
-        const anos = (D.anos_canal || []).map(String);
-        const br = serie.BR;
-        const ses = Object.keys(br).filter(k => k.startsWith(ano)).sort();
-        const comValor = ses.filter(k => br[k] != null);
-        const ultima = comValor[comValor.length - 1];
-        const rotulos = ses.map(k => k.split('-')[1]);
-
-        /* A frase do dado: "{n} notificações na semana {SE}, dentro / acima da faixa esperada". A
-         * comparação é com a faixa da própria série, e por isso é fato, não juízo. */
-        if (ultima && el(cfg.frase)) {
-          const f = faixa(br, anos, ultima.split('-')[1]);
-          const v = br[ultima];
-          const posicao = !f ? 'sem faixa esperada para a época'
-            : (v > f.p90 ? 'acima da faixa esperada para a época'
-               : (v >= f.mediana ? 'dentro da faixa esperada para a época, acima da mediana'
-                  : 'dentro da faixa esperada para a época'));
-          mostrarFrase(el(cfg.frase), n(v) + ' notificações de ' + cfg.rotulo + ' na semana '
-            + semanaEmDatas(ano, ultima) + ', ' + posicao + '. As '
-            + 'semanas seguintes ainda recebem notificações e aparecem sem valor.');
-        }
-        if (el(cfg.linha)) {
-          // Era "{n} semana(s) fechada(s) de {ano}": contava semanas, trazia o "(s)" que o item 2
-          // proíbe e não dizia ao leitor de quando é o dado. Agora diz o período coberto.
-          const ini = primeiraSemanaComValor(ano, comValor);
-          el(cfg.linha).textContent = (ini && ultima)
-            ? 'de ' + ini + ' a ' + (window.MonitorSemana
-                ? MonitorSemana.fimPorExtenso(Number(ano), Number(ultima.split('-')[1])) : '')
-            : '';
-        }
-
-        const cv = el(cfg.canvas);
-        if (cv && typeof Chart !== 'undefined' && window.MonitorMapas) {
-          MonitorMapas.padraoGraficos(window.Chart);
-          const med = ses.map(k => { const f = faixa(br, anos, k.split('-')[1]); return f ? f.mediana : null; });
-          const p90 = ses.map(k => { const f = faixa(br, anos, k.split('-')[1]); return f ? f.p90 : null; });
-          // EIXO DE MESES, não de números de semana (item 0). O rótulo aparece só na primeira
-          // semana de cada mês; nas outras fica vazio, e assim o eixo se lê como um calendário
-          // em vez de uma régua de 1 a 52. Quem precisa da semana exata tem o tooltip, que diz o
-          // intervalo de datas — que é como a leitora pensa a data, e não "a semana 33".
-          const rotulosMes = rotulosDeMes(ano, ses);
-          const titulosData = ses.map(k => semanaEmDatas(ano, k, true));
-          new Chart(cv, {data: {labels: rotulosMes, datasets: [
-            {type: 'line', label: 'p90 de 2019–2025', data: p90, borderColor: MonitorMapas.PALETA.anos.p90, backgroundColor: MonitorMapas.PALETA.anos.p90, fill: false, pointRadius: 0, borderWidth: 1},
-            {type: 'line', label: 'mediana de 2019–2025', data: med, borderColor: MonitorMapas.PALETA.anos.canal, backgroundColor: MonitorMapas.PALETA.anos.canal, fill: false, pointRadius: 0, borderWidth: 1},
-            {type: 'bar', label: 'notificações de ' + ano, data: ses.map(k => br[k]), backgroundColor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.serie[0]},
-          ]}, options: {animation: false, responsive: true, maintainAspectRatio: false,
-            plugins: {legend: {display: false},
-              tooltip: {callbacks: {title: itens => (itens && itens[0] ? titulosData[itens[0].dataIndex] : '')}}},
-            scales: {y: {beginAtZero: true, title: {display: true, text: 'notificações'}},
-                     x: {ticks: {autoSkip: false, maxRotation: 0}}}}});
-          // "mediana" e "p90" saem da legenda (item 8): são o nome do cálculo, não o nome do
-          // que o leitor vê. O cálculo fica na metodologia; aqui fica o que as duas linhas
-          // delimitam, que é uma faixa de valores habituais para aquela época do ano.
-          const faixaAnos = anos.length ? ' (' + anos[0] + ' a ' + anos[anos.length - 1] + ')' : '';
-          MonitorMapas.legenda(cfg.leg, [
-            {cor: MonitorMapas.PALETA.anos['2026'] || MonitorMapas.PALETA.serie[0], rotulo: 'notificações de ' + ano},
-            {cor: MonitorMapas.PALETA.anos.canal, rotulo: 'faixa habitual para a época' + faixaAnos + ': menor valor esperado'},
-            {cor: MonitorMapas.PALETA.anos.p90, rotulo: 'faixa habitual para a época' + faixaAnos + ': maior valor esperado'}]);
-        }
-
-
-        /* Mapa por estado: acumulado do ano até a última semana fechada, por 100 mil habitantes. */
-        const acum = {};
-        Object.entries(serie).forEach(([uf, porSE]) => {
-          if (uf === 'BR' || !porSE) return;
-          acum[uf] = Object.entries(porSE).filter(([k, v]) => k.startsWith(ano) && typeof v === 'number')
-            .reduce((a, [, v]) => a + v, 0);
-        });
-        const taxa = {};
-        Object.keys(acum).forEach(uf => { if (popUF[uf]) taxa[uf] = acum[uf] / popUF[uf] * 1e5; });
-        if (el(cfg.mapa) && GEO && window.MonitorMapas) {
-          const ctx = MonitorMapas.contexto(GEO, 480, 460);
-          const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
-          const max = Math.max(1, ...Object.values(taxa));
-          MonitorMapas.fundo && MonitorMapas.fundo(cfg.mapa, 'chuva_claro');
-          MonitorMapas.ufs(ctx, cfg.mapa,
-            uf => taxa[uf] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(taxa[uf] / max * rampa.length))],
-            uf => taxa[uf] == null ? uf + ': sem coleta'
-              : uf + ': ' + umaCasa(taxa[uf]) + ' por 100 mil habitantes (' + n(acum[uf]) + ' notificações)');
-          MonitorMapas.legenda(cfg.legMapa, [
-            ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
-            {cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta'}]);
-        }
-        // O crédito é da FIGURA, não do desenho: sem ele, uma figura sem malha carregada ficaria
-        // sem fonte declarada, e o portão de saúde reprova — com razão.
-        /* Os créditos vão com o id LITERAL de propósito: `verificar_saude.py` confere a presença
-         * do crédito lendo o fonte do JS, e um id em variável é invisível para ele. Perder a
-         * conferência para economizar quatro linhas seria trocar prova por elegância. */
-        if (window.MonitorMapas) {
-          const fS = {fontes: ['SINAN (Ministério da Saúde)'], data: D.gerado_em};
-          const fM = {fontes: ['SINAN (Ministério da Saúde)', 'Censo 2022 (IBGE)'], data: D.gerado_em};
-          if (cfg.chave === 'dengue') {
-            MonitorMapas.credito('boxDengueSemana', fS);
-            MonitorMapas.credito('boxDengueUF', fM);
-          } else {
-            MonitorMapas.credito('boxChikSemana', fS);
-            MonitorMapas.credito('boxChikUF', fM);
-          }
-        }
-        if (el(cfg.linhaMapa)) {
-          const ate = ultima && window.MonitorSemana
-            ? MonitorSemana.fimPorExtenso(Number(ano), Number(ultima.split('-')[1])) : null;
-          // Rótulo vazio em vez de "—" (item 2): sem data, a linha não aparece.
-          el(cfg.linhaMapa).textContent = ate ? 'de 1º de janeiro a ' + ate : '';
-        }
-        if (el(cfg.dl)) {
-          const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-          el(cfg.dl).innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
-            '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' notificações</dd>').join('');
-        }
-      }).catch(_erroSaude("saude:1027"));
-    });
-  }).catch(_erroSaude("saude:1029"));
-})();
-
-
 /* ===== Cartões e figuras criados pelo contrato de layout (02/10/2026) =====
  * Um só lugar para o que o contrato acrescentou: o número do índice no topo, a lista do que foi
  * localizado em cada estado, o mapa do risco previsto, o mapa de síndrome respiratória grave por
@@ -686,14 +317,15 @@ const AREAS = [
   const UFS = ('AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO').split(' ');
 
   /* 1 · O topo (HANDOVER_SAUDE_PAGINA §1.2): os dois medidores da inicial. À esquerda, o MARÉ Saúde
-   * NACIONAL, sobre as 27 UFs, pela mesma regra do MARÉ Legal (editoria, 21/10/2026, 06:54;
-   * METODOLOGIA §115, que revoga o alvo "média das verificadas"); à direita, a parcela da população
-   * sob emergência em saúde pública. Índice nulo é lacuna declarada, nunca zero. A barra e o número
-   * sobem pelo mesmo `animarGauges` da inicial. */
+   * NACIONAL, sobre as 27 UFs, ponderado pela população (v0.7, METODOLOGIA §123); à direita, a
+   * parcela da população sob decreto de emergência em saúde, no vocabulário do medidor da inicial.
+   * Sem dado, o número e o "/ 100" ficam vazios e a linha diz UMA vez "sem coleta até o corte". */
+  const T = (id, v) => (window.MonitorCatalogo && MonitorCatalogo.texto(id, v)) || '';
+  const escreve = (id, chave, v) => window.MonitorCatalogo && MonitorCatalogo.escrever(id, chave, v);
   fetch('data/monitor_saude.json').then(r => r.ok ? r.json() : null).then(MS => {
     const res = ((MS || {}).resumo) || {}, rp = ((MS || {}).resposta) || {};
-    const fixa = (id, v) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
-      f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + (id === 'gaugeFillSaude' ? 'MARÉ Saúde' : 'emergências em saúde pública') + ' em ' + umaCasa(v) + ' de 100'); };
+    const fixa = (id, v, nome) => { const f = el(id); f.dataset.alvo = String(v); f.style.setProperty('--galvo', String(Math.max(v, 0.1)));
+      f.closest('.gauge-track').setAttribute('aria-label', 'Barra de progresso: ' + nome + ' em ' + umaCasa(v) + ' de 100'); };
     const media = res.indice_nacional;
     /* Ausência se escreve em palavras, inclusive no número grande (layout/regras.json, numeros):
        um travessão no lugar do índice deixaria o leitor sem saber se é zero ou se não houve coleta. */
@@ -701,37 +333,60 @@ const AREAS = [
     else {
       el('nIndiceSaude').textContent = umaCasa(media); el('nIndiceSaude').dataset.contar = media;
       el('faixaSaude').replaceChildren(MonitorMapas.pilulaDaFaixa(media));
-      fixa('gaugeFillSaude', media);
-      /* A linha ao lado não lê mais o medidor como média parcial: ela conta o ESTATUTO, nas palavras
-         da classe. Estado sem plano localizado e estado ainda não verificado são coisas distintas, e
-         integrar o nacional não apaga a lacuna (handover do índice nacional, §2). */
+      fixa('gaugeFillSaude', media, 'MARÉ Saúde');
+      /* A linha ao lado conta o ESTATUTO, nas palavras da classe: estado sem plano localizado e
+         estado ainda não verificado são coisas distintas, e integrar o nacional não apaga a lacuna. */
       if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
-        MonitorCatalogo.escrever('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
+        escreve('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
           com_plano: n(res.ufs_com_plano_localizado), denominador: n(res.denominador || 27),
           sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
-    /* A frase do que se procura segue os COMPONENTES que o arquivo declara, não o número da versão:
-       a v0.5 mudou a agregação e manteve os componentes, e um teste de prefixo ("0.4") passaria a
-       escolher o parágrafo errado em silêncio a cada versão nova. Coordenação no lugar da
-       antecedência é o que separa a v0.4 da régua publicada. */
-    if ('coordenacao' in (((MS || {}).metodo || {}).pesos || {}) && window.MonitorCatalogo)
-      MonitorCatalogo.pronto.then(() => MonitorCatalogo.escrever('saudeLeiIndice', 'saude.abertura.lei_e_indice_v04'));
-    const quando = (MS || {}).gerado_em || (MS || {}).corte || '';
-    if (rp.indice == null) {
-      el('respNumSaude').textContent = 'sem coleta';
-      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">sem coleta até o corte</span>';
-    } else {
+    if (rp.indice != null) {
       el('respNumSaude').textContent = umaCasa(rp.indice); el('respNumSaude').dataset.contar = rp.indice;
-      fixa('respFillSaude', rp.indice);
-      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(rp.emergencias
-        ? n(rp.emergencias) + (rp.emergencias === 1 ? ' emergência' : ' emergências') + ' · ' + umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1)) + ' % da população'
-        : 'nenhuma emergência declarada') + '</span>';
+      el('respDenSaude').textContent = '/ 100';
+      fixa('respFillSaude', rp.indice, 'decretos de emergência em saúde');
     }
-    el('linhaRespostaSaude').textContent = 'Parcela da população em estados ou municípios sob emergência em saúde pública declarada desde '
-      + (rp.desde || '29/06/2026') + ' · ' + (rp.indice == null ? 'sem coleta até o corte' : rp.emergencias ? 'até ' + quando : 'nenhuma localizada até ' + quando)
-      + ' · DOU e diários oficiais estaduais';
+    if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
+      if (rp.indice == null) return;   // a reserva do HTML ("sem coleta até o corte") já é a linha
+      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {
+        n: rp.emergencias || 0, pct: umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1))})) + '</span>';
+      escreve('linhaRespostaSaude', 'saude.topo.resposta.linha', {quando: (MS || {}).gerado_em || (MS || {}).corte || ''});
+    });
     MonitorMapas.animarGauges(el('topoSaude'));
-  }).catch(_erroSaude("saude:1066"));
+  }).catch(_erroSaude("saude:topo"));
+
+  /* 2 · Os cartões do topo (editoria, 24/10/2026): dengue, chikungunya e internações respiratórias
+   * graves vêm de `topo_saude.json`, que traz a semana consolidada, o valor do país e QUANTOS
+   * estados estão acima da faixa habitual pela MESMA função que o detalhe usa. Nada é recalculado
+   * aqui. País sem semana fechada em comum às 27 UFs é lacuna declarada, nunca soma de semanas
+   * diferentes. O calor não é desfecho: é exposição, e vira a linha de contexto abaixo da fileira. */
+  Promise.all([MonitorCatalogo.pronto, fetch('data/saude_desfechos/topo_saude.json').then(r => r.ok ? r.json() : null),
+               fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null)]).then(([, TS, SS]) => {
+    const D = (TS || {}).desfechos || {}, cartao = id => ((TS || {}).cartoes || []).find(c => c.id === id) || {};
+    const fonte = (idf, chave, dia) => escreve(idf, 'saude.numerosSaude.fonte.molde',
+      {fonte: T(chave), data: MonitorMapas.dataBR(dia) || dia || ''});
+    [['dengue', 'nDengueSE', 'estadosDengueSE', 'semanaDengueSE', 'fonteDengueSE', 'n_dengue_se'],
+     ['chikungunya', 'nChikSE', 'estadosChikSE', 'semanaChikSE', 'fonteChikSE', 'n_chik_se'],
+     ['srag', 'nSragSE', 'estadosSragSE', 'semanaSragSE', 'fonteSragSE', 'n_srag_se']].forEach(([d, nid, eid, sid, fid, chave]) => {
+      const x = D[d];
+      if (!x) return;
+      el(nid).textContent = x.valor_br == null ? T('saude.numerosSaude.valor.lacuna') : _qtdCartao(x.valor_br);
+      escreve(eid, 'saude.numerosSaude.estados_acima.molde', {k: x.ufs_acima_faixa, total: x.ufs_comparadas});
+      if (x.periodo) escreve(sid, 'saude.numerosSaude.semana.molde', {datas: semanaEmDatas(null, x.periodo)});
+      else escreve(sid, 'saude.numerosSaude.semana.lacuna');
+      fonte(fid, 'saude.numerosSaude.' + chave + '.fonte', x.consultado_em);
+    });
+    const al = cartao('uf_dengue_alerta');
+    if (al.valor != null) {
+      el('nUFsAlerta').textContent = _qtdCartao(al.valor) + ' de ' + n((D.dengue || {}).ufs_comparadas || 27);
+      fonte('fonteUFsAlerta', 'saude.numerosSaude.n_u_fs_alerta.fonte', (TS || {}).gerado_em);
+    }
+    const C = ((SS || {}).calor_excesso) || {}, r = C.resumo;
+    if (r) escreve('linhaCalorSaude', 'saude.numerosSaude.calor_contexto.molde', {
+      n: Number(r.severo || 0) + Number(r.extremo || 0), total: C.municipios_lidos || Object.keys(C.municipios || {}).length,
+      fonte: T('saude.numerosSaude.calor_contexto.fonte'), data: MonitorMapas.dataBR(C.data) || C.data || ''});
+    else escreve('linhaCalorSaude', 'saude.numerosSaude.calor_contexto.lacuna');
+  }).catch(_erroSaude("saude:cartoes-do-topo"));
 
   /* A figura "O que foi localizado em cada estado" (lista dos 27) saiu da página em
    * 19/10/2026 (HANDOVER_SAUDE_PAGINA §2.6 e §7): o documento, o órgão e a data de cada
@@ -753,75 +408,6 @@ const AREAS = [
     // O dado não traz a numeração dos boletins lidos: a frase não a fixa (nº 1 a 3 envelhecia).
     MonitorMapas.credito('boxRiscoSan', {fontes: ['Painel El Niño 2026-2027 (CEMADEN/INPE)'], data: SUFd.corte});
   }).catch(_erroSaude("saude:1136"));
-
-  /* 4 · Síndrome respiratória grave por estado, por 100 mil habitantes. */
-  Promise.all([
-    fetch('data/geo_uf.json').then(r => r.ok ? r.json() : null),
-    fetch('data/saude_desfechos/srag_serie.json').then(r => r.ok ? r.json() : null),
-    fetch('data/populacao_censo2022.json').then(r => r.ok ? r.json() : null),
-    fetch('data/municipios_ibge_referencia.json').then(r => r.ok ? r.json() : null),
-  ]).then(([GEO, S, POP, REF]) => {
-    const leg = el('legSragUF');
-    if (!S || !S.serie) {
-      if (leg) leg.innerHTML = '<span class="escala">Série de síndrome respiratória grave ainda não coletada — lacuna declarada.</span>';
-      return;
-    }
-    const popUF = {};
-    if (POP && REF) {
-      (Array.isArray(REF) ? REF : Object.values(REF)).forEach(m => {
-        popUF[m.uf] = (popUF[m.uf] || 0) + Number(POP[String(m.codigo_ibge).padStart(7, '0')] || 0);
-      });
-    }
-    const ano = String(S.ano_corrente || new Date().getFullYear());
-    const acum = {}, taxa = {};
-    Object.entries(S.serie).forEach(([uf, porSE]) => {
-      if (!porSE || typeof porSE !== 'object' || uf === 'BR') return;
-      acum[uf] = Object.entries(porSE).filter(([k, v]) => k.startsWith(ano) && typeof v === 'number')
-        .reduce((a, [, v]) => a + v, 0);
-      if (popUF[uf]) taxa[uf] = acum[uf] / popUF[uf] * 1e5;
-    });
-    if (el('mapaSragUF') && GEO && window.MonitorMapas) {
-      const ctx = MonitorMapas.contexto(GEO, 480, 460);
-      const rampa = MonitorMapas.PALETA.atmosfera.chuva_claro.rampa;
-      const max = Math.max(1, ...Object.values(taxa));
-      MonitorMapas.fundo && MonitorMapas.fundo('mapaSragUF', 'chuva_claro');
-      MonitorMapas.ufs(ctx, 'mapaSragUF',
-        uf => taxa[uf] == null ? MonitorMapas.NEUTRA : rampa[Math.min(rampa.length - 1, Math.floor(taxa[uf] / max * rampa.length))],
-        uf => taxa[uf] == null ? uf + ': sem coleta'
-          : uf + ': ' + umaCasa(taxa[uf]) + ' por 100 mil habitantes (' + n(acum[uf]) + ' internações)');
-      MonitorMapas.legenda('legSragUF', [
-        ...rampa.map((c, i) => ({cor: c, rotulo: i === 0 ? 'menor' : (i === rampa.length - 1 ? 'maior' : '·')})),
-        {cor: MonitorMapas.NEUTRA, rotulo: 'sem coleta'}]);
-      MonitorMapas.credito('boxSragUF', {fontes: ['SIVEP-Gripe (Ministério da Saúde)', 'Censo 2022 (IBGE)'], data: S.gerado_em});
-    }
-    if (el('dlSragUF')) {
-      el('dlSragUF').innerHTML = Object.keys(taxa).sort((a, b) => taxa[b] - taxa[a]).map(uf =>
-        '<dt>' + esc(uf) + '</dt><dd>' + umaCasa(taxa[uf]) + ' por 100 mil habitantes · ' + n(acum[uf]) + ' internações</dd>').join('');
-    }
-    if (el('linhaSragUF')) el('linhaSragUF').textContent = 'acumulado de ' + ano + ' · ' + Object.keys(taxa).length + ' estados com dado';
-  }).catch(_erroSaude("saude:1183"));
-
-  /* 5 · Calor. O Painel do MS publica FOTOGRAFIA por município, não série. Lote 6, §5 (16/10/2026):
-   * o gráfico de barras "municípios por classe" saiu (5,5 mil em "normal" contra dezenas nas
-   * outras classes não informa nada); fica o mapa por estado, e a frase diz o total. */
-  fetch('data/saude_sinais.json').then(r => r.ok ? r.json() : null).then(SS => {
-    const C = ((SS || {}).calor_excesso) || null;
-    const r = (C || {}).resumo || null;
-    if (!r) {
-      const ult = (((SS || {}).fontes || {}).painel_calor_ms || {}).ultima_coleta_ok;
-      const desde = ult ? (MonitorMapas.dataBR(ult) || ult) : null;
-      if (el('fraseCalor')) mostrarFrase(el('fraseCalor'), desde
-        ? 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, não devolve leitura desde a coleta de ' + desde + '.'
-        : 'O Painel Nacional de Excesso de Calor, do Ministério da Saúde, ainda não foi lido até o corte.');
-      return;
-    }
-    if (el('fraseCalor')) {
-      mostrarFrase(el('fraseCalor'), n((r.severo || 0) + (r.extremo || 0))
-        + ((r.severo || 0) + (r.extremo || 0) === 1 ? ' município' : ' municípios') + ' em classe severa ou extrema de excesso de calor na consulta mais recente, '
-        + 'de ' + n(C.municipios_lidos || 0) + ' lidos. O vocabulário das classes é o do Ministério '
-        + 'da Saúde.');
-    }
-  }).catch(_erroSaude("saude:1228"));
 
   /* 6 · Consulta do município (HANDOVER_SAUDE_PAGINA §4): uma só, no componente comum. Dengue,
    * chikungunya, calor e plano vêm de `data/saude_municipio/<UF>.json`, por código IBGE; município

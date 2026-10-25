@@ -24,39 +24,32 @@
         {
           "id": "dengue_casos_se",
           "tipo": "numero",
-          "chave": "dengue_sinan_serie.json",
+          "chave": "topo_saude.json",
           "valor_el": "nDengueSE"
         },
         {
           "id": "chik_casos_se",
           "tipo": "numero",
-          "chave": "chik_sinan_serie.json",
+          "chave": "topo_saude.json",
           "valor_el": "nChikSE"
         },
         {
           "id": "srag_internacoes_se",
           "tipo": "numero",
-          "chave": "srag_serie.json",
+          "chave": "topo_saude.json",
           "valor_el": "nSragSE"
         },
         {
           "id": "uf_dengue_alerta",
           "tipo": "numero",
-          "chave": "serie_painel.json",
+          "chave": "topo_saude.json",
           "valor_el": "nUFsAlerta"
-        },
-        {
-          "id": "calor_municipios_severo",
-          "tipo": "numero",
-          "chave": "saude_sinais.json",
-          "valor_el": "nCalorMun"
         }
       ],
-      "_nota_cinco_cartoes": "19/10/2026 (HANDOVER_SAUDE_PAGINA §1.3, §1.4 e §7): o cartão 'Resposta' saiu — a emergência em saúde pública tem medidor próprio no topo, e zero não vira cartão fora dele. Ficam cinco cartões numa linha, na variante compacta.",
       "exige_texto": [
-        "são parciais e sobem com as notificações atrasadas",
-        "não indica relação com o El Niño"
-      ]
+        "Cada cartão mostra a semana mais recente com registros consolidados."
+      ],
+      "_nota_quatro_cartoes": "25/10/2026 (editoria, 24/10 18:43): ficam quatro cartões — dengue, chikungunya, internações respiratórias graves e dengue em alerta —, todos lidos de `topo_saude.json`, que traz a semana consolidada, o valor do país e quantos estados estão acima da faixa habitual pela mesma função do detalhe. O calor não é desfecho (é exposição): saiu da fileira e é a linha de contexto `linhaCalorSaude`, abaixo dela."
     },
     {
       "id": "estadual",

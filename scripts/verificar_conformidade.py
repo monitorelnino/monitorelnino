@@ -200,7 +200,7 @@ _RE_DECIMAL_COM_PONTO = re.compile(r"(?<![\d.])\d+\.\d{1,2}(?![\d.])")
 # A7-14 (12/10/2026): "12,3 milhões" — uma casa, vírgula. "12 milhões" e "12,34 milhões" reprovam.
 _RE_MILHOES = re.compile(r"\d[\d.,]*\s*milh(?:ão|ões)\b", re.I)
 _RE_MILHOES_UMA_CASA = re.compile(r"(?<![\d.,])\d{1,3},\d\s*milh(?:ão|ões)\b", re.I)
-_RE_ATUALIZACAO = re.compile(r"Atualização: (\d{2}/\d{2}/\d{4}|sem coleta até o corte)")
+_RE_ATUALIZACAO = re.compile(r"(?:Atualização: |consultado em )(\d{2}/\d{2}/\d{4}|sem coleta até o corte)")
 
 
 def problemas_de_numero(numeros: list, regras: dict, travessoes: list = None) -> list:

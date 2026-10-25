@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
+
+Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita "consultado em" na fonte. Saem blocos de script sem elemento na página.
 ## 2026-10-25 · #PR · Passos em linha: variante do componente `.passos`
 
 Variante `.passos--linha` em `base.css`: lista vertical ligada por fio, número em argila, título em Fraunces e bloco "o que precisa ter" em uma ou duas colunas. Nenhuma página muda; "Para gestores" passa a usá-la no caminho até o plano publicado.
