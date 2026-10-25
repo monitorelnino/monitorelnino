@@ -19,7 +19,6 @@ A seção #recursos sai de prefeituras.html. O passo 6 "Buscar os recursos" pass
 
 `scripts/estrutura_desfechos.py`: série por UF, faixa habitual 2019–2025 por quintis congelados, último valor, cortes do mapa e documento de desfecho com fonte, cadência, `preliminar`, `parcial` e lacunas declaradas. Escrita só de arquivo novo em `data/saude_desfechos/`, com autoteste offline. Nenhum arquivo existente muda e nenhum escritor é declarado. Código novo (+224 linhas): recurso novo, sem cópia de coletor existente.
 
-## 2026-10-25 · #1126 · Saúde: detalhe do desfecho com o ano, a faixa na cor da família e o mapa pela posição
 ## 2026-10-25 · #1131 · Evidências ausentes: commit que gravava o índice sem o texto
 
 A reaplicação e o rebase (`_coletor.yml`) gravavam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. O commit passa a incluir `evidencias/`.
