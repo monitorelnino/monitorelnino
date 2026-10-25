@@ -19,6 +19,10 @@ Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o
 
 METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.
 
+## 2026-10-25 · #1138 · Main verde: links do Para gestores lidos do catálogo
+
+O autoteste de âncoras reprovava a main desde o #1132, que moveu os links do Para gestores para o catálogo. Correção na origem: o passo "Antes da emergência" aponta para `financiamento.html#antes`, e o autoteste lê o catálogo e espera as âncoras `antes` e `depois`. Código +7/−4.
+
 ## 2026-10-25 · #1132 · Para gestores: sai "Como os recursos chegam"; os dois caminhos vão ao passo 6
 
 A seção #recursos sai de prefeituras.html. O passo 6 "Buscar os recursos" passa a ter os dois caminhos: antes da emergência e depois do reconhecimento federal, com link para o Financiamento. Texto no catálogo; sem CSS novo.
