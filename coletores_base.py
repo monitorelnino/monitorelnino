@@ -1000,7 +1000,7 @@ def contexto_tls():
 # cada um lê o PRÓPRIO código-fonte para conferir que não ganhou essa escrita numa edição futura.
 # Lista única do projeto (era copiada em oito arquivos, em duas versões — cinco e seis nomes).
 BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json", "monitor_saude_v04.json")
+                  "monitor_saude.json")
 
 
 def fonte_do_coletor(arquivo: str) -> str:
