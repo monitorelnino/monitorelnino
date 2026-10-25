@@ -385,6 +385,16 @@ a.cartao--kpi:hover{outline:1.5px solid var(--link); outline-offset:2px; color:i
 .post .post-corpo > h2{margin:var(--sp-6) 0 var(--sp-3);}
 .post .post-volta{margin:var(--sp-6) 0 0; font-size:var(--fs-small); line-height:var(--lh-small);}
 .bloco-citacao{background:var(--surface-2); border-left:4px solid var(--teal); border-radius:var(--radius); padding:var(--sp-3) var(--sp-4); font-size:var(--fs-body); line-height:var(--lh-body);}
+/* variante de bloco com fio superior e título de tema (a cor do tema vem em --tema) */
+.bloco--tema{border-top:2px solid var(--tema, var(--teal)); padding-top:var(--sp-3); margin:var(--esp-secao) 0; font-size:var(--fs-body); line-height:var(--lh-body);}
+.bloco--tema h3{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--tema, var(--teal)); font-weight:var(--peso-semibold); margin:0 0 var(--sp-3);}
+/* régua de faixas: quatro faixas (25/25/20/30) com marcador por CSS (--pos) e rótulos alinhados */
+.regua-faixas{position:relative; display:grid; grid-template-columns:25fr 25fr 20fr 30fr; height:10px; border-radius:5px; overflow:hidden; margin:var(--sp-3) 0 var(--sp-1);}
+.regua-faixas span:nth-child(1){background:var(--faixa-1);} .regua-faixas span:nth-child(2){background:var(--faixa-2);}
+.regua-faixas span:nth-child(3){background:var(--faixa-3);} .regua-faixas span:nth-child(4){background:var(--faixa-4);}
+.regua-faixas-marca{position:relative; height:0;}
+.regua-faixas-marca i{position:absolute; left:var(--pos, 0%); top:-16px; width:2px; height:18px; background:var(--rust);}
+.regua-faixas-rotulos{display:grid; grid-template-columns:25fr 25fr 20fr 30fr; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); margin-bottom:var(--sp-3);}
 
 /* ===== 8. Tabelas ===== */
 table{border-collapse:collapse; width:100%;}
@@ -1134,6 +1144,10 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .dc-topo{margin:var(--sp-5) 0 var(--sp-6);}
 .dc-topo-periodo{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
   text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0;}
+/* 24/10/2026 (editoria, correção 20:15): só o topo da Defesa civil usa a escala menor do cartão de
+   número; os demais cartões ficam como estão. Variante por contêiner, sem classe nova. */
+.dc-topo .cartao-numero{border-top-width:2px; padding:var(--sp-2) var(--sp-3); gap:var(--sp-1); border-radius:var(--radius);}
+.dc-topo .cartao-numero-valor{font-size:var(--fs-h2); line-height:var(--lh-h2);}
 /* Busca por município dentro do "Ver em lista": o mapa responde "onde", o campo responde "e a
    minha cidade?". O rótulo é visível de propósito — quem abriu a lista precisa saber o que o campo
    faz, e um campo de busca sem rótulo visível obriga a adivinhar pelo placeholder, que desaparece
