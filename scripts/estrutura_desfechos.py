@@ -136,7 +136,7 @@ def gravar_documento(caminho: str, doc: dict, gravar_fn=None, existe_fn=None) ->
     if erros:
         raise ValueError("; ".join(erros))
     if gravar_fn is None:
-        with open(caminho, "w", encoding="utf-8") as f:
+        with open(caminho, "w", encoding="utf-8", newline="\n") as f:
             json.dump(doc, f, ensure_ascii=False, indent=1, sort_keys=True)
             f.write("\n")
     else:
