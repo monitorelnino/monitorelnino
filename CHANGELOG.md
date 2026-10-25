@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 
 
-## 2026-10-25 · #PR · Defesa civil: dias sem reconhecimento e evento mais declarado por UF
+## 2026-10-25 · #1145 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF
 
 `municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.
 ## 2026-10-25 · #1142 · Imprensa: acumulados do ciclo, uma função por número
