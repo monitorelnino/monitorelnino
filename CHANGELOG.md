@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #1139 · Prazo de reconhecimento medido, sem régua de 30 dias
+
+Decisão da editoria (25/10): nenhuma régua de prazo inventada pelo MARÉ. O gerador da Defesa civil mede o tempo do decreto ao reconhecimento federal (`dias_ate_reconhecimento`) e publica `prazo_reconhecimento` por UF e Brasil (mediana e percentis). Saem o cálculo de 30 dias do funil e o sexto cartão do topo. METODOLOGIA §32.7.
+
 ## 2026-10-25 · #1134 · Blog: como os textos são produzidos
 
 METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.
