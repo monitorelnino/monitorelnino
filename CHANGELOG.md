@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · #PR · Passos em linha: variante do componente `.passos`
+
+Variante `.passos--linha` em `base.css`: lista vertical ligada por fio, número em argila, título em Fraunces e bloco "o que precisa ter" em uma ou duas colunas. Nenhuma página muda; "Para gestores" passa a usá-la no caminho até o plano publicado.
 ## 2026-10-25 · #PR · Coordenação em saúde: o juiz lê estrutura permanente como estrutura, não como resposta
 
 O juiz de saúde ganha a trilha da estrutura, só depois da recusa da trilha do plano: decreto que institui comitê com a SES e a atribuição escrita credita F2, COE da saúde permanente credita F1, e ato que declara emergência, amarra-se a ela ou a extingue segue resposta. Estrutura de risco que a UF não projeta, CIEVS sozinho e ativação de COE não creditam. Peso zero até a v0.8.
