@@ -352,9 +352,9 @@
     // 30/09/2026 (item 8, aprovado pela editoria): uma ATMOSFERA por família de risco. Mesmos
     // valores de assets/tokens.css; o motor os lê por nome e nenhuma página carrega cor solta.
     // `fundo` é a área do mapa, `uf`/`contorno` a malha, e a rampa é a marca do dado.
-    // 16/10/2026: as cinco faixas oficiais do IQAr (CONAMA 506/2024; cores nomeadas pelo MMA: verde,
-    // amarela, laranja, vermelha, roxa), na ordem Boa → Péssima. Espelho de --iqar-* em tokens.css.
-    iqar: ['#00E400', '#FFFF00', '#FF7E00', '#FF0000', '#8F3F97'],
+    // 26/10/2026 (pedido da editoria): cores do IQAr (CONAMA 506/2024; IEMA-ES, INPE, Vigiar n.º 4 SES-DF),
+    // na ordem Boa → Péssima. Espelho de --iqar-* em tokens.css.
+    iqar: ['#4da42d', '#f7d400', '#ed8925', '#cb0912', '#950060'],
     atmosfera: {
       fogo:  {fundo:'#15201A', uf:'#1E2B24', contorno:'#3A4A41',
               rampa:['#BC5029', '#D8621F', '#F29A38'], nucleo:'#FFE3A3', claro:false},
