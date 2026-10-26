@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · #1170 · Execução das MPs: modalidade de aplicação por mês
+
+A execução das MPs 1.367 e 1.384 passa a trazer, em cada mês, o valor pago por modalidade de aplicação, além de empenhado, liquidado e pago. Sem código legível da modalidade, a linha cai em "outras formas", nunca em categoria inventada. O dado chega na próxima rodada semanal da atualização. Linhas: +3 de código, por ser o campo que faltava.
+
 ## 2026-10-26 · A3 · Busca de planos: capital que recusa o acesso é recusa nomeada, não "domínio não verificado"
 
 Wayback e Common Crawl marcavam "domínio não verificado" quando todos os endereços da prefeitura davam 403 ou muro de robô. Agora, se nenhum endereço respondeu e algum recusou, a situação é `recusa_de_fonte` com o endereço e o código; senão fica "não verificado", com os endereços tentados no motivo. Autoteste novo; nada contornado. Origem: `buscar_planos_fontes_abertas.py`.
