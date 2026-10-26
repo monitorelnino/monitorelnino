@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Portões: o contador de resposta passa a morar no runtime da inicial</dt>
+      <dd>`verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.</dd>
       <dt>26/10/2026 · Juiz: modo paralelo do codebook 1.8</dt>
       <dd>O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.</dd>
       <dt>26/10/2026 · Cadastro prioritários: sai o portal do MDR como rota</dt>
@@ -165,8 +167,6 @@
       <dd>Coletor novo `coletar_sim.py`: óbitos por mês, UF e seis grupos de causa, do FTP do DATASUS (consolidado e preliminar). Território e atraso declarados como não verificados (METODOLOGIA §122). Sete arquivos em `saude_desfechos/`, ainda sem dado; a primeira leitura vem pela válvula. Peso zero. Código +330.</dd>
       <dt>23/10/2026 · Saúde: a ficha do estado não verificado perde o travessão ao lado da etiqueta</dt>
       <dd>No campo &quot;Instrumento estadual de saúde&quot;, o estado sem documento localizado mostrava a etiqueta &quot;ainda não verificado&quot; e, ao lado, um travessão — que nada acrescenta ao que a etiqueta já diz. Sem documento, o campo fica só com a etiqueta. Mesma linha, nenhuma função nova.</dd>
-      <dt>23/10/2026 · Saúde: a semana do sinal de dengue sai em datas na ficha do estado</dt>
-      <dd>A ficha de cada estado e o perfil do município publicavam &quot;SE 202640&quot;: a sigla que saiu do site em 07/10 e a chave crua da fonte, que ali ainda se confunde com a sigla de Sergipe. Os dois passam a chamar `semanaEmDatas`, que já convertia a semana nas séries; sem o utilitário, a frase sai sem a data. Saem as duas linhas de boletim das figuras do mapa — uma nada escrevia, a outra repetia a legenda. Código −1.</dd>
     </dl>
   </section>
 </main>
