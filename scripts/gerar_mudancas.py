@@ -38,9 +38,9 @@ def entradas_do_changelog(texto: str, limite: int = LIMITE_DE_ENTRADAS) -> list:
     fora = []
     padrao = re.compile(r"^## (\d{4}-\d{2}-\d{2}) · (#\d+) · (.+?)$", re.M)
     achados = list(padrao.finditer(texto or ""))
-    for i, m in enumerate(achados[:limite]):
-        fim = achados[i + 1].start() if i + 1 < len(achados) else len(texto)
-        corpo = texto[m.end():fim].strip()
+    for m in achados[:limite]:
+        prox = re.search(r"^## ", texto[m.end():], re.M)  # o corpo acaba no próximo título, casado ou não
+        corpo = texto[m.end():m.end() + prox.start() if prox else len(texto)].strip()
         fora.append({"data": m.group(1), "numero": m.group(2),
                      "titulo": m.group(3).strip(), "corpo": corpo})
     return fora
@@ -131,6 +131,8 @@ def _autoteste() -> int:
     ok("o limite corta", len(entradas_do_changelog(cl, 1)) == 1)
     ok("linha fora do formato é ignorada",
        entradas_do_changelog("## 2026-10-03 sem numero de PR\n") == [])
+    ok("entrada fora do formato não entra no corpo da anterior", entradas_do_changelog(
+        "## 2026-10-03 · #534 · T\nCorpo.\n## 2026-10-02 · sem PR\nOutro.\n")[0]["corpo"] == "Corpo.")
     ok("data em formato brasileiro", data_br("2026-10-03") == "03/10/2026")
     ok("data vazia não quebra", data_br("") == "")
 

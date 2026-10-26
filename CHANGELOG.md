@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1203 · Retirada de confirmações e links que passaram por engano
+
+Decisão da editoria de 26/10. Dezoito decisões do juiz, em 14 municípios, recebem errata por linha; saem do banco e do mapa Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR. MARÉ Legal: PR 63,7 → 63,3; RJ 47,1 → 45,4; SP 35,4 → 35,3. Saem das filas e do registro do juiz 39.085 endereços sem relação com o tema, de outra UF ou de redirecionamento não resolvido; motivo em `pistas_rejeitadas.json`.
+
 ## 2026-10-26 · #1202 · Juiz: modo paralelo do codebook 1.8
 
 O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.
