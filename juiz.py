@@ -1070,8 +1070,8 @@ def ano_do_plano(texto, ano_corrente: int = None):
 
 
 def _ano_de_hoje() -> int:
-    import datetime as _dt
-    return _dt.date.today().year
+    from coletores_base import hoje_editorial
+    return hoje_editorial().year
 
 
 def data_suspeita(data, ano_corrente: int = None) -> bool:
