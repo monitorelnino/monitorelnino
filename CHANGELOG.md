@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · #1176 · Válvulas de dia repassam as chaves de API ao coletor
+
+A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.
+
 ## 2026-10-26 · #1171 · Ar medido: dias seguidos acima da OMS por capital
 
 A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz "sem credencial". Peso zero, sinal físico. Linhas: +102/−1.

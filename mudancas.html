@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Válvulas de dia repassam as chaves de API ao coletor</dt>
+      <dd>A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.</dd>
       <dt>26/10/2026 · Ar medido: dias seguidos acima da OMS por capital</dt>
       <dd>A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz &quot;sem credencial&quot;. Peso zero, sinal físico. Linhas: +102/−1.</dd>
       <dt>26/10/2026 · Execução das MPs: modalidade de aplicação por mês</dt>
@@ -165,8 +167,6 @@
       <dd>A coleta de 23/10 preservou de novo as páginas da Defesa Civil nacional e do Ministério da Saúde: trechos de chuva e fogo preenchidos, nove itens do guia da dengue com frase de fonte. Só dado.</dd>
       <dt>23/10/2026 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial</dt>
       <dd>`casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.</dd>
-      <dt>23/10/2026 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta</dt>
-      <dd>`indice-de-conteudo.html` entra na cadeia de `verificar_derivados.sh`: deixa de envelhecer a cada PR de texto. `verificar_catalogo.py` recusa chave de topo de `_renomeacoes.json` fora de `de_para`, que o portão não lê. Código +6/−3.</dd>
     </dl>
   </section>
 </main>
