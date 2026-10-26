@@ -9,6 +9,7 @@ Quatro consultas por município, todas a APIs públicas, sem login, sem LAI, sem
   S29  dados.gov.br (CKAN)       conjuntos de dados que citam o plano do município
   S27  hospedagem de documentos  Scribd, Issuu, Calameo, Yumpu, DocPlayer, SlideShare (pelo metabuscador, 26/10/2026)
   S24  planos conexos            PMRR, saneamento, plano de saúde, consórcio, comitê (pelo metabuscador, 26/10/2026)
+  S18  Querido Diário            excerto de plano nos diários oficiais do território (API pública, por código IBGE, 26/10/2026)
 
 Disciplina: cliente identificado, robots e Crawl-delay pela `buscar_uma_vez`, pausa por host, e
 401/403/429/451 ou muro de robô são RECUSA registrada (nunca retentativa). Resposta que não se
@@ -38,7 +39,7 @@ import xml.etree.ElementTree as ET
 from coletores_base import (buscar_uma_vez, ler, gravar, hoje_editorial, referencia_ibge,
                             rodar_autoteste, registrar_lacuna, MuroDeRobo)
 from descobrir_planos import dominios_do_municipio, identifica_prefeitura, RECUSAS_DE_FONTE
-from consultar_querido_diario import STATUS_DA_PISTA
+from consultar_querido_diario import STATUS_DA_PISTA, APIS as APIS_QD
 from scripts.pistas import gravar_lote
 
 PASTA = "planos_busca"
@@ -165,6 +166,61 @@ def consulta_conexos(nome: str, uf: str) -> str:
     return (f'"{nome}" {uf} ("redução de riscos" OR PMRR OR "saneamento básico" OR "plano municipal de saúde" '
             f'OR consórcio OR "comitê de bacia") "plano de contingência"')
 
+# ---- S18: Querido Diário por município (26/10/2026) ----------------------------------------------
+def parametros_qd(ibge: str, cobertura: bool = False) -> dict:
+    """Um território por chamada (o lote devolveu 8.165 zeros falsos em 03/09). `cobertura`: sem termo, só o total
+    de edições do município no acervo, que distingue 'sem plano' de 'sem diário no acervo'. Pura."""
+    base = {"territory_ids": str(ibge).zfill(7), "size": 1 if cobertura else 5}
+    if cobertura:
+        return base
+    return {**base, "querystring": '"plano de contingência" | plancon | placon', "excerpt_size": 300, "number_of_excerpts": 1}
+
+
+def url_qd(porta: str, params: dict) -> str:
+    return porta + "?" + urllib.parse.urlencode(params)
+
+
+def buscar_qd(buscar, params: dict) -> dict:
+    """JSON da primeira porta do Querido Diário que responde. Recusa (401/403/429/451, muro) sobe na hora e nunca
+    passa à porta seguinte; só falha de conexão ou TLS tenta a próxima. Se nenhuma responde, sobe o último erro com
+    as portas tentadas."""
+    falhas, ultimo = [], None
+    for porta in APIS_QD:
+        try:
+            return json.loads(buscar(url_qd(porta, params), 60).decode("utf-8"))
+        except (urllib.error.URLError, OSError) as e:
+            if isinstance(e, urllib.error.HTTPError) and e.code in RECUSAS_DE_FONTE:
+                raise
+            ultimo = e
+            falhas.append(f"{_host(porta)}: {type(e).__name__} {str(e)[:80]}")
+    ultimo.add_note("portas tentadas: " + " | ".join(falhas))
+    raise ultimo
+
+
+def ler_qd(dados: dict) -> list:
+    """(url, título) das edições cujo excerto cita o plano. Pura. Levanta se o corpo não é resposta da API."""
+    if not isinstance(dados, dict) or not isinstance(dados.get("gazettes"), list):
+        raise ValueError("resposta do Querido Diário sem `gazettes`")
+    saida = []
+    for g in dados["gazettes"]:
+        url, excerto = g.get("url") or g.get("txt_url") or "", " ".join(str((g.get("excerpts") or [""])[0] or "").split())
+        if url and PADRAO_PLANO.search(excerto) and url not in [u for u, _ in saida]:
+            saida.append((url, f"edição de {g.get('date') or 's/d'}: {excerto}"))
+    return saida
+
+
+def consultar_qd(buscar, ibge: str) -> tuple:
+    """(consulta, achados, motivo): sem achado, uma segunda chamada diz se o município tem diários no acervo (cobertura parcial)."""
+    achados = ler_qd(buscar_qd(buscar, parametros_qd(ibge)))
+    motivo = None
+    if not achados:
+        total = buscar_qd(buscar, parametros_qd(ibge, cobertura=True)).get("total_gazettes")
+        if not isinstance(total, int):
+            raise ValueError("resposta do Querido Diário sem `total_gazettes`")
+        motivo = (f"{total} edição(ões) no acervo, nenhum excerto de plano" if total
+                  else "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)")
+    return url_qd(APIS_QD[0], parametros_qd(ibge)), achados, motivo
+
 
 def _host(url: str) -> str:
     return (urllib.parse.urlparse(url).netloc or "").lower().split(":")[0]
@@ -260,6 +316,8 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
                     if isinstance(dados, dict) and dados.get("results") == []:
                         raise ValueError("metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência")
                     achados = ler_web(dados, nome, f == "S27")
+                elif f == "S18":
+                    r["consulta"], achados, r["motivo"] = consultar_qd(buscar, ibge)
                 elif f == "S16":
                     r["consulta"] = consulta_wayback(dominio); achados = ler_wayback(buscar(r["consulta"], 60))
                 elif f == "S25":
@@ -420,6 +478,9 @@ def autoteste() -> int:
         {"url": "https://alfa.xx.gov.br/pmrr.pdf", "title": "PMRR de Alfa", "content": "plano municipal de redução de riscos; plano de contingência de Alfa"},
         {"url": "https://blog.com/alfa", "title": "Alfa", "content": "plano de contingência e saneamento básico de Alfa"}]}
     web = lambda r=web_ok: (lambda q: r if not isinstance(r, Exception) else (_ for _ in ()).throw(r))
+    qd_ok = {"gazettes": [{"url": "https://q/a.pdf", "date": "2026-03-01", "excerpts": ["Aprova o  Plano de Contingência de Alfa"]},
+                          {"url": "https://q/b.pdf", "date": "2026-03-02", "excerpts": ["Orçamento"]},
+                          {"url": "", "date": "2026-03-03", "excerpts": ["Plano de Contingência"]}]}
     todas = um(["S16", "S25", "S13", "S29"])
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escrita_proibida = re.compile(r"gravar\(\s*['\"](estados|saude_uf|municipios|indice|monitor_saude)\.json")
@@ -453,6 +514,22 @@ def autoteste() -> int:
         "S27: corpo que não é resposta do metabuscador e 429 são erro/recusa, não ausência": lambda: (
             consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"x": 1}))["S27"]["situacao"] == "erro"
             and consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web(urllib.error.HTTPError("u", 429, "x", {}, None)))["S27"]["situacao"] == "recusa_de_fonte"),
+        "S18: só a edição cujo excerto cita o plano; sem URL ou sem excerto não entra; corpo alheio levanta": lambda: (
+            ler_qd(qd_ok) == [("https://q/a.pdf", "edição de 2026-03-01: Aprova o Plano de Contingência de Alfa")]
+            and ler_qd({"gazettes": []}) == [] and _levanta(ler_qd, {"results": []})),
+        "S18: um território por chamada e o termo só na consulta de achado": lambda: (
+            parametros_qd("123")["territory_ids"] == "0000123" and "," not in parametros_qd("123")["territory_ids"]
+            and "querystring" in parametros_qd("123") and "querystring" not in parametros_qd("123", cobertura=True)),
+        "S18: achado vira pista com as travas de campo e a consulta registrada": lambda: (lambda r: r["situacao"] == "lido" and r["consulta"].startswith("https://") and r["pistas"][0]["promovivel"] is False and r["pistas"][0]["documento_oficial_confirmado"] is None)(
+            um(["S18"], {**base, "gazettes": json.dumps(qd_ok).encode()})["S18"]),
+        "S18: sem excerto, município com diários é sem_resultado com o total; sem diário no acervo diz que é falta de acervo": lambda: (
+            lambda a, b: a["situacao"] == b["situacao"] == "sem_resultado" and "3 edição" in a["motivo"] and "sem diário no acervo" in b["motivo"])(
+            um(["S18"], {**base, "size=1": b'{"total_gazettes": 3, "gazettes": []}', "gazettes": b'{"gazettes": []}'})["S18"],
+            um(["S18"], {**base, "size=1": b'{"total_gazettes": 0, "gazettes": []}', "gazettes": b'{"gazettes": []}'})["S18"]),
+        "S18: porta com falha de conexão passa à seguinte; todas fora é erro; 403 é recusa e não tenta outra porta": lambda: (
+            (lambda vistas: buscar_qd(lambda u, t: (vistas.append(u), (_ for _ in ()).throw(OSError("tls")) if len(vistas) == 1 else b'{"gazettes": []}')[1], {"territory_ids": "1"}) == {"gazettes": []} and len(vistas) == 2)([])
+            and um(["S18"], {**base, "gazettes": OSError("tls")})["S18"]["situacao"] == "erro"
+            and um(["S18"], {**base, "gazettes": urllib.error.HTTPError("u", 403, "x", {}, None)})["S18"]["situacao"] == "recusa_de_fonte"),
         "trava estrutural: o fonte não grava nos arquivos do índice": lambda: not escrita_proibida.search(fonte),
         "recusa e erro viram lacuna declarada": lambda: (lac.clear(), um(["S13"], {**base, "lexml": urllib.error.HTTPError("u", 429, "x", {}, None)}), len(lac) == 1)[2],
         "401 e 451 também são recusa": lambda: all(classificar_erro(urllib.error.HTTPError("u", c, "x", {}, None))[0] == "recusa_de_fonte" for c in (401, 429, 451)),
@@ -510,7 +587,7 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     if "--alvos" not in sys.argv:
-        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29,S27,S24] [--limite N] [--uf SP]")
+        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29,S27,S24,S18] [--limite N] [--uf SP]")
         return 1
     arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
     fontes = [f.strip().upper() for f in (arg("--fontes") or "S13,S16,S25,S29").split(",") if f.strip()]
