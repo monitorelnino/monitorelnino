@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · #1170 · Execução das MPs: modalidade de aplicação por mês
+
+A execução das MPs 1.367 e 1.384 passa a trazer, em cada mês, o valor pago por modalidade de aplicação, além de empenhado, liquidado e pago. Sem código legível da modalidade, a linha cai em "outras formas", nunca em categoria inventada. O dado chega na próxima rodada semanal da atualização. Linhas: +3 de código, por ser o campo que faltava.
 ## 2026-10-26 · #1169 · Imprensa: estados com plano para o ciclo (4 de 27) e cidades acima da OMS como lacuna
 
 A Imprensa passa a ler, do monitor de saúde, quantos estados têm instrumento estadual novo para o ciclo (4 de 27), sem zero para UF não verificada. O limite da OMS por cidade fica como lacuna declarada, porque a série diária por município não está publicada no arquivo. Autoteste novo. Origem: `gerar_imprensa_semana.py`.
