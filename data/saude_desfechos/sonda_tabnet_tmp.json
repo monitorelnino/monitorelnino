@@ -1,0 +1,37 @@
+{
+ "sonda": "tabnet_rota_e1",
+ "resultados": [
+  {
+   "url": "http://tabnet.datasus.gov.br/robots.txt",
+   "situacao": "http_erro",
+   "status": 404,
+   "nota": "recusa do servidor (não é ausência)"
+  },
+  {
+   "url": "https://tabnet.datasus.gov.br/robots.txt",
+   "situacao": "erro_de_rede",
+   "erro": "URLError",
+   "detalhe": "<urlopen error timed out>"
+  },
+  {
+   "url": "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sinannet/cnv/dengbr.def",
+   "situacao": "http_ok",
+   "status": 200,
+   "bytes": 322,
+   "campos_name": [],
+   "inicio": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n\r\n<html lang=\"pt-BR\">\r\n<meta http-equiv=\"Content-Type\" c"
+  },
+  {
+   "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sinannet/cnv/dengbr.def",
+   "situacao": "erro_de_rede",
+   "erro": "URLError",
+   "detalhe": "<urlopen error timed out>"
+  },
+  {
+   "url": "https://datasus.saude.gov.br/",
+   "situacao": "erro_de_rede",
+   "erro": "RemoteDisconnected",
+   "detalhe": "Remote end closed connection without response"
+  }
+ ]
+}
