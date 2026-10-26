@@ -190,7 +190,7 @@ Atualizado em 26/10/2026.
 | `scripts/registrar_faixas.py` | — | `historico_faixas.json` | — | 1 | não |
 | `scripts/remediar_cpf_evidencias.py` | — | `evidencias.json` | — | — | não |
 | `scripts/remediar_segredos_evidencias.py` | — | `evidencias.json` | — | 1 | não |
-| `scripts/saude_pipeline.py` | — | `a.json`, `b.json`, `saude_pipeline.json` | — | 2 | não |
+| `scripts/saude_pipeline.py` | — | `a.json`, `b.json`, `saude_pipeline.json` | — | 3 | não |
 | `scripts/semear_pistas_de_sondas.py` | — | `sondas_websearch_N1.json` | — | — | não |
 | `scripts/sondar_dda_zenodo.py` | — | `saude_desfechos/completude.json`, `saude_desfechos/serie_painel.json` | — | — | não |
 | `scripts/sondar_fornecedor_transparencia.py` | — | `transparencia_fornecedor_capitais.json` | — | 1 | não |
