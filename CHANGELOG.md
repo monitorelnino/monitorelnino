@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-26 · #PR · Financiamento: % do pago aplicado pela União sai por medida
+## 2026-10-26 · #1187 · Financiamento: % do pago aplicado pela União sai por medida
 
 Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.
 
