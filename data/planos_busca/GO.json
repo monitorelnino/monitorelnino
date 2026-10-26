@@ -1,30 +1,30 @@
 {
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "5208707": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.goiania.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "www.goiania.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-26",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.goiania.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "www.goiania.go.gov.br"
    },
    "S13": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-26",
     "situacao": "recusa_de_fonte",
     "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Goi%C3%A2nia%22&maximumRecords=10",
     "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Goi%C3%A2nia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
     "dominio": "www.goiania.go.gov.br"
    },
    "S29": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-26",
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goi%C3%A2nia%22&rows=10",
     "motivo": "HTTP 401",

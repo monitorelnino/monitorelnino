@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "1721000": {
    "S16": {
@@ -10,11 +10,25 @@
     "dominio": "www.palmas.to.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
-    "dominio": "www.palmas.to.gov.br"
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=palmas.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "palmas.to.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Palmas%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Palmas%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "palmas.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Palmas%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "palmas.to.gov.br"
    }
   },
   "1702208": {
