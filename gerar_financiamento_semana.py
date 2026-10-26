@@ -294,6 +294,17 @@ def _execucoes(mps: dict) -> list:
     return [m for m in (mps or {}).get("mps") or [] if (m.get("execucao") or {}).get("status") == "coletado"]
 
 
+def pct_gasto_direto(m: dict):
+    """% do pago da MP aplicado diretamente pela União (modalidade 90). Lacuna = None: sem modalidade
+    coletada ou sem pago medido não há % (nunca zero por omissão). Função pura (HANDOVER_FINANCIAMENTO §9.1)."""
+    fa = m.get("forma_de_aplicacao") or {}
+    pago = (m.get("execucao") or {}).get("pago")
+    direto = (fa.get("por_modalidade") or {}).get("aplicados diretamente pela União")
+    if fa.get("status") != "coletado" or not isinstance(pago, (int, float)) or pago <= 0 or not isinstance(direto, (int, float)):
+        return None
+    return round(100.0 * float(direto) / float(pago), 1)
+
+
 def mes_a_mes(mps: dict) -> list:
     """Pago por mês de cada MP, desde o mês de publicação; mês corrente marcado parcial. Função pura."""
     out = []
@@ -301,6 +312,7 @@ def mes_a_mes(mps: dict) -> list:
         e = m["execucao"]
         out.append({"id": m.get("id"), "numero": m.get("numero"), "tema": m.get("tema"),
                     "risco_declarado": m.get("risco_declarado"),
+                    "pct_gasto_direto": pct_gasto_direto(m),
                     "meses": [{"mes": k, "pago": v.get("pago"), "parcial": bool(v.get("parcial"))
                                or k in (e.get("meses_parciais") or [])}
                               for k, v in sorted((e.get("por_mes") or {}).items()) if isinstance(v, dict)]})
@@ -465,6 +477,10 @@ def _autoteste() -> int:
             falhas.append(nome)
 
     ok("mes legivel", mes_legivel("202608") == "agosto de 2026")
+    ok("pct gasto direto por MP: lacuna e None, nunca zero por omissao",
+       pct_gasto_direto({"execucao": {"pago": 200.0}, "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 50.0}}}) == 25.0
+       and pct_gasto_direto({"execucao": {"pago": 200.0}, "forma_de_aplicacao": {"status": "sem_coleta"}}) is None
+       and pct_gasto_direto({"execucao": {"pago": 0}, "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 0}}}) is None)
     ok("mes malformado nao levanta", mes_legivel("20260") == "20260" and mes_legivel("202699") == "202699")
     ok("mes parcial nao e fechado",
        ultimo_mes_fechado({"202607": {"soma": 1}, "202608": {"soma": 2, "parcial": True}}) == "202607")
