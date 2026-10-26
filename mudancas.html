@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Limpeza: resíduo da retirada de 26/10</dt>
+      <dd>Na página de Saúde, Cubatão/SP e Toledo/PR deixam de mostrar a leitura de saúde no plano de documento retirado pelo #1203; sai também a proposta de Toledo na escada de planos. Em `mudancas.html`, entrada sem número deixa de aparecer dentro da anterior (`gerar_mudancas.py`, com caso de teste). Código +5/−3.</dd>
       <dt>26/10/2026 · Rodada paralela 1.8: B2 depois dos agregadores das decisões</dt>
       <dd>No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.</dd>
       <dt>26/10/2026 · Retirada de confirmações e links que passaram por engano</dt>
@@ -165,8 +167,6 @@
       <dd>O assunto &quot;busca-planos-N automático&quot; era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.</dd>
       <dt>23/10/2026 · Busca de planos em fontes abertas: a fonte que falha cinco vezes seguidas sai do run</dt>
       <dd>Na rodada dos prioritários o Common Crawl derrubou a conexão em 59 municípios e cada falha custou 2 min de espera; só 149 de 2.095 foram lidos. `buscar_planos_fontes_abertas.py` deixa a fonte de fora após cinco erros seguidos e a retoma na rodada seguinte; as outras fontes seguem.</dd>
-      <dt>23/10/2026 · Orientações oficiais: item do guia confere também contra os passos emendados</dt>
-      <dd>O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.</dd>
     </dl>
   </section>
 </main>
