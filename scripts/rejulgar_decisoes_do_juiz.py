@@ -92,6 +92,18 @@ def autoteste() -> int:
         casos.append(("hash sem arquivo devolve None", caminho_da_evidencia("b" * 64, pasta) is None))
         casos.append(("hash vazio devolve None", caminho_da_evidencia(None, pasta) is None))
 
+    # rodada paralela 1.8: o "antes" é a última decisão da chave; a fila passa pelas regras B
+    hist = [{"pista_id": "p", "url": "u", "codebook": "1.5", "promove": True},
+            {"pista_id": "p", "url": "u", "codebook": "1.7", "promove": False}]
+    casos.append(("1.8: o antes é a decisão vigente da chave", vigentes(hist)[chave_18(hist[0])]["codebook"] == "1.7"))
+    f = triar_fila_18([{"id": "a", "url": "https://www.reddit.com/r/x", "nivel": "A"},
+                       {"id": "b", "url": "https://ouro.sc.gov.br/p.pdf", "nivel": "C", "municipio": "Ouro"},
+                       {"id": "c", "url": "https://x.ac.gov.br/a", "nivel": "A", "municipio": "defesa_civil", "uf": "AC"}],
+                      set())
+    casos.append(("1.8: a fila descarta Reddit na porta, conta por domínio e põe o nível A primeiro",
+                  [p["id"] for p in f["pistas"]] == ["c", "b"] and f["descartadas_por_dominio"] == {"www.reddit.com": 1}
+                  and f["pistas"][0]["municipio"] is None and f["pistas"][0]["setor_18"] == "defesa_civil"))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -102,9 +114,210 @@ def autoteste() -> int:
     return 0
 
 
+# =============================================================================================
+# Codebook 1.8 — RODADA PARALELA (handover da central de 26/10/2026)
+# =============================================================================================
+# `--codebook 1.8 --saida data/paralelo_juiz18.json`: rejulga cada decisão (uma vez por pista e URL, com
+# a decisão vigente como "antes") e grava SÓ na saída. `--fila` tria as pistas em fila pelas regras B
+# (B1, B3, B6) em `data/paralelo_fila18.json`. `--rede N` lê até N URLs novas por rodada (válvula
+# `coleta-dia/*`): decisões e fila, por prioridade; sem `--rede`, só o que se decide sem documento.
+# Retomável: chave já julgada com documento não volta. Nenhum arquivo de produção é escrito.
+SAIDA_18 = RAIZ / "data" / "paralelo_juiz18.json"
+FILA_18 = RAIZ / "data" / "paralelo_fila18.json"
+STATUS_EM_FILA = "pista — na fila"
+
+
+def chave_18(p: dict) -> str:
+    return "|".join(str(p.get(c) or "") for c in ("pista_id", "url", "municipio", "uf"))
+
+
+def vigentes(decisoes: list) -> dict:
+    """A última decisão de cada chave (pista, URL, município, UF): é o "antes" do rejulgamento. PURA."""
+    out = {}
+    for v in decisoes:
+        out[chave_18(v)] = v
+    return out
+
+
+def compacto_18(v: dict) -> dict:
+    return {k: v.get(k) for k in ("promove", "motivo", "categoria", "data", "municipio", "uf", "ibge",
+                                  "familia_de_risco", "sem_ato_de_aprovacao", "codebook", "regras_18") if k in v}
+
+
+def julgar_18(p: dict, buscar, propostas=False) -> dict:
+    from julgar_filas import julgar_uma
+    novo = julgar_uma(p, buscar, codebook="1.8")
+    if propostas and novo.get("leu_documento"):
+        from juiz import PROPOSTAS_18, julgar
+        texto = buscar(p.get("url"))
+        prop = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "", ibge=p.get("ibge"),
+                      url=p.get("url"), trecho=p.get("trecho"), codebook="1.8", propostas=PROPOSTAS_18)
+        novo["com_propostas_J8_J9"] = compacto_18(prop)
+    return novo
+
+
+def triar_fila_18(pistas: list, veiculos) -> dict:
+    """B1, B3 e B6 sobre as pistas em fila. PURA: devolve o documento da fila paralela."""
+    from collections import Counter
+    from pistas import REDIRECIONADORES, entrada_18, prioridade_18, sem_rotulo_de_setor
+    aceitas, agregadores, fora = [], [], Counter()
+    for bruta in pistas:
+        p = sem_rotulo_de_setor(bruta)
+        if any(r in str(p.get("url") or "") for r in REDIRECIONADORES) and not p.get("url_final"):
+            agregadores.append({"id": p.get("id"), "url": p.get("url"), "titulo": p.get("titulo"),
+                                "veiculo_dominio": p.get("veiculo_dominio"), "municipio": p.get("municipio"),
+                                "uf": p.get("uf"), "ibge": p.get("ibge"), "nivel": p.get("nivel"),
+                                "prioridade": prioridade_18(p), "tentativas_b2": 0})   # B2: resolver antes da porta
+            continue
+        ok, papel = entrada_18(p, veiculos)
+        if not ok:
+            fora[papel.split(": ", 1)[-1]] += 1
+            continue
+        aceitas.append({"id": p.get("id"), "url": p.get("url_final") or p.get("url"), "municipio": p.get("municipio"),
+                        "uf": p.get("uf"), "ibge": p.get("ibge"), "nivel": p.get("nivel"),
+                        "origem": p.get("origem"), "papel": papel, "prioridade": prioridade_18(p),
+                        **({"setor_18": p["setor_18"]} if p.get("setor_18") else {})})
+    aceitas.sort(key=lambda x: x["prioridade"])
+    agregadores.sort(key=lambda x: x["prioridade"])
+    return {"pistas": aceitas, "agregadores": agregadores, "descartadas_por_dominio": dict(fora.most_common()),
+            "totais": {"em_fila": len(pistas), "aceitas": len(aceitas), "agregadores_a_resolver": len(agregadores),
+                       "descartadas": sum(fora.values())}}
+
+
+def candidata_18(c: dict, origem: dict, rota: str) -> dict:
+    """Candidato de B2 ou B4 vira pista da fila paralela, ligada à de origem."""
+    from pistas import prioridade_18
+    import hashlib
+    p = {"id": f"{origem.get('id') or origem.get('pista_id')}>{hashlib.sha1(c['url'].encode()).hexdigest()[:8]}",
+         "url": c["url"],
+         "trecho": c.get("trecho"), "municipio": origem.get("municipio"), "uf": origem.get("uf"),
+         "ibge": origem.get("ibge"), "nivel": origem.get("nivel"), "origem": rota, "papel": "dominio_publico"}
+    p["prioridade"] = prioridade_18(p)
+    return p
+
+
+def buscar_18():
+    """O leitor com rede da rodada: B5 (espera crescente e registro) na pasta do RS; o resto, uma vez."""
+    from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, buscar_texto
+    from seguir_pistas import ler_com_espera_18
+    registros, cache = [], {}
+
+    def ler(url):
+        if url in cache:
+            return cache[url]
+        if HOST_SHAREPOINT_RS in str(url):
+            texto, reg = ler_com_espera_18(url, buscar_texto)
+            registros.append(reg)
+        else:
+            texto = buscar_texto(url)
+        cache[url] = texto
+        return texto
+    return ler, registros
+
+
+def paralelo_18(argv) -> int:
+    from coletores_base import gravar_em, hoje_editorial
+    from juiz import CODEBOOK_18, fonte_oficial
+    rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
+    propostas = "--propostas" in argv
+    saida = RAIZ / argv[argv.index("--saida") + 1] if "--saida" in argv else SAIDA_18
+    doc = json.loads(saida.read_text(encoding="utf-8")) if saida.exists() else {
+        "_governanca": ("Rodada paralela do juiz, codebook 1.8 (handover da central de 26/10/2026). Nenhuma página "
+                        "lê este arquivo; a troca para o 1.8 é decisão da editoria. `rejulgada_de` é a decisão "
+                        "vigente (1.7 ou anterior) da mesma pista e URL."),
+        "codebook": CODEBOOK_18, "decisoes": []}
+    feitas = {chave_18(v): v for v in doc["decisoes"]}
+    ler, registros = buscar_18() if rede else (lambda u: None, [])
+    hoje = hoje_editorial().isoformat()
+    lidas, pendentes = 0, [0]
+
+    def rejulgar(p, antes, origem):
+        nonlocal lidas
+        chave = chave_18(p)
+        anterior = feitas.get(chave)
+        precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"], True)
+        if anterior and (anterior.get("leu_documento") or not precisa_ler):
+            return
+        if precisa_ler and (not rede or lidas >= rede):
+            pendentes[0] += 1
+            return
+        lidas += precisa_ler
+        novo = julgar_18(p, ler if precisa_ler else (lambda u: None), propostas)
+        novo.update(pista_id=p.get("pista_id") or p.get("id"), origem_18=origem, julgado_em=hoje,
+                    rejulgada_de=compacto_18(antes) if antes else None)
+        novo["url"], novo["municipio_da_pista"], novo["uf_da_pista"] = p.get("url"), p.get("municipio"), p.get("uf")
+        if not novo.get("leu_documento"):
+            novo.pop("criterios", None)   # sem documento lido, o motivo basta (o arquivo fica pequeno)
+        feitas[chave] = novo
+        if rede and fila is not None and novo.get("motivo") in ("noticia_nao_e_documento",
+                                                               "noticia_institucional_nao_e_o_plano"):
+            from seguir_pistas import buscar_html, documentos_da_pagina_18   # B4: um nível, mesmo domínio
+            vistos = {x["url"] for x in fila["pistas"]}
+            fila["pistas"] += [candidata_18(c, p, "b4_pagina_oficial")
+                               for c in documentos_da_pagina_18(p["url"], buscar_html(p["url"])) if c["url"] not in vistos]
+
+    fila = json.loads(FILA_18.read_text(encoding="utf-8")) if FILA_18.exists() else None
+    if "--fila" in argv:
+        veiculos = {str(v.get("dominio") or "").lower() for v in json.loads(
+            (RAIZ / "data" / "veiculos_imprensa.json").read_text(encoding="utf-8")).get("veiculos", [])}
+        em_fila = [p for p in json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))
+                   .get("pistas", []) if str(p.get("status") or "").startswith(STATUS_EM_FILA)]
+        fila = dict(triar_fila_18(em_fila, veiculos), _governanca=(
+            "Fila paralela do codebook 1.8 (B1, B3, B6): as pistas em fila de data/pistas_imprensa.json que a "
+            "entrada 1.8 aceita, por prioridade. Nenhuma página lê este arquivo."), triada_em=hoje)
+        print(f"fila 1.8: {fila['totais']}")
+
+    if rede and fila and "--agregadores" in argv:
+        from julgar_e_aplicar_descobertas import _resolver_da_rodada
+        from seguir_pistas import seguir_agregador_18
+        resolver, n = _resolver_da_rodada(), int(argv[argv.index("--agregadores") + 1])
+        for a in [a for a in fila.get("agregadores", []) if a.get("tentativas_b2", 0) < 2 and not a.get("resolvido")][:n]:
+            a["tentativas_b2"] = a.get("tentativas_b2", 0) + 1
+            candidatos, como = seguir_agregador_18(a, resolver)
+            a["resolvido"] = como if como != "nao_resolvido" else None
+            fila["pistas"] += [candidata_18(c, a, "b2_agregador") for c in candidatos]
+        fila["pistas"].sort(key=lambda x: x["prioridade"])
+
+    por_id = {p.get("id"): p for p in json.loads(
+        (RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8")).get("pistas", []) if p.get("id")}
+    decididas = vigentes(json.loads(REGISTRO.read_text(encoding="utf-8")).get("decisoes") or [])
+    if fila is not None and "--fila" in argv:   # B2: o link de agregador das decisões também se resolve
+        from pistas import REDIRECIONADORES, prioridade_18
+        ja = {a["id"] for a in fila["agregadores"]}
+        for v in decididas.values():
+            if any(r in str(v.get("url")) for r in REDIRECIONADORES) and v.get("pista_id") not in ja:
+                ja.add(v.get("pista_id"))
+                origem = por_id.get(v.get("pista_id")) or {}
+                fila["agregadores"].append({"id": v.get("pista_id"), "url": v.get("url"), "titulo": origem.get("titulo"),
+                                            "veiculo_dominio": origem.get("veiculo_dominio"), "municipio": v.get("municipio"),
+                                            "uf": v.get("uf"), "ibge": v.get("ibge"), "nivel": origem.get("nivel"),
+                                            "prioridade": prioridade_18(origem), "tentativas_b2": 0})
+        fila["agregadores"].sort(key=lambda x: x["prioridade"])
+        fila["totais"]["agregadores_a_resolver"] = len(fila["agregadores"])
+    for chave, v in decididas.items():
+        rejulgar({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
+                  "ibge": v.get("ibge"), "url": v.get("url"), "origem": v.get("origem"),
+                  "trecho": (por_id.get(v.get("pista_id")) or {}).get("trecho")}, v, "decisao")
+    for p in (fila or {}).get("pistas", []):
+        rejulgar({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
+                  **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+
+    if fila is not None:
+        gravar_em(FILA_18, fila, compacto=True)
+    doc["decisoes"] = list(feitas.values())
+    doc["leituras_da_pasta_rs"] = (doc.get("leituras_da_pasta_rs") or []) + registros
+    gravar_em(saida, doc, compacto=True)
+    faltam = pendentes[0]
+    print(f"OK {saida.name}: {len(doc['decisoes'])} chave(s); {lidas} lida(s) nesta rodada; "
+          f"{faltam} com documento oficial ainda sem leitura")
+    return 0
+
+
 def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
+    if "--codebook" in sys.argv and sys.argv[sys.argv.index("--codebook") + 1].startswith("1.8"):
+        return paralelo_18(sys.argv)
 
     from coletores_base import gravar_em, hoje_editorial
     from juiz import CODEBOOK_VERSAO
