@@ -9,9 +9,15 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+<<<<<<< HEAD
 ## 2026-10-26 · A3 · Busca de planos: hospedagem de documentos (S27) e planos conexos (S24)
 
 `buscar_planos_fontes_abertas.py` ganha duas fontes pelo metabuscador da válvula: Scribd, Issuu, Calameo, Yumpu, DocPlayer e SlideShare (S27) e endereços institucionais de PMRR, saneamento, saúde, consórcio e comitê que citam o plano (S24). Resultado bruto vazio é `erro`, nunca ausência; 429 é recusa nomeada. Pista nasce não confirmada e não promovível. Código +76/−3.
+=======
+## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json`
+
+`verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1.
+>>>>>>> origin/main
 
 ## 2026-10-26 · #1181 · Ar medido: capital sem medição na janela é lacuna declarada
 
