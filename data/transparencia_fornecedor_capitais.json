@@ -1,0 +1,308 @@
+{
+ "_governanca": "Sonda de fornecedor de transparência (S28, N1). Só registra; nunca lida pelo cálculo da nota. Ausência = não localizamos até o corte.",
+ "verificado_em": "2026-10-26",
+ "capitais": [
+  {
+   "capital": "Rio Branco",
+   "uf": "AC",
+   "host": "www.riobranco.ac.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Maceió",
+   "uf": "AL",
+   "host": "maceio.al.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Macapá",
+   "uf": "AP",
+   "host": "www.macapa.ap.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Manaus",
+   "uf": "AM",
+   "host": "www.manaus.am.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Salvador",
+   "uf": "BA",
+   "host": "www.salvador.ba.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Fortaleza",
+   "uf": "CE",
+   "host": "www.fortaleza.ce.gov.br",
+   "status": "lido",
+   "fornecedores": [],
+   "tentativas": []
+  },
+  {
+   "capital": "Brasília",
+   "uf": "DF",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.brasilia.df.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "Vitória",
+   "uf": "ES",
+   "host": "www.vitoria.es.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Goiânia",
+   "uf": "GO",
+   "host": "www.goiania.go.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "São Luís",
+   "uf": "MA",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.saoluis.ma.gov.br",
+     "resultado": "MuroDeRobo",
+     "recusa": true
+    }
+   ]
+  },
+  {
+   "capital": "Cuiabá",
+   "uf": "MT",
+   "host": "www.cuiaba.mt.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Campo Grande",
+   "uf": "MS",
+   "host": "www.campogrande.ms.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Belo Horizonte",
+   "uf": "MG",
+   "host": "prefeitura.pbh.gov.br",
+   "status": "lido",
+   "fornecedores": [],
+   "tentativas": []
+  },
+  {
+   "capital": "Belém",
+   "uf": "PA",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.belem.pa.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "João Pessoa",
+   "uf": "PB",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.joaopessoa.pb.gov.br",
+     "resultado": "MuroDeRobo",
+     "recusa": true
+    }
+   ]
+  },
+  {
+   "capital": "Curitiba",
+   "uf": "PR",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.curitiba.pr.gov.br",
+     "resultado": "http_403",
+     "recusa": true
+    }
+   ]
+  },
+  {
+   "capital": "Recife",
+   "uf": "PE",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.recife.pe.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "Teresina",
+   "uf": "PI",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.teresina.pi.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "Rio de Janeiro",
+   "uf": "RJ",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.riodejaneiro.rj.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "Natal",
+   "uf": "RN",
+   "host": "www.natal.rn.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Porto Alegre",
+   "uf": "RS",
+   "host": "prefeitura.poa.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Porto Velho",
+   "uf": "RO",
+   "host": "www.portovelho.ro.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Boa Vista",
+   "uf": "RR",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.boavista.rr.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "Florianópolis",
+   "uf": "SC",
+   "host": null,
+   "status": "sem_resposta_ate_o_corte",
+   "fornecedores": [],
+   "tentativas": [
+    {
+     "host": "www.florianopolis.sc.gov.br",
+     "resultado": "URLError",
+     "recusa": false
+    }
+   ]
+  },
+  {
+   "capital": "São Paulo",
+   "uf": "SP",
+   "host": "www.saopaulo.sp.gov.br",
+   "status": "lido",
+   "fornecedores": [
+    "portal_transparencia_proprio"
+   ],
+   "tentativas": []
+  },
+  {
+   "capital": "Aracaju",
+   "uf": "SE",
+   "host": "www.aracaju.se.gov.br",
+   "status": "lido",
+   "fornecedores": [],
+   "tentativas": []
+  },
+  {
+   "capital": "Palmas",
+   "uf": "TO",
+   "host": "www.palmas.to.gov.br",
+   "status": "lido",
+   "fornecedores": [],
+   "tentativas": []
+  }
+ ]
+}

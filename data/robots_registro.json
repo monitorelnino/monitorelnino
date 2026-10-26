@@ -4166,16 +4166,22 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-26",
-   "total_acessos": 1,
+   "total_acessos": 2,
    "acessos": [
     {
      "url": "https://www.saopaulo.sp.gov.br/wp-json/wp/v2/media?search=plancon&per_page=100&_fields=source_url,title,date",
      "quando": "2026-09-26T13:50:47Z",
      "origem": "claude",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.saopaulo.sp.gov.br/",
+     "quando": "2026-10-26T04:03:46Z",
+     "origem": "sondar_fornecedor_transparencia",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-09-26"
+   "ultimo_acesso": "2026-10-26"
   },
   "zenodo.org": {
    "status_robots": "permite",
