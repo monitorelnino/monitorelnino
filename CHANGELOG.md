@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1211 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
+
+No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.
+## 2026-10-26 · #1203 · Retirada de confirmações e links que passaram por engano
+
+Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.
+
 ## 2026-10-26 · #1206 · Portões: o contador de resposta passa a morar no runtime da inicial
 
 `verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.
@@ -28,6 +35,7 @@ Regras B1–B11 em `buscador2.py`. A porta da fila admite só domínio do munic�
 ## 2026-10-26 · #1202 · Juiz: modo paralelo do codebook 1.8
 
 O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.
+
 ## 2026-10-26 · #1201 · Cadastro prioritários: sai o portal do MDR como rota
 
 Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.
