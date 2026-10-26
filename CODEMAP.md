@@ -170,7 +170,7 @@ Atualizado em 26/10/2026.
 | `scripts/gerar_manifesto.py` | — | `painel_da_noite.json`, `saude_pipeline.json`, `transferencias_api_raw.json` | — | — | não |
 | `scripts/gerar_prioridade_municipios.py` | — | `prioridade_municipios.json` | — | — | não |
 | `scripts/gerar_resumo_do_log.py` | — | `log_buscas_resumo.json` | — | — | não |
-| `scripts/gerar_topo_das_paginas.py` | — | `resposta/topo_defesa_civil.json`, `saude_desfechos/topo_saude.json`, `topo_monitor_riscos.json` | — | — | não |
+| `scripts/gerar_topo_das_paginas.py` | — | `resposta/topo_defesa_civil.json`, `saude_desfechos/topo_saude.json`, `topo_monitor_riscos.json` | — | 1 | não |
 | `scripts/incorporar_respostas_lai.py` | — | `atos_resposta.json`, `estados.json`, `notas_lai.json` | — | — | não |
 | `scripts/ingerir_ocp_midr.py` | — | `ocp_2026.json` | — | — | não |
 | `scripts/limpar_fila_de_pistas.py` | — | `pistas_imprensa.json` | — | 2 | não |
