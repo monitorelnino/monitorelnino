@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-26 · #1217 · Busca de planos: Ministério Público, Judiciário, Saúde e Transferegov por consulta mecânica
+## 2026-10-26 · #1219 · Busca de planos: Ministério Público, Judiciário, Saúde e Transferegov por consulta mecânica
 
 As fontes S20, S21, S23 e S31 entram em `buscar_planos_fontes_abertas.py` como linhas da tabela `FONTES_WEB`, junto de S27 e S24: o metabuscador da válvula, filtrado por endereço e por texto, sem agente por município. Saldo de código +22 linhas (quatro fontes novas e um caso de teste). Nenhum texto público muda.
 
