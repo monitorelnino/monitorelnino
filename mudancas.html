@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Ar medido: dias seguidos acima da OMS por capital</dt>
+      <dd>A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz &quot;sem credencial&quot;. Peso zero, sinal físico. Linhas: +102/−1.</dd>
       <dt>26/10/2026 · Execução das MPs: modalidade de aplicação por mês</dt>
       <dd>A execução das MPs 1.367 e 1.384 passa a trazer, em cada mês, o valor pago por modalidade de aplicação, além de empenhado, liquidado e pago. Sem código legível da modalidade, a linha cai em &quot;outras formas&quot;, nunca em categoria inventada. O dado chega na próxima rodada semanal da atualização. Linhas: +3 de código, por ser o campo que faltava.</dd>
       <dt>26/10/2026 · Imprensa: estados com plano para o ciclo (4 de 27) e cidades acima da OMS como lacuna</dt>
@@ -165,8 +167,6 @@
       <dd>`casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.</dd>
       <dt>23/10/2026 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta</dt>
       <dd>`indice-de-conteudo.html` entra na cadeia de `verificar_derivados.sh`: deixa de envelhecer a cada PR de texto. `verificar_catalogo.py` recusa chave de topo de `_renomeacoes.json` fora de `de_para`, que o portão não lê. Código +6/−3.</dd>
-      <dt>23/10/2026 · Renomeações: um bloco só, o que o portão lê</dt>
-      <dd>`conteudo/_renomeacoes.json` tinha um segundo bloco no fim, fora de `de_para`, e `verificar_catalogo.py` lê só `de_para`. A renomeação da legenda do medidor da Saúde, escrita ali ontem, ficava invisível ao portão: pedido de edição que a citasse viraria recusa sem explicação. As quatro entradas repetidas do Monitor de riscos saem e a da Saúde entra no bloco lido. Índice de conteúdo regenerado.</dd>
     </dl>
   </section>
 </main>

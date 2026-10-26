@@ -48,7 +48,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 from coletores_base import ua_de, hoje_editorial, contexto_tls  # noqa: E402  (§228: um cliente só, com propósito)
 from coletores_base import normalizar_nome  # §233
@@ -1072,6 +1072,81 @@ def locais_openaq_pm25(locais: list, agora_dt: datetime) -> dict:
     return saida
 
 
+# 26/10/2026 (LOTES, P27b; pedido do Imprensa §2 "cidades acima do limite diário da OMS"): série
+# diária de PM2,5 e PM10 da estação oficial de cada capital, para contar dias seguidos acima do
+# limite de 24 h da OMS (2021). Só monitor de referência (`isMonitor`); sensor de baixo custo fica fora.
+OPENAQ_DIAS = "https://api.openaq.org/v3/sensors/{id}/days?date_from={de}&date_to={ate}&limit=100"
+OPENAQ_DIAS_JANELA = 31
+LIMITE_OMS_24H = {"pm25": 15.0, "pm10": 45.0}   # µg/m³
+PAUSA_OPENAQ_S = 1.1                            # 60 req/min no OpenAQ, com folga
+
+
+def sensores_pm_do_local(loc: dict) -> dict:
+    """{'pm25': id, 'pm10': id} dos sensores de PM do local, pelo nome do parâmetro. Função pura."""
+    saida = {}
+    for s in (loc or {}).get("sensors") or []:
+        nome = str((s.get("parameter") or {}).get("name") or "").lower()
+        if nome in LIMITE_OMS_24H and nome not in saida and isinstance(s.get("id"), int):
+            saida[nome] = s["id"]
+    return saida
+
+
+def serie_diaria(resposta: dict) -> dict:
+    """{'AAAA-MM-DD': µg/m³} da resposta de /v3/sensors/{id}/days. Linha sem valor numérico ou sem
+    data é descartada, nunca preenchida. Função pura."""
+    saida = {}
+    for u in (resposta or {}).get("results") or []:
+        v = u.get("value") if isinstance(u, dict) else None
+        periodo = ((u or {}).get("period") or {}).get("datetimeFrom") or {}
+        dia = str(periodo.get("local") or periodo.get("utc") or "")[:10]
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and len(dia) == 10:
+            saida[dia] = round(float(v), 1)
+    return saida
+
+
+def dias_seguidos_acima(serie: dict, limite: float) -> dict:
+    """Dias seguidos, contando para trás a partir do último dia medido, com média de 24 h acima do
+    limite. Dia sem medição interrompe a sequência. Devolve também o último dia medido, para que
+    quem lê veja se a série está velha. Função pura."""
+    if not serie:
+        return {"dias_seguidos": None, "ultimo_dia": None, "motivo": "sem medição na janela"}
+    ultimo = max(serie)
+    n, d = 0, date.fromisoformat(ultimo)
+    while d.isoformat() in serie and serie[d.isoformat()] > limite:
+        n += 1
+        d -= timedelta(days=1)
+    return {"dias_seguidos": n, "ultimo_dia": ultimo, "valor_ultimo": serie[ultimo]}
+
+
+def cidades_pm_diaria(locais_brutos: list, capitais: dict, extra: dict, agora_dt: datetime) -> dict:
+    """{UF: {pm25: {...}, pm10: {...}, estacao, nome, rede_de_origem}} com a série de 31 dias de cada
+    capital. Cada sensor falha sozinho e vira lacuna declarada, nunca zero. Usa a seleção de
+    `parse_openaq_locais` (monitor a até 30 km da capital)."""
+    oficiais = [l for l in locais_brutos or [] if isinstance(l, dict) and l.get("isMonitor") is True]
+    escolhidos = parse_openaq_locais({"results": oficiais}, capitais)
+    por_id = {l.get("id"): l for l in oficiais}
+    fim = agora_dt.date()
+    de = fim - timedelta(days=OPENAQ_DIAS_JANELA)
+    saida = {}
+    for uf, est in sorted(escolhidos.items()):
+        sensores = sensores_pm_do_local(por_id.get(est["id"]))
+        linha = {"estacao": est["id"], "nome": est["nome"], "rede_de_origem": est["rede_de_origem"]}
+        for p in LIMITE_OMS_24H:
+            if p not in sensores:
+                linha[p] = {"status": "sem_sensor_na_estacao"}
+                continue
+            try:
+                time.sleep(PAUSA_OPENAQ_S)
+                url = OPENAQ_DIAS.format(id=sensores[p], de=de.isoformat(), ate=fim.isoformat())
+                serie = serie_diaria(json.loads(_buscar_registrado("openaq", url, extra=extra)))
+                linha[p] = {"status": "coletado", "sensor": sensores[p], "limite_oms_24h": LIMITE_OMS_24H[p],
+                            "serie": dict(sorted(serie.items())), **dias_seguidos_acima(serie, LIMITE_OMS_24H[p])}
+            except Exception as e:  # noqa: BLE001 — fonte externa: vira lacuna declarada
+                linha[p] = {"status": "falha_de_rede", "motivo": f"{type(e).__name__}: {str(e)[:120]}"}
+        saida[uf] = linha
+    return saida
+
+
 def casar_openaq(estacoes: list, locais: list, ultimas: list, agora_dt: datetime) -> int:
     """Pendura em cada estação MMA o PM2,5 do local OpenAQ que é a MESMA estação: a até 300 m, ou
     com o mesmo nome a até OPENAQ_RAIO_KM. Sem par, a estação diz que a fonte de concentrações não
@@ -2036,7 +2111,18 @@ def gravar_ar_medido(agora_dt: datetime = None) -> None:
         fontes["openaq"]["estacoes_casadas"] = casar_openaq(
             estacoes, _AR_MEDIDO.get("openaq_locais"), dados["openaq"], agora_dt)
     sensores = parse_redear(dados.get("redear"), agora_dt)
+    # P27b: série diária por capital. Sem a chave, o campo diz "sem_credencial"; nunca vira zero.
+    cidades, status_cidades = {}, "sem_credencial"
+    if "openaq" in dados and credencial_de("openaq"):
+        try:
+            cidades = cidades_pm_diaria(_AR_MEDIDO.get("openaq_locais"), {c["uf"]: c for c in resolver_capitais()},
+                                        {"X-API-Key": credencial_de("openaq")}, agora_dt)
+            status_cidades = "coletado" if cidades else "sem_monitor_oficial_na_capital"
+        except Exception as e:  # noqa: BLE001
+            status_cidades = f"falha: {type(e).__name__}"
+            print(f"[aviso] ar medido: série diária do OpenAQ falhou ({type(e).__name__}) — lacuna declarada")
     escrever_json(RAIZ / "data" / "ar_medido.json", {
+        "cidades_pm_diaria_status": status_cidades, "cidades_pm_diaria": cidades,
         "_governanca": ("Ar medido por estação e sensor. IQAr calculado pelo órgão (MMA/MonitorAr, "
                         "CONAMA 506/2024), nunca recalculado aqui; PM2,5 do OpenAQ só para a mesma "
                         "estação oficial; sensores de baixo custo (IPAM/RedeAr) só em concentração, "
@@ -2847,6 +2933,21 @@ def autoteste() -> int:
          "sensors": [{"id": 5, "parameter": {"name": "pm25"}}]}], _agora)
     checar("Ar: OpenAQ só consulta monitor de referência com PM2,5 recente (sensor de baixo custo e local parado ficam fora)",
            _alvos == {10: {7}})
+    # P27b (26/10/2026): série diária por capital. Sem dia, sem zero; a sequência para no primeiro dia sem medição.
+    checar("PM diário: sensores de PM2,5 e PM10 do local, pelo parâmetro",
+           sensores_pm_do_local({"sensors": [{"id": 7, "parameter": {"name": "pm25"}}, {"id": 8, "parameter": {"name": "pm10"}},
+                                             {"id": 9, "parameter": {"name": "o3"}}]}) == {"pm25": 7, "pm10": 8})
+    checar("PM diário: linha sem valor numérico ou sem data é descartada, nunca zero",
+           serie_diaria({"results": [{"value": 16.2, "period": {"datetimeFrom": {"local": "2026-10-24T00:00:00-03:00"}}},
+                                     {"value": None, "period": {"datetimeFrom": {"local": "2026-10-25T00:00:00-03:00"}}},
+                                     {"value": 9.0, "period": {}}, {"value": True, "period": {"datetimeFrom": {"local": "2026-10-23T00:00:00"}}}]})
+           == {"2026-10-24": 16.2})
+    _pm = {"2026-10-20": 16.0, "2026-10-21": 15.0, "2026-10-22": 17.0, "2026-10-23": 18.0, "2026-10-24": 19.0}
+    checar("PM diário: dias seguidos acima de 15 µg/m³ contam para trás e param no 15,0 (não é acima)",
+           dias_seguidos_acima(_pm, 15.0)["dias_seguidos"] == 3 and dias_seguidos_acima(_pm, 15.0)["ultimo_dia"] == "2026-10-24")
+    checar("PM diário: dia sem medição interrompe a sequência; série vazia é lacuna, não zero",
+           dias_seguidos_acima({"2026-10-24": 19.0, "2026-10-22": 30.0}, 15.0)["dias_seguidos"] == 1
+           and dias_seguidos_acima({}, 15.0)["dias_seguidos"] is None)
     _sens = parse_redear([
         {"sensor_id": 1, "source": "RedeAr", "name": "Carauari", "geocode_mun": 1301001, "geocode_uf": 13,
          "gps": {"coordinates": [-67.17, -5.09]}, "readings": [
