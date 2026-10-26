@@ -193,6 +193,9 @@ def coletar() -> int:
             for k in ("empenhado", "liquidado", "pago"): acumulado[mp][k] = somar(acumulado[mp][k], parcial[mp][k])
             acumulado[mp]["por_mes"][mes] = {k: arred(parcial[mp][k])
                                              for k in ("empenhado", "liquidado", "pago")}
+            # 26/10/2026 (LOTES, pedido do Financiamento §9): a modalidade de aplicação também por mês,
+            # com a mesma regra do acumulado (só o pago; sem código legível, "outras formas").
+            acumulado[mp]["por_mes"][mes]["por_modalidade_pago"] = dict(parcial[mp]["por_modalidade_pago"])
             # A6-13: o mês corrente é lido com o arquivo ainda sendo preenchido; marca-se parcial
             # para nenhum consumidor o apresentar como mês fechado.
             if mes_parcial(mes, dia):

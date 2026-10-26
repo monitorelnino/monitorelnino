@@ -162,6 +162,13 @@ const ST_COORD = {
   LAC: 'não localizada até o corte',
 };
 
+/* Tempo do ato depois do Boletim nº 1: contexto de peso zero, fora da nota (METODOLOGIA v0.7). */
+function tempoDoEstado(t) {
+  const d = t && t.dias_apos_boletim_1;
+  if (d == null) return esc(textoSaude('saude.estadual.ficha.tempo_sem_dia'));
+  return esc(textoSaude(d < 0 ? 'saude.estadual.ficha.tempo_antes' : 'saude.estadual.ficha.tempo_depois', {dias: Math.abs(d)}));
+}
+
 /* A ficha do estado, no <dialog>. A coordenação lê `ufs.<UF>.coordenacao` do monitor e se preenche
  * sozinha à medida que a rotina verifica cada estado; sem registro, diz que não foi verificada. */
 function abrirDetalheSaude(uf) {
@@ -177,6 +184,7 @@ function abrirDetalheSaude(uf) {
       + (i.data ? ' (' + esc(i.data) + ')' : '') + (i.orgao ? ' · ' + esc(i.orgao) : '')
       + (i.url ? ' · <a href="' + esc(i.url) + '" target="_blank" rel="noopener">' + tx('fonte_oficial') + ' →</a>' : ''))
     + linha(tx('coordenacao'), doc(co.f1)) + linha(tx('governo'), doc(co.f2))
+    + linha(tx('tempo'), tempoDoEstado(m.tempo))
     + (m.verificado ? linha(tx('camada'), esc(camadaMunicipalSaude(c)) + '; ' + tx('camada_nota')) : '')
     + linha(tx('resposta'), (RS.ufs || []).includes(uf) ? tx('resposta_sim') : tx('resposta_nao'));
   document.querySelectorAll('#listaTiposPlano button[data-uf]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.uf === uf)));
