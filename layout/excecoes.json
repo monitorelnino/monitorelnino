@@ -1,4 +1,13 @@
 {
   "_governanca": "Exceções às regras de layout/regras.json. Uma linha por exceção, com regra, página, motivo, data e quem decidiu — e sem os três últimos campos ela NÃO vale: exceção que não se declara é regra desligada em silêncio. Quem lê é scripts/verificar_conformidade.py. Arquivo vazio é o estado desejado.",
-  "excecoes": []
+  "excecoes": [
+    {
+      "regra": "texto_publico.palavras_por_pagina",
+      "pagina": "imprensa.html",
+      "limite": 3000,
+      "motivo": "página de referência com glossário de 36 termos, ampliado a pedido da editoria em 25/10 (teto de palavras estáticas)",
+      "data": "2026-10-26",
+      "decidido_por": "central, por delegação da editoria (DECISÕES 26/10 08:00, item 1)"
+    }
+  ]
 }
