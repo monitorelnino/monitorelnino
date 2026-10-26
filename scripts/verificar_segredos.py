@@ -134,11 +134,8 @@ def evidencias_do_diff(acrescentadas: dict) -> list:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     diff = ("+++ b/data/meta.json\n+{\"t\": \"ghp_" + "a" * 36 + "\"}\n"
             "+++ b/assets/js/saude.js\n+const k = 'AKIA" + "B" * 16 + "';\n"

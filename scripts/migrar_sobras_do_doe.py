@@ -102,11 +102,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     antiga = {"municipio": "Barra do Bugres", "uf": "MT", "data": "2026-09-30",
               "url": "https://www.iomat.mt.gov.br/portal/edicoes/download/19356",

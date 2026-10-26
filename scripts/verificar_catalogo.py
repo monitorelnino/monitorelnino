@@ -169,11 +169,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     _f = ('<main><section id="s"><h1>Título</h1><p class="hint"><strong>Conta.</strong> O que conta.</p>'
           '<p class="note" data-conteudo="p.s.nota">já no catálogo</p><p id="valorX">—</p>'

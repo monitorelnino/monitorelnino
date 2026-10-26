@@ -632,11 +632,8 @@ def _autoteste() -> int:
     # escrita a mao envelhece calada: ela diz que cobre mais do que cobre, ou menos.
     contados = []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from scripts._casos import ok_de
+    ok = ok_de(falhas, contados)
 
     d = dt.date
     ok("domingo devolve a semana que fechou no sábado anterior",

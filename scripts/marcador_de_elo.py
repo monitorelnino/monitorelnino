@@ -99,10 +99,8 @@ def artefatos_do_repositorio(limite: int = 200) -> list:
 def autoteste() -> int:
     falhas = []
 
-    def ok(nome, cond):
-        print(("  ok " if cond else "  FALHA ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, None, ("  ok ", "  FALHA "))
 
     ok("o nome do artefato junta elo e noite",
        nome_do_artefato("diarios", "2026-10-09") == "feito-diarios-2026-10-09")

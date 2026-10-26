@@ -165,11 +165,8 @@ def problemas(arquivos: dict, agora: str, limite: int = LIMITE_DIAS,
 def _autoteste() -> int:
     falhas, casos = [], []
 
-    def ok(nome, cond):
-        casos.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, casos)
 
     # o leitor de carimbo
     ok("lê data brasileira com hora", marca_do_arquivo({"gerado_em": "02/10/2026 11:22"}) == ("2026-10-02", "11:22"))

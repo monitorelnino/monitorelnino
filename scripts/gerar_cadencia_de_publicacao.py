@@ -79,11 +79,8 @@ def cadencia(texto: str) -> dict:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     ok("hora fixa é um disparo por dia", disparos_por_dia("5 9 * * *") == 1)
     ok("duas horas fixas na mesma linha contam duas", disparos_por_dia("0 1,13 * * *") == 2)

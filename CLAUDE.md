@@ -162,7 +162,7 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
 - Dizemos o que disponibilizamos, nunca o que não: "A metodologia é pública." Nenhuma frase sobre código,
   base de dados ou licença de dados (nem "dados abertos", nem "CC BY" em dado); a metodologia é o único
   material técnico público. Mapas e gráficos podem ser reproduzidos com crédito; recortes sob medida pelo
-  e-mail da imprensa (editoria, 03/10/2026).
+  e-mail de contato (editoria, 03/10 e 26/10/2026).
 - Nunca inventar dado; ausência é lacuna declarada, com fonte; teto: "não localizamos até o corte",
   nunca "não existe".
 - Zero, ausência de dado, dado indisponível e dado não coletado são coisas distintas.

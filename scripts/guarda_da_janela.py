@@ -64,11 +64,8 @@ def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela,
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     from janela_da_noite import dentro_da_janela as real
 

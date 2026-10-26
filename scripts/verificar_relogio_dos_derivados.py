@@ -108,11 +108,8 @@ def problemas(cadeia_txt: str, fontes: dict) -> list:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     sh = ("export SOURCE_DATE_EPOCH=...\n"
           "python3 recalcular_mare.py --write >/dev/null\n"

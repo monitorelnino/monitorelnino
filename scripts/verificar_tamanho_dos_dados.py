@@ -95,11 +95,8 @@ def tamanhos_em(revisao: str) -> dict:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     MB = 1048576
     ok("bytes viram MB com uma casa", mb(28 * MB) == 28.0)
