@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.
 
+## 2026-10-26 · Buscador 2: o reprocessamento grava a cada 200 URLs
+
+`seguir_pistas.py --reprocessar` passa a gravar em blocos de 200 URLs abertas e para com o prazo do elo sem perder o bloco em curso. Antes, o lote de 2.000 da válvula só gravava no fim. Linhas líquidas: +27/−6.
+
 ## 2026-10-26 · Buscador 2: a busca de pistas reconstruída
 
 Regras B1–B11 em `buscador2.py`. A porta da fila admite só domínio do município, da UF, federal de lista fechada, diário oficial ou Querido Diário do código certo, uma pista por URL normalizada; o seguidor abre o redirecionador, segue um nível até o PDF, tenta o mapa do site e devolve à fila o plano não lido (até três vezes). A consulta estadual vai por UF; sai o coletor de redes sociais.
