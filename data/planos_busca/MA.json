@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "2111300": {
    "S16": {
@@ -10,10 +10,24 @@
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "saoluis.ma.gov.br HTTP 403; www.saoluis.ma.gov.br HTTP 403",
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Lu%C3%ADs%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Lu%C3%ADs%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Lu%C3%ADs%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": null
    }
   },

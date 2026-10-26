@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "1100205": {
    "S16": {
@@ -10,21 +10,21 @@
     "dominio": "portovelho.ro.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=portovelho.ro.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "portovelho.ro.gov.br"
    },
    "S13": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-26",
     "situacao": "recusa_de_fonte",
     "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Velho%22&maximumRecords=10",
     "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Velho%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
     "dominio": "portovelho.ro.gov.br"
    },
    "S29": {
-    "consultado_em": "2026-10-24",
+    "consultado_em": "2026-10-26",
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Porto+Velho%22&rows=10",
     "motivo": "HTTP 401",
