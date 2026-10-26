@@ -14,6 +14,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-25 · D · Suíte de mutação dos portões
 
 `scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.
+## 2026-10-25 · #1153 · Rodada: união de conflito decide campo a campo
+
+Decisão da central (item 7): quando os dois lados mudam o mesmo campo, o juiz vence pelo `julgado_em` mais recente e o veredito perdido vai para `juiz_historico`; `rejeitada_em` vence a data mais antiga; estado de fila (`busca_web_espera`, cursores) vence o lado da `main`. Outros campos continuam recusados, sem adivinhar. Autotestes por regra.
+
 ## 2026-10-25 · #1149 · Juiz de saúde: o ente municipal também se lê no título do ato
 
 A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.
