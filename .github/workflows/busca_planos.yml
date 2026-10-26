@@ -75,3 +75,7 @@ jobs:
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+      # 26/10/2026: mesma razão da válvula coleta_de_dia.yml (chaves repassadas ao coletor).
+      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+      INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
+      PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}
