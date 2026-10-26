@@ -11,6 +11,9 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · B2 · Proteja-se: fonte por orientação
+
+Cada orientação do guia que o registro oficial preserva (15 de 50) mostra sua fonte e a data da consulta, lidas de `data/orientacoes_oficiais.json`. As demais seguem sem marca, até a fonte oficial ser localizada.
 ## 2026-10-26 · A3 · Sonda do fornecedor de transparência das capitais
 
 `scripts/sondar_fornecedor_transparencia.py` lê a página inicial de cada prefeitura de capital e anota qual fornecedor (Betha, IPM/Atende.Net, Elotech, Equiplano, Fiorilli) aparece nas ligações; recusa fica registrada com o motivo. Só registra, em `data/transparencia_fornecedor_capitais.json`; não alimenta o índice.
