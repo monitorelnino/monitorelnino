@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
+
+No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.
+
 ## 2026-10-26 · Buscador 2: a busca de pistas reconstruída
 
 Regras B1–B11 em `buscador2.py`. A porta da fila admite só domínio do município, da UF, federal de lista fechada, diário oficial ou Querido Diário do código certo, uma pista por URL normalizada; o seguidor abre o redirecionador, segue um nível até o PDF, tenta o mapa do site e devolve à fila o plano não lido (até três vezes). A consulta estadual vai por UF; sai o coletor de redes sociais.
