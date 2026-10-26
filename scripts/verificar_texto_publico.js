@@ -49,16 +49,12 @@ function achados(texto, textoDeProva, textoDeNota, forma) {
     if (m && m.length >= T.refrao_a_partir_de) fora.push(`"${r.source}" aparece ${m.length}x em legendas/notas — consolide numa ficha ou nota única`); }
   return fora;
 }
-/* Vocabulário proibido: global + por página + `texto_proibido` do contrato (sensível à caixa, de propósito:
- * barra "FIGURA", não "figura"), advérbio colado a número, locução de dever. Mesma régua do antigo
- * verificar_conformidade.problemas_de_vocabulario. */
+/* Vocabulário proibido: a régua é UMA, `scripts/vocabulario.py` (global + por página + `texto_proibido`
+ * do contrato, advérbio colado a número, locução de dever); o JS só a chama. */
+const { execFileSync } = require("child_process");
 function vocabulario(texto, pagina, contrato) {
-  const tx = texto || "", baixo = tx.toLowerCase(), p = [];
-  const proibidas = [...new Set([].concat(V.global || [], (V.por_pagina || {})[pagina] || [], (contrato || {}).texto_proibido || []))].sort();
-  for (const w of proibidas) { const i = tx.indexOf(w); if (w && i >= 0) p.push(`vocabulário proibido: '${w}' — …${tx.slice(Math.max(0, i - 40), i + 40)}`); }
-  for (const adv of V.com_numero || []) { const m = new RegExp("\\b" + adv + "\\s+\\d").exec(baixo); if (m) p.push(`juízo colado a número: '${adv}' — …${tx.slice(Math.max(0, m.index - 30), m.index + 40)}`); }
-  for (const loc of V.dever || []) { const i = baixo.indexOf(loc.toLowerCase()); if (i >= 0) p.push(`locução de dever fora de citação de lei: '${loc}' — …${tx.slice(Math.max(0, i - 40), i + 40)}`); }
-  return p;
+  const saida = execFileSync("python3", [require("path").join(__dirname, "vocabulario.py"), "--json"], { input: JSON.stringify({ texto, pagina, contrato }), encoding: "utf8", maxBuffer: 1 << 24 });
+  return JSON.parse(saida);
 }
 /* O texto de marcação que os scripts de página escrevem (entre `>` e `<` em literais), sem interpolação:
  * é como o cartão de estado dizia "(Atom)" dentro de um <dialog> que só abre no clique (09/10/2026). */

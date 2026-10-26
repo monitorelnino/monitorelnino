@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Vocabulário proibido: uma régua
+
+`scripts/vocabulario.py` serve catálogo, blog, conformidade e texto público (o JS o chama). Semântica única: palavra inteira, sem acento, caixa só em termo MAIÚSCULO; antes a conformidade e o JS casavam subcadeia sensível à caixa e o blog, caixa insensível com acento. Duas mutações novas provam a cobertura.
+
 ## 2026-10-26 · Autotestes: um só `ok()`
 
 `scripts/_casos.py` substitui 57 cópias do registro de casos dos autotestes (−164 linhas líquidas). Contato de imprensa vira o e-mail de contato no CLAUDE.md e no guia do editor.
