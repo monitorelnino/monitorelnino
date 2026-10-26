@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #PR · Portões: o contador de resposta passa a morar no runtime da inicial
+
+`verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.
+
 ## 2026-10-26 · #1202 · Juiz: modo paralelo do codebook 1.8
 
 O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.

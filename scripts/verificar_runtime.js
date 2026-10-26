@@ -342,10 +342,29 @@ setTimeout(() => {
       !!mAlvo && (parseFloat(mAlvo[1]) > 0 || (respostaNacional && (respostaNacional.indice || 0) === 0)));
   }
 
+  // Contador de resposta (era verificar_runtime_resposta.js; fundido em 26/10/2026): a mesma inicial, renderizada uma vez só.
+  // O índice de resposta (0–100) usa a arte única do medidor; a frase C18 (defeso) mora na ficha "Como ler o MARÉ".
+  fim.depois = async () => {
+    await new Promise(r => setTimeout(r, 1700));   // o contador termina de popular o DOM depois dos 600 ms acima
+    const por = require("../data/resposta/por_uf.json"), nac = por.nacional, indNac = nac.indice.toFixed(1).replace(".", ",");
+    teste(`resposta: índice nacional na página (${q("respNum").textContent}) = por_uf.json (${indNac})`, q("respNum").textContent === indNac);
+    teste("resposta: pílula com a contagem de municípios", new RegExp(String(nac.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, "\\.") + " municípios").test(q("respBadge").textContent));
+    teste("resposta: usa a arte única do medidor (.gauge-fill--resposta)", !!d.querySelector("#contadorResposta .gauge-fill.gauge-fill--resposta") && !d.querySelector("#contadorResposta .resp-fill"));
+    teste("resposta: frase C18 (defeso) na inicial", /transferências voluntárias ficam suspensas/.test(q("conteudo").textContent));
+    teste("resposta: 27 cartões de estado com a segunda barra", d.querySelectorAll(".tile .tile-bar--resposta .tile-fill--resposta").length === 27);
+    [...d.querySelectorAll(".tile")].find(t => t.dataset.uf === "RS").click(); await new Promise(r => setTimeout(r, 300));
+    const det = q("detail").textContent, m = det.match(/(\d+) de (\d+) municípios · (\d+)% da população/);
+    teste("resposta: cartão RS = por_uf.json", !!m && +m[1] === por.uf.RS.n_municipios);
+    teste("resposta: cartão RS com o medidor na arte única", !!d.querySelector("#detail .gauge-mini.gauge-zone--resposta .gauge-fill--resposta"));
+    teste("resposta: cartão não combina antecipação e resposta (C17)", !/nota\s*[-−]\s*decret|contradi[çc][ãa]o/i.test(det));
+    teste("resposta: navegação sem a galeria", !d.querySelector('a[href="mapas-e-graficos.html"]'));
+    teste("resposta: 27 UFs em por_uf.json", Object.keys(por.uf || {}).length === 27);
+  };
   // 15/09/2026: o fim é chamado pelo bloco assíncrono de Proteja-se (acima), depois que ele terminar
   fim.falhas = falhas;
 }, 600);
-function fim() {
+async function fim() {
+  if (fim.depois) await fim.depois();
   const falhas = fim.falhas || [];
   if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
   console.log("\n✓ RUNTIME OK — todas as verificações passaram.");
