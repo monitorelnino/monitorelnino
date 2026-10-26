@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "2211001": {
    "S16": {
@@ -10,21 +10,21 @@
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-26",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: pmt.pi.gov.br URLError: <urlopen error timed out>; teresina.pi.gov.br URLError: <urlopen error timed out>; www.teresina.pi.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S13": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-26",
     "situacao": "recusa_de_fonte",
     "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Teresina%22&maximumRecords=10",
     "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Teresina%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
     "dominio": null
    },
    "S29": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-26",
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Teresina%22&rows=10",
     "motivo": "HTTP 401",
