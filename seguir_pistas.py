@@ -28,7 +28,7 @@ USO   python3 seguir_pistas.py [--limite 60] [--refazer-dias 7]
 """
 import argparse, collections, datetime, hashlib, json, re, sys, urllib.parse
 import buscador2 as b2
-from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
+from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial, ua_de
 
 STATUS_PENDENTE = "pista — na fila, aguardando busca dirigida e juiz"
 PREFIXO_FECHADA = "fechada — Buscador 2: "
@@ -240,6 +240,105 @@ def gravar_rodada(fila, est, ler_fn=ler, gravar_fn=gravar) -> dict:
     sincronizar("pistas_imprensa.json", tocadas, origem="buscador2", ler_fn=ler_fn, gravar_fn=gravar_fn)
     rejeitar_lote([(p, "buscador2", m) for p, m in est["fechadas_lista"]], ler_fn=ler_fn, gravar_fn=gravar_fn)
     return balanco
+
+
+# ------------------------------------------------------------------ compatibilidade: modo paralelo J18
+# `scripts/rejulgar_decisoes_do_juiz.py` (rodada J18, #1202) importa daqui o seguidor antigo da notícia e as
+# três funções "_18". Ficam como estavam até a J18 passar a usar `buscador2.py` (pedido no LOTES); a noite
+# não as chama.
+from monitorar_imprensa_regional import parece_fonte_oficial  # noqa: E402
+RE_LINK = re.compile(r'<a\s[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', re.I | re.S)
+RE_SINAL_ATO = re.compile(r"decreto|\blei\b|portaria|plancon|plano|conting|diario|\.pdf", re.I)
+
+
+def _limpo(html):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html or "")).strip()
+
+
+def buscar_html(url, timeout=20):
+    """HTML cru (os links importam). Tolerante: None em falha."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de("seguir pistas")})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            if "pdf" in (r.headers.get("Content-Type") or "").lower():
+                return None
+            raw = r.read(1_500_000)
+        return raw.decode("utf-8", errors="ignore")
+    except Exception:  # noqa: BLE001
+        return None
+
+
+# ------------------------------------------------------------------ rota 1: links da notícia
+def candidatos_da_noticia(pista, html):
+    if not html:
+        return []
+    out, vistos = [], set()
+    for href, texto in RE_LINK.findall(html):
+        url = urllib.parse.urljoin(pista.get("url") or "", href.strip())
+        if not url.startswith("http") or url in vistos or url == pista.get("url"):
+            continue
+        ancora = _limpo(texto)[:200]
+        if not parece_fonte_oficial(url):
+            continue
+        if not (RE_SINAL_ATO.search(url) or RE_SINAL_ATO.search(ancora)):
+            continue
+        vistos.add(url)
+        out.append({"url": url, "trecho": ancora or url, "titulo": ancora, "rota": "seguimento_link_noticia"})
+        if len(out) >= MAX_POR_ROTA:
+            break
+    return out
+
+
+# ------------------------------------------------------------------ codebook 1.8 (modo paralelo, 26/10/2026)
+# Só a rodada paralela J18 usa estas três funções; a rodada da noite não muda.
+EXTENSOES_DE_ATO_18 = (".pdf", ".doc", ".docx", ".odt", ".rtf")
+RE_ATO_18 = re.compile(r"decreto|\blei\b|portaria|plancon|instru[çc][ãa]o", re.I)
+RECUSAS_HTTP_18 = (401, 403, 429, 451)
+ESPERAS_18 = (0, 30, 120)
+
+
+def seguir_agregador_18(pista, resolver, buscar_html_=buscar_html):
+    """B2: o link do agregador é resolvido até a matéria e só os links oficiais citados nela viram pista
+    (rota 1). Devolve (candidatos, como); sem resolução, ([], "nao_resolvido") e o chamador conta a
+    tentativa — na segunda, fecha."""
+    final, como = resolver(pista)
+    if not final:
+        return [], "nao_resolvido"
+    return candidatos_da_noticia(dict(pista, url=final), buscar_html_(final)), como
+
+
+def documentos_da_pagina_18(url, html):
+    """B4: página oficial que fala do plano → os links do MESMO domínio para PDF ou ato, um nível."""
+    host = urllib.parse.urlparse(url).netloc.lower()
+    return [c for c in candidatos_da_noticia({"url": url}, html)
+            if urllib.parse.urlparse(c["url"]).netloc.lower() == host
+            and (c["url"].lower().split("?")[0].endswith(EXTENSOES_DE_ATO_18)
+                 or RE_ATO_18.search(c["url"] + " " + c["titulo"]))]
+
+
+def ler_com_espera_18(url, buscar, esperas=ESPERAS_18, dormir=None):
+    """B5: nova tentativa com espera crescente e registro por arquivo. 401/403/429/451 é recusa real:
+    registra e não insiste. `buscar` pode levantar; texto vazio conta como tentativa falha."""
+    import time
+    dormir = dormir or time.sleep
+    registro = {"url": url, "tentativas": 0, "resultado": "inacessivel", "erros": []}
+    for espera in esperas:
+        dormir(espera)
+        registro["tentativas"] += 1
+        try:
+            texto = buscar(url)
+        except Exception as e:  # noqa: BLE001
+            codigo = getattr(e, "code", None) or getattr(getattr(e, "response", None), "status_code", None)
+            registro["erros"].append(f"{type(e).__name__} {codigo or ''}".strip())
+            if codigo in RECUSAS_HTTP_18:
+                registro["resultado"] = f"recusa_{codigo}"
+                return None, registro
+            continue
+        if texto:
+            registro["resultado"] = "lido"
+            return texto, registro
+    return None, registro
+
 
 
 def autoteste():

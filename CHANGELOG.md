@@ -12,6 +12,12 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-26 · Buscador 2: a busca de pistas reconstruída
 
 Regras B1–B11 em `buscador2.py`. A porta da fila admite só domínio do município, da UF, federal de lista fechada, diário oficial ou Querido Diário do código certo, uma pista por URL normalizada; o seguidor abre o redirecionador, segue um nível até o PDF, tenta o mapa do site e devolve à fila o plano não lido (até três vezes). A consulta estadual vai por UF; sai o coletor de redes sociais.
+## 2026-10-26 · #1202 · Juiz: modo paralelo do codebook 1.8
+
+O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.
+## 2026-10-26 · #1201 · Cadastro prioritários: sai o portal do MDR como rota
+
+Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.
 
 ## 2026-10-26 · Cores oficiais do IQAr (pedido da editoria)
 
