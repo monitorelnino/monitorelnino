@@ -207,9 +207,9 @@ def autoteste() -> int:
     from scripts.pistas import normalizar, motivo_de_recusa
     ref = [{"nome": "Alfa", "uf": "AA", "codigo_ibge": 1100001}, {"nome": "Beta", "uf": "AA", "codigo_ibge": 1100002},
            {"nome": "Gama", "uf": "AA", "codigo_ibge": 1100003}, {"nome": "Recife", "uf": "PE", "codigo_ibge": 2611606}]
-    g = {"url": "https://x.org/a.pdf", "date": "2026-03-10", "edition": "10",
+    g = {"url": "https://data.queridodiario.ok.org.br/1100001/2026-03-10/a.pdf", "date": "2026-03-10", "edition": "10",
          "excerpts": ["Aprova o Plano de Contingência da Dengue, Chikungunya e Zika do município"]}
-    sem_assunto = {"url": "https://x.org/b.pdf", "excerpts": ["Plano de contingência de defesa civil"]}
+    sem_assunto = {"url": "https://data.queridodiario.ok.org.br/1100001/2026-03-11/b.pdf", "excerpts": ["Plano de contingência de defesa civil"]}
 
     def falso(com, sem=None):
         def obter(params):
