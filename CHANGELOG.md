@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1214 · Saúde: a tabela dos estados no lugar do mapa
+
+Sai o mapa dos planos estaduais de saúde, a lista de tipos com siglas e a contagem "zero estados". Fica a tabela dos estados, aberta; a UF abre a ficha. Contrato e textos (catálogo) atualizados; órfãos removidos. Saldo de código e conteúdo −42 linhas. Parte B (VIGIAR) segue aguardando o dado.
+
 ## 2026-10-26 · #1213 · Limpeza: resíduo da retirada de 26/10
 
 Na página de Saúde, Cubatão/SP e Toledo/PR deixam de mostrar a leitura de saúde no plano de documento retirado pelo #1203; sai também a proposta de Toledo na escada de planos. Em `mudancas.html`, entrada sem número deixa de aparecer dentro da anterior (`gerar_mudancas.py`, com caso de teste). Código +5/−3.

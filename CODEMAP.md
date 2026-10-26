@@ -24,7 +24,7 @@ Atualizado em 26/10/2026.
 | `mudancas.html` | mudancas.html | `blog/posts.json`, `meta.json`, `publicacao.json`, `saude_pipeline.json`, `verificacao_resumo.json` | — | — | não |
 | `prefeituras.html` | prefeituras.html | `enquadramento_card.json`, `financiamento/municipios/despesa_182.json`, `financiamento/municipios/fns_municipios_2026.json`, `financiamento/municipios/transferencias_uniao.json`, `geo_uf.json`, `meta.json` (+6) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
 | `proteja-se.html` | proteja-se.html | `contatos_uf.json`, `geo_uf.json`, `meta.json`, `municipios_ibge_referencia.json`, `orientacoes_oficiais.json`, `publicacao.json` (+2) | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
-| `saude.html` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+97) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `saude.html` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+91) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/acesso.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
 | `assets/js/blog.js` | blog.html, mudancas.html | `blog/posts.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/busca-lista.js` | — | — | — | — | não |
@@ -42,7 +42,7 @@ Atualizado em 26/10/2026.
 | `assets/js/proteja-se.js` | proteja-se.html | `contatos_uf.json`, `geo_uf.json`, `municipios_ibge_referencia.json`, `orientacoes_oficiais.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
 | `assets/js/proveniencia.js` | monitor-de-riscos.html, saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+36) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/js/rodape.js` | blog.html, defesa-civil.html, financiamento.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | `meta.json`, `saude_pipeline.json`, `verificacao_resumo.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
-| `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+80) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
+| `assets/js/saude.js` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+74) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/semana.js` | proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `analisar_decretos.py` | — | — | — | — | não |
 | `analise_sensibilidade.py` | — | — | — | 2 | não |
