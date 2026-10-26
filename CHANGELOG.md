@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · A2 · Imprensa: focos sem soma parcial como "desde 29/06"
+
+A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a ser lacuna declarada para o trecho de 29/06 a 16/09 (o valor parcial fica em `valor_parcial`), com autoteste. Dado de `semana.json` regerado. Origem: `gerar_imprensa_semana.py`.
+
 ## 2026-10-26 · #1164 · Saúde v0.7: tempo como contexto na ficha do estado
 
 A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora da nota (peso zero, dado do motor v0.7). Nenhum número da nota muda.

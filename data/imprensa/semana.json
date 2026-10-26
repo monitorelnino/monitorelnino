@@ -2,14 +2,16 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 40965,
+   "valor": null,
    "unidade": "focos",
-   "periodo_inicio": "2026-09-17",
-   "periodo_fim": "2026-10-25",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": "2026-10-26",
    "n": 39,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
-   "sem_coleta": false,
-   "motivo": null
+   "sem_coleta": true,
+   "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
+   "valor_parcial": 40965,
+   "periodo_parcial_inicio": "2026-09-17"
   },
   {
    "id": "municipios_plano_localizado",

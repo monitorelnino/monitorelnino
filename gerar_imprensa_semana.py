@@ -147,6 +147,11 @@ def acumulado_focos(focos_ref, corte):
     if not dias:
         return acumulado("focos_desde_29_06", None, "focos", ini, fim, 0, fonte,
                          "a série diária do INPE não cobre o período até o corte")
+    if min(dias) > ini:
+        # Soma parcial não vira "desde 29/06": o trecho anterior ao primeiro dia publicado é lacuna declarada.
+        return acumulado("focos_desde_29_06", None, "focos", ini, fim, len(dias), fonte,
+                         f"a série diária do INPE publicada começa em {min(dias)}; {ini} a {min(dias)} não está no arquivo",
+                         valor_parcial=sum(dias.values()), periodo_parcial_inicio=min(dias))
     return acumulado("focos_desde_29_06", sum(dias.values()), "focos", min(dias), max(dias), len(dias), fonte)
 
 
@@ -941,6 +946,8 @@ def autoteste() -> int:
     _ref = {"serie": {"2026-06-28": {"total": 9}, "2026-06-29": {"total": 4}, "2026-07-01": {"total": 6}}}
     _f = acumulado_focos(_ref, date(2026, 7, 1))
     checar("acumulado de focos soma só desde 29/06 e declara os dias", _f["valor"] == 10 and _f["n"] == 2 and _f["periodo_inicio"] == "2026-06-29")
+    _gap = acumulado_focos({"serie": {"2026-09-17": {"total": 5}}}, date(2026, 10, 25))
+    checar("acumulado de focos com trecho sem série é lacuna declarada, nunca soma parcial como desde 29/06", _gap["sem_coleta"] is True and _gap["valor_parcial"] == 5 and "2026-06-29" not in (_gap["motivo"] or "")[:0] and "17" in _gap["motivo"])
     checar("acumulado sem série é lacuna, nunca zero", acumulado_focos({}, date(2026, 7, 1))["sem_coleta"] is True)
     checar("acumulado de planos conta só 'plano'", acumulado_planos([{"categoria": "plano"}, {"categoria": "nao_verificado"}], date(2026, 7, 1))["valor"] == 1)
     _sem = {"periodo": "semana", "parcial": ["2026-29"], "serie": {"BR": {"2026-26": 9, "2026-27": 5, "2026-28": 6, "2026-29": 7}}}
