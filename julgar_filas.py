@@ -162,24 +162,24 @@ def restantes(ler, hoje=None) -> int:
                    if a_julgar_nesta_noite(p, hoje.strftime("%d/%m/%Y")))
 
 
-def julgar_uma(p: dict, buscar, preservar=None) -> dict:
+def julgar_uma(p: dict, buscar, preservar=None, codebook=None) -> dict:
     """Julga uma pista e devolve o veredito, sem aplicar nada.
 
     `buscar(url) -> texto|None` e `preservar(url, texto) -> hash|None` são injetados: é o que
     permite ao autoteste rodar sem rede e sem escrever em `evidencias/`."""
     from juiz import julgar
 
-    from juiz import PADROES_FONTE_PROVAVEL_OFICIAL
+    from juiz import e_v18, fonte_oficial
     url = p.get("url")
     # 09/10/2026 (lote 2.5, A1-19): a URL fora do padrão de fonte oficial é recusada pela etapa 0
     # sem precisar do texto. Baixá-la antes custava 3.245 downloads de imprensa por versão de
     # codebook — o runner do GitHub lendo página de jornal para descartá-la.
-    oficial = bool(url) and any(pad in str(url).lower() for pad in PADROES_FONTE_PROVAVEL_OFICIAL)
+    oficial = bool(url) and fonte_oficial(url, e_v18(codebook))
     texto = buscar(url) if oficial else None
     # 28/09/2026 (item 1): o `trecho` da pista é o que permite recortar o ATO de dentro da edição do
     # diário. Sem ele, o juiz lê vinte mil caracteres com dezenas de atos e cai em dúvida, corretamente.
     veredito = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "",
-                      ibge=p.get("ibge"), url=url, trecho=p.get("trecho"))
+                      ibge=p.get("ibge"), url=url, trecho=p.get("trecho"), codebook=codebook)
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
     # 28/09/2026: separar "não pudemos ler" de "lemos e não serve". Sem esta marca, `--aplicar`
