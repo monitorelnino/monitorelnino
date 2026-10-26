@@ -2,14 +2,16 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 40965,
+   "valor": null,
    "unidade": "focos",
-   "periodo_inicio": "2026-09-17",
-   "periodo_fim": "2026-10-25",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": "2026-10-26",
    "n": 39,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
-   "sem_coleta": false,
-   "motivo": null
+   "sem_coleta": true,
+   "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
+   "valor_parcial": 40965,
+   "periodo_parcial_inicio": "2026-09-17"
   },
   {
    "id": "municipios_plano_localizado",
@@ -34,15 +36,235 @@
    "motivo": "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes"
   },
   {
-   "id": "estados_acima_da_faixa_por_doenca",
+   "id": "municipios_decretaram",
+   "valor": 988,
+   "unidade": "municípios",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 988,
+   "fonte": "Defesa Civil nacional (decretos no Diário Oficial da União)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "municipios_reconhecidos",
+   "valor": 887,
+   "unidade": "municípios",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 887,
+   "fonte": "Defesa Civil nacional (portarias de reconhecimento, DOU)",
+   "sem_coleta": false,
+   "motivo": null,
+   "prazo_reconhecimento": {
+    "n": 887,
+    "mediana": 14,
+    "p25": 8.0,
+    "p75": 21.0,
+    "p90": 29.0
+   }
+  },
+  {
+   "id": "pessoas_municipios_decretados",
+   "valor": 34547521,
+   "unidade": "pessoas",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 988,
+   "fonte": "IBGE, Censo 2022 (população dos municípios que decretaram)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "atos_por_evento",
+   "valor": 1265,
+   "unidade": "atos",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 1265,
+   "fonte": "Defesa Civil nacional (atos de emergência)",
+   "sem_coleta": false,
+   "motivo": null,
+   "por_evento": {
+    "sem_tipo_informado": 389,
+    "seca": 392,
+    "chuva": 274,
+    "outro_declarado": 6,
+    "vendaval": 194,
+    "fogo": 10
+   }
+  },
+  {
+   "id": "capitais_com_plano",
+   "valor": 6,
+   "unidade": "capitais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 27,
+   "fonte": "MARÉ Legal (planos de contingência das capitais)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "anunciado_em_atos",
+   "valor": 1310769392.0,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 4,
+   "fonte": "Texto das medidas provisórias e atos estaduais",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "El Niño 2026/2027"
+  },
+  {
+   "id": "desembolsado",
+   "valor": 424328447.8,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": null,
+   "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "desde o mês de publicação de cada medida"
+  },
+  {
+   "id": "autorizado_defesa_civil",
    "valor": null,
-   "unidade": "estados",
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 0,
+   "fonte": "Portal da Transparência",
+   "sem_coleta": true,
+   "motivo": "a soma por município ainda não fechou com o total publicado"
+  },
+  {
+   "id": "repasses_sus_emergencia",
+   "valor": null,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 0,
+   "fonte": "Portal da Transparência",
+   "sem_coleta": true,
+   "motivo": "os repasses de emergência do SUS não estão no derivado"
+  },
+  {
+   "id": "dengue",
+   "valor": 78630,
+   "unidade": "notificações",
+   "periodo_inicio": "2026-06-28",
+   "periodo_fim": "2026-09-05",
+   "n": 10,
+   "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "chikungunya",
+   "valor": null,
+   "unidade": "notificações",
+   "periodo_inicio": "2026-06-28",
+   "periodo_fim": "2026-09-05",
+   "n": 10,
+   "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
+   "sem_coleta": true,
+   "motivo": "a fonte não traz registro desta UF depois deste período; o nacional só soma o período em que as 27 UFs têm valor"
+  },
+  {
+   "id": "srag",
+   "valor": 70176,
+   "unidade": "internações",
+   "periodo_inicio": "2026-06-28",
+   "periodo_fim": "2026-09-26",
+   "n": 13,
+   "fonte": "Ministério da Saúde (SIVEP-Gripe), semanas fechadas",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "diarreia",
+   "valor": 202571,
+   "unidade": "atendimentos",
+   "periodo_inicio": "2026-07-01",
+   "periodo_fim": "2026-07-31",
+   "n": 1,
+   "fonte": "SUS (SISAB), meses fechados",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "leptospirose",
+   "valor": null,
+   "unidade": "casos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-10-26",
    "n": 0,
-   "fonte": "MARÉ Saúde (semanas fechadas por UF e doença)",
+   "fonte": "Ministério da Saúde (SINAN), meses fechados",
    "sem_coleta": true,
-   "motivo": "a série semanal por UF e doença não chega ao topo de saúde até o corte"
+   "motivo": "nenhum mês fechado desde 29/06; o último período com valor é parcial"
+  },
+  {
+   "id": "estados_acima_da_faixa_dengue",
+   "valor": 10,
+   "unidade": "estados",
+   "periodo_inicio": "2026-08-30",
+   "periodo_fim": "2026-09-05",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-35"
+  },
+  {
+   "id": "estados_acima_da_faixa_srag",
+   "valor": 0,
+   "unidade": "estados",
+   "periodo_inicio": "2026-09-20",
+   "periodo_fim": "2026-09-26",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-38"
+  },
+  {
+   "id": "estados_acima_da_faixa_chikungunya",
+   "valor": 9,
+   "unidade": "estados",
+   "periodo_inicio": null,
+   "periodo_fim": null,
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": null
+  },
+  {
+   "id": "estados_acima_da_faixa_diarreia",
+   "valor": 22,
+   "unidade": "estados",
+   "periodo_inicio": "2026-07-01",
+   "periodo_fim": "2026-07-31",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-07"
+  },
+  {
+   "id": "estados_acima_da_faixa_leptospirose",
+   "valor": 4,
+   "unidade": "estados",
+   "periodo_inicio": "2026-03-01",
+   "periodo_fim": "2026-03-31",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-03"
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",

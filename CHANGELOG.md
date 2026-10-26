@@ -11,6 +11,25 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · A2 · Imprensa: focos sem soma parcial como "desde 29/06"
+
+A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a ser lacuna declarada para o trecho de 29/06 a 16/09 (o valor parcial fica em `valor_parcial`), com autoteste. Dado de `semana.json` regerado. Origem: `gerar_imprensa_semana.py`.
+
+## 2026-10-26 · #1164 · Saúde v0.7: tempo como contexto na ficha do estado
+
+A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora da nota (peso zero, dado do motor v0.7). Nenhum número da nota muda.
+## 2026-10-26 · A3 · Busca de planos: sonda do PNCP nas 27 capitais (S22)
+Nova sonda consulta a busca pública do PNCP por capital (plano de contingência, redução de riscos, PLANCON) e registra título, órgão, data e endereço. Contratação não é plano: só aponta onde procurar. Ausência é "não localizamos até o corte"; recusa é registrada e respeitada. Saldo de código: +110.
+
+## 2026-10-26 · #1161 · Imprensa: acumulados do ciclo completos
+A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.
+## 2026-10-26 · #1160 · Descoberta: limite padrão sobe a 60
+
+A rodada medida de descoberta (`--limite 60`) levou 7 minutos de um prazo de 300, com folga bem acima de 20%. Por isso o limite padrão de `seguir_pistas.py` passa de 20 para 60. O elo noturno mantém 20 explícito, sem mudança na corrente. Saldo de código: zero líquido.
+
+## 2026-10-25 · #1154 · Catálogo: SIH saúde mental e ICSAP marcados como coletados
+O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
+
 ## 2026-10-25 · B2 · Proteja-se: fonte por orientação
 
 Cada orientação do guia que o registro oficial preserva (15 de 50) mostra sua fonte e a data da consulta, lidas de `data/orientacoes_oficiais.json`. As demais seguem sem marca, até a fonte oficial ser localizada.

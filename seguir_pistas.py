@@ -21,7 +21,7 @@ rollback, §158). Nada aqui pontua, decide ou descarta; a notícia de origem con
 visível no card (§155) até o documento aparecer. Tudo tolerante a falha: rota indisponível
 (QD fora do ar, SearXNG não subiu) fica registrada no `seguimento` da notícia e é tentada de novo.
 
-USO   python seguir_pistas.py [--limite 20] [--refazer-dias 7]   ·   python seguir_pistas.py --autoteste
+USO   python seguir_pistas.py [--limite 60] [--refazer-dias 7]   ·   python seguir_pistas.py --autoteste
 """
 import argparse, datetime, hashlib, json, re, sys, urllib.parse, urllib.request
 from coletores_base import ler, gravar, rodar_autoteste, ua_de, hoje_editorial
@@ -135,7 +135,7 @@ def restantes(fila: dict, hoje: str, refazer_dias: int = 7) -> int:
 
 
 def seguir(fila, hoje, buscar_html_=buscar_html, consultar_qd_=None, buscar_web_=None, cobertura_qd=frozenset(),
-           limite=20, refazer_dias=7):
+           limite=60, refazer_dias=7):
     """Segue até `limite` notícias pendentes A/B ainda não seguidas (ou seguidas há mais de `refazer_dias`).
     Devolve estatística. Acrescenta pistas novas ao fim da fila; nunca altera status de ninguém.
 
@@ -266,7 +266,7 @@ def autoteste():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--autoteste", action="store_true")
-    ap.add_argument("--limite", type=int, default=20)
+    ap.add_argument("--limite", type=int, default=60)
     ap.add_argument("--refazer-dias", type=int, default=7)
     ap.add_argument("--restante", action="store_true")
     a = ap.parse_args()

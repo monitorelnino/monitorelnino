@@ -246,8 +246,17 @@
    "comprometimento": "psicossocial",
    "sistema": "SIH / SIM / Sinan (violência autoprovocada)",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações com CID-10 principal F00 a F99 (transtornos mentais e comportamentais), por UF do hospital e mês; suicídio e violência autoprovocada ficam fora desta rota (SIM e Sinan, sem rota provada). Grupo `saude_mental` escrito em `coletar_sih.py` em 22/10/2026; o arquivo `internacoes_saude_mental.json` nasce quando o elo ler o histórico (estimativa: cinco noites).",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações com CID-10 principal F00 a F99 (transtornos mentais e comportamentais), por UF do hospital e mês; suicídio e violência autoprovocada ficam fora desta rota (SIM e Sinan, sem rota provada). Grupo `saude_mental` escrito em `coletar_sih.py` em 22/10/2026; o arquivo `internacoes_saude_mental.json` existe desde 23/10/2026.",
+   "status_coleta": "coletado",
+   "arquivo": "internacoes_saude_mental.json",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, CID-10 principal F00 a F99 (transtornos mentais e comportamentais)",
+    "provado_em": "23/10/2026",
+    "prova": "jan/2019 a ago/2026 nas 27 UFs, consolidado e parcial por UF; lido por máquina em 23/10/2026; grupo com autoteste de 36 casos sem rede (PR #965). Conferência com TabNet deste grupo não feita",
+    "coletor": "coletar_sih.py"
+   }
   },
   {
    "id": "obitos",
@@ -273,8 +282,17 @@
    "comprometimento": "serviços",
    "sistema": "SIH/SUS",
    "periodicidade": "mensal",
-   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações cujo CID-10 principal está na Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Grupo `icsap` escrito em `coletar_sih.py` em 22/10/2026, com a lista transcrita de duas cópias da portaria que concordam (o texto do DOU não foi lido; divergências resolvidas pelo recorte mais estreito, ver o código); o arquivo `internacoes_icsap.json` nasce quando o elo ler o histórico (estimativa: cinco noites).",
-   "status_coleta": "candidato"
+   "fonte_aberta": "SIH/SUS: arquivos mensais de internações (AIH reduzida, .dbc) no FTP público do DATASUS (`RD<UF><AAMM>.dbc`), lidos por máquina e conferidos num grupo de causa já coletado (`coletar_sih.py`, 19/10/2026); a consulta interativa do TabNet não é necessária. Rota: internações cujo CID-10 principal está na Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008). Grupo `icsap` escrito em `coletar_sih.py` em 22/10/2026, com a lista transcrita de duas cópias da portaria que concordam (o texto do DOU não foi lido; divergências resolvidas pelo recorte mais estreito, ver o código); o arquivo `internacoes_icsap.json` existe desde 23/10/2026.",
+   "status_coleta": "coletado",
+   "arquivo": "internacoes_icsap.json",
+   "rota": {
+    "sistema": "SIH/SUS (AIH reduzida, .dbc no FTP do DATASUS)",
+    "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+    "arquivos": "RD<UF><AAMM>.DBC, CID-10 principal na Lista Brasileira de ICSAP (Portaria SAS/MS 221/2008)",
+    "provado_em": "23/10/2026",
+    "prova": "jan/2019 a ago/2026 nas 27 UFs; lido por máquina em 23/10/2026; lista transcrita de duas cópias concordantes, texto do DOU não lido (PR #965). Conferência com TabNet deste grupo não feita",
+    "coletor": "coletar_sih.py"
+   }
   },
   {
    "id": "tb_continuidade",
