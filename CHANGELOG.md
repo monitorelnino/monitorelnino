@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Cores oficiais do IQAr (pedido da editoria)
+
+As cinco faixas do IQAr passam a usar as cores das fontes indicadas pela editoria (IEMA-ES, relatório do INPE e boletim Vigiar n.º 4 da SES-DF): Boa #4da42d, Moderada #f7d400, Ruim #ed8925, Muito ruim #cb0912 e Péssima #950060. Os valores estão em `assets/tokens.css` e `assets/mapas.js`, os dois únicos lugares com hexadecimal. Os cortes dos dados não mudam. Linhas líquidas: +5/−5.
+
 ## 2026-10-26 · Vocabulário proibido: uma régua
 
 `scripts/vocabulario.py` serve catálogo, blog, conformidade e texto público (o JS o chama). Semântica única: palavra inteira, sem acento, caixa só em termo MAIÚSCULO; antes a conformidade e o JS casavam subcadeia sensível à caixa e o blog, caixa insensível com acento. Duas mutações novas provam a cobertura.
