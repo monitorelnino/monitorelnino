@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #PR · Rodapé único: fonte no catálogo comum
+Rodapé igual em todas as páginas, lido de `conteudo/_comum.json` (redes, e-mail de contato e assinatura "Patty Ferrini"). Sai a linha de pedidos de imprensa; a Imprensa passa a usar o mesmo rodapé. Sem mudança de dado nem de índice.
+
 ## 2026-10-26 · Autotestes: um só `ok()`
 
 `scripts/_casos.py` substitui 57 cópias do registro de casos dos autotestes (−164 linhas líquidas). Contato de imprensa vira o e-mail de contato no CLAUDE.md e no guia do editor.
