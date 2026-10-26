@@ -140,7 +140,7 @@ def resumo_do_desfecho(desfecho: dict) -> dict:
     per.discard(None)
     unico = next(iter(per)) if len(per) == 1 else None
     ini = fim = None
-    if unico:
+    if unico and (desfecho or {}).get("periodo") == "semana":
         a, n = unico.split("-")
         ini, fim = (d.isoformat() for d in semana_intervalo(int(a), int(n)))
     br = (((desfecho or {}).get("ultimo") or {}).get("BR") or {}).get("consolidado") or {}
@@ -480,7 +480,7 @@ def _autoteste() -> int:
     ok("última fechada ignora outro ano",
        ultima_fechada({"2025-50": 9, "2026-02": 3}, "2026") == ("2026-02", 3))
     ok("série vazia devolve nada", ultima_fechada({}, "2026") == (None, None))
-    D = {"coletado_em": "2026-10-18",
+    D = {"coletado_em": "2026-10-18", "periodo": "semana",
          "ultimo": {"AC": {"consolidado": {"periodo": "2026-35", "por_100mil": 20.0}},
                     "AL": {"consolidado": {"periodo": "2026-35", "por_100mil": 5.0}},
                     "AM": {"consolidado": {"periodo": "2026-35", "por_100mil": 1.0}},
@@ -493,6 +493,8 @@ def _autoteste() -> int:
        (r["semana_inicio"], r["semana_fim"]) == ("2026-08-30", "2026-09-05") and r["valor_br"] == 99)
     D["ultimo"]["BR"]["consolidado"]["periodo"] = "2026-09"
     ok("BR de outra semana não vira número do topo", resumo_do_desfecho(D)["valor_br"] is None)
+    ok("desfecho mensal não ganha datas de semana (diarreia 2026-07 não é semana 07)",
+       resumo_do_desfecho(dict(D, periodo="mes"))["semana_inicio"] is None)
     del D["faixa_habitual"]["AC"]["35"]
     ok("UF sem faixa na semana: o total vira lacuna, não zero", resumo_do_desfecho(D)["ufs_acima_faixa"] is None)
 
