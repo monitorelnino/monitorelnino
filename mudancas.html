@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)</dt>
+      <dd>Execução das MPs 1.367 e 1.384: o coletor passa a ler plano orçamentário e fonte de recursos. Um código que aparece com empenho só depois da publicação é isolado como crédito; sem isolamento, o método é teto e nada é rateado. Vias de empenho e de dotação ficam declaradas como lacuna em `mps_2026.json` (`isolamento`). METODOLOGIA §33.2. Texto público inalterado.</dd>
       <dt>26/10/2026 · Saúde: a tabela dos estados no lugar do mapa</dt>
       <dd>Sai o mapa dos planos estaduais de saúde, a lista de tipos com siglas e a contagem &quot;zero estados&quot;. Fica a tabela dos estados, aberta; a UF abre a ficha. Contrato e textos (catálogo) atualizados; órfãos removidos. Saldo de código e conteúdo −42 linhas. Parte B (VIGIAR) segue aguardando o dado.</dd>
       <dt>26/10/2026 · Limpeza: resíduo da retirada de 26/10</dt>
@@ -165,8 +167,6 @@
       <dd>Causa: o contador zerava a cada acerto, e o Common Crawl, que errou 113 de 154 consultas em 23/10, nunca chegava ao teto de cinco seguidos; cada erro custa dois minutos do run. Agora o erro soma um e qualquer outra situação tira um. Só código (+9/−2); nenhum dado muda.</dd>
       <dt>24/10/2026 · Portão móvel funde-se na consistência visual</dt>
       <dd>`verificar_movel.js` abria as mesmas páginas a 390 px que `verificar_consistencia_visual.js`, com a mesma captura e a mesma checagem de rolagem horizontal. Sobravam dois testes (erro de JS e banner de erro de carregamento), que passam ao portão 18 em todas as larguras. Sai um comando, uma passada de Chromium e 35 linhas; nenhuma regra muda. Linhas líquidas: código −37 (+7/−44).</dd>
-      <dt>23/10/2026 · Portão de escritores: a válvula de busca de planos não é a busca web</dt>
-      <dd>O assunto &quot;busca-planos-N automático&quot; era lido como `busca_web_cadencia.yml` e reprovava o PR de dado de `planos_arboviroses.json` e `pistas_arboviroses.json` (escritor declarado: `noturno_desfechos.yml`). A válvula roda o mesmo coletor de dia, em ramo que nunca é mesclado. Código +8/−0, autoteste com o caso.</dd>
     </dl>
   </section>
 </main>
