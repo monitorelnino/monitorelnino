@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Vocabulário proibido: UMA régua para catálogo, blog, conformidade e texto público (JS).
 
-Casa palavra inteira e sem acento. Termo todo em CAIXA ALTA casa com caixa ("FIGURA" é o rótulo de
-numeração que a editoria tirou, não a palavra numa frase legítima); o resto casa sem caixa.
-`sem_citacao` tira o que está entre aspas (o blog cita lei e ato). CLI: `--json` lê
+Casa palavra inteira. `acha` ignora acento e caixa (catálogo e blog), salvo termo todo em CAIXA ALTA,
+que casa com caixa ("FIGURA" é o rótulo de numeração que a editoria tirou, não a palavra numa frase
+legítima). `exato=True` casa a grafia como está (texto renderizado: "Antecipação" no nome do site não
+é a palavra "antecipação" proibida). `sem_citacao` tira o que está entre aspas (o blog cita lei e ato). CLI: `--json` lê
 {"texto","pagina","contrato"} da entrada padrão e imprime os problemas (é o que o JS chama).
 """
 import json
@@ -19,14 +20,17 @@ def _sem_acento(s):
     return "".join(c for c in unicodedata.normalize("NFKD", str(s or "")) if not unicodedata.combining(c))
 
 
-def acha(texto, termos, sem_citacao=False):
+def acha(texto, termos, sem_citacao=False, exato=False):
     """Os termos proibidos que o texto traz (na ordem dada). Função pura."""
     if sem_citacao:
         texto = re.sub(r"[\"“][^\"”]{0,400}[\"”]", " ", texto or "")
     achados = []
     for termo in termos or []:
         alta = any(c.isalpha() for c in str(termo)) and str(termo).upper() == str(termo)
-        alvo, t = (_sem_acento(texto), _sem_acento(termo)) if alta else (_sem_acento(texto).lower(), _sem_acento(termo).lower())
+        if exato:
+            alvo, t = str(texto or ""), str(termo)
+        else:
+            alvo, t = (_sem_acento(texto), _sem_acento(termo)) if alta else (_sem_acento(texto).lower(), _sem_acento(termo).lower())
         if t and re.search(r"(?<![A-Za-z0-9])" + re.escape(t) + r"(?![A-Za-z0-9])", alvo):
             achados.append(termo)
     return achados
@@ -40,8 +44,8 @@ def problemas(texto, pagina, regras, contrato):
     lista = sorted(set(list(v.get("global") or []) + list((v.get("por_pagina") or {}).get(pagina) or [])
                        + list((contrato or {}).get("texto_proibido") or [])))
     p = []
-    for w in acha(t, lista):
-        i = max(t.lower().find(w.lower()), 0)
+    for w in acha(t, lista, exato=True):
+        i = max(t.find(w), 0)
         p.append(f"vocabulário proibido: {w!r} — …{t[max(0, i - 40):i + 40]!r}")
     for adv in v.get("com_numero") or []:
         for m in re.finditer(r"\b" + re.escape(adv) + r"\s+[\d]", baixo):
@@ -64,6 +68,8 @@ def _autoteste():
          and acha("FIGURA 3", ["FIGURA"]) == ["FIGURA"]),
         ("citação só vale com sem_citacao", acha('a lei diz "deve"', ["deve"]) == ["deve"]
          and acha('a lei diz "deve"', ["deve"], sem_citacao=True) == []),
+        ("texto renderizado é exato: o nome 'Antecipação' não é a palavra 'antecipação'",
+         problemas("Monitor de Antecipação", "x.html", {"vocabulario_proibido": {"global": ["antecipação"]}}, {}) == []),
         ("texto limpo passa", problemas("Os municípios com decreto.", "x.html", r, {}) == []),
         ("global reprova", any("desastre" in x for x in problemas("houve um desastre", "x.html", r, {}))),
         ("contrato soma", any("Backlog" in x for x in problemas("Backlog da fila", "x.html", {}, {"texto_proibido": ["Backlog"]}))),
