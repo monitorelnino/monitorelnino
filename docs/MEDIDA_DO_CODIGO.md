@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **98.856 linhas** em **312 arquivos** .py/.js; **36 workflows**.
+- **99.668 linhas** em **315 arquivos** .py/.js; **36 workflows**.
 - **68 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 47.
-- **151 nomes de função** definidos em mais de um arquivo.
+- **154 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 54253 |
-| `scripts` | 37386 |
-| `assets` | 6504 |
+| `(raiz)` | 54652 |
+| `scripts` | 37781 |
+| `assets` | 6522 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
 
@@ -20,26 +20,26 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | arquivo | linhas |
 |---|---:|
-| `coletar_sinais_risco.py` | 3083 |
-| `coletores_base.py` | 2219 |
+| `coletar_sinais_risco.py` | 3184 |
+| `coletores_base.py` | 2236 |
 | `verificar_pista_imprensa.py` | 1703 |
 | `coletar_doe.py` | 1627 |
 | `juiz.py` | 1452 |
-| `julgar_saude.py` | 1359 |
+| `julgar_saude.py` | 1363 |
 | `assets/js/monitor-de-riscos.js` | 1318 |
 | `scripts/verificar_regras_de_dado.py` | 1294 |
 | `scripts/ensaio_da_noite.py` | 1272 |
 | `assets/js/index.js` | 1249 |
 | `coletar_painel_am.py` | 1135 |
+| `scripts/unir_conflito_de_rodada.py` | 1089 |
 | `coletar_edicoes_doe.py` | 1081 |
 | `julgar_e_aplicar_descobertas.py` | 1067 |
 | `recalcular_mare.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
-| `scripts/unir_conflito_de_rodada.py` | 1022 |
-| `gerar_imprensa_semana.py` | 843 |
+| `gerar_imprensa_semana.py` | 1032 |
+| `descobrir_planos.py` | 852 |
 | `gerar_pacote_blog.py` | 830 |
 | `julgar_filas.py` | 794 |
-| `descobrir_planos.py` | 784 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 763 |
 | `scripts/pistas.py` | 710 |
@@ -64,8 +64,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `carregar` | 7 | `aplicar_revisao.py`, `scripts/testar_fixtures_localizacao.py`, `scripts/testar_ordem_prioridade_ufs.py`, `scripts/validar_dicionario.py` … |
 | `_norm` | 6 | `coletar_boletim_pe_arboviroses.py`, `coletar_painel_am.py`, `coletar_s2id.py`, `scripts/municipio_do_dominio.py` … |
 | `_plano` | 6 | `classificar_saude_no_plano.py`, `coletar_dda.py`, `coletar_srag_gripe.py`, `coletar_transferegov.py` … |
+| `aplicar` | 6 | `julgar_saude.py`, `scripts/aplicar_edicoes.py`, `scripts/incorporar_respostas_lai.py`, `scripts/migrar_sobras_do_doe.py` … |
 | `agregar` | 5 | `coletar_datasus_dbc.py`, `coletar_execucao_mps.py`, `coletar_sih.py`, `coletar_sim.py` … |
-| `aplicar` | 5 | `julgar_saude.py`, `scripts/aplicar_edicoes.py`, `scripts/incorporar_respostas_lai.py`, `scripts/migrar_sobras_do_doe.py` … |
 | `carregar_fila` | 5 | `descobrir_planos.py`, `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` … |
 | `medir` | 5 | `scripts/cobertura_docstrings.py`, `scripts/diagnostico_fontes_saude.py`, `scripts/medir_codigo.py`, `scripts/medir_revocacao_das_consultas.py` … |
 | `norm` | 5 | `atualizar_instrumentos_estaduais.py`, `converter_contribuicao.py`, `processar_contribuicoes.py`, `scripts/fila_do_juiz_querido_diario.py` … |
