@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **99.753 linhas** em **316 arquivos** .py/.js; **36 workflows**.
+- **99.721 linhas** em **318 arquivos** .py/.js; **37 workflows**.
 - **68 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 47.
 - **154 nomes de função** definidos em mais de um arquivo.
 
@@ -10,8 +10,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 54660 |
-| `scripts` | 37858 |
+| `(raiz)` | 54732 |
+| `scripts` | 37754 |
 | `assets` | 6522 |
 | `arquivo` | 445 |
 | `.claude` | 268 |
@@ -32,18 +32,18 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `assets/js/index.js` | 1249 |
 | `coletar_painel_am.py` | 1135 |
 | `scripts/unir_conflito_de_rodada.py` | 1089 |
-| `coletar_edicoes_doe.py` | 1081 |
+| `coletar_edicoes_doe.py` | 1078 |
 | `julgar_e_aplicar_descobertas.py` | 1067 |
 | `recalcular_mare.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `gerar_imprensa_semana.py` | 1032 |
 | `descobrir_planos.py` | 852 |
-| `gerar_pacote_blog.py` | 830 |
+| `gerar_pacote_blog.py` | 827 |
 | `julgar_filas.py` | 794 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 763 |
-| `scripts/gerar_topo_das_paginas.py` | 711 |
-| `scripts/pistas.py` | 710 |
+| `scripts/gerar_topo_das_paginas.py` | 708 |
+| `scripts/pistas.py` | 707 |
 | `coletar_saude_estadual.py` | 702 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
@@ -51,7 +51,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | função | arquivos | onde |
 |---|---:|---|
 | `coletar` | 28 | `buscar_protocolo_calor.py`, `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py` … |
-| `problemas` | 18 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
+| `problemas` | 19 | `coletar_cadastro_prioritarios.py`, `coletar_normais_inmet.py`, `coletar_prioritarios_mma.py`, `coletar_semiarido_sudene.py` … |
 | `self_test` | 15 | `atualizar_marcos_severidade.py`, `classificador_natureza.py`, `detectar_marcos_federais.py`, `gerar_dados_abertos.py` … |
 | `gerar` | 13 | `classificar_planos_municipais.py`, `gerar_blog.py`, `gerar_card_municipios.py`, `gerar_contadores_financiamento.py` … |
 | `montar` | 12 | `buscar_protocolo_calor.py`, `desfechos_sus.py`, `gerar_card_municipios.py`, `gerar_erros_localizacao.py` … |
@@ -72,6 +72,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `relatorio` | 5 | `coletar_cobertura_qd.py`, `scripts/busca_dirigida_do_ato.py`, `scripts/fechar_saude.py`, `scripts/medir_codigo.py` … |
 | `__init` | 4 | `assets/js/defesa-civil.js`, `assets/js/financiamento.js`, `assets/js/index.js`, `assets/js/monitor-de-riscos.js` |
 | `_git` | 4 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_repositorio.py`, `scripts/verificar_tamanho_dos_dados.py` |
+| `_sem_acento` | 4 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py`, `scripts/vocabulario.py` |
 | `baixar` | 4 | `scripts/diagnosticar_fontes_sinais.py`, `scripts/sondar_munic_ibge.py`, `scripts/sondar_portal_fogo_saude.py`, `scripts/sondar_transferegov.py` |
 | `data_br` | 4 | `coletar_transferegov.py`, `gerar_resposta.py`, `scripts/cruzar_ocp_com_atos.py`, `scripts/gerar_mudancas.py` |
 | `decidir` | 4 | `coletar_saude_estadual.py`, `coletar_sg_esus.py`, `monitorar_busca_web.py`, `scripts/limpar_fila_de_pistas.py` |
@@ -84,9 +85,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `tabela` | 4 | `assets/js/financiamento.js`, `gerar_pdf_indice.py`, `scripts/gerar_saude_pipeline.py`, `scripts/medir_revocacao_das_consultas.py` |
 | `w` | 4 | `aplicar_c10_imprensa.py`, `gerar_painel.py`, `migrar_v224_verificacao.py`, `scripts/verificar_robustez_atualizacao.py` |
 | `_data` | 3 | `gerar_financiamento_semana.py`, `scripts/verificar_frescor.py`, `scripts/verificar_regras_de_dado.py` |
+| `_host` | 3 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `triar_confianca_pistas.py` |
 | `_iso` | 3 | `coletar_sinais_risco.py`, `gerar_dados_abertos.py`, `scripts/checagem_pre_noite.py` |
 | `_levanta` | 3 | `buscar_planos_fontes_abertas.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
 | `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
-| `_sem_acento` | 3 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py` |
 | `avaliar` | 3 | `scripts/checagem_pre_noite.py`, `scripts/testar_fixtures_localizacao.py`, `scripts/verificar_fila_nao_humana.py` |
-| `checar` | 3 | `verificar_financiamento.py`, `verificar_painel.py`, `verificar_saude.py` |

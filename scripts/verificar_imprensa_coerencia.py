@@ -216,11 +216,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     ok("lê inteiro com separador de milhar", numero_do_texto("8.146")[0] == 8146)
     ok("lê decimal brasileiro", numero_do_texto("31,8")[0] == 31.8)

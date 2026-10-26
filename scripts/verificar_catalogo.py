@@ -90,40 +90,13 @@ def vocabulario_proibido_em(textos: dict, proibidas: list, por_pagina: dict = No
                             pagina: str = "") -> list:
     """As entradas que trazem palavra proibida. Função pura.
 
-    Casa palavra inteira e sem acento — cobrar subcadeia acusaria "subfunção" dentro de palavra
-    inocente.
-
-    A CAIXA conta quando o termo proibido vem em caixa alta. "FIGURA" na lista é o rótulo de
-    numeração que a editoria tirou, não a palavra "figura" numa frase legítima — "a fonte primária
-    de cada figura", que é como a própria página de imprensa explica a reprodução. O portão de
-    conformidade aprendeu isso em 03/10/2026, no primeiro falso positivo dele, e este portão
-    repetiu o mesmo erro em 05/10 porque comparava tudo em minúsculas. Termo em caixa alta casa com
-    caixa; o resto casa sem caixa.
+    A régua é `scripts/vocabulario.py` (palavra inteira, sem acento, caixa só em termo MAIÚSCULO).
     """
-    import unicodedata
-
-    def normal(s):
-        b = unicodedata.normalize("NFKD", str(s or "").lower())
-        return "".join(c for c in b if not unicodedata.combining(c))
-
-    def sem_acento(s):
-        b = unicodedata.normalize("NFKD", str(s or ""))
-        return "".join(c for c in b if not unicodedata.combining(c))
+    from vocabulario import acha
 
     lista = list(proibidas or []) + list((por_pagina or {}).get(pagina) or [])
-    fora = []
-    for ident, texto in sorted((textos or {}).items()):
-        for termo in lista:
-            caixa_alta = any(c.isalpha() for c in str(termo)) and str(termo).upper() == str(termo)
-            alvo = sem_acento(texto) if caixa_alta else normal(texto)
-            t = sem_acento(termo) if caixa_alta else normal(termo)
-            if not t:
-                continue
-            borda = r"(?![A-Za-z0-9])" if caixa_alta else r"(?![a-z0-9])"
-            if re.search(r"(?<![A-Za-z0-9])" + re.escape(t) + borda, alvo):
-                fora.append(f"{ident}: traz {termo!r}, que o site não escreve")
-                break
-    return fora
+    return [f"{ident}: traz {t!r}, que o site não escreve"
+            for ident, texto in sorted((textos or {}).items()) for t in acha(texto, lista)[:1]]
 
 
 def legendas_fora_da_regua(textos: dict, teto: int = 180) -> list:
@@ -169,11 +142,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     _f = ('<main><section id="s"><h1>Título</h1><p class="hint"><strong>Conta.</strong> O que conta.</p>'
           '<p class="note" data-conteudo="p.s.nota">já no catálogo</p><p id="valorX">—</p>'

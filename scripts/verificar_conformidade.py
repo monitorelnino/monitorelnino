@@ -50,6 +50,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ / "scripts"))
+import vocabulario  # noqa: E402
 
 CONTRATOS = RAIZ / "layout" / "contratos"
 REGRAS = RAIZ / "layout" / "regras.json"
@@ -160,35 +161,6 @@ def problemas_de_figura(figuras: list, regras: dict) -> list:
             p.append(f"figura '{nome}': legenda com {len(f['legenda'])} caracteres (teto {teto})")
         if r.get("midia_rotulada") and f.get("tem_midia") and not f.get("rotulada"):
             p.append(f"figura '{nome}': mídia sem rótulo acessível (aria-label ou alt)")
-    return p
-
-
-# ── (D) vocabulário ─────────────────────────────────────────────────────────────────────────
-def problemas_de_vocabulario(texto: str, pagina: str, regras: dict, contrato: dict) -> list:
-    """Vocabulário proibido: global, por página, advérbio com número, locução de dever. Pura."""
-    v = (regras or {}).get("vocabulario_proibido") or {}
-    t = texto or ""
-    baixo = t.lower()
-    p = []
-    proibidas = list(v.get("global") or [])
-    proibidas += list((v.get("por_pagina") or {}).get(pagina) or [])
-    proibidas += list((contrato or {}).get("texto_proibido") or [])
-    # Comparação SENSÍVEL à caixa, de propósito: o que a regra barra é "FIGURA" em caixa alta — a
-    # numeração de figura que a editoria tirou —, e não a palavra "figura" numa frase legítima
-    # ("a fonte primária de cada figura"). Barrar as duas foi o primeiro falso positivo deste
-    # portão, em 03/10/2026, na própria página que explica como citar.
-    for palavra in sorted(set(proibidas)):
-        if palavra and palavra in t:
-            i = t.index(palavra)
-            p.append(f"vocabulário proibido: {palavra!r} — …{t[max(0, i - 40):i + 40]!r}")
-    for adv in v.get("com_numero") or []:
-        for m in re.finditer(r"\b" + re.escape(adv) + r"\s+[\d]", baixo):
-            p.append(f"juízo colado a número: {adv!r} — …{t[max(0, m.start() - 30):m.start() + 40]!r}")
-    for locucao in v.get("dever") or []:
-        if locucao.lower() in baixo:
-            i = baixo.index(locucao.lower())
-            p.append(f"locução de dever fora de citação de lei: {locucao!r} — "
-                     f"…{t[max(0, i - 40):i + 40]!r}")
     return p
 
 
@@ -313,8 +285,7 @@ def problemas(pagina: str, despejo: dict, regras: dict, contrato: dict, excecoes
         ("contrato", verificar_layout.problemas_do_despejo(contrato, despejo) if contrato else []),
         ("tipografia", problemas_de_tipografia(d1280.get("tipografia") or [], regras)),
         ("figura", problemas_de_figura(d1280.get("figuras_completas") or [], regras)),
-        ("vocabulario", problemas_de_vocabulario(d1280.get("texto_visivel") or "", pagina,
-                                                 regras, contrato)),
+        ("vocabulario", vocabulario.problemas(d1280.get("texto_visivel") or "", pagina, regras, contrato)),
         ("numeros", problemas_de_numero(d1280.get("numeros") or [], regras,
                                         d1280.get("travessoes") or [])),
         ("acessibilidade", problemas_de_acessibilidade(d390, regras)),
@@ -357,11 +328,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     regras = ler_json(REGRAS) or {}
     _r = {"numeros": {"fonte": "x", "formato": "pt-BR", "_nota": "n"}, "_verificacao": {}}
@@ -456,27 +424,6 @@ def _autoteste() -> int:
        any("sem rótulo" in x for x in problemas_de_figura([dict(fig[0], rotulada=False)], regras)))
     ok("figura invisível não é julgada",
        problemas_de_figura([dict(fig[0], visivel=False, titulo="")], regras) == [])
-
-    # (D) vocabulário
-    ok("texto limpo passa",
-       problemas_de_vocabulario("Os municípios com decreto no ciclo.", "x.html", regras, {}) == [])
-    ok("palavra global proibida reprova",
-       any("desastre" in x for x in
-           problemas_de_vocabulario("houve um desastre", "x.html", regras, {})))
-    ok("'figura' em frase legítima NÃO é a numeração 'FIGURA' proibida",
-       problemas_de_vocabulario("a fonte primária de cada figura", "imprensa.html", regras, {}) == [])
-    ok("juízo colado a número reprova",
-       any("juízo" in x for x in
-           problemas_de_vocabulario("apenas 3 estados publicaram", "x.html", regras, {})))
-    ok("a mesma palavra longe de número NÃO reprova",
-       not any("juízo" in x for x in
-               problemas_de_vocabulario("apenas o estado publicou", "x.html", regras, {})))
-    ok("locução de dever reprova",
-       any("dever" in x for x in
-           problemas_de_vocabulario("o município deve publicar o plano", "x.html", regras, {})))
-    ok("proibido do contrato entra junto",
-       any("Backlog" in x for x in
-           problemas_de_vocabulario("Backlog da fila", "x.html", regras, {"texto_proibido": ["Backlog"]})))
 
     # (E) e (F)
     _F = "Fonte: x · Atualização: 13/10/2026"

@@ -62,6 +62,30 @@
     "validar_workflows.py",
     "verificar_seguranca.js"
    ]
+  },
+  {
+   "id": "vocabulario_proibido_no_catalogo",
+   "arquivo": "conteudo/saude.json",
+   "trocar": [
+    "\"estados com ao menos um município em nível 3 ou 4\"",
+    "\"desastre em estados com ao menos um município em nível 3 ou 4\""
+   ],
+   "pegam": [
+    "verificar_texto_publico.js",
+    "verificar_catalogo.py"
+   ]
+  },
+  {
+   "id": "vocabulario_regua_quebrada",
+   "arquivo": "scripts/vocabulario.py",
+   "trocar": [
+    "if t and re.search(",
+    "if False and re.search("
+   ],
+   "pegam": [
+    "verificar_catalogo.py",
+    "verificar_texto_blog.py"
+   ]
   }
  ]
 }

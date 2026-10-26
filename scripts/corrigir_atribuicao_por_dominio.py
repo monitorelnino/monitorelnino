@@ -91,11 +91,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     dono = {"nome": "Celso Ramos", "uf": "SC", "ibge": "4204152"}
     pista = {"id": "x1", "municipio": "Salete", "uf": "SC", "ibge": "4215307",

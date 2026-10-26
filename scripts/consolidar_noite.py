@@ -153,11 +153,8 @@ def pode_aplicar(caminho: str, elo: str, tabela: dict) -> bool:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     ok("o elo sai do nome do artefato",
        elo_do_artefato("saida-diarios-2026-10-06") == "diarios")

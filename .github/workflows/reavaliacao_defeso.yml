@@ -1,0 +1,29 @@
+# Reavaliação diária das fontes suspensas por defeso (decisão da central, 26/10/2026 15:25 UTC).
+#
+# Fim do período eleitoral em 25/10: as 41 fontes em data/calendario/fontes_suspensas.json voltam a
+# ser lidas todo dia, pela mesma régua do §182 (scripts/reavaliar_fontes_suspensas.py). Até 25/11;
+# depois disso, este workflow sai (PR que remove o cron) e a cadência volta a semanal, em
+# semanal_espin_e_links.yml. Falha de rede mantém o estado (§170).
+name: Reavaliação diária do defeso
+
+on:
+  schedule:
+    # Todo dia, 07h20 de Brasília (10h20 UTC).
+    - cron: "20 10 * * *"
+    - cron: "50 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reavaliar:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: reavaliacao-defeso
+      timeout_minutos: 60
+      comandos: |
+        scripts/reavaliar_fontes_suspensas.py --refazer-busca
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}

@@ -9,6 +9,28 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Vocabulário proibido: uma régua
+
+`scripts/vocabulario.py` serve catálogo, blog, conformidade e texto público (o JS o chama). Semântica única: palavra inteira, sem acento, caixa só em termo MAIÚSCULO; antes a conformidade e o JS casavam subcadeia sensível à caixa e o blog, caixa insensível com acento. Duas mutações novas provam a cobertura.
+
+## 2026-10-26 · #PR · Rodapé único: fonte no catálogo comum
+Rodapé igual em todas as páginas, lido de `conteudo/_comum.json` (redes, e-mail de contato e assinatura "Patty Ferrini"). Sai a linha de pedidos de imprensa; a Imprensa passa a usar o mesmo rodapé. Sem mudança de dado nem de índice.
+
+## 2026-10-26 · Autotestes: um só `ok()`
+
+`scripts/_casos.py` substitui 57 cópias do registro de casos dos autotestes (−164 linhas líquidas). Contato de imprensa vira o e-mail de contato no CLAUDE.md e no guia do editor.
+## 2026-10-26 · #1194 · Fim do defeso: fontes suspensas são reavaliadas todo dia até 25/11
+
+Com o fim do período eleitoral (25/10), as 41 fontes suspensas por defeso passam a ser reavaliadas todos os dias, pela mesma régua de procedência de antes. Um workflow diário (`reavaliacao_defeso.yml`) entra no registro de temporizadores; a cadência volta a ser semanal depois de 25/11. Fonte que não responde mantém o estado registrado.
+
+## 2026-10-26 · #1191 · Rodapé: só LinkedIn e Instagram
+
+Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.
+
+
+## 2026-10-26 · #1190 · Log de saúde só cresce
+
+Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.
 ## 2026-10-26 · #1187 · Financiamento: % do pago aplicado pela União sai por medida
 
 Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.

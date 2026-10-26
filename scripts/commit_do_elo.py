@@ -124,11 +124,8 @@ def mudados_na_arvore() -> list:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     T = {
         "data/municipios.json": "atualizar.yml",
