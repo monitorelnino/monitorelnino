@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Vocabulário proibido: uma régua
+
+`scripts/vocabulario.py` serve catálogo, blog, conformidade e texto público (o JS o chama). Semântica única: palavra inteira, sem acento, caixa só em termo MAIÚSCULO; antes a conformidade e o JS casavam subcadeia sensível à caixa e o blog, caixa insensível com acento. Duas mutações novas provam a cobertura.
+
 ## 2026-10-26 · #PR · Rodapé único: fonte no catálogo comum
 Rodapé igual em todas as páginas, lido de `conteudo/_comum.json` (redes, e-mail de contato e assinatura "Patty Ferrini"). Sai a linha de pedidos de imprensa; a Imprensa passa a usar o mesmo rodapé. Sem mudança de dado nem de índice.
 
