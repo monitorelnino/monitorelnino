@@ -11,6 +11,18 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · #1161 · Imprensa: acumulados do ciclo completos
+A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.
+## 2026-10-26 · #1160 · Descoberta: limite padrão sobe a 60
+
+A rodada medida de descoberta (`--limite 60`) levou 7 minutos de um prazo de 300, com folga bem acima de 20%. Por isso o limite padrão de `seguir_pistas.py` passa de 20 para 60. O elo noturno mantém 20 explícito, sem mudança na corrente. Saldo de código: zero líquido.
+
+## 2026-10-25 · #1154 · Catálogo: SIH saúde mental e ICSAP marcados como coletados
+O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
+
+## 2026-10-25 · B2 · Proteja-se: fonte por orientação
+
+Cada orientação do guia que o registro oficial preserva (15 de 50) mostra sua fonte e a data da consulta, lidas de `data/orientacoes_oficiais.json`. As demais seguem sem marca, até a fonte oficial ser localizada.
 ## 2026-10-26 · A3 · Sonda do fornecedor de transparência das capitais
 
 `scripts/sondar_fornecedor_transparencia.py` lê a página inicial de cada prefeitura de capital e anota qual fornecedor (Betha, IPM/Atende.Net, Elotech, Equiplano, Fiorilli) aparece nas ligações; recusa fica registrada com o motivo. Só registra, em `data/transparencia_fornecedor_capitais.json`; não alimenta o índice.
@@ -18,6 +30,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-25 · D · Suíte de mutação dos portões
 
 `scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.
+## 2026-10-25 · #1153 · Rodada: união de conflito decide campo a campo
+
+Decisão da central (item 7): quando os dois lados mudam o mesmo campo, o juiz vence pelo `julgado_em` mais recente e o veredito perdido vai para `juiz_historico`; `rejeitada_em` vence a data mais antiga; estado de fila (`busca_web_espera`, cursores) vence o lado da `main`. Outros campos continuam recusados, sem adivinhar. Autotestes por regra.
+
 ## 2026-10-25 · #1149 · Juiz de saúde: o ente municipal também se lê no título do ato
 
 A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.

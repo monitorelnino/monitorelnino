@@ -2,11 +2,11 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 39788,
+   "valor": 40965,
    "unidade": "focos",
    "periodo_inicio": "2026-09-17",
-   "periodo_fim": "2026-10-24",
-   "n": 38,
+   "periodo_fim": "2026-10-25",
+   "n": 39,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": false,
    "motivo": null
@@ -16,7 +16,7 @@
    "valor": 100,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-10-25",
+   "periodo_fim": "2026-10-26",
    "n": 100,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
@@ -27,29 +27,249 @@
    "valor": null,
    "unidade": "dias",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-25",
+   "periodo_fim": "2026-10-26",
    "n": 0,
    "fonte": "Inmet (avisos meteorológicos)",
    "sem_coleta": true,
    "motivo": "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes"
   },
   {
-   "id": "estados_acima_da_faixa_por_doenca",
-   "valor": null,
-   "unidade": "estados",
+   "id": "municipios_decretaram",
+   "valor": 988,
+   "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-25",
+   "periodo_fim": null,
+   "n": 988,
+   "fonte": "Defesa Civil nacional (decretos no Diário Oficial da União)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "municipios_reconhecidos",
+   "valor": 887,
+   "unidade": "municípios",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 887,
+   "fonte": "Defesa Civil nacional (portarias de reconhecimento, DOU)",
+   "sem_coleta": false,
+   "motivo": null,
+   "prazo_reconhecimento": {
+    "n": 887,
+    "mediana": 14,
+    "p25": 8.0,
+    "p75": 21.0,
+    "p90": 29.0
+   }
+  },
+  {
+   "id": "pessoas_municipios_decretados",
+   "valor": 34547521,
+   "unidade": "pessoas",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 988,
+   "fonte": "IBGE, Censo 2022 (população dos municípios que decretaram)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "atos_por_evento",
+   "valor": 1265,
+   "unidade": "atos",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 1265,
+   "fonte": "Defesa Civil nacional (atos de emergência)",
+   "sem_coleta": false,
+   "motivo": null,
+   "por_evento": {
+    "sem_tipo_informado": 389,
+    "seca": 392,
+    "chuva": 274,
+    "outro_declarado": 6,
+    "vendaval": 194,
+    "fogo": 10
+   }
+  },
+  {
+   "id": "capitais_com_plano",
+   "valor": 6,
+   "unidade": "capitais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 27,
+   "fonte": "MARÉ Legal (planos de contingência das capitais)",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "anunciado_em_atos",
+   "valor": 1310769392.0,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 4,
+   "fonte": "Texto das medidas provisórias e atos estaduais",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "El Niño 2026/2027"
+  },
+  {
+   "id": "desembolsado",
+   "valor": 424328447.8,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": null,
+   "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "desde o mês de publicação de cada medida"
+  },
+  {
+   "id": "autorizado_defesa_civil",
+   "valor": null,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
    "n": 0,
-   "fonte": "MARÉ Saúde (semanas fechadas por UF e doença)",
+   "fonte": "Portal da Transparência",
    "sem_coleta": true,
-   "motivo": "a série semanal por UF e doença não chega ao topo de saúde até o corte"
+   "motivo": "a soma por município ainda não fechou com o total publicado"
+  },
+  {
+   "id": "repasses_sus_emergencia",
+   "valor": null,
+   "unidade": "reais",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": null,
+   "n": 0,
+   "fonte": "Portal da Transparência",
+   "sem_coleta": true,
+   "motivo": "os repasses de emergência do SUS não estão no derivado"
+  },
+  {
+   "id": "dengue",
+   "valor": 78630,
+   "unidade": "notificações",
+   "periodo_inicio": "2026-06-28",
+   "periodo_fim": "2026-09-05",
+   "n": 10,
+   "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "chikungunya",
+   "valor": null,
+   "unidade": "notificações",
+   "periodo_inicio": "2026-06-28",
+   "periodo_fim": "2026-09-05",
+   "n": 10,
+   "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
+   "sem_coleta": true,
+   "motivo": "a fonte não traz registro desta UF depois deste período; o nacional só soma o período em que as 27 UFs têm valor"
+  },
+  {
+   "id": "srag",
+   "valor": 70176,
+   "unidade": "internações",
+   "periodo_inicio": "2026-06-28",
+   "periodo_fim": "2026-09-26",
+   "n": 13,
+   "fonte": "Ministério da Saúde (SIVEP-Gripe), semanas fechadas",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "diarreia",
+   "valor": 202571,
+   "unidade": "atendimentos",
+   "periodo_inicio": "2026-07-01",
+   "periodo_fim": "2026-07-31",
+   "n": 1,
+   "fonte": "SUS (SISAB), meses fechados",
+   "sem_coleta": false,
+   "motivo": null
+  },
+  {
+   "id": "leptospirose",
+   "valor": null,
+   "unidade": "casos",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": "2026-10-26",
+   "n": 0,
+   "fonte": "Ministério da Saúde (SINAN), meses fechados",
+   "sem_coleta": true,
+   "motivo": "nenhum mês fechado desde 29/06; o último período com valor é parcial"
+  },
+  {
+   "id": "estados_acima_da_faixa_dengue",
+   "valor": 10,
+   "unidade": "estados",
+   "periodo_inicio": "2026-08-30",
+   "periodo_fim": "2026-09-05",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-35"
+  },
+  {
+   "id": "estados_acima_da_faixa_srag",
+   "valor": 0,
+   "unidade": "estados",
+   "periodo_inicio": "2026-09-20",
+   "periodo_fim": "2026-09-26",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-38"
+  },
+  {
+   "id": "estados_acima_da_faixa_chikungunya",
+   "valor": 9,
+   "unidade": "estados",
+   "periodo_inicio": null,
+   "periodo_fim": null,
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": null
+  },
+  {
+   "id": "estados_acima_da_faixa_diarreia",
+   "valor": 22,
+   "unidade": "estados",
+   "periodo_inicio": "2026-07-01",
+   "periodo_fim": "2026-07-31",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-07"
+  },
+  {
+   "id": "estados_acima_da_faixa_leptospirose",
+   "valor": 4,
+   "unidade": "estados",
+   "periodo_inicio": "2026-03-01",
+   "periodo_fim": "2026-03-31",
+   "n": 27,
+   "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo": "2026-03"
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "janela_dias": 7,
  "indices": {
-  "edicao": "25/10/2026",
+  "edicao": "26/10/2026",
   "mare_legal": 40.3,
   "mare_saude": 61.3,
   "saude_verificadas": 21,
@@ -63,8 +283,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-18",
-    "fim": "2026-10-25"
+    "ini": "2026-10-19",
+    "fim": "2026-10-26"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -92,7 +312,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-10-24 e 2026-10-25, nos dois índices",
+   "nota": "entre as edições de 2026-10-25 e 2026-10-26, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -220,14 +440,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 93,
+   "valor": 62,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "25/10/2026 05:50",
+   "referencia": "25/10/2026 22:49",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "25/10/2026 05:50",
+   "consultado_em": "25/10/2026 22:49",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -240,14 +460,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 3006,
+   "valor": 2264,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "25/10/2026 05:50",
+   "referencia": "25/10/2026 22:49",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "25/10/2026 05:50",
+   "consultado_em": "25/10/2026 22:49",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -260,7 +480,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 4603,
+   "valor": 273,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -269,84 +489,44 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261025.csv",
+   "nota": "Focos do dia — focos_diario_br_20261026.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 2723
-    },
-    {
-     "uf": "MA",
-     "valor": 584
-    },
-    {
-     "uf": "TO",
-     "valor": 279
+     "valor": 177
     },
     {
      "uf": "BA",
-     "valor": 243
+     "valor": 25
+    },
+    {
+     "uf": "MA",
+     "valor": 22
     },
     {
      "uf": "MT",
-     "valor": 137
+     "valor": 21
+    },
+    {
+     "uf": "TO",
+     "valor": 20
     },
     {
      "uf": "PI",
-     "valor": 127
-    },
-    {
-     "uf": "AP",
-     "valor": 103
+     "valor": 5
     },
     {
      "uf": "AM",
-     "valor": 93
-    },
-    {
-     "uf": "GO",
-     "valor": 87
-    },
-    {
-     "uf": "CE",
-     "valor": 58
+     "valor": 1
     },
     {
      "uf": "RO",
-     "valor": 53
-    },
-    {
-     "uf": "MG",
-     "valor": 51
-    },
-    {
-     "uf": "PE",
-     "valor": 19
+     "valor": 1
     },
     {
      "uf": "RR",
-     "valor": 14
-    },
-    {
-     "uf": "RN",
-     "valor": 11
-    },
-    {
-     "uf": "AC",
-     "valor": 9
-    },
-    {
-     "uf": "SP",
-     "valor": 7
-    },
-    {
-     "uf": "PB",
-     "valor": 3
-    },
-    {
-     "uf": "AL",
-     "valor": 2
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
@@ -523,5 +703,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 25/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,3 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 17 municípios decretaram situação de emergência ou calamidade; 802.502 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 26/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,3 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 17 municípios decretaram situação de emergência ou calamidade; 802.502 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

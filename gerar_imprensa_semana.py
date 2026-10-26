@@ -131,9 +131,10 @@ def sem_dado(ident, rotulo, grupo, motivo, fonte=None, url_fonte=None):
 INICIO_CICLO_IMP = date(2026, 6, 29)
 
 
-def acumulado(ident, valor, unidade, inicio, fim, n, fonte, motivo=None):
+def acumulado(ident, valor, unidade, inicio, fim, n, fonte, motivo=None, **extra):
     return {"id": ident, "valor": valor, "unidade": unidade, "periodo_inicio": inicio,
-            "periodo_fim": fim, "n": n, "fonte": fonte, "sem_coleta": valor is None, "motivo": motivo}
+            "periodo_fim": fim, "n": n, "fonte": fonte, "sem_coleta": valor is None, "motivo": motivo,
+            **extra}
 
 
 def acumulado_focos(focos_ref, corte):
@@ -162,15 +163,152 @@ def acumulado_inmet(corte):
                      "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes")
 
 
-def acumulado_faixas(corte):
-    return acumulado("estados_acima_da_faixa_por_doenca", None, "estados", INICIO_CICLO_IMP.isoformat(),
-                     corte.isoformat(), 0, "MARÉ Saúde (semanas fechadas por UF e doença)",
-                     "a série semanal por UF e doença não chega ao topo de saúde até o corte")
+def _intervalo_do_periodo(p: str, tipo: str):
+    """(início, fim) de uma semana epidemiológica ('AAAA-SS') ou de um mês ('AAAA-MM')."""
+    ano, x = p.split("-")
+    if tipo == "semana":
+        from coletores_base import semana_intervalo
+        return semana_intervalo(int(ano), int(x))
+    m = int(x)
+    return date(int(ano), m, 1), date(int(ano) + (m == 12), m % 12 + 1, 1) - timedelta(days=1)
 
 
-def acumulados(corte, focos_ref, municipios) -> list:
-    return [acumulado_focos(focos_ref, corte), acumulado_planos(municipios, corte),
-            acumulado_inmet(corte), acumulado_faixas(corte)]
+def _janela_fechada(d: dict, corte: date) -> list:
+    """Períodos FECHADOS desde a semana que contém 29/06 (o `parcial` do arquivo fica fora),
+    em ordem: [(período, início, fim)]. A semana conta se termina em 29/06 ou depois; o mês, se
+    começa em 29/06 ou depois (junho não é mês fechado desde 29/06)."""
+    tipo, parciais = (d or {}).get("periodo"), set((d or {}).get("parcial") or [])
+    jan = []
+    for p in ((d or {}).get("serie") or {}).get("BR") or {}:
+        if p in parciais:
+            continue
+        a, b = _intervalo_do_periodo(p, tipo)
+        if b <= corte and (b if tipo == "semana" else a) >= INICIO_CICLO_IMP:
+            jan.append((p, a, b))
+    return sorted(jan)
+
+
+def acumulado_saude(ident, arquivo, corte, unidade, fonte):
+    """Soma nacional de um desfecho nos períodos fechados desde 29/06. Um período fechado sem valor
+    vira lacuna com o motivo do arquivo, nunca uma soma pela metade."""
+    d = ler("saude_desfechos/" + arquivo, {}) or {}
+    jan = _janela_fechada(d, corte)
+    ini = jan[0][1].isoformat() if jan else INICIO_CICLO_IMP.isoformat()
+    fim = jan[-1][2].isoformat() if jan else corte.isoformat()
+    if not jan:
+        tipo = "semana" if d.get("periodo") == "semana" else "mês"
+        return acumulado(ident, None, unidade, ini, fim, 0, fonte,
+                         f"nenhum {tipo} fechado desde 29/06; o último período com valor é parcial")
+    serie = d["serie"]["BR"]
+    faltam = [p for p, _, _ in jan if serie.get(p) is None]
+    if faltam:
+        motivo = ((d.get("lacunas") or [{}])[0].get("motivo")
+                  or f"a série nacional não tem valor em {len(faltam)} período(s) fechado(s)")
+        return acumulado(ident, None, unidade, ini, fim, len(jan), fonte, motivo)
+    return acumulado(ident, sum(serie[p] for p, _, _ in jan), unidade, ini, fim, len(jan), fonte)
+
+
+def acumulado_ufs_acima(corte):
+    """Estados acima da faixa habitual, POR DOENÇA: a conta é a de `resumo_do_desfecho` do topo
+    (a única conta de 'estados acima da faixa', na última semana consolidada de cada UF). Um
+    cartão por doença; sem série por UF, lacuna declarada."""
+    from scripts.gerar_topo_das_paginas import resumo_do_desfecho
+    saidas = []
+    for arquivo, rotulo in (("dengue.json", "dengue"), ("srag.json", "srag"),
+                            ("chikungunya.json", "chikungunya"), ("diarreias.json", "diarreia"),
+                            ("leptospirose.json", "leptospirose")):
+        d = ler("saude_desfechos/" + arquivo, {}) or {}
+        r = resumo_do_desfecho(d)
+        fonte = "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)"
+        ini = fim = None
+        if r["periodo"]:  # o topo calcula semana_inicio/fim só para semana; mês sai do próprio período
+            ini, fim = (x.isoformat() for x in _intervalo_do_periodo(r["periodo"], d.get("periodo")))
+        valor = r["ufs_acima_faixa"]
+        motivo = None if valor is not None else "a faixa habitual não se compara com a série de todas as UFs até o corte"
+        saidas.append(acumulado(f"estados_acima_da_faixa_{rotulo}", valor, "estados", ini, fim,
+                                r["ufs_comparadas"], fonte, motivo, periodo=r["periodo"]))
+    return saidas
+
+
+def _do_arquivo(ident, valor, unidade, n, fonte, motivo_vazio, **extra):
+    """Acumulado de um número já calculado por outra página; valor None vira lacuna com motivo."""
+    if valor is None:
+        return acumulado(ident, None, unidade, INICIO_CICLO_IMP.isoformat(), None, 0, fonte, motivo_vazio)
+    return acumulado(ident, valor, unidade, INICIO_CICLO_IMP.isoformat(), None, n, fonte, **extra)
+
+
+def acumulado_decretos(por_uf):
+    nac = (por_uf or {}).get("nacional") or {}
+    return _do_arquivo("municipios_decretaram", nac.get("n_municipios"), "municípios", nac.get("n_municipios"),
+                       "Defesa Civil nacional (decretos no Diário Oficial da União)",
+                       "o arquivo de decretos não traz o total")
+
+
+def acumulado_reconhecidos(por_uf):
+    nac = (por_uf or {}).get("nacional") or {}
+    return _do_arquivo("municipios_reconhecidos", nac.get("reconhecidos"), "municípios", nac.get("reconhecidos"),
+                       "Defesa Civil nacional (portarias de reconhecimento, DOU)",
+                       "o arquivo não traz o total reconhecido", prazo_reconhecimento=nac.get("prazo_reconhecimento"))
+
+
+def acumulado_pessoas(por_uf):
+    nac = (por_uf or {}).get("nacional") or {}
+    return _do_arquivo("pessoas_municipios_decretados", nac.get("pop_sob_decreto"), "pessoas",
+                       nac.get("n_municipios"), "IBGE, Censo 2022 (população dos municípios que decretaram)",
+                       "o arquivo não traz a população dos municípios sob decreto")
+
+
+def acumulado_atos_por_evento(por_uf):
+    """Atos de emergência por evento declarado, somados das UFs. 'sem tipo' é contado como tal."""
+    por_evento: dict = {}
+    for u in ((por_uf or {}).get("uf") or {}).values():
+        for k, v in ((u or {}).get("eventos_declarados") or {}).items():
+            por_evento[k] = por_evento.get(k, 0) + v
+    total = sum(por_evento.values()) if por_evento else None
+    return _do_arquivo("atos_por_evento", total, "atos", total, "Defesa Civil nacional (atos de emergência)",
+                       "o arquivo de atos não traz o tipo de evento", por_evento=por_evento)
+
+
+def _carta(lista, ident):
+    return next((c for c in (lista or []) if c.get("id") == ident), None)
+
+
+def acumulado_do_topo_financeiro(ident, fin, id_topo, motivo_vazio):
+    c = _carta(fin.get("topo"), id_topo) or {}
+    return _do_arquivo(ident, c.get("valor"), "reais", c.get("n_atos"), c.get("fonte") or "Portal da Transparência",
+                       motivo_vazio, periodo=c.get("periodo"))
+
+
+def acumulado_capitais(cartoes):
+    c = _carta(cartoes, "capitais_com_plano") or {}
+    return _do_arquivo("capitais_com_plano", c.get("valor"), "capitais", 27,
+                       "MARÉ Legal (planos de contingência das capitais)",
+                       c.get("nota") or "sem leitura das capitais até o corte")
+
+
+def acumulados(corte, focos_ref, municipios, fin, por_uf, cartoes) -> list:
+    saude_fontes = {
+        "dengue": ("dengue.json", "notificações", "Ministério da Saúde (Sinan), semanas fechadas"),
+        "chikungunya": ("chikungunya.json", "notificações", "Ministério da Saúde (Sinan), semanas fechadas"),
+        "srag": ("srag.json", "internações", "Ministério da Saúde (SIVEP-Gripe), semanas fechadas"),
+        "diarreia": ("diarreias.json", "atendimentos", "SUS (SISAB), meses fechados"),
+        "leptospirose": ("leptospirose.json", "casos", "Ministério da Saúde (SINAN), meses fechados"),
+    }
+    lista = [acumulado_focos(focos_ref, corte), acumulado_planos(municipios, corte),
+             acumulado_inmet(corte),
+             acumulado_decretos(por_uf), acumulado_reconhecidos(por_uf), acumulado_pessoas(por_uf),
+             acumulado_atos_por_evento(por_uf), acumulado_capitais(cartoes),
+             acumulado_do_topo_financeiro("anunciado_em_atos", fin, "anunciado_atos",
+                                          "o texto das medidas não traz valor anunciado"),
+             acumulado_do_topo_financeiro("desembolsado", fin, "pago_ate_agora",
+                                          "a execução da despesa não traz o acumulado"),
+             acumulado_do_topo_financeiro("autorizado_defesa_civil", fin, "autorizado_defesa_civil",
+                                          "a soma por município ainda não fechou com o total publicado"),
+             acumulado_do_topo_financeiro("repasses_sus_emergencia", fin, "repasses_sus",
+                                          "os repasses de emergência do SUS não estão no derivado")]
+    for ident, (arq, unid, fonte) in saude_fontes.items():
+        lista.append(acumulado_saude(ident, arq, corte, unid, fonte))
+    return lista + acumulado_ufs_acima(corte)
 
 
 # ── os cartões ──────────────────────────────────────────────────────────────────────────────
@@ -617,7 +755,7 @@ def montar(corte: date) -> dict:
     }
     sem_dado = [c["rotulo"] for c in cartoes if c["sem_coleta"]]
     return {
-        "acumulado": acumulados(corte, ler("focos_referencia.json", {}) or {}, municipios),
+        "acumulado": acumulados(corte, ler("focos_referencia.json", {}) or {}, municipios, fin, por_uf, cartoes),
         "_governanca":
             "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. "
             "02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página "
@@ -805,6 +943,15 @@ def autoteste() -> int:
     checar("acumulado de focos soma só desde 29/06 e declara os dias", _f["valor"] == 10 and _f["n"] == 2 and _f["periodo_inicio"] == "2026-06-29")
     checar("acumulado sem série é lacuna, nunca zero", acumulado_focos({}, date(2026, 7, 1))["sem_coleta"] is True)
     checar("acumulado de planos conta só 'plano'", acumulado_planos([{"categoria": "plano"}, {"categoria": "nao_verificado"}], date(2026, 7, 1))["valor"] == 1)
+    _sem = {"periodo": "semana", "parcial": ["2026-29"], "serie": {"BR": {"2026-26": 9, "2026-27": 5, "2026-28": 6, "2026-29": 7}}}
+    checar("janela de semanas: a que contém 29/06 entra, a parcial fica fora",
+           [p for p, _, _ in _janela_fechada(_sem, date(2026, 7, 20))] == ["2026-26", "2026-27", "2026-28"])
+    _mes = {"periodo": "mes", "parcial": ["2026-08"], "serie": {"BR": {"2026-06": 1, "2026-07": 2, "2026-08": 3}}}
+    checar("janela de meses: junho não é mês fechado desde 29/06",
+           [p for p, _, _ in _janela_fechada(_mes, date(2026, 9, 1))] == ["2026-07"])
+    checar("número sem fonte no arquivo é lacuna declarada, nunca zero",
+           _do_arquivo("x", None, "u", None, "f", "motivo")["sem_coleta"] is True
+           and _do_arquivo("x", None, "u", None, "f", "motivo")["motivo"] == "motivo")
     checar("todo não calculável declara o motivo",
            all(x.get("por_que_nao") for x in NAO_CALCULAVEIS))
 
