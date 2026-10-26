@@ -7,6 +7,8 @@ Quatro consultas por município, todas a APIs públicas, sem login, sem LAI, sem
   S16  Wayback Machine (CDX)     cópias arquivadas do domínio da prefeitura com plano/PLANCON no endereço
   S25  Common Crawl (índice)     o mesmo, no índice de rastreio aberto; o arquivo só se baixa da origem
   S29  dados.gov.br (CKAN)       conjuntos de dados que citam o plano do município
+  S27  hospedagem de documentos  Scribd, Issuu, Calameo, Yumpu, DocPlayer, SlideShare (pelo metabuscador, 26/10/2026)
+  S24  planos conexos            PMRR, saneamento, plano de saúde, consórcio, comitê (pelo metabuscador, 26/10/2026)
 
 Disciplina: cliente identificado, robots e Crawl-delay pela `buscar_uma_vez`, pausa por host, e
 401/403/429/451 ou muro de robô são RECUSA registrada (nunca retentativa). Resposta que não se
@@ -148,6 +150,56 @@ def cita(texto: str, nome: str) -> bool:
     return bool(re.search(rf"\b{re.escape(n)}\b", t))
 
 
+# ---- S27 e S24: o metabuscador da válvula (SearXNG), filtrado por endereço e por texto ------------
+HOSPEDAGENS = ("scribd.com", "issuu.com", "calameo.com", "yumpu.com", "docplayer.com.br", "slideshare.net")
+INSTITUCIONAIS = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br", ".tc.br")
+PADRAO_CONEXO = re.compile(r"redu[cç][aã]o de risco|pmrr|saneamento b[aá]sico|plano municipal de sa[uú]de|cons[oó]rcio|comit[eê] de bacia", re.I)
+
+
+def consulta_hospedagem(nome: str, uf: str) -> str:
+    sites = " OR ".join(f"site:{h}" for h in HOSPEDAGENS)
+    return f'"{nome}" {uf} "plano de contingência" "defesa civil" ({sites})'
+
+
+def consulta_conexos(nome: str, uf: str) -> str:
+    return (f'"{nome}" {uf} ("redução de riscos" OR PMRR OR "saneamento básico" OR "plano municipal de saúde" '
+            f'OR consórcio OR "comitê de bacia") "plano de contingência"')
+
+
+def _host(url: str) -> str:
+    return (urllib.parse.urlparse(url).netloc or "").lower().split(":")[0]
+
+
+def ler_web(dados: dict, nome: str, hospedagem: bool) -> list:
+    """Resultados do metabuscador que servem à fonte. Pura. Levanta se o corpo não é resposta do SearXNG;
+    `results` vazio devolve [] e quem chama decide (zero bruto não é ausência: o motor pode estar barrando, §186).
+    S27: o endereço é de uma hospedagem e o município e o plano aparecem no título ou no trecho.
+    S24: o endereço é institucional, o município e um termo conexo aparecem, e o plano é citado."""
+    if not isinstance(dados, dict) or not isinstance(dados.get("results"), list):
+        raise ValueError("resposta do metabuscador sem `results`")
+    saida = []
+    for r in dados["results"]:
+        url, titulo = r.get("url") or "", (r.get("title") or "").strip()
+        texto = f"{titulo} {r.get('content') or ''}"
+        h = _host(url)
+        if not url or not cita(texto + " " + url.replace("-", " ").replace("_", " "), nome):
+            continue
+        if hospedagem:
+            ok = any(h == d or h.endswith("." + d) for d in HOSPEDAGENS) and PADRAO_PLANO.search(texto)
+        else:
+            ok = h.endswith(INSTITUCIONAIS) and PADRAO_CONEXO.search(texto) and PADRAO_PLANO.search(texto)
+        if ok and url not in [u for u, _ in saida]:
+            saida.append((url, titulo or url))
+    return saida
+
+
+def buscar_web(consulta: str) -> dict:
+    """Uma consulta ao metabuscador com o ritmo e o disjuntor de `monitorar_busca_web` (intervalo com jitter)."""
+    import monitorar_busca_web as mw
+    time.sleep(mw.espera_do_ritmo(0))
+    return mw.buscar_searxng(consulta)
+
+
 def classificar_erro(e: Exception) -> tuple:
     """(situacao, motivo): recusa de fonte se respeita e nomeia; o resto é `erro`, não ausência."""
     if isinstance(e, urllib.error.HTTPError):
@@ -190,7 +242,7 @@ def sem_dominio(tentativas: list) -> tuple:
     return "dominio_nao_verificado", "tentados: " + "; ".join(f"{d} {m}" for d, _, m in tentativas)[:400]
 
 
-def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: None, api_cc=None, lacunas=lambda *a, **k: None) -> dict:
+def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: None, api_cc=None, lacunas=lambda *a, **k: None, web=None) -> dict:
     """{fonte: {situacao, consulta, pistas:[...]}}; nunca levanta. `situacao`: lido, sem_resultado,
     recusa_de_fonte, erro, dominio_nao_verificado."""
     out, dominio, tentativas = {}, None, []
@@ -202,7 +254,13 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
             if f in ("S16", "S25") and not dominio:
                 r["situacao"], r["motivo"] = sem_dominio(tentativas)
             else:
-                if f == "S16":
+                if f in ("S27", "S24"):
+                    r["consulta"] = (consulta_hospedagem if f == "S27" else consulta_conexos)(nome, uf)
+                    dados = (web or buscar_web)(r["consulta"])
+                    if isinstance(dados, dict) and dados.get("results") == []:
+                        raise ValueError("metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência")
+                    achados = ler_web(dados, nome, f == "S27")
+                elif f == "S16":
                     r["consulta"] = consulta_wayback(dominio); achados = ler_wayback(buscar(r["consulta"], 60))
                 elif f == "S25":
                     api = api_cc or indice_common_crawl(buscar("https://index.commoncrawl.org/collinfo.json", 30))
@@ -356,6 +414,12 @@ def autoteste() -> int:
             "i/c2": cc, "lexml": sru, "dados.gov.br": ckan, "alfa.xx.gov.br": home}   # a home por último: as consultas citam o domínio
     um = lambda fontes, r=base: consultar_municipio("Alfa", "XX", "9999999", fontes, falso(r), "2026-10-22", lacunas=lambda *a, **k: lac.append(a))
     lac = []
+    web_ok = {"results": [
+        {"url": "https://pt.scribd.com/document/1/PLANCON-de-Alfa", "title": "PLANCON de Alfa - Defesa Civil", "content": "Plano de contingência do município de Alfa"},
+        {"url": "https://issuu.com/x/docs/outro", "title": "Revista de Beta", "content": "plano de contingência de Beta"},
+        {"url": "https://alfa.xx.gov.br/pmrr.pdf", "title": "PMRR de Alfa", "content": "plano municipal de redução de riscos; plano de contingência de Alfa"},
+        {"url": "https://blog.com/alfa", "title": "Alfa", "content": "plano de contingência e saneamento básico de Alfa"}]}
+    web = lambda r=web_ok: (lambda q: r if not isinstance(r, Exception) else (_ for _ in ()).throw(r))
     todas = um(["S16", "S25", "S13", "S29"])
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escrita_proibida = re.compile(r"gravar\(\s*['\"](estados|saude_uf|municipios|indice|monitor_saude)\.json")
@@ -380,6 +444,15 @@ def autoteste() -> int:
             um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "recusa_de_fonte"
             and um(["S16"], {"//www.alfa.xx.gov.br": b"<html>outra</html>", **{k: v for k, v in base.items() if k != "alfa.xx.gov.br"}, "//alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "dominio_nao_verificado"
             and "alfa.xx.gov.br" in um(["S16"], {**base, "alfa.xx.gov.br": OSError("dns")})["S16"]["motivo"]),
+        "S27: só hospedagem que cita o município e o plano; endereço de outro município ou fora da lista não entra": lambda: ler_web(web_ok, "Alfa", True) == [("https://pt.scribd.com/document/1/PLANCON-de-Alfa", "PLANCON de Alfa - Defesa Civil")] and ler_web(web_ok, "Beta", True) == [("https://issuu.com/x/docs/outro", "Revista de Beta")],
+        "S24: só endereço institucional com termo conexo e plano; blog e hospedagem ficam de fora": lambda: ler_web(web_ok, "Alfa", False) == [("https://alfa.xx.gov.br/pmrr.pdf", "PMRR de Alfa")],
+        "S27 e S24: consulta registrada e pista com as travas de campo": lambda: (lambda r: all(r[f]["situacao"] == "lido" and r[f]["consulta"] and r[f]["pistas"][0]["promovivel"] is False and r[f]["pistas"][0]["documento_oficial_confirmado"] is None for f in r))(consultar_municipio("Alfa", "XX", "9999999", ["S27", "S24"], falso({}), "2026-10-26", web=web())),
+        "S27: resultado bruto vazio é erro (motor barrando), nunca sem_resultado; filtrado a zero é sem_resultado": lambda: (
+            consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": []}))["S27"]["situacao"] == "erro"
+            and consultar_municipio("Gama", "XX", "9999999", ["S27"], falso({}), "d", web=web())["S27"]["situacao"] == "sem_resultado"),
+        "S27: corpo que não é resposta do metabuscador e 429 são erro/recusa, não ausência": lambda: (
+            consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"x": 1}))["S27"]["situacao"] == "erro"
+            and consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web(urllib.error.HTTPError("u", 429, "x", {}, None)))["S27"]["situacao"] == "recusa_de_fonte"),
         "trava estrutural: o fonte não grava nos arquivos do índice": lambda: not escrita_proibida.search(fonte),
         "recusa e erro viram lacuna declarada": lambda: (lac.clear(), um(["S13"], {**base, "lexml": urllib.error.HTTPError("u", 429, "x", {}, None)}), len(lac) == 1)[2],
         "401 e 451 também são recusa": lambda: all(classificar_erro(urllib.error.HTTPError("u", c, "x", {}, None))[0] == "recusa_de_fonte" for c in (401, 429, 451)),
@@ -437,7 +510,7 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     if "--alvos" not in sys.argv:
-        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29] [--limite N] [--uf SP]")
+        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29,S27,S24] [--limite N] [--uf SP]")
         return 1
     arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
     fontes = [f.strip().upper() for f in (arg("--fontes") or "S13,S16,S25,S29").split(",") if f.strip()]

@@ -140,7 +140,7 @@ Atualizado em 26/10/2026.
 | `migrar_saude_instrumentos.py` | — | — | — | 3 | não |
 | `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
-| `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 4 | não |
+| `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 5 | não |
 | `monitorar_imprensa_regional.py` | — | — | — | 7 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
