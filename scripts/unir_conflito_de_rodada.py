@@ -164,15 +164,58 @@ FILAS_DE_PISTA = (
 )
 
 
+# Decisão da central (25/10/2026, item 7): quando os dois lados mudaram o MESMO campo para valores
+# diferentes, a regra é por campo, e nenhum campo é escolhido ao acaso.
+#   juiz            vence o veredito de `julgado_em` mais recente; o outro vai para `juiz_historico`.
+#   juiz_historico  união dos dois lados (nada se perde).
+#   rejeitada_em    vence a data mais antiga (a primeira rejeição).
+#   busca_web_espera e cursor*  vence o lado da `main` (estado de fila, não registro).
+# Campos derivados do arquivo (`caracteres`, `sha256`) são recalculados do arquivo, nunca escolhidos:
+# nesta função não há o arquivo, então recusam e o resolvedor deixa o caso para a recalculagem.
+_CAMPOS_DO_ARQUIVO = ("caracteres", "sha256")
+
+
+def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list):
+    """Valor vencedor do campo mudado nos dois lados. `perdidos` recebe o veredito que perdeu."""
+    if campo == "juiz" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
+        nos_em, eles_em = str(nosso_v.get("julgado_em") or ""), str(deles_v.get("julgado_em") or "")
+        if nos_em == eles_em:
+            raise Recusa("veredito do juiz diferente nos dois lados com a mesma data de julgamento")
+        vence, perde = (nosso_v, deles_v) if nos_em > eles_em else (deles_v, nosso_v)
+        perdidos.append(perde)
+        return vence
+    if campo == "juiz_historico" and isinstance(nosso_v, list) and isinstance(deles_v, list):
+        return _unir_listas(nosso_v, deles_v)
+    if campo == "rejeitada_em" and isinstance(nosso_v, str) and isinstance(deles_v, str):
+        return min(nosso_v, deles_v)     # ISO: a menor data é a primeira rejeição
+    if campo == "busca_web_espera" or campo.startswith("cursor"):
+        return nosso_v                   # lado da `main`: estado de fila
+    if campo in _CAMPOS_DO_ARQUIVO:
+        raise Recusa(f"campo derivado do arquivo {campo!r} muda nos dois lados: recalcular do arquivo")
+    raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
+                 f"diferentes — qual vence é política, e este script não adivinha")
+
+
+def _unir_listas(a: list, b: list) -> list:
+    vistos, out = set(), []
+    for x in (*a, *b):
+        k = json.dumps(x, sort_keys=True, ensure_ascii=False)
+        if k not in vistos:
+            vistos.add(k)
+            out.append(x)
+    return out
+
+
 def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
-    """A pista com os campos dos dois lados. Levanta `Recusa` no conflito real. Função pura.
+    """A pista com os campos dos dois lados. Levanta `Recusa` só onde a regra de rodada não decide.
 
     A regra: parte-se da base e aplica-se o que cada lado MUDOU em relação a ela. Campo que só um
     lado tocou entra. Campo que os dois tocaram para o MESMO valor entra. Campo que os dois tocaram
-    para valores DIFERENTES é a pergunta que ninguém decidiu — recusa.
+    para valores DIFERENTES segue `_politica_do_campo` (decisão da central, 25/10/2026).
     """
     b = dict(base or {})
     fora = dict(b)
+    perdidos = []
     for campo in sorted(set(dict(nossa or {})) | set(dict(delas or {}))):
         na_base = b.get(campo, _AUSENTE)
         nosso_v = (nossa or {}).get(campo, _AUSENTE)
@@ -180,13 +223,17 @@ def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
         nos_mudou = nosso_v != na_base
         eles_mudou = deles_v != na_base
         if nos_mudou and eles_mudou and nosso_v != deles_v:
-            raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
-                         f"diferentes — qual vence é política, e este script não adivinha")
-        escolhido = nosso_v if nos_mudou else (deles_v if eles_mudou else na_base)
+            if _AUSENTE in (nosso_v, deles_v):
+                raise Recusa(f"o campo {campo!r} foi removido de um lado e mudado no outro")
+            escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos)
+        else:
+            escolhido = nosso_v if nos_mudou else (deles_v if eles_mudou else na_base)
         if escolhido is _AUSENTE:
             fora.pop(campo, None)
         else:
             fora[campo] = escolhido
+    if perdidos:
+        fora["juiz_historico"] = _unir_listas(fora.get("juiz_historico") or [], perdidos)
     return fora
 
 
@@ -988,6 +1035,26 @@ def autoteste() -> int:
         checar("F58: livro de fontes une as consultas dos dois lados; nível não rebaixa",
                [x["fonte"] for x in m.get("fontes", [])] == ["DOU", "Busca web", "QD"]
                and m.get("nivel_verificacao") == "estadual" and m.get("ultima_verificacao") == "2026-10-15")
+
+    # 25/10/2026 (decisão da central, item 7): a regra por campo, caso a caso.
+    base = {"id": 1, "juiz": None, "busca_web_espera": "a", "rejeitada_em": "2026-10-10"}
+    nos = dict(base, juiz={"promove": False, "julgado_em": "2026-10-20"}, rejeitada_em="2026-10-12",
+               busca_web_espera="a2")
+    dele = dict(base, juiz={"promove": True, "julgado_em": "2026-10-24"}, rejeitada_em="2026-10-11",
+                busca_web_espera="b")
+    m = _mesclar_pista(base, nos, dele)
+    checar("regra 7: juiz vence o veredito de julgado_em mais recente", m["juiz"]["promove"] is True)
+    checar("regra 7: o veredito que perdeu vai para juiz_historico (nada se perde)",
+           m.get("juiz_historico") == [{"promove": False, "julgado_em": "2026-10-20"}])
+    checar("regra 7: rejeitada_em vence a data mais antiga", m["rejeitada_em"] == "2026-10-11")
+    checar("regra 7: busca_web_espera (estado de fila) vence o lado da main", m["busca_web_espera"] == "a2")
+    try:
+        _mesclar_pista(base, dict(base, juiz={"x": 1, "julgado_em": "2026-10-24"}),
+                       dict(base, juiz={"x": 2, "julgado_em": "2026-10-24"}))
+        recusou = False
+    except Recusa:
+        recusou = True
+    checar("regra 7: juiz com mesma data nos dois lados é recusado, não adivinhado", recusou)
 
     if falhas:
         print(f"\n✗ UNIÃO DE CONFLITO: {len(falhas)} falha(s).")
