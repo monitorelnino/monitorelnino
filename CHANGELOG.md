@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.
 
+## 2026-10-26 · #1206 · Portões: o contador de resposta passa a morar no runtime da inicial
+
+`verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.
+
 ## 2026-10-26 · Buscador 2: o reprocessamento grava a cada 200 URLs
 
 `seguir_pistas.py --reprocessar` passa a gravar em blocos de 200 URLs abertas e para com o prazo do elo sem perder o bloco em curso. Antes, o lote de 2.000 da válvula só gravava no fim. Linhas líquidas: +27/−6.
