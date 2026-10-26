@@ -42,6 +42,11 @@
       ponha('numValor_decretaram', N.n_municipios != null ? fmt(N.n_municipios) : lacuna());
       if (N.reconhecidos != null) ponha('numValor_reconhecidos', fmt(N.reconhecidos));
       else ponha('numValor_reconhecidos', lacuna());
+      // A resposta do prazo de reconhecimento traz os números de hoje, do derivado de data/resposta.
+      if (cat && pr && pr.p25 != null) cat.pronto.then(() => {
+        const el = document.querySelector('[data-conteudo="imprensa.ler.emergencias.4.resposta"]');
+        if (el) el.textContent = cat.texto('imprensa.ler.emergencias.4.resposta', { n: N.reconhecidos, p25: pr.p25, p75: pr.p75, p90: pr.p90 });
+      });
       if (pr && pr.p25 != null) {
         ponha('numPer_reconhecidos', preenche(txtDoCatalogo('imprensa.numeros.reconhecidos.periodo', ''),
           { p25: fmt(pr.p25), p75: fmt(pr.p75) }));
