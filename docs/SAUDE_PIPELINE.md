@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-17 a 2026-10-25 (2048 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-17 a 2026-10-26 (2050 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
