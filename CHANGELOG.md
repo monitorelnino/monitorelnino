@@ -9,9 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-26 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
+## 2026-10-26 · #1211 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
 
 No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.
+## 2026-10-26 · Buscador 2: o reprocessamento grava a cada 200 URLs
+
+`seguir_pistas.py --reprocessar` passa a gravar em blocos de 200 URLs abertas e para com o prazo do elo sem perder o bloco em curso. Antes, o lote de 2.000 da válvula só gravava no fim. Linhas líquidas: +27/−6.
 
 ## 2026-10-26 · Buscador 2: a busca de pistas reconstruída
 
