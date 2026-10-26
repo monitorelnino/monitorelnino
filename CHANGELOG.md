@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · #1171 · Ar medido: dias seguidos acima da OMS por capital
+
+A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz "sem credencial". Peso zero, sinal físico. Linhas: +102/−1.
+
 ## 2026-10-26 · A3 · Busca de planos: capital que recusa o acesso é recusa nomeada, não "domínio não verificado"
 
 Wayback e Common Crawl marcavam "domínio não verificado" quando todos os endereços da prefeitura davam 403 ou muro de robô. Agora, se nenhum endereço respondeu e algum recusou, a situação é `recusa_de_fonte` com o endereço e o código; senão fica "não verificado", com os endereços tentados no motivo. Autoteste novo; nada contornado. Origem: `buscar_planos_fontes_abertas.py`.
