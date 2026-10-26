@@ -23,26 +23,86 @@
     "sinais"
    ],
    "cartoes": [
-    "decretaram",
-    "reconhecidos",
-    "pessoas_sob_decreto",
-    "atos_por_evento",
-    "capitais_com_plano",
-    "plano_localizado",
-    "dengue",
-    "chikungunya",
-    "srag",
-    "diarreia",
-    "leptospirose",
-    "ufs_acima_faixa",
-    "ufs_plano_saude",
-    "anunciado",
-    "desembolsado",
-    "autorizado_defesa",
-    "repasses_sus",
-    "focos",
-    "dias_aviso",
-    "cidades_oms"
+    {
+     "id": "decretaram",
+     "valor_el": "numValor_decretaram"
+    },
+    {
+     "id": "reconhecidos",
+     "valor_el": "numValor_reconhecidos"
+    },
+    {
+     "id": "pessoas_sob_decreto",
+     "valor_el": "numValor_pessoas_sob_decreto"
+    },
+    {
+     "id": "atos_por_evento",
+     "valor_el": "numValor_atos_por_evento"
+    },
+    {
+     "id": "capitais_com_plano",
+     "valor_el": "numValor_capitais_com_plano"
+    },
+    {
+     "id": "plano_localizado",
+     "valor_el": "numValor_plano_localizado"
+    },
+    {
+     "id": "dengue",
+     "valor_el": "numValor_dengue"
+    },
+    {
+     "id": "chikungunya",
+     "valor_el": "numValor_chikungunya"
+    },
+    {
+     "id": "srag",
+     "valor_el": "numValor_srag"
+    },
+    {
+     "id": "diarreia",
+     "valor_el": "numValor_diarreia"
+    },
+    {
+     "id": "leptospirose",
+     "valor_el": "numValor_leptospirose"
+    },
+    {
+     "id": "ufs_acima_faixa",
+     "valor_el": "numValor_ufs_acima_faixa"
+    },
+    {
+     "id": "ufs_plano_saude",
+     "valor_el": "numValor_ufs_plano_saude"
+    },
+    {
+     "id": "anunciado",
+     "valor_el": "numValor_anunciado"
+    },
+    {
+     "id": "desembolsado",
+     "valor_el": "numValor_desembolsado"
+    },
+    {
+     "id": "autorizado_defesa",
+     "valor_el": "numValor_autorizado_defesa"
+    },
+    {
+     "id": "repasses_sus",
+     "valor_el": "numValor_repasses_sus"
+    },
+    {
+     "id": "focos",
+     "valor_el": "numValor_focos"
+    },
+    {
+     "id": "dias_aviso",
+     "valor_el": "numValor_dias_aviso"
+    },
+    {
+     "id": "cidades_oms",
+     "valor_el": "numValor_cidades_oms"
+    }
    ]
   },
   {
@@ -51,8 +111,12 @@
    "tipo": "indices",
    "grade": ".grade-figuras--2",
    "cartoes": [
-    "legal",
-    "saude"
+    {
+     "id": "legal"
+    },
+    {
+     "id": "saude"
+    }
    ]
   },
   {
@@ -83,9 +147,15 @@
    "tipo": "cartoes",
    "grade": ".grade-figuras--3",
    "cartoes": [
-    "como",
-    "figuras",
-    "erratas"
+    {
+     "id": "como"
+    },
+    {
+     "id": "figuras"
+    },
+    {
+     "id": "erratas"
+    }
    ]
   }
  ],
