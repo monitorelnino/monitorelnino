@@ -36,6 +36,29 @@
    "motivo": "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes"
   },
   {
+   "id": "estados_plano_saude",
+   "valor": 4,
+   "unidade": "estados",
+   "periodo_inicio": null,
+   "periodo_fim": "2026-10-26",
+   "n": 27,
+   "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
+   "sem_coleta": false,
+   "motivo": null,
+   "denominador": 27
+  },
+  {
+   "id": "cidades_acima_limite_oms",
+   "valor": null,
+   "unidade": "cidades",
+   "periodo_inicio": "2026-06-29",
+   "periodo_fim": "2026-10-26",
+   "n": 0,
+   "fonte": "Série diária de temperatura por município",
+   "sem_coleta": true,
+   "motivo": "a série diária por município não está publicada no arquivo até o corte"
+  },
+  {
    "id": "municipios_decretaram",
    "valor": 988,
    "unidade": "municípios",
