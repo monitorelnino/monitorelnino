@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-26 · #1201 · Cadastro prioritários: sai o portal do MDR como rota
 
 Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.
+## 2026-10-26 · Cores oficiais do IQAr (pedido da editoria)
+
+As cinco faixas do IQAr passam a usar as cores das fontes indicadas pela editoria (IEMA-ES, relatório do INPE e boletim Vigiar n.º 4 da SES-DF): Boa #4da42d, Moderada #f7d400, Ruim #ed8925, Muito ruim #cb0912 e Péssima #950060. Os valores estão em `assets/tokens.css` e `assets/mapas.js`, os dois únicos lugares com hexadecimal. Os cortes dos dados não mudam. Linhas líquidas: +5/−5.
 
 ## 2026-10-26 · Vocabulário proibido: uma régua
 
