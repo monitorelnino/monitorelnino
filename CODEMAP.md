@@ -27,6 +27,7 @@ Atualizado em 25/10/2026.
 | `saude.html` | saude.html | `AC.json`, `AL.json`, `AM.json`, `AP.json`, `BA.json`, `CE.json` (+97) | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js` | — | não |
 | `assets/acesso.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | `publicacao.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
 | `assets/js/blog.js` | blog.html, mudancas.html | `blog/posts.json` | `verificar_acessibilidade.js`, `verificar_estrutura.js` | — | não |
+| `assets/js/busca-lista.js` | — | — | — | — | não |
 | `assets/catalogo.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
 | `assets/colunas.js` | blog.html, defesa-civil.html, financiamento.html, imprensa.html, index.html, monitor-de-riscos.html, mudancas.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
 | `assets/js/consulta-municipio.js` | defesa-civil.html, financiamento.html, index.html, monitor-de-riscos.html, prefeituras.html, proteja-se.html, saude.html | — | `verificar_acessibilidade.js`, `verificar_estrutura.js`, `verificar_publicado_navegador.js`, `verificar_regras_de_dado.py` | — | não |
@@ -160,7 +161,6 @@ Atualizado em 25/10/2026.
 | `scripts/deduplicar_fila_de_pistas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_rejeitadas.json`, `pistas_sinais.json` | — | — | não |
 | `scripts/diagnosticar_querido_diario.py` | — | `atos_resposta.json`, `municipios_ibge_referencia.json` | — | — | não |
 | `scripts/ensaio_da_noite.py` | — | `clima.json`, `outro.json` | — | — | não |
-| `scripts/estrutura_desfechos.py` | — | `outro/x.json` | — | — | não |
 | `scripts/fechar_saude.py` | — | `saude_fechamento.json` | — | — | não |
 | `scripts/fila_do_juiz_querido_diario.py` | — | `fila_qd_169.json` | — | — | não |
 | `scripts/gerar_boletim.py` | — | `blog/boletim_mais_recente.json` | — | — | não |

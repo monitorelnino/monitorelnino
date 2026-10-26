@@ -975,7 +975,7 @@ def _casos_semana() -> list:
 # ─────────────────────── âncoras internas (01/10/2026; JS desde 16/10) ───────────────────────
 # `href="pagina.html#ancora"` (e `href="#ancora"`) em página ou script de assets/js/ tem de achar um
 # `id` no destino: o navegador acusa arquivo morto, mas abre no topo quando o `id` não existe. A
-# seção "Como os recursos chegam" de "Para gestores" é só ponteiro para o Financiamento.
+# (até #1132, a seção "Como os recursos chegam" de "Para gestores" era só ponteiro para o Financiamento.)
 PADRAO = ["prefeituras.html", "financiamento.html"]   # o par cuja sincronia dá razão à regra (CODEMAP)
 RE_LINK = re.compile(r'href="([^"#]*)#([^"]+)"')
 RE_ID = re.compile(r'\sid="([^"]+)"')
@@ -1025,8 +1025,12 @@ def _casos_ancoras() -> list:
     nao = lambda a: None
     em_pagina = lambda html: problemas_ancoras(dict(pg, **{"c.html": html}), {}, nao)
     em_js = lambda js: problemas_ancoras(pg, {"s.js": js}, nao)
-    citadas = {a for arq, a in RE_LINK.findall((RAIZ / "prefeituras.html").read_text(encoding="utf-8"))
-               if arq == "financiamento.html"}
+    # Os links do Para gestores vivem no catálogo (conteudo/prefeituras.json), não no HTML estático.
+    def _textos(o):
+        return [o] if isinstance(o, str) else [s for v in (o.values() if isinstance(o, dict) else o if isinstance(o, list) else []) for s in _textos(v)]
+    catalogo = json.loads((RAIZ / "conteudo/prefeituras.json").read_text(encoding="utf-8"))
+    texto_pref = (RAIZ / "prefeituras.html").read_text(encoding="utf-8") + " ".join(_textos(catalogo))
+    citadas = {a for arq, a in RE_LINK.findall(texto_pref) if arq == "financiamento.html"}
     return [
         ("âncoras que existem passam", problemas_ancoras(pg, {}, nao) == []),
         ("âncora para id inexistente reprova", len(em_pagina('<a href="b.html#nao">x</a>')) == 1),
@@ -1038,8 +1042,8 @@ def _casos_ancoras() -> list:
          len(em_js('h=`<a href="#nao-existe">x</a>`')) == 1),
         ("link do JS com id que existe na página que o carrega passa", em_js('<a href="#x">') == []),
         ("destino montado por variável não é literal", em_js('<a href="#${id}">') == []),
-        ("o Para gestores cita as três âncoras do Financiamento, e elas existem",
-         citadas == {"antes", "depois", "caminhos"}
+        ("o Para gestores cita as duas âncoras do Financiamento (antes e depois), e elas existem",
+         citadas == {"antes", "depois"}
          and citadas <= set(RE_ID.findall((RAIZ / "financiamento.html").read_text(encoding="utf-8")))),
         ("o link do cartão da cidade é lido no JS",
          ("", "formulario") in RE_LINK.findall((RAIZ / "assets/js/index.js").read_text(encoding="utf-8"))),

@@ -11,6 +11,67 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-25 · D · Suíte de mutação dos portões
+
+`scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.
+## 2026-10-25 · #1149 · Juiz de saúde: o ente municipal também se lê no título do ato
+
+A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.
+
+## 2026-10-25 · #1150 · Busca de planos em paralelo por host
+
+A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.
+
+## 2026-10-25 · #1147 · Fila de descoberta reentrante
+
+A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.
+
+## 2026-10-25 · #1144 · Blog: link para a metodologia
+
+O aviso do blog ganha o link "Como os textos são produzidos", apontando para a seção da METODOLOGIA (PDF). Texto do link no catálogo (`blog.metodologia.link`).
+
+
+
+## 2026-10-25 · B3 · Defesa civil: prazo mediano no lugar do cartão de 30 dias
+O sexto cartão do topo passa a mostrar o prazo mediano entre decreto e reconhecimento, medido em `data/resposta/por_uf.json` (METODOLOGIA §32.6), com o mesmo componente. Sai a contagem de 30 dias, retirada pela A2 em #1137. Remove o campo `dias_sem_reconhecimento` da página e do verificador de runtime.
+## 2026-10-25 · #1146 · Remove o módulo duplicado de estrutura dos desfechos
+
+`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.
+## 2026-10-25 · #1145 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF
+
+`municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.
+## 2026-10-25 · #1142 · Imprensa: acumulados do ciclo, uma função por número
+
+`data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.
+
+
+## 2026-10-25 · #1141 · Imprensa: variantes do componente
+
+Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.
+
+## 2026-10-25 · #1133 · Defesa civil: escala menor só no topo
+
+Os seis cartões do topo da Defesa civil passam à escala menor pedida pela editoria (24/10): regra `.dc-topo .cartao-numero` e `.dc-topo .cartao-numero-valor` em `assets/base.css`, sem classe nova. Os demais cartões de número (Imprensa, Proteja-se, Saúde, Monitor de riscos) não mudam. Linhas líquidas: +4/−0.
+## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
+
+Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.
+
+## 2026-10-25 · #1140 · Blog: índice com o texto mais recente
+
+O blog passa a índice, conforme o mockup aprovado pela editoria: aviso de autoria, o texto mais recente de qualquer editoria em destaque e, abaixo, uma coluna por editoria (Legal e financiamento às segundas, Saúde às quintas). Cada texto segue no seu endereço permanente. Entram os textos aprovados de 25/10, 04/10 e 06/10; sai o rascunho de 29/10. Contrato e catálogo atualizados.
+
+## 2026-10-25 · #1137 · Prazo de reconhecimento medido, sem régua de 30 dias
+
+Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o intervalo entre o decreto e a portaria de reconhecimento (`dias_ate_reconhecimento`) e publica mediana e faixa por UF e no país (`prazo_reconhecimento`). Saem o sexto cartão do topo da Defesa civil e os campos de 30 dias do funil de financiamento. METODOLOGIA §32.6.
+
+## 2026-10-25 · #1134 · Blog: como os textos são produzidos
+
+METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.
+
+## 2026-10-25 · #1138 · Main verde: links do Para gestores lidos do catálogo
+
+O autoteste de âncoras reprovava a main desde o #1132, que moveu os links do Para gestores para o catálogo. Correção na origem: o passo "Antes da emergência" aponta para `financiamento.html#antes`, e o autoteste lê o catálogo e espera as âncoras `antes` e `depois`. Código +7/−4.
+
 ## 2026-10-25 · #1132 · Para gestores: sai "Como os recursos chegam"; os dois caminhos vão ao passo 6
 
 A seção #recursos sai de prefeituras.html. O passo 6 "Buscar os recursos" passa a ter os dois caminhos: antes da emergência e depois do reconhecimento federal, com link para o Financiamento. Texto no catálogo; sem CSS novo.

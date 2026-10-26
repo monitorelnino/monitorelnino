@@ -1,0 +1,67 @@
+{
+ "_doc": "Mutações que a suíte tem de pegar. 'pegam' = trechos de comando do portoes.yml dos quais ao menos um tem de reprovar com a mutação aplicada; trecho que não casa nenhum comando = cobertura perdida (fusão ou remoção sem repor). Uma mutação por defeito real que o portão existe para pegar.",
+ "mutacoes": [
+  {
+   "id": "semana_epidemiologica",
+   "arquivo": "conteudo/saude.json",
+   "trocar": [
+    "\"estados com ao menos um município em nível 3 ou 4\"",
+    "\"semana epidemiológica de estados com ao menos um município em nível 3 ou 4\""
+   ],
+   "pegam": [
+    "verificar_texto_publico.js"
+   ]
+  },
+  {
+   "id": "hex_fora_dos_tokens",
+   "arquivo": "index.html",
+   "anexar": "\n<p style=\"color:#123456\">x</p>\n",
+   "pegam": [
+    "verificar_estrutura.js",
+    "verificar_consistencia_visual.js"
+   ]
+  },
+  {
+   "id": "sem_title",
+   "arquivo": "index.html",
+   "trocar": [
+    "<title>MARÉ · Monitor de Antecipação e Resposta ao El Niño</title>",
+    ""
+   ],
+   "pegam": [
+    "verificar_estrutura.js",
+    "verificar_seo.js"
+   ]
+  },
+  {
+   "id": "script_inline",
+   "arquivo": "index.html",
+   "anexar": "\n<script>window.mutante=1</script>\n",
+   "pegam": [
+    "verificar_seguranca.js"
+   ]
+  },
+  {
+   "id": "json_de_dado_quebrado",
+   "arquivo": "data/resposta/por_uf.json",
+   "anexar": "}",
+   "pegam": [
+    "verificar_resposta.py",
+    "verificar_regras_de_dado.py",
+    "verificar_consistencia.py"
+   ]
+  },
+  {
+   "id": "action_sem_sha",
+   "arquivo": ".github/workflows/portoes.yml",
+   "trocar": [
+    "actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4",
+    "actions/checkout@v4"
+   ],
+   "pegam": [
+    "validar_workflows.py",
+    "verificar_seguranca.js"
+   ]
+  }
+ ]
+}
