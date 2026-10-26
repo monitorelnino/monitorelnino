@@ -1139,7 +1139,9 @@ def cidades_pm_diaria(locais_brutos: list, capitais: dict, extra: dict, agora_dt
                 time.sleep(PAUSA_OPENAQ_S)
                 url = OPENAQ_DIAS.format(id=sensores[p], de=de.isoformat(), ate=fim.isoformat())
                 serie = serie_diaria(json.loads(_buscar_registrado("openaq", url, extra=extra)))
-                linha[p] = {"status": "coletado", "sensor": sensores[p], "limite_oms_24h": LIMITE_OMS_24H[p],
+                # Resposta sem nenhuma medição na janela é lacuna declarada, não "coletado" (sem zero).
+                linha[p] = {"status": "coletado" if serie else "sem_medicao_na_janela", "sensor": sensores[p],
+                            "limite_oms_24h": LIMITE_OMS_24H[p],
                             "serie": dict(sorted(serie.items())), **dias_seguidos_acima(serie, LIMITE_OMS_24H[p])}
             except Exception as e:  # noqa: BLE001 — fonte externa: vira lacuna declarada
                 linha[p] = {"status": "falha_de_rede", "motivo": f"{type(e).__name__}: {str(e)[:120]}"}
