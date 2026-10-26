@@ -1440,3 +1440,17 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
 .escada-barra{grid-column:1 / -1; height:6px; background:var(--gauge-trilho); border-radius:var(--radius);}
 .escada-barra i{display:block; height:100%; background:var(--cor); border-radius:var(--radius);}
 .escada-fen{grid-column:1 / -1; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+
+/* Imprensa (26/10/2026): título de bloco com o token de display; atalhos e busca do glossário no alvo de toque. */
+main h3.titulo-bloco{font-family:var(--font-titulo); font-weight:var(--peso-display); font-size:var(--fs-h3); line-height:var(--lh-h3); color:var(--ink); margin:var(--sp-4) 0 var(--sp-2);}
+.atalhos{display:flex; flex-wrap:wrap; gap:var(--sp-1) var(--sp-2); font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small);}
+.atalhos a{display:inline-flex; align-items:center; min-height:var(--alvo-toque); padding:0 var(--sp-1);}
+input.busca{display:block; box-sizing:border-box; width:100%; max-width:100%; min-height:var(--alvo-toque); font:inherit; font-size:var(--fs-body);}
+/* Imprensa: tabela de linhas (Onde está cada dado) vira cartões no celular; o rótulo vem do atributo da célula. */
+@media (max-width: 640px){
+  table.onde thead{display:none;}
+  table.onde, table.onde tbody, table.onde tr, table.onde td{display:block; width:100%;}
+  table.onde tr{border-bottom:1px solid var(--line); padding:var(--sp-2) 0;}
+  table.onde td{border:0; padding:var(--sp-1) 0;}
+  table.onde td::before{content:attr(data-rotulo); display:block; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted);}
+}
