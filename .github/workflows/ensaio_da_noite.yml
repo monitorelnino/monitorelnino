@@ -134,7 +134,7 @@ jobs:
       - name: Autoteste dos coletores migrados
         run: |
           falhou=0
-          for c in monitorar_redes_oficiais monitorar_busca_web seguir_pistas \
+          for c in buscador2 monitorar_busca_web seguir_pistas \
                    coletar_diarios_municipais coletar_diarios_consorciados coletar_doe \
                    descobrir_planos; do
             echo "::group::$c"

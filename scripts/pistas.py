@@ -77,6 +77,7 @@ ORIGEM_CANONICA = {
     "rebaixamento C10": "revisao",
     "rebaixamento": "revisao",
     "agencia_oficial": "descoberta",
+    "buscador2": "busca_web",     # 26/10/2026: o seguidor do Buscador 2 (`seguir_pistas.py`)
 }
 
 # A ausência de origem não se adivinha pela fila em que a pista mora: ela é LACUNA DECLARADA, com
@@ -84,13 +85,14 @@ ORIGEM_CANONICA = {
 # origem de coletor —, ele existe só para o que entrou antes da porta.
 ORIGEM_DESCONHECIDA = "desconhecida"
 
-# Os dominios de rede social em que um perfil oficial de ente pode viver. Lista fechada de
-# proposito: ela e usada para RECUSAR, e recusar por lista aberta recusaria o que nao conhece.
-REDES_SOCIAIS = ("instagram.com", "facebook.com", "twitter.com", "x.com", "threads.net",
-                 "youtube.com", "tiktok.com", "t.me", "telegram.me", "linkedin.com",
-                 "flickr.com", "whatsapp.com")
-
-REDIRECIONADORES = ("news.google.com", "/rss/articles/", "news.url.google.com")
+# 26/10/2026 (Buscador 2): as regras de entrada vivem em `buscador2.py` e a porta as aplica — B1
+# (rótulo no campo município), B2 (redirecionador), B3 e B8 (domínio admitido para o ente da pista) e
+# B11 (uma pista por URL normalizada). Notícia de veículo não oficial entra como ROTA: o seguidor tira
+# dela os links oficiais, e ela nunca vai ao juiz.
+from buscador2 import REDIRECIONADORES  # noqa: E402,F401 — o modo paralelo J18 lê daqui
+STATUS_NA_FILA = "pista — na fila, aguardando busca dirigida e juiz"
+STATUS_ROTA = ("rota — notícia de veículo não oficial: o Buscador 2 segue os links oficiais que ela "
+               "cita; não vai ao juiz")
 
 # Os sinais do `tipo`. A ordem importa: decreto primeiro, porque um decreto que *menciona* o plano
 # continua sendo decreto, e decreto não pontua (METODOLOGIA §12) nem entra na fila de planos.
@@ -152,13 +154,17 @@ def resolver_url_final(pista: dict) -> str:
     HTTP em mão. Aqui só se aproveita o que já veio (`url_final`, ou `url` quando ela não é
     redirecionador) e se recusa o resto com motivo.
     """
+    from buscador2 import eh_redirecionador
+    from verificar_pista_imprensa import url_dentro_do_segmento
     p = pista or {}
     for campo in ("url_final", "url_veiculo", "url"):
         url = str(p.get(campo) or "").strip()
         if not url:
             continue
-        if any(r in url for r in REDIRECIONADORES):
-            continue
+        if eh_redirecionador(url):
+            url = url_dentro_do_segmento(url) or ""   # formato antigo do Google News: sem rede
+            if not url or eh_redirecionador(url):
+                continue
         return url
     return ""
 
@@ -233,6 +239,9 @@ def normalizar(pista: dict, origem: str = "") -> dict:
     # e `validar_pista` só recusa o campo vazio. Corte desalinhado é pior que pista perdida.
     p["data"] = resolver_data(p)
     p["tipo"] = classificar_tipo(p)
+    from buscador2 import classe_da_pista
+    classe, _ = classe_da_pista(p)
+    p["entrada"] = classe or ("rota" if p["origem"] == "imprensa" else "")
     # 22/10/2026: o trecho de Diário Oficial traz CPF de terceiros (prefeito, servidor); a pista vai a
     # arquivo publicado. Minimização (LGPD art. 6º, III): redige-se na porta, como nas evidências.
     from coletores_base import redigir_dados_pessoais
@@ -249,30 +258,29 @@ def motivo_de_recusa(pista: dict, existentes: list = None) -> str:
     aqui criaria duas verdades, que é o defeito que este módulo existe para fechar.
     """
     from coletores_base import validar_pista
+    import buscador2
+    if buscador2.rotulo_no_lugar_do_municipio(pista.get("municipio")):
+        return (f"rótulo de setor no campo município ({pista.get('municipio')!r}): consulta "
+                f"estadual vai por UF (B1)")
+    if not pista.get("url_final") and buscador2.eh_redirecionador(pista.get("url")):
+        return "redirecionamento não resolvido (B2): sem url_final, só o agregador"
+    norm = buscador2.url_normalizada(pista.get("url_final"))
+    if norm and norm in _indice_de_urls(existentes or []):
+        return "repetida: mesma URL normalizada já na fila (B11)"
     ok, motivo = validar_pista(pista, existentes or [])
     if not ok:
         return motivo
+    if not pista.get("entrada"):
+        classe, por_que = buscador2.classe_da_pista(pista)
+        if not classe:
+            return f"fora da entrada do Buscador 2 (B3/B8): {por_que}"
     # 09/10/2026 (A1-13). O esquema declara nove origens válidas e NADA conferia isso na gravação.
     # Quatro origens cruas estavam na fila ativa, e a pista com origem fora do esquema fica
     # ilegível para quem lê a fila por origem — e invisível para o portão, que só sabe ler o que o
     # esquema nomeia. A recusa NOMEIA a origem: coletor novo que invente origem descobre no
     # primeiro lote, pelo motivo, em vez de descobrir meses depois numa contagem.
-    # 09/10/2026 (A1-07). O coletor de redes oficiais pos 1.734 pistas na fila, e 1.667 delas nao
-    # estao nem em rede social nem em dominio oficial: reddit.com (126), en.wikipedia.org (73),
-    # xvideos.com (25), stackoverflow.com (17), foodnetwork.com (17). A busca que alimenta o
-    # coletor devolve a web inteira, e a fila recebia tudo — cada uma dessas pistas e uma vaga
-    # gasta no teto por municipio e um documento a baixar no juiz.
-    #
-    # A regra minima que fecha isso sem adivinhar: pista cuja origem e REDE SOCIAL tem de estar em
-    # dominio de rede social ou em dominio oficial (`.gov.br`). Perfil oficial de prefeitura vive
-    # num dos dois; receita de bolo, em nenhum.
-    if str(pista.get("origem") or "") in ("rede_social", "rede_social_oficial"):
-        import urllib.parse as _url
-        host = _url.urlparse(str(pista.get("url_final") or pista.get("url") or "")).netloc.lower()
-        de_rede = any(host == r or host.endswith("." + r) for r in REDES_SOCIAIS)
-        if host and not de_rede and not host.endswith(".gov.br"):
-            return (f"pista de rede social em dominio alheio ({host}): perfil oficial vive em "
-                    f"rede social ou em dominio .gov.br")
+    # 09/10/2026 (A1-07): a regra da rede social em domínio alheio saiu em 26/10/2026 — o B3 acima a
+    # contém (rede social também não é entrada: é canal de descoberta, nunca documento).
     origem = str(pista.get("origem") or "")
     if origem and origem not in origens_validas():
         return (f"origem '{origem}' não existe no esquema: use uma de "
@@ -324,6 +332,41 @@ def prioridade_18(pista: dict) -> int:
 
 
 _ORIGENS = None
+_INDICE = {}
+
+
+def _indice_de_urls(lista: list) -> set:
+    """As URLs normalizadas da fila (B11), calculadas uma vez por lista e estendidas quando ela cresce:
+    a fila tem 31 mil pistas, e normalizá-las a cada pista nova custaria minutos por rodada."""
+    from buscador2 import url_normalizada
+    guardada, n, vistos = _INDICE.get("fila", (None, 0, None))
+    if guardada is not lista or n > len(lista):
+        n, vistos = 0, set()
+    for p in lista[n:]:
+        u = url_normalizada(p.get("url_final") or p.get("url"))
+        if u:
+            vistos.add(u)
+    _INDICE["fila"] = (lista, len(lista), vistos)   # a referência impede reúso do id da lista
+    return vistos
+
+
+def _entrar(normal: dict, hoje: str) -> None:
+    """O que toda pista admitida recebe ao entrar: data de registro e status (rota ou fila)."""
+    normal.setdefault("registrado_em", hoje)
+    if normal.get("entrada") == "rota":
+        normal["status"] = STATUS_ROTA
+    else:
+        normal.setdefault("status", STATUS_NA_FILA)
+
+
+def _somar_repeticao(lista: list, normal: dict) -> None:
+    """B11: a repetição soma contagem na pista que já está na fila, nunca outra pista."""
+    from buscador2 import url_normalizada
+    alvo = url_normalizada(normal.get("url_final"))
+    for p in lista:
+        if url_normalizada(p.get("url_final") or p.get("url")) == alvo:
+            p["repeticoes"] = int(p.get("repeticoes") or 0) + 1
+            return
 
 
 def origens_validas() -> set:
@@ -523,9 +566,20 @@ def _autoteste() -> int:
     ok("rede social em domínio alheio é recusada, com o host no motivo",
        "reddit.com" in motivo_de_recusa(dict(_rede, url="https://www.reddit.com/r/x",
                                              url_final="https://www.reddit.com/r/x")))
-    ok("rede social em domínio de rede passa",
-       motivo_de_recusa(dict(_rede, url="https://www.instagram.com/p/abc",
-                             url_final="https://www.instagram.com/p/abc")) == "")
+    ok("rede social não é entrada (B3): canal de descoberta, nunca documento",
+       "B3" in motivo_de_recusa(dict(_rede, url="https://www.instagram.com/p/abc",
+                                     url_final="https://www.instagram.com/p/abc")))
+    ok("B1: rótulo de setor no campo município é recusado",
+       "B1" in motivo_de_recusa(normalizar(dict(REDE, municipio="defesa_civil"))))
+    ok("B11: a mesma URL com www e utm é repetida, para qualquer alvo",
+       "B11" in motivo_de_recusa(normalizar(dict(REDE, ibge="5002209",
+           url="http://www.bonito.ms.gov.br/noticia/plano-de-contingencia/?utm_source=x")), [n]))
+    ok("B3: domínio de empresa cai na porta com o motivo do Buscador 2",
+       "cristalconsult" in motivo_de_recusa(normalizar(dict(BUSCA,
+           url="https://www.cristalconsult.com.br/plano-municipal.pdf"))))
+    _not = normalizar(dict(REDE, origem="imprensa_regional", url="https://jornal.com.br/plano"))
+    ok("notícia de veículo não oficial entra como rota, não vai ao juiz",
+       _not["entrada"] == "rota" and motivo_de_recusa(_not) == "")
     ok("rede social em domínio oficial passa",
        motivo_de_recusa(dict(_rede, url="https://taio.sc.gov.br/post",
                              url_final="https://taio.sc.gov.br/post")) == "")
@@ -574,18 +628,26 @@ def rejeitar(pista: dict, origem: str, motivo: str, ler_fn=None, gravar_fn=None)
     entrou tem de ficar contável, com origem e campo ausente, para que "a fila encolheu" se
     distinga de "o coletor parou de achar".
     """
+    rejeitar_lote([(pista, origem, motivo)], ler_fn=ler_fn, gravar_fn=gravar_fn)
+
+
+def rejeitar_lote(itens: list, ler_fn=None, gravar_fn=None) -> None:
+    """[(pista, origem, motivo)] numa leitura e numa escrita (o arquivo passa de 7 MB). ESCREVE."""
+    if not itens:
+        return
     from coletores_base import ler as ler_base, gravar as gravar_base, hoje_editorial
     ler, gravar = (ler_fn or ler_base), (gravar_fn or gravar_base)
     doc = ler(ARQUIVO_DE_REJEITADAS) or {"rejeitadas": []}
     lista = doc.setdefault("rejeitadas", [])
-    lista.append({
-        "origem": origem, "origem_canonica": (pista or {}).get("origem"),
-        "motivo": motivo,
-        "url": str((pista or {}).get("url_final") or (pista or {}).get("url") or "")[:400],
-        "alvo": (pista or {}).get("alvo"), "tipo": (pista or {}).get("tipo"),
-        "municipio": (pista or {}).get("municipio"), "uf": (pista or {}).get("uf"),
-        "rejeitada_em": hoje_editorial().isoformat(),
-    })
+    for pista, origem, motivo in itens:
+        lista.append({
+            "origem": origem, "origem_canonica": (pista or {}).get("origem"),
+            "motivo": motivo,
+            "url": str((pista or {}).get("url_final") or (pista or {}).get("url") or "")[:400],
+            "alvo": (pista or {}).get("alvo"), "tipo": (pista or {}).get("tipo"),
+            "municipio": (pista or {}).get("municipio"), "uf": (pista or {}).get("uf"),
+            "rejeitada_em": hoje_editorial().isoformat(),
+        })
     doc["atualizado_em"] = hoje_editorial().isoformat()
     doc["total"] = len(lista)
     gravar(ARQUIVO_DE_REJEITADAS, doc)
@@ -604,17 +666,12 @@ def gravar(pista: dict, origem: str = "", nome_da_fila: str = FILA_PADRAO) -> tu
     motivo = motivo_de_recusa(normal, lista)
     if motivo:
         if motivo.startswith("repetida"):
-            url = str(normal.get("url_final") or "")
-            for p in lista:
-                if str(p.get("url_final") or p.get("url") or "") == url:
-                    p["repeticoes"] = int(p.get("repeticoes") or 0) + 1
-                    break
+            _somar_repeticao(lista, normal)
             gravar_arquivo(nome_da_fila, doc)
         else:
             rejeitar(normal, origem or normal.get("origem_do_coletor") or "", motivo)
         return False, motivo
-    normal.setdefault("registrado_em", hoje_editorial().isoformat())
-    normal.setdefault("status", "pista — na fila, aguardando busca dirigida e juiz")
+    _entrar(normal, hoje_editorial().isoformat())
     lista.append(normal)
     gravar_arquivo(nome_da_fila, doc)
     return True, ""
@@ -643,23 +700,17 @@ def gravar_lote(novas: list, origem: str = "", nome_da_fila: str = FILA_PADRAO,
         motivo = motivo_de_recusa(normal, lista)
         if motivo:
             if motivo.startswith("repetida"):
-                url = str(normal.get("url_final") or "")
-                for p in lista:
-                    if str(p.get("url_final") or p.get("url") or "") == url:
-                        p["repeticoes"] = int(p.get("repeticoes") or 0) + 1
-                        break
+                _somar_repeticao(lista, normal)
             else:
                 recusadas.append((normal, motivo))
             motivos[motivo.split(":")[0]] = motivos.get(motivo.split(":")[0], 0) + 1
             continue
-        normal.setdefault("registrado_em", hoje)
-        normal.setdefault("status", "pista — na fila, aguardando busca dirigida e juiz")
+        _entrar(normal, hoje)
         lista.append(normal)
         gravadas += 1
     gravar_arquivo(nome_da_fila, doc)
-    for normal, motivo in recusadas:
-        rejeitar(normal, origem or normal.get("origem_do_coletor") or "", motivo,
-                 ler_fn=ler_fn, gravar_fn=gravar_fn)
+    rejeitar_lote([(normal, origem or normal.get("origem_do_coletor") or "", motivo)
+                   for normal, motivo in recusadas], ler_fn=ler_fn, gravar_fn=gravar_fn)
     return {"gravadas": gravadas, "recusadas": len(recusadas), "motivos": motivos}
 
 
@@ -738,15 +789,13 @@ def sincronizar(nome_da_fila: str, fila_em_memoria: dict, origem: str = "",
             if not motivo.startswith("repetida"):
                 recusadas.append((normal, motivo))
             continue
-        normal.setdefault("registrado_em", hoje)
-        normal.setdefault("status", "pista — na fila, aguardando busca dirigida e juiz")
+        _entrar(normal, hoje)
         no_disco.append(normal)
         por_chave[k] = normal
         gravadas += 1
     gravar_arquivo(nome_da_fila, em_disco)
-    for normal, motivo in recusadas:
-        rejeitar(normal, origem or normal.get("origem_do_coletor") or "", motivo,
-                 ler_fn=ler_fn, gravar_fn=gravar_fn)
+    rejeitar_lote([(normal, origem or normal.get("origem_do_coletor") or "", motivo)
+                   for normal, motivo in recusadas], ler_fn=ler_fn, gravar_fn=gravar_fn)
     # A memória passa a refletir o disco, para que o próximo salvamento parcial da mesma rodada
     # não reapresente o que já entrou nem perca o que outro elo acrescentou.
     if isinstance((fila_em_memoria or {}).get("pistas"), list):
