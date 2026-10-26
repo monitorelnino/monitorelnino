@@ -60,6 +60,7 @@ MANUTENCAO = (
     "classificar_pista_civil.py",
     "aplicar_c10_imprensa.py",
     "triar_confianca_pistas.py",
+    "scripts/limpeza_26_10_2026.py",   # Limpeza da editoria, 26/10/2026: links e confirmações falsas
 )
 
 PASTAS_IGNORADAS = ("arquivo/", ".git/", "node_modules/", "scripts/testar_", "scripts/verificar_")
