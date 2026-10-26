@@ -60,10 +60,51 @@ def sondar_execucao_mensal():
             print(f"   !! {type(e).__name__}: {e}")
         break
 
+def sondar_empenho_dotacao():
+    """5ª rodada (26/10/2026, vias 3 e 4 do HANDOVER_EXECUCAO_CREDITOS_MPS): descobre qual download aberto
+    traz a observação do empenho e qual traz a dotação inicial/atualizada. Só imprime cabeçalho, nomes
+    de arquivo e contagens nas ações das MPs; não grava nada em data/."""
+    import io, zipfile, csv, re
+    cand = ["orcamento-despesa/2026", "despesas/202609", "despesas-empenhos/202609", "empenhos/202609",
+            "despesas-documentos/202609", "documentos-despesa/202609", "despesas-empenho/202609"]
+    acoes = {"2130", "2792", "2798", "214M", "214N", "214P"}
+    for c in cand:
+        url = f"https://portaldatransparencia.gov.br/download-de-dados/{c}"
+        print(f"\n=== {url}")
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": ua_de("sonda Portal da Transparência")})
+            with urllib.request.urlopen(req, timeout=900) as r:
+                ct = r.headers.get("Content-Type"); bruto = r.read()
+            print(f"   HTTP ok | {ct} | bytes: {len(bruto):,} | zip: {bruto[:2] == b'PK'}")
+            if bruto[:2] != b"PK":
+                continue
+            z = zipfile.ZipFile(io.BytesIO(bruto)); print("   arquivos:", z.namelist())
+            for nome in [n for n in z.namelist() if n.lower().endswith(".csv")]:
+                with z.open(nome) as f:
+                    rd = csv.reader(io.TextIOWrapper(f, encoding="latin-1", errors="replace", newline=""), delimiter=";")
+                    cab = next(rd); print(f"   [{nome}] colunas:", cab)
+                    ia = next((i for i, x in enumerate(cab) if re.fullmatch(r"C[óo]digo A[çc][ãa]o", x)), None)
+                    iobs = [i for i, x in enumerate(cab) if re.search(r"Observa|Descri", x, re.I)]
+                    n = m = o = 0
+                    for row in rd:
+                        n += 1
+                        if ia is None or len(row) <= ia or row[ia] not in acoes:
+                            continue
+                        m += 1
+                        txt = " ".join(row[i] for i in iobs if i < len(row))
+                        if re.search(r"cr[ée]dito extraordin|\bMP\b|medida provis|el ni[ñn]o", txt, re.I):
+                            o += 1
+                            if o <= 5: print("      obs:", [x[:60] for x in row[:6]], "|", txt[:200])
+                        elif m <= 3: print("      amostra:", [x[:30] for x in row[:14]])
+                    print(f"   linhas: {n:,} | nas ações das MPs: {m} | com menção a MP/crédito/El Niño: {o}")
+        except Exception as e:  # noqa: BLE001
+            print(f"   !! {type(e).__name__}: {e}")
+
 def main():
     chave = os.environ.get("PORTAL_TRANSPARENCIA_API_KEY", "")
     print("chave presente:", bool(chave), "| comprimento:", len(chave))
     sondar_execucao_mensal()
+    sondar_empenho_dotacao()
 
 if __name__ == "__main__":
     main()
