@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-17 a 2026-10-26 (2050 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-17 a 2026-10-26 (2051 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -91,7 +91,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-10-17 02:24 | 5 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-17 02:20 | 1 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-17 02:24 | 1 s | — | ok | — |
-| `python3` | coletor | 2026-10-24 21:16 | 4721 s | — | ok | — |
+| `python3` | coletor | 2026-10-25 17:49 | 7911 s | — | **erro** | interrompido pelo prazo do elo |
 | `revisar_pistas.py` | coletor | 2026-10-17 08:51 | 1036 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-17 09:23 | 1 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-17 08:51 | 12 s | — | ok | — |
