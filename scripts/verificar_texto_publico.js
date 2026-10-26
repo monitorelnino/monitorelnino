@@ -28,6 +28,13 @@ const P = Object.fromEntries(Object.entries(L.prosa).map(([k, v]) => [k, Array.i
 const PAGINAS = R.paginas_publicas.concat(T.paginas_extras.flatMap((p) => p.endsWith("*.html")
   ? (fs.existsSync(path.join(RAIZ, p.slice(0, -6))) ? fs.readdirSync(path.join(RAIZ, p.slice(0, -6))).filter((b) => b.endsWith(".html")).sort().map((b) => p.slice(0, -6) + b) : [])
   : [p])).filter((p) => fs.existsSync(path.join(RAIZ, p)));
+/* Exceção declarada em layout/excecoes.json (regra + página + motivo + data + decidido_por; incompleta não vale,
+ * como em verificar_conformidade.excecoes_de). Para o teto de palavras: `teto` numérico troca o teto; sem ele, dispensa. */
+function tetoComExcecao(pagina, lim, excecoes) {
+  const e = (excecoes || []).find((x) => x.regra === "texto_publico.palavras_por_pagina" && [pagina, "*"].includes(x.pagina) && x.motivo && x.data && x.decidido_por);
+  return !e ? lim : typeof e.teto === "number" ? [lim[0], e.teto] : null;
+}
+const EXC_ARQ = fs.existsSync(path.join(RAIZ, "layout/excecoes.json")) ? ler("layout/excecoes.json").excecoes : [];
 const norm = (s) => String(s || "").replace(/\s+/g, " ").trim();
 const t = (e) => norm(e ? e.textContent : "");
 
@@ -172,6 +179,12 @@ function imprensa(d) {
 function autoteste() {
   const ok = [], E = T.enquadramento, bom = "const ENQ_TEXTO = {\n" + Object.values(E.aprovados).map((f) => `  x: '${f}',\n`).join("") + "};\nconst ENQ_TIPO = {d: 'deslizamento', e: 'enxurrada', i: 'inundação'};\nfunction enquadramentoBox(uf, nome){ return ''; }\nfunction outra(){ /* aqui o texto deve poder dizer deve */ }\n";
   const c = (n, cond) => ok.push([n, cond]);
+  const _x = [{ regra: "texto_publico.palavras_por_pagina", pagina: "a.html", motivo: "m", data: "26/10/2026", decidido_por: "editoria" }];
+  c("teto sem exceção segue", tetoComExcecao("a.html", [1, 2], []).join() === "1,2");
+  c("exceção completa dispensa o teto", tetoComExcecao("a.html", [1, 2], _x) === null);
+  c("exceção de outra página não vale", tetoComExcecao("b.html", [1, 2], _x).join() === "1,2");
+  c("exceção sem decidido_por não vale", tetoComExcecao("a.html", [1, 2], [{ ..._x[0], decidido_por: "" }]).join() === "1,2");
+  c("exceção com teto troca só o teto", tetoComExcecao("a.html", [1, 2], [{ ..._x[0], teto: 9 }]).join() === "1,9");
   // jargão, forma, refrão
   c("nome de arquivo reprova", achados("veja data/estados.json", "", "", false).length === 2);
   c("'portão' reprova", achados("o portão reprovou", "", "", false).length === 1);
@@ -256,7 +269,7 @@ if (process.argv.includes("--autoteste")) process.exit(autoteste());
     const pg = renderizar(p, RAIZ); await new Promise((x) => setTimeout(x, 2500));
     const r = julgarPagina(p, pg, fichas.fichas ? fichas : null, vistas); pg.window.close();
     figuras += r.figuras; elementos += r.elementos; falhas.push(...r.falhas);
-    const html = fs.readFileSync(path.join(RAIZ, p), "utf-8"), lim = T.palavras_por_pagina[p];
+    const html = fs.readFileSync(path.join(RAIZ, p), "utf-8"), lim = tetoComExcecao(p, T.palavras_por_pagina[p], EXC_ARQ);
     if (lim) { const n = palavras(html); if (n > lim[1]) falhas.push(`${p} › ${n} palavras estáticas (teto ${lim[1]})`); else if (n > lim[0]) console.log(`  ⚠ ${p}: ${n} palavras (meta §7: ${lim[0]}; teto ${lim[1]})`); }
     if (listar) console.log(`  ${r.falhas.length ? "✗" : "✓"} ${p}: ${r.figuras} figura(s), ${r.elementos} texto(s)`);
   }

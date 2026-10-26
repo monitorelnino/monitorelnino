@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-26 · #1187 · Financiamento: % do pago aplicado pela União sai por medida
 
 Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.
+## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json`
+
+`verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1.
 
 ## 2026-10-26 · #1181 · Ar medido: capital sem medição na janela é lacuna declarada
 
