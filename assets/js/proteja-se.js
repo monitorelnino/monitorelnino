@@ -147,9 +147,19 @@ const json = url => fetch(url).then(r => r.ok ? r.json() : null).catch(() => nul
     ['fonteDaDengue', 'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue', 'proteja-se.guia-dengue.texto'],
     ['fonteDoFogo', 'https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/julho/ministerio-da-saude-monitora-impactos-dos-incendios-florestais-na-saude-e-orienta-populacao-sobre-exposicao-a-fumaca', 'proteja-se.guia-fogo.texto']
   ].filter(l => document.getElementById(l[0]));
-  if (!LINHAS.length) return;
   Promise.all([json('data/orientacoes_oficiais.json'), C.pronto])
     .then(([reg]) => {
+      /* Fonte por item: cada orientação que o registro preserva ganha a sua URL e a data da consulta. */
+      const itens = (reg || {}).itens || {};
+      Object.keys(itens).forEach(chave => {
+        const it = itens[chave];
+        document.querySelectorAll('li[data-conteudo="' + chave + '"]').forEach(li => {
+          const a = document.createElement('a');
+          a.href = it.url; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = 'fonte\u00a0·\u00a0' + it.consultado_em;
+          li.append(' ', a);
+        });
+      });
       const fontes = (reg || {}).fontes || [];
       LINHAS.forEach(([id, url, chave]) => {
         const f = fontes.find(x => x && x.url === url);
