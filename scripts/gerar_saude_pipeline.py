@@ -26,6 +26,7 @@ USO
   python3 scripts/gerar_saude_pipeline.py --check    # portão: reprova essencial com erro
   python3 scripts/gerar_saude_pipeline.py --autoteste
 """
+import datetime
 import json
 import pathlib
 import re
@@ -43,6 +44,9 @@ RE_ESSENCIAL = re.compile(r"^(recalcular_mare\.py|gerar_[\w-]+\.py|scripts/gerar
 ERROS_SEGUIDOS_PARA_ALERTAR = 2
 
 
+from saude_pipeline import podar  # a janela do painel é a mesma do módulo que grava
+
+
 def essencial(script: str) -> bool:
     return bool(RE_ESSENCIAL.match(str(script or "").strip()))
 
@@ -54,6 +58,10 @@ def ler(caminho: pathlib.Path = None) -> dict:
     try:
         d = json.loads(caminho.read_text(encoding="utf-8"))
         d.setdefault("execucoes", [])
+        if d["execucoes"]:
+            # janela de 7 dias ancorada na última execução gravada (não no relógio)
+            ancora = datetime.date.fromisoformat(max(str(e.get("data")) for e in d["execucoes"]))
+            d["execucoes"] = podar(d["execucoes"], ancora)
         return d
     except (OSError, json.JSONDecodeError):
         return {"execucoes": []}
