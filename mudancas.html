@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Log de saúde só cresce</dt>
+      <dd>Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.</dd>
       <dt>26/10/2026 · Financiamento: % do pago aplicado pela União sai por medida</dt>
       <dd>Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda. ## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json` `verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1. ## 2026-10-26 · A3 · Busca de planos: hospedagem de documentos (S27) e planos conexos (S24) `buscar_planos_fontes_abertas.py` ganha duas fontes pelo metabuscador da válvula: Scribd, Issuu, Calameo, Yumpu, DocPlayer e SlideShare (S27) e endereços institucionais de PMRR, saneamento, saúde, consórcio e comitê que citam o plano (S24). Resultado bruto vazio é `erro`, nunca ausência; 429 é recusa nomeada. Pista nasce não confirmada e não promovível. Código +76/−3.</dd>
       <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
@@ -165,8 +167,6 @@
       <dd>`buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
       <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
       <dd>`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.</dd>
-      <dt>23/10/2026 · Juiz lê os PLANCONs do RS pela sessão do link</dt>
-      <dd>20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.</dd>
     </dl>
   </section>
 </main>
