@@ -86,14 +86,9 @@ def fora_do_pacote(corpo: str, permitidos: list) -> list:
 
 
 def vocabulario_proibido(corpo: str, proibidas=PROIBIDAS) -> list:
-    """As palavras proibidas que o corpo usa, fora de citação entre aspas. Função pura."""
-    # O que está entre aspas é citação de lei ou de ato, e o guia permite: tira-se antes de olhar.
-    sem_citacao = re.sub(r"[\"“][^\"”]{0,400}[\"”]", " ", corpo or "")
-    fora = []
-    for p in proibidas:
-        if re.search(r"(?i)(?<![a-zà-ú])" + re.escape(p) + r"(?![a-zà-ú])", sem_citacao):
-            fora.append(p)
-    return fora
+    """As palavras proibidas que o corpo usa, fora de citação entre aspas (citar lei o guia permite)."""
+    from scripts.vocabulario import acha
+    return acha(corpo, proibidas, sem_citacao=True)
 
 
 def problemas_de_prosa(corpo: str) -> list:
@@ -127,11 +122,10 @@ def avisos(corpo: str, etiqueta: str) -> list:
 
 def vocabulario_da_pagina(corpo: str) -> list:
     """O vocabulário que a conformidade reprova em `blog.html` (regras + contrato do blog)."""
-    sys.path.insert(0, str(RAIZ / "scripts"))
-    from verificar_conformidade import problemas_de_vocabulario
+    from scripts.vocabulario import problemas
     regras = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
     contrato = json.loads((RAIZ / "layout" / "contratos" / "blog.json").read_text(encoding="utf-8"))
-    return problemas_de_vocabulario(re.sub(r"<[^>]+>", " ", corpo or ""), "blog.html", regras, contrato)
+    return problemas(re.sub(r"<[^>]+>", " ", corpo or ""), "blog.html", regras, contrato)
 
 
 def problemas(meta: dict, corpo: str, pacote: dict, exige_pacote: bool = True,
