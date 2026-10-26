@@ -55,9 +55,23 @@ def main() -> int:
         st, _, rb = pedir(url)
         print(f"ROBOTS {url} status={st} crawl_delay={'crawl-delay' in rb.decode('utf-8','replace').lower() if st==200 else '-'}")
 
-    rel = "https://app.powerbi.com/view?r=vigiar-publico-nao-medido"
-    st, _, _ = pedir(rel)
-    print(f"POWERBI_VIEW_SONDA status={st} (sem id real: só mede a rota)")
+    rel = None
+    m = re.search(r"https://app\.powerbi\.com/view\?r=([A-Za-z0-9_\-=]+)", texto)
+    if m:
+        rel = m.group(0)
+        st, _, vista = pedir(rel, limite=3_000_000)
+        vt = vista.decode("utf-8", "replace") if vista else ""
+        print(f"POWERBI_VIEW status={st} bytes={len(vista)}")
+        clusters = sorted(set(re.findall(r"https://[a-z0-9.\-]+\.analysis\.windows\.net", vt)))[:5]
+        print("  clusters:", clusters)
+        for chave in ("clusterUrl", "reportId", "modelId", "resourceKey", "exploration", "publicReport"):
+            i = vt.find(chave)
+            if i >= 0:
+                print(f"  {chave} @{i}: {vt[max(0, i - 40):i + 160]!r}")
+        for b in sorted(set(re.findall(r"/public/reports/[A-Za-z0-9\-/]+", vt)))[:5]:
+            print("  rota:", b)
+    else:
+        print("POWERBI_VIEW sem link app.powerbi.com/view na página")
     return 0
 
 
