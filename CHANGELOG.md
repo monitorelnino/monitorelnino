@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #PR · Log de saúde só cresce
+
+Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.
+
 ## 2026-10-23 · Elo dos desfechos: entra a leitura incremental dos óbitos por causa
 
 O elo `noturno_desfechos.yml` passa a rodar `coletar_sim.py --orcamento 600` depois de `coletar_obitos.py`: a primeira leitura cheia já veio da válvula, a noite só relê o ano preliminar. Os sete arquivos `obitos_*.json` já constam em `config/escritores.json` com esse elo.
