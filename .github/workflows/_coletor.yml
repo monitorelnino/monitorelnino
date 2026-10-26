@@ -281,7 +281,7 @@ jobs:
             python3 scripts/reaplicar_noite.py --aplicar | tee -a "$GITHUB_STEP_SUMMARY" || true
             git add -A data/ && git diff --cached --quiet && break
             bash scripts/verificar_derivados.sh --regenerar-para-commit >/dev/null || true
-            git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+            git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
             git commit -qm "reaplicação da noite ($(date -u +%H:%M) UTC)"
             git push -q "$REMOTO" "HEAD:${RAMO}" && break
           done
@@ -522,7 +522,7 @@ jobs:
             # tiver andado.
             if ! git diff --quiet FETCH_HEAD..HEAD -- data/; then
               bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              git add -A data/ dados-abertos/ feeds/ selos/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
+              git add -A data/ dados-abertos/ feeds/ selos/ evidencias/ docs/MANIFEST_SHA256.txt 2>/dev/null || true
               git diff --cached --quiet || git commit --amend --no-edit
               git checkout -- . 2>/dev/null || true   # o que o elo não comita (PDF, páginas) não trava o próximo rebase
             fi

@@ -139,13 +139,13 @@ def autoteste() -> int:
     casos.append(("o sempre roda em qualquer caso",
                   all(c in portoes({"dado": False, "pagina": False}) for c in SEMPRE)))
     casos.append(("sem página, nada de navegador",
-                  not any("verificar_movel.js" in c or "verificar_consistencia_visual.js" in c
+                  not any("verificar_consistencia_visual.js" in c
                           for c in portoes({"dado": True, "pagina": False}))))
     casos.append(("sem dado, nada de paridade",
                   not any("paridade" in c for c in portoes({"dado": False, "pagina": True}))))
     casos.append(("os baratos vêm antes dos de navegador",
                   portoes({"dado": True, "pagina": True}).index("node scripts/verificar_estrutura.js")
-                  < portoes({"dado": True, "pagina": True}).index("node scripts/verificar_movel.js")))
+                  < portoes({"dado": True, "pagina": True}).index("node scripts/verificar_consistencia_visual.js")))
     # A7-10 (12/10/2026): as listas vêm do workflow, e o que muda layout/conteúdo aciona página.
     import yaml
     _todos = sum(comandos_por_condicao(yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))).values(), [])

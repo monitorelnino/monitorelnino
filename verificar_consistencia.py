@@ -159,24 +159,10 @@ if _sem != _lac: erro(f"figuras: consist.json SEM difere dos LAC: {sorted(_sem ^
 for _u, _v in _cons.items():
     if (_v["cat"] == "SEM") != _v["instr"].startswith("Nenhum"):
         erro(f"figuras: consist.json {_u} cat×instr inconsistentes")
-# 14/09/2026 (auditoria editorial §1.4): a tabela COBRADE mudou de defesa-civil.js para pesquisadores.js e, em 27/09 (§258), para saude.js, quando a página Pesquisadores foi arquivada (página de provas)
-_hA = open("assets/js/saude.js", encoding="utf-8").read()
-_mA = _re.search(r"const AREAS = \[(.*?)\];", _hA, _re.S)
-if not _mA:
-    erro("figuras: AREAS não encontrado em assets/js/saude.js")
-else:
-    _ufsA = set(_re.findall(r"'([A-Z]{2})'", _mA.group(1)))
-    if _ufsA != _nao_lac:
-        erro(f"figuras: união das AREAS difere dos estados com instrumento: {sorted(_ufsA ^ _nao_lac)}")
-    # A tabela "risco × instrumento" deixou de ser uma cópia estática em HTML e passou
-    # a ser gerada em runtime DIRETO de CONSIST (31/08/2026, eliminação de duplicação —
-    # ver renderTabelaConsistencia() em defesa-civil.html). Drift entre tabela e
-    # CONSIST deixa de ser possível por construção; a checagem correspondente migrou para
-    # scripts/verificar_runtime.js (que renderiza a página de verdade e confere a
-    # tabela já populada), então a checagem estática de HTML bruto foi removida daqui.
-    for _n in _re.findall(r"(\d+) munic[íi]pios verificados", _h):
-        if int(_n) != len(municipios):
-            erro(f"figuras: contagem fóssil de municípios verificados: {_n} × banco {len(municipios)}")
+# 25/10/2026: a tabela COBRADE de saude.js (AREAS) saiu — nenhum elemento da página a lia; o portão que a cobrava saiu com ela.
+for _n in _re.findall(r"(\d+) munic[íi]pios verificados", _h):
+    if int(_n) != len(municipios):
+        erro(f"figuras: contagem fóssil de municípios verificados: {_n} × banco {len(municipios)}")
 _p = ler_pagina(RAIZ / "proteja-se.html")
 _mR = _re.search(r"const RISCO_UF\s*=\s*\{(.*?)\};", _p, _re.S)
 if _mR:

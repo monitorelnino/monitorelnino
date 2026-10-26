@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-23",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "1721000": {
    "S16": {
@@ -10,11 +10,535 @@
     "dominio": "www.palmas.to.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=palmas.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "palmas.to.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Palmas%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Palmas%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "palmas.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Palmas%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "palmas.to.gov.br"
+   }
+  },
+  "1702208": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Araguatins%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Araguatins%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "araguatins.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=araguatins.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "araguatins.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
-    "dominio": "www.palmas.to.gov.br"
+    "dominio": "araguatins.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Araguatins%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "araguatins.to.gov.br"
+   }
+  },
+  "1702109": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Aragua%C3%ADna%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Aragua%C3%ADna%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "araguaina.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=araguaina.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "araguaina.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "araguaina.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aragua%C3%ADna%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "araguaina.to.gov.br"
+   }
+  },
+  "1702554": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Augustin%C3%B3polis%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Augustin%C3%B3polis%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "augustinopolis.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=augustinopolis.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "augustinopolis.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "augustinopolis.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Augustin%C3%B3polis%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "augustinopolis.to.gov.br"
+   }
+  },
+  "1705508": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Colinas+do+Tocantins%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Colinas+do+Tocantins%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Colinas+do+Tocantins%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "1707009": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Dian%C3%B3polis%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Dian%C3%B3polis%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "dianopolis.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=dianopolis.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "dianopolis.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "dianopolis.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Dian%C3%B3polis%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "dianopolis.to.gov.br"
+   }
+  },
+  "1708205": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Formoso+do+Araguaia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Formoso+do+Araguaia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "formosodoaraguaia.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=formosodoaraguaia.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "formosodoaraguaia.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "formosodoaraguaia.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Formoso+do+Araguaia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "formosodoaraguaia.to.gov.br"
+   }
+  },
+  "1709302": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Guara%C3%AD%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Guara%C3%AD%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "guarai.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=guarai.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "guarai.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "guarai.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Guara%C3%AD%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "guarai.to.gov.br"
+   }
+  },
+  "1709500": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Gurupi%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Gurupi%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "gurupi.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=gurupi.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error timed out>",
+    "dominio": "gurupi.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=gurupi.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "gurupi.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Gurupi%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "gurupi.to.gov.br"
+   }
+  },
+  "1711902": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Lagoa+da+Confus%C3%A3o%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Lagoa+da+Confus%C3%A3o%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "lagoadaconfusao.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=lagoadaconfusao.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "lagoadaconfusao.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=lagoadaconfusao.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "lagoadaconfusao.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Lagoa+da+Confus%C3%A3o%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "lagoadaconfusao.to.gov.br"
+   }
+  },
+  "1713205": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Miracema+do+Tocantins%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Miracema+do+Tocantins%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Miracema+do+Tocantins%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "1713304": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Miranorte%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Miranorte%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "miranorte.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=miranorte.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "miranorte.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=miranorte.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "miranorte.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Miranorte%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "miranorte.to.gov.br"
+   }
+  },
+  "1716109": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Para%C3%ADso+do+Tocantins%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Para%C3%ADso+do+Tocantins%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Para%C3%ADso+do+Tocantins%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "1716505": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pedro+Afonso%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pedro+Afonso%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "pedroafonso.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=pedroafonso.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "pedroafonso.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=pedroafonso.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "pedroafonso.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pedro+Afonso%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "pedroafonso.to.gov.br"
+   }
+  },
+  "1718204": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Nacional%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Nacional%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "portonacional.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=portonacional.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "portonacional.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=portonacional.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "portonacional.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Porto+Nacional%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "portonacional.to.gov.br"
+   }
+  },
+  "1720200": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Miguel+do+Tocantins%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Miguel+do+Tocantins%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "saomigueldotocantins.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=saomigueldotocantins.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "saomigueldotocantins.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=saomigueldotocantins.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "saomigueldotocantins.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Miguel+do+Tocantins%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "saomigueldotocantins.to.gov.br"
+   }
+  },
+  "1720903": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Taguatinga%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Taguatinga%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "taguatinga.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=taguatinga.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "taguatinga.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=taguatinga.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "taguatinga.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Taguatinga%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "taguatinga.to.gov.br"
+   }
+  },
+  "1721208": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tocantin%C3%B3polis%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tocantin%C3%B3polis%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "tocantinopolis.to.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=tocantinopolis.to.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "tocantinopolis.to.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=tocantinopolis.to.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "tocantinopolis.to.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tocantin%C3%B3polis%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "tocantinopolis.to.gov.br"
    }
   }
  }

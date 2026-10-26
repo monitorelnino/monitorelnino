@@ -34,6 +34,11 @@ on:
         required: false
         default: false
         type: boolean
+      precisa_node:
+        description: "true quando algum comando roda portão em Node (ex.: aplicar_promocoes_do_juiz.py)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -49,7 +54,13 @@ jobs:
       # chamado (mesma razão de `busca_planos.yml`).
       timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
+      precisa_node: ${{ inputs.precisa_node }}
       comandos: ${{ inputs.comandos }}
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
+      # 26/10/2026: a válvula não repassava as chaves; o OpenAQ e o INMET ficavam sem credencial
+      # numa coleta de dia (a noite repassa, em noturno_sinais.yml). Mesmas chaves, mesmo nome.
+      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+      INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
+      PORTAL_TRANSPARENCIA_API_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_API_KEY }}

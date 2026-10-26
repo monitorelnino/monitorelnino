@@ -222,8 +222,7 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
 
   const fTemp = fonte('inmet_previsao_capitais');
   const diaPrev = (SINAIS.uf.SP && SINAIS.uf.SP.temperatura && SINAIS.uf.SP.temperatura.data) || fTemp.consultado_em;
-  if (diaPrev) põe('tituloTemperatura', 'Temperatura máxima prevista nas capitais, ' + String(diaPrev).slice(0, 10));
-  põe('temperaturaSub', (diaPrev ? 'Para ' + diaMes(diaPrev) + ' · ' : '') + 'diferença para a normal 1991–2020 do mês · uma capital por estado');
+  if (diaPrev) põeCat('temperaturaSub', 'monitor-de-riscos.temperatura.molde_sub', {data: diaMes(diaPrev)});
 
 })();
 
@@ -276,9 +275,7 @@ desenharMapa('mapaSecas', 'legSecas', () => MANCHAS.length ? ATM.seca.uf : NEUTR
   const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
   const nomeMes = mes ? MESES[Number(mes[2]) - 1] + ' de ' + mes[1] : '';
   const t = document.getElementById('tituloSecas'); if (t) t.textContent = 'Seca observada' + (nomeMes ? ', ' + nomeMes : '');
-  const sub = document.getElementById('secasSub');
-  if (sub) sub.textContent = (nomeMes ? nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1) + ' · ' : '')
-    + 'manchas do Monitor de Secas · hachura: estados com seca prevista pelo boletim';
+  if (nomeMes) põeCat('secasSub', 'monitor-de-riscos.secas.molde_sub', {mes: nomeMes});
   MonitorMapas.credito('boxSecas', {fontes: [SECAS_MANCHAS.fonte || 'Monitor de Secas — ANA', nomeMes ? 'mapa de ' + nomeMes : ''].filter(Boolean),
     url: SECAS_MANCHAS.url_publica, data: SECAS_MANCHAS.consultado_em});
   const d = document.querySelector('#boxSecas .fonte-figura'); if (d) d.dataset.credito = 'monitor_secas';
@@ -422,8 +419,6 @@ if (AR) {
     .on('mouseleave', MonitorMapas.hideTip);
   const leg = document.getElementById('legAr');
   if (leg) leg.insertAdjacentHTML('beforeend', '<span><i class="leg-losango" style="background:transparent"></i>Sensor de baixo custo (IPAM/RedeAr) · PM2,5 em µg/m³, média de 24 h</span>');
-  const sub = document.getElementById('arSub');
-  if (sub) sub.textContent = 'IQAr das estações oficiais por cidade (cor: faixa mais alta da cidade; tamanho: nº de estações) · sensores de PM2,5, µg/m³';
 }
 (function creditoAr(){
   const fm = fontesAr.monitorar || {};
@@ -588,86 +583,86 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const d = document.querySelector('#boxFogo .fonte-figura'); if (d) d.dataset.credito = 'inpe_fogo';
 })();
 
-// ---- Chuva forte (16/10/2026, HANDOVER_MONITOR_DE_RISCOS §4): duas tabelas, sem mapa por estado ----
-/* Avisos do INMET por grau, com os MUNICÍPIOS cobertos (do índice por município do coletor) e os
-   alertas do CEMADEN por nível, com os municípios nomeados. Grau e nível no vocabulário do órgão.
-   Fonte que não respondeu = lacuna; resposta válida sem aviso tem texto próprio. */
+// ---- Chuva forte (24/10/2026, editoria): um cartão só, com mapa por município ----
+/* Um ponto por município sob aviso do INMET, na cor do MAIOR grau (um município pode ter mais de
+   um aviso); o alerta do CEMADEN entra como círculo vazado. A posição vem do cadastro de municípios
+   que a página já carrega para a consulta. Fonte que não respondeu = lacuna. */
 (function chuvaForte(){
   const GRAUS = ['Grande Perigo', 'Perigo', 'Perigo Potencial'];
+  const COR_GRAU = MonitorMapas.PALETA.grauAviso;
   const fmt = n => Number(n).toLocaleString('pt-BR');
-  const muns = Object.values((AVISOS || {}).municipios || {});
-  const lacunaEm = (tbl, midia, txt) => { const c = document.querySelector('#' + tbl);
-    if (c) c.closest('.tbl-wrap').remove(); lacuna(midia, txt); };
-  const creditoDe = (caixa, chave) => { const f = fonteDe(chave);
-    MonitorMapas.credito(caixa, {fontes: [f.orgao, f.nome].filter(Boolean).join(' · '), url: f.url_publica,
-      data: AVISOS ? AVISOS.gerado_em : f.consultado_em});
-    const d = document.querySelector('#' + caixa + ' .fonte-figura'); if (d) d.dataset.credito = chave; };
-  if (!AVISOS || !coletada('inmet_avisos')) {
-    lacunaEm('tblAvisos', 'midiaAvisos', 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso em vigor.');
-  } else {
-    const linhas = GRAUS.map(g => {
-      const com = muns.filter(m => (m.inmet || []).some(x => x.severidade === g));
-      const ufs = [...new Set(com.map(m => m.uf))].sort();
-      const fen = [...new Set(com.flatMap(m => m.inmet.filter(x => x.severidade === g).map(x => x.tipo)))].sort();
-      return [g, com.length, ufs, fen];
-    });
-    const comAviso = muns.filter(m => (m.inmet || []).length).length, total = (window.__refMunicipios || []).length;
-    /* 23/10/2026: as duas colunas que descrevem o aviso saíam em TRAVESSÃO nas três linhas sem
-       aviso — e travessão não é palavra: nega a regra de que ausência se escreve. Grau com zero
-       município tem zero estado e zero fenômeno (zero medido, "nenhum"); a linha "Sem aviso" não é
-       grau de aviso, e dizer "nenhum" ali leria-se como se os 2.004 municípios não tivessem estado. */
-    document.querySelector('#tblAvisos tbody').innerHTML = linhas.map(([g, n, ufs, fen]) => '<tr><td>' + esc(g) + '</td> <td>'
-        + esc(fmt(n)) + '</td> <td>' + esc(ufs.join(', ') || 'nenhum') + '</td> <td>' + esc(fen.join(', ') || 'nenhum') + '</td></tr>').join('')
-      + (total ? '<tr><td>Sem aviso</td><td>' + esc(fmt(total - comAviso)) + '</td><td>não há aviso</td><td>não há aviso</td></tr>' : '');
-    const previstos = UFS.filter(uf => componentesDe(uf).includes('chuvas'));
-    const ufsComAviso = new Set(muns.filter(m => (m.inmet || []).length).map(m => m.uf));
-    const nAvisos = new Set(muns.flatMap(m => (m.inmet || []).map(x => x.id))).size;
-    document.getElementById('avisosRodape').textContent = plural(nAvisos, 'aviso', 'avisos') + ' · '
-      + plural(comAviso, 'município', 'municípios') + ' · nos estados com chuva forte prevista: '
-      + (previstos.filter(uf => ufsComAviso.has(uf)).join(', ') || 'nenhum com aviso');
+  const muns = Object.entries((AVISOS || {}).municipios || {});
+  const f = id => fonteDe(id);
+  MonitorMapas.credito('boxAvisos', {fontes: ['inmet_avisos', 'cemaden_alertas'].map(k => [f(k).orgao, f(k).nome].filter(Boolean).join(' · ')),
+    url: f('inmet_avisos').url_publica, data: AVISOS ? AVISOS.gerado_em : f('inmet_avisos').consultado_em});
+  const d = document.querySelector('#boxAvisos .fonte-figura'); if (d) d.dataset.credito = 'inmet_avisos';
+  if (!AVISOS || !coletada('inmet_avisos') || !coletada('cemaden_alertas')) {
+    document.getElementById('midiaAvisos').innerHTML = '';
+    lacuna('midiaAvisos', 'A fonte não respondeu nesta consulta — não quer dizer que não haja aviso ou alerta em vigor.');
+    return;
   }
-  creditoDe('boxAvisos', 'inmet_avisos');
-  if (!AVISOS || !coletada('cemaden_alertas')) {
-    lacunaEm('tblCemaden', 'midiaCemaden', 'A fonte não respondeu nesta consulta — não quer dizer que não haja alerta vigente.');
-  } else {
-    const grupos = {};
-    muns.forEach(m => (m.cemaden || []).forEach(x => { const k = x.nivel + '|' + m.uf;
-      (grupos[k] = grupos[k] || new Set()).add(m.nome); }));
-    const chaves = Object.keys(grupos).sort();
-    document.querySelector('#tblCemaden tbody').innerHTML = chaves.length
-      ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td> <td>' + esc(uf) + '</td> <td>'
-          + esc([...grupos[k]].sort().join(', ')) + '</td></tr>'; }).join('')
-      : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
-    const r = AVISOS.resumo || {};
-    document.getElementById('cemadenRodape').textContent = plural(r.alertas_cemaden_em_vigor || 0, 'alerta', 'alertas')
-      + ' · ' + plural(r.municipios_cemaden || 0, 'município', 'municípios') + ' · '
-      + plural(new Set(chaves.map(k => k.split('|')[1])).size, 'estado', 'estados');
-  }
-  creditoDe('boxCemaden', 'cemaden_alertas');
-  const t = document.getElementById('tituloAvisos'); if (t && AVISOS) t.textContent = 'Avisos de tempo severo em vigor, ' + AVISOS.gerado_em;
+  const pos = {}; (window.__refMunicipios || []).forEach(m => pos[String(m.codigo_ibge).padStart(7, '0')] = [m.lat, m.lon]);
+  const maior = m => GRAUS.find(g => (m.inmet || []).some(x => x.severidade === g));
+  const sob = muns.filter(([, m]) => maior(m));
+  desenharMapa('mapaAvisos', 'legAvisos', () => ATM.avisos.uf, () => '', [], 'avisos');
+  const ctx = __ctx();
+  GRAUS.slice().reverse().forEach(g => {
+    const itens = sob.filter(([, m]) => maior(m) === g).map(([c]) => pos[c]).filter(Boolean).map(([lat, lon]) => ({lat, lon}));
+    MonitorMapas.pontosDensos(ctx, 'mapaAvisos', itens, COR_GRAU[g], 3.4, .85, 'densos-' + GRAUS.indexOf(g));
+  });
+  d3.select('#mapaAvisos').append('g').attr('class', 'alertasCemaden').selectAll('circle')
+    .data(muns.filter(([c, m]) => (m.cemaden || []).length && pos[c])).join('circle')
+    .attr('cx', ([c]) => ctx.projection([pos[c][1], pos[c][0]])[0]).attr('cy', ([c]) => ctx.projection([pos[c][1], pos[c][0]])[1])
+    .attr('r', 5).attr('fill', 'none').attr('stroke', COR_GRAU.cemaden).attr('stroke-width', 2)
+    .on('mouseenter', (evt, [, m]) => MonitorMapas.showTip(MonitorMapas.dica({titulo: m.nome + ' · ' + m.uf,
+      linhas: m.cemaden.map(x => x.tipo + ' · ' + x.nivel), fonte: 'Cemaden'}), evt))
+    .on('mouseleave', MonitorMapas.hideTip);
+  MonitorMapas.legenda('legAvisos', GRAUS.map(g => ({cor: COR_GRAU[g], rotulo: g}))
+    .concat([{cor: COR_GRAU.cemaden, rotulo: 'Alerta do Cemaden', vazado: true}]));
+  const maxN = Math.max(1, ...GRAUS.map(g => sob.filter(([, m]) => maior(m) === g).length));
+  document.getElementById('avisosEscada').innerHTML = GRAUS.map(g => {
+    const com = sob.filter(([, m]) => maior(m) === g).map(([, m]) => m);
+    const fen = [...new Set(com.flatMap(m => m.inmet.filter(x => x.severidade === g).map(x => x.tipo)))].sort();
+    return '<li style="--cor:' + COR_GRAU[g] + '"><span class="escada-grau">' + esc(g) + '</span><span class="escada-n">' + esc(fmt(com.length))
+      + '</span><span class="escada-barra"><i style="width:' + (100 * com.length / maxN).toFixed(1) + '%"></i></span><span class="escada-fen">'
+      + esc(fen.join(', ') || 'nenhum') + '</span></li>';
+  }).join('');
+  const total = (window.__refMunicipios || []).length;
+  if (total) põeCat('avisosSem', 'monitor-de-riscos.avisos.molde_sem_aviso', {n: total - sob.length});
+  const grupos = {};
+  muns.forEach(([, m]) => (m.cemaden || []).forEach(x => { const k = x.nivel + '|' + m.uf; (grupos[k] = grupos[k] || new Set()).add(m.nome); }));
+  const chaves = Object.keys(grupos).sort();
+  document.querySelector('#tblCemaden tbody').innerHTML = chaves.length
+    ? chaves.map(k => { const [nv, uf] = k.split('|'); return '<tr><td>' + esc(nv) + '</td> <td>' + esc(uf) + '</td> <td>'
+        + esc([...grupos[k]].sort().join(', ')) + '</td></tr>'; }).join('')
+    : '<tr><td colspan="3">Nenhum alerta vigente nesta consulta</td></tr>';
 })();
 
-// ---- Listas federais de risco (17/10/2026, HANDOVER_DEFESA_CIVIL §6: vieram da Defesa civil) ----
-/* Quantos municípios de cada estado constam de cada lista, de `enquadramento_card.json` (as marcas
-   por código IBGE; o estado vem da referência do IBGE). Indicados pela União = cadastro de enxurradas
-   e inundações (`ch`) mais os indicados só por deslizamento (`geo`). Sem o arquivo, lacuna declarada. */
+// ---- Listas federais de risco (24/10/2026, editoria: um cartão, um ponto por município) ----
+/* As marcas por código IBGE são de `enquadramento_card.json` (`ch`/`geo` = deslizamento ou enchente;
+   `mma` = fogo); a posição, do cadastro de municípios que a página já carrega para a consulta. Quem
+   está nas duas listas é desenhado por cima, para não sumir sob os da lista mais numerosa. As contagens
+   saem do dado. Sem o arquivo, lacuna declarada. */
 (function listasFederais(){
-  const UF_DE = {}; (window.__refMunicipios || []).forEach(m => UF_DE[String(m.codigo_ibge).padStart(7, '0')] = m.uf);
-  const fontes = (ENQ && ENQ.fontes) || {};
-  // 19/10/2026 (editoria, item 14): a cor separa as famílias — deslizamento e enchente no azul da
-  // chuva, desmatamento e fogo no âmbar do fogo. A sexta posição é a família de cor da contagem.
-  [['boxListaIndicados', 'mapListaIndicados', 'legListaIndicados', v => v.ch !== undefined || v.geo, 'chuva', 'MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023', 'contagem'],
-   ['boxListaFogo', 'mapListaFogo', 'legListaFogo', v => v.mma, 'fogo', 'Ministério do Meio Ambiente, portaria vigente', 'contagem_fogo']].forEach(([caixa, svg, leg, consta, chave, fonte, familia]) => {
-    const f = fontes[chave] || {};
-    if (!ENQ) {
-      MonitorMapas.legenda(leg, [{cor: NEUTRA, rotulo: 'sem coleta até o corte'}]);
-      return MonitorMapas.credito(caixa, {fontes: [fonte], data: null});
-    }
-    const porUF = Object.fromEntries(UFS.map(uf => [uf, 0]));
-    Object.entries(ENQ.municipios).forEach(([cod, v]) => { if (consta(v) && UF_DE[cod] in porUF) porUF[UF_DE[cod]] += 1; });
-    MonitorMapas.mapaDeContagem(__ctx(), svg, leg, porUF, 'município', null, familia);
-    MonitorMapas.credito(caixa, {fontes: [fonte], url: f.url, data: MonitorMapas.dataBR(f.consultado_em)});
+  const I = 'monitor-de-riscos.listas.', fontes = (ENQ && ENQ.fontes) || {};
+  const fmt = n => Number(n).toLocaleString('pt-BR');
+  const fCh = fontes.chuva || {}, fFg = fontes.fogo || {};
+  MonitorMapas.credito('boxListas', {fontes: ['MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023', 'Ministério do Meio Ambiente, portaria vigente'],
+    url: fCh.url, data: ENQ ? MonitorMapas.dataBR([fCh.consultado_em, fFg.consultado_em].sort().pop()) : null});
+  if (!ENQ) { document.getElementById('listasLado').innerHTML = ''; return lacuna('listasLado', 'Listas federais: sem coleta até o corte.'); }
+  const pos = {}; (window.__refMunicipios || []).forEach(m => pos[String(m.codigo_ibge).padStart(7, '0')] = {lat: m.lat, lon: m.lon});
+  const grupo = {chuva: [], fogo: [], ambas: []};
+  Object.entries(ENQ.municipios).forEach(([cod, v]) => {
+    const ch = v.ch !== undefined || v.geo, fg = !!v.mma;
+    if (pos[cod] && (ch || fg)) grupo[ch && fg ? 'ambas' : ch ? 'chuva' : 'fogo'].push(pos[cod]);
   });
+  const F = MonitorMapas.PALETA.familia, COR = {chuva: F.chuva, fogo: F.seca, ambas: MonitorMapas.COR.argila};
+  desenharMapa('mapaListas', 'legListas', () => ATM.contagem.uf, () => '', [], 'contagem');
+  const ctx = __ctx();
+  [['chuva', 4.4], ['fogo', 5.4], ['ambas', 5.4]].forEach(([k, w]) => MonitorMapas.pontosDensos(ctx, 'mapaListas', grupo[k], COR[k], w, .85, 'densos-' + k));
+  MonitorMapas.legenda('legListas', Object.keys(COR).map(k => ({cor: COR[k], rotulo: txtCat(I + 'legenda.' + k, null, k)})));
+  document.getElementById('listasNumeros').innerHTML = Object.keys(COR).map(k => '<div><dt>' + esc(txtCat(I + 'rotulo.' + k, null, k))
+    + '</dt><dd>' + esc(fmt(grupo[k].length)) + '</dd></div>').join('');
 })();
 
 // ===== O topo "Situação atual" (07/10/2026, handover "Monitor de riscos, parte 1") ==========
@@ -772,11 +767,6 @@ function põeCat(elId, id, valores, reserva){
   const u = serie.length ? serie[serie.length - 1] : null;
   const fonte = k => (SINAIS.fontes || {})[k] || {};
 
-  // 1 — a frase de abertura. A segunda oração só aparece quando o dado trouxer a data em que a
-  // NOAA/CPC passou a manter o alerta; hoje ele não a traz, e a frase não a inventa.
-  const alerta = (SINAIS.enos.prognostico || {}).alerta_desde;
-  if (alerta) põeCat('stResumo', I + 'abertura.molde_com_alerta', {desde: alerta});
-
   // 2 — o RONI mais recente, e a variação para a média móvel ANTERIOR: a série anda de mês em
   // mês, então o trimestre anterior a jul–set é jun–ago, e não jan–mar.
   if (u) {
@@ -816,24 +806,6 @@ function põeCat(elId, id, valores, reserva){
   // sinopse é a que ela descreve. Sem "Hemisfério Norte": o período em meses diz o mesmo fato.
   // A data da próxima discussão SAIU: uma data já passada aparecia como futura (09/10, "a próxima
   // sai em 08/10/2026"), e a página não tem como saber se a seguinte já saiu.
-  const pg = SINAIS.enos.prognostico;
-  if (pg && pg.probabilidade != null) {
-    const sinopse = String(pg.sinopse || '').toLowerCase();
-    const reconhecida = /very strong/.test(sinopse) && /fall and winter/.test(sinopse);
-    const f = fonte('cpc_ensodisc');
-    // 19/10/2026 (editoria): a frase do prognóstico SAIU do cartão e entrou no texto da seção. No
-    // cartão ela ocupava seis linhas e era o que deixava a grade desigual; e, sendo leitura de
-    // probabilidade, é interpretação — que por regra vive no texto narrativo, não no cartão.
-    const apoio = txtCat(I + (reconhecida ? 'previsao.molde_apoio' : 'previsao.molde_apoio_curto'),
-      {limiar: pg.limiar === 'acima de' ? 'acima de' : 'de', probabilidade: pg.probabilidade,
-       orgao: f.orgao || 'NOAA/CPC', emitido: pg.emitido_em}, null);
-    const resumo = document.getElementById('stResumo');
-    if (apoio && resumo) {
-      resumo.textContent = resumo.textContent.trim() + ' ' + apoio;
-      resumo.setAttribute('data-conteudo-fixado', '1');
-    }
-  }
-
   // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
   // mapas abaixo. Só descrição: valor, data e órgão. Variação só com leitura anterior gravada —
   // fogo, seca, calor e avisos ainda não a gravam, e o cartão não a inventa.
@@ -889,10 +861,9 @@ function põeCat(elId, id, valores, reserva){
       // portão de texto público reprova. "Ruim ou mais alto" é a mesma régua do cartão da seca.
       + '<p class="cartao-numero-rotulo" id="stArRotulo"></p>'
       + '<p class="cartao-numero-valor" id="stArValor"></p>'
-      + '<p class="cartao-numero-variacao" id="stArApoio"></p><p class="cartao-numero-fonte" id="stArFonte"></p></div>');
+      + '<p class="cartao-numero-fonte" id="stArFonte"></p></div>');
     põeCat('stArRotulo', I + (diaMes(ult) ? 'ar.molde_rotulo' : 'ar.rotulo'), {data: diaMes(ult)});
     põeCat('stArValor', I + 'ar.molde_valor', {n: ruins.length});
-    põeCat('stArApoio', I + 'ar.apoio');
     MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr', hora(ult) ? 'medição de ' + hora(ult) : ''].filter(Boolean),
       data: (fontesAr.monitorar || {}).consultado_em});
   }
@@ -1209,9 +1180,7 @@ if (PACIFICO.serie.length) {
       n: noAlvo.length,
       minimo: PAC.num(Math.min.apply(null, noAlvo)),
       maximo: PAC.num(Math.max.apply(null, noAlvo))}, null) : null;
-    // A contagem do ciclo em curso só é dita enquanto o critério NÃO se completou: depois das
-    // cinco, a frase "se completa na quinta" deixa de ser verdadeira.
-    if (PACIFICO.emCurso && PACIFICO.emCurso.pontos.length < 5) {
+    if (PACIFICO.emCurso) {
       const c = txtCat(IP + 'episodios.molde_contagem', {ano: String(PACIFICO.emCurso.ano),
         n: PACIFICO.emCurso.pontos.length, trimestre: PAC.periodoCurto(ultimo)}, null);
       if (c) texto = (texto ? texto + ' ' : '') + c;
@@ -1252,7 +1221,7 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
   const t0 = Math.floor(primeiro.t), t1 = Math.ceil(ultimo.t);
   põeCat('nino34Sub', IN + 'molde_legenda', {data: dataBR(ultimo.semana)});
   põeCat('nino34Leitura', IN + 'molde_leitura',
-    {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia), inicio: dataBR(primeiro.semana)});
+    {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia)});
   desenharNaLargura('wrapNino34', 14,
     txtCat(IN + 'rotulo_acessivel', null, 'Anomalia semanal da região Niño 3.4, em graus Celsius'),
     function (g, geo) {

@@ -81,14 +81,10 @@
   }
 
   /** Coroplético por UF: corDe(uf) → cor; rotuloDe(uf) → HTML do tooltip. Sempre com siglas. */
-  /** Atmosfera do mapa (30/09/2026, item 8): fundo da área, malha de coordenadas de 5° e contorno
-   *  da UF, pela família. Desenha ANTES das UFs, num grupo próprio que é refeito a cada chamada.
+  /** Atmosfera do mapa: fundo da área e contorno da UF, pela família. Desenha ANTES das UFs, num
+   *  grupo próprio que é refeito a cada chamada (24/10/2026: a malha de 5° saiu).
    *
-   *  A malha é cartográfica de propósito: um mapa com paralelos e meridianos discretos se lê como
-   *  mapa, e não como gráfico de escritório. Ela é decorativa para a leitura do dado — por isso
-   *  `aria-hidden`, para não virar ruído em leitor de tela.
-   *
-   *  `nome` ausente devolve o mapa como sempre foi: sem fundo, sem malha. Nenhuma página quebra
+   *  `nome` ausente devolve o mapa como sempre foi: sem fundo. Nenhuma página quebra
    *  por não ter atmosfera declarada. */
   function atmosfera(ctx, svgId, nome) {
     const a = PALETA.atmosfera[nome];
@@ -100,20 +96,19 @@
     const g = svg.insert('g', ':first-child').attr('class', 'atmosfera').attr('aria-hidden', 'true');
     g.append('rect').attr('x', vb[0]).attr('y', vb[1]).attr('width', vb[2]).attr('height', vb[3])
       .attr('fill', a.fundo);
-    // Malha de 5°: o próprio gerador do d3 projeta os paralelos e meridianos com a projeção do mapa,
-    // então ela acompanha a deformação da projeção em vez de virar uma grade reta por cima dela.
-    if (ctx && ctx.path && d3.geoGraticule) {
-      g.append('path').attr('d', ctx.path(d3.geoGraticule().step([5, 5])()))
-        .attr('fill', 'none').attr('stroke', a.contorno).attr('stroke-width', 0.35)
-        .attr('stroke-opacity', 0.35);
-    }
     return svg;
   }
 
   function ufs(ctx, svgId, corDe, rotuloDe) {
     const svg = d3.select('#' + svgId);
     svg.selectAll('g.ufs').remove(); svg.selectAll('g.siglas').remove();
-    const g = svg.append('g').attr('class', 'ufs');
+    // Contorno do país: o filtro dilata a silhueta das UFs juntas e a pinta por baixo, então só a
+    // borda externa aparece; as divisas internas ficam com o traço da própria UF.
+    if (!document.getElementById('contorno-pais')) document.body.insertAdjacentHTML('beforeend',
+      '<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="contorno-pais" x="-3%" y="-3%" width="106%" height="106%">'
+      + '<feMorphology in="SourceAlpha" operator="dilate" radius="1.2" result="d"/><feFlood flood-color="' + COR.muted + '"/>'
+      + '<feComposite in2="d" operator="in" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>');
+    const g = svg.append('g').attr('class', 'ufs').attr('filter', 'url(#contorno-pais)');
     // 30/09/2026: com atmosfera, o contorno da UF vem dela — o filete escuro padrão desaparece
     // num fundo noturno e grita num fundo de papel. Sem atmosfera, tudo fica como sempre foi.
     const atm = PALETA.atmosfera[svg.attr('data-atmosfera')];
@@ -174,7 +169,7 @@
     // `hachura`: amostra listrada, a mesma marca do mapa (cor das listras sobre `fundo`).
     // `vazado`: círculo só de contorno, a marca do ponto vazado do mapa (cor no traço).
     const fundo = i => i.hachura ? 'repeating-linear-gradient(45deg,' + i.cor + ' 0 3px,' + (i.fundo || 'transparent') + ' 3px 6px)' : i.cor;
-    el.innerHTML = itens.map(i => '<span><i' + (i.vazado ? ' class="leg-vazado" style="color:' + i.cor : ' style="background:' + fundo(i))
+    el.innerHTML = itens.map(i => '<span><i' + (i.vazado ? ' class="leg-vazado" style="background:transparent;color:' + i.cor : ' style="background:' + fundo(i))
       + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
@@ -330,6 +325,8 @@
     // série de desfecho sobre a faixa habitual da época (seção de desfechos da Saúde): a faixa
     // habitual é o recorrente (mineral); o valor que passa dela é calor de dado (argila).
     serie_habitual: { faixa: COR.mineral, faixa_fundo: COR.mineral + '47', acima: COR.argila },
+    // posição de um valor na faixa habitual da época: quente acima, frio abaixo; a cor marca a posição, não julga
+    posicao: { acima: COR.argila, dentro: COR.mineral, abaixo: COR.sintetico },
     // consistência risco × instrumento (mapa 5 da Defesa civil)
     consistencia: { COBRE: COR.musgo, PARCIAL: COR.mineral, DIFERE: COR.argila, SEM: COR.argila, NEUTRO: COR.areia },
     // 24/09/2026: grau do aviso do INMET e nível do alerta do CEMADEN, tal como os órgãos os nomeiam

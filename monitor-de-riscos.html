@@ -29,9 +29,9 @@
 <script src="assets/vendor/d3.min.js?v=f2094bbf"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
-<link rel="stylesheet" href="assets/tokens.css?v=bc29b459">
-<link rel="stylesheet" href="assets/base.css?v=eed8d038">
-<script src="assets/mapas.js?v=c68d53ed"></script>
+<link rel="stylesheet" href="assets/tokens.css?v=3b20cee8">
+<link rel="stylesheet" href="assets/base.css?v=106d9980">
+<script src="assets/mapas.js?v=d377925c"></script>
 </head>
 <body class="pagina-dados">
 <div class="map-tooltip" id="mapTooltip"></div>
@@ -45,8 +45,8 @@
   </header>
 <main id="conteudo">
   <h1 data-conteudo="monitor-de-riscos.titulo_da_pagina">Monitor de riscos</h1>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente medem durante o El Niño 2026/2027, em duas partes.</p>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, mês a mês e na mesma escala, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente monitoram durante o El Niño 2026/2027, em duas partes.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra a situação atual. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
   <p class="hint" data-conteudo="monitor-de-riscos.abertura.3">A segunda parte mostra o que já acontece no Brasil: o risco previsto para cada estado até março de 2027, segundo os boletins oficiais; a seca observada em cada estado; os focos de fogo das últimas 24 horas; a qualidade do ar medida nas capitais com estação oficial e a temperatura máxima prevista nas capitais; e os avisos de tempo severo em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta.</p>
   <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
@@ -55,7 +55,6 @@
        número sai do dado já coletado, com órgão e data; variação só onde há leitura anterior gravada. -->
   <div class="panel" id="situacao">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao">Situação atual</h2>
-    <p class="hint" id="stResumo" data-conteudo="monitor-de-riscos.situacao.abertura" aria-live="polite">Condição de El Niño declarada pelos órgãos federais em 29/06/2026.</p>
     <div class="grade-numeros grade-numeros--compacta" id="situacaoGrade">
       <div class="cartao-numero cartao-numero--risco_agora" data-cartao="roni_mais_recente">
         <p class="cartao-numero-rotulo" id="stRoniRotulo" data-conteudo="monitor-de-riscos.situacao.roni.rotulo">RONI mais recente</p>
@@ -118,7 +117,6 @@
         <p class="figura-leitura" id="nino34Leitura"></p>
       </figure>
     </div>
-    <p class="hint" data-conteudo-html="monitor-de-riscos.pacifico.ponte_metodologia">Para especialistas: o índice ONI está na <a href="METODOLOGIA.pdf">metodologia</a> →</p>
   </div>
 
   <div class="panel" id="riscos">
@@ -135,6 +133,22 @@
         <div class="figura-midia"><dl class="faixa-previsto" id="faixaRiscoPrevisto"></dl></div>
       </figure>
     </div>
+  </div>
+
+  <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §5): a consulta do município (24/10/2026, editoria: logo depois do cartão do risco previsto), com os mesmos
+       controles da inicial e uma tabela; o arquivo do estado é carregado só quando o estado é escolhido. -->
+  <div class="panel" id="consulta">
+    <h2 data-conteudo="monitor-de-riscos.consulta.titulo">Consulte o estado atual do seu município</h2>
+    <div class="tbl-controls">
+      <select id="consultaUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
+      <input id="consultaMun" type="text" list="consultaLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
+      <datalist id="consultaLista"></datalist>
+    </div>
+    <div id="consultaCard" class="meu-card" aria-live="polite" hidden></div>
+    <p class="hint" data-conteudo="monitor-de-riscos.consulta.nota">Dado por estado vale para todo o estado; dado por município é do próprio município; ar e temperatura vêm da estação ou capital mais próxima, nomeada na linha.</p>
+  </div>
+
+  <div class="panel">
     <div class="faixa-selo faixa-selo--familia">
       <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_seca">Seca, fogo, qualidade do ar e calor</p>
       <p class="boletim-preve" id="preveSeca"></p>
@@ -142,7 +156,7 @@
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--mapa figura--dupla cartao-mapa" id="boxFogo">
         <h3 class="figura-titulo" id="tituloFogo" data-conteudo="monitor-de-riscos.titulo_fogo.titulo">Focos de fogo nas últimas 24 horas</h3>
-        <p class="figura-sub" id="fogoSub">Últimas 24 horas · hachura: estados com fogo previsto pelo boletim</p>
+        <p class="figura-sub" id="fogoSub">Um ponto por foco detectado por satélite nas últimas 24 horas · hachura: estados com fogo previsto pelo boletim</p>
         <div class="figura-midia">
           <div class="mapa-dupla"><svg id="mapaFogo" role="img" aria-label="Mapa do Brasil com os focos de calor das últimas 24 horas na posição em que foram detectados, agrupados em células de cerca de 11 quilômetros, segundo o INPE" viewBox="0 0 480 460"></svg></div>
           <div class="lado-dados" id="fogoLado">
@@ -160,19 +174,19 @@
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--mapa cartao-mapa" id="boxSecas">
         <h3 class="figura-titulo" id="tituloSecas">Seca observada</h3>
-        <p class="figura-sub" id="secasSub">Manchas do Monitor de Secas · hachura: estados com seca prevista pelo boletim</p>
+        <p class="figura-sub" id="secasSub" data-conteudo="monitor-de-riscos.secas.sub">Onde há seca no mês de referência, e, na hachura, os estados com seca prevista pelo boletim.</p>
         <div class="figura-midia"><svg id="mapaSecas" role="img" aria-label="Mapa do Brasil com as manchas de seca do mapa mensal do Monitor de Secas" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legSecas"></div>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxAr">
         <h3 class="figura-titulo" id="tituloAr" data-conteudo="monitor-de-riscos.ar.titulo">Qualidade do ar medida</h3>
-        <p class="figura-sub" id="arSub">IQAr das estações oficiais, por cidade · sensores de PM2,5 em µg/m³</p>
+        <p class="figura-sub" id="arSub" data-conteudo="monitor-de-riscos.ar.sub">O índice de qualidade do ar medido em cada cidade com estação oficial. O tamanho do círculo é proporcional ao número de estações.</p>
         <div class="figura-midia"><svg id="mapaAr" role="img" aria-label="Mapa do Brasil com o IQAr das estações oficiais por cidade e os sensores de baixo custo de PM2,5" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legAr"></div>
       </figure>
       <figure class="figura figura--mapa cartao-mapa" id="boxTemperatura">
-        <h3 class="figura-titulo" id="tituloTemperatura">Temperatura máxima prevista nas capitais</h3>
-        <p class="figura-sub" id="temperaturaSub">Máxima prevista e diferença para a média histórica do mês · °C · uma capital por estado</p>
+        <h3 class="figura-titulo" id="tituloTemperatura" data-conteudo="monitor-de-riscos.temperatura.titulo">Desvio de temperatura previsto nas capitais</h3>
+        <p class="figura-sub" id="temperaturaSub" data-conteudo="monitor-de-riscos.temperatura.sub">Quanto a temperatura máxima prevista em cada capital se afasta da média daquele mês entre 1991 e 2020, em graus.</p>
         <div class="figura-midia"><svg id="mapaTemperatura" role="img" aria-label="Mapa do Brasil com a temperatura máxima prevista na capital de cada estado e quanto ela está acima da média histórica do mês" viewBox="0 0 480 460"></svg></div>
         <div class="map-legend" id="legTemperatura"></div>
       </figure>
@@ -181,50 +195,41 @@
       <p class="selo" data-conteudo="monitor-de-riscos.riscos.bloco_chuva">Chuva forte</p>
       <p class="boletim-preve" id="preveChuva"></p>
     </div>
-    <div class="grade-figuras grade-figuras--2">
-      <figure class="figura figura--tabela cartao-mapa" id="boxAvisos">
-        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos de tempo severo em vigor</h3>
-        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Por grau do aviso · municípios cobertos · INMET</p>
-        <div class="figura-midia" id="midiaAvisos"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Avisos por grau"><table class="mun-table" id="tblAvisos"><thead><tr><th>Grau</th><th>Municípios</th><th>Estados</th><th>Fenômeno</th></tr></thead><tbody></tbody></table></div></div>
-        <p class="figura-nota" id="avisosRodape"></p>
-      </figure>
-      <figure class="figura figura--tabela cartao-mapa" id="boxCemaden">
-        <h3 class="figura-titulo" id="tituloCemaden" data-conteudo="monitor-de-riscos.cemaden.titulo">Alertas do Cemaden vigentes</h3>
-        <p class="figura-sub" id="cemadenSub" data-conteudo="monitor-de-riscos.cemaden.sub">Por nível do alerta · estado · municípios nomeados pelo Cemaden</p>
-        <div class="figura-midia" id="midiaCemaden"><div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div></div>
-        <p class="figura-nota" id="cemadenRodape"></p>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa figura--dupla cartao-mapa" id="boxAvisos">
+        <h3 class="figura-titulo" id="tituloAvisos" data-conteudo="monitor-de-riscos.avisos.titulo">Avisos do INMET e alertas do Cemaden em vigor</h3>
+        <p class="figura-sub" id="avisosSub" data-conteudo="monitor-de-riscos.avisos.sub">Um ponto por município, na cor do maior grau de aviso do INMET · alerta do Cemaden em círculo vazado</p>
+        <div class="figura-midia" id="midiaAvisos">
+          <div class="mapa-dupla"><svg id="mapaAvisos" role="img" aria-label="Mapa do Brasil com um ponto por município sob aviso do INMET, na cor do maior grau do aviso, e círculo vazado nos municípios sob alerta do Cemaden" viewBox="0 0 480 460"></svg></div>
+          <div class="lado-dados" id="avisosLado">
+            <p class="figura-nota lado-rotulo" data-conteudo="monitor-de-riscos.avisos.escada_rotulo">Municípios por maior grau do aviso do INMET</p>
+            <ul class="escada" id="avisosEscada"></ul>
+            <p class="figura-nota" id="avisosSem"></p>
+            <p class="figura-nota lado-rotulo" data-conteudo="monitor-de-riscos.cemaden.rotulo">Alertas do Cemaden por nível e estado</p>
+            <div class="tbl-wrap" tabindex="0" role="region" aria-label="Alertas do Cemaden"><table class="mun-table" id="tblCemaden"><thead><tr><th>Nível</th><th>UF</th><th>Municípios</th></tr></thead><tbody></tbody></table></div>
+          </div>
+        </div>
+        <div class="map-legend" id="legAvisos"></div>
       </figure>
     </div>
 
-    <!-- 17/10/2026 (HANDOVER_DEFESA_CIVIL §6): as três listas federais de risco vieram da Defesa civil,
-         como contexto dos blocos de chuva, seca e fogo; sem lista embaixo (§10 deste handover). -->
-    <div class="grade-figuras grade-figuras--3 grade-mapas">
-      <figure class="figura figura--mapa cartao-mapa" id="boxListaIndicados" data-chave="enquadramento_card.json#chuva">
-        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.indicados.titulo">Risco de deslizamento ou enchente indicado pela União</h3>
-        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.indicados.sub">Municípios indicados pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A; MIDR e Casa Civil, 2025) · nº no estado</p>
-        <div class="figura-midia"><svg id="mapListaIndicados" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado indicados pela União ao cadastro nacional de áreas suscetíveis a deslizamento e enchente" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legListaIndicados"></div>
-      </figure>
-      <figure class="figura figura--mapa cartao-mapa" id="boxListaFogo" data-chave="enquadramento_card.json#fogo">
-        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.fogo.titulo">Prioritários no controle do desmatamento e do fogo na Amazônia</h3>
-        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.fogo.sub">Lista do Ministério do Meio Ambiente, portaria vigente · nº no estado</p>
-        <div class="figura-midia"><svg id="mapListaFogo" role="img" aria-label="Mapa do Brasil com o número de municípios de cada estado na lista de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia" viewBox="0 0 480 460"></svg></div>
-        <div class="map-legend" id="legListaFogo"></div>
+    <!-- 17/10/2026 (HANDOVER_DEFESA_CIVIL §6): as listas federais de risco vieram da Defesa civil.
+         24/10/2026 (editoria): viram um cartão só, no componente do fogo, com um ponto por município. -->
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--mapa figura--dupla figura--dupla-larga cartao-mapa" id="boxListas" data-chave="enquadramento_card.json">
+        <h3 class="figura-titulo" data-conteudo="monitor-de-riscos.listas.titulo">Municípios nas listas federais de risco</h3>
+        <p class="figura-sub" data-conteudo="monitor-de-riscos.listas.sub">Indicados pela União ao cadastro nacional (deslizamento e enchente) e prioritários do fogo · um ponto no centro de cada município</p>
+        <div class="figura-midia">
+          <div class="mapa-dupla"><svg id="mapaListas" role="img" aria-label="Mapa do Brasil com um ponto por município que consta da lista federal de deslizamento e enchente, da lista de prioritários do fogo ou das duas" viewBox="0 0 480 460"></svg></div>
+          <div class="lado-dados" id="listasLado">
+            <dl class="lado-numeros" id="listasNumeros"></dl>
+            <p class="figura-nota" data-conteudo="monitor-de-riscos.listas.ressalva">A lista do fogo alcança apenas os estados da Amazônia Legal: fora dela, a ausência do ponto âmbar não significa que o município não seja prioritário, e sim que a lista não o cobre.</p>
+          </div>
+        </div>
+        <div class="map-legend" id="legListas"></div>
+        <p class="figura-nota" data-conteudo="monitor-de-riscos.listas.posicao">O ponto fica no centro do município, seja ele grande ou pequeno.</p>
       </figure>
     </div>
-  </div>
-
-  <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §5): a consulta do município, com os mesmos
-       controles da inicial e uma tabela; o arquivo do estado é carregado só quando o estado é escolhido. -->
-  <div class="panel" id="consulta">
-    <h2 data-conteudo="monitor-de-riscos.consulta.titulo">Consulte o estado atual do seu município</h2>
-    <div class="tbl-controls">
-      <select id="consultaUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
-      <input id="consultaMun" type="text" list="consultaLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
-      <datalist id="consultaLista"></datalist>
-    </div>
-    <div id="consultaCard" class="meu-card" aria-live="polite" hidden></div>
-    <p class="hint" data-conteudo="monitor-de-riscos.consulta.nota">Dado por estado vale para todo o estado; dado por município é do próprio município; ar e temperatura vêm da estação ou capital mais próxima, nomeada na linha.</p>
   </div>
 
   <!-- 29/09/2026 (decisão da editoria): a seção "Fontes dos sinais de risco" saiu. A tabela de
@@ -236,13 +241,16 @@
   <footer class="site-footer">
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+    <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patrícia Ferrini</a></span>
+    <ul class="rodape-redes"><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/Patty_Ferrini" target="_blank" rel="noopener">X</a></li><li><a href="https://bsky.app/profile/patty-ferrini.bsky.social" target="_blank" rel="noopener">BlueSky</a></li><li><a href="https://medium.com/@pattyferrini" target="_blank" rel="noopener">Medium</a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">26/10/2026</span> · Corte <span id="corteDados">26/10/2026</span> · Coleta <span id="metaColeta">26/10/2026</span> · Publicação <span id="metaPublicacao">26/10/2026</span></span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/monitor-de-riscos.js?v=f5dbd83a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/monitor-de-riscos.js?v=b0d6ede9" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
@@ -252,6 +260,7 @@
     <div class="vw-plugin-top-wrapper"></div>
   </div>
 </div>
+<script src="assets/js/rodape.js?v=5fc12424" defer></script>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
 
 </body>

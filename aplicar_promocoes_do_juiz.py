@@ -123,8 +123,16 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
     if not url:
         return None
     try:
-        from coletores_base import buscar, preservar_evidencia
-        corpo = buscar(url)
+        from coletores_base import buscar, ler, preservar_evidencia
+        # 24/10/2026: já preservado (índice + arquivo em disco) não se baixa de novo; sem isso a
+        # passada interrompida pelo prazo refazia do zero os PDFs que já tinha guardado.
+        for h, it in (ler("evidencias.json", {"itens": {}}).get("itens") or {}).items():
+            if it.get("url") == url and prova_do_item(it):
+                return h
+        from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, _ler_sharepoint_rs
+        # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
+        # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
+        corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
         ext = (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
             ext = "html"
@@ -132,6 +140,21 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
     except Exception as e:  # noqa: BLE001
         print(f"   ! evidência não preservada ({type(e).__name__}): {str(e)[:90]}")
         return None
+
+
+def prova_do_item(it: dict) -> bool:
+    """Há prova preservada do documento? A mesma régua do portão 26 (`prova_preservada`): cópia binária,
+    texto extraído ou captura datada do Wayback; a cópia binária indexada tem de existir em disco.
+    24/10/2026: a régua própria daqui só via binário e snapshot, então o PDF do RS acima de 5 MB,
+    já com texto preservado, seguia recusado."""
+    from coletores_base import RAIZ
+    from verificar_evidencias import prova_preservada
+    return prova_preservada(it) and (not it.get("arquivo") or (RAIZ / it["arquivo"]).exists())
+
+
+def tem_copia(h: str) -> bool:
+    from coletores_base import ler
+    return prova_do_item((ler("evidencias.json", {"itens": {}}).get("itens") or {}).get(h) or {})
 
 
 def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: str) -> dict:
@@ -403,6 +426,12 @@ def main() -> int:
             recusados.append((v, "documento não pôde ser preservado — registro pontuável exige "
                                  "evidência guardada (portão 26)"))
             continue
+        if not tem_copia(hash_preservado):
+            # 24/10/2026: acima do limite de evidência a porta só pede o Wayback, que não lê pasta
+            # privada; 16 do RS entraram sem arquivo e o portão 26 barrou o PR de dado.
+            recusados.append((v, "documento acima do limite de evidência e sem cópia externa — "
+                                 "registro pontuável exige evidência guardada (portão 26)"))
+            continue
         v["hash_evidencia"] = hash_preservado
         municipios.append(registro_do_veredito(v, lat, lon, canal, fonte_base,
                                                hoje.strftime("%d/%m/%Y")))
@@ -412,6 +441,8 @@ def main() -> int:
 
     for v, motivo in recusados:
         print(f"  não aplicado: {v['municipio']}/{v['uf']} — {motivo}")
+        if motivo.startswith("documento não pôde ser preservado"):
+            continue  # 24/10/2026: falha do nosso acesso, não decisão sobre o caso; a marca enterrou as 75 do RS
         v["nao_aplicado"] = {"em": hoje.isoformat(), "motivo": motivo}
 
     if not aplicados:

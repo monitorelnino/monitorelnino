@@ -21,7 +21,7 @@ rollback, §158). Nada aqui pontua, decide ou descarta; a notícia de origem con
 visível no card (§155) até o documento aparecer. Tudo tolerante a falha: rota indisponível
 (QD fora do ar, SearXNG não subiu) fica registrada no `seguimento` da notícia e é tentada de novo.
 
-USO   python seguir_pistas.py [--limite 20] [--refazer-dias 7]   ·   python seguir_pistas.py --autoteste
+USO   python seguir_pistas.py [--limite 60] [--refazer-dias 7]   ·   python seguir_pistas.py --autoteste
 """
 import argparse, datetime, hashlib, json, re, sys, urllib.parse, urllib.request
 from coletores_base import ler, gravar, rodar_autoteste, ua_de, hoje_editorial
@@ -108,8 +108,34 @@ def candidatos_busca(pista, buscar):
     return out
 
 
+def a_seguir(p: dict, d_hoje, refazer_dias: int = 7) -> bool:
+    """Esta pista é uma notícia pendente A/B que o elo deve seguir agora? Um só critério para `seguir()`
+    e para `restantes()` (fila reentrante, 17/10/2026): sem cópia, quem conta é quem segue."""
+    if not (p.get("status") or "").startswith("pista") or p.get("nivel_confianca") not in ("A", "B"):
+        return False
+    if (p.get("origem") or "").startswith("seguimento") or parece_fonte_oficial(p.get("url") or ""):
+        return False   # só notícia (fonte não oficial) é seguida; documento oficial já vai direto ao juiz
+    s = p.get("seguimento") or {}
+    if s.get("data"):
+        try:
+            if (d_hoje - datetime.datetime.strptime(s["data"], "%d/%m/%Y").date()).days < refazer_dias and not s.get("falhas"):
+                return False
+        except ValueError:
+            pass
+    return True
+
+
+def restantes(fila: dict, hoje: str, refazer_dias: int = 7) -> int:
+    """O que sobrou para a rodada seguinte: notícias a seguir que esta noite ainda não tocou. Maior que
+    zero, o elo grava `.parcial` e a reserva o redispara (fila reentrante). Quem já foi seguido hoje não
+    conta, mesmo com falha: assim a conta converge e um pedido que falha não prende o elo para sempre."""
+    d_hoje = datetime.datetime.strptime(hoje, "%d/%m/%Y").date()
+    return sum(1 for p in fila.get("pistas") or []
+               if a_seguir(p, d_hoje, refazer_dias) and (p.get("seguimento") or {}).get("data") != hoje)
+
+
 def seguir(fila, hoje, buscar_html_=buscar_html, consultar_qd_=None, buscar_web_=None, cobertura_qd=frozenset(),
-           limite=20, refazer_dias=7):
+           limite=60, refazer_dias=7):
     """Segue até `limite` notícias pendentes A/B ainda não seguidas (ou seguidas há mais de `refazer_dias`).
     Devolve estatística. Acrescenta pistas novas ao fim da fila; nunca altera status de ninguém.
 
@@ -124,17 +150,8 @@ def seguir(fila, hoje, buscar_html_=buscar_html, consultar_qd_=None, buscar_web_
     for p in fila["pistas"]:
         if est["seguidas"] >= limite:
             break
-        if not (p.get("status") or "").startswith("pista") or p.get("nivel_confianca") not in ("A", "B"):
+        if not a_seguir(p, d_hoje, refazer_dias):
             continue
-        if (p.get("origem") or "").startswith("seguimento") or parece_fonte_oficial(p.get("url") or ""):
-            continue   # só notícia (fonte não oficial) é seguida; documento oficial já vai direto ao juiz
-        s = p.get("seguimento") or {}
-        if s.get("data"):
-            try:
-                if (d_hoje - datetime.datetime.strptime(s["data"], "%d/%m/%Y").date()).days < refazer_dias and not s.get("falhas"):
-                    continue
-            except ValueError:
-                pass
         est["seguidas"] += 1
         cands, falhas = [], []
         try:
@@ -222,7 +239,20 @@ def autoteste():
         e3 = seguir(f, "30/09/2026", buscar_html_=lambda u: HTML)          # 8 dias: refaz, mas não duplica
         return e2["seguidas"] == 0 and e3["seguidas"] == 1 and e3["novas"] == 0
 
+    def t_restante_converge_para_zero_depois_de_seguir():
+        f = base(); hoje = "22/09/2026"
+        antes = restantes(f, hoje)                      # n1 pendente, nunca seguida: 1
+        seguir(f, hoje, buscar_html_=lambda u: None)    # segue e marca hoje, mesmo com falha
+        return antes == 1 and restantes(f, hoje) == 0
+
+    def t_restante_limite_sobra_para_a_rodada_seguinte():
+        f = base(); f["pistas"].append(dict(f["pistas"][0], id="n2", url="https://jornal2.com.br/x"))
+        seguir(f, "22/09/2026", buscar_html_=lambda u: None, limite=1)
+        return restantes(f, "22/09/2026") == 1 and restantes(f, "23/09/2026") == 1
+
     return rodar_autoteste({
+        "restante conta só o que a noite ainda não tocou (converge para zero)": t_restante_converge_para_zero_depois_de_seguir,
+        "limite por rodada deixa o restante para a seguinte (fila reentrante)": t_restante_limite_sobra_para_a_rodada_seguinte,
         "link oficial da notícia vira pista nova ligada à de origem": t_link_da_noticia_vira_pista_nova,
         "não segue fonte oficial (vai direto ao juiz) nem nível C": t_nao_segue_fonte_oficial_nem_C,
         "nunca altera o status da notícia (continua pendente, visível no card)": t_nunca_altera_status_da_noticia,
@@ -236,12 +266,16 @@ def autoteste():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--autoteste", action="store_true")
-    ap.add_argument("--limite", type=int, default=20)
+    ap.add_argument("--limite", type=int, default=60)
     ap.add_argument("--refazer-dias", type=int, default=7)
+    ap.add_argument("--restante", action="store_true")
     a = ap.parse_args()
     if a.autoteste:
         sys.exit(autoteste())
     fila = ler("pistas_imprensa.json") or {"pistas": []}
+    if a.restante:   # o elo pergunta o que sobrou, antes de decidir `.feito` ou `.parcial` (sem rede)
+        print(restantes(fila, hoje_editorial().strftime("%d/%m/%Y"), a.refazer_dias))
+        sys.exit(0)
     cob = {k for k, v in ((ler("cobertura_qd.json") or {}).get("municipios") or {}).items()
            if isinstance(v, dict) and v.get("cobertura_qd")}
     try:

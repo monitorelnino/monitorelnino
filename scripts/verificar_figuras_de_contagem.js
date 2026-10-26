@@ -10,7 +10,7 @@
  *   node scripts/verificar_figuras_de_contagem.js --autoteste
  *   node scripts/verificar_figuras_de_contagem.js
  */
-const path = require("path"), fs = require("fs"), http = require("http");
+const path = require("path");
 const RAIZ = path.join(__dirname, "..");
 /* 17/10/2026 (HANDOVER_DEFESA_CIVIL): os mapas de contagem por estado saíram da página (o das emergências é de pontos); a regra da rampa segue aqui para o mapa de contagem que voltar. */
 const MAPAS = [];
@@ -50,10 +50,7 @@ function autoteste() {
 }
 async function principal() {
   const { chromium } = require("playwright");
-  const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png" };
-  const srv = http.createServer((q, r) => { const u = decodeURIComponent(q.url.split("?")[0]); const f = path.join(RAIZ, u === "/" ? "index.html" : u);
-    if (!f.startsWith(RAIZ) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { r.writeHead(404); return r.end(); }
-    r.writeHead(200, { "Content-Type": MIME[path.extname(f)] || "application/octet-stream" }); fs.createReadStream(f).pipe(r); });
+  const srv = require("./_servidor.js")(RAIZ);
   await new Promise(r => srv.listen(0, "127.0.0.1", r));
   const b = await chromium.launch(); const page = await b.newPage({ viewport: { width: 1280, height: 900 } });
   let falhas = [];

@@ -61,47 +61,27 @@
       "acao_relacionada": null
     },
     "monitor-de-riscos.html#boxAvisos": {
-      "tipo": "tabela",
-      "pergunta_que_responde": "Quantos municípios estão cobertos por aviso de tempo severo do INMET em vigor, por grau do aviso?",
+      "tipo": "mapa e lista",
+      "pergunta_que_responde": "Que municípios estão sob aviso do INMET ou alerta do Cemaden em vigor, e em que grau ou nível?",
       "dimensao_da_preparacao": "alerta em vigor",
       "universo": "os municípios do Brasil, na consulta mais recente",
-      "unidade_de_analise": "município, agregado por grau",
+      "unidade_de_analise": "município; na escada, agregado pelo maior grau do aviso; na lista, por nível do alerta e estado",
       "territorio": "Brasil",
       "periodo": "consulta mais recente, com data e hora declaradas",
-      "variavel_principal": "número de municípios cobertos por aviso em vigor, por grau",
+      "variavel_principal": "maior grau de aviso do INMET por município e nível do alerta do Cemaden",
       "denominador": null,
-      "fonte": "INMET, avisos meteorológicos",
-      "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes com aviso de cada grau; um município com avisos de dois graus conta nos dois. Grau e fenômeno no vocabulário do INMET.",
+      "fonte": "INMET, avisos meteorológicos; Cemaden, alertas vigentes",
+      "metodologia": "Contagem direta dos municípios do arquivo de avisos vigentes, cada um no maior grau de aviso que tem; a posição é a do cadastro de municípios. Grau, fenômeno e nível no vocabulário de cada órgão.",
       "conclusoes_permitidas": [
         "quantos municípios estão sob aviso de cada grau na consulta declarada",
-        "quais estados e fenômenos aparecem em cada grau"
+        "quais fenômenos aparecem em cada grau",
+        "quais municípios estão sob alerta do Cemaden e em que nível"
       ],
       "conclusoes_nao_permitidas": [
         "que o aviso mede dano ocorrido",
         "comparação entre estados como medida de risco",
-        "que município sem aviso esteja seguro"
-      ],
-      "funcao_narrativa": "evidência do agora",
-      "acao_relacionada": null
-    },
-    "monitor-de-riscos.html#boxCemaden": {
-      "tipo": "tabela",
-      "pergunta_que_responde": "Quais municípios estão sob alerta do Cemaden em vigor agora, e em que nível?",
-      "dimensao_da_preparacao": "alerta em vigor",
-      "universo": "os municípios com alerta do Cemaden em vigor na consulta mais recente",
-      "unidade_de_analise": "município, agrupado por nível e estado",
-      "territorio": "Brasil",
-      "periodo": "consulta mais recente, com data e hora declaradas",
-      "variavel_principal": "nível do alerta e municípios nomeados",
-      "denominador": null,
-      "fonte": "Cemaden, alertas vigentes",
-      "metodologia": "Lista direta do arquivo de alertas vigentes; nível no vocabulário do Cemaden.",
-      "conclusoes_permitidas": [
-        "quais municípios estão sob alerta e em que nível, na consulta declarada"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o estado inteiro está sob alerta: o alerta é municipal",
-        "que a ausência de alerta indica segurança"
+        "que município sem aviso ou sem alerta esteja seguro",
+        "que o estado inteiro está sob alerta do Cemaden: o alerta é municipal"
       ],
       "funcao_narrativa": "evidência do agora",
       "acao_relacionada": null
@@ -204,41 +184,26 @@
     },
     "saude.html#boxMonitor": {
       "tipo": "mapa",
-      "pergunta_que_responde": "Qual a prontidão sanitária de cada estado para o ciclo?",
+      "pergunta_que_responde": "Que tipo de plano de saúde para este El Niño cada secretaria estadual publicou?",
       "dimensao_da_preparacao": "planejamento e instrumento estadual de saúde",
-      "universo": "27 UFs, das quais as verificadas recebem número",
+      "universo": "27 UFs, cada uma num dos seis tipos de plano (inclusive não localizado e ainda não verificado)",
       "unidade_de_analise": "UF",
       "territorio": "Brasil",
       "periodo": "corte da edição",
-      "variavel_principal": "prontidão sanitária, de 0 a 100",
-      "denominador": "média de três componentes: instrumento, cobertura populacional sanitária e antecipação",
+      "variavel_principal": "tipo de plano estadual de saúde (feito para este El Niño, atualizado, recorrente, em elaboração, não localizado, ainda não verificado)",
+      "denominador": "27 UFs; a nota de cada estado no MARÉ Saúde é a do tipo de plano, pela escada do dado (metodo.escada)",
       "fonte": "banco de registros do Monitor",
-      "metodologia": "Metodologia §31; UF não verificada fica cinza e sem número",
+      "metodologia": "METODOLOGIA, seção do MARÉ Saúde v0.7; UF não verificada fica cinza-quente e não recebe tipo",
       "conclusoes_permitidas": [
-        "extensão do arcabouço sanitário publicado e verificado em cada UF"
+        "que tipo de plano estadual foi localizado em cada UF até o corte, com o documento, a data e o órgão na ficha"
       ],
       "conclusoes_nao_permitidas": [
         "estado de saúde da população",
         "capacidade de resposta efetiva",
-        "UF cinza como UF sem plano"
+        "UF não verificada como UF sem plano"
       ],
-      "funcao_narrativa": "síntese da dimensão de saúde, depois da camada observada",
+      "funcao_narrativa": "síntese da preparação estadual em saúde, antes da consulta por município",
       "acao_relacionada": null
-    },
-    "saude.html#boxRiscoSan": {
-      "tipo": "etiquetas de sigla por família de risco",
-      "pergunta_que_responde": "Qual família de risco sanitário os boletins preveem para cada estado neste ciclo?",
-      "dimensao_da_preparacao": "o risco previsto a que o estado deveria responder",
-      "universo": "27 unidades da federação",
-      "unidade_de_analise": "unidade da federação",
-      "territorio": "Brasil",
-      "periodo": "boletins nº 1 a 3 do ciclo 2026/2027",
-      "variavel_principal": "família de risco sanitário previsto (seca, calor e fogo; chuvas extremas; as duas)",
-      "fonte": "Painel El Niño 2026-2027 (CEMADEN/INPE), boletins nº 1 a 3",
-      "metodologia": "Agrupamento das doenças citadas no boletim em duas famílias climáticas; estado citado nas duas aparece como tal. Estado sem citação aparece sem risco previsto registrado.",
-      "conclusoes_permitidas": "dizer que família de risco o boletim prevê para o estado",
-      "conclusoes_nao_permitidas": "ler previsão como ocorrência; comparar intensidade entre estados",
-      "funcao_narrativa": "mostra a que o preparo de cada estado deveria responder"
     },
     "monitor-de-riscos.html#boxEpisodios": {
       "tipo": "série temporal",
@@ -288,46 +253,28 @@
       "funcao_narrativa": "a leitura semanal mais recente do Pacífico, ao lado do índice que classifica o episódio",
       "acao_relacionada": null
     },
-    "monitor-de-riscos.html#boxListaIndicados": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado a União indicou ao cadastro nacional de áreas suscetíveis a deslizamento e enchente (Lei 12.340, art. 3º-A)?",
+    "monitor-de-riscos.html#boxListas": {
+      "tipo": "mapa de pontos",
+      "pergunta_que_responde": "Que municípios constam da lista federal de deslizamento e enchente (Lei 12.340, art. 3º-A), da lista de prioritários do fogo na Amazônia, ou das duas?",
       "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os 2.095 municípios indicados pela União (Nota Técnica nº 2/2025 e nº 1/2023; cadastro nacional, MIDR)",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Brasil",
+      "universo": "os municípios indicados pela União ao cadastro nacional de áreas suscetíveis (Nota Técnica nº 2/2025 e nº 1/2023, MIDR e Casa Civil) e os da lista de prioritários do Ministério do Meio Ambiente em vigor",
+      "unidade_de_analise": "município (ponto no centro do município)",
+      "territorio": "Brasil; a lista do fogo cobre só a Amazônia Legal",
       "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado indicados pela União",
-      "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023",
+      "variavel_principal": "lista em que o município consta: deslizamento ou enchente, fogo, ou as duas",
+      "fonte": "MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023; Ministério do Meio Ambiente, portaria vigente",
       "conclusoes_permitidas": [
-        "quantos municípios de cada estado constam da lista federal"
+        "quantos municípios constam de cada lista e das duas",
+        "onde, no território, estão os municípios de cada lista"
       ],
       "conclusoes_nao_permitidas": [
         "que constar da lista é estar em emergência",
-        "que município fora da lista não tem risco: a lista é de um risco específico"
+        "que município fora da lista não tem risco: cada lista é de um risco específico",
+        "que a ausência do ponto de fogo fora da Amazônia Legal significa que o município não seja prioritário: a lista não o cobre",
+        "que município grande conte mais que pequeno: o ponto fica no centro de cada um"
       ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado do cadastro federal, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado. 'Plano localizado' exclui plano em elaboração, estrutura (comitê ou gabinete) e cobertura estadual."
-    },
-    "monitor-de-riscos.html#boxListaFogo": {
-      "tipo": "mapa por estado",
-      "pergunta_que_responde": "Quantos municípios de cada estado constam da lista federal de prioritários para o controle do desmatamento e dos incêndios florestais na Amazônia?",
-      "dimensao_da_preparacao": "risco reconhecido oficialmente",
-      "universo": "os municípios da lista de prioritários do Ministério do Meio Ambiente em vigor",
-      "unidade_de_analise": "município, agregado por estado",
-      "territorio": "Amazônia Legal",
-      "periodo": "corte da edição",
-      "variavel_principal": "número de municípios do estado na lista de prioritários",
-      "fonte": "Ministério do Meio Ambiente, portaria vigente",
-      "conclusoes_permitidas": [
-        "quantos municípios de cada estado constam da lista em vigor"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que constar da lista mede o desmatamento ou o fogo do ciclo",
-        "que município fora da lista não tem risco de fogo",
-        "que a lista cobre o país: ela é da Amazônia Legal"
-      ],
-      "funcao_narrativa": "contexto oficial do risco, ao lado dos blocos de chuva, seca e fogo do Monitor de riscos",
-      "metodologia": "Contagem nominal por estado da lista em vigor do Ministério do Meio Ambiente, casada por código IBGE com o banco de registros do MARÉ para a coluna de plano localizado."
+      "funcao_narrativa": "contexto oficial do risco, no fim da seção de chuva, seca e fogo do Monitor de riscos",
+      "metodologia": "Marcas por código IBGE de enquadramento_card.json; posição do cadastro de municípios do IBGE. Município nas duas listas é desenhado por cima."
     },
     "defesa-civil.html#boxEmergencias": {
       "tipo": "mapa de pontos",

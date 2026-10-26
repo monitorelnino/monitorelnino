@@ -182,7 +182,12 @@ setTimeout(() => {
       teste("proteja-se: quatro telefones de emergência, tocáveis",
         ["199","193","192","190"].every(n => [...dP.querySelectorAll(".emerg-cartao")]
           .some(a => a.textContent.includes(n) && a.getAttribute("href") === "tel:" + n)));
-      fim();
+      // 24/10/2026: a âncora de um guia (#guia-dengue, vinda do cartão da cidade) abre a aba do painel escondido
+      const dA = renderizar("proteja-se.html", raiz, { url: "https://localhost/proteja-se.html#guia-dengue" }).dom.window.document;
+      setTimeout(() => {
+        teste("proteja-se: #guia-dengue na URL deixa o painel da dengue visível", dA.getElementById("guia-dengue").hidden === false && dA.getElementById("tab-dengue").getAttribute("aria-selected") === "true");
+        fim();
+      }, 400);
     }, 400);
   } catch (e) { teste("proteja-se: seletor/acordeões (" + e.message + ")", false); fim(); }
   const jargao = ["posição ordinal", "pesos iguais", "peso aritmético", "camada declarada", "Confiança da verificação", "Pendências de verificação"];
@@ -304,7 +309,7 @@ setTimeout(() => {
     const IDS_DADO = {
       "index.html": ["heroProcura", "respNum", "metaAtualizado", "corteDados"],
       // 02/10/2026 (bloco A): os medidores e o corte saíram do topo; os cartões do topo são outros.
-      "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta", "nCalorMun"],
+      "saude.html": ["nDengueSE", "nSragSE", "nUFsAlerta"],
       // `notaFogoCorte` saiu com o painel da rota do fogo (bloco B, 01/10/2026).
       // 02/10/2026: `corteFin` saiu da página (a data da página é a da última coleta e vive
       // nos cartões da semana). Campo que o portão cobra e a página não tem reprova para sempre.

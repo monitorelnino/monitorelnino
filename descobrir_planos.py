@@ -43,11 +43,14 @@ eleitoral detectado pelo cliente comum (coletores_base.buscar) = fonte suspensa 
 Uso: python3 descobrir_planos.py [--limite N] [--setor saude|defesa_civil]
      python3 descobrir_planos.py --autoteste    (offline)
 """
+import contextlib
 import json
 import re
 import sys
+import threading
 import time
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait as _esperar
 
 import funil
 from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
@@ -375,6 +378,29 @@ def autoteste() -> int:
                 and "https://bonito.ms.gov.br/doc/plancon-2024.pdf" in urls
                 and r["pistas"][0]["hash_evidencia"] == "h-falso" and r["pistas"][0]["data_publicacao"] == "2024-03-01")
 
+    def t_pausa_por_host_em_paralelo():
+        # 22/10/2026 (§6.2): dois hosts, 8 pedidos (4 por host), 8 fios. Nenhum host recebe dois
+        # pedidos com menos de PAUSA entre eles, e os dois hosts andam em paralelo (serial seria ~0,8 s).
+        import unittest.mock as mock
+        import concurrent.futures as cf
+        marcas = {"a.gov": [], "b.gov": []}
+        trava = threading.Lock()
+
+        def pedido(host):
+            with _pedido_ao_host(host):
+                with trava:
+                    marcas[host].append(time.monotonic())
+                time.sleep(0.01)
+
+        with mock.patch(f"{__name__}.PAUSA_POR_DOMINIO", 0.1):
+            t0 = time.monotonic()
+            with cf.ThreadPoolExecutor(max_workers=8) as p:
+                list(p.map(pedido, ["a.gov", "b.gov"] * 4))
+            total = time.monotonic() - t0
+        espacos = [y - x for v in marcas.values() for x, y in zip(v, v[1:])]
+        return (all(e >= 0.1 - 0.005 for e in espacos) and len(marcas["a.gov"]) == 4
+                and len(marcas["b.gov"]) == 4 and total < 0.7)
+
     def t_rodada_de_municipios_retoma_e_grava_no_prazo():
         import unittest.mock as mock
         import tempfile
@@ -399,7 +425,9 @@ def autoteste() -> int:
         import os
         os.unlink(f.name)
         feitos = gravados.get(RESULTADO_DA_RODADA, {}).get("municipios", {})
-        return set(feitos) == {"1", "2"} and len(lotes) == 1   # 2 pulado (já lido), 3 interrompeu, 4 ficou para depois
+        # 22/10/2026: com fios, o 4 pode já ter sido lido antes do prazo; o que vale é: o 3 interrompeu
+        # e não foi gravado, o 1 foi gravado, e a gravação aconteceu uma vez.
+        return "1" in feitos and "3" not in feitos and set(feitos) <= {"1", "2", "4"} and len(lotes) == 1
 
     return rodar_autoteste({
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
@@ -416,6 +444,7 @@ def autoteste() -> int:
         "portal da prefeitura: a pista passa pela porta única": t_pista_do_portal_passa_pela_porta,
         "portal da prefeitura: recusa e endereço mudo não viram plano nem ausência de plano": t_portal_recusa_e_ausencia_nao_viram_plano,
         "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
+        "pausa por host em paralelo: nunca dois pedidos ao mesmo host sem a pausa": t_pausa_por_host_em_paralelo,
         "rodada de municípios: retoma no dia e grava o lido no prazo": t_rodada_de_municipios_retoma_e_grava_no_prazo,
     })
 
@@ -554,6 +583,28 @@ LIMITE_PDF_POR_MUNICIPIO = 3
 RECUSAS_DE_FONTE = (401, 403, 429, 451)
 RESULTADO_DA_RODADA = "s2id_busca_dirigida.json"
 PAUSA_POR_DOMINIO = 2.0
+WORKERS_MUNICIPAIS = 8
+"""Municípios em paralelo (22/10/2026, regime de prioridade §6.2). Cada município é outro domínio:
+o que se serializa é o pedido ao MESMO host, por `_pedido_ao_host`. A política de acesso não muda."""
+
+_HOSTS = {}                      # host -> [trava do host, instante do último pedido (monotonic)]
+_HOSTS_LOCK = threading.Lock()
+
+
+@contextlib.contextmanager
+def _pedido_ao_host(host: str, dormir=None):
+    """Um pedido por vez ao mesmo host, com PAUSA_POR_DOMINIO entre dois (§11). Hosts diferentes
+    andam em paralelo. O instante conta a partir do FIM do pedido, como antes."""
+    with _HOSTS_LOCK:
+        par = _HOSTS.setdefault(host, [threading.Lock(), 0.0])
+    with par[0]:
+        falta = PAUSA_POR_DOMINIO - (time.monotonic() - par[1])
+        if falta > 0:
+            (dormir or time.sleep)(falta)
+        try:
+            yield
+        finally:
+            par[1] = time.monotonic()
 
 
 def _so_letras(texto: str) -> str:
@@ -616,7 +667,8 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
     dominio = home = None
     for d in dominios_do_municipio(nome, uf):
         try:
-            corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
+            with _pedido_ao_host(d):
+                corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
         except urllib.error.HTTPError as e:
             if e.code in RECUSAS_DE_FONTE:
                 registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
@@ -635,17 +687,17 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
         return {"dominio": None, "situacao": "portal_nao_verificado", "pistas": []}
     itens, vistos, respondeu = [], set(), False
     for termo in TERMOS_MUNICIPIO:
-        time.sleep(PAUSA_POR_DOMINIO)
-        achados, ok = consultar_wp_json(dominio, termo)
+        with _pedido_ao_host(dominio):
+            achados, ok = consultar_wp_json(dominio, termo)
         respondeu = respondeu or ok
         for a in achados:
             if a["url"] in vistos or len(vistos) >= LIMITE_PDF_POR_MUNICIPIO:
                 continue
             vistos.add(a["url"])
             h = None
-            time.sleep(PAUSA_POR_DOMINIO)
             try:   # uma tentativa: 401/403/429/451 no PDF não se repete
-                h = preservar_evidencia(buscar_uma_vez(a["url"], timeout=40), a["url"], "pdf", "descobrir_planos")
+                with _pedido_ao_host(urllib.parse.urlparse(a["url"]).netloc.lower()):
+                    h = preservar_evidencia(buscar_uma_vez(a["url"], timeout=40), a["url"], "pdf", "descobrir_planos")
             except Exception:  # noqa: BLE001 — sem a cópia a pista vale, declarada sem hash
                 pass
             itens.append((a["url"], a["titulo"], (a["data_publicacao"] or "")[:10], h))
@@ -667,17 +719,33 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
     feitos = ler(RESULTADO_DA_RODADA, {"municipios": {}})
     feitos.setdefault("municipios", {})
     fila = [c for c in doc.get("fila", []) if c in por_cod and feitos["municipios"].get(c, {}).get("consultado_em") != hoje]
-    pistas, lidos = [], 0
-    try:
-        for cod in fila[:limite] if limite else fila:
-            ref = por_cod[cod]
-            r = descobrir_no_portal(ref["nome"], ref["uf"], cod, hoje)
-            pistas.extend(r["pistas"])
-            feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
-                                         "motivo": r.get("motivo"), "pistas": len(r["pistas"])}
-            lidos += 1
-    except KeyboardInterrupt:
-        print(f"[prazo] interrompido depois de {lidos} município(s); gravando o que foi lido.")
+    pistas, lidos, gravados = [], 0, set()
+    todo = fila[:limite] if limite else fila
+
+    def _registrar(cod, r):   # na thread principal: uma escrita por vez, sem perder linha
+        nonlocal lidos
+        pistas.extend(r["pistas"])
+        feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
+                                     "motivo": r.get("motivo"), "pistas": len(r["pistas"])}
+        gravados.add(cod)
+        lidos += 1
+
+    with ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS) as pool:
+        futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje): c
+                   for c in todo}
+        try:
+            for f in as_completed(futuros):
+                _registrar(futuros[f], f.result())
+        except KeyboardInterrupt:
+            # Prazo: os que ainda não começaram ficam para depois; os em curso terminam (pedidos com
+            # timeout) e entram no que foi lido, em vez de serem refeitos no próximo dia.
+            print("[prazo] interrompido; gravando o que foi lido.")
+            for f in futuros:
+                f.cancel()
+            _esperar(futuros)
+            for f, cod in futuros.items():
+                if not f.cancelled() and cod not in gravados and f.exception() is None:
+                    _registrar(cod, f.result())
     balanco = gravar_lote(pistas, origem="descoberta")
     feitos["gerado_em"] = hoje
     gravar(RESULTADO_DA_RODADA, feitos)

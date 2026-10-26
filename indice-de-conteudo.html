@@ -23,28 +23,32 @@ font-size:12px}th:first-child{width:4rem}}
 <h1>Índice de conteúdo</h1>
 <div class="aviso"><strong>Material interno.</strong> Esta página não vai ao domínio público: ela lista identificadores e moldes, que são o avesso do site. Serve para a editoria apontar o trecho que quer mudar, pelo <strong>identificador</strong>, num pedido em <code>robo-registro/edicoes/AAAA-MM-DD-&lt;id&gt;.md</code>.</div>
 <p>Gerado por <code>scripts/gerar_indice_de_conteudo.py</code> — não editar à mão. Para ver a figura de um identificador: <code>python3 scripts/renderizar_figura.py &lt;identificador&gt;</code>.</p>
-<h2>blog <small>(5 trechos)</small></h2>
-<h3>anteriores</h3>
+<h2>blog <small>(6 trechos)</small></h2>
+<h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>blog.anteriores.titulo_da_secao</code></td><td>Textos anteriores</td></tr>
+<tr><td>abertura</td><td><code>blog.abertura</code></td><td>Os textos do Blog do MARÉ são escritos integralmente por inteligência artificial e aprovados pela editoria antes da publicação. Cada texto parte dos dados que o MARÉ coleta de fontes oficiais (diários oficiais, registros da defesa civil, sistemas do Ministério da Saúde) e responde a perguntas de interesse público definidas com a editoria, com prioridade aos estados e regiões mais atingidos por seca, estiagem, fogo, chuva forte, enchentes e inundações. Todo fato tem fonte e data.</td></tr>
+</table>
+<h3>colunas · sem_texto</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>blog.colunas.sem_texto</code></td><td><span class="molde">Nenhum texto publicado nesta editoria até {data}.</span><br><span class="ex">exemplo: Nenhum texto publicado nesta editoria até 3.</span></td></tr>
+</table>
+<h3>destaque · ler</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>blog.destaque.ler</code></td><td>Ler o texto →</td></tr>
+</table>
+<h3>metodologia · link</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>blog.metodologia.link</code></td><td>Como os textos são produzidos</td></tr>
 </table>
 <h3>textos · rotulo_fontes</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>blog.textos.rotulo_fontes</code></td><td><span class="molde">Fontes: {fontes}</span><br><span class="ex">exemplo: Fontes: 3</span></td></tr>
 </table>
-<h3>textos · como_citar</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>blog.textos.como_citar</code></td><td><span class="molde">Como citar: Editoria do MARÉ. {titulo}. Blog do MARÉ, {data}.</span><br><span class="ex">exemplo: Como citar: Editoria do MARÉ. 3. Blog do MARÉ, 3.</span></td></tr>
-</table>
-<h3>textos · sem_texto</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>blog.textos.sem_texto</code></td><td>Nenhum texto publicado até agora.</td></tr>
-</table>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>blog.titulo_da_pagina</code></td><td>Blog do MARÉ</td></tr>
 </table>
-<h2>defesa-civil <small>(27 trechos)</small></h2>
+<h2>defesa-civil <small>(28 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.titulo_da_pagina</code></td><td>Defesa civil</td></tr>
@@ -89,9 +93,9 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>defesa-civil.dc-topo.topo_reconhecidos_variacao.rotulo</code></td><td>Reconhecidos pela União</td></tr>
 </table>
-<h3>dc-topo · topo_pendencia</h3>
+<h3>dc-topo · topo_prazo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>rotulo</td><td><code>defesa-civil.dc-topo.topo_pendencia.rotulo</code></td><td>Decreto há mais de 30 dias sem reconhecimento</td></tr>
+<tr><td>rotulo</td><td><code>defesa-civil.dc-topo.topo_prazo.rotulo</code></td><td>Prazo mediano para o reconhecimento</td></tr>
 </table>
 <h3>dc-topo · topo_populacao_variacao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -144,11 +148,18 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>emergencias · mapa</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>defesa-civil.emergencias.mapa.titulo</code></td><td>Municípios com decreto de emergência desde 29/06/2026, por evento declarado e etapa</td></tr>
-<tr><td>legenda</td><td><code>defesa-civil.emergencias.mapa.legenda</code></td><td><span class="molde">nº de municípios: {n} · evento declarado no ato · ponto cheio: reconhecido pela União · ponto vazado: só decreto · consulta de {data}</span><br><span class="ex">exemplo: nº de municípios: 3 · evento declarado no ato · ponto cheio: reconhecido pela União · ponto vazado: só decreto · consulta de 3</span></td></tr>
 </table>
 <h3>emergencias · barras</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>defesa-civil.emergencias.barras.titulo</code></td><td>Decretos por tipo de evento declarado · nº de decretos</td></tr>
+</table>
+<h3>emergencias · mapa.municipios</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>defesa-civil.emergencias.mapa.municipios</code></td><td><span class="molde">{n} municípios · evento declarado no ato</span><br><span class="ex">exemplo: 3 municípios · evento declarado no ato</span></td></tr>
+</table>
+<h3>emergencias · barras.total</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>defesa-civil.emergencias.barras.total</code></td><td>Total</td></tr>
 </table>
 <h2>financiamento <small>(46 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
@@ -314,7 +325,11 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>resumo</td><td><code>financiamento.caminhos.tabela.resumo</code></td><td>Ver em tabela</td></tr>
 </table>
-<h2>imprensa <small>(96 trechos)</small></h2>
+<h2>imprensa <small>(99 trechos)</small></h2>
+<h3>pedidos</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>rodape.pedidos</code></td><td>Recortes por estado ou município, cruzamentos e entrevistas: &lt;a href=&quot;mailto:imprensa@futuraevidencelab.com.br&quot;&gt;imprensa@futuraevidencelab.com.br&lt;/a&gt;</td></tr>
+</table>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>imprensa.titulo_da_pagina</code></td><td>Imprensa</td></tr>
@@ -458,6 +473,14 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>concluir · saude.6</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>imprensa.concluir.saude.6</code></td><td>Não recomendamos. A declaração (nacional, pelo Ministério da Saúde; estadual ou municipal, pelo governo local) é um ato administrativo que abre instrumentos de resposta. Lugares em situação parecida podem declarar ou não. O site mostra as declarações num indicador separado, como resposta, não como medida de gravidade.</td></tr>
+</table>
+<h3>concluir · saude.7.pergunta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>imprensa.concluir.saude.7.pergunta</code></td><td>Os casos mostrados na página de Saúde são causados pelo El Niño?</td></tr>
+</table>
+<h3>concluir · saude.7</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>imprensa.concluir.saude.7</code></td><td>A página não faz essa relação. Ela mostra o que os órgãos de saúde registram, doença a doença, com a fonte e a faixa habitual para a época. Atribuir um aumento de casos ao El Niño exige um estudo próprio, que separe o efeito do clima de outros fatores.</td></tr>
 </table>
 <h3>concluir · financiamento</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -675,10 +698,10 @@ font-size:12px}th:first-child{width:4rem}}
 <tr><td>titulo</td><td><code>imprensa.erratas.nome.titulo</code></td><td>Nome e descrição</td></tr>
 <tr><td>texto</td><td><code>imprensa.erratas.nome</code></td><td>Escreve-se MARÉ · Monitor de Antecipação e Resposta ao El Niño; nas menções seguintes, MARÉ. &quot;O MARÉ é um monitor de jornalismo de dados do Futura Evidence Lab que acompanha, com documentos oficiais, como estados e municípios brasileiros se preparam para o El Niño 2026/2027 e como respondem a ele.&quot;</td></tr>
 </table>
-<h2>index <small>(33 trechos)</small></h2>
+<h2>index <small>(54 trechos)</small></h2>
 <h3>intro</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.intro</code></td><td>O MARÉ reúne num só lugar como o Brasil se prepara para o El Niño 2026/2027 e como responde a ele. Dois índices, o MARÉ Legal e o MARÉ Saúde, mostram o que estados e municípios publicaram: planos de contingência, quem coordena a resposta, quanta gente está coberta. Ao lado deles, os sinais do fenômeno medidos pelos órgãos de clima, os alertas e as emergências declaradas, o dinheiro público que chega a cada lugar, o que os órgãos de saúde registram e o que fazer em cada tipo de alerta. Tudo vem de fonte oficial e é atualizado todos os dias. Uma publicação do Futura Evidence Lab para jornalistas, gestores, pesquisadores e cidadãos.</td></tr>
+<tr><td>texto</td><td><code>index.intro</code></td><td>O MARÉ reúne num só lugar como o Brasil se prepara para o El Niño 2026/2027 e como responde a ele. Dois índices, o MARÉ Legal e o MARÉ Saúde, mostram como os estados e municípios se prepararam: planos de contingência, quem coordena a resposta, qual o tamanho da população coberta e quais as principais doenças relacionadas ao fenômeno. O monitor traz também os sinais do El Niño medidos pelos órgãos de clima, os alertas e as emergências declaradas, o dinheiro público destinado à população, o que os órgãos de saúde registram e o que fazer em cada tipo de alerta. Tudo vem de fonte oficial e é atualizado todos os dias. Uma publicação do &lt;a href=&quot;https://www.futuraevidencelab.com.br/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Futura Evidence Lab&lt;/a&gt; para jornalistas, gestores, pesquisadores e cidadãos.</td></tr>
 </table>
 <h3>abertura · boletim</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -686,7 +709,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>abertura · lei.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.abertura.lei.molde</code></td><td><span class="molde">A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. &lt;a href=&quot;https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente&lt;/a&gt; precisam ter um plano de contingência, avaliado e atualizado todo ano; &lt;a href=&quot;monitor-de-riscos.html#boxListaIndicados&quot;&gt;a União já indicou {indicados_uniao} municípios para esse cadastro&lt;/a&gt;. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span><br><span class="ex">exemplo: A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. &lt;a href=&quot;https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente&lt;/a&gt; precisam ter um plano de contingência, avaliado e atualizado todo ano; &lt;a href=&quot;monitor-de-riscos.html#boxListaIndicados&quot;&gt;a União já indicou 3 municípios para esse cadastro&lt;/a&gt;. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span></td></tr>
+<tr><td>texto</td><td><code>index.abertura.lei.molde</code></td><td><span class="molde">A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. &lt;a href=&quot;https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente&lt;/a&gt; precisam ter um plano de contingência, avaliado e atualizado todo ano; &lt;a href=&quot;monitor-de-riscos.html#boxListas&quot;&gt;a União já indicou {indicados_uniao} municípios para esse cadastro&lt;/a&gt;. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span><br><span class="ex">exemplo: A lei de proteção e defesa civil diz quem deve se preparar. Cada estado precisa ter um plano estadual, revisado a cada dois anos. &lt;a href=&quot;https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/cadastro-nacional-de-municipios&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Os municípios inscritos no cadastro nacional de áreas sujeitas a deslizamento e enchente&lt;/a&gt; precisam ter um plano de contingência, avaliado e atualizado todo ano; &lt;a href=&quot;monitor-de-riscos.html#boxListas&quot;&gt;a União já indicou 3 municípios para esse cadastro&lt;/a&gt;. Para os demais municípios, e para seca, fogo e calor, a lei não fixa prazo nem plano específico: vale o dever geral de prevenção, que se aplica a todos os governos.</span></td></tr>
 </table>
 <h3>abertura · procura.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -704,7 +727,6 @@ font-size:12px}th:first-child{width:4rem}}
 <tr><td>titulo_da_secao_2</td><td><code>index.titulo_da_secao_2</code></td><td>Sua cidade: o plano foi publicado?</td></tr>
 <tr><td>titulo_da_secao_3</td><td><code>index.titulo_da_secao_3</code></td><td>O MARÉ Legal por estado</td></tr>
 <tr><td>titulo_da_secao_4</td><td><code>index.titulo_da_secao_4</code></td><td>Você encontrou um plano ou decreto que ainda não está no MARÉ Legal?</td></tr>
-<tr><td>resumo</td><td><code>index.resumo</code></td><td>Número do ato ou alguma observação sobre o documento (opcional)</td></tr>
 <tr><td>nota_2</td><td><code>index.nota_2</code></td><td>&lt;a href=&quot;METODOLOGIA.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;metodologia completa&lt;/a&gt; · &lt;a href=&quot;MARE_Indice_Documentacao.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documento do índice&lt;/a&gt;</td></tr>
 </table>
 <h3>resposta · linha</h3>
@@ -729,7 +751,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>municipio · varredura.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.municipio.varredura.molde</code></td><td><span class="molde">Varredura {nivel} em {data}; plano de contingência não localizado até o corte. Ainda não verificamos a cidade com todas as fontes.</span><br><span class="ex">exemplo: Varredura 3 em 3; plano de contingência não localizado até o corte. Ainda não verificamos a cidade com todas as fontes.</span></td></tr>
+<tr><td>texto</td><td><code>index.municipio.varredura.molde</code></td><td><span class="molde">Varredura {nivel} em {data}; plano de contingência não localizado até o corte.</span><br><span class="ex">exemplo: Varredura 3 em 3; plano de contingência não localizado até o corte.</span></td></tr>
 </table>
 <h3>como_ler · municipio</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -745,12 +767,11 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>cidade · abertura.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>index.cidade.abertura.molde</code></td><td><span class="molde">O cartão responde para qualquer um dos {n_municipios} municípios: plano de contingência localizado ou não, com o documento e a data quando há, e o risco previsto para o estado. Onde não há plano localizado, o cartão abre o formulário para enviar o documento.</span><br><span class="ex">exemplo: O cartão responde para qualquer um dos 3 municípios: plano de contingência localizado ou não, com o documento e a data quando há, e o risco previsto para o estado. Onde não há plano localizado, o cartão abre o formulário para enviar o documento.</span></td></tr>
+<tr><td>texto</td><td><code>index.cidade.abertura.molde</code></td><td><span class="molde">Aqui indicamos, para todos os {n_municipios} municípios, se o plano de contingência foi localizado ou não, com o documento e a data quando houver, e o risco previsto para o El Niño.</span><br><span class="ex">exemplo: Aqui indicamos, para todos os 3 municípios, se o plano de contingência foi localizado ou não, com o documento e a data quando houver, e o risco previsto para o El Niño.</span></td></tr>
 </table>
 <h3>formulario</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>abertura</td><td><code>index.formulario.abertura</code></td><td>Leva menos de um minuto. Não pedimos seu nome nem contato: pedimos as informações sobre o documento.</td></tr>
-<tr><td>nota</td><td><code>index.formulario.nota</code></td><td>A conferência é automática: a rotina lê o documento indicado, confere se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na publicação seguinte, com fonte e canal; o que não passa não é publicado, e o motivo fica registrado.</td></tr>
+<tr><td>abertura</td><td><code>index.formulario.abertura</code></td><td>Sua identificação não é necessária. Pedimos as informações sobre o documento. A conferência é automática e verificamos se a fonte é oficial e se o conteúdo corresponde ao declarado. O que passa entra na atualização seguinte do MARÉ Legal, com fonte e link (quando disponível).</td></tr>
 </table>
 <h3>formulario · recebido</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -784,15 +805,99 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.ficha.canal.busca_web</code></td><td>busca na web</td></tr>
 </table>
-<h2>monitor-de-riscos <small>(83 trechos)</small></h2>
-<h3>situacao</h3>
+<h3>falta · estado_sem_plano</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>abertura</td><td><code>monitor-de-riscos.situacao.abertura</code></td><td>Condição de El Niño declarada pelos órgãos federais em 29/06/2026.</td></tr>
+<tr><td>texto</td><td><code>index.falta.estado_sem_plano</code></td><td>O estado ainda não publicou plano estadual nominal para o El Niño. É o primeiro item a cobrar da Defesa Civil estadual.</td></tr>
 </table>
-<h3>situacao · abertura.molde_com_alerta</h3>
+<h3>falta · estado_em_elaboracao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.situacao.abertura.molde_com_alerta</code></td><td><span class="molde">Condição de El Niño declarada pelos órgãos federais em 29/06/2026. A NOAA/CPC mantém alerta de El Niño (El Niño Advisory) desde {desde}.</span><br><span class="ex">exemplo: Condição de El Niño declarada pelos órgãos federais em 29/06/2026. A NOAA/CPC mantém alerta de El Niño (El Niño Advisory) desde 3.</span></td></tr>
+<tr><td>texto</td><td><code>index.falta.estado_em_elaboracao</code></td><td>O plano estadual está em elaboração e ainda não foi publicado. Pergunte a data prevista de publicação.</td></tr>
 </table>
+<h3>falta · estado_recorrente</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.estado_recorrente</code></td><td>O instrumento estadual é recorrente e não menciona o El Niño 2026/2027. Pergunte se haverá atualização específica para o ciclo.</td></tr>
+</table>
+<h3>falta · cidade_nao_localizado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_nao_localizado</code></td><td>Após verificação individual completa, não localizamos plano de contingência da sua cidade. Peça à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011): resposta obrigatória em 20 dias.</td></tr>
+</table>
+<h3>falta · cidade_nao_verificado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_nao_verificado</code></td><td>Ainda não verificamos sua cidade com todas as fontes. Peça o documento à prefeitura pela ouvidoria ou e-SIC (Lei 12.527/2011, resposta em até 20 dias) e envie pelo formulário no fim desta página.</td></tr>
+</table>
+<h3>falta · cidade_plano_antigo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_plano_antigo</code></td><td>O plano da sua cidade é de edição anterior. Pergunte à prefeitura se há atualização para 2026/2027.</td></tr>
+</table>
+<h3>falta · cidade_decreto</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_decreto</code></td><td>Sua cidade tem decreto de emergência (resposta a dano ocorrido), mas não localizamos plano preventivo. Pergunte à prefeitura se existe e onde está publicado.</td></tr>
+</table>
+<h3>falta · cidade_em_elaboracao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_em_elaboracao</code></td><td>O plano da sua cidade está em elaboração. Pergunte a data prevista.</td></tr>
+</table>
+<h3>falta · cidade_nao_el_nino</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_nao_el_nino</code></td><td>O ato localizado na sua cidade não trata do El Niño. Pergunte se há plano específico para o ciclo.</td></tr>
+</table>
+<h3>falta · cidade_coberta_estadual</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_coberta_estadual</code></td><td>Sua cidade está coberta pelo plano estadual, sem plano próprio. Cobertura estadual é operacional: o dever de ter plano municipal continua (Lei 12.608, art. 8º).</td></tr>
+</table>
+<h3>falta · cidade_ja_decretou</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.cidade_ja_decretou</code></td><td>Sua cidade já precisou decretar emergência neste ciclo. Um plano preventivo publicado reduz o improviso da próxima vez.</td></tr>
+</table>
+<h3>falta · capital_nao_verificada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.capital_nao_verificada</code></td><td>Ainda não verificamos a capital com a bateria completa de fontes.</td></tr>
+</table>
+<h3>falta · capital_nao_localizado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.capital_nao_localizado</code></td><td>Não localizamos plano de contingência da capital até o corte.</td></tr>
+</table>
+<h3>falta · capital_em_elaboracao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.capital_em_elaboracao</code></td><td>O plano da capital está em elaboração; o documento final não foi localizado até o corte.</td></tr>
+</table>
+<h3>falta · capital_nomeado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.capital_nomeado</code></td><td>O plano da capital é citado em fonte oficial, e o documento não foi localizado até o corte.</td></tr>
+</table>
+<h3>falta · capital_estrutura</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.capital_estrutura</code></td><td>Na capital localizamos estrutura de coordenação, não plano de contingência para os riscos do ciclo.</td></tr>
+</table>
+<h3>falta · estado_sem_ato</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.estado_sem_ato</code></td><td>Nenhum ato municipal localizado no estado até o corte.</td></tr>
+</table>
+<h3>falta · estado_predominam_decretos</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.estado_predominam_decretos</code></td><td>No estado, predominam decretos de emergência sobre planos preventivos: a resposta vem depois do dano.</td></tr>
+</table>
+<h3>falta · nenhuma</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.falta.nenhuma</code></td><td>Nenhuma lacuna crítica localizada até o corte. Confirme se o plano está atualizado para 2026/2027 e conheça a rota de saída do seu bairro.</td></tr>
+</table>
+<h3>estado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>index.estado.rotulo</code></td><td>MARÉ Legal do estado</td></tr>
+</table>
+<h3>capital · nao_verificada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.capital.nao_verificada</code></td><td>Ainda não verificamos esta capital com todas as fontes.</td></tr>
+</table>
+<h3>municipio · nao_verificado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.municipio.nao_verificado</code></td><td>Ainda não verificamos este município com todas as fontes.</td></tr>
+</table>
+<h3>nao_verificado · ressalva</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.nao_verificado.ressalva</code></td><td>Isso não é uma afirmação sobre a existência do plano.</td></tr>
+</table>
+<h2>monitor-de-riscos <small>(90 trechos)</small></h2>
 <h3>situacao · roni</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>monitor-de-riscos.situacao.roni.rotulo</code></td><td>RONI mais recente</td></tr>
@@ -808,14 +913,6 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>situacao · roni.molde_variacao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.situacao.roni.molde_variacao</code></td><td><span class="molde">{variacao} °C ante {anterior}. Limiar de El Niño: +0,5 °C.</span><br><span class="ex">exemplo: 3 °C ante 3. Limiar de El Niño: +0,5 °C.</span></td></tr>
-</table>
-<h3>situacao · previsao.molde_apoio</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.situacao.previsao.molde_apoio</code></td><td><span class="molde">Chance {limiar} {probabilidade}% de um El Niño “muito forte” entre setembro de 2026 e fevereiro de 2027, segundo a {orgao} (discussão de {emitido}).</span><br><span class="ex">exemplo: Chance 3 3% de um El Niño “muito forte” entre setembro de 2026 e fevereiro de 2027, segundo a 3 (discussão de 3).</span></td></tr>
-</table>
-<h3>situacao · previsao.molde_apoio_curto</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.situacao.previsao.molde_apoio_curto</code></td><td><span class="molde">Chance {limiar} {probabilidade}% de El Niño no período publicado, segundo a {orgao} (discussão de {emitido}).</span><br><span class="ex">exemplo: Chance 3 3% de El Niño no período publicado, segundo a 3 (discussão de 3).</span></td></tr>
 </table>
 <h3>situacao · duracao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -865,7 +962,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>pacifico · episodios.molde_contagem</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.pacifico.episodios.molde_contagem</code></td><td><span class="molde">Em {ano}, {n|nenhuma média trimestral seguida|uma média trimestral|{n} médias trimestrais seguidas} acima de +0,5 °C até {trimestre}; o critério de episódio se completa na quinta.</span><br><span class="ex">exemplo: Em 3, 3 médias trimestrais seguidas acima de +0,5 °C até 3; o critério de episódio se completa na quinta.</span></td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.pacifico.episodios.molde_contagem</code></td><td><span class="molde">Em {ano}, {n|nenhuma média trimestral seguida|uma média trimestral|{n} médias trimestrais seguidas} acima de +0,5 °C até {trimestre}.</span><br><span class="ex">exemplo: Em 3, 3 médias trimestrais seguidas acima de +0,5 °C até 3.</span></td></tr>
 </table>
 <h3>pacifico · episodios.molde_valor_do_ano</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -894,10 +991,6 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>pacifico · episodios.eixo_ano_seguinte</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.pacifico.episodios.eixo_ano_seguinte</code></td><td>ano seguinte</td></tr>
-</table>
-<h3>pacifico · ponte_metodologia</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.pacifico.ponte_metodologia</code></td><td>Para especialistas: o índice ONI está na &lt;a href=&quot;METODOLOGIA.pdf&quot;&gt;metodologia&lt;/a&gt; →</td></tr>
 </table>
 <h3>pacifico · episodios.legenda_atual</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -930,7 +1023,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>pacifico · nino34.molde_leitura</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.pacifico.nino34.molde_leitura</code></td><td><span class="molde">Semana de {data}: {valor} °C. A série desenhada começa em {inicio}.</span><br><span class="ex">exemplo: Semana de 3: 3 °C. A série desenhada começa em 3.</span></td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.pacifico.nino34.molde_leitura</code></td><td><span class="molde">Semana de {data}: {valor} °C.</span><br><span class="ex">exemplo: Semana de 3: 3 °C.</span></td></tr>
 </table>
 <h3>pacifico · nino34.rotulo_acessivel</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -958,21 +1051,49 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>monitor-de-riscos.ar.titulo</code></td><td>Qualidade do ar medida</td></tr>
 </table>
+<h3>ar · sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.ar.sub</code></td><td>O índice de qualidade do ar medido em cada cidade com estação oficial. O tamanho do círculo é proporcional ao número de estações.</td></tr>
+</table>
+<h3>secas · sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.secas.sub</code></td><td>Onde há seca no mês de referência, e, na hachura, os estados com seca prevista pelo boletim.</td></tr>
+</table>
+<h3>secas · molde_sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.secas.molde_sub</code></td><td><span class="molde">Onde há seca em {mes}, e, na hachura, os estados com seca prevista pelo boletim.</span><br><span class="ex">exemplo: Onde há seca em 3, e, na hachura, os estados com seca prevista pelo boletim.</span></td></tr>
+</table>
+<h3>temperatura</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.temperatura.titulo</code></td><td>Desvio de temperatura previsto nas capitais</td></tr>
+</table>
+<h3>temperatura · sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.temperatura.sub</code></td><td>Quanto a temperatura máxima prevista em cada capital se afasta da média daquele mês entre 1991 e 2020, em graus.</td></tr>
+</table>
+<h3>temperatura · molde_sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.temperatura.molde_sub</code></td><td><span class="molde">Quanto a temperatura máxima prevista para {data} em cada capital se afasta da média daquele mês entre 1991 e 2020, em graus.</span><br><span class="ex">exemplo: Quanto a temperatura máxima prevista para 3 em cada capital se afasta da média daquele mês entre 1991 e 2020, em graus.</span></td></tr>
+</table>
 <h3>avisos</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>monitor-de-riscos.avisos.titulo</code></td><td>Avisos de tempo severo em vigor</td></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.avisos.titulo</code></td><td>Avisos do INMET e alertas do Cemaden em vigor</td></tr>
 </table>
 <h3>avisos · sub</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.avisos.sub</code></td><td>Por grau do aviso · municípios cobertos · INMET</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.avisos.sub</code></td><td>Um ponto por município, na cor do maior grau de aviso do INMET · alerta do Cemaden em círculo vazado</td></tr>
+</table>
+<h3>avisos · escada_rotulo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.avisos.escada_rotulo</code></td><td>Municípios por maior grau do aviso do INMET</td></tr>
+</table>
+<h3>avisos · molde_sem_aviso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.avisos.molde_sem_aviso</code></td><td><span class="molde">{n|Nenhum município sem aviso do INMET|1 município sem aviso do INMET|{n} municípios sem aviso do INMET}</span><br><span class="ex">exemplo: 3 municípios sem aviso do INMET</span></td></tr>
 </table>
 <h3>cemaden</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>monitor-de-riscos.cemaden.titulo</code></td><td>Alertas do Cemaden vigentes</td></tr>
-</table>
-<h3>cemaden · sub</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.cemaden.sub</code></td><td>Por nível do alerta · estado · municípios nomeados pelo Cemaden</td></tr>
+<tr><td>rotulo</td><td><code>monitor-de-riscos.cemaden.rotulo</code></td><td>Alertas do Cemaden por nível e estado</td></tr>
 </table>
 <h3>consulta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1001,11 +1122,11 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>abertura · 1</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.abertura.1</code></td><td>Esta página reúne o que os órgãos oficiais de clima e meio ambiente medem durante o El Niño 2026/2027, em duas partes.</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.abertura.1</code></td><td>Esta página reúne o que os órgãos oficiais de clima e meio ambiente monitoram durante o El Niño 2026/2027, em duas partes.</td></tr>
 </table>
 <h3>abertura · 2</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.abertura.2</code></td><td>A primeira parte mostra o fenômeno em si. A situação atual diz se o El Niño está declarado pelos órgãos federais e desde quando. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, mês a mês e na mesma escala, com os limiares a partir dos quais se declara El Niño ou La Niña.</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.abertura.2</code></td><td>A primeira parte mostra a situação atual. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, com os limiares a partir dos quais se declara El Niño ou La Niña.</td></tr>
 </table>
 <h3>abertura · 3</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1067,10 +1188,6 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.situacao.ar.molde_valor</code></td><td><span class="molde">{n}</span><br><span class="ex">exemplo: 3</span></td></tr>
 </table>
-<h3>situacao · ar.apoio</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.situacao.ar.apoio</code></td><td>primeira leitura</td></tr>
-</table>
 <h3>situacao · avisos</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>monitor-de-riscos.situacao.avisos.rotulo</code></td><td>Estados com aviso de tempo severo em vigor</td></tr>
@@ -1083,23 +1200,47 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.situacao.avisos.molde_apoio</code></td><td><span class="molde">{m|Nenhum com grau perigo ou grande perigo.|Um com grau perigo ou grande perigo.|{m} com grau perigo ou grande perigo.}</span><br><span class="ex">exemplo: 3 com grau perigo ou grande perigo.</span></td></tr>
 </table>
-<h3>listas · indicados</h3>
+<h3>listas</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>monitor-de-riscos.listas.indicados.titulo</code></td><td>Risco de deslizamento ou enchente indicado pela União</td></tr>
+<tr><td>titulo</td><td><code>monitor-de-riscos.listas.titulo</code></td><td>Municípios nas listas federais de risco</td></tr>
 </table>
-<h3>listas · indicados.sub</h3>
+<h3>listas · sub</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.listas.indicados.sub</code></td><td>Municípios indicados pela União ao cadastro nacional de áreas suscetíveis (Lei 12.340, art. 3º-A; MIDR e Casa Civil, 2025) · nº no estado</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.sub</code></td><td>Indicados pela União ao cadastro nacional (deslizamento e enchente) e prioritários do fogo · um ponto no centro de cada município</td></tr>
 </table>
-<h3>listas · fogo</h3>
+<h3>listas · posicao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>monitor-de-riscos.listas.fogo.titulo</code></td><td>Prioritários no controle do desmatamento e do fogo na Amazônia</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.posicao</code></td><td>O ponto fica no centro do município, seja ele grande ou pequeno.</td></tr>
 </table>
-<h3>listas · fogo.sub</h3>
+<h3>listas · ressalva</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>monitor-de-riscos.listas.fogo.sub</code></td><td>Lista do Ministério do Meio Ambiente, portaria vigente · nº no estado</td></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.ressalva</code></td><td>A lista do fogo alcança apenas os estados da Amazônia Legal: fora dela, a ausência do ponto âmbar não significa que o município não seja prioritário, e sim que a lista não o cobre.</td></tr>
 </table>
-<h2>prefeituras <small>(80 trechos)</small></h2>
+<h3>listas · legenda.chuva</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.legenda.chuva</code></td><td>Deslizamento ou enchente</td></tr>
+</table>
+<h3>listas · legenda.fogo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.legenda.fogo</code></td><td>Prioritário do fogo na Amazônia</td></tr>
+</table>
+<h3>listas · legenda.ambas</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.legenda.ambas</code></td><td>Nas duas listas</td></tr>
+</table>
+<h3>listas · rotulo.chuva</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.rotulo.chuva</code></td><td>Só deslizamento ou enchente</td></tr>
+</table>
+<h3>listas · rotulo.fogo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.rotulo.fogo</code></td><td>Só fogo</td></tr>
+</table>
+<h3>listas · rotulo.ambas</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>monitor-de-riscos.listas.rotulo.ambas</code></td><td>Nas duas listas</td></tr>
+</table>
+<h2>prefeituras <small>(92 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.titulo_da_pagina</code></td><td>Para gestores</td></tr>
@@ -1181,20 +1322,20 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>quem-deve</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>prefeituras.quem-deve.titulo_da_secao</code></td><td>O que a lei exige de cada governo</td></tr>
+<tr><td>titulo_da_secao</td><td><code>prefeituras.quem-deve.titulo_da_secao</code></td><td>Os planos de cada governo</td></tr>
 </table>
 <h3>quem-deve · estados</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>prefeituras.quem-deve.estados.rotulo</code></td><td>Estados</td></tr>
-<tr><td>fonte</td><td><code>prefeituras.quem-deve.estados.fonte</code></td><td>Lei 12.340/2010, art. 3º-A</td></tr>
+<tr><td>fonte</td><td><code>prefeituras.quem-deve.estados.fonte</code></td><td>Lei 12.608/2012, art. 7º, § 2º, na redação da Lei 14.750/2023</td></tr>
 </table>
 <h3>quem-deve · estados.dever</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.dever</code></td><td>Plano estadual de proteção e defesa civil, revisado a cada dois anos</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.dever</code></td><td>Plano Estadual de Proteção e Defesa Civil</td></tr>
 </table>
 <h3>quem-deve · estados.fonte_url</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.fonte_url</code></td><td>https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.fonte_url</code></td><td>https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12608.htm</td></tr>
 </table>
 <h3>quem-deve · estados.valor</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1203,162 +1344,165 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>quem-deve · indicados</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.rotulo</code></td><td>Municípios indicados pela União ao cadastro nacional</td></tr>
-<tr><td>fonte</td><td><code>prefeituras.quem-deve.indicados.fonte</code></td><td>MIDR e Casa Civil, NTs 1/2023, 1/2025 e 2/2025</td></tr>
+<tr><td>fonte</td><td><code>prefeituras.quem-deve.indicados.fonte</code></td><td>Lei 12.340/2010, art. 3º-A, § 6º</td></tr>
+<tr><td>fonte_2</td><td><code>prefeituras.quem-deve.indicados.fonte_2</code></td><td>MIDR e Casa Civil, NTs 1/2023, 1/2025 e 2/2025</td></tr>
 </table>
 <h3>quem-deve · indicados.dever</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.dever</code></td><td>Plano de contingência avaliado e atualizado todo ano, com audiência pública, para os que se inscrevem</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.dever</code></td><td>Plano de contingência de proteção e defesa civil</td></tr>
 </table>
 <h3>quem-deve · indicados.fonte_url</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.fonte_url</code></td><td>https://www.gov.br/casacivil/pt-br/assuntos/cadastro-de-municipios-suscetiveis-a-eventos-de-enxurradas-e-inundacoes/copy2_of_NotaTecnica2.2025_SADJVISEPAC.pdf</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.fonte_url</code></td><td>https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm</td></tr>
 </table>
 <h3>quem-deve · indicados.valor</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.valor</code></td><td>2.095</td></tr>
 </table>
-<h3>quem-deve · todos</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>rotulo</td><td><code>prefeituras.quem-deve.todos.rotulo</code></td><td>Todos os municípios</td></tr>
-<tr><td>fonte</td><td><code>prefeituras.quem-deve.todos.fonte</code></td><td>Lei 12.608/2012, art. 2º</td></tr>
-</table>
-<h3>quem-deve · todos.dever</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.todos.dever</code></td><td>Dever geral de prevenção, sem prazo nem plano específico para seca, fogo e calor; o MARÉ procura plano em todos</td></tr>
-</table>
-<h3>quem-deve · todos.fonte_url</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.todos.fonte_url</code></td><td>https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12608.htm</td></tr>
-</table>
-<h3>quem-deve · todos.valor</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.todos.valor</code></td><td>5.571</td></tr>
-</table>
-<h3>quem-deve · nota_saude</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.quem-deve.nota_saude</code></td><td>Na saúde, a lei dá à secretaria estadual o dever de coordenar a vigilância e a resposta a emergências em saúde pública (&lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/leis/l8080.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Lei 8.080/1990, art. 17&lt;/a&gt;) e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O &lt;a href=&quot;saude.html&quot;&gt;MARÉ Saúde&lt;/a&gt; registra os planos e as estruturas de coordenação que os estados publicaram.</td></tr>
-</table>
 <h3>caminho</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>prefeituras.caminho.titulo_da_secao</code></td><td>Do risco ao plano publicado</td></tr>
-<tr><td>abertura</td><td><code>prefeituras.caminho.abertura</code></td><td>Um caminho em seis passos. O plano publicado no diário oficial ou no site da prefeitura é o que a população, a imprensa e o MARÉ conseguem encontrar.</td></tr>
+<tr><td>abertura</td><td><code>prefeituras.caminho.abertura</code></td><td>Seis passos, cada um com o que precisa ter. O plano aprovado por ato e publicado no diário oficial ou no site da prefeitura é o que a população, a imprensa e o MARÉ conseguem encontrar.</td></tr>
 </table>
-<h3>caminho · item</h3>
+<h3>caminho · passo_1</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.caminho.item</code></td><td>&lt;b&gt;1&lt;/b&gt;&lt;span&gt;&lt;strong&gt;Conhecer o risco previsto.&lt;/strong&gt; O &lt;a href=&quot;monitor-de-riscos.html&quot;&gt;Monitor de riscos&lt;/a&gt; e os boletins oficiais mostram o que se espera para o seu estado: chuva forte, seca, calor ou fogo.&lt;/span&gt;</td></tr>
+<tr><td>titulo</td><td><code>prefeituras.caminho.passo_1.titulo</code></td><td>Conhecer o risco previsto</td></tr>
 </table>
-<h3>caminho · item_2</h3>
+<h3>caminho · passo_1.faz</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.caminho.item_2</code></td><td>&lt;b&gt;2&lt;/b&gt;&lt;span&gt;&lt;strong&gt;Preparar ou atualizar o plano.&lt;/strong&gt; Um plano que cite o El Niño 2026/2027 ou o risco previsto para o seu estado ajuda a equipe a agir e a população a saber o que esperar.&lt;/span&gt;</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_1.faz</code></td><td>O &lt;a href=&quot;monitor-de-riscos.html&quot;&gt;Monitor de riscos&lt;/a&gt; e os boletins oficiais mostram o que se espera para o seu estado: chuva forte, seca, calor ou fogo.</td></tr>
 </table>
-<h3>caminho · item_3</h3>
+<h3>caminho · passo_2</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.caminho.item_3</code></td><td>&lt;b&gt;3&lt;/b&gt;&lt;span&gt;&lt;strong&gt;Aprovar por ato.&lt;/strong&gt; Um decreto ou portaria, com número e data, que indique o coordenador de defesa civil e um contato.&lt;/span&gt;</td></tr>
+<tr><td>titulo</td><td><code>prefeituras.caminho.passo_2.titulo</code></td><td>Preparar ou atualizar o plano</td></tr>
 </table>
-<h3>caminho · item_4</h3>
+<h3>caminho · passo_2.faz</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.caminho.item_4</code></td><td>&lt;b&gt;4&lt;/b&gt;&lt;span&gt;&lt;strong&gt;Publicar onde todos encontram.&lt;/strong&gt; No diário oficial ou no site da prefeitura, em PDF com texto pesquisável.&lt;/span&gt;</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.faz</code></td><td>Um plano que cite o El Niño 2026/2027 ou o risco previsto para o seu estado ajuda a equipe a agir e a população a saber o que esperar.</td></tr>
 </table>
-<h3>caminho · item_5</h3>
+<h3>caminho · passo_2.tem</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.caminho.item_5</code></td><td>&lt;b&gt;5&lt;/b&gt;&lt;span&gt;&lt;strong&gt;Manter os dados no S2iD.&lt;/strong&gt; O Sistema Integrado de Informações sobre Desastres é o canal do governo federal para reconhecimento de emergência e pedidos de recursos: coordenador, contatos e áreas de risco precisam estar em dia.&lt;/span&gt;</td></tr>
+<tr><td>rotulo</td><td><code>prefeituras.caminho.passo_2.tem.rotulo</code></td><td>O que o plano precisa ter</td></tr>
 </table>
-<h3>caminho · item_6</h3>
+<h3>caminho · passo_2.tem.item</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.caminho.item_6</code></td><td>&lt;b&gt;6&lt;/b&gt;&lt;span&gt;&lt;strong&gt;Buscar os recursos.&lt;/strong&gt; Há caminhos para antes da emergência e para depois do decreto; veja abaixo.&lt;/span&gt;</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item</code></td><td>as responsabilidades de cada órgão na preparação, resposta e recuperação</td></tr>
 </table>
-<h3>conteudo-plano</h3>
+<h3>caminho · passo_2.tem.item_2</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>prefeituras.conteudo-plano.titulo_da_secao</code></td><td>O que o plano pode conter</td></tr>
-<tr><td>titulo</td><td><code>prefeituras.conteudo-plano.titulo</code></td><td>O que a lei lista</td></tr>
-<tr><td>nota</td><td><code>prefeituras.conteudo-plano.nota</code></td><td>Conteúdo mínimo exigido dos municípios inscritos no cadastro nacional (Lei 12.340/2010, art. 3º-A, § 7º, &lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;texto compilado oficial&lt;/a&gt;); para os demais, é a referência que o MARÉ usa.</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_2</code></td><td>os sistemas de alerta, ligados ao monitoramento</td></tr>
 </table>
-<h3>conteudo-plano · recursos</h3>
+<h3>caminho · passo_2.tem.item_3</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>prefeituras.conteudo-plano.recursos.titulo</code></td><td>O que o MARÉ procura no documento</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_3</code></td><td>os simulados com a população</td></tr>
 </table>
-<h3>conteudo-plano · item</h3>
+<h3>caminho · passo_2.tem.item_4</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item</code></td><td>as responsabilidades de cada órgão na preparação, resposta e recuperação</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_4</code></td><td>o atendimento emergencial, com rotas, pontos seguros e abrigos</td></tr>
 </table>
-<h3>conteudo-plano · item_2</h3>
+<h3>caminho · passo_2.tem.item_5</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_2</code></td><td>os sistemas de alerta, ligados ao monitoramento</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_5</code></td><td>o atendimento médico e psicológico aos atingidos</td></tr>
 </table>
-<h3>conteudo-plano · item_3</h3>
+<h3>caminho · passo_2.tem.item_6</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_3</code></td><td>os simulados com a população</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_6</code></td><td>o cadastro de equipes técnicas e voluntários</td></tr>
 </table>
-<h3>conteudo-plano · item_4</h3>
+<h3>caminho · passo_2.tem.item_7</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_4</code></td><td>o atendimento emergencial, com rotas, pontos seguros e abrigos</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_7</code></td><td>os pontos de recebimento de doações</td></tr>
 </table>
-<h3>conteudo-plano · item_5</h3>
+<h3>caminho · passo_2.tem.item_8</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_5</code></td><td>o atendimento médico e psicológico aos atingidos</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.tem.item_8</code></td><td>o resgate e o atendimento emergencial à fauna atingida, e os pontos de abrigo dela</td></tr>
 </table>
-<h3>conteudo-plano · item_6</h3>
+<h3>caminho · passo_2.lei</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_6</code></td><td>o cadastro de equipes técnicas e voluntários</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_2.lei</code></td><td>Conteúdo mínimo dos planos dos municípios do cadastro nacional (&lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Lei 12.340/2010, art. 3º-A, § 7º&lt;/a&gt;); para os demais, é a referência que o MARÉ usa. Plano que trate de arboviroses, calor, água e fumaça aparece também no &lt;a href=&quot;saude.html&quot;&gt;MARÉ Saúde&lt;/a&gt;.</td></tr>
 </table>
-<h3>conteudo-plano · item_7</h3>
+<h3>caminho · passo_3</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_7</code></td><td>os pontos de recebimento de doações</td></tr>
+<tr><td>titulo</td><td><code>prefeituras.caminho.passo_3.titulo</code></td><td>Aprovar por ato</td></tr>
 </table>
-<h3>conteudo-plano · item_8</h3>
+<h3>caminho · passo_3.faz</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.item_8</code></td><td>o resgate e o atendimento emergencial à fauna atingida, e os pontos de abrigo dela</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_3.faz</code></td><td>A aprovação formal dá validade ao plano e diz quem responde por ele.</td></tr>
 </table>
-<h3>conteudo-plano · recursos.item</h3>
+<h3>caminho · passo_3.tem</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.recursos.item</code></td><td>número, data e ato de aprovação</td></tr>
+<tr><td>rotulo</td><td><code>prefeituras.caminho.passo_3.tem.rotulo</code></td><td>O que o ato precisa ter</td></tr>
 </table>
-<h3>conteudo-plano · recursos.item_2</h3>
+<h3>caminho · passo_3.tem.item</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.recursos.item_2</code></td><td>menção ao El Niño 2026/2027 ou ao risco previsto para o estado</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_3.tem.item</code></td><td>decreto ou portaria, com número e data</td></tr>
 </table>
-<h3>conteudo-plano · recursos.item_3</h3>
+<h3>caminho · passo_3.tem.item_2</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.recursos.item_3</code></td><td>endereço público e estável</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_3.tem.item_2</code></td><td>o coordenador de defesa civil e um contato</td></tr>
 </table>
-<h3>conteudo-plano · recursos.item_4</h3>
+<h3>caminho · passo_4</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.recursos.item_4</code></td><td>coordenador e contato</td></tr>
+<tr><td>titulo</td><td><code>prefeituras.caminho.passo_4.titulo</code></td><td>Publicar onde todos encontram</td></tr>
 </table>
-<h3>conteudo-plano · recursos.item_5</h3>
+<h3>caminho · passo_4.faz</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.conteudo-plano.recursos.item_5</code></td><td>para o MARÉ Saúde, se o plano trata de saúde: arboviroses, calor, água e fumaça</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_4.faz</code></td><td>Plano publicado é plano que a população conhece e que o MARÉ consegue encontrar.</td></tr>
 </table>
-<h3>recursos</h3>
+<h3>caminho · passo_4.tem</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>prefeituras.recursos.titulo_da_secao</code></td><td>Como os recursos chegam</td></tr>
+<tr><td>rotulo</td><td><code>prefeituras.caminho.passo_4.tem.rotulo</code></td><td>Onde e como publicar</td></tr>
 </table>
-<h3>recursos · antes</h3>
+<h3>caminho · passo_4.tem.item</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>prefeituras.recursos.antes.titulo</code></td><td>Antes da emergência</td></tr>
-<tr><td>texto</td><td><code>prefeituras.recursos.antes</code></td><td>Transferências voluntárias da União e do estado para prevenção (obras, mapeamento de risco, sistemas de alerta), por proposta no Transferegov; repasses do Fundo Nacional de Saúde.</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_4.tem.item</code></td><td>no diário oficial ou no site da prefeitura</td></tr>
 </table>
-<h3>recursos · antes.link</h3>
+<h3>caminho · passo_4.tem.item_2</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.recursos.antes.link</code></td><td>O que já chegou ao seu município →</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_4.tem.item_2</code></td><td>em endereço que não muda</td></tr>
 </table>
-<h3>recursos · depois</h3>
+<h3>caminho · passo_4.tem.item_3</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>prefeituras.recursos.depois.titulo</code></td><td>Depois do decreto</td></tr>
-<tr><td>texto</td><td><code>prefeituras.recursos.depois</code></td><td>Com a situação de emergência reconhecida pelo governo federal via S2iD: transferência obrigatória para socorro, assistência e restabelecimento; Cartão de Pagamento de Defesa Civil; regime especial de compras.</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_4.tem.item_3</code></td><td>em PDF com texto pesquisável</td></tr>
 </table>
-<h3>recursos · depois.link</h3>
+<h3>caminho · passo_5</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.recursos.depois.link</code></td><td>Decretos e reconhecimentos →</td></tr>
+<tr><td>titulo</td><td><code>prefeituras.caminho.passo_5.titulo</code></td><td>Manter os dados no S2iD</td></tr>
 </table>
-<h3>recursos · caminhos</h3>
+<h3>caminho · passo_5.faz</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>prefeituras.recursos.caminhos.titulo</code></td><td>Os caminhos do dinheiro</td></tr>
-<tr><td>texto</td><td><code>prefeituras.recursos.caminhos</code></td><td>Quem paga, por onde passa e quanto chegou a cada estado e município em 2026, com fonte e data, está na página de Financiamento.</td></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_5.faz</code></td><td>O Sistema Integrado de Informações sobre Desastres é o canal do governo federal para reconhecimento de emergência e pedidos de recursos.</td></tr>
 </table>
-<h3>recursos · caminhos.link</h3>
+<h3>caminho · passo_5.tem</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>prefeituras.recursos.caminhos.link</code></td><td>Financiamento →</td></tr>
+<tr><td>rotulo</td><td><code>prefeituras.caminho.passo_5.tem.rotulo</code></td><td>O que manter em dia</td></tr>
+</table>
+<h3>caminho · passo_5.tem.item</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_5.tem.item</code></td><td>coordenador e contatos</td></tr>
+</table>
+<h3>caminho · passo_5.tem.item_2</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_5.tem.item_2</code></td><td>áreas de risco</td></tr>
+</table>
+<h3>caminho · passo_6</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>prefeituras.caminho.passo_6.titulo</code></td><td>Buscar os recursos</td></tr>
+</table>
+<h3>caminho · passo_6.faz</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_6.faz</code></td><td>Há dois caminhos, conforme o momento.</td></tr>
+</table>
+<h3>caminho · passo_6.antes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_6.antes</code></td><td>&lt;strong&gt;Antes da emergência:&lt;/strong&gt; transferências voluntárias da União e do estado para prevenção (obras, mapeamento de risco, sistemas de alerta), por proposta no Transferegov; repasses do Fundo Nacional de Saúde. &lt;a href=&quot;financiamento.html#antes&quot;&gt;De onde vem o dinheiro →&lt;/a&gt;</td></tr>
+</table>
+<h3>caminho · passo_6.depois</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_6.depois</code></td><td>&lt;strong&gt;Depois do reconhecimento federal:&lt;/strong&gt; com a situação de emergência reconhecida pelo governo federal no S2iD, transferência obrigatória para socorro, assistência e restabelecimento; Cartão de Pagamento de Defesa Civil; regime especial de compras. &lt;a href=&quot;financiamento.html#depois&quot;&gt;Decretos e reconhecimentos →&lt;/a&gt;</td></tr>
+</table>
+<h3>caminho · passo_6.onde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.caminho.passo_6.onde</code></td><td>Quanto já chegou ao seu município está no &lt;a href=&quot;#municipio&quot;&gt;cartão do município&lt;/a&gt;, no alto da página, e o de cada estado no &lt;a href=&quot;financiamento.html&quot;&gt;Financiamento&lt;/a&gt;.</td></tr>
 </table>
 <h3>municipio · plano.localizado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1383,6 +1527,48 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>municipio · plano.nao_verificado_nota</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.municipio.plano.nao_verificado_nota</code></td><td>Ainda não procuramos neste município com todas as fontes.</td></tr>
+</table>
+<h3>quem-deve · abertura.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.abertura.molde</code></td><td><span class="molde">Quem precisa ter plano, em que prazo e como ele é acompanhado, segundo a legislação federal de proteção e defesa civil. O MARÉ procura plano de contingência em todos os {n_municipios} municípios.</span><br><span class="ex">exemplo: Quem precisa ter plano, em que prazo e como ele é acompanhado, segundo a legislação federal de proteção e defesa civil. O MARÉ procura plano de contingência em todos os 3 municípios.</span></td></tr>
+</table>
+<h3>quem-deve · estados.atualizacao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.estados.atualizacao.rotulo</code></td><td>Atualização</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.atualizacao.texto</code></td><td>A cada dois anos, adequado ao Plano Nacional em até 24 meses depois da publicação dele</td></tr>
+</table>
+<h3>quem-deve · estados.acompanhamento</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.estados.acompanhamento.rotulo</code></td><td>Acompanhamento</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.acompanhamento.texto</code></td><td>Prestação de contas anual em audiência pública</td></tr>
+</table>
+<h3>quem-deve · estados.saude</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.estados.saude.rotulo</code></td><td>Na saúde</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.estados.saude.texto</code></td><td>A secretaria estadual coordena a vigilância e a resposta a emergências em saúde pública (&lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/leis/l8080.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Lei 8.080/1990, art. 17&lt;/a&gt;); o &lt;a href=&quot;saude.html&quot;&gt;MARÉ Saúde&lt;/a&gt; registra os planos que os estados publicaram</td></tr>
+</table>
+<h3>quem-deve · indicados.entra</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.entra.rotulo</code></td><td>Quem entra</td></tr>
+</table>
+<h3>quem-deve · indicados.entra.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.entra.molde</code></td><td><span class="molde">Qualquer município com área de risco comprovada pode se inscrever no cadastro nacional, por iniciativa própria ou de outro ente; a União indicou {n_indicados} (&lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/decreto/d10692.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Decreto 10.692/2021&lt;/a&gt;)</span><br><span class="ex">exemplo: Qualquer município com área de risco comprovada pode se inscrever no cadastro nacional, por iniciativa própria ou de outro ente; a União indicou 3 (&lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/decreto/d10692.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Decreto 10.692/2021&lt;/a&gt;)</span></td></tr>
+</table>
+<h3>quem-deve · indicados.prazo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.prazo.rotulo</code></td><td>Prazo</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.prazo.texto</code></td><td>Um ano a partir da inscrição; atualização anual</td></tr>
+</table>
+<h3>quem-deve · indicados.acompanhamento</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.acompanhamento.rotulo</code></td><td>Acompanhamento</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.acompanhamento.texto</code></td><td>Avaliação e prestação de contas anuais em audiência pública</td></tr>
+</table>
+<h3>quem-deve · indicados.conteudo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>prefeituras.quem-deve.indicados.conteudo.rotulo</code></td><td>Conteúdo</td></tr>
+<tr><td>texto</td><td><code>prefeituras.quem-deve.indicados.conteudo.texto</code></td><td>Oito itens mínimos, listados no passo 2 de &lt;a href=&quot;#caminho&quot;&gt;Do risco ao plano publicado&lt;/a&gt;</td></tr>
 </table>
 <h2>proteja-se <small>(135 trechos)</small></h2>
 <h3>página</h3>
@@ -1841,7 +2027,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(46 trechos)</small></h2>
+<h2>saude <small>(129 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · a mesma medida do MARÉ Legal, aplicada à saúde</td></tr>
@@ -1849,27 +2035,23 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>numerosSaude · n_dengue_se</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.numerosSaude.n_dengue_se.familia</code></td><td>Dengue</td></tr>
-<tr><td>fonte</td><td><code>saude.numerosSaude.n_dengue_se.fonte</code></td><td>As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</td></tr>
+<tr><td>fonte</td><td><code>saude.numerosSaude.n_dengue_se.fonte</code></td><td>Sinan (Ministério da Saúde)</td></tr>
 </table>
 <h3>numerosSaude · n_srag_se</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.numerosSaude.n_srag_se.familia</code></td><td>Respiratórias</td></tr>
-<tr><td>fonte</td><td><code>saude.numerosSaude.n_srag_se.fonte</code></td><td>As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</td></tr>
+<tr><td>familia</td><td><code>saude.numerosSaude.n_srag_se.familia</code></td><td>Internações respiratórias graves</td></tr>
+<tr><td>fonte</td><td><code>saude.numerosSaude.n_srag_se.fonte</code></td><td>SIVEP-Gripe (Ministério da Saúde)</td></tr>
 </table>
 <h3>numerosSaude · n_u_fs_alerta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.numerosSaude.n_u_fs_alerta.familia</code></td><td>Alerta</td></tr>
-<tr><td>rotulo</td><td><code>saude.numerosSaude.n_u_fs_alerta.rotulo</code></td><td>estados com dengue em nível de alerta</td></tr>
-</table>
-<h3>numerosSaude · n_calor_mun</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.numerosSaude.n_calor_mun.familia</code></td><td>Calor</td></tr>
-<tr><td>rotulo</td><td><code>saude.numerosSaude.n_calor_mun.rotulo</code></td><td>municípios em classe severa ou extrema de excesso de calor</td></tr>
+<tr><td>familia</td><td><code>saude.numerosSaude.n_u_fs_alerta.familia</code></td><td>Dengue em alerta</td></tr>
+<tr><td>rotulo</td><td><code>saude.numerosSaude.n_u_fs_alerta.rotulo</code></td><td>estados com ao menos um município em nível 3 ou 4</td></tr>
+<tr><td>fonte</td><td><code>saude.numerosSaude.n_u_fs_alerta.fonte</code></td><td>InfoDengue (Fiocruz e FGV)</td></tr>
 </table>
 <h3>observado · registram</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>abertura</td><td><code>saude.observado.registram.abertura</code></td><td>Cada cartão mostra o último valor de uma doença ou agravo, a faixa habitual para a época e os períodos mais recentes; a cadência e a fonte estão no rodapé de cada um.</td></tr>
-<tr><td>legenda</td><td><code>saude.observado.registram.legenda</code></td><td>Linha: valor observado · faixa cinza: habitual para a época (2019–2025)</td></tr>
+<tr><td>legenda</td><td><code>saude.observado.registram.legenda</code></td><td>Linha: valor observado · faixa: habitual para a época (2019–2025)</td></tr>
 </table>
 <h3>observado · registram.lacuna</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1881,9 +2063,8 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>observado · registram.detalhe</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.observado.registram.detalhe.familia</code></td><td>Desfecho escolhido</td></tr>
-<tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} · {territorio} · {periodo}</span><br><span class="ex">exemplo: 3 · 3 · 3</span></td></tr>
-<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Valor observado e faixa cinza habitual para a época · mapa: {periodo}, por estado · {parciais}</span><br><span class="ex">exemplo: Valor observado e faixa cinza habitual para a época · mapa: 3, por estado · 3</span></td></tr>
+<tr><td>titulo</td><td><code>saude.observado.registram.detalhe.titulo</code></td><td><span class="molde">{desfecho} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 por 100 mil habitantes</span></td></tr>
+<tr><td>legenda</td><td><code>saude.observado.registram.detalhe.legenda</code></td><td><span class="molde">Valor observado e faixa habitual para a época · mapa: {periodo}, por estado · {parciais}</span><br><span class="ex">exemplo: Valor observado e faixa habitual para a época · mapa: 3, por estado · 3</span></td></tr>
 </table>
 <h3>observado · registram.detalhe.lista</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1900,13 +2081,13 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>estadual</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>saude.estadual.titulo_da_secao</code></td><td>A situação de cada estado</td></tr>
-<tr><td>abertura</td><td><code>saude.estadual.abertura</code></td><td>O MARÉ Saúde de cada estado e a faixa em que ele está. Na ficha: o plano de saúde publicado, quem coordena na saúde, a ligação com o governo do estado e o risco previsto nos boletins do Painel El Niño. Estado sem número ainda não foi verificado.</td></tr>
+<tr><td>abertura</td><td><code>saude.estadual.abertura</code></td><td>Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Escolha um estado no mapa para ver o documento, a data e a fonte.</td></tr>
 </table>
 <h3>estadual · monitor</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.estadual.monitor.familia</code></td><td>MARÉ Saúde</td></tr>
-<tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>MARÉ Saúde por estado, de 0 a 100</td></tr>
-<tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>Plano estadual para o ciclo e antecedência, metade cada · estado sem número ainda não verificado</td></tr>
+<tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>Plano estadual de saúde para o El Niño, por estado</td></tr>
+<tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>Tipo de plano localizado em cada secretaria estadual de saúde até o corte</td></tr>
 <tr><td>resumo</td><td><code>saude.estadual.monitor.resumo</code></td><td>Ver em tabela</td></tr>
 </table>
 <h3>topo · preparacao.linha</h3>
@@ -1917,22 +2098,9 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.topo.preparacao.linha_reserva</code></td><td>sem coleta até o corte</td></tr>
 </table>
-<h3>estadual · risco_san</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>familia</td><td><code>saude.estadual.risco_san.familia</code></td><td>Risco previsto</td></tr>
-<tr><td>titulo</td><td><code>saude.estadual.risco_san.titulo</code></td><td>Risco previsto para cada estado</td></tr>
-<tr><td>legenda</td><td><code>saude.estadual.risco_san.legenda</code></td><td>Ciclo 2026/2027 · famílias de risco derivadas dos boletins do Painel El Niño, sem projeção própria</td></tr>
-<tr><td>nota</td><td><code>saude.estadual.risco_san.nota</code></td><td>Estado sem número ainda não foi verificado. O detalhe de cada um abre em uma janela.</td></tr>
-</table>
 <h3>observado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>saude.observado.titulo_da_secao</code></td><td>O que os órgãos de saúde registram</td></tr>
-<tr><td>abertura</td><td><code>saude.observado.abertura</code></td><td>Esta página não relaciona casos ao El Niño.</td></tr>
-</table>
-<h3>saude-federal-painel</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>saude.saude-federal-painel.titulo_da_secao</code></td><td>O que o governo federal publicou</td></tr>
-<tr><td>abertura</td><td><code>saude.saude-federal-painel.abertura</code></td><td>Documentos oficiais do governo federal para o ciclo, com link. O que foi anunciado e não localizamos até o corte aparece como linha própria.</td></tr>
 </table>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1940,19 +2108,15 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>abertura · cenarios</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.abertura.cenarios</code></td><td>O El Niño 2026/2027 afeta a saúde por caminhos conhecidos. Seca e fogo trazem doenças respiratórias pela fumaça e, com a falta de água tratada, diarreias; chuva forte traz leptospirose, diarreias e hepatite A; o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya atravessam os três cenários: o calor favorece o mosquito, e a água guardada em casa na estiagem ou parada depois das chuvas vira criadouro. É o que diz o &lt;a href=&quot;https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;plano federal de contingência para emergências em saúde por seca e estiagem&lt;/a&gt;, publicado pelo Ministério da Saúde em 2026, com as páginas do Ministério da Saúde sobre enchentes, calor e Aedes aegypti.</td></tr>
+<tr><td>texto</td><td><code>saude.abertura.cenarios</code></td><td>O El Niño 2026/2027 afeta a saúde por caminhos conhecidos. Seca e fogo trazem doenças respiratórias pela inalação de fumaça e, com a falta de água tratada, facilitam o aparecimento de diarreias; chuva forte traz leptospirose, diarreias e hepatite A; o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya aparecem nos três cenários: o calor favorece o mosquito, e a água guardada em casa na estiagem ou parada depois das chuvas vira criadouro. É o que diz o &lt;a href=&quot;https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;plano federal de contingência para emergências em saúde por seca e estiagem&lt;/a&gt;, publicado pelo Ministério da Saúde em 2026.</td></tr>
 </table>
 <h3>abertura · lei_e_indice</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.abertura.lei_e_indice</code></td><td>A &lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/leis/l8080.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lei&lt;/a&gt; dá à secretaria de saúde de cada estado o dever de coordenar a vigilância e a resposta a emergências em saúde pública e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O MARÉ Saúde procura, nos diários oficiais e nos canais das 27 secretarias estaduais, se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para ele ou é o de todo ano, quando saiu em relação ao primeiro boletim, de 29 de junho, e quanta gente vive em município cujo plano trata a saúde. A nota de cada estado e o agregado nacional vão de 0 a 100, nas faixas do MARÉ Legal. Emergências em saúde declaradas desde 29 de junho ficam num indicador separado: são resposta, não preparação.</td></tr>
-</table>
-<h3>abertura · lei_e_indice_v04</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.abertura.lei_e_indice_v04</code></td><td>A &lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/leis/l8080.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lei&lt;/a&gt; dá à secretaria de saúde de cada estado o dever de coordenar a vigilância e a resposta a emergências em saúde pública e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O MARÉ Saúde procura, nos diários oficiais e nos canais das 27 secretarias estaduais, se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para ele ou é o de todo ano, quem coordena a resposta na saúde, sala de situação ou centro de operações, e quanta gente vive em município cujo plano trata a saúde. A nota de cada estado e o agregado nacional vão de 0 a 100, nas faixas do MARÉ Legal. Emergências em saúde declaradas desde 29 de junho ficam num indicador separado: são resposta, não preparação.</td></tr>
+<tr><td>texto</td><td><code>saude.abertura.lei_e_indice</code></td><td>A &lt;a href=&quot;https://www.planalto.gov.br/ccivil_03/leis/l8080.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lei&lt;/a&gt; dá à secretaria de saúde de cada estado o dever de coordenar a vigilância e a resposta a emergências em saúde pública e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O MARÉ Saúde procura, nos diários oficiais e nos canais das 27 secretarias estaduais, se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para ele ou é recorrente, e quanta gente vive nos estados cujos planos tratam a saúde. Emergências em saúde declaradas desde 29 de junho ficam num indicador separado.</td></tr>
 </table>
 <h3>abertura · observacao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.abertura.observacao</code></td><td>A página também mostra, como observação e com a fonte de cada número, os casos e os avisos que os órgãos de saúde registram, doença a doença. “Não localizado” quer dizer que o documento não estava nas fontes consultadas até a data de corte, não que ele não exista. Fontes e critérios estão na &lt;a href=&quot;METODOLOGIA.pdf&quot;&gt;metodologia&lt;/a&gt;.</td></tr>
+<tr><td>texto</td><td><code>saude.abertura.observacao</code></td><td>A página também mostra, como observação e com a fonte de cada número, os casos e os avisos que os órgãos de saúde registram, doença a doença. “Não localizado” quer dizer que o documento não estava nas fontes consultadas até a data de corte. Fontes e critérios estão na &lt;a href=&quot;METODOLOGIA.pdf&quot;&gt;metodologia&lt;/a&gt;.</td></tr>
 </table>
 <h3>topo · preparacao.selo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -1960,16 +2124,391 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · resposta.selo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.resposta.selo</code></td><td>Emergências em saúde pública</td></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.selo</code></td><td>Decretos de emergência em saúde</td></tr>
 </table>
 <h3>consulta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>saude.consulta.titulo</code></td><td>Consulte a situação do seu município</td></tr>
-<tr><td>nota</td><td><code>saude.consulta.nota</code></td><td>Dengue, chikungunya, calor e plano são do próprio município; síndrome respiratória grave e MARÉ Saúde são do estado, ditos como do estado. Município que a fonte não leu aparece como não lido.</td></tr>
 </table>
 <h3>numerosSaude · n_chik_se</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>familia</td><td><code>saude.numerosSaude.n_chik_se.familia</code></td><td>Chikungunya</td></tr>
-<tr><td>fonte</td><td><code>saude.numerosSaude.n_chik_se.fonte</code></td><td>As últimas semanas são parciais e sobem com as notificações atrasadas. Este número não indica relação com o El Niño.</td></tr>
+<tr><td>fonte</td><td><code>saude.numerosSaude.n_chik_se.fonte</code></td><td>Sinan (Ministério da Saúde)</td></tr>
+</table>
+<h3>estadual · tipo.NOVO</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.NOVO</code></td><td>Plano feito para este El Niño</td></tr>
+</table>
+<h3>estadual · tipo.READ</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.READ</code></td><td>Plano anual atualizado para o ciclo</td></tr>
+</table>
+<h3>estadual · tipo.VIG</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.VIG</code></td><td>Plano recorrente, sem atualização para o ciclo</td></tr>
+</table>
+<h3>estadual · tipo.ELAB</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.ELAB</code></td><td>Plano em elaboração</td></tr>
+</table>
+<h3>estadual · tipo.LAC</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.LAC</code></td><td>Plano não localizado até o corte</td></tr>
+</table>
+<h3>estadual · tipo.NAO_VERIFICADO</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.tipo.NAO_VERIFICADO</code></td><td>Ainda não verificado</td></tr>
+</table>
+<h3>estadual · lista</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>saude.estadual.lista.titulo</code></td><td>Estados por tipo de plano</td></tr>
+</table>
+<h3>estadual · lista.contagem</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.lista.contagem</code></td><td><span class="molde">{n|zero estados|um estado|{n} estados}</span><br><span class="ex">exemplo: 3 estados</span></td></tr>
+</table>
+<h3>estadual · lista.botao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.lista.botao</code></td><td><span class="molde">Abrir a ficha de {estado}</span><br><span class="ex">exemplo: Abrir a ficha de 3</span></td></tr>
+</table>
+<h3>estadual · escada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.escada</code></td><td><span class="molde">A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, {NOVO}; atualizado, {READ}; recorrente, {VIG}; em elaboração, {ELAB}; não localizado, {LAC}.</span><br><span class="ex">exemplo: A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, 3; atualizado, 3; recorrente, 3; em elaboração, 3; não localizado, 3.</span></td></tr>
+</table>
+<h3>estadual · ficha.plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.plano</code></td><td>Plano estadual de saúde</td></tr>
+</table>
+<h3>estadual · ficha.coordenacao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.coordenacao</code></td><td>Coordenação na saúde</td></tr>
+</table>
+<h3>estadual · ficha.governo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.governo</code></td><td>Ligação com o governo do estado</td></tr>
+</table>
+<h3>estadual · ficha.nao_verificada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.nao_verificada</code></td><td>ainda não verificada</td></tr>
+</table>
+<h3>estadual · ficha.sem_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.sem_plano</code></td><td>Ainda não verificado nesta camada: a busca de saúde não foi executada para o estado, e isso não é ausência de documento.</td></tr>
+</table>
+<h3>estadual · ficha.camada</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.camada</code></td><td>Saúde no plano municipal de defesa civil</td></tr>
+</table>
+<h3>estadual · ficha.camada_nota</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.camada_nota</code></td><td>publicada ao lado da nota, não pontua</td></tr>
+</table>
+<h3>estadual · ficha.tempo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.tempo</code></td><td>Tempo depois do Boletim nº 1 (contexto, fora da nota)</td></tr>
+</table>
+<h3>estadual · ficha.tempo_depois</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.tempo_depois</code></td><td><span class="molde">{dias} dias depois do Boletim nº 1, de 29/06/2026</span><br><span class="ex">exemplo: 3 dias depois do Boletim nº 1, de 29/06/2026</span></td></tr>
+</table>
+<h3>estadual · ficha.tempo_antes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.tempo_antes</code></td><td><span class="molde">{dias} dias antes do Boletim nº 1, de 29/06/2026</span><br><span class="ex">exemplo: 3 dias antes do Boletim nº 1, de 29/06/2026</span></td></tr>
+</table>
+<h3>estadual · ficha.tempo_sem_dia</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.tempo_sem_dia</code></td><td>dia do ato ainda não fechado até o corte</td></tr>
+</table>
+<h3>estadual · ficha.resposta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.resposta</code></td><td>Emergência em saúde pública</td></tr>
+</table>
+<h3>estadual · ficha.resposta_sim</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.resposta_sim</code></td><td>declarada no ciclo</td></tr>
+</table>
+<h3>estadual · ficha.resposta_nao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.resposta_nao</code></td><td>nenhuma localizada desde 29 de junho de 2026</td></tr>
+</table>
+<h3>estadual · ficha.fonte_oficial</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.fonte_oficial</code></td><td>fonte oficial</td></tr>
+</table>
+<h3>consulta · rotulo.dengue</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.dengue</code></td><td>Dengue</td></tr>
+</table>
+<h3>consulta · rotulo.chikungunya</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.chikungunya</code></td><td>Chikungunya</td></tr>
+</table>
+<h3>consulta · rotulo.calor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.calor</code></td><td>Calor</td></tr>
+</table>
+<h3>consulta · rotulo.srag</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.srag</code></td><td>Internações respiratórias graves (estado)</td></tr>
+</table>
+<h3>consulta · rotulo.plano_estado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.plano_estado</code></td><td>MARÉ Saúde (estado)</td></tr>
+</table>
+<h3>consulta · rotulo.plano_municipio</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.plano_municipio</code></td><td>Plano de contingência do município</td></tr>
+</table>
+<h3>consulta · arbo.nivel_1</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_1</code></td><td>Nível 1 (baixa atividade)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_2</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_2</code></td><td>Nível 2 (atenção)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_3</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_3</code></td><td>Nível 3 (alerta)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_4</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_4</code></td><td>Nível 4 (emergência)</td></tr>
+</table>
+<h3>consulta · arbo.nivel_outro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nivel_outro</code></td><td><span class="molde">Nível {n}</span><br><span class="ex">exemplo: Nível 3</span></td></tr>
+</table>
+<h3>consulta · arbo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.arbo.nota</code></td><td><span class="molde">Semana {semana} · InfoDengue (Fiocruz e FGV)</span><br><span class="ex">exemplo: Semana 3 · InfoDengue (Fiocruz e FGV)</span></td></tr>
+</table>
+<h3>consulta · arbo.nao_lido</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nao_lido</code></td><td><span class="molde">Sem dado do InfoDengue para o município na semana {semana}</span><br><span class="ex">exemplo: Sem dado do InfoDengue para o município na semana 3</span></td></tr>
+</table>
+<h3>consulta · arbo.nota_nao_lido</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.arbo.nota_nao_lido</code></td><td><span class="molde">InfoDengue (Fiocruz e FGV) · {data}</span><br><span class="ex">exemplo: InfoDengue (Fiocruz e FGV) · 3</span></td></tr>
+</table>
+<h3>consulta · calor.com_excesso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.calor.com_excesso</code></td><td><span class="molde">Excesso de calor {classe}</span><br><span class="ex">exemplo: Excesso de calor 3</span></td></tr>
+</table>
+<h3>consulta · calor.sem_excesso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.calor.sem_excesso</code></td><td>Sem excesso de calor nesta semana</td></tr>
+</table>
+<h3>consulta · calor.sem_coleta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.calor.sem_coleta</code></td><td>Sem coleta até o corte</td></tr>
+</table>
+<h3>consulta · calor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.calor.nota</code></td><td><span class="molde">Painel de calor do Ministério da Saúde · {data}</span><br><span class="ex">exemplo: Painel de calor do Ministério da Saúde · 3</span></td></tr>
+</table>
+<h3>consulta · srag.valor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.srag.valor</code></td><td><span class="molde">{n|zero internações|uma internação|{n} internações} no estado na semana {semana}</span><br><span class="ex">exemplo: 3 internações no estado na semana 3</span></td></tr>
+</table>
+<h3>consulta · srag.sem_coleta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.srag.sem_coleta</code></td><td>Sem coleta até o corte</td></tr>
+</table>
+<h3>consulta · srag</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.srag.nota</code></td><td><span class="molde">SIVEP-Gripe (Ministério da Saúde) · {data}</span><br><span class="ex">exemplo: SIVEP-Gripe (Ministério da Saúde) · 3</span></td></tr>
+</table>
+<h3>consulta · plano_estado.ficha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano_estado.ficha</code></td><td>ver a ficha do estado</td></tr>
+</table>
+<h3>consulta · plano_estado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.plano_estado.nota</code></td><td><span class="molde">MARÉ Saúde · {data}</span><br><span class="ex">exemplo: MARÉ Saúde · 3</span></td></tr>
+</table>
+<h3>consulta · plano.sem_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.sem_plano</code></td><td>Não localizamos plano de contingência para este município até a data de corte</td></tr>
+</table>
+<h3>consulta · plano.com_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.com_plano</code></td><td><span class="molde">Plano de contingência: {documento}</span><br><span class="ex">exemplo: Plano de contingência: 3</span></td></tr>
+</table>
+<h3>consulta · plano.com_plano_data</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.com_plano_data</code></td><td><span class="molde">Plano de contingência: {documento}, {data}</span><br><span class="ex">exemplo: Plano de contingência: 3, 3</span></td></tr>
+</table>
+<h3>consulta · plano.abrir</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.abrir</code></td><td>abrir o documento</td></tr>
+</table>
+<h3>consulta · plano.nao_verificado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.nao_verificado</code></td><td>Município ainda não verificado</td></tr>
+</table>
+<h3>consulta · plano.saude_no_plano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.saude_no_plano</code></td><td><span class="molde">O plano trata a saúde (leitura página {pagina})</span><br><span class="ex">exemplo: O plano trata a saúde (leitura página 3)</span></td></tr>
+</table>
+<h3>consulta · plano.saude_no_plano_sem_pagina</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.saude_no_plano_sem_pagina</code></td><td>O plano trata a saúde</td></tr>
+</table>
+<h3>consulta · plano.sem_leitura</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.sem_leitura</code></td><td>Sem leitura da saúde no plano até o corte</td></tr>
+</table>
+<h3>consulta · plano.ver_inicial</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.plano.ver_inicial</code></td><td>ver a ficha na página inicial</td></tr>
+</table>
+<h3>posicao · acima</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.acima</code></td><td>acima da faixa habitual para a época</td></tr>
+</table>
+<h3>posicao · dentro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.dentro</code></td><td>dentro da faixa habitual para a época</td></tr>
+</table>
+<h3>posicao · abaixo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.abaixo</code></td><td>abaixo da faixa habitual para a época</td></tr>
+</table>
+<h3>posicao · sem_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.posicao.sem_faixa</code></td><td>sem faixa habitual para a época</td></tr>
+</table>
+<h3>consulta · sem_lista</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.sem_lista</code></td><td>Ainda não temos a lista de municípios deste estado.</td></tr>
+</table>
+<h3>numerosSaude · notificacoes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>saude.numerosSaude.notificacoes.rotulo</code></td><td>notificações</td></tr>
+</table>
+<h3>numerosSaude · internacoes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>rotulo</td><td><code>saude.numerosSaude.internacoes.rotulo</code></td><td>internações</td></tr>
+</table>
+<h3>numerosSaude · estados_acima.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.estados_acima.molde</code></td><td><span class="molde">{k|nenhum estado acima da faixa habitual para a época|um estado acima da faixa habitual para a época|{k} de {total} estados acima da faixa habitual para a época}</span><br><span class="ex">exemplo: 3 de 3 estados acima da faixa habitual para a época</span></td></tr>
+</table>
+<h3>numerosSaude · semana.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.semana.molde</code></td><td><span class="molde">semana {datas}</span><br><span class="ex">exemplo: semana 3</span></td></tr>
+</table>
+<h3>numerosSaude · valor.lacuna</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.valor.lacuna</code></td><td>sem total nacional</td></tr>
+</table>
+<h3>numerosSaude · semana.lacuna</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.semana.lacuna</code></td><td>sem semana em comum aos estados até o corte</td></tr>
+</table>
+<h3>numerosSaude · fonte.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.fonte.molde</code></td><td><span class="molde">Fonte: {fonte} · consultado em {data}</span><br><span class="ex">exemplo: Fonte: 3 · consultado em 3</span></td></tr>
+</table>
+<h3>numerosSaude</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.numerosSaude.nota</code></td><td>Cada cartão mostra a semana mais recente com registros consolidados.</td></tr>
+</table>
+<h3>numerosSaude · calor_contexto.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.calor_contexto.molde</code></td><td><span class="molde">Calor: {n} dos {total} municípios em classe severa ou extrema de excesso de calor ({fonte}, {data}).</span><br><span class="ex">exemplo: Calor: 3 dos 3 municípios em classe severa ou extrema de excesso de calor (3, 3).</span></td></tr>
+</table>
+<h3>numerosSaude · calor_contexto</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>fonte</td><td><code>saude.numerosSaude.calor_contexto.fonte</code></td><td>Painel Nacional de Excesso de Calor, Ministério da Saúde</td></tr>
+</table>
+<h3>numerosSaude · calor_contexto.lacuna</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.numerosSaude.calor_contexto.lacuna</code></td><td>Calor: sem leitura do Painel Nacional de Excesso de Calor até o corte.</td></tr>
+</table>
+<h3>topo · resposta.ponta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.ponta</code></td><td>0 · nenhum decreto</td></tr>
+</table>
+<h3>topo · resposta.linha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.linha</code></td><td><span class="molde">Parcela da população em estados ou municípios sob decreto de emergência em saúde desde 29 de junho de 2026 · até {quando} · DOU e diários oficiais estaduais</span><br><span class="ex">exemplo: Parcela da população em estados ou municípios sob decreto de emergência em saúde desde 29 de junho de 2026 · até 3 · DOU e diários oficiais estaduais</span></td></tr>
+</table>
+<h3>topo · resposta.linha_reserva</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.linha_reserva</code></td><td>sem coleta até o corte</td></tr>
+</table>
+<h3>topo · resposta.pilula</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.pilula</code></td><td><span class="molde">{n|nenhum decreto|um decreto · {pct}% da população|{n} decretos · {pct}% da população}</span><br><span class="ex">exemplo: {n|nenhum decreto|um decreto · 3% da população|3 decretos · 3% da população}</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_semana</code></td><td><span class="molde">{territorio} · semana {datas}</span><br><span class="ex">exemplo: 3 · semana 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.subtitulo_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.subtitulo_mes</code></td><td><span class="molde">{territorio} · mês de {mes}</span><br><span class="ex">exemplo: 3 · mês de 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.frase</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.frase</code></td><td><span class="molde">No {territorio}, {posicao}. Por estado: {acima}, {dentro} e {abaixo} da faixa habitual.</span><br><span class="ex">exemplo: No 3, 3. Por estado: 3, 3 e 3 da faixa habitual.</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.n_acima</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_acima</code></td><td><span class="molde">{k} acima</span><br><span class="ex">exemplo: 3 acima</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.n_dentro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_dentro</code></td><td><span class="molde">{k} dentro</span><br><span class="ex">exemplo: 3 dentro</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.n_abaixo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.n_abaixo</code></td><td><span class="molde">{k} abaixo</span><br><span class="ex">exemplo: 3 abaixo</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.parciais</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.parciais</code></td><td><span class="molde">{n|nenhum período ainda em registro|um período ainda em registro fica fora|{n} períodos ainda em registro ficam fora}</span><br><span class="ex">exemplo: 3 períodos ainda em registro ficam fora</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.parciais_nenhum</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.parciais_nenhum</code></td><td>série fechada até o último período</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_ano</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_ano</code></td><td><span class="molde">valor observado em {ano}</span><br><span class="ex">exemplo: valor observado em 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_faixa</code></td><td>faixa habitual para a época (2019–2025)</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_incompleto_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_incompleto_semana</code></td><td>semanas com registro incompleto</td></tr>
+</table>
+<h3>observado · registram.detalhe.leg_incompleto_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.leg_incompleto_mes</code></td><td>meses com registro incompleto</td></tr>
+</table>
+<h3>observado · registram.detalhe.sem_periodo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.sem_periodo</code></td><td>sem período fechado</td></tr>
+</table>
+<h3>observado · registram.detalhe.ficha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.ficha</code></td><td><span class="molde">{n} {unidade} · {taxa} por 100 mil habitantes</span><br><span class="ex">exemplo: 3 3 · 3 por 100 mil habitantes</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.faixa</code></td><td><span class="molde">(de {mediana} a {p90})</span><br><span class="ex">exemplo: (de 3 a 3)</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.periodo_semana</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.periodo_semana</code></td><td><span class="molde">semana {datas}</span><br><span class="ex">exemplo: semana 3</span></td></tr>
+</table>
+<h3>observado · registram.detalhe.periodo_mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.observado.registram.detalhe.periodo_mes</code></td><td><span class="molde">mês de {mes}</span><br><span class="ex">exemplo: mês de 3</span></td></tr>
 </table>
 </body></html>

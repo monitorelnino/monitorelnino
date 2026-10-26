@@ -116,11 +116,8 @@ def preencher_index():
     n = [0]
     meta = ler("meta.json", {}) or {}
     corte = meta.get("corte") or "—"
-    atualizado = meta.get("atualizado_em") or corte
 
     h = sub_id(h, "heroCorte", corte, n)
-    h = sub_id(h, "metaAtualizado", atualizado, n)
-    h = sub_id(h, "corteDados", corte, n)   # 16/09/2026: tirado o literal 26/08/2026 hardcoded
 
     resp = ler("resposta/por_uf.json", {}) or {}
     N = resp.get("nacional")
@@ -261,8 +258,30 @@ def preencher_financiamento():
     print(f"financiamento.html: {n[0]} campo(s) de fallback estático regravado(s)")
 
 
+def preencher_rodape():
+    """As quatro datas do rodapé (cópia estática de `assets/js/rodape.js`) em toda página que as mostra."""
+    meta = ler("meta.json", {}) or {}
+    corte = meta.get("corte") or "—"
+    publicacao = meta.get("atualizado_em") or corte
+    iso = (ler("saude_pipeline.json", {}) or {}).get("atualizado_em") or ""
+    coleta = re.sub(r"^(\d{4})-(\d{2})-(\d{2}).*", r"\3/\2/\1", iso) if iso else ""
+    for p in sorted(RAIZ.glob("*.html")):
+        h = p.read_text(encoding="utf-8")
+        if 'id="metaAtualizado"' not in h:
+            continue
+        n = [0]
+        novo = h
+        for id_, v in (("metaAtualizado", publicacao), ("corteDados", corte), ("metaPublicacao", publicacao), ("metaColeta", coleta)):
+            if v:
+                novo = sub_id(novo, id_, v, n)
+        if novo != h:
+            p.write_text(novo, encoding="utf-8", newline="\n")
+        print(f"{p.name}: rodapé, {n[0]} data(s) regravada(s)")
+
+
 if __name__ == "__main__":
     preencher_index()
+    preencher_rodape()
     preencher_saude()
     preencher_financiamento()
     preencher_imprensa()

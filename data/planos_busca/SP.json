@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-23",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "3550308": {
    "S16": {
@@ -10,11 +10,4171 @@
     "dominio": "saopaulo.sp.gov.br"
    },
    "S25": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=saopaulo.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "saopaulo.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Paulo%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Paulo%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "saopaulo.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Paulo%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "saopaulo.sp.gov.br"
+   }
+  },
+  "3500709": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=agudos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "agudos.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=agudos.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "agudos.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Agudos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Agudos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "agudos.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Agudos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "agudos.sp.gov.br"
+   }
+  },
+  "3501608": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Americana%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Americana%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Americana%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3501905": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=amparo.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "amparo.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=amparo.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "amparo.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Amparo%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Amparo%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "amparo.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Amparo%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "amparo.sp.gov.br"
+   }
+  },
+  "3502101": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.andradina.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.andradina.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.andradina.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.andradina.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Andradina%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Andradina%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.andradina.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Andradina%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.andradina.sp.gov.br"
+   }
+  },
+  "3503208": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Araraquara%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Araraquara%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Araraquara%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3503307": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=araras.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "araras.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=araras.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "araras.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Araras%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Araras%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "araras.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Araras%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "araras.sp.gov.br"
+   }
+  },
+  "3502804": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=aracatuba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "aracatuba.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=aracatuba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "aracatuba.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ara%C3%A7atuba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ara%C3%A7atuba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "aracatuba.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ara%C3%A7atuba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "aracatuba.sp.gov.br"
+   }
+  },
+  "3503802": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Artur+Nogueira%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Artur+Nogueira%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Artur+Nogueira%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3503901": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Aruj%C3%A1%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Aruj%C3%A1%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aruj%C3%A1%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3504008": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.assis.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.assis.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.assis.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.assis.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Assis%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Assis%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.assis.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Assis%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.assis.sp.gov.br"
+   }
+  },
+  "3504107": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=atibaia.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "atibaia.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=atibaia.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "atibaia.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Atibaia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Atibaia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "atibaia.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Atibaia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "atibaia.sp.gov.br"
+   }
+  },
+  "3504503": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Avar%C3%A9%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Avar%C3%A9%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Avar%C3%A9%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3505500": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=barretos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "barretos.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=barretos.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "barretos.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barretos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barretos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "barretos.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Barretos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "barretos.sp.gov.br"
+   }
+  },
+  "3505708": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barueri%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barueri%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Barueri%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3505906": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=batatais.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "batatais.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=batatais.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "batatais.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Batatais%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Batatais%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "batatais.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Batatais%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "batatais.sp.gov.br"
+   }
+  },
+  "3506003": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bauru%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bauru%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bauru%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3506102": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=bebedouro.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "bebedouro.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bebedouro.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "bebedouro.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bebedouro%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bebedouro%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "bebedouro.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bebedouro%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "bebedouro.sp.gov.br"
+   }
+  },
+  "3506359": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=bertioga.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "bertioga.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bertioga.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "bertioga.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bertioga%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bertioga%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "bertioga.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bertioga%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "bertioga.sp.gov.br"
+   }
+  },
+  "3506508": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Birigui%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Birigui%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Birigui%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3507001": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Boituva%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Boituva%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Boituva%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3507506": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=botucatu.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "botucatu.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=botucatu.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "botucatu.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Botucatu%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Botucatu%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "botucatu.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Botucatu%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "botucatu.sp.gov.br"
+   }
+  },
+  "3507605": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bragan%C3%A7a+Paulista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bragan%C3%A7a+Paulista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bragan%C3%A7a+Paulista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3508405": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cabre%C3%BAva%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cabre%C3%BAva%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cabre%C3%BAva%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3509007": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Caieiras%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Caieiras%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "caieiras.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Caieiras%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "caieiras.sp.gov.br"
+   }
+  },
+  "3509205": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cajamar.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "cajamar.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cajamar.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cajamar.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cajamar%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Cajamar%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "cajamar.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cajamar%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "cajamar.sp.gov.br"
+   }
+  },
+  "3509502": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=campinas.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "TimeoutError: The read operation timed out",
+    "dominio": "campinas.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=campinas.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "campinas.sp.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Campinas%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Campinas%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "campinas.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Campinas%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "campinas.sp.gov.br"
+   }
+  },
+  "3509601": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Campo+Limpo+Paulista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Campo+Limpo+Paulista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Campo+Limpo+Paulista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3509700": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=camposdojordao.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "camposdojordao.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=camposdojordao.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "camposdojordao.sp.gov.br"
+   }
+  },
+  "3510401": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=capivari.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "capivari.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=capivari.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "capivari.sp.gov.br"
+   }
+  },
+  "3510203": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=capaobonito.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "capaobonito.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3510500": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=caraguatatuba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "caraguatatuba.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=caraguatatuba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "caraguatatuba.sp.gov.br"
+   }
+  },
+  "3510609": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.carapicuiba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.carapicuiba.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.carapicuiba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.carapicuiba.sp.gov.br"
+   }
+  },
+  "3511102": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.catanduva.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.catanduva.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.catanduva.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.catanduva.sp.gov.br"
+   }
+  },
+  "3508504": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3511508": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cerquilho.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "cerquilho.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cerquilho.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cerquilho.sp.gov.br"
+   }
+  },
+  "3512803": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cosmopolis.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "cosmopolis.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cosmopolis.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cosmopolis.sp.gov.br"
+   }
+  },
+  "3513009": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cotia.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "cotia.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cotia.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cotia.sp.gov.br"
+   }
+  },
+  "3513405": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cruzeiro.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "cruzeiro.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cruzeiro.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cruzeiro.sp.gov.br"
+   }
+  },
+  "3513504": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=cubatao.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "TimeoutError: The read operation timed out",
+    "dominio": "cubatao.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cubatao.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "cubatao.sp.gov.br"
+   }
+  },
+  "3513801": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3514403": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.dracena.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.dracena.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.dracena.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.dracena.sp.gov.br"
+   }
+  },
+  "3515004": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3515103": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3515186": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3515509": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3515707": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=ferrazdevasconcelos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "ferrazdevasconcelos.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "ferrazdevasconcelos.sp.gov.br"
+   }
+  },
+  "3516200": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3516309": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3516408": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=francodarocha.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "francodarocha.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "francodarocha.sp.gov.br"
+   }
+  },
+  "3516705": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.garca.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.garca.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.garca.sp.gov.br"
+   }
+  },
+  "3518404": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=guaratingueta.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "guaratingueta.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "guaratingueta.sp.gov.br"
+   }
+  },
+  "3518602": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3518701": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3518800": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3517406": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=guaira.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "guaira.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "guaira.sp.gov.br"
+   }
+  },
+  "3519071": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3519600": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.ibitinga.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.ibitinga.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.ibitinga.sp.gov.br"
+   }
+  },
+  "3519709": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=ibiuna.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "ibiuna.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "ibiuna.sp.gov.br"
+   }
+  },
+  "3520400": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.ilhabela.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "www.ilhabela.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.ilhabela.sp.gov.br"
+   }
+  },
+  "3520509": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.indaiatuba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "www.indaiatuba.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.indaiatuba.sp.gov.br"
+   }
+  },
+  "3521002": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3522109": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3522208": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3522307": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=itapetininga.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "itapetininga.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "itapetininga.sp.gov.br"
+   }
+  },
+  "3522406": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=itapeva.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "itapeva.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "itapeva.sp.gov.br"
+   }
+  },
+  "3522505": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=itapevi.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "itapevi.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "itapevi.sp.gov.br"
+   }
+  },
+  "3522604": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3523107": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3523206": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=itarare.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "itarare.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "itarare.sp.gov.br"
+   }
+  },
+  "3523404": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3523909": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3524006": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3524105": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=ituverava.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "ituverava.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "ituverava.sp.gov.br"
+   }
+  },
+  "3522703": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.itapolis.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.itapolis.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.itapolis.sp.gov.br"
+   }
+  },
+  "3524303": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.jaboticabal.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.jaboticabal.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.jaboticabal.sp.gov.br"
+   }
+  },
+  "3524402": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=jacarei.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "jacarei.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "jacarei.sp.gov.br"
+   }
+  },
+  "3524709": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=jaguariuna.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "jaguariuna.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "jaguariuna.sp.gov.br"
+   }
+  },
+  "3524808": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3525003": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3525102": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.jardinopolis.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.jardinopolis.sp.gov.br"
+   },
+   "S25": {
     "consultado_em": "2026-10-23",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
-    "dominio": "saopaulo.sp.gov.br"
+    "dominio": "www.jardinopolis.sp.gov.br"
+   }
+  },
+  "3525201": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "3525300": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=jau.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "jau.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "jau.sp.gov.br"
+   }
+  },
+  "3525706": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.josebonifacio.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.josebonifacio.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.josebonifacio.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.josebonifacio.sp.gov.br"
+   }
+  },
+  "3525904": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=jundiai.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "jundiai.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=jundiai.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "jundiai.sp.gov.br"
+   }
+  },
+  "3526704": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=leme.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "leme.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-23",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=leme.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "leme.sp.gov.br"
+   }
+  },
+  "3526803": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Len%C3%A7%C3%B3is+Paulista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Len%C3%A7%C3%B3is+Paulista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.lencoispaulista.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.lencoispaulista.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.lencoispaulista.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.lencoispaulista.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.lencoispaulista.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Len%C3%A7%C3%B3is+Paulista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.lencoispaulista.sp.gov.br"
+   }
+  },
+  "3526902": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Limeira%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Limeira%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Limeira%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3527108": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Lins%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Lins%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.lins.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.lins.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.lins.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.lins.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.lins.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Lins%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.lins.sp.gov.br"
+   }
+  },
+  "3527207": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Lorena%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Lorena%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Lorena%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3527306": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Louveira%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Louveira%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "louveira.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=louveira.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "louveira.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=louveira.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "louveira.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Louveira%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "louveira.sp.gov.br"
+   }
+  },
+  "3528403": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mairinque%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mairinque%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.mairinque.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.mairinque.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "www.mairinque.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.mairinque.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.mairinque.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mairinque%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.mairinque.sp.gov.br"
+   }
+  },
+  "3528502": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mairipor%C3%A3%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mairipor%C3%A3%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mairipor%C3%A3%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3529005": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mar%C3%ADlia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mar%C3%ADlia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.marilia.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.marilia.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.marilia.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.marilia.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.marilia.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mar%C3%ADlia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.marilia.sp.gov.br"
+   }
+  },
+  "3529302": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mat%C3%A3o%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mat%C3%A3o%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mat%C3%A3o%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3529401": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mau%C3%A1%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mau%C3%A1%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "maua.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=maua.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "maua.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=maua.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "maua.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mau%C3%A1%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "maua.sp.gov.br"
+   }
+  },
+  "3530300": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mirassol%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mirassol%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.mirassol.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.mirassol.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.mirassol.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.mirassol.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.mirassol.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mirassol%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.mirassol.sp.gov.br"
+   }
+  },
+  "3530508": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mococa%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mococa%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "mococa.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=mococa.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "mococa.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=mococa.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "mococa.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mococa%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "mococa.sp.gov.br"
+   }
+  },
+  "3530706": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mogi+Gua%C3%A7u%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mogi+Gua%C3%A7u%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mogi+Gua%C3%A7u%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3530805": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mogi+Mirim%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mogi+Mirim%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mogi+Mirim%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3530607": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mogi+das+Cruzes%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mogi+das+Cruzes%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "mogidascruzes.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=mogidascruzes.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "mogidascruzes.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=mogidascruzes.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "mogidascruzes.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mogi+das+Cruzes%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "mogidascruzes.sp.gov.br"
+   }
+  },
+  "3531100": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mongagu%C3%A1%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Mongagu%C3%A1%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mongagu%C3%A1%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3531308": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Monte+Alto%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Monte+Alto%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "montealto.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=montealto.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "montealto.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=montealto.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "montealto.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Monte+Alto%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "montealto.sp.gov.br"
+   }
+  },
+  "3531803": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Monte+Mor%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Monte+Mor%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.montemor.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.montemor.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.montemor.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.montemor.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.montemor.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Monte+Mor%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.montemor.sp.gov.br"
+   }
+  },
+  "3533403": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Nova+Odessa%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Nova+Odessa%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Nova+Odessa%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3533502": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Novo+Horizonte%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Novo+Horizonte%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Novo+Horizonte%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3533908": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ol%C3%ADmpia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ol%C3%ADmpia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.olimpia.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.olimpia.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.olimpia.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.olimpia.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.olimpia.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ol%C3%ADmpia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.olimpia.sp.gov.br"
+   }
+  },
+  "3534302": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Orl%C3%A2ndia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Orl%C3%A2ndia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Orl%C3%A2ndia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3534401": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Osasco%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Osasco%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "osasco.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=osasco.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "osasco.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=osasco.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "osasco.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Osasco%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "osasco.sp.gov.br"
+   }
+  },
+  "3534708": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ourinhos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ourinhos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.ourinhos.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.ourinhos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.ourinhos.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.ourinhos.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.ourinhos.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ourinhos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.ourinhos.sp.gov.br"
+   }
+  },
+  "3535507": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Paragua%C3%A7u+Paulista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Paragua%C3%A7u+Paulista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Paragua%C3%A7u+Paulista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3536505": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Paul%C3%ADnia%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Paul%C3%ADnia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.paulinia.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.paulinia.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.paulinia.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.paulinia.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Paul%C3%ADnia%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.paulinia.sp.gov.br"
+   }
+  },
+  "3536703": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pederneiras%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pederneiras%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.pederneiras.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.pederneiras.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.pederneiras.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.pederneiras.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pederneiras%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.pederneiras.sp.gov.br"
+   }
+  },
+  "3537107": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pedreira%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pedreira%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pedreira%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3537305": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pen%C3%A1polis%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pen%C3%A1polis%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.penapolis.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.penapolis.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.penapolis.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.penapolis.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.penapolis.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pen%C3%A1polis%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.penapolis.sp.gov.br"
+   }
+  },
+  "3537602": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Peru%C3%ADbe%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Peru%C3%ADbe%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.peruibe.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.peruibe.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.peruibe.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.peruibe.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.peruibe.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Peru%C3%ADbe%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.peruibe.sp.gov.br"
+   }
+  },
+  "3537800": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Piedade%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Piedade%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.piedade.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.piedade.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.piedade.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.piedade.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.piedade.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Piedade%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.piedade.sp.gov.br"
+   }
+  },
+  "3538006": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pindamonhangaba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pindamonhangaba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pindamonhangaba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3538709": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Piracicaba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Piracicaba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "piracicaba.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=piracicaba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "piracicaba.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=piracicaba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "piracicaba.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Piracicaba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "piracicaba.sp.gov.br"
+   }
+  },
+  "3539301": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pirassununga%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pirassununga%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "pirassununga.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=pirassununga.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "pirassununga.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=pirassununga.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "pirassununga.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pirassununga%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "pirassununga.sp.gov.br"
+   }
+  },
+  "3540200": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pontal%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Pontal%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pontal%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3540606": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Feliz%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Feliz%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Porto+Feliz%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3540705": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Ferreira%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Porto+Ferreira%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Porto+Ferreira%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3539806": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Po%C3%A1%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Po%C3%A1%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Po%C3%A1%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3541000": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Praia+Grande%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Praia+Grande%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.praiagrande.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.praiagrande.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "www.praiagrande.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.praiagrande.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Praia+Grande%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.praiagrande.sp.gov.br"
+   }
+  },
+  "3541307": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Presidente+Epit%C3%A1cio%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Presidente+Epit%C3%A1cio%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.presidenteepitacio.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.presidenteepitacio.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.presidenteepitacio.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.presidenteepitacio.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Presidente+Epit%C3%A1cio%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.presidenteepitacio.sp.gov.br"
+   }
+  },
+  "3541406": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Presidente+Prudente%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Presidente+Prudente%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "presidenteprudente.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=presidenteprudente.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "presidenteprudente.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "presidenteprudente.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Presidente+Prudente%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "presidenteprudente.sp.gov.br"
+   }
+  },
+  "3541505": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Presidente+Venceslau%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Presidente+Venceslau%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "presidentevenceslau.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=presidentevenceslau.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "presidentevenceslau.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "presidentevenceslau.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Presidente+Venceslau%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "presidentevenceslau.sp.gov.br"
+   }
+  },
+  "3541604": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Promiss%C3%A3o%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Promiss%C3%A3o%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.promissao.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.promissao.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.promissao.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.promissao.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Promiss%C3%A3o%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.promissao.sp.gov.br"
+   }
+  },
+  "3542602": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Registro%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Registro%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "registro.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=registro.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "registro.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Registro%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "registro.sp.gov.br"
+   }
+  },
+  "3543303": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ribeir%C3%A3o+Pires%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ribeir%C3%A3o+Pires%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.ribeiraopires.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.ribeiraopires.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.ribeiraopires.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ribeir%C3%A3o+Pires%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.ribeiraopires.sp.gov.br"
+   }
+  },
+  "3543402": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ribeir%C3%A3o+Preto%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ribeir%C3%A3o+Preto%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "ribeiraopreto.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=ribeiraopreto.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "ribeiraopreto.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ribeir%C3%A3o+Preto%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "ribeiraopreto.sp.gov.br"
+   }
+  },
+  "3543907": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Rio+Claro%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Rio+Claro%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rio+Claro%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3544103": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Rio+Grande+da+Serra%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Rio+Grande+da+Serra%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "riograndedaserra.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=riograndedaserra.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "riograndedaserra.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rio+Grande+da+Serra%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "riograndedaserra.sp.gov.br"
+   }
+  },
+  "3545209": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Salto%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Salto%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "salto.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=salto.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "salto.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Salto%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "salto.sp.gov.br"
+   }
+  },
+  "3545308": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Salto+de+Pirapora%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Salto+de+Pirapora%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.saltodepirapora.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.saltodepirapora.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.saltodepirapora.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Salto+de+Pirapora%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.saltodepirapora.sp.gov.br"
+   }
+  },
+  "3545803": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+B%C3%A1rbara+d%27Oeste%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+B%C3%A1rbara+d%27Oeste%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santa+B%C3%A1rbara+d%27Oeste%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3546405": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+Cruz+do+Rio+Pardo%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+Cruz+do+Rio+Pardo%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "santacruzdoriopardo.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=santacruzdoriopardo.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "santacruzdoriopardo.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santa+Cruz+do+Rio+Pardo%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "santacruzdoriopardo.sp.gov.br"
+   }
+  },
+  "3546603": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+F%C3%A9+do+Sul%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+F%C3%A9+do+Sul%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.santafedosul.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.santafedosul.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.santafedosul.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santa+F%C3%A9+do+Sul%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.santafedosul.sp.gov.br"
+   }
+  },
+  "3546801": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+Isabel%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santa+Isabel%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santa+Isabel%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3547304": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santana+de+Parna%C3%ADba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santana+de+Parna%C3%ADba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santana+de+Parna%C3%ADba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3547809": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santo+Andr%C3%A9%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santo+Andr%C3%A9%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santo+Andr%C3%A9%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3548500": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Santos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "santos.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=santos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "santos.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "santos.sp.gov.br"
+   }
+  },
+  "3551504": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Serrana%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Serrana%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Serrana%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3551702": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Sert%C3%A3ozinho%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Sert%C3%A3ozinho%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.sertaozinho.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.sertaozinho.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.sertaozinho.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Sert%C3%A3ozinho%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.sertaozinho.sp.gov.br"
+   }
+  },
+  "3552106": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Socorro%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Socorro%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "socorro.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=socorro.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "socorro.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Socorro%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "socorro.sp.gov.br"
+   }
+  },
+  "3552205": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Sorocaba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Sorocaba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "sorocaba.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=sorocaba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "sorocaba.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Sorocaba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "sorocaba.sp.gov.br"
+   }
+  },
+  "3552403": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Sumar%C3%A9%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Sumar%C3%A9%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Sumar%C3%A9%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3552502": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Suzano%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Suzano%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Suzano%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3548708": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Bernardo+do+Campo%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Bernardo+do+Campo%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Bernardo+do+Campo%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3548807": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Caetano+do+Sul%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Caetano+do+Sul%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Caetano+do+Sul%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3548906": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Carlos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Carlos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Carlos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3549409": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Joaquim+da+Barra%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Joaquim+da+Barra%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "saojoaquimdabarra.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=saojoaquimdabarra.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "saojoaquimdabarra.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Joaquim+da+Barra%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "saojoaquimdabarra.sp.gov.br"
+   }
+  },
+  "3549706": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jos%C3%A9+do+Rio+Pardo%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jos%C3%A9+do+Rio+Pardo%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "saojosedoriopardo.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=saojosedoriopardo.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "saojosedoriopardo.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Jos%C3%A9+do+Rio+Pardo%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "saojosedoriopardo.sp.gov.br"
+   }
+  },
+  "3549805": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jos%C3%A9+do+Rio+Preto%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jos%C3%A9+do+Rio+Preto%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Jos%C3%A9+do+Rio+Preto%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3549904": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jos%C3%A9+dos+Campos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jos%C3%A9+dos+Campos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Jos%C3%A9+dos+Campos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3549102": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jo%C3%A3o+da+Boa+Vista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Jo%C3%A3o+da+Boa+Vista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Jo%C3%A3o+da+Boa+Vista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3550100": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Manuel%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Manuel%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.saomanuel.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.saomanuel.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.saomanuel.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Manuel%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.saomanuel.sp.gov.br"
+   }
+  },
+  "3550407": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Pedro%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Pedro%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.saopedro.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.saopedro.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.saopedro.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Pedro%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.saopedro.sp.gov.br"
+   }
+  },
+  "3550605": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Roque%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Roque%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.saoroque.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.saoroque.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.saoroque.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Roque%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.saoroque.sp.gov.br"
+   }
+  },
+  "3550704": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Sebasti%C3%A3o%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Sebasti%C3%A3o%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Sebasti%C3%A3o%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3551009": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Vicente%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22S%C3%A3o+Vicente%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.saovicente.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.saovicente.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 503",
+    "dominio": "www.saovicente.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Vicente%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.saovicente.sp.gov.br"
+   }
+  },
+  "3552809": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tabo%C3%A3o+da+Serra%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tabo%C3%A3o+da+Serra%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tabo%C3%A3o+da+Serra%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3553708": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Taquaritinga%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Taquaritinga%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Taquaritinga%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3554003": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tatu%C3%AD%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tatu%C3%AD%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "tatui.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=tatui.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "tatui.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tatu%C3%AD%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "tatui.sp.gov.br"
+   }
+  },
+  "3554102": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Taubat%C3%A9%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Taubat%C3%A9%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Taubat%C3%A9%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3554508": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tiet%C3%AA%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tiet%C3%AA%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "tiete.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=tiete.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "tiete.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tiet%C3%AA%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "tiete.sp.gov.br"
+   }
+  },
+  "3554805": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Trememb%C3%A9%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Trememb%C3%A9%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Trememb%C3%A9%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3555000": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tup%C3%A3%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Tup%C3%A3%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "tupa.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=tupa.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "tupa.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tup%C3%A3%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "tupa.sp.gov.br"
+   }
+  },
+  "3555406": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ubatuba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Ubatuba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "ubatuba.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=ubatuba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "ubatuba.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ubatuba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "ubatuba.sp.gov.br"
+   }
+  },
+  "3556206": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Valinhos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Valinhos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.valinhos.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.valinhos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "TimeoutError: The read operation timed out",
+    "dominio": "www.valinhos.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Valinhos%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.valinhos.sp.gov.br"
+   }
+  },
+  "3556453": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Vargem+Grande+Paulista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Vargem+Grande+Paulista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "vargemgrandepaulista.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=vargemgrandepaulista.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "vargemgrandepaulista.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Vargem+Grande+Paulista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "vargemgrandepaulista.sp.gov.br"
+   }
+  },
+  "3556404": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Vargem+Grande+do+Sul%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Vargem+Grande+do+Sul%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Vargem+Grande+do+Sul%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
+   }
+  },
+  "3556701": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Vinhedo%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Vinhedo%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.vinhedo.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.vinhedo.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.vinhedo.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Vinhedo%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.vinhedo.sp.gov.br"
+   }
+  },
+  "3557006": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Votorantim%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Votorantim%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.votorantim.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.votorantim.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "dominio": "www.votorantim.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Votorantim%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.votorantim.sp.gov.br"
+   }
+  },
+  "3557105": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Votuporanga%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Votuporanga%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.votuporanga.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "lido",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.votuporanga.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "www.votuporanga.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.votuporanga.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Votuporanga%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.votuporanga.sp.gov.br"
+   }
+  },
+  "3556503": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22V%C3%A1rzea+Paulista%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22V%C3%A1rzea+Paulista%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.varzeapaulista.sp.gov.br"
+   },
+   "S16": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=www.varzeapaulista.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": "HTTP 504",
+    "dominio": "www.varzeapaulista.sp.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "www.varzeapaulista.sp.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22V%C3%A1rzea+Paulista%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": "www.varzeapaulista.sp.gov.br"
    }
   }
  }

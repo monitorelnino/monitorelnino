@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fecha o MARÉ Saúde sem depender de nova instrução — bloco da editoria de 01/10/2026 (23h10).
+"""Fecha o MARÉ Saúde sem depender de nova instrução — bloco da editoria de 01/10/2026 (23h10); v0.7 em 24/10/2026.
 
 O QUE ESTE SCRIPT RESPONDE, TODA RODADA
 ---------------------------------------
@@ -11,10 +11,10 @@ O QUE ESTE SCRIPT RESPONDE, TODA RODADA
 2. **Quantas UFs faltam, e por quê.** É o relatório diário que o publicador imprime (item 4 do
    bloco): não basta dizer "21 de 27"; tem de dizer o que falta em cada uma das seis restantes.
 
-3. **Se já é hora de trocar para a v0.4.** A troca foi autorizada em 01/10 e tem condição única:
-   as 27 verificadas **no plano e na coordenação**. Enquanto a condição não se cumpre, este script
-   não muda nada na página — só relata. Quando ela se cumprir, ele grava o pedido de troca
-   (`data/saude_troca_v04.json`), que é o que o publicador lê para trocar e emitir a errata.
+3. **Se já é hora da v0.8.** A v0.7 (instrumento + cobertura) está no ar; a coordenação entra na nota
+   quando as 27 UFs tiverem **plano e as duas funções da coordenação** verificados
+   (`monitor_saude.json`: `ufs[UF].coordenacao.verificada`). Este script só mede e grava
+   `data/saude_fechamento.json`; quem promove a v0.8 é a janela de dados, no motor único.
 
 POR QUE LER O LOG, E NÃO UM CAMPO DE CONTROLE
 ---------------------------------------------
@@ -25,7 +25,7 @@ execuções do funil de saúde e devolve, por UF, qual canal rodou e com que dec
 
 USO
     python3 scripts/fechar_saude.py                 # relatório, sem escrever
-    python3 scripts/fechar_saude.py --aplicar       # grava o pedido de troca, se for o caso
+    python3 scripts/fechar_saude.py --aplicar       # grava o fechamento medido
     python3 scripts/fechar_saude.py --autoteste
 """
 import datetime
@@ -35,7 +35,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DATA = RAIZ / "data"
-SAIDA = DATA / "saude_troca_v04.json"
+SAIDA = DATA / "saude_fechamento.json"
 UFS = ("AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO").split()
 
 # Os quatro canais da bateria, e como cada um se reconhece no texto de `resultados` do log. O
@@ -154,14 +154,13 @@ def unir_canais(do_log: dict, do_localizador: dict) -> dict:
     return fora
 
 
-def estado_das_ufs(monitor: dict, v04: dict, canais: dict) -> dict:
+def estado_das_ufs(monitor: dict, canais: dict) -> dict:
     """{uf: {plano, coordenacao, canais_ok, falta}} — o quadro da rodada. Função pura."""
     quadro = {}
     for uf in UFS:
         m = (monitor.get("ufs") or {}).get(uf) or {}
-        v = (v04.get("uf") or {}).get(uf) or {}
         plano = bool((m.get("instrumento") or {}).get("doc"))
-        coord = bool((v.get("coordenacao") or {}).get("doc"))
+        coord = bool((m.get("coordenacao") or {}).get("verificada"))
         ok = pode_dizer_nao_localizado(canais.get(uf) or {})
         falta = []
         if not plano:
@@ -172,11 +171,11 @@ def estado_das_ufs(monitor: dict, v04: dict, canais: dict) -> dict:
     return quadro
 
 
-def hora_de_trocar(quadro: dict) -> bool:
-    """As 27 verificadas no plano E na coordenação? Função pura.
+def hora_da_v08(quadro: dict) -> bool:
+    """As 27 verificadas no plano E na coordenação (as duas funções)? Função pura.
 
     "Verificada" aqui é o que a editoria exigiu: documento lido nas duas dimensões. Canal incompleto
-    não basta nem para o lado negativo — e por isso a troca espera o quadro inteiro."""
+    não basta nem para o lado negativo — e por isso a v0.8 espera o quadro inteiro."""
     return len(quadro) == len(UFS) and all(v["plano"] and v["coordenacao"] for v in quadro.values())
 
 
@@ -189,7 +188,7 @@ def relatorio(quadro: dict) -> list:
               f"coordenação localizada, {completas} de 27 com os quatro canais rodados."]
     faltam = {uf: v for uf, v in quadro.items() if v["falta"]}
     if not faltam:
-        linhas.append("Nenhuma UF pendente: a troca para a v0.4 está liberada.")
+        linhas.append("Nenhuma UF pendente: a v0.8 (coordenação na nota) está liberada.")
         return linhas
     linhas.append(f"Faltam {len(faltam)} UF(s):")
     for uf, v in sorted(faltam.items()):
@@ -221,7 +220,6 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     monitor = ler(DATA / "monitor_saude.json", {}) or {}
-    v04 = ler(DATA / "monitor_saude_v04.json", {}) or {}
     sys.path.insert(0, str(RAIZ))
     from coletores_base import hoje_editorial  # noqa: PLC0415 — data editorial, não UTC
     hoje = hoje_editorial()
@@ -232,18 +230,17 @@ def main() -> int:
         registros[f.stem] = ler(f, {}) or {}
     canais = unir_canais(canais_por_uf(linhas_do_log(mes_do_log(hoje))),
                          canal2_do_localizador(registros))
-    quadro = estado_das_ufs(monitor, v04, canais)
+    quadro = estado_das_ufs(monitor, canais)
     for linha in relatorio(quadro):
         print(linha)
-    trocar = hora_de_trocar(quadro)
+    promover = hora_da_v08(quadro)
     if "--aplicar" in sys.argv:
         pedido = {
             "_governanca":
-                "Pedido de troca do MARÉ Saúde para a v0.4. Escrito por scripts/fechar_saude.py e "
-                "lido pelo publicador. `trocar: true` só quando as 27 UFs tiverem documento lido "
-                "no plano E na coordenação — a condição que a editoria fixou em 01/10/2026. "
-                "Enquanto for false, nada muda na página além da contagem de verificadas.",
-            "trocar": trocar,
+                "Fechamento medido do MARÉ Saúde. Escrito por scripts/fechar_saude.py. `promover_v08: true` "
+                "só quando as 27 UFs tiverem documento lido no plano E as duas funções da coordenação "
+                "verificadas; a promoção é do motor, nunca deste arquivo.",
+            "promover_v08": promover,
             "medido_em": hoje.isoformat(),
             "com_plano": sum(1 for v in quadro.values() if v["plano"]),
             "com_coordenacao": sum(1 for v in quadro.values() if v["coordenacao"]),
@@ -252,7 +249,7 @@ def main() -> int:
         }
         from coletores_base import gravar_em  # noqa: PLC0415 — §229: escrita atômica
         gravar_em(SAIDA, pedido)
-        print(f"→ {SAIDA.relative_to(RAIZ)} gravado · trocar={trocar}")
+        print(f"→ {SAIDA.relative_to(RAIZ)} gravado · promover_v08={promover}")
     return 0
 
 
@@ -299,19 +296,20 @@ def autoteste() -> int:
     checar("decisão de erro nunca conta como canal rodado",
            "erro" not in DECISOES_SAUDAVEIS)
 
-    monitor = {"ufs": {uf: {"instrumento": {"doc": "x"}} for uf in UFS}}
-    v04 = {"uf": {uf: {"coordenacao": {"doc": "y"}} for uf in UFS}}
-    quadro_cheio = estado_das_ufs(monitor, v04, {uf: canais["AC"] for uf in UFS})
-    checar("com as 27 nas duas dimensões, a troca está liberada", hora_de_trocar(quadro_cheio))
+    monitor = {"ufs": {uf: {"instrumento": {"doc": "x"}, "coordenacao": {"verificada": True}} for uf in UFS}}
+    quadro_cheio = estado_das_ufs(monitor, {uf: canais["AC"] for uf in UFS})
+    checar("com as 27 nas duas dimensões, a v0.8 está liberada", hora_da_v08(quadro_cheio))
     checar("quadro cheio não lista pendência",
            all(not v["falta"] for v in quadro_cheio.values()))
 
-    parcial = estado_das_ufs({"ufs": {"AC": {"instrumento": {"doc": "x"}}}}, {}, {})
-    checar("sem coordenação, a troca não acontece", not hora_de_trocar(parcial))
+    parcial = estado_das_ufs({"ufs": {"AC": {"instrumento": {"doc": "x"}}}}, {})
+    checar("sem coordenação verificada, a v0.8 não é liberada", not hora_da_v08(parcial))
+    checar("coordenação só com uma função não conta",
+           not estado_das_ufs({"ufs": {"AC": {"coordenacao": {"verificada": False}}}}, {})["AC"]["coordenacao"])
     checar("UF sem bateria completa aparece como 'não verificado', não 'não localizado'",
            "plano não verificado" in parcial["AL"]["falta"]
            and "coordenação não verificada" in parcial["AL"]["falta"])
-    completo = estado_das_ufs({"ufs": {}}, {}, {uf: canais["AC"] for uf in UFS})
+    completo = estado_das_ufs({"ufs": {}}, {uf: canais["AC"] for uf in UFS})
     checar("com os quatro canais e nada achado, a UF vira 'não localizado'",
            "plano não localizado" in completo["AC"]["falta"])
     linhas = relatorio(parcial)

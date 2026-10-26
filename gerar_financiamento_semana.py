@@ -35,7 +35,27 @@ MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "a
 ARQUIVO = "financiamento/semana.json"
 # Trava estrutural: este gerador escreve UM arquivo, e nunca o banco nem o índice.
 BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json", "monitor_saude_v04.json"}
+                  "monitor_saude.json"}
+
+
+def emergencia_por_mes(v: dict) -> dict:
+    """Repasse do FNS ligado a emergência por mês, desde o início do ciclo (29/06/2026). O FNS é mensal e não traz a
+    data do repasse: entram só os meses inteiros a partir do ciclo (o recorte conservador, julho em diante)."""
+    mes0 = INICIO_CICLO.strftime("%Y%m") if INICIO_CICLO.day == 1 else (INICIO_CICLO.replace(day=28) + timedelta(days=4)).strftime("%Y%m")
+    return {k: float(x[1] or 0.0) for k, x in ((v or {}).get("meses") or {}).items() if k >= mes0}
+
+
+def emergencia_no_ciclo(v: dict) -> float:
+    return round(sum(emergencia_por_mes(v).values()), 2)
+
+
+def atos_do_ciclo(rec: dict, corte: datetime):
+    """(ibge, ato, data) de cada portaria da SEDEC entre 29/06/2026 e o corte: a única seleção que soma o
+    cartão, o mapa e a série mensal."""
+    for ib, m in ((rec or {}).get("municipios") or {}).items():
+        for a in (m or {}).get("atos") or []:
+            if (d := _data(a.get("data"))) and INICIO_CICLO <= d <= corte:
+                yield ib, a, d
 
 
 def mes_legivel(aaaamm: str) -> str:
@@ -206,13 +226,10 @@ def cartao_resposta(rec: dict, corte: datetime) -> dict:
 def defesa_civil_ciclo(rec: dict, corte: datetime) -> dict:
     """Autorizado por portaria da SEDEC desde 29/06/2026, todas as ações. Função pura."""
     total, por_acao, cidades = 0.0, {}, set()
-    for m in ((rec or {}).get("municipios") or {}).values():
-        for a in (m or {}).get("atos") or []:
-            d = _data(a.get("data"))
-            if not d or not (INICIO_CICLO <= d <= corte): continue
-            v = float(a.get("valor_autorizado") or 0.0)
-            total += v; cidades.add((a.get("municipio"), a.get("uf")))
-            por_acao[a.get("acao") or "outra"] = round(por_acao.get(a.get("acao") or "outra", 0.0) + v, 2)
+    for _, a, _ in atos_do_ciclo(rec, corte):
+        v = float(a.get("valor_autorizado") or 0.0)
+        total += v; cidades.add((a.get("municipio"), a.get("uf")))
+        por_acao[a.get("acao") or "outra"] = round(por_acao.get(a.get("acao") or "outra", 0.0) + v, 2)
     return {"valor_ciclo": round(total, 2), "municipios_ciclo": len(cidades),
             "por_acao_ciclo": dict(sorted(por_acao.items())), "desde": INICIO_CICLO.strftime("%d/%m/%Y")}
 
@@ -277,6 +294,17 @@ def _execucoes(mps: dict) -> list:
     return [m for m in (mps or {}).get("mps") or [] if (m.get("execucao") or {}).get("status") == "coletado"]
 
 
+def pct_gasto_direto(m: dict):
+    """% do pago da MP aplicado diretamente pela União (modalidade 90). Lacuna = None: sem modalidade
+    coletada ou sem pago medido não há % (nunca zero por omissão). Função pura (HANDOVER_FINANCIAMENTO §9.1)."""
+    fa = m.get("forma_de_aplicacao") or {}
+    pago = (m.get("execucao") or {}).get("pago")
+    direto = (fa.get("por_modalidade") or {}).get("aplicados diretamente pela União")
+    if fa.get("status") != "coletado" or not isinstance(pago, (int, float)) or pago <= 0 or not isinstance(direto, (int, float)):
+        return None
+    return round(100.0 * float(direto) / float(pago), 1)
+
+
 def mes_a_mes(mps: dict) -> list:
     """Pago por mês de cada MP, desde o mês de publicação; mês corrente marcado parcial. Função pura."""
     out = []
@@ -284,6 +312,7 @@ def mes_a_mes(mps: dict) -> list:
         e = m["execucao"]
         out.append({"id": m.get("id"), "numero": m.get("numero"), "tema": m.get("tema"),
                     "risco_declarado": m.get("risco_declarado"),
+                    "pct_gasto_direto": pct_gasto_direto(m),
                     "meses": [{"mes": k, "pago": v.get("pago"), "parcial": bool(v.get("parcial"))
                                or k in (e.get("meses_parciais") or [])}
                               for k, v in sorted((e.get("por_mes") or {}).items()) if isinstance(v, dict)]})
@@ -303,6 +332,7 @@ def topo(mps: dict, comp: dict, rec: dict, fns_mun: dict, corte: datetime) -> li
                         "reais", "El Niño 2026/2027", "Texto das medidas provisórias e atos estaduais",
                         detalhe=f"{len(origens)} origens") if origens else
                  sem_coleta("anunciado_atos", "reais", "nenhum ato com valor lido até o corte", "Atos oficiais"))
+    if origens: anunciado["n_atos"] = len(origens)
     ex = _execucoes(mps)
     pagos = [float(m["execucao"]["pago"]) for m in ex if isinstance(m["execucao"].get("pago"), (int, float))]
     fonte_ex = "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)"
@@ -339,10 +369,10 @@ def topo(mps: dict, comp: dict, rec: dict, fns_mun: dict, corte: datetime) -> li
     fonte_fns = "Portal da Transparência, Transferências de Recursos (Fundo Nacional de Saúde)"
     if mun:
         meses = sorted({k for v in mun.values() for k in (v.get("meses") or {})})
-        com = {k: float(v.get("emergencia") or 0.0) for k, v in mun.items() if float(v.get("emergencia") or 0.0) > 0}
-        sus = cartao("sus_emergencia", round(sum(com.values()), 2), "reais",
-                     f"{mes_legivel(meses[0])} a {mes_legivel(meses[-1])}" if meses else None, fonte_fns,
-                     detalhe=f"{len(com)} municípios; fundos municipais, linhas cujo nome cita emergência")
+        com = {k: e for k, v in mun.items() if (e := emergencia_no_ciclo(v)) > 0}
+        sus = cartao("sus_emergencia", round(sum(com.values()), 2), "reais", f"desde {INICIO_CICLO.strftime('%d/%m/%Y')}", fonte_fns,
+                     detalhe=f"{len(com)} municípios; fundos municipais, linhas cujo nome cita emergência; "
+                             "meses inteiros a partir de julho (o FNS não traz a data do repasse)")
         sus.update(municipios=len(com), ultimo_mes=meses[-1] if meses else None)
     else:
         sus = sem_coleta("sus_emergencia", "reais", "os repasses do FNS por município não foram coletados até o corte", fonte_fns)
@@ -355,15 +385,16 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
     contado em `sem_sede`. Função pura."""
     sede = {str(r.get("codigo_ibge")).zfill(7): (r.get("lat"), r.get("lon"), r.get("nome"), r.get("uf")) for r in ref or []}
     pts = []
-    for ib, m in ((rec or {}).get("municipios") or {}).items():
-        atos = [a for a in (m or {}).get("atos") or [] if (d := _data(a.get("data"))) and INICIO_CICLO <= d <= corte]
-        if not atos: continue
+    por_mun = {}
+    for ib, a, _ in atos_do_ciclo(rec, corte):
+        por_mun.setdefault(ib, []).append(a)
+    for ib, atos in por_mun.items():
         ult = max(atos, key=lambda a: a.get("data") or "")
         pts.append({"ibge": str(ib).zfill(7), "origem": "defesa_civil", "valor": round(sum(float(a.get("valor_autorizado") or 0) for a in atos), 2),
                     "ato": ("Portaria " + str(ult.get("portaria"))) if ult.get("portaria") else None, "data": ult.get("data"), "url": ult.get("url"),
                     "n_atos": len(atos)})
     for ib, v in ((fns_mun or {}).get("municipios") or {}).items():
-        e = float(v.get("emergencia") or 0.0)
+        e = emergencia_no_ciclo(v)
         if e > 0:
             pts.append({"ibge": str(ib).zfill(7), "origem": "saude", "valor": round(e, 2), "ato": "repasse do FNS ligado a emergência",
                         "data": None, "url": (fns_mun or {}).get("fonte"), "n_atos": None})
@@ -377,8 +408,47 @@ def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
     return out
 
 
+def funil_defesa_civil(dec: dict, rec: dict, corte: datetime) -> dict:
+    """Do decreto ao recurso, sobre os mesmos arquivos que a página lia: decretaram, reconhecidos pela União,
+    com portaria de recurso no ciclo (a MESMA contagem do cartão `defesa_civil_ciclo`; `n_com_recurso_e_decretaram`
+    diz quantos deles constam nos decretos lidos). Sem prazo inventado (PARA A A2, 25/10/2026: a espera é medida
+    em `data/resposta/por_uf.json`, `prazo_reconhecimento`). Função pura; sem decretos, {}."""
+    mun = [m for m in ((dec or {}).get("municipios") or {}).values() if m.get("decreto")]
+    ref = _data((dec or {}).get("gerado_em"))
+    if not mun or not ref: return {}
+    com_recurso = {str(i).zfill(7) for i, v in ((rec or {}).get("municipios") or {}).items() if any(_data(a.get("data")) for a in (v or {}).get("atos") or [])}
+    return {"referencia": ref.strftime("%d/%m/%Y"), "n_decretaram": len(mun), "n_reconhecidos": sum(1 for m in mun if m.get("reconhecido")),
+            "n_com_recurso": defesa_civil_ciclo(rec, corte)["municipios_ciclo"],
+            "n_com_recurso_e_decretaram": sum(1 for m in mun if str(m.get("ibge")).zfill(7) in com_recurso)}
+
+
+def serie_mensal(rec: dict, fns_mun: dict, corte: datetime) -> dict:
+    """Série mensal do MESMO universo do mapa e dos cartões `defesa_civil_ciclo` e `sus_emergencia` (mesmas
+    funções de seleção): defesa civil = autorizado por portaria, no mês da portaria; SUS = repasse de emergência
+    do mês fechado do FNS. `saude` é None onde não há dado do FNS (junho, fora do recorte; meses ainda não
+    coletados): ausência não é zero. O mês do corte é `parcial`. Função pura."""
+    dc = {}
+    for _, a, d in atos_do_ciclo(rec, corte):
+        k = d.strftime("%Y%m"); dc[k] = dc.get(k, 0.0) + float(a.get("valor_autorizado") or 0.0)
+    fns = (fns_mun or {}).get("municipios") or {}
+    sus = {}
+    for v in fns.values():
+        for k, x in emergencia_por_mes(v).items(): sus[k] = sus.get(k, 0.0) + x
+    coletados = {k for v in fns.values() for k in emergencia_por_mes(v)}   # meses do FNS dentro do recorte
+    if not dc and not fns: return {}
+    ini, fim = INICIO_CICLO.strftime("%Y%m"), corte.strftime("%Y%m")
+    meses, k = [], ini
+    while k <= fim:
+        meses.append({"mes": k, "defesa_civil": round(dc.get(k, 0.0), 2),
+                      "saude": round(sus.get(k, 0.0), 2) if k in coletados else None,
+                      "parcial": k == fim})
+        k = (datetime(int(k[:4]), int(k[4:]), 1) + timedelta(days=32)).strftime("%Y%m")
+    return {"meses": meses, "saude_desde": (min(sus) if sus else None), "saude_ultimo_mes": max(coletados) if coletados else None,
+            "total_defesa_civil": round(sum(dc.values()), 2), "total_saude": round(sum(sus.values()), 2)}
+
+
 def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
-           fns_mun: dict | None = None, ref: list | None = None) -> dict:
+           fns_mun: dict | None = None, ref: list | None = None, dec: dict | None = None) -> dict:
     cartoes = [cartao_pago(mps), cartao_transferido(transf), cartao_resposta(rec, corte),
                cartao_atos(mps, corte)]
     return {"_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte "
@@ -389,7 +459,9 @@ def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
             "cartoes": cartoes,
             "topo": topo(mps, comp, rec, fns_mun, corte),
             "mes_a_mes": mes_a_mes(mps),
-            "mapa": mapa(rec, fns_mun, ref, corte)}
+            "mapa": mapa(rec, fns_mun, ref, corte),
+            "serie_mensal": serie_mensal(rec, fns_mun, corte),
+            "funil_defesa_civil": funil_defesa_civil(dec, rec, corte)}
 
 
 def _autoteste() -> int:
@@ -405,6 +477,10 @@ def _autoteste() -> int:
             falhas.append(nome)
 
     ok("mes legivel", mes_legivel("202608") == "agosto de 2026")
+    ok("pct gasto direto por MP: lacuna e None, nunca zero por omissao",
+       pct_gasto_direto({"execucao": {"pago": 200.0}, "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 50.0}}}) == 25.0
+       and pct_gasto_direto({"execucao": {"pago": 200.0}, "forma_de_aplicacao": {"status": "sem_coleta"}}) is None
+       and pct_gasto_direto({"execucao": {"pago": 0}, "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 0}}}) is None)
     ok("mes malformado nao levanta", mes_legivel("20260") == "20260" and mes_legivel("202699") == "202699")
     ok("mes parcial nao e fechado",
        ultimo_mes_fechado({"202607": {"soma": 1}, "202608": {"soma": 2, "parcial": True}}) == "202607")
@@ -474,13 +550,15 @@ def _autoteste() -> int:
                     "forma_de_aplicacao": {"status": "coletado", "por_modalidade": {"aplicados diretamente pela União": 90.0}}}]}
     COMP = {"itens": [{"valor_total": 1000.0, "instrumento": "Anúncio; MP nº 1.367/2026"}, {"valor_total": 20.0, "instrumento": "Fundo estadual"},
                       {"valor_total": None, "instrumento": "Lei"}]}
-    FNS = {"municipios": {"1": {"meses": {"202601": [5, 0], "202609": [5, 2]}, "emergencia": 2.0}, "2": {"meses": {}, "emergencia": 0.0}}}
+    FNS = {"municipios": {"1": {"meses": {"202601": [5, 0], "202606": [5, 7], "202609": [5, 2]}, "emergencia": 9.0}, "2": {"meses": {}, "emergencia": 0.0}}}
     t = {x["id"]: x for x in topo(MPS, COMP, base, FNS, corte)}
-    ok("topo: anunciado nao soma o anuncio que contem a MP", t["anunciado_atos"]["valor"] == 320.0 and t["anunciado_atos"]["detalhe"] == "2 origens")
+    ok("topo: anunciado nao soma o anuncio que contem a MP", t["anunciado_atos"]["valor"] == 320.0 and t["anunciado_atos"]["detalhe"] == "2 origens" and t["anunciado_atos"]["n_atos"] == 2)
     ok("topo: pago e variacao do mes parcial", t["pago_ate_agora"]["valor"] == 100.0 and t["pago_ate_agora"]["variacao_mes"] == 40.0)
     ok("topo: gasto direto em % do pago", t["gasto_direto_uniao"]["valor"] == 90.0)
     ok("topo: defesa civil desde 29/06 e SUS de emergencia com municipios",
        t["defesa_civil_ciclo"]["valor"] == 1000.0 and t["sus_emergencia"]["valor"] == 2.0 and t["sus_emergencia"]["municipios"] == 1)
+    ok("SUS: repasse de junho (antes de 29/06) fica fora do total e do mapa",
+       t["sus_emergencia"]["periodo"] == "desde 29/06/2026" and emergencia_no_ciclo(FNS["municipios"]["1"]) == 2.0)
     ok("topo sem dado declara lacuna em cada cartao", all(x["sem_coleta"] for x in topo({}, {}, {}, {}, corte)))
     ok("mes a mes leva o risco que o ato declara (ou None)", mes_a_mes(MPS)[0]["risco_declarado"] is None)
     ok("mes a mes marca o parcial", mes_a_mes(MPS)[0]["meses"] == [{"mes": "202609", "pago": 60.0, "parcial": False},
@@ -491,6 +569,18 @@ def _autoteste() -> int:
        [(p["origem"], p["valor"], p["lat"]) for p in pts] == [("defesa_civil", 1000.0, -1.0), ("saude", 2.0, -1.0)]
        and mapa(base, {}, [], corte)[0]["sem_sede"] is True)
 
+    sm = serie_mensal(base, FNS, corte)
+    ok("serie mensal: soma = cartao defesa civil + SUS = mapa; junho do SUS fora do recorte (None, nao zero)",
+       sm["total_defesa_civil"] == t["defesa_civil_ciclo"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "defesa_civil")
+       and sm["total_saude"] == t["sus_emergencia"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "saude")
+       and sm["meses"][0]["saude"] is None and sm["meses"][-1]["parcial"] is True and serie_mensal({}, {}, corte) == {})
+    DEC = {"gerado_em": "25/10/2026", "municipios": {"a": {"ibge": "1", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},
+           "b": {"ibge": "2", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},
+           "c": {"ibge": "3", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "20/10/2026"},
+           "d": {"ibge": "4", "decreto": True, "reconhecido": False, "primeiro_reconhecimento": None}}}
+    ok("funil: 4 decretaram, 3 reconhecidos, 1 com recurso (sem prazo no funil)",
+       funil_defesa_civil(DEC, base, corte) == {"referencia": "25/10/2026", "n_decretaram": 4, "n_reconhecidos": 3, "n_com_recurso": 1, "n_com_recurso_e_decretaram": 1}
+       and funil_defesa_civil({}, base, corte) == {})
     d = montar({}, {}, {}, {}, corte)
     ok("montar devolve os quatro cartoes", [x["id"] for x in d["cartoes"]] == [
         "pago_periodo_mp", "transferido_municipios_periodo", "resposta_liberado_semana",
@@ -524,7 +614,8 @@ def main() -> int:
                ler("financiamento/compromissos_federais.json", {}) or {},
                datetime(corte.year, corte.month, corte.day),
                ler("financiamento/municipios/fns_municipios_2026.json", {}) or {},
-               ler("municipios_ibge_referencia.json", []) or [])
+               ler("municipios_ibge_referencia.json", []) or [],
+               ler("resposta/municipios_decretados.json", {}) or {})
     gravar(ARQUIVO, d)
     for c in d["cartoes"]:
         print(f"  {c['id']}: " + ("sem coleta — " + str(c['detalhe']) if c["sem_coleta"]

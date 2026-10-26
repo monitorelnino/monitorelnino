@@ -119,6 +119,14 @@ MESES_POR_EXTENSO = ("janeiro", "fevereiro", "março", "abril", "maio", "junho",
 MESES_CURTOS = ("jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez")
 
 
+def semana_intervalo(ano: int, n: int) -> tuple:
+    """(domingo, sábado) da semana `n` do `ano`, como `date`. Função pura."""
+    base = next(date(ano, 1, d) - timedelta(days=3) for d in range(1, 8)
+                if date(ano, 1, d).weekday() == 2)
+    ini = base + timedelta(days=7 * (n - 1))
+    return ini, ini + timedelta(days=6)
+
+
 def semana_em_datas(ano: int, n: int) -> list:
     """A semana `n` do `ano` escrita em datas: [por extenso, curta]. Função pura.
 
@@ -126,10 +134,7 @@ def semana_em_datas(ano: int, n: int) -> list:
     vê o intervalo. Mesma regra de `assets/semana.js` (Ministério da Saúde): domingo a sábado, e a
     semana 1 é a que tem a quarta-feira entre 1 e 7 de janeiro. É a única cópia em Python: gerador
     e portão importam esta."""
-    base = next(date(ano, 1, d) - timedelta(days=3) for d in range(1, 8)
-                if date(ano, 1, d).weekday() == 2)
-    ini = base + timedelta(days=7 * (n - 1))
-    fim = ini + timedelta(days=6)
+    ini, fim = semana_intervalo(ano, n)
     mi, mf = MESES_POR_EXTENSO[ini.month - 1], MESES_POR_EXTENSO[fim.month - 1]
     if ini.year != fim.year:
         ext = f"{ini.day} de {mi} de {ini.year} a {fim.day} de {mf} de {fim.year}"
@@ -995,7 +1000,7 @@ def contexto_tls():
 # cada um lê o PRÓPRIO código-fonte para conferir que não ganhou essa escrita numa edição futura.
 # Lista única do projeto (era copiada em oito arquivos, em duas versões — cinco e seis nomes).
 BANCO_PROIBIDO = ("estados.json", "saude_uf.json", "municipios.json", "indice.json",
-                  "monitor_saude.json", "monitor_saude_v04.json")
+                  "monitor_saude.json")
 
 
 def fonte_do_coletor(arquivo: str) -> str:
@@ -1579,6 +1584,22 @@ def sha256(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
 
+import functools as _functools
+import threading as _threading
+_ESCRITA_COMPARTILHADA = _threading.RLock()
+
+
+def _uma_escrita_por_vez(fn):
+    """Índice e livro de fontes são lidos, alterados e regravados: com coletores em paralelo
+    (22/10/2026, descobrir_planos §6.2) duas threads perderiam linhas. A trava é a mesma para todos."""
+    @_functools.wraps(fn)
+    def _com_trava(*a, **k):
+        with _ESCRITA_COMPARTILHADA:
+            return fn(*a, **k)
+    return _com_trava
+
+
+@_uma_escrita_por_vez
 def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str:
     """Guarda cópia da evidência e indexa em data/evidencias.json. Retorna o hash.
     Acima de 5 MB: só o hash + pedido de snapshot ao Wayback (best effort).
@@ -1863,6 +1884,7 @@ DECISOES_LOG = ("registro", "pista", "nada", "consultado", "fonte", "erro", "ace
                 "motor_sem_resposta", "nao_localizado_ate_o_momento")
 
 
+@_uma_escrita_por_vez
 def log_busca(canal: str, camada: int, strings: list, decisao: str, resultados: str = "",
               uf=None, municipio=None, ibge=None, nivel=None, n_resultados=None,
               fonte_suspensa_defeso: bool = False, hash_evidencia=None, extra: dict = None):

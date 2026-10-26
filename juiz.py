@@ -65,7 +65,9 @@ sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.6 (15/10/2026)"
+CODEBOOK_VERSAO = "1.7 (24/10/2026)"
+# 1.7 (24/10/2026, central): documento do repositório estadual declarado (ES, SE, RS) é o plano publicado pelo
+# canal do estado: lei ou portaria citada no corpo não é o ato dele (etapa 2) e a autoridade vem do repositório (etapa 3).
 # 1.6 (15/10/2026, central): plano sem ato vale só no domínio do PRÓPRIO município (etapa 3; caso
 # Cubatão/SP, relatório do BNDES), e plano de contingência de setor — rede de ensino, escola,
 # unidade de saúde, hospital — não é o plano do município (etapa 5; caso Toledo/PR, METODOLOGIA §222).
@@ -509,7 +511,10 @@ def trecho_em_volta(texto: str, achado, largura: int = 160) -> str:
     if i < 0:
         return ""
     a = max(0, i - largura // 2)
-    return re.sub(r"\s+", " ", texto[a:a + largura]).strip()
+    # 24/10/2026: o trecho vai para o registro público; planilha de contatos do RS trouxe CPF de
+    # coordenador municipal e o portão de segredos barrou. Redação na porta, como `gravar_texto`.
+    from coletores_base import redigir_dados_pessoais
+    return redigir_dados_pessoais(re.sub(r"\s+", " ", texto[a:a + largura]).strip())[0]
 
 
 # =============================================================================================
@@ -662,15 +667,22 @@ def etapa2_citacao(texto: str, eh_plano_tecnico: bool = False, url: str = None) 
     tipo = (m.group(1).lower() if m else None)
     numero = (m.group(2) if m else None)
     dados = {"tipo": tipo, "numero": numero, "data": data}
-    if m is None:
+    # 24/10/2026 (central): documento do repositório estadual declarado é o PLANO publicado pelo canal
+    # do estado; a lei ou portaria citada no corpo (base legal, nomeação do coordenador) não é o ato
+    # dele. Sem isto 47 PLANCONs do RS citavam "Lei 4.111/2007" e caíam na exigência de fórmula do Executivo.
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    no_repositorio = documento_do_repositorio(url)
+    if m is None or no_repositorio:
         # CAMINHO DO PLANO SEM ATO (editoria, 03/10/2026): quando não há tipo e número de ato, o
         # documento pode ainda ser o PLANO publicado pelo ente. Aí a identificação exigida é outra
         # — órgão, título e ano —, e o ano solto basta. Este caminho vem ANTES da exigência de data
         # completa, de propósito: data completa é como se situa um ATO, e aqui não há ato.
-        apresenta_se_como_ato = RE_ATO_SEM_NUMERO.search(texto or "")
+        apresenta_se_como_ato = not no_repositorio and RE_ATO_SEM_NUMERO.search(texto or "")
         ok_plano, motivo_plano, dados_plano = plano_sem_ato(texto, url)
         if ok_plano and not apresenta_se_como_ato:
             return True, "", dados_plano
+        if no_repositorio:
+            return False, motivo_plano, dict(dados, **dados_plano)
         if eh_plano_tecnico and data:
             # Caminho anterior, de 28/09: plano técnico com DATA completa declarada pelo chamador.
             # Ele continua valendo — o caminho novo é mais largo, não substitui este.
@@ -711,7 +723,10 @@ def etapa3_autoridade(texto: str, sem_ato_de_aprovacao: bool = False,
     aprovação de um conselho não é o plano publicado pelo Executivo.
     """
     if sem_ato_de_aprovacao:
-        if url and ente:
+        from atualizar_instrumentos_estaduais import documento_do_repositorio
+        # 24/10/2026 (central): o repositório estadual declarado é canal de prova (ES, SE, RS): a
+        # autoridade vem dele, não do domínio do município.
+        if url and ente and not documento_do_repositorio(url, str(ente[1]).upper()):
             # 1.6: o ato do ente É a publicação no domínio dele; em domínio de outro (BNDES, estado,
             # vizinho) não há ato do Executivo municipal (`ente` = (nome, uf)).
             from municipio_do_dominio import municipio_de
@@ -1006,6 +1021,9 @@ Concede licença a servidor do quadro efetivo, sem relação com o ciclo climát
 """
 
 URL_PDF_DE_PLANO = "https://defesacivil.taio.sc.gov.br/plano-2026.pdf"
+URL_PASTA_RS = ("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/"
+               "SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/"
+               "Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/PLANCON_SAPIRANGA_2024.pdf")
 
 PLANO_PUBLICADO_SEM_ATO = 'PREFEITURA MUNICIPAL DE TAIO - SC\nCOORDENADORIA MUNICIPAL DE PROTECAO E DEFESA CIVIL DE TAIO\nPLANO DE CONTINGENCIA DE PROTECAO E DEFESA CIVIL\nVersao 01/2026\nO presente plano estabelece os procedimentos de preparacao e de resposta para inundacao brusca,\ndeslizamento e estiagem no municipio, com pre-posicionamento de equipes, pontos de apoio e\nacionamento do sistema de alerta. Define as atribuicoes de cada orgao municipal na preparacao\npara o ciclo El Nino 2026/2027, a rotina de monitoramento e os abrigos. xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
@@ -1309,6 +1327,16 @@ def autoteste() -> int:
         ("plano sem ato em domínio federal NÃO é ato do município (Cubatão/SP)",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url="https://www.bndes.gov.br/r.pdf",
                            ente=("Taió", "SC"))[1] == "autoridade_nao_confirmada"),
+        ("plano na pasta da Casa Militar/RS que cita lei na base legal conta como plano sem ato; fora dela, a lei vale",
+         etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.", url=URL_PASTA_RS)[2]
+         .get("sem_ato_de_aprovacao") is True
+         and etapa2_citacao(PLANO_PUBLICADO_SEM_ATO + " BASE LEGAL Lei 4.111, de 14 de dezembro de 2007.",
+                            url=URL_PDF_DE_PLANO)[2].get("sem_ato_de_aprovacao") is not True),
+        ("plano sem ato na pasta da Casa Militar/RS: autoridade dada pelo repositório; SharePoint qualquer, não",
+         etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"), url=URL_PASTA_RS)[0] is True
+         and etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, ente=("Sapiranga", "RS"),
+                               url="https://rsgovbr-my.sharepoint.com/personal/outra_pessoa/Documents/x.pdf")[1]
+         == "autoridade_nao_confirmada"),
         ("plano sem ato no domínio do próprio município continua valendo",
          etapa3_autoridade(PLANO_PUBLICADO_SEM_ATO, True, url=URL_PDF_DE_PLANO,
                            ente=("Taió", "SC"))[0] is True),

@@ -1,32 +1,46 @@
 {
- "gerado_em": "2026-10-23",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "1200401": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-26",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.riobranco.ac.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "www.riobranco.ac.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.riobranco.ac.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
+    "dominio": "www.riobranco.ac.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Rio+Branco%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Rio+Branco%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.riobranco.ac.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rio+Branco%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "www.riobranco.ac.gov.br"
    }
   },
   "1200013": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -35,14 +49,14 @@
   },
   "1200104": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -51,14 +65,14 @@
   },
   "1200138": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -67,14 +81,14 @@
   },
   "1200179": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -83,14 +97,14 @@
   },
   "1200203": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -99,14 +113,14 @@
   },
   "1200252": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -115,14 +129,14 @@
   },
   "1200302": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -131,14 +145,14 @@
   },
   "1200328": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -147,14 +161,14 @@
   },
   "1200344": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -163,14 +177,14 @@
   },
   "1200351": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -179,14 +193,14 @@
   },
   "1200336": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -195,14 +209,14 @@
   },
   "1200385": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -211,14 +225,14 @@
   },
   "1200807": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -227,14 +241,14 @@
   },
   "1200393": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -243,14 +257,14 @@
   },
   "1200427": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -259,14 +273,14 @@
   },
   "1200500": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -275,14 +289,14 @@
   },
   "1200450": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -291,14 +305,14 @@
   },
   "1200609": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -307,14 +321,14 @@
   },
   "1200708": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,

@@ -7,6 +7,8 @@ Quatro consultas por município, todas a APIs públicas, sem login, sem LAI, sem
   S16  Wayback Machine (CDX)     cópias arquivadas do domínio da prefeitura com plano/PLANCON no endereço
   S25  Common Crawl (índice)     o mesmo, no índice de rastreio aberto; o arquivo só se baixa da origem
   S29  dados.gov.br (CKAN)       conjuntos de dados que citam o plano do município
+  S27  hospedagem de documentos  Scribd, Issuu, Calameo, Yumpu, DocPlayer, SlideShare (pelo metabuscador, 26/10/2026)
+  S24  planos conexos            PMRR, saneamento, plano de saúde, consórcio, comitê (pelo metabuscador, 26/10/2026)
 
 Disciplina: cliente identificado, robots e Crawl-delay pela `buscar_uma_vez`, pausa por host, e
 401/403/429/451 ou muro de robô são RECUSA registrada (nunca retentativa). Resposta que não se
@@ -148,6 +150,56 @@ def cita(texto: str, nome: str) -> bool:
     return bool(re.search(rf"\b{re.escape(n)}\b", t))
 
 
+# ---- S27 e S24: o metabuscador da válvula (SearXNG), filtrado por endereço e por texto ------------
+HOSPEDAGENS = ("scribd.com", "issuu.com", "calameo.com", "yumpu.com", "docplayer.com.br", "slideshare.net")
+INSTITUCIONAIS = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br", ".tc.br")
+PADRAO_CONEXO = re.compile(r"redu[cç][aã]o de risco|pmrr|saneamento b[aá]sico|plano municipal de sa[uú]de|cons[oó]rcio|comit[eê] de bacia", re.I)
+
+
+def consulta_hospedagem(nome: str, uf: str) -> str:
+    sites = " OR ".join(f"site:{h}" for h in HOSPEDAGENS)
+    return f'"{nome}" {uf} "plano de contingência" "defesa civil" ({sites})'
+
+
+def consulta_conexos(nome: str, uf: str) -> str:
+    return (f'"{nome}" {uf} ("redução de riscos" OR PMRR OR "saneamento básico" OR "plano municipal de saúde" '
+            f'OR consórcio OR "comitê de bacia") "plano de contingência"')
+
+
+def _host(url: str) -> str:
+    return (urllib.parse.urlparse(url).netloc or "").lower().split(":")[0]
+
+
+def ler_web(dados: dict, nome: str, hospedagem: bool) -> list:
+    """Resultados do metabuscador que servem à fonte. Pura. Levanta se o corpo não é resposta do SearXNG;
+    `results` vazio devolve [] e quem chama decide (zero bruto não é ausência: o motor pode estar barrando, §186).
+    S27: o endereço é de uma hospedagem e o município e o plano aparecem no título ou no trecho.
+    S24: o endereço é institucional, o município e um termo conexo aparecem, e o plano é citado."""
+    if not isinstance(dados, dict) or not isinstance(dados.get("results"), list):
+        raise ValueError("resposta do metabuscador sem `results`")
+    saida = []
+    for r in dados["results"]:
+        url, titulo = r.get("url") or "", (r.get("title") or "").strip()
+        texto = f"{titulo} {r.get('content') or ''}"
+        h = _host(url)
+        if not url or not cita(texto + " " + url.replace("-", " ").replace("_", " "), nome):
+            continue
+        if hospedagem:
+            ok = any(h == d or h.endswith("." + d) for d in HOSPEDAGENS) and PADRAO_PLANO.search(texto)
+        else:
+            ok = h.endswith(INSTITUCIONAIS) and PADRAO_CONEXO.search(texto) and PADRAO_PLANO.search(texto)
+        if ok and url not in [u for u, _ in saida]:
+            saida.append((url, titulo or url))
+    return saida
+
+
+def buscar_web(consulta: str) -> dict:
+    """Uma consulta ao metabuscador com o ritmo e o disjuntor de `monitorar_busca_web` (intervalo com jitter)."""
+    import monitorar_busca_web as mw
+    time.sleep(mw.espera_do_ritmo(0))
+    return mw.buscar_searxng(consulta)
+
+
 def classificar_erro(e: Exception) -> tuple:
     """(situacao, motivo): recusa de fonte se respeita e nomeia; o resto é `erro`, não ausência."""
     if isinstance(e, urllib.error.HTTPError):
@@ -166,30 +218,49 @@ def pista_de(nome: str, uf: str, ibge: str, fonte: str, url: str, titulo: str, h
 
 
 # ---- um município, quatro fontes ----------------------------------------------------------------
-def resolver_dominio(nome: str, uf: str, ibge: str, buscar) -> str | None:
-    """O endereço que SE IDENTIFICA como a prefeitura; None se nenhum se identifica (busca não feita)."""
+def resolver_dominio(nome: str, uf: str, ibge: str, buscar, tentativas: list = None) -> str | None:
+    """O endereço que SE IDENTIFICA como a prefeitura; None se nenhum se identifica (busca não feita).
+    `tentativas` recebe (endereço, situação, motivo) de cada um que não serviu."""
     for d in CANDIDATOS_EXTRA.get(ibge, []) + dominios_do_municipio(nome, uf):
         try:
             if identifica_prefeitura(buscar(f"https://{d}/", 15).decode("utf-8", "replace"), nome):
                 return d
-        except Exception:  # noqa: BLE001 — DNS, TLS, timeout: o endereço não serve; tenta o próximo
-            continue
+            r = ("nao_identifica", "responde, mas não se diz a prefeitura")
+        except Exception as e:  # noqa: BLE001 — DNS, TLS, timeout, recusa: o endereço não serve; tenta o próximo
+            r = classificar_erro(e)
+        if tentativas is not None:
+            tentativas.append((d, *r))
     return None
 
 
-def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: None, api_cc=None, lacunas=lambda *a, **k: None) -> dict:
+def sem_dominio(tentativas: list) -> tuple:
+    """(situacao, motivo) de quem não achou endereço: recusa nomeada só se NENHUM endereço respondeu e algum
+    recusou (403, muro); o resto é `dominio_nao_verificado`, com o que foi tentado. Pura."""
+    recusas = [f"{d} {m}" for d, s, m in tentativas if s == "recusa_de_fonte"]
+    if recusas and not any(s == "nao_identifica" for _, s, _ in tentativas):
+        return "recusa_de_fonte", "; ".join(recusas)
+    return "dominio_nao_verificado", "tentados: " + "; ".join(f"{d} {m}" for d, _, m in tentativas)[:400]
+
+
+def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: None, api_cc=None, lacunas=lambda *a, **k: None, web=None) -> dict:
     """{fonte: {situacao, consulta, pistas:[...]}}; nunca levanta. `situacao`: lido, sem_resultado,
     recusa_de_fonte, erro, dominio_nao_verificado."""
-    out, dominio = {}, None
+    out, dominio, tentativas = {}, None, []
     if {"S16", "S25"} & set(fontes):
-        dominio = resolver_dominio(nome, uf, ibge, buscar)
+        dominio = resolver_dominio(nome, uf, ibge, buscar, tentativas)
     for f in fontes:
         r = {"situacao": None, "consulta": None, "motivo": None, "pistas": []}
         try:
             if f in ("S16", "S25") and not dominio:
-                r["situacao"] = "dominio_nao_verificado"
+                r["situacao"], r["motivo"] = sem_dominio(tentativas)
             else:
-                if f == "S16":
+                if f in ("S27", "S24"):
+                    r["consulta"] = (consulta_hospedagem if f == "S27" else consulta_conexos)(nome, uf)
+                    dados = (web or buscar_web)(r["consulta"])
+                    if isinstance(dados, dict) and dados.get("results") == []:
+                        raise ValueError("metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência")
+                    achados = ler_web(dados, nome, f == "S27")
+                elif f == "S16":
                     r["consulta"] = consulta_wayback(dominio); achados = ler_wayback(buscar(r["consulta"], 60))
                 elif f == "S25":
                     api = api_cc or indice_common_crawl(buscar("https://index.commoncrawl.org/collinfo.json", 30))
@@ -244,7 +315,13 @@ def buscar_pausado(url: str, timeout: int) -> bytes:
     return com_espera(uma, url, timeout)
 
 
-ERROS_SEGUIDOS = 5   # a fonte que falha tantas vezes seguidas fica de fora do resto do run (cada falha custa 2 min de espera)
+ERROS_SEGUIDOS = 5   # a fonte cujos erros superam em tantos os acertos fica de fora do resto do run (cada falha custa 2 min de espera)
+
+
+def saldo_de_erros(n: int, situacao: str) -> int:
+    """Erro soma um; qualquer outra situação tira um (nunca abaixo de zero). Pura. Zerar no acerto deixava a fonte
+    que erra duas de cada três vezes (Common Crawl, 23/10: 113 erros em 154) nunca chegar ao teto."""
+    return n + 1 if situacao == "erro" else max(n - 1, 0)
 
 
 def fontes_vivas(fontes: list, seguidos: dict) -> list:
@@ -259,9 +336,11 @@ def feito_hoje(feitos: dict, cod: str, fontes: list, hoje: str) -> bool:
 
 def selecionar_fila(doc: dict, por_cod: dict, uf, feitos: dict, fontes: list, hoje: str) -> list:
     """`fila` (códigos) ou `municipios` (com `codigo_ibge`, como em municipios_prioritarios.json); `--uf` recorta
-    e o que já foi consultado hoje é pulado, para o disparo seguinte retomar."""
+    e o que já foi consultado hoje é pulado, para o disparo seguinte retomar. Quem nunca foi lido vem antes de quem
+    só precisa ser relido (dia novo): o prazo do run corta a releitura, não a cobertura."""
     fila = doc.get("fila") or [str(m["codigo_ibge"]) for m in doc.get("municipios", [])]
-    return [c for c in fila if c in por_cod and (not uf or por_cod[c]["uf"] == uf) and not feito_hoje(feitos, c, fontes, hoje)]
+    pendentes = [c for c in fila if c in por_cod and (not uf or por_cod[c]["uf"] == uf) and not feito_hoje(feitos, c, fontes, hoje)]
+    return sorted(pendentes, key=lambda c: c in feitos["municipios"])
 
 
 def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int:
@@ -283,7 +362,7 @@ def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int
                 break
             res = consultar_municipio(ref["nome"], ref["uf"], cod, vivas, buscar_pausado, hoje, lacunas=registrar_lacuna)
             for f, r in res.items():
-                seguidos[f] = seguidos.get(f, 0) + 1 if r["situacao"] == "erro" else 0
+                seguidos[f] = saldo_de_erros(seguidos.get(f, 0), r["situacao"])
                 pistas.extend(r.pop("pistas"))
                 feitos["municipios"].setdefault(cod, {})[f] = {"consultado_em": hoje, **r}
             lidos += 1
@@ -335,6 +414,12 @@ def autoteste() -> int:
             "i/c2": cc, "lexml": sru, "dados.gov.br": ckan, "alfa.xx.gov.br": home}   # a home por último: as consultas citam o domínio
     um = lambda fontes, r=base: consultar_municipio("Alfa", "XX", "9999999", fontes, falso(r), "2026-10-22", lacunas=lambda *a, **k: lac.append(a))
     lac = []
+    web_ok = {"results": [
+        {"url": "https://pt.scribd.com/document/1/PLANCON-de-Alfa", "title": "PLANCON de Alfa - Defesa Civil", "content": "Plano de contingência do município de Alfa"},
+        {"url": "https://issuu.com/x/docs/outro", "title": "Revista de Beta", "content": "plano de contingência de Beta"},
+        {"url": "https://alfa.xx.gov.br/pmrr.pdf", "title": "PMRR de Alfa", "content": "plano municipal de redução de riscos; plano de contingência de Alfa"},
+        {"url": "https://blog.com/alfa", "title": "Alfa", "content": "plano de contingência e saneamento básico de Alfa"}]}
+    web = lambda r=web_ok: (lambda q: r if not isinstance(r, Exception) else (_ for _ in ()).throw(r))
     todas = um(["S16", "S25", "S13", "S29"])
     fonte = pathlib.Path(__file__).read_text(encoding="utf-8")
     escrita_proibida = re.compile(r"gravar\(\s*['\"](estados|saude_uf|municipios|indice|monitor_saude)\.json")
@@ -355,6 +440,19 @@ def autoteste() -> int:
             and um(["S13"], {**base, "lexml": TimeoutError("t")})["S13"]["situacao"] == "erro"),
         "resposta sem achado registra a consulta (sem_resultado)": lambda: (lambda r: r["situacao"] == "sem_resultado" and r["consulta"].startswith("https://dados.gov.br"))(um(["S29"], {**base, "dados.gov.br": json.dumps({"success": True, "result": {"results": []}}).encode()})["S29"]),
         "domínio que não se identifica como prefeitura: busca não feita": lambda: um(["S16"], {**base, "alfa.xx.gov.br": b"<html>outra coisa</html>"})["S16"]["situacao"] == "dominio_nao_verificado",
+        "domínio que recusa (403) sem ninguém responder é recusa nomeada, não 'não verificado'": lambda: (
+            um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "recusa_de_fonte"
+            and um(["S16"], {"//www.alfa.xx.gov.br": b"<html>outra</html>", **{k: v for k, v in base.items() if k != "alfa.xx.gov.br"}, "//alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "dominio_nao_verificado"
+            and "alfa.xx.gov.br" in um(["S16"], {**base, "alfa.xx.gov.br": OSError("dns")})["S16"]["motivo"]),
+        "S27: só hospedagem que cita o município e o plano; endereço de outro município ou fora da lista não entra": lambda: ler_web(web_ok, "Alfa", True) == [("https://pt.scribd.com/document/1/PLANCON-de-Alfa", "PLANCON de Alfa - Defesa Civil")] and ler_web(web_ok, "Beta", True) == [("https://issuu.com/x/docs/outro", "Revista de Beta")],
+        "S24: só endereço institucional com termo conexo e plano; blog e hospedagem ficam de fora": lambda: ler_web(web_ok, "Alfa", False) == [("https://alfa.xx.gov.br/pmrr.pdf", "PMRR de Alfa")],
+        "S27 e S24: consulta registrada e pista com as travas de campo": lambda: (lambda r: all(r[f]["situacao"] == "lido" and r[f]["consulta"] and r[f]["pistas"][0]["promovivel"] is False and r[f]["pistas"][0]["documento_oficial_confirmado"] is None for f in r))(consultar_municipio("Alfa", "XX", "9999999", ["S27", "S24"], falso({}), "2026-10-26", web=web())),
+        "S27: resultado bruto vazio é erro (motor barrando), nunca sem_resultado; filtrado a zero é sem_resultado": lambda: (
+            consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": []}))["S27"]["situacao"] == "erro"
+            and consultar_municipio("Gama", "XX", "9999999", ["S27"], falso({}), "d", web=web())["S27"]["situacao"] == "sem_resultado"),
+        "S27: corpo que não é resposta do metabuscador e 429 são erro/recusa, não ausência": lambda: (
+            consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"x": 1}))["S27"]["situacao"] == "erro"
+            and consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web(urllib.error.HTTPError("u", 429, "x", {}, None)))["S27"]["situacao"] == "recusa_de_fonte"),
         "trava estrutural: o fonte não grava nos arquivos do índice": lambda: not escrita_proibida.search(fonte),
         "recusa e erro viram lacuna declarada": lambda: (lac.clear(), um(["S13"], {**base, "lexml": urllib.error.HTTPError("u", 429, "x", {}, None)}), len(lac) == 1)[2],
         "401 e 451 também são recusa": lambda: all(classificar_erro(urllib.error.HTTPError("u", c, "x", {}, None))[0] == "recusa_de_fonte" for c in (401, 429, 451)),
@@ -370,7 +468,11 @@ def autoteste() -> int:
             {"1": {"uf": "AC"}, "2": {"uf": "AC"}, "3": {"uf": "AL"}}, {"municipios": {}}) and
             selecionar_fila({"fila": ["1", "2"]}, {"1": {"uf": "AC"}, "2": {"uf": "AC"}}, None,
                             {"municipios": {"1": {"S16": {"consultado_em": "d"}}}}, ["S16"], "d") == ["2"],
+        "fila: quem nunca foi lido vem antes de quem só precisa ser relido": lambda: selecionar_fila(
+            {"fila": ["1", "2", "3"]}, {c: {"uf": "AC"} for c in "123"}, "AC",
+            {"municipios": {"1": {"S16": {"consultado_em": "ontem"}}, "2": {"S16": {"consultado_em": "ontem"}}}}, ["S16"], "d") == ["3", "1", "2"],
         "disjuntor: fonte com erros seguidos sai do run, as outras seguem": lambda: fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS}) == ["S16"] and fontes_vivas(["S16", "S25"], {"S25": ERROS_SEGUIDOS - 1}) == ["S16", "S25"],
+        "disjuntor por saldo: dois erros em três chegam ao teto, um em dois não": lambda: (lambda cam: max(cam("eea" * 5)) >= ERROS_SEGUIDOS and max(cam("ea" * 10)) == 1)(lambda seq: __import__("itertools").accumulate(seq, lambda n, c: saldo_de_erros(n, "erro" if c == "e" else "lido"), initial=0)),
         "teto por fonte": lambda: len(ler_common_crawl(("\n".join(json.dumps({"url": f"https://x/plancon{i}.pdf"}) for i in range(9))).encode())) == 9 and TETO_POR_FONTE == 5,
     }
     return rodar_autoteste(testes)
@@ -408,7 +510,7 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     if "--alvos" not in sys.argv:
-        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29] [--limite N] [--uf SP]")
+        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29,S27,S24] [--limite N] [--uf SP]")
         return 1
     arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
     fontes = [f.strip().upper() for f in (arg("--fontes") or "S13,S16,S25,S29").split(",") if f.strip()]

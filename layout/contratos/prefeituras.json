@@ -1,5 +1,5 @@
 {
- "_governanca": "Contrato de layout do Para gestores (reforma de 16/10/2026, HANDOVER_GESTORES_16-10-2026, mockup aprovado pela editoria). Ordem: h1 + abertura · Como está o seu município (consulta do módulo comum) · O que a lei exige de cada governo (três cartões de número) · Do risco ao plano publicado · O que o plano pode conter · Como os recursos chegam (cartões #antes, #depois, #caminhos: o Financiamento e a Imprensa apontam para eles). Sem figura principal.",
+ "_governanca": "Contrato de layout do Para gestores (reforma de 16/10/2026, HANDOVER_GESTORES_16-10-2026, mockup aprovado pela editoria). Ordem: h1 + abertura · Como está o seu município (consulta do módulo comum) · O que a lei exige de cada governo (três cartões de número) · Do risco ao plano publicado · O que o plano pode conter · o passo 6 de Do risco ao plano publicado traz os dois caminhos do dinheiro, sem seção própria. Sem figura principal.",
  "pagina": "prefeituras.html",
  "componentes": {
   "numeros": ".cartao-numero",
@@ -16,9 +16,9 @@
   },
   {
    "id": "quem-deve",
-   "h2": "O que a lei exige de cada governo",
+   "h2": "Os planos de cada governo",
    "tipo": "numeros",
-   "grade": ".grade-numeros--3",
+   "grade": ".grade-numeros--2",
    "cartoes": [
     {
      "id": "estados",
@@ -28,11 +28,6 @@
      "id": "indicados",
      "valor_el": "leiValor_indicados",
      "chave": "enquadramento_card.json"
-    },
-    {
-     "id": "todos",
-     "valor_el": "leiValor_todos",
-     "chave": "municipios_ibge_referencia.json"
     }
    ]
   },
@@ -40,24 +35,9 @@
    "id": "caminho",
    "h2": "Do risco ao plano publicado",
    "tipo": "lista_simples"
-  },
-  {
-   "id": "conteudo-plano",
-   "h2": "O que o plano pode conter",
-   "tipo": "lista_simples",
-   "_nota": "Listas simples (`ul`), sem caixa de marcar."
-  },
-  {
-   "id": "recursos",
-   "h2": "Como os recursos chegam",
-   "tipo": "lista_simples"
   }
  ],
- "ancoras": [
-  "antes",
-  "depois",
-  "caminhos"
- ],
+ "ancoras": [],
  "texto_proibido": [
   "Como está a sua cidade",
   "Consulte o seu município na página inicial",

@@ -12,6 +12,324 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-26 · #1190 · Log de saúde só cresce
 
 Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.
+## 2026-10-26 · #1187 · Financiamento: % do pago aplicado pela União sai por medida
+
+Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.
+## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json`
+
+`verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1.
+
+## 2026-10-26 · A3 · Busca de planos: hospedagem de documentos (S27) e planos conexos (S24)
+
+`buscar_planos_fontes_abertas.py` ganha duas fontes pelo metabuscador da válvula: Scribd, Issuu, Calameo, Yumpu, DocPlayer e SlideShare (S27) e endereços institucionais de PMRR, saneamento, saúde, consórcio e comitê que citam o plano (S24). Resultado bruto vazio é `erro`, nunca ausência; 429 é recusa nomeada. Pista nasce não confirmada e não promovível. Código +76/−3.
+
+## 2026-10-26 · #1181 · Ar medido: capital sem medição na janela é lacuna declarada
+
+Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como "coletado" e passa a "sem_medicao_na_janela". Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.
+
+## 2026-10-26 · #1176 · Válvulas de dia repassam as chaves de API ao coletor
+
+A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.
+
+## 2026-10-26 · #1175 · Monitor de riscos: subtítulo do mapa de focos descreve pontos; topo sem datas de semana para desfecho mensal
+
+O subtítulo do mapa de focos passa a descrever o dado de pontos (satélite, últimas 24 horas). No gerador do topo, só desfecho semanal recebe início e fim de semana; o mensal (diarreia 2026-07) deixa essas datas nulas, em vez de virar semana 07. Autoteste ganha o caso. Código +5/−2.
+
+## 2026-10-26 · #1172 · Orientações oficiais: cinco páginas federais atuais na coleta
+
+Entram na coleta das orientações do Proteja-se cinco páginas federais atuais (MIDR: chuvas e deslizamento; Ministério da Saúde: queimadas e dengue). Cada item só ganha fonte com trecho da página que o sustenta; o restante segue como lacuna declarada. Peso zero. Linhas: +6/−0.
+
+## 2026-10-26 · #1177 · Busca de planos: candidatos das sondas do MP, Judiciário, Saúde e Transferegov entram na fila
+
+As sondas de 24/10 acharam 27 endereços nas capitais e não leram nenhum. Cada um passa pela porta única da fila de pistas e segue ao juiz; endereço de busca não vira documento nem pontua. A porta recusa o que não é plano ou excede o teto, com motivo. Linhas: +57 de código novo (adaptador da busca de planos), +1 arquivo de entrada.
+## 2026-10-26 · #1171 · Ar medido: dias seguidos acima da OMS por capital
+
+A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz "sem credencial". Peso zero, sinal físico. Linhas: +102/−1.
+
+## 2026-10-26 · #1170 · Execução das MPs: modalidade de aplicação por mês
+
+A execução das MPs 1.367 e 1.384 passa a trazer, em cada mês, o valor pago por modalidade de aplicação, além de empenhado, liquidado e pago. Sem código legível da modalidade, a linha cai em "outras formas", nunca em categoria inventada. O dado chega na próxima rodada semanal da atualização. Linhas: +3 de código, por ser o campo que faltava.
+
+## 2026-10-26 · #1169 · Imprensa: estados com plano para o ciclo (4 de 27) e cidades acima da OMS como lacuna
+
+A Imprensa passa a ler, do monitor de saúde, quantos estados têm instrumento estadual novo para o ciclo (4 de 27), sem zero para UF não verificada. O limite da OMS por cidade fica como lacuna declarada, porque a série diária por município não está publicada no arquivo. Autoteste novo. Origem: `gerar_imprensa_semana.py`.
+
+## 2026-10-26 · A3 · Busca de planos: capital que recusa o acesso é recusa nomeada, não "domínio não verificado"
+
+Wayback e Common Crawl marcavam "domínio não verificado" quando todos os endereços da prefeitura davam 403 ou muro de robô. Agora, se nenhum endereço respondeu e algum recusou, a situação é `recusa_de_fonte` com o endereço e o código; senão fica "não verificado", com os endereços tentados no motivo. Autoteste novo; nada contornado. Origem: `buscar_planos_fontes_abertas.py`.
+
+## 2026-10-26 · A2 · Imprensa: focos sem soma parcial como "desde 29/06"
+
+A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a ser lacuna declarada para o trecho de 29/06 a 16/09 (o valor parcial fica em `valor_parcial`), com autoteste. Dado de `semana.json` regerado. Origem: `gerar_imprensa_semana.py`.
+
+## 2026-10-26 · #1164 · Saúde v0.7: tempo como contexto na ficha do estado
+
+A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora da nota (peso zero, dado do motor v0.7). Nenhum número da nota muda.
+
+## 2026-10-26 · A3 · Busca de planos: sonda do PNCP nas 27 capitais (S22)
+Nova sonda consulta a busca pública do PNCP por capital (plano de contingência, redução de riscos, PLANCON) e registra título, órgão, data e endereço. Contratação não é plano: só aponta onde procurar. Ausência é "não localizamos até o corte"; recusa é registrada e respeitada. Saldo de código: +110.
+
+## 2026-10-26 · #1161 · Imprensa: acumulados do ciclo completos
+A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.
+
+## 2026-10-26 · #1160 · Descoberta: limite padrão sobe a 60
+
+A rodada medida de descoberta (`--limite 60`) levou 7 minutos de um prazo de 300, com folga bem acima de 20%. Por isso o limite padrão de `seguir_pistas.py` passa de 20 para 60. O elo noturno mantém 20 explícito, sem mudança na corrente. Saldo de código: zero líquido.
+
+## 2026-10-25 · #1154 · Catálogo: SIH saúde mental e ICSAP marcados como coletados
+O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
+
+## 2026-10-25 · B2 · Proteja-se: fonte por orientação
+
+Cada orientação do guia que o registro oficial preserva (15 de 50) mostra sua fonte e a data da consulta, lidas de `data/orientacoes_oficiais.json`. As demais seguem sem marca, até a fonte oficial ser localizada.
+
+## 2026-10-26 · A3 · Sonda do fornecedor de transparência das capitais
+
+`scripts/sondar_fornecedor_transparencia.py` lê a página inicial de cada prefeitura de capital e anota qual fornecedor (Betha, IPM/Atende.Net, Elotech, Equiplano, Fiorilli) aparece nas ligações; recusa fica registrada com o motivo. Só registra, em `data/transparencia_fornecedor_capitais.json`; não alimenta o índice.
+
+## 2026-10-25 · D · Suíte de mutação dos portões
+
+`scripts/provar_mutacoes_dos_portoes.py` aplica cada defeito de `scripts/mutacoes_dos_portoes.json` (semana epidemiológica, hex fora dos tokens, sem título, script inline, JSON de dado quebrado, Action sem SHA) e exige que um portão do `portoes.yml` reprove; no CI roda `--so-casar`, que reprova fusão ou remoção de portão sem repor a cobertura. Prova exigida pelos itens 3 e 6 da consolidação.
+
+## 2026-10-25 · #1153 · Rodada: união de conflito decide campo a campo
+
+Decisão da central (item 7): quando os dois lados mudam o mesmo campo, o juiz vence pelo `julgado_em` mais recente e o veredito perdido vai para `juiz_historico`; `rejeitada_em` vence a data mais antiga; estado de fila (`busca_web_espera`, cursores) vence o lado da `main`. Outros campos continuam recusados, sem adivinhar. Autotestes por regra.
+
+## 2026-10-25 · #1149 · Juiz de saúde: o ente municipal também se lê no título do ato
+
+A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.
+
+## 2026-10-25 · #1150 · Busca de planos em paralelo por host
+
+A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.
+
+## 2026-10-25 · #1147 · Fila de descoberta reentrante
+
+A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.
+
+## 2026-10-25 · #1144 · Blog: link para a metodologia
+
+O aviso do blog ganha o link "Como os textos são produzidos", apontando para a seção da METODOLOGIA (PDF). Texto do link no catálogo (`blog.metodologia.link`).
+
+## 2026-10-25 · B3 · Defesa civil: prazo mediano no lugar do cartão de 30 dias
+O sexto cartão do topo passa a mostrar o prazo mediano entre decreto e reconhecimento, medido em `data/resposta/por_uf.json` (METODOLOGIA §32.6), com o mesmo componente. Sai a contagem de 30 dias, retirada pela A2 em #1137. Remove o campo `dias_sem_reconhecimento` da página e do verificador de runtime.
+
+## 2026-10-25 · #1146 · Remove o módulo duplicado de estrutura dos desfechos
+
+`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.
+
+## 2026-10-25 · #1145 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF
+
+`municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.
+
+## 2026-10-25 · #1142 · Imprensa: acumulados do ciclo, uma função por número
+
+`data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.
+
+## 2026-10-25 · #1141 · Imprensa: variantes do componente
+
+Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superior colorido por tema, título em versalete), `.regua-faixas` (quatro faixas com marcador por `--pos`) e `BuscaLista` (filtro compartilhado de lista, em `assets/js/busca-lista.js`). Tokens `--faixa-1…4` em `tokens.css`. Nenhuma página muda ainda; a página da Imprensa é a primeira consumidora.
+
+## 2026-10-25 · #1133 · Defesa civil: escala menor só no topo
+
+Os seis cartões do topo da Defesa civil passam à escala menor pedida pela editoria (24/10): regra `.dc-topo .cartao-numero` e `.dc-topo .cartao-numero-valor` em `assets/base.css`, sem classe nova. Os demais cartões de número (Imprensa, Proteja-se, Saúde, Monitor de riscos) não mudam. Linhas líquidas: +4/−0.
+
+## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
+
+Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.
+
+## 2026-10-25 · #1140 · Blog: índice com o texto mais recente
+
+O blog passa a índice, conforme o mockup aprovado pela editoria: aviso de autoria, o texto mais recente de qualquer editoria em destaque e, abaixo, uma coluna por editoria (Legal e financiamento às segundas, Saúde às quintas). Cada texto segue no seu endereço permanente. Entram os textos aprovados de 25/10, 04/10 e 06/10; sai o rascunho de 29/10. Contrato e catálogo atualizados.
+
+## 2026-10-25 · #1137 · Prazo de reconhecimento medido, sem régua de 30 dias
+
+Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o intervalo entre o decreto e a portaria de reconhecimento (`dias_ate_reconhecimento`) e publica mediana e faixa por UF e no país (`prazo_reconhecimento`). Saem o sexto cartão do topo da Defesa civil e os campos de 30 dias do funil de financiamento. METODOLOGIA §32.6.
+
+## 2026-10-25 · #1134 · Blog: como os textos são produzidos
+
+METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.
+
+## 2026-10-25 · #1138 · Main verde: links do Para gestores lidos do catálogo
+
+O autoteste de âncoras reprovava a main desde o #1132, que moveu os links do Para gestores para o catálogo. Correção na origem: o passo "Antes da emergência" aponta para `financiamento.html#antes`, e o autoteste lê o catálogo e espera as âncoras `antes` e `depois`. Código +7/−4.
+
+## 2026-10-25 · #1132 · Para gestores: sai "Como os recursos chegam"; os dois caminhos vão ao passo 6
+
+A seção #recursos sai de prefeituras.html. O passo 6 "Buscar os recursos" passa a ter os dois caminhos: antes da emergência e depois do reconhecimento federal, com link para o Financiamento. Texto no catálogo; sem CSS novo.
+
+## 2026-10-25 · #1126 · Estrutura comum dos desfechos de saúde
+
+`scripts/estrutura_desfechos.py`: série por UF, faixa habitual 2019–2025 por quintis congelados, último valor, cortes do mapa e documento de desfecho com fonte, cadência, `preliminar`, `parcial` e lacunas declaradas. Escrita só de arquivo novo em `data/saude_desfechos/`, com autoteste offline. Nenhum arquivo existente muda e nenhum escritor é declarado. Código novo (+224 linhas): recurso novo, sem cópia de coletor existente.
+
+## 2026-10-25 · #1131 · Evidências ausentes: commit que gravava o índice sem o texto
+
+A reaplicação e o rebase (`_coletor.yml`) gravavam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. O commit passa a incluir `evidencias/`.
+
+## 2026-10-25 · #PR · Para gestores: Os planos de cada governo e o caminho até o plano publicado
+
+Ficam Estados e Municípios indicados, cada um com plano, atualização, acompanhamento e fonte; a fonte de Estados passa à Lei 12.608/2012, art. 7º, § 2º. "O que o plano pode conter" sai e seu conteúdo entra nos seis passos de "Do risco ao plano publicado", em lista ligada por fio. Código +9/−8.
+
+## 2026-10-25 · #PR · Regime de prioridade: checagem pré-noite respeita os elos suspensos
+
+A checagem pré-noite rodava mesmo com o regime de prioridade (22/10) suspendendo o elo, e a sua falha ficava vermelha sem razão. Agora ela pergunta à mesma função que a guarda e o despachante usam (`janela_da_noite.py --elo-suspenso`) e pula as etapas quando está suspensa. Metodologia §102: uma linha sobre o regime. Linhas líquidas: código +6/−1 (workflow), texto +2.
+
+## 2026-10-25 · #PR · Saúde: detalhe do desfecho com o ano, a faixa na cor da família e o mapa pela posição
+
+O detalhe do desfecho escolhido mostra o ano de janeiro a dezembro (o anterior em linha fina, os períodos em registro tracejados) sobre a faixa habitual na cor clara da família, e o mapa pinta a posição de cada estado na sua faixa. Frase de leitura com a contagem dos 27, ficha por estado, lista recolhida. Três casos no portão ligam ficha, mapa, frase e topo ao mesmo dado.
+
+## 2026-10-25 · #1126 · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal
+
+A situação de cada estado vira um mapa pelo tipo de plano, com as siglas como botões que abrem a ficha; a coordenação se preenche com o dado. Saem a grade de ladrilhos, o cartão de risco previsto e a seção federal. A consulta sobe e usa cartões, como o Proteja-se. Abertura reescrita; o texto "sem tempo" vale.
+
+## 2026-10-25 · #1126 · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual
+
+Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita "consultado em" na fonte. Saem blocos de script sem elemento na página.
+
+## 2026-10-25 · #1126 · Passos em linha: variante do componente `.passos`
+
+Variante `.passos--linha` em `base.css`: lista vertical ligada por fio, número em argila, título em Fraunces e bloco "o que precisa ter" em uma ou duas colunas. Nenhuma página muda; "Para gestores" passa a usá-la no caminho até o plano publicado.
+
+## 2026-10-25 · #1126 · Coordenação em saúde: o juiz lê estrutura permanente como estrutura, não como resposta
+
+O juiz de saúde ganha a trilha da estrutura, só depois da recusa da trilha do plano: decreto que institui comitê com a SES e a atribuição escrita credita F2, COE da saúde permanente credita F1, e ato que declara emergência, amarra-se a ela ou a extingue segue resposta. Estrutura de risco que a UF não projeta, CIEVS sozinho e ativação de COE não creditam. Peso zero até a v0.8.
+
+## 2026-10-25 · #1126 · METODOLOGIA: base legal do §1a e régua da coordenação em saúde
+
+O §1a passa a dizer que a atualização do plano municipal é anual e a do estadual, bienal (Lei 12.608, art. 7º, § 2º, IV), como na correção de 30/09. Entra a régua da coordenação em saúde decidida em 25/10 (estrutura permanente, seca vigente, CIEVS, COE, citação incompleta), com peso zero na v0.7. Linhas líquidas: +3/−1 de texto, código 0.
+
+## 2026-10-25 · #1126 · Financiamento: do decreto ao recurso vira dado · Dados
+
+`semana.json` ganha `funil_defesa_civil`: decretaram, reconhecidos pela União, com portaria de recurso (mesma contagem do cartão do topo) e reconhecidos há mais de 30 dias sem portaria localizada até o corte. Antes o último número só existia calculado no navegador.
+
+## 2026-10-25 · #1126 · Cartão de número: grade de duas colunas e lista de definição
+
+Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção "Os planos de cada governo" das prefeituras passa a usá-las.
+
+## 2026-10-25 · #1126 · Financiamento: série mensal do dinheiro do mapa · Dados
+
+`semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.
+
+## 2026-10-25 · #1126 · Lista do banco nos coletores sem arquivo que não existe mais
+A lista única `BANCO_PROIBIDO` deixa de citar `monitor_saude_v04.json`, removido com a v0.7; o autoteste do coletor de diários passa a exigir os cinco arquivos que existem. Sem mudança de dado ou de página.
+
+## 2026-10-25 · #1126 · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados
+
+O repasse do SUS para emergências passa a contar desde 29/06/2026 (meses inteiros, julho em diante): R$ 8,2 mi em 16 municípios, antes R$ 112 mi em 63. O topo da Saúde traz estados acima da faixa habitual por desfecho. O empenhado das MPs ganha marcador quando excede o valor do ato (a fonte mede a ação, não o crédito). `n_atos` numérico. METODOLOGIA: v0.7 vira §123, com as frases de comparação e de não atribuição.
+
+## 2026-10-25 · #1126 · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada
+O nacional da chikungunya parava na semana 9 sem aviso porque o Tocantins não tem registro depois dela na fonte. `desfechos_sus.montar` agora declara em `lacunas` a UF defasada (último período) e marca `ultimo.BR.ufs_sem_dado_depois`; o nacional segue só com as 27 UFs. Dengue e SRAG inalterados. Código +31/−5.
+
+## 2026-10-24 · #PR · Imprensa: pergunta nova sobre casos de saúde e El Niño
+
+Em "O que recomendamos e não recomendamos concluir", na Saúde, entra a pergunta "Os casos mostrados na página de Saúde são causados pelo El Niño?": a página não faz essa relação e mostra o que os órgãos de saúde registram, com fonte e faixa habitual. Texto aprovado pela editoria.
+
+## 2026-10-24 · #PR · MARÉ Saúde v0.7: a nota da UF é o instrumento; o nacional pesa a população · Dados
+Nenhum componente da nota do Saúde depende de data: a nota do estado é o instrumento. O tempo (dias após o Boletim nº 1) e a coordenação saem como contexto de peso zero. O nacional passa a ponderar pela população (cobertura 1 nas 27 UFs): 61,3, era 34,7. Um só motor: o cálculo paralelo da v0.4 e a troca automática saem. Código −732 líquidas.
+
+## 2026-10-24 · #PR · Coordenação em saúde: 13 atos oficiais lidos entram na fila do juiz · Dado
+Registra, pela porta única de pistas, os 13 atos de coordenação (COE, comitês, plano do PI) já lidos em domínio oficial na busca de 07/10. Só o juiz de saúde credita; nenhum índice muda. Script novo com autoteste offline; +65 linhas, sem remover remendo (a rotina da coordenação não tinha porta de entrada).
+
+## 2026-10-24 · Onde estão as emergências: sem legenda de mapa, com total
+Sai a linha de legenda sob o título do mapa de decretos (a legenda do mapa já traz ponto cheio e ponto vazado). O gráfico ganha a linha Total, soma das barras na unidade delas, e "988 municípios" sob o título. Rótulos encostam no trilho, barras pequenas têm comprimento mínimo e o painel alinha ao topo.
+
+## 2026-10-24 · #PR · Proteja-se: "O que fazer" abre a orientação certa · Site
+
+Os links do cartão da cidade e as URLs com âncora (#guia-dengue, #guia-calor e as outras três) agora abrem a aba do guia e rolam até ele; antes o painel escondido recebia o salto e nada acontecia. A correção mora no bloco das abas. Código +17 líquidas, com um caso novo no portão de execução.
+
+## 2026-10-24 · Monitor de riscos: listas federais num mapa por município
+As duas listas federais (deslizamento e enchente; fogo na Amazônia) viram um cartão só, com um ponto por município em três cores e as contagens ao lado; a ressalva da Amazônia Legal vai no cartão. A consulta do município sobe para logo depois do risco previsto. Código +6 líquidas: variante de CSS e rótulos no catálogo.
+
+## 2026-10-24 · #PR · Monitor de riscos: um cartão de avisos e alertas, com mapa por município · Site
+
+As duas tabelas de chuva forte viram um cartão: mapa com um ponto por município sob aviso do INMET, na cor do maior grau, e círculo vazado nos alertas do Cemaden; escada por grau e lista do Cemaden ao lado. A posição vem do cadastro de municípios que a página já carrega.
+
+## 2026-10-24 · #PR · Mapas do Monitor de riscos: legendas novas, sem grade, contorno mais firme · Site
+
+Seca, ar e temperatura têm legenda nova, escrita pelo catálogo; o terceiro mapa passa a se chamar "Desvio de temperatura previsto nas capitais". Sai a malha de 5° de todos os mapas. Divisas das UFs mais firmes e contorno do país mais forte, sem token novo.
+
+## 2026-10-24 · #PR · Servidor estático dos portões de navegador em um só arquivo · Site
+
+Consolidação, item 6. Quatro portões de navegador (consistência visual, dicas dos mapas, figuras de contagem, guia do Proteja-se) copiavam o servidor estático e a tabela de tipos; passam a usar `scripts/_servidor.js`. Mesma cobertura; código líquido −3 linhas.
+
+## 2026-10-24 · #1091 · Monitor de riscos sem a ponte; rodapé e formulário ajustados · Site
+
+Na Situação atual saem o parágrafo de resumo e a linha "primeira leitura" do cartão do ar. Saem a ponte para a metodologia e a oração "se completa na quinta"; a leitura semanal fica só com a semana. Ciclo em curso nos dois gráficos do Pacífico em laranja avermelhado. Aberturas aprovadas do Monitor de riscos e da inicial. Rodapé: "Atualização · Corte · Coleta · Publicação" vem do catálogo. Formulário: observações em linha inteira.
+
+## 2026-10-24 · #1090 · Rodapé novo em todas as páginas · Site
+
+Rodapé igual em todas as páginas: logotipo, "por Patrícia Ferrini" (com link), Instagram, LinkedIn, X, BlueSky e Medium, nome do MARÉ e as quatro datas (atualização, corte, coleta, publicação) numa linha só, preenchidas por `assets/js/rodape.js`. A Imprensa leva a linha dos pedidos no lugar das datas.
+
+## 2026-10-24 · Inicial: abertura do cartão da cidade e varredura sem a frase final · Site
+
+Dois pedidos aprovados da editoria aplicados pelo catálogo (`aplicar_edicoes.py`): abertura do cartão "Sua cidade" reescrita e saída da frase "Ainda não verificamos a cidade com todas as fontes" da varredura. Cópia estática do HTML alinhada. Linhas de código 0/0.
+
+## 2026-10-24 · Textos da inicial: cidade, varredura e formulário · Site
+
+Três pedidos aprovados da editoria aplicados pelo catálogo: abertura de "Sua cidade" com `{n_municipios}`, fim da frase "Ainda não verificamos a cidade com todas as fontes" na varredura e abertura nova do formulário (sem "apenas": a regra de ênfase vence o texto aprovado). A nota do formulário sai; os dois campos opcionais deixam de ser recolhidos e levam "(opcional)" no rótulo. Código 0.
+
+## 2026-10-24 · #1074 · Abertura da inicial reescrita pela editoria · Site
+
+Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\"` do frontmatter (o link saía com aspas literais).
+
+## 2026-10-24 · Cartão do estado: "MARÉ Legal do estado" e texto no catálogo · Inicial
+
+O rótulo da nota do estado passa a dizer "MARÉ Legal do estado", e o campo "Componentes (um terço cada)" sai do cartão; o peso segue descrito em `index.como_ler.nota`. As frases de "ainda não verificamos", o rótulo e a lista "O que ainda falta" saem de `assets/js/index.js` para `conteudo/index.json`, sem mudar uma palavra.
+
+## 2026-10-24 · RS: onze nomes de arquivo que o casamento deixava órfão perdem três · Coleta
+
+A pasta da Casa Militar/RS trazia 484 municípios casados e 11 órfãos; hífen do nome oficial ("Não-Me-Toque") e a palavra "atualizado" no arquivo impediam o casamento. Passam a casar Não-Me-Toque, Jaguarão e Santana do Livramento (487 casados, 8 órfãos declarados: nome ambíguo ou grafia distante). Linhas líquidas +4 no script; autoteste com um caso novo.
+
+## 2026-10-24 · #1070 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta
+
+`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.
+
+## 2026-10-24 · Sem cópia da evidência, sem promoção · Juiz
+
+Dezesseis documentos do RS passam do limite de evidência e a pasta privada não aceita o Wayback; a aplicação os registrava mesmo sem arquivo e o portão de evidências barrou o dado. Agora a aplicação recusa e marca, em vez de depender do portão. O portão C10 passa a reconhecer a pasta pública do governo do RS como fonte oficial.
+
+## 2026-10-24 · Trecho do juiz sem CPF · Juiz
+
+O trecho que o juiz guarda como prova passa pela redação de dado pessoal antes de entrar no registro público. Duas decisões do RS traziam o CPF de coordenadores municipais, copiado de uma planilha de contatos, e o portão de segredos barrou o dado.
+
+## 2026-10-24 · #1060 · Registro do juiz sem CPF; PDF do RS lido pela sessão do link · Coleta
+
+O `trecho` que o juiz grava em `promocoes_automaticas.json` saía do PDF com CPF de vice-prefeito; agora é redigido na porta (`julgar_filas.py`). `preservar_evidencias.py --ler` usa a sessão do link de compartilhamento para a pasta do RS: PDFs acima de 5 MB, sem cópia binária, ganham texto preservado. Código +11 líquidas.
+
+## 2026-10-24 · #1067 · Busca de planos em fontes abertas: quem nunca foi lido vem primeiro · Coleta
+A fila do dia relia primeiro os municípios lidos em dias anteriores e o prazo do run cortava a cobertura. Agora os nunca lidos vêm antes dos que só precisam de releitura. Código +5 líquidas, com autoteste; nenhum dado, regra ou peso do índice muda.
+
+## 2026-10-24 · Válvula de dia aceita Node · Coleta
+
+A aplicação das 75 promoções do RS escreveu os registros, mas os portões em Node não rodavam na válvula (sem `npm ci`) e a aplicação foi desfeita, como deve. A válvula ganha a entrada `precisa_node`, já existente no coletor.
+
+## 2026-10-24 · Documento já preservado não se baixa de novo · Juiz
+
+A aplicação das 75 promoções do RS baixa PDFs de uma pasta lenta e estourou o prazo da coleta (38 guardados em 27 minutos), perdendo tudo. A passada passa a reaproveitar a evidência já indexada com arquivo em disco, e a seguinte continua de onde parou.
+
+## 2026-10-24 · Falha de preservação não enterra a promoção · Juiz
+
+Quando o documento não podia ser preservado, a promoção ganhava a marca `nao_aplicado` e nunca mais voltava: as 75 do RS ficaram assim com o 403 já corrigido. Falha do nosso acesso deixa de marcar a decisão; a passada seguinte tenta de novo.
+
+## 2026-10-24 · Evidência do RS preservada com a sessão do link · Juiz
+
+As 75 promoções do juiz para o RS ficavam sem aplicar: a preservação do documento pedia o PDF à pasta da Casa Militar sem a sessão do link de compartilhamento e levava HTTP 403. A preservação passa a usar o mesmo leitor do juiz. Recusa 401/403 de outro endereço segue respeitada.
+
+## 2026-10-24 · Juiz 1.7 · PLANCON do repositório estadual não precisa de ato
+
+Documento do repositório estadual declarado (ES, SE, RS) é lido como plano publicado sem ato: lei ou portaria citada no corpo, como base legal, não vira o ato do plano. Causa: 47 PLANCONs do RS recusados por `autoridade_nao_confirmada`. O codebook sobe a 1.7 e devolve ao juiz o que foi recusado. Pesos e créditos não mudam.
+
+## 2026-10-24 · RS no canal do repositório estadual · Juiz
+
+A pasta de PLANCONs da Casa Militar/RS passa a dar a autoridade do plano sem ato, como o repositório do ES e o de SE: o juiz já não exige domínio do município para documento do repositório estadual declarado. SharePoint fora da pasta continua recusado. Pesos e créditos do índice não mudam.
+
+## 2026-10-24 · #1042 · Busca de planos: a fonte sai do run pelo saldo de erros, não só por erros seguidos
+
+Causa: o contador zerava a cada acerto, e o Common Crawl, que errou 113 de 154 consultas em 23/10, nunca chegava ao teto de cinco seguidos; cada erro custa dois minutos do run. Agora o erro soma um e qualquer outra situação tira um. Só código (+9/−2); nenhum dado muda.
+
+## 2026-10-24 · #1040 · Portão móvel funde-se na consistência visual
+
+`verificar_movel.js` abria as mesmas páginas a 390 px que `verificar_consistencia_visual.js`, com a mesma captura e a mesma checagem de rolagem horizontal. Sobravam dois testes (erro de JS e banner de erro de carregamento), que passam ao portão 18 em todas as larguras. Sai um comando, uma passada de Chromium e 35 linhas; nenhuma regra muda. Linhas líquidas: código −37 (+7/−44).
 
 ## 2026-10-23 · Elo dos desfechos: entra a leitura incremental dos óbitos por causa
 
@@ -32,7 +350,6 @@ Sete séries em `saude_desfechos/obitos_*.json`: todas as causas e seis grupos (
 ## 2026-10-23 · #1021 · Orientações oficiais: item do guia confere também contra os passos emendados
 
 O casamento item→frase da fonte lia só as linhas cruas, onde o PDF quebra a frase; agora também confere contra `trechos`, que já emenda a quebra. Mesma régua de 70% das palavras. Nenhum item de dengue ou calor muda; dois de fogo ganham fonte. Código +7/−1.
-
 
 ## 2026-10-23 · #1005 · Óbitos por causa básica (SIM)
 
@@ -57,7 +374,6 @@ O cartão "decreto há mais de 30 dias sem reconhecimento" era o único dos seis
 ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários
 
 ## 2026-10-23 · #1012 · Busca de planos em fontes abertas lê os prioritários
-
 
 `buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.
 
@@ -137,6 +453,7 @@ Rodada de dia pela válvula (coleta-dia): `internacoes_saude_mental.json` e `int
 ## 2026-10-23 · Busca de planos: o disparo cria os jobs
 
 `busca_planos.yml` falhava em 100 s sem criar nenhum job da matriz: o número `timeout_minutos` do disparo chegava como texto à entrada `number` do coletor. Passa por `fromJSON`; prova: o mesmo workflow com valor literal e com `fromJSON` criou os jobs, só a expressão crua falhou.
+
 ## 2026-10-23 · #986 · Imprensa: a definição do MARÉ Saúde é a que o método em vigor produz
 
 A seção "Como os índices funcionam" descrevia o MARÉ Saúde em três componentes, um deles a cobertura municipal, e dizia média dos estados "já verificados". O método em vigor tem dois componentes de metade cada e a cobertura fora da nota. O texto do catálogo é o espelho da definição que a função única publica na edição; ele ficou na versão anterior e volta a ser o espelho. Nenhum código muda.
@@ -166,6 +483,7 @@ As colunas "Estados" e "Fenômeno" da tabela de avisos do Inmet saíam em traves
 ## 2026-10-23 · #976 · Repositórios estaduais de planos entram como pistas, não como plano direto
 
 `atualizar_instrumentos_estaduais.py --pistas` grava o que o repositório estadual lista (ES, SE, RS) na porta única de pistas, para o juiz ler e preservar o documento. Aplicar a proposta direto em `municipios.json` creditava plano sem hash de evidência, e o portão de fichas reprova. Sem mudança de peso, página ou índice.
+
 ## 2026-10-23 · #975 · Busca de planos em matriz por grupo de UF
 
 A busca de planos municipais ganha disparo próprio de dia: um job por grupo de UF, seis ao todo, e os comandos entram como parâmetro do disparo, sem editar o ramo da válvula. O PR de dado abre sozinho e é um só. Acesso inalterado: Crawl-delay por host, cliente identificado, recusa respeitada.
@@ -208,6 +526,7 @@ Um coletor novo procura, nos diários oficiais municipais, o plano de contingên
 ## 2026-10-22 · #956 · Duas raízes da `main` vermelha: rodada semanal pulada e união que replica pista
 
 `atualizar.py` lia `data/meta.json`, que o publicador carimba todo dia, e encerrava a rodada de domingo em 90 s: financiamento parou em 12/10 e o frescor reprovou. Sai a guarda `ja_publicou_hoje()`. E a união da fila de pistas emitia uma pista tantas vezes quantas a chave aparecia: 20.569 cópias idênticas em `pistas_imprensa.json` (61 MB, teto 50). Cada chave agora sai uma vez, e as cópias existentes saem do arquivo (61 → 34 MB); dois CPF de terceiros saem do texto.
+
 ## 2026-10-22 · #957 · Financiamento: a coleta de 12/10 é renovada
 
 `coletar_transferegov.py` e `coletar_siconfi_182.py` rodaram de dia pela válvula, sem mudar código. Série nacional, por UF, programas fundo a fundo e despesa municipal passam de 12/10 a 22/10, o que devolve a verde o portão de frescor (limite de 9 dias). Semana de 19/10 sem repasse lido: ausência, não zero.
@@ -446,6 +765,7 @@ Consolidação, item 6. A regra de disparo (dado, página) estava copiada em tr�
 ## 2026-10-19 · #883 · Orientações oficiais: página que devolve a inicial deixa de valer como fonte
 
 Quatro das treze páginas preservadas para o guia do Proteja-se eram a página inicial do gov.br servida no lugar de notícia removida. O coletor compara o endereço canônico com o pedido e declara a falha; as quatro passam a falha declarada, sem hash de página que não é a fonte, e a aba de dengue ganha frases de orientação a mais da página-mãe do Ministério da Saúde.
+
 ## 2026-10-17 · #836 · Diarreias pelo SISAB; o mês da extração sai da leptospirose
 `coletar_sisab.py` lê do relatório público do SISAB os atendimentos da atenção primária por diarreia (CIAP D11, D70, D73; CID A00–A09), por UF e mês desde 2019, e confere os filtros que o próprio CSV declara. Na leptospirose, o mês em que o arquivo preliminar foi extraído deixa de contar como coberto, e `ultimo` ganha o último mês consolidado. METODOLOGIA §108.
 
@@ -456,6 +776,7 @@ O Distrito Federal passa a ter rota de leitura: o sistema de legislação do DF 
 ## 2026-10-19 · #886 · Catálogo dos desfechos: tuberculose, saúde mental e ICSAP ganham rota
 
 Sondagem da janela E2 no executor: o SINAN-TB (`TUBEBR12`–`25`) foi decodificado (112.482 notificações em `TUBEBR25`, encerramento lido) e passa a candidato; saúde mental (CID-10 F00–F99) e ICSAP passam a candidatos pelo SIH, que já se lê por máquina. Nenhum coletor novo e nenhuma série publicada; a lista oficial de ICSAP ainda será transcrita e conferida.
+
 ## 2026-10-19 · #889 · Proteja-se: a data da fonte do guia vem do registro preservado
 
 A aba de calor dizia "consultado em 01/10/2026", data escrita à mão que envelhecia sozinha. A linha passa a molde, com a data do registro que preserva a página do Ministério da Saúde por hash, casada pela URL; sem o registro, fica a data de reserva. Medido nos dois caminhos. A página passa a ter um só leitor de JSON, e duas notas vencidas saem do contrato.
@@ -471,6 +792,7 @@ O Rio de Janeiro passa a ter rota de leitura: a página de cadernos da data e o 
 ## 2026-10-19 · #881 · Consulta do município: o cartão diz quantos atos não couberam
 
 O cartão da consulta mostra até três atos de emergência do período e calava o resto, com o total já gravado no dado. Quando há mais, a linha passa a dizer "e mais N atos no período". Auditoria da consulta do município, item 2; o item 1 (separar decreto do município de reconhecimento federal) espera o arquivo que o elo dos sinais grava com a separação do #865.
+
 ## 2026-10-19 · #882 · Defesa civil: abertura em quatro parágrafos, com o elo da saúde
 
 A abertura deixa de fechar a lista de eventos que o dado não fecha: a maior parte dos atos declara seca ou estiagem, chuva forte, vendaval ou granizo, há também fogo, e parte dos atos não declara o tipo. Entra um parágrafo sobre o que aparece depois como sinal de saúde, com o caminho para o MARÉ Saúde. Texto aprovado pela editoria.
@@ -513,6 +835,7 @@ A linha de emergência passa a trazer só o ato do município, com a data dele e
 ## 2026-10-19 · #848 · Diários estaduais: dado do ciclo inteiro; MG por data; caderno repetido encerra a edição
 
 Entram as edições e ocorrências lidas dos diários de 20 UFs, ciclo inteiro. MG passa a ser lida por data pela API pública do Jornal Minas Gerais, sem token; 401 é recusa respeitada. No CE, caderno repetido na mesma data encerra a edição. Achado não é registro: o juiz lê o ato. Adaptador +83 linhas, recurso novo.
+
 ## 2026-10-19 · #858 · Financiamento: o dinheiro por risco, onde chega e o mês a mês
 
 Cinco números do topo pelo gerador, quatro colunas por risco numa escala única, mapa municipal de círculos como figura principal, pago mês a mês por medida provisória, consulta do município e a defesa civil depois do reconhecimento. Saem a forma de aplicação, as origens uma a uma, o gasto próprio por estado e os caminhos. Risco não declarado no ato é lacuna da classe, nunca classificação nossa.
@@ -547,6 +870,7 @@ Saem a frase sobre a data do dado, o "previsão, não observação", o parágraf
 ## 2026-10-19 · #852 · Niño 3.4 semanal no Monitor de riscos; Saúde perde o cartão Resposta e a lista de verificação
 
 Monitor de riscos: a anomalia semanal da região Niño 3.4 (NOAA/CPC) entra logo abaixo do RONI, no mesmo componente e na mesma moldura, com escala tirada do próprio dado e eixo em meses; o contrato declara as duas séries largas. Saúde: saem o cartão "Resposta" dos números e a figura "O que foi localizado em cada estado", que abre agora na ficha do estado; a abertura cita só as fontes federais lidas.
+
 ## 2026-10-19 · #862 · Fila de pistas: recusada pelo juiz também perde o texto de trabalho
 
 A pista recusada só volta ao juiz quando o codebook muda, e ele relê o documento pelo endereço. A compactação da triagem passa a cobri-la, junto com as encerradas: 4.549 pistas, `pistas_imprensa.json` de 46,8 para 41,6 MiB (teto 50). A decisão do juiz fica. Histórico no git.

@@ -1,20 +1,20 @@
 {
  "_governanca": "INSTANTÂNEO dos cartões do topo da Defesa civil, para a Imprensa ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce dos mesmos arquivos que a página lê. Os três cartões de AGORA trazem a hora da consulta; os três do ciclo trazem a contagem desde 29/06 e quantos entraram nos últimos sete dias.",
- "gerado_em": "23/10/2026",
+ "gerado_em": "26/10/2026",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "cartoes": [
   {
    "id": "municipios_alerta_cemaden",
-   "valor": 0,
-   "referencia": "23/10/2026 06:28",
+   "valor": 19,
+   "referencia": "26/10/2026 09:19",
    "rotulo": "municípios sob alerta do Cemaden",
    "fonte": "Cemaden",
    "sem_coleta": false
   },
   {
    "id": "municipios_aviso_inmet",
-   "valor": 3473,
-   "referencia": "23/10/2026 06:28",
+   "valor": 1962,
+   "referencia": "26/10/2026 09:19",
    "rotulo": "municípios sob aviso do Inmet",
    "fonte": "Inmet",
    "sem_coleta": false
@@ -23,7 +23,7 @@
    "id": "municipios_decretaram",
    "valor": 988,
    "referencia": "desde 29/06/2026",
-   "variacao": 20,
+   "variacao": 17,
    "rotulo": "municípios que decretaram emergência ou calamidade",
    "fonte": "Defesa Civil nacional, no Diário Oficial da União",
    "sem_coleta": false
@@ -32,7 +32,7 @@
    "id": "populacao_sob_decreto",
    "valor": 34547521,
    "referencia": "desde 29/06/2026",
-   "variacao": 863860,
+   "variacao": 802502,
    "rotulo": "pessoas que vivem nos municípios que decretaram",
    "fonte": "Censo 2022, do IBGE",
    "sem_coleta": false
@@ -41,17 +41,8 @@
    "id": "reconhecidos_pelo_governo_federal",
    "valor": 887,
    "referencia": "desde 29/06/2026",
-   "variacao": 32,
+   "variacao": 20,
    "rotulo": "municípios com a emergência reconhecida pelo governo federal",
-   "fonte": "Defesa Civil nacional, no Diário Oficial da União",
-   "sem_coleta": false
-  },
-  {
-   "id": "decreto_sem_reconhecimento_30_dias",
-   "valor": 45,
-   "referencia": "desde 29/06/2026",
-   "variacao": 9,
-   "rotulo": "municípios com decreto há mais de 30 dias sem reconhecimento federal",
    "fonte": "Defesa Civil nacional, no Diário Oficial da União",
    "sem_coleta": false
   }

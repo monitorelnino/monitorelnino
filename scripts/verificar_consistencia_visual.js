@@ -11,7 +11,7 @@
  *   (5) numeração visível de figura não começa em 1 ou não é sequencial;
  *   (6) há rolagem horizontal.
  * Uso: node scripts/verificar_consistencia_visual.js [--relatorio]  (imprime o inventário completo). */
-const { chromium } = require("playwright"); const http = require("http"), fs = require("fs"), path = require("path");
+const { chromium } = require("playwright"); const fs = require("fs"), path = require("path");
 const RAIZ = path.join(__dirname, "..");
 const PAGINAS = fs.readdirSync(RAIZ).filter(f => f.endsWith(".html")).sort();
 const LARGURAS = [1366, 900, 390];
@@ -46,10 +46,7 @@ const PROPS = ["fontSize", "fontWeight", "lineHeight", "letterSpacing", "fontFam
 // prosa: o espaçamento é do contêiner (último parágrafo sem margem, utilitários de ritmo), por isso compara só a tipografia
 const SO_TIPOGRAFIA = new Set(["corpo (parágrafo de painel)", "apoio (.hint)", "nota (.note)", "versalete (.selo)", "célula de tabela"]);
 const PROPS_TIPO = ["fontSize", "fontWeight", "lineHeight", "letterSpacing", "fontFamily", "textTransform"];
-const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".xml": "application/xml", ".png": "image/png", ".pdf": "application/pdf", ".md": "text/markdown" };
-const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.url.split("?")[0]); const f = path.join(RAIZ, u === "/" ? "index.html" : u);
-  if (!f.startsWith(RAIZ) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); }
-  res.writeHead(200, { "Content-Type": MIME[path.extname(f)] || "application/octet-stream" }); fs.createReadStream(f).pipe(res); });
+const srv = require("./_servidor.js")(RAIZ);
 
 (async () => {
   await new Promise(r => srv.listen(0, "127.0.0.1", r)); const porta = srv.address().port; const falhas = []; const inventario = {};
@@ -59,10 +56,14 @@ const srv = http.createServer((req, res) => { const u = decodeURIComponent(req.u
     const porFamilia = {};   // família → { assinatura → [página…] }
     const tamanhos = {};     // font-size computado → páginas
     for (const p of PAGINAS) {
-      const page = await ctx.newPage();
+      const page = await ctx.newPage(); const erros = []; page.on("pageerror", e => erros.push(e.message));
       await page.route(/vlibras\.gov\.br|fonts\.g|netlify/, r => r.abort());
       try { await page.goto(`http://127.0.0.1:${porta}/${p}`, { waitUntil: "networkidle", timeout: 30000 }); } catch (e) { falhas.push(`${p}@${largura}: não carregou`); await page.close(); continue; }
       await page.waitForTimeout(900);
+      // absorvido do antigo portão móvel (verificar_movel.js): erro de JS e banner de erro de carregamento
+      const banner = await page.evaluate(() => [...document.querySelectorAll("div")].some(d => /Erro ao carregar os dados/.test(d.textContent || "") && d.children.length === 0));
+      if (banner) falhas.push(`${p}@${largura}: banner de erro de carregamento`);
+      const errosReais = erros.filter(e => !/jsPDF|VLibras|fonts/i.test(e)); if (errosReais.length) falhas.push(`${p}@${largura}: erro JS — ${errosReais[0].slice(0, 100)}`);
       const r = await page.evaluate(({ FAMILIAS, PROPS, SO_TIPOGRAFIA, PROPS_TIPO }) => {
         const vis = el => { const cs = getComputedStyle(el); if (cs.display === "none" || cs.visibility === "hidden") return false; const det = el.closest("details"); if (det && !det.open && !el.closest("summary")) return false; if (el.closest("[hidden]")) return false; return el.getClientRects().length > 0; };
         const out = { familias: {}, tamanhos: {}, figuras: [], creditos: [], numeros: [], scroll: document.documentElement.scrollWidth > innerWidth + 1 };

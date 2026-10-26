@@ -1,7 +1,9 @@
 {
-  "_governanca": "Contrato de layout do Blog do MARÉ — A PÁGINA DOS TEXTOS (handover da preparação programática, item 6.1, 05/10/2026). Cada texto aparece INTEIRO, um após o outro, do mais recente ao mais antigo: título, etiqueta e data, autoria, corpo em prosa, linha de fontes e “como citar” com o endereço permanente. Do décimo primeiro texto em diante, os dez mais recentes ficam inteiros e os anteriores vão para a lista do fim. As páginas individuais continuam, e é para elas que o endereço permanente e o feed apontam. Quem verifica é scripts/verificar_conformidade.py.",
+  "_governanca": "Contrato de layout do Blog do MARÉ. Desde 25/10/2026 (mockup aprovado pela editoria em notas/mockups/blog_indice.html, central 25/10 12:10 UTC) a página é um ÍNDICE: aviso de autoria, o texto mais recente de qualquer editoria em destaque e, abaixo, uma coluna por editoria (Legal e financiamento às segundas; Saúde às quintas) com a lista do mais novo ao mais antigo. Cada texto vive no seu endereço permanente, e é para ele que o feed e a citação apontam. Substitui o contrato de 05/10/2026 (texto inteiro na página). Quem verifica é scripts/verificar_conformidade.py.",
   "pagina": "blog.html",
   "componentes": {
+    "destaque": "article.panel.post",
+    "colunas": ".grade-figuras > .cartao-mapa",
     "numeros": ".cartao-numero",
     "grade_numeros": ".grade-numeros--3",
     "figura": ".cartao-mapa",
@@ -11,15 +13,8 @@
     {
       "id": "textos",
       "h2": null,
-      "_nota_15_10": "Editoria, 15/10/2026: sem abertura e sem o título “Textos”; os textos entram logo abaixo do h1 e o corpo ocupa a coluna inteira de `main`. Divergência: a metadescrição pedida pela central tinha 58 caracteres; o portão de SEO exige 70–170, e ela ganhou “onde, quando e com que fonte”, da abertura aprovada que saiu.",
-      "tipo": "lista_simples",
-      "_nota": "Cada texto em `article.panel.post`: `p.selo` com etiqueta, data e autoria; `h3` com o título ligado à página do texto; `p.hint.post-lede` com a abertura; `div.post-corpo` com a prosa; `p.post-fontes.spec`; `p.post-citar.spec` com o endereço permanente. Sem cartão e sem número no corpo."
-    },
-    {
-      "id": "anteriores",
-      "h2": "Textos anteriores",
-      "tipo": "lista_simples",
-      "_nota": "Só existe a partir do décimo primeiro texto. Seção oculta enquanto não há o que listar — título de seção vazia afirma que existe algo ali."
+      "tipo": "indice",
+      "_nota": "Aviso de autoria (`blog.abertura`, `p.hint`) abaixo do h1; `#blogDestaque` com `article.panel.post` (o mais recente de qualquer editoria); `#blogColunas` com `.grade-figuras` e duas `section.cartao-mapa` (acento argila para Legal e financiamento, chuva para Saúde)."
     }
   ],
   "texto_proibido": [
@@ -41,5 +36,5 @@
     "Saúde",
     "Acontecimento"
   ],
-  "_divergencia_do_handover_06_1": "Divergência declarada (05/10/2026): o item 6.1 manda sair a lista de links e o filtro de etiqueta, e não diz nada sobre os dois cartões de “textos mais recentes”. Eles saíram também, por consequência do que entrou: com cada texto inteiro na página, do mais novo ao mais antigo, o mais recente de cada linha já é o que o leitor encontra primeiro, e o cartão repetiria título e abertura logo acima do próprio texto. Remoção de redundância é decisão do Code pela governança editorial (§29)."
+  "_divergencia_05_10_superada": "25/10/2026: o texto inteiro na página (contrato de 05/10) foi substituído pelo índice aprovado pela editoria. Os textos seguem em blog/<slug>.html."
 }

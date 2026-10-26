@@ -1,176 +1,302 @@
 {
- "gerado_em": "2026-10-23",
+ "gerado_em": "2026-10-26",
  "municipios": {
   "1302603": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=manaus.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "manaus.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-26",
     "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=manaus.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": "HTTP 404",
+    "motivo": "HTTP 504",
+    "dominio": "manaus.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Manaus%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Manaus%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "manaus.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-26",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Manaus%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "manaus.am.gov.br"
    }
   },
   "1300029": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=alvaraes.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "alvaraes.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=alvaraes.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "alvaraes.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Alvar%C3%A3es%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Alvar%C3%A3es%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "alvaraes.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alvar%C3%A3es%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "alvaraes.am.gov.br"
    }
   },
   "1300060": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=amatura.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "amatura.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=amatura.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "amatura.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Amatur%C3%A1%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Amatur%C3%A1%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "amatura.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Amatur%C3%A1%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "amatura.am.gov.br"
    }
   },
   "1300102": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Anori%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Anori%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Anori%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": null
    }
   },
   "1300144": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=apui.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "apui.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=apui.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "apui.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Apu%C3%AD%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Apu%C3%AD%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "apui.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Apu%C3%AD%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "apui.am.gov.br"
    }
   },
   "1300201": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=atalaiadonorte.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "atalaiadonorte.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=atalaiadonorte.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "atalaiadonorte.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Atalaia+do+Norte%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Atalaia+do+Norte%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "atalaiadonorte.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Atalaia+do+Norte%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "atalaiadonorte.am.gov.br"
    }
   },
   "1300300": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
+    "dominio": null
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Autazes%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Autazes%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Autazes%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": null
    }
   },
   "1300409": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.barcelos.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "www.barcelos.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.barcelos.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "www.barcelos.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barcelos%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barcelos%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "www.barcelos.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Barcelos%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "www.barcelos.am.gov.br"
    }
   },
   "1300508": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=barreirinha.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "barreirinha.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=barreirinha.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "barreirinha.am.gov.br"
+   },
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barreirinha%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Barreirinha%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": "barreirinha.am.gov.br"
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Barreirinha%22&rows=10",
+    "motivo": "HTTP 401",
     "dominio": "barreirinha.am.gov.br"
    }
   },
   "1300607": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=benjaminconstant.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "benjaminconstant.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=benjaminconstant.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "benjaminconstant.am.gov.br"
    }
   },
   "1300631": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -179,14 +305,14 @@
   },
   "1300680": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -195,30 +321,30 @@
   },
   "1300706": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bocadoacre.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "bocadoacre.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bocadoacre.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "bocadoacre.am.gov.br"
    }
   },
   "1300805": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -227,94 +353,94 @@
   },
   "1300839": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=caapiranga.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "caapiranga.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=caapiranga.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "caapiranga.am.gov.br"
    }
   },
   "1300904": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=canutama.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "canutama.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=canutama.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "canutama.am.gov.br"
    }
   },
   "1301001": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=carauari.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "carauari.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=carauari.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "carauari.am.gov.br"
    }
   },
   "1301100": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=careiro.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "careiro.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=careiro.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "careiro.am.gov.br"
    }
   },
   "1301159": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=careirodavarzea.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "careirodavarzea.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=careirodavarzea.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "careirodavarzea.am.gov.br"
    }
   },
   "1301209": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -323,14 +449,14 @@
   },
   "1301308": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -339,46 +465,46 @@
   },
   "1301407": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=eirunepe.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "eirunepe.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=eirunepe.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "eirunepe.am.gov.br"
    }
   },
   "1301506": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=envira.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "envira.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=envira.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "envira.am.gov.br"
    }
   },
   "1301605": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -387,30 +513,30 @@
   },
   "1301654": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=guajara.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "guajara.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=guajara.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "guajara.am.gov.br"
    }
   },
   "1301704": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -419,30 +545,30 @@
   },
   "1301803": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ipixuna.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "ipixuna.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=ipixuna.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "ipixuna.am.gov.br"
    }
   },
   "1301852": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -451,78 +577,78 @@
   },
   "1301902": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itacoatiara.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "itacoatiara.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=itacoatiara.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "itacoatiara.am.gov.br"
    }
   },
   "1301951": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://web.archive.org/cdx/search/cdx?url=itamarati.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
-    "dominio": "itamarati.am.gov.br"
-   },
-   "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
-    "dominio": "itamarati.am.gov.br"
-   }
-  },
-  "1302207": {
-   "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://web.archive.org/cdx/search/cdx?url=jurua.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
-    "dominio": "jurua.am.gov.br"
-   },
-   "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
-    "dominio": "jurua.am.gov.br"
-   }
-  },
-  "1302306": {
-   "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
-    "consulta": "https://web.archive.org/cdx/search/cdx?url=jutai.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
-    "dominio": "jutai.am.gov.br"
-   },
-   "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
-    "dominio": "jutai.am.gov.br"
-   }
-  },
-  "1302405": {
-   "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   }
+  },
+  "1302207": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=jurua.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "jurua.am.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=jurua.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "jurua.am.gov.br"
+   }
+  },
+  "1302306": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=jutai.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "jutai.am.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=jutai.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
+    "dominio": "jutai.am.gov.br"
+   }
+  },
+  "1302405": {
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=labrea.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
+    "motivo": null,
+    "dominio": "labrea.am.gov.br"
+   },
+   "S25": {
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -531,46 +657,46 @@
   },
   "1302504": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=manacapuru.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "manacapuru.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=manacapuru.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "manacapuru.am.gov.br"
    }
   },
   "1302553": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=manaquiri.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "manaquiri.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
+    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=manaquiri.am.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
+    "motivo": null,
     "dominio": "manaquiri.am.gov.br"
    }
   },
   "1302702": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=manicore.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "manicore.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
@@ -579,14 +705,14 @@
   },
   "1302801": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -595,14 +721,14 @@
   },
   "1302900": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=maues.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "maues.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
@@ -611,14 +737,14 @@
   },
   "1303007": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=nhamunda.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "nhamunda.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
@@ -627,14 +753,14 @@
   },
   "1303106": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -643,14 +769,14 @@
   },
   "1303205": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=novoairao.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "novoairao.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
@@ -659,14 +785,14 @@
   },
   "1303304": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=novoaripuana.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "novoaripuana.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
@@ -675,14 +801,14 @@
   },
   "1303403": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=parintins.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "parintins.am.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "erro",
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
@@ -691,7 +817,7 @@
   },
   "1303502": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=pauini.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -707,10 +833,10 @@
   },
   "1303536": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "lido",
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=presidentefigueiredo.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
     "dominio": "presidentefigueiredo.am.gov.br"
    },
    "S25": {
@@ -723,7 +849,7 @@
   },
   "1303569": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=riopretodaeva.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -739,7 +865,7 @@
   },
   "1303601": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=santaisabeldorionegro.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -755,7 +881,7 @@
   },
   "1303700": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -771,7 +897,7 @@
   },
   "1304005": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=silves.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -787,7 +913,7 @@
   },
   "1303809": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
     "motivo": null,
@@ -803,7 +929,7 @@
   },
   "1303908": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=saopaulodeolivenca.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -819,10 +945,10 @@
   },
   "1303957": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "erro",
+    "consultado_em": "2026-10-25",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=saosebastiaodouatuma.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 502",
+    "motivo": null,
     "dominio": "saosebastiaodouatuma.am.gov.br"
    },
    "S25": {
@@ -835,10 +961,10 @@
   },
   "1304062": {
    "S16": {
-    "consultado_em": "2026-10-23",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-25",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=tabatinga.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "tabatinga.am.gov.br"
    },
    "S25": {
@@ -851,7 +977,7 @@
   },
   "1304104": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=tapaua.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -867,7 +993,7 @@
   },
   "1304203": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=tefe.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -883,7 +1009,7 @@
   },
   "1304237": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=tonantins.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -899,7 +1025,7 @@
   },
   "1304260": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=uarini.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -915,7 +1041,7 @@
   },
   "1304302": {
    "S16": {
-    "consultado_em": "2026-10-23",
+    "consultado_em": "2026-10-25",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=urucara.am.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -927,6 +1053,36 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "urucara.am.gov.br"
+   }
+  },
+  "1304401": {
+   "S13": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Urucurituba%22&maximumRecords=10",
+    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Urucurituba%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+    "dominio": null
+   },
+   "S16": {
+    "consultado_em": "2026-10-25",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-24",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S29": {
+    "consultado_em": "2026-10-24",
+    "situacao": "recusa_de_fonte",
+    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Urucurituba%22&rows=10",
+    "motivo": "HTTP 401",
+    "dominio": null
    }
   }
  }
