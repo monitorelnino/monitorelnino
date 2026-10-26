@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-19 a 2026-10-26 (1020 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-19 a 2026-10-26 (1029 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,11 +28,11 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-25 02:15 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-26 10:32 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-26 13:10 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
-| `buscar_planos_fontes_abertas.py` | coletor | 2026-10-25 17:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `buscar_planos_fontes_abertas.py` | coletor | 2026-10-26 09:18 | 7148 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-24 01:16 | 120 s | — | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-24 01:24 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-25 02:15 | 1 s | — | ok | — |
@@ -90,7 +90,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-10-26 07:24 | 8 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-26 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `processar_contribuicoes.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
-| `python3` | coletor | 2026-10-25 17:49 | 7911 s | — | **erro** | interrompido pelo prazo do elo |
+| `python3` | coletor | 2026-10-26 11:49 | 6 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-26 08:03 | 1374 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-26 08:02 | 61 s | — | ok | — |

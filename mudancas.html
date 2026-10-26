@@ -47,6 +47,16 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
+      <dd>Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como &quot;coletado&quot; e passa a &quot;sem_medicao_na_janela&quot;. Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.</dd>
+      <dt>26/10/2026 · Válvulas de dia repassam as chaves de API ao coletor</dt>
+      <dd>A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.</dd>
+      <dt>26/10/2026 · Monitor de riscos: subtítulo do mapa de focos descreve pontos; topo sem datas de semana para desfecho mensal</dt>
+      <dd>O subtítulo do mapa de focos passa a descrever o dado de pontos (satélite, últimas 24 horas). No gerador do topo, só desfecho semanal recebe início e fim de semana; o mensal (diarreia 2026-07) deixa essas datas nulas, em vez de virar semana 07. Autoteste ganha o caso. Código +5/−2.</dd>
+      <dt>26/10/2026 · Orientações oficiais: cinco páginas federais atuais na coleta</dt>
+      <dd>Entram na coleta das orientações do Proteja-se cinco páginas federais atuais (MIDR: chuvas e deslizamento; Ministério da Saúde: queimadas e dengue). Cada item só ganha fonte com trecho da página que o sustenta; o restante segue como lacuna declarada. Peso zero. Linhas: +6/−0.</dd>
+      <dt>26/10/2026 · Busca de planos: candidatos das sondas do MP, Judiciário, Saúde e Transferegov entram na fila</dt>
+      <dd>As sondas de 24/10 acharam 27 endereços nas capitais e não leram nenhum. Cada um passa pela porta única da fila de pistas e segue ao juiz; endereço de busca não vira documento nem pontua. A porta recusa o que não é plano ou excede o teto, com motivo. Linhas: +57 de código novo (adaptador da busca de planos), +1 arquivo de entrada.</dd>
       <dt>26/10/2026 · Ar medido: dias seguidos acima da OMS por capital</dt>
       <dd>A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz &quot;sem credencial&quot;. Peso zero, sinal físico. Linhas: +102/−1.</dd>
       <dt>26/10/2026 · Execução das MPs: modalidade de aplicação por mês</dt>
@@ -157,16 +167,6 @@
       <dd>20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.</dd>
       <dt>23/10/2026 · Common Crawl: &quot;No Captures found&quot; é ausência com a consulta registrada</dt>
       <dd>O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.</dd>
-      <dt>23/10/2026 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome</dt>
-      <dd>A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-&lt;nome&gt;`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.</dd>
-      <dt>23/10/2026 · Orientações oficiais: a chikungunya entra na coleta</dt>
-      <dd>`coletar_orientacoes_oficiais.py` passa a consultar a página do Ministério da Saúde sobre chikungunya e a guardar os trechos de orientação, como já fazia com a dengue. Sem a página, o registro diz o motivo. Código +2/−1.</dd>
-      <dt>23/10/2026 · Páginas oficiais por hash: trechos de chuva e fogo</dt>
-      <dd>A coleta de 23/10 preservou de novo as páginas da Defesa Civil nacional e do Ministério da Saúde: trechos de chuva e fogo preenchidos, nove itens do guia da dengue com frase de fonte. Só dado.</dd>
-      <dt>23/10/2026 · Juiz: pasta de PLANCONs da Casa Militar/RS é fonte provável oficial</dt>
-      <dd>`casamilitar_rs_gov_br` e `casamilitar-rs.com.br/pdfs/` entram em `PADROES_FONTE_PROVAVEL_OFICIAL`, por decisão da central: a pasta é linkada por prepara.rs.gov.br. Só documento lido pelo juiz vira crédito. Código +2.</dd>
-      <dt>23/10/2026 · Portão 12 regenera o índice de conteúdo; catálogo recusa chave solta</dt>
-      <dd>`indice-de-conteudo.html` entra na cadeia de `verificar_derivados.sh`: deixa de envelhecer a cada PR de texto. `verificar_catalogo.py` recusa chave de topo de `_renomeacoes.json` fora de `de_para`, que o portão não lê. Código +6/−3.</dd>
     </dl>
   </section>
 </main>
