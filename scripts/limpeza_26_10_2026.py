@@ -98,7 +98,7 @@ SEM_RELACAO = {
                        "espn.com", "yardbarker.com", "minecraft.net", "encyclopedia-titanica.org"),
     "comércio": ("amazon.com", "walmart.com", "ebay.com", "flipkart.com", "zillow.com", "autotrader.com",
                  "edmunds.com", "tesla.com", "bentleymotors.com", "chanel.com", "chapelhats.com",
-                 "southwest.com", "allegiantair.com", "indeed.com", "humana.com", "leafhome.com",
+                 "southwest.com", "allegiantair.com", "indeed.com", "leafhome.com",
                  "evanwilliams.com", "regus.com", "shutterstock.com", "realhotelsgroup.com",
                  "hoteljardimviana.pt", "ludvigsenmortuary.com", "drugs.com", "electricityforum.com",
                  "jalbum.net"),
@@ -241,7 +241,7 @@ def executar(aplicar: bool) -> int:
 
     ARQUIVO.mkdir(parents=True, exist_ok=True)
     def guardar(nome, obj):
-        (ARQUIVO / nome).write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        (ARQUIVO / nome).write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8", newline="\n")
     guardar("registros_retirados.json", {"_governanca": __doc__.split("\n")[0], "em": EM,
                                          "registros": registros_sai})
     guardar("decisoes_retiradas.json", {"em": EM, "itens": [{"motivo": m, "decisao": d} for d, m in decisoes_sai]})
