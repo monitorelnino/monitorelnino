@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
+      <dd>Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como &quot;coletado&quot; e passa a &quot;sem_medicao_na_janela&quot;. Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.</dd>
       <dt>26/10/2026 · Válvulas de dia repassam as chaves de API ao coletor</dt>
       <dd>A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.</dd>
       <dt>26/10/2026 · Monitor de riscos: subtítulo do mapa de focos descreve pontos; topo sem datas de semana para desfecho mensal</dt>
@@ -165,8 +167,6 @@
       <dd>20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.</dd>
       <dt>23/10/2026 · Common Crawl: &quot;No Captures found&quot; é ausência com a consulta registrada</dt>
       <dd>O índice do Common Crawl responde 404 com essa frase quando o domínio não tem captura que case. `buscar_planos_fontes_abertas.py` passa a lê-la como `sem_resultado`; qualquer outro 404 segue `erro`. Autoteste offline com os dois casos. Só código, +20/−1.</dd>
-      <dt>23/10/2026 · Válvula de dia: `coleta_de_dia.yml`, uma fila por nome</dt>
-      <dd>A coleta de rede fora da noite deixa de ser a troca de `comandos` em `recuperar_edicoes_doe.yml` (grupo `noturno`, um run por vez). Disparo genérico com `nome`, `comandos` e prazo; fila `dia-&lt;nome&gt;`, sem cancelar; o PR de dado abre sozinho. Faixas com nomes diferentes rodam juntas. Código +1 arquivo.</dd>
     </dl>
   </section>
 </main>
