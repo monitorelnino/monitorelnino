@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1181 · Ar medido: capital sem medição na janela é lacuna declarada
+
+Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como "coletado" e passa a "sem_medicao_na_janela". Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.
+
 ## 2026-10-26 · #1176 · Válvulas de dia repassam as chaves de API ao coletor
 
 A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.
