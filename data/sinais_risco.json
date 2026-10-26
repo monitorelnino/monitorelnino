@@ -129,7 +129,7 @@
    "papel": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE).",
    "status": "coletado",
    "consultado_em": "25/10/2026",
-   "documento": "Focos do dia — focos_diario_br_20261025.csv",
+   "documento": "Focos do dia — focos_diario_br_20261026.csv",
    "detalhe": "Focos ativos nas últimas 24 h por UF (contagem publicada pelo INPE)."
   },
   "cemaden_alertas": {
@@ -6343,7 +6343,7 @@
    },
    "fonte": "noaa_nino34_semanal",
    "documento": "Niño 3.4 semanal, semana de 2026-10-14",
-   "consultado_em": "25/10/2026 05:50"
+   "consultado_em": "25/10/2026 22:49"
   }
  },
  "uf": {
@@ -6393,12 +6393,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 9,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -6407,7 +6407,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Rio Branco",
@@ -6431,16 +6431,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.4,
-     "tmin": 25.1,
-     "umin_pct": 82.0,
-     "pmax_mm": null,
+     "tmax": 36.2,
+     "tmin": 23.6,
+     "umin_pct": 37.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -6484,21 +6484,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 2,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -6507,7 +6503,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Maceió",
@@ -6531,16 +6527,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.1,
+     "tmax": 34.5,
      "tmin": 21.5,
-     "umin_pct": 98.0,
-     "pmax_mm": null,
+     "umin_pct": 50.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -6590,12 +6586,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 93,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -6604,14 +6600,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Manaus",
     "data": "25/10/2026",
     "tmax": 36.0,
     "tmin": 24.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -6628,16 +6624,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 30.6,
-     "tmin": 27.6,
-     "umin_pct": 64.0,
-     "pmax_mm": null,
+     "tmax": 36.9,
+     "tmin": 27.4,
+     "umin_pct": 45.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 5040030,
@@ -6651,7 +6647,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "AP": {
@@ -6699,12 +6695,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 103,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -6713,7 +6709,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Macapá",
@@ -6737,16 +6733,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.8,
-     "tmin": 25.8,
-     "umin_pct": 76.0,
-     "pmax_mm": null,
+     "tmax": 33.6,
+     "tmin": 25.6,
+     "umin_pct": 49.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -6791,22 +6787,21 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 2
+     "Perigo Potencial": 1
     },
     "exemplos": [
-     "Baixa Umidade",
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 243,
+    "focos_24h": 25,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -6815,7 +6810,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Salvador",
@@ -6840,7 +6835,7 @@
     "natureza": "medição",
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 3911519,
@@ -6854,7 +6849,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "CE": {
@@ -6897,21 +6892,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 58,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -6920,7 +6911,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Fortaleza",
@@ -6946,7 +6937,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "DF": {
@@ -6989,17 +6980,21 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 0,
-    "graus": {},
-    "exemplos": [],
+    "total": 1,
+    "graus": {
+     "Perigo Potencial": 1
+    },
+    "exemplos": [
+     "Tempestade"
+    ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7008,13 +7003,13 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Brasília",
     "data": "25/10/2026",
-    "tmax": 31.0,
-    "tmin": 19.0,
+    "tmax": 32.0,
+    "tmin": 20.0,
     "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
@@ -7032,16 +7027,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 21.9,
+     "tmax": 32.6,
      "tmin": 20.2,
-     "umin_pct": 76.0,
+     "umin_pct": 34.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7092,12 +7087,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7106,14 +7101,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Vitória",
     "data": "25/10/2026",
     "tmax": 30.0,
     "tmin": 22.0,
-    "resumo": "Muitas nuvens com pancadas de chuva",
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7130,16 +7125,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.2,
+     "tmax": 29.6,
      "tmin": 24.1,
-     "umin_pct": 93.0,
-     "pmax_mm": null,
+     "umin_pct": 60.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 6126992,
@@ -7153,7 +7148,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "GO": {
@@ -7206,12 +7201,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 87,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7220,7 +7215,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Goiânia",
@@ -7244,16 +7239,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 21.4,
-     "tmin": 20.7,
-     "umin_pct": 92.0,
-     "pmax_mm": null,
+     "tmax": 34.1,
+     "tmin": 20.6,
+     "umin_pct": 33.0,
+     "pmax_mm": 8.2,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7298,21 +7293,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 584,
+    "focos_24h": 22,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7321,14 +7312,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "São Luís",
     "data": "25/10/2026",
     "tmax": 32.0,
     "tmin": 24.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7377,39 +7368,53 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 3,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 2,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
-     "Baixa Umidade",
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 51,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
-    "total": 0,
-    "niveis": {},
-    "municipios": [],
+    "total": 12,
+    "niveis": {
+     "Moderado": 7,
+     "Cessar": 5
+    },
+    "municipios": [
+     "BELO HORIZONTE",
+     "BELO ORIENTE",
+     "CARATINGA",
+     "CARLOS CHAGAS",
+     "CONCEIÇÃO DO MATO DENTRO",
+     "CONTAGEM",
+     "IAPU",
+     "MORRO DO PILAR",
+     "RIBEIRÃO DAS NEVES",
+     "SANTA LUZIA",
+     "TEÓFILO OTONI",
+     "VESPASIANO"
+    ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Belo Horizonte",
     "data": "25/10/2026",
     "tmax": 30.0,
     "tmin": 18.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -7426,16 +7431,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 23.5,
-     "tmin": 20.8,
-     "umin_pct": 67.0,
-     "pmax_mm": null,
+     "tmax": 32.1,
+     "tmin": 19.2,
+     "umin_pct": 42.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7480,35 +7485,34 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
     "total": 1,
     "niveis": {
-     "Moderado": 1
+     "Cessar": 1
     },
     "municipios": [
      "CAMPO GRANDE"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Campo Grande",
@@ -7533,15 +7537,15 @@
     "natureza": "medição",
     "medida": {
      "tmax": 28.2,
-     "tmin": 22.3,
+     "tmin": 20.3,
      "umin_pct": 60.0,
-     "pmax_mm": null,
+     "pmax_mm": 8.2,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7594,12 +7598,12 @@
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 137,
+    "focos_24h": 21,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7608,7 +7612,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Cuiabá",
@@ -7632,16 +7636,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 32.1,
-     "tmin": 29.7,
-     "umin_pct": 39.0,
+     "tmax": 39.1,
+     "tmin": 28.7,
+     "umin_pct": 23.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7691,12 +7695,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 2723,
+    "focos_24h": 177,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7705,7 +7709,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Belém",
@@ -7729,16 +7733,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.6,
-     "tmin": 25.8,
-     "umin_pct": 84.0,
-     "pmax_mm": null,
+     "tmax": 34.8,
+     "tmin": 25.6,
+     "umin_pct": 53.0,
+     "pmax_mm": 2.2,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 3852932,
@@ -7752,7 +7756,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "PB": {
@@ -7795,21 +7799,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 3,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7818,7 +7818,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "João Pessoa",
@@ -7842,16 +7842,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.7,
+     "tmax": 31.0,
      "tmin": 25.6,
-     "umin_pct": 70.0,
-     "pmax_mm": null,
+     "umin_pct": 57.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7895,21 +7895,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 19,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -7918,7 +7914,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Recife",
@@ -7942,16 +7938,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.4,
+     "tmax": 32.8,
      "tmin": 22.5,
-     "umin_pct": 72.0,
-     "pmax_mm": null,
+     "umin_pct": 49.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -7996,21 +7992,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 127,
+    "focos_24h": 5,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -8019,7 +8011,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Teresina",
@@ -8043,16 +8035,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 29.3,
-     "tmin": 26.5,
-     "umin_pct": 57.0,
-     "pmax_mm": null,
+     "tmax": 38.2,
+     "tmin": 26.4,
+     "umin_pct": 29.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -8096,28 +8088,28 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
     "total": 25,
     "niveis": {
-     "Moderado": 25
+     "Moderado": 14,
+     "Cessar": 11
     },
     "municipios": [
      "ALMIRANTE TAMANDARÉ",
@@ -8142,14 +8134,14 @@
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Curitiba",
     "data": "25/10/2026",
     "tmax": 20.0,
     "tmin": 8.0,
-    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
+    "resumo": "Muitas nuvens com pancadas de chuva",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8166,16 +8158,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 16.4,
-     "tmin": 16.1,
-     "umin_pct": 99.0,
-     "pmax_mm": null,
+     "tmax": 20.3,
+     "tmin": 15.9,
+     "umin_pct": 82.0,
+     "pmax_mm": 82.4,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -8217,22 +8209,21 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -8241,14 +8232,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Rio de Janeiro",
     "data": "25/10/2026",
     "tmax": 28.0,
     "tmin": 20.0,
-    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas",
+    "resumo": "Muitas nuvens com pancadas de chuva e trovoadas isoladas",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8265,16 +8256,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 25.9,
-     "tmin": 21.5,
-     "umin_pct": 75.0,
-     "pmax_mm": null,
+     "tmax": 27.9,
+     "tmin": 21.4,
+     "umin_pct": 61.0,
+     "pmax_mm": 14.2,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 5110511,
@@ -8288,7 +8279,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "RN": {
@@ -8331,21 +8322,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 11,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -8354,7 +8341,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Natal",
@@ -8378,16 +8365,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 27.0,
+     "tmax": 32.1,
      "tmin": 25.3,
-     "umin_pct": 78.0,
-     "pmax_mm": null,
+     "umin_pct": 60.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -8437,12 +8424,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 53,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -8451,14 +8438,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Porto Velho",
     "data": "25/10/2026",
     "tmax": 36.0,
     "tmin": 25.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8475,16 +8462,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 26.2,
-     "tmin": 23.5,
-     "umin_pct": 89.0,
+     "tmax": 38.3,
+     "tmin": 23.0,
+     "umin_pct": 29.0,
      "pmax_mm": null,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 5616182,
@@ -8498,7 +8485,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "RR": {
@@ -8546,12 +8533,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 14,
+    "focos_24h": 1,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -8560,14 +8547,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Boa Vista",
     "data": "25/10/2026",
     "tmax": 37.0,
     "tmin": 27.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8616,30 +8603,30 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
-    "total": 0,
-    "niveis": {},
-    "municipios": [],
+    "total": 1,
+    "niveis": {
+     "Alto": 1
+    },
+    "municipios": [
+     "SÃO BORJA"
+    ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Porto Alegre",
@@ -8663,16 +8650,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 15.8,
+     "tmax": 19.5,
      "tmin": 15.0,
-     "umin_pct": 86.0,
-     "pmax_mm": null,
+     "umin_pct": 67.0,
+     "pmax_mm": 19.5,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -8716,52 +8703,43 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
-    "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
-    },
-    "exemplos": [
-     "Tempestade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
-    "total": 15,
+    "total": 7,
     "niveis": {
-     "Moderado": 15
+     "Moderado": 7
     },
     "municipios": [
-     "ABELARDO LUZ",
      "CORONEL FREITAS",
      "DIONÍSIO CERQUEIRA",
      "FAXINAL DOS GUEDES",
      "PORTO UNIÃO",
-     "QUILOMBO",
      "SÃO CARLOS",
-     "SÃO DOMINGOS",
      "XANXERÊ",
-     "XAXIM",
      "ÁGUAS DE CHAPECÓ"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Florianópolis",
     "data": "25/10/2026",
     "tmax": 18.0,
     "tmin": 14.0,
-    "resumo": "Muitas nuvens com pancadas de chuva",
+    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -8778,16 +8756,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 19.6,
+     "tmax": 22.4,
      "tmin": 18.3,
-     "umin_pct": 80.0,
-     "pmax_mm": null,
+     "umin_pct": 61.0,
+     "pmax_mm": 2.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   },
@@ -8836,12 +8814,12 @@
     "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
     "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -8850,7 +8828,7 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Aracaju",
@@ -8906,28 +8884,29 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 2,
+    "total": 1,
     "graus": {
-     "Perigo Potencial": 1,
-     "Perigo": 1
+     "Perigo Potencial": 1
     },
     "exemplos": [
      "Tempestade"
     ],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 7,
+    "focos_24h": 0,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
-    "total": 74,
+    "total": 80,
     "niveis": {
-     "Moderado": 74
+     "Moderado": 30,
+     "Alto": 3,
+     "Cessar": 47
     },
     "municipios": [
      "AMPARO",
@@ -8947,6 +8926,7 @@
      "CONCHAS",
      "CUBATÃO",
      "DIADEMA",
+     "ELDORADO",
      "EMBU DAS ARTES",
      "EMBU-GUAÇU",
      "ESPÍRITO SANTO DO PINHAL",
@@ -8954,7 +8934,9 @@
      "FRANCO DA ROCHA",
      "GUARAREMA",
      "GUARULHOS",
+     "IGUAPE",
      "IPERÓ",
+     "IPORANGA",
      "ITAPECERICA DA SERRA",
      "ITAPETININGA",
      "ITAQUAQUECETUBA",
@@ -8966,14 +8948,11 @@
      "LIMEIRA",
      "MAIRINQUE",
      "MAIRIPORÃ",
-     "MARÍLIA",
-     "MAUÁ",
-     "MOGI DAS CRUZES",
-     "MONTE MOR"
+     "MARÍLIA"
     ],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "São Paulo",
@@ -8998,7 +8977,7 @@
     "natureza": "medição",
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": {
     "id": 5282,
@@ -9012,7 +8991,7 @@
     "natureza": "medição",
     "fonte": "openaq",
     "documento": "OpenAQ — 8 capital(is) com monitor de PM2,5",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:48"
    }
   },
   "TO": {
@@ -9056,21 +9035,17 @@
     "consultado_em": "25/10/2026"
    },
    "avisos_inmet": {
-    "total": 1,
-    "graus": {
-     "Perigo Potencial": 1
-    },
-    "exemplos": [
-     "Baixa Umidade"
-    ],
+    "total": 0,
+    "graus": {},
+    "exemplos": [],
     "fonte": "inmet_avisos",
     "documento": "Avisos ativos no momento da consulta",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "fogo": {
-    "focos_24h": 279,
+    "focos_24h": 20,
     "fonte": "inpe_fogo",
-    "documento": "Focos do dia — focos_diario_br_20261025.csv",
+    "documento": "Focos do dia — focos_diario_br_20261026.csv",
     "consultado_em": "25/10/2026"
    },
    "alertas_cemaden": {
@@ -9079,14 +9054,14 @@
     "municipios": [],
     "fonte": "cemaden_alertas",
     "documento": "Alertas vigentes (camada alertas_vigentes_siaden, CEMADEN)",
-    "consultado_em": "25/10/2026 05:49"
+    "consultado_em": "25/10/2026 22:48"
    },
    "temperatura": {
     "capital": "Palmas",
     "data": "25/10/2026",
     "tmax": 37.0,
     "tmin": 24.0,
-    "resumo": "Muitas nuvens com possibilidade de chuva isolada",
+    "resumo": "Muitas nuvens",
     "criterio": "maior máxima e menor mínima entre manhã, tarde e noite",
     "natureza": "estimativa de modelo",
     "fonte": "inmet_previsao_capitais",
@@ -9103,16 +9078,16 @@
     },
     "natureza": "medição",
     "medida": {
-     "tmax": 28.2,
+     "tmax": 36.3,
      "tmin": 25.7,
-     "umin_pct": 69.0,
-     "pmax_mm": null,
+     "umin_pct": 44.0,
+     "pmax_mm": 0.0,
      "marcado_pela_fonte": true,
      "data": "2026-10-25"
     },
     "fonte": "inmet_estacoes",
     "documento": "INMET — 23 estação(ões) automática(s) de capital; 21 capital(is) com máxima/mínima medidas em 2026-10-25",
-    "consultado_em": "25/10/2026 05:50"
+    "consultado_em": "25/10/2026 22:49"
    },
    "ar_medido": null
   }
