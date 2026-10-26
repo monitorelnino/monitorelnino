@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Buscador 2: o reprocessamento grava a cada 200 URLs
+
+`seguir_pistas.py --reprocessar` passa a gravar em blocos de 200 URLs abertas e para com o prazo do elo sem perder o bloco em curso. Antes, o lote de 2.000 da válvula só gravava no fim. Linhas líquidas: +27/−6.
+
 ## 2026-10-26 · Buscador 2: a busca de pistas reconstruída
 
 Regras B1–B11 em `buscador2.py`. A porta da fila admite só domínio do município, da UF, federal de lista fechada, diário oficial ou Querido Diário do código certo, uma pista por URL normalizada; o seguidor abre o redirecionador, segue um nível até o PDF, tenta o mapa do site e devolve à fila o plano não lido (até três vezes). A consulta estadual vai por UF; sai o coletor de redes sociais.
