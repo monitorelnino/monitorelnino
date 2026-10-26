@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · A3 · Busca de planos: hospedagem de documentos (S27) e planos conexos (S24)
+
+`buscar_planos_fontes_abertas.py` ganha duas fontes pelo metabuscador da válvula: Scribd, Issuu, Calameo, Yumpu, DocPlayer e SlideShare (S27) e endereços institucionais de PMRR, saneamento, saúde, consórcio e comitê que citam o plano (S24). Resultado bruto vazio é `erro`, nunca ausência; 429 é recusa nomeada. Pista nasce não confirmada e não promovível. Código +76/−3.
+
 ## 2026-10-26 · #1181 · Ar medido: capital sem medição na janela é lacuna declarada
 
 Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como "coletado" e passa a "sem_medicao_na_janela". Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.
