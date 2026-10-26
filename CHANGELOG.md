@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.
 
+## 2026-10-26 · A3 · S18: Querido Diário por município na busca de planos
+
+`buscar_planos_fontes_abertas.py` ganha a fonte S18: um território por chamada à API pública do Querido Diário, excerto que cita o plano vira pista; município sem diário no acervo é declarado como falta de acervo, nunca como ausência de plano. Recusa para na porta; falha de conexão tenta a porta seguinte. Autoteste offline com 5 casos novos.
+
 ## 2026-10-26 · #1202 · Juiz: modo paralelo do codebook 1.8
 
 O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.
