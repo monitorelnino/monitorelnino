@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-25 · #1154 · Catálogo: SIH saúde mental e ICSAP marcados como coletados
 O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
+## 2026-10-26 · A3 · Sonda do fornecedor de transparência das capitais
+
+`scripts/sondar_fornecedor_transparencia.py` lê a página inicial de cada prefeitura de capital e anota qual fornecedor (Betha, IPM/Atende.Net, Elotech, Equiplano, Fiorilli) aparece nas ligações; recusa fica registrada com o motivo. Só registra, em `data/transparencia_fornecedor_capitais.json`; não alimenta o índice.
 
 ## 2026-10-25 · D · Suíte de mutação dos portões
 
