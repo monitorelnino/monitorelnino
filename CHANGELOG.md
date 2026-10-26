@@ -15,6 +15,10 @@ Nova fonte S22 no adaptador de fontes abertas: consulta de contratações do PNC
 ## 2026-10-26 · #1216 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)
 Execução das MPs 1.367 e 1.384: o coletor passa a ler plano orçamentário e fonte de recursos. Um código que aparece com empenho só depois da publicação é isolado como crédito; sem isolamento, o método é teto e nada é rateado. Vias de empenho e de dotação ficam declaradas como lacuna em `mps_2026.json` (`isolamento`). METODOLOGIA §33.2. Texto público inalterado.
 
+## 2026-10-26 · #1219 · Busca de planos: Ministério Público, Judiciário, Saúde e Transferegov por consulta mecânica
+
+As fontes S20, S21, S23 e S31 entram em `buscar_planos_fontes_abertas.py` como linhas da tabela `FONTES_WEB`, junto de S27 e S24: o metabuscador da válvula, filtrado por endereço e por texto, sem agente por município. Saldo de código +22 linhas (quatro fontes novas e um caso de teste). Nenhum texto público muda.
+
 ## 2026-10-26 · #1214 · Saúde: a tabela dos estados no lugar do mapa
 
 Sai o mapa dos planos estaduais de saúde, a lista de tipos com siglas e a contagem "zero estados". Fica a tabela dos estados, aberta; a UF abre a ficha. Contrato e textos (catálogo) atualizados; órfãos removidos. Saldo de código e conteúdo −42 linhas. Parte B (VIGIAR) segue aguardando o dado.
