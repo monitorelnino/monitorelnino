@@ -44,6 +44,7 @@ USO
   python monitorar_busca_web.py --autoteste
   python monitorar_busca_web.py --tamanho 150            # a fila da noite
   python monitorar_busca_web.py --lote 1 --tamanho 60    # recorte manual
+  python monitorar_busca_web.py --ufs                     # rodada estadual (B1, Buscador 2)
 """
 import json, random, sys, time, urllib.parse, urllib.request
 from datetime import date, timedelta
@@ -83,11 +84,12 @@ CONSULTAS_MEDICAO = (
 # origem, e o runner do GitHub compartilha IP: a primeira rodada mediu 139 de 150 consultas sem
 # resposta (93%). É limite de taxa, não defeito das strings. O conjunto definitivo sai da medição
 # (item 6), e a troca vem por PR com o número no CHANGELOG.
-CONSULTAS = (
-    ("plancon",     '"{nome}" {uf} "plano de contingência"'),
-    ("periodo_ou_seca", '"{nome}" {uf} "período chuvoso" OR estiagem OR seca plano'),
-    ("siglas_e_variantes", '"{nome}" {uf} PLANCON OR "plano de ação" OR "plano de enfrentamento"'),
-)
+# 26/10/2026 (Buscador 2, B1): os moldes vêm de `buscador2.consultas_do_municipio` — termos em
+# português e `site:<uf>.gov.br`, que cobre o domínio da prefeitura e os da UF. A empresa, o portal e
+# a rede social que a busca aberta trazia caem na porta (B3) de qualquer jeito; perguntar por eles era
+# gastar a cota do motor.
+import buscador2
+CONSULTAS = tuple(buscador2.consultas_do_municipio("{nome}", "{uf}"))
 TETO_MOTOR_SEM_RESPOSTA = 0.25   # PR 1 item 3: acima disso a rodada não conta como verificação
 
 # Ritmo (PR 1c item 3). Intervalo mínimo com jitter, e back-off exponencial ao primeiro sinal de
@@ -101,7 +103,7 @@ JANELA_DO_CICLO = 15   # dias: todo município com resposta real da busca web a 
 
 def consultas_de(nome: str, uf: str) -> list:
     """As consultas da RODADA, na ordem da cascata. Devolve [(id, string)]."""
-    return [(ident, molde.format(nome=nome, uf=uf)) for ident, molde in CONSULTAS]
+    return [(ident, molde.format(nome=nome, uf=str(uf).lower())) for ident, molde in CONSULTAS]
 
 
 def consultas_de_medicao(nome: str, uf: str) -> list:
@@ -395,6 +397,51 @@ def rodar(lote: str | None, tamanho: int, alvos: list | None = None) -> int:
     return 0
 
 
+UFS = ("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR",
+       "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
+
+
+def pistas_da_uf(uf: str, resultados: list, hoje: str) -> list:
+    """Os resultados da consulta estadual (B1) que viram pista da UF: termo de plano no título ou no
+    trecho e domínio admitido para a UF (B3). O campo município fica vazio — nunca um rótulo. Pura."""
+    saida = []
+    for r in resultados or []:
+        url = r.get("url") or ""
+        if not buscador2.tem_termo_de_plano(r.get("title"), r.get("content")):
+            continue
+        if not buscador2.classe_de_entrada(url, "", uf, "")[0]:
+            continue
+        saida.append({"municipio": None, "uf": uf, "origem": "busca_web", "data": hoje, "url": url,
+                      "titulo": (r.get("title") or "")[:300], "trecho": (r.get("content") or "")[:500]})
+    return saida
+
+
+def rodar_ufs() -> int:
+    """A rodada estadual do B1: três consultas por UF, `site:<uf>.gov.br`, pela mesma porta."""
+    motores, novas, n_resp = list(motores_busca.MOTORES), [], 0
+    hoje = hoje_editorial().isoformat()
+    for uf in UFS:
+        consultas = buscador2.consultas_da_uf(uf)
+        brutos = []
+        for _, q in consultas:
+            time.sleep(espera_do_ritmo(0))
+            try:
+                brutos += buscar_searxng(q, motores=motores).get("results") or []
+            except Exception:  # noqa: BLE001 — falha de uma consulta não derruba a UF
+                continue
+        n_resp += bool(brutos)
+        achadas = pistas_da_uf(uf, brutos, hoje)
+        novas += achadas
+        log_busca("busca_web", 4, [q for _, q in consultas], "pista" if achadas else
+                  ("nao_localizado_ate_o_momento" if brutos else "motor_sem_resposta"), uf=uf,
+                  n_resultados=len(brutos), resultados=f"{len(achadas)} pista(s) estadual(is)")
+    from scripts.pistas import gravar_lote
+    balanco = gravar_lote(novas, origem="busca_web", ler_fn=ler, gravar_fn=gravar)
+    print(f"busca web por UF: {n_resp}/{len(UFS)} UFs com resposta, {balanco['gravadas']} pista(s) nova(s), "
+          f"{balanco['recusadas']} recusada(s) {balanco['motivos']}")
+    return 0
+
+
 def autoteste():
     """Hermético: nunca chama a rede. Testa a peneira `relevante()` e o vocabulário
     real que log_busca() aceita, lido do próprio código-fonte (não copiado à mão —
@@ -550,6 +597,16 @@ def autoteste():
         sem = urllib.parse.parse_qs(urllib.parse.urlparse(capturadas[1]).query)
         return com.get("engines") == ["bing,brave"] and "engines" not in sem
 
+    def t21_rodada_por_uf():
+        """B1: a consulta estadual é por UF, com site:<uf>.gov.br, e a pista nunca leva rótulo."""
+        res = [{"url": "https://defesacivil.sc.gov.br/plancon.pdf", "title": "Plano de Contingência estadual"},
+               {"url": "https://www.amazon.com.br/x", "title": "Plano de contingência — livro"},
+               {"url": "https://www.sc.gov.br/noticia", "title": "Governo inaugura ponte"}]
+        p = pistas_da_uf("SC", res, "2026-10-26")
+        return (len(p) == 1 and p[0]["municipio"] is None and p[0]["uf"] == "SC"
+                and all("site:sc.gov.br" in q for _, q in buscador2.consultas_da_uf("SC"))
+                and all("site:sc.gov.br" in q for _, q in consultas_de("Taió", "SC")))
+
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}
         chave = ("0000001", "https://x.gov.br/a", "trecho x")
@@ -603,6 +660,7 @@ def autoteste():
         "o ritmo tem intervalo mínimo com jitter e back-off exponencial": t15_ritmo_e_backoff,
         "429, CAPTCHA e corpo vazio são lidos como limite de taxa": t16_sinais_de_limite,
         "a escada de espera é em segundos e o ciclo em dias": t17_valores_do_ritmo,
+        "B1: rodada por UF com site:<uf>.gov.br e sem rótulo no município": t21_rodada_por_uf,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
         "fila pela resposta real: respondido na janela sai, mudo e antigo voltam": t6_fila_pela_resposta_real,
         "prioritários vêm primeiro, cobertura total preservada (nada some)": t7_prioritarios_vem_primeiro_e_ninguem_some,
@@ -612,6 +670,8 @@ def autoteste():
 if __name__ == "__main__":
     if "--autoteste" in sys.argv:
         sys.exit(autoteste())
+    if "--ufs" in sys.argv:
+        sys.exit(rodar_ufs())
     args = sys.argv[1:]
     lote = args[args.index("--lote") + 1] if "--lote" in args else None  # None => rotação automática
     tamanho = int(args[args.index("--tamanho") + 1]) if "--tamanho" in args else 60

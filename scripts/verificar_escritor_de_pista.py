@@ -237,7 +237,7 @@ def _autoteste() -> int:
     ok("a porta pode escrever", pode_escrever("scripts/pistas.py"))
     ok("a quarentena pode escrever", pode_escrever("scripts/verificar_esquema_de_pista.py"))
     ok("a manutenção declarada pode escrever", pode_escrever("scripts/triar_fila.py"))
-    ok("coletor comum NÃO pode escrever", not pode_escrever("monitorar_redes_oficiais.py"))
+    ok("coletor comum NÃO pode escrever", not pode_escrever("monitorar_busca_web.py"))
     ok("coletor novo e desconhecido NÃO pode escrever",
        not pode_escrever("coletar_coisa_nova.py"))
     ok("o arquivo morto não é cobrado", pode_escrever("arquivo/scripts/caderno_de_pistas.py"))

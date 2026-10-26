@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-19. 73 falhas; 67 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-26. 74 falhas; 68 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -662,3 +662,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** 20 MB dos 56 MB eram texto de pistas encerradas (medida por aberta()); trecho_documento e criterios de veiculo_nao_listado sem leitor
 - **Correção:** limpar_fila_de_pistas.compactar tira o texto de trabalho da pista encerrada, aplicado pela triagem toda noite; 56,1 → 45,9 MB (#851). A poda das 9.165 pistas de decreto sem leitor aguarda a editoria.
 - **Caso de teste:** `scripts/limpar_fila_de_pistas.py`
+
+## F74 · Busca de pistas entregava redirecionador, página inicial, domínio alheio e o município errado
+
+- **Noite:** 2026-10-26 (medição em todas as decisões)
+- **Sintoma:** Das 31.735 decisões do juiz, só 3.496 leram um documento: 21.464 links do Google News nunca abertos, 3.209 consultas estaduais com rótulo de setor no campo município, 2.031 domínios não oficiais, 964 pares com domínio de outro ente ou UF, 3.119 páginas iniciais e listas.
+- **Causa:** A porta da fila validava o esquema, não a entrada: qualquer domínio virava pista, a repetição era por URL crua e alvo, e o seguidor só seguia notícia A/B.
+- **Prova:** notas/amostra500_julgamentos_26-10-2026.json (robo-registro); §1c do HANDOVER_REJULGAMENTO_PARALELO_26-10-2026
+- **Correção:** Buscador 2: regras B1–B11 em buscador2.py, aplicadas na porta (scripts/pistas.py) e no seguidor (seguir_pistas.py); monitorar_redes_oficiais.py sai, a consulta estadual vai por UF (monitorar_busca_web.py --ufs).
+- **Caso de teste:** `buscador2.py`

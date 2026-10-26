@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Buscador 2: a busca de pistas reconstruída
+
+Regras B1–B11 em `buscador2.py`. A porta da fila admite só domínio do município, da UF, federal de lista fechada, diário oficial ou Querido Diário do código certo, uma pista por URL normalizada; o seguidor abre o redirecionador, segue um nível até o PDF, tenta o mapa do site e devolve à fila o plano não lido (até três vezes). A consulta estadual vai por UF; sai o coletor de redes sociais.
+
 ## 2026-10-26 · Cores oficiais do IQAr (pedido da editoria)
 
 As cinco faixas do IQAr passam a usar as cores das fontes indicadas pela editoria (IEMA-ES, relatório do INPE e boletim Vigiar n.º 4 da SES-DF): Boa #4da42d, Moderada #f7d400, Ruim #ed8925, Muito ruim #cb0912 e Péssima #950060. Os valores estão em `assets/tokens.css` e `assets/mapas.js`, os dois únicos lugares com hexadecimal. Os cortes dos dados não mudam. Linhas líquidas: +5/−5.
