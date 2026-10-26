@@ -166,28 +166,41 @@ def pista_de(nome: str, uf: str, ibge: str, fonte: str, url: str, titulo: str, h
 
 
 # ---- um município, quatro fontes ----------------------------------------------------------------
-def resolver_dominio(nome: str, uf: str, ibge: str, buscar) -> str | None:
-    """O endereço que SE IDENTIFICA como a prefeitura; None se nenhum se identifica (busca não feita)."""
+def resolver_dominio(nome: str, uf: str, ibge: str, buscar, tentativas: list = None) -> str | None:
+    """O endereço que SE IDENTIFICA como a prefeitura; None se nenhum se identifica (busca não feita).
+    `tentativas` recebe (endereço, situação, motivo) de cada um que não serviu."""
     for d in CANDIDATOS_EXTRA.get(ibge, []) + dominios_do_municipio(nome, uf):
         try:
             if identifica_prefeitura(buscar(f"https://{d}/", 15).decode("utf-8", "replace"), nome):
                 return d
-        except Exception:  # noqa: BLE001 — DNS, TLS, timeout: o endereço não serve; tenta o próximo
-            continue
+            r = ("nao_identifica", "responde, mas não se diz a prefeitura")
+        except Exception as e:  # noqa: BLE001 — DNS, TLS, timeout, recusa: o endereço não serve; tenta o próximo
+            r = classificar_erro(e)
+        if tentativas is not None:
+            tentativas.append((d, *r))
     return None
+
+
+def sem_dominio(tentativas: list) -> tuple:
+    """(situacao, motivo) de quem não achou endereço: recusa nomeada só se NENHUM endereço respondeu e algum
+    recusou (403, muro); o resto é `dominio_nao_verificado`, com o que foi tentado. Pura."""
+    recusas = [f"{d} {m}" for d, s, m in tentativas if s == "recusa_de_fonte"]
+    if recusas and not any(s == "nao_identifica" for _, s, _ in tentativas):
+        return "recusa_de_fonte", "; ".join(recusas)
+    return "dominio_nao_verificado", "tentados: " + "; ".join(f"{d} {m}" for d, _, m in tentativas)[:400]
 
 
 def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: None, api_cc=None, lacunas=lambda *a, **k: None) -> dict:
     """{fonte: {situacao, consulta, pistas:[...]}}; nunca levanta. `situacao`: lido, sem_resultado,
     recusa_de_fonte, erro, dominio_nao_verificado."""
-    out, dominio = {}, None
+    out, dominio, tentativas = {}, None, []
     if {"S16", "S25"} & set(fontes):
-        dominio = resolver_dominio(nome, uf, ibge, buscar)
+        dominio = resolver_dominio(nome, uf, ibge, buscar, tentativas)
     for f in fontes:
         r = {"situacao": None, "consulta": None, "motivo": None, "pistas": []}
         try:
             if f in ("S16", "S25") and not dominio:
-                r["situacao"] = "dominio_nao_verificado"
+                r["situacao"], r["motivo"] = sem_dominio(tentativas)
             else:
                 if f == "S16":
                     r["consulta"] = consulta_wayback(dominio); achados = ler_wayback(buscar(r["consulta"], 60))
@@ -363,6 +376,10 @@ def autoteste() -> int:
             and um(["S13"], {**base, "lexml": TimeoutError("t")})["S13"]["situacao"] == "erro"),
         "resposta sem achado registra a consulta (sem_resultado)": lambda: (lambda r: r["situacao"] == "sem_resultado" and r["consulta"].startswith("https://dados.gov.br"))(um(["S29"], {**base, "dados.gov.br": json.dumps({"success": True, "result": {"results": []}}).encode()})["S29"]),
         "domínio que não se identifica como prefeitura: busca não feita": lambda: um(["S16"], {**base, "alfa.xx.gov.br": b"<html>outra coisa</html>"})["S16"]["situacao"] == "dominio_nao_verificado",
+        "domínio que recusa (403) sem ninguém responder é recusa nomeada, não 'não verificado'": lambda: (
+            um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "recusa_de_fonte"
+            and um(["S16"], {"//www.alfa.xx.gov.br": b"<html>outra</html>", **{k: v for k, v in base.items() if k != "alfa.xx.gov.br"}, "//alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "dominio_nao_verificado"
+            and "alfa.xx.gov.br" in um(["S16"], {**base, "alfa.xx.gov.br": OSError("dns")})["S16"]["motivo"]),
         "trava estrutural: o fonte não grava nos arquivos do índice": lambda: not escrita_proibida.search(fonte),
         "recusa e erro viram lacuna declarada": lambda: (lac.clear(), um(["S13"], {**base, "lexml": urllib.error.HTTPError("u", 429, "x", {}, None)}), len(lac) == 1)[2],
         "401 e 451 também são recusa": lambda: all(classificar_erro(urllib.error.HTTPError("u", c, "x", {}, None))[0] == "recusa_de_fonte" for c in (401, 429, 451)),

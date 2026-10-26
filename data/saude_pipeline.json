@@ -8481,15 +8481,6 @@
   },
   {
    "data": "2026-10-26",
-   "script": "python3",
-   "inicio": "2026-10-26T04:40:18",
-   "duracao_s": 7323.6,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-10-26",
    "script": "recalcular_mare.py",
    "inicio": "2026-10-26T04:47:20",
    "duracao_s": 3.9,
@@ -9045,7 +9036,160 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "python3",
+   "inicio": "2026-10-26T04:40:18",
+   "duracao_s": 7323.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-10-26T08:02:40",
+   "duracao_s": 61.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-10-26T08:03:41",
+   "duracao_s": 1374.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "julgar_filas.py",
+   "inicio": "2026-10-26T08:26:35",
+   "duracao_s": 1108.3,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-10-26T08:45:04",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-10-26T08:45:04",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-10-26T08:45:04",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-26T08:49:35",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-26T08:49:35",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "preservar_evidencias.py",
+   "inicio": "2026-10-26T08:49:35",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "scripts/preservar_textos_integrais.py",
+   "inicio": "2026-10-26T08:49:36",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-10-26",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-26T08:49:39",
+   "duracao_s": 102.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-10-26T08:51:21",
+   "duracao_s": 50.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-26T08:54:43",
+   "duracao_s": 3.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-26T09:15:07",
+   "duracao_s": 3.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-26T09:50:51",
+   "duracao_s": 5.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-26T10:32:14",
+   "duracao_s": 3.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-26T08:25:29"
+ "atualizado_em": "2026-10-26T10:32:14"
 }
