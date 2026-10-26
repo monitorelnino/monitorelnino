@@ -1,6 +1,6 @@
 {
  "_governanca": "Cobertura declarada por UF e por canal (§166, 23/09/2026). DERIVADO de data/log_buscas.json — não editar à mão; rode gerar_cobertura_declarada.py. Serve para que 'não localizamos até o corte' passe a ter escopo explícito: o leitor vê em que canais se procurou e quando. Canal com verificado=false NUNCA pode ser apresentado como ausência de plano. O canal 'lai' guarda só data e status, jamais texto ou registro de pedido (regra editorial). A ficha do estado (index) lê os canais verificados; a frase vive no catálogo (A3-18, 13/10/2026).",
- "gerado_em": "2026-10-25",
+ "gerado_em": "2026-10-26",
  "fonte": "data/log_buscas.json (log v2)",
  "nota_publica": null,
  "canais": [
@@ -396,10 +396,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-10-25",
-     "ultima_tentativa": "2026-10-25",
-     "execucoes": 2090,
-     "verificacoes": 1805,
+     "ultima_verificacao": "2026-10-26",
+     "ultima_tentativa": "2026-10-26",
+     "execucoes": 2092,
+     "verificacoes": 1807,
      "canais_do_log": [
       "busca ativa de domínio",
       "fontes abertas",
@@ -873,10 +873,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-10-25",
-     "ultima_tentativa": "2026-10-25",
-     "execucoes": 261,
-     "verificacoes": 117,
+     "ultima_verificacao": "2026-10-26",
+     "ultima_tentativa": "2026-10-26",
+     "execucoes": 262,
+     "verificacoes": 118,
      "canais_do_log": [
       "DOE",
       "busca ativa de domínio",
@@ -1114,10 +1114,10 @@
     },
     "outro": {
      "verificado": true,
-     "ultima_verificacao": "2026-10-25",
-     "ultima_tentativa": "2026-10-25",
-     "execucoes": 406,
-     "verificacoes": 99,
+     "ultima_verificacao": "2026-10-26",
+     "ultima_tentativa": "2026-10-26",
+     "execucoes": 407,
+     "verificacoes": 100,
      "canais_do_log": [
       "DOE",
       "DOM-consorciado",
