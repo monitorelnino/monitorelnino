@@ -34,7 +34,7 @@ jobs:
       # segue até 20 notícias; sobrando notícia que a noite ainda não tocou, o marcador é
       # `descoberta.parcial` e a reserva do despachante redispara o elo até 08:00 UTC.
       restante: seguir_pistas.py --restante
-      # §278: `monitorar_redes_oficiais.py` e `seguir_pistas.py` consultam o metabuscador.
+      # §278: `monitorar_busca_web.py --ufs` e `seguir_pistas.py` consultam o metabuscador.
       precisa_searxng: true
       comandos: |
         monitorar_imprensa_regional.py --limite 40
@@ -44,7 +44,10 @@ jobs:
         monitorar_sinais_federais.py
         detectar_marcos_federais.py
         prazo=12min descobrir_planos.py --limite 20
-        monitorar_redes_oficiais.py --limite 20
+        # 26/10/2026 (Buscador 2, B1): a consulta estadual por UF, `site:<uf>.gov.br`, no lugar do
+        # coletor de redes oficiais — rede social não é entrada (B3), e o rótulo de setor no campo
+        # município trazia a web inteira.
+        monitorar_busca_web.py --ufs
         seguir_pistas.py --limite 20
         triar_confianca_pistas.py
         # 29/09/2026 (bloco 2, fase 1): verificador da fonte das pistas de imprensa, em MODO
