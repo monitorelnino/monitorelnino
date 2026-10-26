@@ -136,8 +136,6 @@ jobs:
           python3 scripts/migrar_para_catalogo.py --autoteste
           # assunto: dado
           python3 scripts/ensaio_da_noite.py
-          # assunto: cor texto
-          node scripts/verificar_runtime_resposta.js
           # assunto: cor rapido
           # barra_publicacao: sim
           node scripts/verificar_seguranca.js

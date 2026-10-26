@@ -86,6 +86,17 @@
     "verificar_catalogo.py",
     "verificar_texto_blog.py"
    ]
+  },
+  {
+   "id": "medidor_de_resposta_fora_da_arte_unica",
+   "arquivo": "index.html",
+   "trocar": [
+    "class=\"gauge-fill gauge-fill--resposta\" id=\"respFill\"",
+    "class=\"gauge-fill resp-fill\" id=\"respFill\""
+   ],
+   "pegam": [
+    "verificar_runtime.js"
+   ]
   }
  ]
 }

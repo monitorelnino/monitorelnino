@@ -73,7 +73,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `monitorar_imprensa_regional.py` | diaria | encadeado | busca_web_noite | imprensa regional |
 | `monitorar_imprensa_saude.py` | diaria | encadeado | busca_web_noite | imprensa de saúde |
 | `monitorar_politica_por_inteiro.py` | diaria | encadeado | busca_web_noite | catálogo do Política por Inteiro |
-| `monitorar_redes_oficiais.py` | diaria | encadeado | busca_web_noite | perfis oficiais dos entes |
+| `monitorar_busca_web.py --ufs` | diaria | encadeado | descoberta | consulta estadual por UF (Buscador 2, B1) |
 | `verificar_pista_imprensa.py` | diaria | encadeado | busca_web_noite | veículo de imprensa é veículo mesmo |
 | `scripts/busca_dirigida_do_ato.py` | diaria | encadeado | busca_web_noite | busca dirigida do ato citado |
 
