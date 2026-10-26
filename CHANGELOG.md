@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #PR · S22: compras públicas do PNCP por município na busca de planos
+Nova fonte S22 no adaptador de fontes abertas: consulta de contratações do PNCP por município, modalidade e ano, e leitura do objeto que cita plano de contingência ou de redução de riscos. É pista de onde procurar o documento, nunca plano. Ausência só com a leitura completa; recusa registrada, nunca contornada.
+
 ## 2026-10-26 · #1216 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)
 Execução das MPs 1.367 e 1.384: o coletor passa a ler plano orçamentário e fonte de recursos. Um código que aparece com empenho só depois da publicação é isolado como crédito; sem isolamento, o método é teto e nada é rateado. Vias de empenho e de dotação ficam declaradas como lacuna em `mps_2026.json` (`isolamento`). METODOLOGIA §33.2. Texto público inalterado.
 
