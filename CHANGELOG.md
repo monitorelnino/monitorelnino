@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-26 · #1161 · Imprensa: acumulados do ciclo completos
 A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.
+## 2026-10-26 · #1160 · Descoberta: limite padrão sobe a 60
+
+A rodada medida de descoberta (`--limite 60`) levou 7 minutos de um prazo de 300, com folga bem acima de 20%. Por isso o limite padrão de `seguir_pistas.py` passa de 20 para 60. O elo noturno mantém 20 explícito, sem mudança na corrente. Saldo de código: zero líquido.
 
 ## 2026-10-25 · #1154 · Catálogo: SIH saúde mental e ICSAP marcados como coletados
 O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.
