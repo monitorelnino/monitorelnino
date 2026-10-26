@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · #1169 · Imprensa: estados com plano para o ciclo (4 de 27) e cidades acima da OMS como lacuna
+
+A Imprensa passa a ler, do monitor de saúde, quantos estados têm instrumento estadual novo para o ciclo (4 de 27), sem zero para UF não verificada. O limite da OMS por cidade fica como lacuna declarada, porque a série diária por município não está publicada no arquivo. Autoteste novo. Origem: `gerar_imprensa_semana.py`.
+
 ## 2026-10-26 · A3 · Busca de planos: capital que recusa o acesso é recusa nomeada, não "domínio não verificado"
 
 Wayback e Common Crawl marcavam "domínio não verificado" quando todos os endereços da prefeitura davam 403 ou muro de robô. Agora, se nenhum endereço respondeu e algum recusou, a situação é `recusa_de_fonte` com o endereço e o código; senão fica "não verificado", com os endereços tentados no motivo. Autoteste novo; nada contornado. Origem: `buscar_planos_fontes_abertas.py`.
