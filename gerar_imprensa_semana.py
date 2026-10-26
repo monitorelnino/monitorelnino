@@ -168,6 +168,31 @@ def acumulado_inmet(corte):
                      "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes")
 
 
+def planos_novos_do_ciclo(ufs: dict) -> tuple:
+    """(estados com instrumento estadual NOVO para o ciclo, UFs do monitor). Função pura: lê o
+    `instrumento.status` que o MARÉ Saúde já publica por UF; UF sem leitura conta no denominador."""
+    ufs = ufs or {}
+    novos = sum(1 for v in ufs.values() if ((v or {}).get("instrumento") or {}).get("status") == "NOVO")
+    return novos, len(ufs)
+
+
+def acumulado_estados_plano_saude(corte, ufs):
+    """Estados com plano estadual novo para o El Niño, de 27, até o corte (estoque, sem recorte de data)."""
+    fonte = "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)"
+    if not ufs:
+        return acumulado("estados_plano_saude", None, "estados", None, corte.isoformat(), 0, fonte,
+                         "o monitor de saúde não traz as UFs até o corte")
+    n, total = planos_novos_do_ciclo(ufs)
+    return acumulado("estados_plano_saude", n, "estados", None, corte.isoformat(), total, fonte,
+                     denominador=total)
+
+
+def acumulado_cidades_oms(corte):
+    return acumulado("cidades_acima_limite_oms", None, "cidades", INICIO_CICLO_IMP.isoformat(), corte.isoformat(),
+                     0, "Série diária de temperatura por município",
+                     "a série diária por município não está publicada no arquivo até o corte")
+
+
 def _intervalo_do_periodo(p: str, tipo: str):
     """(início, fim) de uma semana epidemiológica ('AAAA-SS') ou de um mês ('AAAA-MM')."""
     ano, x = p.split("-")
@@ -301,6 +326,8 @@ def acumulados(corte, focos_ref, municipios, fin, por_uf, cartoes) -> list:
     }
     lista = [acumulado_focos(focos_ref, corte), acumulado_planos(municipios, corte),
              acumulado_inmet(corte),
+             acumulado_estados_plano_saude(corte, (ler("monitor_saude.json", {}) or {}).get("ufs")),
+             acumulado_cidades_oms(corte),
              acumulado_decretos(por_uf), acumulado_reconhecidos(por_uf), acumulado_pessoas(por_uf),
              acumulado_atos_por_evento(por_uf), acumulado_capitais(cartoes),
              acumulado_do_topo_financeiro("anunciado_em_atos", fin, "anunciado_atos",
@@ -950,6 +977,14 @@ def autoteste() -> int:
     checar("acumulado de focos com trecho sem série é lacuna declarada, nunca soma parcial como desde 29/06", _gap["sem_coleta"] is True and _gap["valor_parcial"] == 5 and "2026-06-29" not in (_gap["motivo"] or "")[:0] and "17" in _gap["motivo"])
     checar("acumulado sem série é lacuna, nunca zero", acumulado_focos({}, date(2026, 7, 1))["sem_coleta"] is True)
     checar("acumulado de planos conta só 'plano'", acumulado_planos([{"categoria": "plano"}, {"categoria": "nao_verificado"}], date(2026, 7, 1))["valor"] == 1)
+    _ufs = {"AM": {"instrumento": {"status": "NOVO"}}, "SP": {"instrumento": {"status": "NOVO"}},
+            "SC": {"instrumento": {"status": "VIG"}}, "AC": {"instrumento": {}}}
+    checar("estados com plano para o ciclo contam só NOVO, com denominador de todas as UFs do monitor",
+           planos_novos_do_ciclo(_ufs) == (2, 4))
+    checar("estados com plano para o ciclo sem monitor é lacuna, nunca zero",
+           acumulado_estados_plano_saude(date(2026, 10, 25), None)["sem_coleta"] is True)
+    checar("cidades acima do limite da OMS sem série diária é lacuna declarada",
+           acumulado_cidades_oms(date(2026, 10, 25))["sem_coleta"] is True)
     _sem = {"periodo": "semana", "parcial": ["2026-29"], "serie": {"BR": {"2026-26": 9, "2026-27": 5, "2026-28": 6, "2026-29": 7}}}
     checar("janela de semanas: a que contém 29/06 entra, a parcial fica fora",
            [p for p, _, _ in _janela_fechada(_sem, date(2026, 7, 20))] == ["2026-26", "2026-27", "2026-28"])

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Imprensa: estados com plano para o ciclo (4 de 27) e cidades acima da OMS como lacuna</dt>
+      <dd>A Imprensa passa a ler, do monitor de saúde, quantos estados têm instrumento estadual novo para o ciclo (4 de 27), sem zero para UF não verificada. O limite da OMS por cidade fica como lacuna declarada, porque a série diária por município não está publicada no arquivo. Autoteste novo. Origem: `gerar_imprensa_semana.py`. ## 2026-10-26 · A3 · Busca de planos: capital que recusa o acesso é recusa nomeada, não &quot;domínio não verificado&quot; Wayback e Common Crawl marcavam &quot;domínio não verificado&quot; quando todos os endereços da prefeitura davam 403 ou muro de robô. Agora, se nenhum endereço respondeu e algum recusou, a situação é `recusa_de_fonte` com o endereço e o código; senão fica &quot;não verificado&quot;, com os endereços tentados no motivo. Autoteste novo; nada contornado. Origem: `buscar_planos_fontes_abertas.py`. ## 2026-10-26 · A2 · Imprensa: focos sem soma parcial como &quot;desde 29/06&quot; A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a ser lacuna declarada para o trecho de 29/06 a 16/09 (o valor parcial fica em `valor_parcial`), com autoteste. Dado de `semana.json` regerado. Origem: `gerar_imprensa_semana.py`.</dd>
       <dt>26/10/2026 · Saúde v0.7: tempo como contexto na ficha do estado</dt>
       <dd>A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora da nota (peso zero, dado do motor v0.7). Nenhum número da nota muda. ## 2026-10-26 · A3 · Busca de planos: sonda do PNCP nas 27 capitais (S22) Nova sonda consulta a busca pública do PNCP por capital (plano de contingência, redução de riscos, PLANCON) e registra título, órgão, data e endereço. Contratação não é plano: só aponta onde procurar. Ausência é &quot;não localizamos até o corte&quot;; recusa é registrada e respeitada. Saldo de código: +110.</dd>
       <dt>26/10/2026 · Imprensa: acumulados do ciclo completos</dt>
@@ -165,8 +167,6 @@
       <dd>`conteudo/_renomeacoes.json` tinha um segundo bloco no fim, fora de `de_para`, e `verificar_catalogo.py` lê só `de_para`. A renomeação da legenda do medidor da Saúde, escrita ali ontem, ficava invisível ao portão: pedido de edição que a citasse viraria recusa sem explicação. As quatro entradas repetidas do Monitor de riscos saem e a da Saúde entra no bloco lido. Índice de conteúdo regenerado.</dd>
       <dt>23/10/2026 · Imprensa: a cobertura municipal sai da nota do MARÉ Saúde</dt>
       <dd>A resposta &quot;o MARÉ Saúde mede a saúde da população?&quot; ainda contava a cobertura municipal entre o que entra na nota. No método vigente ela é camada de peso zero, publicada ao lado do índice: a resposta passa a dizer plano, feitura para este El Niño e data, e a cobertura aparece ao lado, sem peso. Catálogo e texto de reserva da página.</dd>
-      <dt>23/10/2026 · Os alertas do Cemaden e os avisos do Inmet voltam a ser coletados</dt>
-      <dd>O regime de prioridade suspendeu o elo dos sinais físicos, único que reescreve os alertas vigentes. O arquivo passou de 24 horas, a Defesa civil mostrou &quot;sem atualização desde 22/10&quot; e os portões de frescor e de coerência da Imprensa reprovaram a `main`. O elo sai da lista de suspensos e entra na de mantidos: informação de agora não espera a noite.</dd>
     </dl>
   </section>
 </main>
