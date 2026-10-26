@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1202 · Juiz: modo paralelo do codebook 1.8
+
+O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.
 ## 2026-10-26 · #1201 · Cadastro prioritários: sai o portal do MDR como rota
 
 Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.

@@ -45,7 +45,7 @@ USO
   python monitorar_busca_web.py --tamanho 150            # a fila da noite
   python monitorar_busca_web.py --lote 1 --tamanho 60    # recorte manual
 """
-import json, random, sys, time, urllib.parse, urllib.request
+import json, random, re, sys, time, urllib.parse, urllib.request
 from datetime import date, timedelta
 import funil
 import motores_busca
@@ -107,6 +107,23 @@ def consultas_de(nome: str, uf: str) -> list:
 def consultas_de_medicao(nome: str, uf: str) -> list:
     """O leque completo, para o job de medição de revocação — nunca para a rodada."""
     return [(ident, molde.format(nome=nome, uf=uf)) for ident, molde in CONSULTAS_MEDICAO]
+
+
+# Codebook 1.8 — MODO PARALELO (B1, handover de 26/10/2026): a busca estadual sai com UF, órgão e termo, no
+# domínio do estado, e nenhuma consulta sai sem termo em português e sem `site:` ou nome citado — a que
+# levava o rótulo "defesa_civil" no lugar do município trouxe Reddit, Wikipédia e IMDb (1.747 pistas).
+RE_TERMO_PT_18 = re.compile(r"plano|conting[êe]ncia|defesa civil|decreto|estiagem|seca|chuv|inunda|enchente", re.I)
+
+
+def consulta_estadual_18(uf: str, orgao: str = "Defesa Civil", termo: str = "plano de contingência") -> str:
+    return f'"{termo}" "{orgao}" {uf.upper()} site:{uf.lower()}.gov.br'
+
+
+def consulta_sai_18(q: str) -> bool:
+    citados = [c for c in re.findall(r'"([^"]+)"', q) if not RE_TERMO_PT_18.search(c)]
+    if any("_" in c for c in citados):
+        return False
+    return bool(RE_TERMO_PT_18.search(q)) and ("site:" in q or bool(citados))
 
 
 def espera_do_ritmo(tentativa_de_backoff: int = 0, aleatorio=None) -> float:
@@ -585,7 +602,14 @@ def autoteste():
         r = alvos_primeiro(ordem, ["3", "9", "3", "1"])   # 9 não existe; 3 repetido
         return r == ["3", "1", "2", "4"] and alvos_primeiro(ordem, []) == ordem
 
+    def t21_b1_consulta_estadual_18():
+        q = consulta_estadual_18("ac")
+        return (q == '"plano de contingência" "Defesa Civil" AC site:ac.gov.br' and consulta_sai_18(q)
+                and not consulta_sai_18('site:instagram.com "defesa_civil.acre" "plano de contingência"')
+                and not consulta_sai_18('"defesa_civil" AC') and consulta_sai_18(consultas_de("Bonito", "MS")[0][1]))
+
     return rodar_autoteste({
+        "B1 (1.8): consulta estadual com UF, órgão, termo e site:; rótulo de setor não sai": t21_b1_consulta_estadual_18,
         "alvos dados vão à frente da fila, sem repetir nem perder município": t20_alvos_vem_primeiro_sem_perder_ninguem,
         "relevante(): aceita nome do município + termo de plano no título": t1_relevante_aceita,
         "relevante(): rejeita termo de plano sem o nome do município": t2_relevante_rejeita_sem_municipio,
