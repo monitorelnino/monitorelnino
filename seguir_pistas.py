@@ -35,6 +35,7 @@ PREFIXO_FECHADA = "fechada — Buscador 2: "
 TERMOS_QD = '"plano de contingência" OR plancon OR "plano municipal de proteção e defesa civil"'
 QD_DESDE = "2025-10-01"
 MAX_POR_ROTA = 4
+BLOCO = 200   # URLs abertas entre duas gravações
 
 
 def _id(ibge, url, trecho):
@@ -114,7 +115,7 @@ def restantes(fila: dict, hoje: str, refazer_dias: int = 7) -> int:
 
 
 def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_web_=None,
-           cobertura_qd=frozenset(), limite=60, refazer_dias=7, reprocessar=False):
+           cobertura_qd=frozenset(), limite=60, refazer_dias=7, reprocessar=False, parar=None):
     """Segue as pistas na ordem do B6, com até `limite` URLs abertas na rede (fechar o que está fora da
     entrada não abre nada e não conta). Planeja só em memória e devolve a estatística:
     `novas_lista` vai à porta, `fechadas_lista` vai às rejeitadas, e o estado das existentes
@@ -164,6 +165,8 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
         return (bool(classe) or e_rota(p)) and not (b2.e_documento(url) and not e_rota(p))
 
     for p in sorted((p for p in pistas if a_seguir(p, d_hoje, refazer_dias, reprocessar)), key=b2.prioridade):
+        if parar and parar[0]:
+            break   # o prazo do elo chegou (SIGINT do invólucro): grava o que já se fez
         url = _url(p)
         if precisa_de_rede(p, url):
             if rede[0] >= limite:
@@ -226,6 +229,7 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
         p["proxima_tentativa_em"] = hoje_iso
         p["retentar_buscador2_em"] = prox.isoformat() if prox else b2.lacuna_datada("documento não lido", hoje_iso)
         est["retentadas"] += 1
+    est["rede"] = rede[0]
     return est
 
 
@@ -420,6 +424,10 @@ def autoteste():
                 and tocadas == {"g1", "e1", "r1", "v1"} and e3["seguidas"] == 2
                 and seguir(f2, "26/10/2026", abrir=abrir, reprocessar=True)["seguidas"] == 0)
 
+    def t_prazo_para_e_guarda_o_feito():
+        f = base(); e = seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: u, parar=[True])
+        return e["seguidas"] == 0 and e["rede"] == 0
+
     def t_restante_converge():
         f = base(); hoje = "26/10/2026"
         antes = restantes(f, hoje)
@@ -452,6 +460,7 @@ def autoteste():
             "B6: nível A é o primeiro da rodada": t_b6_ordem_nivel_a_primeiro,
             "B10: documento oficial não lido volta à fila, até três vezes": t_b10_documento_volta_ate_tres_vezes,
             "restante converge para zero depois de seguir (fila reentrante)": t_restante_converge,
+            "prazo do elo (SIGINT) para a rodada sem perder o que já se fez": t_prazo_para_e_guarda_o_feito,
             "fila antiga só no reprocessamento; o limite conta URL aberta, não fechamento":
                 t_fila_antiga_e_do_reprocessamento_e_limite_e_de_rede,
             "Querido Diário só com cobertura; falha registrada sem quebrar": t_qd_so_com_cobertura_e_falha_nao_quebra,
@@ -499,11 +508,23 @@ if __name__ == "__main__":
         web = None
     # Sem o degrau HTTP no redirecionador: o link opaco do Google News responde 200 com uma casca de
     # JavaScript e nunca redireciona (A1-08). Resolve-se pela URL embutida e pela busca no veículo.
-    e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, consultar_qd_=qd, buscar_web_=web,
-               cobertura_qd=cob, limite=a.limite, refazer_dias=a.refazer_dias, reprocessar=a.reprocessar)
-    balanco = gravar_rodada(fila, e)
-    print(f"Buscador 2: {e['seguidas']} seguida(s) · {len(e['fechadas_lista'])} fechada(s) {dict(e['motivos'])} · "
+    # Em blocos de até BLOCO URLs, cada um gravado ao fim: o lote de 2.000 da válvula leva horas, e o
+    # prazo do invólucro (SIGINT) ou uma queda não podem levar consigo o que já se seguiu.
+    import signal
+    parar = [False]
+    signal.signal(signal.SIGINT, lambda *_: parar.__setitem__(0, True))
+    orcamento = a.limite
+    while True:
+        e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, consultar_qd_=qd, buscar_web_=web,
+                   cobertura_qd=cob, limite=min(BLOCO, orcamento), refazer_dias=a.refazer_dias,
+                   reprocessar=a.reprocessar, parar=parar)
+        balanco = gravar_rodada(fila, e)
+        orcamento -= e["rede"]
+        print(f"Buscador 2: {e['seguidas']} seguida(s) · {len(e['fechadas_lista'])} fechada(s) {dict(e['motivos'])} · "
           f"{e['resolvidas']} redirecionamento(s) resolvido(s) · {e['candidatos']} candidato(s) · "
           f"{balanco['gravadas']} pista(s) nova(s) ({balanco['recusadas']} recusada(s) na porta) · "
           f"{e['retentadas']} documento(s) de volta à fila · {e['lacunas']} lacuna(s) · vias {dict(e['por_via'])} · "
-          f"SearXNG={'sim' if web else 'não'} · QD={'sim' if qd else 'não'}")
+          f"SearXNG={'sim' if web else 'não'} · QD={'sim' if qd else 'não'}", flush=True)
+        if parar[0] or orcamento <= 0 or e["rede"] == 0 or not a.reprocessar:
+            break
+        fila = ler("pistas_imprensa.json") or {"pistas": []}
