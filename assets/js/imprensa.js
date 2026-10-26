@@ -24,8 +24,15 @@
   fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : {}).catch(() => ({})).then(S => {
     // Atualização de cada cartão: a data que o gerador grava em gerado_em (ausente = lacuna).
     const atualizado = S && S.gerado_em ? S.gerado_em.split('-').reverse().join('/') : lacuna();
-    document.querySelectorAll('.cartao-numero-fonte').forEach(e => {
-      if (e.textContent.includes('{data}')) e.textContent = e.textContent.replace('{data}', atualizado);
+    const tpl = document.getElementById('tplAtualizacao');
+    // O catálogo reescreve o texto da fonte ao chegar: a linha entra depois dele.
+    const cat = window.MonitorCatalogo;
+    if (tpl) (cat ? cat.pronto : Promise.resolve()).then(() => {
+      document.querySelectorAll('.cartao-numero > .cartao-numero-fonte').forEach(e => {
+        const linha = tpl.content.cloneNode(true);
+        linha.querySelector('.atualizacao-data').textContent = atualizado;
+        e.append(' · ', linha);
+      });
     });
     fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : {}).catch(() => ({})).then(P => {
       const N = (P && P.nacional) || {};
