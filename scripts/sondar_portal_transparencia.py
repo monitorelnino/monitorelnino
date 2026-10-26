@@ -65,8 +65,14 @@ def sondar_empenho_dotacao():
     traz a observação do empenho e qual traz a dotação inicial/atualizada. Só imprime cabeçalho, nomes
     de arquivo e contagens nas ações das MPs; não grava nada em data/."""
     import io, zipfile, csv, re
-    cand = ["orcamento-despesa/2026", "despesas/202609", "despesas-empenhos/202609", "empenhos/202609",
-            "despesas-documentos/202609", "documentos-despesa/202609", "despesas-empenho/202609"]
+    try:  # o índice público lista os conjuntos de dados reais (os palpites de URL deram 403/500)
+        req = urllib.request.Request("https://portaldatransparencia.gov.br/download-de-dados", headers={"User-Agent": ua_de("sonda Portal da Transparência")})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            html = r.read().decode("utf-8", "replace")
+        print("   índice:", sorted(set(re.findall(r'download-de-dados/([a-z0-9-]+)', html))))
+    except Exception as e:  # noqa: BLE001
+        print(f"   !! índice: {type(e).__name__}: {e}")
+    cand = ["orcamento-despesa/2026"]
     acoes = {"2130", "2792", "2798", "214M", "214N", "214P"}
     for c in cand:
         url = f"https://portaldatransparencia.gov.br/download-de-dados/{c}"
@@ -83,7 +89,7 @@ def sondar_empenho_dotacao():
                 with z.open(nome) as f:
                     rd = csv.reader(io.TextIOWrapper(f, encoding="latin-1", errors="replace", newline=""), delimiter=";")
                     cab = next(rd); print(f"   [{nome}] colunas:", cab)
-                    ia = next((i for i, x in enumerate(cab) if re.fullmatch(r"C[óo]digo A[çc][ãa]o", x)), None)
+                    ia = next((i for i, x in enumerate(cab) if re.fullmatch(r"C[óo]digo A[çc][ãa]o", x, re.I)), None)
                     iobs = [i for i, x in enumerate(cab) if re.search(r"Observa|Descri", x, re.I)]
                     n = m = o = 0
                     for row in rd:
@@ -95,7 +101,7 @@ def sondar_empenho_dotacao():
                         if re.search(r"cr[ée]dito extraordin|\bMP\b|medida provis|el ni[ñn]o", txt, re.I):
                             o += 1
                             if o <= 5: print("      obs:", [x[:60] for x in row[:6]], "|", txt[:200])
-                        elif m <= 3: print("      amostra:", [x[:30] for x in row[:14]])
+                        if m <= 8: print("      amostra:", [x[:30] for x in row[:2] + row[7:15] + row[19:]])
                     print(f"   linhas: {n:,} | nas ações das MPs: {m} | com menção a MP/crédito/El Niño: {o}")
         except Exception as e:  # noqa: BLE001
             print(f"   !! {type(e).__name__}: {e}")
