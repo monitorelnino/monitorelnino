@@ -332,6 +332,27 @@
    "_nota_janela": "Fechado em 09:00 na campanha de 06/10/2026 (causa F): ia ate 12:00 e podia disparar coleta na `main` depois de a janela da noite fechar. A janela da noite e 01:00-09:00 UTC, e temporizador de COLETA nao a atravessa."
   },
   {
+   "id": "reavaliacao_defeso",
+   "workflow": "reavaliacao_defeso.yml",
+   "finalidade": "reavalia as fontes suspensas por defeso todo dia até 25/11/2026 (fim do período eleitoral em 25/10); depois sai e a cadência volta a semanal",
+   "cron_primario": "20 10 * * *",
+   "cron_reserva": "50 10 * * *",
+   "janela": {
+    "inicio_utc": "10:00",
+    "fim_utc": "12:00"
+   },
+   "devido_quando": "não há execução concluída hoje",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "reavaliação grava só a procedência da decisão por fonte; mesma decisão no mesmo dia não muda o registro",
+   "orcamento_min": 60,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": ["semanal_espin_e_links"],
+   "gravidade": "media"
+  },
+  {
    "id": "semanal_espin_e_links",
    "workflow": "semanal_espin_e_links.yml",
    "finalidade": "reconfere ESPIN e verifica links, domingo de madrugada",
