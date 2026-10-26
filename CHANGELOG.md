@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 
 
+## 2026-10-26 · A3 · Busca de planos: capital que recusa o acesso é recusa nomeada, não "domínio não verificado"
+
+Wayback e Common Crawl marcavam "domínio não verificado" quando todos os endereços da prefeitura davam 403 ou muro de robô. Agora, se nenhum endereço respondeu e algum recusou, a situação é `recusa_de_fonte` com o endereço e o código; senão fica "não verificado", com os endereços tentados no motivo. Autoteste novo; nada contornado. Origem: `buscar_planos_fontes_abertas.py`.
+
 ## 2026-10-26 · A2 · Imprensa: focos sem soma parcial como "desde 29/06"
 
 A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a ser lacuna declarada para o trecho de 29/06 a 16/09 (o valor parcial fica em `valor_parcial`), com autoteste. Dado de `semana.json` regerado. Origem: `gerar_imprensa_semana.py`.
