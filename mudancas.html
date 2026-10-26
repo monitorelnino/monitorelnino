@@ -47,6 +47,10 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Rodapé: só LinkedIn e Instagram</dt>
+      <dd>Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.</dd>
+      <dt>26/10/2026 · Log de saúde só cresce</dt>
+      <dd>Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.</dd>
       <dt>26/10/2026 · Financiamento: % do pago aplicado pela União sai por medida</dt>
       <dd>Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda. ## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json` `verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1. ## 2026-10-26 · A3 · Busca de planos: hospedagem de documentos (S27) e planos conexos (S24) `buscar_planos_fontes_abertas.py` ganha duas fontes pelo metabuscador da válvula: Scribd, Issuu, Calameo, Yumpu, DocPlayer e SlideShare (S27) e endereços institucionais de PMRR, saneamento, saúde, consórcio e comitê que citam o plano (S24). Resultado bruto vazio é `erro`, nunca ausência; 429 é recusa nomeada. Pista nasce não confirmada e não promovível. Código +76/−3.</dd>
       <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
@@ -163,10 +167,6 @@
       <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários</dd>
       <dt>23/10/2026 · Busca de planos em fontes abertas lê os prioritários</dt>
       <dd>`buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
-      <dt>23/10/2026 · Leitura do texto dos diários com menção a plano de arboviroses</dt>
-      <dd>`ler_planos_arboviroses.py` abre o texto preservado de cada menção e classifica a edição: texto do plano, ato ou ata que o cita, citação solta. Indício, não confirmação; peso zero; arquivo novo e passo novo no elo dos desfechos. Código +120.</dd>
-      <dt>23/10/2026 · Juiz lê os PLANCONs do RS pela sessão do link</dt>
-      <dd>20 de 20 pistas do RS saíam `documento_inacessivel`: o endereço do arquivo no SharePoint não abre sem a sessão do link de compartilhamento. `coletores_base.sessao_sharepoint` passa a ser a única sessão (a listagem a reusa) e `buscar_texto` lê o arquivo do RS pela REST com ela. 401/403 segue recusa.</dd>
     </dl>
   </section>
 </main>
@@ -174,7 +174,7 @@
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
     <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patrícia Ferrini</a></span>
-    <ul class="rodape-redes"><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://x.com/Patty_Ferrini" target="_blank" rel="noopener">X</a></li><li><a href="https://bsky.app/profile/patty-ferrini.bsky.social" target="_blank" rel="noopener">BlueSky</a></li><li><a href="https://medium.com/@pattyferrini" target="_blank" rel="noopener">Medium</a></li></ul>
+    <ul class="rodape-redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
     <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">26/10/2026</span> · Corte <span id="corteDados">26/10/2026</span> · Coleta <span id="metaColeta">26/10/2026</span> · Publicação <span id="metaPublicacao">26/10/2026</span></span>
     <span class="rodape-legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>

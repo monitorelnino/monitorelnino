@@ -59,6 +59,9 @@ sys.path.insert(0, str(RAIZ))
 
 ARQUIVO = RAIZ / "data" / "saude_pipeline.json"
 DIAS_DE_HISTORICO = 7
+# Teto explícito: ~400 dias no ritmo medido (147 execuções/dia em 19–26/10/2026). Ao estourar,
+# o elo FALHA alto; nunca poda em silêncio. Retenção além disso é decisão da editoria.
+TETO_EXECUCOES = 60000
 FORMATO_VERSAO = 1
 
 # Padrões de contagem que os coletores já imprimem. Ordem importa: o primeiro que casar vale.
@@ -107,7 +110,7 @@ def ler() -> dict:
 
 
 def podar(execucoes: list, hoje: datetime.date) -> list:
-    """Mantém os últimos 7 dias. O histórico longo vive no log do Actions, não aqui."""
+    """Janela de 7 dias para o painel (gerar_saude_pipeline.py). Não é poda da escrita: o log só cresce."""
     corte = (hoje - datetime.timedelta(days=DIAS_DE_HISTORICO)).isoformat()
     return [e for e in execucoes if str(e.get("data") or "") >= corte]
 
@@ -119,7 +122,10 @@ def registrar(script: str, inicio: str, duracao_s: float, itens, status: str, er
     hoje = hoje or hoje_editorial()
     doc = ler()
     doc["formato_versao"] = FORMATO_VERSAO
-    doc["execucoes"] = podar(doc["execucoes"], hoje) + [{
+    if len(doc["execucoes"]) >= TETO_EXECUCOES:
+        raise RuntimeError(f"saude_pipeline.json atingiu o teto de {TETO_EXECUCOES} execuções; "
+                           "retenção é decisão da editoria (não há poda automática)")
+    doc["execucoes"] = doc["execucoes"] + [{
         "data": hoje.isoformat(), "script": script, "inicio": inicio,
         "duracao_s": round(float(duracao_s), 1), "itens": itens, "status": status,
         "erro": (erro or "")[:300],
@@ -252,6 +258,7 @@ def listar() -> int:
 
 
 def autoteste() -> int:
+    global TETO_EXECUCOES
     casos = []
     hoje = datetime.date(2026, 9, 28)
 
@@ -274,7 +281,18 @@ def autoteste() -> int:
     # poda: 7 dias
     velhas = [{"data": (hoje - datetime.timedelta(days=d)).isoformat(), "script": "x"} for d in (0, 3, 7, 8, 30)]
     mantidas = podar(velhas, hoje)
-    casos.append(("poda mantém os últimos 7 dias", len(mantidas) == 3))
+    casos.append(("janela do painel mantém os últimos 7 dias", len(mantidas) == 3))
+    doc_longo = registrar("x.py", "i", 1, None, "ok", hoje=hoje, gravar=False)
+    casos.append(("registrar não poda: o log só cresce",
+                  len(doc_longo["execucoes"]) == len(ler()["execucoes"]) + 1))
+    teto_antigo, TETO_EXECUCOES = TETO_EXECUCOES, 0
+    try:
+        registrar("x.py", "i", 1, None, "ok", hoje=hoje, gravar=False)
+        casos.append(("ao estourar o teto, falha alto", False))
+    except RuntimeError:
+        casos.append(("ao estourar o teto, falha alto", True))
+    finally:
+        TETO_EXECUCOES = teto_antigo
 
     # registrar sem gravar em disco
     doc = registrar("coletar_doe.py", "2026-09-28T01:00:00", 12.4, 27, "ok", hoje=hoje, gravar=False)
