@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1201 · Cadastro prioritários: sai o portal do MDR como rota
+
+Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.
+
 ## 2026-10-26 · Vocabulário proibido: uma régua
 
 `scripts/vocabulario.py` serve catálogo, blog, conformidade e texto público (o JS o chama). Semântica única: palavra inteira, sem acento, caixa só em termo MAIÚSCULO; antes a conformidade e o JS casavam subcadeia sensível à caixa e o blog, caixa insensível com acento. Duas mutações novas provam a cobertura.
