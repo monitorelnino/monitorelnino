@@ -77,6 +77,57 @@ def candidatos_da_noticia(pista, html):
     return out
 
 
+# ------------------------------------------------------------------ codebook 1.8 (modo paralelo, 26/10/2026)
+# Só a rodada paralela J18 usa estas três funções; a rodada da noite não muda.
+EXTENSOES_DE_ATO_18 = (".pdf", ".doc", ".docx", ".odt", ".rtf")
+RE_ATO_18 = re.compile(r"decreto|\blei\b|portaria|plancon|instru[çc][ãa]o", re.I)
+RECUSAS_HTTP_18 = (401, 403, 429, 451)
+ESPERAS_18 = (0, 30, 120)
+
+
+def seguir_agregador_18(pista, resolver, buscar_html_=buscar_html):
+    """B2: o link do agregador é resolvido até a matéria e só os links oficiais citados nela viram pista
+    (rota 1). Devolve (candidatos, como); sem resolução, ([], "nao_resolvido") e o chamador conta a
+    tentativa — na segunda, fecha."""
+    final, como = resolver(pista)
+    if not final:
+        return [], "nao_resolvido"
+    return candidatos_da_noticia(dict(pista, url=final), buscar_html_(final)), como
+
+
+def documentos_da_pagina_18(url, html):
+    """B4: página oficial que fala do plano → os links do MESMO domínio para PDF ou ato, um nível."""
+    host = urllib.parse.urlparse(url).netloc.lower()
+    return [c for c in candidatos_da_noticia({"url": url}, html)
+            if urllib.parse.urlparse(c["url"]).netloc.lower() == host
+            and (c["url"].lower().split("?")[0].endswith(EXTENSOES_DE_ATO_18)
+                 or RE_ATO_18.search(c["url"] + " " + c["titulo"]))]
+
+
+def ler_com_espera_18(url, buscar, esperas=ESPERAS_18, dormir=None):
+    """B5: nova tentativa com espera crescente e registro por arquivo. 401/403/429/451 é recusa real:
+    registra e não insiste. `buscar` pode levantar; texto vazio conta como tentativa falha."""
+    import time
+    dormir = dormir or time.sleep
+    registro = {"url": url, "tentativas": 0, "resultado": "inacessivel", "erros": []}
+    for espera in esperas:
+        dormir(espera)
+        registro["tentativas"] += 1
+        try:
+            texto = buscar(url)
+        except Exception as e:  # noqa: BLE001
+            codigo = getattr(e, "code", None) or getattr(getattr(e, "response", None), "status_code", None)
+            registro["erros"].append(f"{type(e).__name__} {codigo or ''}".strip())
+            if codigo in RECUSAS_HTTP_18:
+                registro["resultado"] = f"recusa_{codigo}"
+                return None, registro
+            continue
+        if texto:
+            registro["resultado"] = "lido"
+            return texto, registro
+    return None, registro
+
+
 # ------------------------------------------------------------------ rota 2: Querido Diário
 def candidatos_qd(pista, consultar):
     params = urllib.parse.urlencode({"territory_ids": pista.get("ibge"), "querystring": TERMOS_QD,
@@ -250,7 +301,37 @@ def autoteste():
         seguir(f, "22/09/2026", buscar_html_=lambda u: None, limite=1)
         return restantes(f, "22/09/2026") == 1 and restantes(f, "23/09/2026") == 1
 
+    def t_b2_agregador_resolvido_ate_a_materia():
+        c, como = seguir_agregador_18({"url": "https://news.google.com/rss/articles/X"},
+                                      lambda p: ("https://jornal.com.br/m", "embutida"), lambda u: HTML)
+        nada = seguir_agregador_18({"url": "https://news.google.com/rss/articles/Y"}, lambda p: (None, "x"))
+        return (como == "embutida" and [x["url"] for x in c] == ["https://palotina.pr.gov.br/leis/decreto-512-2026.pdf"]
+                and nada == ([], "nao_resolvido"))
+
+    def t_b4_pagina_oficial_ate_o_pdf_do_mesmo_dominio():
+        pagina = ('<a href="/arquivos/plancon-2025.pdf">PLANCON 2025</a><a href="https://outro.sc.gov.br/d.pdf">'
+                  'Decreto vizinho</a><a href="/agenda">Plano de agenda</a>')
+        c = documentos_da_pagina_18("https://ouro.sc.gov.br/audiencia-publica-plano", pagina)
+        return [x["url"] for x in c] == ["https://ouro.sc.gov.br/arquivos/plancon-2025.pdf"]
+
+    def t_b5_espera_crescente_e_recusa_real():
+        class Recusa(Exception):
+            code = 403
+        esperas, chamadas = [], []
+        def falha_e_depois_le(u):
+            chamadas.append(u)
+            if len(chamadas) < 3:
+                raise OSError("timeout")
+            return "texto do plano"
+        texto, reg = ler_com_espera_18("u", falha_e_depois_le, dormir=esperas.append)
+        _, reg403 = ler_com_espera_18("u", lambda u: (_ for _ in ()).throw(Recusa()), dormir=lambda s: None)
+        return (texto == "texto do plano" and esperas == list(ESPERAS_18) and reg["tentativas"] == 3
+                and reg403 == {"url": "u", "tentativas": 1, "resultado": "recusa_403", "erros": ["Recusa 403"]})
+
     return rodar_autoteste({
+        "B2 (1.8): agregador resolvido até a matéria; só o link oficial citado vira pista": t_b2_agregador_resolvido_ate_a_materia,
+        "B4 (1.8): da página oficial ao PDF do mesmo domínio, um nível": t_b4_pagina_oficial_ate_o_pdf_do_mesmo_dominio,
+        "B5 (1.8): espera crescente, registro por arquivo, 403 não insiste": t_b5_espera_crescente_e_recusa_real,
         "restante conta só o que a noite ainda não tocou (converge para zero)": t_restante_converge_para_zero_depois_de_seguir,
         "limite por rodada deixa o restante para a seguinte (fila reentrante)": t_restante_limite_sobra_para_a_rodada_seguinte,
         "link oficial da notícia vira pista nova ligada à de origem": t_link_da_noticia_vira_pista_nova,
