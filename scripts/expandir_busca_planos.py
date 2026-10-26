@@ -66,10 +66,8 @@ def expandir(comandos: str, grupos: str = "todos") -> list:
 def autoteste() -> int:
     falhas = []
 
-    def ok(msg, cond):
-        print(("  ✓ " if cond else "  ✗ ") + msg)
-        if not cond:
-            falhas.append(msg)
+    from _casos import ok_de
+    ok = ok_de(falhas)
 
     todas = [u for g in GRUPOS.values() for u in g]
     ok("os seis grupos cobrem as 27 UFs, cada uma uma vez", sorted(todas) == sorted(set(todas)) and len(todas) == 27)

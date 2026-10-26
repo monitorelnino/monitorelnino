@@ -109,11 +109,8 @@ def _ler_arvore() -> dict:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     ok("conteúdo igual não acusa nada", nao_idempotentes({"a": "x"}, {"a": "x"}) == [])
     ok("conteúdo diferente acusa", nao_idempotentes({"a": "x"}, {"a": "y"}) != [])

@@ -221,11 +221,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     ok("identificador do Google News sai do caminho do artigo",
        identificador_do_artigo("https://news.google.com/rss/articles/ABC123?oc=5") == "gnews:ABC123")

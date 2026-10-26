@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · Autotestes: um só `ok()`
+
+`scripts/_casos.py` substitui 57 cópias do registro de casos dos autotestes (−164 linhas líquidas). Contato de imprensa vira o e-mail de contato no CLAUDE.md e no guia do editor.
+
 ## 2026-10-26 · #1190 · Log de saúde só cresce
 
 Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.
