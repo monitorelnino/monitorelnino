@@ -84,10 +84,8 @@ def migrar(pistas: list, mapa: dict, validas: set, desconhecida: str) -> dict:
 def autoteste() -> int:
     falhas = []
 
-    def ok(nome, cond):
-        print(("  ok " if cond else "  FALHA ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, None, ("  ok ", "  FALHA "))
 
     MAPA = {"rede_social_oficial": "rede_social", "seguimento": "imprensa"}
     VAL = {"rede_social", "imprensa", "busca_web", "desconhecida"}

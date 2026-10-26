@@ -258,11 +258,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     ok("a função sai da classe", funcao_de("figura-titulo", "h3") == "titulo")
     ok("figura-sub é a legenda", funcao_de("figura-sub", "p") == "legenda")

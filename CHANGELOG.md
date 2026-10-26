@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-26 · #PR · Rodapé único: fonte no catálogo comum
 Rodapé igual em todas as páginas, lido de `conteudo/_comum.json` (redes, e-mail de contato e assinatura "Patty Ferrini"). Sai a linha de pedidos de imprensa; a Imprensa passa a usar o mesmo rodapé. Sem mudança de dado nem de índice.
 
+## 2026-10-26 · Autotestes: um só `ok()`
+
+`scripts/_casos.py` substitui 57 cópias do registro de casos dos autotestes (−164 linhas líquidas). Contato de imprensa vira o e-mail de contato no CLAUDE.md e no guia do editor.
 ## 2026-10-26 · #1191 · Rodapé: só LinkedIn e Instagram
 
 Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.

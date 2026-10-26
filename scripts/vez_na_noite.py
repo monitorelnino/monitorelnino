@@ -126,10 +126,8 @@ def esperar(meu_id: int, ramo: str, teto_min: float, intervalo_s: int = 30) -> i
 def autoteste() -> int:
     falhas = []
 
-    def ok(nome, cond):
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas)
 
     runs = [{"databaseId": 10, "status": "in_progress"}, {"databaseId": 11, "status": "queued"},
             {"databaseId": 12, "status": "completed"}, {"databaseId": 20, "status": "in_progress"}]

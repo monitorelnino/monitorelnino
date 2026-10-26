@@ -100,11 +100,8 @@ def linha(lem: dict) -> str:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     hoje = dt.date(2026, 12, 10)
     ok("prazo no futuro conta os dias", dias_ate("2026-12-19", hoje) == 9)

@@ -241,10 +241,8 @@ def abrir_issue(noite: str, vermelhos: list) -> None:
 def autoteste() -> int:
     falhas = []
 
-    def ok(nome, cond):
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas)
 
     agora = dt.datetime(2026, 10, 10, 23, 0)
     bom = {"portoes_main": {"conclusion": "success", "sha": "20272a72"},

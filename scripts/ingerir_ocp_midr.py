@@ -253,11 +253,8 @@ def ler_planilha(caminho: pathlib.Path) -> list:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     ok("data brasileira vira ISO", data_iso("26/03/2026") == "2026-03-26")
     ok("data já em ISO passa", data_iso("2026-03-26") == "2026-03-26")

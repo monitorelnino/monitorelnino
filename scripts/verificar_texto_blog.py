@@ -188,11 +188,8 @@ def _autoteste() -> int:
 
     contados = []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     cab = ("---\ntitulo: \"T\"\nabertura: \"A\"\netiqueta: Acontecimento\ndata: 2026-10-04\n"
            "fontes: \"F\"\naprovado: sim\npacote: 2026-10-03_legal\n---\n")
