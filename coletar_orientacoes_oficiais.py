@@ -49,6 +49,12 @@ FONTES = [  # (família, órgão, URL)
     ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2024/dezembro/dengue-conheca-os-sintomas-da-doenca-e-saiba-como-prevenir"),
     ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2025/novembro/dez-dicas-para-eliminar-focos-do-mosquito-da-dengue"),
     ("chikungunya", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/c/chikungunya"),
+    # 26/10 (central, 08:00): páginas federais atuais localizadas pela busca; entram só com trecho provado.
+    ("chuvas", MIDR, G + "mdr/pt-br/assuntos/protecao-e-defesa-civil/ComoagirInundaesMDR.pdf"),
+    ("chuvas", MIDR, G + "mdr/pt-br/assuntos/protecao-e-defesa-civil/deslizamento.pdf"),
+    ("fogo", MS, G + "saude/pt-br/assuntos/saude-de-a-a-z/q/queimadas"),
+    ("dengue", MS, G + "saude/pt-br/assuntos/noticias/2025/janeiro/conheca-os-oito-principais-sintomas-da-dengue-e-os-criterios-para-alta-medica"),
+    ("dengue", MS, G + "saude/pt-br/centrais-de-conteudo/publicacoes/svsa/dengue/dengue-diagnostico-e-manejo-clinico-adulto-e-crianca"),
 ]
 # A aba de dengue ainda não tem item no catálogo: a página oficial entra com as frases que tratam do que o
 # guia vai orientar (água parada, recipientes, lixo, sintomas, quando procurar atendimento).
