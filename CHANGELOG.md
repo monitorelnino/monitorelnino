@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · #1213 · Limpeza: resíduo da retirada de 26/10
+
+Na página de Saúde, Cubatão/SP e Toledo/PR deixam de mostrar a leitura de saúde no plano de documento retirado pelo #1203; sai também a proposta de Toledo na escada de planos. Em `mudancas.html`, entrada sem número deixa de aparecer dentro da anterior (`gerar_mudancas.py`, com caso de teste). Código +5/−3.
+
 ## 2026-10-26 · #1211 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
 
 No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.
