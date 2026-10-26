@@ -128,7 +128,7 @@ A rotina completa (para o Claude) está em
 
 - **Para jornalistas** (`imprensa.html`, no menu e no rodapé): release lido ao vivo dos
   dados, o que o índice mede e não mede, como citar, dados abertos, feeds, selos, FAQ e
-  o contato imprensa@monitorelnino.com.br. O release muda sozinho quando a média muda.
+  o contato contato@futuraevidencelab.com.br. O release muda sozinho quando a média muda.
 - Um portão (o 16º) lê o texto visível de todas as páginas e bloqueia jargão interno —
   nomes de arquivo, códigos de decisão, "portão", "robô", números de PR, auditoria,
   qualquer menção a pedidos de LAI enviados. Se quiser proibir uma expressão nova, é

@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>26/10/2026 · Fim do defeso: fontes suspensas são reavaliadas todo dia até 25/11</dt>
+      <dd>Com o fim do período eleitoral (25/10), as 41 fontes suspensas por defeso passam a ser reavaliadas todos os dias, pela mesma régua de procedência de antes. Um workflow diário (`reavaliacao_defeso.yml`) entra no registro de temporizadores; a cadência volta a ser semanal depois de 25/11. Fonte que não responde mantém o estado registrado.</dd>
       <dt>26/10/2026 · Rodapé: só LinkedIn e Instagram</dt>
       <dd>Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.</dd>
       <dt>26/10/2026 · Log de saúde só cresce</dt>
@@ -165,8 +167,6 @@
       <dd>`buscar_planos_fontes_abertas.py` grava o resultado em `data/planos_busca/&lt;UF&gt;.json` (antes, um arquivo único que os grupos em paralelo da `busca_planos.yml` gravariam juntos) e volta a consultar o que terminou em `erro`. Dado migrado, 27 municípios.</dd>
       <dt>23/10/2026 · Defesa civil: o sexto cartão mostra a variação da semana</dt>
       <dd>O cartão &quot;decreto há mais de 30 dias sem reconhecimento&quot; era o único dos seis sem a linha &quot;↑ n na semana&quot;, porque o instantâneo do topo não guardava esse cartão. Com o campo no dado (#984), entram o elemento de reserva e uma chamada da `variacao()` que já existe. Instantâneo ausente, sem o campo ou de outro total segue lacuna declarada. +2 linhas, nenhuma função nova. ## 2026-10-23 · PR · Busca de planos em fontes abertas lê os prioritários</dd>
-      <dt>23/10/2026 · Busca de planos em fontes abertas lê os prioritários</dt>
-      <dd>`buscar_planos_fontes_abertas.py` aceita `municipios_prioritarios.json`, recorta por `--uf` e pula o já consultado no dia, para a rodada em fatias retomar. Código +22/−5.</dd>
     </dl>
   </section>
 </main>

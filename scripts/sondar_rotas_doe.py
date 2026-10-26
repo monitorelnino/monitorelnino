@@ -124,11 +124,8 @@ def _autoteste() -> int:
     # cobre, ou menos. Agora e contado.
     _casos_contados = []
 
-    def ok(nome, cond):
-        _casos_contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, _casos_contados)
 
     ok("acha a plataforma declarada", plataforma_de('<script src="/x/apifront/y.js">') == "apifront")
     ok("sem assinatura devolve None", plataforma_de("<html></html>") is None)

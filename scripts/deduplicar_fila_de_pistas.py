@@ -64,11 +64,8 @@ def deduplicar(pistas: list, chave) -> tuple:
 def _autoteste() -> int:
     falhas, contados = [], []
 
-    def ok(nome, cond):
-        contados.append(nome)
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas, contados)
 
     k = lambda p: (p.get("url"), p.get("municipio"))
 

@@ -175,10 +175,8 @@ def artefatos() -> list:
 def autoteste() -> int:
     falhas = []
 
-    def ok(nome, cond):
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from _casos import ok_de
+    ok = ok_de(falhas)
 
     n = "2026-10-10"
     todos = [f"data/noite/{n}/{e}.feito" for e in ELOS]

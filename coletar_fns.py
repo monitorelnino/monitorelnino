@@ -224,10 +224,8 @@ def _zip_de_teste(linhas: list) -> bytes:
 def autoteste() -> int:
     falhas = []
 
-    def ok(nome, cond):
-        print(("  ✓ " if cond else "  ✗ ") + nome)
-        if not cond:
-            falhas.append(nome)
+    from scripts._casos import ok_de
+    ok = ok_de(falhas)
 
     norm = lambda s: re.sub(r"\s+", " ", s.upper()).strip()  # noqa: E731
     vbr = lambda s: float(s.replace(".", "").replace(",", ".")) if s.strip() else 0.0  # noqa: E731
