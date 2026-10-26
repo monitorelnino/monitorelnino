@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json`
+
+`verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1.
+
 ## 2026-10-26 · #1181 · Ar medido: capital sem medição na janela é lacuna declarada
 
 Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como "coletado" e passa a "sem_medicao_na_janela". Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.
