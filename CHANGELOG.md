@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Buscador 2: os links do Google News arquivados voltam pelo resolvedor
+
+`seguir_pistas.py --arquivo` reprocessa os 11.965 links de agregador que a Limpeza arquivou: só a URL final resolvida entra, pela porta; o que não resolve vira rejeitada com motivo, e a data do `pistas_rejeitadas.json` impede nova tentativa. Código +57/−3; um teste.
+
 ## 2026-10-27 · A1 · União de conflito aceita `data/planos_busca/<UF>.json`
 
 O resolvedor de rodada une os planos de busca por município e fonte pela base comum: fonte lida só de um lado entra, a mesma fonte lida diferente nos dois lados é recusada. Antes recusava toda vez, e cada PR de dado das válvulas exigia união à mão.
