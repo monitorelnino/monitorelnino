@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15
+Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: "Seca e incêndio até março de 2027", antes "Seca, fogo". Frase do Cemaden sem texto aprovado: fica fora.
+
 ## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
 
 `catalogo.json` ganha `cievs_boletins`: órgão, endereço, formato, cadência e situação de 16 UFs, mais as UFs já em `fontes_uf.json`, a localizar e não medidas. Só catálogo: nenhum PDF é lido por coletor. Divergência da Bahia com `fontes_uf.json` registrada para a editoria. Dado +172, código 0.
