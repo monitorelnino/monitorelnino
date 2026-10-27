@@ -75,31 +75,31 @@
     "dominio": "arapiraca.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Arapiraca\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'Suspended: access denied'], ['goo",
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Arapiraca\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'Suspended: access denied'], ['goo",
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Arapiraca\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'too many requests'], ['duckduckgo', 'S",
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Arapiraca\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
@@ -119,31 +119,31 @@
     "dominio": "atalaia.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Atalaia\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Atalaia\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Atalaia\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Atalaia\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
@@ -163,31 +163,31 @@
     "dominio": "barradesantoantonio.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-27",
+    "situacao": "erro",
     "consulta": "\"Barra de Santo Antônio\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": null,
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Barra de Santo Antônio\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Barra de Santo Antônio\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Barra de Santo Antônio\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
@@ -207,31 +207,31 @@
     "dominio": "batalha.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Batalha\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Batalha\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Batalha\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Batalha\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
@@ -251,31 +251,31 @@
     "dominio": "bocadamata.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Boca da Mata\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Boca da Mata\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Boca da Mata\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "erro",
     "consulta": "\"Boca da Mata\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
