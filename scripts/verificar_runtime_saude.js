@@ -44,7 +44,7 @@ setTimeout(() => {
   // 19/10/2026 (remoção aprovada pela editoria): os quadros por agravo saíram e com eles os três
 // mapas de doença. Sobra o mapa de prontidão; o mapa do detalhe do desfecho é cobrado abaixo,
 // junto do cartão e da lista, porque ele e eles são a mesma seção única.
-teste("mapa dos planos saiu: não há mapaMonitor nem lista de tipos (handover VIGIAR §A)", !q("mapaMonitor") && !q("listaTiposPlano"));
+teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista dos tipos fica", !q("mapaMonitor") && !!q("listaTiposPlano"));
   // 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): dois medidores no topo, ficha "Como ler", cartões por estado com detalhe em <dialog>,
   // uma seção por desfecho (dengue, chikungunya, calor, respiratórias, diarreicas) — nenhum desfecho em acordeão, nenhum seletor de doença.
   // 02/10/2026: a contagem de UFs não verificadas saiu do subtítulo da grade (o `contagemUF`),
@@ -103,18 +103,29 @@ teste("mapa dos planos saiu: não há mapaMonitor nem lista de tipos (handover V
   teste("cartão de emergências, se a página o tiver: do agregado de resposta",
     !q("nEmergSaude") || txt("nEmergSaude") === (_emerg == null ? "sem dado" : _emerg === 0 ? "zero" : Number(_emerg).toLocaleString("pt-BR")));
 
-  // A situação por estado é uma tabela (27 UFs). Cada sigla é botão que abre a ficha.
-  const botoes = () => [...d.querySelectorAll("#tblMonitor button[data-uf]")];
-  teste("tabela dos estados: 27 siglas como botões, cada uma com o nome do estado no seletor acessível",
-    botoes().length === 27 && botoes().every(b => b.classList.contains("chip-risco") && /^Abrir a ficha de /.test(b.getAttribute("aria-label"))));
+  // A situação por estado: lista dos tipos com as siglas em círculos (botões); tipo sem estado não aparece, sem "zero".
+  const botoes = () => [...d.querySelectorAll("#listaTiposPlano button[data-uf]")];
+  teste("lista dos tipos de plano: 27 siglas como botões, só os tipos que têm estado, sem contagem nem 'zero'", (() => {
+    const tipos = ["NOVO", "READ", "VIG", "ELAB", "LAC", "NAO_VERIFICADO"].filter(t => Object.values(MSd2.ufs).some(u => u.instrumento.status === t));
+    const dds = [...d.querySelectorAll("#listaTiposPlano dd")];
+    return botoes().length === 27 && dds.length === tipos.length && !/zero|\d+ estados?/.test(q("listaTiposPlano").textContent)
+      && botoes().every(b => b.classList.contains("chip-risco") && /^Abrir a ficha de /.test(b.getAttribute("aria-label")));
+  })());
+  teste("círculo de SE: o cartão traz tipo, documento, órgão e a fonte oficial (instrumento.url)", (() => {
+    const i = MSd2.ufs.SE.instrumento, b = botoes().find(x => x.dataset.uf === "SE");
+    b.dispatchEvent(new dom.window.MouseEvent("mouseover", { bubbles: true }));
+    const t = q("mapTooltip"), a = t.querySelector("a");
+    return t.style.display === "block" && t.classList.contains("map-tooltip--clicavel") && t.textContent.includes(i.doc) && (!i.orgao || t.textContent.includes(i.orgao))
+      && (i.url ? !!a && a.getAttribute("href") === i.url : !a);
+  })());
   teste("a linha da escada vem dos pontos do dado (metodo.escada), não do texto", (() => {
     const e = MSd2.metodo.escada;
     return txt("escadaPlano") === `A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, ${e.NOVO}; atualizado, ${e.READ}; recorrente, ${e.VIG}; em elaboração, ${e.ELAB}; não localizado, ${e.LAC}.`;
   })());
-  // Ficha aberta pela tabela.
+  // Ficha aberta pelo círculo.
   const NOME_DO_TIPO = { NOVO: "Plano feito para este El Niño", READ: "Plano anual atualizado para o ciclo", VIG: "Plano recorrente, sem atualização para o ciclo",
     ELAB: "Plano em elaboração", LAC: "Plano não localizado até o corte", NAO_VERIFICADO: "Ainda não verificado" };
-  teste("ficha de SE abre pela tabela, com o tipo de plano do dado", (() => {
+  teste("ficha de SE abre pelo círculo, com o tipo de plano do dado", (() => {
     const b = botoes().find(x => x.dataset.uf === "SE");
     b.click();
     return q("detailSaudeConteudo").textContent.includes(NOME_DO_TIPO[MSd2.ufs.SE.instrumento.status]);
