@@ -693,6 +693,12 @@
         "cartao-mapa-rodape"
       ],
       "subtitulo_maximo": 140,
+      "eixo": "[class*='-eixo']",
+      "sem_subtitulo": {
+        "periodo": "semanal|mensal|di[áa]ri|anual|\\b(19|20)\\d\\d\\b|ciclo|epis[óo]dio|[úu]ltim[oa]s",
+        "territorio": "Ni[ñn]o|Pacífico|Brasil|regi[ãa]o|estad|munic[íi]pio|capita|\\bUF\\b",
+        "unidade": "°C|%|\\bmm\\b|\\bkm\\b|casos|focos|dias|R\\$|número de|índice"
+      },
       "subtitulo_estados": [
         "^Sem atualização desde ",
         "^Onde há seca ",

@@ -161,7 +161,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.emergencias.barras.total</code></td><td>Total</td></tr>
 </table>
-<h2>financiamento <small>(47 trechos)</small></h2>
+<h2>financiamento <small>(41 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.titulo_da_pagina</code></td><td>Financiamento</td></tr>
@@ -233,26 +233,6 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>financiamento.municipio.titulo_da_secao</code></td><td>Quanto chegou ao seu município</td></tr>
 </table>
-<h3>defesaCivil</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>financiamento.defesaCivil.titulo_da_secao</code></td><td>Defesa civil, depois do reconhecimento</td></tr>
-</table>
-<h3>defesaCivil · serie_semanal</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.defesaCivil.serie_semanal.titulo</code></td><td>Do decreto ao recurso, semana a semana</td></tr>
-<tr><td>legenda</td><td><code>financiamento.defesaCivil.serie_semanal.legenda</code></td><td>Desde 29/06/2026 · nº acumulado de municípios por semana, em cada etapa</td></tr>
-</table>
-<h3>defesaCivil · acoes</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.defesaCivil.acoes.titulo</code></td><td>Autorizado por portaria desde 29/06/2026, por ação</td></tr>
-<tr><td>legenda</td><td><code>financiamento.defesaCivil.acoes.legenda</code></td><td><span class="molde">R$ autorizados · resposta, recuperação e outra · {n} municípios com ato</span><br><span class="ex">exemplo: R$ autorizados · resposta, recuperação e outra · 3 municípios com ato</span></td></tr>
-</table>
-<h3>defesaCivil · sem_recurso</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.defesaCivil.sem_recurso.titulo</code></td><td>Reconhecido há mais de 30 dias sem recurso autorizado</td></tr>
-<tr><td>legenda</td><td><code>financiamento.defesaCivil.sem_recurso.legenda</code></td><td><span class="molde">Situação em {data} · nº de municípios</span><br><span class="ex">exemplo: Situação em 3 · nº de municípios</span></td></tr>
-<tr><td>rotulo</td><td><code>financiamento.defesaCivil.sem_recurso.rotulo</code></td><td>Municípios</td></tr>
-</table>
 <h3>chega · destaque.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.chega.destaque.molde</code></td><td><span class="molde">{pct}% do valor pago pelas medidas provisórias foi aplicado diretamente por órgãos federais, sem destino municipal registrado. Os círculos mostram o que chegou aos municípios.</span><br><span class="ex">exemplo: 3% do valor pago pelas medidas provisórias foi aplicado diretamente por órgãos federais, sem destino municipal registrado. Os círculos mostram o que chegou aos municípios.</span></td></tr>
@@ -288,6 +268,14 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>caminhos · coluna.risco_nao_coletado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.caminhos.coluna.risco_nao_coletado</code></td><td>O risco declarado nos atos ainda não foi coletado até o corte.</td></tr>
+</table>
+<h3>caminhos · funil.linha</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.funil.linha</code></td><td><span class="molde">{n_decretaram} municípios decretaram emergência desde 29 de junho de 2026; {n_reconhecidos} foram reconhecidos pela União; {n_com_recurso} têm recurso autorizado em portaria{n_30d}.</span><br><span class="ex">exemplo: 3 municípios decretaram emergência desde 29 de junho de 2026; 3 foram reconhecidos pela União; 3 têm recurso autorizado em portaria3.</span></td></tr>
+</table>
+<h3>caminhos · funil.n_30d</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.funil.n_30d</code></td><td><span class="molde">; {n} foram reconhecidos há mais de 30 dias sem portaria de recurso localizada até o corte</span><br><span class="ex">exemplo: ; 3 foram reconhecidos há mais de 30 dias sem portaria de recurso localizada até o corte</span></td></tr>
 </table>
 <h3>caminhos · faixa_resposta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
