@@ -1219,7 +1219,6 @@ creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIF
   const faixa = [Math.min(-1, Math.floor(Math.min.apply(null, vals) * 2) / 2 - 0.5),
                  Math.max(1, Math.ceil(Math.max.apply(null, vals) * 2) / 2 + 0.5)];
   const t0 = Math.floor(primeiro.t), t1 = Math.ceil(ultimo.t);
-  põeCat('nino34Sub', IN + 'molde_legenda', {data: dataBR(ultimo.semana)});
   põeCat('nino34Leitura', IN + 'molde_leitura',
     {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia)});
   desenharNaLargura('wrapNino34', 14,

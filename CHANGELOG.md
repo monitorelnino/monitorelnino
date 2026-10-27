@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
+
+As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
+
 ## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
 
 O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
