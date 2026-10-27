@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · ESPIN reconferida duas vezes por semana
+
+O elo `semanal_espin_e_links` passa a rodar domingo e quarta. Causa: cadência de 7 dias contra limite de frescor de 9; um timeout do DOU em 25/10 manteve o registro anterior (correto) e deixou o carimbo em 17/10. Duas rodadas por semana dão folga a uma falha de fonte externa. Coletor e limite intactos.
+
 ## 2026-10-27 · #PR · S22: páginas de 500 no PNCP
 A válvula leu 10 das 27 capitais em 200 minutos e três (Manaus, Brasília, Goiânia) estouraram o teto de páginas. A consulta passa a pedir 500 contratações por página e volta a 50 se o servidor recusar na primeira chamada. Sem mudança de regra: sem achado só vale com a leitura completa.
 
