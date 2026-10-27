@@ -198,15 +198,24 @@ def candidata_18(c: dict, origem: dict, rota: str) -> dict:
 
 def buscar_18():
     """O leitor com rede da rodada: B5 (espera crescente e registro) na pasta do RS; o resto, uma vez."""
-    from julgar_e_aplicar_descobertas import HOST_SHAREPOINT_RS, buscar_texto
+    from julgar_e_aplicar_descobertas import (HOST_SHAREPOINT_RS, TETO_DA_LEITURA, _ler_sharepoint_rs,
+                                              buscar_texto, extrair_texto_pdf)
     from seguir_pistas import ler_com_espera_18
     registros, cache = [], {}
+
+    def ler_rs(url):
+        # Lote 5 de 27/10: com `buscar_texto`, que engole o erro, 95 arquivos saíram "inacessível" sem causa e
+        # cada um gastou 3 tentativas. Aqui o erro sobe (401/403/429 é recusa e encerra) e "" é PDF sem texto.
+        raw = _ler_sharepoint_rs(url, 60)
+        if raw[:5] == b"%PDF-":
+            return (extrair_texto_pdf(raw) or "")[:TETO_DA_LEITURA]
+        return raw.decode("utf-8", errors="ignore")[:TETO_DA_LEITURA]
 
     def ler(url):
         if url in cache:
             return cache[url]
         if HOST_SHAREPOINT_RS in str(url):
-            texto, reg = ler_com_espera_18(url, buscar_texto)
+            texto, reg = ler_com_espera_18(url, ler_rs)
             registros.append(reg)
         else:
             texto = buscar_texto(url)
