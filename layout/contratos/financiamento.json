@@ -121,33 +121,6 @@
         }
       ],
       "_nota": "Módulo comum `assets/js/consulta-municipio.js`. Quatro `.cartao` (defesa civil, FNS de emergência, transferências da União, gasto próprio em defesa civil com a classe de ausência) e a linha do estado, só com soma e contagem do próprio estado."
-    },
-    {
-      "id": "defesaCivil",
-      "h2": "Defesa civil, depois do reconhecimento",
-      "tipo": "figuras",
-      "grade": ".grade-figuras--3",
-      "cartoes": [
-        {
-          "id": "serie_semanal",
-          "tipo": "grafico",
-          "el": "boxSerieSemanal",
-          "chave": "resposta/recursos_liberados.json#semanas"
-        },
-        {
-          "id": "autorizado_por_acao",
-          "tipo": "grafico",
-          "el": "boxAcoes",
-          "chave": "resposta/recursos_liberados.json#total_por_acao"
-        },
-        {
-          "id": "reconhecido_sem_recurso",
-          "tipo": "grafico",
-          "el": "boxSemRecurso",
-          "chave": "resposta/municipios_decretados.json#primeiro_reconhecimento"
-        }
-      ],
-      "_nota": "O que saiu da página da Defesa civil (HANDOVER_DEFESA_CIVIL §7): a linha 'com recurso autorizado' na série semanal, o total por ação com o nº de municípios com ato, as portarias em 'Ver em tabela' e a pendência 'reconhecido há mais de 30 dias sem recurso autorizado'. Âncora #defesaCivil mantida; #depois é o título."
     }
   ],
   "texto_proibido": [

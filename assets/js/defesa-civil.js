@@ -18,7 +18,7 @@
  * tabela de 953 linhas era a segunda implementação da mesma pergunta.
  *
  * Valor em reais não entra nesta página: o dinheiro autorizado depois do reconhecimento está em
- * `financiamento.html#defesaCivil`. As três listas federais de risco estão no Monitor de riscos.
+ * `financiamento.html#faixaResposta`. As três listas federais de risco estão no Monitor de riscos.
  *
  * REGRA DE SEGURANÇA DOS ALERTAS. Aviso e alerta são informação de AGORA. Se a coleta tiver mais de
  * 24 horas, a página não diz que há alerta em vigor: declara "sem atualização desde {data e hora}".
