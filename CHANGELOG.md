@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #1278 · Instantâneo do topo das páginas entra na cadeia de derivados
+
+`verificar_derivados.sh` passa a regerar `topo_defesa_civil.json` (e os demais instantâneos do topo), que a Imprensa lê e só o publicador regerava. Completa o #1276, que cuidou de `imprensa/semana.json`.
+
 ## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
 `coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
 ## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15

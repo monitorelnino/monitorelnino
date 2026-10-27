@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>27/10/2026 · Instantâneo do topo das páginas entra na cadeia de derivados</dt>
+      <dd>`verificar_derivados.sh` passa a regerar `topo_defesa_civil.json` (e os demais instantâneos do topo), que a Imprensa lê e só o publicador regerava. Completa o #1276, que cuidou de `imprensa/semana.json`.</dd>
       <dt>27/10/2026 · Imprensa e Para gestores: pendências 14 e 15</dt>
       <dd>Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: &quot;Seca e incêndio até março de 2027&quot;, antes &quot;Seca, fogo&quot;. Frase do Cemaden sem texto aprovado: fica fora.</dd>
       <dt>27/10/2026 · Financiamento: sai a seção &quot;Defesa civil, depois do reconhecimento&quot;</dt>
@@ -165,8 +167,6 @@
       <dd>Rodapé igual em todas as páginas: logotipo, &quot;por Patrícia Ferrini&quot; (com link), Instagram, LinkedIn, X, BlueSky e Medium, nome do MARÉ e as quatro datas (atualização, corte, coleta, publicação) numa linha só, preenchidas por `assets/js/rodape.js`. A Imprensa leva a linha dos pedidos no lugar das datas.</dd>
       <dt>24/10/2026 · Abertura da inicial reescrita pela editoria · Site</dt>
       <dd>Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\&quot;` do frontmatter (o link saía com aspas literais).</dd>
-      <dt>24/10/2026 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta</dt>
-      <dd>`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.</dd>
     </dl>
   </section>
 </main>
