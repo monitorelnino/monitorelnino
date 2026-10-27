@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Para gestores: "não localizado" diz a varredura feita
+
+O plano não localizado passa a dizer a varredura feita: "Varredura nacional ou estadual em dd/mm/aaaa; plano não localizado até o corte. Ainda não verificamos a cidade com todas as fontes." Vale quando o livro traz a varredura do município (§3.3, 19/10); sem ela, a frase antiga. Mesmo molde da inicial.
+
 ## 2026-10-27 · #PR · Busca de planos: motor mudo sem achado é erro, não ausência
 
 Reverte o Bing único (ignora `site:`/OR e devolve host alheio). Busca web sem achado com motor suspenso ou resposta vazia vira `erro` com os motores no motivo, e refaz depois; `sem_resultado` só com todos os motores respondendo. Linhas líquidas: −3.
