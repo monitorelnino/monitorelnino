@@ -235,6 +235,8 @@ def paralelo_18(argv) -> int:
     from juiz import CODEBOOK_18, fonte_oficial
     rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
     propostas = "--propostas" in argv
+    # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18).
+    refazer = set(argv[argv.index("--refazer") + 1].split(",")) if "--refazer" in argv else set()
     saida = RAIZ / argv[argv.index("--saida") + 1] if "--saida" in argv else SAIDA_18
     doc = json.loads(saida.read_text(encoding="utf-8")) if saida.exists() else {
         "_governanca": ("Rodada paralela do juiz, codebook 1.8 (handover da central de 26/10/2026). Nenhuma página "
@@ -255,7 +257,8 @@ def paralelo_18(argv) -> int:
         chave = chave_18(p)
         anterior = feitas.get(chave)
         precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"], True)
-        if anterior and (anterior.get("leu_documento") or not precisa_ler):
+        refeita = bool(anterior and refazer & set(anterior.get("regras_18") or []))
+        if anterior and (anterior.get("leu_documento") or not precisa_ler) and not refeita:
             return
         if precisa_ler and (not rede or lidas >= rede):
             pendentes[0] += 1
