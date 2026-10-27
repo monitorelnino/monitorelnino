@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Consulta municipal e mapas: uma só leitura da varredura; clique liga círculo e linha
+
+A frase de varredura do livro passa a ser lida por `ConsultaMunicipio.varreduraLegivel`, usada pela inicial e por Para gestores. Em `mapas.js`, `pontos` aceita `tabela`: clicar no círculo realça e abre a linha da tabela, e clicar na linha realça o círculo (Financiamento, "Onde o dinheiro chega"). Nenhum texto público muda.
+
 ## 2026-10-27 · #PR · Financiamento: o mapa mostra o valor repassado desde 29/06
 
 "Onde o dinheiro chega" passa a ler uma só medida, o valor repassado ao município, em um só período (julho a setembro de 2026 para o FNS). Mapa e tabela leem a mesma lista, com a coluna do valor autorizado em portaria e a linha dos municípios com portaria e repasse não localizado até o corte. Desenho do mapa mantido.

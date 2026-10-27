@@ -430,12 +430,9 @@ const CAT_ROTULO = {
    o que não se achou —, e é UMA só na inicial: o ladrilho da capital e o cartão do município liam o
    mesmo registro e escreviam frases diferentes. Sem varredura no livro, fica a frase de não
    verificado, sem data. O texto vem do catálogo; aqui só se decide quando ele se aplica. */
-const NIVEL_DA_VARREDURA = {estadual: 'estadual', nacional: 'nacional', municipal_completo: 'municipal'};
 function fraseDeVarredura(s, doLivro) {
-  const v = (s && s.varredura) || doLivro, C = window.MonitorCatalogo;
-  if (!v || !NIVEL_DA_VARREDURA[v.nivel] || !v.data || !C) return '';
-  return C.texto('index.municipio.varredura.molde',
-    {nivel: NIVEL_DA_VARREDURA[v.nivel], data: dataBR(v.data) || v.data}) || '';
+  const v = ConsultaMunicipio.varreduraLegivel((s && s.varredura) || doLivro), C = window.MonitorCatalogo;
+  return v && C ? C.texto('index.municipio.varredura.molde', v) || '' : '';
 }
 
 function textoDaCapital(reg){

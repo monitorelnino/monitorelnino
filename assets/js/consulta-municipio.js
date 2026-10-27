@@ -8,7 +8,9 @@
  *   municipios  uf → lista de nomes (ou promessa dela; nulo = o estado não tem arquivo)
  *   mostrar     (uf, nome, cartão) → escreve o conteúdo do cartão
  *   semLista    texto da lacuna quando `municipios` devolve nulo
- * `situacaoDoPlano(registro)` dá o estado do plano do município, para a frase de cada página.
+ * `situacaoDoPlano(registro)` dá o estado do plano do município, para a frase de cada página;
+ * `varreduraLegivel(varredura)` dá `{nivel, data}` (data em dd/mm/aaaa) da varredura do livro, ou
+ * `null` quando o nível ou a data não servem: as páginas só escolhem o molde do catálogo.
  * Os ids dos controles vêm em `uf`, `municipio`, `lista` e `cartao`. */
 (function (global) {
   'use strict';
@@ -82,5 +84,11 @@
     };
   }
 
-  global.ConsultaMunicipio = { montar, nrm, situacaoDoPlano };
+  const NIVEL_DA_VARREDURA = {estadual: 'estadual', nacional: 'nacional', municipal_completo: 'municipal'};
+  function varreduraLegivel(v) {
+    const m = v && NIVEL_DA_VARREDURA[v.nivel] && /^(\d{4})-(\d{2})-(\d{2})/.exec(v.data || '');
+    return m ? {nivel: NIVEL_DA_VARREDURA[v.nivel], data: m[3] + '/' + m[2] + '/' + m[1]} : null;
+  }
+
+  global.ConsultaMunicipio = { montar, nrm, situacaoDoPlano, varreduraLegivel };
 })(window);
