@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
 
 O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
+## 2026-10-27 · Figura sem subtítulo vale com período, território e unidade no título ou no eixo
+
+A exigência de `.figura-sub` saiu de `verificar_estrutura.js`, que duplicava o `verificar_texto_publico.js`; este agora aceita figura sem subtítulo quando título e eixo dizem período, território e unidade (`figura_componente.sem_subtitulo` em `regras.json`). Uma mutação nova prova. Código +10/−2. Nenhum texto público muda.
 
 ## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
 
