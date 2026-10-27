@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
+
+`semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
+
 ## 2026-10-27 · Rodada paralela 1.8: o prazo grava o que foi lido
 
 O lote 4 leu por 5 horas e foi interrompido pelo prazo sem gravar nada, porque o rejulgamento só gravava no fim. Agora a interrupção do prazo (SIGINT, com 60 s de espera) grava o que já foi lido, como fazem os outros coletores. Só a rodada paralela muda.
