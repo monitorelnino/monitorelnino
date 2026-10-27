@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · S22: páginas de 500 no PNCP
+A válvula leu 10 das 27 capitais em 200 minutos e três (Manaus, Brasília, Goiânia) estouraram o teto de páginas. A consulta passa a pedir 500 contratações por página e volta a 50 se o servidor recusar na primeira chamada. Sem mudança de regra: sem achado só vale com a leitura completa.
+
 ## 2026-10-27 · #PR · MPs: dotação por ação (via 4) e empenho como lacuna medida
 
 O coletor das MPs lê o arquivo anual Orçamento da Despesa e registra dotação inicial, atualizada, acréscimo e diferença contra o valor do ato (sem ajuste). A observação do empenho não existe em download aberto (403/500, medido em 26/10): lacuna declarada com motivo. METODOLOGIA §33.2. Nenhum texto público muda.
