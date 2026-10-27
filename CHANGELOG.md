@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Busca de planos: motor mudo sem achado é erro, não ausência
+
+Reverte o Bing único (ignora `site:`/OR e devolve host alheio). Busca web sem achado com motor suspenso ou resposta vazia vira `erro` com os motores no motivo, e refaz depois; `sem_resultado` só com todos os motores respondendo. Linhas líquidas: −3.
+
 ## 2026-10-27 · #PR · Busca de planos: S17, S19, S26 e S30 entram na tabela de fontes do metabuscador
 
 Coordenadorias regionais, diários por associação, repositórios acadêmicos e programas estaduais por adesão ganham uma linha cada em `FONTES_WEB`; mesmas travas (endereço da fonte, município, termo e plano; pista sem documento confirmado). Autoteste +1 caso. Linhas: +24/−0.
