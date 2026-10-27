@@ -190,7 +190,7 @@ function __init(){
   const PERIODO_MAPA = comps.length ? mesDe(comps[0]) + '–' + mesDe(comps[comps.length - 1]) + '/' + String(comps[comps.length - 1]).slice(0, 4) : NAO_LOCALIZADO;
   if (comps.length) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: MESES_LONGOS[Number(String(comps[comps.length - 1]).slice(4, 6)) - 1]});
   if (ASR.n != null) molde('chegaSemRepasse', 'financiamento.chega.sem_repasse.molde', {n: ASR.n, data: ASR.corte});
-  cred('boxChega', [FONTE_DC, 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
+  cred('boxChega', [FONTE_TRANSP + ', transferências da União (defesa civil)', 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
   tabela('boxChega', ['Município', 'UF', 'Origem', 'Repassado desde 29/06/2026', 'Autorizado em portaria (defesa civil)', 'Ato', 'Período'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
     .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), esc(reais(x.repassado)),
       esc(x.origem === 'saude' ? 'não se aplica' : reais(x.autorizado) || NAO_LOCALIZADO), link(x.url, x.ato || ''), esc(PERIODO_MAPA)]));

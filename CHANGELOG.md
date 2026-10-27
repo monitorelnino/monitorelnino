@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Financiamento: o mapa mostra o valor repassado desde 29/06
+
+"Onde o dinheiro chega" passa a ler uma só medida, o valor repassado ao município, em um só período (julho a setembro de 2026 para o FNS). Mapa e tabela leem a mesma lista, com a coluna do valor autorizado em portaria e a linha dos municípios com portaria e repasse não localizado até o corte. Desenho do mapa mantido.
+
 ## 2026-10-27 · #PR · Para gestores: "não localizado" diz a varredura feita
 
 O plano não localizado passa a dizer a varredura feita: "Varredura nacional ou estadual em dd/mm/aaaa; plano não localizado até o corte. Ainda não verificamos a cidade com todas as fontes." Vale quando o livro traz a varredura do município (§3.3, 19/10); sem ela, a frase antiga. Mesmo molde da inicial.
