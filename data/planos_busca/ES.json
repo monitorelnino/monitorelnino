@@ -57,6 +57,20 @@
     "consulta": null,
     "motivo": "HTTP 503",
     "dominio": null
+   },
+   "S17": {
+    "consultado_em": "2026-10-27",
+    "situacao": "erro",
+    "consulta": "\"Vitória\" ES (CREPDEC OR REDEC OR \"coordenadoria regional\" OR \"defesa civil estadual\") \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
+   },
+   "S26": {
+    "consultado_em": "2026-10-27",
+    "situacao": "erro",
+    "consulta": "\"Vitória\" ES (tese OR dissertação OR TCC OR monografia) \"plano de contingência\" \"defesa civil\" (site:edu.br OR site:ibict.br OR site:scielo.br OR site:usp.br OR site:unesp.br OR site:unicamp.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
    }
   },
   "3200102": {
