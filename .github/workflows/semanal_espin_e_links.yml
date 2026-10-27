@@ -10,8 +10,11 @@ name: Semanal — ESPIN e links
 
 on:
   schedule:
-    # Domingo, 3h15 de Brasília — antes da rotina de sinais (4h30) e da busca web (4h00).
-    - cron: "15 6 * * 0"
+    # Domingo e quarta, 3h15 de Brasília — antes da rotina de sinais (4h30) e da busca web (4h00).
+    # 27/10/2026: o frescor da ESPIN aceita 9 dias e a cadência era 7; um timeout do DOU no domingo
+    # (25/10, `coletar_espin.py` mantém o registro anterior, certo) estourava o limite. Dois dias por
+    # semana dão a folga que uma falha de fonte externa pede, sem tocar o limite nem o coletor.
+    - cron: "15 6 * * 0,3"
   workflow_dispatch:
 
 permissions:
