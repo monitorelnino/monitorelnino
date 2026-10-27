@@ -180,6 +180,7 @@ function __init(){
   const maxV = Math.max(1, ...circulos.map(x => x.repassado)), R_MAX = 14;
   MonitorMapas.pontos(ctx, 'mapChega', circulos.slice().sort((a, b) => b.valor - a.valor), {
     r: x => Math.max(1.5, R_MAX * Math.sqrt(x.repassado / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: 0.6, classe: 'circulos-valor',
+    tabela: {sel: '#boxChega', chave: x => [x.nome || '', x.uf || '', ORIGENS_MAPA[x.origem].rotulo]},
     rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato || '')
       + '<br>' + esc(reais(x.repassado))});
   const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.repassado, 0);

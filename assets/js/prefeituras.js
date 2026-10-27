@@ -59,9 +59,8 @@ window.addEventListener('load', function(){
       return cartao('argila', tx('plano.rotulo'), esc(tx('plano.localizado', {ato: sp.documento || sp.fonte || '', data: sp.data || ''}).replace(/,\s*$/, '')),
         sp.url ? '<a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>' : '');
     if (sp.estado === 'nao_verificado') return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_verificado')), esc(tx('plano.nao_verificado_nota')));
-    const v = sp.varredura, com_data = v && /^\d{4}-\d{2}-\d{2}$/.test(v.data || '');
-    const valor = com_data && (v.nivel === 'estadual' || v.nivel === 'nacional')
-      ? tx('plano.varredura', {nivel: tx('plano.nivel.' + v.nivel), data: v.data.split('-').reverse().join('/')})
+    const v = ConsultaMunicipio.varreduraLegivel(sp.varredura);
+    const valor = v && v.nivel !== 'municipal' ? tx('plano.varredura', {nivel: tx('plano.nivel.' + v.nivel), data: v.data})
       : tx('plano.nao_localizado', {corte: corte || tx('sem_coleta')});
     return cartao('argila', tx('plano.rotulo'), esc(valor), tx('plano.nao_localizado_nota'));
   }

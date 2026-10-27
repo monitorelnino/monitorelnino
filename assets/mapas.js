@@ -135,7 +135,7 @@
       .style('pointer-events', 'none').text(d => d.properties.sigla);
   }
 
-  /** Camada de pontos (lat/lon). opts: r(d), cor(d), rotulo(d), classe, opacidade. */
+  /** Camada de pontos (lat/lon). opts: r(d), cor(d), rotulo(d), classe, opacidade, tabela {sel, chave(d)} (ver ligarTabela). */
   function pontos(ctx, svgId, itens, opts) {
     const o = Object.assign({ r: () => 3, cor: () => '#7C4A34', rotulo: null, classe: 'pontos', opacidade: .85 }, opts || {});
     const svg = d3.select('#' + svgId); svg.selectAll('g.' + o.classe).remove();
@@ -144,8 +144,32 @@
       .attr('cx', d => ctx.projection([d.lon, d.lat])[0]).attr('cy', d => ctx.projection([d.lon, d.lat])[1])
       .attr('r', d => o.r(d)).attr('fill', d => o.cor(d)).attr('fill-opacity', o.opacidade).attr('stroke', '#F5F1E8').attr('stroke-width', .6);
     if (o.rotulo) sel.on('mouseenter', (evt, d) => showTip(o.rotulo(d), evt)).on('mousemove', (evt, d) => showTip(o.rotulo(d), evt)).on('mouseleave', hideTip);
+    if (o.tabela) ligarTabela(sel, o.tabela);
     svg.selectAll('g.siglas').raise(); g.raise();
     return g;
+  }
+
+  /** Círculo ↔ linha da tabela "Ver em tabela" da mesma figura. `t = {sel, chave}`: `sel` é o
+   *  contêiner da tabela e `chave(d)` a lista de textos que as primeiras células da linha repetem.
+   *  Clicar no círculo realça a linha e abre a tabela; clicar na linha realça o círculo.
+   *  A tabela é montada depois do mapa, então a linha é procurada na hora do clique. */
+  function ligarTabela(sel, t) {
+    const linhas = () => Array.from(document.querySelectorAll(t.sel + ' tbody tr'));
+    const linhaDe = d => linhas().find(tr => t.chave(d).every((x, i) => tr.cells[i] && tr.cells[i].textContent === x));
+    const marcar = (tr, c) => {
+      linhas().forEach(l => l.classList.toggle('destaque', l === tr));
+      sel.classed('destaque', x => x === c);
+      if (c) sel.filter(x => x === c).raise();
+    };
+    sel.on('click', (evt, d) => {
+        const tr = linhaDe(d); if (!tr) return;
+        const det = tr.closest('details'); if (det) det.open = true;
+        marcar(tr, d); tr.scrollIntoView({block: 'nearest'});
+      });
+    document.addEventListener('click', evt => {
+      const tr = evt.target.closest && evt.target.closest(t.sel + ' tbody tr');
+      if (tr) marcar(tr, sel.data().find(d => linhaDe(d) === tr) || null);
+    });
   }
 
   /** Camada densa (milhares de pontos) num único <path> — barata de renderizar. `classe`
