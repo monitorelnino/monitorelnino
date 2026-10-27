@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=6b6cedab">
+<link rel="stylesheet" href="assets/base.css?v=8db214b2">
 <script src="assets/mapas.js?v=e21ec820"></script>
 <script src="assets/semana.js?v=f42ab28a"></script>
 </head>
@@ -144,16 +144,19 @@
   </dialog>
   <section id="estadual">
     <h2 data-conteudo="saude.estadual.titulo_da_secao">A situação de cada estado</h2>
-    <p class="hint" data-conteudo="saude.estadual.abertura">Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Escolha um estado na tabela para ver o documento, a data e a fonte.</p>
+    <p class="hint" data-conteudo="saude.estadual.abertura">Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Escolha um estado para ver o documento, a data e a fonte.</p>
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxMonitor">
         <p class="cartao-mapa-familia" data-conteudo="saude.estadual.monitor.familia">MARÉ Saúde</p>
         <h3 class="figura-titulo" data-conteudo="saude.estadual.monitor.titulo">Plano estadual de saúde para o El Niño, por estado</h3>
         <p class="figura-sub" data-conteudo="saude.estadual.monitor.legenda">Tipo de plano localizado em cada secretaria estadual de saúde até o corte</p>
         <div class="figura-midia">
-          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Plano</th><th>Coordenação na saúde</th><th>Ligação com o governo do estado</th></tr></thead><tbody></tbody></table></div>
+          <div id="listaTiposPlano"></div>
         </div>
         <p class="figura-nota" id="escadaPlano"></p>
+        <details class="figura-dados" data-alternativa="dados"><summary data-conteudo="saude.estadual.monitor.resumo">Ver em tabela</summary>
+          <div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente"><table class="mun-table" id="tblMonitor"><thead><tr><th>UF</th><th>Plano</th><th>Coordenação na saúde</th><th>Ligação com o governo do estado</th></tr></thead><tbody></tbody></table></div>
+        </details>
       </figure>
     </div>
   </section>
@@ -212,7 +215,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/saude.js?v=2a876bc6" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=7aed6bbc" defer></script><script src="assets/js/saude.js?v=b723927f" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

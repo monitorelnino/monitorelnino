@@ -325,6 +325,8 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .uf-path{stroke:var(--mineral); stroke-width:1.25; cursor:default; transition:opacity .12s;}
 .uf-path:hover{opacity:.8;}
 .map-tooltip{position:fixed; pointer-events:none; background:var(--tooltip-bg); border:1px solid var(--muted); border-radius:var(--radius); padding:var(--sp-2) var(--sp-3); font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--tooltip-ink); z-index:200; display:none; max-width:80vw;}
+.map-tooltip--clicavel{pointer-events:auto;}
+.map-tooltip--clicavel a{color:inherit; text-decoration:underline;}
 .lacuna{display:flex; align-items:center; justify-content:center; min-height:150px; height:100%; border:1px dashed var(--line); border-radius:var(--radius); padding:var(--sp-4); text-align:center; font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted); background:var(--surface-2);}
 .fonte-espera{color:var(--muted);}
 .rota-mp-rotulo{font-family:var(--font-dado); font-size:var(--fs-caption); fill:var(--ink);}

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
+
+Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
+
 ## 2026-10-26 · #1214 · Saúde: a tabela dos estados no lugar do mapa
 
 Sai o mapa dos planos estaduais de saúde, a lista de tipos com siglas e a contagem "zero estados". Fica a tabela dos estados, aberta; a UF abre a ficha. Contrato e textos (catálogo) atualizados; órfãos removidos. Saldo de código e conteúdo −42 linhas. Parte B (VIGIAR) segue aguardando o dado.
