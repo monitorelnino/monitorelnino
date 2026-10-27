@@ -26,13 +26,14 @@ from datetime import date
 from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de, hoje_editorial
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/"
+ORCAMENTO = "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/"   # anual, ação × elemento
 UA = {"User-Agent": ua_de("execução das MPs")}
 UFS = {"AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"}
 
 # (id da MP, órgão subordinado/superior, ações) — vocabulário do arquivo, códigos confirmados
 ALVOS = {
-    "mp1367": {"primeiro_mes": "202606", "orgaos": {"20701": {"nome": "Ibama", "acoes": {"214M", "214N"}}, "44207": {"nome": "ICMBio", "acoes": {"214P"}}}},
-    "mp1384": {"primeiro_mes": "202608", "orgaos": {"22211": {"nome": "MDA / Conab", "acoes": {"2130"}}, "55000": {"nome": "MDS", "acoes": {"2792", "2798"}}}},
+    "mp1367": {"primeiro_mes": "202606", "base_isolamento": "202604", "orgaos": {"20701": {"nome": "Ibama", "acoes": {"214M", "214N"}}, "44207": {"nome": "ICMBio", "acoes": {"214P"}}}},
+    "mp1384": {"primeiro_mes": "202608", "base_isolamento": "202606", "orgaos": {"22211": {"nome": "MDA / Conab", "acoes": {"2130"}}, "55000": {"nome": "MDS", "acoes": {"2792", "2798"}}}},
 }
 
 
@@ -119,11 +120,89 @@ def modalidade_da_linha(row: dict) -> str:
     return MODALIDADES.get(m.group(1), OUTRAS_FORMAS) if m else OUTRAS_FORMAS
 
 
+# Vias 1 e 2 do isolamento do crédito (HANDOVER_EXECUCAO_CREDITOS_MPS_26-10-2026 §3): o plano
+# orçamentário e a fonte de recursos da linha, nos nomes que o Portal usa. Ausente = lacuna, nunca 0.
+PLANO_COLS = ("Código Plano Orçamentário", "Código Plano Orcamentario")
+FONTE_COLS = ("Código Fonte de Recursos", "Codigo Fonte de Recursos")
+
+
+def isolar_novos(por_mes: dict, publicado_mes: str) -> dict:
+    """Códigos (plano ou fonte) com empenho a partir do mês da publicação que não tinham empenho
+    antes dela, na linha de base. Função pura. por_mes: {AAAAMM: {código: {empenhado, pago}}}."""
+    antes = {c for m, d in por_mes.items() if m < publicado_mes
+             for c, v in d.items() if (v.get("empenhado") or 0) > 0}
+    novos: dict = {}
+    for m, d in por_mes.items():
+        if m < publicado_mes:
+            continue
+        for c, v in d.items():
+            if c in antes or not (v.get("empenhado") or 0) > 0:
+                continue
+            n = novos.setdefault(c, {"empenhado": 0.0, "pago": 0.0})
+            n["empenhado"] += v["empenhado"]; n["pago"] += v.get("pago") or 0.0
+    return {"novos": {c: {k: round(x, 2) for k, x in v.items()} for c, v in sorted(novos.items())}}
+
+
+def isolar_mp(iso_mp: dict, publicado_mes: str, colunas: dict, meses_lidos: list) -> dict:
+    """Vias 1 (plano) e 2 (fonte), nesta ordem; a primeira que isola com prova dá o método. Nenhuma
+    isola = 'teto'. Vias 3 (empenho) e 4 (dotação) ficam declaradas como lacuna até serem lidas."""
+    vias = {}
+    for dim, nome, metodo in (("plano", "via_1_plano_orcamentario", "plano_orcamentario"),
+                              ("fonte", "via_2_fonte_de_recursos", "fonte")):
+        if not colunas.get(dim):
+            vias[nome] = {"status": "lacuna", "motivo": "coluna ausente nos arquivos mensais lidos"}
+            continue
+        r = isolar_novos({m: d[dim] for m, d in iso_mp.items()}, publicado_mes)
+        vias[nome] = {"status": "isolado" if r["novos"] else "sem_codigo_novo", **r, "_metodo": metodo}
+    escolhida = next((v["_metodo"] for v in vias.values() if v.get("status") == "isolado"), "teto")
+    for v in vias.values():
+        v.pop("_metodo", None)
+    # Via 3, medida em 26/10/2026 (sonda na válvula): nenhum download aberto traz a observação do empenho.
+    vias["via_3_empenho"] = {"status": "lacuna", "motivo": "nenhum download aberto do Portal traz a observação do empenho: "
+                             "/download-de-dados/despesas recusa o cliente (403) e os demais caminhos testados não existem (500); "
+                             "a API só entrega a observação por documento, não lida"}
+    vias["via_4_dotacao"] = {"status": "lacuna", "motivo": "arquivo anual de orçamento não lido nesta coleta"}
+    return {"metodo": escolhida, "meses_lidos": meses_lidos, **vias}
+
+
+def dotacao_por_acao(linhas, alvos: dict = ALVOS) -> dict:
+    """Via 4: {mp: {ação: {inicial, atualizado}}} do arquivo anual Orçamento da Despesa (ação × elemento de
+    despesa), só das ações e órgãos dos alvos. Colunas em caixa alta no Portal. Função pura."""
+    out = {mp: {} for mp in alvos}
+    for row in linhas:
+        up = {k.upper(): v for k, v in row.items()}
+        sub, sup = (up.get("CÓDIGO ÓRGÃO SUBORDINADO") or "").strip(), (up.get("CÓDIGO ÓRGÃO SUPERIOR") or "").strip()
+        acao = (up.get("CÓDIGO AÇÃO") or "").strip()
+        ini, atu = numero(up.get("ORÇAMENTO INICIAL (R$)")), numero(up.get("ORÇAMENTO ATUALIZADO (R$)"))
+        for mp, a in alvos.items():
+            if any(acao in sp["acoes"] and (sub == cod or (cod == "55000" and sup == "55000")) for cod, sp in a["orgaos"].items()):
+                d = out[mp].setdefault(acao, {"inicial": None, "atualizado": None})
+                d["inicial"], d["atualizado"] = somar(d["inicial"], ini), somar(d["atualizado"], atu)
+    return {mp: {ac: {k: arred(v) for k, v in d.items()} for ac, d in sorted(acs.items())} for mp, acs in out.items()}
+
+
+def via_dotacao(por_acao: dict, valor_ato, fonte: str, exercicio: str, hash_arquivo: str) -> dict:
+    """Via 4: o acréscimo da dotação (atualizada − inicial) das ações da MP contra o valor do ato. A diferença
+    é registrada, nunca ajustada. O acréscimo inclui toda suplementação e cancelamento da ação no exercício, não
+    só o crédito da MP: bater com o valor é indício, divergir é fato registrado; nenhum dos dois isola execução."""
+    if not por_acao or not all(d["inicial"] is not None and d["atualizado"] is not None for d in por_acao.values()):
+        return {"status": "lacuna", "motivo": "ação da MP sem dotação inicial ou atualizada no arquivo anual", "fonte": fonte}
+    ini, atu = sum(d["inicial"] for d in por_acao.values()), sum(d["atualizado"] for d in por_acao.values())
+    out = {"fonte": fonte, "exercicio": exercicio, "hash": hash_arquivo, "por_acao": por_acao,
+           "inicial": round(ini, 2), "atualizado": round(atu, 2), "acrescimo": round(atu - ini, 2), "valor_do_ato": valor_ato,
+           "limite": "o acréscimo da dotação inclui toda suplementação e cancelamento da ação no exercício, não só o crédito da MP"}
+    if not isinstance(valor_ato, (int, float)):
+        return {**out, "status": "lacuna", "motivo": "valor do ato ausente"}
+    dif = round(out["acrescimo"] - valor_ato, 2)
+    return {**out, "diferenca": dif, "status": "paridade" if abs(dif) <= 1 else "diverge"}
+
+
 def agregar(linhas, alvos: dict = ALVOS) -> dict:
     """{mp: {'orgaos': {codigo: {empenhado, liquidado, pago}}, 'por_uf_pago': {UF: v}, 'empenhado','liquidado','pago'}}
     Só linhas cujo (órgão, ação) está nos alvos. Função pura, testável."""
     out = {mp: {"orgaos": {c: {"empenhado": None, "liquidado": None, "pago": None} for c in a["orgaos"]},
                 "por_uf_pago": defaultdict(float), "por_modalidade_pago": defaultdict(float),
+                "por_plano": {}, "por_fonte": {}, "colunas": {"plano": False, "fonte": False},
                 "empenhado": None, "liquidado": None, "pago": None} for mp, a in alvos.items()}
     for row in linhas:
         cod_sub = (row.get("Código Órgão Subordinado") or "").strip(); cod_sup = (row.get("Código Órgão Superior") or "").strip()
@@ -135,6 +214,15 @@ def agregar(linhas, alvos: dict = ALVOS) -> dict:
                     o = out[mp]["orgaos"][cod_org]
                     for k, v in (("empenhado", e), ("liquidado", l), ("pago", p)):
                         o[k] = somar(o[k], v); out[mp][k] = somar(out[mp][k], v)
+                    for dim, cols in (("plano", PLANO_COLS), ("fonte", FONTE_COLS)):
+                        c = next((x for x in cols if x in row), None)
+                        if c is None:
+                            continue
+                        out[mp]["colunas"][dim] = True
+                        cod = (row.get(c) or "").strip()
+                        if cod:
+                            d = out[mp]["por_" + dim].setdefault(cod, {"empenhado": None, "pago": None})
+                            d["empenhado"] = somar(d["empenhado"], e); d["pago"] = somar(d["pago"], p)
                     if p:   # só o que foi pago entra no destino (estornos e empenhos sem pagamento não desenham mapa)
                         out[mp]["por_uf_pago"][uf_da_linha(row)] += p
                         out[mp]["por_modalidade_pago"][modalidade_da_linha(row)] += p
@@ -143,6 +231,9 @@ def agregar(linhas, alvos: dict = ALVOS) -> dict:
         out[mp]["por_modalidade_pago"] = {k: round(v, 2)
                                           for k, v in out[mp]["por_modalidade_pago"].items()}
         for k in ("empenhado", "liquidado", "pago"): out[mp][k] = arred(out[mp][k])
+        for dim in ("por_plano", "por_fonte"):
+            for d in out[mp][dim].values():
+                d["empenhado"], d["pago"] = arred(d["empenhado"]), arred(d["pago"])
         for o in out[mp]["orgaos"].values():
             for k in o: o[k] = arred(o[k])
     return out
@@ -154,6 +245,13 @@ def _linhas_do_zip(bruto: bytes):
         txt = io.TextIOWrapper(f, encoding="latin-1", errors="replace", newline="")
         for row in csv.DictReader(txt, delimiter=";"):
             yield row
+
+
+def _baixar_zip(url: str) -> bytes:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=900) as r:
+        bruto = r.read()
+    zipfile.ZipFile(io.BytesIO(bruto))   # levanta se não for ZIP (muro de robô servido com 200)
+    return bruto
 
 
 def meses_ate_hoje(primeiro: str) -> list:
@@ -178,16 +276,19 @@ def coletar() -> int:
                       "empenhado": None, "liquidado": None, "pago": None} for mp, a in ALVOS.items()}
     dia = hoje_editorial()
     meses_lidos, hashes = [], {}
-    for mes in meses_ate_hoje(primeiro):
+    base = min(a["base_isolamento"] for a in ALVOS.values())
+    iso = {mp: {} for mp in ALVOS}; colunas = {mp: {"plano": False, "fonte": False} for mp in ALVOS}
+    for mes in meses_ate_hoje(base):
         try:
-            with urllib.request.urlopen(urllib.request.Request(BASE + mes, headers=UA), timeout=900) as r:
-                bruto = r.read()
-            zipfile.ZipFile(io.BytesIO(bruto))
+            bruto = _baixar_zip(BASE + mes)
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"Portal — execução mensal {mes}", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[BASE + mes]); continue
         parcial = agregar(_linhas_do_zip(bruto))
         hashes[mes] = hashlib.sha256(bruto).hexdigest(); meses_lidos.append(mes)
         for mp, a in ALVOS.items():
+            if mes >= a["base_isolamento"]:
+                iso[mp][mes] = {"plano": parcial[mp]["por_plano"], "fonte": parcial[mp]["por_fonte"]}
+                for dim in colunas[mp]: colunas[mp][dim] |= parcial[mp]["colunas"][dim]
             if mes < a["primeiro_mes"]:
                 continue
             for k in ("empenhado", "liquidado", "pago"): acumulado[mp][k] = somar(acumulado[mp][k], parcial[mp][k])
@@ -219,6 +320,12 @@ def coletar() -> int:
                          canal="DOU", camada=1)
         print("execucao_mps: arquivos lidos e nenhuma linha casada — lacuna declarada, nada alterado")
         return 0
+    exercicio = str(dia.year); dot, dot_fonte, dot_hash = None, ORCAMENTO + exercicio, None
+    try:
+        bruto = _baixar_zip(dot_fonte); dot_hash = hashlib.sha256(bruto).hexdigest()
+        dot = dotacao_por_acao(_linhas_do_zip(bruto))
+    except Exception as e:  # noqa: BLE001 — falha vira lacuna da via 4, o resto da coleta segue
+        registrar_lacuna("Portal — Orçamento da Despesa " + exercicio, f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[dot_fonte])
     for mp in mps["mps"]:
         a = acumulado.get(mp["id"]);
         if not a: continue
@@ -231,6 +338,10 @@ def coletar() -> int:
         # A fonte não separa o crédito extraordinário da dotação ordinária: empenhado acima do valor do ato é
         # esperado e não é erro de soma; o marcador deixa a página não pôr os dois lado a lado (24/10/2026).
         mp["execucao"]["acima_do_valor_do_ato"] = acima_do_valor(mp.get("valor"), a["empenhado"])
+        mp["isolamento"] = isolar_mp(iso[mp["id"]], ALVOS[mp["id"]]["primeiro_mes"], colunas[mp["id"]],
+                                     [m for m in meses_lidos if m >= ALVOS[mp["id"]]["base_isolamento"]])
+        if dot is not None:
+            mp["isolamento"]["via_4_dotacao"] = via_dotacao(dot[mp["id"]], mp.get("valor"), dot_fonte, exercicio, dot_hash)
         for org in mp["orgaos"]:
             cod = next((c for c, s in ALVOS[mp["id"]]["orgaos"].items() if s["nome"] == org["nome"]), None)
             if cod:
@@ -360,6 +471,41 @@ def autoteste() -> int:
             return ler_risco_declarado({"numero": "MP 1", "fontes": ["https://www.congressonacional.leg.br/x"]}, falha) is None
         finally:
             cb.registrar_lacuna = orig; globals()["registrar_lacuna"] = antes
+    def t15():
+        # via 1: plano que aparece com empenho só depois da publicação é isolado; o que já existia, não
+        por_mes = {"202604": {"A": {"empenhado": 10.0, "pago": 5.0}},
+                   "202606": {"A": {"empenhado": 4.0, "pago": 1.0}, "B": {"empenhado": 7.0, "pago": 3.0}},
+                   "202607": {"B": {"empenhado": 2.0, "pago": 2.0}}}
+        r = isolar_novos(por_mes, "202606")
+        return r["novos"] == {"B": {"empenhado": 9.0, "pago": 5.0}}
+    def t16():
+        # sem a coluna o status é lacuna (não 'sem código'); com coluna e sem código novo, o método é teto
+        sem = isolar_mp({"202604": {"plano": {}, "fonte": {}}}, "202606", {"plano": False, "fonte": False}, ["202604"])
+        com = isolar_mp({"202604": {"plano": {"A": {"empenhado": 1.0, "pago": 1.0}}, "fonte": {}},
+                         "202606": {"plano": {"A": {"empenhado": 1.0, "pago": 1.0}}, "fonte": {}}},
+                        "202606", {"plano": True, "fonte": False}, ["202604", "202606"])
+        return (sem["via_1_plano_orcamentario"]["status"] == "lacuna" and sem["metodo"] == "teto"
+                and com["via_1_plano_orcamentario"]["status"] == "sem_codigo_novo" and com["metodo"] == "teto")
+    def t17():
+        # agregar: plano e fonte por código só das linhas dos alvos; coluna presente marca a via
+        L2 = [dict(L[0], **{"Código Plano Orçamentário": "0001", "Código Fonte de Recursos": "100"}),
+              dict(L[1], **{"Código Plano Orçamentário": "0002"})]
+        g = agregar(L2)["mp1367"]
+        return (g["colunas"] == {"plano": True, "fonte": True} and g["por_plano"]["0002"]["empenhado"] == -200.0
+                and g["por_fonte"] == {"100": {"empenhado": 1000.5, "pago": 400.0}})
+    def t18():
+        # via 4: colunas em caixa alta; só ação e órgão dos alvos; paridade com o valor do ato; diferença registrada, nunca ajustada
+        O = [{"CÓDIGO ÓRGÃO SUPERIOR": "22000", "CÓDIGO ÓRGÃO SUBORDINADO": "22211", "CÓDIGO AÇÃO": "2130", "ORÇAMENTO INICIAL (R$)": "100,00", "ORÇAMENTO ATUALIZADO (R$)": "150,00"},
+             {"CÓDIGO ÓRGÃO SUPERIOR": "22000", "CÓDIGO ÓRGÃO SUBORDINADO": "22211", "CÓDIGO AÇÃO": "2130", "ORÇAMENTO INICIAL (R$)": "0,00", "ORÇAMENTO ATUALIZADO (R$)": "50,00"},
+             {"CÓDIGO ÓRGÃO SUPERIOR": "55000", "CÓDIGO ÓRGÃO SUBORDINADO": "55101", "CÓDIGO AÇÃO": "2792", "ORÇAMENTO INICIAL (R$)": "10,00", "ORÇAMENTO ATUALIZADO (R$)": "10,00"},
+             {"CÓDIGO ÓRGÃO SUPERIOR": "99000", "CÓDIGO ÓRGÃO SUBORDINADO": "99001", "CÓDIGO AÇÃO": "2130", "ORÇAMENTO INICIAL (R$)": "7,00", "ORÇAMENTO ATUALIZADO (R$)": "7,00"}]
+        d = dotacao_por_acao(O)["mp1384"]
+        ok = d == {"2130": {"inicial": 100.0, "atualizado": 200.0}, "2792": {"inicial": 10.0, "atualizado": 10.0}}
+        fecha = via_dotacao(d, 100.0, "u", "2026", "h")
+        diverge = via_dotacao(d, 90.0, "u", "2026", "h")
+        sem = via_dotacao({"2130": {"inicial": None, "atualizado": 5.0}}, 1.0, "u", "2026", "h")
+        return (ok and fecha["status"] == "paridade" and fecha["diferenca"] == 0.0
+                and diverge["status"] == "diverge" and diverge["diferenca"] == 10.0 and sem["status"] == "lacuna")
     def t14(): return acima_do_valor(337.0, 376.0) and not acima_do_valor(337.0, 300.0) and not acima_do_valor(None, 1.0)
     return rodar_autoteste({"empenhado da ação acima do valor do ato é marcado, nunca escondido": t14,
                             "§9.3: risco declarado pela ementa; sem família, risco nulo com o trecho": t12,
@@ -371,7 +517,11 @@ def autoteste() -> int:
                             "modalidade ilegível não inventa categoria": t8,
                             "o agregado guarda o desembolsado por modalidade": t9,
                             "valor vazio é ausência, soma só os presentes (A6-22)": t10,
-                            "mês corrente da coleta é parcial (A6-13)": t11})
+                            "mês corrente da coleta é parcial (A6-13)": t11,
+                            "via 1: plano novo depois da publicação isola; o que já existia não": t15,
+                            "vias 1–2: sem coluna é lacuna; sem código novo, teto": t16,
+                            "agrega plano e fonte por código, só nos alvos": t17,
+                            "via 4: dotação por ação; paridade ou divergência registrada, sem ajuste": t18})
 
 
 if __name__ == "__main__":
