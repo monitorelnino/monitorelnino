@@ -52,14 +52,18 @@ window.addEventListener('load', function(){
     + '<p class="cartao-numero-rotulo">' + esc(rotulo) + '</p><p>' + valor + '</p>'
     + (nota ? '<p class="note u-mb-0">' + nota + '</p>' : '') + '</div>';
 
-  /* Três valores, como no handover: localizado (com o ato e o documento), não localizado até o corte
-     (verificado, sem documento de plano) e ainda não verificado. */
+  /* Três valores, como no handover: localizado (com o ato e o documento), não localizado (com a
+     varredura do livro, 19/10 §3.3, ou até o corte, sem ela) e ainda não verificado. */
   function cartaoPlano(sp, corte) {
     if (sp.estado === 'encontrado' || sp.estado === 'estadual')
       return cartao('argila', tx('plano.rotulo'), esc(tx('plano.localizado', {ato: sp.documento || sp.fonte || '', data: sp.data || ''}).replace(/,\s*$/, '')),
         sp.url ? '<a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(tx('plano.ver')) + '</a>' : '');
     if (sp.estado === 'nao_verificado') return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_verificado')), esc(tx('plano.nao_verificado_nota')));
-    return cartao('argila', tx('plano.rotulo'), esc(tx('plano.nao_localizado', {corte: corte || tx('sem_coleta')})), tx('plano.nao_localizado_nota'));
+    const v = sp.varredura, com_data = v && /^\d{4}-\d{2}-\d{2}$/.test(v.data || '');
+    const valor = com_data && (v.nivel === 'estadual' || v.nivel === 'nacional')
+      ? tx('plano.varredura', {nivel: tx('plano.nivel.' + v.nivel), data: v.data.split('-').reverse().join('/')})
+      : tx('plano.nao_localizado', {corte: corte || tx('sem_coleta')});
+    return cartao('argila', tx('plano.rotulo'), esc(valor), tx('plano.nao_localizado_nota'));
   }
 
   function mostrar(uf, nome, card, ref, enq, sinais, fin, plano, corte) {
