@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 `semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
 
+## 2026-10-27 · #PR · S22: busca textual do PNCP com os parâmetros da API
+A sonda do PNCP pedia `tipo_documento` no singular e sem `status`, e o servidor respondia 400. Passa a pedir `tipos_documento=edital` e `status=todos`, como a busca pública do portal. A válvula de 27/10 mostrou que varrer contratações por município não escala (cinco capitais lidas em duas horas e meia); a busca por texto, se responder, resolve as 27 capitais em minutos.
+
 ## 2026-10-27 · Rodada paralela 1.8: o prazo grava o que foi lido
 
 O lote 4 leu por 5 horas e foi interrompido pelo prazo sem gravar nada, porque o rejulgamento só gravava no fim. Agora a interrupção do prazo (SIGINT, com 60 s de espera) grava o que já foi lido, como fazem os outros coletores. Só a rodada paralela muda.
