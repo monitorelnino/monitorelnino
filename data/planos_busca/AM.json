@@ -50,6 +50,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1302603&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: mais de 40 páginas numa consulta, sem achado; não vale como ausência",
+    "dominio": null
    }
   },
   "1300029": {

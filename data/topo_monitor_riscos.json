@@ -1,6 +1,6 @@
 {
  "_governanca": "INSTANTÂNEO dos números de agora do Monitor de riscos, para a Imprensa e a página lerem em vez de recalcular (handover de 02/10/2026, item 1; HANDOVER_TEXTOS_B §10.3). Não é fonte de nada. Cada cartão guarda em `anterior` o valor e a referência da leitura anterior; sem leitura anterior, o campo não existe. Avisos: avisos distintos no país. O de temperatura é o maior DESVIO em relação à normal 1991–2020 do Inmet, e não a máxima absoluta: 35 °C é normal em Cuiabá e muito quente em Porto Alegre, e publicar a máxima absoluta era publicar geografia como se fosse notícia — mesma régua do mapa de calor da página.",
- "gerado_em": "26/10/2026",
+ "gerado_em": "27/10/2026",
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
@@ -19,14 +19,14 @@
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 5599,
-   "referencia": "Focos do dia — focos_diario_br_20261026.csv",
+   "valor": 235,
+   "referencia": "Focos do dia — focos_diario_br_20261027.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 4603,
-    "referencia": "Focos do dia — focos_diario_br_20261025.csv"
+    "valor": 5599,
+    "referencia": "Focos do dia — focos_diario_br_20261026.csv"
    }
   },
   {
@@ -42,14 +42,14 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 2,
+   "valor": 1,
    "perigo_ou_maior": 0,
-   "referencia": "26/10/2026 09:19",
+   "referencia": "26/10/2026 22:14",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
     "valor": 2,
-    "referencia": "26/10/2026 05:50"
+    "referencia": "26/10/2026 09:19"
    }
   },
   {
