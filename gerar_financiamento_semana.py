@@ -38,10 +38,15 @@ BANCO_PROIBIDO = {"estados.json", "saude_uf.json", "municipios.json", "indice.js
                   "monitor_saude.json"}
 
 
+def primeiro_mes_inteiro() -> str:
+    """Primeira competência mensal inteira depois de 29/06/2026 (julho): o FNS e as transferências da União são
+    mensais e não trazem a data do repasse, então junho não se rateia."""
+    return INICIO_CICLO.strftime("%Y%m") if INICIO_CICLO.day == 1 else (INICIO_CICLO.replace(day=28) + timedelta(days=4)).strftime("%Y%m")
+
+
 def emergencia_por_mes(v: dict) -> dict:
-    """Repasse do FNS ligado a emergência por mês, desde o início do ciclo (29/06/2026). O FNS é mensal e não traz a
-    data do repasse: entram só os meses inteiros a partir do ciclo (o recorte conservador, julho em diante)."""
-    mes0 = INICIO_CICLO.strftime("%Y%m") if INICIO_CICLO.day == 1 else (INICIO_CICLO.replace(day=28) + timedelta(days=4)).strftime("%Y%m")
+    """Repasse do FNS ligado a emergência por mês, desde o início do ciclo (julho em diante)."""
+    mes0 = primeiro_mes_inteiro()
     return {k: float(x[1] or 0.0) for k, x in ((v or {}).get("meses") or {}).items() if k >= mes0}
 
 
@@ -379,33 +384,91 @@ def topo(mps: dict, comp: dict, rec: dict, fns_mun: dict, corte: datetime) -> li
     return [anunciado, pago, gasto, defesa, sus]
 
 
-def mapa(rec: dict, fns_mun: dict, ref: list, corte: datetime) -> list:
-    """Pontos do mapa municipal (§5): defesa civil (autorizado desde 29/06) e saúde (FNS de
-    emergência), com a sede de `municipios_ibge_referencia.json`. Município sem sede fica fora,
-    contado em `sem_sede`. Função pura."""
-    sede = {str(r.get("codigo_ibge")).zfill(7): (r.get("lat"), r.get("lon"), r.get("nome"), r.get("uf")) for r in ref or []}
-    pts = []
-    por_mun = {}
-    for ib, a, _ in atos_do_ciclo(rec, corte):
-        por_mun.setdefault(ib, []).append(a)
-    for ib, atos in por_mun.items():
-        ult = max(atos, key=lambda a: a.get("data") or "")
-        pts.append({"ibge": str(ib).zfill(7), "origem": "defesa_civil", "valor": round(sum(float(a.get("valor_autorizado") or 0) for a in atos), 2),
-                    "ato": ("Portaria " + str(ult.get("portaria"))) if ult.get("portaria") else None, "data": ult.get("data"), "url": ult.get("url"),
-                    "n_atos": len(atos)})
-    for ib, v in ((fns_mun or {}).get("municipios") or {}).items():
-        e = emergencia_no_ciclo(v)
-        if e > 0:
-            pts.append({"ibge": str(ib).zfill(7), "origem": "saude", "valor": round(e, 2), "ato": "repasse do FNS ligado a emergência",
-                        "data": None, "url": (fns_mun or {}).get("fonte"), "n_atos": None})
-    out = []
-    for p in sorted(pts, key=lambda p: (p["origem"], p["ibge"])):
-        s = sede.get(p["ibge"])
-        if s and s[0] is not None:
-            out.append(dict(p, lat=s[0], lon=s[1], nome=s[2], uf=s[3]))
-        else:
-            out.append(dict(p, lat=None, lon=None, nome=None, uf=None, sem_sede=True))
+def competencias(transf: dict) -> list:
+    """Meses do período único do mapa: de julho até o último mês FECHADO das transferências da União."""
+    ult = ultimo_mes_fechado((transf or {}).get("meses_lidos") or {})
+    ml = (transf or {}).get("meses_lidos") or {}
+    return [] if not ult else sorted(m for m, v in ml.items() if primeiro_mes_inteiro() <= m <= ult and not (v or {}).get("parcial"))
+
+
+def periodo_do_mapa(comp: list) -> str | None:
+    if not comp: return None
+    return f"{INICIO_CICLO.strftime('%d/%m/%Y')} (competências de {mes_legivel(comp[0])} a {mes_legivel(comp[-1])})"
+
+
+def repassado_defesa_civil(transf: dict, comp: list) -> dict:
+    """ibge → valor repassado pela União ao município na rota `defesa_civil`, nas competências do período."""
+    out = {}
+    for ib, m in ((transf or {}).get("municipios") or {}).items():
+        v = sum(float(((m or {}).get("meses") or {}).get(k, {}).get("defesa_civil") or 0.0) for k in comp)
+        if v > 0: out[str(ib).zfill(7)] = round(v, 2)
     return out
+
+
+def repassado_saude(fns_mun: dict, comp: list) -> dict:
+    """ibge → repasse do FNS ligado a emergência nas mesmas competências."""
+    out = {}
+    for ib, v in ((fns_mun or {}).get("municipios") or {}).items():
+        e = sum(x for k, x in emergencia_por_mes(v).items() if k in comp)
+        if e > 0: out[str(ib).zfill(7)] = round(e, 2)
+    return out
+
+
+def autorizado_por_municipio(rec: dict, corte: datetime) -> dict:
+    """ibge → (autorizado no ciclo, portaria mais recente) das portarias da SEDEC."""
+    por = {}
+    for ib, a, _ in atos_do_ciclo(rec, corte):
+        por.setdefault(str(ib).zfill(7), []).append(a)
+    return {ib: (round(sum(float(a.get("valor_autorizado") or 0) for a in atos), 2), max(atos, key=lambda a: a.get("data") or ""))
+            for ib, atos in por.items()}
+
+
+def mapa(rec: dict, fns_mun: dict, transf: dict, ref: list, corte: datetime) -> list:
+    """Linhas do mapa e da tabela de 'Onde o dinheiro chega' (§5, 26/10/2026): UMA medida, valor REPASSADO ao
+    município, num período único (julho em diante). Defesa civil = transferências da União na rota
+    `defesa_civil`, casadas à portaria quando há; saúde = repasse do FNS em linhas de emergência. Portaria sem
+    repasse não vira linha (ver `autorizado_sem_repasse`). Sede de `municipios_ibge_referencia.json`. Função pura."""
+    comp = competencias(transf)
+    sede = {str(r.get("codigo_ibge")).zfill(7): (r.get("lat"), r.get("lon"), r.get("nome"), r.get("uf")) for r in ref or []}
+    aut = autorizado_por_municipio(rec, corte)
+    per = periodo_do_mapa(comp)
+    fonte_dc = "Portal da Transparência, Transferências de Recursos (rota defesa civil)"
+    out = []
+    for origem, rep in (("defesa_civil", repassado_defesa_civil(transf, comp)), ("saude", repassado_saude(fns_mun, comp))):
+        for ib in sorted(rep):
+            a_val, a = aut.get(ib, (None, None)) if origem == "defesa_civil" else (None, None)
+            s = sede.get(ib)
+            lin = {"cod_ibge": ib, "origem": origem, "repassado": rep[ib], "autorizado": a_val,
+                   "ato": ("Portaria " + str(a.get("portaria"))) if a and a.get("portaria") else None,
+                   "data": a.get("data") if a else None, "url": a.get("url") if a else None, "periodo": per,
+                   "fonte": fonte_dc if origem == "defesa_civil" else (fns_mun or {}).get("fonte")}
+            # `ibge` e `valor`: nomes que a página atual lê; a B3 troca a leitura e estes dois saem.
+            lin.update(ibge=ib, valor=rep[ib])
+            lin.update(nome=s[2], uf=s[3], lat=s[0], lon=s[1]) if s and s[0] is not None else lin.update(nome=None, uf=None, lat=None, lon=None, sem_sede=True)
+            out.append(lin)
+    return out
+
+
+def mapa_resumo(linhas: list, transf: dict) -> dict:
+    """Totais da legenda: soma de `repassado` por origem, a mesma que a tabela mostra."""
+    comp = competencias(transf)
+    tot = {o: round(sum(x["repassado"] for x in linhas if x["origem"] == o), 2) for o in ("defesa_civil", "saude")}
+    n = {o: sum(1 for x in linhas if x["origem"] == o) for o in tot}
+    return {"periodo": periodo_do_mapa(comp), "competencias": comp, "total": tot, "municipios": n,
+            "sem_sede": sum(1 for x in linhas if x.get("sem_sede"))}
+
+
+def autorizado_sem_repasse(rec: dict, transf: dict, ref: list, corte: datetime) -> dict:
+    """Portaria da SEDEC no ciclo sem repasse de defesa civil localizado no período: lacuna declarada, com a
+    data do corte do dado, nunca zero. Função pura."""
+    comp = competencias(transf)
+    rep = repassado_defesa_civil(transf, comp)
+    sede = {str(r.get("codigo_ibge")).zfill(7): (r.get("nome"), r.get("uf")) for r in ref or []}
+    mun = [{"cod_ibge": ib, "nome": sede.get(ib, (None, None))[0], "uf": sede.get(ib, (None, None))[1], "autorizado": v,
+            "ato": ("Portaria " + str(a.get("portaria"))) if a.get("portaria") else None, "data": a.get("data"), "url": a.get("url")}
+           for ib, (v, a) in sorted(autorizado_por_municipio(rec, corte).items()) if ib not in rep]
+    return {"corte": corte.strftime("%d/%m/%Y"), "ultimo_mes_lido": comp[-1] if comp else None, "n": len(mun),
+            "autorizado_total": round(sum(m["autorizado"] for m in mun), 2), "municipios": mun}
 
 
 def funil_defesa_civil(dec: dict, rec: dict, corte: datetime) -> dict:
@@ -459,7 +522,9 @@ def montar(mps: dict, transf: dict, rec: dict, comp: dict, corte: datetime,
             "cartoes": cartoes,
             "topo": topo(mps, comp, rec, fns_mun, corte),
             "mes_a_mes": mes_a_mes(mps),
-            "mapa": mapa(rec, fns_mun, ref, corte),
+            "mapa": (lm := mapa(rec, fns_mun, transf, ref, corte)),
+            "mapa_resumo": mapa_resumo(lm, transf),
+            "autorizado_sem_repasse": autorizado_sem_repasse(rec, transf, ref, corte),
             "serie_mensal": serie_mensal(rec, fns_mun, corte),
             "funil_defesa_civil": funil_defesa_civil(dec, rec, corte)}
 
@@ -561,15 +626,30 @@ def _autoteste() -> int:
     ok("mes a mes marca o parcial", mes_a_mes(MPS)[0]["meses"] == [{"mes": "202609", "pago": 60.0, "parcial": False},
                                                                   {"mes": "202610", "pago": 40.0, "parcial": True}])
     base["municipios"]["1"]["atos"][0]["portaria"] = "9"
-    pts = mapa(base, FNS, [{"codigo_ibge": 1, "lat": -1.0, "lon": -2.0, "nome": "X", "uf": "SP"}], corte)
-    ok("mapa: um ponto por municipio e origem, com sede; sem sede fica marcado",
-       [(p["origem"], p["valor"], p["lat"]) for p in pts] == [("defesa_civil", 1000.0, -1.0), ("saude", 2.0, -1.0)]
-       and mapa(base, {}, [], corte)[0]["sem_sede"] is True)
+    TR = {"meses_lidos": {"202606": {}, "202607": {}, "202608": {"parcial": True}, "202609": {}},
+          "municipios": {"1": {"meses": {"202606": {"defesa_civil": 7.0}, "202607": {"defesa_civil": 40.0}, "202608": {"defesa_civil": 9.0},
+                                         "202609": {"defesa_civil": 2.0}}}, "3": {"meses": {"202607": {"defesa_civil": 5.0}}}}}
+    REF = [{"codigo_ibge": 1, "lat": -1.0, "lon": -2.0, "nome": "X", "uf": "SP"}]
+    base2 = {"municipios": {**base["municipios"], "2": {"atos": [{"acao": "resposta", "data": "2026-09-20", "valor_autorizado": 30.0, "portaria": "7"}]}}}
+    pts = mapa(base2, FNS, TR, REF, corte)
+    res = mapa_resumo(pts, TR)
+    ok("mapa: valor REPASSADO por origem no periodo unico (junho e mes parcial fora), casado a portaria; sem sede fica marcado",
+       competencias(TR) == ["202607", "202609"]
+       and [(p["cod_ibge"], p["origem"], p["repassado"], p["autorizado"], p.get("lat")) for p in pts]
+       == [("0000001", "defesa_civil", 42.0, 1000.0, -1.0), ("0000003", "defesa_civil", 5.0, None, None), ("0000001", "saude", 2.0, None, -1.0)]
+       and pts[1]["sem_sede"] is True and mapa(base2, {}, {}, [], corte) == [])
+    ok("soma: repassado por origem no mapa = totais da legenda = soma da tabela",
+       res["total"] == {"defesa_civil": 47.0, "saude": 2.0} == {o: round(sum(p["valor"] for p in pts if p["origem"] == o), 2) for o in ("defesa_civil", "saude")}
+       and res["municipios"] == {"defesa_civil": 2, "saude": 1} and res["sem_sede"] == 1)
+    asr = autorizado_sem_repasse(base2, TR, REF, corte)
+    ok("portaria sem repasse vai a lista propria (lacuna com corte), nao a circulo",
+       asr["n"] == 1 and asr["municipios"][0]["cod_ibge"] == "0000002" and asr["autorizado_total"] == 30.0
+       and asr["ultimo_mes_lido"] == "202609" and not any(p["cod_ibge"] == "0000002" for p in pts))
 
     sm = serie_mensal(base, FNS, corte)
-    ok("serie mensal: soma = cartao defesa civil + SUS = mapa; junho do SUS fora do recorte (None, nao zero)",
-       sm["total_defesa_civil"] == t["defesa_civil_ciclo"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "defesa_civil")
-       and sm["total_saude"] == t["sus_emergencia"]["valor"] == sum(p["valor"] for p in pts if p["origem"] == "saude")
+    ok("serie mensal (AUTORIZADO por portaria, no mes da portaria): soma = cartao defesa civil; SUS = cartao SUS; junho do SUS fora (None, nao zero)",
+       sm["total_defesa_civil"] == t["defesa_civil_ciclo"]["valor"]
+       and sm["total_saude"] == t["sus_emergencia"]["valor"]
        and sm["meses"][0]["saude"] is None and sm["meses"][-1]["parcial"] is True and serie_mensal({}, {}, corte) == {})
     DEC = {"gerado_em": "25/10/2026", "municipios": {"a": {"ibge": "1", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},
            "b": {"ibge": "2", "decreto": True, "reconhecido": True, "primeiro_reconhecimento": "01/09/2026"},

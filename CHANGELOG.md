@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O resolvedor de rodada une os planos de busca por município e fonte pela base comum: fonte lida só de um lado entra, a mesma fonte lida diferente nos dois lados é recusada. Antes recusava toda vez, e cada PR de dado das válvulas exigia união à mão.
 
+## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
+
+`semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
+
 ## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
 
 Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
