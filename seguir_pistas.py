@@ -320,7 +320,7 @@ def candidatos_da_noticia(pista, html):
 EXTENSOES_DE_ATO_18 = (".pdf", ".doc", ".docx", ".odt", ".rtf")
 RE_ATO_18 = re.compile(r"decreto|\blei\b|portaria|plancon|instru[çc][ãa]o", re.I)
 RECUSAS_HTTP_18 = (401, 403, 429, 451)
-ESPERAS_18 = (0, 30, 120)
+ESPERAS_18 = (0, 10, 30)
 
 
 def seguir_agregador_18(pista, resolver, buscar_html_=buscar_html):
@@ -360,6 +360,9 @@ def ler_com_espera_18(url, buscar, esperas=ESPERAS_18, dormir=None):
                 registro["resultado"] = f"recusa_{codigo}"
                 return None, registro
             continue
+        if texto == "":   # o arquivo veio e não tem texto (PDF escaneado): tentar de novo não muda nada
+            registro["resultado"] = "sem_texto"
+            return None, registro
         if texto:
             registro["resultado"] = "lido"
             return texto, registro
@@ -483,8 +486,24 @@ def autoteste():
         return ([p["url"][-1] for p in l] == ["A", "D"] and all(p["status"] == STATUS_PENDENTE for p in l)
                 and len(do_arquivo(itens, set(), 1)) == 1)
 
+    def t_b5_18_espera_recusa_e_sem_texto():
+        class Recusa(Exception):
+            code = 403
+        esperas, n = [], []
+        def falha_e_le(u):
+            n.append(u)
+            if len(n) < 3:
+                raise OSError("timeout")
+            return "texto"
+        texto, reg = ler_com_espera_18("u", falha_e_le, dormir=esperas.append)
+        _, r403 = ler_com_espera_18("u", lambda u: (_ for _ in ()).throw(Recusa()), dormir=lambda s: None)
+        _, rvazio = ler_com_espera_18("u", lambda u: "", dormir=lambda s: None)
+        return (texto == "texto" and esperas == list(ESPERAS_18) and r403["resultado"] == "recusa_403"
+                and r403["tentativas"] == 1 and rvazio == {"url": "u", "tentativas": 1, "resultado": "sem_texto", "erros": []})
+
     try:
         return rodar_autoteste({
+            "B5 (1.8): espera crescente; 403 e PDF sem texto não insistem": t_b5_18_espera_recusa_e_sem_texto,
             "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,
             "rota (notícia) e página oficial (B4) viram pistas novas de documento": t_rota_e_b4_viram_pistas_novas,
             "lixo cai com motivo (B1, B2, B3), com o status anterior guardado": t_lixo_cai_com_motivo,
