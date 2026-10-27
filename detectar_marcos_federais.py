@@ -25,9 +25,8 @@ import json
 import re
 import sys
 import time
-import urllib.request
 
-from coletores_base import RAIZ, UA, ler, gravar
+from coletores_base import RAIZ, ler, gravar, texto_tolerante
 
 FEED_URL = "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/RSS"
 PALAVRAS_MARCO = [
@@ -37,12 +36,7 @@ PALAVRAS_MARCO = [
 
 
 def _get(url, timeout=30):
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
-        return urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "ignore")
-    except Exception as e:  # noqa: BLE001 — tolerante por design (ver docstring)
-        print(f"[aviso] falha ao consultar o feed do MS: {e}")
-        return None
+    return texto_tolerante(url, "", timeout, "o feed do MS")
 
 
 def extrair_itens_rss(xml):

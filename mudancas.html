@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>27/10/2026 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais</dt>
+      <dd>`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.</dd>
       <dt>26/10/2026 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)</dt>
       <dd>Execução das MPs 1.367 e 1.384: o coletor passa a ler plano orçamentário e fonte de recursos. Um código que aparece com empenho só depois da publicação é isolado como crédito; sem isolamento, o método é teto e nada é rateado. Vias de empenho e de dotação ficam declaradas como lacuna em `mps_2026.json` (`isolamento`). METODOLOGIA §33.2. Texto público inalterado.</dd>
       <dt>26/10/2026 · Busca de planos: Ministério Público, Judiciário, Saúde e Transferegov por consulta mecânica</dt>
@@ -165,8 +167,6 @@
       <dd>O `trecho` que o juiz grava em `promocoes_automaticas.json` saía do PDF com CPF de vice-prefeito; agora é redigido na porta (`julgar_filas.py`). `preservar_evidencias.py --ler` usa a sessão do link de compartilhamento para a pasta do RS: PDFs acima de 5 MB, sem cópia binária, ganham texto preservado. Código +11 líquidas.</dd>
       <dt>24/10/2026 · Busca de planos em fontes abertas: quem nunca foi lido vem primeiro · Coleta</dt>
       <dd>A fila do dia relia primeiro os municípios lidos em dias anteriores e o prazo do run cortava a cobertura. Agora os nunca lidos vêm antes dos que só precisam de releitura. Código +5 líquidas, com autoteste; nenhum dado, regra ou peso do índice muda.</dd>
-      <dt>24/10/2026 · Busca de planos: a fonte sai do run pelo saldo de erros, não só por erros seguidos</dt>
-      <dd>Causa: o contador zerava a cada acerto, e o Common Crawl, que errou 113 de 154 consultas em 23/10, nunca chegava ao teto de cinco seguidos; cada erro custa dois minutos do run. Agora o erro soma um e qualquer outra situação tira um. Só código (+9/−2); nenhum dado muda.</dd>
     </dl>
   </section>
 </main>

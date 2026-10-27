@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #1268 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais
+
+`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.
+
 ## 2026-10-27 · #PR · Consulta municipal e mapas: uma só leitura da varredura; clique liga círculo e linha
 
 A frase de varredura do livro passa a ser lida por `ConsultaMunicipio.varreduraLegivel`, usada pela inicial e por Para gestores. Em `mapas.js`, `pontos` aceita `tabela`: clicar no círculo realça e abre a linha da tabela, e clicar na linha realça o círculo (Financiamento, "Onde o dinheiro chega"). Nenhum texto público muda.
