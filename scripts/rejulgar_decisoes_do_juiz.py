@@ -305,13 +305,18 @@ def paralelo_18(argv) -> int:
             fila["pistas"] += [candidata_18(c, a, "b2_agregador") for c in candidatos]
         fila["pistas"].sort(key=lambda x: x["prioridade"])
 
-    for chave, v in decididas.items():
-        rejulgar({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
-                  "ibge": v.get("ibge"), "url": v.get("url"), "origem": v.get("origem"),
-                  "trecho": (por_id.get(v.get("pista_id")) or {}).get("trecho")}, v, "decisao")
-    for p in (fila or {}).get("pistas", []):
-        rejulgar({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
-                  **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+    # O prazo do elo interrompe com SIGINT e espera 60 s (`saude_pipeline.rodar`): o que foi lido até ali se
+    # grava abaixo. Lote 4 de 27/10: sem isto, 5 h de leitura saíram sem nada no PR de dado.
+    try:
+        for chave, v in decididas.items():
+            rejulgar({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
+                      "ibge": v.get("ibge"), "url": v.get("url"), "origem": v.get("origem"),
+                      "trecho": (por_id.get(v.get("pista_id")) or {}).get("trecho")}, v, "decisao")
+        for p in (fila or {}).get("pistas", []):
+            rejulgar({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
+                      **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+    except KeyboardInterrupt:
+        print("interrompido pelo prazo: gravando o que foi lido", flush=True)
 
     if fila is not None:
         gravar_em(FILA_18, fila, compacto=True)

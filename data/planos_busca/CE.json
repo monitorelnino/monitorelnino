@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-26",
+ "gerado_em": "2026-10-27",
  "municipios": {
   "2304400": {
    "S16": {
@@ -50,6 +50,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2304400&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-27",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2304400&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2300200": {
@@ -80,6 +87,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Acara%C3%BA%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "acarau.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acaraú\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acaraú\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acaraú\" CE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acaraú\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2300309": {
@@ -110,6 +145,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Acopiara%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "acopiara.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acopiara\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acopiara\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acopiara\" CE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Acopiara\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2300754": {
@@ -140,6 +203,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Amontada%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "amontada.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amontada\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amontada\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amontada\" CE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Amontada\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2301000": {
@@ -170,6 +261,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aquiraz%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "aquiraz.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aquiraz\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aquiraz\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aquiraz\" CE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aquiraz\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2301109": {
@@ -200,6 +319,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aracati%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "aracati.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracati\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracati\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracati\" CE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracati\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2301208": {
@@ -230,6 +377,27 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aracoiaba%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "aracoiaba.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracoiaba\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracoiaba\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracoiaba\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2301901": {
@@ -260,6 +428,27 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Barbalha%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "barbalha.ce.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Barbalha\" CE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Barbalha\" CE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Barbalha\" CE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2302107": {

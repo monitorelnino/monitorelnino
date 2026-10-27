@@ -1,56 +1,91 @@
 {
- "gerado_em": "2026-10-26",
- "municipios": {
-  "5300108": {
-   "S16": {
-    "consultado_em": "2026-10-26",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
-    "motivo": "tentados: df.gov.br URLError: <urlopen error _ssl.c:993: The handshake operation timed out>; brasilia.df.gov.br URLError: <urlopen error timed out>; www.brasilia.df.gov.br URLError: <urlopen error timed out>",
-    "dominio": null
-   },
-   "S25": {
-    "consultado_em": "2026-10-26",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
-    "motivo": "tentados: df.gov.br URLError: <urlopen error _ssl.c:993: The handshake operation timed out>; brasilia.df.gov.br URLError: <urlopen error timed out>; www.brasilia.df.gov.br URLError: <urlopen error timed out>",
-    "dominio": null
-   },
-   "S13": {
-    "consultado_em": "2026-10-26",
-    "situacao": "recusa_de_fonte",
-    "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bras%C3%ADlia%22&maximumRecords=10",
-    "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bras%C3%ADlia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
-    "dominio": null
-   },
-   "S29": {
-    "consultado_em": "2026-10-26",
-    "situacao": "recusa_de_fonte",
-    "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bras%C3%ADlia%22&rows=10",
-    "motivo": "HTTP 401",
-    "dominio": null
-   },
-   "S27": {
-    "consultado_em": "2026-10-26",
-    "situacao": "lido",
-    "consulta": "\"Brasília\" DF \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
-    "motivo": null,
-    "dominio": null
-   },
-   "S24": {
-    "consultado_em": "2026-10-26",
-    "situacao": "lido",
-    "consulta": "\"Brasília\" DF (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
-    "motivo": null,
-    "dominio": null
-   },
-   "S18": {
-    "consultado_em": "2026-10-26",
-    "situacao": "lido",
-    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5300108&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
-    "motivo": null,
-    "dominio": null
-   }
+  "gerado_em": "2026-10-27",
+  "municipios": {
+    "5300108": {
+      "S16": {
+        "consultado_em": "2026-10-26",
+        "situacao": "dominio_nao_verificado",
+        "consulta": null,
+        "motivo": "tentados: df.gov.br URLError: <urlopen error _ssl.c:993: The handshake operation timed out>; brasilia.df.gov.br URLError: <urlopen error timed out>; www.brasilia.df.gov.br URLError: <urlopen error timed out>",
+        "dominio": null
+      },
+      "S20": {
+        "consultado_em": "2026-10-26",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+        "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+        "dominio": null
+      },
+      "S31": {
+        "consultado_em": "2026-10-26",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+        "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+        "dominio": null
+      },
+      "S18": {
+        "consultado_em": "2026-10-26",
+        "situacao": "lido",
+        "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5300108&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+        "motivo": null,
+        "dominio": null
+      },
+      "S27": {
+        "consultado_em": "2026-10-26",
+        "situacao": "lido",
+        "consulta": "\"Brasília\" DF \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+        "motivo": null,
+        "dominio": null
+      },
+      "S29": {
+        "consultado_em": "2026-10-26",
+        "situacao": "recusa_de_fonte",
+        "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bras%C3%ADlia%22&rows=10",
+        "motivo": "HTTP 401",
+        "dominio": null
+      },
+      "S24": {
+        "consultado_em": "2026-10-26",
+        "situacao": "lido",
+        "consulta": "\"Brasília\" DF (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+        "motivo": null,
+        "dominio": null
+      },
+      "S22": {
+        "consultado_em": "2026-10-27",
+        "situacao": "erro",
+        "consulta": null,
+        "motivo": "ValueError: leitura incompleta: mais de 40 páginas numa consulta, sem achado; não vale como ausência",
+        "dominio": null
+      },
+      "S25": {
+        "consultado_em": "2026-10-26",
+        "situacao": "dominio_nao_verificado",
+        "consulta": null,
+        "motivo": "tentados: df.gov.br URLError: <urlopen error _ssl.c:993: The handshake operation timed out>; brasilia.df.gov.br URLError: <urlopen error timed out>; www.brasilia.df.gov.br URLError: <urlopen error timed out>",
+        "dominio": null
+      },
+      "S13": {
+        "consultado_em": "2026-10-26",
+        "situacao": "recusa_de_fonte",
+        "consulta": "https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bras%C3%ADlia%22&maximumRecords=10",
+        "motivo": "muro de robô (muro de robô em https://www.lexml.gov.br/busca/SRU?operation=searchRetrieve&version=1.1&query=%22plano+de+conting%C3%AAncia%22+and+%22Bras%C3%ADlia%22&maximumRecords=10: 'verificação de segurança — senado federal' — recusa com HTTP 200 (§186); não se contorna)",
+        "dominio": null
+      },
+      "S21": {
+        "consultado_em": "2026-10-26",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+        "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+        "dominio": null
+      },
+      "S23": {
+        "consultado_em": "2026-10-26",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+        "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+        "dominio": null
+      }
+    }
   }
- }
 }

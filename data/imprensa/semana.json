@@ -6,11 +6,11 @@
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-10-27",
-   "n": 39,
+   "n": 40,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 40965,
+   "valor_parcial": 41345,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -209,7 +209,7 @@
   },
   {
    "id": "diarreia",
-   "valor": 202571,
+   "valor": 202573,
    "unidade": "atendimentos",
    "periodo_inicio": "2026-07-01",
    "periodo_fim": "2026-07-31",
@@ -337,7 +337,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-10-25 e 2026-10-26, nos dois índices",
+   "nota": "entre as edições de 2026-10-26 e 2026-10-27, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -405,7 +405,7 @@
    "id": "decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que decretaram emergência ou calamidade na semana",
-   "valor": 17,
+   "valor": 1,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -425,7 +425,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 802502,
+   "valor": 70496,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -445,7 +445,7 @@
    "id": "reconhecimentos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que tiveram a emergência reconhecida pelo governo federal na semana",
-   "valor": 20,
+   "valor": 0,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -465,14 +465,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 19,
+   "valor": 7,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "26/10/2026 09:19",
+   "referencia": "26/10/2026 22:14",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "26/10/2026 09:19",
+   "consultado_em": "26/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -485,14 +485,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 1962,
+   "valor": 1608,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "26/10/2026 09:19",
+   "referencia": "26/10/2026 22:14",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "26/10/2026 09:19",
+   "consultado_em": "26/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -505,7 +505,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 5599,
+   "valor": 235,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -514,84 +514,36 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261026.csv",
+   "nota": "Focos do dia — focos_diario_br_20261027.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 4232
-    },
-    {
-     "uf": "MT",
-     "valor": 292
-    },
-    {
-     "uf": "AP",
-     "valor": 242
+     "valor": 147
     },
     {
      "uf": "MA",
-     "valor": 233
+     "valor": 56
     },
     {
      "uf": "AM",
-     "valor": 103
-    },
-    {
-     "uf": "TO",
-     "valor": 101
-    },
-    {
-     "uf": "BA",
-     "valor": 93
-    },
-    {
-     "uf": "RO",
-     "valor": 89
+     "valor": 16
     },
     {
      "uf": "RR",
-     "valor": 71
+     "valor": 9
     },
     {
-     "uf": "AC",
-     "valor": 40
-    },
-    {
-     "uf": "PI",
-     "valor": 40
-    },
-    {
-     "uf": "CE",
-     "valor": 15
-    },
-    {
-     "uf": "AL",
-     "valor": 12
-    },
-    {
-     "uf": "GO",
-     "valor": 10
-    },
-    {
-     "uf": "MG",
-     "valor": 10
-    },
-    {
-     "uf": "PB",
-     "valor": 10
-    },
-    {
-     "uf": "PE",
+     "uf": "TO",
      "valor": 3
     },
     {
-     "uf": "DF",
+     "uf": "AL",
      "valor": 2
     },
     {
-     "uf": "SP",
-     "valor": 1
+     "uf": "AP",
+     "valor": 2
     }
    ],
    "pagina_de_origem": null,
@@ -768,5 +720,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 27/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 17 municípios decretaram situação de emergência ou calamidade; 802.502 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 27/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 1 município decretou situação de emergência ou calamidade; 70.496 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
