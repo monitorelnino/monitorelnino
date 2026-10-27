@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
+
+Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
 ## 2026-10-27 · #PR · S22: busca textual do PNCP com os parâmetros da API
 A sonda do PNCP pedia `tipo_documento` no singular e sem `status`, e o servidor respondia 400. Passa a pedir `tipos_documento=edital` e `status=todos`, como a busca pública do portal. A válvula de 27/10 mostrou que varrer contratações por município não escala (cinco capitais lidas em duas horas e meia); a busca por texto, se responder, resolve as 27 capitais em minutos.
 
