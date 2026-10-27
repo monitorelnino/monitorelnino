@@ -26,6 +26,7 @@ from datetime import date
 from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de, hoje_editorial
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/"
+ORCAMENTO = "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/"   # anual, ação × elemento
 UA = {"User-Agent": ua_de("execução das MPs")}
 UFS = {"AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"}
 
@@ -156,9 +157,44 @@ def isolar_mp(iso_mp: dict, publicado_mes: str, colunas: dict, meses_lidos: list
     escolhida = next((v["_metodo"] for v in vias.values() if v.get("status") == "isolado"), "teto")
     for v in vias.values():
         v.pop("_metodo", None)
-    vias["via_3_empenho"] = {"status": "lacuna", "motivo": "observação do empenho não lida nesta versão"}
-    vias["via_4_dotacao"] = {"status": "lacuna", "motivo": "dados abertos de orçamento não coletados nesta versão"}
+    # Via 3, medida em 26/10/2026 (sonda na válvula): nenhum download aberto traz a observação do empenho.
+    vias["via_3_empenho"] = {"status": "lacuna", "motivo": "nenhum download aberto do Portal traz a observação do empenho: "
+                             "/download-de-dados/despesas recusa o cliente (403) e os demais caminhos testados não existem (500); "
+                             "a API só entrega a observação por documento, não lida"}
+    vias["via_4_dotacao"] = {"status": "lacuna", "motivo": "arquivo anual de orçamento não lido nesta coleta"}
     return {"metodo": escolhida, "meses_lidos": meses_lidos, **vias}
+
+
+def dotacao_por_acao(linhas, alvos: dict = ALVOS) -> dict:
+    """Via 4: {mp: {ação: {inicial, atualizado}}} do arquivo anual Orçamento da Despesa (ação × elemento de
+    despesa), só das ações e órgãos dos alvos. Colunas em caixa alta no Portal. Função pura."""
+    out = {mp: {} for mp in alvos}
+    for row in linhas:
+        up = {k.upper(): v for k, v in row.items()}
+        sub, sup = (up.get("CÓDIGO ÓRGÃO SUBORDINADO") or "").strip(), (up.get("CÓDIGO ÓRGÃO SUPERIOR") or "").strip()
+        acao = (up.get("CÓDIGO AÇÃO") or "").strip()
+        ini, atu = numero(up.get("ORÇAMENTO INICIAL (R$)")), numero(up.get("ORÇAMENTO ATUALIZADO (R$)"))
+        for mp, a in alvos.items():
+            if any(acao in sp["acoes"] and (sub == cod or (cod == "55000" and sup == "55000")) for cod, sp in a["orgaos"].items()):
+                d = out[mp].setdefault(acao, {"inicial": None, "atualizado": None})
+                d["inicial"], d["atualizado"] = somar(d["inicial"], ini), somar(d["atualizado"], atu)
+    return {mp: {ac: {k: arred(v) for k, v in d.items()} for ac, d in sorted(acs.items())} for mp, acs in out.items()}
+
+
+def via_dotacao(por_acao: dict, valor_ato, fonte: str, exercicio: str, hash_arquivo: str) -> dict:
+    """Via 4: o acréscimo da dotação (atualizada − inicial) das ações da MP contra o valor do ato. A diferença
+    é registrada, nunca ajustada. O acréscimo inclui toda suplementação e cancelamento da ação no exercício, não
+    só o crédito da MP: bater com o valor é indício, divergir é fato registrado; nenhum dos dois isola execução."""
+    if not por_acao or not all(d["inicial"] is not None and d["atualizado"] is not None for d in por_acao.values()):
+        return {"status": "lacuna", "motivo": "ação da MP sem dotação inicial ou atualizada no arquivo anual", "fonte": fonte}
+    ini, atu = sum(d["inicial"] for d in por_acao.values()), sum(d["atualizado"] for d in por_acao.values())
+    out = {"fonte": fonte, "exercicio": exercicio, "hash": hash_arquivo, "por_acao": por_acao,
+           "inicial": round(ini, 2), "atualizado": round(atu, 2), "acrescimo": round(atu - ini, 2), "valor_do_ato": valor_ato,
+           "limite": "o acréscimo da dotação inclui toda suplementação e cancelamento da ação no exercício, não só o crédito da MP"}
+    if not isinstance(valor_ato, (int, float)):
+        return {**out, "status": "lacuna", "motivo": "valor do ato ausente"}
+    dif = round(out["acrescimo"] - valor_ato, 2)
+    return {**out, "diferenca": dif, "status": "paridade" if abs(dif) <= 1 else "diverge"}
 
 
 def agregar(linhas, alvos: dict = ALVOS) -> dict:
@@ -211,6 +247,13 @@ def _linhas_do_zip(bruto: bytes):
             yield row
 
 
+def _baixar_zip(url: str) -> bytes:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=900) as r:
+        bruto = r.read()
+    zipfile.ZipFile(io.BytesIO(bruto))   # levanta se não for ZIP (muro de robô servido com 200)
+    return bruto
+
+
 def meses_ate_hoje(primeiro: str) -> list:
     ano, mes = int(primeiro[:4]), int(primeiro[4:]); hoje = hoje_editorial(); out = []
     while (ano, mes) <= (hoje.year, hoje.month):
@@ -237,9 +280,7 @@ def coletar() -> int:
     iso = {mp: {} for mp in ALVOS}; colunas = {mp: {"plano": False, "fonte": False} for mp in ALVOS}
     for mes in meses_ate_hoje(base):
         try:
-            with urllib.request.urlopen(urllib.request.Request(BASE + mes, headers=UA), timeout=900) as r:
-                bruto = r.read()
-            zipfile.ZipFile(io.BytesIO(bruto))
+            bruto = _baixar_zip(BASE + mes)
         except Exception as e:  # noqa: BLE001
             registrar_lacuna(f"Portal — execução mensal {mes}", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[BASE + mes]); continue
         parcial = agregar(_linhas_do_zip(bruto))
@@ -279,6 +320,12 @@ def coletar() -> int:
                          canal="DOU", camada=1)
         print("execucao_mps: arquivos lidos e nenhuma linha casada — lacuna declarada, nada alterado")
         return 0
+    exercicio = str(dia.year); dot, dot_fonte, dot_hash = None, ORCAMENTO + exercicio, None
+    try:
+        bruto = _baixar_zip(dot_fonte); dot_hash = hashlib.sha256(bruto).hexdigest()
+        dot = dotacao_por_acao(_linhas_do_zip(bruto))
+    except Exception as e:  # noqa: BLE001 — falha vira lacuna da via 4, o resto da coleta segue
+        registrar_lacuna("Portal — Orçamento da Despesa " + exercicio, f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[dot_fonte])
     for mp in mps["mps"]:
         a = acumulado.get(mp["id"]);
         if not a: continue
@@ -293,6 +340,8 @@ def coletar() -> int:
         mp["execucao"]["acima_do_valor_do_ato"] = acima_do_valor(mp.get("valor"), a["empenhado"])
         mp["isolamento"] = isolar_mp(iso[mp["id"]], ALVOS[mp["id"]]["primeiro_mes"], colunas[mp["id"]],
                                      [m for m in meses_lidos if m >= ALVOS[mp["id"]]["base_isolamento"]])
+        if dot is not None:
+            mp["isolamento"]["via_4_dotacao"] = via_dotacao(dot[mp["id"]], mp.get("valor"), dot_fonte, exercicio, dot_hash)
         for org in mp["orgaos"]:
             cod = next((c for c, s in ALVOS[mp["id"]]["orgaos"].items() if s["nome"] == org["nome"]), None)
             if cod:
@@ -444,6 +493,19 @@ def autoteste() -> int:
         g = agregar(L2)["mp1367"]
         return (g["colunas"] == {"plano": True, "fonte": True} and g["por_plano"]["0002"]["empenhado"] == -200.0
                 and g["por_fonte"] == {"100": {"empenhado": 1000.5, "pago": 400.0}})
+    def t18():
+        # via 4: colunas em caixa alta; só ação e órgão dos alvos; paridade com o valor do ato; diferença registrada, nunca ajustada
+        O = [{"CÓDIGO ÓRGÃO SUPERIOR": "22000", "CÓDIGO ÓRGÃO SUBORDINADO": "22211", "CÓDIGO AÇÃO": "2130", "ORÇAMENTO INICIAL (R$)": "100,00", "ORÇAMENTO ATUALIZADO (R$)": "150,00"},
+             {"CÓDIGO ÓRGÃO SUPERIOR": "22000", "CÓDIGO ÓRGÃO SUBORDINADO": "22211", "CÓDIGO AÇÃO": "2130", "ORÇAMENTO INICIAL (R$)": "0,00", "ORÇAMENTO ATUALIZADO (R$)": "50,00"},
+             {"CÓDIGO ÓRGÃO SUPERIOR": "55000", "CÓDIGO ÓRGÃO SUBORDINADO": "55101", "CÓDIGO AÇÃO": "2792", "ORÇAMENTO INICIAL (R$)": "10,00", "ORÇAMENTO ATUALIZADO (R$)": "10,00"},
+             {"CÓDIGO ÓRGÃO SUPERIOR": "99000", "CÓDIGO ÓRGÃO SUBORDINADO": "99001", "CÓDIGO AÇÃO": "2130", "ORÇAMENTO INICIAL (R$)": "7,00", "ORÇAMENTO ATUALIZADO (R$)": "7,00"}]
+        d = dotacao_por_acao(O)["mp1384"]
+        ok = d == {"2130": {"inicial": 100.0, "atualizado": 200.0}, "2792": {"inicial": 10.0, "atualizado": 10.0}}
+        fecha = via_dotacao(d, 100.0, "u", "2026", "h")
+        diverge = via_dotacao(d, 90.0, "u", "2026", "h")
+        sem = via_dotacao({"2130": {"inicial": None, "atualizado": 5.0}}, 1.0, "u", "2026", "h")
+        return (ok and fecha["status"] == "paridade" and fecha["diferenca"] == 0.0
+                and diverge["status"] == "diverge" and diverge["diferenca"] == 10.0 and sem["status"] == "lacuna")
     def t14(): return acima_do_valor(337.0, 376.0) and not acima_do_valor(337.0, 300.0) and not acima_do_valor(None, 1.0)
     return rodar_autoteste({"empenhado da ação acima do valor do ato é marcado, nunca escondido": t14,
                             "§9.3: risco declarado pela ementa; sem família, risco nulo com o trecho": t12,
@@ -458,7 +520,8 @@ def autoteste() -> int:
                             "mês corrente da coleta é parcial (A6-13)": t11,
                             "via 1: plano novo depois da publicação isola; o que já existia não": t15,
                             "vias 1–2: sem coluna é lacuna; sem código novo, teto": t16,
-                            "agrega plano e fonte por código, só nos alvos": t17})
+                            "agrega plano e fonte por código, só nos alvos": t17,
+                            "via 4: dotação por ação; paridade ou divergência registrada, sem ajuste": t18})
 
 
 if __name__ == "__main__":
