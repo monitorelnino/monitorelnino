@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · A1 · União de conflito aceita `data/planos_busca/<UF>.json`
+
+O resolvedor de rodada une os planos de busca por município e fonte pela base comum: fonte lida só de um lado entra, a mesma fonte lida diferente nos dois lados é recusada. Antes recusava toda vez, e cada PR de dado das válvulas exigia união à mão.
+
 ## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
 
 Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
