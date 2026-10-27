@@ -80,6 +80,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alvar%C3%A3es%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alvaraes.am.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alvarães\" AM (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alvarães\" AM (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alvarães\" AM (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alvarães\" AM (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "1300060": {
@@ -110,6 +138,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Amatur%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "amatura.am.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amaturá\" AM (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amaturá\" AM (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amaturá\" AM (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Amaturá\" AM (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "1300102": {
@@ -139,6 +195,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Anori%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anori\" AM (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anori\" AM (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anori\" AM (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anori\" AM (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
    }
   },
@@ -170,6 +254,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Apu%C3%AD%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "apui.am.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Apuí\" AM (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Apuí\" AM (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Apuí\" AM (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Apuí\" AM (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "1300201": {
@@ -200,6 +312,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Atalaia+do+Norte%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "atalaiadonorte.am.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Atalaia do Norte\" AM (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Atalaia do Norte\" AM (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Atalaia do Norte\" AM (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Atalaia do Norte\" AM (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "1300300": {
