@@ -40,7 +40,7 @@ import pathlib
 import sys
 from datetime import date, datetime, timedelta
 
-from coletores_base import gravar_em, hoje_editorial, semana_do_rotulo
+from coletores_base import data_do_corte, gravar_em, semana_do_rotulo
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 DATA = RAIZ / "data"
@@ -1012,7 +1012,7 @@ def main() -> int:
     # O dia de hoje vem do fuso da REDAÇÃO, nunca do runner: o runner é UTC, e entre 21h e
     # meia-noite de Brasília os dois discordam do dia. A janela dos cartões é editorial, não do
     # servidor. Há portão de regressão para isso, e ele me reprovou no CI do PR #407.
-    corte = data_do_ato(meta.get("corte")) or hoje_editorial()
+    corte = data_do_ato(meta.get("corte")) or data_do_corte()
     r = montar(corte)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     # §229: JSON de data/ passa pela porta atômica, nunca por write_text direto. Uma auditoria de

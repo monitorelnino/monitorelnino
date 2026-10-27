@@ -9,6 +9,36 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
+
+As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
+
+## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
+
+O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
+
+
+## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
+`coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
+## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15
+Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: "Seca e incêndio até março de 2027", antes "Seca, fogo". Frase do Cemaden sem texto aprovado: fica fora.
+
+## 2026-10-27 · Juiz 1.8 (paralelo): data do plano e plano em elaboração
+
+No lote 7 da rodada paralela, PLANCONs de 2025 da pasta do RS saíram datados de 2012, o ano da Lei 12.608 citada no cabeçalho, e planos lidos como plano pelo cabeçalho (J1) caíam em "plano em elaboração" porque o corpo cita a equipe de elaboração. No 1.8, o ano de ato citado não é mais o ano do plano, e o plano pelo cabeçalho não é rebaixado. `--refazer J1,J7` relê só essas chaves. O 1.7 não muda.
+
+## 2026-10-27 · #1272 · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
+
+A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.
+
+## 2026-10-27 · Figura sem subtítulo vale com período, território e unidade no título ou no eixo
+
+A exigência de `.figura-sub` saiu de `verificar_estrutura.js`, que duplicava o `verificar_texto_publico.js`; este agora aceita figura sem subtítulo quando título e eixo dizem período, território e unidade (`figura_componente.sem_subtitulo` em `regras.json`). Uma mutação nova prova. Código +10/−2. Nenhum texto público muda.
+
+## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
+
+`catalogo.json` ganha `cievs_boletins`: órgão, endereço, formato, cadência e situação de 16 UFs, mais as UFs já em `fontes_uf.json`, a localizar e não medidas. Só catálogo: nenhum PDF é lido por coletor. Divergência da Bahia com `fontes_uf.json` registrada para a editoria. Dado +172, código 0.
+
 ## 2026-10-27 · Rodada paralela 1.8: chave pela pista e decisões fora do registro
 
 A rodada paralela guardava cada veredito pela chave do município que o veredito atribuía. Quando o 1.8 corrigia o município pelo domínio, a mesma pista era relida a cada lote; até o lote 6 foram 113 repetidas. A chave agora é a da pista. As 5.280 decisões que a limpeza de 26/10 tirou do registro também saem do arquivo paralelo, que fica só com a contagem e cai de 9,8 para 5,2 MB.
@@ -32,6 +62,7 @@ O plano não localizado passa a dizer a varredura feita: "Varredura nacional ou 
 ## 2026-10-27 · #PR · Busca de planos: motor mudo sem achado é erro, não ausência
 
 Reverte o Bing único (ignora `site:`/OR e devolve host alheio). Busca web sem achado com motor suspenso ou resposta vazia vira `erro` com os motores no motivo, e refaz depois; `sem_resultado` só com todos os motores respondendo. Linhas líquidas: −3.
+
 ## 2026-10-27 · Rodada paralela 1.8: a pasta do RS lida com causa e sem espera inútil
 
 No lote 5, 95 PLANCONs da pasta da Casa Militar/RS saíram "inacessível" sem causa registrada, e cada um esperou três tentativas (cerca de 4 h no total). A rodada paralela agora lê a pasta com o erro à vista: 401, 403 e 429 encerram como recusa, e PDF sem texto não é tentado de novo. A espera entre tentativas cai para 0, 10 e 30 s.
@@ -50,6 +81,7 @@ O resolvedor de rodada une os planos de busca por município e fonte pela base c
 
 ## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
 Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
+
 ## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
 
 `semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
@@ -57,6 +89,7 @@ Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às
 ## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
 
 Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
+
 ## 2026-10-27 · #PR · S22: busca textual do PNCP com os parâmetros da API
 A sonda do PNCP pedia `tipo_documento` no singular e sem `status`, e o servidor respondia 400. Passa a pedir `tipos_documento=edital` e `status=todos`, como a busca pública do portal. A válvula de 27/10 mostrou que varrer contratações por município não escala (cinco capitais lidas em duas horas e meia); a busca por texto, se responder, resolve as 27 capitais em minutos.
 
@@ -145,7 +178,6 @@ Com o fim do período eleitoral (25/10), as 41 fontes suspensas por defeso passa
 ## 2026-10-26 · #1191 · Rodapé: só LinkedIn e Instagram
 
 Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.
-
 
 ## 2026-10-26 · #1190 · Log de saúde só cresce
 
