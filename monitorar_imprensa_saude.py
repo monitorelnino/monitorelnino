@@ -42,8 +42,7 @@ import pathlib
 import re
 import sys
 import time
-import urllib.request
-from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import gravar_em, texto_tolerante  # noqa: E402  (§228: um cliente só, com propósito)
 # O parser do RSS, a heurística de fonte, a identidade da pista e o cursor são os da imprensa
 # regional (17/10/2026): eram cópias; `\.gov\.br` já cobre os padrões de secretaria de saúde.
 from monitorar_imprensa_regional import (_hash, carregar_cursor, extrair_itens_rss,  # noqa: E402
@@ -53,7 +52,6 @@ RAIZ = pathlib.Path(__file__).parent
 
 FILA = RAIZ / "data" / "pistas_imprensa_saude.json"
 CURSOR = RAIZ / "data" / "imprensa_saude_cursor.json"
-UA = {"User-Agent": ua_de("descoberta editorial na imprensa de saúde")}
 
 # 18/09/2026 (handover ponto cego saúde, §3.1): os termos que faltavam quando a Bahia
 # publicou — nomes que espelham o programa federal do MS, não mais só "arboviroses".
@@ -67,13 +65,7 @@ NOMES_ORGAO_SAUDE = "secretaria de saúde OR Sesab OR Ses{sigla}"
 
 
 def _get(url, timeout=30):
-    """GET tolerante: devolve o corpo como texto, ou None com aviso (nunca exceção)."""
-    try:
-        req = urllib.request.Request(url, headers=UA)
-        return urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "ignore")
-    except Exception as e:
-        print(f"[aviso] falha ao consultar imprensa: {e}")
-        return None
+    return texto_tolerante(url, "descoberta editorial na imprensa de saúde", timeout, "imprensa")
 
 
 NOMES_UF = {
