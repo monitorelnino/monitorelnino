@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-20 a 2026-10-27 (1054 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-20 a 2026-10-27 (1056 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,11 +28,11 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-26 01:40 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-27 13:18 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-27 13:36 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
-| `buscar_planos_fontes_abertas.py` | coletor | 2026-10-26 00:01 | 24 s | — | ok | — |
+| `buscar_planos_fontes_abertas.py` | coletor | 2026-10-27 04:35 | 9204 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-10-24 01:16 | 120 s | — | ok | — |
 | `classificar_planos_municipais.py` | coletor | 2026-10-24 01:24 | 1 s | — | ok | — |
 | `classificar_saude_no_plano.py` | coletor | 2026-10-26 01:40 | 0 s | — | ok | — |
@@ -96,7 +96,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `scripts/fechar_saude.py` | coletor | 2026-10-21 04:14 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-27 08:17 | 1 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-10-26 15:47 | 465 s | — | ok | — |
-| `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-26 22:38 | 6894 s | — | ok | — |
+| `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-27 07:18 | 18001 s | — | **erro** | interrompido pelo prazo do elo |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-24 01:18 | 84 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
