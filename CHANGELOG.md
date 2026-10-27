@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Rodada paralela 1.8: a pasta do RS lida com causa e sem espera inútil
+
+No lote 5, 95 PLANCONs da pasta da Casa Militar/RS saíram "inacessível" sem causa registrada, e cada um esperou três tentativas (cerca de 4 h no total). A rodada paralela agora lê a pasta com o erro à vista: 401, 403 e 429 encerram como recusa, e PDF sem texto não é tentado de novo. A espera entre tentativas cai para 0, 10 e 30 s.
+
 ## 2026-10-27 · #PR · Busca de planos: S17, S19, S26 e S30 entram na tabela de fontes do metabuscador
 
 Coordenadorias regionais, diários por associação, repositórios acadêmicos e programas estaduais por adesão ganham uma linha cada em `FONTES_WEB`; mesmas travas (endereço da fonte, município, termo e plano; pista sem documento confirmado). Autoteste +1 caso. Linhas: +24/−0.
