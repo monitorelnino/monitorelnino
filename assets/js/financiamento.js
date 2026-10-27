@@ -176,20 +176,24 @@ function __init(){
   MonitorMapas.desenharMapa(ctx, 'mapChega', null, () => cor('branco'), uf => esc(NOME_UF[uf] || uf), [], 'contagem');
   /* Os círculos vêm prontos do gerador (`semana.json` → `mapa`, com a sede de cada município). */
   const ORIGENS_MAPA = {defesa_civil: {rotulo: 'defesa civil', cor: P.resposta}, saude: {rotulo: 'saúde', cor: P.setores.saude}};
-  const circulos = ((S && S.mapa) || []).filter(x => ORIGENS_MAPA[x.origem] && x.valor > 0 && x.lat != null);
-  const maxV = Math.max(1, ...circulos.map(x => x.valor)), R_MAX = 14;
+  const circulos = ((S && S.mapa) || []).filter(x => ORIGENS_MAPA[x.origem] && x.repassado > 0 && x.lat != null);
+  const maxV = Math.max(1, ...circulos.map(x => x.repassado)), R_MAX = 14;
   MonitorMapas.pontos(ctx, 'mapChega', circulos.slice().sort((a, b) => b.valor - a.valor), {
-    r: x => Math.max(1.5, R_MAX * Math.sqrt(x.valor / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: 0.6, classe: 'circulos-valor',
+    r: x => Math.max(1.5, R_MAX * Math.sqrt(x.repassado / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: 0.6, classe: 'circulos-valor',
     rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato || '')
-      + (x.data ? '<br>' + esc(MonitorMapas.dataBR(x.data)) : '') + '<br>' + esc(reais(x.valor))});
-  const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.valor, 0);
+      + '<br>' + esc(reais(x.repassado))});
+  const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.repassado, 0);
   MonitorMapas.legenda('legChega', circulos.length ? Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: o.rotulo + ' · ' + reais(totalOrigem(k))}))
     .concat([{cor: cor('linha'), rotulo: 'maior círculo: ' + reais(maxV)}]) : [{cor: cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
   if (direto && direto.valor != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: Number(direto.valor).toLocaleString('pt-BR')});
-  if (sus && sus.ultimo_mes) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: mesDe(sus.ultimo_mes)});
-  cred('boxChega', [FONTE_DC, 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
-  tabela('boxChega', ['Município', 'UF', 'Origem', 'Ato', 'Data', 'Valor'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
-    .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), link(x.url, x.ato || ''), esc(MonitorMapas.dataBR(x.data) || (x.origem === 'saude' ? PERIODO_FNS : NAO_LOCALIZADO)), esc(reais(x.valor))]));
+  const RES = (S && S.mapa_resumo) || {}, comps = RES.competencias || [], ASR = (S && S.autorizado_sem_repasse) || {};
+  const PERIODO_MAPA = comps.length ? mesDe(comps[0]) + '–' + mesDe(comps[comps.length - 1]) + '/' + String(comps[comps.length - 1]).slice(0, 4) : NAO_LOCALIZADO;
+  if (comps.length) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: MESES_LONGOS[Number(String(comps[comps.length - 1]).slice(4, 6)) - 1]});
+  if (ASR.n != null) molde('chegaSemRepasse', 'financiamento.chega.sem_repasse.molde', {n: ASR.n, data: ASR.corte});
+  cred('boxChega', [FONTE_TRANSP + ', transferências da União (defesa civil)', 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
+  tabela('boxChega', ['Município', 'UF', 'Origem', 'Repassado desde 29/06/2026', 'Autorizado em portaria (defesa civil)', 'Ato', 'Período'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
+    .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), esc(reais(x.repassado)),
+      esc(x.origem === 'saude' ? 'não se aplica' : reais(x.autorizado) || NAO_LOCALIZADO), link(x.url, x.ato || ''), esc(PERIODO_MAPA)]));
 
   // =========================================================
   // 4. Mês a mês: só o pago, fogo e seca
