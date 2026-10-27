@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · MPs: dotação por ação (via 4) e empenho como lacuna medida
+
+O coletor das MPs lê o arquivo anual Orçamento da Despesa e registra dotação inicial, atualizada, acréscimo e diferença contra o valor do ato (sem ajuste). A observação do empenho não existe em download aberto (403/500, medido em 26/10): lacuna declarada com motivo. METODOLOGIA §33.2. Nenhum texto público muda.
+
 ## 2026-10-26 · #PR · S22: compras públicas do PNCP por município na busca de planos
 Nova fonte S22 no adaptador de fontes abertas: consulta de contratações do PNCP por município, modalidade e ano, e leitura do objeto que cita plano de contingência ou de redução de riscos. É pista de onde procurar o documento, nunca plano. Ausência só com a leitura completa; recusa registrada, nunca contornada.
 
