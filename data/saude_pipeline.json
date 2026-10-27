@@ -9480,6 +9480,15 @@
   },
   {
    "data": "2026-10-26",
+   "script": "scripts/rejulgar_decisoes_do_juiz.py",
+   "inicio": "2026-10-26T22:38:24",
+   "duracao_s": 6894.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
    "script": "python3",
    "inicio": "2026-10-26T22:34:50",
    "duracao_s": 33.1,
@@ -9648,7 +9657,34 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-10-27T01:10:06",
+   "duracao_s": 3.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-10-27T01:12:48",
+   "duracao_s": 110.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-26",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-10-27T01:14:38",
+   "duracao_s": 58.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-27T00:32:21"
+ "atualizado_em": "2026-10-27T01:14:38"
 }
