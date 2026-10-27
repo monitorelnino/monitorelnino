@@ -203,11 +203,33 @@
     },
     "via_3_empenho": {
      "status": "lacuna",
-     "motivo": "observação do empenho não lida nesta versão"
+     "motivo": "nenhum download aberto do Portal traz a observação do empenho: /download-de-dados/despesas recusa o cliente (403) e os demais caminhos testados não existem (500); a API só entrega a observação por documento, não lida"
     },
     "via_4_dotacao": {
-     "status": "lacuna",
-     "motivo": "dados abertos de orçamento não coletados nesta versão"
+     "fonte": "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/2026",
+     "exercicio": "2026",
+     "hash": "46d9b20bcec4dbddc6083f1a7d6f4c8c66606f16d03410db171b4adff8c4f9a1",
+     "por_acao": {
+      "214M": {
+       "inicial": 66600000.0,
+       "atualizado": 267889818.0
+      },
+      "214N": {
+       "inicial": 232700000.0,
+       "atualizado": 340987904.0
+      },
+      "214P": {
+       "inicial": 197198573.0,
+       "atualizado": 412937059.0
+      }
+     },
+     "inicial": 496498573.0,
+     "atualizado": 1021814781.0,
+     "acrescimo": 525316208.0,
+     "valor_do_ato": 337483432,
+     "limite": "o acréscimo da dotação inclui toda suplementação e cancelamento da ação no exercício, não só o crédito da MP",
+     "diferenca": 187832776.0,
+     "status": "diverge"
     }
    }
   },
@@ -377,11 +399,33 @@
     },
     "via_3_empenho": {
      "status": "lacuna",
-     "motivo": "observação do empenho não lida nesta versão"
+     "motivo": "nenhum download aberto do Portal traz a observação do empenho: /download-de-dados/despesas recusa o cliente (403) e os demais caminhos testados não existem (500); a API só entrega a observação por documento, não lida"
     },
     "via_4_dotacao": {
-     "status": "lacuna",
-     "motivo": "dados abertos de orçamento não coletados nesta versão"
+     "fonte": "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/2026",
+     "exercicio": "2026",
+     "hash": "46d9b20bcec4dbddc6083f1a7d6f4c8c66606f16d03410db171b4adff8c4f9a1",
+     "por_acao": {
+      "2130": {
+       "inicial": 201503465.0,
+       "atualizado": 1101665891.0
+      },
+      "2792": {
+       "inicial": 101093348.0,
+       "atualizado": 163062748.0
+      },
+      "2798": {
+       "inicial": 802646550.0,
+       "atualizado": 933052496.0
+      }
+     },
+     "inicial": 1105243363.0,
+     "atualizado": 2197781135.0,
+     "acrescimo": 1092537772.0,
+     "valor_do_ato": 924985960,
+     "limite": "o acréscimo da dotação inclui toda suplementação e cancelamento da ação no exercício, não só o crédito da MP",
+     "diferenca": 167551812.0,
+     "status": "diverge"
     }
    }
   }
