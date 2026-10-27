@@ -85,6 +85,27 @@
         "consulta": "\"Brasília\" DF (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
         "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
         "dominio": null
+      },
+      "S17": {
+        "consultado_em": "2026-10-27",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (CREPDEC OR REDEC OR \"coordenadoria regional\" OR \"defesa civil estadual\") \"plano de contingência\" site:gov.br",
+        "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+        "dominio": null
+      },
+      "S26": {
+        "consultado_em": "2026-10-27",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (tese OR dissertação OR TCC OR monografia) \"plano de contingência\" \"defesa civil\" (site:edu.br OR site:ibict.br OR site:scielo.br OR site:usp.br OR site:unesp.br OR site:unicamp.br)",
+        "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+        "dominio": null
+      },
+      "S30": {
+        "consultado_em": "2026-10-27",
+        "situacao": "erro",
+        "consulta": "\"Brasília\" DF (\"Operação Verão\" OR \"Operação Chuvas\" OR \"plano preventivo\" OR adesão) \"plano de contingência\" site:gov.br",
+        "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+        "dominio": null
       }
     }
   }
