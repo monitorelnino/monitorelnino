@@ -36,7 +36,7 @@ setTimeout(() => {
   erros.slice(0, 4).forEach(e => console.log("     ", e));
   teste("ordem da página: números, por risco, onde chega, mês a mês, município",
     [...d.querySelectorAll("#conteudo section")].map(x => x.id).join(",") === "dc-topo,caminhos,chega,mesames,municipio");
-  teste("âncoras que o Para gestores e a Defesa civil usam existem", ["antes", "caminhos", "faixaResposta"].every(q));
+  teste("âncoras que o Para gestores e a Defesa civil usam existem", ["antes", "caminhos", "depois"].every(q));
 
   // (a) números do topo: os do gerador (`financiamento/semana.json` → `topo`), a mesma conta que a Imprensa lê
   const TOPO = (SEM.topo || []);

@@ -156,7 +156,7 @@ function __init(){
                                                      : 'financiamento.caminhos.coluna.risco_nao_coletado')) + '</span>')
       + '</div>';
   }).join('');
-  const faixa = document.getElementById('faixaResposta');
+  const faixa = document.getElementById('depois');
   /* Do decreto ao recurso: os números vêm prontos do gerador (`semana.json` → `funil_defesa_civil`). */
   const F = (S && S.funil_defesa_civil) || {};
   const linhaFunil = F.n_decretaram == null ? '' : '<p class="cartao-s">' + esc(tx('financiamento.caminhos.funil.linha', {n_decretaram: n(F.n_decretaram),
