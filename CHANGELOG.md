@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Busca de planos: S17, S19, S26 e S30 entram na tabela de fontes do metabuscador
+
+Coordenadorias regionais, diários por associação, repositórios acadêmicos e programas estaduais por adesão ganham uma linha cada em `FONTES_WEB`; mesmas travas (endereço da fonte, município, termo e plano; pista sem documento confirmado). Autoteste +1 caso. Linhas: +24/−0.
+
 ## 2026-10-27 · #PR · Buscador 2: os links do Google News arquivados voltam pelo resolvedor
 
 `seguir_pistas.py --arquivo` reprocessa os 11.965 links de agregador que a Limpeza arquivou: só a URL final resolvida entra, pela porta; o que não resolve vira rejeitada com motivo, e a data do `pistas_rejeitadas.json` impede nova tentativa. Código +57/−3; um teste.
