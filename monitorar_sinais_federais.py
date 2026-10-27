@@ -27,13 +27,11 @@ import pathlib
 import re
 import sys
 import urllib.parse
-import urllib.request
-from coletores_base import ua_de, gravar_em  # noqa: E402  (§228: um cliente só, com propósito)
+from coletores_base import gravar_em, texto_tolerante  # noqa: E402  (§228: um cliente só, com propósito)
 
 RAIZ = pathlib.Path(__file__).parent
 FILA = RAIZ / "data" / "pistas_sinais.json"
 TERMOS_DOU = ["El Niño", "proteção e defesa civil", "plano de contingência"]
-UA = {"User-Agent": ua_de("sinais federais")}
 
 
 def _hash(p):
@@ -42,13 +40,7 @@ def _hash(p):
 
 
 def _get(url, timeout=30):
-    """GET tolerante: devolve o corpo como texto, ou None com aviso (nunca exceção)."""
-    try:
-        req = urllib.request.Request(url, headers=UA)
-        return urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "ignore")
-    except Exception as e:
-        print(f"[aviso] não foi possível consultar {url}: {e}")
-        return None
+    return texto_tolerante(url, "sinais federais", timeout, url)
 
 
 def extrair_pistas_dou(texto, termo):

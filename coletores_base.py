@@ -75,6 +75,19 @@ def ua_de(proposito: str = "") -> str:
     # "verificacao de links", que quem lê o log da fonte entende igual.
     plano = _ud.normalize("NFKD", proposito).encode("ascii", "ignore").decode("ascii").strip()
     return f"{UA} [{plano}]" if plano else UA
+
+
+def texto_tolerante(url, proposito, timeout=30, o_que="a fonte"):
+    """GET tolerante: corpo como texto, ou None com aviso (nunca exceção). Um lugar só para os
+    quatro monitores que tinham cada um a sua cópia (consolidação, 27/10/2026)."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": ua_de(proposito)})
+        return urllib.request.urlopen(req, timeout=timeout).read().decode("utf-8", "ignore")
+    except Exception as e:  # noqa: BLE001 — tolerante por design
+        print(f"[aviso] falha ao consultar {o_que}: {e}")
+        return None
+
+
 NIVEIS = ("nao_verificado", "nacional", "estadual", "municipal_completo")
 EXECUTOR = "robo" if os.environ.get("GITHUB_ACTIONS") else "claude"
 
