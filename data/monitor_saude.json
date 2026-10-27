@@ -100,40 +100,41 @@
   "ufs": [],
   "pop_sob_emergencia": null,
   "faltam": [
-   "estadual: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO"
+   "estadual: BA, CE, DF, MA, MG, PE, RJ, RS, SE, TO"
   ],
   "consultado_em": {
-   "federal": "17/10/2026",
-   "estadual": {}
+   "federal": "27/10/2026",
+   "estadual": {
+    "AC": "19/10/2026",
+    "AL": "19/10/2026",
+    "AM": "19/10/2026",
+    "AP": "19/10/2026",
+    "ES": "19/10/2026",
+    "GO": "19/10/2026",
+    "MS": "19/10/2026",
+    "MT": "19/10/2026",
+    "PA": "19/10/2026",
+    "PB": "19/10/2026",
+    "PI": "19/10/2026",
+    "PR": "19/10/2026",
+    "RN": "19/10/2026",
+    "RO": "19/10/2026",
+    "RR": "19/10/2026",
+    "SC": "19/10/2026",
+    "SP": "19/10/2026"
+   }
   },
   "lacunas_estaduais": {
-   "AC": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError",
-   "AL": "rota do diário não descoberta (nenhuma recusa medida): https://imprensaoficial.al.gov.br/portal/download/2026/09/10.pdf: nao_e_edicao · https://imprensaoficial.al.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://imprensaoficial.al.gov.br/diario/20260910.pdf: nao_e_edicao",
-   "AM": "rota do diário não descoberta (nenhuma recusa medida): https://diario.imprensaoficial.am.gov.br/portal/download/2026/09/10.pd: nao_e_edicao · https://diario.imprensaoficial.am.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://diario.imprensaoficial.am.gov.br/diario/20260910.pdf: nao_e_edicao",
-   "AP": "rota do diário não descoberta (nenhuma recusa medida): o endereço por data respondia 200 em todas as datas com o MESMO arquivo de 2.016 bytes e uma página — página de erro servida como PDF, medido em 02/10/2026; o padrão por data do AP está retirado até a listagem de edições ser lida",
    "BA": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML",
-   "CE": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML",
-   "DF": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF",
-   "ES": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF",
-   "GO": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF",
+   "CE": "14 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-08#2)",
+   "DF": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)",
    "MA": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML",
-   "MG": "recusa da fonte, respeitada: HTTP 401 na API do Jornal Minas Gerais (api/v1/Jornal/ObterEdicaoPorDataPublicacao): a edição só sai com token de sessão — rota atrás de token, respeitada (run 39019929474)",
-   "MS": "67 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)",
-   "MT": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF",
-   "PA": "nenhuma edição lida por data (padrao_por_data)",
-   "PB": "51 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
+   "MG": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada",
    "PE": "recusa da fonte, respeitada: HTTP 403 em https://diariooficial.cepe.com.br/arquivos/2026/09/10.pdf — recusa respeitada · /edicoes: HTTPError · /diarios: HTTPError",
-   "PI": "rota do diário não descoberta (nenhuma recusa medida): /: URLError · /edicoes: URLError · /diarios: URLError",
-   "PR": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF",
-   "RJ": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · /busca: HTTPError",
-   "RN": "nenhuma edição lida por data (padrao_por_data)",
-   "RO": "nenhuma edição lida por data (padrao_por_data)",
-   "RR": "nenhuma edição lida por data (padrao_por_data)",
-   "RS": "rota do diário não descoberta (nenhuma recusa medida): API do DOE-RS (doe-backend.pro.rs.gov.br) sem resposta ao runner (timeout, run 39023721853); o sítio é casca Angular",
-   "SC": "rota do diário não descoberta (nenhuma recusa medida): https://doe.sea.sc.gov.br/portal/download/2026/09/10.pdf: nao_e_edicao · https://doe.sea.sc.gov.br/arquivos/2026/09/10.pdf: nao_e_edicao · https://doe.sea.sc.gov.br/diario/20260910.pdf: nao_e_edicao",
+   "RJ": "5 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-09-07)",
+   "RS": "edição com declaração não lida pelo juiz",
    "SE": "recusa da fonte, respeitada: HTTP 403 em https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json, /busca e /diario-oficial — recusa respeitada (run 39021988900)",
-   "SP": "rota do diário não descoberta (nenhuma recusa medida): https://doe.sp.gov.br/diario/20260910.pdf: sem_texto_extraivel · https://doe.sp.gov.br/edicoes/2026-09-10.pdf: sem_texto_extraivel · /edicoes: HTTPError",
-   "TO": "rota do diário não descoberta (nenhuma recusa medida): sem rota de edição conferida para esta UF"
+   "TO": "busca do diário falhou em 20/10/2026: URLError: <urlopen error timed out>"
   }
  },
  "resumo": {
