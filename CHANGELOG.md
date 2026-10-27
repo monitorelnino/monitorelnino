@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
 
+## 2026-10-27 · Juiz 1.8 (paralelo): data do plano e plano em elaboração
+
+No lote 7 da rodada paralela, PLANCONs de 2025 da pasta do RS saíram datados de 2012, o ano da Lei 12.608 citada no cabeçalho, e planos lidos como plano pelo cabeçalho (J1) caíam em "plano em elaboração" porque o corpo cita a equipe de elaboração. No 1.8, o ano de ato citado não é mais o ano do plano, e o plano pelo cabeçalho não é rebaixado. `--refazer J1,J7` relê só essas chaves. O 1.7 não muda.
+
 ## 2026-10-27 · #1272 · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
 
 A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.
