@@ -1,11 +1,11 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "26/10/2026",
+ "corte": "27/10/2026",
  "janela_dias": 7,
  "cartoes": [
   {
    "id": "pago_periodo_mp",
-   "valor": 150887172.93,
+   "valor": 139881159.88,
    "unidade": "reais",
    "periodo": "mês de setembro de 2026",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -67,20 +67,20 @@
   },
   {
    "id": "pago_ate_agora",
-   "valor": 424328447.8,
+   "valor": 472934534.08,
    "unidade": "reais",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
    "url_fonte": null,
    "detalhe": null,
    "sem_coleta": false,
-   "variacao_mes": 47753533.12,
+   "variacao_mes": 107365632.45,
    "mes_variacao": "202610",
    "mes_variacao_parcial": true
   },
   {
    "id": "gasto_direto_uniao",
-   "valor": 93.6,
+   "valor": 93.8,
    "unidade": "% do valor pago",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -126,9 +126,9 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor do Ministério do Meio Ambiente e Mudança do Clima, no valor de R$ 337.483.432,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
-    "lido_em": "19/10/2026"
+    "lido_em": "26/10/2026"
    },
-   "pct_gasto_direto": 99.4,
+   "pct_gasto_direto": 99.5,
    "meses": [
     {
      "mes": "202606",
@@ -147,12 +147,12 @@
     },
     {
      "mes": "202609",
-     "pago": 89969311.25,
+     "pago": 84468772.3,
      "parcial": false
     },
     {
      "mes": "202610",
-     "pago": 38615931.16,
+     "pago": 72985190.47,
      "parcial": true
     }
    ]
@@ -165,9 +165,9 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor dos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do Desenvolvimento e Assistência Social, Família e Combate à Fome, no valor de R$ 924.985.960,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455",
-    "lido_em": "19/10/2026"
+    "lido_em": "26/10/2026"
    },
-   "pct_gasto_direto": 76.1,
+   "pct_gasto_direto": 78.2,
    "meses": [
     {
      "mes": "202608",
@@ -176,12 +176,12 @@
     },
     {
      "mes": "202609",
-     "pago": 60917861.68,
+     "pago": 55412387.58,
      "parcial": false
     },
     {
      "mes": "202610",
-     "pago": 9137601.96,
+     "pago": 34380441.98,
      "parcial": true
     }
    ]

@@ -87,6 +87,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Afonso+Cl%C3%A1udio%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afonso Cláudio\" ES (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afonso Cláudio\" ES (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afonso Cláudio\" ES (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afonso Cláudio\" ES (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "3200201": {
@@ -117,6 +145,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alegre%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alegre.es.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alegre\" ES (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alegre\" ES (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alegre\" ES (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alegre\" ES (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "3200300": {
@@ -147,6 +203,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alfredo+Chaves%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alfredochaves.es.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alfredo Chaves\" ES (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alfredo Chaves\" ES (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alfredo Chaves\" ES (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alfredo Chaves\" ES (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "3200409": {
@@ -176,6 +260,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Anchieta%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anchieta\" ES (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anchieta\" ES (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anchieta\" ES (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Anchieta\" ES (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
    }
   },
@@ -207,6 +319,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aracruz%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "aracruz.es.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracruz\" ES (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracruz\" ES (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracruz\" ES (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aracruz\" ES (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "3200706": {

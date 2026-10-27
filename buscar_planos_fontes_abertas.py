@@ -10,6 +10,10 @@ Quatro consultas por município, todas a APIs públicas, sem login, sem LAI, sem
   S27  hospedagem de documentos  Scribd, Issuu, Calameo, Yumpu, DocPlayer, SlideShare (pelo metabuscador, 26/10/2026)
   S24  planos conexos            PMRR, saneamento, plano de saúde, consórcio, comitê (pelo metabuscador, 26/10/2026)
   S18  Querido Diário            excerto de plano nos diários oficiais do território (API pública, por código IBGE, 26/10/2026)
+  S20  Ministério Público        recomendação, TAC, inquérito civil (metabuscador, endereço .mp.br, 26/10/2026)
+  S21  Judiciário                ação civil pública e decisão (metabuscador, endereço .jus.br, 26/10/2026)
+  S23  Saúde                     CIB/CIEVS/SES, plano de contingência da dengue (metabuscador, .gov.br/.leg.br, 26/10/2026)
+  S31  Transferegov              proposta, plano de trabalho e anexo (metabuscador, .gov.br, 26/10/2026)
   S22  PNCP (api/consulta)       contratação municipal cujo objeto cita o plano (por código IBGE; só pista, contratação não é plano)
 
 Disciplina: cliente identificado, robots e Crawl-delay pela `buscar_uma_vez`, pausa por host, e
@@ -152,20 +156,33 @@ def cita(texto: str, nome: str) -> bool:
     return bool(re.search(rf"\b{re.escape(n)}\b", t))
 
 
-# ---- S27 e S24: o metabuscador da válvula (SearXNG), filtrado por endereço e por texto ------------
+# ---- fontes pelo metabuscador da válvula (SearXNG), filtradas por endereço e por texto -------------
+# Uma tabela, uma regra: o endereço é de um dos domínios da fonte, o município aparece no texto ou no
+# endereço, o termo da fonte (se houver) e o plano são citados. Fonte nova = linha nova.
 HOSPEDAGENS = ("scribd.com", "issuu.com", "calameo.com", "yumpu.com", "docplayer.com.br", "slideshare.net")
 INSTITUCIONAIS = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br", ".tc.br")
 PADRAO_CONEXO = re.compile(r"redu[cç][aã]o de risco|pmrr|saneamento b[aá]sico|plano municipal de sa[uú]de|cons[oó]rcio|comit[eê] de bacia", re.I)
+PADRAO_MP = re.compile(r"recomenda[cç][aã]o|termo de ajustamento|\bTAC\b|inqu[eé]rito civil|a[cç][aã]o civil p[uú]blica", re.I)
+PADRAO_JUS = re.compile(r"a[cç][aã]o civil p[uú]blica|senten[cç]a|ac[oó]rd[aã]o|decis[aã]o|processo n", re.I)
+PADRAO_SAUDE = re.compile(r"dengue|arbovirose|chikungunya|\bCIB\b|CIEVS", re.I)
+PADRAO_TRANSFERENCIA = re.compile(r"transferegov|plano de trabalho|proposta|conv[eê]nio|termo de fomento", re.I)
+SITES = lambda ds: "(" + " OR ".join("site:" + d.lstrip(".") for d in ds) + ")"
+# fonte: (endereços aceitos, termo da fonte ou None, consulta depois de "nome" UF)
+FONTES_WEB = {
+    "S27": (HOSPEDAGENS, None, f'"plano de contingência" "defesa civil" {SITES(HOSPEDAGENS)}'),
+    "S24": (INSTITUCIONAIS, PADRAO_CONEXO, '("redução de riscos" OR PMRR OR "saneamento básico" OR "plano municipal de saúde" '
+                                          'OR consórcio OR "comitê de bacia") "plano de contingência"'),
+    "S20": ((".mp.br",), PADRAO_MP, '(recomendação OR "termo de ajustamento de conduta" OR "inquérito civil" OR "ação civil pública") '
+                                    '"plano de contingência" site:mp.br'),
+    "S21": ((".jus.br",), PADRAO_JUS, '("ação civil pública" OR sentença OR acórdão) "plano de contingência" site:jus.br'),
+    "S23": ((".gov.br", ".leg.br"), PADRAO_SAUDE, '(dengue OR arboviroses OR CIB OR CIEVS) "plano de contingência" (site:gov.br OR site:leg.br)'),
+    "S31": ((".gov.br",), PADRAO_TRANSFERENCIA, '(Transferegov OR "plano de trabalho" OR proposta OR convênio) "plano de contingência" site:gov.br'),
+}
 
 
-def consulta_hospedagem(nome: str, uf: str) -> str:
-    sites = " OR ".join(f"site:{h}" for h in HOSPEDAGENS)
-    return f'"{nome}" {uf} "plano de contingência" "defesa civil" ({sites})'
+def consulta_web(fonte: str, nome: str, uf: str) -> str:
+    return f'"{nome}" {uf} {FONTES_WEB[fonte][2]}'
 
-
-def consulta_conexos(nome: str, uf: str) -> str:
-    return (f'"{nome}" {uf} ("redução de riscos" OR PMRR OR "saneamento básico" OR "plano municipal de saúde" '
-            f'OR consórcio OR "comitê de bacia") "plano de contingência"')
 
 # ---- S18: Querido Diário por município (26/10/2026) ----------------------------------------------
 def parametros_qd(ibge: str, cobertura: bool = False) -> dict:
@@ -285,13 +302,12 @@ def _host(url: str) -> str:
     return (urllib.parse.urlparse(url).netloc or "").lower().split(":")[0]
 
 
-def ler_web(dados: dict, nome: str, hospedagem: bool) -> list:
-    """Resultados do metabuscador que servem à fonte. Pura. Levanta se o corpo não é resposta do SearXNG;
-    `results` vazio devolve [] e quem chama decide (zero bruto não é ausência: o motor pode estar barrando, §186).
-    S27: o endereço é de uma hospedagem e o município e o plano aparecem no título ou no trecho.
-    S24: o endereço é institucional, o município e um termo conexo aparecem, e o plano é citado."""
+def ler_web(dados: dict, nome: str, fonte: str) -> list:
+    """Resultados do metabuscador que servem à fonte (`FONTES_WEB`). Pura. Levanta se o corpo não é resposta do
+    SearXNG; `results` vazio devolve [] e quem chama decide (zero bruto não é ausência: o motor pode estar barrando, §186)."""
     if not isinstance(dados, dict) or not isinstance(dados.get("results"), list):
         raise ValueError("resposta do metabuscador sem `results`")
+    dominios, termo, _ = FONTES_WEB[fonte]
     saida = []
     for r in dados["results"]:
         url, titulo = r.get("url") or "", (r.get("title") or "").strip()
@@ -299,10 +315,7 @@ def ler_web(dados: dict, nome: str, hospedagem: bool) -> list:
         h = _host(url)
         if not url or not cita(texto + " " + url.replace("-", " ").replace("_", " "), nome):
             continue
-        if hospedagem:
-            ok = any(h == d or h.endswith("." + d) for d in HOSPEDAGENS) and PADRAO_PLANO.search(texto)
-        else:
-            ok = h.endswith(INSTITUCIONAIS) and PADRAO_CONEXO.search(texto) and PADRAO_PLANO.search(texto)
+        ok = any(h == d.lstrip(".") or h.endswith("." + d.lstrip(".")) for d in dominios) and (termo is None or termo.search(texto)) and PADRAO_PLANO.search(texto)
         if ok and url not in [u for u, _ in saida]:
             saida.append((url, titulo or url))
     return saida
@@ -369,12 +382,12 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
             if f in ("S16", "S25") and not dominio:
                 r["situacao"], r["motivo"] = sem_dominio(tentativas)
             else:
-                if f in ("S27", "S24"):
-                    r["consulta"] = (consulta_hospedagem if f == "S27" else consulta_conexos)(nome, uf)
+                if f in FONTES_WEB:
+                    r["consulta"] = consulta_web(f, nome, uf)
                     dados = (web or buscar_web)(r["consulta"])
                     if isinstance(dados, dict) and dados.get("results") == []:
                         raise ValueError("metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência")
-                    achados = ler_web(dados, nome, f == "S27")
+                    achados = ler_web(dados, nome, f)
                 elif f == "S18":
                     r["consulta"], achados, r["motivo"] = consultar_qd(buscar, ibge)
                 elif f == "S22":
@@ -537,7 +550,11 @@ def autoteste() -> int:
         {"url": "https://pt.scribd.com/document/1/PLANCON-de-Alfa", "title": "PLANCON de Alfa - Defesa Civil", "content": "Plano de contingência do município de Alfa"},
         {"url": "https://issuu.com/x/docs/outro", "title": "Revista de Beta", "content": "plano de contingência de Beta"},
         {"url": "https://alfa.xx.gov.br/pmrr.pdf", "title": "PMRR de Alfa", "content": "plano municipal de redução de riscos; plano de contingência de Alfa"},
-        {"url": "https://blog.com/alfa", "title": "Alfa", "content": "plano de contingência e saneamento básico de Alfa"}]}
+        {"url": "https://blog.com/alfa", "title": "Alfa", "content": "plano de contingência e saneamento básico de Alfa"},
+        {"url": "https://www.mpxx.mp.br/recomendacao-14", "title": "Recomendação ao município de Alfa", "content": "elaborar o plano de contingência de Alfa"},
+        {"url": "https://tjxx.jus.br/acp/1", "title": "Ação civil pública contra Alfa", "content": "obriga Alfa a elaborar plano de contingência"},
+        {"url": "https://saude.xx.gov.br/cib/res-12.pdf", "title": "Resolução CIB: plano de contingência da dengue de Alfa", "content": ""},
+        {"url": "https://transferegov.sistema.gov.br/p/9", "title": "Proposta de Alfa: plano de trabalho", "content": "anexo: plano de contingência de Alfa"}]}
     web = lambda r=web_ok: (lambda q: r if not isinstance(r, Exception) else (_ for _ in ()).throw(r))
     qd_ok = {"gazettes": [{"url": "https://q/a.pdf", "date": "2026-03-01", "excerpts": ["Aprova o  Plano de Contingência de Alfa"]},
                           {"url": "https://q/b.pdf", "date": "2026-03-02", "excerpts": ["Orçamento"]},
@@ -568,8 +585,13 @@ def autoteste() -> int:
             um(["S16"], {**base, "alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "recusa_de_fonte"
             and um(["S16"], {"//www.alfa.xx.gov.br": b"<html>outra</html>", **{k: v for k, v in base.items() if k != "alfa.xx.gov.br"}, "//alfa.xx.gov.br": urllib.error.HTTPError("u", 403, "x", {}, None)})["S16"]["situacao"] == "dominio_nao_verificado"
             and "alfa.xx.gov.br" in um(["S16"], {**base, "alfa.xx.gov.br": OSError("dns")})["S16"]["motivo"]),
-        "S27: só hospedagem que cita o município e o plano; endereço de outro município ou fora da lista não entra": lambda: ler_web(web_ok, "Alfa", True) == [("https://pt.scribd.com/document/1/PLANCON-de-Alfa", "PLANCON de Alfa - Defesa Civil")] and ler_web(web_ok, "Beta", True) == [("https://issuu.com/x/docs/outro", "Revista de Beta")],
-        "S24: só endereço institucional com termo conexo e plano; blog e hospedagem ficam de fora": lambda: ler_web(web_ok, "Alfa", False) == [("https://alfa.xx.gov.br/pmrr.pdf", "PMRR de Alfa")],
+        "S27: só hospedagem que cita o município e o plano; endereço de outro município ou fora da lista não entra": lambda: ler_web(web_ok, "Alfa", "S27") == [("https://pt.scribd.com/document/1/PLANCON-de-Alfa", "PLANCON de Alfa - Defesa Civil")] and ler_web(web_ok, "Beta", "S27") == [("https://issuu.com/x/docs/outro", "Revista de Beta")],
+        "S20, S21, S23, S31: cada fonte aceita só o seu endereço e o seu termo; o resto (hospedagem, blog, outra fonte) fica de fora": lambda: (
+            [u for u, _ in ler_web(web_ok, "Alfa", "S20")] == ["https://www.mpxx.mp.br/recomendacao-14"]
+            and [u for u, _ in ler_web(web_ok, "Alfa", "S21")] == ["https://tjxx.jus.br/acp/1"]
+            and [u for u, _ in ler_web(web_ok, "Alfa", "S23")] == ["https://saude.xx.gov.br/cib/res-12.pdf"]
+            and [u for u, _ in ler_web(web_ok, "Alfa", "S31")] == ["https://transferegov.sistema.gov.br/p/9"]),
+        "S24: só endereço institucional com termo conexo e plano; blog e hospedagem ficam de fora": lambda: ler_web(web_ok, "Alfa", "S24") == [("https://alfa.xx.gov.br/pmrr.pdf", "PMRR de Alfa")],
         "S27 e S24: consulta registrada e pista com as travas de campo": lambda: (lambda r: all(r[f]["situacao"] == "lido" and r[f]["consulta"] and r[f]["pistas"][0]["promovivel"] is False and r[f]["pistas"][0]["documento_oficial_confirmado"] is None for f in r))(consultar_municipio("Alfa", "XX", "9999999", ["S27", "S24"], falso({}), "2026-10-26", web=web())),
         "S27: resultado bruto vazio é erro (motor barrando), nunca sem_resultado; filtrado a zero é sem_resultado": lambda: (
             consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": []}))["S27"]["situacao"] == "erro"
@@ -664,7 +686,7 @@ def main() -> int:
     if "--autoteste" in sys.argv:
         return autoteste()
     if "--alvos" not in sys.argv:
-        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29,S27,S24,S18,S22] [--limite N] [--uf SP]")
+        print("uso: --alvos <arquivo com fila> [--fontes S16,S25,S13,S29,S27,S24,S18,S22,S20,S21,S23,S31] [--limite N] [--uf SP]")
         return 1
     arg = lambda k: sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
     fontes = [f.strip().upper() for f in (arg("--fontes") or "S13,S16,S25,S29").split(",") if f.strip()]
