@@ -1405,10 +1405,14 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
   font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
 /* Risco previsto em faixa: uma linha por família, siglas como etiquetas. */
 .faixa-previsto{margin:var(--sp-2) 0 0; display:grid; gap:var(--sp-2);}
-.faixa-previsto > div{display:grid; grid-template-columns:minmax(0, 12rem) minmax(0, 1fr); gap:var(--sp-3); align-items:baseline;
+.faixa-previsto > div{display:grid; grid-template-columns:minmax(0, 15rem) minmax(0, 1fr); gap:var(--sp-3); align-items:baseline;
   padding-bottom:var(--sp-2); border-bottom:1px solid var(--line);}
 .faixa-previsto dt{font-family:var(--font-dado); font-size:var(--fs-small); line-height:var(--lh-small); font-weight:var(--peso-semibold);}
 .faixa-previsto dd{margin:0;}
+.marca-risco{display:inline-block; width:var(--sp-3); height:var(--sp-3); margin-right:var(--sp-1); vertical-align:baseline; background:var(--seca);}
+.marca-risco--chuva{background:var(--chuva);} .marca-risco--fogo{background:var(--fogo);}
+.marca-risco--vazia{background:transparent; border:1px solid var(--muted);}
+.faixa-previsto__n{font-weight:var(--peso-regular); color:var(--muted);}
 @media (max-width: 640px){ .faixa-previsto > div{grid-template-columns:minmax(0, 1fr); gap:var(--sp-1);} }
 /* Cartão de mapa com dados ao lado (fogo) e cartão de tabela: a mídia não tem a proporção do mapa. */
 .cartao-mapa.figura--dupla .figura-midia, .cartao-mapa.figura--tabela .figura-midia{aspect-ratio:auto; overflow:visible; align-items:start;}
