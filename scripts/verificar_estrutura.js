@@ -143,11 +143,10 @@ for (const arq of arquivos) {
   const semLogo0 = bruto0.replace(/<svg[^>]*data-marca-fixa="1"[^>]*>[\s\S]*?<\/svg>/g, "");
   const jsTipo = [...semLogo0.replace(/^[\s\S]*?<body/, "").matchAll(/style=\\?["'][^"']*(font-size|font-weight|line-height|font-family)/g)];
   if (jsTipo.length) falha(`${nome}: script da página gera HTML com tipografia inline (${jsTipo.length})`);
-  // componente único de figura: toda .figura tem título, subtítulo e mídia; nenhum título de figura ou de seção começa com número à mão
+  // componente único de figura: toda .figura tem título e mídia (subtítulo, ou período/território/unidade em título + eixo: verificar_texto_publico.js); nenhum título de figura ou de seção começa com número à mão
   d.querySelectorAll(".figura").forEach(f => {
     const id = f.id || "(sem id)";
     if (!f.querySelector(":scope > .figura-titulo")) falha(`${nome}: figura #${id} sem .figura-titulo`);
-    if (!f.querySelector(":scope > .figura-sub")) falha(`${nome}: figura #${id} sem .figura-sub`);
     if (!f.querySelector(":scope > .figura-midia")) falha(`${nome}: figura #${id} sem .figura-midia`);
     if (!/figura--(mapa|grafico|tabela|diagrama|barras|indicador)/.test(f.className)) falha(`${nome}: figura #${id} sem variante de mídia (figura--mapa|grafico|tabela|diagrama|barras|indicador)`);
     if (f.tagName !== "FIGURE") falha(`${nome}: figura #${id} deve ser <figure>`);

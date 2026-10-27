@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Figura sem subtítulo vale com período, território e unidade no título ou no eixo
+
+A exigência de `.figura-sub` saiu de `verificar_estrutura.js`, que duplicava o `verificar_texto_publico.js`; este agora aceita figura sem subtítulo quando título e eixo dizem período, território e unidade (`figura_componente.sem_subtitulo` em `regras.json`). Uma mutação nova prova. Código +10/−2. Nenhum texto público muda.
+
 ## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
 
 `catalogo.json` ganha `cievs_boletins`: órgão, endereço, formato, cadência e situação de 16 UFs, mais as UFs já em `fontes_uf.json`, a localizar e não medidas. Só catálogo: nenhum PDF é lido por coletor. Divergência da Bahia com `fontes_uf.json` registrada para a editoria. Dado +172, código 0.
