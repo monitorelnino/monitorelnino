@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
+Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
+
 ## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
 
 Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
