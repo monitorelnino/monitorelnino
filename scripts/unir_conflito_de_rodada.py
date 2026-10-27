@@ -337,22 +337,32 @@ def _unir_host(base: dict, nosso: dict, deles: dict) -> dict:
             if (nosso.get("primeiro_acesso") or deles.get("primeiro_acesso")) else None}
 
 
+def e_plano_de_busca(caminho: str) -> bool:
+    """`data/planos_busca/<UF>.json`: `{gerado_em, municipios: {cod: {fonte: leitura}}}` (27/10/2026).
+    Válvulas diferentes leem fontes diferentes do mesmo município; cada fonte é um "campo" da regra
+    da pista (um lado só tocou entra; os dois para valores diferentes recusa)."""
+    return caminho.startswith("data/planos_busca/") and caminho.endswith(".json")
+
+
 def unir_indice(caminho, base_txt, nosso_txt, deles_txt):
     """(doc, n_nosso, n_deles, n_uniao) do índice `{chave: {id: entrada}}`, pela base comum."""
-    chave = INDICES_POR_CHAVE[caminho]
+    chave = "municipios" if e_plano_de_busca(caminho) else INDICES_POR_CHAVE[caminho]
     if nosso_txt is None or deles_txt is None:
         raise Recusa("um dos lados não tem o arquivo; isto não é acréscimo dos dois lados")
     nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
     base = (json.loads(base_txt) if base_txt is not None else {}).get(chave) or {}
     a, b = nosso.get(chave) or {}, deles.get(chave) or {}
-    mesclar = {"hosts": _unir_host, "municipios": _unir_municipio_do_livro}.get(chave, _mesclar_pista)
+    mesclar = (_mesclar_pista if e_plano_de_busca(caminho)
+               else {"hosts": _unir_host, "municipios": _unir_municipio_do_livro}.get(chave, _mesclar_pista))
     uniao = dict(a)
     for k, v in b.items():
         if k not in a or a[k] == v:
             uniao[k] = v
         elif v != base.get(k):
             uniao[k] = v if a[k] == base.get(k) else mesclar(base.get(k), a[k], v)
-    return {**deles, **nosso, chave: uniao}, len(a), len(b), len(uniao)
+    extra = {"gerado_em": max(str(nosso.get("gerado_em") or ""), str(deles.get("gerado_em") or ""))} \
+        if e_plano_de_busca(caminho) else {}
+    return {**deles, **nosso, **extra, chave: uniao}, len(a), len(b), len(uniao)
 
 
 class _Ausente:
@@ -578,7 +588,7 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
         _escrever(destino, _json_indentado(doc))
         return (f"{a} + {b} → {t} pista(s), {m} mesclada(s) "
                 f"(união pela base comum, política de scripts/pistas.py)")
-    if norm in INDICES_POR_CHAVE:
+    if norm in INDICES_POR_CHAVE or e_plano_de_busca(norm):
         doc, a, b, t = unir_indice(norm, base_txt, nosso_txt, deles_txt)
         gravar_no_formato_do_produtor(destino, doc)
         return f"{a} + {b} → {t} entrada(s) (união pela base comum)"
@@ -1008,6 +1018,25 @@ def autoteste() -> int:
         d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
         checar("F55: índice de evidências une as entradas novas e a mudança de um lado só",
                not rec and d["itens"] == {"a": {"ocr": 1}, "b": {"x": 1}, "c": {"x": 2}})
+    with tempfile.TemporaryDirectory() as t:
+        PB = "data/planos_busca/DF.json"
+        pl = lambda g, m: json.dumps({"gerado_em": g, "municipios": m})
+        s0 = {"consultado_em": "2026-10-26", "situacao": "erro"}
+        r = _repo_com_conflito(t, PB, pl("2026-10-26", {"5300108": {"S16": s0}}),
+                               pl("2026-10-27", {"5300108": {"S16": s0, "S20": {"situacao": "erro"}}}),
+                               pl("2026-10-26", {"5300108": {"S16": {**s0, "situacao": "lido"}, "S22": {"situacao": "lido"}}}))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / PB).read_text(encoding="utf-8")) if not rec else {"municipios": {}}
+        m = d["municipios"].get("5300108") or {}
+        checar("planos_busca: une município×fonte pela base comum, sem perder fonte de nenhum lado",
+               not rec and sorted(m) == ["S16", "S20", "S22"] and m["S16"]["situacao"] == "lido"
+               and d.get("gerado_em") == "2026-10-27")
+    with tempfile.TemporaryDirectory() as t:
+        r = _repo_com_conflito(t, PB, pl("a", {"1": {"S16": s0}}),
+                               pl("a", {"1": {"S16": {**s0, "situacao": "x"}}}),
+                               pl("a", {"1": {"S16": {**s0, "situacao": "y"}}}))
+        res, reg, rec = resolver(repo=r)
+        checar("planos_busca: a mesma fonte lida diferente nos dois lados é recusada", bool(rec))
     with tempfile.TemporaryDirectory() as t:
         RB = "data/robots_registro.json"
         ac = lambda u: {"url": u, "quando": u}
