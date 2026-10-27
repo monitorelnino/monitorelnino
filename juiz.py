@@ -857,7 +857,7 @@ def etapa5_familia_de_risco(texto: str) -> tuple:
 # Etapa 6 — categoria e data (§3 e §5.3)
 # =============================================================================================
 def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
-                    sem_ato_de_aprovacao: bool = False) -> tuple:
+                    sem_ato_de_aprovacao: bool = False, como_plano: bool = False) -> tuple:
     """(categoria, motivo). A escada de créditos NÃO é decidida aqui.
 
     Este juiz escolhe entre `plano`, `plano_elaboracao` e `plano_antigo` pela data do ato em
@@ -868,7 +868,9 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
     # pela ausência de verbo de instituição, não por subtração de texto — `RE_OBJETO_EX_ANTE` passou
     # a reconhecer "determina a elaboração" (é objeto ex-ante), então descontá-lo do texto e
     # perguntar de novo devolvia "plano".
-    if RE_SO_DETERMINA_ELABORACAO.search(texto) and not RE_INSTITUI.search(texto):
+    # 1.8 (J1): o documento que É o plano não "determina a elaboração" de nada; a equipe de elaboração
+    # citada no corpo do PLANCON não o rebaixa a `plano_elaboracao` (lote 7 da J18, pasta do RS).
+    if (RE_SO_DETERMINA_ELABORACAO.search(texto) and not RE_INSTITUI.search(texto)) and not como_plano:
         return "plano_elaboracao", "o ato determina a elaboração do plano, não o institui"
     if sem_ato_de_aprovacao:
         # DECISÃO DA EDITORIA, 03/10/2026: sem degrau novo — o plano conta no degrau que **a leitura
@@ -1044,6 +1046,10 @@ ANO_MINIMO_18 = 1990
 RE_ANO_DE_VERSAO = re.compile(
     r"(?:vers[ãa]o|atualiza[çc][ãa]o|atualizad[oa]\s+em|revis[ãa]o|revisad[oa]\s+em|elaborad[oa]\s+em)"
     r"[^\n]{0,40}?\b((?:19|20)\d{2})\b", re.I)
+# "Lei nº 12.608, de 10 de abril de 2012", "Lei 12.608/2012": o ano é do ato citado (lote 7 da J18: PLANCONs do RS
+# de 2025 saíam datados de 2012).
+RE_DATA_DE_ATO_CITADO = re.compile(r"(?:\blei|decreto|portaria|resolu[çc][ãa]o)[^\n]{0,25}?[\d.]+\s*"
+                                   r"(?:/|,?\s*de\s+\d{1,2}\s*(?:º|o)?\s+de\s+[a-zç]+\s+de\s*)$", re.I)
 RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|funda[çc][ãa]o|criad[oa]|cria[çc][ãa]o|"
                            r"popula[çc][ãa]o|emancipad[oa]|emancipa[çc][ãa]o|instalad[oa]|\bn[º°o.])"
                            r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
@@ -1060,7 +1066,8 @@ def ano_do_plano(texto, ano_corrente: int = None):
         fora = True
     cabeca = str(texto or "")[:1500]
     for m in re.finditer(r"\b((?:19|20)\d{2})\b", cabeca):
-        if RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()]):
+        if (RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()])
+                or RE_DATA_DE_ATO_CITADO.search(cabeca[max(0, m.start() - 70):m.start()])):
             continue
         a = int(m.group(1))
         if ANO_MINIMO_18 <= a <= teto:
@@ -1230,7 +1237,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if v18 and sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
     categoria, motivo_cat = etapa6_categoria(texto, veredito["data"], eh_estadual,
-                                             sem_ato_de_aprovacao=sem_ato)
+                                             sem_ato_de_aprovacao=sem_ato, como_plano=como_plano)
     if (v18 and "J8" in propostas and categoria == "plano_antigo"
             and int((re.findall(r"\d{4}", str(veredito["data"])) or ["9999"])[-1]) < (ano_corrente or _ano_de_hoje()) - 5
             and not RE_PROVA_DE_VIGENCIA.search(texto)):
@@ -1507,6 +1514,15 @@ def casos_18() -> list:
          ano_do_plano(PLANO_MARES_18, 2026) == (2024, False)
          and ano_do_plano("PLANO DE CONTINGÊNCIA criado pela Lei nº 2004 em 2019", 2026) == (2019, False)
          and ano_do_plano("PLANO DE CONTINGÊNCIA Versão 2034", 2026) == (None, True)),
+        ("J7 ano de lei citada não é o do plano ('Lei nº 12.608, de 10 de abril de 2012'; 'Lei 12.608/2012')",
+         ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026)
+         == (2025, False)
+         and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de X 2024", 2026) == (2024, False)),
+        ("J1 a equipe de elaboração citada no PLANCON não o rebaixa a plano_elaboracao",
+         etapa6_categoria("equipe de elaboração do plano de contingência", "2025", sem_ato_de_aprovacao=True,
+                          como_plano=True)[0] == "plano_antigo"
+         and etapa6_categoria("equipe de elaboração do plano de contingência", "2025",
+                              sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
         ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia); 1.7 dava plano_antigo",
          _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"
          and julgar(goiania, "Bonito", "MS", url=URL_OFICIAL)["categoria"] == "plano_antigo"),

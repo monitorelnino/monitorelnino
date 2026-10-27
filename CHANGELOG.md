@@ -11,6 +11,10 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
 `coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
+## 2026-10-27 · Juiz 1.8 (paralelo): data do plano e plano em elaboração
+
+No lote 7 da rodada paralela, PLANCONs de 2025 da pasta do RS saíram datados de 2012, o ano da Lei 12.608 citada no cabeçalho, e planos lidos como plano pelo cabeçalho (J1) caíam em "plano em elaboração" porque o corpo cita a equipe de elaboração. No 1.8, o ano de ato citado não é mais o ano do plano, e o plano pelo cabeçalho não é rebaixado. `--refazer J1,J7` relê só essas chaves. O 1.7 não muda.
+
 ## 2026-10-27 · #1272 · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
 
 A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.
