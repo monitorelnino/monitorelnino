@@ -19,7 +19,8 @@ window.addEventListener('load', function(){
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const reais = v => v === 0 ? 'zero' : 'R$ ' + Math.round(v).toLocaleString('pt-BR');
   const MES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-  const NOMES = {estiagem: 'seca', incendios: 'fogo', chuvas: 'chuva forte', calor: 'calor'};
+  const NOMES = {estiagem: 'seca', incendios: 'incêndio', chuvas: 'chuva forte', calor: 'calor'};
+  const lista = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' e ' + a[a.length - 1];
 
   const REF = json('data/municipios_ibge_referencia.json'), ENQ = json('data/enquadramento_card.json');
   const CARD = json('data/municipios_card.json'), META = json('data/meta.json');
@@ -91,7 +92,7 @@ window.addEventListener('load', function(){
     card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-figuras">'
       + cartaoPlano(ConsultaMunicipio.situacaoDoPlano((((plano || {}).municipios) || {})[cod]), corte)
       + cartao('neutro', tx('cadastro.rotulo'), esc(tx(marcas.ch || marcas.geo ? 'cadastro.indicado' : 'cadastro.fora')), tx('cadastro.nota'))
-      + cartao('musgo', tx('risco.rotulo'), esc(familias.length ? tx('risco.valor', {familias: familias.join(', ').replace(/^./, c => c.toUpperCase())}) : tx('risco.sem_sinal')),
+      + cartao('musgo', tx('risco.rotulo'), esc(familias.length ? tx('risco.valor', {familias: lista(familias).replace(/^./, c => c.toUpperCase())}) : tx('risco.sem_sinal')),
           doc ? tx('risco.nota', {data_boletim: esc(doc.split(/\s+[—-]\s+/).pop())}) : '')
       + cartao('neutro', tx('recursos.rotulo'), recursos, notaRec)
       + '</div>';
