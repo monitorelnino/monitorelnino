@@ -9,6 +9,48 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
+
+Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
+## 2026-10-27 · #PR · S22: busca textual do PNCP com os parâmetros da API
+A sonda do PNCP pedia `tipo_documento` no singular e sem `status`, e o servidor respondia 400. Passa a pedir `tipos_documento=edital` e `status=todos`, como a busca pública do portal. A válvula de 27/10 mostrou que varrer contratações por município não escala (cinco capitais lidas em duas horas e meia); a busca por texto, se responder, resolve as 27 capitais em minutos.
+
+## 2026-10-27 · Rodada paralela 1.8: o prazo grava o que foi lido
+
+O lote 4 leu por 5 horas e foi interrompido pelo prazo sem gravar nada, porque o rejulgamento só gravava no fim. Agora a interrupção do prazo (SIGINT, com 60 s de espera) grava o que já foi lido, como fazem os outros coletores. Só a rodada paralela muda.
+
+## 2026-10-27 · #PR · ESPIN reconferida duas vezes por semana
+
+O elo `semanal_espin_e_links` passa a rodar domingo e quarta. Causa: cadência de 7 dias contra limite de frescor de 9; um timeout do DOU em 25/10 manteve o registro anterior (correto) e deixou o carimbo em 17/10. Duas rodadas por semana dão folga a uma falha de fonte externa. Coletor e limite intactos.
+
+## 2026-10-27 · #PR · S22: páginas de 500 no PNCP
+A válvula leu 10 das 27 capitais em 200 minutos e três (Manaus, Brasília, Goiânia) estouraram o teto de páginas. A consulta passa a pedir 500 contratações por página e volta a 50 se o servidor recusar na primeira chamada. Sem mudança de regra: sem achado só vale com a leitura completa.
+
+## 2026-10-27 · #PR · MPs: dotação por ação (via 4) e empenho como lacuna medida
+
+O coletor das MPs lê o arquivo anual Orçamento da Despesa e registra dotação inicial, atualizada, acréscimo e diferença contra o valor do ato (sem ajuste). A observação do empenho não existe em download aberto (403/500, medido em 26/10): lacuna declarada com motivo. METODOLOGIA §33.2. Nenhum texto público muda.
+
+## 2026-10-26 · #PR · S22: compras públicas do PNCP por município na busca de planos
+Nova fonte S22 no adaptador de fontes abertas: consulta de contratações do PNCP por município, modalidade e ano, e leitura do objeto que cita plano de contingência ou de redução de riscos. É pista de onde procurar o documento, nunca plano. Ausência só com a leitura completa; recusa registrada, nunca contornada.
+
+## 2026-10-26 · #1216 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)
+Execução das MPs 1.367 e 1.384: o coletor passa a ler plano orçamentário e fonte de recursos. Um código que aparece com empenho só depois da publicação é isolado como crédito; sem isolamento, o método é teto e nada é rateado. Vias de empenho e de dotação ficam declaradas como lacuna em `mps_2026.json` (`isolamento`). METODOLOGIA §33.2. Texto público inalterado.
+
+## 2026-10-26 · #1219 · Busca de planos: Ministério Público, Judiciário, Saúde e Transferegov por consulta mecânica
+
+As fontes S20, S21, S23 e S31 entram em `buscar_planos_fontes_abertas.py` como linhas da tabela `FONTES_WEB`, junto de S27 e S24: o metabuscador da válvula, filtrado por endereço e por texto, sem agente por município. Saldo de código +22 linhas (quatro fontes novas e um caso de teste). Nenhum texto público muda.
+
+## 2026-10-26 · #1214 · Saúde: a tabela dos estados no lugar do mapa
+
+Sai o mapa dos planos estaduais de saúde, a lista de tipos com siglas e a contagem "zero estados". Fica a tabela dos estados, aberta; a UF abre a ficha. Contrato e textos (catálogo) atualizados; órfãos removidos. Saldo de código e conteúdo −42 linhas. Parte B (VIGIAR) segue aguardando o dado.
+
+## 2026-10-26 · #1213 · Limpeza: resíduo da retirada de 26/10
+
+Na página de Saúde, Cubatão/SP e Toledo/PR deixam de mostrar a leitura de saúde no plano de documento retirado pelo #1203; sai também a proposta de Toledo na escada de planos. Em `mudancas.html`, entrada sem número deixa de aparecer dentro da anterior (`gerar_mudancas.py`, com caso de teste). Código +5/−3.
+
+## 2026-10-26 · #1211 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
+
+No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.
 ## 2026-10-26 · #1203 · Retirada de confirmações e links que passaram por engano
 
 Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.

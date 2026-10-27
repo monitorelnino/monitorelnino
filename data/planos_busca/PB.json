@@ -43,6 +43,13 @@
     "consulta": "\"João Pessoa\" PB (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": null,
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-26",
+    "situacao": "lido",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2507507&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2500304": {
@@ -73,6 +80,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alagoa+Grande%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alagoagrande.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alagoa Grande\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alagoa Grande\" PB (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Alagoa Grande\" PB (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Alagoa Grande\" PB (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2500403": {
@@ -103,6 +138,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alagoa+Nova%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alagoanova.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Alagoa Nova\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alagoa Nova\" PB (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alagoa Nova\" PB (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alagoa Nova\" PB (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2500601": {
@@ -133,6 +196,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alhandra%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alhandra.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alhandra\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alhandra\" PB (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alhandra\" PB (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Alhandra\" PB (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2501104": {
@@ -163,6 +254,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Areia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "areia.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Areia\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Areia\" PB (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Areia\" PB (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Areia\" PB (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2501302": {
@@ -193,6 +312,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aroeiras%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "aroeiras.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aroeiras\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aroeiras\" PB (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aroeiras\" PB (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aroeiras\" PB (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2501500": {
@@ -216,6 +363,27 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bananeiras%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "bananeiras.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Bananeiras\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Bananeiras\" PB (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Bananeiras\" PB (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2501807": {
@@ -239,6 +407,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bayeux%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "bayeux.pb.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Bayeux\" PB (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2502508": {

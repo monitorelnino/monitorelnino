@@ -43,6 +43,13 @@
     "consulta": "\"Recife\" PE (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": null,
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-26",
+    "situacao": "lido",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2611606&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2600054": {
@@ -73,6 +80,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Abreu+e+Lima%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "abreuelima.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Abreu e Lima\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Abreu e Lima\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Abreu e Lima\" PE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Abreu e Lima\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2600104": {
@@ -103,6 +138,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Afogados+da+Ingazeira%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "afogadosdaingazeira.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afogados da Ingazeira\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afogados da Ingazeira\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afogados da Ingazeira\" PE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afogados da Ingazeira\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2600203": {
@@ -133,6 +196,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Afr%C3%A2nio%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "afranio.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afrânio\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afrânio\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Afrânio\" PE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Afrânio\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2600302": {
@@ -163,6 +254,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Agrestina%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "agrestina.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Agrestina\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "sem_resultado",
+    "consulta": "\"Agrestina\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Agrestina\" PE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Agrestina\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2600708": {
@@ -193,6 +312,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Alian%C3%A7a%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "alianca.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aliança\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aliança\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aliança\" PE (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Aliança\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2600807": {
@@ -223,6 +370,27 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Altinho%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "altinho.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Altinho\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Altinho\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Altinho\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2601102": {
@@ -253,6 +421,27 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Araripina%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "araripina.pe.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Araripina\" PE (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Araripina\" PE (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-26",
+    "situacao": "erro",
+    "consulta": "\"Araripina\" PE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
    }
   },
   "2601052": {

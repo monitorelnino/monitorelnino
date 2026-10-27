@@ -262,11 +262,38 @@ def paralelo_18(argv) -> int:
             (RAIZ / "data" / "veiculos_imprensa.json").read_text(encoding="utf-8")).get("veiculos", [])}
         em_fila = [p for p in json.loads((RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8"))
                    .get("pistas", []) if str(p.get("status") or "").startswith(STATUS_EM_FILA)]
+        anterior = fila or {}
         fila = dict(triar_fila_18(em_fila, veiculos), _governanca=(
             "Fila paralela do codebook 1.8 (B1, B3, B6): as pistas em fila de data/pistas_imprensa.json que a "
             "entrada 1.8 aceita, por prioridade. Nenhuma página lê este arquivo."), triada_em=hoje)
+        # retriar não apaga o que a rodada já fez: as pistas que B2/B4 acharam e as tentativas de B2
+        novas_ids = {x["id"] for x in fila["pistas"]}
+        fila["pistas"] += [x for x in anterior.get("pistas", [])
+                           if str(x.get("origem")).startswith(("b2_", "b4_")) and x["id"] not in novas_ids]
+        feitos = {a["id"]: a for a in anterior.get("agregadores", [])}
+        fila["agregadores"] = [feitos.get(a["id"], a) for a in fila["agregadores"]]
         print(f"fila 1.8: {fila['totais']}")
 
+    por_id = {p.get("id"): p for p in json.loads(
+        (RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8")).get("pistas", []) if p.get("id")}
+    decididas = vigentes(json.loads(REGISTRO.read_text(encoding="utf-8")).get("decisoes") or [])
+    if fila is not None and "--fila" in argv:   # B2: o link de agregador das decisões também se resolve
+        from pistas import REDIRECIONADORES, prioridade_18
+        ja, feitos = {a["id"] for a in fila["agregadores"]}, {a["id"]: a for a in anterior.get("agregadores", [])}
+        for v in decididas.values():
+            if any(r in str(v.get("url")) for r in REDIRECIONADORES) and v.get("pista_id") not in ja:
+                ja.add(v.get("pista_id"))
+                if v.get("pista_id") in feitos:
+                    fila["agregadores"].append(feitos[v["pista_id"]])
+                    continue
+                origem = por_id.get(v.get("pista_id")) or {}
+                fila["agregadores"].append({"id": v.get("pista_id"), "url": v.get("url"), "titulo": origem.get("titulo"),
+                                            "veiculo_dominio": origem.get("veiculo_dominio"), "municipio": v.get("municipio"),
+                                            "uf": v.get("uf"), "ibge": v.get("ibge"), "nivel": origem.get("nivel"),
+                                            "prioridade": prioridade_18(origem), "tentativas_b2": 0})
+        fila["agregadores"].sort(key=lambda x: x["prioridade"])
+        fila["totais"]["agregadores_a_resolver"] = len(fila["agregadores"])
+    # B2 depois de reunir os agregadores das decisões (lote 1 de 26/10: rodado antes, achou zero)
     if rede and fila and "--agregadores" in argv:
         from julgar_e_aplicar_descobertas import _resolver_da_rodada
         from seguir_pistas import seguir_agregador_18
@@ -278,29 +305,18 @@ def paralelo_18(argv) -> int:
             fila["pistas"] += [candidata_18(c, a, "b2_agregador") for c in candidatos]
         fila["pistas"].sort(key=lambda x: x["prioridade"])
 
-    por_id = {p.get("id"): p for p in json.loads(
-        (RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8")).get("pistas", []) if p.get("id")}
-    decididas = vigentes(json.loads(REGISTRO.read_text(encoding="utf-8")).get("decisoes") or [])
-    if fila is not None and "--fila" in argv:   # B2: o link de agregador das decisões também se resolve
-        from pistas import REDIRECIONADORES, prioridade_18
-        ja = {a["id"] for a in fila["agregadores"]}
-        for v in decididas.values():
-            if any(r in str(v.get("url")) for r in REDIRECIONADORES) and v.get("pista_id") not in ja:
-                ja.add(v.get("pista_id"))
-                origem = por_id.get(v.get("pista_id")) or {}
-                fila["agregadores"].append({"id": v.get("pista_id"), "url": v.get("url"), "titulo": origem.get("titulo"),
-                                            "veiculo_dominio": origem.get("veiculo_dominio"), "municipio": v.get("municipio"),
-                                            "uf": v.get("uf"), "ibge": v.get("ibge"), "nivel": origem.get("nivel"),
-                                            "prioridade": prioridade_18(origem), "tentativas_b2": 0})
-        fila["agregadores"].sort(key=lambda x: x["prioridade"])
-        fila["totais"]["agregadores_a_resolver"] = len(fila["agregadores"])
-    for chave, v in decididas.items():
-        rejulgar({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
-                  "ibge": v.get("ibge"), "url": v.get("url"), "origem": v.get("origem"),
-                  "trecho": (por_id.get(v.get("pista_id")) or {}).get("trecho")}, v, "decisao")
-    for p in (fila or {}).get("pistas", []):
-        rejulgar({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
-                  **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+    # O prazo do elo interrompe com SIGINT e espera 60 s (`saude_pipeline.rodar`): o que foi lido até ali se
+    # grava abaixo. Lote 4 de 27/10: sem isto, 5 h de leitura saíram sem nada no PR de dado.
+    try:
+        for chave, v in decididas.items():
+            rejulgar({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
+                      "ibge": v.get("ibge"), "url": v.get("url"), "origem": v.get("origem"),
+                      "trecho": (por_id.get(v.get("pista_id")) or {}).get("trecho")}, v, "decisao")
+        for p in (fila or {}).get("pistas", []):
+            rejulgar({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
+                      **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+    except KeyboardInterrupt:
+        print("interrompido pelo prazo: gravando o que foi lido", flush=True)
 
     if fila is not None:
         gravar_em(FILA_18, fila, compacto=True)

@@ -44,7 +44,7 @@ setTimeout(() => {
   // 19/10/2026 (remoção aprovada pela editoria): os quadros por agravo saíram e com eles os três
 // mapas de doença. Sobra o mapa de prontidão; o mapa do detalhe do desfecho é cobrado abaixo,
 // junto do cartão e da lista, porque ele e eles são a mesma seção única.
-teste("mapaMonitor: 27 estados desenhados", q("mapaMonitor") && q("mapaMonitor").querySelectorAll("path").length === 27);
+teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista dos tipos fica", !q("mapaMonitor") && !!q("listaTiposPlano"));
   // 15/09/2026 (MARÉ Saúde espelha o MARÉ · Defesa civil): dois medidores no topo, ficha "Como ler", cartões por estado com detalhe em <dialog>,
   // uma seção por desfecho (dengue, chikungunya, calor, respiratórias, diarreicas) — nenhum desfecho em acordeão, nenhum seletor de doença.
   // 02/10/2026: a contagem de UFs não verificadas saiu do subtítulo da grade (o `contagemUF`),
@@ -103,32 +103,32 @@ teste("mapaMonitor: 27 estados desenhados", q("mapaMonitor") && q("mapaMonitor")
   teste("cartão de emergências, se a página o tiver: do agregado de resposta",
     !q("nEmergSaude") || txt("nEmergSaude") === (_emerg == null ? "sem dado" : _emerg === 0 ? "zero" : Number(_emerg).toLocaleString("pt-BR")));
 
-  // O mapa por tipo de plano: cada estado na cor do seu tipo, e a lista dos seis tipos com as siglas
-  // como botões (o seletor acessível: teclado, leitor de tela e toque nos estados pequenos).
-  const TIPOS = ["NOVO", "READ", "VIG", "ELAB", "LAC", "NAO_VERIFICADO"];
+  // A situação por estado: lista dos tipos com as siglas em círculos (botões); tipo sem estado não aparece, sem "zero".
   const botoes = () => [...d.querySelectorAll("#listaTiposPlano button[data-uf]")];
-  teste("lista dos seis tipos de plano, com as 27 siglas como botões e a contagem de cada tipo", (() => {
-    const dts = [...d.querySelectorAll("#listaTiposPlano dt")];
-    if (dts.length !== 6 || botoes().length !== 27) return false;
-    return TIPOS.every((t, i) => {
-      const n = Object.values(MSd2.ufs).filter(u => u.instrumento.status === t).length;
-      return d.querySelectorAll('#listaTiposPlano dd')[i].querySelectorAll("button").length === n
-        && (n === 0 ? /zero estados/ : n === 1 ? /um estado/ : new RegExp(n + " estados")).test(dts[i].textContent);
-    });
+  teste("lista dos tipos de plano: 27 siglas como botões, só os tipos que têm estado, sem contagem nem 'zero'", (() => {
+    const tipos = ["NOVO", "READ", "VIG", "ELAB", "LAC", "NAO_VERIFICADO"].filter(t => Object.values(MSd2.ufs).some(u => u.instrumento.status === t));
+    const dds = [...d.querySelectorAll("#listaTiposPlano dd")];
+    return botoes().length === 27 && dds.length === tipos.length && !/zero|\d+ estados?/.test(q("listaTiposPlano").textContent)
+      && botoes().every(b => b.classList.contains("chip-risco") && /^Abrir a ficha de /.test(b.getAttribute("aria-label")));
   })());
-  teste("botões da sigla: aria-pressed e alvo de toque (a classe do componente)",
-    botoes().every(b => b.getAttribute("aria-pressed") === "false" && b.classList.contains("chip-risco") && /^Abrir a ficha de /.test(b.getAttribute("aria-label"))));
+  teste("círculo de SE: o cartão traz tipo, documento, órgão e a fonte oficial (instrumento.url)", (() => {
+    const i = MSd2.ufs.SE.instrumento, b = botoes().find(x => x.dataset.uf === "SE");
+    b.dispatchEvent(new dom.window.MouseEvent("mouseover", { bubbles: true }));
+    const t = q("mapTooltip"), a = t.querySelector("a");
+    return t.style.display === "block" && t.classList.contains("map-tooltip--clicavel") && t.textContent.includes(i.doc) && (!i.orgao || t.textContent.includes(i.orgao))
+      && (i.url ? !!a && a.getAttribute("href") === i.url : !a);
+  })());
   teste("a linha da escada vem dos pontos do dado (metodo.escada), não do texto", (() => {
     const e = MSd2.metodo.escada;
     return txt("escadaPlano") === `A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, ${e.NOVO}; atualizado, ${e.READ}; recorrente, ${e.VIG}; em elaboração, ${e.ELAB}; não localizado, ${e.LAC}.`;
   })());
-  // Ficha aberta pela lista, sem o mapa (SE é pequeno demais para o toque no mapa).
+  // Ficha aberta pelo círculo.
   const NOME_DO_TIPO = { NOVO: "Plano feito para este El Niño", READ: "Plano anual atualizado para o ciclo", VIG: "Plano recorrente, sem atualização para o ciclo",
     ELAB: "Plano em elaboração", LAC: "Plano não localizado até o corte", NAO_VERIFICADO: "Ainda não verificado" };
-  teste("ficha de SE abre pela lista, com o tipo de plano do dado", (() => {
+  teste("ficha de SE abre pelo círculo, com o tipo de plano do dado", (() => {
     const b = botoes().find(x => x.dataset.uf === "SE");
     b.click();
-    return b.getAttribute("aria-pressed") === "true" && q("detailSaudeConteudo").textContent.includes(NOME_DO_TIPO[MSd2.ufs.SE.instrumento.status]);
+    return q("detailSaudeConteudo").textContent.includes(NOME_DO_TIPO[MSd2.ufs.SE.instrumento.status]);
   })());
   // A7-02 / A4-33: todo estado abre a ficha, sem erro de script e com conteúdo.
   teste("as 27 fichas de estado abrem, sem erro de script", (() => {
@@ -145,10 +145,6 @@ teste("mapaMonitor: 27 estados desenhados", q("mapaMonitor") && q("mapaMonitor")
     return ac.includes(ATO_INJETADO) && ac.includes("01/10/2026")
       && /Coordenação na saúde.*ainda não verificada/.test(go) && !go.includes(ATO_INJETADO)
       && /Coordenação na saúde/.test(ac) && /Ligação com o governo do estado/.test(ac) && !/antecipação/i.test(ac + go);
-  })());
-  teste("clique no mapa abre a ficha do mesmo estado", (() => {
-    q("mapaMonitor").querySelector("path.uf-path").dispatchEvent(new dom.window.MouseEvent("click", { bubbles: true }));
-    return (q("detailSaudeConteudo").textContent || "").length > 40;
   })());
 
   // A seção única de desfechos, no cartão escolhido: a posição na faixa habitual é a frase do
@@ -194,7 +190,7 @@ teste("mapaMonitor: 27 estados desenhados", q("mapaMonitor") && q("mapaMonitor")
     !q("cDesfAcum") && !q("cDengueSemana") && !q("cSRAG") && !q("mapaCalor") && !!q("cDesfecho"));
 
   try {
-    teste("saúde: o mapa tem o título do catálogo", q("boxMonitor").querySelector(".figura-titulo").textContent === "Plano estadual de saúde para o El Niño, por estado");
+    teste("saúde: a figura de estados tem o título do catálogo", q("boxMonitor").querySelector(".figura-titulo").textContent === "Plano estadual de saúde para o El Niño, por estado");
     // A tabela do mapa: uma linha por UF, quatro colunas de leitor, sem travessão nem componente interno.
     const linhasMon = [...d.querySelectorAll("#tblMonitor tbody tr")];
     teste("saúde: tabela do mapa com 27 linhas de 4 colunas, sem travessão nem componente interno",

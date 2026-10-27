@@ -355,13 +355,13 @@
   {
    "id": "semanal_espin_e_links",
    "workflow": "semanal_espin_e_links.yml",
-   "finalidade": "reconfere ESPIN e verifica links, domingo de madrugada",
-   "cron_primario": "15 6 * * 0",
+   "finalidade": "reconfere ESPIN e verifica links, domingo e quarta de madrugada",
+   "cron_primario": "15 6 * * 0,3",
    "janela": {
     "inicio_utc": "01:00",
     "fim_utc": "09:00"
    },
-   "devido_quando": "não há execução concluída neste domingo",
+   "devido_quando": "não há execução concluída neste domingo ou quarta",
    "tolerancia_atraso_min": 240,
    "idempotencia": "ESPIN reescreve o estado da fonte; links não escrevem dado",
    "orcamento_min": 30,

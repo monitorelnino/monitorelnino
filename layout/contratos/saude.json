@@ -11,7 +11,7 @@
     "mapa": "boxMonitor",
     "serie": "boxDesfecho"
   },
-  "_nota_figura_principal": "19/10/2026 (seção única de desfechos): a única figura em largura total da Saúde é a série do desfecho escolhido — ela desenha a série inteira sobre a faixa habitual da época, que um terço de largura não comporta. Todas as outras figuras da página ficam em grade de três. | 25/10/2026 (Saúde v0.7, protótipo aprovado pela editoria em 24/10 22:07 UTC): o mapa por tipo de plano é a segunda figura em largura total, porque leva ao lado a lista dos seis tipos com as siglas dos estados como botões; a grade de 27 ladrilhos e o cartão de risco previsto saíram.",
+  "_nota_figura_principal": "27/10/2026 (handover VIGIAR §A revisto, editoria 26/10 18:33 BRT): sai só o mapa; a figura em largura total é a lista dos seis tipos de plano com as siglas dos estados em círculos, cada tipo em linha própria; a tabela fica em `<details>`. A chave `mapa` é o tipo que o verificador reconhece para a figura principal de estados. 19/10/2026 (seção única de desfechos): a única figura em largura total da Saúde é a série do desfecho escolhido — ela desenha a série inteira sobre a faixa habitual da época, que um terço de largura não comporta. Todas as outras figuras da página ficam em grade de três. | 25/10/2026 (Saúde v0.7, protótipo aprovado pela editoria em 24/10 22:07 UTC): o mapa por tipo de plano é a segunda figura em largura total, porque leva ao lado a lista dos seis tipos com as siglas dos estados como botões; a grade de 27 ladrilhos e o cartão de risco previsto saíram.",
   "_nota_componentes": "O handover nomeia o componente de números como `.cartao-destaque`, 'o de Proteja-se/Imprensa'. A classe com esse nome não existe no projeto: o componente de números que a Imprensa usa é `.cartao-numero` dentro de `.grade-numeros`, e é ele que o contrato nomeia. Criar uma classe nova só para casar com o nome do handover produziria dois componentes para a mesma coisa, que é exatamente o que o handover proíbe.",
   "secoes": [
     {
@@ -58,8 +58,8 @@
       "grade": ".grade-figuras--1",
       "cartoes": [
         {
-          "id": "mapa_planos_uf",
-          "tipo": "mapa",
+          "id": "lista_planos_uf",
+          "tipo": "lista",
           "el": "boxMonitor"
         }
       ]

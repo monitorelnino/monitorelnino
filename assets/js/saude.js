@@ -101,48 +101,56 @@ const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","P
 const NOME_UF = {AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins'};
 const NEUTRA = MonitorMapas.cor('sem-dado');
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const { showTip, hideTip } = MonitorMapas;
 
 async function __load(){
   [BR_GEOJSON, MSAUDE] = await Promise.all(['geo_uf','monitor_saude'].map(f => fetch('data/' + f + '.json').then(r => {
       if(!r.ok) throw new Error('Falha ao carregar data/' + f + '.json'); return r.json(); })));
   if (window.MonitorCatalogo && MonitorCatalogo.pronto) { try { await MonitorCatalogo.pronto; } catch (e) {} }
-  mapaDosPlanos();
+  tabelaDosPlanos();
   montarDesfechos().catch(_erroSaude("saude:desfechos"));
 }
 
 const fonteFigura = MonitorMapas.credito;
 
-/* ===== A situação de cada estado (v0.7, editoria 24/10/2026) =====
- * Um mapa categórico pelo TIPO DE PLANO que cada secretaria estadual de saúde publicou, na paleta
- * ordinal do site; ao lado, a lista dos seis tipos com as siglas dos estados, e cada sigla é botão
- * (o seletor acessível: teclado, leitor de tela e toque onde DF, SE, AL e RN são pequenos no mapa).
- * Mapa e lista abrem a mesma ficha. Os pontos de cada tipo vêm de `metodo.escada` do dado. */
+/* ===== A situação de cada estado (v0.9, editoria 26/10/2026 18:33 BRT) =====
+ * Sem mapa. A lista dos tipos de plano traz as siglas dos estados em círculos; passar o mouse, focar ou tocar
+ * no círculo mostra tipo, documento, data, órgão e a fonte oficial (o cartão do mapa, que não some ao
+ * levar o mouse até o link); o clique abre a ficha. A tabela fica como alternativa. */
 const TIPOS_DE_PLANO = ['NOVO', 'READ', 'VIG', 'ELAB', 'LAC', 'NAO_VERIFICADO'];
 const ufsDoMonitor = () => (MSAUDE && MSAUDE.ufs) || {};
 const tipoDoEstado = uf => ((ufsDoMonitor()[uf] || {}).instrumento || {}).status || 'NAO_VERIFICADO';
 const textoSaude = (id, v) => (window.MonitorCatalogo && MonitorCatalogo.texto(id, v)) || '';
 
-function mapaDosPlanos() {
+function cartaoDoEstado(uf, nome) {
+  const i = (ufsDoMonitor()[uf] || {}).instrumento || {};
+  return '<strong>' + esc(NOME_UF[uf]) + '</strong><br>' + esc(nome(tipoDoEstado(uf)))
+    + (i.doc ? '<br>' + esc(i.doc) : '') + (i.data || i.orgao ? '<br>' + esc([i.data, i.orgao].filter(Boolean).join(' · ')) : '')
+    + (i.url ? '<br><a href="' + esc(i.url) + '" target="_blank" rel="noopener">' + esc(textoSaude('saude.estadual.ficha.fonte_oficial')) + ' →</a>' : '');
+}
+
+function tabelaDosPlanos() {
   const nome = t => textoSaude('saude.estadual.tipo.' + t);
   const cor = t => MonitorMapas.PALETA.status[t] || NEUTRA;
   const instr = uf => (ufsDoMonitor()[uf] || {}).instrumento || {};
-  const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
-  MonitorMapas.ufs(ctx, 'mapaMonitor', uf => cor(tipoDoEstado(uf)),
-    uf => '<em>' + esc(nome(tipoDoEstado(uf))) + '</em>' + (instr(uf).doc ? '<br>' + esc(instr(uf).doc) + (instr(uf).data ? ' · ' + esc(instr(uf).data) : '') : ''));
-  /* O clique no mapa abre a ficha; o teclado, o leitor de tela e o toque nos estados pequenos usam os botões da lista. */
-  d3.selectAll('#mapaMonitor .uf-path').style('cursor', 'pointer').on('click', (ev, f) => abrirDetalheSaude(f.properties.sigla));
-  const alvo = document.getElementById('listaTiposPlano');
+  const alvo = document.getElementById('listaTiposPlano'), tip = document.getElementById('mapTooltip');
   alvo.innerHTML = '<p class="cartao-mapa-familia">' + esc(textoSaude('saude.estadual.lista.titulo')) + '</p><dl class="faixa-previsto">'
-    + TIPOS_DE_PLANO.map(t => {
-      const ufs = UFS.filter(uf => tipoDoEstado(uf) === t);
-      return '<div><dt><span class="chip-chave" data-tipo="' + t + '">' + esc(nome(t)) + '</span> ' + esc(textoSaude('saude.estadual.lista.contagem', {n: ufs.length}))
-        + '</dt><dd class="chips">' + ufs.map(uf => '<button type="button" class="chip-risco" data-uf="' + uf + '" aria-pressed="false" aria-label="'
-          + esc(textoSaude('saude.estadual.lista.botao', {estado: NOME_UF[uf]})) + '">' + uf + '</button>').join('') + '</dd></div>';
-    }).join('') + '</dl>';
+    + TIPOS_DE_PLANO.map(t => UFS.filter(uf => tipoDoEstado(uf) === t)).map((ufs, k) => !ufs.length ? '' :
+      '<div><dt><span class="chip-chave" data-tipo="' + TIPOS_DE_PLANO[k] + '">' + esc(nome(TIPOS_DE_PLANO[k])) + '</span></dt><dd class="chips">'
+        + ufs.map(uf => '<button type="button" class="chip-risco" data-uf="' + uf + '" aria-label="'
+          + esc(textoSaude('saude.estadual.lista.botao', {estado: NOME_UF[uf]})) + '">' + uf + '</button>').join('') + '</dd></div>').join('') + '</dl>';
   alvo.querySelectorAll('[data-tipo]').forEach(e => { e.style.background = cor(e.dataset.tipo); });
-  alvo.addEventListener('click', ev => { const b = ev.target.closest('button[data-uf]'); if (b) abrirDetalheSaude(b.dataset.uf); });
-  document.getElementById('detailSaude').addEventListener('close', () => alvo.querySelectorAll('button[aria-pressed=true]').forEach(b => b.setAttribute('aria-pressed', 'false')));
+  /* O cartão aceita o mouse (classe do componente): some com meio segundo de folga, para dar tempo de chegar ao link. */
+  let adeus = 0;
+  const mostrar = ev => { const b = ev.target.closest('button[data-uf]'); if (!b) return; clearTimeout(adeus);
+    const r = b.getBoundingClientRect(); tip.classList.add('map-tooltip--clicavel');
+    MonitorMapas.showTip(cartaoDoEstado(b.dataset.uf, nome), {clientX: r.left, clientY: r.bottom});
+    tip.style.left = Math.max(8, Math.min(r.left, window.innerWidth - tip.offsetWidth - 8)) + 'px'; };
+  const fechar = () => { MonitorMapas.hideTip(); tip.classList.remove('map-tooltip--clicavel'); };
+  const esconder = () => { clearTimeout(adeus); adeus = setTimeout(fechar, 500); };
+  ['mouseover', 'focusin'].forEach(e => alvo.addEventListener(e, mostrar));
+  ['mouseout', 'focusout'].forEach(e => alvo.addEventListener(e, esconder));
+  tip.addEventListener('mouseenter', () => clearTimeout(adeus)); tip.addEventListener('mouseleave', esconder);
+  alvo.addEventListener('click', ev => { const b = ev.target.closest('button[data-uf]'); if (b) { fechar(); abrirDetalheSaude(b.dataset.uf); } });
   const escada = ((MSAUDE.metodo || {}).escada) || {};
   mostrarFrase(document.getElementById('escadaPlano'), textoSaude('saude.estadual.escada', escada));
   const coord = o => (o && o.doc) ? esc(ST_COORD[o.status] || o.status || '') + (o.data ? ' · ' + esc(o.data) : '') : esc(textoSaude('saude.estadual.ficha.nao_verificada'));
@@ -187,7 +195,6 @@ function abrirDetalheSaude(uf) {
     + linha(tx('tempo'), tempoDoEstado(m.tempo))
     + (m.verificado ? linha(tx('camada'), esc(camadaMunicipalSaude(c)) + '; ' + tx('camada_nota')) : '')
     + linha(tx('resposta'), (RS.ufs || []).includes(uf) ? tx('resposta_sim') : tx('resposta_nao'));
-  document.querySelectorAll('#listaTiposPlano button[data-uf]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.uf === uf)));
   const dlg = document.getElementById('detailSaude');
   if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.open = true; }
 }
