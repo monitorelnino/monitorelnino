@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Rodada paralela 1.8: chave pela pista e decisões fora do registro
+
+A rodada paralela guardava cada veredito pela chave do município que o veredito atribuía. Quando o 1.8 corrigia o município pelo domínio, a mesma pista era relida a cada lote; até o lote 6 foram 113 repetidas. A chave agora é a da pista. As 5.280 decisões que a limpeza de 26/10 tirou do registro também saem do arquivo paralelo, que fica só com a contagem e cai de 9,8 para 5,2 MB.
+
 ## 2026-10-27 · #1268 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais
 
 `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.
