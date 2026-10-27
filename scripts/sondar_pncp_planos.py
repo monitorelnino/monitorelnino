@@ -29,7 +29,7 @@ LIMITE_POR_CONSULTA = 10
 
 
 def url_busca(termo: str, cidade: str) -> str:
-    q = urllib.parse.urlencode({"q": f"{termo} {cidade}", "tipo_documento": "edital",
+    q = urllib.parse.urlencode({"q": f"{termo} {cidade}", "tipos_documento": "edital", "status": "todos",
                                 "ordenacao": "-data", "pagina": 1, "tam_pagina": LIMITE_POR_CONSULTA})
     return f"{BASE}?{q}"
 
