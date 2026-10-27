@@ -21,20 +21,6 @@
   ],
   "registrado_em": "02/10/2026",
   "fichas": {
-    "financiamento.html#boxSerieSemanal": {
-      "tipo": "gráfico de barras empilhadas",
-      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por semana desde o início do ciclo?",
-      "universo": "portarias da defesa civil federal desde 29/06/2026",
-      "unidade_de_analise": "semana",
-      "territorio": "Brasil",
-      "periodo": "semanas desde 29/06/2026",
-      "variavel_principal": "valor autorizado por semana, por finalidade declarada no ato",
-      "fonte": "Portarias da defesa civil federal no Diário Oficial da União",
-      "metodologia": "Semanas contadas desde 29/06/2026, pela data da portaria. As finalidades são as que a fonte declara: resposta, recuperação e outra. Prevenção não é separada nessa fonte.",
-      "conclusoes_permitidas": "dizer quanto foi autorizado em cada semana e para que finalidade",
-      "conclusoes_nao_permitidas": "ler ausência de portaria na semana como ausência de necessidade; somar finalidades como se fossem a mesma coisa",
-      "funcao_narrativa": "mostra o ritmo da autorização ao longo do ciclo"
-    },
     "monitor-de-riscos.html#boxAr": {
       "tipo": "mapa de pontos",
       "pergunta_que_responde": "Qual o IQAr medido nas estações oficiais de cada cidade, e o PM2,5 dos sensores de baixo custo, na última leitura?",
@@ -338,47 +324,6 @@
       ],
       "funcao_narrativa": "mostrar o ritmo do pago",
       "metodologia": "Soma mensal do pago das ações reforçadas, como o gerador registra em por_mes; mês corrente marcado parcial."
-    },
-    "financiamento.html#boxAcoes": {
-      "dimensao_da_preparacao": "resposta declarada",
-      "territorio": "Brasil",
-      "tipo": "barras",
-      "pergunta_que_responde": "Quanto a defesa civil federal autorizou por portaria desde 29/06/2026, por ação?",
-      "universo": "portarias de recurso da defesa civil federal com município e valor legíveis",
-      "unidade_de_analise": "ação (resposta, recuperação, outra)",
-      "periodo": "desde 29/06/2026",
-      "variavel_principal": "valor autorizado, em reais",
-      "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União",
-      "conclusoes_permitidas": [
-        "quanto foi autorizado em cada ação",
-        "quantos municípios têm ato"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o valor foi pago: autorizado não é pago",
-        "que portaria sem valor legível não existe: ela fica fora da soma"
-      ],
-      "funcao_narrativa": "o dinheiro da resposta, por ação",
-      "metodologia": "Soma do valor autorizado por ação nas portarias lidas (recursos_liberados.json)."
-    },
-    "financiamento.html#boxSemRecurso": {
-      "dimensao_da_preparacao": "resposta declarada",
-      "territorio": "Brasil",
-      "tipo": "número",
-      "pergunta_que_responde": "Quantos municípios foram reconhecidos pela União há mais de 30 dias e não têm portaria de recurso localizada?",
-      "universo": "municípios com reconhecimento federal desde 29/06/2026",
-      "unidade_de_analise": "município",
-      "periodo": "data de referência do consolidado",
-      "variavel_principal": "número de municípios com mais de 30 dias entre o primeiro reconhecimento e a data de referência, sem portaria de recurso",
-      "fonte": "Defesa Civil nacional, portarias no Diário Oficial da União",
-      "conclusoes_permitidas": [
-        "quantos municípios estão nessa situação na data de referência"
-      ],
-      "conclusoes_nao_permitidas": [
-        "que o recurso foi negado ou não pedido: a figura conta portaria não localizada até o corte",
-        "demora de algum órgão"
-      ],
-      "funcao_narrativa": "onde o caminho do reconhecimento ao recurso parou",
-      "metodologia": "Primeiro reconhecimento no consolidado; sem portaria de recurso em recursos_liberados.json; mais de 30 dias até a data do consolidado."
     },
     "saude.html#boxDesfecho": {
       "tipo": "série do desfecho escolhido sobre a faixa habitual para a época",
