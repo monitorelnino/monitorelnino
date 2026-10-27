@@ -78529,7 +78529,8 @@
     },
     "resultado": "preparada"
    },
-   "proxima_tentativa_em": "2026-10-27"
+   "proxima_tentativa_em": "2026-10-27",
+   "repeticoes": 8
   },
   {
    "municipio": "Tocantínia",
@@ -90528,7 +90529,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-10-26",
     "criterios": {}
-   }
+   },
+   "repeticoes": 3
   },
   {
    "municipio": "Relvado",
@@ -91587,7 +91589,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-10-26",
     "criterios": {}
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "São Mateus",
@@ -304529,7 +304532,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-10-26",
     "criterios": {}
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Quinze de Novembro",
@@ -324510,7 +324514,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-10-26",
     "criterios": {}
-   }
+   },
+   "repeticoes": 2
   },
   {
    "municipio": "Muitos Capões",
@@ -326723,7 +326728,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-10-26",
     "criterios": {}
-   }
+   },
+   "repeticoes": 6
   },
   {
    "municipio": "Vista Gaúcha",
@@ -333586,7 +333592,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-10-26",
     "criterios": {}
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Eugênio de Castro",
@@ -717838,6 +717845,28 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Araraquara",
+   "uf": "SP",
+   "ibge": "3503208",
+   "url": "https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/sala-situacao/alerta_012025_sala_situacao_estadual_enfrentamento_arboviroses.pdf",
+   "titulo": "S23 · Araraquara/SP: Alerta Nº 01/2025 - Sala de Situação Estadual de Enfrentamento às ...",
+   "trecho": "Alerta Nº 01/2025 - Sala de Situação Estadual de Enfrentamento às ...",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-10-26",
+   "registrado_em": "2026-10-26",
+   "origem_do_coletor": "descoberta",
+   "url_final": "https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/sala-situacao/alerta_012025_sala_situacao_estadual_enfrentamento_arboviroses.pdf",
+   "alvo": "3503208",
+   "nivel": "C",
+   "tipo": "estrutura",
+   "entrada": "uf"
   }
  ],
  "quarentena": {
