@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>27/10/2026 · Financiamento: sai a seção &quot;Defesa civil, depois do reconhecimento&quot;</dt>
+      <dd>A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61. &gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</dd>
       <dt>27/10/2026 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais</dt>
       <dd>`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.</dd>
       <dt>26/10/2026 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)</dt>
@@ -165,8 +167,6 @@
       <dd>`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.</dd>
       <dt>24/10/2026 · Registro do juiz sem CPF; PDF do RS lido pela sessão do link · Coleta</dt>
       <dd>O `trecho` que o juiz grava em `promocoes_automaticas.json` saía do PDF com CPF de vice-prefeito; agora é redigido na porta (`julgar_filas.py`). `preservar_evidencias.py --ler` usa a sessão do link de compartilhamento para a pasta do RS: PDFs acima de 5 MB, sem cópia binária, ganham texto preservado. Código +11 líquidas.</dd>
-      <dt>24/10/2026 · Busca de planos em fontes abertas: quem nunca foi lido vem primeiro · Coleta</dt>
-      <dd>A fila do dia relia primeiro os municípios lidos em dias anteriores e o prazo do run cortava a cobertura. Agora os nunca lidos vêm antes dos que só precisam de releitura. Código +5 líquidas, com autoteste; nenhum dado, regra ou peso do índice muda.</dd>
     </dl>
   </section>
 </main>

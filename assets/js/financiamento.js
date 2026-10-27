@@ -13,11 +13,9 @@
  *     não somar o mesmo dinheiro duas vezes;
  *   · valor real pequeno não vira zero ("menos de R$ 0,01").
  */
-let BR_GEOJSON, MPS, COMPROMISSOS, RECURSOS, DECRETADOS, S, FNS_MUN = null,
+let BR_GEOJSON, MPS, COMPROMISSOS, RECURSOS, S, FNS_MUN = null,
     LATLON = {}, MUN_COD = {}, NOMES_POR_UF = {};
 
-const INICIO_CICLO = '2026-06-29';
-const DIAS_PENDENCIA = 30;
 const PLANO_FEDERAL = /Plano federal El Niño/i;
 const RISCOS = [
   {chave: 'fogo', rotulo: 'Fogo', acento: 'cartao--acento-fogo'},
@@ -50,10 +48,9 @@ async function __load(){
   [BR_GEOJSON, ref] = await Promise.all(['data/geo_uf.json', 'data/municipios_ibge_referencia.json']
     .map(f => fetch(f).then(r => { if (!r.ok) throw new Error('Falha ao carregar ' + f); return r.json(); })));
   /* Os opcionais não derrubam a página: cada bloco que depende deles declara a lacuna. */
-  [MPS, COMPROMISSOS, RECURSOS, DECRETADOS, S] = await Promise.all(
+  [MPS, COMPROMISSOS, RECURSOS, S] = await Promise.all(
     ['data/financiamento/mps_2026.json', 'data/financiamento/compromissos_federais.json',
-     'data/resposta/recursos_liberados.json', 'data/resposta/municipios_decretados.json',
-     'data/financiamento/semana.json']
+     'data/resposta/recursos_liberados.json', 'data/financiamento/semana.json']
       .map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null)));
   ref.forEach(m => {
     const c = String(m.codigo_ibge).padStart(7, '0');
@@ -159,8 +156,12 @@ function __init(){
                                                      : 'financiamento.caminhos.coluna.risco_nao_coletado')) + '</span>')
       + '</div>';
   }).join('');
-  const faixa = document.getElementById('faixaResposta');
-  if (faixa) faixa.innerHTML = '<p class="cartao-k">' + esc(tx('financiamento.caminhos.faixa_resposta.titulo')) + '</p>'
+  const faixa = document.getElementById('depois');
+  /* Do decreto ao recurso: os números vêm prontos do gerador (`semana.json` → `funil_defesa_civil`). */
+  const F = (S && S.funil_defesa_civil) || {};
+  const linhaFunil = F.n_decretaram == null ? '' : '<p class="cartao-s">' + esc(tx('financiamento.caminhos.funil.linha', {n_decretaram: n(F.n_decretaram),
+    n_reconhecidos: n(F.n_reconhecidos), n_com_recurso: n(F.n_com_recurso), n_30d: F.n_30d == null ? '' : tx('financiamento.caminhos.funil.n_30d', {n: n(F.n_30d)})})) + '</p>';
+  if (faixa) faixa.innerHTML = '<p class="cartao-k">' + esc(tx('financiamento.caminhos.faixa_resposta.titulo')) + '</p>' + linhaFunil
     + (tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(ACOES[k].toLowerCase() + ', autorizado', tpa[k], P.resposta)).join('') + '</div>'
            : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>');
   const corpo = document.querySelector('#tblOrigens tbody');
@@ -271,56 +272,6 @@ function __init(){
   ConsultaMunicipio.montar({uf: 'consultaUF', municipio: 'consultaMun', lista: 'consultaLista', cartao: 'consultaCard',
     estados: NOME_UF, mostrar, semLista: 'Lista de municípios do estado: sem coleta até o corte.',
     municipios: uf => carregarConsulta().then(() => (NOMES_POR_UF[uf] || []).slice().sort((x, y) => x.localeCompare(y, 'pt-BR')))});
-
-  // =========================================================
-  // 6. Defesa civil, depois do reconhecimento
-  // =========================================================
-  const paraISO = v => { const s = String(v || ''); let m = s.match(/(\d{2})\/(\d{2})\/(\d{4})/); if (m) return m[3] + '-' + m[2] + '-' + m[1]; m = s.match(/\d{4}-\d{2}-\d{2}/); return m ? m[0] : null; };
-  const decretados = Object.values((DECRETADOS && DECRETADOS.municipios) || {}).filter(m => m.decreto);
-  const recursoPorCod = {};
-  Object.entries((RECURSOS && RECURSOS.municipios) || {}).forEach(([c, v]) => { const d = (v.atos || []).map(a => paraISO(a.data)).filter(Boolean).sort()[0]; if (d) recursoPorCod[c] = d; });
-  const semanas = [];
-  for (let d = new Date(INICIO_CICLO + 'T12:00:00'); d <= new Date(); d = new Date(d.getTime() + 7 * 864e5)) semanas.push(d.toISOString().slice(0, 10));
-  const acumulado = datas => { const base = new Date(INICIO_CICLO + 'T12:00:00'), por = {};
-    datas.filter(Boolean).forEach(iso => { const i = iso < INICIO_CICLO ? 0 : Math.floor((new Date(iso + 'T12:00:00') - base) / (7 * 864e5)); por[i] = (por[i] || 0) + 1; });
-    let s = 0; return semanas.map((x, i) => (s += por[i] || 0)); };
-  const RAMPA = P.atmosfera.resposta.rampa;
-  const SERIES = [
-    {rotulo: 'decretaram', cor: RAMPA[1], dados: acumulado(decretados.map(m => paraISO(m.primeiro_decreto)))},
-    {rotulo: 'reconhecidos pela União', cor: RAMPA[RAMPA.length - 1], dados: acumulado(decretados.filter(m => m.reconhecido).map(m => paraISO(m.primeiro_reconhecimento)))},
-    {rotulo: 'com recurso autorizado', cor: P.setores.saude, dados: acumulado(Object.values(recursoPorCod))},
-  ];
-  const cvS = document.getElementById('cSerieSemanal');
-  if (cvS && window.Chart && semanas.length) new Chart(cvS, {type: 'line',
-    data: {labels: semanas.map(s => s.slice(8) + '/' + s.slice(5, 7)), datasets: SERIES.map(s => ({label: s.rotulo, data: s.dados, borderColor: s.cor, backgroundColor: s.cor, tension: 0.2, pointRadius: 2}))},
-    options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true}}}});
-  MonitorMapas.legenda('legSerieSemanal', SERIES.map(s => ({cor: s.cor, rotulo: s.rotulo})));
-  const corteDec = (DECRETADOS && DECRETADOS.gerado_em) || null;
-  cred('boxSerieSemanal', [FONTE_DC, 'diários oficiais dos estados e dos municípios'], (RECURSOS && RECURSOS.atualizado_em) || corteDec);
-  tabela('boxSerieSemanal', ['Semana', 'Decretaram', 'Reconhecidos', 'Com recurso autorizado'],
-    semanas.map((s, i) => [s.slice(8) + '/' + s.slice(5, 7) + '/' + s.slice(0, 4)].concat(SERIES.map(x => n(x.dados[i])))));
-
-  const alvoAcoes = document.getElementById('wrapAcoes');
-  if (alvoAcoes) alvoAcoes.innerHTML = tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(ACOES[k], tpa[k], P.resposta)).join('') + '</div>'
-    : '<div class="lacuna">' + NAO_LOCALIZADO + '</div>';
-  if (dcTopo) molde('subAcoes', 'financiamento.defesaCivil.acoes.legenda', {n: dcTopo.municipios || 0});
-  cred('boxAcoes', [FONTE_DC], RECURSOS && RECURSOS.atualizado_em);
-  tabela('boxAcoes', ['Município', 'UF', 'Portaria', 'Data', 'Ação', 'Valor autorizado'],
-    Object.values((RECURSOS && RECURSOS.municipios) || {}).flatMap(m => (m.atos || []).map(a => ({m: m, a: a})))
-      .sort((x, y) => String(y.a.data).localeCompare(String(x.a.data)))
-      .map(({m, a}) => ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), link(a.url, atoNum(a)), esc(MonitorMapas.dataBR(a.data) || NAO_LOCALIZADO), esc(ACOES[a.acao] || a.acao_no_ato || ''), esc(reais(a.valor_autorizado) || NAO_LOCALIZADO)]));
-
-  /* Pendência: reconhecido pela União há mais de 30 dias e sem portaria de recurso localizada. */
-  const ref = paraISO(corteDec);
-  const dias = iso => Math.floor((new Date(ref + 'T12:00:00') - new Date(iso + 'T12:00:00')) / 864e5);
-  const pendentes = ref ? decretados.filter(m => m.reconhecido && paraISO(m.primeiro_reconhecimento) && !recursoPorCod[m.ibge] && dias(paraISO(m.primeiro_reconhecimento)) > DIAS_PENDENCIA)
-    .map(m => Object.assign({dias: dias(paraISO(m.primeiro_reconhecimento))}, m)).sort((a, b) => b.dias - a.dias) : [];
-  texto('topoSemRecurso', !DECRETADOS || !RECURSOS ? 'sem coleta até o corte' : (pendentes.length ? n(pendentes.length) : 'nenhum'));
-  if (corteDec) molde('subSemRecurso', 'financiamento.defesaCivil.sem_recurso.legenda', {data: corteDec});
-  cred('topoSemRecursoFonte', [FONTE_DC], corteDec);
-  cred('boxSemRecurso', [FONTE_DC], corteDec);
-  tabela('boxSemRecurso', ['Município', 'UF', 'Reconhecimento', 'Dias sem recurso autorizado'],
-    pendentes.map(m => ['<strong>' + esc(m.nome) + '</strong>', esc(m.uf), esc(m.primeiro_reconhecimento), n(m.dias)]));
 }
 
 __load().catch(err => {
