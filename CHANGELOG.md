@@ -9,6 +9,30 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Busca de planos: S17, S19, S26 e S30 entram na tabela de fontes do metabuscador
+
+Coordenadorias regionais, diários por associação, repositórios acadêmicos e programas estaduais por adesão ganham uma linha cada em `FONTES_WEB`; mesmas travas (endereço da fonte, município, termo e plano; pista sem documento confirmado). Autoteste +1 caso. Linhas: +24/−0.
+
+## 2026-10-27 · #PR · Buscador 2: os links do Google News arquivados voltam pelo resolvedor
+
+`seguir_pistas.py --arquivo` reprocessa os 11.965 links de agregador que a Limpeza arquivou: só a URL final resolvida entra, pela porta; o que não resolve vira rejeitada com motivo, e a data do `pistas_rejeitadas.json` impede nova tentativa. Código +57/−3; um teste.
+
+## 2026-10-27 · A1 · União de conflito aceita `data/planos_busca/<UF>.json`
+
+O resolvedor de rodada une os planos de busca por município e fonte pela base comum: fonte lida só de um lado entra, a mesma fonte lida diferente nos dois lados é recusada. Antes recusava toda vez, e cada PR de dado das válvulas exigia união à mão.
+
+## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
+Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
+## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
+
+`semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
+
+## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
+
+Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
+## 2026-10-27 · #PR · S22: busca textual do PNCP com os parâmetros da API
+A sonda do PNCP pedia `tipo_documento` no singular e sem `status`, e o servidor respondia 400. Passa a pedir `tipos_documento=edital` e `status=todos`, como a busca pública do portal. A válvula de 27/10 mostrou que varrer contratações por município não escala (cinco capitais lidas em duas horas e meia); a busca por texto, se responder, resolve as 27 capitais em minutos.
+
 ## 2026-10-27 · Rodada paralela 1.8: o prazo grava o que foi lido
 
 O lote 4 leu por 5 horas e foi interrompido pelo prazo sem gravar nada, porque o rejulgamento só gravava no fim. Agora a interrupção do prazo (SIGINT, com 60 s de espera) grava o que já foi lido, como fazem os outros coletores. Só a rodada paralela muda.
