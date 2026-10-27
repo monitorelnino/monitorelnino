@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Buscador 2: os links do Google News arquivados voltam pelo resolvedor
+
+`seguir_pistas.py --arquivo` reprocessa os 11.965 links de agregador que a Limpeza arquivou: só a URL final resolvida entra, pela porta; o que não resolve vira rejeitada com motivo, e a data do `pistas_rejeitadas.json` impede nova tentativa. Código +57/−3; um teste.
+
 ## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
 Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
 ## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado

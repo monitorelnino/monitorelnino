@@ -24,6 +24,8 @@ motivo, e a recusa fica contada em `data/pistas_rejeitadas.json`. Pista nova só
 
 USO   python3 seguir_pistas.py [--limite 60] [--refazer-dias 7]
       python3 seguir_pistas.py --restante          # o que sobrou para a rodada seguinte (sem rede)
+      python3 seguir_pistas.py --reprocessar --limite 2000   # a fila antiga, em lote da válvula
+      python3 seguir_pistas.py --arquivo --limite 2000       # os links do Google News arquivados (B2)
       python3 seguir_pistas.py --autoteste
 """
 import argparse, collections, datetime, hashlib, json, re, sys, urllib.parse
@@ -233,15 +235,35 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
     return est
 
 
-def gravar_rodada(fila, est, ler_fn=ler, gravar_fn=gravar) -> dict:
+ARQUIVO_AGREGADORES = "arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json"
+
+
+def do_arquivo(itens, ja_tentadas, quantas) -> list:
+    """B2 sobre o que a Limpeza arquivou (link do Google News): até `quantas` pistas ainda sem tentativa.
+    Voltam só pelo resolvedor; a porta recusa o link opaco, então só a URL final entra. Pura."""
+    saida, vistas = [], set()
+    for i in itens:
+        p = i.get("pista") or {}
+        u = str(p.get("url") or "")[:400]
+        if "Google News" in str(i.get("motivo")) and u and u not in ja_tentadas and u not in vistas:
+            vistas.add(u)
+            saida.append(dict(p, status=STATUS_PENDENTE))
+            if len(saida) >= quantas:
+                break
+    return saida
+
+
+def gravar_rodada(fila, est, ler_fn=ler, gravar_fn=gravar, estado=True) -> dict:
     """Leva a rodada ao disco pela porta: pistas novas (gravar_lote), estado das existentes
-    (sincronizar) e as fechadas como recusa contada (rejeitar_lote). ESCREVE."""
+    (sincronizar, salvo `estado=False`: a fila do arquivo não é a fila viva) e as fechadas como recusa
+    contada (rejeitar_lote). ESCREVE."""
     from scripts.pistas import gravar_lote, sincronizar, rejeitar_lote
     balanco = gravar_lote(est["novas_lista"], origem="buscador2", ler_fn=ler_fn, gravar_fn=gravar_fn)
     novos = {n["id"] for n in est["novas_lista"]}
     tocadas = {"pistas": [p for p in fila["pistas"] if p.get("id") not in novos
                           and (p.get("buscador2_em") or p.get("retentativas_buscador2"))]}
-    sincronizar("pistas_imprensa.json", tocadas, origem="buscador2", ler_fn=ler_fn, gravar_fn=gravar_fn)
+    if estado:
+        sincronizar("pistas_imprensa.json", tocadas, origem="buscador2", ler_fn=ler_fn, gravar_fn=gravar_fn)
     rejeitar_lote([(p, "buscador2", m) for p, m in est["fechadas_lista"]], ler_fn=ler_fn, gravar_fn=gravar_fn)
     return balanco
 
@@ -452,8 +474,18 @@ def autoteste():
         return (len(fila) == 7 + 2 and disco["pistas_rejeitadas.json"]["total"] == 3
                 and any(p["status"].startswith(PREFIXO_FECHADA) for p in fila))
 
+    def t_arquivo_so_agregador_ainda_nao_tentado():
+        gn = lambda u, m="redirecionamento não resolvido (Google News)": {"motivo": m, "pista": {"id": u, "url": u}}
+        itens = [gn("https://news.google.com/rss/articles/A"), gn("https://news.google.com/rss/articles/A"),
+                 gn("https://news.google.com/rss/articles/B"), gn("https://x.com/c", "sem relação com o tema"),
+                 gn("https://news.google.com/rss/articles/D")]
+        l = do_arquivo(itens, {"https://news.google.com/rss/articles/B"}, 5)
+        return ([p["url"][-1] for p in l] == ["A", "D"] and all(p["status"] == STATUS_PENDENTE for p in l)
+                and len(do_arquivo(itens, set(), 1)) == 1)
+
     try:
         return rodar_autoteste({
+            "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,
             "rota (notícia) e página oficial (B4) viram pistas novas de documento": t_rota_e_b4_viram_pistas_novas,
             "lixo cai com motivo (B1, B2, B3), com o status anterior guardado": t_lixo_cai_com_motivo,
             "redirecionador resolvido: a URL final entra como pista nova (B2)": t_redirecionador_resolvido_vira_pista_nova,
@@ -483,6 +515,8 @@ if __name__ == "__main__":
     ap.add_argument("--restante", action="store_true")
     ap.add_argument("--reprocessar", action="store_true",
                     help="a fila antiga: toda pista que o Buscador 2 ainda não viu (válvula, lotes de --limite URLs)")
+    ap.add_argument("--arquivo", action="store_true",
+                    help="B2 sobre os links do Google News que a Limpeza arquivou (lotes de --limite URLs)")
     a = ap.parse_args()
     if a.autoteste:
         sys.exit(autoteste())
@@ -514,6 +548,23 @@ if __name__ == "__main__":
     parar = [False]
     signal.signal(signal.SIGINT, lambda *_: parar.__setitem__(0, True))
     orcamento = a.limite
+    if a.arquivo:
+        itens = (json.load(open(ARQUIVO_AGREGADORES, encoding="utf-8")) or {}).get("itens") or []
+        tentadas = {str(r.get("url"))[:400] for r in (ler("pistas_rejeitadas.json") or {}).get("rejeitadas", [])}
+        while orcamento > 0 and not parar[0]:
+            lote = do_arquivo(itens, tentadas, min(BLOCO, orcamento))
+            if not lote:
+                break
+            fila = {"pistas": lote}
+            e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, buscar_web_=web, limite=len(lote),
+                       reprocessar=True, parar=parar)
+            balanco = gravar_rodada(fila, e, estado=False)
+            tentadas |= {str(p.get("url"))[:400] for p, _ in e["fechadas_lista"]}
+            orcamento -= max(e["rede"], 1)
+            print(f"Buscador 2 (arquivo): {e['seguidas']} seguida(s) · {e['resolvidas']} resolvida(s) · "
+                  f"{balanco['gravadas']} pista(s) nova(s) ({balanco['recusadas']} recusada(s) na porta) · "
+                  f"{len(e['fechadas_lista'])} fechada(s) · SearXNG={'sim' if web else 'não'}", flush=True)
+        sys.exit(0)
     while True:
         e = seguir(fila, hoje, abrir=_abrir, abrir_final=None, consultar_qd_=qd, buscar_web_=web,
                    cobertura_qd=cob, limite=min(BLOCO, orcamento), refazer_dias=a.refazer_dias,
