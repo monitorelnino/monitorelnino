@@ -1293,14 +1293,25 @@ def parse_change_maps_ana(dados) -> dict:
             "base": "https://ana-monitor-secas-files.s3.sa-east-1.amazonaws.com/"}
 
 
-def parse_avisos_inmet(dados) -> dict:
-    """Agrega avisos ativos do INMET por UF, preservando o grau tal como o INMET o nomeia, e devolve {'UF': {'total': n, 'graus': {...}, 'exemplos': [...]}}."""
+def aviso_vencido(aviso: dict, agora=None) -> bool:
+    """Aviso com `fim` já passado NÃO está em vigor (editoria, 27/10/2026; mesmo critério do
+    CEMADEN: o encerramento não conta como alerta). `fim` vem no horário de Brasília, "AAAA-MM-DD
+    HH:MM". Sem `fim` legível não há prova de que venceu: o aviso fica. Função pura."""
+    try:
+        fim = datetime.strptime(str(aviso.get("fim") or "").strip(), "%Y-%m-%d %H:%M").replace(tzinfo=FUSO_BR)
+    except ValueError:
+        return False
+    return fim < (agora or datetime.now(FUSO_BR))
+
+
+def parse_avisos_inmet(dados, agora=None) -> dict:
+    """Agrega avisos em vigor do INMET por UF, preservando o grau tal como o INMET o nomeia, e devolve {'UF': {'total': n, 'graus': {...}, 'exemplos': [...]}}."""
     itens = dados.get("hoje", dados) if isinstance(dados, dict) else dados
     if isinstance(itens, dict):
         itens = itens.get("avisos", [])
     saida = {}
     for aviso in itens or []:
-        if not isinstance(aviso, dict):
+        if not isinstance(aviso, dict) or aviso_vencido(aviso, agora):
             continue
         grau = (aviso.get("severidade") or aviso.get("aviso_cor") or aviso.get("grau") or "").strip()
         descricao = (aviso.get("descricao") or aviso.get("aviso") or "").strip()
@@ -1349,7 +1360,7 @@ def parse_municipios_do_aviso(texto: str) -> list:
     return achados
 
 
-def parse_avisos_inmet_detalhado(dados) -> list:
+def parse_avisos_inmet_detalhado(dados, agora=None) -> list:
     """Devolve UM registro por aviso vigente, com tipo, grau, vigência e municípios — a
     granularidade que a página de Defesa civil precisa e que o agregado por UF descartava.
 
@@ -1359,13 +1370,13 @@ def parse_avisos_inmet_detalhado(dados) -> list:
 
     O que NÃO entra: `aviso_cor` (hexadecimal — cor só vive em assets/tokens.css, e a severidade
     textual basta para pintar) e `icone` (base64 de ~30 kB por aviso). Aviso com `encerrado`
-    verdadeiro sai: a página diz "em vigor". Função pura."""
+    verdadeiro sai, e o de `fim` já passado também: a página diz "em vigor". Função pura."""
     itens = dados.get("hoje", dados) if isinstance(dados, dict) else dados
     if isinstance(itens, dict):
         itens = itens.get("avisos", [])
     saida = []
     for aviso in itens or []:
-        if not isinstance(aviso, dict):
+        if not isinstance(aviso, dict) or aviso_vencido(aviso, agora):
             continue
         if str(aviso.get("encerrado", "")).strip().lower() in ("true", "1"):
             continue
@@ -2813,7 +2824,12 @@ def autoteste() -> int:
          "municipios": "Curitiba - PR (4106902)"},
         {"id_aviso": "28999", "descricao": "Vendaval", "severidade": "Perigo", "municipios": ""},
     ]}
-    _det = parse_avisos_inmet_detalhado(_crus)
+    _hoje = datetime(2026, 9, 24, 12, 0, tzinfo=FUSO_BR)
+    _det = parse_avisos_inmet_detalhado(_crus, _hoje)
+    checar("avisos detalhados: aviso com `fim` já passado não está em vigor (nem no total por UF)",
+           [a["id"] for a in parse_avisos_inmet_detalhado(_crus, datetime(2026, 9, 25, 12, 0, tzinfo=FUSO_BR))] == ["28400"]
+           and parse_avisos_inmet_detalhado(_crus) == []
+           and len(parse_avisos_inmet_detalhado({"hoje": [{**_crus["hoje"][0], "fim": "x"}]}, _hoje)) == 1)
     checar("avisos detalhados: um registro por aviso, com o tipo que o INMET escreve",
            [a["tipo"] for a in _det] == ["Chuvas Intensas", "Onda de Calor"])
     checar("avisos detalhados: aviso encerrado não entra em 'em vigor'",

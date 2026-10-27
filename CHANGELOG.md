@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
+`coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
 ## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15
 Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: "Seca e incêndio até março de 2027", antes "Seca, fogo". Frase do Cemaden sem texto aprovado: fica fora.
 
