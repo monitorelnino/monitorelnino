@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
+Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
 ## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
 
 `semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
