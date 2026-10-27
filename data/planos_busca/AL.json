@@ -57,6 +57,34 @@
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2704302&pagina=1&tamanhoPagina=500",
     "motivo": null,
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maceió\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maceió\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maceió\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maceió\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2700300": {
@@ -75,31 +103,31 @@
     "dominio": "arapiraca.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Arapiraca\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Arapiraca\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Arapiraca\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Arapiraca\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -119,31 +147,31 @@
     "dominio": "atalaia.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Atalaia\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Atalaia\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Atalaia\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Atalaia\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -163,31 +191,31 @@
     "dominio": "barradesantoantonio.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "sem_resultado",
     "consulta": "\"Barra de Santo Antônio\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
     "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Barra de Santo Antônio\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Barra de Santo Antônio\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Barra de Santo Antônio\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -207,31 +235,31 @@
     "dominio": "batalha.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Batalha\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Batalha\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Batalha\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Batalha\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -251,31 +279,31 @@
     "dominio": "bocadamata.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Boca da Mata\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Boca da Mata\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Boca da Mata\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Boca da Mata\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -295,10 +323,31 @@
     "dominio": "cajueiro.al.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Cajueiro\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cajueiro\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cajueiro\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cajueiro\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -318,10 +367,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Campo Alegre\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Campo Alegre\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Campo Alegre\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Campo Alegre\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -339,6 +409,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=coruripe.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "coruripe.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Coruripe\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Coruripe\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Coruripe\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Coruripe\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2702355": {
@@ -355,6 +453,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=craibas.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "craibas.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Craíbas\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Craíbas\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Craíbas\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Craíbas\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2702405": {
@@ -371,6 +497,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=delmirogouveia.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "delmirogouveia.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Delmiro Gouveia\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Delmiro Gouveia\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Delmiro Gouveia\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Delmiro Gouveia\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2702603": {
@@ -385,6 +539,34 @@
     "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Feira Grande\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Feira Grande\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Feira Grande\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Feira Grande\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -403,6 +585,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=giraudoponciano.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "giraudoponciano.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Girau do Ponciano\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Girau do Ponciano\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Girau do Ponciano\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Girau do Ponciano\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2703106": {
@@ -419,6 +629,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=igaci.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "igaci.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igaci\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igaci\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igaci\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igaci\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2703205": {
@@ -435,6 +673,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=igrejanova.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "igrejanova.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igreja Nova\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igreja Nova\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igreja Nova\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igreja Nova\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2703809": {
@@ -451,6 +717,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=joaquimgomes.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "joaquimgomes.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Joaquim Gomes\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Joaquim Gomes\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Joaquim Gomes\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Joaquim Gomes\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2704005": {
@@ -467,6 +761,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "junqueiro.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Junqueiro\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Junqueiro\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Junqueiro\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Junqueiro\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2704104": {
@@ -483,6 +805,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "lagoadacanoa.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Lagoa da Canoa\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Lagoa da Canoa\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Lagoa da Canoa\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Lagoa da Canoa\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2704203": {
@@ -499,6 +849,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "limoeirodeanadia.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro de Anadia\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro de Anadia\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro de Anadia\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro de Anadia\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2704401": {
@@ -513,6 +891,34 @@
     "consultado_em": "2026-10-24",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Major Isidoro\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Major Isidoro\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Major Isidoro\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Major Isidoro\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -531,6 +937,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "maragogi.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maragogi\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maragogi\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maragogi\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maragogi\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2704708": {
@@ -547,6 +981,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "marechaldeodoro.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marechal Deodoro\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marechal Deodoro\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marechal Deodoro\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marechal Deodoro\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2705002": {
@@ -561,6 +1023,34 @@
     "consultado_em": "2026-10-23",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mata Grande\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mata Grande\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mata Grande\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mata Grande\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -579,6 +1069,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=matrizdecamaragibe.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "matrizdecamaragibe.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Matriz de Camaragibe\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Matriz de Camaragibe\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Matriz de Camaragibe\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Matriz de Camaragibe\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2705507": {
@@ -595,6 +1113,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=murici.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "murici.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Murici\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Murici\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Murici\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Murici\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2705705": {
@@ -609,6 +1155,34 @@
     "consultado_em": "2026-10-23",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Olho d'Água das Flores\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Olho d'Água das Flores\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Olho d'Água das Flores\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Olho d'Água das Flores\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -627,6 +1201,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=palmeiradosindios.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "palmeiradosindios.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Palmeira dos Índios\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Palmeira dos Índios\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Palmeira dos Índios\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Palmeira dos Índios\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2706703": {
@@ -641,6 +1243,34 @@
     "consultado_em": "2026-10-23",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Penedo\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Penedo\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Penedo\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Penedo\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -659,6 +1289,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=pilar.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "pilar.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pilar\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pilar\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pilar\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pilar\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2707107": {
@@ -675,6 +1333,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=piranhas.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": "HTTP 504",
     "dominio": "piranhas.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Piranhas\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Piranhas\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Piranhas\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Piranhas\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2707305": {
@@ -691,6 +1377,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=portocalvo.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "portocalvo.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Calvo\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Calvo\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Calvo\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Calvo\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2707503": {
@@ -707,6 +1421,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=portorealdocolegio.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "portorealdocolegio.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Real do Colégio\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Real do Colégio\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Real do Colégio\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Real do Colégio\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2706406": {
@@ -723,6 +1465,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=paodeacucar.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": "HTTP 502",
     "dominio": "paodeacucar.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pão de Açúcar\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pão de Açúcar\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pão de Açúcar\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pão de Açúcar\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2707701": {
@@ -737,6 +1507,34 @@
     "consultado_em": "2026-10-23",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rio Largo\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rio Largo\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rio Largo\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rio Largo\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -755,6 +1553,34 @@
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=santanadoipanema.al.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
     "dominio": "santanadoipanema.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Ipanema\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Ipanema\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Ipanema\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Ipanema\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2708907": {
@@ -769,6 +1595,34 @@
     "consultado_em": "2026-10-23",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Satuba\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Satuba\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Satuba\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Satuba\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
@@ -787,6 +1641,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "saojosedalaje.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Laje\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Laje\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Laje\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Laje\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2708402": {
@@ -803,6 +1685,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "saojosedatapera.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Tapera\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Tapera\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Tapera\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São José da Tapera\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2708501": {
@@ -819,6 +1729,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "saoluisdoquitunde.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Luís do Quitunde\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Luís do Quitunde\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Luís do Quitunde\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Luís do Quitunde\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2708600": {
@@ -835,6 +1773,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "saomigueldoscampos.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel dos Campos\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel dos Campos\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel dos Campos\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel dos Campos\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2708808": {
@@ -851,6 +1817,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "saosebastiao.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2709103": {
@@ -867,6 +1861,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "taquarana.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Taquarana\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Taquarana\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Taquarana\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Taquarana\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2709152": {
@@ -883,6 +1905,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "teotoniovilela.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Teotônio Vilela\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Teotônio Vilela\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Teotônio Vilela\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Teotônio Vilela\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2709202": {
@@ -899,6 +1949,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "traipu.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Traipu\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Traipu\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Traipu\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Traipu\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2709301": {
@@ -915,6 +1993,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "uniaodospalmares.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"União dos Palmares\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"União dos Palmares\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"União dos Palmares\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"União dos Palmares\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2709400": {
@@ -931,6 +2037,34 @@
     "consulta": null,
     "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "vicosa.al.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viçosa\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viçosa\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viçosa\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viçosa\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2700102": {
@@ -945,6 +2079,34 @@
     "consultado_em": "2026-10-23",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
+    "motivo": null,
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Água Branca\" AL (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Água Branca\" AL (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Água Branca\" AL (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Água Branca\" AL (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }

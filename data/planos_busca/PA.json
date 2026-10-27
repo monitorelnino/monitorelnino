@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-26",
+ "gerado_em": "2026-10-27",
  "municipios": {
   "1501402": {
    "S16": {
@@ -50,6 +50,34 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1501402&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Belém\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Belém\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Belém\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Belém\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1500107": {
@@ -82,31 +110,31 @@
     "dominio": "abaetetuba.pa.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Abaetetuba\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Abaetetuba\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Abaetetuba\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Abaetetuba\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -140,31 +168,31 @@
     "dominio": "acara.pa.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Acará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Acará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Acará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Acará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -198,31 +226,31 @@
     "dominio": "afua.pa.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Afuá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Afuá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Afuá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Afuá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -256,31 +284,31 @@
     "dominio": "alenquer.pa.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-27",
     "situacao": "sem_resultado",
     "consulta": "\"Alenquer\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
     "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Alenquer\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Alenquer\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Alenquer\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -314,31 +342,31 @@
     "dominio": "almeirim.pa.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Almeirim\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Almeirim\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Almeirim\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Almeirim\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -372,10 +400,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Altamira\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Altamira\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Altamira\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Altamira\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -409,10 +458,31 @@
     "dominio": "anajas.pa.gov.br"
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Anajás\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anajás\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anajás\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anajás\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -444,6 +514,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ananindeua%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "ananindeua.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ananindeua\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ananindeua\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ananindeua\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ananindeua\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1500859": {
@@ -474,6 +572,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Anapu%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "anapu.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anapu\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anapu\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anapu\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Anapu\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1500909": {
@@ -504,6 +630,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Augusto+Corr%C3%AAa%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "augustocorrea.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Augusto Corrêa\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Augusto Corrêa\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Augusto Corrêa\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Augusto Corrêa\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1500958": {
@@ -534,6 +688,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Aurora+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "auroradopara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aurora do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aurora do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aurora do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Aurora do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501105": {
@@ -564,6 +746,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bagre%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "bagre.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bagre\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bagre\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bagre\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bagre\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501204": {
@@ -594,6 +804,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bai%C3%A3o%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "baiao.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Baião\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Baião\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Baião\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Baião\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501303": {
@@ -624,6 +862,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Barcarena%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "barcarena.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Barcarena\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Barcarena\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Barcarena\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Barcarena\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501501": {
@@ -654,6 +920,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Benevides%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "benevides.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Benevides\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Benevides\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Benevides\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Benevides\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501709": {
@@ -684,6 +978,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bragan%C3%A7a%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "braganca.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bragança\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bragança\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bragança\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bragança\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501725": {
@@ -714,6 +1036,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Brasil+Novo%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "brasilnovo.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Brasil Novo\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Brasil Novo\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Brasil Novo\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Brasil Novo\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501782": {
@@ -743,6 +1093,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Breu+Branco%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breu Branco\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breu Branco\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breu Branco\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breu Branco\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -774,6 +1152,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Breves%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breves\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breves\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breves\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Breves\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1501907": {
@@ -804,6 +1210,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Bujaru%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "bujaru.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bujaru\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bujaru\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bujaru\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Bujaru\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502004": {
@@ -834,6 +1268,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cachoeira+do+Arari%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "cachoeiradoarari.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cachoeira do Arari\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cachoeira do Arari\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cachoeira do Arari\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cachoeira do Arari\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502103": {
@@ -863,6 +1325,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Camet%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cametá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cametá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cametá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Cametá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -894,6 +1384,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cana%C3%A3+dos+Caraj%C3%A1s%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "canaadoscarajas.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Canaã dos Carajás\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Canaã dos Carajás\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Canaã dos Carajás\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Canaã dos Carajás\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502202": {
@@ -924,6 +1442,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Capanema%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "capanema.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capanema\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capanema\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capanema\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capanema\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502301": {
@@ -954,6 +1500,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Capit%C3%A3o+Po%C3%A7o%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "capitaopoco.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capitão Poço\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capitão Poço\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capitão Poço\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Capitão Poço\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502400": {
@@ -983,6 +1557,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Castanhal%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Castanhal\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Castanhal\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Castanhal\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Castanhal\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1014,6 +1616,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Concei%C3%A7%C3%A3o+do+Araguaia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "conceicaodoaraguaia.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Conceição do Araguaia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Conceição do Araguaia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Conceição do Araguaia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Conceição do Araguaia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502756": {
@@ -1044,6 +1674,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Conc%C3%B3rdia+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "concordiadopara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Concórdia do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Concórdia do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Concórdia do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Concórdia do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502806": {
@@ -1073,6 +1731,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Curralinho%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curralinho\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curralinho\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curralinho\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curralinho\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1104,6 +1790,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Curu%C3%A7%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "curuca.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curuçá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curuçá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curuçá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Curuçá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502939": {
@@ -1134,6 +1848,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Dom+Eliseu%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "domeliseu.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Dom Eliseu\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Dom Eliseu\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Dom Eliseu\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Dom Eliseu\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1502954": {
@@ -1164,6 +1906,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Eldorado+do+Caraj%C3%A1s%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "eldoradodocarajas.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Eldorado do Carajás\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Eldorado do Carajás\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Eldorado do Carajás\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Eldorado do Carajás\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503077": {
@@ -1194,6 +1964,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Garraf%C3%A3o+do+Norte%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "garrafaodonorte.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Garrafão do Norte\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Garrafão do Norte\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Garrafão do Norte\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Garrafão do Norte\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503093": {
@@ -1223,6 +2021,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goian%C3%A9sia+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Goianésia do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Goianésia do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Goianésia do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Goianésia do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1254,6 +2080,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Gurup%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "gurupa.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Gurupá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Gurupá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Gurupá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Gurupá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503200": {
@@ -1283,6 +2137,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Igarap%C3%A9-A%C3%A7u%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Açu\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Açu\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Açu\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Açu\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1314,6 +2196,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Igarap%C3%A9-Miri%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "igarapemiri.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Miri\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Miri\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Miri\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Igarapé-Miri\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503457": {
@@ -1344,6 +2254,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ipixuna+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "ipixunadopara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ipixuna do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ipixuna do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ipixuna do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ipixuna do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503507": {
@@ -1374,6 +2312,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Irituia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "irituia.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Irituia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Irituia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Irituia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Irituia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503606": {
@@ -1404,6 +2370,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Itaituba%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "itaituba.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itaituba\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itaituba\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itaituba\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itaituba\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503705": {
@@ -1434,6 +2428,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Itupiranga%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "itupiranga.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itupiranga\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itupiranga\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itupiranga\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Itupiranga\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503754": {
@@ -1457,6 +2479,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Jacareacanga%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "jacareacanga.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacareacanga\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacareacanga\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacareacanga\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacareacanga\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503804": {
@@ -1480,6 +2530,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Jacund%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "jacunda.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacundá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacundá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacundá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jacundá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1503903": {
@@ -1503,6 +2581,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Juruti%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "juruti.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Juruti\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Juruti\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Juruti\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Juruti\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504000": {
@@ -1526,6 +2632,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Limoeiro+do+Ajuru%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "limoeirodoajuru.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro do Ajuru\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro do Ajuru\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro do Ajuru\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Limoeiro do Ajuru\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504208": {
@@ -1548,6 +2682,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Marab%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marabá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marabá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marabá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marabá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1572,6 +2734,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Maracan%C3%A3%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "maracana.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maracanã\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maracanã\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maracanã\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Maracanã\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504406": {
@@ -1595,6 +2785,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Marapanim%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "marapanim.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marapanim\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marapanim\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marapanim\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marapanim\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504422": {
@@ -1618,6 +2836,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Marituba%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "marituba.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marituba\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marituba\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marituba\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Marituba\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504455": {
@@ -1641,6 +2887,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Medicil%C3%A2ndia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "medicilandia.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Medicilândia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Medicilândia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Medicilândia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Medicilândia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504505": {
@@ -1664,6 +2938,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Melga%C3%A7o%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "melgaco.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Melgaço\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Melgaço\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Melgaço\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Melgaço\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504604": {
@@ -1687,6 +2989,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mocajuba%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "mocajuba.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mocajuba\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mocajuba\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mocajuba\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mocajuba\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504703": {
@@ -1710,6 +3040,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Moju%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "moju.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Moju\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Moju\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Moju\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Moju\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504752": {
@@ -1733,6 +3091,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Moju%C3%AD+dos+Campos%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "mojuidoscampos.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mojuí dos Campos\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mojuí dos Campos\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mojuí dos Campos\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mojuí dos Campos\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504802": {
@@ -1756,6 +3142,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Monte+Alegre%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "montealegre.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Monte Alegre\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Monte Alegre\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Monte Alegre\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Monte Alegre\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504901": {
@@ -1779,6 +3193,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Muan%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "muana.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Muaná\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Muaná\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Muaná\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Muaná\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1504059": {
@@ -1801,6 +3243,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22M%C3%A3e+do+Rio%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mãe do Rio\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mãe do Rio\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mãe do Rio\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Mãe do Rio\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1825,6 +3295,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Novo+Progresso%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "novoprogresso.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Progresso\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Progresso\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Progresso\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Progresso\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505064": {
@@ -1848,6 +3346,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Novo+Repartimento%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "novorepartimento.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Repartimento\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Repartimento\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Repartimento\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Novo Repartimento\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505205": {
@@ -1871,6 +3397,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Oeiras+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "oeirasdopara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oeiras do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oeiras do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oeiras do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oeiras do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505304": {
@@ -1894,6 +3448,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Oriximin%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "oriximina.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oriximiná\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oriximiná\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oriximiná\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Oriximiná\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505437": {
@@ -1916,6 +3498,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ouril%C3%A2ndia+do+Norte%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ourilândia do Norte\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ourilândia do Norte\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ourilândia do Norte\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ourilândia do Norte\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -1940,6 +3550,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pacaj%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "pacaja.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pacajá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pacajá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pacajá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pacajá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505502": {
@@ -1963,6 +3601,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Paragominas%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "paragominas.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Paragominas\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Paragominas\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Paragominas\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Paragominas\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505536": {
@@ -1986,6 +3652,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Parauapebas%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "parauapebas.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Parauapebas\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Parauapebas\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Parauapebas\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Parauapebas\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505700": {
@@ -2009,6 +3703,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ponta+de+Pedras%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "pontadepedras.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ponta de Pedras\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ponta de Pedras\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ponta de Pedras\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ponta de Pedras\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505809": {
@@ -2032,6 +3754,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Portel%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "portel.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Portel\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Portel\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Portel\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Portel\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505908": {
@@ -2055,6 +3805,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Porto+de+Moz%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "portodemoz.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto de Moz\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto de Moz\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto de Moz\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto de Moz\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506005": {
@@ -2078,6 +3856,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Prainha%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "prainha.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Prainha\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Prainha\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Prainha\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Prainha\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506138": {
@@ -2101,6 +3907,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Reden%C3%A7%C3%A3o%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "redencao.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Redenção\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Redenção\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Redenção\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Redenção\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506187": {
@@ -2124,6 +3958,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rondon+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "rondondopara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rondon do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rondon do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rondon do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rondon do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506195": {
@@ -2147,6 +4009,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rur%C3%B3polis%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "ruropolis.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rurópolis\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rurópolis\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rurópolis\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rurópolis\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506203": {
@@ -2170,6 +4060,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Salin%C3%B3polis%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "salinopolis.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salinópolis\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salinópolis\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salinópolis\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salinópolis\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506302": {
@@ -2193,6 +4111,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Salvaterra%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salvaterra\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salvaterra\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salvaterra\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Salvaterra\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506500": {
@@ -2215,6 +4161,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santa+Izabel+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Izabel do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Izabel do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Izabel do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Izabel do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2246,6 +4220,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santa+Maria+do+Par%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Maria do Pará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Maria do Pará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Maria do Pará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santa Maria do Pará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1506708": {
@@ -2275,6 +4277,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santana+do+Araguaia%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Araguaia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Araguaia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Araguaia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santana do Araguaia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2306,6 +4336,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santar%C3%A9m%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "santarem.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santarém\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santarém\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santarém\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santarém\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1507003": {
@@ -2335,6 +4393,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santo+Ant%C3%B4nio+do+Tau%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santo Antônio do Tauá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santo Antônio do Tauá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santo Antônio do Tauá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Santo Antônio do Tauá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2366,6 +4452,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Soure%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "soure.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Soure\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Soure\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Soure\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Soure\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1507201": {
@@ -2396,6 +4510,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Domingos+do+Capim%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "saodomingosdocapim.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Domingos do Capim\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Domingos do Capim\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Domingos do Capim\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Domingos do Capim\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1507300": {
@@ -2425,6 +4567,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+F%C3%A9lix+do+Xingu%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Félix do Xingu\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Félix do Xingu\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Félix do Xingu\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Félix do Xingu\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2456,6 +4626,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Geraldo+do+Araguaia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "saogeraldodoaraguaia.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Geraldo do Araguaia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Geraldo do Araguaia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Geraldo do Araguaia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Geraldo do Araguaia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1507607": {
@@ -2486,6 +4684,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Miguel+do+Guam%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "saomigueldoguama.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel do Guamá\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel do Guamá\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel do Guamá\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Miguel do Guamá\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1507706": {
@@ -2515,6 +4741,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22S%C3%A3o+Sebasti%C3%A3o+da+Boa+Vista%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião da Boa Vista\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião da Boa Vista\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião da Boa Vista\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"São Sebastião da Boa Vista\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2546,6 +4800,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tail%C3%A2ndia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "tailandia.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tailândia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tailândia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tailândia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tailândia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508001": {
@@ -2575,6 +4857,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tom%C3%A9-A%C3%A7u%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tomé-Açu\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tomé-Açu\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tomé-Açu\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tomé-Açu\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2606,6 +4916,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tracuateua%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "tracuateua.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tracuateua\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tracuateua\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tracuateua\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tracuateua\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508084": {
@@ -2635,6 +4973,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tucum%C3%A3%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucumã\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucumã\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucumã\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucumã\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2666,6 +5032,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Tucuru%C3%AD%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "tucurui.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucuruí\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucuruí\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucuruí\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Tucuruí\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508126": {
@@ -2696,6 +5090,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ulian%C3%B3polis%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "ulianopolis.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ulianópolis\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ulianópolis\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ulianópolis\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ulianópolis\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508159": {
@@ -2726,6 +5148,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Uruar%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "uruara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Uruará\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Uruará\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Uruará\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Uruará\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508209": {
@@ -2749,6 +5199,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Vigia%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "vigia.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vigia\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vigia\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vigia\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vigia\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508308": {
@@ -2772,6 +5250,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Viseu%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "viseu.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viseu\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viseu\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viseu\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Viseu\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1508407": {
@@ -2795,6 +5301,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Xinguara%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "xinguara.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Xinguara\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Xinguara\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Xinguara\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Xinguara\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1505106": {
@@ -2818,6 +5352,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22%C3%93bidos%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "obidos.pa.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Óbidos\" PA (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Óbidos\" PA (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Óbidos\" PA (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Óbidos\" PA (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   }
  }

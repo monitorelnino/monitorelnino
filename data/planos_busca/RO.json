@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-26",
+ "gerado_em": "2026-10-27",
  "municipios": {
   "1100205": {
    "S16": {
@@ -50,6 +50,34 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1100205&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Velho\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Velho\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Velho\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Porto Velho\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1100023": {
@@ -82,31 +110,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Ariquemes\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Ariquemes\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Ariquemes\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Ariquemes\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -140,31 +168,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Buritis\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Buritis\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Buritis\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Buritis\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -198,31 +226,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Cacoal\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Cacoal\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Cacoal\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Cacoal\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -256,31 +284,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Espigão D'Oeste\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Espigão D'Oeste\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Espigão D'Oeste\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Espigão D'Oeste\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -314,31 +342,31 @@
     "dominio": null
    },
    "S20": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Guajará-Mirim\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S21": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Guajará-Mirim\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S23": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Guajará-Mirim\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    },
    "S31": {
-    "consultado_em": "2026-10-26",
-    "situacao": "erro",
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
     "consulta": "\"Guajará-Mirim\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
-    "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -370,6 +398,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Jaru%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jaru\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jaru\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jaru\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Jaru\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1100122": {
@@ -399,6 +455,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ji-Paran%C3%A1%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ji-Paraná\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ji-Paraná\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ji-Paraná\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ji-Paraná\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -430,6 +514,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Machadinho+D%27Oeste%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Machadinho D'Oeste\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Machadinho D'Oeste\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Machadinho D'Oeste\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Machadinho D'Oeste\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1100338": {
@@ -459,6 +571,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Nova+Mamor%C3%A9%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Nova Mamoré\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Nova Mamoré\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Nova Mamoré\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Nova Mamoré\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -490,6 +630,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Ouro+Preto+do+Oeste%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ouro Preto do Oeste\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ouro Preto do Oeste\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ouro Preto do Oeste\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Ouro Preto do Oeste\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1100189": {
@@ -519,6 +687,34 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Pimenta+Bueno%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pimenta Bueno\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pimenta Bueno\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pimenta Bueno\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Pimenta Bueno\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -550,6 +746,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rolim+de+Moura%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "rolimdemoura.ro.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rolim de Moura\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rolim de Moura\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rolim de Moura\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rolim de Moura\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1100304": {
@@ -580,6 +804,34 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Vilhena%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "vilhena.ro.gov.br"
+   },
+   "S20": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vilhena\" RO (recomendação OR \"termo de ajustamento de conduta\" OR \"inquérito civil\" OR \"ação civil pública\") \"plano de contingência\" site:mp.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S21": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vilhena\" RO (\"ação civil pública\" OR sentença OR acórdão) \"plano de contingência\" site:jus.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S23": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vilhena\" RO (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S31": {
+    "consultado_em": "2026-10-27",
+    "situacao": "sem_resultado",
+    "consulta": "\"Vilhena\" RO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
    }
   }
  }
