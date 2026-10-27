@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · A1 · União de conflito aceita `data/planos_busca/<UF>.json`
+
+O resolvedor de rodada une os planos de busca por município e fonte pela base comum: fonte lida só de um lado entra, a mesma fonte lida diferente nos dois lados é recusada. Antes recusava toda vez, e cada PR de dado das válvulas exigia união à mão.
+
 ## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
 Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
 ## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
