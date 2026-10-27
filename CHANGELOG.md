@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-27 · #PR · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
+## 2026-10-27 · #1272 · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
 
 A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.
 
