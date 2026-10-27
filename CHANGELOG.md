@@ -9,6 +9,33 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · #PR · Financiamento: o mapa mostra o valor repassado desde 29/06
+
+"Onde o dinheiro chega" passa a ler uma só medida, o valor repassado ao município, em um só período (julho a setembro de 2026 para o FNS). Mapa e tabela leem a mesma lista, com a coluna do valor autorizado em portaria e a linha dos municípios com portaria e repasse não localizado até o corte. Desenho do mapa mantido.
+
+## 2026-10-27 · #PR · Para gestores: "não localizado" diz a varredura feita
+
+O plano não localizado passa a dizer a varredura feita: "Varredura nacional ou estadual em dd/mm/aaaa; plano não localizado até o corte. Ainda não verificamos a cidade com todas as fontes." Vale quando o livro traz a varredura do município (§3.3, 19/10); sem ela, a frase antiga. Mesmo molde da inicial.
+
+## 2026-10-27 · #PR · Busca de planos: motor mudo sem achado é erro, não ausência
+
+Reverte o Bing único (ignora `site:`/OR e devolve host alheio). Busca web sem achado com motor suspenso ou resposta vazia vira `erro` com os motores no motivo, e refaz depois; `sem_resultado` só com todos os motores respondendo. Linhas líquidas: −3.
+## 2026-10-27 · Rodada paralela 1.8: a pasta do RS lida com causa e sem espera inútil
+
+No lote 5, 95 PLANCONs da pasta da Casa Militar/RS saíram "inacessível" sem causa registrada, e cada um esperou três tentativas (cerca de 4 h no total). A rodada paralela agora lê a pasta com o erro à vista: 401, 403 e 429 encerram como recusa, e PDF sem texto não é tentado de novo. A espera entre tentativas cai para 0, 10 e 30 s.
+
+## 2026-10-27 · #PR · Busca de planos: S17, S19, S26 e S30 entram na tabela de fontes do metabuscador
+
+Coordenadorias regionais, diários por associação, repositórios acadêmicos e programas estaduais por adesão ganham uma linha cada em `FONTES_WEB`; mesmas travas (endereço da fonte, município, termo e plano; pista sem documento confirmado). Autoteste +1 caso. Linhas: +24/−0.
+
+## 2026-10-27 · #PR · Buscador 2: os links do Google News arquivados voltam pelo resolvedor
+
+`seguir_pistas.py --arquivo` reprocessa os 11.965 links de agregador que a Limpeza arquivou: só a URL final resolvida entra, pela porta; o que não resolve vira rejeitada com motivo, e a data do `pistas_rejeitadas.json` impede nova tentativa. Código +57/−3; um teste.
+
+## 2026-10-27 · A1 · União de conflito aceita `data/planos_busca/<UF>.json`
+
+O resolvedor de rodada une os planos de busca por município e fonte pela base comum: fonte lida só de um lado entra, a mesma fonte lida diferente nos dois lados é recusada. Antes recusava toda vez, e cada PR de dado das válvulas exigia união à mão.
+
 ## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
 Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
 ## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado

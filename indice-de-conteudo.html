@@ -161,7 +161,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.emergencias.barras.total</code></td><td>Total</td></tr>
 </table>
-<h2>financiamento <small>(46 trechos)</small></h2>
+<h2>financiamento <small>(47 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.titulo_da_pagina</code></td><td>Financiamento</td></tr>
@@ -213,8 +213,12 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>chega · mapa</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.chega.mapa.titulo</code></td><td>Recursos federais que chegaram a municípios desde 29/06/2026, por origem</td></tr>
-<tr><td>legenda</td><td><code>financiamento.chega.mapa.legenda</code></td><td><span class="molde">Área proporcional ao valor · defesa civil: autorizado por portaria · saúde: FNS em linhas de emergência, jan–{mes}/2026</span><br><span class="ex">exemplo: Área proporcional ao valor · defesa civil: autorizado por portaria · saúde: FNS em linhas de emergência, jan–3/2026</span></td></tr>
+<tr><td>titulo</td><td><code>financiamento.chega.mapa.titulo</code></td><td>Recursos federais repassados a municípios desde 29/06/2026, por origem</td></tr>
+<tr><td>legenda</td><td><code>financiamento.chega.mapa.legenda</code></td><td><span class="molde">Área do círculo proporcional ao valor repassado · defesa civil: transferências da União · saúde: FNS, emergência, julho a {mes}/2026</span><br><span class="ex">exemplo: Área do círculo proporcional ao valor repassado · defesa civil: transferências da União · saúde: FNS, emergência, julho a 3/2026</span></td></tr>
+</table>
+<h3>chega · sem_repasse.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.chega.sem_repasse.molde</code></td><td><span class="molde">{n|nenhum município|1 município|{n} municípios} com recurso autorizado em portaria e repasse não localizado até {data}</span><br><span class="ex">exemplo: 3 municípios com recurso autorizado em portaria e repasse não localizado até 3</span></td></tr>
 </table>
 <h3>mesames</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -2037,7 +2041,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>monitor-de-riscos.listas.rotulo.ambas</code></td><td>Nas duas listas</td></tr>
 </table>
-<h2>prefeituras <small>(92 trechos)</small></h2>
+<h2>prefeituras <small>(95 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.titulo_da_pagina</code></td><td>Para gestores</td></tr>
@@ -2312,6 +2316,18 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>municipio · plano.nao_localizado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>prefeituras.municipio.plano.nao_localizado</code></td><td><span class="molde">Não localizado até o corte ({corte})</span><br><span class="ex">exemplo: Não localizado até o corte (3)</span></td></tr>
+</table>
+<h3>municipio · plano.varredura</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.municipio.plano.varredura</code></td><td><span class="molde">Varredura {nivel} em {data}; plano de contingência não localizado até o corte. Ainda não verificamos a cidade com todas as fontes.</span><br><span class="ex">exemplo: Varredura 3 em 3; plano de contingência não localizado até o corte. Ainda não verificamos a cidade com todas as fontes.</span></td></tr>
+</table>
+<h3>municipio · plano.nivel.estadual</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.municipio.plano.nivel.estadual</code></td><td>estadual</td></tr>
+</table>
+<h3>municipio · plano.nivel.nacional</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>prefeituras.municipio.plano.nivel.nacional</code></td><td>nacional</td></tr>
 </table>
 <h3>municipio · plano.nao_localizado_nota</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>

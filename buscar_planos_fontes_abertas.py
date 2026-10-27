@@ -14,6 +14,10 @@ Quatro consultas por município, todas a APIs públicas, sem login, sem LAI, sem
   S21  Judiciário                ação civil pública e decisão (metabuscador, endereço .jus.br, 26/10/2026)
   S23  Saúde                     CIB/CIEVS/SES, plano de contingência da dengue (metabuscador, .gov.br/.leg.br, 26/10/2026)
   S31  Transferegov              proposta, plano de trabalho e anexo (metabuscador, .gov.br, 26/10/2026)
+  S17  Coordenadorias          CREPDEC/REDEC e defesa civil estadual (metabuscador, .gov.br, 27/10/2026)
+  S19  Diários por associação  AMM, FAMURS, APPM, AMUPE, FEMURN e similares (metabuscador, 27/10/2026)
+  S26  Acadêmico               TCC, dissertação e tese em repositório institucional (metabuscador, 27/10/2026)
+  S30  Programas por adesão    Operação Verão/Chuvas, plano preventivo (metabuscador, .gov.br, 27/10/2026)
   S22  PNCP (api/consulta)       contratação municipal cujo objeto cita o plano (por código IBGE; só pista, contratação não é plano)
 
 Disciplina: cliente identificado, robots e Crawl-delay pela `buscar_uma_vez`, pausa por host, e
@@ -166,6 +170,13 @@ PADRAO_MP = re.compile(r"recomenda[cç][aã]o|termo de ajustamento|\bTAC\b|inqu[
 PADRAO_JUS = re.compile(r"a[cç][aã]o civil p[uú]blica|senten[cç]a|ac[oó]rd[aã]o|decis[aã]o|processo n", re.I)
 PADRAO_SAUDE = re.compile(r"dengue|arbovirose|chikungunya|\bCIB\b|CIEVS", re.I)
 PADRAO_TRANSFERENCIA = re.compile(r"transferegov|plano de trabalho|proposta|conv[eê]nio|termo de fomento", re.I)
+ASSOCIACOES = ("famurs.com.br", "appm.org.br", "amupe.org.br", "femurn.org.br", "amm.org.br", "amm-mt.org.br", "fecam.org.br",
+               "famem.org.br", "diariomunicipal.com.br")
+ACADEMICOS = (".edu.br", "ibict.br", "scielo.br", "usp.br", "unesp.br", "unicamp.br")
+PADRAO_COORDENADORIA = re.compile(r"crepdec|redec|coordenadoria (regional|estadual)|defesa civil estadual", re.I)
+PADRAO_ATO = re.compile(r"decreto|portaria|lei municipal|institui|aprova", re.I)
+PADRAO_ACADEMICO = re.compile(r"tese|disserta[cç][aã]o|monografia|trabalho de conclus[aã]o|\bTCC\b|reposit[oó]rio", re.I)
+PADRAO_PROGRAMA = re.compile(r"opera[cç][aã]o (ver[aã]o|chuvas)|plano preventivo|\bPPDC\b|programa estadual|ades[aã]o", re.I)
 SITES = lambda ds: "(" + " OR ".join("site:" + d.lstrip(".") for d in ds) + ")"
 # fonte: (endereços aceitos, termo da fonte ou None, consulta depois de "nome" UF)
 FONTES_WEB = {
@@ -177,6 +188,10 @@ FONTES_WEB = {
     "S21": ((".jus.br",), PADRAO_JUS, '("ação civil pública" OR sentença OR acórdão) "plano de contingência" site:jus.br'),
     "S23": ((".gov.br", ".leg.br"), PADRAO_SAUDE, '(dengue OR arboviroses OR CIB OR CIEVS) "plano de contingência" (site:gov.br OR site:leg.br)'),
     "S31": ((".gov.br",), PADRAO_TRANSFERENCIA, '(Transferegov OR "plano de trabalho" OR proposta OR convênio) "plano de contingência" site:gov.br'),
+    "S17": ((".gov.br",), PADRAO_COORDENADORIA, '(CREPDEC OR REDEC OR "coordenadoria regional" OR "defesa civil estadual") "plano de contingência" site:gov.br'),
+    "S19": (ASSOCIACOES, PADRAO_ATO, f'(decreto OR portaria OR "lei municipal") "plano de contingência" {SITES(ASSOCIACOES)}'),
+    "S26": (ACADEMICOS, PADRAO_ACADEMICO, f'(tese OR dissertação OR TCC OR monografia) "plano de contingência" "defesa civil" {SITES(ACADEMICOS)}'),
+    "S30": ((".gov.br",), PADRAO_PROGRAMA, '("Operação Verão" OR "Operação Chuvas" OR "plano preventivo" OR adesão) "plano de contingência" site:gov.br'),
 }
 
 
@@ -329,16 +344,11 @@ def ler_web(dados: dict, nome: str, fonte: str) -> list:
     return saida
 
 
-# Sonda de 27/10/2026 (20 municípios): no SearXNG da válvula só o Bing responde a essas consultas; Brave, DuckDuckGo
-# (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos ("too many requests", "access denied") e cada pedido a eles só gasta tempo.
-MOTORES_WEB = ["bing"]
-
-
 def buscar_web(consulta: str) -> dict:
     """Uma consulta ao metabuscador com o ritmo e o disjuntor de `monitorar_busca_web` (intervalo com jitter)."""
     import monitorar_busca_web as mw
     time.sleep(mw.espera_do_ritmo(0))
-    return mw.buscar_searxng(consulta, motores=MOTORES_WEB)
+    return mw.buscar_searxng(consulta)
 
 
 def classificar_erro(e: Exception) -> tuple:
@@ -398,9 +408,11 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
                 if f in FONTES_WEB:
                     r["consulta"] = consulta_web(f, nome, uf)
                     dados = (web or buscar_web)(r["consulta"])
-                    if isinstance(dados, dict) and dados.get("results") == []:
-                        raise ValueError(f"metabuscador sem resultado bruto, não vale como ausência; motores: {dados.get('unresponsive_engines') or 'nenhum recusou'}")
                     achados = ler_web(dados, nome, f)
+                    # Sonda de 27/10/2026: motor suspenso ("too many requests", CAPTCHA) cala; o Bing sozinho ignora site:/OR e devolve
+                    # lixo. Sem achado, resposta vazia ou com motor mudo cobre só parte da busca: erro (refaz depois), nunca ausência.
+                    if not achados and isinstance(dados, dict) and (dados.get("results") == [] or dados.get("unresponsive_engines")):
+                        raise ValueError(f"metabuscador sem cobertura completa, não vale como ausência; motores: {dados.get('unresponsive_engines') or 'nenhum recusou'}")
                 elif f == "S18":
                     r["consulta"], achados, r["motivo"] = consultar_qd(buscar, ibge)
                 elif f == "S22":
@@ -565,6 +577,10 @@ def autoteste() -> int:
         {"url": "https://alfa.xx.gov.br/pmrr.pdf", "title": "PMRR de Alfa", "content": "plano municipal de redução de riscos; plano de contingência de Alfa"},
         {"url": "https://blog.com/alfa", "title": "Alfa", "content": "plano de contingência e saneamento básico de Alfa"},
         {"url": "https://www.mpxx.mp.br/recomendacao-14", "title": "Recomendação ao município de Alfa", "content": "elaborar o plano de contingência de Alfa"},
+        {"url": "https://www.famurs.com.br/diario/decreto-7", "title": "Decreto de Alfa aprova o plano de contingência", "content": "Alfa institui o plano de contingência"},
+        {"url": "https://repositorio.ufxx.edu.br/tcc/3", "title": "TCC: plano de contingência de Alfa", "content": "monografia sobre Alfa"},
+        {"url": "https://defesacivil.xx.gov.br/crepdec-2", "title": "CREPDEC reúne Alfa", "content": "plano de contingência de Alfa"},
+        {"url": "https://defesacivil.xx.gov.br/operacao-chuvas", "title": "Operação Chuvas: Alfa adere", "content": "adesão de Alfa; plano de contingência"},
         {"url": "https://tjxx.jus.br/acp/1", "title": "Ação civil pública contra Alfa", "content": "obriga Alfa a elaborar plano de contingência"},
         {"url": "https://saude.xx.gov.br/cib/res-12.pdf", "title": "Resolução CIB: plano de contingência da dengue de Alfa", "content": ""},
         {"url": "https://transferegov.sistema.gov.br/p/9", "title": "Proposta de Alfa: plano de trabalho", "content": "anexo: plano de contingência de Alfa"}]}
@@ -604,10 +620,16 @@ def autoteste() -> int:
             and [u for u, _ in ler_web(web_ok, "Alfa", "S21")] == ["https://tjxx.jus.br/acp/1"]
             and [u for u, _ in ler_web(web_ok, "Alfa", "S23")] == ["https://saude.xx.gov.br/cib/res-12.pdf"]
             and [u for u, _ in ler_web(web_ok, "Alfa", "S31")] == ["https://transferegov.sistema.gov.br/p/9"]),
+        "S17, S19, S26, S30: cada fonte aceita só o seu endereço e o seu termo": lambda: (
+            [u for u, _ in ler_web(web_ok, "Alfa", "S17")] == ["https://defesacivil.xx.gov.br/crepdec-2"]
+            and [u for u, _ in ler_web(web_ok, "Alfa", "S19")] == ["https://www.famurs.com.br/diario/decreto-7"]
+            and [u for u, _ in ler_web(web_ok, "Alfa", "S26")] == ["https://repositorio.ufxx.edu.br/tcc/3"]
+            and [u for u, _ in ler_web(web_ok, "Alfa", "S30")] == ["https://defesacivil.xx.gov.br/operacao-chuvas"]),
         "S24: só endereço institucional com termo conexo e plano; blog e hospedagem ficam de fora": lambda: ler_web(web_ok, "Alfa", "S24") == [("https://alfa.xx.gov.br/pmrr.pdf", "PMRR de Alfa")],
         "S27 e S24: consulta registrada e pista com as travas de campo": lambda: (lambda r: all(r[f]["situacao"] == "lido" and r[f]["consulta"] and r[f]["pistas"][0]["promovivel"] is False and r[f]["pistas"][0]["documento_oficial_confirmado"] is None for f in r))(consultar_municipio("Alfa", "XX", "9999999", ["S27", "S24"], falso({}), "2026-10-26", web=web())),
         "S27: resultado bruto vazio é erro (motor barrando), nunca sem_resultado; filtrado a zero é sem_resultado": lambda: (
             consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": [], "unresponsive_engines": [["bing", "Suspended: too many requests"]]}))["S27"]["motivo"].endswith("[['bing', 'Suspended: too many requests']]")
+            and consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": [{"url": "https://x.com/a", "title": "t"}], "unresponsive_engines": [["brave", "Suspended: access denied"]]}))["S27"]["situacao"] == "erro"
             and consultar_municipio("Gama", "XX", "9999999", ["S27"], falso({}), "d", web=web())["S27"]["situacao"] == "sem_resultado"),
         "S27: corpo que não é resposta do metabuscador e 429 são erro/recusa, não ausência": lambda: (
             consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"x": 1}))["S27"]["situacao"] == "erro"
