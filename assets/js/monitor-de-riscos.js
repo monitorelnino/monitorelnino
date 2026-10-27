@@ -135,12 +135,12 @@ const componentesDe = uf => {
 // 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2): o risco previsto é uma FAIXA de etiquetas por
 // família, na ordem pedida; cada sigla abre a ficha do estado na inicial. Previsão, não observação.
 const FAMILIAS_PREVISTAS = [
-  ['Seca', c => c.length === 1 && c[0] === 'estiagem'],
-  ['Seca e fogo', c => c.includes('estiagem') && c.includes('incendios')],
-  ['Chuva forte', c => c.length === 1 && c[0] === 'chuvas'],
-  ['Chuva forte e fogo', c => c.includes('chuvas') && c.includes('incendios')],
-  ['Fogo', c => c.length === 1 && c[0] === 'incendios'],
-  ['Sem sinal elevado', c => !c.length],
+  ['Seca', c => c.length === 1 && c[0] === 'estiagem', ['seca']],
+  ['Seca e fogo', c => c.includes('estiagem') && c.includes('incendios'), ['seca', 'fogo']],
+  ['Chuva forte', c => c.length === 1 && c[0] === 'chuvas', ['chuva']],
+  ['Chuva forte e fogo', c => c.includes('chuvas') && c.includes('incendios'), ['chuva', 'fogo']],
+  ['Fogo', c => c.length === 1 && c[0] === 'incendios', ['fogo']],
+  ['Sem sinal elevado', c => !c.length, []],
 ];
 const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf)));
 (function faixaRiscoPrevisto(){
@@ -148,9 +148,9 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   const pe = fonteDe('painel_el_nino');
   if (pe.status !== 'coletado') { lacuna('faixaRiscoPrevisto', 'Sem coleta até o corte.'); return; }
   const usados = new Set();
-  MonitorMapas.faixaPrevista(dl, FAMILIAS_PREVISTAS.map(([rotulo, teste]) => {
+  MonitorMapas.faixaPrevista(dl, FAMILIAS_PREVISTAS.map(([rotulo, teste, marcas]) => {
     const ufs = ufsCom(teste).filter(uf => !usados.has(uf)); ufs.forEach(uf => usados.add(uf));
-    return [rotulo, ufs];
+    return [rotulo, ufs, marcas];
   }));
   const doc = pe.documento ? String(pe.documento).replace(/^.*?(Boletim)/, '$1') : 'Boletim do Painel El Niño';
   const sub = document.getElementById('riscoPrevistoSub');

@@ -302,7 +302,8 @@
     // 13/10/2026 (decisão 9 da central): o cartão de número leva a mesma linha, no próprio elemento de fonte.
     if (caixa.classList.contains('cartao-numero-fonte')) { caixa.innerHTML = linha; caixa.setAttribute('data-conteudo-fixado', '1'); return; }
     const d = document.createElement('div'); d.className = 'fonte-figura';
-    d.innerHTML = linha;
+    // 27/10/2026 (central, pendência 11): a figura aponta a metodologia, o único material técnico público (PDF).
+    d.innerHTML = linha + ' · <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Metodologia</a>';
     let pe = caixa.querySelector(':scope > .figura-pe');
     if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; caixa.appendChild(pe); }
     pe.insertBefore(d, pe.firstChild);   // crédito antes do número da figura
@@ -485,9 +486,13 @@
   // 19/10/2026 (editoria): a sigla é ETIQUETA, não ligação. O link levava à página anterior e
   // obrigava o leitor a voltar; o `span` é a mesma forma que a inicial já usa nos seus chips.
   const chipsDeUF = ufs => ufs.map(uf => '<span class="chip-risco">' + esc(uf) + '</span>').join('');
+  // Risco previsto em seis linhas: marca(s) de cor + nome do risco + contagem de estados + siglas.
+  // A cor nunca é o único código: o nome vem escrito ao lado; a marca das combinações compõe as simples.
   function faixaPrevista(dl, grupos) {
-    dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs]) =>
-      '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
+    dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs, marcas]) =>
+      '<div><dt>' + (marcas || []).map(m => '<i class="marca-risco marca-risco--' + m + '" aria-hidden="true"></i>').join('')
+      + (marcas && marcas.length ? '' : '<i class="marca-risco marca-risco--vazia" aria-hidden="true"></i>')
+      + esc(rotulo) + ' <span class="faixa-previsto__n">' + ufs.length + '</span></dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
   }
 
   global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };

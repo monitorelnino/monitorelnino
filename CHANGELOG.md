@@ -9,6 +9,11 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
+
+O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
+
+
 ## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
 `coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
 ## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15
