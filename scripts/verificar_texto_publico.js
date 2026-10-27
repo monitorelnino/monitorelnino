@@ -106,6 +106,9 @@ const CREDITO = new RegExp(F.credito), CREDITO_EXPLICA = new RegExp(F.credito_ex
 const credito = (s) => (!CREDITO.test(s) ? [`crédito fora do formato "Fonte: … · Atualização: dd/mm/aaaa" — "${s.slice(0, 80)}"`] : [])
   .concat(s.length > F.credito_maximo ? [`crédito longo demais (${s.length} caracteres)`] : [], CREDITO_EXPLICA.test(s) ? [`crédito com explicação — "${s.slice(0, 80)}"`] : []);
 const ESTADOS = rx(F.subtitulo_estados, "");
+// Figura sem `.figura-sub` vale quando título + eixo dizem período, território e unidade (a variável é o próprio título).
+const SEM_SUB = Object.entries(F.sem_subtitulo).map(([k, v]) => [k, new RegExp(v, "i")]);
+const semSubtitulo = (titulo, eixo) => { const dito = `${titulo} ${eixo}`; const falta = SEM_SUB.filter(([, r]) => !r.test(dito)).map(([k]) => k); return falta.length ? [`figura sem subtítulo e sem ${falta.join(", ")} no título ou no eixo`] : []; };
 const subtitulo = (s) => (s.length > F.subtitulo_maximo || (!s.includes("·") && !ESTADOS.some((r) => r.test(s)))) ? [`subtítulo fora do padrão (≤ ${F.subtitulo_maximo} caracteres, separado por "·") — "${s.slice(0, 60)}"`] : [];
 const fichaIncompleta = (ficha, obrigatorios) => (obrigatorios || []).filter((c) => { const v = (ficha || {})[c]; return v == null || (typeof v === "string" && !v.trim()) || (Array.isArray(v) && !v.length); });
 
@@ -125,7 +128,7 @@ function julgarPagina(pagina, r, fichas, vistas) {
     if (ruins.length) f(`${id}: ${ruins.length} elemento(s) proibido(s) na figura — ${ruins.slice(0, 2).map((e) => e.tagName.toLowerCase() + ": " + t(e).slice(0, 70)).join(" | ")}`);
     const ti = t(c.querySelector(".figura-titulo")); if (!ti) f(`${id}: figura sem título`);
     registrar(id, "título", ti, ti.length > TAM.titulo ? [`título com ${ti.length} caracteres (máx. ${TAM.titulo})`] : []);
-    const subs = c.querySelectorAll(".figura-sub"); if (!subs.length) f(`${id}: figura sem subtítulo (período · variável · unidade)`); if (subs.length > 1) f(`${id}: ${subs.length} subtítulos (máximo 1)`);
+    const subs = c.querySelectorAll(".figura-sub"); if (!subs.length) semSubtitulo(ti, [...c.querySelectorAll(F.eixo)].map(t).join(" ")).forEach((m) => f(`${id}: ${m}`)); if (subs.length > 1) f(`${id}: ${subs.length} subtítulos (máximo 1)`);
     subs.forEach((e) => registrar(id, "subtítulo", t(e), subtitulo(t(e))));
     c.querySelectorAll(".figura-leitura").forEach((e) => { const s = t(e); registrar(id, "leitura", s, [].concat(
       !L.leituras_aprovadas.includes(s) && frases(s) > TAM.leitura_frases ? [`${frases(s)} frases (máx. ${TAM.leitura_frases})`] : [], s.length > TAM.leitura ? [`${s.length} caracteres (máx. ${TAM.leitura})`] : [])); });
@@ -241,6 +244,7 @@ function autoteste() {
   c("crédito no formato único passa", credito("Fonte: Cemaden · Atualização: 02/10/2026").length === 0 && credito("Fonte: INMET · Atualização: sem coleta até o corte").length === 0);
   c("crédito fora do formato ou com explicação reprova", credito("Cemaden, 2026").length === 1 && credito("Fonte: aguardamos o órgão · Atualização: 02/10/2026").length === 1);
   c("subtítulo sem '·' ou longo reprova", subtitulo("Período 2026").length === 1 && subtitulo("x".repeat(141) + " · y").length === 1 && subtitulo("2026 · municípios · contagem").length === 0);
+  c("figura sem subtítulo passa quando título + eixo trazem período, território e unidade; senão reprova", semSubtitulo("Anomalia semanal da temperatura na região Niño 3.4", "Niño 3.4, °C").length === 0 && semSubtitulo("RONI no ciclo em curso", "RONI, °C")[0].includes("territorio") && semSubtitulo("Anomalia semanal na região Niño 3.4", "Niño 3.4")[0].includes("unidade") && semSubtitulo("Anomalia na região Niño 3.4", "°C")[0].includes("periodo"));
   c("subtítulo de estado 'Sem atualização desde …' passa (portão 17 o exercita)", subtitulo("Sem atualização desde 01/09/2026 00:00").length === 0 && subtitulo("Sem dado").length === 1);
   c("palavras: conta a prosa, não script, nav, rodapé, legenda ou prova", palavras('<nav class="mainnav">a b</nav><p>um dois três</p><p class="figura-sub">x y</p><script>z z</script><footer>f</footer>') === 3);
   c("enquadramento: bloco correto passa", enquadramento(bom).length === 0);

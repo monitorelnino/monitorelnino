@@ -12,6 +12,17 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-27 · #1272 · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
 
 A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.
+## 2026-10-27 · Figura sem subtítulo vale com período, território e unidade no título ou no eixo
+
+A exigência de `.figura-sub` saiu de `verificar_estrutura.js`, que duplicava o `verificar_texto_publico.js`; este agora aceita figura sem subtítulo quando título e eixo dizem período, território e unidade (`figura_componente.sem_subtitulo` em `regras.json`). Uma mutação nova prova. Código +10/−2. Nenhum texto público muda.
+
+## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
+
+`catalogo.json` ganha `cievs_boletins`: órgão, endereço, formato, cadência e situação de 16 UFs, mais as UFs já em `fontes_uf.json`, a localizar e não medidas. Só catálogo: nenhum PDF é lido por coletor. Divergência da Bahia com `fontes_uf.json` registrada para a editoria. Dado +172, código 0.
+
+## 2026-10-27 · Rodada paralela 1.8: chave pela pista e decisões fora do registro
+
+A rodada paralela guardava cada veredito pela chave do município que o veredito atribuía. Quando o 1.8 corrigia o município pelo domínio, a mesma pista era relida a cada lote; até o lote 6 foram 113 repetidas. A chave agora é a da pista. As 5.280 decisões que a limpeza de 26/10 tirou do registro também saem do arquivo paralelo, que fica só com a contagem e cai de 9,8 para 5,2 MB.
 
 ## 2026-10-27 · #1268 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais
 

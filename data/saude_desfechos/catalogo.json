@@ -431,6 +431,178 @@
     "PA": "página de arboviroses abre (HTTP 200) com subpáginas por doença e sem boletim anexado; as subpáginas de dengue e chikungunya deram tempo esgotado no executor; sem boletim lido"
    },
    "executor": "válvula coleta-dia, cliente identificado, quatro rodadas de leitura; nenhum dado gravado"
+  },
+  {
+   "data": "27/10/2026",
+   "janela": "E1",
+   "cievs_boletins": {
+    "_regra": "Só catálogo de páginas de boletim (decisão da central, 27/10/2026 19:40): nenhum PDF é lido por coletor; desfechos seguem por SISAB e .dbc. 'cobre' e 'cadencia' vêm de leitura pontual feita em sondagem; ausência de rota é 'a localizar', não 'não existe'.",
+    "RO": {
+     "orgao": "SES-RO (SESAU)",
+     "url": "rondonia.ro.gov.br/sesau/publicacoes/boletim-epidemiologico/",
+     "formato": "PDF cumulativo, tabela por município",
+     "cadencia": "irregular, 1 a 2 meses (SE06, 08, 11, 13, 22 e 27 de 2026)",
+     "cobre": "dengue, zika, chikungunya e febre amarela",
+     "situacao": "rota candidata PDF; inalcançável do executor em 19/10 e 26/10 (rede, não recusa)",
+     "medido_em": "26/10/2026"
+    },
+    "RR": {
+     "orgao": "SES-RR",
+     "url": "vigilancia.saude.rr.gov.br/pagina-be-arboviroses/",
+     "formato": "PDF",
+     "cadencia": "a medir (SE01-SE24 de 2026 datado 18/06; atraso ~8 semanas)",
+     "cobre": "só dengue tem contagem",
+     "situacao": "rota candidata PDF",
+     "medido_em": "26/10/2026"
+    },
+    "GO": {
+     "orgao": "SES-GO",
+     "url": "goias.gov.br/saude/boletins-epidemiologicos",
+     "formato": "PDF (Informe Epidemiológico de Dengue, SE 1 a 37 de 2026)",
+     "cadencia": "a medir",
+     "cobre": "dengue",
+     "situacao": "403 ao cliente identificado em 19/10, respeitado; página 'alertas-boletins-e-informes' respondeu 200 em 26/10",
+     "medido_em": "26/10/2026"
+    },
+    "PR": {
+     "orgao": "SESA-PR",
+     "url": "dengue.pr.gov.br/Pagina/Boletins-da-Dengue",
+     "formato": "PDF",
+     "cadencia": "parada: 630 informes, o último de agosto de 2022",
+     "cobre": "dengue",
+     "situacao": "página viva, série parada",
+     "medido_em": "21/10/2026"
+    },
+    "RS": {
+     "orgao": "SES-RS (CEVS)",
+     "url": "saude.rs.gov.br",
+     "formato": "PDF de texto (informativo de arboviroses, SE 1-27 de 2026, publicado 20/07)",
+     "cadencia": "semestral na leitura do documento; semanal/quinzenal citado em busca, não confirmado",
+     "cobre": "arboviroses; sem leptospirose",
+     "situacao": "rota candidata PDF; não serve de série corrente",
+     "medido_em": "26/10/2026"
+    },
+    "SP": {
+     "orgao": "SES-SP (CVE)",
+     "url": "dengue.saude.sp.gov.br",
+     "formato": "PDF 'boletimseNNNN_arboviroses_DDmesAA'",
+     "cadencia": "semanal (pelo nome do arquivo)",
+     "cobre": "arboviroses",
+     "situacao": "rota candidata PDF; leitura do PDF não feita",
+     "medido_em": "26/10/2026"
+    },
+    "MG": {
+     "orgao": "SES-MG",
+     "url": "saude.mg.gov.br",
+     "formato": "PDF 'BO_ARBO<nnn>' (BO_ARBO384 em fev/2026 a BO_ARBO408 em ago/2026)",
+     "cadencia": "~semanal (24 edições em 6 meses)",
+     "cobre": "arboviroses",
+     "situacao": "rota candidata PDF; painel em defeso eleitoral em fontes_uf.json",
+     "medido_em": "26/10/2026"
+    },
+    "BA": {
+     "orgao": "SES-BA (Sesab)",
+     "url": "ba.gov.br",
+     "formato": "PDF 'Informe.Semanal.Arbovirose.SE<nn>' (SE38 publicado em 28/09/2026)",
+     "cadencia": "semanal pelo nome; atraso ~4 semanas",
+     "cobre": "dengue, chikungunya e zika; sem tabela de casos por município",
+     "situacao": "rota candidata PDF; diverge de fontes_uf.json, que registra série parada desde 2021 (verificação de 10/09): a editoria reconcilia",
+     "medido_em": "26/10/2026"
+    },
+    "SE": {
+     "orgao": "SES-SE",
+     "url": "saude.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
+     "formato": "PDF 'Boletim-Arboviroses-SE-2026-<nn>' (SE02 a SE34 localizados)",
+     "cadencia": "irregular; periodicidade não declarada",
+     "cobre": "dengue, chikungunya e zika; por município só índice de infestação predial",
+     "situacao": "rota candidata PDF",
+     "medido_em": "26/10/2026"
+    },
+    "ES": {
+     "orgao": "SESA-ES",
+     "url": "mosquito.saude.es.gov.br",
+     "formato": "PDF (boletins de chikungunya de 2025)",
+     "cadencia": "a provar; boletim de 2026 não localizado",
+     "cobre": "chikungunya",
+     "situacao": "a provar",
+     "medido_em": "26/10/2026"
+    },
+    "MT": {
+     "orgao": "SES-MT",
+     "url": "saude.mt.gov.br/storage/files",
+     "formato": "PDF sem nome informativo (nove arquivos)",
+     "cadencia": "a provar",
+     "cobre": "não identificado qual arquivo é boletim de desfecho",
+     "situacao": "a provar; página inicial sem resposta do executor em 26/10",
+     "medido_em": "26/10/2026"
+    },
+    "MA": {
+     "orgao": "SES-MA",
+     "url": "saude.ma.gov.br/paginas/boletins-epidemiologicos-arboviroses",
+     "formato": "página de boletins; painéis de dengue e chikungunya em monitora.saude.ma.gov.br",
+     "cadencia": "a provar",
+     "cobre": "dengue e chikungunya",
+     "situacao": "rota candidata; página de boletim ainda não aberta",
+     "medido_em": "27/10/2026"
+    },
+    "PA": {
+     "orgao": "SESPA (DVS)",
+     "url": "saude.pa.gov.br/a-secretaria/diretorias/dvs/arboviroses/",
+     "formato": "páginas por doença, sem boletim anexado",
+     "cadencia": "a provar",
+     "cobre": "arboviroses",
+     "situacao": "página abre; subpáginas de dengue e chikungunya deram tempo esgotado em 21/10",
+     "medido_em": "27/10/2026"
+    },
+    "AM": {
+     "orgao": "SES-AM (FVS-RCP)",
+     "url": "fvs.am.gov.br/boletim-epidemiologico",
+     "formato": "a provar",
+     "cadencia": "a provar",
+     "cobre": "a provar",
+     "situacao": "não resolvia (DNS) em 21/10; página inicial respondeu 200 em 27/10 sem link candidato",
+     "medido_em": "27/10/2026"
+    },
+    "AL": {
+     "orgao": "SES-AL",
+     "url": null,
+     "formato": "lista de boletins na página inicial: Multitemático, Informes Semanais e outros",
+     "cadencia": "a provar em 'Informes Semanais'",
+     "cobre": "arboviroses não aparece como link direto",
+     "situacao": "a provar",
+     "medido_em": "26/10/2026"
+    },
+    "PI": {
+     "orgao": "SES-PI",
+     "url": null,
+     "formato": "a provar",
+     "cadencia": "a provar",
+     "cobre": "a provar",
+     "situacao": "página inicial respondeu 200 com marcador de muro de robô no corpo (heurística, não confirmado); nada contornado",
+     "medido_em": "27/10/2026"
+    }
+   },
+   "outras_ufs": {
+    "ja_em_fontes_uf": [
+     "CE",
+     "DF",
+     "MS",
+     "PB",
+     "PE"
+    ],
+    "a_localizar": [
+     "AC",
+     "RN",
+     "RJ",
+     "SC"
+    ],
+    "nao_medido_sem_codigo_http": [
+     "AP",
+     "TO"
+    ],
+    "nota": "'a localizar' vem de busca de 26/10 e não prova inexistência; 'não medido' é reset de conexão ou tempo esgotado, a repetir antes de qualquer conclusão. Nenhuma recusa 401/403/429/451 além da de GO."
+   },
+   "executor": "busca e leitura pontual das janelas E1 de 26 e 27/10/2026; sondas da válvula coleta-dia, cliente identificado, robots respeitado; este registro não grava dado de desfecho"
   }
  ]
 }

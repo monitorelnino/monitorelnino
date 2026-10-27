@@ -104,6 +104,12 @@ def autoteste() -> int:
                   [p["id"] for p in f["pistas"]] == ["c", "b"] and f["descartadas_por_dominio"] == {"www.reddit.com": 1}
                   and f["pistas"][0]["municipio"] is None and f["pistas"][0]["setor_18"] == "defesa_civil"))
 
+    v18 = {"pista_id": "p", "url": "u", "municipio": "Taió", "uf": "SC", "municipio_da_pista": "Rio do Oeste",
+           "uf_da_pista": "SC"}
+    casos.append(("1.8: a chave salva é a da pista, não a do município do veredito (J5)",
+                  chave_18(dict(v18, municipio=v18["municipio_da_pista"], uf=v18["uf_da_pista"]))
+                  == chave_18({"pista_id": "p", "url": "u", "municipio": "Rio do Oeste", "uf": "SC"})))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -235,7 +241,11 @@ def paralelo_18(argv) -> int:
                         "lê este arquivo; a troca para o 1.8 é decisão da editoria. `rejulgada_de` é a decisão "
                         "vigente (1.7 ou anterior) da mesma pista e URL."),
         "codebook": CODEBOOK_18, "decisoes": []}
-    feitas = {chave_18(v): v for v in doc["decisoes"]}
+    # A chave é a da PISTA: o veredito pode ter mudado o município (J5/J6), e a chave pelo veredito fazia a
+    # mesma pista ser relida a cada lote (113 repetidas até o lote 6).
+    feitas = {}
+    for v in doc["decisoes"]:
+        feitas[chave_18(dict(v, municipio=v.get("municipio_da_pista"), uf=v.get("uf_da_pista")))] = v
     ler, registros = buscar_18() if rede else (lambda u: None, [])
     hoje = hoje_editorial().isoformat()
     lidas, pendentes = 0, [0]
@@ -286,6 +296,11 @@ def paralelo_18(argv) -> int:
     por_id = {p.get("id"): p for p in json.loads(
         (RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8")).get("pistas", []) if p.get("id")}
     decididas = vigentes(json.loads(REGISTRO.read_text(encoding="utf-8")).get("decisoes") or [])
+    # Decisão que saiu do registro (limpeza de 26/10, #1203) sai do rejulgamento: fica só a contagem.
+    fora = [k for k, v in feitas.items() if v.get("origem_18") == "decisao" and k not in decididas]
+    for k in fora:
+        feitas.pop(k)
+    doc["fora_do_registro"] = int(doc.get("fora_do_registro") or 0) + len(fora)
     if fila is not None and "--fila" in argv:   # B2: o link de agregador das decisões também se resolve
         from pistas import REDIRECIONADORES, prioridade_18
         ja, feitos = {a["id"] for a in fila["agregadores"]}, {a["id"]: a for a in anterior.get("agregadores", [])}
