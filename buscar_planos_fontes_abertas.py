@@ -344,16 +344,11 @@ def ler_web(dados: dict, nome: str, fonte: str) -> list:
     return saida
 
 
-# Sonda de 27/10/2026 (20 municípios): no SearXNG da válvula só o Bing responde a essas consultas; Brave, DuckDuckGo
-# (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos ("too many requests", "access denied") e cada pedido a eles só gasta tempo.
-MOTORES_WEB = ["bing"]
-
-
 def buscar_web(consulta: str) -> dict:
     """Uma consulta ao metabuscador com o ritmo e o disjuntor de `monitorar_busca_web` (intervalo com jitter)."""
     import monitorar_busca_web as mw
     time.sleep(mw.espera_do_ritmo(0))
-    return mw.buscar_searxng(consulta, motores=MOTORES_WEB)
+    return mw.buscar_searxng(consulta)
 
 
 def classificar_erro(e: Exception) -> tuple:
@@ -413,9 +408,11 @@ def consultar_municipio(nome, uf, ibge, fontes, buscar, hoje, dormir=lambda s: N
                 if f in FONTES_WEB:
                     r["consulta"] = consulta_web(f, nome, uf)
                     dados = (web or buscar_web)(r["consulta"])
-                    if isinstance(dados, dict) and dados.get("results") == []:
-                        raise ValueError(f"metabuscador sem resultado bruto, não vale como ausência; motores: {dados.get('unresponsive_engines') or 'nenhum recusou'}")
                     achados = ler_web(dados, nome, f)
+                    # Sonda de 27/10/2026: motor suspenso ("too many requests", CAPTCHA) cala; o Bing sozinho ignora site:/OR e devolve
+                    # lixo. Sem achado, resposta vazia ou com motor mudo cobre só parte da busca: erro (refaz depois), nunca ausência.
+                    if not achados and isinstance(dados, dict) and (dados.get("results") == [] or dados.get("unresponsive_engines")):
+                        raise ValueError(f"metabuscador sem cobertura completa, não vale como ausência; motores: {dados.get('unresponsive_engines') or 'nenhum recusou'}")
                 elif f == "S18":
                     r["consulta"], achados, r["motivo"] = consultar_qd(buscar, ibge)
                 elif f == "S22":
@@ -632,6 +629,7 @@ def autoteste() -> int:
         "S27 e S24: consulta registrada e pista com as travas de campo": lambda: (lambda r: all(r[f]["situacao"] == "lido" and r[f]["consulta"] and r[f]["pistas"][0]["promovivel"] is False and r[f]["pistas"][0]["documento_oficial_confirmado"] is None for f in r))(consultar_municipio("Alfa", "XX", "9999999", ["S27", "S24"], falso({}), "2026-10-26", web=web())),
         "S27: resultado bruto vazio é erro (motor barrando), nunca sem_resultado; filtrado a zero é sem_resultado": lambda: (
             consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": [], "unresponsive_engines": [["bing", "Suspended: too many requests"]]}))["S27"]["motivo"].endswith("[['bing', 'Suspended: too many requests']]")
+            and consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"results": [{"url": "https://x.com/a", "title": "t"}], "unresponsive_engines": [["brave", "Suspended: access denied"]]}))["S27"]["situacao"] == "erro"
             and consultar_municipio("Gama", "XX", "9999999", ["S27"], falso({}), "d", web=web())["S27"]["situacao"] == "sem_resultado"),
         "S27: corpo que não é resposta do metabuscador e 429 são erro/recusa, não ausência": lambda: (
             consultar_municipio("Alfa", "XX", "9999999", ["S27"], falso({}), "d", web=web({"x": 1}))["S27"]["situacao"] == "erro"
