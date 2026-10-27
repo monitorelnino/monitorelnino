@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
+
+`catalogo.json` ganha `cievs_boletins`: órgão, endereço, formato, cadência e situação de 16 UFs, mais as UFs já em `fontes_uf.json`, a localizar e não medidas. Só catálogo: nenhum PDF é lido por coletor. Divergência da Bahia com `fontes_uf.json` registrada para a editoria. Dado +172, código 0.
+
 ## 2026-10-27 · Rodada paralela 1.8: chave pela pista e decisões fora do registro
 
 A rodada paralela guardava cada veredito pela chave do município que o veredito atribuía. Quando o 1.8 corrigia o município pelo domínio, a mesma pista era relida a cada lote; até o lote 6 foram 113 repetidas. A chave agora é a da pista. As 5.280 decisões que a limpeza de 26/10 tirou do registro também saem do arquivo paralelo, que fica só com a contagem e cai de 9,8 para 5,2 MB.
