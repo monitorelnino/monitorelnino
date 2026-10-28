@@ -8,6 +8,15 @@
       "motivo": "página de referência com glossário de 36 termos, ampliado a pedido da editoria em 25/10 (teto de palavras estáticas)",
       "data": "2026-10-26",
       "decidido_por": "central, por delegação da editoria (DECISÕES 26/10 08:00, item 1)"
+    },
+    {
+      "regra": "frescor",
+      "arquivo": "saude_desfechos/srag_serie.json",
+      "pagina": "saude.html",
+      "validade": "2026-11-11",
+      "motivo": "OpenDataSUS/SIVEP-Gripe inalcançável no runner desde 25/10 (RemoteDisconnected no catálogo; bucket 403, recusa respeitada); série honesta até 18/10 com a data exibida. Vale até 11/11/2026 ou até a primeira coleta boa, o que vier antes; depois o portão volta a reprovar sozinho.",
+      "data": "2026-10-28",
+      "decidido_por": "central (regra de 25/10, item 5)"
     }
   ]
 }
