@@ -5,7 +5,7 @@
    "valor": null,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-27",
+   "periodo_fim": "2026-10-28",
    "n": 40,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
@@ -18,7 +18,7 @@
    "valor": 98,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-10-27",
+   "periodo_fim": "2026-10-28",
    "n": 98,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
@@ -29,7 +29,7 @@
    "valor": null,
    "unidade": "dias",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-27",
+   "periodo_fim": "2026-10-28",
    "n": 0,
    "fonte": "Inmet (avisos meteorológicos)",
    "sem_coleta": true,
@@ -40,7 +40,7 @@
    "valor": 4,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-10-27",
+   "periodo_fim": "2026-10-28",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -52,7 +52,7 @@
    "valor": null,
    "unidade": "cidades",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-27",
+   "periodo_fim": "2026-10-28",
    "n": 0,
    "fonte": "Série diária de temperatura por município",
    "sem_coleta": true,
@@ -223,7 +223,7 @@
    "valor": null,
    "unidade": "casos",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-27",
+   "periodo_fim": "2026-10-28",
    "n": 0,
    "fonte": "Ministério da Saúde (SINAN), meses fechados",
    "sem_coleta": true,
@@ -291,10 +291,10 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-27",
+ "gerado_em": "2026-10-28",
  "janela_dias": 7,
  "indices": {
-  "edicao": "27/10/2026",
+  "edicao": "28/10/2026",
   "mare_legal": 40.2,
   "mare_saude": 61.3,
   "saude_verificadas": 21,
@@ -308,8 +308,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-20",
-    "fim": "2026-10-27"
+    "ini": "2026-10-21",
+    "fim": "2026-10-28"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -720,5 +720,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 27/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 1 município decretou situação de emergência ou calamidade; 70.496 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 28/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 1 município decretou situação de emergência ou calamidade; 70.496 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
