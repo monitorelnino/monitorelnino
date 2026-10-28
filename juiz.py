@@ -1044,16 +1044,15 @@ def e_plano_pelo_cabecalho(texto) -> bool:
 # fundação ou de população. Fora de 1990..ano corrente é suspeita.
 ANO_MINIMO_18 = 1990
 RE_ANO_DE_VERSAO = re.compile(
-    r"(?:vers[ãa]o|atualiza[çc][ãa]o|atualizad[oa]\s+em|revis[ãa]o|revisad[oa]\s+em|elaborad[oa]\s+em)"
+    r"(?:vers[ãa]o|atualiza[çc](?:[ãa]o|[õo]es)|atualizad[oa]\s+em|revis[ãa]o|revisad[oa]\s+em|elaborad[oa]\s+em)"
     r"[^\n]{0,40}?\b((?:19|20)\d{2})\b", re.I)
-# "Lei nº 12.608, de 10 de abril de 2012", "Lei 12.608/2012": o ano é do ato citado (lote 7 da J18: PLANCONs do RS
-# de 2025 saíam datados de 2012).
-# O primeiro ano depois de um ato, com só a citação dele no meio (número, "nº", "de", mês, esfera, pontuação),
-# é o ano do ato citado.
+# A citação de ato ("Lei nº 12.608, de 10 de abril de 2012", "Leis 12.608, de abril de 2012, e 12.983, de junho de
+# 2014", "Lei Municipal nº 0967/2006 de 19 de abril de 2006"): todo ano dentro dela é do ato citado, não do plano
+# (lote 7 da J18 e diagnóstico de 28/10: PLANCONs do RS de 2025 saíam datados de 2012).
 RE_DATA_DE_ATO_CITADO = re.compile(
-    r"(?:\blei|decreto|portaria|resolu[çc][ãa]o)(?:[\s\d.,/º°ª()–-]|\bn[º°o.]*|\bde\b|\bfederal\b|\bmunicipal\b|"
-    r"\bestadual\b|\bcomplementar\b|\b(?:janeiro|fevereiro|mar[çc]o|abril|maio|junho|julho|agosto|setembro|outubro|"
-    r"novembro|dezembro)\b)*?(?<!\d)((?:19|20)\d{2})\b", re.I)
+    r"\b(?:leis?|decretos?|portarias?|resolu[çc][ãa]o|resolu[çc][õo]es)\b(?:[\s\d.,/º°ª()–-]|\bn[º°o.]*|\bde\b|\be\b|"
+    r"\bfedera(?:l|is)\b|\bmunicipa(?:l|is)\b|\bestadua(?:l|is)\b|\bcomplementar(?:es)?\b|\b(?:janeiro|fevereiro|"
+    r"mar[çc]o|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)\b)*", re.I)
 RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|funda[çc][ãa]o|criad[oa]|cria[çc][ãa]o|"
                            r"popula[çc][ãa]o|emancipad[oa]|emancipa[çc][ãa]o|instalad[oa]|\bn[º°o.])"
                            r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
@@ -1063,15 +1062,15 @@ def ano_do_plano(texto, ano_corrente: int = None):
     """(ano, suspeito). ano None quando não há ano confiável; suspeito quando só havia ano fora da faixa."""
     teto = ano_corrente or _ano_de_hoje()
     fora = False
-    for m in RE_ANO_DE_VERSAO.finditer(str(texto or "")[:5000]):
-        a = int(m.group(1))
-        if ANO_MINIMO_18 <= a <= teto:
-            return a, False
-        fora = True
+    versoes = [int(m.group(1)) for m in RE_ANO_DE_VERSAO.finditer(str(texto or "")[:5000])]
+    if any(ANO_MINIMO_18 <= a <= teto for a in versoes):   # a última atualização vence a primeira versão (Tubarão)
+        return max(a for a in versoes if ANO_MINIMO_18 <= a <= teto), False
+    fora = bool(versoes)
     cabeca = str(texto or "")[:1500]
-    citados = {m.start(1) for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca)}
+    citados = [m.span() for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca)]
     for m in re.finditer(r"\b((?:19|20)\d{2})\b", cabeca):
-        if m.start() in citados or RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()]):
+        if (any(i <= m.start() < f for i, f in citados)
+                or RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()])):
             continue
         a = int(m.group(1))
         if ANO_MINIMO_18 <= a <= teto:
@@ -1527,11 +1526,15 @@ def casos_18() -> list:
          ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026)
          == (2025, False)
          and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de X 2024", 2026) == (2024, False)),
-        ("J7 lei citada com quebra de linha, 'nº', travessão ou sem 'de' antes da data (Nova Pádua/RS e o RS de 2012)",
-         all(ano_do_plano(t, 2026) == (2025, False) for t in (
-             "PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua 2025",
-             "PLANCON Lei Federal nº 12.608 - 10 de abril de 2012 2025", "PLANCON Lei 12.608, 10 de abril de 2012 2025",
-             "PLANCON Decreto Municipal nº 123, de 05/03/2012 Município 2025"))),
+        ("J7 todo ano dentro da citação de lei é do ato; a última atualização vence a primeira versão (RS, Tubarão/SC)",
+         all(ano_do_plano(t, 2026) == esperado for t, esperado in (
+             ("PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua 2025", (2025, False)),
+             ("PLANCON Lei Federal nº 12.608 - 10 de abril de 2012. Município 2025", (2025, False)),
+             ("COMPDEC Lei Municipal nº 0967/2006 de 19 de abril de 2006 PLANO DE CONTINGÊNCIA PICADA CAFÉ/RS "
+              "AGOSTO/2025", (2025, False)),
+             ("PLANO DE CONTINGÊNCIA VERSÃO: Versão 1 ÚLTIMA ATUALIZAÇÃO: 1 SUMÁRIO Foram seguidas as diretrizes das "
+              "Leis 12.608, de abril de 2012, e 12.983, de Junho de 2014. 1.2 PÁGINA DE ASSINATURAS", (None, False)),
+             ("Data da Primeira Versão: 2014 Atualizações: 03/2024 Município de Tubarão/SC", (2024, False))))),
         ("J2 página de 'informes' que 'inicia elaboração do plano' é notícia (Sobral/CE)",
          e_noticia_18("https://www.sobral.ce.gov.br/informes/principais/prefeitura-inicia-elaboracao-do-plano", "")
          and e_noticia_18("https://x.ce.gov.br/p", "Prefeitura inicia elaboração do Plano de Contingência")),
