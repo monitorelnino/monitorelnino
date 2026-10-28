@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Ícone oficial do Instagram entra em assets/redes
+
+O glifo preto do pacote de marca do Instagram, baixado do site da rede, entra com a procedência em `assets/redes/LEIAME.md`. O do LinkedIn segue pendente: o kit da rede não traz SVG. O rodapé ainda não o usa.
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
