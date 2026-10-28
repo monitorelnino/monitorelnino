@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · alias do mapa · Financiamento: `semana.json.mapa` sem `ibge` e `valor`
+
+O mapa "Onde o dinheiro chega" passa a trazer só `cod_ibge` e `repassado`, nomes que a página já lê desde o #1290. O gerador perde o alias; o derivado, 600 linhas.
+
 ## 2026-10-28 · #1288 · Juiz 1.8 (paralelo): errata manda; sem regra 1.8 o veredito não muda; J2, J7, J15
 Correções da central antes do relatório à editoria: o rejulgamento herda a errata da linha (Birigui/SP) e não muda veredito sem regra 1.8 (Mogi Guaçu/SP, da fila, fica com o juiz de produção); página de "informes" é notícia (Sobral/CE); o ano de lei citada sai em qualquer formato (PLANCONs do RS de 2025 datados de 2012); plano sem ato exige título de plano no cabeçalho (Propriá/SE). O 1.7 em produção não muda.
 
