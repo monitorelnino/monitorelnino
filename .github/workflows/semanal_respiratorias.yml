@@ -13,8 +13,11 @@ name: Semanal — doenças respiratórias
 
 on:
   schedule:
-    # Domingo, 5h30 de Brasília — depois da rotina de sinais (4h30) e antes da publicação da manhã.
-    - cron: "30 8 * * 0"
+    # Toda madrugada, 5h15 de Brasília — depois da rotina de sinais (4h30) e antes da publicação da
+    # manhã. Era só domingo (28/10/2026): a fonte caiu em 25/10, o run declarou a lacuna (correto) e
+    # contou como feito da semana; nada o refez e `srag_serie.json` envelheceu além dos 9 dias do
+    # frescor. A rodada diária refaz a leitura até a fonte voltar; fonte de pé, reescreve a mesma série.
+    - cron: "15 8 * * *"
   workflow_dispatch:
 
 permissions:

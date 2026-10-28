@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Doenças respiratórias: a coleta refaz a leitura toda madrugada
+
+A coleta de SRAG rodava só aos domingos; quando a fonte caiu, o run declarou a lacuna e nada o refez, e a série passou dos nove dias do frescor. Agora roda toda madrugada (05h15 de Brasília) até a fonte voltar. Sem mudança de dado ou de página.
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
