@@ -109,12 +109,24 @@ def dias_desde(data: dt.date, agora: str):
     return (dt.date.fromisoformat(agora[:10]) - data).days
 
 
+def dispensados(excecoes: dict, agora: str) -> set:
+    """Arquivos de `data/` com exceção de frescor em `layout/excecoes.json` ainda dentro da `validade`.
+    Função pura. Só vale com `arquivo`, `validade`, motivo, data e quem decidiu (o mesmo registro que
+    `verificar_conformidade` exige); vencida a validade, o portão volta a reprovar sozinho."""
+    return {e["arquivo"] for e in (excecoes or {}).get("excecoes") or []
+            if e.get("regra") == "frescor" and e.get("arquivo") and e.get("validade")
+            and e.get("motivo") and e.get("data") and e.get("decidido_por")
+            and agora[:10] <= e["validade"]}
+
+
 def problemas(arquivos: dict, agora: str, limite: int = LIMITE_DIAS,
-              limite_horas: int = LIMITE_HORAS_ALERTA) -> list:
+              limite_horas: int = LIMITE_HORAS_ALERTA, dispensa: frozenset = frozenset()) -> list:
     """As falhas de frescor. Função pura: `arquivos` é {nome: (conteúdo ou None, regime)};
-    `agora` é "AAAA-MM-DD" ou "AAAA-MM-DD HH:MM"."""
+    `agora` é "AAAA-MM-DD" ou "AAAA-MM-DD HH:MM"; `dispensa` são os nomes com exceção vigente."""
     ruins = []
     for nome, (c, regime) in sorted(arquivos.items()):
+        if nome in dispensa:
+            continue
         if c is None:
             ruins.append(f"{nome}: não existe")
             continue
@@ -227,6 +239,14 @@ def _autoteste() -> int:
        len(problemas({"a.json": ({"gerado_em": "24/09/2026"}, "serie"), "b.json": (None, "serie"),
                       "c.json": ({"corte": "10/10/2026"}, "serie")}, h11)) == 3)
     ok("arquivo de sinais ausente reprova", problemas({SINAIS: (None, "sinais")}, h11) == [f"{SINAIS}: não existe"])
+    exc = {"excecoes": [{"regra": "frescor", "arquivo": "a.json", "validade": "2026-10-10", "pagina": "x.html",
+                         "motivo": "m", "data": "2026-10-02", "decidido_por": "central"}]}
+    velho = {"a.json": ({"gerado_em": "01/09/2026"}, "serie")}
+    ok("exceção vigente dispensa o arquivo", problemas(velho, hoje, dispensa=frozenset(dispensados(exc, hoje))) == [])
+    ok("exceção vence na validade e o portão volta a reprovar",
+       len(problemas(velho, "2026-10-11", dispensa=frozenset(dispensados(exc, "2026-10-11")))) == 1)
+    ok("exceção sem validade não vale", dispensados({"excecoes": [{**exc["excecoes"][0], "validade": ""}]}, hoje) == set())
+    ok("exceção sem quem decidiu não vale", dispensados({"excecoes": [{**exc["excecoes"][0], "decidido_por": ""}]}, hoje) == set())
     ok("cada arquivo tem um regime só", all(len(f) == len(set(f)) for f in FAMILIAS.values()))
     import dis
     nomes = set()
@@ -256,8 +276,9 @@ def main() -> int:
     from coletores_base import FUSO_EDITORIAL
     agora = dt.datetime.now(FUSO_EDITORIAL).strftime("%Y-%m-%d %H:%M")
     total = 0
+    dispensa = frozenset(dispensados(json.loads((RAIZ / "layout" / "excecoes.json").read_text(encoding="utf-8")), agora))
     for familia, arquivos in FAMILIAS.items():
-        ruins = problemas({n: (ler(n), r) for n, r in arquivos.items()}, agora)
+        ruins = problemas({n: (ler(n), r) for n, r in arquivos.items()}, agora, dispensa=dispensa)
         total += len(ruins)
         if ruins:
             print(f"✗ FRESCOR — {familia}: {len(ruins)} problema(s):")
