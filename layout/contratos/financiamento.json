@@ -59,15 +59,11 @@
       "tipo": "cartoes",
       "cartoes": [
         {
-          "id": "linhas_medidas_provisorias",
-          "tipo": "texto",
-          "el": "linhasMps"
-        },
-        {
           "id": "desembolsado_por_mes",
           "tipo": "grafico",
           "el": "boxMesAMes",
-          "chave": "financiamento/mps_2026.json#por_mes"
+          "chave": "financiamento/mps_2026.json#por_mes",
+          "_nota": "28/10/2026 (central, 21:50 UTC): os dois cartões das MPs (figure.cartao-mapa gerados por financiamento.js, um por MP) entram antes do gráfico na mesma .grade-figuras--3, empilhados no celular. Barras na mesma base, a da ação reforçada: dotação atualizada (isolamento.via_4_dotacao.atualizado), empenhado e desembolsado; o valor do ato é texto no rodapé do cartão."
         },
         {
           "id": "linhas_repasses_municipios",
@@ -80,7 +76,8 @@
           "el": "tblOrigens"
         }
       ],
-      "_nota": "28/10/2026 (PENDENCIAS 6; editoria 24/10): a seção segue o caminho do dinheiro. Grupo 'Medidas provisórias do El Niño' (uma linha por MP: valor do ato, empenhado e desembolsado) com o gráfico mensal logo abaixo; grupo 'Repasses aos municípios' (defesa civil depois do reconhecimento, com a linha do funil, e SUS). Uma escala para a seção. O risco é só o que o ato declara (`risco_declarado`); sem ele, 'risco não declarado no texto do ato'. Etapa sem execução coletada = 'não localizado até o corte', nunca barra zero. A nota 'as duas MPs fazem parte do plano federal… R$ 1,335 bilhão' saiu: sem fonte lida. Âncoras #antes (título) e #depois (defesa civil)."
+      "_nota": "28/10/2026 (PENDENCIAS 6; editoria 24/10): a seção segue o caminho do dinheiro. Grupo 'Medidas provisórias do El Niño' (uma linha por MP: valor do ato, empenhado e desembolsado) com o gráfico mensal logo abaixo; grupo 'Repasses aos municípios' (defesa civil depois do reconhecimento, com a linha do funil, e SUS). Uma escala para a seção. O risco é só o que o ato declara (`risco_declarado`); sem ele, 'risco não declarado no texto do ato'. Etapa sem execução coletada = 'não localizado até o corte', nunca barra zero. A nota 'as duas MPs fazem parte do plano federal… R$ 1,335 bilhão' saiu: sem fonte lida. Âncoras #antes (título) e #depois (defesa civil).",
+      "grade": ".grade-figuras--3"
     },
     {
       "id": "chega",
