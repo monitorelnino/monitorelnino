@@ -13,6 +13,33 @@ não pontuados permanecem na versão corrente.
 
 A coleta de SRAG rodava só aos domingos; quando a fonte caiu, o run declarou a lacuna e nada o refez, e a série passou dos nove dias do frescor. Agora roda toda madrugada (05h15 de Brasília) até a fonte voltar. Sem mudança de dado ou de página.
 
+## 2026-10-28 · alias do mapa · Financiamento: `semana.json.mapa` sem `ibge` e `valor`
+
+O mapa "Onde o dinheiro chega" passa a trazer só `cod_ibge` e `repassado`, nomes que a página já lê desde o #1290. O gerador perde o alias; o derivado, 600 linhas.
+
+## 2026-10-28 · #1288 · Juiz 1.8 (paralelo): errata manda; sem regra 1.8 o veredito não muda; J2, J7, J15
+Correções da central antes do relatório à editoria: o rejulgamento herda a errata da linha (Birigui/SP) e não muda veredito sem regra 1.8 (Mogi Guaçu/SP, da fila, fica com o juiz de produção); página de "informes" é notícia (Sobral/CE); o ano de lei citada sai em qualquer formato (PLANCONs do RS de 2025 datados de 2012); plano sem ato exige título de plano no cabeçalho (Propriá/SE). O 1.7 em produção não muda.
+
+## 2026-10-28 · Defesa civil: abertura reescrita, lacunas nomeadas, prazo no cartão de reconhecidos
+
+Quatro parágrafos da abertura pelo texto da editoria. O cartão do município diz o que não localizou (aviso, decreto, reconhecimento), com o tipo do aviso em minúscula e sem a validade. O prazo entre decreto e reconhecimento passa ao apoio de "Reconhecidos pela União".
+
+## 2026-10-28 · Financiamento: topo em dois grupos, "De onde vem o dinheiro" pelo caminho do dinheiro, cartão do município padronizado
+
+O topo separa medidas provisórias e atos de repasses aos municípios; o SUS conta desde 29 de junho de 2026. "De onde vem o dinheiro" mostra uma linha por medida provisória e os repasses, com o gráfico mensal; sai a seção "Mês a mês". "Pago" passa a "desembolsado". O cartão do município traz fonte e data de consulta em cada cartão.
+
+
+## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
+
+O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.
+
+## 2026-10-28 · Buscador 2: link opaco do Google News fecha sem consultar o motor
+
+O seguidor de pistas deixa de procurar o título no veículo para resolver o link opaco do agregador: em três lotes, nenhum de cerca de 4.000 links foi resolvido por esse degrau, e cada lote gastava 3,4 h de execução. A pista cai com o motivo de sempre, "redirecionamento não resolvido (B2)", e o motor de busca fica livre para as consultas que acham documento. Teste novo; sem apagar dado.
+## 2026-10-28 · Ícone oficial do Instagram entra em assets/redes
+
+O glifo preto do pacote de marca do Instagram, baixado do site da rede, entra com a procedência em `assets/redes/LEIAME.md`. O do LinkedIn segue pendente: o kit da rede não traz SVG. O rodapé ainda não o usa.
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.

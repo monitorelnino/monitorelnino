@@ -94,7 +94,7 @@ setTimeout(() => {
   const popNaTela = Number(((txt("topoPopulacao").match(/([\d,]+)/) || [])[1] || "").replace(",", "."));
   teste("contador de população = consolidado arredondado em milhões", Math.abs(popNaTela - popConsolidado / 1e6) <= 0.05);
   teste("nenhum contador ficou em travessão nem vazio",
-    ["topoCemaden", "topoInmet", "topoDecretaram", "topoPopulacao", "topoReconhecidos", "topoPrazo"].every(i => txt(i) && txt(i) !== "—"));
+    ["topoCemaden", "topoInmet", "topoDecretaram", "topoPopulacao", "topoReconhecidos"].every(i => txt(i) && txt(i) !== "—"));
   teste("nenhum valor em reais na página (o dinheiro está em Financiamento)", !/R\$/.test(d.getElementById("conteudo").textContent));
   teste("a página não lê o arquivo de recursos", !/recursos_liberados/.test(require("fs").readFileSync(path.join(raiz, "assets/js/defesa-civil.js"), "utf-8")));
   const ponto = d.querySelector("#mapEmergencias circle");
