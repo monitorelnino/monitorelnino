@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 O crédito da figura passa a dizer "consultado em dd/mm/aaaa" quando a data é a da nossa consulta à fonte e mantém "Atualização: dd/mm/aaaa" quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.
 
+## 2026-10-28 · dotação da ação · Financiamento: cada MP traz a base da própria ação
+`semana.json` passa a levar, por MP, `acao`: dotação atualizada da ação (inclui o crédito), empenhado e pago da ação desde o mês de publicação, valor do ato à parte, fonte e exercício. Dotação não lida vira lacuna com motivo, nunca zero. A barra do cartão pode comparar a mesma base; o pago deixa de passar do valor do ato.
+
 ## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
 Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
 
