@@ -16,8 +16,8 @@
       "id": "dc-topo",
       "h2": null,
       "tipo": "numeros",
-      "grade": ".grade-numeros--3",
-      "linhas": 2,
+      "grade": ".grade-numeros--compacta",
+      "linhas": 1,
       "cartoes": [
         {
           "id": "municipios_aviso_inmet",
@@ -44,12 +44,6 @@
           "valor_el": "topoReconhecidos"
         },
         {
-          "id": "prazo_reconhecimento_mediano",
-          "tipo": "numero",
-          "chave": "resposta/por_uf.json",
-          "valor_el": "topoPrazo"
-        },
-        {
           "id": "populacao_sob_decreto",
           "tipo": "numero",
           "chave": "resposta/por_uf.json",
@@ -60,7 +54,7 @@
         "Defesa Civil nacional, no Diário Oficial da União"
       ],
       "_nota_variacao": "Variação da semana só nos cartões desde 29/06, lida do instantâneo resposta/topo_defesa_civil.json (uma definição, no gerador; a Imprensa lê o mesmo). Os cartões de aviso e alerta não têm variação: a página não guarda retrato do que estava em vigor há sete dias. O instantâneo nasce no publicador, fora da cadeia de derivados, e pode ficar uma rodada atrás do consolidado: a variação só sai ao lado do total que ela explica, e instantâneo ausente ou de outro total vira lacuna declarada com a data do próprio instantâneo.",
-      "_nota_pendencia": "Sexto cartão: prazo mediano do decreto ao reconhecimento (METODOLOGIA §32.6, `data/resposta/por_uf.json` nacional). Substitui o cartão de 30 dias, retirado pela A2 em 25/10/2026 (#1137). Sem variação da semana: o instantâneo não guarda o prazo de sete dias atrás. A faixa segue na grade de três."
+      "_nota_pendencia": "28/10/2026 (PENDENCIAS 7): o sexto cartão (prazo mediano) saiu; a medida (METODOLOGIA §32.6, `data/resposta/por_uf.json` nacional) vive no apoio de Reconhecidos pela União. Cinco cartões numa linha (`.grade-numeros--compacta`, como o Financiamento e a Saúde): cinco não fecha uma grade de três."
     },
     {
       "id": "municipio",
