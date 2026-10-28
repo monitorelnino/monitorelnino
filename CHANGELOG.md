@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Doenças respiratórias: a coleta refaz a leitura toda madrugada
+
+A coleta de SRAG rodava só aos domingos; quando a fonte caiu, o run declarou a lacuna e nada o refez, e a série passou dos nove dias do frescor. Agora roda toda madrugada (05h15 de Brasília) até a fonte voltar. Sem mudança de dado ou de página.
+
 ## 2026-10-28 · alias do mapa · Financiamento: `semana.json.mapa` sem `ibge` e `valor`
 
 O mapa "Onde o dinheiro chega" passa a trazer só `cod_ibge` e `repassado`, nomes que a página já lê desde o #1290. O gerador perde o alias; o derivado, 600 linhas.

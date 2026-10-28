@@ -289,12 +289,12 @@
    "id": "semanal_respiratorias",
    "workflow": "semanal_respiratorias.yml",
    "finalidade": "série de síndrome respiratória da semana",
-   "cron_primario": "30 8 * * 0",
+   "cron_primario": "15 8 * * *",
    "janela": {
     "inicio_utc": "01:00",
     "fim_utc": "09:00"
    },
-   "devido_quando": "não há execução concluída neste domingo",
+   "devido_quando": "não há execução concluída nesta janela",
    "tolerancia_atraso_min": 240,
    "idempotencia": "reescreve a série inteira a partir da fonte",
    "orcamento_min": 45,
