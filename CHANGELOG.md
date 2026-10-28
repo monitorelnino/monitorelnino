@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · #1304 · Logo do LinkedIn entra em assets/redes
+
+O "in" preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.
+
 ## 2026-10-28 · Financiamento: cartões das medidas provisórias ao lado do gráfico mensal, na mesma base
 
 Em "De onde vem o dinheiro", os dois cartões das MPs e o gráfico "Desembolsado por mês" ficam lado a lado. As barras passam a comparar dotação atualizada, empenhado e desembolsado da ação reforçada; o valor do ato vai em texto. Corrige o desembolsado da MP 1.367 acima do valor do ato.
