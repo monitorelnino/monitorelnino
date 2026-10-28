@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · grade compacta · Grupo de um ou dois cartões ocupa a largura toda
+
+Entre 641 e 1020 px a grade compacta deixava a terceira trilha vazia quando o grupo tinha um ou dois cartões; no celular, a contagem ímpar deixava o último cartão sozinho no meio. Agora o grupo curto usa duas colunas e o último cartão ímpar ocupa a linha inteira. Só CSS.
+
 ## 2026-10-28 · Doenças respiratórias: a coleta refaz a leitura toda madrugada
 
 A coleta de SRAG rodava só aos domingos; quando a fonte caiu, o run declarou a lacuna e nada o refez, e a série passou dos nove dias do frescor. Agora roda toda madrugada (05h15 de Brasília) até a fonte voltar. Sem mudança de dado ou de página.
