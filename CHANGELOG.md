@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · #PR · Juiz 1.8 (paralelo): errata manda; sem regra 1.8 o veredito não muda; J2, J7, J15
+Correções da central antes do relatório à editoria: o rejulgamento herda a errata da linha (Birigui/SP) e não muda veredito sem regra 1.8 (Mogi Guaçu/SP, da fila, fica com o juiz de produção); página de "informes" é notícia (Sobral/CE); o ano de lei citada sai em qualquer formato (PLANCONs do RS de 2025 datados de 2012); plano sem ato exige título de plano no cabeçalho (Propriá/SE). O 1.7 em produção não muda.
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
