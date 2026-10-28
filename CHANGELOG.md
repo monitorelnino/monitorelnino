@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Defesa civil: abertura reescrita, lacunas nomeadas, prazo no cartão de reconhecidos
+
+Quatro parágrafos da abertura pelo texto da editoria. O cartão do município diz o que não localizou (aviso, decreto, reconhecimento), com o tipo do aviso em minúscula e sem a validade. O prazo entre decreto e reconhecimento passa ao apoio de "Reconhecidos pela União".
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
