@@ -135,7 +135,7 @@ function __init(){
     + (v == null ? '<span class="barra-valor">' + NAO_LOCALIZADO + '</span>'
        : '<span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.005, v / escala).toFixed(4) + ');background:' + corBarra + '"></span><span class="barra-valor">' + esc(reais(v)) + '</span>')
     + '</span></div>';
-  const cartaoDinheiro = (acento, etiqueta, nome, apoio, corpo, id) => '<div class="cartao ' + acento + '"' + (id ? ' id="' + id + '"' : '') + '><p class="cartao-k">' + esc(etiqueta) + '</p>'
+  const cartaoDinheiro = (acento, etiqueta, nome, apoio, corpo) => '<div class="cartao ' + acento + '"' + '><p class="cartao-k">' + esc(etiqueta) + '</p>'
     + '<b class="cartao-t">' + esc(nome) + '</b>' + apoio + corpo + '</div>';
   const etiquetaDe = o => (RISCOS.find(r => r.chave === o.risco) || {}).rotulo || tx('financiamento.caminhos.etiqueta.sem_risco');
   const linhasMps = document.getElementById('linhasMps');
@@ -153,7 +153,7 @@ function __init(){
   if (linhasRepasses) linhasRepasses.innerHTML = cartaoDinheiro('cartao--acento-chuva', tx('financiamento.caminhos.etiqueta.todos_os_riscos'),
       tx('financiamento.caminhos.faixa_resposta.titulo'), linhaFunil,
       tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(tx('financiamento.caminhos.barra.autorizado', {acao: ACOES[k].toLowerCase()}), tpa[k], P.resposta)).join('') + '</div>'
-          : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>', 'depois')
+          : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>')
     + cartaoDinheiro('cartao--acento-chuva', RISCOS.find(r => r.chave === 'saude').rotulo.toLowerCase(), tx('financiamento.caminhos.sus.titulo'), '',
       '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.desembolsado'), susPago, P.setores.saude) + '</div>');
   const corpo = document.querySelector('#tblOrigens tbody');
