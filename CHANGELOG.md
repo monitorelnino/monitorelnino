@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
+
+O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
