@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Financiamento: cartões das medidas provisórias ao lado do gráfico mensal, na mesma base
+
+Em "De onde vem o dinheiro", os dois cartões das MPs e o gráfico "Desembolsado por mês" ficam lado a lado. As barras passam a comparar dotação atualizada, empenhado e desembolsado da ação reforçada; o valor do ato vai em texto. Corrige o desembolsado da MP 1.367 acima do valor do ato.
+
 ## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
 Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
 
