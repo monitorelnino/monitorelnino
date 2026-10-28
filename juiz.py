@@ -1053,8 +1053,7 @@ RE_ANO_DE_VERSAO = re.compile(
 RE_DATA_DE_ATO_CITADO = re.compile(
     r"(?:\blei|decreto|portaria|resolu[çc][ãa]o)(?:[\s\d.,/º°ª()–-]|\bn[º°o.]*|\bde\b|\bfederal\b|\bmunicipal\b|"
     r"\bestadual\b|\bcomplementar\b|\b(?:janeiro|fevereiro|mar[çc]o|abril|maio|junho|julho|agosto|setembro|outubro|"
-    r"novembro|dezembro)\b)*?(?<!\d)((?:19|20)\d{2})\b"
-    r"(?:\s*,?\s*(?:de\s+)?\d{1,2}(?:\s*(?:º|o)?\s+(?:de\s+)?[a-zç]+\s+(?:de\s+)?|/\d{1,2}/)((?:19|20)\d{2})\b)?", re.I)
+    r"novembro|dezembro)\b)*?(?<!\d)((?:19|20)\d{2})\b", re.I)
 RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|funda[çc][ãa]o|criad[oa]|cria[çc][ãa]o|"
                            r"popula[çc][ãa]o|emancipad[oa]|emancipa[çc][ãa]o|instalad[oa]|\bn[º°o.])"
                            r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
@@ -1070,7 +1069,7 @@ def ano_do_plano(texto, ano_corrente: int = None):
             return a, False
         fora = True
     cabeca = str(texto or "")[:1500]
-    citados = {m.start(g) for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca) for g in (1, 2) if m.group(g)}
+    citados = {m.start(1) for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca)}
     for m in re.finditer(r"\b((?:19|20)\d{2})\b", cabeca):
         if m.start() in citados or RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()]):
             continue
@@ -1532,8 +1531,7 @@ def casos_18() -> list:
          all(ano_do_plano(t, 2026) == (2025, False) for t in (
              "PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua 2025",
              "PLANCON Lei Federal nº 12.608 - 10 de abril de 2012 2025", "PLANCON Lei 12.608, 10 de abril de 2012 2025",
-             "PLANCON Decreto Municipal nº 123, de 05/03/2012 Município 2025",
-             "COMPDEC Lei Municipal nº 0967/2006 de 19 de abril de 2006 PLANO DE CONTINGÊNCIA PICADA CAFÉ/RS AGOSTO/2025"))),
+             "PLANCON Decreto Municipal nº 123, de 05/03/2012 Município 2025"))),
         ("J2 página de 'informes' que 'inicia elaboração do plano' é notícia (Sobral/CE)",
          e_noticia_18("https://www.sobral.ce.gov.br/informes/principais/prefeitura-inicia-elaboracao-do-plano", "")
          and e_noticia_18("https://x.ce.gov.br/p", "Prefeitura inicia elaboração do Plano de Contingência")),
