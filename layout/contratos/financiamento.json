@@ -1,5 +1,5 @@
 {
-  "_governanca": "Contrato de layout do Financiamento (HANDOVER_FINANCIAMENTO_16-10-2026, reforma de 17/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Verificado por scripts/verificar_layout.py. Ordem: abertura, cinco números, o dinheiro por risco declarado no ato, onde ele chega (figura principal), mês a mês, a consulta do município e a defesa civil depois do reconhecimento.",
+  "_governanca": "Contrato de layout do Financiamento (HANDOVER_FINANCIAMENTO_16-10-2026, reforma de 17/10/2026). ESTE ARQUIVO É A VERDADE: o HTML e o JS se conformam a ele. Verificado por scripts/verificar_layout.py. Ordem: abertura, cinco números, o dinheiro por risco declarado no ato, onde ele chega (figura principal), a consulta do município.",
   "pagina": "financiamento.html",
   "componentes": {
     "numeros": ".cartao-numero",
@@ -23,7 +23,7 @@
         {
           "id": "anunciado_nos_atos",
           "tipo": "numero",
-          "chave": "financiamento/mps_2026.json",
+          "chave": "financiamento/semana.json#topo",
           "valor_el": "topoAnunciado"
         },
         {
@@ -39,7 +39,7 @@
           "valor_el": "topoDireto"
         },
         {
-          "id": "defesa_civil_depois_do_decreto",
+          "id": "defesa_civil_depois_do_reconhecimento",
           "tipo": "numero",
           "chave": "resposta/recursos_liberados.json",
           "valor_el": "topoDefesaCivil"
@@ -51,22 +51,28 @@
           "valor_el": "topoSus"
         }
       ],
-      "_nota": "Anunciado = soma das origens com valor no ato (as duas MPs e os repasses estaduais com valor); o 'Plano federal El Niño' é o anúncio que contém as MPs e não entra, para não somar o mesmo dinheiro duas vezes."
+      "_nota": "28/10/2026 (PENDENCIAS 1 e 2; editoria 24/10): o topo em dois grupos, cada um com o seu título (`.selo`) e a sua grade compacta: 'Medidas provisórias e atos do El Niño' (três cartões, faixa argila) e 'Repasses aos municípios' (dois, faixa azul). Anunciado = soma das origens com valor no ato (as duas MPs e os repasses estaduais com valor); o 'Plano federal El Niño' contém as MPs e não entra, para não somar o mesmo dinheiro duas vezes."
     },
     {
       "id": "caminhos",
-      "h2": "Para cada risco, de onde vem o dinheiro",
+      "h2": "De onde vem o dinheiro",
       "tipo": "cartoes",
       "cartoes": [
         {
-          "id": "colunas_por_risco",
+          "id": "linhas_medidas_provisorias",
           "tipo": "texto",
-          "el": "colunasRisco"
+          "el": "linhasMps"
         },
         {
-          "id": "faixa_resposta",
+          "id": "desembolsado_por_mes",
+          "tipo": "grafico",
+          "el": "boxMesAMes",
+          "chave": "financiamento/mps_2026.json#por_mes"
+        },
+        {
+          "id": "linhas_repasses_municipios",
           "tipo": "texto",
-          "el": "depois"
+          "el": "linhasRepasses"
         },
         {
           "id": "tabela_origens",
@@ -74,10 +80,7 @@
           "el": "tblOrigens"
         }
       ],
-      "exige_texto": [
-        "As duas medidas provisórias fazem parte do plano federal"
-      ],
-      "_nota": "Quatro colunas (Fogo, Seca, Chuva forte, Saúde) em `.grade-cartoes--4` e a faixa da resposta a emergência reconhecida em `.cartao`. O risco é só o que o ato declara (`risco_declarado`, do gerador); sem ele, a fonte fica na tabela com 'risco não declarado no ato'. Etapa sem execução coletada = 'não localizado até o corte', nunca barra zero. Uma escala para a página. Âncoras #antes (título) e #caminhos (seção) mantidas: o Para gestores aponta para elas."
+      "_nota": "28/10/2026 (PENDENCIAS 6; editoria 24/10): a seção segue o caminho do dinheiro. Grupo 'Medidas provisórias do El Niño' (uma linha por MP: valor do ato, empenhado e desembolsado) com o gráfico mensal logo abaixo; grupo 'Repasses aos municípios' (defesa civil depois do reconhecimento, com a linha do funil, e SUS). Uma escala para a seção. O risco é só o que o ato declara (`risco_declarado`); sem ele, 'risco não declarado no texto do ato'. Etapa sem execução coletada = 'não localizado até o corte', nunca barra zero. A nota 'as duas MPs fazem parte do plano federal… R$ 1,335 bilhão' saiu: sem fonte lida. Âncoras #antes (título) e #depois (defesa civil)."
     },
     {
       "id": "chega",
@@ -94,22 +97,6 @@
       ]
     },
     {
-      "id": "mesames",
-      "h2": "Mês a mês",
-      "tipo": "figuras",
-      "grade": ".grade-figuras--3",
-      "ultima_linha_incompleta": true,
-      "cartoes": [
-        {
-          "id": "pago_por_mes",
-          "tipo": "grafico",
-          "el": "boxMesAMes",
-          "chave": "financiamento/mps_2026.json#por_mes"
-        }
-      ],
-      "_nota": "Só o pago, fogo e seca, desde junho, mês corrente marcado parcial (decisão da central, §6). A defesa civil (autorizado) é outra etapa e fica nos números, no mapa e na última seção."
-    },
-    {
       "id": "municipio",
       "h2": "Quanto chegou ao seu município",
       "tipo": "consulta",
@@ -120,7 +107,7 @@
           "el": "consultaCard"
         }
       ],
-      "_nota": "Módulo comum `assets/js/consulta-municipio.js`. Quatro `.cartao` (defesa civil, FNS de emergência, transferências da União, gasto próprio em defesa civil com a classe de ausência) e a linha do estado, só com soma e contagem do próprio estado."
+      "_nota": "28/10/2026 (PENDENCIAS 3): dois `.cartao` do El Niño desde 29/06 (defesa civil depois do reconhecimento; SUS, repasses de emergência), cada um com fonte e data de consulta; abaixo, a faixa de contexto (todas as transferências da União no ano e o gasto próprio em defesa civil, com os três estados) e a linha do estado. Módulo comum `assets/js/consulta-municipio.js`."
     }
   ],
   "texto_proibido": [
