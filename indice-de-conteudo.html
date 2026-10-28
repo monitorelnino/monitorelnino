@@ -161,7 +161,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.emergencias.barras.total</code></td><td>Total</td></tr>
 </table>
-<h2>financiamento <small>(41 trechos)</small></h2>
+<h2>financiamento <small>(56 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.titulo_da_pagina</code></td><td>Financiamento</td></tr>
@@ -176,23 +176,31 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>abertura · p3</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.abertura.p3</code></td><td>Os valores vêm dos atos oficiais, do Diário Oficial da União e da execução publicada no Portal da Transparência, com a data de cada consulta. Anunciado é o valor que consta no ato; empenhado é o que foi reservado para uma despesa; pago é o que já saiu do caixa. Os critérios estão na &lt;a href=&quot;METODOLOGIA.pdf&quot;&gt;metodologia&lt;/a&gt;.</td></tr>
+<tr><td>texto</td><td><code>financiamento.abertura.p3</code></td><td>Os valores vêm dos atos oficiais, do Diário Oficial da União e da execução publicada no Portal da Transparência, com a data de cada consulta. Anunciado é o valor que consta no ato; empenhado é o que foi reservado para uma despesa; desembolsado é o que já saiu do caixa. Os critérios estão na &lt;a href=&quot;METODOLOGIA.pdf&quot;&gt;metodologia&lt;/a&gt;.</td></tr>
+</table>
+<h3>dc-topo · grupo_atos</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>financiamento.dc-topo.grupo_atos.titulo</code></td><td>Medidas provisórias e atos do El Niño</td></tr>
+</table>
+<h3>dc-topo · grupo_repasses</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>financiamento.dc-topo.grupo_repasses.titulo</code></td><td>Repasses aos municípios</td></tr>
 </table>
 <h3>dc-topo · topo_anunciado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_anunciado.rotulo</code></td><td>Anunciado nos atos</td></tr>
+<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_anunciado.rotulo</code></td><td>Anunciado em medidas provisórias e atos estaduais</td></tr>
 </table>
 <h3>dc-topo · topo_pago</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_pago.rotulo</code></td><td>Pago até agora</td></tr>
+<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_pago.rotulo</code></td><td>Desembolsado pelas medidas provisórias</td></tr>
 </table>
 <h3>dc-topo · topo_direto</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_direto.rotulo</code></td><td>Gasto direto pela União</td></tr>
+<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_direto.rotulo</code></td><td>Aplicado pelos próprios órgãos federais</td></tr>
 </table>
 <h3>dc-topo · topo_defesa_civil</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_defesa_civil.rotulo</code></td><td>Defesa civil, depois de decreto</td></tr>
+<tr><td>rotulo</td><td><code>financiamento.dc-topo.topo_defesa_civil.rotulo</code></td><td>Defesa civil, depois do reconhecimento federal</td></tr>
 </table>
 <h3>dc-topo · topo_sus</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -200,12 +208,8 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>caminhos</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>financiamento.caminhos.titulo_da_secao</code></td><td>Para cada risco, de onde vem o dinheiro</td></tr>
-<tr><td>abertura</td><td><code>financiamento.caminhos.abertura</code></td><td>Cada coluna reúne as fontes de recurso cujo ato declara o risco. A barra mostra quanto foi anunciado, empenhado e pago; a mesma escala vale para todas.</td></tr>
-</table>
-<h3>caminhos · nota_plano</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.nota_plano</code></td><td>As duas medidas provisórias fazem parte do plano federal anunciado em 29/07/2026, de R$ 1,335 bilhão.</td></tr>
+<tr><td>titulo_da_secao</td><td><code>financiamento.caminhos.titulo_da_secao</code></td><td>De onde vem o dinheiro</td></tr>
+<tr><td>abertura</td><td><code>financiamento.caminhos.abertura</code></td><td>Cada linha é uma fonte de recurso, com o valor do ato, o empenhado e o desembolsado, na mesma escala. A etiqueta diz o risco que o ato declara.</td></tr>
 </table>
 <h3>chega</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -220,14 +224,10 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.chega.sem_repasse.molde</code></td><td><span class="molde">{n|nenhum município|1 município|{n} municípios} com recurso autorizado em portaria e repasse não localizado até {data}</span><br><span class="ex">exemplo: 3 municípios com recurso autorizado em portaria e repasse não localizado até 3</span></td></tr>
 </table>
-<h3>mesames</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo_da_secao</td><td><code>financiamento.mesames.titulo_da_secao</code></td><td>Mês a mês</td></tr>
-</table>
 <h3>mesames · grafico</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.mesames.grafico.titulo</code></td><td>Pago por mês, por medida provisória</td></tr>
-<tr><td>legenda</td><td><code>financiamento.mesames.grafico.legenda</code></td><td>Desde junho de 2026 · R$ milhões pagos por mês · mês corrente parcial</td></tr>
+<tr><td>titulo</td><td><code>financiamento.mesames.grafico.titulo</code></td><td>Desembolsado por mês pelas medidas provisórias</td></tr>
+<tr><td>legenda</td><td><code>financiamento.mesames.grafico.legenda</code></td><td>Desde junho de 2026 · R$ milhões desembolsados por mês</td></tr>
 </table>
 <h3>municipio</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -235,79 +235,139 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>chega · destaque.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.chega.destaque.molde</code></td><td><span class="molde">{pct}% do valor pago pelas medidas provisórias foi aplicado diretamente por órgãos federais, sem destino municipal registrado. Os círculos mostram o que chegou aos municípios.</span><br><span class="ex">exemplo: 3% do valor pago pelas medidas provisórias foi aplicado diretamente por órgãos federais, sem destino municipal registrado. Os círculos mostram o que chegou aos municípios.</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.chega.destaque.molde</code></td><td><span class="molde">{pct}% do valor desembolsado pelas medidas provisórias foi aplicado diretamente por órgãos federais, sem destino municipal registrado. Os círculos mostram o que chegou aos municípios.</span><br><span class="ex">exemplo: 3% do valor desembolsado pelas medidas provisórias foi aplicado diretamente por órgãos federais, sem destino municipal registrado. Os círculos mostram o que chegou aos municípios.</span></td></tr>
 </table>
 <h3>dc-topo · topo_anunciado.apoio.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.dc-topo.topo_anunciado.apoio.molde</code></td><td><span class="molde">{n|nenhuma origem|1 origem|{n} origens}</span><br><span class="ex">exemplo: 3 origens</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.dc-topo.topo_anunciado.apoio.molde</code></td><td><span class="molde">{n|em nenhum ato|em 1 ato|em {n} atos}</span><br><span class="ex">exemplo: em 3 atos</span></td></tr>
 </table>
-<h3>dc-topo · topo_pago.apoio.molde</h3>
+<h3>dc-topo · topo_pago.apoio</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.dc-topo.topo_pago.apoio.molde</code></td><td><span class="molde">{valor} em {mes}, mês parcial</span><br><span class="ex">exemplo: 3 em 3, mês parcial</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.dc-topo.topo_pago.apoio</code></td><td>desde a publicação de cada medida</td></tr>
 </table>
 <h3>dc-topo · topo_direto.apoio</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.dc-topo.topo_direto.apoio</code></td><td>do valor pago</td></tr>
+<tr><td>texto</td><td><code>financiamento.dc-topo.topo_direto.apoio</code></td><td>do valor desembolsado pelas medidas provisórias, sem destino municipal registrado</td></tr>
 </table>
 <h3>dc-topo · topo_defesa_civil.apoio.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.dc-topo.topo_defesa_civil.apoio.molde</code></td><td><span class="molde">desde 29/06 · {n|nenhum município|1 município|{n} municípios}</span><br><span class="ex">exemplo: desde 29/06 · 3 municípios</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.dc-topo.topo_defesa_civil.apoio.molde</code></td><td><span class="molde">a {n|nenhum município|1 município|{n} municípios} desde 29 de junho de 2026, dos quais {recuperacao} para recuperação</span><br><span class="ex">exemplo: a 3 municípios desde 29 de junho de 2026, dos quais 3 para recuperação</span></td></tr>
 </table>
 <h3>dc-topo · topo_sus.apoio.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.dc-topo.topo_sus.apoio.molde</code></td><td><span class="molde">jan–{mes}/2026 · {n|nenhum município|1 município|{n} municípios}</span><br><span class="ex">exemplo: jan–3/2026 · 3 municípios</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.dc-topo.topo_sus.apoio.molde</code></td><td><span class="molde">a {n|nenhum município|1 município|{n} municípios} desde 29 de junho de 2026</span><br><span class="ex">exemplo: a 3 municípios desde 29 de junho de 2026</span></td></tr>
+</table>
+<h3>caminhos · grupo_mps</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>financiamento.caminhos.grupo_mps.titulo</code></td><td>Medidas provisórias do El Niño</td></tr>
+</table>
+<h3>caminhos · grupo_repasses</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>financiamento.caminhos.grupo_repasses.titulo</code></td><td>Repasses aos municípios</td></tr>
+</table>
+<h3>caminhos · etiqueta.todos_os_riscos</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.etiqueta.todos_os_riscos</code></td><td>todos os riscos</td></tr>
+</table>
+<h3>caminhos · etiqueta.sem_risco</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.etiqueta.sem_risco</code></td><td>risco não declarado no texto do ato</td></tr>
+</table>
+<h3>caminhos · barra.valor_do_ato</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.barra.valor_do_ato</code></td><td>valor do ato</td></tr>
+</table>
+<h3>caminhos · barra.empenhado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.barra.empenhado</code></td><td>empenhado</td></tr>
+</table>
+<h3>caminhos · barra.desembolsado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.barra.desembolsado</code></td><td>desembolsado</td></tr>
+</table>
+<h3>caminhos · barra.autorizado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.barra.autorizado</code></td><td><span class="molde">{acao}, autorizado</span><br><span class="ex">exemplo: 3, autorizado</span></td></tr>
+</table>
+<h3>caminhos · mp.orgaos_data.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.mp.orgaos_data.molde</code></td><td><span class="molde">{orgaos} · publicada em {data}</span><br><span class="ex">exemplo: 3 · publicada em 3</span></td></tr>
+</table>
+<h3>caminhos · sus</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>financiamento.caminhos.sus.titulo</code></td><td>SUS, repasses de emergência</td></tr>
 </table>
 <h3>caminhos · nota_mp</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.caminhos.nota_mp</code></td><td>Valores da ação reforçada pela MP; incluem a dotação ordinária dela: teto, não a execução só do crédito.</td></tr>
 </table>
-<h3>caminhos · coluna.sem_fonte</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.coluna.sem_fonte</code></td><td>Nenhuma fonte com este risco declarado no ato, até o corte.</td></tr>
-</table>
-<h3>caminhos · coluna.risco_nao_coletado</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.coluna.risco_nao_coletado</code></td><td>O risco declarado nos atos ainda não foi coletado até o corte.</td></tr>
-</table>
 <h3>caminhos · funil.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.funil.linha</code></td><td><span class="molde">{n_decretaram} municípios decretaram emergência desde 29 de junho de 2026; {n_reconhecidos} foram reconhecidos pela União; {n_com_recurso} têm recurso autorizado em portaria{n_30d}.</span><br><span class="ex">exemplo: 3 municípios decretaram emergência desde 29 de junho de 2026; 3 foram reconhecidos pela União; 3 têm recurso autorizado em portaria3.</span></td></tr>
-</table>
-<h3>caminhos · funil.n_30d</h3>
-<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.funil.n_30d</code></td><td><span class="molde">; {n} foram reconhecidos há mais de 30 dias sem portaria de recurso localizada até o corte</span><br><span class="ex">exemplo: ; 3 foram reconhecidos há mais de 30 dias sem portaria de recurso localizada até o corte</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.funil.linha</code></td><td><span class="molde">Desde 29 de junho de 2026, {n_decretaram} municípios decretaram emergência e {n_reconhecidos} foram reconhecidos pela União. {n_com_recurso} municípios têm recurso autorizado em portaria no mesmo período.</span><br><span class="ex">exemplo: Desde 29 de junho de 2026, 3 municípios decretaram emergência e 3 foram reconhecidos pela União. 3 municípios têm recurso autorizado em portaria no mesmo período.</span></td></tr>
 </table>
 <h3>caminhos · faixa_resposta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.caminhos.faixa_resposta.titulo</code></td><td>Resposta a emergência reconhecida (todos os riscos)</td></tr>
+<tr><td>titulo</td><td><code>financiamento.caminhos.faixa_resposta.titulo</code></td><td>Defesa civil, depois do reconhecimento federal</td></tr>
+</table>
+<h3>municipio · faixa.titulo_el_nino</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.faixa.titulo_el_nino</code></td><td>Desde 29 de junho de 2026</td></tr>
 </table>
 <h3>municipio · defesa_civil</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.municipio.defesa_civil.titulo</code></td><td>Defesa civil federal desde 29/06</td></tr>
+<tr><td>titulo</td><td><code>financiamento.municipio.defesa_civil.titulo</code></td><td>Defesa civil, depois do reconhecimento federal</td></tr>
 </table>
 <h3>municipio · sus</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.municipio.sus.titulo</code></td><td>Saúde, FNS em linhas de emergência</td></tr>
+<tr><td>titulo</td><td><code>financiamento.municipio.sus.titulo</code></td><td>SUS, repasses de emergência</td></tr>
 </table>
-<h3>municipio · sus.nenhum</h3>
+<h3>municipio · defesa_civil.valor.apoio.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.municipio.sus.nenhum</code></td><td>nenhum repasse com esse nome em 2026</td></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.defesa_civil.valor.apoio.molde</code></td><td><span class="molde">a partir de {data}</span><br><span class="ex">exemplo: a partir de 3</span></td></tr>
 </table>
-<h3>municipio · transferencias</h3>
+<h3>municipio · defesa_civil.lacuna</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.municipio.transferencias.titulo</code></td><td>Transferências da União em 2026</td></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.defesa_civil.lacuna</code></td><td>Não localizamos recurso autorizado para o município desde 29 de junho de 2026</td></tr>
 </table>
-<h3>municipio · gasto_proprio</h3>
+<h3>municipio · defesa_civil.fonte.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.municipio.gasto_proprio.titulo</code></td><td>Gasto próprio em defesa civil (último exercício)</td></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.defesa_civil.fonte.molde</code></td><td><span class="molde">Fonte: portarias da Defesa Civil nacional no Diário Oficial da União · consultado em {data}</span><br><span class="ex">exemplo: Fonte: portarias da Defesa Civil nacional no Diário Oficial da União · consultado em 3</span></td></tr>
 </table>
-<h3>municipio · gasto_proprio.ressalva</h3>
+<h3>municipio · sus.lacuna</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.municipio.gasto_proprio.ressalva</code></td><td>inclui preparação e resposta</td></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.sus.lacuna</code></td><td>Não localizamos repasse de emergência ao município desde 29 de junho de 2026</td></tr>
 </table>
-<h3>municipio · lacuna.molde</h3>
+<h3>municipio · sus.fonte.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.municipio.lacuna.molde</code></td><td><span class="molde">Não localizado até o corte ({corte})</span><br><span class="ex">exemplo: Não localizado até o corte (3)</span></td></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.sus.fonte.molde</code></td><td><span class="molde">Fonte: Portal da Transparência, Fundo Nacional de Saúde · consultado em {data}</span><br><span class="ex">exemplo: Fonte: Portal da Transparência, Fundo Nacional de Saúde · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.transferencias.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.transferencias.molde</code></td><td><span class="molde">Todas as transferências da União ao município em {ano}, não só as do El Niño: {total} até {mes}, dos quais {constitucional} constitucionais. Fonte: Portal da Transparência, transferências · consultado em {data}</span><br><span class="ex">exemplo: Todas as transferências da União ao município em 3, não só as do El Niño: 3 até 3, dos quais 3 constitucionais. Fonte: Portal da Transparência, transferências · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.transferencias.lacuna.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.transferencias.lacuna.molde</code></td><td><span class="molde">Todas as transferências da União ao município em {ano}, não só as do El Niño: não localizadas até o corte ({corte}). Fonte: Portal da Transparência, transferências · consultado em {data}</span><br><span class="ex">exemplo: Todas as transferências da União ao município em 3, não só as do El Niño: não localizadas até o corte (3). Fonte: Portal da Transparência, transferências · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.gasto_proprio.valor.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.gasto_proprio.valor.molde</code></td><td><span class="molde">Gasto próprio do município com defesa civil: {valor} lançados como defesa civil no balanço de {ano} entregue ao Tesouro Nacional. Fonte: Tesouro Nacional, Siconfi · consultado em {data}</span><br><span class="ex">exemplo: Gasto próprio do município com defesa civil: 3 lançados como defesa civil no balanço de 3 entregue ao Tesouro Nacional. Fonte: Tesouro Nacional, Siconfi · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.gasto_proprio.zero.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.gasto_proprio.zero.molde</code></td><td><span class="molde">Gasto próprio do município com defesa civil: nenhum valor lançado como defesa civil no balanço de {ano} entregue ao Tesouro Nacional. Isso não mostra que o município não gastou com defesa civil: o gasto pode estar lançado em outra área. Fonte: Tesouro Nacional, Siconfi · consultado em {data}</span><br><span class="ex">exemplo: Gasto próprio do município com defesa civil: nenhum valor lançado como defesa civil no balanço de 3 entregue ao Tesouro Nacional. Isso não mostra que o município não gastou com defesa civil: o gasto pode estar lançado em outra área. Fonte: Tesouro Nacional, Siconfi · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.gasto_proprio.nao_entregue.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.gasto_proprio.nao_entregue.molde</code></td><td><span class="molde">Gasto próprio do município com defesa civil: balanço de {ano} não entregue ao Tesouro Nacional até o corte. Fonte: Tesouro Nacional, Siconfi · consultado em {data}</span><br><span class="ex">exemplo: Gasto próprio do município com defesa civil: balanço de 3 não entregue ao Tesouro Nacional até o corte. Fonte: Tesouro Nacional, Siconfi · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.gasto_proprio.nota.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.gasto_proprio.nota.molde</code></td><td><span class="molde">Gasto próprio do município com defesa civil: {nota} Fonte: Tesouro Nacional, Siconfi · consultado em {data}</span><br><span class="ex">exemplo: Gasto próprio do município com defesa civil: 3 Fonte: Tesouro Nacional, Siconfi · consultado em 3</span></td></tr>
+</table>
+<h3>municipio · contexto.gasto_proprio.sem_coleta.molde</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.municipio.contexto.gasto_proprio.sem_coleta.molde</code></td><td><span class="molde">Gasto próprio do município com defesa civil: balanço de {ano} ainda não consultado até o corte. Fonte: Tesouro Nacional, Siconfi</span><br><span class="ex">exemplo: Gasto próprio do município com defesa civil: balanço de 3 ainda não consultado até o corte. Fonte: Tesouro Nacional, Siconfi</span></td></tr>
 </table>
 <h3>municipio · estado.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
