@@ -442,8 +442,6 @@ def mapa(rec: dict, fns_mun: dict, transf: dict, ref: list, corte: datetime) -> 
                    "ato": ("Portaria " + str(a.get("portaria"))) if a and a.get("portaria") else None,
                    "data": a.get("data") if a else None, "url": a.get("url") if a else None, "periodo": per,
                    "fonte": fonte_dc if origem == "defesa_civil" else (fns_mun or {}).get("fonte")}
-            # `ibge` e `valor`: nomes que a página atual lê; a B3 troca a leitura e estes dois saem.
-            lin.update(ibge=ib, valor=rep[ib])
             lin.update(nome=s[2], uf=s[3], lat=s[0], lon=s[1]) if s and s[0] is not None else lin.update(nome=None, uf=None, lat=None, lon=None, sem_sede=True)
             out.append(lin)
     return out
@@ -639,7 +637,7 @@ def _autoteste() -> int:
        == [("0000001", "defesa_civil", 42.0, 1000.0, -1.0), ("0000003", "defesa_civil", 5.0, None, None), ("0000001", "saude", 2.0, None, -1.0)]
        and pts[1]["sem_sede"] is True and mapa(base2, {}, {}, [], corte) == [])
     ok("soma: repassado por origem no mapa = totais da legenda = soma da tabela",
-       res["total"] == {"defesa_civil": 47.0, "saude": 2.0} == {o: round(sum(p["valor"] for p in pts if p["origem"] == o), 2) for o in ("defesa_civil", "saude")}
+       res["total"] == {"defesa_civil": 47.0, "saude": 2.0} == {o: round(sum(p["repassado"] for p in pts if p["origem"] == o), 2) for o in ("defesa_civil", "saude")}
        and res["municipios"] == {"defesa_civil": 2, "saude": 1} and res["sem_sede"] == 1)
     asr = autorizado_sem_repasse(base2, TR, REF, corte)
     ok("portaria sem repasse vai a lista propria (lacuna com corte), nao a circulo",
