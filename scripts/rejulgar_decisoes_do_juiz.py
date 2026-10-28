@@ -110,6 +110,18 @@ def autoteste() -> int:
                   chave_18(dict(v18, municipio=v18["municipio_da_pista"], uf=v18["uf_da_pista"]))
                   == chave_18({"pista_id": "p", "url": "u", "municipio": "Rio do Oeste", "uf": "SC"})))
 
+    lido = {"promove": True, "categoria": "plano_antigo", "regras_18": [], "motivo": None,
+            "com_propostas_J8_J9": {"promove": True, "categoria": "plano_recorrente"}}
+    errata = {"promove": False, "motivo": "errata: comitê da dengue", "categoria": "plano_antigo", "errata": {"em": "x"}}
+    h = herdar_18(dict(lido, regras_18=["J7"]), errata)
+    casos.append(("1.8: a errata da linha manda, com ou sem regra 1.8 (Birigui/SP)",
+                  h["promove"] is False and h["mantido_18"]["por"] == "errata"
+                  and h["com_propostas_J8_J9"]["promove"] is False and herdar_18(h, errata) == h))
+    casos.append(("1.8: sem regra 1.8 o veredito não muda; na fila, quem decide é o juiz de produção (Mogi Guaçu/SP)",
+                  herdar_18(lido, None)["promove"] is False and herdar_18(lido, None)["mantido_18"]["por"] == "sem_regra"
+                  and herdar_18(dict(lido, regras_18=["J1"]), None)["promove"] is True
+                  and herdar_18(lido, {"promove": True, "categoria": "plano_antigo"}) == lido))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -148,6 +160,24 @@ def vigentes(decisoes: list) -> dict:
 def compacto_18(v: dict) -> dict:
     return {k: v.get(k) for k in ("promove", "motivo", "categoria", "data", "municipio", "uf", "ibge",
                                   "familia_de_risco", "sem_ato_de_aprovacao", "codebook", "regras_18") if k in v}
+
+
+def herdar_18(novo: dict, antes) -> dict:
+    """O veredito 1.8 só muda por regra 1.8, e a errata da linha manda (central, 28/10: Birigui e Mogi Guaçu/SP).
+    PURA e idempotente: o que foi lido fica em `mantido_18`. `antes` é a decisão vigente (None na fila: lá o
+    "antes" é não promover, e quem decide sem regra 1.8 é o juiz de produção)."""
+    antes = antes or {"promove": False, "motivo": "sem_regra_18", "categoria": None, "data": None}
+    por = "errata" if antes.get("errata") else (
+        "sem_regra" if not novo.get("regras_18") and (novo.get("promove"), novo.get("categoria"))
+        != (bool(antes.get("promove")), antes.get("categoria")) else None)
+    if not por or novo.get("mantido_18"):
+        return novo
+    herdado = {k: antes.get(k) for k in ("promove", "motivo", "categoria", "data")}
+    herdado["promove"] = bool(herdado["promove"]) and por != "errata"
+    out = dict(novo, **herdado, mantido_18={"por": por, "lido": compacto_18(novo)})
+    if novo.get("com_propostas_J8_J9"):
+        out["com_propostas_J8_J9"] = dict(novo["com_propostas_J8_J9"], **herdado)
+    return out
 
 
 def julgar_18(p: dict, buscar, propostas=False) -> dict:
@@ -257,7 +287,8 @@ def paralelo_18(argv) -> int:
         chave = chave_18(p)
         anterior = feitas.get(chave)
         precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"], True)
-        refeita = bool(anterior and refazer & set(anterior.get("regras_18") or []))
+        refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or [])
+                                     or ("promove" in refazer and anterior.get("promove"))))
         if anterior and (anterior.get("leu_documento") or not precisa_ler) and not refeita:
             return
         if precisa_ler and (not rede or lidas >= rede):
@@ -270,7 +301,7 @@ def paralelo_18(argv) -> int:
         novo["url"], novo["municipio_da_pista"], novo["uf_da_pista"] = p.get("url"), p.get("municipio"), p.get("uf")
         if not novo.get("leu_documento"):
             novo.pop("criterios", None)   # sem documento lido, o motivo basta (o arquivo fica pequeno)
-        feitas[chave] = novo
+        feitas[chave] = herdar_18(novo, antes)
         if rede and fila is not None and novo.get("motivo") in ("noticia_nao_e_documento",
                                                                "noticia_institucional_nao_e_o_plano"):
             from seguir_pistas import buscar_html, documentos_da_pagina_18   # B4: um nível, mesmo domínio
@@ -347,7 +378,9 @@ def paralelo_18(argv) -> int:
 
     if fila is not None:
         gravar_em(FILA_18, fila, compacto=True)
-    doc["decisoes"] = list(feitas.values())
+    doc["decisoes"] = [herdar_18(v, decididas.get(chave_18(dict(v, municipio=v.get("municipio_da_pista"),
+                                                                 uf=v.get("uf_da_pista"))))
+                                 if v.get("origem_18") == "decisao" else None) for v in feitas.values()]
     doc["leituras_da_pasta_rs"] = (doc.get("leituras_da_pasta_rs") or []) + registros
     gravar_em(saida, doc, compacto=True)
     faltam = pendentes[0]
