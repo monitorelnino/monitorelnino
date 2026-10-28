@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 O "in" preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.
 
+## 2026-10-28 · Financiamento: cartões das medidas provisórias ao lado do gráfico mensal, na mesma base
+
+Em "De onde vem o dinheiro", os dois cartões das MPs e o gráfico "Desembolsado por mês" ficam lado a lado. As barras passam a comparar dotação atualizada, empenhado e desembolsado da ação reforçada; o valor do ato vai em texto. Corrige o desembolsado da MP 1.367 acima do valor do ato.
+
 ## 2026-10-28 · dotação da ação · Financiamento: cada MP traz a base da própria ação
 `semana.json` passa a levar, por MP, `acao`: dotação atualizada da ação (inclui o crédito), empenhado e pago da ação desde o mês de publicação, valor do ato à parte, fonte e exercício. Dotação não lida vira lacuna com motivo, nunca zero. A barra do cartão pode comparar a mesma base; o pago deixa de passar do valor do ato.
 
