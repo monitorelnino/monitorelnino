@@ -64,7 +64,7 @@ function credito(caixaId, fonteId, apoioId){
      a fonte dela vai no mesmo crédito, como segunda parte — só quando há medição coletada para mostrar. */
   if (apoioId && coletada(apoioId)) partes.push('medição: ' + (fonteDe(apoioId).orgao || fonteDe(apoioId).nome));
   MonitorMapas.credito(caixaId, {fontes: partes.join(' · '), url: f.url_publica,
-                                 data: coletada(fonteId) ? f.consultado_em : null});
+                                 consultado: coletada(fonteId) ? f.consultado_em : null});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura'); if (d) d.dataset.credito = fonteId;
 }
 
@@ -277,7 +277,7 @@ desenharMapa('mapaSecas', 'legSecas', () => MANCHAS.length ? ATM.seca.uf : NEUTR
   const t = document.getElementById('tituloSecas'); if (t) t.textContent = 'Seca observada' + (nomeMes ? ', ' + nomeMes : '');
   if (nomeMes) põeCat('secasSub', 'monitor-de-riscos.secas.molde_sub', {mes: nomeMes});
   MonitorMapas.credito('boxSecas', {fontes: [SECAS_MANCHAS.fonte || 'Monitor de Secas — ANA', nomeMes ? 'mapa de ' + nomeMes : ''].filter(Boolean),
-    url: SECAS_MANCHAS.url_publica, data: SECAS_MANCHAS.consultado_em});
+    url: SECAS_MANCHAS.url_publica, consultado: SECAS_MANCHAS.consultado_em});
   const d = document.querySelector('#boxSecas .fonte-figura'); if (d) d.dataset.credito = 'monitor_secas';
 })();
 credito('boxSecas', 'monitor_secas');
@@ -579,7 +579,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
 (function creditoFogo(){
   const f = FOGO_REF || fonteDe('inpe_fogo');
   MonitorMapas.credito('boxFogo', {fontes: ['INPE · Programa Queimadas' + (FOGO_REF ? ' (BDQueimadas, Aqua M-T)' : '')],
-    url: f.url_publica, data: f.consultado_em});
+    url: f.url_publica, consultado: f.consultado_em});
   const d = document.querySelector('#boxFogo .fonte-figura'); if (d) d.dataset.credito = 'inpe_fogo';
 })();
 
@@ -648,7 +648,7 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
   const fmt = n => Number(n).toLocaleString('pt-BR');
   const fCh = fontes.chuva || {}, fFg = fontes.fogo || {};
   MonitorMapas.credito('boxListas', {fontes: ['MIDR e Casa Civil, Nota Técnica nº 2/2025 e nº 1/2023', 'Ministério do Meio Ambiente, portaria vigente'],
-    url: fCh.url, data: ENQ ? MonitorMapas.dataBR([fCh.consultado_em, fFg.consultado_em].sort().pop()) : null});
+    url: fCh.url, consultado: ENQ ? MonitorMapas.dataBR([fCh.consultado_em, fFg.consultado_em].sort().pop()) : null});
   if (!ENQ) { document.getElementById('listasLado').innerHTML = ''; return lacuna('listasLado', 'Listas federais: sem coleta até o corte.'); }
   const pos = {}; (window.__refMunicipios || []).forEach(m => pos[String(m.codigo_ibge).padStart(7, '0')] = {lat: m.lat, lon: m.lon});
   const grupo = {chuva: [], fogo: [], ambas: []};
@@ -776,7 +776,7 @@ function põeCat(elId, id, valores, reserva){
     if (antes) põeCat('stRoniVariacao', I + 'roni.molde_variacao',
       {variacao: PAC.num(u.anomalia - antes.anomalia), anterior: PAC.periodo(antes)});
     const f = fonte('noaa_roni');
-    MonitorMapas.credito('stRoniFonte', {fontes: [f.orgao], data: f.consultado_em});
+    MonitorMapas.credito('stRoniFonte', {fontes: [f.orgao], consultado: f.consultado_em});
   }
 
   // 3 — a probabilidade do IRI/CPC (09/10/2026, ajuste 3: o valor cabe numa linha — "99%" — e o
@@ -798,7 +798,7 @@ function põeCat(elId, id, valores, reserva){
     põeCat('stDuracaoValor', I + 'duracao.molde_valor_curto', {probabilidade: Math.round(marco.el_nino)});
     if (fim !== marco) põeCat('stDuracaoVariacao', I + 'duracao.molde_variacao',
       {probabilidade_final: Math.round(fim.el_nino), trimestre_final: fim.periodo});
-    MonitorMapas.credito('stDuracaoFonte', {fontes: [f.orgao], data: f.consultado_em});
+    MonitorMapas.credito('stDuracaoFonte', {fontes: [f.orgao], consultado: f.consultado_em});
   }
 
   // 4 — a previsão da NOAA/CPC entra no MESMO cartão, como linha de apoio com fonte própria
@@ -809,7 +809,7 @@ function põeCat(elId, id, valores, reserva){
   // 5 a 8 — os números de agora no Brasil (16/10/2026, lote 2 da editoria), do mesmo dado dos
   // mapas abaixo. Só descrição: valor, data e órgão. Variação só com leitura anterior gravada —
   // fogo, seca, calor e avisos ainda não a gravam, e o cartão não a inventa.
-  const credito = (id, k) => { const f = fonte(k); MonitorMapas.credito(id, {fontes: [f.orgao], data: f.consultado_em}); };
+  const credito = (id, k) => { const f = fonte(k); MonitorMapas.credito(id, {fontes: [f.orgao], consultado: f.consultado_em}); };
   const porUf = campo => UFS.map(uf => [uf, (SINAIS.uf[uf] || {})[campo]]).filter(([, v]) => v);
 
   const fogos = porUf('fogo').filter(([, v]) => typeof v.focos_24h === 'number');
@@ -865,7 +865,7 @@ function põeCat(elId, id, valores, reserva){
     põeCat('stArRotulo', I + (diaMes(ult) ? 'ar.molde_rotulo' : 'ar.rotulo'), {data: diaMes(ult)});
     põeCat('stArValor', I + 'ar.molde_valor', {n: ruins.length});
     MonitorMapas.credito('stArFonte', {fontes: ['MMA/MonitorAr', hora(ult) ? 'medição de ' + hora(ult) : ''].filter(Boolean),
-      data: (fontesAr.monitorar || {}).consultado_em});
+      consultado: (fontesAr.monitorar || {}).consultado_em});
   }
 })();
 
@@ -986,7 +986,7 @@ function creditoPacifico(caixaId, fonteId, ultimoDado){
   MonitorMapas.credito(caixaId, {
     fontes: [f.orgao, f.nome].filter(Boolean).join(' · ')
       + (ultimoDado ? ' · último dado: ' + ultimoDado : ''),
-    url: f.url_publica, data: f.consultado_em});
+    url: f.url_publica, consultado: f.consultado_em});
   const d = document.querySelector('#' + caixaId + ' .fonte-figura');
   if (d) d.dataset.credito = fonteId;
 }

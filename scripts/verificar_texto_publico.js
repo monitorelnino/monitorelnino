@@ -241,7 +241,7 @@ function autoteste() {
   c("prosa: traço vazio reprova; travessão entre palavras não é traço vazio", prosa("Corte dos dados: —", {}).some((x) => x.includes("frase corrida")) && !prosa("Avisou, El Niño forte, com seca", {}).length);
   c("prosa: glossário e autorreferência reprovam", prosa("O arcabouço público, e o site não compara estados.", {}).length === 2);
   // componente de figura, palavras, enquadramento, fichas
-  c("crédito no formato único passa", credito("Fonte: Cemaden · Atualização: 02/10/2026").length === 0 && credito("Fonte: INMET · Atualização: sem coleta até o corte").length === 0);
+  c("crédito no formato único passa", credito("Fonte: Cemaden · Atualização: 02/10/2026").length === 0 && credito("Fonte: INMET · Atualização: sem coleta até o corte").length === 0 && credito("Fonte: INMET · consultado em 28/10/2026").length === 0);
   c("crédito fora do formato ou com explicação reprova", credito("Cemaden, 2026").length === 1 && credito("Fonte: aguardamos o órgão · Atualização: 02/10/2026").length === 1);
   c("subtítulo sem '·' ou longo reprova", subtitulo("Período 2026").length === 1 && subtitulo("x".repeat(141) + " · y").length === 1 && subtitulo("2026 · municípios · contagem").length === 0);
   c("figura sem subtítulo passa quando título + eixo trazem período, território e unidade; senão reprova", semSubtitulo("Anomalia semanal da temperatura na região Niño 3.4", "Niño 3.4, °C").length === 0 && semSubtitulo("RONI no ciclo em curso", "RONI, °C")[0].includes("territorio") && semSubtitulo("Anomalia semanal na região Niño 3.4", "Niño 3.4")[0].includes("unidade") && semSubtitulo("Anomalia na região Niño 3.4", "°C")[0].includes("periodo"));
