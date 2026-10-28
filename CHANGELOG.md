@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · #1299 · Logo do LinkedIn entra em assets/redes
+
+O "in" preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.
+
 ## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
 Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
 
