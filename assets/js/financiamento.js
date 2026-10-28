@@ -98,9 +98,11 @@ function __init(){
   const topo = id => (((S && S.topo) || []).find(c => c.id === id) || null);
   const anunciado = topo('anunciado_atos'), pago = topo('pago_ate_agora'), direto = topo('gasto_direto_uniao');
   const dcTopo = topo('defesa_civil_ciclo'), sus = topo('sus_emergencia');
-  const origens = mps.map(m => ({nome: m.numero + ' · ' + (m.tema || ''), ato: m.numero, data: m.publicada_em, orgao: (m.orgaos || []).map(o => o.nome).join(', ') || m.beneficiario,
-      risco: riscoDe(m), anunciado: m.valor, empenhado: (m.execucao || {}).empenhado, pago: (m.execucao || {}).pago,
-      fonte: (m.execucao || {}).fonte, url: ((m.fontes || [])[0] || {}).url, notaMp: true, acimaDoAto: !!(m.execucao || {}).acima_do_valor_do_ato}))
+  /* A base da ação (dotação atualizada, empenhado, pago) vem pronta do gerador: `semana.json` → `mes_a_mes[].acao`. */
+  const acaoDe = m => ((((S && S.mes_a_mes) || []).find(x => x.id === m.id) || {}).acao) || {};
+  const origens = mps.map(m => ({id: m.id, nome: m.numero + ' · ' + (m.tema || ''), ato: m.numero, data: m.publicada_em, orgao: (m.orgaos || []).map(o => o.nome).join(', ') || m.beneficiario,
+      risco: riscoDe(m), anunciado: m.valor, dotacao: acaoDe(m).dotacao_atualizada, empenhado: acaoDe(m).empenhado, pago: acaoDe(m).pago,
+      fonte: (m.execucao || {}).fonte, url: ((m.fontes || [])[0] || {}).url, notaMp: true}))
     .concat(comp.map(i => ({nome: i.nome, ato: i.instrumento, data: null, orgao: i.esfera, risco: riscoDe(i),
       anunciado: i.valor_total, empenhado: null, pago: null, fonte: /^http/.test(i.fonte || '') ? 'ato oficial' : 'documento não localizado até o corte', url: /^http/.test(i.fonte || '') ? i.fonte : null})))
     .concat(sus && !sus.sem_coleta ? [{nome: 'Fundo Nacional de Saúde, linhas ligadas a emergência', ato: 'repasses fundo a fundo', data: null, orgao: 'Ministério da Saúde',
@@ -126,11 +128,12 @@ function __init(){
   // =========================================================
   // 2. De onde vem o dinheiro, pelo caminho do dinheiro
   // =========================================================
-  /* Uma escala para a seção: o maior valor de qualquer linha. A MP cujo empenhado passa do valor do ato
-     (a fonte mede a ação inteira, `execucao.acima_do_valor_do_ato`) não mostra o empenhado ao lado dele. */
+  /* Uma escala para a seção: o maior valor de qualquer linha. A MP compara na mesma base: dotação
+     atualizada, empenhado e desembolsado são da ação inteira (a dotação inclui o crédito da MP); o valor do
+     ato vai em texto, não em barra. */
   const linhasMp = origens.filter(o => o.notaMp);
   const susPago = usa(sus) ? sus.valor : null;
-  const escala = Math.max(1, ...linhasMp.flatMap(o => [o.anunciado, o.acimaDoAto ? null : o.empenhado, o.pago]).filter(v => v != null), ...Object.values(tpa || {}), susPago || 0);
+  const escala = Math.max(1, ...linhasMp.flatMap(o => [o.dotacao, o.empenhado, o.pago]).filter(v => v != null), ...Object.values(tpa || {}), susPago || 0);
   const barra = (rotulo, v, corBarra) => '<div class="barra-linha"><span class="barra-rotulo">' + esc(rotulo) + '</span><span class="barra-trilho">'
     + (v == null ? '<span class="barra-valor">' + NAO_LOCALIZADO + '</span>'
        : '<span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.005, v / escala).toFixed(4) + ');background:' + corBarra + '"></span><span class="barra-valor">' + esc(reais(v)) + '</span>')
@@ -138,13 +141,16 @@ function __init(){
   const cartaoDinheiro = (acento, etiqueta, nome, apoio, corpo) => '<div class="cartao ' + acento + '"' + '><p class="cartao-k">' + esc(etiqueta) + '</p>'
     + '<b class="cartao-t">' + esc(nome) + '</b>' + apoio + corpo + '</div>';
   const etiquetaDe = o => (RISCOS.find(r => r.chave === o.risco) || {}).rotulo || tx('financiamento.caminhos.etiqueta.sem_risco');
-  const linhasMps = document.getElementById('linhasMps');
-  if (linhasMps) linhasMps.innerHTML = linhasMp.map(o => cartaoDinheiro('cartao--acento-argila', etiquetaDe(o), o.nome,
-    '<span class="cartao-s">' + esc(tx('financiamento.caminhos.mp.orgaos_data.molde', {orgaos: o.orgao || '', data: o.data || NAO_LOCALIZADO})) + '</span>',
-    '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.valor_do_ato'), o.anunciado, P.resposta)
-      + (o.acimaDoAto ? '' : barra(tx('financiamento.caminhos.barra.empenhado'), o.empenhado, P.resposta))
-      + barra(tx('financiamento.caminhos.barra.desembolsado'), o.pago, P.resposta) + '</div>'
-      + '<span class="cartao-s">' + esc(tx('financiamento.caminhos.nota_mp')) + '</span>')).join('');
+  /* Os dois cartões das MPs entram na grade de figuras, antes do gráfico mensal. */
+  const cartaoMp = o => '<figure class="figura figura--grafico cartao-mapa" id="box' + esc(o.id) + '"><p class="cartao-mapa-familia">' + esc(etiquetaDe(o)) + '</p><h3 class="figura-titulo">' + esc(o.nome) + '</h3>'
+    + '<p class="figura-sub">' + esc(tx('financiamento.caminhos.mp.orgaos_data.molde', {orgaos: o.orgao || '', data: o.data || NAO_LOCALIZADO})) + '</p>'
+    + '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.dotacao'), o.dotacao, P.resposta)
+    + barra(tx('financiamento.caminhos.barra.empenhado'), o.empenhado, P.resposta)
+    + barra(tx('financiamento.caminhos.barra.desembolsado'), o.pago, P.resposta) + '</div>'
+    + '<p class="figura-nota">' + esc(tx('financiamento.caminhos.mp.credito', {valor: o.anunciado != null ? reais(o.anunciado) : NAO_LOCALIZADO})) + ' · ' + esc(tx('financiamento.caminhos.nota_mp')) + '</p></figure>';
+  const boxMes = document.getElementById('boxMesAMes');
+  if (boxMes) boxMes.insertAdjacentHTML('beforebegin', linhasMp.map(cartaoMp).join(''));
+  linhasMp.forEach(o => cred('box' + o.id, [FONTE_TRANSP, 'execução da despesa e orçamento'], S && S.corte));
   /* Do decreto ao recurso: os números vêm prontos do gerador (`semana.json` → `funil_defesa_civil`). */
   const F = (S && S.funil_defesa_civil) || {};
   const linhaFunil = F.n_decretaram == null ? '' : '<p class="cartao-s">' + esc(tx('financiamento.caminhos.funil.linha', {n_decretaram: n(F.n_decretaram),
