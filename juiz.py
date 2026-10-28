@@ -937,9 +937,9 @@ def fonte_oficial(url, v18: bool = False) -> bool:
 
 
 # J2. Página de notícia (caminho de notícia ou com data) não é documento, mesmo em domínio oficial.
-RE_CAMINHO_DE_NOTICIA = re.compile(r"/(?:noticias?|noticias_tag|news|imprensa|materias?|ultimas)(?:[/_-]|$)|"
+RE_CAMINHO_DE_NOTICIA = re.compile(r"/(?:noticias?|noticias_tag|news|imprensa|materias?|ultimas|informes)(?:[/_-]|$)|"
                                    r"/20\d{2}/\d{1,2}/", re.I)
-RE_TITULO_DE_NOTICIA = re.compile(r"\b(apresenta|lan[çc]a|regulamenta)\b", re.I)
+RE_TITULO_DE_NOTICIA = re.compile(r"\b(apresenta|lan[çc]a|regulamenta|inicia)\b", re.I)
 
 
 def e_noticia_18(url, texto) -> bool:
@@ -1048,8 +1048,12 @@ RE_ANO_DE_VERSAO = re.compile(
     r"[^\n]{0,40}?\b((?:19|20)\d{2})\b", re.I)
 # "Lei nº 12.608, de 10 de abril de 2012", "Lei 12.608/2012": o ano é do ato citado (lote 7 da J18: PLANCONs do RS
 # de 2025 saíam datados de 2012).
-RE_DATA_DE_ATO_CITADO = re.compile(r"(?:\blei|decreto|portaria|resolu[çc][ãa]o)[^\n]{0,25}?[\d.]+\s*"
-                                   r"(?:/|,?\s*de\s+\d{1,2}\s*(?:º|o)?\s+de\s+[a-zç]+\s+de\s*)$", re.I)
+# O primeiro ano depois de um ato, com só a citação dele no meio (número, "nº", "de", mês, esfera, pontuação),
+# é o ano do ato citado.
+RE_DATA_DE_ATO_CITADO = re.compile(
+    r"(?:\blei|decreto|portaria|resolu[çc][ãa]o)(?:[\s\d.,/º°ª()–-]|\bn[º°o.]*|\bde\b|\bfederal\b|\bmunicipal\b|"
+    r"\bestadual\b|\bcomplementar\b|\b(?:janeiro|fevereiro|mar[çc]o|abril|maio|junho|julho|agosto|setembro|outubro|"
+    r"novembro|dezembro)\b)*?(?<!\d)((?:19|20)\d{2})\b", re.I)
 RE_ANO_CITADO = re.compile(r"(?:\blei|decreto|portaria|censo|ibge|fundad[oa]|funda[çc][ãa]o|criad[oa]|cria[çc][ãa]o|"
                            r"popula[çc][ãa]o|emancipad[oa]|emancipa[çc][ãa]o|instalad[oa]|\bn[º°o.])"
                            r"(?:\s+(?:em|de|do|da|no|na))?[^a-zà-ÿ\n]{0,12}$", re.I)
@@ -1065,9 +1069,9 @@ def ano_do_plano(texto, ano_corrente: int = None):
             return a, False
         fora = True
     cabeca = str(texto or "")[:1500]
+    citados = {m.start(1) for m in RE_DATA_DE_ATO_CITADO.finditer(cabeca)}
     for m in re.finditer(r"\b((?:19|20)\d{2})\b", cabeca):
-        if (RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()])
-                or RE_DATA_DE_ATO_CITADO.search(cabeca[max(0, m.start() - 70):m.start()])):
+        if m.start() in citados or RE_ANO_CITADO.search(cabeca[max(0, m.start() - 30):m.start()]):
             continue
         a = int(m.group(1))
         if ANO_MINIMO_18 <= a <= teto:
@@ -1191,6 +1195,11 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     veredito["data"] = dados.get("data")
     if not ok:
         return recusa(motivo)
+    from atualizar_instrumentos_estaduais import documento_do_repositorio
+    if (v18 and dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
+            and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])):
+        # J15: o título manda — "Planejamento Estratégico" que cita um plano de contingência não é o plano (Propriá/SE).
+        return recusa("titulo_nao_e_plano", "J15")
 
     # A marca viaja da etapa 2 para a 3 e para o veredito: é ela que diz à ficha do município e do
     # estado que o plano conta, e que o ato de aprovação não foi localizado.
@@ -1518,6 +1527,19 @@ def casos_18() -> list:
          ano_do_plano("PLANO DE CONTINGÊNCIA conforme a Lei nº 12.608, de 10 de abril de 2012. Mormaço 2025", 2026)
          == (2025, False)
          and ano_do_plano("PLANCON - base legal Lei 12.608/2012 - Município de X 2024", 2026) == (2024, False)),
+        ("J7 lei citada com quebra de linha, 'nº', travessão ou sem 'de' antes da data (Nova Pádua/RS e o RS de 2012)",
+         all(ano_do_plano(t, 2026) == (2025, False) for t in (
+             "PLANCON Lei Federal\nnº 12.608, de 10 de abril de 2012, Nova Pádua 2025",
+             "PLANCON Lei Federal nº 12.608 - 10 de abril de 2012 2025", "PLANCON Lei 12.608, 10 de abril de 2012 2025",
+             "PLANCON Decreto Municipal nº 123, de 05/03/2012 Município 2025"))),
+        ("J2 página de 'informes' que 'inicia elaboração do plano' é notícia (Sobral/CE)",
+         e_noticia_18("https://www.sobral.ce.gov.br/informes/principais/prefeitura-inicia-elaboracao-do-plano", "")
+         and e_noticia_18("https://x.ce.gov.br/p", "Prefeitura inicia elaboração do Plano de Contingência")),
+        ("J15 'Planejamento Estratégico' que cita um plano de contingência não é o plano (Propriá/SE)",
+         _v("Planejamento Estratégico da Gestão Municipal de Propriá 2025 a 2028. Secretaria Municipal de Governo. "
+            + "metas e programas " * 150 + "8. Gestão de Riscos: Plano de Contingência para seca e estiagem. "
+            + "x " * 200, "Propriá", "SE", "https://www.propria.se.gov.br/files/PLANEJAMENTO.pdf")["motivo"]
+         == "titulo_nao_e_plano"),
         ("J1 a equipe de elaboração citada no PLANCON não o rebaixa a plano_elaboracao",
          etapa6_categoria("equipe de elaboração do plano de contingência", "2025", sem_ato_de_aprovacao=True,
                           como_plano=True)[0] == "plano_antigo"
