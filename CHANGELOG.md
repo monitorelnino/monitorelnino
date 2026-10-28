@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-28 · #1301 · Juiz 1.8 (paralelo): segunda leva J14, J16, J19, J20 medida à parte
+## 2026-10-28 · #1305 · Juiz 1.8 (paralelo): segunda leva J14, J16, J19, J20 medida à parte
 Rodada paralela, nada publicado muda. Documento estadual vai à fila estadual (J14); calendário e campanha não são instrumento (J16); no repositório estadual o município sai do nome do arquivo (J19); lei que cria fundo, COMPDEC ou conselho é estrutura (J20). Ligadas como as propostas, gravadas em `com_segunda_leva`; o 1.8 medido não muda.
 
 ## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
