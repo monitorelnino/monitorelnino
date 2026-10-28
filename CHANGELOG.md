@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Buscador 2: link opaco do Google News fecha sem consultar o motor
+
+O seguidor de pistas deixa de procurar o título no veículo para resolver o link opaco do agregador: em três lotes, nenhum de cerca de 4.000 links foi resolvido por esse degrau, e cada lote gastava 3,4 h de execução. A pista cai com o motivo de sempre, "redirecionamento não resolvido (B2)", e o motor de busca fica livre para as consultas que acham documento. Teste novo; sem apagar dado.
+
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
 As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.

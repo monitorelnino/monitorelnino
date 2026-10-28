@@ -180,8 +180,8 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
             fechar(p, f"rótulo de setor no campo município ({p.get('municipio')}) (B1)")
             continue
         if b2.eh_redirecionador(url) or (not p.get("url_final") and b2.eh_redirecionador(p.get("url"))):
-            final, como = b2.resolver(p.get("url"), abrir=abrir_final, veiculo=p.get("veiculo_dominio"),
-                                      titulo=p.get("titulo"), buscar_web=buscar_web_)
+            # Sem a busca no veículo: 0 de ~4.000 links resolvidos em 3 lotes (27/10), 3,4 h de runner cada.
+            final, como = b2.resolver(p.get("url"), abrir=abrir_final)
             if not final:
                 fechar(p, "redirecionamento não resolvido (B2)")
                 continue
@@ -415,6 +415,13 @@ def autoteste():
                 and len(e["fechadas_lista"]) == 3
                 and next(p for p in f["pistas"] if p["id"] == "e1")["status_anterior"] == STATUS_PENDENTE)
 
+    def t_opaco_fecha_sem_consultar_o_motor():
+        f = base(); g = next(x for x in f["pistas"] if x["id"] == "g1")
+        g.update(veiculo_dominio="jornal.example.com", titulo="Taió aprova plano - Jornal")
+        q = []
+        seguir(f, "26/10/2026", abrir=abrir, buscar_web_=lambda c: q.append(c) or [{"url": "https://jornal.example.com/n/1"}])
+        return status(f, "g1") == PREFIXO_FECHADA + "redirecionamento não resolvido (B2)" and not any("jornal.example" in c for c in q)
+
     def t_redirecionador_resolvido_vira_pista_nova():
         f = base(); e = seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: "https://taio.sc.gov.br/plancon.pdf")
         return e["resolvidas"] == 1 and any(n["url"] == "https://taio.sc.gov.br/plancon.pdf" for n in e["novas_lista"]) \
@@ -507,6 +514,7 @@ def autoteste():
             "arquivo: só link de agregador ainda não tentado, sem repetição": t_arquivo_so_agregador_ainda_nao_tentado,
             "rota (notícia) e página oficial (B4) viram pistas novas de documento": t_rota_e_b4_viram_pistas_novas,
             "lixo cai com motivo (B1, B2, B3), com o status anterior guardado": t_lixo_cai_com_motivo,
+            "link opaco do agregador fecha sem consultar o motor (B2)": t_opaco_fecha_sem_consultar_o_motor,
             "redirecionador resolvido: a URL final entra como pista nova (B2)": t_redirecionador_resolvido_vira_pista_nova,
             "B6: nível A é o primeiro da rodada": t_b6_ordem_nivel_a_primeiro,
             "B10: documento oficial não lido volta à fila, até três vezes": t_b10_documento_volta_ate_tres_vezes,
