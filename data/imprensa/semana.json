@@ -6,11 +6,11 @@
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-10-28",
-   "n": 40,
+   "n": 41,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 41345,
+   "valor_parcial": 42573,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -337,7 +337,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-10-26 e 2026-10-27, nos dois índices",
+   "nota": "entre as edições de 2026-10-27 e 2026-10-28, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -405,7 +405,7 @@
    "id": "decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que decretaram emergência ou calamidade na semana",
-   "valor": 1,
+   "valor": 0,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -425,7 +425,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 70496,
+   "valor": 34547521,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -465,14 +465,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 7,
+   "valor": 10,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "26/10/2026 22:14",
+   "referencia": "27/10/2026 22:14",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "26/10/2026 22:14",
+   "consultado_em": "27/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -485,14 +485,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 1608,
+   "valor": 1141,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "26/10/2026 22:14",
+   "referencia": "27/10/2026 22:14",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "26/10/2026 22:14",
+   "consultado_em": "27/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -505,45 +505,37 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 235,
+   "valor": 227,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "26/10/2026",
+   "consultado_em": "27/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261027.csv",
+   "nota": "Focos do dia — focos_diario_br_20261028.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 147
+     "valor": 146
     },
     {
      "uf": "MA",
-     "valor": 56
+     "valor": 61
     },
     {
      "uf": "AM",
-     "valor": 16
-    },
-    {
-     "uf": "RR",
-     "valor": 9
-    },
-    {
-     "uf": "TO",
-     "valor": 3
+     "valor": 10
     },
     {
      "uf": "AL",
-     "valor": 2
+     "valor": 7
     },
     {
-     "uf": "AP",
-     "valor": 2
+     "uf": "RR",
+     "valor": 3
     }
    ],
    "pagina_de_origem": null,
@@ -554,18 +546,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 3.2,
+   "valor": 6.1,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "26/10/2026",
+   "referencia": "27/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "26/10/2026",
+   "consultado_em": "27/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 37.0 °C contra a média de 33.8 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 36.0 °C contra a média de 29.9 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -674,7 +666,7 @@
    "id": "ufs_dengue_alerta",
    "grupo": "saude",
    "rotulo": "Estados com dengue em nível de alerta",
-   "valor": 3,
+   "valor": 2,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -689,8 +681,7 @@
    "secundaria": null,
    "lista": [
     "ES",
-    "PB",
-    "PE"
+    "PB"
    ],
    "pagina_de_origem": "saude.html"
   }
@@ -720,5 +711,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 28/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e 1 município decretou situação de emergência ou calamidade; 70.496 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 28/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,2 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e nenhum município decretou situação de emergência ou calamidade; 34,5 milhões de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
+
+O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.
 ## 2026-10-28 · Buscador 2: link opaco do Google News fecha sem consultar o motor
 
 O seguidor de pistas deixa de procurar o título no veículo para resolver o link opaco do agregador: em três lotes, nenhum de cerca de 4.000 links foi resolvido por esse degrau, e cada lote gastava 3,4 h de execução. A pista cai com o motivo de sempre, "redirecionamento não resolvido (B2)", e o motor de busca fica livre para as consultas que acham documento. Teste novo; sem apagar dado.
