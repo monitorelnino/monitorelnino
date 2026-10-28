@@ -10728,7 +10728,115 @@
    "itens": null,
    "status": "erro",
    "erro": "erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port"
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_saude.py",
+   "inicio": "2026-10-28T01:12:55",
+   "duracao_s": 88.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-10-28T01:14:23",
+   "duracao_s": 361.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-10-28T01:20:24",
+   "duracao_s": 362.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_dda.py",
+   "inicio": "2026-10-28T01:26:26",
+   "duracao_s": 54.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_boletim_ms_dengue.py",
+   "inicio": "2026-10-28T01:27:20",
+   "duracao_s": 16.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_boletim_df_arboviroses.py",
+   "inicio": "2026-10-28T01:27:36",
+   "duracao_s": 537.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_boletim_pe_arboviroses.py",
+   "inicio": "2026-10-28T01:36:33",
+   "duracao_s": 66.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_boletim_pb_arboviroses.py",
+   "inicio": "2026-10-28T01:37:39",
+   "duracao_s": 192.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_arboviroses_sinan.py",
+   "inicio": "2026-10-28T01:40:52",
+   "duracao_s": 13.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "coletar_obitos_registro_civil.py",
+   "inicio": "2026-10-28T01:41:05",
+   "duracao_s": 37.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "classificar_saude_no_plano.py",
+   "inicio": "2026-10-28T01:41:42",
+   "duracao_s": 0.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-27",
+   "script": "gerar_saude_municipio.py",
+   "inicio": "2026-10-28T01:41:42",
+   "duracao_s": 0.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-10-28T01:32:41"
+ "atualizado_em": "2026-10-28T01:41:42"
 }
