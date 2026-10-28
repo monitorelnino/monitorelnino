@@ -216,7 +216,7 @@ setTimeout(() => {
   teste("todo crédito aponta para fonte do catálogo", fonteDesconhecida.length === 0);
 
   const coletadasSemData = creditos.filter(p => FONTES[p.dataset.credito].status === "coletado"
-    && !/Atualização: \d{2}\/\d{2}\/\d{4}/.test(p.textContent));
+    && !/(?:Atualização:|consultado em) \d{2}\/\d{2}\/\d{4}/.test(p.textContent));
   teste("crédito de fonte coletada traz a data de consulta", coletadasSemData.length === 0);
 
   const esperaSemTeto = creditos.filter(p => FONTES[p.dataset.credito].status !== "coletado"
