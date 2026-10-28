@@ -13,6 +13,11 @@ não pontuados permanecem na versão corrente.
 
 Quatro parágrafos da abertura pelo texto da editoria. O cartão do município diz o que não localizou (aviso, decreto, reconhecimento), com o tipo do aviso em minúscula e sem a validade. O prazo entre decreto e reconhecimento passa ao apoio de "Reconhecidos pela União".
 
+## 2026-10-28 · Financiamento: topo em dois grupos, "De onde vem o dinheiro" pelo caminho do dinheiro, cartão do município padronizado
+
+O topo separa medidas provisórias e atos de repasses aos municípios; o SUS conta desde 29 de junho de 2026. "De onde vem o dinheiro" mostra uma linha por medida provisória e os repasses, com o gráfico mensal; sai a seção "Mês a mês". "Pago" passa a "desembolsado". O cartão do município traz fonte e data de consulta em cada cartão.
+
+
 ## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
 
 O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.

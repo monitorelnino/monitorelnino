@@ -23,7 +23,7 @@ const RISCOS = [
   {chave: 'chuva', rotulo: 'Chuva forte', acento: 'cartao--acento-chuva'},
   {chave: 'saude', rotulo: 'Saúde', acento: 'cartao--acento-sintetico-topo'},
 ];
-const ACOES = {resposta: 'Resposta', recuperacao: 'Recuperação', outra: 'Outra'};
+const ACOES = {resposta: 'Resposta', recuperacao: 'Recuperação', outra: 'Outras ações'};
 const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
 const MESES_LONGOS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 const PREPOSICAO = {AC: 'No', AL: 'Em', AM: 'No', AP: 'No', BA: 'Na', CE: 'No', DF: 'No', ES: 'No',
@@ -100,7 +100,7 @@ function __init(){
   const dcTopo = topo('defesa_civil_ciclo'), sus = topo('sus_emergencia');
   const origens = mps.map(m => ({nome: m.numero + ' · ' + (m.tema || ''), ato: m.numero, data: m.publicada_em, orgao: (m.orgaos || []).map(o => o.nome).join(', ') || m.beneficiario,
       risco: riscoDe(m), anunciado: m.valor, empenhado: (m.execucao || {}).empenhado, pago: (m.execucao || {}).pago,
-      fonte: (m.execucao || {}).fonte, url: ((m.fontes || [])[0] || {}).url, notaMp: true}))
+      fonte: (m.execucao || {}).fonte, url: ((m.fontes || [])[0] || {}).url, notaMp: true, acimaDoAto: !!(m.execucao || {}).acima_do_valor_do_ato}))
     .concat(comp.map(i => ({nome: i.nome, ato: i.instrumento, data: null, orgao: i.esfera, risco: riscoDe(i),
       anunciado: i.valor_total, empenhado: null, pago: null, fonte: /^http/.test(i.fonte || '') ? 'ato oficial' : 'documento não localizado até o corte', url: /^http/.test(i.fonte || '') ? i.fonte : null})))
     .concat(sus && !sus.sem_coleta ? [{nome: 'Fundo Nacional de Saúde, linhas ligadas a emergência', ato: 'repasses fundo a fundo', data: null, orgao: 'Ministério da Saúde',
@@ -110,60 +110,52 @@ function __init(){
   // 1. Cinco números
   // =========================================================
   const usa = c => c && !c.sem_coleta && c.valor != null;
-  if (usa(anunciado)) { texto('topoAnunciado', reais(anunciado.valor)); texto('topoAnunciadoApoio', anunciado.detalhe || ''); }
-  if (usa(pago)) {
-    texto('topoPago', reais(pago.valor));
-    if (pago.variacao_mes != null && pago.mes_variacao_parcial) molde('topoPagoApoio', 'financiamento.dc-topo.topo_pago.apoio.molde',
-      {valor: reais(pago.variacao_mes), mes: MESES_LONGOS[Number(String(pago.mes_variacao).slice(4)) - 1]});
-  }
+  if (usa(anunciado)) { texto('topoAnunciado', reais(anunciado.valor)); molde('topoAnunciadoApoio', 'financiamento.dc-topo.topo_anunciado.apoio.molde', {n: anunciado.n_atos || 0}); }
+  if (usa(pago)) { texto('topoPago', reais(pago.valor)); texto('topoPagoApoio', tx('financiamento.dc-topo.topo_pago.apoio')); }
   texto('topoDireto', usa(direto) ? Number(direto.valor).toLocaleString('pt-BR') + '%' : 'não calculado até o corte');
   if (usa(direto)) texto('topoDiretoApoio', tx('financiamento.dc-topo.topo_direto.apoio'));
-  if (usa(dcTopo)) { texto('topoDefesaCivil', reais(dcTopo.valor)); molde('topoDefesaCivilApoio', 'financiamento.dc-topo.topo_defesa_civil.apoio.molde', {n: dcTopo.municipios || 0}); }
-  if (usa(sus)) { texto('topoSus', reais(sus.valor)); molde('topoSusApoio', 'financiamento.dc-topo.topo_sus.apoio.molde', {mes: mesDe(sus.ultimo_mes), n: sus.municipios || 0}); }
+  if (usa(dcTopo)) { texto('topoDefesaCivil', reais(dcTopo.valor)); molde('topoDefesaCivilApoio', 'financiamento.dc-topo.topo_defesa_civil.apoio.molde', {n: dcTopo.municipios || 0, recuperacao: reais((dcTopo.por_acao || {}).recuperacao) || NAO_LOCALIZADO}); }
+  if (usa(sus)) { texto('topoSus', reais(sus.valor)); molde('topoSusApoio', 'financiamento.dc-topo.topo_sus.apoio.molde', {n: sus.municipios || 0}); }
   [['topoAnunciadoFonte', anunciado], ['topoPagoFonte', pago], ['topoDiretoFonte', direto], ['topoDefesaCivilFonte', dcTopo], ['topoSusFonte', sus]]
     .forEach(([id, c]) => cred(id, [(c && c.fonte) || FONTE_TRANSP], S && S.corte));
   const tpa = (dcTopo && dcTopo.por_acao) || null;
   /* Nove dos 89 atos do consolidado (22/10) chegam sem número e sem data: o documento tem link no DOU,
      o que falta é o número lido dele. Uma função para a coluna e para o cartão, nunca "nº null". */
   const atoNum = a => a.portaria ? 'nº ' + a.portaria : 'sem número localizado até o corte';
-  /* O repasse do FNS é soma de meses, não ato de um dia: onde a coluna pede data, o período responde;
-     sem o mês do gerador, a classe é a lacuna, nunca "jan–undefined". */
-  const PERIODO_FNS = mesDe((sus || {}).ultimo_mes) ? 'jan–' + mesDe((sus || {}).ultimo_mes) + '/2026' : NAO_LOCALIZADO;
 
   // =========================================================
-  // 2. Para cada risco, de onde vem o dinheiro
+  // 2. De onde vem o dinheiro, pelo caminho do dinheiro
   // =========================================================
-  /* Uma escala para a página inteira: a maior etapa de qualquer fonte, inclusive a faixa da resposta. */
-  const escala = Math.max(1, ...origens.flatMap(o => [o.anunciado, o.empenhado, o.pago]).filter(v => v != null), ...Object.values(tpa || {}));
+  /* Uma escala para a seção: o maior valor de qualquer linha. A MP cujo empenhado passa do valor do ato
+     (a fonte mede a ação inteira, `execucao.acima_do_valor_do_ato`) não mostra o empenhado ao lado dele. */
+  const linhasMp = origens.filter(o => o.notaMp);
+  const susPago = usa(sus) ? sus.valor : null;
+  const escala = Math.max(1, ...linhasMp.flatMap(o => [o.anunciado, o.acimaDoAto ? null : o.empenhado, o.pago]).filter(v => v != null), ...Object.values(tpa || {}), susPago || 0);
   const barra = (rotulo, v, corBarra) => '<div class="barra-linha"><span class="barra-rotulo">' + esc(rotulo) + '</span><span class="barra-trilho">'
     + (v == null ? '<span class="barra-valor">' + NAO_LOCALIZADO + '</span>'
        : '<span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.005, v / escala).toFixed(4) + ');background:' + corBarra + '"></span><span class="barra-valor">' + esc(reais(v)) + '</span>')
     + '</span></div>';
-  const colunas = document.getElementById('colunasRisco');
-  /* Coluna vazia tem DUAS causas, e elas não são a mesma coisa: ou o gerador ainda não escreveu
-     `risco_declarado` em ato nenhum (não coletado), ou escreveu e nenhum ato declara este risco. A
-     pergunta é pelo CAMPO: ato lido com `risco: null` declara que não declara, e isso é coleta feita.
-     A conta é sobre os ATOS: o risco do FNS é a linha de repasse, não declaração em ato. */
-  const riscoColetado = mps.concat(comp).some(o => o.risco_declarado != null);
-  if (colunas) colunas.innerHTML = RISCOS.map(r => {
-    const fontes = origens.filter(o => o.risco === r.chave);
-    const corR = r.chave === 'saude' ? P.setores.saude : P.familia[r.chave];
-    return '<div class="cartao ' + r.acento + '"><p class="cartao-k">' + esc(r.rotulo) + '</p>'
-      + (fontes.map(o => '<b class="cartao-t">' + esc(o.nome) + '</b><span class="cartao-s">' + esc([o.orgao, o.data].filter(Boolean).join(' · ')) + '</span>'
-          + '<div class="barras-painel">' + barra('anunciado', o.anunciado, corR) + barra('empenhado', o.empenhado, corR) + barra('pago', o.pago, corR) + '</div>'
-          + (o.notaMp ? '<span class="cartao-s">' + esc(tx('financiamento.caminhos.nota_mp')) + '</span>' : '')).join('')
-         || '<span class="cartao-s">' + esc(tx(riscoColetado ? 'financiamento.caminhos.coluna.sem_fonte'
-                                                     : 'financiamento.caminhos.coluna.risco_nao_coletado')) + '</span>')
-      + '</div>';
-  }).join('');
-  const faixa = document.getElementById('depois');
+  const cartaoDinheiro = (acento, etiqueta, nome, apoio, corpo) => '<div class="cartao ' + acento + '"' + '><p class="cartao-k">' + esc(etiqueta) + '</p>'
+    + '<b class="cartao-t">' + esc(nome) + '</b>' + apoio + corpo + '</div>';
+  const etiquetaDe = o => (RISCOS.find(r => r.chave === o.risco) || {}).rotulo || tx('financiamento.caminhos.etiqueta.sem_risco');
+  const linhasMps = document.getElementById('linhasMps');
+  if (linhasMps) linhasMps.innerHTML = linhasMp.map(o => cartaoDinheiro('cartao--acento-argila', etiquetaDe(o), o.nome,
+    '<span class="cartao-s">' + esc(tx('financiamento.caminhos.mp.orgaos_data.molde', {orgaos: o.orgao || '', data: o.data || NAO_LOCALIZADO})) + '</span>',
+    '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.valor_do_ato'), o.anunciado, P.resposta)
+      + (o.acimaDoAto ? '' : barra(tx('financiamento.caminhos.barra.empenhado'), o.empenhado, P.resposta))
+      + barra(tx('financiamento.caminhos.barra.desembolsado'), o.pago, P.resposta) + '</div>'
+      + '<span class="cartao-s">' + esc(tx('financiamento.caminhos.nota_mp')) + '</span>')).join('');
   /* Do decreto ao recurso: os números vêm prontos do gerador (`semana.json` → `funil_defesa_civil`). */
   const F = (S && S.funil_defesa_civil) || {};
   const linhaFunil = F.n_decretaram == null ? '' : '<p class="cartao-s">' + esc(tx('financiamento.caminhos.funil.linha', {n_decretaram: n(F.n_decretaram),
-    n_reconhecidos: n(F.n_reconhecidos), n_com_recurso: n(F.n_com_recurso), n_30d: F.n_30d == null ? '' : tx('financiamento.caminhos.funil.n_30d', {n: n(F.n_30d)})})) + '</p>';
-  if (faixa) faixa.innerHTML = '<p class="cartao-k">' + esc(tx('financiamento.caminhos.faixa_resposta.titulo')) + '</p>' + linhaFunil
-    + (tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(ACOES[k].toLowerCase() + ', autorizado', tpa[k], P.resposta)).join('') + '</div>'
-           : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>');
+    n_reconhecidos: n(F.n_reconhecidos), n_com_recurso: n(F.n_com_recurso)})) + '</p>';
+  const linhasRepasses = document.getElementById('linhasRepasses');
+  if (linhasRepasses) linhasRepasses.innerHTML = cartaoDinheiro('cartao--acento-chuva', tx('financiamento.caminhos.etiqueta.todos_os_riscos'),
+      tx('financiamento.caminhos.faixa_resposta.titulo'), linhaFunil,
+      tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(tx('financiamento.caminhos.barra.autorizado', {acao: ACOES[k].toLowerCase()}), tpa[k], P.resposta)).join('') + '</div>'
+          : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>')
+    + cartaoDinheiro('cartao--acento-chuva', RISCOS.find(r => r.chave === 'saude').rotulo.toLowerCase(), tx('financiamento.caminhos.sus.titulo'), '',
+      '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.desembolsado'), susPago, P.setores.saude) + '</div>');
   const corpo = document.querySelector('#tblOrigens tbody');
   if (corpo) corpo.innerHTML = origens.map(o => '<tr>' + [esc(o.nome), esc(o.ato || ''), esc(o.data || NAO_LOCALIZADO), esc(o.orgao || ''),
       esc((RISCOS.find(r => r.chave === o.risco) || {}).rotulo || 'risco não declarado no ato'),
@@ -179,7 +171,7 @@ function __init(){
   const ORIGENS_MAPA = {defesa_civil: {rotulo: 'defesa civil', cor: P.resposta}, saude: {rotulo: 'saúde', cor: P.setores.saude}};
   const circulos = ((S && S.mapa) || []).filter(x => ORIGENS_MAPA[x.origem] && x.repassado > 0 && x.lat != null);
   const maxV = Math.max(1, ...circulos.map(x => x.repassado)), R_MAX = 14;
-  MonitorMapas.pontos(ctx, 'mapChega', circulos.slice().sort((a, b) => b.valor - a.valor), {
+  MonitorMapas.pontos(ctx, 'mapChega', circulos.slice().sort((a, b) => b.repassado - a.repassado), {
     r: x => Math.max(1.5, R_MAX * Math.sqrt(x.repassado / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: 0.6, classe: 'circulos-valor',
     tabela: {sel: '#boxChega', chave: x => [x.nome || '', x.uf || '', ORIGENS_MAPA[x.origem].rotulo]},
     rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato || '')
@@ -231,43 +223,50 @@ function __init(){
   let TRANSF = null, DESPESA = null, carga = null;
   const carregarConsulta = () => (carga = carga || Promise.all(['data/financiamento/municipios/transferencias_uniao.json', 'data/financiamento/municipios/despesa_182.json',
     'data/financiamento/municipios/fns_municipios_2026.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([t, d, f]) => { TRANSF = t; DESPESA = d; FNS_MUN = f; }));
-  const lacuna = corte => tx('financiamento.municipio.lacuna.molde', {corte: corte || 'sem registro'}) || 'Não localizado até o corte (' + (corte || 'sem registro') + ')';
+  /* A mesma data de consulta da página em todos os cartões e linhas (o corte do gerador). */
+  const consultado = S && S.corte;
   const cartao = (classe, titulo, corpo) => '<div class="cartao ' + classe + '"><p class="cartao-k">' + esc(titulo) + '</p>' + corpo + '</div>';
   const linhaT = (t, s) => '<b class="cartao-t">' + t + '</b>' + (s ? '<span class="cartao-s">' + s + '</span>' : '');
-  const ROTAS = {constitucional: 'constitucional', saude: 'saúde', assistencia_social: 'assistência social', defesa_civil: 'defesa civil', outras: 'outras'};
+  const fonteT = chave => '<span class="cartao-s">' + esc(tx(chave, {data: consultado || 'sem registro'})) + '</span>';
+  const faixa = (chave, valores) => '<p class="hint">' + esc(tx(chave, Object.assign({data: consultado || 'sem registro'}, valores))) + '</p>';
   function mostrar(uf, nome, card){
     const cod = MUN_COD[uf + '|' + nome];
+    const doMapa = origem => ((S && S.mapa) || []).find(x => String(x.cod_ibge) === cod && x.origem === origem);
     const dc = ((RECURSOS && RECURSOS.municipios) || {})[cod];
-    const corpoDc = dc ? linhaT(esc(reais(dc.total_autorizado)), (dc.atos || []).map(a => esc(ACOES[a.acao] || a.acao_no_ato || '') + ' · '
-        + link(a.url, 'Portaria ' + atoNum(a)) + (MonitorMapas.dataBR(a.data) ? ', de ' + esc(MonitorMapas.dataBR(a.data)) : '')).join('<br>'))
-      : linhaT(esc(lacuna(RECURSOS && RECURSOS.atualizado_em)));
-    const fm = ((FNS_MUN && FNS_MUN.municipios) || {})[cod];
-    /* Três estados, não dois: arquivo não carregado, município fora do arquivo (o FNS cobre 5.533
-       dos 5.571) e município no arquivo com `emergencia` zero, que é zero medido. */
-    const corpoSus = !FNS_MUN || !fm ? linhaT(esc(lacuna(FNS_MUN && FNS_MUN.atualizado_em)))
-      : fm.emergencia > 0 ? linhaT(esc(reais(fm.emergencia)), esc(PERIODO_FNS))
-      : linhaT(esc(tx('financiamento.municipio.sus.nenhum')), esc(PERIODO_FNS));
+    const primeira = dc && (dc.atos || []).map(x => x.data).filter(Boolean).sort()[0];
+    const corpoDc = (dc
+      ? linhaT(esc(reais(dc.total_autorizado)), (primeira ? esc(tx('financiamento.municipio.defesa_civil.valor.apoio.molde', {data: MonitorMapas.dataBR(primeira)})) + '<br>' : '')
+        + (dc.atos || []).map(x => esc(ACOES[x.acao] || x.acao_no_ato || '') + ' · '
+          + link(x.url, 'Portaria ' + atoNum(x)) + (MonitorMapas.dataBR(x.data) ? ', de ' + esc(MonitorMapas.dataBR(x.data)) : '')).join('<br>'))
+      : linhaT(esc(tx('financiamento.municipio.defesa_civil.lacuna')))) + fonteT('financiamento.municipio.defesa_civil.fonte.molde');
+    const sm = doMapa('saude');
+    const corpoSus = (sm ? linhaT(esc(reais(sm.repassado)), esc(sm.periodo || '')) : linhaT(esc(tx('financiamento.municipio.sus.lacuna'))))
+      + fonteT('financiamento.municipio.sus.fonte.molde');
+    /* Contexto, abaixo dos cartões: tudo o que a União transferiu ao município no ano e o gasto próprio. Os três
+       estados do gasto próprio (com valor, zero lançado, balanço não entregue) são distintos: zero ≠ ausência. */
     const t = ((TRANSF && TRANSF.municipios) || {})[cod];
     const mesesT = Object.keys((TRANSF && TRANSF.meses_lidos) || {}).sort();
-    const corpoT = t ? linhaT(esc(reais(t.total)), Object.entries(t.por_rota || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => esc((ROTAS[k] || k) + ' ' + reais(v))).join(' · ')
-        + (mesesT.length ? '<br>até ' + esc(mesDe(mesesT[mesesT.length - 1])) + '/2026' : '')) : linhaT(esc(lacuna(TRANSF && TRANSF.atualizado_em)));
-    const d = ((DESPESA && DESPESA.municipios) || {})[cod];
-    const classes = ((DESPESA && DESPESA._formato) || {}).classes_de_ausencia || {};
-    const corpoD = !d ? linhaT(esc(lacuna(DESPESA && DESPESA.gerado_em)))
-      : d.rs_hab != null ? linhaT(esc((d.rs_hab < 0.01 ? 'menos de R$ 0,01' : 'R$ ' + d.rs_hab.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})) + ' por habitante'),
-          esc(DESPESA.exercicio + ' · ' + tx('financiamento.municipio.gasto_proprio.ressalva')))
-      : linhaT(esc(classes[d.classe] || d.classe), esc(String(DESPESA.exercicio)));
+    const ultimoT = mesesT[mesesT.length - 1];
+    const ctxT = t && ultimoT
+      ? faixa('financiamento.municipio.contexto.transferencias.molde', {ano: ultimoT.slice(0, 4), total: reais(t.total),
+          mes: MESES_LONGOS[Number(ultimoT.slice(4, 6)) - 1], constitucional: reais((t.por_rota || {}).constitucional || 0)})
+      : faixa('financiamento.municipio.contexto.transferencias.lacuna.molde', {ano: ultimoT ? ultimoT.slice(0, 4) : '2026', corte: (TRANSF && TRANSF.atualizado_em) || 'sem registro'});
+    const d = ((DESPESA && DESPESA.municipios) || {})[cod], ano = DESPESA && String(DESPESA.exercicio);
+    const gasto = d && d.valores ? (d.valores.liquidada != null ? d.valores.liquidada : d.valores.paga != null ? d.valores.paga : d.valores.empenhada) : null;
+    const ctxD = !d ? faixa('financiamento.municipio.contexto.gasto_proprio.sem_coleta.molde', {ano: ano})
+      : d.classe === 'com_lancamento' && gasto != null ? faixa('financiamento.municipio.contexto.gasto_proprio.valor.molde', {valor: reais(gasto), ano: ano})
+      : d.classe === 'sem_lancamento_182' ? faixa('financiamento.municipio.contexto.gasto_proprio.zero.molde', {ano: ano})
+      : d.nota ? faixa('financiamento.municipio.contexto.gasto_proprio.nota.molde', {nota: d.nota})
+      : faixa('financiamento.municipio.contexto.gasto_proprio.nao_entregue.molde', {ano: ano});
     const doUF = Object.values((RECURSOS && RECURSOS.municipios) || {}).filter(m => m.uf === uf);
     const estaduais = comp.filter(i => new RegExp('Estadual \\(' + uf + '\\)').test(i.esfera || '') && i.valor_total);
     const estado = !RECURSOS ? '' : tx('financiamento.municipio.estado.molde', {no_estado: (PREPOSICAO[uf] || 'Em') + ' ' + (NOME_UF[uf] || uf),
       valor: reais(doUF.reduce((s, m) => s + (m.total_autorizado || 0), 0)), n_mun: doUF.length,
       estaduais: estaduais.map(i => '; ' + i.nome.split(' — ')[0] + ', ' + reais(i.valor_total) + ' declarados no ato estadual').join('')});
-    card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><div class="grade-cartoes grade-cartoes--4">'
+    card.innerHTML = '<h4>' + esc(nome) + ' · ' + esc(uf) + '</h4><p class="selo">' + esc(tx('financiamento.municipio.faixa.titulo_el_nino')) + '</p><div class="grade-cartoes">'
       + cartao('cartao--acento-argila', tx('financiamento.municipio.defesa_civil.titulo'), corpoDc)
       + cartao('cartao--acento-neutro', tx('financiamento.municipio.sus.titulo'), corpoSus)
-      + cartao('cartao--acento-musgo', tx('financiamento.municipio.transferencias.titulo'), corpoT)
-      + cartao('cartao--acento-neutro', tx('financiamento.municipio.gasto_proprio.titulo'), corpoD)
-      + '</div>' + (estado ? '<p class="hint">' + estado + '</p>' : '');
+      + '</div>' + ctxT + ctxD + (estado ? '<p class="hint">' + estado + '</p>' : '');
   }
   ConsultaMunicipio.montar({uf: 'consultaUF', municipio: 'consultaMun', lista: 'consultaLista', cartao: 'consultaCard',
     estados: NOME_UF, mostrar, semLista: 'Lista de municípios do estado: sem coleta até o corte.',
