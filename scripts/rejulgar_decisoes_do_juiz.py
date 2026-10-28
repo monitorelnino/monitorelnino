@@ -122,6 +122,13 @@ def autoteste() -> int:
                   and herdar_18(dict(lido, regras_18=["J1"]), None)["promove"] is True
                   and herdar_18(lido, {"promove": True, "categoria": "plano_antigo"}) == lido))
 
+    leva = dict(lido, com_segunda_leva={"promove": False, "motivo": "documento_estadual", "regras_18": ["J14"]})
+    casos.append(("1.8: a regra da segunda leva muda a variante mesmo quando o veredito principal é mantido; "
+                  "a errata manda nela também",
+                  herdar_18(leva, None)["com_segunda_leva"]["motivo"] == "documento_estadual"
+                  and herdar_18(leva, None)["com_propostas_J8_J9"]["promove"] is False
+                  and herdar_18(leva, errata)["com_segunda_leva"]["motivo"] == errata["motivo"]))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -175,20 +182,27 @@ def herdar_18(novo: dict, antes) -> dict:
     herdado = {k: antes.get(k) for k in ("promove", "motivo", "categoria", "data")}
     herdado["promove"] = bool(herdado["promove"]) and por != "errata"
     out = dict(novo, **herdado, mantido_18={"por": por, "lido": compacto_18(novo)})
-    if novo.get("com_propostas_J8_J9"):
-        out["com_propostas_J8_J9"] = dict(novo["com_propostas_J8_J9"], **herdado)
+    for variante in VARIANTES_18:   # regra da própria variante muda a variante; a errata manda em todas
+        propria = set((novo.get(variante) or {}).get("regras_18") or []) - set(novo.get("regras_18") or [])
+        if novo.get(variante) and (por == "errata" or not propria):
+            out[variante] = dict(novo[variante], **herdado)
     return out
 
 
+# Regras medidas à parte, cada conjunto na sua chave: J8/J9 (propostas) e a segunda leva (§1b/§1c).
+VARIANTES_18 = {"com_propostas_J8_J9": "PROPOSTAS_18", "com_segunda_leva": "SEGUNDA_LEVA_18"}
+
+
 def julgar_18(p: dict, buscar, propostas=False) -> dict:
+    import juiz
     from julgar_filas import julgar_uma
     novo = julgar_uma(p, buscar, codebook="1.8")
     if propostas and novo.get("leu_documento"):
-        from juiz import PROPOSTAS_18, julgar
         texto = buscar(p.get("url"))
-        prop = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "", ibge=p.get("ibge"),
-                      url=p.get("url"), trecho=p.get("trecho"), codebook="1.8", propostas=PROPOSTAS_18)
-        novo["com_propostas_J8_J9"] = compacto_18(prop)
+        for variante, conjunto in VARIANTES_18.items():
+            novo[variante] = compacto_18(juiz.julgar(
+                texto, nome=p.get("municipio") or "", uf=p.get("uf") or "", ibge=p.get("ibge"), url=p.get("url"),
+                trecho=p.get("trecho"), codebook="1.8", propostas=getattr(juiz, conjunto)))
     return novo
 
 
@@ -265,7 +279,8 @@ def paralelo_18(argv) -> int:
     from juiz import CODEBOOK_18, fonte_oficial
     rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
     propostas = "--propostas" in argv
-    # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18).
+    # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18);
+    # `--refazer leva2`: relê a chave lida que ainda não tem `com_segunda_leva` (com `--propostas`).
     refazer = set(argv[argv.index("--refazer") + 1].split(",")) if "--refazer" in argv else set()
     saida = RAIZ / argv[argv.index("--saida") + 1] if "--saida" in argv else SAIDA_18
     doc = json.loads(saida.read_text(encoding="utf-8")) if saida.exists() else {
@@ -288,7 +303,9 @@ def paralelo_18(argv) -> int:
         anterior = feitas.get(chave)
         precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"], True)
         refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or [])
-                                     or ("promove" in refazer and anterior.get("promove"))))
+                                     or ("promove" in refazer and anterior.get("promove"))
+                                     or ("leva2" in refazer and anterior.get("leu_documento")
+                                         and "com_segunda_leva" not in anterior)))
         if anterior and (anterior.get("leu_documento") or not precisa_ler) and not refeita:
             return
         if precisa_ler and (not rede or lidas >= rede):

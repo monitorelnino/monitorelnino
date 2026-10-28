@@ -1120,6 +1120,89 @@ RE_PROVA_DE_VIGENCIA = re.compile(r"(?:revis|atualiza|vig[êe]ncia|validade|v[á
 RE_SECRETARIA_SETORIAL = re.compile(
     r"secret[áa]ri[oa]\s+municipal\s+de\s+(?:educa[çc][ãa]o|assist[êe]ncia|sa[úu]de)|\bsmed\b|\bsemed\b|\bsmas\b", re.I)
 
+# Segunda leva (§1b e §1c do handover): regras do 1.8 que ficaram fora do conjunto medido e adotado pela
+# central em 28/10 21:50 (J1–J7, J10, J11, J15). Ligadas como as propostas (`propostas=SEGUNDA_LEVA_18`), medidas
+# à parte; entram no padrão só depois da medição.
+SEGUNDA_LEVA_18 = ("J14", "J16", "J19", "J20")
+
+# J14. Documento estadual achado por busca municipal vai para a fila do instrumento estadual (o de saúde, para o
+# MARÉ Saúde); nunca é descartado nem creditado ao município (Fortaleza × Decreto 34.595/CE; Manaus × lei AM 7.772).
+RE_HOST_ESTADUAL_LEG = re.compile(r"(?:^|\.)al\.[a-z]{2}\.leg\.br$")
+RE_MARCA_ESTADUAL = re.compile(r"governador\s+do\s+estado|assembleia\s+legislativa|plano\s+estadual|"
+                               r"di[áa]rio\s+oficial\s+do\s+estado|secretaria\s+(?:de\s+estado|estadual)\s+d", re.I)
+RE_MARCA_MUNICIPAL = re.compile(r"prefeitura|munic[íi]pio\s+d[aeo]\s|c[âa]mara\s+municipal", re.I)
+
+
+def destino_estadual_18(texto, url):
+    """"instrumento_estadual" | "mare_saude" | None. Host de estado (sem município dono) e marca de estado no
+    cabeçalho antes de qualquer marca municipal."""
+    import urllib.parse as _u
+    from municipio_do_dominio import municipio_de
+    host = _u.urlparse(str(url or "")).netloc.lower().split(":")[0]
+    if not (RE_HOST_ESTADUAL_LEG.search(host) or (uf_do_dominio(url) and not municipio_de(url))):
+        return None
+    cabeca = str(texto or "")[:2000]
+    estado, municipio = RE_MARCA_ESTADUAL.search(cabeca), RE_MARCA_MUNICIPAL.search(cabeca)
+    if not estado or (municipio and municipio.start() < estado.start()):
+        return None
+    saude = host.startswith("saude.") or re.search(r"secretaria\s+de\s+estado\s+da\s+sa[úu]de", cabeca, re.I)
+    return "mare_saude" if saude else "instrumento_estadual"
+
+
+# J16. Calendário de datas, campanha ou lista de leis citadas não é instrumento (Apucarana, Decreto 277/2026).
+RE_CALENDARIO_18 = re.compile(r"\bcalend[áa]rio\b|\bcampanhas?\b|\bm[êe]s\s+tem[áa]tico\b|\bdatas?\s+comemorativ", re.I)
+RE_LEI_CITADA_18 = re.compile(r"\blei\s+(?:municipal\s+|complementar\s+)?n[º°o.]*\s*\d", re.I)
+
+
+def nao_e_instrumento_18(texto) -> bool:
+    corpo = str(texto or "")[:6000]
+    return bool((RE_CALENDARIO_18.search(corpo[:1500]) and len(RE_CALENDARIO_18.findall(corpo)) >= 3)
+                or (len(RE_LEI_CITADA_18.findall(corpo)) >= 8 and not RE_TITULO_DE_PLANO.search(corpo[:1500])))
+
+
+# J20. Lei ou decreto que cria fundo, COMPDEC ou conselho de defesa civil é ESTRUTURA, mesmo citando calamidade
+# ou FIDE (Londrina FUMPDEC; Imperatriz, Decreto 020/2021).
+RE_DEFESA_CIVIL_18 = r"(?:prote[çc][ãa]o\s+e\s+)?defesa\s+civil"
+RE_ESTRUTURA_18 = re.compile(
+    r"\b(?:cria|institui|reestrutura|regulamenta)\b[^.;]{0,120}?(?:fundo\s+municipal\s+de\s+" + RE_DEFESA_CIVIL_18
+    + r"|\bfum?p?dec\b|coordenadoria\s+municipal\s+de\s+" + RE_DEFESA_CIVIL_18 + r"|\bcomp?dec\b|conselho\s+"
+    r"(?:municipal\s+de\s+" + RE_DEFESA_CIVIL_18 + r"|gestor))", re.I)
+
+
+def e_estrutura_18(texto) -> bool:
+    ementa = str(texto or "")[:1200]
+    achado = RE_ESTRUTURA_18.search(ementa)
+    return bool(achado) and not RE_TITULO_DE_PLANO.search(ementa[:achado.end() + 120])
+
+
+# J19. Repositório estadual de planos municipais (ES, SE, pasta da Casa Militar do RS): o município sai do nome do
+# arquivo e do título, nunca do município da pista (Viana creditado a Vitória/ES).
+def _palavras(s) -> list:
+    from municipio_do_dominio import _norm
+    return [w for w in (_norm(x) for x in re.split(r"[\W_]+", str(s or ""))) if w]
+
+
+def ente_do_repositorio_18(texto, url):
+    """(nome, uf, ibge) | "nao_identificado" | None (fora de repositório estadual)."""
+    import urllib.parse as _u
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, documento_do_repositorio
+    uf = next((u for u in REPOSITORIOS if documento_do_repositorio(url, u)), None)
+    if not uf:
+        return None
+    from municipio_do_dominio import _indice
+    if not _INDICE_18:
+        _INDICE_18.append(_indice(None))
+    arquivo = _palavras(_u.unquote(_u.urlparse(str(url)).path).rsplit("/", 1)[-1])
+    melhor = None
+    for m in (m for (_, u), m in _INDICE_18[0].items() if u == uf):
+        nome = _palavras(m["nome"])
+        if any(arquivo[i:i + len(nome)] == nome for i in range(len(arquivo))) and (
+                not melhor or len(nome) > len(_palavras(melhor["nome"]))):
+            melhor = m
+    if melhor:
+        return melhor["nome"], melhor["uf"], melhor["ibge"]
+    return ente_do_cabecalho(texto) or "nao_identificado"
+
 
 # =============================================================================================
 # O juiz
@@ -1132,10 +1215,14 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
 
     `promove` é True só quando TODAS passam. Quando não promove, `motivo` é o critério que
     falhou — é ele que fica visível na fila, e é por ele que o relatório agrupa as recusas.
-    `codebook="1.8"` liga o modo paralelo (regras J1–J7, J10, J11; `propostas` liga J8/J9)."""
+    `codebook="1.8"` liga o modo paralelo (regras J1–J7, J10, J11, J15; `propostas` liga J8/J9 e a segunda leva)."""
     v18 = e_v18(codebook)
     regras = []
-    if v18 and not eh_estadual:
+    repo = ente_do_repositorio_18(texto, url) if v18 and not eh_estadual and "J19" in propostas else None
+    if isinstance(repo, tuple) and (normalizar(repo[0]), repo[1]) != (normalizar(nome), str(uf or "").upper()):
+        nome, uf, ibge = repo
+        regras.append("J19")
+    elif v18 and not eh_estadual and not repo:
         nome, uf, ibge, regra = ente_18(texto, nome, uf, ibge, url)
         regras += [regra] if regra else []
     veredito = {"promove": False, "motivo": None, "codebook": CODEBOOK_18 if v18 else CODEBOOK_VERSAO,
@@ -1158,6 +1245,12 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if v18 and e_noticia_18(url, texto):
         veredito["encaminhar"] = "pista_dirigida"
         return recusa("noticia_nao_e_documento", "J2")
+    if repo == "nao_identificado":
+        return recusa("municipio_nao_identificado", "J19")
+    destino = destino_estadual_18(texto, url) if v18 and not eh_estadual and "J14" in propostas else None
+    if destino:
+        veredito["encaminhar"] = destino
+        return recusa("documento_estadual", "J14")
 
     # Edição de diário traz dezenas de atos; o documento primário é o ATO que contém o excerto.
     # 09/10/2026 (lote 2.2): a identidade do ente se lê na CABEÇA da edição ("Diário Oficial do
@@ -1211,6 +1304,10 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if not ok:
         return recusa(motivo)
 
+    if v18 and not como_plano and "J20" in propostas and e_estrutura_18(texto):
+        return recusa("estrutura_de_defesa_civil", "J20")
+    if v18 and not como_plano and "J16" in propostas and nao_e_instrumento_18(texto):
+        return recusa("nao_e_instrumento", "J16")
     if como_plano:
         # J1: o plano não institui o plano; teste do objeto e de gatilho são para decreto e ato avulso.
         natureza, motivo_nat, provas = "EX_ANTE", "o documento é plano pelo cabeçalho (J1)", {}
@@ -1482,6 +1579,21 @@ SOLEDADE_18 = ("https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=
                "11aa60708671a8915f86760b4935e248.pdf")
 
 
+URL_VIANA_18 = ("https://defesacivil.es.gov.br/Media/Plano%20de%20Conting%C3%AAncia%20atualizado/2026/"
+                "VIANA%20-%20PLANO%20DE%20CONTING%C3%8ANCIA%20-2025.pdf")
+URL_CE_18 = "https://www.bombeiros.ce.gov.br/wp-content/uploads/sites/27/2022/03/Decreto-34595_PEPDEC.pdf"
+DECRETO_ESTADUAL_18 = ("DIÁRIO OFICIAL DO ESTADO | FORTALEZA, 21 DE MARÇO DE 2022. DECRETO Nº 34.595, de 17 de março de "
+                       "2022. O GOVERNADOR DO ESTADO DO CEARÁ, no uso de suas atribuições, DECRETA: Art. 1º Fica "
+                       "aprovado o Plano Estadual de Proteção e Defesa Civil para estiagem. " + "texto " * 100)
+URL_APUCARANA_18 = "https://data.queridodiario.ok.org.br/4101408/2026-08-19/dae418d4fd84e033218a03d861c0a3ea8e21a8a9.pdf"
+CALENDARIO_18 = ("MUNICIPIO DE APUCARANA - PR Prefeitura Decreto 277/2026, de 18 de agosto de 2026. Institui o Calendário "
+                 "Oficial de Campanhas e Datas Comemorativas do Município de Apucarana. O PREFEITO DO MUNICÍPIO DE "
+                 "APUCARANA, no uso de suas atribuições, DECRETA: Art. 1º Fica instituído o calendário. Agosto Cinza – "
+                 "prevenção e combate a incêndios, Campanha/Mês Temático, Lei nº 59, de 13 de agosto de 2021. Primeira "
+                 "Semana, Lei nº 202, de 29 de março de 2019, Semana da Saúde. Setembro: campanha da estiagem e seca, "
+                 "previsão do INMET para o período 2026/2027. " + "data comemorativa " * 30)
+
+
 def _v(texto, nome, uf, url, **kw):
     return julgar(texto, nome=nome, uf=uf, url=url, **dict(_C18, **kw))
 
@@ -1569,6 +1681,36 @@ def casos_18() -> list:
         ("J9 (proposta) ato da Secretaria de Educação é plano setorial (Toledo/PR)",
          _v(toledo, "Toledo", "PR", "https://www.toledo.pr.gov.br/in-17-2026.pdf", propostas=("J9",))["motivo"]
          == "plano_setorial"),
+        ("J14 (segunda leva) decreto estadual achado por Fortaleza vai à fila estadual; plano estadual de saúde, ao "
+         "MARÉ Saúde; sem J14 ligado, nada muda",
+         _v(DECRETO_ESTADUAL_18, "Fortaleza", "CE", URL_CE_18, propostas=SEGUNDA_LEVA_18)["encaminhar"]
+         == "instrumento_estadual"
+         and destino_estadual_18("SECRETARIA DE ESTADO DA SAÚDE DE SERGIPE PLANO ESTADUAL DE CONTINGÊNCIA 2026-2027",
+                                 "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano.pdf") == "mare_saude"
+         and destino_estadual_18("ASSEMBLEIA LEGISLATIVA DO ESTADO DO AMAZONAS LEI Nº 7.772",
+                                 "https://sapl.al.am.leg.br/media/7772.pdf") == "instrumento_estadual"
+         and destino_estadual_18("PREFEITURA DE X. Plano estadual citado", "https://x.ce.gov.br/a.pdf") is None
+         and _v(DECRETO_ESTADUAL_18, "Fortaleza", "CE", URL_CE_18)["motivo"] != "documento_estadual"),
+        ("J16 (segunda leva) calendário de campanhas com 'incêndio' não é instrumento (Apucarana/PR)",
+         nao_e_instrumento_18(CALENDARIO_18) and not nao_e_instrumento_18(PLANO_RS_18)
+         and _v(CALENDARIO_18, "Apucarana", "PR", URL_APUCARANA_18, propostas=SEGUNDA_LEVA_18)["motivo"]
+         == "nao_e_instrumento"),
+        ("J19 (segunda leva) plano de Viana no repositório do ES vai para Viana, não para Vitória da pista",
+         ente_do_repositorio_18("Viana faz parte da Região Metropolitana da Grande Vitória", URL_VIANA_18)[:2]
+         == ("Viana", "ES")
+         and ente_do_repositorio_18("", URL_RS_18)[:2] == ("São Borja", "RS")
+         and ente_do_repositorio_18("", URL_RS_18.replace("SAO_BORJA_2025", "SANTA_VITORIA_DO_PALMAR"))[0]
+         == "Santa Vitória do Palmar"
+         and ente_do_repositorio_18("sem nome", URL_RS_18.replace("PLANCON_SAO_BORJA_2025", "plano_123"))
+         == "nao_identificado"
+         and ente_do_repositorio_18("", "https://www.taio.sc.gov.br/plano.pdf") is None),
+        ("J20 (segunda leva) lei que institui o FUMPDEC e decreto que regulamenta a COMPDEC são estrutura "
+         "(Londrina/PR, Imperatriz/MA); a lei que institui o plano, não",
+         e_estrutura_18("LEI Nº 13.900 Institui o Fundo Municipal de Proteção e Defesa Civil (FUMPDEC) e cria o seu "
+                        "respectivo Conselho Gestor. Estado de calamidade pública")
+         and e_estrutura_18("DECRETO N°020 DE 08 DE MARÇO DE 2021 Regulamenta a Lei n° 1.075 de 12 de dezembro de 2006 "
+                            "que cria a Coordenadoria Municipal de Defesa Civil - COMDEC")
+         and not e_estrutura_18("Institui o Plano de Contingência e a COMPDEC participa do acionamento")),
         ("o 1.7 continua o juiz em produção: veredito sem codebook não traz regras_18",
          "regras_18" not in julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)
          and julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["codebook"] == CODEBOOK_VERSAO),
