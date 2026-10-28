@@ -28,6 +28,9 @@ O portão de frescor passa a dispensar arquivo com exceção registrada (regra, 
 ## 2026-10-28 · Buscador 2: link opaco do Google News fecha sem consultar o motor
 
 O seguidor de pistas deixa de procurar o título no veículo para resolver o link opaco do agregador: em três lotes, nenhum de cerca de 4.000 links foi resolvido por esse degrau, e cada lote gastava 3,4 h de execução. A pista cai com o motivo de sempre, "redirecionamento não resolvido (B2)", e o motor de busca fica livre para as consultas que acham documento. Teste novo; sem apagar dado.
+## 2026-10-28 · Ícone oficial do Instagram entra em assets/redes
+
+O glifo preto do pacote de marca do Instagram, baixado do site da rede, entra com a procedência em `assets/redes/LEIAME.md`. O do LinkedIn segue pendente: o kit da rede não traz SVG. O rodapé ainda não o usa.
 
 ## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
 
