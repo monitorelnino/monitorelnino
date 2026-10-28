@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · #1306 · Rodapé: ícone oficial do LinkedIn e do Instagram, com o nome embaixo
+
+O rodapé de todas as páginas mostra o glifo oficial de cada rede acima do nome, só LinkedIn e Instagram. Os links são os mesmos; o ícone é decorativo e o nome continua sendo o rótulo.
+
 ## 2026-10-28 · #1301 · Crédito dos mapas: "consultado em" quando a data é a da nossa consulta
 
 O crédito da figura passa a dizer "consultado em dd/mm/aaaa" quando a data é a da nossa consulta à fonte e mantém "Atualização: dd/mm/aaaa" quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.
