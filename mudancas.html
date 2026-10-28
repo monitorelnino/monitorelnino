@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=dbf05415"></script>
+<script src="assets/mapas.js?v=414c4e5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
 <link rel="stylesheet" href="assets/base.css?v=65cb253e">
 </head>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>28/10/2026 · Crédito dos mapas: &quot;consultado em&quot; quando a data é a da nossa consulta</dt>
+      <dd>O crédito da figura passa a dizer &quot;consultado em dd/mm/aaaa&quot; quando a data é a da nossa consulta à fonte e mantém &quot;Atualização: dd/mm/aaaa&quot; quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.</dd>
       <dt>28/10/2026 · Logo do LinkedIn entra em assets/redes</dt>
       <dd>O &quot;in&quot; preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.</dd>
       <dt>28/10/2026 · Juiz 1.8 (paralelo): segunda leva J14, J16, J19, J20 medida à parte</dt>
@@ -165,8 +167,6 @@
       <dd>A lista única `BANCO_PROIBIDO` deixa de citar `monitor_saude_v04.json`, removido com a v0.7; o autoteste do coletor de diários passa a exigir os cinco arquivos que existem. Sem mudança de dado ou de página.</dd>
       <dt>25/10/2026 · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados</dt>
       <dd>O repasse do SUS para emergências passa a contar desde 29/06/2026 (meses inteiros, julho em diante): R$ 8,2 mi em 16 municípios, antes R$ 112 mi em 63. O topo da Saúde traz estados acima da faixa habitual por desfecho. O empenhado das MPs ganha marcador quando excede o valor do ato (a fonte mede a ação, não o crédito). `n_atos` numérico. METODOLOGIA: v0.7 vira §123, com as frases de comparação e de não atribuição.</dd>
-      <dt>25/10/2026 · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada</dt>
-      <dd>O nacional da chikungunya parava na semana 9 sem aviso porque o Tocantins não tem registro depois dela na fonte. `desfechos_sus.montar` agora declara em `lacunas` a UF defasada (último período) e marca `ultimo.BR.ufs_sem_dado_depois`; o nacional segue só com as 27 UFs. Dengue e SRAG inalterados. Código +31/−5.</dd>
     </dl>
   </section>
 </main>

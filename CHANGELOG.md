@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-28 · #1301 · Crédito dos mapas: "consultado em" quando a data é a da nossa consulta
+
+O crédito da figura passa a dizer "consultado em dd/mm/aaaa" quando a data é a da nossa consulta à fonte e mantém "Atualização: dd/mm/aaaa" quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.
+
 ## 2026-10-28 · #1304 · Logo do LinkedIn entra em assets/redes
 
 O "in" preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.
