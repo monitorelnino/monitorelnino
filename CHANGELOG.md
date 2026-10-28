@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Em "De onde vem o dinheiro", os dois cartões das MPs e o gráfico "Desembolsado por mês" ficam lado a lado. As barras passam a comparar dotação atualizada, empenhado e desembolsado da ação reforçada; o valor do ato vai em texto. Corrige o desembolsado da MP 1.367 acima do valor do ato.
 
+## 2026-10-28 · dotação da ação · Financiamento: cada MP traz a base da própria ação
+`semana.json` passa a levar, por MP, `acao`: dotação atualizada da ação (inclui o crédito), empenhado e pago da ação desde o mês de publicação, valor do ato à parte, fonte e exercício. Dotação não lida vira lacuna com motivo, nunca zero. A barra do cartão pode comparar a mesma base; o pago deixa de passar do valor do ato.
+
 ## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
 Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
 

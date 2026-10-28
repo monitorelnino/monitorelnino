@@ -98,8 +98,10 @@ function __init(){
   const topo = id => (((S && S.topo) || []).find(c => c.id === id) || null);
   const anunciado = topo('anunciado_atos'), pago = topo('pago_ate_agora'), direto = topo('gasto_direto_uniao');
   const dcTopo = topo('defesa_civil_ciclo'), sus = topo('sus_emergencia');
+  /* A base da ação (dotação atualizada, empenhado, pago) vem pronta do gerador: `semana.json` → `mes_a_mes[].acao`. */
+  const acaoDe = m => ((((S && S.mes_a_mes) || []).find(x => x.id === m.id) || {}).acao) || {};
   const origens = mps.map(m => ({id: m.id, nome: m.numero + ' · ' + (m.tema || ''), ato: m.numero, data: m.publicada_em, orgao: (m.orgaos || []).map(o => o.nome).join(', ') || m.beneficiario,
-      risco: riscoDe(m), anunciado: m.valor, dotacao: (((m.isolamento || {}).via_4_dotacao) || {}).atualizado, empenhado: (m.execucao || {}).empenhado, pago: (m.execucao || {}).pago,
+      risco: riscoDe(m), anunciado: m.valor, dotacao: acaoDe(m).dotacao_atualizada, empenhado: acaoDe(m).empenhado, pago: acaoDe(m).pago,
       fonte: (m.execucao || {}).fonte, url: ((m.fontes || [])[0] || {}).url, notaMp: true}))
     .concat(comp.map(i => ({nome: i.nome, ato: i.instrumento, data: null, orgao: i.esfera, risco: riscoDe(i),
       anunciado: i.valor_total, empenhado: null, pago: null, fonte: /^http/.test(i.fonte || '') ? 'ato oficial' : 'documento não localizado até o corte', url: /^http/.test(i.fonte || '') ? i.fonte : null})))
