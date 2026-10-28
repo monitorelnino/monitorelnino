@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-28 · #PR · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
+## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
 Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
 
 ## 2026-10-28 · grade compacta · Grupo de um ou dois cartões ocupa a largura toda
