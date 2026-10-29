@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · METODOLOGIA: "nota" do índice vira "índice" (59 linhas)
+
+Segue a regra da editoria (01/10 e 29/10): no valor dos índices MARÉ não se diz "nota". Troca por tabela fixa, só onde "nota" era o valor do índice; nota técnica, nota de rodapé e nota de versão ficam. "Ranking" e "ranqueamento" seguem na seção de sensibilidade e na §13 até decisão da editoria. Lista antes → depois no LOTES.
+
 ## 2026-10-29 · Portão: nada de "nota" para o índice nem ranking (+53/−22)
 
 Regra da editoria (01/10 e 29/10): o valor dos índices MARÉ é "índice", nunca "nota", e nenhum texto ordena estados ou municípios. A régua única de vocabulário ganha `padroes` (nota do índice, ranking), com casos de teste; vale para páginas e blog. Textos antigos trocados: início, Saúde, Imprensa, mudanças. METODOLOGIA segue em PR à parte.
