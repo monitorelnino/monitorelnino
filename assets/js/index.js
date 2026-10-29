@@ -559,7 +559,7 @@ function selectUF(uf, tileEl){
       if (!m || m.dias_apos_boletim_1 === null || m.dias_apos_boletim_1 === undefined) return '';
       const n = m.dias_apos_boletim_1;
       const quando = n < 0 ? `${Math.abs(n)} dias antes` : `${n} dias depois`;
-      return `<div class="field"><div class="k">Antecedência do primeiro ato datado</div><div class="v">${quando} do Boletim nº 1 (29/06/2026) · ato de ${esc(m.data_primeiro_ato)} · não entra na nota</div></div>`;
+      return `<div class="field"><div class="k">Antecedência do primeiro ato datado</div><div class="v">${quando} do Boletim nº 1 (29/06/2026) · ato de ${esc(m.data_primeiro_ato)} · não entra no índice</div></div>`;
     })()}
     ${(function(){ // C12: instrumento publicado dentro da janela do defeso (04/07–25/10/2026) — fato datado, sem juízo
         const m = String(d.data || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); if (!m) return '';
