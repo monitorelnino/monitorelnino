@@ -12,6 +12,7 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-29 · Redução: seis funções sem chamador saem (−39 líquidas)
 
 Saem `htmlGuia`, `popLinha` e `POP_UF` (index.js), `opcoesDeEixoSemanal` e `primeiraSemanaComValor` (saude.js), `_hoje_iso` (julgar_filas.py) e `ErroDoGh` (checagem_pre_noite.py): nenhum chamador em código, workflow ou página. Sem mudança de comportamento. Linhas: +1/−40.
+
 ## 2026-10-29 · SRAG: rótulo do desfecho · A1
 
 O rótulo de `srag.json` passa a "SRAG (síndrome respiratória aguda grave), casos hospitalizados notificados" (SA-03.2). Raiz: `derivar` comparava só série e lacunas e nunca regravava rótulo novo; agora compara o rótulo. +2/−2.
@@ -23,6 +24,7 @@ Aplicados os textos aprovados pela editoria em 29/10: abertura e intro dos núme
 ## 2026-10-29 · METODOLOGIA: `nota_uf` vira `indice_uf` na fórmula do índice nacional da Saúde
 
 Resíduo do #1335: o símbolo da fórmula usava a palavra vedada para o valor do índice. Texto de uma linha, sem mudança de método; PDF e manifesto regerados. Linhas líquidas: 0 (+1/−1 no .md).
+
 ## 2026-10-29 · Pacote 1 · Monitor de riscos: textos aprovados
 
 Abertura em três frases (RI-01); RONI definido na primeira ocorrência e instrução de interação nas linhas do gráfico (RI-02); texto da consulta explica município, estado e estação de referência (RI-03); instrução e leitura da legenda ao lado dos mapas (RI-04). Sem mudança de dado, ordem ou layout.
@@ -34,6 +36,7 @@ Título, cenários, observação, abertura dos cartões e do mapa de planos com 
 ## 2026-10-29 · Pacote 1 · Página inicial: textos aprovados e instrução de interação
 
 Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
+
 ## 2026-10-29 · Pacote 1: textos aprovados de Defesa civil e Financiamento
 
 Catálogo: abertura das duas páginas, etiqueta "o ato não cita um risco específico", títulos e dicas das seções de município e de decretos (chaves novas `municipio.abertura`, `emergencias.abertura`, `emergencias.mapa.apoio`). Mapa das emergências ganha "Ver em tabela" (`figura-dados`) ligada aos pontos. Sem CSS novo.
@@ -71,6 +74,7 @@ Por decisão da editoria (28/10), saiu o bloco `regime` de `config/temporizadore
 ## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
 
 `data/pistas_rejeitadas.json` é log de recusas, não fila: a mesma pista recusada de novo é outra linha. O resolvedor a deduplicava por chave e a `main` perdeu 6,5 mil linhas. Passa à classe de logs que só crescem (multiconjunto pela base comum, total recalculado); autoteste e caso F75 no catálogo.
+
 ## 2026-10-29 · Buscador 2: restituídas 1.481 linhas de `pistas_rejeitadas` que o #1314 apagou
 
 O #1314 entrou na `main` com `pistas_rejeitadas.json` de base velha (39.872 → 33.288). O #1318 devolveu 5.629 dentro do teto de crescimento do portão de tamanho; este devolve as 1.481 restantes (união por multiconjunto com a base fec6ed82). Total 40.642. Dado só; código 0 linhas.
@@ -149,6 +153,7 @@ O portão de frescor passa a dispensar arquivo com exceção registrada (regra, 
 ## 2026-10-28 · Buscador 2: link opaco do Google News fecha sem consultar o motor
 
 O seguidor de pistas deixa de procurar o título no veículo para resolver o link opaco do agregador: em três lotes, nenhum de cerca de 4.000 links foi resolvido por esse degrau, e cada lote gastava 3,4 h de execução. A pista cai com o motivo de sempre, "redirecionamento não resolvido (B2)", e o motor de busca fica livre para as consultas que acham documento. Teste novo; sem apagar dado.
+
 ## 2026-10-28 · Ícone oficial do Instagram entra em assets/redes
 
 O glifo preto do pacote de marca do Instagram, baixado do site da rede, entra com a procedência em `assets/redes/LEIAME.md`. O do LinkedIn segue pendente: o kit da rede não traz SVG. O rodapé ainda não o usa.
@@ -164,6 +169,7 @@ O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por
 
 ## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
 `coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
+
 ## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15
 Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: "Seca e incêndio até março de 2027", antes "Seca, fogo". Frase do Cemaden sem texto aprovado: fica fora.
 
@@ -273,6 +279,7 @@ Na página de Saúde, Cubatão/SP e Toledo/PR deixam de mostrar a leitura de sa�
 ## 2026-10-26 · #1211 · Rodada paralela 1.8: B2 depois dos agregadores das decisões
 
 No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.
+
 ## 2026-10-26 · #1203 · Retirada de confirmações e links que passaram por engano
 
 Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.
@@ -315,6 +322,7 @@ Rodapé igual em todas as páginas, lido de `conteudo/_comum.json` (redes, e-mai
 ## 2026-10-26 · Autotestes: um só `ok()`
 
 `scripts/_casos.py` substitui 57 cópias do registro de casos dos autotestes (−164 linhas líquidas). Contato de imprensa vira o e-mail de contato no CLAUDE.md e no guia do editor.
+
 ## 2026-10-26 · #1194 · Fim do defeso: fontes suspensas são reavaliadas todo dia até 25/11
 
 Com o fim do período eleitoral (25/10), as 41 fontes suspensas por defeso passam a ser reavaliadas todos os dias, pela mesma régua de procedência de antes. Um workflow diário (`reavaliacao_defeso.yml`) entra no registro de temporizadores; a cadência volta a ser semanal depois de 25/11. Fonte que não responde mantém o estado registrado.
@@ -326,9 +334,11 @@ Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e
 ## 2026-10-26 · #1190 · Log de saúde só cresce
 
 Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.
+
 ## 2026-10-26 · #1187 · Financiamento: % do pago aplicado pela União sai por medida
 
 Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.
+
 ## 2026-10-26 · consolidação · Teto de palavras honra `layout/excecoes.json`
 
 `verificar_texto_publico.js` lê a exceção declarada (regra, página, motivo, data, decidido_por) para `texto_publico.palavras_por_pagina`: sem `teto` dispensa, com `teto` numérico troca o teto. Incompleta não vale. Código +14/−1.
@@ -356,6 +366,7 @@ Entram na coleta das orientações do Proteja-se cinco páginas federais atuais 
 ## 2026-10-26 · #1177 · Busca de planos: candidatos das sondas do MP, Judiciário, Saúde e Transferegov entram na fila
 
 As sondas de 24/10 acharam 27 endereços nas capitais e não leram nenhum. Cada um passa pela porta única da fila de pistas e segue ao juiz; endereço de busca não vira documento nem pontua. A porta recusa o que não é plano ou excede o teto, com motivo. Linhas: +57 de código novo (adaptador da busca de planos), +1 arquivo de entrada.
+
 ## 2026-10-26 · #1171 · Ar medido: dias seguidos acima da OMS por capital
 
 A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz "sem credencial". Peso zero, sinal físico. Linhas: +102/−1.
