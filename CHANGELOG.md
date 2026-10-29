@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Pacote 1 · Monitor de riscos: textos aprovados
+
+Abertura em três frases (RI-01); RONI definido na primeira ocorrência e instrução de interação nas linhas do gráfico (RI-02); texto da consulta explica município, estado e estação de referência (RI-03); instrução e leitura da legenda ao lado dos mapas (RI-04). Sem mudança de dado, ordem ou layout.
+
 ## 2026-10-29 · Pacote 1 · MARÉ Saúde: textos aprovados
 
 Título, cenários, observação, abertura dos cartões e do mapa de planos com os textos aprovados; descrição sob os rótulos dos dois índices, acima do gráfico do indicador e junto ao resultado da consulta; cartão de SRAG com rótulo próprio ("casos hospitalizados notificados"); linha de reserva "não é zero". O parágrafo da lei (Lei 8.080, art. 17) segue o texto atual até a conferência no Planalto.
