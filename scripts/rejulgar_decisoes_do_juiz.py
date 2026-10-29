@@ -291,7 +291,8 @@ def paralelo_18(argv) -> int:
     rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
     propostas = "--propostas" in argv
     # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18);
-    # `--refazer leva2`: relê a chave lida que ainda não tem `com_segunda_leva` (com `--propostas`).
+    # `--refazer leva2`: relê a chave lida que ainda não tem `com_segunda_leva` (com `--propostas`). A regra pedida
+    # vale também quando agiu só numa variante (`--refazer J19`).
     refazer = set(argv[argv.index("--refazer") + 1].split(",")) if "--refazer" in argv else set()
     saida = RAIZ / argv[argv.index("--saida") + 1] if "--saida" in argv else SAIDA_18
     doc = json.loads(saida.read_text(encoding="utf-8")) if saida.exists() else {
@@ -313,7 +314,8 @@ def paralelo_18(argv) -> int:
         chave = chave_18(p)
         anterior = feitas.get(chave)
         precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"])
-        refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or [])
+        refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or []).union(
+                                         *((anterior.get(x) or {}).get("regras_18") or [] for x in VARIANTES_18))
                                      or ("promove" in refazer and anterior.get("promove"))
                                      or ("leva2" in refazer and anterior.get("leu_documento")
                                          and "com_segunda_leva" not in anterior)))

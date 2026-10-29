@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #1327 · Juiz 1.8 (paralelo): J19 lê o município colado no nome do arquivo da pasta do RS
+Rodada paralela, nada publicado muda. A pasta da Casa Militar do RS escreve o município junto ("TRÊSDEMAIO", "Plancom_RiodosIndios", "..._Agudo1"); 18 planos promovidos saíam como "município não identificado" na medição da segunda leva. O nome do arquivo é lido sem as palavras de rótulo e colado.
+
 ## 2026-10-29 · Redução · Dois scripts de uso único saem
 
 `scripts/corrigir_log_do_aplicador.py` (conserto do log de 28/09) e `migrar_v224_verificacao.py` (migração de 02/09) já rodaram e nada os chama. Saem com suas menções em portões e SBOM. Saldo: −259 linhas de .py/.js (101.258 → 100.999). Sem mudança de comportamento.

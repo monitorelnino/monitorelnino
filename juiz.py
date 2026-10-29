@@ -1172,28 +1172,32 @@ def e_estrutura_18(texto) -> bool:
 
 # J19. Repositório estadual de planos municipais (ES, SE, pasta da Casa Militar do RS): o município sai do nome do
 # arquivo e do título, nunca do município da pista (Viana creditado a Vitória/ES).
-def _palavras(s) -> list:
+# Nome do arquivo sem as palavras de rótulo, colado: a pasta do RS escreve o município junto ("TRÊSDEMAIO_CERPDEC05",
+# "Plancom_RiodosIndios", "..._Agudo1"); lote 14 de 29/10: 18 planos do RS saíam "município não identificado".
+RUIDO_DO_ARQUIVO_18 = re.compile(r"plano|planos|de|da|do|contingencia|conting|municipal|plancon|plancom|pdf|docx?|"
+                                 r"crepdec\d*|cerpdec\d*|atualizad[oa]|versao|final|\d+")
+
+
+def _arquivo_colado(s) -> str:
     from municipio_do_dominio import _norm
-    return [w for w in (_norm(x) for x in re.split(r"[\W_]+", str(s or ""))) if w]
+    return "".join(w for w in (_norm(x) for x in re.split(r"[\W_]+", str(s or ""))) if not RUIDO_DO_ARQUIVO_18.fullmatch(w))
 
 
 def ente_do_repositorio_18(texto, url):
-    """(nome, uf, ibge) | "nao_identificado" | None (fora de repositório estadual)."""
+    """(nome, uf, ibge) | "nao_identificado" | None (fora de repositório estadual). O nome mais longo da UF contido no
+    nome do arquivo colado vence ("Santa Maria do Herval" e não "Santa Maria")."""
     import urllib.parse as _u
     from atualizar_instrumentos_estaduais import REPOSITORIOS, documento_do_repositorio
+    from municipio_do_dominio import _indice, _norm
     uf = next((u for u in REPOSITORIOS if documento_do_repositorio(url, u)), None)
     if not uf:
         return None
-    from municipio_do_dominio import _indice
     if not _INDICE_18:
         _INDICE_18.append(_indice(None))
-    arquivo = _palavras(_u.unquote(_u.urlparse(str(url)).path).rsplit("/", 1)[-1])
-    melhor = None
-    for m in (m for (_, u), m in _INDICE_18[0].items() if u == uf):
-        nome = _palavras(m["nome"])
-        if any(arquivo[i:i + len(nome)] == nome for i in range(len(arquivo))) and (
-                not melhor or len(nome) > len(_palavras(melhor["nome"]))):
-            melhor = m
+    nome_do_arquivo = _u.unquote(_u.urlparse(str(url)).path).rsplit("/", 1)[-1]
+    arquivo, inteiro = _arquivo_colado(nome_do_arquivo), _norm(nome_do_arquivo)
+    melhor = max(((len(n), m) for (n, u), m in _INDICE_18[0].items() if u == uf and len(n) >= 4
+                  and (n in inteiro or _arquivo_colado(m["nome"]) in arquivo)), key=lambda x: x[0], default=(0, None))[1]
     if melhor:
         return melhor["nome"], melhor["uf"], melhor["ibge"]
     return ente_do_cabecalho(texto) or "nao_identificado"
@@ -1686,7 +1690,12 @@ def casos_18() -> list:
          == "Santa Vitória do Palmar"
          and ente_do_repositorio_18("sem nome", URL_RS_18.replace("PLANCON_SAO_BORJA_2025", "plano_123"))
          == "nao_identificado"
-         and ente_do_repositorio_18("", "https://www.taio.sc.gov.br/plano.pdf") is None),
+         and ente_do_repositorio_18("", "https://www.taio.sc.gov.br/plano.pdf") is None
+         and all(ente_do_repositorio_18("", URL_RS_18.replace("PLANCON_SAO_BORJA_2025.pdf", arq))[0] == nome
+                 for arq, nome in (("TR%C3%8ASDEMAIO_CERPDEC05.pdf", "Três de Maio"),
+                                   ("Plancom_RiodosIndios.pdf", "Rio dos Índios"),
+                                   ("Plano%20de%20Conting%C3%AAncia%20Municipal%202025_Agudo1.pdf", "Agudo"),
+                                   ("PLANCON_SANTAMARIADOHERVAL_2023.pdf", "Santa Maria do Herval")))),
         ("J20 (segunda leva) lei que institui o FUMPDEC e decreto que regulamenta a COMPDEC são estrutura "
          "(Londrina/PR, Imperatriz/MA); a lei que institui o plano, não",
          e_estrutura_18("LEI Nº 13.900 Institui o Fundo Municipal de Proteção e Defesa Civil (FUMPDEC) e cria o seu "
