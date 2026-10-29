@@ -105,7 +105,7 @@ Atualizado em 29/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **178** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **177** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -133,13 +133,12 @@ Atualizado em 29/10/2026.
 | `gerar_saude_municipio.py` | — | — | — | — | não |
 | `gerar_selos.py` | — | — | — | 1 | não |
 | `juiz.py` | — | — | — | 9 | SIM |
-| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 6 | não |
+| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 5 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 5 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_caixa_lai.py` | — | — | — | — | não |
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 3 | não |
-| `migrar_v224_verificacao.py` | — | `citacao_incompleta.json`, `erratas_v224.json`, `log_buscas.json`, `municipios.json`, `pontos_mapa.json` | — | — | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
 | `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 4 | não |
 | `monitorar_imprensa_regional.py` | — | — | — | 7 | não |
@@ -151,7 +150,7 @@ Atualizado em 29/10/2026.
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
 | `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 7 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
-| `recalcular_mare.py` | — | — | — | 6 | SIM |
+| `recalcular_mare.py` | — | — | — | 5 | SIM |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
 | `saude_opendatasus.py` | — | — | — | 2 | não |

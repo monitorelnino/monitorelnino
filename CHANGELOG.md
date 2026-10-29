@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Redução · Dois scripts de uso único saem
+
+`scripts/corrigir_log_do_aplicador.py` (conserto do log de 28/09) e `migrar_v224_verificacao.py` (migração de 02/09) já rodaram e nada os chama. Saem com suas menções em portões e SBOM. Saldo: −259 linhas de .py/.js (101.258 → 100.999). Sem mudança de comportamento.
+
 ## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
 
 `data/pistas_rejeitadas.json` é log de recusas, não fila: a mesma pista recusada de novo é outra linha. O resolvedor a deduplicava por chave e a `main` perdeu 6,5 mil linhas. Passa à classe de logs que só crescem (multiconjunto pela base comum, total recalculado); autoteste e caso F75 no catálogo.

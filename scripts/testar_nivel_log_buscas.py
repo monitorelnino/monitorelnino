@@ -152,7 +152,7 @@ def t5():
     suspeitos = []
     for arq in list(raiz.glob("*.py")) + list(raiz.glob("scripts/*.py")):
         if arq.name in ("coletores_base.py", "verificar_consistencia.py", "recalcular_mare.py",
-                        "migrar_v224_verificacao.py", "testar_nivel_log_buscas.py",
+                        "testar_nivel_log_buscas.py",
                         "verificar_robustez_atualizacao.py", "gerar_cobertura_declarada.py"):
             continue
         for linha in arq.read_text(encoding="utf-8").split("\n"):
