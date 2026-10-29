@@ -170,7 +170,7 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
   versão maior (METODOLOGIA §12).
 - Legendas, títulos de figura, tooltips e cartões só descrevem (variável, período, território, unidade,
   fato); interpretação vive no texto narrativo (portão 19, `verificar_legendas.js`).
-- Texto explicativo direto ao que se vê, sem instrução de uso e sem nota interna.
+- Texto explicativo direto ao que se vê, sem nota interna; instrução de interação só curta e fiel ao que o componente faz (editoria, 29/10/2026).
 - Nenhum nome de autor parlamentar no site.
 - Nunca "nota" para o valor dos índices MARÉ nem ranking ou ordenação de estados e municípios (editoria, 01/10 e 29/10/2026): "índice", "valor do índice"; nota de rodapé e nota técnica seguem permitidas. Portão: `padroes` em `layout/regras.json`, lidos por `scripts/vocabulario.py` (site e blog).
 - "Semana epidemiológica" é proibida em texto público: a semana sai em datas por `assets/semana.js`;
