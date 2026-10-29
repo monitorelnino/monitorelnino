@@ -120,7 +120,7 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
   })());
   teste("a linha da escada vem dos pontos do dado (metodo.escada), não do texto", (() => {
     const e = MSd2.metodo.escada;
-    return txt("escadaPlano") === `A nota de cada estado no MARÉ Saúde é a do tipo de plano: feito para este El Niño, ${e.NOVO}; atualizado, ${e.READ}; recorrente, ${e.VIG}; em elaboração, ${e.ELAB}; não localizado, ${e.LAC}.`;
+    return txt("escadaPlano") === `O índice de cada estado no MARÉ Saúde é o do tipo de plano: feito para este El Niño, ${e.NOVO}; atualizado, ${e.READ}; recorrente, ${e.VIG}; em elaboração, ${e.ELAB}; não localizado, ${e.LAC}.`;
   })());
   // Ficha aberta pelo círculo.
   const NOME_DO_TIPO = { NOVO: "Plano feito para este El Niño", READ: "Plano anual atualizado para o ciclo", VIG: "Plano recorrente, sem atualização para o ciclo",
