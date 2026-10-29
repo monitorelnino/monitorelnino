@@ -3,10 +3,10 @@
  "municipios": {
   "5103403": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cuiaba.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": "TimeoutError: The read operation timed out",
     "dominio": "cuiaba.mt.gov.br"
    },
    "S25": {
@@ -52,11 +52,11 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-27",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
-    "dominio": null
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103403&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "cuiaba.mt.gov.br"
    }
   },
   "5100250": {
@@ -68,17 +68,17 @@
     "dominio": "altafloresta.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=altafloresta.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "altafloresta.mt.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=altafloresta.mt.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "altafloresta.mt.gov.br"
    },
    "S29": {
@@ -122,6 +122,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5100250&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5100250&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "altafloresta.mt.gov.br"
    }
   },
   "5101407": {
@@ -133,17 +140,17 @@
     "dominio": "aripuana.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=aripuana.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "aripuana.mt.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=aripuana.mt.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "aripuana.mt.gov.br"
    },
    "S29": {
@@ -187,6 +194,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5101407&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5101407&pagina=1&tamanhoPagina=500",
+    "motivo": "633 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "aripuana.mt.gov.br"
    }
   },
   "5101704": {
@@ -198,17 +212,17 @@
     "dominio": "barradobugres.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=barradobugres.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "barradobugres.mt.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=barradobugres.mt.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "barradobugres.mt.gov.br"
    },
    "S29": {
@@ -252,6 +266,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5101704&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5101704&pagina=1&tamanhoPagina=500",
+    "motivo": "170 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "barradobugres.mt.gov.br"
    }
   },
   "5101803": {
@@ -263,17 +284,17 @@
     "dominio": "barradogarcas.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=barradogarcas.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "barradogarcas.mt.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=barradogarcas.mt.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "barradogarcas.mt.gov.br"
    },
    "S29": {
@@ -317,6 +338,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5101803&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5101803&pagina=1&tamanhoPagina=500",
+    "motivo": "807 contratação(ões) lida(s) em 42 consulta(s), nenhuma cita plano",
+    "dominio": "barradogarcas.mt.gov.br"
    }
   },
   "5102637": {
@@ -328,17 +356,17 @@
     "dominio": "camponovodoparecis.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=camponovodoparecis.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "camponovodoparecis.mt.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=camponovodoparecis.mt.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "camponovodoparecis.mt.gov.br"
    },
    "S29": {
@@ -382,6 +410,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5102637&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5102637&pagina=1&tamanhoPagina=500",
+    "motivo": "937 contratação(ões) lida(s) em 45 consulta(s), nenhuma cita plano",
+    "dominio": "camponovodoparecis.mt.gov.br"
    }
   },
   "5102678": {
@@ -393,7 +428,7 @@
     "dominio": "campoverde.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=campoverde.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -419,6 +454,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5102678&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5102678&pagina=1&tamanhoPagina=500",
+    "motivo": "850 contratação(ões) lida(s) em 41 consulta(s), nenhuma cita plano",
+    "dominio": "campoverde.mt.gov.br"
    }
   },
   "5102702": {
@@ -430,10 +472,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: canarana.mt.gov.br responde, mas não se diz a prefeitura; www.canarana.mt.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
@@ -456,6 +498,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5102702&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5102702&pagina=1&tamanhoPagina=500",
+    "motivo": "509 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "5103007": {
@@ -467,7 +516,7 @@
     "dominio": "chapadadosguimaraes.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=chapadadosguimaraes.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -493,6 +542,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5103007&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103007&pagina=1&tamanhoPagina=500",
+    "motivo": "10 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "chapadadosguimaraes.mt.gov.br"
    }
   },
   "5103254": {
@@ -504,7 +560,7 @@
     "dominio": "colniza.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=colniza.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -530,6 +586,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5103254&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103254&pagina=1&tamanhoPagina=500",
+    "motivo": "328 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "colniza.mt.gov.br"
    }
   },
   "5103205": {
@@ -541,7 +604,7 @@
     "dominio": "colider.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=colider.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -567,6 +630,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5103205&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103205&pagina=1&tamanhoPagina=500",
+    "motivo": "556 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "colider.mt.gov.br"
    }
   },
   "5103304": {
@@ -578,7 +648,7 @@
     "dominio": "comodoro.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=comodoro.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -604,6 +674,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5103304&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103304&pagina=1&tamanhoPagina=500",
+    "motivo": "389 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "comodoro.mt.gov.br"
    }
   },
   "5103353": {
@@ -629,7 +706,7 @@
     "dominio": "confresa.mt.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=confresa.mt.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -641,6 +718,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5103353&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103353&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "confresa.mt.gov.br"
    }
   },
   "5102504": {

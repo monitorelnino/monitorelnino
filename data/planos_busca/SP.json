@@ -54,14 +54,14 @@
   },
   "3500709": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=agudos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "agudos.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=agudos.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -115,21 +115,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3500709&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3500709&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "agudos.sp.gov.br"
    }
   },
   "3501608": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: americana.sp.gov.br responde, mas não se diz a prefeitura; www.americana.sp.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: americana.sp.gov.br responde, mas não se diz a prefeitura; www.americana.sp.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S13": {
@@ -180,18 +187,25 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3501608&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3501608&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3501905": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=amparo.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "amparo.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=amparo.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -245,21 +259,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3501905&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3501905&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "amparo.sp.gov.br"
    }
   },
   "3502101": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.andradina.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "www.andradina.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.andradina.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "www.andradina.sp.gov.br"
    },
    "S13": {
@@ -310,21 +331,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3502101&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: mais de 40 páginas numa consulta, sem achado; não vale como ausência",
+    "dominio": "www.andradina.sp.gov.br"
    }
   },
   "3503208": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "araraquara.sp.gov.br HTTP 403; www.araraquara.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "araraquara.sp.gov.br HTTP 403; www.araraquara.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S13": {
@@ -375,18 +403,25 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3503208&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3503208&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3503307": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=araras.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "araras.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=araras.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -440,21 +475,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3503307&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3503307&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "araras.sp.gov.br"
    }
   },
   "3502804": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=aracatuba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "aracatuba.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=aracatuba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "aracatuba.sp.gov.br"
    },
    "S13": {
@@ -505,21 +547,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3502804&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3502804&pagina=1&tamanhoPagina=500",
+    "motivo": "4662 contratação(ões) lida(s) em 117 consulta(s), nenhuma cita plano",
+    "dominio": "aracatuba.sp.gov.br"
    }
   },
   "3503802": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "arturnogueira.sp.gov.br HTTP 403; www.arturnogueira.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "arturnogueira.sp.gov.br HTTP 403; www.arturnogueira.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S13": {
@@ -570,21 +619,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3503802&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3503802&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3503901": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: aruja.sp.gov.br URLError: <urlopen error [Errno -5] No address associated with hostname>; www.aruja.sp.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: aruja.sp.gov.br URLError: <urlopen error [Errno -5] No address associated with hostname>; www.aruja.sp.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S13": {
@@ -635,18 +691,25 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3503901&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3503901&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3504008": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.assis.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 502",
     "dominio": "www.assis.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.assis.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -700,21 +763,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3504008&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3504008&pagina=1&tamanhoPagina=500",
+    "motivo": "3051 contratação(ões) lida(s) em 85 consulta(s), nenhuma cita plano",
+    "dominio": "www.assis.sp.gov.br"
    }
   },
   "3504107": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=atibaia.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "atibaia.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=atibaia.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "atibaia.sp.gov.br"
    },
    "S13": {
@@ -765,21 +835,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3504107&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3504107&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "atibaia.sp.gov.br"
    }
   },
   "3504503": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "avare.sp.gov.br HTTP 403; www.avare.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "avare.sp.gov.br HTTP 403; www.avare.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S13": {
@@ -816,18 +893,25 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3504503&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3504503&pagina=1&tamanhoPagina=500",
+    "motivo": "1667 contratação(ões) lida(s) em 58 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3505500": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=barretos.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "barretos.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=barretos.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -853,21 +937,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3505500&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3505500&pagina=1&tamanhoPagina=500",
+    "motivo": "2735 contratação(ões) lida(s) em 80 consulta(s), nenhuma cita plano",
+    "dominio": "barretos.sp.gov.br"
    }
   },
   "3505708": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: barueri.sp.gov.br responde, mas não se diz a prefeitura; www.barueri.sp.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: barueri.sp.gov.br responde, mas não se diz a prefeitura; www.barueri.sp.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S13": {
@@ -890,18 +981,25 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3505708&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3505708&pagina=1&tamanhoPagina=500",
+    "motivo": "2838 contratação(ões) lida(s) em 81 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3505906": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=batatais.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": null,
     "dominio": "batatais.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=batatais.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -927,21 +1025,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3505906&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3505906&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "batatais.sp.gov.br"
    }
   },
   "3506003": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: bauru.sp.gov.br URLError: <urlopen error timed out>; www.bauru.sp.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: bauru.sp.gov.br URLError: <urlopen error timed out>; www.bauru.sp.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S13": {
@@ -964,21 +1069,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3506003&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3506003&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3506102": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bebedouro.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "bebedouro.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bebedouro.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "bebedouro.sp.gov.br"
    },
    "S13": {
@@ -1001,21 +1113,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3506102&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: mais de 40 páginas numa consulta, sem achado; não vale como ausência",
+    "dominio": "bebedouro.sp.gov.br"
    }
   },
   "3506359": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bertioga.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "bertioga.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bertioga.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "bertioga.sp.gov.br"
    },
    "S13": {
@@ -1038,21 +1157,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3506359&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3506359&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "bertioga.sp.gov.br"
    }
   },
   "3506508": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: birigui.sp.gov.br URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>; www.birigui.sp.gov.br URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: birigui.sp.gov.br URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>; www.birigui.sp.gov.br URLError: <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1010)>",
     "dominio": null
    },
    "S13": {
@@ -1075,21 +1201,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3506508&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3506508&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3507001": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "boituva.sp.gov.br HTTP 403; www.boituva.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "boituva.sp.gov.br HTTP 403; www.boituva.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S13": {
@@ -1112,21 +1245,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3507001&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3507001&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3507506": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=botucatu.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "botucatu.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=botucatu.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "botucatu.sp.gov.br"
    },
    "S13": {
@@ -1149,21 +1289,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3507506&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3507506&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "botucatu.sp.gov.br"
    }
   },
   "3507605": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: bragancapaulista.sp.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.bragancapaulista.sp.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: bragancapaulista.sp.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.bragancapaulista.sp.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S13": {
@@ -1186,21 +1333,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3507605&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3507605&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3508405": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "cabreuva.sp.gov.br HTTP 403; www.cabreuva.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "cabreuva.sp.gov.br HTTP 403; www.cabreuva.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S13": {
@@ -1223,22 +1377,29 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3508405&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3508405&pagina=1&tamanhoPagina=500",
+    "motivo": "1436 contratação(ões) lida(s) em 55 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3509007": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=caieiras.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
-    "dominio": null
+    "dominio": "caieiras.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": null,
-    "motivo": null,
-    "dominio": null
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
+    "dominio": "caieiras.sp.gov.br"
    },
    "S13": {
     "consultado_em": "2026-10-24",
@@ -1260,21 +1421,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3509007&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3509007&pagina=1&tamanhoPagina=500",
+    "motivo": "715 contratação(ões) lida(s) em 42 consulta(s), nenhuma cita plano",
+    "dominio": "caieiras.sp.gov.br"
    }
   },
   "3509205": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cajamar.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "cajamar.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cajamar.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "cajamar.sp.gov.br"
    },
    "S13": {
@@ -1297,21 +1465,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3509205&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3509205&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "cajamar.sp.gov.br"
    }
   },
   "3509502": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=campinas.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "TimeoutError: The read operation timed out",
+    "motivo": "HTTP 504",
     "dominio": "campinas.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=campinas.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "campinas.sp.gov.br"
    },
    "S13": {
@@ -1334,21 +1509,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3509502&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3509502&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "campinas.sp.gov.br"
    }
   },
   "3509601": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "campolimpopaulista.sp.gov.br HTTP 403; www.campolimpopaulista.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "campolimpopaulista.sp.gov.br HTTP 403; www.campolimpopaulista.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S13": {
@@ -1371,21 +1553,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3509601&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3509601&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3509700": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=camposdojordao.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "camposdojordao.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=camposdojordao.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "camposdojordao.sp.gov.br"
    },
    "S18": {
@@ -1394,21 +1583,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3509700&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3509700&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "camposdojordao.sp.gov.br"
    }
   },
   "3510401": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=capivari.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "capivari.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=capivari.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "capivari.sp.gov.br"
    },
    "S18": {
@@ -1417,21 +1613,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3510401&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3510401&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "capivari.sp.gov.br"
    }
   },
   "3510203": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://web.archive.org/cdx/search/cdx?url=capaobonito.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
-    "dominio": "capaobonito.sp.gov.br"
-   },
-   "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: capaobonito.sp.gov.br HTTP 503; www.capaobonito.sp.gov.br HTTP 503",
+    "dominio": null
+   },
+   "S25": {
+    "consultado_em": "2026-10-28",
+    "situacao": "dominio_nao_verificado",
+    "consulta": null,
+    "motivo": "tentados: capaobonito.sp.gov.br HTTP 503; www.capaobonito.sp.gov.br HTTP 503",
     "dominio": null
    },
    "S18": {
@@ -1440,21 +1643,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3510203&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3510203&pagina=1&tamanhoPagina=500",
+    "motivo": "623 contratação(ões) lida(s) em 38 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "3510500": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=caraguatatuba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "caraguatatuba.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=caraguatatuba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "caraguatatuba.sp.gov.br"
    },
    "S18": {
@@ -1463,21 +1673,28 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3510500&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3510500&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "caraguatatuba.sp.gov.br"
    }
   },
   "3510609": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.carapicuiba.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "www.carapicuiba.sp.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.carapicuiba.sp.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "www.carapicuiba.sp.gov.br"
    },
    "S18": {
@@ -1486,11 +1703,18 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3510609&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3510609&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "www.carapicuiba.sp.gov.br"
    }
   },
   "3511102": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.catanduva.sp.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1509,14 +1733,21 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3511102&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3511102&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "www.catanduva.sp.gov.br"
    }
   },
   "3508504": {
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "cacapava.sp.gov.br HTTP 403; www.cacapava.sp.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
@@ -1531,6 +1762,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3508504&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=3508504&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },

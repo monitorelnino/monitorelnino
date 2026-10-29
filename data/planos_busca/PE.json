@@ -61,17 +61,17 @@
     "dominio": "abreuelima.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=abreuelima.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "abreuelima.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=abreuelima.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "abreuelima.pe.gov.br"
    },
    "S29": {
@@ -115,6 +115,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2600054&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2600054&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "abreuelima.pe.gov.br"
    }
   },
   "2600104": {
@@ -126,14 +133,14 @@
     "dominio": "afogadosdaingazeira.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=afogadosdaingazeira.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "afogadosdaingazeira.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=afogadosdaingazeira.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -180,6 +187,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2600104&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2600104&pagina=1&tamanhoPagina=500",
+    "motivo": "2917 contratação(ões) lida(s) em 84 consulta(s), nenhuma cita plano",
+    "dominio": "afogadosdaingazeira.pe.gov.br"
    }
   },
   "2600203": {
@@ -191,14 +205,14 @@
     "dominio": "afranio.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=afranio.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "afranio.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=afranio.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -245,6 +259,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2600203&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2600203&pagina=1&tamanhoPagina=500",
+    "motivo": "413 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "afranio.pe.gov.br"
    }
   },
   "2600302": {
@@ -256,14 +277,14 @@
     "dominio": "agrestina.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=agrestina.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "agrestina.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=agrestina.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -310,6 +331,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2600302&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2600302&pagina=1&tamanhoPagina=500",
+    "motivo": "123 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "agrestina.pe.gov.br"
    }
   },
   "2600708": {
@@ -321,14 +349,14 @@
     "dominio": "alianca.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=alianca.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "alianca.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=alianca.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -375,6 +403,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2600708&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2600708&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "alianca.pe.gov.br"
    }
   },
   "2600807": {
@@ -386,14 +421,14 @@
     "dominio": "altinho.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=altinho.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error timed out>",
+    "motivo": null,
     "dominio": "altinho.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=altinho.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -433,6 +468,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2600807&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2600807&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "altinho.pe.gov.br"
    }
   },
   "2601102": {
@@ -444,14 +486,14 @@
     "dominio": "araripina.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=araripina.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error timed out>",
+    "motivo": null,
     "dominio": "araripina.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=araripina.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -491,6 +533,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2601102&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2601102&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "araripina.pe.gov.br"
    }
   },
   "2601052": {
@@ -502,14 +551,14 @@
     "dominio": "aracoiaba.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=aracoiaba.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "aracoiaba.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=aracoiaba.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -528,6 +577,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2601052&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2601052&pagina=1&tamanhoPagina=500",
+    "motivo": "166 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "aracoiaba.pe.gov.br"
    }
   },
   "2601201": {
@@ -539,17 +595,17 @@
     "dominio": "arcoverde.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=arcoverde.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "arcoverde.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=arcoverde.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "arcoverde.pe.gov.br"
    },
    "S29": {
@@ -565,6 +621,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2601201&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2601201&pagina=1&tamanhoPagina=500",
+    "motivo": "257 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "arcoverde.pe.gov.br"
    }
   },
   "2601409": {
@@ -576,17 +639,17 @@
     "dominio": "barreiros.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=barreiros.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "barreiros.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=barreiros.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "barreiros.pe.gov.br"
    },
    "S29": {
@@ -602,6 +665,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2601409&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2601409&pagina=1&tamanhoPagina=500",
+    "motivo": "422 contratação(ões) lida(s) em 37 consulta(s), nenhuma cita plano",
+    "dominio": "barreiros.pe.gov.br"
    }
   },
   "2601706": {
@@ -613,17 +683,17 @@
     "dominio": "belojardim.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=belojardim.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "belojardim.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=belojardim.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "belojardim.pe.gov.br"
    },
    "S29": {
@@ -639,6 +709,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2601706&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2601706&pagina=1&tamanhoPagina=500",
+    "motivo": "2179 contratação(ões) lida(s) em 68 consulta(s), nenhuma cita plano",
+    "dominio": "belojardim.pe.gov.br"
    }
   },
   "2601904": {
@@ -650,17 +727,17 @@
     "dominio": "bezerros.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bezerros.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "bezerros.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bezerros.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "bezerros.pe.gov.br"
    },
    "S29": {
@@ -676,6 +753,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2601904&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2601904&pagina=1&tamanhoPagina=500",
+    "motivo": "254 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
+    "dominio": "bezerros.pe.gov.br"
    }
   },
   "2602001": {
@@ -687,17 +771,17 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "bodoco.pe.gov.br HTTP 403; www.bodoco.pe.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "bodoco.pe.gov.br HTTP 403; www.bodoco.pe.gov.br HTTP 403",
     "dominio": null
    },
    "S29": {
@@ -713,6 +797,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602001&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602001&pagina=1&tamanhoPagina=500",
+    "motivo": "231 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "2602100": {
@@ -724,17 +815,17 @@
     "dominio": "bomconselho.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bomconselho.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "bomconselho.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bomconselho.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "bomconselho.pe.gov.br"
    },
    "S29": {
@@ -750,6 +841,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602100&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602100&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "bomconselho.pe.gov.br"
    }
   },
   "2602209": {
@@ -761,17 +859,17 @@
     "dominio": "bomjardim.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bomjardim.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "bomjardim.pe.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
-    "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=bomjardim.pe.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "RemoteDisconnected: Remote end closed connection without response",
     "dominio": "bomjardim.pe.gov.br"
    },
    "S29": {
@@ -787,6 +885,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602209&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602209&pagina=1&tamanhoPagina=500",
+    "motivo": "508 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "bomjardim.pe.gov.br"
    }
   },
   "2602308": {
@@ -798,7 +903,7 @@
     "dominio": "bonito.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=bonito.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -824,6 +929,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602308&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602308&pagina=1&tamanhoPagina=500",
+    "motivo": "158 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "bonito.pe.gov.br"
    }
   },
   "2602605": {
@@ -835,10 +947,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: brejodamadrededeus.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.brejodamadrededeus.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S25": {
@@ -861,6 +973,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602605&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602605&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2602803": {
@@ -872,7 +991,7 @@
     "dominio": "buique.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=buique.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -898,6 +1017,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602803&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602803&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "buique.pe.gov.br"
    }
   },
   "2602902": {
@@ -909,10 +1035,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: cabodesantoagostinho.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.cabodesantoagostinho.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S25": {
@@ -935,6 +1061,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2602902&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2602902&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "2603009": {
@@ -946,7 +1079,7 @@
     "dominio": "cabrobo.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cabrobo.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -972,6 +1105,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603009&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603009&pagina=1&tamanhoPagina=500",
+    "motivo": "422 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "cabrobo.pe.gov.br"
    }
   },
   "2603108": {
@@ -983,7 +1123,7 @@
     "dominio": "cachoeirinha.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cachoeirinha.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1009,6 +1149,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603108&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603108&pagina=1&tamanhoPagina=500",
+    "motivo": "352 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "cachoeirinha.pe.gov.br"
    }
   },
   "2603207": {
@@ -1020,7 +1167,7 @@
     "dominio": "caetes.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=caetes.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1046,6 +1193,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603207&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603207&pagina=1&tamanhoPagina=500",
+    "motivo": "155 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "caetes.pe.gov.br"
    }
   },
   "2603454": {
@@ -1057,10 +1211,10 @@
     "dominio": "camaragibe.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=camaragibe.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "TimeoutError: The read operation timed out",
+    "motivo": null,
     "dominio": "camaragibe.pe.gov.br"
    },
    "S25": {
@@ -1083,6 +1237,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603454&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603454&pagina=1&tamanhoPagina=500",
+    "motivo": "269 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "camaragibe.pe.gov.br"
    }
   },
   "2603702": {
@@ -1094,7 +1255,7 @@
     "dominio": "canhotinho.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=canhotinho.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1120,6 +1281,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603702&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603702&pagina=1&tamanhoPagina=500",
+    "motivo": "156 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "canhotinho.pe.gov.br"
    }
   },
   "2603801": {
@@ -1131,7 +1299,7 @@
     "dominio": "capoeiras.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=capoeiras.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1157,6 +1325,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603801&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603801&pagina=1&tamanhoPagina=500",
+    "motivo": "198 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "capoeiras.pe.gov.br"
    }
   },
   "2603900": {
@@ -1168,7 +1343,7 @@
     "dominio": "carnaiba.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=carnaiba.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1194,6 +1369,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2603900&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2603900&pagina=1&tamanhoPagina=500",
+    "motivo": "395 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "carnaiba.pe.gov.br"
    }
   },
   "2604007": {
@@ -1205,7 +1387,7 @@
     "dominio": "carpina.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=carpina.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1231,6 +1413,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2604007&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2604007&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "carpina.pe.gov.br"
    }
   },
   "2604106": {
@@ -1242,10 +1431,10 @@
     "dominio": "caruaru.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=caruaru.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "caruaru.pe.gov.br"
    },
    "S29": {
@@ -1268,6 +1457,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2604106&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2604106&pagina=1&tamanhoPagina=500",
+    "motivo": "3225 contratação(ões) lida(s) em 89 consulta(s), nenhuma cita plano",
+    "dominio": "caruaru.pe.gov.br"
    }
   },
   "2604205": {
@@ -1279,7 +1475,7 @@
     "dominio": "catende.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=catende.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1305,6 +1501,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2604205&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2604205&pagina=1&tamanhoPagina=500",
+    "motivo": "251 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "catende.pe.gov.br"
    }
   },
   "2604502": {
@@ -1316,10 +1519,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "chagrande.pe.gov.br HTTP 403; www.chagrande.pe.gov.br HTTP 403",
     "dominio": null
    },
    "S29": {
@@ -1342,6 +1545,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2604502&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2604502&pagina=1&tamanhoPagina=500",
+    "motivo": "222 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "2604601": {
@@ -1353,7 +1563,7 @@
     "dominio": "condado.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=condado.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1379,6 +1589,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2604601&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2604601&pagina=1&tamanhoPagina=500",
+    "motivo": "242 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "condado.pe.gov.br"
    }
   },
   "2605004": {
@@ -1390,7 +1607,7 @@
     "dominio": "cupira.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cupira.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1416,6 +1633,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605004&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605004&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "cupira.pe.gov.br"
    }
   },
   "2605103": {
@@ -1427,7 +1651,7 @@
     "dominio": "custodia.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=custodia.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1453,6 +1677,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605103&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605103&pagina=1&tamanhoPagina=500",
+    "motivo": "324 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "custodia.pe.gov.br"
    }
   },
   "2605202": {
@@ -1464,10 +1695,10 @@
     "dominio": "escada.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=escada.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": "HTTP 504",
     "dominio": "escada.pe.gov.br"
    },
    "S29": {
@@ -1490,6 +1721,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605202&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605202&pagina=1&tamanhoPagina=500",
+    "motivo": "447 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "escada.pe.gov.br"
    }
   },
   "2605301": {
@@ -1501,7 +1739,7 @@
     "dominio": "exu.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=exu.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1527,6 +1765,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605301&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605301&pagina=1&tamanhoPagina=500",
+    "motivo": "610 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": "exu.pe.gov.br"
    }
   },
   "2605400": {
@@ -1538,7 +1783,7 @@
     "dominio": "feiranova.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=feiranova.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1564,6 +1809,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605400&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605400&pagina=1&tamanhoPagina=500",
+    "motivo": "466 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "feiranova.pe.gov.br"
    }
   },
   "2605608": {
@@ -1575,7 +1827,7 @@
     "dominio": "flores.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=flores.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1601,6 +1853,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605608&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605608&pagina=1&tamanhoPagina=500",
+    "motivo": "220 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "flores.pe.gov.br"
    }
   },
   "2605707": {
@@ -1612,7 +1871,7 @@
     "dominio": "floresta.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=floresta.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1638,6 +1897,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2605707&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2605707&pagina=1&tamanhoPagina=500",
+    "motivo": "124 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "floresta.pe.gov.br"
    }
   },
   "2606002": {
@@ -1649,10 +1915,10 @@
     "dominio": "garanhuns.pe.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=garanhuns.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "garanhuns.pe.gov.br"
    },
    "S29": {
@@ -1675,6 +1941,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2606002&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2606002&pagina=1&tamanhoPagina=500",
+    "motivo": "1256 contratação(ões) lida(s) em 50 consulta(s), nenhuma cita plano",
+    "dominio": "garanhuns.pe.gov.br"
    }
   },
   "2606101": {
@@ -1693,7 +1966,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=gloriadogoita.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1712,6 +1985,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2606101&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2606101&pagina=1&tamanhoPagina=500",
+    "motivo": "226 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
+    "dominio": "gloriadogoita.pe.gov.br"
    }
   },
   "2606200": {
@@ -1730,7 +2010,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.goiana.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1749,6 +2029,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2606200&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2606200&pagina=1&tamanhoPagina=500",
+    "motivo": "836 contratação(ões) lida(s) em 43 consulta(s), nenhuma cita plano",
+    "dominio": "www.goiana.pe.gov.br"
    }
   },
   "2606408": {
@@ -1767,10 +2054,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=gravata.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "gravata.pe.gov.br"
    },
    "S25": {
@@ -1786,6 +2073,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2606408&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2606408&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "gravata.pe.gov.br"
    }
   },
   "2606606": {
@@ -1804,7 +2098,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ibimirim.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1816,6 +2110,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2606606&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2606606&pagina=1&tamanhoPagina=500",
+    "motivo": "187 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "ibimirim.pe.gov.br"
    }
   },
   "2606804": {
@@ -1834,7 +2135,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=igarassu.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1846,6 +2147,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2606804&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2606804&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "igarassu.pe.gov.br"
    }
   },
   "2607604": {
@@ -1864,10 +2172,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ilhadeitamaraca.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "ilhadeitamaraca.pe.gov.br"
    },
    "S18": {
@@ -1876,6 +2184,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607604&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607604&pagina=1&tamanhoPagina=500",
+    "motivo": "135 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "ilhadeitamaraca.pe.gov.br"
    }
   },
   "2607000": {
@@ -1894,7 +2209,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=inaja.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1906,6 +2221,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607000&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607000&pagina=1&tamanhoPagina=500",
+    "motivo": "113 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "inaja.pe.gov.br"
    }
   },
   "2607208": {
@@ -1924,10 +2246,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=ipojuca.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error timed out>",
+    "motivo": null,
     "dominio": "ipojuca.pe.gov.br"
    },
    "S18": {
@@ -1936,6 +2258,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607208&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607208&pagina=1&tamanhoPagina=500",
+    "motivo": "850 contratação(ões) lida(s) em 43 consulta(s), nenhuma cita plano",
+    "dominio": "ipojuca.pe.gov.br"
    }
   },
   "2607307": {
@@ -1954,10 +2283,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "ipubi.pe.gov.br HTTP 403; www.ipubi.pe.gov.br HTTP 403",
     "dominio": null
    },
    "S18": {
@@ -1965,6 +2294,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607307&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607307&pagina=1&tamanhoPagina=500",
+    "motivo": "101 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -1984,7 +2320,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itambe.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -1996,6 +2332,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607653&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607653&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "itambe.pe.gov.br"
    }
   },
   "2607752": {
@@ -2014,7 +2357,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itapissuma.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2026,6 +2369,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607752&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607752&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "itapissuma.pe.gov.br"
    }
   },
   "2607505": {
@@ -2044,10 +2394,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itaiba.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": "HTTP 504",
     "dominio": "itaiba.pe.gov.br"
    },
    "S18": {
@@ -2056,6 +2406,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607505&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607505&pagina=1&tamanhoPagina=500",
+    "motivo": "240 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "itaiba.pe.gov.br"
    }
   },
   "2607901": {
@@ -2074,16 +2431,23 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: jaboataodosguararapes.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.jaboataodosguararapes.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S18": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2607901&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": null,
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2607901&pagina=1&tamanhoPagina=500",
     "motivo": null,
     "dominio": null
    }
@@ -2104,7 +2468,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=joaoalfredo.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2116,6 +2480,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2608107&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2608107&pagina=1&tamanhoPagina=500",
+    "motivo": "478 contratação(ões) lida(s) em 36 consulta(s), nenhuma cita plano",
+    "dominio": "joaoalfredo.pe.gov.br"
    }
   },
   "2608750": {
@@ -2134,7 +2505,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=lagoagrande.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2146,6 +2517,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2608750&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2608750&pagina=1&tamanhoPagina=500",
+    "motivo": "180 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
+    "dominio": "lagoagrande.pe.gov.br"
    }
   },
   "2608503": {
@@ -2164,10 +2542,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: lagoadeitaenga.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.lagoadeitaenga.pe.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S18": {
@@ -2175,6 +2553,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2608503&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2608503&pagina=1&tamanhoPagina=500",
+    "motivo": "393 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -2194,7 +2579,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=lajedo.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2206,6 +2591,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2608800&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2608800&pagina=1&tamanhoPagina=500",
+    "motivo": "187 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "lajedo.pe.gov.br"
    }
   },
   "2608909": {
@@ -2224,10 +2616,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=limoeiro.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "TimeoutError: The read operation timed out",
+    "motivo": null,
     "dominio": "limoeiro.pe.gov.br"
    },
    "S18": {
@@ -2236,6 +2628,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2608909&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2608909&pagina=1&tamanhoPagina=500",
+    "motivo": "721 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": "limoeiro.pe.gov.br"
    }
   },
   "2609006": {
@@ -2254,7 +2653,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=macaparana.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2266,6 +2665,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609006&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609006&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "macaparana.pe.gov.br"
    }
   },
   "2609154": {
@@ -2284,7 +2690,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=manari.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2296,6 +2702,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609154&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609154&pagina=1&tamanhoPagina=500",
+    "motivo": "114 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "manari.pe.gov.br"
    }
   },
   "2609402": {
@@ -2314,7 +2727,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=moreno.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2326,6 +2739,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609402&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609402&pagina=1&tamanhoPagina=500",
+    "motivo": "150 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "moreno.pe.gov.br"
    }
   },
   "2609501": {
@@ -2344,7 +2764,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=nazaredamata.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2356,6 +2776,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609501&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609501&pagina=1&tamanhoPagina=500",
+    "motivo": "355 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "nazaredamata.pe.gov.br"
    }
   },
   "2609600": {
@@ -2374,10 +2801,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=olinda.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": "HTTP 504",
     "dominio": "olinda.pe.gov.br"
    },
    "S18": {
@@ -2386,6 +2813,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609600&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609600&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "olinda.pe.gov.br"
    }
   },
   "2609709": {
@@ -2404,11 +2838,11 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=orobo.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
-    "dominio": null
+    "dominio": "orobo.pe.gov.br"
    },
    "S18": {
     "consultado_em": "2026-10-28",
@@ -2416,6 +2850,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609709&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609709&pagina=1&tamanhoPagina=500",
+    "motivo": "394 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
+    "dominio": "orobo.pe.gov.br"
    }
   },
   "2609907": {
@@ -2434,10 +2875,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "ouricuri.pe.gov.br HTTP 403; www.ouricuri.pe.gov.br HTTP 403",
     "dominio": null
    },
    "S18": {
@@ -2445,6 +2886,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2609907&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2609907&pagina=1&tamanhoPagina=500",
+    "motivo": "505 contratação(ões) lida(s) em 36 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -2464,11 +2912,11 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
-    "consulta": null,
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://web.archive.org/cdx/search/cdx?url=palmares.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
-    "dominio": null
+    "dominio": "palmares.pe.gov.br"
    },
    "S18": {
     "consultado_em": "2026-10-28",
@@ -2476,6 +2924,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610004&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610004&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "palmares.pe.gov.br"
    }
   },
   "2610202": {
@@ -2494,7 +2949,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=panelas.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2506,6 +2961,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610202&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610202&pagina=1&tamanhoPagina=500",
+    "motivo": "325 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "panelas.pe.gov.br"
    }
   },
   "2610400": {
@@ -2524,7 +2986,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=parnamirim.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2536,6 +2998,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610400&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610400&pagina=1&tamanhoPagina=500",
+    "motivo": "172 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "parnamirim.pe.gov.br"
    }
   },
   "2610509": {
@@ -2554,10 +3023,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: passira.pe.gov.br URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>; www.passira.pe.gov.br URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)>",
     "dominio": null
    },
    "S18": {
@@ -2565,6 +3034,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610509&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610509&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2584,7 +3060,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=paudalho.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2596,6 +3072,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610608&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610608&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "paudalho.pe.gov.br"
    }
   },
   "2610707": {
@@ -2614,10 +3097,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: paulista.pe.gov.br responde, mas não se diz a prefeitura; www.paulista.pe.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S18": {
@@ -2625,6 +3108,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610707&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610707&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -2644,7 +3134,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=pedra.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2656,6 +3146,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610806&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610806&pagina=1&tamanhoPagina=500",
+    "motivo": "228 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": "pedra.pe.gov.br"
    }
   },
   "2610905": {
@@ -2674,10 +3171,10 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=pesqueira.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "URLError: <urlopen error _ssl.c:993: The handshake operation timed out>",
+    "motivo": null,
     "dominio": "pesqueira.pe.gov.br"
    },
    "S18": {
@@ -2686,6 +3183,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2610905&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2610905&pagina=1&tamanhoPagina=500",
+    "motivo": "468 contratação(ões) lida(s) em 36 consulta(s), nenhuma cita plano",
+    "dominio": "pesqueira.pe.gov.br"
    }
   },
   "2611101": {
@@ -2704,7 +3208,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=petrolina.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2716,6 +3220,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2611101&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2611101&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "petrolina.pe.gov.br"
    }
   },
   "2611002": {
@@ -2734,7 +3245,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=petrolandia.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2746,6 +3257,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2611002&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2611002&pagina=1&tamanhoPagina=500",
+    "motivo": "260 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": "petrolandia.pe.gov.br"
    }
   },
   "2611309": {
@@ -2764,7 +3282,7 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=pombos.pe.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
@@ -2776,6 +3294,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2611309&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=2611309&pagina=1&tamanhoPagina=500",
+    "motivo": "219 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
+    "dominio": "pombos.pe.gov.br"
    }
   },
   "2611705": {
