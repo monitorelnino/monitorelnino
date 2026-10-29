@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Portão: nada de "nota" para o índice nem ranking (+53/−22)
+
+Regra da editoria (01/10 e 29/10): o valor dos índices MARÉ é "índice", nunca "nota", e nenhum texto ordena estados ou municípios. A régua única de vocabulário ganha `padroes` (nota do índice, ranking), com casos de teste; vale para páginas e blog. Textos antigos trocados: início, Saúde, Imprensa, mudanças. METODOLOGIA segue em PR à parte.
+
 ## 2026-10-29 · Redução: três scripts de uso único saem (−221 linhas)
 
 Sem chamador, workflow, portão ou leitura em todo o repositório: `sondar_pncp_planos.py`, `semear_pistas_de_sondas.py` e `registrar_atos_coordenacao_saude.py` (sondas do regime de 22/10, já encerrado). Nenhuma mudança de comportamento. Medida: 101.017 → ver `docs/MEDIDA_DO_CODIGO.md`.
