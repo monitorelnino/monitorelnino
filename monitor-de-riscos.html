@@ -45,9 +45,7 @@
   </header>
 <main id="conteudo">
   <h1 data-conteudo="monitor-de-riscos.titulo_da_pagina">Monitor de riscos</h1>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Esta página reúne o que os órgãos oficiais de clima e meio ambiente monitoram durante o El Niño 2026/2027, em duas partes.</p>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.2">A primeira parte mostra a situação atual. O gráfico do Índice Oceânico Niño compara a evolução deste El Niño com a dos episódios anteriores, com os limiares a partir dos quais se declara El Niño ou La Niña.</p>
-  <p class="hint" data-conteudo="monitor-de-riscos.abertura.3">A segunda parte mostra o que já acontece no Brasil: o risco previsto para cada estado até março de 2027, segundo os boletins oficiais; a seca observada em cada estado; os focos de fogo das últimas 24 horas; a qualidade do ar medida nas capitais com estação oficial e a temperatura máxima prevista nas capitais; e os avisos de tempo severo em vigor. Cada mapa e gráfico traz o órgão que publicou o dado e a data da consulta.</p>
+  <p class="hint" data-conteudo="monitor-de-riscos.abertura.1">Acompanhe a evolução do El Niño e os riscos climáticos e ambientais monitorados no Brasil. Consulte indicadores, mapas e previsões oficiais e veja a situação por estado ou município. Cada dado apresenta período, território e fonte.</p>
   <p class="hint" data-conteudo-html="monitor-de-riscos.abertura.4">Os alertas por município e os decretos de emergência estão em <a href="defesa-civil.html">Defesa civil</a>; o risco previsto para cada estado também aparece na ficha do estado, na <a href="index.html">página inicial</a>.</p>
 
   <!-- 16/10/2026 (editoria, lote 2): "Situação atual" em painel próprio, separada da abertura; a faixa
@@ -99,7 +97,7 @@
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxEpisodios">
         <h3 class="figura-titulo" id="episodiosTitulo" data-conteudo="monitor-de-riscos.pacifico.episodios.titulo">RONI no ciclo em curso e nos episódios de El Niño anteriores</h3>
-        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">RONI: anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), referência 1991–2020. Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC. Rotulados os episódios com pico de +1,5 °C ou mais.</p>
+        <p class="figura-nota" id="episodiosNota" data-conteudo="monitor-de-riscos.pacifico.episodios.nota">RONI, índice oceânico Niño relativo: anomalia da temperatura da superfície do mar na região Niño 3.4 (5°N–5°S, 170°W–120°W) menos a anomalia média da faixa tropical (20°N–20°S), referência 1991–2020. Episódio: cinco ou mais médias trimestrais consecutivas acima de +0,5 °C, critério da NOAA/CPC. Rotulados os episódios com pico de +1,5 °C ou mais. Passe o cursor ou toque em uma linha para identificar o episódio.</p>
         <p class="grafico-pacifico-eixo" data-conteudo="monitor-de-riscos.pacifico.eixo">RONI, °C</p>
         <div class="figura-midia grafico-oceano grafico-pacifico" id="wrapEpisodios"></div>
         <div class="leg-pacifico" id="legEpisodios"></div>
@@ -119,7 +117,7 @@
 
   <div class="panel" id="riscos">
     <h2 data-conteudo="monitor-de-riscos.titulo_da_secao_2">Os riscos no Brasil</h2>
-    <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño.</p>
+    <p class="hint" data-conteudo="monitor-de-riscos.abertura_2">Os quatro riscos que o boletim prevê para este El Niño. Passe o cursor ou toque nos pontos e nos estados do mapa para ver os dados disponíveis. As cores e a legenda identificam o tipo ou a intensidade do registro.</p>
 
     <!-- 16/10/2026 (editoria, HANDOVER_MONITOR_DE_RISCOS §2–§3): o risco previsto deixa de ser mapa e
          vira uma faixa de etiquetas por família; cada bloco de família abre com "Boletim prevê para".
@@ -143,7 +141,7 @@
       <datalist id="consultaLista"></datalist>
     </div>
     <div id="consultaCard" class="meu-card" aria-live="polite" hidden></div>
-    <p class="hint" data-conteudo="monitor-de-riscos.consulta.nota">Dado por estado vale para todo o estado; dado por município é do próprio município; ar e temperatura vêm da estação ou capital mais próxima, nomeada na linha.</p>
+    <p class="hint" data-conteudo="monitor-de-riscos.consulta.nota">Os resultados podem reunir dados do município, informações válidas para o estado e medições ou previsões da estação de referência indicada. Confira o território e a data em cada linha.</p>
   </div>
 
   <div class="panel">
