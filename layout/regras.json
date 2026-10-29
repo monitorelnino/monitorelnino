@@ -183,6 +183,19 @@
       "deve publicar",
       "tem o dever de"
     ],
+    "padroes": [
+      {
+        "padrao": "(?<![{\\w])notas?\\b(?![}\\w])(?!\\s+(?:de\\s+rodap|d[oa]\\s+rodap|t[eé]cnic|metodol|explicativ|fiscal|[àa]\\s+imprensa|de\\s+(?:leitura|fonte|vers|integridade|implementa|honestidade|ambiente|imprensa|corte|empenho))|:\\s*[^\\d\\s])",
+        "flags": "i",
+        "motivo": "'nota' para o valor do índice (use 'índice', 'valor do índice', 'MARÉ Legal do estado'; nota de rodapé e nota técnica seguem permitidas)"
+      },
+      {
+        "padrao": "\\branking\\b|\\branque\\w*|classifica[cç][aã]o\\s+d[oe]s\\s+(?:estados|munic[ií]pios)|\\b(?:melhor|pior)\\s+colocad\\w*|\\blider(?:a|am|ando)\\b|\\blanterna\\b|\\b(?:primeiro|[uú]ltimo)\\s+lugar\\b",
+        "flags": "i",
+        "motivo": "ranking de estados ou municípios (o site não ordena nem compara em posição)"
+      }
+    ],
+    "_nota_padroes": "Editoria, 01/10 e 29/10/2026: nenhum texto público, do blog ou do índice usa 'nota' para o valor dos índices MARÉ nem ordena estados ou municípios. Expressão regular casada com o texto como está (sem normalizar acento); a régua é UMA, em scripts/vocabulario.py.",
     "_nota_dever": "Constar de lista federal não cria dever de plano (METODOLOGIA). A locução de dever só entra em citação literal de lei, e o portão barra as formas que apareceram de verdade nas páginas.",
     "por_pagina": {
       "imprensa.html": [

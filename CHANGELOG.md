@@ -337,7 +337,7 @@ A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a se
 
 ## 2026-10-26 · #1164 · Saúde v0.7: tempo como contexto na ficha do estado
 
-A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora da nota (peso zero, dado do motor v0.7). Nenhum número da nota muda.
+A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora do índice (peso zero, dado do motor v0.7). Nenhum número do índice muda.
 
 ## 2026-10-26 · A3 · Busca de planos: sonda do PNCP nas 27 capitais (S22)
 Nova sonda consulta a busca pública do PNCP por capital (plano de contingência, redução de riscos, PLANCON) e registra título, órgão, data e endereço. Contratação não é plano: só aponta onde procurar. Ausência é "não localizamos até o corte"; recusa é registrada e respeitada. Saldo de código: +110.

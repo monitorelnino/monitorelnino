@@ -201,6 +201,7 @@ function autoteste() {
   c("vocabulário: 'figura' em frase legítima NÃO é a numeração 'FIGURA'", vocabulario("a fonte primária de cada figura", "imprensa.html", {}).length === 0);
   c("vocabulário: juízo colado a número reprova", vocabulario("apenas 3 estados publicaram", "x.html", {}).some((x) => x.includes("juízo")));
   c("vocabulário: a mesma palavra longe de número NÃO reprova", !vocabulario("apenas o estado publicou", "x.html", {}).some((x) => x.includes("juízo")));
+  c("vocabulário: 'nota' do índice e ranking reprovam; nota de rodapé passa", vocabulario("A nota de cada estado", "x.html", {}).length === 1 && vocabulario("o ranking dos estados", "x.html", {}).length === 1 && vocabulario("conforme a nota de rodapé", "x.html", {}).length === 0);
   c("vocabulário: locução de dever reprova", vocabulario("o município deve publicar o plano", "x.html", {}).some((x) => x.includes("dever")));
   c("vocabulário: proibido do contrato entra junto", vocabulario("Backlog da fila", "x.html", { texto_proibido: ["Backlog"] }).some((x) => x.includes("Backlog")));
   c("vocabulário: proibido por página entra", vocabulario("sem antecipação", "saude.html", {}).length === 1 && vocabulario("sem antecipação", "index.html", {}).length === 0);
