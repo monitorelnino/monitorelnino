@@ -16,6 +16,9 @@ Título, cenários, observação, abertura dos cartões e do mapa de planos com 
 ## 2026-10-29 · Pacote 1 · Página inicial: textos aprovados e instrução de interação
 
 Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
+## 2026-10-29 · Pacote 1: textos aprovados de Defesa civil e Financiamento
+
+Catálogo: abertura das duas páginas, etiqueta "o ato não cita um risco específico", títulos e dicas das seções de município e de decretos (chaves novas `municipio.abertura`, `emergencias.abertura`, `emergencias.mapa.apoio`). Mapa das emergências ganha "Ver em tabela" (`figura-dados`) ligada aos pontos. Sem CSS novo.
 
 ## 2026-10-29 · #PR · Juiz 1.8 (paralelo): o nunca lido vem antes da leitura que já falhou
 
