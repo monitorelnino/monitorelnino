@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `scripts/corrigir_log_do_aplicador.py` (conserto do log de 28/09) e `migrar_v224_verificacao.py` (migração de 02/09) já rodaram e nada os chama. Saem com suas menções em portões e SBOM. Saldo: −259 linhas de .py/.js (101.258 → 100.999). Sem mudança de comportamento.
 
+## 2026-10-29 · A1 · Fim do regime de prioridade da corrente noturna
+
+Por decisão da editoria (28/10), saiu o bloco `regime` de `config/temporizadores.json`: os elos suspensos desde 22/10 voltam à cadência registrada e a janela de merge volta a 09:00–23:30 UTC. Código intacto: o regime era dado. Linhas líquidas: −34.
+
 ## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
 
 `data/pistas_rejeitadas.json` é log de recusas, não fila: a mesma pista recusada de novo é outra linha. O resolvedor a deduplicava por chave e a `main` perdeu 6,5 mil linhas. Passa à classe de logs que só crescem (multiconjunto pela base comum, total recalculado); autoteste e caso F75 no catálogo.
