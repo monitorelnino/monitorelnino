@@ -87,8 +87,8 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     teste(`cartão de ${d}: fonte e data de consulta`, /^Fonte: .+ · consultado em \d{2}\/\d{2}\/\d{4}$/.test(txt(fid)));
     teste(`cartão de ${d}: a semana não vem como número`, !/semana epidemiológica|\bSE ?\d/.test(txt(sid)));
   }
-  teste("cartões de casos: a unidade é notificação (dengue, chikungunya) e internação (SRAG)",
-    /notificaç/i.test(q("cartaoDengue").textContent) && /internaç/i.test(q("cartaoSrag").textContent));
+  teste("cartões de casos: a unidade é notificação (dengue, chikungunya) e caso hospitalizado notificado (SRAG)",
+    /notificaç/i.test(q("cartaoDengue").textContent) && /hospitalizad/i.test(q("cartaoSrag").textContent));
   teste("a linha única sob a fileira não fala em El Niño nem em relação",
     !/El Niño|relação/.test(q("numerosSaude").textContent));
   teste("cartão de estados em alerta: a agregação por estado é declarada",

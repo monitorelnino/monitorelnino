@@ -46,12 +46,12 @@
     
   </header>
 <main id="conteudo">
-  <p class="selo" data-conteudo="saude.texto">MARÉ · Saúde · a mesma medida do MARÉ Legal, aplicada à saúde</p>
+  <p class="selo" data-conteudo="saude.texto">MARÉ · Saúde · planos estaduais e registros de saúde no El Niño 2026/2027</p>
   <h1 data-conteudo-html="saude.titulo_da_pagina">MARÉ <em>Saúde</em></h1>
   <div class="mast-body" id="subSaude">
-    <p class="site-sub" data-conteudo-html="saude.abertura.cenarios">O El Niño 2026/2027 afeta a saúde por caminhos conhecidos. Seca e fogo trazem doenças respiratórias pela inalação de fumaça e, com a falta de água tratada, facilitam o aparecimento de diarreias; chuva forte traz leptospirose, diarreias e hepatite A; o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya aparecem nos três cenários: o calor favorece o mosquito, e a água guardada em casa na estiagem ou parada depois das chuvas vira criadouro. É o que diz o <a href="https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf" target="_blank" rel="noopener">plano federal de contingência para emergências em saúde por seca e estiagem</a>, publicado pelo Ministério da Saúde em 2026.</p>
+    <p class="site-sub" data-conteudo-html="saude.abertura.cenarios">Segundo o <a href="https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/vigilancia-ambiental/plano-de-contingencia-seca-e-estiagem.pdf" target="_blank" rel="noopener">plano federal de contingência para emergências em saúde por seca e estiagem</a>, publicado pelo Ministério da Saúde em 2026, o El Niño pode afetar a saúde por caminhos conhecidos: a seca e o fogo trazem doenças respiratórias e, com a falta de água tratada, diarreias; a chuva forte traz leptospirose, diarreias e hepatite A; o calor agrava doenças cardíacas e renais, sobretudo em idosos e crianças. Dengue e chikungunya aparecem nos três cenários.</p>
     <p class="site-sub" id="saudeLeiIndice" data-conteudo-html="saude.abertura.lei_e_indice">A <a href="https://www.planalto.gov.br/ccivil_03/leis/l8080.htm" target="_blank" rel="noopener">lei</a> dá à secretaria de saúde de cada estado o dever de coordenar a vigilância e a resposta a emergências em saúde pública e deixa a cada secretaria a decisão de publicar um plano para o El Niño. O MARÉ Saúde procura, nos diários oficiais e nos canais das 27 secretarias estaduais, se há um plano para os riscos deste El Niño (arboviroses, calor, água, fumaça), se foi feito para ele ou é recorrente, e quanta gente vive nos estados cujos planos tratam a saúde. Emergências em saúde declaradas desde 29 de junho ficam num indicador separado.</p>
-    <p class="site-sub" data-conteudo-html="saude.abertura.observacao">A página também mostra, como observação e com a fonte de cada número, os casos e os avisos que os órgãos de saúde registram, doença a doença. “Não localizado” quer dizer que o documento não estava nas fontes consultadas até a data de corte. Fontes e critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
+    <p class="site-sub" data-conteudo-html="saude.abertura.observacao">A página também mostra, com a fonte de cada número, os casos e os avisos que os órgãos de saúde registram, doença a doença; esses registros não entram na nota. “Não localizado” quer dizer que o documento não estava nas fontes consultadas até a data de corte; não quer dizer que ele não exista. Fontes e critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
   </div>
 
   <!-- 17/10/2026 (HANDOVER_SAUDE_PAGINA §1.2): o topo é o da inicial, mesmas classes e marcação; só
@@ -60,6 +60,7 @@
   <div class="hero" id="topoSaude">
     <div class="mare-metade" id="metadePreparoSaude">
       <p class="selo u-mt-4" data-conteudo="saude.topo.preparacao.selo">Preparação publicada na saúde</p>
+      <p class="hint" data-conteudo="saude.topo.preparacao.dica">Nota de 0 a 100 dada pelo tipo de plano estadual de saúde localizado. Não mede casos, internações, óbitos nem a qualidade do atendimento.</p>
       <div class="gauge-zone">
         <div class="gauge-head">
           <span class="gnum" id="nIndiceSaude">61,3</span><span class="gden">/ 100</span>
@@ -77,13 +78,14 @@
           <span style="left:70%">70<b>avançado</b></span>
         </div>
         <div class="gauge-ends"><span>0 · estágio inicial</span><span>100</span></div>
-        <p class="note u-mt-2 u-mb-0" id="linhaPreparoSaude" data-conteudo="saude.topo.preparacao.linha_reserva">sem coleta até o corte</p>
+        <p class="note u-mt-2 u-mb-0" id="linhaPreparoSaude" data-conteudo="saude.topo.preparacao.linha_reserva">sem coleta até o corte; não é zero</p>
         <p class="note u-mt-2 u-mb-0"><a href="METODOLOGIA.pdf" id="linkComoLerSaude" target="_blank" rel="noopener">como ler o MARÉ Saúde</a></p>
       </div>
     </div>
 
     <div class="mare-metade" id="metadeRespostaSaude">
       <p class="selo u-mt-4" data-conteudo="saude.topo.resposta.selo">Decretos de emergência em saúde</p>
+      <p class="hint" data-conteudo="saude.topo.resposta.dica">Parcela da população em estados ou municípios com decreto de emergência em saúde registrado desde 29 de junho de 2026. Não avalia a qualidade da resposta.</p>
       <div class="gauge-zone gauge-zone--resposta gauge-zone--compacta" id="contadorRespostaSaude" role="group" aria-label="Resposta: parcela da população sob decreto de emergência em saúde desde 29 de junho de 2026">
         <div class="gauge-head">
           <span class="gnum" id="respNumSaude"></span><span class="gden" id="respDenSaude"></span>
@@ -93,7 +95,7 @@
           <div class="gauge-fill gauge-fill--resposta" id="respFillSaude" data-alvo="0" style="--galvo:0.1;"></div>
         </div>
         <div class="gauge-ends"><span data-conteudo="saude.topo.resposta.ponta">0 · nenhum decreto</span><span>100</span></div>
-        <p class="note u-mt-2 u-mb-0" id="linhaRespostaSaude" data-conteudo="saude.topo.resposta.linha_reserva">sem coleta até o corte</p>
+        <p class="note u-mt-2 u-mb-0" id="linhaRespostaSaude" data-conteudo="saude.topo.resposta.linha_reserva">sem coleta até o corte; não é zero</p>
       </div>
     </div>
   </div>
@@ -120,9 +122,9 @@
         <p class="cartao-numero-fonte" id="fonteChikSE"></p>
       </div>
       <div class="cartao-numero" id="cartaoSrag">
-        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_srag_se.familia">Internações respiratórias graves</p>
+        <p class="cartao-numero-familia" data-conteudo="saude.numerosSaude.n_srag_se.familia">SRAG (síndrome respiratória aguda grave)</p>
         <p class="cartao-numero-valor"><span id="nSragSE">3.624</span></p>
-        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.internacoes.rotulo">internações</p>
+        <p class="cartao-numero-rotulo" data-conteudo="saude.numerosSaude.n_srag_se.rotulo">casos hospitalizados notificados</p>
         <p class="cartao-numero-variacao" id="estadosSragSE"></p>
         <p class="cartao-numero-variacao" id="semanaSragSE"></p>
         <p class="cartao-numero-fonte" id="fonteSragSE"></p>
@@ -144,7 +146,7 @@
   </dialog>
   <section id="estadual">
     <h2 data-conteudo="saude.estadual.titulo_da_secao">A situação de cada estado</h2>
-    <p class="hint" data-conteudo="saude.estadual.abertura">Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Escolha um estado para ver o documento, a data e a fonte.</p>
+    <p class="hint" data-conteudo="saude.estadual.abertura">Que plano de saúde cada secretaria estadual publicou para os riscos deste El Niño. Passe o cursor sobre um estado para ver o tipo de plano; clique ou toque para abrir a ficha com o documento, a data e o link da fonte oficial.</p>
     <div class="grade-figuras grade-figuras--1">
       <figure class="figura figura--tabela cartao-mapa r-chuva" id="boxMonitor">
         <p class="cartao-mapa-familia" data-conteudo="saude.estadual.monitor.familia">MARÉ Saúde</p>
@@ -170,18 +172,20 @@
       <input id="consultaSaudeMun" type="text" list="consultaSaudeLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>
       <datalist id="consultaSaudeLista"></datalist>
     </div>
+    <p class="hint" data-conteudo="saude.consulta.resultado.nota">Os resultados reúnem informações do município e do estado, identificadas em cada cartão. Confira o território, o período e a fonte.</p>
     <div id="consultaSaudeCard" class="meu-card" aria-live="polite" hidden></div>
   </section>
 
   <section id="observado">
     <h2 data-conteudo="saude.observado.titulo_da_secao">O que os órgãos de saúde registram</h2>
     <div id="desfechos" hidden>
-      <p data-conteudo="saude.observado.registram.abertura">Cada cartão mostra o último valor de uma doença ou agravo, a faixa habitual para a época e os períodos mais recentes; a cadência e a fonte estão no rodapé de cada um.</p>
+      <p data-conteudo="saude.observado.registram.abertura">Cada cartão mostra o último valor de uma doença ou agravo, a faixa habitual para a época e os períodos mais recentes; a cadência e a fonte estão no rodapé de cada um. Escolha o território e selecione um dos seis primeiros cartões para ver a série e o mapa do indicador mais abaixo.</p>
       <p class="hint"><label for="ufDesfechos" data-conteudo="saude.observado.registram.seletor">Território</label>
         <select id="ufDesfechos" class="seletor"></select>
         <span data-conteudo="saude.observado.registram.legenda">Linha: valor observado · faixa cinza: habitual para a época (2019–2025)</span></p>
       <div class="grade-numeros grade-numeros--3 grade-numeros--empilha" id="gradeDesfechos"></div>
       <p class="note" id="desfechosLacuna" hidden></p>
+      <p class="hint" data-conteudo="saude.observado.registram.detalhe.dica">Série e mapa do indicador selecionado nos cartões acima.</p>
       <figure class="figura figura--grafico figura--dupla cartao-mapa r-chuva" id="boxDesfecho" hidden>
         <h3 class="figura-titulo" id="tituloDesfecho" data-conteudo="saude.observado.registram.detalhe.titulo_reserva">Série do desfecho escolhido</h3>
         <p class="figura-sub" id="legendaDesfecho" data-conteudo="saude.observado.registram.detalhe.legenda_reserva">Valor observado por 100 mil sobre a faixa habitual para a época · sem coleta até o corte</p>
