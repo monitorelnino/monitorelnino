@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Aplicados os textos aprovados pela editoria em 29/10: abertura e intro dos números da Imprensa, o glossário "Transferência voluntária, por regra e por decreto", as seis etapas e a abertura de Para gestores, com S2iD por extenso, e o título de compartilhamento do Proteja-se. Títulos em pergunta ficaram declarativos (regra de prosa). Nenhum número, dado ou fonte mudou.
 
+## 2026-10-29 · METODOLOGIA: `nota_uf` vira `indice_uf` na fórmula do índice nacional da Saúde
+
+Resíduo do #1335: o símbolo da fórmula usava a palavra vedada para o valor do índice. Texto de uma linha, sem mudança de método; PDF e manifesto regerados. Linhas líquidas: 0 (+1/−1 no .md).
 ## 2026-10-29 · Pacote 1 · Monitor de riscos: textos aprovados
 
 Abertura em três frases (RI-01); RONI definido na primeira ocorrência e instrução de interação nas linhas do gráfico (RI-02); texto da consulta explica município, estado e estação de referência (RI-03); instrução e leitura da legenda ao lado dos mapas (RI-04). Sem mudança de dado, ordem ou layout.

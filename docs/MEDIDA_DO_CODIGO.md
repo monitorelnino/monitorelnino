@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.813 linhas** em **308 arquivos** .py/.js; **37 workflows**.
+- **100.829 linhas** em **308 arquivos** .py/.js; **37 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
 - **155 nomes de função** definidos em mais de um arquivo.
 
@@ -11,8 +11,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 56293 |
-| `scripts` | 37458 |
-| `assets` | 6490 |
+| `scripts` | 37469 |
+| `assets` | 6495 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
 
