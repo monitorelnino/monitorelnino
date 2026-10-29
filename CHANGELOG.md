@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Pacote 1: textos aprovados de Defesa civil e Financiamento
+
+Catálogo: abertura das duas páginas, etiqueta "o ato não cita um risco específico", títulos e dicas das seções de município e de decretos (chaves novas `municipio.abertura`, `emergencias.abertura`, `emergencias.mapa.apoio`). Mapa das emergências ganha "Ver em tabela" (`figura-dados`) ligada aos pontos. Sem CSS novo.
+
 ## 2026-10-29 · METODOLOGIA: "nota" do índice vira "índice" (59 linhas)
 
 Segue a regra da editoria (01/10 e 29/10): no valor dos índices MARÉ não se diz "nota". Troca por tabela fixa, só onde "nota" era o valor do índice; nota técnica, nota de rodapé e nota de versão ficam. "Ranking" e "ranqueamento" seguem na seção de sensibilidade e na §13 até decisão da editoria. Lista antes → depois no LOTES.
