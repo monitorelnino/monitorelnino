@@ -1,19 +1,19 @@
 {
- "gerado_em": "2026-10-27",
+ "gerado_em": "2026-10-28",
  "municipios": {
   "5208707": {
    "S16": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.goiania.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 504",
+    "motivo": "HTTP 503",
     "dominio": "www.goiania.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-26",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.goiania.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "www.goiania.go.gov.br"
    },
    "S13": {
@@ -52,11 +52,11 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-27",
+    "consultado_em": "2026-10-28",
     "situacao": "erro",
     "consulta": null,
-    "motivo": "HTTP 503",
-    "dominio": null
+    "motivo": "ValueError: leitura incompleta: mais de 40 páginas numa consulta, sem achado; não vale como ausência",
+    "dominio": "www.goiania.go.gov.br"
    },
    "S17": {
     "consultado_em": "2026-10-27",
@@ -75,14 +75,14 @@
     "dominio": "anapolis.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=anapolis.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "anapolis.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=anapolis.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -122,6 +122,13 @@
     "consulta": "\"Anápolis\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5201108&pagina=1&tamanhoPagina=500",
+    "motivo": "1513 contratação(ões) lida(s) em 55 consulta(s), nenhuma cita plano",
+    "dominio": "anapolis.go.gov.br"
    }
   },
   "5201405": {
@@ -133,17 +140,17 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: aparecidadegoiania.go.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.aparecidadegoiania.go.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: aparecidadegoiania.go.gov.br URLError: <urlopen error [Errno -2] Name or service not known>; www.aparecidadegoiania.go.gov.br URLError: <urlopen error [Errno -2] Name or service not known>",
     "dominio": null
    },
    "S29": {
@@ -180,6 +187,13 @@
     "consulta": "\"Aparecida de Goiânia\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5201405&pagina=1&tamanhoPagina=500",
+    "motivo": "1436 contratação(ões) lida(s) em 55 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "5204508": {
@@ -191,14 +205,14 @@
     "dominio": "caldasnovas.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=caldasnovas.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "caldasnovas.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=caldasnovas.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -238,6 +252,13 @@
     "consulta": "\"Caldas Novas\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5204508&pagina=1&tamanhoPagina=500",
+    "motivo": "1661 contratação(ões) lida(s) em 59 consulta(s), nenhuma cita plano",
+    "dominio": "caldasnovas.go.gov.br"
    }
   },
   "5205109": {
@@ -249,14 +270,14 @@
     "dominio": "catalao.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=catalao.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "catalao.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=catalao.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -296,6 +317,13 @@
     "consulta": "\"Catalão\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5205109&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "catalao.go.gov.br"
    }
   },
   "5205497": {
@@ -307,14 +335,14 @@
     "dominio": "cidadeocidental.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cidadeocidental.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "cidadeocidental.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cidadeocidental.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -354,6 +382,13 @@
     "consulta": "\"Cidade Ocidental\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5205497&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": "cidadeocidental.go.gov.br"
    }
   },
   "5206206": {
@@ -365,14 +400,14 @@
     "dominio": "cristalina.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=cristalina.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "cristalina.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=cristalina.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -383,6 +418,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cristalina%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "cristalina.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5206206&pagina=1&tamanhoPagina=500",
+    "motivo": "747 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
     "dominio": "cristalina.go.gov.br"
    }
   },
@@ -395,14 +437,14 @@
     "dominio": "formosa.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "erro",
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=formosa.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": "HTTP 503",
+    "motivo": null,
     "dominio": "formosa.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=formosa.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -413,6 +455,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Formosa%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "formosa.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5208004&pagina=1&tamanhoPagina=500",
+    "motivo": "990 contratação(ões) lida(s) em 46 consulta(s), nenhuma cita plano",
     "dominio": "formosa.go.gov.br"
    }
   },
@@ -425,17 +474,17 @@
     "dominio": "goianira.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=goianira.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "goianira.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=goianira.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "IncompleteRead: IncompleteRead(57 bytes read)",
     "dominio": "goianira.go.gov.br"
    },
    "S29": {
@@ -443,6 +492,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goianira%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "goianira.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5208806&pagina=1&tamanhoPagina=500",
+    "motivo": "447 contratação(ões) lida(s) em 34 consulta(s), nenhuma cita plano",
     "dominio": "goianira.go.gov.br"
    }
   },
@@ -455,14 +511,14 @@
     "dominio": "goianesia.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=goianesia.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "goianesia.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=goianesia.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -473,6 +529,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goian%C3%A9sia%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "goianesia.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5208608&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": "goianesia.go.gov.br"
    }
   },
@@ -485,17 +548,17 @@
     "dominio": "inhumas.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=inhumas.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "inhumas.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=inhumas.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "inhumas.go.gov.br"
    },
    "S29": {
@@ -503,6 +566,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Inhumas%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "inhumas.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5210000&pagina=1&tamanhoPagina=500",
+    "motivo": "1426 contratação(ões) lida(s) em 52 consulta(s), nenhuma cita plano",
     "dominio": "inhumas.go.gov.br"
    }
   },
@@ -515,17 +585,17 @@
     "dominio": "itumbiara.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=itumbiara.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "itumbiara.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=itumbiara.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "itumbiara.go.gov.br"
    },
    "S29": {
@@ -533,6 +603,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Itumbiara%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "itumbiara.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5211503&pagina=1&tamanhoPagina=500",
+    "motivo": "2662 contratação(ões) lida(s) em 79 consulta(s), nenhuma cita plano",
     "dominio": "itumbiara.go.gov.br"
    }
   },
@@ -545,17 +622,17 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "jatai.go.gov.br HTTP 403; www.jatai.go.gov.br HTTP 403",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
-    "situacao": "dominio_nao_verificado",
+    "consultado_em": "2026-10-28",
+    "situacao": "recusa_de_fonte",
     "consulta": null,
-    "motivo": null,
+    "motivo": "jatai.go.gov.br HTTP 403; www.jatai.go.gov.br HTTP 403",
     "dominio": null
    },
    "S29": {
@@ -563,6 +640,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Jata%C3%AD%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5211909&pagina=1&tamanhoPagina=500",
+    "motivo": "2902 contratação(ões) lida(s) em 80 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -575,17 +659,17 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: luziania.go.gov.br URLError: <urlopen error timed out>; www.luziania.go.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: luziania.go.gov.br URLError: <urlopen error timed out>; www.luziania.go.gov.br URLError: <urlopen error timed out>",
     "dominio": null
    },
    "S29": {
@@ -593,6 +677,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Luzi%C3%A2nia%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5212501&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -605,17 +696,17 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: mineiros.go.gov.br responde, mas não se diz a prefeitura; www.mineiros.go.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: mineiros.go.gov.br responde, mas não se diz a prefeitura; www.mineiros.go.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S29": {
@@ -623,6 +714,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mineiros%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: mais de 40 páginas numa consulta, sem achado; não vale como ausência",
     "dominio": null
    }
   },
@@ -635,14 +733,14 @@
     "dominio": "morrinhos.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=morrinhos.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 503",
     "dominio": "morrinhos.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=morrinhos.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -653,6 +751,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Morrinhos%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "morrinhos.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5213806&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": "morrinhos.go.gov.br"
    }
   },
@@ -665,14 +770,14 @@
     "dominio": null
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=novogama.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "novogama.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=novogama.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -684,6 +789,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Novo+Gama%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5215231&pagina=1&tamanhoPagina=500",
+    "motivo": "1480 contratação(ões) lida(s) em 53 consulta(s), nenhuma cita plano",
+    "dominio": "novogama.go.gov.br"
    }
   },
   "5217609": {
@@ -695,14 +807,14 @@
     "dominio": "planaltina.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=planaltina.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "planaltina.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=planaltina.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -713,6 +825,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Planaltina%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "planaltina.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5217609&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": "planaltina.go.gov.br"
    }
   },
@@ -725,14 +844,14 @@
     "dominio": "quirinopolis.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=quirinopolis.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "quirinopolis.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=quirinopolis.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -743,6 +862,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Quirin%C3%B3polis%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "quirinopolis.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5218508&pagina=1&tamanhoPagina=500",
+    "motivo": "1690 contratação(ões) lida(s) em 58 consulta(s), nenhuma cita plano",
     "dominio": "quirinopolis.go.gov.br"
    }
   },
@@ -755,14 +881,14 @@
     "dominio": "rioverde.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=rioverde.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "rioverde.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=rioverde.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -773,6 +899,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Rio+Verde%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "rioverde.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5218805&pagina=1&tamanhoPagina=500",
+    "motivo": "6174 contratação(ões) lida(s) em 149 consulta(s), nenhuma cita plano",
     "dominio": "rioverde.go.gov.br"
    }
   },
@@ -785,14 +918,14 @@
     "dominio": "santoantoniododescoberto.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=santoantoniododescoberto.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "santoantoniododescoberto.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=santoantoniododescoberto.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -803,6 +936,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santo+Ant%C3%B4nio+do+Descoberto%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "santoantoniododescoberto.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5219753&pagina=1&tamanhoPagina=500",
+    "motivo": "728 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
     "dominio": "santoantoniododescoberto.go.gov.br"
    }
   },
@@ -815,14 +955,14 @@
     "dominio": "senadorcanedo.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=senadorcanedo.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "senadorcanedo.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=senadorcanedo.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -833,6 +973,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Senador+Canedo%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "senadorcanedo.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5220454&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": "senadorcanedo.go.gov.br"
    }
   },
@@ -845,14 +992,14 @@
     "dominio": "trindade.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=trindade.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "trindade.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=trindade.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -863,6 +1010,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Trindade%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "trindade.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5221403&pagina=1&tamanhoPagina=500",
+    "motivo": "636 contratação(ões) lida(s) em 38 consulta(s), nenhuma cita plano",
     "dominio": "trindade.go.gov.br"
    }
   },
@@ -875,14 +1029,14 @@
     "dominio": "valparaisodegoias.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
-    "situacao": "lido",
+    "consultado_em": "2026-10-28",
+    "situacao": "erro",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=valparaisodegoias.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
-    "motivo": null,
+    "motivo": "URLError: <urlopen error [Errno 111] Connection refused>",
     "dominio": "valparaisodegoias.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=valparaisodegoias.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -893,6 +1047,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Valpara%C3%ADso+de+Goi%C3%A1s%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "valparaisodegoias.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5221858&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": "valparaisodegoias.go.gov.br"
    }
   },
@@ -905,14 +1066,14 @@
     "dominio": "aguaslindasdegoias.go.gov.br"
    },
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=aguaslindasdegoias.go.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "aguaslindasdegoias.go.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=aguaslindasdegoias.go.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -923,6 +1084,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22%C3%81guas+Lindas+de+Goi%C3%A1s%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": "aguaslindasdegoias.go.gov.br"
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5200258&pagina=1&tamanhoPagina=500",
+    "motivo": null,
     "dominio": "aguaslindasdegoias.go.gov.br"
    }
   }
