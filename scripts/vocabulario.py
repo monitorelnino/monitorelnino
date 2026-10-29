@@ -37,7 +37,7 @@ def acha(texto, termos, sem_citacao=False, exato=False):
 
 
 def problemas(texto, pagina, regras, contrato):
-    """Global, por página, `texto_proibido` do contrato, advérbio colado a número, locução de dever."""
+    """Global, por página, `texto_proibido` do contrato, advérbio colado a número, locução de dever, `padroes`."""
     v = (regras or {}).get("vocabulario_proibido") or {}
     t = texto or ""
     baixo = t.lower()
@@ -54,6 +54,10 @@ def problemas(texto, pagina, regras, contrato):
         if loc.lower() in baixo:
             i = baixo.index(loc.lower())
             p.append(f"locução de dever fora de citação de lei: {loc!r} — …{t[max(0, i - 40):i + 40]!r}")
+    for pad in v.get("padroes") or []:
+        m = re.search(pad["padrao"], t, re.I if "i" in pad.get("flags", "") else 0)
+        if m:
+            p.append(f"{pad['motivo']}: …{t[max(0, m.start() - 40):m.end() + 40]!r}")
     return p
 
 
@@ -76,6 +80,17 @@ def _autoteste():
         ("juízo colado a número", any("juízo" in x for x in problemas("apenas 3 estados", "x.html", r, {}))),
         ("juízo longe de número passa", not any("juízo" in x for x in problemas("apenas o estado", "x.html", r, {}))),
         ("locução de dever", any("dever" in x for x in problemas("o município deve publicar", "x.html", r, {}))),
+    ]
+    real = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))
+    ruim = lambda x: bool(problemas(x, "x.html", real, {}))
+    casos += [
+        ("'nota' do índice reprova", ruim("A nota de cada estado vai de 0 a 100") and ruim("não entram na nota") and ruim("a nota do MARÉ Legal")),
+        ("nota de rodapé, nota técnica e rótulo 'Nota:' passam", not any(map(ruim, [
+            "conforme a nota de rodapé", "a Nota Técnica nº 2/2025", "as notas técnicas", "Nota: fonte IBGE", "{nota} Fonte: Siconfi"]))),
+        ("'Nota: 5,7' (valor) reprova", ruim("Nota: 5,7 → 34,1")),
+        ("ranking reprova", all(map(ruim, ["o ranking dos estados", "ranqueia municípios", "classificação dos estados",
+                                         "o pior colocado", "o estado lidera", "a lanterna", "em primeiro lugar"]))),
+        ("texto sem ranking passa", not ruim("Cada estado traz o índice, a data e o documento; não ordenamos os entes.")),
     ]
     falhas = [n for n, c in casos if not c]
     for n, c in casos:

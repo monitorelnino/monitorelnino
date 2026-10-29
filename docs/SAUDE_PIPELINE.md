@@ -9,13 +9,13 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-22 a 2026-10-29 (1155 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-22 a 2026-10-29 (1168 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - coletar_sih.py: erro em 5 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
 - coletar_sim.py: erro em 6 rodadas seguidas — SIM: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
-- julgar_filas.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
+- julgar_filas.py: erro em 4 rodadas seguidas — interrompido pelo prazo do elo
 - verificar_links.py: erro em 2 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Cobertura em 15 dias
@@ -28,8 +28,8 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-29 04:11 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-29 15:51 | 4 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `recalcular_mare.py` | essencial | 2026-10-29 18:33 | 4 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-29 16:58 | 146 s | 13 | ok | — |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
 | `buscar_planos_fontes_abertas.py` | coletor | 2026-10-28 23:21 | 718 s | — | ok | — |
@@ -73,8 +73,8 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `descobrir_planos.py` | coletor | 2026-10-29 08:18 | 438 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-10-28 01:07 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-10-29 08:17 | 32 s | — | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `julgar_filas.py` | coletor | 2026-10-26 08:26 | 1108 s | — | **erro** (3 seguidas) | interrompido pelo prazo do elo |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-29 16:55 | 184 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-10-29 14:25 | 9002 s | — | **erro** (4 seguidas) | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-27 01:13 | 4321 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-10-28 01:27 | 3 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-10-29 08:05 | 750 s | 17142 | ok | — |
@@ -87,13 +87,13 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `preservar_evidencias.py` | coletor | 2026-10-29 08:43 | 1 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-10-29 09:32 | 19 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-26 08:03 | 1374 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-10-29 14:12 | 744 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-26 08:02 | 61 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-29 14:11 | 51 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-27 02:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-29 08:43 | 2 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-10-27 01:19 | 718 s | — | ok | — |
-| `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-29 06:21 | 5400 s | — | ok | — |
+| `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-29 15:35 | 403 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-24 01:18 | 84 s | — | ok | — |
 | `scripts/sondar_rotas_doe.py` | coletor | 2026-10-28 21:49 | 92 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
