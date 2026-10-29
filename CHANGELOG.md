@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #1307 · Juiz automático: codebook 1.8 passa a valer
+
+As regras J1 a J7, J10, J11 e J15 do codebook 1.8 substituem o 1.7; J8, J9 e a segunda leva seguem fora, em medição. Nenhum peso ou crédito muda. A troca de versão devolve as pistas ao juiz e as decisões novas entram no índice pela cadeia normal. METODOLOGIA §125.
+
 ## 2026-10-28 · #1306 · Rodapé: ícone oficial do LinkedIn e do Instagram, com o nome embaixo
 
 O rodapé de todas as páginas mostra o glifo oficial de cada rede acima do nome, só LinkedIn e Instagram. Os links são os mesmos; o ícone é decorativo e o nome continua sendo o rótulo.

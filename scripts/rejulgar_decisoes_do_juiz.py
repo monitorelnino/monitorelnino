@@ -196,13 +196,13 @@ VARIANTES_18 = {"com_propostas_J8_J9": "PROPOSTAS_18", "com_segunda_leva": "SEGU
 def julgar_18(p: dict, buscar, propostas=False) -> dict:
     import juiz
     from julgar_filas import julgar_uma
-    novo = julgar_uma(p, buscar, codebook="1.8")
+    novo = julgar_uma(p, buscar)
     if propostas and novo.get("leu_documento"):
         texto = buscar(p.get("url"))
         for variante, conjunto in VARIANTES_18.items():
             novo[variante] = compacto_18(juiz.julgar(
                 texto, nome=p.get("municipio") or "", uf=p.get("uf") or "", ibge=p.get("ibge"), url=p.get("url"),
-                trecho=p.get("trecho"), codebook="1.8", propostas=getattr(juiz, conjunto)))
+                trecho=p.get("trecho"), propostas=getattr(juiz, conjunto)))
     return novo
 
 
@@ -276,7 +276,7 @@ def buscar_18():
 
 def paralelo_18(argv) -> int:
     from coletores_base import gravar_em, hoje_editorial
-    from juiz import CODEBOOK_18, fonte_oficial
+    from juiz import CODEBOOK_VERSAO, fonte_oficial
     rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
     propostas = "--propostas" in argv
     # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18);
@@ -287,7 +287,7 @@ def paralelo_18(argv) -> int:
         "_governanca": ("Rodada paralela do juiz, codebook 1.8 (handover da central de 26/10/2026). Nenhuma página "
                         "lê este arquivo; a troca para o 1.8 é decisão da editoria. `rejulgada_de` é a decisão "
                         "vigente (1.7 ou anterior) da mesma pista e URL."),
-        "codebook": CODEBOOK_18, "decisoes": []}
+        "codebook": CODEBOOK_VERSAO, "decisoes": []}
     # A chave é a da PISTA: o veredito pode ter mudado o município (J5/J6), e a chave pelo veredito fazia a
     # mesma pista ser relida a cada lote (113 repetidas até o lote 6).
     feitas = {}
@@ -301,7 +301,7 @@ def paralelo_18(argv) -> int:
         nonlocal lidas
         chave = chave_18(p)
         anterior = feitas.get(chave)
-        precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"], True)
+        precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"])
         refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or [])
                                      or ("promove" in refazer and anterior.get("promove"))
                                      or ("leva2" in refazer and anterior.get("leu_documento")
