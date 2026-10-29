@@ -17,6 +17,10 @@ Título, cenários, observação, abertura dos cartões e do mapa de planos com 
 
 Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
 
+## 2026-10-29 · #PR · Juiz 1.8 (paralelo): o nunca lido vem antes da leitura que já falhou
+
+Na rodada paralela, depois do que `--refazer` pede, as pistas nunca tentadas passam à frente das leituras que já falharam (849 falhas iam antes de 3.233 pistas da fila nunca lidas). Só `data/paralelo_*`; o juiz de produção não muda. Um caso de teste.
+
 ## 2026-10-29 · METODOLOGIA: "nota" do índice vira "índice" (59 linhas)
 
 Segue a regra da editoria (01/10 e 29/10): no valor dos índices MARÉ não se diz "nota". Troca por tabela fixa, só onde "nota" era o valor do índice; nota técnica, nota de rodapé e nota de versão ficam. "Ranking" e "ranqueamento" seguem na seção de sensibilidade e na §13 até decisão da editoria. Lista antes → depois no LOTES.

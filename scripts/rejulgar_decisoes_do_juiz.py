@@ -134,6 +134,12 @@ def autoteste() -> int:
                   vale_a_leitura_18(lida, falhou) is lida and vale_a_leitura_18(None, falhou) is falhou
                   and vale_a_leitura_18(lida, dict(lido, leu_documento=True, motivo="x"))["motivo"] == "x"))
 
+    casos.append(("1.8: o que --refazer pede vem primeiro; depois o nunca tentado; a leitura que falhou, por último",
+                  sorted([("falhou", False, falhou), ("refazer", True, lida), ("nova", False, None)],
+                         key=lambda t: ordem_18(t[1], t[2]))[0][0] == "refazer"
+                  and [n for n, *_ in sorted([("falhou", False, falhou), ("nova", False, None)],
+                                             key=lambda t: ordem_18(t[1], t[2]))] == ["nova", "falhou"]))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -198,6 +204,13 @@ def vale_a_leitura_18(anterior, novo) -> dict:
     """Releitura que não chegou ao documento não apaga a leitura anterior (lote 12 de 29/10: 46 chaves lidas
     voltaram como "documento_inacessivel"). PURA."""
     return anterior if anterior and anterior.get("leu_documento") and not novo.get("leu_documento") else novo
+
+
+def ordem_18(refeita: bool, anterior) -> tuple:
+    """Ordem do trabalho. Lote 15 de 29/10: `--refazer J19 --rede 200` gastou as leituras em chaves nunca lidas e
+    não releu nenhuma das 56 da J19, então o que `--refazer` pede vem primeiro. Depois o nunca tentado: em 29/10,
+    19 h, 849 leituras que já tinham falhado iam antes de 3.233 pistas da fila nunca lidas. PURA."""
+    return (not refeita, anterior is not None)
 
 
 # Regras medidas à parte, cada conjunto na sua chave: J8/J9 (propostas) e a segunda leva (§1b/§1c).
@@ -406,9 +419,7 @@ def paralelo_18(argv) -> int:
         trabalho += [({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
                        **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
                      for p in (fila or {}).get("pistas", [])]
-        # Lote 15 de 29/10: `--refazer J19 --rede 200` gastou as 200 leituras em chaves nunca lidas e não releu
-        # nenhuma das 56 da J19. O que `--refazer` pede vem primeiro; o resto segue na ordem de sempre.
-        trabalho.sort(key=lambda t: not refaz(feitas.get(chave_18(t[0]))))
+        trabalho.sort(key=lambda t: ordem_18(refaz(feitas.get(chave_18(t[0]))), feitas.get(chave_18(t[0]))))
         for p, antes, origem in trabalho:
             rejulgar(p, antes, origem)
     except KeyboardInterrupt:
