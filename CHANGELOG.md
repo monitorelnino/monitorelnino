@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #1340 · Pacote 1 de UX: textos da Imprensa, Para gestores e Proteja-se
+
+Aplicados os textos aprovados pela editoria em 29/10: abertura e intro dos números da Imprensa, o glossário "Transferência voluntária, por regra e por decreto", as seis etapas e a abertura de Para gestores, com S2iD por extenso, e o título de compartilhamento do Proteja-se. Títulos em pergunta ficaram declarativos (regra de prosa). Nenhum número, dado ou fonte mudou.
+
 ## 2026-10-29 · Pacote 1: textos aprovados de Defesa civil e Financiamento
 
 Catálogo: abertura das duas páginas, etiqueta "o ato não cita um risco específico", títulos e dicas das seções de município e de decretos (chaves novas `municipio.abertura`, `emergencias.abertura`, `emergencias.mapa.apoio`). Mapa das emergências ganha "Ver em tabela" (`figura-dados`) ligada aos pontos. Sem CSS novo.
