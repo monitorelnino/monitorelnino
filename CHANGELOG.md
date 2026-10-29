@@ -9,6 +9,39 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #PR · Saúde: uma só conta para dengue e SRAG no topo, na Imprensa e no fallback
+Causa da `main` vermelha desde 02:07: `topo_saude.json` calculava os cartões pela série legada e a página pelo desfecho novo (Imprensa 3.813, semana 39; página 3.624, semana 38). Os cartões e o fallback estático passam a ler `resumo_do_desfecho`; saem `ultima_fechada` e `nacional_da_serie`. Linhas líquidas: código −53.
+
+## 2026-10-29 · #PR · Consolidação: sai o script de limpeza de 26/10, medida regravada
+
+A limpeza de links e confirmações falsas já rodou e está registrada; o script de uma vez só sai (−345 linhas) e deixa a lista de manutenção de pistas. `docs/MEDIDA_DO_CODIGO.md` e o CODEMAP regravados: 101.827 linhas em 317 arquivos.
+
+## 2026-10-29 · #1307 · Juiz automático: codebook 1.8 passa a valer
+
+As regras J1 a J7, J10, J11 e J15 do codebook 1.8 substituem o 1.7; J8, J9 e a segunda leva seguem fora, em medição. Nenhum peso ou crédito muda. A troca de versão devolve as pistas ao juiz e as decisões novas entram no índice pela cadeia normal. METODOLOGIA §125.
+
+## 2026-10-28 · #1306 · Rodapé: ícone oficial do LinkedIn e do Instagram, com o nome embaixo
+
+O rodapé de todas as páginas mostra o glifo oficial de cada rede acima do nome, só LinkedIn e Instagram. Os links são os mesmos; o ícone é decorativo e o nome continua sendo o rótulo.
+
+## 2026-10-28 · #1301 · Crédito dos mapas: "consultado em" quando a data é a da nossa consulta
+
+O crédito da figura passa a dizer "consultado em dd/mm/aaaa" quando a data é a da nossa consulta à fonte e mantém "Atualização: dd/mm/aaaa" quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.
+
+## 2026-10-28 · #1304 · Logo do LinkedIn entra em assets/redes
+
+O "in" preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.
+
+## 2026-10-28 · Financiamento: cartões das medidas provisórias ao lado do gráfico mensal, na mesma base
+
+Em "De onde vem o dinheiro", os dois cartões das MPs e o gráfico "Desembolsado por mês" ficam lado a lado. As barras passam a comparar dotação atualizada, empenhado e desembolsado da ação reforçada; o valor do ato vai em texto. Corrige o desembolsado da MP 1.367 acima do valor do ato.
+
+## 2026-10-28 · dotação da ação · Financiamento: cada MP traz a base da própria ação
+`semana.json` passa a levar, por MP, `acao`: dotação atualizada da ação (inclui o crédito), empenhado e pago da ação desde o mês de publicação, valor do ato à parte, fonte e exercício. Dotação não lida vira lacuna com motivo, nunca zero. A barra do cartão pode comparar a mesma base; o pago deixa de passar do valor do ato.
+
+## 2026-10-28 · #1305 · Juiz 1.8 (paralelo): segunda leva J14, J16, J19, J20 medida à parte
+Rodada paralela, nada publicado muda. Documento estadual vai à fila estadual (J14); calendário e campanha não são instrumento (J16); no repositório estadual o município sai do nome do arquivo (J19); lei que cria fundo, COMPDEC ou conselho é estrutura (J20). Ligadas como as propostas, gravadas em `com_segunda_leva`; o 1.8 medido não muda.
+
 ## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
 Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
 

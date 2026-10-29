@@ -45,7 +45,7 @@
     "dominio": null
    },
    "S18": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5208707&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
@@ -123,6 +123,13 @@
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5201108&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
@@ -186,6 +193,13 @@
     "situacao": "erro",
     "consulta": "\"Aparecida de Goiânia\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "lido",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5201405&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": null,
     "dominio": null
    },
    "S22": {
@@ -253,6 +267,13 @@
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5204508&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
@@ -316,6 +337,13 @@
     "situacao": "erro",
     "consulta": "\"Catalão\" GO (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5205109&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
    },
    "S22": {
@@ -383,6 +411,13 @@
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5205497&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -419,6 +454,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Cristalina%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "cristalina.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5206206&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",
@@ -457,6 +499,13 @@
     "motivo": "HTTP 401",
     "dominio": "formosa.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5208004&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
@@ -493,6 +542,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Goianira%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "goianira.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5208806&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",
@@ -531,6 +587,13 @@
     "motivo": "HTTP 401",
     "dominio": "goianesia.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5208608&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -567,6 +630,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Inhumas%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "inhumas.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5210000&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",
@@ -605,6 +675,13 @@
     "motivo": "HTTP 401",
     "dominio": "itumbiara.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5211503&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
@@ -640,6 +717,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Jata%C3%AD%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5211909&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
    },
    "S22": {
@@ -679,6 +763,13 @@
     "motivo": "HTTP 401",
     "dominio": null
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5212501&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -714,6 +805,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Mineiros%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5213103&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
    },
    "S22": {
@@ -753,6 +851,13 @@
     "motivo": "HTTP 401",
     "dominio": "morrinhos.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5213806&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -788,6 +893,13 @@
     "situacao": "recusa_de_fonte",
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Novo+Gama%22&rows=10",
     "motivo": "HTTP 401",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5215231&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
    },
    "S22": {
@@ -827,6 +939,13 @@
     "motivo": "HTTP 401",
     "dominio": "planaltina.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5217609&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -863,6 +982,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Quirin%C3%B3polis%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "quirinopolis.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5218508&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",
@@ -901,6 +1027,13 @@
     "motivo": "HTTP 401",
     "dominio": "rioverde.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5218805&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
@@ -937,6 +1070,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Santo+Ant%C3%B4nio+do+Descoberto%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "santoantoniododescoberto.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5219753&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",
@@ -975,6 +1115,13 @@
     "motivo": "HTTP 401",
     "dominio": "senadorcanedo.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5220454&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -1011,6 +1158,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22Trindade%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "trindade.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5221403&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",
@@ -1049,6 +1203,13 @@
     "motivo": "HTTP 401",
     "dominio": "valparaisodegoias.go.gov.br"
    },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5221858&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
    "S22": {
     "consultado_em": "2026-10-28",
     "situacao": "lido",
@@ -1085,6 +1246,13 @@
     "consulta": "https://dados.gov.br/api/3/action/package_search?q=%22plano+de+conting%C3%AAncia%22+%22%C3%81guas+Lindas+de+Goi%C3%A1s%22&rows=10",
     "motivo": "HTTP 401",
     "dominio": "aguaslindasdegoias.go.gov.br"
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5200258&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
    },
    "S22": {
     "consultado_em": "2026-10-28",

@@ -135,7 +135,7 @@ const srv = require("./_servidor.js")(RAIZ);
         for (const k of ["titulo", "sub", "midia"]) { const vs = new Set(grupo.map(g => g[k]).filter(v => v != null)); if (vs.size > 1) falhas.push(`${p}@${largura}: ${k} em posição vertical diferente entre figuras lado a lado: ${grupo.map(g => g.id + "=" + g[k]).join(", ")}`); }
       }
       // (4) crédito no formato único
-      for (const c of r.creditos) if (!/^Fonte: .+ · Atualização: (\d{2}\/\d{2}\/\d{4}|sem coleta até o corte)( · Metodologia)?$/.test(c)) falhas.push(`${p}@${largura}: crédito fora do formato "Fonte: … · Atualização: dd/mm/aaaa": "${c.slice(0, 90)}"`);
+      for (const c of r.creditos) if (!/^Fonte: .+ · (?:Atualização:|consultado em) (\d{2}\/\d{2}\/\d{4}|sem coleta até o corte)( · Metodologia)?$/.test(c)) falhas.push(`${p}@${largura}: crédito fora do formato "Fonte: … · Atualização: dd/mm/aaaa": "${c.slice(0, 90)}"`);
       /* (5) A NUMERAÇÃO SAIU — de figura e de seção.
          Ela era exigida aqui desde a auditoria de 07/09/2026. As decisões de 01 e 02/10/2026 a
          revogaram ("seções sem caixa e sem numeração"; "FIGURA" proibida no texto), e em 03/10 o

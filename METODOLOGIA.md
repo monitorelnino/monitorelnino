@@ -4404,3 +4404,11 @@ Os textos do Blog do MARÉ são escritos integralmente por inteligência artific
 **Saúde.** Os textos informam que as semanas mais recentes são parciais e sobem com as notificações atrasadas, que notificação é diferente de caso confirmado e que os números não indicam relação com o El Niño.
 
 **Forma.** Seis parágrafos em prosa, título factual, linha fina e, ao final, as fontes com a data de consulta. Cada texto fica no seu endereço permanente.
+
+## 125. Juiz automático, codebook 1.8: regras que passam a valer (29/10/2026)
+
+*Decisão da central em 28/10/2026, sobre a medição de 28/10.*
+
+O juiz que classifica os documentos de planos municipais passa do codebook 1.7 para o 1.8. Entram as regras J1 a J7, J10, J11 e J15: o documento que se apresenta como plano de contingência no cabeçalho é tratado como o plano, ainda que cite situação de emergência no histórico; notícia em domínio oficial não é documento; o domínio estadual de uma UF não credita município de outra; nome de município comum a outros exige o ente confirmado no texto; a data do plano vem do próprio plano, e ato datado fora do intervalo plausível fica como data não confirmada; a família de risco lê o título e o código COBRADE antes dos fatores contribuintes; a plataforma de publicação oficial de diários (SIGPub) é fonte oficial; e título de planejamento que apenas cita um plano de contingência não é o plano.
+
+Ficam fora as regras J8 e J9, que alterariam o crédito de planos antigos e de planos setoriais, e a segunda leva (J14, J16, J19 e J20), ainda em medição. Nenhum peso, crédito ou componente do índice muda: a troca de versão devolve ao juiz as pistas já julgadas, e as decisões novas entram no índice pela cadeia normal de apuração. Na medição de 28/10 sobre as decisões já gravadas, o MARÉ Legal nacional passava de 40,2 para 40,7, com 114 municípios a mais com plano reconhecido e nenhum a menos.
