@@ -87,8 +87,8 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     teste(`cartão de ${d}: fonte e data de consulta`, /^Fonte: .+ · consultado em \d{2}\/\d{2}\/\d{4}$/.test(txt(fid)));
     teste(`cartão de ${d}: a semana não vem como número`, !/semana epidemiológica|\bSE ?\d/.test(txt(sid)));
   }
-  teste("cartões de casos: a unidade é notificação (dengue, chikungunya) e internação (SRAG)",
-    /notificaç/i.test(q("cartaoDengue").textContent) && /internaç/i.test(q("cartaoSrag").textContent));
+  teste("cartões de casos: a unidade é notificação (dengue, chikungunya) e caso hospitalizado notificado (SRAG)",
+    /notificaç/i.test(q("cartaoDengue").textContent) && /hospitalizad/i.test(q("cartaoSrag").textContent));
   teste("a linha única sob a fileira não fala em El Niño nem em relação",
     !/El Niño|relação/.test(q("numerosSaude").textContent));
   teste("cartão de estados em alerta: a agregação por estado é declarada",
@@ -212,8 +212,8 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     const t = cartao.textContent;
     teste("consulta: seis cartões, no formato dos outros cartões municipais", cartao.querySelectorAll(".cartao").length === 6 && !cartao.querySelector("table"));
     teste("consulta: dengue com nível e semana em datas, fonte InfoDengue", /Nível 2 \(atenção\)/.test(t) && /Semana de \d+ a \d+ de \w+ de 2026 · InfoDengue \(Fiocruz e FGV\)/.test(t));
-    teste("consulta: o estado é dito como do estado, sem acumulado do ano nem nota", /Internações respiratórias graves \(estado\)/.test(t)
-      && /internações? no estado na semana de/.test(t) && !/no estado em 2026/.test(t) && !/MARÉ Saúde \(estado\)[\s\S]*de 100/.test(t));
+    teste("consulta: o estado é dito como do estado, sem acumulado do ano nem nota", /SRAG \(síndrome respiratória aguda grave\), casos hospitalizados notificados \(estado\)/.test(t)
+      && /casos? hospitalizados? notificados? no estado na semana de/.test(t) && !/no estado em 2026/.test(t) && !/MARÉ Saúde \(estado\)[\s\S]*de 100/.test(t));
     teste("consulta: o tipo de plano estadual no lugar da nota, com a ficha", /MARÉ Saúde \(estado\)/.test(t) && /ver a ficha do estado/.test(t)
       && t.includes(NOME_DO_TIPO[MSd2.ufs.SE.instrumento.status]));
     teste("consulta: sem jargão interno nem 'classe Normal'", !/METODOLOGIA|§10|classe Normal|leitura automática/.test(t));

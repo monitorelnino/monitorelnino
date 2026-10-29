@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Pacote 1 · MARÉ Saúde: textos aprovados
+
+Título, cenários, observação, abertura dos cartões e do mapa de planos com os textos aprovados; descrição sob os rótulos dos dois índices, acima do gráfico do indicador e junto ao resultado da consulta; cartão de SRAG com rótulo próprio ("casos hospitalizados notificados"); linha de reserva "não é zero". O parágrafo da lei (Lei 8.080, art. 17) segue o texto atual até a conferência no Planalto.
+
+## 2026-10-29 · Pacote 1 · Página inicial: textos aprovados e instrução de interação
+
+Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
 ## 2026-10-29 · Pacote 1: textos aprovados de Defesa civil e Financiamento
 
 Catálogo: abertura das duas páginas, etiqueta "o ato não cita um risco específico", títulos e dicas das seções de município e de decretos (chaves novas `municipio.abertura`, `emergencias.abertura`, `emergencias.mapa.apoio`). Mapa das emergências ganha "Ver em tabela" (`figura-dados`) ligada aos pontos. Sem CSS novo.
