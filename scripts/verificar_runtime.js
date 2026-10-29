@@ -350,7 +350,7 @@ setTimeout(() => {
     teste(`resposta: índice nacional na página (${q("respNum").textContent}) = por_uf.json (${indNac})`, q("respNum").textContent === indNac);
     teste("resposta: pílula com a contagem de municípios", new RegExp(String(nac.n_municipios).replace(/\B(?=(\d{3})+(?!\d))/g, "\\.") + " municípios").test(q("respBadge").textContent));
     teste("resposta: usa a arte única do medidor (.gauge-fill--resposta)", !!d.querySelector("#contadorResposta .gauge-fill.gauge-fill--resposta") && !d.querySelector("#contadorResposta .resp-fill"));
-    teste("resposta: frase C18 (defeso) na inicial", /transferências voluntárias ficam suspensas/.test(q("conteudo").textContent));
+    teste("resposta: frase C18 (defeso) na inicial", /transferências voluntárias ficaram suspensas/.test(q("conteudo").textContent));
     teste("resposta: 27 cartões de estado com a segunda barra", d.querySelectorAll(".tile .tile-bar--resposta .tile-fill--resposta").length === 27);
     [...d.querySelectorAll(".tile")].find(t => t.dataset.uf === "RS").click(); await new Promise(r => setTimeout(r, 300));
     const det = q("detail").textContent, m = det.match(/(\d+) de (\d+) municípios · (\d+)% da população/);

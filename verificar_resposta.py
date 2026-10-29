@@ -46,7 +46,7 @@ try:
     # C18 protege (no período eleitoral as voluntárias param, as por decreto continuam) segue obrigatório
     # em toda superfície do contador. Nos arquivos de dados (acima) o dispositivo continua citado, porque
     # ali é governança, não tela. A frase da inicial é montada pelo JS da página, então o par HTML+JS conta.
-    FRASE_C18_TELA = "transferências voluntárias ficam suspensas"
+    FRASE_C18_TELA = "transferências voluntárias ficaram suspensas"
     for pg, js in (("index.html", "assets/js/index.js"), ("defesa-civil.html", "assets/js/defesa-civil.js")):
         f = RAIZ / pg
         if f.exists():

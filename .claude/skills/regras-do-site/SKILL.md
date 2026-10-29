@@ -146,7 +146,7 @@ em uma linha (no contrato, no código ou no relatório) e segue-se — sem pergu
 - Teto público de ausência: **"não localizamos até o corte"** — nunca "não existe".
 - Nunca inventar dado: ausência é **lacuna declarada**, com fonte.
 - Nenhum nome de autor parlamentar no site.
-- Texto explicativo vai direto ao que se vê: sem instrução de uso, sem nota interna.
+- Texto explicativo vai direto ao que se vê: sem nota interna; instrução de interação só curta e fiel ao que o componente faz (editoria, 29/10/2026).
 
 **Acessibilidade** (direção de arte §23: criatividade visual nunca compromete contraste,
 legibilidade, daltonismo ou leitura em tela pequena. Os números vêm de onde indicado)

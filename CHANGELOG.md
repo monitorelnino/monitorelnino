@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Pacote 1 · Página inicial: textos aprovados e instrução de interação
+
+Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
+
 ## 2026-10-27 · #1268 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais
 
 `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.
