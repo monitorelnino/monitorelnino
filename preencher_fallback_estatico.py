@@ -149,24 +149,13 @@ def preencher_saude():
     mon = ler("monitor_saude.json", {}) or {}
     # 02/10/2026 (bloco A): os cartões do topo passaram a ser os cinco indicadores dinâmicos. O
     # fallback escreve o que o JavaScript escreveria, para que a página sem JS não mostre "—".
-    den = ler("saude_desfechos/dengue_sinan_serie.json", {}) or {}
-    br = ((den.get("serie") or {}).get("BR") or {})
-    ano = str(den.get("ano_corrente") or "")
-    fechadas = sorted(k for k, v in br.items() if k.startswith(ano) and v is not None)
-    if fechadas:
-        h = sub_id(h, "nDengueSE", f"{br[fechadas[-1]]:,}".replace(",", "."), n)
-    srag = ler("saude_desfechos/srag_serie.json", {}) or {}
-    serie = srag.get("serie") or {}
-    ano_s = str(srag.get("ano_corrente") or "")
-    total = {}
-    for por_se in serie.values():
-        if isinstance(por_se, dict):
-            for se, v in por_se.items():
-                if se.startswith(ano_s) and isinstance(v, (int, float)):
-                    total[se] = total.get(se, 0) + v
-    if total:
-        ult = sorted(total)[-1]
-        h = sub_id(h, "nSragSE", f"{int(total[ult]):,}".replace(",", "."), n)
+    # 29/10/2026: os dois números saem de `topo_saude.json`, o mesmo que a página e a Imprensa leem
+    # (antes, daqui saía a série legada e a página mostrava outra semana).
+    desf = (ler("saude_desfechos/topo_saude.json", {}) or {}).get("desfechos") or {}
+    for chave, ident in (("dengue", "nDengueSE"), ("srag", "nSragSE")):
+        v = (desf.get(chave) or {}).get("valor_br")
+        if v is not None:
+            h = sub_id(h, ident, f"{int(v):,}".replace(",", "."), n)
     painel = ler("saude_desfechos/serie_painel.json", {}) or {}
     ufs_alerta = {m.get("uf") for m in (painel.get("municipios") or {}).values()
                   if (m.get("nivel_ultima_se") or 0) >= 3 and m.get("uf")}
