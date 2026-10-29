@@ -9,15 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-10-29 · Pacote 1: textos aprovados de Defesa civil e Financiamento
 
 Catálogo: abertura das duas páginas, etiqueta "o ato não cita um risco específico", títulos e dicas das seções de município e de decretos (chaves novas `municipio.abertura`, `emergencias.abertura`, `emergencias.mapa.apoio`). Mapa das emergências ganha "Ver em tabela" (`figura-dados`) ligada aos pontos. Sem CSS novo.
-=======
+
 ## 2026-10-29 · #PR · Juiz 1.8 (paralelo): o nunca lido vem antes da leitura que já falhou
 
 Na rodada paralela, depois do que `--refazer` pede, as pistas nunca tentadas passam à frente das leituras que já falharam (849 falhas iam antes de 3.233 pistas da fila nunca lidas). Só `data/paralelo_*`; o juiz de produção não muda. Um caso de teste.
->>>>>>> origin/main
 
 ## 2026-10-29 · METODOLOGIA: "nota" do índice vira "índice" (59 linhas)
 
