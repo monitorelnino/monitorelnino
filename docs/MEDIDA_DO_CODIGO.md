@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.829 linhas** em **308 arquivos** .py/.js; **37 workflows**.
+- **100.790 linhas** em **308 arquivos** .py/.js; **37 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
 - **155 nomes de função** definidos em mais de um arquivo.
 
@@ -10,9 +10,9 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 56293 |
-| `scripts` | 37469 |
-| `assets` | 6495 |
+| `(raiz)` | 56288 |
+| `scripts` | 37465 |
+| `assets` | 6465 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
 
@@ -29,7 +29,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `assets/js/monitor-de-riscos.js` | 1317 |
 | `scripts/verificar_regras_de_dado.py` | 1294 |
 | `scripts/ensaio_da_noite.py` | 1272 |
-| `assets/js/index.js` | 1246 |
+| `assets/js/index.js` | 1230 |
 | `scripts/unir_conflito_de_rodada.py` | 1137 |
 | `coletar_painel_am.py` | 1135 |
 | `coletar_edicoes_doe.py` | 1078 |
@@ -40,7 +40,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `descobrir_planos.py` | 852 |
 | `gerar_pacote_blog.py` | 827 |
 | `scripts/pistas.py` | 817 |
-| `julgar_filas.py` | 793 |
+| `julgar_filas.py` | 788 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 763 |
 | `buscar_planos_fontes_abertas.py` | 735 |

@@ -344,11 +344,6 @@ def _hoje_data():
     return hoje_editorial()
 
 
-def _hoje_iso() -> str:
-    from coletores_base import hoje_editorial
-    return hoje_editorial().isoformat()
-
-
 def julgar_lista(alvo: list, julgar_fn, aplicar: bool, vereditos: list, feitos: dict,
                  aplicar_fn=None) -> bool:
     """Julga `alvo` até o fim ou até o prazo do elo. Devolve True se foi interrompida.

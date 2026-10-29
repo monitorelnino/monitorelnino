@@ -149,10 +149,6 @@ def avaliar(fatos: dict, agora: dt.datetime) -> list:
     return out
 
 
-class ErroDoGh(RuntimeError):
-    pass
-
-
 def _gh_json(args: list, erros: list = None, executar=subprocess.run):
     """JSON do `gh`, ou None — e o ERRO fica anotado em `erros`.
 

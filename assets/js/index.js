@@ -66,7 +66,7 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 // Texto público vem do catálogo (`conteudo/index.json`); vazio se ele não carregou (falha segura).
 const T = (id, valores) => (window.MonitorCatalogo && window.MonitorCatalogo.texto(id, valores)) || '';
 const naoVerificadaCapital = () => T('index.capital.nao_verificada') + ' ' + T('index.nao_verificado.ressalva');
-let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, CONTATOS, COBERTURA_UF, MUN_COD = {}, POP_UF = {}, MUN_LATLON = {};
+let BR_GEOJSON, PCT_POR_UF, MAP_POINTS, TABELA_MUNICIPIOS, MARE, DATA, TRANSFERENCIAS, MUN_REF, META, POP_CENSO, RECURSOS, FIN, CONSIST, ATOS_RESPOSTA, VRESUMO, CONTATOS, COBERTURA_UF, MUN_COD = {}, MUN_LATLON = {};
 function nivelVerificacao(uf, nome){
   // v2.2.4 (§2.2): padrão é "não verificado"; níveis acima vêm do resumo derivado.
   const cod = MUN_COD[uf + '|' + nome];
@@ -129,7 +129,6 @@ async function __load(){
     const c = String(m.codigo_ibge).padStart(7, '0');
     MUN_COD[m.uf + '|' + m.nome] = c;
     MUN_LATLON[m.uf + '|' + m.nome] = [m.lon, m.lat];
-    POP_UF[m.uf] = (POP_UF[m.uf] || 0) + (POP_CENSO[c] || 0);  // município pós-Censo: 0
   });
   Object.values(MUN_REF).forEach(a => a.sort((x,y) => x.localeCompare(y)));
   // v3.1 §3: contador de resposta (peso zero; arquivos próprios)
@@ -681,13 +680,6 @@ function guiasDoEstado(uf){
   if (/inc[êe]ndi|fogo/i.test(r)) g.push('fogo');
   return g.length ? g : ['chuvas', 'seca', 'fogo'];
 }
-function htmlGuia(chave, compacto){
-  const g = GUIAS[chave];
-  const blocos = g.blocos.map(b => `<p class="u-mb-0"><strong>${b.h}:</strong></p><ul>${b.itens.map(i => `<li>${i}</li>`).join('')}</ul>`).join('');
-  const fontes = g.urls.map(u => `<a href="${u[1]}" target="_blank" rel="noopener">${u[0]}</a>`).join(' · ');
-  return `<details class="pedido-lai"><summary>${g.t}</summary>
-    <div class="u-mt-2">${blocos}<p class="note">Fonte: ${g.fonte} · ${fontes}</p></div></details>`;
-}
 
 const selUF = document.getElementById('ufSelect');
 // 16/09/2026 (pedido da editoria): o site não ranqueia nem compara municípios/estados entre
@@ -734,14 +726,6 @@ function emergenciasDoMunicipio(nome, uf){
   if (typeof ATOS_RESPOSTA === 'undefined' || !ATOS_RESPOSTA || !ATOS_RESPOSTA.eventos) return [];
   return ATOS_RESPOSTA.eventos.filter(e => e.uf === uf && nrm(e.nome) === nrm(nome))
     .sort((a,b) => (b.data||'').split('/').reverse().join('').localeCompare((a.data||'').split('/').reverse().join('')));
-}
-function popLinha(nome, uf){
-  const c = MUN_COD[uf + '|' + nome];
-  const p = c ? POP_CENSO[c] : null;
-  if (!p) return '';
-  const pct = POP_UF[uf] ? (100 * p / POP_UF[uf]) : 0;
-  return `<p class="fk">População (Censo 2022)</p>
-      <p class="fv">${p.toLocaleString('pt-BR')} habitantes <span class="u-muted">· ${pct.toFixed(1).replace('.', ',')}% do estado</span></p>`;
 }
 // 30/09/2026 (decisão de design da editoria): o cartão do município é MÍNIMO. Quatro coisas, nada
 // mais — se o plano foi encontrado, o risco do estado no mesmo componente da ficha (`riscoBox`), o
