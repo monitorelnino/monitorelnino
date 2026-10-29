@@ -309,16 +309,19 @@ def paralelo_18(argv) -> int:
     hoje = hoje_editorial().isoformat()
     lidas, pendentes = 0, [0]
 
+    def refaz(anterior) -> bool:
+        return bool(anterior and (refazer & set(anterior.get("regras_18") or []).union(
+                                      *((anterior.get(x) or {}).get("regras_18") or [] for x in VARIANTES_18))
+                                  or ("promove" in refazer and anterior.get("promove"))
+                                  or ("leva2" in refazer and anterior.get("leu_documento")
+                                      and "com_segunda_leva" not in anterior)))
+
     def rejulgar(p, antes, origem):
         nonlocal lidas
         chave = chave_18(p)
         anterior = feitas.get(chave)
         precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"])
-        refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or []).union(
-                                         *((anterior.get(x) or {}).get("regras_18") or [] for x in VARIANTES_18))
-                                     or ("promove" in refazer and anterior.get("promove"))
-                                     or ("leva2" in refazer and anterior.get("leu_documento")
-                                         and "com_segunda_leva" not in anterior)))
+        refeita = refaz(anterior)
         if anterior and (anterior.get("leu_documento") or not precisa_ler) and not refeita:
             return
         if precisa_ler and (not rede or lidas >= rede):
@@ -396,13 +399,18 @@ def paralelo_18(argv) -> int:
     # O prazo do elo interrompe com SIGINT e espera 60 s (`saude_pipeline.rodar`): o que foi lido até ali se
     # grava abaixo. Lote 4 de 27/10: sem isto, 5 h de leitura saíram sem nada no PR de dado.
     try:
-        for chave, v in decididas.items():
-            rejulgar({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
+        trabalho = [({"pista_id": v.get("pista_id"), "municipio": v.get("municipio"), "uf": v.get("uf"),
                       "ibge": v.get("ibge"), "url": v.get("url"), "origem": v.get("origem"),
                       "trecho": (por_id.get(v.get("pista_id")) or {}).get("trecho")}, v, "decisao")
-        for p in (fila or {}).get("pistas", []):
-            rejulgar({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
-                      **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+                    for v in decididas.values()]
+        trabalho += [({"pista_id": p["id"], "trecho": p.get("trecho") or (por_id.get(p["id"]) or {}).get("trecho"),
+                       **{k: p.get(k) for k in ("municipio", "uf", "ibge", "url", "origem")}}, None, "fila")
+                     for p in (fila or {}).get("pistas", [])]
+        # Lote 15 de 29/10: `--refazer J19 --rede 200` gastou as 200 leituras em chaves nunca lidas e não releu
+        # nenhuma das 56 da J19. O que `--refazer` pede vem primeiro; o resto segue na ordem de sempre.
+        trabalho.sort(key=lambda t: not refaz(feitas.get(chave_18(t[0]))))
+        for p, antes, origem in trabalho:
+            rejulgar(p, antes, origem)
     except KeyboardInterrupt:
         print("interrompido pelo prazo: gravando o que foi lido", flush=True)
 
