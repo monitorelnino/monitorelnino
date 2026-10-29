@@ -16,6 +16,9 @@ Saem `migrar_fim_da_etapa_humana.py`, `migrar_zero_humano.py`, `migrar_sobras_do
 ## 2026-10-29 · #PR · Saúde: uma só conta para dengue e SRAG no topo, na Imprensa e no fallback
 Causa da `main` vermelha desde 02:07: `topo_saude.json` calculava os cartões pela série legada e a página pelo desfecho novo (Imprensa 3.813, semana 39; página 3.624, semana 38). Os cartões e o fallback estático passam a ler `resumo_do_desfecho`; saem `ultima_fechada` e `nacional_da_serie`. Linhas líquidas: código −53.
 
+## 2026-10-29 · #1311 · Juiz 1.8 (paralelo): releitura que falha não apaga a leitura anterior
+Rodada paralela, nada publicado muda. No lote 12, 46 documentos já lidos voltaram como inacessíveis na releitura e perdiam o veredito lido; agora a leitura anterior fica e a chave volta a ser tentada no lote seguinte.
+
 ## 2026-10-29 · #PR · Consolidação: sai o script de limpeza de 26/10, medida regravada
 
 A limpeza de links e confirmações falsas já rodou e está registrada; o script de uma vez só sai (−345 linhas) e deixa a lista de manutenção de pistas. `docs/MEDIDA_DO_CODIGO.md` e o CODEMAP regravados: 101.827 linhas em 317 arquivos.
