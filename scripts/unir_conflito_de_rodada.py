@@ -74,6 +74,10 @@ LOGS_QUE_SO_CRESCEM = {
     # anteriores. Ele foi RECUSADO na triagem das 18:58 e levou a rodada junto -- o elo coletou e
     # perdeu o commit, que e exatamente a perda que a regra 3 da corrente existe para evitar.
     "data/painel_da_noite.json": "noites",
+    # 29/10/2026: log de recusas, uma linha por recusa, e a MESMA pista recusada de novo é outra
+    # linha. Tratado como fila (dedup por chave) cada união colapsava as repetidas: 39.872 → 33.335
+    # entradas na `main` depois do #1314. Multiconjunto pela base não perde nenhuma.
+    "data/pistas_rejeitadas.json": "rejeitadas",
 }
 
 
@@ -160,7 +164,6 @@ FILAS_DE_PISTA = (
     "data/pistas_descobertas.json",
     "data/pistas_doe.json",
     "data/pistas_sinais.json",
-    "data/pistas_rejeitadas.json",
 )
 
 
@@ -540,6 +543,10 @@ def unir_log(caminho, chave, base_txt, nosso_txt, deles_txt):
     escalares_n = {k: v for k, v in nosso.items() if k != chave}
     escalares_d = {k: v for k, v in deles.items() if k != chave}
     carimbos = {}
+    if "total" in escalares_n and "total" in escalares_d:      # contagem da própria lista: recalcula
+        carimbos["total"] = len(uniao)
+        escalares_n.pop("total")
+        escalares_d.pop("total")
     for k in list(escalares_n):
         if k in CARIMBOS and k in escalares_d and escalares_n[k] != escalares_d[k]:
             carimbos[k] = max(str(escalares_n[k]), str(escalares_d[k]))
@@ -977,6 +984,18 @@ def autoteste() -> int:
         checar("e resolve com a versão de cima",
                (r / "dados-abertos/verificacao_municipal.csv").read_text(encoding="utf-8")
                == "a\nDE_CIMA\n")
+
+    # 29/10/2026: recusa repetida da MESMA pista são linhas distintas; a união não colapsa e
+    #    recalcula `total`.
+    with tempfile.TemporaryDirectory() as t:
+        rep = {"url": "https://x.gov.br/a", "alvo": "1", "motivo": "m"}
+        _rj = lambda lst: json.dumps({"rejeitadas": lst, "total": len(lst), "atualizado_em": "2026-10-29"})
+        r = _repo_com_conflito(t, "data/pistas_rejeitadas.json", _rj([dict(rep), dict(rep)]),
+                               _rj([dict(rep), dict(rep), {"url": "n"}]), _rj([dict(rep), dict(rep), {"url": "d"}]))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / "data/pistas_rejeitadas.json").read_text(encoding="utf-8")) if not rec else {}
+        checar("pistas_rejeitadas: repetidas contam, nada colapsa, total recalculado",
+               not rec and len(d.get("rejeitadas", [])) == 4 and d["total"] == 4)
 
     # 10. NEGATIVO: caminho que NÃO é derivado nem log declarado segue recusado. O prefixo novo
     #     não pode ter virado uma porta larga.

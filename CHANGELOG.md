@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
+
+`data/pistas_rejeitadas.json` é log de recusas, não fila: a mesma pista recusada de novo é outra linha. O resolvedor a deduplicava por chave e a `main` perdeu 6,5 mil linhas. Passa à classe de logs que só crescem (multiconjunto pela base comum, total recalculado); autoteste e caso F75 no catálogo.
 ## 2026-10-29 · Buscador 2: restituídas 1.481 linhas de `pistas_rejeitadas` que o #1314 apagou
 
 O #1314 entrou na `main` com `pistas_rejeitadas.json` de base velha (39.872 → 33.288). O #1318 devolveu 5.629 dentro do teto de crescimento do portão de tamanho; este devolve as 1.481 restantes (união por multiconjunto com a base fec6ed82). Total 40.642. Dado só; código 0 linhas.
