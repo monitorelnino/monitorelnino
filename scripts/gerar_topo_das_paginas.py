@@ -78,33 +78,6 @@ def alertas_pararam(marca, agora=None) -> "str | None":
     return None
 
 
-def ultima_fechada(serie: dict, ano: str):
-    """(semana, valor) da última semana COM valor, no ano dado. Função pura."""
-    ses = sorted(k for k, v in (serie or {}).items() if v is not None and str(k).startswith(ano))
-    return (ses[-1], (serie or {})[ses[-1]]) if ses else (None, None)
-
-
-def nacional_da_serie(serie_por_uf: dict, ano: str):
-    """A série do país. Função pura.
-
-    02/10/2026 — defeito medido: o arquivo do SIVEP-Gripe traz a linha `BR` **junto** das 27 UFs, e
-    somar `serie.values()` somava o país duas vezes. O número publicado era o dobro (8.534 em vez
-    de 4.267). Quando existe a linha `BR`, ela é o país; só na falta dela o país é a soma das UFs.
-    """
-    if not serie_por_uf:
-        return {}
-    if isinstance(serie_por_uf.get("BR"), dict):
-        return {k: v for k, v in serie_por_uf["BR"].items() if str(k).startswith(ano)}
-    total = {}
-    for uf, semanas in serie_por_uf.items():
-        if uf == "BR" or not isinstance(semanas, dict):
-            continue
-        for se, v in semanas.items():
-            if str(se).startswith(ano) and isinstance(v, (int, float)):
-                total[se] = total.get(se, 0) + v
-    return total
-
-
 def _na_semana(referencia) -> str:
     """' na semana de 30 de agosto a 5 de setembro de 2026' para '2026-35'; vazio sem semana."""
     from coletores_base import semana_do_rotulo
@@ -152,28 +125,26 @@ def resumo_do_desfecho(desfecho: dict) -> dict:
             "consultado_em": (desfecho or {}).get("coletado_em")}
 
 
-def cartoes_da_saude(dengue: dict, srag: dict, painel: dict, sinais: dict, monitor: dict) -> list:
-    """Os seis cartões do topo do MARÉ Saúde. Função pura — é ela que o autoteste exercita."""
-    cartoes = []
-    ano_d = str((dengue or {}).get("ano_corrente") or "")
-    se_d, v_d = ultima_fechada(((dengue or {}).get("serie") or {}).get("BR") or {}, ano_d)
-    cartoes.append({
-        "id": "dengue_casos_se", "valor": v_d, "referencia": se_d,
-        "rotulo": "notificações de dengue" + _na_semana(se_d),
-        "fonte": "Ministério da Saúde (Sinan)", "sem_coleta": se_d is None,
-        "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com "
-                "as notificações atrasadas; este número não indica relação com o El Niño",
-    })
-    ano_s = str((srag or {}).get("ano_corrente") or "")
-    nac = nacional_da_serie((srag or {}).get("serie") or {}, ano_s)
-    se_s, v_s = ultima_fechada(nac, ano_s)
-    cartoes.append({
-        "id": "srag_internacoes_se", "valor": v_s, "referencia": se_s,
-        "rotulo": "internações por síndrome respiratória grave" + _na_semana(se_s),
-        "fonte": "Ministério da Saúde (SIVEP-Gripe)", "sem_coleta": se_s is None,
-        "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas; este "
-                "número não indica relação com o El Niño",
-    })
+def cartoes_da_saude(desfechos: dict, painel: dict, sinais: dict, monitor: dict) -> list:
+    """Os seis cartões do topo do MARÉ Saúde. Função pura — é ela que o autoteste exercita.
+
+    Dengue e SRAG saem de `resumo_do_desfecho` (a semana consolidada em comum às 27 UFs): a mesma
+    conta que a página lê em `desfechos`. Antes, os cartões liam a série legada e a página o
+    desfecho novo, e a Imprensa publicava a semana 39 enquanto a página publicava a 38 (29/10).
+    """
+    d, s = (desfechos or {}).get("dengue") or {}, (desfechos or {}).get("srag") or {}
+    cartoes = [
+        {"id": "dengue_casos_se", "valor": d.get("valor_br"), "referencia": d.get("periodo"),
+         "rotulo": "notificações de dengue" + _na_semana(d.get("periodo")),
+         "fonte": "Ministério da Saúde (Sinan)", "sem_coleta": d.get("valor_br") is None,
+         "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com "
+                 "as notificações atrasadas; este número não indica relação com o El Niño"},
+        {"id": "srag_internacoes_se", "valor": s.get("valor_br"), "referencia": s.get("periodo"),
+         "rotulo": "internações por síndrome respiratória grave" + _na_semana(s.get("periodo")),
+         "fonte": "Ministério da Saúde (SIVEP-Gripe)", "sem_coleta": s.get("valor_br") is None,
+         "nota": "as últimas semanas são parciais e sobem com as notificações atrasadas; este "
+                 "número não indica relação com o El Niño"},
+    ]
     M = (painel or {}).get("municipios") or {}
     ufs = sorted({m.get("uf") for m in M.values()
                   if (m.get("nivel_ultima_se") or 0) >= 3 and m.get("uf")})
@@ -472,11 +443,6 @@ def _autoteste() -> int:
     from _casos import ok_de
     ok = ok_de(falhas, _casos_contados)
 
-    ok("última fechada ignora semana com valor nulo",
-       ultima_fechada({"2026-33": 10, "2026-34": None}, "2026") == ("2026-33", 10))
-    ok("última fechada ignora outro ano",
-       ultima_fechada({"2025-50": 9, "2026-02": 3}, "2026") == ("2026-02", 3))
-    ok("série vazia devolve nada", ultima_fechada({}, "2026") == (None, None))
     D = {"coletado_em": "2026-10-18", "periodo": "semana",
          "ultimo": {"AC": {"consolidado": {"periodo": "2026-35", "por_100mil": 20.0}},
                     "AL": {"consolidado": {"periodo": "2026-35", "por_100mil": 5.0}},
@@ -495,17 +461,8 @@ def _autoteste() -> int:
     del D["faixa_habitual"]["AC"]["35"]
     ok("UF sem faixa na semana: o total vira lacuna, não zero", resumo_do_desfecho(D)["ufs_acima_faixa"] is None)
 
-    com_br = {"BR": {"2026-35": 4267}, "SP": {"2026-35": 1000}, "RJ": {"2026-35": 500}}
-    ok("com linha BR o país é a linha BR, e não a soma",
-       nacional_da_serie(com_br, "2026") == {"2026-35": 4267})
-    sem_br = {"SP": {"2026-35": 1000}, "RJ": {"2026-35": 500}}
-    ok("sem linha BR o país é a soma das UFs",
-       nacional_da_serie(sem_br, "2026") == {"2026-35": 1500})
-    ok("série ausente não quebra", nacional_da_serie({}, "2026") == {})
-
     saude = cartoes_da_saude(
-        {"ano_corrente": 2026, "serie": {"BR": {"2026-33": 8146, "2026-34": None}}},
-        {"ano_corrente": 2026, "serie": com_br},
+        {"dengue": {"valor_br": 8146, "periodo": "2026-33"}, "srag": {"valor_br": 4267, "periodo": "2026-35"}},
         {"municipios": {"1": {"uf": "SP", "nivel_ultima_se": 3}, "2": {"uf": "RJ", "nivel_ultima_se": 1}}},
         {"calor_excesso": {"data": "2026-09-25",
                            "por_uf": {"PA": {"severo": 4, "extremo": 1}, "MG": {"severo": 0}}}},
@@ -516,7 +473,8 @@ def _autoteste() -> int:
     ok("dengue sai do Sinan, pela última semana fechada",
        por_id["dengue_casos_se"]["valor"] == 8146 and por_id["dengue_casos_se"]["referencia"] == "2026-33")
     ok("dengue declara que são notificações", "notificações" in por_id["dengue_casos_se"]["nota"])
-    ok("respiratórias não dobram o país", por_id["srag_internacoes_se"]["valor"] == 4267)
+    ok("o cartão de SRAG é o valor e a semana do desfecho que a página lê (29/10: 3813 × 3.624)",
+       por_id["srag_internacoes_se"]["valor"] == 4267 and por_id["srag_internacoes_se"]["referencia"] == "2026-35")
     ok("estados em alerta contam estado, não município", por_id["uf_dengue_alerta"]["valor"] == 1)
     ok("calor soma severo e extremo", por_id["calor_municipios_severo"]["valor"] == 5)
     # 21/10/2026: o cartão é o índice NACIONAL. O caso guarda os dois campos de propósito — o antigo
@@ -524,7 +482,7 @@ def _autoteste() -> int:
     ok("o índice é o nacional, não a média das verificadas",
        por_id["mare_saude_indice"]["valor"] == 24.8)
     ok("emergência sem busca é sem coleta, não zero", next(c for c in cartoes_da_saude(
-        {}, {}, {}, {}, {"resposta": {"situacao": "nao_coletado", "emergencias": None}})
+        {}, {}, {}, {"resposta": {"situacao": "nao_coletado", "emergencias": None}})
         if c["id"] == "emergencias_saude_ciclo")["sem_coleta"])
     ok("o índice conta o estatuto, sobre as 27",
        por_id["mare_saude_indice"]["unidades_verificadas"] == 21
@@ -556,8 +514,8 @@ def _autoteste() -> int:
                                                    "faixas": [[0, 100, "x"]]}}, mon)["legal"] is None
        and definicao_dos_indices(meta, {})["saude"] is None)
     ok("série ausente vira sem_coleta, nunca zero",
-       cartoes_da_saude({}, {}, {}, {}, {})[0]["sem_coleta"] is True
-       and cartoes_da_saude({}, {}, {}, {}, {})[0]["valor"] is None)
+       cartoes_da_saude({}, {}, {}, {})[0]["sem_coleta"] is True
+       and cartoes_da_saude({}, {}, {}, {})[0]["valor"] is None)
 
     # 08/10/2026: o carimbo do fixture passa a ser RELATIVO ao relógio do teste. Com data fixa, a
     # regra das 24 horas zeraria o resumo e os três casos abaixo reprovariam por envelhecimento do
@@ -666,16 +624,16 @@ def main() -> int:
             return padrao
 
     hoje = hoje_editorial()
+    desfechos = {n: resumo_do_desfecho(ler(f"saude_desfechos/{n}.json", {}) or {})
+                 for n in ("dengue", "chikungunya", "srag")}
     saude = cartoes_da_saude(
-        ler("saude_desfechos/dengue_sinan_serie.json", {}) or {},
-        ler("saude_desfechos/srag_serie.json", {}) or {},
+        desfechos,
         ler("saude_desfechos/serie_painel.json", {}) or {},
         ler("saude_sinais.json", {}) or {},
         ler("monitor_saude.json", {}) or {})
     gravar("saude_desfechos/topo_saude.json",
            {"_governanca": GOV_SAUDE, "gerado_em": hoje.strftime("%d/%m/%Y"), "cartoes": saude,
-            "desfechos": {n: resumo_do_desfecho(ler(f"saude_desfechos/{n}.json", {}) or {})
-                          for n in ("dengue", "chikungunya", "srag")},
+            "desfechos": desfechos,
             "definicao_dos_indices": definicao_dos_indices(ler("meta.json", {}) or {},
                                                            ler("monitor_saude.json", {}) or {})})
     dc = cartoes_da_defesa_civil(
