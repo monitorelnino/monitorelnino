@@ -3,11 +3,71 @@
  "formato_versao": 1,
  "etapas": {
   "descobrir_planos": {
-   "alvos_consultados": 20,
-   "alvos_verificados": 3,
-   "achados_novos": 2,
-   "fila_acumulada": 42
+   "alvos_consultados": 40,
+   "alvos_verificados": 6,
+   "achados_novos": 4,
+   "fila_acumulada": 84
   }
  },
- "atualizado_em": "2026-10-29T07:43:42"
+ "atualizado_em": "2026-10-29T08:25:31",
+ "verificador_imprensa": {
+  "na_fila": 21661,
+  "lidas": 111,
+  "exibiveis": 0,
+  "inacessiveis": 3,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 488,
+  "por_motivo": {
+   "inacessivel": 3,
+   "recusada_pelo_juiz": 2,
+   "ente_nao_confirmado": 32,
+   "genero_nao_noticia": 4,
+   "natureza_duvidosa": 6,
+   "fora_do_ciclo": 66,
+   "resposta_a_desastre": 1,
+   "veiculo_nao_listado": 20742,
+   "sem_https": 297,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 695,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_pagina_de_expediente": 1,
+    "sem_https": 2,
+    "expediente_sem_identidade_jornalistica": 1,
+    "nao_avaliado_por_orcamento": 11
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 114,
+   "por_host": {
+    "horacampinas.com.br": 1,
+    "vale360news.com.br": 2,
+    "plantaoguaruja.com.br": 1,
+    "abcdoabc.com.br": 1,
+    "upiara.com.br": 4,
+    "ndmais.com.br": 30,
+    "canoinhasonline.com.br": 24,
+    "nsctotal.com.br": 10,
+    "otempo.com.br": 1,
+    "agenciabrasil.ebc.com.br": 15,
+    "radioaltouruguai.com.br": 18,
+    "brasil61.com": 2,
+    "portaldoholanda.com.br": 1,
+    "ac24horas.com": 4
+   },
+   "recusas_por_host": {
+    "horacampinas.com.br": 1,
+    "nsctotal.com.br": 2
+   },
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }
