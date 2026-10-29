@@ -12,6 +12,13 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-29 · Redução: seis funções sem chamador saem (−39 líquidas)
 
 Saem `htmlGuia`, `popLinha` e `POP_UF` (index.js), `opcoesDeEixoSemanal` e `primeiraSemanaComValor` (saude.js), `_hoje_iso` (julgar_filas.py) e `ErroDoGh` (checagem_pre_noite.py): nenhum chamador em código, workflow ou página. Sem mudança de comportamento. Linhas: +1/−40.
+## 2026-10-29 · SRAG: rótulo do desfecho · A1
+
+O rótulo de `srag.json` passa a "SRAG (síndrome respiratória aguda grave), casos hospitalizados notificados" (SA-03.2). Raiz: `derivar` comparava só série e lacunas e nunca regravava rótulo novo; agora compara o rótulo. +2/−2.
+
+## 2026-10-29 · #1340 · Pacote 1 de UX: textos da Imprensa, Para gestores e Proteja-se
+
+Aplicados os textos aprovados pela editoria em 29/10: abertura e intro dos números da Imprensa, o glossário "Transferência voluntária, por regra e por decreto", as seis etapas e a abertura de Para gestores, com S2iD por extenso, e o título de compartilhamento do Proteja-se. Títulos em pergunta ficaram declarativos (regra de prosa). Nenhum número, dado ou fonte mudou.
 
 ## 2026-10-29 · METODOLOGIA: `nota_uf` vira `indice_uf` na fórmula do índice nacional da Saúde
 
