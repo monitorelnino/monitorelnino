@@ -49,9 +49,9 @@
   <!-- 17/10/2026 (HANDOVER_FINANCIAMENTO_16-10-2026): a página na ordem do contrato
        `layout/contratos/financiamento.json`: abertura, cinco números, o dinheiro por risco, onde ele
        chega (figura principal), mês a mês, a consulta do município e a defesa civil. -->
-  <p class="hint" data-conteudo="financiamento.abertura.p1">Para o El Niño 2026/2027, o governo federal abriu créditos extraordinários por medida provisória para combater incêndios e para comprar alimentos destinados às regiões em seca, e governos estaduais, como os do Rio Grande do Sul e do Paraná, criaram repasses próprios para a chuva. Depois de cada emergência reconhecida, a defesa civil federal autoriza recursos para socorro e recuperação dos municípios, e o Fundo Nacional de Saúde repassa verbas ligadas a emergências.</p>
-  <p class="hint" data-conteudo="financiamento.abertura.p2">A maior parte desse dinheiro é gasta diretamente pela União, em compras, contratos e operações de órgãos federais, e não passa pelos cofres de estados e municípios. Esta página mostra o dinheiro de duas formas: por risco, com a origem de cada recurso e quanto dele já saiu do caixa; e por lugar, com o que chegou a cada estado e a cada município.</p>
-  <p class="hint" data-conteudo-html="financiamento.abertura.p3">Os valores vêm dos atos oficiais, do Diário Oficial da União e da execução publicada no Portal da Transparência, com a data de cada consulta. Anunciado é o valor que consta no ato; empenhado é o que foi reservado para uma despesa; desembolsado é o que já saiu do caixa. Os critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
+  <p class="hint" data-conteudo="financiamento.abertura.p1">O dinheiro público do El Niño 2026/2027 chega por três caminhos: créditos extraordinários abertos por medida provisória (para combater incêndios e comprar alimentos para as regiões em seca), repasses criados por estados como o Rio Grande do Sul e o Paraná para a chuva, e recursos liberados aos municípios depois de cada emergência reconhecida, pela defesa civil federal e pelo Fundo Nacional de Saúde.</p>
+  <p class="hint" data-conteudo="financiamento.abertura.p2">A maior parte do dinheiro das medidas provisórias é gasta diretamente pela União, em compras, contratos e operações de órgãos federais, e não passa pelos cofres de estados e municípios. A página mostra o dinheiro por origem, com quanto já saiu do caixa, e por lugar, com o que chegou a cada município.</p>
+  <p class="hint" data-conteudo-html="financiamento.abertura.p3">Os valores vêm dos atos oficiais, do Diário Oficial da União e da execução publicada no Portal da Transparência, com a data de cada consulta. São etapas diferentes do mesmo dinheiro e não se somam: anunciado é o valor que consta no ato (nas medidas provisórias, o crédito aberto); dotação atualizada é o total disponível para a ação no orçamento; autorizado é o valor liberado em portaria para um município; empenhado é o que foi reservado para uma despesa; desembolsado é o que já saiu do caixa; repassado é o que chegou ao município. Os critérios estão na <a href="METODOLOGIA.pdf">metodologia</a>.</p>
 
   <section class="dc-topo" id="dc-topo" aria-labelledby="finTopoTitulo">
     <h2 id="finTopoTitulo" class="sr-only">Os números do financiamento</h2>
@@ -136,6 +136,7 @@
   <section id="municipio" aria-labelledby="tituloMunicipio">
     <div class="panel">
     <h2 id="tituloMunicipio" data-conteudo="financiamento.municipio.titulo_da_secao">Quanto chegou ao seu município</h2>
+    <p class="hint" data-conteudo="financiamento.municipio.abertura">Mostra o que chegou ao município pela defesa civil e pelo SUS desde 29 de junho de 2026. Os gastos feitos diretamente pela União no território não aparecem aqui.</p>
     <div class="tbl-controls">
       <select id="consultaUF" aria-label="Estado"><option value="">1 · Seu estado…</option></select>
       <input id="consultaMun" type="text" list="consultaLista" placeholder="2 · Seu município…" aria-label="Nome do município" autocomplete="off" disabled>

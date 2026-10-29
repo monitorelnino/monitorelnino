@@ -255,14 +255,19 @@ function __init(){
   MonitorMapas.desenharMapa(ctx, 'mapEmergencias', null, () => cor('branco'),
     uf => { const e = porUF[uf]; return e ? n(e.n_municipios) + ' de ' + n(e.total_municipios) + ' municípios com decreto' : 'sem contagem até o corte'; },
     [], 'contagem');
+  const decretoTexto = m => m.decreto || 'data não localizada';
+  const reconhecimentoTexto = m => m.reconhecida ? (m.reconhecimento || '') + (m.portaria ? ' · ' + (m.portaria.decreto || '') : '') : 'não localizado até o corte';
+  const corpoTabela = document.querySelector('#tblEmergencias tbody');
+  if (corpoTabela) corpoTabela.innerHTML = decretados.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR') || a.uf.localeCompare(b.uf))
+    .map(m => '<tr>' + [m.nome, m.uf, eventoTexto(m), decretoTexto(m), reconhecimentoTexto(m)].map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('');
   const pontosMapa = decretados.filter(m => LATLON_POR_CODIGO[m.cod]).map(m =>
     Object.assign({lon: LATLON_POR_CODIGO[m.cod][0], lat: LATLON_POR_CODIGO[m.cod][1]}, m));
   const corFam = m => cor(m.classificado ? m.familia.cor : 'cinza-quente');
   MonitorMapas.pontos(ctx, 'mapEmergencias', pontosMapa, {
     r: () => 2.6, cor: corFam, opacidade: 0.9, classe: 'pontos-decretos',
     rotulo: m => '<strong>' + esc(m.nome) + ' · ' + esc(m.uf) + '</strong><br>' + esc(eventoTexto(m))
-      + '<br>Decreto: ' + esc(m.decreto || 'data não localizada')
-      + '<br>Reconhecimento: ' + esc(m.reconhecida ? (m.reconhecimento || '') + (m.portaria ? ' · ' + (m.portaria.decreto || '') : '') : 'não localizado até o corte'),
+      + '<br>Decreto: ' + esc(decretoTexto(m)) + '<br>Reconhecimento: ' + esc(reconhecimentoTexto(m)),
+    tabela: {sel: '#boxEmergencias', chave: m => [m.nome, m.uf]},
   }).selectAll('circle')
     .attr('fill', m => m.reconhecida ? corFam(m) : cor('branco'))
     .attr('stroke', m => m.reconhecida ? cor('branco') : corFam(m))
