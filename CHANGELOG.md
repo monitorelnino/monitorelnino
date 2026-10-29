@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Portão: nada de "nota" para o índice nem ranking (+53/−22)
+
+Regra da editoria (01/10 e 29/10): o valor dos índices MARÉ é "índice", nunca "nota", e nenhum texto ordena estados ou municípios. A régua única de vocabulário ganha `padroes` (nota do índice, ranking), com casos de teste; vale para páginas e blog. Textos antigos trocados: início, Saúde, Imprensa, mudanças. METODOLOGIA segue em PR à parte.
+
 ## 2026-10-29 · Redução: três scripts de uso único saem (−221 linhas)
 
 Sem chamador, workflow, portão ou leitura em todo o repositório: `sondar_pncp_planos.py`, `semear_pistas_de_sondas.py` e `registrar_atos_coordenacao_saude.py` (sondas do regime de 22/10, já encerrado). Nenhuma mudança de comportamento. Medida: 101.017 → ver `docs/MEDIDA_DO_CODIGO.md`.
@@ -337,7 +341,7 @@ A série diária do INPE no arquivo começa em 17/09. A soma de focos passa a se
 
 ## 2026-10-26 · #1164 · Saúde v0.7: tempo como contexto na ficha do estado
 
-A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora da nota (peso zero, dado do motor v0.7). Nenhum número da nota muda.
+A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora do índice (peso zero, dado do motor v0.7). Nenhum número do índice muda.
 
 ## 2026-10-26 · A3 · Busca de planos: sonda do PNCP nas 27 capitais (S22)
 Nova sonda consulta a busca pública do PNCP por capital (plano de contingência, redução de riscos, PLANCON) e registra título, órgão, data e endereço. Contratação não é plano: só aponta onde procurar. Ausência é "não localizamos até o corte"; recusa é registrada e respeitada. Saldo de código: +110.
