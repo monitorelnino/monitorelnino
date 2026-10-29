@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #PR · Consolidação: saem três migrações de uma vez só e um script arquivado
+
+Saem `migrar_fim_da_etapa_humana.py`, `migrar_zero_humano.py`, `migrar_sobras_do_doe.py` (já aplicadas; nenhum valor legado resta em `data/`) e `arquivo/scripts/caderno_de_pistas.py` (nada o chama), com suas linhas nas listas de exceção. Código −553; medida regravada. Rastro no git.
+
 ## 2026-10-29 · #PR · Consolidação: sai o script de limpeza de 26/10, medida regravada
 
 A limpeza de links e confirmações falsas já rodou e está registrada; o script de uma vez só sai (−345 linhas) e deixa a lista de manutenção de pistas. `docs/MEDIDA_DO_CODIGO.md` e o CODEMAP regravados: 101.827 linhas em 317 arquivos.
