@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #1340 · Pacote 1 de UX: textos da Imprensa, Para gestores e Proteja-se
+
+Aplicados os textos aprovados pela editoria em 29/10: abertura e intro dos números da Imprensa, o glossário "Transferência voluntária, por regra e por decreto", as seis etapas e a abertura de Para gestores, com S2iD por extenso, e o título de compartilhamento do Proteja-se. Títulos em pergunta ficaram declarativos (regra de prosa). Nenhum número, dado ou fonte mudou.
+
 ## 2026-10-29 · METODOLOGIA: `nota_uf` vira `indice_uf` na fórmula do índice nacional da Saúde
 
 Resíduo do #1335: o símbolo da fórmula usava a palavra vedada para o valor do índice. Texto de uma linha, sem mudança de método; PDF e manifesto regerados. Linhas líquidas: 0 (+1/−1 no .md).
