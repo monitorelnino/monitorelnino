@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-22 a 2026-10-29 (1034 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-22 a 2026-10-29 (1057 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-29 04:11 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-29 07:41 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-29 08:41 | 5 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
@@ -70,20 +70,20 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `coletar_transferegov.py` | coletor | 2026-10-22 09:19 | 36 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-28 01:06 | 66 s | — | ok | — |
 | `descobrir_dominios.py` | coletor | 2026-10-25 01:43 | 6141 s | — | **erro** | interrompido pelo prazo do elo |
-| `descobrir_planos.py` | coletor | 2026-10-28 08:13 | 487 s | 42 | ok | — |
+| `descobrir_planos.py` | coletor | 2026-10-29 08:18 | 438 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-10-28 01:07 | 0 s | — | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-10-28 08:13 | 1 s | 0 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-10-29 08:17 | 32 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_filas.py` | coletor | 2026-10-26 08:26 | 1108 s | — | **erro** (3 seguidas) | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-27 01:13 | 4321 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-10-28 01:27 | 3 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-10-28 07:53 | 1202 s | 16592 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-10-28 08:21 | 247 s | — | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-10-28 07:46 | 308 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-10-28 07:51 | 105 s | 27 | ok | — |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-28 08:13 | 4 s | 16592 | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-10-29 08:05 | 750 s | 17142 | ok | — |
+| `monitorar_busca_web.py` | coletor | 2026-10-29 08:25 | 249 s | — | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-10-29 07:56 | 417 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-10-29 08:03 | 105 s | 27 | ok | — |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-10-29 08:17 | 4 s | 17142 | ok | — |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-26 07:34 | 1012 s | — | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-10-28 08:13 | 5 s | 10 | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-10-29 08:17 | 5 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-10-28 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `processar_contribuicoes.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-10-29 05:03 | 2 s | — | ok | — |
@@ -99,7 +99,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `scripts/triar_fila.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/verificar_funil.py` | coletor | 2026-10-25 08:35 | 0 s | — | ok | — |
-| `seguir_pistas.py` | coletor | 2026-10-28 08:26 | 16 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-10-28 08:26 | 3 s | — | ok | — |
+| `seguir_pistas.py` | coletor | 2026-10-29 08:29 | 17 s | — | ok | — |
+| `triar_confianca_pistas.py` | coletor | 2026-10-29 08:29 | 4 s | — | ok | — |
 | `verificar_links.py` | coletor | 2026-10-27 01:31 | 226 s | — | **erro** (2 seguidas) | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
-| `verificar_pista_imprensa.py` | coletor | 2026-10-28 08:26 | 111 s | — | **erro** | interrompido pelo prazo do elo |
+| `verificar_pista_imprensa.py` | coletor | 2026-10-29 08:30 | 408 s | — | ok | — |
