@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · #PR · Juiz 1.8 (paralelo): releitura que falha não apaga a leitura anterior
+Rodada paralela, nada publicado muda. No lote 12, 46 documentos já lidos voltaram como inacessíveis na releitura e perdiam o veredito lido; agora a leitura anterior fica e a chave volta a ser tentada no lote seguinte.
+
 ## 2026-10-29 · #PR · Consolidação: sai o script de limpeza de 26/10, medida regravada
 
 A limpeza de links e confirmações falsas já rodou e está registrada; o script de uma vez só sai (−345 linhas) e deixa a lista de manutenção de pistas. `docs/MEDIDA_DO_CODIGO.md` e o CODEMAP regravados: 101.827 linhas em 317 arquivos.

@@ -129,6 +129,11 @@ def autoteste() -> int:
                   and herdar_18(leva, None)["com_propostas_J8_J9"]["promove"] is False
                   and herdar_18(leva, errata)["com_segunda_leva"]["motivo"] == errata["motivo"]))
 
+    lida, falhou = dict(lido, leu_documento=True), {"promove": False, "motivo": "documento_inacessivel"}
+    casos.append(("1.8: releitura que não chega ao documento não apaga a leitura anterior; sem leitura anterior, vale",
+                  vale_a_leitura_18(lida, falhou) is lida and vale_a_leitura_18(None, falhou) is falhou
+                  and vale_a_leitura_18(lida, dict(lido, leu_documento=True, motivo="x"))["motivo"] == "x"))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -187,6 +192,12 @@ def herdar_18(novo: dict, antes) -> dict:
         if novo.get(variante) and (por == "errata" or not propria):
             out[variante] = dict(novo[variante], **herdado)
     return out
+
+
+def vale_a_leitura_18(anterior, novo) -> dict:
+    """Releitura que não chegou ao documento não apaga a leitura anterior (lote 12 de 29/10: 46 chaves lidas
+    voltaram como "documento_inacessivel"). PURA."""
+    return anterior if anterior and anterior.get("leu_documento") and not novo.get("leu_documento") else novo
 
 
 # Regras medidas à parte, cada conjunto na sua chave: J8/J9 (propostas) e a segunda leva (§1b/§1c).
@@ -318,7 +329,7 @@ def paralelo_18(argv) -> int:
         novo["url"], novo["municipio_da_pista"], novo["uf_da_pista"] = p.get("url"), p.get("municipio"), p.get("uf")
         if not novo.get("leu_documento"):
             novo.pop("criterios", None)   # sem documento lido, o motivo basta (o arquivo fica pequeno)
-        feitas[chave] = herdar_18(novo, antes)
+        feitas[chave] = vale_a_leitura_18(anterior, herdar_18(novo, antes))
         if rede and fila is not None and novo.get("motivo") in ("noticia_nao_e_documento",
                                                                "noticia_institucional_nao_e_o_plano"):
             from seguir_pistas import buscar_html, documentos_da_pagina_18   # B4: um nível, mesmo domínio
