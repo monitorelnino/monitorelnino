@@ -230,7 +230,7 @@ def ler_desfecho(desfecho: str, ler_fn=ler):
 DERIVADOS = {
     "dengue": {"origem": "dengue_sinan_serie.json", "rotulo": "Dengue, notificações", "unidade": "notificações"},
     "chikungunya": {"origem": "chik_sinan_serie.json", "rotulo": "Chikungunya, notificações", "unidade": "notificações"},
-    "srag": {"origem": "srag_serie.json", "rotulo": "SRAG hospitalizada, notificações", "unidade": "notificações"},
+    "srag": {"origem": "srag_serie.json", "rotulo": "SRAG (síndrome respiratória aguda grave), casos hospitalizados notificados", "unidade": "notificações"},
 }
 
 
@@ -263,7 +263,7 @@ def derivar(nome: str, ler_fn=ler, gravar_fn=gravar) -> bool:
                  anos_preliminares=[orig.get("ano_corrente")] if orig.get("ano_corrente") else [],
                  n_parciais=n, populacao=populacao_por_uf(ler_fn), anterior=anterior)
     if anterior and {u: v for u, v in anterior.get("serie", {}).items() if u != "BR"} == serie \
-            and anterior.get("lacunas") == obj["lacunas"]:
+            and anterior.get("lacunas") == obj["lacunas"] and anterior.get("rotulo") == obj["rotulo"]:
         print(f"{nome}: {cfg['origem']} sem mudança; nada a regravar"); return False
     return gravar_desfecho(obj, gravar_fn=gravar_fn)
 
