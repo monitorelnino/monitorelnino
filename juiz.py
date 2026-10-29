@@ -65,7 +65,9 @@ sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.7 (24/10/2026)"
+CODEBOOK_VERSAO = "1.8 (29/10/2026)"
+# 1.8 (29/10/2026, central): regras J1–J7, J10, J11 e J15 do rejulgamento de 26/10 passam a ser o juiz (medidas em 28/10:
+# MARÉ Legal nacional 40,2 → 40,7). J8 e J9 (crédito) e a segunda leva (J14, J16, J19, J20) seguem fora, só em `propostas`.
 # 1.7 (24/10/2026, central): documento do repositório estadual declarado (ES, SE, RS) é o plano publicado pelo
 # canal do estado: lei ou portaria citada no corpo não é o ato dele (etapa 2) e a autoridade vem do repositório (etapa 3).
 # 1.6 (15/10/2026, central): plano sem ato vale só no domínio do PRÓPRIO município (etapa 3; caso
@@ -520,7 +522,7 @@ def trecho_em_volta(texto: str, achado, largura: int = 160) -> str:
 # =============================================================================================
 # Etapa 0 — documento primário
 # =============================================================================================
-def etapa0_documento_primario(url: str, texto: str, proveniencia: dict = None, v18: bool = False) -> tuple:
+def etapa0_documento_primario(url: str, texto: str, proveniencia: dict = None) -> tuple:
     """(ok, motivo, trecho). Fonte oficial e texto extraível — nada disso se presume.
 
     28/09/2026: "documento não obtido" ganhou motivo PRÓPRIO (`documento_inacessivel`). Ele estava
@@ -548,7 +550,7 @@ def etapa0_documento_primario(url: str, texto: str, proveniencia: dict = None, v
                           f"sha256 {str(proveniencia['hash'])[:12]}…)")
     if not url:
         return False, "sem_documento_primario", ""
-    if not fonte_oficial(url, v18):
+    if not fonte_oficial(url):
         return False, "sem_documento_primario", f"url fora dos padrões de fonte oficial: {url}"
     if texto is None:
         return False, "documento_inacessivel", "documento não obtido nesta tentativa"
@@ -909,17 +911,10 @@ def etapa6_categoria(texto: str, data: str, eh_estadual: bool = False,
 
 
 # =============================================================================================
-# Codebook 1.8 — MODO PARALELO (handover da central de 26/10/2026, `HANDOVER_REJULGAMENTO_PARALELO`)
+# Codebook 1.8 (handover da central de 26/10/2026, `HANDOVER_REJULGAMENTO_PARALELO`; em produção desde 29/10)
 # =============================================================================================
-# Só vale com `julgar(..., codebook="1.8")`: o 1.7 continua o juiz em produção até a editoria ver o
-# efeito UF a UF. Cada regra nasce de erro medido na amostra de 40 decisões (26/10). Os vereditos 1.8
-# vão só para `data/paralelo_juiz18.json`; nenhuma página os lê. `regras_18` diz qual regra agiu.
-CODEBOOK_18 = "1.8 (26/10/2026, paralelo)"
+# Cada regra nasce de erro medido na amostra de 40 decisões (26/10). `regras_18` diz qual regra agiu.
 PROPOSTAS_18 = ("J8", "J9")   # mexem em crédito: medidas à parte, decisão da editoria
-
-
-def e_v18(codebook) -> bool:
-    return str(codebook or "").startswith("1.8")
 
 
 # J11. Plataforma oficial terceirizada de diário: a URL da publicação no SIGPub. Vínculo provado pela
@@ -930,10 +925,10 @@ def e_v18(codebook) -> bool:
 PLATAFORMAS_OFICIAIS_DE_DIARIO = (("voxtecnologia.com.br", "sigpub.publicacao"),)
 
 
-def fonte_oficial(url, v18: bool = False) -> bool:
+def fonte_oficial(url) -> bool:
     u = str(url or "").lower()
     return (any(p in u for p in PADROES_FONTE_PROVAVEL_OFICIAL)
-            or (v18 and any(h in u and marca in u for h, marca in PLATAFORMAS_OFICIAIS_DE_DIARIO)))
+            or any(h in u and marca in u for h, marca in PLATAFORMAS_OFICIAIS_DE_DIARIO))
 
 
 # J2. Página de notícia (caminho de notícia ou com data) não é documento, mesmo em domínio oficial.
@@ -1209,45 +1204,41 @@ def ente_do_repositorio_18(texto, url):
 # =============================================================================================
 def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
            eh_estadual: bool = False, eh_plano_tecnico: bool = False, trecho: str = None,
-           proveniencia: dict = None, codebook: str = None, propostas: tuple = (),
+           proveniencia: dict = None, propostas: tuple = (),
            ano_corrente: int = None) -> dict:
     """Aplica as etapas 0 a 6 e devolve o veredito.
 
     `promove` é True só quando TODAS passam. Quando não promove, `motivo` é o critério que
     falhou — é ele que fica visível na fila, e é por ele que o relatório agrupa as recusas.
-    `codebook="1.8"` liga o modo paralelo (regras J1–J7, J10, J11, J15; `propostas` liga J8/J9 e a segunda leva)."""
-    v18 = e_v18(codebook)
+    `propostas` liga J8/J9 e a segunda leva, que não são o juiz em produção."""
     regras = []
-    repo = ente_do_repositorio_18(texto, url) if v18 and not eh_estadual and "J19" in propostas else None
+    repo = ente_do_repositorio_18(texto, url) if not eh_estadual and "J19" in propostas else None
     if isinstance(repo, tuple) and (normalizar(repo[0]), repo[1]) != (normalizar(nome), str(uf or "").upper()):
         nome, uf, ibge = repo
         regras.append("J19")
-    elif v18 and not eh_estadual and not repo:
+    elif not eh_estadual and not repo:
         nome, uf, ibge, regra = ente_18(texto, nome, uf, ibge, url)
         regras += [regra] if regra else []
-    veredito = {"promove": False, "motivo": None, "codebook": CODEBOOK_18 if v18 else CODEBOOK_VERSAO,
+    veredito = {"promove": False, "motivo": None, "codebook": CODEBOOK_VERSAO,
                 "criterios": {}, "categoria": None, "data": None, "natureza": None,
                 "ibge": ibge, "municipio": nome, "uf": uf, "url": url}
-    if v18:
-        veredito["regras_18"] = regras
+    veredito["regras_18"] = regras
 
     def recusa(motivo, *regra):
         veredito["motivo"] = motivo
         regras.extend(regra)
         return veredito
 
-    ok, motivo, prova = etapa0_documento_primario(url, texto, proveniencia, v18=v18)
+    ok, motivo, prova = etapa0_documento_primario(url, texto, proveniencia)
     veredito["criterios"]["0_documento_primario"] = {"ok": ok, "trecho": prova}
-    if v18 and fonte_oficial(url, True) and not fonte_oficial(url):
-        regras.append("J11")
     if not ok:
         return recusa(motivo)
-    if v18 and e_noticia_18(url, texto):
+    if e_noticia_18(url, texto):
         veredito["encaminhar"] = "pista_dirigida"
         return recusa("noticia_nao_e_documento", "J2")
     if repo == "nao_identificado":
         return recusa("municipio_nao_identificado", "J19")
-    destino = destino_estadual_18(texto, url) if v18 and not eh_estadual and "J14" in propostas else None
+    destino = destino_estadual_18(texto, url) if not eh_estadual and "J14" in propostas else None
     if destino:
         veredito["encaminhar"] = destino
         return recusa("documento_estadual", "J14")
@@ -1267,18 +1258,18 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
             texto = recorte
     texto = texto[:TETO_DO_JULGAMENTO]
 
-    if v18 and not eh_estadual and uf_do_dominio(url) and uf_do_dominio(url) != str(uf or "").upper():
+    if not eh_estadual and uf_do_dominio(url) and uf_do_dominio(url) != str(uf or "").upper():
         return recusa("uf_do_dominio_diverge", "J3")
     ok, motivo, trecho = etapa1_identidade(texto_da_identidade or texto, nome, uf)
     veredito["criterios"]["1_identidade"] = {"ok": ok, "trecho": trecho}
     if not ok:
         return recusa(motivo)
-    if v18 and not eh_estadual and not nome_comum_confirmado(texto_da_identidade or texto, nome, uf, url):
+    if not eh_estadual and not nome_comum_confirmado(texto_da_identidade or texto, nome, uf, url):
         return recusa("nome_comum_sem_ente", "J4")
 
-    como_plano = v18 and e_plano_pelo_cabecalho(texto)
+    como_plano = e_plano_pelo_cabecalho(texto)
     ok, motivo, dados = etapa2_citacao(texto, eh_plano_tecnico, url=url, como_plano=como_plano)
-    if ok and v18 and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
+    if ok and dados.get("sem_ato_de_aprovacao") and not RE_GATILHO_CICLO.search(texto):
         ano, _ = ano_do_plano(texto, ano_corrente)
         if str(ano or "") != str(dados.get("data") or "")[-4:]:
             dados["data"] = str(ano) if ano else None
@@ -1288,7 +1279,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if not ok:
         return recusa(motivo)
     from atualizar_instrumentos_estaduais import documento_do_repositorio
-    if (v18 and dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
+    if (dados.get("sem_ato_de_aprovacao") and not como_plano and not documento_do_repositorio(url)
             and not RE_TITULO_DE_PLANO.search(texto[:CABECALHO_18])):
         # J15: o título manda — "Planejamento Estratégico" que cita um plano de contingência não é o plano (Propriá/SE).
         return recusa("titulo_nao_e_plano", "J15")
@@ -1304,9 +1295,9 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if not ok:
         return recusa(motivo)
 
-    if v18 and not como_plano and "J20" in propostas and e_estrutura_18(texto):
+    if not como_plano and "J20" in propostas and e_estrutura_18(texto):
         return recusa("estrutura_de_defesa_civil", "J20")
-    if v18 and not como_plano and "J16" in propostas and nao_e_instrumento_18(texto):
+    if not como_plano and "J16" in propostas and nao_e_instrumento_18(texto):
         return recusa("nao_e_instrumento", "J16")
     if como_plano:
         # J1: o plano não institui o plano; teste do objeto e de gatilho são para decreto e ato avulso.
@@ -1324,26 +1315,23 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if natureza != "EX_ANTE":
         return recusa("natureza_duvidosa")
 
-    if v18 and "J9" in propostas and RE_SECRETARIA_SETORIAL.search(texto[:3000]):
+    if "J9" in propostas and RE_SECRETARIA_SETORIAL.search(texto[:3000]):
         return recusa("plano_setorial", "J9")
-    if v18:
-        ok, familia, trecho, regra = familia_18(texto)
-        regras += [regra] if regra else []
-    else:
-        ok, familia, trecho = etapa5_familia_de_risco(texto)
+    ok, familia, trecho, regra = familia_18(texto)
+    regras += [regra] if regra else []
     veredito["criterios"]["5_familia_de_risco"] = {"ok": ok, "familia": familia if ok else None,
                                                   "trecho": trecho}
     if not ok:
         return recusa(familia)
     veredito["familia_de_risco"] = familia
 
-    if v18 and not sem_ato and data_suspeita(veredito["data"], ano_corrente):
+    if not sem_ato and data_suspeita(veredito["data"], ano_corrente):
         return recusa("data_nao_confirmada", "J7")
-    if v18 and sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
+    if sem_ato and not veredito["data"] and not RE_GATILHO_CICLO.search(texto):
         return recusa("data_nao_confirmada", "J7")
     categoria, motivo_cat = etapa6_categoria(texto, veredito["data"], eh_estadual,
                                              sem_ato_de_aprovacao=sem_ato, como_plano=como_plano)
-    if (v18 and "J8" in propostas and categoria == "plano_antigo"
+    if ("J8" in propostas and categoria == "plano_antigo"
             and int((re.findall(r"\d{4}", str(veredito["data"])) or ["9999"])[-1]) < (ano_corrente or _ano_de_hoje()) - 5
             and not RE_PROVA_DE_VIGENCIA.search(texto)):
         categoria, motivo_cat = "plano_recorrente", "anterior a cinco anos sem prova de vigência (J8)"
@@ -1559,9 +1547,8 @@ XII – Realizar treinamentos periódicos voltados aos funcionários, comprovado
 }
 
 
-# Um caso por linha das tabelas do handover de 26/10/2026 (J1–J11). Cada um diz o que o 1.8 decide e,
-# quando o erro era do 1.7, que o 1.7 continua decidindo como antes: o modo paralelo não muda produção.
-_C18 = dict(codebook="1.8", ano_corrente=2026)
+# Um caso por linha das tabelas do handover de 26/10/2026 (J1–J11). Cada um diz o que o 1.8 decide.
+_C18 = dict(ano_corrente=2026)
 PLANO_RS_18 = ("PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL\nCOORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA "
                "CIVIL DE SÃO BORJA/ RS 2025\nMUNICÍPIO DE SÃO BORJA População: 59.676\n1. CENÁRIOS DE RISCO: "
                "inundação do rio Uruguai e estiagem.\n2. ATIVAÇÃO DO PLANO: o plano é acionado pelo coordenador.\n"
@@ -1608,13 +1595,11 @@ def casos_18() -> list:
               "INMET para o período chuvoso 2026/2027, RESOLVE: Art. 1º Fica instituído o Plano de Contingência "
               "Municipal para inundação e alagamento, de caráter preventivo. " + "x " * 200)
     return [
-        ("J1 PLANCON com 'situação de emergência' no histórico é plano no 1.8 (São Borja/RS); 1.7 segue resposta",
-         sao_borja["promove"] and "J1" in sao_borja["regras_18"]
-         and julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["motivo"] == "resposta"),
-        ("J2 notícia em domínio oficial não é documento no 1.8 (Rio Branco/AC); 1.7 promovia",
+        ("J1 PLANCON com 'situação de emergência' no histórico é plano (São Borja/RS)",
+         sao_borja["promove"] and "J1" in sao_borja["regras_18"]),
+        ("J2 notícia em domínio oficial não é documento (Rio Branco/AC)",
          _v(NOTICIA_OFICIAL_18, "Rio Branco", "AC", "https://riobranco.ac.gov.br/noticias/plano-2026")["motivo"]
-         == "noticia_nao_e_documento"
-         and julgar(NOTICIA_OFICIAL_18, "Rio Branco", "AC", url="https://riobranco.ac.gov.br/noticias/plano-2026")["promove"]),
+         == "noticia_nao_e_documento"),
         ("J3 domínio .ba.gov.br não credita município de MG (Candeias/MG)",
          _v(PLANO_PUBLICADO_SEM_ATO.replace("TAIO - SC", "CANDEIAS - MG"), "Candeias", "MG",
             "https://www.defesacivil.ba.gov.br/plano.pdf")["motivo"] == "uf_do_dominio_diverge"),
@@ -1660,19 +1645,17 @@ def casos_18() -> list:
                           como_plano=True)[0] == "plano_antigo"
          and etapa6_categoria("equipe de elaboração do plano de contingência", "2025",
                               sem_ato_de_aprovacao=True)[0] == "plano_elaboracao"),
-        ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia); 1.7 dava plano_antigo",
-         _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"
-         and julgar(goiania, "Bonito", "MS", url=URL_OFICIAL)["categoria"] == "plano_antigo"),
+        ("J7 ato datado de 1959 vira 'data não confirmada' (Goiânia)",
+         _v(goiania, "Bonito", "MS", URL_OFICIAL)["motivo"] == "data_nao_confirmada"),
         ("J10 PLANCON de marés de tempestade (COBRADE 1.3.1.1.2) não é seca por 'fatores contribuintes'",
-         familia_18(PLANO_MARES_18)[:2] == (False, "fora_do_objeto")
-         and etapa5_familia_de_risco(PLANO_MARES_18)[1] == "seca_estiagem_fogo"),
+         familia_18(PLANO_MARES_18)[:2] == (False, "fora_do_objeto")),
         ("J10 título de estiagem dá a família pelo título",
          familia_18("PLANCON ESTIAGEM E SECA - COBRADE 1.4.1.1.0 " + "x " * 50)[1] == "seca_estiagem_fogo"),
-        ("J11 SIGPub (Soledade/PB) é fonte oficial no 1.8, não no 1.7",
-         fonte_oficial(SOLEDADE_18, True) and not fonte_oficial(SOLEDADE_18)
-         and "J11" in _v(CANARIOS["plano_novo"]["texto"].replace("BONITO", "SOLEDADE").replace("Bonito", "Soledade")
-                        .replace("MS", "PB"), "Soledade", "PB", SOLEDADE_18)["regras_18"]
-         and not fonte_oficial("https://www.voxtecnologia.com.br/empresa", True)),
+        ("J11 SIGPub (Soledade/PB) é fonte oficial; o resto do domínio da plataforma, não",
+         fonte_oficial(SOLEDADE_18)
+         and _v(CANARIOS["plano_novo"]["texto"].replace("BONITO", "SOLEDADE").replace("Bonito", "Soledade")
+                .replace("MS", "PB"), "Soledade", "PB", SOLEDADE_18)["motivo"] != "sem_documento_primario"
+         and not fonte_oficial("https://www.voxtecnologia.com.br/empresa")),
         ("J8 (proposta) plano de 2015 sem prova de vigência vira recorrente; com revisão em 2024, não",
          _v(plano_2015, "Taió", "SC", URL_PDF_DE_PLANO, propostas=("J8",))["categoria"] == "plano_recorrente"
          and _v(plano_2015 + " Plano revisado em 2024.", "Taió", "SC", URL_PDF_DE_PLANO,
@@ -1711,9 +1694,9 @@ def casos_18() -> list:
          and e_estrutura_18("DECRETO N°020 DE 08 DE MARÇO DE 2021 Regulamenta a Lei n° 1.075 de 12 de dezembro de 2006 "
                             "que cria a Coordenadoria Municipal de Defesa Civil - COMDEC")
          and not e_estrutura_18("Institui o Plano de Contingência e a COMPDEC participa do acionamento")),
-        ("o 1.7 continua o juiz em produção: veredito sem codebook não traz regras_18",
-         "regras_18" not in julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)
-         and julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["codebook"] == CODEBOOK_VERSAO),
+        ("o veredito traz o codebook em vigor e as regras que agiram",
+         julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["codebook"] == CODEBOOK_VERSAO
+         and "J1" in julgar(PLANO_RS_18, "São Borja", "RS", url=URL_RS_18)["regras_18"]),
     ]
 
 
