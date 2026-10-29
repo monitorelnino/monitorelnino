@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Buscador 2: restituídas 1.481 linhas de `pistas_rejeitadas` que o #1314 apagou
+
+O #1314 entrou na `main` com `pistas_rejeitadas.json` de base velha (39.872 → 33.288). O #1318 devolveu 5.629 dentro do teto de crescimento do portão de tamanho; este devolve as 1.481 restantes (união por multiconjunto com a base fec6ed82). Total 40.642. Dado só; código 0 linhas.
+
 ## 2026-10-29 · #1313 · Consolidação: saem três migrações de uma vez só e um script arquivado
 
 Saem `migrar_fim_da_etapa_humana.py`, `migrar_zero_humano.py`, `migrar_sobras_do_doe.py` (já aplicadas; nenhum valor legado resta em `data/`) e `arquivo/scripts/caderno_de_pistas.py` (nada o chama), com suas linhas nas listas de exceção. Código −553; medida regravada. Rastro no git.
