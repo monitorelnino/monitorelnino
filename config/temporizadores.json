@@ -533,39 +533,5 @@
    ],
    "gravidade": "media"
   }
- ],
- "regime": {
-  "nome": "prioridade",
-  "decidido_por": "editoria",
-  "registrado_em": "2026-10-22",
-  "motivo": "Saúde v0.6 e busca de planos do MARÉ Legal acima das coletas noturnas, contínuas, até ficarem prontas.",
-  "vigente_ate": {
-   "condicao": "matriz de planos fechada E PRs de Saúde v0.6 mesclados",
-   "ou_data": "2026-11-05"
-  },
-  "janela_de_merge_utc": [
-   "00:00",
-   "23:59"
-  ],
-  "elos_suspensos": [
-   "noturno_diarios.yml",
-   "busca_web_cadencia.yml",
-   "noturno_triagem.yml",
-   "vigia_da_abertura.yml",
-   "checagem_pre_noite.yml",
-   "ensaio_real_da_noite.yml"
-  ],
-  "elos_mantidos": [
-   "noturno_saude.yml",
-   "noturno_desfechos.yml",
-   "noturno_saude_estadual.yml",
-   "noturno_sinais.yml",
-   "publicar_dados.yml",
-   "despachante.yml",
-   "conformidade_diaria.yml",
-   "verificar_publicado.yml",
-   "atualizar.yml",
-   "semanal_*"
-  ]
- }
+ ]
 }
