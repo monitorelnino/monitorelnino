@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
+
+`data/pistas_rejeitadas.json` é log de recusas, não fila: a mesma pista recusada de novo é outra linha. O resolvedor a deduplicava por chave e a `main` perdeu 6,5 mil linhas. Passa à classe de logs que só crescem (multiconjunto pela base comum, total recalculado); autoteste e caso F75 no catálogo.
+
 ## 2026-10-29 · #1313 · Consolidação: saem três migrações de uma vez só e um script arquivado
 
 Saem `migrar_fim_da_etapa_humana.py`, `migrar_zero_humano.py`, `migrar_sobras_do_doe.py` (já aplicadas; nenhum valor legado resta em `data/`) e `arquivo/scripts/caderno_de_pistas.py` (nada o chama), com suas linhas nas listas de exceção. Código −553; medida regravada. Rastro no git.

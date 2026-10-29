@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-26. 74 falhas; 68 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-26. 75 falhas; 69 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -671,3 +671,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** notas/amostra500_julgamentos_26-10-2026.json (robo-registro); §1c do HANDOVER_REJULGAMENTO_PARALELO_26-10-2026
 - **Correção:** Buscador 2: regras B1–B11 em buscador2.py, aplicadas na porta (scripts/pistas.py) e no seguidor (seguir_pistas.py); monitorar_redes_oficiais.py sai, a consulta estadual vai por UF (monitorar_busca_web.py --ufs).
 - **Caso de teste:** `buscador2.py`
+
+## F75 · União de conflito colapsava as recusas repetidas de pistas_rejeitadas.json
+
+- **Noite:** 2026-10-29 (pistas_rejeitadas perdeu linhas na união)
+- **Sintoma:** A `main` caiu de 39.872 para 33.335 entradas de pistas_rejeitadas.json depois do #1314; a trava 'união ≥ maior lado' passou porque conta chaves.
+- **Causa:** O resolvedor tratava o log como fila de pistas (uma entrada por chave), mas a mesma pista recusada de novo é outra linha (39.161 entradas, ~20,7 mil chaves).
+- **Prova:** scripts/unir_conflito_de_rodada.py: unir_fila_de_pistas deduplica por chave_da_pista; autoteste: caso 'repetidas contam' reprovava antes da correção
+- **Correção:** pistas_rejeitadas.json passa a LOGS_QUE_SO_CRESCEM (multiconjunto pela base comum, total recalculado); sai de FILAS_DE_PISTA; autoteste do caso.
+- **Caso de teste:** `scripts/unir_conflito_de_rodada.py`
