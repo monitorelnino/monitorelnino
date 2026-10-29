@@ -9,7 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Redução · Dois scripts de uso único saem
+
+`scripts/corrigir_log_do_aplicador.py` (conserto do log de 28/09) e `migrar_v224_verificacao.py` (migração de 02/09) já rodaram e nada os chama. Saem com suas menções em portões e SBOM. Saldo: −259 linhas de .py/.js (101.258 → 100.999). Sem mudança de comportamento.
+
 ## 2026-10-29 · A1 · Fim do regime de prioridade da corrente noturna
+
 Por decisão da editoria (28/10), saiu o bloco `regime` de `config/temporizadores.json`: os elos suspensos desde 22/10 voltam à cadência registrada e a janela de merge volta a 09:00–23:30 UTC. Código intacto: o regime era dado. Linhas líquidas: −34.
 
 ## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
