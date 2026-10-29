@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-28",
+ "gerado_em": "2026-10-29",
  "municipios": {
   "1400100": {
    "S16": {
@@ -78,6 +78,13 @@
     "consulta": "\"Boa Vista\" RR (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "1400050": {
@@ -142,6 +149,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1400050&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
     "dominio": null
    }
   },
@@ -208,6 +222,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1400209&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "1400456": {
@@ -273,6 +294,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1400456&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1400456&pagina=1&tamanhoPagina=500",
+    "motivo": "55 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1400472": {
@@ -337,6 +365,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1400472&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1400472&pagina=1&tamanhoPagina=500",
+    "motivo": "109 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   }
