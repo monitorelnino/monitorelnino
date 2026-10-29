@@ -80,21 +80,7 @@ function eixoDeMeses(ano, semanas) {
   const titulos = (semanas || []).map(w => semanaEmDatas(ano, ano + '-' + w, true));
   return {labels: labels, titulos: titulos};
 }
-/* As opções de eixo e tooltip que acompanham `eixoDeMeses`, para os três não divergirem. */
-function opcoesDeEixoSemanal(titulos, extra) {
-  const base = {ticks: {autoSkip: false, maxRotation: 0}};
-  return {x: Object.assign(base, extra || {}),
-          tooltipTitulo: itens => (itens && itens[0] ? (titulos[itens[0].dataIndex] || '') : '')};
-}
 
-/* O começo do período coberto, por extenso, da primeira semana que tem valor. */
-function primeiraSemanaComValor(ano, comValor) {
-  if (!window.MonitorSemana || !comValor || !comValor.length) return null;
-  const r = MonitorSemana.semanaParaDatas(Number(ano), Number(comValor[0].split('-')[1]));
-  if (!r) return null;
-  return r.inicio.getUTCDate() + ' de ' + MonitorSemana.MESES[r.inicio.getUTCMonth()]
-         + ' de ' + r.inicio.getUTCFullYear();
-}
 // 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
 const UFS = ["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"];

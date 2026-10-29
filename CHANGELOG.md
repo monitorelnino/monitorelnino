@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Redução: seis funções sem chamador saem (−39 líquidas)
+
+Saem `htmlGuia`, `popLinha` e `POP_UF` (index.js), `opcoesDeEixoSemanal` e `primeiraSemanaComValor` (saude.js), `_hoje_iso` (julgar_filas.py) e `ErroDoGh` (checagem_pre_noite.py): nenhum chamador em código, workflow ou página. Sem mudança de comportamento. Linhas: +1/−40.
+
 ## 2026-10-29 · METODOLOGIA: `nota_uf` vira `indice_uf` na fórmula do índice nacional da Saúde
 
 Resíduo do #1335: o símbolo da fórmula usava a palavra vedada para o valor do índice. Texto de uma linha, sem mudança de método; PDF e manifesto regerados. Linhas líquidas: 0 (+1/−1 no .md).
