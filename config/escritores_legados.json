@@ -26,14 +26,6 @@
       "desde": "2026-10-09"
     },
     {
-      "arquivo": "scripts/migrar_sobras_do_doe.py",
-      "fila": "data/pistas_doe.json",
-      "le_o_juiz": true,
-      "motivo": "migração de esquema sobre a fila inteira, que é exatamente o que MANUTENCAO cobre; ficou de fora da lista por esquecimento",
-      "falta": "declarar em MANUTENCAO",
-      "desde": "2026-10-09"
-    },
-    {
       "arquivo": "scripts/ensaio_da_noite.py",
       "fila": "data/pistas_imprensa.json",
       "le_o_juiz": false,

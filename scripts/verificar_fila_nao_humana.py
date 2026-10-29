@@ -50,9 +50,6 @@ RE_HUMANO = re.compile(r"(?<![a-z])human[oa]s?(?![a-z])", re.I)
 # Arquivos de código em que a palavra é legítima, com o motivo. Lista curta e explícita.
 EXCECOES_DE_CODIGO = {
     "scripts/verificar_fila_nao_humana.py": "o próprio portão: o padrão e os casos do autoteste",
-    "scripts/migrar_fim_da_etapa_humana.py": "migração histórica de 09/10/2026: lê o valor legado",
-    "scripts/migrar_zero_humano.py": "migração histórica de 10/10/2026: lê os valores legados",
-    "scripts/corrigir_log_do_aplicador.py": "conserto histórico do log (28/09/2026): traduz o nome legado",
     "gerar_tese.js": "fotografia datada da tese (27/08/2026), ferramenta de sessão fora da selagem",
 }
 # Os nomes de arquivo das exceções, que outros arquivos citam (portoes.yml, o portão do escritor).
@@ -232,7 +229,7 @@ def autoteste() -> int:
          ocorrencias_no_codigo("a.yml", "  # revisão humana de 22/09\n- run: echo ok  # humano\n") == []
          and len(ocorrencias_no_codigo("a.yml", "- name: Avisar revisão humana\n")) == 1),
         ("citação do nome de arquivo de uma exceção passa",
-         ocorrencias_no_codigo("a.yml", "  python3 scripts/migrar_fim_da_etapa_humana.py --autoteste\n") == []),
+         ocorrencias_no_codigo("a.yml", "  python3 gerar_tese.js --autoteste\n") == []),
         ("as exceções ficam fora da varredura",
          "scripts/verificar_fila_nao_humana.py" not in arquivos_de_codigo()),
     ]

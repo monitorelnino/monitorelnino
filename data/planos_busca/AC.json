@@ -1,16 +1,16 @@
 {
- "gerado_em": "2026-10-27",
+ "gerado_em": "2026-10-29",
  "municipios": {
   "1200401": {
    "S16": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://web.archive.org/cdx/search/cdx?url=www.riobranco.ac.gov.br&matchType=domain&output=json&fl=original%2Ctimestamp%2Cmimetype&filter=statuscode%3A200&filter=original%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&collapse=urlkey&limit=30",
     "motivo": null,
     "dominio": "www.riobranco.ac.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=www.riobranco.ac.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
     "motivo": null,
@@ -45,33 +45,61 @@
     "dominio": null
    },
    "S18": {
-    "consultado_em": "2026-10-26",
+    "consultado_em": "2026-10-28",
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200401&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-27",
+    "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200401&pagina=1&tamanhoPagina=500",
     "motivo": null,
+    "dominio": "www.riobranco.ac.gov.br"
+   },
+   "S17": {
+    "consultado_em": "2026-10-27",
+    "situacao": "lido",
+    "consulta": "\"Rio Branco\" AC (CREPDEC OR REDEC OR \"coordenadoria regional\" OR \"defesa civil estadual\") \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S19": {
+    "consultado_em": "2026-10-27",
+    "situacao": "erro",
+    "consulta": "\"Rio Branco\" AC (decreto OR portaria OR \"lei municipal\") \"plano de contingência\" (site:famurs.com.br OR site:appm.org.br OR site:amupe.org.br OR site:femurn.org.br OR site:amm.org.br OR site:amm-mt.org.br OR site:fecam.org.br OR site:famem.org.br OR site:diariomunicipal.com.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'CAPTCHA'], ['wikidata', 'Suspende",
+    "dominio": null
+   },
+   "S26": {
+    "consultado_em": "2026-10-27",
+    "situacao": "erro",
+    "consulta": "\"Rio Branco\" AC (tese OR dissertação OR TCC OR monografia) \"plano de contingência\" \"defesa civil\" (site:edu.br OR site:ibict.br OR site:scielo.br OR site:usp.br OR site:unesp.br OR site:unicamp.br)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'CAPTCHA'], ['wikidata', 'timeout'",
+    "dominio": null
+   },
+   "S30": {
+    "consultado_em": "2026-10-27",
+    "situacao": "erro",
+    "consulta": "\"Rio Branco\" AC (\"Operação Verão\" OR \"Operação Chuvas\" OR \"plano preventivo\" OR adesão) \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'CAPTCHA'], ['wikidata', 'Suspende",
     "dominio": null
    }
   },
   "1200013": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: acrelandia.ac.gov.br responde, mas não se diz a prefeitura; www.acrelandia.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: acrelandia.ac.gov.br responde, mas não se diz a prefeitura; www.acrelandia.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S20": {
@@ -101,21 +129,35 @@
     "consulta": "\"Acrelândia\" AC (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200013&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "lido",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200013&pagina=1&tamanhoPagina=500",
+    "motivo": null,
+    "dominio": null
    }
   },
   "1200104": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: brasileia.ac.gov.br responde, mas não se diz a prefeitura; www.brasileia.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: brasileia.ac.gov.br responde, mas não se diz a prefeitura; www.brasileia.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S20": {
@@ -145,21 +187,35 @@
     "consulta": "\"Brasiléia\" AC (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200104&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200104&pagina=1&tamanhoPagina=500",
+    "motivo": "76 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1200138": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: bujari.ac.gov.br responde, mas não se diz a prefeitura; www.bujari.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: bujari.ac.gov.br responde, mas não se diz a prefeitura; www.bujari.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S20": {
@@ -189,21 +245,35 @@
     "consulta": "\"Bujari\" AC (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200138&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200138&pagina=1&tamanhoPagina=500",
+    "motivo": "119 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1200179": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: capixaba.ac.gov.br responde, mas não se diz a prefeitura; www.capixaba.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: capixaba.ac.gov.br responde, mas não se diz a prefeitura; www.capixaba.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S20": {
@@ -233,21 +303,35 @@
     "consulta": "\"Capixaba\" AC (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200179&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200179&pagina=1&tamanhoPagina=500",
+    "motivo": "25 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1200203": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: cruzeirodosul.ac.gov.br responde, mas não se diz a prefeitura; www.cruzeirodosul.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: cruzeirodosul.ac.gov.br responde, mas não se diz a prefeitura; www.cruzeirodosul.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S20": {
@@ -277,21 +361,35 @@
     "consulta": "\"Cruzeiro do Sul\" AC (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200203&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "1200252": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: epitaciolandia.ac.gov.br responde, mas não se diz a prefeitura; www.epitaciolandia.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: epitaciolandia.ac.gov.br responde, mas não se diz a prefeitura; www.epitaciolandia.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S20": {
@@ -314,213 +412,427 @@
     "consulta": "\"Epitaciolândia\" AC (dengue OR arboviroses OR CIB OR CIEVS) \"plano de contingência\" (site:gov.br OR site:leg.br)",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200252&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "1200302": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: feijo.ac.gov.br responde, mas não se diz a prefeitura; www.feijo.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: feijo.ac.gov.br responde, mas não se diz a prefeitura; www.feijo.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200302&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
     "dominio": null
    }
   },
   "1200328": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: jordao.ac.gov.br responde, mas não se diz a prefeitura; www.jordao.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: jordao.ac.gov.br responde, mas não se diz a prefeitura; www.jordao.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200328&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
     "dominio": null
    }
   },
   "1200344": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: manoelurbano.ac.gov.br responde, mas não se diz a prefeitura; www.manoelurbano.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: manoelurbano.ac.gov.br responde, mas não se diz a prefeitura; www.manoelurbano.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200344&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
     "dominio": null
    }
   },
   "1200351": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: marechalthaumaturgo.ac.gov.br responde, mas não se diz a prefeitura; www.marechalthaumaturgo.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: marechalthaumaturgo.ac.gov.br responde, mas não se diz a prefeitura; www.marechalthaumaturgo.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200351&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200351&pagina=1&tamanhoPagina=500",
+    "motivo": "26 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200336": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: manciolima.ac.gov.br responde, mas não se diz a prefeitura; www.manciolima.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: manciolima.ac.gov.br responde, mas não se diz a prefeitura; www.manciolima.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200336&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200336&pagina=1&tamanhoPagina=500",
+    "motivo": "29 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200385": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: placidodecastro.ac.gov.br responde, mas não se diz a prefeitura; www.placidodecastro.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: placidodecastro.ac.gov.br responde, mas não se diz a prefeitura; www.placidodecastro.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200385&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200385&pagina=1&tamanhoPagina=500",
+    "motivo": "25 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200807": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: portoacre.ac.gov.br responde, mas não se diz a prefeitura; www.portoacre.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: portoacre.ac.gov.br responde, mas não se diz a prefeitura; www.portoacre.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200807&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200807&pagina=1&tamanhoPagina=500",
+    "motivo": "7 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200393": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: portowalter.ac.gov.br responde, mas não se diz a prefeitura; www.portowalter.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: portowalter.ac.gov.br responde, mas não se diz a prefeitura; www.portowalter.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200393&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200393&pagina=1&tamanhoPagina=500",
+    "motivo": "39 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200427": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: rodriguesalves.ac.gov.br responde, mas não se diz a prefeitura; www.rodriguesalves.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: rodriguesalves.ac.gov.br responde, mas não se diz a prefeitura; www.rodriguesalves.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200427&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200427&pagina=1&tamanhoPagina=500",
+    "motivo": "9 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200500": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: senamadureira.ac.gov.br responde, mas não se diz a prefeitura; www.senamadureira.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: senamadureira.ac.gov.br responde, mas não se diz a prefeitura; www.senamadureira.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200500&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200500&pagina=1&tamanhoPagina=500",
+    "motivo": "105 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200450": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: senadorguiomard.ac.gov.br responde, mas não se diz a prefeitura; www.senadorguiomard.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: senadorguiomard.ac.gov.br responde, mas não se diz a prefeitura; www.senadorguiomard.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200450&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200450&pagina=1&tamanhoPagina=500",
+    "motivo": "82 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200609": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: tarauaca.ac.gov.br responde, mas não se diz a prefeitura; www.tarauaca.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: tarauaca.ac.gov.br responde, mas não se diz a prefeitura; www.tarauaca.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200609&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200609&pagina=1&tamanhoPagina=500",
+    "motivo": "140 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
   "1200708": {
    "S16": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: xapuri.ac.gov.br responde, mas não se diz a prefeitura; www.xapuri.ac.gov.br responde, mas não se diz a prefeitura",
     "dominio": null
    },
    "S25": {
-    "consultado_em": "2026-10-25",
+    "consultado_em": "2026-10-28",
     "situacao": "dominio_nao_verificado",
     "consulta": null,
-    "motivo": null,
+    "motivo": "tentados: xapuri.ac.gov.br responde, mas não se diz a prefeitura; www.xapuri.ac.gov.br responde, mas não se diz a prefeitura",
+    "dominio": null
+   },
+   "S18": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200708&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1200708&pagina=1&tamanhoPagina=500",
+    "motivo": "26 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
+   }
+  },
+  "1200054": {
+   "S18": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200054&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   }
+  },
+  "1200435": {
+   "S18": {
+    "consultado_em": "2026-10-29",
+    "situacao": "sem_resultado",
+    "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1200435&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
    }
   }

@@ -693,6 +693,12 @@
         "cartao-mapa-rodape"
       ],
       "subtitulo_maximo": 140,
+      "eixo": "[class*='-eixo']",
+      "sem_subtitulo": {
+        "periodo": "semanal|mensal|di[áa]ri|anual|\\b(19|20)\\d\\d\\b|ciclo|epis[óo]dio|[úu]ltim[oa]s",
+        "territorio": "Ni[ñn]o|Pacífico|Brasil|regi[ãa]o|estad|munic[íi]pio|capita|\\bUF\\b",
+        "unidade": "°C|%|\\bmm\\b|\\bkm\\b|casos|focos|dias|R\\$|número de|índice"
+      },
       "subtitulo_estados": [
         "^Sem atualização desde ",
         "^Onde há seca ",
@@ -701,8 +707,8 @@
         "^Tipo de plano localizado em cada secretaria estadual "
       ],
       "_nota_subtitulo_estados": "Frases das legendas de seca, ar e temperatura do Monitor de riscos: texto aprovado pela editoria em 24/10/2026 (12:39); mais a do mapa por tipo de plano da Saúde, aprovada em 24/10/2026 (22:07 UTC), uma frase em vez de 'período · variável · unidade'. Forma de ESTADO do subtítulo, aceita literalmente: quando a fonte de alertas para por mais de 24 h, defesa-civil.js escreve 'Sem atualização desde dd/mm/aaaa hh:mm' no lugar de 'período · variável · unidade' (decisão de 02/10/2026, fuso explícito). Não é metadado e não leva '·'. O portão 17 (robustez) envelhece os alertas de propósito e exercita esta forma; o portão antigo não a via porque renderizava com a URL da inicial.",
-      "credito_maximo": 160,
-      "credito": "^Fonte: .+ · (?:Atualização|consultado em)(?::)? (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)$",
+      "credito_maximo": 174,
+      "credito": "^Fonte: .+ · (?:Atualização|consultado em)(?::)? (\\d{2}/\\d{2}/\\d{4}|sem coleta até o corte)(?: · Metodologia)?$",
       "credito_explicacao": "por que|confira|enquanto isso|lacuna declarada|contrariaria|regra de prova|aguard",
       "creditos_de_cartao": ".cartao .fonte-figura, .contador-zone .fonte-figura, #prazos .fonte-figura",
       "fichas": "docs/fichas_semanticas.json",

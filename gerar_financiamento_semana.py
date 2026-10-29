@@ -310,6 +310,20 @@ def pct_gasto_direto(m: dict):
     return round(100.0 * float(direto) / float(pago), 1)
 
 
+def base_da_acao(m: dict) -> dict:
+    """Barra de referência do cartão da MP, na mesma base (execução da AÇÃO): dotação atualizada da ação
+    (inclui o crédito da MP) contra empenhado e pago da ação; o valor do ato fica à parte. Dotação sem leitura
+    = None com motivo, nunca zero. Função pura (central, 28/10/2026)."""
+    e, d = m.get("execucao") or {}, (m.get("isolamento") or {}).get("via_4_dotacao") or {}
+    ok = isinstance(d.get("atualizado"), (int, float))
+    meses = e.get("meses") or []
+    return {"dotacao_atualizada": d["atualizado"] if ok else None, "valor_do_ato": m.get("valor"),
+            "empenhado": e.get("empenhado"), "pago": e.get("pago"),
+            "periodo_execucao": [meses[0], meses[-1]] if meses else None,
+            "fonte_dotacao": d.get("fonte"), "exercicio_dotacao": d.get("exercicio"),
+            "lacuna": None if ok else d.get("motivo") or "dotação da ação não lida no arquivo anual"}
+
+
 def mes_a_mes(mps: dict) -> list:
     """Pago por mês de cada MP, desde o mês de publicação; mês corrente marcado parcial. Função pura."""
     out = []
@@ -317,7 +331,7 @@ def mes_a_mes(mps: dict) -> list:
         e = m["execucao"]
         out.append({"id": m.get("id"), "numero": m.get("numero"), "tema": m.get("tema"),
                     "risco_declarado": m.get("risco_declarado"),
-                    "pct_gasto_direto": pct_gasto_direto(m),
+                    "pct_gasto_direto": pct_gasto_direto(m), "acao": base_da_acao(m),
                     "meses": [{"mes": k, "pago": v.get("pago"), "parcial": bool(v.get("parcial"))
                                or k in (e.get("meses_parciais") or [])}
                               for k, v in sorted((e.get("por_mes") or {}).items()) if isinstance(v, dict)]})
@@ -442,8 +456,6 @@ def mapa(rec: dict, fns_mun: dict, transf: dict, ref: list, corte: datetime) -> 
                    "ato": ("Portaria " + str(a.get("portaria"))) if a and a.get("portaria") else None,
                    "data": a.get("data") if a else None, "url": a.get("url") if a else None, "periodo": per,
                    "fonte": fonte_dc if origem == "defesa_civil" else (fns_mun or {}).get("fonte")}
-            # `ibge` e `valor`: nomes que a página atual lê; a B3 troca a leitura e estes dois saem.
-            lin.update(ibge=ib, valor=rep[ib])
             lin.update(nome=s[2], uf=s[3], lat=s[0], lon=s[1]) if s and s[0] is not None else lin.update(nome=None, uf=None, lat=None, lon=None, sem_sede=True)
             out.append(lin)
     return out
@@ -623,6 +635,15 @@ def _autoteste() -> int:
        t["sus_emergencia"]["periodo"] == "desde 29/06/2026" and emergencia_no_ciclo(FNS["municipios"]["1"]) == 2.0)
     ok("topo sem dado declara lacuna em cada cartao", all(x["sem_coleta"] for x in topo({}, {}, {}, {}, corte)))
     ok("mes a mes leva o risco que o ato declara (ou None)", mes_a_mes(MPS)[0]["risco_declarado"] is None)
+    MPS["mps"][0].update(valor=300.0, isolamento={"via_4_dotacao": {"atualizado": 900.0, "fonte": "f", "exercicio": "2026"}})
+    MPS["mps"][0]["execucao"].update(empenhado=120.0, meses=["202609", "202610"])
+    ac = mes_a_mes(MPS)[0]["acao"]
+    ok("mes a mes: base da acao (dotacao atualizada, empenhado, pago, valor do ato)",
+       ac["dotacao_atualizada"] == 900.0 and ac["empenhado"] == 120.0 and ac["pago"] == 100.0 and ac["valor_do_ato"] == 300.0
+       and ac["periodo_execucao"] == ["202609", "202610"] and ac["lacuna"] is None)
+    ok("mes a mes: dotacao nao lida e lacuna declarada, nunca zero",
+       base_da_acao({"execucao": {}, "isolamento": {"via_4_dotacao": {"status": "lacuna", "motivo": "m"}}})["dotacao_atualizada"] is None
+       and base_da_acao({"execucao": {}})["lacuna"])
     ok("mes a mes marca o parcial", mes_a_mes(MPS)[0]["meses"] == [{"mes": "202609", "pago": 60.0, "parcial": False},
                                                                   {"mes": "202610", "pago": 40.0, "parcial": True}])
     base["municipios"]["1"]["atos"][0]["portaria"] = "9"
@@ -639,7 +660,7 @@ def _autoteste() -> int:
        == [("0000001", "defesa_civil", 42.0, 1000.0, -1.0), ("0000003", "defesa_civil", 5.0, None, None), ("0000001", "saude", 2.0, None, -1.0)]
        and pts[1]["sem_sede"] is True and mapa(base2, {}, {}, [], corte) == [])
     ok("soma: repassado por origem no mapa = totais da legenda = soma da tabela",
-       res["total"] == {"defesa_civil": 47.0, "saude": 2.0} == {o: round(sum(p["valor"] for p in pts if p["origem"] == o), 2) for o in ("defesa_civil", "saude")}
+       res["total"] == {"defesa_civil": 47.0, "saude": 2.0} == {o: round(sum(p["repassado"] for p in pts if p["origem"] == o), 2) for o in ("defesa_civil", "saude")}
        and res["municipios"] == {"defesa_civil": 2, "saude": 1} and res["sem_sede"] == 1)
     asr = autorizado_sem_repasse(base2, TR, REF, corte)
     ok("portaria sem repasse vai a lista propria (lacuna com corte), nao a circulo",

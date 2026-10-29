@@ -18,7 +18,7 @@
  * tabela de 953 linhas era a segunda implementação da mesma pergunta.
  *
  * Valor em reais não entra nesta página: o dinheiro autorizado depois do reconhecimento está em
- * `financiamento.html#defesaCivil`. As três listas federais de risco estão no Monitor de riscos.
+ * `financiamento.html#depois`. As três listas federais de risco estão no Monitor de riscos.
  *
  * REGRA DE SEGURANÇA DOS ALERTAS. Aviso e alerta são informação de AGORA. Se a coleta tiver mais de
  * 24 horas, a página não diz que há alerta em vigor: declara "sem atualização desde {data e hora}".
@@ -58,7 +58,7 @@ async function __load(){
     LATLON_POR_CODIGO[c] = [m.lon, m.lat];
     (NOMES_POR_UF[m.uf] = NOMES_POR_UF[m.uf] || []).push(m.nome);
   });
-  __init(ref.length);
+  __init();
 }
 
 /* Família de cor do evento declarado (tokens de `assets/mapas.js`): seca, chuva, fogo, outro. Aceita
@@ -75,7 +75,7 @@ const NOME_DO_CODIGO = {seca: 'Seca ou estiagem', chuva: 'Chuva', vendaval: 'Ven
 const nomeDoEvento = v => NOME_DO_CODIGO[v] || (/não declarado|^$/i.test(String(v || '').trim()) ? 'Tipo não declarado no ato' : String(v).split(' - ')[0].trim());
 const familiaDe = ev => ev ? FAMILIAS.find(f => f.re.test(ev)) : FAMILIAS[3];
 
-function __init(totalMunicipios){
+function __init(){
   const esc = MonitorMapas.esc, cor = MonitorMapas.cor, C = window.MonitorCatalogo;
   const n = v => Number(v || 0).toLocaleString('pt-BR');
   /* Valor de CARTÃO de número, e as duas regras de `layout/regras.json` que ele atende de uma vez:
@@ -88,8 +88,8 @@ function __init(totalMunicipios){
   const molde = (id, chave, valores) => C && C.escrever(id, chave, valores);
   /* O mesmo catálogo, devolvendo texto em vez de escrever num elemento (o corpo do cartão é montado). */
   const texto_molde = (chave, valores) => (C && C.texto(chave, valores)) || '';
-  const lacunaDe = corte => (C && C.texto('defesa-civil.municipio.lacuna.molde', {corte: corte || 'sem registro'}))
-    || 'Não localizado até o corte (' + (corte || 'sem registro') + ')';
+  /* A lacuna diz o que não foi localizado: uma chave por classe (aviso, decreto, reconhecimento). */
+  const lacunaDe = (chave, corte) => texto_molde('defesa-civil.municipio.' + chave + '.lacuna.molde', {corte: corte || 'sem registro'});
   const UFS = BR_GEOJSON.features.map(f => f.properties.sigla);
   const NOME_UF = Object.fromEntries(BR_GEOJSON.features.map(f => [f.properties.sigla, f.properties.name]));
 
@@ -187,13 +187,10 @@ function __init(totalMunicipios){
   variacao('topoPopulacaoVariacao', 'populacao_sob_decreto', N.pop_sob_decreto);
   cred('topoDecretaramFonte', [FONTE_DECRETO], corteDecretos);
   cred('topoReconhecidosFonte', [FONTE_DECRETO], corteDecretos);
-  /* O sexto cartão: prazo mediano entre decreto e reconhecimento, medido em `por_uf.json`
-     (METODOLOGIA §32.6). Sem o campo, a classe é "não calculado até o corte". */
+  /* O prazo entre decreto e reconhecimento é medido em `por_uf.json` (METODOLOGIA §32.6) e vive no apoio
+     de "Reconhecidos pela União"; sem o campo, o apoio fica vazio. */
   const prazo = N.prazo_reconhecimento;
-  const temPrazo = prazo && prazo.mediana != null;
-  texto('topoPrazo', temPrazo ? prazo.mediana + ' dias' : 'não calculado até o corte');
-  texto('topoPrazoApoio', temPrazo ? 'entre ' + prazo.p25 + ' e ' + prazo.p75 + ' dias (' + prazo.n + ' reconhecidos)' : '');
-  cred('topoPrazoFonte', [FONTE_DECRETO], corteDecretos);
+  if (prazo && prazo.mediana != null) molde('topoReconhecidosApoio', 'defesa-civil.dc-topo.topo_reconhecidos.apoio.molde', prazo);
   /* População em milhões com uma casa (regra de número do site). */
   const pop = N.pop_sob_decreto;
   texto('topoPopulacao', pop >= 1e6
@@ -203,7 +200,6 @@ function __init(totalMunicipios){
   // =========================================================
   // 2. Como está o seu município
   // =========================================================
-  molde('municipioAbertura', 'defesa-civil.municipio.abertura.molde', {n_municipios: totalMunicipios});
   const cartao = (classe, tituloId, corpo) => '<div class="cartao ' + classe + '"><p class="cartao-k">'
     + esc((C && C.texto(tituloId)) || '') + '</p>' + corpo + '</div>';
   const linhaT = (t, s) => '<b class="cartao-t">' + t + '</b>' + (s ? '<span class="cartao-s">' + s + '</span>' : '');
@@ -212,8 +208,8 @@ function __init(totalMunicipios){
   function mostrar(uf, nome, card){
     const cod = MUN_COD[uf + '|' + nome], a = alertasDe(cod), m = POR_COD[cod];
     const avisos = (a.cemaden || []).map(x => linhaT('Alerta do Cemaden · ' + esc(x.tipo || 'tipo não declarado') + ' · ' + esc(String(x.nivel || 'nível não declarado').toLowerCase()), x.inicio ? 'Emitido em ' + esc(horaBR(x.inicio)) : ''))
-      .concat((a.inmet || []).map(x => linhaT('Aviso do Inmet · ' + esc(x.tipo || 'tipo não declarado') + ' · ' + esc(String(x.severidade || '').toLowerCase()), x.fim ? 'Válido até ' + esc(horaBR(x.fim)) : '')));
-    const corpoAviso = alertasVelhos ? linhaT(esc(semAtualizacao(carimbo))) : (avisos.join('') || linhaT(esc(lacunaDe(carimbo))));
+      .concat((a.inmet || []).map(x => linhaT('Aviso do Inmet · ' + esc(String(x.tipo || 'tipo não declarado').toLowerCase()) + ' · ' + esc(String(x.severidade || '').toLowerCase()), '')));
+    const corpoAviso = alertasVelhos ? linhaT(esc(semAtualizacao(carimbo))) : (avisos.join('') || linhaT(esc(lacunaDe('aviso', carimbo))));
     let corpoDecreto, corpoRec;
     if (m) {
       /* 19/10/2026 (ajuste 6.2): a página separa o que VIMOS do que o reconhecimento pressupõe. Em 722
@@ -228,10 +224,10 @@ function __init(totalMunicipios){
             {corte: esc(corteDecretos || 'sem registro'), data: esc(m.reconhecimento || (m.portaria || {}).data || '')}));
       corpoRec = m.reconhecida
         ? linhaT('Reconhecido em ' + esc(m.reconhecimento || (m.portaria || {}).data || ''), m.portaria ? docLink(m.portaria) : '')
-        : linhaT(esc(lacunaDe(corteDecretos)));
+        : linhaT(esc(lacunaDe('reconhecimento', corteDecretos)));
     } else {
-      corpoDecreto = linhaT(esc(lacunaDe(corteDecretos)));
-      corpoRec = linhaT(esc(lacunaDe(corteDecretos)));
+      corpoDecreto = linhaT(esc(lacunaDe('decreto', corteDecretos)));
+      corpoRec = linhaT(esc(lacunaDe('reconhecimento', corteDecretos)));
     }
     const e = (RESP && RESP.uf && RESP.uf[uf]) || null;
     const estado = e ? (C && C.texto('defesa-civil.municipio.estado.molde', {

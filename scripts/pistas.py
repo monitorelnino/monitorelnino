@@ -303,7 +303,7 @@ def entrada_18(pista: dict, veiculos=frozenset()) -> tuple:
     host = _url.urlparse(url).netloc.lower().split(":")[0]
     if host.endswith(SUFIXOS_PUBLICOS_18):
         return True, "dominio_publico"
-    if fonte_oficial(url, True):
+    if fonte_oficial(url):
         return True, "diario_oficial"
     if host and any(host == v or host.endswith("." + v) for v in veiculos):
         return True, "imprensa_listada"
@@ -326,7 +326,7 @@ def prioridade_18(pista: dict) -> int:
     url = resolver_url_final(pista).lower().split("?")[0]
     if nivel == "A":
         return 0
-    if fonte_oficial(url, True) and (url.endswith(EXTENSOES_DE_DOCUMENTO) or "queridodiario" in url):
+    if fonte_oficial(url) and (url.endswith(EXTENSOES_DE_DOCUMENTO) or "queridodiario" in url):
         return 1
     return 2 if nivel == "B" else 3
 

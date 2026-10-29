@@ -26,7 +26,7 @@
   },
   "data/pistas_rejeitadas.json": {
    "escritor": "qualquer_elo",
-   "por_que": "Fila, classe FILAS_DE_PISTA."
+   "por_que": "Log de recusas que só cresce (a mesma pista recusada de novo é outra linha). União pela base comum, por multiconjunto, classe LOGS_QUE_SO_CRESCEM; dedup por chave colapsava repetidas (39.872 → 33.335 em 29/10/2026)."
   },
   "data/log_buscas.json": {
    "escritor": "qualquer_elo",

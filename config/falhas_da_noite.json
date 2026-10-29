@@ -1025,6 +1025,19 @@
    ],
    "correcao": "Buscador 2: regras B1–B11 em buscador2.py, aplicadas na porta (scripts/pistas.py) e no seguidor (seguir_pistas.py); monitorar_redes_oficiais.py sai, a consulta estadual vai por UF (monitorar_busca_web.py --ufs).",
    "caso_de_teste": "buscador2.py"
+  },
+  {
+   "id": "F75",
+   "noite": "2026-10-29 (pistas_rejeitadas perdeu linhas na união)",
+   "titulo": "União de conflito colapsava as recusas repetidas de pistas_rejeitadas.json",
+   "sintoma": "A `main` caiu de 39.872 para 33.335 entradas de pistas_rejeitadas.json depois do #1314; a trava 'união ≥ maior lado' passou porque conta chaves.",
+   "causa": "O resolvedor tratava o log como fila de pistas (uma entrada por chave), mas a mesma pista recusada de novo é outra linha (39.161 entradas, ~20,7 mil chaves).",
+   "prova": [
+    "scripts/unir_conflito_de_rodada.py: unir_fila_de_pistas deduplica por chave_da_pista",
+    "autoteste: caso 'repetidas contam' reprovava antes da correção"
+   ],
+   "correcao": "pistas_rejeitadas.json passa a LOGS_QUE_SO_CRESCEM (multiconjunto pela base comum, total recalculado); sai de FILAS_DE_PISTA; autoteste do caso.",
+   "caso_de_teste": "scripts/unir_conflito_de_rodada.py"
   }
  ]
 }

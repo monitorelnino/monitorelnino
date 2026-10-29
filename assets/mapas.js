@@ -287,7 +287,7 @@
   }
   /** Crédito de figura — formato ÚNICO do site (auditoria de 07/09/2026):
    *    "Fonte: órgão · documento · Atualização: dd/mm/aaaa"   ou   "… · Atualização: sem coleta até o corte".
-   *  credito(caixaId, { fontes: 'INMET' | ['DOU', 'S2iD'], data: '07/09/2026' | null, url: 'https://…' (opcional, no 1º nome) })
+   *  credito(caixaId, { fontes: 'INMET' | ['DOU', 'S2iD'], data: '07/09/2026' | null (data da fonte) | consultado: '07/09/2026' (data da nossa consulta: "consultado em dd/mm/aaaa"), url: 'https://…' (opcional, no 1º nome) })
    *  `caixaId` pode ser o `.cartao-numero-fonte` de um cartão de número: a linha vai nele.
    *  Sem explicações, sem instruções, sem "por que está vazio". Uma linha por figura ou cartão; nunca duplica.
    *  Portões: verificar_figuras.js (texto) e verificar_consistencia_visual.js (estilo computado). */
@@ -297,12 +297,14 @@
     if (typeof spec === 'string') throw new Error('MonitorMapas.credito: use {fontes, data}; texto livre não é aceito (' + caixaId + ')');
     const fontes = (Array.isArray(spec.fontes) ? spec.fontes : [spec.fontes]).filter(Boolean).map(esc);
     if (spec.url && fontes.length) fontes[0] = '<a href="' + esc(spec.url) + '" target="_blank" rel="noopener">' + fontes[0] + '</a>';
-    const data = dataBR(spec.data);
-    const linha = '<span class="fonte-k">Fonte:</span> ' + fontes.join(' · ') + ' · <span class="fonte-k">Atualização:</span> ' + (data || 'sem coleta até o corte');
+    // Um rótulo por significado: `consultado` = data da nossa consulta; `data` = data da fonte.
+    const data = dataBR(spec.consultado || spec.data), rotulo = spec.consultado ? 'consultado em' : 'Atualização:';
+    const linha = '<span class="fonte-k">Fonte:</span> ' + fontes.join(' · ') + ' · <span class="fonte-k">' + rotulo + '</span> ' + (data || 'sem coleta até o corte');
     // 13/10/2026 (decisão 9 da central): o cartão de número leva a mesma linha, no próprio elemento de fonte.
     if (caixa.classList.contains('cartao-numero-fonte')) { caixa.innerHTML = linha; caixa.setAttribute('data-conteudo-fixado', '1'); return; }
     const d = document.createElement('div'); d.className = 'fonte-figura';
-    d.innerHTML = linha;
+    // 27/10/2026 (central, pendência 11): a figura aponta a metodologia, o único material técnico público (PDF).
+    d.innerHTML = linha + ' · <a href="METODOLOGIA.pdf" target="_blank" rel="noopener">Metodologia</a>';
     let pe = caixa.querySelector(':scope > .figura-pe');
     if (!pe) { pe = document.createElement('div'); pe.className = 'figura-pe'; caixa.appendChild(pe); }
     pe.insertBefore(d, pe.firstChild);   // crédito antes do número da figura
@@ -485,9 +487,13 @@
   // 19/10/2026 (editoria): a sigla é ETIQUETA, não ligação. O link levava à página anterior e
   // obrigava o leitor a voltar; o `span` é a mesma forma que a inicial já usa nos seus chips.
   const chipsDeUF = ufs => ufs.map(uf => '<span class="chip-risco">' + esc(uf) + '</span>').join('');
+  // Risco previsto em seis linhas: marca(s) de cor + nome do risco + contagem de estados + siglas.
+  // A cor nunca é o único código: o nome vem escrito ao lado; a marca das combinações compõe as simples.
   function faixaPrevista(dl, grupos) {
-    dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs]) =>
-      '<div><dt>' + esc(rotulo) + '</dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
+    dl.innerHTML = grupos.filter(g => g[1].length).map(([rotulo, ufs, marcas]) =>
+      '<div><dt>' + (marcas || []).map(m => '<i class="marca-risco marca-risco--' + m + '" aria-hidden="true"></i>').join('')
+      + (marcas && marcas.length ? '' : '<i class="marca-risco marca-risco--vazia" aria-hidden="true"></i>')
+      + esc(rotulo) + ' <span class="faixa-previsto__n">' + ufs.length + '</span></dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
   }
 
   global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };

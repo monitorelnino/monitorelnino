@@ -104,6 +104,36 @@ def autoteste() -> int:
                   [p["id"] for p in f["pistas"]] == ["c", "b"] and f["descartadas_por_dominio"] == {"www.reddit.com": 1}
                   and f["pistas"][0]["municipio"] is None and f["pistas"][0]["setor_18"] == "defesa_civil"))
 
+    v18 = {"pista_id": "p", "url": "u", "municipio": "Taió", "uf": "SC", "municipio_da_pista": "Rio do Oeste",
+           "uf_da_pista": "SC"}
+    casos.append(("1.8: a chave salva é a da pista, não a do município do veredito (J5)",
+                  chave_18(dict(v18, municipio=v18["municipio_da_pista"], uf=v18["uf_da_pista"]))
+                  == chave_18({"pista_id": "p", "url": "u", "municipio": "Rio do Oeste", "uf": "SC"})))
+
+    lido = {"promove": True, "categoria": "plano_antigo", "regras_18": [], "motivo": None,
+            "com_propostas_J8_J9": {"promove": True, "categoria": "plano_recorrente"}}
+    errata = {"promove": False, "motivo": "errata: comitê da dengue", "categoria": "plano_antigo", "errata": {"em": "x"}}
+    h = herdar_18(dict(lido, regras_18=["J7"]), errata)
+    casos.append(("1.8: a errata da linha manda, com ou sem regra 1.8 (Birigui/SP)",
+                  h["promove"] is False and h["mantido_18"]["por"] == "errata"
+                  and h["com_propostas_J8_J9"]["promove"] is False and herdar_18(h, errata) == h))
+    casos.append(("1.8: sem regra 1.8 o veredito não muda; na fila, quem decide é o juiz de produção (Mogi Guaçu/SP)",
+                  herdar_18(lido, None)["promove"] is False and herdar_18(lido, None)["mantido_18"]["por"] == "sem_regra"
+                  and herdar_18(dict(lido, regras_18=["J1"]), None)["promove"] is True
+                  and herdar_18(lido, {"promove": True, "categoria": "plano_antigo"}) == lido))
+
+    leva = dict(lido, com_segunda_leva={"promove": False, "motivo": "documento_estadual", "regras_18": ["J14"]})
+    casos.append(("1.8: a regra da segunda leva muda a variante mesmo quando o veredito principal é mantido; "
+                  "a errata manda nela também",
+                  herdar_18(leva, None)["com_segunda_leva"]["motivo"] == "documento_estadual"
+                  and herdar_18(leva, None)["com_propostas_J8_J9"]["promove"] is False
+                  and herdar_18(leva, errata)["com_segunda_leva"]["motivo"] == errata["motivo"]))
+
+    lida, falhou = dict(lido, leu_documento=True), {"promove": False, "motivo": "documento_inacessivel"}
+    casos.append(("1.8: releitura que não chega ao documento não apaga a leitura anterior; sem leitura anterior, vale",
+                  vale_a_leitura_18(lida, falhou) is lida and vale_a_leitura_18(None, falhou) is falhou
+                  and vale_a_leitura_18(lida, dict(lido, leu_documento=True, motivo="x"))["motivo"] == "x"))
+
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")
@@ -144,15 +174,46 @@ def compacto_18(v: dict) -> dict:
                                   "familia_de_risco", "sem_ato_de_aprovacao", "codebook", "regras_18") if k in v}
 
 
+def herdar_18(novo: dict, antes) -> dict:
+    """O veredito 1.8 só muda por regra 1.8, e a errata da linha manda (central, 28/10: Birigui e Mogi Guaçu/SP).
+    PURA e idempotente: o que foi lido fica em `mantido_18`. `antes` é a decisão vigente (None na fila: lá o
+    "antes" é não promover, e quem decide sem regra 1.8 é o juiz de produção)."""
+    antes = antes or {"promove": False, "motivo": "sem_regra_18", "categoria": None, "data": None}
+    por = "errata" if antes.get("errata") else (
+        "sem_regra" if not novo.get("regras_18") and (novo.get("promove"), novo.get("categoria"))
+        != (bool(antes.get("promove")), antes.get("categoria")) else None)
+    if not por or novo.get("mantido_18"):
+        return novo
+    herdado = {k: antes.get(k) for k in ("promove", "motivo", "categoria", "data")}
+    herdado["promove"] = bool(herdado["promove"]) and por != "errata"
+    out = dict(novo, **herdado, mantido_18={"por": por, "lido": compacto_18(novo)})
+    for variante in VARIANTES_18:   # regra da própria variante muda a variante; a errata manda em todas
+        propria = set((novo.get(variante) or {}).get("regras_18") or []) - set(novo.get("regras_18") or [])
+        if novo.get(variante) and (por == "errata" or not propria):
+            out[variante] = dict(novo[variante], **herdado)
+    return out
+
+
+def vale_a_leitura_18(anterior, novo) -> dict:
+    """Releitura que não chegou ao documento não apaga a leitura anterior (lote 12 de 29/10: 46 chaves lidas
+    voltaram como "documento_inacessivel"). PURA."""
+    return anterior if anterior and anterior.get("leu_documento") and not novo.get("leu_documento") else novo
+
+
+# Regras medidas à parte, cada conjunto na sua chave: J8/J9 (propostas) e a segunda leva (§1b/§1c).
+VARIANTES_18 = {"com_propostas_J8_J9": "PROPOSTAS_18", "com_segunda_leva": "SEGUNDA_LEVA_18"}
+
+
 def julgar_18(p: dict, buscar, propostas=False) -> dict:
+    import juiz
     from julgar_filas import julgar_uma
-    novo = julgar_uma(p, buscar, codebook="1.8")
+    novo = julgar_uma(p, buscar)
     if propostas and novo.get("leu_documento"):
-        from juiz import PROPOSTAS_18, julgar
         texto = buscar(p.get("url"))
-        prop = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "", ibge=p.get("ibge"),
-                      url=p.get("url"), trecho=p.get("trecho"), codebook="1.8", propostas=PROPOSTAS_18)
-        novo["com_propostas_J8_J9"] = compacto_18(prop)
+        for variante, conjunto in VARIANTES_18.items():
+            novo[variante] = compacto_18(juiz.julgar(
+                texto, nome=p.get("municipio") or "", uf=p.get("uf") or "", ibge=p.get("ibge"), url=p.get("url"),
+                trecho=p.get("trecho"), propostas=getattr(juiz, conjunto)))
     return novo
 
 
@@ -226,16 +287,24 @@ def buscar_18():
 
 def paralelo_18(argv) -> int:
     from coletores_base import gravar_em, hoje_editorial
-    from juiz import CODEBOOK_18, fonte_oficial
+    from juiz import CODEBOOK_VERSAO, fonte_oficial
     rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
     propostas = "--propostas" in argv
+    # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18);
+    # `--refazer leva2`: relê a chave lida que ainda não tem `com_segunda_leva` (com `--propostas`). A regra pedida
+    # vale também quando agiu só numa variante (`--refazer J19`).
+    refazer = set(argv[argv.index("--refazer") + 1].split(",")) if "--refazer" in argv else set()
     saida = RAIZ / argv[argv.index("--saida") + 1] if "--saida" in argv else SAIDA_18
     doc = json.loads(saida.read_text(encoding="utf-8")) if saida.exists() else {
         "_governanca": ("Rodada paralela do juiz, codebook 1.8 (handover da central de 26/10/2026). Nenhuma página "
                         "lê este arquivo; a troca para o 1.8 é decisão da editoria. `rejulgada_de` é a decisão "
                         "vigente (1.7 ou anterior) da mesma pista e URL."),
-        "codebook": CODEBOOK_18, "decisoes": []}
-    feitas = {chave_18(v): v for v in doc["decisoes"]}
+        "codebook": CODEBOOK_VERSAO, "decisoes": []}
+    # A chave é a da PISTA: o veredito pode ter mudado o município (J5/J6), e a chave pelo veredito fazia a
+    # mesma pista ser relida a cada lote (113 repetidas até o lote 6).
+    feitas = {}
+    for v in doc["decisoes"]:
+        feitas[chave_18(dict(v, municipio=v.get("municipio_da_pista"), uf=v.get("uf_da_pista")))] = v
     ler, registros = buscar_18() if rede else (lambda u: None, [])
     hoje = hoje_editorial().isoformat()
     lidas, pendentes = 0, [0]
@@ -244,8 +313,13 @@ def paralelo_18(argv) -> int:
         nonlocal lidas
         chave = chave_18(p)
         anterior = feitas.get(chave)
-        precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"], True)
-        if anterior and (anterior.get("leu_documento") or not precisa_ler):
+        precisa_ler = bool(p.get("url")) and fonte_oficial(p["url"])
+        refeita = bool(anterior and (refazer & set(anterior.get("regras_18") or []).union(
+                                         *((anterior.get(x) or {}).get("regras_18") or [] for x in VARIANTES_18))
+                                     or ("promove" in refazer and anterior.get("promove"))
+                                     or ("leva2" in refazer and anterior.get("leu_documento")
+                                         and "com_segunda_leva" not in anterior)))
+        if anterior and (anterior.get("leu_documento") or not precisa_ler) and not refeita:
             return
         if precisa_ler and (not rede or lidas >= rede):
             pendentes[0] += 1
@@ -257,7 +331,7 @@ def paralelo_18(argv) -> int:
         novo["url"], novo["municipio_da_pista"], novo["uf_da_pista"] = p.get("url"), p.get("municipio"), p.get("uf")
         if not novo.get("leu_documento"):
             novo.pop("criterios", None)   # sem documento lido, o motivo basta (o arquivo fica pequeno)
-        feitas[chave] = novo
+        feitas[chave] = vale_a_leitura_18(anterior, herdar_18(novo, antes))
         if rede and fila is not None and novo.get("motivo") in ("noticia_nao_e_documento",
                                                                "noticia_institucional_nao_e_o_plano"):
             from seguir_pistas import buscar_html, documentos_da_pagina_18   # B4: um nível, mesmo domínio
@@ -286,6 +360,11 @@ def paralelo_18(argv) -> int:
     por_id = {p.get("id"): p for p in json.loads(
         (RAIZ / "data" / "pistas_imprensa.json").read_text(encoding="utf-8")).get("pistas", []) if p.get("id")}
     decididas = vigentes(json.loads(REGISTRO.read_text(encoding="utf-8")).get("decisoes") or [])
+    # Decisão que saiu do registro (limpeza de 26/10, #1203) sai do rejulgamento: fica só a contagem.
+    fora = [k for k, v in feitas.items() if v.get("origem_18") == "decisao" and k not in decididas]
+    for k in fora:
+        feitas.pop(k)
+    doc["fora_do_registro"] = int(doc.get("fora_do_registro") or 0) + len(fora)
     if fila is not None and "--fila" in argv:   # B2: o link de agregador das decisões também se resolve
         from pistas import REDIRECIONADORES, prioridade_18
         ja, feitos = {a["id"] for a in fila["agregadores"]}, {a["id"]: a for a in anterior.get("agregadores", [])}
@@ -329,7 +408,9 @@ def paralelo_18(argv) -> int:
 
     if fila is not None:
         gravar_em(FILA_18, fila, compacto=True)
-    doc["decisoes"] = list(feitas.values())
+    doc["decisoes"] = [herdar_18(v, decididas.get(chave_18(dict(v, municipio=v.get("municipio_da_pista"),
+                                                                 uf=v.get("uf_da_pista"))))
+                                 if v.get("origem_18") == "decisao" else None) for v in feitas.values()]
     doc["leituras_da_pasta_rs"] = (doc.get("leituras_da_pasta_rs") or []) + registros
     gravar_em(saida, doc, compacto=True)
     faltam = pendentes[0]

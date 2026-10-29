@@ -90,7 +90,7 @@ recomendado para decidir quando uma atualização é necessária.
 Os módulos introduzidos na v2.2.4 (`coletores_base.py`, `coletar_s2id.py`,
 `coletar_doe.py`, `coletar_declarado_nacional.py`, `coletar_diarios_municipais.py`,
 `coletar_saude.py`, `preservar_evidencias.py`, `verificar_evidencias.py`,
-`verificar_saude.py`, `migrar_v224_verificacao.py`) usam **apenas a biblioteca
+`verificar_saude.py`) usam **apenas a biblioteca
 padrão do Python** (`urllib`, `json`, `csv`, `hashlib`, `re`, `datetime`). Nenhuma
 dependência Python ou Node foi adicionada; os arquivos CycloneDX permanecem
 válidos para a v2.2.4. `pip-audit`/`npm audit`: sem CVE novo a reportar (sem

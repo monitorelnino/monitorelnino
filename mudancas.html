@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=3d25b2e8"></script>
-<script src="assets/mapas.js?v=2a65806c"></script>
+<script src="assets/mapas.js?v=414c4e5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=7d53eed0">
+<link rel="stylesheet" href="assets/base.css?v=7d43c01c">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,30 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>29/10/2026 · Juiz 1.8 (paralelo): J19 lê o município colado no nome do arquivo da pasta do RS</dt>
+      <dd>Rodada paralela, nada publicado muda. A pasta da Casa Militar do RS escreve o município junto (&quot;TRÊSDEMAIO&quot;, &quot;Plancom_RiodosIndios&quot;, &quot;..._Agudo1&quot;); 18 planos promovidos saíam como &quot;município não identificado&quot; na medição da segunda leva. O nome do arquivo é lido sem as palavras de rótulo e colado.</dd>
+      <dt>29/10/2026 · Consolidação: saem três migrações de uma vez só e um script arquivado</dt>
+      <dd>Saem `migrar_fim_da_etapa_humana.py`, `migrar_zero_humano.py`, `migrar_sobras_do_doe.py` (já aplicadas; nenhum valor legado resta em `data/`) e `arquivo/scripts/caderno_de_pistas.py` (nada o chama), com suas linhas nas listas de exceção. Código −553; medida regravada. Rastro no git.</dd>
+      <dt>29/10/2026 · Juiz 1.8 (paralelo): releitura que falha não apaga a leitura anterior</dt>
+      <dd>Rodada paralela, nada publicado muda. No lote 12, 46 documentos já lidos voltaram como inacessíveis na releitura e perdiam o veredito lido; agora a leitura anterior fica e a chave volta a ser tentada no lote seguinte.</dd>
+      <dt>29/10/2026 · Juiz automático: codebook 1.8 passa a valer</dt>
+      <dd>As regras J1 a J7, J10, J11 e J15 do codebook 1.8 substituem o 1.7; J8, J9 e a segunda leva seguem fora, em medição. Nenhum peso ou crédito muda. A troca de versão devolve as pistas ao juiz e as decisões novas entram no índice pela cadeia normal. METODOLOGIA §125.</dd>
+      <dt>28/10/2026 · Rodapé: ícone oficial do LinkedIn e do Instagram, com o nome embaixo</dt>
+      <dd>O rodapé de todas as páginas mostra o glifo oficial de cada rede acima do nome, só LinkedIn e Instagram. Os links são os mesmos; o ícone é decorativo e o nome continua sendo o rótulo.</dd>
+      <dt>28/10/2026 · Crédito dos mapas: &quot;consultado em&quot; quando a data é a da nossa consulta</dt>
+      <dd>O crédito da figura passa a dizer &quot;consultado em dd/mm/aaaa&quot; quando a data é a da nossa consulta à fonte e mantém &quot;Atualização: dd/mm/aaaa&quot; quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.</dd>
+      <dt>28/10/2026 · Logo do LinkedIn entra em assets/redes</dt>
+      <dd>O &quot;in&quot; preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.</dd>
+      <dt>28/10/2026 · Juiz 1.8 (paralelo): segunda leva J14, J16, J19, J20 medida à parte</dt>
+      <dd>Rodada paralela, nada publicado muda. Documento estadual vai à fila estadual (J14); calendário e campanha não são instrumento (J16); no repositório estadual o município sai do nome do arquivo (J19); lei que cria fundo, COMPDEC ou conselho é estrutura (J20). Ligadas como as propostas, gravadas em `com_segunda_leva`; o 1.8 medido não muda.</dd>
+      <dt>28/10/2026 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão</dt>
+      <dd>Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: &quot;Leis 12.608, de abril de 2012, e 12.983, de junho de 2014&quot; e &quot;Lei nº 0967/2006 de 19 de abril de 2006&quot; agora contam inteiras como citação; sem outro ano, o plano fica &quot;data não confirmada&quot;. &quot;Atualizações: 03/2024&quot; vence &quot;Primeira Versão: 2014&quot; (Tubarão/SC). O 1.7 não muda.</dd>
+      <dt>28/10/2026 · Juiz 1.8 (paralelo): errata manda; sem regra 1.8 o veredito não muda; J2, J7, J15</dt>
+      <dd>Correções da central antes do relatório à editoria: o rejulgamento herda a errata da linha (Birigui/SP) e não muda veredito sem regra 1.8 (Mogi Guaçu/SP, da fila, fica com o juiz de produção); página de &quot;informes&quot; é notícia (Sobral/CE); o ano de lei citada sai em qualquer formato (PLANCONs do RS de 2025 datados de 2012); plano sem ato exige título de plano no cabeçalho (Propriá/SE). O 1.7 em produção não muda.</dd>
+      <dt>27/10/2026 · Imprensa e Para gestores: pendências 14 e 15</dt>
+      <dd>Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: &quot;Seca e incêndio até março de 2027&quot;, antes &quot;Seca, fogo&quot;. Frase do Cemaden sem texto aprovado: fica fora.</dd>
+      <dt>27/10/2026 · Financiamento: sai a seção &quot;Defesa civil, depois do reconhecimento&quot;</dt>
+      <dd>A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.</dd>
       <dt>27/10/2026 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais</dt>
       <dd>`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.</dd>
       <dt>26/10/2026 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)</dt>
@@ -143,30 +167,6 @@
       <dd>O juiz de saúde ganha a trilha da estrutura, só depois da recusa da trilha do plano: decreto que institui comitê com a SES e a atribuição escrita credita F2, COE da saúde permanente credita F1, e ato que declara emergência, amarra-se a ela ou a extingue segue resposta. Estrutura de risco que a UF não projeta, CIEVS sozinho e ativação de COE não creditam. Peso zero até a v0.8.</dd>
       <dt>25/10/2026 · METODOLOGIA: base legal do §1a e régua da coordenação em saúde</dt>
       <dd>O §1a passa a dizer que a atualização do plano municipal é anual e a do estadual, bienal (Lei 12.608, art. 7º, § 2º, IV), como na correção de 30/09. Entra a régua da coordenação em saúde decidida em 25/10 (estrutura permanente, seca vigente, CIEVS, COE, citação incompleta), com peso zero na v0.7. Linhas líquidas: +3/−1 de texto, código 0.</dd>
-      <dt>25/10/2026 · Financiamento: do decreto ao recurso vira dado · Dados</dt>
-      <dd>`semana.json` ganha `funil_defesa_civil`: decretaram, reconhecidos pela União, com portaria de recurso (mesma contagem do cartão do topo) e reconhecidos há mais de 30 dias sem portaria localizada até o corte. Antes o último número só existia calculado no navegador.</dd>
-      <dt>25/10/2026 · Cartão de número: grade de duas colunas e lista de definição</dt>
-      <dd>Duas variantes no componente `.cartao-numero`, em `base.css`: `.grade-numeros--2` (duas colunas; uma no celular) e `.cartao-numero-itens` (rótulo e texto dentro do cartão, fonte no pé). Nenhuma página muda; a seção &quot;Os planos de cada governo&quot; das prefeituras passa a usá-las.</dd>
-      <dt>25/10/2026 · Financiamento: série mensal do dinheiro do mapa · Dados</dt>
-      <dd>`semana.json` ganha `serie_mensal`: por mês desde junho, defesa civil (autorizado, no mês da portaria) e SUS (repasse de emergência, meses inteiros do FNS), pela mesma seleção que soma o mapa e os cartões do topo. Mês sem dado do FNS fica nulo, não zero; o mês do corte é parcial.</dd>
-      <dt>25/10/2026 · Lista do banco nos coletores sem arquivo que não existe mais</dt>
-      <dd>A lista única `BANCO_PROIBIDO` deixa de citar `monitor_saude_v04.json`, removido com a v0.7; o autoteste do coletor de diários passa a exigir os cinco arquivos que existem. Sem mudança de dado ou de página.</dd>
-      <dt>25/10/2026 · Dados: SUS desde 29/06, estados acima da faixa, MPs e METODOLOGIA · Dados</dt>
-      <dd>O repasse do SUS para emergências passa a contar desde 29/06/2026 (meses inteiros, julho em diante): R$ 8,2 mi em 16 municípios, antes R$ 112 mi em 63. O topo da Saúde traz estados acima da faixa habitual por desfecho. O empenhado das MPs ganha marcador quando excede o valor do ato (a fonte mede a ação, não o crédito). `n_atos` numérico. METODOLOGIA: v0.7 vira §123, com as frases de comparação e de não atribuição.</dd>
-      <dt>25/10/2026 · Desfechos do SUS: UF que a fonte deixa para trás vira lacuna declarada</dt>
-      <dd>O nacional da chikungunya parava na semana 9 sem aviso porque o Tocantins não tem registro depois dela na fonte. `desfechos_sus.montar` agora declara em `lacunas` a UF defasada (último período) e marca `ultimo.BR.ufs_sem_dado_depois`; o nacional segue só com as 27 UFs. Dengue e SRAG inalterados. Código +31/−5.</dd>
-      <dt>24/10/2026 · Monitor de riscos sem a ponte; rodapé e formulário ajustados · Site</dt>
-      <dd>Na Situação atual saem o parágrafo de resumo e a linha &quot;primeira leitura&quot; do cartão do ar. Saem a ponte para a metodologia e a oração &quot;se completa na quinta&quot;; a leitura semanal fica só com a semana. Ciclo em curso nos dois gráficos do Pacífico em laranja avermelhado. Aberturas aprovadas do Monitor de riscos e da inicial. Rodapé: &quot;Atualização · Corte · Coleta · Publicação&quot; vem do catálogo. Formulário: observações em linha inteira.</dd>
-      <dt>24/10/2026 · Rodapé novo em todas as páginas · Site</dt>
-      <dd>Rodapé igual em todas as páginas: logotipo, &quot;por Patrícia Ferrini&quot; (com link), Instagram, LinkedIn, X, BlueSky e Medium, nome do MARÉ e as quatro datas (atualização, corte, coleta, publicação) numa linha só, preenchidas por `assets/js/rodape.js`. A Imprensa leva a linha dos pedidos no lugar das datas.</dd>
-      <dt>24/10/2026 · Abertura da inicial reescrita pela editoria · Site</dt>
-      <dd>Texto de abertura da inicial (`index.intro`) trocado pelo aprovado da editoria, com link no nome Futura Evidence Lab, aplicado pelo catálogo (`aplicar_edicoes.py`). O leitor de pedidos passa a desfazer `\&quot;` do frontmatter (o link saía com aspas literais).</dd>
-      <dt>24/10/2026 · PDF do RS acima de 5 MB volta a valer como prova pelo texto preservado · Coleta</dt>
-      <dd>`aplicar_promocoes_do_juiz.py` só aceitava cópia binária ou snapshot como prova e recusava os PDFs do RS com texto já preservado; passa a usar `prova_preservada`, a mesma régua do portão de evidências. As 16 decisões que a recusa havia marcado `nao_aplicado` foram reabertas, com motivo. Código −2 líquidas.</dd>
-      <dt>24/10/2026 · Registro do juiz sem CPF; PDF do RS lido pela sessão do link · Coleta</dt>
-      <dd>O `trecho` que o juiz grava em `promocoes_automaticas.json` saía do PDF com CPF de vice-prefeito; agora é redigido na porta (`julgar_filas.py`). `preservar_evidencias.py --ler` usa a sessão do link de compartilhamento para a pasta do RS: PDFs acima de 5 MB, sem cópia binária, ganham texto preservado. Código +11 líquidas.</dd>
-      <dt>24/10/2026 · Busca de planos em fontes abertas: quem nunca foi lido vem primeiro · Coleta</dt>
-      <dd>A fila do dia relia primeiro os municípios lidos em dias anteriores e o prazo do run cortava a cobertura. Agora os nunca lidos vêm antes dos que só precisam de releitura. Código +5 líquidas, com autoteste; nenhum dado, regra ou peso do índice muda.</dd>
     </dl>
   </section>
 </main>
@@ -174,9 +174,9 @@
     <div class="grad-line"></div>
     <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
     <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patty Ferrini</a></span>
-    <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener">Instagram</a></li></ul>
+    <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener"><img src="assets/redes/linkedin.png?v=b80ab655" alt="" width="26" height="24"><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener"><img src="assets/redes/instagram.svg?v=a036f819" alt="" width="24" height="24"><span>Instagram</span></a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">27/10/2026</span> · Corte <span id="corteDados">27/10/2026</span> · Coleta <span id="metaColeta">27/10/2026</span> · Publicação <span id="metaPublicacao">27/10/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">29/10/2026</span> · Corte <span id="corteDados">29/10/2026</span> · Coleta <span id="metaColeta">29/10/2026</span> · Publicação <span id="metaPublicacao">29/10/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>

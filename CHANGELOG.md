@@ -13,6 +13,136 @@ não pontuados permanecem na versão corrente.
 
 Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
 
+## 2026-10-29 · #1327 · Juiz 1.8 (paralelo): J19 lê o município colado no nome do arquivo da pasta do RS
+Rodada paralela, nada publicado muda. A pasta da Casa Militar do RS escreve o município junto ("TRÊSDEMAIO", "Plancom_RiodosIndios", "..._Agudo1"); 18 planos promovidos saíam como "município não identificado" na medição da segunda leva. O nome do arquivo é lido sem as palavras de rótulo e colado.
+
+## 2026-10-29 · Redução · Dois scripts de uso único saem
+
+`scripts/corrigir_log_do_aplicador.py` (conserto do log de 28/09) e `migrar_v224_verificacao.py` (migração de 02/09) já rodaram e nada os chama. Saem com suas menções em portões e SBOM. Saldo: −259 linhas de .py/.js (101.258 → 100.999). Sem mudança de comportamento.
+
+## 2026-10-29 · A1 · Fim do regime de prioridade da corrente noturna
+
+Por decisão da editoria (28/10), saiu o bloco `regime` de `config/temporizadores.json`: os elos suspensos desde 22/10 voltam à cadência registrada e a janela de merge volta a 09:00–23:30 UTC. Código intacto: o regime era dado. Linhas líquidas: −34.
+
+## 2026-10-29 · A1 · A união de conflito não colapsa mais as recusas repetidas
+
+`data/pistas_rejeitadas.json` é log de recusas, não fila: a mesma pista recusada de novo é outra linha. O resolvedor a deduplicava por chave e a `main` perdeu 6,5 mil linhas. Passa à classe de logs que só crescem (multiconjunto pela base comum, total recalculado); autoteste e caso F75 no catálogo.
+## 2026-10-29 · Buscador 2: restituídas 1.481 linhas de `pistas_rejeitadas` que o #1314 apagou
+
+O #1314 entrou na `main` com `pistas_rejeitadas.json` de base velha (39.872 → 33.288). O #1318 devolveu 5.629 dentro do teto de crescimento do portão de tamanho; este devolve as 1.481 restantes (união por multiconjunto com a base fec6ed82). Total 40.642. Dado só; código 0 linhas.
+
+## 2026-10-29 · #1313 · Consolidação: saem três migrações de uma vez só e um script arquivado
+
+Saem `migrar_fim_da_etapa_humana.py`, `migrar_zero_humano.py`, `migrar_sobras_do_doe.py` (já aplicadas; nenhum valor legado resta em `data/`) e `arquivo/scripts/caderno_de_pistas.py` (nada o chama), com suas linhas nas listas de exceção. Código −553; medida regravada. Rastro no git.
+
+## 2026-10-29 · #PR · Saúde: uma só conta para dengue e SRAG no topo, na Imprensa e no fallback
+Causa da `main` vermelha desde 02:07: `topo_saude.json` calculava os cartões pela série legada e a página pelo desfecho novo (Imprensa 3.813, semana 39; página 3.624, semana 38). Os cartões e o fallback estático passam a ler `resumo_do_desfecho`; saem `ultima_fechada` e `nacional_da_serie`. Linhas líquidas: código −53.
+
+## 2026-10-29 · #1311 · Juiz 1.8 (paralelo): releitura que falha não apaga a leitura anterior
+Rodada paralela, nada publicado muda. No lote 12, 46 documentos já lidos voltaram como inacessíveis na releitura e perdiam o veredito lido; agora a leitura anterior fica e a chave volta a ser tentada no lote seguinte.
+
+## 2026-10-29 · #PR · Consolidação: sai o script de limpeza de 26/10, medida regravada
+
+A limpeza de links e confirmações falsas já rodou e está registrada; o script de uma vez só sai (−345 linhas) e deixa a lista de manutenção de pistas. `docs/MEDIDA_DO_CODIGO.md` e o CODEMAP regravados: 101.827 linhas em 317 arquivos.
+
+## 2026-10-29 · #1307 · Juiz automático: codebook 1.8 passa a valer
+
+As regras J1 a J7, J10, J11 e J15 do codebook 1.8 substituem o 1.7; J8, J9 e a segunda leva seguem fora, em medição. Nenhum peso ou crédito muda. A troca de versão devolve as pistas ao juiz e as decisões novas entram no índice pela cadeia normal. METODOLOGIA §125.
+
+## 2026-10-28 · #1306 · Rodapé: ícone oficial do LinkedIn e do Instagram, com o nome embaixo
+
+O rodapé de todas as páginas mostra o glifo oficial de cada rede acima do nome, só LinkedIn e Instagram. Os links são os mesmos; o ícone é decorativo e o nome continua sendo o rótulo.
+
+## 2026-10-28 · #1301 · Crédito dos mapas: "consultado em" quando a data é a da nossa consulta
+
+O crédito da figura passa a dizer "consultado em dd/mm/aaaa" quando a data é a da nossa consulta à fonte e mantém "Atualização: dd/mm/aaaa" quando é a data da própria fonte. Nove créditos do Monitor de riscos mudam de rótulo; a data exibida é a mesma.
+
+## 2026-10-28 · #1304 · Logo do LinkedIn entra em assets/redes
+
+O "in" preto do kit oficial (brand.linkedin.com, PNG 840 × 779 px; o kit não traz SVG) fica em `assets/redes/linkedin.png`, com fonte, URL e data no LEIAME. Não aparece em página ainda; o rodapé usa o arquivo na rodada seguinte.
+
+## 2026-10-28 · Financiamento: cartões das medidas provisórias ao lado do gráfico mensal, na mesma base
+
+Em "De onde vem o dinheiro", os dois cartões das MPs e o gráfico "Desembolsado por mês" ficam lado a lado. As barras passam a comparar dotação atualizada, empenhado e desembolsado da ação reforçada; o valor do ato vai em texto. Corrige o desembolsado da MP 1.367 acima do valor do ato.
+
+## 2026-10-28 · dotação da ação · Financiamento: cada MP traz a base da própria ação
+`semana.json` passa a levar, por MP, `acao`: dotação atualizada da ação (inclui o crédito), empenhado e pago da ação desde o mês de publicação, valor do ato à parte, fonte e exercício. Dotação não lida vira lacuna com motivo, nunca zero. A barra do cartão pode comparar a mesma base; o pago deixa de passar do valor do ato.
+
+## 2026-10-28 · #1305 · Juiz 1.8 (paralelo): segunda leva J14, J16, J19, J20 medida à parte
+Rodada paralela, nada publicado muda. Documento estadual vai à fila estadual (J14); calendário e campanha não são instrumento (J16); no repositório estadual o município sai do nome do arquivo (J19); lei que cria fundo, COMPDEC ou conselho é estrutura (J20). Ligadas como as propostas, gravadas em `com_segunda_leva`; o 1.8 medido não muda.
+
+## 2026-10-28 · #1296 · Juiz 1.8 (paralelo): ano de lei citada fica com a lei; última atualização vence a primeira versão
+Diagnóstico no runner dos PLANCONs do RS de 2025 datados de 2012: "Leis 12.608, de abril de 2012, e 12.983, de junho de 2014" e "Lei nº 0967/2006 de 19 de abril de 2006" agora contam inteiras como citação; sem outro ano, o plano fica "data não confirmada". "Atualizações: 03/2024" vence "Primeira Versão: 2014" (Tubarão/SC). O 1.7 não muda.
+
+## 2026-10-28 · grade compacta · Grupo de um ou dois cartões ocupa a largura toda
+
+Entre 641 e 1020 px a grade compacta deixava a terceira trilha vazia quando o grupo tinha um ou dois cartões; no celular, a contagem ímpar deixava o último cartão sozinho no meio. Agora o grupo curto usa duas colunas e o último cartão ímpar ocupa a linha inteira. Só CSS.
+
+## 2026-10-28 · Doenças respiratórias: a coleta refaz a leitura toda madrugada
+
+A coleta de SRAG rodava só aos domingos; quando a fonte caiu, o run declarou a lacuna e nada o refez, e a série passou dos nove dias do frescor. Agora roda toda madrugada (05h15 de Brasília) até a fonte voltar. Sem mudança de dado ou de página.
+
+## 2026-10-28 · alias do mapa · Financiamento: `semana.json.mapa` sem `ibge` e `valor`
+
+O mapa "Onde o dinheiro chega" passa a trazer só `cod_ibge` e `repassado`, nomes que a página já lê desde o #1290. O gerador perde o alias; o derivado, 600 linhas.
+
+## 2026-10-28 · #1288 · Juiz 1.8 (paralelo): errata manda; sem regra 1.8 o veredito não muda; J2, J7, J15
+Correções da central antes do relatório à editoria: o rejulgamento herda a errata da linha (Birigui/SP) e não muda veredito sem regra 1.8 (Mogi Guaçu/SP, da fila, fica com o juiz de produção); página de "informes" é notícia (Sobral/CE); o ano de lei citada sai em qualquer formato (PLANCONs do RS de 2025 datados de 2012); plano sem ato exige título de plano no cabeçalho (Propriá/SE). O 1.7 em produção não muda.
+
+## 2026-10-28 · Defesa civil: abertura reescrita, lacunas nomeadas, prazo no cartão de reconhecidos
+
+Quatro parágrafos da abertura pelo texto da editoria. O cartão do município diz o que não localizou (aviso, decreto, reconhecimento), com o tipo do aviso em minúscula e sem a validade. O prazo entre decreto e reconhecimento passa ao apoio de "Reconhecidos pela União".
+
+## 2026-10-28 · Financiamento: topo em dois grupos, "De onde vem o dinheiro" pelo caminho do dinheiro, cartão do município padronizado
+
+O topo separa medidas provisórias e atos de repasses aos municípios; o SUS conta desde 29 de junho de 2026. "De onde vem o dinheiro" mostra uma linha por medida provisória e os repasses, com o gráfico mensal; sai a seção "Mês a mês". "Pago" passa a "desembolsado". O cartão do município traz fonte e data de consulta em cada cartão.
+
+
+## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
+
+O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.
+
+## 2026-10-28 · Buscador 2: link opaco do Google News fecha sem consultar o motor
+
+O seguidor de pistas deixa de procurar o título no veículo para resolver o link opaco do agregador: em três lotes, nenhum de cerca de 4.000 links foi resolvido por esse degrau, e cada lote gastava 3,4 h de execução. A pista cai com o motivo de sempre, "redirecionamento não resolvido (B2)", e o motor de busca fica livre para as consultas que acham documento. Teste novo; sem apagar dado.
+## 2026-10-28 · Ícone oficial do Instagram entra em assets/redes
+
+O glifo preto do pacote de marca do Instagram, baixado do site da rede, entra com a procedência em `assets/redes/LEIAME.md`. O do LinkedIn segue pendente: o kit da rede não traz SVG. O rodapé ainda não o usa.
+
+## 2026-10-27 · Monitor de riscos: saem as legendas das duas figuras do Pacífico
+
+As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; título, eixo e limiares já dizem variável, período, território e unidade.
+
+## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
+
+O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
+
+
+## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
+`coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
+## 2026-10-27 · #1275 · Imprensa e Para gestores: pendências 14 e 15
+Imprensa volta a resposta aprovada sobre casos de Saúde e El Niño; o título da sanfona vira afirmação, porque interrogação não vai em prosa. Para gestores: "Seca e incêndio até março de 2027", antes "Seca, fogo". Frase do Cemaden sem texto aprovado: fica fora.
+
+## 2026-10-27 · Juiz 1.8 (paralelo): data do plano e plano em elaboração
+
+No lote 7 da rodada paralela, PLANCONs de 2025 da pasta do RS saíram datados de 2012, o ano da Lei 12.608 citada no cabeçalho, e planos lidos como plano pelo cabeçalho (J1) caíam em "plano em elaboração" porque o corpo cita a equipe de elaboração. No 1.8, o ano de ato citado não é mais o ano do plano, e o plano pelo cabeçalho não é rebaixado. `--refazer J1,J7` relê só essas chaves. O 1.7 não muda.
+
+## 2026-10-27 · #1272 · Financiamento: sai a seção "Defesa civil, depois do reconhecimento"
+
+A seção (série semanal, total por ação e pendência de 30 dias) deixa o Financiamento por decisão da editoria de 25/10. A faixa de resposta ganha a linha do decreto ao recurso, lida de `funil_defesa_civil`; os links da Defesa civil apontam para ela. Saldo: código −61.
+
+## 2026-10-27 · Figura sem subtítulo vale com período, território e unidade no título ou no eixo
+
+A exigência de `.figura-sub` saiu de `verificar_estrutura.js`, que duplicava o `verificar_texto_publico.js`; este agora aceita figura sem subtítulo quando título e eixo dizem período, território e unidade (`figura_componente.sem_subtitulo` em `regras.json`). Uma mutação nova prova. Código +10/−2. Nenhum texto público muda.
+
+## 2026-10-27 · Catálogo de desfechos: páginas de boletim dos CIEVS estaduais
+
+`catalogo.json` ganha `cievs_boletins`: órgão, endereço, formato, cadência e situação de 16 UFs, mais as UFs já em `fontes_uf.json`, a localizar e não medidas. Só catálogo: nenhum PDF é lido por coletor. Divergência da Bahia com `fontes_uf.json` registrada para a editoria. Dado +172, código 0.
+
+## 2026-10-27 · Rodada paralela 1.8: chave pela pista e decisões fora do registro
+
+A rodada paralela guardava cada veredito pela chave do município que o veredito atribuía. Quando o 1.8 corrigia o município pelo domínio, a mesma pista era relida a cada lote; até o lote 6 foram 113 repetidas. A chave agora é a da pista. As 5.280 decisões que a limpeza de 26/10 tirou do registro também saem do arquivo paralelo, que fica só com a contagem e cai de 9,8 para 5,2 MB.
+
 ## 2026-10-27 · #1268 · Consolidação: um GET tolerante só para os monitores de imprensa e de sinais federais
 
 `monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.
@@ -32,6 +162,7 @@ O plano não localizado passa a dizer a varredura feita: "Varredura nacional ou 
 ## 2026-10-27 · #PR · Busca de planos: motor mudo sem achado é erro, não ausência
 
 Reverte o Bing único (ignora `site:`/OR e devolve host alheio). Busca web sem achado com motor suspenso ou resposta vazia vira `erro` com os motores no motivo, e refaz depois; `sem_resultado` só com todos os motores respondendo. Linhas líquidas: −3.
+
 ## 2026-10-27 · Rodada paralela 1.8: a pasta do RS lida com causa e sem espera inútil
 
 No lote 5, 95 PLANCONs da pasta da Casa Militar/RS saíram "inacessível" sem causa registrada, e cada um esperou três tentativas (cerca de 4 h no total). A rodada paralela agora lê a pasta com o erro à vista: 401, 403 e 429 encerram como recusa, e PDF sem texto não é tentado de novo. A espera entre tentativas cai para 0, 10 e 30 s.
@@ -50,6 +181,7 @@ O resolvedor de rodada une os planos de busca por município e fonte pela base c
 
 ## 2026-10-27 · #PR · Busca de planos: consulta só no Bing e motivo com o motor que barrou
 Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às consultas de S20, S21, S23 e S31; Brave, DuckDuckGo (CAPTCHA), Google CSE, Qwant e Wikipedia ficam suspensos. `buscar_web` passa a pedir só o Bing, e o erro de resultado vazio registra `unresponsive_engines`. Código +5 líquidas.
+
 ## 2026-10-27 · A2 · "Onde o dinheiro chega" por valor repassado
 
 `semana.json.mapa` passa a trazer só o valor repassado ao município desde 29/06/2026 (defesa civil: transferências da União; saúde: FNS em linhas de emergência), com `mapa_resumo` e `autorizado_sem_repasse` (41 municípios, lacuna com corte). Autoteste confere mapa = legenda = tabela. METODOLOGIA §33.2.
@@ -57,6 +189,7 @@ Sonda de 20 municípios na válvula: no SearXNG efêmero só o Bing responde às
 ## 2026-10-27 · Saúde: os estados voltam em círculos, sem o mapa
 
 Revisão da editoria (26/10, 18:33 BRT) sobre o #1214. A lista dos tipos de plano com as siglas em círculos volta à figura; passar o mouse, focar ou tocar mostra tipo, documento, data, órgão e a fonte oficial, e o clique abre a ficha. A tabela volta ao `<details>`. Tipo sem estado não aparece. Linhas: ver PR.
+
 ## 2026-10-27 · #PR · S22: busca textual do PNCP com os parâmetros da API
 A sonda do PNCP pedia `tipo_documento` no singular e sem `status`, e o servidor respondia 400. Passa a pedir `tipos_documento=edital` e `status=todos`, como a busca pública do portal. A válvula de 27/10 mostrou que varrer contratações por município não escala (cinco capitais lidas em duas horas e meia); a busca por texto, se responder, resolve as 27 capitais em minutos.
 
@@ -145,7 +278,6 @@ Com o fim do período eleitoral (25/10), as 41 fontes suspensas por defeso passa
 ## 2026-10-26 · #1191 · Rodapé: só LinkedIn e Instagram
 
 Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.
-
 
 ## 2026-10-26 · #1190 · Log de saúde só cresce
 

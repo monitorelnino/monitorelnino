@@ -53,14 +53,12 @@ MANUTENCAO = (
     "scripts/corrigir_atribuicao_por_dominio.py",
     "scripts/fila_do_juiz_querido_diario.py",
     "scripts/migrar_pistas_para_o_esquema.py",
-    "scripts/migrar_fim_da_etapa_humana.py",
     "revisar_pistas.py",
     "julgar_filas.py",
     "julgar_e_aplicar_descobertas.py",
     "classificar_pista_civil.py",
     "aplicar_c10_imprensa.py",
     "triar_confianca_pistas.py",
-    "scripts/limpeza_26_10_2026.py",   # Limpeza da editoria, 26/10/2026: links e confirmações falsas
 )
 
 PASTAS_IGNORADAS = ("arquivo/", ".git/", "node_modules/", "scripts/testar_", "scripts/verificar_")

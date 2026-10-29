@@ -34,9 +34,9 @@ setTimeout(() => {
 
   teste("zero erros de runtime", erros.length === 0);
   erros.slice(0, 4).forEach(e => console.log("     ", e));
-  teste("ordem da página: números, por risco, onde chega, mês a mês, município, defesa civil",
-    [...d.querySelectorAll("#conteudo section")].map(x => x.id).join(",") === "dc-topo,caminhos,chega,mesames,municipio,defesaCivil");
-  teste("âncoras que o Para gestores e a Defesa civil usam existem", ["antes", "depois", "caminhos", "defesaCivil"].every(q));
+  teste("ordem da página: números, de onde vem, onde chega, município",
+    [...d.querySelectorAll("#conteudo section")].map(x => x.id).join(",") === "dc-topo,caminhos,chega,municipio");
+  teste("âncoras que o Para gestores e a Defesa civil usam existem", ["antes", "caminhos", "depois"].every(q));
 
   // (a) números do topo: os do gerador (`financiamento/semana.json` → `topo`), a mesma conta que a Imprensa lê
   const TOPO = (SEM.topo || []);
@@ -55,7 +55,7 @@ setTimeout(() => {
   // (c) figura principal
   const svg = q("mapChega");
   teste("mapa onde chega: 27 territórios", svg && svg.querySelectorAll("path.uf-path").length === 27);
-  const esperado = (SEM.mapa || []).filter(x => x.valor > 0 && x.lat != null && /^(defesa_civil|saude)$/.test(x.origem)).length;
+  const esperado = (SEM.mapa || []).filter(x => x.repassado > 0 && x.lat != null && /^(defesa_civil|saude)$/.test(x.origem)).length;
   teste(`mapa onde chega: ${esperado} círculos (defesa civil + FNS de emergência)`, svg && svg.querySelectorAll("circle").length === esperado);
   const c0 = svg && svg.querySelector("circle");
   if (c0) {
@@ -78,8 +78,8 @@ setTimeout(() => {
   setTimeout(() => {
     mun.value = "Porto Alegre"; mun.dispatchEvent(new dom.window.Event("input"));
     const card = q("consultaCard");
-    teste("consulta do município: quatro cartões e a linha do estado",
-      !card.hidden && card.querySelectorAll(".cartao").length === 4 && /autorizados pela defesa civil federal/.test(card.textContent));
+    teste("consulta do município: dois cartões do El Niño, a faixa de contexto e a linha do estado",
+      !card.hidden && card.querySelectorAll(".cartao").length === 2 && /autorizados pela defesa civil federal/.test(card.textContent));
     if (falhas.length) { console.error(`\n✗ ${falhas.length} verificação(ões) falharam.`); process.exit(1); }
     console.log("\n✓ RUNTIME (Financiamento) OK — todas as verificações passaram.");
     process.exit(0);
