@@ -166,7 +166,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.emergencias.barras.total</code></td><td>Total</td></tr>
 </table>
-<h2>financiamento <small>(56 trechos)</small></h2>
+<h2>financiamento <small>(58 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.titulo_da_pagina</code></td><td>Financiamento</td></tr>
@@ -214,7 +214,7 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>caminhos</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo_da_secao</td><td><code>financiamento.caminhos.titulo_da_secao</code></td><td>De onde vem o dinheiro</td></tr>
-<tr><td>abertura</td><td><code>financiamento.caminhos.abertura</code></td><td>Cada linha é uma fonte de recurso, com o valor do ato, o empenhado e o desembolsado, na mesma escala. A etiqueta diz o risco que o ato declara.</td></tr>
+<tr><td>abertura</td><td><code>financiamento.caminhos.abertura</code></td><td>Cada fonte de recurso mostra o que a execução registra, na mesma escala. A etiqueta diz o risco que o ato declara.</td></tr>
 </table>
 <h3>chega</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -231,6 +231,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>mesames · grafico</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>familia</td><td><code>financiamento.mesames.grafico.familia</code></td><td>Medidas provisórias</td></tr>
 <tr><td>titulo</td><td><code>financiamento.mesames.grafico.titulo</code></td><td>Desembolsado por mês pelas medidas provisórias</td></tr>
 <tr><td>legenda</td><td><code>financiamento.mesames.grafico.legenda</code></td><td>Desde junho de 2026 · R$ milhões desembolsados por mês</td></tr>
 </table>
@@ -278,9 +279,9 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.caminhos.etiqueta.sem_risco</code></td><td>risco não declarado no texto do ato</td></tr>
 </table>
-<h3>caminhos · barra.valor_do_ato</h3>
+<h3>caminhos · barra.dotacao</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.barra.valor_do_ato</code></td><td>valor do ato</td></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.barra.dotacao</code></td><td>dotação atualizada</td></tr>
 </table>
 <h3>caminhos · barra.empenhado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -302,9 +303,13 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>financiamento.caminhos.sus.titulo</code></td><td>SUS, repasses de emergência</td></tr>
 </table>
+<h3>caminhos · mp.credito</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.mp.credito</code></td><td><span class="molde">Crédito aberto pela MP: {valor}.</span><br><span class="ex">exemplo: Crédito aberto pela MP: 3.</span></td></tr>
+</table>
 <h3>caminhos · nota_mp</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>financiamento.caminhos.nota_mp</code></td><td>Valores da ação reforçada pela MP; incluem a dotação ordinária dela: teto, não a execução só do crédito.</td></tr>
+<tr><td>texto</td><td><code>financiamento.caminhos.nota_mp</code></td><td>Dotação, empenhado e desembolsado são da ação reforçada pela MP e incluem a dotação ordinária dela.</td></tr>
 </table>
 <h3>caminhos · funil.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
