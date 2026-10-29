@@ -172,6 +172,7 @@ acima de 1 MB em `data/`, `dados-abertos/` e `evidencias/`. Tamanhos envelhecem:
   fato); interpretação vive no texto narrativo (portão 19, `verificar_legendas.js`).
 - Texto explicativo direto ao que se vê, sem instrução de uso e sem nota interna.
 - Nenhum nome de autor parlamentar no site.
+- Nunca "nota" para os índices nem ranking de estados ou municípios (editoria, 01/10 e 29/10/2026); portão: `scripts/vocabulario.py`.
 - "Semana epidemiológica" é proibida em texto público: a semana sai em datas por `assets/semana.js`;
   eixos em meses. Portão: `verificar_semana_epidemiologica.js`.
 - Decisão que exige a editoria (governança §29): redefinir metodologia, mudar significado de indicador,

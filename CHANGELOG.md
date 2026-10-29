@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-29 · Portão: nada de "nota" para o índice, nada de ranking
+Regra da editoria (01/10 e 29/10): "nota" para o valor do índice e vocabulário de ranking reprovam em página, catálogo e blog. Entra na régua única `scripts/vocabulario.py` (padrões em `layout/regras.json`), com 14 casos de teste; nenhum verificador novo. METODOLOGIA e documentos do índice entram na varredura depois da substituição do texto. Saldo: +34 linhas, sem verificador novo.
+
 ## 2026-10-29 · Redução: três scripts de uso único saem (−221 linhas)
 
 Sem chamador, workflow, portão ou leitura em todo o repositório: `sondar_pncp_planos.py`, `semear_pistas_de_sondas.py` e `registrar_atos_coordenacao_saude.py` (sondas do regime de 22/10, já encerrado). Nenhuma mudança de comportamento. Medida: 101.017 → ver `docs/MEDIDA_DO_CODIGO.md`.

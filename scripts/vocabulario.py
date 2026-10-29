@@ -47,6 +47,9 @@ def problemas(texto, pagina, regras, contrato):
     for w in acha(t, lista, exato=True):
         i = max(t.find(w), 0)
         p.append(f"vocabulário proibido: {w!r} — …{t[max(0, i - 40):i + 40]!r}")
+    for q in v.get("indice_e_ranking") or []:
+        for m in re.finditer(q["padrao"], t, re.I):
+            p.append(f"{q['motivo']}: {m.group(0)!r} — …{t[max(0, m.start() - 40):m.end() + 40]!r}")
     for adv in v.get("com_numero") or []:
         for m in re.finditer(r"\b" + re.escape(adv) + r"\s+[\d]", baixo):
             p.append(f"juízo colado a número: {adv!r} — …{t[max(0, m.start() - 30):m.start() + 40]!r}")
@@ -58,6 +61,8 @@ def problemas(texto, pagina, regras, contrato):
 
 
 def _autoteste():
+    q = json.loads((RAIZ / "layout" / "regras.json").read_text(encoding="utf-8"))["vocabulario_proibido"]["indice_e_ranking"]
+    reprova = lambda s: bool(problemas(s, "x.html", {"vocabulario_proibido": {"indice_e_ranking": q}}, {}))
     r = {"vocabulario_proibido": {"global": ["FIGURA", "desastre", "dados abertos"], "com_numero": ["apenas"],
                                   "dever": ["deve"]}}
     casos = [
@@ -75,6 +80,20 @@ def _autoteste():
         ("contrato soma", any("Backlog" in x for x in problemas("Backlog da fila", "x.html", {}, {"texto_proibido": ["Backlog"]}))),
         ("juízo colado a número", any("juízo" in x for x in problemas("apenas 3 estados", "x.html", r, {}))),
         ("juízo longe de número passa", not any("juízo" in x for x in problemas("apenas o estado", "x.html", r, {}))),
+        ("'nota' do índice reprova: 'A nota de cada estado'", reprova("A nota de cada estado vai de 0 a 100")),
+        ("'nota' do índice reprova: 'não entram na nota'", reprova("os decretos não entram na nota")),
+        ("'nota' do índice reprova: 'fora da nota'", reprova("contexto, fora da nota")),
+        ("'nota' do índice reprova: 'nota do MARÉ Legal'", reprova("a nota do MARÉ Legal sobe")),
+        ("'nota' de rodapé e técnica passam", not reprova("Veja a nota técnica e a nota de rodapé. Nota: fonte Inmet")),
+        ("'índice' passa", not reprova("O índice de cada estado e o valor do índice nacional")),
+        ("ranking reprova", reprova("Ranking de estados")),
+        ("ranqueia reprova", reprova("o painel ranqueia os municípios")),
+        ("classificação dos estados reprova", reprova("a classificação dos estados")),
+        ("pior colocado reprova", reprova("o pior colocado")),
+        ("lidera reprova", reprova("o estado lidera a lista")),
+        ("lanterna reprova", reprova("fica na lanterna")),
+        ("último lugar reprova", reprova("ficou em último lugar")),
+        ("'lugar' sem posição passa", not reprova("um lugar seguro; o lugar do abrigo")),
         ("locução de dever", any("dever" in x for x in problemas("o município deve publicar", "x.html", r, {}))),
     ]
     falhas = [n for n, c in casos if not c]

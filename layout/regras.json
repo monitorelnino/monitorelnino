@@ -184,6 +184,17 @@
       "tem o dever de"
     ],
     "_nota_dever": "Constar de lista federal não cria dever de plano (METODOLOGIA). A locução de dever só entra em citação literal de lei, e o portão barra as formas que apareceram de verdade nas páginas.",
+    "indice_e_ranking": [
+      {
+        "padrao": "\\b(?:a|as|da|das|na|nas|à|às|pela|pelas|sua|suas|esta|essa|nesta|nessa|uma|cada|mesma|única)\\s+notas?\\b(?!\\s+(?:técnic|de\\s+rodapé|de\\s+corte|fiscal|de\\s+empenho))|\\bnotas?\\s+(?:de\\s+cada|do\\s+estado|do\\s+município|dos\\s+estados|de\\s+antecipação|do\\s+MARÉ|final|geral|0\\s+a\\s+100|máxima)",
+        "motivo": "'nota' para o valor do índice (dizer 'índice' ou 'valor do índice'; 'nota' de rodapé e técnica continuam)"
+      },
+      {
+        "padrao": "\\b(?:ranking|rankings|ranque\\w*|classificação\\s+dos\\s+(?:estados|municípios)|(?:melhor|pior)\\s+colocad\\w+|lidera\\w*|lanterna|(?:primeiro|primeira|último|última)\\s+lugar)\\b",
+        "motivo": "ranking ou posição entre estados e municípios"
+      }
+    ],
+    "_nota_indice_e_ranking": "Editoria, 01/10 e 29/10/2026: nenhum texto usa 'nota' para o valor dos índices MARÉ nem ordena, compara em posição ou ranqueia estados ou municípios. Casa sem distinção de caixa; scripts/vocabulario.py é a régua única (páginas, catálogo e blog).",
     "por_pagina": {
       "imprensa.html": [
         "no período",
