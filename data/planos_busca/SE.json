@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-28",
+ "gerado_em": "2026-10-29",
  "municipios": {
   "2800308": {
    "S16": {
@@ -78,6 +78,13 @@
     "consulta": "\"Aracaju\" SE (Transferegov OR \"plano de trabalho\" OR proposta OR convênio) \"plano de contingência\" site:gov.br",
     "motivo": "ValueError: metabuscador sem resultado bruto: motor barrando ou consulta vazia, não vale como ausência",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "2800605": {
@@ -142,6 +149,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2800605&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "981 edição(ões) no acervo, nenhum excerto de plano",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
     "dominio": null
    }
   },
@@ -208,6 +222,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2801207&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "1043 edição(ões) no acervo, nenhum excerto de plano",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "2801306": {
@@ -273,6 +294,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2801306&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
+    "dominio": null
    }
   },
   "2802106": {
@@ -337,6 +365,13 @@
     "situacao": "lido",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=2802106&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-10-29",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "HTTP 503",
     "dominio": null
    }
   },
