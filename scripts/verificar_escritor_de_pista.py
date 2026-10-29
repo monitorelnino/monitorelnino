@@ -53,7 +53,6 @@ MANUTENCAO = (
     "scripts/corrigir_atribuicao_por_dominio.py",
     "scripts/fila_do_juiz_querido_diario.py",
     "scripts/migrar_pistas_para_o_esquema.py",
-    "scripts/migrar_fim_da_etapa_humana.py",
     "revisar_pistas.py",
     "julgar_filas.py",
     "julgar_e_aplicar_descobertas.py",
