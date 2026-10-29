@@ -58,7 +58,7 @@ Atualizado em 29/10/2026.
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscador2.py` | — | — | — | 3 | não |
 | `buscar_financiamento_preventivo.py` | — | — | — | — | não |
-| `buscar_planos_fontes_abertas.py` | — | — | — | 1 | não |
+| `buscar_planos_fontes_abertas.py` | — | — | — | — | não |
 | `buscar_protocolo_calor.py` | — | `saude_desfechos/busca_protocolo_calor.json` | — | — | não |
 | `classificador_natureza.py` | — | — | — | 4 | não |
 | `classificar_pista_civil.py` | — | `pistas_imprensa.json` | — | 5 | não |
@@ -105,7 +105,7 @@ Atualizado em 29/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **177** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **175** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -176,21 +176,18 @@ Atualizado em 29/10/2026.
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
 | `scripts/ordem_de_coleta.py` | — | `cursor_de_coleta.json` | — | — | não |
 | `scripts/painel_da_noite.py` | — | `painel_da_noite.json` | — | 4 | não |
-| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | **20** | não |
+| `scripts/pistas.py` | — | `pistas_imprensa.json`, `pistas_rejeitadas.json` | — | 18 | não |
 | `scripts/preservar_textos_integrais.py` | — | `evidencias.json` | — | — | não |
 | `scripts/proveniencia_estadual.py` | — | `estados.json` | — | — | não |
 | `scripts/quais_portoes.py` | — | `indice.json` | — | — | não |
 | `scripts/reaplicar_noite.py` | — | `clima.json`, `coleta_perdida.json`, `evidencias.json`, `fontes_consultadas.json`, `novo.json`, `x.json` | — | 1 | não |
 | `scripts/reavaliar_fontes_suspensas.py` | — | `calendario/fontes_suspensas.json` | — | — | não |
-| `scripts/registrar_atos_coordenacao_saude.py` | — | `pistas_imprensa_saude.json` | — | — | não |
 | `scripts/registrar_faixas.py` | — | `historico_faixas.json` | — | 1 | não |
 | `scripts/remediar_cpf_evidencias.py` | — | `evidencias.json` | — | — | não |
 | `scripts/remediar_segredos_evidencias.py` | — | `evidencias.json` | — | 1 | não |
 | `scripts/saude_pipeline.py` | — | `a.json`, `b.json`, `saude_pipeline.json` | — | 3 | não |
-| `scripts/semear_pistas_de_sondas.py` | — | `sondas_websearch_N1.json` | — | — | não |
 | `scripts/sondar_dda_zenodo.py` | — | `saude_desfechos/completude.json`, `saude_desfechos/serie_painel.json` | — | — | não |
-| `scripts/sondar_fornecedor_transparencia.py` | — | `transparencia_fornecedor_capitais.json` | — | 1 | não |
-| `scripts/sondar_pncp_planos.py` | — | `pncp_planos_capitais.json` | — | — | não |
+| `scripts/sondar_fornecedor_transparencia.py` | — | `transparencia_fornecedor_capitais.json` | — | — | não |
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
