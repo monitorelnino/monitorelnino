@@ -4,22 +4,22 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 6.1,
-   "referencia": "27/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Maceió",
-   "capital": "Maceió",
-   "uf": "AL",
+   "valor": 2.9,
+   "referencia": "28/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belém",
+   "capital": "Belém",
+   "uf": "PA",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 36.0 °C contra a média de 29.9 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 3.2,
-    "referencia": "26/10/2026"
+    "valor": 6.1,
+    "referencia": "27/10/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 227,
+   "valor": 23663,
    "referencia": "Focos do dia — focos_diario_br_20261028.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 1,
+   "valor": 2,
    "perigo_ou_maior": 0,
-   "referencia": "27/10/2026 22:14",
+   "referencia": "28/10/2026 22:05",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
     "valor": 1,
-    "referencia": "26/10/2026 22:14"
+    "referencia": "27/10/2026 22:14"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "27/10/2026",
+   "referencia": "28/10/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "26/10/2026"
+    "referencia": "27/10/2026"
    }
   }
  ]
