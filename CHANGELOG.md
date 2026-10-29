@@ -13,6 +13,9 @@ não pontuados permanecem na versão corrente.
 
 Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
 
+## 2026-10-29 · #1330 · Juiz 1.8 (paralelo): o que `--refazer` pede é relido primeiro
+Rodada paralela, nada publicado muda. No lote 15, `--refazer J19 --rede 200` gastou as 200 leituras em documentos nunca lidos e não releu nenhum dos 56 em que a J19 agiu. Agora as chaves pedidas vêm antes; o resto segue na ordem de sempre.
+
 ## 2026-10-29 · #1327 · Juiz 1.8 (paralelo): J19 lê o município colado no nome do arquivo da pasta do RS
 Rodada paralela, nada publicado muda. A pasta da Casa Militar do RS escreve o município junto ("TRÊSDEMAIO", "Plancom_RiodosIndios", "..._Agudo1"); 18 planos promovidos saíam como "município não identificado" na medição da segunda leva. O nome do arquivo é lido sem as palavras de rótulo e colado.
 
