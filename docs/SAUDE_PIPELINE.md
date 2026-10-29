@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-22 a 2026-10-29 (1156 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-22 a 2026-10-29 (1161 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 |---|---|---|---|---:|---|---|
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-29 04:11 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-29 16:27 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-29 17:07 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-26 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
@@ -93,7 +93,7 @@ cobertura 15d: 5055/5571 com verificação real até 2026-10-25 · por canal: we
 | `scripts/fechar_saude.py` | coletor | 2026-10-27 02:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/preservar_textos_integrais.py` | coletor | 2026-10-29 08:43 | 2 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-10-27 01:19 | 718 s | — | ok | — |
-| `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-29 06:21 | 5400 s | — | ok | — |
+| `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-29 15:35 | 403 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-24 01:18 | 84 s | — | ok | — |
 | `scripts/sondar_rotas_doe.py` | coletor | 2026-10-28 21:49 | 92 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-10-22 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
