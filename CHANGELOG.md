@@ -17,6 +17,10 @@ Título, cenários, observação, abertura dos cartões e do mapa de planos com 
 
 Abertura, procura, "não localizado", formulário e nota do período eleitoral com os textos aprovados; descrição sob o rótulo dos dois índices e sob o título do mapa por estado. Regra: instrução de interação curta e fiel ao componente passa a valer (editoria, 29/10). Parágrafo da lei (ML-01.3) retido até conferência no Planalto.
 
+## 2026-10-29 · Redução: três scripts de uso único saem (−221 linhas)
+
+Sem chamador, workflow, portão ou leitura em todo o repositório: `sondar_pncp_planos.py`, `semear_pistas_de_sondas.py` e `registrar_atos_coordenacao_saude.py` (sondas do regime de 22/10, já encerrado). Nenhuma mudança de comportamento. Medida: 101.017 → ver `docs/MEDIDA_DO_CODIGO.md`.
+
 ## 2026-10-29 · #1330 · Juiz 1.8 (paralelo): o que `--refazer` pede é relido primeiro
 Rodada paralela, nada publicado muda. No lote 15, `--refazer J19 --rede 200` gastou as 200 leituras em documentos nunca lidos e não releu nenhum dos 56 em que a J19 agiu. Agora as chaves pedidas vêm antes; o resto segue na ordem de sempre.
 
