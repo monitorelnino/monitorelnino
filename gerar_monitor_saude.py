@@ -32,7 +32,7 @@ avançado 70–100. Índice NACIONAL = Σ(indice_uf × pop_uf × c_uf) ÷ Σ pop
 import json, re, sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao, hoje_editorial
+from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao, data_do_corte
 
 RAIZ = Path(__file__).resolve().parent
 
@@ -220,7 +220,7 @@ def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict, hoje: date = None
     if not isinstance(emergencias, list):
         return {**base, "situacao": "nao_coletado", "emergencias": None, "indice": None, "eventos": [], "ufs": [],
                 "pop_sob_emergencia": None, "faltam": ["federal (DOU)", "estadual (27 UFs)"]}
-    hoje = hoje or hoje_editorial()
+    hoje = hoje or data_do_corte()
     ev = [{**e, **vigencia_do_ato(e, hoje)} for e in emergencias if isinstance(e, dict)]
     vig = [e for e in ev if e["em_vigor"]]   # o índice conta o que está em vigor; o histórico fica em `eventos`
     ufs_em = list(UFS) if any(e.get("uf") == "BR" for e in vig) else sorted({e.get("uf") for e in vig if e.get("uf") in UFS})
