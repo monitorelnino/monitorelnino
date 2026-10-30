@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Buscador 2 reconhece o domínio da Prefeitura de Belo Horizonte · +19/−0 em código
+
+O domínio municipal `pbh.gov.br` (sem UF no endereço) entra na lista fechada de entrada B3/B8, só para Belo Horizonte/MG; para outro município ou outra UF segue recusado, e `goias.gov.br` e `amapa.gov.br` continuam fora. Três casos novos no autoteste. O Plano de Contingência de BH e o PMGRD 2026/2027, antes recusados, podem chegar pela coleta.
+
 ## 2026-10-30 · Rodada paralela do juiz 1.8 sai dos dados · +0/−0 em código
 
 Apagados `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (15 MB, nenhuma página ou portão os lê) e suas duas linhas em `config/escritores.json`, por decisão da central (30/10, 17:40). Seguem no histórico do git.
