@@ -127,6 +127,16 @@ def hoje_editorial(agora=None) -> date:
     return (agora or datetime.now(FUSO_EDITORIAL)).astimezone(FUSO_EDITORIAL).date()
 
 
+def desde_de(argv, padrao: str, hoje=None) -> str:
+    """O início da leitura incremental: `--desde AAAA-MM-DD`, ou `--ultimos-dias N` (hoje menos N), ou o padrão.
+
+    O elo de seg/qua/sex dos DOE lê só o que saiu desde a última conferência; o workflow não calcula
+    data (cada comando roda sem shell), então a conta mora aqui, uma vez, para os dois coletores."""
+    if "--ultimos-dias" in argv:
+        return (( hoje or hoje_editorial()) - timedelta(days=int(argv[argv.index("--ultimos-dias") + 1]))).isoformat()
+    return argv[argv.index("--desde") + 1] if "--desde" in argv else padrao
+
+
 MESES_POR_EXTENSO = ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
                      "setembro", "outubro", "novembro", "dezembro")
 MESES_CURTOS = ("jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez")
