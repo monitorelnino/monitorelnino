@@ -69,7 +69,7 @@
     "formularios_de_busca": [],
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "a busca (ioepa.com.br/pesquisa) é POST multipart e devolveu 'Nenhum resultado' até para 'decreto' (14/10); nenhum endereço de edição por data respondeu (/pages/AAAA/MM/DD 404); portal ASP.NET com formulário de estado",
    "medido_em": "15/10/2026"
@@ -110,7 +110,7 @@
      "https://portaldocidadao.ro.gov.br/css/home/buscar-servico_v1.0.css"
     ],
     "veredito": "pista_de_rota",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "diof.ro.gov.br é WordPress com REST fechada (wp-json 401); a busca `?s=` devolveu 'Nenhum resultado encontrado' para 'situação de emergência' e não há arquivo por data (/2026/10/14/ 404)",
    "medido_em": "15/10/2026"
@@ -125,7 +125,7 @@
     "formularios_de_busca": [],
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "a listagem do mês (`_visualizar-mes/`) traz o caminho de cada PDF (2026/10/doe-AAAAMMDD.pdf), mas o arquivo só sai por POST em `_visualizar-doe/`, que não responde ao runner (timeout de 60 s em três sondas, 15 e 16/10); o PDF não está em rota direta (8 caminhos, 404)",
    "medido_em": "16/10/2026"
@@ -179,7 +179,7 @@
      "https://www.ba.gov.br/pesquisa-satisfacao-plataforma"
     ],
     "veredito": "pista_de_rota",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "dool.egba.ba.gov.br (Diário Oficial online da EGBA) não responde ao runner (timeout em 17/10, como em 15/10); legislabahia.ba.gov.br falha no TLS (handshake) — rota conhecida sem resposta, não é recusa",
    "medido_em": "17/10/2026"
@@ -216,7 +216,7 @@
    "sondagem": {
     "veredito": "erro",
     "motivo": "HTTPError: HTTP Error 500: Internal Server Error",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "diariooficial.ma.gov.br respondeu HTTP 500 e 503 e depois falhou no DNS, em 17/10 (runs 39021988900 a 39024168986) — servidor fora do ar, não é recusa",
    "medido_em": "17/10/2026"
@@ -265,7 +265,7 @@
     "formularios_de_busca": [],
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "SPA AngularJS da plataforma sdoe; a REST (`/diariooficial/*`) responde HTTP 401 sem token — recusa respeitada",
    "medido_em": "15/10/2026"
@@ -301,7 +301,7 @@
     "formularios_de_busca": [],
     "links_de_busca": [],
     "veredito": "sem_rota_na_pagina_inicial",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "www.diariooficial.rn.gov.br redireciona para /dei/dorn3 (ASP.NET com estado de formulário); o publicador deirn.sdoe.com.br tem REST em HTTP 401 sem token — recusa respeitada",
    "medido_em": "15/10/2026"
@@ -324,7 +324,7 @@
     ],
     "links_de_busca": [],
     "veredito": "pista_de_rota",
-    "sondado_em": "28/10/2026"
+    "sondado_em": "30/10/2026"
    },
    "motivo": "a Imprensa Oficial de Sergipe (iose.se.gov.br) roda a plataforma comum: a página inicial abre (200), mas /apifront/portal/edicoes, /busca e /diario-oficial respondem HTTP 403 ao cliente identificado do projeto (run 39021988900) — recusa respeitada",
    "medido_em": "17/10/2026"
@@ -503,6 +503,6 @@
   }
  },
  "_medicao_01_10_2026": "Varredura dos 22 diários sem adaptador: cada host foi sondado com o cliente do projeto, e o status de cada UF passou a dizer o que respondeu e o que falta. DF e TO ganharam adaptador direto. Host que não responde, busca que não existe e busca que cobre o portal em vez do diário são coisas diferentes, e agora estão nomeadas separadamente — nenhuma delas é ausência de ato.",
- "sondagem_de_rotas_em": "28/10/2026",
+ "sondagem_de_rotas_em": "30/10/2026",
  "_nota_sondagem": "Diagnóstico por unidade da federação sem adaptador de busca, escrito por scripts/sondar_rotas_doe.py. 'pista_de_rota' quer dizer que há por onde começar a escrever o adaptador, e não que a busca funcione; 'sem_rota_na_pagina_inicial' é medição da página inicial, não afirmação de que o diário não tem busca. Recusa da fonte é registrada pelo nome certo (§186, §187)."
 }
