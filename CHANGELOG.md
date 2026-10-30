@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Óbitos por calor do SIM passam à causa básica X30 · +19/−8 em código
+
+`obitos_calor` media zero por construção: T67 (capítulo XIX) não pode ser causa básica de óbito. O grupo "calor" do SIM agora conta X30, a causa externa; a internação (SIH) segue em T67. A mudança de critério força a releitura de todos os arquivos do SIM nas próximas noites; até lá a série segue com lacuna declarada.
+
 ## 2026-10-30 · Buscador 2 reconhece o domínio da Prefeitura de Belo Horizonte · +19/−0 em código
 
 O domínio municipal `pbh.gov.br` (sem UF no endereço) entra na lista fechada de entrada B3/B8, só para Belo Horizonte/MG; para outro município ou outra UF segue recusado, e `goias.gov.br` e `amapa.gov.br` continuam fora. Três casos novos no autoteste. O Plano de Contingência de BH e o PMGRD 2026/2027, antes recusados, podem chegar pela coleta.

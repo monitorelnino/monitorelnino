@@ -49,8 +49,9 @@ ROTULOS = {
     "renal": "Óbitos por insuficiência renal (CID-10 N17 a N19)",
     "desidratacao": "Óbitos por desidratação (CID-10 E86)",
     "fumaca": "Óbitos por efeito tóxico de gases, fumaças e vapores (CID-10 T59)",
-    "calor": "Óbitos por efeitos do calor e da luz (CID-10 T67)",
+    "calor": "Óbitos por exposição ao calor natural excessivo (CID-10 X30, causa externa)",
 }
+CRITERIO = "causa-externa-x30"   # muda quando muda o que um grupo conta: força a releitura de todos os arquivos
 DESFECHOS = {TOTAL: "Óbitos por todas as causas (SIM, por mês de ocorrência)",
              **{f"obitos_{g}": r for g, r in ROTULOS.items()}}
 
@@ -77,19 +78,26 @@ def a_ler(todos: dict, lidos: dict) -> list:
                   key=lambda k: (k[1], k[0]), reverse=True)
 
 
+def grupos_da_causa(cid) -> list:
+    """Grupos do SIM para a causa básica. Capítulo XIX (T00 a T98) não pode ser causa básica: o calor é a causa
+    externa X30, não o T67 das internações. Função pura."""
+    from coletar_sih import grupo_do_cid
+    g = [x for x in grupo_do_cid(cid) if x in GRUPOS_SIM and x != "calor"]
+    return g + ["calor"] if (cid or "").strip().upper().replace(".", "").startswith("X30") else g
+
+
 def agregar(registros, uf: str, ano: int, preliminar: bool) -> dict:
     """{'total'|grupo: {'AAAA-MM': n}} de um arquivo DO de `uf` e `ano`. Função pura.
 
     Só conta data do próprio ano do arquivo. No arquivo consolidado os 12 meses existem; no preliminar, só
     os meses até o último com registro: depois dele o mês não foi publicado, não é zero."""
-    from coletar_sih import grupo_do_cid
     cont = {}
     for r in registros:
         d = str(r.get("DTOBITO") or "").strip()
         if not (len(d) == 8 and d.isdigit() and int(d[4:]) == ano and 1 <= int(d[2:4]) <= 12):
             continue
         chave = f"{ano:04d}-{d[2:4]}"
-        for g in ["total"] + [x for x in grupo_do_cid(r.get("CAUSABAS")) if x in GRUPOS_SIM]:
+        for g in ["total"] + grupos_da_causa(r.get("CAUSABAS")):
             cont.setdefault(g, {})
             cont[g][chave] = cont[g].get(chave, 0) + 1
     meses = sorted(cont.get("total", {}))
@@ -127,7 +135,8 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     baixar = espacar(baixar, PAUSA if pausa is None else pausa)
     ant = {d: ds.ler_desfecho(d, ler_fn) for d in DESFECHOS}
     # Um arquivo só está lido quando TODOS os desfechos existem: arquivo comum novo força a releitura.
-    lidos = dict(ant[TOTAL]["fonte"].get("arquivos_lidos", {})) if all(ant.values()) else {}
+    lidos = (dict(ant[TOTAL]["fonte"].get("arquivos_lidos", {}))
+             if all(ant.values()) and ant[TOTAL]["fonte"].get("criterio_versao") == CRITERIO else {})
     todos = arquivos(dict(listar(DIR_FINAL)), dict(listar(DIR_PRELIM)))
     fila = a_ler(todos, lidos)
     novos = {g: {} for g in ["total", *GRUPOS_SIM]}
@@ -162,7 +171,7 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
              "url": f"ftp://ftp.datasus.gov.br{DIR_PRELIM}/",
              "criterio": "óbitos não fetais; causa básica (CAUSABAS); consolidado (CID10/DORES) onde existe, preliminar nos anos seguintes",
              "data_do_periodo": "mês de ocorrência (DTOBITO)", "uf": "UF do nome do arquivo",
-             "arquivos_lidos": {**lidos, **feitos}}
+             "criterio_versao": CRITERIO, "arquivos_lidos": {**lidos, **feitos}}
     ufs = sorted(ds.uf_por_codigo(ler_fn).values())
     populacao = ds.populacao_por_uf(ler_fn)
     ok = True
@@ -234,12 +243,15 @@ def autoteste() -> int:
     regs = [{"DTOBITO": "15072026", "CAUSABAS": "J189"}, {"DTOBITO": "02072026", "CAUSABAS": "I219"},
             {"DTOBITO": "01082026", "CAUSABAS": "A09"}, {"DTOBITO": "01012025", "CAUSABAS": "J189"},
             {"DTOBITO": "", "CAUSABAS": "J189"}, {"DTOBITO": "32132026", "CAUSABAS": "J189"},
-            {"DTOBITO": "10082026", "CAUSABAS": "F200"}]
+            {"DTOBITO": "10082026", "CAUSABAS": "F200"}, {"DTOBITO": "11082026", "CAUSABAS": "X30"},
+            {"DTOBITO": "12082026", "CAUSABAS": "T671"}]
     p = agregar(regs, "AC", 2026, True)
     casos.append(("preliminar: meses só até o último com registro; mês sem caso do grupo é zero medido",
                   sorted(p["total"]) == [f"2026-{m:02d}" for m in range(1, 9)] and p["respiratorias"]["2026-07"] == 1
                   and p["cardio"]["2026-08"] == 0 and p["total"]["2026-03"] == 0))
-    casos.append(("data de outro ano, vazia ou impossível não conta", sum(p["total"].values()) == 4))
+    casos.append(("data de outro ano, vazia ou impossível não conta", sum(p["total"].values()) == 6))
+    casos.append(("calor é a causa básica X30; T67 não é causa básica e não conta",
+                  p["calor"]["2026-08"] == 1 and sum(p["calor"].values()) == 1))
     casos.append(("saúde mental e ICSAP não são grupos do SIM", "saude_mental" not in p and "icsap" not in p))
     c = agregar(regs, "AC", 2025, False)
     casos.append(("consolidado: 12 meses, zero medido nos vazios", len(c["total"]) == 12 and c["total"]["2025-01"] == 1

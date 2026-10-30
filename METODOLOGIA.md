@@ -4359,7 +4359,7 @@ Correção de rótulo: pelo dicionário, Mgrd184 é o plano de contingência de 
 
 ## 122. Óbitos por causa básica no SIM (23/10/2026)
 
-**O que cada série conta.** Óbitos não fetais da Declaração de Óbito (SIM, Ministério da Saúde), por mês de ocorrência e causa básica (CID-10), em sete arquivos: todas as causas e os seis grupos de causa do §110 que têm óbito (respiratórias J00 a J22, cardiovasculares I20 a I25 e I60 a I64, renal N17 a N19, desidratação E86, fumaça T59, calor T67). Saúde mental, ICSAP e hepatite A ficam só nas internações. Os grupos não se somam.
+**O que cada série conta.** Óbitos não fetais da Declaração de Óbito (SIM, Ministério da Saúde), por mês de ocorrência e causa básica (CID-10), em sete arquivos: todas as causas e os seis grupos de causa do §110 que têm óbito (respiratórias J00 a J22, cardiovasculares I20 a I25 e I60 a I64, renal N17 a N19, desidratação E86, fumaça T59, calor X30, a causa externa, pois o capítulo T00 a T98 não pode ser causa básica). Saúde mental, ICSAP e hepatite A ficam só nas internações. Os grupos não se somam.
 
 **Rota.** Um arquivo por UF e ano no FTP público do DATASUS: o consolidado (`SIM/CID10/DORES`) onde existe, o preliminar (`SIM/PRELIM/DORES`, rota provada em 17/10/2026) nos anos seguintes. O ano preliminar só tem os meses até o último com registro; os seguintes não foram publicados e ficam fora da série, nunca como zero.
 
