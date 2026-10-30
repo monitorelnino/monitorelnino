@@ -5,7 +5,7 @@
    "valor": null,
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-29",
+   "periodo_fim": "2026-10-30",
    "n": 43,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
@@ -18,7 +18,7 @@
    "valor": 103,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-10-29",
+   "periodo_fim": "2026-10-30",
    "n": 103,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
@@ -29,7 +29,7 @@
    "valor": null,
    "unidade": "dias",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-29",
+   "periodo_fim": "2026-10-30",
    "n": 0,
    "fonte": "Inmet (avisos meteorológicos)",
    "sem_coleta": true,
@@ -40,7 +40,7 @@
    "valor": 4,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-10-29",
+   "periodo_fim": "2026-10-30",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -52,7 +52,7 @@
    "valor": null,
    "unidade": "cidades",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-29",
+   "periodo_fim": "2026-10-30",
    "n": 0,
    "fonte": "Série diária de temperatura por município",
    "sem_coleta": true,
@@ -223,7 +223,7 @@
    "valor": null,
    "unidade": "casos",
    "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-10-29",
+   "periodo_fim": "2026-10-30",
    "n": 0,
    "fonte": "Ministério da Saúde (SINAN), meses fechados",
    "sem_coleta": true,
@@ -291,10 +291,10 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-10-29",
+ "gerado_em": "2026-10-30",
  "janela_dias": 7,
  "indices": {
-  "edicao": "29/10/2026",
+  "edicao": "30/10/2026",
   "mare_legal": 40.3,
   "mare_saude": 61.3,
   "saude_verificadas": 21,
@@ -308,8 +308,8 @@
    "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-10-22",
-    "fim": "2026-10-29"
+    "ini": "2026-10-23",
+    "fim": "2026-10-30"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -465,14 +465,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": null,
+   "valor": 5,
    "unidade": null,
-   "sem_coleta": true,
+   "sem_coleta": false,
    "periodo": null,
-   "referencia": "28/10/2026 22:05",
+   "referencia": "29/10/2026 22:14",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "28/10/2026 22:05",
+   "consultado_em": "29/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -485,14 +485,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": null,
+   "valor": 2920,
    "unidade": null,
-   "sem_coleta": true,
+   "sem_coleta": false,
    "periodo": null,
-   "referencia": "28/10/2026 22:05",
+   "referencia": "29/10/2026 22:14",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "28/10/2026 22:05",
+   "consultado_em": "29/10/2026 22:14",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -558,14 +558,14 @@
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "28/10/2026",
+   "referencia": "29/10/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "28/10/2026",
+   "consultado_em": "29/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 36.0 °C contra a média de 33.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 33.0 °C contra a média de 30.1 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -694,10 +694,7 @@
    "pagina_de_origem": "saude.html"
   }
  ],
- "sem_dado_nesta_edicao": [
-  "Municípios sob alerta do Cemaden",
-  "Municípios sob aviso do Inmet"
- ],
+ "sem_dado_nesta_edicao": [],
  "nao_calculaveis": [
   {
    "id": "planos_localizados_no_periodo",
@@ -722,5 +719,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 29/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,3 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e nenhum município decretou situação de emergência ou calamidade; 34,5 milhões de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 30/10/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,3 de 100; o MARÉ Saúde, em 61,3 de 100. Na semana, nenhum município publicou plano para o El Niño e nenhum município decretou situação de emergência ou calamidade; 34,5 milhões de pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 988 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
