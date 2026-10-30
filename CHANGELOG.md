@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Mortalidade comparada entra no elo dos desfechos · +2/−0
+
+`gerar_mortalidade_comparada.py` roda no elo `noturno_desfechos` logo depois de `coletar_sim.py`, com escritor declarado; só regrava quando `obitos.json` ou `obitos_calor.json` mudam.
+
 ## 2026-10-30 · Desfechos do SUS: semana sem notificação é zero; calor no SIM é X30 (+52/−12)
 
 Microdado do SINAN só tem linha onde houve notificação: `completar_semanas` põe 0 em cada UF até a última semana coberta (SINAN e SRAG). `coletado_em` anda com a consulta, sem mudar a série. Óbitos por calor no SIM usam a causa básica X30, não T67 (media zero); o rótulo novo força a releitura. Derivados regerados pelo noturno.
