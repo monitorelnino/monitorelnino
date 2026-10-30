@@ -264,13 +264,16 @@ def pistas_do_marele_legal(uf: str, data: str, url: str, achados: list) -> list:
     from scripts.pistas import classificar_tipo
     fora = []
     for a in achados:
-        if a["termo"] not in TERMOS_LEGAL:
+        # Teto probatório: o contexto de "plano de contingência" aceita dengue e chuva; para o Legal o trecho
+        # tem de dizer El Niño (um plano de dengue não é pista de El Niño).
+        if a["termo"] not in TERMOS_LEGAL or not re.search(r"El\s*Ni[ñn]o", a["trecho"], re.I):
             continue
         titulo = f"Diário Oficial de {uf}, {data[8:10]}/{data[5:7]}/{data[:4]}, p. {a.get('pagina') or '?'}: {a['termo']}"
         tipo = TIPO_DO_TERMO_LEGAL.get(a["termo"]) or classificar_tipo({"titulo": titulo, "trecho": a["trecho"]})
         if tipo in ("plano", "estrutura"):
             fora.append({"url": url, "uf": uf, "municipio": "", "titulo": titulo, "trecho": a["trecho"],
-                         "data": data, "nivel": "B", "tipo": tipo, "origem": "doe"})
+                         "data": data, "nivel": "B", "tipo": tipo, "origem": "doe",
+                         "documento_oficial_confirmado": None, "promovivel": False})
     return fora
 
 
@@ -1010,10 +1013,11 @@ def _autoteste() -> int:
        and ocorrencias_no_texto("O comitê gestor do SUS se reúne e a estiagem persiste.", tuple(TERMOS_LEGAL_NOVOS)) == [])
     pl = pistas_do_marele_legal("AL", "2026-08-25", "https://x/51788", [
         {"termo": "comitê", "trecho": lei, "pagina": 3}, {"termo": "El Niño", "trecho": "menciona El Niño", "pagina": 4},
-        {"termo": "COES", "trecho": "x"}])
+        {"termo": "COES", "trecho": "x"},
+        {"termo": "plano de contingência", "trecho": "plano de contingência da dengue", "pagina": 5}])
     ok("achado do Legal vira pista estadual com UF, data e tipo; El Niño sem plano ou órgão e termo de saúde não",
        len(pl) == 1 and pl[0]["uf"] == "AL" and pl[0]["data"] == "2026-08-25" and pl[0]["tipo"] == "estrutura"
-       and "p. 3" in pl[0]["titulo"] and pl[0]["municipio"] == "")
+       and "p. 3" in pl[0]["titulo"] and pl[0]["municipio"] == "" and pl[0]["promovivel"] is False)
     ok("a pista do Legal passa pela normalização da porta única com alvo = UF",
        __import__("scripts.pistas", fromlist=["x"]).normalizar(pl[0], "doe")["alvo"] == "AL")
     ok("última edição lida ignora a não lida e o caderno",
