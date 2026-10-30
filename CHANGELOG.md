@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1370 · Diário oficial estadual: termos do MARÉ Legal viram pista; última edição lida por UF
+
+O canal 2 procura também "El Niño", "plano de contingência", "comitê", "gabinete" e "estiagem" (os três últimos só ao lado de "El Niño"). Acerto com plano ou órgão no trecho vira pista estadual pela porta única, com edição, página e trecho; o índice de saúde não muda. Cada UF grava a data da última edição lida. Edições lidas antes são relidas uma vez. Código +76/−6.
+
 ## 2026-10-30 · #1369 · Pacote de saúde do blog sem dado velho; vigência dos atos de emergência
 
 O pacote tratava a semana da fonte (2026-35) como data de hoje: agora dado com mais de nove dias vira lacuna com "sem atualização desde" (dengue, 05/09; SRAG, 03/10). O ato de emergência passa a registrar a vigência declarada (AM: 180 dias) ou a presumida de 180 dias, e o decreto revogado: sai do "em vigor" do índice de resposta e fica no histórico.
