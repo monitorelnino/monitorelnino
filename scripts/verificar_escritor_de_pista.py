@@ -49,7 +49,6 @@ MANUTENCAO = (
     "scripts/limpar_fila_de_pistas.py",
     "scripts/triar_fila.py",
     "scripts/unir_conflito_de_rodada.py",
-    "scripts/rejulgar_decisoes_do_juiz.py",
     "scripts/corrigir_atribuicao_por_dominio.py",
     "scripts/fila_do_juiz_querido_diario.py",
     "scripts/migrar_pistas_para_o_esquema.py",
