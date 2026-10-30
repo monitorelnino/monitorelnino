@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Mortalidade comparada: gerador do quadro (dado) · +171/−0 em código
+`gerar_mortalidade_comparada.py` grava `saude_desfechos/mortalidade_comparada.json`: por UF e BR, de julho/2026 em diante, óbitos de cartório, faixa e média de 2019 e 2022–2025, excesso observado (método v1, mês parcial sem número), SIM X30 e projeção CIL como lacunas declaradas. Sem página nem elo ainda.
+
 ## 2026-10-30 · Rodada paralela do juiz 1.8 sai dos dados · +0/−0 em código
 
 Apagados `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (15 MB, nenhuma página ou portão os lê) e suas duas linhas em `config/escritores.json`, por decisão da central (30/10, 17:40). Seguem no histórico do git.
