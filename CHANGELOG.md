@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Pistas do preprint pela porta única · +3/−0 em código
+Vinte e oito pistas municipais com endereço oficial (Querido Diário, prefeituras, lista da Defesa Civil de Sergipe) entram na fila para o juiz da noite, com origem `preprint_30-10`. Treze já estavam na fila; oito foram recusadas pela porta, cada uma com motivo em `pistas_rejeitadas`. Status sugerido vai só como nota; a classificação é do juiz.
+
 ## 2026-10-30 · #1370 · Diário oficial estadual: termos do MARÉ Legal viram pista; última edição lida por UF
 
 O canal 2 procura também "El Niño", "plano de contingência", "comitê", "gabinete" e "estiagem" (os três últimos só ao lado de "El Niño"). Acerto com plano ou órgão no trecho vira pista estadual pela porta única, com edição, página e trecho; o índice de saúde não muda. Cada UF grava a data da última edição lida. Edições lidas antes são relidas uma vez. Código +76/−6.
