@@ -92,6 +92,15 @@ TERMOS_DE_DECLARACAO = {"situação de emergência em saúde pública": r"declar
                         "declara situação de emergência": r"(sa[úu]de|epidemi|dengue|arbovir)"}
 CONTEXTO_POR_TERMO.update(TERMOS_DE_DECLARACAO)
 TERMOS = TERMOS + tuple(TERMOS_DE_DECLARACAO)
+# 30/10/2026 (central, PARA A A3): o canal 2 só procurava saúde, e o que o diário diz do El Niño em
+# comitê, gabinete ou plano nunca chegava ao registro estadual do MARÉ Legal. Estes termos viram PISTA
+# pela porta única (`pistas.gravar_lote`), nunca índice de saúde nem julgamento: "comitê", "gabinete" e
+# "estiagem" são comuns demais sozinhos e só valem ao lado de "El Niño". O índice de saúde (`TERMOS`) não muda.
+TERMOS_LEGAL_NOVOS = {"comitê": r"El\s*Ni[ñn]o", "gabinete": r"El\s*Ni[ñn]o", "estiagem": r"El\s*Ni[ñn]o"}
+CONTEXTO_POR_TERMO.update(TERMOS_LEGAL_NOVOS)
+TIPO_DO_TERMO_LEGAL = {"plano de contingência": "plano", "comitê": "estrutura", "gabinete": "estrutura"}
+TERMOS_LEGAL = ("El Niño", "plano de contingência") + tuple(TERMOS_LEGAL_NOVOS)
+VERSAO_LEGAL = "2026-10-30"  # edição lida antes desta versão não procurou os termos do MARÉ Legal: é relida
 # Edição lida com vocabulário anterior a esta data não procurou declaração: é relida.
 VERSAO_DOS_TERMOS = "2026-10-17"
 VERSAO_DO_LEITOR = "2026-10-20"  # muda quando `_texto_paginas` passa a ler o que não lia
@@ -247,6 +256,31 @@ def ocorrencias_no_texto(texto: str, termos=TERMOS) -> list:
     return fora
 
 
+def pistas_do_marele_legal(uf: str, data: str, url: str, achados: list) -> list:
+    """Os achados dos termos do MARÉ Legal como pistas estaduais (alvo = UF) para a porta única. Função pura.
+
+    Só entra o que tem `tipo` decidível (plano, estrutura): "El Niño" e "estiagem" sem plano ou órgão no
+    trecho seguem no índice de ocorrências, sem virar pista (o classificador que não sabe não classifica)."""
+    from scripts.pistas import classificar_tipo
+    fora = []
+    for a in achados:
+        if a["termo"] not in TERMOS_LEGAL:
+            continue
+        titulo = f"Diário Oficial de {uf}, {data[8:10]}/{data[5:7]}/{data[:4]}, p. {a.get('pagina') or '?'}: {a['termo']}"
+        tipo = TIPO_DO_TERMO_LEGAL.get(a["termo"]) or classificar_tipo({"titulo": titulo, "trecho": a["trecho"]})
+        if tipo in ("plano", "estrutura"):
+            fora.append({"url": url, "uf": uf, "municipio": "", "titulo": titulo, "trecho": a["trecho"],
+                         "data": data, "nivel": "B", "tipo": tipo, "origem": "doe"})
+    return fora
+
+
+def ultima_edicao_lida(registro: dict) -> str:
+    """A data (AAAA-MM-DD) da edição lida mais recente da UF, ou "" se nenhuma. Função pura. É o campo que o
+    elo e o painel leem para dizer que a rota parou (central e A1, 30/10/2026)."""
+    return max((k[:10] for k, e in ((registro or {}).get("edicoes") or {}).items()
+                if isinstance(e, dict) and e.get("decisao") == "lida"), default="")
+
+
 def pagina_do_trecho(paginas: list, trecho: str) -> int:
     """Em que página o trecho está (1-based), ou `None`. Função pura.
 
@@ -356,7 +390,8 @@ def a_reler(item) -> bool:
     uma vez por versão do leitor: "não pude ler" não é decisão final, e o leitor muda (as 89 edições do
     RJ ficaram assim por defeito de leitura, corrigido no #894, e nada as relia). Função pura."""
     return isinstance(item, dict) and (item.get("decisao") == "sem_texto_extraivel" and item.get("leitor") != VERSAO_DO_LEITOR or
-                                       item.get("decisao") == "lida" and item.get("termos_versao") != VERSAO_DOS_TERMOS)
+                                       item.get("decisao") == "lida" and (item.get("termos_versao") != VERSAO_DOS_TERMOS
+                                                                         or item.get("legal_versao") != VERSAO_LEGAL))
 
 
 def datas_sem_cobertura(edicoes: dict, ate: str) -> list:
@@ -519,6 +554,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
     ocorrencias = indice.setdefault("ufs", {}).setdefault(uf, {})
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     lidas = com_termo = 0
+    pistas_legal = []
     recusa, interrompido = None, False
 
     if rota["tipo"] == "busca":
@@ -629,11 +665,19 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                         # insumo de classificação: a edição segue "não lida" até a fonte servir texto.
                         item["hash_evidencia"] = preservar_evidencia(bruto, url, "pdf", "coletar_edicoes_doe")
                     if decisao == "lida":
-                        achados = ocorrencias_no_texto("\n".join(paginas))
-                        if achados:
+                        texto_inteiro = "\n".join(paginas)
+                        achados = ocorrencias_no_texto(texto_inteiro)
+                        legais = [a for a in achados if a["termo"] in TERMOS_LEGAL] + \
+                            ocorrencias_no_texto(texto_inteiro, tuple(TERMOS_LEGAL_NOVOS))
+                        item["legal_versao"] = VERSAO_LEGAL
+                        if achados or legais:
                             item["hash_evidencia"] = preservar_evidencia(bruto, url, "pdf", "coletar_edicoes_doe")
                             for a in achados:
                                 a["pagina"] = pagina_do_trecho(paginas, a["trecho"])
+                            for a in legais:
+                                a["pagina"] = pagina_do_trecho(paginas, a["trecho"])
+                            pistas_legal += pistas_do_marele_legal(uf, data, url, legais)
+                        if achados:
                             ocorrencias[chave] = {"url": url, "hash_evidencia": item["hash_evidencia"],
                                                   "paginas": len(paginas), "achados": achados}
                             com_termo += 1
@@ -667,6 +711,13 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         por_cod, _ = referencia_ibge()
         marcar_fonte_consultada([c for c, r in por_cod.items() if r["uf"] == uf], f"DOE/{uf}", "estadual",
                                 resultado=f"{lidas} edição(ões) lida(s) por data (canal 2)")
+    if pistas_legal:
+        # Pista estadual do MARÉ Legal: pela porta única, que recusa com motivo e deduplica por URL e alvo.
+        from scripts.pistas import gravar_lote
+        r = gravar_lote(pistas_legal, origem="doe")
+        print(f"  {uf}: {len(pistas_legal)} pista(s) do MARÉ Legal — {r['gravadas']} gravada(s), {r['recusadas']} recusada(s)")
+    if isinstance(registro.get("canal2"), dict):
+        registro["canal2"]["ultima_edicao_lida"] = ultima_edicao_lida(registro)
     registro["atualizado_em"] = hoje
     gravar(arquivo, registro)
     indice["atualizado_em"] = hoje
@@ -949,11 +1000,30 @@ def _autoteste() -> int:
            "Institui o Centro de Operações de Emergência em Saúde Pública para o ciclo")))
     lida = {"decisao": "lida", "em": "02/10/2026"}
     ok("edição lida antes dos termos de declaração é relida",
-       a_reler(lida) and not a_reler(dict(lida, termos_versao=VERSAO_DOS_TERMOS)))
+       a_reler(lida) and not a_reler(dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)))
+    ok("edição lida antes dos termos do MARÉ Legal é relida uma vez",
+       a_reler(dict(lida, termos_versao=VERSAO_DOS_TERMOS))
+       and not a_reler(dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)))
+    lei = "Decreto 110.661: institui o Comitê Interinstitucional para o fenômeno El Niño no Estado de Alagoas."
+    ok("comitê ao lado de El Niño é achado; comitê sozinho não",
+       [a["termo"] for a in ocorrencias_no_texto(lei, tuple(TERMOS_LEGAL_NOVOS))] == ["comitê"]
+       and ocorrencias_no_texto("O comitê gestor do SUS se reúne e a estiagem persiste.", tuple(TERMOS_LEGAL_NOVOS)) == [])
+    pl = pistas_do_marele_legal("AL", "2026-08-25", "https://x/51788", [
+        {"termo": "comitê", "trecho": lei, "pagina": 3}, {"termo": "El Niño", "trecho": "menciona El Niño", "pagina": 4},
+        {"termo": "COES", "trecho": "x"}])
+    ok("achado do Legal vira pista estadual com UF, data e tipo; El Niño sem plano ou órgão e termo de saúde não",
+       len(pl) == 1 and pl[0]["uf"] == "AL" and pl[0]["data"] == "2026-08-25" and pl[0]["tipo"] == "estrutura"
+       and "p. 3" in pl[0]["titulo"] and pl[0]["municipio"] == "")
+    ok("a pista do Legal passa pela normalização da porta única com alvo = UF",
+       __import__("scripts.pistas", fromlist=["x"]).normalizar(pl[0], "doe")["alvo"] == "AL")
+    ok("última edição lida ignora a não lida e o caderno",
+       ultima_edicao_lida({"edicoes": {"2026-10-01": {"decisao": "lida"}, "2026-10-09#2": {"decisao": "lida"},
+                                       "2026-10-20": {"decisao": "sem_edicao_na_data"}}}) == "2026-10-09"
+       and ultima_edicao_lida({}) == "")
     sem = {"decisao": "sem_texto_extraivel", "termos_versao": VERSAO_DOS_TERMOS}
     ok("sem texto extraível é relida uma vez por versão do leitor",
        a_reler(sem) and not a_reler(dict(sem, leitor=VERSAO_DO_LEITOR)))
-    nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS)
+    nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)
     ciclo = {d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-10-01")}
     ok("metade estadual só conta com o ciclo inteiro coberto e relido",
        "lacuna" in busca_de_declaracao("PB", {"edicoes": dict(ciclo, **{"2026-09-10": lida}), "atualizado_em": "02/10/2026"})
@@ -1044,7 +1114,7 @@ def main() -> int:
                             if isinstance(e, dict) and e.get("termos_achados"))
             contagem[sit["modo"]] = contagem.get(sit["modo"], 0) + 1
             print(f"  {uf}: {sit['modo']} · {sit['detalhe'][:70]}"
-                  + (f" · {lidas} edição(ões) lida(s), {com_termo} com termo" if lidas else ""))
+                  + (f" · {lidas} edição(ões) lida(s), {com_termo} com termo, última {ultima_edicao_lida(reg)}" if lidas else ""))
         print("  —")
         for modo, n in sorted(contagem.items(), key=lambda x: -x[1]):
             print(f"  {modo}: {n} unidade(s)")
