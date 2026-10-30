@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #PR · Leitor único de documento para as fontes de plano sem leitura (+50/−0)
+`scripts/sondar_documento.py`: baixa um PDF ou página pela porta de rede do projeto e imprime os trechos dos termos pedidos; só leitura, não grava em `data/`. Serve a S10, S17, S19, S26 e S30 da matriz de planos, no lugar de um script por fonte.
+
 ## 2026-10-30 · #1356 · DOE incremental e decretos de emergência, seg/qua/sex (+36/−2)
 
 Novo elo `doe-incremental` (segunda, quarta e sexta, 02:17 UTC): lê as edições dos DOE das 27 UFs dos últimos 4 dias e, em seguida, procura ato estadual de emergência em saúde (`coletar_espin.py`). Para isso `--ultimos-dias N` entra nos dois coletores por uma função única, `desde_de`. Decisão da editoria de 30/10: 2 a 3 vezes por semana, não todo dia. Temporizador registrado; ensaio simulado verde.
