@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Autoteste do juiz sem data fixa (+2/−2)
+
+O autoteste de `julgar_filas.py` comparava o back-off com datas escritas no código (28/09 e 30/10); a pista adiada nasce do dia real, e em 30/10 o caso "volta depois do back-off" reprovou a `main`. Agora o teste lê o dia real e soma dois dias. Sem mudança de comportamento do juiz.
+
 ## 2026-10-29 · Redução: seis funções sem chamador saem (−39 líquidas)
 
 Saem `htmlGuia`, `popLinha` e `POP_UF` (index.js), `opcoesDeEixoSemanal` e `primeiraSemanaComValor` (saude.js), `_hoje_iso` (julgar_filas.py) e `ErroDoGh` (checagem_pre_noite.py): nenhum chamador em código, workflow ou página. Sem mudança de comportamento. Linhas: +1/−40.
