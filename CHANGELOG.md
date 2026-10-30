@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-30 · #1374 · Goiás: endereço oficial do gabinete e do plano de contingência estadual
+## 2026-10-30 · #1375 · Goiás: endereço oficial do gabinete e do plano de contingência estadual
 
 Os dois instrumentos de Goiás passam a apontar a notícia oficial do governo de 18/08/2026, lida na íntegra: ela nomeia o Gabinete de Ações Integradas e o Plano de Contingência Estadual. Não cita número de decreto; o plano em si segue não localizado. Sem mudança de nota.
 
