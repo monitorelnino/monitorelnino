@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · A verificação da descoberta pula a pista encerrada (+8/−3)
+
+A descoberta verificava também as 14.669 pistas encerradas ou recusadas, e a triagem apaga esse texto de trabalho na mesma noite: o arquivo oscilava cerca de 5 MB entre dois commits e o portão de tamanho reprovou a `main` (+20,4%, 30/10). Agora a verificação usa o mesmo predicado da compactação e só lê pista que ainda precisa dela. Menos requisições por noite.
+
 ## 2026-10-30 · Frescor do alerta: 24 h de cadência mais 2 h de folga (+3/−1)
 
 A coleta de alertas é diária; com limite de 24 h exatas, o arquivo passa o limite minutos antes da coleta da noite e a `main` fica vermelha na abertura (F28, 24,2 h em 30/10). O portão de frescor passa a 26 h, a mesma lógica dos 9 dias do semanal. A página segue avisando o leitor aos 24 h.

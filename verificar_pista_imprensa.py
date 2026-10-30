@@ -33,6 +33,7 @@ import unicodedata
 
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "scripts"))   # limpar_fila_de_pistas.encerrada
 
 VERSAO = "1.0 (29/09/2026)"
 PISTAS = RAIZ / "data" / "pistas_imprensa.json"
@@ -1376,7 +1377,8 @@ def rodar_sombra(limite: int = None, escrever: bool = True) -> dict:
                 "nao_lidas_por_orcamento": 0, "resolucoes": 0,
                 "nao_resolvidas_por_orcamento": 0, "por_motivo": {}}
     vistas_por_sindicacao = {}
-    fila = ordem_da_fila([p for p in pistas if p.get("url")], veiculos)
+    from limpar_fila_de_pistas import encerrada
+    fila = ordem_da_fila([p for p in pistas if p.get("url") and not encerrada(p)], veiculos)
     contagem["na_fila"] = len(fila)
 
     # Item 3: a lista cresce ANTES da verificação da noite — do contrário o domínio que acabou de
