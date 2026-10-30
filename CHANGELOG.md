@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Redução: três scripts de LAI sem chamador saem · +0/−650
+
+`ler_caixa_lai.py`, `scripts/incorporar_respostas_lai.py` e `scripts/sondar_fornecedor_transparencia.py` só se referenciavam entre si; decisão da central de 30/10. Ficam no histórico do git. Código, workflows e dados intocados.
+
 ## 2026-10-30 · Mortalidade comparada entra no elo dos desfechos · +2/−0
 
 `gerar_mortalidade_comparada.py` roda no elo `noturno_desfechos` logo depois de `coletar_sim.py`, com escritor declarado; só regrava quando `obitos.json` ou `obitos_calor.json` mudam.
