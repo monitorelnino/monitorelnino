@@ -105,7 +105,7 @@ Atualizado em 30/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **175** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **176** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -124,6 +124,7 @@ Atualizado em 30/10/2026.
 | `gerar_imprensa_semana.py` | — | `semana.json` | — | 1 | não |
 | `gerar_lai.py` | — | — | — | — | não |
 | `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | 2 | não |
+| `gerar_mortalidade_comparada.py` | — | `saude_desfechos/mortalidade_comparada.json`, `saude_desfechos/obitos.json`, `saude_desfechos/obitos_calor.json` | — | — | não |
 | `gerar_pacote_blog.py` | — | `financiamento/caminhos.json` | — | — | não |
 | `gerar_painel.py` | — | `agregados.json`, `atos_resposta.json`, `fichas.json`, `lista.json`, `municipios.json`, `verificacao_municipal.json` | — | — | não |
 | `gerar_pdf_indice.py` | — | — | — | — | não |
