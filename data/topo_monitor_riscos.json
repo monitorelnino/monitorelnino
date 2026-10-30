@@ -4,22 +4,22 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 2.9,
-   "referencia": "29/10/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em João Pessoa",
-   "capital": "João Pessoa",
-   "uf": "PB",
+   "valor": 2.4,
+   "referencia": "30/10/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Recife",
+   "capital": "Recife",
+   "uf": "PE",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 33.0 °C contra a média de 30.1 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 32.0 °C contra a média de 29.6 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
     "valor": 2.9,
-    "referencia": "28/10/2026"
+    "referencia": "29/10/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 207,
+   "valor": 2155,
    "referencia": "Focos do dia — focos_diario_br_20261030.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 3,
-   "perigo_ou_maior": 1,
-   "referencia": "29/10/2026 22:14",
+   "valor": 1,
+   "perigo_ou_maior": 0,
+   "referencia": "30/10/2026 05:52",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 2,
-    "referencia": "28/10/2026 22:05"
+    "valor": 3,
+    "referencia": "29/10/2026 22:14"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "29/10/2026",
+   "referencia": "30/10/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "28/10/2026"
+    "referencia": "29/10/2026"
    }
   }
  ]
