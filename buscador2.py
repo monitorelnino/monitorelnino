@@ -155,6 +155,12 @@ PREFIXOS_DE_ENTE = ("prefeiturademunicipalde", "prefeituramunicipalde", "prefeit
 ROTULOS_DE_ORGAO = {"saude", "educacao", "defesacivil", "sedec", "cultura", "turismo", "fazenda",
                     "agricultura", "seguranca", "transparencia", "portal", "casacivil", "meioambiente",
                     "planejamento", "governo", "esporte", "trabalho", "justica", "agua", "agenersa"}
+# Município com domínio `.gov.br` sem UF no host (30/10/2026, preprint §1): `prefeitura.pbh.gov.br` é
+# a Prefeitura de Belo Horizonte e a regra `<nome>.<uf>.gov.br` não o reconhecia. Lista fechada, só de
+# domínio conferido; `goias.gov.br` e `amapa.gov.br` ficam fora de propósito (portal de estado que
+# hospeda planos de outros entes: a recusa deles está certa).
+MUNICIPAIS_SEM_UF = {"pbh.gov.br": ("Belo Horizonte", "MG")}
+
 RE_DOMINIO_DE_UF = re.compile(r"^(?:(?P<sub>.+)\.)?(?P<uf>[a-z]{2})\.(?:gov|leg)\.br$")
 
 _SLUGS = None
@@ -235,6 +241,13 @@ def classe_de_entrada(url: str, ibge: str = "", uf: str = "", nome: str = "", sl
                 return "municipio", ""
             return "", f"domínio de outro ente ({ente}/{uf_host}: {host})"
         return "uf", ""
+    for d, (ente, uf_ente) in MUNICIPAIS_SEM_UF.items():
+        if host == d or host.endswith("." + d):
+            if uf and uf != uf_ente:
+                return "", f"domínio de outra UF ({uf_ente}: {host})"
+            if nome and slug(nome) != slug(ente):
+                return "", f"domínio de outro ente ({ente}/{uf_ente}: {host})"
+            return "municipio", ""
     if host.endswith((".gov.br", ".leg.br")):
         return "", f"domínio público fora da lista fechada ({host})"
     return "", f"domínio não oficial ({host})"
@@ -578,6 +591,12 @@ def autoteste() -> int:
     ok("B8: domínio de outro município da mesma UF cai, nomeando o ente",
        classe_de_entrada("https://celsoramos.sc.gov.br/plano.pdf", "4217808", "SC", "Taió", S)[1]
        == "domínio de outro ente (Celso Ramos/SC: celsoramos.sc.gov.br)")
+    ok("B8: prefeitura.pbh.gov.br é de Belo Horizonte (domínio sem UF, lista fechada)",
+       classe_de_entrada("https://prefeitura.pbh.gov.br/plano", "", "MG", "Belo Horizonte", S)[0] == "municipio")
+    ok("B8: pbh.gov.br para outro município cai",
+       "outro ente" in classe_de_entrada("https://prefeitura.pbh.gov.br/p", "", "MG", "Contagem", S)[1])
+    ok("B8: goias.gov.br segue fora da lista (portal de estado com planos alheios)",
+       classe_de_entrada("https://goias.gov.br/saude/x.pdf", "", "BA", "Jussara", S)[0] == "")
     ok("B8: domínio de outra UF cai (Porto Velho para Palmas/TO)",
        classe_de_entrada("https://www.portovelho.ro.gov.br/x.pdf", "1721000", "TO", "Palmas", S)[1]
        .startswith("domínio de outra UF (RO"))
