@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-30 · #PR · Blog Saúde: emergência em saúde pública no Amazonas
+## 2026-10-30 · #1363 · Blog Saúde: emergência em saúde pública no Amazonas
 Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.
 
 ## 2026-10-30 · #1359 · Leitor único de documento para as fontes de plano sem leitura (+59/−0)
