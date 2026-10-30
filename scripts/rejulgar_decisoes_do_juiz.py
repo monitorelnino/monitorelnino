@@ -122,13 +122,6 @@ def autoteste() -> int:
                   and herdar_18(dict(lido, regras_18=["J1"]), None)["promove"] is True
                   and herdar_18(lido, {"promove": True, "categoria": "plano_antigo"}) == lido))
 
-    leva = dict(lido, com_segunda_leva={"promove": False, "motivo": "documento_estadual", "regras_18": ["J14"]})
-    casos.append(("1.8: a regra da segunda leva muda a variante mesmo quando o veredito principal é mantido; "
-                  "a errata manda nela também",
-                  herdar_18(leva, None)["com_segunda_leva"]["motivo"] == "documento_estadual"
-                  and herdar_18(leva, None)["com_propostas_J8_J9"]["promove"] is False
-                  and herdar_18(leva, errata)["com_segunda_leva"]["motivo"] == errata["motivo"]))
-
     lida, falhou = dict(lido, leu_documento=True), {"promove": False, "motivo": "documento_inacessivel"}
     casos.append(("1.8: releitura que não chega ao documento não apaga a leitura anterior; sem leitura anterior, vale",
                   vale_a_leitura_18(lida, falhou) is lida and vale_a_leitura_18(None, falhou) is falhou
@@ -213,8 +206,8 @@ def ordem_18(refeita: bool, anterior) -> tuple:
     return (not refeita, anterior is not None)
 
 
-# Regras medidas à parte, cada conjunto na sua chave: J8/J9 (propostas) e a segunda leva (§1b/§1c).
-VARIANTES_18 = {"com_propostas_J8_J9": "PROPOSTAS_18", "com_segunda_leva": "SEGUNDA_LEVA_18"}
+# Regras medidas à parte: J8/J9 (propostas). A segunda leva está no padrão desde 30/10; `com_segunda_leva` já gravado fica.
+VARIANTES_18 = {"com_propostas_J8_J9": "PROPOSTAS_18"}
 
 
 def julgar_18(p: dict, buscar, propostas=False) -> dict:
@@ -304,8 +297,7 @@ def paralelo_18(argv) -> int:
     rede = int(argv[argv.index("--rede") + 1]) if "--rede" in argv else 0
     propostas = "--propostas" in argv
     # `--refazer J1,J7`: relê a chave já lida cujo veredito usou uma regra que mudou depois (lote 7 da J18);
-    # `--refazer leva2`: relê a chave lida que ainda não tem `com_segunda_leva` (com `--propostas`). A regra pedida
-    # vale também quando agiu só numa variante (`--refazer J19`).
+    # a regra pedida vale também quando agiu só numa variante (`--refazer J8`).
     refazer = set(argv[argv.index("--refazer") + 1].split(",")) if "--refazer" in argv else set()
     saida = RAIZ / argv[argv.index("--saida") + 1] if "--saida" in argv else SAIDA_18
     doc = json.loads(saida.read_text(encoding="utf-8")) if saida.exists() else {
@@ -325,9 +317,7 @@ def paralelo_18(argv) -> int:
     def refaz(anterior) -> bool:
         return bool(anterior and (refazer & set(anterior.get("regras_18") or []).union(
                                       *((anterior.get(x) or {}).get("regras_18") or [] for x in VARIANTES_18))
-                                  or ("promove" in refazer and anterior.get("promove"))
-                                  or ("leva2" in refazer and anterior.get("leu_documento")
-                                      and "com_segunda_leva" not in anterior)))
+                                  or ("promove" in refazer and anterior.get("promove"))))
 
     def rejulgar(p, antes, origem):
         nonlocal lidas

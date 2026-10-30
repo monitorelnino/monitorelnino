@@ -65,9 +65,11 @@ sys.path.insert(0, str(RAIZ / "scripts"))   # municipio_do_dominio (etapa 3, 1.6
 # porque o critério mudou, e porque `pendente()` usa a versão para decidir o que volta à fila: subir
 # aqui devolve ao juiz toda pista já julgada sob a regra frouxa — inclusive as quatro que ela
 # promoveu por engano.
-CODEBOOK_VERSAO = "1.8 (29/10/2026)"
+CODEBOOK_VERSAO = "1.8 (30/10/2026)"
+# 1.8 (30/10/2026, central): a segunda leva (J14, J16, J19, J20) entra no padrão; a data sobe para devolver à fila
+# o que o 1.8 de 29/10 julgou sem ela. Só J8 e J9 seguem em `propostas`.
 # 1.8 (29/10/2026, central): regras J1–J7, J10, J11 e J15 do rejulgamento de 26/10 passam a ser o juiz (medidas em 28/10:
-# MARÉ Legal nacional 40,2 → 40,7). J8 e J9 (crédito) e a segunda leva (J14, J16, J19, J20) seguem fora, só em `propostas`.
+# MARÉ Legal nacional 40,2 → 40,7). J8 e J9 (crédito) e a segunda leva seguiam fora, só em `propostas`.
 # 1.7 (24/10/2026, central): documento do repositório estadual declarado (ES, SE, RS) é o plano publicado pelo
 # canal do estado: lei ou portaria citada no corpo não é o ato dele (etapa 2) e a autoridade vem do repositório (etapa 3).
 # 1.6 (15/10/2026, central): plano sem ato vale só no domínio do PRÓPRIO município (etapa 3; caso
@@ -1115,10 +1117,8 @@ RE_PROVA_DE_VIGENCIA = re.compile(r"(?:revis|atualiza|vig[êe]ncia|validade|v[á
 RE_SECRETARIA_SETORIAL = re.compile(
     r"secret[áa]ri[oa]\s+municipal\s+de\s+(?:educa[çc][ãa]o|assist[êe]ncia|sa[úu]de)|\bsmed\b|\bsemed\b|\bsmas\b", re.I)
 
-# Segunda leva (§1b e §1c do handover): regras do 1.8 que ficaram fora do conjunto medido e adotado pela
-# central em 28/10 21:50 (J1–J7, J10, J11, J15). Ligadas como as propostas (`propostas=SEGUNDA_LEVA_18`), medidas
-# à parte; entram no padrão só depois da medição.
-SEGUNDA_LEVA_18 = ("J14", "J16", "J19", "J20")
+# Segunda leva (§1b e §1c do handover): J14, J16, J19 e J20, medidas à parte em 28–30/10 e no padrão desde
+# 30/10 (central, 10:20 UTC: não tiram crédito; corrigem a atribuição do repositório estadual ES/RS).
 
 # J14. Documento estadual achado por busca municipal vai para a fila do instrumento estadual (o de saúde, para o
 # MARÉ Saúde); nunca é descartado nem creditado ao município (Fortaleza × Decreto 34.595/CE; Manaus × lei AM 7.772).
@@ -1214,9 +1214,9 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
 
     `promove` é True só quando TODAS passam. Quando não promove, `motivo` é o critério que
     falhou — é ele que fica visível na fila, e é por ele que o relatório agrupa as recusas.
-    `propostas` liga J8/J9 e a segunda leva, que não são o juiz em produção."""
+    `propostas` liga J8/J9, que não são o juiz em produção."""
     regras = []
-    repo = ente_do_repositorio_18(texto, url) if not eh_estadual and "J19" in propostas else None
+    repo = ente_do_repositorio_18(texto, url) if not eh_estadual else None
     if isinstance(repo, tuple) and (normalizar(repo[0]), repo[1]) != (normalizar(nome), str(uf or "").upper()):
         nome, uf, ibge = repo
         regras.append("J19")
@@ -1242,7 +1242,7 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
         return recusa("noticia_nao_e_documento", "J2")
     if repo == "nao_identificado":
         return recusa("municipio_nao_identificado", "J19")
-    destino = destino_estadual_18(texto, url) if not eh_estadual and "J14" in propostas else None
+    destino = destino_estadual_18(texto, url) if not eh_estadual else None
     if destino:
         veredito["encaminhar"] = destino
         return recusa("documento_estadual", "J14")
@@ -1299,9 +1299,9 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
     if not ok:
         return recusa(motivo)
 
-    if not como_plano and "J20" in propostas and e_estrutura_18(texto):
+    if not como_plano and e_estrutura_18(texto):
         return recusa("estrutura_de_defesa_civil", "J20")
-    if not como_plano and "J16" in propostas and nao_e_instrumento_18(texto):
+    if not como_plano and nao_e_instrumento_18(texto):
         return recusa("nao_e_instrumento", "J16")
     if como_plano:
         # J1: o plano não institui o plano; teste do objeto e de gatilho são para decreto e ato avulso.
@@ -1668,21 +1668,19 @@ def casos_18() -> list:
         ("J9 (proposta) ato da Secretaria de Educação é plano setorial (Toledo/PR)",
          _v(toledo, "Toledo", "PR", "https://www.toledo.pr.gov.br/in-17-2026.pdf", propostas=("J9",))["motivo"]
          == "plano_setorial"),
-        ("J14 (segunda leva) decreto estadual achado por Fortaleza vai à fila estadual; plano estadual de saúde, ao "
-         "MARÉ Saúde; sem J14 ligado, nada muda",
-         _v(DECRETO_ESTADUAL_18, "Fortaleza", "CE", URL_CE_18, propostas=SEGUNDA_LEVA_18)["encaminhar"]
+        ("J14 decreto estadual achado por Fortaleza vai à fila estadual; plano estadual de saúde, ao MARÉ Saúde",
+         _v(DECRETO_ESTADUAL_18, "Fortaleza", "CE", URL_CE_18)["encaminhar"]
          == "instrumento_estadual"
          and destino_estadual_18("SECRETARIA DE ESTADO DA SAÚDE DE SERGIPE PLANO ESTADUAL DE CONTINGÊNCIA 2026-2027",
                                  "https://saude.se.gov.br/wp-content/uploads/2026/07/Plano.pdf") == "mare_saude"
          and destino_estadual_18("ASSEMBLEIA LEGISLATIVA DO ESTADO DO AMAZONAS LEI Nº 7.772",
                                  "https://sapl.al.am.leg.br/media/7772.pdf") == "instrumento_estadual"
-         and destino_estadual_18("PREFEITURA DE X. Plano estadual citado", "https://x.ce.gov.br/a.pdf") is None
-         and _v(DECRETO_ESTADUAL_18, "Fortaleza", "CE", URL_CE_18)["motivo"] != "documento_estadual"),
-        ("J16 (segunda leva) calendário de campanhas com 'incêndio' não é instrumento (Apucarana/PR)",
+         and destino_estadual_18("PREFEITURA DE X. Plano estadual citado", "https://x.ce.gov.br/a.pdf") is None),
+        ("J16 calendário de campanhas com 'incêndio' não é instrumento (Apucarana/PR)",
          nao_e_instrumento_18(CALENDARIO_18) and not nao_e_instrumento_18(PLANO_RS_18)
-         and _v(CALENDARIO_18, "Apucarana", "PR", URL_APUCARANA_18, propostas=SEGUNDA_LEVA_18)["motivo"]
+         and _v(CALENDARIO_18, "Apucarana", "PR", URL_APUCARANA_18)["motivo"]
          == "nao_e_instrumento"),
-        ("J19 (segunda leva) plano de Viana no repositório do ES vai para Viana, não para Vitória da pista",
+        ("J19 plano de Viana no repositório do ES vai para Viana, não para Vitória da pista",
          ente_do_repositorio_18("Viana faz parte da Região Metropolitana da Grande Vitória", URL_VIANA_18)[:2]
          == ("Viana", "ES")
          and ente_do_repositorio_18("", URL_RS_18)[:2] == ("São Borja", "RS")
@@ -1696,7 +1694,7 @@ def casos_18() -> list:
                                    ("Plancom_RiodosIndios.pdf", "Rio dos Índios"),
                                    ("Plano%20de%20Conting%C3%AAncia%20Municipal%202025_Agudo1.pdf", "Agudo"),
                                    ("PLANCON_SANTAMARIADOHERVAL_2023.pdf", "Santa Maria do Herval")))),
-        ("J20 (segunda leva) lei que institui o FUMPDEC e decreto que regulamenta a COMPDEC são estrutura "
+        ("J20 lei que institui o FUMPDEC e decreto que regulamenta a COMPDEC são estrutura "
          "(Londrina/PR, Imperatriz/MA); a lei que institui o plano, não",
          e_estrutura_18("LEI Nº 13.900 Institui o Fundo Municipal de Proteção e Defesa Civil (FUMPDEC) e cria o seu "
                         "respectivo Conselho Gestor. Estado de calamidade pública")
