@@ -1,6 +1,6 @@
 {
  "_governanca": "Registro de proveniência dos instrumentos estaduais: o endereço oficial do documento que sustenta cada status, com como foi achado e o grau de conferência. `scripts/proveniencia_estadual.py --aplicar` leva o endereço a data/estados.json. Endereço só de domínio oficial (governo do estado, imprensa oficial, gov.br). `defeitos_de_prova`: instrumento pontuado sem documento rastreável — registrado no relatório D, sem mudar nota (nota é decisão da editoria). Busca dirigida de 10/10/2026 (item 2b de AJUSTES_09-10).",
- "atualizado_em": "2026-10-10",
+ "atualizado_em": "2026-10-30",
  "achados": [
   {
    "uf": "AC",
@@ -373,6 +373,30 @@
    "trecho": "DECRETO Nº 58.838, DE 17 DE JUNHO DE 2026. Institui Programa Estadual de Preparação para Eventos Extremos - PREPARA RS, destinado à preparação do Estado para os potenciais impactos associados ao fenômeno El Niño no período 2026/2027.",
    "como_achou": "WebSearch",
    "nota": "Cópia também em https://sistemas.defesacivil.rs.gov.br/documentos/fundec/Decreto_58.838_17_de_junho_2026.pdf (não aberta)."
+  },
+  {
+   "uf": "GO",
+   "url": "https://goias.gov.br/governo-de-goias-cria-forca-tarefa-para-combater-impactos-do-el-nino-e-queimadas/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-30",
+   "titulo_da_pagina": "Força-tarefa vai combater impactos do El Niño e queimadas em Goiás",
+   "como_achou": "Achado do preprint (30/10/2026); texto lido pelo runner (válvula d-go-se-noticia, run 41100244945)",
+   "tipo": "estrutura_coordenacao",
+   "trecho": "Governo de Goiás cria Gabinete de Ações Integradas para combater estiagem e incêndios florestais intensificados pelo fenômeno El Niño",
+   "nota": "Notícia oficial de 18/08/2026; não cita número de decreto."
+  },
+  {
+   "uf": "GO",
+   "url": "https://goias.gov.br/governo-de-goias-cria-forca-tarefa-para-combater-impactos-do-el-nino-e-queimadas/",
+   "tipo_fonte": "noticia_oficial",
+   "verificacao": "conteudo_conferido",
+   "consultado_em": "2026-10-30",
+   "titulo_da_pagina": "Força-tarefa vai combater impactos do El Niño e queimadas em Goiás",
+   "como_achou": "Achado do preprint (30/10/2026); texto lido pelo runner (válvula d-go-se-noticia, run 41100244945)",
+   "tipo": "instrumento_operacional",
+   "trecho": "20 setores estão envolvidos no Plano de Contingência Estadual",
+   "nota": "Notícia oficial de 18/08/2026 nomeia o Plano de Contingência Estadual; o plano em si não foi localizado."
   }
  ],
  "defeitos_de_prova": [
@@ -416,20 +440,6 @@
    "tipo": "instrumento_operacional",
    "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
    "pistas": "PDF https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-edicao-2026.pdf de novo recusado (PROVENANCE_REQUIRED: só abre se a editoria colar a URL). Não surgiu em resultado de busca. 'Sergipe Resiliente' sem nenhum resultado. Imprensa privada (RO Acontece, 06/10/2026) cita só fortalecimento dos planos municipais de contingência pela Defesa Civil estadual.",
-   "registrado_em": "2026-10-10"
-  },
-  {
-   "uf": "GO",
-   "tipo": "estrutura_coordenacao",
-   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
-   "pistas": "'Gabinete de Ações Integradas (GAI)', coordenado pelo CBMGO/Codec, só em imprensa privada (Portal 6, 18/08/2026; A Redação; Jornal Opção); nenhum ato de criação citado. DOE-GO de 21/08/2026 aberto: sem o ato (leitura pode ter sido parcial). Páginas oficiais abertas e descartadas: goias.gov.br/abc 'Gabinete de Gestão Integrada' (13/09/2024) e Casa Civil (Cefig, jul/2025).",
-   "registrado_em": "2026-10-10"
-  },
-  {
-   "uf": "GO",
-   "tipo": "instrumento_operacional",
-   "motivo": "documento oficial não localizado em página oficial acessível até o corte; o instrumento foi julgado sem endereço registrado",
-   "pistas": "'PLANCON Estiagem 2026' não aparece em nenhum resultado, nem em imprensa privada nesta rodada. Correlato oficial aberto: https://goias.gov.br/abc/corpo-de-bombeiros-lanca-a-operacao-cerrado-vivo-2026/ (atualizada 18/06/2026; cita 'previsão do fenômeno climático Super El Niño' e atuação 'durante a estiagem'), mas não é o PLANCON.",
    "registrado_em": "2026-10-10"
   },
   {
