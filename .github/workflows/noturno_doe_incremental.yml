@@ -1,0 +1,30 @@
+# Leitura incremental dos diários oficiais das 27 UFs e conferência de decreto estadual de emergência
+# (editoria, 30/10/2026): segunda, quarta e sexta, na janela da noite, não todo dia.
+# Lê as edições dos últimos 4 dias (o intervalo maior entre duas conferências é 3 dias, mais 1 de
+# folga; edição já preservada não se duplica: o coletor guarda por hash), depois o `coletar_espin.py`
+# procura o ato estadual de emergência em saúde sobre a mesma janela. Produz dado de resposta, nunca
+# pista de plano nem registro do índice; rota parada vira linha do painel da noite.
+name: Noturno — DOE incremental e decretos de emergência
+
+on:
+  schedule:
+    - cron: "17 2 * * 1,3,5"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  doe-incremental:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: doe-incremental
+      grupo_de_concorrencia: noturno
+      timeout_minutos: 120
+      comandos: |
+        coletar_edicoes_doe.py --recuperacao --ultimos-dias 4
+        coletar_espin.py --ultimos-dias 4
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
