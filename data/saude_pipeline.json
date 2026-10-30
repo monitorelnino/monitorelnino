@@ -15309,7 +15309,16 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-30",
+   "script": "scripts/sondar_documento.py",
+   "inicio": "2026-10-30T14:51:18",
+   "duracao_s": 204.2,
+   "itens": null,
+   "status": "erro",
+   "erro": "urllib.error.URLError: <urlopen error timed out>"
   }
  ],
- "atualizado_em": "2026-10-30T14:39:58"
+ "atualizado_em": "2026-10-30T14:51:18"
 }
