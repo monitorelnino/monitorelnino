@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1375 · Goiás: endereço oficial do gabinete e do plano de contingência estadual
+
+Os dois instrumentos de Goiás passam a apontar a notícia oficial do governo de 18/08/2026, lida na íntegra: ela nomeia o Gabinete de Ações Integradas e o Plano de Contingência Estadual. Não cita número de decreto; o plano em si segue não localizado. Sem mudança de nota.
+
 ## 2026-10-30 · #1372 · Painel da noite mostra a rota parada do diário oficial
 
 O painel da noite lista a UF cujo diário oficial não deu edição lida há mais de sete dias (ou nenhuma até hoje), a partir da data da última edição lida que o coletor já grava. Só acompanhamento: não bloqueia a noite nem a publicação. Código +19/−0.
