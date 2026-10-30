@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1355 · O id da pista nasce na porta (+21/−14)
+
+A fórmula do id (sha1 de ibge, url e trecho) existia em três cópias (`revisar_pistas`, `seguir_pistas`, `triar_confianca_pistas`) e a porta `scripts/pistas.py` deixava entrar pista sem id (31 de SC, 30/10). Passa a haver uma só, `id_da_pista`, aplicada em `normalizar`; as três cópias importam dela. Ids já gravados não mudam. Saldo positivo: um caso de teste novo (+4).
+
 ## 2026-10-30 · #1354 · Saúde: fórmula do índice nacional diz indice_uf (+3/−3)
 
 `gerar_monitor_saude.py` emitia `nota_uf` na fórmula de agregação nacional (`monitor_saude.json`, `agregacao_nacional.formula`) e no docstring; passa a `indice_uf`, pela regra de vocabulário da editoria (29/10/2026). Só o texto da fórmula muda; nenhum valor, peso ou crédito.
