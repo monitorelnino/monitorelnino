@@ -30,11 +30,12 @@ USO
   python triar_confianca_pistas.py            # anota as pistas e gera a fila
   python triar_confianca_pistas.py --autoteste
 """
-import hashlib, json, re, sys, unicodedata
+import json, re, sys, unicodedata
 from collections import defaultdict
 from datetime import date
 from urllib.parse import urlparse
 from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
+from scripts.pistas import id_da_pista
 
 # --- sinais literais ---------------------------------------------------------------------
 HOSTS_OFICIAIS = (r"\.gov\.br$", r"\.leg\.br$", r"\.jus\.br$", r"\.mp\.br$", r"\.def\.br$",
@@ -149,8 +150,7 @@ def anotar_e_gerar_fila() -> dict:
     por_nivel = {"A": 0, "B": 0, "C": 0}
     municipios = set()
     for p in d["pistas"]:
-        if not p.get("id"):   # §153: id estável (sha1 ibge|url|trecho)
-            p["id"] = hashlib.sha1(f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}".encode()).hexdigest()[:10]
+        p.setdefault("id", id_da_pista(p))   # §153: id estável
         p.update(classificar_confianca(p))
         por_nivel[p["nivel_confianca"]] += 1
         municipios.add((p.get("ibge"), p.get("municipio"), p.get("uf")))

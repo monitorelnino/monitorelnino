@@ -28,10 +28,11 @@ Três funções, nenhuma apaga nada:
 Ids: sha1(ibge|url|trecho)[:10], estáveis entre rodadas (gravados na triagem).
 A máquina prepara, e o juiz automático decide (`julgar_filas.py`, codebook versionado).
 """
-import argparse, datetime, hashlib, json, re, sys, unicodedata
+import argparse, datetime, json, re, sys, unicodedata
 from urllib.parse import urlparse
 from collections import defaultdict
 from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
+from scripts.pistas import id_da_pista
 from classificador_natureza import classificar, citacao_completa
 from classificar_pista_civil import triagem_completa
 from monitorar_imprensa_regional import parece_fonte_oficial
@@ -42,16 +43,11 @@ DECIDIDAS = ("aplicada_automaticamente", "descartada_resposta", "revertida_erro_
 DECIDIDAS_FINAIS = tuple(d for d in DECIDIDAS if d != "revertida_erro_portao")
 
 
-def id_pista(p: dict) -> str:
-    base = f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}"
-    return hashlib.sha1(base.encode("utf-8")).hexdigest()[:10]
-
-
 def garantir_ids(fila: dict) -> int:
     n = 0
     for p in fila["pistas"]:
         if not p.get("id"):
-            p["id"] = id_pista(p); n += 1
+            p["id"] = id_da_pista(p); n += 1
     return n
 
 

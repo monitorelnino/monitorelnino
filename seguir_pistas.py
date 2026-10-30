@@ -28,9 +28,10 @@ USO   python3 seguir_pistas.py [--limite 60] [--refazer-dias 7]
       python3 seguir_pistas.py --arquivo --limite 2000       # os links do Google News arquivados (B2)
       python3 seguir_pistas.py --autoteste
 """
-import argparse, collections, datetime, hashlib, json, re, sys, urllib.parse
+import argparse, collections, datetime, json, re, sys, urllib.parse
 import buscador2 as b2
 from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial, ua_de
+from scripts.pistas import id_da_pista
 
 STATUS_PENDENTE = "pista — na fila, aguardando busca dirigida e juiz"
 PREFIXO_FECHADA = "fechada — Buscador 2: "
@@ -40,8 +41,6 @@ MAX_POR_ROTA = 4
 BLOCO = 200   # URLs abertas entre duas gravações
 
 
-def _id(ibge, url, trecho):
-    return hashlib.sha1(f"{ibge or ''}|{url or ''}|{(trecho or '')[:500]}".encode("utf-8")).hexdigest()[:10]
 
 
 def _url(p):
@@ -152,7 +151,7 @@ def seguir(fila, hoje, abrir=None, abrir_final=None, consultar_qd_=None, buscar_
                 "trecho": ancora or p.get("trecho") or url, "data": hoje, "origem": "buscador2",
                 "via_buscador2": via, "nivel": p.get("nivel") or p.get("nivel_confianca"),
                 "pista_origem": p.get("id")}
-        item["id"] = _id(item["ibge"], url, item["trecho"])
+        item["id"] = id_da_pista({"ibge": item["ibge"], "url": url, "trecho": item["trecho"]})
         est["novas_lista"].append(item)
         return 1
 
