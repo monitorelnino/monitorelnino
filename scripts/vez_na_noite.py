@@ -47,6 +47,7 @@ WORKFLOWS_DO_GRUPO = (
     "noturno_juiz.yml",
     "noturno_triagem.yml",
     "noturno_saude_estadual.yml",
+    "noturno_doe_incremental.yml",
     "recuperar_edicoes_doe.yml",
     "semanal_respiratorias.yml",
 )
