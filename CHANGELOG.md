@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-30 · Pistas do preprint pela porta única · +3/−0 em código
 Vinte e oito pistas municipais com endereço oficial (Querido Diário, prefeituras, lista da Defesa Civil de Sergipe) entram na fila para o juiz da noite, com origem `preprint_30-10`. Treze já estavam na fila; oito foram recusadas pela porta, cada uma com motivo em `pistas_rejeitadas`. Status sugerido vai só como nota; a classificação é do juiz.
 
+## 2026-10-30 · #1375 · Goiás: endereço oficial do gabinete e do plano de contingência estadual
+
+Os dois instrumentos de Goiás passam a apontar a notícia oficial do governo de 18/08/2026, lida na íntegra: ela nomeia o Gabinete de Ações Integradas e o Plano de Contingência Estadual. Não cita número de decreto; o plano em si segue não localizado. Sem mudança de nota.
+
 ## 2026-10-30 · #1372 · Painel da noite mostra a rota parada do diário oficial
 
 O painel da noite lista a UF cujo diário oficial não deu edição lida há mais de sete dias (ou nenhuma até hoje), a partir da data da última edição lida que o coletor já grava. Só acompanhamento: não bloqueia a noite nem a publicação. Código +19/−0.
