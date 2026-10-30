@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>30/10/2026 · Pacote de saúde do blog: dado velho vira lacuna</dt>
+      <dd>O cartão de saúde guardava a semana da fonte (2026-35) e o pacote a tratava como data de hoje, sem medir a idade. Agora a idade conta pelo sábado da semana: mais de nove dias vira lacuna com &quot;sem atualização desde dd/mm/aaaa&quot; (dengue, 05/09; internações por SRAG, 03/10). O cartão de SRAG, lido com identificador errado, passa a ser lido.</dd>
       <dt>30/10/2026 · Blog Saúde: emergência em saúde pública no Amazonas</dt>
       <dd>Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.</dd>
       <dt>30/10/2026 · Leitor único de documento para as fontes de plano sem leitura (+59/−0)</dt>
@@ -165,8 +167,6 @@
       <dd>Decisão da editoria: nenhum prazo inventado aparece ao leitor. O Monitor mede o intervalo entre o decreto e a portaria de reconhecimento (`dias_ate_reconhecimento`) e publica mediana e faixa por UF e no país (`prazo_reconhecimento`). Saem o sexto cartão do topo da Defesa civil e os campos de 30 dias do funil de financiamento. METODOLOGIA §32.6.</dd>
       <dt>25/10/2026 · Blog: como os textos são produzidos</dt>
       <dd>METODOLOGIA §124 registra as regras do Blog do MARÉ aprovadas pela editoria em 25/10/2026: seleção, fontes e números, construção, cuidado na saúde e forma. Texto transcrito da nota da central, sem alteração. Próxima mudança de regra do blog atualiza esta seção no mesmo dia.</dd>
-      <dt>25/10/2026 · Main verde: links do Para gestores lidos do catálogo</dt>
-      <dd>O autoteste de âncoras reprovava a main desde o #1132, que moveu os links do Para gestores para o catálogo. Correção na origem: o passo &quot;Antes da emergência&quot; aponta para `financiamento.html#antes`, e o autoteste lê o catálogo e espera as âncoras `antes` e `depois`. Código +7/−4.</dd>
     </dl>
   </section>
 </main>

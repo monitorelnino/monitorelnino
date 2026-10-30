@@ -30,9 +30,9 @@ avançado 70–100. Índice NACIONAL = Σ(indice_uf × pop_uf × c_uf) ÷ Σ pop
   python gerar_monitor_saude.py --autoteste
 """
 import json, re, sys
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
-from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao
+from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 
@@ -191,7 +191,24 @@ def cobertura_sanitaria(municipios: list, referencia: list, populacao: dict, aut
     return saida
 
 
-def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict) -> dict:
+def vigencia_do_ato(e: dict, hoje: date) -> dict:
+    """Vigência de um ato de emergência, com a origem dita. Função pura.
+
+    Vale o prazo escrito no ato (`vigencia_dias`); sem ele, 180 dias do ato, o prazo típico de
+    `verificar_vigencia.LIMIAR`, rotulado como presumido. Data ilegível: sem prazo, e o ato segue
+    em vigor (ausência de dado não derruba a resposta já confirmada). O revogado sai do "em vigor"
+    e fica no histórico."""
+    from verificar_vigencia import LIMIAR, parse_data_br
+    ini = parse_data_br(e.get("data") or "")
+    dias, origem = (e["vigencia_dias"], "declarada no ato") if e.get("vigencia_dias") else (
+        LIMIAR, "presumida: 180 dias a contar do ato")
+    ate = ini + timedelta(days=dias) if ini else None
+    em_vigor = not e.get("revogado_por") and (ate is None or hoje <= ate)
+    return {"vigencia_dias": dias if ini else None, "vigencia_origem": origem if ini else None,
+            "vigencia_ate": ate.strftime("%d/%m/%Y") if ate else None, "em_vigor": em_vigor}
+
+
+def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict, hoje: date = None) -> dict:
     """Resposta sanitária a partir do que `saude_sinais` diz, sem inventar. Função pura.
 
     17/10/2026 (HANDOVER_RESPOSTA_SANITARIA §1.2): `emergencias` ausente é "não coletado" (antes
@@ -203,17 +220,20 @@ def resposta_sanitaria(emergencias, busca: dict, pop_uf: dict) -> dict:
     if not isinstance(emergencias, list):
         return {**base, "situacao": "nao_coletado", "emergencias": None, "indice": None, "eventos": [], "ufs": [],
                 "pop_sob_emergencia": None, "faltam": ["federal (DOU)", "estadual (27 UFs)"]}
-    ev = [e for e in emergencias if isinstance(e, dict)]
-    ufs_em = list(UFS) if any(e.get("uf") == "BR" for e in ev) else sorted({e.get("uf") for e in ev if e.get("uf") in UFS})
+    hoje = hoje or hoje_editorial()
+    ev = [{**e, **vigencia_do_ato(e, hoje)} for e in emergencias if isinstance(e, dict)]
+    vig = [e for e in ev if e["em_vigor"]]   # o índice conta o que está em vigor; o histórico fica em `eventos`
+    ufs_em = list(UFS) if any(e.get("uf") == "BR" for e in vig) else sorted({e.get("uf") for e in vig if e.get("uf") in UFS})
     fed, est = busca.get("federal") or {}, busca.get("estadual") or {}
     sem_estadual = [u for u in UFS if not (est.get(u) or {}).get("consultado_em")]
     faltam = ([] if fed.get("consultado_em") else ["federal (DOU)"]) + ([f"estadual: {', '.join(sem_estadual)}"] if sem_estadual else [])
     completo = len(ufs_em) == len(UFS) or not faltam   # ESPIN: nenhuma UF fica de fora
     pop_em = sum(pop_uf.get(u, 0) for u in ufs_em)
     return {**base, "situacao": "verificado" if completo else "parcial",
-            "emergencias": len(ev) if completo else None,   # parcial: a lista vai em `eventos`, sem total
+            "emergencias": len(vig) if completo else None,   # parcial: a lista vai em `eventos`, sem total
             "indice": round(100.0 * pop_em / pop_total, 1) if completo and pop_total else None,
-            "eventos": [{k: e.get(k) for k in ("uf", "tipo", "documento", "data", "url")} for e in ev],
+            "eventos": [{k: e.get(k) for k in ("uf", "tipo", "documento", "data", "url", "vigencia_dias", "vigencia_origem",
+                                                 "vigencia_ate", "em_vigor", "revogado_por")} for e in ev],
             "ufs": ufs_em, "pop_sob_emergencia": int(pop_em) if completo else None, "faltam": faltam,
             "consultado_em": {"federal": fed.get("consultado_em"),
                               "estadual": {u: v.get("consultado_em") for u, v in sorted(est.items()) if v.get("consultado_em")}},
@@ -377,7 +397,17 @@ def autoteste() -> int:
     def t15():
         r = resposta_sanitaria([{"uf": "BR", "tipo": "espin"}], {"federal": todas["federal"]}, pop)
         return r["indice"] == 100.0 and r["situacao"] == "verificado" and len(r["ufs"]) == 27
-    return rodar_autoteste({"temporada pelo título": t1, "temporada pela data": t2, "nota da UF = pontos do instrumento": t3,
+    def t22():  # vigência: declarada no ato vale; sem ela, 180 dias presumidos; revogado e vencido saem do "em vigor", ficam no histórico
+        am = {"uf": "AM", "tipo": "decreto_estadual", "documento": "DECRETO Nº 55.965", "data": "26/10/2026", "vigencia_dias": 90}
+        pb = {"uf": "PB", "tipo": "decreto_estadual", "documento": "DECRETO Nº 1", "data": "01/07/2026"}
+        rv = {"uf": "RO", "tipo": "decreto_estadual", "documento": "DECRETO Nº 2", "data": "10/10/2026", "revogado_por": "DECRETO Nº 3"}
+        r = resposta_sanitaria([am, pb, rv], todas, pop, hoje=date(2026, 12, 30))   # AM: 26/10 + 90 d = 24/01/2027; PB: 01/07 + 180 d = 28/12/2026
+        ev = {e["uf"]: e for e in r["eventos"]}
+        r2 = resposta_sanitaria([am, pb, rv], todas, pop, hoje=date(2027, 2, 1))
+        return (r["ufs"] == ["AM"] and r["emergencias"] == 1 and ev["AM"]["vigencia_origem"] == "declarada no ato"
+                and ev["AM"]["vigencia_ate"] == "24/01/2027" and ev["PB"]["em_vigor"] is False and ev["PB"]["vigencia_origem"].startswith("presumida")
+                and ev["RO"]["em_vigor"] is False and len(r["eventos"]) == 3 and r2["ufs"] == [] and r2["indice"] == 0.0)
+    return rodar_autoteste({"vigência do ato de emergência": t22, "temporada pelo título": t1, "temporada pela data": t2, "nota da UF = pontos do instrumento": t3,
                             "sem documento a UF leva 0 ao nacional": t4, "não verificado não recebe número": t5,
                             "faixas nos limites": t6, "negativo: status inválido não pontua": t7,
                             "v0.7: tempo à parte, só ato do ciclo com dia": t8, "plano decenal não pontua": t9,

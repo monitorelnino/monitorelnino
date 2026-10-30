@@ -844,6 +844,28 @@ MESES_DO_ATO = {m: i for i, m in enumerate(("janeiro", "fevereiro", "março", "a
                                             "agosto", "setembro", "outubro", "novembro", "dezembro"), 1)}
 
 
+RE_VIGENCIA = re.compile(r"\b(?:por|prazo\s+de|durante)\s+(\d{1,3})\s*(?:\([^)]{1,40}\)\s*)?dias", re.I)
+RE_CABECALHO_DECRETO = re.compile(r"DECRETO\s+N[ºO°]\s*[\d.]+\s*,\s*DE\s+\d")   # só o título em caixa alta: a citação "Decreto nº 1, de" não corta o ato
+RE_REVOGA = re.compile(r"\brevoga(?:-se)?\s+(?:o\s+)?decreto\s+n[ºo°.]*\s*([\d.]+)", re.I)
+
+
+def vigencia_e_revogacao(ato: str) -> dict:
+    """O que o próprio ato diz da vigência e do que revoga. Função pura; só o que o texto declara.
+
+    Vigência: "por 180 (cento e oitenta) dias" perto de "emergência"/"vigência"/"vigor". Sem a
+    cláusula, nada é gravado aqui: o prazo presumido (180 dias do ato, `verificar_vigencia`) é
+    aplicado na leitura, com a origem dita. Revogação: número do decreto que o ato revoga."""
+    saida = {}
+    for m in RE_VIGENCIA.finditer(ato or ""):
+        if re.search(r"emerg|vig[eê]ncia|vigor|vigorar", (ato[max(0, m.start() - 160):m.end() + 160]), re.I):
+            saida["vigencia_dias"] = int(m.group(1))
+            break
+    revoga = sorted({m.group(1).rstrip(".") for m in RE_REVOGA.finditer(ato or "")})
+    if revoga:
+        saida["revoga"] = revoga
+    return saida
+
+
 def julgar_declaracao(texto: str, item: dict, tipo: str, uf: str) -> tuple:
     """(registro | None, motivo). Função pura: entra só o ato que declara, de quem pode, no ciclo."""
     from coletar_espin import INICIO_CICLO, ORGAO_QUE_DECLARA, classificar_ato
@@ -884,8 +906,10 @@ def julgar_emergencias(anteriores, espin_busca: dict, ocorrencias: dict, registr
             nao_lidos.add(uf)
         return corpo, texto
 
-    def decidir(corpo, texto, item, tipo, uf):
+    def decidir(corpo, texto, item, tipo, uf, ato_inteiro=None):
         e, motivo = julgar_declaracao(texto, item, tipo, uf)
+        if e:
+            e.update(vigencia_e_revogacao(ato_inteiro if ato_inteiro is not None else texto))
         if not e:
             abstencoes.append({"url": item.get("url"), "uf": uf, "motivo": motivo})
         elif not any((x.get("url"), x.get("uf"), x.get("documento")) == (e["url"], uf, e["documento"]) for x in confirmadas):
@@ -914,8 +938,16 @@ def julgar_emergencias(anteriores, espin_busca: dict, ocorrencias: dict, registr
                     abstencoes.append({"url": oc.get("url"), "uf": uf, "motivo": "declaração sem decreto datado identificado"})
                     continue
                 data_ato = f"{int(d.group(1)):02d}/{MESES_DO_ATO[d.group(2).lower()]:02d}/{d.group(3)}"
-                decidir(corpo, texto[atos[-1].start():m.end() + 200],
-                        {"titulo": atos[-1].group(0), "url": oc.get("url"), "data": data_ato}, "decreto_estadual", uf)
+                ini = atos[-1].start()
+                prox = next((x.start() for x in RE_CABECALHO_DECRETO.finditer(texto, atos[-1].end())), len(texto))
+                decidir(corpo, texto[ini:m.end() + 200],
+                        {"titulo": atos[-1].group(0), "url": oc.get("url"), "data": data_ato}, "decreto_estadual", uf,
+                        ato_inteiro=texto[ini:min(prox, ini + 12000)])
+    for r in confirmadas:   # o ato que revoga outro marca o revogado, que fica no histórico
+        for n in r.get("revoga") or []:
+            for o in confirmadas:
+                if o is not r and o.get("uf") == r.get("uf") and n in str(o.get("documento") or ""):
+                    o["revogado_por"] = r.get("documento")
     federal = ({"consultado_em": fed.get("consultado_em"), "janela": fed.get("janela")}
                if fed.get("situacao") in ("nenhuma_declaracao_localizada", "declaracao_localizada")
                and not fed.get("leitura_parcial") and "BR" not in nao_lidos
@@ -1274,6 +1306,12 @@ def autoteste() -> int:
     e3, _ = julgar_emergencias(None, {}, {"ufs": {"PB": {"2026-09-10": {"url": "e.html", "achados": [{"classe": "declaracao"}]}}}}, {},
                                buscar_fn=lambda u, **k: t_dec.replace("2026. O", "2025. O").encode(), preservar_fn=lambda *a: "h")
     casos["decreto antigo republicado no ciclo não entra: vale a data do ato"] = lambda: e3 == []
+    t_am = ("DECRETO Nº 55.965, DE 26 DE OUTUBRO DE 2026. O GOVERNADOR DO ESTADO DO AMAZONAS declara situação de "
+            "emergência em saúde pública. Art. 1º Fica declarada situação de emergência em saúde pública. "
+            "Art. 8º A emergência vigorará por 180 (cento e oitenta) dias. Art. 9º Revoga o Decreto nº 55.767, de 13 de outubro de 2026.")
+    casos["vigência declarada no ato e decreto revogado saem do texto"] = (
+        lambda: vigencia_e_revogacao(t_am) == {"vigencia_dias": 180, "revoga": ["55.767"]}
+        and vigencia_e_revogacao("Fica declarada a emergência.") == {})
     _HOSTS_SEM_RESPOSTA.clear()
     v1 = julgar_pista({"url": "https://morto.ap.gov.br/a.pdf", "uf": "AP"}, buscar_fn=cai)
     v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)
