@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Pacote 1 · Imprensa e Blog: textos aprovados
+Imprensa: os quatro títulos de "Como ler" passam a dizer o que o texto responde, sem interrogação (o portão de texto público a veda) e sem tirar ressalva. Blog: a abertura começa pela finalidade e mantém a produção por inteligência artificial e a aprovação da editoria; o link dos cartões passa a "Ler a matéria". Proteja-se PR-01 não entra: a página não tem seletor de temas.
+
 ## 2026-10-29 · Redução: seis funções sem chamador saem (−39 líquidas)
 
 Saem `htmlGuia`, `popLinha` e `POP_UF` (index.js), `opcoesDeEixoSemanal` e `primeiraSemanaComValor` (saude.js), `_hoje_iso` (julgar_filas.py) e `ErroDoGh` (checagem_pre_noite.py): nenhum chamador em código, workflow ou página. Sem mudança de comportamento. Linhas: +1/−40.
