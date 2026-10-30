@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>30/10/2026 · O id da pista nasce na porta (+21/−14)</dt>
+      <dd>A fórmula do id (sha1 de ibge, url e trecho) existia em três cópias (`revisar_pistas`, `seguir_pistas`, `triar_confianca_pistas`) e a porta `scripts/pistas.py` deixava entrar pista sem id (31 de SC, 30/10). Passa a haver uma só, `id_da_pista`, aplicada em `normalizar`; as três cópias importam dela. Ids já gravados não mudam. Saldo positivo: um caso de teste novo (+4).</dd>
       <dt>30/10/2026 · Saúde: fórmula do índice nacional diz indice_uf (+3/−3)</dt>
       <dd>`gerar_monitor_saude.py` emitia `nota_uf` na fórmula de agregação nacional (`monitor_saude.json`, `agregacao_nacional.formula`) e no docstring; passa a `indice_uf`, pela regra de vocabulário da editoria (29/10/2026). Só o texto da fórmula muda; nenhum valor, peso ou crédito.</dd>
       <dt>29/10/2026 · Pacote 1 de UX: textos da Imprensa, Para gestores e Proteja-se</dt>
@@ -165,8 +167,6 @@
       <dd>A reaplicação e o rebase (`_coletor.yml`) gravavam `data/evidencias.json` sem `evidencias/`; 19 textos de descobrir_planos (23/10) ficaram sem arquivo e reprovaram a main. Regerados dos binários preservados (hash confere); um sem binário teve o claim de texto retirado para reler pela URL; OCR refeito na fila. O commit passa a incluir `evidencias/`.</dd>
       <dt>25/10/2026 · Saúde: mapa por tipo de plano, consulta em cartões, sem seção federal</dt>
       <dd>A situação de cada estado vira um mapa pelo tipo de plano, com as siglas como botões que abrem a ficha; a coordenação se preenche com o dado. Saem a grade de ladrilhos, o cartão de risco previsto e a seção federal. A consulta sobe e usa cartões, como o Proteja-se. Abertura reescrita; o texto &quot;sem tempo&quot; vale.</dd>
-      <dt>25/10/2026 · Saúde: abertura nova, decretos de emergência em saúde e cartões com os estados acima da faixa habitual</dt>
-      <dd>Abertura reescrita pela editoria. O medidor de emergências fala como o da inicial (decretos, sem dado vazio). Quatro cartões leem `topo_saude.json`: semana consolidada, valor do país e quantos estados estão acima da faixa habitual; o calor virou linha de contexto. Cartão aceita &quot;consultado em&quot; na fonte. Saem blocos de script sem elemento na página.</dd>
     </dl>
   </section>
 </main>
