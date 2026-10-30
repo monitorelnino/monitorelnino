@@ -22,6 +22,10 @@ AS DUAS RÉGUAS
 
   **Crescimento, 20% numa execução.** Dado que cresce por rotina cresce devagar — o log de buscas
   ganha alguns por cento por noite. Vinte por cento num passo é duplicação, não coleta.
+  Exceção medida (central, 30/10/2026): arquivo JSON de registros que passa de 20% mas cujos
+  registros únicos crescem ao menos tanto quanto os bytes, numa lista sem repetição, é leitura
+  nova (backfill do juiz), não duplicação. Arquivo concatenado a si mesmo não passa: os únicos não
+  crescem.
 
 O que o portão NÃO cobra: o que está no `.gitignore`. `evidencias/` tem 4,1 GB e não é versionado;
 cobrar tamanho dele seria cobrar o que o git não carrega.
@@ -55,12 +59,38 @@ def acima_do_teto(tamanhos: dict, teto_mb: float = TETO_MB) -> list:
                   for c, b in (tamanhos or {}).items() if mb(b) > teto_mb)
 
 
+def _listas(obj) -> dict:
+    """{caminho: lista de registros} de um JSON: a lista da raiz ou as listas de topo do objeto."""
+    if isinstance(obj, list):
+        return {"": obj}
+    if isinstance(obj, dict):
+        return {k: v for k, v in obj.items() if isinstance(v, list)}
+    return {}
+
+
+def _unicos(lista) -> int:
+    import json
+    return len({json.dumps(x, sort_keys=True, ensure_ascii=False) for x in lista})
+
+
+def novidade_real(antes_obj, agora_obj, taxa_bytes: float) -> bool:
+    """Função pura. Há uma lista sem repetição cujos registros únicos cresceram ao menos `taxa_bytes`?"""
+    antes_l = _listas(antes_obj)
+    for nome, lista in _listas(agora_obj).items():
+        base = _unicos(antes_l.get(nome) or [])
+        unicos = _unicos(lista)
+        if base and unicos == len(lista) and (unicos - base) / base >= taxa_bytes:
+            return True
+    return False
+
+
 def cresceu_demais(antes: dict, agora: dict, limite: float = CRESCIMENTO_MAXIMO,
-                   piso_mb: float = PISO_PARA_CRESCIMENTO_MB) -> list:
+                   piso_mb: float = PISO_PARA_CRESCIMENTO_MB, legitimo=None) -> list:
     """Os arquivos que cresceram além do limite. Função pura.
 
     Arquivo novo não entra: ele não "cresceu", ele nasceu — e um arquivo novo grande é problema do
-    teto, que já o pega.
+    teto, que já o pega. `legitimo(caminho, taxa)` (opcional) absolve o crescimento que traz
+    registros únicos novos (ver `novidade_real`).
     """
     fora = []
     for caminho, depois in sorted((agora or {}).items()):
@@ -70,7 +100,7 @@ def cresceu_demais(antes: dict, agora: dict, limite: float = CRESCIMENTO_MAXIMO,
         if depois <= antes_b:
             continue
         taxa = (depois - antes_b) / antes_b
-        if taxa > limite:
+        if taxa > limite and not (legitimo and legitimo(caminho, taxa)):
             fora.append(f"{caminho}: {mb(antes_b)} MB → {mb(depois)} MB "
                         f"(+{round(taxa * 100)}% numa execução)")
     return fora
@@ -90,6 +120,15 @@ def tamanhos_em(revisao: str) -> dict:
         if len(partes) == 5 and partes[3].isdigit():
             fora[partes[4].strip()] = int(partes[3])
     return fora
+
+
+def _json_em(revisao: str, caminho: str):
+    """O JSON do arquivo naquela revisão, ou None se não for JSON legível. Lê o git; não escreve."""
+    import json
+    try:
+        return json.loads(_git("show", f"{revisao}:{caminho}").stdout)
+    except ValueError:
+        return None
 
 
 def _autoteste() -> int:
@@ -126,10 +165,23 @@ def _autoteste() -> int:
        "28.0 MB → 56.0 MB" in cresceu_demais({"a.json": 28 * MB}, {"a.json": 56 * MB})[0])
     ok("sem revisão anterior, nada é acusado", cresceu_demais({}, {}) == [])
 
+    # Backfill legítimo: 4.951 → 9.221 registros únicos (+86%) com os bytes em +74% passa;
+    # o mesmo arquivo concatenado a si mesmo (únicos parados) é barrado.
+    reg = lambda a, b: [{"ibge": str(i), "criterios": "x" * 20} for i in range(a, b)]
+    ok("registros únicos novos absolvem o crescimento",
+       novidade_real({"decisoes": reg(0, 4951)}, {"decisoes": reg(0, 9221)}, 0.74))
+    ok("arquivo concatenado a si mesmo não é novidade",
+       not novidade_real({"decisoes": reg(0, 4951)}, {"decisoes": reg(0, 4951) * 2}, 0.74))
+    ok("únicos que crescem menos que os bytes não absolvem",
+       not novidade_real({"decisoes": reg(0, 4951)}, {"decisoes": reg(0, 6000)}, 0.74))
+    ok("lista de raiz também conta", novidade_real(reg(0, 10), reg(0, 40), 0.5))
+    ok("cresceu_demais respeita o veredito de legitimidade",
+       cresceu_demais({"a.json": 28 * MB}, {"a.json": 56 * MB}, legitimo=lambda c, t: True) == [])
+
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
-        if nome_obj in ("_autoteste", "main", "_git", "tamanhos_em"):
+        if nome_obj in ("_autoteste", "main", "_git", "tamanhos_em", "_json_em"):
             continue
         if getattr(obj, "__module__", None) not in (__name__, None):
             continue
@@ -158,7 +210,10 @@ def main(argv: list) -> int:
     contra = argv[argv.index("--contra") + 1] if "--contra" in argv else "HEAD~1"
     antes = tamanhos_em(contra)
     if antes:
-        problemas += cresceu_demais(antes, agora)
+        def legitimo(caminho, taxa):
+            return caminho.endswith(".json") and novidade_real(
+                _json_em(contra, caminho), _json_em("HEAD", caminho), taxa)
+        problemas += cresceu_demais(antes, agora, legitimo=legitimo)
 
     if problemas:
         print(f"✗ TAMANHO DOS DADOS: {len(problemas)} problema(s):")
