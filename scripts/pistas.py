@@ -79,6 +79,7 @@ ORIGEM_CANONICA = {
     "rebaixamento": "revisao",
     "agencia_oficial": "descoberta",
     "buscador2": "busca_web",     # 26/10/2026: o seguidor do Buscador 2 (`seguir_pistas.py`)
+    "preprint_30-10": "descoberta",   # 30/10/2026: municípios com endereço oficial achados pela busca do preprint
 }
 
 # A ausência de origem não se adivinha pela fila em que a pista mora: ela é LACUNA DECLARADA, com
@@ -369,6 +370,8 @@ def _autoteste() -> int:
     n = normalizar(REDE)
     ok("a origem do coletor vira a origem canônica do esquema", n["origem"] == "rede_social")
     ok("a origem do coletor fica registrada", n["origem_do_coletor"] == "rede_social_oficial")
+    ok("a origem do preprint (30/10) vira descoberta e a porta a aceita",
+       normalizar(BUSCA, "preprint_30-10")["origem"] == "descoberta" and "descoberta" in origens_validas())
     ok("url_final sai da url quando ela não é redirecionador",
        n["url_final"] == REDE["url"])
     ok("o alvo sai do código IBGE", n["alvo"] == "5002209")
