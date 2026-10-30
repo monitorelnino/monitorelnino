@@ -263,7 +263,8 @@ def derivar(nome: str, ler_fn=ler, gravar_fn=gravar) -> bool:
                  anos_preliminares=[orig.get("ano_corrente")] if orig.get("ano_corrente") else [],
                  n_parciais=n, populacao=populacao_por_uf(ler_fn), anterior=anterior)
     if anterior and {u: v for u, v in anterior.get("serie", {}).items() if u != "BR"} == serie \
-            and anterior.get("lacunas") == obj["lacunas"] and anterior.get("rotulo") == obj["rotulo"]:
+            and anterior.get("lacunas") == obj["lacunas"] and anterior.get("rotulo") == obj["rotulo"] \
+            and anterior.get("coletado_em") == obj["coletado_em"]:
         print(f"{nome}: {cfg['origem']} sem mudança; nada a regravar"); return False
     return gravar_desfecho(obj, gravar_fn=gravar_fn)
 
@@ -399,7 +400,10 @@ def _t_derivar():
     def g(n, o, compacto=False): banco[n] = o; escritos.append(n)
     ok1 = derivar("dengue", ler_fn=banco.get, gravar_fn=g); ok2 = derivar("dengue", ler_fn=banco.get, gravar_fn=g)
     o = banco[caminho("dengue")]
-    return (ok1 and not ok2 and escritos == [caminho("dengue")] and o["serie"]["CE"]["2026-39"] == 1
+    orig["gerado_em"] = "20/10/2026"   # nova consulta, mesma série: só a data de consulta anda
+    ok3 = derivar("dengue", ler_fn=banco.get, gravar_fn=g)
+    data_anda = ok3 and banco[caminho("dengue")]["coletado_em"] == "2026-10-20" and banco[caminho("dengue")]["serie"]["CE"]["2026-39"] == 1
+    return (data_anda and ok1 and not ok2 and escritos[:1] == [caminho("dengue")] and o["serie"]["CE"]["2026-39"] == 1
             and o["parcial"] == ["2026-38", "2026-39"] and o["periodo"] == "semana" and o["coletado_em"] == "2026-10-16"
             and orig["serie"]["CE"]["2026-38"] is None)
 

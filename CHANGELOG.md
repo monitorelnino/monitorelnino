@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Chikungunya e dengue: semana sem notificação é zero, não ausência (+34/−6)
+
+Microdado do SINAN só tem linha onde houve notificação. `completar_semanas` completa com 0 cada UF até a última semana coberta pelo arquivo do ano (SINAN e SRAG); `_defasadas` fica para fonte agregada. `coletado_em` passa a andar com a consulta à origem, sem mudar a série. Casos de teste nos dois. Derivados regerados pelo noturno.
+
 ## 2026-10-30 · Mortalidade comparada: gerador do quadro (dado) · +171/−0 em código
 `gerar_mortalidade_comparada.py` grava `saude_desfechos/mortalidade_comparada.json`: por UF e BR, de julho/2026 em diante, óbitos de cartório, faixa e média de 2019 e 2022–2025, excesso observado (método v1, mês parcial sem número), SIM X30 e projeção CIL como lacunas declaradas. Sem página nem elo ainda.
 
