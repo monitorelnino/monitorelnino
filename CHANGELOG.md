@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Frescor do alerta: 24 h de cadência mais 2 h de folga (+3/−1)
+
+A coleta de alertas é diária; com limite de 24 h exatas, o arquivo passa o limite minutos antes da coleta da noite e a `main` fica vermelha na abertura (F28, 24,2 h em 30/10). O portão de frescor passa a 26 h, a mesma lógica dos 9 dias do semanal. A página segue avisando o leitor aos 24 h.
+
 ## 2026-10-30 · Autoteste do juiz sem data fixa (+2/−2)
 
 O autoteste de `julgar_filas.py` comparava o back-off com datas escritas no código (28/09 e 30/10); a pista adiada nasce do dia real, e em 30/10 o caso "volta depois do back-off" reprovou a `main`. Agora o teste lê o dia real e soma dois dias. Sem mudança de comportamento do juiz.
