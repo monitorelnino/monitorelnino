@@ -78,7 +78,7 @@ Atualizado em 30/10/2026.
 | `coletar_diarios_consorciados.py` | — | `atos_resposta.json` | — | — | não |
 | `coletar_diarios_municipais.py` | — | `atos_resposta.json`, `cobertura_qd.json` | — | 5 | não |
 | `coletar_doe.py` | — | `atos_resposta.json`, `fontes_doe.json`, `{base}/apifront/portal/edicoes/edicoes_from_data/{data}.json` | — | 2 | não |
-| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 3 | não |
+| `coletar_edicoes_doe.py` | — | `doe_ocorrencias.json` | — | 4 | não |
 | `coletar_espin.py` | — | `saude_sinais.json` | — | 1 | não |
 | `coletar_execucao_mps.py` | — | `financiamento/mps_2026.json` | — | — | não |
 | `coletar_financiamento.py` | — | `compromissos_federais.json`, `consultas.json`, `emendas.json`, `financiamento_uf.json`, `por_uf.json`, `recursos_uf.json` (+2) | — | — | não |

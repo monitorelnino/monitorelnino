@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1371 · Painel da noite mostra a rota parada do diário oficial
+
+O painel da noite lista a UF cujo diário oficial não deu edição lida há mais de sete dias (ou nenhuma até hoje), a partir da data da última edição lida que o coletor já grava. Só acompanhamento: não bloqueia a noite nem a publicação. Código +19/−0.
+
 ## 2026-10-30 · #1370 · Diário oficial estadual: termos do MARÉ Legal viram pista; última edição lida por UF
 
 O canal 2 procura também "El Niño", "plano de contingência", "comitê", "gabinete" e "estiagem" (os três últimos só ao lado de "El Niño"). Acerto com plano ou órgão no trecho vira pista estadual pela porta única, com edição, página e trecho; o índice de saúde não muda. Cada UF grava a data da última edição lida. Edições lidas antes são relidas uma vez. Código +76/−6.

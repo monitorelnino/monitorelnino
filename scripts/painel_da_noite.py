@@ -154,6 +154,18 @@ def estado_do_blog(pacotes: list, textos: list, hoje: str) -> dict:
     return fora
 
 
+def rotas_paradas(registros: dict, hoje: str, dias: int = 7) -> list:
+    """UFs cujo DOE não deu edição lida nos últimos `dias`: [(uf, última lida AAAA-MM-DD ou "")]. Função pura.
+
+    A data vem de `coletar_edicoes_doe.ultima_edicao_lida`, a mesma que o `--relatorio` do coletor imprime.
+    Caso de origem: o DOE de 14 UFs ficou parado de 19–20/10 a 30/10 sem ninguém ver (30/10/2026).
+    Acompanhamento, não bloqueio: a rota que nunca leu aparece com data vazia.
+    """
+    from coletar_edicoes_doe import ultima_edicao_lida
+    limite = (dt.date.fromisoformat(hoje) - dt.timedelta(days=dias)).isoformat()
+    return sorted((uf, u) for uf, r in registros.items() for u in [ultima_edicao_lida(r)] if u < limite)
+
+
 def noite_abriu(linhas: list, noite: str) -> bool:
     """A noite abriu, isto é: o elo de abertura tem linha nesta noite? Função pura."""
     return any(l.get("noite") == noite and l.get("elo") == ELOS[0] for l in (linhas or []))
@@ -229,6 +241,10 @@ def _autoteste() -> int:
     ok("F44: duas execuções no mesmo minuto são duas linhas", len(unir_paineis([_p1, _p2], [_p1, _p2])) == 2)
     ok("F44: linha repetida num lado continua repetida", unir_paineis([_a, _a], [_a]) == [_a, _a])
     ok("F44: acréscimo dos dois lados entra", unir_paineis([_a, _c], [_a, _d], base=[_a]) == [_a, _c, _d])
+    _lida = lambda d: {"edicoes": {d: {"decisao": "lida"}}}
+    ok("rota parada: UF sem leitura há mais de 7 dias entra, com ou sem data; a recente não",
+       rotas_paradas({"AL": _lida("2026-10-28"), "AM": _lida("2026-10-19"), "SE": {"edicoes": {}}}, "2026-10-30")
+       == [("AM", "2026-10-19"), ("SE", "")])
     ok("minutos no mesmo dia", minutos_entre("01:00", "04:47") == 227)
     ok("minutos virando a meia-noite", minutos_entre("23:30", "00:15") == 45)
     ok("hora ilegível não quebra", minutos_entre("x", "01:00") is None)
@@ -492,6 +508,9 @@ def main() -> int:
     fora = [l["elo"] for l in desta if not l["dentro_da_janela"]]
     if faltaram:
         print(f"   elo(s) que não rodaram: {', '.join(faltaram)}")
+    registros = {f.stem: json.loads(f.read_text(encoding="utf-8")) for f in sorted((RAIZ / "data" / "doe_edicoes").glob("??.json"))}
+    for uf, ultima_lida in rotas_paradas(registros, ultima):
+        print(f"   rota parada: DOE-{uf} sem edição lida {'desde ' + ultima_lida if ultima_lida else '(nenhuma até hoje)'}")
     if "--recuperar-da-api" in sys.argv:
         n = ""
         if "--noite" in sys.argv:
