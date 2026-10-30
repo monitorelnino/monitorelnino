@@ -335,11 +335,11 @@
    "id": "reavaliacao_defeso",
    "workflow": "reavaliacao_defeso.yml",
    "finalidade": "reavalia as fontes suspensas por defeso todo dia até 25/11/2026 (fim do período eleitoral em 25/10); depois sai e a cadência volta a semanal",
-   "cron_primario": "20 10 * * *",
-   "cron_reserva": "50 10 * * *",
+   "cron_primario": "20 5 * * *",
+   "cron_reserva": "26 6 * * *",
    "janela": {
-    "inicio_utc": "10:00",
-    "fim_utc": "12:00"
+    "inicio_utc": "05:00",
+    "fim_utc": "08:00"
    },
    "devido_quando": "não há execução concluída hoje",
    "tolerancia_atraso_min": 120,

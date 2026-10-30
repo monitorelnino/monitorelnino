@@ -9,8 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-30 · #PR · O modo paralelo do juiz sai do código (+1/−681)
+## 2026-10-30 · #1368 · O modo paralelo do juiz sai do código (+1/−681)
 O juiz 1.8 é o de produção desde hoje. Saem `scripts/rejulgar_decisoes_do_juiz.py` (rodada paralela e rejulgamento de 28/09), os helpers `_18` de `scripts/pistas.py` e do `seguir_pistas.py`. `data/paralelo_*18.json` ficam como registro, sem escritor.
+
+## 2026-10-30 · #PR · Reavaliação do defeso passa para dentro da janela da noite (+5/−5)
+
+Causa: o cron das 10:20 UTC caía fora da janela 01–09; a guarda parava o run em verde e nada era gravado, e `fontes_suspensas.json` ficou parado em 27/10. Cron passa a 05:20 e 06:26 UTC; temporizador ajustado. Sem código novo.
 
 ## 2026-10-30 · #1359 · Leitor único de documento para as fontes de plano sem leitura (+59/−0)
 `scripts/sondar_documento.py`: baixa um PDF ou página pela porta de rede do projeto e imprime os trechos dos termos pedidos; só leitura, não grava em `data/`. Serve a S10, S17, S19, S26 e S30 da matriz de planos, no lugar de um script por fonte.

@@ -2,7 +2,7 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "19/10/2026",
+  "em": "30/10/2026",
   "conta_como_consultado": true
  },
  "edicoes": {
@@ -935,7 +935,118 @@
    "decisao": "sem_edicao_na_data",
    "em": "19/10/2026",
    "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-30": {
+   "decisao": "sem_edicao_na_data",
+   "em": "30/10/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
+  },
+  "2026-10-29": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 10663508,
+   "paginas": 104,
+   "paginas_com_texto": 104,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.29.DOE.pdf",
+   "impressao": "1c9461db7bfa8c94b9ee68c989d6dc967512e083488ee5a1b120bb9fffa71179",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "termos_achados": []
+  },
+  "2026-10-28": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 12576532,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.28.DOE.pdf",
+   "impressao": "41770b3a16278055e15cae283efe719fc352548cf444211fe8bb6e5a0caf94f9",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "hash_evidencia": "41770b3a16278055e15cae283efe719fc352548cf444211fe8bb6e5a0caf94f9",
+   "termos_achados": [
+    "grupo condutor",
+    "El Niño"
+   ]
+  },
+  "2026-10-27": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 5217849,
+   "paginas": 63,
+   "paginas_com_texto": 63,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.27.DOE.pdf",
+   "impressao": "21a0628aa8145d5587ca6c55fab1888b6889bc948031b8f0a467616b5b8ca73c",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "termos_achados": []
+  },
+  "2026-10-26": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 12576209,
+   "paginas": 101,
+   "paginas_com_texto": 101,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.26.DOE.pdf",
+   "impressao": "3789977bff15d19bc23d9b5f2ac6bc4908a52b112a7fb789eaaf9efa79a21e7b",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "termos_achados": []
+  },
+  "2026-10-23": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 3757351,
+   "paginas": 124,
+   "paginas_com_texto": 124,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.23.DOE.pdf",
+   "impressao": "d7bec2961d570d63955166bff4b2c2657f9587c9b0f3232184b294f0caf45a09",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "hash_evidencia": "d7bec2961d570d63955166bff4b2c2657f9587c9b0f3232184b294f0caf45a09",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-10-22": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 20605793,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.22.DOE.pdf",
+   "impressao": "61c08321e04f2472cabc689d5d2f84c7d04d9c7c33a9330a304ac24493151b87",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "termos_achados": []
+  },
+  "2026-10-21": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 3334141,
+   "paginas": 137,
+   "paginas_com_texto": 137,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.21.DOE.pdf",
+   "impressao": "229195c1516d8fb494cc9d0af029fcd66bd7f71ed193a36eb1c690e2aa5994dc",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "hash_evidencia": "229195c1516d8fb494cc9d0af029fcd66bd7f71ed193a36eb1c690e2aa5994dc",
+   "termos_achados": [
+    "emergência climática"
+   ]
+  },
+  "2026-10-20": {
+   "decisao": "lida",
+   "em": "30/10/2026",
+   "bytes": 2811734,
+   "paginas": 116,
+   "paginas_com_texto": 116,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.10.20.DOE.pdf",
+   "impressao": "72ae9eca9cdeab5786582cbd22b584c4b5f243e30e97c0847b9d87142a55ce20",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "termos_achados": []
   }
  },
- "atualizado_em": "19/10/2026"
+ "atualizado_em": "30/10/2026"
 }
