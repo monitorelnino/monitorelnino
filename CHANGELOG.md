@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Portão de tamanho: backfill de registros únicos não é duplicação
+
+`verificar_tamanho_dos_dados.py` absolve o crescimento acima de 20% de um JSON quando uma lista sem repetição ganha registros únicos na mesma proporção dos bytes; arquivo concatenado a si mesmo segue barrado. Destrava o dado do lote 19 do juiz. Sem portão novo (+60/−5).
+
 ## 2026-10-30 · Proteja-se: apoio das orientações (PR-01)
 
 A abertura da página passa a dizer o que as orientações abaixo indicam: preparar-se, o que fazer durante o evento e quando procurar ajuda. Substitui a frase anterior, que repetia o mesmo conteúdo, e mantém o aviso de que não substitui a Defesa Civil local.
