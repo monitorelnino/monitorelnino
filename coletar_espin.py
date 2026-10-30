@@ -43,7 +43,7 @@ from datetime import date
 
 from coletores_base import (buscar, ler, gravar, log_busca, registrar_lacuna, rodar_autoteste,
                             preservar_evidencia, parse_busca_dou, varrer_busca_dou,
-                            FormatoDoDOUMudou, RAIZ, hoje_editorial)
+                            FormatoDoDOUMudou, RAIZ, hoje_editorial, desde_de)
 
 INICIO_CICLO = "2026-06-29"          # primeiro boletim do Painel El Niño; o ciclo começa aqui
 RITMO_S = 2.0                        # §11: no máximo uma requisição a cada 2 s por domínio
@@ -187,7 +187,7 @@ def montar_registro(itens: list, desde: str, ate: str, strings: list,
 
 
 def coletar(args) -> int:
-    desde = args[args.index("--desde") + 1] if "--desde" in args else INICIO_CICLO
+    desde = desde_de(args, INICIO_CICLO)
     ate = hoje_editorial().isoformat()
     d0, d1 = date.fromisoformat(desde), date.fromisoformat(ate)
     sinais = ler("saude_sinais.json")
@@ -392,6 +392,9 @@ def autoteste() -> int:
 
     return rodar_autoteste({
         "DOU: lê os resultados da página de consulta": t1,
+        "leitura incremental: --ultimos-dias, --desde e o padrão dão o início certo": lambda: (
+            desde_de(["--ultimos-dias", "4"], "2026-06-29", date(2026, 10, 30)) == "2026-10-26"
+            and desde_de(["--desde", "2026-10-01"], "x") == "2026-10-01" and desde_de([], "2026-06-29") == "2026-06-29"),
         "negativo: página sem a estrutura de resultados levanta, não devolve zero": t2,
         "lido o ato, classifica: declara, prorroga, encerra, menciona": t3,
         "sem abrir o ato, verbo no excerto é incerto — nunca declaração": t4,

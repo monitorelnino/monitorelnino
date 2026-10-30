@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1356 · DOE incremental e decretos de emergência, seg/qua/sex (+36/−2)
+
+Novo elo `doe-incremental` (segunda, quarta e sexta, 02:17 UTC): lê as edições dos DOE das 27 UFs dos últimos 4 dias e, em seguida, procura ato estadual de emergência em saúde (`coletar_espin.py`). Para isso `--ultimos-dias N` entra nos dois coletores por uma função única, `desde_de`. Decisão da editoria de 30/10: 2 a 3 vezes por semana, não todo dia. Temporizador registrado; ensaio simulado verde.
+
 ## 2026-10-30 · #1355 · O id da pista nasce na porta (+21/−14)
 
 A fórmula do id (sha1 de ibge, url e trecho) existia em três cópias (`revisar_pistas`, `seguir_pistas`, `triar_confianca_pistas`) e a porta `scripts/pistas.py` deixava entrar pista sem id (31 de SC, 30/10). Passa a haver uma só, `id_da_pista`, aplicada em `normalizar`; as três cópias importam dela. Ids já gravados não mudam. Saldo positivo: um caso de teste novo (+4).

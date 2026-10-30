@@ -1053,7 +1053,8 @@ def main() -> int:
     def arg(nome, padrao=None):
         return sys.argv[sys.argv.index(nome) + 1] if nome in sys.argv else padrao
 
-    desde = arg("--desde", INICIO_DO_CICLO)
+    from coletores_base import desde_de
+    desde = desde_de(sys.argv, INICIO_DO_CICLO)
     ate = arg("--ate", hoje_editorial().isoformat())
     if "--recuperacao" in sys.argv:
         # Toda UF com rota: a busca primeiro (minutos), as edições inteiras depois (o grosso do tempo).

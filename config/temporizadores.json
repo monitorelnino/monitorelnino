@@ -349,7 +349,9 @@
     "workflow_dispatch": true,
     "entradas": {}
    },
-   "quem_depende": ["semanal_espin_e_links"],
+   "quem_depende": [
+    "semanal_espin_e_links"
+   ],
    "gravidade": "media"
   },
   {
@@ -530,6 +532,29 @@
    "quem_depende": [
     "a checagem pré-noite",
     "a editoria (Issue no vermelho)"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "doe_incremental",
+   "workflow": "noturno_doe_incremental.yml",
+   "finalidade": "leitura incremental dos DOE das 27 UFs e conferência de decreto estadual de emergência, segunda, quarta e sexta (editoria, 30/10/2026)",
+   "cron_primario": "17 2 * * 1,3,5",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída nesta segunda, quarta ou sexta",
+   "tolerancia_atraso_min": 1440,
+   "idempotencia": "edição preservada por hash não se repete; a janela de 4 dias cobre o intervalo entre conferências",
+   "orcamento_min": 120,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "MARÉ Saúde",
+    "Defesa civil"
    ],
    "gravidade": "media"
   }
