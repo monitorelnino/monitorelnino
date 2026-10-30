@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-30 · #1371 · Painel da noite mostra a rota parada do diário oficial
+## 2026-10-30 · #1372 · Painel da noite mostra a rota parada do diário oficial
 
 O painel da noite lista a UF cujo diário oficial não deu edição lida há mais de sete dias (ou nenhuma até hoje), a partir da data da última edição lida que o coletor já grava. Só acompanhamento: não bloqueia a noite nem a publicação. Código +19/−0.
 
