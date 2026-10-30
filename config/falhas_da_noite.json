@@ -396,6 +396,7 @@
     "run 38494711100 (8a87e861, reproduzido local)"
    ],
    "correcao": "Verificadores julgam o modo vencido com a regra que já existia (`contadorDeAlerta`, `mapasCobrados`, `SEM_ATUALIZACAO`); a coerência não lê data como número e aplica o retrato datado também a \"sem dado\"; o cartão de tipos declara a parada pelo seu subtítulo. O portão de robustez passa a envelhecer os alertas (perturbação 7) e reprova a regressão.",
+   "recorrencia": "2026-10-30: `verificar_frescor` reprovou com 24,2 h (limite 24 h) minutos antes da coleta da noite; limite passa a 26 h (cadência 24 h + 2 h de folga).",
    "caso_de_teste": "scripts/verificar_imprensa_coerencia.py --autoteste: F28: coleta vencida nas duas páginas",
    "falta": null
   },
