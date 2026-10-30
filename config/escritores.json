@@ -110,8 +110,6 @@
     "selos/"
    ]
   },
-  "data/paralelo_juiz18.json": {"escritor": "coleta_de_dia.yml", "por_que": "Rodada paralela do juiz, codebook 1.8 (handover da central de 26/10/2026): escrito só por `scripts/rejulgar_decisoes_do_juiz.py --codebook 1.8` na válvula `coleta-dia/*`, por PR de dado; nenhuma página o lê."},
-  "data/paralelo_fila18.json": {"escritor": "coleta_de_dia.yml", "por_que": "Fila paralela do codebook 1.8 (regras B1–B6): escrita só pelo mesmo comando, na mesma válvula; não é fila de produção e nenhuma porta da noite a lê."},
   "data/evidencias.json": {
    "escritor": "qualquer_elo",
    "por_que": "Todo coletor indexa o que preserva (`preservar_evidencia`). Endereçado pelo sha256: o resolvedor une as entradas (`INDICES_POR_CHAVE` → `unir_indice`) desde 14/10/2026 (F55)."
