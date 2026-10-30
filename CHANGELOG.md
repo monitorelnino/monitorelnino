@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #PR · Juiz 1.8: a segunda leva (J14, J16, J19, J20) passa a valer
+
+Decisão da central de 30/10: as quatro regras medidas à parte entram no padrão do juiz; J8 e J9 seguem fora. A data do codebook sobe (1.8 de 30/10) e devolve ao juiz o que foi julgado sem elas. Nenhum peso ou crédito muda; MARÉ Legal nacional medido igual (40,7), ES +0,3. METODOLOGIA §126.
+
 ## 2026-10-30 · Pacote 1 · Imprensa e Blog: textos aprovados
 Imprensa: os quatro títulos de "Como ler" passam a dizer o que o texto responde, sem interrogação (o portão de texto público a veda) e sem tirar ressalva. Blog: a abertura começa pela finalidade e mantém a produção por inteligência artificial e a aprovação da editoria; o link dos cartões passa a "Ler a matéria". Proteja-se PR-01 não entra: a página não tem seletor de temas.
 
