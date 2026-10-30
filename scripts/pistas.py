@@ -90,7 +90,6 @@ ORIGEM_DESCONHECIDA = "desconhecida"
 # (rótulo no campo município), B2 (redirecionador), B3 e B8 (domínio admitido para o ente da pista) e
 # B11 (uma pista por URL normalizada). Notícia de veículo não oficial entra como ROTA: o seguidor tira
 # dela os links oficiais, e ela nunca vai ao juiz.
-from buscador2 import REDIRECIONADORES  # noqa: E402,F401 — o modo paralelo J18 lê daqui
 STATUS_NA_FILA = "pista — na fila, aguardando busca dirigida e juiz"
 STATUS_ROTA = ("rota — notícia de veículo não oficial: o Buscador 2 segue os links oficiais que ela "
                "cita; não vai ao juiz")
@@ -294,49 +293,6 @@ def motivo_de_recusa(pista: dict, existentes: list = None) -> str:
         return (f"origem '{origem}' não existe no esquema: use uma de "
                 f"{', '.join(sorted(origens_validas()))} ou declare a nova em schemas/pista.json")
     return ""
-
-
-# Codebook 1.8 — MODO PARALELO (handover de 26/10/2026). Só a fila `data/paralelo_fila18.json` usa isto;
-# a porta de produção (`gravar`, `gravar_lote`, `sincronizar`) não muda.
-SUFIXOS_PUBLICOS_18 = (".gov.br", ".leg.br", ".jus.br", ".mp.br", ".def.br")
-RE_ROTULO_DE_SETOR = re.compile(r"^[a-z]+_[a-z_]+$|^saude$")   # "defesa_civil", "saude": rótulo, não município
-
-
-def entrada_18(pista: dict, veiculos=frozenset()) -> tuple:
-    """B3: (aceita, papel). Entra só domínio público, diário oficial (inclusive as plataformas do J11),
-    Querido Diário e imprensa da lista declarada (`data/veiculos_imprensa.json`, só como pista). PURA."""
-    import urllib.parse as _url
-    from juiz import fonte_oficial
-    url = resolver_url_final(pista) or str((pista or {}).get("url") or "")
-    host = _url.urlparse(url).netloc.lower().split(":")[0]
-    if host.endswith(SUFIXOS_PUBLICOS_18):
-        return True, "dominio_publico"
-    if fonte_oficial(url):
-        return True, "diario_oficial"
-    if host and any(host == v or host.endswith("." + v) for v in veiculos):
-        return True, "imprensa_listada"
-    return False, f"fora da entrada 1.8: {host or 'sem endereço'}"
-
-
-def sem_rotulo_de_setor(pista: dict) -> dict:
-    """B1: pista da busca estadual que levou o rótulo do setor no lugar do município vira pista da UF."""
-    p = dict(pista or {})
-    if RE_ROTULO_DE_SETOR.match(str(p.get("municipio") or "")):
-        p["setor_18"], p["municipio"], p["ibge"] = p["municipio"], None, None
-        p["alvo"] = str(p.get("uf") or "").upper()
-    return p
-
-
-def prioridade_18(pista: dict) -> int:
-    """B6: 0 nível A · 1 documento oficial já conhecido · 2 nível B · 3 nível C. PURA."""
-    from juiz import EXTENSOES_DE_DOCUMENTO, fonte_oficial
-    nivel = resolver_nivel(pista)
-    url = resolver_url_final(pista).lower().split("?")[0]
-    if nivel == "A":
-        return 0
-    if fonte_oficial(url) and (url.endswith(EXTENSOES_DE_DOCUMENTO) or "queridodiario" in url):
-        return 1
-    return 2 if nivel == "B" else 3
 
 
 _ORIGENS = None
@@ -609,24 +565,6 @@ def _autoteste() -> int:
        not ({"gravar", "gravar_em", "write_text", "write_bytes", "rejeitar"} & nomes))
     ok("trava estrutural: as funções puras não vão à rede",
        not ({"buscar", "urlopen", "buscar_searxng"} & nomes))
-
-    # Codebook 1.8 (paralelo), uma linha por regra B do handover de 26/10/2026
-    ok("B1 rótulo de setor ('defesa_civil', 'saude') não é município: a pista vira da UF",
-       sem_rotulo_de_setor({"municipio": "defesa_civil", "uf": "ac"})["alvo"] == "AC"
-       and sem_rotulo_de_setor({"municipio": "saude", "uf": "SP"})["municipio"] is None
-       and sem_rotulo_de_setor({"municipio": "Bonito", "uf": "MS"})["municipio"] == "Bonito")
-    ok("B3 entrada: Reddit, empresa e CPFL fora; .gov.br, SIGPub, Querido Diário e imprensa listada dentro",
-       [entrada_18({"url": u}, {"jornal.com.br"})[0] for u in (
-           "https://www.reddit.com/r/x", "https://www.cristalconsult.com.br/pae", "https://www.cpfl.com.br/x",
-           "https://ouro.sc.gov.br/a", "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=1",
-           "https://data.queridodiario.ok.org.br/1/x.txt", "https://www.jornal.com.br/x")]
-       == [False, False, False, True, True, True, True]
-       and entrada_18({"url": "https://www.jornal.com.br/x"}, {"jornal.com.br"})[1] == "imprensa_listada")
-    ok("B6 prioridade: A, depois documento oficial conhecido, depois B, depois C",
-       [prioridade_18(p) for p in ({"nivel": "A", "url": "https://x.com/a"},
-                                   {"nivel": "C", "url": "https://ouro.sc.gov.br/plano.pdf"},
-                                   {"nivel": "B", "url": "https://x.com/a"}, {"nivel": "C", "url": "https://x.com/a"})]
-       == [0, 1, 2, 3])
 
     print(("✗ AUTOTESTE: " + str(len(falhas)) + " falha(s)") if falhas
           else f"✓ AUTOTESTE OK — {len(_casos_contados)} casos, sem rede e sem escrita.")

@@ -12,6 +12,8 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-30 · #1369 · Pacote de saúde do blog sem dado velho; vigência dos atos de emergência
 
 O pacote tratava a semana da fonte (2026-35) como data de hoje: agora dado com mais de nove dias vira lacuna com "sem atualização desde" (dengue, 05/09; SRAG, 03/10). O ato de emergência passa a registrar a vigência declarada (AM: 180 dias) ou a presumida de 180 dias, e o decreto revogado: sai do "em vigor" do índice de resposta e fica no histórico.
+## 2026-10-30 · #1368 · O modo paralelo do juiz sai do código (+1/−681)
+O juiz 1.8 é o de produção desde hoje. Saem `scripts/rejulgar_decisoes_do_juiz.py` (rodada paralela e rejulgamento de 28/09), os helpers `_18` de `scripts/pistas.py` e do `seguir_pistas.py`. `data/paralelo_*18.json` ficam como registro, sem escritor.
 
 ## 2026-10-30 · #1363 · Blog Saúde: emergência em saúde pública no Amazonas
 Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.
