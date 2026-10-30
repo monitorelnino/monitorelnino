@@ -180,6 +180,26 @@ def juntar(agregados: list) -> dict:
     return dict(out)
 
 
+def completar_semanas(serie: dict, referencia=None) -> dict:
+    """Microdado só tem linha onde houve notificação: UF sem linha numa semana que o arquivo cobre tem
+    ZERO notificações, não ausência. Completa com 0, por ano, cada UF até a última semana coberta (a maior
+    semana do BR no ano, declarada pela própria origem). Semana depois da cobertura segue ausente. Pura."""
+    uf_por_codigo("00", referencia)
+    mapa = _UF_POR_CODIGO if referencia is None else {str(x["codigo_ibge"])[:2]: x["uf"] for x in referencia}
+    ufs = set(mapa.values()) | {u for u in serie if u != "BR"}
+    ultima = {}
+    for per in serie.get("BR", {}):
+        ano, se = per.split("-")
+        ultima[ano] = max(ultima.get(ano, 0), int(se))
+    out = {u: dict(s) for u, s in serie.items()}
+    for uf in ufs:
+        s = out.setdefault(uf, {})
+        for ano, ate in ultima.items():
+            for se in range(1, ate + 1):
+                s.setdefault(f"{ano}-{se:02d}", 0)
+    return out
+
+
 def precisa_reler(cache: dict, ano: int, arquivo: str) -> bool:
     """Ano congelado só se relê quando o arquivo publicado muda de nome."""
     guardado = (cache.get("anos") or {}).get(str(ano))
@@ -193,6 +213,10 @@ def autoteste() -> int:
     REF = [{"codigo_ibge": 3205002, "uf": "ES", "nome": "Serra"},
            {"codigo_ibge": 3550308, "uf": "SP", "nome": "São Paulo"}]
 
+    esparsa = completar_semanas({"BR": {"2026-01": 3, "2026-02": 1}, "ES": {"2026-01": 3},
+                                 "SP": {"2026-02": 1}}, REF)
+    casos.append(("UF sem linha numa semana coberta vira 0", esparsa["ES"]["2026-02"] == 0 and esparsa["SP"]["2026-01"] == 0))
+    casos.append(("semana depois da cobertura segue ausente", "2026-03" not in esparsa["ES"] and esparsa["BR"] == {"2026-01": 3, "2026-02": 1}))
     casos.append(("código de UF vira sigla", uf_por_codigo("32", REF) == "ES"))
     casos.append(("código de município vira a UF dele", uf_por_codigo("352900", REF) == "SP"))
     casos.append(("código desconhecido não vira UF", uf_por_codigo("99", REF) is None))

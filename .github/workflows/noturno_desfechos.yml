@@ -36,6 +36,7 @@ jobs:
         desfechos_sus.py --derivar
         coletar_obitos.py
         coletar_sim.py --orcamento 600
+        gerar_mortalidade_comparada.py
         coletar_sih.py --orcamento 2400
         coletar_planos_arboviroses.py --orcamento 1500
         ler_planos_arboviroses.py
