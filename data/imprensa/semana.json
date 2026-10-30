@@ -465,9 +465,9 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 13,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "28/10/2026 22:05",
    "fonte": "Cemaden",
@@ -485,9 +485,9 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 1575,
+   "valor": null,
    "unidade": null,
-   "sem_coleta": false,
+   "sem_coleta": true,
    "periodo": null,
    "referencia": "28/10/2026 22:05",
    "fonte": "Inmet",
@@ -754,7 +754,10 @@
    "pagina_de_origem": "saude.html"
   }
  ],
- "sem_dado_nesta_edicao": [],
+ "sem_dado_nesta_edicao": [
+  "Municípios sob alerta do Cemaden",
+  "Municípios sob aviso do Inmet"
+ ],
  "nao_calculaveis": [
   {
    "id": "planos_localizados_no_periodo",
