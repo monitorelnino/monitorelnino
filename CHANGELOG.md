@@ -13,6 +13,22 @@ não pontuados permanecem na versão corrente.
 
 Decisão da central de 30/10: as quatro regras medidas à parte entram no padrão do juiz; J8 e J9 seguem fora. A data do codebook sobe (1.8 de 30/10) e devolve ao juiz o que foi julgado sem elas. Nenhum peso ou crédito muda; MARÉ Legal nacional medido igual (40,7), ES +0,3. METODOLOGIA §126.
 
+## 2026-10-30 · #1355 · O id da pista nasce na porta (+21/−14)
+
+A fórmula do id (sha1 de ibge, url e trecho) existia em três cópias (`revisar_pistas`, `seguir_pistas`, `triar_confianca_pistas`) e a porta `scripts/pistas.py` deixava entrar pista sem id (31 de SC, 30/10). Passa a haver uma só, `id_da_pista`, aplicada em `normalizar`; as três cópias importam dela. Ids já gravados não mudam. Saldo positivo: um caso de teste novo (+4).
+
+## 2026-10-30 · #1354 · Saúde: fórmula do índice nacional diz indice_uf (+3/−3)
+
+`gerar_monitor_saude.py` emitia `nota_uf` na fórmula de agregação nacional (`monitor_saude.json`, `agregacao_nacional.formula`) e no docstring; passa a `indice_uf`, pela regra de vocabulário da editoria (29/10/2026). Só o texto da fórmula muda; nenhum valor, peso ou crédito.
+
+## 2026-10-30 · Portão de tamanho: backfill de registros únicos não é duplicação
+
+`verificar_tamanho_dos_dados.py` absolve o crescimento acima de 20% de um JSON quando uma lista sem repetição ganha registros únicos na mesma proporção dos bytes; arquivo concatenado a si mesmo segue barrado. Destrava o dado do lote 19 do juiz. Sem portão novo (+60/−5).
+
+## 2026-10-30 · Proteja-se: apoio das orientações (PR-01)
+
+A abertura da página passa a dizer o que as orientações abaixo indicam: preparar-se, o que fazer durante o evento e quando procurar ajuda. Substitui a frase anterior, que repetia o mesmo conteúdo, e mantém o aviso de que não substitui a Defesa Civil local.
+
 ## 2026-10-30 · Pacote 1 · Imprensa e Blog: textos aprovados
 Imprensa: os quatro títulos de "Como ler" passam a dizer o que o texto responde, sem interrogação (o portão de texto público a veda) e sem tirar ressalva. Blog: a abertura começa pela finalidade e mantém a produção por inteligência artificial e a aprovação da editoria; o link dos cartões passa a "Ler a matéria". Proteja-se PR-01 não entra: a página não tem seletor de temas.
 

@@ -46,6 +46,7 @@ USO
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import pathlib
 import re
 import sys
@@ -221,6 +222,12 @@ def resolver_data(pista: dict) -> str:
     return ""
 
 
+def id_da_pista(p: dict) -> str:
+    """O id estável da pista: sha1(ibge|url|trecho)[:10]. A única fórmula; quem precisa do id importa daqui."""
+    base = f"{p.get('ibge') or ''}|{p.get('url') or ''}|{(p.get('trecho') or '')[:500]}"
+    return hashlib.sha1(base.encode("utf-8")).hexdigest()[:10]
+
+
 def normalizar(pista: dict, origem: str = "") -> dict:
     """A pista no esquema de `schemas/pista.json`, preservando tudo o que o coletor pôs. Função pura.
 
@@ -232,6 +239,7 @@ def normalizar(pista: dict, origem: str = "") -> dict:
     bruta = str(origem or p.get("origem") or p.get("rota") or "").strip()
     p["origem"] = ORIGEM_CANONICA.get(bruta, bruta)
     p["origem_do_coletor"] = bruta
+    p.setdefault("id", id_da_pista(p))   # 30/10/2026: o id nasce na porta, não no juiz (31 pistas SC entraram sem)
     p["url_final"] = resolver_url_final(p)
     p["alvo"] = resolver_alvo(p)
     p["nivel"] = resolver_nivel(p)
@@ -484,6 +492,10 @@ def _autoteste() -> int:
 
     # ---- a chave da pista ----
     ok("a chave usa o id quando ele existe", chave_da_pista({"id": "a1"}) == "id:a1")
+    ok("a porta dá o id estável à pista que chega sem ele e preserva o que veio",
+       normalizar({"ibge": "4217303", "url": "https://x.gov.br/a", "trecho": "t"}, "busca_web")["id"] == id_da_pista(
+           {"ibge": "4217303", "url": "https://x.gov.br/a", "trecho": "t"})
+       and normalizar({"id": "a1", "url": "u"}, "busca_web")["id"] == "a1")
     ok("sem id, a chave é url_final + alvo",
        chave_da_pista({"url_final": "https://x/1", "alvo": "9"}) == "url:https://x/1|9")
     ok("sem id, a url crua serve de chave",
