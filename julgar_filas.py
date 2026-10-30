@@ -484,13 +484,13 @@ def autoteste() -> int:
                   and "juiz" not in p_adiada
                   and p_adiada["status"].startswith("pista — promover")))
     import datetime as _dt
-    _hoje = _dt.date(2026, 9, 28)
+    _hoje = _hoje_data()    # o back-off nasce do dia real; data fixa envelhece e reprova o portão
     casos.append(("pista adiada NÃO volta hoje: espera o back-off",
                   not pendente(p_adiada, _hoje)))
     casos.append(("a data da próxima tentativa fica escrita na pista",
                   p_adiada.get("proxima_tentativa_em") is not None))
     casos.append(("pista adiada volta depois do back-off",
-                  pendente(p_adiada, _dt.date(2026, 10, 30))))
+                  pendente(p_adiada, _hoje + _dt.timedelta(days=2))))
     casos.append(("a tentativa fica no histórico, com classe e motivo",
                   p_adiada["juiz_tentativas"][-1]["classe"] == "tecnica"
                   and p_adiada["juiz_tentativas"][-1]["motivo"] == "documento_inacessivel"))

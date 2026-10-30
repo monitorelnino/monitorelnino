@@ -1,6 +1,6 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "29/10/2026",
+ "corte": "30/10/2026",
  "janela_dias": 7,
  "cartoes": [
   {
@@ -33,12 +33,12 @@
    "detalhe": "nenhuma portaria de resposta publicada nos últimos 7 dias",
    "sem_coleta": false,
    "municipios_semana": 0,
-   "valor_ciclo": 206846654.29,
-   "municipios_ciclo": 69,
+   "valor_ciclo": 210712071.13,
+   "municipios_ciclo": 74,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 185946693.63,
-    "resposta": 7021172.66
+    "recuperacao": 187476011.27,
+    "resposta": 9357271.86
    },
    "desde": "29/06/2026"
   },
@@ -90,18 +90,18 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 206846654.29,
+   "valor": 210712071.13,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "69 municípios",
+   "detalhe": "74 municípios",
    "sem_coleta": false,
-   "municipios": 69,
+   "municipios": 74,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 185946693.63,
-    "resposta": 7021172.66
+    "recuperacao": 187476011.27,
+    "resposta": 9357271.86
    }
   },
   {
@@ -488,10 +488,10 @@
    "cod_ibge": "1301852",
    "origem": "defesa_civil",
    "repassado": 435750.0,
-   "autorizado": null,
-   "ato": null,
-   "data": null,
-   "url": null,
+   "autorizado": 391334.57,
+   "ato": "Portaria 3.671",
+   "data": "2026-10-22",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.671-de-22-de-outubro-de-2026-740300238",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Iranduba",
@@ -3263,10 +3263,10 @@
    "cod_ibge": "4305587",
    "origem": "defesa_civil",
    "repassado": 364500.0,
-   "autorizado": 1019011.81,
-   "ato": "Portaria 3.307",
-   "data": "2026-09-29",
-   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.307-de-29-de-setembro-de-2026-738585334",
+   "autorizado": 2038023.62,
+   "ato": "Portaria 3.524",
+   "data": "2026-10-14",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.524-de-14-de-outubro-de-2026-739879676",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Colinas",
@@ -4733,11 +4733,29 @@
   "sem_sede": 0
  },
  "autorizado_sem_repasse": {
-  "corte": "29/10/2026",
+  "corte": "30/10/2026",
   "ultimo_mes_lido": "202609",
-  "n": 41,
-  "autorizado_total": 128879709.83,
+  "n": 45,
+  "autorizado_total": 131334780.29,
   "municipios": [
+   {
+    "cod_ibge": "1300300",
+    "nome": "Autazes",
+    "uf": "AM",
+    "autorizado": 574583.8,
+    "ato": "Portaria 3.682",
+    "data": "2026-10-22",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.682-de-22-de-outubro-de-2026-740361434"
+   },
+   {
+    "cod_ibge": "1301209",
+    "nome": "Coari",
+    "uf": "AM",
+    "autorizado": 884948.36,
+    "ato": "Portaria 3.680",
+    "data": "2026-10-22",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.680-de-22-de-outubro-de-2026-740368896"
+   },
    {
     "cod_ibge": "1303908",
     "nome": "São Paulo de Olivença",
@@ -4865,6 +4883,15 @@
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.967-de-9-de-setembro-de-2026-731361841"
    },
    {
+    "cod_ibge": "3122702",
+    "nome": "Dom Silvério",
+    "uf": "MG",
+    "autorizado": 510305.83,
+    "ato": "Portaria 3.601",
+    "data": "2026-10-19",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.601-de-19-de-outubro-de-2026-739703334"
+   },
+   {
     "cod_ibge": "3136009",
     "nome": "Joaíma",
     "uf": "MG",
@@ -4953,6 +4980,15 @@
     "ato": "Portaria 2.499",
     "data": "2026-08-04",
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.499-de-4-de-agosto-de-2026-724038782"
+   },
+   {
+    "cod_ibge": "4301602",
+    "nome": "Bagé",
+    "uf": "RS",
+    "autorizado": 485232.47,
+    "ato": "Portaria 3.607",
+    "data": "2026-10-20",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.607-de-20-de-outubro-de-2026-739950313"
    },
    {
     "cod_ibge": "4302808",
@@ -5137,21 +5173,21 @@
    },
    {
     "mes": "202610",
-    "defesa_civil": 4611978.26,
+    "defesa_civil": 8477395.1,
     "saude": null,
     "parcial": true
    }
   ],
   "saude_desde": "202607",
   "saude_ultimo_mes": "202609",
-  "total_defesa_civil": 206846654.29,
+  "total_defesa_civil": 210712071.13,
   "total_saude": 8247842.04
  },
  "funil_defesa_civil": {
-  "referencia": "29/10/2026",
-  "n_decretaram": 988,
-  "n_reconhecidos": 887,
-  "n_com_recurso": 69,
-  "n_com_recurso_e_decretaram": 29
+  "referencia": "30/10/2026",
+  "n_decretaram": 1049,
+  "n_reconhecidos": 940,
+  "n_com_recurso": 74,
+  "n_com_recurso_e_decretaram": 34
  }
 }

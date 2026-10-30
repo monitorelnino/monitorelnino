@@ -12,7 +12,8 @@ AS REGRAS (editoria, 02/10/2026; saúde 10/10/2026)
 - **Curadoria** (rotas, compromissos, emendas, setores) não tem coletor por decisão de método e se
   mede por DECLARAÇÃO: `curadoria: true` e `revisado_em`. Medir curadoria pelo relógio produz vermelho
   permanente, e vermelho que não se apaga deixa de ser sinal.
-- **Informação de agora** (alertas vigentes) mede-se em **horas**: 24 h. Carimbo sem hora conta como o
+- **Informação de agora** (alertas vigentes) mede-se em **horas**: 26 h (coleta diária + 2 h de folga;
+  com 24 h exatas o arquivo passa o limite minutos antes da coleta da noite: F28, 30/10/2026). Carimbo sem hora conta como o
   FIM do dia declarado — supor meia-noite reprovaria um arquivo gravado às 23h.
 - **Saúde:** toda fonte de `saude_sinais.json` está `coletado`, `reuso` ou `lacuna` (com `motivo`);
   "a verificar" não é estado de fonte exibida. A idade que importa é a do DADO (`ultima_coleta_ok`), não
@@ -31,7 +32,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 LIMITE_DIAS = 9
-LIMITE_HORAS_ALERTA = 24
+LIMITE_HORAS_ALERTA = 26    # cadência diária (24 h) + 2 h de folga, como os 9 dias do semanal (7 + 2)
 CAMPOS_DE_DATA = ("gerado_em", "atualizado_em", "coletado_em", "corte", "revisado_em")
 ESTADOS_OK = ("coletado", "reuso", "lacuna")
 SINAIS = "saude_sinais.json"
@@ -212,6 +213,9 @@ def _autoteste() -> int:
        problemas({"alertas/vigentes.json": ({"gerado_em": "30/09/2026 11:00"}, "agora")}, agora)))
     ok("semanal no limite passa", problemas({"a.json": ({"gerado_em": "23/09/2026"}, "coletor")}, agora) == [])
     ok("semanal além do limite reprova", len(problemas({"a.json": ({"gerado_em": "20/09/2026"}, "coletor")}, agora)) == 1)
+    ok("alerta de 24 h e 10 min passa: a coleta da noite chega minutos depois",
+       problemas({"alertas/vigentes.json": ({"gerado_em": "28/10/2026 22:05"}, "agora")}, "2026-10-29 22:15") == [])
+    ok("alerta de 27 h reprova", len(problemas({"alertas/vigentes.json": ({"gerado_em": "28/10/2026 22:05"}, "agora")}, "2026-10-30 01:05")) == 1)
     ok("o alerta tem limite menor que o semanal", LIMITE_HORAS_ALERTA / 24 < LIMITE_DIAS)
     # saúde: estado por fonte e séries
     h11 = "2026-10-11"

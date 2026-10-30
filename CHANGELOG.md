@@ -12,6 +12,18 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-30 · Pacote 1 · Imprensa e Blog: textos aprovados
 Imprensa: os quatro títulos de "Como ler" passam a dizer o que o texto responde, sem interrogação (o portão de texto público a veda) e sem tirar ressalva. Blog: a abertura começa pela finalidade e mantém a produção por inteligência artificial e a aprovação da editoria; o link dos cartões passa a "Ler a matéria". Proteja-se PR-01 não entra: a página não tem seletor de temas.
 
+## 2026-10-30 · A verificação da descoberta pula a pista encerrada (+8/−3)
+
+A descoberta verificava também as 14.669 pistas encerradas ou recusadas, e a triagem apaga esse texto de trabalho na mesma noite: o arquivo oscilava cerca de 5 MB entre dois commits e o portão de tamanho reprovou a `main` (+20,4%, 30/10). Agora a verificação usa o mesmo predicado da compactação e só lê pista que ainda precisa dela. Menos requisições por noite.
+
+## 2026-10-30 · Frescor do alerta: 24 h de cadência mais 2 h de folga (+3/−1)
+
+A coleta de alertas é diária; com limite de 24 h exatas, o arquivo passa o limite minutos antes da coleta da noite e a `main` fica vermelha na abertura (F28, 24,2 h em 30/10). O portão de frescor passa a 26 h, a mesma lógica dos 9 dias do semanal. A página segue avisando o leitor aos 24 h.
+
+## 2026-10-30 · Autoteste do juiz sem data fixa (+2/−2)
+
+O autoteste de `julgar_filas.py` comparava o back-off com datas escritas no código (28/09 e 30/10); a pista adiada nasce do dia real, e em 30/10 o caso "volta depois do back-off" reprovou a `main`. Agora o teste lê o dia real e soma dois dias. Sem mudança de comportamento do juiz.
+
 ## 2026-10-29 · Redução: seis funções sem chamador saem (−39 líquidas)
 
 Saem `htmlGuia`, `popLinha` e `POP_UF` (index.js), `opcoesDeEixoSemanal` e `primeiraSemanaComValor` (saude.js), `_hoje_iso` (julgar_filas.py) e `ErroDoGh` (checagem_pre_noite.py): nenhum chamador em código, workflow ou página. Sem mudança de comportamento. Linhas: +1/−40.
@@ -148,7 +160,6 @@ Quatro parágrafos da abertura pelo texto da editoria. O cartão do município d
 
 O topo separa medidas provisórias e atos de repasses aos municípios; o SUS conta desde 29 de junho de 2026. "De onde vem o dinheiro" mostra uma linha por medida provisória e os repasses, com o gráfico mensal; sai a seção "Mês a mês". "Pago" passa a "desembolsado". O cartão do município traz fonte e data de consulta em cada cartão.
 
-
 ## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
 
 O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.
@@ -168,7 +179,6 @@ As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; t
 ## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
 
 O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
-
 
 ## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
 `coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
