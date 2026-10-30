@@ -117,7 +117,7 @@ def autoteste() -> int:
 def coletar_um(chave: str, cfg: dict, cache: dict, deps) -> int:
     buscar, gravar_em, hoje_editorial, log_busca, registrar_lacuna, DATA = deps
     from coletar_srag_gripe import ANOS_CANAL, SE_INCOMPLETAS, canal_endemico, vazar_incompletas
-    from saude_opendatasus import (agregar_por_uf_semana, juntar, linhas_do_fluxo, pedacos_do_zip,
+    from saude_opendatasus import (agregar_por_uf_semana, completar_semanas, juntar, linhas_do_fluxo, pedacos_do_zip,
                                    precisa_reler, recursos_por_ano)
 
     try:
@@ -168,7 +168,7 @@ def coletar_um(chave: str, cfg: dict, cache: dict, deps) -> int:
         print(f"{chave}: nenhum ano lido — lacuna declarada, série não escrita")
         return 0
 
-    serie = juntar(agregados)
+    serie = completar_semanas(juntar(agregados))
     canal = {loc: canal_endemico(s) for loc, s in serie.items()}
     consolidada, nowcasting = {}, {}
     for loc, s in serie.items():

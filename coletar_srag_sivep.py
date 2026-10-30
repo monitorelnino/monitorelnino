@@ -219,7 +219,7 @@ def main() -> int:
     from coletar_srag_gripe import ANOS_CANAL, SE_INCOMPLETAS, canal_endemico, vazar_incompletas
     from coletores_base import (DATA, buscar, buscar_em_fluxo_confiavel, gravar_em,
                                 hoje_editorial, log_busca, registrar_lacuna)
-    from saude_opendatasus import (agregar_por_uf_semana, juntar, linhas_do_fluxo, precisa_reler,
+    from saude_opendatasus import (agregar_por_uf_semana, completar_semanas, juntar, linhas_do_fluxo, precisa_reler,
                                    recursos_por_ano)
 
     try:
@@ -289,7 +289,7 @@ def main() -> int:
         return 0
 
     gravar_em(caminho_cache, cache)   # §229
-    serie = juntar(agregados)
+    serie = completar_semanas(juntar(agregados))
     ano_corrente = hoje_editorial().year
     canal = {loc: canal_endemico(s) for loc, s in serie.items()}
     consolidada, nowcasting = {}, {}
