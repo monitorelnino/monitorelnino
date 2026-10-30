@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Pacote de saúde do blog traz o quadro de mortalidade · +69/−0
+
+`gerar_pacote_blog.py --linha saude` lê `mortalidade_comparada.json` (Brasil, mês fechado): óbitos registrados, excesso com intervalo, óbitos X30 e projeção CIL, cada fato com fonte e mês. Campo nulo, mês parcial ou derivado com mais de nove dias viram lacuna declarada, nunca zero.
+
 ## 2026-10-30 · Mortalidade comparada entra no elo dos desfechos · +2/−0
 
 `gerar_mortalidade_comparada.py` roda no elo `noturno_desfechos` logo depois de `coletar_sim.py`, com escritor declarado; só regrava quando `obitos.json` ou `obitos_calor.json` mudam.
