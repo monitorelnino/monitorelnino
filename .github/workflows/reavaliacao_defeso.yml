@@ -8,9 +8,10 @@ name: Reavaliação diária do defeso
 
 on:
   schedule:
-    # Todo dia, 07h20 de Brasília (10h20 UTC).
-    - cron: "20 10 * * *"
-    - cron: "50 10 * * *"
+    # Todo dia, 02h20 de Brasília (05h20 UTC): dentro da janela da noite (01-09 UTC), onde a guarda
+    # deixa gravar na `main`. Às 10h20 UTC ela parava em verde e nada era gravado (30/10/2026).
+    - cron: "20 5 * * *"
+    - cron: "26 6 * * *"
   workflow_dispatch:
 
 permissions:
