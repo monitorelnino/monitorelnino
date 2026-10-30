@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>30/10/2026 · Leitor único de documento para as fontes de plano sem leitura (+59/−0)</dt>
       <dd>`scripts/sondar_documento.py`: baixa um PDF ou página pela porta de rede do projeto e imprime os trechos dos termos pedidos; só leitura, não grava em `data/`. Serve a S10, S17, S19, S26 e S30 da matriz de planos, no lugar de um script por fonte.</dd>
+      <dt>30/10/2026 · Juiz 1.8: a segunda leva (J14, J16, J19, J20) passa a valer</dt>
+      <dd>Decisão da central de 30/10: as quatro regras medidas à parte entram no padrão do juiz; J8 e J9 seguem fora. A data do codebook sobe (1.8 de 30/10) e devolve ao juiz o que foi julgado sem elas. Nenhum peso ou crédito muda; MARÉ Legal nacional medido igual (40,7), ES +0,3. METODOLOGIA §126.</dd>
       <dt>30/10/2026 · DOE incremental e decretos de emergência, seg/qua/sex (+36/−2)</dt>
       <dd>Novo elo `doe-incremental` (segunda, quarta e sexta, 02:17 UTC): lê as edições dos DOE das 27 UFs dos últimos 4 dias e, em seguida, procura ato estadual de emergência em saúde (`coletar_espin.py`). Para isso `--ultimos-dias N` entra nos dois coletores por uma função única, `desde_de`. Decisão da editoria de 30/10: 2 a 3 vezes por semana, não todo dia. Temporizador registrado; ensaio simulado verde.</dd>
       <dt>30/10/2026 · O id da pista nasce na porta (+21/−14)</dt>
@@ -165,8 +167,6 @@
       <dd>O autoteste de âncoras reprovava a main desde o #1132, que moveu os links do Para gestores para o catálogo. Correção na origem: o passo &quot;Antes da emergência&quot; aponta para `financiamento.html#antes`, e o autoteste lê o catálogo e espera as âncoras `antes` e `depois`. Código +7/−4.</dd>
       <dt>25/10/2026 · Para gestores: sai &quot;Como os recursos chegam&quot;; os dois caminhos vão ao passo 6</dt>
       <dd>A seção #recursos sai de prefeituras.html. O passo 6 &quot;Buscar os recursos&quot; passa a ter os dois caminhos: antes da emergência e depois do reconhecimento federal, com link para o Financiamento. Texto no catálogo; sem CSS novo.</dd>
-      <dt>25/10/2026 · Estrutura comum dos desfechos de saúde</dt>
-      <dd>`scripts/estrutura_desfechos.py`: série por UF, faixa habitual 2019–2025 por quintis congelados, último valor, cortes do mapa e documento de desfecho com fonte, cadência, `preliminar`, `parcial` e lacunas declaradas. Escrita só de arquivo novo em `data/saude_desfechos/`, com autoteste offline. Nenhum arquivo existente muda e nenhum escritor é declarado. Código novo (+224 linhas): recurso novo, sem cópia de coletor existente.</dd>
     </dl>
   </section>
 </main>
