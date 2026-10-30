@@ -41,6 +41,7 @@ ANO_INICIAL = 2019
 ORCAMENTO_S = 1500
 N_PARCIAIS = 2        # meses mais recentes marcados `parcial` (atraso do registro: não verificado)
 PARADA_APOS = 5       # falhas seguidas: a fonte caiu, a rodada para
+CID_CALOR = "X30"     # causa básica é causa externa: T00–T98 (T67) não pode ser causa básica; no SIH, T67 vale
 GRUPOS_SIM = ("respiratorias", "cardio", "renal", "desidratacao", "fumaca", "calor")
 TOTAL = "obitos_sim_total"
 ROTULOS = {
@@ -49,7 +50,7 @@ ROTULOS = {
     "renal": "Óbitos por insuficiência renal (CID-10 N17 a N19)",
     "desidratacao": "Óbitos por desidratação (CID-10 E86)",
     "fumaca": "Óbitos por efeito tóxico de gases, fumaças e vapores (CID-10 T59)",
-    "calor": "Óbitos por efeitos do calor e da luz (CID-10 T67)",
+    "calor": "Óbitos por exposição a calor natural excessivo (CID-10 X30)",
 }
 DESFECHOS = {TOTAL: "Óbitos por todas as causas (SIM, por mês de ocorrência)",
              **{f"obitos_{g}": r for g, r in ROTULOS.items()}}
@@ -89,7 +90,9 @@ def agregar(registros, uf: str, ano: int, preliminar: bool) -> dict:
         if not (len(d) == 8 and d.isdigit() and int(d[4:]) == ano and 1 <= int(d[2:4]) <= 12):
             continue
         chave = f"{ano:04d}-{d[2:4]}"
-        for g in ["total"] + [x for x in grupo_do_cid(r.get("CAUSABAS")) if x in GRUPOS_SIM]:
+        cid = str(r.get("CAUSABAS") or "").strip().upper()
+        grupos = [x for x in grupo_do_cid(cid) if x in GRUPOS_SIM and x != "calor"]
+        for g in ["total", *grupos, *(["calor"] if cid.startswith(CID_CALOR) else [])]:
             cont.setdefault(g, {})
             cont[g][chave] = cont[g].get(chave, 0) + 1
     meses = sorted(cont.get("total", {}))
@@ -127,7 +130,9 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     baixar = espacar(baixar, PAUSA if pausa is None else pausa)
     ant = {d: ds.ler_desfecho(d, ler_fn) for d in DESFECHOS}
     # Um arquivo só está lido quando TODOS os desfechos existem: arquivo comum novo força a releitura.
-    lidos = dict(ant[TOTAL]["fonte"].get("arquivos_lidos", {})) if all(ant.values()) else {}
+    # Rótulo mudou = critério mudou: relê tudo e descarta a série antiga do desfecho (não vira zero, vira lacuna).
+    mudou = {d for d in DESFECHOS if ant[d] and ant[d].get("rotulo") != DESFECHOS[d]}
+    lidos = dict(ant[TOTAL]["fonte"].get("arquivos_lidos", {})) if all(ant.values()) and not mudou else {}
     todos = arquivos(dict(listar(DIR_FINAL)), dict(listar(DIR_PRELIM)))
     fila = a_ler(todos, lidos)
     novos = {g: {} for g in ["total", *GRUPOS_SIM]}
@@ -168,7 +173,7 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     ok = True
     for desfecho, rotulo in DESFECHOS.items():
         g = "total" if desfecho == TOTAL else desfecho[len("obitos_"):]
-        velho = (ant[desfecho] or {}).get("serie", {})
+        velho = {} if desfecho in mudou else (ant[desfecho] or {}).get("serie", {})
         serie = {}
         for uf in ufs:
             antigo = {p: v for p, v in velho.get(uf, {}).items() if (uf, int(p[:4])) not in anos_lidos}
@@ -231,7 +236,8 @@ def autoteste() -> int:
                   a_ler(a, {}) [0] == ("AC", 2026)
                   and a_ler(a, {DIR_FINAL + "/DOAC2024.dbc": 10, DIR_FINAL + "/DOAC2019.DBC": 10,
                                 DIR_PRELIM + "/DOAC2025.dbc": 5, DIR_PRELIM + "/DOAC2026.dbc": 6}) == [("AC", 2026)]))
-    regs = [{"DTOBITO": "15072026", "CAUSABAS": "J189"}, {"DTOBITO": "02072026", "CAUSABAS": "I219"},
+    regs = [{"DTOBITO": "15072026", "CAUSABAS": "J189"}, {"DTOBITO": "20072026", "CAUSABAS": "X30"},
+            {"DTOBITO": "21072026", "CAUSABAS": "T671"}, {"DTOBITO": "02072026", "CAUSABAS": "I219"},
             {"DTOBITO": "01082026", "CAUSABAS": "A09"}, {"DTOBITO": "01012025", "CAUSABAS": "J189"},
             {"DTOBITO": "", "CAUSABAS": "J189"}, {"DTOBITO": "32132026", "CAUSABAS": "J189"},
             {"DTOBITO": "10082026", "CAUSABAS": "F200"}]
@@ -239,7 +245,8 @@ def autoteste() -> int:
     casos.append(("preliminar: meses só até o último com registro; mês sem caso do grupo é zero medido",
                   sorted(p["total"]) == [f"2026-{m:02d}" for m in range(1, 9)] and p["respiratorias"]["2026-07"] == 1
                   and p["cardio"]["2026-08"] == 0 and p["total"]["2026-03"] == 0))
-    casos.append(("data de outro ano, vazia ou impossível não conta", sum(p["total"].values()) == 4))
+    casos.append(("data de outro ano, vazia ou impossível não conta", sum(p["total"].values()) == 6))
+    casos.append(("calor é causa básica X30; T67 (capítulo XIX) não conta no SIM", p["calor"]["2026-07"] == 1))
     casos.append(("saúde mental e ICSAP não são grupos do SIM", "saude_mental" not in p and "icsap" not in p))
     c = agregar(regs, "AC", 2025, False)
     casos.append(("consolidado: 12 meses, zero medido nos vazios", len(c["total"]) == 12 and c["total"]["2025-01"] == 1
@@ -299,6 +306,11 @@ def autoteste() -> int:
     coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
     casos.append(("ano preliminar com tamanho novo é relido e substitui o antigo",
                   sum("DOSP2026" in x for x in baixados) == 1))
+    gravados["saude_desfechos/obitos_calor.json"]["rotulo"] = "Óbitos por efeitos do calor e da luz (CID-10 T67)"
+    baixados.clear()
+    coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
+    casos.append(("rótulo do critério mudou: relê todos os arquivos e regrava com o critério novo",
+                  len(baixados) == len(fin) + len(pre) and "X30" in gravados["saude_desfechos/obitos_calor.json"]["rotulo"]))
     gravados.clear(); baixados.clear(); r = iter(range(0, 10 ** 6, 100))
     coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, orcamento_s=350, relogio=lambda: next(r), pausa=0)
     casos.append(("orçamento acaba: lê o ano mais recente primeiro e declara os pendentes",
