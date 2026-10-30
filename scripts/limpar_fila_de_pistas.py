@@ -151,12 +151,19 @@ TEXTO_DE_TRABALHO = ("titulo", "trecho", "verificacao_fonte", "preparacao", "pon
                      "degrau_do_redirecionamento", "fonte_veiculo")
 
 
-def compactar(pista: dict) -> dict:
-    """A pista encerrada ou já recusada pelo juiz sem o texto de trabalho; a aberta, intacta. Função pura.
+def encerrada(pista: dict) -> bool:
+    """A pista já não precisa do texto de trabalho: encerrada ou recusada pelo juiz. Função pura.
 
     A recusada só volta ao juiz quando o codebook muda, e então ele relê o documento pelo endereço,
-    não pelo trecho guardado (19/10/2026: 4.549 recusadas levavam 4,3 MiB de texto sem uso)."""
-    if aberta(pista) and not str(pista.get("status") or "").startswith("pista — recusada pelo juiz"):
+    não pelo trecho guardado (19/10/2026: 4.549 recusadas levavam 4,3 MiB de texto sem uso). Quem
+    grava texto de trabalho (a verificação da descoberta) pula a encerrada: gravar o que a triagem
+    apaga na mesma noite fazia o arquivo oscilar 5 MB entre dois commits (30/10/2026, +20,4%)."""
+    return not aberta(pista) or str(pista.get("status") or "").startswith("pista — recusada pelo juiz")
+
+
+def compactar(pista: dict) -> dict:
+    """A pista encerrada ou já recusada pelo juiz sem o texto de trabalho; a aberta, intacta. Função pura."""
+    if not encerrada(pista):
         return pista
     return {k: v for k, v in pista.items() if k not in TEXTO_DE_TRABALHO}
 
@@ -255,6 +262,9 @@ def _autoteste() -> int:
        compactar({"status": "pista — na fila", "titulo": "t"}) == {"status": "pista — na fila", "titulo": "t"}
        and "titulo" in enc)
     ok("pista pendente está aberta", aberta({"status": "pista — pendente"}))
+    ok("encerrada e recusada pelo juiz não recebem texto de trabalho; a aberta recebe",
+       encerrada(enc) and encerrada({"status": "pista — recusada pelo juiz: x"})
+       and not encerrada({"status": "pista — na fila"}))
 
     # artigo genérico: o mesmo id em três municípios
     generico = [{"url": "https://news.google.com/rss/articles/G1", "ibge": str(i),
