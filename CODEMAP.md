@@ -208,4 +208,4 @@ Atualizado em 30/10/2026.
 | `verificar_resposta.py` | — | — | — | — | não |
 | `verificar_saude.py` | — | — | — | — | não |
 | `verificar_sinais.py` | — | — | — | — | não |
-| `verificar_vigencia.py` | — | `municipios.json` | — | — | não |
+| `verificar_vigencia.py` | — | `municipios.json` | — | 1 | não |
