@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1368 · O modo paralelo do juiz sai do código (+1/−681)
+O juiz 1.8 é o de produção desde hoje. Saem `scripts/rejulgar_decisoes_do_juiz.py` (rodada paralela e rejulgamento de 28/09), os helpers `_18` de `scripts/pistas.py` e do `seguir_pistas.py`. `data/paralelo_*18.json` ficam como registro, sem escritor.
+
 ## 2026-10-30 · #1363 · Blog Saúde: emergência em saúde pública no Amazonas
 Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.
 
