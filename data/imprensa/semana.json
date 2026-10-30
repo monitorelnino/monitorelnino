@@ -6,11 +6,11 @@
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-10-29",
-   "n": 42,
+   "n": 43,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 42867,
+   "valor_parcial": 44328,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,105 +505,45 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 23663,
+   "valor": 207,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "28/10/2026",
+   "consultado_em": "29/10/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261028.csv",
+   "nota": "Focos do dia — focos_diario_br_20261030.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 17561
-    },
-    {
-     "uf": "MA",
-     "valor": 2113
+     "valor": 157
     },
     {
      "uf": "AP",
-     "valor": 952
-    },
-    {
-     "uf": "AM",
-     "valor": 729
-    },
-    {
-     "uf": "CE",
-     "valor": 400
-    },
-    {
-     "uf": "PI",
-     "valor": 303
-    },
-    {
-     "uf": "RR",
-     "valor": 285
+     "valor": 20
     },
     {
      "uf": "BA",
-     "valor": 221
+     "valor": 15
     },
     {
-     "uf": "PE",
-     "valor": 201
+     "uf": "RR",
+     "valor": 9
     },
     {
-     "uf": "TO",
-     "valor": 182
-    },
-    {
-     "uf": "PB",
-     "valor": 154
-    },
-    {
-     "uf": "AC",
-     "valor": 142
-    },
-    {
-     "uf": "RO",
-     "valor": 91
-    },
-    {
-     "uf": "MG",
-     "valor": 69
-    },
-    {
-     "uf": "RN",
-     "valor": 69
-    },
-    {
-     "uf": "MT",
-     "valor": 64
-    },
-    {
-     "uf": "GO",
-     "valor": 45
+     "uf": "MA",
+     "valor": 3
     },
     {
      "uf": "AL",
-     "valor": 40
+     "valor": 2
     },
     {
-     "uf": "SE",
-     "valor": 27
-    },
-    {
-     "uf": "SC",
-     "valor": 8
-    },
-    {
-     "uf": "SP",
-     "valor": 4
-    },
-    {
-     "uf": "RS",
-     "valor": 3
+     "uf": "PE",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
