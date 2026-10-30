@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Pacote 1 · Imprensa e Blog: textos aprovados
+Imprensa: os quatro títulos de "Como ler" passam a dizer o que o texto responde, sem interrogação (o portão de texto público a veda) e sem tirar ressalva. Blog: a abertura começa pela finalidade e mantém a produção por inteligência artificial e a aprovação da editoria; o link dos cartões passa a "Ler a matéria". Proteja-se PR-01 não entra: a página não tem seletor de temas.
+
 ## 2026-10-30 · A verificação da descoberta pula a pista encerrada (+8/−3)
 
 A descoberta verificava também as 14.669 pistas encerradas ou recusadas, e a triagem apaga esse texto de trabalho na mesma noite: o arquivo oscilava cerca de 5 MB entre dois commits e o portão de tamanho reprovou a `main` (+20,4%, 30/10). Agora a verificação usa o mesmo predicado da compactação e só lê pista que ainda precisa dela. Menos requisições por noite.
@@ -157,7 +160,6 @@ Quatro parágrafos da abertura pelo texto da editoria. O cartão do município d
 
 O topo separa medidas provisórias e atos de repasses aos municípios; o SUS conta desde 29 de junho de 2026. "De onde vem o dinheiro" mostra uma linha por medida provisória e os repasses, com o gráfico mensal; sai a seção "Mês a mês". "Pago" passa a "desembolsado". O cartão do município traz fonte e data de consulta em cada cartão.
 
-
 ## 2026-10-28 · Frescor lê as exceções de `layout/excecoes.json`, com validade
 
 O portão de frescor passa a dispensar arquivo com exceção registrada (regra, arquivo, motivo, data, quem decidiu e `validade`). Vencida a validade, volta a reprovar sozinho. Primeira exceção: `srag_serie.json` até 11/11/2026, fonte inalcançável no runner; a página mostra a data da última semana (18/10). Linhas líquidas código +27/−3.
@@ -177,7 +179,6 @@ As figuras do RONI e do Niño 3.4 semanal deixam de ter legenda sob o título; t
 ## 2026-10-27 · Monitor de riscos: risco previsto em seis linhas; crédito das figuras com "Metodologia"
 
 O bloco "Risco previsto por estado" ganha marca de cor e contagem de estados por risco, no mesmo componente. O crédito de toda figura passa a trazer o link "Metodologia" (PDF público); o portão de consistência visual aceita o sufixo.
-
 
 ## 2026-10-27 · Aviso do Inmet vencido deixa de contar como em vigor
 `coletar_sinais_risco.py` descarta aviso com `fim` já passado (horário de Brasília), no total por UF e no detalhe por município, como já fazia com o encerramento do Cemaden. Sem `fim` legível o aviso fica. `data/imprensa/semana.json` entra na cadeia de `verificar_derivados.sh`. Teste offline cobre vencido, vigente e `fim` ilegível. `gerar_imprensa_semana.py` usa a data do corte, não a parede. Linhas líquidas: +25.
