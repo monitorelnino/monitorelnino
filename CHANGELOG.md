@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Rodada paralela do juiz 1.8 sai dos dados · +0/−0 em código
+
+Apagados `data/paralelo_juiz18.json` e `data/paralelo_fila18.json` (15 MB, nenhuma página ou portão os lê) e suas duas linhas em `config/escritores.json`, por decisão da central (30/10, 17:40). Seguem no histórico do git.
+
 ## 2026-10-30 · Pistas do preprint pela porta única · +3/−0 em código
 Vinte e oito pistas municipais com endereço oficial (Querido Diário, prefeituras, lista da Defesa Civil de Sergipe) entram na fila para o juiz da noite, com origem `preprint_30-10`. Treze já estavam na fila; oito foram recusadas pela porta, cada uma com motivo em `pistas_rejeitadas`. Status sugerido vai só como nota; a classificação é do juiz.
 
