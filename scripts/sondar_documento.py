@@ -8,22 +8,19 @@ resolve as cinco sem um script por fonte. Não grava em `data/`; a saída é o l
 Uso: python3 scripts/sondar_documento.py URL [--termos a,b,c]
      python3 scripts/sondar_documento.py --autoteste
 """
+import io
 import re
-import subprocess
 import sys
-import tempfile
 
 TETO = 6000
 
 
 def texto_de(corpo: bytes) -> tuple:
-    """(tipo, texto, links_pdf). Função pura, salvo o pdftotext."""
+    """(tipo, texto, links_pdf). Função pura."""
     if corpo[:5] == b"%PDF-":
-        with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
-            f.write(corpo)
-            f.flush()
-            out = subprocess.run(["pdftotext", "-layout", f.name, "-"], capture_output=True, text=True)
-        return "pdf", out.stdout, []
+        import pdfplumber  # dependência travada em requirements.txt; o runner não traz pdftotext
+        with pdfplumber.open(io.BytesIO(corpo)) as pdf:
+            return "pdf", "\n".join(p.extract_text() or "" for p in pdf.pages), []
     html = corpo.decode("utf-8", "replace")
     links = sorted(set(re.findall(r'href="([^"]+\.pdf[^"]*)"', html, re.I)))[:20]
     return "html", re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)), links

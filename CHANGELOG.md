@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-10-30 · #1359 · Leitor único de documento para as fontes de plano sem leitura (+62/−0)
+## 2026-10-30 · #1359 · Leitor único de documento para as fontes de plano sem leitura (+59/−0)
 `scripts/sondar_documento.py`: baixa um PDF ou página pela porta de rede do projeto e imprime os trechos dos termos pedidos; só leitura, não grava em `data/`. Serve a S10, S17, S19, S26 e S30 da matriz de planos, no lugar de um script por fonte.
 
 ## 2026-10-30 · #1356 · DOE incremental e decretos de emergência, seg/qua/sex (+36/−2)
