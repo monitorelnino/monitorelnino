@@ -42,6 +42,8 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
+from coletores_base import semana_intervalo  # a única cópia em Python da regra de semana
+
 LINHAS = ("legal", "saude", "tipos_de_evento")
 DIAS_DE_VALIDADE = 9
 SAIDA_PADRAO = RAIZ.parent / "robo-registro" / "blog" / "pacotes"
@@ -322,12 +324,12 @@ def fatos_de_saude(topo: dict, hoje: dt.date) -> tuple:
     fatos, lacunas = [], []
     for ident, chave, texto, fonte in (
             ("dengue_casos_se", "dengue_casos_se",
-             "casos prováveis de dengue na última semana epidemiológica fechada",
+             "casos prováveis de dengue na última semana fechada",
              "Ministério da Saúde (Sinan)"),
             ("chik_casos_se", "chik_casos_se",
-             "casos prováveis de chikungunya na última semana epidemiológica fechada",
+             "casos prováveis de chikungunya na última semana fechada",
              "Ministério da Saúde (Sinan)"),
-            ("srag_internacoes", "srag_internacoes",
+            ("srag_internacoes", "srag_internacoes_se",
              "internações por síndrome respiratória aguda grave na última semana fechada",
              "Ministério da Saúde (Sivep-Gripe)")):
         # O topo guarda os cartões em LISTA, com `id` dentro de cada um — não num dicionário por
@@ -342,8 +344,18 @@ def fatos_de_saude(topo: dict, hoje: dt.date) -> tuple:
         if valor is None or cartao.get("sem_coleta"):
             lacunas.append(f"{texto}: sem coleta na data do pacote")
             continue
+        # A referência do cartão é a semana da fonte ("2026-35"), não a data da coleta. A idade do
+        # dado conta pelo sábado dessa semana: dado com mais de nove dias é lacuna, nunca fato
+        # (causa raiz de 30/10: a semana 35 entrava no pacote de 31/10 como se fosse atual).
+        ref = str(cartao.get("referencia") or "")
+        m = re.fullmatch(r"(\d{4})-(\d{1,2})", ref)
+        fim_ref = semana_intervalo(int(m.group(1)), int(m.group(2)))[1] if m else None
+        if fim_ref and esta_velho(fim_ref.isoformat(), hoje):
+            lacunas.append(f"{texto}: sem atualização desde {fim_ref.strftime('%d/%m/%Y')}")
+            continue
         fatos.append(fato(ident, "saude_semana", texto, valor, "casos", fonte,
-                          cartao.get("url"), cartao.get("referencia") or hoje_iso, hoje_iso))
+                          cartao.get("url"), fim_ref.isoformat() if fim_ref else (ref or hoje_iso),
+                          hoje_iso))
     fatos.append(fato("parcialidade", "saude_parcialidade",
                       "as semanas mais recentes são parciais e sobem com notificações atrasadas",
                       None, None, "Ministério da Saúde", None, hoje_iso, hoje_iso))
@@ -709,7 +721,7 @@ def _autoteste() -> int:
        fa2 == [] and la2 and "sem atualização desde" in la2[0])
 
     fs, ls = fatos_de_saude({"cartoes": [{"id": "dengue_casos_se", "valor": 8146,
-                                          "referencia": "2026-33"},
+                                          "referencia": "2026-39"},
                                          {"id": "srag_internacoes", "sem_coleta": True}]},
                             d(2026, 10, 4))
     ok("cartão em dicionário também é aceito, para não depender do formato",
@@ -717,6 +729,11 @@ def _autoteste() -> int:
        == 1)
     ids = {x["id"] for x in fs}
     ok("o número de saúde vem do instantâneo do topo", "dengue_casos_se" in ids)
+    fv, lv = fatos_de_saude({"cartoes": [{"id": "dengue_casos_se", "valor": 7013,
+                                          "referencia": "2026-35"}]}, d(2026, 10, 31))
+    ok("semana com mais de nove dias vira lacuna com a data, não fato",
+       "dengue_casos_se" not in {x["id"] for x in fv}
+       and any("sem atualização desde 05/09/2026" in x for x in lv))
     ok("cartão sem coleta vira lacuna", any("sem coleta" in x for x in ls))
     ok("as duas frases obrigatórias de saúde estão no pacote",
        {"parcialidade", "sem_relacao_el_nino"} <= ids)
