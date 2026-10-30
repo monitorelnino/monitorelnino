@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1363 · Blog Saúde: emergência em saúde pública no Amazonas
+Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.
+
 ## 2026-10-30 · #PR · Reavaliação do defeso passa para dentro da janela da noite (+5/−5)
 
 Causa: o cron das 10:20 UTC caía fora da janela 01–09; a guarda parava o run em verde e nada era gravado, e `fontes_suspensas.json` ficou parado em 27/10. Cron passa a 05:20 e 06:26 UTC; temporizador ajustado. Sem código novo.
