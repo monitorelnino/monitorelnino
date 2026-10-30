@@ -23,8 +23,8 @@ Por UF, uma leitura pontuada e três de contexto:
   civil" (população em município cujo plano localizado trata a saúde), publicada ao lado.
 
 Faixas (as mesmas do site): estágio inicial 0–25 · em construção 25–50 · consolidado 50–70 ·
-avançado 70–100. Índice NACIONAL = Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf, com as 27 UFs no denominador
-(`resumo_nacional`); a UF sem documento lido entra com nota 0 e o estatuto dela viaja junto do número
+avançado 70–100. Índice NACIONAL = Σ(indice_uf × pop_uf × c_uf) ÷ Σ pop_uf, com as 27 UFs no denominador
+(`resumo_nacional`); a UF sem documento lido entra com índice 0 e o estatuto dela viaja junto do número
 (METODOLOGIA §115, §123).
   python gerar_monitor_saude.py            # grava data/monitor_saude.json
   python gerar_monitor_saude.py --autoteste
@@ -285,7 +285,7 @@ def gerar() -> int:
                    "coordenacao": {"peso": 0, "entra_na_nota": False, "escada_f1": F1_SCORE, "escada_f2": F2_SCORE, "pesos_das_funcoes": PESOS_COORDENACAO,
                                    "proxima_etapa": {"versao": "0.8", "pesos": dict(PESOS_V08),
                                                      "condicao": "as 27 UFs com as duas funções verificadas (resumo.coordenacao_verificadas)"}},
-                   "agregacao_nacional": {"formula": "Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf", "denominador": 27, "ponderacao": "populacao", "fonte_populacao": "Censo 2022 (IBGE)",
+                   "agregacao_nacional": {"formula": "Σ(indice_uf × pop_uf × c_uf) ÷ Σ pop_uf", "denominador": 27, "ponderacao": "populacao", "fonte_populacao": "Censo 2022 (IBGE)",
                                           "c_uf": "1 nas 27 UFs: o dever de plano é do estado e cobre a população inteira; a falta de plano já está na nota",
                                           "uf_sem_documento_lido": "nota 0 (credito_nacional)"},
                    "faixas": {"estágio inicial": "0–25", "em construção": "25–50", "consolidado": "50–70", "avançado": "70–100"}},
