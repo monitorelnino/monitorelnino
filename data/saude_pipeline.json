@@ -15156,7 +15156,16 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-30",
+   "script": "scripts/sondar_documento.py",
+   "inicio": "2026-10-30T13:17:36",
+   "duracao_s": 3.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "FileNotFoundError: [Errno 2] No such file or directory: 'pdftotext'"
   }
  ],
- "atualizado_em": "2026-10-30T13:07:26"
+ "atualizado_em": "2026-10-30T13:17:36"
 }
