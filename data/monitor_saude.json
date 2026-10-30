@@ -71,7 +71,7 @@
    }
   },
   "agregacao_nacional": {
-   "formula": "Σ(nota_uf × pop_uf × c_uf) ÷ Σ pop_uf",
+   "formula": "Σ(indice_uf × pop_uf × c_uf) ÷ Σ pop_uf",
    "denominador": 27,
    "ponderacao": "populacao",
    "fonte_populacao": "Censo 2022 (IBGE)",

@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #PR · Saúde: fórmula do índice nacional diz indice_uf (+3/−3)
+
+`gerar_monitor_saude.py` emitia `nota_uf` na fórmula de agregação nacional (`monitor_saude.json`, `agregacao_nacional.formula`) e no docstring; passa a `indice_uf`, pela regra de vocabulário da editoria (29/10/2026). Só o texto da fórmula muda; nenhum valor, peso ou crédito.
+
 ## 2026-10-30 · Proteja-se: apoio das orientações (PR-01)
 
 A abertura da página passa a dizer o que as orientações abaixo indicam: preparar-se, o que fazer durante o evento e quando procurar ajuda. Substitui a frase anterior, que repetia o mesmo conteúdo, e mantém o aviso de que não substitui a Defesa Civil local.
