@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · #1369 · Pacote de saúde do blog: dado velho vira lacuna
+
+O cartão de saúde guardava a semana da fonte (2026-35) e o pacote a tratava como data de hoje, sem medir a idade. Agora a idade conta pelo sábado da semana: mais de nove dias vira lacuna com "sem atualização desde dd/mm/aaaa" (dengue, 05/09; internações por SRAG, 03/10). O cartão de SRAG, lido com identificador errado, passa a ser lido.
+
 ## 2026-10-30 · #1363 · Blog Saúde: emergência em saúde pública no Amazonas
 Publicado o texto aprovado pela editoria em 30/10 sobre o Decreto 55.965 do Amazonas (emergência em saúde pública por 180 dias, DOE-AM de 26/10). Texto sem alteração; números conferidos contra o pacote pelo verificador do blog; índice, página e feed gerados por `gerar_blog.py`.
 
