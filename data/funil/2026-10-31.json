@@ -32,7 +32,47 @@
    "recusa_natureza_duvidosa": 3,
    "recusa_fora_do_objeto": 2,
    "recusa_resposta": 4
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "alvos_verificados": 2,
+   "achados_novos": 0,
+   "fila_acumulada": 42
   }
  },
- "atualizado_em": "2026-10-31T04:32:06"
+ "atualizado_em": "2026-10-31T05:04:54",
+ "verificador_imprensa": {
+  "na_fila": 7037,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 111,
+  "por_motivo": {
+   "veiculo_nao_listado": 6756,
+   "sem_https": 150,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 81,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 2,
+    "sem_pagina_de_expediente": 1,
+    "nao_avaliado_por_orcamento": 12
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }
