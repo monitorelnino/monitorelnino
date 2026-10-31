@@ -6,11 +6,11 @@
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-10-31",
-   "n": 43,
+   "n": 44,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 44344,
+   "valor_parcial": 45263,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,7 +505,7 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 2155,
+   "valor": 224,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
@@ -514,83 +514,27 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261030.csv",
+   "nota": "Focos do dia — focos_diario_br_20261031.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 1282
-    },
-    {
-     "uf": "AP",
-     "valor": 328
-    },
-    {
-     "uf": "BA",
-     "valor": 180
+     "valor": 144
     },
     {
      "uf": "MA",
-     "valor": 132
+     "valor": 76
     },
     {
-     "uf": "RR",
-     "valor": 63
-    },
-    {
-     "uf": "MG",
-     "valor": 23
-    },
-    {
-     "uf": "TO",
-     "valor": 23
+     "uf": "BA",
+     "valor": 2
     },
     {
      "uf": "AL",
-     "valor": 22
+     "valor": 1
     },
     {
-     "uf": "PI",
-     "valor": 22
-    },
-    {
-     "uf": "MT",
-     "valor": 14
-    },
-    {
-     "uf": "CE",
-     "valor": 12
-    },
-    {
-     "uf": "RS",
-     "valor": 12
-    },
-    {
-     "uf": "AM",
-     "valor": 10
-    },
-    {
-     "uf": "PE",
-     "valor": 9
-    },
-    {
-     "uf": "RN",
-     "valor": 9
-    },
-    {
-     "uf": "PB",
-     "valor": 5
-    },
-    {
-     "uf": "RO",
-     "valor": 5
-    },
-    {
-     "uf": "MS",
-     "valor": 3
-    },
-    {
-     "uf": "GO",
+     "uf": "AP",
      "valor": 1
     }
    ],
