@@ -47,6 +47,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -145,7 +146,10 @@ FONTES = {
     "painel_el_nino": {
         "nome": "Painel El Niño 2026-2027", "orgao": "CEMADEN/INPE", "camada": "ciclo",
         "url_publica": "https://www.gov.br/cemaden/pt-br",
-        "endpoint": None,
+        # 01/11/2026: o índice mensal dos boletins na ANA (pai da URL de `data/boletins.json`). Sem
+        # endpoint, `consultado_em` ficou em 07/10 enquanto as outras fontes tinham 30/10: só `--semear`
+        # o escrevia. Agora toda execução consulta o índice e carimba a data da consulta.
+        "endpoint": "https://www.gov.br/ana/pt-br/sala-de-situacao/painel-el-nino/boletins/mensal-2026",
         "papel": "Risco projetado por região e a largada pública do ciclo.",
     },
     "monitor_secas": {
@@ -320,6 +324,10 @@ FONTES = {
         "nome": "Prognóstico climático trimestral", "orgao": "INMET/CPTEC-INPE", "camada": "apoio_tecnico",
         "url_publica": "https://portal.inmet.gov.br/boletinsagro",
         "endpoint": None,
+        # 01/11/2026: a "leitura humana do Boletim nº 3" (07/09) saiu: etapa humana é proibida (08/10)
+        # e o boletim já era outro. A previsão por tercil só existe como figura nos boletins do Painel,
+        # sem dado aberto; sem leitura de máquina, é lacuna declarada com o link do boletim vigente.
+        "lacuna": "previsão por tercil só em figura nos boletins do Painel El Niño (sem dado aberto)",
         "papel": "A leitura brasileira da mesma previsão, em português.",
     },
     "cpc_ensodisc": {
@@ -480,6 +488,21 @@ def parse_oni(texto: str) -> list:
         except ValueError:
             continue
     return serie
+
+
+def parse_indice_boletins(html_texto: str, base: str) -> dict:
+    """Do índice mensal dos boletins do Painel: {'numero': N, 'url': absoluta} do maior nº publicado.
+
+    Procura o endereço `boletim-mensal-no-NN-<mês>-AAAA`; sem nenhum, devolve {} (recusa quem chama)."""
+    achados = {}
+    for m in re.finditer(r"""(?:href=["'])?([^"'\s<>]*boletim-mensal-no-(\d{1,2})-[a-zç]+-\d{4})""", html_texto,
+                         flags=re.I):
+        achados[int(m.group(2))] = m.group(1)
+    if not achados:
+        return {}
+    n = max(achados)
+    url = urllib.parse.urljoin(base, achados[n])
+    return {"numero": n, "url": url}
 
 
 def parse_roni(texto: str) -> list:
@@ -1711,6 +1734,14 @@ def coletar_fonte(chave: str):
         return ({"por_uf": estacoes},
                 f"INMET — {len(estacoes)} estação(ões) automática(s) de capital; {nota_medida}")
 
+    if chave == "painel_el_nino":
+        indice = parse_indice_boletins(_buscar_registrado(chave, fonte["endpoint"]), fonte["endpoint"])
+        if not indice:
+            raise ValueError("índice dos boletins sem nenhum boletim mensal reconhecível — recusado")
+        registrado = json.loads(BOLETINS.read_text(encoding="utf-8"))
+        # `documento` continua sendo o boletim de que o risco por UF foi lido: é ele que a página cita.
+        return (indice, registrado.get("documento") or "Painel El Niño 2026-2027")
+
     # As duas fontes do Open-Meteo pedem as 27 coordenadas numa chamada só e tratam a resposta
     # posicionalmente; saem antes do GET genérico abaixo.
     bruto = _buscar(fonte["endpoint"] + (str(IBGE_UF["RO"]) if chave == "monitor_secas" else ""))
@@ -1950,6 +1981,13 @@ def semear(registro: dict) -> dict:
 def coletar(registro: dict, camadas) -> dict:
     """Percorre as fontes das camadas pedidas, atualiza as que responderem e deixa as demais como lacuna declarada; nenhuma falha de rede interrompe o pipeline."""
     for chave, fonte in FONTES.items():
+        if fonte.get("lacuna") and fonte["camada"] in camadas:
+            vigente = json.loads(BOLETINS.read_text(encoding="utf-8"))
+            registro["fontes"][chave].update({
+                "status": "lacuna", "consultado_em": None, "documento": None,
+                "url_publica": vigente.get("url") or fonte["url_publica"],
+                "detalhe": f"{fonte['lacuna']}; boletim vigente: {vigente.get('documento')}."})
+            continue
         if fonte["camada"] not in camadas or not fonte["endpoint"]:
             continue
         try:
@@ -1981,6 +2019,12 @@ def coletar(registro: dict, camadas) -> dict:
             # Mesma razão: a fonte deixou de exigir chave (§233, porque a rota dela é pública),
             # e o campo antigo continuava no arquivo dizendo que exige.
             registro["fontes"][chave].pop("credencial", None)
+        if chave == "painel_el_nino":
+            lido = json.loads(BOLETINS.read_text(encoding="utf-8")).get("ultimo_boletim")
+            if payload["numero"] > (lido or 0):
+                registro["fontes"][chave]["detalhe"] = (
+                    f"Boletim nº {payload['numero']} publicado ({payload['url']}); o risco por UF mostrado "
+                    f"é o do boletim nº {lido}, e a leitura do novo ainda não foi feita pela máquina.")
         if chave == "noaa_oni":
             registro["enos"]["oni"] = {**payload, "fonte": chave, "documento": documento}
         elif chave == "noaa_roni":
@@ -2773,6 +2817,20 @@ def autoteste() -> int:
     checar("ANA dados tabulares: tudo zero vira 'sem seca'",
            parse_dados_tabulares_secas({"data": {"list": [{"areas": [{"categoria": "S0", "area": 0}], "mapa": {"nome": "x", "ano": 2026, "mes": 7, "final": True}}]}})["categoria_mediana"] == "sem seca")
     checar("ANA dados tabulares negativo: resposta vazia devolve {}", parse_dados_tabulares_secas({"data": {"list": []}}) == {} and parse_dados_tabulares_secas({}) == {})
+
+    _ix = ('<a href="/ana/pt-br/x/boletim-mensal-no-04-setembro-2026">4</a>'
+           '<a href="https://www.gov.br/ana/pt-br/x/boletim-mensal-no-05-outubro-2026">5</a>')
+    _pb = parse_indice_boletins(_ix, "https://www.gov.br/ana/pt-br/x")
+    checar("índice dos boletins: o maior número publicado, com URL absoluta (a relativa se resolve pela base)",
+           parse_indice_boletins('<a href="/ana/pt-br/x/boletim-mensal-no-03-agosto-2026">', "https://www.gov.br/ana/pt-br/x")["url"]
+           == "https://www.gov.br/ana/pt-br/x/boletim-mensal-no-03-agosto-2026")
+    checar("índice dos boletins: o maior número publicado, com URL absoluta",
+           _pb == {"numero": 5, "url": "https://www.gov.br/ana/pt-br/x/boletim-mensal-no-05-outubro-2026"})
+    checar("índice dos boletins negativo: sem boletim reconhecível devolve {}",
+           parse_indice_boletins("<html>nada</html>", "https://www.gov.br/ana/pt-br/x") == {})
+    checar("cptec_prognostico é lacuna declarada, não leitura humana",
+           FONTES["cptec_prognostico"].get("lacuna") and not FONTES["cptec_prognostico"]["endpoint"])
+    checar("painel_el_nino consulta o índice a cada execução (tem endpoint)", bool(FONTES["painel_el_nino"]["endpoint"]))
 
     esq = esqueleto()
     checar("esqueleto: 27 UFs", len(esq["uf"]) == 27)

@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · painel do Cemaden com data de consulta e previsão por tercil como lacuna (+60/−2)
+`coletar_sinais_risco.py` passa a consultar todo dia o índice dos boletins do Painel El Niño e carimbar `consultado_em` (parado em 07/10); boletim novo é registrado no detalhe sem trocar o risco por UF. `cptec_prognostico`, antes leitura humana do nº 3, vira lacuna declarada com o boletim vigente. `verificar_sinais` aceita o status `lacuna`.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
