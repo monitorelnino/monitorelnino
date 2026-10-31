@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-30 · Fumaça (T59) sai do SIM · +2/−9
+
+O capítulo XIX não é causa básica: o SIM não tem série de óbitos por fumaça. `coletar_sim.py` deixa de gravar o grupo, `obitos_fumaca.json` e sua linha em `escritores.json` saem, a limitação entra na METODOLOGIA §122. As internações por T59 (SIH) permanecem.
+
 ## 2026-10-31 · Ensaio real refaz o elo que morre no checkout (+25/−0)
 
 O condutor do ensaio real redispara uma vez o workflow cujo run terminou sem sucesso, como o despachante da noite faz. Causa: juiz do ensaio de 30/10 morreu em 2 min no checkout e o condutor esperou 83 min. Caso F76 em `falhas_da_noite.json`.
