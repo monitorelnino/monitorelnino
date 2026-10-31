@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · Ensaio real refaz o elo que morre no checkout (+25/−0)
+
+O condutor do ensaio real redispara uma vez o workflow cujo run terminou sem sucesso, como o despachante da noite faz. Causa: juiz do ensaio de 30/10 morreu em 2 min no checkout e o condutor esperou 83 min. Caso F76 em `falhas_da_noite.json`.
+
 ## 2026-10-30 · Pacote de saúde do blog traz o quadro de mortalidade · +69/−0
 
 `gerar_pacote_blog.py --linha saude` lê `mortalidade_comparada.json` (Brasil, mês fechado): óbitos registrados, excesso com intervalo, óbitos X30 e projeção CIL, cada fato com fonte e mês. Campo nulo, mês parcial ou derivado com mais de nove dias viram lacuna declarada, nunca zero.

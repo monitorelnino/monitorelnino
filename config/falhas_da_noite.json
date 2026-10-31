@@ -1039,6 +1039,19 @@
    ],
    "correcao": "pistas_rejeitadas.json passa a LOGS_QUE_SO_CRESCEM (multiconjunto pela base comum, total recalculado); sai de FILAS_DE_PISTA; autoteste do caso.",
    "caso_de_teste": "scripts/unir_conflito_de_rodada.py"
+  },
+  {
+   "id": "F76",
+   "noite": "2026-10-30",
+   "titulo": "Ensaio real vermelho: elo morreu no checkout e o condutor esperou 83 min",
+   "sintoma": "Ensaio real 41134829009 (#1384): 'faltam: juiz, sinais-fisicos' até o teto de 110 min; Issue #351 no robo-registro; o run agendado do #1385 foi pulado ('Hora de ensaiar?') e ficou sem prova.",
+   "causa": "O run do juiz no ramo (41138495642) terminou 'failure' em 2 min, preso no passo de checkout (infraestrutura do runner); `ensaio_real.py --conduzir` registra o elo como disparado e nunca o vê terminar sem sucesso, ao contrário do despachante da noite, que redispara.",
+   "prova": [
+    "jobs do run 41138495642: 'juiz / coletar' failure, passo checkout in_progress, demais pending, 22:30–22:32 UTC",
+    "log do run 41134829009: juiz disparado no min 27, 'faltam: juiz, sinais-fisicos' do min 28 ao 109"
+   ],
+   "correcao": "`a_refazer`: o condutor consulta os runs do ramo e redispara uma vez o workflow cujo último run terminou sem sucesso.",
+   "caso_de_teste": "scripts/ensaio_real.py --autoteste (4 casos de a_refazer)"
   }
  ]
 }
