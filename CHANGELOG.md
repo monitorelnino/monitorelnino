@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · #1393 · Desfechos do SUS só depois da saúde (+6/−0)
+
+O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
+
 ## 2026-10-31 · Redução: `buscar_em_fluxo` sem chamador sai (+0/−38)
 
 `coletores_base.buscar_em_fluxo()` perdeu o último chamador quando o SIVEP passou a `buscar_em_fluxo_confiavel`. Varredura de todas as funções de primeiro nível: era a única sem uso em outro arquivo, nem alcançável por dentro do próprio.
