@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
+
+Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
+
 ## 2026-10-30 · Pacote de saúde do blog traz o quadro de mortalidade · +69/−0
 
 `gerar_pacote_blog.py --linha saude` lê `mortalidade_comparada.json` (Brasil, mês fechado): óbitos registrados, excesso com intervalo, óbitos X30 e projeção CIL, cada fato com fonte e mês. Campo nulo, mês parcial ou derivado com mais de nove dias viram lacuna declarada, nunca zero.
