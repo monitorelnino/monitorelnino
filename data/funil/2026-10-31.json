@@ -2,55 +2,57 @@
  "data": "2026-10-31",
  "formato_versao": 1,
  "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 156,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 18,
+   "lacunas": 0,
+   "motor_sem_resposta": 10,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 22
+  },
+  "descobrir_planos": {
+   "achados_novos": 0,
+   "alvos_consultados": 40,
+   "alvos_verificados": 4,
+   "fila_acumulada": 84
+  },
   "diario_consorciado": {
-   "fontes": 16,
-   "pistas": 60,
-   "decretos_novos": 7,
    "bloqueadas": 0,
-   "fora_do_ar": 0
+   "decretos_novos": 7,
+   "fontes": 16,
+   "fora_do_ar": 0,
+   "pistas": 60
   },
   "doe": {
-   "ufs_consultadas": 27,
-   "ufs_com_resultado": 27
+   "ufs_com_resultado": 27,
+   "ufs_consultadas": 27
   },
   "funil_recursos_resposta": {
-   "consultas": 1,
    "com_resultado_bruto": 1,
+   "consultas": 1,
    "pistas": 5
   },
   "juiz": {
-   "pistas_recebidas": 80,
-   "com_documento": 72,
-   "promovidas": 8,
-   "recusa_documento_inacessivel": 8,
-   "recusa_ente_nao_confirmado": 4,
-   "recusa_citacao_incompleta": 17,
-   "recusa_autoridade_nao_confirmada": 7,
-   "recusa_plano_sem_identificacao": 3,
+   "com_documento": 332,
+   "pistas_recebidas": 385,
+   "promovidas": 22,
+   "recusa_autoridade_nao_confirmada": 47,
+   "recusa_citacao_incompleta": 59,
+   "recusa_documento_inacessivel": 52,
+   "recusa_ente_nao_confirmado": 44,
+   "recusa_executivo_pendente": 3,
+   "recusa_fora_do_objeto": 8,
    "recusa_minuta_ou_rascunho": 1,
-   "recusa_noticia_institucional_nao_e_o_plano": 3,
-   "recusa_natureza_duvidosa": 3,
-   "recusa_fora_do_objeto": 2,
-   "recusa_resposta": 4
-  },
-  "descobrir_planos": {
-   "alvos_consultados": 40,
-   "alvos_verificados": 4,
-   "achados_novos": 0,
-   "fila_acumulada": 84
-  },
-  "busca_web": {
-   "consultas": 18,
-   "com_resultado_bruto": 8,
-   "motor_sem_resposta": 10,
-   "pistas": 22,
-   "coberto_sem_mencao": 0,
-   "nao_localizado_ate_o_momento": 0,
-   "lacunas": 0,
-   "brutos_plancon": 156,
-   "brutos_periodo_ou_seca": 0,
-   "brutos_siglas_e_variantes": 0
+   "recusa_natureza_duvidosa": 51,
+   "recusa_noticia_institucional_nao_e_o_plano": 7,
+   "recusa_plano_sem_identificacao": 5,
+   "recusa_resposta": 11,
+   "recusa_sem_documento_primario": 1
   }
  },
- "atualizado_em": "2026-10-31T07:36:42"
+ "atualizado_em": "2026-10-31T07:44:51"
 }

@@ -1662,6 +1662,36 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2100873": {
+   "ibge": "2100873",
+   "nome": "Araguanã",
+   "uf": "MA",
+   "decreto": true,
+   "primeiro_decreto": "20/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "data": "20/01/2026",
+     "decreto": "ato de resposta — Portaria nº 163",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 284
+  },
   "4101655": {
    "ibge": "4101655",
    "nome": "Arapuã",
@@ -4693,9 +4723,17 @@
      "data": "09/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.435",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-21-cidades-afetadas-por-desastres-3",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-21-cidades-afetadas-por-desastres-3",
+     "data": "26/10/2026",
+     "decreto": "situação de emergência (número não localizado no texto)",
+     "hash": null
     }
    ],
-   "n_eventos": 7,
+   "n_eventos": 8,
    "dias_sem_reconhecimento": 290
   },
   "2602506": {
@@ -27699,6 +27737,36 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2928109": {
+   "ibge": "2928109",
+   "nome": "Santa Maria da Vitória",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "14/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "data": "14/01/2026",
+     "decreto": "ato de resposta — Portaria nº 78",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 290
+  },
   "2612703": {
    "ibge": "2612703",
    "nome": "Santa Maria do Cambucá",
@@ -27833,18 +27901,19 @@
    "nome": "Santa Rosa do Purus",
    "uf": "AC",
    "decreto": true,
-   "primeiro_decreto": "19/08/2026",
+   "primeiro_decreto": "14/01/2026",
    "primeiro_reconhecimento": "19/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_ate_reconhecimento": 0,
+   "dias_ate_reconhecimento": 217,
    "fontes": [
     {
      "canal": "DOU",
@@ -27853,9 +27922,17 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "data": "14/01/2026",
+     "decreto": "ato de resposta — Portaria nº 78",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4215653": {
@@ -28865,7 +28942,7 @@
    "nome": "São Francisco",
    "uf": "MG",
    "decreto": true,
-   "primeiro_decreto": "06/07/2026",
+   "primeiro_decreto": "20/01/2026",
    "primeiro_reconhecimento": null,
    "tipos": [
     "SE"
@@ -28893,10 +28970,18 @@
      "data": "09/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.435",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "data": "20/01/2026",
+     "decreto": "ato de resposta — Portaria nº 163",
+     "hash": null
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 117
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": 284
   },
   "4318101": {
    "ibge": "4318101",
@@ -28906,10 +28991,11 @@
    "primeiro_decreto": "06/10/2026",
    "primeiro_reconhecimento": "23/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
@@ -28923,9 +29009,17 @@
      "data": "23/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.701",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-cinco-cidades-gauchas-afetadas-por-desastres-2",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-cinco-cidades-gauchas-afetadas-por-desastres-2",
+     "data": "26/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.701",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2209658": {
