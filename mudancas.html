@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=414c4e5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=7d43c01c">
+<link rel="stylesheet" href="assets/base.css?v=82c82ca4">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>01/11/2026 · Quadro de mortalidade na Saúde (+172/−9)</dt>
+      <dd>Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.</dd>
       <dt>31/10/2026 · Desfechos do SUS só depois da saúde (+6/−0)</dt>
       <dd>O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.</dd>
       <dt>30/10/2026 · Goiás: endereço oficial do gabinete e do plano de contingência estadual</dt>
@@ -165,8 +167,6 @@
       <dd>`scripts/estrutura_desfechos.py` (224 linhas, sem consumidor) duplicava `desfechos_sus.py`, que já é a forma em produção, com autoteste e elo `noturno_desfechos`. Removido; nenhum dado, página ou escritor muda. Saldo negativo: −224 líquidas.</dd>
       <dt>25/10/2026 · Defesa civil: dias sem reconhecimento e evento mais declarado por UF</dt>
       <dd>`municipios_decretados.json` ganha `dias_sem_reconhecimento` (referência − primeiro decreto, só para decretado sem reconhecimento). O evento declarado vem dos atos que casam (`evento_declarado`), contagem por família igual à soma dos atos casados; `evento_observado` segue `em_classificacao` (C16). Linhas líquidas: +12/−1.</dd>
-      <dt>25/10/2026 · Imprensa: acumulados do ciclo, uma função por número</dt>
-      <dd>`data/imprensa/semana.json` ganha `acumulado`: focos de calor do INPE desde 29/06 (somados dia a dia na série publicada, com o período real), municípios com plano localizado pelo MARÉ Legal e, sem dado, lacunas declaradas (dias de alerta do Inmet e estados acima da faixa por doença). Autoteste cobre soma e lacuna sem zero. Sem arquivo novo.</dd>
     </dl>
   </section>
 </main>

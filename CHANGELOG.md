@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · #1399 · Quadro de mortalidade na Saúde (+172/−9)
+
+Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.

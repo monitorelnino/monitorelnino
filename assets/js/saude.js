@@ -94,6 +94,7 @@ async function __load(){
   if (window.MonitorCatalogo && MonitorCatalogo.pronto) { try { await MonitorCatalogo.pronto; } catch (e) {} }
   tabelaDosPlanos();
   montarDesfechos().catch(_erroSaude("saude:desfechos"));
+  montarMortalidade().catch(_erroSaude("saude:mortalidade"));
 }
 
 const fonteFigura = MonitorMapas.credito;
@@ -106,6 +107,57 @@ const TIPOS_DE_PLANO = ['NOVO', 'READ', 'VIG', 'ELAB', 'LAC', 'NAO_VERIFICADO'];
 const ufsDoMonitor = () => (MSAUDE && MSAUDE.ufs) || {};
 const tipoDoEstado = uf => ((ufsDoMonitor()[uf] || {}).instrumento || {}).status || 'NAO_VERIFICADO';
 const textoSaude = (id, v) => (window.MonitorCatalogo && MonitorCatalogo.texto(id, v)) || '';
+
+/* ===== Quadro de mortalidade (01/11/2026) =====
+ * Lê `data/saude_desfechos/mortalidade_comparada.json` (gerador único: gerar_mortalidade_comparada.py);
+ * a página só desenha, não calcula. Campo ausente é a lacuna que o arquivo declara, nunca zero. */
+const MORTALIDADE = fetch('data/saude_desfechos/mortalidade_comparada.json').then(r => (r.ok ? r.json() : null)).catch(() => null);
+const _int = v => Number(Math.round(v)).toLocaleString('pt-BR');
+const _sinal = v => (v > 0 ? '+' : v < 0 ? '\u2212' : '') + _int(Math.abs(v));
+const _mesDe = k => periodoEmPalavras(k, 'mes');
+const _meses = T => Object.keys(T || {}).filter(k => /^\d{4}-\d{2}$/.test(k)).sort();
+const _mt = (id, v) => textoSaude('saude.mortalidade.' + id, v);
+function _linhaDeMes(k, x, lo, hi) {
+  const pos = v => (hi > lo ? ((v - lo) / (hi - lo)) * 100 : 50);
+  const lac = (texto, id) => '<div class="lacuna lacuna--linha">' + esc(texto || _mt('lacuna.' + id)) + '</div>';
+  const f = x.faixa_ref || {};
+  const proj = x.projecao_cil == null ? lac(x.lacuna_projecao_cil, 'projecao')
+    : '<div class="mort-v">' + _int(x.projecao_cil.valor != null ? x.projecao_cil.valor : x.projecao_cil) + '</div>';
+  const reg = '<div class="trilho" role="img" aria-label="' + esc(_mt('reg_aria', {reg: _int(x.registrados), min: _int(f.min), max: _int(f.max)})) + '">'
+    + '<span class="faixa" style="left:' + pos(f.min) + '%;width:' + (pos(f.max) - pos(f.min)) + '%"></span>'
+    + '<span class="pt' + (x.parcial ? ' parcial' : '') + '" style="left:' + pos(x.registrados) + '%"></span></div>'
+    + '<div class="mort-v">' + _int(x.registrados) + (x.parcial ? ' · ' + esc(_mt('parcial')) : '') + '</div>'
+    + '<div class="mort-s">' + esc(_mt('faixa', {min: _int(f.min), max: _int(f.max)})) + '</div>';
+  const e = x.excesso;
+  const exc = e ? '<div class="mort-v">' + _sinal(e.valor) + '</div><div class="mort-s">' + esc(_mt('intervalo', {min: _sinal(e.min), max: _sinal(e.max)}))
+    + '</div><div class="mort-s">' + esc(_mt('esperado', {n: _int(x.esperado)})) + '</div>' : lac(x.lacuna_excesso, 'excesso');
+  const c = x.obitos_x30;
+  const x30 = c ? '<div class="mort-v">' + (c.valor === 0 ? 'zero' : _int(c.valor)) + (c.parcial ? ' · ' + esc(_mt('parcial')) : '') + '</div>' : lac(x.lacuna_x30, 'x30');
+  return '<div class="mort-l"><div class="mort-mes">' + esc(_mesDe(k)) + '</div>'
+    + [['proj', proj], ['reg', reg], ['exc', exc], ['x30', x30]].map(([id, h]) => '<div data-rot="' + esc(_mt('col.' + id + '.titulo')) + '">' + h + '</div>').join('') + '</div>';
+}
+function pintarMortalidade(D) {
+  const T = (D.territorios || {})[document.getElementById('ufMortalidade').value], alvo = document.getElementById('quadroMortalidade');
+  const ks = _meses(T);
+  if (!ks.length) { alvo.innerHTML = '<div class="lacuna lacuna--linha">' + esc(_mt('sem_arquivo')) + '</div>'; return; }
+  const faixas = ks.map(k => T[k].faixa_ref || {}), regs = ks.map(k => T[k].registrados);
+  const lo = Math.min.apply(null, faixas.map(f => f.min).concat(regs)), hi = Math.max.apply(null, faixas.map(f => f.max).concat(regs));
+  alvo.innerHTML = '<div class="mort-l mort-h"><div>' + esc(_mt('col.mes')) + '</div>'
+    + ['proj', 'reg', 'exc', 'x30'].map(id => '<div><b>' + esc(_mt('col.' + id + '.titulo')) + '</b>' + esc(_mt('col.' + id + '.sub')) + '</div>').join('') + '</div>'
+    + ks.map(k => _linhaDeMes(k, T[k], lo, hi)).join('');
+  const meses = ks.length === 1 ? _mesDe(ks[0]) : _mesDe(ks[0]).replace(/ de \d{4}$/, '') + ' a ' + _mesDe(ks[ks.length - 1]);
+  mostrarFrase(document.getElementById('mesesMortalidade'), _mt('fonte', {meses}));
+}
+async function montarMortalidade() {
+  const D = await MORTALIDADE, bloco = document.getElementById('mortalidade');
+  if (!bloco || !D || !D.territorios) return;
+  const sel = document.getElementById('ufMortalidade');
+  sel.innerHTML = '<option value="BR">' + esc(_mt('brasil')) + '</option>' + UFS.map(u => '<option value="' + u + '">' + esc(NOME_UF[u]) + '</option>').join('');
+  sel.addEventListener('change', () => pintarMortalidade(D));
+  pintarMortalidade(D);
+  fonteFigura('boxMortalidade', {fontes: ['fonte_cil', 'fonte_registro', 'fonte_sim'].map(_mt), consultado: D.consultado_em});
+  bloco.hidden = false;
+}
 
 function cartaoDoEstado(uf, nome) {
   const i = (ufsDoMonitor()[uf] || {}).instrumento || {};
@@ -305,15 +357,22 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     return cartao('musgo', TC('rotulo.plano_municipio'), esc(valor) + (achou && sp.url ? ' · <a href="' + esc(sp.url) + '" target="_blank" rel="noopener">' + esc(TC('plano.abrir')) + '</a>' : ''),
       [camada && esc(camada), achou && sp.fonte && esc(sp.fonte), '<a href="index.html#' + esc(uf) + '">' + esc(TC('plano.ver_inicial')) + '</a>'].filter(Boolean).join(' · '));
   };
+  /* O estado, nunca o município: a fonte não abre óbitos por município, e o cartão diz isso. */
+  const cartaoMortalidade = (M, uf) => {
+    const T = M && M.territorios && M.territorios[uf], ks = _meses(T).reverse(), k = ks.find(q => T[q].excesso) || ks[0];
+    const x = k && T[k], nota = esc(TC('mortalidade.nota', {estado: NOME_UF[uf]})) + ' · <a href="#mortalidade">' + esc(TC('mortalidade.ver')) + '</a>';
+    return cartao('neutro', TC('rotulo.mortalidade'), !x ? esc(_mt('sem_arquivo'))
+      : esc(x.excesso ? TC('mortalidade.valor', {mes: _mesDe(k), excesso: _sinal(x.excesso.valor)}) : TC('mortalidade.valor_registrados', {mes: _mesDe(k), n: _int(x.registrados)})), nota);
+  };
   const cartaoArbo = (rotulo, x, d, semanaSemDado) => x
     ? cartao('neutro', rotulo, esc(TC('arbo.nivel_' + x.nivel) || TC('arbo.nivel_outro', {n: x.nivel})), esc(TC('arbo.nota', {semana: semana(x.semana)})))
     : cartao('neutro', rotulo, esc(TC('arbo.nao_lido', {semana: semanaSemDado})), esc(TC('arbo.nota_nao_lido', {data: (d || {}).gerado_em || ''})));
   fetch('data/geo_uf.json').then(r => r.json()).then(GEO => ConsultaMunicipio.montar({uf: 'consultaSaudeUF', municipio: 'consultaSaudeMun', lista: 'consultaSaudeLista', cartao: 'consultaSaudeCard',
     estados: Object.fromEntries(GEO.features.map(f => [f.properties.sigla, f.properties.name])), semLista: TC('sem_lista'),
-    municipios: uf => (porUF[uf] = porUF[uf] || Promise.all([json('data/saude_municipio/' + uf + '.json'), extra, cartas()]))
-      .then(([D, [S, meta], CARD]) => { porUF[uf].dados = {D, S, meta, CARD}; return D && Object.values(D.municipios).map(x => x.nome); }),
+    municipios: uf => (porUF[uf] = porUF[uf] || Promise.all([json('data/saude_municipio/' + uf + '.json'), extra, cartas(), MORTALIDADE]))
+      .then(([D, [S, meta], CARD, M]) => { porUF[uf].dados = {D, S, meta, CARD, M}; return D && Object.values(D.municipios).map(x => x.nome); }),
     mostrar: (uf, nome, card) => {
-      const {D, S, meta, CARD} = porUF[uf].dados, o = D.origens || {}, [cod, m] = Object.entries(D.municipios).find(([, x]) => x.nome === nome);
+      const {D, S, meta, CARD, M} = porUF[uf].dados, o = D.origens || {}, [cod, m] = Object.entries(D.municipios).find(([, x]) => x.nome === nome);
       const sp = ConsultaMunicipio.situacaoDoPlano(((CARD || {}).municipios || {})[cod]);
       const sinal = (m.dengue || m.chikungunya || {}).semana, quando = semana(sinal);
       const e = ufsDoMonitor()[uf] || {}, pl = m.saude_no_plano, calor = m.calor && m.calor !== 'Normal';
@@ -326,7 +385,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
             esc(TC('srag.nota', {data: (S && MonitorMapas.dataBR(S.coletado_em)) || ''})))
         + cartao('musgo', TC('rotulo.plano_estado'), esc(textoSaude('saude.estadual.tipo.' + tipoDoEstado(uf))) + ' · <a href="#estadual" data-ficha="' + esc(uf) + '">' + esc(TC('plano_estado.ficha')) + '</a>',
             esc(TC('plano_estado.nota', {data: MSAUDE.corte || ''})))
-        + cartaoPlanoDoMunicipio(sp, pl, uf, meta) + '</div>';
+        + cartaoPlanoDoMunicipio(sp, pl, uf, meta) + cartaoMortalidade(M, uf) + '</div>';
       card.querySelector('[data-ficha]').addEventListener('click', ev => { ev.preventDefault(); abrirDetalheSaude(ev.target.dataset.ficha); });
     }})).catch(_erroSaude("saude:consulta"));
 })();

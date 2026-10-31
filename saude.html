@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=7d43c01c">
+<link rel="stylesheet" href="assets/base.css?v=82c82ca4">
 <script src="assets/mapas.js?v=414c4e5f"></script>
 <script src="assets/semana.js?v=f42ab28a"></script>
 </head>
@@ -204,7 +204,23 @@
     </div>
   </section>
 
-
+  <!-- 01/11/2026 (editoria, 31/10): quadro de mortalidade mês a mês, lido de mortalidade_comparada.json
+       (gerador único da A2); a página só desenha, não calcula. -->
+  <section id="mortalidade" hidden>
+    <h2 data-conteudo="saude.mortalidade.titulo_da_secao">Óbitos registrados e projeção de mortes por calor</h2>
+    <p class="hint"><label for="ufMortalidade" data-conteudo="saude.mortalidade.seletor">Território</label>
+      <select id="ufMortalidade" class="seletor"></select></p>
+    <div class="grade-figuras grade-figuras--1">
+      <figure class="figura figura--tabela cartao-mapa" id="boxMortalidade" aria-labelledby="tituloMortalidade">
+        <p class="cartao-mapa-familia" data-conteudo="saude.mortalidade.familia">MARÉ Saúde</p>
+        <h3 class="figura-titulo" id="tituloMortalidade" data-conteudo="saude.mortalidade.titulo">Mortes por calor projetadas, óbitos registrados e excesso observado, por mês</h3>
+        <p class="figura-sub" data-conteudo="saude.mortalidade.legenda">Brasil e estados · julho de 2026 em diante</p>
+        <div class="figura-midia"><div class="mort" id="quadroMortalidade"></div></div>
+        <p class="figura-nota" data-conteudo="saude.mortalidade.apoio">Projeção é estimativa de modelo, não registro. Excesso observado conta óbitos de todas as causas, não só os atribuídos ao calor. Os números não indicam relação com o El Niño. 2020 e 2021 ficam fora da referência por causa da pandemia.</p>
+        <p class="figura-nota" id="mesesMortalidade"></p>
+      </figure>
+    </div>
+  </section>
 
 </main>
   <footer class="site-footer">
@@ -219,7 +235,7 @@
 </div>
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
-<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=83078cf8" defer></script><script src="assets/js/saude.js?v=35da578a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
+<script src="assets/js/grade-estados.js?v=f9fc6159" defer></script><script src="assets/js/consulta-municipio.js?v=83078cf8" defer></script><script src="assets/js/saude.js?v=7823141a" defer></script><script src="assets/js/proveniencia.js?v=4a7e990d" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->
