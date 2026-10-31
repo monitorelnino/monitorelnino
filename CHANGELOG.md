@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · projeção CIL no elo dos desfechos (+215/−0)
+Novo `coletar_projecao_cil.py`, no elo `desfechos` antes de `gerar_mortalidade_comparada.py`: lê da página do Climate Impact Lab o link do CSV por ADM1 (nunca monta o nome), guarda cada edição datada, com hash, cabeçalho e linhas do Brasil como vieram, sem sobrescrever. Link ausente do HTML ou fonte fora do ar vira lacuna declarada. Escritor declarado, cadência em `CADENCIAS.md`. Saldo positivo: recurso novo.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
