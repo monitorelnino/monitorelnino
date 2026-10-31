@@ -2828,7 +2828,7 @@ def autoteste() -> int:
            _pb == {"numero": 5, "url": "https://www.gov.br/ana/pt-br/x/boletim-mensal-no-05-outubro-2026"})
     checar("índice dos boletins negativo: sem boletim reconhecível devolve {}",
            parse_indice_boletins("<html>nada</html>", "https://www.gov.br/ana/pt-br/x") == {})
-    checar("cptec_prognostico é lacuna declarada, não leitura humana",
+    checar("cptec_prognostico é lacuna declarada, sem leitura manual",
            FONTES["cptec_prognostico"].get("lacuna") and not FONTES["cptec_prognostico"]["endpoint"])
     checar("painel_el_nino consulta o índice a cada execução (tem endpoint)", bool(FONTES["painel_el_nino"]["endpoint"]))
 
