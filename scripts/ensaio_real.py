@@ -68,6 +68,20 @@ def proximo_a_disparar(feitos: set, disparados: set, corrente=CORRENTE):
     return None
 
 
+def a_refazer(runs: list, disparados: set, refeitos: set) -> set:
+    """Workflows disparados cujo último run do ramo terminou sem sucesso e ainda não foram refeitos.
+
+    31/10/2026 (F-ensaio-checkout): o juiz do ensaio morreu no checkout (infraestrutura, 2 min) e o
+    condutor esperou 83 min por um marcador que não viria; o despachante real redispara, o condutor
+    agora também (uma vez por workflow). Função pura."""
+    ultimo = {}
+    for r in sorted(runs or [], key=lambda r: str(r.get("createdAt") or "")):
+        ultimo[r.get("workflow")] = r
+    ruins = ("failure", "cancelled", "timed_out", "startup_failure")
+    return {wf for wf in disparados if wf not in refeitos
+            and str((ultimo.get(wf) or {}).get("conclusion") or "") in ruins}
+
+
 def marcadores_que_faltam(arquivos: list, noite: str, elos=ELOS) -> list:
     """Os elos sem `data/noite/<noite>/<elo>.feito` na árvore do ramo. Função pura."""
     tem = set(arquivos or [])
@@ -203,6 +217,12 @@ def autoteste() -> int:
        proximo_a_disparar(set(), {"noturno_diarios.yml"}) is None)
     ok("corrente inteira feita: nada a disparar",
        proximo_a_disparar({e for e, _ in CORRENTE}, set()) is None)
+    rr = [{"workflow": "w", "createdAt": "1", "conclusion": "failure"}]
+    ok("elo disparado que falhou é refeito", a_refazer(rr, {"w"}, set()) == {"w"})
+    ok("elo já refeito uma vez não entra em laço", a_refazer(rr, {"w"}, {"w"}) == set())
+    ok("elo que falhou e depois teve sucesso não é refeito",
+       a_refazer(rr + [{"workflow": "w", "createdAt": "2", "conclusion": "success"}], {"w"}, set()) == set())
+    ok("elo em andamento não é refeito", a_refazer([{"workflow": "w", "createdAt": "1", "conclusion": ""}], {"w"}, set()) == set())
     ok("o prefixo do ramo do ensaio não colide com ramo existente",
        PREFIXO == "ensaio-real/" and not any(r == PREFIXO.rstrip("/") for r in RAMOS_QUE_EXISTEM))
     ok("marcador escrito por run que não é do ensaio não conta (F34)",
@@ -232,6 +252,7 @@ def main() -> int:
     if "--conduzir" in argv:
         teto = float(arg("--teto-min", "110"))
         disparados = {"noturno_diarios.yml", "noturno_triagem.yml"}   # o workflow já os disparou
+        refeitos = set()
         inicio = time.time()
         while (time.time() - inicio) / 60 < teto:
             faltam = marcadores_que_faltam(arquivos_do_ramo(ramo), noite)
@@ -239,6 +260,10 @@ def main() -> int:
             print(f"{int((time.time() - inicio) / 60)} min · faltam: {', '.join(faltam) or 'nenhum'}")
             if not faltam:
                 return 0
+            for wf in a_refazer(runs_do_ensaio("", ramo), disparados, refeitos):
+                refeitos.add(wf)
+                disparados.discard(wf)
+                print(f"  → {wf} terminou sem sucesso no ramo; será disparado de novo (uma vez)")
             wf = proximo_a_disparar(feitos, disparados)
             if wf:
                 # 14/10/2026: disparo que falhou não conta como disparado — a próxima volta tenta de novo.
