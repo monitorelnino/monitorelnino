@@ -105,7 +105,7 @@ Atualizado em 31/10/2026.
 | `coletar_srag_sivep.py` | — | `saude_desfechos/srag_serie.json`, `saude_desfechos/srag_sivep_agregados.json` | — | — | não |
 | `coletar_transferegov.py` | — | `financiamento/consultas.json`, `financiamento/por_uf.json`, `financiamento/programas_faf_2026.json`, `financiamento/serie_nacional.json`, `transferegov_el_nino_revisar.json` | — | — | não |
 | `coletar_transferencias_municipais.py` | — | `estados.json`, `indice.json`, `monitor_saude.json`, `municipios.json`, `saude_uf.json`, `transferencias_uniao.json` | — | 1 | não |
-| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **176** | não |
+| `coletores_base.py` | — | `atos_resposta.json`, `calendario/fontes_suspensas.json`, `estados.json`, `evidencias.json`, `fontes_consultadas.json`, `indice.json` (+6) | — | **174** | não |
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
@@ -137,7 +137,6 @@ Atualizado em 31/10/2026.
 | `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
-| `ler_caixa_lai.py` | — | — | — | — | não |
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 3 | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
@@ -171,7 +170,6 @@ Atualizado em 31/10/2026.
 | `scripts/gerar_prioridade_municipios.py` | — | `prioridade_municipios.json` | — | — | não |
 | `scripts/gerar_resumo_do_log.py` | — | `log_buscas_resumo.json` | — | — | não |
 | `scripts/gerar_topo_das_paginas.py` | — | `resposta/topo_defesa_civil.json`, `saude_desfechos/topo_saude.json`, `topo_monitor_riscos.json` | — | 1 | não |
-| `scripts/incorporar_respostas_lai.py` | — | `atos_resposta.json`, `estados.json`, `notas_lai.json` | — | — | não |
 | `scripts/ingerir_ocp_midr.py` | — | `ocp_2026.json` | — | — | não |
 | `scripts/limpar_fila_de_pistas.py` | — | `pistas_imprensa.json` | — | 3 | não |
 | `scripts/migrar_pistas_para_o_esquema.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json` | — | — | não |
@@ -188,7 +186,6 @@ Atualizado em 31/10/2026.
 | `scripts/remediar_segredos_evidencias.py` | — | `evidencias.json` | — | 1 | não |
 | `scripts/saude_pipeline.py` | — | `a.json`, `b.json`, `saude_pipeline.json` | — | 3 | não |
 | `scripts/sondar_dda_zenodo.py` | — | `saude_desfechos/completude.json`, `saude_desfechos/serie_painel.json` | — | — | não |
-| `scripts/sondar_fornecedor_transparencia.py` | — | `transparencia_fornecedor_capitais.json` | — | — | não |
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |

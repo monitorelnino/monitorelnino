@@ -21,6 +21,10 @@ O condutor do ensaio real redispara uma vez o workflow cujo run terminou sem suc
 
 `gerar_pacote_blog.py --linha saude` lê `mortalidade_comparada.json` (Brasil, mês fechado): óbitos registrados, excesso com intervalo, óbitos X30 e projeção CIL, cada fato com fonte e mês. Campo nulo, mês parcial ou derivado com mais de nove dias viram lacuna declarada, nunca zero.
 
+## 2026-10-30 · Redução: três scripts de LAI sem chamador saem · +0/−650
+
+`ler_caixa_lai.py`, `scripts/incorporar_respostas_lai.py` e `scripts/sondar_fornecedor_transparencia.py` só se referenciavam entre si; decisão da central de 30/10. Ficam no histórico do git. Código, workflows e dados intocados.
+
 ## 2026-10-30 · Mortalidade comparada entra no elo dos desfechos · +2/−0
 
 `gerar_mortalidade_comparada.py` roda no elo `noturno_desfechos` logo depois de `coletar_sim.py`, com escritor declarado; só regrava quando `obitos.json` ou `obitos_calor.json` mudam.
