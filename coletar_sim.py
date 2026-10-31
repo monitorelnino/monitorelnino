@@ -42,14 +42,14 @@ ORCAMENTO_S = 1500
 N_PARCIAIS = 2        # meses mais recentes marcados `parcial` (atraso do registro: não verificado)
 PARADA_APOS = 5       # falhas seguidas: a fonte caiu, a rodada para
 CID_CALOR = "X30"     # causa básica é causa externa: T00–T98 (T67) não pode ser causa básica; no SIH, T67 vale
-GRUPOS_SIM = ("respiratorias", "cardio", "renal", "desidratacao", "fumaca", "calor")
+# Fumaça (T59) não existe no SIM: capítulo XIX não é causa básica; só o SIH a conta (central, 30/10/2026).
+GRUPOS_SIM = ("respiratorias", "cardio", "renal", "desidratacao", "calor")
 TOTAL = "obitos_sim_total"
 ROTULOS = {
     "respiratorias": "Óbitos por doenças respiratórias agudas (CID-10 J00 a J22)",
     "cardio": "Óbitos por doença isquêmica do coração e cerebrovascular (CID-10 I20 a I25 e I60 a I64)",
     "renal": "Óbitos por insuficiência renal (CID-10 N17 a N19)",
     "desidratacao": "Óbitos por desidratação (CID-10 E86)",
-    "fumaca": "Óbitos por efeito tóxico de gases, fumaças e vapores (CID-10 T59)",
     "calor": "Óbitos por exposição a calor natural excessivo (CID-10 X30)",
 }
 DESFECHOS = {TOTAL: "Óbitos por todas as causas (SIM, por mês de ocorrência)",
@@ -286,7 +286,8 @@ def autoteste() -> int:
     hoje = datetime.date(2026, 10, 23)
     ok1 = coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
     t = gravados.get("saude_desfechos/obitos_sim_total.json", {})
-    casos.append(("1ª rodada grava os sete arquivos comuns", ok1 and len(gravados) == 7))
+    casos.append(("1ª rodada grava os seis arquivos comuns; fumaça (T59) não é série do SIM", ok1 and len(gravados) == 6
+                  and "saude_desfechos/obitos_fumaca.json" not in gravados))
     casos.append(("grupo conta só o seu CID; E86 é desidratação",
                   gravados["saude_desfechos/obitos_respiratorias.json"]["serie"]["SP"]["2026-07"] == 1
                   and gravados["saude_desfechos/obitos_desidratacao.json"]["serie"]["SP"]["2026-07"] == 1

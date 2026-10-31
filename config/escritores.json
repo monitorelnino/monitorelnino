@@ -217,10 +217,6 @@
    "escritor": "noturno_desfechos.yml",
    "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
   },
-  "data/saude_desfechos/obitos_fumaca.json": {
-   "escritor": "noturno_desfechos.yml",
-   "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
-  },
   "data/saude_desfechos/mortalidade_comparada.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Derivado do quadro de mortalidade comparada (A2, `gerar_mortalidade_comparada.py`): lê só `obitos.json` e `obitos_calor.json`, roda no elo logo depois de `coletar_sim.py` e só regrava quando a fonte muda."
