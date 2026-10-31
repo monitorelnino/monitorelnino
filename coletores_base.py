@@ -1147,44 +1147,6 @@ class OrcamentoDeRequisicoes:
                 "teto_por_host": self.teto_por_host, "teto_global": self.teto_global}
 
 
-def buscar_em_fluxo(url: str, timeout: int = 120, origem: str = None, pedaco: int = 1 << 20):
-    """Gera o corpo em pedaços, para arquivo grande demais para caber na memória.
-
-    29/09/2026: o banco do SIVEP-Gripe tem 247 MB por ano epidemiológico, e são oito anos. Ler
-    tudo com `buscar()` guardaria dois gigabytes de microdado em memória para produzir um agregado
-    de alguns quilobytes — e microdado de saúde não é para guardar, é para agregar e descartar.
-
-    Mesma porta, mesmas travas: User-Agent do projeto, robots.txt lido e respeitado com o rastro do
-    §185, e **muro de robô testado no primeiro pedaço** (§186) — uma página de bloqueio servida com
-    200 seria lida como CSV e viraria linha zerada se ninguém olhasse. O que não dá para fazer aqui
-    é o teste de defeso, que lê o corpo inteiro: quem chama um arquivo de 247 MB sabe que está
-    pedindo dado tabular, não página de portal.
-    """
-    host = (urllib.parse.urlparse(url).netloc or "").lower()
-    robots = robots_de(host) if host else {"status": "indeterminado", "crawl_delay": None, "rp": None}
-    _respeitar_ritmo(host, robots.get("crawl_delay"))
-    req = urllib.request.Request(url_ascii(url), headers={"User-Agent": UA, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout, context=contexto_tls()) as r:
-        if robots.get("rp") is not None and not robots["rp"].can_fetch(UA, url_ascii(url)):
-            try:
-                registrar_acesso_contra_robots(host, url, origem)
-            except Exception:  # noqa: BLE001
-                pass
-        primeiro = True
-        while True:
-            bloco = r.read(pedaco)
-            if not bloco:
-                break
-            if primeiro:
-                marca = detectar_muro_de_robo(bloco)
-                if marca:
-                    raise MuroDeRobo(url, marca)
-                primeiro = False
-            yield bloco
-
-
-
-
 PAINEL_COLETORES = "saude_desfechos/coletores_painel.json"
 
 

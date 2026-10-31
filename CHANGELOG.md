@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · Redução: `buscar_em_fluxo` sem chamador sai (+0/−38)
+
+`coletores_base.buscar_em_fluxo()` perdeu o último chamador quando o SIVEP passou a `buscar_em_fluxo_confiavel`. Varredura de todas as funções de primeiro nível: era a única sem uso em outro arquivo, nem alcançável por dentro do próprio.
+
 ## 2026-10-30 · Fumaça (T59) sai do SIM · +2/−9
 
 O capítulo XIX não é causa básica: o SIM não tem série de óbitos por fumaça. `coletar_sim.py` deixa de gravar o grupo, `obitos_fumaca.json` e sua linha em `escritores.json` saem, a limitação entra na METODOLOGIA §122. As internações por T59 (SIH) permanecem.
@@ -20,6 +24,10 @@ O condutor do ensaio real redispara uma vez o workflow cujo run terminou sem suc
 ## 2026-10-30 · Pacote de saúde do blog traz o quadro de mortalidade · +69/−0
 
 `gerar_pacote_blog.py --linha saude` lê `mortalidade_comparada.json` (Brasil, mês fechado): óbitos registrados, excesso com intervalo, óbitos X30 e projeção CIL, cada fato com fonte e mês. Campo nulo, mês parcial ou derivado com mais de nove dias viram lacuna declarada, nunca zero.
+
+## 2026-10-30 · Redução: três scripts de LAI sem chamador saem · +0/−650
+
+`ler_caixa_lai.py`, `scripts/incorporar_respostas_lai.py` e `scripts/sondar_fornecedor_transparencia.py` só se referenciavam entre si; decisão da central de 30/10. Ficam no histórico do git. Código, workflows e dados intocados.
 
 ## 2026-10-30 · Mortalidade comparada entra no elo dos desfechos · +2/−0
 
