@@ -154,6 +154,8 @@
     "fim_utc": "09:00"
    },
    "devido_quando": "não há execução dos desfechos nesta janela",
+   "nao_antes_do_cron": true,
+   "_nota_nao_antes_do_cron": "31/10/2026: a derivação de dengue/chikungunya lê a série SINAN que o elo da saúde grava; devido na abertura, o despachante disparava os dois juntos (01:10 × 01:37) e a derivação saía esparsa. Só depois das 07:05, com a saúde (05:50, teto 60 min) já encerrada.",
    "tolerancia_atraso_min": 90,
    "idempotencia": "cada coletor regrava só o seu arquivo e só se o hash da fonte mudou; o SIH retoma do que já leu; rodar duas vezes dá o mesmo arquivo",
    "orcamento_min": 100,
