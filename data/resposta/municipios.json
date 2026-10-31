@@ -2787,18 +2787,31 @@
    "ibge": "1400050",
    "nome": "Alto Alegre",
    "uf": "RR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Roraima (AMR))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=17081&i=publicado_116437_2026-10-29_7800ca541937e0f03e79a679e4b102f5.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 150/2026/",
+     "hash": "6ecabfe283a143cb7653fe1e21ee1932f6eb59776f8c75d1ce9cd79d1479255a"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "4300554": {
    "ibge": "4300554",
@@ -22396,10 +22409,11 @@
    "primeiro_decreto": "05/10/2026",
    "primeiro_reconhecimento": "21/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "seca"
@@ -22413,9 +22427,17 @@
      "data": "21/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.647",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118977_2026-10-29_320d5990237a408d52953cc118d81b39.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 088",
+     "hash": "551f1ec4756c36b99861df810c70dd6ffdd5f1e7e1b0fe21c90aa04a7a4a6bec"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "3201308": {
@@ -41381,18 +41403,31 @@
    "ibge": "4109658",
    "nome": "Honório Serpa",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17422",
+     "data": "30/10/2026",
+     "decreto": "Decreto municipal nº 204",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "2305233": {
    "ibge": "2305233",
@@ -53650,18 +53685,31 @@
    "ibge": "2608453",
    "nome": "Lagoa do Carro",
    "uf": "PE",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Pernambuco (AMUPE))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115929_2026-10-29_49ceb6791d8d87f792e458e25753152f.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 049/2026",
+     "hash": "8a90c588d4d44c94c1b3958ba2cae915c2b6298b1d10809e81cc5de9b67d0145"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "2105922": {
    "ibge": "2105922",
@@ -67401,18 +67449,31 @@
    "ibge": "4117271",
    "nome": "Nova Tebas",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17422",
+     "data": "30/10/2026",
+     "decreto": "Decreto municipal nº 154",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "1505007": {
    "ibge": "1505007",
@@ -70185,18 +70246,31 @@
    "ibge": "2706208",
    "nome": "Palestina",
    "uf": "AL",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115421_2026-10-29_926189abc457b5d524ff3b991dcf66c3.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº .",
+     "hash": "0bebbc48688f739bf919e2a56bf07da23fa103e5e8e8a7711add42664206bd1e"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "3535002": {
    "ibge": "3535002",
@@ -71761,9 +71835,17 @@
      "data": "27/10/2026",
      "decreto": "Decreto nº 28.063",
      "hash": "8cc52c7992045aba8433942f4c071933bc34525630d4570957c581c7b90d7631"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 28.063",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 4
   },
   "5006358": {
@@ -72994,18 +73076,31 @@
    "ibge": "1303502",
    "nome": "Pauini",
    "uf": "AM",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118977_2026-10-29_320d5990237a408d52953cc118d81b39.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 060/2026",
+     "hash": "551f1ec4756c36b99861df810c70dd6ffdd5f1e7e1b0fe21c90aa04a7a4a6bec"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "3148301": {
    "ibge": "3148301",
@@ -76662,18 +76757,31 @@
    "ibge": "3151206",
    "nome": "Pirapora",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Mineiros (AMM-MG))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118469_2026-10-29_bf7a4d817f6773ceff1943a8649d4a4c.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 101",
+     "hash": "f39bdd0f353370d680d9f5f6719c53bde3c4e889d910b411f60379b092752fec"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "3539103": {
    "ibge": "3539103",
@@ -77024,9 +77132,17 @@
      "data": "25/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.252",
      "hash": "5214225a8911b5dda243f324c924c1a0b34fa1bae4efe010e2870cdda28c585b"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 207",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3539509": {
@@ -85270,9 +85386,17 @@
      "data": "23/10/2026",
      "decreto": "Decreto municipal nº 94",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17422",
+     "data": "30/10/2026",
+     "decreto": "Decreto municipal nº 97",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 8
   },
   "4316105": {
@@ -88848,18 +88972,31 @@
    "ibge": "4123907",
    "nome": "Santa Mariana",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "29/10/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 107",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "3547106": {
    "ibge": "3547106",
@@ -96346,9 +96483,17 @@
      "data": "28/10/2026",
      "decreto": "Decreto municipal nº 588/2026",
      "hash": "5ae4e7577f1da56f3b53e6bcef92649451d85a8b8ae86e04e71214eb70f51877"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 588",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 3
   },
   "2412500": {
@@ -107923,10 +108068,11 @@
    "primeiro_decreto": "23/06/2026",
    "primeiro_reconhecimento": "30/06/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
@@ -107940,9 +108086,17 @@
      "data": "30/06/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.117",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118977_2026-10-29_320d5990237a408d52953cc118d81b39.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 907/",
+     "hash": "551f1ec4756c36b99861df810c70dd6ffdd5f1e7e1b0fe21c90aa04a7a4a6bec"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4322400": {
