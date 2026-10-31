@@ -9,11 +9,12 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-24 a 2026-10-31 (1272 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-24 a 2026-10-31 (1274 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - coletar_sih.py: erro em 7 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
+- python3: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - verificar_links.py: erro em 2 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Cobertura em 15 dias
@@ -27,7 +28,7 @@ cobertura 15d: 5080/5571 com verificação real até 2026-10-31 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-10-24 02:02 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-10-30 01:28 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-30 01:36 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-10-31 15:17 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-10-31 17:55 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-10-31 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-25 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar_populacao.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
@@ -86,7 +87,7 @@ cobertura 15d: 5080/5571 com verificação real até 2026-10-31 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-10-31 08:49 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `preservar_evidencias.py` | coletor | 2026-10-31 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `processar_contribuicoes.py` | coletor | 2026-10-25 08:23 | 1 s | — | ok | — |
-| `python3` | coletor | 2026-10-31 10:00 | 12001 s | — | **erro** | interrompido pelo prazo do elo |
+| `python3` | coletor | 2026-10-31 13:46 | 12001 s | — | **erro** (2 seguidas) | interrompido pelo prazo do elo |
 | `revisar_pistas.py` | coletor | 2026-10-31 06:23 | 392 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-31 07:59 | 1 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-31 06:22 | 78 s | — | ok | — |
