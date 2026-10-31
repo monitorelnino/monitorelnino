@@ -365,6 +365,55 @@ def fatos_de_saude(topo: dict, hoje: dt.date) -> tuple:
     return fatos, lacunas
 
 
+def fatos_de_mortalidade(derivado: dict, hoje: dt.date) -> tuple:
+    """Os quatro campos do quadro de mortalidade (Brasil, mês fechado) em fatos. Função pura.
+
+    Lê `saude_desfechos/mortalidade_comparada.json`, que já traz o cálculo: o pacote não refaz
+    conta. Campo nulo vira a lacuna que o derivado declara; derivado com mais de nove dias, ou mês
+    parcial, vira lacuna e nunca número.
+    """
+    fatos, lacunas = [], []
+    carimbo = (derivado or {}).get("consultado_em")
+    meses = ((derivado or {}).get("territorios") or {}).get("BR") or {}
+    if not meses:
+        return fatos, ["mortalidade comparada: derivado ausente na data do pacote"]
+    if esta_velho(carimbo, hoje):
+        return fatos, [f"mortalidade comparada: sem atualização desde {carimbo}"]
+    fontes = derivado.get("fontes") or {}
+    for mes in sorted(meses):
+        m = meses[mes]
+        rotulo = data_por_extenso(f"{mes}-01").split(" de ", 1)[1]
+        if m.get("parcial"):
+            lacunas.append(f"mortalidade comparada, {rotulo}: mês incompleto")
+            continue
+        fim_mes = (dt.date.fromisoformat(f"{mes}-01") + dt.timedelta(days=32)).replace(day=1) \
+            - dt.timedelta(days=1)
+        for campo, texto, unidade, valor in (
+                ("registrados", f"óbitos registrados em cartório em {rotulo}, todas as causas",
+                 "óbitos", m.get("registrados")),
+                ("excesso", f"excesso de óbitos sobre o esperado em {rotulo}", "óbitos",
+                 (m.get("excesso") or {}).get("valor")),
+                ("obitos_x30", f"óbitos por calor natural (X30) em {rotulo}", "óbitos",
+                 m.get("obitos_x30")),
+                ("projecao_cil", f"mortes por calor projetadas em {rotulo}", "mortes",
+                 m.get("projecao_cil"))):
+            if valor is None:
+                lacunas.append(f"mortalidade comparada, {rotulo}, {campo}: "
+                               f"{m.get('lacuna_' + campo.replace('obitos_', '')) or 'sem dado'}")
+                continue
+            if campo == "excesso":
+                ex = m["excesso"]
+                # valor negativo: o texto escreve o módulo, e o verificador lê o número sem sinal
+                texto += (f": {numero_pt(round(valor))} (intervalo de {numero_pt(round(ex['min']))} "
+                          f"a {numero_pt(round(ex['max']))})")
+            fonte = fontes.get(campo if campo != "excesso" else "registrados") or {}
+            fatos.append(fato(f"mortalidade_{campo}_{mes}", "saude_mortalidade", texto,
+                              round(valor) if isinstance(valor, float) else valor, unidade,
+                              fonte.get("sistema"), fonte.get("url"), fim_mes.isoformat(),
+                              carimbo))
+    return fatos, lacunas
+
+
 # ---------------------------------------------------------------- montagem
 # ------------------------------------------------- o pacote TIPOS DE EVENTO (handover da seca)
 #
@@ -738,6 +787,24 @@ def _autoteste() -> int:
     ok("as duas frases obrigatórias de saúde estão no pacote",
        {"parcialidade", "sem_relacao_el_nino"} <= ids)
 
+    mc = {"consultado_em": "2026-10-29", "fontes": {"registrados": {"sistema": "ARPEN", "url": "u"}},
+          "territorios": {"BR": {
+              "2026-07": {"registrados": 140019, "parcial": False,
+                          "excesso": {"valor": 5102.8, "min": -5327, "max": 11663},
+                          "obitos_x30": None, "lacuna_x30": "critério em correção",
+                          "projecao_cil": None, "lacuna_projecao_cil": "aguarda a série"},
+              "2026-10": {"registrados": 9, "parcial": True}}}}
+    fmc, lmc = fatos_de_mortalidade(mc, d(2026, 11, 1))
+    ok("mortalidade: registrados e excesso viram fato com a fonte e o mês",
+       {x["id"] for x in fmc} == {"mortalidade_registrados_2026-07", "mortalidade_excesso_2026-07"}
+       and fmc[1]["valor"] == 5103 and "5.103" in fmc[1]["texto"] and "11.663" in fmc[1]["texto"] and fmc[0]["fonte"] == "ARPEN")
+    ok("mortalidade: campo nulo e mês parcial viram lacuna declarada, nunca zero",
+       any("x30: critério em correção" in x for x in lmc)
+       and any("projecao_cil: aguarda a série" in x for x in lmc)
+       and any("outubro de 2026: mês incompleto" in x for x in lmc))
+    ok("mortalidade: derivado com mais de nove dias é lacuna",
+       fatos_de_mortalidade(mc, d(2026, 11, 20))[0] == [])
+
     pac = montar("legal", d(2026, 9, 27), d(2026, 10, 3), fe, [], d(2026, 10, 4))
     ok("o identificador do pacote é a data de fim e a linha",
        pac["pacote"] == "2026-10-03_legal")
@@ -809,6 +876,8 @@ def gerar(linha: str, fim_da_semana: dt.date = None, saida: pathlib.Path = None,
     else:
         topo = ler("saude_desfechos/topo_saude.json") or {}
         fatos, lacunas = fatos_de_saude(topo, hoje)
+        fm, lm = fatos_de_mortalidade(ler("saude_desfechos/mortalidade_comparada.json") or {}, hoje)
+        fatos, lacunas = fatos + fm, lacunas + lm
 
     pacote = montar(linha, inicio, fim, fatos, lacunas, hoje)
     destino = pathlib.Path(saida or SAIDA_PADRAO)
