@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · Busca de planos: semeador das sondas volta à fila pela porta única (+103/−0)
+
+As sondas de busca por município acham endereços de documento e não os levavam ao juiz. O semeador lê só o que a sonda trouxe, resolve o município pelo IBGE e entrega o lote à porta de pistas, que recusa com motivo o que não é plano. Sem IBGE, o candidato não entra. Código novo: recurso, não correção.
+
 ## 2026-10-31 · projeção CIL no elo dos desfechos (+215/−0)
 Novo `coletar_projecao_cil.py`, no elo `desfechos` antes de `gerar_mortalidade_comparada.py`: lê da página do Climate Impact Lab o link do CSV por ADM1 (nunca monta o nome), guarda cada edição datada, com hash, cabeçalho e linhas do Brasil como vieram, sem sobrescrever. Link ausente do HTML ou fonte fora do ar vira lacuna declarada. Escritor declarado, cadência em `CADENCIAS.md`. Saldo positivo: recurso novo.
 
