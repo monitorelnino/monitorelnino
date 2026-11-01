@@ -1,0 +1,49 @@
+{
+ "data": "2026-11-01",
+ "formato_versao": 1,
+ "etapas": {
+  "doe": {
+   "ufs_consultadas": 27,
+   "ufs_com_resultado": 27
+  },
+  "funil_recursos_resposta": {
+   "consultas": 1,
+   "com_resultado_bruto": 1,
+   "pistas": 3
+  },
+  "juiz": {
+   "pistas_recebidas": 260,
+   "com_documento": 173,
+   "promovidas": 11,
+   "recusa_documento_inacessivel": 87,
+   "recusa_ente_nao_confirmado": 43,
+   "recusa_citacao_incompleta": 25,
+   "recusa_executivo_pendente": 3,
+   "recusa_autoridade_nao_confirmada": 13,
+   "recusa_minuta_ou_rascunho": 2,
+   "recusa_natureza_duvidosa": 20,
+   "recusa_fora_do_objeto": 9,
+   "recusa_noticia_institucional_nao_e_o_plano": 3,
+   "recusa_resposta": 3
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 40,
+   "alvos_verificados": 8,
+   "achados_novos": 4,
+   "fila_acumulada": 84
+  },
+  "busca_web": {
+   "consultas": 18,
+   "com_resultado_bruto": 8,
+   "motor_sem_resposta": 10,
+   "pistas": 6,
+   "coberto_sem_mencao": 0,
+   "nao_localizado_ate_o_momento": 0,
+   "lacunas": 0,
+   "brutos_plancon": 160,
+   "brutos_periodo_ou_seca": 0,
+   "brutos_siglas_e_variantes": 0
+  }
+ },
+ "atualizado_em": "2026-11-01T08:11:49"
+}
