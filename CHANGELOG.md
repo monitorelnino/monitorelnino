@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+
+## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
+
+Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
 ## 2026-11-01 · painel do Cemaden com data de consulta e previsão por tercil como lacuna (+60/−2)
 `coletar_sinais_risco.py` passa a consultar todo dia o índice dos boletins do Painel El Niño e carimbar `consultado_em` (parado em 07/10); boletim novo é registrado no detalhe sem trocar o risco por UF. `cptec_prognostico`, antes leitura humana do nº 3, vira lacuna declarada com o boletim vigente. `verificar_sinais` aceita o status `lacuna`.
 
