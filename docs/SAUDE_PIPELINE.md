@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-25 a 2026-11-01 (1267 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-25 a 2026-11-01 (1269 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,7 +27,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-01 07:27 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-31 01:43 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-01 23:06 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-01 23:39 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 18:17 | 44 s | 1 | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -48,7 +48,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-31 01:22 | 3969 s | 45 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-31 01:22 | 2 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-11-01 02:28 | 2762 s | — | ok | — |
-| `coletar_edicoes_doe.py` | coletor | 2026-11-01 18:31 | 4749 s | — | ok | — |
+| `coletar_edicoes_doe.py` | coletor | 2026-11-01 20:41 | 6280 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-31 01:13 | 480 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-31 01:14 | 4 s | — | ok | — |
 | `coletar_obitos.py` | coletor | 2026-11-01 07:17 | 5 s | — | ok | — |
