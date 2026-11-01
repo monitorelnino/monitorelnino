@@ -10,7 +10,7 @@
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 45910,
+   "valor_parcial": 45962,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,12 +505,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 292,
+   "valor": 3402,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "31/10/2026",
+   "consultado_em": "01/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -519,35 +519,79 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 192
+     "valor": 2500
     },
     {
      "uf": "MA",
-     "valor": 67
-    },
-    {
-     "uf": "TO",
-     "valor": 10
-    },
-    {
-     "uf": "AM",
-     "valor": 9
+     "valor": 434
     },
     {
      "uf": "BA",
-     "valor": 6
+     "valor": 85
     },
     {
-     "uf": "RR",
-     "valor": 4
+     "uf": "AP",
+     "valor": 77
     },
     {
-     "uf": "CE",
-     "valor": 2
+     "uf": "TO",
+     "valor": 64
+    },
+    {
+     "uf": "AM",
+     "valor": 40
     },
     {
      "uf": "PI",
+     "valor": 40
+    },
+    {
+     "uf": "RR",
+     "valor": 38
+    },
+    {
+     "uf": "CE",
+     "valor": 34
+    },
+    {
+     "uf": "MT",
+     "valor": 29
+    },
+    {
+     "uf": "AL",
+     "valor": 15
+    },
+    {
+     "uf": "PE",
+     "valor": 13
+    },
+    {
+     "uf": "PB",
+     "valor": 11
+    },
+    {
+     "uf": "RN",
+     "valor": 11
+    },
+    {
+     "uf": "RO",
+     "valor": 4
+    },
+    {
+     "uf": "SE",
+     "valor": 3
+    },
+    {
+     "uf": "GO",
      "valor": 2
+    },
+    {
+     "uf": "AC",
+     "valor": 1
+    },
+    {
+     "uf": "MS",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,

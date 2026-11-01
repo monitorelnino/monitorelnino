@@ -18333,7 +18333,25 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-11-01",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-11-01T08:50:25",
+   "duracao_s": 100.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-01",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-11-01T08:52:05",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-11-01T08:51:51"
+ "atualizado_em": "2026-11-01T08:52:05"
 }
