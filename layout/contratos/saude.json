@@ -90,6 +90,20 @@
       "grade": ".grade-numeros--3",
       "ultima_linha_incompleta": true,
       "_nota_registram": "19/10/2026 (remoção aprovada pela editoria em 19/10, sobre o mapa medido pela B1): a seção é a grade única de desfechos, na forma comum de `data/saude_desfechos/`: um cartão por desfecho em evidência, que abre o detalhe com série e mapa, e um cartão igual por desfecho da segunda camada (§2 do handover), nas linhas seguintes, sem mapa e sem detalhe. Os cinco quadros por agravo (dengue, chikungunya, respiratórias, síndrome gripal e calor) saíram: o que eles mostravam a seção nova mostra por desfecho, e desfecho sem arquivo é lacuna declarada numa linha, nunca cartão vazio. A última linha fica incompleta porque o número de cartões cresce à medida que cada desfecho nasce."
+    },
+    {
+      "id": "mortalidade",
+      "h2": "Óbitos registrados e projeção de mortes por calor",
+      "tipo": "figuras",
+      "grade": ".grade-figuras--1",
+      "cartoes": [
+        {
+          "id": "mortalidade_comparada",
+          "tipo": "tabela",
+          "el": "boxMortalidade"
+        }
+      ],
+      "_nota_mortalidade": "01/11/2026 (editoria, 31/10 20:14 BRT, sobre o mockup de 30/10): quadro mês a mês, de julho de 2026 em diante, com quatro colunas (mortes por calor projetadas, óbitos registrados, excesso observado, causa básica calor natural), lido de `data/saude_desfechos/mortalidade_comparada.json` (gerador único da A2). Sem SVG nem canvas: a figura é de HTML (linhas de grade), por isso não é figura principal; ocupa a grade de uma coluna porque cada mês é uma linha de quatro colunas."
     }
   ],
   "texto_proibido": [

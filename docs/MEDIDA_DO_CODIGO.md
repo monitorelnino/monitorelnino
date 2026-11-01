@@ -2,16 +2,16 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.038 linhas** em **306 arquivos** .py/.js; **38 workflows**.
+- **100.147 linhas** em **307 arquivos** .py/.js; **38 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
-- **153 nomes de função** definidos em mais de um arquivo.
+- **154 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 56350 |
-| `scripts` | 36651 |
+| `scripts` | 36760 |
 | `assets` | 6465 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
@@ -82,6 +82,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `numero` | 4 | `coletar_execucao_mps.py`, `coletar_transferegov.py`, `scripts/cruzar_ocp_com_atos.py`, `scripts/ingerir_ocp_midr.py` |
 | `parse_texto` | 4 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_ms_dengue.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
 | `renderizar` | 4 | `coletar_painel_am.py`, `gerar_feeds.py`, `scripts/_inline_js.js`, `scripts/renderizar_figura.py` |
+| `semear` | 4 | `coletar_financiamento.py`, `coletar_saude.py`, `coletar_sinais_risco.py`, `scripts/semear_candidatos_de_plano.py` |
 | `tabela` | 4 | `assets/js/financiamento.js`, `gerar_pdf_indice.py`, `scripts/gerar_saude_pipeline.py`, `scripts/medir_revocacao_das_consultas.py` |
 | `_host` | 3 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `triar_confianca_pistas.py` |
 | `_iso` | 3 | `coletar_sinais_risco.py`, `gerar_dados_abertos.py`, `scripts/checagem_pre_noite.py` |
@@ -89,4 +90,3 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
 | `avaliar` | 3 | `scripts/checagem_pre_noite.py`, `scripts/testar_fixtures_localizacao.py`, `scripts/verificar_fila_nao_humana.py` |
 | `checar` | 3 | `verificar_financiamento.py`, `verificar_painel.py`, `verificar_saude.py` |
-| `classificar_tipo` | 3 | `coletar_sinais_risco.py`, `migrar_saude_instrumentos.py`, `scripts/pistas.py` |
