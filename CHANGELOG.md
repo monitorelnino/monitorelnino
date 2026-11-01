@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · #PR · Juiz de saúde: o plano promovido chega ao registro exibido (+37/−4)
+O instrumento promovido saía com tipo fora de `ORDEM_TIPO` e perdia para a imprensa; o decreto citado na capa sobrescrevia data e número do plano (PI: 28/02/2019). Agora tipo válido, data da capa ou mês do portal, e reler o mesmo documento o substitui.
+
 ## 2026-11-01 · #1426 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2
 
 Mesma raiz do #1424, etapas 4 e 6: `julgar_camada_saude` não aplicava o caminho do plano do juiz 1.8. Com a etapa 2 corrigida, o PDF da SESAPI-PI passou a sair `resposta`, porque o teste do objeto (feito para decreto) lê as ações de resposta do corpo. Agora, sendo plano, a natureza é EX_ANTE (J1) e a etapa 6 recebe `sem_ato_de_aprovacao` e `como_plano`. Caso de teste falha sem a correção.

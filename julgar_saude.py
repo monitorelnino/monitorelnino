@@ -53,6 +53,7 @@ import juiz
 # de fonte oficial?" tem de ter UMA resposta nos dois lados. Duas cópias divergem na primeira
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import UFS, oficial
+from migrar_saude_instrumentos import ORDEM_TIPO
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
 from julgar_filas import julgar_lista
 
@@ -662,7 +663,16 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
     # (Res. SESA 680/2008 do PR saía com 03/06/1987). Quando o cabeçalho do ato traz a data por
     # extenso, é ela que vale.
-    dados = com_data_do_cabecalho(texto, dados)
+    # 01/11/2026 (PI): o cabeçalho de ATO só vale quando o documento é um ato. No plano, "Decreto nº 18.142, de
+    # 28 de fevereiro de 2019" da capa de equipe é norma citada: sobrescrevia data e número do plano (a data do
+    # plano é a da capa ou, sem ela, o mês de publicação no caminho do portal oficial; nunca uma data do corpo).
+    if como_plano:
+        if ok and not re.fullmatch(r"\d{1,2}[/-]\d{1,2}[/-]\d{4}", str(dados.get("data") or "")):
+            mes = juiz.mes_de_publicacao_no_portal(url)
+            if mes:
+                dados = {**dados, "data": mes, "data_de": "mês de publicação no portal"}
+    else:
+        dados = com_data_do_cabecalho(texto, dados)
     v["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     v["data"] = dados.get("data")
     v["numero"] = dados.get("numero")
@@ -793,15 +803,22 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
     mudou = []
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     if v.get("status_instrumento"):
+        # 01/11/2026 (PI): `saude_do_ciclo` não existe em ORDEM_TIPO e `melhor_instrumento` o punha abaixo de qualquer
+        # tipo; o promovido nunca chegava ao registro exibido. Chegar aqui é ter passado a etapa 5b (risco do ciclo).
         item = {"status": v["status_instrumento"], "orgao": f"SES-{uf}", "doc": titulo,
                 "observacao": v.get("excecao_autoridade"),
                 "numero": v.get("numero"), "data": v.get("data"), "url": url,
-                "natureza_doc": v.get("natureza"), "tipo": "saude_do_ciclo",
+                "natureza_doc": v.get("natureza"), "tipo": "especifico_ciclo",
                 "hash_evidencia": v.get("hash_evidencia"),
                 "justificativa_ex_ante": (f"promovido por julgar_saude.py em {hoje}, codebook "
                                           f"{v.get('codebook')}: documento primário baixado e lido, "
                                           f"sete etapas aprovadas")}
-        u.setdefault("instrumentos", []).append(item)
+        lista = u.setdefault("instrumentos", [])
+        antigo = next((i for i, x in enumerate(lista) if x.get("url") == url), None)   # reler o mesmo documento o substitui
+        if antigo is None:
+            lista.append(item)
+        else:
+            lista[antigo] = item
         u["data_verificacao"] = hoje
         u["log_ref"] = f"julgar_saude_{hoje.replace('/', '-')}"
         mudou.append(f"instrumento {v['status_instrumento']}")
@@ -826,7 +843,8 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
         ordem = ["LAC", "ANUNCIADO", "PERMANENTE", "REATIVADO_CICLO", "CRIADO_CICLO"]
         atual = (u.get("coordenacao") or {}).get("status")
         novo = v["coordenacao"]["degrau"]
-        if atual is None or ordem.index(novo) > ordem.index(atual):
+        mesmo_doc = (u.get("coordenacao") or {}).get("url") == url and atual is not None and ordem.index(novo) == ordem.index(atual)
+        if atual is None or ordem.index(novo) > ordem.index(atual) or mesmo_doc:
             guardado_f2 = (u.get("coordenacao") or {}).get("f2")
             u["coordenacao"] = {"status": novo, "orgao": f"SES-{uf}", "doc": titulo,
                                 "observacao": v.get("excecao_autoridade"),
@@ -1343,6 +1361,18 @@ def autoteste() -> int:
     casos["PI: plano com capa de equipe e lei na base legal passa a etapa 2 quando a pista é o plano"] = (
         lambda: julgar_camada_saude(_t, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("2_citacao", {}).get("ok") is True)
+    _t3 = _t.replace("Governo do Estado", "Decreto nº 18.142, de 28 de fevereiro de 2019, institui o comitê. Governo do Estado")
+    casos["PI: decreto citado na capa do plano não vira a data nem o número do plano; vale o mês do portal"] = (
+        lambda: (lambda v: v["data"] == "09/2026" and v["numero"] is None)(
+            julgar_camada_saude(_t3, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")))
+    _su = {"uf": {"PI": {"instrumentos": [{"url": _u, "status": "NOVO", "tipo": "saude_do_ciclo", "data": "28/02/2019"}],
+                         "coordenacao": {"status": "REATIVADO_CICLO", "url": _u, "data": "28/02/2019"}}}}
+    _vv = {"uf": "PI", "status_instrumento": "NOVO", "data": "09/2026", "numero": None, "natureza": "EX_ANTE",
+           "coordenacao": {"degrau": "REATIVADO_CICLO", "motivo": "m"}}
+    aplicar(_su, _vv, "Plano", _u)
+    casos["aplicar: reler o mesmo documento substitui instrumento (tipo do ranking) e coordenação, não duplica"] = (
+        lambda: len(_su["uf"]["PI"]["instrumentos"]) == 1 and _su["uf"]["PI"]["instrumentos"][0]["tipo"] in ORDEM_TIPO
+        and _su["uf"]["PI"]["coordenacao"]["data"] == "09/2026" and _su["uf"]["PI"]["coordenacao"]["f1"]["data"] == "09/2026")
     casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
         lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
     casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (

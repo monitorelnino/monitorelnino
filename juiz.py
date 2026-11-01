@@ -257,6 +257,12 @@ def data_junto_ao_titulo(texto: str, titulo, ano: str):
     return None
 
 
+def mes_de_publicacao_no_portal(url) -> str:
+    """"MM/AAAA" do caminho de publicação do arquivo no portal (`/2026/09/`), ou None. Função pura. Editoria, 01/11/2026: sem data na capa, o plano vale pelo mês em que o órgão o publicou."""
+    m = re.search(r"/(20\d{2})/(0[1-9]|1[0-2])/", str(url or ""))
+    return f"{m.group(2)}/{m.group(1)}" if m else None
+
+
 def plano_sem_ato(texto: str, url: str = None) -> tuple:
     """(ok, motivo, dados) do caminho "plano publicado sem ato de aprovação localizado". PURA.
 
