@@ -683,7 +683,12 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if municipal:
         v["motivo"] = "ente_nao_confirmado"; return v
 
-    natureza, motivo_nat, provas = juiz.etapa4_natureza(texto)
+    # 01/11/2026 (J1): o plano não institui o plano; o teste do objeto é para decreto e ato avulso. Sem isto, o
+    # PDF de 200 mil caracteres do PI (ações de resposta descritas no corpo) saía `resposta` depois da etapa 2.
+    if como_plano:
+        natureza, motivo_nat, provas = "EX_ANTE", "o documento é plano publicado pelo órgão de saúde (J1)", {}
+    else:
+        natureza, motivo_nat, provas = juiz.etapa4_natureza(texto)
     v["natureza"] = natureza
     v["criterios"]["4_natureza"] = {"ok": natureza == "EX_ANTE", "trecho": motivo_nat, **provas}
     if natureza == "RESPOSTA":
@@ -707,7 +712,9 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if not ok:
         v["motivo"] = "risco_fora_do_ciclo"; return ou_estrutura(v, texto, uf)
 
-    categoria, motivo_cat = juiz.etapa6_categoria(texto, v["data"], True)
+    categoria, motivo_cat = juiz.etapa6_categoria(texto, v["data"], True,
+                                                  sem_ato_de_aprovacao=bool(dados.get("sem_ato_de_aprovacao")),
+                                                  como_plano=como_plano)
     v["criterios"]["6_categoria"] = {"ok": categoria is not None, "trecho": motivo_cat}
     if categoria is None:
         v["motivo"] = motivo_cat.split(":")[0]; return v
@@ -1328,6 +1335,11 @@ def autoteste() -> int:
           + "Fulano de Tal Secretario de Estado da Saude Superintendencia de Gestao " * 30
           + " Governo do Estado do Piauí, Secretaria de Estado da Saúde (SESAPI-PI). O plano de contingência para o El Niño "
             "2026/2027 define acoes de preparacao. Conforme a Lei Estadual nº 9.071 o estado organiza a resposta.")
+    _t2 = _t + (" Ações de resposta: o hospital deve acionar o atendimento de emergência e ativar a sala de"
+                " situação. Arboviroses e dengue sob vigilância epidemiológica.")
+    casos["PI: plano publicado com ações de resposta no corpo não vira `resposta` na etapa 4 (J1)"] = (
+        lambda: julgar_camada_saude(_t2, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
+        .get("criterios", {}).get("4_natureza", {}).get("ok") is True)
     casos["PI: plano com capa de equipe e lei na base legal passa a etapa 2 quando a pista é o plano"] = (
         lambda: julgar_camada_saude(_t, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("2_citacao", {}).get("ok") is True)
