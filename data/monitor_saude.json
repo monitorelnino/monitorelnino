@@ -2,7 +2,7 @@
  "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). A nota de cada UF é o instrumento estadual; nenhum componente depende de data (o tempo é publicado à parte, de peso zero) e a coordenação na saúde entra na nota, metade com o instrumento, quando as 27 UFs a tiverem verificada. Índice nacional = Σ(nota × população × c_uf) ÷ Σ população, com as 27 UFs no denominador; c_uf é a cobertura do dever de plano (1 nas 27) e pesa o nacional, não a nota. A UF sem documento lido entra com nota 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado. UF não verificada não recebe número próprio. Metodologia §31, §115 e §123.",
  "versao": "0.7",
  "gerado_em": "01/11/2026",
- "corte": "02/10/2026",
+ "corte": "01/11/2026",
  "metodo": {
   "pesos": {
    "instrumento": 1.0
@@ -141,15 +141,15 @@
   "verificadas": 21,
   "nao_verificadas": 6,
   "por_faixa": {
-   "em construção": 17,
-   "avançado": 4
+   "em construção": 16,
+   "avançado": 5
   },
   "planos_municipais_lidos": 178,
   "planos_municipais_sem_leitura": 7,
   "denominador": 27,
   "ponderacao": "populacao",
   "populacao_total": 203062512,
-  "indice_nacional": 61.3,
+  "indice_nacional": 62.4,
   "por_estatuto": {
    "plano_localizado": 21,
    "plano_nao_localizado": 0,
@@ -1245,16 +1245,16 @@
   },
   "PI": {
    "verificado": true,
-   "prontidao": 35.0,
-   "faixa": "em construção",
+   "prontidao": 100.0,
+   "faixa": "avançado",
    "instrumento": {
-    "status": "ELAB",
-    "pontos": 35.0,
-    "doc": "Plano de contingência para o enfrentamento do El Niño",
-    "data": null,
-    "orgao": "Sesapi",
-    "url": "https://piauihoje.com/noticias/saude/piaui-prepara-sus-para-possiveis-impactos-do-el-nino-na-saude-da-populacao-464649.html",
-    "temporada": "desconhecida"
+    "status": "NOVO",
+    "pontos": 100.0,
+    "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
+    "data": "09/2026",
+    "orgao": "SES-PI",
+    "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
+    "temporada": "2026/2027"
    },
    "cobertura": {
     "peso": 0,
@@ -1274,11 +1274,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "CRIADO_CICLO",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
+     "data": "09/2026",
+     "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
      "citado": null
     },
     "f2": {
@@ -1307,9 +1307,9 @@
     "qualidade da água em estiagem"
    ],
    "estatuto": "plano_localizado",
-   "prontidao_nacional": 35.0,
+   "prontidao_nacional": 100.0,
    "peso_nacional": 0.0161,
-   "contribuicao_nacional": 0.56
+   "contribuicao_nacional": 1.61
   },
   "PR": {
    "verificado": true,

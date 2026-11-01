@@ -139,7 +139,7 @@ Atualizado em 01/11/2026.
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
-| `migrar_saude_instrumentos.py` | — | — | — | 3 | não |
+| `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
 | `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 4 | não |
 | `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
