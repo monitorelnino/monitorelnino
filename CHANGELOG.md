@@ -36,6 +36,9 @@ Arquivo de coletor vencido passa quando o painel de tentativas traz recusa ou fa
 ## 2026-11-01 · A reaplicação da noite não traz texto ausente (+9/−2)
 
 `reaplicar_noite.py` filtrava o índice de evidências só pelo binário; a reaplicação do `atualizar` de 01/11 trouxe 12 `texto_arquivo` sem o `.txt` e a `main` ficou vermelha em `verificar_evidencias`. Agora a entrada antiga que ganha arquivo ausente volta ao que era e a nova sem arquivo fica fora. Índice de evidências restabelecido.
+## 2026-11-01 · Alagoas: endereço do decreto do Comitê El Niño · +0/−0
+
+O Decreto nº 110.661 (DOE-AL de 25/08/2026), lido pelo runner, vira o endereço da estrutura de coordenação de Alagoas em `proveniencia_estadual.json`; sai de `defeitos_de_prova`. O plano de ação do comitê segue em lacuna. Sem mudança de nota. Sergipe segue sem leitura do texto.
 
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
