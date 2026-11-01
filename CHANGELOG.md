@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · #1426 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2
+
+Mesma raiz do #1424, etapas 4 e 6: `julgar_camada_saude` não aplicava o caminho do plano do juiz 1.8. Com a etapa 2 corrigida, o PDF da SESAPI-PI passou a sair `resposta`, porque o teste do objeto (feito para decreto) lê as ações de resposta do corpo. Agora, sendo plano, a natureza é EX_ANTE (J1) e a etapa 6 recebe `sem_ato_de_aprovacao` e `como_plano`. Caso de teste falha sem a correção.
+
+## 2026-11-01 · #1424 · Juiz de saúde: plano publicado pelo órgão estadual passa a etapa 2 como no Legal · +14/−1
+
+Causa raiz do `citacao_incompleta` do PI (SESAPI): `julgar_camada_saude` chamava a etapa 2 sem `url` nem `como_plano`, e a primeira lei da base legal (Lei 9.071; Decreto 18.142/2019) virava "o ato". Agora a etapa 2 recebe a URL e `como_plano` (cabeçalho de plano ou título da pista com "plano"), como no juiz do Legal. Caso de teste F-PI falha sem a correção.
+
 ## 2026-11-01 · Diários oficiais: data gravada como `vazio` volta à fila de leitura · +4/−1
 
 Causa raiz: `coletar_edicoes_doe.py` tratava a data com conexão recusada ou timeout (`vazio`) como já tentada e nunca a relia (RS 86 datas, PB 55). `a_reler` passa a incluí-la; "sem edição na data" segue decisão final. Autoteste cobre o caso.

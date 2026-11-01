@@ -283770,6 +283770,957 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "26946311b3aac5932a8fc42583fae32f58cfd92ec3239b4c200682af85c0ff5b"
+  },
+  {
+   "promove": false,
+   "motivo": "resposta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "25297 caracteres de fonte oficial",
+     "recorte_do_ato": "18601 de 25297 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura de Valinhos - Legislação Ir para o conteúdo Prefeitura de Valinhos e os cookies: nosso site usa cookies para melhorar a sua experiência de navegação."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO N° 13.141, DE 16 DE OUTUBRO DE 2026 Dispõe sobre a Operação Chuvas de Verão e Enfrentamento aos Efeitos do El Niño 2026/2027 e institui o Plano de Conti",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "13.141",
+      "data": "16/10/2026",
+      "trecho": "DECRETO N° 13.141, DE 16 DE OUTUBRO DE 2026 Dispõe sobre a Operação Chuvas de Verão e Enfrentamento aos Efeitos do El Niño 2026/2027 e institui o Plano de Conti"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "o de Contingência de Proteção e Defesa Civil (PCPDC). FRANKLIN DUARTE DE LIMA , Prefeito do Município de Valinhos, no uso das atribuições que lhe são conferidas"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "teste-fósforo: menciona rota de reconhecimento federal/FIDE"
+    }
+   },
+   "categoria": null,
+   "data": "16/10/2026",
+   "natureza": "RESPOSTA",
+   "ibge": "3556206",
+   "municipio": "Valinhos",
+   "uf": "SP",
+   "url": "https://www.valinhos.sp.gov.br/portal/leis_decretos/20365/",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "encaminhar": "atos_resposta",
+   "pista_id": "b35cabe16d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "c6a43f8b63340a9b336270cd35436266c9b2fabc68a17a46f9fb7841b8c94cf9"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "193256 caracteres de fonte oficial",
+     "recorte_do_ato": "6608 de 193256 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Nº 131 - ANO XV CURITIBA, SEXTA-FEIRA, 17 DE JULHO DE 2026 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA SUMÁRIO Licitações • SECRETARIA DO GOVERNO MU"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "DECRETO Nº 1141 Institui o Comitê Gestor Especial de Enfrentamento aos Impactos do Fenômeno El Niño no Município de Curitiba. Página 52 Nº 131 - ANO XV CURITIBA",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "1141",
+      "data": "17/07/2026",
+      "trecho": "DECRETO Nº 1141 Institui o Comitê Gestor Especial de Enfrentamento aos Impactos do Fenômeno El Niño no Município de Curitiba. Página 52 Nº 131 - ANO XV CURITIBA"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ", 17 DE JULHO DE 2026 DIÁRIO OFICIAL ELETRÔNICO ATOS DO MUNICÍPIO DE CURITIBA O PREFEITO MUNICIPAL DE CURITIBA, CAPITAL DO ESTADO DO PARANÁ, no uso de suas atri"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+     "objeto": "DECRETO Nº 1141 Institui o Comitê Gestor Especial de Enfrentamento aos Impactos do Fenômeno El Niño no Município de Curitiba. Página 52 Nº 131 - ANO XV CURITIBA, SEXTA-FEIRA, 17 DE JULHO",
+     "gatilho": "a formação e intensificação do fenômeno climático \"Super El Niño\" para o biênio 2026-2027, com previsão de anomalias térmicas e pluviométricas severas na região",
+     "rota_do_recurso": "sem dependência de reconhecimento federal no texto"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "especialmente em casos de tempestades severas, rajadas de ventos, alagamentos, inundações, deslizamentos, ondas de frio e ondas de calor; V - articular o monit"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "ato de 17/07/2026, a partir do Boletim nº 1 (29/06/2026)"
+    }
+   },
+   "categoria": "plano",
+   "data": "17/07/2026",
+   "natureza": "EX_ANTE",
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4106902/2026-07-17/55d7ac48034157b70f34541280b650493219a414.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "ddc958d9a7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2c5913845fefd24711d72ca5c09a52c4a2713826ce3920d56a7943112efe5bf7",
+   "nao_aplicado": {
+    "em": "2026-11-01",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "161091 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "21/07/2026 PREFEITURA MUNICIPAL DE NITERÓI Atos do Prefeito DECRETO N° 869/2026 DISPÕE SOBRE A ABERTURA DE CRÉDITOS ADICIONAIS NO EXERCÍCIO DE 2026. O PREFEITO"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "869/2026",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3303302",
+   "municipio": "Niterói",
+   "uf": "RJ",
+   "url": "https://data.queridodiario.ok.org.br/3303302/2026-07-21/bfed83f06cd91e0ccd1d6b98a35cc8923c2535e9.pdf",
+   "regras_18": [],
+   "pista_id": "5b38f167bf",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "a31b463dac6bdae7f81636fef16aaa1b29b99cb53130c938abd3dc397511aa27",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "49669 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "| Edição Nº 3.270 | Caderno I Estado do Rio de Janeiro Prefeitura Municipal de Areal Gabinete do Prefeito Praça Prefeito José Francisco Sobrinho nº 39-Centro–A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Tel.: (24) 3511-4102 E-mail: governo@areal.rj.gov.br Site: www.areal.rj.gov.br DECRETO Nº 2.626, DE 18 DE SETEMBRO DE 2026. INSTITUI O COMITÊ MUNICIPAL DE ENFR",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "2.626",
+      "data": "18/09/2026",
+      "trecho": "Tel.: (24) 3511-4102 E-mail: governo@areal.rj.gov.br Site: www.areal.rj.gov.br DECRETO Nº 2.626, DE 18 DE SETEMBRO DE 2026. INSTITUI O COMITÊ MUNICIPAL DE ENFR"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "| Caderno I Estado do Rio de Janeiro Prefeitura Municipal de Areal Gabinete do Prefeito Praça Prefeito José Francisco Sobrinho nº 39-Centro–Areal – RJ Tel.: (2"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "18/09/2026",
+   "natureza": "DUVIDA",
+   "ibge": "3300225",
+   "municipio": "Areal",
+   "uf": "RJ",
+   "url": "https://data.queridodiario.ok.org.br/3300225/2026-09-18/2a5c769995f6b520075ee116d64c70a8e07d3945.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "62672a18e7",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "71871d6d72435bd6c0d528b92e8b5fd08867d75ac096824b0b79c46e646abcbe"
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "61712 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Diário Oficial Eletrônico do Município de Cordeiro/RJ - DOE Ano X – Número 176 Cordeiro, 24 de SETEMBRO de 2026 Lei nº 2720/2023, de 31 de agosto de 2023 Site:w"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "icípio de Cordeiro/RJ - DOE Ano X – Número 176 Cordeiro, 24 de SETEMBRO de 2026 Lei nº 2720/2023, de 31 de agosto de 2023 Site:www.cordeiro.rj.gov.br suas atrib",
+     "dados": {
+      "tipo": "lei",
+      "numero": "2720/2023",
+      "data": "31/08/2023",
+      "trecho": "icípio de Cordeiro/RJ - DOE Ano X – Número 176 Cordeiro, 24 de SETEMBRO de 2026 Lei nº 2720/2023, de 31 de agosto de 2023 Site:www.cordeiro.rj.gov.br suas atrib"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "denominado CORDEIRO/RJ é uma publicação produzida e coordenada pelo Gabinete do Prefeito, através da Coordenação do Diário FORNECEDOR. Oficial. Os contatos pode"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro"
+    }
+   },
+   "categoria": null,
+   "data": "31/08/2023",
+   "natureza": "DUVIDA",
+   "ibge": "3301504",
+   "municipio": "Cordeiro",
+   "uf": "RJ",
+   "url": "https://data.queridodiario.ok.org.br/3301504/2026-09-24/2507fa25eb29e7fe894e687b5c31416fe11332ee.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7a9ff7c94c",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "2fe9d5b0642ee9223d59177221c71c2258e524298bd66e2528f46f9015b21456"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62339 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "SEGUNDA-FEIRA, 21 DE SETEMBRO DE 2026 | ANO XXI | EDIÇÃO Nº 2002 Município de Rio Claro - SP Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 200"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.063",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3543907",
+   "municipio": "Rio Claro",
+   "uf": "SP",
+   "url": "https://data.queridodiario.ok.org.br/3543907/2026-09-21/564e5aee8f207d30753ef9725118d9d443ecd920.pdf",
+   "regras_18": [],
+   "pista_id": "a54ba17954",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "9c8f7ab6a37681ad62902704e3ed2adffe4d612d3a79ae1a22fa4a01fd1c6a29",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "27985 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CONTABILIDADE DECRETO 2297 Poder ExecutivoContabilidade PREFEITURA MUNICIP. DE MIRA ESTRELA PCA. CANDIDO B. ESTRELA, 559 45.116.290/0001-71 Exercício: 2026 DEC"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "to Assinado por meio eletrônico mediante certificação digital - Instituído pela Lei Municipal Nº 1036/2020, de 16 de Dezembro de 2020 Edição Nº 1236, Terça-feir",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1036/2020",
+      "data": "16/12/2020",
+      "trecho": "to Assinado por meio eletrônico mediante certificação digital - Instituído pela Lei Municipal Nº 1036/2020, de 16 de Dezembro de 2020 Edição Nº 1236, Terça-feir"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "e no orçamento vigente crédito adicional especial e da outras providências O(A) PREFEITO(A) MUNICIPAL DE MIRA ESTRELA, no uso de suas atribuições legais. DECRET"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: o texto não traz verbo de instituição junto de um instrumento nomeado"
+    }
+   },
+   "categoria": null,
+   "data": "16/12/2020",
+   "natureza": "DUVIDA",
+   "ibge": "3530003",
+   "municipio": "Mira Estrela",
+   "uf": "SP",
+   "url": "https://data.queridodiario.ok.org.br/3530003/2026-10-06/3f20dc828884c40d77e70b6c69913bfd80da55a4.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ae6a6e8408",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "e1891f1453311a24682aee2193e4da75969f3a495fc4fdf1883e11d630900146"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "16040 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "IIAA EESSTTIIAAGGEEMM -- 22002266 Prefeitura Municipal da Estância Turística de Guaratinguetá - SP COMPDEC - Comissão Municipal de Proteção e Defesa Civil Sigla"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "proteção individual Mm -Milímetros NUPDECs – Núcleos de Proteção e Defesa Civil PLANCON - Plano de Contingência PPDC – Plano Preventivo de Defesa Civil RA – Reg",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "PLANCON",
+      "trecho": "proteção individual Mm -Milímetros NUPDECs – Núcleos de Proteção e Defesa Civil PLANCON - Plano de Contingência PPDC – Plano Preventivo de Defesa Civil RA – Reg",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ANNCCOONN PPLLAANNOO DDEE CCOONNTTIINNGGÊÊNNCCIIAA EESSTTIIAAGGEEMM -- 22002266 Prefeitura Municipal da Estância Turística de Guaratinguetá - SP COMPDEC - Comis"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "1.4.1.1.0"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado (2025) que cita o ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano",
+   "data": "2025",
+   "natureza": "EX_ANTE",
+   "ibge": "3518404",
+   "municipio": "Guaratinguetá",
+   "uf": "SP",
+   "url": "https://guaratingueta.sp.gov.br/wp-content/uploads/2026/08/PLANCON.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "9f3daf747f",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "a125b01548494cf7c0d913fa7b6e93b395e655e945ed3e1b480e1ce271a431c0",
+   "aplicado_em": "2026-11-01"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3203353",
+   "municipio": "Marilândia",
+   "uf": "ES",
+   "url": "https://www.marilandia.es.gov.br/uploads/lei/4553-designa-comisso-municipal-para-acompanhamento-monitoramento-e-deleberao-de-aes-de-preveno-e-enfrentamento-dos-impactos-decorrentes-do-fenomeno-el-nino-no-municipio-de-marilandia-1784212240.pdf",
+   "regras_18": [],
+   "pista_id": "6586db3cce",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "41877 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "CHUVAS 2025 Plano Municipal de CONTINGÊNCIA DAS CHUVAS PREFEITURA MUNICIPAL DO SALVADOR DEFESA CIVIL DE SALVADOR - CODESAL Rua Mário Leal Ferreira, nº. 80 - Bo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "2025 Plano Municipal de CONTINGÊNCIA DAS CHUVAS 2025 Plano Municipal de CONTINGÊNCIA DAS CHUVAS PREFEITURA MUNICIPAL DO SALVADOR DEFESA CIVIL DE SALVADOR - CODE",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "PREFEITURA MUNICIPAL",
+      "titulo": "Plano Municipal de CONTINGÊNCIA",
+      "trecho": "2025 Plano Municipal de CONTINGÊNCIA DAS CHUVAS 2025 Plano Municipal de CONTINGÊNCIA DAS CHUVAS PREFEITURA MUNICIPAL DO SALVADOR DEFESA CIVIL DE SALVADOR - CODE",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "plano sem ato fora do domínio do ente: https://codesal.salvador.ba.gov.br/wp-content/uploads/2025/09/PLANO_MUNICIPAL_DE_CONTINGNCIA_DAS_CHUVAS-2025-4.pdf"
+    }
+   },
+   "categoria": null,
+   "data": "2025",
+   "natureza": null,
+   "ibge": "2927408",
+   "municipio": "Salvador",
+   "uf": "BA",
+   "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2025/09/PLANO_MUNICIPAL_DE_CONTINGNCIA_DAS_CHUVAS-2025-4.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "cf8d7a9569",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "f1b67483acfc7b4734748b515c1f862be6fce90b4a8c61fcc815c4e26fe5dd60"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "147226 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ATUALIZAÇÃO PREFEITURA MUNICIPAL DE SALVADOR DEFESA CIVIL DE SALVADOR - CODESAL Rua Mário Leal Ferreira, nº 80 CEO 40285-280 Tel.: (71) 3202-4500 Site: www.code"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "io de Salvador. 2.2 LEGISLAÇÃO • Política Nacional de Proteção e Defesa Civil – Lei nº 12.608, de 10 de abril de 2012; • Sistema Municipal de Defesa Civil – Dec",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "10/04/2012",
+      "trecho": "io de Salvador. 2.2 LEGISLAÇÃO • Política Nacional de Proteção e Defesa Civil – Lei nº 12.608, de 10 de abril de 2012; • Sistema Municipal de Defesa Civil – Dec"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "10/04/2012",
+   "natureza": null,
+   "ibge": "2927408",
+   "municipio": "Salvador",
+   "uf": "BA",
+   "url": "https://codesal.salvador.ba.gov.br/wp-content/uploads/2026/09/PLANO-DE-CONTINGENCIA-DO-CENTRO-HISTORICO-VERSAO-2025-2026.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "2722e6b1c3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "47d7d6e48439fc6ba8a1d765b44158e4a0f6aea96f489cd75cb8eb3dce3f5de1"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "2394 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "16/06/26, 16:49 Prefeitura Municipal de Porto Velho ESTADO DE RONDÔNIA PREFEITURA MUNICIPAL DE PORTO VELHO SUPERINTENDÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PAL DE PORTO VELHO SUPERINTENDÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL- SMPDC PORTARIA N.° 29/2026/SGOV/SMPDC, PORTO VELHO, 23 DE MARÇO DE 2026 Dispõe sobre a",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "29/2026",
+      "data": "23/03/2026",
+      "trecho": "PAL DE PORTO VELHO SUPERINTENDÊNCIA MUNICIPAL DE PROTEÇÃO E DEFESA CIVIL- SMPDC PORTARIA N.° 29/2026/SGOV/SMPDC, PORTO VELHO, 23 DE MARÇO DE 2026 Dispõe sobre a"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "23/03/2026",
+   "natureza": null,
+   "ibge": "1100205",
+   "municipio": "Porto Velho",
+   "uf": "RO",
+   "url": "https://transp-arquivos.portovelho.ro.gov.br/uploads/arquivos/1781801175-Portaria%20n%C2%BA%2029%20-%202026%20-%20Designa%C3%A7%C3%A3o%20-%20SMPDC.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "0985824b0d",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "15633d6c16b4788aea5504eb06ec79df20b711662df8aa3f86c6452d00e0e829"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2800308",
+   "municipio": "Aracaju",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2024/10/Plano_de_contingencia_2024-Aracaju.pdf",
+   "regras_18": [],
+   "pista_id": "901015b7f7",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3518800",
+   "municipio": "Guarulhos",
+   "uf": "SP",
+   "url": "https://www.guarulhos.sp.gov.br/sites/default/files/file/arquivos/PPPDC-2025-2026%20-%20LIVRO%201%20-%20A4.pdf",
+   "regras_18": [],
+   "pista_id": "45f6c3e338",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3518800",
+   "municipio": "Guarulhos",
+   "uf": "SP",
+   "url": "https://www.guarulhos.sp.gov.br/sites/default/files/file/arquivos/PLANO%20MUNICIPAL%20DE%20ESTIAGEM%20DE%20GUARULHOS%20-%202025.pdf",
+   "regras_18": [],
+   "pista_id": "a7dd88699c",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "16544 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MUNICÍPIO DE CARAGUATATUBA Estado de São Paulo DECRETO Nº 2.381, DE 11 DE NOVEMBRO DE 2025. \"Dispõe sobre a vigência e a organização do Plano Preventivo de Defe"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "MUNICÍPIO DE CARAGUATATUBA Estado de São Paulo DECRETO Nº 2.381, DE 11 DE NOVEMBRO DE 2025. \"Dispõe sobre a vigência e a organização do Plano Preventivo de Defe",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "2.381",
+      "data": "11/11/2025",
+      "trecho": "MUNICÍPIO DE CARAGUATATUBA Estado de São Paulo DECRETO Nº 2.381, DE 11 DE NOVEMBRO DE 2025. \"Dispõe sobre a vigência e a organização do Plano Preventivo de Defe"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "nicípio de Caraguatatuba, e dá outras providências\". MATEUS VENEZIANI DA SILVA, Prefeito do Município da Estância Balneária de Caraguatatuba, usando das atribui"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "11/11/2025",
+   "natureza": "DUVIDA",
+   "ibge": "3510500",
+   "municipio": "Caraguatatuba",
+   "uf": "SP",
+   "url": "https://www.caraguatatuba.sp.gov.br/pmc/wp-content/uploads/2025/11/PPDC-2025-2026-Plano-de-Defesa-Civil.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "304ba0283e",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "eb0614b7c9af5389ac50589109f343f4c0296061659965b974da2df30856a01f"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "67474 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Prefeitura Municipal de Suzano Estado de São Paulo Secretaria Municipal de Segurança Cidadã Rua Alfredo Batista Pizzolato, 599, Vila Figueira, Suzano, SP CEP 08"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3552502",
+   "municipio": "Suzano",
+   "uf": "SP",
+   "url": "https://suzano.sp.gov.br/wp-content/uploads/2026/04/Plano-Verao-2025-2026.pdf",
+   "regras_18": [],
+   "pista_id": "d0a882ceb3",
+   "origem": "descoberta",
+   "leu_documento": true,
+   "hash_evidencia": "b7fa300625f485e22c0c3b73305615d884d16d1c25d9b9f6ff2437258873be1c",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2801009",
+   "municipio": "Campo do Brito",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plano-de-Contingencia-2026_compressed-1.pdf",
+   "regras_18": [],
+   "pista_id": "91a049a1a1",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2801603",
+   "municipio": "Cedro de São João",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/09/Plano-de-Contingencia-2026_0001-1_compressed.pdf",
+   "regras_18": [],
+   "pista_id": "2c0000c2f0",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2803005",
+   "municipio": "Itabaianinha",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/10/PLANCON-2026.pdf",
+   "regras_18": [],
+   "pista_id": "c0ebdaa927",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2804003",
+   "municipio": "Maruim",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/PLANO-MUNICIPAL-DE-CONTIGENCIA.1-1.pdf",
+   "regras_18": [],
+   "pista_id": "92755ab72d",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2805901",
+   "municipio": "Riachuelo",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/09/PLANCON_compressed.pdf",
+   "regras_18": [],
+   "pista_id": "80fc239d09",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2806909",
+   "municipio": "São Francisco",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plano-de-Contingencia-2026_compressed.pdf",
+   "regras_18": [],
+   "pista_id": "3beab34ec9",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2802106",
+   "municipio": "Estância",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/03/Plano-de-Contigencia-Estancia-Sergipe.pdf",
+   "regras_18": [],
+   "pista_id": "d32582b7f4",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2803807",
+   "municipio": "Malhada dos Bois",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/08/Plancon-Malhada_dos_bois_assinado_assinado.pdf",
+   "regras_18": [],
+   "pista_id": "edb879abdd",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2806305",
+   "municipio": "Santa Luzia do Itanhy",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/09/PLANO_DE_CONTIGENCIA_SANTA_LUZIA_DO_ITANHY_APROVADO_assinado.pdf",
+   "regras_18": [],
+   "pista_id": "e040c0745c",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2805109",
+   "municipio": "Pedrinhas",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/10/Image_048.pdf",
+   "regras_18": [],
+   "pista_id": "f1a4f16269",
+   "origem": "descoberta",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2803401",
+   "municipio": "Japoatã",
+   "uf": "SE",
+   "url": "https://defesacivil.se.gov.br/wp-content/uploads/2026/09/Plancon_compressed-1.pdf",
+   "regras_18": [],
+   "pista_id": "16d6f8df19",
+   "origem": "descoberta",
+   "leu_documento": false
   }
  ]
 }
