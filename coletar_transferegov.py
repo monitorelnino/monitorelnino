@@ -31,7 +31,7 @@ import csv, hashlib, io, json, re, sys, urllib.request, zipfile
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de, hoje_editorial
+from coletores_base import ler, gravar, registrar_lacuna, registrar_tentativa_coletor, log_busca, rodar_autoteste, ua_de, hoje_editorial
 
 RAIZ = Path(__file__).resolve().parent
 FIN = RAIZ / "data" / "financiamento"
@@ -190,15 +190,33 @@ def programas_faf(dados) -> list:
 
 
 # ------------------------------------ coleta ------------------------------------
+def _fundo_a_fundo(consultas: dict) -> None:
+    """Programas fundo a fundo 2026 (API sem chave). Fonte própria: não depende do repositório de CSVs."""
+    try:
+        faf = json.loads(_baixar(API_FAF, 120).decode("utf-8", "replace"))
+        rel = programas_faf(faf)
+        consultas["consultas"].append({"endpoint": API_FAF, "parametros": {}, "data": hoje_editorial().isoformat(), "hash_resposta": hashlib.sha256(json.dumps(faf, sort_keys=True).encode()).hexdigest(),
+                                       "itens": len(faf), "bytes": None, "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"})
+        gravar("financiamento/programas_faf_2026.json", {"_governanca": "Programas fundo a fundo de 2026 (API pública do TransfereGov) cujo nome/objetivo cita defesa civil ou desastre. Vocabulário da fonte.", "gerado_em": hoje_editorial().strftime("%d/%m/%Y"), "total_programas_2026": len(faf), "relevantes": rel})
+    except Exception as e:  # noqa: BLE001
+        registrar_lacuna("TransfereGov — API fundo a fundo", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[API_FAF])
+        registrar_tentativa_coletor("coletar_transferegov", {"resultado": "falhou", "motivo": f"{type(e).__name__}: {e}"[:200],
+                                                           "arquivos": ["financiamento/programas_faf_2026.json"]})
+
+
 def coletar() -> int:
     hoje = hoje_editorial().strftime("%d/%m/%Y")
     consultas = ler("financiamento/consultas.json", {"_governanca": "", "consultas": []}) or {"consultas": []}
+    _fundo_a_fundo(consultas)
     try:
         carga = _baixar(REPO + "data_carga_siconv.txt", 60).decode("utf-8", "replace").replace("\ufeff", "").strip()[:19]
         bp = _baixar(REPO + "siconv_proposta.csv.zip"); bc = _baixar(REPO + "siconv_convenio.csv.zip")
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("TransfereGov — CSVs Discricionárias e Legais", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[REPO])
-        print(f"transferegov: sem rede/arquivo ({type(e).__name__}) — lacuna declarada, nada alterado"); return 0
+        registrar_tentativa_coletor("coletar_transferegov", {"resultado": "falhou", "motivo": f"{type(e).__name__}: {e}"[:200],
+                                                           "arquivos": ["financiamento/serie_nacional.json", "financiamento/por_uf.json"]})
+        gravar("financiamento/consultas.json", consultas)
+        print(f"transferegov: sem rede/arquivo ({type(e).__name__}) — lacuna declarada, série mantida"); return 0
     propostas = filtrar_propostas(_csv_do_zip(bp), 2025)
     semanas, por_uf_r5, itens = cruzar_convenios(_csv_do_zip(bc), propostas, 2026)
     for nome, b in (("siconv_proposta.csv.zip", bp), ("siconv_convenio.csv.zip", bc)):
@@ -240,15 +258,6 @@ def coletar() -> int:
                         "publicado como 'recurso do El Niño' sem leitura do objeto (na dúvida, abstenção registrada); a palavra-chave só ordena. Fonte: TransfereGov — "
                         f"Dados Abertos, carga {carga}."),
         "gerado_em": hoje, "carga_da_fonte": carga, "n": len(itens), "itens": sorted(itens, key=lambda x: x.get("assinatura") or "", reverse=True)})
-    # fundo a fundo 2026 (API sem chave)
-    try:
-        faf = json.loads(_baixar(API_FAF, 120).decode("utf-8", "replace"))
-        rel = programas_faf(faf)
-        consultas["consultas"].append({"endpoint": API_FAF, "parametros": {}, "data": hoje_editorial().isoformat(), "hash_resposta": hashlib.sha256(json.dumps(faf, sort_keys=True).encode()).hexdigest(),
-                                       "itens": len(faf), "bytes": None, "fonte": "TransfereGov — API Fundo a Fundo (sem chave)"})
-        gravar("financiamento/programas_faf_2026.json", {"_governanca": "Programas fundo a fundo de 2026 (API pública do TransfereGov) cujo nome/objetivo cita defesa civil ou desastre. Vocabulário da fonte.", "gerado_em": hoje, "total_programas_2026": len(faf), "relevantes": rel})
-    except Exception as e:  # noqa: BLE001
-        registrar_lacuna("TransfereGov — API fundo a fundo", f"{type(e).__name__}: {e}", canal="DOU", camada=1, strings=[API_FAF])
     gravar("financiamento/consultas.json", consultas)
     log_busca("DOU", 1, [REPO, API_FAF], "registro", nivel="nacional", n_resultados=len(itens),
               resultados=f"TransfereGov: {len(propostas):,} propostas municipais ≥2025; r5 2026 em {sum(1 for v in semanas.values() if v)} semanas; {len(itens)} instrumentos com objeto do ciclo (fila de revisão); carga {carga}")

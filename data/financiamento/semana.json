@@ -1,13 +1,13 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "31/10/2026",
+ "corte": "01/11/2026",
  "janela_dias": 7,
  "cartoes": [
   {
    "id": "pago_periodo_mp",
-   "valor": 139881159.88,
+   "valor": 132850699.36,
    "unidade": "reais",
-   "periodo": "mês de setembro de 2026",
+   "periodo": "mês de outubro de 2026",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
    "url_fonte": null,
    "detalhe": "execução das ações reforçadas pelas medidas provisórias do ciclo. O valor inclui a dotação ordinária da ação. É teto, não a execução do crédito",
@@ -67,20 +67,17 @@
   },
   {
    "id": "pago_ate_agora",
-   "valor": 472934534.08,
+   "valor": 498419600.99,
    "unidade": "reais",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
    "url_fonte": null,
    "detalhe": null,
-   "sem_coleta": false,
-   "variacao_mes": 107365632.45,
-   "mes_variacao": "202610",
-   "mes_variacao_parcial": true
+   "sem_coleta": false
   },
   {
    "id": "gasto_direto_uniao",
-   "valor": 93.8,
+   "valor": 94.2,
    "unidade": "% do valor pago",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -126,14 +123,14 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor do Ministério do Meio Ambiente e Mudança do Clima, no valor de R$ 337.483.432,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
-    "lido_em": "26/10/2026"
+    "lido_em": "01/11/2026"
    },
    "pct_gasto_direto": 99.5,
    "acao": {
     "dotacao_atualizada": 1021814781.0,
     "valor_do_ato": 337483432,
-    "empenhado": 380685817.79,
-    "pago": 347432920.3,
+    "empenhado": 381817635.09,
+    "pago": 355410889.21,
     "periodo_execucao": [
      "202606",
      "202610"
@@ -165,8 +162,8 @@
     },
     {
      "mes": "202610",
-     "pago": 72985190.47,
-     "parcial": true
+     "pago": 80963159.38,
+     "parcial": false
     }
    ]
   },
@@ -178,14 +175,14 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor dos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do Desenvolvimento e Assistência Social, Família e Combate à Fome, no valor de R$ 924.985.960,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455",
-    "lido_em": "26/10/2026"
+    "lido_em": "01/11/2026"
    },
-   "pct_gasto_direto": 78.2,
+   "pct_gasto_direto": 80.9,
    "acao": {
     "dotacao_atualizada": 2197781135.0,
     "valor_do_ato": 924985960,
-    "empenhado": 369353136.23,
-    "pago": 125501613.78,
+    "empenhado": 385142194.94,
+    "pago": 143008711.78,
     "periodo_execucao": [
      "202608",
      "202610"
@@ -207,8 +204,8 @@
     },
     {
      "mes": "202610",
-     "pago": 34380441.98,
-     "parcial": true
+     "pago": 51887539.98,
+     "parcial": false
     }
    ]
   }
@@ -4733,7 +4730,7 @@
   "sem_sede": 0
  },
  "autorizado_sem_repasse": {
-  "corte": "31/10/2026",
+  "corte": "01/11/2026",
   "ultimo_mes_lido": "202609",
   "n": 45,
   "autorizado_total": 131334780.29,
@@ -5175,6 +5172,12 @@
     "mes": "202610",
     "defesa_civil": 8477395.1,
     "saude": null,
+    "parcial": false
+   },
+   {
+    "mes": "202611",
+    "defesa_civil": 0.0,
+    "saude": null,
     "parcial": true
    }
   ],
@@ -5184,8 +5187,8 @@
   "total_saude": 8247842.04
  },
  "funil_defesa_civil": {
-  "referencia": "31/10/2026",
-  "n_decretaram": 1059,
+  "referencia": "01/11/2026",
+  "n_decretaram": 1063,
   "n_reconhecidos": 940,
   "n_com_recurso": 74,
   "n_com_recurso_e_decretaram": 34
