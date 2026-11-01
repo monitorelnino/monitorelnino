@@ -270359,6 +270359,2518 @@
     ],
     "encontrou": null
    }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209854",
+   "municipio": "Lindóia do Sul",
+   "uf": "SC",
+   "url": "https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "3f4fdbbfa2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "226363 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PLANO MUNICIPAL DE SAÚDE 2026-2029 ESTADO DO MARANHÃO PREFEITURA DE IMPERATRIZ SECRETARIA MUNICIPAL DA SAÚDE/SUS PLANO MUNICIPAL DE SAÚDE 2026-2029 Imperatriz M"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "8.080/1990",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2105302",
+   "municipio": "Imperatriz",
+   "uf": "MA",
+   "url": "https://transparencia.imperatriz.ma.gov.br/upload/plano_municipal_saude/19310.pdf",
+   "regras_18": [],
+   "pista_id": "acc5082fbd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "82921aa92993e74aeb2c6ad1675243eee1358b4ce86bcfac8b4fb1d77ca678c3",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2906501",
+   "municipio": "Candeias",
+   "uf": "BA",
+   "url": "https://prefeitura.candeias.ba.gov.br/2025/03/defesa-civil-de-candeias-apresenta-plano-de-contingencia-para-continuacao-da-operacao-chuva/",
+   "regras_18": [],
+   "pista_id": "c83ac94522",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "nao_e_instrumento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "141632 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE CURITIBA PUBLICADO NO D.O.M. Nº 252 DE 30 DE DEZEMBRO DE 2013 1868 DECRETO Nº Aprova o Quadro de Detalhamento da Despesa para o exercíci"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "BA, CAPITAL DO ESTADO DO PARANÁ, usando de suas atribuições legais, com base na Lei Federal nº 4.320, de 17 de março de 1964, na Lei Complementar Federal nº 101",
+     "dados": {
+      "tipo": "lei",
+      "numero": "4.320",
+      "data": "12/07/2013",
+      "trecho": "BA, CAPITAL DO ESTADO DO PARANÁ, usando de suas atribuições legais, com base na Lei Federal nº 4.320, de 17 de março de 1964, na Lei Complementar Federal nº 101"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "e Detalhamento da Despesa para o exercício de 2014, e dá outras providências. O PREFEITO MUNICIPAL DE CURITIBA, CAPITAL DO ESTADO DO PARANÁ, usando de suas atri"
+    }
+   },
+   "categoria": null,
+   "data": "12/07/2013",
+   "natureza": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://mid.curitiba.pr.gov.br/2024/00444371.pdf",
+   "regras_18": [
+    "J16"
+   ],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "d0f22de20c",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "30cf93d8fe0b537c535744a031518b6cd4c726706ec74b3d892ae02f35ae496d"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www2.bauru.sp.gov.br/arquivos/arquivos_site/sec_saude/planejamento_saude/PAS/02;PAS%202026%20-%20Metas%20e%20Indicadores.pdf",
+   "regras_18": [],
+   "pista_id": "cad8df44f3",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210050",
+   "municipio": "Macieira",
+   "uf": "SC",
+   "url": "https://macieira.sc.gov.br/uploads/sites/363/2022/09/646836_PLANO_MUNICIPAL_DE_SANEAMENTO.pdf",
+   "regras_18": [],
+   "pista_id": "4059c65aca",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "47c7927844",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217402",
+   "municipio": "Schroeder",
+   "uf": "SC",
+   "url": "https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf",
+   "regras_18": [],
+   "pista_id": "d4e10c939e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "52bad71f78",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ".............935 Bom Retiro ................................................158 Laguna ......................................................580 Romelândia ...."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O Município de Abelardo Luz - SC, TORNA PÚBLICO que fará realizar, com base na lei federal 14.133/2021, Licitação na Modalidade CON- CORRÊNCIA ELETRÔNICA, do T",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": "10/07/2026",
+      "trecho": "O Município de Abelardo Luz - SC, TORNA PÚBLICO que fará realizar, com base na lei federal 14.133/2021, Licitação na Modalidade CON- CORRÊNCIA ELETRÔNICA, do T"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ww.abelardoluz.sc.gov.br Abelardo Luz (SC), 09 de julho de 2026. NERCI SANTIN – Prefeito Municipal www.diariomunicipal.sc.gov.br 10/07/2026 (Sexta-feira) DOM/SC"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "10/07/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4209409",
+   "municipio": "Laguna",
+   "uf": "SC",
+   "url": "https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4c29f5f9a4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "00ea4b75abe52002125517c678af5b95292081a275bfaefbebf13900dc355bbd"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "122293 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MUNICÍPIO DE ANCHIETA/SC SECRETARIA MUNICIPAL DE ASSISTÊNCIA SOCIAL CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL – CMAS ____________________________________________"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "lei",
+      "numero": "1.020/1995",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4200804",
+   "municipio": "Anchieta",
+   "uf": "SC",
+   "url": "https://anchieta.sc.gov.br/uploads/sites/403/2022/01/Resolucao-n.-10.2021-Aprova-Plano-Municipal-de-Assistencia-Social-2022-2025.pdf",
+   "regras_18": [],
+   "pista_id": "f640203a96",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a36902251f7d16ddcd22b34c4a339ad204b841692ef48dd8f1bcd15a9b206841",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4204152",
+   "municipio": "Celso Ramos",
+   "uf": "SC",
+   "url": "https://celsoramos.sc.gov.br/uploads/sites/408/2024/08/publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "efd9ef1646",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ".............935 Bom Retiro ................................................158 Laguna ......................................................580 Romelândia ...."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O Município de Abelardo Luz - SC, TORNA PÚBLICO que fará realizar, com base na lei federal 14.133/2021, Licitação na Modalidade CON- CORRÊNCIA ELETRÔNICA, do T",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": "10/07/2026",
+      "trecho": "O Município de Abelardo Luz - SC, TORNA PÚBLICO que fará realizar, com base na lei federal 14.133/2021, Licitação na Modalidade CON- CORRÊNCIA ELETRÔNICA, do T"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ww.abelardoluz.sc.gov.br Abelardo Luz (SC), 09 de julho de 2026. NERCI SANTIN – Prefeito Municipal www.diariomunicipal.sc.gov.br 10/07/2026 (Sexta-feira) DOM/SC"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "10/07/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4209409",
+   "municipio": "Laguna",
+   "uf": "SC",
+   "url": "https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "a036ef1933",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "00ea4b75abe52002125517c678af5b95292081a275bfaefbebf13900dc355bbd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219507",
+   "municipio": "Xanxerê",
+   "uf": "SC",
+   "url": "https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf",
+   "regras_18": [],
+   "pista_id": "d9a3aad0f1",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217402",
+   "municipio": "Schroeder",
+   "uf": "SC",
+   "url": "https://schroeder.sc.gov.br/uploads/sites/353/2021/12/1277144_PMSB___Schroeder.pdf",
+   "regras_18": [],
+   "pista_id": "9a5a93a8e7",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "natureza_duvidosa",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": ".............935 Bom Retiro ................................................158 Laguna ......................................................580 Romelândia ...."
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "O Município de Abelardo Luz - SC, TORNA PÚBLICO que fará realizar, com base na lei federal 14.133/2021, Licitação na Modalidade CON- CORRÊNCIA ELETRÔNICA, do T",
+     "dados": {
+      "tipo": "lei",
+      "numero": "14.133/2021",
+      "data": "10/07/2026",
+      "trecho": "O Município de Abelardo Luz - SC, TORNA PÚBLICO que fará realizar, com base na lei federal 14.133/2021, Licitação na Modalidade CON- CORRÊNCIA ELETRÔNICA, do T"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ww.abelardoluz.sc.gov.br Abelardo Luz (SC), 09 de julho de 2026. NERCI SANTIN – Prefeito Municipal www.diariomunicipal.sc.gov.br 10/07/2026 (Sexta-feira) DOM/SC"
+    },
+    "4_natureza": {
+     "ok": false,
+     "trecho": "natureza_duvidosa: nenhum padrão claro bateu — não classificar sozinho"
+    }
+   },
+   "categoria": null,
+   "data": "10/07/2026",
+   "natureza": "DUVIDA",
+   "ibge": "4209409",
+   "municipio": "Laguna",
+   "uf": "SC",
+   "url": "https://laguna.sc.gov.br/uploads/sites/142/2026/07/1783706482_edicao_5187_assinada.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ac375f4d1d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "00ea4b75abe52002125517c678af5b95292081a275bfaefbebf13900dc355bbd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4209854",
+   "municipio": "Lindóia do Sul",
+   "uf": "SC",
+   "url": "https://lindoiadosul.sc.gov.br/uploads/sites/20/2025/12/PLANO-MUNICIPAL-DE-SAUDE-2026-2029.pdf",
+   "regras_18": [],
+   "pista_id": "ee7f324041",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4219507",
+   "municipio": "Xanxerê",
+   "uf": "SC",
+   "url": "https://xanxere.sc.gov.br/uploads/sites/92/2025/05/PLANO-DE-CONTINGENCIA-XXE.pdf",
+   "regras_18": [],
+   "pista_id": "d09f4bf3b2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207809",
+   "municipio": "Irani",
+   "uf": "SC",
+   "url": "https://irani.sc.gov.br/uploads/sites/427/2021/12/1999583_Plano_Contingencia___Escola_Sebastiao.pdf",
+   "regras_18": [],
+   "pista_id": "cb91d1b257",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "136127 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA MUNICIPIO DE BOM JESUS DO OESTE SECRETARIA MUNICIPAL DE EDUCAÇÃO, CULTURA E ESPORTE PLANO MUNICIPAL DA EDUCAÇÃO Junho/2015 1 ESTADO DE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "lidade da educação. O município de Bom Jesus do Oeste, a partir da aprovação da Lei nº 13.005 de 25 de junho de 2014, iniciou, em fevereiro de 2015, o processo",
+     "dados": {
+      "tipo": "lei",
+      "numero": "13.005",
+      "data": "25/06/2014",
+      "trecho": "lidade da educação. O município de Bom Jesus do Oeste, a partir da aprovação da Lei nº 13.005 de 25 de junho de 2014, iniciou, em fevereiro de 2015, o processo"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "resentante Chefe de Setor Administrativo EDIANE DA SILVA BRUINSMA Representante Câmara de Vereadores LEISI RAUBER WANDSCHEER Representante Câmara de Vereadores."
+    }
+   },
+   "categoria": null,
+   "data": "25/06/2014",
+   "natureza": null,
+   "ibge": "4202578",
+   "municipio": "Bom Jesus do Oeste",
+   "uf": "SC",
+   "url": "https://www.bomjesusdooeste.sc.gov.br/uploads/sites/278/2023/07/Plano-Municipal-de-Educacao-Bom-Jesus-do-Oeste.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "d31bceeb04",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c0baa067e7f199ae9e0f25e078813e4ac1cdaae5f76439a312f97d8b0477e674"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207700",
+   "municipio": "Ipumirim",
+   "uf": "SC",
+   "url": "https://ipumirim.sc.gov.br/uploads/sites/386/2024/06/Plano-Municipal-Ipumirim-2022-2025-atualizado.pdf",
+   "regras_18": [],
+   "pista_id": "8970575884",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "356360 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE PAPANDUVA SECRETARIA DE ASSISTÊNCIA SOCIAL CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL SECRETARIA DE ASSISTÊNCIA SOCIAL 1 PLANO MUNICIPAL D"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "2362/2019",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://papanduva.sc.gov.br/uploads/sites/306/2022/06/2354533_PLANO_MUNICIPAL_DE_ASSISTENCIA_SOCIAL_2022___2025.pdf",
+   "regras_18": [],
+   "pista_id": "a1eb7503aa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "af77c70e97b2a51d862c392376b40aa6d6f40c559fbab66e472e56d290e060d6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AGROLÂNDIA CNPJ: 83.102.582/0001-44 Responsável: Ferdinando Delirio Feretti Matrícula: 5284101 Telefone: (47) 3534-4890 Departamento: Li"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ividades nos diversos setores da Administração Municipal. Em conformidade com a Instrução Normativa Nº 65 de 07 de Julho de 2021 (Lei nº 14.133). Método Matemát",
+     "dados": {
+      "tipo": "instrução normativa",
+      "numero": "65",
+      "data": "07/07/2021",
+      "trecho": "ividades nos diversos setores da Administração Municipal. Em conformidade com a Instrução Normativa Nº 65 de 07 de Julho de 2021 (Lei nº 14.133). Método Matemát"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "07/07/2021",
+   "natureza": null,
+   "ibge": "4200200",
+   "municipio": "Agrolândia",
+   "uf": "SC",
+   "url": "https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "a6e5bba104",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "23b53d319078a12a4585161b5638655fe8aea37c2d6218a90d006cdba32719ad"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4218251",
+   "municipio": "Timbó Grande",
+   "uf": "SC",
+   "url": "https://timbogrande.sc.gov.br/uploads/sites/352/2025/05/plano-de-saude.pdf",
+   "regras_18": [],
+   "pista_id": "4f70a8ec85",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "minuta_ou_rascunho",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "518297 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE IMARUÍ ADM: 2013/2016 PREFEITURA MUNICIPAL DE IMARUÍ - SC PLANO MUNICIPAL DE SANEAMENTO BÁSICO - PMSB PRODUTO K"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "e planejamento estratégico, dos programas, projetos e ações; Plano de execução; Minuta do projeto de lei; Relatório sobre os indicadores de desempenho; Sistema",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "o documento se declara minuta, rascunho, versão para consulta ou apresentação",
+      "trecho": "e planejamento estratégico, dos programas, projetos e ações; Plano de execução; Minuta do projeto de lei; Relatório sobre os indicadores de desempenho; Sistema"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207205",
+   "municipio": "Imaruí",
+   "uf": "SC",
+   "url": "https://imarui.sc.gov.br/uploads/sites/130/2021/12/1005072_Relatorio_Final.pdf",
+   "regras_18": [],
+   "pista_id": "d00818759b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "159c9db4cabe566e189013766fc24da8b2f43a8efbd79b06d408dd055ab83653"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "81946 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "tivação das estruturas em situações de eventos adversos Prefeitura Municipal de Pedras Grandes - SC Versão Atual:2.0 Pedras Grandes, 15 de agosto de 2025 2 PLAN"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "1 PLANO MUNICIPAL DE CONTINGÊNCIA Ativação das estruturas em situações de eventos adversos Prefeitura Municipal de Pedras Grandes - SC Versão Atual:2.0 Pedras G",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "15/08/2025",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Prefeitura Municipal",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "1 PLANO MUNICIPAL DE CONTINGÊNCIA Ativação das estruturas em situações de eventos adversos Prefeitura Municipal de Pedras Grandes - SC Versão Atual:2.0 Pedras G",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ICIPAL DE CONTINGÊNCIA Ativação das estruturas em situações de eventos adversos Prefeitura Municipal de Pedras Grandes - SC Versão Atual:2.0 Pedras Grandes, 15"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "multirrisco_pdc",
+     "trecho": "integrando-se com outras políticas como a de segurança alimentar e nutricional, proteção e defesa civil, saúde, educação e outras. O Plano Municipal de Contingê"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2025, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "15/08/2025",
+   "natureza": "EX_ANTE",
+   "ibge": "4212403",
+   "municipio": "Pedras Grandes",
+   "uf": "SC",
+   "url": "https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/11/PLANO-DE-CONTINGENCIA-PG-25_RV_01.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "multirrisco_pdc",
+   "pista_id": "a516b01da7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1ffea26647e3add16b054d6246737f2e2cb3b4a76e08a7552e96db0d53af8fe3",
+   "nao_aplicado": {
+    "em": "2026-11-01",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE AGROLÂNDIA CNPJ: 83.102.582/0001-44 Responsável: Ferdinando Delirio Feretti Matrícula: 5284101 Telefone: (47) 3534-4890 Departamento: Li"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "ividades nos diversos setores da Administração Municipal. Em conformidade com a Instrução Normativa Nº 65 de 07 de Julho de 2021 (Lei nº 14.133). Método Matemát",
+     "dados": {
+      "tipo": "instrução normativa",
+      "numero": "65",
+      "data": "07/07/2021",
+      "trecho": "ividades nos diversos setores da Administração Municipal. Em conformidade com a Instrução Normativa Nº 65 de 07 de Julho de 2021 (Lei nº 14.133). Método Matemát"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "07/07/2021",
+   "natureza": null,
+   "ibge": "4200200",
+   "municipio": "Agrolândia",
+   "uf": "SC",
+   "url": "https://agrolandia.sc.gov.br/uploads/sites/307/2026/05/ORCAMENTOS-ESTIMADOS.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e6c562566c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "23b53d319078a12a4585161b5638655fe8aea37c2d6218a90d006cdba32719ad"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203154",
+   "municipio": "Calmon",
+   "uf": "SC",
+   "url": "https://calmon.sc.gov.br/uploads/sites/273/2025/05/PMSB-VOLUME-I-CONSOLDACAO-DO-PLANO-MUNICIPAL-DE-SANEAMENTO-BASICO.pdf",
+   "regras_18": [],
+   "pista_id": "202d759caf",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4203154",
+   "municipio": "Calmon",
+   "uf": "SC",
+   "url": "https://calmon.sc.gov.br/uploads/sites/273/2024/05/PLANO-MUNICIPAL-DE-SAUDE-2022-2025.pdf",
+   "regras_18": [],
+   "pista_id": "96d876c78c",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217907",
+   "municipio": "Tangará",
+   "uf": "SC",
+   "url": "https://tangara.sc.gov.br/uploads/sites/450/2023/05/DECRETO-No-051-Aprova-Resolucao-Conselho.pdf",
+   "regras_18": [],
+   "pista_id": "8ab6a8ac23",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/smrcrc/1626-plano-de-contingencia",
+   "regras_18": [],
+   "pista_id": "f750f8d480",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/smrcrc/1686-plano-de-rotina-operacional--pro",
+   "regras_18": [],
+   "pista_id": "60ea06e1cf",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/arquivos/baixar-arquivo/conteudo/D24-3863.pdf",
+   "regras_18": [],
+   "pista_id": "20fa85ef94",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316907",
+   "municipio": "Santa Maria",
+   "uf": "RS",
+   "url": "https://www.santamaria.rs.gov.br/noticias/28011-prefeitura-assina-novo-plano-municipal-de-contingencia-para-nortear-acoes-em-casos-desastres",
+   "regras_18": [],
+   "pista_id": "fb5709e16a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211900",
+   "municipio": "Palhoça",
+   "uf": "SC",
+   "url": "https://www.pmf.sc.gov.br/arquivos/arquivos/pdf/16_03_2021_11.01.34.4aa5dab9567b9ff4c44faff944bb086c.pdf",
+   "regras_18": [],
+   "pista_id": "fffaf82f50",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "46368 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "EEB FRANCISCO MAZZOLA Estabelecimento de Educação/Ensino Fundamental e Médio NOVA TRENTO - SC Outubro de 2020 COMITÊ TÉCNICO CIENTÍFICO Defesa Civil de Santa Ca"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "2020 COMITÊ TÉCNICO CIENTÍFICO Defesa Civil de Santa Catarina Grupo de Trabalho Plano de Contingência 1 Este Modelo de Plano de Contingência foi elaborado e apr",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Santa",
+      "titulo": "Plano de Contingência",
+      "trecho": "2020 COMITÊ TÉCNICO CIENTÍFICO Defesa Civil de Santa Catarina Grupo de Trabalho Plano de Contingência 1 Este Modelo de Plano de Contingência foi elaborado e apr",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Padre Doutor Itamar Luis da Costa - Imbituba/ SC Profa. Rute Maria Fernandes - Secretaria Municipal de Educação, Cultura e Esportes (SEDUCE) - Imbituba/SC. MsC"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "o Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). 6 O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco ide"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/uploads/sites/349/2021/12/2030305_Plano_de_Contingencia_Escolar_MAZZOLA.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "4cd952fc6e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "2b5064087a60adf3388ba66d6f11efd081cd2e08babee1b57e5c3835a18a9238"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "46926 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "cimento de Educação Infantil E.M. CRIANÇAS ALEGRES PLANCON-EDU/ESCOLAS COVID-19 ARARANGUÁ OUTUBRO de 2020 1 Este Plano de Contingência foi construído com base n"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA para a COVID-19 Estabelecimento de Educação Infantil E.M. CRIANÇAS ALEGRES PLANCON-EDU/ESCOLAS COVID-19 ARARANGUÁ OUTUBRO de 2020 1 Este P",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Santa",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA para a COVID-19 Estabelecimento de Educação Infantil E.M. CRIANÇAS ALEGRES PLANCON-EDU/ESCOLAS COVID-19 ARARANGUÁ OUTUBRO de 2020 1 Este P",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a Padre Doutor Itamar Luis da Costa - Imbituba/SC Profa. Rute Maria Fernandes - Secretaria Municipal de Educação, Cultura e Esportes (SEDUCE) - Imbituba/SC. MsC"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ção Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco ide"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "4201406",
+   "municipio": "Araranguá",
+   "uf": "SC",
+   "url": "https://ararangua.sc.gov.br/uploads/sites/281/2021/12/2019351_PLANCON_CRIANCAS_ALEGRES.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "af87a034ba",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "483400dd915061634bd85cb8bf132a74e4e146f92919a398d5c1e273c395defc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4202909",
+   "municipio": "Brusque",
+   "uf": "SC",
+   "url": "https://defesacivil.brusque.sc.gov.br/post/nova-etapa-do-plano-de-contingencia-municipal-da-defesa-civil-e-concluida",
+   "regras_18": [],
+   "pista_id": "02a66a03a2",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "85184 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ROVAÇÃO O Plano de Contingência para inundações e deslizamentos do município de Rio dos Cedros SC estabelece os procedimentos a serem adotados pelos órgãos envo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Rio dos C edros - SC Plano Municipal de Contingência Inundações e Deslizamentos VERSÃO 10.6 ÚLTIM A ATUALIZAÇÃO: Fevereiro 2021. EXEMPLAR PERTENCENTE A: COMDEC",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2021",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "COMDEC",
+      "titulo": "Plano Municipal de Contingência",
+      "trecho": "Rio dos C edros - SC Plano Municipal de Contingência Inundações e Deslizamentos VERSÃO 10.6 ÚLTIM A ATUALIZAÇÃO: Fevereiro 2021. EXEMPLAR PERTENCENTE A: COMDEC",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "mentos VERSÃO 10.6 ÚLTIM A ATUALIZAÇÃO: Fevereiro 2021. EXEMPLAR PERTENCENTE A: COMDEC 1 1 INTRODUÇÃO 1.1 DOCUMENTO DE APROVAÇÃO O Plano de Contingência para in"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "chuvas_inundacao_deslizamento",
+     "trecho": "Plano Municipal de Contingência Inundações e Deslizamentos VERSÃO 10.6 ÚLTIM A ATUALIZAÇÃO: Fevereiro 2021. EXEMPLAR PERTENCENTE A: COMDEC 1 1 INTRODUÇÃO 1.1 DO"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2021, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2021",
+   "natureza": "EX_ANTE",
+   "ibge": "4214706",
+   "municipio": "Rio dos Cedros",
+   "uf": "SC",
+   "url": "https://riodoscedros.sc.gov.br/uploads/sites/444/2021/12/2056430_plano_de_contingencia_versao_107.pdf",
+   "regras_18": [
+    "J1",
+    "J10"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "chuvas_inundacao_deslizamento",
+   "pista_id": "666648a668",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "075fd5cb5733daa3630a3440eff420e0a15121857dd5201138a7909d7f1cca6e",
+   "nao_aplicado": {
+    "em": "2026-11-01",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "36878 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "teórico-metodológicos presentes na Proposta Curricular da Educação Infantil de Capinzal, na Base Nacional Comum Curricular (BNCC) e nos Parâmetros Curriculares"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "do na Rua José Vicari, nº 252, foi fundado em 13 de agosto de 1990, por meio do Decreto nº 036/91, durante a gestão do Sr. Irineu José Maestri. Originalmente de",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "036/91",
+      "data": "13/08/1990",
+      "trecho": "do na Rua José Vicari, nº 252, foi fundado em 13 de agosto de 1990, por meio do Decreto nº 036/91, durante a gestão do Sr. Irineu José Maestri. Originalmente de"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "13/08/1990",
+   "natureza": null,
+   "ibge": "4203907",
+   "municipio": "Capinzal",
+   "uf": "SC",
+   "url": "https://capinzal.sc.gov.br/uploads/sites/200/2024/11/Plano-de-Gestao-CMEI-Pinguinho-de-Gente-25-28.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "5eae720baf",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "cd6b1505f5b1ee797cc07c42eec9ad6324dc111ba76a0cc56486b1d17b6924b4"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4213104",
+   "municipio": "Piratuba",
+   "uf": "SC",
+   "url": "https://piratuba.sc.gov.br/uploads/sites/453/2022/04/1968074_Plano_de_Contingencia_para_a_Educacao_Municipal__de_Piratuba.pdf",
+   "regras_18": [],
+   "pista_id": "722d809daa",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "185922 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Ouro\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211801",
+   "municipio": "Ouro",
+   "uf": "SC",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/008_boaspraticas_plancon_plano_contingencia_enfrentamento_riscos_desastres_natal_rn.pdf",
+   "regras_18": [],
+   "pista_id": "162c54869d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "3aa4840955c4e9e4307297817a0b3182ed24345aa249a59cfe168d3323d17ef8"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101055 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "PREFEITURA MUNICIPAL DE PEDRAS GRANDES SECRETARIA MUNICIPAL DE SAÚDE E DESENVOLVIMENTO SOCIAL PLANO MUNICIPAL DE ASSISTÊNCIA SOCIAL Vigência 2026 a 2029 1 PREFE"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "unicipal de Assistência Social Nome do Gestor do FMAS: Patrícia Mendes de Souza Lei de Criação do FMAS :Lei Nº 421 29/04/1996 CNPJ: 01607267/0001-04 Fontes de R",
+     "dados": {
+      "tipo": "lei",
+      "numero": "421",
+      "data": "29/04/1996",
+      "trecho": "unicipal de Assistência Social Nome do Gestor do FMAS: Patrícia Mendes de Souza Lei de Criação do FMAS :Lei Nº 421 29/04/1996 CNPJ: 01607267/0001-04 Fontes de R"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "29/04/1996",
+   "natureza": null,
+   "ibge": "4212403",
+   "municipio": "Pedras Grandes",
+   "uf": "SC",
+   "url": "https://pedrasgrandes.sc.gov.br/uploads/sites/344/2025/12/Plano-Municipal-de-Assistencia-Social-2026-a-2029.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7a56e4a3ea",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "6fb8bed1c49102aeb17a407f16ede57496daa54e0145cc6cbebeb88ea85be218"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305108",
+   "municipio": "Caxias do Sul",
+   "uf": "RS",
+   "url": "https://caxias.rs.gov.br/noticias/2023/04/sancionada-lei-do-plano-municipal-de-contingencia-de-protecao-e-defesa-civil-de-caxias-do-sul",
+   "regras_18": [],
+   "pista_id": "29ccf48d74",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2304400",
+   "municipio": "Fortaleza",
+   "uf": "CE",
+   "url": "https://www.ce.gov.br/seplag/wp-content/uploads/sites/74/2025/03/PLANO-DE-CONTINGENCIA-FALESIAS-digital-1_compressed.pdf",
+   "regras_18": [],
+   "pista_id": "c40273068e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2304400",
+   "municipio": "Fortaleza",
+   "uf": "CE",
+   "url": "https://www.ce.gov.br/cge/wp-content/uploads/sites/71/2020/03/Decreto-n%C2%BA.-33.510-de-16-de-mar%C3%A7o-de-2020.-Decreta-situa%C3%A7%C3%A3o-de-Emerg%C3%AAncia-em-sa%C3%BAde-e-disp%C3%B5e-sobre-medidas-de-enfrentamento-e-conten%C3%A7%C3%A3o-da-infecc%C3%A7%C3%A3o-humana-pelo-novo-coronavirus.pdf",
+   "regras_18": [],
+   "pista_id": "af1877047a",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "285444 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3137809",
+   "municipio": "Lambari",
+   "uf": "MG",
+   "url": "https://pncp.gov.br/pncp-api/v1/orgaos/21406451000101/compras/2025/18/arquivos/1",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "619fcce10e",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "276a8908dacb565936b5c2243452c879b852dcbb0eef36535b3eb63cea8a93bd"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "261400 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Luz\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3138807",
+   "municipio": "Luz",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-03/Microsoft%20Word%20-%20Manual%20PLANEJAMENTO%20-2.rtf_.pdf",
+   "regras_18": [],
+   "pista_id": "6ba6669654",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "67b05435eedecc1c2aa694cdd3ad04d64d85bab26c2c206014198ddb25cdf3a6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www2.bauru.sp.gov.br/arquivos/sist_licitacoes/2026/10718/10718_Anexo_1.pdf",
+   "regras_18": [],
+   "pista_id": "32c54866eb",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3506003",
+   "municipio": "Bauru",
+   "uf": "SP",
+   "url": "https://www2.bauru.sp.gov.br/arquivos/sist_diariooficial/2023/11/do_20231118_3770.pdf",
+   "regras_18": [],
+   "pista_id": "d05e385c11",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7820 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Limeira-SP Portaria nº 22/2023 Data: 07/02/2023 Situação: Revogada Autoria: *Câmara Municipal de Limeira* Ementa/Assunto: Nomeia a Senhora PAULA JANOTTO ALVES D"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Limeira-SP Portaria nº 22/2023 Data: 07/02/2023 Situação: Revogada Autoria: *Câmara Municipal de Limeira* Ementa/Assunto: Nomeia a Senhora PAULA JANOTTO ALVES D",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "22/2023",
+      "data": "07/02/2023",
+      "trecho": "Limeira-SP Portaria nº 22/2023 Data: 07/02/2023 Situação: Revogada Autoria: *Câmara Municipal de Limeira* Ementa/Assunto: Nomeia a Senhora PAULA JANOTTO ALVES D"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "07/02/2023",
+   "natureza": null,
+   "ibge": "3526902",
+   "municipio": "Limeira",
+   "uf": "SP",
+   "url": "https://legislacao.limeira.sp.leg.br/limeira-sp?Pagina=92&Pesquisa=Simples&SituacaoId=3370&Ordernacao=DataCrescente&Export=Pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "64efa41e1b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "36369ac6939acd66aa4fb74a32fa42a5df56b7e10ee44a1ed2dfe6666b0f3203"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3504008",
+   "municipio": "Assis",
+   "uf": "SP",
+   "url": "https://sigrh.sp.gov.br/public/uploads/news/1318/planodecontingencia.pdf",
+   "regras_18": [],
+   "pista_id": "074162bb2b",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%4061bd690e-81c2-4630-87cf-4e7b25c77a42",
+   "regras_18": [],
+   "pista_id": "d482a07916",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4108304",
+   "municipio": "Foz do Iguaçu",
+   "uf": "PR",
+   "url": "https://www.foz.pr.gov.br/wp-content/uploads/2025/09/Diario%20Oficial%20PSS%20002_2020.pdf",
+   "regras_18": [],
+   "pista_id": "6ec0fcaa20",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4107652",
+   "municipio": "Fazenda Rio Grande",
+   "uf": "PR",
+   "url": "https://fazendariogrande.pr.gov.br/wp-content/uploads/2019/02/SMMA-LICEN%C3%87A-PR%C3%89VIA-N%C2%B0007_2018-.pdf",
+   "regras_18": [],
+   "pista_id": "34bee04024",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "136405 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Formosa\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "5208004",
+   "municipio": "Formosa",
+   "uf": "GO",
+   "url": "https://www.policiapenal.go.gov.br/atos-normativos/portarias/portria-no-273-2018-gab-dgap.html",
+   "regras_18": [],
+   "pista_id": "98f7c33c3f",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e41f995a03352a1fe35943d7a48165fc9495071a8a94742b272a065122c51e28"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3304508",
+   "municipio": "Rio das Flores",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/agenersa/sites/default/files/arquivos_paginas_basicas/DELIBERACAO4275.pdf",
+   "regras_18": [],
+   "pista_id": "22e2dde1f3",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3500303",
+   "municipio": "Aguaí",
+   "uf": "SP",
+   "url": "https://aguai.sp.gov.br/home/wp-content/uploads/2021/12/Anexo-Decreto-Municipal-4554-Plano-de-Contingencia-Coronovirus-Revisao-3.pdf",
+   "regras_18": [],
+   "pista_id": "d9a4ddc7c1",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2413003",
+   "municipio": "São Vicente",
+   "uf": "RN",
+   "url": "http://adcon.rn.gov.br/ACERVO/SETHAS/DOC/DOC000000000281179.PDF",
+   "regras_18": [],
+   "pista_id": "0e73c22033",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3300605",
+   "municipio": "Bom Jesus do Itabapoana",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/concessaosaneamentorj2021/sites/default/files/arquivos_paginas/Planejamento%20Universaliza%C3%A7%C3%A3o%20-%20Bom%20Jesus%20do%20Itabapoana_0.pdf",
+   "regras_18": [],
+   "pista_id": "8a26e560d8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3302254",
+   "municipio": "Itatiaia",
+   "uf": "RJ",
+   "url": "https://www.rj.gov.br/secsocial/sites/default/files/arquivos_paginas/11667COLET%C3%82NEA%20-%20O%20SUAS%20NO%20ESTADO%20DO%20RIO%20DE%20JANEIRO%20NO%20CONTEXTO%20DA%20COVID-19%20-%20VOLUME%202_1.pdf",
+   "regras_18": [],
+   "pista_id": "b0f2e2a4f8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "55935 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ducação/Ensino Fundamental Escola Municipal lagoão PLANCON-EDU/ESCOLAS COVID-19 Araranguá Novembro de 2020 1 Este Plano de Contingência foi construído com base"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANCON EDU PLANO DE CONTINGÊNCIA para a COVID-19 Estabelecimento de Educação/Ensino Fundamental Escola Municipal lagoão PLANCON-EDU/ESCOLAS COVID-19 Araranguá",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Santa",
+      "titulo": "PLANCON",
+      "trecho": "PLANCON EDU PLANO DE CONTINGÊNCIA para a COVID-19 Estabelecimento de Educação/Ensino Fundamental Escola Municipal lagoão PLANCON-EDU/ESCOLAS COVID-19 Araranguá",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a Padre Doutor Itamar Luis da Costa - Imbituba/SC Profa. Rute Maria Fernandes - Secretaria Municipal de Educação, Cultura e Esportes (SEDUCE) - Imbituba/SC. MsC"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ção Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco ide"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "4201406",
+   "municipio": "Araranguá",
+   "uf": "SC",
+   "url": "https://ararangua.sc.gov.br/uploads/sites/281/2021/12/2019358_PLANCON_LAGOAO.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "7f0d169db8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "9f130e39a9daadf4c11100c13c8b8185741574615bc214a77356035f2d90c0a8"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "111324 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "IA para a COVID-19 Pré Escolar Cantinho da Alegria PLANCON-EDU/ESCOLAS COVID-19 PAPANDUVA Município Outubro de 2020 Rua Sérgio Glevinski, nº134, 3º Piso Centro"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANCON EDU ESCOLAS PLANO DE CONTINGÊNCIA para a COVID-19 Pré Escolar Cantinho da Alegria PLANCON-EDU/ESCOLAS COVID-19 PAPANDUVA Município Outubro de 2020 Rua S",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "município de",
+      "titulo": "PLANCON",
+      "trecho": "PLANCON EDU ESCOLAS PLANO DE CONTINGÊNCIA para a COVID-19 Pré Escolar Cantinho da Alegria PLANCON-EDU/ESCOLAS COVID-19 PAPANDUVA Município Outubro de 2020 Rua S",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": ".sc.gov.br 1 PLANO DE CONTINGÊNCIA MUNICIPAL Plano de contingência aplicável ao município de Papanduva Equipe responsável pela elaboração e implementação do pla"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ção Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco ide"
+    }
+   },
+   "categoria": null,
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://papanduva.sc.gov.br/uploads/sites/306/2022/06/2164156_Plancon_edu_escolas_CANTINHO_DA_ALEGRIA.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "e1baee2361",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d91a8f5635b257aee660aae2d34af9219259716eb6f56e4d93e536d9b47847d6"
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "135969 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "D-19 Escola de Educação Básica ALINOR VIEIRA CÔRTE PLANCON-EDU/ESCOLAS COVID-19 Papanduva-SC Fevereiro de 2022 Este Plano de Contingência foi construído com bas"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "PLANO DE CONTINGÊNCIA para a COVID-19 Escola de Educação Básica ALINOR VIEIRA CÔRTE PLANCON-EDU/ESCOLAS COVID-19 Papanduva-SC Fevereiro de 2022 Este Plano de Co",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Santa",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "PLANO DE CONTINGÊNCIA para a COVID-19 Escola de Educação Básica ALINOR VIEIRA CÔRTE PLANCON-EDU/ESCOLAS COVID-19 Papanduva-SC Fevereiro de 2022 Este Plano de Co",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "a Padre Doutor Itamar Luis da Costa - Imbituba/SC Profa. Rute Maria Fernandes - Secretaria Municipal de Educação, Cultura e Esportes (SEDUCE) - Imbituba/SC. MsC"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "ção Mundial de Saúde, bem como Secretarias de Estado de Saúde e de Educação). O Plano de Contingência Escolar para a COVID-19, a partir de cenários de risco ide"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "EX_ANTE",
+   "ibge": "4212205",
+   "municipio": "Papanduva",
+   "uf": "SC",
+   "url": "https://papanduva.sc.gov.br/uploads/sites/306/2023/07/2465983_Plan_Con_EEB_Alinor____FEV_22_QR_.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "0e2ff5c912",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "3c33444c50e0638fcb1c577e2e9282ead37a8d1dca6941d969b121a79af0bcce"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "135198 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São Sebastião do Caí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "url": "https://www.habitacao.rs.gov.br/upload/arquivos/202508/18155139-caderno-dos-delegados-concidades.pdf",
+   "regras_18": [],
+   "pista_id": "1a4ff3523d",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "8807664980551695a7e3cad816c9d26d5ca500592954ab98ff82592ba73cc77a"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "464753 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São Sebastião do Caí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319505",
+   "municipio": "São Sebastião do Caí",
+   "uf": "RS",
+   "url": "https://legis.senado.leg.br/sdleg-getter/documento?dm=9862195&ts=1735605051489&rendition_principal=S&disposition=inline",
+   "regras_18": [],
+   "pista_id": "7692029e08",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7a761c367d4d4ec4cac9cdcbc53b6eb9433bccdd164f3dc9d62e98ffb806a0a3"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101894 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322806",
+   "municipio": "Veranópolis",
+   "uf": "RS",
+   "url": "https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "a53fd3b774",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3130606",
+   "municipio": "Inconfidentes",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "2bdf3f4496",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "url": "https://auniao.pb.gov.br/servicos/doe/2026/maio/diario-oficial-09-05-2026-portal.pdf",
+   "regras_18": [],
+   "pista_id": "3f76ced5c8",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "2508109",
+   "municipio": "Lagoa",
+   "uf": "PB",
+   "url": "https://www.cagepa.pb.gov.br/wp-content/uploads/2026/02/PRSB-CAGEPA-LITORAL_publicacao.pdf",
+   "regras_18": [],
+   "pista_id": "d87a2d06fe",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "148014 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "MINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇÃO/ENSINO URUSSANGA PLANCON-EDU/COVID-19 FEVEREIRO/2022 COMITÊ ESTRATÉGICO DE RETORNO AS A"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "‘ PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUC",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2022",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Governo do Estado",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "‘ PLANO MUNICIPAL DE CONTINGÊNCIA-EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUC",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "O 5- NOVEMBRO 2021 VERSÃO 6 - FEVEREIRO 2022 Plano de contingência aplicável ao município de: Urussanga Nome do Município Equipe responsável pela elaboração e i"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "NTINGÊNCIA-EDUCAÇÃO PARA PREVENÇÃO, MONITORAMENTO E CONTROLE DA DISSEMINAÇÃO DA COVID-19 NOS ESTABELECIMENTOS DOS DIVERSOS NÍVEIS DE EDUCAÇÃO/ENSINO URUSSANGA P"
+    }
+   },
+   "categoria": null,
+   "data": "2022",
+   "natureza": "EX_ANTE",
+   "ibge": "4219002",
+   "municipio": "Urussanga",
+   "uf": "SC",
+   "url": "https://urussanga.sc.gov.br/uploads/sites/473/2022/02/plancon6.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "7a18f7fa17",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "ca688210856104d47a93608a722dfb56720aa4d3c48120d294b137b9f75eed73"
+  },
+  {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "67049 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Estado de Santa Catarina Município de Anchieta PLANO MUNICIPAL DE CONTINGÊNCIA - PLACOM Processos Geológicos, Hidrológicos, Meteorológicos e Climatológicos e Do"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Estado de Santa Catarina Município de Anchieta PLANO MUNICIPAL DE CONTINGÊNCIA - PLACOM Processos Geológicos, Hidrológicos, Meteorológicos e Climatológicos e Do",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2020",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "Estado de Santa",
+      "titulo": "PLANO MUNICIPAL DE CONTINGÊNCIA",
+      "trecho": "Estado de Santa Catarina Município de Anchieta PLANO MUNICIPAL DE CONTINGÊNCIA - PLACOM Processos Geológicos, Hidrológicos, Meteorológicos e Climatológicos e Do",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "Estado de Santa Catarina Município de Anchieta PLANO MUNICIPAL DE CONTINGÊNCIA - PLACOM Processos Geológicos, Hidrológicos, Meteorológicos e Climatológicos e Do"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": true,
+     "familia": "seca_estiagem_fogo",
+     "trecho": "DOCUMENTO DE APROVAÇÃO O Plano de Contingência para Enxurradas, deslizamentos, estiagem, granizos e vendavais do município de Anchieta/SC estabelece os procedi"
+    },
+    "6_categoria": {
+     "ok": true,
+     "trecho": "plano publicado de 2020, anterior ao ciclo; ato de aprovação não localizado"
+    }
+   },
+   "categoria": "plano_antigo",
+   "data": "2020",
+   "natureza": "EX_ANTE",
+   "ibge": "4200804",
+   "municipio": "Anchieta",
+   "uf": "SC",
+   "url": "https://www.anchieta.sc.gov.br/uploads/sites/403/2024/01/OFICIAL-PLANO-DE-CONTINGENCIA-MUNICIPAL-ANCHIETA-SC.pdf",
+   "regras_18": [
+    "J7",
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "familia_de_risco": "seca_estiagem_fogo",
+   "pista_id": "0d01c3e4af",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "7216c5bcc3c69d8b0843eeee2388b8e9a566c8b4c300ab04699da0dbaaf9640b",
+   "nao_aplicado": {
+    "em": "2026-11-01",
+    "motivo": "já consta no banco — abstenção registrada (atualização não se presume)"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Palma Sola\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212007",
+   "municipio": "Palma Sola",
+   "uf": "SC",
+   "url": "https://www.gov.br/mme/pt-br/arquivos/do-26-05-2011-s1.pdf",
+   "regras_18": [],
+   "pista_id": "6a68df4dae",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "b4da7fcea2c0ee9c8bd13410d992ba7290dd2e0127643016d41a4142daf867e6"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Palma Sola\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4212007",
+   "municipio": "Palma Sola",
+   "uf": "SC",
+   "url": "https://acervo.arquivopublico.sc.gov.br/uploads/r/arquivo-publico-do-estado-de-santa-catarina-apesc/f/b/5/fb53972df0ebdd1c90467101f8f15546ec771fd646fff4cdd9d2c85270216048/7332d3b1-4b26-4328-84ce-2bbe9cddbf70-15264-DOE_18145_19_06_2007_64F.pdf",
+   "regras_18": [],
+   "pista_id": "d38c4f31dc",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "8c2cb5e1a4cfd2b0fcf5b97c32703301e2ba42f30b42d0478312e0d280648e86"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4207684",
+   "municipio": "Ipuaçu",
+   "uf": "SC",
+   "url": "https://ipuacu.sc.gov.br/uploads/sites/426/2025/12/1-Edital-Concurso-Publico-N%C2%B0-002_2025-Prefeitura-de-Ipuacu.pdf",
+   "regras_18": [],
+   "pista_id": "4dfefea765",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "fora_do_objeto",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38560 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "FEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA DE DENGUE, CHIKUNGUNYA E ZI",
+     "dados": {
+      "tipo": "plano publicado sem ato de aprovação localizado",
+      "numero": null,
+      "data": "2023",
+      "sem_ato_de_aprovacao": true,
+      "orgao": "ESTADO DE SANTA",
+      "titulo": "PLANO DE CONTINGÊNCIA",
+      "trecho": "FEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA DE DENGUE, CHIKUNGUNYA E ZI",
+      "prova_de_que_e_o_plano": "a URL é o documento publicado pelo ente"
+     }
+    },
+    "3_autoridade": {
+     "ok": true,
+     "trecho": "ESTADO DE SANTA CATARINA PREFEITURA MUNICIPAL DE DESCANSO SECRETARIA MUNICIPAL DE SAÚDE VIGILÂNCIA EM SAÚDE PLANO DE CONTINGÊNCIA PARA ENFRENTAMENTO DE EPIDEMIA"
+    },
+    "4_natureza": {
+     "ok": true,
+     "trecho": "o documento é plano pelo cabeçalho (J1)"
+    },
+    "5_familia_de_risco": {
+     "ok": false,
+     "familia": null,
+     "trecho": "possui convênio firmado com a Prefeitura Municipal. A vigilância e controle das arboviroses no município ocorre pelo setor de Vigilância Epidemiológica, estrutu"
+    }
+   },
+   "categoria": null,
+   "data": "2023",
+   "natureza": "EX_ANTE",
+   "ibge": "4204905",
+   "municipio": "Descanso",
+   "uf": "SC",
+   "url": "https://descanso.sc.gov.br/uploads/sites/330/2024/05/Plano-de-Contingencia-2023-Descanso.pdf",
+   "regras_18": [
+    "J1"
+   ],
+   "sem_ato_de_aprovacao": true,
+   "pista_id": "b6f0c31eb7",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "58f93cb38b8ecfa52edcfa5c4f9a479b181fe1d937e8131bd2e9da3289e27028"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Major Vieira\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4210308",
+   "municipio": "Major Vieira",
+   "uf": "SC",
+   "url": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251219/Jornal/22665-A.pdf",
+   "regras_18": [],
+   "pista_id": "9edce61403",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "38f806f7c64f61625d180723c73ebcd2940c9c4804088c96f2a1ba0799fd2efe"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "https://www.sinj.df.gov.br/sinj/Diario/97ab8d5b-d510-3cd2-a720-5f7939bcbe8f/DODF%20039%2023-02-2017%20INTEGRA.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "3e98a29444",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "8ade24cf6be78c312e9697d2701f0a06ccb24228a01f66e8c7e2fa4ad192ac67"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "157531 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o Permanente de Licitação i d e Licitaçao «IVHOEJRAWTEs PREFEITURA MUNICIPAL DE BANDEIRANTES ESTADO DO PARANÁ SECRETARIA DE ADMINISTRAÇÃO Departamento de Compra"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "decreto",
+      "numero": "4",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4102406",
+   "municipio": "Bandeirantes",
+   "uf": "PR",
+   "url": "https://www.bandeirantes.pr.gov.br/public/admin/globalarq/licitacao/arquivo/6b9923345ed82e76080a479347bfc111.pdf",
+   "regras_18": [],
+   "pista_id": "c107323ec9",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e09de05fe0cf86d92a430381cccddf7e7b57fcf1e4bf37d5a5ded7b659de7375",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "uf_do_dominio_diverge",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": null,
+   "municipio": "",
+   "uf": "",
+   "url": "http://sjc.fatec.sp.gov.br/downloads/arquivos/2020-2/e-book_reducao_risco_desastres.pdf",
+   "regras_18": [
+    "J3"
+   ],
+   "pista_id": "4d7ea9bd02",
+   "origem": "seguimento_busca_oficial",
+   "leu_documento": true,
+   "hash_evidencia": "e5123997d6eef2609540accaac61171b144a9a47ddc49929c47dc1563110b7f8"
   }
  ]
 }
