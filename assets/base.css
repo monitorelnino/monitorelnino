@@ -300,6 +300,21 @@ details.acc.r-fogo .acc-icone{color:var(--fogo);}
 .figura--grafico .figura-midia > canvas, .canvas-wrap > canvas{max-width:100% !important;}
 .figura--diagrama .figura-midia > svg{width:100%; height:auto; display:block;}
 .figura--tabela .figura-midia .tbl-wrap{max-height:var(--tabela-altura-max);}
+/* Quadro de mortalidade da Saúde (01/11/2026): uma linha por mês, quatro colunas; em 375 px cada mês vira um bloco com o rótulo acima do valor. */
+.mort-l{display:grid; grid-template-columns:80px repeat(4, minmax(0, 1fr)); gap:var(--sp-4); align-items:start; padding:var(--sp-4) 0; border-top:1px solid var(--line);}
+.mort-h{border-top:0; padding-top:0;}
+.mort-h > div{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:1px; color:var(--muted);}
+.mort-h b{display:block; font-family:var(--font-corpo); font-size:var(--fs-small); line-height:var(--lh-small); text-transform:none; letter-spacing:0; color:var(--ink); font-weight:600;}
+.mort-mes{font-weight:600;}
+.mort-v{font-size:var(--fs-h4); line-height:var(--lh-h4); font-weight:600; font-variant-numeric:tabular-nums;}
+.mort-s{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); font-variant-numeric:tabular-nums;}
+.mort-l > div[data-rot]::before{content:attr(data-rot); display:none; font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); text-transform:uppercase; letter-spacing:1px; color:var(--muted);}
+.mort .trilho{position:relative; height:var(--sp-4); background:var(--surface-2); margin:0 var(--sp-2) var(--sp-2);}
+.mort .faixa{position:absolute; top:var(--sp-1); height:var(--sp-2); background:var(--faixa-3);}
+.mort .pt{position:absolute; top:0; width:var(--sp-4); height:var(--sp-4); margin-left:calc(var(--sp-2) * -1); border-radius:50%; box-sizing:border-box; background:var(--link);}
+.mort .pt.parcial{background:var(--surface); border:2px solid var(--link);}
+.lacuna.lacuna--linha{min-height:0; height:auto; padding:var(--sp-2);}
+@media (max-width:1020px){.mort-h{display:none;} .mort-l{grid-template-columns:1fr; gap:var(--sp-2);} .mort-l > div[data-rot]::before{display:block;}}
 .figura--barras .figura-midia{min-height:var(--grafico-altura);}
 .diagrama-mps{width:100%; min-height:var(--diagrama-altura);}
 .figura--indicador .figura-midia{min-height:0;}

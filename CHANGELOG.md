@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · #1402 · Quadro de mortalidade na Saúde (+172/−9)
+
+Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.
+
 ## 2026-11-01 · Busca de planos: semeador das sondas volta à fila pela porta única (+103/−0)
 
 As sondas de busca por município acham endereços de documento e não os levavam ao juiz. O semeador lê só o que a sonda trouxe, resolve o município pelo IBGE e entrega o lote à porta de pistas, que recusa com motivo o que não é plano. Sem IBGE, o candidato não entra. Código novo: recurso, não correção.

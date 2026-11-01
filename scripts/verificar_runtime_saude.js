@@ -210,7 +210,7 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
   });
   consulta("Aracaju").then(cartao => {
     const t = cartao.textContent;
-    teste("consulta: seis cartões, no formato dos outros cartões municipais", cartao.querySelectorAll(".cartao").length === 6 && !cartao.querySelector("table"));
+    teste("consulta: sete cartões, no formato dos outros cartões municipais", cartao.querySelectorAll(".cartao").length === 7 && !cartao.querySelector("table"));
     teste("consulta: dengue com nível e semana em datas, fonte InfoDengue", /Nível 2 \(atenção\)/.test(t) && /Semana de \d+ a \d+ de \w+ de 2026 · InfoDengue \(Fiocruz e FGV\)/.test(t));
     teste("consulta: o estado é dito como do estado, sem acumulado do ano nem nota", /SRAG \(síndrome respiratória aguda grave\), casos hospitalizados notificados \(estado\)/.test(t)
       && /casos? hospitalizados? notificados? no estado na semana de/.test(t) && !/no estado em 2026/.test(t) && !/MARÉ Saúde \(estado\)[\s\S]*de 100/.test(t));
