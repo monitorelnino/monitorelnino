@@ -651,7 +651,13 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if not ok:
         v["motivo"] = motivo; return v
 
-    ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico)
+    # 01/11/2026 (PI, SESAPI): o documento que a pista apresenta como PLANO, publicado pelo órgão de saúde do
+    # estado, é o plano mesmo com a capa de equipe antes do título (o cabeçalho de 2.000 caracteres não o vê).
+    # Sem `url` e `como_plano`, a etapa 2 tomava a primeira lei da base legal por "o ato" (Lei 9.071 → sem
+    # data; Decreto 18.142/2019 → data de 2019) e recusava por `citacao_incompleta`. A régua é a do Legal.
+    como_plano = (juiz.e_plano_pelo_cabecalho(texto)
+                  or bool(re.search(r"\bplano\b", titulo_da_pista or "", re.I)))
+    ok, motivo, dados = juiz.etapa2_citacao(texto, plano_tecnico, url=url, como_plano=como_plano)
     # A5-37 (12/10/2026): `data_do_cabecalho` existia e só o autoteste a chamava — o juiz seguia
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
     # (Res. SESA 680/2008 do PR saía com 03/06/1987). Quando o cabeçalho do ato traz a data por
@@ -677,7 +683,12 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if municipal:
         v["motivo"] = "ente_nao_confirmado"; return v
 
-    natureza, motivo_nat, provas = juiz.etapa4_natureza(texto)
+    # 01/11/2026 (J1): o plano não institui o plano; o teste do objeto é para decreto e ato avulso. Sem isto, o
+    # PDF de 200 mil caracteres do PI (ações de resposta descritas no corpo) saía `resposta` depois da etapa 2.
+    if como_plano:
+        natureza, motivo_nat, provas = "EX_ANTE", "o documento é plano publicado pelo órgão de saúde (J1)", {}
+    else:
+        natureza, motivo_nat, provas = juiz.etapa4_natureza(texto)
     v["natureza"] = natureza
     v["criterios"]["4_natureza"] = {"ok": natureza == "EX_ANTE", "trecho": motivo_nat, **provas}
     if natureza == "RESPOSTA":
@@ -701,7 +712,9 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     if not ok:
         v["motivo"] = "risco_fora_do_ciclo"; return ou_estrutura(v, texto, uf)
 
-    categoria, motivo_cat = juiz.etapa6_categoria(texto, v["data"], True)
+    categoria, motivo_cat = juiz.etapa6_categoria(texto, v["data"], True,
+                                                  sem_ato_de_aprovacao=bool(dados.get("sem_ato_de_aprovacao")),
+                                                  como_plano=como_plano)
     v["criterios"]["6_categoria"] = {"ok": categoria is not None, "trecho": motivo_cat}
     if categoria is None:
         v["motivo"] = motivo_cat.split(":")[0]; return v
@@ -1317,6 +1330,19 @@ def autoteste() -> int:
     v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)
     v3 = julgar_pista({"url": "https://vivo.pa.gov.br/c.pdf", "uf": "PA"}, buscar_fn=nega)
     _HOSTS_SEM_RESPOSTA.clear()
+    _u = "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf"
+    _t = ("PLANO ESTADUAL DE PREPARACAO DO SETOR SAUDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NINO EQUIPE GESTORA "
+          + "Fulano de Tal Secretario de Estado da Saude Superintendencia de Gestao " * 30
+          + " Governo do Estado do Piauí, Secretaria de Estado da Saúde (SESAPI-PI). O plano de contingência para o El Niño "
+            "2026/2027 define acoes de preparacao. Conforme a Lei Estadual nº 9.071 o estado organiza a resposta.")
+    _t2 = _t + (" Ações de resposta: o hospital deve acionar o atendimento de emergência e ativar a sala de"
+                " situação. Arboviroses e dengue sob vigilância epidemiológica.")
+    casos["PI: plano publicado com ações de resposta no corpo não vira `resposta` na etapa 4 (J1)"] = (
+        lambda: julgar_camada_saude(_t2, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
+        .get("criterios", {}).get("4_natureza", {}).get("ok") is True)
+    casos["PI: plano com capa de equipe e lei na base legal passa a etapa 2 quando a pista é o plano"] = (
+        lambda: julgar_camada_saude(_t, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
+        .get("criterios", {}).get("2_citacao", {}).get("ok") is True)
     casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
         lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
     casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (
