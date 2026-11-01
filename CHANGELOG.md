@@ -9,6 +9,33 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
+
+Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
+## 2026-11-01 · Sonda diária de chaves no elo de sinais (+155/−0)
+
+`sondar_credenciais.py --noite` sonda Portal, OpenAQ e INMET uma vez por noite, grava `data/noite/<noite>/chaves.json` (Secret, fonte, HTTP, data, desde; nunca a chave) e abre ou fecha uma Issue por chave no robo-registro. Rota sem chave em `config/rotas_sem_chave.json`; a coleta segue. Autoteste com 403 simulado.
+
+## 2026-11-01 · painel do Cemaden com data de consulta e previsão por tercil como lacuna (+60/−2)
+`coletar_sinais_risco.py` passa a consultar todo dia o índice dos boletins do Painel El Niño e carimbar `consultado_em` (parado em 07/10); boletim novo é registrado no detalhe sem trocar o risco por UF. `cptec_prognostico`, antes leitura humana do nº 3, vira lacuna declarada com o boletim vigente. `verificar_sinais` aceita o status `lacuna`.
+
+## 2026-11-01 · #1402 · Quadro de mortalidade na Saúde (+172/−9)
+
+Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.
+
+## 2026-11-01 · Busca de planos: semeador das sondas volta à fila pela porta única (+103/−0)
+
+As sondas de busca por município acham endereços de documento e não os levavam ao juiz. O semeador lê só o que a sonda trouxe, resolve o município pelo IBGE e entrega o lote à porta de pistas, que recusa com motivo o que não é plano. Sem IBGE, o candidato não entra. Código novo: recurso, não correção.
+
+## 2026-10-31 · projeção CIL no elo dos desfechos (+215/−0)
+Novo `coletar_projecao_cil.py`, no elo `desfechos` antes de `gerar_mortalidade_comparada.py`: lê da página do Climate Impact Lab o link do CSV por ADM1 (nunca monta o nome), guarda cada edição datada, com hash, cabeçalho e linhas do Brasil como vieram, sem sobrescrever. Link ausente do HTML ou fonte fora do ar vira lacuna declarada. Escritor declarado, cadência em `CADENCIAS.md`. Saldo positivo: recurso novo.
+
+## 2026-11-01 · Frescor: fonte que recusa não trava o site (+54/−16)
+
+Arquivo de coletor vencido passa quando o painel de tentativas traz recusa ou falha com motivo dentro de 9 dias; a página segue com a data do dado. Vermelho só quando ninguém tentou. O fundo a fundo do TransfereGov passa a coletar antes do CSV e não depende dele.
+## 2026-11-01 · A reaplicação da noite não traz texto ausente (+9/−2)
+
+`reaplicar_noite.py` filtrava o índice de evidências só pelo binário; a reaplicação do `atualizar` de 01/11 trouxe 12 `texto_arquivo` sem o `.txt` e a `main` ficou vermelha em `verificar_evidencias`. Agora a entrada antiga que ganha arquivo ausente volta ao que era e a nova sem arquivo fica fora. Índice de evidências restabelecido.
 ## 2026-11-01 · Alagoas: endereço do decreto do Comitê El Niño · +0/−0
 
 O Decreto nº 110.661 (DOE-AL de 25/08/2026), lido pelo runner, vira o endereço da estrutura de coordenação de Alagoas em `proveniencia_estadual.json`; sai de `defeitos_de_prova`. O plano de ação do comitê segue em lacuna. Sem mudança de nota. Sergipe segue sem leitura do texto.

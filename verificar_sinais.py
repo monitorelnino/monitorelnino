@@ -44,7 +44,7 @@ TIPOS = {"estiagem", "chuvas", "incendios", "misto", "sem_sinal"}
 # 24/09/2026: `aguardando_credencial` é estado próprio, e não um tipo de falha de rede. A fonte
 # não está fora do ar nem recusou: ela exige credencial que a editoria ainda não forneceu, e a
 # página tem de dizer isso em vez de sugerir indisponibilidade.
-STATUS = {"coletado", "aguardando_primeira_coleta", "falha_de_rede", "aguardando_credencial"}
+STATUS = {"coletado", "aguardando_primeira_coleta", "falha_de_rede", "aguardando_credencial", "lacuna"}
 
 # Frases que fariam o Monitor falar como previsor. A página reproduz fonte; não prevê.
 PROIBIDAS = [

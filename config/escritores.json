@@ -224,6 +224,10 @@
   "data/saude_desfechos/obitos_calor.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Óbitos do SIM por causa (E2, `coletar_sim.py`): escrito pela função comum `desfechos_sus.gravar_desfecho`; enquanto o elo não o chama, só a válvula `coleta-dia/*` o grava, por PR de dado."
+  },
+  "data/saude_desfechos/projecao_cil.json": {
+   "escritor": "noturno_desfechos.yml",
+   "por_que": "Projeção de mortalidade por calor do Climate Impact Lab (A1, `coletar_projecao_cil.py`): uma edição por mês, acrescentada sem sobrescrever; lida por `gerar_mortalidade_comparada.py`, que roda logo depois no elo."
   }
  },
  "_regra_do_portao": "Arquivo declarado com `escritor` igual a um workflow só pode aparecer no `git add` DAQUELE workflow. Arquivo com `escritor: ninguem` não aparece em nenhum. Arquivo com `escritor: qualquer_elo` exige que o resolvedor saiba resolvê-lo ou o recuse por escrito — e o portão confere que ele está numa das classes de `scripts/unir_conflito_de_rodada.py`, ou que o `pendente` explica por quê não."

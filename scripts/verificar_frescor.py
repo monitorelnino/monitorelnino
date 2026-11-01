@@ -18,6 +18,10 @@ AS REGRAS (editoria, 02/10/2026; saúde 10/10/2026)
 - **Saúde:** toda fonte de `saude_sinais.json` está `coletado`, `reuso` ou `lacuna` (com `motivo`);
   "a verificar" não é estado de fonte exibida. A idade que importa é a do DADO (`ultima_coleta_ok`), não
   a da tentativa: o coletor carimba `consultado_em` mesmo quando a fonte falha.
+- **Fonte que recusa** (01/11/2026): arquivo de coletor ou série vencido passa quando o painel de
+  tentativas (`registrar_tentativa_coletor`) traz, para ELE, uma tentativa recusada ou falhada, com
+  motivo, dentro do limite. A idade continua sendo a do dado e a página mostra a data dele; fica
+  vermelho só quando ninguém tentou. Vale para as três famílias.
 
 Uso:
     python3 scripts/verificar_frescor.py              # o autoteste roda antes da conferência
@@ -36,6 +40,7 @@ LIMITE_HORAS_ALERTA = 26    # cadência diária (24 h) + 2 h de folga, como os 9
 CAMPOS_DE_DATA = ("gerado_em", "atualizado_em", "coletado_em", "corte", "revisado_em")
 ESTADOS_OK = ("coletado", "reuso", "lacuna")
 SINAIS = "saude_sinais.json"
+RESULTADOS_DE_RECUSA = ("recusada", "falhou", "lacuna")
 
 # {nome do arquivo em data/: regime}. Regimes: coletor (dias) · curadoria (declaração) · agora (horas)
 # · sinais (estado por fonte) · serie (gerado_em em dias). Arquivo mensal entra na semana em que o mês
@@ -120,10 +125,23 @@ def dispensados(excecoes: dict, agora: str) -> set:
             and agora[:10] <= e["validade"]}
 
 
+def recusadas(painel: dict, agora: str, limite: int = LIMITE_DIAS) -> frozenset:
+    """Nomes de arquivo com tentativa recusada ou falhada, com motivo, dentro do limite. Função pura."""
+    nomes = set()
+    for t in (painel or {}).get("tentativas") or []:
+        d = _data(t.get("em"))
+        if (d and dias_desde(d, agora) <= limite and t.get("resultado") in RESULTADOS_DE_RECUSA
+                and str(t.get("motivo") or "").strip()):
+            nomes |= set(t.get("arquivos") or [])
+    return frozenset(nomes)
+
+
 def problemas(arquivos: dict, agora: str, limite: int = LIMITE_DIAS,
-              limite_horas: int = LIMITE_HORAS_ALERTA, dispensa: frozenset = frozenset()) -> list:
+              limite_horas: int = LIMITE_HORAS_ALERTA, dispensa: frozenset = frozenset(),
+              recusa: frozenset = frozenset()) -> list:
     """As falhas de frescor. Função pura: `arquivos` é {nome: (conteúdo ou None, regime)};
-    `agora` é "AAAA-MM-DD" ou "AAAA-MM-DD HH:MM"; `dispensa` são os nomes com exceção vigente."""
+    `agora` é "AAAA-MM-DD" ou "AAAA-MM-DD HH:MM"; `dispensa` são os nomes com exceção vigente;
+    `recusa` são os que a fonte recusou há pouco (a idade deles não reprova)."""
     ruins = []
     for nome, (c, regime) in sorted(arquivos.items()):
         if nome in dispensa:
@@ -170,7 +188,7 @@ def problemas(arquivos: dict, agora: str, limite: int = LIMITE_DIAS,
                              + f" (limite {limite_horas} h — é informação de agora)")
             continue
         d = dias_desde(dt.date.fromisoformat(marca[0]), agora)
-        if d > limite:
+        if d > limite and nome not in recusa:
             ruins.append(f"{nome}: {d} dias desde {marca[0]} (limite {limite})")
     return ruins
 
@@ -251,6 +269,16 @@ def _autoteste() -> int:
        len(problemas(velho, "2026-10-11", dispensa=frozenset(dispensados(exc, "2026-10-11")))) == 1)
     ok("exceção sem validade não vale", dispensados({"excecoes": [{**exc["excecoes"][0], "validade": ""}]}, hoje) == set())
     ok("exceção sem quem decidiu não vale", dispensados({"excecoes": [{**exc["excecoes"][0], "decidido_por": ""}]}, hoje) == set())
+    painel = {"tentativas": [{"coletor": "c", "em": "2026-10-01", "resultado": "recusada",
+                              "motivo": "HTTP 403", "arquivos": ["a.json"]}]}
+    velho2 = {"a.json": ({"gerado_em": "01/09/2026"}, "coletor"), "b.json": ({"gerado_em": "01/09/2026"}, "coletor")}
+    rec = recusadas(painel, hoje)
+    ok("arquivo velho com tentativa recusada recente passa; o sem tentativa reprova",
+       problemas(velho2, hoje, recusa=rec) == problemas({"b.json": velho2["b.json"]}, hoje) and len(problemas(velho2, hoje, recusa=rec)) == 1)
+    ok("tentativa recusada além do limite não vale", recusadas(painel, "2026-10-11") == frozenset())
+    ok("tentativa sem motivo ou com resultado ok não vale", recusadas({"tentativas": [
+        {"em": hoje, "resultado": "recusada", "arquivos": ["a.json"]},
+        {"em": hoje, "resultado": "coletado", "motivo": "m", "arquivos": ["a.json"]}]}, hoje) == frozenset())
     ok("cada arquivo tem um regime só", all(len(f) == len(set(f)) for f in FAMILIAS.values()))
     import dis
     nomes = set()
@@ -277,12 +305,13 @@ def main() -> int:
             return None
 
     sys.path.insert(0, str(RAIZ))
-    from coletores_base import FUSO_EDITORIAL
+    from coletores_base import FUSO_EDITORIAL, PAINEL_COLETORES
     agora = dt.datetime.now(FUSO_EDITORIAL).strftime("%Y-%m-%d %H:%M")
     total = 0
+    recusa = recusadas(ler(PAINEL_COLETORES), agora)
     dispensa = frozenset(dispensados(json.loads((RAIZ / "layout" / "excecoes.json").read_text(encoding="utf-8")), agora))
     for familia, arquivos in FAMILIAS.items():
-        ruins = problemas({n: (ler(n), r) for n, r in arquivos.items()}, agora, dispensa=dispensa)
+        ruins = problemas({n: (ler(n), r) for n, r in arquivos.items()}, agora, dispensa=dispensa, recusa=recusa)
         total += len(ruins)
         if ruins:
             print(f"✗ FRESCOR — {familia}: {len(ruins)} problema(s):")
