@@ -2969,14 +2969,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 6121,
+   "total_acessos": 6122,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.667-de-19-de-agosto-de-2026-726690835",
-     "quando": "2026-10-31T04:01:30Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.645-de-19-de-agosto-de-2026-726687651",
      "quando": "2026-10-31T04:01:34Z",
@@ -4169,6 +4163,12 @@
      "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22onda%20de%20calor%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=01-06-2026&publishTo=31-10-2026&delta=50",
      "quando": "2026-11-01T01:21:43Z",
      "origem": "buscar_protocolo_calor",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-mma-n-1.717-de-19-de-junho-de-2026-714110982",
+     "quando": "2026-11-01T01:14:05Z",
+     "origem": "coletar_prioritarios_mma",
      "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],

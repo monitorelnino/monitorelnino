@@ -16965,7 +16965,88 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_cadastro_prioritarios.py",
+   "inicio": "2026-11-01T01:13:28",
+   "duracao_s": 34.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_prioritarios_mma.py",
+   "inicio": "2026-11-01T01:14:02",
+   "duracao_s": 3.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_normais_inmet.py",
+   "inicio": "2026-11-01T01:14:05",
+   "duracao_s": 3.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_semiarido_sudene.py",
+   "inicio": "2026-11-01T01:14:08",
+   "duracao_s": 2.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "scripts/sondar_boletim_infogripe.py",
+   "inicio": "2026-11-01T01:14:10",
+   "duracao_s": 89.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_srag_gripe.py",
+   "inicio": "2026-11-01T01:15:39",
+   "duracao_s": 282.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "classificar_planos_municipais.py",
+   "inicio": "2026-11-01T01:20:21",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-01",
+   "script": "coletar_cobertura_qd.py",
+   "inicio": "2026-11-01T01:20:21",
+   "duracao_s": 7495.2,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-11-01",
+   "script": "descobrir_dominios.py",
+   "inicio": "2026-11-01T03:25:16",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-11-01T01:46:03"
+ "atualizado_em": "2026-11-01T03:25:16"
 }
