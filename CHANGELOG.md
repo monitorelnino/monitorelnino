@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · Busca de planos: semeador das sondas volta à fila pela porta única (+103/−0)
+
+As sondas de busca por município acham endereços de documento e não os levavam ao juiz. O semeador lê só o que a sonda trouxe, resolve o município pelo IBGE e entrega o lote à porta de pistas, que recusa com motivo o que não é plano. Sem IBGE, o candidato não entra. Código novo: recurso, não correção.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
