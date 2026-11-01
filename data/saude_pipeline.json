@@ -16848,7 +16848,115 @@
    "itens": 2,
    "status": "erro",
    "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_saude.py",
+   "inicio": "2026-11-01T01:13:09",
+   "duracao_s": 98.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-11-01T01:14:47",
+   "duracao_s": 474.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-11-01T01:22:41",
+   "duracao_s": 471.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_dda.py",
+   "inicio": "2026-11-01T01:30:32",
+   "duracao_s": 56.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_boletim_ms_dengue.py",
+   "inicio": "2026-11-01T01:31:28",
+   "duracao_s": 21.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_boletim_df_arboviroses.py",
+   "inicio": "2026-11-01T01:31:49",
+   "duracao_s": 385.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_boletim_pe_arboviroses.py",
+   "inicio": "2026-11-01T01:38:14",
+   "duracao_s": 7.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_boletim_pb_arboviroses.py",
+   "inicio": "2026-11-01T01:38:21",
+   "duracao_s": 197.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_arboviroses_sinan.py",
+   "inicio": "2026-11-01T01:41:38",
+   "duracao_s": 61.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "coletar_obitos_registro_civil.py",
+   "inicio": "2026-11-01T01:42:39",
+   "duracao_s": 28.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "classificar_saude_no_plano.py",
+   "inicio": "2026-11-01T01:43:07",
+   "duracao_s": 2.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "gerar_saude_municipio.py",
+   "inicio": "2026-11-01T01:43:09",
+   "duracao_s": 1.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-11-01T01:34:52"
+ "atualizado_em": "2026-11-01T01:43:09"
 }
