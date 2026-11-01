@@ -61,6 +61,7 @@ O formato de cada linha é fixo e lido por máquina:
 | `coletar_boletim_pb_arboviroses.py` | diaria | encadeado | noturno_saude | boletim de arboviroses da PB |
 | `coletar_arboviroses_sinan.py` | diaria | encadeado | noturno_saude | dengue e chikungunya pelo SINAN; desde 11/10/2026 (F38) |
 | `coletar_obitos_registro_civil.py` | diaria | encadeado | noturno_saude | óbitos em cartório por UF e mês; desde 11/10/2026 (F38) |
+| `coletar_projecao_cil.py` | diaria | encadeado | noturno_desfechos | projeção CIL de mortalidade por calor por ADM1; a edição é mensal e só regrava se o hash mudar |
 | `classificar_saude_no_plano.py` | diaria | encadeado | noturno_saude | saúde nos planos municipais lidos |
 | `scripts/triar_fila.py` | diaria | encadeado (abertura); 08:30 UTC de rede | noturno_triagem | triagem da fila de pistas na abertura da noite |
 | `scripts/verificar_esquema_de_pista.py` | diaria | encadeado | noturno_triagem | quarentena de pista fora do esquema |
