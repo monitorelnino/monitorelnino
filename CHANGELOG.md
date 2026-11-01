@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · #1424 · Juiz de saúde: plano publicado pelo órgão estadual passa a etapa 2 como no Legal · +14/−1
+
+Causa raiz do `citacao_incompleta` do PI (SESAPI): `julgar_camada_saude` chamava a etapa 2 sem `url` nem `como_plano`, e a primeira lei da base legal (Lei 9.071; Decreto 18.142/2019) virava "o ato". Agora a etapa 2 recebe a URL e `como_plano` (cabeçalho de plano ou título da pista com "plano"), como no juiz do Legal. Caso de teste F-PI falha sem a correção.
+
 ## 2026-11-01 · Diários oficiais: data gravada como `vazio` volta à fila de leitura · +4/−1
 
 Causa raiz: `coletar_edicoes_doe.py` tratava a data com conexão recusada ou timeout (`vazio`) como já tentada e nunca a relia (RS 86 datas, PB 55). `a_reler` passa a incluí-la; "sem edição na data" segue decisão final. Autoteste cobre o caso.
