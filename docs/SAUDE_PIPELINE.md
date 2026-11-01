@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-25 a 2026-11-01 (1127 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-25 a 2026-11-01 (1144 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,7 +27,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-10-31 01:57 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-10-30 01:28 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-31 01:43 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-01 04:48 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-01 05:35 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 04:00 | 2 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -70,36 +70,36 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `coletar_transferencias_municipais.py` | coletor | 2026-10-31 01:14 | 36 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-10-31 01:17 | 299 s | — | **erro** | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-01 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `descobrir_planos.py` | coletor | 2026-11-01 04:27 | 504 s | — | ok | — |
+| `descobrir_planos.py` | coletor | 2026-11-01 05:15 | 488 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-10-30 01:17 | 1 s | — | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-11-01 04:27 | 2 s | 0 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-11-01 05:15 | 32 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-31 01:44 | 650 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-11-01 03:42 | 1117 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-27 01:13 | 4321 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-10-30 01:51 | 4 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-11-01 04:16 | 695 s | 17549 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-11-01 04:36 | 259 s | — | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-11-01 04:05 | 518 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-11-01 04:14 | 106 s | 27 | ok | — |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-11-01 04:27 | 4 s | 17549 | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-11-01 05:05 | 546 s | 17549 | ok | — |
+| `monitorar_busca_web.py` | coletor | 2026-11-01 05:23 | 256 s | — | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-11-01 04:59 | 249 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-11-01 05:04 | 103 s | 27 | ok | — |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-11-01 05:14 | 3 s | 17549 | ok | — |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-26 07:34 | 1012 s | — | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-11-01 04:27 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-10-31 02:10 | 1 s | — | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-11-01 05:14 | 4 s | 10 | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-11-01 04:50 | 50 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-31 01:14 | 2 s | — | ok | — |
 | `python3` | coletor | 2026-10-31 21:20 | 4049 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-10-31 06:23 | 392 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-31 07:59 | 1 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-31 06:22 | 78 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-27 02:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-10-31 02:10 | 3 s | — | ok | — |
-| `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-10-31 01:21 | 686 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-01 04:51 | 2 s | — | ok | — |
+| `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-01 05:14 | 721 s | — | ok | — |
 | `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-30 06:06 | 3455 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-31 01:14 | 90 s | — | ok | — |
 | `scripts/sondar_rotas_doe.py` | coletor | 2026-10-28 21:49 | 92 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-11-01 03:42 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-01 04:00 | 2 s | — | ok | — |
 | `scripts/verificar_funil.py` | coletor | 2026-10-31 01:20 | 1 s | — | **erro** | ✗ FUNIL: a contagem da rodada se contradiz ou a etapa não funcionou: |
-| `seguir_pistas.py` | coletor | 2026-11-01 04:40 | 122 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-11-01 04:42 | 4 s | — | ok | — |
+| `seguir_pistas.py` | coletor | 2026-11-01 05:27 | 108 s | — | ok | — |
+| `triar_confianca_pistas.py` | coletor | 2026-11-01 05:29 | 4 s | — | ok | — |
 | `verificar_links.py` | coletor | 2026-10-31 01:33 | 194 s | — | **erro** (2 seguidas) | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
-| `verificar_pista_imprensa.py` | coletor | 2026-11-01 04:42 | 30 s | — | ok | — |
+| `verificar_pista_imprensa.py` | coletor | 2026-11-01 05:29 | 27 s | — | ok | — |
