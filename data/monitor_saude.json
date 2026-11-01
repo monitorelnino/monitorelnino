@@ -2,7 +2,7 @@
  "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). A nota de cada UF é o instrumento estadual; nenhum componente depende de data (o tempo é publicado à parte, de peso zero) e a coordenação na saúde entra na nota, metade com o instrumento, quando as 27 UFs a tiverem verificada. Índice nacional = Σ(nota × população × c_uf) ÷ Σ população, com as 27 UFs no denominador; c_uf é a cobertura do dever de plano (1 nas 27) e pesa o nacional, não a nota. A UF sem documento lido entra com nota 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado. UF não verificada não recebe número próprio. Metodologia §31, §115 e §123.",
  "versao": "0.7",
  "gerado_em": "01/11/2026",
- "corte": "02/10/2026",
+ "corte": "01/11/2026",
  "metodo": {
   "pesos": {
    "instrumento": 1.0
@@ -1274,11 +1274,11 @@
     "verificada": false,
     "pontos": null,
     "f1": {
-     "status": "NAO_VERIFICADO",
+     "status": "REATIVADO_CICLO",
      "pontos": null,
-     "doc": null,
-     "data": null,
-     "url": null,
+     "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
+     "data": "28/02/2019",
+     "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
      "citado": null
     },
     "f2": {
