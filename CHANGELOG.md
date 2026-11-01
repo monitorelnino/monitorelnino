@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-10-31 · projeção CIL no elo dos desfechos (+215/−0)
+Novo `coletar_projecao_cil.py`, no elo `desfechos` antes de `gerar_mortalidade_comparada.py`: lê da página do Climate Impact Lab o link do CSV por ADM1 (nunca monta o nome), guarda cada edição datada, com hash, cabeçalho e linhas do Brasil como vieram, sem sobrescrever. Link ausente do HTML ou fonte fora do ar vira lacuna declarada. Escritor declarado, cadência em `CADENCIAS.md`. Saldo positivo: recurso novo.
+
 ## 2026-11-01 · Frescor: fonte que recusa não trava o site (+54/−16)
 
 Arquivo de coletor vencido passa quando o painel de tentativas traz recusa ou falha com motivo dentro de 9 dias; a página segue com a data do dado. Vermelho só quando ninguém tentou. O fundo a fundo do TransfereGov passa a coletar antes do CSV e não depende dele.
