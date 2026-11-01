@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-01 · Frescor: fonte que recusa não trava o site (+54/−16)
 
 Arquivo de coletor vencido passa quando o painel de tentativas traz recusa ou falha com motivo dentro de 9 dias; a página segue com a data do dado. Vermelho só quando ninguém tentou. O fundo a fundo do TransfereGov passa a coletar antes do CSV e não depende dele.
+## 2026-11-01 · A reaplicação da noite não traz texto ausente (+9/−2)
+
+`reaplicar_noite.py` filtrava o índice de evidências só pelo binário; a reaplicação do `atualizar` de 01/11 trouxe 12 `texto_arquivo` sem o `.txt` e a `main` ficou vermelha em `verificar_evidencias`. Agora a entrada antiga que ganha arquivo ausente volta ao que era e a nova sem arquivo fica fora. Índice de evidências restabelecido.
 
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
