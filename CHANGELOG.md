@@ -12,6 +12,10 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
 
 Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
+## 2026-11-01 · Sonda diária de chaves no elo de sinais (+155/−0)
+
+`sondar_credenciais.py --noite` sonda Portal, OpenAQ e INMET uma vez por noite, grava `data/noite/<noite>/chaves.json` (Secret, fonte, HTTP, data, desde; nunca a chave) e abre ou fecha uma Issue por chave no robo-registro. Rota sem chave em `config/rotas_sem_chave.json`; a coleta segue. Autoteste com 403 simulado.
+
 ## 2026-11-01 · painel do Cemaden com data de consulta e previsão por tercil como lacuna (+60/−2)
 `coletar_sinais_risco.py` passa a consultar todo dia o índice dos boletins do Painel El Niño e carimbar `consultado_em` (parado em 07/10); boletim novo é registrado no detalhe sem trocar o risco por UF. `cptec_prognostico`, antes leitura humana do nº 3, vira lacuna declarada com o boletim vigente. `verificar_sinais` aceita o status `lacuna`.
 
