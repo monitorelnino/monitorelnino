@@ -1,0 +1,12 @@
+{
+  "_governanca": "Rota sem chave por credencial: o que a coleta faz quando a fonte recusa a chave (editoria, 01/11/2026). Lido por scripts/sondar_credenciais.py; único lugar do mapa. Nunca o valor de uma chave.",
+  "sondadas": {
+    "PORTAL_TRANSPARENCIA_API_KEY": "download mensal de arquivos do Portal (coletar_transferencias_municipais.py, execução por arquivo); consultas da API ficam com o dado anterior e a data, e a recusa registrada como lacuna",
+    "OPENAQ_API_KEY": "nenhuma rota pública; a camada de ar medido fica com o dado anterior e a data, e a recusa registrada",
+    "INMET_API_TOKEN": "rota pública apitempo.inmet.gov.br (estações e condição das capitais), que o coletor já usa sem token"
+  },
+  "nao_sondadas": {
+    "NETLIFY_AUTH_TOKEN": "sem requisição mínima neste elo; a falha aparece no publicador",
+    "ROBO_DEPLOY_KEY": "chave SSH de escrita no repositório privado; a falha aparece no push do elo"
+  }
+}

@@ -304,6 +304,7 @@ jobs:
           INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
           INTENSIVO_DE: ${{ vars.INTENSIVO_DE }}
           INTENSIVO_ATE: ${{ vars.INTENSIVO_ATE }}
           LOTE_DIARIOS: ${{ vars.LOTE_DIARIOS }}
