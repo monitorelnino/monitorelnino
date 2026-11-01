@@ -9,8 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-01 · #PR · Juiz de saúde: o plano promovido chega ao registro exibido (+37/−4)
-O instrumento promovido saía com tipo fora de `ORDEM_TIPO` e perdia para a imprensa; o decreto citado na capa sobrescrevia data e número do plano (PI: 28/02/2019). Agora tipo válido, data da capa ou mês do portal, e reler o mesmo documento o substitui.
+## 2026-11-01 · #PR · Juiz de saúde: o plano promovido chega ao registro exibido (+48/−4)
+O instrumento promovido saía com tipo fora de `ORDEM_TIPO` e perdia para o anúncio de imprensa, que agora sai; o decreto citado na capa sobrescrevia data e número do plano (PI: 28/02/2019). Agora tipo válido, data da capa ou mês do portal, e reler o mesmo documento o substitui.
 
 ## 2026-11-01 · #1426 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2
 

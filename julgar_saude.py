@@ -53,7 +53,7 @@ import juiz
 # de fonte oficial?" tem de ter UMA resposta nos dois lados. Duas cópias divergem na primeira
 # exceção de domínio que alguém acrescentar a um dos arquivos.
 from coletar_saude_estadual import UFS, oficial
-from migrar_saude_instrumentos import ORDEM_TIPO
+from migrar_saude_instrumentos import ORDEM_TIPO, melhor_instrumento
 from coletores_base import buscar, gravar, hoje_editorial, ler, preservar_evidencia, rodar_autoteste
 from julgar_filas import julgar_lista
 
@@ -814,11 +814,17 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
                                           f"{v.get('codebook')}: documento primário baixado e lido, "
                                           f"sete etapas aprovadas")}
         lista = u.setdefault("instrumentos", [])
+        if item["status"] != "ELAB":   # o documento lido supera o anúncio dele (imprensa não é fonte): o plano em elaboração sai
+            lista[:] = [x for x in lista if not (x.get("tipo") == "especifico_ciclo" and x.get("status") in ("ELAB", "LAC", "NAO_VERIFICADO"))]
         antigo = next((i for i, x in enumerate(lista) if x.get("url") == url), None)   # reler o mesmo documento o substitui
         if antigo is None:
             lista.append(item)
         else:
             lista[antigo] = item
+        topo = melhor_instrumento(lista)   # o campo de topo espelha o melhor item (não fica o registro antigo por baixo)
+        u.update({c: topo.get(c) for c in ("status", "orgao", "doc", "numero", "data", "url", "hash_evidencia", "natureza_doc", "justificativa_ex_ante")})
+        for c in ("hash_pagina_citada", "evidencia_e", "procedencia_da_pagina", "nota_interna", "preservado_em"):
+            u.pop(c, None)
         u["data_verificacao"] = hoje
         u["log_ref"] = f"julgar_saude_{hoje.replace('/', '-')}"
         mudou.append(f"instrumento {v['status_instrumento']}")
@@ -1365,13 +1371,15 @@ def autoteste() -> int:
     casos["PI: decreto citado na capa do plano não vira a data nem o número do plano; vale o mês do portal"] = (
         lambda: (lambda v: v["data"] == "09/2026" and v["numero"] is None)(
             julgar_camada_saude(_t3, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")))
-    _su = {"uf": {"PI": {"instrumentos": [{"url": _u, "status": "NOVO", "tipo": "saude_do_ciclo", "data": "28/02/2019"}],
+    _su = {"uf": {"PI": {"instrumentos": [{"url": "https://piauihoje.com/x", "status": "ELAB", "tipo": "especifico_ciclo"},
+                                          {"url": _u, "status": "NOVO", "tipo": "saude_do_ciclo", "data": "28/02/2019"}],
                          "coordenacao": {"status": "REATIVADO_CICLO", "url": _u, "data": "28/02/2019"}}}}
     _vv = {"uf": "PI", "status_instrumento": "NOVO", "data": "09/2026", "numero": None, "natureza": "EX_ANTE",
            "coordenacao": {"degrau": "REATIVADO_CICLO", "motivo": "m"}}
     aplicar(_su, _vv, "Plano", _u)
-    casos["aplicar: reler o mesmo documento substitui instrumento (tipo do ranking) e coordenação, não duplica"] = (
+    casos["aplicar: reler o mesmo documento substitui o instrumento (tipo do ranking), tira o anúncio de imprensa e espelha no topo"] = (
         lambda: len(_su["uf"]["PI"]["instrumentos"]) == 1 and _su["uf"]["PI"]["instrumentos"][0]["tipo"] in ORDEM_TIPO
+        and _su["uf"]["PI"]["url"] == _u and _su["uf"]["PI"]["status"] == "NOVO"
         and _su["uf"]["PI"]["coordenacao"]["data"] == "09/2026" and _su["uf"]["PI"]["coordenacao"]["f1"]["data"] == "09/2026")
     casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
         lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
