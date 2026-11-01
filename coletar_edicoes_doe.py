@@ -392,7 +392,8 @@ def a_reler(item) -> bool:
     """Edição lida antes dos termos de declaração tem de ser relida, e a `sem_texto_extraivel` também,
     uma vez por versão do leitor: "não pude ler" não é decisão final, e o leitor muda (as 89 edições do
     RJ ficaram assim por defeito de leitura, corrigido no #894, e nada as relia). Função pura."""
-    return isinstance(item, dict) and (item.get("decisao") == "sem_texto_extraivel" and item.get("leitor") != VERSAO_DO_LEITOR or
+    return isinstance(item, dict) and (item.get("decisao") == "vazio" or  # conexão recusada/timeout: nunca foi leitura
+                                       item.get("decisao") == "sem_texto_extraivel" and item.get("leitor") != VERSAO_DO_LEITOR or
                                        item.get("decisao") == "lida" and (item.get("termos_versao") != VERSAO_DOS_TERMOS
                                                                          or item.get("legal_versao") != VERSAO_LEGAL))
 
@@ -1027,6 +1028,8 @@ def _autoteste() -> int:
     sem = {"decisao": "sem_texto_extraivel", "termos_versao": VERSAO_DOS_TERMOS}
     ok("sem texto extraível é relida uma vez por versão do leitor",
        a_reler(sem) and not a_reler(dict(sem, leitor=VERSAO_DO_LEITOR)))
+    ok("data gravada como vazio (conexão recusada, timeout) é relida; sem edição na data não",
+       a_reler({"decisao": "vazio", "motivo": "URLError: Connection refused"}) and not a_reler({"decisao": "sem_edicao_na_data"}))
     nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)
     ciclo = {d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-10-01")}
     ok("metade estadual só conta com o ciclo inteiro coberto e relido",
