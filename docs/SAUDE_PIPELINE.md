@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-25 a 2026-11-01 (1144 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-25 a 2026-11-01 (1155 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,8 +27,8 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-10-31 01:57 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-10-30 01:28 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-31 01:43 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-01 05:35 | 4 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 04:00 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-01 07:30 | 4 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 07:13 | 1 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
 | `buscar_planos_fontes_abertas.py` | coletor | 2026-10-28 23:21 | 718 s | — | ok | — |
@@ -73,8 +73,8 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `descobrir_planos.py` | coletor | 2026-11-01 05:15 | 488 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-10-30 01:17 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-01 05:15 | 32 s | — | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-10-31 01:44 | 650 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-11-01 03:42 | 1117 s | — | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-01 06:59 | 861 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-11-01 05:44 | 4503 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-10-27 01:13 | 4321 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-10-30 01:51 | 4 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-01 05:05 | 546 s | 17549 | ok | — |
@@ -84,14 +84,14 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-11-01 05:14 | 3 s | 17549 | ok | — |
 | `monitorar_redes_oficiais.py` | coletor | 2026-10-26 07:34 | 1012 s | — | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-11-01 05:14 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-11-01 04:50 | 50 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-11-01 07:21 | 1 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-31 01:14 | 2 s | — | ok | — |
 | `python3` | coletor | 2026-10-31 21:20 | 4049 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-10-31 06:23 | 392 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-10-31 07:59 | 1 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-10-31 06:22 | 78 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-11-01 05:38 | 367 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-01 07:13 | 1 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-01 05:37 | 57 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-10-27 02:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-01 04:51 | 2 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-01 07:21 | 2 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-01 05:14 | 721 s | — | ok | — |
 | `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-30 06:06 | 3455 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-31 01:14 | 90 s | — | ok | — |
