@@ -48,8 +48,8 @@
    "orgao": "DOU / diários municipais",
    "papel": "RESPOSTA, peso zero",
    "status": "coletado",
-   "consultado_em": "27/10/2026",
-   "documento": "DOU seção 1, 2026-06-29 a 2026-10-27"
+   "consultado_em": "31/10/2026",
+   "documento": "DOU seção 1, 2026-06-29 a 2026-10-31"
   },
   "painel_calor_ms": {
    "nome": "Painel Nacional de Excesso de Calor",
@@ -416,7 +416,7 @@
    "hash_evidencia": "43518f90739cdc57538aa2c3a0c292c4971a8cc3c109a0f2156ac985205c8c84"
   }
  },
- "gerado_em": "30/10/2026",
+ "gerado_em": "31/10/2026",
  "serie_capitais": {
   "medida": "casos estimados de dengue por semana epidemiológica, soma das 27 capitais (InfoDengue) — não é o total nacional",
   "capitais": 27,
@@ -582,14 +582,14 @@
   "orgao": "Ministério da Saúde (DOU, seção 1)",
   "janela": {
    "de": "2026-06-29",
-   "ate": "2026-10-27"
+   "ate": "2026-10-31"
   },
   "strings_buscadas": [
    "\"Emergência em Saúde Pública de Importância Nacional\"",
    "\"emergência em saúde pública\""
   ],
-  "consultado_em": "27/10/2026",
-  "resultados_lidos": 34,
+  "consultado_em": "31/10/2026",
+  "resultados_lidos": 38,
   "declaracoes": [],
   "pendente_leitura_automatica": [],
   "nao_lidos": [],
@@ -67919,10 +67919,10 @@
  "emergencias": [],
  "emergencias_busca": {
   "federal": {
-   "consultado_em": "27/10/2026",
+   "consultado_em": "31/10/2026",
    "janela": {
     "de": "2026-06-29",
-    "ate": "2026-10-27"
+    "ate": "2026-10-31"
    }
   },
   "estadual": {
@@ -67931,14 +67931,10 @@
     "via": "busca do diário (adaptador busca_ac)"
    },
    "AL": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 128,
-    "ate": "2026-10-18"
+    "lacuna": "127 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
    },
    "AM": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 76,
-    "ate": "2026-10-18"
+    "lacuna": "81 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
    },
    "AP": {
     "consultado_em": "19/10/2026",
@@ -67948,17 +67944,17 @@
     "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML"
    },
    "CE": {
-    "lacuna": "14 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-08#2)"
+    "lacuna": "15 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-08#2)"
    },
    "DF": {
-    "lacuna": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)"
+    "lacuna": "8 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)"
    },
    "ES": {
     "consultado_em": "19/10/2026",
     "via": "busca do diário (adaptador apifront)"
    },
    "GO": {
-    "consultado_em": "19/10/2026",
+    "consultado_em": "30/10/2026",
     "via": "busca do diário (adaptador apifront)"
    },
    "MA": {
@@ -67968,61 +67964,51 @@
     "lacuna": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada"
    },
    "MS": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 78,
-    "ate": "2026-10-18"
+    "consultado_em": "31/10/2026",
+    "edicoes_lidas": 86,
+    "ate": "2026-10-30"
    },
    "MT": {
     "consultado_em": "19/10/2026",
     "via": "busca do diário (adaptador apifront)"
    },
    "PA": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 78,
-    "ate": "2026-10-18"
+    "lacuna": "86 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "PB": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 60,
-    "ate": "2026-10-18"
+    "lacuna": "69 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
    },
    "PE": {
     "lacuna": "recusa da fonte, respeitada: HTTP 403 em https://diariooficial.cepe.com.br/arquivos/2026/09/10.pdf — recusa respeitada · /edicoes: HTTPError · /diarios: HTTPError"
    },
    "PI": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 106,
-    "ate": "2026-10-18"
+    "lacuna": "13 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "PR": {
     "consultado_em": "19/10/2026",
     "via": "busca do diário (adaptador apifront)"
    },
    "RJ": {
-    "lacuna": "5 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-09-07)"
+    "lacuna": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-09-07)"
    },
    "RN": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 62,
-    "ate": "2026-10-18"
+    "consultado_em": "31/10/2026",
+    "edicoes_lidas": 70,
+    "ate": "2026-10-30"
    },
    "RO": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 76,
-    "ate": "2026-10-18"
+    "consultado_em": "31/10/2026",
+    "edicoes_lidas": 83,
+    "ate": "2026-10-30"
    },
    "RR": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 74,
-    "ate": "2026-10-18"
+    "lacuna": "80 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "RS": {
-    "lacuna": "edição com declaração não lida pelo juiz"
+    "lacuna": "135 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "SC": {
-    "consultado_em": "19/10/2026",
-    "edicoes_lidas": 111,
-    "ate": "2026-10-18"
+    "lacuna": "120 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "SE": {
     "lacuna": "recusa da fonte, respeitada: HTTP 403 em https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json, /busca e /diario-oficial — recusa respeitada (run 39021988900)"
@@ -68057,6 +68043,21 @@
     "motivo": "declaração sem decreto datado identificado"
    },
    {
+    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18256",
+    "uf": "AM",
+    "motivo": "declaração sem decreto datado identificado"
+   },
+   {
+    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18256",
+    "uf": "AM",
+    "motivo": "declaração sem decreto datado identificado"
+   },
+   {
+    "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51935",
+    "uf": "AL",
+    "motivo": "edição sem verbo que declara (menção de passagem)"
+   },
+   {
     "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/08/doe-20260806.pdf",
     "uf": "RR",
     "motivo": "declaração sem decreto datado identificado"
@@ -68074,9 +68075,9 @@
    {
     "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54756/pdf",
     "uf": "RS",
-    "motivo": "documento não baixado: URLError"
+    "motivo": "edição sem verbo que declara (menção de passagem)"
    }
   ],
-  "julgado_em": "27/10/2026"
+  "julgado_em": "31/10/2026"
  }
 }
