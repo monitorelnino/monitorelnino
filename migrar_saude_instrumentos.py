@@ -61,6 +61,31 @@ def melhor_instrumento(instrumentos: list) -> dict | None:
     return max(instrumentos, key=chave)
 
 
+# prova própria do instrumento (página citada, preservação): acompanha o instrumento, não a UF
+PROVA_DO_INSTRUMENTO = ["preservado_em", "evidencia_e", "nota_interna", "hash_pagina_citada",
+                        "procedencia_da_pagina", "procedencia_do_documento", "preservacao_recusada_em",
+                        "preservacao_recusada_motivo", "url_indisponivel"]
+
+
+def sincronizar_topo(u: dict) -> bool:
+    """Põe no campo de topo da UF o melhor instrumento de `instrumentos[]`, que é o que o portão (u) de
+    verificar_saude exige. Quando o melhor muda de documento, a prova do antigo sai junto. Devolve se mudou."""
+    melhor = melhor_instrumento(u.get("instrumentos") or [])
+    if not melhor:
+        return False
+    antes = json.dumps(u, sort_keys=True)
+    trocou = melhor.get("url") != u.get("url")
+    for c in CAMPOS_INSTRUMENTO:
+        u[c] = melhor.get(c)
+    if trocou:
+        for c in PROVA_DO_INSTRUMENTO:
+            if c in melhor:
+                u[c] = melhor[c]
+            else:
+                u.pop(c, None)
+    return json.dumps(u, sort_keys=True) != antes
+
+
 def migrar(dado: dict) -> tuple[dict, list]:
     """Devolve (dado migrado, lista de avisos). Não muta o dado de entrada."""
     avisos = []

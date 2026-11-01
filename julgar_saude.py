@@ -515,6 +515,23 @@ def com_data_do_cabecalho(texto: str, dados: dict) -> dict:
     return novo
 
 
+RE_MES_NO_CAMINHO = re.compile(r"/(20\d{2})/(0[1-9]|1[0-2])(?:/|$)")
+
+
+def data_do_plano(dados: dict, url: str) -> dict:
+    """`dados` do PLANO publicado com a data de publicação, sem a data de ato citado no corpo. Pura.
+
+    Central, 01/11/2026: a data do plano é a da capa; sem data completa nela, o mês de publicação no
+    caminho do arquivo no portal oficial (`/2026/09/` → `09/2026`, mês que não vira dia); nunca a
+    de um ato citado no texto (o Decreto 18.142/2019 na base legal do PI)."""
+    if re.fullmatch(r"\d{2}/\d{2}/\d{4}", str((dados or {}).get("data") or "")):
+        return dados
+    m = RE_MES_NO_CAMINHO.search(urllib.parse.urlparse(url or "").path)
+    if not m:
+        return dados
+    return {**dados, "data": f"{m.group(2)}/{m.group(1)}", "data_de": "mês de publicação no portal"}
+
+
 def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
     """O título que vai para o registro público. Função pura.
 
@@ -662,7 +679,7 @@ def julgar_camada_saude(texto: str, uf: str, url: str, plano_tecnico: bool,
     # com a data da janela depois do PRIMEIRO número de ato, que no preâmbulo é a lei citada
     # (Res. SESA 680/2008 do PR saía com 03/06/1987). Quando o cabeçalho do ato traz a data por
     # extenso, é ela que vale.
-    dados = com_data_do_cabecalho(texto, dados)
+    dados = data_do_plano(dados, url) if como_plano else com_data_do_cabecalho(texto, dados)
     v["criterios"]["2_citacao"] = {"ok": ok, "trecho": dados.get("trecho", ""), "dados": dados}
     v["data"] = dados.get("data")
     v["numero"] = dados.get("numero")
@@ -801,7 +818,17 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
                 "justificativa_ex_ante": (f"promovido por julgar_saude.py em {hoje}, codebook "
                                           f"{v.get('codebook')}: documento primário baixado e lido, "
                                           f"sete etapas aprovadas")}
-        u.setdefault("instrumentos", []).append(item)
+        # O documento oficial lido substitui o registro mais fraco do ciclo, de imprensa ou não (imprensa
+        # nunca é fonte, 01/11/2026), e o item da mesma url (releitura): senão `melhor_instrumento`,
+        # que ainda não conhece o tipo `saude_do_ciclo`, segue exibindo o antigo.
+        from migrar_saude_instrumentos import ORDEM_STATUS, sincronizar_topo
+        forca = lambda i: ORDEM_STATUS.index(i.get("status")) if i.get("status") in ORDEM_STATUS else -1
+        u["instrumentos"] = [i for i in u.get("instrumentos", [])
+                             if i.get("url") != url
+                             and not (i.get("tipo") in ("especifico_ciclo", "saude_do_ciclo")
+                                      and forca(i) < forca(item))]
+        u["instrumentos"].append(item)
+        sincronizar_topo(u)      # o topo é o melhor de `instrumentos[]` (portão (u) de verificar_saude)
         u["data_verificacao"] = hoje
         u["log_ref"] = f"julgar_saude_{hoje.replace('/', '-')}"
         mudou.append(f"instrumento {v['status_instrumento']}")
@@ -826,7 +853,8 @@ def aplicar(su: dict, v: dict, titulo: str, url: str) -> list:
         ordem = ["LAC", "ANUNCIADO", "PERMANENTE", "REATIVADO_CICLO", "CRIADO_CICLO"]
         atual = (u.get("coordenacao") or {}).get("status")
         novo = v["coordenacao"]["degrau"]
-        if atual is None or ordem.index(novo) > ordem.index(atual):
+        if (atual is None or ordem.index(novo) > ordem.index(atual)
+                or (u["coordenacao"].get("url") == url)):   # releitura do mesmo documento corrige a si mesma
             guardado_f2 = (u.get("coordenacao") or {}).get("f2")
             u["coordenacao"] = {"status": novo, "orgao": f"SES-{uf}", "doc": titulo,
                                 "observacao": v.get("excecao_autoridade"),
@@ -1343,6 +1371,16 @@ def autoteste() -> int:
     casos["PI: plano com capa de equipe e lei na base legal passa a etapa 2 quando a pista é o plano"] = (
         lambda: julgar_camada_saude(_t, "PI", _u, False, "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
         .get("criterios", {}).get("2_citacao", {}).get("ok") is True)
+    _v = julgar_camada_saude(_t + " Decreto nº 18.142, de 28 de fevereiro de 2019, base legal.", "PI", _u, False,
+                             "Plano Estadual de Preparação do Setor Saúde (PI, plano)")
+    casos["PI: a data do plano é o mês do caminho no portal, nunca o decreto citado no corpo"] = (
+        lambda: _v.get("data") == "09/2026" and _v.get("numero") is None)
+    _su = {"uf": {"PI": {"instrumentos": [{"status": "ELAB", "tipo": "especifico_ciclo", "url": "https://imprensa.com/x"}]}}}
+    aplicar(_su, {"uf": "PI", "status_instrumento": "NOVO", "data": "09/2026"}, "Plano", _u)
+    casos["PI: o documento oficial promovido substitui o registro de imprensa e vira o melhor instrumento"] = (
+        lambda: [i["status"] for i in _su["uf"]["PI"]["instrumentos"]] == ["NOVO"]
+        and _su["uf"]["PI"]["instrumentos"][0]["url"] == _u
+        and _su["uf"]["PI"]["status"] == "NOVO" and _su["uf"]["PI"]["url"] == _u)
     casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
         lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
     casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (
@@ -1364,13 +1402,13 @@ def main() -> int:
     # decisão da editoria — foi o que aconteceu em 01/10/2026, 16h UTC, com a exceção de autoridade
     # da camada de saúde: sem rejulgar, as 27 recusas ficariam de pé por serem antigas, e não por
     # serem certas. Pista já PROMOVIDA não volta: o registro dela existe, e rejulgar criaria um
-    # segundo item igual em `instrumentos[]`.
+    # segundo item igual em `instrumentos[]` — hoje `aplicar` troca o item da mesma url, e rejulgar corrige.
     rejulgar = "--rejulgar" in args
     candidatas = [p for p in pistas
                   if p.get("oficial") and p.get("url")
                   and (rejulgar or not p.get("juiz")
                        or PAD_FALHA_DE_REDE.match(str((p.get("juiz") or {}).get("motivo") or "")))
-                  and not (p.get("juiz") or {}).get("promove")
+                  and (rejulgar or not (p.get("juiz") or {}).get("promove"))
                   and (alvo is None or p.get("uf") == alvo)]
     if "--limite" in args:
         candidatas = candidatas[:int(args[args.index("--limite") + 1])]

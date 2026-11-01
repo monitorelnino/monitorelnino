@@ -15,7 +15,7 @@
   "SEM",
   "NEUTRO"
  ],
- "corte": "02/10/2026",
+ "corte": "01/11/2026",
  "uf": {
   "AC": {
    "risco_sanitario_projetado": [
@@ -969,36 +969,55 @@
     "qualidade da água em estiagem"
    ],
    "consist": "NEUTRO",
-   "data_verificacao": "18/09/2026",
-   "log_ref": "resserragem_manual_2026-09-18_handover_ponto_cego_saude",
+   "data_verificacao": "01/11/2026",
+   "log_ref": "julgar_saude_01-11-2026",
    "instrumentos": [
     {
-     "status": "ELAB",
-     "orgao": "Sesapi",
-     "doc": "Plano de contingência para o enfrentamento do El Niño",
+     "status": "NOVO",
+     "orgao": "SES-PI",
+     "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
+     "observacao": null,
      "numero": null,
-     "data": null,
-     "url": "https://piauihoje.com/noticias/saude/piaui-prepara-sus-para-possiveis-impactos-do-el-nino-na-saude-da-populacao-464649.html",
-     "natureza_doc": "ex-ante",
-     "justificativa_ex_ante": "plano específico do ciclo El Niño 2026/2027, em fase final segundo a Sesapi (1º de setembro de 2026); ainda não publicado — três fontes de imprensa independentes confirmam a fase 'final', nenhuma cita data de conclusão ou link do documento",
-     "tipo": "especifico_ciclo",
-     "hash_pagina_citada": "ec70d32117afef588770de12a4201b6e36bb0c65172ae925b46d2a37425d6677",
-     "nota_interna": "(coordenado com o ADAPTASUS-PI — Plano Estadual de Adaptação do Setor Saúde às Alterações Climáticas), em fase final de elaboração"
+     "data": "09/2026",
+     "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
+     "natureza_doc": "EX_ANTE",
+     "tipo": "saude_do_ciclo",
+     "hash_evidencia": "d116d3c0947fb64d21f2516e56e7911528c878e99c182cbcad3c6d146eca04dd",
+     "justificativa_ex_ante": "promovido por julgar_saude.py em 01/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas"
     }
    ],
-   "status": "ELAB",
-   "orgao": "Sesapi",
-   "doc": "Plano de contingência para o enfrentamento do El Niño",
+   "status": "NOVO",
+   "orgao": "SES-PI",
+   "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
    "numero": null,
-   "data": null,
-   "url": "https://piauihoje.com/noticias/saude/piaui-prepara-sus-para-possiveis-impactos-do-el-nino-na-saude-da-populacao-464649.html",
-   "natureza_doc": "ex-ante",
-   "justificativa_ex_ante": "plano específico do ciclo El Niño 2026/2027, em fase final segundo a Sesapi (1º de setembro de 2026); ainda não publicado — três fontes de imprensa independentes confirmam a fase 'final', nenhuma cita data de conclusão ou link do documento",
-   "preservado_em": "2026-09-26",
-   "hash_pagina_citada": "ec70d32117afef588770de12a4201b6e36bb0c65172ae925b46d2a37425d6677",
-   "evidencia_e": "a página que cita o documento, em HTML — o documento em si não foi obtido",
-   "procedencia_da_pagina": "fonte direta",
-   "nota_interna": "(coordenado com o ADAPTASUS-PI — Plano Estadual de Adaptação do Setor Saúde às Alterações Climáticas), em fase final de elaboração"
+   "data": "09/2026",
+   "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
+   "natureza_doc": "EX_ANTE",
+   "justificativa_ex_ante": "promovido por julgar_saude.py em 01/11/2026, codebook 1.8 (30/10/2026): documento primário baixado e lido, sete etapas aprovadas",
+   "coordenacao": {
+    "status": "CRIADO_CICLO",
+    "orgao": "SES-PI",
+    "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
+    "observacao": null,
+    "numero": null,
+    "data": "09/2026",
+    "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
+    "hash_evidencia": "d116d3c0947fb64d21f2516e56e7911528c878e99c182cbcad3c6d146eca04dd",
+    "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo",
+    "data_verificacao": "01/11/2026",
+    "log_ref": "julgar_saude_01-11-2026",
+    "f1": {
+     "status": "CRIADO_CICLO",
+     "doc": "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO EQUIPE GESTORA Rafael Tajra Fonteles Governador do Estado do Piauí Dirceu Hamilton Cordeiro C",
+     "numero": null,
+     "data": "09/2026",
+     "url": "https://portal.pi.gov.br/sesapi/wp-content/uploads/sites/101/2026/09/PLANO-DE-ENFRENTAMENTO-DOS-EFEITOS-DO-EL-NINO_SESAPI_2026.pdf",
+     "hash_evidencia": "d116d3c0947fb64d21f2516e56e7911528c878e99c182cbcad3c6d146eca04dd",
+     "justificativa_degrau": "ato de 2026 que institui a estrutura e nomeia o ciclo",
+     "data_verificacao": "01/11/2026"
+    }
+   },
+   "hash_evidencia": "d116d3c0947fb64d21f2516e56e7911528c878e99c182cbcad3c6d146eca04dd"
   },
   "PR": {
    "risco_sanitario_projetado": [
