@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · A reaplicação da noite não traz texto ausente (+9/−2)
+
+`reaplicar_noite.py` filtrava o índice de evidências só pelo binário; a reaplicação do `atualizar` de 01/11 trouxe 12 `texto_arquivo` sem o `.txt` e a `main` ficou vermelha em `verificar_evidencias`. Agora a entrada antiga que ganha arquivo ausente volta ao que era e a nova sem arquivo fica fora. Índice de evidências restabelecido.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
