@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · Diários oficiais: data gravada como `vazio` volta à fila de leitura · +4/−1
+
+Causa raiz: `coletar_edicoes_doe.py` tratava a data com conexão recusada ou timeout (`vazio`) como já tentada e nunca a relia (RS 86 datas, PB 55). `a_reler` passa a incluí-la; "sem edição na data" segue decisão final. Autoteste cobre o caso.
+
 ## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
 
 Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
