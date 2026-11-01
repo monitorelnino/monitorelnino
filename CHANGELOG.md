@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · A rodada semanal não regrava os sinais físicos (+3/−19)
+
+Causa: `atualizar.py` ainda chamava `coletar_sinais_risco.py`, hoje do elo `noturno_sinais.yml`; ao commitar, a união recusava 34 caminhos de dono único (run 41259903124). A chamada sai; o elo dos sinais segue como único escritor.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.

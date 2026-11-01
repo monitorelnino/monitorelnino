@@ -155,25 +155,9 @@ def main():
     dia_semana = hoje_editorial().weekday()  # no fuso da redação, nunca no do runner (ver topo)
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
 
-    # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
-    # para monitor-de-riscos.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
-    # ar permanece como lacuna declarada na página, nunca como valor estimado.
-    # 17/09/2026 (achado ao checar a frequência da página, pedido da editoria): esta coleta é
-    # independente do índice desde a origem (peso zero, nunca pontua) — mas vivia PRESA à mesma
-    # cadência semanal do índice, então "o que está acontecendo agora" só se atualizava às
-    # segundas. Sinais como ONI, avisos do INMET e focos do INPE mudam todo dia na fonte; a
-    # chamada sai daqui de dentro do portão semanal e roda incondicionalmente, todo dia.
-    rodar([sys.executable, "coletar_sinais_risco.py"], teto_s=TETO_ETAPA_DIARIA_S)
-
-    # 18/09/2026 (rotina diária, portão 12 vermelho na main): gerar_monitor_saude.py copia
-    # sinais.uf[UF].fogo.focos_24h de data/sinais_risco.json para data/monitor_saude.json
-    # (campo "focos_24h" de cada UF, §31). Como a chamada acima passou a rodar todo dia
-    # (17/09/2026) mas esta continuava só no bloco semanal, abaixo do "return" de cadência,
-    # o derivado ficava um a seis dias atrás do sinal bruto em qualquer dia que não fosse
-    # segunda — mesma classe de bug do carimbo `gerado_em` de 10/09/2026 (derivado não
-    # regravado quando a fonte muda). Regenerar aqui, todo dia, mantém o derivado
-    # sincronizado com o sinal que ele copia; a chamada do bloco semanal (mais abaixo)
-    # continua — é idempotente sobre os mesmos dados quando nada mudou.
+    # Sinais físicos (`coletar_sinais_risco.py`) e o que deles deriva (`riscos_municipio/`, alertas, focos,
+    # ar medido) pertencem ao elo `noturno_sinais.yml` (config/escritores.json). Esta rodada não os
+    # regrava: gravar dono-único aqui, fora da vez, recusava a união do commit (01/11/2026, run 41259903124).
     rodar([sys.executable, "gerar_monitor_saude.py"], teto_s=TETO_ETAPA_DIARIA_S)
 
     if not em_intensivo and dia_semana != DIA_PUBLICACAO:
