@@ -4419,3 +4419,21 @@ Ficam fora as regras J8 e J9, que alterariam o crédito de planos antigos e de p
 *Decisão da central em 30/10/2026, sobre a medição de 28 a 30/10.*
 
 Entram no juiz as regras J14, J16, J19 e J20, que ficaram fora em 29/10 (§125). Documento estadual achado por busca municipal vai para a fila do instrumento estadual, e o plano estadual de saúde para o MARÉ Saúde, sem crédito ao município; calendário de datas, campanha ou lista de leis citadas não é instrumento; lei ou decreto que cria fundo, coordenadoria ou conselho de defesa civil é estrutura, não plano; e o plano publicado em repositório estadual (ES, SE, Casa Militar do RS) é atribuído ao município que o nome do arquivo ou o texto identifica, não ao município da busca. Nenhum peso, crédito ou componente muda; J8 e J9 seguem fora. A data do codebook sobe para devolver ao juiz o que o 1.8 de 29/10 julgou sem estas regras. Na medição sobre as decisões já gravadas, o MARÉ Legal nacional não se altera (40,7), o Espírito Santo sobe 0,3 ponto e nenhum município perde o plano reconhecido.
+
+## 127. Mortalidade registrada, lado a lado, e o excesso observado (31/10/2026)
+
+*Decisão da editoria em 30/10/2026; método v1 do excesso.*
+
+**O quadro.** Uma linha por mês, a partir de julho de 2026, primeiro mês inteiro depois do boletim de 29/06; junho fica fora em todas as colunas. Para o Brasil e para cada estado, quatro colunas: as mortes adicionais por calor projetadas (modelo), os óbitos registrados em cartório de todas as causas com a faixa do mesmo mês em anos anteriores, o excesso observado e os óbitos com causa básica calor natural (X30) no SIM. Não há mapa, não há conta entre as colunas e os estados não são ordenados. O quadro é dado do estado: não existe por município.
+
+**Registrados.** Óbitos lavrados no mês, todas as causas (Registro Civil, ARPEN/CNJ). Mês corrente é marcado parcial.
+
+**Excesso observado, método v1.** O esperado do mês é a média dos óbitos registrados no mesmo mês de 2019, 2022, 2023, 2024 e 2025; 2020 e 2021 ficam fora por causa da pandemia de covid-19. O excesso é o registrado menos o esperado, com intervalo de (registrado − máximo da referência) a (registrado − mínimo da referência). Valor negativo aparece como está, abaixo do esperado, nunca truncado em zero. Mês parcial e referência com menos de cinco anos de registro ficam sem número, com o motivo dito. O arquivo traz `metodo_excesso`; mudar o método exige versão nova desta seção.
+
+**Limites declarados.** O método não ajusta crescimento nem envelhecimento da população; o registro em cartório atrasa; o excesso conta óbitos de todas as causas, não só os atribuídos ao calor; são cinco anos de referência.
+
+**Projeção.** Mortes adicionais por calor projetadas pelo Climate Impact Lab, El Niño Heat Mortality Tracker (modelo; Carleton et al., 2022, QJE 137(4):2037–2105), com o crédito em toda exibição. É estimativa de modelo, não registro. Até a série da fonte ser coletada, a coluna é lacuna declarada ("aguarda a série da fonte"); faixa de incerteza e linha de base entram como o arquivo trouxer, e o que não trouxer fica declarado como lacuna.
+
+**Causa básica.** Calor natural excessivo é X30, causa externa; um código do capítulo XIX, como T67, não pode ser causa básica (§122). Os dois meses mais recentes do SIM são marcados parciais.
+
+**O que não muda.** Peso zero no MARÉ. Os números não indicam relação com o El Niño; o Monitor não atribui óbitos a ele.
