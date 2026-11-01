@@ -2914,7 +2914,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(132 trechos)</small></h2>
+<h2>saude <small>(167 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · planos estaduais e registros de saúde no El Niño 2026/2027</td></tr>
@@ -3406,5 +3406,130 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>consulta · resultado</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>nota</td><td><code>saude.consulta.resultado.nota</code></td><td>Os resultados reúnem informações do município e do estado, identificadas em cada cartão. Confira o território, o período e a fonte.</td></tr>
+</table>
+<h3>mortalidade</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo_da_secao</td><td><code>saude.mortalidade.titulo_da_secao</code></td><td>Óbitos registrados e projeção de mortes por calor</td></tr>
+<tr><td>familia</td><td><code>saude.mortalidade.familia</code></td><td>MARÉ Saúde</td></tr>
+<tr><td>titulo</td><td><code>saude.mortalidade.titulo</code></td><td>Mortes por calor projetadas, óbitos registrados e excesso observado, por mês</td></tr>
+<tr><td>legenda</td><td><code>saude.mortalidade.legenda</code></td><td>Brasil e estados · julho de 2026 em diante</td></tr>
+<tr><td>fonte</td><td><code>saude.mortalidade.fonte</code></td><td><span class="molde">Mês de referência: {meses}</span><br><span class="ex">exemplo: Mês de referência: 3</span></td></tr>
+<tr><td>resumo</td><td><code>saude.mortalidade.resumo</code></td><td>Ver em lista</td></tr>
+</table>
+<h3>mortalidade · seletor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.seletor</code></td><td>Território</td></tr>
+</table>
+<h3>mortalidade · brasil</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.brasil</code></td><td>Brasil</td></tr>
+</table>
+<h3>mortalidade · apoio</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.apoio</code></td><td>Projeção é estimativa de modelo, não registro. Excesso observado conta óbitos de todas as causas, não só os atribuídos ao calor. Os números não indicam relação com o El Niño. 2020 e 2021 ficam fora da referência por causa da pandemia.</td></tr>
+</table>
+<h3>mortalidade · col.mes</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.col.mes</code></td><td>Mês</td></tr>
+</table>
+<h3>mortalidade · col.proj</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>saude.mortalidade.col.proj.titulo</code></td><td>Mortes adicionais por calor projetadas</td></tr>
+</table>
+<h3>mortalidade · col.proj.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.col.proj.sub</code></td><td>Climate Impact Lab (modelo)</td></tr>
+</table>
+<h3>mortalidade · col.reg</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>saude.mortalidade.col.reg.titulo</code></td><td>Óbitos registrados, todas as causas</td></tr>
+</table>
+<h3>mortalidade · col.reg.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.col.reg.sub</code></td><td>Registro Civil · ponto = 2026; faixa = mesmo mês em 2019 e 2022–2025</td></tr>
+</table>
+<h3>mortalidade · col.exc</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>saude.mortalidade.col.exc.titulo</code></td><td>Excesso observado</td></tr>
+</table>
+<h3>mortalidade · col.exc.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.col.exc.sub</code></td><td>2026 menos o esperado; intervalo pela faixa</td></tr>
+</table>
+<h3>mortalidade · col.x30</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>titulo</td><td><code>saude.mortalidade.col.x30.titulo</code></td><td>Óbitos com causa básica calor natural (X30)</td></tr>
+</table>
+<h3>mortalidade · col.x30.sub</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.col.x30.sub</code></td><td>SIM · preliminar</td></tr>
+</table>
+<h3>mortalidade · parcial</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.parcial</code></td><td>parcial</td></tr>
+</table>
+<h3>mortalidade · faixa</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.faixa</code></td><td><span class="molde">faixa 2019 e 2022–2025: {min} a {max}</span><br><span class="ex">exemplo: faixa 2019 e 2022–2025: 3 a 3</span></td></tr>
+</table>
+<h3>mortalidade · reg_aria</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.reg_aria</code></td><td><span class="molde">Registrados {reg}; faixa de {min} a {max}</span><br><span class="ex">exemplo: Registrados 3; faixa de 3 a 3</span></td></tr>
+</table>
+<h3>mortalidade · intervalo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.intervalo</code></td><td><span class="molde">de {min} a {max}</span><br><span class="ex">exemplo: de 3 a 3</span></td></tr>
+</table>
+<h3>mortalidade · esperado</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.esperado</code></td><td><span class="molde">esperado {n}</span><br><span class="ex">exemplo: esperado 3</span></td></tr>
+</table>
+<h3>mortalidade · lacuna.projecao</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.lacuna.projecao</code></td><td>aguarda a série da fonte</td></tr>
+</table>
+<h3>mortalidade · lacuna.excesso</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.lacuna.excesso</code></td><td>mês incompleto</td></tr>
+</table>
+<h3>mortalidade · lacuna.x30</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.lacuna.x30</code></td><td>sem registro lido para o mês</td></tr>
+</table>
+<h3>mortalidade · sem_arquivo</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.sem_arquivo</code></td><td>Quadro sem leitura até o corte.</td></tr>
+</table>
+<h3>consulta · rotulo.mortalidade</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.rotulo.mortalidade</code></td><td>Mortalidade (estado)</td></tr>
+</table>
+<h3>consulta · mortalidade.valor</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.mortalidade.valor</code></td><td><span class="molde">Excesso observado em {mes}: {excesso}</span><br><span class="ex">exemplo: Excesso observado em 3: 3</span></td></tr>
+</table>
+<h3>consulta · mortalidade.valor_registrados</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.mortalidade.valor_registrados</code></td><td><span class="molde">{n} óbitos registrados em {mes}</span><br><span class="ex">exemplo: 3 óbitos registrados em 3</span></td></tr>
+</table>
+<h3>consulta · mortalidade</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>nota</td><td><code>saude.consulta.mortalidade.nota</code></td><td><span class="molde">Dados do estado de {estado}; esta informação não existe por município.</span><br><span class="ex">exemplo: Dados do estado de 3; esta informação não existe por município.</span></td></tr>
+</table>
+<h3>consulta · mortalidade.ver</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.consulta.mortalidade.ver</code></td><td>ver o quadro</td></tr>
+</table>
+<h3>mortalidade · fonte_cil</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.fonte_cil</code></td><td>Climate Impact Lab (El Niño Heat Mortality Tracker)</td></tr>
+</table>
+<h3>mortalidade · fonte_registro</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.fonte_registro</code></td><td>Portal da Transparência do Registro Civil</td></tr>
+</table>
+<h3>mortalidade · fonte_sim</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.mortalidade.fonte_sim</code></td><td>SIM, Ministério da Saúde</td></tr>
 </table>
 </body></html>

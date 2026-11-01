@@ -12,10 +12,47 @@ não pontuados permanecem na versão corrente.
 ## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
 
 Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
+## 2026-11-01 · #1402 · Quadro de mortalidade na Saúde (+172/−9)
+
+Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.
+
+## 2026-11-01 · Busca de planos: semeador das sondas volta à fila pela porta única (+103/−0)
+
+As sondas de busca por município acham endereços de documento e não os levavam ao juiz. O semeador lê só o que a sonda trouxe, resolve o município pelo IBGE e entrega o lote à porta de pistas, que recusa com motivo o que não é plano. Sem IBGE, o candidato não entra. Código novo: recurso, não correção.
+
+## 2026-10-31 · projeção CIL no elo dos desfechos (+215/−0)
+Novo `coletar_projecao_cil.py`, no elo `desfechos` antes de `gerar_mortalidade_comparada.py`: lê da página do Climate Impact Lab o link do CSV por ADM1 (nunca monta o nome), guarda cada edição datada, com hash, cabeçalho e linhas do Brasil como vieram, sem sobrescrever. Link ausente do HTML ou fonte fora do ar vira lacuna declarada. Escritor declarado, cadência em `CADENCIAS.md`. Saldo positivo: recurso novo.
+
+## 2026-11-01 · Frescor: fonte que recusa não trava o site (+54/−16)
+
+Arquivo de coletor vencido passa quando o painel de tentativas traz recusa ou falha com motivo dentro de 9 dias; a página segue com a data do dado. Vermelho só quando ninguém tentou. O fundo a fundo do TransfereGov passa a coletar antes do CSV e não depende dele.
+## 2026-11-01 · A reaplicação da noite não traz texto ausente (+9/−2)
+
+`reaplicar_noite.py` filtrava o índice de evidências só pelo binário; a reaplicação do `atualizar` de 01/11 trouxe 12 `texto_arquivo` sem o `.txt` e a `main` ficou vermelha em `verificar_evidencias`. Agora a entrada antiga que ganha arquivo ausente volta ao que era e a nova sem arquivo fica fora. Índice de evidências restabelecido.
+
+## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
+
+O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
+
+## 2026-10-31 · Redução: `buscar_em_fluxo` sem chamador sai (+0/−38)
+
+`coletores_base.buscar_em_fluxo()` perdeu o último chamador quando o SIVEP passou a `buscar_em_fluxo_confiavel`. Varredura de todas as funções de primeiro nível: era a única sem uso em outro arquivo, nem alcançável por dentro do próprio.
+
+## 2026-10-30 · Fumaça (T59) sai do SIM · +2/−9
+
+O capítulo XIX não é causa básica: o SIM não tem série de óbitos por fumaça. `coletar_sim.py` deixa de gravar o grupo, `obitos_fumaca.json` e sua linha em `escritores.json` saem, a limitação entra na METODOLOGIA §122. As internações por T59 (SIH) permanecem.
+
+## 2026-10-31 · Ensaio real refaz o elo que morre no checkout (+25/−0)
+
+O condutor do ensaio real redispara uma vez o workflow cujo run terminou sem sucesso, como o despachante da noite faz. Causa: juiz do ensaio de 30/10 morreu em 2 min no checkout e o condutor esperou 83 min. Caso F76 em `falhas_da_noite.json`.
 
 ## 2026-10-30 · Pacote de saúde do blog traz o quadro de mortalidade · +69/−0
 
 `gerar_pacote_blog.py --linha saude` lê `mortalidade_comparada.json` (Brasil, mês fechado): óbitos registrados, excesso com intervalo, óbitos X30 e projeção CIL, cada fato com fonte e mês. Campo nulo, mês parcial ou derivado com mais de nove dias viram lacuna declarada, nunca zero.
+
+## 2026-10-30 · Redução: três scripts de LAI sem chamador saem · +0/−650
+
+`ler_caixa_lai.py`, `scripts/incorporar_respostas_lai.py` e `scripts/sondar_fornecedor_transparencia.py` só se referenciavam entre si; decisão da central de 30/10. Ficam no histórico do git. Código, workflows e dados intocados.
 
 ## 2026-10-30 · Mortalidade comparada entra no elo dos desfechos · +2/−0
 

@@ -502,6 +502,12 @@ def _autoteste() -> int:
        not esta_devido(tri, [], dt.datetime(2026, 10, 11, 1, 10)))
     ok("triagem sem run é devida às 08:35",
        esta_devido(tri, [], dt.datetime(2026, 10, 11, 8, 35)))
+    des = next(t for t in json.loads(REGISTRO.read_text(encoding="utf-8"))["temporizadores"]
+               if t.get("workflow") == "noturno_desfechos.yml")
+    ok("desfechos não são devidos às 01:10, antes da saúde gravar a série (31/10)",
+       not esta_devido(des, [], dt.datetime(2026, 10, 31, 1, 10)))
+    ok("desfechos são devidos às 07:10, depois da saúde",
+       esta_devido(des, [], dt.datetime(2026, 10, 31, 7, 10)))
     ok("sem a declaração, o comportamento antigo fica (devido na abertura)",
        esta_devido(dict(tri, nao_antes_do_cron=False), [], dt.datetime(2026, 10, 11, 1, 10)))
     ok("pendente cancelado pela fila é refeito pela reserva (abertura de 10/10)",

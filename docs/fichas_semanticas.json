@@ -382,6 +382,30 @@
       ],
       "funcao_narrativa": "mostrar as três etapas na mesma base, a da ação reforçada",
       "metodologia": "Dotação atualizada somada por ação (isolamento.via_4_dotacao); empenhado e desembolsado da execução da despesa das mesmas ações; o valor do ato vai em texto."
+    },
+    "saude.html#boxMortalidade": {
+      "tipo": "tabela",
+      "pergunta_que_responde": "Quantos óbitos foram registrados em cartório a cada mês de 2026, quanto isso difere do esperado para o mês, e que projeção e contagem por calor existem?",
+      "universo": "óbitos lavrados em cartório no mês, todas as causas; Brasil e 27 UFs; de julho de 2026 em diante",
+      "unidade_de_analise": "mês × UF",
+      "territorio": "Brasil e UF",
+      "periodo": "meses de 2026 a partir de julho; o mês corrente é parcial",
+      "variavel_principal": "óbitos registrados e excesso observado (2026 menos a média do mesmo mês em 2019 e 2022–2025), com projeção do Climate Impact Lab e causa básica X30 quando houver",
+      "denominador": "não se aplica: contagens absolutas, sem taxa",
+      "fonte": "Portal da Transparência do Registro Civil; SIM, Ministério da Saúde (preliminar); Climate Impact Lab, El Niño Heat Mortality Tracker (modelo)",
+      "metodologia": "METODOLOGIA, seção do excesso observado (método v1); 2020 e 2021 fora da referência",
+      "conclusoes_permitidas": [
+        "quantos óbitos o cartório registrou no mês e a distância até o esperado, com o intervalo da faixa de referência",
+        "que a projeção é estimativa de modelo e a coluna X30 é contagem registrada"
+      ],
+      "conclusoes_nao_permitidas": [
+        "que o excesso observado seja causado pelo calor ou pelo El Niño",
+        "mortes por calor a partir do excesso de todas as causas",
+        "soma ou razão entre a projeção e o excesso",
+        "mês parcial como mês fechado"
+      ],
+      "funcao_narrativa": "contexto de mortalidade ao lado dos desfechos de saúde, sem peso no índice",
+      "acao_relacionada": null
     }
   }
 }

@@ -1,6 +1,6 @@
 {
  "_governanca": "RESPOSTA (v3.1 §3; Metodologia §32): contagens, frações e datas do que foi decretado depois, e — desde 15/09/2026 (§32.4) — o ÍNDICE de resposta 0–100, igual a 100 × fração da população (Censo 2022) em município sob decreto no ciclo. Sem faixa, sem peso; nunca combinado com o índice de antecipação (C17). Peso zero no MARÉ (portão verificar_resposta.py). Fatia 'evento observado' em_classificacao até o adaptador municipal existir (C16). Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a). Arquivo reduzido para a página: só municípios sob decreto; ausência = 'não consta decreto reconhecido no ciclo' (S2iD completo; DOE/DOM parcial).",
- "gerado_em": "30/10/2026",
+ "gerado_em": "01/11/2026",
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "municipios": {
   "2900207": {
@@ -250,7 +250,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 46
+   "dias_sem_reconhecimento": 48
   },
   "2600104": {
    "ibge": "2600104",
@@ -828,6 +828,36 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "1400050": {
+   "ibge": "1400050",
+   "nome": "Alto Alegre",
+   "uf": "RR",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Roraima (AMR))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=17081&i=publicado_116437_2026-10-29_7800ca541937e0f03e79a679e4b102f5.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 150/2026/",
+     "hash": "6ecabfe283a143cb7653fe1e21ee1932f6eb59776f8c75d1ce9cd79d1479255a"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
+  },
   "4300554": {
    "ibge": "4300554",
    "nome": "Alto Alegre",
@@ -1240,7 +1270,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 56
+   "dias_sem_reconhecimento": 58
   },
   "2901205": {
    "ibge": "2901205",
@@ -1360,7 +1390,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 21
+   "dias_sem_reconhecimento": 23
   },
   "4101150": {
    "ibge": "4101150",
@@ -1390,7 +1420,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 9
   },
   "1300102": {
    "ibge": "1300102",
@@ -1420,7 +1450,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 15
+   "dias_sem_reconhecimento": 17
   },
   "4300703": {
    "ibge": "4300703",
@@ -1480,7 +1510,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 51
+   "dias_sem_reconhecimento": 53
   },
   "2100832": {
    "ibge": "2100832",
@@ -1570,7 +1600,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 14
+   "dias_sem_reconhecimento": 16
   },
   "4201273": {
    "ibge": "4201273",
@@ -1631,6 +1661,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "2100873": {
+   "ibge": "2100873",
+   "nome": "Araguanã",
+   "uf": "MA",
+   "decreto": true,
+   "primeiro_decreto": "20/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "data": "20/01/2026",
+     "decreto": "ato de resposta — Portaria nº 163",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 285
   },
   "4101655": {
    "ibge": "4101655",
@@ -1956,7 +2016,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 9
+   "dias_sem_reconhecimento": 11
   },
   "2501302": {
    "ibge": "2501302",
@@ -2371,7 +2431,7 @@
     }
    ],
    "n_eventos": 3,
-   "dias_sem_reconhecimento": 16
+   "dias_sem_reconhecimento": 18
   },
   "1501006": {
    "ibge": "1501006",
@@ -2560,7 +2620,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 22
+   "dias_sem_reconhecimento": 24
   },
   "2501575": {
    "ibge": "2501575",
@@ -2986,7 +3046,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 259
+   "dias_sem_reconhecimento": 261
   },
   "2502003": {
    "ibge": "2502003",
@@ -3578,7 +3638,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "2903706": {
    "ibge": "2903706",
@@ -3813,7 +3873,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 2
+   "dias_sem_reconhecimento": 4
   },
   "2903805": {
    "ibge": "2903805",
@@ -4101,7 +4161,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 23
+   "dias_sem_reconhecimento": 25
   },
   "2903904": {
    "ibge": "2903904",
@@ -4291,7 +4351,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 289
+   "dias_sem_reconhecimento": 291
   },
   "3108255": {
    "ibge": "3108255",
@@ -4450,7 +4510,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 8
+   "dias_sem_reconhecimento": 10
   },
   "3108503": {
    "ibge": "3108503",
@@ -4558,7 +4618,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 92
+   "dias_sem_reconhecimento": 94
   },
   "1200104": {
    "ibge": "1200104",
@@ -4663,10 +4723,18 @@
      "data": "09/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.435",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-21-cidades-afetadas-por-desastres-3",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-21-cidades-afetadas-por-desastres-3",
+     "data": "26/10/2026",
+     "decreto": "situação de emergência (número não localizado no texto)",
+     "hash": null
     }
    ],
-   "n_eventos": 7,
-   "dias_sem_reconhecimento": 289
+   "n_eventos": 8,
+   "dias_sem_reconhecimento": 291
   },
   "2602506": {
    "ibge": "2602506",
@@ -4846,7 +4914,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 78
+   "dias_sem_reconhecimento": 80
   },
   "2904605": {
    "ibge": "2904605",
@@ -5827,7 +5895,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 9
   },
   "4303707": {
    "ibge": "4303707",
@@ -6579,7 +6647,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 35
+   "dias_sem_reconhecimento": 37
   },
   "4104451": {
    "ibge": "4104451",
@@ -6609,7 +6677,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 15
+   "dias_sem_reconhecimento": 17
   },
   "2906824": {
    "ibge": "2906824",
@@ -6724,7 +6792,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 13
   },
   "4304622": {
    "ibge": "4304622",
@@ -6900,7 +6968,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 31
+   "dias_sem_reconhecimento": 33
   },
   "4104600": {
    "ibge": "4104600",
@@ -7232,10 +7300,11 @@
    "primeiro_decreto": "05/10/2026",
    "primeiro_reconhecimento": "21/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "seca"
@@ -7249,9 +7318,17 @@
      "data": "21/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.647",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118977_2026-10-29_320d5990237a408d52953cc118d81b39.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 088",
+     "hash": "551f1ec4756c36b99861df810c70dd6ffdd5f1e7e1b0fe21c90aa04a7a4a6bec"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2801405": {
@@ -7432,7 +7509,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 289
+   "dias_sem_reconhecimento": 291
   },
   "4304903": {
    "ibge": "4304903",
@@ -7973,7 +8050,7 @@
     }
    ],
    "n_eventos": 7,
-   "dias_sem_reconhecimento": 25
+   "dias_sem_reconhecimento": 27
   },
   "4305132": {
    "ibge": "4305132",
@@ -8338,7 +8415,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 93
+   "dias_sem_reconhecimento": 95
   },
   "4305504": {
    "ibge": "4305504",
@@ -8437,7 +8514,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 10
+   "dias_sem_reconhecimento": 12
   },
   "5205513": {
    "ibge": "5205513",
@@ -8557,7 +8634,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 63
+   "dias_sem_reconhecimento": 65
   },
   "2202778": {
    "ibge": "2202778",
@@ -8785,7 +8862,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 116
+   "dias_sem_reconhecimento": 118
   },
   "4305850": {
    "ibge": "4305850",
@@ -9102,7 +9179,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "2203008": {
    "ibge": "2203008",
@@ -9526,7 +9603,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 2
+   "dias_sem_reconhecimento": 4
   },
   "2605103": {
    "ibge": "2605103",
@@ -9793,7 +9870,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 24
+   "dias_sem_reconhecimento": 26
   },
   "4306429": {
    "ibge": "4306429",
@@ -10204,7 +10281,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 47
+   "dias_sem_reconhecimento": 49
   },
   "4306767": {
    "ibge": "4306767",
@@ -10928,7 +11005,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 35
+   "dias_sem_reconhecimento": 37
   },
   "2203750": {
    "ibge": "2203750",
@@ -11989,7 +12066,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 116
+   "dias_sem_reconhecimento": 118
   },
   "4308854": {
    "ibge": "4308854",
@@ -12573,7 +12650,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 16
+   "dias_sem_reconhecimento": 18
   },
   "1100106": {
    "ibge": "1100106",
@@ -12753,7 +12830,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 25
+   "dias_sem_reconhecimento": 27
   },
   "4309506": {
    "ibge": "4309506",
@@ -12969,6 +13046,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "4109658": {
+   "ibge": "4109658",
+   "nome": "Honório Serpa",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17422",
+     "data": "30/10/2026",
+     "decreto": "Decreto municipal nº 204",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "4309654": {
    "ibge": "4309654",
@@ -13672,7 +13779,7 @@
     }
    ],
    "n_eventos": 3,
-   "dias_sem_reconhecimento": 16
+   "dias_sem_reconhecimento": 18
   },
   "4310462": {
    "ibge": "4310462",
@@ -13901,7 +14008,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 38
+   "dias_sem_reconhecimento": 40
   },
   "4310504": {
    "ibge": "4310504",
@@ -14038,7 +14145,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 56
+   "dias_sem_reconhecimento": 58
   },
   "2306108": {
    "ibge": "2306108",
@@ -14098,7 +14205,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 9
+   "dias_sem_reconhecimento": 11
   },
   "4207908": {
    "ibge": "4207908",
@@ -14226,7 +14333,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 16
+   "dias_sem_reconhecimento": 18
   },
   "2506905": {
    "ibge": "2506905",
@@ -14483,7 +14590,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 259
+   "dias_sem_reconhecimento": 261
   },
   "2607703": {
    "ibge": "2607703",
@@ -14740,7 +14847,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 102
+   "dias_sem_reconhecimento": 104
   },
   "1600253": {
    "ibge": "1600253",
@@ -14950,7 +15057,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 14
+   "dias_sem_reconhecimento": 16
   },
   "4111506": {
    "ibge": "4111506",
@@ -15087,7 +15194,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 93
+   "dias_sem_reconhecimento": 95
   },
   "2405009": {
    "ibge": "2405009",
@@ -15445,7 +15552,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 6
   },
   "2306801": {
    "ibge": "2306801",
@@ -15844,7 +15951,37 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 6
+  },
+  "2507507": {
+   "ibge": "2507507",
+   "nome": "João Pessoa",
+   "uf": "PB",
+   "decreto": true,
+   "primeiro_decreto": "01/05/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (01/11/2026) a partir de https://conde.pb.gov.br/chuvas-intensas-levam-prefeitura-de-conde-a-decretar-situacao-de-emergencia-por-180-dias/",
+     "url": "https://conde.pb.gov.br/chuvas-intensas-levam-prefeitura-de-conde-a-decretar-situacao-de-emergencia-por-180-dias/",
+     "data": "01/05/2026",
+     "decreto": "situação de emergência (número não localizado no texto)",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 184
   },
   "3136306": {
    "ibge": "3136306",
@@ -15964,7 +16101,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 259
+   "dias_sem_reconhecimento": 261
   },
   "2608255": {
    "ibge": "2608255",
@@ -16084,7 +16221,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 28
+   "dias_sem_reconhecimento": 30
   },
   "3526100": {
    "ibge": "3526100",
@@ -16144,7 +16281,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 44
   },
   "3136801": {
    "ibge": "3136801",
@@ -16234,7 +16371,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 5
   },
   "5105200": {
    "ibge": "5105200",
@@ -16364,6 +16501,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "2608453": {
+   "ibge": "2608453",
+   "nome": "Lagoa do Carro",
+   "uf": "PE",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Pernambuco (AMUPE))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115929_2026-10-29_49ceb6791d8d87f792e458e25753152f.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 049/2026",
+     "hash": "8a90c588d4d44c94c1b3958ba2cae915c2b6298b1d10809e81cc5de9b67d0145"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "4311270": {
    "ibge": "4311270",
@@ -16701,7 +16868,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 9
   },
   "3138005": {
    "ibge": "3138005",
@@ -16731,7 +16898,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 25
+   "dias_sem_reconhecimento": 27
   },
   "4113254": {
    "ibge": "4113254",
@@ -16761,7 +16928,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 9
   },
   "1600279": {
    "ibge": "1600279",
@@ -16890,7 +17057,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 44
+   "dias_sem_reconhecimento": 46
   },
   "4311601": {
    "ibge": "4311601",
@@ -17736,7 +17903,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 15
+   "dias_sem_reconhecimento": 17
   },
   "1302702": {
    "ibge": "1302702",
@@ -17766,7 +17933,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 8
+   "dias_sem_reconhecimento": 10
   },
   "4114500": {
    "ibge": "4114500",
@@ -18572,7 +18739,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 38
+   "dias_sem_reconhecimento": 40
   },
   "2407500": {
    "ibge": "2407500",
@@ -19353,7 +19520,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 36
+   "dias_sem_reconhecimento": 38
   },
   "2921500": {
    "ibge": "2921500",
@@ -19782,7 +19949,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 35
+   "dias_sem_reconhecimento": 37
   },
   "1504901": {
    "ibge": "1504901",
@@ -20331,7 +20498,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 11
+   "dias_sem_reconhecimento": 13
   },
   "2510105": {
    "ibge": "2510105",
@@ -20460,7 +20627,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 289
+   "dias_sem_reconhecimento": 291
   },
   "1303106": {
    "ibge": "1303106",
@@ -20647,6 +20814,36 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "4117271": {
+   "ibge": "4117271",
+   "nome": "Nova Tebas",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17422",
+     "data": "30/10/2026",
+     "decreto": "Decreto municipal nº 154",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
+  },
   "4211603": {
    "ibge": "4211603",
    "nome": "Nova Veneza",
@@ -20825,7 +21022,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 289
+   "dias_sem_reconhecimento": 291
   },
   "4313441": {
    "ibge": "4313441",
@@ -21194,7 +21391,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 109
+   "dias_sem_reconhecimento": 111
   },
   "2706109": {
    "ibge": "2706109",
@@ -21340,7 +21537,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 9
   },
   "5215504": {
    "ibge": "5215504",
@@ -21370,7 +21567,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 239
+   "dias_sem_reconhecimento": 241
   },
   "1505486": {
    "ibge": "1505486",
@@ -21612,6 +21809,36 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2706208": {
+   "ibge": "2706208",
+   "nome": "Palestina",
+   "uf": "AL",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115421_2026-10-29_926189abc457b5d524ff3b991dcf66c3.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº .",
+     "hash": "0bebbc48688f739bf919e2a56bf07da23fa103e5e8e8a7711add42664206bd1e"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
+  },
   "4117701": {
    "ibge": "4117701",
    "nome": "Palmeira",
@@ -21765,7 +21992,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 73
+   "dias_sem_reconhecimento": 75
   },
   "4313805": {
    "ibge": "4313805",
@@ -22002,10 +22229,18 @@
      "data": "27/10/2026",
      "decreto": "Decreto nº 28.063",
      "hash": "8cc52c7992045aba8433942f4c071933bc34525630d4570957c581c7b90d7631"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 28.063",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 5
   },
   "2510659": {
    "ibge": "2510659",
@@ -22095,7 +22330,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 38
+   "dias_sem_reconhecimento": 40
   },
   "4314035": {
    "ibge": "4314035",
@@ -22125,7 +22360,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 36
+   "dias_sem_reconhecimento": 38
   },
   "2408904": {
    "ibge": "2408904",
@@ -22185,7 +22420,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 1
+   "dias_sem_reconhecimento": 3
   },
   "1303403": {
    "ibge": "1303403",
@@ -22414,6 +22649,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "1303502": {
+   "ibge": "1303502",
+   "nome": "Pauini",
+   "uf": "AM",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118977_2026-10-29_320d5990237a408d52953cc118d81b39.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 060/2026",
+     "hash": "551f1ec4756c36b99861df810c70dd6ffdd5f1e7e1b0fe21c90aa04a7a4a6bec"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2207801": {
    "ibge": "2207801",
@@ -23334,7 +23599,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 45
+   "dias_sem_reconhecimento": 47
   },
   "4119400": {
    "ibge": "4119400",
@@ -23413,6 +23678,36 @@
    ],
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
+  },
+  "3151206": {
+   "ibge": "3151206",
+   "nome": "Pirapora",
+   "uf": "MG",
+   "decreto": true,
+   "primeiro_decreto": "30/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Mineiros (AMM-MG))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118469_2026-10-29_bf7a4d817f6773ceff1943a8649d4a4c.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 101",
+     "hash": "f39bdd0f353370d680d9f5f6719c53bde3c4e889d910b411f60379b092752fec"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "4314605": {
    "ibge": "4314605",
@@ -23525,9 +23820,17 @@
      "data": "25/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.252",
      "hash": "5214225a8911b5dda243f324c924c1a0b34fa1bae4efe010e2870cdda28c585b"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 207",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "1200385": {
@@ -24004,7 +24307,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 239
+   "dias_sem_reconhecimento": 241
   },
   "3152204": {
    "ibge": "3152204",
@@ -24124,7 +24427,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 101
+   "dias_sem_reconhecimento": 103
   },
   "4120150": {
    "ibge": "4120150",
@@ -24154,7 +24457,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "1600535": {
    "ibge": "1600535",
@@ -24492,7 +24795,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 9
+   "dias_sem_reconhecimento": 11
   },
   "4120358": {
    "ibge": "4120358",
@@ -24913,7 +25216,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 6
   },
   "4315321": {
    "ibge": "4315321",
@@ -25051,7 +25354,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 3
+   "dias_sem_reconhecimento": 5
   },
   "2512606": {
    "ibge": "2512606",
@@ -25317,7 +25620,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 45
+   "dias_sem_reconhecimento": 47
   },
   "4315453": {
    "ibge": "4315453",
@@ -26003,7 +26306,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 245
+   "dias_sem_reconhecimento": 247
   },
   "4315602": {
    "ibge": "4315602",
@@ -26080,7 +26383,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 25
+   "dias_sem_reconhecimento": 27
   },
   "1506161": {
    "ibge": "1506161",
@@ -26365,10 +26668,18 @@
      "data": "23/10/2026",
      "decreto": "Decreto municipal nº 94",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17422",
+     "data": "30/10/2026",
+     "decreto": "Decreto municipal nº 97",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 9
   },
   "4122602": {
    "ibge": "4122602",
@@ -26398,7 +26709,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 4
+   "dias_sem_reconhecimento": 6
   },
   "4316402": {
    "ibge": "4316402",
@@ -26436,7 +26747,7 @@
     }
    ],
    "n_eventos": 2,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "3156502": {
    "ibge": "3156502",
@@ -26840,7 +27151,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 2
+   "dias_sem_reconhecimento": 4
   },
   "4316600": {
    "ibge": "4316600",
@@ -27158,7 +27469,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 7
+   "dias_sem_reconhecimento": 9
   },
   "2612505": {
    "ibge": "2612505",
@@ -27456,6 +27767,36 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2928109": {
+   "ibge": "2928109",
+   "nome": "Santa Maria da Vitória",
+   "uf": "BA",
+   "decreto": true,
+   "primeiro_decreto": "14/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "data": "14/01/2026",
+     "decreto": "ato de resposta — Portaria nº 78",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 291
+  },
   "2612703": {
    "ibge": "2612703",
    "nome": "Santa Maria do Cambucá",
@@ -27525,6 +27866,36 @@
    "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
+  "4123907": {
+   "ibge": "4123907",
+   "nome": "Santa Mariana",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "29/10/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 107",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 3
+  },
   "4317202": {
    "ibge": "4317202",
    "nome": "Santa Rosa",
@@ -27553,25 +27924,26 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 84
+   "dias_sem_reconhecimento": 86
   },
   "1200435": {
    "ibge": "1200435",
    "nome": "Santa Rosa do Purus",
    "uf": "AC",
    "decreto": true,
-   "primeiro_decreto": "19/08/2026",
+   "primeiro_decreto": "14/01/2026",
    "primeiro_reconhecimento": "19/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_ate_reconhecimento": 0,
+   "dias_ate_reconhecimento": 217,
    "fontes": [
     {
      "canal": "DOU",
@@ -27580,9 +27952,17 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "data": "14/01/2026",
+     "decreto": "ato de resposta — Portaria nº 78",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4215653": {
@@ -27819,7 +28199,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 37
+   "dias_sem_reconhecimento": 39
   },
   "2513505": {
    "ibge": "2513505",
@@ -28118,6 +28498,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "2411502": {
+   "ibge": "2411502",
+   "nome": "Santo Antônio",
+   "uf": "RN",
+   "decreto": true,
+   "primeiro_decreto": "26/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (01/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "data": "26/01/2026",
+     "decreto": "ato de resposta — Portaria nº 190",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 279
   },
   "4317707": {
    "ibge": "4317707",
@@ -28587,12 +28997,42 @@
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
+  "2806909": {
+   "ibge": "2806909",
+   "nome": "São Francisco",
+   "uf": "SE",
+   "decreto": true,
+   "primeiro_decreto": "26/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (01/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "data": "26/01/2026",
+     "decreto": "ato de resposta — Portaria nº 190",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 279
+  },
   "3161106": {
    "ibge": "3161106",
    "nome": "São Francisco",
    "uf": "MG",
    "decreto": true,
-   "primeiro_decreto": "06/07/2026",
+   "primeiro_decreto": "20/01/2026",
    "primeiro_reconhecimento": null,
    "tipos": [
     "SE"
@@ -28620,10 +29060,26 @@
      "data": "09/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.435",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-15-cidades-afetadas-por-desastres-1",
+     "data": "20/01/2026",
+     "decreto": "ato de resposta — Portaria nº 163",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (01/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "data": "26/01/2026",
+     "decreto": "ato de resposta — Portaria nº 190",
+     "hash": null
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 116
+   "n_eventos": 4,
+   "dias_sem_reconhecimento": 285
   },
   "4318101": {
    "ibge": "4318101",
@@ -28633,10 +29089,11 @@
    "primeiro_decreto": "06/10/2026",
    "primeiro_reconhecimento": "23/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
@@ -28650,9 +29107,17 @@
      "data": "23/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.701",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (31/10/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-cinco-cidades-gauchas-afetadas-por-desastres-2",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-cinco-cidades-gauchas-afetadas-por-desastres-2",
+     "data": "26/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.701",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2209658": {
@@ -28804,6 +29269,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "4318424": {
+   "ibge": "4318424",
+   "nome": "São João da Urtiga",
+   "uf": "RS",
+   "decreto": true,
+   "primeiro_decreto": "26/01/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (01/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "data": "26/01/2026",
+     "decreto": "ato de resposta — Portaria nº 190",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 279
   },
   "2209955": {
    "ibge": "2209955",
@@ -28983,7 +29478,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 24
+   "dias_sem_reconhecimento": 26
   },
   "2708402": {
    "ibge": "2708402",
@@ -29103,7 +29598,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 16
+   "dias_sem_reconhecimento": 18
   },
   "2613503": {
    "ibge": "2613503",
@@ -29299,18 +29794,20 @@
    "nome": "São José do Sabugi",
    "uf": "PB",
    "decreto": true,
-   "primeiro_decreto": "14/07/2026",
+   "primeiro_decreto": "26/01/2026",
    "primeiro_reconhecimento": "27/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "seca"
    ],
-   "dias_ate_reconhecimento": 13,
+   "dias_ate_reconhecimento": 182,
    "fontes": [
     {
      "canal": "DOU",
@@ -29319,9 +29816,17 @@
      "data": "27/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.420",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (01/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "data": "26/01/2026",
+     "decreto": "ato de resposta — Portaria nº 190",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4318705": {
@@ -29376,7 +29881,7 @@
     }
    ],
    "n_eventos": 4,
-   "dias_sem_reconhecimento": 37
+   "dias_sem_reconhecimento": 39
   },
   "2210359": {
    "ibge": "2210359",
@@ -29570,10 +30075,18 @@
      "data": "28/10/2026",
      "decreto": "Decreto municipal nº 588/2026",
      "hash": "5ae4e7577f1da56f3b53e6bcef92649451d85a8b8ae86e04e71214eb70f51877"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17424",
+     "data": "29/10/2026",
+     "decreto": "Decreto municipal nº 588",
+     "hash": "61286479c29ac222a2cc605c33d98e55482feef0f61d6826f20eb4cf749c0331"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 2
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 4
   },
   "2515005": {
    "ibge": "2515005",
@@ -29603,7 +30116,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 43
+   "dias_sem_reconhecimento": 45
   },
   "2807006": {
    "ibge": "2807006",
@@ -29693,7 +30206,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "4125704": {
    "ibge": "4125704",
@@ -30200,7 +30713,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 25
+   "dias_sem_reconhecimento": 27
   },
   "4320107": {
    "ibge": "4320107",
@@ -30419,7 +30932,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 270
+   "dias_sem_reconhecimento": 272
   },
   "2708956": {
    "ibge": "2708956",
@@ -30509,7 +31022,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 21
+   "dias_sem_reconhecimento": 23
   },
   "2930204": {
    "ibge": "2930204",
@@ -30839,7 +31352,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 44
+   "dias_sem_reconhecimento": 46
   },
   "4320578": {
    "ibge": "4320578",
@@ -31194,7 +31707,7 @@
     }
    ],
    "n_eventos": 3,
-   "dias_sem_reconhecimento": 42
+   "dias_sem_reconhecimento": 44
   },
   "4126652": {
    "ibge": "4126652",
@@ -31224,7 +31737,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "2516300": {
    "ibge": "2516300",
@@ -31434,7 +31947,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 111
+   "dias_sem_reconhecimento": 113
   },
   "2614857": {
    "ibge": "2614857",
@@ -31464,7 +31977,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 32
+   "dias_sem_reconhecimento": 34
   },
   "4126678": {
    "ibge": "4126678",
@@ -32452,7 +32965,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 17
+   "dias_sem_reconhecimento": 19
   },
   "3169307": {
    "ibge": "3169307",
@@ -33361,10 +33874,11 @@
    "primeiro_decreto": "23/06/2026",
    "primeiro_reconhecimento": "30/06/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
@@ -33378,9 +33892,17 @@
      "data": "30/06/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.117",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118977_2026-10-29_320d5990237a408d52953cc118d81b39.pdf",
+     "data": "30/10/2026",
+     "decreto": "Decreto nº 907/",
+     "hash": "551f1ec4756c36b99861df810c70dd6ffdd5f1e7e1b0fe21c90aa04a7a4a6bec"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4322541": {
@@ -33561,7 +34083,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 64
+   "dias_sem_reconhecimento": 66
   },
   "2616001": {
    "ibge": "2616001",
@@ -33840,7 +34362,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 38
+   "dias_sem_reconhecimento": 40
   },
   "2517209": {
    "ibge": "2517209",
@@ -34008,7 +34530,7 @@
     }
    ],
    "n_eventos": 1,
-   "dias_sem_reconhecimento": 84
+   "dias_sem_reconhecimento": 86
   },
   "3171600": {
    "ibge": "3171600",

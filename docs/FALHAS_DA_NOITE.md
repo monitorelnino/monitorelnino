@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-26. 75 falhas; 69 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-26. 76 falhas; 70 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -680,3 +680,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** scripts/unir_conflito_de_rodada.py: unir_fila_de_pistas deduplica por chave_da_pista; autoteste: caso 'repetidas contam' reprovava antes da correção
 - **Correção:** pistas_rejeitadas.json passa a LOGS_QUE_SO_CRESCEM (multiconjunto pela base comum, total recalculado); sai de FILAS_DE_PISTA; autoteste do caso.
 - **Caso de teste:** `scripts/unir_conflito_de_rodada.py`
+
+## F76 · Ensaio real vermelho: elo morreu no checkout e o condutor esperou 83 min
+
+- **Noite:** 2026-10-30
+- **Sintoma:** Ensaio real 41134829009 (#1384): 'faltam: juiz, sinais-fisicos' até o teto de 110 min; Issue #351 no robo-registro; o run agendado do #1385 foi pulado ('Hora de ensaiar?') e ficou sem prova.
+- **Causa:** O run do juiz no ramo (41138495642) terminou 'failure' em 2 min, preso no passo de checkout (infraestrutura do runner); `ensaio_real.py --conduzir` registra o elo como disparado e nunca o vê terminar sem sucesso, ao contrário do despachante da noite, que redispara.
+- **Prova:** jobs do run 41138495642: 'juiz / coletar' failure, passo checkout in_progress, demais pending, 22:30–22:32 UTC; log do run 41134829009: juiz disparado no min 27, 'faltam: juiz, sinais-fisicos' do min 28 ao 109
+- **Correção:** `a_refazer`: o condutor consulta os runs do ramo e redispara uma vez o workflow cujo último run terminou sem sucesso.
+- **Caso de teste:** `scripts/ensaio_real.py --autoteste (4 casos de a_refazer)`
