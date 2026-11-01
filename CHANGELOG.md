@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · painel do Cemaden com data de consulta e previsão por tercil como lacuna (+60/−2)
+`coletar_sinais_risco.py` passa a consultar todo dia o índice dos boletins do Painel El Niño e carimbar `consultado_em` (parado em 07/10); boletim novo é registrado no detalhe sem trocar o risco por UF. `cptec_prognostico`, antes leitura humana do nº 3, vira lacuna declarada com o boletim vigente. `verificar_sinais` aceita o status `lacuna`.
+
 ## 2026-11-01 · #1402 · Quadro de mortalidade na Saúde (+172/−9)
 
 Seção nova na MARÉ Saúde: óbitos registrados em cartório, excesso observado (2026 menos o esperado do mês), projeção e causa básica calor natural, por mês, de julho de 2026 em diante, para o Brasil e cada estado. A consulta do município ganha o cartão do estado, dito como do estado. Lê `mortalidade_comparada.json`; campo ausente é lacuna declarada.
