@@ -187,14 +187,14 @@
   },
   {
    "id": "chikungunya",
-   "valor": null,
+   "valor": 22404,
    "unidade": "notificações",
    "periodo_inicio": "2026-06-28",
    "periodo_fim": "2026-09-05",
    "n": 10,
    "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
-   "sem_coleta": true,
-   "motivo": "a fonte não traz registro desta UF depois deste período; o nacional só soma o período em que as 27 UFs têm valor"
+   "sem_coleta": false,
+   "motivo": null
   },
   {
    "id": "srag",
@@ -231,7 +231,7 @@
   },
   {
    "id": "estados_acima_da_faixa_dengue",
-   "valor": 10,
+   "valor": 11,
    "unidade": "estados",
    "periodo_inicio": "2026-08-30",
    "periodo_fim": "2026-09-05",
@@ -243,7 +243,7 @@
   },
   {
    "id": "estados_acima_da_faixa_srag",
-   "valor": 0,
+   "valor": 1,
    "unidade": "estados",
    "periodo_inicio": "2026-09-27",
    "periodo_fim": "2026-10-03",
@@ -257,13 +257,13 @@
    "id": "estados_acima_da_faixa_chikungunya",
    "valor": 9,
    "unidade": "estados",
-   "periodo_inicio": null,
-   "periodo_fim": null,
+   "periodo_inicio": "2026-08-30",
+   "periodo_fim": "2026-09-05",
    "n": 27,
    "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
    "sem_coleta": false,
    "motivo": null,
-   "periodo": null
+   "periodo": "2026-35"
   },
   {
    "id": "estados_acima_da_faixa_diarreia",
