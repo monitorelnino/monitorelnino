@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-25 a 2026-11-01 (1251 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-25 a 2026-11-01 (1255 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,8 +27,8 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-10-31 01:57 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-01 07:27 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-10-31 01:43 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-01 18:40 | 4 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `recalcular_mare.py` | essencial | 2026-11-01 19:22 | 4 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 18:17 | 44 s | 1 | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
 | `buscar_planos_fontes_abertas.py` | coletor | 2026-10-28 23:21 | 718 s | — | ok | — |
@@ -48,7 +48,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `coletar_diarios_consorciados.py` | coletor | 2026-10-31 01:22 | 3969 s | 45 | ok | — |
 | `coletar_diarios_municipais.py` | coletor | 2026-10-31 01:22 | 2 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-11-01 02:28 | 2762 s | — | ok | — |
-| `coletar_edicoes_doe.py` | coletor | 2026-10-30 17:16 | 326 s | — | ok | — |
+| `coletar_edicoes_doe.py` | coletor | 2026-11-01 18:30 | 4 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-10-31 01:13 | 480 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-31 01:14 | 4 s | — | ok | — |
 | `coletar_obitos.py` | coletor | 2026-11-01 07:17 | 5 s | — | ok | — |
@@ -74,7 +74,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `desfechos_sus.py` | coletor | 2026-11-01 07:17 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-01 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-01 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `julgar_filas.py` | coletor | 2026-11-01 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `julgar_filas.py` | coletor | 2026-11-01 18:11 | 390 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-10-27 01:13 | 4321 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-01 07:53 | 5 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-01 08:50 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
