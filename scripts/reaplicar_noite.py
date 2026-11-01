@@ -85,8 +85,13 @@ def reaplicar_arquivo(rel: str, alterados, base, arvore, artefato, destino, exis
     if rel == "data/evidencias.json" and existe:
         doc = json.loads(pathlib.Path(destino).read_text(encoding="utf-8"))
         ja = (json.loads(arvore) if arvore else {}).get("itens") or {}
-        doc["itens"] = {k: v for k, v in (doc.get("itens") or {}).items()
-                        if k in ja or existe(str((v or {}).get("arquivo") or ""))}
+        # Todo arquivo que o item promete (cópia e camadas de texto) tem de estar na árvore; o que não está
+        # volta ao registro que a árvore já tinha, ou fica fora. Só o PDF bastava e o `.txt` sumia (01/11).
+        prometidos = lambda v: [str((v or {}).get(c) or "") for c in ("arquivo", "texto_arquivo", "texto_integral", "ocr_arquivo")
+                                if (v or {}).get(c)]
+        doc["itens"] = {k: (v if all(existe(c) for c in prometidos(v)) else ja[k])
+                        for k, v in (doc.get("itens") or {}).items()
+                        if k in ja or all(existe(c) for c in prometidos(v))}
         u.gravar_no_formato_do_produtor(destino, doc)
     return feito
 
@@ -265,6 +270,13 @@ def _autoteste() -> int:
           ev(a="e/a", c="e/c", z="e/sumiu"), existe=lambda c: c != "e/sumiu")
         ok("F55: evidência nova entra; sem arquivo preservado fica fora — índice não mente",
            sorted(json.loads(lido())["itens"]) == ["a", "b", "c"])
+        ev2 = lambda **i: json.dumps({"itens": {k: dict(v) for k, v in i.items()}})
+        r("data/evidencias.json", ["data/evidencias.json"], ev2(a={"arquivo": "e/a"}), ev2(a={"arquivo": "e/a"}),
+          ev2(a={"arquivo": "e/a", "texto_arquivo": "e/a.txt"}, n={"arquivo": "e/n", "texto_arquivo": "e/n.txt"}),
+          existe=lambda c: c in ("e/a", "e/n"))
+        i2 = json.loads(lido())["itens"]
+        ok("F55b: PDF presente e texto ausente não promete o texto (volta ao registro da árvore; novo fica fora)",
+           "texto_arquivo" not in i2["a"] and "n" not in i2)
 
     ruins = [n for n, bom in casos if not bom]
     for n, bom in casos:

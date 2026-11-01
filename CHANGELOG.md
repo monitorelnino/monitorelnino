@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · #PR · Reaplicação da noite não promete texto que não está na árvore (+10/−2)
+
+`reaplicar_noite.py` mantinha a evidência se o PDF existia e deixava o `.txt` prometido (o artefato não leva `evidencias/`): 12 PDFs do DOE-PI ficaram com `texto_arquivo` ausente e a `main` reprovou em Evidências. Agora todo arquivo prometido tem de existir; senão o item volta ao registro da árvore ou fica fora. Os 12 itens voltam ao registro anterior; o texto é extraído de novo na próxima passada.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
