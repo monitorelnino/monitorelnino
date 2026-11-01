@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-01 · Alagoas: endereço do decreto do Comitê El Niño · +0/−0
+
+O Decreto nº 110.661 (DOE-AL de 25/08/2026), lido pelo runner, vira o endereço da estrutura de coordenação de Alagoas em `proveniencia_estadual.json`; sai de `defeitos_de_prova`. O plano de ação do comitê segue em lacuna. Sem mudança de nota. Sergipe segue sem leitura do texto.
+
 ## 2026-10-31 · #1394 · Desfechos do SUS só depois da saúde (+6/−0)
 
 O despachante disparava `noturno_desfechos` às 01:10, junto com a saúde, e a derivação de chikungunya saía esparsa. O temporizador `desfechos_sus` passa a declarar `nao_antes_do_cron` (07:05 UTC, com a saúde já encerrada), mecanismo que a triagem já usa. Dois casos novos no autoteste do despachante; ensaio simulado verde.
