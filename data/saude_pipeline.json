@@ -16803,7 +16803,52 @@
    "itens": null,
    "status": "erro",
    "erro": "erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port"
+  },
+  {
+   "data": "2026-10-31",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-01T01:13:08",
+   "duracao_s": 360.5,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-10-31",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-01T01:19:08",
+   "duracao_s": 315.8,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-31",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-01T01:24:23",
+   "duracao_s": 315.0,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-31",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-01T01:29:38",
+   "duracao_s": 314.6,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-10-31",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-01T01:34:52",
+   "duracao_s": 315.4,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
   }
  ],
- "atualizado_em": "2026-11-01T01:33:13"
+ "atualizado_em": "2026-11-01T01:34:52"
 }
