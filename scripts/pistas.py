@@ -517,6 +517,11 @@ def _autoteste() -> int:
             ok("sincronizar deixa a memória igual ao disco",
                memoria["pistas"] is falso[FILA_PADRAO]["pistas"]
                or len(memoria["pistas"]) == len(falso[FILA_PADRAO]["pistas"]))
+            falso[FILA_PADRAO]["pistas"][:] = [dict(REDE, id="mesmo", alvo="C/AC"), dict(REDE, id="mesmo", alvo="C/AM")]
+            toc = {"pistas": [dict(p, buscador2_em="2026-11-02") for p in falso[FILA_PADRAO]["pistas"]]}
+            sincronizar(FILA_PADRAO, toc)
+            ok("sincronizar atualiza cada pista de mesmo id e alvos diferentes",
+               all(p.get("buscador2_em") for p in falso[FILA_PADRAO]["pistas"]) and len(falso[FILA_PADRAO]["pistas"]) == 2)
             ok("sincronizar em fila vazia não quebra",
                sincronizar("pistas_vazia.json", {"pistas": []})["gravadas"] == 0)
         finally:
@@ -681,6 +686,11 @@ def chave_da_pista(pista: dict) -> str:
     return "url:" + url + "|" + str(p.get("alvo") or p.get("ibge") or p.get("uf") or "")
 
 
+def _chave_com_alvo(pista: dict) -> str:
+    """`chave_da_pista` mais o alvo: o par que distingue duas pistas de mesma URL e alvos diferentes."""
+    return chave_da_pista(pista) + "#" + str((pista or {}).get("alvo") or "")
+
+
 def sincronizar(nome_da_fila: str, fila_em_memoria: dict, origem: str = "",
                 ler_fn=None, gravar_fn=None) -> dict:
     """Leva ao disco a fila que o coletor montou em memória, pela porta. ESCREVE.
@@ -714,7 +724,9 @@ def sincronizar(nome_da_fila: str, fila_em_memoria: dict, origem: str = "",
     if not isinstance(no_disco, list):
         no_disco = []
         em_disco[chave_lista] = no_disco
-    por_chave = {chave_da_pista(p): p for p in no_disco}
+    # A mesma URL vira uma pista por alvo (mesmo `id`, alvos diferentes): casar só pelo `id` juntava
+    # todas numa e deixava as outras sem o estado que a memória tocou (599 links nunca saíam da fila).
+    por_chave = {_chave_com_alvo(p): p for p in no_disco}
 
     da_memoria = (fila_em_memoria or {}).get("pistas")
     if not isinstance(da_memoria, list):
@@ -724,7 +736,7 @@ def sincronizar(nome_da_fila: str, fila_em_memoria: dict, origem: str = "",
     recusadas, motivos = [], {}
     gravadas = mescladas = 0
     for bruta in da_memoria:
-        k = chave_da_pista(bruta)
+        k = _chave_com_alvo(bruta)
         antiga = por_chave.get(k)
         if antiga is not None:
             # Mescla: a memória tem o estado mais novo dos campos que ela tocou. Nada se apaga —
