@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>02/11/2026 · Título do plano corta na capa; proveniência estadual entra na corrente · +19/−5</dt>
+      <dd>`titulo_do_documento` encerra o título antes de equipe, governador e secretário (PI). `proveniencia_estadual.py` não lê texto de evidência quando o instrumento não cita ato (de 2 min a 0,3 s) e roda no elo `doe_incremental`, seg/qua/sex: lacuna ganha `verificado_em` novo, com o teto &quot;não localizado até o corte&quot;.</dd>
       <dt>01/11/2026 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2</dt>
       <dd>Mesma raiz do #1424, etapas 4 e 6: `julgar_camada_saude` não aplicava o caminho do plano do juiz 1.8. Com a etapa 2 corrigida, o PDF da SESAPI-PI passou a sair `resposta`, porque o teste do objeto (feito para decreto) lê as ações de resposta do corpo. Agora, sendo plano, a natureza é EX_ANTE (J1) e a etapa 6 recebe `sem_ato_de_aprovacao` e `como_plano`. Caso de teste falha sem a correção.</dd>
       <dt>01/11/2026 · Juiz de saúde: plano publicado pelo órgão estadual passa a etapa 2 como no Legal · +14/−1</dt>
@@ -165,8 +167,6 @@
       <dd>A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.</dd>
       <dt>25/10/2026 · Fila de descoberta reentrante</dt>
       <dd>A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.</dd>
-      <dt>25/10/2026 · Blog: link para a metodologia</dt>
-      <dd>O aviso do blog ganha o link &quot;Como os textos são produzidos&quot;, apontando para a seção da METODOLOGIA (PDF). Texto do link no catálogo (`blog.metodologia.link`).</dd>
     </dl>
   </section>
 </main>
@@ -176,7 +176,7 @@
     <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patty Ferrini</a></span>
     <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener"><img src="assets/redes/linkedin.png?v=b80ab655" alt="" width="26" height="24"><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener"><img src="assets/redes/instagram.svg?v=a036f819" alt="" width="24" height="24"><span>Instagram</span></a></li></ul>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
-    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">01/11/2026</span> · Corte <span id="corteDados">01/11/2026</span> · Coleta <span id="metaColeta">01/11/2026</span> · Publicação <span id="metaPublicacao">01/11/2026</span></span>
+    <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">02/11/2026</span> · Corte <span id="corteDados">02/11/2026</span> · Coleta <span id="metaColeta">02/11/2026</span> · Publicação <span id="metaPublicacao">02/11/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
   </footer>
 </div>

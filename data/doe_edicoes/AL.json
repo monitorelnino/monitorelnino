@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "30/10/2026",
+  "em": "01/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_apinova",
-  "ultima_edicao_lida": "2026-10-29"
+  "ultima_edicao_lida": "2026-10-30"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1490,24 +1490,21 @@
    "termos_achados": []
   },
   "2026-10-30": {
-   "decisao": "sem_edicao_na_data",
-   "em": "30/10/2026"
+   "decisao": "lida",
+   "em": "01/11/2026",
+   "bytes": 851538,
+   "paginas": 8,
+   "paginas_com_texto": 8,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51955",
+   "impressao": "ce5478a965cf11b7e7e7ba2be65e237444bbec38e0622349c552f226768cf743",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-10-29": {
    "decisao": "lida",
-   "em": "30/10/2026",
-   "bytes": 5251466,
-   "paginas": 172,
-   "paginas_com_texto": 172,
-   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51953",
-   "impressao": "9e0b5ac2d3bf1cc1e33628760c9fee8fa09f6252fc86d19ee9c6ccc60fb609ec",
-   "termos_versao": "2026-10-17",
-   "leitor": "2026-10-20",
-   "termos_achados": []
-  },
-  "2026-10-29#2": {
-   "decisao": "lida",
-   "em": "30/10/2026",
+   "em": "01/11/2026",
    "bytes": 1943951,
    "paginas": 16,
    "paginas_com_texto": 16,
@@ -1515,11 +1512,25 @@
    "impressao": "e6751e3fbb7c1b9f6ac6878752d4988ae85125593453df26537547c13db57efa",
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-10-29#2": {
+   "decisao": "lida",
+   "em": "01/11/2026",
+   "bytes": 5251466,
+   "paginas": 172,
+   "paginas_com_texto": 172,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51953",
+   "impressao": "9e0b5ac2d3bf1cc1e33628760c9fee8fa09f6252fc86d19ee9c6ccc60fb609ec",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-28": {
    "decisao": "lida",
-   "em": "30/10/2026",
+   "em": "01/11/2026",
    "bytes": 4404416,
    "paginas": 136,
    "paginas_com_texto": 136,
@@ -1527,6 +1538,7 @@
    "impressao": "38994d0f507bdf098adb06aee007c532335fab5a06722ace93b4f707853b3db9",
    "termos_versao": "2026-10-17",
    "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-27": {
@@ -1619,5 +1631,5 @@
    ]
   }
  },
- "atualizado_em": "30/10/2026"
+ "atualizado_em": "01/11/2026"
 }

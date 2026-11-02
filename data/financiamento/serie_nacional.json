@@ -530,5 +530,121 @@
  "rotas_coletadas": [
   "r5"
  ],
- "nota": "r5 = valor de repasse dos instrumentos assinados na semana, até a semana da carga da fonte; depois dela, sem valor (a fonte ainda não trouxe). Demais rotas sem valor: não coletadas por este coletor."
+ "nota": "r5 = valor de repasse dos instrumentos assinados na semana, até a semana da carga da fonte; depois dela, sem valor (a fonte ainda não trouxe). Demais rotas sem valor: não coletadas por este coletor.",
+ "consultado_em": "01/11/2026",
+ "serie_mensal_download": {
+  "fonte": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
+  "ultimo_mes": "202609",
+  "meses_parciais": [],
+  "meses": [
+   {
+    "mes": "202601",
+    "por_rota": {
+     "constitucional": 33560322615.14,
+     "outras": 2339088292.42,
+     "saude": 30019776.72,
+     "assistencia_social": 3816721.11,
+     "defesa_civil": 43379762.55
+    },
+    "total": 35976627167.94,
+    "parcial": false
+   },
+   {
+    "mes": "202602",
+    "por_rota": {
+     "constitucional": 32903865656.69,
+     "outras": 2670059199.17,
+     "defesa_civil": 85433267.12,
+     "saude": 21551039.02,
+     "assistencia_social": 4690299.95
+    },
+    "total": 35685599461.95,
+    "parcial": false
+   },
+   {
+    "mes": "202603",
+    "por_rota": {
+     "constitucional": 22471757941.28,
+     "outras": 2017135292.45,
+     "assistencia_social": 24658512.02,
+     "defesa_civil": 56707944.47,
+     "saude": 37884742.05
+    },
+    "total": 24608144432.27,
+    "parcial": false
+   },
+   {
+    "mes": "202604",
+    "por_rota": {
+     "constitucional": 25265915421.44,
+     "outras": 3073810550.6,
+     "defesa_civil": 125008027.99,
+     "saude": 43859145.96,
+     "assistencia_social": 4261048.81
+    },
+    "total": 28512854194.8,
+    "parcial": false
+   },
+   {
+    "mes": "202605",
+    "por_rota": {
+     "constitucional": 31759740129.08,
+     "outras": 5223841260.79,
+     "saude": 28365515.05,
+     "defesa_civil": 139652872.27,
+     "assistencia_social": 6637824.44
+    },
+    "total": 37158237601.63,
+    "parcial": false
+   },
+   {
+    "mes": "202606",
+    "por_rota": {
+     "constitucional": 32910078885.57,
+     "outras": 4152942163.34,
+     "defesa_civil": 76235994.15,
+     "saude": 22154959.93,
+     "assistencia_social": 20353559.12
+    },
+    "total": 37181765562.11,
+    "parcial": false
+   },
+   {
+    "mes": "202607",
+    "por_rota": {
+     "constitucional": 23510255355.3,
+     "outras": 3309978410.88,
+     "saude": 32073010.54,
+     "defesa_civil": 83558130.52,
+     "assistencia_social": 9190828.96
+    },
+    "total": 26945055736.2,
+    "parcial": false
+   },
+   {
+    "mes": "202608",
+    "por_rota": {
+     "constitucional": 29684933268.3,
+     "outras": 2531581039.19,
+     "saude": 7476514.02,
+     "defesa_civil": 80375572.22,
+     "assistencia_social": 1468933.75
+    },
+    "total": 32305835327.48,
+    "parcial": false
+   },
+   {
+    "mes": "202609",
+    "por_rota": {
+     "constitucional": 24369220683.97,
+     "outras": 3023495469.56,
+     "defesa_civil": 103168336.57,
+     "saude": 22050640.07,
+     "assistencia_social": 1003442.53
+    },
+    "total": 27518938572.7,
+    "parcial": false
+   }
+  ]
+ }
 }

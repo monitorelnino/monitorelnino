@@ -546,7 +546,9 @@ def titulo_do_documento(texto: str, titulo_da_pista: str, url: str) -> str:
     if m:
         # A frase inteira do título, do começo do nome do plano até a pontuação ou o ano.
         trecho = (texto[m.start():m.start() + 180]).strip()
-        corte = re.search(r"(?<=\S)\s*(?:\.|;|—|–| - |Sum[áa]rio|Apresenta[çc][ãa]o)", trecho)
+        # O título acaba onde a capa passa a outro bloco: ficha técnica, governador, secretário.
+        corte = re.search(r"(?<=\S)\s*(?:\.|;|—|–| - |Sum[áa]rio|Apresenta[çc][ãa]o|\n\s*\n"
+                          r"|\bEQUIPE\b|\bGovernador\b|\bSecret[áa]ri[oa]\b|\bELABORA[ÇC][ÃA]O\b)", trecho)
         titulo = (trecho[:corte.start()] if corte else trecho).strip(" ,.-;")
         if len(titulo) >= 20:
             return titulo
@@ -1206,6 +1208,11 @@ def autoteste() -> int:
         "o título vem do documento quando ele nomeia o plano":
             lambda: titulo_do_documento(t_plano_ses, "GOVERNO DE MG - saude.mg.gov.br",
                                         "https://saude.mg.gov.br/p.pdf").startswith("PLANO DE CONTINGÊNCIA"),
+        "o título corta na capa, antes da equipe e dos nomes":
+            lambda: titulo_do_documento(
+                "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO "
+                "EQUIPE GESTORA Rafael Tajra Fonteles Governador", "x", "https://saude.pi.gov.br/p.pdf"
+            ) == "PLANO ESTADUAL DE PREPARAÇÃO DO SETOR SAÚDE PARA ENFRENTAMENTO DOS IMPACTOS DO EL NIÑO",
         "sem nome de plano no texto, o host sai do título da pista":
             lambda: titulo_do_documento("texto qualquer", "Alguma coisa - saude.mg.gov.br",
                                         "https://saude.mg.gov.br/p.pdf") == "Alguma coisa",
