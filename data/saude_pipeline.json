@@ -19683,7 +19683,61 @@
    "itens": 2,
    "status": "erro",
    "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "scripts/corrigir_atribuicao_por_dominio.py",
+   "inicio": "2026-11-02T07:51:35",
+   "duracao_s": 65.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "revisar_pistas.py",
+   "inicio": "2026-11-02T07:52:40",
+   "duracao_s": 621.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "julgar_filas.py",
+   "inicio": "2026-11-02T08:03:01",
+   "duracao_s": 2521.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "julgar_e_aplicar_descobertas.py",
+   "inicio": "2026-11-02T08:45:02",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-11-02T08:45:02",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "scripts/amostra_auditoria_semanal.py",
+   "inicio": "2026-11-02T08:45:02",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-11-02T08:12:35"
+ "atualizado_em": "2026-11-02T08:45:02"
 }
