@@ -1052,6 +1052,19 @@
    ],
    "correcao": "`a_refazer`: o condutor consulta os runs do ramo e redispara uma vez o workflow cujo último run terminou sem sucesso.",
    "caso_de_teste": "scripts/ensaio_real.py --autoteste (4 casos de a_refazer)"
+  },
+  {
+   "id": "F77",
+   "noite": "2026-11-02",
+   "titulo": "Ensaio real vermelho: push do ramo passou de 2 GiB depois de esperar na fila",
+   "sintoma": "Ensaios reais 41373381856 e 41377512541 (#1437, #1438): 'remote: fatal: pack exceeds maximum allowed size (2.00 GiB)' no push do ramo ensaio-real; Issue no robo-registro.",
+   "causa": "O dispatch fixa o SHA da main; o job esperou ~70 min na fila do grupo de concorrência e a main andou. O checkout é raso (depth 1) e o remoto já não anunciava aquele SHA, então o git não tinha ponta conhecida para subtrair e empacotou a árvore inteira.",
+   "prova": [
+    "log do job 125079621531: push de HEAD para ensaio-real/2026-11-02-41377512541 rejeitado, 03:36:56 UTC",
+    "run 41377512541: criado 02:24, job iniciado 03:35 (fila atrás do run 146)"
+   ],
+   "correcao": "`git fetch --depth=1 origin main` antes do push do ramo: a ponta atual passa a ser base conhecida e o pacote leva só o commit novo.",
+   "caso_de_teste": ".github/workflows/ensaio_real_da_noite.yml"
   }
  ]
 }
