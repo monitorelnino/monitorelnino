@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-25 a 2026-11-01 (1291 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-25 a 2026-11-01 (1294 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-01 07:27 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-01 01:39 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-01 01:50 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-01 02:36 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-01 18:17 | 44 s | 1 | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -61,13 +61,13 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-01 · por canal: we
 | `coletar_saude.py` | coletor | 2026-11-01 01:13 | 80 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-10-27 02:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-31 01:14 | 3 s | — | ok | — |
-| `coletar_sg_esus.py` | coletor | 2026-11-01 03:36 | 10 s | — | ok | — |
+| `coletar_sg_esus.py` | coletor | 2026-11-01 02:31 | 12 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-01 07:27 | 6 s | — | **erro** (7 seguidas) | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
 | `coletar_sim.py` | coletor | 2026-11-01 07:17 | 618 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-11-01 01:14 | 97 s | — | ok | — |
 | `coletar_sisab.py` | coletor | 2026-11-01 07:15 | 111 s | — | **erro** | [lacuna declarada] https://sisab.saude.gov.br/paginas/acessoRestrito/relatorio/federal/saude/RelSauProducao.xhtml (diarr |
 | `coletar_srag_gripe.py` | coletor | 2026-10-31 01:15 | 282 s | — | ok | — |
-| `coletar_srag_sivep.py` | coletor | 2026-11-01 03:35 | 36 s | — | ok | — |
+| `coletar_srag_sivep.py` | coletor | 2026-11-01 02:30 | 52 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-01 01:15 | 41 s | — | **erro** | Traceback (most recent call last): |
 | `consultar_querido_diario.py` | coletor | 2026-10-31 01:17 | 299 s | — | **erro** | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-01 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
