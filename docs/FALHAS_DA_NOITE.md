@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-26. 77 falhas; 71 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-11-02. 78 falhas; 72 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -698,3 +698,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** log do job 125079621531: push de HEAD para ensaio-real/2026-11-02-41377512541 rejeitado, 03:36:56 UTC; run 41377512541: criado 02:24, job iniciado 03:35 (fila atrás do run 146)
 - **Correção:** `git fetch --depth=1 origin main` antes do push do ramo: a ponta atual passa a ser base conhecida e o pacote leva só o commit novo.
 - **Caso de teste:** `.github/workflows/ensaio_real_da_noite.yml`
+
+## F78 · Buscador 2: lotes de reprocessamento não baixam a fila (599 links com mesmo id e alvos diferentes)
+
+- **Noite:** 2026-11-02
+- **Sintoma:** Lotes 6 e 7 do Buscador 2 (#1442, #1445) fecharam links, mas `a_seguir(reprocessar=True)` ficou em 610 antes e depois do lote 7.
+- **Causa:** `pistas.sincronizar` casava memória e disco por `chave_da_pista` (o `id`); a mesma URL existe como uma pista por alvo (599 pistas, 325 ids), então todas as pistas da memória caíam numa só do disco e as outras nunca recebiam `buscador2_em` nem o status de fechada.
+- **Prova:** agregação em data/pistas_imprensa.json da main c27ccb26: 599 links do Google News sem buscador2_em, 325 chaves distintas; 781 chaves duplicadas no arquivo (1.645 excedentes); simulação offline com o código antigo: pistas marcadas só em 325 de 599; com a chave por alvo: reprocessar 610 → 0
+- **Correção:** `sincronizar` casa por `chave_da_pista` + alvo (`_chave_com_alvo`); nada é apagado nem unido.
+- **Caso de teste:** `scripts/pistas.py --autoteste (sincronizar atualiza cada pista de mesmo id e alvos diferentes)`

@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-10-26",
+ "atualizado_em": "2026-11-02",
  "falhas": [
   {
    "id": "F01",
@@ -1065,6 +1065,19 @@
    ],
    "correcao": "`git fetch --depth=1 origin main` antes do push do ramo: a ponta atual passa a ser base conhecida e o pacote leva só o commit novo.",
    "caso_de_teste": ".github/workflows/ensaio_real_da_noite.yml"
+  },
+  {
+   "id": "F78",
+   "noite": "2026-11-02",
+   "titulo": "Buscador 2: lotes de reprocessamento não baixam a fila (599 links com mesmo id e alvos diferentes)",
+   "sintoma": "Lotes 6 e 7 do Buscador 2 (#1442, #1445) fecharam links, mas `a_seguir(reprocessar=True)` ficou em 610 antes e depois do lote 7.",
+   "causa": "`pistas.sincronizar` casava memória e disco por `chave_da_pista` (o `id`); a mesma URL existe como uma pista por alvo (599 pistas, 325 ids), então todas as pistas da memória caíam numa só do disco e as outras nunca recebiam `buscador2_em` nem o status de fechada.",
+   "prova": [
+    "agregação em data/pistas_imprensa.json da main c27ccb26: 599 links do Google News sem buscador2_em, 325 chaves distintas; 781 chaves duplicadas no arquivo (1.645 excedentes)",
+    "simulação offline com o código antigo: pistas marcadas só em 325 de 599; com a chave por alvo: reprocessar 610 → 0"
+   ],
+   "correcao": "`sincronizar` casa por `chave_da_pista` + alvo (`_chave_com_alvo`); nada é apagado nem unido.",
+   "caso_de_teste": "scripts/pistas.py --autoteste (sincronizar atualiza cada pista de mesmo id e alvos diferentes)"
   }
  ]
 }

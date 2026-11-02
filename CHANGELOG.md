@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-02 · busca · Sincronizar casa pista por id e alvo: a fila do Buscador 2 converge · +14/−2
+
+A mesma URL existe como uma pista por alvo; o casamento só por `id` atualizava uma e deixava as outras na fila (599 links, 610 antes e depois do lote 7). Com a chave por alvo, a simulação sobre a `main` leva a fila de 610 a 0. Caso F78.
+
 ## 2026-11-02 · dados · Financiamento: mês consultado sem arquivo fica como tentativa datada · +47/−1
 
 `transferencias_uniao.json` ganha `meses_tentados` (consulta, data, resultado: 404 = arquivo ainda não publicado; outra falha não afirma isso); a série nacional o repassa. O mês lido depois sai da lista. Nunca zero.
