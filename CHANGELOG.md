@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-02 · #PR · Título do plano corta na capa; proveniência estadual entra na corrente · +14/−4
+`titulo_do_documento` encerra o título antes de equipe, governador e secretário (PI). `proveniencia_estadual.py` não lê texto de evidência quando o instrumento não cita ato (de 2 min a 0,3 s) e roda no elo `doe_incremental`, seg/qua/sex: lacuna ganha `verificado_em` novo, com o teto "não localizado até o corte".
+
 ## 2026-11-01 · #PR · Juiz de saúde: o plano oficial promovido substitui o registro de imprensa e o topo da UF o acompanha · +45/−3
 O `--aplicar` só acrescentava o item novo; o registro de imprensa (tipo conhecido) seguia como melhor instrumento e o topo não era sincronizado. Agora o documento oficial lido troca o item mais fraco do ciclo e o topo copia o melhor. A data do plano é a da capa ou o mês do caminho no portal (`09/2026`), nunca a de ato citado no corpo.
 

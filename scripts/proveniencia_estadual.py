@@ -146,9 +146,11 @@ def preencher(estados: dict, itens: dict, hoje: str, ler_texto=texto_da_evidenci
                 ins.pop("defeito_de_prova", None)
                 cont["registro"] += 1
                 continue
-            if cands is None:
-                cands = [(h, x, ler_texto(x["arquivo"])) for h, x in candidatas(itens, uf)]
-            achado = next(((h, x) for h, x, t in cands if casa(ins, uf, nome, x["url"], t)), None)
+            achado = None
+            if atos_citados(ins.get("doc") or ""):  # sem ato citado `casa` nunca casa: não se lê texto à toa
+                if cands is None:
+                    cands = [(h, x, ler_texto(x["arquivo"])) for h, x in candidatas(itens, uf)]
+                achado = next(((h, x) for h, x, t in cands if casa(ins, uf, nome, x["url"], t)), None)
             if achado:
                 h, x = achado
                 ins["url"] = x["url"]
