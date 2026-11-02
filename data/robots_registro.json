@@ -2969,32 +2969,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 6352,
+   "total_acessos": 6356,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.305-de-15-de-julho-de-2026-719725013",
-     "quando": "2026-11-01T03:17:02Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.267-de-10-de-julho-de-2026-718716536",
-     "quando": "2026-11-01T03:17:05Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.268-de-10-de-julho-de-2026-718709064",
-     "quando": "2026-11-01T03:17:09Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.252-de-8-de-julho-de-2026-717844541",
-     "quando": "2026-11-01T03:17:13Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.247-de-8-de-julho-de-2026-717836463",
      "quando": "2026-11-01T03:17:17Z",
@@ -4170,6 +4146,30 @@
      "quando": "2026-11-01T03:28:35Z",
      "origem": "coletar_recursos_resposta",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22Emerg%C3%AAncia%20em%20Sa%C3%BAde%20P%C3%BAblica%20de%20Import%C3%A2ncia%20Nacional%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=28-10-2026&publishTo=01-11-2026&delta=50",
+     "quando": "2026-11-02T02:51:25Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22emerg%C3%AAncia%20em%20sa%C3%BAde%20p%C3%BAblica%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=28-10-2026&publishTo=01-11-2026&delta=50",
+     "quando": "2026-11-02T02:51:30Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/ms-n-12.297-de-26-de-outubro-de-2026-741112450",
+     "quando": "2026-11-02T02:51:38Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/portaria-gm/ms-n-12.300-de-27-de-outubro-de-2026-740656390",
+     "quando": "2026-11-02T02:51:42Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
    "ultimo_acesso": "2026-11-01"
@@ -5186,7 +5186,7 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-10-01",
-   "total_acessos": 171,
+   "total_acessos": 174,
    "acessos": [
     {
      "url": "https://diario.ac.gov.br",
@@ -6213,9 +6213,27 @@
      "quando": "2026-11-01T02:30:26Z",
      "origem": "coletar_doe",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/",
+     "quando": "2026-11-02T02:35:26Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/",
+     "quando": "2026-11-02T02:35:27Z",
+     "origem": "coletar_doe",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5NTY0MDYxNzIzLnBkZg==",
+     "quando": "2026-11-02T02:51:49Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-10-31"
+   "ultimo_acesso": "2026-11-01"
   },
   "www.matadesaojoao.ba.gov.br": {
    "status_robots": "proibe",

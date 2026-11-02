@@ -48,8 +48,8 @@
    "orgao": "DOU / diários municipais",
    "papel": "RESPOSTA, peso zero",
    "status": "coletado",
-   "consultado_em": "31/10/2026",
-   "documento": "DOU seção 1, 2026-06-29 a 2026-10-31"
+   "consultado_em": "01/11/2026",
+   "documento": "DOU seção 1, 2026-10-28 a 2026-11-01"
   },
   "painel_calor_ms": {
    "nome": "Painel Nacional de Excesso de Calor",
@@ -581,15 +581,15 @@
   "fonte": "espin",
   "orgao": "Ministério da Saúde (DOU, seção 1)",
   "janela": {
-   "de": "2026-06-29",
-   "ate": "2026-10-31"
+   "de": "2026-10-28",
+   "ate": "2026-11-01"
   },
   "strings_buscadas": [
    "\"Emergência em Saúde Pública de Importância Nacional\"",
    "\"emergência em saúde pública\""
   ],
-  "consultado_em": "31/10/2026",
-  "resultados_lidos": 38,
+  "consultado_em": "01/11/2026",
+  "resultados_lidos": 4,
   "declaracoes": [],
   "pendente_leitura_automatica": [],
   "nao_lidos": [],
@@ -67919,26 +67919,24 @@
  "emergencias": [],
  "emergencias_busca": {
   "federal": {
-   "consultado_em": "31/10/2026",
+   "consultado_em": "01/11/2026",
    "janela": {
-    "de": "2026-06-29",
-    "ate": "2026-10-31"
+    "de": "2026-10-28",
+    "ate": "2026-11-01"
    }
   },
   "estadual": {
    "AC": {
-    "consultado_em": "19/10/2026",
-    "via": "busca do diário (adaptador busca_ac)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "AL": {
-    "lacuna": "127 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
+    "lacuna": "124 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
    },
    "AM": {
     "lacuna": "81 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
    },
    "AP": {
-    "consultado_em": "19/10/2026",
-    "via": "busca do diário (adaptador apifront)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "BA": {
     "lacuna": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML"
@@ -67950,30 +67948,29 @@
     "lacuna": "8 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)"
    },
    "ES": {
-    "consultado_em": "19/10/2026",
-    "via": "busca do diário (adaptador apifront)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "GO": {
-    "consultado_em": "30/10/2026",
-    "via": "busca do diário (adaptador apifront)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "MA": {
     "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML"
    },
    "MG": {
-    "lacuna": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada"
+    "lacuna": "87 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "MS": {
-    "consultado_em": "31/10/2026",
+    "consultado_em": "01/11/2026",
     "edicoes_lidas": 86,
-    "ate": "2026-10-30"
+    "ate": "2026-10-31"
    },
    "MT": {
-    "consultado_em": "19/10/2026",
-    "via": "busca do diário (adaptador apifront)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "PA": {
-    "lacuna": "86 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "consultado_em": "01/11/2026",
+    "edicoes_lidas": 86,
+    "ate": "2026-10-31"
    },
    "PB": {
     "lacuna": "69 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
@@ -67985,40 +67982,42 @@
     "lacuna": "13 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "PR": {
-    "consultado_em": "19/10/2026",
-    "via": "busca do diário (adaptador apifront)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "RJ": {
     "lacuna": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-09-07)"
    },
    "RN": {
-    "consultado_em": "31/10/2026",
+    "consultado_em": "01/11/2026",
     "edicoes_lidas": 70,
-    "ate": "2026-10-30"
+    "ate": "2026-10-31"
    },
    "RO": {
-    "consultado_em": "31/10/2026",
+    "consultado_em": "01/11/2026",
     "edicoes_lidas": 83,
-    "ate": "2026-10-30"
+    "ate": "2026-10-31"
    },
    "RR": {
-    "lacuna": "80 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "consultado_em": "01/11/2026",
+    "edicoes_lidas": 81,
+    "ate": "2026-10-31"
    },
    "RS": {
-    "lacuna": "135 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "lacuna": "23 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-14)"
    },
    "SC": {
-    "lacuna": "120 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "consultado_em": "01/11/2026",
+    "edicoes_lidas": 120,
+    "ate": "2026-10-31"
    },
    "SE": {
     "lacuna": "recusa da fonte, respeitada: HTTP 403 em https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json, /busca e /diario-oficial — recusa respeitada (run 39021988900)"
    },
    "SP": {
-    "consultado_em": "19/10/2026",
-    "via": "busca do diário (adaptador busca_sp)"
+    "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "TO": {
-    "lacuna": "busca do diário falhou em 20/10/2026: URLError: <urlopen error timed out>"
+    "lacuna": "busca do diário falhou em 01/11/2026: URLError: <urlopen error timed out>"
    }
   },
   "abstencoes": [
@@ -68078,6 +68077,6 @@
     "motivo": "edição sem verbo que declara (menção de passagem)"
    }
   ],
-  "julgado_em": "31/10/2026"
+  "julgado_em": "01/11/2026"
  }
 }
