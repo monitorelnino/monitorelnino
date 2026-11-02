@@ -125,7 +125,7 @@ Atualizado em 02/11/2026.
 | `gerar_imprensa_semana.py` | — | `semana.json` | — | 1 | não |
 | `gerar_lai.py` | — | — | — | — | não |
 | `gerar_monitor_saude.py` | — | `monitor_saude.json` | — | 2 | não |
-| `gerar_mortalidade_comparada.py` | — | `saude_desfechos/mortalidade_comparada.json`, `saude_desfechos/obitos.json`, `saude_desfechos/obitos_calor.json` | — | — | não |
+| `gerar_mortalidade_comparada.py` | — | `saude_desfechos/mortalidade_comparada.json`, `saude_desfechos/obitos.json`, `saude_desfechos/obitos_calor.json`, `saude_desfechos/projecao_cil.json` | — | — | não |
 | `gerar_pacote_blog.py` | — | `financiamento/caminhos.json` | — | — | não |
 | `gerar_painel.py` | — | `agregados.json`, `atos_resposta.json`, `fichas.json`, `lista.json`, `municipios.json`, `verificacao_municipal.json` | — | — | não |
 | `gerar_pdf_indice.py` | — | — | — | — | não |

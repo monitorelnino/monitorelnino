@@ -14,7 +14,8 @@ Por UF e BR, para cada mês a partir de 2026-07:
                referência. Mês parcial ou referência incompleta: sem número, com o motivo;
   obitos_x30   SIM, causa básica calor natural (X30). Enquanto o arquivo do SIM não traz o critério
                X30 (hoje T67, que mede zero por construção), vira lacuna "critério em correção";
-  projecao_cil lacuna "aguarda a série da fonte" (licença com a editoria, §6).
+  projecao_cil mortes adicionais por calor projetadas pelo Climate Impact Lab (modelo), edição mais recente de
+               `projecao_cil.json` (coluna liberada pela editoria em 30/10/2026); sem a série, lacuna.
 Valor negativo fica como está. Zero é zero medido; ausência é null com motivo.
 
 Escritor único; roda depois de `coletar_obitos_registro_civil.py` (PARA A A1: linha em
@@ -32,6 +33,26 @@ ANOS_FORA = (2020, 2021)
 L_PARCIAL, L_REF = "mês incompleto", "referência incompleta (menos de cinco anos com registro)"
 L_X30 = "critério em correção (a causa básica do calor natural é X30; a série anterior usava T67)"
 L_CIL = "aguarda a série da fonte"
+L_CIL_MES = "mês fora da edição da fonte"
+MESES_EN = {m: i for i, m in enumerate(("January February March April May June July August September October "
+                                        "November December").split(), 1)}
+
+
+def projecao_cil(cil: dict, nomes: dict):
+    """({sigla|'BR': {mês: mortes adicionais}}, edição) da edição mais recente; linhas de total e de
+    previsão (Cumulative, Total, 6 Month Forecast) não são mês e ficam fora. Função pura."""
+    eds = (cil or {}).get("edicoes") or []
+    if not eds:
+        return {}, None
+    ed = max(eds, key=lambda e: e.get("edicao") or "")
+    out = {}
+    for r in ed.get("linhas_brasil") or []:
+        mes, ano = MESES_EN.get(r[5]), r[6]
+        sigla = "BR" if r[1] == "-" else nomes.get(r[3])
+        if not (mes and sigla and str(ano).isdigit() and str(r[7]).lstrip("-").isdigit()):
+            continue
+        out.setdefault(sigla, {})[f"{ano}-{mes:02d}"] = int(r[7])
+    return out, ed
 
 
 def comparar(reg: dict, parciais: set, mes: str) -> dict:
@@ -64,7 +85,8 @@ def x30(sim: dict, uf: str, mes: str):
     return v, mes in set(sim.get("parcial") or []), None
 
 
-def montar(obitos: dict, sim: dict) -> dict:
+def montar(obitos: dict, sim: dict, cil: dict = None, nomes: dict = None) -> dict:
+    proj, ed = projecao_cil(cil, nomes or {})
     serie = obitos["serie"]
     meses = sorted({m for s in serie.values() for m in s if m >= A_PARTIR_DE})
     parciais = set(obitos.get("parcial") or [])
@@ -79,8 +101,12 @@ def montar(obitos: dict, sim: dict) -> dict:
             linha["obitos_x30"] = {"valor": v, "parcial": p} if lac is None else None
             if lac:
                 linha["lacuna_x30"] = lac
-            linha["projecao_cil"] = None
-            linha["lacuna_projecao_cil"] = L_CIL
+            v_cil = proj.get(uf, {}).get(mes)
+            if v_cil is not None:
+                linha["projecao_cil"] = {"valor": v_cil}
+            else:
+                linha["projecao_cil"] = None
+                linha["lacuna_projecao_cil"] = L_CIL_MES if ed else L_CIL
             linhas[mes] = linha
         territorios[uf] = linhas
     return {
@@ -92,9 +118,13 @@ def montar(obitos: dict, sim: dict) -> dict:
                             "arquivo": "data/saude_desfechos/obitos.json", "conta": "óbitos lavrados no mês, todas as causas"},
             "obitos_x30": {"sistema": "SIM, Ministério da Saúde (preliminar)", "arquivo": "data/saude_desfechos/obitos_calor.json",
                            "consultado_em": (sim or {}).get("coletado_em")},
-            "projecao_cil": {"sistema": "Climate Impact Lab, El Niño Heat Mortality Tracker (modelo)", "estado": L_CIL}},
+            "projecao_cil": {"sistema": "Climate Impact Lab, El Niño Heat Mortality Tracker (modelo)",
+                             "metodo": "Carleton et al. (2022), QJE 137(4):2037–2105", "url": "https://impactlab.org/el-nino-heat-mortality-tracker/",
+                             "arquivo": "data/saude_desfechos/projecao_cil.json", "conta": "mortes adicionais por calor projetadas, ADM1, mensal",
+                             **({"edicao": ed["edicao"], "consultado_em": ed.get("consultado_em")} if ed else {"estado": L_CIL})}},
         "limitacoes": ["não ajusta crescimento nem envelhecimento da população", "o registro em cartório atrasa",
-                       "o excesso conta óbitos de todas as causas", "cinco anos de referência"],
+                       "o excesso conta óbitos de todas as causas", "cinco anos de referência",
+                       "a projeção do Climate Impact Lab é de modelo, não contagem; o arquivo da fonte traz só o valor adicional, sem faixa de incerteza nem linha de base"],
         "territorios": territorios}
 
 
@@ -103,7 +133,8 @@ def gerar() -> int:
     if not obitos or not obitos.get("serie"):
         print("obitos.json ausente ou vazio; o arquivo anterior fica")
         return 0
-    obj = montar(obitos, ler("saude_desfechos/obitos_calor.json"))
+    nomes = {f["properties"]["name"]: f["properties"]["sigla"] for f in (ler("geo_uf.json") or {}).get("features", [])}
+    obj = montar(obitos, ler("saude_desfechos/obitos_calor.json"), ler("saude_desfechos/projecao_cil.json"), nomes)
     if ler(ARQ) == obj:
         print("mortalidade_comparada: sem mudança; nada a regravar")
         return 0
@@ -122,7 +153,18 @@ def autoteste() -> int:
     o = {"serie": {"AC": {**reg}}, "coletado_em": "2026-10-29", "parcial": ["2026-09"]}
     m = montar(o, {"rotulo": "Óbitos por efeitos do calor e da luz (CID-10 T67)", "serie": {"AC": {"2026-08": 0}}})
     t = m["territorios"]["AC"]
+    cil = {"edicoes": [{"edicao": "2026-09-01", "linhas_brasil": [["BRA", "-", "Brazil", "-", "x", "August", "2026", "1"]]},
+                       {"edicao": "2026-10-26", "consultado_em": "2026-11-02", "linhas_brasil": [
+                           ["BRA", "BRA.1_1", "Brazil", "Acre", "x", "August", "2026", "-5"], ["BRA", "BRA.1_1", "Brazil", "Acre", "x", "Cumulative", "2026", "9"],
+                           ["BRA", "-", "Brazil", "-", "x", "August", "2026", "300"], ["BRA", "BRA.1_1", "Brazil", "Acre", "x", "July", "2026", "4"]]}]}
+    mc = montar(o, None, cil, {"Acre": "AC"})
+    tc = mc["territorios"]["AC"]
+    pc, _ = projecao_cil(cil, {"Acre": "AC"})
     return rodar_autoteste({
+        "projeção CIL: edição mais recente, UF pelo nome, negativo fica, total fora":
+            lambda: pc == {"AC": {"2026-08": -5, "2026-07": 4}, "BR": {"2026-08": 300}} and tc["2026-08"]["projecao_cil"] == {"valor": -5},
+        "mês fora da edição é lacuna própria, nunca zero":
+            lambda: tc["2026-09"]["projecao_cil"] is None and tc["2026-09"]["lacuna_projecao_cil"] == L_CIL_MES and mc["fontes"]["projecao_cil"]["edicao"] == "2026-10-26",
         "esperado é a média dos cinco anos; 2020 e 2021 ficam fora": lambda: c["esperado"] == 120.0 and c["faixa_ref"] == {"min": 100, "max": 140},
         "excesso = registrados − esperado, intervalo contra máximo e mínimo": lambda: c["excesso"] == {"valor": 30.0, "min": 10, "max": 50},
         "mês parcial não tem excesso, com o motivo": lambda: p["excesso"] is None and p["lacuna_excesso"] == L_PARCIAL and p["parcial"] is True,
