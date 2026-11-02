@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-02 · #1438 · Título do plano corta na capa; proveniência estadual entra na corrente · +19/−5
+`titulo_do_documento` encerra o título antes de equipe, governador e secretário (PI). `proveniencia_estadual.py` não lê texto de evidência quando o instrumento não cita ato (de 2 min a 0,3 s) e roda no elo `doe_incremental`, seg/qua/sex: lacuna ganha `verificado_em` novo, com o teto "não localizado até o corte".
+
 ## 2026-11-02 · #PR · Financiamento: transferências por UF e série mensal nacional saem do download do Portal · +68/−1
 
 `por_uf.json` ganha `transferencias_download` por UF e `serie_nacional.json` ganha `serie_mensal_download`, com `consultado_em`, último mês lido e meses parciais marcados. Soma do mesmo arquivo mensal que o coletor municipal já lê (sem segundo download, sem chave); linha sem município fica à parte. Nenhuma rota r1–r7 preenchida: a fonte classifica por função, não por instrumento.

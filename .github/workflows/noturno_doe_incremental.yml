@@ -3,7 +3,8 @@
 # Lê as edições dos últimos 4 dias (o intervalo maior entre duas conferências é 3 dias, mais 1 de
 # folga; edição já preservada não se duplica: o coletor guarda por hash), depois o `coletar_espin.py`
 # procura o ato estadual de emergência em saúde sobre a mesma janela. Produz dado de resposta, nunca
-# pista de plano nem registro do índice; rota parada vira linha do painel da noite.
+# pista de plano nem registro do índice; rota parada vira linha do painel da noite. Fecha o ciclo
+# `proveniencia_estadual.py --aplicar` (central, 30/10, §2 passo 3): lacuna ganha `verificado_em` novo.
 name: Noturno — DOE incremental e decretos de emergência
 
 on:
@@ -25,6 +26,7 @@ jobs:
       comandos: |
         coletar_edicoes_doe.py --recuperacao --ultimos-dias 4
         coletar_espin.py --ultimos-dias 4
+        scripts/proveniencia_estadual.py --aplicar
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
