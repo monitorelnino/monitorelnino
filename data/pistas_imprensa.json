@@ -57475,7 +57475,7 @@
    "reaplicada_em": "reaplicacao da noite",
    "id": "90b9b15173",
    "nivel_confianca": "C",
-   "repeticoes": 2,
+   "repeticoes": 3,
    "juiz": {
     "codebook": "1.6 (15/10/2026)",
     "promove": false,
@@ -57509,7 +57509,7 @@
    "reaplicada_em": "reaplicacao da noite",
    "id": "9850e0a808",
    "nivel_confianca": "C",
-   "repeticoes": 2,
+   "repeticoes": 3,
    "ultima_busca_em": "2026-11-01",
    "tentativas_de_busca_dirigida": 3,
    "juiz": {
@@ -57542,7 +57542,7 @@
    "reaplicada_em": "reaplicacao da noite",
    "id": "ac7e89aa26",
    "nivel_confianca": "C",
-   "repeticoes": 2,
+   "repeticoes": 3,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -57583,7 +57583,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c71cd1cb5f1a88fcedd38186707fb89ceacab5ab40934479cc993ccbaba7892b"
    },
-   "repeticoes": 1
+   "repeticoes": 2
   },
   {
    "municipio": "Mascote",
@@ -57616,7 +57616,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "5dc96a296806c19ead7277b9c51fb8468210697d8cfde73e82069780c4b4b7f5"
    },
-   "repeticoes": 1
+   "repeticoes": 2
   },
   {
    "municipio": "BRAGANEY",
@@ -96798,14 +96798,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -96815,7 +96807,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "d735b0cdeef7668e7b780da788f64b8e1900b5eec8fd87deb4eb5a98712d6195"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Guarani",
@@ -96973,14 +96973,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -96990,7 +96982,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Guarani",
@@ -97195,14 +97195,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97212,7 +97204,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Verdelândia",
@@ -97324,14 +97324,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97341,7 +97333,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "26946311b3aac5932a8fc42583fae32f58cfd92ec3239b4c200682af85c0ff5b"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Verdelândia",
@@ -97455,14 +97455,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97472,7 +97464,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "f1821cd70df1f4c1e268dc5c267b9c040f4e8fa517b5b56228059f22f590dee0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Porteirinha",
@@ -97594,14 +97594,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97611,7 +97603,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Desterro de Entre Rios",
@@ -97683,14 +97683,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97700,7 +97692,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Desterro de Entre Rios",
@@ -97772,16 +97772,6 @@
      "encontrou": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil"
     }
    ],
-   "ultima_busca_em": "2026-11-01",
-   "tentativas_de_busca_dirigida": 1,
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97791,7 +97781,17 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "tentativas_de_busca_dirigida": 1,
+   "ultima_busca_em": "2026-11-01"
   },
   {
    "municipio": "Desterro de Entre Rios",
@@ -97905,14 +97905,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -97922,7 +97914,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Desterro de Entre Rios",
@@ -98044,14 +98044,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98061,7 +98053,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Desterro de Entre Rios",
@@ -98208,14 +98208,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98225,7 +98217,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "São João Batista do Glória",
@@ -98447,14 +98447,6 @@
     },
     "resultado": "preparada"
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98464,7 +98456,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "São João Batista do Glória",
@@ -98538,14 +98538,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98555,7 +98547,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Serrania",
@@ -98596,14 +98596,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98613,7 +98605,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "9cfd9ee91f6744fd902a3c6e8da16463b3cfa9a7155292ca4701a184b40c925d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Serrania",
@@ -98862,14 +98862,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98879,7 +98871,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "879315f577669777142e3e5894557cbe0dc2864b34f905f3affe28a498f1a809"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Moema",
@@ -98953,14 +98953,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -98970,7 +98962,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Moema",
@@ -99060,14 +99060,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99077,7 +99069,15 @@
     "data": "10/04/2012",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "98bae9e465019200213dfd904bd7b6f72ceaf3eb2be0ae5fd122481be7fe05c7"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Moema",
@@ -99176,14 +99176,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99193,7 +99185,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Cordisburgo",
@@ -99232,14 +99232,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99249,7 +99241,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "be1362592d7bb8b181790fad55e69e59a2eb0498dcf4b93e0d6629062d159364"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Cordisburgo",
@@ -99362,14 +99362,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99379,7 +99371,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "26946311b3aac5932a8fc42583fae32f58cfd92ec3239b4c200682af85c0ff5b"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Cordisburgo",
@@ -99495,14 +99495,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99512,7 +99504,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Cordisburgo",
@@ -99578,14 +99578,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99595,7 +99587,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "d735b0cdeef7668e7b780da788f64b8e1900b5eec8fd87deb4eb5a98712d6195"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Jacuí",
@@ -99694,14 +99694,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99711,7 +99703,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Jacuí",
@@ -99826,14 +99826,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99843,7 +99835,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "bc11c3b7b808e36b3b27c019ddf44575d1bdf70807b13cda4c9152343f48f277"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Jacuí",
@@ -99916,14 +99916,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "noticia_institucional_nao_e_o_plano",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99933,7 +99925,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "b7c995e0a69135d190bae63e885d78fe3a05932dca4ea8f9d129a326b731abac"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Baldim",
@@ -99982,14 +99982,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -99999,7 +99991,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Santa Luzia",
@@ -100206,14 +100206,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -100223,7 +100215,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Baldim",
@@ -100322,14 +100322,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -100339,7 +100331,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Munhoz",
@@ -100381,14 +100381,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -100398,7 +100390,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Munhoz",
@@ -100439,14 +100439,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "ente_nao_confirmado",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -100456,7 +100448,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "9cfd9ee91f6744fd902a3c6e8da16463b3cfa9a7155292ca4701a184b40c925d"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Munhoz",
@@ -100726,14 +100726,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -100743,7 +100735,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Caldas",
@@ -101008,14 +101008,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101025,7 +101017,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Curral de Dentro",
@@ -101143,14 +101143,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101160,7 +101152,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Curral de Dentro",
@@ -101251,14 +101251,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101268,7 +101260,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Curral de Dentro",
@@ -101367,14 +101367,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101384,7 +101376,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "São Gonçalo do Abaeté",
@@ -101577,14 +101577,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101594,7 +101586,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "São Gonçalo do Abaeté",
@@ -101635,14 +101635,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101652,7 +101644,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Inimutaba",
@@ -101726,14 +101726,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101743,7 +101735,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Inimutaba",
@@ -101884,14 +101884,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -101901,7 +101893,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Inimutaba",
@@ -101992,14 +101992,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102009,7 +102001,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Francisco Badaró",
@@ -102058,14 +102058,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102075,7 +102067,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Francisco Badaró",
@@ -102167,14 +102167,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102184,7 +102176,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Francisco Badaró",
@@ -102248,14 +102248,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102265,7 +102257,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "be1362592d7bb8b181790fad55e69e59a2eb0498dcf4b93e0d6629062d159364"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Francisco Badaró",
@@ -102306,14 +102306,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102323,7 +102315,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "f1821cd70df1f4c1e268dc5c267b9c040f4e8fa517b5b56228059f22f590dee0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Francisco Badaró",
@@ -102389,14 +102389,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102406,7 +102398,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Francisco Badaró",
@@ -102605,14 +102605,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102622,7 +102614,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Manso",
@@ -102696,14 +102696,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102713,7 +102705,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Manso",
@@ -102854,14 +102854,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102871,7 +102863,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pai Pedro",
@@ -102912,14 +102912,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102929,7 +102921,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pai Pedro",
@@ -102970,14 +102970,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -102987,7 +102979,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pai Pedro",
@@ -103052,14 +103052,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103069,7 +103061,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "2c76fa0a2c0f2f02396968a97d5a30c45ec8a51b4230a35bed679f8bb90fd823"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pai Pedro",
@@ -103118,14 +103118,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103135,7 +103127,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Serranópolis de Minas",
@@ -103317,14 +103317,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103334,7 +103326,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pirajuba",
@@ -103425,14 +103425,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103442,7 +103434,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "db6828019c3ca86f52e41a88e9fa432673a19456acb7e1a4c554a72ad8ea8463"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Pirajuba",
@@ -103558,14 +103558,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103575,7 +103567,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Uberaba",
@@ -103682,14 +103682,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103699,7 +103691,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Bonfinópolis de Minas",
@@ -103791,14 +103791,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103808,7 +103800,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Bonfinópolis de Minas",
@@ -103949,14 +103949,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -103966,7 +103958,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Bonfinópolis de Minas",
@@ -104032,14 +104032,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104049,7 +104041,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Senhora de Oliveira",
@@ -104115,14 +104115,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104132,7 +104124,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Senhora de Oliveira",
@@ -104206,14 +104206,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104223,7 +104215,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Senhora de Oliveira",
@@ -104397,14 +104397,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104414,7 +104406,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Catas Altas",
@@ -104555,14 +104555,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104572,7 +104564,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "2a47634e375d3601115f553615d2d1306983b810732f0ecece59c1ca11aebd77"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Catas Altas",
@@ -104613,14 +104613,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104630,7 +104622,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Catas Altas",
@@ -104721,14 +104721,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104738,7 +104730,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "e01601d80d0465269bf7e6b767b4110264467bfe97b2fe095f4f315b7bcd6993"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Datas",
@@ -104781,14 +104781,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104798,7 +104790,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "581b351ce694a74384e5c74654734fe47fe554a44258fe55ae545d68fdd03749"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Ubá",
@@ -104963,14 +104963,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -104980,7 +104972,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Datas",
@@ -105104,14 +105104,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105121,7 +105113,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Crucilândia",
@@ -105185,14 +105185,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105202,7 +105194,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "be1362592d7bb8b181790fad55e69e59a2eb0498dcf4b93e0d6629062d159364"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Crucilândia",
@@ -105269,14 +105269,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105286,7 +105278,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Crucilândia",
@@ -105352,14 +105352,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105369,7 +105361,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "f1821cd70df1f4c1e268dc5c267b9c040f4e8fa517b5b56228059f22f590dee0"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Crucilândia",
@@ -105485,14 +105485,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105502,7 +105494,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Espera",
@@ -105601,14 +105601,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105618,7 +105610,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Espera",
@@ -105684,14 +105684,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105701,7 +105693,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "659c3534d838970e1cf2095ec5d405b365cd3e4dba75170d12a095447c485268"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Rio Espera",
@@ -105901,14 +105901,6 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "documento_estadual",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -105918,7 +105910,15 @@
     "data": null,
     "julgado_em": "2026-11-01",
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Conceição do Pará",
@@ -105992,14 +105992,6 @@
     "pistas_novas": 0,
     "falhas": []
    },
-   "juiz_tentativas": [
-    {
-     "em": "2026-11-01",
-     "classe": "criterio",
-     "motivo": "autoridade_nao_confirmada",
-     "codebook": "1.8 (30/10/2026)"
-    }
-   ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -106009,7 +106001,15 @@
     "data": "06/12/2023",
     "julgado_em": "2026-11-01",
     "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-01",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "municipio": "Conceição do Pará",
@@ -583146,7 +583146,8 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -588164,7 +588165,8 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -603321,7 +603323,7 @@
     "criterios": {}
    },
    "alertas": [],
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "documento_oficial_confirmado": null,
@@ -603361,7 +603363,7 @@
     "criterios": {}
    },
    "alertas": [],
-   "repeticoes": 1
+   "repeticoes": 4
   },
   {
    "documento_oficial_confirmado": null,
@@ -603679,7 +603681,8 @@
     "lido_em": "2026-11-01",
     "criterios": {}
    },
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
