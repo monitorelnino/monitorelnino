@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-02 · busca · Planos de fontes abertas consultam só o motor medido do runner · +2/−1
+
+A busca web de S27/S24 pedia ao metabuscador todos os motores e recebia CAPTCHA do DuckDuckGo e 429 do Brave (14 de 21 consultas de MG em erro, válvula mg2). Passa a usar `motores_busca.MOTORES`, como `monitorar_busca_web.py`. Sem contorno: a recusa continua valendo como erro, nunca ausência.
+
 ## 2026-11-02 · busca · Sincronizar casa pista por id e alvo: a fila do Buscador 2 converge · +14/−2
 
 A mesma URL existe como uma pista por alvo; o casamento só por `id` atualizava uma e deixava as outras na fila (599 links, 610 antes e depois do lote 7). Com a chave por alvo, a simulação sobre a `main` leva a fila de 610 a 0. Caso F78.
