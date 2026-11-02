@@ -218,6 +218,58 @@ def coletar(uf=None):
     return 0
 
 
+def agregar_download(transf: dict, uf_de: dict) -> tuple:
+    """Do `transferencias_uniao.json` (download mensal do Portal, o mesmo que `coletar_transferencias_municipais`
+    já lê) para (por UF, por mês nacional). Função pura, sem rede e sem disco.
+
+    Só soma o que a fonte declarou por município casado; a linha municipal sem município (`sem_municipio_por_mes`,
+    por UF) fica em campo à parte, nunca somada ao município e nunca descartada. Mês `parcial` vai marcado."""
+    meses = transf.get("meses_lidos") or {}
+    por_uf, por_mes = {}, {}
+    for ibge, m in (transf.get("municipios") or {}).items():
+        uf = uf_de.get(str(ibge).zfill(7))
+        if not uf:
+            continue
+        for mes, rotas in (m.get("meses") or {}).items():
+            for rota, v in rotas.items():
+                u = por_uf.setdefault(uf, {}).setdefault(mes, {}); u[rota] = round(u.get(rota, 0.0) + v, 2)
+                n = por_mes.setdefault(mes, {}); n[rota] = round(n.get(rota, 0.0) + v, 2)
+    sem = {}
+    for mes, ufs in (transf.get("sem_municipio_por_mes") or {}).items():
+        for uf, v in (ufs or {}).items():
+            sem.setdefault(uf, {})[mes] = v
+    ultimo = max(meses) if meses else None
+    parcial = sorted(mes for mes, v in meses.items() if v.get("parcial"))
+    return por_uf, por_mes, sem, ultimo, parcial
+
+
+def consolidar_download(consultado_em: str | None = None) -> int:
+    """Escreve em `por_uf.json` (`transferencias_download` por UF) e `serie_nacional.json` (`serie_mensal_download`)
+    o que o download mensal já trouxe. Peso zero; nenhuma rota r1..r7 é preenchida aqui: a fonte classifica por
+    função e subfunção, não por instrumento, e a correspondência com as rotas não é exata."""
+    transf = _l("municipios/transferencias_uniao.json")
+    if not transf:
+        registrar_lacuna("Portal da Transparência", "transferencias_uniao.json ausente: nada a consolidar", canal="DOU", camada=1); return 0
+    ref, _ = referencia_ibge(); uf_de = {c: r["uf"] for c, r in ref.items()}
+    por_uf, por_mes, sem, ultimo, parcial = agregar_download(transf, uf_de)
+    quando = consultado_em or hoje_editorial().strftime("%d/%m/%Y"); fonte = transf.get("fonte")
+    pu = _l("por_uf.json"); pu["consultado_em"] = quando
+    for uf, d in pu["uf"].items():
+        meses = por_uf.get(uf, {}); rotas = {}
+        for m in meses.values():
+            for r, v in m.items(): rotas[r] = round(rotas.get(r, 0.0) + v, 2)
+        d["transferencias_download"] = {"consultado_em": quando, "fonte": fonte, "ultimo_mes": ultimo, "meses_parciais": parcial,
+                                        "por_rota_no_ano": rotas, "total_no_ano": round(sum(rotas.values()), 2) if rotas else None,
+                                        "sem_municipio_na_fonte": sem.get(uf, {}), "por_mes": meses}
+    _g("por_uf.json", pu)
+    sn = _l("serie_nacional.json"); sn["consultado_em"] = quando
+    sn["serie_mensal_download"] = {"fonte": fonte, "ultimo_mes": ultimo, "meses_parciais": parcial,
+                                   "meses": [{"mes": m, "por_rota": r, "total": round(sum(r.values()), 2), "parcial": m in parcial} for m, r in sorted(por_mes.items())]}
+    _g("serie_nacional.json", sn)
+    print(f"consolidado do download: {len(por_mes)} meses, último {ultimo}, parciais {parcial}")
+    return 0
+
+
 FIX_T = [{"codigoIBGE": "4202404", "valor": "1500.50", "ano": 2026, "objeto": "Convênio defesa civil", "orgao": {"nome": "MIDR"}, "nomeAutor": "FULANO", "codigoAutor": "123"}]
 FIX_E = [{"tipoEmenda": "Transferência Especial", "valorEmpenhado": 100000, "valorPago": 0, "ano": 2026, "uf": "SC", "funcao": "Saúde", "codigoEmenda": "2026X", "nomeAutor": "BELTRANO"}]
 
@@ -262,15 +314,23 @@ def autoteste():
         return (e[0]["valor_empenhado"] is None and e[0]["valor_pago"] is None
                 and e[1]["valor_empenhado"] == 0.0 and e[1]["valor_pago"] == 12.5)
     def t6(): u = _l("por_uf.json")["uf"]; return len(u) == 27 and u["RS"]["fundo_a_fundo_preventivo"].get("precedente_E12") is True
+    def t8():
+        t = {"meses_lidos": {"202601": {}, "202602": {"parcial": True}}, "municipios": {"1200054": {"meses": {"202601": {"constitucional": 10.0, "saude": 1.0}, "202602": {"constitucional": 5.0}}}, "9999999": {"meses": {"202601": {"outras": 7.0}}}},
+             "sem_municipio_por_mes": {"202601": {"AC": 3.0}, "202602": {}}}
+        u, n, sem, ult, par = agregar_download(t, {"1200054": "AC"})
+        return (u["AC"]["202601"] == {"constitucional": 10.0, "saude": 1.0} and n["202601"] == u["AC"]["202601"] and "outras" not in n["202601"]
+                and sem == {"AC": {"202601": 3.0}} and ult == "202602" and par == ["202602"])
     def t7(): return (FIN / "consultas.json").read_bytes() == _SNAP if _SNAP else True
     _SNAP = (FIN / "consultas.json").read_bytes() if (FIN / "consultas.json").exists() else b""
     return rodar_autoteste({"semear cria os 6 registros, sem tocar dados reais": t1, "8 rotas em ordem, cores únicas": t2, "parser transferências descarta autor (E10)": t3,
                             "§219 valor ausente não é zero": t3b,
                             "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "emenda sem valor é ausência (A6-22)": t5b, "por_uf: 27 UFs, Prepara RS como precedente": t6,
-                            "negativo: autoteste não altera dados reais": t7})
+                            "negativo: autoteste não altera dados reais": t7,
+                            "download: soma por UF e mês, município fora da referência não entra, parcial marcado": t8})
 
 
 if __name__ == "__main__":
     if "--autoteste" in sys.argv: sys.exit(autoteste())
     if "--semear" in sys.argv: semear(); sys.exit(0)
+    if "--consolidar" in sys.argv: sys.exit(consolidar_download())
     sys.exit(coletar(sys.argv[sys.argv.index("--uf") + 1] if "--uf" in sys.argv else None))

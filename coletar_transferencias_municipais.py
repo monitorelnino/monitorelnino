@@ -428,6 +428,13 @@ def coletar(mes: str) -> dict:
     dados["atualizado_em"] = hoje_editorial().strftime("%d/%m/%Y")
     dados["rotas"] = list(ROTAS)
     gravar_em(SAIDA, dados)
+    # 02/11/2026 (Central, 01:05): por UF e série nacional saem do MESMO arquivo, sem segundo download.
+    try:
+        import coletar_financiamento
+        coletar_financiamento.consolidar_download()
+    except Exception as e:  # noqa: BLE001
+        registrar_lacuna("portal_transferencias/por_uf", f"{mes}: {type(e).__name__}: {e}"[:300],
+                         canal="DOU", camada=1, strings=[url], hash_evidencia=h)
     log_busca("DOU", 1, [url], "registro",
               resultados=(f"{mes}: {linhas} linha(s) municipal(is), {len(por_ibge)} município(s) "
                           f"casado(s), {len(nao_casados)} não casado(s)"),
