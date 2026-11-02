@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-29",
+ "gerado_em": "2026-11-02",
  "municipios": {
   "3106200": {
    "S16": {
@@ -122,6 +122,20 @@
     "consulta": null,
     "motivo": "HTTP 503",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Abaeté\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'CAPTCHA']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Abaeté\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'CAPTCHA']]",
+    "dominio": null
    }
   },
   "3100302": {
@@ -193,6 +207,20 @@
     "situacao": "erro",
     "consulta": null,
     "motivo": "HTTP 503",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Abre Campo\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['duckduckgo', 'CAPTCHA']]",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Abre Campo\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -266,6 +294,20 @@
     "consulta": null,
     "motivo": "HTTP 503",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Aimorés\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Aimorés\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3101607": {
@@ -337,6 +379,20 @@
     "situacao": "erro",
     "consulta": null,
     "motivo": "HTTP 503",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Alfenas\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Alfenas\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -410,6 +466,20 @@
     "consulta": null,
     "motivo": "HTTP 503",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Almenara\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Almenara\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
    }
   },
   "3101904": {
@@ -474,6 +544,20 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3101904&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Alpinópolis\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Alpinópolis\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
     "dominio": null
    }
   },
@@ -540,6 +624,20 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3102001&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Alterosa\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "lido",
+    "consulta": "\"Alterosa\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": null,
+    "dominio": null
    }
   },
   "3102308": {
@@ -604,6 +702,20 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3102308&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Alvinópolis\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Alvinópolis\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
@@ -670,6 +782,20 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3101508&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S27": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Além Paraíba\" MG \"plano de contingência\" \"defesa civil\" (site:scribd.com OR site:issuu.com OR site:calameo.com OR site:yumpu.com OR site:docplayer.com.br OR site:slideshare.net)",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Além Paraíba\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
    }
   },
   "3102605": {
@@ -734,6 +860,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3102605&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Andradas\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
@@ -800,6 +933,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3102803&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Andrelândia\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
+    "dominio": null
    }
   },
   "3103504": {
@@ -843,6 +983,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3103504&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S24": {
+    "consultado_em": "2026-11-02",
+    "situacao": "erro",
+    "consulta": "\"Araguari\" MG (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['brave', 'Suspended: too many requests'], ['duck",
     "dominio": null
    }
   },
