@@ -18732,15 +18732,6 @@
   },
   {
    "data": "2026-11-01",
-   "script": "python3",
-   "inicio": "2026-11-02T00:47:28",
-   "duracao_s": 337.3,
-   "itens": null,
-   "status": "ok",
-   "erro": ""
-  },
-  {
-   "data": "2026-11-01",
    "script": "recalcular_mare.py",
    "inicio": "2026-11-02T01:14:04",
    "duracao_s": 3.4,
@@ -19073,6 +19064,15 @@
    "erro": ""
   },
   {
+   "data": "2026-11-01",
+   "script": "python3",
+   "inicio": "2026-11-02T00:47:28",
+   "duracao_s": 337.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
    "data": "2026-11-02",
    "script": "recalcular_mare.py",
    "inicio": "2026-11-02T03:29:22",
@@ -19080,7 +19080,106 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "monitorar_imprensa_regional.py",
+   "inicio": "2026-11-02T03:25:36",
+   "duracao_s": 251.9,
+   "itens": 40,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "monitorar_imprensa_saude.py",
+   "inicio": "2026-11-02T03:29:48",
+   "duracao_s": 103.8,
+   "itens": 27,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "monitorar_atos_resposta.py",
+   "inicio": "2026-11-02T03:31:31",
+   "duracao_s": 290.3,
+   "itens": 17573,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "monitorar_politica_por_inteiro.py",
+   "inicio": "2026-11-02T03:36:21",
+   "duracao_s": 2.7,
+   "itens": 17573,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "monitorar_sinais_federais.py",
+   "inicio": "2026-11-02T03:36:23",
+   "duracao_s": 5.0,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "detectar_marcos_federais.py",
+   "inicio": "2026-11-02T03:36:28",
+   "duracao_s": 2.0,
+   "itens": 0,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "descobrir_planos.py",
+   "inicio": "2026-11-02T03:36:30",
+   "duracao_s": 365.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-02T03:42:35",
+   "duracao_s": 255.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "seguir_pistas.py",
+   "inicio": "2026-11-02T03:46:50",
+   "duracao_s": 1194.2,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "triar_confianca_pistas.py",
+   "inicio": "2026-11-02T04:06:44",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "verificar_pista_imprensa.py",
+   "inicio": "2026-11-02T04:06:44",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-11-02T03:29:22"
+ "atualizado_em": "2026-11-02T04:06:44"
 }
