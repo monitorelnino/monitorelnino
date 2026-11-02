@@ -284721,6 +284721,2543 @@
    "pista_id": "16d6f8df19",
    "origem": "descoberta",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "308447 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Guarani\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3128402",
+   "municipio": "Guarani",
+   "uf": "MG",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+   "regras_18": [],
+   "pista_id": "6afc1273cf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d735b0cdeef7668e7b780da788f64b8e1900b5eec8fd87deb4eb5a98712d6195"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3128402",
+   "municipio": "Guarani",
+   "uf": "MG",
+   "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+   "regras_18": [],
+   "pista_id": "7c4609109b",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "r Valadares Grão Mogol Grupiara Guanhães Guapé Guaraciaba Guaraciama Guaranésia Guarani Guarará Guarda-Mor Guaxupé Guidoval Guimarânia Guiricema Gurinhatã Helio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3128402",
+   "municipio": "Guarani",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "264d131308",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rande do Rio Pardo Varginha Varjão de Minas Várzea da Palma Varzelândia Vazante Verdelândia Veredinha Veríssimo Vermelho Novo Vespasiano Viçosa Vieiras Virgem d"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3171030",
+   "municipio": "Verdelândia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "5bbf3e1e46",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3171030",
+   "municipio": "Verdelândia",
+   "uf": "MG",
+   "url": "https://www.fazenda.mg.gov.br/governo/compras_publicas_e_contratos/compras/pregao_eletronico/extrato-de-publicacao-66.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d27e81cd41",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "26946311b3aac5932a8fc42583fae32f58cfd92ec3239b4c200682af85c0ff5b"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3171030",
+   "municipio": "Verdelândia",
+   "uf": "MG",
+   "url": "https://social.mg.gov.br/images/Esportes/JIMI/2022/caderno1_2021_11_27.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "0035b815f3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f1821cd70df1f4c1e268dc5c267b9c040f4e8fa517b5b56228059f22f590dee0"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3171030",
+   "municipio": "Verdelândia",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "8189c8f311",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "que Curral de Dentro Curvelo Datas Delfim Moreira Delfinópolis Delta Descoberto Desterro de Entre Rios Desterro do Melo Diamantina Diogo de Vasconcelos Dionísio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3121407",
+   "municipio": "Desterro de Entre Rios",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "df9d5aacad",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "que Curral de Dentro Curvelo Datas Delfim Moreira Delfinópolis Delta Descoberto Desterro de Entre Rios Desterro do Melo Diamantina Diogo de Vasconcelos Dionísio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3121407",
+   "municipio": "Desterro de Entre Rios",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "fcdc8f1d7d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "544564 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3121407",
+   "municipio": "Desterro de Entre Rios",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/planejamento/documento_detalhado/2023/gestao-governamental/gestao-de-ti/retificacao17849_edital_planejamentoderegistrodepreco_0000000061_2023.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "98596c98fe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3121407",
+   "municipio": "Desterro de Entre Rios",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "5d307b99d4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nçalo do Rio Abaixo São Gonçalo do Rio Preto São Gonçalo do Sapucaí São Gotardo São João Batista do Glória São João da Lagoa São João da Mata São João da Ponte"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3162203",
+   "municipio": "São João Batista do Glória",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "87820d767e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3162203",
+   "municipio": "São João Batista do Glória",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "75376647dc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ritinga Serra Azul de Minas Serra da Saudade Serra do Salitre Serra dos Aimorés Serrania Serranópolis de Minas Serranos Serro Sete Lagoas Setubinha Silveirânia"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3166907",
+   "municipio": "Serrania",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "3909a6b5ea",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38194 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Serrania\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3166907",
+   "municipio": "Serrania",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2025/07/NOTA-TE%CC%81CNICA-No-342025-CGARB-DEDT-SVSA-MS.pdf",
+   "regras_18": [],
+   "pista_id": "66626335ae",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9cfd9ee91f6744fd902a3c6e8da16463b3cfa9a7155292ca4701a184b40c925d"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "56018 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3142403",
+   "municipio": "Moema",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2020/06/Oeste-b65.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "bd6f100308",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "879315f577669777142e3e5894557cbe0dc2864b34f905f3affe28a498f1a809"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "quita Minas Gerais Minas Novas Minduri Mirabela Miradouro Miraí Miravânia Moeda Moema Monjolos Monsenhor Paulo Montalvânia Monte Alegre de Minas Monte Azul Mont"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3142403",
+   "municipio": "Moema",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "2e04fbcac5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "126815 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nomeia \"Moema\" (UF não citada no texto; identidade pelo nome)"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "a Civil. A Política Nacional de Proteção e Defesa Civil (PNPDEC), definida pela Lei nº 12.608, de 10 de abril de 2012 (BRASIL, 2012), dispõe sobre as ações de P",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608",
+      "data": "10/04/2012",
+      "trecho": "a Civil. A Política Nacional de Proteção e Defesa Civil (PNPDEC), definida pela Lei nº 12.608, de 10 de abril de 2012 (BRASIL, 2012), dispõe sobre as ações de P"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "categoria": null,
+   "data": "10/04/2012",
+   "natureza": null,
+   "ibge": "3142403",
+   "municipio": "Moema",
+   "uf": "MG",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/pndc/docs/produto-9-pn-pdc.pdf",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "cd356d3da5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "98bae9e465019200213dfd904bd7b6f72ceaf3eb2be0ae5fd122481be7fe05c7"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lheiro Lafaiete Conselheiro Pena Consolação Contagem Coqueiral Coração de Jesus Cordisburgo Cordislândia Corinto Coroaci Coromandel Coronel Fabriciano Coronel M"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3118908",
+   "municipio": "Cordisburgo",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "aa9e9d10d9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118908",
+   "municipio": "Cordisburgo",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/10/RDQA-1_merged.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "75e263ef0f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "be1362592d7bb8b181790fad55e69e59a2eb0498dcf4b93e0d6629062d159364"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118908",
+   "municipio": "Cordisburgo",
+   "uf": "MG",
+   "url": "https://www.der.mg.gov.br/images/1-diretorias/Comunicacao/2026/29.06.26.pdf",
+   "regras_18": [],
+   "pista_id": "ecec443379",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118908",
+   "municipio": "Cordisburgo",
+   "uf": "MG",
+   "url": "https://www.fazenda.mg.gov.br/governo/compras_publicas_e_contratos/compras/pregao_eletronico/extrato-de-publicacao-66.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d25a252632",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "26946311b3aac5932a8fc42583fae32f58cfd92ec3239b4c200682af85c0ff5b"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "544564 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3118908",
+   "municipio": "Cordisburgo",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/planejamento/documento_detalhado/2023/gestao-governamental/gestao-de-ti/retificacao17849_edital_planejamentoderegistrodepreco_0000000061_2023.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "69cc50d800",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "308447 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jacuí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3134806",
+   "municipio": "Jacuí",
+   "uf": "MG",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/capacitacoes/008_boas_praticas_eixo_plancon/001_boaspraticas_plancon_plano_contingencia_enfrentamento_desastres_belo_horizonte_mg.pdf",
+   "regras_18": [],
+   "pista_id": "f9d04cf198",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d735b0cdeef7668e7b780da788f64b8e1900b5eec8fd87deb4eb5a98712d6195"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "averava Itinga Itueta Ituiutaba Itumirim Iturama Itutinga Jaboticatubas Jacinto Jacuí Jacutinga Jaguaraçu Jaíba Jampruca Janaúba Januária Japaraíba Japonvar Jec"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3134806",
+   "municipio": "Jacuí",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6786650396",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "112608 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Jacuí\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3134806",
+   "municipio": "Jacuí",
+   "uf": "MG",
+   "url": "https://www.gov.br/mdr/pt-br/assuntos/protecao-e-defesa-civil/pndc/docs/produto-2-pn-pdc.pdf",
+   "regras_18": [],
+   "pista_id": "bff3431959",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "bc11c3b7b808e36b3b27c019ddf44575d1bdf70807b13cda4c9152343f48f277"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "3548 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "DEFESA CIVIL BALDIM &#8211; Prefeitura de Baldim &#8211; MG Close Menu Skip to content PRINCIPAL CONCURSO PÚBLICO BALDIM 2026 Edital 01 PNAB Premiação BALDIM/MG"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": null,
+      "detalhe": "a página não é documento e traz 0 sinal(is) de estrutura de plano (mínimo 2)",
+      "estrutura": []
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105004",
+   "municipio": "Baldim",
+   "uf": "MG",
+   "url": "https://baldim.mg.gov.br/wsite/?page_id=701",
+   "regras_18": [],
+   "pista_id": "932ce987cf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b7c995e0a69135d190bae63e885d78fe3a05932dca4ea8f9d129a326b731abac"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "reado Argirita Aricanduva Arinos Astolfo Dutra Ataléia Augusto de Lima Baependi Baldim Bambuí Bandeira Bandeira do Sul Barão de Cocais Barão de Monte Alto Barba"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3105004",
+   "municipio": "Baldim",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "59de5d8a7b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3105004",
+   "municipio": "Baldim",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d974168032",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Sião Montes Claros Montezuma Morada Nova de Minas Morro da Garça Morro do Pilar Munhoz Muriaé Mutum Muzambinho Nacip Raydan Nanuque Naque Natalândia Natércia Na"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3143807",
+   "municipio": "Munhoz",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "fa928ba4da",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3143807",
+   "municipio": "Munhoz",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "a7aabad0a8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "38194 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Munhoz\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3143807",
+   "municipio": "Munhoz",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2025/07/NOTA-TE%CC%81CNICA-No-342025-CGARB-DEDT-SVSA-MS.pdf",
+   "regras_18": [],
+   "pista_id": "3a2dce69d8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9cfd9ee91f6744fd902a3c6e8da16463b3cfa9a7155292ca4701a184b40c925d"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3143807",
+   "municipio": "Munhoz",
+   "uf": "MG",
+   "url": "https://www.der.mg.gov.br/images/1-diretorias/Comunicacao/2026/29.06.26.pdf",
+   "regras_18": [],
+   "pista_id": "eefaf6716d",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3108107",
+   "municipio": "Bonfim",
+   "uf": "MG",
+   "url": "https://www.pjf.mg.gov.br/noticias/anexo/PlanodeContingencia-PeriodoChuvoso2026-2027_2.pdf",
+   "regras_18": [],
+   "pista_id": "e07b9155b4",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "m Jesus da Penha Bom Jesus do Amparo Bom Jesus do Galho Bom Repouso Bom Sucesso Bonfim Bonfinópolis de Minas Bonito de Minas Borda da Mata Botelhos Botumirim Br"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3108107",
+   "municipio": "Bonfim",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "ab5762fd66",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "a Cristiano Otoni Cristina Crucilândia Cruzeiro da Fortaleza Cruzília Cuparaque Curral de Dentro Curvelo Datas Delfim Moreira Delfinópolis Delta Descoberto Dest"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3120870",
+   "municipio": "Curral de Dentro",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "286cf82dd6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3120870",
+   "municipio": "Curral de Dentro",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "dd7ff2f2d7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3120870",
+   "municipio": "Curral de Dentro",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "1d44c4c48d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ão Francisco do Glória São Geraldo São Geraldo da Piedade São Geraldo do Baixio São Gonçalo do Abaeté São Gonçalo do Pará São Gonçalo do Rio Abaixo São Gonçalo"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3161700",
+   "municipio": "São Gonçalo do Abaeté",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "1308685a56",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3161700",
+   "municipio": "São Gonçalo do Abaeté",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "19fb5003f1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3161700",
+   "municipio": "São Gonçalo do Abaeté",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "be22cdc44b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "cínea Imbé de Minas Inconfidentes Indaiabira Indianópolis Ingaí Inhapim Inhaúma Inimutaba Ipaba Ipanema Ipatinga Ipiaçu Ipuiúna Iraí de Minas Itabira Itabirinha"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3131109",
+   "municipio": "Inimutaba",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "f3c9f6fec3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "544564 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3131109",
+   "municipio": "Inimutaba",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/planejamento/documento_detalhado/2023/gestao-governamental/gestao-de-ti/retificacao17849_edital_planejamentoderegistrodepreco_0000000061_2023.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "6c7e5ecffa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3131109",
+   "municipio": "Inimutaba",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "2ddeeca9e3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Ferros Fervedouro Florestal Formiga Formoso Fortaleza de Minas Fortuna de Minas Francisco Badaró Francisco Dumont Francisco Sá Franciscópolis Frei Gaspar Frei I"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3126505",
+   "municipio": "Francisco Badaró",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "52a1937521",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3126505",
+   "municipio": "Francisco Badaró",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "eae2f04735",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3126505",
+   "municipio": "Francisco Badaró",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/10/RDQA-1_merged.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "03ae11cd41",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "be1362592d7bb8b181790fad55e69e59a2eb0498dcf4b93e0d6629062d159364"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3126505",
+   "municipio": "Francisco Badaró",
+   "uf": "MG",
+   "url": "https://social.mg.gov.br/images/Esportes/JIMI/2022/caderno1_2021_11_27.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "95a5865b05",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f1821cd70df1f4c1e268dc5c267b9c040f4e8fa517b5b56228059f22f590dee0"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3126505",
+   "municipio": "Francisco Badaró",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "fe68bc4262",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "tro Conceição do Pará Conceição do Rio Verde Conceição dos Ouros Cônego Marinho Confins Congonhal Congonhas Congonhas do Norte Conquista Conselheiro Lafaiete Co"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3117876",
+   "municipio": "Confins",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "56ec78e3ca",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Acima Rio Casca Rio de Janeiro Rio de Janeiro Rio do Prado Rio Doce Rio Espera Rio Manso Rio Novo Rio Paranaíba Rio Pardo de Minas Rio Piracicaba Rio Pomba Rio"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3155306",
+   "municipio": "Rio Manso",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6cc277037e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3155306",
+   "municipio": "Rio Manso",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "e2d2b5abb9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3146552",
+   "municipio": "Pai Pedro",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "ced36f6632",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3146552",
+   "municipio": "Pai Pedro",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d2e2ae6db4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "105508 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3146552",
+   "municipio": "Pai Pedro",
+   "uf": "MG",
+   "url": "https://sistemas.meioambiente.mg.gov.br/reunioes-ief/uploads/uj1iyeT81prfxiFgnb1Zn-J2Y7tFvm1L.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "7da65c64d5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2c76fa0a2c0f2f02396968a97d5a30c45ec8a51b4230a35bed679f8bb90fd823"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ro Branco Ouro Fino Ouro Preto Ouro Verde de Minas Padre Carvalho Padre Paraíso Pai Pedro Paineiras Pains Paiva Palma Palmópolis Papagaios Pará de Minas Paracat"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3146552",
+   "municipio": "Pai Pedro",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "5f5fe6d5ac",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "edade do Rio Grande Piedade dos Gerais Pimenta Pingo-d`Água Pintópolis Piracema Pirajuba Piranga Piranguçu Piranguinho Pirapetinga Pirapora Piraúba Pitangui Piu"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3150703",
+   "municipio": "Pirajuba",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "7771bbb7e7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "20847 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3150703",
+   "municipio": "Pirajuba",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2020/01/Boletim_07-01-b69.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "f1f8aa5220",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "db6828019c3ca86f52e41a88e9fa432673a19456acb7e1a4c554a72ad8ea8463"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "544564 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3150703",
+   "municipio": "Pirajuba",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/planejamento/documento_detalhado/2023/gestao-governamental/gestao-de-ti/retificacao17849_edital_planejamentoderegistrodepreco_0000000061_2023.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "105112e96f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4e5ee2332d4a450691da34e35b4ec25c8f45c024d49b1b9a0e25d635c280a3b8"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "da Penha Bom Jesus do Amparo Bom Jesus do Galho Bom Repouso Bom Sucesso Bonfim Bonfinópolis de Minas Bonito de Minas Borda da Mata Botelhos Botumirim Brás Pire"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3108206",
+   "municipio": "Bonfinópolis de Minas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "65ec83cb26",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3108206",
+   "municipio": "Bonfinópolis de Minas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "b763d88510",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3108206",
+   "municipio": "Bonfinópolis de Minas",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "0fd86813f7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3166006",
+   "municipio": "Senhora de Oliveira",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "11f8a211c6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "120279 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3166006",
+   "municipio": "Senhora de Oliveira",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2021/11/RESOLUCAO-SES-7784-4f6.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "cd366a1297",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "22505027753c1d26ac91bc5da56d180ce69f944382c9664ae1a4e583730cd7ad"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "l Senador Cortes Senador Firmino Senador José Bento Senador Modestino Gonçalves Senhora de Oliveira Senhora do Porto Senhora dos Remédios Sericita Seritinga Ser"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3166006",
+   "municipio": "Senhora de Oliveira",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "9bbab2a3ad",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o Carrancas Carvalhópolis Carvalhos Casa Grande Cascalho Rico Cássia Cataguases Catas Altas Catas Altas da Noruega Catuji Catuti Caxambu Cedro do Abaeté Central"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3115359",
+   "municipio": "Catas Altas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c045250e94",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "115784 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3115359",
+   "municipio": "Catas Altas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-02/plano_seguranca_barragens_03.05.19.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "127bbad414",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2a47634e375d3601115f553615d2d1306983b810732f0ecece59c1ca11aebd77"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3115359",
+   "municipio": "Catas Altas",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "00197e9ce2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "246109 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3121001",
+   "municipio": "Datas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-10/Plano%20Estadual%20de%20Enfrentamento%20ao%20Per%C3%ADodo%20Chuvoso%202025-2031.novo_.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "e47ca5ec06",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "e01601d80d0465269bf7e6b767b4110264467bfe97b2fe095f4f315b7bcd6993"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "21683 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3121001",
+   "municipio": "Datas",
+   "uf": "MG",
+   "url": "https://www.fazenda.mg.gov.br/coronavirus/instrumentos-normativos/Plano_de_Contingencia-SEF.PDF",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "36c9782d13",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "581b351ce694a74384e5c74654734fe47fe554a44258fe55ae545d68fdd03749"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "a Crucilândia Cruzeiro da Fortaleza Cruzília Cuparaque Curral de Dentro Curvelo Datas Delfim Moreira Delfinópolis Delta Descoberto Desterro de Entre Rios Dester"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3121001",
+   "municipio": "Datas",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6ea65e9862",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "uto de Magalhães de Minas Crisólita Cristais Cristália Cristiano Otoni Cristina Crucilândia Cruzeiro da Fortaleza Cruzília Cuparaque Curral de Dentro Curvelo Da"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3120607",
+   "municipio": "Crucilândia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "e3ff0edd93",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3120607",
+   "municipio": "Crucilândia",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2026/10/RDQA-1_merged.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "235ff136aa",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "be1362592d7bb8b181790fad55e69e59a2eb0498dcf4b93e0d6629062d159364"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3120607",
+   "municipio": "Crucilândia",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "17bd8117a2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3120607",
+   "municipio": "Crucilândia",
+   "uf": "MG",
+   "url": "https://social.mg.gov.br/images/Esportes/JIMI/2022/caderno1_2021_11_27.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "334397d0ef",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f1821cd70df1f4c1e268dc5c267b9c040f4e8fa517b5b56228059f22f590dee0"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "72568 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3155207",
+   "municipio": "Rio Espera",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2023/01/RESOLUCAO-SES-8369-a09.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "94930cd077",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "c7b60aae3120610c344a55f201834948128a43eeb13b65b18feabbc1a1d47bbc"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ermelho Rio Acima Rio Casca Rio de Janeiro Rio de Janeiro Rio do Prado Rio Doce Rio Espera Rio Manso Rio Novo Rio Paranaíba Rio Pardo de Minas Rio Piracicaba Ri"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3155207",
+   "municipio": "Rio Espera",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c302777585",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "54922 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3155207",
+   "municipio": "Rio Espera",
+   "uf": "MG",
+   "url": "https://www.saude.mg.gov.br/wp-content/uploads/2020/06/Centro-Sul-ce7.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "7935c8f705",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "659c3534d838970e1cf2095ec5d405b365cd3e4dba75170d12a095447c485268"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "121061 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3117603",
+   "municipio": "Conceição do Pará",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/system/files/media/documento_detalhado/2025-05/RELAT%C3%93RIO%20PER%C3%8DODO%20CHUVOSO%2024-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "becf2631b5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "14475 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "das Alagoas Conceição das Pedras Conceição de Ipanema Conceição do Mato Dentro Conceição do Pará Conceição do Rio Verde Conceição dos Ouros Cônego Marinho Conf"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em",
+     "dados": {
+      "tipo": "lei",
+      "numero": "12.608/12",
+      "data": "06/12/2023",
+      "trecho": "G), auxilia os municípios na elaboração de Planos de Contingência exigidos pela Lei Federal nº 12.608/12, nos termos do art. 7º, inciso VIII. A ação consiste em"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "06/12/2023",
+   "natureza": null,
+   "ibge": "3117603",
+   "municipio": "Conceição do Pará",
+   "uf": "MG",
+   "url": "https://www.mg.gov.br/servico/solicitar-consultoria-e-apoio-na-elaboracao-de-planos-de-protecao-e-defesa-civil",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "cffafd3a4c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ca837322c0859ad80181eec59a7674586f00620b2307e4408799746ebe71c7bb"
   }
  ]
 }
