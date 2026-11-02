@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `transferencias_uniao.json` ganha `meses_tentados` (consulta, data, resultado: 404 = arquivo ainda não publicado; outra falha não afirma isso); a série nacional o repassa. O mês lido depois sai da lista. Nunca zero.
 
+## 2026-11-02 · portão · Lacuna estadual sem verificação nos últimos 7 dias reprova · +33/−11
+
+`verificar_regras_de_dado.py`: `endereco_lacuna` sem `verificado_em` ou com mais de 7 dias reprova, em vez de ficar parada desde 10/10. Vermelho até o ciclo `proveniencia_estadual` rodar na corrente (quarta, 04/11); sem exceção, como a central pediu.
+
 ## 2026-11-02 · dados · Mortalidade comparada: coluna da projeção do Climate Impact Lab por UF e mês · +50/−8
 
 `gerar_mortalidade_comparada.py` lê a edição mais recente de `projecao_cil.json` (26/10/2026) e preenche `projecao_cil` por UF e Brasil, de julho de 2026 em diante. Total e previsão agregada ficam fora; mês ausente da edição é lacuna declarada. Crédito, método e link na fonte do arquivo; sem faixa de incerteza no arquivo da fonte.
