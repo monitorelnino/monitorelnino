@@ -347,8 +347,9 @@ def ler_web(dados: dict, nome: str, fonte: str) -> list:
 def buscar_web(consulta: str) -> dict:
     """Uma consulta ao metabuscador com o ritmo e o disjuntor de `monitorar_busca_web` (intervalo com jitter)."""
     import monitorar_busca_web as mw
+    import motores_busca
     time.sleep(mw.espera_do_ritmo(0))
-    return mw.buscar_searxng(consulta)
+    return mw.buscar_searxng(consulta, motores=list(motores_busca.MOTORES))
 
 
 def classificar_erro(e: Exception) -> tuple:
