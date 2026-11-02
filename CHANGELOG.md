@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-02 · dados · Mortalidade comparada: coluna da projeção do Climate Impact Lab por UF e mês · +50/−8
+
+`gerar_mortalidade_comparada.py` lê a edição mais recente de `projecao_cil.json` (26/10/2026) e preenche `projecao_cil` por UF e Brasil, de julho de 2026 em diante. Total e previsão agregada ficam fora; mês ausente da edição é lacuna declarada. Crédito, método e link na fonte do arquivo; sem faixa de incerteza no arquivo da fonte.
+
 ## 2026-11-02 · ensaio real · Push do ramo do ensaio conhece a ponta atual da main · +4/−0
 
 Ensaio real vermelho (pack >2 GiB): job esperou na fila, SHA do dispatch ficou velho, push raso reenviou a árvore. `git fetch --depth=1 origin main` antes do push; caso F77 no catálogo.
