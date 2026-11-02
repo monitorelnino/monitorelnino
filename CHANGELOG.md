@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-02 · #PR · Financiamento: transferências por UF e série mensal nacional saem do download do Portal · +62/−0
+## 2026-11-02 · #PR · Financiamento: transferências por UF e série mensal nacional saem do download do Portal · +68/−1
 
 `por_uf.json` ganha `transferencias_download` por UF e `serie_nacional.json` ganha `serie_mensal_download`, com `consultado_em`, último mês lido e meses parciais marcados. Soma do mesmo arquivo mensal que o coletor municipal já lê (sem segundo download, sem chave); linha sem município fica à parte. Nenhuma rota r1–r7 preenchida: a fonte classifica por função, não por instrumento.
 
