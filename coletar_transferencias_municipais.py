@@ -313,6 +313,8 @@ def fundir(anterior: dict, mes: str, por_ibge: dict, nao_casados: dict, sem_muni
                         "valor_nao_casado": round(sum(nao_casados.values()), 2),
                         "sem_municipio_na_fonte": round(sum(sem_municipio.values()), 2)}
     saida["meses_lidos"] = marcar_parciais({m: meses_lidos[m] for m in sorted(meses_lidos)})
+    if "meses_tentados" in saida:
+        saida["meses_tentados"] = {m: v for m, v in saida["meses_tentados"].items() if m != mes}
     # 11/10/2026 (A6-12 do relatório D): `nao_casados` e `sem_municipio_na_fonte` SOMAVAM a cada
     # leitura — reler o mesmo mês dobrava o valor, e com a coleta diária ele cresceria trinta vezes
     # por mês. Agora cada mês guarda o seu, e o total é a soma dos meses: reler substitui.
@@ -332,6 +334,40 @@ def fundir(anterior: dict, mes: str, por_ibge: dict, nao_casados: dict, sem_muni
     saida["nao_casados"] = somar(saida["nao_casados_por_mes"])
     saida["sem_municipio_na_fonte"] = somar(saida["sem_municipio_por_mes"])
     return saida
+
+
+def com_tentativa(anterior: dict, mes: str, resultado: str, quando: str) -> dict:
+    """Registra no arquivo que `mes` foi consultado em `quando` e NÃO entrou. Função pura.
+
+    02/11/2026 (Central): o arquivo só listava `meses_lidos`; "outubro ainda não publicado pela fonte
+    em dd/mm" não tinha de onde sair. A tentativa não é zero nem leitura: é consulta sem arquivo.
+    Um mês lido depois sai de `meses_tentados` (ver `fundir`)."""
+    saida = dict(anterior or {})
+    t = dict(saida.get("meses_tentados") or {})
+    t[mes] = {"consultado_em": quando, "resultado": resultado}
+    saida["meses_tentados"] = {m: t[m] for m in sorted(t)}
+    return saida
+
+
+def resultado_da_falha(e: Exception) -> str:
+    """404 do Portal = arquivo do mês ainda não publicado; qualquer outra falha não diz isso."""
+    codigo = getattr(e, "code", None)
+    if codigo == 404:
+        return "arquivo_nao_publicado_ate_a_consulta"
+    return f"falha_de_acesso: {type(e).__name__}" + (f" {codigo}" if codigo else "")
+
+
+def gravar_tentativa(mes: str, resultado: str) -> None:
+    import json
+    anterior = json.loads(SAIDA.read_text(encoding="utf-8")) if SAIDA.exists() else {}
+    if not anterior:
+        return
+    gravar_em(SAIDA, com_tentativa(anterior, mes, resultado, hoje_editorial().strftime("%d/%m/%Y")))
+    try:
+        import coletar_financiamento
+        coletar_financiamento.consolidar_download()
+    except Exception:  # noqa: BLE001 — a tentativa já está no arquivo; o derivado se refaz no próximo elo
+        pass
 
 
 def meses_do_ano(ano: int, hoje=None) -> list:
@@ -378,6 +414,7 @@ def coletar(mes: str) -> dict:
     except Exception as e:  # noqa: BLE001
         registrar_lacuna("portal_transferencias", f"{mes}: {type(e).__name__}: {e}",
                          canal="DOU", camada=1, strings=[url])
+        gravar_tentativa(mes, resultado_da_falha(e))
         return {}
     por_ibge, nao_casados, sem_municipio, linhas, soma = ler_mes(corpo, chave)
     anterior = {}
@@ -396,6 +433,7 @@ def coletar(mes: str) -> dict:
                          canal="DOU", camada=1, strings=[url], hash_evidencia=h)
         log_busca("DOU", 1, [url], "erro", resultados=f"{mes}: zero linha municipal",
                   hash_evidencia=h)
+        gravar_tentativa(mes, "arquivo_sem_linha_municipal")
         return {}
     dados = fundir(anterior, mes, por_ibge, nao_casados, sem_municipio, linhas, soma)
     dados["meses_lidos"][mes]["hash_evidencia"] = h
@@ -552,6 +590,13 @@ def autoteste() -> int:
         "ZIP sem CSV levanta":
             lambda: _levanta(lambda: ler_mes(_zip_vazio(), chave)),
         # O mês corrente fica fora: o Portal publica o arquivo fechado.
+        "mês consultado sem arquivo fica como tentativa datada; lido depois, sai":
+            lambda: (lambda t: t["meses_tentados"] == {"202610": {"consultado_em": "02/11/2026", "resultado": "x"}}
+                     and "meses_tentados" in t and not fundir(t, "202610", {}, {}, {}, 1, 1.0)["meses_tentados"])(
+                com_tentativa({}, "202610", "x", "02/11/2026")),
+        "404 é arquivo não publicado; outra falha não afirma isso":
+            lambda: resultado_da_falha(type("E", (Exception,), {"code": 404})()) == "arquivo_nao_publicado_ate_a_consulta"
+                    and "nao_publicado" not in resultado_da_falha(TimeoutError()),
         "o mês em curso não é coletado":
             lambda: meses_do_ano(2026, datetime.date(2026, 10, 1))[-1] == "202609",
         "ano passado vai até dezembro":
