@@ -264,7 +264,8 @@ def consolidar_download(consultado_em: str | None = None) -> int:
     _g("por_uf.json", pu)
     sn = _l("serie_nacional.json"); sn["consultado_em"] = quando
     sn["serie_mensal_download"] = {"fonte": fonte, "ultimo_mes": ultimo, "meses_parciais": parcial,
-                                   "meses": [{"mes": m, "por_rota": r, "total": round(sum(r.values()), 2), "parcial": m in parcial} for m, r in sorted(por_mes.items())]}
+                                   "meses": [{"mes": m, "por_rota": r, "total": round(sum(r.values()), 2), "parcial": m in parcial} for m, r in sorted(por_mes.items())],
+                                   "meses_tentados": transf.get("meses_tentados") or {}}
     _g("serie_nacional.json", sn)
     print(f"consolidado do download: {len(por_mes)} meses, último {ultimo}, parciais {parcial}")
     return 0
