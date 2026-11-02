@@ -19800,7 +19800,34 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "coletar_sinais_risco.py",
+   "inicio": "2026-11-02T08:50:25",
+   "duracao_s": 96.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-02",
+   "script": "coletar_transferencias_municipais.py",
+   "inicio": "2026-11-02T08:52:01",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-11-02",
+   "script": "scripts/sondar_credenciais.py",
+   "inicio": "2026-11-02T08:52:02",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-11-02T08:52:00"
+ "atualizado_em": "2026-11-02T08:52:02"
 }
