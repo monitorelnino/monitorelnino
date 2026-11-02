@@ -75,6 +75,10 @@ jobs:
           printf '%s\n' "$NOITE" > .noite_do_ensaio
           git add .noite_do_ensaio
           git commit -qm "ensaio real: noite ${NOITE} fixada; o ramo começa sem os marcadores dela"
+          # F77: o dispatch fixa o SHA da `main` e o job pode esperar na fila de concorrência; o push
+          # raso de um SHA que o remoto já não anuncia reenvia a árvore inteira (>2 GiB). Conhecer a
+          # ponta atual deixa o git subtraí-la do pacote.
+          git fetch -q --depth=1 origin main
           GIT_SSH_COMMAND="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes" \
             git push git@github.com:${GITHUB_REPOSITORY}.git "HEAD:refs/heads/${RAMO}"
           echo "ramo=${RAMO}" >> "$GITHUB_OUTPUT"

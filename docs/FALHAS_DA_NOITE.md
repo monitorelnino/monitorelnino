@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-10-26. 76 falhas; 70 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-10-26. 77 falhas; 71 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -689,3 +689,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** jobs do run 41138495642: 'juiz / coletar' failure, passo checkout in_progress, demais pending, 22:30–22:32 UTC; log do run 41134829009: juiz disparado no min 27, 'faltam: juiz, sinais-fisicos' do min 28 ao 109
 - **Correção:** `a_refazer`: o condutor consulta os runs do ramo e redispara uma vez o workflow cujo último run terminou sem sucesso.
 - **Caso de teste:** `scripts/ensaio_real.py --autoteste (4 casos de a_refazer)`
+
+## F77 · Ensaio real vermelho: push do ramo passou de 2 GiB depois de esperar na fila
+
+- **Noite:** 2026-11-02
+- **Sintoma:** Ensaios reais 41373381856 e 41377512541 (#1437, #1438): 'remote: fatal: pack exceeds maximum allowed size (2.00 GiB)' no push do ramo ensaio-real; Issue no robo-registro.
+- **Causa:** O dispatch fixa o SHA da main; o job esperou ~70 min na fila do grupo de concorrência e a main andou. O checkout é raso (depth 1) e o remoto já não anunciava aquele SHA, então o git não tinha ponta conhecida para subtrair e empacotou a árvore inteira.
+- **Prova:** log do job 125079621531: push de HEAD para ensaio-real/2026-11-02-41377512541 rejeitado, 03:36:56 UTC; run 41377512541: criado 02:24, job iniciado 03:35 (fila atrás do run 146)
+- **Correção:** `git fetch --depth=1 origin main` antes do push do ramo: a ponta atual passa a ser base conhecida e o pacote leva só o commit novo.
+- **Caso de teste:** `.github/workflows/ensaio_real_da_noite.yml`
