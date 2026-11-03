@@ -9,17 +9,17 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-26 a 2026-11-02 (1290 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-27 a 2026-11-03 (1155 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- coletar_sih.py: erro em 7 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
+- coletar_sih.py: erro em 6 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
 - monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
 - verificar_links.py: erro em 2 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Cobertura em 15 dias
 
-cobertura 15d: 4984/5571 com verificação real até 2026-11-02 · por canal: web 801 · QD 527 · consorciado 1713 · DOE 4677
+cobertura 15d: 4984/5571 com verificação real até 2026-11-03 · por canal: web 639 · QD 527 · consorciado 1713 · DOE 4677
 
 ## Última execução de cada script
 
@@ -28,7 +28,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-02 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-02 07:27 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-02 01:41 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-02 01:53 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-03 03:37 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-02 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -46,9 +46,9 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-02 · por canal: we
 | `coletar_datasus_dbc.py` | coletor | 2026-11-02 07:14 | 38 s | — | ok | — |
 | `coletar_dda.py` | coletor | 2026-11-02 01:30 | 55 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-11-02 01:23 | 410 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-11-01 01:32 | 2884 s | 37 | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-11-01 01:32 | 3 s | 0 | ok | — |
-| `coletar_doe.py` | coletor | 2026-11-02 02:20 | 2549 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-11-02 01:27 | 2986 s | 37 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-11-02 01:27 | 3 s | 0 | ok | — |
+| `coletar_doe.py` | coletor | 2026-11-03 02:16 | 3530 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-11-01 02:26 | 1499 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-11-01 02:51 | 231 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-31 01:14 | 4 s | — | ok | — |
@@ -57,20 +57,20 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-02 · por canal: we
 | `coletar_planos_arboviroses.py` | coletor | 2026-11-02 07:27 | 1443 s | — | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-10-31 01:14 | 4 s | — | ok | — |
 | `coletar_projecao_cil.py` | coletor | 2026-11-02 07:27 | 1 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-11-02 03:18 | 13 s | — | ok | — |
-| `coletar_s2id.py` | coletor | 2026-11-02 03:03 | 919 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-11-03 03:31 | 22 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-11-03 03:15 | 924 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-11-02 01:15 | 75 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-10-27 02:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-31 01:14 | 3 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-11-01 02:31 | 12 s | — | ok | — |
-| `coletar_sih.py` | coletor | 2026-11-02 07:27 | 5 s | — | **erro** (7 seguidas) | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
+| `coletar_sih.py` | coletor | 2026-11-02 07:27 | 5 s | — | **erro** (6 seguidas) | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
 | `coletar_sim.py` | coletor | 2026-11-02 07:17 | 614 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-11-02 01:14 | 86 s | — | ok | — |
 | `coletar_sisab.py` | coletor | 2026-11-02 07:15 | 109 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-10-31 01:15 | 282 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-01 02:30 | 52 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-02 01:16 | 76 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-11-01 01:16 | 975 s | 19 | ok | — |
+| `consultar_querido_diario.py` | coletor | 2026-11-02 01:17 | 594 s | 47 | ok | — |
 | `descobrir_dominios.py` | coletor | 2026-11-01 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `descobrir_planos.py` | coletor | 2026-11-02 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `desfechos_sus.py` | coletor | 2026-11-02 07:17 | 1 s | — | ok | — |
@@ -84,7 +84,6 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-02 · por canal: we
 | `monitorar_imprensa_regional.py` | coletor | 2026-11-02 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_imprensa_saude.py` | coletor | 2026-11-02 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-11-02 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `monitorar_redes_oficiais.py` | coletor | 2026-10-26 07:34 | 1012 s | — | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-11-02 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `preservar_evidencias.py` | coletor | 2026-11-02 06:59 | 1 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-31 01:14 | 2 s | — | ok | — |
