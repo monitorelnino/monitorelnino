@@ -1,11 +1,11 @@
 {
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
-  "modo": "padrao_por_data",
-  "em": "01/11/2026",
-  "conta_como_consultado": true,
-  "adaptador": "edicao_mg",
-  "ultima_edicao_lida": "2026-10-16"
+  "modo": "sem_acesso_automatico",
+  "motivo": "HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada",
+  "em": "03/11/2026",
+  "conta_como_consultado": false,
+  "ultima_edicao_lida": "2026-10-30"
  },
  "edicoes": {
   "2026-10-19": {
@@ -14,35 +14,41 @@
   },
   "2026-10-16": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 2899097,
    "paginas": 61,
    "paginas_com_texto": 61,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16",
    "impressao": "feeab1bc922eebba52ad9850e97c5e9a3aecbaab960e2f05c6ab3bb1f399f971",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-15": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 2213318,
    "paginas": 42,
    "paginas_com_texto": 42,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-15",
    "impressao": "4b0c985ab29a038732baf1406950340c2bb0d085a89b878ab87b779ccc863dc0",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-14": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 3111426,
    "paginas": 90,
    "paginas_com_texto": 90,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
    "impressao": "3a2442f7d2f515244cc2ed9bc4fd2fb03a1cf5e1c37a78943cbeb6fb07d40716",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-13": {
@@ -55,63 +61,175 @@
   },
   "2026-10-09": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 2906490,
    "paginas": 60,
    "paginas_com_texto": 60,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-09",
    "impressao": "3e6df77e0d5808920f48d7c04056e5a087ae583a97d2ef6be21b94f5309a4c16",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-08": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 2450811,
    "paginas": 51,
    "paginas_com_texto": 51,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-08",
    "impressao": "9550825f1d717b299a42a42cd3de13e3634b7dcd05515969f16c40cc5470a3fa",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-07": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 2278907,
    "paginas": 43,
    "paginas_com_texto": 43,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-07",
    "impressao": "463e5b35b58596f6384001b1abdeb37496095faffeb588f08238720e661d2206",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-06": {
    "decisao": "lida",
-   "em": "19/10/2026",
+   "em": "03/11/2026",
    "bytes": 2574816,
    "paginas": 62,
    "paginas_com_texto": 62,
    "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-06",
    "impressao": "acad5d198237b85eec6a9814ef1988fc4e771ee450e7479b5c3ba815a4530eb3",
    "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
    "termos_achados": []
   },
   "2026-10-30": {
-   "decisao": "vazio",
-   "em": "01/11/2026",
-   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2807442,
+   "paginas": 73,
+   "paginas_com_texto": 73,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-30",
+   "impressao": "551d67d3be311955545da53ac852f1d8705a728a4a2834d7e5963b1fe6129186",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-10-29": {
-   "decisao": "vazio",
-   "em": "01/11/2026",
-   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2586972,
+   "paginas": 51,
+   "paginas_com_texto": 51,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-29",
+   "impressao": "bae4f64079580989edd52a590c6fd53b9f8627e78c876bb7b3892129bb887a5c",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   },
   "2026-10-28": {
-   "decisao": "vazio",
-   "em": "01/11/2026",
-   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2815507,
+   "paginas": 80,
+   "paginas_com_texto": 80,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-28",
+   "impressao": "b715dfdf714934fdc799b632dcee56f9d6971295a9cf95198190f3fc607c6722",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-03": {
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
+  },
+  "2026-11-02": {
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
+  },
+  "2026-10-27": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2108674,
+   "paginas": 37,
+   "paginas_com_texto": 37,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-27",
+   "impressao": "8be0a60626d26bb8908a5de036b6a9bbac106bccd7e7eb2d613528e3ad4f6e04",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-10-26": {
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
+  },
+  "2026-10-23": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2319217,
+   "paginas": 49,
+   "paginas_com_texto": 49,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-23",
+   "impressao": "1a746b12346a87180107a4e9b7454725944ff84e9d884f9c4f2a481a2cde7be1",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "1a746b12346a87180107a4e9b7454725944ff84e9d884f9c4f2a481a2cde7be1",
+   "termos_achados": [
+    "grupo condutor"
+   ]
+  },
+  "2026-10-22": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2136956,
+   "paginas": 38,
+   "paginas_com_texto": 38,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-22",
+   "impressao": "ec19893ac633113696332b9c63a595a66ee252114d85d084ce64796a44cc9b2c",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-10-21": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2972976,
+   "paginas": 75,
+   "paginas_com_texto": 75,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-21",
+   "impressao": "2dd8749b445b6770b302173fd3ae6892c79014406b7f34e64852633c9ec1d1de",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-10-20": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 2280147,
+   "paginas": 47,
+   "paginas_com_texto": 47,
+   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-20",
+   "impressao": "9717b069dd790346c6059737ce1b26d4c9df7d0f206bf434540459779ee930cb",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   }
  },
- "atualizado_em": "01/11/2026"
+ "atualizado_em": "03/11/2026"
 }
