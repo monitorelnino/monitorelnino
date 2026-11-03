@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "01/11/2026",
+  "em": "03/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_rj",
-  "ultima_edicao_lida": "2026-10-29"
+  "ultima_edicao_lida": "2026-11-03"
  },
  "edicoes": {
   "2026-10-19": {
@@ -87,9 +87,8 @@
    "termos_achados": []
   },
   "2026-10-12": {
-   "decisao": "vazio",
-   "em": "01/11/2026",
-   "motivo": "listagem da data: FormatoDaBuscaMudou: página de cadernos do DOE-RJ fora do contrato"
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
   },
   "2026-10-09": {
    "decisao": "lida",
@@ -436,9 +435,8 @@
    "termos_achados": []
   },
   "2026-09-07": {
-   "decisao": "vazio",
-   "em": "01/11/2026",
-   "motivo": "listagem da data: FormatoDaBuscaMudou: página de cadernos do DOE-RJ fora do contrato"
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
   },
   "2026-09-04": {
    "decisao": "lida",
@@ -1231,9 +1229,8 @@
    "termos_achados": []
   },
   "2026-10-30": {
-   "decisao": "vazio",
-   "em": "01/11/2026",
-   "motivo": "listagem da data: FormatoDaBuscaMudou: página de cadernos do DOE-RJ fora do contrato"
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
   },
   "2026-10-29": {
    "decisao": "lida",
@@ -1367,7 +1364,24 @@
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
    "termos_achados": []
+  },
+  "2026-11-03": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 4552187,
+   "paginas": 42,
+   "paginas_com_texto": 42,
+   "url": "https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=847FC64C-666P8-410B-BF76-8B552B19FDDF",
+   "impressao": "0f6304008d81cd987b8426fce9139ec5bcc9cf832f6dd8aa4bc34e81d876b62b",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-02": {
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
   }
  },
- "atualizado_em": "01/11/2026"
+ "atualizado_em": "03/11/2026"
 }
