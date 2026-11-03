@@ -1260,6 +1260,14 @@ def julgar(texto: str, nome: str, uf: str, ibge: str = None, url: str = None,
                 f"{len(recorte)} de {len(texto)} caracteres — ato recortado da edição pelo excerto")
             texto_da_identidade = texto[:600] + "\n" + recorte
             texto = recorte
+        elif len(RE_CABECALHO_DE_ATO.findall(texto)) >= 2:
+            # 03/11/2026 (Mogi Guaçu/SP): o excerto aponta um ato, mas ele não foi achado na edição de
+            # vários atos. Lida inteira, cada etapa passava num ato diferente (a lei do expediente na
+            # citação, o sumário na autoridade, um sobrenome na família) e o plano de frio virou plano
+            # de 2021. Sem o ato isolado não há citação dele: busca dirigida, nunca a edição inteira.
+            veredito["criterios"]["2_citacao"] = {"ok": False, "trecho": "", "dados": {
+                "detalhe": "ato do excerto não localizado na edição com vários atos"}}
+            return recusa("citacao_incompleta")
     texto = texto[:TETO_DO_JULGAMENTO]
 
     if not eh_estadual and uf_do_dominio(url) and uf_do_dominio(url) != str(uf or "").upper():
@@ -1895,6 +1903,10 @@ def autoteste() -> int:
                      + re.sub(r"\s+", " ", EDICAO_DE_DIARIO.split("ANO V EDIÇÃO Nº 1234")[1])),
                     nome="Bonito", uf="MS", url=URL_OFICIAL,
                     trecho="Institui o Plano de Contingência Municipal para o período de estiagem"))),
+        ("excerto não localizado na edição de vários atos: abstém, não lê a edição inteira",
+         (lambda v: (v["promove"], v["motivo"]) == (False, "citacao_incompleta"))(
+             julgar(EDICAO_DE_DIARIO, nome="Bonito", uf="MS", url=URL_OFICIAL,
+                    trecho="Plano de Contingência para Situações de Baixas Temperaturas"))),
         ("recorte sem trecho devolve o texto inteiro",
          recortar_ato(EDICAO_DE_DIARIO, "") == EDICAO_DE_DIARIO),
         ("trecho ausente do texto devolve o texto inteiro",
