@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · Juiz de saúde: queda de rede não apaga veredito
+
+`julgar_saude.py --rejulgar` apagava o veredito de toda pista cujo documento não baixava (rejulgar do PI: 10 vereditos perdidos, um deles promovido). O resultado pendente agora só é contado e o veredito anterior fica. Linhas líquidas: +2/−1 (comentário e remoção).
+
 ## 2026-11-03 · TLS: intermediário público que o DOE-MG não envia
 
 O servidor do DOE-MG monta mal a cadeia (envia o intermediário errado), e as 92 datas falhavam com CERTIFICATE_VERIFY_FAILED. `contexto_tls` carrega o intermediário público da Sectigo (sha256 fixado, provado no runner: HTTP 200); a verificação do certificado segue plena. Linhas +54/−1.
