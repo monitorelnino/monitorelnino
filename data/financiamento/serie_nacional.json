@@ -531,11 +531,13 @@
   "r5"
  ],
  "nota": "r5 = valor de repasse dos instrumentos assinados na semana, até a semana da carga da fonte; depois dela, sem valor (a fonte ainda não trouxe). Demais rotas sem valor: não coletadas por este coletor.",
- "consultado_em": "01/11/2026",
+ "consultado_em": "02/11/2026",
  "serie_mensal_download": {
   "fonte": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
-  "ultimo_mes": "202609",
-  "meses_parciais": [],
+  "ultimo_mes": "202610",
+  "meses_parciais": [
+   "202610"
+  ],
   "meses": [
    {
     "mes": "202601",
@@ -644,7 +646,19 @@
     },
     "total": 27518938572.7,
     "parcial": false
+   },
+   {
+    "mes": "202610",
+    "por_rota": {
+     "outras": 2247982649.79,
+     "saude": 12817164.8,
+     "defesa_civil": 65174537.51,
+     "assistencia_social": 1416479.36
+    },
+    "total": 2327390831.46,
+    "parcial": true
    }
-  ]
+  ],
+  "meses_tentados": {}
  }
 }
