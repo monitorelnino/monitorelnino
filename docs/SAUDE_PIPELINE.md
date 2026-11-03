@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-27 a 2026-11-03 (1267 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-27 a 2026-11-03 (1269 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-03 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-03 07:28 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-02 01:41 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-03 15:38 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-03 16:36 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-03 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -87,7 +87,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-03 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-11-03 08:32 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-11-03 08:10 | 1 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-31 01:14 | 2 s | — | ok | — |
-| `python3` | coletor | 2026-11-02 17:57 | 350 s | — | ok | — |
+| `python3` | coletor | 2026-11-03 15:35 | 35 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-11-03 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-03 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-03 08:58 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
