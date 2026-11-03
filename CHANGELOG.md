@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · errata · Mogi Guaçu/SP sai do MARÉ Legal: o ato do excerto não foi localizado · −4
+
+Errata por linha (METODOLOGIA §106): a decisão do juiz de 03/11 creditava plano a Mogi Guaçu com um ato de outro assunto (baixas temperaturas). O registro sai de `municipios.json`; SP volta de 35,9 para 35,8. O juiz já abstém desde o #1455.
+
 ## 2026-11-03 · juiz · Ato do excerto não localizado na edição: abstenção, não leitura da edição inteira · +12/−0
 
 Mogi Guaçu/SP (triagem de 03/11): o excerto do Querido Diário não foi achado na edição; lida inteira, a citação veio do expediente (lei do diário, 2021), a autoridade do sumário e a família de um sobrenome. Agora, edição com dois ou mais atos sem o ato isolado recusa por `citacao_incompleta` e segue para a busca dirigida. Codebook 1.8 sem mudança de regra, peso ou crédito. Um caso de teste.
