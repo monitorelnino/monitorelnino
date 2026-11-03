@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "01/11/2026",
+  "em": "03/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_mg",
-  "ultima_edicao_lida": "2026-10-16"
+  "ultima_edicao_lida": ""
  },
  "edicoes": {
   "2026-10-19": {
@@ -13,37 +13,19 @@
    "em": "19/10/2026"
   },
   "2026-10-16": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 2899097,
-   "paginas": 61,
-   "paginas_com_texto": 61,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-16",
-   "impressao": "feeab1bc922eebba52ad9850e97c5e9a3aecbaab960e2f05c6ab3bb1f399f971",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-15": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 2213318,
-   "paginas": 42,
-   "paginas_com_texto": 42,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-15",
-   "impressao": "4b0c985ab29a038732baf1406950340c2bb0d085a89b878ab87b779ccc863dc0",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-14": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 3111426,
-   "paginas": 90,
-   "paginas_com_texto": 90,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-14",
-   "impressao": "3a2442f7d2f515244cc2ed9bc4fd2fb03a1cf5e1c37a78943cbeb6fb07d40716",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-13": {
    "decisao": "sem_edicao_na_data",
@@ -54,64 +36,435 @@
    "em": "19/10/2026"
   },
   "2026-10-09": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 2906490,
-   "paginas": 60,
-   "paginas_com_texto": 60,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-09",
-   "impressao": "3e6df77e0d5808920f48d7c04056e5a087ae583a97d2ef6be21b94f5309a4c16",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-08": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 2450811,
-   "paginas": 51,
-   "paginas_com_texto": 51,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-08",
-   "impressao": "9550825f1d717b299a42a42cd3de13e3634b7dcd05515969f16c40cc5470a3fa",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-07": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 2278907,
-   "paginas": 43,
-   "paginas_com_texto": 43,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-07",
-   "impressao": "463e5b35b58596f6384001b1abdeb37496095faffeb588f08238720e661d2206",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-06": {
-   "decisao": "lida",
-   "em": "19/10/2026",
-   "bytes": 2574816,
-   "paginas": 62,
-   "paginas_com_texto": 62,
-   "url": "https://www.jornalminasgerais.mg.gov.br/api/v1/Jornal/ObterEdicaoPorDataPublicacao?dataPublicacao=2026-10-06",
-   "impressao": "acad5d198237b85eec6a9814ef1988fc4e771ee450e7479b5c3ba815a4530eb3",
-   "termos_versao": "2026-10-17",
-   "termos_achados": []
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-30": {
    "decisao": "vazio",
-   "em": "01/11/2026",
+   "em": "03/11/2026",
    "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-29": {
    "decisao": "vazio",
-   "em": "01/11/2026",
+   "em": "03/11/2026",
    "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   },
   "2026-10-28": {
    "decisao": "vazio",
-   "em": "01/11/2026",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-11-03": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-11-02": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-27": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-26": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-23": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-22": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-21": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-20": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-05": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-02": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-10-01": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-30": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-29": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-28": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-25": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-24": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-23": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-22": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-21": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-18": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-17": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-16": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-15": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-14": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-11": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-10": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-09": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-08": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-07": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-04": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-03": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-02": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-09-01": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-31": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-28": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-27": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-26": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-25": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-24": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-21": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-20": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-19": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-18": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-17": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-14": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-13": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-12": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-11": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-10": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-07": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-06": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-05": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-04": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-08-03": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-31": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-30": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-29": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-28": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-27": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-24": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-23": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-22": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-21": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-20": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-17": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-16": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-15": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-14": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-13": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-10": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-09": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-08": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-07": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-06": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-03": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-02": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-07-01": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-06-30": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
+  },
+  "2026-06-29": {
+   "decisao": "vazio",
+   "em": "03/11/2026",
    "motivo": "listagem da data: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get l"
   }
  },
- "atualizado_em": "01/11/2026"
+ "atualizado_em": "03/11/2026"
 }
