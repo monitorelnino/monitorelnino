@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · DOE: falha de rede na releitura não apaga a leitura
+
+O coletor de edições gravava `vazio` por cima de uma `lida` quando a releitura (termos novos) falhava na rede; na válvula de MG, o erro de certificado em 92 datas rebaixaria as 7 lidas. `registro_da_falha` mantém a leitura existente. Linhas +13/−1.
+
 ## 2026-11-03 · rotas DOE · RJ: data sem edição deixa de contar como formato mudado · +5
 
 O diário do RJ responde 200 com "a data não foi encontrada" em dia sem edição; o adaptador `edicao_rj` tratava a frase como mudança de contrato e gravava `vazio`. Passa a devolver lista vazia (`sem_edicao_na_data`); página sem a frase e sem cadernos segue levantando `FormatoDaBuscaMudou`. Autoteste offline com o caso novo.
