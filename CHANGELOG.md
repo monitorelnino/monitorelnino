@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · juiz · Ato do excerto não localizado na edição: abstenção, não leitura da edição inteira · +12/−0
+
+Mogi Guaçu/SP (triagem de 03/11): o excerto do Querido Diário não foi achado na edição; lida inteira, a citação veio do expediente (lei do diário, 2021), a autoridade do sumário e a família de um sobrenome. Agora, edição com dois ou mais atos sem o ato isolado recusa por `citacao_incompleta` e segue para a busca dirigida. Codebook 1.8 sem mudança de regra, peso ou crédito. Um caso de teste.
+
 ## 2026-11-03 · busca · Seguidor: pista sem data de registro entra na noite · +6/−2
 
 A janela de sete dias do seguidor descartava toda pista sem `registrado_em` (1.154 pendências do `descobrir_planos` nunca viam o Buscador 2 fora do lote da válvula). Sem data = nunca vista: entra. Um caso de teste. Saldo +6/−2.
