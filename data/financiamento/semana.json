@@ -1,6 +1,6 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "02/11/2026",
+ "corte": "03/11/2026",
  "janela_dias": 7,
  "cartoes": [
   {
@@ -103,15 +103,15 @@
   },
   {
    "id": "sus_emergencia",
-   "valor": 8247842.04,
+   "valor": 9091715.03,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portal da Transparência, Transferências de Recursos (Fundo Nacional de Saúde)",
    "url_fonte": null,
-   "detalhe": "16 municípios; fundos municipais, linhas cujo nome cita emergência; meses inteiros a partir de julho (o FNS não traz a data do repasse)",
+   "detalhe": "18 municípios; fundos municipais, linhas cujo nome cita emergência; meses inteiros a partir de julho (o FNS não traz a data do repasse)",
    "sem_coleta": false,
-   "municipios": 16,
-   "ultimo_mes": "202609"
+   "municipios": 18,
+   "ultimo_mes": "202610"
   }
  ],
  "mes_a_mes": [
@@ -4730,7 +4730,7 @@
   "sem_sede": 0
  },
  "autorizado_sem_repasse": {
-  "corte": "02/11/2026",
+  "corte": "03/11/2026",
   "ultimo_mes_lido": "202609",
   "n": 45,
   "autorizado_total": 131334780.29,
@@ -5171,7 +5171,7 @@
    {
     "mes": "202610",
     "defesa_civil": 8477395.1,
-    "saude": null,
+    "saude": 843872.99,
     "parcial": false
    },
    {
@@ -5182,9 +5182,9 @@
    }
   ],
   "saude_desde": "202607",
-  "saude_ultimo_mes": "202609",
+  "saude_ultimo_mes": "202610",
   "total_defesa_civil": 210712071.13,
-  "total_saude": 8247842.04
+  "total_saude": 9091715.03
  },
  "funil_defesa_civil": {
   "referencia": "02/11/2026",
