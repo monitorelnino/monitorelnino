@@ -1426,7 +1426,8 @@ def main() -> int:
 
     def passo(p, v):
         if v.get("pendente"):
-            p.pop("juiz", None)
+            # Queda de rede não apaga veredito: o antigo de rede já volta à fila (PAD_FALHA_DE_REDE) e
+            # o de documento lido fica até o rejulgamento conseguir baixar (03/11/2026, PI: apagou 10).
             print(f"  … {p.get('uf')} · {v.get('motivo')} (pendente)")
             return "pendente"
         p["juiz"] = {k: v.get(k) for k in ("promove", "motivo", "codebook", "categoria", "data",
