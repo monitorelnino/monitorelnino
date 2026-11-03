@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · TLS: intermediário público que o DOE-MG não envia
+
+O servidor do DOE-MG monta mal a cadeia (envia o intermediário errado), e as 92 datas falhavam com CERTIFICATE_VERIFY_FAILED. `contexto_tls` carrega o intermediário público da Sectigo (sha256 fixado, provado no runner: HTTP 200); a verificação do certificado segue plena. Linhas +54/−1.
+
 ## 2026-11-03 · DOE: falha de rede na releitura não apaga a leitura
 
 O coletor de edições gravava `vazio` por cima de uma `lida` quando a releitura (termos novos) falhava na rede; na válvula de MG, o erro de certificado em 92 datas rebaixaria as 7 lidas. `registro_da_falha` mantém a leitura existente. Linhas +13/−1.

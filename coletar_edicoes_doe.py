@@ -1036,6 +1036,11 @@ def _autoteste() -> int:
     sem = {"decisao": "sem_texto_extraivel", "termos_versao": VERSAO_DOS_TERMOS}
     ok("sem texto extraível é relida uma vez por versão do leitor",
        a_reler(sem) and not a_reler(dict(sem, leitor=VERSAO_DO_LEITOR)))
+    import hashlib, ssl as _ssl
+    from coletores_base import INTERMEDIARIOS_QUE_O_SERVIDOR_NAO_ENVIA as _pem, contexto_tls
+    ok("intermediário do DOE-MG: é o público da Sectigo R36 (sha256 fixado) e o contexto TLS o carrega, sem sair do certifi",
+       hashlib.sha256(_ssl.PEM_cert_to_DER_cert(_pem)).hexdigest() == "8c54c334b66ba4e426772af4a3f9136c19a1aec729fdb28c535c07a5a4ef22e0"
+       and (contexto_tls() is None or contexto_tls().verify_mode == _ssl.CERT_REQUIRED and contexto_tls().check_hostname))
     lida = {"decisao": "lida", "termos_versao": "antiga"}
     ok("falha de rede na releitura mantém a lida; sem leitura anterior vira vazio",
        registro_da_falha(lida, "x", OSError("t")) is lida
