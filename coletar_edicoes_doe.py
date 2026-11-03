@@ -388,6 +388,14 @@ def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -
             "nota": "palpite de endereço errado não é recusa: a rota segue a descobrir"}
 
 
+def registro_da_falha(atual, hoje, e) -> dict:
+    """Releitura que falha na rede não apaga a leitura que já existe (MG, 03/11/2026: SSL em 92 datas
+    rebaixaria as 7 `lida` a `vazio`). Sem leitura anterior, a falha é `vazio`, que se relê. Função pura."""
+    if isinstance(atual, dict) and atual.get("decisao") == "lida":
+        return atual
+    return {"decisao": "vazio", "em": hoje, "motivo": f"listagem da data: {type(e).__name__}: {str(e)[:90]}"}
+
+
 def a_reler(item) -> bool:
     """Edição lida antes dos termos de declaração tem de ser relida, e a `sem_texto_extraivel` também,
     uma vez por versão do leitor: "não pude ler" não é decisão final, e o leitor muda (as 89 edições do
@@ -615,7 +623,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                     recusa = _recusa(e, rota.get("url") or "")
                     if recusa:
                         break
-                    edicoes[data] = {"decisao": "vazio", "em": hoje, "motivo": f"listagem da data: {type(e).__name__}: {str(e)[:90]}"}
+                    edicoes[data] = registro_da_falha(edicoes.get(data), hoje, e)
                     continue
                 if not grupos:
                     edicoes[data] = ({"decisao": "sem_numero_de_edicao", "em": hoje,
@@ -1028,6 +1036,10 @@ def _autoteste() -> int:
     sem = {"decisao": "sem_texto_extraivel", "termos_versao": VERSAO_DOS_TERMOS}
     ok("sem texto extraível é relida uma vez por versão do leitor",
        a_reler(sem) and not a_reler(dict(sem, leitor=VERSAO_DO_LEITOR)))
+    lida = {"decisao": "lida", "termos_versao": "antiga"}
+    ok("falha de rede na releitura mantém a lida; sem leitura anterior vira vazio",
+       registro_da_falha(lida, "x", OSError("t")) is lida
+       and registro_da_falha(None, "x", OSError("t"))["decisao"] == "vazio")
     ok("data gravada como vazio (conexão recusada, timeout) é relida; sem edição na data não",
        a_reler({"decisao": "vazio", "motivo": "URLError: Connection refused"}) and not a_reler({"decisao": "sem_edicao_na_data"}))
     nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)
