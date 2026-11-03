@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · rotas DOE · RJ: data sem edição deixa de contar como formato mudado · +5
+
+O diário do RJ responde 200 com "a data não foi encontrada" em dia sem edição; o adaptador `edicao_rj` tratava a frase como mudança de contrato e gravava `vazio`. Passa a devolver lista vazia (`sem_edicao_na_data`); página sem a frase e sem cadernos segue levantando `FormatoDaBuscaMudou`. Autoteste offline com o caso novo.
+
 ## 2026-11-03 · errata · Mogi Guaçu/SP sai do MARÉ Legal: o ato do excerto não foi localizado · −4
 
 Errata por linha (METODOLOGIA §106): a decisão do juiz de 03/11 creditava plano a Mogi Guaçu com um ato de outro assunto (baixas temperaturas). O registro sai de `municipios.json`; SP volta de 35,9 para 35,8. O juiz já abstém desde o #1455.
