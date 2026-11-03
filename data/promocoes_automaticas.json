@@ -304300,8 +304300,8 @@
    "hash_evidencia": "91fe67af265948085dd8a068673b5a7c6514270d380061a97e11d2cd197bc642"
   },
   {
-   "promove": true,
-   "motivo": null,
+   "promove": false,
+   "motivo": "errata: excerto do QD (Portaria 038/2026, baixas temperaturas) não localizado no ato; edição de vários atos lida sem instrumento do município",
    "codebook": "1.8 (30/10/2026)",
    "criterios": {
     "0_documento_primario": {
@@ -304357,7 +304357,17 @@
    "origem": "querido_diario",
    "leu_documento": true,
    "hash_evidencia": "8a78bcd3ad2ea1d1a44e97cbf3139476ba7ed7c12c677691f4a7ff144f9151e2",
-   "aplicado_em": "2026-11-03"
+   "aplicado_em": "2026-11-03",
+   "errata": {
+    "em": "2026-11-03",
+    "por": "editoria, 26/10/2026 (confirmação falsa; rodada A1)",
+    "motivo": "ato do excerto não localizado na edição; plano de contingência para baixas temperaturas, fora da família do ciclo",
+    "antes": {
+     "promove": true,
+     "motivo": null,
+     "categoria": "plano_antigo"
+    }
+   }
   },
   {
    "promove": false,
