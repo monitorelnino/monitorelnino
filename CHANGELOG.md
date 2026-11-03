@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-03 · #PR · Seguidor: pista sem data de registro entra na noite
+## 2026-11-03 · busca · Seguidor: pista sem data de registro entra na noite · +6/−2
 
 A janela de sete dias do seguidor descartava toda pista sem `registrado_em` (1.154 pendências do `descobrir_planos` nunca viam o Buscador 2 fora do lote da válvula). Sem data = nunca vista: entra. Um caso de teste. Saldo +6/−2.
 
