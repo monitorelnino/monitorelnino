@@ -823,6 +823,10 @@ def edicoes_rj(buscar_fn, base):
         cod = base64.b64encode(data.replace("-", "").encode()).decode()
         t = buscar_fn(f"{b}do_seleciona_edicao.php?data={cod}", timeout=60, origem="coletar_doe").decode("utf-8", "replace")
         if "cadernos do Di" not in t:
+            # 03/11/2026 (sonda pela válvula): data sem edição (feriado, ponto facultativo) volta 200 com esta
+            # frase no lugar da lista; é ausência de edição, não mudança de contrato.
+            if "a data não foi encontrada" in t:
+                return []
             raise FormatoDaBuscaMudou("página de cadernos do DOE-RJ fora do contrato")
         out = []
         for ses, nome in re.findall(r'mostra_edicao\.php\?session=([A-Za-z0-9+/=]+)"[^>]*>\s*([^<]*?)\s*<', t):
@@ -1516,6 +1520,7 @@ def autoteste() -> int:
                         {"edicao": "Parte I (Poder Executivo)",
                          "url": "https://x.rj.gov.br/portal/modules/conteudoonline/mostra_edicao.php?k=EAB21D88-45BPD-4CD0-BD2A-D4F0D229380A"}]
                      and edicoes_rj(lambda u, **k: b"<p>cadernos do Di\xc3\xa1rio Oficial de <b>x</b></p>", "https://x")("2026-10-17") == []
+                     and edicoes_rj(lambda u, **k: "Você não possui permissão para visualizar esta data ou a data não foi encontrada.".encode(), "https://x")("2026-11-02") == []
                      and levanta(lambda: edicoes_rj(lambda u, **k: b"Erro.", "https://x")("2026-10-16"), FormatoDaBuscaMudou)
                      and levanta(lambda: edicoes_rj(lambda u, **k: b"sem pd" if "session=" in u else FIXTURE_CADERNOS_RJ,
                                                      "https://x")("2026-10-16"), FormatoDaBuscaMudou)),
