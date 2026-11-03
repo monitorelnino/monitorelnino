@@ -2,47 +2,47 @@
  "data": "2026-11-03",
  "formato_versao": 1,
  "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 160,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 18,
+   "lacunas": 0,
+   "motor_sem_resposta": 10,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 13
+  },
+  "descobrir_planos": {
+   "achados_novos": 8,
+   "alvos_consultados": 80,
+   "alvos_verificados": 20,
+   "fila_acumulada": 168
+  },
   "doe": {
-   "ufs_consultadas": 27,
-   "ufs_com_resultado": 27
+   "ufs_com_resultado": 27,
+   "ufs_consultadas": 27
   },
   "funil_recursos_resposta": {
-   "consultas": 1,
    "com_resultado_bruto": 1,
+   "consultas": 1,
    "pistas": 3
   },
   "juiz": {
-   "pistas_recebidas": 348,
    "com_documento": 272,
+   "pistas_recebidas": 348,
    "promovidas": 2,
+   "recusa_autoridade_nao_confirmada": 81,
+   "recusa_citacao_incompleta": 13,
    "recusa_documento_inacessivel": 74,
    "recusa_ente_nao_confirmado": 36,
-   "recusa_autoridade_nao_confirmada": 81,
-   "recusa_texto_nao_extraivel": 2,
-   "recusa_citacao_incompleta": 13,
-   "recusa_noticia_institucional_nao_e_o_plano": 3,
-   "recusa_natureza_duvidosa": 7,
    "recusa_fora_do_objeto": 1,
-   "recusa_resposta": 1
-  },
-  "descobrir_planos": {
-   "alvos_consultados": 60,
-   "alvos_verificados": 15,
-   "achados_novos": 6,
-   "fila_acumulada": 126
-  },
-  "busca_web": {
-   "consultas": 18,
-   "com_resultado_bruto": 8,
-   "motor_sem_resposta": 10,
-   "pistas": 13,
-   "coberto_sem_mencao": 0,
-   "nao_localizado_ate_o_momento": 0,
-   "lacunas": 0,
-   "brutos_plancon": 160,
-   "brutos_periodo_ou_seca": 0,
-   "brutos_siglas_e_variantes": 0
+   "recusa_natureza_duvidosa": 7,
+   "recusa_noticia_institucional_nao_e_o_plano": 3,
+   "recusa_resposta": 1,
+   "recusa_texto_nao_extraivel": 2
   }
  },
- "atualizado_em": "2026-11-03T08:30:46"
+ "atualizado_em": "2026-11-03T08:43:16"
 }
