@@ -82,8 +82,8 @@ def a_seguir(p: dict, d_hoje, refazer_dias: int = 7, reprocessar: bool = False) 
     if reprocessar:
         if p.get("buscador2_em"):
             return False
-    elif str(p.get("registrado_em") or "")[:10] < (d_hoje - datetime.timedelta(days=refazer_dias)).isoformat():
-        return False
+    elif str(p.get("registrado_em") or "9999")[:10] < (d_hoje - datetime.timedelta(days=refazer_dias)).isoformat():
+        return False   # sem data de registro (pendência do descobrir_planos) = nunca vista: entra
     if str(p.get("origem_do_coletor") or p.get("origem") or "").startswith(("seguimento", "buscador2")):
         return False   # filho do seguidor: um nível só (B4)
     url = _url(p)
@@ -353,6 +353,10 @@ def autoteste():
                 and tocadas == {"g1", "e1", "r1", "v1"} and e3["seguidas"] == 2
                 and seguir(f2, "26/10/2026", abrir=abrir, reprocessar=True)["seguidas"] == 0)
 
+    def t_sem_data_de_registro_entra_na_noite():
+        f = base(); [q.pop("registrado_em", None) for q in f["pistas"]]
+        return seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: u)["seguidas"] > 0
+
     def t_prazo_para_e_guarda_o_feito():
         f = base(); e = seguir(f, "26/10/2026", abrir=abrir, abrir_final=lambda u: u, parar=[True])
         return e["seguidas"] == 0 and e["rede"] == 0
@@ -401,6 +405,8 @@ def autoteste():
             "B10: documento oficial não lido volta à fila, até três vezes": t_b10_documento_volta_ate_tres_vezes,
             "restante converge para zero depois de seguir (fila reentrante)": t_restante_converge,
             "prazo do elo (SIGINT) para a rodada sem perder o que já se fez": t_prazo_para_e_guarda_o_feito,
+            "pista sem data de registro (descobrir_planos) é nunca vista: entra na noite":
+                t_sem_data_de_registro_entra_na_noite,
             "fila antiga só no reprocessamento; o limite conta URL aberta, não fechamento":
                 t_fila_antiga_e_do_reprocessamento_e_limite_e_de_rede,
             "Querido Diário só com cobertura; falha registrada sem quebrar": t_qd_so_com_cobertura_e_falha_nao_quebra,

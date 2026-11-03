@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-03 · #PR · Seguidor: pista sem data de registro entra na noite
+
+A janela de sete dias do seguidor descartava toda pista sem `registrado_em` (1.154 pendências do `descobrir_planos` nunca viam o Buscador 2 fora do lote da válvula). Sem data = nunca vista: entra. Um caso de teste. Saldo +6/−2.
+
 ## 2026-11-02 · busca · Planos de fontes abertas consultam só o motor medido do runner · +2/−1
 
 A busca web de S27/S24 pedia ao metabuscador todos os motores e recebia CAPTCHA do DuckDuckGo e 429 do Brave (14 de 21 consultas de MG em erro, válvula mg2). Passa a usar `motores_busca.MOTORES`, como `monitorar_busca_web.py`. Sem contorno: a recusa continua valendo como erro, nunca ausência.
