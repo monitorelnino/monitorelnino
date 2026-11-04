@@ -2969,32 +2969,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-09-24",
-   "total_acessos": 6820,
+   "total_acessos": 6824,
    "acessos": [
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.305-de-15-de-julho-de-2026-719725013",
-     "quando": "2026-11-03T03:18:42Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.267-de-10-de-julho-de-2026-718716536",
-     "quando": "2026-11-03T03:18:47Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.268-de-10-de-julho-de-2026-718709064",
-     "quando": "2026-11-03T03:18:51Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
-    {
-     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.252-de-8-de-julho-de-2026-717844541",
-     "quando": "2026-11-03T03:18:55Z",
-     "origem": "robo",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.247-de-8-de-julho-de-2026-717836463",
      "quando": "2026-11-03T03:18:59Z",
@@ -4170,6 +4146,30 @@
      "quando": "2026-11-03T03:31:24Z",
      "origem": "coletar_recursos_resposta",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22Emerg%C3%AAncia%20em%20Sa%C3%BAde%20P%C3%BAblica%20de%20Import%C3%A2ncia%20Nacional%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=03-11-2026&delta=50",
+     "quando": "2026-11-04T01:12:37Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/resolucao-da-diretoria-colegiada-anvisa-n-1.038-de-21-de-agosto-de-2026-*-728022671",
+     "quando": "2026-11-04T01:14:21Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/web/dou/-/resolucao-da-diretoria-colegiada-anvisa-n-1.038-de-21-de-agosto-de-2026-727764880",
+     "quando": "2026-11-04T01:14:25Z",
+     "origem": "coletar_espin",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22calor%20extremo%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=01-06-2026&publishTo=03-11-2026&delta=50",
+     "quando": "2026-11-04T01:18:07Z",
+     "origem": "buscar_protocolo_calor",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
    "ultimo_acesso": "2026-11-03"
@@ -5258,14 +5258,8 @@
    "status_robots": "proibe",
    "crawl_delay": null,
    "primeiro_acesso": "2026-10-01",
-   "total_acessos": 202,
+   "total_acessos": 203,
    "acessos": [
-    {
-     "url": "https://diario.ac.gov.br",
-     "quando": "2026-10-02T13:07:57Z",
-     "origem": "claude",
-     "cliente": "MonitorElNinoBrasil/2.2.4"
-    },
     {
      "url": "https://diario.ac.gov.br/?palavra=sala+de+situa%C3%A7%C3%A3o&palavraTipo=todas&ano_palavra=2026&paginaIni=0",
      "quando": "2026-10-02T13:08:57Z",
@@ -6459,9 +6453,15 @@
      "quando": "2026-11-03T02:30:33Z",
      "origem": "coletar_doe",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5NTY0MDYxNzIzLnBkZg==",
+     "quando": "2026-11-04T01:14:34Z",
+     "origem": "julgar_saude",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-02"
+   "ultimo_acesso": "2026-11-03"
   },
   "www.matadesaojoao.ba.gov.br": {
    "status_robots": "proibe",

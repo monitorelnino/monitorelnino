@@ -48,8 +48,8 @@
    "orgao": "DOU / diários municipais",
    "papel": "RESPOSTA, peso zero",
    "status": "coletado",
-   "consultado_em": "01/11/2026",
-   "documento": "DOU seção 1, 2026-10-28 a 2026-11-01"
+   "consultado_em": "03/11/2026",
+   "documento": "DOU seção 1, 2026-06-29 a 2026-11-03"
   },
   "painel_calor_ms": {
    "nome": "Painel Nacional de Excesso de Calor",
@@ -582,15 +582,15 @@
   "fonte": "espin",
   "orgao": "Ministério da Saúde (DOU, seção 1)",
   "janela": {
-   "de": "2026-10-28",
-   "ate": "2026-11-01"
+   "de": "2026-06-29",
+   "ate": "2026-11-03"
   },
   "strings_buscadas": [
    "\"Emergência em Saúde Pública de Importância Nacional\"",
    "\"emergência em saúde pública\""
   ],
-  "consultado_em": "01/11/2026",
-  "resultados_lidos": 4,
+  "consultado_em": "03/11/2026",
+  "resultados_lidos": 2,
   "declaracoes": [],
   "pendente_leitura_automatica": [],
   "nao_lidos": [],
@@ -67920,10 +67920,10 @@
  "emergencias": [],
  "emergencias_busca": {
   "federal": {
-   "consultado_em": "01/11/2026",
+   "consultado_em": "03/11/2026",
    "janela": {
-    "de": "2026-10-28",
-    "ate": "2026-11-01"
+    "de": "2026-06-29",
+    "ate": "2026-11-03"
    }
   },
   "estadual": {
@@ -67958,7 +67958,7 @@
     "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML"
    },
    "MG": {
-    "lacuna": "87 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "lacuna": "71 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "MS": {
     "consultado_em": "01/11/2026",
@@ -67986,7 +67986,7 @@
     "lacuna": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo"
    },
    "RJ": {
-    "lacuna": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-09-07)"
+    "lacuna": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-08-07#2)"
    },
    "RN": {
     "consultado_em": "01/11/2026",
@@ -68004,7 +68004,7 @@
     "ate": "2026-10-31"
    },
    "RS": {
-    "lacuna": "23 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-14)"
+    "lacuna": "edição com declaração não lida pelo juiz"
    },
    "SC": {
     "consultado_em": "01/11/2026",
@@ -68075,9 +68075,9 @@
    {
     "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54756/pdf",
     "uf": "RS",
-    "motivo": "edição sem verbo que declara (menção de passagem)"
+    "motivo": "documento não baixado: URLError"
    }
   ],
-  "julgado_em": "01/11/2026"
+  "julgado_em": "03/11/2026"
  }
 }
