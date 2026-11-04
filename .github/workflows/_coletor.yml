@@ -258,13 +258,16 @@ jobs:
       # porta de cada arquivo, antes de coletar — o que voltou entra no commit desta noite.
       # Idempotente pelo marcador `.reaplicado`; `continue-on-error` porque reaplicar nao e a
       # tarefa do elo, e falha aqui nao derruba a coleta.
+      # 04/11/2026: nao roda em `coleta-dia/*`. A valvula diurna so entrega o dado dos SEUS comandos; a
+      # reaplicacao trazia dado da corrente (log_buscas, funil, painel) e eventos repetidos para o PR de
+      # dado (#1482, #1487). O artefato perdido espera o proximo elo da noite.
       # 15/10/2026 (F60): a reaplicacao vai ao ramo no SEU commit, antes da coleta, e recomeca do
       # zero se o ramo andou -- nunca por uniao. Ela ia junto com o commit do elo: dois elos que
       # reaplicavam o mesmo artefato somavam as linhas duas vezes na uniao (log de buscas com
       # +6.100 linhas repetidas em 15/10), e o artefato de um elo perdido levava o que ele tinha
       # reaplicado, que voltava de novo na reaplicacao seguinte.
       - name: Reaplicar o que a noite perdeu
-        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio-real/')
+        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio-real/') && !startsWith(env.RAMO, 'coleta-dia/')
         continue-on-error: true
         timeout-minutes: 15
         env:
