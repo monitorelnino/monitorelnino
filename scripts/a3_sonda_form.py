@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Sonda só de leitura (ramo de válvula, nunca mesclado): GET real do formulário de busca de BA e RO."""
-import coletores_base as c
+import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+import coletores_base as c  # noqa: E402
 
 ALVOS = (
     ("BA", "https://www.egba.ba.gov.br/egba/busca-solr-multisite?search_api_fulltext=emergencia%20em%20saude"),
