@@ -23,10 +23,12 @@ de engenharia** — quem decide escrever o adaptador é quem lê o relatório.
 Uso:
     python3 scripts/sondar_rotas_doe.py              # sonda e grava o diagnóstico
     python3 scripts/sondar_rotas_doe.py --ensaio     # sonda e só imprime
+    python3 scripts/sondar_rotas_doe.py --reconferir # 1 GET identificado por rota de cada UF; grava `reconferencia`
     python3 scripts/sondar_rotas_doe.py --autoteste  # funções puras, sem rede e sem escrita
 """
 from __future__ import annotations
 
+import datetime
 import json
 import pathlib
 import re
@@ -111,9 +113,42 @@ def veredito_da_recusa(erro) -> dict:
         return {"veredito": "recusa_servida_com_200", "motivo": f"muro de robô: {str(erro)[:140]}"}
     if codigo in (401, 403, 429, 451):
         return {"veredito": "bloqueio_de_acesso", "motivo": f"HTTP {codigo} — recusa respeitada"}
-    if nome in ("URLError", "TimeoutError", "SSLError", "ConnectionResetError"):
+    if codigo and codigo >= 500:
+        return {"veredito": "fora_do_ar", "motivo": f"HTTP {codigo} — servidor do diário com erro, não é recusa"}
+    if nome == "TimeoutError" or "timed out" in str(erro).lower():
+        return {"veredito": "timeout", "motivo": f"{nome}: {str(erro)[:140]}"}
+    if nome in ("URLError", "SSLError", "ConnectionResetError"):
         return {"veredito": "nao_respondeu", "motivo": f"{nome}: {str(erro)[:140]}"}
     return {"veredito": "erro", "motivo": f"{nome}: {str(erro)[:140]}"}
+
+
+# Rotas além da página inicial que a medição de outubro registrou como recusa, fora do ar ou timeout.
+ROTAS_EXTRAS = {
+    "SE": ["https://iose.se.gov.br/apifront/portal/edicoes"],
+    "PE": ["https://diariooficial.cepe.com.br/diariooficial/"],
+    "BA": ["https://dool.egba.ba.gov.br/"],
+    "RS": ["https://doe-backend.pro.rs.gov.br/public/diarios/lista?data={ontem}"],
+}
+
+
+def reconferir(ufs: dict, buscar_fn, robots_fn, hoje: str, ontem: str) -> None:
+    """Um GET identificado por rota de cada UF (a página inicial e as ROTAS_EXTRAS); grava
+    `reconferencia` = {em, rotas:[{url, codigo, veredito, robots, motivo}]}. `voltou` = respondeu 200.
+    Não altera `status` nem `motivo`: quem decide o que fazer com o resultado é quem lê."""
+    for uf, v in sorted(ufs.items()):
+        urls = ([v.get("url")] if v.get("url") else []) + [u.format(ontem=ontem) for u in ROTAS_EXTRAS.get(uf, [])]
+        rotas = []
+        for url in urls:
+            host = url.split("/")[2]
+            r = {"url": url, "robots": (robots_fn(host) or {}).get("status")}
+            try:
+                corpo = buscar_fn(url, timeout=45)
+                r.update(codigo=200, veredito="voltou", motivo=f"respondeu 200, {len(corpo)} bytes")
+            except Exception as e:  # noqa: BLE001 — cada rota vira um veredito, nunca derruba a rodada
+                r.update(codigo=getattr(e, "code", None), **veredito_da_recusa(e))
+            rotas.append(r)
+            print(f"  {uf} {url[:60]}: {r['veredito']} {r.get('codigo') or ''}")
+        v["reconferencia"] = {"em": hoje, "rotas": rotas}
 
 
 def _autoteste() -> int:
@@ -164,6 +199,17 @@ def _autoteste() -> int:
     _TLS.__name__ = "URLError"
     ok("falha de conexão não é recusa da fonte",
        veredito_da_recusa(_TLS("EOF"))["veredito"] == "nao_respondeu")
+    class _5xx(Exception):
+        code = 500
+    ok("5xx é fora do ar, não recusa", veredito_da_recusa(_5xx())["veredito"] == "fora_do_ar")
+    ok("timeout tem nome próprio", veredito_da_recusa(TimeoutError("timed out"))["veredito"] == "timeout")
+    uf_t = {"XX": {"url": "https://a.test/"}, "SE": {"url": "https://b.test/"}}
+    reconferir(uf_t, lambda u, timeout: b"x" if "a.test" in u else (_ for _ in ()).throw(_HTTP()),
+               lambda h: {"status": "permite"}, "04/11/2026", "2026-11-03")
+    ok("reconferir: 200 é voltou e 403 é bloqueio, por rota",
+       uf_t["XX"]["reconferencia"]["rotas"][0]["veredito"] == "voltou"
+       and [r["veredito"] for r in uf_t["SE"]["reconferencia"]["rotas"]] == ["bloqueio_de_acesso"] * 2
+       and uf_t["SE"]["reconferencia"]["rotas"][0]["codigo"] == 403)
     ok("recusa nunca é chamada de robots.txt",
        "robots" not in json.dumps([veredito_da_recusa(_Muro("x")), veredito_da_recusa(_HTTP())]))
 
@@ -184,12 +230,17 @@ def main() -> int:
         return _autoteste()
 
     sys.path.insert(0, str(RAIZ))
-    from coletores_base import MuroDeRobo, buscar, gravar, hoje_editorial, ler
+    from coletores_base import MuroDeRobo, buscar, buscar_uma_vez, gravar, hoje_editorial, ler, robots_de
 
     registro = ler(ARQUIVO, {}) or {}
     ufs = registro.get("ufs") or {}
     hoje = hoje_editorial().strftime("%d/%m/%Y")
-    alvos = [(uf, (v or {}).get("url")) for uf, v in sorted(ufs.items()) if not (v or {}).get("adaptador")]
+    reconferindo = "--reconferir" in sys.argv
+    if reconferindo:
+        ontem = (hoje_editorial() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+        reconferir(ufs, lambda u, timeout: buscar_uma_vez(u, timeout=timeout, origem="reconferencia DOE"),
+                   robots_de, hoje, ontem)
+    alvos = [(uf, (v or {}).get("url")) for uf, v in sorted(ufs.items()) if not (v or {}).get("adaptador")] if not reconferindo else []
     print(f"{len(alvos)} unidade(s) sem adaptador a sondar")
 
     for uf, url in alvos:
@@ -209,7 +260,8 @@ def main() -> int:
               + (f" · campos {d['formularios_de_busca'][0]['campos']}" if d.get("formularios_de_busca") else ""))
 
     registro["ufs"] = ufs
-    registro["sondagem_de_rotas_em"] = hoje
+    if not reconferindo:
+        registro["sondagem_de_rotas_em"] = hoje
     registro["_nota_sondagem"] = (
         "Diagnóstico por unidade da federação sem adaptador de busca, escrito por "
         "scripts/sondar_rotas_doe.py. 'pista_de_rota' quer dizer que há por onde começar a escrever "
