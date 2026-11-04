@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>04/11/2026 · &quot;Projeção de óbitos&quot; no lugar de &quot;mortes projetadas&quot;</dt>
+      <dd>Por decisão da editoria (03/11), a forma &quot;projeção de X&quot; substitui &quot;X projetado&quot; em texto público: títulos do quadro de mortalidade da Saúde, glossário da Imprensa e METODOLOGIA §127. Padrão novo em `padroes` de `layout/regras.json`, com caso no autoteste do vocabulário. Código +1 linha de teste.</dd>
       <dt>02/11/2026 · Título do plano corta na capa; proveniência estadual entra na corrente · +19/−5</dt>
       <dd>`titulo_do_documento` encerra o título antes de equipe, governador e secretário (PI). `proveniencia_estadual.py` não lê texto de evidência quando o instrumento não cita ato (de 2 min a 0,3 s) e roda no elo `doe_incremental`, seg/qua/sex: lacuna ganha `verificado_em` novo, com o teto &quot;não localizado até o corte&quot;.</dd>
       <dt>01/11/2026 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2</dt>
@@ -165,8 +167,6 @@
       <dd>A guarda do #1127 olhava só o topo da página, que no diário do estado é o cabeçalho do diário: o plano de arboviroses do município de Itapemirim seguiu promovido como instrumento da SES-ES. A checagem passa a incluir o título do ato. Linhas líquidas: +4.</dd>
       <dt>25/10/2026 · Busca de planos em paralelo por host</dt>
       <dd>A busca dirigida por município roda em oito fios. A pausa de 2 s passa a valer por domínio: um pedido por vez ao mesmo host, hosts diferentes em paralelo. A gravação segue em fila única; o acesso às fontes não muda. Escritas compartilhadas de evidências e log de buscas ganharam uma trava. Autoteste novo prova a pausa por host.</dd>
-      <dt>25/10/2026 · Fila de descoberta reentrante</dt>
-      <dd>A descoberta seguia 20 notícias por rodada e gravava `.feito` com fila sobrando. Agora `seguir_pistas.py --restante` declara o que a noite ainda não tocou: sobrando, o elo grava `.parcial` e a reserva o redispara até 08:00 UTC, como o juiz. Um critério de seguimento para rodar e contar. Nenhuma página muda.</dd>
     </dl>
   </section>
 </main>

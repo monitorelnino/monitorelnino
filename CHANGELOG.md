@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-04 · #PR · "Projeção de óbitos" no lugar de "mortes projetadas"
+## 2026-11-04 · #1479 · "Projeção de óbitos" no lugar de "mortes projetadas"
 
 Por decisão da editoria (03/11), a forma "projeção de X" substitui "X projetado" em texto público: títulos do quadro de mortalidade da Saúde, glossário da Imprensa e METODOLOGIA §127. Padrão novo em `padroes` de `layout/regras.json`, com caso no autoteste do vocabulário. Código +1 linha de teste.
 
