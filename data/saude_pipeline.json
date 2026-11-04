@@ -23706,7 +23706,25 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-11-04",
+   "script": "julgar_filas.py",
+   "inicio": "2026-11-04T10:01:10",
+   "duracao_s": 9001.9,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-11-04",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-11-04T12:31:12",
+   "duracao_s": 258.8,
+   "itens": 1,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-11-04T08:57:05"
+ "atualizado_em": "2026-11-04T12:31:12"
 }
