@@ -23,28 +23,27 @@ def get(url):
         return e.code, ""
 
 
+def mostrar(titulo, trecho):
+    """Imprime o trecho linha a linha; a linha com termo de credencial sai como [redigida]."""
+    for ln in trecho.replace("\\n", "\n").split("\n"):
+        ln = ln.strip()
+        if ln:
+            print("SONDA>", titulo, "[redigida]" if SEG.search(ln) else ln[:260])
+
+
 def main():
-    st, html = get(BASE + "/")
-    print("SONDA> home", st, len(html))
-    st, am = get(BASE + "/asset-manifest.json")
-    print("SONDA> asset-manifest", st, re.findall(r'"(static/js/[^"]+)"', am)[:20] if st == 200 else "")
     st, src = get(BASE + "/static/js/main.4708008b.js")
     print("SONDA> main", st, len(src))
-    for c in CHAVES:
-        print("SONDA> contagem", c, len(re.findall(re.escape(c), src)))
-    print("SONDA> sourceMappingURL", re.findall(r"sourceMappingURL=(\S+)", src)[:2])
-    caminhos = sorted(set(re.findall(r'["\'`](/?(?:api/)?[A-Za-z0-9_\-]+(?:/[A-Za-z0-9_\-{}$.]+){1,5})["\'`]', src)))
-    relev = [c for c in caminhos if re.search(r"(?i)download|total|geometr|mapa|indicador|resolu|munic|export|arquivo|file", c) and not SEG.search(c)]
-    print("SONDA> caminhos relevantes", len(relev))
-    for c in relev[:80]:
-        print("SONDA> rota", c)
-    for chave in ("TotaisApi", "getGeometriaDataDownload"):
-        for i, m in enumerate(re.finditer(re.escape(chave), src)):
-            if i >= 6:
-                break
-            t = src[max(0, m.start() - 90):m.end() + 140].replace("\n", " ")
-            if not SEG.search(t):
-                print(f"SONDA> [{chave}] {t}")
+    a = src.find('"./src/api/TotaisApi.js"')
+    mostrar("TotaisApi", src[a:a + 3800])
+    for i, m in enumerate(re.finditer(r"function getGeometriaDataDownload|getGeometriaDataDownload = ", src)):
+        if i >= 2:
+            break
+        mostrar("GeoDL", src[m.start():m.start() + 1800])
+    for i, m in enumerate(re.finditer(r"API_URL|BASE_URL|baseURL|API_BASE", src)):
+        if i >= 6:
+            break
+        mostrar("base", src[max(0, m.start() - 60):m.start() + 160])
 
 
 main()
