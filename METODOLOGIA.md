@@ -4424,7 +4424,7 @@ Entram no juiz as regras J14, J16, J19 e J20, que ficaram fora em 29/10 (§125).
 
 *Decisão da editoria em 30/10/2026; método v1 do excesso.*
 
-**O quadro.** Uma linha por mês, a partir de julho de 2026, primeiro mês inteiro depois do boletim de 29/06; junho fica fora em todas as colunas. Para o Brasil e para cada estado, quatro colunas: as mortes adicionais por calor projetadas (modelo), os óbitos registrados em cartório de todas as causas com a faixa do mesmo mês em anos anteriores, o excesso observado e os óbitos com causa básica calor natural (X30) no SIM. Não há mapa, não há conta entre as colunas e os estados não são ordenados. O quadro é dado do estado: não existe por município.
+**O quadro.** Uma linha por mês, a partir de julho de 2026, primeiro mês inteiro depois do boletim de 29/06; junho fica fora em todas as colunas. Para o Brasil e para cada estado, quatro colunas: a projeção de óbitos adicionais por calor (modelo), os óbitos registrados em cartório de todas as causas com a faixa do mesmo mês em anos anteriores, o excesso observado e os óbitos com causa básica calor natural (X30) no SIM. Não há mapa, não há conta entre as colunas e os estados não são ordenados. O quadro é dado do estado: não existe por município.
 
 **Registrados.** Óbitos lavrados no mês, todas as causas (Registro Civil, ARPEN/CNJ). Mês corrente é marcado parcial.
 
@@ -4432,7 +4432,7 @@ Entram no juiz as regras J14, J16, J19 e J20, que ficaram fora em 29/10 (§125).
 
 **Limites declarados.** O método não ajusta crescimento nem envelhecimento da população; o registro em cartório atrasa; o excesso conta óbitos de todas as causas, não só os atribuídos ao calor; são cinco anos de referência.
 
-**Projeção.** Mortes adicionais por calor projetadas pelo Climate Impact Lab, El Niño Heat Mortality Tracker (modelo; Carleton et al., 2022, QJE 137(4):2037–2105), com o crédito em toda exibição. É estimativa de modelo, não registro. Até a série da fonte ser coletada, a coluna é lacuna declarada ("aguarda a série da fonte"); faixa de incerteza e linha de base entram como o arquivo trouxer, e o que não trouxer fica declarado como lacuna.
+**Projeção.** Projeção de óbitos adicionais por calor pelo Climate Impact Lab, El Niño Heat Mortality Tracker (modelo; Carleton et al., 2022, QJE 137(4):2037–2105), com o crédito em toda exibição. É estimativa de modelo, não registro. Até a série da fonte ser coletada, a coluna é lacuna declarada ("aguarda a série da fonte"); faixa de incerteza e linha de base entram como o arquivo trouxer, e o que não trouxer fica declarado como lacuna.
 
 **Causa básica.** Calor natural excessivo é X30, causa externa; um código do capítulo XIX, como T67, não pode ser causa básica (§122). Os dois meses mais recentes do SIM são marcados parciais.
 

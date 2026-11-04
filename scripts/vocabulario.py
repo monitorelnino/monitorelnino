@@ -90,6 +90,8 @@ def _autoteste():
         ("'Nota: 5,7' (valor) reprova", ruim("Nota: 5,7 → 34,1")),
         ("ranking reprova", all(map(ruim, ["o ranking dos estados", "ranqueia municípios", "classificação dos estados",
                                          "o pior colocado", "o estado lidera", "a lanterna", "em primeiro lugar"]))),
+        ("'X projetado' reprova; 'projeção de X' passa", ruim("óbitos projetados por calor") and ruim("risco projetada")
+         and not ruim("Projeção de óbitos por calor")),
         ("texto sem ranking passa", not ruim("Cada estado traz o índice, a data e o documento; não ordenamos os entes.")),
     ]
     falhas = [n for n, c in casos if not c]
