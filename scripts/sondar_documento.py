@@ -40,17 +40,19 @@ def main(argv: list) -> int:
         return 1 if falhas else 0
     url = argv[0]
     termos = (argv[argv.index("--termos") + 1] if "--termos" in argv else "plano de contingência").split(",")
+    raio = int(argv[argv.index("--raio") + 1]) if "--raio" in argv else 140
     from coletores_base import buscar
     tipo, texto, links = texto_de(buscar(url, timeout=90))
     print(f"{url}: {tipo}, {len(texto)} caracteres")
     for ln in links:
         print("  link pdf:", ln)
     for termo in termos:
-        achados = trechos(texto, termo.strip())
+        achados = trechos(texto, termo.strip(), raio=raio)
         print(f"termo {termo!r}: {len(re.findall(re.escape(termo.strip()), texto, re.I))} ocorrência(s)")
         for a in achados:
             print("   …", a)
-    print("--- início ---\n" + texto[:TETO])
+    if "--raio" not in argv:
+        print("--- início ---\n" + texto[:TETO])
     return 0
 
 
