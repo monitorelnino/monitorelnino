@@ -3,15 +3,6 @@
  * DOM, gesto de tooltip, crédito por figura, nav e lacunas declaradas.
  * Padrão de scripts/verificar_runtime_sinais.js.
  * Uso: node scripts/verificar_runtime_saude.js
- *
- * (cabeçalho herdado:
- * (saude.html, criada em 01/09/2026 — METODOLOGIA §23).
- * Mesmo padrão de scripts/verificar_runtime_mapas.js: jsdom + d3 reais,
- * Chart simulado, fetch local. Cobre os 4 mapas, os 4 gráficos, os cartões
- * do ciclo, a tabela de fontes e — o que é próprio desta página — a
- * PROVENIÊNCIA VISÍVEL: nenhuma figura pode ficar sem crédito de fonte, e
- * toda fonte não coletada precisa aparecer como lacuna declarada.
- * Uso: node scripts/verificar_runtime_sinais.js
  */
 const { renderizar } = require("./_inline_js");
 const fs = require("fs");
