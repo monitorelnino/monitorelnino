@@ -299,6 +299,25 @@ def problemas(pagina: str, despejo: dict, regras: dict, contrato: dict, excecoes
     return p
 
 
+def problemas_de_cartao_de_consulta(fontes: dict, regras: dict) -> list:
+    """Editoria, 03/11/2026 (§5 do handover do risco de base): todo cartão de consulta de município
+    é montado por UMA função (`modulo`), que declara o território e leva o link "ver em …"; as
+    páginas só a chamam. Reprova página que monte o cartão à mão e módulo sem território ou link.
+    `fontes` = {caminho: texto}. Função pura."""
+    r = ((regras or {}).get("componentes") or {}).get("cartao_de_consulta") or {}
+    if not r:
+        return []
+    mod, p = r.get("modulo"), []
+    for caminho, texto in sorted(fontes.items()):
+        if caminho == mod:
+            p += [f"{mod}: o cartão não usa o texto comum '{t}'" for t in r.get("textos") or [] if t not in texto]
+        elif r.get("marca_de_cartao_a_mao") in texto:
+            p.append(f"{caminho}: monta cartão de consulta à mão; use ConsultaMunicipio.cartao")
+        elif "ConsultaMunicipio.montar" in texto and "ConsultaMunicipio.cartao" not in texto:
+            p.append(f"{caminho}: consulta de município sem ConsultaMunicipio.cartao")
+    return p
+
+
 def regras_sem_verificador(regras: dict, existe=lambda caminho: True) -> list:
     """A7-14 (12/10/2026): cada regra de `regras.json` declara em `_verificacao` quem a julga —
     o caminho do portão, ou "só texto…" com franqueza. Devolve as faltas. Função pura: quem diz
@@ -342,6 +361,16 @@ def _autoteste() -> int:
     ok("A7-14: '12,3 milhões' passa", problemas_de_numero([{"id": "p", "valor": "12,3 milhões"}], _nr) == [])
     ok("A7-14: '12 milhões' reprova", len(problemas_de_numero([{"id": "p", "valor": "12 milhões"}], _nr)) == 1)
     ok("A7-14: '12,34 milhões' reprova", len(problemas_de_numero([{"id": "p", "valor": "12,34 milhões"}], _nr)) == 1)
+    _cc = {"componentes": {"cartao_de_consulta": {"modulo": "m.js", "marca_de_cartao_a_mao": "cartao--acento-",
+                                                  "textos": ["consulta.cartao.ver_em"]}}}
+    _m = "consulta.cartao.ver_em"
+    ok("§5: página que monta o cartão à mão reprova",
+       len(problemas_de_cartao_de_consulta({"m.js": _m, "a.js": "'<div class=\"cartao cartao--acento-x\">'"}, _cc)) == 1)
+    ok("§5: consulta sem o montador comum reprova",
+       len(problemas_de_cartao_de_consulta({"m.js": _m, "a.js": "ConsultaMunicipio.montar({})"}, _cc)) == 1)
+    ok("§5: módulo sem o link 'ver em' reprova", len(problemas_de_cartao_de_consulta({"m.js": ""}, _cc)) == 1)
+    ok("§5: páginas que chamam o montador comum passam",
+       problemas_de_cartao_de_consulta({"m.js": _m, "a.js": "ConsultaMunicipio.montar(); ConsultaMunicipio.cartao({})"}, _cc) == [])
     ok("A7-14: regra sem entrada em _verificacao reprova",
        regras_sem_verificador(_r) == ["numeros.formato: sem entrada em _verificacao (diga o portão, ou 'só texto')"])
     _r["_verificacao"]["numeros.formato"] = "só texto até hoje"
@@ -541,6 +570,11 @@ def main() -> int:
             paginas.append(c.stem + ".html")
 
     total = 0
+    cc = (regras.get("componentes") or {}).get("cartao_de_consulta") or {}
+    ruins = problemas_de_cartao_de_consulta({c: (RAIZ / c).read_text(encoding="utf-8") for c in cc.get("fontes") or []}, regras)
+    for r in ruins:
+        print("   - " + r)
+    total += len(ruins)
     for pagina in paginas:
         contrato = ler_json(CONTRATOS / (pagina.replace(".html", "") + ".json"), {})
         try:

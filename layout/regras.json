@@ -125,14 +125,42 @@
       ],
       "diagrama_por_pagina": 1,
       "figura_principal": {
-        "tipos": ["mapa", "serie"],
+        "tipos": [
+          "mapa",
+          "serie"
+        ],
         "por_pagina": 1,
-        "por_pagina_aprovada": {"monitor-de-riscos.html": {"mapa": 1, "serie": 2}, "saude.html": {"mapa": 1, "serie": 1}},
+        "por_pagina_aprovada": {
+          "monitor-de-riscos.html": {
+            "mapa": 1,
+            "serie": 2
+          },
+          "saude.html": {
+            "mapa": 1,
+            "serie": 1
+          }
+        },
         "registrado_em": "2026-10-16",
         "decidido_por": "editoria, por delegação à central (16/10/2026 22:15 UTC; HANDOVER_FINANCIAMENTO_16-10-2026 §11) · saude.html: mapa por tipo de plano com a lista das siglas ao lado, protótipo aprovado pela editoria em 24/10/2026 22:07 UTC (bloco da central no LOTES)"
       },
       "registrado_em": "2026-10-04",
       "decidido_por": "editoria (item 7 do handover dos temporizadores)"
+    },
+    "cartao_de_consulta": {
+      "fonte": "editoria, 03/11/2026 (HANDOVER_RISCO_DE_BASE_ADAPTABRASIL §5)",
+      "regra": "Todo cartão de consulta de município (a) declara o território do dado, 'município' ou 'dados do estado de {estado}; esta informação não existe por município', e (b) leva o link 'ver em {pagina}' para a seção ou página onde o dado vive. Sem exceção por cartão.",
+      "modulo": "assets/js/consulta-municipio.js",
+      "fontes": [
+        "assets/js/consulta-municipio.js",
+        "assets/js/saude.js",
+        "assets/js/proteja-se.js"
+      ],
+      "marca_de_cartao_a_mao": "cartao--acento-",
+      "textos": [
+        "T('municipio')",
+        "T('estado'",
+        "T('ver_em'"
+      ]
     }
   },
   "figura": {
@@ -896,6 +924,7 @@
     "texto_publico.palavras_por_pagina": "scripts/verificar_texto_publico.js",
     "texto_publico.enquadramento": "scripts/verificar_texto_publico.js",
     "texto_publico.figura_componente": "scripts/verificar_texto_publico.js",
-    "texto_publico.imprensa": "scripts/verificar_texto_publico.js"
+    "texto_publico.imprensa": "scripts/verificar_texto_publico.js",
+    "componentes.cartao_de_consulta": "scripts/verificar_conformidade.py"
   }
 }

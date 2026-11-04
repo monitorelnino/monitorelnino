@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 `verificar_runtime_saude.js` carregava, além do seu cabeçalho, uma cópia do cabeçalho do verificador de sinais (com `Uso:` apontando para outro script). A cópia saiu; nenhuma verificação mudou. Código: +0/−9.
 
+## 2026-11-04 · Cartões da consulta de município: um montador, território e "ver em"
+
+Todo cartão da consulta (Saúde e Proteja-se) sai de `ConsultaMunicipio.cartao`: declara se o dado é do município ou do estado e leva o link "ver em" para onde o dado vive. Regra `componentes.cartao_de_consulta` em `regras.json`, julgada por `verificar_conformidade.py`.
+
 ## 2026-11-03 · Juiz de saúde: queda de rede não apaga veredito
 
 `julgar_saude.py --rejulgar` apagava o veredito de toda pista cujo documento não baixava (rejulgar do PI: 10 vereditos perdidos, um deles promovido). O resultado pendente agora só é contado e o veredito anterior fica. Linhas líquidas: +2/−1 (comentário e remoção).

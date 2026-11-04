@@ -1,0 +1,39 @@
+{
+ "noite": "2026-11-04",
+ "chaves": [
+  {
+   "secret": "OPENAQ_API_KEY",
+   "fonte": "openaq",
+   "http": 200,
+   "estado": "aceita",
+   "data": "2026-11-04",
+   "desde": "2026-11-02",
+   "vence_em": null,
+   "rota_sem_chave": null
+  },
+  {
+   "secret": "PORTAL_TRANSPARENCIA_API_KEY",
+   "fonte": "portal_transparencia",
+   "http": 400,
+   "estado": "erro_da_fonte",
+   "data": "2026-11-04",
+   "desde": "2026-11-02",
+   "vence_em": null,
+   "rota_sem_chave": null
+  },
+  {
+   "secret": "INMET_API_TOKEN",
+   "fonte": "inmet_estacoes",
+   "http": null,
+   "estado": "ausente",
+   "data": "2026-11-04",
+   "desde": "2026-11-02",
+   "vence_em": null,
+   "rota_sem_chave": null
+  }
+ ],
+ "nao_sondadas": {
+  "NETLIFY_AUTH_TOKEN": "sem requisição mínima neste elo; a falha aparece no publicador",
+  "ROBO_DEPLOY_KEY": "chave SSH de escrita no repositório privado; a falha aparece no push do elo"
+ }
+}

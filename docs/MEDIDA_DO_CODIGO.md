@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **101.017 linhas** em **308 arquivos** .py/.js; **38 workflows**.
+- **101.073 linhas** em **308 arquivos** .py/.js; **38 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
 - **155 nomes de função** definidos em mais de um arquivo.
 
@@ -11,8 +11,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | pasta | linhas |
 |---|---:|
 | `(raiz)` | 56976 |
-| `scripts` | 36945 |
-| `assets` | 6524 |
+| `scripts` | 36979 |
+| `assets` | 6546 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
 
@@ -44,7 +44,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 763 |
 | `buscar_planos_fontes_abertas.py` | 736 |
-| `gerar_financiamento_semana.py` | 725 |
+| `assets/js/saude.js` | 726 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 

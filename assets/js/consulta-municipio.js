@@ -11,9 +11,16 @@
  * `situacaoDoPlano(registro)` dá o estado do plano do município, para a frase de cada página;
  * `varreduraLegivel(varredura)` dá `{nivel, data}` (data em dd/mm/aaaa) da varredura do livro, ou
  * `null` quando o nível ou a data não servem: as páginas só escolhem o molde do catálogo.
- * Os ids dos controles vêm em `uf`, `municipio`, `lista` e `cartao`. */
+ * Os ids dos controles vêm em `uf`, `municipio`, `lista` e `cartao`.
+ * `cartao({acento, rotulo, valor, nota, classe, estado, ver, aba})` monta o cartão de TODA consulta de
+ * município (editoria, 03/11/2026, §5 do handover do risco de base): declara o território do dado
+ * ("município", ou "dados do estado de {estado}; …" quando `estado` vem) e leva sempre o link
+ * "ver em {pagina}" para onde o dado vive (`ver` = {href, pagina, ficha?}). `valor` e `nota` chegam
+ * como HTML já escapado; `aba` acrescenta o link "O que fazer" da página. Os textos vivem em `_comum.json`. */
 (function (global) {
   'use strict';
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+  const T = (id, v) => (global.MonitorCatalogo && global.MonitorCatalogo.texto('consulta.cartao.' + id, v)) || '';
   const nrm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
 
   function montar(o) {
@@ -62,6 +69,15 @@
     ['focus', 'click'].forEach(ev => inp.addEventListener(ev, () => { if (oficial(inp.value)) inp.value = ''; }));
   }
 
+  function cartao(o) {
+    const v = o.ver, aba = o.aba && '<p class="u-mb-0"><a href="#' + esc(o.aba.id) + '">' + esc(o.aba.texto) + '</a></p>';
+    return '<div class="cartao cartao--acento-' + o.acento + '"><p class="cartao-numero-rotulo">' + esc(o.rotulo) + '</p>'
+      + '<p' + (o.classe ? ' class="' + o.classe + '"' : '') + '>' + o.valor + '</p>'
+      + (o.nota ? '<p class="note">' + o.nota + '</p>' : '')
+      + '<p class="note' + (aba ? '' : ' u-mb-0') + '">' + esc(o.estado ? T('estado', {estado: o.estado}) : T('municipio')) + ' · <a href="' + esc(v.href) + '"'
+      + (v.ficha ? ' data-ficha="' + esc(v.ficha) + '"' : '') + '>' + esc(T('ver_em', {pagina: v.pagina})) + '</a></p>' + (aba || '') + '</div>';
+  }
+
   /* Situação do plano de contingência do município, lida do registro de `municipios_card.json`
    * (mapeamento da editoria, 30/09/2026; plano citado sem documento, 08/10/2026). Uma classificação
    * para todas as páginas; cada uma escreve a sua frase a partir do `estado`. `decreto` não é plano
@@ -90,5 +106,5 @@
     return m ? {nivel: NIVEL_DA_VARREDURA[v.nivel], data: m[3] + '/' + m[2] + '/' + m[1]} : null;
   }
 
-  global.ConsultaMunicipio = { montar, nrm, situacaoDoPlano, varreduraLegivel };
+  global.ConsultaMunicipio = { montar, cartao, nrm, situacaoDoPlano, varreduraLegivel };
 })(window);
