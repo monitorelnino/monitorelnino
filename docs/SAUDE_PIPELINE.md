@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-28 a 2026-11-04 (1389 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-28 a 2026-11-04 (1392 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,8 +28,8 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-04 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-04 07:20 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-03 01:35 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-04 13:50 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-04 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `recalcular_mare.py` | essencial | 2026-11-04 14:30 | 4 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-04 12:31 | 259 s | 1 | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
 | `buscar_planos_fontes_abertas.py` | coletor | 2026-11-02 21:10 | 80 s | — | ok | — |
@@ -76,7 +76,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-04 · por canal: we
 | `desfechos_sus.py` | coletor | 2026-11-04 07:17 | 1 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-04 08:33 | 2 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-04 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `julgar_filas.py` | coletor | 2026-11-04 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `julgar_filas.py` | coletor | 2026-11-04 10:01 | 9002 s | — | **erro** | interrompido pelo prazo do elo |
 | `julgar_saude.py` | coletor | 2026-11-03 01:15 | 4291 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-04 07:45 | 5 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-04 08:23 | 614 s | 17664 | ok | — |
