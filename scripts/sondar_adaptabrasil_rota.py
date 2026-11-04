@@ -36,17 +36,21 @@ def main():
         if st != 200:
             continue
         vistos = set()
-        for chave in ("TotaisApi", "getGeometriaDataDownload", "DataDownload", "location", "/api", "download"):
+        for chave in ("TotaisApi", "getGeometriaDataDownload", "DataDownload", "/download", "format=csv", "\"/api"):
+            n = 0
             for m in re.finditer(re.escape(chave), src):
+                n += 1
+                if n > 12:
+                    break
                 a, b = max(0, m.start() - 160), min(len(src), m.end() + 240)
                 trecho = src[a:b].replace("\n", " ")
                 if SEG.search(trecho) or trecho[:60] in vistos:
                     continue
                 vistos.add(trecho[:60])
                 print(f"SONDA> [{chave}] {trecho}")
-                if len(vistos) > 60:
+                if len(vistos) > 70:
                     break
-            if len(vistos) > 60:
+            if len(vistos) > 70:
                 break
 
 
