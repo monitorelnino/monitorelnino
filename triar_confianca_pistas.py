@@ -31,8 +31,6 @@ USO
   python triar_confianca_pistas.py --autoteste
 """
 import json, re, sys, unicodedata
-from collections import defaultdict
-from datetime import date
 from urllib.parse import urlparse
 from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
 from scripts.pistas import id_da_pista

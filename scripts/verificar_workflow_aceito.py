@@ -33,7 +33,6 @@ USO
 """
 import json
 import pathlib
-import subprocess
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent

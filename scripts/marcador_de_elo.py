@@ -30,7 +30,6 @@ Sai 0 quando o elo trabalhou, 1 quando não — e imprime qual prova valeu.
 """
 from __future__ import annotations
 
-import json
 import pathlib
 import subprocess
 import sys

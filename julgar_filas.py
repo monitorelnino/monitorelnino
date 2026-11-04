@@ -309,7 +309,6 @@ def aplicar_no_objeto(p: dict, v: dict) -> str:
     28/09/2026 (item 2 do bloco das 19:50): toda tentativa fica registrada em `juiz_tentativas`,
     com data, classe e motivo. Nada se apaga — a pista guarda o que já se tentou, e é por esse
     histórico que se sabe se uma fonte está fora do ar há uma noite ou há um mês."""
-    import datetime
     hoje = _hoje_data()
     classe = classe_da_recusa(v)
     tentativas = p.setdefault("juiz_tentativas", [])

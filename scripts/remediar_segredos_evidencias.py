@@ -31,7 +31,6 @@ Idempotente: rodar de novo em arquivo já redigido não encontra nada e não esc
   python3 scripts/remediar_segredos_evidencias.py --autoteste # sem rede, sem escrita em evidencias/
 """
 import hashlib
-import json
 import pathlib
 import sys
 

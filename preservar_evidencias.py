@@ -320,7 +320,6 @@ def ocr_pdfs(limite: int = 10, paginas_max: int = 0, alvo: str | None = None) ->
 
     Não decide nada e não toca em registro: só acrescenta prova, como o resto desta rotina.
     Falha de rede, PDF alterado ou Tesseract ausente viram lacuna declarada no log."""
-    from datetime import date
     exe = tesseract_disponivel()
     idx = ler("evidencias.json", {"itens": {}}); itens = idx.setdefault("itens", {})
     hoje = hoje_editorial().isoformat()
@@ -460,7 +459,6 @@ def reconferir(limite: int = 200) -> int:
     Hash diferente = 'documento-fonte alterado em dd/mm': entrada no log, marca em
     data/evidencias.json (alterado_em, hash_novo) e evento no feed (tipo documento_alterado).
     Nunca altera a categoria do registro — isso é julgamento humano."""
-    from datetime import date
     mun = ler("municipios.json"); idx = ler("evidencias.json", {"itens": {}}); n = alt = falhas = 0
     for m in mun:
         h = m.get("hash_evidencia")

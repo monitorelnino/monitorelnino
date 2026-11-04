@@ -13,7 +13,6 @@ entra na fila R7 (data/saude_no_plano_revisar.json). Peso zero; nunca lida pelo 
   python classificar_saude_no_plano.py --autoteste
 """
 import json, re, sys, unicodedata
-from datetime import date
 from pathlib import Path
 from coletores_base import ler, gravar, rodar_autoteste, hoje_editorial
 

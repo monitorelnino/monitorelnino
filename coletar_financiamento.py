@@ -26,7 +26,6 @@ Tesouro (constitucionais), FNS, FNAS, Transferegov, MDS/PVAC: `a_verificar` (§1
 Parsers provados por fixture (--autoteste). Uso: --semear · --autoteste · (coleta) --uf XX
 """
 import hashlib, json, os, pathlib, sys, time, urllib.error, urllib.parse
-from datetime import date
 from coletores_base import buscar, log_busca, registrar_lacuna, ler, gravar, rodar_autoteste, referencia_ibge, sha256, ua_de, hoje_editorial
 
 RAIZ = pathlib.Path(__file__).parent; FIN = RAIZ / "data" / "financiamento"

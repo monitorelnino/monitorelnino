@@ -25,7 +25,6 @@ Produz data/saude_desfechos/{,chik_}{serie_painel,serie_uf,canal_endemico,comple
 """
 import json, statistics, sys, time, urllib.parse
 from collections import defaultdict
-from datetime import date
 from pathlib import Path
 from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, preservar_evidencia, data_da_edicao
 

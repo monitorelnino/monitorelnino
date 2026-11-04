@@ -463,7 +463,6 @@ def autoteste():
     """Hermético: nunca chama a rede. Testa a peneira `relevante()` e o vocabulário
     real que log_busca() aceita, lido do próprio código-fonte (não copiado à mão —
     achado real de 21/09/2026: um vocabulário digitado à mão diverge do código)."""
-    import inspect
     import coletores_base
 
     def t1_relevante_aceita():

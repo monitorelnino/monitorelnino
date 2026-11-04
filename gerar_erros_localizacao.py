@@ -26,7 +26,6 @@ Uso:
     python3 gerar_erros_localizacao.py            # grava data/erros_localizacao.json
     python3 gerar_erros_localizacao.py --autoteste # prova os invariantes, sem rede
 """
-import json
 import pathlib
 import sys
 
