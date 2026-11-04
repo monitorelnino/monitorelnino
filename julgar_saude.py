@@ -752,22 +752,43 @@ _HOSTS_SEM_RESPOSTA = set()
 PAD_FALHA_DE_REDE = re.compile(r"^documento não baixado: (?!HTTPError)")
 
 
-def julgar_pista(p: dict, buscar_fn=None) -> dict:
+def copia_preservada(su: dict):
+    """url -> (texto, hash) da cópia que o juiz já preservou do instrumento daquele endereço, ou None."""
+    hashes = {i["url"]: i["hash_evidencia"] for u in (su.get("uf") or {}).values()
+              for i in (u or {}).get("instrumentos", []) if i.get("url") and i.get("hash_evidencia")}
+
+    def copia(url):
+        arq = RAIZ / "evidencias" / f"{hashes.get(url)}.txt"
+        return (arq.read_text(encoding="utf-8", errors="replace"), hashes[url]) if url in hashes and arq.exists() else None
+    return copia
+
+
+def julgar_pista(p: dict, buscar_fn=None, copia_de=None) -> dict:
     """Baixa, lê e julga uma pista. Devolve o veredito com o que o ato institui."""
     url = p.get("url")
     uf = p.get("uf")
     host = urllib.parse.urlparse(url or "").netloc.lower()
+    corpo, hash_ev, falha = None, None, None
     if host in _HOSTS_SEM_RESPOSTA:
-        return {"promove": False, "pendente": True, "uf": uf,
-                "motivo": "documento não baixado: host sem resposta nesta rodada"}
-    try:
-        corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
-    except Exception as e:  # noqa: BLE001
-        if not isinstance(e, urllib.error.HTTPError):
-            _HOSTS_SEM_RESPOSTA.add(host)
-        return {"promove": False, "pendente": not isinstance(e, urllib.error.HTTPError), "uf": uf,
-                "motivo": f"documento não baixado: {type(e).__name__}"}
-    texto = texto_do_documento(corpo, url)
+        falha = {"promove": False, "pendente": True, "uf": uf,
+                 "motivo": "documento não baixado: host sem resposta nesta rodada"}
+    else:
+        try:
+            corpo = (buscar_fn or buscar)(url, timeout=150, origem="julgar_saude")
+        except Exception as e:  # noqa: BLE001
+            if not isinstance(e, urllib.error.HTTPError):
+                _HOSTS_SEM_RESPOSTA.add(host)
+            falha = {"promove": False, "pendente": not isinstance(e, urllib.error.HTTPError), "uf": uf,
+                     "motivo": f"documento não baixado: {type(e).__name__}"}
+    if falha:
+        # Fonte que não abre para o runner (03/11/2026: portal.pi.gov.br, TCP 443 sem resposta) não impede
+        # reler o que já foi lido: a cópia preservada do mesmo endereço, com o hash do instrumento.
+        copia = copia_de and copia_de(url)
+        if not (falha["pendente"] and copia):
+            return falha
+        texto, hash_ev = copia
+    else:
+        texto = texto_do_documento(corpo, url)
     if not texto.strip():
         return {"promove": False, "motivo": "documento sem texto extraível (PDF sem OCR?)", "uf": uf}
     institui = o_que_institui(texto)
@@ -782,7 +803,7 @@ def julgar_pista(p: dict, buscar_fn=None) -> dict:
     v["institui"] = sorted(institui)
     v["uf"] = uf
     if v.get("promove"):
-        v["hash_evidencia"] = preservar_evidencia(
+        v["hash_evidencia"] = hash_ev or preservar_evidencia(
             corpo, url, "pdf" if (url or "").lower().endswith(".pdf") else "html", "julgar_saude")
         # As duas funcoes da coordenacao, cada uma classificada por conta propria: um ato que
         # cumpre as duas pontua nas duas, e dois atos que cumprem uma cada pontuam o mesmo.
@@ -1390,6 +1411,14 @@ def autoteste() -> int:
         and _su["uf"]["PI"]["status"] == "NOVO" and _su["uf"]["PI"]["url"] == _u)
     casos["F68: falha de rede é pendente e o host cai para o resto da rodada (uma chamada só)"] = (
         lambda: v1["pendente"] and v2["pendente"] and len(chamadas) == 1)
+    _HOSTS_SEM_RESPOSTA.clear()
+
+    def sem_rede(u, **k):
+        raise urllib.error.URLError("timed out")
+    _vc = julgar_pista({"url": _u, "uf": "PI"}, buscar_fn=sem_rede, copia_de=lambda u: (_t2, "h0") if u == _u else None)
+    _vn = julgar_pista({"url": "https://portal.pi.gov.br/outra", "uf": "PI"}, buscar_fn=sem_rede, copia_de=lambda u: None)
+    casos["PI: fonte que não abre relê a cópia preservada do mesmo endereço; sem cópia segue pendente"] = (
+        lambda: _vc.get("pendente") is None and _vc.get("hash_evidencia") in ("h0", None) and _vn["pendente"])
     casos["F68: HTTP 404 é recusa, não pendente, e não derruba o host"] = (
         lambda: v3["pendente"] is False and "vivo.pa.gov.br" not in _HOSTS_SEM_RESPOSTA)
     casos["F68: veredito antigo de queda de rede volta à fila; o de HTTP não"] = (
@@ -1448,7 +1477,8 @@ def main() -> int:
     # O prazo do elo interrompe com SIGINT: o que foi julgado até ali é gravado (a mesma função do
     # juiz do Legal, 15/10/2026). Antes, interrompido, o juiz de saúde não gravava nada.
     feitos = {"promovida": 0, "recusada": 0, "pendente": 0}
-    interrompido = julgar_lista(candidatas, julgar_pista, True, [], feitos, aplicar_fn=passo)
+    copia = copia_preservada(su)
+    interrompido = julgar_lista(candidatas, lambda p: julgar_pista(p, copia_de=copia), True, [], feitos, aplicar_fn=passo)
     promovidas = feitos["promovida"]
     print(f"\n{promovidas} promovida(s) · {feitos['recusada']} recusada(s) · {feitos['pendente']} pendente(s) por rede")
     for motivo, n in sorted(recusadas.items(), key=lambda x: -x[1]):

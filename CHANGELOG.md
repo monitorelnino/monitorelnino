@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-04 · #PR · Juiz de saúde relê a cópia preservada quando a fonte não abre (+43/−13)
+
+`portal.pi.gov.br` resolve, mas a porta 443 não responde ao runner (sonda 04/11): o rejulgamento do PI ficava pendente e o título antigo ("EQUIPE GESTORA…") seguia no ar. Sem download, o juiz lê agora o texto já preservado do mesmo endereço, com o hash do instrumento; sem cópia, segue pendente. Um caso de teste.
+
 ## 2026-11-04 · Cartões da consulta de município: um montador, território e "ver em"
 
 Todo cartão da consulta (Saúde e Proteja-se) sai de `ConsultaMunicipio.cartao`: declara se o dado é do município ou do estado e leva o link "ver em" para onde o dado vive. Regra `componentes.cartao_de_consulta` em `regras.json`, julgada por `verificar_conformidade.py`.
