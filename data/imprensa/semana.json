@@ -6,11 +6,11 @@
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-11-03",
-   "n": 47,
+   "n": 48,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 47245,
+   "valor_parcial": 48895,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,33 +505,41 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 186,
+   "valor": 235,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "02/11/2026",
+   "consultado_em": "03/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261103.csv",
+   "nota": "Focos do dia — focos_diario_br_20261104.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 163
-    },
-    {
-     "uf": "BA",
-     "valor": 11
+     "valor": 107
     },
     {
      "uf": "MA",
-     "valor": 8
+     "valor": 68
     },
     {
-     "uf": "RR",
-     "valor": 4
+     "uf": "GO",
+     "valor": 20
+    },
+    {
+     "uf": "PI",
+     "valor": 16
+    },
+    {
+     "uf": "BA",
+     "valor": 12
+    },
+    {
+     "uf": "MT",
+     "valor": 12
     }
    ],
    "pagina_de_origem": null,
