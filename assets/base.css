@@ -1440,6 +1440,10 @@ main details > summary{min-height:var(--alvo-toque); display:flex; align-items:c
    uma faixa branca sob ele. A coluna passa a ocupar a altura inteira e o mapa se centra nela:
    as duas colunas terminam juntas, sem esticar o desenho do mapa. */
 .cartao-mapa.figura--dupla .figura-midia{align-items:stretch;}
+/* Figura dupla com duas legendas: cada metade é mídia + legenda, a legenda logo abaixo da sua mídia
+   (gráfico → legenda da série; mapa → legenda das classes); empilhada, a ordem do documento. */
+.cartao-mapa.figura--dupla .figura-midia:has(> .map-legend){grid-auto-flow:column; grid-template-rows:auto auto; align-items:start; row-gap:0;}
+@media (max-width: 640px){ .cartao-mapa.figura--dupla .figura-midia:has(> .map-legend){grid-auto-flow:row; grid-template-rows:none;} }
 .mapa-dupla{display:flex; align-items:center; min-width:0;}
 .mapa-dupla > svg{width:100%; height:auto; display:block;}
 .map-legend i.leg-losango{width:8px; height:8px; transform:rotate(45deg); border:1px solid var(--muted); background:none;}
