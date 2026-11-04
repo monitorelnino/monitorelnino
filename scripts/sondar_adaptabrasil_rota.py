@@ -34,20 +34,15 @@ def mostrar(titulo, trecho):
 def main():
     st, src = get(BASE + "/static/js/main.4708008b.js")
     print("SONDA> main", st, len(src))
-    a = src.find('"./src/api/index.js":')
-    mostrar("apiindex", src[a:a + 3200])
-    for i, m in enumerate(re.finditer(r"getSchemaQuery = ", src)):
-        if i >= 2:
-            break
-        mostrar("schema", src[m.start():m.start() + 900])
-    vistos = set()
-    for m in re.finditer(r"_index2\.default\.(?:get|post)\(([^;]{5,200}?)\);", src):
-        t = m.group(1)
-        if t not in vistos and not SEG.search(t):
-            vistos.add(t)
-            print("SONDA> chamada", t[:230])
-            if len(vistos) >= 60:
-                break
+    a = src.find('"./src/api/menu-structure-base.json"')
+    b = src.find("JSON.parse(", a)
+    bruto = src[b:b + 2600].replace("\\\\\\\"", "'").replace("\\\"", "'")
+    print("SONDA> menu", bruto[:2600])
+    st, h = get(BASE + "/api/hierarquia")
+    print("SONDA> hierarquia", st, len(h))
+    print("SONDA> hierarquia-inicio", "[redigida]" if SEG.search(h[:1800]) else h[:1800])
+    for m in list(re.finditer(r'"(?:nome|name|titulo|title)"\s*:\s*"([^"]{3,80})"[^{}]{0,120}?"id"\s*:\s*(\d+)', h))[:60]:
+        print("SONDA> ind", m.group(2), m.group(1))
 
 
 main()
