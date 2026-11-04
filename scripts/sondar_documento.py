@@ -44,6 +44,12 @@ def main(argv: list) -> int:
     from coletores_base import buscar
     tipo, texto, links = texto_de(buscar(url, timeout=90))
     print(f"{url}: {tipo}, {len(texto)} caracteres")
+    if "--rotas" in argv:
+        for m in sorted(set(re.findall(r"default\.(?:get|post)\(.{0,170}?\);", texto))):
+            print("ROTA>", m)
+        for m in sorted(set(re.findall(r"getSchemaQuery = .{0,400}", texto))):
+            print("SCHEMA>", m)
+        return 0
     for ln in links:
         print("  link pdf:", ln)
     for termo in termos:
