@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-04 · #1478 · Juiz de saúde relê a cópia preservada quando a fonte não abre (+43/−13)
+
+`portal.pi.gov.br` resolve, mas a porta 443 não responde ao runner (sonda 04/11): o rejulgamento do PI ficava pendente e o título antigo ("EQUIPE GESTORA…") seguia no ar. Sem download, o juiz lê agora o texto já preservado do mesmo endereço, com o hash do instrumento; sem cópia, segue pendente. Um caso de teste.
 ## 2026-11-04 · Redução: cabeçalho duplicado sai do verificador de Saúde
 
 `verificar_runtime_saude.js` carregava, além do seu cabeçalho, uma cópia do cabeçalho do verificador de sinais (com `Uso:` apontando para outro script). A cópia saiu; nenhuma verificação mudou. Código: +0/−9.
@@ -72,7 +75,7 @@ Ensaio real vermelho (pack >2 GiB): job esperou na fila, SHA do dispatch ficou v
 
 `por_uf.json` ganha `transferencias_download` por UF e `serie_nacional.json` ganha `serie_mensal_download`, com `consultado_em`, último mês lido e meses parciais marcados. Soma do mesmo arquivo mensal que o coletor municipal já lê (sem segundo download, sem chave); linha sem município fica à parte. Nenhuma rota r1–r7 preenchida: a fonte classifica por função, não por instrumento.
 
-## 2026-11-01 · #PR · Juiz de saúde: o plano oficial promovido substitui o registro de imprensa e o topo da UF o acompanha · +45/−3
+## 2026-11-01 · #1478 · Juiz de saúde: o plano oficial promovido substitui o registro de imprensa e o topo da UF o acompanha · +45/−3
 O `--aplicar` só acrescentava o item novo; o registro de imprensa (tipo conhecido) seguia como melhor instrumento e o topo não era sincronizado. Agora o documento oficial lido troca o item mais fraco do ciclo e o topo copia o melhor. A data do plano é a da capa ou o mês do caminho no portal (`09/2026`), nunca a de ato citado no corpo.
 
 ## 2026-11-01 · #1426 · Juiz de saúde: plano publicado não é recusado como `resposta` (J1) · +14/−2
@@ -679,7 +682,7 @@ Três variantes nascem no componente, sem bloco novo: `.bloco--tema` (fio superi
 
 Os seis cartões do topo da Defesa civil passam à escala menor pedida pela editoria (24/10): regra `.dc-topo .cartao-numero` e `.dc-topo .cartao-numero-valor` em `assets/base.css`, sem classe nova. Os demais cartões de número (Imprensa, Proteja-se, Saúde, Monitor de riscos) não mudam. Linhas líquidas: +4/−0.
 
-## 2026-10-25 · #PR · Juiz de saúde: documento de município não entra na camada estadual
+## 2026-10-25 · #1478 · Juiz de saúde: documento de município não entra na camada estadual
 
 Ao rejulgar a fila, um plano de arboviroses do município de Itapemirim, publicado no diário do estado, virou instrumento da SES-ES, e o guia do CIEVS de Manaus virou F2 do AM. O juiz passa a recusar como `ente_nao_confirmado` o documento cujo host ou cabeçalho é de município. Nada muda na nota publicada.
 
@@ -1800,7 +1803,7 @@ A ficha (`dialog.detail`) fecha pelo ×, pelo fundo ou por Esc num ouvinte só, 
 
 Plano sem ato só vale no domínio do próprio município (Cubatão/SP: relatório do BNDES em `bndes.gov.br`), e plano de contingência de rede de ensino, escola ou unidade de saúde é `fora_do_objeto` (Toledo/PR, METODOLOGIA §222). Aplica a régua declarada; casos de teste com os dois documentos. O rejulgamento passa a ler o texto extraído, não o PDF cru.
 
-## 2026-10-15 · #PR · Juiz de saúde estadual primeiro (F62)
+## 2026-10-15 · #1478 · Juiz de saúde estadual primeiro (F62)
 
 `julgar_saude.py` passa a ser o primeiro comando do elo de saúde estadual e grava o que julgou quando o prazo o interrompe, pela mesma `julgar_lista` do juiz do Legal. Último da lista, ele era pulado toda semana (14/10: `--fontes` 52 min em hosts mortos) e `saude_uf.json` parou em 02/10. Ensaio 27 e catálogo F62.
 
