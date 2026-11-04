@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>04/11/2026 · reconferência das rotas dos diários · A sonda dos diários ganha `--reconferir`: um GET identificado por rota de cada UF, com código, veredito (voltou, bloqueio, fora do ar, timeout) e situação do robots, gravado em `reconferencia` de `data/fontes_doe.json`. Em 04/11: 16 UFs responderam 200; PE (REST) 401 respeitado; MA 500; BA, PB, RS e TO sem resposta no tempo.</dt>
+      <dd></dd>
       <dt>04/11/2026 · Redução: 42 imports mortos de linha inteira</dt>
       <dd>Imports sem uso saem de 39 arquivos .py (pyflakes; nenhum acesso `modulo.nome` de fora). Sem mudança de comportamento. Código −42 linhas; medida 101.105 → 101.063.</dd>
       <dt>04/11/2026 · Figura dupla: cada legenda abaixo da sua mídia</dt>
@@ -165,8 +167,6 @@
       <dd>A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora do índice (peso zero, dado do motor v0.7). Nenhum número do índice muda.</dd>
       <dt>26/10/2026 · Imprensa: acumulados do ciclo completos</dt>
       <dd>A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.</dd>
-      <dt>26/10/2026 · Descoberta: limite padrão sobe a 60</dt>
-      <dd>A rodada medida de descoberta (`--limite 60`) levou 7 minutos de um prazo de 300, com folga bem acima de 20%. Por isso o limite padrão de `seguir_pistas.py` passa de 20 para 60. O elo noturno mantém 20 explícito, sem mudança na corrente. Saldo de código: zero líquido.</dd>
     </dl>
   </section>
 </main>
