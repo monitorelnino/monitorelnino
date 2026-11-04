@@ -35,7 +35,9 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import EVID, buscar, classificar_defeso, detectar_defeso, ler, gravar, hoje  # noqa: E402
+import urllib.error
+from coletores_base import (EVID, RECUSAS_EXPLICITAS, MuroDeRobo, buscar, classificar_defeso,  # noqa: E402
+                            detectar_defeso, ler, gravar, hoje)
 
 ARQUIVO = "calendario/fontes_suspensas.json"
 TETO_EVIDENCIA = 20000          # o mesmo corte que registrar_fonte_suspensa() aplica ao gravar
@@ -52,6 +54,19 @@ def evidencia_de(registro: dict):
         return None, None
     t = p.read_text(encoding="utf-8", errors="replace")
     return t, len(t) >= TETO_EVIDENCIA - MARGEM_TRUNCAMENTO
+
+
+def motivo_da_falha(e: Exception) -> str:
+    """Por que a nova busca não trouxe a página, em um dos nomes que a editoria pediu (04/11/2026):
+    recusa (com o código; muro de robô servido com 200 também é recusa) · fora_do_ar (5xx, DNS,
+    conexão) · timeout. O estado da fonte não muda por isso (§170)."""
+    if isinstance(e, MuroDeRobo):
+        return "recusa (muro de robô)"
+    if isinstance(e, urllib.error.HTTPError):
+        return (f"recusa ({e.code})" if e.code in RECUSAS_EXPLICITAS else f"fora_do_ar ({e.code})")
+    if isinstance(e, TimeoutError) or "timed out" in str(e):
+        return "timeout"
+    return f"fora_do_ar ({type(e).__name__})"
 
 
 def reavaliar(fontes: dict, buscar_fn=None) -> dict:
@@ -77,7 +92,8 @@ def reavaliar(fontes: dict, buscar_fn=None) -> dict:
                 corpo = buscar_fn(url, timeout=30)
             except Exception as e:  # noqa: BLE001
                 reg["reavaliada_em"] = hoje()
-                reg["reavaliacao"] = (f"§182: nova busca não obteve resposta ({type(e).__name__}); "
+                reg["resultado_da_busca"] = motivo_da_falha(e)
+                reg["reavaliacao"] = (f"§182: nova busca não obteve resposta ({reg['resultado_da_busca']}); "
                                       "estado mantido — ausência de resposta não é prova (§170)")
                 r["sem_resposta"].append(url)
                 continue
@@ -87,6 +103,8 @@ def reavaliar(fontes: dict, buscar_fn=None) -> dict:
             procedencia = f"nova busca em {hoje()}"
         reg["reavaliada_em"] = hoje()
         reg["procedencia_da_reavaliacao"] = procedencia
+        if procedencia.startswith("nova busca"):
+            reg["resultado_da_busca"] = "voltou" if padrao is None else "no ar, declara suspensão"
         reg["escopo_declarado"] = escopo      # §182: sitio | noticias | None
         if padrao:
             reg["padrao"] = padrao
@@ -157,6 +175,11 @@ def autoteste() -> int:
             r3 = reavaliar(f3, buscar_fn=buscar_fake)
             if r3["sem_resposta"] != ["https://muda.gov.br/"] or f3["https://muda.gov.br/"]["suspensa"] is not True:
                 falhas.append("falha de rede tinha de manter o estado e ficar registrada")
+            if f3["https://muda.gov.br/"].get("resultado_da_busca") != "timeout":
+                falhas.append("o motivo da falha (timeout) tinha de ficar registrado")
+            e403 = urllib.error.HTTPError("u", 403, "x", {}, None)
+            if motivo_da_falha(e403) != "recusa (403)" or motivo_da_falha(urllib.error.HTTPError("u", 503, "x", {}, None)) != "fora_do_ar (503)":
+                falhas.append("403 é recusa e 503 é fora_do_ar")
         finally:
             EVID = real
     if falhas:
