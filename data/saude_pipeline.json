@@ -21510,7 +21510,241 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "recalcular_mare.py",
+   "inicio": "2026-11-04T01:26:42",
+   "duracao_s": 3.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_saude.py",
+   "inicio": "2026-11-04T01:12:30",
+   "duracao_s": 90.6,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-11-04T01:14:00",
+   "duracao_s": 452.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_desfechos_saude.py",
+   "inicio": "2026-11-04T01:21:32",
+   "duracao_s": 453.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_dda.py",
+   "inicio": "2026-11-04T01:29:05",
+   "duracao_s": 55.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_boletim_ms_dengue.py",
+   "inicio": "2026-11-04T01:30:00",
+   "duracao_s": 21.0,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_boletim_df_arboviroses.py",
+   "inicio": "2026-11-04T01:30:21",
+   "duracao_s": 254.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_boletim_pe_arboviroses.py",
+   "inicio": "2026-11-04T01:34:35",
+   "duracao_s": 5.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_boletim_pb_arboviroses.py",
+   "inicio": "2026-11-04T01:34:40",
+   "duracao_s": 3.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_arboviroses_sinan.py",
+   "inicio": "2026-11-04T01:34:43",
+   "duracao_s": 48.3,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_obitos_registro_civil.py",
+   "inicio": "2026-11-04T01:35:31",
+   "duracao_s": 25.1,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "classificar_saude_no_plano.py",
+   "inicio": "2026-11-04T01:35:56",
+   "duracao_s": 0.5,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "gerar_saude_municipio.py",
+   "inicio": "2026-11-04T01:35:56",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-04T01:11:04",
+   "duracao_s": 371.6,
+   "itens": 10,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-04T01:17:15",
+   "duracao_s": 316.4,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-11-03",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-04T01:22:31",
+   "duracao_s": 316.0,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-11-03",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-04T01:27:47",
+   "duracao_s": 314.9,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-11-03",
+   "script": "monitorar_busca_web.py",
+   "inicio": "2026-11-04T01:33:01",
+   "duracao_s": 316.2,
+   "itens": 2,
+   "status": "erro",
+   "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"
+  },
+  {
+   "data": "2026-11-03",
+   "script": "coletar_espin.py",
+   "inicio": "2026-11-04T01:12:29",
+   "duracao_s": 323.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "buscar_protocolo_calor.py",
+   "inicio": "2026-11-04T01:17:52",
+   "duracao_s": 113.9,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "scripts/reavaliar_fontes_suspensas.py",
+   "inicio": "2026-11-04T01:19:45",
+   "duracao_s": 1030.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "verificar_links.py",
+   "inicio": "2026-11-04T01:36:55",
+   "duracao_s": 232.1,
+   "itens": null,
+   "status": "erro",
+   "erro": "erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port"
+  },
+  {
+   "data": "2026-11-03",
+   "script": "scripts/triar_fila.py",
+   "inicio": "2026-11-04T01:45:07",
+   "duracao_s": 2.2,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "julgar_filas.py",
+   "inicio": "2026-11-04T01:45:09",
+   "duracao_s": 525.4,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "aplicar_promocoes_do_juiz.py",
+   "inicio": "2026-11-04T01:53:54",
+   "duracao_s": 0.7,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
+  },
+  {
+   "data": "2026-11-03",
+   "script": "scripts/verificar_esquema_de_pista.py",
+   "inicio": "2026-11-04T01:53:54",
+   "duracao_s": 2.8,
+   "itens": null,
+   "status": "ok",
+   "erro": ""
   }
  ],
- "atualizado_em": "2026-11-04T01:14:46"
+ "atualizado_em": "2026-11-04T01:53:54"
 }
