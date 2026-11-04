@@ -34,16 +34,20 @@ def mostrar(titulo, trecho):
 def main():
     st, src = get(BASE + "/static/js/main.4708008b.js")
     print("SONDA> main", st, len(src))
-    a = src.find('"./src/api/TotaisApi.js"')
-    mostrar("TotaisApi", src[a:a + 3800])
-    for i, m in enumerate(re.finditer(r"function getGeometriaDataDownload|getGeometriaDataDownload = ", src)):
+    a = src.find('"./src/api/index.js":')
+    mostrar("apiindex", src[a:a + 3200])
+    for i, m in enumerate(re.finditer(r"getSchemaQuery = ", src)):
         if i >= 2:
             break
-        mostrar("GeoDL", src[m.start():m.start() + 1800])
-    for i, m in enumerate(re.finditer(r"API_URL|BASE_URL|baseURL|API_BASE", src)):
-        if i >= 6:
-            break
-        mostrar("base", src[max(0, m.start() - 60):m.start() + 160])
+        mostrar("schema", src[m.start():m.start() + 900])
+    vistos = set()
+    for m in re.finditer(r"_index2\.default\.(?:get|post)\(([^;]{5,200}?)\);", src):
+        t = m.group(1)
+        if t not in vistos and not SEG.search(t):
+            vistos.add(t)
+            print("SONDA> chamada", t[:230])
+            if len(vistos) >= 60:
+                break
 
 
 main()
