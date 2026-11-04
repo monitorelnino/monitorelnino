@@ -207,11 +207,14 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
     return d ? (m ? d + ', ' + m[1] : d) : null;
   };
 
-  const cartao = (acento, rotulo, valor, nota, aba) => '<div class="cartao cartao--acento-' + acento + '">'
-    + '<p class="cartao-numero-rotulo">' + esc(rotulo) + '</p><p>' + esc(valor) + '</p>'
-    + (nota ? '<p class="note' + (aba ? '' : ' u-mb-0') + '">' + nota + '</p>' : '')
-    + (aba ? '<p class="u-mb-0"><a href="#' + aba + '">' + esc(tx('o_que_fazer')) + '</a></p>' : '')
-    + '</div>';
+  /* Onde o dado de cada cartão vive: o link "ver em …" é do módulo comum (§5, 03/11/2026). */
+  const MON = 'monitor-de-riscos.html#', PG = id => (C && C.texto && C.texto('consulta.cartao.pagina.' + id)) || '';
+  const DESTINO = {
+    inmet: [MON + 'boxAvisos', 'monitor_de_riscos'], cemaden: [MON + 'boxAvisos', 'monitor_de_riscos'], ar: [MON + 'boxAr', 'monitor_de_riscos'],
+    calor: [MON + 'boxTemperatura', 'monitor_de_riscos'], dengue: ['saude.html#observado', 'saude'], decreto: ['defesa-civil.html#emergencias', 'defesa_civil'],
+  };
+  const cartao = (familia, acento, rotulo, valor, nota, aba) => ConsultaMunicipio.cartao({acento, rotulo, valor: esc(valor), nota, ver: {href: DESTINO[familia][0], pagina: PG(DESTINO[familia][1])},
+    aba: aba && {id: aba, texto: tx('o_que_fazer')}});
 
   /* Todo cartão leva fonte e data, inclusive o que não tem o que mostrar: "nenhum aviso em vigor"
      é uma medição, e medição sem data não se confere. */
@@ -222,21 +225,21 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
 
   function cartaoInmet(d, m) {
     const av = (m.avisos_inmet || []).map(i => (d.avisos_inmet || [])[i]).filter(Boolean)[0];
-    if (!av) return cartao('chuva', tx('inmet.rotulo'), tx('inmet.nenhum'),
+    if (!av) return cartao('inmet', 'chuva', tx('inmet.rotulo'), tx('inmet.nenhum'),
       esc(tx('inmet.nota_nenhum', {data: consultaDe(d, 'avisos_e_alertas')})), null);
     const fim = comHora(av.fim);
-    return cartao('chuva', tx('inmet.rotulo'), tx('inmet.valor', {tipo: av.tipo, grau: av.severidade}),
+    return cartao('inmet', 'chuva', tx('inmet.rotulo'), tx('inmet.valor', {tipo: av.tipo, grau: av.severidade}),
       esc(fim ? tx('inmet.nota', {fim: fim}) : tx('inmet.nota_sem_fim')), ABAS[familiaDoAviso(av.tipo)]);
   }
 
   function cartaoCemaden(d, m) {
-    if (!m.rede_cemaden) return cartao('chuva', tx('cemaden.rotulo'), tx('cemaden.fora_da_rede'),
+    if (!m.rede_cemaden) return cartao('cemaden', 'chuva', tx('cemaden.rotulo'), tx('cemaden.fora_da_rede'),
       esc(tx('cemaden.nota_fora')), null);
     const al = (m.alertas_cemaden || [])[0];
-    if (!al) return cartao('chuva', tx('cemaden.rotulo'), tx('cemaden.nenhum'),
+    if (!al) return cartao('cemaden', 'chuva', tx('cemaden.rotulo'), tx('cemaden.nenhum'),
       esc(tx('cemaden.nota_nenhum', {data: consultaDe(d, 'avisos_e_alertas')})), null);
     const ini = comHora(al.inicio);
-    return cartao('chuva', tx('cemaden.rotulo'), tx('cemaden.valor', {tipo: al.tipo, nivel: al.nivel}),
+    return cartao('cemaden', 'chuva', tx('cemaden.rotulo'), tx('cemaden.valor', {tipo: al.tipo, nivel: al.nivel}),
       ini ? esc(tx('cemaden.nota', {inicio: ini})) : '', ABAS.chuva);
   }
 
@@ -245,17 +248,17 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
   function cartaoAr(d, m) {
     const e = m.ar_estacao && (d.estacoes || [])[m.ar_estacao.indice];
     if (e && e.iqar) {
-      return cartao('fogo', tx('ar.rotulo'),
+      return cartao('ar', 'fogo', tx('ar.rotulo'),
         tx('ar.valor', {classificacao: e.iqar.classificacao, valor: e.iqar.valor, poluente: e.iqar.poluente}),
         esc(tx('ar.nota', {estacao: e.nome, distancia: m.ar_estacao.distancia_km,
                            hora: comHora(e.iqar.medido_em) || tx('calor.sem_coleta')})), ABAS.fogo);
     }
     const sen = m.ar_sensor && (d.sensores || [])[m.ar_sensor.indice];
     if (sen) {
-      return cartao('fogo', tx('ar.rotulo'), tx('ar.valor_sensor', {valor: sen.pm25 != null ? sen.pm25 : sen.valor}),
+      return cartao('ar', 'fogo', tx('ar.rotulo'), tx('ar.valor_sensor', {valor: sen.pm25 != null ? sen.pm25 : sen.valor}),
         esc(tx('ar.nota_sensor', {distancia: m.ar_sensor.distancia_km})), ABAS.fogo);
     }
-    return cartao('fogo', tx('ar.rotulo'), tx('ar.sem_estacao'), esc(tx('ar.nota_sem_estacao')), null);
+    return cartao('ar', 'fogo', tx('ar.rotulo'), tx('ar.sem_estacao'), esc(tx('ar.nota_sem_estacao')), null);
   }
 
   const CALOR_EXCESSO = ['Severo', 'Extremo'];
@@ -263,7 +266,7 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
     const data = ((d.origens || {}).calor || {}).data;
     const valor = m.calor == null ? tx('calor.sem_coleta')
       : (CALOR_EXCESSO.indexOf(m.calor) >= 0 ? tx('calor.com_excesso') : tx('calor.sem_excesso'));
-    return cartao('argila', tx('calor.rotulo'), valor,
+    return cartao('calor', 'argila', tx('calor.rotulo'), valor,
       esc(tx('calor.nota', {data: (M && M.dataBR(data)) || tx('calor.sem_coleta')})), ABAS.calor);
   }
 
@@ -278,24 +281,24 @@ function _erroPS(onde) { return function (e) { try { console.error('[MARÉ] falh
   };
   function cartaoDengue(s, cod) {
     const dg = (((s || {}).municipios || {})[cod] || {}).dengue;
-    if (!s) return cartao('neutro', tx('dengue.rotulo'), tx('dengue.sem_coleta'), esc(tx('dengue.nota_sem_coleta')), ABAS.dengue);
-    if (!dg) return cartao('neutro', tx('dengue.rotulo'), tx('dengue.nao_lido'), esc(tx('dengue.nota_nao_lido')), ABAS.dengue);
+    if (!s) return cartao('dengue', 'neutro', tx('dengue.rotulo'), tx('dengue.sem_coleta'), esc(tx('dengue.nota_sem_coleta')), ABAS.dengue);
+    if (!dg) return cartao('dengue', 'neutro', tx('dengue.rotulo'), tx('dengue.nao_lido'), esc(tx('dengue.nota_nao_lido')), ABAS.dengue);
     const nivel = tx('dengue.nivel_' + dg.nivel) || tx('dengue.nivel_outro', {n: dg.nivel});
     const datas = semanaEmDatas(dg.semana);
-    return cartao('neutro', tx('dengue.rotulo'), tx('dengue.valor', {nivel: nivel}),
+    return cartao('dengue', 'neutro', tx('dengue.rotulo'), tx('dengue.valor', {nivel: nivel}),
       esc(datas ? tx('dengue.nota', {semana: datas}) : tx('dengue.nota_sem_semana', {data: consultaDe(s, 'dengue')})), ABAS.dengue);
   }
 
   function cartaoDecreto(d, m) {
     const n = m.decretos_no_ciclo || 0, primeiro = (m.reconhecimento || {}).primeiro_decreto;
-    if (!n) return cartao('musgo', tx('decreto.rotulo'), tx('decreto.nenhum'),
+    if (!n) return cartao('decreto', 'musgo', tx('decreto.rotulo'), tx('decreto.nenhum'),
       esc(tx('decreto.nota_nenhum', {data: consultaDe(d, 'decretos')})), null);
     const valor = n > 1 ? tx('decreto.valor_plural', {n: n, data: primeiro}) : tx('decreto.valor', {data: primeiro});
     const rec = m.reconhecimento || {};
     const nota = rec.reconhecido
       ? esc(tx('decreto.reconhecido', {data: rec.primeiro_reconhecimento})) + ' ' + tx('decreto.fgts')
       : esc(tx('decreto.sem_reconhecimento'));
-    return cartao('musgo', tx('decreto.rotulo'), valor, nota, null);
+    return cartao('decreto', 'musgo', tx('decreto.rotulo'), valor, nota, null);
   }
 
   /* "Defesa Civil do {estado}" é o texto aprovado, mas o artigo muda com o nome do estado
