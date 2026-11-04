@@ -4437,3 +4437,7 @@ Entram no juiz as regras J14, J16, J19 e J20, que ficaram fora em 29/10 (§125).
 **Causa básica.** Calor natural excessivo é X30, causa externa; um código do capítulo XIX, como T67, não pode ser causa básica (§122). Os dois meses mais recentes do SIM são marcados parciais.
 
 **O que não muda.** Peso zero no MARÉ. Os números não indicam relação com o El Niño; o Monitor não atribui óbitos a ele.
+
+## 128. Instrumentos federais de saúde sem documento: reconferência semanal (05/11/2026)
+
+Instrumento federal de saúde anunciado e não localizado (`data/saude_desfechos/instrumentos.json`, `federais`) é reconferido a cada sete dias pelo elo dos desfechos (`reconferir_instrumentos_federais.py`): lê o portal de publicações do Ministério da Saúde e a página já registrada do instrumento, e procura um link gov.br para PDF cujo endereço ou texto traga as palavras do instrumento. Achou: grava `url` e `consultado_em`. Não achou, com ao menos uma fonte lida por inteiro: grava `endereco_lacuna` com a data (mesmo formato dos estados, "não localizado até dd/mm"). Fonte que não respondeu não é "não localizado": a data não anda. Peso zero; nunca lido pelo motor.
