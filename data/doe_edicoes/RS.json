@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "02/11/2026",
+  "em": "03/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_rs",
-  "ultima_edicao_lida": "2026-10-30"
+  "ultima_edicao_lida": "2026-11-03"
  },
  "edicoes": {
   "2026-10-19": {
@@ -2127,8 +2127,9 @@
    "termos_achados": []
   },
   "2026-11-02": {
-   "decisao": "sem_edicao_na_data",
-   "em": "02/11/2026"
+   "decisao": "vazio",
+   "em": "03/11/2026",
+   "motivo": "listagem da data: URLError: <urlopen error timed out>"
   },
   "2026-09-18#2": {
    "decisao": "lida",
@@ -2142,7 +2143,33 @@
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
    "termos_achados": []
+  },
+  "2026-11-03": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 263442,
+   "paginas": 12,
+   "paginas_com_texto": 12,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54790/pdf",
+   "impressao": "0d1b3ff99a97204b41874d4a54af616c0916ceff2f0b7e0733fa34ea764e05c2",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-03#2": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 1302652,
+   "paginas": 174,
+   "paginas_com_texto": 174,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54791/pdf",
+   "impressao": "c7b40f36b59ec1a84639b5a8e38911ac3a7077958456eb99759c96f7bb7a479a",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   }
  },
- "atualizado_em": "02/11/2026"
+ "atualizado_em": "03/11/2026"
 }

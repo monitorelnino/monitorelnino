@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "01/11/2026",
+  "em": "03/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_apinova",
-  "ultima_edicao_lida": "2026-10-30"
+  "ultima_edicao_lida": "2026-11-03"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1629,7 +1629,37 @@
     "vigilância em saúde ambiental",
     "emergência em saúde pública"
    ]
+  },
+  "2026-11-03": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 16052212,
+   "paginas": 484,
+   "paginas_com_texto": 484,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51958",
+   "impressao": "42031275944fa641253351beaf809a0cd650c5291eac7a40160f9f4f14e584d4",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-03#2": {
+   "decisao": "lida",
+   "em": "03/11/2026",
+   "bytes": 621525,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51959",
+   "impressao": "53acda8310b629ee91f7070550cf899f3cd887e5ec70902fa8a1855f0df45390",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-02": {
+   "decisao": "sem_edicao_na_data",
+   "em": "03/11/2026"
   }
  },
- "atualizado_em": "01/11/2026"
+ "atualizado_em": "03/11/2026"
 }

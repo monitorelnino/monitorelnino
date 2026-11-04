@@ -21879,7 +21879,34 @@
    "itens": null,
    "status": "ok",
    "erro": ""
+  },
+  {
+   "data": "2026-11-04",
+   "script": "coletar_edicoes_doe.py",
+   "inicio": "2026-11-04T01:44:56",
+   "duracao_s": 6096.4,
+   "itens": null,
+   "status": "erro",
+   "erro": "interrompido pelo prazo do elo"
+  },
+  {
+   "data": "2026-11-04",
+   "script": "coletar_espin.py",
+   "inicio": "2026-11-04T03:26:33",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
+  },
+  {
+   "data": "2026-11-04",
+   "script": "scripts/proveniencia_estadual.py",
+   "inicio": "2026-11-04T03:26:33",
+   "duracao_s": 0.0,
+   "itens": null,
+   "status": "pulado",
+   "erro": "prazo do elo esgotado antes de começar"
   }
  ],
- "atualizado_em": "2026-11-04T03:21:07"
+ "atualizado_em": "2026-11-04T03:26:33"
 }
