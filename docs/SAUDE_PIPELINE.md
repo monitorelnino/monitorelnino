@@ -9,13 +9,13 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-27 a 2026-11-03 (1313 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-28 a 2026-11-04 (1211 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
-- coletar_sih.py: erro em 7 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
+- coletar_sih.py: erro em 6 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
 - monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
-- verificar_links.py: erro em 3 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
+- verificar_links.py: erro em 2 rodadas seguidas — erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva-forte-deixa-danos-em-municipios-de-santa-catarina-e-risco-de-temporais-segue-alto-ate-sabado/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.defesacivil.sc.gov.br', port
 
 ## Cobertura em 15 dias
 
@@ -28,7 +28,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-03 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-03 07:28 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-03 01:35 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-03 02:56 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-04 03:09 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-03 01:53 | 1 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -63,7 +63,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-03 · por canal: we
 | `coletar_saude_estadual.py` | coletor | 2026-11-03 02:26 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-10-31 01:14 | 3 s | — | ok | — |
 | `coletar_sg_esus.py` | coletor | 2026-11-03 03:38 | 9 s | — | ok | — |
-| `coletar_sih.py` | coletor | 2026-11-03 07:28 | 6 s | — | **erro** (7 seguidas) | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
+| `coletar_sih.py` | coletor | 2026-11-03 07:28 | 6 s | — | **erro** (6 seguidas) | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
 | `coletar_sim.py` | coletor | 2026-11-03 07:17 | 618 s | — | ok | — |
 | `coletar_sinais_risco.py` | coletor | 2026-11-03 01:11 | 123 s | — | ok | — |
 | `coletar_sisab.py` | coletor | 2026-11-03 07:15 | 112 s | — | ok | — |
@@ -103,5 +103,5 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-03 · por canal: we
 | `scripts/verificar_funil.py` | coletor | 2026-10-31 01:20 | 1 s | — | **erro** | ✗ FUNIL: a contagem da rodada se contradiz ou a etapa não funcionou: |
 | `seguir_pistas.py` | coletor | 2026-11-03 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `triar_confianca_pistas.py` | coletor | 2026-11-03 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `verificar_links.py` | coletor | 2026-11-03 01:36 | 232 s | — | **erro** (3 seguidas) | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
+| `verificar_links.py` | coletor | 2026-11-03 01:36 | 232 s | — | **erro** (2 seguidas) | erro: HTTPSConnectionPool(host='www.defesacivil.sc.gov.br', port=443): Max retries exceeded with url: /2026/08/14/chuva- |
 | `verificar_pista_imprensa.py` | coletor | 2026-11-03 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
