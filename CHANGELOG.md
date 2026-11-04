@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-04 · #1479 · "Projeção de óbitos" no lugar de "mortes projetadas"
+
+Por decisão da editoria (03/11), a forma "projeção de X" substitui "X projetado" em texto público: títulos do quadro de mortalidade da Saúde, glossário da Imprensa e METODOLOGIA §127. Padrão novo em `padroes` de `layout/regras.json`, com caso no autoteste do vocabulário. Código +1 linha de teste.
+
 ## 2026-11-04 · #1478 · Juiz de saúde relê a cópia preservada quando a fonte não abre (+43/−13)
 
 `portal.pi.gov.br` resolve, mas a porta 443 não responde ao runner (sonda 04/11): o rejulgamento do PI ficava pendente e o título antigo ("EQUIPE GESTORA…") seguia no ar. Sem download, o juiz lê agora o texto já preservado do mesmo endereço, com o hash do instrumento; sem cópia, segue pendente. Um caso de teste.
