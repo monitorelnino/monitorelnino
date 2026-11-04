@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-04 · válvula sem reaplicação · A válvula diurna (`coleta-dia/*`) deixa de reaplicar o artefato da noite: o PR de dado levava log de buscas, funil, painel e eventos repetidos de outra faixa. O artefato perdido espera o próximo elo da noite. 4 linhas, ensaio simulado verde.
+
 ## 2026-11-04 · #1483 · Redução: 42 imports mortos de linha inteira
 
 Imports sem uso saem de 39 arquivos .py (pyflakes; nenhum acesso `modulo.nome` de fora). Sem mudança de comportamento. Código −42 linhas; medida 101.105 → 101.063.
