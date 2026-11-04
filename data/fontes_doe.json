@@ -5,7 +5,7 @@
    "adaptador": "busca_ac",
    "url": "https://diario.ac.gov.br/",
    "status": "ok",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -29,7 +29,7 @@
    "adaptador": "edicao_apifront",
    "url": "https://diario.imprensaoficial.am.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -48,7 +48,6 @@
    "medido_em": "15/10/2026",
    "caminho": "plataforma comum sem busca: edição do dia pela rota (a) e PDF pela rota (c) com o id (12,8 MB, 58 p. em 09/10, texto extraível)",
    "lidas": {
-    "2026-10-26": 1,
     "2026-10-27": 1,
     "2026-10-28": 1,
     "2026-10-29": 1
@@ -58,13 +57,13 @@
    "adaptador": "apifront",
    "url": "https://diofe.portal.ap.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-03"
+   "ultima_tentativa": "2026-11-04"
   },
   "PA": {
    "adaptador": null,
    "url": "https://www.ioepa.com.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -79,7 +78,7 @@
    "adaptador": null,
    "url": "https://diof.ro.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -120,7 +119,7 @@
    "adaptador": null,
    "url": "https://www.imprensaoficial.rr.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -135,13 +134,13 @@
    "adaptador": "busca_to",
    "url": "https://diariooficial.to.gov.br",
    "status": "erro: URLError",
-   "ultima_tentativa": "2026-11-03"
+   "ultima_tentativa": "2026-11-04"
   },
   "AL": {
    "adaptador": "edicao_apinova",
    "url": "https://diario.imprensaoficial.al.gov.br/apinova/api",
    "status": "ok",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [],
@@ -152,7 +151,6 @@
    "medido_em": "17/10/2026",
    "caminho": "API JSON do próprio sítio (aplicativo 'apinova'): editions/published/<ano>/<mês> lista as edições do mês, com suplemento; editions/downloadPdf/<id> serve o PDF (100 p. com texto em 15/10; runs 39022687465 e 39023131710)",
    "lidas": {
-    "2026-10-26": 1,
     "2026-10-27": 1,
     "2026-10-28": 1,
     "2026-10-29": 2,
@@ -164,7 +162,7 @@
    "adaptador": null,
    "url": "https://www.egba.ba.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": null,
     "formularios_de_busca": [
@@ -189,7 +187,7 @@
    "adaptador": "edicao_ce",
    "url": "https://imagens.seplag.ce.gov.br/PDF/",
    "status": "ok",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": "wordpress",
     "formularios_de_busca": [],
@@ -200,20 +198,20 @@
    "medido_em": "15/10/2026",
    "caminho": "edição por data em cadernos (doAAAAMMDDpNN.pdf), 4 cadernos de 64 p. em 14/10, texto extraível; a busca (pesquisa.doe.seplag) não responde ao runner",
    "lidas": {
-    "2026-10-26": 3,
     "2026-10-27": 3,
     "2026-10-28": 2,
     "2026-10-29": 2,
     "2026-10-30": 2,
     "2026-11-02": 3,
-    "2026-11-03": 3
+    "2026-11-03": 3,
+    "2026-11-04": 4
    }
   },
   "MA": {
    "adaptador": null,
    "url": "https://diariooficial.ma.gov.br",
    "status": "sem adaptador de busca",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "veredito": "erro",
     "motivo": "HTTPError: HTTP Error 500: Internal Server Error",
@@ -226,7 +224,7 @@
    "adaptador": "edicao_pb",
    "url": "https://auniao.pb.gov.br/servicos/doe",
    "status": "ok",
-   "ultima_tentativa": "2026-11-03",
+   "ultima_tentativa": "2026-11-04",
    "sondagem": {
     "plataforma": "plone",
     "formularios_de_busca": [
@@ -466,7 +464,8 @@
     "2026-10-23": 2,
     "2026-10-26": 2,
     "2026-10-27": 2,
-    "2026-10-28": 2
+    "2026-10-28": 2,
+    "2026-10-29": 2
    }
   },
   "SC": {
