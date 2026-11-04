@@ -23,6 +23,18 @@
     "links_de_busca": [],
     "veredito": "pista_de_rota",
     "sondado_em": "02/10/2026"
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diario.ac.gov.br/",
+      "robots": "proibe",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 8109 bytes"
+     }
+    ]
    }
   },
   "AM": {
@@ -51,13 +63,37 @@
     "2026-10-27": 1,
     "2026-10-28": 1,
     "2026-10-29": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diario.imprensaoficial.am.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 16377 bytes"
+     }
+    ]
    }
   },
   "AP": {
    "adaptador": "apifront",
    "url": "https://diofe.portal.ap.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-04"
+   "ultima_tentativa": "2026-11-04",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diofe.portal.ap.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 332733 bytes"
+     }
+    ]
+   }
   },
   "PA": {
    "adaptador": null,
@@ -72,7 +108,19 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "a busca (ioepa.com.br/pesquisa) é POST multipart e devolveu 'Nenhum resultado' até para 'decreto' (14/10); nenhum endereço de edição por data respondeu (/pages/AAAA/MM/DD 404); portal ASP.NET com formulário de estado",
-   "medido_em": "15/10/2026"
+   "medido_em": "15/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.ioepa.com.br",
+      "robots": "permite",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 16019 bytes"
+     }
+    ]
+   }
   },
   "RO": {
    "adaptador": null,
@@ -113,7 +161,19 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "diof.ro.gov.br é WordPress com REST fechada (wp-json 401); a busca `?s=` devolveu 'Nenhum resultado encontrado' para 'situação de emergência' e não há arquivo por data (/2026/10/14/ 404)",
-   "medido_em": "15/10/2026"
+   "medido_em": "15/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diof.ro.gov.br",
+      "robots": "permite",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 120785 bytes"
+     }
+    ]
+   }
   },
   "RR": {
    "adaptador": null,
@@ -128,13 +188,37 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "a listagem do mês (`_visualizar-mes/`) traz o caminho de cada PDF (2026/10/doe-AAAAMMDD.pdf), mas o arquivo só sai por POST em `_visualizar-doe/`, que não responde ao runner (timeout de 60 s em três sondas, 15 e 16/10); o PDF não está em rota direta (8 caminhos, 404)",
-   "medido_em": "16/10/2026"
+   "medido_em": "16/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.imprensaoficial.rr.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 363 bytes"
+     }
+    ]
+   }
   },
   "TO": {
    "adaptador": "busca_to",
    "url": "https://diariooficial.to.gov.br",
    "status": "erro: URLError",
-   "ultima_tentativa": "2026-11-04"
+   "ultima_tentativa": "2026-11-04",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diariooficial.to.gov.br",
+      "robots": "indeterminado",
+      "codigo": null,
+      "veredito": "timeout",
+      "motivo": "URLError: <urlopen error timed out>"
+     }
+    ]
+   }
   },
   "AL": {
    "adaptador": "edicao_apinova",
@@ -156,6 +240,18 @@
     "2026-10-29": 2,
     "2026-10-30": 1,
     "2026-11-03": 2
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diario.imprensaoficial.al.gov.br/apinova/api",
+      "robots": "permite",
+      "codigo": 404,
+      "veredito": "erro",
+      "motivo": "HTTPError: HTTP Error 404: Not Found"
+     }
+    ]
    }
   },
   "BA": {
@@ -181,7 +277,26 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "dool.egba.ba.gov.br (Diário Oficial online da EGBA) não responde ao runner (timeout em 17/10, como em 15/10); legislabahia.ba.gov.br falha no TLS (handshake) — rota conhecida sem resposta, não é recusa",
-   "medido_em": "17/10/2026"
+   "medido_em": "17/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.egba.ba.gov.br",
+      "robots": "permite",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 101308 bytes"
+     },
+     {
+      "url": "https://dool.egba.ba.gov.br/",
+      "robots": "indeterminado",
+      "codigo": null,
+      "veredito": "timeout",
+      "motivo": "URLError: <urlopen error timed out>"
+     }
+    ]
+   }
   },
   "CE": {
    "adaptador": "edicao_ce",
@@ -205,6 +320,18 @@
     "2026-11-02": 3,
     "2026-11-03": 3,
     "2026-11-04": 4
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://imagens.seplag.ce.gov.br/PDF/",
+      "robots": "sem_robots",
+      "codigo": 403,
+      "veredito": "bloqueio_de_acesso",
+      "motivo": "HTTP 403 — recusa respeitada"
+     }
+    ]
    }
   },
   "MA": {
@@ -218,7 +345,19 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "diariooficial.ma.gov.br respondeu HTTP 500 e 503 e depois falhou no DNS, em 17/10 (runs 39021988900 a 39024168986) — servidor fora do ar, não é recusa",
-   "medido_em": "17/10/2026"
+   "medido_em": "17/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diariooficial.ma.gov.br",
+      "robots": "indeterminado",
+      "codigo": 500,
+      "veredito": "fora_do_ar",
+      "motivo": "HTTP 500 — servidor do diário com erro, não é recusa"
+     }
+    ]
+   }
   },
   "PB": {
    "adaptador": "edicao_pb",
@@ -252,7 +391,19 @@
    },
    "medido_em": "15/10/2026",
    "caminho": "edição por data (padrão do canal 2), 40 p. em 14/10, texto extraível; a busca Plone (@@busca) devolve a página inicial",
-   "lidas": {}
+   "lidas": {},
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://auniao.pb.gov.br/servicos/doe",
+      "robots": "indeterminado",
+      "codigo": null,
+      "veredito": "timeout",
+      "motivo": "URLError: <urlopen error timed out>"
+     }
+    ]
+   }
   },
   "PE": {
    "adaptador": null,
@@ -267,7 +418,26 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "SPA AngularJS da plataforma sdoe; a REST (`/diariooficial/*`) responde HTTP 401 sem token — recusa respeitada",
-   "medido_em": "15/10/2026"
+   "medido_em": "15/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diariooficial.cepe.com.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 1653 bytes"
+     },
+     {
+      "url": "https://diariooficial.cepe.com.br/diariooficial/",
+      "robots": "sem_robots",
+      "codigo": 401,
+      "veredito": "bloqueio_de_acesso",
+      "motivo": "HTTP 401 — recusa respeitada"
+     }
+    ]
+   }
   },
   "PI": {
    "adaptador": "edicao_pi",
@@ -286,6 +456,18 @@
     "2026-10-28": 2,
     "2026-10-29": 1,
     "2026-11-03": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.diario.pi.gov.br/doe/",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 336525 bytes"
+     }
+    ]
    }
   },
   "RN": {
@@ -301,7 +483,19 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "www.diariooficial.rn.gov.br redireciona para /dei/dorn3 (ASP.NET com estado de formulário); o publicador deirn.sdoe.com.br tem REST em HTTP 401 sem token — recusa respeitada",
-   "medido_em": "15/10/2026"
+   "medido_em": "15/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.diariooficial.rn.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 237 bytes"
+     }
+    ]
+   }
   },
   "SE": {
    "adaptador": null,
@@ -324,7 +518,26 @@
     "sondado_em": "28/10/2026"
    },
    "motivo": "a Imprensa Oficial de Sergipe (iose.se.gov.br) roda a plataforma comum: a página inicial abre (200), mas /apifront/portal/edicoes, /busca e /diario-oficial respondem HTTP 403 ao cliente identificado do projeto (run 39021988900) — recusa respeitada",
-   "medido_em": "17/10/2026"
+   "medido_em": "17/10/2026",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://iose.se.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 34650 bytes"
+     },
+     {
+      "url": "https://iose.se.gov.br/apifront/portal/edicoes",
+      "robots": "sem_robots",
+      "codigo": 404,
+      "veredito": "erro",
+      "motivo": "HTTPError: HTTP Error 404: Not Found"
+     }
+    ]
+   }
   },
   "DF": {
    "adaptador": "edicao_df",
@@ -338,13 +551,37 @@
     "2026-10-28": 2,
     "2026-10-29": 1,
     "2026-11-03": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.sinj.df.gov.br/sinj",
+      "robots": "permite",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 75318 bytes"
+     }
+    ]
    }
   },
   "GO": {
    "adaptador": "apifront",
    "url": "https://diariooficial.abc.go.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-04"
+   "ultima_tentativa": "2026-11-04",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://diariooficial.abc.go.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 17282 bytes"
+     }
+    ]
+   }
   },
   "MS": {
    "adaptador": "edicao_ms",
@@ -365,19 +602,55 @@
     "2026-10-14": 2,
     "2026-10-15": 2,
     "2026-10-16": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.spdo.ms.gov.br/diariodoe/",
+      "robots": "indeterminado",
+      "codigo": null,
+      "veredito": "nao_respondeu",
+      "motivo": "URLError: <urlopen error [Errno -2] Name or service not known>"
+     }
+    ]
    }
   },
   "MT": {
    "adaptador": "apifront",
    "url": "https://www.iomat.mt.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-04"
+   "ultima_tentativa": "2026-11-04",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.iomat.mt.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 31028 bytes"
+     }
+    ]
+   }
   },
   "ES": {
    "adaptador": "apifront",
    "url": "https://ioes.dio.es.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-04"
+   "ultima_tentativa": "2026-11-04",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://ioes.dio.es.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 11420 bytes"
+     }
+    ]
+   }
   },
   "MG": {
    "adaptador": "edicao_mg",
@@ -398,6 +671,18 @@
     "2026-10-28": 1,
     "2026-10-29": 1,
     "2026-10-30": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.jornalminasgerais.mg.gov.br",
+      "robots": "indeterminado",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 27709 bytes"
+     }
+    ]
    }
   },
   "RJ": {
@@ -419,6 +704,18 @@
     "2026-10-28": 2,
     "2026-10-29": 2,
     "2026-11-03": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.ioerj.com.br",
+      "robots": "permite",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 34005 bytes"
+     }
+    ]
    }
   },
   "SP": {
@@ -434,13 +731,37 @@
     "sondado_em": "02/10/2026"
    },
    "medido_em": "15/10/2026",
-   "caminho": "API própria da busca (do-api-web-search.doe.sp.gov.br/v2): Terms + FromDate/ToDate paginado; publicação inteira em /v2/publications/<id> (content HTML); caderno 'Municípios' publica atos das prefeituras"
+   "caminho": "API própria da busca (do-api-web-search.doe.sp.gov.br/v2): Terms + FromDate/ToDate paginado; publicação inteira em /v2/publications/<id> (content HTML); caderno 'Municípios' publica atos das prefeituras",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://doe.sp.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 32573 bytes"
+     }
+    ]
+   }
   },
   "PR": {
    "adaptador": "apifront",
    "url": "https://www.dioe.pr.gov.br",
    "status": "ok",
-   "ultima_tentativa": "2026-11-04"
+   "ultima_tentativa": "2026-11-04",
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://www.dioe.pr.gov.br",
+      "robots": "sem_robots",
+      "codigo": 200,
+      "veredito": "voltou",
+      "motivo": "respondeu 200, 28392 bytes"
+     }
+    ]
+   }
   },
   "RS": {
    "adaptador": "edicao_rs",
@@ -466,6 +787,25 @@
     "2026-10-27": 2,
     "2026-10-28": 2,
     "2026-10-29": 2
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://doe-backend.pro.rs.gov.br",
+      "robots": "indeterminado",
+      "codigo": null,
+      "veredito": "timeout",
+      "motivo": "URLError: <urlopen error timed out>"
+     },
+     {
+      "url": "https://doe-backend.pro.rs.gov.br/public/diarios/lista?data=2026-11-03",
+      "robots": "indeterminado",
+      "codigo": null,
+      "veredito": "timeout",
+      "motivo": "URLError: <urlopen error timed out>"
+     }
+    ]
    }
   },
   "SC": {
@@ -487,6 +827,18 @@
     "2026-10-28": 2,
     "2026-10-29": 1,
     "2026-11-03": 1
+   },
+   "reconferencia": {
+    "em": "04/11/2026",
+    "rotas": [
+     {
+      "url": "https://portal.doe.sea.sc.gov.br/apis",
+      "robots": "permite",
+      "codigo": 404,
+      "veredito": "erro",
+      "motivo": "HTTPError: HTTP Error 404: Not Found"
+     }
+    ]
    }
   }
  },
