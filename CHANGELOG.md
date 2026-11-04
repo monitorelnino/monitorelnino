@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-04 · Redução: cabeçalho duplicado sai do verificador de Saúde
+
+`verificar_runtime_saude.js` carregava, além do seu cabeçalho, uma cópia do cabeçalho do verificador de sinais (com `Uso:` apontando para outro script). A cópia saiu; nenhuma verificação mudou. Código: +0/−9.
+
 ## 2026-11-04 · Cartões da consulta de município: um montador, território e "ver em"
 
 Todo cartão da consulta (Saúde e Proteja-se) sai de `ConsultaMunicipio.cartao`: declara se o dado é do município ou do estado e leva o link "ver em" para onde o dado vive. Regra `componentes.cartao_de_consulta` em `regras.json`, julgada por `verificar_conformidade.py`.

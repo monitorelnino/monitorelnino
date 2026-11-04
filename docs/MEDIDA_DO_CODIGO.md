@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.147 linhas** em **307 arquivos** .py/.js; **38 workflows**.
+- **101.073 linhas** em **308 arquivos** .py/.js; **38 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
-- **154 nomes de função** definidos em mais de um arquivo.
+- **155 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 56350 |
-| `scripts` | 36760 |
-| `assets` | 6465 |
+| `(raiz)` | 56976 |
+| `scripts` | 36979 |
+| `assets` | 6546 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
 
@@ -20,17 +20,17 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | arquivo | linhas |
 |---|---:|
-| `coletar_sinais_risco.py` | 3202 |
-| `coletores_base.py` | 2221 |
-| `juiz.py` | 1960 |
+| `coletar_sinais_risco.py` | 3260 |
+| `coletores_base.py` | 2269 |
+| `juiz.py` | 1972 |
 | `verificar_pista_imprensa.py` | 1705 |
-| `coletar_doe.py` | 1627 |
-| `julgar_saude.py` | 1401 |
+| `coletar_doe.py` | 1632 |
+| `julgar_saude.py` | 1473 |
 | `assets/js/monitor-de-riscos.js` | 1317 |
 | `scripts/verificar_regras_de_dado.py` | 1294 |
 | `scripts/ensaio_da_noite.py` | 1272 |
 | `assets/js/index.js` | 1230 |
-| `coletar_edicoes_doe.py` | 1153 |
+| `coletar_edicoes_doe.py` | 1173 |
 | `scripts/unir_conflito_de_rodada.py` | 1137 |
 | `coletar_painel_am.py` | 1135 |
 | `julgar_e_aplicar_descobertas.py` | 1067 |
@@ -40,11 +40,11 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `gerar_pacote_blog.py` | 913 |
 | `descobrir_planos.py` | 852 |
 | `julgar_filas.py` | 788 |
-| `scripts/pistas.py` | 770 |
+| `scripts/pistas.py` | 782 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 763 |
-| `buscar_planos_fontes_abertas.py` | 735 |
-| `gerar_financiamento_semana.py` | 725 |
+| `buscar_planos_fontes_abertas.py` | 736 |
+| `assets/js/saude.js` | 726 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 
