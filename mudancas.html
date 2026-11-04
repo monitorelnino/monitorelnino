@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>04/11/2026 · Redução: 42 imports mortos de linha inteira</dt>
+      <dd>Imports sem uso saem de 39 arquivos .py (pyflakes; nenhum acesso `modulo.nome` de fora). Sem mudança de comportamento. Código −42 linhas; medida 101.105 → 101.063.</dd>
       <dt>04/11/2026 · Figura dupla: cada legenda abaixo da sua mídia</dt>
       <dd>Na figura dupla com duas legendas (Saúde, desfecho escolhido), a legenda da série fica abaixo do gráfico e a das classes abaixo do mapa, em computador e em celular; antes as duas vinham juntas depois dos dois. Regra única em `assets/base.css`, para qualquer figura dupla com legenda dentro da mídia.</dd>
       <dt>04/11/2026 · &quot;Projeção de óbitos&quot; no lugar de &quot;mortes projetadas&quot;</dt>
@@ -165,8 +167,6 @@
       <dd>A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.</dd>
       <dt>26/10/2026 · Descoberta: limite padrão sobe a 60</dt>
       <dd>A rodada medida de descoberta (`--limite 60`) levou 7 minutos de um prazo de 300, com folga bem acima de 20%. Por isso o limite padrão de `seguir_pistas.py` passa de 20 para 60. O elo noturno mantém 20 explícito, sem mudança na corrente. Saldo de código: zero líquido.</dd>
-      <dt>25/10/2026 · Catálogo: SIH saúde mental e ICSAP marcados como coletados</dt>
-      <dd>O catálogo de desfechos ainda marcava saúde mental e ICSAP como candidatos depois que o #965 deixou os arquivos `internacoes_saude_mental.json` e `internacoes_icsap.json` na `main`, lidos por máquina em 23/10/2026. Os dois passam a `coletado`, com rota e prova. Texto de fonte corrigido. Saldo de código zero: só dado de catálogo.</dd>
     </dl>
   </section>
 </main>
