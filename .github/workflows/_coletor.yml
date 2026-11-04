@@ -242,7 +242,7 @@ jobs:
       # `success` -- e sumia junto com o commit perdido. A conclusao real esta na API, e o trabalho
       # esta no marcador `.feito`, que o elo grava antes de commitar.
       - name: Recuperar no painel a noite que ficou sem linha
-        if: steps.janela.outputs.pode == '1'
+        if: steps.janela.outputs.pode == '1' && !startsWith(env.RAMO, 'ensaio-real/') && !startsWith(env.RAMO, 'coleta-dia/')
         continue-on-error: true
         timeout-minutes: 5
         env:
