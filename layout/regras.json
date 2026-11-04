@@ -221,6 +221,11 @@
         "padrao": "\\branking\\b|\\branque\\w*|classifica[cç][aã]o\\s+d[oe]s\\s+(?:estados|munic[ií]pios)|\\b(?:melhor|pior)\\s+colocad\\w*|\\blider(?:a|am|ando)\\b|\\blanterna\\b|\\b(?:primeiro|[uú]ltimo)\\s+lugar\\b",
         "flags": "i",
         "motivo": "ranking de estados ou municípios (o site não ordena nem compara em posição)"
+      },
+      {
+        "padrao": "\\bprojetad[oa]s?\\b",
+        "flags": "i",
+        "motivo": "use 'projeção de X' no lugar de 'X projetado' (editoria, 03/11/2026)"
       }
     ],
     "_nota_padroes": "Editoria, 01/10 e 29/10/2026: nenhum texto público, do blog ou do índice usa 'nota' para o valor dos índices MARÉ nem ordena estados ou municípios. Expressão regular casada com o texto como está (sem normalizar acento); a régua é UMA, em scripts/vocabulario.py.",
