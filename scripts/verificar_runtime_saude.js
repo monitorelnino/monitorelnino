@@ -214,7 +214,7 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     teste("consulta: dengue com nível e semana em datas, fonte InfoDengue", /Nível 2 \(atenção\)/.test(t) && /Semana de \d+ a \d+ de \w+ de 2026 · InfoDengue \(Fiocruz e FGV\)/.test(t));
     teste("consulta: o estado é dito como do estado, sem acumulado do ano nem nota", /SRAG \(síndrome respiratória aguda grave\), casos hospitalizados notificados \(estado\)/.test(t)
       && /casos? hospitalizados? notificados? no estado na semana de/.test(t) && !/no estado em 2026/.test(t) && !/MARÉ Saúde \(estado\)[\s\S]*de 100/.test(t));
-    teste("consulta: o tipo de plano estadual no lugar da nota, com a ficha", /MARÉ Saúde \(estado\)/.test(t) && /ver a ficha do estado/.test(t)
+    teste("consulta: o tipo de plano estadual no lugar da nota, com a ficha", /MARÉ Saúde \(estado\)/.test(t) && /ver em A situação de cada estado/.test(t)
       && t.includes(NOME_DO_TIPO[MSd2.ufs.SE.instrumento.status]));
     teste("consulta: sem jargão interno nem 'classe Normal'", !/METODOLOGIA|§10|classe Normal|leitura automática/.test(t));
     teste("consulta: plano do município com o vocabulário da inicial", /Não localizamos plano de contingência para este município até a data de corte|Plano de contingência|O plano trata a saúde/.test(t));
