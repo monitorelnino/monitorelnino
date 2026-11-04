@@ -26,7 +26,6 @@ Uso:
   python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json --dry-run
 """
 import argparse
-import datetime
 import json
 import subprocess
 import sys

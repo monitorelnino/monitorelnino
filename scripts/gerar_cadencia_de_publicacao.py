@@ -18,7 +18,6 @@ USO
   python3 scripts/gerar_cadencia_de_publicacao.py --autoteste
   python3 scripts/gerar_cadencia_de_publicacao.py
 """
-import json
 import pathlib
 import re
 import sys

@@ -995,7 +995,6 @@ def main():
         print(" declarado_plano/declarado_antigo/fonte_declarada de auditorias externas preservados.)")
         return 0
     # v2.2.4: paridade do artefato derivado verificacao_municipal.json
-    import tempfile, copy
     vm_disco_path = RAIZ / "data" / "verificacao_municipal.json"
     if vm_disco_path.exists():
         vm_disco = json.load(open(vm_disco_path, encoding="utf-8"))
@@ -1004,7 +1003,6 @@ def main():
             print("✗ VERIFICACAO_MUNICIPAL NÃO REPRODUZIDA — derivado em disco diverge do recomputado (rode --write)")
             return 1
         # resumo também é derivado: conferir contra o recomputado (sem gravar)
-        import io, contextlib
         res_path = RAIZ / "data" / "verificacao_resumo.json"
         if res_path.exists():
             res_disco = json.load(open(res_path, encoding="utf-8"))

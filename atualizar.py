@@ -31,7 +31,6 @@ não deve entrar, e rode `python3 aplicar_revisao.py --arquivo data/instrumentos
 Uso: python atualizar.py
 """
 import datetime, hashlib, json, os, pathlib, subprocess, sys
-from zoneinfo import ZoneInfo
 
 RAIZ = pathlib.Path(__file__).parent
 

@@ -44,7 +44,6 @@ Uso (depois de marcar os checkboxes do .md e decidir a categoria):
   python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json
 """
 import argparse
-import datetime
 import json
 import sys
 import unicodedata

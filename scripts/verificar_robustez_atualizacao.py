@@ -19,7 +19,6 @@ Depois, roda: recalcular --write, gerar_painel --fichas, feeds, dados abertos, e
 + estrutura + acessibilidade + vocabulário público. Nada é gravado no repositório real.
 """
 import json, os, pathlib, random, shutil, subprocess, sys, tempfile
-from datetime import date
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))  # migrar_saude_instrumentos.py mora na raiz, não em scripts/

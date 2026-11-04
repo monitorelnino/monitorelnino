@@ -20,7 +20,6 @@ para testes). Linguagem probatória nos títulos: "localizado", nunca "criado".
 Uso: python3 gerar_feeds.py [--data DD/MM/AAAA] [--self-test]
 """
 import argparse
-import datetime
 import hashlib
 import json
 import sys

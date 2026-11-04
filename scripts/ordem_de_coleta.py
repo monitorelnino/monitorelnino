@@ -32,7 +32,6 @@ USO (de dentro de um coletor)
 """
 from __future__ import annotations
 
-import json
 import pathlib
 import sys
 

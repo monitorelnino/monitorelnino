@@ -19,7 +19,6 @@ nunca adivinha o link do PDF em si (que sempre vem de dentro da página do post,
   python coletar_boletim_ms_dengue.py --autoteste
 """
 import io, re, sys
-from collections import defaultdict
 from datetime import date, timedelta
 from pathlib import Path
 from coletores_base import ler, gravar, buscar, registrar_lacuna, log_busca, rodar_autoteste, data_da_edicao

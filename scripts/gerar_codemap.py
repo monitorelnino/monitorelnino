@@ -28,7 +28,6 @@ USO
   python3 scripts/gerar_codemap.py --autoteste
 """
 import ast
-import json
 import pathlib
 import re
 import sys

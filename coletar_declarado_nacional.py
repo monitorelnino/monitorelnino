@@ -60,7 +60,6 @@ USO
   python coletar_declarado_nacional.py           # coleta (rede)
 """
 import io, json, sys
-from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, referencia_ibge,
                             ler, gravar, rodar_autoteste, hoje_editorial, DATA)

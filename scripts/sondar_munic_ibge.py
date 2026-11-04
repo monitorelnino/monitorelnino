@@ -279,7 +279,6 @@ def autoteste() -> int:
 
     # NEGATIVO — cabeçalho de .xlsx com linhas de título antes (formato do IBGE).
     try:
-        import openpyxl
         from openpyxl import Workbook
         wb = Workbook(); ws = wb.active
         ws.append(["Pesquisa de Informações Básicas Municipais 2020"])

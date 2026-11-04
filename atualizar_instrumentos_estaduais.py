@@ -36,7 +36,6 @@ Uso:
                                                                 # modo offline/teste, sem rede
 """
 import argparse
-import datetime
 import json
 import re
 import sys

@@ -10,7 +10,6 @@ Mesma gramática ex-ante | defeso | ex-post; contagens e razões, sem escala nem
 Lê data/financiamento/por_uf.json e data/populacao_censo2022.json; grava data/financiamento/contadores_uf.json.
 """
 import json, sys
-from datetime import date
 from coletores_base import ler, gravar, rodar_autoteste, data_da_edicao
 
 

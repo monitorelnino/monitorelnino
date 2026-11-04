@@ -22,7 +22,6 @@ Sem rede: lacuna declarada, nada muda.  python coletar_execucao_mps.py --autotes
 """
 import csv, hashlib, io, json, re, sys, urllib.request, zipfile
 from collections import defaultdict
-from datetime import date
 from coletores_base import ler, gravar, registrar_lacuna, log_busca, rodar_autoteste, ua_de, hoje_editorial
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao/"

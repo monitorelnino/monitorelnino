@@ -24,7 +24,6 @@ USO
   python coletar_saude.py               # coleta a camada observada (rede)
 """
 import json, re, sys, urllib.parse
-from datetime import date
 from coletores_base import (buscar, preservar_evidencia, log_busca, registrar_lacuna, ler, gravar,
                             rodar_autoteste, referencia_ibge, hoje_editorial)
 

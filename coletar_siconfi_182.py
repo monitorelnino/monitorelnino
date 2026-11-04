@@ -52,7 +52,6 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 import urllib.error
 import urllib.parse
-from datetime import date
 
 from coletores_base import (abrir_lote_log, buscar, descarregar_lote_log, fechar_lote_log,
                             ler, log_busca, registrar_lacuna, rodar_autoteste, sha256, hoje_editorial, gravar)

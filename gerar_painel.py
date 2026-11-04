@@ -25,7 +25,6 @@ USO  python3 gerar_painel.py --sortear --semente 20260902     # só antes da pub
      python3 gerar_painel.py --autoteste
 """
 import hashlib, json, pathlib, random, sys
-from datetime import date
 # §227: a data vem da REDAÇÃO, não do runner (que roda em UTC).
 from coletores_base import hoje_editorial  # noqa: E402
 

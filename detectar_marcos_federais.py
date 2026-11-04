@@ -21,7 +21,6 @@ gerador de artefato público) nunca propaga esses dois campos.
 Uso: python3 detectar_marcos_federais.py    (rotina real)
      python3 detectar_marcos_federais.py --self-test   (offline)
 """
-import json
 import re
 import sys
 import time
