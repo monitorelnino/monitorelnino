@@ -7,7 +7,7 @@ da consulta. PESO ZERO: não escreve em `indice.json`, `estados.json`, `saude_uf
 `municipios.json` nem `monitor_saude.json`; não é "risco projetado do ciclo".
 
 ETAPA 1 (esta): `GET {API}/hierarquia` (público, 200, provado em 04/11) vira `data/risco_base/
-catalogo.json`: id, nome, setor, anos, cenários e resolução padrão de cada indicador, com hash e data.
+catalogo.json`: id, nome, título, setor, unidade, anos, cenários e resolução padrão de cada indicador (campos `name`, `title`, `sep_description`… lidos na sonda de 05/11), com hash e data.
 Sem valor por município: a rota `/total` devolveu erro do servidor da fonte (04/11) e a de mapa não
 foi lida; valor ausente é lacuna declarada, nunca zero. Recusa (401/403/429/451) = parar e registrar.
 
@@ -42,8 +42,10 @@ def catalogo_de(nos: list) -> list:
         if not isinstance(n, dict) or n.get("id") is None:
             continue
         res = (n.get("menu_structure") or {}).get("defaultclippingresolution")
-        fora.append({"id": n["id"], "nome": n.get("nome"), "level": n.get("level"),
-                     "sep_id": n.get("sep_id"), "anos": n.get("years_description"),
+        fora.append({"id": n["id"], "nome": n.get("name"), "titulo": n.get("title"),
+                     "setor": n.get("sep_description"), "sep_id": n.get("sep_id"),
+                     "level": n.get("level"), "indicador_mestre": n.get("indicator_id_master"),
+                     "unidade": n.get("measurement_unit"), "anos": n.get("years_description"),
                      "cenarios": n.get("scenarios"), "resolucao_padrao": res})
     return sorted(fora, key=lambda x: str(x["id"]))
 
@@ -56,14 +58,15 @@ def problemas(catalogo: list) -> list:
 
 
 def autoteste() -> int:
-    nos = [{"id": 22, "nome": "Balanço hídrico", "level": 5, "sep_id": 1,
+    nos = [{"id": 22, "name": "Balanço hídrico", "sep_description": "Recursos hídricos", "level": 5, "sep_id": 1,
             "years_description": [{"year": 2020}], "scenarios": [49, 50],
             "menu_structure": {"defaultclippingresolution": {"clipping": "BR", "resolution": "municipio"}}},
-           {"id": 7}, {"nome": "sem id"}, "lixo"]
+           {"id": 7}, {"name": "sem id"}, "lixo"]
     c = catalogo_de(nos_de(json.dumps(nos)))
     casos = [
         ("ignora nó sem id e lixo", sorted(x["id"] for x in c) == [7, 22]),
         ("campo ausente fica None, não zero", {x["id"]: x for x in c}[7]["nome"] is None),
+        ("nome e setor vêm de name e sep_description", {x["id"]: x for x in c}[22]["nome"] == "Balanço hídrico" and {x["id"]: x for x in c}[22]["setor"] == "Recursos hídricos"),
         ("resolução padrão lida", {x["id"]: x for x in c}[22]["resolucao_padrao"]["resolution"] == "municipio"),
         ("dict com lista também vale", len(nos_de({"nodes": nos})) == 4),
         ("formato estranho vira lista vazia", nos_de("3") == [] and nos_de({"a": 1}) == []),
@@ -90,6 +93,7 @@ def main() -> int:
         print("X VALIDAÇÃO — nada foi gravado:", *ruins, sep="\n   - ")
         return 1
     preservar_evidencia(corpo, url, "json", ORIGEM)
+    SAIDA.parent.mkdir(parents=True, exist_ok=True)  # gravar_em não cria a pasta
     gravar_em(SAIDA, {
         "_governanca": ("Catálogo de indicadores do AdaptaBrasil (MCTI/INPE/RNP). Peso zero; não é "
                         "risco do ciclo. Sem valor por município nesta etapa: ausência é lacuna "
