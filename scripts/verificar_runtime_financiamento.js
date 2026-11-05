@@ -56,8 +56,8 @@ setTimeout(() => {
   const svg = q("mapChega");
   teste("mapa onde chega: 27 territórios", svg && svg.querySelectorAll("path.uf-path").length === 27);
   const esperado = (SEM.mapa || []).filter(x => x.repassado > 0 && x.lat != null && /^(defesa_civil|saude)$/.test(x.origem)).length;
-  teste(`mapa onde chega: ${esperado} círculos (defesa civil + FNS de emergência)`, svg && svg.querySelectorAll("circle").length === esperado);
-  const c0 = svg && svg.querySelector("circle");
+  teste(`mapa onde chega: ${esperado} círculos (defesa civil + FNS de emergência)`, svg && svg.querySelectorAll('g[class^="circulos-"] circle').length === esperado);
+  const c0 = svg && svg.querySelector('g[class^="circulos-"] circle');
   if (c0) {
     c0.dispatchEvent(new dom.window.MouseEvent("mouseenter", { clientX: 100, clientY: 100, bubbles: true }));
     teste("tooltip do círculo exibe município e valor", q("mapTooltip").style.display === "block" && /R\$/.test(q("mapTooltip").textContent));
