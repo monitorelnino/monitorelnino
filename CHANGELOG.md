@@ -11,6 +11,8 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-05 · rodapé v4 · Logos com o mesmo peso visual (Futura 20 px, Instituto Ar 28 px), linha comum de 36 px, assinatura e redes agrupadas na coluna Realização; redes só com ícone, nome mantido para leitor de tela. Aprovado pela editoria em 05/11/2026.
 
+
+## 2026-11-05 · Financiamento, mapa Onde o dinheiro chega · Período único nas duas origens, saúde desenhada por cima da defesa civil, portaria sem repasse com símbolo vazado na sede e rótulos da legenda no catálogo. Sem mudança de dado. Linhas líquidas: +2 no JS.
 ## 2026-11-05 · #1536 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^="circulos-"] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).
 
 ## 2026-11-05 · #1533 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.
