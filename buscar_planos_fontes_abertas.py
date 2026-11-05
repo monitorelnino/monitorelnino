@@ -482,6 +482,14 @@ def saldo_de_erros(n: int, situacao: str) -> int:
     return n + 1 if situacao == "erro" else max(n - 1, 0)
 
 
+def manter_leitura(anterior: dict, novo: dict) -> dict:
+    """Erro não é ausência e não apaga leitura: se a releitura falhou e a anterior era `lido` ou `sem_resultado`, a
+    anterior fica (o erro vai ao log). Pura. 05/11: a releitura das capitais trocou 6 leituras boas por `erro` (5xx do Wayback)."""
+    if novo.get("situacao") == "erro" and (anterior or {}).get("situacao") in ("lido", "sem_resultado"):
+        return anterior
+    return novo
+
+
 def fontes_vivas(fontes: list, seguidos: dict) -> list:
     """Fontes ainda consultáveis neste run; o que ficou de fora não é gravado e volta na próxima rodada. Pura."""
     return [f for f in fontes if seguidos.get(f, 0) < ERROS_SEGUIDOS]
@@ -522,7 +530,7 @@ def rodar(caminho: str, fontes: list, limite: int = None, uf: str = None) -> int
             for f, r in res.items():
                 seguidos[f] = saldo_de_erros(seguidos.get(f, 0), r["situacao"])
                 pistas.extend(r.pop("pistas"))
-                feitos["municipios"].setdefault(cod, {})[f] = {"consultado_em": hoje, **r}
+                feitos["municipios"].setdefault(cod, {})[f] = manter_leitura(feitos["municipios"].get(cod, {}).get(f), {"consultado_em": hoje, **r})
             lidos += 1
             tocadas.add(ref["uf"])
     except KeyboardInterrupt:
@@ -606,6 +614,12 @@ def autoteste() -> int:
         "CKAN: só o conjunto que cita plano e município": lambda: len(ler_ckan(ckan, "Alfa")) == 1,
         "as quatro fontes de um município que responde viram pista": lambda: [todas[f]["situacao"] for f in todas] == ["lido"] * 4,
         "pista no esquema e com as travas de campo": lambda: all(p["documento_oficial_confirmado"] is None and p["promovivel"] is False and p["origem"] == "descoberta" and p["ibge"] == "9999999" for r in todas.values() for p in r["pistas"]),
+        "releitura com erro não apaga leitura anterior (lido, sem_resultado); sobre erro ou recusa, vale a nova": lambda: (
+            manter_leitura({"situacao": "lido", "consultado_em": "a"}, {"situacao": "erro"})["consultado_em"] == "a"
+            and manter_leitura({"situacao": "sem_resultado"}, {"situacao": "erro"})["situacao"] == "sem_resultado"
+            and manter_leitura({"situacao": "erro"}, {"situacao": "lido"})["situacao"] == "lido"
+            and manter_leitura({"situacao": "recusa_de_fonte"}, {"situacao": "erro"})["situacao"] == "erro"
+            and manter_leitura(None, {"situacao": "erro"})["situacao"] == "erro"),
         "403 é recusa de fonte; timeout é erro; nenhum vira sem_resultado": lambda: (
             um(["S13"], {**base, "lexml": urllib.error.HTTPError("u", 403, "x", {}, None)})["S13"]["situacao"] == "recusa_de_fonte"
             and um(["S13"], {**base, "lexml": TimeoutError("t")})["S13"]["situacao"] == "erro"),

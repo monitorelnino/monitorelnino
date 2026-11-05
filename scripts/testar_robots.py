@@ -146,11 +146,12 @@ def t_canal_renderizado_tambem_deixa_rastro():
     Sem isto, a política teria rastro só do canal HTTP — que é o que menos precisa dele."""
     import ast
     fonte = (RAIZ / "descobrir_planos.py").read_text(encoding="utf-8")
-    for no in ast.walk(ast.parse(fonte)):
-        if isinstance(no, ast.FunctionDef) and no.name == "descobrir_renderizado":
-            corpo = ast.get_source_segment(fonte, no) or ""
-            return "robots_permite(" in corpo and "registrar_acesso_contra_robots(" in corpo
-    return False
+    corpos = {no.name: ast.get_source_segment(fonte, no) or "" for no in ast.walk(ast.parse(fonte))
+              if isinstance(no, ast.FunctionDef)}
+    # o rastro vive em `_renderizar`, e todo canal que usa o navegador passa por ela
+    return ("robots_permite(" in corpos.get("_renderizar", "")
+            and "registrar_acesso_contra_robots(" in corpos.get("_renderizar", "")
+            and all("_renderizar(" in corpos.get(n, "") for n in ("descobrir_renderizado", "descobrir_no_portal")))
 
 
 # §186: muro de robô com HTTP 200 — o caso real de defesacivil.sp.gov.br ("Pardon Our Interruption").
