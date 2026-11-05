@@ -1,9 +1,9 @@
 /* Portão de senha da prévia (03/09/2026). Ativo apenas nos endereços *.netlify.app do main
    (a prévia); no domínio final, em localhost e no navegador simulado dos portões não faz nada.
-   Compara o SHA-256 do que foi digitado com o hash abaixo; guarda a liberação no navegador.
+   Compara o SHA-256 do que foi digitado com os hashes abaixo (editoria e imprensa); guarda a liberação no navegador.
    Não é segurança — é um véu para visualização casual (o servidor pode exigir Basic-Auth). */
 (function () {
-  var HASH = "165f92940dea02be87267b182cf31661985184fb5ae74419548a55709555076c";
+  var HASHES = ["165f92940dea02be87267b182cf31661985184fb5ae74419548a55709555076c", "94ede157128ac4e1f7936da7e823676d38f45be44abe723770e32ad8e011bacb"];  // editoria · imprensa (05/11/2026)
   var h = location.hostname || "";
   if (typeof crypto === "undefined" || !crypto.subtle) return;
   if (!h || /^(localhost|127\.0\.0\.1)$/.test(h)) return;   // portões e uso local: nunca pede senha
@@ -15,13 +15,13 @@
   }
   comecar();
   function comecar() {
-  try { if (localStorage.getItem("mare_previa_ok") === HASH) return; } catch (e) {}
+  try { if (HASHES.indexOf(localStorage.getItem("mare_previa_ok")) >= 0) return; } catch (e) {}
   document.documentElement.style.visibility = "hidden";
   function sha256(t) { return crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)).then(function (b) { return Array.from(new Uint8Array(b)).map(function (x) { return x.toString(16).padStart(2, "0"); }).join(""); }); }
   function pedir() {
     var s = window.prompt("Prévia restrita do MARÉ — informe a senha de acesso:");
     if (s === null) { document.documentElement.innerHTML = "<body style=\"font-family:sans-serif;padding:40px\">Acesso restrito.</body>"; document.documentElement.style.visibility = "visible"; return; }
-    sha256(s).then(function (x) { if (x === HASH) { try { localStorage.setItem("mare_previa_ok", HASH); } catch (e) {} document.documentElement.style.visibility = "visible"; } else pedir(); });
+    sha256(s).then(function (x) { if (HASHES.indexOf(x) >= 0) { try { localStorage.setItem("mare_previa_ok", x); } catch (e) {} document.documentElement.style.visibility = "visible"; } else pedir(); });
   }
   pedir();
   }

@@ -172,25 +172,34 @@ function __init(){
   // =========================================================
   const ctx = MonitorMapas.contexto(BR_GEOJSON, 480, 460);
   MonitorMapas.desenharMapa(ctx, 'mapChega', null, () => cor('branco'), uf => esc(NOME_UF[uf] || uf), [], 'contagem');
-  /* Os círculos vêm prontos do gerador (`semana.json` → `mapa`, com a sede de cada município). */
-  const ORIGENS_MAPA = {defesa_civil: {rotulo: 'defesa civil', cor: P.resposta}, saude: {rotulo: 'saúde', cor: P.setores.saude}};
+  /* Os círculos vêm prontos do gerador (`semana.json` → `mapa`, com a sede de cada município). Cada origem é
+     uma camada: a defesa civil por baixo e a saúde, de valor menor, por cima, para que a cor da saúde apareça. */
+  const ORIGENS_MAPA = {defesa_civil: {rotulo: tx('financiamento.chega.origem.defesa_civil'), cor: P.resposta}, saude: {rotulo: tx('financiamento.chega.origem.saude'), cor: P.setores.saude}};
   const circulos = ((S && S.mapa) || []).filter(x => ORIGENS_MAPA[x.origem] && x.repassado > 0 && x.lat != null);
   const maxV = Math.max(1, ...circulos.map(x => x.repassado)), R_MAX = 14;
-  MonitorMapas.pontos(ctx, 'mapChega', circulos.slice().sort((a, b) => b.repassado - a.repassado), {
-    r: x => Math.max(1.5, R_MAX * Math.sqrt(x.repassado / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: 0.6, classe: 'circulos-valor',
+  Object.keys(ORIGENS_MAPA).forEach(k => MonitorMapas.pontos(ctx, 'mapChega', circulos.filter(x => x.origem === k).sort((a, b) => b.repassado - a.repassado), {
+    r: x => Math.max(1.5, R_MAX * Math.sqrt(x.repassado / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: k === 'saude' ? 0.95 : 0.6, classe: 'circulos-' + k,
     tabela: {sel: '#boxChega', chave: x => [x.nome || '', x.uf || '', ORIGENS_MAPA[x.origem].rotulo]},
     rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato || '')
-      + '<br>' + esc(reais(x.repassado))});
-  const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.repassado, 0);
-  MonitorMapas.legenda('legChega', circulos.length ? Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: o.rotulo + ' · ' + reais(totalOrigem(k))}))
-    .concat([{cor: cor('linha'), rotulo: 'maior círculo: ' + reais(maxV)}]) : [{cor: cor('sem-dado'), rotulo: 'sem coleta até o corte'}]);
-  if (direto && direto.valor != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: Number(direto.valor).toLocaleString('pt-BR')});
+      + '<br>' + esc(reais(x.repassado))}));
   const RES = (S && S.mapa_resumo) || {}, comps = RES.competencias || [], ASR = (S && S.autorizado_sem_repasse) || {};
+  /* Portaria sem repasse localizado: círculo só de contorno na sede, a marca do "vazado" (a mesma da Defesa civil). */
+  const semRepasse = (ASR.municipios || []).filter(m => LATLON[m.cod_ibge]).map(m => Object.assign({lon: LATLON[m.cod_ibge][0], lat: LATLON[m.cod_ibge][1]}, m));
+  MonitorMapas.pontos(ctx, 'mapChega', semRepasse, {r: () => 3, cor: () => cor('cinza-quente'), classe: 'sem-repasse',
+    rotulo: m => '<strong>' + esc(m.nome || '') + ' · ' + esc(m.uf || '') + '</strong><br>' + esc(tx('financiamento.chega.legenda.sem_repasse'))
+      + ' · ' + esc(m.ato || '') + '<br>' + esc(reais(m.autorizado))})
+    .selectAll('circle').attr('fill', 'none').attr('stroke', cor('cinza-quente')).attr('stroke-width', 1.2);
+  const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.repassado, 0);
+  MonitorMapas.legenda('legChega', circulos.length ? Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: tx('financiamento.chega.legenda.origem', {origem: o.rotulo, valor: reais(totalOrigem(k))})}))
+    .concat([{cor: cor('linha'), rotulo: tx('financiamento.chega.legenda.maior', {valor: reais(maxV)})}])
+    .concat(semRepasse.length ? [{cor: cor('cinza-quente'), rotulo: tx('financiamento.chega.legenda.sem_repasse') + ' · ' + n(semRepasse.length), vazado: true}] : [])
+    : [{cor: cor('sem-dado'), rotulo: tx('financiamento.chega.legenda.sem_coleta')}]);
+  if (direto && direto.valor != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: Number(direto.valor).toLocaleString('pt-BR')});
   const PERIODO_MAPA = comps.length ? mesDe(comps[0]) + '–' + mesDe(comps[comps.length - 1]) + '/' + String(comps[comps.length - 1]).slice(0, 4) : NAO_LOCALIZADO;
-  if (comps.length) molde('subChega', 'financiamento.chega.mapa.legenda', {mes: MESES_LONGOS[Number(String(comps[comps.length - 1]).slice(4, 6)) - 1]});
+  if (comps.length) molde('subChega', 'financiamento.chega.mapa.legenda', {inicio: MESES_LONGOS[Number(String(comps[0]).slice(4, 6)) - 1], mes: MESES_LONGOS[Number(String(comps[comps.length - 1]).slice(4, 6)) - 1], ano: String(comps[comps.length - 1]).slice(0, 4)});
   if (ASR.n != null) molde('chegaSemRepasse', 'financiamento.chega.sem_repasse.molde', {n: ASR.n, data: ASR.corte});
   cred('boxChega', [FONTE_TRANSP + ', transferências da União (defesa civil)', 'Fundo Nacional de Saúde, no ' + FONTE_TRANSP], S && S.corte);
-  tabela('boxChega', ['Município', 'UF', 'Origem', 'Repassado desde 29/06/2026', 'Autorizado em portaria (defesa civil)', 'Ato', 'Período'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
+  tabela('boxChega', ['Município', 'UF', 'Origem', 'Repassado', 'Autorizado em portaria (defesa civil)', 'Ato', 'Período'], circulos.slice().sort((a, b) => (a.nome || '').localeCompare(b.nome || '', 'pt-BR'))
     .map(x => ['<strong>' + esc(x.nome || '') + '</strong>', esc(x.uf || ''), esc(ORIGENS_MAPA[x.origem].rotulo), esc(reais(x.repassado)),
       esc(x.origem === 'saude' ? 'não se aplica' : reais(x.autorizado) || NAO_LOCALIZADO), link(x.url, x.ato || ''), esc(PERIODO_MAPA)]));
 
