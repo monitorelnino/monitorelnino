@@ -9,11 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-11-05 · #1540 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.
-=======
+
 ## 2026-11-05 · Rota 1b: busca no domínio da prefeitura · `descobrir_planos.py --municipios … --busca-dominio` consulta o metabuscador do site (`prefeitura de <nome> <UF> site:gov.br` e `site:<domínio> plano de contingência`) para os municípios sem portal achado ou sem link em HTML estático. O endereço só vale se a home se identificar como a prefeitura; busca fora do ar fica como tentativa, nunca como ausência. Sem fonte nova, sem API paga.
->>>>>>> origin/main
 
 ## 2026-11-05 · rodapé v4 · Logos com o mesmo peso visual (Futura 20 px, Instituto Ar 28 px), linha comum de 36 px, assinatura e redes agrupadas na coluna Realização; redes só com ícone, nome mantido para leitor de tela. Aprovado pela editoria em 05/11/2026.
 
