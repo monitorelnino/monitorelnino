@@ -11,27 +11,34 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-05 · #1543 · Busca do diário estadual: a janela curta da noite estende a leitura do ciclo, não a apaga · `coletar_edicoes_doe.py` guarda o `desde` mais antigo quando a nova leitura continua a anterior com os mesmos termos; antes, 7 UFs voltavam a "busca ainda não rodou" a cada noite.
 
+## 2026-11-05 · Saúde do pipeline: um registro por linha · `gravar_em` passa a gravar cada execução de `data/saude_pipeline.json` numa linha; o arquivo é reformatado na próxima escrita, sem mudar o conteúdo. Nenhuma página muda.
+
 ## 2026-11-05 · #1540 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.
 
 ## 2026-11-05 · Rota 1b: busca no domínio da prefeitura · `descobrir_planos.py --municipios … --busca-dominio` consulta o metabuscador do site (`prefeitura de <nome> <UF> site:gov.br` e `site:<domínio> plano de contingência`) para os municípios sem portal achado ou sem link em HTML estático. O endereço só vale se a home se identificar como a prefeitura; busca fora do ar fica como tentativa, nunca como ausência. Sem fonte nova, sem API paga.
 
 ## 2026-11-05 · rodapé v4 · Logos com o mesmo peso visual (Futura 20 px, Instituto Ar 28 px), linha comum de 36 px, assinatura e redes agrupadas na coluna Realização; redes só com ícone, nome mantido para leitor de tela. Aprovado pela editoria em 05/11/2026.
 
-
 ## 2026-11-05 · Financiamento, mapa Onde o dinheiro chega · Período único nas duas origens, saúde desenhada por cima da defesa civil, portaria sem repasse com símbolo vazado na sede e rótulos da legenda no catálogo. Sem mudança de dado. Linhas líquidas: +2 no JS.
+
 ## 2026-11-05 · #1536 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^="circulos-"] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).
 
 ## 2026-11-05 · #1533 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.
 
 ## 2026-11-05 · #1527 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.
+
 ## 2026-11-05 · sítio da prefeitura: endereço oficial e página renderizada · A busca do portal tenta primeiro o endereço oficial do cadastro público (Wikidata) e, quando a home só monta por JavaScript, lê os links da página renderizada pelo navegador; refaz uma vez os municípios sem portal ou sem página lida. Código +60/−28.
+
 ## 2026-11-05 · #PR · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
 
 ## 2026-11-05 · sítio da prefeitura: mais endereços · A busca do portal tenta também prefeiturade<nome>, prefeitura<nome> e pm<nome> (.uf.gov.br); município sem portal achado hoje é refeito uma vez com a lista nova. Código +14/−4.
 
 ## 2026-11-05 · design · Saúde sem rótulo acima do título · Cartões e figuras da Saúde começam pelo título; a classe do rótulo (`cartao-mapa-familia`, `cartao-k`) sai do CSS e passa a ser reprovada pelo verificador. Código +3/−20.
+
 ## 2026-11-05 · redução · função morta `eixoDeMeses` sai de `assets/js/saude.js` (sem chamador em todo o repositório); sem mudança de comportamento. Código +0/−8.
+
 ## 2026-11-05 · #1513 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.
+
 ## 2026-11-05 · cartões sem rótulo acima do título · Em Financiamento ("De onde vem o dinheiro") e na Defesa civil, o cartão começa pelo título, sem rótulo em versalete acima. O risco declarado pelo ato segue na tabela da seção; nada de informação some. Código +9/−14.
 
 ## 2026-11-05 · catálogo do risco de base (AdaptaBrasil) · Coletor `coletar_risco_base.py`, etapa 1: lê a hierarquia pública de indicadores do AdaptaBrasil (MCTI) e grava `data/risco_base/catalogo.json` com id, nome, setor, anos, cenários, hash e data da consulta; só pela válvula `coleta-dia/*`, sem elo na noite. Sem valor por município nesta etapa (lacuna declarada); peso zero; autoteste offline, escritor registrado. Código +106/−0.
@@ -39,6 +46,7 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-05 · risco de base: campos reais do catálogo · O catálogo do AdaptaBrasil lia `nome`; a fonte entrega `name`, `title`, `sep_description` e `indicator_id_master` (visto na sonda de 05/11, só nomes de campo). Corrigido onde nasce, com caso de teste; a validação já havia barrado a gravação errada. Também cria a pasta de saída (a primeira gravação falhou calada). Código +9/−5.
 
 ## 2026-11-05 · sítio da prefeitura entra no log por município · A busca dirigida pelo portal da prefeitura grava uma linha do log por município (consultado sem achado, pista ou erro), com município e UF, e aceita a lista do cadastro. É a consulta que faltava para o nível municipal completo.
+
 ## 2026-11-05 · #1505 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.
 
 ## 2026-11-05 · nível municipal completo calculado do log · O nível "municipal_completo" passa a nascer do log de buscas: município com diário, sítio da prefeitura e busca web registrados, cada consulta com município e UF, sobe sozinho. Consulta com erro ou motor sem resposta não conta. Com o log de hoje, 9 dos 2.095 do cadastro; falta o canal do sítio.
