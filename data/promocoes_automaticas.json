@@ -380453,6 +380453,2907 @@
    "pista_id": "93300e3a81",
    "origem": "busca_web",
    "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "3516200",
+   "municipio": "Franca",
+   "uf": "SP",
+   "url": "https://www.saude.sp.gov.br/resources/vetores/homepage/banner_central/planos-municipais-manejo-escorpiao/ipua.pdf",
+   "regras_18": [],
+   "pista_id": "2cf957da34",
+   "origem": "seguimento",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "239431 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4309159",
+   "municipio": "Gramado Xavier",
+   "uf": "RS",
+   "url": "https://www.brigadamilitar.rs.gov.br/upload/arquivos/202412/12093025-revista-historica-enchentes-2024-web.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "c37750a799",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "76941b6831671cb5ebdafe827dd9c9b4e3697d90aaae7a50db770a1b019b2275"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "597261 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4309159",
+   "municipio": "Gramado Xavier",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202104/22082718-doe-2021-04-22.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "985231f986",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "df09c7b409369e3187a8f198da5a5cbfdd94a73c5aed23a6cf8e857b8b83f1dd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4314779",
+   "municipio": "Pontão",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "d8eaf93a47",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "13096 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "3ª CRE; e Juan Carlo Ledesma Censi, do 2º ano do Ensino Médio da Escola Américo Braga, vinculada à 12ª CRE. O painel foi mediado pela assessora técnica Vittoria"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "14/10/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "14/10/2026",
+   "natureza": null,
+   "ibge": "4302600",
+   "municipio": "Braga",
+   "uf": "RS",
+   "url": "https://estado.rs.gov.br/governo-do-estado-reconhece-escolas-da-rede-que-elaboraram-planos-de-contingencia-para-eventos-climaticos",
+   "regras_18": [],
+   "pista_id": "852b92b691",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0b0b62f92086513a6105df4a0870a0feff3d5dbc79e33521b9692a6a812f63c0",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://estado.rs.gov.br/governo-do-estado-reconhece-escolas-da-rede-que-elaboraram-planos-de-contingencia-para-eventos-climaticos",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4302600",
+   "municipio": "Braga",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "2456af21e7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "543624 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321469",
+   "municipio": "Tio Hugo",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202201/11084252-doe-2022-01-11.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "9148ebf649",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fbbf679561459f7cbc752c9d720bb8b473843be15663ad9c4c47141ca24b88bd"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321469",
+   "municipio": "Tio Hugo",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "06c1fbe9a8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321469",
+   "municipio": "Tio Hugo",
+   "uf": "RS",
+   "url": "https://ipeprev.rs.gov.br/upload/arquivos/202212/26145746-doe-2020-05-25.pdf",
+   "regras_18": [],
+   "pista_id": "130d714d85",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "451974 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321469",
+   "municipio": "Tio Hugo",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202103/26085442-doe-2021-03-26.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "73bc253131",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "1ce0e8d6235f0ae7b2d562d098619e0e2bf6f0815faeda648002dea8d44175a7"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ales Santa Tereza São João do Polêsine São José do Herval São Martinho da Serra São Valentim do Sul São Vendelino Segredo Serafina Corrêa Severiano de Almeida S"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4319703",
+   "municipio": "São Valentim",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "4f0f31fd7b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319703",
+   "municipio": "São Valentim",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "c558ffd927",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323754",
+   "municipio": "Vitória das Missões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "3f66361598",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Vitória das Missões\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323754",
+   "municipio": "Vitória das Missões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202610/02142300-2-rdqa-2026-final.pdf",
+   "regras_18": [],
+   "pista_id": "066f50d384",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3043f3c5fbfa1f60db7e33cc53d0088c098dc0bf5bde3b285386ecb5528cdbde"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323754",
+   "municipio": "Vitória das Missões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202106/02101052-ma-0001-20-plano-estadual-de-saude-28-05-interativo-a.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "7d0c167618",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3847c9ac26b4ddfb741b6fb81a1026f4df934d6948094f783e3768e17190e22f"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4303673",
+   "municipio": "Campestre da Serra",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "26a5a3e7f7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4303673",
+   "municipio": "Campestre da Serra",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "010c4d86fc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307450",
+   "municipio": "Esperança do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "c27a6c2c3a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307450",
+   "municipio": "Esperança do Sul",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202103/31084438-doe-2021-03-31.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "177d335f37",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0c9a9e075737dc7334efc18fefa18f205826255db773751d3d700db3897e5223"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307450",
+   "municipio": "Esperança do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "9ddb936695",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310702",
+   "municipio": "Itatiba do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "7539e2ba38",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310702",
+   "municipio": "Itatiba do Sul",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202005/20094407-doe-ultimo-20052020.pdf",
+   "regras_18": [],
+   "pista_id": "a1437b7b02",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310702",
+   "municipio": "Itatiba do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "511328a15d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "349395 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310702",
+   "municipio": "Itatiba do Sul",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202012/01090036-doe-2020-12-01.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "c76368a4f1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "52a41196e80ae0183f23d687817ff8d348428268ef346a0a0fe4eebac4b469ab"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313425",
+   "municipio": "Novo Machado",
+   "uf": "RS",
+   "url": "https://www.novomachado.rs.gov.br/site/conteudos/3322-informacoes-covid-19",
+   "regras_18": [],
+   "pista_id": "28626f6b49",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313425",
+   "municipio": "Novo Machado",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "1b258c8800",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "515048 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313425",
+   "municipio": "Novo Machado",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202010/06091802-doe-2020-10-06.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "3dc440f787",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "795c49cc951e4136fcaf6995764a868c6f8ef61e4a00161542e3865b079d2dfc"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305108",
+   "municipio": "Caxias do Sul",
+   "uf": "RS",
+   "url": "https://gcpstorage.caxias.rs.gov.br/documents/2026/05/971f44db-bc1d-42a1-bb76-f7c1990a74e8.pdf",
+   "regras_18": [],
+   "pista_id": "e57dbb7363",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312377",
+   "municipio": "Monte Alegre dos Campos",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "f05edf8d37",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312377",
+   "municipio": "Monte Alegre dos Campos",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202106/02101052-ma-0001-20-plano-estadual-de-saude-28-05-interativo-a.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "f8294f654b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3847c9ac26b4ddfb741b6fb81a1026f4df934d6948094f783e3768e17190e22f"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312377",
+   "municipio": "Monte Alegre dos Campos",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "e2e128ac5d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312757",
+   "municipio": "Nova Alvorada",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "0f123835f1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312757",
+   "municipio": "Nova Alvorada",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202005/20094407-doe-ultimo-20052020.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "2dbe46724c",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "42b855701d5249afb4b9e7e581081c72e08653ced802eaa54dbdd6c498294cf6"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "000,00: Agudo Alto Feliz Arambaré Arroio do Padre Arroio do Tigre Arroio Grande Barra do Guarita Barra do Rio Azul Bom Jesus Bom Princípio Bom Retiro do Sul Can"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4301859",
+   "municipio": "Barra do Guarita",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "d77f025092",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4301859",
+   "municipio": "Barra do Guarita",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "a246a3269f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "62432 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Barra do Guarita\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4301859",
+   "municipio": "Barra do Guarita",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202208/30155902-portaria-conj-ses-seduc-rs-n-01-2021-final.pdf",
+   "regras_18": [],
+   "pista_id": "5151679525",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "aec5f54f519a044d41154546bb13fd9ed8ccbdbc9a76217a08467067d4e819c5"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "iano de Almeida Silveira Martins Sinimbu Sobradinho Travesseiro Três Forquilhas Vale Verde Vespasiano Corrêa Repasse de R$ 250.000,00: Arroio do Meio Candelária"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4322525",
+   "municipio": "Vale Verde",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "14c3e5d109",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Vale Verde\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322525",
+   "municipio": "Vale Verde",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202610/02142300-2-rdqa-2026-final.pdf",
+   "regras_18": [],
+   "pista_id": "b927e9d467",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3043f3c5fbfa1f60db7e33cc53d0088c098dc0bf5bde3b285386ecb5528cdbde"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4322525",
+   "municipio": "Vale Verde",
+   "uf": "RS",
+   "url": "https://admin.atencaoprimaria.rs.gov.br/upload/arquivos/202609/15142425-cartilha-mudancas-climaticas-e-saude-das-comunidades-quilombolas-no-rs-gestores.pdf",
+   "regras_18": [],
+   "pista_id": "3c16e0be33",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "oura Xavier Forquetinha Ibarama Imigrante Iraí Itati Ivorá Jaguari Manoel Viana Mampituba Maquiné Marcelino Ramos Marques de Souza Minas do Leão Muçum Nova Palm"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4311734",
+   "municipio": "Mampituba",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "f0c839e8a4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311734",
+   "municipio": "Mampituba",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "495dfbf2df",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "484928 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311734",
+   "municipio": "Mampituba",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202104/01084043-doe-2021-04-01.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "0d3456ac2b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0b5a9260f2ef8711f9517a3a2c622469bad1206fdfc389be1d49b10618c48cd9"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304655",
+   "municipio": "Capão do Cipó",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "eda0aa807e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304655",
+   "municipio": "Capão do Cipó",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202005/20094407-doe-ultimo-20052020.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "9fa327eac8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "42b855701d5249afb4b9e7e581081c72e08653ced802eaa54dbdd6c498294cf6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304655",
+   "municipio": "Capão do Cipó",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "f8607379de",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304655",
+   "municipio": "Capão do Cipó",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "c00989bfa1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321329",
+   "municipio": "Taquaruçu do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "efc528f777",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321329",
+   "municipio": "Taquaruçu do Sul",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202106/16083743-doe-2021-06-16.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "066c6a41fb",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0c25b317c79d01e623e9f0228ce839eb14a33a38d837603831e7578b133adc5b"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "425395 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321329",
+   "municipio": "Taquaruçu do Sul",
+   "uf": "RS",
+   "url": "https://ipeprev.rs.gov.br/upload/arquivos/202212/26145746-doe-2020-05-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "7908c2c583",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ceb4d542f4da282be36f7ea2c6f3553419f98baa14bc8752b89bfd1bc894beb1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321329",
+   "municipio": "Taquaruçu do Sul",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d84c92e167",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Taquaruçu do Sul\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321329",
+   "municipio": "Taquaruçu do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202610/02142300-2-rdqa-2026-final.pdf",
+   "regras_18": [],
+   "pista_id": "45a26887ba",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3043f3c5fbfa1f60db7e33cc53d0088c098dc0bf5bde3b285386ecb5528cdbde"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323770",
+   "municipio": "Westfália",
+   "uf": "RS",
+   "url": "https://www.sedur.rs.gov.br/upload/arquivos/202507/21122502-2b-1-diagno-stico-te-cnico-e-leitura-te-cnica-colinas-com-anexos-compactado.pdf",
+   "regras_18": [],
+   "pista_id": "2189472883",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323770",
+   "municipio": "Westfália",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "b12d3f1749",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323770",
+   "municipio": "Westfália",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "137f52f02b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "le Capitão Cerro Branco Colinas Coqueiro Baixo Cotiporã Cristal Cruzeiro do Sul Dois Lajeados Dona Francisca Doutor Ricardo Faxinal do Soturno Feliz Fontoura Xa"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4306452",
+   "municipio": "Dois Lajeados",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "bf60dd2333",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306452",
+   "municipio": "Dois Lajeados",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202106/02101052-ma-0001-20-plano-estadual-de-saude-28-05-interativo-a.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "746b8ffbe0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3847c9ac26b4ddfb741b6fb81a1026f4df934d6948094f783e3768e17190e22f"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "554642 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306700",
+   "municipio": "Dona Francisca",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/07144727-2-rdqa-2024-final.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "147940d2c7",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8801e92028e5ce766e7c211a66721a30de194e0b3568e94ed8f05f85d55adec3",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://saude.rs.gov.br/upload/arquivos/202410/07144727-2-rdqa-2024-final.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ro Branco Colinas Coqueiro Baixo Cotiporã Cristal Cruzeiro do Sul Dois Lajeados Dona Francisca Doutor Ricardo Faxinal do Soturno Feliz Fontoura Xavier Forquetin"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4306700",
+   "municipio": "Dona Francisca",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "c6273c1ef9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315149",
+   "municipio": "Presidente Lucena",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "e96b072e63",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101894 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315149",
+   "municipio": "Presidente Lucena",
+   "uf": "RS",
+   "url": "https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "7be12a2f8e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315149",
+   "municipio": "Presidente Lucena",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "722e84c28f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.altofeliz.rs.gov.br/web/imgs/arquivos/arquivos1585956918.pdf",
+   "regras_18": [],
+   "pista_id": "cba8767514",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "Defesa Civil Estadual . Municípios contemplados Repasse de R$ 200.000,00: Agudo Alto Feliz Arambaré Arroio do Padre Arroio do Tigre Arroio Grande Barra do Guari"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "760d707acc",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4300570",
+   "municipio": "Alto Feliz",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "62eda7faf0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312443",
+   "municipio": "Morrinhos do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [],
+   "pista_id": "74b6865eb6",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312443",
+   "municipio": "Morrinhos do Sul",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "590e25c51b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312443",
+   "municipio": "Morrinhos do Sul",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "aeae636ebf",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307815",
+   "municipio": "Estrela Velha",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "bc025dc7e8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101894 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307815",
+   "municipio": "Estrela Velha",
+   "uf": "RS",
+   "url": "https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "7277457ea4",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307815",
+   "municipio": "Estrela Velha",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202005/20094407-doe-ultimo-20052020.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "d6b8af5528",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "42b855701d5249afb4b9e7e581081c72e08653ced802eaa54dbdd6c498294cf6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307815",
+   "municipio": "Estrela Velha",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "c40afafc14",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "425395 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319372",
+   "municipio": "São Pedro do Butiá",
+   "uf": "RS",
+   "url": "https://ipeprev.rs.gov.br/upload/arquivos/202212/26145746-doe-2020-05-25.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "df167c98ef",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ceb4d542f4da282be36f7ea2c6f3553419f98baa14bc8752b89bfd1bc894beb1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319372",
+   "municipio": "São Pedro do Butiá",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "fb501ad47a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"São Pedro do Butiá\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319372",
+   "municipio": "São Pedro do Butiá",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202610/02142300-2-rdqa-2026-final.pdf",
+   "regras_18": [],
+   "pista_id": "d5a82843f9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3043f3c5fbfa1f60db7e33cc53d0088c098dc0bf5bde3b285386ecb5528cdbde"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "83503 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "30960 Horizontina #1 3 0 0 10 0 14 16 431040 Independência 0 3 0 0 1 0 4 431301 Nova Candelária 0 1 0 0 2 0 3 431342 Novo Machado 0 0 0 0 3 0 3 431500 Porto Luc"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "portaria",
+      "numero": "1007/10",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313011",
+   "municipio": "Nova Candelária",
+   "uf": "RS",
+   "url": "http://www1.saude.rs.gov.br/dados/1298557379918Plano%20de%20Contingencia%20Dengue%20-%2014%AA%20CRS.pdf",
+   "regras_18": [],
+   "pista_id": "ce53017394",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "6c17a9f17ef7d7837e8fb10aa8f49e0d2061acd2ca01589d1f727bd117e274d6",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "http://www1.saude.rs.gov.br/dados/1298557379918Plano%20de%20Contingencia%20Dengue%20-%2014%AA%20CRS.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313011",
+   "municipio": "Nova Candelária",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "5cbd1a722f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "527597 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313011",
+   "municipio": "Nova Candelária",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202009/22085140-doe-2020-09-22.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "ff57f37b3f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "b00ca869b9ebbb626593fb294cea48ca8f5368bb2d2bb3f581d983e49df4dbac"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306973",
+   "municipio": "Erebango",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "85de2b87f6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "99589 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4313003",
+   "municipio": "Nova Bréscia",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/cib2021",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "afc7f46cd5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "04ff2fb9a7117f7685688ba7f0284c97f236c1e412973022b7e9f74dd226165a"
+  },
+  {
+   "promove": false,
+   "motivo": "noticia_nao_e_documento",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "7163 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307054",
+   "municipio": "Ernestina",
+   "uf": "RS",
+   "url": "https://ernestina.rs.gov.br/2026/03/26/municipios-levam-preocupacao-com-possivel-contaminacao-do-rio-jacui-ao-ministerio-publico/",
+   "regras_18": [
+    "J2"
+   ],
+   "encaminhar": "pista_dirigida",
+   "pista_id": "2093e27252",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "54c5db7141c01ffe9fd99a74ac11fef1a879907e1f3f39c3b8529dbfba8d6767"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "54287 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4307054",
+   "municipio": "Ernestina",
+   "uf": "RS",
+   "url": "https://admin.atencaoprimaria.rs.gov.br/upload/arquivos/202609/15142425-cartilha-mudancas-climaticas-e-saude-das-comunidades-quilombolas-no-rs-gestores.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "ab449e00e0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "67cb58eee85e40e3b62018f1730b345670764abebf23f08b3e70645d506d5e07"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304952",
+   "municipio": "Caseiros",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "e6e4843d1a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4304952",
+   "municipio": "Caseiros",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "cff4e0a66f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101894 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310553",
+   "municipio": "Itacurubi",
+   "uf": "RS",
+   "url": "https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "e46c27cce9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310553",
+   "municipio": "Itacurubi",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "2eddca7fb8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "337459 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310553",
+   "municipio": "Itacurubi",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202201/31085206-doe-2022-01-31.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "97c3ce10bd",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fd540e4509f1db807feab88c2852e61810e85df408f45ff27e613dc1bca9138a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4310553",
+   "municipio": "Itacurubi",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "73b0062a67",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4105409",
+   "municipio": "Chopinzinho",
+   "uf": "PR",
+   "url": "https://www.chopinzinho.pr.gov.br/licitacoes/1596818625.pdf",
+   "regras_18": [
+    "J5"
+   ],
+   "pista_id": "84e34a4036",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "0b6236ee3127d5ec26caa24c39dd82c80ec216fb5b10dcde80e1230e771f38ca",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.chopinzinho.pr.gov.br/licitacoes/1596818625.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "rande Paraí Paraíso do Sul Pareci Novo Passa Sete Passo do Sobrado Pedro Osório Pinhal Grande Ponte Preta Porto Mauá Porto Xavier Pouso Novo Putinga Relvado Res"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4314456",
+   "municipio": "Pinhal",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "6c06b4bcc2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "ita Barra do Rio Azul Bom Jesus Bom Princípio Bom Retiro do Sul Canudos do Vale Capitão Cerro Branco Colinas Coqueiro Baixo Cotiporã Cristal Cruzeiro do Sul Doi"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4304697",
+   "municipio": "Capitão",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "fe72461515",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318440",
+   "municipio": "São Jorge",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "c0e07c7724",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312617",
+   "municipio": "Muitos Capões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "236d56fcf2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "596219 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Muitos Capões\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312617",
+   "municipio": "Muitos Capões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202605/28145755-1-rdqa-2026-final.pdf",
+   "regras_18": [],
+   "pista_id": "dca0a3f8c5",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "a74a06f8b9ad16193308d949cc8e6cd0fb66c43ef2b00a6005130c9fdc360de6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312617",
+   "municipio": "Muitos Capões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "56cc29f27d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "54287 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312617",
+   "municipio": "Muitos Capões",
+   "uf": "RS",
+   "url": "https://admin.atencaoprimaria.rs.gov.br/upload/arquivos/202609/15142425-cartilha-mudancas-climaticas-e-saude-das-comunidades-quilombolas-no-rs-gestores.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "1a019a9eb6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "67cb58eee85e40e3b62018f1730b345670764abebf23f08b3e70645d506d5e07"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4312617",
+   "municipio": "Muitos Capões",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "88156ba812",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316477",
+   "municipio": "Salvador das Missões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "f4b2a11185",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Salvador das Missões\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316477",
+   "municipio": "Salvador das Missões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202610/02142300-2-rdqa-2026-final.pdf",
+   "regras_18": [],
+   "pista_id": "88452999ac",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3043f3c5fbfa1f60db7e33cc53d0088c098dc0bf5bde3b285386ecb5528cdbde"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316477",
+   "municipio": "Salvador das Missões",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "8f4ce3b4f9",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4316477",
+   "municipio": "Salvador das Missões",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202012/10100933-doe-2020-12-10.pdf",
+   "regras_18": [],
+   "pista_id": "97ef902421",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315552",
+   "municipio": "Rio dos Índios",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "987518f17a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315552",
+   "municipio": "Rio dos Índios",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "239ee561ef",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4315552",
+   "municipio": "Rio dos Índios",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "99c736b1e0",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305871",
+   "municipio": "Coronel Barros",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "f9cc6e01b2",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "101894 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305871",
+   "municipio": "Coronel Barros",
+   "uf": "RS",
+   "url": "https://cevs.rs.gov.br/upload/arquivos/201808/27092736-cevs-2013-plano-estadual-de-contigencia-para-dengue-do-rio-grande-do-sul.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "ddfeca3aee",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
   }
  ]
 }
