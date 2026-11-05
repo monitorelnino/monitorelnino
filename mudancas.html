@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.</dt>
+      <dd></dd>
       <dt>04/11/2026 · reconferência das rotas dos diários · A sonda dos diários ganha `--reconferir`: um GET identificado por rota de cada UF, com código, veredito (voltou, bloqueio, fora do ar, timeout) e situação do robots, gravado em `reconferencia` de `data/fontes_doe.json`. Em 04/11: 16 UFs responderam 200; PE (REST) 401 respeitado; MA 500; BA, PB, RS e TO sem resposta no tempo.</dt>
       <dd></dd>
       <dt>04/11/2026 · Redução: 42 imports mortos de linha inteira</dt>
@@ -165,8 +167,6 @@
       <dd>A Imprensa passa a ler, do monitor de saúde, quantos estados têm instrumento estadual novo para o ciclo (4 de 27), sem zero para UF não verificada. O limite da OMS por cidade fica como lacuna declarada, porque a série diária por município não está publicada no arquivo. Autoteste novo. Origem: `gerar_imprensa_semana.py`.</dd>
       <dt>26/10/2026 · Saúde v0.7: tempo como contexto na ficha do estado</dt>
       <dd>A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora do índice (peso zero, dado do motor v0.7). Nenhum número do índice muda.</dd>
-      <dt>26/10/2026 · Imprensa: acumulados do ciclo completos</dt>
-      <dd>A Imprensa passa a ter os números do §2 com fonte e período: decretos, reconhecidos e prazo, pessoas, atos por evento, dinheiro anunciado e desembolsado, saúde por doença e estados acima da faixa. Sem dado nacional completo, a lacuna sai declarada, nunca zero.</dd>
     </dl>
   </section>
 </main>
