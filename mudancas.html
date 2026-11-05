@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.</dt>
+      <dd></dd>
       <dt>05/11/2026 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^=&quot;circulos-&quot;] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).</dt>
       <dd></dd>
       <dt>05/11/2026 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.</dt>
@@ -165,8 +167,6 @@
       <dd>O subtítulo do mapa de focos passa a descrever o dado de pontos (satélite, últimas 24 horas). No gerador do topo, só desfecho semanal recebe início e fim de semana; o mensal (diarreia 2026-07) deixa essas datas nulas, em vez de virar semana 07. Autoteste ganha o caso. Código +5/−2.</dd>
       <dt>26/10/2026 · Orientações oficiais: cinco páginas federais atuais na coleta</dt>
       <dd>Entram na coleta das orientações do Proteja-se cinco páginas federais atuais (MIDR: chuvas e deslizamento; Ministério da Saúde: queimadas e dengue). Cada item só ganha fonte com trecho da página que o sustenta; o restante segue como lacuna declarada. Peso zero. Linhas: +6/−0.</dd>
-      <dt>26/10/2026 · Busca de planos: candidatos das sondas do MP, Judiciário, Saúde e Transferegov entram na fila</dt>
-      <dd>As sondas de 24/10 acharam 27 endereços nas capitais e não leram nenhum. Cada um passa pela porta única da fila de pistas e segue ao juiz; endereço de busca não vira documento nem pontua. A porta recusa o que não é plano ou excede o teto, com motivo. Linhas: +57 de código novo (adaptador da busca de planos), +1 arquivo de entrada.</dd>
     </dl>
   </section>
 </main>
