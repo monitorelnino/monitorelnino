@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · Busca do diário estadual: a janela curta da noite estende a leitura do ciclo, não a apaga · `coletar_edicoes_doe.py` guarda o `desde` mais antigo quando a nova leitura continua a anterior com os mesmos termos; antes, 7 UFs voltavam a &quot;busca ainda não rodou&quot; a cada noite.</dt>
+      <dd></dd>
       <dt>05/11/2026 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a &quot;Saúde na estrutura de crise do estado&quot;. A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.</dt>
       <dd></dd>
       <dt>05/11/2026 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito &quot;N.º&quot; não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.</dt>
@@ -165,8 +167,6 @@
       <dd>Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.</dd>
       <dt>26/10/2026 · Financiamento: % do pago aplicado pela União sai por medida</dt>
       <dd>Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.</dd>
-      <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
-      <dd>Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como &quot;coletado&quot; e passa a &quot;sem_medicao_na_janela&quot;. Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.</dd>
     </dl>
   </section>
 </main>

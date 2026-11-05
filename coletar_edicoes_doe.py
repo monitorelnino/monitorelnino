@@ -525,6 +525,16 @@ def _pela_busca(uf: str, rota: dict, desde: str, ate: str, ocorrencias: dict, ho
             "totais_por_termo": totais}, None
 
 
+def somar_janela(anterior: dict, busca: dict) -> dict:
+    """Leitura nova que continua a anterior (mesmos termos, sem buraco entre `ate` e `desde`) herda o `desde`
+    mais antigo: a janela curta da noite estende o ciclo lido, não o apaga. Função pura."""
+    if ("consultado_em" in anterior and "consultado_em" in busca and anterior.get("termos_versao") == busca.get("termos_versao")
+            and anterior.get("desde", "~") < busca.get("desde", "")
+            and anterior.get("ate", "") >= (dt.date.fromisoformat(busca["desde"]) - dt.timedelta(days=1)).isoformat()):
+        return dict(busca, desde=anterior["desde"])
+    return busca
+
+
 def _edicoes_da_data(rota: dict, padrao: dict, data: str, listagem: dict, ancoras: dict, edicoes_fn) -> list:
     """As edições da data, cada uma como a lista de endereços alternativos a tentar (o primeiro que
     abre vale). Padrão por número tenta a janela de números; adaptador devolve uma por caderno."""
@@ -573,6 +583,7 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         busca, recusa = _pela_busca(uf, rota, desde, ate, ocorrencias, hoje)
         com_termo = busca.get("com_declaracao", 0)
         anterior = (registro.get("canal2") or {}).get("busca_declaracao") or {}
+        busca = somar_janela((registro.get("canal2") or {}).get("busca_declaracao") or {}, busca)
         if "consultado_em" not in busca:
             registrar_lacuna(f"DOE-{uf} (canal 2)", busca["lacuna"][:160], canal="DOE", camada=1)
             if "consultado_em" in anterior:   # a leitura completa anterior segue datada; a falha fica ao lado
@@ -945,6 +956,10 @@ def _autoteste() -> int:
     ok("busca do diário desde o início do ciclo, com os termos de hoje, conta como consultada",
        busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": bd}})
        == {"consultado_em": "17/10/2026", "via": "busca do diário (adaptador apifront)"})
+    ok("janela curta da noite estende o ciclo lido; com buraco ou termos velhos, não",
+       somar_janela(bd, dict(bd, desde="2026-10-18", ate="2026-10-20"))["desde"] == INICIO_DO_CICLO
+       and somar_janela(bd, dict(bd, desde="2026-10-19", ate="2026-10-20"))["desde"] == "2026-10-19"
+       and somar_janela(bd, dict(bd, desde="2026-10-18", termos_versao="x"))["desde"] == "2026-10-18")
     ok("busca que acabou antes do dia em que diz ter consultado é lacuna",
        "lacuna" in busca_de_declaracao("ES", {"canal2": {"adaptador": "apifront", "busca_declaracao": dict(bd, ate="2026-09-30")}}))
     ok("busca que começou depois do ciclo, ou com termos velhos, é lacuna",

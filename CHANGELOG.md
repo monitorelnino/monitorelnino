@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · #1543 · Busca do diário estadual: a janela curta da noite estende a leitura do ciclo, não a apaga · `coletar_edicoes_doe.py` guarda o `desde` mais antigo quando a nova leitura continua a anterior com os mesmos termos; antes, 7 UFs voltavam a "busca ainda não rodou" a cada noite.
+
 ## 2026-11-05 · #1545 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a "Saúde na estrutura de crise do estado". A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.
 
 ## 2026-11-05 · #1541 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito "N.º" não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.
