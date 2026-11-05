@@ -19,7 +19,48 @@
    "recusa_texto_nao_extraivel": 5,
    "recusa_ente_nao_confirmado": 2,
    "recusa_autoridade_nao_confirmada": 2
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "alvos_verificados": 2,
+   "achados_novos": 3,
+   "fila_acumulada": 42
   }
  },
- "atualizado_em": "2026-11-05T05:29:33"
+ "atualizado_em": "2026-11-05T06:00:08",
+ "verificador_imprensa": {
+  "na_fila": 4819,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 44,
+  "por_motivo": {
+   "veiculo_nao_listado": 4651,
+   "sem_https": 104,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 25,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 2,
+    "sem_pagina_de_expediente": 1,
+    "sem_vitrine_datada_nem_cargo_de_redacao": 1,
+    "nao_avaliado_por_orcamento": 11
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)"
+ }
 }
