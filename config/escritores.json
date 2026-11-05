@@ -118,6 +118,11 @@
    "escritor": "qualquer_elo",
    "por_que": "Todo acesso registra o host. O resolvedor une por host, acessos pela base comum e total somado (`INDICES_POR_CHAVE` → `unir_indice`), desde 14/10/2026 (F55)."
   },
+  "data/risco_base/": {
+   "escritor": "coleta_de_dia.yml",
+   "sem_colisao_possivel": true,
+   "por_que": "Risco de base do município (AdaptaBrasil, handover 03/11): dado de base, coletado só pela válvula coleta-dia/* por coletar_risco_base.py; sem elo na noite (central, 05/11/2026)."
+  },
   "data/riscos_municipio/": {
    "escritor": "noturno_sinais.yml",
    "por_que": "Consulta do município no Monitor de riscos (HANDOVER_MONITOR_DE_RISCOS §6g): um arquivo por UF, escrito só pelo elo dos sinais (`coletar_sinais_risco.py` sem `--municipios`), a partir dos arquivos que o mesmo elo acabou de gravar."
