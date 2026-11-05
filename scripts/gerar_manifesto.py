@@ -44,7 +44,6 @@ import sys
 RAIZ = pathlib.Path(__file__).parent.parent
 MANIFESTO = RAIZ / "docs" / "MANIFEST_SHA256.txt"
 
-FORA_EXTRA = {"data/transferencias_api_raw.json"}
 # 28/09/2026 (§274): `data/saude_pipeline.json` é RELATÓRIO DA EXECUÇÃO EM CURSO — cada passo da rodada
 # grava ali a sua linha de saúde (início, duração, itens, status, erro). Selá-lo faz o manifesto mudar
 # no meio da própria rodada: o passo que recalcula o índice escreve a linha, e a regeneração seguinte

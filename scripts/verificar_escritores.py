@@ -43,9 +43,6 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DECLARACAO = RAIZ / "config" / "escritores.json"
 WORKFLOWS = RAIZ / ".github" / "workflows"
 
-# Os elos da corrente: workflows que commitam dado coletado. `_coletor.yml` é o invólucro
-# compartilhado, e por isso vale como "qualquer elo" — é ele que todos os noturnos chamam.
-INVOLUCRO_DOS_ELOS = "_coletor.yml"
 
 
 def ler_declaracao(caminho=None) -> dict:
