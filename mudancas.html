@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d6581579"></script>
-<script src="assets/mapas.js?v=414c4e5f"></script>
+<script src="assets/mapas.js?v=9c01ebb0"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=d3e97d4a">
+<link rel="stylesheet" href="assets/base.css?v=2c2763c2">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,7 +47,7 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
-      <dt>05/11/2026 · Busca do diário estadual: a janela curta da noite estende a leitura do ciclo, não a apaga · `coletar_edicoes_doe.py` guarda o `desde` mais antigo quando a nova leitura continua a anterior com os mesmos termos; antes, 7 UFs voltavam a &quot;busca ainda não rodou&quot; a cada noite.</dt>
+      <dt>05/11/2026 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a &quot;Saúde na estrutura de crise do estado&quot;. A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.</dt>
       <dd></dd>
       <dt>05/11/2026 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito &quot;N.º&quot; não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.</dt>
       <dd></dd>
@@ -58,6 +58,8 @@
       <dt>05/11/2026 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.</dt>
       <dd></dd>
       <dt>05/11/2026 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.</dt>
+      <dd></dd>
+      <dt>05/11/2026 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.</dt>
       <dd></dd>
       <dt>05/11/2026 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.</dt>
       <dd></dd>
@@ -165,8 +167,6 @@
       <dd>Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.</dd>
       <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
       <dd>Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como &quot;coletado&quot; e passa a &quot;sem_medicao_na_janela&quot;. Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.</dd>
-      <dt>26/10/2026 · Válvulas de dia repassam as chaves de API ao coletor</dt>
-      <dd>A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.</dd>
     </dl>
   </section>
 </main>
