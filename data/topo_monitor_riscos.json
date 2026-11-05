@@ -4,29 +4,29 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 4.0,
-   "referencia": "03/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Brasília",
-   "capital": "Brasília",
-   "uf": "DF",
+   "valor": 7.1,
+   "referencia": "04/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em São Paulo",
+   "capital": "São Paulo",
+   "uf": "SP",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 31.0 °C contra a média de 27.0 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 34.0 °C contra a média de 26.9 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 5.0,
-    "referencia": "02/11/2026"
+    "valor": 4.0,
+    "referencia": "03/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 235,
-   "referencia": "Focos do dia — focos_diario_br_20261104.csv",
+   "valor": 266,
+   "referencia": "Focos do dia — focos_diario_br_20261105.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 186,
-    "referencia": "Focos do dia — focos_diario_br_20261103.csv"
+    "valor": 235,
+    "referencia": "Focos do dia — focos_diario_br_20261104.csv"
    }
   },
   {
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 2,
-   "perigo_ou_maior": 1,
-   "referencia": "03/11/2026 22:12",
+   "valor": 4,
+   "perigo_ou_maior": 2,
+   "referencia": "04/11/2026 22:15",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
     "valor": 2,
-    "referencia": "02/11/2026 22:15"
+    "referencia": "03/11/2026 22:12"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "03/11/2026",
+   "referencia": "04/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "02/11/2026"
+    "referencia": "03/11/2026"
    }
   }
  ]

@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-28 a 2026-11-04 (1406 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-28 a 2026-11-04 (1410 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-04 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-04 07:20 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-03 01:35 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-04 00:40 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-04 01:20 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-04 12:31 | 259 s | 1 | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -65,11 +65,11 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-04 · por canal: we
 | `coletar_sg_esus.py` | coletor | 2026-11-03 03:38 | 9 s | — | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-04 07:20 | 4 s | — | **erro** (7 seguidas) | SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam |
 | `coletar_sim.py` | coletor | 2026-11-04 07:17 | 141 s | — | ok | — |
-| `coletar_sinais_risco.py` | coletor | 2026-11-03 01:11 | 123 s | — | ok | — |
+| `coletar_sinais_risco.py` | coletor | 2026-11-04 01:14 | 94 s | — | ok | — |
 | `coletar_sisab.py` | coletor | 2026-11-04 07:15 | 126 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-10-31 01:15 | 282 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-03 03:37 | 28 s | — | ok | — |
-| `coletar_transferencias_municipais.py` | coletor | 2026-11-03 01:13 | 80 s | — | ok | — |
+| `coletar_transferencias_municipais.py` | coletor | 2026-11-04 01:16 | 70 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-11-04 04:05 | 158 s | — | **erro** (2 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-01 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `descobrir_planos.py` | coletor | 2026-11-04 08:33 | 465 s | 42 | ok | — |
@@ -97,7 +97,7 @@ cobertura 15d: 4984/5571 com verificação real até 2026-11-04 · por canal: we
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-04 05:14 | 1007 s | — | ok | — |
 | `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-30 06:06 | 3455 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-10-31 01:14 | 90 s | — | ok | — |
-| `scripts/sondar_credenciais.py` | coletor | 2026-11-03 01:14 | 2 s | — | ok | — |
+| `scripts/sondar_credenciais.py` | coletor | 2026-11-04 01:17 | 2 s | — | ok | — |
 | `scripts/sondar_rotas_doe.py` | coletor | 2026-10-28 21:49 | 92 s | — | ok | — |
 | `scripts/triar_fila.py` | coletor | 2026-11-03 01:45 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-03 01:53 | 3 s | — | ok | — |
