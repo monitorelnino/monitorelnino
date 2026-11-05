@@ -429,7 +429,34 @@ def autoteste() -> int:
         # e não foi gravado, o 1 foi gravado, e a gravação aconteceu uma vez.
         return "1" in feitos and "3" not in feitos and set(feitos) <= {"1", "2", "4"} and len(lotes) == 1
 
+    def t_sitio_uma_linha_por_municipio():
+        """Cada município lido vira uma linha `site_municipal` com município e UF; o que não foi lido é `erro`;
+        a fila aceita `municipios` do cadastro (codigo_ibge numérico)."""
+        import unittest.mock as mock
+        import tempfile
+        linhas = []
+        res = {"1200013": {"dominio": "acrelandia.ac.gov.br", "situacao": "lido", "pistas": []},
+               "1200054": {"dominio": None, "situacao": "portal_nao_verificado", "pistas": []},
+               "1200104": {"dominio": "x.ac.gov.br", "situacao": "lido", "pistas": [{"url": "u"}]}}
+        ref = {c: {"nome": f"M{c}", "uf": "AC"} for c in res}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
+            json.dump({"municipios": [{"codigo_ibge": int(c)} for c in res]}, f)
+        with mock.patch(f"{__name__}.referencia_ibge", return_value=(ref, None)), \
+             mock.patch(f"{__name__}.hoje_editorial", return_value=__import__("datetime").date(2026, 11, 5)), \
+             mock.patch(f"{__name__}.ler", return_value={"municipios": {}}), \
+             mock.patch(f"{__name__}.gravar"), \
+             mock.patch(f"{__name__}.log_busca", side_effect=lambda *a, **k: linhas.append((a, k))), \
+             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h: res[c]), \
+             mock.patch("scripts.pistas.gravar_lote", return_value={"gravadas": 0, "recusadas": 0}):
+            rodar_municipios(f.name)
+        import os
+        os.unlink(f.name)
+        por = {k["ibge"]: (a[0], a[3], k["municipio"], k["uf"]) for a, k in linhas if a[0] == "site_municipal"}
+        return (len(por) == 3 and por["1200013"] == ("site_municipal", "consultado sem achado", "M1200013", "AC")
+                and por["1200054"][1] == "erro" and por["1200104"][1] == "pista")
+
     return rodar_autoteste({
+        "§25 sítio da prefeitura: uma linha do log por município, fila do cadastro": t_sitio_uma_linha_por_municipio,
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
         "§186 purga tira o ruído e preserva página e canal 1": t_purga_tira_ruido_e_preserva_pagina_e_canal_1,
         "domínio conhecido (BA/saúde)": t_dominio_conhecido,
@@ -709,6 +736,20 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
     return {"dominio": dominio, "situacao": situacao, "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
 
 
+def registrar_consulta_do_sitio(nome: str, uf: str, ibge: str, r: dict) -> None:
+    """Uma linha do log por município (canal `site_municipal`, município e UF estruturados): é o que o
+    `niveis_do_log` (recalcular_mare.py, §25) conta como a consulta do sítio da prefeitura. Só `lido` é consulta
+    feita (a home se identificou como a prefeitura e foi lida); endereço que não respondeu como a prefeitura,
+    recusa e a prefeitura sem API nem link em HTML estático ficam `erro`/sem nível, nunca ausência afirmada."""
+    sit = r["situacao"]
+    if sit == "lido":
+        decisao = "pista" if r["pistas"] else "consultado sem achado"
+    else:
+        decisao = "erro"
+    log_busca("site_municipal", 3, [r.get("dominio") or "dominio padrao"], decisao, uf=uf, municipio=nome, ibge=ibge,
+              n_resultados=len(r["pistas"]), resultados=f"{sit}: {r.get('motivo') or ''}"[:200])
+
+
 def rodar_municipios(caminho: str, limite: int = None) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
     (`prazo=Nmin`) chega como SIGINT e o que foi lido é gravado."""
@@ -718,7 +759,9 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
     hoje = hoje_editorial().isoformat()
     feitos = ler(RESULTADO_DA_RODADA, {"municipios": {}})
     feitos.setdefault("municipios", {})
-    fila = [c for c in doc.get("fila", []) if c in por_cod and feitos["municipios"].get(c, {}).get("consultado_em") != hoje]
+    # `fila` (códigos) ou `municipios` (cadastro: municipios_prioritarios.json), como em buscar_planos_fontes_abertas
+    fila = [c for c in (doc.get("fila") or [str(m["codigo_ibge"]).zfill(7) for m in doc.get("municipios", [])])
+            if c in por_cod and feitos["municipios"].get(c, {}).get("consultado_em") != hoje]
     pistas, lidos, gravados = [], 0, set()
     todo = fila[:limite] if limite else fila
 
@@ -729,6 +772,7 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
                                      "motivo": r.get("motivo"), "pistas": len(r["pistas"])}
         gravados.add(cod)
         lidos += 1
+        registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
 
     with ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS) as pool:
         futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje): c
