@@ -813,20 +813,21 @@ button.chip-risco[aria-pressed="true"]{background:var(--ink); color:var(--branco
 /* ===== 16. Rodapé ===== */
 footer.site-footer{margin-top:var(--sp-7); padding:0 0 var(--sp-2); text-align:center; font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted);}
 footer.site-footer .grad-line{margin:0 0 var(--sp-5);}
-footer.site-footer .logo-futura{height:18px; margin:0 auto var(--sp-2);}
+footer.site-footer .logo-futura{height:20px; margin:0 auto var(--sp-2);}
 footer.site-footer .mast-logo{display:block; text-decoration:none;}
 footer.site-footer .rodape-logos{display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:var(--sp-5) var(--sp-8); margin:0 0 var(--sp-3);}
-footer.site-footer .rodape-logo{display:flex; flex-direction:column; align-items:center; gap:var(--sp-2);}
-footer.site-footer .rodape-logos .rodape-redes{margin:0;}
+footer.site-footer .rodape-logo{display:flex; flex-direction:column; align-items:center; gap:var(--sp-1);}
 footer.site-footer .rodape-logo-rotulo{font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:.06em; text-transform:uppercase; color:var(--muted);}
-footer.site-footer .rodape-logos .logo-futura{margin:0;}
-footer.site-footer .rodape-logos .mast-logo{display:flex; align-items:center; min-height:var(--alvo-toque);}
-footer.site-footer .logo-parceiro{display:block; height:26px; width:auto;}
+footer.site-footer .rodape-logos .logo-futura{margin:0; width:auto;}
+footer.site-footer .rodape-logos .mast-logo{display:flex; align-items:center; min-height:36px;}
+footer.site-footer .logo-parceiro{display:block; height:28px; width:auto;}
 footer.site-footer .rodape-linha{display:block;}
-footer.site-footer .rodape-assinatura{display:block; font-size:var(--fs-caption); line-height:var(--lh-caption);}
-footer.site-footer .rodape-redes{display:flex; flex-wrap:wrap; justify-content:center; gap:var(--sp-2) var(--sp-4); list-style:none; margin:var(--sp-2) 0 var(--sp-3); padding:0;}
-footer.site-footer .rodape-redes a{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--sp-1); min-width:var(--alvo-toque); min-height:var(--alvo-toque);}
-footer.site-footer .rodape-redes img{height:var(--sp-5); width:auto;}
+footer.site-footer .rodape-autoria{display:flex; flex-direction:column; align-items:center; font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);}
+footer.site-footer .rodape-assinatura{display:block;}
+footer.site-footer .rodape-redes{display:flex; justify-content:center; gap:var(--sp-3); list-style:none; margin:0; padding:0;}
+footer.site-footer .rodape-redes a{display:flex; align-items:center; justify-content:center; min-height:24px; color:var(--muted); text-decoration:none;}
+footer.site-footer .rodape-redes img{height:16px; width:auto; opacity:.6;}
+footer.site-footer .rodape-redes span{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
 footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-size:var(--fs-caption); line-height:var(--lh-caption);}
 
 /* ===== 17. Utilitários (só tokens) ===== */
