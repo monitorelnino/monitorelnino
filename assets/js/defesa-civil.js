@@ -200,8 +200,8 @@ function __init(){
   // =========================================================
   // 2. Como está o seu município
   // =========================================================
-  const cartao = (classe, tituloId, corpo) => '<div class="cartao ' + classe + '"><p class="cartao-k">'
-    + esc((C && C.texto(tituloId)) || '') + '</p>' + corpo + '</div>';
+  const cartao = (classe, tituloId, corpo) => '<div class="cartao ' + classe + '"><h3 class="figura-titulo">'
+    + esc((C && C.texto(tituloId)) || '') + '</h3>' + corpo + '</div>';
   const linhaT = (t, s) => '<b class="cartao-t">' + t + '</b>' + (s ? '<span class="cartao-s">' + s + '</span>' : '');
   const horaBR = v => { const m = /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/.exec(String(v || '')); return m ? m[3] + '/' + m[2] + ', ' + m[4] + ':' + m[5] : ''; };
   const NATUREZA = {SE: 'Situação de emergência', ECP: 'Estado de calamidade pública'};
