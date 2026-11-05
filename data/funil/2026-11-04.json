@@ -4,15 +4,15 @@
  "etapas": {
   "busca_web": {
    "brutos_periodo_ou_seca": 0,
-   "brutos_plancon": 160,
+   "brutos_plancon": 320,
    "brutos_siglas_e_variantes": 0,
    "coberto_sem_mencao": 0,
-   "com_resultado_bruto": 8,
-   "consultas": 18,
+   "com_resultado_bruto": 16,
+   "consultas": 36,
    "lacunas": 0,
-   "motor_sem_resposta": 10,
+   "motor_sem_resposta": 20,
    "nao_localizado_ate_o_momento": 0,
-   "pistas": 22
+   "pistas": 33
   },
   "descobrir_planos": {
    "achados_novos": 0,
@@ -22,10 +22,10 @@
   },
   "diario_consorciado": {
    "bloqueadas": 0,
-   "decretos_novos": 3,
-   "fontes": 16,
+   "decretos_novos": 4,
+   "fontes": 32,
    "fora_do_ar": 0,
-   "pistas": 32
+   "pistas": 64
   },
   "diario_municipal": {
    "consultados": 0,
@@ -51,14 +51,19 @@
    "recusa_documento_inacessivel": 2536,
    "recusa_ente_nao_confirmado": 332,
    "recusa_executivo_pendente": 4,
+   "recusa_fora_do_objeto": 1,
    "recusa_minuta_ou_rascunho": 12,
    "recusa_natureza_duvidosa": 30,
    "recusa_noticia_institucional_nao_e_o_plano": 47,
    "recusa_plano_sem_identificacao": 11,
-   "recusa_texto_nao_extraivel": 143,
-   "recusa_fora_do_objeto": 1,
-   "recusa_resposta": 1
+   "recusa_resposta": 1,
+   "recusa_texto_nao_extraivel": 143
+  },
+  "transferencias_municipais": {
+   "com_resultado_bruto": 10,
+   "consultas": 10,
+   "municipios": 55648
   }
  },
- "atualizado_em": "2026-11-04T22:43:00"
+ "atualizado_em": "2026-11-05T02:21:45"
 }
