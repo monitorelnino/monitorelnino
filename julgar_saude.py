@@ -1381,6 +1381,12 @@ def autoteste() -> int:
     casos["vigência declarada no ato e decreto revogado saem do texto"] = (
         lambda: vigencia_e_revogacao(t_am) == {"vigencia_dias": 180, "revoga": ["55.767"]}
         and vigencia_e_revogacao("Fica declarada a emergência.") == {})
+    t_am_doe = ("Protocolo 293135 DECRETO N.º 55.965, DE 26 DE OUTUBRO DE 2026 DECLARA Situação de Emergência em Saúde "
+                "Pública no Estado do Amazonas. O GOVERNADOR DO ESTADO DO AMAZONAS, no uso das atribuições, DECRETA: Art. 8º A emergência vigorará por 180 (cento e oitenta) dias.")
+    e4, _ = julgar_emergencias(None, {}, {"ufs": {"AM": {"2026-10-26": {"url": "am.html", "achados": [{"classe": "declaracao"}]}}}}, {},
+                               buscar_fn=lambda u, **k: t_am_doe.encode(), preservar_fn=lambda *a: "h")
+    casos["grafia \"N.º\" do diário do AM: o decreto datado é identificado e a emergência entra"] = (
+        lambda: len(e4) == 1 and e4[0].get("uf") == "AM")
     _HOSTS_SEM_RESPOSTA.clear()
     v1 = julgar_pista({"url": "https://morto.ap.gov.br/a.pdf", "uf": "AP"}, buscar_fn=cai)
     v2 = julgar_pista({"url": "https://morto.ap.gov.br/b.pdf", "uf": "AP"}, buscar_fn=cai)

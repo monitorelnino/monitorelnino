@@ -41,7 +41,7 @@ import sys
 import time
 from datetime import date
 
-from coletores_base import (buscar, ler, gravar, log_busca, registrar_lacuna, rodar_autoteste,
+from coletores_base import (NUM_ATO, buscar, ler, gravar, log_busca, registrar_lacuna, rodar_autoteste,
                             preservar_evidencia, parse_busca_dou, varrer_busca_dou,
                             FormatoDoDOUMudou, RAIZ, hoje_editorial, desde_de)
 
@@ -69,7 +69,7 @@ PADRAO_DECLARA = re.compile(r"(?:\bdeclara(?:m|r|ção)?\b|\bfica(?:m)?\s+declar
                             r"\bemerg[êe]ncia em sa[úu]de p[úu]blica\b", re.I)
 PADRAO_ENCERRA = re.compile(r"\b(encerra|declara o encerramento|revoga|torna sem efeito)\b", re.I)
 PADRAO_PRORROGA = re.compile(r"\bprorroga\b", re.I)
-PADRAO_ATO = re.compile(r"(PORTARIA|DECRETO)\s+(?:[A-ZÇ/\.]+\s+)?N[ºo°]\s*([\d\.]+)", re.I)
+PADRAO_ATO = re.compile(r"(PORTARIA|DECRETO)\s+(?:[A-ZÇ/\.]+\s+)?" + NUM_ATO + r"\s*([\d\.]+)", re.I)
 
 
 def deve_abrir_o_ato(item: dict) -> bool:

@@ -31,7 +31,7 @@ um link. Se a listagem não trouxer nenhum link nesse padrão, lacuna declarada.
 import io, re, sys
 from datetime import date
 from pathlib import Path
-from coletores_base import ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste, data_da_edicao
+from coletores_base import NUM_ATO, ler, gravar, buscar, buscar_com_reserva_wayback, registrar_lacuna, log_busca, rodar_autoteste, data_da_edicao
 from preservar_evidencias import extrair_texto_por_pagina
 
 RAIZ = Path(__file__).resolve().parent
@@ -81,7 +81,7 @@ def parse_texto(texto: str) -> dict:
     """Extrai do texto do PDF: referência, período, data de extração, cards dos quatro agravos, tabelas por
     Região de Saúde (dengue e chikungunya) e monitoramento laboratorial. Função pura; ValueError se algo
     essencial não bater."""
-    m = re.search(r"N[ºo°]\s*(\d{1,3})\s+Semana Epidemiol[óo]gica\s+(\d{1,2})/(\d{4})\s+(\d{1,2})\s+de\s+(\w+)\s+de\s+(\d{4})", texto, re.I)
+    m = re.search(NUM_ATO + r"\s*(\d{1,3})\s+Semana Epidemiol[óo]gica\s+(\d{1,2})/(\d{4})\s+(\d{1,2})\s+de\s+(\w+)\s+de\s+(\d{4})", texto, re.I)
     if not m:
         raise ValueError("cabeçalho 'Nº N Semana Epidemiológica SS/AAAA D de mês de AAAA' não encontrado")
     mes = MESES.get(m.group(5).lower())
