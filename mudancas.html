@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <script src="assets/mapas.js?v=414c4e5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=2919eaba">
+<link rel="stylesheet" href="assets/base.css?v=6af682ab">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.</dt>
+      <dd></dd>
       <dt>05/11/2026 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.</dt>
       <dd></dd>
       <dt>04/11/2026 · reconferência das rotas dos diários · A sonda dos diários ganha `--reconferir`: um GET identificado por rota de cada UF, com código, veredito (voltou, bloqueio, fora do ar, timeout) e situação do robots, gravado em `reconferencia` de `data/fontes_doe.json`. Em 04/11: 16 UFs responderam 200; PE (REST) 401 respeitado; MA 500; BA, PB, RS e TO sem resposta no tempo.</dt>
@@ -165,16 +167,19 @@
       <dd>A execução das MPs 1.367 e 1.384 passa a trazer, em cada mês, o valor pago por modalidade de aplicação, além de empenhado, liquidado e pago. Sem código legível da modalidade, a linha cai em &quot;outras formas&quot;, nunca em categoria inventada. O dado chega na próxima rodada semanal da atualização. Linhas: +3 de código, por ser o campo que faltava.</dd>
       <dt>26/10/2026 · Imprensa: estados com plano para o ciclo (4 de 27) e cidades acima da OMS como lacuna</dt>
       <dd>A Imprensa passa a ler, do monitor de saúde, quantos estados têm instrumento estadual novo para o ciclo (4 de 27), sem zero para UF não verificada. O limite da OMS por cidade fica como lacuna declarada, porque a série diária por município não está publicada no arquivo. Autoteste novo. Origem: `gerar_imprensa_semana.py`.</dd>
-      <dt>26/10/2026 · Saúde v0.7: tempo como contexto na ficha do estado</dt>
-      <dd>A ficha do estado na Saúde mostra o tempo do ato depois do Boletim nº 1 como linha de contexto, rotulada como fora do índice (peso zero, dado do motor v0.7). Nenhum número do índice muda.</dd>
     </dl>
   </section>
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patty Ferrini</a></span>
-    <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener"><img src="assets/redes/linkedin.png?v=b80ab655" alt="" width="26" height="24"><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener"><img src="assets/redes/instagram.svg?v=a036f819" alt="" width="24" height="24"><span>Instagram</span></a></li></ul>
+    <div class="rodape-logos">
+      <div class="rodape-logo"><span class="rodape-logo-rotulo" data-conteudo-html="rodape.realizacao">Realização</span>
+      <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+      <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patty Ferrini</a></span>
+      <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener"><img src="assets/redes/linkedin.png?v=b80ab655" alt="" width="26" height="24"><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener"><img src="assets/redes/instagram.svg?v=a036f819" alt="" width="24" height="24"><span>Instagram</span></a></li></ul></div>
+      <div class="rodape-logo"><span class="rodape-logo-rotulo" data-conteudo-html="rodape.parceria">Parceria</span>
+      <a href="https://institutoar.org.br/" target="_blank" rel="noopener" title="Instituto Ar" class="mast-logo"><img class="logo-parceiro" src="assets/parceiros/instituto-ar-positivo.svg?v=da374906" alt="Instituto Ar" width="124" height="26"></a></div>
+    </div>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
     <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">05/11/2026</span> · Corte <span id="corteDados">05/11/2026</span> · Coleta <span id="metaColeta">05/11/2026</span> · Publicação <span id="metaPublicacao">05/11/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
