@@ -75,7 +75,6 @@ erros += len(erros_de_shell)
 #
 # A trava é esta: nenhum passo tem `run` com `with` ou `uses`. São as três chaves que decidem o que
 # o passo É, e duas delas juntas significam que alguém colou um passo dentro do outro.
-EXCLUSIVAS = ("run", "uses")
 passo_ambiguo = []
 for f, wf in carregados.items():
     for nome, job in ((wf or {}).get("jobs") or {}).items():

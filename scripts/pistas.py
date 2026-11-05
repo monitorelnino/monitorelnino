@@ -463,7 +463,7 @@ def _autoteste() -> int:
        chave_da_pista(dict(n)) == chave_da_pista(dict(n)))
 
     # ---- gravar_lote e sincronizar, com disco de mentira ----
-    import tempfile, json as _json, os as _os
+    import tempfile, json as _json
     import coletores_base as cb
     with tempfile.TemporaryDirectory() as t:
         falso = {}

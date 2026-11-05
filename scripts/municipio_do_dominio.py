@@ -65,8 +65,6 @@ PREFIXOS = ("www", "www2", "www3", "web", "portal", "novoportal", "site", "trans
             "prefeitura", "prefeituramunicipal", "pref", "municipio", "governo",
             "cidadao", "servicos", "atendimento")
 
-# Hosts que NÃO são de município, mesmo terminando em .gov.br.
-NAO_MUNICIPAL = ("gov.br", "leg.br", "jus.br", "mp.br", "def.br")
 
 
 def _norm(texto: str) -> str:

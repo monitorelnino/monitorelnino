@@ -54,7 +54,6 @@ RENOMEACOES = CATALOGO / "_renomeacoes.json"
 sys.path.insert(0, str(RAIZ / "scripts"))
 from migrar_para_catalogo import extrair, ids_escritos_pelo_js  # noqa: E402
 
-RE_MARCADOR = re.compile(r"\{([^{}|]+)\}")
 RE_PLURAL = re.compile(r"\{(\w+)((?:\|[^|{}]*){1,})\}")
 
 

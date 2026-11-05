@@ -43,7 +43,6 @@ sys.path.insert(0, str(RAIZ))
 
 SEMENTE = 42   # a mesma do item D, para que as duas medições falem da mesma amostra
 ESPACO_ENTRE_CONSULTAS = 5.0   # PR 1c item 6: instância dedicada, sem pressa — 5 s entre consultas
-ALVO_DE_REVOCACAO = 0.95       # conjunto mínimo aceitável: recupera >= 95% do que o leque recupera
 
 
 def sortear_registrados(municipios: list, n: int, semente: int = SEMENTE) -> list:
