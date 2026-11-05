@@ -176,6 +176,9 @@ def semana_do_rotulo(referencia) -> str | None:
     return ("de " + semana_em_datas(int(m.group(1)), int(m.group(2)))[0]) if m else None
 
 
+# Abreviatura de "número" antes do número do ato, em todas as grafias dos diários: Nº, N°, No, N.º, N. º, Nº.
+# Fonte única (05/11/2026): o "N.º" do Decreto AM 55.965 escapava a quatro cópias de N[ºo°].
+NUM_ATO = r"N\.?\s*[ºo°]?\.?"
 RE_DATA_ISO = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
 RE_DATA_BR = re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b")
 MESES_PT = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5,
@@ -301,6 +304,25 @@ def _indent_de(p) -> int:
         return n if 0 < n <= 8 else 1
     except FileNotFoundError:
         return 1
+
+
+# 05/11/2026 (central, 21:00): log que só cresce grava um registro por linha (menos linhas por commit).
+UMA_LINHA_POR_REGISTRO = {"saude_pipeline.json": "execucoes"}
+
+
+def _despejar(f, obj, p, compacto: bool) -> None:
+    """Escreve `obj` em `f`; a lista de `UMA_LINHA_POR_REGISTRO` sai com um registro por linha."""
+    chave = UMA_LINHA_POR_REGISTRO.get(p.name)
+    if compacto or chave not in (obj if isinstance(obj, dict) else {}):
+        json.dump(obj, f, ensure_ascii=False, indent=None if compacto else _indent_de(p),
+                  **({"separators": (",", ":")} if compacto else {}))
+        return
+    ind = " " * _indent_de(p)
+    corpos = [f'{ind}{json.dumps(k, ensure_ascii=False)}: ' + (
+        "[\n" + ",\n".join(ind * 2 + json.dumps(i, ensure_ascii=False) for i in v) + f"\n{ind}]" if v else "[]")
+        if k == chave else f'{ind}{json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False)}'
+        for k, v in obj.items()]
+    f.write("{\n" + ",\n".join(corpos) + "\n}")
 
 
 def gravar(nome, obj, compacto: bool = False):
@@ -485,10 +507,7 @@ def gravar_em(p, obj, compacto: bool = False):
     # escrita apaga o temporário; morte do processo fica coberta pelo `.gitignore` (`*.tmp[0-9]*`).
     try:
         with open(tmp, "w", encoding="utf-8", newline="\n") as f:
-            if compacto:
-                json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
-            else:
-                json.dump(obj, f, ensure_ascii=False, indent=_indent_de(p))
+            _despejar(f, obj, p, compacto)
             f.write("\n")
     except BaseException:
         try:

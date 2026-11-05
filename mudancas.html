@@ -28,9 +28,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/acesso.js?v=d6581579"></script>
-<script src="assets/mapas.js?v=414c4e5f"></script>
+<script src="assets/mapas.js?v=9c01ebb0"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=d3e97d4a">
+<link rel="stylesheet" href="assets/base.css?v=2c2763c2">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,11 +47,21 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · Busca do diário estadual: a janela curta da noite estende a leitura do ciclo, não a apaga · `coletar_edicoes_doe.py` guarda o `desde` mais antigo quando a nova leitura continua a anterior com os mesmos termos; antes, 7 UFs voltavam a &quot;busca ainda não rodou&quot; a cada noite.</dt>
+      <dd></dd>
+      <dt>05/11/2026 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a &quot;Saúde na estrutura de crise do estado&quot;. A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.</dt>
+      <dd></dd>
+      <dt>05/11/2026 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito &quot;N.º&quot; não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.</dt>
+      <dd></dd>
+      <dt>05/11/2026 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.</dt>
+      <dd></dd>
       <dt>05/11/2026 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^=&quot;circulos-&quot;] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).</dt>
       <dd></dd>
       <dt>05/11/2026 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.</dt>
       <dd></dd>
       <dt>05/11/2026 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.</dt>
+      <dd></dd>
+      <dt>05/11/2026 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.</dt>
       <dd></dd>
       <dt>05/11/2026 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.</dt>
       <dd></dd>
@@ -157,16 +167,6 @@
       <dd>Causa: `registrar()` podava o log pelo relógio de cada elo; escritores em dias diferentes discordavam e a união lia encolhimento (#1174). Correção na origem: o log só cresce; a janela de 7 dias fica no painel, ancorada na última execução; teto de 60.000 execuções falha alto, sem poda em silêncio.</dd>
       <dt>26/10/2026 · Financiamento: % do pago aplicado pela União sai por medida</dt>
       <dd>Cada medida provisória do Financiamento traz `pct_gasto_direto` no derivado `semana.json`: a parcela do valor pago aplicada diretamente pela União (modalidade 90). Sem modalidade coletada ou sem pago medido, o campo fica nulo, lacuna declarada, nunca zero. Nenhuma regra de índice muda.</dd>
-      <dt>26/10/2026 · Ar medido: capital sem medição na janela é lacuna declarada</dt>
-      <dd>Quando o OpenAQ responde sem nenhuma medição nos 31 dias, a capital deixa de sair como &quot;coletado&quot; e passa a &quot;sem_medicao_na_janela&quot;. Sem zero, sem série inventada. Só o coletor do ar medido. Linhas: +2/−1.</dd>
-      <dt>26/10/2026 · Válvulas de dia repassam as chaves de API ao coletor</dt>
-      <dd>A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.</dd>
-      <dt>26/10/2026 · Monitor de riscos: subtítulo do mapa de focos descreve pontos; topo sem datas de semana para desfecho mensal</dt>
-      <dd>O subtítulo do mapa de focos passa a descrever o dado de pontos (satélite, últimas 24 horas). No gerador do topo, só desfecho semanal recebe início e fim de semana; o mensal (diarreia 2026-07) deixa essas datas nulas, em vez de virar semana 07. Autoteste ganha o caso. Código +5/−2.</dd>
-      <dt>26/10/2026 · Orientações oficiais: cinco páginas federais atuais na coleta</dt>
-      <dd>Entram na coleta das orientações do Proteja-se cinco páginas federais atuais (MIDR: chuvas e deslizamento; Ministério da Saúde: queimadas e dengue). Cada item só ganha fonte com trecho da página que o sustenta; o restante segue como lacuna declarada. Peso zero. Linhas: +6/−0.</dd>
-      <dt>26/10/2026 · Busca de planos: candidatos das sondas do MP, Judiciário, Saúde e Transferegov entram na fila</dt>
-      <dd>As sondas de 24/10 acharam 27 endereços nas capitais e não leram nenhum. Cada um passa pela porta única da fila de pistas e segue ao juiz; endereço de busca não vira documento nem pontua. A porta recusa o que não é plano ou excede o teto, com motivo. Linhas: +57 de código novo (adaptador da busca de planos), +1 arquivo de entrada.</dd>
     </dl>
   </section>
 </main>
