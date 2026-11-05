@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · sítio da prefeitura: endereço oficial e página renderizada · A busca do portal tenta primeiro o endereço oficial do cadastro público (Wikidata) e, quando a home só monta por JavaScript, lê os links da página renderizada pelo navegador; refaz uma vez os municípios sem portal ou sem página lida. Código +60/−28.
+
 ## 2026-11-05 · sítio da prefeitura: mais endereços · A busca do portal tenta também prefeiturade<nome>, prefeitura<nome> e pm<nome> (.uf.gov.br); município sem portal achado hoje é refeito uma vez com a lista nova. Código +14/−4.
 
 ## 2026-11-05 · design · Saúde sem rótulo acima do título · Cartões e figuras da Saúde começam pelo título; a classe do rótulo (`cartao-mapa-familia`, `cartao-k`) sai do CSS e passa a ser reprovada pelo verificador. Código +3/−20.
