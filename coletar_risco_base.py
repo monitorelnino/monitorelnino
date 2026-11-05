@@ -88,6 +88,8 @@ def main() -> int:
     ruins = problemas(cat)
     if ruins:
         print("X VALIDAÇÃO — nada foi gravado:", *ruins, sep="\n   - ")
+        for n in nos_de(corpo)[:3]:  # só os NOMES dos campos, nunca valores
+            print("   chaves:", sorted(n) if isinstance(n, dict) else type(n).__name__)
         return 1
     preservar_evidencia(corpo, url, "json", ORIGEM)
     gravar_em(SAIDA, {
