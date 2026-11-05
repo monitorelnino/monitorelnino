@@ -329,7 +329,11 @@ def autoteste() -> int:
     def t_dominios_e_identidade_do_portal():
         d = dominios_do_municipio("São João d'Aliança", "GO")
         pref = "<title>Prefeitura Municipal de Santana do Ipanema</title><body>Gabinete</body>"
-        return (d == ["saojoaodalianca.go.gov.br", "www.saojoaodalianca.go.gov.br"]
+        return (d[:3] == ["saojoaodalianca.go.gov.br", "www.saojoaodalianca.go.gov.br",
+                          "prefeiturade" + "saojoaodalianca.go.gov.br"] and len(d) == 5
+                and _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": 1})
+                and not _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": CANDIDATOS_V})
+                and not _lista_de_endereco_mudou({"situacao": "lido"})
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
                 and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
@@ -640,10 +644,14 @@ def _so_letras(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
 
 
+CANDIDATOS_V = 2   # 05/11/2026: + prefeiturade<nome>, prefeitura<nome>, pm<nome>
+
+
 def dominios_do_municipio(nome: str, uf: str) -> list:
-    """Os endereços padrão a tentar, em ordem. Função pura."""
-    base = f"{_so_letras(nome)}.{uf.lower()}.gov.br"
-    return [base, f"www.{base}"]
+    """Os endereços padrão a tentar, em ordem (`CANDIDATOS_V` sobe quando a lista muda). Função pura."""
+    n, sufixo = _so_letras(nome), f".{uf.lower()}.gov.br"
+    return [n + sufixo, f"www.{n}{sufixo}", f"prefeiturade{n}{sufixo}",
+            f"prefeitura{n}{sufixo}", f"pm{n}{sufixo}"]
 
 
 def identifica_prefeitura(html: str, nome: str) -> bool:
@@ -750,6 +758,12 @@ def registrar_consulta_do_sitio(nome: str, uf: str, ibge: str, r: dict) -> None:
               n_resultados=len(r["pistas"]), resultados=f"{sit}: {r.get('motivo') or ''}"[:200])
 
 
+def _lista_de_endereco_mudou(v: dict) -> bool:
+    """O município sem portal achado hoje, com a lista de endereços de antes de `CANDIDATOS_V`: refaz-se
+    no mesmo dia (só esse caso; o que foi lido ou recusado não se repete)."""
+    return v.get("situacao") == "portal_nao_verificado" and v.get("candidatos") != CANDIDATOS_V
+
+
 def rodar_municipios(caminho: str, limite: int = None) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
     (`prazo=Nmin`) chega como SIGINT e o que foi lido é gravado."""
@@ -761,7 +775,8 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
     feitos.setdefault("municipios", {})
     # `fila` (códigos) ou `municipios` (cadastro: municipios_prioritarios.json), como em buscar_planos_fontes_abertas
     fila = [c for c in (doc.get("fila") or [str(m["codigo_ibge"]).zfill(7) for m in doc.get("municipios", [])])
-            if c in por_cod and feitos["municipios"].get(c, {}).get("consultado_em") != hoje]
+            if c in por_cod and (feitos["municipios"].get(c, {}).get("consultado_em") != hoje
+                                 or _lista_de_endereco_mudou(feitos["municipios"][c]))]
     pistas, lidos, gravados = [], 0, set()
     todo = fila[:limite] if limite else fila
 
@@ -769,7 +784,8 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
         nonlocal lidos
         pistas.extend(r["pistas"])
         feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
-                                     "motivo": r.get("motivo"), "pistas": len(r["pistas"])}
+                                     "motivo": r.get("motivo"), "pistas": len(r["pistas"]),
+                                     "candidatos": CANDIDATOS_V}
         gravados.add(cod)
         lidos += 1
         registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
