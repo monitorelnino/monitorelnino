@@ -23846,18 +23846,20 @@
    "nome": "Pedra Preta",
    "uf": "RN",
    "decreto": true,
-   "primeiro_decreto": "10/08/2026",
+   "primeiro_decreto": "02/03/2026",
    "primeiro_reconhecimento": "17/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "seca"
    ],
-   "dias_ate_reconhecimento": 7,
+   "dias_ate_reconhecimento": 168,
    "fontes": [
     {
      "canal": "DOU",
@@ -23866,9 +23868,17 @@
      "data": "17/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
      "hash": "fa40af132d0dc95ddfa37c5d1f9b0bd0c4bc8caa1c98360cbe3096ca4b4a316d"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "data": "02/03/2026",
+     "decreto": "ato de resposta — PORTARIA Nº 596",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4314175": {
@@ -24803,6 +24813,36 @@
    ],
    "n_eventos": 1,
    "dias_sem_reconhecimento": null
+  },
+  "5217609": {
+   "ibge": "5217609",
+   "nome": "Planaltina",
+   "uf": "GO",
+   "decreto": true,
+   "primeiro_decreto": "25/02/2025",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/planaltina-go-obtem-o-reconhecimento-federal-de-situacao-de-emergencia",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/planaltina-go-obtem-o-reconhecimento-federal-de-situacao-de-emergencia",
+     "data": "25/02/2025",
+     "decreto": "ato de resposta — Portaria nº 541",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 618
   },
   "2924900": {
    "ibge": "2924900",
