@@ -138,11 +138,10 @@ function __init(){
     + (v == null ? '<span class="barra-valor">' + NAO_LOCALIZADO + '</span>'
        : '<span class="barra" style="width:calc((100% - 4em) * ' + Math.max(0.005, v / escala).toFixed(4) + ');background:' + corBarra + '"></span><span class="barra-valor">' + esc(reais(v)) + '</span>')
     + '</span></div>';
-  const cartaoDinheiro = (acento, etiqueta, nome, apoio, corpo) => '<div class="cartao ' + acento + '"' + '><p class="cartao-k">' + esc(etiqueta) + '</p>'
+  const cartaoDinheiro = (nome, apoio, corpo) => '<div class="cartao cartao--acento-neutro">'
     + '<b class="cartao-t">' + esc(nome) + '</b>' + apoio + corpo + '</div>';
-  const etiquetaDe = o => (RISCOS.find(r => r.chave === o.risco) || {}).rotulo || tx('financiamento.caminhos.etiqueta.sem_risco');
   /* Os dois cartões das MPs entram na grade de figuras, antes do gráfico mensal. */
-  const cartaoMp = o => '<figure class="figura figura--grafico cartao-mapa" id="box' + esc(o.id) + '"><p class="cartao-mapa-familia">' + esc(etiquetaDe(o)) + '</p><h3 class="figura-titulo">' + esc(o.nome) + '</h3>'
+  const cartaoMp = o => '<figure class="figura figura--grafico cartao-mapa" id="box' + esc(o.id) + '"><h3 class="figura-titulo">' + esc(o.nome) + '</h3>'
     + '<p class="figura-sub">' + esc(tx('financiamento.caminhos.mp.orgaos_data.molde', {orgaos: o.orgao || '', data: o.data || NAO_LOCALIZADO})) + '</p>'
     + '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.dotacao'), o.dotacao, P.resposta)
     + barra(tx('financiamento.caminhos.barra.empenhado'), o.empenhado, P.resposta)
@@ -156,11 +155,11 @@ function __init(){
   const linhaFunil = F.n_decretaram == null ? '' : '<p class="cartao-s">' + esc(tx('financiamento.caminhos.funil.linha', {n_decretaram: n(F.n_decretaram),
     n_reconhecidos: n(F.n_reconhecidos), n_com_recurso: n(F.n_com_recurso)})) + '</p>';
   const linhasRepasses = document.getElementById('linhasRepasses');
-  if (linhasRepasses) linhasRepasses.innerHTML = cartaoDinheiro('cartao--acento-chuva', tx('financiamento.caminhos.etiqueta.todos_os_riscos'),
+  if (linhasRepasses) linhasRepasses.innerHTML = cartaoDinheiro(
       tx('financiamento.caminhos.faixa_resposta.titulo'), linhaFunil,
       tpa ? '<div class="barras-painel">' + Object.keys(ACOES).map(k => barra(tx('financiamento.caminhos.barra.autorizado', {acao: ACOES[k].toLowerCase()}), tpa[k], P.resposta)).join('') + '</div>'
           : '<span class="cartao-s">' + NAO_LOCALIZADO + '</span>')
-    + cartaoDinheiro('cartao--acento-chuva', RISCOS.find(r => r.chave === 'saude').rotulo.toLowerCase(), tx('financiamento.caminhos.sus.titulo'), '',
+    + cartaoDinheiro(tx('financiamento.caminhos.sus.titulo'), '',
       '<div class="barras-painel">' + barra(tx('financiamento.caminhos.barra.desembolsado'), susPago, P.setores.saude) + '</div>');
   const corpo = document.querySelector('#tblOrigens tbody');
   if (corpo) corpo.innerHTML = origens.map(o => '<tr>' + [esc(o.nome), esc(o.ato || ''), esc(o.data || NAO_LOCALIZADO), esc(o.orgao || ''),
@@ -231,7 +230,7 @@ function __init(){
     'data/financiamento/municipios/fns_municipios_2026.json'].map(f => fetch(f).then(r => r.ok ? r.json() : null).catch(() => null))).then(([t, d, f]) => { TRANSF = t; DESPESA = d; FNS_MUN = f; }));
   /* A mesma data de consulta da página em todos os cartões e linhas (o corte do gerador). */
   const consultado = S && S.corte;
-  const cartao = (classe, titulo, corpo) => '<div class="cartao ' + classe + '"><p class="cartao-k">' + esc(titulo) + '</p>' + corpo + '</div>';
+  const cartao = (classe, titulo, corpo) => '<div class="cartao ' + classe + '"><h3 class="figura-titulo">' + esc(titulo) + '</h3>' + corpo + '</div>';
   const linhaT = (t, s) => '<b class="cartao-t">' + t + '</b>' + (s ? '<span class="cartao-s">' + s + '</span>' : '');
   const fonteT = chave => '<span class="cartao-s">' + esc(tx(chave, {data: consultado || 'sem registro'})) + '</span>';
   const faixa = (chave, valores) => '<p class="hint">' + esc(tx(chave, Object.assign({data: consultado || 'sem registro'}, valores))) + '</p>';
