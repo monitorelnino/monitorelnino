@@ -93,6 +93,7 @@ def main() -> int:
         print("X VALIDAÇÃO — nada foi gravado:", *ruins, sep="\n   - ")
         return 1
     preservar_evidencia(corpo, url, "json", ORIGEM)
+    SAIDA.parent.mkdir(parents=True, exist_ok=True)  # gravar_em não cria a pasta
     gravar_em(SAIDA, {
         "_governanca": ("Catálogo de indicadores do AdaptaBrasil (MCTI/INPE/RNP). Peso zero; não é "
                         "risco do ciclo. Sem valor por município nesta etapa: ausência é lacuna "
