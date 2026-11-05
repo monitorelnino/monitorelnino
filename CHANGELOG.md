@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · #1545 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a "Saúde na estrutura de crise do estado". A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.
+
 ## 2026-11-05 · #1541 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito "N.º" não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.
 
 ## 2026-11-05 · Saúde do pipeline: um registro por linha · `gravar_em` passa a gravar cada execução de `data/saude_pipeline.json` numa linha; o arquivo é reformatado na próxima escrita, sem mudar o conteúdo. Nenhuma página muda.
@@ -28,6 +30,7 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-05 · #1527 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.
 
 ## 2026-11-05 · sítio da prefeitura: endereço oficial e página renderizada · A busca do portal tenta primeiro o endereço oficial do cadastro público (Wikidata) e, quando a home só monta por JavaScript, lê os links da página renderizada pelo navegador; refaz uma vez os municípios sem portal ou sem página lida. Código +60/−28.
+## 2026-11-05 · #1545 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
 
 ## 2026-11-05 · #PR · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
 
