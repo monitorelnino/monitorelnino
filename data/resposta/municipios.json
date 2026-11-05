@@ -177,9 +177,17 @@
      "data": "03/11/2026",
      "decreto": "Decreto nº 75",
      "hash": "127a153b9e32edaedb881828df02e8419511e31a9604d372e21c7f7673e0ebf7"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 75",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 2
   },
   "4200051": {
@@ -6584,9 +6592,17 @@
      "data": "04/09/2026",
      "decreto": "Decreto municipal nº 100",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 140",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3103801": {
@@ -7517,9 +7533,17 @@
      "data": "21/10/2026",
      "decreto": "Decreto municipal nº 230",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 247",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 15
   },
   "3300233": {
@@ -8004,18 +8028,31 @@
    "ibge": "4101903",
    "nome": "Assaí",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 253",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2301604": {
    "ibge": "2301604",
@@ -14102,18 +14139,31 @@
    "ibge": "4103222",
    "nome": "Bom Sucesso do Sul",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 3.940",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "4202453": {
    "ibge": "4202453",
@@ -20518,9 +20568,17 @@
      "data": "26/10/2026",
      "decreto": "Decreto municipal nº 230",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 235",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "4304309": {
@@ -25711,9 +25769,25 @@
      "data": "09/09/2026",
      "decreto": "Decreto municipal nº 283",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121570_2026-11-04_cbb46ca2e60f0a85913a5c03b8d141b9.pdf",
+     "data": "04/11/2026",
+     "decreto": "Decreto nº 345",
+     "hash": "aafdcf416fdfd5bd1aed9c673644595634e861e36d98b35808d41687026473df"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 345",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2303931": {
@@ -29806,9 +29880,17 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.583",
      "hash": "245a0a661adb7dd981215ab7fea19af6e2cb5c2ee6d832f4fb16462a48e3c821"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 7.277",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3513306": {
@@ -37307,18 +37389,31 @@
    "ibge": "4108403",
    "nome": "Francisco Beltrão",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 256",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2403905": {
    "ibge": "2403905",
@@ -44013,7 +44108,7 @@
    "nome": "Inácio Martins",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "04/11/2026",
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
    "tipos": [
     "SE"
@@ -44033,10 +44128,18 @@
      "data": "04/11/2026",
      "decreto": "Decreto nº 15.607",
      "hash": "12104cc4251452d9f3b21b15de42b69bf8c3984410e6c2a59ceb339bb276fda8"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 228",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 1
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 2
   },
   "5209937": {
    "ibge": "5209937",
@@ -59853,9 +59956,17 @@
      "data": "03/07/2026",
      "decreto": "Decreto municipal nº 73",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 101",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 4,
+   "n_eventos": 5,
    "dias_sem_reconhecimento": null
   },
   "3140506": {
@@ -82564,18 +82675,31 @@
    "ibge": "4121505",
    "nome": "Rebouças",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 221",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2611606": {
    "ibge": "2611606",
@@ -98295,9 +98419,17 @@
      "data": "03/11/2026",
      "decreto": "Decreto nº 302/2026",
      "hash": "127a153b9e32edaedb881828df02e8419511e31a9604d372e21c7f7673e0ebf7"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 302",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 2
   },
   "3164407": {
@@ -104450,18 +104582,31 @@
    "ibge": "4127007",
    "nome": "Teixeira Soares",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 333",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "3168507": {
    "ibge": "3168507",
@@ -111172,9 +111317,17 @@
      "data": "23/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.701",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 143",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3172004": {
