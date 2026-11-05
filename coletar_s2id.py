@@ -37,7 +37,6 @@ FONTES = {
             "status": "parser_provado_por_fixture"},
 }
 RITMO_S = 2.0        # §11: no máximo uma requisição a cada 2 s por domínio
-COBRADE_CICLO = ("1.4.1", "1.4.2", "1.3.2", "1.3.1", "1.2.1", "1.2.2", "1.2.3", "2.4.1", "2.4.2")
 PADRAO_TITULO = re.compile(r"PORTARIA\s+(?:SEDEC/MIDR\s+)?N[ºo°]\s*([\d\.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-ZÇ]+)\s+DE\s+(\d{4})", re.I)
 MESES = {m: i + 1 for i, m in enumerate("janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro".split())}
 PADRAO_MUN = re.compile(r"Munic[íi]pio de ([^\-–,;\.]+?)\s*-\s*([A-Z]{2})", re.I)
