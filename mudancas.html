@@ -27,7 +27,7 @@
 <title>Mudanças no MARÉ: os textos da editoria sobre o El Niño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="assets/acesso.js?v=3d25b2e8"></script>
+<script src="assets/acesso.js?v=d6581579"></script>
 <script src="assets/mapas.js?v=414c4e5f"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
 <link rel="stylesheet" href="assets/base.css?v=6af682ab">
@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.</dt>
+      <dd></dd>
       <dt>05/11/2026 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.</dt>
       <dd></dd>
       <dt>05/11/2026 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.</dt>
@@ -165,8 +167,6 @@
       <dd>As sondas de 24/10 acharam 27 endereços nas capitais e não leram nenhum. Cada um passa pela porta única da fila de pistas e segue ao juiz; endereço de busca não vira documento nem pontua. A porta recusa o que não é plano ou excede o teto, com motivo. Linhas: +57 de código novo (adaptador da busca de planos), +1 arquivo de entrada.</dd>
       <dt>26/10/2026 · Ar medido: dias seguidos acima da OMS por capital</dt>
       <dd>A estação oficial de cada capital passa a ter 31 dias de média diária de PM2,5 e PM10. Conta-se quantos dias seguidos ficaram acima do limite de 24 h da OMS (15 e 45 µg/m³). Dia sem medição interrompe a sequência e fica declarado; sem chave, o campo diz &quot;sem credencial&quot;. Peso zero, sinal físico. Linhas: +102/−1.</dd>
-      <dt>26/10/2026 · Execução das MPs: modalidade de aplicação por mês</dt>
-      <dd>A execução das MPs 1.367 e 1.384 passa a trazer, em cada mês, o valor pago por modalidade de aplicação, além de empenhado, liquidado e pago. Sem código legível da modalidade, a linha cai em &quot;outras formas&quot;, nunca em categoria inventada. O dado chega na próxima rodada semanal da atualização. Linhas: +3 de código, por ser o campo que faltava.</dd>
     </dl>
   </section>
 </main>
