@@ -23,7 +23,7 @@ USO
 """
 import html as _html, json, re, sys, time, urllib.parse
 from datetime import date, datetime
-from coletores_base import (carimbar_atos, buscar, preservar_evidencia, log_busca, registrar_lacuna,
+from coletores_base import (NUM_ATO, carimbar_atos, buscar, preservar_evidencia, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, sha256,
                             parse_busca_dou, varrer_busca_dou, FormatoDoDOUMudou, RAIZ,
@@ -37,7 +37,7 @@ FONTES = {
             "status": "parser_provado_por_fixture"},
 }
 RITMO_S = 2.0        # §11: no máximo uma requisição a cada 2 s por domínio
-PADRAO_TITULO = re.compile(r"PORTARIA\s+(?:SEDEC/MIDR\s+)?N[ºo°]\s*([\d\.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-ZÇ]+)\s+DE\s+(\d{4})", re.I)
+PADRAO_TITULO = re.compile(r"PORTARIA\s+(?:SEDEC/MIDR\s+)?" + NUM_ATO + r"\s*([\d\.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-ZÇ]+)\s+DE\s+(\d{4})", re.I)
 MESES = {m: i + 1 for i, m in enumerate("janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro".split())}
 PADRAO_MUN = re.compile(r"Munic[íi]pio de ([^\-–,;\.]+?)\s*-\s*([A-Z]{2})", re.I)
 # 24/09/2026: quem reconhece situação de emergência de município é a SEDEC (Lei 12.608; Decreto
