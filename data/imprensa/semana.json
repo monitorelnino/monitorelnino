@@ -279,15 +279,15 @@
   },
   {
    "id": "estados_acima_da_faixa_leptospirose",
-   "valor": 4,
+   "valor": 7,
    "unidade": "estados",
-   "periodo_inicio": "2026-03-01",
-   "periodo_fim": "2026-03-31",
+   "periodo_inicio": "2026-06-01",
+   "periodo_fim": "2026-06-30",
    "n": 27,
    "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
    "sem_coleta": false,
    "motivo": null,
-   "periodo": "2026-03"
+   "periodo": "2026-06"
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
