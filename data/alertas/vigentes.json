@@ -7,15 +7,15 @@
   "validade_horas": 36,
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "05/11/2026 05:17",
+ "gerado_em": "05/11/2026 05:52",
  "resumo": {
   "municipios": 3311,
   "municipios_inmet": 3307,
-  "municipios_cemaden": 22,
+  "municipios_cemaden": 23,
   "avisos_inmet": 5,
-  "alertas_cemaden_em_vigor": 29,
+  "alertas_cemaden_em_vigor": 30,
   "alertas_cemaden_cessados": 3,
-  "alertas_cemaden_devolvidos": 32,
+  "alertas_cemaden_devolvidos": 33,
   "alertas_cemaden_sem_codigo_ibge": 0,
   "campos_devolvidos_pelo_cemaden": [
    "cidade",
@@ -36662,7 +36662,15 @@
      "fim": "2026-11-05 23:59"
     }
    ],
-   "cemaden": []
+   "cemaden": [
+    {
+     "nivel": "Moderado",
+     "tipo": "Movimentos de Massa",
+     "evento": "Movimentos de Massa - Moderado",
+     "inicio": "2026-11-05T08:32:45.049Z",
+     "fim": null
+    }
+   ]
   },
   "4104501": {
    "nome": "Capanema",
