@@ -48,7 +48,7 @@
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
       <dt>05/11/2026 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a &quot;Saúde na estrutura de crise do estado&quot;. A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.</dt>
-      <dd>=======</dd>
+      <dd></dd>
       <dt>05/11/2026 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.</dt>
       <dd></dd>
       <dt>05/11/2026 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^=&quot;circulos-&quot;] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).</dt>
@@ -58,7 +58,7 @@
       <dt>05/11/2026 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.</dt>
       <dd></dd>
       <dt>05/11/2026 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.</dt>
-      <dd>=======</dd>
+      <dd></dd>
       <dt>05/11/2026 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.</dt>
       <dd></dd>
       <dt>05/11/2026 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.</dt>

@@ -9,11 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-11-05 · #1545 · Saúde sem tabela repetida; legenda de tamanho · A figura de estados da Saúde é só a lista de tipos de plano; a tabela redundante saiu. O rótulo passa a "Saúde na estrutura de crise do estado". A legenda dos mapas ganha o item de tamanho (círculo de referência, sem cor de categoria). Índice e dados não mudam.
-=======
+
 ## 2026-11-05 · Saúde do pipeline: um registro por linha · `gravar_em` passa a gravar cada execução de `data/saude_pipeline.json` numa linha; o arquivo é reformatado na próxima escrita, sem mudar o conteúdo. Nenhuma página muda.
->>>>>>> origin/main
 
 ## 2026-11-05 · #1540 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.
 
@@ -30,12 +28,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-05 · #1527 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.
 
 ## 2026-11-05 · sítio da prefeitura: endereço oficial e página renderizada · A busca do portal tenta primeiro o endereço oficial do cadastro público (Wikidata) e, quando a home só monta por JavaScript, lê os links da página renderizada pelo navegador; refaz uma vez os municípios sem portal ou sem página lida. Código +60/−28.
-<<<<<<< HEAD
 ## 2026-11-05 · #1545 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
-=======
 
 ## 2026-11-05 · #PR · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
->>>>>>> origin/main
 
 ## 2026-11-05 · sítio da prefeitura: mais endereços · A busca do portal tenta também prefeiturade<nome>, prefeitura<nome> e pm<nome> (.uf.gov.br); município sem portal achado hoje é refeito uma vez com a lista nova. Código +14/−4.
 
