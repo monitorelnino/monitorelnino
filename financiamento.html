@@ -31,7 +31,7 @@
 <script src="assets/catalogo.js?v=d4d42f5f"></script>
 <script src="assets/acesso.js?v=3d25b2e8"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=2919eaba">
+<link rel="stylesheet" href="assets/base.css?v=ba245692">
 <script src="assets/mapas.js?v=414c4e5f"></script>
 </head>
 <body class="pagina-dados">
@@ -95,11 +95,10 @@
 
   <section id="caminhos" aria-labelledby="antes">
     <h2 id="antes" data-conteudo="financiamento.caminhos.titulo_da_secao">De onde vem o dinheiro</h2>
-    <p class="hint" data-conteudo="financiamento.caminhos.abertura">Cada linha é uma fonte de recurso, com o valor do ato, o empenhado e o desembolsado, na mesma escala. A etiqueta diz o risco que o ato declara.</p>
+    <p class="hint" data-conteudo="financiamento.caminhos.abertura">Cada linha é uma fonte de recurso, com o valor do ato, o empenhado e o desembolsado, na mesma escala.</p>
     <p class="selo u-mt-4" data-conteudo="financiamento.caminhos.grupo_mps.titulo">Medidas provisórias do El Niño</p>
     <div class="grade-figuras grade-figuras--3 grade-mapas">
       <figure class="figura figura--grafico cartao-mapa r-chuva" id="boxMesAMes" data-chave="financiamento/mps_2026.json#por_mes">
-        <p class="cartao-mapa-familia" data-conteudo="financiamento.mesames.grafico.familia">Medidas provisórias</p>
         <h3 class="figura-titulo" data-conteudo="financiamento.mesames.grafico.titulo">Desembolsado por mês pelas medidas provisórias</h3>
         <p class="figura-sub" data-conteudo="financiamento.mesames.grafico.legenda">Desde junho de 2026 · R$ milhões desembolsados por mês</p>
         <div class="figura-midia canvas-wrap canvas-wrap--mapa"><canvas id="cMesAMes" aria-label="Valor desembolsado por mês pelas ações reforçadas pelas medidas provisórias, desde junho de 2026"></canvas></div>
@@ -148,9 +147,14 @@
 </main>
   <footer class="site-footer">
     <div class="grad-line"></div>
-    <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
-    <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patty Ferrini</a></span>
-    <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener"><img src="assets/redes/linkedin.png?v=b80ab655" alt="" width="26" height="24"><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener"><img src="assets/redes/instagram.svg?v=a036f819" alt="" width="24" height="24"><span>Instagram</span></a></li></ul>
+    <div class="rodape-logos">
+      <div class="rodape-logo"><span class="rodape-logo-rotulo" data-conteudo-html="rodape.realizacao">Realização</span>
+      <a href="https://www.futuraevidencelab.com.br/" target="_blank" rel="noopener" title="Futura Evidence Lab" class="mast-logo"><img class="logo-futura" src="assets/futura-positivo.svg?v=0775d7a5" alt="Futura — Futura Evidence Lab" width="84" height="18"></a>
+      <span class="rodape-assinatura" data-conteudo-html="rodape.assinatura">por <a href="https://futuraevidencelab.com.br/sobre" target="_blank" rel="noopener">Patty Ferrini</a></span>
+      <ul class="rodape-redes" data-conteudo-html="rodape.redes"><li><a href="https://www.linkedin.com/in/patricia-ferrini/" target="_blank" rel="noopener"><img src="assets/redes/linkedin.png?v=b80ab655" alt="" width="26" height="24"><span>LinkedIn</span></a></li><li><a href="https://www.instagram.com/patty_ferrini_r/" target="_blank" rel="noopener"><img src="assets/redes/instagram.svg?v=a036f819" alt="" width="24" height="24"><span>Instagram</span></a></li></ul></div>
+      <div class="rodape-logo"><span class="rodape-logo-rotulo" data-conteudo-html="rodape.parceria">Parceria</span>
+      <a href="https://institutoar.org.br/" target="_blank" rel="noopener" title="Instituto Ar" class="mast-logo"><img class="logo-parceiro" src="assets/parceiros/instituto-ar-positivo.svg?v=da374906" alt="Instituto Ar" width="124" height="26"></a></div>
+    </div>
     <span class="rodape-linha">MARÉ · Monitor de Antecipação e Resposta ao El Niño</span>
     <span class="rodape-linha" data-conteudo-html="rodape.datas.molde" data-conteudo-fixado="1">Atualização <span id="metaAtualizado">05/11/2026</span> · Corte <span id="corteDados">05/11/2026</span> · Coleta <span id="metaColeta">05/11/2026</span> · Publicação <span id="metaPublicacao">05/11/2026</span></span>
     <span class="rodape-legal" data-conteudo-html="rodape.legal">© 2026 Futura Evidence Lab. Todos os direitos reservados. · <a href="mailto:contato@futuraevidencelab.com.br">contato@futuraevidencelab.com.br</a></span>
@@ -159,7 +163,7 @@
 
 <script src="assets/colunas.js?v=07ce0f22" defer></script>
 <script src="assets/js/consulta-municipio.js?v=a95948d6" defer></script>
-<script src="assets/js/financiamento.js?v=b7a39a5a" defer></script>
+<script src="assets/js/financiamento.js?v=9ff7fc8c" defer></script>
 <!-- VLibras: tradução automática para Libras, plugin oficial do Governo Federal
      (https://vlibras.gov.br/doc/widget/installation/webpageintegration.html).
      Guarda: só instancia se o script carregou — sem rede, a página segue sem erro. -->

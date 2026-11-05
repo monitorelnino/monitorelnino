@@ -10,6 +10,8 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-05 · redução · função morta `eixoDeMeses` sai de `assets/js/saude.js` (sem chamador em todo o repositório); sem mudança de comportamento. Código +0/−8.
+## 2026-11-05 · #1513 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.
+## 2026-11-05 · cartões sem rótulo acima do título · Em Financiamento ("De onde vem o dinheiro") e na Defesa civil, o cartão começa pelo título, sem rótulo em versalete acima. O risco declarado pelo ato segue na tabela da seção; nada de informação some. Código +9/−14.
 
 ## 2026-11-05 · catálogo do risco de base (AdaptaBrasil) · Coletor `coletar_risco_base.py`, etapa 1: lê a hierarquia pública de indicadores do AdaptaBrasil (MCTI) e grava `data/risco_base/catalogo.json` com id, nome, setor, anos, cenários, hash e data da consulta; só pela válvula `coleta-dia/*`, sem elo na noite. Sem valor por município nesta etapa (lacuna declarada); peso zero; autoteste offline, escritor registrado. Código +106/−0.
 
