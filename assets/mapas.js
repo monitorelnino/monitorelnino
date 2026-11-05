@@ -192,13 +192,10 @@
     const el = document.getElementById(elId); if (!el) return;
     // `hachura`: amostra listrada, a mesma marca do mapa (cor das listras sobre `fundo`).
     // `vazado`: círculo só de contorno, a marca do ponto vazado do mapa (cor no traço).
-    // `tamanho`: raios (px, a MESMA escala do `r` de `pontos`) de círculos de referência, de contorno e
-    // sem cor de categoria, encaixados pela base: o tamanho se lê como tamanho, não como mais uma classe.
+    // `raio`: círculo de referência de tamanho (sem cor de categoria), o mesmo raio em px que `pontos` usa.
     const fundo = i => i.hachura ? 'repeating-linear-gradient(45deg,' + i.cor + ' 0 3px,' + (i.fundo || 'transparent') + ' 3px 6px)' : i.cor;
-    const tam = rs => { const R = Math.max(...rs), L = 2 * R + 2;
-      return '<svg class="leg-tamanho" width="' + L + '" height="' + L + '" aria-hidden="true">' + rs.map(r => '<circle cx="' + (R + 1) + '" cy="' + (L - 1 - r) + '" r="' + r + '"/>').join('') + '</svg>'; };
-    el.innerHTML = itens.map(i => '<span>' + (i.tamanho ? tam(i.tamanho) : '<i' + (i.vazado ? ' class="leg-vazado" style="background:transparent;color:' + i.cor : ' style="background:' + fundo(i))
-      + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>') + esc(i.rotulo) + '</span>').join('');
+    el.innerHTML = itens.map(i => '<span><i' + (i.raio != null ? ' class="leg-tamanho" style="width:' + 2 * i.raio + 'px;height:' + 2 * i.raio + 'px' : i.vazado ? ' class="leg-vazado" style="background:transparent;color:' + i.cor : ' style="background:' + fundo(i))
+      + (i.opacidade != null ? ';opacity:' + i.opacidade : '') + '"></i>' + esc(i.rotulo) + '</span>').join('');
   }
 
   /** Mapa coroplético por UF + legenda, num só passo (consolidado 17/09/2026 — antes

@@ -183,9 +183,6 @@ function tabelaDosPlanos() {
   alvo.addEventListener('click', ev => { const b = ev.target.closest('button[data-uf]'); if (b) { fechar(); abrirDetalheSaude(b.dataset.uf); } });
   const escada = ((MSAUDE.metodo || {}).escada) || {};
   mostrarFrase(document.getElementById('escadaPlano'), textoSaude('saude.estadual.escada', escada));
-  const coord = o => (o && o.doc) ? esc(ST_COORD[o.status] || o.status || '') + (o.data ? ' · ' + esc(o.data) : '') : esc(textoSaude('saude.estadual.ficha.nao_verificada'));
-  document.querySelector('#tblMonitor tbody').innerHTML = UFS.map(uf => { const co = (ufsDoMonitor()[uf] || {}).coordenacao || {};
-    return '<tr><td><strong>' + uf + '</strong></td><td>' + esc(nome(tipoDoEstado(uf))) + (instr(uf).data ? ' · ' + esc(instr(uf).data) : '') + '</td><td>' + coord(co.f1) + '</td><td>' + coord(co.f2) + '</td></tr>'; }).join('');
   fonteFigura('boxMonitor', {fontes: ['MARÉ Saúde'], data: MSAUDE.gerado_em});
 }
 
@@ -275,7 +272,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
          estado ainda não verificado são coisas distintas, e integrar o nacional não apaga a lacuna. */
       if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
         escreve('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
-          com_plano: n(res.ufs_com_plano_localizado), em_elaboracao: res.ufs_em_elaboracao, denominador: n(res.denominador || 27),
+          com_plano: n(res.ufs_com_plano_localizado), em_elaboracao: res.ufs_em_elaboracao || 0, denominador: n(res.denominador || 27),
           sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
     if (rp.indice != null) {

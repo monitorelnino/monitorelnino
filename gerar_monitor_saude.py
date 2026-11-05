@@ -131,12 +131,12 @@ def credito_nacional(prontidao_uf):
 
 def estatuto_do_plano(status: str, prontidao_uf) -> str:
     """'plano_localizado' | 'plano_em_elaboracao' | 'plano_nao_localizado' | 'nao_verificado'. Função pura.
-    Plano em elaboração não é plano localizado: pontua (ELAB 35), mas não entra na contagem do plano."""
+    Plano em elaboração não é plano localizado (editoria, 05/11/2026): conta à parte."""
     if status == "NAO_VERIFICADO":
         return "nao_verificado"
-    if status == "LAC" or prontidao_uf is None:
-        return "plano_nao_localizado"
-    return "plano_em_elaboracao" if status == "ELAB" else "plano_localizado"
+    if status == "ELAB":
+        return "plano_em_elaboracao"
+    return "plano_nao_localizado" if status == "LAC" or prontidao_uf is None else "plano_localizado"
 
 
 def resumo_nacional(ufs: dict, pop_uf: dict) -> dict:
@@ -318,7 +318,7 @@ def gerar() -> int:
                    **{k: v for k, v in nac.items() if k != "por_uf"},
                    "ufs_com_plano_localizado": nac["por_estatuto"]["plano_localizado"],
                    "ufs_em_elaboracao": nac["por_estatuto"]["plano_em_elaboracao"],
-                   "ufs_sem_plano_localizado": nac["por_estatuto"]["plano_nao_localizado"],
+                   "ufs_sem_plano_localizado": 27 - nac["por_estatuto"]["plano_localizado"],
                    "coordenacao_verificadas": sum(1 for uf in UFS if ufs[uf]["coordenacao"]["verificada"])},
         "ufs": {uf: {**v, **nac["por_uf"][uf]} for uf, v in ufs.items()},
     }
