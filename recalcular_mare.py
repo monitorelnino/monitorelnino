@@ -604,6 +604,40 @@ def _decreto_reconhecido(lv, nivel):
     return None
 
 
+# §25 (05/11/2026, editoria): o nível `municipal_completo` é CALCULADO do log, sem mão. Bateria padronizada
+# (§4.1.2/§4.1.3): diário municipal, sítio da prefeitura e busca web, cada consulta registrada com município e UF
+# estruturados. Consulta com erro ou motor sem resposta não conta; diário não indexado conta como consulta feita
+# (`sem_cobertura_qd`: o canal foi tentado e a lacuna é declarada, nunca "sem plano").
+_BATERIA = {
+    "diario": ("DOM", {"com_excerto", "coberto_sem_mencao", "sem_cobertura_qd", "pista", "registro"}),
+    "sitio": ("site_municipal", {"pista", "registro", "consultado", "consultado sem achado", "coberto_sem_mencao"}),
+    "web": ("busca_web", {"coberto_sem_mencao", "nao_localizado_ate_o_momento", "pista", "registro"}),
+}
+_ORDEM_NIVEL = {"nacional": 1, "estadual": 2, "municipal_completo": 3}
+
+
+def niveis_do_log(execucoes):
+    """(município, UF) -> nível mais alto que o log sustenta. Função pura: `nacional`/`estadual` vêm do campo
+    `nivel` da linha; `municipal_completo` só quando os três canais da bateria têm consulta válida registrada
+    (a linha `nivel=municipal_completo` explícita segue valendo)."""
+    nivel, feitos = {}, {}
+    for e in execucoes:
+        mun, uf = e.get("municipio"), e.get("uf")
+        if not (mun and uf):
+            continue
+        ch = (mun, uf)
+        n = e.get("nivel")
+        if n in _ORDEM_NIVEL and _ORDEM_NIVEL[n] > _ORDEM_NIVEL.get(nivel.get(ch), 0):
+            nivel[ch] = n
+        for nome, (canal, ok) in _BATERIA.items():
+            if e.get("canal") == canal and e.get("decisao") in ok:
+                feitos.setdefault(ch, set()).add(nome)
+    for ch, f in feitos.items():
+        if len(f) == len(_BATERIA):
+            nivel[ch] = "municipal_completo"
+    return nivel
+
+
 def _recomputar_verificacao_em_memoria():
     """v2.2.4 (§3.3): data/verificacao_municipal.json é ARTEFATO DERIVADO de
     municipios.json + log_buscas.json + municipios_ibge_referencia.json —
@@ -616,16 +650,7 @@ def _recomputar_verificacao_em_memoria():
     from coletores_base import ler_log
     lg = ler_log()   # item 4: log em JSONL mensal, concatenado pela porta única
     with open(RAIZ / "data" / "municipios_ibge_referencia.json", encoding="utf-8") as f: ref = json.load(f)
-    completos = set()
-    for e in lg.get("execucoes", []):
-        if e.get("nivel") == "municipal_completo" and str(e.get("decisao","")).strip().lower().startswith("nada localizado") and e.get("municipio") and e.get("uf"):
-            completos.add((e["municipio"], e["uf"]))
-    niveis_log = {}
-    for e in lg.get("execucoes", []):
-        if e.get("municipio") and e.get("uf") and e.get("nivel") in ("nacional","estadual","municipal_completo"):
-            ordem = {"nacional":1,"estadual":2,"municipal_completo":3}
-            ch=(e["municipio"],e["uf"])
-            if ordem[e["nivel"]] > ordem.get(niveis_log.get(ch,""),0): niveis_log[ch]=e["nivel"]
+    niveis_log = niveis_do_log(lg.get("execucoes", []))
     por = {(m["nome"], m["uf"]): m for m in mun}
     # v2.2.4 (PR-C): livro de fontes consultadas dos coletores (nível, datas, fatos binários)
     _lp = RAIZ / "data" / "fontes_consultadas.json"
