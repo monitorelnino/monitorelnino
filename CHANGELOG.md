@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · cartões sem rótulo acima do título · Em Financiamento ("De onde vem o dinheiro") e na Defesa civil, o cartão começa pelo título, sem rótulo em versalete acima. O risco declarado pelo ato segue na tabela da seção; nada de informação some. Código +9/−14.
+
 ## 2026-11-05 · catálogo do risco de base (AdaptaBrasil) · Coletor `coletar_risco_base.py`, etapa 1: lê a hierarquia pública de indicadores do AdaptaBrasil (MCTI) e grava `data/risco_base/catalogo.json` com id, nome, setor, anos, cenários, hash e data da consulta; só pela válvula `coleta-dia/*`, sem elo na noite. Sem valor por município nesta etapa (lacuna declarada); peso zero; autoteste offline, escritor registrado. Código +106/−0.
 
 ## 2026-11-05 · sítio da prefeitura entra no log por município · A busca dirigida pelo portal da prefeitura grava uma linha do log por município (consultado sem achado, pista ou erro), com município e UF, e aceita a lista do cadastro. É a consulta que faltava para o nível municipal completo.
