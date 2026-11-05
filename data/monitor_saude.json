@@ -151,12 +151,14 @@
   "populacao_total": 203062512,
   "indice_nacional": 62.4,
   "por_estatuto": {
-   "plano_localizado": 21,
+   "plano_localizado": 18,
+   "plano_em_elaboracao": 3,
    "plano_nao_localizado": 0,
    "nao_verificado": 6
   },
-  "ufs_com_plano_localizado": 21,
-  "ufs_sem_plano_localizado": 6,
+  "ufs_com_plano_localizado": 18,
+  "ufs_em_elaboracao": 3,
+  "ufs_sem_plano_localizado": 0,
   "coordenacao_verificadas": 2
  },
  "ufs": {
@@ -1034,7 +1036,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "plano_localizado",
+   "estatuto": "plano_em_elaboracao",
    "prontidao_nacional": 35.0,
    "peso_nacional": 0.018,
    "contribuicao_nacional": 0.63
@@ -1437,7 +1439,7 @@
     "focos_24h": 0
    },
    "risco_projetado": [],
-   "estatuto": "plano_localizado",
+   "estatuto": "plano_em_elaboracao",
    "prontidao_nacional": 35.0,
    "peso_nacional": 0.0791,
    "contribuicao_nacional": 2.77
@@ -1573,7 +1575,7 @@
     "ondas de calor",
     "qualidade da água em estiagem"
    ],
-   "estatuto": "plano_localizado",
+   "estatuto": "plano_em_elaboracao",
    "prontidao_nacional": 35.0,
    "peso_nacional": 0.0078,
    "contribuicao_nacional": 0.27

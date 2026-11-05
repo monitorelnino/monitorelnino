@@ -275,7 +275,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
          estado ainda não verificado são coisas distintas, e integrar o nacional não apaga a lacuna. */
       if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
         escreve('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
-          com_plano: n(res.ufs_com_plano_localizado), denominador: n(res.denominador || 27),
+          com_plano: n(res.ufs_com_plano_localizado), em_elaboracao: res.ufs_em_elaboracao, denominador: n(res.denominador || 27),
           sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
     if (rp.indice != null) {
@@ -284,7 +284,12 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
       fixa('respFillSaude', rp.indice, 'decretos de emergência em saúde');
     }
     if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
-      if (rp.indice == null) return;   // a reserva do HTML ("sem coleta até o corte") já é a linha
+      if (rp.indice == null) {   // sem índice: a reserva do HTML ("sem coleta até o corte") é a linha, ou, com leitura parcial, o que já foi lido e o que falta
+        const sem = Object.keys(rp.lacunas_estaduais || {}).sort(), total = n(res.denominador || 27);
+        if (rp.situacao === 'parcial' && sem.length) escreve('linhaRespostaSaude', 'saude.topo.resposta.linha_parcial',
+          {quando: (MS || {}).gerado_em || (MS || {}).corte || '', lidas: total - sem.length, total, siglas: sem.join(', ')});
+        return;
+      }
       el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {
         n: rp.emergencias || 0, pct: umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1))})) + '</span>';
       escreve('linhaRespostaSaude', 'saude.topo.resposta.linha', {quando: (MS || {}).gerado_em || (MS || {}).corte || ''});

@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · Saúde: plano em elaboração fora da contagem · `estatuto_do_plano` separa `plano_em_elaboracao` (ELAB, 35 pontos, MT, RJ, RO) de `plano_localizado`: o topo diz 18 de 27 estados com plano localizado e 3 em elaboração à parte. Com leitura parcial dos decretos de emergência, o topo diz quantos diários estaduais foram lidos e quais faltam. Legenda de tamanho em `mapas.js` (círculos de contorno na escala dos pontos, sem cor de categoria).
+
 ## 2026-11-05 · Rota 1b: busca no domínio da prefeitura · `descobrir_planos.py --municipios … --busca-dominio` consulta o metabuscador do site (`prefeitura de <nome> <UF> site:gov.br` e `site:<domínio> plano de contingência`) para os municípios sem portal achado ou sem link em HTML estático. O endereço só vale se a home se identificar como a prefeitura; busca fora do ar fica como tentativa, nunca como ausência. Sem fonte nova, sem API paga.
 
 ## 2026-11-05 · rodapé v4 · Logos com o mesmo peso visual (Futura 20 px, Instituto Ar 28 px), linha comum de 36 px, assinatura e redes agrupadas na coluna Realização; redes só com ícone, nome mantido para leitor de tela. Aprovado pela editoria em 05/11/2026.
