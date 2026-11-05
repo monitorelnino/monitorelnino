@@ -306,6 +306,25 @@ def _indent_de(p) -> int:
         return 1
 
 
+# 05/11/2026 (central, 21:00): log que só cresce grava um registro por linha (menos linhas por commit).
+UMA_LINHA_POR_REGISTRO = {"saude_pipeline.json": "execucoes"}
+
+
+def _despejar(f, obj, p, compacto: bool) -> None:
+    """Escreve `obj` em `f`; a lista de `UMA_LINHA_POR_REGISTRO` sai com um registro por linha."""
+    chave = UMA_LINHA_POR_REGISTRO.get(p.name)
+    if compacto or chave not in (obj if isinstance(obj, dict) else {}):
+        json.dump(obj, f, ensure_ascii=False, indent=None if compacto else _indent_de(p),
+                  **({"separators": (",", ":")} if compacto else {}))
+        return
+    ind = " " * _indent_de(p)
+    corpos = [f'{ind}{json.dumps(k, ensure_ascii=False)}: ' + (
+        "[\n" + ",\n".join(ind * 2 + json.dumps(i, ensure_ascii=False) for i in v) + f"\n{ind}]" if v else "[]")
+        if k == chave else f'{ind}{json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False)}'
+        for k, v in obj.items()]
+    f.write("{\n" + ",\n".join(corpos) + "\n}")
+
+
 def gravar(nome, obj, compacto: bool = False):
     """Escrita ATÔMICA (achado real, 21/09/2026): a versão anterior escrevia direto no arquivo
     final — qualquer interrupção no meio (timeout, Action cancelada, OOM) deixava um JSON
@@ -488,10 +507,7 @@ def gravar_em(p, obj, compacto: bool = False):
     # escrita apaga o temporário; morte do processo fica coberta pelo `.gitignore` (`*.tmp[0-9]*`).
     try:
         with open(tmp, "w", encoding="utf-8", newline="\n") as f:
-            if compacto:
-                json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
-            else:
-                json.dump(obj, f, ensure_ascii=False, indent=_indent_de(p))
+            _despejar(f, obj, p, compacto)
             f.write("\n")
     except BaseException:
         try:
