@@ -176,6 +176,9 @@ def semana_do_rotulo(referencia) -> str | None:
     return ("de " + semana_em_datas(int(m.group(1)), int(m.group(2)))[0]) if m else None
 
 
+# Abreviatura de "número" antes do número do ato, em todas as grafias dos diários: Nº, N°, No, N.º, N. º, Nº.
+# Fonte única (05/11/2026): o "N.º" do Decreto AM 55.965 escapava a quatro cópias de N[ºo°].
+NUM_ATO = r"N\.?\s*[ºo°]?\.?"
 RE_DATA_ISO = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
 RE_DATA_BR = re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b")
 MESES_PT = {"janeiro": 1, "fevereiro": 2, "marco": 3, "março": 3, "abril": 4, "maio": 5,

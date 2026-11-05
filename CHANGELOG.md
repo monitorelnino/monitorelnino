@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · Número do ato em todas as grafias · O decreto de emergência em saúde do Amazonas (nº 55.965, 26/10) escrito "N.º" não era reconhecido, e a emergência ficava fora da página. As cinco cópias do padrão viram uma só, que aceita Nº, N°, No, N.º e N. º.
+
 ## 2026-11-05 · Rota 1b: busca no domínio da prefeitura · `descobrir_planos.py --municipios … --busca-dominio` consulta o metabuscador do site (`prefeitura de <nome> <UF> site:gov.br` e `site:<domínio> plano de contingência`) para os municípios sem portal achado ou sem link em HTML estático. O endereço só vale se a home se identificar como a prefeitura; busca fora do ar fica como tentativa, nunca como ausência. Sem fonte nova, sem API paga.
 
 ## 2026-11-05 · rodapé v4 · Logos com o mesmo peso visual (Futura 20 px, Instituto Ar 28 px), linha comum de 36 px, assinatura e redes agrupadas na coluna Realização; redes só com ícone, nome mantido para leitor de tela. Aprovado pela editoria em 05/11/2026.

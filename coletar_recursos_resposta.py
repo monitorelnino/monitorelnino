@@ -51,7 +51,7 @@ RAIZ = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(RAIZ))
 
 import funil  # noqa: E402
-from coletores_base import (buscar, fonte_do_coletor, grava_no_banco, gravar, hoje_editorial, ler,  # noqa: E402
+from coletores_base import (NUM_ATO, buscar, fonte_do_coletor, grava_no_banco, gravar, hoje_editorial, ler,  # noqa: E402
                             log_busca,
                             preservar_evidencia, referencia_ibge, registrar_lacuna,
                             rodar_autoteste, varrer_busca_dou)
@@ -72,7 +72,7 @@ PRIMEIRA_CARGA_DIAS = 30
 # com a mesma expressão não entra — e não é descartado em silêncio: entra em `fora_do_orgao`.
 RE_ORGAO = re.compile(r"Prote[çc][ãa]o e Defesa Civil", re.I)
 # "PORTARIA Nº 3.181, DE 24 DE SETEMBRO DE 2026" — o número com ou sem ponto de milhar.
-RE_PORTARIA = re.compile(r"PORTARIA\s+N[ºo°]?\.?\s*([\d.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-Za-zÇç]+)\s+DE\s+(\d{4})",
+RE_PORTARIA = re.compile(r"PORTARIA\s+(?:" + NUM_ATO + r")?\s*([\d.]+),?\s+DE\s+(\d{1,2})\s+DE\s+([A-Za-zÇç]+)\s+DE\s+(\d{4})",
                          re.I)
 # "ao município de Joaíma/MG" — a UF vem junto, com barra, e é isso que permite parear sem adivinhar.
 RE_MUNICIPIO = re.compile(r"munic[íi]pio de\s+([^,/]+?)\s*/\s*([A-Z]{2})\b", re.I)
