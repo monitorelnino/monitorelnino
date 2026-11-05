@@ -130,9 +130,12 @@ def credito_nacional(prontidao_uf):
 
 
 def estatuto_do_plano(status: str, prontidao_uf) -> str:
-    """'plano_localizado' | 'plano_nao_localizado' | 'nao_verificado'. Função pura."""
+    """'plano_localizado' | 'plano_em_elaboracao' | 'plano_nao_localizado' | 'nao_verificado'. Função pura.
+    Plano em elaboração não é plano localizado (editoria, 05/11/2026): conta à parte."""
     if status == "NAO_VERIFICADO":
         return "nao_verificado"
+    if status == "ELAB":
+        return "plano_em_elaboracao"
     return "plano_nao_localizado" if status == "LAC" or prontidao_uf is None else "plano_localizado"
 
 
@@ -141,7 +144,7 @@ def resumo_nacional(ufs: dict, pop_uf: dict) -> dict:
     UF que falta é KeyError, não média menor. `por_uf` traz o `peso_nacional` (pop × c_uf ÷ Σ pop) e a
     `contribuicao_nacional` (nota levada × peso) de cada UF. As contagens por estatuto somam o denominador."""
     total = float(sum(pop_uf[uf] for uf in UFS))
-    por = {k: 0 for k in ("plano_localizado", "plano_nao_localizado", "nao_verificado")}
+    por = {k: 0 for k in ("plano_localizado", "plano_em_elaboracao", "plano_nao_localizado", "nao_verificado")}
     por_uf, soma = {}, 0.0
     for uf in UFS:
         u = ufs[uf]; por[u["estatuto"]] += 1
@@ -314,6 +317,7 @@ def gerar() -> int:
                    "planos_municipais_lidos": sum(v["planos_lidos"] for v in cob.values()), "planos_municipais_sem_leitura": sum(v["planos_sem_leitura"] for v in cob.values()),
                    **{k: v for k, v in nac.items() if k != "por_uf"},
                    "ufs_com_plano_localizado": nac["por_estatuto"]["plano_localizado"],
+                   "ufs_em_elaboracao": nac["por_estatuto"]["plano_em_elaboracao"],
                    "ufs_sem_plano_localizado": 27 - nac["por_estatuto"]["plano_localizado"],
                    "coordenacao_verificadas": sum(1 for uf in UFS if ufs[uf]["coordenacao"]["verificada"])},
         "ufs": {uf: {**v, **nac["por_uf"][uf]} for uf, v in ufs.items()},
@@ -384,7 +388,8 @@ def autoteste() -> int:
         return (r["por_uf"]["PI"]["contribuicao_nacional"] > 0 and r["indice_nacional"] == round(35.0 * 26 / 27, 1) and r2["indice_nacional"] < r["indice_nacional"]
                 and prontidao("ELAB") == 35.0)
     def t18(): return (estatuto_do_plano("NAO_VERIFICADO", None) == "nao_verificado" and estatuto_do_plano("LAC", 0.0) == "plano_nao_localizado"
-                       and estatuto_do_plano("NOVO", None) == "plano_nao_localizado" and estatuto_do_plano("VIG", 30.0) == "plano_localizado")
+                       and estatuto_do_plano("NOVO", None) == "plano_nao_localizado" and estatuto_do_plano("VIG", 30.0) == "plano_localizado"
+                       and estatuto_do_plano("ELAB", 35.0) == "plano_em_elaboracao")
     pop = {u: 10 for u in UFS}
     todas = {"federal": {"consultado_em": "12/10/2026"}, "estadual": {u: {"consultado_em": "15/10/2026"} for u in UFS}}
     def t12():
