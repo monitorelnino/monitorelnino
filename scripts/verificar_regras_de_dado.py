@@ -47,7 +47,7 @@ import json
 import pathlib
 import re
 import sys
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from urllib.parse import urlparse
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -302,7 +302,11 @@ PONTUADOS_UF = ("NOVO", "READ", "VIG")
 TETO_DE_DEFEITOS = 10   # 10/10/2026: 31 de 41 pontuados com endereço; 10 defeitos de prova
 
 
-def problemas_proveniencia(estados: dict, municipios: list, js: str) -> list:
+PRAZO_DA_LACUNA = 7   # 02/11/2026: lacuna não é achado velho, é busca que precisa ser refeita
+
+
+def problemas_proveniencia(estados: dict, municipios: list, js: str, hoje=None) -> list:
+    hoje = hoje or date.today()
     out = []
     for u in (estados or {}).get("ufs") or []:
         for i in u.get("instrumentos") or []:
@@ -316,6 +320,16 @@ def problemas_proveniencia(estados: dict, municipios: list, js: str) -> list:
                 if not i.get("defeito_de_prova"):
                     out.append(f"{u.get('uf')} · {i.get('tipo')}: pontuado ({i.get('status')}) sem "
                                f"endereço, sem cópia preservada e sem defeito de prova declarado")
+            lac = i.get("endereco_lacuna")
+            if lac and not (i.get("url") or i.get("urls")):
+                v = str(lac.get("verificado_em") or "")[:10]
+                try:
+                    velha = date.fromisoformat(v) < hoje - timedelta(days=PRAZO_DA_LACUNA)
+                except ValueError:
+                    velha = True
+                if velha:
+                    out.append(f"{u.get('uf')} · {i.get('tipo')}: lacuna sem verificado_em dos últimos "
+                               f"{PRAZO_DA_LACUNA} dias ({v or 'sem data'}): a busca precisa ser refeita")
             if (i.get("url") or i.get("urls")) and not i.get("consultado_em"):
                 out.append(f"{u.get('uf')} · {i.get('tipo')}: endereço sem data de consulta")
     defeitos = sum(1 for u in (estados or {}).get("ufs") or [] for i in u.get("instrumentos") or []
@@ -349,29 +363,37 @@ def real_proveniencia():
 _JS = "docComEndereco(d) docComEndereco(d.estrutura) endereço do documento não localizado até o corte"
 _UF_BOM = {"ufs": [{"uf": "SC", "instrumentos": [
     {"tipo": "x", "status": "NOVO", "url": "https://a.sc.gov.br/p.pdf", "consultado_em": "2026-10-10"},
-    {"tipo": "y", "status": "ELAB", "endereco_lacuna": {"motivo": "m"}},
+    {"tipo": "y", "status": "ELAB", "endereco_lacuna": {"motivo": "m", "verificado_em": "2026-10-10"}},
     {"tipo": "z", "status": "LAC"}]}]}
 
 
+_HOJE = date(2026, 10, 12)
+_LAC = {"motivo": "m", "verificado_em": "2026-10-10"}
+
+
 def _go(**inst):
-    return problemas_proveniencia({"ufs": [{"uf": "GO", "instrumentos": [{"tipo": "x", **inst}]}]}, [], _JS)
+    return problemas_proveniencia({"ufs": [{"uf": "GO", "instrumentos": [{"tipo": "x", **inst}]}]}, [], _JS, _HOJE)
 
 
 CASOS_PROVENIENCIA = [
-    ("endereço ou lacuna declarada passa", problemas_proveniencia(_UF_BOM, [], _JS) == []),
+    ("endereço ou lacuna declarada passa", problemas_proveniencia(_UF_BOM, [], _JS, _HOJE) == []),
     ("instrumento sem endereço e sem lacuna reprova",
      len(problemas_proveniencia({"ufs": [{"uf": "SC", "instrumentos": [{"tipo": "x", "status": "NOVO"}]}]}, [], _JS)) >= 1),
     ("plano municipal sem endereço reprova",
-     len(problemas_proveniencia(_UF_BOM, [{"nome": "X", "uf": "SC", "categoria": "plano"}], _JS)) == 1),
+     len(problemas_proveniencia(_UF_BOM, [{"nome": "X", "uf": "SC", "categoria": "plano"}], _JS, _HOJE)) == 1),
     ("decreto sem endereço não é pontuado e passa",
-     problemas_proveniencia(_UF_BOM, [{"nome": "X", "uf": "SC", "categoria": "decreto"}], _JS) == []),
-    ("cartão sem link reprova", len(problemas_proveniencia(_UF_BOM, [], "nada")) == 2),
+     problemas_proveniencia(_UF_BOM, [{"nome": "X", "uf": "SC", "categoria": "decreto"}], _JS, _HOJE) == []),
+    ("cartão sem link reprova", len(problemas_proveniencia(_UF_BOM, [], "nada", _HOJE)) == 2),
     ("pontuado só com lacuna, sem defeito declarado, reprova",
-     len(_go(status="NOVO", endereco_lacuna={"motivo": "m"})) == 1),
+     len(_go(status="NOVO", endereco_lacuna=_LAC)) == 1),
     ("pontuado com defeito de prova declarado passa",
-     _go(status="NOVO", endereco_lacuna={"motivo": "m"}, defeito_de_prova={"motivo": "d"}) == []),
+     _go(status="NOVO", endereco_lacuna=_LAC, defeito_de_prova={"motivo": "d"}) == []),
     ("pontuado com cópia preservada passa",
-     _go(status="VIG", endereco_lacuna={"motivo": "m"}, copia_preservada="evidencias/h.pdf") == []),
+     _go(status="VIG", endereco_lacuna=_LAC, copia_preservada="evidencias/h.pdf") == []),
+    ("lacuna verificada há mais de 7 dias reprova",
+     len(_go(status="ELAB", endereco_lacuna={"motivo": "m", "verificado_em": "2026-10-04"})) == 1),
+    ("lacuna sem verificado_em reprova", len(_go(status="ELAB", endereco_lacuna={"motivo": "m"})) == 1),
+    ("lacuna verificada há 7 dias passa", _go(status="ELAB", endereco_lacuna={"motivo": "m", "verificado_em": "2026-10-05"}) == []),
     ("endereço sem data de consulta reprova", len(_go(status="NOVO", url="https://a.go.gov.br/p")) == 1),
     ("defeitos acima do teto reprovam",
      any("teto" in x for x in problemas_proveniencia({"ufs": [{"uf": "GO", "instrumentos": [
