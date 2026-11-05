@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · sítio da prefeitura: mais endereços · A busca do portal tenta também prefeiturade<nome>, prefeitura<nome> e pm<nome> (.uf.gov.br); município sem portal achado hoje é refeito uma vez com a lista nova. Código +14/−4.
+
 ## 2026-11-05 · design · Saúde sem rótulo acima do título · Cartões e figuras da Saúde começam pelo título; a classe do rótulo (`cartao-mapa-familia`, `cartao-k`) sai do CSS e passa a ser reprovada pelo verificador. Código +3/−20.
 ## 2026-11-05 · redução · função morta `eixoDeMeses` sai de `assets/js/saude.js` (sem chamador em todo o repositório); sem mudança de comportamento. Código +0/−8.
 ## 2026-11-05 · #1513 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.
