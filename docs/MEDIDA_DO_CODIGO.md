@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **100.898 linhas** em **307 arquivos** .py/.js; **38 workflows**.
+- **100.973 linhas** em **307 arquivos** .py/.js; **38 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
 - **159 nomes de função** definidos em mais de um arquivo.
 
@@ -10,8 +10,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 56970 |
-| `scripts` | 36834 |
+| `(raiz)` | 57044 |
+| `scripts` | 36835 |
 | `assets` | 6522 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
@@ -37,13 +37,13 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `recalcular_mare.py` | 1064 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `gerar_imprensa_semana.py` | 1032 |
+| `descobrir_planos.py` | 972 |
 | `gerar_pacote_blog.py` | 913 |
-| `descobrir_planos.py` | 912 |
 | `julgar_filas.py` | 787 |
 | `scripts/pistas.py` | 782 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 762 |
-| `buscar_planos_fontes_abertas.py` | 736 |
+| `buscar_planos_fontes_abertas.py` | 750 |
 | `gerar_financiamento_semana.py` | 725 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
