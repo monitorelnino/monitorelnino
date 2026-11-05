@@ -72,14 +72,6 @@ function rotulosDeMes(ano, chaves) {
     return mes;
   });
 }
-/* O eixo de um gráfico semanal: rótulo de mês na primeira semana de cada mês, e o título do
- * tooltip com o intervalo de datas da semana. Recebe os números de semana ("01", "02", …) que os
- * três gráficos de série já montam, e devolve as duas listas na mesma ordem. */
-function eixoDeMeses(ano, semanas) {
-  const labels = rotulosDeMes(ano, (semanas || []).map(w => ano + '-' + w));
-  const titulos = (semanas || []).map(w => semanaEmDatas(ano, ano + '-' + w, true));
-  return {labels: labels, titulos: titulos};
-}
 
 // 14/09/2026: chikungunya — mesmos quatro arquivos do painel, com prefixo chik_ (coletar_desfechos_saude.py --doenca chikungunya).
 // Nulos enquanto o coletor não rodar: o comparador e o mapa declaram lacuna, nunca preenchem.
