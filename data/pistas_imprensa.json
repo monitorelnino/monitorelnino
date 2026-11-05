@@ -143878,7 +143878,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Cristiano Otoni",
@@ -530551,7 +530552,8 @@
     "candidatos": 1,
     "pistas_novas": 0,
     "falhas": []
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -530596,7 +530598,8 @@
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": []
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -558559,7 +558562,8 @@
     "candidatos": 1,
     "pistas_novas": 0,
     "falhas": []
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -558604,7 +558608,8 @@
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": []
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -649705,7 +649710,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-05",
     "criterios": {}
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Cariacica",
@@ -803780,6 +803786,167 @@
    "id": "78b67ca37a",
    "url_final": "https://guarai.to.gov.br/transparencia/prefeitura-de-guarai-inicia-planejamento-do-saneamento-basico-com-elaboracao-de-plano-municipal/",
    "alvo": "1709302",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Alcobaça",
+   "uf": "BA",
+   "ibge": "2900801",
+   "url": "https://pmalcobaca.ba.gov.br/documentos-saude",
+   "titulo": "Portal da prefeitura de Alcobaça/BA (pmalcobaca.ba.gov.br): Saúde Acompanhe o Plano Municipal de Saúde do município e Relatório de Gestão Municipal de Saúde e as Unidades de Saúde.",
+   "trecho": "Saúde Acompanhe o Plano Municipal de Saúde do município e Relatório de Gestão Municipal de Saúde e as Unidades de Saúde.",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "214f8a488b",
+   "url_final": "https://pmalcobaca.ba.gov.br/documentos-saude",
+   "alvo": "2900801",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Alcobaça",
+   "uf": "BA",
+   "ibge": "2900801",
+   "url": "https://pmalcobaca.ba.gov.br/documentos?tipo=plano-municipal-de-educacao",
+   "titulo": "Portal da prefeitura de Alcobaça/BA (pmalcobaca.ba.gov.br): Educação Confira o Plano Municipal de Educação e Relatório de Resultados.",
+   "trecho": "Educação Confira o Plano Municipal de Educação e Relatório de Resultados.",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "77259b993f",
+   "url_final": "https://pmalcobaca.ba.gov.br/documentos?tipo=plano-municipal-de-educacao",
+   "alvo": "2900801",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Valparaíso de Goiás",
+   "uf": "GO",
+   "ibge": "5221858",
+   "url": "https://valparaisodegoias.go.gov.br/smisb/",
+   "titulo": "Portal da prefeitura de Valparaíso de Goiás/GO (valparaisodegoias.go.gov.br): Plano Municipal de Saneamento Básico",
+   "trecho": "Plano Municipal de Saneamento Básico",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "40b354c1f6",
+   "url_final": "https://valparaisodegoias.go.gov.br/smisb/",
+   "alvo": "5221858",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "São João dos Patos",
+   "uf": "MA",
+   "ibge": "2111102",
+   "url": "https://saojoaodospatos.ma.gov.br/transparencia/plano-municipal-de-educacao/",
+   "titulo": "Portal da prefeitura de São João dos Patos/MA (saojoaodospatos.ma.gov.br): Plano Municipal de Educaç...",
+   "trecho": "Plano Municipal de Educaç...",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "d072d69ed4",
+   "url_final": "https://saojoaodospatos.ma.gov.br/transparencia/plano-municipal-de-educacao/",
+   "alvo": "2111102",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "São João dos Patos",
+   "uf": "MA",
+   "ibge": "2111102",
+   "url": "https://saojoaodospatos.ma.gov.br/transparencia/plano-municipal-de-saude/",
+   "titulo": "Portal da prefeitura de São João dos Patos/MA (saojoaodospatos.ma.gov.br): Plano Municipal de Saúde",
+   "trecho": "Plano Municipal de Saúde",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "429c021c26",
+   "url_final": "https://saojoaodospatos.ma.gov.br/transparencia/plano-municipal-de-saude/",
+   "alvo": "2111102",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Igarapé-Açu",
+   "uf": "PA",
+   "ibge": "1503200",
+   "url": "https://prefeituradeigarapeacu.pa.gov.br/audiencia-publica-vai-debater-a-elaboracao-do-plano-municipal-de-saneamento-basico/",
+   "titulo": "Portal da prefeitura de Igarapé-Açu/PA (prefeituradeigarapeacu.pa.gov.br): Audiência pública vai debater a elaboração do Plano Municipal de Saneamento Básico",
+   "trecho": "Audiência pública vai debater a elaboração do Plano Municipal de Saneamento Básico",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "aa022f857b",
+   "url_final": "https://prefeituradeigarapeacu.pa.gov.br/audiencia-publica-vai-debater-a-elaboracao-do-plano-municipal-de-saneamento-basico/",
+   "alvo": "1503200",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Erechim",
+   "uf": "RS",
+   "ibge": "4307005",
+   "url": "https://pmerechim.rs.gov.br/pagina/579/",
+   "titulo": "Portal da prefeitura de Erechim/RS (pmerechim.rs.gov.br): Plano Municipal de Cultura",
+   "trecho": "Plano Municipal de Cultura",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-05",
+   "registrado_em": "2026-11-05",
+   "origem_do_coletor": "descoberta",
+   "id": "bfb0216225",
+   "url_final": "https://pmerechim.rs.gov.br/pagina/579/",
+   "alvo": "4307005",
    "nivel": "C",
    "tipo": "plano",
    "entrada": "municipio"
