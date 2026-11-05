@@ -41,6 +41,7 @@ jobs:
         coletar_sih.py --orcamento 2400
         coletar_planos_arboviroses.py --orcamento 1500
         ler_planos_arboviroses.py
+        reconferir_instrumentos_federais.py --aplicar
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
       ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

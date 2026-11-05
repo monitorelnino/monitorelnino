@@ -129,6 +129,7 @@
   "data/planos_arboviroses.json": {"escritor": "noturno_desfechos.yml", "por_que": "Planos municipais de arboviroses (E1, 22/10/2026): escrito só por `coletar_planos_arboviroses.py` no elo dos desfechos; `bases` é leitura registrada à mão no PR."},
   "data/planos_arboviroses_leitura.json": {"escritor": "noturno_desfechos.yml", "por_que": "Leitura automática do texto integral preservado dos diários com menção a plano de arboviroses (E1, 23/10/2026): escrito só por `ler_planos_arboviroses.py`, depois de `coletar_planos_arboviroses.py` no mesmo elo; peso zero."},
   "data/pistas_arboviroses.json": {"escritor": "noturno_desfechos.yml", "por_que": "Fila própria dos planos de arboviroses, gravada pela porta única `scripts/pistas.py`; nenhum juiz do índice a lê."},
+  "data/saude_desfechos/instrumentos.json": {"escritor": "noturno_desfechos.yml", "por_que": "Instrumentos federais de saúde (09/09/2026), com a reconferência semanal dos \"não localizados\" (E1, 05/11/2026): escrito só por `reconferir_instrumentos_federais.py` no elo dos desfechos; o registro inicial foi à mão no PR."},
   "data/saude_desfechos/leptospirose.json": {
    "escritor": "noturno_desfechos.yml",
    "por_que": "Desfecho do SUS (E1/E2): escrito só pelo elo `noturno_desfechos.yml`, pela função comum `desfechos_sus.gravar_desfecho`; esquema fora da forma vai à quarentena."
