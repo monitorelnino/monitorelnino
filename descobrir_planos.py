@@ -435,7 +435,7 @@ def autoteste() -> int:
         gravados, lotes = {}, []
         livro = {"municipios": {"2": {"consultado_em": "2026-10-22"}}}   # o 2 já foi lido hoje
 
-        def lido(nome, uf, cod, hoje, oficial=None):
+        def lido(nome, uf, cod, hoje, oficial=None, busca=None):
             if cod == "3":
                 raise KeyboardInterrupt()
             return {"dominio": "x", "situacao": "lido", "pistas": []}
@@ -458,6 +458,34 @@ def autoteste() -> int:
         # e não foi gravado, o 1 foi gravado, e a gravação aconteceu uma vez.
         return "1" in feitos and "3" not in feitos and set(feitos) <= {"1", "2", "4"} and len(lotes) == 1
 
+    def t_rota_1b_busca_no_dominio():
+        """Sem portal pelo endereço padrão, a busca aponta o `.gov.br`; só vale se a home se identifica. Busca fora
+        do ar é tentativa (`portal_nao_verificado`), nunca ausência; link só do próprio domínio."""
+        import unittest.mock as mock
+        achou = {"results": [{"url": "https://portal.bonito.ms.gov.br/x", "title": "Prefeitura"},
+                             {"url": "https://facebook.com/b", "title": "x"}, {"url": "https://gov.br/y", "title": "z"}]}
+        pl = {"results": [{"url": "https://portal.bonito.ms.gov.br/plancon.pdf", "title": "Plano de contingência"},
+                          {"url": "https://outro.com/plancon.pdf", "title": "Plano de contingência"}]}
+        busca = lambda q: pl if q.startswith("site:") else achou   # noqa: E731
+        fora = lambda q: (_ for _ in ()).throw(OSError("fora"))     # noqa: E731
+
+        def home(url, timeout=0):
+            if "portal.bonito.ms.gov.br" in url:
+                return b"<title>Prefeitura de Bonito</title>"
+            raise OSError("dns")
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=home), \
+             mock.patch(f"{__name__}.consultar_wp_json", return_value=([], False)), \
+             mock.patch(f"{__name__}._renderizar", return_value={"ok": False}), \
+             mock.patch(f"{__name__}.time.sleep"):
+            r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-05", busca=busca)
+            sem = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-05")
+            cai = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-05", busca=fora)
+        hosts, ok = hosts_por_busca("Bonito", "MS", busca)
+        return (r["dominio"] == "portal.bonito.ms.gov.br" and r["situacao"] == "lido"
+                and [p["url"] for p in r["pistas"]] == ["https://portal.bonito.ms.gov.br/plancon.pdf"]
+                and sem["situacao"] == "portal_nao_verificado" and cai["situacao"] == "portal_nao_verificado"
+                and cai["motivo"] == "a busca não respondeu" and hosts == ["portal.bonito.ms.gov.br"] and ok)
+
     def t_sitio_uma_linha_por_municipio():
         """Cada município lido vira uma linha `site_municipal` com município e UF; o que não foi lido é `erro`;
         a fila aceita `municipios` do cadastro (codigo_ibge numérico)."""
@@ -476,7 +504,7 @@ def autoteste() -> int:
              mock.patch(f"{__name__}.gravar"), \
              mock.patch(f"{__name__}.log_busca", side_effect=lambda *a, **k: linhas.append((a, k))), \
              mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
-             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h, o=None: res[c]), \
+             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h, o=None, b=None: res[c]), \
              mock.patch("scripts.pistas.gravar_lote", return_value={"gravadas": 0, "recusadas": 0}):
             rodar_municipios(f.name)
         import os
@@ -486,6 +514,7 @@ def autoteste() -> int:
                 and por["1200054"][1] == "erro" and por["1200104"][1] == "pista")
 
     return rodar_autoteste({
+        "rota 1b: busca no domínio acha o portal e o link; busca fora do ar não vira ausência": t_rota_1b_busca_no_dominio,
         "§25 sítio da prefeitura: uma linha do log por município, fila do cadastro": t_sitio_uma_linha_por_municipio,
         "portal: endereço oficial do cadastro primeiro; home que só monta por JavaScript é renderizada": t_endereco_oficial_e_home_renderizada,
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
@@ -674,7 +703,7 @@ def _so_letras(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
 
 
-CANDIDATOS_V = 3   # 05/11/2026: + endereço oficial do cadastro público (Wikidata P856) e home renderizada
+CANDIDATOS_V = 4   # 05/11/2026: + endereço oficial do cadastro público (Wikidata P856), home renderizada e busca no domínio (1b)
 
 _SPARQL = ("SELECT ?c ?u WHERE { ?m wdt:P1585 ?c ; wdt:P856 ?u . }")
 _REDES = ("facebook.", "instagram.", "twitter.", "x.com", "youtube.", "wikipedia.", "linktr.ee")
@@ -695,6 +724,34 @@ def enderecos_oficiais(buscar=None) -> dict:
         if host and not any(r in host for r in _REDES):
             achados.setdefault(str(l["c"]["value"]).zfill(7), host)
     return achados
+
+
+def hosts_por_busca(nome: str, uf: str, busca, ja_tentados=()) -> tuple:
+    """(hosts, respondeu): endereços `.gov.br` que a busca aponta para a prefeitura, sem os já tentados.
+    `busca(consulta)` é o metabuscador do site. Candidato, não prova: `identifica_prefeitura` decide.
+    Falha da busca é `respondeu=False` (tentativa), nunca ausência."""
+    try:
+        resultados = busca(f"prefeitura de {nome} {uf} site:gov.br").get("results") or []
+    except Exception:  # noqa: BLE001 — metabuscador fora do ar
+        return [], False
+    hosts = []
+    for r in resultados:
+        h = urllib.parse.urlparse(str(r.get("url") or "")).netloc.lower()
+        if (h.endswith(".gov.br") and h.count(".") >= 3 and h not in hosts and h not in ja_tentados
+                and not any(x in h for x in _REDES)):
+            hosts.append(h)
+    return hosts[:3], True
+
+
+def links_por_busca(nome: str, dominio: str, busca) -> list:
+    """[(url, titulo)] de plano no próprio domínio da prefeitura, pela consulta `site:<domínio>`. Pura salvo a busca."""
+    try:
+        resultados = busca(f"site:{dominio} plano de contingência {nome}").get("results") or []
+    except Exception:  # noqa: BLE001
+        return []
+    return [(r["url"], " ".join(str(r.get("title") or "").split())) for r in resultados
+            if urllib.parse.urlparse(str(r.get("url") or "")).netloc.lower().removeprefix("www.") == dominio.removeprefix("www.")
+            and link_e_candidato(r["url"], str(r.get("title") or ""))][:MAXIMO_LINKS_POR_PAGINA]
 
 
 def dominios_do_municipio(nome: str, uf: str, oficial: str = None) -> list:
@@ -741,7 +798,7 @@ def pistas_do_portal(nome: str, uf: str, ibge: str, dominio: str, itens: list, h
             for url, titulo, data, h in itens]
 
 
-def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str = None) -> dict:
+def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str = None, busca=None) -> dict:
     """Um município, um canal. Devolve {dominio, situacao, pistas}; nunca levanta.
 
     `situacao`: `recusa_de_fonte` (401/403/429/451 ou muro de robô: respeita-se e registra-se),
@@ -751,26 +808,42 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
     Uma pausa de PAUSA_POR_DOMINIO s separa os pedidos ao mesmo host (§11)."""
     import urllib.error
     dominio = home = None
-    for d in dominios_do_municipio(nome, uf, oficial):
-        try:
-            with _pedido_ao_host(d):
-                corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
-        except urllib.error.HTTPError as e:
-            if e.code in RECUSAS_DE_FONTE:
-                registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
-                return {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
-            continue
-        except MuroDeRobo as e:
-            registrar_lacuna(f"portal de {nome}/{uf}", f"muro de robô em {d}", canal="portal da prefeitura", camada=1, uf=uf)
-            return {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
-        except Exception:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve, tenta o próximo
-            continue
-        texto = corpo[:300000].decode("utf-8", "replace")
-        if identifica_prefeitura(texto, nome):
-            dominio, home = d, texto
-            break
+    nao_serve = False   # a busca falhou: tentativa, não ausência
+
+    def ler_home(dominios):
+        """(dominio, home, recusa): o primeiro endereço que responde como a prefeitura, ou a recusa que parou a leitura."""
+        for d in dominios:
+            try:
+                with _pedido_ao_host(d):
+                    corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
+            except urllib.error.HTTPError as e:
+                if e.code in RECUSAS_DE_FONTE:
+                    registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
+                    return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
+                continue
+            except MuroDeRobo as e:
+                registrar_lacuna(f"portal de {nome}/{uf}", f"muro de robô em {d}", canal="portal da prefeitura", camada=1, uf=uf)
+                return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
+            except Exception:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve, tenta o próximo
+                continue
+            texto = corpo[:300000].decode("utf-8", "replace")
+            if identifica_prefeitura(texto, nome):
+                return d, texto, None
+        return None, None, None
+
+    tentados = dominios_do_municipio(nome, uf, oficial)
+    dominio, home, recusa = ler_home(tentados)
+    if recusa:
+        return recusa
+    if not dominio and busca:   # rota 1b: o endereço que a busca aponta só vale se a home se identificar
+        achados, ok = hosts_por_busca(nome, uf, busca, tentados)
+        nao_serve = not ok
+        dominio, home, recusa = ler_home(achados)
+        if recusa:
+            return recusa
     if not dominio:
-        return {"dominio": None, "situacao": "portal_nao_verificado", "pistas": []}
+        return {"dominio": None, "situacao": "portal_nao_verificado", "pistas": [],
+                "motivo": "a busca não respondeu" if nao_serve else None}
     itens, vistos, respondeu = [], set(), False
     for termo in TERMOS_MUNICIPIO:
         with _pedido_ao_host(dominio):
@@ -799,6 +872,11 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                 vistos.add(l["href"])
                 itens.append((l["href"], l.get("texto"), None, None))
         respondeu = bool(render.get("ok"))
+    if not (respondeu or itens) and busca:   # rota 1b: a prefeitura sem link em HTML estático, pela busca no domínio
+        for url, titulo in links_por_busca(nome, dominio, busca):
+            if url not in vistos and len(vistos) < MAXIMO_LINKS_POR_PAGINA:
+                vistos.add(url)
+                itens.append((url, titulo, None, None))
     situacao = "lido" if (respondeu or itens) else "nao_verificado"
     return {"dominio": dominio, "situacao": situacao, "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
 
@@ -823,7 +901,7 @@ def _lista_de_endereco_mudou(v: dict) -> bool:
     return v.get("situacao") in ("portal_nao_verificado", "nao_verificado") and v.get("candidatos") != CANDIDATOS_V
 
 
-def rodar_municipios(caminho: str, limite: int = None) -> int:
+def rodar_municipios(caminho: str, limite: int = None, busca=None) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
     (`prazo=Nmin`) chega como SIGINT e o que foi lido é gravado."""
     from scripts.pistas import gravar_lote
@@ -851,7 +929,7 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
         registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
 
     with ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS) as pool:
-        futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje, oficiais.get(c)): c
+        futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje, oficiais.get(c), busca): c
                    for c in todo}
         try:
             for f in as_completed(futuros):
@@ -891,8 +969,10 @@ def main() -> int:
     if "--limite" in sys.argv:
         limite = int(sys.argv[sys.argv.index("--limite") + 1])
     if "--municipios" in sys.argv:   # busca dirigida pela relação do S2iD, canal do portal da prefeitura
+        from buscar_planos_fontes_abertas import buscar_web   # o mesmo metabuscador e ritmo da busca web
         return rodar_municipios(sys.argv[sys.argv.index("--municipios") + 1],
-                                int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None)
+                                int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None,
+                                buscar_web if "--busca-dominio" in sys.argv else None)
     setores = ["saude", "defesa_civil"]
     if "--setor" in sys.argv:
         setores = [sys.argv[sys.argv.index("--setor") + 1]]

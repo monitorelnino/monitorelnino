@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-05 · Rota 1b: busca no domínio da prefeitura · `descobrir_planos.py --municipios … --busca-dominio` consulta o metabuscador do site (`prefeitura de <nome> <UF> site:gov.br` e `site:<domínio> plano de contingência`) para os municípios sem portal achado ou sem link em HTML estático. O endereço só vale se a home se identificar como a prefeitura; busca fora do ar fica como tentativa, nunca como ausência. Sem fonte nova, sem API paga.
+
 ## 2026-11-05 · #1533 · Véu da prévia aceita a senha da imprensa · Por ordem da editoria, o véu de senha do navegador passa a aceitar uma segunda senha, para jornalistas, com o mesmo conteúdo. No código entra só o hash; a senha não fica no repositório. Nada muda em `publicacao.json`, `noindex` ou no segredo do servidor.
 
 ## 2026-11-05 · #1527 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.
