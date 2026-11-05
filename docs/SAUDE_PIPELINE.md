@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-29 a 2026-11-05 (1343 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-29 a 2026-11-05 (1348 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 4983/5571 com verificação real até 2026-11-05 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-04 07:20 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-04 01:37 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-05 06:17 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-05 06:42 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-05 05:32 | 1 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -85,14 +85,14 @@ cobertura 15d: 4983/5571 com verificação real até 2026-11-05 · por canal: we
 | `monitorar_imprensa_saude.py` | coletor | 2026-11-05 05:43 | 105 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-11-05 05:50 | 3 s | 17676 | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-11-05 05:51 | 5 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-11-03 08:10 | 1 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-11-05 06:19 | 2 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-10-31 01:14 | 2 s | — | ok | — |
 | `python3` | coletor | 2026-11-04 22:43 | 168 s | 1 | ok | — |
 | `revisar_pistas.py` | coletor | 2026-11-05 04:08 | 364 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-05 05:32 | 0 s | — | ok | — |
 | `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-05 04:07 | 75 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-11-03 02:26 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-03 08:10 | 3 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-05 06:19 | 3 s | — | ok | — |
 | `scripts/proveniencia_estadual.py` | coletor | 2026-11-04 03:26 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-05 05:12 | 1041 s | — | ok | — |
 | `scripts/rejulgar_decisoes_do_juiz.py` | coletor | 2026-10-30 06:06 | 3455 s | — | ok | — |
