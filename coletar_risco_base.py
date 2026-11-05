@@ -84,12 +84,15 @@ def main() -> int:
     from coletores_base import buscar, gravar_em, hoje_editorial, preservar_evidencia, sha256
     url = f"{API}/hierarquia"
     corpo = buscar(url, timeout=120, origem=ORIGEM)
-    cat = catalogo_de(nos_de(corpo))
+    preservar_evidencia(corpo, url, "json", ORIGEM)
+    nos = nos_de(corpo)
+    cat = catalogo_de(nos)
     ruins = problemas(cat)
     if ruins:
-        print("X VALIDAÇÃO — nada foi gravado:", *ruins, sep="\n   - ")
+        chaves = sorted({k for n in nos if isinstance(n, dict) for k in n})
+        print("X VALIDAÇÃO — nada foi gravado:", *ruins, "chaves dos nós: " + ", ".join(chaves),
+              sep="\n   - ")
         return 1
-    preservar_evidencia(corpo, url, "json", ORIGEM)
     gravar_em(SAIDA, {
         "_governanca": ("Catálogo de indicadores do AdaptaBrasil (MCTI/INPE/RNP). Peso zero; não é "
                         "risco do ciclo. Sem valor por município nesta etapa: ausência é lacuna "
