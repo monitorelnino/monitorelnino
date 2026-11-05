@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-29",
+ "gerado_em": "2026-11-05",
  "municipios": {
   "5002704": {
    "S16": {
@@ -10,10 +10,10 @@
     "dominio": "campogrande.ms.gov.br"
    },
    "S25": {
-    "consultado_em": "2026-10-26",
-    "situacao": "sem_resultado",
+    "consultado_em": "2026-11-05",
+    "situacao": "erro",
     "consulta": "https://index.commoncrawl.org/CC-MAIN-2026-43-index?url=campogrande.ms.gov.br%2F%2A&output=json&fl=url%2Cstatus%2Cmime&filter=%3Dstatus%3A200&filter=url%3A.%2A%28plancon%7Cplacon%7Ccontingenc%29.%2A&limit=30",
-    "motivo": null,
+    "motivo": "HTTP 504",
     "dominio": "campogrande.ms.gov.br"
    },
    "S13": {
