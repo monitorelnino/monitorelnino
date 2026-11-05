@@ -175,7 +175,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>defesa-civil.emergencias.barras.total</code></td><td>Total</td></tr>
 </table>
-<h2>financiamento <small>(56 trechos)</small></h2>
+<h2>financiamento <small>(61 trechos)</small></h2>
 <h3>titulo_da_pagina</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>financiamento.titulo_da_pagina</code></td><td>Financiamento</td></tr>
@@ -231,8 +231,28 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>chega · mapa</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>titulo</td><td><code>financiamento.chega.mapa.titulo</code></td><td>Recursos federais repassados a municípios desde 29/06/2026, por origem</td></tr>
-<tr><td>legenda</td><td><code>financiamento.chega.mapa.legenda</code></td><td><span class="molde">Área do círculo proporcional ao valor repassado · defesa civil: transferências da União · saúde: FNS, emergência, julho a {mes}/2026</span><br><span class="ex">exemplo: Área do círculo proporcional ao valor repassado · defesa civil: transferências da União · saúde: FNS, emergência, julho a 3/2026</span></td></tr>
+<tr><td>titulo</td><td><code>financiamento.chega.mapa.titulo</code></td><td>Recursos federais repassados a municípios, por origem</td></tr>
+<tr><td>legenda</td><td><code>financiamento.chega.mapa.legenda</code></td><td><span class="molde">Área do círculo proporcional ao valor repassado, {inicio} a {mes}/{ano} · defesa civil: União · saúde: Fundo Nacional de Saúde</span><br><span class="ex">exemplo: Área do círculo proporcional ao valor repassado, 3 a 3/3 · defesa civil: União · saúde: Fundo Nacional de Saúde</span></td></tr>
+</table>
+<h3>chega · origem.defesa_civil</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.chega.origem.defesa_civil</code></td><td>defesa civil</td></tr>
+</table>
+<h3>chega · origem.saude</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.chega.origem.saude</code></td><td>saúde</td></tr>
+</table>
+<h3>chega · legenda.origem</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.chega.legenda.origem</code></td><td><span class="molde">{origem} · {valor}</span><br><span class="ex">exemplo: 3 · 3</span></td></tr>
+</table>
+<h3>chega · legenda.maior</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.chega.legenda.maior</code></td><td><span class="molde">maior círculo: {valor}</span><br><span class="ex">exemplo: maior círculo: 3</span></td></tr>
+</table>
+<h3>chega · legenda.sem_coleta</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>financiamento.chega.legenda.sem_coleta</code></td><td>sem coleta até o corte</td></tr>
 </table>
 <h3>chega · sem_repasse.molde</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
