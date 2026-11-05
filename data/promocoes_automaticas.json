@@ -383354,6 +383354,335 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305871",
+   "municipio": "Coronel Barros",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "b8a8401018",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305871",
+   "municipio": "Coronel Barros",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "79c94022ff",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "9604 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "o Restinga Sêca Roca Sales Santa Tereza São João do Polêsine São José do Herval São Martinho da Serra São Valentim do Sul São Vendelino Segredo Serafina Corrêa"
+    },
+    "2_citacao": {
+     "ok": true,
+     "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "008/2026",
+      "data": "09/07/2026",
+      "trecho": "Aplicação dos Recursos em conformidade com as finalidades e ações referidas na Resolução da Fundec /RS 008/2026. Fundo a Fundo A s transferência s f undo a f u"
+     }
+    },
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "sem fórmula de promulgação nem texto articulado"
+    }
+   },
+   "categoria": null,
+   "data": "09/07/2026",
+   "natureza": null,
+   "ibge": "4319125",
+   "municipio": "São Martinho da Serra",
+   "uf": "RS",
+   "url": "https://www.estado.rs.gov.br/autorizado-repasse-de-recurso-da-defesa-civil-para-138-municipios-gauchos-via-fundo-a-fundo",
+   "regras_18": [],
+   "sem_ato_de_aprovacao": false,
+   "pista_id": "51a73c1ede",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9b072d67c156fae6e7ad2cc2b9969c59239581f4a2c892a115dcf3f3f0989d3e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319125",
+   "municipio": "São Martinho da Serra",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202106/02101052-ma-0001-20-plano-estadual-de-saude-28-05-interativo-a.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "cb3f7732b8",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3847c9ac26b4ddfb741b6fb81a1026f4df934d6948094f783e3768e17190e22f"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319125",
+   "municipio": "São Martinho da Serra",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "546099a523",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306379",
+   "municipio": "Dilermando de Aguiar",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "e2c468f926",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306379",
+   "municipio": "Dilermando de Aguiar",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202410/30121947-plano-estadual-saude-versao-final-site.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "1fe9ad59f6",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306379",
+   "municipio": "Dilermando de Aguiar",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "502afe7811",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Vista Gaúcha\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323705",
+   "municipio": "Vista Gaúcha",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202609/30104555-2-rdqa-2026.pdf",
+   "regras_18": [],
+   "pista_id": "f8ef010765",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "4bed539721fd25ef679083719dadb3ee3784eac8d72b3eab78b529f99676d90e"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323705",
+   "municipio": "Vista Gaúcha",
+   "uf": "RS",
+   "url": "https://saude.rs.gov.br/upload/arquivos/202401/15125241-pes-2024-2027.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "e978260768",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "335418 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323705",
+   "municipio": "Vista Gaúcha",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202007/31100000-doe-2020-07-31.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "289ec96e79",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "62a5cdd75e33e822e1a80e94b8194bb68623e4bec0ec225b5f2f951fcff76bce"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4323705",
+   "municipio": "Vista Gaúcha",
+   "uf": "RS",
+   "url": "https://admin.sema.rs.gov.br/upload/arquivos/202210/05140355-plano-estadual-de-saneamento-consultapublica.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "7ef9474223",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "5e9163bbab714d081107c4e34318e28721101e315ba6c8b06f0c08da65ae79fa"
   }
  ]
 }
