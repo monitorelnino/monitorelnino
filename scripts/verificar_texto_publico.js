@@ -184,6 +184,7 @@ function autoteste() {
   c("exceção de outra página não vale", tetoComExcecao("b.html", [1, 2], _x).join() === "1,2");
   c("exceção sem decidido_por não vale", tetoComExcecao("a.html", [1, 2], [{ ..._x[0], decidido_por: "" }]).join() === "1,2");
   c("exceção com teto troca só o teto", tetoComExcecao("a.html", [1, 2], [{ ..._x[0], teto: 9 }]).join() === "1,9");
+  c("figura: sobretítulo e cartao-k reprovam (04/11)", !F.partes.includes("cartao-mapa-familia") && F.proibidos.includes(".cartao-mapa-familia") && F.proibidos.includes(".cartao-k"));
   // jargão, forma, refrão
   c("nome de arquivo reprova", achados("veja data/estados.json", "", "", false).length === 2);
   c("'portão' reprova", achados("o portão reprovou", "", "", false).length === 1);
