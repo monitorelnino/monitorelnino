@@ -160,10 +160,40 @@ def t5():
                 suspeitos.append(f"{arq.name}: {linha.strip()[:80]}")
     return not suspeitos
 
+def _linha(canal, decisao, mun="Zeta", uf="ZZ", nivel=None):
+    return {"canal": canal, "decisao": decisao, "municipio": mun, "uf": uf, "nivel": nivel}
+
+
+def t8():
+    """§25 (05/11/2026): `municipal_completo` é calculado do log — três canais com consulta válida fecham a bateria."""
+    import recalcular_mare as rm
+    base = [_linha("DOM", "coberto_sem_mencao"), _linha("site_municipal", "consultado sem achado"),
+            _linha("busca_web", "coberto_sem_mencao"),
+            _linha("DOM", "sem_cobertura_qd", mun="Sem QD"), _linha("site_municipal", "consultado sem achado", mun="Sem QD"),
+            _linha("busca_web", "nao_localizado_ate_o_momento", mun="Sem QD")]
+    n = rm.niveis_do_log(base)
+    return n.get(("Zeta", "ZZ")) == "municipal_completo" and n.get(("Sem QD", "ZZ")) == "municipal_completo"
+
+
+def t9():
+    """Negativo: canal faltando, erro e motor sem resposta não fecham a bateria; linha sem município é ignorada."""
+    import recalcular_mare as rm
+    n = rm.niveis_do_log([_linha("DOM", "com_excerto"), _linha("busca_web", "coberto_sem_mencao"),
+                          _linha("site_municipal", "erro"),
+                          _linha("DOM", "pista", mun="B"), _linha("site_municipal", "pista", mun="B"),
+                          _linha("busca_web", "motor_sem_resposta", mun="B"),
+                          _linha("DOM", "pista", mun=None), _linha("site_municipal", "pista", mun=None),
+                          _linha("busca_web", "pista", mun=None),
+                          _linha("DOM", "pista", mun="E", nivel="estadual")])
+    return ("Zeta", "ZZ") not in n and ("B", "ZZ") not in n and n.get(("E", "ZZ")) == "estadual" and len(n) == 1
+
+
 sys.exit(rodar_autoteste({"§184 'nada localizado' sem bateria municipal reprova": t3,
                           "§184 'consultado sem achado' entra no vocabulário": t4,
                           "§213 toda decisão do vocabulário é aceita por log_busca()": t6,
                           "negativo: decisão fora do vocabulário reprova": t7,
+                          "§25 nível municipal_completo calculado do log (três canais)": t8,
+                          "negativo: bateria incompleta não sobe de nível": t9,
                           "§184 nenhum script loga 'nada localizado' sem o nível": t5,
                           
     "vocabulário de nivel intacto (não aceita 'municipal')": t1,

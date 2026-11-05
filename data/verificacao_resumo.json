@@ -27,8 +27,9 @@
   ]
  },
  "totais_por_nivel": {
-  "estadual": 4677,
-  "nacional": 894
+  "estadual": 4670,
+  "nacional": 892,
+  "municipal_completo": 9
  },
  "por_uf": {
   "GO": {
@@ -41,13 +42,16 @@
    "estadual": 144
   },
   "CE": {
-   "estadual": 184
+   "estadual": 183,
+   "municipal_completo": 1
   },
   "BA": {
-   "nacional": 417
+   "nacional": 416,
+   "municipal_completo": 1
   },
   "PR": {
-   "estadual": 399
+   "estadual": 398,
+   "municipal_completo": 1
   },
   "SC": {
    "estadual": 295
@@ -59,7 +63,8 @@
    "estadual": 139
   },
   "MA": {
-   "nacional": 217
+   "nacional": 216,
+   "municipal_completo": 1
   },
   "RN": {
    "estadual": 167
@@ -68,7 +73,8 @@
    "estadual": 224
   },
   "RS": {
-   "estadual": 497
+   "estadual": 496,
+   "municipal_completo": 1
   },
   "MT": {
    "estadual": 142
@@ -77,7 +83,8 @@
    "estadual": 22
   },
   "SP": {
-   "estadual": 645
+   "estadual": 644,
+   "municipal_completo": 1
   },
   "ES": {
    "estadual": 78
@@ -86,7 +93,8 @@
    "estadual": 223
   },
   "AL": {
-   "estadual": 102
+   "estadual": 101,
+   "municipal_completo": 1
   },
   "MS": {
    "estadual": 79
@@ -107,7 +115,8 @@
    "nacional": 75
   },
   "RJ": {
-   "estadual": 92
+   "estadual": 90,
+   "municipal_completo": 2
   },
   "DF": {
    "estadual": 1
@@ -1622,7 +1631,7 @@
   "2909901": "nacional",
   "2203206": "estadual",
   "1502772": "estadual",
-  "4106902": "estadual",
+  "4106902": "municipal_completo",
   "4204806": "estadual",
   "4107009": "estadual",
   "2203230": "estadual",
@@ -1751,7 +1760,7 @@
   "1707306": "estadual",
   "3514601": "estadual",
   "2103901": "nacional",
-  "3301702": "estadual",
+  "3301702": "municipal_completo",
   "3123528": "estadual",
   "3514700": "estadual",
   "3202108": "estadual",
@@ -1945,7 +1954,7 @@
   "4308433": "estadual",
   "2304350": "estadual",
   "4205456": "estadual",
-  "2304400": "estadual",
+  "2304400": "municipal_completo",
   "3126307": "estadual",
   "1708254": "estadual",
   "2104107": "nacional",
@@ -2150,7 +2159,7 @@
   "5209457": "estadual",
   "3518701": "estadual",
   "4206603": "estadual",
-  "3518800": "estadual",
+  "3518800": "municipal_completo",
   "4206652": "estadual",
   "3518859": "estadual",
   "3128709": "estadual",
@@ -2940,7 +2949,7 @@
   "5212501": "estadual",
   "2205805": "estadual",
   "1712454": "estadual",
-  "3302403": "estadual",
+  "3302403": "municipal_completo",
   "2407104": "estadual",
   "2919603": "nacional",
   "4311718": "estadual",
@@ -2953,7 +2962,7 @@
   "3528106": "estadual",
   "2919801": "nacional",
   "3528205": "estadual",
-  "2704302": "estadual",
+  "2704302": "municipal_completo",
   "3138906": "estadual",
   "4311700": "estadual",
   "1100130": "estadual",
@@ -4061,7 +4070,7 @@
   "5218102": "estadual",
   "2208502": "estadual",
   "1200807": "estadual",
-  "4314902": "estadual",
+  "4314902": "municipal_completo",
   "5106778": "estadual",
   "2208551": "estadual",
   "1718006": "estadual",
@@ -4446,7 +4455,7 @@
   "4123006": "estadual",
   "3545407": "estadual",
   "4215406": "estadual",
-  "2927408": "nacional",
+  "2927408": "municipal_completo",
   "4316477": "estadual",
   "4316501": "estadual",
   "1506302": "estadual",
@@ -4924,7 +4933,7 @@
   "2210359": "estadual",
   "4318804": "estadual",
   "4217006": "estadual",
-  "2111300": "nacional",
+  "2111300": "municipal_completo",
   "5220108": "estadual",
   "2312601": "estadual",
   "2210375": "estadual",
@@ -5686,7 +5695,7 @@
   "4219853": "estadual",
   "5101837": "estadual"
  },
- "ultima_rodada_log": "2026-11-04",
+ "ultima_rodada_log": "2026-11-05",
  "fontes_suspensas_defeso_ultima_rodada": 0,
  "fila_citacao_incompleta": 188,
  "varredura_diarios": {

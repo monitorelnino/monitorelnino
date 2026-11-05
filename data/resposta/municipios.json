@@ -177,9 +177,17 @@
      "data": "03/11/2026",
      "decreto": "Decreto nº 75",
      "hash": "127a153b9e32edaedb881828df02e8419511e31a9604d372e21c7f7673e0ebf7"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 75",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 2
   },
   "4200051": {
@@ -1135,7 +1143,7 @@
    "nome": "Água Doce",
    "uf": "SC",
    "decreto": true,
-   "primeiro_decreto": "05/03/2026",
+   "primeiro_decreto": "04/03/2026",
    "primeiro_reconhecimento": "15/10/2026",
    "tipos": [
     "reconhecimento_federal",
@@ -1147,7 +1155,7 @@
    "evento_declarado": [
     "chuva"
    ],
-   "dias_ate_reconhecimento": 224,
+   "dias_ate_reconhecimento": 225,
    "fontes": [
     {
      "canal": "DOU",
@@ -1172,9 +1180,17 @@
      "data": "06/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.394",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-25-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-25-cidades-afetadas-por-desastres",
+     "data": "04/03/2026",
+     "decreto": "ato de resposta — Portaria nº 672",
+     "hash": null
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2100154": {
@@ -6584,9 +6600,17 @@
      "data": "04/09/2026",
      "decreto": "Decreto municipal nº 100",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 140",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3103801": {
@@ -7517,9 +7541,17 @@
      "data": "21/10/2026",
      "decreto": "Decreto municipal nº 230",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 247",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 15
   },
   "3300233": {
@@ -8004,18 +8036,31 @@
    "ibge": "4101903",
    "nome": "Assaí",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 253",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2301604": {
    "ibge": "2301604",
@@ -14102,18 +14147,31 @@
    "ibge": "4103222",
    "nome": "Bom Sucesso do Sul",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 3.940",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "4202453": {
    "ibge": "4202453",
@@ -19287,18 +19345,31 @@
    "ibge": "4203303",
    "nome": "Campo Alegre",
    "uf": "SC",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "02/03/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "chuva"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "data": "02/03/2026",
+     "decreto": "ato de resposta — PORTARIA Nº 596",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 248
   },
   "2701407": {
    "ibge": "2701407",
@@ -19339,18 +19410,20 @@
    "nome": "Campo Alegre de Lourdes",
    "uf": "BA",
    "decreto": true,
-   "primeiro_decreto": "10/08/2026",
+   "primeiro_decreto": "02/03/2026",
    "primeiro_reconhecimento": "19/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "seca"
    ],
-   "dias_ate_reconhecimento": 9,
+   "dias_ate_reconhecimento": 170,
    "fontes": [
     {
      "canal": "DOU",
@@ -19359,9 +19432,17 @@
      "data": "19/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.645, nº 2.658, nº 2.659, nº 2.659, nº 2.667)",
      "hash": "4ab7239d7c3eff966f6f998fea68047326e7c984116a505e25d8c3452c36d869"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "data": "02/03/2026",
+     "decreto": "ato de resposta — PORTARIA Nº 596",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2202117": {
@@ -19931,18 +20012,31 @@
    "ibge": "4304101",
    "nome": "Campos Borges",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "12/02/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "chuva"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-23-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-23-cidades-afetadas-por-desastres-1",
+     "data": "12/02/2026",
+     "decreto": "ato de resposta — Portaria nº 459",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 266
   },
   "5102686": {
    "ibge": "5102686",
@@ -20518,9 +20612,17 @@
      "data": "26/10/2026",
      "decreto": "Decreto municipal nº 230",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 235",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "4304309": {
@@ -21460,9 +21562,17 @@
      "data": "30/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.331",
      "hash": "c8031075aeccd33475d8ac1a4575d188bdfb9d70109cf23b8c23d6796d50f360"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-12-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-12-cidades-afetadas-por-desastres-1",
+     "data": "25/09/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.195",
+     "hash": null
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "3112109": {
@@ -25711,9 +25821,25 @@
      "data": "09/09/2026",
      "decreto": "Decreto municipal nº 283",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_121570_2026-11-04_cbb46ca2e60f0a85913a5c03b8d141b9.pdf",
+     "data": "04/11/2026",
+     "decreto": "Decreto nº 345",
+     "hash": "aafdcf416fdfd5bd1aed9c673644595634e861e36d98b35808d41687026473df"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 345",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2303931": {
@@ -29806,9 +29932,17 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.583",
      "hash": "245a0a661adb7dd981215ab7fea19af6e2cb5c2ee6d832f4fb16462a48e3c821"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 7.277",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3513306": {
@@ -31928,10 +32062,11 @@
    "primeiro_decreto": "07/07/2026",
    "primeiro_reconhecimento": "23/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva",
@@ -31954,9 +32089,17 @@
      "data": "23/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.382",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-31-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-31-cidades-afetadas-por-desastres",
+     "data": "24/07/2026",
+     "decreto": "ato de resposta — Portaria nº 2.382",
+     "hash": null
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "5003488": {
@@ -34059,12 +34202,14 @@
    "primeiro_decreto": "28/09/2026",
    "primeiro_reconhecimento": "05/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "vendaval"
    ],
    "dias_ate_reconhecimento": 7,
@@ -34076,9 +34221,17 @@
      "data": "05/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.400",
      "hash": "76ba135ec64656fc180bfc99f03e647dce9a7f7776c5a5086f286f06b5237957"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-15-cidades-afetadas-por-desastres-2",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-15-cidades-afetadas-por-desastres-2",
+     "data": "06/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.394",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4307302": {
@@ -37307,18 +37460,31 @@
    "ibge": "4108403",
    "nome": "Francisco Beltrão",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 256",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2403905": {
    "ibge": "2403905",
@@ -38395,9 +38561,17 @@
      "data": "19/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.591",
      "hash": "16e248d3063321923d7e67aa916e7dac3e63e3e4d485e28dc94542e489ac5c13"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-28-cidades-afetadas-por-desastres-1",
+     "data": "20/10/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.591",
+     "hash": null
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "5103908": {
@@ -44013,7 +44187,7 @@
    "nome": "Inácio Martins",
    "uf": "PR",
    "decreto": true,
-   "primeiro_decreto": "04/11/2026",
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
    "tipos": [
     "SE"
@@ -44033,10 +44207,18 @@
      "data": "04/11/2026",
      "decreto": "Decreto nº 15.607",
      "hash": "12104cc4251452d9f3b21b15de42b69bf8c3984410e6c2a59ceb339bb276fda8"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 228",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
-   "dias_sem_reconhecimento": 1
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 2
   },
   "5209937": {
    "ibge": "5209937",
@@ -59781,10 +59963,11 @@
    "primeiro_decreto": "29/07/2026",
    "primeiro_reconhecimento": "03/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva"
@@ -59798,9 +59981,17 @@
      "data": "03/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.484, nº 2.485, nº 2.486, nº 2.486, nº 2.486)",
      "hash": "cc5225d4fadda43fac93469aa1a5c71ffd5500d592329a7f449786b677ea36a8"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-18-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-18-cidades-afetadas-por-desastres",
+     "data": "04/08/2026",
+     "decreto": "ato de resposta — Portaria nº 2.484",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4115457": {
@@ -59853,9 +60044,17 @@
      "data": "03/07/2026",
      "decreto": "Decreto municipal nº 73",
      "hash": "47bf32f8493ed2e74a99a73224dcc07400fa57cee8debbde775f78da768bbae4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 101",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 4,
+   "n_eventos": 5,
    "dias_sem_reconhecimento": null
   },
   "3140506": {
@@ -74276,18 +74475,20 @@
    "nome": "Pedra Preta",
    "uf": "RN",
    "decreto": true,
-   "primeiro_decreto": "10/08/2026",
+   "primeiro_decreto": "02/03/2026",
    "primeiro_reconhecimento": "17/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "seca"
    ],
-   "dias_ate_reconhecimento": 7,
+   "dias_ate_reconhecimento": 168,
    "fontes": [
     {
      "canal": "DOU",
@@ -74296,9 +74497,17 @@
      "data": "17/08/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 2.622, nº 2.627)",
      "hash": "fa40af132d0dc95ddfa37c5d1f9b0bd0c4bc8caa1c98360cbe3096ca4b4a316d"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "data": "02/03/2026",
+     "decreto": "ato de resposta — PORTARIA Nº 596",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "5106372": {
@@ -76569,9 +76778,17 @@
      "data": "30/09/2026",
      "decreto": "situação de emergência (número não localizado no texto)",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-seis-cidades-gauchas-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-seis-cidades-gauchas-afetadas-por-desastres",
+     "data": "01/09/2026",
+     "decreto": "ato de resposta — Portaria nº 2.819",
+     "hash": null
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "4213005": {
@@ -77754,18 +77971,31 @@
    "ibge": "5217609",
    "nome": "Planaltina",
    "uf": "GO",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "25/02/2025",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "chuva"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/planaltina-go-obtem-o-reconhecimento-federal-de-situacao-de-emergencia",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/planaltina-go-obtem-o-reconhecimento-federal-de-situacao-de-emergencia",
+     "data": "25/02/2025",
+     "decreto": "ato de resposta — Portaria nº 541",
+     "hash": null
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 618
   },
   "4119707": {
    "ibge": "4119707",
@@ -82564,18 +82794,31 @@
    "ibge": "4121505",
    "nome": "Rebouças",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 221",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2611606": {
    "ibge": "2611606",
@@ -84897,19 +85140,20 @@
    "nome": "Rio Grande",
    "uf": "RS",
    "decreto": true,
-   "primeiro_decreto": "13/08/2026",
+   "primeiro_decreto": "02/03/2026",
    "primeiro_reconhecimento": "02/09/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "chuva",
     "vendaval"
    ],
-   "dias_ate_reconhecimento": 20,
+   "dias_ate_reconhecimento": 184,
    "fontes": [
     {
      "canal": "DOU",
@@ -84934,9 +85178,33 @@
      "data": "29/09/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.298",
      "hash": "c7274cccd9f7406d9a33bda5448206030e74ae50706dd02d008356a091aec0fa"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-16-cidades-afetadas-por-desastres-2",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-16-cidades-afetadas-por-desastres-2",
+     "data": "03/09/2026",
+     "decreto": "ato de resposta — Portaria nº 2.853",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-25-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-25-cidades-afetadas-por-desastres",
+     "data": "04/03/2026",
+     "decreto": "ato de resposta — Portaria nº 672",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-26-municipios-que-enfrentam-desastres",
+     "data": "02/03/2026",
+     "decreto": "ato de resposta — PORTARIA Nº 596",
+     "hash": null
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 6,
    "dias_sem_reconhecimento": null
   },
   "3544103": {
@@ -93293,18 +93561,39 @@
    "ibge": "3549003",
    "nome": "São Francisco",
    "uf": "SP",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "04/03/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "chuva"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-18-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-18-cidades-afetadas-por-desastres",
+     "data": "04/08/2026",
+     "decreto": "ato de resposta — Portaria nº 2.484",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-25-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-situacao-de-emergencia-em-25-cidades-afetadas-por-desastres",
+     "data": "04/03/2026",
+     "decreto": "ato de resposta — Portaria nº 672",
+     "hash": null
+    }
+   ],
+   "n_eventos": 2,
+   "dias_sem_reconhecimento": 246
   },
   "2513984": {
    "ibge": "2513984",
@@ -98295,9 +98584,17 @@
      "data": "03/11/2026",
      "decreto": "Decreto nº 302/2026",
      "hash": "127a153b9e32edaedb881828df02e8419511e31a9604d372e21c7f7673e0ebf7"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 302",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 2
   },
   "3164407": {
@@ -100115,12 +100412,14 @@
    "primeiro_decreto": "31/07/2026",
    "primeiro_reconhecimento": "19/08/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "vendaval"
    ],
    "dias_ate_reconhecimento": 19,
@@ -100140,9 +100439,17 @@
      "data": "29/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.768",
      "hash": "7dd91836a87ef4fa113029336e2df0eb38a9ac0293badcef042c0d11aac491e5"
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (05/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-46-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias-midr/reconhecida-emergencia-em-46-cidades-afetadas-por-desastres",
+     "data": "20/08/2026",
+     "decreto": "ato de resposta — Portaria nº 2.645",
+     "hash": null
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "4126306": {
@@ -104450,18 +104757,31 @@
    "ibge": "4127007",
    "nome": "Teixeira Soares",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "03/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 333",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "3168507": {
    "ibge": "3168507",
@@ -111172,9 +111492,17 @@
      "data": "23/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.701",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17428",
+     "data": "03/11/2026",
+     "decreto": "Decreto municipal nº 143",
+     "hash": "12862800aa4852bc5c3899bfb82d641cd574838f92e3ee1b86eb918f4f8b5749"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3172004": {

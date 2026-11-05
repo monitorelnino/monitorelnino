@@ -149,7 +149,7 @@ Atualizado em 05/11/2026.
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
 | `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 7 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
-| `recalcular_mare.py` | — | — | — | 5 | SIM |
+| `recalcular_mare.py` | — | — | — | 6 | SIM |
 | `reconferir_instrumentos_federais.py` | — | `saude_desfechos/instrumentos.json` | — | — | não |
 | `revisar_pistas.py` | — | `pistas_imprensa.json` | — | — | não |
 | `robustez_saude.py` | — | — | — | — | não |
