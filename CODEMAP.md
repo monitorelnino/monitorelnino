@@ -57,7 +57,7 @@ Atualizado em 05/11/2026.
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscador2.py` | — | — | — | 3 | não |
 | `buscar_financiamento_preventivo.py` | — | — | — | — | não |
-| `buscar_planos_fontes_abertas.py` | — | — | — | — | não |
+| `buscar_planos_fontes_abertas.py` | — | — | — | 1 | não |
 | `buscar_protocolo_calor.py` | — | `saude_desfechos/busca_protocolo_calor.json` | — | — | não |
 | `classificador_natureza.py` | — | — | — | 4 | não |
 | `classificar_pista_civil.py` | — | `pistas_imprensa.json` | — | 5 | não |
