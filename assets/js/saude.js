@@ -275,7 +275,7 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
          estado ainda não verificado são coisas distintas, e integrar o nacional não apaga a lacuna. */
       if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() =>
         escreve('linhaPreparoSaude', 'saude.topo.preparacao.linha', {
-          com_plano: n(res.ufs_com_plano_localizado), denominador: n(res.denominador || 27),
+          com_plano: n(res.ufs_com_plano_localizado), em_elaboracao: res.ufs_em_elaboracao || 0, denominador: n(res.denominador || 27),
           sem_numero: res.nao_verificadas, corte: (MS || {}).corte || ''}));
     }
     if (rp.indice != null) {
