@@ -374,7 +374,6 @@ a.cartao--kpi:hover{outline:1.5px solid var(--link); outline-offset:2px; color:i
 .cartao--kpi .l{font-size:var(--fs-small); line-height:var(--lh-small); color:var(--muted); margin-top:var(--sp-1);}
 .cartao--kpi .n.argila{color:var(--argila);}
 .cartao--kpi .n.neutro{color:var(--neutro);}
-.cartao .cartao-k{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:var(--ls-caps); text-transform:uppercase; color:var(--argila); margin:0 0 var(--sp-2);}
 .cartao b.cartao-t{display:block; font-size:var(--fs-body); margin:0 0 var(--sp-1);}
 .cartao .cartao-s{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted); display:block; margin:0 0 var(--sp-2);}
 .cartao .cartao-a{font-size:var(--fs-small); font-weight:var(--peso-semibold);}
@@ -816,6 +815,13 @@ footer.site-footer{margin-top:var(--sp-7); padding:0 0 var(--sp-2); text-align:c
 footer.site-footer .grad-line{margin:0 0 var(--sp-5);}
 footer.site-footer .logo-futura{height:18px; margin:0 auto var(--sp-2);}
 footer.site-footer .mast-logo{display:block; text-decoration:none;}
+footer.site-footer .rodape-logos{display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:var(--sp-5) var(--sp-8); margin:0 0 var(--sp-3);}
+footer.site-footer .rodape-logo{display:flex; flex-direction:column; align-items:center; gap:var(--sp-2);}
+footer.site-footer .rodape-logos .rodape-redes{margin:0;}
+footer.site-footer .rodape-logo-rotulo{font-size:var(--fs-caption); line-height:var(--lh-caption); letter-spacing:.06em; text-transform:uppercase; color:var(--muted);}
+footer.site-footer .rodape-logos .logo-futura{margin:0;}
+footer.site-footer .rodape-logos .mast-logo{display:flex; align-items:center; min-height:var(--alvo-toque);}
+footer.site-footer .logo-parceiro{display:block; height:26px; width:auto;}
 footer.site-footer .rodape-linha{display:block;}
 footer.site-footer .rodape-assinatura{display:block; font-size:var(--fs-caption); line-height:var(--lh-caption);}
 footer.site-footer .rodape-redes{display:flex; flex-wrap:wrap; justify-content:center; gap:var(--sp-2) var(--sp-4); list-style:none; margin:var(--sp-2) 0 var(--sp-3); padding:0;}
@@ -1020,18 +1026,6 @@ footer.site-footer .rodape-legal{display:block; margin-top:var(--sp-1); font-siz
 .cartao-mapa.r-fogo{border-top-color:var(--fogo);}
 .cartao-mapa.r-calor{border-top-color:var(--calor);}
 .cartao-mapa.r-chuva{border-top-color:var(--chuva);}
-.cartao-mapa-familia{font-family:var(--font-dado); font-size:var(--fs-caption); line-height:var(--lh-caption);
-  text-transform:uppercase; letter-spacing:var(--ls-caps); color:var(--muted); margin:0 0 var(--sp-1);
-  /* 02/10/2026: ALTURA RESERVADA de uma linha, como o boletim logo abaixo já fazia. Sobretítulo que
-     quebrava em duas linhas empurrava título, subtítulo e mídia do primeiro cartão para baixo, e o
-     portão de consistência visual reprovava as três posições — foi o que aconteceu com "Como os
-     recursos são aplicados" a 1366 px. A reserva é do componente: o cartão alinha sozinho, qualquer
-     que seja o rótulo. */
-  min-height:calc(1 * var(--fs-caption) * var(--lh-caption));
-  /* UMA linha, sempre: a altura minima nao impede o rotulo de crescer, e no runner da CI, com
-     a fonte de reserva, "Como os recursos sao aplicados" quebrava em duas e desalinhava o
-     primeiro cartao da grade. O slot e curto por desenho. */
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .cartao-mapa-boletim{font-size:var(--fs-caption); line-height:var(--lh-caption); color:var(--muted);
   margin:0 0 var(--sp-2); min-height:calc(2 * var(--fs-caption) * var(--lh-caption));}
 .cartao-mapa .figura-titulo{min-height:calc(2 * var(--fs-h4) * var(--lh-h4));}

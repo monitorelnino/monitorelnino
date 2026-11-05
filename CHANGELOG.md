@@ -11,9 +11,16 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-05 · #PR · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
 
+## 2026-11-05 · sítio da prefeitura: mais endereços · A busca do portal tenta também prefeiturade<nome>, prefeitura<nome> e pm<nome> (.uf.gov.br); município sem portal achado hoje é refeito uma vez com a lista nova. Código +14/−4.
+
+## 2026-11-05 · design · Saúde sem rótulo acima do título · Cartões e figuras da Saúde começam pelo título; a classe do rótulo (`cartao-mapa-familia`, `cartao-k`) sai do CSS e passa a ser reprovada pelo verificador. Código +3/−20.
+## 2026-11-05 · redução · função morta `eixoDeMeses` sai de `assets/js/saude.js` (sem chamador em todo o repositório); sem mudança de comportamento. Código +0/−8.
+## 2026-11-05 · #1513 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.
 ## 2026-11-05 · cartões sem rótulo acima do título · Em Financiamento ("De onde vem o dinheiro") e na Defesa civil, o cartão começa pelo título, sem rótulo em versalete acima. O risco declarado pelo ato segue na tabela da seção; nada de informação some. Código +9/−14.
 
 ## 2026-11-05 · catálogo do risco de base (AdaptaBrasil) · Coletor `coletar_risco_base.py`, etapa 1: lê a hierarquia pública de indicadores do AdaptaBrasil (MCTI) e grava `data/risco_base/catalogo.json` com id, nome, setor, anos, cenários, hash e data da consulta; só pela válvula `coleta-dia/*`, sem elo na noite. Sem valor por município nesta etapa (lacuna declarada); peso zero; autoteste offline, escritor registrado. Código +106/−0.
+
+## 2026-11-05 · risco de base: campos reais do catálogo · O catálogo do AdaptaBrasil lia `nome`; a fonte entrega `name`, `title`, `sep_description` e `indicator_id_master` (visto na sonda de 05/11, só nomes de campo). Corrigido onde nasce, com caso de teste; a validação já havia barrado a gravação errada. Também cria a pasta de saída (a primeira gravação falhou calada). Código +9/−5.
 
 ## 2026-11-05 · sítio da prefeitura entra no log por município · A busca dirigida pelo portal da prefeitura grava uma linha do log por município (consultado sem achado, pista ou erro), com município e UF, e aceita a lista do cadastro. É a consulta que faltava para o nível municipal completo.
 ## 2026-11-05 · #1505 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.
