@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>05/11/2026 · Busca do diário estadual: a janela curta da noite estende a leitura do ciclo, não a apaga · `coletar_edicoes_doe.py` guarda o `desde` mais antigo quando a nova leitura continua a anterior com os mesmos termos; antes, 7 UFs voltavam a &quot;busca ainda não rodou&quot; a cada noite.</dt>
+      <dd></dd>
       <dt>05/11/2026 · MARÉ Saúde: plano em elaboração conta à parte · O topo da Saúde e o cartão da Imprensa somavam estados com plano em elaboração aos estados com plano localizado. Agora são três grupos: com plano localizado, em elaboração e ainda não verificados. O índice não muda.</dt>
       <dd></dd>
       <dt>05/11/2026 · Verificador do mapa do dinheiro conta só círculos de valor · `verificar_runtime_financiamento.js` passa a contar `g[class^=&quot;circulos-&quot;] circle`, para que o símbolo vazado dos municípios com portaria sem repasse não entre na conta. Linhas líquidas: código +0 (2 trocadas).</dt>
@@ -165,8 +167,6 @@
       <dd>A coleta de dia (válvula `coleta_de_dia.yml`) e a busca de planos (`busca_planos.yml`) passam a repassar OpenAQ, INMET e Portal da Transparência, como a noite já fazia. Sem isso, o ar medido de dia rodava sem credencial. Só workflows. Linhas: +6/−0.</dd>
       <dt>26/10/2026 · Monitor de riscos: subtítulo do mapa de focos descreve pontos; topo sem datas de semana para desfecho mensal</dt>
       <dd>O subtítulo do mapa de focos passa a descrever o dado de pontos (satélite, últimas 24 horas). No gerador do topo, só desfecho semanal recebe início e fim de semana; o mensal (diarreia 2026-07) deixa essas datas nulas, em vez de virar semana 07. Autoteste ganha o caso. Código +5/−2.</dd>
-      <dt>26/10/2026 · Orientações oficiais: cinco páginas federais atuais na coleta</dt>
-      <dd>Entram na coleta das orientações do Proteja-se cinco páginas federais atuais (MIDR: chuvas e deslizamento; Ministério da Saúde: queimadas e dengue). Cada item só ganha fonte com trecho da página que o sustenta; o restante segue como lacuna declarada. Peso zero. Linhas: +6/−0.</dd>
     </dl>
   </section>
 </main>
