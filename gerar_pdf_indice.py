@@ -34,8 +34,8 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, Table,
-                                TableStyle, PageBreak, KeepTogether)
+from reportlab.platypus import (SimpleDocTemplate, Paragraph, Table,
+                                TableStyle, PageBreak)
 
 import analise_sensibilidade as an
 
