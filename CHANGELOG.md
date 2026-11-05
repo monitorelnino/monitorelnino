@@ -10,6 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-05 · #1513 · rodapé com Realização e Parceria · O rodapé de todas as páginas passa a ter duas colunas rotuladas: Realização (Futura Evidence Lab, assinatura e redes) e Parceria (Instituto Ar, com link). Novos parceiros entram como um item a mais na mesma estrutura.
+## 2026-11-05 · catálogo do risco de base (AdaptaBrasil) · Coletor `coletar_risco_base.py`, etapa 1: lê a hierarquia pública de indicadores do AdaptaBrasil (MCTI) e grava `data/risco_base/catalogo.json` com id, nome, setor, anos, cenários, hash e data da consulta; só pela válvula `coleta-dia/*`, sem elo na noite. Sem valor por município nesta etapa (lacuna declarada); peso zero; autoteste offline, escritor registrado. Código +106/−0.
 
 ## 2026-11-05 · sítio da prefeitura entra no log por município · A busca dirigida pelo portal da prefeitura grava uma linha do log por município (consultado sem achado, pista ou erro), com município e UF, e aceita a lista do cadastro. É a consulta que faltava para o nível municipal completo.
 ## 2026-11-05 · #1505 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.
