@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-05 · #PR · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.
+## 2026-11-05 · #1505 · Redução: sai código sem chamador · Saem busca-lista.js, gerar_erros_localizacao.py, testar_fixtures_localizacao.py e o derivado erros_localizacao.json: nenhum workflow, página, contrato ou portão os lê. Sem mudança de comportamento; −590 linhas de código.
 
 ## 2026-11-05 · instrumentos federais: reconferência semanal · O instrumento federal de saúde anunciado e não localizado é reconferido a cada sete dias no portal do Ministério da Saúde; o cartão pode dizer "não localizado até dd/mm". Fonte que não respondeu não move a data.
 
