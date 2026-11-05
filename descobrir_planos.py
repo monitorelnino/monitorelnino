@@ -332,6 +332,7 @@ def autoteste() -> int:
         return (d[:3] == ["saojoaodalianca.go.gov.br", "www.saojoaodalianca.go.gov.br",
                           "prefeiturade" + "saojoaodalianca.go.gov.br"] and len(d) == 5
                 and _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": 1})
+                and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": 2})
                 and not _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": CANDIDATOS_V})
                 and not _lista_de_endereco_mudou({"situacao": "lido"})
                 and identifica_prefeitura(pref, "Santana do Ipanema")
@@ -382,6 +383,29 @@ def autoteste() -> int:
                 and "https://bonito.ms.gov.br/doc/plancon-2024.pdf" in urls
                 and r["pistas"][0]["hash_evidencia"] == "h-falso" and r["pistas"][0]["data_publicacao"] == "2024-03-01")
 
+    def t_endereco_oficial_e_home_renderizada():
+        import unittest.mock as mock
+        wd = json.dumps({"results": {"bindings": [
+            {"c": {"value": "5002209"}, "u": {"value": "https://www.bonito.ms.gov.br/inicio"}},
+            {"c": {"value": "1200013"}, "u": {"value": "https://facebook.com/acrelandia"}},
+            {"c": {"value": "123"}, "u": {"value": "https://prefeitura.exemplo.com.br/"}}]}}).encode()
+        of = enderecos_oficiais(lambda url, timeout=0: wd)
+        with mock.patch(f"{__name__}.registrar_lacuna"):
+            falha = enderecos_oficiais(lambda url, timeout=0: (_ for _ in ()).throw(OSError("rede")))
+        d = dominios_do_municipio("Bonito", "MS", "prefeitura.exemplo.com.br")
+        home = b"<title>Prefeitura de Bonito</title><div id=app></div>"
+        render = {"ok": True, "links": [{"href": "https://bonito.ms.gov.br/plancon.pdf", "texto": "PLANCON"},
+                                         {"href": "https://bonito.ms.gov.br/contato", "texto": "Contato"}]}
+        with mock.patch(f"{__name__}.buscar_uma_vez", return_value=home), \
+             mock.patch(f"{__name__}.consultar_wp_json", return_value=([], False)), \
+             mock.patch(f"{__name__}._renderizar", return_value=render) as rz, \
+             mock.patch(f"{__name__}.time.sleep"):
+            r = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-05")
+        return (of == {"5002209": "www.bonito.ms.gov.br", "0000123": "prefeitura.exemplo.com.br"} and falha == {}
+                and d[0] == "prefeitura.exemplo.com.br" and len(d) == 6
+                and r["situacao"] == "lido" and [p["url"] for p in r["pistas"]] == ["https://bonito.ms.gov.br/plancon.pdf"]
+                and rz.call_count == 1 and r["pistas"][0]["promovivel"] is False)
+
     def t_pausa_por_host_em_paralelo():
         # 22/10/2026 (§6.2): dois hosts, 8 pedidos (4 por host), 8 fios. Nenhum host recebe dois
         # pedidos com menos de PAUSA entre eles, e os dois hosts andam em paralelo (serial seria ~0,8 s).
@@ -411,7 +435,7 @@ def autoteste() -> int:
         gravados, lotes = {}, []
         livro = {"municipios": {"2": {"consultado_em": "2026-10-22"}}}   # o 2 já foi lido hoje
 
-        def lido(nome, uf, cod, hoje):
+        def lido(nome, uf, cod, hoje, oficial=None):
             if cod == "3":
                 raise KeyboardInterrupt()
             return {"dominio": "x", "situacao": "lido", "pistas": []}
@@ -423,6 +447,7 @@ def autoteste() -> int:
              mock.patch(f"{__name__}.ler", return_value=livro), \
              mock.patch(f"{__name__}.gravar", side_effect=lambda n, o, compacto=False: gravados.update({n: o})), \
              mock.patch(f"{__name__}.log_busca"), \
+             mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
              mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lido), \
              mock.patch("scripts.pistas.gravar_lote", side_effect=lambda p, origem="": lotes.append(p) or {"gravadas": 0, "recusadas": 0}):
             rodar_municipios(f.name)
@@ -450,7 +475,8 @@ def autoteste() -> int:
              mock.patch(f"{__name__}.ler", return_value={"municipios": {}}), \
              mock.patch(f"{__name__}.gravar"), \
              mock.patch(f"{__name__}.log_busca", side_effect=lambda *a, **k: linhas.append((a, k))), \
-             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h: res[c]), \
+             mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
+             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h, o=None: res[c]), \
              mock.patch("scripts.pistas.gravar_lote", return_value={"gravadas": 0, "recusadas": 0}):
             rodar_municipios(f.name)
         import os
@@ -461,6 +487,7 @@ def autoteste() -> int:
 
     return rodar_autoteste({
         "§25 sítio da prefeitura: uma linha do log por município, fila do cadastro": t_sitio_uma_linha_por_municipio,
+        "portal: endereço oficial do cadastro primeiro; home que só monta por JavaScript é renderizada": t_endereco_oficial_e_home_renderizada,
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
         "§186 purga tira o ruído e preserva página e canal 1": t_purga_tira_ruido_e_preserva_pagina_e_canal_1,
         "domínio conhecido (BA/saúde)": t_dominio_conhecido,
@@ -536,6 +563,25 @@ def purgar_ruido_renderizado(fila: dict) -> list:
     return fora
 
 
+def _renderizar(url: str, origem: str, rodar=None) -> dict:
+    """A página como o navegador a vê ({ok, titulo, texto, links, n_links, erro}); nunca levanta.
+    O navegador não passa por buscar(), então o rastro do robots é deixado aqui (§185): são
+    exatamente estes os acessos que contrariam o pedido do sítio."""
+    import json as _json
+    import subprocess as _sub
+    rodar = rodar or (lambda cmd: _sub.run(cmd, capture_output=True, text=True, timeout=180, encoding="utf-8"))
+    host = url.split("//", 1)[-1].split("/", 1)[0].lower()
+    if robots_permite(host, url) is False:
+        try:
+            registrar_acesso_contra_robots(host, url, origem)
+        except Exception:  # noqa: BLE001
+            pass
+    try:
+        return _json.loads(rodar(["node", str(RENDERIZADOR), url]).stdout or "{}")
+    except Exception:  # noqa: BLE001
+        return {"ok": False, "erro": "saída do renderizador não é JSON"}
+
+
 def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None) -> list:
     """Canal 2 da descoberta (§185, 23/09/2026): a página como o navegador a vê.
 
@@ -551,23 +597,7 @@ def descobrir_renderizado(uf: str, setor: str, url: str, fila: dict, rodar=None)
     o texto visível e cada link candidato. O que NÃO faz: decidir que existe plano. As três travas
     do módulo continuam valendo — nada entra no banco, todo item nasce `promovivel: false`, e a
     promoção só pelo juiz automático, com documento oficial (D7)."""
-    import json as _json
-    import subprocess as _sub
-    rodar = rodar or (lambda cmd: _sub.run(cmd, capture_output=True, text=True, timeout=180, encoding="utf-8"))
-    # §185: o navegador não passa por buscar(), então o rastro do robots tem de ser deixado aqui —
-    # e são exatamente estes os acessos que contrariam o pedido do sítio. Sem esta chamada, a
-    # política teria rastro só do canal HTTP, que é o que menos precisa dele.
-    host = url.split("//", 1)[-1].split("/", 1)[0].lower()
-    if robots_permite(host, url) is False:
-        try:
-            registrar_acesso_contra_robots(host, url, "descobrir_planos/renderizado")
-        except Exception:  # noqa: BLE001
-            pass
-    r = rodar(["node", str(RENDERIZADOR), url])
-    try:
-        render = _json.loads(r.stdout or "{}")
-    except Exception:  # noqa: BLE001
-        render = {"ok": False, "erro": "saída do renderizador não é JSON"}
+    render = _renderizar(url, "descobrir_planos/renderizado", rodar)
     if not render.get("ok"):
         registrar_lacuna(f"render de {url[:60]}", str(render.get("erro"))[:120],
                          canal="descoberta renderizada", camada=1, uf=uf)
@@ -644,14 +674,35 @@ def _so_letras(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
 
 
-CANDIDATOS_V = 2   # 05/11/2026: + prefeiturade<nome>, prefeitura<nome>, pm<nome>
+CANDIDATOS_V = 3   # 05/11/2026: + endereço oficial do cadastro público (Wikidata P856) e home renderizada
+
+_SPARQL = ("SELECT ?c ?u WHERE { ?m wdt:P1585 ?c ; wdt:P856 ?u . }")
+_REDES = ("facebook.", "instagram.", "twitter.", "x.com", "youtube.", "wikipedia.", "linktr.ee")
 
 
-def dominios_do_municipio(nome: str, uf: str) -> list:
-    """Os endereços padrão a tentar, em ordem (`CANDIDATOS_V` sobe quando a lista muda). Função pura."""
+def enderecos_oficiais(buscar=None) -> dict:
+    """{código IBGE (7): endereço} do cadastro público (Wikidata, propriedades P1585 e P856), numa só
+    consulta. É candidato, não prova: `identifica_prefeitura` decide. Falha vira lacuna declarada e {}."""
+    try:
+        url = "https://query.wikidata.org/sparql?format=json&query=" + urllib.parse.quote(_SPARQL)
+        linhas = json.loads((buscar or buscar_uma_vez)(url, timeout=60))["results"]["bindings"]
+    except Exception as e:  # noqa: BLE001
+        registrar_lacuna("endereços oficiais (Wikidata)", str(e)[:120], canal="portal da prefeitura", camada=1)
+        return {}
+    achados = {}
+    for l in linhas:
+        host = urllib.parse.urlparse(l["u"]["value"]).netloc.lower()
+        if host and not any(r in host for r in _REDES):
+            achados.setdefault(str(l["c"]["value"]).zfill(7), host)
+    return achados
+
+
+def dominios_do_municipio(nome: str, uf: str, oficial: str = None) -> list:
+    """Os endereços a tentar, em ordem: o oficial do cadastro, se houver, e os padrão (`CANDIDATOS_V`
+    sobe quando a lista muda). Função pura."""
     n, sufixo = _so_letras(nome), f".{uf.lower()}.gov.br"
-    return [n + sufixo, f"www.{n}{sufixo}", f"prefeiturade{n}{sufixo}",
-            f"prefeitura{n}{sufixo}", f"pm{n}{sufixo}"]
+    padrao = [n + sufixo, f"www.{n}{sufixo}", f"prefeiturade{n}{sufixo}", f"prefeitura{n}{sufixo}", f"pm{n}{sufixo}"]
+    return ([oficial] if oficial and oficial not in padrao else []) + padrao
 
 
 def identifica_prefeitura(html: str, nome: str) -> bool:
@@ -690,7 +741,7 @@ def pistas_do_portal(nome: str, uf: str, ibge: str, dominio: str, itens: list, h
             for url, titulo, data, h in itens]
 
 
-def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
+def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str = None) -> dict:
     """Um município, um canal. Devolve {dominio, situacao, pistas}; nunca levanta.
 
     `situacao`: `recusa_de_fonte` (401/403/429/451 ou muro de robô: respeita-se e registra-se),
@@ -700,7 +751,7 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
     Uma pausa de PAUSA_POR_DOMINIO s separa os pedidos ao mesmo host (§11)."""
     import urllib.error
     dominio = home = None
-    for d in dominios_do_municipio(nome, uf):
+    for d in dominios_do_municipio(nome, uf, oficial):
         try:
             with _pedido_ao_host(d):
                 corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
@@ -740,6 +791,14 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str) -> dict:
         if href not in vistos:
             vistos.add(href)
             itens.append((href, texto, None, None))
+    if not (respondeu or itens):   # a home só monta por JavaScript: a página como o navegador a vê
+        with _pedido_ao_host(dominio):
+            render = _renderizar(f"https://{dominio}/", "descobrir_planos/portal")
+        for l in (render.get("links") or []) if render.get("ok") else []:
+            if l["href"] not in vistos and link_e_candidato(l.get("href", ""), l.get("texto", "")) and len(vistos) < MAXIMO_LINKS_POR_PAGINA:
+                vistos.add(l["href"])
+                itens.append((l["href"], l.get("texto"), None, None))
+        respondeu = bool(render.get("ok"))
     situacao = "lido" if (respondeu or itens) else "nao_verificado"
     return {"dominio": dominio, "situacao": situacao, "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
 
@@ -759,9 +818,9 @@ def registrar_consulta_do_sitio(nome: str, uf: str, ibge: str, r: dict) -> None:
 
 
 def _lista_de_endereco_mudou(v: dict) -> bool:
-    """O município sem portal achado hoje, com a lista de endereços de antes de `CANDIDATOS_V`: refaz-se
+    """O município sem portal achado ou sem página lida hoje, com a lista de antes de `CANDIDATOS_V`: refaz-se
     no mesmo dia (só esse caso; o que foi lido ou recusado não se repete)."""
-    return v.get("situacao") == "portal_nao_verificado" and v.get("candidatos") != CANDIDATOS_V
+    return v.get("situacao") in ("portal_nao_verificado", "nao_verificado") and v.get("candidatos") != CANDIDATOS_V
 
 
 def rodar_municipios(caminho: str, limite: int = None) -> int:
@@ -779,6 +838,7 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
                                  or _lista_de_endereco_mudou(feitos["municipios"][c]))]
     pistas, lidos, gravados = [], 0, set()
     todo = fila[:limite] if limite else fila
+    oficiais = enderecos_oficiais() if todo else {}
 
     def _registrar(cod, r):   # na thread principal: uma escrita por vez, sem perder linha
         nonlocal lidos
@@ -791,7 +851,7 @@ def rodar_municipios(caminho: str, limite: int = None) -> int:
         registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
 
     with ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS) as pool:
-        futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje): c
+        futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje, oficiais.get(c)): c
                    for c in todo}
         try:
             for f in as_completed(futuros):

@@ -300,7 +300,6 @@ RE_INSTITUCIONAL = re.compile(
     r"empresa (?:p[úu]blica|de economia mista)|sistema de recursos h[íi]dricos)\b", re.I)
 INSTITUCIONAIS = RAIZ / "data" / "dominios_institucionais.json"
 MATERIAS_DATADAS_MINIMAS = 3
-CAMINHOS_DE_NOTICIAS = ("/", "/noticias", "/notícias", "/ultimas-noticias")
 
 
 RE_TIME_DATETIME = re.compile(r"<time[^>]*datetime=[\"']20\d\d-[01]\d-[0-3]\d", re.I)

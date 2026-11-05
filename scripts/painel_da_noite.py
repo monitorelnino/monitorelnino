@@ -39,7 +39,6 @@ ARQUIVO = "painel_da_noite.json"
 # seus cinco horários próprios — e por isso entra no painel como rotina à parte, sem exigência de
 # estar na corrente.
 ELOS = ("diarios", "descoberta", "evidencias", "juiz", "sinais", "triagem", "publicar")
-PARALELAS = ("busca_web",)
 JANELA_UTC = (1, 9)   # 01:00 às 09:00 UTC = 22h às 06h de Brasília
 GOV = ("Painel da noite (item A.5 do handover de 03/10/2026): uma linha por elo por noite, com "
        "início, fim e se terminou dentro da janela de 22h às 06h. Append-only. Serve para que elo "
@@ -97,7 +96,6 @@ def trabalhou(conclusao: str, feito: bool = None) -> bool:
         "success", "in_progress", "failure", "queued", "requested", "waiting", "pending")
 
 
-NAO_CONTAM = ("cancelled", "skipped", "timed_out", "desconhecida", "")
 
 
 def linha(elo: str, noite: str, inicio: str, fim: str, conclusao: str,
