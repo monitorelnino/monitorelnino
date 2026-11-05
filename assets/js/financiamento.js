@@ -182,11 +182,18 @@ function __init(){
     tabela: {sel: '#boxChega', chave: x => [x.nome || '', x.uf || '', ORIGENS_MAPA[x.origem].rotulo]},
     rotulo: x => '<strong>' + esc(x.nome || '') + ' · ' + esc(x.uf || '') + '</strong><br>' + esc(ORIGENS_MAPA[x.origem].rotulo) + ' · ' + esc(x.ato || '')
       + '<br>' + esc(reais(x.repassado))}));
+  const RES = (S && S.mapa_resumo) || {}, comps = RES.competencias || [], ASR = (S && S.autorizado_sem_repasse) || {};
+  /* Portaria sem repasse localizado: círculo só de contorno na sede, a marca do "vazado" (a mesma da Defesa civil). */
+  const semRepasse = (ASR.municipios || []).filter(m => LATLON[m.cod_ibge]).map(m => Object.assign({lon: LATLON[m.cod_ibge][0], lat: LATLON[m.cod_ibge][1]}, m));
+  MonitorMapas.pontos(ctx, 'mapChega', semRepasse, {r: () => 3, cor: () => cor('cinza-quente'), classe: 'sem-repasse',
+    rotulo: m => '<strong>' + esc(m.nome || '') + ' · ' + esc(m.uf || '') + '</strong><br>' + esc(tx('financiamento.chega.legenda.sem_repasse'))
+      + ' · ' + esc(m.ato || '') + '<br>' + esc(reais(m.autorizado))})
+    .selectAll('circle').attr('fill', 'none').attr('stroke', cor('cinza-quente')).attr('stroke-width', 1.2);
   const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.repassado, 0);
   MonitorMapas.legenda('legChega', circulos.length ? Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: tx('financiamento.chega.legenda.origem', {origem: o.rotulo, valor: reais(totalOrigem(k))})}))
     .concat([{cor: cor('linha'), rotulo: tx('financiamento.chega.legenda.maior', {valor: reais(maxV)})}])
+    .concat(semRepasse.length ? [{cor: cor('cinza-quente'), rotulo: tx('financiamento.chega.legenda.sem_repasse') + ' · ' + n(semRepasse.length), vazado: true}] : [])
     : [{cor: cor('sem-dado'), rotulo: tx('financiamento.chega.legenda.sem_coleta')}]);
-  const RES = (S && S.mapa_resumo) || {}, comps = RES.competencias || [], ASR = (S && S.autorizado_sem_repasse) || {};
   if (direto && direto.valor != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: Number(direto.valor).toLocaleString('pt-BR')});
   const PERIODO_MAPA = comps.length ? mesDe(comps[0]) + '–' + mesDe(comps[comps.length - 1]) + '/' + String(comps[comps.length - 1]).slice(0, 4) : NAO_LOCALIZADO;
   if (comps.length) molde('subChega', 'financiamento.chega.mapa.legenda', {inicio: MESES_LONGOS[Number(String(comps[0]).slice(4, 6)) - 1], mes: MESES_LONGOS[Number(String(comps[comps.length - 1]).slice(4, 6)) - 1], ano: String(comps[comps.length - 1]).slice(0, 4)});
