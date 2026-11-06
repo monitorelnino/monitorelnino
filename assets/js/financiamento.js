@@ -176,7 +176,7 @@ function __init(){
      uma camada: a defesa civil por baixo e a saúde, de valor menor, por cima, para que a cor da saúde apareça. */
   const ORIGENS_MAPA = {defesa_civil: {rotulo: tx('financiamento.chega.origem.defesa_civil'), cor: P.resposta}, saude: {rotulo: tx('financiamento.chega.origem.saude'), cor: P.setores.saude}};
   const circulos = ((S && S.mapa) || []).filter(x => ORIGENS_MAPA[x.origem] && x.repassado > 0 && x.lat != null);
-  const maxV = Math.max(1, ...circulos.map(x => x.repassado)), R_MAX = 14;
+  const maxV = Math.max(1, ...circulos.map(x => x.repassado)), R_MAX = 14; const REF = 10 ** Math.floor(Math.log10(maxV / 3)); /* valor redondo menor, na mesma escala de raio dos círculos */
   Object.keys(ORIGENS_MAPA).forEach(k => MonitorMapas.pontos(ctx, 'mapChega', circulos.filter(x => x.origem === k).sort((a, b) => b.repassado - a.repassado), {
     r: x => Math.max(1.5, R_MAX * Math.sqrt(x.repassado / maxV)), cor: x => ORIGENS_MAPA[x.origem].cor, opacidade: k === 'saude' ? 0.95 : 0.6, classe: 'circulos-' + k,
     tabela: {sel: '#boxChega', chave: x => [x.nome || '', x.uf || '', ORIGENS_MAPA[x.origem].rotulo]},
@@ -191,7 +191,7 @@ function __init(){
     .selectAll('circle').attr('fill', 'none').attr('stroke', cor('cinza-quente')).attr('stroke-width', 1.2);
   const totalOrigem = o => circulos.filter(x => x.origem === o).reduce((s, x) => s + x.repassado, 0);
   MonitorMapas.legenda('legChega', circulos.length ? Object.entries(ORIGENS_MAPA).map(([k, o]) => ({cor: o.cor, rotulo: tx('financiamento.chega.legenda.origem', {origem: o.rotulo, valor: reais(totalOrigem(k))})}))
-    .concat([{cor: cor('linha'), rotulo: tx('financiamento.chega.legenda.maior', {valor: reais(maxV)})}])
+    .concat([maxV, REF].map(v => ({raio: R_MAX * Math.sqrt(v / maxV), rotulo: tx('financiamento.chega.legenda.tamanho', {valor: reais(v)})})))
     .concat(semRepasse.length ? [{cor: cor('cinza-quente'), rotulo: tx('financiamento.chega.legenda.sem_repasse') + ' · ' + n(semRepasse.length), vazado: true}] : [])
     : [{cor: cor('sem-dado'), rotulo: tx('financiamento.chega.legenda.sem_coleta')}]);
   if (direto && direto.valor != null) molde('chegaDestaque', 'financiamento.chega.destaque.molde', {pct: Number(direto.valor).toLocaleString('pt-BR')});
