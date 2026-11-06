@@ -124,9 +124,10 @@ def veredito_da_recusa(erro) -> dict:
 
 # Rotas além da página inicial que a medição de outubro registrou como recusa, fora do ar ou timeout.
 ROTAS_EXTRAS = {
-    "SE": ["https://iose.se.gov.br/apifront/portal/edicoes"],
+    "SE": ["https://iose.se.gov.br/apifront/portal/edicoes", "https://iose.se.gov.br/robots.txt"],
     "PE": ["https://diariooficial.cepe.com.br/diariooficial/"],
-    "BA": ["https://dool.egba.ba.gov.br/"],
+    "BA": ["https://dool.egba.ba.gov.br/", "http://dool.egba.ba.gov.br/", "https://www.dool.egba.ba.gov.br/", "https://www.ba.gov.br/casacivil/legislacao"],
+    "MA": ["https://www.diariooficial.ma.gov.br/", "http://diariooficial.ma.gov.br/"],
     "RS": ["https://doe-backend.pro.rs.gov.br/public/diarios/lista?data={ontem}"],
 }
 
@@ -142,7 +143,7 @@ def reconferir(ufs: dict, buscar_fn, robots_fn, hoje: str, ontem: str) -> None:
             host = url.split("/")[2]
             r = {"url": url, "robots": (robots_fn(host) or {}).get("status")}
             try:
-                corpo = buscar_fn(url, timeout=45)
+                corpo = buscar_fn(url, timeout=120)
                 r.update(codigo=200, veredito="voltou", motivo=f"respondeu 200, {len(corpo)} bytes")
             except Exception as e:  # noqa: BLE001 — cada rota vira um veredito, nunca derruba a rodada
                 r.update(codigo=getattr(e, "code", None), **veredito_da_recusa(e))
