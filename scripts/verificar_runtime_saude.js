@@ -135,7 +135,7 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
     const ac = abre("AC"), go = abre("GO");
     return ac.includes(ATO_INJETADO) && ac.includes("01/10/2026")
       && /Coordenação na saúde.*ainda não verificada/.test(go) && !go.includes(ATO_INJETADO)
-      && /Coordenação na saúde/.test(ac) && /Ligação com o governo do estado/.test(ac) && !/antecipação/i.test(ac + go);
+      && /Coordenação na saúde/.test(ac) && /Saúde na estrutura de crise do estado/.test(ac) && !/antecipação/i.test(ac + go);
   })());
 
   // A seção única de desfechos, no cartão escolhido: a posição na faixa habitual é a frase do
@@ -182,10 +182,8 @@ teste("mapa dos planos saiu (handover VIGIAR §A): não há mapaMonitor, a lista
 
   try {
     teste("saúde: a figura de estados tem o título do catálogo", q("boxMonitor").querySelector(".figura-titulo").textContent === "Plano estadual de saúde para o El Niño, por estado");
-    // A tabela do mapa: uma linha por UF, quatro colunas de leitor, sem travessão nem componente interno.
-    const linhasMon = [...d.querySelectorAll("#tblMonitor tbody tr")];
-    teste("saúde: tabela do mapa com 27 linhas de 4 colunas, sem travessão nem componente interno",
-      linhasMon.length === 27 && linhasMon.every((tr) => tr.children.length === 4 && ![...tr.children].some((td) => td.textContent.trim() === "—") && !/lido\(s\)|cobertura sanit/.test(tr.textContent)));
+    // 05/11/2026 (editoria): a figura de estados é só a lista de tipos; a tabela redundante saiu.
+    teste("saúde: a figura de estados é a lista, sem tabela repetida", !!q("listaTiposPlano") && !d.querySelector("#tblMonitor"));
     // 19/10/2026: a nota do InfoDengue saiu com os quadros por agravo (decisão da editoria) — ela
     // explicava um nível que a página não mostra mais. O que o portão continua guardando é a fonte
     // da série respiratória, que é primária e vive no cartão do topo, não no InfoGripe.

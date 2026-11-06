@@ -28,7 +28,7 @@ import funil
 # lá, lido aqui. Dois padrões para o mesmo PDF divergiriam na primeira mudança de endereço.
 from coletar_edicoes_doe import (PADROES as PADROES_CANAL2, MINIMO_BYTES_DE_EDICAO,
                                  datas_do_periodo, endereco_da_data)
-from coletores_base import (carimbar_atos, buscar, enviar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
+from coletores_base import (NUM_ATO, carimbar_atos, buscar, enviar, preservar_evidencia, preservar_texto_integral, log_busca, registrar_lacuna,
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial,
@@ -419,7 +419,7 @@ def parse_busca_to(html: str) -> list:
         return []
     saida = []
     for linha in re.findall(r"<tr\b.*?</tr>", m.group(0), re.S | re.I):
-        num = re.search(r"N[ºo°]\s*(\d+)", linha)
+        num = re.search(NUM_ATO + r"\s*(\d+)", linha)
         data = re.search(r"(\d{2})/(\d{2})/(\d{4})", linha)
         href = re.search(r'href=["\']([^"\']+)["\']', linha)
         if not (num and data and href):

@@ -2989,12 +2989,11 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>estadual · monitor</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>titulo</td><td><code>saude.estadual.monitor.titulo</code></td><td>Plano estadual de saúde para o El Niño, por estado</td></tr>
-<tr><td>resumo</td><td><code>saude.estadual.monitor.resumo</code></td><td>Ver em tabela</td></tr>
 <tr><td>legenda</td><td><code>saude.estadual.monitor.legenda</code></td><td>Tipo de plano localizado em cada secretaria estadual de saúde até o corte</td></tr>
 </table>
 <h3>topo · preparacao.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.preparacao.linha</code></td><td><span class="molde">{com_plano} de {denominador} estados com plano localizado · {sem_numero|nenhum estado ainda não verificado|um estado ainda não verificado|{sem_numero} estados ainda não verificados} · {corte}</span><br><span class="ex">exemplo: 3 de 3 estados com plano localizado · 3 estados ainda não verificados · 3</span></td></tr>
+<tr><td>texto</td><td><code>saude.topo.preparacao.linha</code></td><td><span class="molde">{com_plano} de {denominador} estados com plano localizado · {em_elaboracao|nenhum em elaboração|um em elaboração|{em_elaboracao} em elaboração} · {sem_numero|nenhum estado ainda não verificado|um estado ainda não verificado|{sem_numero} estados ainda não verificados} · {corte}</span><br><span class="ex">exemplo: 3 de 3 estados com plano localizado · 3 em elaboração · 3 estados ainda não verificados · 3</span></td></tr>
 </table>
 <h3>topo · preparacao.linha_reserva</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3083,7 +3082,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>estadual · ficha.governo</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.estadual.ficha.governo</code></td><td>Ligação com o governo do estado</td></tr>
+<tr><td>texto</td><td><code>saude.estadual.ficha.governo</code></td><td>Saúde na estrutura de crise do estado</td></tr>
 </table>
 <h3>estadual · ficha.nao_verificada</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3320,6 +3319,10 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>topo · resposta.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.topo.resposta.linha</code></td><td><span class="molde">Parcela da população em estados ou municípios sob decreto de emergência em saúde desde 29 de junho de 2026 · até {quando} · DOU e diários oficiais estaduais</span><br><span class="ex">exemplo: Parcela da população em estados ou municípios sob decreto de emergência em saúde desde 29 de junho de 2026 · até 3 · DOU e diários oficiais estaduais</span></td></tr>
+</table>
+<h3>topo · resposta.linha_parcial</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.linha_parcial</code></td><td><span class="molde">Leitura parcial até {quando}: {lidas} de {total} diários oficiais estaduais lidos com os termos de declaração; sem leitura: {siglas}. Não é zero.</span><br><span class="ex">exemplo: Leitura parcial até 3: 3 de 3 diários oficiais estaduais lidos com os termos de declaração; sem leitura: 3. Não é zero.</span></td></tr>
 </table>
 <h3>topo · resposta.linha_reserva</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
