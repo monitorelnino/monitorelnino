@@ -2890,6 +2890,7 @@
    "decretado": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
+    "chuva",
     "vendaval"
    ],
    "dias_ate_reconhecimento": 22,
@@ -2901,9 +2902,17 @@
      "data": "21/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.646",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2100436": {
@@ -4310,17 +4319,30 @@
    "ibge": "1500701",
    "nome": "Anajás",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "01/09/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 64,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.804-de-4-de-novembro-de-2026-741860141",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.804",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2100709": {
@@ -4442,17 +4464,30 @@
    "ibge": "1500859",
    "nome": "Anapu",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "22/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 13,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.804-de-4-de-novembro-de-2026-741860141",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.804",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2100808": {
@@ -5945,17 +5980,30 @@
    "ibge": "2902104",
    "nome": "Araci",
    "uf": "BA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "09/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 26,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.803-de-4-de-novembro-de-2026-741755388",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.803",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "3103306": {
@@ -10694,9 +10742,17 @@
      "data": "20/10/2026",
      "decreto": "Decreto nº 55.767",
      "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118980_2026-11-04_24dbde7504e944ba8d681a39cf77bd99.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 006",
+     "hash": "c4e88bd6e445068a3e6a8907f5d4c20056f4d36be2dc74427d8082f193a14a85"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "2101707": {
@@ -12626,7 +12682,8 @@
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "chuva"
+    "chuva",
+    "vendaval"
    ],
    "dias_ate_reconhecimento": 19,
    "fontes": [
@@ -12653,9 +12710,17 @@
      "data": "29/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.768",
      "hash": "7dd91836a87ef4fa113029336e2df0eb38a9ac0293badcef042c0d11aac491e5"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "3506706": {
@@ -20178,17 +20243,30 @@
    "ibge": "5204953",
    "nome": "Campos Verdes",
    "uf": "GO",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "05/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 30,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.806-de-4-de-novembro-de-2026-741864812",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.806",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2603603": {
@@ -35529,17 +35607,30 @@
    "ibge": "4308003",
    "nome": "Faxinal do Soturno",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "02/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 33,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4205308": {
@@ -36858,17 +36949,30 @@
    "ibge": "4308300",
    "nome": "Fontoura Xavier",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "08/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 27,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "3126109": {
@@ -37358,17 +37462,30 @@
    "ibge": "4205506",
    "nome": "Fraiburgo",
    "uf": "SC",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "05/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 30,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "3516200": {
@@ -38859,9 +38976,17 @@
      "data": "11/08/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2.579",
      "hash": "dd44a759177a8ebdc880a43cf03cca3832f7116a93429bf0d1e2dab8551fc99f"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "3127354": {
@@ -41597,18 +41722,31 @@
    "ibge": "1503101",
    "nome": "Gurupá",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Pará (FAMEP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117202_2026-11-04_81a59450bf72acbd586412100b1004ae.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 150/2026",
+     "hash": "fffea6b5eb5ebbc9a477d5fb154562d019d2ff9557b61b06ff662fca2bc585b2"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "1709500": {
    "ibge": "1709500",
@@ -42074,17 +42212,30 @@
    "ibge": "5209903",
    "nome": "Iaciara",
    "uf": "GO",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "13/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 22,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.806-de-4-de-novembro-de-2026-741864812",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.806",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "3519204": {
@@ -43377,17 +43528,30 @@
    "ibge": "2502607",
    "nome": "Igaracy",
    "uf": "PB",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 19,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.803-de-4-de-novembro-de-2026-741755388",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.803",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "3520103": {
@@ -46181,17 +46345,18 @@
    "uf": "RS",
    "decreto": true,
    "primeiro_decreto": "14/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "04/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 21,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -46208,10 +46373,18 @@
      "data": "21/10/2026",
      "decreto": "Decreto nº 3415",
      "hash": "a39d92ff7d99929021cc75ae325ed2517093469474e6c21b406fa72cff56ee6b"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 23
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": null
   },
   "2506905": {
    "ibge": "2506905",
@@ -46996,18 +47169,31 @@
    "ibge": "1503606",
    "nome": "Itaituba",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Pará (FAMEP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117202_2026-11-04_81a59450bf72acbd586412100b1004ae.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 613/2026.",
+     "hash": "fffea6b5eb5ebbc9a477d5fb154562d019d2ff9557b61b06ff662fca2bc585b2"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "2404853": {
    "ibge": "2404853",
@@ -49308,17 +49494,30 @@
    "ibge": "1503705",
    "nome": "Itupiranga",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "23/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 12,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.804-de-4-de-novembro-de-2026-741860141",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.804",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4208500": {
@@ -62476,17 +62675,30 @@
    "ibge": "1504604",
    "nome": "Mocajuba",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "20/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "fogo"
+   ],
+   "dias_ate_reconhecimento": 15,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.804-de-4-de-novembro-de-2026-741860141",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.804",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "3530508": {
@@ -68738,17 +68950,30 @@
    "ibge": "1505064",
    "nome": "Novo Repartimento",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "23/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 12,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.804-de-4-de-novembro-de-2026-741860141",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.804",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2206951": {
@@ -72845,9 +73070,17 @@
      "data": "20/10/2026",
      "decreto": "Decreto nº 70/2026",
      "hash": "d175f2f077ccf8d866d6da80b6113d1345bc8f80386fbb7776727cfad12632f0"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118980_2026-11-04_24dbde7504e944ba8d681a39cf77bd99.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 70",
+     "hash": "c4e88bd6e445068a3e6a8907f5d4c20056f4d36be2dc74427d8082f193a14a85"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "2923803": {
@@ -75613,17 +75846,30 @@
    "ibge": "3150000",
    "nome": "Pescador",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "16/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 19,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.805-de-4-de-novembro-de-2026-741854426",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.805",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4212650": {
@@ -79668,17 +79914,30 @@
    "ibge": "1505908",
    "nome": "Porto de Moz",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "28/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "seca"
+   ],
+   "dias_ate_reconhecimento": 7,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.804-de-4-de-novembro-de-2026-741860141",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.804",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2707404": {
@@ -80618,18 +80877,31 @@
    "ibge": "1506005",
    "nome": "Prainha",
    "uf": "PA",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Pará (FAMEP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=329&i=publicado_117202_2026-11-04_81a59450bf72acbd586412100b1004ae.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 036/2026-",
+     "hash": "fffea6b5eb5ebbc9a477d5fb154562d019d2ff9557b61b06ff662fca2bc585b2"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "4120358": {
    "ibge": "4120358",
@@ -86264,17 +86536,30 @@
    "ibge": "4316303",
    "nome": "Roque Gonzales",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "02/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 33,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "1400472": {
@@ -86385,17 +86670,18 @@
    "uf": "RS",
    "decreto": true,
    "primeiro_decreto": "13/10/2026",
-   "primeiro_reconhecimento": null,
+   "primeiro_reconhecimento": "04/11/2026",
    "tipos": [
-    "SE"
+    "SE",
+    "reconhecimento_federal"
    ],
-   "reconhecido": false,
+   "reconhecido": true,
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_ate_reconhecimento": null,
+   "dias_ate_reconhecimento": 22,
    "fontes": [
     {
      "canal": "DOM-consorciado",
@@ -86412,10 +86698,18 @@
      "data": "16/10/2026",
      "decreto": "Decreto nº .",
      "hash": "5810afd71bcdd770f6f2df7399d7e9745d87ebefb0e5619ce76c403fcce273ed"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
     }
    ],
-   "n_eventos": 2,
-   "dias_sem_reconhecimento": 24
+   "n_eventos": 3,
+   "dias_sem_reconhecimento": null
   },
   "5107701": {
    "ibge": "5107701",
@@ -89381,17 +89675,30 @@
    "ibge": "4316972",
    "nome": "Santa Margarida do Sul",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "30/09/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "chuva"
+   ],
+   "dias_ate_reconhecimento": 35,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "4316907": {
@@ -91652,9 +91959,17 @@
      "data": "26/01/2026",
      "decreto": "ato de resposta — Portaria nº 190",
      "hash": null
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117710_2026-11-04_c52b6351bfba8ea070f85a02ff8f7a1d.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 023/2026",
+     "hash": "b8e106945cbf44134f38bbeda6c66da091c271f55cb78d6804192349bd2213db"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 284
   },
   "3547908": {
@@ -94373,18 +94688,31 @@
    "ibge": "3162104",
    "nome": "São Gotardo",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Mineiros (AMM-MG))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118472_2026-11-04_5a95572955d4553c01f478f451b36313.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 327",
+     "hash": "d918990ef3fafdb353a1d639eb5d22bd2ff23c2d3e6afc87a431e13f8d8c0fc1"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "4318408": {
    "ibge": "4318408",
@@ -97496,17 +97824,30 @@
    "ibge": "4319158",
    "nome": "São Miguel das Missões",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "02/10/2026",
+   "primeiro_reconhecimento": "04/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "vendaval"
+   ],
+   "dias_ate_reconhecimento": 33,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.807-de-4-de-novembro-de-2026-741845430",
+     "data": "04/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.807",
+     "hash": "c9ba025ed1439c7ec1b671c9c986fec9271956a8424820f209ba4ddf79e61930"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "2515005": {
@@ -101308,10 +101649,11 @@
    "primeiro_decreto": "29/09/2026",
    "primeiro_reconhecimento": "16/10/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
     "seca"
@@ -101325,9 +101667,17 @@
      "data": "16/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.586",
      "hash": "3e3b7566c0cbbab4c5b42d5e2d4099d5f9fd72666f2131e0e5d3ea46a3c08d0b"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Norte (FEMURN))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=296&i=publicado_117710_2026-11-04_c52b6351bfba8ea070f85a02ff8f7a1d.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 017",
+     "hash": "b8e106945cbf44134f38bbeda6c66da091c271f55cb78d6804192349bd2213db"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "2930501": {
@@ -107074,9 +107424,17 @@
      "data": "04/11/2026",
      "decreto": "Decreto nº 17",
      "hash": "bc7232adb9aa1d3c35b3ca01c156c4fc8625fa46468615597d5c019cff7fd92e"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Pernambuco (AMUPE))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115932_2026-11-04_86e53a4e01f99dffca23bb7ab1baf9df.pdf",
+     "data": "05/11/2026",
+     "decreto": "Decreto nº 17",
+     "hash": "d7db9128ba3b0cfb4325f8abbf2085b23dda4c757e4d49b04066ee96f3f74938"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "2414456": {
