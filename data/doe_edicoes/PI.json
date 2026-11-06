@@ -2,7 +2,7 @@
   "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
   "canal2": {
     "modo": "padrao_por_data",
-    "em": "05/11/2026",
+    "em": "06/11/2026",
     "conta_como_consultado": true,
     "adaptador": "edicao_pi",
     "ultima_edicao_lida": "2026-11-05"
@@ -10,57 +10,67 @@
   "edicoes": {
     "2026-06-29": {
       "decisao": "lida",
-      "em": "17/10/2026",
+      "em": "06/11/2026",
       "bytes": 1811976,
       "paginas": 301,
       "paginas_com_texto": 301,
       "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/a785a57b-a260-4d06-b623-a44d17ed6788/DOEPI_122_2026 (1).pdf",
       "impressao": "e4e8d13004fd7c2f594edc03177fa969652c4a45e65575cdcabda902a6c54c25",
       "termos_versao": "2026-10-17",
+      "leitor": "2026-10-20",
+      "legal_versao": "2026-10-30",
       "termos_achados": []
     },
     "2026-06-30": {
       "decisao": "lida",
-      "em": "17/10/2026",
+      "em": "06/11/2026",
       "bytes": 547585,
       "paginas": 8,
       "paginas_com_texto": 8,
       "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/58bda912-1cb0-4f01-bedf-c682169c1dd7/DOEPI_123_2026.pdf",
       "impressao": "1570a42778a6e4ba3426b8583da4652b7d1a57896e672b69a72e0ee3c0791ab7",
       "termos_versao": "2026-10-17",
+      "leitor": "2026-10-20",
+      "legal_versao": "2026-10-30",
       "termos_achados": []
     },
     "2026-06-30#2": {
       "decisao": "lida",
-      "em": "17/10/2026",
+      "em": "06/11/2026",
       "bytes": 3493028,
       "paginas": 409,
       "paginas_com_texto": 409,
       "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/cc459fac-291e-492d-905e-46861f6c9500/DOEPI_123_2026.pdf",
       "impressao": "8bade58af6e491f0fb3ba1fa6be3b99dfd2adba809f132438025494af5c55f1c",
       "termos_versao": "2026-10-17",
+      "leitor": "2026-10-20",
+      "legal_versao": "2026-10-30",
       "termos_achados": []
     },
     "2026-07-01": {
       "decisao": "lida",
-      "em": "17/10/2026",
+      "em": "06/11/2026",
       "bytes": 2034721,
       "paginas": 219,
       "paginas_com_texto": 219,
       "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/a82be336-66a1-425d-bfef-6f53eefdfe0b/DOEPI_124_2026.pdf",
       "impressao": "2b04bab6fcb8bca9c0d05cea1d9ce9150580e10e352ef032578e54e3afaf58d6",
       "termos_versao": "2026-10-17",
+      "leitor": "2026-10-20",
+      "legal_versao": "2026-10-30",
       "termos_achados": []
     },
     "2026-07-01#2": {
       "decisao": "lida",
-      "em": "17/10/2026",
+      "em": "06/11/2026",
       "bytes": 2806284,
       "paginas": 529,
       "paginas_com_texto": 529,
       "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/2282c7d9-4466-4d8b-9641-e1569d76c6b8/DOEPI_124_2026.pdf",
       "impressao": "60b3e3ef7d818e6a717c3160e1fee5a5ae18af163ae167d41f62413dd6991744",
       "termos_versao": "2026-10-17",
+      "leitor": "2026-10-20",
+      "legal_versao": "2026-10-30",
       "termos_achados": []
     },
     "2026-07-02": {
@@ -1560,7 +1570,11 @@
       "leitor": "2026-10-20",
       "legal_versao": "2026-10-30",
       "termos_achados": []
+    },
+    "2026-11-06": {
+      "decisao": "sem_edicao_na_data",
+      "em": "06/11/2026"
     }
   },
-  "atualizado_em": "05/11/2026"
+  "atualizado_em": "06/11/2026"
 }
