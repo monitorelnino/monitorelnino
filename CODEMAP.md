@@ -110,7 +110,7 @@ Atualizado em 06/11/2026.
 | `consultar_querido_diario.py` | — | `pistas_querido_diario.json` | — | 4 | não |
 | `converter_contribuicao.py` | — | — | — | — | SIM |
 | `descobrir_dominios.py` | — | `dominios_oficiais.json` | — | — | não |
-| `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 3 | não |
+| `descobrir_planos.py` | — | `s2id_busca_dirigida.json` | — | 4 | não |
 | `desfechos_sus.py` | — | — | — | 5 | não |
 | `detectar_marcos_federais.py` | — | `marcos_federais_saude.json`, `saude_uf.json` | — | — | não |
 | `funil.py` | — | — | — | 10 | não |
