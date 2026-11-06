@@ -145,9 +145,14 @@ PADROES = {
     # caderno do Poder Executivo é servido do armazenamento da própria CEPE (cepebr-prod), por data —
     # conferido na edição de 08/07/2025 (Ano CII, nº 121). Armazenamento sem listagem responde 403 a
     # objeto inexistente (feriado, data sem edição): esse 403 só é recusa se nenhuma data abrir.
-    "PE": {"padrao": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/{ano}/{ano}{mm}{dd}/1-PoderExecutivo/PoderExecutivo({ano}{mm}{dd}).pdf",
+    # MEDIDO do runner em 06/11/2026 (run 42257949530): maio de 2026 abre no armazenamento (8 edições),
+    # outubro e novembro não (403 = ausente). As edições recentes vivem no próprio portal, por data:
+    # 17/10/2026 (Ano CX, nº 192) e 04/11/2026 abrem em `/1/arquivos/resumoDiario/`. Portal primeiro,
+    # armazenamento como alternativa da mesma data; a edição extra sai como <data>E.pdf, fora do padrão.
+    "PE": {"padrao": "https://diariooficial.cepe.com.br/1/arquivos/resumoDiario/{ano}-{mm}-{dd}/{ano}-{mm}-{dd}.pdf",
+           "alternativas": ["https://cepebr-prod.s3.amazonaws.com/1/cadernos/{ano}/{ano}{mm}{dd}/1-PoderExecutivo/PoderExecutivo({ano}{mm}{dd}).pdf"],
            "ausente": 403,
-           "nota": "padrão por data do caderno do Executivo, no armazenamento da CEPE; conferido pela central em 06/11/2026"},
+           "nota": "padrão por data do caderno do Executivo no portal da CEPE, com o armazenamento como alternativa; medido em 06/11/2026"},
 }
 
 
@@ -575,7 +580,8 @@ def _edicoes_da_data(rota: dict, padrao: dict, data: str, listagem: dict, ancora
     if "{edicao}" in padrao["padrao"]:
         numeros = numeros_a_tentar(data, listagem, ancoras, padrao.get("janela", 8))
         return [[{"url": endereco_da_data(padrao["padrao"], data, str(n))} for n in numeros]] if numeros else []
-    return [[{"url": endereco_da_data(padrao["padrao"], data)}]]
+    # `alternativas`: outros endereços da MESMA edição (PE: portal e armazenamento), tentados em ordem.
+    return [[{"url": endereco_da_data(m, data)} for m in [padrao["padrao"], *padrao.get("alternativas", [])]]]
 
 
 def coletar_uf(uf: str, desde: str, ate: str) -> dict:
@@ -1049,9 +1055,10 @@ def _autoteste() -> int:
        and not e_ausencia_declarada(_Http(403), _pe, False, AUSENTES_SEM_PROVA)
        and not e_ausencia_declarada(_Http(403), PADROES["PB"], True, 0)
        and not e_ausencia_declarada(_Http(401), _pe, True, 0))
-    ok("PE: o endereço por data é o caderno do Executivo no armazenamento da CEPE",
-       _edicoes_da_data({"tipo": "padrao"}, _pe, "2025-07-08", {}, {}, None)[0][0]["url"]
-       == "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2025/20250708/1-PoderExecutivo/PoderExecutivo(20250708).pdf")
+    _pe_urls = [c["url"] for c in _edicoes_da_data({"tipo": "padrao"}, _pe, "2026-10-17", {}, {}, None)[0]]
+    ok("PE: a mesma edição tem dois endereços, portal primeiro e armazenamento depois",
+       _pe_urls == ["https://diariooficial.cepe.com.br/1/arquivos/resumoDiario/2026-10-17/2026-10-17.pdf",
+                    "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20261017/1-PoderExecutivo/PoderExecutivo(20261017).pdf"])
     ok("o padrão por data devolve uma edição com um endereço",
        _edicoes_da_data({"tipo": "padrao"}, PADROES["PB"], "2026-09-09", {}, {}, None)[0][0]["url"].endswith("09-09-2026-portal.pdf"))
     ok("lacuna sem motivo recebe o motivo padrão",
@@ -1062,7 +1069,8 @@ def _autoteste() -> int:
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
     _rec = {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 403 em https://diariooficial.cepe.com.br/arquivos/x.pdf — recusa"}}
     ok("recusa registrada noutro host não recusa a rota nova (PE: portal recusou, armazenamento é outra rota)",
-       situacao_do_canal2("PE", registro=_rec)["modo"] == "padrao_por_data"
+       situacao_do_canal2("PE", padroes={"PE": {"padrao": "https://cepebr-prod.s3.amazonaws.com/{ano}.pdf"}}, registro=_rec)["modo"] == "padrao_por_data"
+       and situacao_do_canal2("PE", registro=_rec)["modo"] == MODO_SEM_ACESSO
        and recusa_vale_para("HTTP 403", {"tipo": "padrao", "detalhe": "https://a/x"})
        and recusa_vale_para("HTTP 403 em https://a/y", {"tipo": "padrao", "detalhe": "https://a/x"})
        and not recusa_vale_para("HTTP 403 em https://a/y", {"tipo": "busca", "url": "https://b"}))
