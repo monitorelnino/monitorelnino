@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Emergência do AM entra; derivado sem política reprova o PR · O juiz julgava a fatia "verbo + 200 caracteres", e a ementa longa do Decreto AM nº 55.965 deixava o governador de fora: agora julga o ato inteiro, com autoteste no texto real. A noite de 05→06/11 perdeu o elo diários porque `data/imprensa/semana.json` não estava entre os derivados do resolvedor; a lista passa à medida (21 arquivos) e `verificar_idempotencia_dos_derivados.py` reprova derivado da cadeia sem política.
+
 ## 2026-11-06 · Push dos elos: o log distingue falha do servidor do GitHub de corrida com a main · `scripts/empurrar.py` classifica a recusa, espera mais quando o erro é do servidor e substitui os dois laços de push dos workflows; o ensaio 16 lê o novo destino. Falha F79 registrada. Sem mudança em página ou dado.
 
 ## 2026-11-05 · Saúde: leitura parcial dos decretos de emergência · Com a leitura estadual incompleta, o topo diz quantos diários oficiais estaduais foram lidos com os termos de declaração e quais estados faltam, em vez de só "sem coleta". Não é zero.

@@ -104,21 +104,21 @@ PREFIXOS_JSONL_QUE_SO_CRESCEM = ("data/log_buscas/",)
 # Lado que ficou MENOR que a base é decremento, não acréscimo, e aí se recusa.
 PREFIXOS_CONTADORES_QUE_SO_CRESCEM = ("data/funil/",)
 
-# Função de outros dados. Resolve-se com a versão de cima e regenera-se depois.
+# Função de outros dados: a cadeia canônica (`scripts/verificar_derivados.sh`) os reescreve do zero,
+# e o elo a roda depois do rebase. Resolve-se com a versão de cima. A lista é a MEDIDA, não a memória:
+# `verificar_idempotencia_dos_derivados.py` reprova o PR quando a cadeia escreve, sob o que o elo
+# commita, um arquivo que se refaz do zero e não está aqui (06/11/2026: `data/imprensa/semana.json`
+# entrou na cadeia em 27/10, ficou fora desta lista e o elo diários perdeu a noite de 05→06/11).
 REGENERAVEIS = (
-    "docs/MANIFEST_SHA256.txt",
-    "docs/FILA_PISTAS.md",
-    "data/pistas_revisao.json",
-    # 05/10/2026: os dois sao funcao de outro dado e sao regerados pela cadeia canonica --
-    # `scripts/gerar_resumo_do_log.py` e `gerar_card_municipios.py`, os dois dentro de
-    # `scripts/verificar_derivados.sh`. Recusa-los era conservadorismo sem razao, pela mesma logica
-    # do comentario de `dados-abertos/` logo abaixo, e os dois pararam a triagem de 05/10.
-    "data/log_buscas_resumo.json",
-    "data/municipios_card.json",
-    # 15/10/2026: os dois são regerados pela cadeia (`recalcular_mare.py --write`,
-    # `gerar_cobertura_declarada.py`) e foram recusados no push dos diários da noite 14→15.
-    "data/verificacao_municipal.json",
-    "data/cobertura_declarada_uf.json",
+    "docs/MANIFEST_SHA256.txt", "docs/FILA_PISTAS.md", "data/pistas_revisao.json",
+    "data/blog/posts.json", "data/cadencia_publicacao.json", "data/citacao_incompleta.json",
+    "data/cobertura_declarada_uf.json", "data/enquadramento_card.json",
+    "data/financiamento/contadores_uf.json", "data/indice.json",
+    "data/log_buscas_resumo.json", "data/monitor_saude.json", "data/municipios_card.json",
+    "data/municipios_prioritarios.json", "data/paralelo_v32.json", "data/resposta/municipios.json",
+    "data/resposta/municipios_decretados.json", "data/resposta/por_uf.json",
+    "data/resposta/serie_semanal.json", "data/robustez_mc.json", "data/snapshot_feed.json",
+    "data/verificacao_municipal.json", "data/verificacao_resumo.json",
 )
 
 # 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se

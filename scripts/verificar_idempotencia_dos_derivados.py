@@ -69,6 +69,22 @@ def nao_idempotentes(antes: dict, depois: dict) -> list:
     return fora
 
 
+# O que o elo commita depois de regenerar (`.github/workflows/_coletor.yml`, bloco A2-09).
+COMMITADO_PELO_ELO = ("data/", "dados-abertos/", "feeds/", "selos/", "evidencias/",
+                      "docs/MANIFEST_SHA256.txt")
+
+
+def derivados_sem_politica(escritos, sabe_resolver, refaz_do_zero) -> list:
+    """Os arquivos que a cadeia escreve sob o que o elo commita, que se refazem do zero e que o
+    resolvedor de conflito não sabe resolver. Função pura (recebe as duas perguntas prontas).
+
+    06/11/2026: `data/imprensa/semana.json` entrou na cadeia em 27/10 e não na lista de
+    REGENERAVEIS; no primeiro conflito nele o resolvedor recusou e o elo diários perdeu a noite.
+    Arquivo que a cadeia reescreve mas não refaz do zero (lê a si mesmo) é fonte, não derivado."""
+    return sorted(c for c in escritos
+                  if str(c).startswith(COMMITADO_PELO_ELO) and not sabe_resolver(c) and refaz_do_zero(c))
+
+
 def _git(*args):
     return subprocess.run(["git", *args], cwd=str(RAIZ), capture_output=True, text=True,
                           timeout=300)
@@ -131,6 +147,16 @@ def _autoteste() -> int:
     ok("textos iguais não têm divergência", primeira_divergencia("x\ny", "x\ny") == "")
     ok("tamanho diferente é divergência", "tamanho" in primeira_divergencia("x", "x\ny"))
     _m = ("# cabeçalho\n" + "a" * 64 + "  data/indice.json\n" + "b" * 64 + "  CODEMAP.md\n")
+    _sabe = lambda c: c == "data/indice.json"
+    ok("derivado fora do resolvedor reprova",
+       derivados_sem_politica(["data/imprensa/semana.json"], _sabe, lambda c: True)
+       == ["data/imprensa/semana.json"])
+    ok("derivado que o resolvedor conhece passa",
+       derivados_sem_politica(["data/indice.json"], _sabe, lambda c: True) == [])
+    ok("fonte que a cadeia reescreve (não se refaz do zero) passa",
+       derivados_sem_politica(["data/meta.json"], _sabe, lambda c: False) == [])
+    ok("o que o elo não commita não conta",
+       derivados_sem_politica(["blog/x.html"], _sabe, lambda c: True) == [])
     ok("A7-22: os caminhos selados saem do manifesto",
        caminhos_do_manifesto(_m) == ["data/indice.json", "CODEMAP.md"])
 
@@ -167,6 +193,8 @@ def main(argv: list) -> int:
         return subprocess.run(["bash", str(CADEIA), "--regenerar-para-commit"],
                               cwd=str(RAIZ), capture_output=True, text=True, timeout=1800, env=env)
 
+    import time
+    marco = time.time() - 1
     r1 = regenerar()
     if r1.returncode != 0:
         print("✗ IDEMPOTÊNCIA: a primeira regeneração FALHOU:")
@@ -194,6 +222,33 @@ def main(argv: list) -> int:
         return 1
     print(f"✓ IDEMPOTÊNCIA OK — a cadeia canônica regenera igual duas vezes "
           f"({len(antes)} arquivo(s) conferido(s)).")
+
+    # Todo derivado que a cadeia escreve e o elo commita tem de ter política no resolvedor de conflito.
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    import verificar_escritores as ve
+    classes = ve.classes_do_resolvedor()
+    escritos = [str(a.relative_to(RAIZ)) for a in RAIZ.rglob("*") if a.is_file()
+                and ".git" not in a.parts and "node_modules" not in a.parts and a.stat().st_mtime >= marco]
+
+    def refaz_do_zero(rel):
+        arq = RAIZ / rel
+        guardado = arq.read_bytes()
+        arq.unlink()
+        try:
+            regenerar()
+            return arq.exists() and arq.read_bytes() == guardado
+        finally:
+            arq.write_bytes(guardado)
+
+    sem = derivados_sem_politica(escritos, lambda c: ve.resolvido_pelo_resolvedor(c, classes), refaz_do_zero)
+    if sem:
+        print(f"✗ DERIVADOS SEM POLÍTICA DE CONFLITO: {len(sem)} arquivo(s) que a cadeia refaz do zero e "
+              "o elo commita, fora de REGENERAVEIS (`scripts/unir_conflito_de_rodada.py`):")
+        for x in sem:
+            print("   - " + x)
+        print("   No primeiro conflito o resolvedor os recusa e o elo perde a coleta da noite.")
+        return 1
+    print("✓ todo derivado que o elo commita tem política de conflito.")
     return 0
 
 
