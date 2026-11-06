@@ -2,10 +2,37 @@
  "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
   "modo": "sem_acesso_automatico",
+  "motivo": "HTTP 403 em https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20261030/1-PoderExecutivo/PoderExecut — recusa respeitada",
+  "em": "06/11/2026",
   "conta_como_consultado": false,
-  "motivo": "HTTP 403 em https://diariooficial.cepe.com.br/arquivos/2026/09/10.pdf — recusa respeitada · /edicoes: HTTPError · /diarios: HTTPError",
-  "em": "02/10/2026",
-  "tentativas": 2
+  "ultima_edicao_lida": ""
  },
- "edicoes": {}
+ "edicoes": {
+  "2026-11-06": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-11-05": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-11-04": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-11-03": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-11-02": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  }
+ },
+ "atualizado_em": "06/11/2026"
 }
