@@ -1,8 +1,10 @@
 # Leitura incremental dos diários oficiais das 27 UFs e conferência de decreto estadual de emergência
 # (editoria, 30/10/2026): segunda, quarta e sexta, na janela da noite, não todo dia.
-# Lê as edições dos últimos 4 dias (o intervalo maior entre duas conferências é 3 dias, mais 1 de
-# folga; edição já preservada não se duplica: o coletor guarda por hash), depois o `coletar_espin.py`
-# procura o ato estadual de emergência em saúde sobre a mesma janela. Produz dado de resposta, nunca
+# Lê as edições do ciclo ainda não lidas, da mais nova para a mais velha, com prazo próprio (o coletor
+# pula data já lida e grava o que leu quando o prazo corta). 06/11/2026: lia só os últimos 4 dias, e
+# data que falhou uma vez saía da janela para sempre; AL, AM, MG e PB acumularam 70 a 124 datas sem
+# leitura, e a emergência em saúde do AM (Decreto 55.965) ficou de fora. Depois, o `coletar_espin.py`
+# julga as declarações estaduais de tudo o que foi lido. Produz dado de resposta, nunca
 # pista de plano nem registro do índice; rota parada vira linha do painel da noite. Fecha o ciclo
 # `proveniencia_estadual.py --aplicar` (central, 30/10, §2 passo 3): lacuna ganha `verificado_em` novo.
 name: Noturno — DOE incremental e decretos de emergência
@@ -24,7 +26,7 @@ jobs:
       grupo_de_concorrencia: noturno
       timeout_minutos: 120
       comandos: |
-        coletar_edicoes_doe.py --recuperacao --ultimos-dias 4
+        prazo=80min coletar_edicoes_doe.py --recuperacao --desde 2026-06-29
         coletar_espin.py --ultimos-dias 4
         scripts/proveniencia_estadual.py --aplicar
     secrets:
