@@ -1,11 +1,10 @@
 {
  "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "sem_acesso_automatico",
-  "motivo": "HTTP 403 em https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20261030/1-PoderExecutivo/PoderExecut — recusa respeitada",
+  "modo": "padrao_por_data",
   "em": "06/11/2026",
-  "conta_como_consultado": false,
-  "ultima_edicao_lida": ""
+  "conta_como_consultado": true,
+  "ultima_edicao_lida": "2026-05-29"
  },
  "edicoes": {
   "2026-11-06": {
@@ -29,6 +28,123 @@
    "motivo": "HTTPError: HTTP Error 403: Forbidden"
   },
   "2026-11-02": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-05-29": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 7866999,
+   "paginas": 44,
+   "paginas_com_texto": 44,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260529/1-PoderExecutivo/PoderExecutivo(20260529).pdf",
+   "impressao": "77e9f43d38e22f9bb25aa2b4622b806207e75753acef3377694feeb24376df83",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-28": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 4065700,
+   "paginas": 26,
+   "paginas_com_texto": 26,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260528/1-PoderExecutivo/PoderExecutivo(20260528).pdf",
+   "impressao": "38de80747ff8c96e38525a3d518abb7cb4dc4ef8a5241c724483a8244bd7179c",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "38de80747ff8c96e38525a3d518abb7cb4dc4ef8a5241c724483a8244bd7179c",
+   "termos_achados": [
+    "plano de contingência"
+   ]
+  },
+  "2026-05-27": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 6405063,
+   "paginas": 14,
+   "paginas_com_texto": 14,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260527/1-PoderExecutivo/PoderExecutivo(20260527).pdf",
+   "impressao": "12f1631304d68720777bc6649360dc1c6e0b47c45290e6a1b26bf2ad320b8737",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-26": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 5130682,
+   "paginas": 14,
+   "paginas_com_texto": 14,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260526/1-PoderExecutivo/PoderExecutivo(20260526).pdf",
+   "impressao": "c7fd2bd1e5ade0d9f8c421a539fc9faf059b0b426f1148f0486890655249e1d7",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-25": {
+   "decisao": "recusa",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  "2026-05-22": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 3389654,
+   "paginas": 12,
+   "paginas_com_texto": 12,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260522/1-PoderExecutivo/PoderExecutivo(20260522).pdf",
+   "impressao": "0ef71b3fdf49796c7a3603028e4e2cc46ddecdafc4d87073688708266dd9eaa2",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-21": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 5785178,
+   "paginas": 14,
+   "paginas_com_texto": 14,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260521/1-PoderExecutivo/PoderExecutivo(20260521).pdf",
+   "impressao": "5b339972f1f80ffbc29dd5bab2dc981159fe19e7ad171967e64f1e2341a70959",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-20": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 7178151,
+   "paginas": 26,
+   "paginas_com_texto": 26,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260520/1-PoderExecutivo/PoderExecutivo(20260520).pdf",
+   "impressao": "71ef02143ae99016b57de8561fcaf2ac0cd5cfbe1456bb96cce12d315d4d92cc",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-19": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 5560875,
+   "paginas": 12,
+   "paginas_com_texto": 12,
+   "url": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260519/1-PoderExecutivo/PoderExecutivo(20260519).pdf",
+   "impressao": "d63d8f2e7bf936b1f26092b6282ad593b99929cbaf16bdfbf3011176f70f5baf",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-05-18": {
    "decisao": "recusa",
    "em": "06/11/2026",
    "motivo": "HTTPError: HTTP Error 403: Forbidden"
