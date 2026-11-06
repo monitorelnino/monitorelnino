@@ -2,9 +2,9 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "01/11/2026",
+  "em": "06/11/2026",
   "conta_como_consultado": true,
-  "ultima_edicao_lida": "2026-10-29"
+  "ultima_edicao_lida": "2026-11-05"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1149,7 +1149,54 @@
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
    "termos_achados": []
+  },
+  "2026-11-05": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 3511624,
+   "paginas": 115,
+   "paginas_com_texto": 115,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261105.pdf",
+   "impressao": "a41ff60c1672e290df6b2570e0ed31cab7459ea93c6d246a27e81275c4942978",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-04": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 3994505,
+   "paginas": 122,
+   "paginas_com_texto": 122,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261104.pdf",
+   "impressao": "78b1285684255b0b9b23a228293345c0b1317bc21218a6c14540ab45a117446f",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "hash_evidencia": "78b1285684255b0b9b23a228293345c0b1317bc21218a6c14540ab45a117446f",
+   "termos_achados": [
+    "El Niño"
+   ]
+  },
+  "2026-11-03": {
+   "decisao": "lida",
+   "em": "06/11/2026",
+   "bytes": 2856599,
+   "paginas": 120,
+   "paginas_com_texto": 120,
+   "url": "https://www.imprensaoficial.rr.gov.br/_edicoes/2026/11/doe-20261103.pdf",
+   "impressao": "132e39aba3bfa46c170998f05c7b175c7a745e5e5f0461f9f535911ca188532a",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-02": {
+   "decisao": "sem_edicao_na_data",
+   "em": "06/11/2026",
+   "motivo": "HTTPError: HTTP Error 404: Not Found"
   }
  },
- "atualizado_em": "01/11/2026"
+ "atualizado_em": "06/11/2026"
 }

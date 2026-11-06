@@ -36,11 +36,12 @@
      "2026-11-01": 3.6,
      "2026-11-02": 4.5,
      "2026-11-03": 7.9,
-     "2026-11-04": 8.9
+     "2026-11-04": 8.9,
+     "2026-11-05": 8.2
     },
     "dias_seguidos": 0,
-    "ultimo_dia": "2026-11-04",
-    "valor_ultimo": 8.9
+    "ultimo_dia": "2026-11-05",
+    "valor_ultimo": 8.2
    },
    "pm10": {
     "status": "coletado",
@@ -73,11 +74,12 @@
      "2026-11-01": 11.9,
      "2026-11-02": 12.6,
      "2026-11-03": 15.6,
-     "2026-11-04": 16.3
+     "2026-11-04": 16.3,
+     "2026-11-05": 14.0
     },
     "dias_seguidos": 0,
-    "ultimo_dia": "2026-11-04",
-    "valor_ultimo": 16.3
+    "ultimo_dia": "2026-11-05",
+    "valor_ultimo": 14.0
    }
   },
   "SP": {
@@ -105,7 +107,7 @@
   }
  },
  "_governanca": "Ar medido por estação e sensor. IQAr calculado pelo órgão (MMA/MonitorAr, CONAMA 506/2024), nunca recalculado aqui; PM2,5 do OpenAQ só para a mesma estação oficial; sensores de baixo custo (IPAM/RedeAr) só em concentração, nunca índice. Medição com mais de 36 h é lacuna. Peso zero, sinal físico.",
- "gerado_em": "05/11/2026 05:52",
+ "gerado_em": "05/11/2026 22:16",
  "fontes": {
   "monitorar": {
    "orgao": "MMA · MonitorAr (redes estaduais)",
@@ -114,8 +116,8 @@
    "natureza": "medição",
    "papel": "IQAr por estação oficial, calculado pelo órgão (CONAMA 506/2024); hora da fonte lida como horário de Brasília",
    "status": "coletado",
-   "consultado_em": "05/11/2026 05:52",
-   "evidencia_sha256": "c12e499b93bc50631be57f558b18816280b46edc8a7b0cb3df3c8c38723c6277"
+   "consultado_em": "05/11/2026 22:15",
+   "evidencia_sha256": "a4afdbff270df6d139712203d07f33e36e2bc6719e7d4d22c2667ba7cda656e1"
   },
   "openaq": {
    "orgao": "OpenAQ (redes de origem)",
@@ -124,8 +126,8 @@
    "natureza": "medição",
    "papel": "PM2,5 em µg/m³ da última medição publicada da mesma estação oficial",
    "status": "coletado",
-   "consultado_em": "05/11/2026 05:52",
-   "evidencia_sha256": "cfe33bc3a5a9ce847426cebd7c5026a1a6a42463bc870b82a054c171dbac8b36",
+   "consultado_em": "05/11/2026 22:15",
+   "evidencia_sha256": "6bf9b89246eb290edb5e9729f0a6fa9153d2f8b0ad5fa46d819d5cc414a147d5",
    "estacoes_casadas": 29
   },
   "redear": {
@@ -135,8 +137,8 @@
    "natureza": "sensor de baixo custo",
    "papel": "PM2,5 e PM10 em µg/m³ da leitura mais recente (média dos dois canais do sensor ótico, correção atmosférica `_env` da fonte); hora da fonte sem fuso declarado; não é estação regulatória e não gera IQAr",
    "status": "coletado",
-   "consultado_em": "05/11/2026 05:52",
-   "evidencia_sha256": "c17b6a3f65becfe5a0bb79aa0bd1863ab3d407074b2b0c35064db33a32653eb4"
+   "consultado_em": "05/11/2026 22:16",
+   "evidencia_sha256": "edf21c7718b9a3e4a32723e3e1243ad142a407a93a8798232fbe9c3afd4c7a1b"
   }
  },
  "estacoes": [
@@ -201,66 +203,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 143,
-   "nome": "Bauru",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3506003,
-   "municipio": "Bauru",
-   "uf": "SP",
-   "lat": -22.326726,
-   "lon": -49.092797,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 32.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 144,
-   "nome": "Jundiaí",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3525904,
-   "municipio": "Jundiaí",
-   "uf": "SP",
-   "lat": -23.192004,
-   "lon": -46.897097,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 32.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 145,
-   "nome": "Jaú",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3525300,
-   "municipio": "Jaú",
-   "uf": "SP",
-   "lat": -22.29862,
-   "lon": -48.567457,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 24.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
    "id": 178126,
    "nome": "Madureira",
    "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
@@ -272,16 +214,16 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 18.667,
+    "valor": 16.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 4.8,
+    "valor": 2.8,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-06T01:00:00Z",
     "local_openaq": 5110514,
     "distancia_m": 0
    }
@@ -301,14 +243,212 @@
     "valor": 21.333,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 17.6,
+    "valor": 2.6,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-05T20:00:00Z",
     "local_openaq": 6152598,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 143,
+   "nome": "Bauru",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3506003,
+   "municipio": "Bauru",
+   "uf": "SP",
+   "lat": -22.326726,
+   "lon": -49.092797,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 27.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 144,
+   "nome": "Jundiaí",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3525904,
+   "municipio": "Jundiaí",
+   "uf": "SP",
+   "lat": -23.192004,
+   "lon": -46.897097,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 17.0,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 145,
+   "nome": "Jaú",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3525300,
+   "municipio": "Jaú",
+   "uf": "SP",
+   "lat": -22.29862,
+   "lon": -48.567457,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 24.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178346,
+   "nome": "Rocinha",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9896,
+   "lon": -43.2527,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 21.333,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 3.7,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6152595,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 165,
+   "nome": "Campinas-V.União",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3509502,
+   "municipio": "Campinas",
+   "uf": "SP",
+   "lat": -22.946728,
+   "lon": -47.119281,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 24.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 168,
+   "nome": "Guarulhos-Pimentas",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3518800,
+   "municipio": "Guarulhos",
+   "uf": "SP",
+   "lat": -23.440117,
+   "lon": -46.409949,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 17.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178347,
+   "nome": "Rocha",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9009,
+   "lon": -43.2522,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 26.667,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178345,
+   "nome": "Recreio dos Bandeirantes",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -23.0197,
+   "lon": -43.4823,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 18.8,
+    "classificacao": "Boa",
+    "poluente": "NO₂",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 3.6,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6418495,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178365,
+   "nome": "Realengo",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8662,
+   "lon": -43.4419,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 43.294,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 9.0,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6152592,
     "distancia_m": 0
    }
   },
@@ -403,32 +543,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 178346,
-   "nome": "Rocinha",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9896,
-   "lon": -43.2527,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 21.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 5.0,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6152595,
-    "distancia_m": 0
-   }
-  },
-  {
    "id": 148746,
    "nome": "MVA",
    "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
@@ -441,26 +555,6 @@
    "sem_informacao_mais_de_tres_dias": true,
    "iqar": null,
    "lacuna": "última medição da fonte com mais de 36 h (02/12/2024 17:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178347,
-   "nome": "Rocha",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9009,
-   "lon": -43.2522,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 29.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -494,73 +588,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 178345,
-   "nome": "Recreio dos Bandeirantes",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -23.0197,
-   "lon": -43.4823,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 18.667,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 3.8,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6418495,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178365,
-   "nome": "Realengo",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8662,
-   "lon": -43.4419,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 42.147,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 32.3,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6152592,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178530,
-   "nome": "LAB INEA",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9893,
-   "lon": -43.415,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
    "id": 178532,
    "nome": "FAZENDA SEVERINA",
    "rede": "INEA",
@@ -575,54 +602,49 @@
     "valor": 9.6,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "medido_em": "2026-11-05T11:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178549,
-   "nome": "MACUCO",
+   "id": 178530,
+   "nome": "LAB INEA",
    "rede": "INEA",
-   "ibge": 3302452,
-   "municipio": "Macuco",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -21.9889,
-   "lon": -42.2592,
+   "lat": -22.9893,
+   "lon": -43.415,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 10:00)",
+   "iqar": {
+    "valor": 29.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178573,
-   "nome": "PORTO DAS CAIXAS",
+   "id": 178571,
+   "nome": "BOCAININHA",
    "rede": "INEA",
-   "ibge": 3301900,
-   "municipio": "Itaboraí",
+   "ibge": 3300407,
+   "municipio": "Barra Mansa",
    "uf": "RJ",
-   "lat": -22.7017,
-   "lon": -42.8755,
+   "lat": -22.5354,
+   "lon": -44.2028,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178556,
-   "nome": "EUCLIDELÂNDIA",
-   "rede": "INEA",
-   "ibge": 3301108,
-   "municipio": "Cantagalo",
-   "uf": "RJ",
-   "lat": -21.9064,
-   "lon": -42.2613,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 46.74,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -866,21 +888,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 178564,
-   "nome": "CABIÚNAS",
-   "rede": "INEA",
-   "ibge": 3302403,
-   "municipio": "Macaé",
-   "uf": "RJ",
-   "lat": -22.3089,
-   "lon": -41.7529,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
    "id": 98,
    "nome": "Cecília Meireles",
    "rede": "Fundação Estadual do Meio Ambiente - FEAM",
@@ -896,33 +903,43 @@
    "pm25_openaq": null
   },
   {
-   "id": 178571,
-   "nome": "BOCAININHA",
-   "rede": "INEA",
-   "ibge": 3300407,
-   "municipio": "Barra Mansa",
-   "uf": "RJ",
-   "lat": -22.5354,
-   "lon": -44.2028,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178577,
-   "nome": "SAMBAETIBA",
+   "id": 178573,
+   "nome": "PORTO DAS CAIXAS",
    "rede": "INEA",
    "ibge": 3301900,
    "municipio": "Itaboraí",
    "uf": "RJ",
-   "lat": -22.6694,
-   "lon": -42.7879,
+   "lat": -22.7017,
+   "lon": -42.8755,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 41.0,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178549,
+   "nome": "MACUCO",
+   "rede": "INEA",
+   "ibge": 3302452,
+   "municipio": "Macuco",
+   "uf": "RJ",
+   "lat": -21.9889,
+   "lon": -42.2592,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 26.67,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T15:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -941,6 +958,66 @@
    "pm25_openaq": null
   },
   {
+   "id": 178556,
+   "nome": "EUCLIDELÂNDIA",
+   "rede": "INEA",
+   "ibge": 3301108,
+   "municipio": "Cantagalo",
+   "uf": "RJ",
+   "lat": -21.9064,
+   "lon": -42.2613,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 50.18,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178564,
+   "nome": "CABIÚNAS",
+   "rede": "INEA",
+   "ibge": 3302403,
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "lat": -22.3089,
+   "lon": -41.7529,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 36.44,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178577,
+   "nome": "SAMBAETIBA",
+   "rede": "INEA",
+   "ibge": 3301900,
+   "municipio": "Itaboraí",
+   "uf": "RJ",
+   "lat": -22.6694,
+   "lon": -42.7879,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 37.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 178578,
    "nome": "AREAL",
    "rede": "INEA",
@@ -951,8 +1028,13 @@
    "lon": -42.8523,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 41.0,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -967,10 +1049,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 26.667,
+    "valor": 29.333,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T03:30:00-03:00"
+    "medido_em": "2026-11-05T19:30:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -987,30 +1069,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 46.735,
+    "valor": 44.441,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178562,
-   "nome": "FAZENDA AIRIS",
-   "rede": "INEA",
-   "ibge": 3302403,
-   "municipio": "Macaé",
-   "uf": "RJ",
-   "lat": -22.3456,
-   "lon": -41.9548,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 20.4,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -1026,8 +1088,13 @@
    "lon": -43.1065,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 09:00)",
+   "iqar": {
+    "valor": 29.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -1042,16 +1109,16 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 32.0,
+    "valor": 40.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 28.6,
+    "valor": 3.7,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-05T20:00:00Z",
     "local_openaq": 6152588,
     "distancia_m": 0
    }
@@ -1068,10 +1135,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 21.333,
+    "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -1327,8 +1394,13 @@
    "lon": -44.0259,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 08:00)",
+   "iqar": {
+    "valor": 29.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T11:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -1347,6 +1419,26 @@
    "pm25_openaq": null
   },
   {
+   "id": 178562,
+   "nome": "FAZENDA AIRIS",
+   "rede": "INEA",
+   "ibge": 3302403,
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "lat": -22.3456,
+   "lon": -41.9548,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 14.4,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T11:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 178557,
    "nome": "PIRANEMA",
    "rede": "INEA",
@@ -1357,8 +1449,13 @@
    "lon": -43.7124,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 42.44,
+    "classificacao": "Moderada",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -1373,70 +1470,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 26.667,
+    "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:30:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 139833,
-   "nome": "GPC ARAUCARIA",
-   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
-   "ibge": 4101804,
-   "municipio": "Araucária",
-   "uf": "PR",
-   "lat": -25.55063,
-   "lon": -49.356566,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 20.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 143074,
-   "nome": "GUARAPUAVA",
-   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
-   "ibge": 4109401,
-   "municipio": "Guarapuava",
-   "uf": "PR",
-   "lat": -25.363043,
-   "lon": -51.497307,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 19.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 143075,
-   "nome": "LONDRINA UEL",
-   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
-   "ibge": 4113700,
-   "municipio": "Londrina",
-   "uf": "PR",
-   "lat": -23.325026,
-   "lon": -51.200343,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 18.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T20:30:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -1592,6 +1629,66 @@
    "pm25_openaq": null
   },
   {
+   "id": 139833,
+   "nome": "GPC ARAUCARIA",
+   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
+   "ibge": 4101804,
+   "municipio": "Araucária",
+   "uf": "PR",
+   "lat": -25.55063,
+   "lon": -49.356566,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 20.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 143074,
+   "nome": "GUARAPUAVA",
+   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
+   "ibge": 4109401,
+   "municipio": "Guarapuava",
+   "uf": "PR",
+   "lat": -25.363043,
+   "lon": -51.497307,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 20.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 143075,
+   "nome": "LONDRINA UEL",
+   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
+   "ibge": 4113700,
+   "municipio": "Londrina",
+   "uf": "PR",
+   "lat": -23.325026,
+   "lon": -51.200343,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 148765,
    "nome": "LONDRINA",
    "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
@@ -1603,10 +1700,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 28.0,
+    "valor": 25.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -1623,10 +1720,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 37.0,
+    "valor": 19.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -1687,23 +1784,33 @@
    "lon": -43.3852,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 09:00)",
+   "iqar": {
+    "valor": 32.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178541,
-   "nome": "VAL PALMAS",
+   "id": 178555,
+   "nome": "GERICINÓ",
    "rede": "INEA",
-   "ibge": 3301108,
-   "municipio": "Cantagalo",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -21.9728,
-   "lon": -42.2881,
+   "lat": -22.8593,
+   "lon": -43.408,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 37.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -1718,17 +1825,265 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 27.556,
+    "valor": 32.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 3.3,
+    "valor": 8.8,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-06T01:00:00Z",
     "local_openaq": 820323,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 382,
+   "nome": "Campo Grande",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8862,
+   "lon": -43.5567,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 32.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 387,
+   "nome": "Bangu",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8879,
+   "lon": -43.4711,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 25.2,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 383,
+   "nome": "Irajá",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8316,
+   "lon": -43.3269,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 32.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 6.0,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T00:00:00Z",
+    "local_openaq": 820326,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178085,
+   "nome": "Irajá kunak ",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8316,
+   "lon": -43.3269,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 10.667,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 6.0,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T00:00:00Z",
+    "local_openaq": 820326,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178127,
+   "nome": "Campo de Santana",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9081,
+   "lon": -43.1865,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 21.333,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 4.8,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 5110511,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178105,
+   "nome": "Quintino",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8915,
+   "lon": -43.3248,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 18.667,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 3.1,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 5110512,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178128,
+   "nome": "Engenheiro Leal",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8769,
+   "lon": -43.323,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 10.667,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 1.4,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 5110473,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178129,
+   "nome": "Cascadura ",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8849,
+   "lon": -43.3276,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 16.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 2.6,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 5110513,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178130,
+   "nome": "Campinho",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8834,
+   "lon": -43.3546,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 18.667,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 4.0,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 5110472,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178186,
+   "nome": "Praça XV",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9014,
+   "lon": -43.173,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 16.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 2.0,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 5636888,
     "distancia_m": 0
    }
   },
@@ -1743,8 +2098,13 @@
    "lon": -40.9918,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 32.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -1913,117 +2273,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 178555,
-   "nome": "GERICINÓ",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8593,
-   "lon": -43.408,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 09:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178563,
-   "nome": "LOURENÇO JORGE",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9945,
-   "lon": -43.3653,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 09:00)",
-   "pm25_openaq": {
-    "valor": 21.1,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6152581,
-    "distancia_m": 294
-   }
-  },
-  {
-   "id": 178561,
-   "nome": "PILAR",
-   "rede": "INEA",
-   "ibge": 3301702,
-   "municipio": "Duque de Caxias",
-   "uf": "RJ",
-   "lat": -22.706,
-   "lon": -43.312,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 09:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178567,
-   "nome": "ILHA DO GOVERNADOR",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8044,
-   "lon": -43.1816,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178568,
-   "nome": "MONTE SERRAT",
-   "rede": "INEA",
-   "ibge": 3302007,
-   "municipio": "Itaguaí",
-   "uf": "RJ",
-   "lat": -22.8748,
-   "lon": -43.7701,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178572,
-   "nome": "ADALGISA NERY",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8888,
-   "lon": -43.7159,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178566,
-   "nome": "SANTA CECÍLIA",
-   "rede": "INEA",
-   "ibge": 3306305,
-   "municipio": "Volta Redonda",
-   "uf": "RJ",
-   "lat": -22.5202,
-   "lon": -44.1097,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
    "id": 136533,
    "nome": "Estação AQM195 Minerasul",
    "rede": "Secretaria de Estado de Meio Ambiente e Sustentabilidade – SEMAS/PA",
@@ -2054,6 +2303,106 @@
    "pm25_openaq": null
   },
   {
+   "id": 178534,
+   "nome": "VICTORIA BRAILE (NOSSA SRA. DAS GRAÇAS)",
+   "rede": "INEA",
+   "ibge": 3306305,
+   "municipio": "Volta Redonda",
+   "uf": "RJ",
+   "lat": -22.5066,
+   "lon": -44.0967,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 45.59,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178561,
+   "nome": "PILAR",
+   "rede": "INEA",
+   "ibge": 3301702,
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "lat": -22.706,
+   "lon": -43.312,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 37.33,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178567,
+   "nome": "ILHA DO GOVERNADOR",
+   "rede": "INEA",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8044,
+   "lon": -43.1816,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 28.44,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178566,
+   "nome": "SANTA CECÍLIA",
+   "rede": "INEA",
+   "ibge": 3306305,
+   "municipio": "Volta Redonda",
+   "uf": "RJ",
+   "lat": -22.5202,
+   "lon": -44.1097,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 26.67,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178541,
+   "nome": "VAL PALMAS",
+   "rede": "INEA",
+   "ibge": 3301108,
+   "municipio": "Cantagalo",
+   "uf": "RJ",
+   "lat": -21.9728,
+   "lon": -42.2881,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 39.11,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 178574,
    "nome": "ROBERTO SILVEIRA",
    "rede": "INEA",
@@ -2064,26 +2413,31 @@
    "lon": -44.1809,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 49.03,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 382,
-   "nome": "Campo Grande",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
+   "id": 178568,
+   "nome": "MONTE SERRAT",
+   "rede": "INEA",
+   "ibge": 3302007,
+   "municipio": "Itaguaí",
    "uf": "RJ",
-   "lat": -22.8862,
-   "lon": -43.5567,
+   "lat": -22.8748,
+   "lon": -43.7701,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 39.111,
+    "valor": 26.67,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2099,251 +2453,59 @@
    "lon": -44.1948,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 43.29,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178534,
-   "nome": "VICTORIA BRAILE (NOSSA SRA. DAS GRAÇAS)",
+   "id": 178572,
+   "nome": "ADALGISA NERY",
    "rede": "INEA",
-   "ibge": 3306305,
-   "municipio": "Volta Redonda",
-   "uf": "RJ",
-   "lat": -22.5066,
-   "lon": -44.0967,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 387,
-   "nome": "Bangu",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
    "ibge": 3304557,
    "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -22.8879,
-   "lon": -43.4711,
+   "lat": -22.8888,
+   "lon": -43.7159,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 31.111,
+    "valor": 29.33,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 383,
-   "nome": "Irajá",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "id": 178563,
+   "nome": "LOURENÇO JORGE",
+   "rede": "INEA",
    "ibge": 3304557,
    "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -22.8316,
-   "lon": -43.3269,
+   "lat": -22.9945,
+   "lon": -43.3653,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 37.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 11.8,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 820326,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178085,
-   "nome": "Irajá kunak ",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8316,
-   "lon": -43.3269,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 10.667,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 11.8,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 820326,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178127,
-   "nome": "Campo de Santana",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9081,
-   "lon": -43.1865,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 24.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 15.4,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 5110511,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178105,
-   "nome": "Quintino",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8915,
-   "lon": -43.3248,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 21.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 4.4,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 5110512,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178128,
-   "nome": "Engenheiro Leal",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8769,
-   "lon": -43.323,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 10.667,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 6.7,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 5110473,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178129,
-   "nome": "Cascadura ",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8849,
-   "lon": -43.3276,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 21.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 4.3,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 5110513,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178130,
-   "nome": "Campinho",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8834,
-   "lon": -43.3546,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 24.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
     "valor": 6.0,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 5110472,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178186,
-   "nome": "Praça XV",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9014,
-   "lon": -43.173,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 16.0,
     "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "poluente": "SO₂",
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 3.6,
+    "valor": 3.3,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 5636888,
-    "distancia_m": 0
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6152581,
+    "distancia_m": 294
    }
   },
   {
@@ -2361,13 +2523,13 @@
     "valor": 18.667,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 3.2,
+    "valor": 2.3,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-06T01:00:00Z",
     "local_openaq": 5636852,
     "distancia_m": 0
    }
@@ -2387,13 +2549,13 @@
     "valor": 21.333,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 6.2,
+    "valor": 3.7,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-06T01:00:00Z",
     "local_openaq": 5648811,
     "distancia_m": 0
    }
@@ -2413,13 +2575,13 @@
     "valor": 26.667,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 9.7,
+    "valor": 3.4,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-05T20:00:00Z",
     "local_openaq": 6285443,
     "distancia_m": 0
    }
@@ -2439,13 +2601,13 @@
     "valor": 18.667,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 3.3,
+    "valor": 8.8,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-06T01:00:00Z",
     "local_openaq": 820323,
     "distancia_m": 0
    }
@@ -2465,7 +2627,7 @@
     "valor": 42.0,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2545,7 +2707,7 @@
     "valor": 45.0,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T20:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2561,11 +2723,26 @@
    "lon": -44.2664,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
+   "iqar": null,
+   "lacuna": "última medição da fonte com mais de 36 h (04/11/2026 02:00)",
+   "pm25_openaq": null
+  },
+  {
+   "id": 136573,
+   "nome": "Gapara",
+   "rede": "Secretaria Estadual de Meio Ambiente - SEMA",
+   "ibge": 2111300,
+   "municipio": "São Luís",
+   "uf": "MA",
+   "lat": -2.589,
+   "lon": -44.3033,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 46.0,
+    "valor": 49.0,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-04T02:00:00-03:00"
+    "medido_em": "2026-11-05T20:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2582,10 +2759,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 34.0,
+    "valor": 38.0,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2611,26 +2788,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 136573,
-   "nome": "Gapara",
-   "rede": "Secretaria Estadual de Meio Ambiente - SEMA",
-   "ibge": 2111300,
-   "municipio": "São Luís",
-   "uf": "MA",
-   "lat": -2.589,
-   "lon": -44.3033,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 49.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
    "id": 386,
    "nome": "Tijuca",
    "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
@@ -2642,16 +2799,16 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 43.167,
+    "valor": 42.444,
     "classificacao": "Moderada",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 11.1,
+    "valor": 3.1,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-05T20:00:00Z",
     "local_openaq": 6178275,
     "distancia_m": 41
    }
@@ -2671,13 +2828,13 @@
     "valor": 13.333,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 5.4,
+    "valor": 4.6,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-06T01:00:00Z",
     "local_openaq": 5110474,
     "distancia_m": 0
    }
@@ -2694,16 +2851,16 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 29.333,
+    "valor": 32.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 7.9,
+    "valor": 6.9,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-05T20:00:00Z",
     "local_openaq": 6152584,
     "distancia_m": 0
    }
@@ -2723,27 +2880,7 @@
     "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178286,
-   "nome": "Campo Grande Aurassure",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8749,
-   "lon": -43.5332,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 29.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2760,10 +2897,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 23.0,
+    "valor": 20.0,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2780,10 +2917,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 44.0,
-    "classificacao": "Moderada",
+    "valor": 21.0,
+    "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2799,88 +2936,13 @@
    "lon": -42.9765,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178538,
-   "nome": "BELMONTE",
-   "rede": "INEA",
-   "ibge": 3306305,
-   "municipio": "Volta Redonda",
-   "uf": "RJ",
-   "lat": -22.5176,
-   "lon": -44.1324,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178533,
-   "nome": "PORTO REAL",
-   "rede": "INEA",
-   "ibge": 3304110,
-   "municipio": "Porto Real",
-   "uf": "RJ",
-   "lat": -22.4245,
-   "lon": -44.2937,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178544,
-   "nome": "PESAGRO",
-   "rede": "INEA",
-   "ibge": 3302403,
-   "municipio": "Macaé",
-   "uf": "RJ",
-   "lat": -22.3762,
-   "lon": -41.812,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 20.8,
+    "valor": 40.0,
     "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178553,
-   "nome": "RETIRO",
-   "rede": "INEA",
-   "ibge": 3306305,
-   "municipio": "Volta Redonda",
-   "uf": "RJ",
-   "lat": -22.5023,
-   "lon": -44.1228,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178539,
-   "nome": "MATO ESCURO 5º DISTRITO",
-   "rede": "INEA",
-   "ibge": 3305000,
-   "municipio": "São João da Barra",
-   "uf": "RJ",
-   "lat": -21.8945,
-   "lon": -41.0567,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
    "pm25_openaq": null
   },
   {
@@ -2895,50 +2957,70 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 38.0,
-    "classificacao": "Boa",
+    "valor": 43.0,
+    "classificacao": "Moderada",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 165,
-   "nome": "Campinas-V.União",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3509502,
-   "municipio": "Campinas",
-   "uf": "SP",
-   "lat": -22.946728,
-   "lon": -47.119281,
+   "id": 178533,
+   "nome": "PORTO REAL",
+   "rede": "INEA",
+   "ibge": 3304110,
+   "municipio": "Porto Real",
+   "uf": "RJ",
+   "lat": -22.4245,
+   "lon": -44.2937,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 35.0,
+    "valor": 27.56,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178538,
+   "nome": "BELMONTE",
+   "rede": "INEA",
+   "ibge": 3306305,
+   "municipio": "Volta Redonda",
+   "uf": "RJ",
+   "lat": -22.5176,
+   "lon": -44.1324,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 40.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 168,
-   "nome": "Guarulhos-Pimentas",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3518800,
-   "municipio": "Guarulhos",
-   "uf": "SP",
-   "lat": -23.440117,
-   "lon": -46.409949,
+   "id": 178286,
+   "nome": "Campo Grande Aurassure",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8749,
+   "lon": -43.5332,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 24.0,
+    "valor": 26.667,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -2955,33 +3037,98 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 29.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "valor": 133.154,
+    "classificacao": "Muito ruim",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 30.8,
+    "valor": 5.7,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
+    "medido_em": "2026-11-05T20:00:00Z",
     "local_openaq": 6152586,
     "distancia_m": 0
    }
   },
   {
-   "id": 178554,
-   "nome": "ITACURUÇÁ",
+   "id": 178544,
+   "nome": "PESAGRO",
    "rede": "INEA",
-   "ibge": 3302601,
-   "municipio": "Mangaratiba",
+   "ibge": 3302403,
+   "municipio": "Macaé",
    "uf": "RJ",
-   "lat": -22.9289,
-   "lon": -43.9101,
+   "lat": -22.3762,
+   "lon": -41.812,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 16.4,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T11:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178536,
+   "nome": "ENGENHEIRO PEDREIRA",
+   "rede": "INEA",
+   "ibge": 3302270,
+   "municipio": "Japeri",
+   "uf": "RJ",
+   "lat": -22.6709,
+   "lon": -43.5942,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 20.44,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178539,
+   "nome": "MATO ESCURO 5º DISTRITO",
+   "rede": "INEA",
+   "ibge": 3305000,
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "lat": -21.8945,
+   "lon": -41.0567,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 37.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178553,
+   "nome": "RETIRO",
+   "rede": "INEA",
+   "ibge": 3306305,
+   "municipio": "Volta Redonda",
+   "uf": "RJ",
+   "lat": -22.5023,
+   "lon": -44.1228,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 40.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -3000,33 +3147,23 @@
    "pm25_openaq": null
   },
   {
-   "id": 178559,
-   "nome": "LAGOA",
+   "id": 178554,
+   "nome": "ITACURUÇÁ",
    "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
+   "ibge": 3302601,
+   "municipio": "Mangaratiba",
    "uf": "RJ",
-   "lat": -22.9745,
-   "lon": -43.2176,
+   "lat": -22.9289,
+   "lon": -43.9101,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178551,
-   "nome": "SÃO BENTO",
-   "rede": "INEA",
-   "ibge": 3301702,
-   "municipio": "Duque de Caxias",
-   "uf": "RJ",
-   "lat": -22.7371,
-   "lon": -43.3097,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 18.67,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -3040,41 +3177,51 @@
    "lon": -43.2837,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 40.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178536,
-   "nome": "ENGENHEIRO PEDREIRA",
+   "id": 178559,
+   "nome": "LAGOA",
    "rede": "INEA",
-   "ibge": 3302270,
-   "municipio": "Japeri",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -22.6709,
-   "lon": -43.5942,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 43801,
-   "nome": "Estação de Monitoramento - Suzano TLS1-VCPTL - Três Lagoas",
-   "rede": "Instituto do Meio Ambiente do Mato Grosso do Sul - IMASUL",
-   "ibge": 5008305,
-   "municipio": "Três Lagoas",
-   "uf": "MS",
-   "lat": -20.808282,
-   "lon": -51.71752,
+   "lat": -22.9745,
+   "lon": -43.2176,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 13.0,
+    "valor": 21.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178551,
+   "nome": "SÃO BENTO",
+   "rede": "INEA",
+   "ibge": 3301702,
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "lat": -22.7371,
+   "lon": -43.3097,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 37.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T03:00:00-03:00"
+    "medido_em": "2026-11-05T15:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3095,6 +3242,26 @@
    "pm25_openaq": null
   },
   {
+   "id": 43801,
+   "nome": "Estação de Monitoramento - Suzano TLS1-VCPTL - Três Lagoas",
+   "rede": "Instituto do Meio Ambiente do Mato Grosso do Sul - IMASUL",
+   "ibge": 5008305,
+   "municipio": "Três Lagoas",
+   "uf": "MS",
+   "lat": -20.808282,
+   "lon": -51.71752,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 11.6,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T19:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 178585,
    "nome": "FIOTEC - Acre",
    "rede": "FioAres",
@@ -3106,10 +3273,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 37.0,
-    "classificacao": "Boa",
+    "valor": 42.0,
+    "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3130,6 +3297,26 @@
    "pm25_openaq": null
   },
   {
+   "id": 136633,
+   "nome": "GAMBOA",
+   "rede": "CETREL e Inema",
+   "ibge": 2906501,
+   "municipio": "Candeias",
+   "uf": "BA",
+   "lat": -12.735928,
+   "lon": -38.517042,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 22.76,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 136473,
    "nome": "Estação Vila Moema",
    "rede": "Diamante Energia",
@@ -3145,26 +3332,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 136633,
-   "nome": "GAMBOA",
-   "rede": "CETREL e Inema",
-   "ibge": 2906501,
-   "municipio": "Candeias",
-   "uf": "BA",
-   "lat": -12.735928,
-   "lon": -38.517042,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 21.87,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
    "id": 142553,
    "nome": "MALEMBA",
    "rede": "CETREL e Inema",
@@ -3176,76 +3343,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 24.08,
+    "valor": 28.2,
     "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178465,
-   "nome": "Jacarepaguá",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9663,
-   "lon": -43.3956,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 24.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T03:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 5.6,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T06:00:00Z",
-    "local_openaq": 6199572,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178305,
-   "nome": "Ilha do Governador",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.805,
-   "lon": -43.2102,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 32.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178266,
-   "nome": "Caju",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8802,
-   "lon": -43.2268,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 24.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "poluente": "SO₂",
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3262,10 +3363,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 20.98,
+    "valor": 24.09,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3282,85 +3383,13 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 19.56,
+    "valor": 31.84,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
-  },
-  {
-   "id": 178265,
-   "nome": "Barra da Tijuca",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9923,
-   "lon": -43.3669,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 24.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 21.1,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6152581,
-    "distancia_m": 0
-   }
-  },
-  {
-   "id": 178245,
-   "nome": "Abolição ",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8881,
-   "lon": -43.2962,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 29.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178385,
-   "nome": "Tijuca Aurassure",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9244,
-   "lon": -43.2322,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 21.333,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": {
-    "valor": 11.1,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6178275,
-    "distancia_m": 0
-   }
   },
   {
    "id": 136673,
@@ -3374,64 +3403,13 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 3.0,
+    "valor": 2.0,
     "classificacao": "Boa",
-    "poluente": "SO₂",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "poluente": "NO₂",
+    "medido_em": "2026-11-05T23:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
-  },
-  {
-   "id": 178527,
-   "nome": "LARGO DO BODEGÃO",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9273,
-   "lon": -43.6947,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178545,
-   "nome": "TAQUARA",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9347,
-   "lon": -43.3717,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178550,
-   "nome": "CENTRO",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.9074,
-   "lon": -43.1953,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 09:00)",
-   "pm25_openaq": {
-    "valor": 3.3,
-    "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 820323,
-    "distancia_m": 1619
-   }
   },
   {
    "id": 136674,
@@ -3445,10 +3423,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 21.0,
+    "valor": 16.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "medido_em": "2026-11-05T23:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3468,10 +3446,122 @@
     "valor": 18.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "medido_em": "2026-11-05T23:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
+  },
+  {
+   "id": 178465,
+   "nome": "Jacarepaguá",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9663,
+   "lon": -43.3956,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 21.333,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 2.9,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6199572,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178305,
+   "nome": "Ilha do Governador",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.805,
+   "lon": -43.2102,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 29.333,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178266,
+   "nome": "Caju",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.8802,
+   "lon": -43.2268,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 21.333,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178527,
+   "nome": "LARGO DO BODEGÃO",
+   "rede": "INEA",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9273,
+   "lon": -43.6947,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 32.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178265,
+   "nome": "Barra da Tijuca",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9923,
+   "lon": -43.3669,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 24.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 3.3,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6152581,
+    "distancia_m": 0
+   }
   },
   {
    "id": 178528,
@@ -3484,35 +3574,120 @@
    "lon": -43.2328,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 07:00)",
+   "iqar": {
+    "valor": 29.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178387,
-   "nome": "Santa Cruz 2",
+   "id": 178245,
+   "nome": "Abolição ",
    "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
    "ibge": 3304557,
    "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -22.9268,
-   "lon": -43.6909,
+   "lat": -22.8881,
+   "lon": -43.2962,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
     "valor": 26.667,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178385,
+   "nome": "Tijuca Aurassure",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9244,
+   "lon": -43.2322,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 21.333,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": {
-    "valor": 14.4,
+    "valor": 3.1,
     "unidade": "µg/m³",
-    "medido_em": "2026-11-05T08:00:00Z",
-    "local_openaq": 6285444,
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6178275,
     "distancia_m": 0
    }
+  },
+  {
+   "id": 149,
+   "nome": "São José do Rio Preto",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3549805,
+   "municipio": "São José do Rio Preto",
+   "uf": "SP",
+   "lat": -20.784689,
+   "lon": -49.398278,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 35.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 166,
+   "nome": "Campinas-Taquaral",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3509502,
+   "municipio": "Campinas",
+   "uf": "SP",
+   "lat": -22.874619,
+   "lon": -47.058973,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 16.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178542,
+   "nome": "BOM RETIRO",
+   "rede": "INEA",
+   "ibge": 3304128,
+   "municipio": "Quatis",
+   "uf": "RJ",
+   "lat": -22.3982,
+   "lon": -44.3205,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 35.56,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
   },
   {
    "id": 178526,
@@ -3530,33 +3705,89 @@
    "pm25_openaq": null
   },
   {
-   "id": 178542,
-   "nome": "BOM RETIRO",
-   "rede": "INEA",
-   "ibge": 3304128,
-   "municipio": "Quatis",
-   "uf": "RJ",
-   "lat": -22.3982,
-   "lon": -44.3205,
+   "id": 167,
+   "nome": "S.José Campos-Jd.Satelite",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3549904,
+   "municipio": "São José dos Campos",
+   "uf": "SP",
+   "lat": -23.223645,
+   "lon": -45.8908,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 20.0,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178565,
-   "nome": "CIDADE ALEGRIA",
-   "rede": "INEA",
-   "ibge": 3304201,
-   "municipio": "Resende",
+   "id": 178387,
+   "nome": "Santa Cruz 2",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -22.4805,
-   "lon": -44.4938,
+   "lat": -22.9268,
+   "lon": -43.6909,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
+   "iqar": {
+    "valor": 26.667,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T17:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": {
+    "valor": 4.0,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-05T20:00:00Z",
+    "local_openaq": 6285444,
+    "distancia_m": 0
+   }
+  },
+  {
+   "id": 178579,
+   "nome": "BRISAMAR",
+   "rede": "INEA",
+   "ibge": 3302007,
+   "municipio": "Itaguaí",
+   "uf": "RJ",
+   "lat": -22.8707,
+   "lon": -43.8085,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 38.22,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T15:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178529,
+   "nome": "CAMPOS ELÍSEOS",
+   "rede": "INEA",
+   "ibge": 3301702,
+   "municipio": "Duque de Caxias",
+   "uf": "RJ",
+   "lat": -22.7065,
+   "lon": -43.2704,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 50.39,
+    "classificacao": "Moderada",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -3571,87 +3802,98 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 31.0,
+    "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 149,
-   "nome": "São José do Rio Preto",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3549805,
-   "municipio": "São José do Rio Preto",
-   "uf": "SP",
-   "lat": -20.784689,
-   "lon": -49.398278,
+   "id": 178565,
+   "nome": "CIDADE ALEGRIA",
+   "rede": "INEA",
+   "ibge": 3304201,
+   "municipio": "Resende",
+   "uf": "RJ",
+   "lat": -22.4805,
+   "lon": -44.4938,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 6.0,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "valor": 44.61,
+    "classificacao": "Moderada",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 166,
-   "nome": "Campinas-Taquaral",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3509502,
-   "municipio": "Campinas",
-   "uf": "SP",
-   "lat": -22.874619,
-   "lon": -47.058973,
+   "id": 178545,
+   "nome": "TAQUARA",
+   "rede": "INEA",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9347,
+   "lon": -43.3717,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 21.0,
-    "classificacao": "Boa",
+    "valor": 45.59,
+    "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 167,
-   "nome": "S.José Campos-Jd.Satelite",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3549904,
-   "municipio": "São José dos Campos",
-   "uf": "SP",
-   "lat": -23.223645,
-   "lon": -45.8908,
+   "id": 178550,
+   "nome": "CENTRO",
+   "rede": "INEA",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9074,
+   "lon": -43.1953,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 29.0,
-    "classificacao": "Boa",
+    "valor": 43.29,
+    "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
-   "pm25_openaq": null
+   "pm25_openaq": {
+    "valor": 8.8,
+    "unidade": "µg/m³",
+    "medido_em": "2026-11-06T01:00:00Z",
+    "local_openaq": 820323,
+    "distancia_m": 1619
+   }
   },
   {
-   "id": 178579,
-   "nome": "BRISAMAR",
+   "id": 178581,
+   "nome": "ILHA DA MADEIRA",
    "rede": "INEA",
    "ibge": 3302007,
    "municipio": "Itaguaí",
    "uf": "RJ",
-   "lat": -22.8707,
-   "lon": -43.8085,
+   "lat": -22.9054,
+   "lon": -43.8258,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 10:00)",
+   "iqar": {
+    "valor": 26.67,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T14:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -3665,68 +3907,13 @@
    "lon": -43.1134,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178529,
-   "nome": "CAMPOS ELÍSEOS",
-   "rede": "INEA",
-   "ibge": 3301702,
-   "municipio": "Duque de Caxias",
-   "uf": "RJ",
-   "lat": -22.7065,
-   "lon": -43.2704,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178581,
-   "nome": "ILHA DA MADEIRA",
-   "rede": "INEA",
-   "ibge": 3302007,
-   "municipio": "Itaguaí",
-   "uf": "RJ",
-   "lat": -22.9054,
-   "lon": -43.8258,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 10:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178583,
-   "nome": "CAMPO ALEGRE",
-   "rede": "INEA",
-   "ibge": 3302254,
-   "municipio": "Itatiaia",
-   "uf": "RJ",
-   "lat": -22.4857,
-   "lon": -44.5687,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 08:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178552,
-   "nome": "ENGENHÃO",
-   "rede": "INEA",
-   "ibge": 3304557,
-   "municipio": "Rio de Janeiro",
-   "uf": "RJ",
-   "lat": -22.8918,
-   "lon": -43.2944,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "última medição da fonte com mais de 36 h (30/10/2026 18:00)",
+   "iqar": {
+    "valor": 22.22,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -3745,103 +3932,43 @@
    "pm25_openaq": null
   },
   {
-   "id": 401,
-   "nome": "Copacabana",
-   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "id": 178552,
+   "nome": "ENGENHÃO",
+   "rede": "INEA",
    "ibge": 3304557,
    "municipio": "Rio de Janeiro",
    "uf": "RJ",
-   "lat": -22.9649,
-   "lon": -43.1807,
+   "lat": -22.8918,
+   "lon": -43.2944,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 26.667,
+    "valor": 39.11,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
   },
   {
-   "id": 178560,
-   "nome": "PRAIA DO SACO",
+   "id": 178583,
+   "nome": "CAMPO ALEGRE",
    "rede": "INEA",
-   "ibge": 3302601,
-   "municipio": "Mangaratiba",
+   "ibge": 3302254,
+   "municipio": "Itatiaia",
    "uf": "RJ",
-   "lat": -22.9454,
-   "lon": -44.0417,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 07:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178546,
-   "nome": "FAZENDA SACO DANTAS",
-   "rede": "INEA",
-   "ibge": 3305000,
-   "municipio": "São João da Barra",
-   "uf": "RJ",
-   "lat": -21.7969,
-   "lon": -41.0207,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178548,
-   "nome": "IMBOASSICA",
-   "rede": "INEA",
-   "ibge": 3302403,
-   "municipio": "Macaé",
-   "uf": "RJ",
-   "lat": -22.4047,
-   "lon": -41.8457,
+   "lat": -22.4857,
+   "lon": -44.5687,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 25.2,
+    "valor": 40.0,
     "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T15:00:00-03:00"
    },
    "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 178576,
-   "nome": "COROA GRANDE",
-   "rede": "INEA",
-   "ibge": 3302007,
-   "municipio": "Itaguaí",
-   "uf": "RJ",
-   "lat": -22.9042,
-   "lon": -43.87,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
-   "pm25_openaq": null
-  },
-  {
-   "id": 178547,
-   "nome": "JARDIM GUANDU",
-   "rede": "INEA",
-   "ibge": 3303500,
-   "municipio": "Nova Iguaçu",
-   "uf": "RJ",
-   "lat": -22.8278,
-   "lon": -43.6069,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 11:00)",
    "pm25_openaq": null
   },
   {
@@ -3859,7 +3986,7 @@
     "valor": 0.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3879,27 +4006,7 @@
     "valor": 0.1,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 136475,
-   "nome": "Estação Capivari de Baixo",
-   "rede": "Instituto do Meio Ambiente de Santa Catarina - IMA",
-   "ibge": 4203956,
-   "municipio": "Capivari de Baixo",
-   "uf": "SC",
-   "lat": -28.4477,
-   "lon": -48.9592,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 13.0,
-    "classificacao": "Boa",
-    "poluente": "SO₂",
-    "medido_em": "2026-11-04T09:30:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3916,10 +4023,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 25.07,
+    "valor": 30.13,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3936,10 +4043,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 18.44,
+    "valor": 19.76,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3956,30 +4063,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 19.48,
+    "valor": 21.72,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 24521,
-   "nome": "Estação Meteorológica e Qualidade do Ar - Petrobras - UTE",
-   "rede": "Instituto do Meio Ambiente do Mato Grosso do Sul - IMASUL",
-   "ibge": 5008305,
-   "municipio": "Três Lagoas",
-   "uf": "MS",
-   "lat": -20.777988,
-   "lon": -51.69212,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 1.6,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T02:30:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -3996,10 +4083,30 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 17.92,
+    "valor": 19.29,
     "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178546,
+   "nome": "FAZENDA SACO DANTAS",
+   "rede": "INEA",
+   "ibge": 3305000,
+   "municipio": "São João da Barra",
+   "uf": "RJ",
+   "lat": -21.7969,
+   "lon": -41.0207,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.56,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4016,10 +4123,165 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 0.1,
+    "valor": 0.3,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 401,
+   "nome": "Copacabana",
+   "rede": "Prefeitura do Rio de Janeiro – PCRJ/SMAC",
+   "ibge": 3304557,
+   "municipio": "Rio de Janeiro",
+   "uf": "RJ",
+   "lat": -22.9649,
+   "lon": -43.1807,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 27.556,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T22:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178548,
+   "nome": "IMBOASSICA",
+   "rede": "INEA",
+   "ibge": 3302403,
+   "municipio": "Macaé",
+   "uf": "RJ",
+   "lat": -22.4047,
+   "lon": -41.8457,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 17.6,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T11:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178560,
+   "nome": "PRAIA DO SACO",
+   "rede": "INEA",
+   "ibge": 3302601,
+   "municipio": "Mangaratiba",
+   "uf": "RJ",
+   "lat": -22.9454,
+   "lon": -44.0417,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 29.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T11:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178547,
+   "nome": "JARDIM GUANDU",
+   "rede": "INEA",
+   "ibge": 3303500,
+   "municipio": "Nova Iguaçu",
+   "uf": "RJ",
+   "lat": -22.8278,
+   "lon": -43.6069,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 34.67,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 178576,
+   "nome": "COROA GRANDE",
+   "rede": "INEA",
+   "ibge": 3302007,
+   "municipio": "Itaguaí",
+   "uf": "RJ",
+   "lat": -22.9042,
+   "lon": -43.87,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 22.22,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 136475,
+   "nome": "Estação Capivari de Baixo",
+   "rede": "Instituto do Meio Ambiente de Santa Catarina - IMA",
+   "ibge": 4203956,
+   "municipio": "Capivari de Baixo",
+   "uf": "SC",
+   "lat": -28.4477,
+   "lon": -48.9592,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": null,
+   "lacuna": "última medição da fonte com mais de 36 h (04/11/2026 09:30)",
+   "pm25_openaq": null
+  },
+  {
+   "id": 221,
+   "nome": "Itaquera",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3550308,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "lat": -23.580015,
+   "lon": -46.466651,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 43.0,
+    "classificacao": "Moderada",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 24521,
+   "nome": "Estação Meteorológica e Qualidade do Ar - Petrobras - UTE",
+   "rede": "Instituto do Meio Ambiente do Mato Grosso do Sul - IMASUL",
+   "ibge": 5008305,
+   "municipio": "Três Lagoas",
+   "uf": "MS",
+   "lat": -20.777988,
+   "lon": -51.69212,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 2.4,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T18:30:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4036,10 +4298,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 48.0,
+    "valor": 47.0,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T03:00:00-03:00"
+    "medido_em": "2026-11-05T20:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4056,10 +4318,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 29.0,
+    "valor": 27.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4076,10 +4338,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 37.0,
-    "classificacao": "Boa",
+    "valor": 44.0,
+    "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T03:00:00-03:00"
+    "medido_em": "2026-11-05T20:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4096,130 +4358,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 47.0,
+    "valor": 54.0,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 130,
-   "nome": "Cubatão-Centro",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3513504,
-   "municipio": "Cubatão",
-   "uf": "SP",
-   "lat": -23.879027,
-   "lon": -46.418483,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 37.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 131,
-   "nome": "S.José Campos",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3549904,
-   "municipio": "São José dos Campos",
-   "uf": "SP",
-   "lat": -23.187887,
-   "lon": -45.871198,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 16.0,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 221,
-   "nome": "Itaquera",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3550308,
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "lat": -23.580015,
-   "lon": -46.466651,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 47.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 140,
-   "nome": "Taboão da Serra",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3552809,
-   "municipio": "Taboão da Serra",
-   "uf": "SP",
-   "lat": -23.609324,
-   "lon": -46.758294,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 141,
-   "nome": "Araraquara",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3503208,
-   "municipio": "Araraquara",
-   "uf": "SP",
-   "lat": -21.782522,
-   "lon": -48.185832,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 25.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 142,
-   "nome": "Araçatuba",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3502804,
-   "municipio": "Araçatuba",
-   "uf": "SP",
-   "lat": -21.186841,
-   "lon": -50.439317,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 17.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4240,6 +4382,106 @@
    "pm25_openaq": null
   },
   {
+   "id": 130,
+   "nome": "Cubatão-Centro",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3513504,
+   "municipio": "Cubatão",
+   "uf": "SP",
+   "lat": -23.879027,
+   "lon": -46.418483,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 131,
+   "nome": "S.José Campos",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3549904,
+   "municipio": "São José dos Campos",
+   "uf": "SP",
+   "lat": -23.187887,
+   "lon": -45.871198,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 16.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 140,
+   "nome": "Taboão da Serra",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3552809,
+   "municipio": "Taboão da Serra",
+   "uf": "SP",
+   "lat": -23.609324,
+   "lon": -46.758294,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 24.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 141,
+   "nome": "Araraquara",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3503208,
+   "municipio": "Araraquara",
+   "uf": "SP",
+   "lat": -21.782522,
+   "lon": -48.185832,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 28.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 142,
+   "nome": "Araçatuba",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3502804,
+   "municipio": "Araçatuba",
+   "uf": "SP",
+   "lat": -21.186841,
+   "lon": -50.439317,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 18.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 142533,
    "nome": "MARINGÁ",
    "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
@@ -4255,6 +4497,26 @@
    "pm25_openaq": null
   },
   {
+   "id": 189,
+   "nome": "LAMARAO",
+   "rede": "CETREL e Inema",
+   "ibge": 2929503,
+   "municipio": "São Sebastião do Passé",
+   "uf": "BA",
+   "lat": -12.595482,
+   "lon": -38.398561,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 18.88,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 178540,
    "nome": "CAMPO DOS AFONSOS",
    "rede": "INEA",
@@ -4265,8 +4527,13 @@
    "lon": -43.3792,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "hora da medição publicada pela fonte posterior à consulta (05/11/2026 10:00)",
+   "iqar": {
+    "valor": 37.33,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T15:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -4285,26 +4552,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 189,
-   "nome": "LAMARAO",
-   "rede": "CETREL e Inema",
-   "ibge": 2929503,
-   "municipio": "São Sebastião do Passé",
-   "uf": "BA",
-   "lat": -12.595482,
-   "lon": -38.398561,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 17.96,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
    "id": 136474,
    "nome": "Estação São Bernardo",
    "rede": "Instituto do Meio Ambiente de Santa Catarina - IMA",
@@ -4316,10 +4563,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 30.0,
+    "valor": 32.0,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T04:30:00-03:00"
+    "medido_em": "2026-11-05T20:30:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4339,287 +4586,7 @@
     "valor": 15.0,
     "classificacao": "Boa",
     "poluente": "PM10",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 281,
-   "nome": "Sorocaba",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3552205,
-   "municipio": "Sorocaba",
-   "uf": "SP",
-   "lat": -23.502427,
-   "lon": -47.47903,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 27.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 125,
-   "nome": "Parque D.Pedro II",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3550308,
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "lat": -23.544863,
-   "lon": -46.627774,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 27.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 127,
-   "nome": "Ibirapuera",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3550308,
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "lat": -23.591842,
-   "lon": -46.660688,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 43.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 128,
-   "nome": "Mooca",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3550308,
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "lat": -23.549734,
-   "lon": -46.600417,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 35.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 146,
-   "nome": "Marília",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3529005,
-   "municipio": "Marília",
-   "uf": "SP",
-   "lat": -22.199809,
-   "lon": -49.95997,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 32.0,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 150,
-   "nome": "Paulínia",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3536505,
-   "municipio": "Paulínia",
-   "uf": "SP",
-   "lat": -22.772321,
-   "lon": -47.154843,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 23.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 152,
-   "nome": "Osasco",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3534401,
-   "municipio": "Osasco",
-   "uf": "SP",
-   "lat": -23.526721,
-   "lon": -46.792078,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 153,
-   "nome": "Catanduva",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3511102,
-   "municipio": "Catanduva",
-   "uf": "SP",
-   "lat": -21.142043,
-   "lon": -48.983132,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 32.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 154,
-   "nome": "Tatuí",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3554003,
-   "municipio": "Tatuí",
-   "uf": "SP",
-   "lat": -23.360752,
-   "lon": -47.870799,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 20.0,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 155,
-   "nome": "Jacareí",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3524402,
-   "municipio": "Jacareí",
-   "uf": "SP",
-   "lat": -23.294199,
-   "lon": -45.968234,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 22.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 158,
-   "nome": "Carapicuíba",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3510609,
-   "municipio": "Carapicuíba",
-   "uf": "SP",
-   "lat": -23.531395,
-   "lon": -46.83578,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 35.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 170,
-   "nome": "Limeira",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3526902,
-   "municipio": "Limeira",
-   "uf": "SP",
-   "lat": -22.563604,
-   "lon": -47.414314,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 31.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 171,
-   "nome": "Pico do Jaraguá",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3550308,
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "lat": -23.456269,
-   "lon": -46.766098,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 22.0,
-    "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 172,
-   "nome": "Ribeirão Preto",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3543402,
-   "municipio": "Ribeirão Preto",
-   "uf": "SP",
-   "lat": -21.177154,
-   "lon": -47.819134,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 38.0,
-    "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4640,6 +4607,286 @@
    "pm25_openaq": null
   },
   {
+   "id": 281,
+   "nome": "Sorocaba",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3552205,
+   "municipio": "Sorocaba",
+   "uf": "SP",
+   "lat": -23.502427,
+   "lon": -47.47903,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 13.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 125,
+   "nome": "Parque D.Pedro II",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3550308,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "lat": -23.544863,
+   "lon": -46.627774,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 16.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 127,
+   "nome": "Ibirapuera",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3550308,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "lat": -23.591842,
+   "lon": -46.660688,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 128,
+   "nome": "Mooca",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3550308,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "lat": -23.549734,
+   "lon": -46.600417,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 27.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 146,
+   "nome": "Marília",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3529005,
+   "municipio": "Marília",
+   "uf": "SP",
+   "lat": -22.199809,
+   "lon": -49.95997,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 31.0,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 150,
+   "nome": "Paulínia",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3536505,
+   "municipio": "Paulínia",
+   "uf": "SP",
+   "lat": -22.772321,
+   "lon": -47.154843,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 152,
+   "nome": "Osasco",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3534401,
+   "municipio": "Osasco",
+   "uf": "SP",
+   "lat": -23.526721,
+   "lon": -46.792078,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 29.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 153,
+   "nome": "Catanduva",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3511102,
+   "municipio": "Catanduva",
+   "uf": "SP",
+   "lat": -21.142043,
+   "lon": -48.983132,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 34.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 154,
+   "nome": "Tatuí",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3554003,
+   "municipio": "Tatuí",
+   "uf": "SP",
+   "lat": -23.360752,
+   "lon": -47.870799,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 17.0,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 155,
+   "nome": "Jacareí",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3524402,
+   "municipio": "Jacareí",
+   "uf": "SP",
+   "lat": -23.294199,
+   "lon": -45.968234,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 18.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 158,
+   "nome": "Carapicuíba",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3510609,
+   "municipio": "Carapicuíba",
+   "uf": "SP",
+   "lat": -23.531395,
+   "lon": -46.83578,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 170,
+   "nome": "Limeira",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3526902,
+   "municipio": "Limeira",
+   "uf": "SP",
+   "lat": -22.563604,
+   "lon": -47.414314,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 28.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 171,
+   "nome": "Pico do Jaraguá",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3550308,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "lat": -23.456269,
+   "lon": -46.766098,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 23.0,
+    "classificacao": "Boa",
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 172,
+   "nome": "Ribeirão Preto",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3543402,
+   "municipio": "Ribeirão Preto",
+   "uf": "SP",
+   "lat": -21.177154,
+   "lon": -47.819134,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 43.0,
+    "classificacao": "Moderada",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
    "id": 173,
    "nome": "Guaratinguetá",
    "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
@@ -4651,10 +4898,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 45.0,
+    "valor": 46.0,
     "classificacao": "Moderada",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4674,7 +4921,7 @@
     "valor": 29.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4691,10 +4938,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 37.0,
+    "valor": 27.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4711,10 +4958,30 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 38.0,
+    "valor": 20.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 177948,
+   "nome": "JARDIM DAS AMERICAS",
+   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
+   "ibge": 4106902,
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "lat": -25.451653,
+   "lon": -49.237306,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 19.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4735,26 +5002,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 177948,
-   "nome": "JARDIM DAS AMERICAS",
-   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
-   "ibge": 4106902,
-   "municipio": "Curitiba",
-   "uf": "PR",
-   "lat": -25.451653,
-   "lon": -49.237306,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 21.0,
-    "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
    "id": 188,
    "nome": "LEANDRINHO",
    "rede": "CETREL e Inema",
@@ -4766,10 +5013,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 13.51,
+    "valor": 19.73,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4786,10 +5033,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 30.67,
+    "valor": 30.13,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4810,26 +5057,6 @@
    "pm25_openaq": null
   },
   {
-   "id": 124,
-   "nome": "Cubatão-V.Parisi",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3513504,
-   "municipio": "Cubatão",
-   "uf": "SP",
-   "lat": -23.849202,
-   "lon": -46.38941,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 43.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T03:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
    "id": 121,
    "nome": "Santana",
    "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
@@ -4841,10 +5068,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 40.0,
+    "valor": 19.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4861,10 +5088,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 40.0,
+    "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4881,10 +5108,30 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "valor": 25.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 124,
+   "nome": "Cubatão-V.Parisi",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3513504,
+   "municipio": "Cubatão",
+   "uf": "SP",
+   "lat": -23.849202,
+   "lon": -46.38941,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 26.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4901,10 +5148,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 37.0,
+    "valor": 27.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4921,10 +5168,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 23.0,
+    "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4941,10 +5188,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 40.0,
+    "valor": 27.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4961,10 +5208,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 45.0,
-    "classificacao": "Moderada",
+    "valor": 32.0,
+    "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -4981,10 +5228,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
+    "valor": 35.0,
+    "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5001,10 +5248,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 27.0,
+    "valor": 21.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5021,10 +5268,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 44.0,
-    "classificacao": "Moderada",
+    "valor": 21.0,
+    "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5041,10 +5288,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 20.0,
+    "valor": 15.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5061,10 +5308,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 40.0,
+    "valor": 21.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5081,30 +5328,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
+    "valor": 19.0,
+    "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
-   },
-   "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 160,
-   "nome": "Itaim Paulista",
-   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
-   "ibge": 3550308,
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "lat": -23.501547,
-   "lon": -46.420737,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": false,
-   "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-04T17:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5121,10 +5348,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 19.0,
+    "valor": 16.0,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5141,10 +5368,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 27.0,
+    "valor": 19.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5161,10 +5388,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
+    "valor": 16.0,
+    "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5181,10 +5408,30 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 29.0,
+    "valor": 24.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
+   },
+   "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 160,
+   "nome": "Itaim Paulista",
+   "rede": "Companhia Ambiental do Estado de São Paulo - CETESB",
+   "ibge": 3550308,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "lat": -23.501547,
+   "lon": -46.420737,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": false,
+   "iqar": {
+    "valor": 21.0,
+    "classificacao": "Boa",
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5201,27 +5448,12 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 26.0,
+    "valor": 16.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
-   "pm25_openaq": null
-  },
-  {
-   "id": 177965,
-   "nome": "PARANAGUÁ",
-   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
-   "ibge": 4118204,
-   "municipio": "Paranaguá",
-   "uf": "PR",
-   "lat": -25.515506,
-   "lon": -48.513934,
-   "categoria": "Regulatória",
-   "sem_informacao_mais_de_tres_dias": true,
-   "iqar": null,
-   "lacuna": "última medição da fonte com mais de 36 h (26/10/2026 17:00)",
    "pm25_openaq": null
   },
   {
@@ -5236,10 +5468,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 35.0,
+    "valor": 18.0,
     "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5256,10 +5488,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 20.0,
+    "valor": 19.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5276,10 +5508,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 25.0,
+    "valor": 23.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5299,7 +5531,7 @@
     "valor": 23.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5336,10 +5568,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 0.0,
+    "valor": 15.0,
     "classificacao": "Boa",
-    "poluente": "CO",
-    "medido_em": "2026-11-05T04:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5356,10 +5588,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 17.0,
+    "valor": 14.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T21:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5376,10 +5608,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 18.0,
+    "valor": 14.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5396,10 +5628,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 15.0,
+    "valor": 16.0,
     "classificacao": "Boa",
-    "poluente": "SO₂",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "poluente": "MP₂,₅",
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5416,10 +5648,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 23.0,
+    "valor": 39.0,
     "classificacao": "Boa",
     "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5436,12 +5668,27 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 21.0,
+    "valor": 22.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
+   "pm25_openaq": null
+  },
+  {
+   "id": 177965,
+   "nome": "PARANAGUÁ",
+   "rede": "Instituto de Águas e Terras - Secretaria Meio Ambiente - PR (SEMA)",
+   "ibge": 4118204,
+   "municipio": "Paranaguá",
+   "uf": "PR",
+   "lat": -25.515506,
+   "lon": -48.513934,
+   "categoria": "Regulatória",
+   "sem_informacao_mais_de_tres_dias": true,
+   "iqar": null,
+   "lacuna": "última medição da fonte com mais de 36 h (26/10/2026 17:00)",
    "pm25_openaq": null
   },
   {
@@ -5456,10 +5703,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 10.0,
+    "valor": 11.0,
     "classificacao": "Boa",
     "poluente": "SO₂",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5476,10 +5723,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 42.0,
-    "classificacao": "Moderada",
+    "valor": 30.0,
+    "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5496,10 +5743,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 14.0,
+    "valor": 12.0,
     "classificacao": "Boa",
     "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T05:00:00-03:00"
+    "medido_em": "2026-11-05T22:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5516,10 +5763,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 6.0,
+    "valor": 17.0,
     "classificacao": "Boa",
     "poluente": "O₃",
-    "medido_em": "2026-11-05T06:00:00-03:00"
+    "medido_em": "2026-11-05T23:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5535,8 +5782,13 @@
    "lon": -47.842796,
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
-   "iqar": null,
-   "lacuna": "última medição da fonte com mais de 36 h (03/11/2026 15:00)",
+   "iqar": {
+    "valor": 24.0,
+    "classificacao": "Boa",
+    "poluente": "MP₁₀",
+    "medido_em": "2026-11-05T16:00:00-03:00"
+   },
+   "lacuna": null,
    "pm25_openaq": null
   },
   {
@@ -5551,10 +5803,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 15.0,
+    "valor": 26.0,
     "classificacao": "Boa",
-    "poluente": "SO₂",
-    "medido_em": "2026-11-05T00:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T15:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5571,10 +5823,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 13.333,
+    "valor": 17.2,
     "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T00:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T11:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5591,10 +5843,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 16.889,
+    "valor": 19.6,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T00:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T15:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5611,10 +5863,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 8.889,
+    "valor": 15.6,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T00:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T15:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5631,10 +5883,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 20.444,
+    "valor": 18.0,
     "classificacao": "Boa",
-    "poluente": "MP₁₀",
-    "medido_em": "2026-11-05T00:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T15:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5651,10 +5903,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 24.0,
+    "valor": 20.0,
     "classificacao": "Boa",
-    "poluente": "MP₂,₅",
-    "medido_em": "2026-11-05T00:00:00-03:00"
+    "poluente": "O₃",
+    "medido_em": "2026-11-05T12:00:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5671,10 +5923,10 @@
    "categoria": "Regulatória",
    "sem_informacao_mais_de_tres_dias": false,
    "iqar": {
-    "valor": 15.0,
+    "valor": 3.0,
     "classificacao": "Boa",
-    "poluente": "O₃",
-    "medido_em": "2026-11-05T04:30:00-03:00"
+    "poluente": "NO₂",
+    "medido_em": "2026-11-05T21:30:00-03:00"
    },
    "lacuna": null,
    "pm25_openaq": null
@@ -5705,7 +5957,7 @@
    "lat": -15.75163,
    "lon": -47.885148,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:50)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:14)"
   },
   {
    "id": 3,
@@ -5718,7 +5970,7 @@
    "lat": -23.56147246393232,
    "lon": -46.73501109921289,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:48)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 4,
@@ -5731,7 +5983,7 @@
    "lat": 0.28435682174140803,
    "lon": -51.028056907097834,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:15)"
   },
   {
    "id": 5,
@@ -5744,7 +5996,7 @@
    "lat": -7.612675,
    "lon": -72.680907,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:49)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 6,
@@ -5757,7 +6009,7 @@
    "lat": -9.957346,
    "lon": -67.868655,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:15)"
   },
   {
    "id": 7,
@@ -5769,8 +6021,13 @@
    "bioma": "Amazônia",
    "lat": -9.957619,
    "lon": -67.868988,
-   "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:52)"
+   "pm25": {
+    "valor": 18.0,
+    "pm10": 18.5,
+    "unidade": "µg/m³",
+    "lido_em": "2026-11-05T22:56:54"
+   },
+   "lacuna": null
   },
   {
    "id": 8,
@@ -5783,7 +6040,7 @@
    "lat": -9.957346,
    "lon": -67.868655,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:15)"
   },
   {
    "id": 9,
@@ -5848,7 +6105,7 @@
    "lat": -7.61302,
    "lon": -72.90297,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 25541,
@@ -5861,7 +6118,7 @@
    "lat": -9.72708,
    "lon": -67.69802,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 25551,
@@ -5874,7 +6131,7 @@
    "lat": -8.170079,
    "lon": -70.35503,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 25891,
@@ -5887,7 +6144,7 @@
    "lat": -9.829177,
    "lon": -67.95388,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 31089,
@@ -5900,7 +6157,7 @@
    "lat": -7.630234,
    "lon": -72.66575,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 31091,
@@ -5926,7 +6183,7 @@
    "lat": -9.063847,
    "lon": -68.65999,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 31097,
@@ -5978,7 +6235,7 @@
    "lat": -10.939974,
    "lon": -69.56391,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 31109,
@@ -5991,7 +6248,7 @@
    "lat": -9.966662,
    "lon": -67.84944,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 31111,
@@ -6017,7 +6274,7 @@
    "lat": -11.02846,
    "lon": -68.73796,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:09)"
   },
   {
    "id": 56663,
@@ -6043,7 +6300,7 @@
    "lat": 2.833729,
    "lon": -60.69464,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 57177,
@@ -6056,7 +6313,7 @@
    "lat": -10.07734,
    "lon": -67.05071,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:09)"
   },
   {
    "id": 57287,
@@ -6069,7 +6326,7 @@
    "lat": -7.558716,
    "lon": -72.71673,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:31)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128043,
@@ -6095,7 +6352,7 @@
    "lat": -11.86444,
    "lon": -55.485184,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128639,
@@ -6121,7 +6378,7 @@
    "lat": -9.855878,
    "lon": -58.247753,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128701,
@@ -6134,7 +6391,7 @@
    "lat": -8.056258,
    "lon": -48.485832,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128973,
@@ -6160,7 +6417,7 @@
    "lat": -3.352659,
    "lon": -64.73211,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128991,
@@ -6173,7 +6430,7 @@
    "lat": -4.36667,
    "lon": -70.19364,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128995,
@@ -6186,7 +6443,7 @@
    "lat": -15.578212,
    "lon": -56.116814,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 128999,
@@ -6199,7 +6456,7 @@
    "lat": -2.42687,
    "lon": -54.71255,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 129001,
@@ -6212,7 +6469,7 @@
    "lat": -13.556802,
    "lon": -52.26564,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 129003,
@@ -6238,7 +6495,7 @@
    "lat": -17.33855,
    "lon": -56.76984,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:45)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 129145,
@@ -6282,7 +6539,7 @@
    "lat": 1.490091,
    "lon": -61.00292,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 00:11)"
   },
   {
    "id": 137722,
@@ -6295,7 +6552,7 @@
    "lat": -15.741229,
    "lon": -47.892666,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 151650,
@@ -6308,7 +6565,7 @@
    "lat": -9.957616,
    "lon": -67.86898,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 161259,
@@ -6320,8 +6577,13 @@
    "bioma": "Amazônia",
    "lat": -3.131549,
    "lon": -60.00408,
-   "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "pm25": {
+    "valor": 34.9,
+    "pm10": 39.5,
+    "unidade": "µg/m³",
+    "lido_em": "2026-11-05T22:07:44"
+   },
+   "lacuna": null
   },
   {
    "id": 161261,
@@ -6334,7 +6596,7 @@
    "lat": -3.130093,
    "lon": -60.026802,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:07)"
   },
   {
    "id": 161291,
@@ -6346,13 +6608,8 @@
    "bioma": "Amazônia",
    "lat": -3.128212,
    "lon": -59.98678,
-   "pm25": {
-    "valor": 42.8,
-    "pm10": 52.5,
-    "unidade": "µg/m³",
-    "lido_em": "2026-11-05T02:59:51"
-   },
-   "lacuna": null
+   "pm25": null,
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 176189,
@@ -6365,7 +6622,7 @@
    "lat": -9.952632,
    "lon": -67.861176,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 181801,
@@ -6391,7 +6648,7 @@
    "lat": -3.181023,
    "lon": -52.185143,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209693,
@@ -6404,7 +6661,7 @@
    "lat": -12.294056,
    "lon": -63.397316,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209697,
@@ -6417,7 +6674,7 @@
    "lat": -6.638022,
    "lon": -51.9792,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209719,
@@ -6430,7 +6687,7 @@
    "lat": -2.541418,
    "lon": -44.230328,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209723,
@@ -6443,7 +6700,7 @@
    "lat": -1.735165,
    "lon": -47.05627,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209733,
@@ -6474,7 +6731,7 @@
    "lat": -5.165474,
    "lon": -48.94273,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209737,
@@ -6487,7 +6744,7 @@
    "lat": -19.013136,
    "lon": -57.69009,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209750,
@@ -6500,7 +6757,7 @@
    "lat": -3.44846,
    "lon": -52.925392,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:21)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209755,
@@ -6526,7 +6783,7 @@
    "lat": -9.543799,
    "lon": -48.17414,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209773,
@@ -6539,7 +6796,7 @@
    "lat": -2.513515,
    "lon": -54.95059,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 209779,
@@ -6552,7 +6809,7 @@
    "lat": -11.411936,
    "lon": -58.772427,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241605,
@@ -6565,7 +6822,7 @@
    "lat": -15.659415,
    "lon": -56.16829,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241627,
@@ -6578,7 +6835,7 @@
    "lat": -11.71431,
    "lon": -50.707897,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241629,
@@ -6591,7 +6848,7 @@
    "lat": -15.918975,
    "lon": -52.278877,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241657,
@@ -6604,7 +6861,7 @@
    "lat": -16.46448,
    "lon": -54.579033,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241667,
@@ -6617,7 +6874,7 @@
    "lat": -15.063544,
    "lon": -57.17302,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241671,
@@ -6629,13 +6886,8 @@
    "bioma": "Amazônia",
    "lat": -13.80591,
    "lon": -56.08317,
-   "pm25": {
-    "valor": 24.9,
-    "pm10": 25.8,
-    "unidade": "µg/m³",
-    "lido_em": "2026-11-05T03:43:56"
-   },
-   "lacuna": null
+   "pm25": null,
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241693,
@@ -6648,7 +6900,7 @@
    "lat": -15.55516,
    "lon": -54.28199,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 07:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 241701,
@@ -6661,7 +6913,7 @@
    "lat": -9.962145,
    "lon": -54.869385,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 00:41)"
   },
   {
    "id": 241713,
@@ -6674,7 +6926,7 @@
    "lat": -11.926595,
    "lon": -54.17171,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:07)"
   },
   {
    "id": 242077,
@@ -6687,7 +6939,7 @@
    "lat": -13.677333,
    "lon": -57.786915,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 242083,
@@ -6700,7 +6952,7 @@
    "lat": -15.570751,
    "lon": -56.0744,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 242087,
@@ -6712,13 +6964,8 @@
    "bioma": "Cerrado",
    "lat": -16.259659,
    "lon": -56.63246,
-   "pm25": {
-    "valor": 3068.9,
-    "pm10": 3068.9,
-    "unidade": "µg/m³",
-    "lido_em": "2026-11-05T05:21:56"
-   },
-   "lacuna": null
+   "pm25": null,
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 242091,
@@ -6731,7 +6978,7 @@
    "lat": -15.228402,
    "lon": -59.350273,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 242093,
@@ -6744,7 +6991,7 @@
    "lat": -17.318459,
    "lon": -53.213974,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 243063,
@@ -6756,13 +7003,8 @@
    "bioma": "Cerrado",
    "lat": -15.782858,
    "lon": -47.779774,
-   "pm25": {
-    "valor": 6.2,
-    "pm10": 6.5,
-    "unidade": "µg/m³",
-    "lido_em": "2026-11-05T03:43:56"
-   },
-   "lacuna": null
+   "pm25": null,
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 243067,
@@ -6775,7 +7017,7 @@
    "lat": -15.541478,
    "lon": -47.971092,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 243621,
@@ -6787,8 +7029,13 @@
    "bioma": "Cerrado",
    "lat": -15.989608,
    "lon": -48.045723,
-   "pm25": null,
-   "lacuna": "leitura mais recente com mais de 36 h (03/11/2026 14:03)"
+   "pm25": {
+    "valor": 7.4,
+    "pm10": 7.8,
+    "unidade": "µg/m³",
+    "lido_em": "2026-11-05T14:57:42"
+   },
+   "lacuna": null
   },
   {
    "id": 260409,
@@ -6814,7 +7061,7 @@
    "lat": -13.062653,
    "lon": -52.38097,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 263721,
@@ -6827,7 +7074,7 @@
    "lat": -13.79915,
    "lon": -47.45741,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 282176,
@@ -6840,7 +7087,7 @@
    "lat": -20.566204,
    "lon": -56.28907,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 06:53)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 296063,
@@ -6853,7 +7100,7 @@
    "lat": -2.1469,
    "lon": -59.0053,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:45)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 296097,
@@ -6866,7 +7113,7 @@
    "lat": -2.181644,
    "lon": -59.021935,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 296127,
@@ -6879,7 +7126,7 @@
    "lat": -2.525,
    "lon": -48.7962,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:21)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (06/11/2026 01:13)"
   },
   {
    "id": 296131,
@@ -6904,8 +7151,13 @@
    "bioma": "Cerrado",
    "lat": -10.178505,
    "lon": -48.18259,
-   "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (05/11/2026 08:51)"
+   "pm25": {
+    "valor": 17.5,
+    "pm10": 17.9,
+    "unidade": "µg/m³",
+    "lido_em": "2026-11-05T21:19:54"
+   },
+   "lacuna": null
   },
   {
    "id": 296274,
