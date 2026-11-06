@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · União da rodada reconhece `doe_ocorrencias.json` · Causa: o arquivo não tinha política em `unir_conflito_de_rodada.py` e a união de SE com PE foi feita à mão. Passa a unir UF e edição pela base comum, com caso no autoteste. Sem mudança de dado.
+
 ## 2026-11-06 · Pernambuco: dias de publicação da rota · Medido: 72 edições de 30/06 a 06/11, toda segunda-feira ausente e edição aos sábados. A rota por data declara os dias em que a fonte publica (PE: terça a sábado), usados na leitura e na cobertura; o código declarado como `ausente` vira "sem edição na data", não "recusa".
 
 ## 2026-11-06 · Pernambuco: edição recente pelo portal da CEPE, antiga pelo armazenamento · Medido do runner: o armazenamento da CEPE abre maio de 2026 e não outubro e novembro; as edições recentes vivem no próprio portal, por data (`/1/arquivos/resumoDiario/`). A rota por data passa a aceitar endereços alternativos da mesma edição, tentados em ordem.
