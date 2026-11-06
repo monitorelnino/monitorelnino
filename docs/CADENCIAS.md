@@ -111,5 +111,4 @@ O formato de cada linha é fixo e lido por máquina:
 | coletor | cadência | janela | onde roda | o que ele responde |
 |---|---|---|---|---|
 | `scripts/medir_revocacao_das_consultas.py` | sob_demanda | — | medir_revocacao | revocação da busca |
-| `scripts/diagnosticar_fontes_sinais.py` | sob_demanda | — | diagnostico_sinais | diagnóstico das fontes de sinais |
 | `scripts/configurar_notificacao_formulario.py` | sob_demanda | — | notificacao_formulario | notificação do formulário |
