@@ -2,10 +2,10 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "03/11/2026",
+  "em": "05/11/2026",
   "conta_como_consultado": true,
   "adaptador": "edicao_rs",
-  "ultima_edicao_lida": "2026-11-03"
+  "ultima_edicao_lida": "2026-11-05"
  },
  "edicoes": {
   "2026-10-19": {
@@ -2127,9 +2127,8 @@
    "termos_achados": []
   },
   "2026-11-02": {
-   "decisao": "vazio",
-   "em": "03/11/2026",
-   "motivo": "listagem da data: URLError: <urlopen error timed out>"
+   "decisao": "sem_edicao_na_data",
+   "em": "05/11/2026"
   },
   "2026-09-18#2": {
    "decisao": "lida",
@@ -2169,7 +2168,59 @@
    "leitor": "2026-10-20",
    "legal_versao": "2026-10-30",
    "termos_achados": []
+  },
+  "2026-11-05": {
+   "decisao": "lida",
+   "em": "05/11/2026",
+   "bytes": 154191,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54794/pdf",
+   "impressao": "97a9b250ca567b73f1ce63b7fc41b7d5dc596072366ee2a4d67d24bd0478c81a",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-05#2": {
+   "decisao": "lida",
+   "em": "05/11/2026",
+   "bytes": 1420327,
+   "paginas": 178,
+   "paginas_com_texto": 178,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54795/pdf",
+   "impressao": "93d9f988572a4e28d5d5be8ab1e1491d7400b8e35fdabdc724523f0be55c764c",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-04": {
+   "decisao": "lida",
+   "em": "05/11/2026",
+   "bytes": 157498,
+   "paginas": 4,
+   "paginas_com_texto": 4,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54792/pdf",
+   "impressao": "0b3e631a0f648318485bc38bb4ddd73344394061be338b379820eabd7456baad",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
+  },
+  "2026-11-04#2": {
+   "decisao": "lida",
+   "em": "05/11/2026",
+   "bytes": 2204980,
+   "paginas": 292,
+   "paginas_com_texto": 292,
+   "url": "https://doe-backend.pro.rs.gov.br/public/diarios/download/54793/pdf",
+   "impressao": "83c7c6c6b5269bf6f6b052137b581d36b65017b11e64dea7e94eff91a5206474",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "termos_achados": []
   }
  },
- "atualizado_em": "03/11/2026"
+ "atualizado_em": "05/11/2026"
 }

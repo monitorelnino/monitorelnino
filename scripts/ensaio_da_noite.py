@@ -730,15 +730,15 @@ def ensaio_fora_da_main_nao_empurra(diz) -> bool:
     fonte = (pathlib.Path(__file__).resolve().parents[1] / ".github/workflows/_coletor.yml"
              ).read_text(encoding="utf-8")
     i_commit = fonte.find("- name: Commit com rebase-e-push")
-    i_push = fonte.find("git push", i_commit)
+    i_push = fonte.find("scripts/empurrar.py", i_commit)
     trecho = fonte[i_commit:i_push] if i_commit >= 0 and i_push > i_commit else ""
     # 10/10/2026 (2-bis.2): o ramo é `RAMO` (o do disparo); a `main` e os ramos `ensaio-real/` empurram
-    # para o PRÓPRIO ramo, qualquer outro não empurra. O empurrão tem de ir para `HEAD:${RAMO}`.
+    # para o PRÓPRIO ramo, qualquer outro não empurra. O empurrão (`scripts/empurrar.py`, que faz `HEAD:<destino>`) tem de ir para `${RAMO}`.
     guarda = '"${RAMO}" != "main"' in trecho and "ensaio-real/*" in trecho and "exit 0" in trecho
-    alvo = 'HEAD:${RAMO}' in fonte[i_push:i_push + 200] or '"HEAD:${RAMO}"' in fonte[i_commit:]
+    alvo = 'empurrar.py "${RAMO}"' in fonte[i_push:i_push + 100]
     codigo = "\n".join(l for l in fonte[i_commit:].split("- name:", 2)[1].splitlines()
                        if not l.strip().startswith("#"))
-    if not (guarda and alvo) or "HEAD:main" in codigo:
+    if not (guarda and alvo) or "HEAD:main" in codigo or 'empurrar.py "main"' in codigo:
         diz("   ✗ o commit do coletor empurra para a `main` mesmo quando o elo roda em outro ramo")
         return False
     diz("   ✓ fora da `main`, o coletor não empurra nada para a `main`")
