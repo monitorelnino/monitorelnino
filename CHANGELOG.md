@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Pernambuco: dias de publicação da rota · Medido: 72 edições de 30/06 a 06/11, toda segunda-feira ausente e edição aos sábados. A rota por data declara os dias em que a fonte publica (PE: terça a sábado), usados na leitura e na cobertura; o código declarado como `ausente` vira "sem edição na data", não "recusa".
+
 ## 2026-11-06 · Pernambuco: edição recente pelo portal da CEPE, antiga pelo armazenamento · Medido do runner: o armazenamento da CEPE abre maio de 2026 e não outubro e novembro; as edições recentes vivem no próprio portal, por data (`/1/arquivos/resumoDiario/`). A rota por data passa a aceitar endereços alternativos da mesma edição, tentados em ordem.
 
 ## 2026-11-06 · Sondagem dos diários renderiza a página · SPA (PE, BA e outras) esconde os links de edição atrás do JavaScript, e a sondagem lia só o HTML estático e concluía "sem rota". `sondar_rotas_doe.py --renderizar` usa o navegador identificado que já existe e deriva o padrão de endereço por data como pista de engenharia. Não decide nada, só registra em `fontes_doe.json`. Autoteste offline. Saldo +51/−1 no coletor.
