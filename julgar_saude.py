@@ -993,7 +993,10 @@ def julgar_emergencias(anteriores, espin_busca: dict, ocorrencias: dict, registr
             corpo, texto = ler_ato(oc.get("url"), uf)
             if corpo is not None and not PADRAO_DECLARA.search(texto):
                 abstencoes.append({"url": oc.get("url"), "uf": uf, "motivo": "edição sem verbo que declara (menção de passagem)"})
+            fim_do_ato = -1   # verbo dentro do ato já julgado (o "Art. 1º Fica declarada") não é outro ato
             for m in (PADRAO_DECLARA.finditer(texto) if corpo is not None else ()):
+                if m.start() < fim_do_ato:
+                    continue
                 # O ato é o último DECRETO antes do verbo: órgão e data se leem dele, não do vizinho.
                 atos = [a for a in PADRAO_ATO.finditer(texto, max(0, m.start() - JANELA_DO_ATO), m.start())
                         if a.group(0).upper().startswith("DECRETO")]
@@ -1002,11 +1005,13 @@ def julgar_emergencias(anteriores, espin_busca: dict, ocorrencias: dict, registr
                     abstencoes.append({"url": oc.get("url"), "uf": uf, "motivo": "declaração sem decreto datado identificado"})
                     continue
                 data_ato = f"{int(d.group(1)):02d}/{MESES_DO_ATO[d.group(2).lower()]:02d}/{d.group(3)}"
+                # Julga-se o ATO inteiro (do cabeçalho ao próximo decreto): a ementa do AM tem mais de 200
+                # caracteres, e a fatia "verbo + 200" deixava o governador de fora (06/11/2026).
                 ini = atos[-1].start()
                 prox = next((x.start() for x in RE_CABECALHO_DECRETO.finditer(texto, atos[-1].end())), len(texto))
-                decidir(corpo, texto[ini:m.end() + 200],
-                        {"titulo": atos[-1].group(0), "url": oc.get("url"), "data": data_ato}, "decreto_estadual", uf,
-                        ato_inteiro=texto[ini:min(prox, ini + 12000)])
+                fim_do_ato = min(prox, ini + 12000)
+                decidir(corpo, texto[ini:fim_do_ato],
+                        {"titulo": atos[-1].group(0), "url": oc.get("url"), "data": data_ato}, "decreto_estadual", uf)
     for r in confirmadas:   # o ato que revoga outro marca o revogado, que fica no histórico
         for n in r.get("revoga") or []:
             for o in confirmadas:
@@ -1381,8 +1386,12 @@ def autoteste() -> int:
     casos["vigência declarada no ato e decreto revogado saem do texto"] = (
         lambda: vigencia_e_revogacao(t_am) == {"vigencia_dias": 180, "revoga": ["55.767"]}
         and vigencia_e_revogacao("Fica declarada a emergência.") == {})
-    t_am_doe = ("Protocolo 293135 DECRETO N.º 55.965, DE 26 DE OUTUBRO DE 2026 DECLARA Situação de Emergência em Saúde "
-                "Pública no Estado do Amazonas. O GOVERNADOR DO ESTADO DO AMAZONAS, no uso das atribuições, DECRETA: Art. 8º A emergência vigorará por 180 (cento e oitenta) dias.")
+    # Texto real da edição 18256 (DOE-AM, 26/10/2026): a ementa passa de 200 caracteres antes do governador.
+    t_am_doe = ("Protocolo 293135 <#E.G.B#293136#13#296648> DECRETO N.º 55.965, DE 26 DE OUTUBRO DE 2026 DECLARA Situação de "
+                "Emergência em Saúde Pública no Estado do Amazonas em decorrência dos impactos da estiagem severa e da fumaça "
+                "sobre as condições sanitárias da população e a continuidade das ações e dos serviços públicos de saúde, e dá "
+                "outras providências. O GOVERNADOR DO ESTADO DO AMAZONAS, no exercício da competência que lhe é conferida pelo "
+                "artigo 54, IV, da Constituição Estadual, DECRETA: Art. 8º A emergência vigorará por 180 (cento e oitenta) dias.")
     e4, _ = julgar_emergencias(None, {}, {"ufs": {"AM": {"2026-10-26": {"url": "am.html", "achados": [{"classe": "declaracao"}]}}}}, {},
                                buscar_fn=lambda u, **k: t_am_doe.encode(), preservar_fn=lambda *a: "h")
     casos["grafia \"N.º\" do diário do AM: o decreto datado é identificado e a emergência entra"] = (

@@ -1051,7 +1051,8 @@ def ensaio_ensaio_real_fixa_a_noite(diz) -> bool:
     12→13/10/2026: o cron das 18:13 chegou às 00:39; o ramo nasceu com a noite 2026-10-12, o juiz
     (01:01) gravou o marcador em 2026-10-13 e o condutor esperou na noite errada até o teto.
     Reprova se o workflow não gravar `.noite_do_ensaio` no ramo, se não tiver a guarda de hora,
-    ou se a noite fixada deixar de valer para os elos do ramo depois da virada.
+    ou se a noite fixada deixar de valer para os elos do ramo depois da virada, ou se o disparo dos
+    elos deixar de ler o código de saída (F80).
     """
     import datetime as dt
     import pathlib
@@ -1059,7 +1060,8 @@ def ensaio_ensaio_real_fixa_a_noite(diz) -> bool:
     import janela_da_noite as jn
     raiz = pathlib.Path(__file__).resolve().parents[1]
     wf = (raiz / ".github/workflows/ensaio_real_da_noite.yml").read_text(encoding="utf-8")
-    estrutura = (jn.NOITE_DO_ENSAIO in wf and "--ensaio-pode-comecar" in wf)
+    # F80 (06/11/2026): o disparo dos elos lê o código de saída de cada `gh workflow run`.
+    estrutura = (jn.NOITE_DO_ENSAIO in wf and "--ensaio-pode-comecar" in wf and "wait $p1 && wait $p2" in wf)
     with tempfile.TemporaryDirectory() as t:
         tp = pathlib.Path(t)
         (tp / jn.NOITE_DO_ENSAIO).write_text("2026-10-12\n", encoding="utf-8", newline="\n")
