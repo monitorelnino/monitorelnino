@@ -9,11 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-11-06 · Ensaio real: o disparo dos elos repete em erro do servidor do GitHub e falha na hora se ele seguir recusando · Um 502 deixou os três elos sem disparar e o ensaio esperou 110 minutos por elo que nunca começou; o código de saída do disparo agora é lido, e o ensaio 26 cobre. Falha F80 registrada. Sem mudança em página ou dado.
-=======
+
 ## 2026-11-06 · Emergência do AM entra; derivado sem política reprova o PR · O juiz julgava a fatia "verbo + 200 caracteres", e a ementa longa do Decreto AM nº 55.965 deixava o governador de fora: agora julga o ato inteiro, com autoteste no texto real. A noite de 05→06/11 perdeu o elo diários porque `data/imprensa/semana.json` não estava entre os derivados do resolvedor; a lista passa à medida (21 arquivos) e `verificar_idempotencia_dos_derivados.py` reprova derivado da cadeia sem política.
->>>>>>> origin/main
 
 ## 2026-11-06 · Push dos elos: o log distingue falha do servidor do GitHub de corrida com a main · `scripts/empurrar.py` classifica a recusa, espera mais quando o erro é do servidor e substitui os dois laços de push dos workflows; o ensaio 16 lê o novo destino. Falha F79 registrada. Sem mudança em página ou dado.
 
