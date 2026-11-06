@@ -96,16 +96,45 @@
   "situacao": "parcial",
   "emergencias": null,
   "indice": null,
-  "eventos": [],
-  "ufs": [],
+  "eventos": [
+   {
+    "uf": "AM",
+    "tipo": "decreto_estadual",
+    "documento": "DECRETO N.° 55.767",
+    "data": "13/10/2026",
+    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18246",
+    "vigencia_dias": 180,
+    "vigencia_origem": "declarada no ato",
+    "vigencia_ate": "11/04/2027",
+    "em_vigor": true,
+    "revogado_por": null
+   },
+   {
+    "uf": "AM",
+    "tipo": "decreto_estadual",
+    "documento": "DECRETO N.º 55.965",
+    "data": "26/10/2026",
+    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18256",
+    "vigencia_dias": 180,
+    "vigencia_origem": "presumida: 180 dias a contar do ato",
+    "vigencia_ate": "24/04/2027",
+    "em_vigor": true,
+    "revogado_por": null
+   }
+  ],
+  "ufs": [
+   "AM"
+  ],
   "pop_sob_emergencia": null,
   "faltam": [
-   "estadual: AL, AM, BA, CE, DF, MA, MG, PB, PE, PI, RJ, RS, SE, TO"
+   "estadual: BA, CE, DF, MA, MG, PB, PE, PI, RJ, RS, SE, TO"
   ],
   "consultado_em": {
    "federal": "06/11/2026",
    "estadual": {
     "AC": "05/11/2026",
+    "AL": "06/11/2026",
+    "AM": "06/11/2026",
     "AP": "05/11/2026",
     "ES": "05/11/2026",
     "GO": "05/11/2026",
@@ -121,16 +150,14 @@
    }
   },
   "lacunas_estaduais": {
-   "AL": "124 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
-   "AM": "81 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
    "BA": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML",
    "CE": "15 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-08#2)",
    "DF": "8 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)",
    "MA": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML",
-   "MG": "71 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)",
-   "PB": "72 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
+   "MG": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada",
+   "PB": "73 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
    "PE": "recusa da fonte, respeitada: HTTP 403 em https://diariooficial.cepe.com.br/arquivos/2026/09/10.pdf — recusa respeitada · /edicoes: HTTPError · /diarios: HTTPError",
-   "PI": "13 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)",
+   "PI": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)",
    "RJ": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-08-07#2)",
    "RS": "19 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-20)",
    "SE": "recusa da fonte, respeitada: HTTP 403 em https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json, /busca e /diario-oficial — recusa respeitada (run 39021988900)",

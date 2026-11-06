@@ -67917,7 +67917,25 @@
   "coletado_em": "05/11/2026",
   "hash_evidencia": "962046dfebbcc1a6d972ed91d3fdd0d5fe195ad7589577dccdd16fc28cca673d"
  },
- "emergencias": [],
+ "emergencias": [
+  {
+   "uf": "AM",
+   "tipo": "decreto_estadual",
+   "documento": "DECRETO N.° 55.767",
+   "data": "13/10/2026",
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18246",
+   "vigencia_dias": 180,
+   "hash_evidencia": "1e5f70d249bc1ca0d487b0618b9a666aab243a33e0837186b7bda85d2d4f14c8"
+  },
+  {
+   "uf": "AM",
+   "tipo": "decreto_estadual",
+   "documento": "DECRETO N.º 55.965",
+   "data": "26/10/2026",
+   "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18256",
+   "hash_evidencia": "ad0f79a48dd5b417af1533639cde680aa26ad715565d25565a787c1489ba7bda"
+  }
+ ],
  "emergencias_busca": {
   "federal": {
    "consultado_em": "06/11/2026",
@@ -67932,10 +67950,14 @@
     "via": "busca do diário (adaptador busca_ac)"
    },
    "AL": {
-    "lacuna": "124 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
+    "consultado_em": "06/11/2026",
+    "edicoes_lidas": 147,
+    "ate": "2026-11-05"
    },
    "AM": {
-    "lacuna": "81 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
+    "consultado_em": "06/11/2026",
+    "edicoes_lidas": 82,
+    "ate": "2026-11-05"
    },
    "AP": {
     "consultado_em": "05/11/2026",
@@ -67962,7 +67984,7 @@
     "lacuna": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML"
    },
    "MG": {
-    "lacuna": "71 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "lacuna": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada"
    },
    "MS": {
     "consultado_em": "06/11/2026",
@@ -67979,13 +68001,13 @@
     "ate": "2026-11-04"
    },
    "PB": {
-    "lacuna": "72 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
+    "lacuna": "73 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)"
    },
    "PE": {
     "lacuna": "recusa da fonte, respeitada: HTTP 403 em https://diariooficial.cepe.com.br/arquivos/2026/09/10.pdf — recusa respeitada · /edicoes: HTTPError · /diarios: HTTPError"
    },
    "PI": {
-    "lacuna": "13 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
+    "lacuna": "6 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-29)"
    },
    "PR": {
     "consultado_em": "05/11/2026",
@@ -68038,26 +68060,6 @@
     "url": "https://diario.ac.gov.br/download.php?arquivo=KEQxQHI3IyEpRE8xNzg5NTY0MDYxNzIzLnBkZg==",
     "uf": "AC",
     "motivo": "edição sem verbo que declara (menção de passagem)"
-   },
-   {
-    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18246",
-    "uf": "AM",
-    "motivo": "órgão sem competência para declarar"
-   },
-   {
-    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18246",
-    "uf": "AM",
-    "motivo": "declaração sem decreto datado identificado"
-   },
-   {
-    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18256",
-    "uf": "AM",
-    "motivo": "órgão sem competência para declarar"
-   },
-   {
-    "url": "https://diario.imprensaoficial.am.gov.br/portal/edicoes/download/18256",
-    "uf": "AM",
-    "motivo": "declaração sem decreto datado identificado"
    },
    {
     "url": "https://diario.imprensaoficial.al.gov.br/apinova/api/editions/downloadPdf/51935",
