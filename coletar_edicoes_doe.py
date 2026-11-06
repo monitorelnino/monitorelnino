@@ -152,12 +152,16 @@ PADROES = {
     "PE": {"padrao": "https://diariooficial.cepe.com.br/1/arquivos/resumoDiario/{ano}-{mm}-{dd}/{ano}-{mm}-{dd}.pdf",
            "alternativas": ["https://cepebr-prod.s3.amazonaws.com/1/cadernos/{ano}/{ano}{mm}{dd}/1-PoderExecutivo/PoderExecutivo({ano}{mm}{dd}).pdf"],
            "ausente": 403,
+           # MEDIDO em 06/11/2026 (run 42262941313): 72 edições de 30/06 a 06/11; toda segunda-feira dá
+           # ausente, e há edição de sábado (23/05/2026, nº 92). Publica de terça a sábado.
+           "dias": (1, 2, 3, 4, 5),
            "nota": "padrão por data do caderno do Executivo no portal da CEPE, com o armazenamento como alternativa; medido em 06/11/2026"},
 }
 
 
-def datas_do_periodo(desde: str, ate: str) -> list:
-    """As datas do período, inclusive, sem fim de semana. Função pura.
+def datas_do_periodo(desde: str, ate: str, dias: tuple = (0, 1, 2, 3, 4)) -> list:
+    """As datas do período, inclusive, nos dias da semana em que a fonte publica (padrão: dias úteis;
+    PE publica de terça a sábado, `dias` da rota). Função pura.
 
     Diário oficial de estado não publica sábado e domingo como regra; incluir os dois dobraria as
     tentativas e encheria o log de 404 que não são ausência de edição, e sim ausência de dia útil.
@@ -167,7 +171,7 @@ def datas_do_periodo(desde: str, ate: str) -> list:
     b = dt.date.fromisoformat(ate)
     fora, d = [], a
     while d <= b:
-        if d.weekday() < 5:
+        if d.weekday() in dias:
             fora.append(d.isoformat())
         d += dt.timedelta(days=1)
     return fora
@@ -431,13 +435,13 @@ def a_reler(item) -> bool:
                                                                          or item.get("legal_versao") != VERSAO_LEGAL))
 
 
-def datas_sem_cobertura(edicoes: dict, ate: str) -> list:
+def datas_sem_cobertura(edicoes: dict, ate: str, dias: tuple = (0, 1, 2, 3, 4)) -> list:
     """Datas úteis de 29/06 até `ate` (e cadernos `data#n`) sem edição lida com os termos de hoje nem
     ausência de edição medida. Função pura. Data não tentada, edição que não é edição, sem texto ou
     recusada: tudo isso é falta de cobertura, nunca "consultado"."""
     def coberta(e):
         return isinstance(e, dict) and e.get("decisao") in ("lida", "sem_edicao_na_data") and not a_reler(e)
-    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate) if not coberta(edicoes.get(d))]
+    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate, dias) if not coberta(edicoes.get(d))]
             + sorted(k for k, e in edicoes.items() if "#" in k and k <= ate + "~" and not coberta(e)))
 
 
@@ -464,7 +468,7 @@ def busca_de_declaracao(uf: str, registro: dict) -> dict:
     # Cobertura, não contagem (auditoria de 17/10): toda data útil do ciclo até a véspera da última
     # leitura tem de ter a edição lida com os termos de hoje, ou a ausência de edição medida (404).
     ate = (dt.datetime.strptime(em, "%d/%m/%Y").date() - dt.timedelta(days=1)).isoformat()
-    faltam = datas_sem_cobertura(edicoes, ate)
+    faltam = datas_sem_cobertura(edicoes, ate, tuple((PADROES.get(uf) or {}).get("dias", (0, 1, 2, 3, 4))))
     if faltam:
         return {"lacuna": f"{len(faltam)} data(s) útil(eis) do ciclo sem edição lida com os termos de declaração "
                           f"(a primeira: {faltam[0]})"}
@@ -655,7 +659,8 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                 ancoras_vivas[data_lida] = int(achado.group(1))
         # Data recente "sem edição" se tenta de novo: a edição do dia pode sair depois da leitura.
         recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
-        datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])
+        datas = [d for d in datas_do_periodo(desde, ate, tuple(padrao.get("dias", (0, 1, 2, 3, 4))))
+                 if d not in edicoes or a_reler(edicoes[d])
                  or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")]
         # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
         # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
@@ -707,8 +712,9 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                     if bruto is not None:
                         provou_acesso = True
                     if bruto is None:
-                        edicoes[chave] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
-                                          "motivo": f"{type(erro).__name__}: {str(erro)[:90]}"}
+                        # O código declarado como `ausente` (PE) é data sem edição, não recusa.
+                        edicoes[chave] = {"decisao": decidir_edicao(404 if status == padrao.get("ausente") else status, 0, 0),
+                                          "em": hoje, "motivo": f"{type(erro).__name__}: {str(erro)[:90]}"}
                         continue
                     # Repetição pelo hash do conteúdo: o mesmo arquivo em duas datas não são duas edições.
                     impressao = hashlib.sha256(bruto).hexdigest()
@@ -914,6 +920,8 @@ def _autoteste() -> int:
        datas_do_periodo("2026-09-28", "2026-10-02")[0] == "2026-09-28")
     ok("período de um dia útil devolve um dia", datas_do_periodo("2026-06-29", "2026-06-29") == ["2026-06-29"])
     ok("sábado sozinho devolve vazio", datas_do_periodo("2026-07-04", "2026-07-04") == [])
+    ok("PE publica de terça a sábado: a semana de 29/06 tem 30/06 a 04/07, sem a segunda",
+       datas_do_periodo("2026-06-29", "2026-07-05", PADROES["PE"]["dias"]) == ["2026-06-30", "2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04"])
 
     ok("a estimativa usa a âncora mais próxima",
        estimar_edicao("2026-10-01", {"2026-09-03": 12270, "2026-10-02": 12293}) == 12292)
@@ -1135,7 +1143,9 @@ def _autoteste() -> int:
        "2026-07-01" in datas_sem_cobertura({d: e for d, e in ciclo.items() if d != "2026-07-01"}, "2026-10-01")
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao"}}), "2026-10-01") == ["2026-07-02"]
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-03": {"decisao": "sem_edicao_na_data"}}), "2026-10-01") == []
-       and datas_sem_cobertura(dict(ciclo, **{"2026-07-03#2": {"decisao": "vazio"}}), "2026-10-01") == ["2026-07-03#2"])
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-03#2": {"decisao": "vazio"}}), "2026-10-01") == ["2026-07-03#2"]
+       and datas_sem_cobertura({d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-07-10", (1, 2, 3, 4, 5))},
+                               "2026-07-10", (1, 2, 3, 4, 5)) == [])
     ok("leitura pela metade (uma edição só) não é consultado",
        "lacuna" in busca_de_declaracao("PB", {"edicoes": {"2026-10-01": nova}, "atualizado_em": "02/10/2026"}))
     ok("UF sem rota é lacuna da metade estadual", "lacuna" in busca_de_declaracao("XX", {}))
