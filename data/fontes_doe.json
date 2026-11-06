@@ -501,7 +501,7 @@
   "SE": {
    "adaptador": "apifront",
    "url": "https://iose.se.gov.br",
-   "status": "sem adaptador de busca",
+   "status": "ok",
    "ultima_tentativa": "2026-11-06",
    "sondagem": {
     "plataforma": "apifront",
@@ -518,8 +518,8 @@
     "veredito": "pista_de_rota",
     "sondado_em": "28/10/2026"
    },
-   "motivo": "a Imprensa Oficial de Sergipe (iose.se.gov.br) roda a plataforma comum: a página inicial abre (200), mas /apifront/portal/edicoes, /busca e /diario-oficial respondem HTTP 403 ao cliente identificado do projeto (run 39021988900) — recusa respeitada",
-   "medido_em": "17/10/2026",
+   "motivo": "a Imprensa Oficial de Sergipe (iose.se.gov.br) roda a plataforma comum (apifront): em 06/11/2026 (run 42263441501) a busca do diário respondeu pelo adaptador apifront, sem bloqueio, e a consulta de 29/06 a 06/11 não localizou os termos de declaração. Os 403 de 17/10 e 05/11 em /apifront/portal/edicoes eram rota errada ou intermitência, não recusa permanente; a recusa real, se voltar, se respeita.",
+   "medido_em": "06/11/2026",
    "reconferencia": {
     "em": "05/11/2026",
     "rotas": [
