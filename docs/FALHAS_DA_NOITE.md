@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-02. 78 falhas; 72 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-11-06. 79 falhas; 73 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -707,3 +707,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** agregação em data/pistas_imprensa.json da main c27ccb26: 599 links do Google News sem buscador2_em, 325 chaves distintas; 781 chaves duplicadas no arquivo (1.645 excedentes); simulação offline com o código antigo: pistas marcadas só em 325 de 599; com a chave por alvo: reprocessar 610 → 0
 - **Correção:** `sincronizar` casa por `chave_da_pista` + alvo (`_chave_com_alvo`); nada é apagado nem unido.
 - **Caso de teste:** `scripts/pistas.py --autoteste (sincronizar atualiza cada pista de mesmo id e alvos diferentes)`
+
+## F79 · Ensaio real vermelho: o GitHub recusou os cinco pushes do elo diários e o log culpou a main
+
+- **Noite:** 2026-11-05
+- **Sintoma:** Ensaio real 42127323105: `pushes_perdidos: [coleta-perdida-diarios-42127826132]`; cinco pushes com `fatal error in commit_refs` / `[remote rejected] (failure)`, todos registrados como "push recusado (main avançou)".
+- **Causa:** O laço de push (`_coletor.yml`, `publicar_dados.yml`) dava um só nome e uma só espera (10 s × tentativa) a qualquer recusa; falha do servidor do GitHub não é corrida com a main.
+- **Prova:** central, 06/11 00:25: o elo coletou, os cinco pushes ao ramo do ensaio voltaram erro do servidor; #1541 só muda regex de leitura
+- **Correção:** `scripts/empurrar.py` faz o push, classifica a recusa (servidor × corrida), nomeia e espera 30 s × tentativa no servidor; os dois workflows passam a chamá-lo.
+- **Caso de teste:** `scripts/empurrar.py --autoteste: commit_refs`

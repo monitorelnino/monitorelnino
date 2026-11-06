@@ -382,11 +382,9 @@ jobs:
               fi
               git diff --cached --quiet || git commit --amend --no-edit
             fi
-            if GIT_SSH_COMMAND="$SSH" git push git@github.com:${GITHUB_REPOSITORY}.git HEAD:main; then
-              EMPURROU=1; echo "empurrado na tentativa $TENTATIVA"; break
+            if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "main" "$TENTATIVA"; then
+              EMPURROU=1; break
             fi
-            echo "tentativa $TENTATIVA: push recusado (main avançou); nova tentativa"
-            sleep $((TENTATIVA * 10))
           done
           rm -f ~/.ssh/robo
           if [ "$EMPURROU" != "1" ]; then

@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-11-02",
+ "atualizado_em": "2026-11-06",
  "falhas": [
   {
    "id": "F01",
@@ -1078,6 +1078,18 @@
    ],
    "correcao": "`sincronizar` casa por `chave_da_pista` + alvo (`_chave_com_alvo`); nada é apagado nem unido.",
    "caso_de_teste": "scripts/pistas.py --autoteste (sincronizar atualiza cada pista de mesmo id e alvos diferentes)"
+  },
+  {
+   "id": "F79",
+   "noite": "2026-11-05",
+   "titulo": "Ensaio real vermelho: o GitHub recusou os cinco pushes do elo diários e o log culpou a main",
+   "sintoma": "Ensaio real 42127323105: `pushes_perdidos: [coleta-perdida-diarios-42127826132]`; cinco pushes com `fatal error in commit_refs` / `[remote rejected] (failure)`, todos registrados como \"push recusado (main avançou)\".",
+   "causa": "O laço de push (`_coletor.yml`, `publicar_dados.yml`) dava um só nome e uma só espera (10 s × tentativa) a qualquer recusa; falha do servidor do GitHub não é corrida com a main.",
+   "prova": [
+    "central, 06/11 00:25: o elo coletou, os cinco pushes ao ramo do ensaio voltaram erro do servidor; #1541 só muda regex de leitura"
+   ],
+   "correcao": "`scripts/empurrar.py` faz o push, classifica a recusa (servidor × corrida), nomeia e espera 30 s × tentativa no servidor; os dois workflows passam a chamá-lo.",
+   "caso_de_teste": "scripts/empurrar.py --autoteste: commit_refs"
   }
  ]
 }
