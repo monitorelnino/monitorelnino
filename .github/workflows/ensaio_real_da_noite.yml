@@ -93,10 +93,14 @@ jobs:
           GH_TOKEN: ${{ secrets.ROBO_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           R="${{ steps.ramo.outputs.ramo }}"
-          gh workflow run noturno_diarios.yml --ref "$R" &
-          gh workflow run noturno_diarios.yml --ref "$R" &
-          gh workflow run noturno_triagem.yml --ref "$R" &
-          wait
+          # F80 (06/11/2026): o `&` + `wait` escondia o código de saída; um 502 da API do GitHub
+          # deixava os três elos sem disparar e o ensaio esperava 110 min por elo que nunca começou.
+          # Repete em erro do servidor e falha na hora se o GitHub seguir recusando.
+          disparar() { for t in 1 2 3 4 5; do gh workflow run "$1" --ref "$R" && return 0; sleep $((t * 15)); done; return 1; }
+          disparar noturno_diarios.yml & p1=$!
+          disparar noturno_diarios.yml & p2=$!
+          disparar noturno_triagem.yml & p3=$!
+          wait $p1 && wait $p2 && wait $p3 || { echo "::error::o GitHub recusou o disparo dos elos nas 5 tentativas"; exit 1; }
 
       - name: Empurrão concorrente no ramo enquanto os elos rodam
         if: steps.hora.outputs.pode == '1'

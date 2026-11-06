@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Ensaio real: o disparo dos elos repete em erro do servidor do GitHub e falha na hora se ele seguir recusando · Um 502 deixou os três elos sem disparar e o ensaio esperou 110 minutos por elo que nunca começou; o código de saída do disparo agora é lido, e o ensaio 26 cobre. Falha F80 registrada. Sem mudança em página ou dado.
+
 ## 2026-11-06 · Push dos elos: o log distingue falha do servidor do GitHub de corrida com a main · `scripts/empurrar.py` classifica a recusa, espera mais quando o erro é do servidor e substitui os dois laços de push dos workflows; o ensaio 16 lê o novo destino. Falha F79 registrada. Sem mudança em página ou dado.
 
 ## 2026-11-05 · Saúde: leitura parcial dos decretos de emergência · Com a leitura estadual incompleta, o topo diz quantos diários oficiais estaduais foram lidos com os termos de declaração e quais estados faltam, em vez de só "sem coleta". Não é zero.

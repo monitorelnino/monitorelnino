@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-06. 79 falhas; 73 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-11-06. 80 falhas; 74 com caso de teste que as reproduz; 6 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -716,3 +716,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** central, 06/11 00:25: o elo coletou, os cinco pushes ao ramo do ensaio voltaram erro do servidor; #1541 só muda regex de leitura
 - **Correção:** `scripts/empurrar.py` faz o push, classifica a recusa (servidor × corrida), nomeia e espera 30 s × tentativa no servidor; os dois workflows passam a chamá-lo.
 - **Caso de teste:** `scripts/empurrar.py --autoteste: commit_refs`
+
+## F80 · Ensaio real vermelho: 502 da API do GitHub no disparo dos elos, e o ensaio esperou 110 min por elo que nunca começou
+
+- **Noite:** 2026-11-06
+- **Sintoma:** Ensaio real 42196031171 (main 866132aa): `could not create workflow dispatch event: HTTP 502` para noturno_diarios ×2 e noturno_triagem; veredito com seis elos sem marcador, nenhum run no ramo ensaio-real.
+- **Causa:** O passo "Provocar dois pendentes" disparava com `&` + `wait` sem ler o código de saída: o passo terminava verde, e `ensaio_real.py --conduzir` já parte do pressuposto de que diários e triagem foram disparados.
+- **Prova:** run 42196031171: passo de disparo com 502 nos três `gh workflow run`, `elos_sem_marcador` com os seis elos, `pushes_perdidos` e `cancelados_sem_refazer` vazios; o #1548 não entra no job: o ensaio não chama scripts/empurrar.py
+- **Correção:** O passo repete cada disparo até 5 vezes com espera crescente e falha na hora, nomeando o GitHub, se todas recusarem.
+- **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_ensaio_real_fixa_a_noite`
