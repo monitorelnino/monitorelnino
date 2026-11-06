@@ -141,6 +141,13 @@ PADROES = {
     # (_visualizar-mes) nomeia toda edição do mesmo jeito (doe-AAAAMMDD.pdf).
     "RR": {"padrao": "https://www.imprensaoficial.rr.gov.br/_edicoes/{ano}/{mm}/doe-{ano}{mm}{dd}.pdf",
            "nota": "padrão por data, medido do runner em 17/10/2026"},
+    # 06/11/2026 (central): o portal da CEPE é uma SPA cuja REST responde 401 sem token, mas o PDF do
+    # caderno do Poder Executivo é servido do armazenamento da própria CEPE (cepebr-prod), por data —
+    # conferido na edição de 08/07/2025 (Ano CII, nº 121). Armazenamento sem listagem responde 403 a
+    # objeto inexistente (feriado, data sem edição): esse 403 só é recusa se nenhuma data abrir.
+    "PE": {"padrao": "https://cepebr-prod.s3.amazonaws.com/1/cadernos/{ano}/{ano}{mm}{dd}/1-PoderExecutivo/PoderExecutivo({ano}{mm}{dd}).pdf",
+           "ausente": 403,
+           "nota": "padrão por data do caderno do Executivo, no armazenamento da CEPE; conferido pela central em 06/11/2026"},
 }
 
 
@@ -367,6 +374,17 @@ def rota_da_uf(uf: str, adaptadores=None, padroes=None) -> dict:
     return {"tipo": None}
 
 
+def recusa_vale_para(motivo: str, rota: dict) -> bool:
+    """A recusa registrada (motivo com o endereço recusado) ainda é da rota atual? Sem endereço na
+    recusa, ou sem rota, vale; com os dois, só se o host recusado for o da rota. Função pura."""
+    hosts_recusados = {h.lower() for h in re.findall(r"https?://([^/\s]+)", motivo or "")}
+    alvo = (rota or {}).get("detalhe") if (rota or {}).get("tipo") == "padrao" else (rota or {}).get("url")
+    host_da_rota = re.findall(r"https?://([^/\s]+)", alvo or "")
+    if not hosts_recusados or not host_da_rota:
+        return True
+    return host_da_rota[0].lower() in hosts_recusados
+
+
 def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -> dict:
     """Como o canal 2 é feito nesta UF. Função pura.
 
@@ -375,11 +393,13 @@ def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -
     Sem nenhuma, `rota_nao_descoberta`: ausência de **rota**, não de diário, e não recusa.
     """
     reg = (registro or {}).get("canal2") or {}
-    if reg.get("modo") == MODO_SEM_ACESSO and reg.get("motivo"):
-        return {"uf": uf, "modo": MODO_SEM_ACESSO, "detalhe": reg["motivo"],
-                "nota": "recusa da fonte — lacuna declarada, não conta como canal consultado"}
     # O registro da UF guarda o adaptador com que foi lido: a situação se responde sem o fontes_doe.
     rota = rota_da_uf(uf, adaptadores or {uf: {"adaptador": reg.get("adaptador")}}, padroes)
+    # 06/11/2026: a recusa registrada é de um ENDEREÇO. Rota nova noutro host (PE: o armazenamento da
+    # CEPE, depois do 403 no portal) não nasce recusada; a recusa só vale enquanto a rota for a mesma.
+    if reg.get("modo") == MODO_SEM_ACESSO and reg.get("motivo") and recusa_vale_para(reg["motivo"], rota):
+        return {"uf": uf, "modo": MODO_SEM_ACESSO, "detalhe": reg["motivo"],
+                "nota": "recusa da fonte — lacuna declarada, não conta como canal consultado"}
     if rota["tipo"]:
         return {"uf": uf, "modo": "busca_no_diario" if rota["tipo"] == "busca" else "padrao_por_data",
                 "detalhe": rota["detalhe"]}
@@ -464,6 +484,18 @@ def _texto_paginas(bruto: bytes) -> list:
                 for t in extrair_texto_por_pagina(bruto)]
     except Exception:  # noqa: BLE001
         return []
+
+
+AUSENTES_SEM_PROVA = 5
+
+
+def e_ausencia_declarada(e, padrao: dict, provou_acesso: bool, ausentes_sem_prova: int) -> bool:
+    """O código é o que a rota declara para objeto inexistente (`ausente`), e ainda cabe tolerá-lo:
+    uma edição já abriu nesta rodada, ou ainda não se esgotou a tolerância sem prova. Função pura."""
+    codigo = getattr(e, "code", None) or 0
+    if not codigo or codigo != (padrao or {}).get("ausente"):
+        return False
+    return provou_acesso or ausentes_sem_prova < AUSENTES_SEM_PROVA
 
 
 def _recusa(e, url: str):
@@ -626,6 +658,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         datas = sorted(datas, reverse=True)[:TETO_EDICOES]
         vistos = {e.get("impressao") for d, e in edicoes.items()
                   if isinstance(e, dict) and e.get("impressao") and d.split("#")[0] not in datas}
+        # Fonte que declara `ausente` (PE): o código de "não há objeto" coincide com um de recusa. Ele
+        # vale como ausência depois de uma edição aberta nesta rodada, ou até AUSENTES_SEM_PROVA datas
+        # seguidas sem nenhuma aberta; a partir daí é recusa como em toda fonte.
+        provou_acesso, ausentes_sem_prova = False, 0
         try:
             for data in datas:
                 try:
@@ -655,11 +691,15 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                             break
                         except Exception as e:  # noqa: BLE001
                             recusa = _recusa(e, url)
+                            if recusa and e_ausencia_declarada(e, padrao, provou_acesso, ausentes_sem_prova):
+                                recusa, ausentes_sem_prova = None, ausentes_sem_prova + 1
                             if recusa:
                                 break
                             erro, status = e, getattr(e, "code", None) or 0
                     if recusa:
                         break
+                    if bruto is not None:
+                        provou_acesso = True
                     if bruto is None:
                         edicoes[chave] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
                                           "motivo": f"{type(erro).__name__}: {str(erro)[:90]}"}
@@ -1003,6 +1043,15 @@ def _autoteste() -> int:
     ok("o adaptador de edição devolve uma edição por caderno",
        _edicoes_da_data({"tipo": "edicao"}, {}, "2026-10-14", {}, {},
                         lambda d: [{"url": "p01"}, {"url": "p02"}]) == [[{"url": "p01"}], [{"url": "p02"}]])
+    _pe = PADROES["PE"]
+    ok("PE: 403 do armazenamento é ausência enquanto houver tolerância ou prova de acesso",
+       e_ausencia_declarada(_Http(403), _pe, False, 0) and e_ausencia_declarada(_Http(403), _pe, True, 99)
+       and not e_ausencia_declarada(_Http(403), _pe, False, AUSENTES_SEM_PROVA)
+       and not e_ausencia_declarada(_Http(403), PADROES["PB"], True, 0)
+       and not e_ausencia_declarada(_Http(401), _pe, True, 0))
+    ok("PE: o endereço por data é o caderno do Executivo no armazenamento da CEPE",
+       _edicoes_da_data({"tipo": "padrao"}, _pe, "2025-07-08", {}, {}, None)[0][0]["url"]
+       == "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2025/20250708/1-PoderExecutivo/PoderExecutivo(20250708).pdf")
     ok("o padrão por data devolve uma edição com um endereço",
        _edicoes_da_data({"tipo": "padrao"}, PADROES["PB"], "2026-09-09", {}, {}, None)[0][0]["url"].endswith("09-09-2026-portal.pdf"))
     ok("lacuna sem motivo recebe o motivo padrão",
@@ -1011,6 +1060,12 @@ def _autoteste() -> int:
        situacao_do_canal2("XX")["modo"] == MODO_SEM_ROTA)
     ok("UF com adaptador de busca entra como busca no diário",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
+    _rec = {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 403 em https://diariooficial.cepe.com.br/arquivos/x.pdf — recusa"}}
+    ok("recusa registrada noutro host não recusa a rota nova (PE: portal recusou, armazenamento é outra rota)",
+       situacao_do_canal2("PE", registro=_rec)["modo"] == "padrao_por_data"
+       and recusa_vale_para("HTTP 403", {"tipo": "padrao", "detalhe": "https://a/x"})
+       and recusa_vale_para("HTTP 403 em https://a/y", {"tipo": "padrao", "detalhe": "https://a/x"})
+       and not recusa_vale_para("HTTP 403 em https://a/y", {"tipo": "busca", "url": "https://b"}))
     ok("rota sem acesso automático registrada vence, e não conta como consultado",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}},
                           {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 401"}})["modo"]
