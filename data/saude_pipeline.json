@@ -2879,7 +2879,12 @@
   {"data": "2026-11-06", "script": "ler_planos_arboviroses.py", "inicio": "2026-11-06T07:30:26", "duracao_s": 3.6, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-06", "script": "reconferir_instrumentos_federais.py", "inicio": "2026-11-06T07:30:29", "duracao_s": 0.7, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-06", "script": "recalcular_mare.py", "inicio": "2026-11-06T07:38:01", "duracao_s": 4.2, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-06", "script": "recalcular_mare.py", "inicio": "2026-11-06T08:03:31", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-06", "script": "recalcular_mare.py", "inicio": "2026-11-06T08:03:31", "duracao_s": 4.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-06", "script": "monitorar_busca_web.py", "inicio": "2026-11-06T08:05:39", "duracao_s": 363.3, "itens": 10, "status": "ok", "erro": ""},
+  {"data": "2026-11-06", "script": "monitorar_busca_web.py", "inicio": "2026-11-06T08:11:42", "duracao_s": 314.3, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-06", "script": "monitorar_busca_web.py", "inicio": "2026-11-06T08:16:56", "duracao_s": 314.8, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-06", "script": "monitorar_busca_web.py", "inicio": "2026-11-06T08:22:10", "duracao_s": 316.3, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-06", "script": "monitorar_busca_web.py", "inicio": "2026-11-06T08:27:26", "duracao_s": 316.0, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"}
  ],
- "atualizado_em": "2026-11-06T08:03:31"
+ "atualizado_em": "2026-11-06T08:27:26"
 }
