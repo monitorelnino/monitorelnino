@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Pernambuco: edição recente pelo portal da CEPE, antiga pelo armazenamento · Medido do runner: o armazenamento da CEPE abre maio de 2026 e não outubro e novembro; as edições recentes vivem no próprio portal, por data (`/1/arquivos/resumoDiario/`). A rota por data passa a aceitar endereços alternativos da mesma edição, tentados em ordem.
+
 ## 2026-11-06 · Pernambuco: edições do DOE pelo armazenamento da CEPE · O portal da CEPE recusava (401/403) e PE ficava sem canal 2. O caderno do Executivo é servido por data do armazenamento da própria CEPE (conferido na edição de 08/07/2025); entra como padrão por data, com o 403 de objeto ausente declarado na rota e tolerado só com prova de acesso. Recusa registrada passa a valer por endereço: rota nova noutro host não nasce recusada.
 
 ## 2026-11-06 · Diários estaduais: a noite lê todo o ciclo ainda não lido · O elo incremental lia só os últimos 4 dias; data que falhava uma vez saía da janela, e AL, AM, MG e PB acumularam de 70 a 124 datas sem leitura. Agora lê as datas não lidas desde 29/06, da mais nova para a mais velha, com prazo próprio de 80 minutos, e o julgamento das emergências vem depois.
