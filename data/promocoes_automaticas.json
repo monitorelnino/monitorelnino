@@ -461419,6 +461419,345 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "a4117581167087123dc875ea4006cfb9f3e9d4a0d9e1f6292450bbe50e1eecd8"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4216701",
+   "municipio": "São José do Cedro",
+   "uf": "SC",
+   "url": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251126/Jornal/22648.pdf",
+   "regras_18": [],
+   "pista_id": "b2a8796b46",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "cd5cf6bb40398cf6f4f37707d06d89b725f6079263786d71d5d69614428b1445",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251126/Jornal/22648.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/defesa-civil-nt-plano-de-contingencia/",
+   "regras_18": [],
+   "pista_id": "310a50a411",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5907 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://noticias.sc.gov.br/saude-intensifica-acoes-para-o-enfrentamento-das-arboviroses-nos-municipios-catarinenses/",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "613d22f39f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "9236bf6cd5967f0e3bf03a8d5b46ed870fba63bf244554bf089bb517feb76249"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/defesa-civil-nt-plano-de-contingencia/",
+   "regras_18": [],
+   "pista_id": "c05f8ebcc2",
+   "origem": "busca_web",
+   "leu_documento": false,
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://novatrento.sc.gov.br/defesa-civil-nt-plano-de-contingencia/",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211504",
+   "municipio": "Nova Trento",
+   "uf": "SC",
+   "url": "https://novatrento.sc.gov.br/conselho-municipal-aprova-plancon-plano-que-integra-acoes-em-situacoes-de-risco/",
+   "regras_18": [],
+   "pista_id": "5ac698b2be",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "492774 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "nte do Instituto de Pesquisas Ambientais e Tecnológicas PREFEITURA MUNICIPAL DE SIDERÓPOLIS Douglas Gleen Warmling Prefeito Municipal Elvi Donadel Vice-Prefeito"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": "resolução",
+      "numero": "357/05",
+      "data": null,
+      "detalhe": "sem data completa no texto"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217600",
+   "municipio": "Siderópolis",
+   "uf": "SC",
+   "url": "https://www.sideropolis.sc.gov.br/uploads/sites/447/2021/12/879432_PLANO_Versao_Final_Sideropolis.pdf",
+   "regras_18": [],
+   "pista_id": "65cd641711",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "098aa40781488d1ca90356d4136650e2a94f0d1477d7ca667f53dc7aac131cbb",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.sideropolis.sc.gov.br/uploads/sites/447/2021/12/879432_PLANO_Versao_Final_Sideropolis.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "379184 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217600",
+   "municipio": "Siderópolis",
+   "uf": "SC",
+   "url": "https://www.sef.sc.gov.br/api-portal/Documento/ver/4632",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "6120bb91a3",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d02ae9068e4817f87f8ad7f5c6433b42e84e2bb1906328bfd8a31fd23e9dbe08"
+  },
+  {
+   "promove": false,
+   "motivo": "ente_nao_confirmado",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "511816 caracteres de fonte oficial",
+     "recorte_do_ato": "6000 de 511816 caracteres — ato recortado da edição pelo excerto"
+    },
+    "1_identidade": {
+     "ok": false,
+     "trecho": "o texto não nomeia \"Siderópolis\""
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217600",
+   "municipio": "Siderópolis",
+   "uf": "SC",
+   "url": "https://leis.alesc.sc.gov.br/ato-normativo/15852",
+   "regras_18": [],
+   "pista_id": "56a40cc2c1",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "78d2dae62836c07a903e6def9ae08429b790ce3a9c7444b766af25a14b4b6296"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4217600",
+   "municipio": "Siderópolis",
+   "uf": "SC",
+   "url": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251125/Jornal/22647.pdf",
+   "regras_18": [],
+   "pista_id": "e6a681760e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "3bb6be8863a072db07bd3778b1f08fb6e362cd80ace167dc1c90cf54aa513dde",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251125/Jornal/22647.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "379184 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211603",
+   "municipio": "Nova Veneza",
+   "uf": "SC",
+   "url": "https://www.sef.sc.gov.br/api-portal/Documento/ver/4632",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "mare_saude",
+   "pista_id": "193e32632d",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "d02ae9068e4817f87f8ad7f5c6433b42e84e2bb1906328bfd8a31fd23e9dbe08"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "599999 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4211603",
+   "municipio": "Nova Veneza",
+   "uf": "SC",
+   "url": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251126/Jornal/22648.pdf",
+   "regras_18": [],
+   "pista_id": "6a10e0bc1e",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "cd5cf6bb40398cf6f4f37707d06d89b725f6079263786d71d5d69614428b1445",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://portal.doe.sea.sc.gov.br/repositorio/2025/20251126/Jornal/22648.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
   }
  ]
 }
