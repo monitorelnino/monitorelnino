@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Sondagem dos diários renderiza a página · SPA (PE, BA e outras) esconde os links de edição atrás do JavaScript, e a sondagem lia só o HTML estático e concluía "sem rota". `sondar_rotas_doe.py --renderizar` usa o navegador identificado que já existe e deriva o padrão de endereço por data como pista de engenharia. Não decide nada, só registra em `fontes_doe.json`. Autoteste offline. Saldo +51/−1 no coletor.
+
 ## 2026-11-06 · Diários estaduais: a noite lê todo o ciclo ainda não lido · O elo incremental lia só os últimos 4 dias; data que falhava uma vez saía da janela, e AL, AM, MG e PB acumularam de 70 a 124 datas sem leitura. Agora lê as datas não lidas desde 29/06, da mais nova para a mais velha, com prazo próprio de 80 minutos, e o julgamento das emergências vem depois.
 
 ## 2026-11-06 · Financiamento: a legenda do mapa do dinheiro mostra o tamanho em círculos de referência · O item cinza "maior círculo" parecia uma terceira categoria; agora dois círculos na mesma escala do mapa (o maior valor e um valor redondo menor) legendam o tamanho, sem cor de categoria. Rótulo no catálogo. Sem mudança em dado.
