@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-10-30 a 2026-11-06 (1354 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-10-30 a 2026-11-06 (1358 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -31,7 +31,7 @@ cobertura 15d: 4985/5571 com verificação real até 2026-11-06 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-01 21:57 | 1 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-06 07:16 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-05 01:37 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-06 18:27 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-06 19:14 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-06 08:25 | 2 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-10-31 01:55 | 103 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-10-31 01:14 | 1 s | — | ok | — |
@@ -53,7 +53,7 @@ cobertura 15d: 4985/5571 com verificação real até 2026-11-06 · por canal: we
 | `coletar_diarios_municipais.py` | coletor | 2026-11-05 01:50 | 2 s | 0 | ok | — |
 | `coletar_doe.py` | coletor | 2026-11-06 02:38 | 3263 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-11-06 02:22 | 3032 s | — | ok | — |
-| `coletar_espin.py` | coletor | 2026-11-06 16:08 | 380 s | — | ok | — |
+| `coletar_espin.py` | coletor | 2026-11-06 18:24 | 372 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-10-31 01:14 | 4 s | — | ok | — |
 | `coletar_obitos.py` | coletor | 2026-11-06 07:16 | 4 s | — | ok | — |
 | `coletar_obitos_registro_civil.py` | coletor | 2026-11-05 01:36 | 47 s | — | ok | — |
@@ -90,7 +90,7 @@ cobertura 15d: 4985/5571 com verificação real até 2026-11-06 · por canal: we
 | `monitorar_sinais_federais.py` | coletor | 2026-11-06 07:13 | 5 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-11-06 08:53 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `processar_contribuicoes.py` | coletor | 2026-10-31 01:14 | 2 s | — | ok | — |
-| `python3` | coletor | 2026-11-06 17:39 | 562 s | — | ok | — |
+| `python3` | coletor | 2026-11-06 18:22 | 89 s | — | ok | — |
 | `reconferir_instrumentos_federais.py` | coletor | 2026-11-06 07:30 | 1 s | — | ok | — |
 | `revisar_pistas.py` | coletor | 2026-11-06 06:47 | 659 s | — | ok | — |
 | `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-06 08:25 | 1 s | — | ok | — |
