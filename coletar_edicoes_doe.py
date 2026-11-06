@@ -141,11 +141,27 @@ PADROES = {
     # (_visualizar-mes) nomeia toda edição do mesmo jeito (doe-AAAAMMDD.pdf).
     "RR": {"padrao": "https://www.imprensaoficial.rr.gov.br/_edicoes/{ano}/{mm}/doe-{ano}{mm}{dd}.pdf",
            "nota": "padrão por data, medido do runner em 17/10/2026"},
+    # 06/11/2026 (central): o portal da CEPE é uma SPA cuja REST responde 401 sem token, mas o PDF do
+    # caderno do Poder Executivo é servido do armazenamento da própria CEPE (cepebr-prod), por data —
+    # conferido na edição de 08/07/2025 (Ano CII, nº 121). Armazenamento sem listagem responde 403 a
+    # objeto inexistente (feriado, data sem edição): esse 403 só é recusa se nenhuma data abrir.
+    # MEDIDO do runner em 06/11/2026 (run 42257949530): maio de 2026 abre no armazenamento (8 edições),
+    # outubro e novembro não (403 = ausente). As edições recentes vivem no próprio portal, por data:
+    # 17/10/2026 (Ano CX, nº 192) e 04/11/2026 abrem em `/1/arquivos/resumoDiario/`. Portal primeiro,
+    # armazenamento como alternativa da mesma data; a edição extra sai como <data>E.pdf, fora do padrão.
+    "PE": {"padrao": "https://diariooficial.cepe.com.br/1/arquivos/resumoDiario/{ano}-{mm}-{dd}/{ano}-{mm}-{dd}.pdf",
+           "alternativas": ["https://cepebr-prod.s3.amazonaws.com/1/cadernos/{ano}/{ano}{mm}{dd}/1-PoderExecutivo/PoderExecutivo({ano}{mm}{dd}).pdf"],
+           "ausente": 403,
+           # MEDIDO em 06/11/2026 (run 42262941313): 72 edições de 30/06 a 06/11; toda segunda-feira dá
+           # ausente, e há edição de sábado (23/05/2026, nº 92). Publica de terça a sábado.
+           "dias": (1, 2, 3, 4, 5),
+           "nota": "padrão por data do caderno do Executivo no portal da CEPE, com o armazenamento como alternativa; medido em 06/11/2026"},
 }
 
 
-def datas_do_periodo(desde: str, ate: str) -> list:
-    """As datas do período, inclusive, sem fim de semana. Função pura.
+def datas_do_periodo(desde: str, ate: str, dias: tuple = (0, 1, 2, 3, 4)) -> list:
+    """As datas do período, inclusive, nos dias da semana em que a fonte publica (padrão: dias úteis;
+    PE publica de terça a sábado, `dias` da rota). Função pura.
 
     Diário oficial de estado não publica sábado e domingo como regra; incluir os dois dobraria as
     tentativas e encheria o log de 404 que não são ausência de edição, e sim ausência de dia útil.
@@ -155,7 +171,7 @@ def datas_do_periodo(desde: str, ate: str) -> list:
     b = dt.date.fromisoformat(ate)
     fora, d = [], a
     while d <= b:
-        if d.weekday() < 5:
+        if d.weekday() in dias:
             fora.append(d.isoformat())
         d += dt.timedelta(days=1)
     return fora
@@ -367,6 +383,17 @@ def rota_da_uf(uf: str, adaptadores=None, padroes=None) -> dict:
     return {"tipo": None}
 
 
+def recusa_vale_para(motivo: str, rota: dict) -> bool:
+    """A recusa registrada (motivo com o endereço recusado) ainda é da rota atual? Sem endereço na
+    recusa, ou sem rota, vale; com os dois, só se o host recusado for o da rota. Função pura."""
+    hosts_recusados = {h.lower() for h in re.findall(r"https?://([^/\s]+)", motivo or "")}
+    alvo = (rota or {}).get("detalhe") if (rota or {}).get("tipo") == "padrao" else (rota or {}).get("url")
+    host_da_rota = re.findall(r"https?://([^/\s]+)", alvo or "")
+    if not hosts_recusados or not host_da_rota:
+        return True
+    return host_da_rota[0].lower() in hosts_recusados
+
+
 def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -> dict:
     """Como o canal 2 é feito nesta UF. Função pura.
 
@@ -375,11 +402,13 @@ def situacao_do_canal2(uf: str, padroes=None, adaptadores=None, registro=None) -
     Sem nenhuma, `rota_nao_descoberta`: ausência de **rota**, não de diário, e não recusa.
     """
     reg = (registro or {}).get("canal2") or {}
-    if reg.get("modo") == MODO_SEM_ACESSO and reg.get("motivo"):
-        return {"uf": uf, "modo": MODO_SEM_ACESSO, "detalhe": reg["motivo"],
-                "nota": "recusa da fonte — lacuna declarada, não conta como canal consultado"}
     # O registro da UF guarda o adaptador com que foi lido: a situação se responde sem o fontes_doe.
     rota = rota_da_uf(uf, adaptadores or {uf: {"adaptador": reg.get("adaptador")}}, padroes)
+    # 06/11/2026: a recusa registrada é de um ENDEREÇO. Rota nova noutro host (PE: o armazenamento da
+    # CEPE, depois do 403 no portal) não nasce recusada; a recusa só vale enquanto a rota for a mesma.
+    if reg.get("modo") == MODO_SEM_ACESSO and reg.get("motivo") and recusa_vale_para(reg["motivo"], rota):
+        return {"uf": uf, "modo": MODO_SEM_ACESSO, "detalhe": reg["motivo"],
+                "nota": "recusa da fonte — lacuna declarada, não conta como canal consultado"}
     if rota["tipo"]:
         return {"uf": uf, "modo": "busca_no_diario" if rota["tipo"] == "busca" else "padrao_por_data",
                 "detalhe": rota["detalhe"]}
@@ -406,13 +435,13 @@ def a_reler(item) -> bool:
                                                                          or item.get("legal_versao") != VERSAO_LEGAL))
 
 
-def datas_sem_cobertura(edicoes: dict, ate: str) -> list:
+def datas_sem_cobertura(edicoes: dict, ate: str, dias: tuple = (0, 1, 2, 3, 4)) -> list:
     """Datas úteis de 29/06 até `ate` (e cadernos `data#n`) sem edição lida com os termos de hoje nem
     ausência de edição medida. Função pura. Data não tentada, edição que não é edição, sem texto ou
     recusada: tudo isso é falta de cobertura, nunca "consultado"."""
     def coberta(e):
         return isinstance(e, dict) and e.get("decisao") in ("lida", "sem_edicao_na_data") and not a_reler(e)
-    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate) if not coberta(edicoes.get(d))]
+    return ([d for d in datas_do_periodo(INICIO_DO_CICLO, ate, dias) if not coberta(edicoes.get(d))]
             + sorted(k for k, e in edicoes.items() if "#" in k and k <= ate + "~" and not coberta(e)))
 
 
@@ -439,7 +468,7 @@ def busca_de_declaracao(uf: str, registro: dict) -> dict:
     # Cobertura, não contagem (auditoria de 17/10): toda data útil do ciclo até a véspera da última
     # leitura tem de ter a edição lida com os termos de hoje, ou a ausência de edição medida (404).
     ate = (dt.datetime.strptime(em, "%d/%m/%Y").date() - dt.timedelta(days=1)).isoformat()
-    faltam = datas_sem_cobertura(edicoes, ate)
+    faltam = datas_sem_cobertura(edicoes, ate, tuple((PADROES.get(uf) or {}).get("dias", (0, 1, 2, 3, 4))))
     if faltam:
         return {"lacuna": f"{len(faltam)} data(s) útil(eis) do ciclo sem edição lida com os termos de declaração "
                           f"(a primeira: {faltam[0]})"}
@@ -464,6 +493,18 @@ def _texto_paginas(bruto: bytes) -> list:
                 for t in extrair_texto_por_pagina(bruto)]
     except Exception:  # noqa: BLE001
         return []
+
+
+AUSENTES_SEM_PROVA = 5
+
+
+def e_ausencia_declarada(e, padrao: dict, provou_acesso: bool, ausentes_sem_prova: int) -> bool:
+    """O código é o que a rota declara para objeto inexistente (`ausente`), e ainda cabe tolerá-lo:
+    uma edição já abriu nesta rodada, ou ainda não se esgotou a tolerância sem prova. Função pura."""
+    codigo = getattr(e, "code", None) or 0
+    if not codigo or codigo != (padrao or {}).get("ausente"):
+        return False
+    return provou_acesso or ausentes_sem_prova < AUSENTES_SEM_PROVA
 
 
 def _recusa(e, url: str):
@@ -543,7 +584,8 @@ def _edicoes_da_data(rota: dict, padrao: dict, data: str, listagem: dict, ancora
     if "{edicao}" in padrao["padrao"]:
         numeros = numeros_a_tentar(data, listagem, ancoras, padrao.get("janela", 8))
         return [[{"url": endereco_da_data(padrao["padrao"], data, str(n))} for n in numeros]] if numeros else []
-    return [[{"url": endereco_da_data(padrao["padrao"], data)}]]
+    # `alternativas`: outros endereços da MESMA edição (PE: portal e armazenamento), tentados em ordem.
+    return [[{"url": endereco_da_data(m, data)} for m in [padrao["padrao"], *padrao.get("alternativas", [])]]]
 
 
 def coletar_uf(uf: str, desde: str, ate: str) -> dict:
@@ -617,7 +659,8 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                 ancoras_vivas[data_lida] = int(achado.group(1))
         # Data recente "sem edição" se tenta de novo: a edição do dia pode sair depois da leitura.
         recente = (dt.date.fromisoformat(ate) - dt.timedelta(days=3)).isoformat()
-        datas = [d for d in datas_do_periodo(desde, ate) if d not in edicoes or a_reler(edicoes[d])
+        datas = [d for d in datas_do_periodo(desde, ate, tuple(padrao.get("dias", (0, 1, 2, 3, 4))))
+                 if d not in edicoes or a_reler(edicoes[d])
                  or (d >= recente and edicoes[d].get("decisao") == "sem_edicao_na_data")]
         # Do mais novo para o mais velho, em toda UF. Pelo número da edição, a âncora de cada data é a
         # vizinha (da outra ordem, a janela de oito não alcançava dois meses de deriva e tudo dava 404).
@@ -626,6 +669,10 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
         datas = sorted(datas, reverse=True)[:TETO_EDICOES]
         vistos = {e.get("impressao") for d, e in edicoes.items()
                   if isinstance(e, dict) and e.get("impressao") and d.split("#")[0] not in datas}
+        # Fonte que declara `ausente` (PE): o código de "não há objeto" coincide com um de recusa. Ele
+        # vale como ausência depois de uma edição aberta nesta rodada, ou até AUSENTES_SEM_PROVA datas
+        # seguidas sem nenhuma aberta; a partir daí é recusa como em toda fonte.
+        provou_acesso, ausentes_sem_prova = False, 0
         try:
             for data in datas:
                 try:
@@ -655,14 +702,19 @@ def coletar_uf(uf: str, desde: str, ate: str) -> dict:
                             break
                         except Exception as e:  # noqa: BLE001
                             recusa = _recusa(e, url)
+                            if recusa and e_ausencia_declarada(e, padrao, provou_acesso, ausentes_sem_prova):
+                                recusa, ausentes_sem_prova = None, ausentes_sem_prova + 1
                             if recusa:
                                 break
                             erro, status = e, getattr(e, "code", None) or 0
                     if recusa:
                         break
+                    if bruto is not None:
+                        provou_acesso = True
                     if bruto is None:
-                        edicoes[chave] = {"decisao": decidir_edicao(status, 0, 0), "em": hoje,
-                                          "motivo": f"{type(erro).__name__}: {str(erro)[:90]}"}
+                        # O código declarado como `ausente` (PE) é data sem edição, não recusa.
+                        edicoes[chave] = {"decisao": decidir_edicao(404 if status == padrao.get("ausente") else status, 0, 0),
+                                          "em": hoje, "motivo": f"{type(erro).__name__}: {str(erro)[:90]}"}
                         continue
                     # Repetição pelo hash do conteúdo: o mesmo arquivo em duas datas não são duas edições.
                     impressao = hashlib.sha256(bruto).hexdigest()
@@ -868,6 +920,8 @@ def _autoteste() -> int:
        datas_do_periodo("2026-09-28", "2026-10-02")[0] == "2026-09-28")
     ok("período de um dia útil devolve um dia", datas_do_periodo("2026-06-29", "2026-06-29") == ["2026-06-29"])
     ok("sábado sozinho devolve vazio", datas_do_periodo("2026-07-04", "2026-07-04") == [])
+    ok("PE publica de terça a sábado: a semana de 29/06 tem 30/06 a 04/07, sem a segunda",
+       datas_do_periodo("2026-06-29", "2026-07-05", PADROES["PE"]["dias"]) == ["2026-06-30", "2026-07-01", "2026-07-02", "2026-07-03", "2026-07-04"])
 
     ok("a estimativa usa a âncora mais próxima",
        estimar_edicao("2026-10-01", {"2026-09-03": 12270, "2026-10-02": 12293}) == 12292)
@@ -1003,6 +1057,16 @@ def _autoteste() -> int:
     ok("o adaptador de edição devolve uma edição por caderno",
        _edicoes_da_data({"tipo": "edicao"}, {}, "2026-10-14", {}, {},
                         lambda d: [{"url": "p01"}, {"url": "p02"}]) == [[{"url": "p01"}], [{"url": "p02"}]])
+    _pe = PADROES["PE"]
+    ok("PE: 403 do armazenamento é ausência enquanto houver tolerância ou prova de acesso",
+       e_ausencia_declarada(_Http(403), _pe, False, 0) and e_ausencia_declarada(_Http(403), _pe, True, 99)
+       and not e_ausencia_declarada(_Http(403), _pe, False, AUSENTES_SEM_PROVA)
+       and not e_ausencia_declarada(_Http(403), PADROES["PB"], True, 0)
+       and not e_ausencia_declarada(_Http(401), _pe, True, 0))
+    _pe_urls = [c["url"] for c in _edicoes_da_data({"tipo": "padrao"}, _pe, "2026-10-17", {}, {}, None)[0]]
+    ok("PE: a mesma edição tem dois endereços, portal primeiro e armazenamento depois",
+       _pe_urls == ["https://diariooficial.cepe.com.br/1/arquivos/resumoDiario/2026-10-17/2026-10-17.pdf",
+                    "https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20261017/1-PoderExecutivo/PoderExecutivo(20261017).pdf"])
     ok("o padrão por data devolve uma edição com um endereço",
        _edicoes_da_data({"tipo": "padrao"}, PADROES["PB"], "2026-09-09", {}, {}, None)[0][0]["url"].endswith("09-09-2026-portal.pdf"))
     ok("lacuna sem motivo recebe o motivo padrão",
@@ -1011,6 +1075,13 @@ def _autoteste() -> int:
        situacao_do_canal2("XX")["modo"] == MODO_SEM_ROTA)
     ok("UF com adaptador de busca entra como busca no diário",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}})["modo"] == "busca_no_diario")
+    _rec = {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 403 em https://diariooficial.cepe.com.br/arquivos/x.pdf — recusa"}}
+    ok("recusa registrada noutro host não recusa a rota nova (PE: portal recusou, armazenamento é outra rota)",
+       situacao_do_canal2("PE", padroes={"PE": {"padrao": "https://cepebr-prod.s3.amazonaws.com/{ano}.pdf"}}, registro=_rec)["modo"] == "padrao_por_data"
+       and situacao_do_canal2("PE", registro=_rec)["modo"] == MODO_SEM_ACESSO
+       and recusa_vale_para("HTTP 403", {"tipo": "padrao", "detalhe": "https://a/x"})
+       and recusa_vale_para("HTTP 403 em https://a/y", {"tipo": "padrao", "detalhe": "https://a/x"})
+       and not recusa_vale_para("HTTP 403 em https://a/y", {"tipo": "busca", "url": "https://b"}))
     ok("rota sem acesso automático registrada vence, e não conta como consultado",
        situacao_do_canal2("XX", {}, {"XX": {"adaptador": "apifront"}},
                           {"canal2": {"modo": MODO_SEM_ACESSO, "motivo": "HTTP 401"}})["modo"]
@@ -1072,7 +1143,9 @@ def _autoteste() -> int:
        "2026-07-01" in datas_sem_cobertura({d: e for d, e in ciclo.items() if d != "2026-07-01"}, "2026-10-01")
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-02": {"decisao": "nao_e_edicao"}}), "2026-10-01") == ["2026-07-02"]
        and datas_sem_cobertura(dict(ciclo, **{"2026-07-03": {"decisao": "sem_edicao_na_data"}}), "2026-10-01") == []
-       and datas_sem_cobertura(dict(ciclo, **{"2026-07-03#2": {"decisao": "vazio"}}), "2026-10-01") == ["2026-07-03#2"])
+       and datas_sem_cobertura(dict(ciclo, **{"2026-07-03#2": {"decisao": "vazio"}}), "2026-10-01") == ["2026-07-03#2"]
+       and datas_sem_cobertura({d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-07-10", (1, 2, 3, 4, 5))},
+                               "2026-07-10", (1, 2, 3, 4, 5)) == [])
     ok("leitura pela metade (uma edição só) não é consultado",
        "lacuna" in busca_de_declaracao("PB", {"edicoes": {"2026-10-01": nova}, "atualizado_em": "02/10/2026"}))
     ok("UF sem rota é lacuna da metade estadual", "lacuna" in busca_de_declaracao("XX", {}))

@@ -16,7 +16,7 @@ O que ele mede, por UF sem adaptador:
 - a recusa, quando houver: bloqueio de acesso real (401, 403, 429, 451) ou muro de robô servido
   com 200 — as duas se respeitam e as duas ficam escritas.
 
-O que ele **não** faz: não executa JavaScript, não tenta adivinhar rota por tentativa cega, não
+O que ele **não** faz (salvo com `--renderizar`, que usa o navegador identificado do projeto): não executa JavaScript, não tenta adivinhar rota por tentativa cega, não
 promove nada a registro e não escreve em nenhum arquivo do banco. Rota encontrada aqui é **pista
 de engenharia** — quem decide escrever o adaptador é quem lê o relatório.
 
@@ -24,6 +24,7 @@ Uso:
     python3 scripts/sondar_rotas_doe.py              # sonda e grava o diagnóstico
     python3 scripts/sondar_rotas_doe.py --ensaio     # sonda e só imprime
     python3 scripts/sondar_rotas_doe.py --reconferir # 1 GET identificado por rota de cada UF; grava `reconferencia`
+    python3 scripts/sondar_rotas_doe.py --renderizar # sem adaptador: renderiza a página (navegador identificado) e deriva o padrão por data
     python3 scripts/sondar_rotas_doe.py --autoteste  # funções puras, sem rede e sem escrita
 """
 from __future__ import annotations
@@ -99,6 +100,34 @@ def diagnostico(html: str) -> dict:
             "links_de_busca": links,
             # "pista" quer dizer: há por onde começar. Não quer dizer que a busca funcione.
             "veredito": "pista_de_rota" if (formas or links) else "sem_rota_na_pagina_inicial"}
+
+
+RE_DATA_NO_LINK = (
+    (re.compile(r"(20\d{2})(\d{2})(\d{2})"), "{ano}{mm}{dd}"),
+    (re.compile(r"(20\d{2})-(\d{2})-(\d{2})"), "{ano}-{mm}-{dd}"),
+    (re.compile(r"(\d{2})-(\d{2})-(20\d{2})"), "{dd}-{mm}-{ano}"),
+    (re.compile(r"(\d{2})/(\d{2})/(20\d{2})"), "{dd}/{mm}/{ano}"),
+)
+RE_EDICAO = re.compile(r"\.pdf|edicao|caderno|diario", re.I)
+
+
+def padrao_por_data(href: str):
+    """O endereço com a data trocada por marcadores ({ano} {mm} {dd}), ou None. Função pura."""
+    for rx, molde in RE_DATA_NO_LINK:
+        if rx.search(href or ""):
+            return rx.sub(molde, href)
+    return None
+
+
+def diagnostico_renderizado(render: dict) -> dict:
+    """O que a página renderizada mostra: padrões de edição por data e links de busca. Função pura."""
+    if not (render or {}).get("ok"):
+        return {"veredito": "nao_renderizou", "motivo": ((render or {}).get("erro") or "sem resposta")[:200]}
+    hrefs = [l.get("href", "") for l in render.get("links") or []]
+    padroes = sorted({p for h in hrefs if RE_EDICAO.search(h) and (p := padrao_por_data(h))})[:5]
+    buscas = sorted({h[:140] for h in hrefs if RE_LINK_BUSCA.search(f'href="{h}"')})[:5]
+    return {"veredito": "pista_de_padrao" if padroes else ("pista_de_rota" if buscas else "sem_rota_renderizada"),
+            "padroes_por_data": padroes, "links_de_busca": buscas, "n_links": render.get("n_links", len(hrefs))}
 
 
 def veredito_da_recusa(erro) -> dict:
@@ -182,6 +211,18 @@ def _autoteste() -> int:
     ok("veredito de ausência quando não há nada",
        diagnostico("<html><body>só texto</body></html>")["veredito"] == "sem_rota_na_pagina_inicial")
 
+    ok("padrão por data troca AAAAMMDD", padrao_por_data("https://x.test/1/cadernos/2025/20250708/a(20250708).pdf")
+       == "https://x.test/1/cadernos/2025/{ano}{mm}{dd}/a({ano}{mm}{dd}).pdf")
+    ok("padrão por data troca DD-MM-AAAA e ignora link sem data",
+       padrao_por_data("https://x.test/d/08-07-2025.pdf") == "https://x.test/d/{dd}-{mm}-{ano}.pdf"
+       and padrao_por_data("https://x.test/sobre") is None)
+    dr = diagnostico_renderizado({"ok": True, "n_links": 2, "links": [
+        {"href": "https://x.test/d/2025-07-08/diario.pdf"}, {"href": "https://x.test/busca"}]})
+    ok("renderizado: padrão por data vira pista_de_padrao", dr["veredito"] == "pista_de_padrao"
+       and dr["links_de_busca"] == ["https://x.test/busca"])
+    ok("renderizado: falha do navegador é nao_renderizou, não ausência",
+       diagnostico_renderizado({"ok": False, "erro": "Timeout"})["veredito"] == "nao_renderizou")
+
     class _Muro(Exception):
         pass
     _Muro.__name__ = "MuroDeRobo"
@@ -240,7 +281,10 @@ def main() -> int:
         ontem = (hoje_editorial() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
         reconferir(ufs, lambda u, timeout: buscar_uma_vez(u, timeout=timeout, origem="reconferencia DOE"),
                    robots_de, hoje, ontem)
+    renderizando = "--renderizar" in sys.argv
     alvos = [(uf, (v or {}).get("url")) for uf, v in sorted(ufs.items()) if not (v or {}).get("adaptador")] if not reconferindo else []
+    if renderizando:
+        from descobrir_planos import _renderizar
     print(f"{len(alvos)} unidade(s) sem adaptador a sondar")
 
     for uf, url in alvos:
@@ -248,6 +292,12 @@ def main() -> int:
             d = {"veredito": "sem_endereco", "motivo": "nenhum endereço de diário registrado"}
         else:
             try:
+                if renderizando:
+                    d = diagnostico_renderizado(_renderizar(url, "sondar_rotas_doe/renderizado"))
+                    d["sondado_em"] = hoje
+                    ufs[uf]["sondagem_renderizada"] = d
+                    print(f"  {uf}: {d['veredito']} · {d.get('padroes_por_data') or d.get('motivo', '')}")
+                    continue
                 html = buscar(url, timeout=45).decode("utf-8", "replace")
                 d = diagnostico(html)
             except MuroDeRobo as e:

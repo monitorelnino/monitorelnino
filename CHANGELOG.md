@@ -9,6 +9,14 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Pernambuco: dias de publicação da rota · Medido: 72 edições de 30/06 a 06/11, toda segunda-feira ausente e edição aos sábados. A rota por data declara os dias em que a fonte publica (PE: terça a sábado), usados na leitura e na cobertura; o código declarado como `ausente` vira "sem edição na data", não "recusa".
+
+## 2026-11-06 · Pernambuco: edição recente pelo portal da CEPE, antiga pelo armazenamento · Medido do runner: o armazenamento da CEPE abre maio de 2026 e não outubro e novembro; as edições recentes vivem no próprio portal, por data (`/1/arquivos/resumoDiario/`). A rota por data passa a aceitar endereços alternativos da mesma edição, tentados em ordem.
+
+## 2026-11-06 · Sondagem dos diários renderiza a página · SPA (PE, BA e outras) esconde os links de edição atrás do JavaScript, e a sondagem lia só o HTML estático e concluía "sem rota". `sondar_rotas_doe.py --renderizar` usa o navegador identificado que já existe e deriva o padrão de endereço por data como pista de engenharia. Não decide nada, só registra em `fontes_doe.json`. Autoteste offline. Saldo +51/−1 no coletor.
+
+## 2026-11-06 · Pernambuco: edições do DOE pelo armazenamento da CEPE · O portal da CEPE recusava (401/403) e PE ficava sem canal 2. O caderno do Executivo é servido por data do armazenamento da própria CEPE (conferido na edição de 08/07/2025); entra como padrão por data, com o 403 de objeto ausente declarado na rota e tolerado só com prova de acesso. Recusa registrada passa a valer por endereço: rota nova noutro host não nasce recusada.
+
 ## 2026-11-06 · Diários estaduais: a noite lê todo o ciclo ainda não lido · O elo incremental lia só os últimos 4 dias; data que falhava uma vez saía da janela, e AL, AM, MG e PB acumularam de 70 a 124 datas sem leitura. Agora lê as datas não lidas desde 29/06, da mais nova para a mais velha, com prazo próprio de 80 minutos, e o julgamento das emergências vem depois.
 
 ## 2026-11-06 · Financiamento: a legenda do mapa do dinheiro mostra o tamanho em círculos de referência · O item cinza "maior círculo" parecia uma terceira categoria; agora dois círculos na mesma escala do mapa (o maior valor e um valor redondo menor) legendam o tamanho, sem cor de categoria. Rótulo no catálogo. Sem mudança em dado.
@@ -46,6 +54,7 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-05 · #1527 · Redução: constantes, imports e ramo morto saem · Saem 11 constantes sem leitor, 4 imports sem uso e o ramo inalcançável do registro de LAI em `recalcular_mare.py` (ficava depois de um `raise`). Sem mudança de comportamento. Linhas líquidas: código −21.
 
 ## 2026-11-05 · sítio da prefeitura: endereço oficial e página renderizada · A busca do portal tenta primeiro o endereço oficial do cadastro público (Wikidata) e, quando a home só monta por JavaScript, lê os links da página renderizada pelo navegador; refaz uma vez os municípios sem portal ou sem página lida. Código +60/−28.
+
 ## 2026-11-05 · #1545 · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
 
 ## 2026-11-05 · #PR · erro não apaga leitura (fontes abertas) · Na releitura de S16 e S25 das capitais (5xx e timeout do Wayback e do Common Crawl), seis leituras válidas (`lido`, `sem_resultado`) de 26–28/10 viraram `erro`. `manter_leitura` preserva a leitura anterior quando a nova é erro; o erro segue no log. Autoteste cobre os cinco casos. Código +13/−1.
@@ -95,6 +104,7 @@ Por decisão da editoria (03/11), a forma "projeção de X" substitui "X projeta
 ## 2026-11-04 · #1478 · Juiz de saúde relê a cópia preservada quando a fonte não abre (+43/−13)
 
 `portal.pi.gov.br` resolve, mas a porta 443 não responde ao runner (sonda 04/11): o rejulgamento do PI ficava pendente e o título antigo ("EQUIPE GESTORA…") seguia no ar. Sem download, o juiz lê agora o texto já preservado do mesmo endereço, com o hash do instrumento; sem cópia, segue pendente. Um caso de teste.
+
 ## 2026-11-04 · Redução: cabeçalho duplicado sai do verificador de Saúde
 
 `verificar_runtime_saude.js` carregava, além do seu cabeçalho, uma cópia do cabeçalho do verificador de sinais (com `Uso:` apontando para outro script). A cópia saiu; nenhuma verificação mudou. Código: +0/−9.
@@ -176,6 +186,7 @@ Causa raiz: `coletar_edicoes_doe.py` tratava a data com conexão recusada ou tim
 ## 2026-10-31 · METODOLOGIA §127: mortalidade registrada e excesso observado · +18/−0
 
 Seção nova: quadro de mortalidade a partir de julho/2026, método v1 do excesso (média de 2019 e 2022–2025, intervalo, limites), projeção do Climate Impact Lab como lacuna declarada, X30, peso zero. Sem mudança de dado, página ou índice.
+
 ## 2026-11-01 · Sonda diária de chaves no elo de sinais (+155/−0)
 
 `sondar_credenciais.py --noite` sonda Portal, OpenAQ e INMET uma vez por noite, grava `data/noite/<noite>/chaves.json` (Secret, fonte, HTTP, data, desde; nunca a chave) e abre ou fecha uma Issue por chave no robo-registro. Rota sem chave em `config/rotas_sem_chave.json`; a coleta segue. Autoteste com 403 simulado.
@@ -197,9 +208,11 @@ Novo `coletar_projecao_cil.py`, no elo `desfechos` antes de `gerar_mortalidade_c
 ## 2026-11-01 · Frescor: fonte que recusa não trava o site (+54/−16)
 
 Arquivo de coletor vencido passa quando o painel de tentativas traz recusa ou falha com motivo dentro de 9 dias; a página segue com a data do dado. Vermelho só quando ninguém tentou. O fundo a fundo do TransfereGov passa a coletar antes do CSV e não depende dele.
+
 ## 2026-11-01 · A reaplicação da noite não traz texto ausente (+9/−2)
 
 `reaplicar_noite.py` filtrava o índice de evidências só pelo binário; a reaplicação do `atualizar` de 01/11 trouxe 12 `texto_arquivo` sem o `.txt` e a `main` ficou vermelha em `verificar_evidencias`. Agora a entrada antiga que ganha arquivo ausente volta ao que era e a nova sem arquivo fica fora. Índice de evidências restabelecido.
+
 ## 2026-11-01 · Alagoas: endereço do decreto do Comitê El Niño · +0/−0
 
 O Decreto nº 110.661 (DOE-AL de 25/08/2026), lido pelo runner, vira o endereço da estrutura de coordenação de Alagoas em `proveniencia_estadual.json`; sai de `defeitos_de_prova`. O plano de ação do comitê segue em lacuna. Sem mudança de nota. Sergipe segue sem leitura do texto.
@@ -265,6 +278,7 @@ O canal 2 procura também "El Niño", "plano de contingência", "comitê", "gabi
 ## 2026-10-30 · #1369 · Pacote de saúde do blog sem dado velho; vigência dos atos de emergência
 
 O pacote tratava a semana da fonte (2026-35) como data de hoje: agora dado com mais de nove dias vira lacuna com "sem atualização desde" (dengue, 05/09; SRAG, 03/10). O ato de emergência passa a registrar a vigência declarada (AM: 180 dias) ou a presumida de 180 dias, e o decreto revogado: sai do "em vigor" do índice de resposta e fica no histórico.
+
 ## 2026-10-30 · #1368 · O modo paralelo do juiz sai do código (+1/−681)
 O juiz 1.8 é o de produção desde hoje. Saem `scripts/rejulgar_decisoes_do_juiz.py` (rodada paralela e rejulgamento de 28/09), os helpers `_18` de `scripts/pistas.py` e do `seguir_pistas.py`. `data/paralelo_*18.json` ficam como registro, sem escritor.
 
