@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-06 · Diários estaduais: a noite lê todo o ciclo ainda não lido · O elo incremental lia só os últimos 4 dias; data que falhava uma vez saía da janela, e AL, AM, MG e PB acumularam de 70 a 124 datas sem leitura. Agora lê as datas não lidas desde 29/06, da mais nova para a mais velha, com prazo próprio de 80 minutos, e o julgamento das emergências vem depois.
+
 ## 2026-11-06 · Financiamento: a legenda do mapa do dinheiro mostra o tamanho em círculos de referência · O item cinza "maior círculo" parecia uma terceira categoria; agora dois círculos na mesma escala do mapa (o maior valor e um valor redondo menor) legendam o tamanho, sem cor de categoria. Rótulo no catálogo. Sem mudança em dado.
 
 ## 2026-11-06 · #1551 · Sondas de uma vez saem do repositório · O workflow manual `diagnostico_sinais.yml` (04/09) e nove sondas sem outro chamador foram removidos: −1.488 linhas líquidas. Sem mudança em página ou dado.
