@@ -113,7 +113,7 @@ REGENERAVEIS = (
     "docs/MANIFEST_SHA256.txt", "docs/FILA_PISTAS.md", "data/pistas_revisao.json",
     "data/blog/posts.json", "data/cadencia_publicacao.json", "data/citacao_incompleta.json",
     "data/cobertura_declarada_uf.json", "data/enquadramento_card.json",
-    "data/financiamento/contadores_uf.json", "data/indice.json",
+    "data/financiamento/contadores_uf.json", "data/imprensa/semana.json", "data/indice.json",
     "data/log_buscas_resumo.json", "data/monitor_saude.json", "data/municipios_card.json",
     "data/municipios_prioritarios.json", "data/paralelo_v32.json", "data/resposta/municipios.json",
     "data/resposta/municipios_decretados.json", "data/resposta/por_uf.json",
