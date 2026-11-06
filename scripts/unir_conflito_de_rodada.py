@@ -312,7 +312,8 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 # lados para valores diferentes segue a regra da pista (recusa). Diários e busca web escrevem fontes
 # diferentes do mesmo município desde 14/10 — o push dos diários da noite 14→15 caiu nele.
 INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts",
-                     "data/fontes_consultadas.json": "municipios"}
+                     "data/fontes_consultadas.json": "municipios",
+                     "data/doe_ocorrencias.json": "ufs"}
 
 
 def _unir_municipio_do_livro(base: dict, nosso: dict, deles: dict) -> dict:
@@ -1056,6 +1057,15 @@ def autoteste() -> int:
                                pl("a", {"1": {"S16": {**s0, "situacao": "y"}}}))
         res, reg, rec = resolver(repo=r)
         checar("planos_busca: a mesma fonte lida diferente nos dois lados é recusada", bool(rec))
+    with tempfile.TemporaryDirectory() as t:
+        DO = "data/doe_ocorrencias.json"
+        r = _repo_com_conflito(t, DO, _doc("ufs", {"PE": {"2026-10-01": {"achados": []}}}),
+                               _doc("ufs", {"PE": {"2026-10-01": {"achados": []}}, "SE": {}}),
+                               _doc("ufs", {"PE": {"2026-10-01": {"achados": []}, "2026-10-02": {"achados": [1]}}}))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / DO).read_text(encoding="utf-8")) if not rec else {"ufs": {}}
+        checar("doe_ocorrencias: une UF nova de um lado e edição nova do outro, pela base comum",
+               not rec and "SE" in d["ufs"] and sorted(d["ufs"]["PE"]) == ["2026-10-01", "2026-10-02"])
     with tempfile.TemporaryDirectory() as t:
         RB = "data/robots_registro.json"
         ac = lambda u: {"url": u, "quando": u}
