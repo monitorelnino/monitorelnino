@@ -1501,7 +1501,8 @@ def _gravar_contadores(contagem: dict, hoje) -> None:
     pasta.mkdir(parents=True, exist_ok=True)
     caminho = pasta / f"{hoje.isoformat()}.json"
     doc = json.loads(caminho.read_text(encoding="utf-8")) if caminho.exists() else {}
-    doc["verificador_imprensa"] = {**contagem, "versao": VERSAO}
+    doc["verificador_imprensa"] = {**contagem, "versao": VERSAO,
+                                   "gravado_em": datetime.datetime.now().replace(microsecond=0).isoformat()}
     gravar_em(caminho, doc)
 
 
