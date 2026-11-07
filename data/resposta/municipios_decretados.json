@@ -5305,9 +5305,25 @@
      "data": "03/11/2026",
      "decreto": "situação de emergência (número não localizado no texto)",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (07/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-duas-cidades-afetadas-por-desastres-1",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/reconhecida-emergencia-em-duas-cidades-afetadas-por-desastres-1",
+     "data": "06/11/2026",
+     "decreto": "ato de resposta — Portaria n.º 3.847",
+     "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (07/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-16-cidades-afetadas-por-desastres",
+     "data": "26/01/2026",
+     "decreto": "ato de resposta — Portaria nº 190",
+     "hash": null
     }
    ],
-   "n_eventos": 11,
+   "n_eventos": 13,
    "dias_sem_reconhecimento": 297
   },
   "2602506": {
@@ -29552,18 +29568,19 @@
    "nome": "Santa Cruz da Baixa Verde",
    "uf": "PE",
    "decreto": true,
-   "primeiro_decreto": "03/07/2026",
+   "primeiro_decreto": "14/01/2026",
    "primeiro_reconhecimento": "03/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "sem_tipo_informado"
+    "chuva"
    ],
-   "dias_ate_reconhecimento": 0,
+   "dias_ate_reconhecimento": 170,
    "fontes": [
     {
      "canal": "DOU",
@@ -29572,9 +29589,17 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2203",
      "hash": null
+    },
+    {
+     "canal": "imprensa",
+     "fonte": "classificado automaticamente (07/11/2026) a partir de https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "url": "https://www.gov.br/mdr/pt-br/noticias/midr-reconhece-a-situacao-de-emergencia-em-137-cidades-afetadas-por-desastres",
+     "data": "14/01/2026",
+     "decreto": "ato de resposta — Portaria nº 78",
+     "hash": null
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": null
   },
   "4123303": {
