@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Sítio da prefeitura: `--refazer-parados` · A válvula só refazia no mesmo dia o município cuja lista de endereços mudou; o parado por porta que não serviu (render sem navegador, #1599) ficava até o dia seguinte. Com `--refazer-parados`, `portal_nao_verificado` e `nao_verificado` de hoje se refazem; lido e recusa nunca se repetem.
+
 ## 2026-11-07 · Sítio da prefeitura: a lacuna `nao_verificado` diz cada porta que não serviu · Na varredura dos 2.095 prioritários de 07/11, 415 municípios ficaram em `nao_verificado` sem motivo. O registro passa a nomear as portas (API, links no HTML, render com o erro, busca no domínio), e é assim que o render sem Chromium (#1599) aparece no dado em vez de sumir.
 
 ## 2026-11-07 · O coletor reutilizável instala o Chromium quando pede Node · O canal renderizado da descoberta de planos (`scripts/renderizar_pagina.js`) precisa do Chromium, e `npm ci` não o traz; desde que a descoberta saiu do `atualizar.yml` ele caía calado na noite (último achado: setembro). `_coletor.yml` passa a instalar o navegador com `precisa_node`, com cache por versão, e `noturno_descoberta.yml` pede Node.
