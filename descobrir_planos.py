@@ -529,6 +529,11 @@ def autoteste() -> int:
                 and nada["situacao"] == "portal_nao_verificado" and "https://zeta.zz.gov.br: DNS" in nada["motivo"]
                 and nome_da_falha(TimeoutError("timed out")) == "timeout" and parece_montar_por_javascript("<p>" + "texto " * 200 + "</p>") is False)
 
+    def t_href_de_molde_nao_derruba():
+        """07/11/2026: `urljoin` levanta ValueError em href de molde (`//[facebook_entidade]/x`); o link é pulado."""
+        html = '<a href="//[facebook_entidade]/x">Facebook</a><a href="/plano-de-contingencia.pdf">Plano de contingência</a>'
+        return [h for h, _ in links_da_pagina(html, "https://x.gov.br/")] == ["https://x.gov.br/plano-de-contingencia.pdf"]
+
     def t_sitio_uma_linha_por_municipio():
         """Cada município lido vira uma linha `site_municipal` com município e UF; o que não foi lido é `erro`;
         a fila aceita `municipios` do cadastro (codigo_ibge numérico)."""
@@ -537,7 +542,8 @@ def autoteste() -> int:
         linhas = []
         res = {"1200013": {"dominio": "acrelandia.ac.gov.br", "situacao": "lido", "pistas": []},
                "1200054": {"dominio": None, "situacao": "portal_nao_verificado", "pistas": []},
-               "1200104": {"dominio": "x.ac.gov.br", "situacao": "lido", "pistas": [{"url": "u"}]}}
+               "1200104": {"dominio": "x.ac.gov.br", "situacao": "lido", "pistas": [{"url": "u"}]},
+               "1200138": ValueError("href de molde")}   # defeito num município: registro dele, não queda do lote
         ref = {c: {"nome": f"M{c}", "uf": "AC"} for c in res}
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
             json.dump([{"codigo_ibge": int(c)} for c in res], f)   # a lista inteira do IBGE, sem invólucro
@@ -547,15 +553,16 @@ def autoteste() -> int:
              mock.patch(f"{__name__}.gravar"), \
              mock.patch(f"{__name__}.log_busca", side_effect=lambda *a, **k: linhas.append((a, k))), \
              mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
-             mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h, o=None, b=None: res[c]), \
+             mock.patch(f"{__name__}.descobrir_no_portal",
+                        side_effect=lambda n, u, c, h, o=None, b=None: res[c] if isinstance(res[c], dict) else (_ for _ in ()).throw(res[c])), \
              mock.patch("scripts.pistas.gravar_lote", return_value={"gravadas": 0, "recusadas": 0}):
             rodar_municipios(f.name, fatia_k_n=(1, 2))   # fatia 1/2: 1200013 e 1200104
             rodar_municipios(f.name, fatia_k_n=(2, 2))   # fatia 2/2: 1200054
         import os
         os.unlink(f.name)
         por = {k["ibge"]: (a[0], a[3], k["municipio"], k["uf"]) for a, k in linhas if a[0] == "site_municipal"}
-        return (len(por) == 3 and por["1200013"] == ("site_municipal", "consultado sem achado", "M1200013", "AC")
-                and por["1200054"][1] == "erro" and por["1200104"][1] == "pista")
+        return (len(por) == 4 and por["1200013"] == ("site_municipal", "consultado sem achado", "M1200013", "AC")
+                and por["1200054"][1] == "erro" and por["1200104"][1] == "pista" and por["1200138"][1] == "erro")
 
     return rodar_autoteste({
         "rota 1b: busca no domínio acha o portal e o link; busca fora do ar não vira ausência": t_rota_1b_busca_no_dominio,
@@ -573,6 +580,7 @@ def autoteste() -> int:
         "garantia estrutural: nunca escreve nos bancos": t_trava_estrutural,
         "portal da prefeitura: endereço padrão e identidade da página": t_dominios_e_identidade_do_portal,
         "portal da prefeitura: links da home, só candidatos e absolutos": t_links_da_home_so_candidatos_e_absolutos,
+        "portal da prefeitura: href de molde não derruba a leitura": t_href_de_molde_nao_derruba,
         "portal da prefeitura: a pista passa pela porta única": t_pista_do_portal_passa_pela_porta,
         "portal da prefeitura: recusa e endereço mudo não viram plano nem ausência de plano": t_portal_recusa_e_ausencia_nao_viram_plano,
         "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
@@ -843,7 +851,10 @@ def links_da_pagina(html: str, base: str) -> list:
     """[(href, texto)] dos links candidatos a plano na página, no teto da página. Função pura."""
     achados = []
     for m in re.finditer(r'<a\s[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', str(html or ""), re.I | re.S):
-        href = urllib.parse.urljoin(base, m.group(1).strip())
+        try:
+            href = urllib.parse.urljoin(base, m.group(1).strip())
+        except ValueError:   # 07/11/2026: href de molde (`//[facebook_entidade]/…`) derrubou o lote 2 do cadastro
+            continue
         texto = " ".join(re.sub(r"<[^>]+>", " ", m.group(2)).split())
         if link_e_candidato(href, texto) and href not in [h for h, _ in achados]:
             achados.append((href, texto))
@@ -1034,9 +1045,15 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
         lidos += 1
         registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
 
+    def _um(c):   # defeito num município é registro dele, nunca a queda do lote (07/11/2026, lote 2 do cadastro)
+        try:
+            return descobrir_no_portal(por_cod[c]["nome"], por_cod[c]["uf"], c, hoje, oficiais.get(c), busca)
+        except Exception as e:  # noqa: BLE001
+            return {"dominio": None, "situacao": "nao_verificado", "pistas": [],
+                    "motivo": f"defeito do coletor: {type(e).__name__}: {str(e)[:120]}"}
+
     with ThreadPoolExecutor(max_workers=WORKERS_MUNICIPAIS) as pool:
-        futuros = {pool.submit(descobrir_no_portal, por_cod[c]["nome"], por_cod[c]["uf"], c, hoje, oficiais.get(c), busca): c
-                   for c in todo}
+        futuros = {pool.submit(_um, c): c for c in todo}
         try:
             for f in as_completed(futuros):
                 _registrar(futuros[f], f.result())
