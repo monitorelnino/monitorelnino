@@ -194,6 +194,11 @@ def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list):
         return min(nosso_v, deles_v)     # ISO: a menor data é a primeira rejeição
     if campo == "busca_web_espera" or campo.startswith("cursor"):
         return nosso_v                   # lado da `main`: estado de fila
+    if campo == "wayback":               # 07/11/2026: dois lotes preservaram o mesmo documento no mesmo dia;
+        for v in (nosso_v, deles_v):     # a cópia que o Wayback aceitou existe — vence a tentativa que falhou
+            if str(v).startswith("https://web.archive.org/"):
+                return v
+        return nosso_v                   # duas falhas: o nome da exceção não é dado
     if campo in _CAMPOS_DO_ARQUIVO:
         raise Recusa(f"campo derivado do arquivo {campo!r} muda nos dois lados: recalcular do arquivo")
     raise Recusa(f"os dois lados mudaram o campo {campo!r} da mesma pista para valores "
@@ -1096,6 +1101,15 @@ def autoteste() -> int:
         d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
         checar("F55: índice de evidências une as entradas novas e a mudança de um lado só",
                not rec and d["itens"] == {"a": {"ocr": 1}, "b": {"x": 1}, "c": {"x": 2}})
+    with tempfile.TemporaryDirectory() as t:
+        W = "https://web.archive.org/web/*/https://x.gov.br/p.pdf"
+        r = _repo_com_conflito(t, EV, _doc("itens", {"a": {"wayback": None}}),
+                               _doc("itens", {"a": {"wayback": "tentativa falhou (HTTPError)"}}),
+                               _doc("itens", {"a": {"wayback": W}}))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
+        checar("evidências: o mesmo documento preservado por dois lotes — a cópia aceita pelo Wayback vence a tentativa falhada",
+               not rec and d["itens"]["a"]["wayback"] == W)
     with tempfile.TemporaryDirectory() as t:
         PB = "data/planos_busca/DF.json"
         pl = lambda g, m: json.dumps({"gerado_em": g, "municipios": m})
