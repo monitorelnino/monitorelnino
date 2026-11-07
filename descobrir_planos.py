@@ -513,7 +513,13 @@ def autoteste() -> int:
             with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=lambda u, timeout=0: (_ for _ in ()).throw(OSError("[Errno -2] Name or service not known"))), \
                  mock.patch(f"{__name__}._renderizar", return_value={"ok": False}):
                 nada = descobrir_no_portal("Zeta", "ZZ", "0", "2026-11-07")
+            # a prefeitura respondeu e nada serviu: a lacuna diz cada porta (API, HTML, render, busca)
+            with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=lambda u, timeout=0: b"<title>Prefeitura Municipal de Xis</title><p>" + b"texto " * 200), \
+                 mock.patch(f"{__name__}._renderizar", return_value={"ok": False, "erro": "saída do renderizador não é JSON"}):
+                xis = descobrir_no_portal("Xis", "ZZ", "1", "2026-11-07", busca=lambda q: {"results": []})
         return (http["dominio"] == "itapema.sc.gov.br" and http["situacao"] == "lido"
+                and xis["situacao"] == "nao_verificado"
+                and xis["motivo"] == "sem API; 0 link(s) candidato(s) no HTML; render: saída do renderizador não é JSON; busca no domínio: 0 link(s)"
                 and sp["dominio"] == "garuva.sc.gov.br" and sp["situacao"] == "lido" and r_.call_count == 1
                 and [p["url"] for p in sp["pistas"]] == ["https://garuva.sc.gov.br/plano-de-contingencia.pdf"]
                 and nada["situacao"] == "portal_nao_verificado" and "https://zeta.zz.gov.br: DNS" in nada["motivo"]
@@ -939,6 +945,8 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
         if href not in vistos:
             vistos.add(href)
             itens.append((href, texto, None, None))
+    # 07/11/2026 (415 prioritários em `nao_verificado` sem motivo): cada porta que não serviu é nomeada.
+    etapas = [] if respondeu else ["sem API", f"{len(itens)} link(s) candidato(s) no HTML"]
     if not (respondeu or itens):   # a home só monta por JavaScript: a página como o navegador a vê
         if render is None:
             with _pedido_ao_host(dominio):
@@ -948,13 +956,16 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                 vistos.add(l["href"])
                 itens.append((l["href"], l.get("texto"), None, None))
         respondeu = bool(render.get("ok"))
+        etapas.append("render: " + (f"{len(render.get('links') or [])} link(s)" if respondeu else str(render.get("erro") or "sem resposta")[:80]))
     if not (respondeu or itens) and busca:   # rota 1b: a prefeitura sem link em HTML estático, pela busca no domínio
         for url, titulo in links_por_busca(nome, dominio, busca):
             if url not in vistos and len(vistos) < MAXIMO_LINKS_POR_PAGINA:
                 vistos.add(url)
                 itens.append((url, titulo, None, None))
+        etapas.append(f"busca no domínio: {len(itens)} link(s)")
     situacao = "lido" if (respondeu or itens) else "nao_verificado"
-    return {"dominio": dominio, "situacao": situacao, "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje)}
+    return {"dominio": dominio, "situacao": situacao, "pistas": pistas_do_portal(nome, uf, ibge, dominio, itens, hoje),
+            **({} if situacao == "lido" else {"motivo": "; ".join(etapas)})}
 
 
 def registrar_consulta_do_sitio(nome: str, uf: str, ibge: str, r: dict) -> None:
