@@ -4,15 +4,15 @@
  "etapas": {
   "busca_web": {
    "brutos_periodo_ou_seca": 0,
-   "brutos_plancon": 160,
+   "brutos_plancon": 320,
    "brutos_siglas_e_variantes": 0,
    "coberto_sem_mencao": 0,
-   "com_resultado_bruto": 8,
-   "consultas": 18,
+   "com_resultado_bruto": 16,
+   "consultas": 36,
    "lacunas": 0,
-   "motor_sem_resposta": 10,
+   "motor_sem_resposta": 20,
    "nao_localizado_ate_o_momento": 0,
-   "pistas": 7
+   "pistas": 10
   },
   "descobrir_planos": {
    "achados_novos": 6,
@@ -28,22 +28,22 @@
    "recusa_citacao_incompleta": 725,
    "recusa_documento_inacessivel": 917,
    "recusa_ente_nao_confirmado": 50,
+   "recusa_executivo_pendente": 17,
    "recusa_familia_de_risco_nao_identificada": 2,
    "recusa_fora_do_objeto": 12,
    "recusa_minuta_ou_rascunho": 2,
    "recusa_natureza_duvidosa": 142,
+   "recusa_noticia_institucional_nao_e_o_plano": 22,
    "recusa_plano_sem_identificacao": 6,
    "recusa_resposta": 28,
-   "recusa_texto_nao_extraivel": 100,
    "recusa_sem_documento_primario": 195,
-   "recusa_executivo_pendente": 17,
-   "recusa_noticia_institucional_nao_e_o_plano": 22
+   "recusa_texto_nao_extraivel": 100
   },
   "transferencias_municipais": {
-   "consultas": 10,
    "com_resultado_bruto": 10,
+   "consultas": 10,
    "municipios": 55648
   }
  },
- "atualizado_em": "2026-11-07T01:16:53"
+ "atualizado_em": "2026-11-07T01:41:19"
 }
