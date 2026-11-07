@@ -397,7 +397,7 @@
    ],
    "correcao": "Verificadores julgam o modo vencido com a regra que já existia (`contadorDeAlerta`, `mapasCobrados`, `SEM_ATUALIZACAO`); a coerência não lê data como número e aplica o retrato datado também a \"sem dado\"; o cartão de tipos declara a parada pelo seu subtítulo. O portão de robustez passa a envelhecer os alertas (perturbação 7) e reprova a regressão.",
    "recorrencia": "2026-10-30: `verificar_frescor` reprovou com 24,2 h (limite 24 h) minutos antes da coleta da noite; limite passa a 26 h (cadência 24 h + 2 h de folga). 2026-11-07: Portões vermelhos no push e87fdc8e (01:16, run 42323189838): a Imprensa publicava a consulta de 05/11 22:15 (27 e 3.213) e a página estava em \"Sem atualização desde 05/11/2026 22:15\"; a coerência só aceitava retrato datado quando a página já mostrava consulta mais nova. Passa a aceitar a consulta igual ou anterior à parada.",
-   "caso_de_teste": "scripts/verificar_imprensa_coerencia.py --autoteste: F28: coleta vencida nas duas páginas; F28: Imprensa com o número da consulta da parada, página em 'Sem atualização' — retrato datado",
+   "caso_de_teste": "scripts/verificar_imprensa_coerencia.py --autoteste: F28: coleta vencida nas duas páginas",
    "falta": null
   },
   {
