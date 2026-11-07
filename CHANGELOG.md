@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Busca de planos nas capitais: fila por fonte pedida · Causa: "nunca lido" olhava o município inteiro; capital lida por outra fonte passava por já lida e a releitura com erro voltava sempre primeiro, de modo que 18 capitais ficavam sem S17 S19 S26 S30. A fila olha só as fontes pedidas. Um caso no autoteste. +5/−2 linhas de código.
+
 ## 2026-11-07 · Sítio da prefeitura: http, render da home e falha com nome · 697 prioritários paravam em "endereço não respondeu como a prefeitura" sem dizer por quê. O canal passa a tentar `http` quando `https` falha, a renderizar a home que só monta por JavaScript antes de descartá-la, e a registrar cada falha (DNS, timeout, TLS, não se identifica) na lacuna. Lista de candidatos sobe para 5: os parados são refeitos.
 
 ## 2026-11-07 · Coerência da Imprensa aceita a parada datada do alerta · Causa (F28 voltou): a Imprensa publicava a consulta de 05/11 22:15 e a página estava em "Sem atualização desde 05/11/2026 22:15"; o verificador só aceitava retrato datado quando a página já mostrava consulta mais nova. Aceita a consulta igual ou anterior à parada; mais nova reprova. Dois casos no autoteste. +26/−0 linhas de código.
