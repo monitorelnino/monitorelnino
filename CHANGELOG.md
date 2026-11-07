@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Resolvedor: a cópia do Wayback vence a tentativa falhada · Dois lotes do cadastro preservaram o mesmo documento no mesmo dia: um conseguiu a cópia no Wayback, o outro não, e o resolvedor recusava `data/evidencias.json` pelo campo `wayback`. Política escrita: a cópia aceita existe e vence; duas falhas, lado de cima.
+
 ## 2026-11-07 · Resolvedor aceita binário derivado · A união dos quatro lotes do cadastro caiu no PDF do índice: `estagio` decodificava tudo como UTF-8 e o resolvedor inteiro morria com `UnicodeDecodeError`. Binário só se aceita como derivado regenerável (`MARE_Indice_Documentacao.pdf`, `METODOLOGIA.pdf`: versão de cima e regenerar); binário sem política é recusa, não adivinhação.
 
 ## 2026-11-07 · Sítio da prefeitura: href de molde não derruba o lote · No lote 2 do cadastro, um `href` de molde (`//[facebook_entidade]/…`) fez `urljoin` levantar `ValueError` dentro de um worker, e a exceção subiu pelo laço principal: o lote parou e o registro da rodada não foi gravado. O link inválido passa a ser pulado, e defeito num município vira registro dele (`nao_verificado`, motivo `defeito do coletor: …`), nunca a queda do lote.
