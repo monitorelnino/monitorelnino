@@ -33,6 +33,7 @@ import json
 import pathlib
 import re
 import sys
+from datetime import datetime
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
@@ -113,6 +114,16 @@ def numero_do_texto(texto: str):
     return valor, casas, 1.0
 
 
+def _ate(referencia: str, parada: str) -> bool:
+    """A consulta da Imprensa é a da parada da página, ou anterior a ela? Função pura."""
+    f = r"(\d{1,2}/\d{1,2}/\d{4}\s+\d{1,2}:\d{2})"
+    r, p = re.search(f, referencia or ""), re.search(f, parada or "")
+    if not (r and p and "sem atualização" in parada.lower()):
+        return False
+    quando = lambda m: datetime.strptime(re.sub(r"\s+", " ", m.group(1)), "%d/%m/%Y %H:%M")
+    return quando(r) <= quando(p)
+
+
 def mesmo_numero(valor, texto_da_pagina) -> bool:
     """O valor do cartão é o número que a página publica? Função pura."""
     lido = numero_do_texto(texto_da_pagina)
@@ -169,6 +180,10 @@ def divergencias(cartoes: dict, indices: dict, numeros: dict, textos: dict,
                              f"{na_pagina!r}")
             continue
         if lido is None:
+            # Coleta de alerta vencida (F28): a página retém o número e declara "Sem atualização
+            # desde <consulta>"; a Imprensa que publica a consulta datada até essa data não diverge.
+            if ident in DE_AGORA and _ate(ref_imprensa, na_pagina):
+                continue
             # A origem não publica número (está em "sem coleta"): a Imprensa não pode publicar um.
             ruins.append(f"{ident}: a Imprensa publica {c.get('valor')!r} e {pagina} não publica "
                          f"número ({na_pagina!r})")
@@ -295,6 +310,17 @@ def _autoteste() -> int:
     ok("F28: 'sem dado' de consulta vencida com a página já em consulta nova é nota, não falha",
        divergencias(vencido, {}, {"defesa-civil.html": {"topoCemaden": "8"}},
                     {"defesa-civil.html": "consulta de 14/10/2026 03:31"}, alerta, ()) == [])
+    parada = {"defesa-civil.html": {"topoCemaden": "Sem atualização desde 05/11/2026 22:15"}}
+    ok("F28: Imprensa com o número da consulta da parada, página em 'Sem atualização' — retrato datado",
+       divergencias({"municipios_alerta_cemaden": {"valor": 27, "sem_coleta": False,
+                                                   "referencia": "05/11/2026 22:15"}},
+                    {}, parada, {"defesa-civil.html": "sem atualização desde 05/11/2026 22:15"},
+                    alerta, ()) == [])
+    ok("F28: Imprensa mais nova que a parada da página continua reprovando",
+       len(divergencias({"municipios_alerta_cemaden": {"valor": 27, "sem_coleta": False,
+                                                       "referencia": "06/11/2026 22:15"}},
+                        {}, parada, {"defesa-civil.html": "sem atualização desde 05/11/2026 22:15"},
+                        alerta, ())) == 1)
     ok("a semana da Imprensa é a variação do instantâneo",
        divergencias_de_variacao({"decretos_na_semana": {"valor": 69, "sem_coleta": False}},
                                 {"cartoes": [{"id": "municipios_decretaram", "variacao": 69}]}) == [])
