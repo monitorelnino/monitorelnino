@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Coerência da Imprensa aceita a parada datada do alerta · Causa (F28 voltou): a Imprensa publicava a consulta de 05/11 22:15 e a página estava em "Sem atualização desde 05/11/2026 22:15"; o verificador só aceitava retrato datado quando a página já mostrava consulta mais nova. Aceita a consulta igual ou anterior à parada; mais nova reprova. Dois casos no autoteste. +26/−0 linhas de código.
+
 ## 2026-11-06 · União da rodada reconhece `doe_ocorrencias.json` · Causa: o arquivo não tinha política em `unir_conflito_de_rodada.py` e a união de SE com PE foi feita à mão. Passa a unir UF e edição pela base comum, com caso no autoteste. Sem mudança de dado.
 
 ## 2026-11-06 · Pernambuco: dias de publicação da rota · Medido: 72 edições de 30/06 a 06/11, toda segunda-feira ausente e edição aos sábados. A rota por data declara os dias em que a fonte publica (PE: terça a sábado), usados na leitura e na cobertura; o código declarado como `ausente` vira "sem edição na data", não "recusa".
