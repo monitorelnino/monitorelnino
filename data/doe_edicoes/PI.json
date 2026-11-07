@@ -2,10 +2,10 @@
   "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
   "canal2": {
     "modo": "padrao_por_data",
-    "em": "06/11/2026",
+    "em": "07/11/2026",
     "conta_como_consultado": true,
     "adaptador": "edicao_pi",
-    "ultima_edicao_lida": "2026-11-05"
+    "ultima_edicao_lida": "2026-11-06"
   },
   "edicoes": {
     "2026-06-29": {
@@ -1572,9 +1572,18 @@
       "termos_achados": []
     },
     "2026-11-06": {
-      "decisao": "sem_edicao_na_data",
-      "em": "06/11/2026"
+      "decisao": "lida",
+      "em": "07/11/2026",
+      "bytes": 1111438,
+      "paginas": 160,
+      "paginas_com_texto": 160,
+      "url": "https://www.diario.pi.gov.br/doe/files/diarios/anexo/a5d0ef73-7b74-4bef-886b-57fe00eeb1ff/DOEPI_212_2026.pdf",
+      "impressao": "121700da84652e950f84574b0cdb01f04c322437b0224ac52d5d7e6d4fb7d538",
+      "termos_versao": "2026-10-17",
+      "leitor": "2026-10-20",
+      "legal_versao": "2026-10-30",
+      "termos_achados": []
     }
   },
-  "atualizado_em": "06/11/2026"
+  "atualizado_em": "07/11/2026"
 }
