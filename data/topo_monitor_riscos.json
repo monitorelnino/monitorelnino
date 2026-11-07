@@ -4,29 +4,29 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 6.3,
-   "referencia": "05/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Belo Horizonte",
-   "capital": "Belo Horizonte",
-   "uf": "MG",
+   "valor": 4.0,
+   "referencia": "06/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Cuiabá",
+   "capital": "Cuiabá",
+   "uf": "MT",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 34.0 °C contra a média de 27.7 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 38.0 °C contra a média de 34.0 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 7.1,
-    "referencia": "04/11/2026"
+    "valor": 6.3,
+    "referencia": "05/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 452,
-   "referencia": "Focos do dia — focos_diario_br_20261106.csv",
+   "valor": 408,
+   "referencia": "Focos do dia — focos_diario_br_20261107.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 2774,
-    "referencia": "Focos do dia — focos_diario_br_20261105.csv"
+    "valor": 452,
+    "referencia": "Focos do dia — focos_diario_br_20261106.csv"
    }
   },
   {
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 7,
+   "valor": 6,
    "perigo_ou_maior": 2,
-   "referencia": "05/11/2026 22:15",
+   "referencia": "06/11/2026 22:15",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 5,
-    "referencia": "05/11/2026 05:52"
+    "valor": 7,
+    "referencia": "05/11/2026 22:15"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "05/11/2026",
+   "referencia": "06/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "04/11/2026"
+    "referencia": "05/11/2026"
    }
   }
  ]
