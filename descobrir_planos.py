@@ -41,7 +41,7 @@ sítio que recusa ou não responde = acesso_recusado (nunca 'nada localizado'); 
 eleitoral detectado pelo cliente comum (coletores_base.buscar) = fonte suspensa (defeso).
 
 Uso: python3 descobrir_planos.py [--limite N] [--setor saude|defesa_civil]
-     python3 descobrir_planos.py --municipios <cadastro.json> [--busca-dominio] [--refazer-parados]
+     python3 descobrir_planos.py --municipios <cadastro.json> [--busca-dominio] [--refazer-parados] [--fatia k/n]
      python3 descobrir_planos.py --autoteste    (offline)
 """
 import contextlib
@@ -336,6 +336,8 @@ def autoteste() -> int:
                 and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": 2})
                 and not _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": CANDIDATOS_V})
                 and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": CANDIDATOS_V}, True)
+                and fatia(list("abcdefg"), 2, 3) == ["b", "e"] and fatia(list("abc"), 1, 1) == ["a", "b", "c"]
+                and sorted(x for k in (1, 2, 3) for x in fatia(list("abcdefg"), k, 3)) == list("abcdefg")
                 and not _lista_de_endereco_mudou({"situacao": "lido"}) and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte"}, True)
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
@@ -538,7 +540,7 @@ def autoteste() -> int:
                "1200104": {"dominio": "x.ac.gov.br", "situacao": "lido", "pistas": [{"url": "u"}]}}
         ref = {c: {"nome": f"M{c}", "uf": "AC"} for c in res}
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
-            json.dump({"municipios": [{"codigo_ibge": int(c)} for c in res]}, f)
+            json.dump([{"codigo_ibge": int(c)} for c in res], f)   # a lista inteira do IBGE, sem invólucro
         with mock.patch(f"{__name__}.referencia_ibge", return_value=(ref, None)), \
              mock.patch(f"{__name__}.hoje_editorial", return_value=__import__("datetime").date(2026, 11, 5)), \
              mock.patch(f"{__name__}.ler", return_value={"municipios": {}}), \
@@ -547,7 +549,8 @@ def autoteste() -> int:
              mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
              mock.patch(f"{__name__}.descobrir_no_portal", side_effect=lambda n, u, c, h, o=None, b=None: res[c]), \
              mock.patch("scripts.pistas.gravar_lote", return_value={"gravadas": 0, "recusadas": 0}):
-            rodar_municipios(f.name)
+            rodar_municipios(f.name, fatia_k_n=(1, 2))   # fatia 1/2: 1200013 e 1200104
+            rodar_municipios(f.name, fatia_k_n=(2, 2))   # fatia 2/2: 1200054
         import os
         os.unlink(f.name)
         por = {k["ibge"]: (a[0], a[3], k["municipio"], k["uf"]) for a, k in linhas if a[0] == "site_municipal"}
@@ -994,7 +997,14 @@ def _lista_de_endereco_mudou(v: dict, refazer_parados: bool = False) -> bool:
     return v.get("situacao") in PARADOS and (refazer_parados or v.get("candidatos") != CANDIDATOS_V)
 
 
-def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parados: bool = False) -> int:
+def fatia(fila: list, k: int, n: int) -> list:
+    """A fatia `k` de `n` da fila (k de 1 a n), pela posição: lotes paralelos do cadastro inteiro
+    (07/11/2026: 3.476 municípios sem o canal do sítio não cabem num run). Função pura."""
+    return fila[k - 1::n] if 1 <= k <= n else fila
+
+
+def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parados: bool = False,
+                     fatia_k_n: tuple = (1, 1)) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
     (`prazo=Nmin`) chega como SIGINT e o que foi lido é gravado."""
     from scripts.pistas import gravar_lote
@@ -1003,8 +1013,11 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
     hoje = hoje_editorial().isoformat()
     feitos = ler(RESULTADO_DA_RODADA, {"municipios": {}})
     feitos.setdefault("municipios", {})
-    # `fila` (códigos) ou `municipios` (cadastro: municipios_prioritarios.json), como em buscar_planos_fontes_abertas
-    fila = [c for c in (doc.get("fila") or [str(m["codigo_ibge"]).zfill(7) for m in doc.get("municipios", [])])
+    # `fila` (códigos), `municipios` (cadastro: municipios_prioritarios.json) ou a lista inteira
+    # (municipios_ibge_referencia.json), como em buscar_planos_fontes_abertas
+    cadastro = doc if isinstance(doc, list) else doc.get("municipios", [])
+    fila = [c for c in fatia(doc.get("fila") if isinstance(doc, dict) and doc.get("fila")
+                             else [str(m["codigo_ibge"]).zfill(7) for m in cadastro], *fatia_k_n)
             if c in por_cod and (feitos["municipios"].get(c, {}).get("consultado_em") != hoje
                                  or _lista_de_endereco_mudou(feitos["municipios"][c], refazer_parados))]
     pistas, lidos, gravados = [], 0, set()
@@ -1066,7 +1079,8 @@ def main() -> int:
         return rodar_municipios(sys.argv[sys.argv.index("--municipios") + 1],
                                 int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None,
                                 buscar_web if "--busca-dominio" in sys.argv else None,
-                                "--refazer-parados" in sys.argv)
+                                "--refazer-parados" in sys.argv,
+                                tuple(int(x) for x in sys.argv[sys.argv.index("--fatia") + 1].split("/")) if "--fatia" in sys.argv else (1, 1))
     setores = ["saude", "defesa_civil"]
     if "--setor" in sys.argv:
         setores = [sys.argv[sys.argv.index("--setor") + 1]]

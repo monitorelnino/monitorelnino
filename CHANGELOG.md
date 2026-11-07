@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Sítio da prefeitura: o cadastro inteiro em fatias paralelas · 3.476 municípios fora da lista prioritária nunca passaram pelo canal do sítio, e não cabem num run. `--municipios` aceita a lista do IBGE sem invólucro e `--fatia k/n` reparte a fila por posição; o resolvedor une `data/s2id_busca_dirigida.json` (um registro por município) para que lotes paralelos não se anulem.
+
 ## 2026-11-07 · Sítio da prefeitura: `--refazer-parados` · A válvula só refazia no mesmo dia o município cuja lista de endereços mudou; o parado por porta que não serviu (render sem navegador, #1599) ficava até o dia seguinte. Com `--refazer-parados`, `portal_nao_verificado` e `nao_verificado` de hoje se refazem; lido e recusa nunca se repetem.
 
 ## 2026-11-07 · Sítio da prefeitura: a lacuna `nao_verificado` diz cada porta que não serviu · Na varredura dos 2.095 prioritários de 07/11, 415 municípios ficaram em `nao_verificado` sem motivo. O registro passa a nomear as portas (API, links no HTML, render com o erro, busca no domínio), e é assim que o render sem Chromium (#1599) aparece no dado em vez de sumir.
