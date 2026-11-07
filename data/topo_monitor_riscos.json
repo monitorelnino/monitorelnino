@@ -4,22 +4,22 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 4.0,
-   "referencia": "06/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Cuiabá",
-   "capital": "Cuiabá",
-   "uf": "MT",
+   "valor": 6.1,
+   "referencia": "07/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em São Paulo",
+   "capital": "São Paulo",
+   "uf": "SP",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 38.0 °C contra a média de 34.0 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 33.0 °C contra a média de 26.9 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 6.3,
-    "referencia": "05/11/2026"
+    "valor": 4.0,
+    "referencia": "06/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 408,
+   "valor": 6965,
    "referencia": "Focos do dia — focos_diario_br_20261107.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -44,24 +44,24 @@
    "id": "avisos_inmet_distintos",
    "valor": 6,
    "perigo_ou_maior": 2,
-   "referencia": "06/11/2026 22:15",
+   "referencia": "07/11/2026 05:16",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 7,
-    "referencia": "05/11/2026 22:15"
+    "valor": 6,
+    "referencia": "06/11/2026 22:15"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "06/11/2026",
+   "referencia": "07/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "05/11/2026"
+    "referencia": "06/11/2026"
    }
   }
  ]
