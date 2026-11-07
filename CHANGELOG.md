@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-07 · Resolvedor conhece o registro de edições do diário · A união das seis válvulas de diário de 07/11 recusou `data/doe_edicoes/PB.json` (duas válvulas de datas diferentes da mesma UF). O resolvedor passa a tratar `data/doe_edicoes/<UF>.json` como índice por data, na mesma classe de `data/planos_busca/`: cada data é uma entrada pela regra da pista; `canal2` e o carimbo vêm do lado mais recente. O portão de escritores conhece o prefixo.
+## 2026-11-07 · Resolvedor conhece o registro de edições do diário · A união das seis válvulas de diário de 07/11 recusou `data/doe_edicoes/PB.json` (duas válvulas de datas diferentes da mesma UF). O resolvedor passa a tratar `data/doe_edicoes/<UF>.json` como índice por data, na mesma classe de `data/planos_busca/`: cada data é uma entrada, e a mesma data relida nos dois lados vence pela leitura mais recente (é o que o produtor faz); `canal2` e o carimbo vêm do lado mais recente. O portão de escritores conhece o prefixo.
 
 ## 2026-11-07 · Sítio da prefeitura: http, render da home e falha com nome · 697 prioritários paravam em "endereço não respondeu como a prefeitura" sem dizer por quê. O canal passa a tentar `http` quando `https` falha, a renderizar a home que só monta por JavaScript antes de descartá-la, e a registrar cada falha (DNS, timeout, TLS, não se identifica) na lacuna. Lista de candidatos sobe para 5: os parados são refeitos.
 

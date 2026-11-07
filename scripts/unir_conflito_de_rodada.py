@@ -350,6 +350,17 @@ def _unir_host(base: dict, nosso: dict, deles: dict) -> dict:
 INDICES_POR_PREFIXO = {"data/planos_busca/": "municipios", "data/doe_edicoes/": "edicoes"}
 
 
+def _unir_edicao(base: dict, nosso: dict, deles: dict) -> dict:
+    """O registro guarda a última leitura da data (o produtor sobrescreve): vence a mais recente;
+    a mesma data lida no mesmo dia segue a regra da pista."""
+    def quando(e):
+        d = str((e or {}).get("em") or "")          # dd/mm/aaaa
+        return d[6:10] + d[3:5] + d[0:2]
+    if quando(nosso) == quando(deles):
+        return _mesclar_pista(base, nosso, deles)
+    return max((deles, nosso), key=quando)
+
+
 def chave_do_indice(caminho: str):
     """A chave do índice `{chave: {id: entrada}}` neste caminho, ou None. Função pura."""
     if caminho in INDICES_POR_CHAVE:
@@ -366,8 +377,8 @@ def unir_indice(caminho, base_txt, nosso_txt, deles_txt):
     nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
     base = (json.loads(base_txt) if base_txt is not None else {}).get(chave) or {}
     a, b = nosso.get(chave) or {}, deles.get(chave) or {}
-    mesclar = ({"hosts": _unir_host, "municipios": _unir_municipio_do_livro}.get(chave, _mesclar_pista)
-               if caminho in INDICES_POR_CHAVE else _mesclar_pista)
+    mesclar = ({"hosts": _unir_host, "municipios": _unir_municipio_do_livro} if caminho in INDICES_POR_CHAVE
+               else {"edicoes": _unir_edicao}).get(chave, _mesclar_pista)
     uniao = dict(a)
     for k, v in b.items():
         if k not in a or a[k] == v:
@@ -1070,14 +1081,17 @@ def autoteste() -> int:
     with tempfile.TemporaryDirectory() as t:
         DE = "data/doe_edicoes/PB.json"
         ed = lambda em, e, c: json.dumps({"edicoes": e, "canal2": {"situacao": c}, "atualizado_em": em})
-        d1 = {"decisao": "lida", "em": "06/11/2026"}
+        d1 = {"decisao": "vazio", "em": "05/11/2026", "motivo": "timeout"}
         r = _repo_com_conflito(t, DE, ed("2026-11-05", {"2026-11-03": d1}, "aberto"),
-                               ed("2026-11-07", {"2026-11-03": d1, "2026-11-06": {"decisao": "lida"}}, "aberto"),
-                               ed("2026-11-06", {"2026-11-03": d1, "2026-11-04": {"decisao": "sem_edicao_na_data"}}, "sondando"))
+                               ed("2026-11-07", {"2026-11-03": {**d1, "em": "07/11/2026"}, "2026-11-06": {"decisao": "lida"}}, "aberto"),
+                               ed("2026-11-06", {"2026-11-03": {"decisao": "lida", "em": "06/11/2026"},
+                                                 "2026-11-04": {"decisao": "sem_edicao_na_data"}}, "sondando"))
         res, reg, rec = resolver(repo=r)
         d = json.loads((r / DE).read_text(encoding="utf-8")) if not rec else {"edicoes": {}}
-        checar("doe_edicoes: une as datas dos dois lados; canal2 e carimbo vêm do lado mais recente",
+        checar("doe_edicoes: une as datas dos dois lados; a mesma data relida vence pela leitura mais "
+               "recente; canal2 e carimbo vêm do lado mais recente",
                not rec and sorted(d["edicoes"]) == ["2026-11-03", "2026-11-04", "2026-11-06"]
+               and d["edicoes"]["2026-11-03"]["em"] == "07/11/2026"
                and d["atualizado_em"] == "2026-11-07" and d["canal2"] == {"situacao": "aberto"})
     with tempfile.TemporaryDirectory() as t:
         DO = "data/doe_ocorrencias.json"
