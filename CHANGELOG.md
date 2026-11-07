@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Resolvedor une o CHANGELOG pela base comum · Todo PR do dia conflitou no `CHANGELOG.md` (oito vezes) e a resolução à mão era sempre a mesma. O resolvedor passa a unir: entradas novas dos dois lados (as de cima primeiro), depois as da base que os dois mantêm; entrada editada nos dois lados é recusa. Conferido contra três uniões manuais de hoje: o mesmo texto, a menos de linha em branco.
+
 ## 2026-11-07 · Diagnóstico de fontes de saúde mede a síndrome gripal · Medido do runner em 07/11: o Portal de Dados Abertos do SUS só oferece SG de 2020 a 2024; os CSV do e-SUS Notifica respondem `AccessDenied` no objeto e na raiz do S3 (recusa do dono, não rota errada); a API CKAN do portal não existe mais (404); InfoGripe, painel da Fiocruz e CVE-SP não respondem ao runner. O diagnóstico ganha esses alvos e lista os conjuntos do catálogo quando a API responder.
 
 ## 2026-11-07 · Resolvedor aceita binário derivado · A união dos quatro lotes do cadastro caiu no PDF do índice: `estagio` decodificava tudo como UTF-8 e o resolvedor inteiro morria com `UnicodeDecodeError`. Binário só se aceita como derivado regenerável (`MARE_Indice_Documentacao.pdf`, `METODOLOGIA.pdf`: versão de cima e regenerar); binário sem política é recusa, não adivinhação.
