@@ -438,11 +438,20 @@ def unir_contadores(caminho, base_txt, nosso_txt, deles_txt):
         if not isinstance(d, dict) or not isinstance(d.get("etapas"), dict):
             raise Recusa(f"o lado {nome} não tem 'etapas' no formato esperado")
 
-    fora_de_etapas = set()
+    fora_de_etapas, fundidas = set(), {}
     for chave in set(nosso) | set(deles):
         if chave == "etapas" or chave == "atualizado_em":
             continue
-        if nosso.get(chave) != deles.get(chave):
+        n, d, b = nosso.get(chave), deles.get(chave), base.get(chave)
+        if n == d:
+            continue
+        # Seção-retrato de uma execução (`verificador_imprensa`): não soma, a última grava por cima.
+        # Lado que não a mudou cede ao que mudou; os dois mudaram: vence o `gravado_em` mais novo.
+        if isinstance(n or d, dict) and (n == b or d == b):
+            fundidas[chave] = d if n == b else n
+        elif isinstance(n, dict) and isinstance(d, dict) and n.get("gravado_em") and d.get("gravado_em"):
+            fundidas[chave] = max((n, d), key=lambda x: x["gravado_em"])
+        else:
             fora_de_etapas.add(chave)
     if fora_de_etapas:
         raise Recusa("os campos fora de 'etapas' divergem: " + ", ".join(sorted(fora_de_etapas)))
@@ -467,7 +476,7 @@ def unir_contadores(caminho, base_txt, nosso_txt, deles_txt):
             somados += 1
         etapas[etapa] = junto
 
-    fundido = dict(nosso)
+    fundido = {**nosso, **fundidas}
     fundido["etapas"] = etapas
     carimbos = [x for x in (nosso.get("atualizado_em"), deles.get("atualizado_em")) if x]
     if carimbos:
@@ -899,6 +908,12 @@ def autoteste() -> int:
         checar("campo fora de etapas divergente e RECUSADO", False)
     except Recusa:
         checar("campo fora de etapas divergente e RECUSADO", True)
+    _v1, _v2 = {"na_fila": 1, "gravado_em": "2026-10-05T07:00:00"}, {"na_fila": 2, "gravado_em": "2026-10-05T08:00:00"}
+    _fv = lambda v: json.dumps({"data": "2026-10-05", "formato_versao": 1, "etapas": {}, **({"verificador_imprensa": v} if v else {})})
+    checar("secao-retrato: so um lado mudou, vence o que mudou",
+           unir_contadores("data/funil/x.json", _fv(None), _fv(_v1), _fv(None))[0]["verificador_imprensa"] == _v1)
+    checar("secao-retrato: os dois mudaram, vence o gravado_em mais novo",
+           unir_contadores("data/funil/x.json", _fv(None), _fv(_v2), _fv(_v1))[0]["verificador_imprensa"] == _v2)
     checar("o painel da noite e log que so cresce, pela chave `noites`",
            LOGS_QUE_SO_CRESCEM.get("data/painel_da_noite.json") == "noites")
     # F44: os dois lados podaram a cabeça da base (o corte de 400): une, e a base não se perde.

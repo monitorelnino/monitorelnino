@@ -85,7 +85,8 @@ def registrar(etapa: str, dia=None, **contagens) -> dict:
             raise TypeError(f"funil: {etapa}.{chave} precisa ser int, veio {type(valor).__name__}")
     atual = ler_do_dia(dia)
     dia_iso = caminho_do_dia(dia).stem
-    doc = {"data": dia_iso, "formato_versao": FORMATO_VERSAO, "etapas": atual.get("etapas") or {}}
+    outras = {k: v for k, v in atual.items() if k not in ("data", "formato_versao", "etapas", "atualizado_em")}
+    doc = {"data": dia_iso, "formato_versao": FORMATO_VERSAO, "etapas": atual.get("etapas") or {}, **outras}
     alvo = doc["etapas"].setdefault(etapa, {})
     for chave, valor in contagens.items():
         alvo[chave] = int(alvo.get(chave, 0)) + valor
@@ -116,6 +117,10 @@ def autoteste() -> int:
         registrar("juiz", dia="2026-09-27", promovidas=1)
         if set(ler_do_dia("2026-09-27")["etapas"]) != {"busca_web", "juiz"}:
             falhas.append("etapas convivem no mesmo dia")
+        gravar_em(caminho_do_dia("2026-09-27"), {**ler_do_dia("2026-09-27"), "verificador_imprensa": {"na_fila": 3}})
+        registrar("juiz", dia="2026-09-27", promovidas=1)
+        if ler_do_dia("2026-09-27").get("verificador_imprensa") != {"na_fila": 3}:
+            falhas.append("registrar apagou a seção fora de etapas")
         if ler_do_dia("2026-09-28") != {}:
             falhas.append("dia sem arquivo devolve vazio")
 
