@@ -311,9 +311,13 @@ def unir_fila_de_pistas(caminho, base_txt, nosso_txt, deles_txt):
 # de fontes, nível nunca rebaixa, a última verificação é a mais recente; fato binário mudado nos dois
 # lados para valores diferentes segue a regra da pista (recusa). Diários e busca web escrevem fontes
 # diferentes do mesmo município desde 14/10 — o push dos diários da noite 14→15 caiu nele.
+# 07/11/2026: o registro da varredura do sítio (`descobrir_planos.rodar_municipios`, um registro por
+# município) — lotes paralelos do cadastro escrevem códigos distintos; o mesmo código mudado nos dois
+# lados segue a regra da pista.
 INDICES_POR_CHAVE = {"data/evidencias.json": "itens", "data/robots_registro.json": "hosts",
                      "data/fontes_consultadas.json": "municipios",
-                     "data/doe_ocorrencias.json": "ufs"}
+                     "data/doe_ocorrencias.json": "ufs",
+                     "data/s2id_busca_dirigida.json": "municipios"}
 
 
 def _unir_municipio_do_livro(base: dict, nosso: dict, deles: dict) -> dict:
@@ -377,8 +381,9 @@ def unir_indice(caminho, base_txt, nosso_txt, deles_txt):
     nosso, deles = json.loads(nosso_txt), json.loads(deles_txt)
     base = (json.loads(base_txt) if base_txt is not None else {}).get(chave) or {}
     a, b = nosso.get(chave) or {}, deles.get(chave) or {}
-    mesclar = ({"hosts": _unir_host, "municipios": _unir_municipio_do_livro} if caminho in INDICES_POR_CHAVE
-               else {"edicoes": _unir_edicao}).get(chave, _mesclar_pista)
+    mesclar = {"data/robots_registro.json": _unir_host, "data/fontes_consultadas.json": _unir_municipio_do_livro,
+               "data/doe_edicoes/": _unir_edicao}.get(caminho if caminho in INDICES_POR_CHAVE else caminho[:len("data/doe_edicoes/")],
+                                                       _mesclar_pista)
     uniao = dict(a)
     for k, v in b.items():
         if k not in a or a[k] == v:
@@ -1093,6 +1098,17 @@ def autoteste() -> int:
                                pl("a", {"1": {"S16": {**s0, "situacao": "y"}}}))
         res, reg, rec = resolver(repo=r)
         checar("planos_busca: a mesma fonte lida diferente nos dois lados é recusada", bool(rec))
+    with tempfile.TemporaryDirectory() as t:
+        S2 = "data/s2id_busca_dirigida.json"
+        s2 = lambda g, m: json.dumps({"gerado_em": g, "municipios": m})
+        a = {"consultado_em": "2026-11-07", "situacao": "lido", "candidatos": 5}
+        r = _repo_com_conflito(t, S2, s2("2026-11-06", {"1": a}),
+                               s2("2026-11-07", {"1": a, "2": {**a, "situacao": "nao_verificado"}}),
+                               s2("2026-11-07", {"1": a, "3": a}))
+        res, reg, rec = resolver(repo=r)
+        d = json.loads((r / S2).read_text(encoding="utf-8")) if not rec else {"municipios": {}}
+        checar("s2id_busca_dirigida: lotes paralelos do cadastro unem os municípios de cada lado",
+               not rec and sorted(d["municipios"]) == ["1", "2", "3"] and d["gerado_em"] == "2026-11-07")
     with tempfile.TemporaryDirectory() as t:
         DE = "data/doe_edicoes/PB.json"
         ed = lambda em, e, c: json.dumps({"edicoes": e, "canal2": {"situacao": c}, "atualizado_em": em})
