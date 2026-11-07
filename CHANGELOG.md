@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · Sítio da prefeitura: a lacuna `nao_verificado` diz cada porta que não serviu · Na varredura dos 2.095 prioritários de 07/11, 415 municípios ficaram em `nao_verificado` sem motivo. O registro passa a nomear as portas (API, links no HTML, render com o erro, busca no domínio), e é assim que o render sem Chromium (#1599) aparece no dado em vez de sumir.
+
 ## 2026-11-07 · O coletor reutilizável instala o Chromium quando pede Node · O canal renderizado da descoberta de planos (`scripts/renderizar_pagina.js`) precisa do Chromium, e `npm ci` não o traz; desde que a descoberta saiu do `atualizar.yml` ele caía calado na noite (último achado: setembro). `_coletor.yml` passa a instalar o navegador com `precisa_node`, com cache por versão, e `noturno_descoberta.yml` pede Node.
 
 ## 2026-11-07 · Diário por data: a recusa de uma data é relida · `datas_sem_cobertura` contava a data `recusa` como falta de cobertura, mas o filtro de releitura nunca a devolvia: em PE, quatro datas recusadas em 06/11 (antes de o 403 virar ausência declarada) ficaram paradas para sempre. `a_reler` passa a incluir `recusa`; se a fonte ainda recusar, a UF para na primeira, como sempre.
