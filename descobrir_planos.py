@@ -41,6 +41,7 @@ sítio que recusa ou não responde = acesso_recusado (nunca 'nada localizado'); 
 eleitoral detectado pelo cliente comum (coletores_base.buscar) = fonte suspensa (defeso).
 
 Uso: python3 descobrir_planos.py [--limite N] [--setor saude|defesa_civil]
+     python3 descobrir_planos.py --municipios <cadastro.json> [--busca-dominio] [--refazer-parados]
      python3 descobrir_planos.py --autoteste    (offline)
 """
 import contextlib
@@ -334,7 +335,8 @@ def autoteste() -> int:
                 and _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": 1})
                 and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": 2})
                 and not _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": CANDIDATOS_V})
-                and not _lista_de_endereco_mudou({"situacao": "lido"})
+                and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": CANDIDATOS_V}, True)
+                and not _lista_de_endereco_mudou({"situacao": "lido"}) and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte"}, True)
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
                 and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
@@ -982,13 +984,17 @@ def registrar_consulta_do_sitio(nome: str, uf: str, ibge: str, r: dict) -> None:
               n_resultados=len(r["pistas"]), resultados=f"{sit}: {r.get('motivo') or ''}"[:200])
 
 
-def _lista_de_endereco_mudou(v: dict) -> bool:
+PARADOS = ("portal_nao_verificado", "nao_verificado")   # tentativa sem leitura: nunca ausência, nunca recusa
+
+
+def _lista_de_endereco_mudou(v: dict, refazer_parados: bool = False) -> bool:
     """O município sem portal achado ou sem página lida hoje, com a lista de antes de `CANDIDATOS_V`: refaz-se
-    no mesmo dia (só esse caso; o que foi lido ou recusado não se repete)."""
-    return v.get("situacao") in ("portal_nao_verificado", "nao_verificado") and v.get("candidatos") != CANDIDATOS_V
+    no mesmo dia (só esse caso; o que foi lido ou recusado não se repete). Com `refazer_parados`, todo parado
+    de hoje se refaz (07/11/2026: a válvula que mede o canal renderizado depois do #1599). Função pura."""
+    return v.get("situacao") in PARADOS and (refazer_parados or v.get("candidatos") != CANDIDATOS_V)
 
 
-def rodar_municipios(caminho: str, limite: int = None, busca=None) -> int:
+def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parados: bool = False) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
     (`prazo=Nmin`) chega como SIGINT e o que foi lido é gravado."""
     from scripts.pistas import gravar_lote
@@ -1000,7 +1006,7 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None) -> int:
     # `fila` (códigos) ou `municipios` (cadastro: municipios_prioritarios.json), como em buscar_planos_fontes_abertas
     fila = [c for c in (doc.get("fila") or [str(m["codigo_ibge"]).zfill(7) for m in doc.get("municipios", [])])
             if c in por_cod and (feitos["municipios"].get(c, {}).get("consultado_em") != hoje
-                                 or _lista_de_endereco_mudou(feitos["municipios"][c]))]
+                                 or _lista_de_endereco_mudou(feitos["municipios"][c], refazer_parados))]
     pistas, lidos, gravados = [], 0, set()
     todo = fila[:limite] if limite else fila
     oficiais = enderecos_oficiais() if todo else {}
@@ -1059,7 +1065,8 @@ def main() -> int:
         from buscar_planos_fontes_abertas import buscar_web   # o mesmo metabuscador e ritmo da busca web
         return rodar_municipios(sys.argv[sys.argv.index("--municipios") + 1],
                                 int(sys.argv[sys.argv.index("--limite") + 1]) if "--limite" in sys.argv else None,
-                                buscar_web if "--busca-dominio" in sys.argv else None)
+                                buscar_web if "--busca-dominio" in sys.argv else None,
+                                "--refazer-parados" in sys.argv)
     setores = ["saude", "defesa_civil"]
     if "--setor" in sys.argv:
         setores = [sys.argv[sys.argv.index("--setor") + 1]]
