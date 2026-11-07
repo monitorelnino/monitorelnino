@@ -9,11 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-<<<<<<< HEAD
 ## 2026-11-07 · Resolvedor une o CHANGELOG pela base comum · Todo PR do dia conflitou no `CHANGELOG.md` (oito vezes) e a resolução à mão era sempre a mesma. O resolvedor passa a unir: entradas novas dos dois lados (as de cima primeiro), depois as da base que os dois mantêm; entrada editada nos dois lados é recusa. Conferido contra três uniões manuais de hoje: o mesmo texto, a menos de linha em branco.
-=======
+
 ## 2026-11-07 · Resolvedor: a cópia do Wayback vence a tentativa falhada · Dois lotes do cadastro preservaram o mesmo documento no mesmo dia: um conseguiu a cópia no Wayback, o outro não, e o resolvedor recusava `data/evidencias.json` pelo campo `wayback`. Política escrita: a cópia aceita existe e vence; duas falhas, lado de cima.
->>>>>>> origin/main
 
 ## 2026-11-07 · Diagnóstico de fontes de saúde mede a síndrome gripal · Medido do runner em 07/11: o Portal de Dados Abertos do SUS só oferece SG de 2020 a 2024; os CSV do e-SUS Notifica respondem `AccessDenied` no objeto e na raiz do S3 (recusa do dono, não rota errada); a API CKAN do portal não existe mais (404); InfoGripe, painel da Fiocruz e CVE-SP não respondem ao runner. O diagnóstico ganha esses alvos e lista os conjuntos do catálogo quando a API responder.
 
@@ -4064,6 +4062,7 @@ O relatório de amostra diz isso por escrito quando a amostra sai incompleta, em
 recusadas — completar mediria outra coisa.
 
 Dois portões novos (122).
+
 ## §298 · O publicador regenerava os PDFs e não os commitava · 29/09/2026
 
 Classe **infraestrutura da rodada**. Achado na primeira publicação depois do bloco 1. **Nenhum peso,
@@ -4488,6 +4487,7 @@ acontece também precisa dizer por quê.
 **Total de planos: 111 — inalterado. `atualizado_em`: 28/09/2026.**
 
 Um portão novo (116), com 13 casos offline.
+
 ## §288 · Procurar o ato antes de recusar por falta dele · 28/09/2026
 
 Classe **método e coleta**. Bloco das 17:20 de 28/09/2026 (decisão da central). **Nenhuma nota muda,
@@ -4928,6 +4928,7 @@ o §45.1, que estende a regra — contagem definida por exclusão é vocabulári
 o lado de fora nunca pode ser o lado que afirma.
 
 Dois autotestes novos no workflow (107 portões).
+
 ## §279 · Cadência para os três coletores de CI, e um defeito que não existia · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 5 do bloco de decisões da editoria de 28/09/2026.
@@ -4967,6 +4968,7 @@ Ao acrescentar os três, escrevi `precisa_searxng: true` no workflow supondo que
 consultasse o metabuscador. Fui conferir antes de deixar: **ele não consulta nada disso** — testa padrões
 de domínio declarados (`defesacivil.{uf}.gov.br` e afins) direto por HTTP e decide pela resposta e pelo
 título. A linha saiu. Era o quarto erro do mesmo tipo em dois dias, e o único que não chegou a subir.
+
 ## §278 · Redes sociais entram como descoberta, e só como descoberta · 28/09/2026
 
 Classe **método e coleta**. Item 2 do bloco de decisões da editoria de 28/09/2026. **Nenhuma nota
@@ -5212,6 +5214,7 @@ produziu dois sintomas em duas execuções: primeiro o painel na cadeia, depois 
 Os dois só apareceram porque o pipeline passou a rodar desacoplado, na ordem de verdade. A suíte local e
 o CI do PR não os encontrariam: em nenhum dos dois existe um passo anterior da mesma execução
 escrevendo o arquivo.
+
 ## §273 · O painel de saúde sai da cadeia canônica · 28/09/2026
 
 Classe **infraestrutura da rodada**. Correção do §266, achada pela **primeira execução real** do
@@ -5316,6 +5319,7 @@ rodada usa (`dominios_oficiais.json`, `saude_sinais.json`) e **só rodam na CI**
 de domínio registrada é de 23/09. Não são órfãos: são coletores sem cadência. Colocá-los numa rodada
 noturna é decisão de produto (quanto o dado deles precisa envelhecer antes de importar), e está
 registrada como pendência no relatório do funil.
+
 ## §270 · Evidência: o binário sai do git, o texto fica · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 3 do handover de desacoplamento (27/09/2026).
@@ -5433,6 +5437,7 @@ sempre — "quantas gravações do log aconteceram" e "quantas execuções o log
 
 Quatro portões novos (96 no total): autoteste da migração, do resumo, do portão de paridade, e o
 portão de paridade rodando de verdade.
+
 ## §268 · Disjuntor por motor de origem da busca web · 28/09/2026
 
 Classe **método e coleta**. Item 7b do handover
@@ -5511,6 +5516,7 @@ vem depois analise um arquivo que nem está resolvido.
 Meta do item: instalação abaixo de 1 min por job. Ela **não está medida** — o cache só produz efeito a
 partir da segunda execução, e a comparação antes/depois entra em `notas/ESTADO_ATUAL.md` quando as
 próximas rodadas noturnas tiverem número.
+
 ## §266 · Painel de saúde do pipeline · 28/09/2026
 
 Classe **infraestrutura da rodada**. Item 2 do handover de desacoplamento (27/09/2026).
@@ -5617,6 +5623,7 @@ arquivo vazio entrou num commit. Recuperado do commit anterior, íntegro, com as
 é de método, e vale para toda edição programática de arquivo grande: **montar o conteúdo inteiro
 primeiro, abrir para escrita depois** — e o `assert` de âncora, que o PROTOCOLO já exige, precisa vir
 antes de qualquer abertura em modo de escrita.
+
 ## §264 · Busca web: ritmo, não volume · 27/09/2026
 
 Classe **método e coleta**. Decisão da central de 27/09/2026 (noite), handover
@@ -6026,6 +6033,7 @@ esperar a rodada na fila".
 
 Sem o portão a regressão volta calada, e só aparece no dia em que o domínio estiver no ar errado —
 que é o único dia em que isso importa.
+
 ## §258 · Página "Pesquisadores" arquivada, com as provas nas páginas que as usam · 27/09/2026
 
 Classe **página pública**. Decisão da editoria, handover
@@ -6165,6 +6173,7 @@ vez de afrouxar o teto, os blocos passam a ser **excluídos da contagem**, marca
 `data-proveniencia="1"`, pelo mesmo precedente que já exclui subtítulo de figura: são lista de
 fonte e log de consulta, evidência e não prosa de edição. O teto existe para medir o que o editor
 escreve, não para pressionar alguém a encurtar a lista de fontes.
+
 ## §257 · Errata de texto no §5.3: a METODOLOGIA passa a dizer o que o código faz · 27/09/2026
 
 Classe **errata de texto**. T2 do pedido do preprint. **Nenhuma nota muda** — `recalcular_mare.py
@@ -6210,6 +6219,7 @@ o que o §196 recusou fazer.
 `analise_sensibilidade.py` usa `d_antigo=0.3` por padrão, contra 0,5 no motor, e alimenta o PDF de
 documentação do índice. **Não corrigido**, por instrução explícita do próprio T2: é arquivo de
 produção. Fica registrado.
+
 ## §256 · Paridade da cobertura do Querido Diário, e um sintoma que não se confirmou · 27/09/2026
 
 Classe **portão**. T1 do pedido do preprint (repositório privado), pendência aberta em
@@ -6341,6 +6351,7 @@ mesma hora.
 
 `index.html` tinha "Última verificação: 24/09/2026" cravado, defasado de `meta.json` (25/09). O
 `preencher_fallback_estatico.py` corrigiu ao rodar.
+
 ## §254 · Vigia do desfecho: a rodada agora fica vermelha quando não comita · 27/09/2026
 
 Classe **infraestrutura da rodada**. Fecha o buraco que deixou quatro defeitos passarem três dias.
@@ -6532,6 +6543,7 @@ as sete passarem — e só então.
 - A fixture do MT não tem URL no pedido. Caso em aberto, lacuna declarada.
 - Os blocos A a F não começaram. Pela ordem do próprio pedido, eles só entram **depois** de as
   fixtures passarem.
+
 ## §250 · Skill `caveman` instalada, subordinada e com o idioma preservado · 27/09/2026
 
 Classe **modo de trabalho**. Pedido da editoria.
@@ -8096,6 +8108,7 @@ Classe **direção de arte**. O §192 instalou a constituição visual e mediu a
 A correção segue o §14, que diz que hierarquia não é só tamanho: a legenda passa a **peso médio**, a fonte fica em regular. Mesma cor, mesmo tamanho, peso diferente — o que preserva a escala fixa de oito degraus e **não toca em contraste**, já que cor e tamanho não mudam. É a menor intervenção que resolve a confusão, e é o tipo de coisa que só aparece quando se mede em vez de olhar.
 
 **O que fica declarado.** Os passos 9 a 11 do §25 — redesenhar páginas representativas, validar, propagar — dependem da decisão 3 e de protótipo mostrado. A dívida da lista canônica de categorias, aberta no §202, segue aberta. E o teste de personalidade do §26 só faz sentido depois do redesenho, não antes.
+
 ## §204 · O sistema de marca entra, com a voz subordinada à governança editorial · 24/09/2026
 
 Classe **design e governança**. Nenhum número muda. Nenhum texto público foi reescrito.
@@ -8163,6 +8176,7 @@ A segunda: **`plano_antigo` fica em 1,00**. O §196, de hoje de manhã, decidiu 
 **O vocabulário estava duplicado em dez lugares.** Acrescentar três categorias exigiu tocar o motor, a correção C10, as categorias aceitas de contribuição pública, o rótulo humano dos feeds, a paleta dos mapas e quatro arquivos de interface — porque não existe uma lista canônica de categorias, existem dez cópias. Todas foram ligadas nesta entrada; a lista única fica declarada como dívida, e é o tipo de coisa que o §30 da direção de arte chama de corrigir na origem.
 
 **Uma trava que aprendeu a distinguir vazio de esquecido.** O portão do congelamento exigia `efeito_por_uf` preenchido em toda errata — e reprovou esta, cujo efeito é genuinamente zero UF. Mas `{}` vazio significa duas coisas opostas: *nenhuma UF foi afetada* e *ninguém preencheu*. O portão passou a aceitar o vazio **apenas quando o efeito nacional corrobora** com `ufs_afetadas = 0` explícito; sem a corroboração, continua reprovando. Verificado ao vivo nos dois sentidos.
+
 ## §201 · Ausência declarada pelo órgão: a distinção que faltava, e a resposta do MT na fila humana · 24/09/2026
 
 Classe **esquema de dados e ingestão de evidência**. Nenhum número muda. Nada entra no banco: a resposta de LAI vai para arquivo de revisão, e a promoção é R7.
@@ -9183,6 +9197,7 @@ Classe **decisão metodológica ex-ante + trava em teste**. Média nacional inal
 ## §151 · Blog do MARÉ entra na barra de navegação, antes de Imprensa; quadros com a mesma borda superior, uma cor por eixo · 22/09/2026
 
 Classe **decisão editorial aplicada**. Depois de ver o protótipo (§149) nas capturas, a editoria aprovou a página e pediu: (1) publicá-la na barra, **antes de Imprensa** — rótulo "Blog", ordem canônica dos portões atualizada (as exceções de "página fora da barra" para `blog.html` em estrutura e acessibilidade saem); (2) manter as bordas com cor nos quatro quadros, mas **no mesmo formato**: borda superior de 3 px em todos, uma cor por eixo (musgo · antecipação, sintético · saúde, argila · resposta, seca · sinais físicos), com os modificadores `--acento-*-topo` em `base.css`. Nome final, assinatura dos textos e o texto de exemplo seguem em aberto. **Adendo (mesmo dia):** rótulo na barra passa de "Blog" para **"Blog do MARÉ"** (pedido da editoria; URL segue `blog.html`).
+
 ## §150 · Metodologia de triagem das pistas: nível de confiança A/B/C, fila por município, regra contra falsos negativos · 22/09/2026
 
 Classe **método editorial + código**, a pedido direto ("as pistas, nós vamos decidir se entram ou não, construindo uma metodologia; cuidado com falsos negativos"). Seção pública nova: METODOLOGIA §40.
@@ -9210,6 +9225,7 @@ Classe **página nova, decisão editorial em curso** (nome final, lugar na naveg
 **Portões.** Página registrada em estrutura (exceção de item ativo, como o Calendário), acessibilidade, figuras, legendas, vocabulário, voz editorial, palavras (meta 250 · teto 300), SEO e sitemap; cabeçalho de cache `must-revalidate` para `/blog/*` no `netlify.toml`. Suíte de página completa verde, inclusive móvel (390 px) e consistência visual (1366 · 900 · 390) em Chromium real; `gerar_blog.py --autoteste` verde.
 
 **Fica com a editoria.** Nome da página, entrada (ou não) na barra, assinatura dos textos e o próprio texto de exemplo.
+
 ## §148 · Cadência automática da busca web (2h em 2h até cobrir todos os municípios, depois 4x/dia); causa raiz do run #117 corrigida; site fica no ar atrás de senha durante a rodada · 22/09/2026
 
 Classe **infraestrutura**, quatro mudanças relacionadas, a pedido editorial direto depois dos testes de 21/09.
@@ -9535,6 +9551,7 @@ MUNIC: o workflow `portoes.yml` não instala `requirements.txt` (usa só a bibli
 para todo o resto), mas a sonda MUNIC chama `openpyxl` no autoteste quando a biblioteca está
 presente e o pula (com aviso) se não estiver — o portão precisa da instalação explícita para
 que o caso de xlsx seja efetivamente testado e não silenciosamente omitido.
+
 ## §126 · Sonda da MUNIC/IBGE: qual edição traz o bloco de riscos e o nome real das colunas · 22/09/2026
 
 Classe **diagnóstico** — não toca dados, pesos, créditos, componentes ou régua. Cria
@@ -9760,6 +9777,7 @@ Achado do **ensaio da rodada antecipada** (`workflow_dispatch` com `ensaio=1`, e
 - **Impacto evitado.** A rodada de **segunda 21/09, 09h UTC** roda a mesma varredura municipal e teria falhado do mesmo modo, sem publicar. As rodadas completas de 14–15/09 (#66, #68, #69, #71–#74) falharam com assinatura compatível.
 - **Correção.** `nivel=None` — o valor honesto para um registro que documenta uma redação, não uma busca territorial, e que não tem município/UF estruturados no ponto da chamada. **Não** se usou `municipal_completo`: esse valor tem sentido próprio no §2.1 (bateria municipal completa) e o portão exige `municipio` e `uf` junto dele. O vocabulário controlado **não** foi afrouxado para acomodar o bug.
 - **Teste negativo.** `scripts/testar_nivel_log_buscas.py`, novo: confere por AST que nenhuma chamada de `log_busca()` em `coletores_base.py` passa nível fora do vocabulário, que a chamada da redação usa `nivel=None`, e que `_NIVEIS` não foi ampliado. Reintroduzindo `nivel="municipal"`, duas das três verificações falham.
+
 ## Correção · `data/monitor_saude.json` (focos_24h) ficava atrás da coleta diária de sinais · 18/09/2026
 
 Achado da rotina diária: portão 12 (`scripts/verificar_derivados.sh`) vermelho na `main` (`7fda5a9`). Nenhuma alteração de método; nenhuma nota muda (peso zero, como sempre — Monitor Saúde nunca é lido por `recalcular_mare.py`). Classe **código** (PROTOCOLO §3.2).
@@ -10491,6 +10509,7 @@ Nenhuma alteração de método. Classe **estrutura de página**.
 
 - Financiamento ganha o bloco **"O que a União prometeu — e o que pagou"** (antes de "Por estado"): título-fato do dado (nº de compromissos verificados; R$ transferidos a municípios em 2026 até a última semana da série), a série semanal por rota como **miniatura** com a faixa do período eleitoral, e a tabela de compromissos verificados. A faixa vem com a **quarta porta** ("a faixa sombreada é a lei, não a inação… a única porta aberta é o decreto — por que há páginas fora do ar →").
 - Em Pesquisadores fica só o gráfico do plano federal por área (valores anunciados), com a nota de que o resto voltou. Renderizadores movidos de `pesquisadores.js` para `financiamento.js` sem mudança de lógica; runtime cobre título, tabela, faixa e porta.
+
 ## §50 · CSP sem 'self' em script-src: a injeção do Netlify deixa de executar; canário em navegador real contra o domínio · 14/09/2026
 
 Nenhuma alteração de método. Classe **segurança/infra**.
@@ -10514,6 +10533,7 @@ Nenhuma nota muda (peso zero provado por portão). Classe **dados + conteúdo**.
 - `data/financiamento/rotas_preventivas.json`: cinco linhas (edital FNMA/FDD 2025; transferência direta do FNMA — Lei 15.143/2025, art. 16 → Lei 7.797, art. 3º-A; brigadas federais; Fundo Amazônia; Lei 15.143, art. 2º como resposta), cada uma com lei, artigo, condições, quem pode, o que paga, situação no período eleitoral (**em verificação**), fonte e hash do conteúdo. `url: null` onde o endereço ainda vai ser conferido (§7 do handover); nada foi inventado para preencher.
 - Financiamento, bloco **"Dinheiro preventivo que existe — e para quem"** antes de "Por estado": título-fato calculado do dado (elegíveis e contemplados do edital; Fundo Amazônia; frase "não existe rota equivalente para seca nem para chuva" só enquanto o dado só tiver incêndio), interpretação fixa (ADPF 743), tabela das rotas em linguagem da tela e o **mapa em três camadas declarando a lacuna** até os coletores existirem. "Sem decretar" ganha a linha do fogo com a base legal.
 - METODOLOGIA §28 (acréscimo: não há rota federal **regular**; a exceção é setorial, com a base legal) e §38 novo (as três condições, o que conta e o que não conta, as três camadas e por que "requereu" é sempre parcial, situação no defeso em verificação). Portão de financiamento: (f) objeto válido em toda rota; (g) toda linha preventiva com lei/artigo/fonte/hash e hash conferido; riscos declarados = riscos das linhas; (h) motor do índice nunca lê os dados do fogo. Runtime cobre título, tabela, lacuna e créditos. Teto de palavras de Financiamento 720 → 820 (a auditoria devolve o dinheiro a esta página).
+
 ## §47 · Saúde aberta pelas duas metades, 11 → 5 figuras na face (auditoria editorial 14/09, onda E1 §1.5) · 14/09/2026
 
 Nenhuma alteração de método. Classe **estrutura de página**.
@@ -10551,6 +10571,7 @@ Nenhuma alteração de método; nenhum número muda. Classe **conteúdo/estrutur
 Nenhuma alteração de método. Classe **infra/conteúdo**. Onda E1 da `AUDITORIA_EDITORIAL_e_HANDOVER_14-09-2026.md`, item 1.1 (crítico).
 
 - `data/publicacao.json` (`indexar: false`, decidido pela editoria em 14/09) é a única flag de lançamento. Enquanto for `false`: as 11 páginas levam `<meta name="robots" content="noindex, nofollow">` (antes: `index, follow`); todo deploy (prévia e ensaio) já leva `X-Robots-Tag: noindex` e `robots.txt` de bloqueio; `verificar_seo.js` bloqueia página sem o meta; `verificar_publicado.js` **falha** se o noindex (cabeçalho **e** meta) faltar em qualquer página servida — o workflow diário passa a usar esse modo por padrão. Mudar a flag para `true` inverte as exigências (o portão passa a bloquear qualquer noindex remanescente).
+
 ## §42 · Netlify sem pós-processamento: o servido é byte a byte o mesclado · 14/09/2026
 
 Nenhuma alteração de método. Classe **infra**. No 1º ensaio de publicação (15h25 UTC), `verificar_publicado.js` provou que o Netlify reescrevia o HTML ao servir (Pretty URLs; aspas de atributos `"`→`'`), e 8 páginas deixavam de bater com `MANIFEST_SHA256.txt`. Em vez de normalizar cada reescrita, `netlify.toml` passa a declarar `[build.processing] skip_processing = true` — o site já é estático e otimizado no repositório; servir exatamente o que foi mesclado é o que a verificação de integridade exige. Vale para prévia, ensaio e lançamento.
@@ -10621,4 +10642,3 @@ Nenhuma alteração de método; nenhum número muda. Classe **código** (PROTOCO
 - **Fonte fora do ar, não erro do coletor.** Verificado em navegador no Brasil: `gitlab.procc.fiocruz.br` (host do CSV canônico do InfoGripe, `serie_temporal_com_estimativas_recentes.csv`) devolve `ERR_CONNECTION_TIMED_OUT`. Não é bloqueio ao runner: não responde de lugar nenhum.
 - **Pista de migração, ainda não confirmada:** o InfoGripe aparece agora em `gitlab.fiocruz.br/marcelo.gomes/infogripe`, mas esse host **exige login** — não serve para coleta anônima. Por isso a URL **não** foi trocada às cegas; quatro endereços (host antigo e novo, raiz e CSV) entraram na sonda `scripts/diagnostico_fontes_saude.py` para medir antes de decidir.
 - **Correção visível agora:** a ausência de série é **declarada dentro da figura** ("Série ainda não coletada — lacuna declarada", com a razão), no mesmo padrão já usado em `financiamento.js`. A mensagem vai na mídia, não como parágrafo no cartão, porque o portão de figuras só admite título, legenda e crédito.
-

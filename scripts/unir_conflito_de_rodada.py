@@ -1146,7 +1146,6 @@ def autoteste() -> int:
         checar("F55: índice de evidências une as entradas novas e a mudança de um lado só",
                not rec and d["itens"] == {"a": {"ocr": 1}, "b": {"x": 1}, "c": {"x": 2}})
     with tempfile.TemporaryDirectory() as t:
-<<<<<<< HEAD
         CL = "CHANGELOG.md"
         cab = "# Changelog\n\nintro.\n\n"
         e1, e2 = "## 2026-11-06 · A · texto a", "## 2026-11-05 · B · texto b"
@@ -1163,7 +1162,7 @@ def autoteste() -> int:
         r2 = _repo_com_conflito(t + "/c", CL, cab + e1 + "\n\ncorpo\n", cab + e1 + "\n\ncorpo x\n", cab + e1 + "\n\ncorpo y\n")
         res, reg, rec = resolver(repo=r2)
         checar("CHANGELOG: a mesma entrada editada nos dois lados é recusada", bool(rec) and "editada" in rec[0])
-=======
+    with tempfile.TemporaryDirectory() as t:
         W = "https://web.archive.org/web/*/https://x.gov.br/p.pdf"
         r = _repo_com_conflito(t, EV, _doc("itens", {"a": {"wayback": None}}),
                                _doc("itens", {"a": {"wayback": "tentativa falhou (HTTPError)"}}),
@@ -1172,7 +1171,6 @@ def autoteste() -> int:
         d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
         checar("evidências: o mesmo documento preservado por dois lotes — a cópia aceita pelo Wayback vence a tentativa falhada",
                not rec and d["itens"]["a"]["wayback"] == W)
->>>>>>> origin/main
     with tempfile.TemporaryDirectory() as t:
         PB = "data/planos_busca/DF.json"
         pl = lambda g, m: json.dumps({"gerado_em": g, "municipios": m})
