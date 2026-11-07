@@ -53,6 +53,19 @@ ALVOS = [
     # busca o site (de onde ele conseguir) e devolve a cópia arquivada, sem o runner precisar falar com a
     # fonte original.
     ("web.archive.org (candidato a intermediário para o DF)", "https://web.archive.org/web/2/https://www.saude.df.gov.br/informes-dengue-chikungunya-zika-febre-amarela"),
+    # 07/11/2026: síndrome gripal (SG). O e-SUS Notifica recusa as duas rotas do portal (§80) e o conjunto
+    # anual para em 2024. Onde mais o Ministério publica a SG, aberto e por máquina? Medir antes de decidir:
+    # o catálogo CKAN (há conjunto de 2025/2026 com outro nome?), o conjunto do e-SUS 2024 (a recusa é do
+    # objeto no S3 ou do host?), o Painel Coronavírus e o painel público do InfoGripe.
+    ("SG · CKAN package_search q=gripal", "https://dadosabertos.saude.gov.br/api/3/action/package_search?q=gripal&rows=50"),
+    ("SG · CKAN package_search q=notifica", "https://dadosabertos.saude.gov.br/api/3/action/package_search?q=notifica&rows=50"),
+    ("SG · CKAN package_search q=covid", "https://dadosabertos.saude.gov.br/api/3/action/package_search?q=covid&rows=50"),
+    ("SG · S3 raiz do CKAN (o host responde?)", "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/"),
+    ("SG · S3 CSV 2024 AC lote 1 (a recusa é do objeto?)", "https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SGL/2024/uf=AC/lote=1/part-00000.csv"),
+    ("SG · Painel Coronavírus (raiz)", "https://covid.saude.gov.br/"),
+    ("SG · InfoGripe painel público", "https://info.gripe.fiocruz.br/"),
+    ("SG · InfoGripe dados do painel (candidato)", "https://info.gripe.fiocruz.br/api/"),
+    ("SG · CVE-SP boletins de síndromes gripais (listagem)", "https://www.saude.sp.gov.br/cve-centro-de-vigilancia-epidemiologica-prof.-alexandre-vranjac/areas-de-vigilancia/doencas-de-transmissao-respiratoria/influenza/boletins"),
 ]
 
 
@@ -101,6 +114,22 @@ def main() -> int:
         print(f"    {json.dumps(r, ensure_ascii=False)}")
         time.sleep(1.5)
         print()
+    # 07/11/2026: para o catálogo CKAN, o que importa é a lista de conjuntos (título, ano no nome,
+    # recursos) — 120 bytes do corpo não dizem se existe síndrome gripal de 2025/2026 com outro nome.
+    for nome, url in ALVOS:
+        if "package_search" not in url:
+            continue
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": ua_de("diagnóstico de fontes de saúde")})
+            doc = json.loads(urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "replace"))
+            print(f"--- {nome}: {doc.get('result', {}).get('count')} conjunto(s)")
+            for d in doc.get("result", {}).get("results", []):
+                recs = d.get("resources") or []
+                anos = sorted({a for r in recs for a in __import__("re").findall(r"20[12]\d", (r.get("name") or "") + (r.get("url") or ""))})
+                print(f"    {d.get('name')} · {d.get('title', '')[:70]} · {len(recs)} recurso(s) · anos {anos} · atualizado {str(d.get('metadata_modified', ''))[:10]}")
+        except Exception as e:  # noqa: BLE001
+            print(f"--- {nome}: {type(e).__name__}: {str(e)[:120]}")
+        time.sleep(1.5)
     bloqueios = {k: v for k, v in resultado.items() if v.get("status") not in (200, None) or v.get("erro")}
     print(f"=== RESUMO: {len(bloqueios)} de {len(resultado)} tentativas sem HTTP 200 ===")
     for k, v in bloqueios.items():
