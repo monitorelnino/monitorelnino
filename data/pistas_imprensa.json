@@ -48732,7 +48732,8 @@
     "hash_evidencia": "8ffc36f8084e741297cc14cf9ed85aace454af3b779e07dcd47f027155677d72"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 1
   },
   {
    "municipio": "Petrolina",
@@ -236897,7 +236898,8 @@
     "data": null,
     "julgado_em": "2026-11-04",
     "hash_evidencia": "c0c50bdf5a0e3c8f151e37975cbb2e91ab1000b4e5e88f08c2928b027c2651e4"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Derrubadas",
@@ -342676,7 +342678,7 @@
    "tipo": "plano",
    "id": "d009e9fa14",
    "nivel_confianca": "C",
-   "repeticoes": 1,
+   "repeticoes": 2,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -387132,7 +387134,8 @@
     "data": "2023",
     "julgado_em": "2026-11-05",
     "hash_evidencia": "252451a09d87c4ae089c747b2ecd2f2655f323d7774081ff95e694b075a74744"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Paraty",
@@ -395599,7 +395602,8 @@
    "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
-   "fechada_em": "2026-10-27"
+   "fechada_em": "2026-10-27",
+   "repeticoes": 2
   },
   {
    "municipio": "Cordeiro",
@@ -685963,7 +685967,8 @@
    "alvo": "5002704",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "uf"
+   "entrada": "uf",
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -685984,6 +685989,52 @@
    "id": "c44da99907",
    "url_final": "https://www.mg.gov.br/defesacivil/noticias/plancon-incendio-florestal",
    "alvo": "3106200",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Porto Velho",
+   "uf": "RO",
+   "ibge": "1100205",
+   "url": "https://espigaodooeste.ro.gov.br/uploads/678686e2dd349.pdf",
+   "titulo": "S17 · Porto Velho/RO: COMPDEC PLANO DE CONTINGÊNCIA DE SECA E ESTIAGEM",
+   "trecho": "COMPDEC PLANO DE CONTINGÊNCIA DE SECA E ESTIAGEM",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-07",
+   "registrado_em": "2026-11-07",
+   "origem_do_coletor": "descoberta",
+   "id": "369a4e94b5",
+   "url_final": "https://espigaodooeste.ro.gov.br/uploads/678686e2dd349.pdf",
+   "alvo": "1100205",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Porto Velho",
+   "uf": "RO",
+   "ibge": "1100205",
+   "url": "https://espigaodooeste.ro.gov.br/uploads/678686f5d0eb4.pdf",
+   "titulo": "S17 · Porto Velho/RO: COMPDEC PLANO DE CONTINGÊNCIA DE ESCASSEZ HÍDRICA",
+   "trecho": "COMPDEC PLANO DE CONTINGÊNCIA DE ESCASSEZ HÍDRICA",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-07",
+   "registrado_em": "2026-11-07",
+   "origem_do_coletor": "descoberta",
+   "id": "9fcc414909",
+   "url_final": "https://espigaodooeste.ro.gov.br/uploads/678686f5d0eb4.pdf",
+   "alvo": "1100205",
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf"

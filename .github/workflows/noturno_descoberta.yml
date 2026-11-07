@@ -36,6 +36,8 @@ jobs:
       restante: seguir_pistas.py --restante
       # §278: `monitorar_busca_web.py --ufs` e `seguir_pistas.py` consultam o metabuscador.
       precisa_searxng: true
+      # 07/11/2026: `descobrir_planos.py` tem o canal renderizado (Chromium); sem Node ele caía calado.
+      precisa_node: true
       comandos: |
         monitorar_imprensa_regional.py --limite 40
         monitorar_imprensa_saude.py --limite 27

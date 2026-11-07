@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-29",
+ "gerado_em": "2026-11-07",
  "municipios": {
   "1721000": {
    "S16": {
@@ -56,6 +56,13 @@
     "situacao": "lido",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1721000&pagina=1&tamanhoPagina=500",
     "motivo": null,
+    "dominio": null
+   },
+   "S17": {
+    "consultado_em": "2026-11-07",
+    "situacao": "erro",
+    "consulta": "\"Palmas\" TO (CREPDEC OR REDEC OR \"coordenadoria regional\" OR \"defesa civil estadual\") \"plano de contingência\" site:gov.br",
+    "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
    }
   },
