@@ -10,7 +10,7 @@
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 52928,
+   "valor_parcial": 52948,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,12 +505,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 408,
+   "valor": 6965,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "06/11/2026",
+   "consultado_em": "07/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -519,47 +519,91 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 200
+     "valor": 4287
     },
     {
      "uf": "MA",
-     "valor": 112
+     "valor": 1138
     },
     {
      "uf": "AP",
-     "valor": 30
-    },
-    {
-     "uf": "MT",
-     "valor": 18
-    },
-    {
-     "uf": "RR",
-     "valor": 16
-    },
-    {
-     "uf": "BA",
-     "valor": 10
-    },
-    {
-     "uf": "AM",
-     "valor": 8
+     "valor": 547
     },
     {
      "uf": "TO",
-     "valor": 6
+     "valor": 289
+    },
+    {
+     "uf": "BA",
+     "valor": 156
+    },
+    {
+     "uf": "MT",
+     "valor": 124
+    },
+    {
+     "uf": "RR",
+     "valor": 99
+    },
+    {
+     "uf": "PI",
+     "valor": 95
+    },
+    {
+     "uf": "AM",
+     "valor": 77
+    },
+    {
+     "uf": "GO",
+     "valor": 40
     },
     {
      "uf": "MG",
-     "valor": 3
+     "valor": 33
+    },
+    {
+     "uf": "CE",
+     "valor": 24
     },
     {
      "uf": "RO",
-     "valor": 3
+     "valor": 15
     },
     {
      "uf": "AL",
+     "valor": 13
+    },
+    {
+     "uf": "PB",
+     "valor": 7
+    },
+    {
+     "uf": "SP",
+     "valor": 6
+    },
+    {
+     "uf": "PE",
+     "valor": 4
+    },
+    {
+     "uf": "SE",
+     "valor": 4
+    },
+    {
+     "uf": "MS",
+     "valor": 3
+    },
+    {
+     "uf": "RN",
      "valor": 2
+    },
+    {
+     "uf": "AC",
+     "valor": 1
+    },
+    {
+     "uf": "PR",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
