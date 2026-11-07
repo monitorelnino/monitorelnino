@@ -3037,7 +3037,12 @@
   {"data": "2026-11-07", "script": "coletar_sih.py", "inicio": "2026-11-07T07:18:58", "duracao_s": 4.9, "itens": null, "status": "erro", "erro": "SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam"},
   {"data": "2026-11-07", "script": "coletar_planos_arboviroses.py", "inicio": "2026-11-07T07:19:02", "duracao_s": 867.9, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "ler_planos_arboviroses.py", "inicio": "2026-11-07T07:33:29", "duracao_s": 3.9, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-07", "script": "reconferir_instrumentos_federais.py", "inicio": "2026-11-07T07:33:32", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-07", "script": "reconferir_instrumentos_federais.py", "inicio": "2026-11-07T07:33:32", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-07T07:25:26", "duracao_s": 371.0, "itens": 10, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-07T07:31:37", "duracao_s": 315.2, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-07T07:36:52", "duracao_s": 315.0, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-07T07:42:07", "duracao_s": 314.3, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-07T07:47:21", "duracao_s": 315.1, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"}
  ],
- "atualizado_em": "2026-11-07T07:33:32"
+ "atualizado_em": "2026-11-07T07:47:21"
 }
