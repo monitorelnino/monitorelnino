@@ -486,6 +486,39 @@ def autoteste() -> int:
                 and sem["situacao"] == "portal_nao_verificado" and cai["situacao"] == "portal_nao_verificado"
                 and cai["motivo"] == "a busca não respondeu" and hosts == ["portal.bonito.ms.gov.br"] and ok)
 
+    def t_portal_http_render_e_motivo():
+        """07/11/2026: prefeitura só em http abre; home SPA se identifica pelo render; sem portal, a lacuna
+        diz cada endereço e a falha (DNS, timeout, TLS, não se identifica)."""
+        import unittest.mock as mock
+
+        def so_http(url, timeout=0):
+            if url == "http://itapema.sc.gov.br/":
+                return b"<title>Prefeitura Municipal de Itapema</title><a href='/defesa-civil/plano-de-contingencia'>Plano de contingencia</a>"
+            if url.startswith("https://itapema"):
+                raise OSError("[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed")
+            raise OSError("[Errno -2] Name or service not known")
+
+        def spa(url, timeout=0):
+            if url == "https://garuva.sc.gov.br/":
+                return b"<html><head><script src=app.js></script></head><body><div id=app></div></body></html>"
+            raise TimeoutError("timed out")
+        with mock.patch(f"{__name__}.consultar_wp_json", return_value=([], False)), mock.patch(f"{__name__}.time.sleep"):
+            with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=so_http), \
+                 mock.patch(f"{__name__}._renderizar", return_value={"ok": False}):
+                http = descobrir_no_portal("Itapema", "SC", "4208302", "2026-11-07")
+            rz = mock.patch(f"{__name__}._renderizar", return_value={"ok": True, "texto": "Prefeitura de Garuva", "links": [
+                {"href": "https://garuva.sc.gov.br/plano-de-contingencia.pdf", "texto": "Plano de contingência"}]})
+            with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=spa), rz as r_:
+                sp = descobrir_no_portal("Garuva", "SC", "4205902", "2026-11-07")
+            with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=lambda u, timeout=0: (_ for _ in ()).throw(OSError("[Errno -2] Name or service not known"))), \
+                 mock.patch(f"{__name__}._renderizar", return_value={"ok": False}):
+                nada = descobrir_no_portal("Zeta", "ZZ", "0", "2026-11-07")
+        return (http["dominio"] == "itapema.sc.gov.br" and http["situacao"] == "lido"
+                and sp["dominio"] == "garuva.sc.gov.br" and sp["situacao"] == "lido" and r_.call_count == 1
+                and [p["url"] for p in sp["pistas"]] == ["https://garuva.sc.gov.br/plano-de-contingencia.pdf"]
+                and nada["situacao"] == "portal_nao_verificado" and "https://zeta.zz.gov.br: DNS" in nada["motivo"]
+                and nome_da_falha(TimeoutError("timed out")) == "timeout" and parece_montar_por_javascript("<p>" + "texto " * 200 + "</p>") is False)
+
     def t_sitio_uma_linha_por_municipio():
         """Cada município lido vira uma linha `site_municipal` com município e UF; o que não foi lido é `erro`;
         a fila aceita `municipios` do cadastro (codigo_ibge numérico)."""
@@ -515,6 +548,7 @@ def autoteste() -> int:
 
     return rodar_autoteste({
         "rota 1b: busca no domínio acha o portal e o link; busca fora do ar não vira ausência": t_rota_1b_busca_no_dominio,
+        "portal: http quando https falha, SPA pelo render, e a lacuna nomeia cada falha": t_portal_http_render_e_motivo,
         "§25 sítio da prefeitura: uma linha do log por município, fila do cadastro": t_sitio_uma_linha_por_municipio,
         "portal: endereço oficial do cadastro primeiro; home que só monta por JavaScript é renderizada": t_endereco_oficial_e_home_renderizada,
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
@@ -703,7 +737,7 @@ def _so_letras(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
 
 
-CANDIDATOS_V = 4   # 05/11/2026: + endereço oficial do cadastro público (Wikidata P856), home renderizada e busca no domínio (1b)
+CANDIDATOS_V = 5   # 07/11/2026: + `http` quando `https` falha e home SPA identificada pelo render (antes: 4 = Wikidata P856, render e busca 1b em 05/11)
 
 _SPARQL = ("SELECT ?c ?u WHERE { ?m wdt:P1585 ?c ; wdt:P856 ?u . }")
 _REDES = ("facebook.", "instagram.", "twitter.", "x.com", "youtube.", "wikipedia.", "linktr.ee")
@@ -762,6 +796,27 @@ def dominios_do_municipio(nome: str, uf: str, oficial: str = None) -> list:
     return ([oficial] if oficial and oficial not in padrao else []) + padrao
 
 
+def nome_da_falha(e: Exception) -> str:
+    """O nome curto da falha de rede, para a lacuna declarada (DNS, timeout, TLS, conexão). Pura."""
+    t = f"{type(e).__name__}: {e}".lower()
+    if "name or service" in t or "nodename" in t or "getaddrinfo" in t or "errno -2" in t:
+        return "DNS"
+    if "timed out" in t or "timeout" in t:
+        return "timeout"
+    if "ssl" in t or "certificate" in t or "tls" in t:
+        return "TLS"
+    if "connection refused" in t or "errno 111" in t:
+        return "conexão recusada"
+    return type(e).__name__
+
+
+def parece_montar_por_javascript(html: str) -> bool:
+    """HTML com script e quase nenhum texto visível: a home que só monta no navegador. Pura."""
+    h = str(html or "")
+    texto = " ".join(re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", h, flags=re.S | re.I)).split())
+    return "<script" in h.lower() and len(texto) < 400
+
+
 def identifica_prefeitura(html: str, nome: str) -> bool:
     """A página diz ser a prefeitura do município (nome e a palavra "prefeitura" ou "município"). Pura."""
     import unicodedata
@@ -809,26 +864,46 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
     import urllib.error
     dominio = home = None
     nao_serve = False   # a busca falhou: tentativa, não ausência
+    falhas = []         # 07/11/2026: cada endereço que não serviu, com o nome da falha — a lacuna diz por quê
+    render = None       # a home que só monta por JavaScript, como o navegador a vê (uma vez por município)
 
     def ler_home(dominios):
-        """(dominio, home, recusa): o primeiro endereço que responde como a prefeitura, ou a recusa que parou a leitura."""
+        """(dominio, home, recusa): o primeiro endereço que responde como a prefeitura, ou a recusa que parou a leitura.
+
+        07/11/2026 (697 prioritários parados em `portal_nao_verificado`): tenta `https` e depois `http`
+        (prefeitura pequena sem TLS), e a home que não se identifica no HTML estático é renderizada antes
+        de ser descartada (SPA). Falha de rede recebe nome em `falhas` em vez de ser engolida."""
+        nonlocal render
         for d in dominios:
-            try:
-                with _pedido_ao_host(d):
-                    corpo = buscar_uma_vez(f"https://{d}/", timeout=15)
-            except urllib.error.HTTPError as e:
-                if e.code in RECUSAS_DE_FONTE:
-                    registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
-                    return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
-                continue
-            except MuroDeRobo as e:
-                registrar_lacuna(f"portal de {nome}/{uf}", f"muro de robô em {d}", canal="portal da prefeitura", camada=1, uf=uf)
-                return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
-            except Exception:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve, tenta o próximo
+            corpo = None
+            for esquema in ("https", "http"):
+                try:
+                    with _pedido_ao_host(d):
+                        corpo = buscar_uma_vez(f"{esquema}://{d}/", timeout=15)
+                    break
+                except urllib.error.HTTPError as e:
+                    if e.code in RECUSAS_DE_FONTE:
+                        registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
+                        return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
+                    falhas.append(f"{d}: HTTP {e.code}")
+                    break   # resposta do servidor: o outro esquema não muda o veredito
+                except MuroDeRobo as e:
+                    registrar_lacuna(f"portal de {nome}/{uf}", f"muro de robô em {d}", canal="portal da prefeitura", camada=1, uf=uf)
+                    return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
+                except Exception as e:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve neste esquema
+                    falhas.append(f"{esquema}://{d}: {nome_da_falha(e)}")
+            if corpo is None:
                 continue
             texto = corpo[:300000].decode("utf-8", "replace")
             if identifica_prefeitura(texto, nome):
                 return d, texto, None
+            if render is None and parece_montar_por_javascript(texto):
+                with _pedido_ao_host(d):
+                    render = _renderizar(f"https://{d}/", "descobrir_planos/portal")
+                if render.get("ok") and identifica_prefeitura(render.get("texto"), nome):
+                    return d, "", None   # sem HTML estático: os links vêm do render, abaixo
+                render = None
+            falhas.append(f"{d}: respondeu, mas não se identifica como a prefeitura de {nome}")
         return None, None, None
 
     tentados = dominios_do_municipio(nome, uf, oficial)
@@ -843,7 +918,7 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
             return recusa
     if not dominio:
         return {"dominio": None, "situacao": "portal_nao_verificado", "pistas": [],
-                "motivo": "a busca não respondeu" if nao_serve else None}
+                "motivo": "a busca não respondeu" if nao_serve else "; ".join(falhas)[:400] or None}
     itens, vistos, respondeu = [], set(), False
     for termo in TERMOS_MUNICIPIO:
         with _pedido_ao_host(dominio):
@@ -865,8 +940,9 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
             vistos.add(href)
             itens.append((href, texto, None, None))
     if not (respondeu or itens):   # a home só monta por JavaScript: a página como o navegador a vê
-        with _pedido_ao_host(dominio):
-            render = _renderizar(f"https://{dominio}/", "descobrir_planos/portal")
+        if render is None:
+            with _pedido_ao_host(dominio):
+                render = _renderizar(f"https://{dominio}/", "descobrir_planos/portal")
         for l in (render.get("links") or []) if render.get("ok") else []:
             if l["href"] not in vistos and link_e_candidato(l.get("href", ""), l.get("texto", "")) and len(vistos) < MAXIMO_LINKS_POR_PAGINA:
                 vistos.add(l["href"])
