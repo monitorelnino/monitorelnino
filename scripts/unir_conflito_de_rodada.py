@@ -119,6 +119,7 @@ REGENERAVEIS = (
     "data/resposta/municipios_decretados.json", "data/resposta/por_uf.json",
     "data/resposta/serie_semanal.json", "data/robustez_mc.json", "data/snapshot_feed.json",
     "data/verificacao_municipal.json", "data/verificacao_resumo.json",
+    "MARE_Indice_Documentacao.pdf", "METODOLOGIA.pdf",   # 07/11/2026: binários da cadeia (gerar_pdf_*.py)
 )
 
 # 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se
@@ -435,9 +436,13 @@ def em_conflito(repo=None):
 def estagio(caminho, n, repo=None):
     """O conteúdo do estágio n (1=base, 2=nosso, 3=deles), ou None se o estágio não existe."""
     try:
-        return git("show", f":{n}:{caminho}", repo=repo, binario=True).decode("utf-8")
+        bruto = git("show", f":{n}:{caminho}", repo=repo, binario=True)
     except RuntimeError:
         return None
+    try:
+        return bruto.decode("utf-8")
+    except UnicodeDecodeError:   # binário (PDF da cadeia): fica em bytes, e só a política de derivado o aceita
+        return bruto
 
 
 def e_contador_que_so_cresce(caminho: str) -> bool:
@@ -614,6 +619,15 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
 
     15/10/2026: a MESMA união serve ao conflito de rebase (`resolver`) e à reaplicação da coleta
     perdida (`scripts/reaplicar_noite.py`, base = a do elo, nosso = árvore, deles = artefato)."""
+    if any(isinstance(x, bytes) for x in (base_txt, nosso_txt, deles_txt)):
+        # 07/11/2026: a união dos lotes do cadastro caiu no PDF do índice — o resolvedor derrubava
+        # tudo com UnicodeDecodeError. Binário só se aceita como derivado regenerável; o resto é recusa.
+        if not e_regeneravel(norm):
+            raise Recusa("arquivo binário sem política de mesclagem")
+        if nosso_txt is None:
+            raise Recusa("o lado de cima não tem o arquivo")
+        pathlib.Path(destino).write_bytes(nosso_txt if isinstance(nosso_txt, bytes) else nosso_txt.encode("utf-8"))
+        return "versão de cima (binário derivado, será regenerado)"
     if norm in LOGS_QUE_SO_CRESCEM:
         doc, a, b, t = unir_log(norm, LOGS_QUE_SO_CRESCEM[norm], base_txt, nosso_txt, deles_txt)
         gravar_no_formato_do_produtor(destino, doc)
@@ -702,7 +716,10 @@ def _repo_com_conflito(tmp, caminho, base, nosso, deles):
     def escrever(texto):
         alvo = r / caminho
         alvo.parent.mkdir(parents=True, exist_ok=True)
-        alvo.write_text(texto, encoding="utf-8", newline="")
+        if isinstance(texto, bytes):
+            alvo.write_bytes(texto)
+        else:
+            alvo.write_text(texto, encoding="utf-8", newline="")
 
     g("init", "-q", "-b", "principal")
     if base is not None:
@@ -1109,6 +1126,16 @@ def autoteste() -> int:
         d = json.loads((r / S2).read_text(encoding="utf-8")) if not rec else {"municipios": {}}
         checar("s2id_busca_dirigida: lotes paralelos do cadastro unem os municípios de cada lado",
                not rec and sorted(d["municipios"]) == ["1", "2", "3"] and d["gerado_em"] == "2026-11-07")
+    with tempfile.TemporaryDirectory() as t:
+        PDF = "MARE_Indice_Documentacao.pdf"
+        r = _repo_com_conflito(t, PDF, b"%PDF-1.4 \x93base", b"%PDF-1.4 \x93nosso", b"%PDF-1.4 \x93deles")
+        res, reg, rec = resolver(repo=r)
+        checar("binário derivado (PDF da cadeia): versão de cima e regenerar, sem derrubar o resolvedor",
+               not rec and (r / PDF).read_bytes() == b"%PDF-1.4 \x93nosso" and PDF in reg)
+        pathlib.Path(t, "b").mkdir()
+        r2 = _repo_com_conflito(t + "/b", "data/x.bin", b"\x93a", b"\x93b", b"\x93c")
+        res, reg, rec = resolver(repo=r2)
+        checar("binário sem política é recusado, não adivinhado", bool(rec) and "binário" in rec[0])
     with tempfile.TemporaryDirectory() as t:
         DE = "data/doe_edicoes/PB.json"
         ed = lambda em, e, c: json.dumps({"edicoes": e, "canal2": {"situacao": c}, "atualizado_em": em})
