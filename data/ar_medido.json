@@ -105,7 +105,7 @@
   }
  },
  "_governanca": "Ar medido por estação e sensor. IQAr calculado pelo órgão (MMA/MonitorAr, CONAMA 506/2024), nunca recalculado aqui; PM2,5 do OpenAQ só para a mesma estação oficial; sensores de baixo custo (IPAM/RedeAr) só em concentração, nunca índice. Medição com mais de 36 h é lacuna. Peso zero, sinal físico.",
- "gerado_em": "07/11/2026 05:16",
+ "gerado_em": "07/11/2026 05:44",
  "fontes": {
   "monitorar": {
    "orgao": "MMA · MonitorAr (redes estaduais)",
@@ -114,7 +114,7 @@
    "natureza": "medição",
    "papel": "IQAr por estação oficial, calculado pelo órgão (CONAMA 506/2024); hora da fonte lida como horário de Brasília",
    "status": "coletado",
-   "consultado_em": "07/11/2026 05:16",
+   "consultado_em": "07/11/2026 05:44",
    "evidencia_sha256": "2edefe304c27291c82ea223c9e478103fe8bc89ea2c6728b65b0abf6a4ff7aa2"
   },
   "openaq": {
@@ -124,8 +124,8 @@
    "natureza": "medição",
    "papel": "PM2,5 em µg/m³ da última medição publicada da mesma estação oficial",
    "status": "coletado",
-   "consultado_em": "07/11/2026 05:16",
-   "evidencia_sha256": "ce8d7a70848ea636194d5c329232be80e460a6295099932f6cb877c494576afc",
+   "consultado_em": "07/11/2026 05:44",
+   "evidencia_sha256": "2314b699097d9a2643b67c36848cf20aebf8a312b855b82c6018ae56b52dbbbe",
    "estacoes_casadas": 29
   },
   "redear": {
@@ -135,8 +135,8 @@
    "natureza": "sensor de baixo custo",
    "papel": "PM2,5 e PM10 em µg/m³ da leitura mais recente (média dos dois canais do sensor ótico, correção atmosférica `_env` da fonte); hora da fonte sem fuso declarado; não é estação regulatória e não gera IQAr",
    "status": "coletado",
-   "consultado_em": "07/11/2026 05:16",
-   "evidencia_sha256": "a9080e36207a4babe92dc9193a2d0115205a00c4acf998a2a3c9a3e1483b2356"
+   "consultado_em": "07/11/2026 05:44",
+   "evidencia_sha256": "b97f8e63bf494c46b7cb2f08f1a48e912f9ec8b384d8e66568736c7c38878a85"
   }
  },
  "estacoes": [
@@ -5750,7 +5750,7 @@
    "lat": -15.75163,
    "lon": -47.885148,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:14)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:42)"
   },
   {
    "id": 3,
@@ -5763,7 +5763,7 @@
    "lat": -23.56147246393232,
    "lon": -46.73501109921289,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:41)"
   },
   {
    "id": 4,
@@ -5776,7 +5776,7 @@
    "lat": 0.28435682174140803,
    "lon": -51.028056907097834,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 5,
@@ -5789,7 +5789,7 @@
    "lat": -7.612675,
    "lon": -72.680907,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:41)"
   },
   {
    "id": 6,
@@ -5802,7 +5802,7 @@
    "lat": -9.957346,
    "lon": -67.868655,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 7,
@@ -5815,7 +5815,7 @@
    "lat": -9.957619,
    "lon": -67.868988,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:41)"
   },
   {
    "id": 8,
@@ -5828,7 +5828,7 @@
    "lat": -9.957346,
    "lon": -67.868655,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 9,
@@ -5893,7 +5893,7 @@
    "lat": -7.61302,
    "lon": -72.90297,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 25541,
@@ -5906,7 +5906,7 @@
    "lat": -9.72708,
    "lon": -67.69802,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 25551,
@@ -5919,7 +5919,7 @@
    "lat": -8.170079,
    "lon": -70.35503,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 25891,
@@ -5932,7 +5932,7 @@
    "lat": -9.829177,
    "lon": -67.95388,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 31089,
@@ -5945,7 +5945,7 @@
    "lat": -7.630234,
    "lon": -72.66575,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:41)"
   },
   {
    "id": 31091,
@@ -5971,7 +5971,7 @@
    "lat": -9.063847,
    "lon": -68.65999,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 31097,
@@ -6023,7 +6023,7 @@
    "lat": -10.939974,
    "lon": -69.56391,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 31109,
@@ -6036,7 +6036,7 @@
    "lat": -9.966662,
    "lon": -67.84944,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 31111,
@@ -6062,7 +6062,7 @@
    "lat": -11.02846,
    "lon": -68.73796,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 56663,
@@ -6088,7 +6088,7 @@
    "lat": 2.833729,
    "lon": -60.69464,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 57177,
@@ -6101,7 +6101,7 @@
    "lat": -10.07734,
    "lon": -67.05071,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:13)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 57287,
@@ -6114,7 +6114,7 @@
    "lat": -7.558716,
    "lon": -72.71673,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 128043,
@@ -6140,7 +6140,7 @@
    "lat": -11.86444,
    "lon": -55.485184,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 128639,
@@ -6166,7 +6166,7 @@
    "lat": -9.855878,
    "lon": -58.247753,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:09)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 128701,
@@ -6179,7 +6179,7 @@
    "lat": -8.056258,
    "lon": -48.485832,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 128973,
@@ -6205,7 +6205,7 @@
    "lat": -3.352659,
    "lon": -64.73211,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 128991,
@@ -6218,7 +6218,7 @@
    "lat": -4.36667,
    "lon": -70.19364,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 128995,
@@ -6231,7 +6231,7 @@
    "lat": -15.578212,
    "lon": -56.116814,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 128999,
@@ -6244,7 +6244,7 @@
    "lat": -2.42687,
    "lon": -54.71255,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 129001,
@@ -6257,7 +6257,7 @@
    "lat": -13.556802,
    "lon": -52.26564,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 129003,
@@ -6283,7 +6283,7 @@
    "lat": -17.33855,
    "lon": -56.76984,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:09)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 129145,
@@ -6340,7 +6340,7 @@
    "lat": -15.741229,
    "lon": -47.892666,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:11)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:41)"
   },
   {
    "id": 151650,
@@ -6353,7 +6353,7 @@
    "lat": -9.957616,
    "lon": -67.86898,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 161259,
@@ -6366,7 +6366,7 @@
    "lat": -3.131549,
    "lon": -60.00408,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 161261,
@@ -6379,7 +6379,7 @@
    "lat": -3.130093,
    "lon": -60.026802,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 161291,
@@ -6436,7 +6436,7 @@
    "lat": -3.181023,
    "lon": -52.185143,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209693,
@@ -6449,7 +6449,7 @@
    "lat": -12.294056,
    "lon": -63.397316,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209697,
@@ -6462,7 +6462,7 @@
    "lat": -6.638022,
    "lon": -51.9792,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209719,
@@ -6475,7 +6475,7 @@
    "lat": -2.541418,
    "lon": -44.230328,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:09)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 209723,
@@ -6488,7 +6488,7 @@
    "lat": -1.735165,
    "lon": -47.05627,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209733,
@@ -6514,7 +6514,7 @@
    "lat": -5.165474,
    "lon": -48.94273,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209737,
@@ -6527,7 +6527,7 @@
    "lat": -19.013136,
    "lon": -57.69009,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209750,
@@ -6540,7 +6540,7 @@
    "lat": -3.44846,
    "lon": -52.925392,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 209755,
@@ -6566,7 +6566,7 @@
    "lat": -9.543799,
    "lon": -48.17414,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:09)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 209773,
@@ -6579,7 +6579,7 @@
    "lat": -2.513515,
    "lon": -54.95059,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 07:55)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 209779,
@@ -6592,7 +6592,7 @@
    "lat": -11.411936,
    "lon": -58.772427,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:05)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 241605,
@@ -6605,7 +6605,7 @@
    "lat": -15.659415,
    "lon": -56.16829,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 241627,
@@ -6618,7 +6618,7 @@
    "lat": -11.71431,
    "lon": -50.707897,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 241629,
@@ -6631,7 +6631,7 @@
    "lat": -15.918975,
    "lon": -52.278877,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 241657,
@@ -6644,7 +6644,7 @@
    "lat": -16.46448,
    "lon": -54.579033,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:09)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 241667,
@@ -6657,7 +6657,7 @@
    "lat": -15.063544,
    "lon": -57.17302,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 241671,
@@ -6670,7 +6670,7 @@
    "lat": -13.80591,
    "lon": -56.08317,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 241693,
@@ -6683,7 +6683,7 @@
    "lat": -15.55516,
    "lon": -54.28199,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 241701,
@@ -6696,7 +6696,7 @@
    "lat": -9.962145,
    "lon": -54.869385,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:09)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:17)"
   },
   {
    "id": 241713,
@@ -6709,7 +6709,7 @@
    "lat": -11.926595,
    "lon": -54.17171,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 242077,
@@ -6722,7 +6722,7 @@
    "lat": -13.677333,
    "lon": -57.786915,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 242083,
@@ -6735,7 +6735,7 @@
    "lat": -15.570751,
    "lon": -56.0744,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 242087,
@@ -6748,7 +6748,7 @@
    "lat": -16.259659,
    "lon": -56.63246,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 242091,
@@ -6761,7 +6761,7 @@
    "lat": -15.228402,
    "lon": -59.350273,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 242093,
@@ -6774,7 +6774,7 @@
    "lat": -17.318459,
    "lon": -53.213974,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 243063,
@@ -6787,7 +6787,7 @@
    "lat": -15.782858,
    "lon": -47.779774,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 243067,
@@ -6800,7 +6800,7 @@
    "lat": -15.541478,
    "lon": -47.971092,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:05)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:27)"
   },
   {
    "id": 243621,
@@ -6839,7 +6839,7 @@
    "lat": -13.062653,
    "lon": -52.38097,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 263721,
@@ -6852,7 +6852,7 @@
    "lat": -13.79915,
    "lon": -47.45741,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 282176,
@@ -6865,7 +6865,7 @@
    "lat": -20.566204,
    "lon": -56.28907,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 296063,
@@ -6909,7 +6909,7 @@
    "lat": -2.525,
    "lon": -48.7962,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 296131,
@@ -6935,7 +6935,7 @@
    "lat": -10.178505,
    "lon": -48.18259,
    "pm25": null,
-   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:15)"
+   "lacuna": "hora da leitura publicada pela fonte posterior à consulta (07/11/2026 08:43)"
   },
   {
    "id": 296274,
