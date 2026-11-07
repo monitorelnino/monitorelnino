@@ -428,8 +428,10 @@ def registro_da_falha(atual, hoje, e) -> dict:
 def a_reler(item) -> bool:
     """Edição lida antes dos termos de declaração tem de ser relida, e a `sem_texto_extraivel` também,
     uma vez por versão do leitor: "não pude ler" não é decisão final, e o leitor muda (as 89 edições do
-    RJ ficaram assim por defeito de leitura, corrigido no #894, e nada as relia). Função pura."""
-    return isinstance(item, dict) and (item.get("decisao") == "vazio" or  # conexão recusada/timeout: nunca foi leitura
+    RJ ficaram assim por defeito de leitura, corrigido no #894, e nada as relia). A `recusa` de uma
+    data também: `datas_sem_cobertura` a contava como falta e este filtro nunca a devolvia (PE, 07/11/2026:
+    quatro datas recusadas em 06/11, antes de o 403 virar ausência declarada, ficaram paradas). Função pura."""
+    return isinstance(item, dict) and (item.get("decisao") in ("vazio", "recusa") or  # nunca foi leitura
                                        item.get("decisao") == "sem_texto_extraivel" and item.get("leitor") != VERSAO_DO_LEITOR or
                                        item.get("decisao") == "lida" and (item.get("termos_versao") != VERSAO_DOS_TERMOS
                                                                          or item.get("legal_versao") != VERSAO_LEGAL))
@@ -1131,8 +1133,9 @@ def _autoteste() -> int:
     ok("falha de rede na releitura mantém a lida; sem leitura anterior vira vazio",
        registro_da_falha(lida, "x", OSError("t")) is lida
        and registro_da_falha(None, "x", OSError("t"))["decisao"] == "vazio")
-    ok("data gravada como vazio (conexão recusada, timeout) é relida; sem edição na data não",
-       a_reler({"decisao": "vazio", "motivo": "URLError: Connection refused"}) and not a_reler({"decisao": "sem_edicao_na_data"}))
+    ok("data gravada como vazio (conexão recusada, timeout) ou recusa é relida; sem edição na data não",
+       a_reler({"decisao": "vazio", "motivo": "URLError: Connection refused"}) and a_reler({"decisao": "recusa"})
+       and not a_reler({"decisao": "sem_edicao_na_data"}))
     nova = dict(lida, termos_versao=VERSAO_DOS_TERMOS, legal_versao=VERSAO_LEGAL)
     ciclo = {d: nova for d in datas_do_periodo(INICIO_DO_CICLO, "2026-10-01")}
     ok("metade estadual só conta com o ciclo inteiro coberto e relido",
