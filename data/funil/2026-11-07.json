@@ -12,11 +12,14 @@
    "pistas": 10
   },
   "juiz": {
-   "pistas_recebidas": 80,
-   "com_documento": 1,
+   "pistas_recebidas": 364,
+   "com_documento": 13,
    "promovidas": 1,
-   "recusa_documento_inacessivel": 78,
-   "recusa_texto_nao_extraivel": 1
+   "recusa_documento_inacessivel": 324,
+   "recusa_texto_nao_extraivel": 27,
+   "recusa_citacao_incompleta": 3,
+   "recusa_autoridade_nao_confirmada": 3,
+   "recusa_fora_do_objeto": 1
   },
   "descobrir_planos": {
    "alvos_consultados": 40,
@@ -25,39 +28,5 @@
    "fila_acumulada": 84
   }
  },
- "atualizado_em": "2026-11-07T05:41:59",
- "verificador_imprensa": {
-  "na_fila": 2865,
-  "lidas": 0,
-  "exibiveis": 0,
-  "inacessiveis": 0,
-  "nao_lidas_por_orcamento": 0,
-  "resolucoes": 20,
-  "nao_resolvidas_por_orcamento": 116,
-  "por_motivo": {
-   "veiculo_nao_listado": 2662,
-   "sem_https": 67,
-   "redirecionamento_nao_resolvido": 20
-  },
-  "crescimento_da_lista": {
-   "candidatos": 24,
-   "avaliados_por_noite": 15,
-   "entraram": [],
-   "recusas": {
-    "sem_https": 2,
-    "sem_pagina_de_expediente": 1,
-    "nao_avaliado_por_orcamento": 12
-   },
-   "institucionais": []
-  },
-  "orcamento": {
-   "paginas_lidas": 0,
-   "por_host": {},
-   "recusas_por_host": {},
-   "hosts_desligados": [],
-   "teto_por_host": 40,
-   "teto_global": 600
-  },
-  "versao": "1.0 (29/09/2026)"
- }
+ "atualizado_em": "2026-11-07T06:13:14"
 }
