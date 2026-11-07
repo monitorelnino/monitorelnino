@@ -619,6 +619,46 @@ def _json_indentado(doc) -> str:
     return json.dumps(doc, ensure_ascii=False, indent=1) + "\n"
 
 
+def unir_changelog(base_txt, nosso_txt, deles_txt) -> tuple:
+    """(texto, n_nosso, n_deles) do `CHANGELOG.md`: cabeçalho + entradas `## ` novas dos dois lados (as de
+    cima primeiro) e depois as da base que os dois lados mantêm, na ordem dela. Função pura.
+
+    07/11/2026: cada PR do dia conflitou aqui (oito vezes), e a resolução à mão era sempre a mesma —
+    os dois lados entram. Entrada é o bloco de `## ` até o próximo; a identidade é a linha de título
+    inteira (duas entradas podem partilhar data e número de PR). Entrada da base que um lado tirou e
+    o outro não mexeu sai; mudada nos dois lados para textos diferentes, recusa."""
+    def partes(txt):
+        linhas = (txt or "").split("\n")
+        i = next((k for k, l in enumerate(linhas) if l.startswith("## ")), len(linhas))
+        cab, corpo = "\n".join(linhas[:i]), linhas[i:]
+        blocos, atual = [], []
+        for l in corpo:
+            if l.startswith("## ") and atual:
+                blocos.append(atual)
+                atual = []
+            atual.append(l)
+        if atual:
+            blocos.append(atual)
+        return cab, {b[0]: "\n".join(b).rstrip("\n") for b in blocos}, [b[0] for b in blocos]
+    cab_b, ent_b, ord_b = partes(base_txt)
+    cab_n, ent_n, ord_n = partes(nosso_txt)
+    cab_d, ent_d, ord_d = partes(deles_txt)
+    if cab_n != cab_d and cab_n != cab_b and cab_d != cab_b:
+        raise Recusa("o cabeçalho do CHANGELOG mudou nos dois lados")
+    novas_n = [t for t in ord_n if t not in ent_b]
+    novas_d = [t for t in ord_d if t not in ent_b and t not in ent_n]
+    mantidas = []
+    for t in ord_b:
+        if t not in ent_n or t not in ent_d:
+            continue
+        if ent_n[t] != ent_d[t] and ent_n[t] != ent_b[t] and ent_d[t] != ent_b[t]:
+            raise Recusa(f"a entrada {t[:60]!r} foi editada nos dois lados")
+        mantidas.append(ent_n[t] if ent_n[t] != ent_b[t] else ent_d[t])
+    cab = cab_n if cab_n != cab_b else cab_d
+    corpo = [ent_n[t] for t in novas_n] + [ent_d[t] for t in novas_d] + mantidas
+    return cab.rstrip("\n") + "\n\n" + "\n\n".join(corpo) + "\n", len(novas_n), len(novas_d)
+
+
 def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
     """Une `norm` pela base comum e grava em `destino`; devolve o que fez. Levanta `Recusa`.
 
@@ -633,6 +673,10 @@ def unir_e_gravar(norm, base_txt, nosso_txt, deles_txt, destino) -> str:
             raise Recusa("o lado de cima não tem o arquivo")
         pathlib.Path(destino).write_bytes(nosso_txt if isinstance(nosso_txt, bytes) else nosso_txt.encode("utf-8"))
         return "versão de cima (binário derivado, será regenerado)"
+    if norm == "CHANGELOG.md":
+        texto_, a, b = unir_changelog(base_txt, nosso_txt, deles_txt)
+        _escrever(destino, texto_)
+        return f"{a} entrada(s) de cima + {b} de baixo, sobre a base (união pela base comum)"
     if norm in LOGS_QUE_SO_CRESCEM:
         doc, a, b, t = unir_log(norm, LOGS_QUE_SO_CRESCEM[norm], base_txt, nosso_txt, deles_txt)
         gravar_no_formato_do_produtor(destino, doc)
@@ -1101,6 +1145,23 @@ def autoteste() -> int:
         d = json.loads((r / EV).read_text(encoding="utf-8")) if not rec else {"itens": {}}
         checar("F55: índice de evidências une as entradas novas e a mudança de um lado só",
                not rec and d["itens"] == {"a": {"ocr": 1}, "b": {"x": 1}, "c": {"x": 2}})
+    with tempfile.TemporaryDirectory() as t:
+        CL = "CHANGELOG.md"
+        cab = "# Changelog\n\nintro.\n\n"
+        e1, e2 = "## 2026-11-06 · A · texto a", "## 2026-11-05 · B · texto b"
+        r = _repo_com_conflito(t, CL, cab + e1 + "\n\n" + e2 + "\n",
+                               cab + "## 2026-11-07 · N · nossa\n\n" + e1 + "\n\n" + e2 + "\n",
+                               cab + "## 2026-11-07 · D · deles\n\n" + e1 + "\n\n" + e2 + " (corrigida)\n")
+        res, reg, rec = resolver(repo=r)
+        texto_cl = (r / CL).read_text(encoding="utf-8") if not rec else ""
+        checar("CHANGELOG: as entradas novas dos dois lados entram, as de cima primeiro (a reescrita de um "
+               "título conta como nova), e a base que os dois mantêm segue",
+               not rec and texto_cl == cab + "## 2026-11-07 · N · nossa\n\n## 2026-11-07 · D · deles\n\n"
+               + e2 + " (corrigida)\n\n" + e1 + "\n")
+        pathlib.Path(t, "c").mkdir()
+        r2 = _repo_com_conflito(t + "/c", CL, cab + e1 + "\n\ncorpo\n", cab + e1 + "\n\ncorpo x\n", cab + e1 + "\n\ncorpo y\n")
+        res, reg, rec = resolver(repo=r2)
+        checar("CHANGELOG: a mesma entrada editada nos dois lados é recusada", bool(rec) and "editada" in rec[0])
     with tempfile.TemporaryDirectory() as t:
         W = "https://web.archive.org/web/*/https://x.gov.br/p.pdf"
         r = _repo_com_conflito(t, EV, _doc("itens", {"a": {"wayback": None}}),
