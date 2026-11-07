@@ -43072,7 +43072,8 @@
     "hash_evidencia": "0808e3ede28bbbc015cf24e8216295f0707e66bd6892503423bd8035159f0812"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 1
   },
   {
    "municipio": "Caxias do Sul",
@@ -50229,7 +50230,8 @@
     "2026-11-02"
    ],
    "status_anterior": "pista — inacessivel_persistente: 7 tentativas sem leitura do documento; continua no registro, fora da fila",
-   "retentar_buscador2_em": "documento não lido até 2026-11-02"
+   "retentar_buscador2_em": "documento não lido até 2026-11-02",
+   "repeticoes": 1
   },
   {
    "municipio": "Colinas",
@@ -298719,7 +298721,8 @@
     "data": null,
     "julgado_em": "2026-11-04",
     "hash_evidencia": "76faa0004f4b8427a4f3520f16e7784152a4f5c9937cdb494eb031f842d74194"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Itaquiraí",
@@ -377445,7 +377448,7 @@
    "tipo": "plano",
    "id": "1ecd54b632",
    "nivel_confianca": "B",
-   "repeticoes": 4,
+   "repeticoes": 5,
    "buscador2_em": "2026-10-29",
    "seguimento": {
     "data": "29/10/2026",
@@ -525928,7 +525931,8 @@
     "data": null,
     "julgado_em": "2026-11-06",
     "hash_evidencia": "86c7af91418a341d1fbb745f325ceb6b623e5576e05132ceb44a44b1cc05202e"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -556112,7 +556116,7 @@
    "nivel": "C",
    "tipo": "plano",
    "entrada": "uf",
-   "repeticoes": 27,
+   "repeticoes": 28,
    "id": "28059d6e9b",
    "nivel_confianca": "A",
    "buscador2_em": "2026-10-29",
@@ -707058,6 +707062,52 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-08"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Campo Grande",
+   "uf": "MS",
+   "ibge": "5002704",
+   "url": "https://www.saude.ms.gov.br/wp-content/uploads/2025/10/Plano-de-Contingencia-Estadual-Arboviroses-2025-2026.pdf",
+   "titulo": "S30 · Campo Grande/MS: Plano de Contingência Estadual das Arboviroses",
+   "trecho": "Plano de Contingência Estadual das Arboviroses",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-07",
+   "registrado_em": "2026-11-07",
+   "origem_do_coletor": "descoberta",
+   "id": "f5960d1173",
+   "url_final": "https://www.saude.ms.gov.br/wp-content/uploads/2025/10/Plano-de-Contingencia-Estadual-Arboviroses-2025-2026.pdf",
+   "alvo": "5002704",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "Belo Horizonte",
+   "uf": "MG",
+   "ibge": "3106200",
+   "url": "https://www.mg.gov.br/defesacivil/noticias/plancon-incendio-florestal",
+   "titulo": "S17 · Belo Horizonte/MG: PLANCON - INCÊNDIO FLORESTAL | Defesa Civil - - Portal MG",
+   "trecho": "PLANCON - INCÊNDIO FLORESTAL | Defesa Civil - - Portal MG",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-07",
+   "registrado_em": "2026-11-07",
+   "origem_do_coletor": "descoberta",
+   "id": "c44da99907",
+   "url_final": "https://www.mg.gov.br/defesacivil/noticias/plancon-incendio-florestal",
+   "alvo": "3106200",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
   }
  ],
  "quarentena": {
