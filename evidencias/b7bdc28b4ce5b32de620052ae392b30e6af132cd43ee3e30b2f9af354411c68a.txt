@@ -1,0 +1,382 @@
+=== 2026-04-17 · https://data.queridodiario.ok.org.br/3500303/2026-04-17/3fea81f60c5e1fb6f69440a4fd7724d21dfdc1fb.txt ===
+
+Município de Aguaí - SP
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e integridade.
+
+Publicação Oficial do Município de Aguaí, conforme Lei Municipal
+
+aguai.sp.gov.br
+
+DIÁRIO OFICIAL
+DO MUNICÍPIO
+
+MUNICÍPIO DE
+
+AGUAÍ
+Sexta-feira, 17 de abril de 2026 | Ano VII | Edição nº 1492A
+
+
+
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, garantindo autenticidade, validade jurídica e integridade.
+Publicação Oficial do Município de Aguaí, conforme Lei Municipal
+
+MUNICÍPIO DE AGUAÍ
+SUMÁRIO
+
+Poder Executivo 3 ............................................................................................................................... 
+Licitações e Contratos 3 ............................................................................................................. 
+
+Despachos 3 ............................................................................................................................ 
+
+
+
+DIÁRIO OFICIAL - MUNICÍPIO DE AGUAÍ Sexta-feira, 17 de abril de 2026 Ano VII | Edição nº 1492A | Página 3 de 7
+
+Município de Aguaí - SP
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e integridade.
+
+PREFEITURA MUNICIPAL DE AGUAÍ
+
+Coordenadoria de Tecnologia da Informação
+
+OFÍCIO SECADM-CTINFO - Nº 027/2026.
+
+Do Secretário Municipal de Administração
+Ao Sr. Coordenador de Compras e Licitações
+
+ 
+
+Assunto: Decisão sobre pedido de impugnação ao edital.
+
+Referência: Caso responda este Ofício, indicar expressamente o Processo nº 3500303.401.00003495/2025-
+70.
+
+Considerando os pedidos de impugnação interpostos ao Edital do Pregão Eletrônico nº 08/2026, tempestivos
+nos termos do art. 164 da Lei nº 14.133/2021; os Ofícios SECADM-CTINFO nº 27/2026, com
+esclarecimentos técnicos da Coordenadoria de Tecnologia da Informação; o Estudo Técnico Preliminar
+(ETP), Termo de Referência (TR) e Anexos do Edital; e os princípios da legalidade, isonomia,
+competitividade e economicidade (art. 5º, Lei nº 14.133/2021), DECIDO:
+
+Impugnação da RPP REDES E COMUNICAÇÕES LTDA: DEFERIDO PARCIALMENTE.
+
+Após análise detalhada, o pedido foi aceito parcialmente, em razão dos seguintes questionamentos
+fundamentados:
+
+BladeSystem materialmente contraditório - Contradição material no BladeSystem (pp. 23, 42, 54-55 e
+62):
+Identificamos divergência entre a síntese técnica (2 chassis de 10U com 16 blades cada) e descrições
+subsequentes (1 chassis com 4 lâminas), gerando cenários distintos (32 vs. 4 blades). Essa
+inconsistência afeta licenciamento, energia, rack space, rede SAN/LAN, refrigeração, manutenção,
+migração e preço, comprometendo a comparação imparcial de propostas. Aceito: Serão promovidas
+adequações no termo de referência para uniformizar as especificações.
+
+Premissas tecnológicas conflitantes no núcleo do objeto:
+Há incompatibilidades entre memória DDR5 RDIMM 3200 MT/s nos servidores rack e DDR4 2400
+MT/s nos blades (família Dell PowerEdge M1000e/CMC e Intel Xeon E5-4600 v3/v4), misturando
+gerações de arquitetura, potência e suporte. Isso indica reaproveitamento de especificações antigas,
+violando a eficiência e restringindo soluções modernas. Aceito: Revisão para consolidação arquitetural
+atualizada.
+
+Descontinuidade, obsolescência e inadequação tecnológica:
+
+Foi analisado o risco de arquitetura antiga, relacionado aos processadores Xeon E5.
+
+Já os questionamentos a seguir foram Indefiridos:
+
+Ausência de dimensionamento arquitetural, físico, elétrico e térmico
+ 
+
+A impugnante sustenta que o ETP não apresentaria dimensionamento detalhado da arquitetura do
+ambiente, alegando ausência de inventário de workloads, memórias de cálculo de CPU, RAM, IOPS,
+
+Ofício 1166554         SEI 3500303.401.00003495/2025-70 / pg. 1
+
+PODER EXECUTIVO
+Poder Executivo
+
+Licitações e Contratos
+
+Licitações e Contratos
+
+Despachos
+
+Despachos
+
+
+
+DIÁRIO OFICIAL - MUNICÍPIO DE AGUAÍ Sexta-feira, 17 de abril de 2026 Ano VII | Edição nº 1492A | Página 4 de 7
+
+Município de Aguaí - SP
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e integridade.
+
+throughput, retenção de backup, janelas de indisponibilidade, dependências sistêmicas e justificativas
+numéricas que fundamentem quantitativos como oito servidores rack, dois BladeSystems, dois storages de 60
+baias, quatro NGFW, links dedicados e tape library. Argumenta também que o documento não apresentaria
+memorial elétrico, estudo de carga térmica, diagrama unifilar, cálculo de autonomia, mapa de ocupação de
+rack ou estudo de expansão do CPD, sugerindo que o ambiente físico seria insuficiente para comportar a
+infraestrutura. Por fim, afirma que o prazo de 30 dias para mobilização e migração seria excessivamente
+curto.
+
+A crítica parte de um equívoco conceitual sobre o papel do Estudo Técnico Preliminar e do
+Termo de Referência. O ETP não é, e a lei não exige que seja, um projeto executivo de engenharia com
+cálculos térmicos, elétricos ou planilhas de carga detalhadas. O ETP deve, nos termos dos arts. 18 e 40 da
+Lei nº 14.133/2021, demonstrar a necessidade, a solução, a viabilidade, a motivação, os requisitos mínimos e
+a estimativa das quantidades — e isso foi feito de forma completa, especialmente no item “5. Estimativa das
+Quantidades”, onde o quantitativo de servidores, storages, BladeSystems, firewalls e equipamentos
+correlatos decorre da análise do contrato anterior e do dimensionamento histórico da Prefeitura. O método
+utilizado é válido, juridicamente adequado e amplamente reconhecido em contratações de TIC, como
+previsto no art. 40, III, que permite o uso de técnicas quantitativas baseadas em séries históricas,
+especialmente quando o objeto envolve serviços contínuos e ambientes críticos em operação.
+
+A exigência que a impugnante tenta atribuir ao ETP — com memórias de cálculo minuciosas de
+IOPS, mapeamento de workloads, throughput, diagramas unifilares, cálculos de dissipação térmica e
+simulações de ocupação de rack — pertence à fase de projeto executivo, típica de obras e serviços de
+engenharia, não sendo juridicamente aplicável a contratações de serviços contínuos de TI com solução
+integrada em comodato. Tais cálculos, quando necessários, são parte das obrigações da empresa contratada, e
+não pré-requisito documental do ente público, conforme reiterado pelo TCU (Acórdãos 2142/2019,
+2894/2021, 773/2022 — Plenário). O edital, inclusive, exige expressamente projeto executivo, plano de
+implantação, plano de transição, testes, homologação e documentação técnica pela contratada, dentro das
+melhores práticas de ITIL, ISO/IEC 20000 e gestão de data centers.
+
+Quanto ao ambiente físico, o TR descreve o CPD existente — área, racks, climatização, UPS e
+gerador — não para restringir equipamentos, mas para que os licitantes conheçam o local de instalação. A
+Prefeitura não afirma que o ambiente comporta previamente a solução final; ao contrário, a contratada deve
+adequar a instalação conforme normas técnicas, observando carga térmica, redundância e ocupação, o que é
+inerente à modalidade de contratação em comodato com serviços gerenciados. O fato de o CPD possuir 14,2
+m², dois aparelhos de precisão de 30.000 BTU, gerador e UPS não inviabiliza a instalação, pois o edital não
+determina ocupação máxima de chassi, nem exige 32 blades instaladas; exige apenas capacidade mínima,
+com instalação inicial de quatro lâminas por chassi, perfeitamente compatível com as condições existentes.
+
+A alegação sobre “interpretação literal de 32 blades” reforça um erro de leitura já esclarecido
+anteriormente: capacidade máxima não é quantidade contratada. O edital jamais exige densidade completa no
+momento da implantação — apenas compatibilidade e possibilidade de expansão.
+
+Por fim, o prazo de 30 dias para mobilização e implantação é compatível com contratos de
+solução integrada de TI, especialmente em regime de comodato com entrega de equipamento novo já
+configurado de fábrica. O edital exige a apresentação de plano de implantação, plano de migração, plano de
+rollback, testes, homologação e critério de aceite, que serão validados pela fiscalização contratual. Não há
+exigência legal para que o TR antecipe esses documentos, pois tais planos são obrigações da contratada,
+conforme jurisprudência consolidada do TCU (Acórdãos 767/2019, 2135/2020, 2670/2021 — Plenário), que
+veda a elaboração prévia de documentos de engenharia e operação que são de responsabilidade técnica do
+fornecedor.
+
+Dessa forma, a alegação de ausência de dimensionamento, insuficiência do CPD ou falta de
+estudos estruturais não corresponde às exigências legais aplicáveis ao ETP ou ao TR, tampouco compromete
+a clareza do objeto. As premissas utilizadas para definição dos quantitativos estão adequadamente
+justificadas no processo, e os documentos técnicos exigidos para validação final da solução são corretamente
+atribuídos à empresa vencedora, preservando a eficiência e a competitividade do certame.
+ 
+
+Fragilidades de backup, licenciamento, segurança e operação
+ 
+
+A impugnante sustenta que o edital apresentaria fragilidades relevantes nos aspectos de backup,
+licenciamento de virtualização, segurança perimetral e definição operacional, argumentando que haveria
+desalinhamento entre a capacidade potencial dos equipamentos e a ausência de descrição detalhada dos
+
+Ofício 1166554         SEI 3500303.401.00003495/2025-70 / pg. 2
+
+
+
+DIÁRIO OFICIAL - MUNICÍPIO DE AGUAÍ Sexta-feira, 17 de abril de 2026 Ano VII | Edição nº 1492A | Página 5 de 7
+
+Município de Aguaí - SP
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e integridade.
+
+volumes de dados, requisitos de armazenamento, políticas de retenção, parâmetros de SLA, critérios de
+criticidade e indicadores de desempenho. As alegações, contudo, decorrem de interpretações equivocadas
+sobre o modelo de contratação adotado — uma solução integrada e gerenciada — e sobre o papel que cabe
+ao Termo de Referência e ao Estudo Técnico Preliminar dentro da Lei nº 14.133/2021.
+
+No tocante ao backup, a impugnante afirma que a tape library com 560 slots e 9 drives seria
+desproporcional aos requisitos do Município, tomando como base a capacidade bruta teórica de mídias
+LTO‑9 ou LTO‑8. Essa análise parte de uma premissa incorreta: o edital não exige — e nem poderia exigir
+— o preenchimento integral de todos os slots ou o uso de toda a capacidade física da biblioteca. A tape
+library é contratada como plataforma, e não como capacidade ocupada. O setor público utiliza, por razões de
+continuidade operacional, segurança da informação e compliance, bibliotecas de grande porte justamente
+porque elas permitem expansão futura, múltiplas políticas simultâneas, retenção de longo prazo, segregação
+de mídias, cópias off‑site e escalabilidade sem novas compras emergenciais. O ETP utiliza metodologia
+baseada em séries históricas, conforme art. 40, III da Lei nº 14.133/2021, e não exige detalhamento
+exaustivo de volume em terabytes, pois a Administração contrata não apenas mídia, mas infraestrutura de
+backup corporativo, cuja operação — incluindo políticas de retenção, criptografia, trilha de restauração,
+imutabilidade e testes periódicos — é responsabilidade técnica da contratada dentro de boas práticas
+reconhecidas como ITIL, NIST e ISO/IEC 27040.
+
+Quanto ao licenciamento Microsoft Windows Server Datacenter, a impugnante igualmente
+incorre em erro de interpretação. O edital não exige que a Administração realize o licenciamento núcleo a
+núcleo com aquisição de “packs” de 16 cores, nem modela incorretamente servidores físicos. A solução é
+contratada em regime de comodato com serviços gerenciados, de modo que a responsabilidade pela
+conformidade de licenciamento, compatibilidade de versões e aderência às regras da fabricante recai sobre a
+CONTRATADA, e não sobre a Administração. O TR adota a expressão “1 licença” para o conjunto da
+solução por se tratar de licenciamento por host virtualizador, ofertado no modelo SPLA, CSP‑Hoster ou
+equivalente, amplamente utilizado em ambientes gerenciados no setor público. Não existe, portanto,
+inviabilidade econômica: o fornecedor utilizará o regime de licenças por núcleo ou por host aplicável ao
+modelo comercial contratado, conforme permitido pela Microsoft para ambientes de datacenter gerenciados e
+terceirizados. O edital não obriga licenciamento físico para “40 servidores”, mas sim licenciamento adequado
+para a camada de virtualização utilizada na solução — o que mantém integral liberdade tecnológica e
+comercial aos concorrentes.
+
+Em relação ao storage, a impugnante alega inexistência de detalhamento operacional. Aqui
+novamente há equívoco sobre o papel do TR. O edital descreve parâmetros mínimos — quantidade de baias,
+suporte a discos mistos, memória mínima, expansão, conectividade, integridade, redundância e
+compatibilidade com os padrões SAN — por se tratar de contratação por desempenho, e não por engenharia
+detalhada. A exigência de controladoras, caches, snapshots, replicação, deduplicação, tiering, rebuild target,
+protocolos e integração com o ambiente virtualizado será atendida pela CONTRATADA, que deve
+apresentar, antes da implantação, o projeto executivo, as configurações, os documentos de arquitetura, os
+relatórios de compatibilidade e os planos de operação, conforme previsto no edital e alinhado à
+jurisprudência do TCU (Acórdãos 2670/2021 e 2135/2020 – Plenário). O TR, portanto, não descreve
+ausência de requisitos: descreve o que a lei exige que seja descrito nesta fase — requisitos mínimos
+funcionais.
+
+No aspecto de segurança e operação, a impugnante afirma que os SLAs seriam insuficientes por
+ausência de indicadores detalhados de severidade, MTTA, MTTR, RTO, RPO e matriz S1/S2/S3. Entretanto,
+o edital define SLA rígido de operação contínua 24x7, penalidades financeiras, registros de IMR, IDS e
+indicadores operacionais obrigatórios, além de obrigar o fornecedor a apresentar, antes da entrada em
+produção, o plano de continuidade, o plano de contingência, o plano de recuperação, os critérios de
+severidade, as janelas de manutenção, os procedimentos de escalonamento e toda a documentação necessária
+ao ambiente corporativo. A definição detalhada de indicadores como RTO, RPO, MTTR e matrizes de
+severidade não é exigida nesta fase pela legislação — tais documentos são entregues pela contratada no
+projeto executivo, conforme prática operacional consolidada e reconhecida pelo TCU.
+
+A crítica relativa à nomenclatura de segurança da informação (“APT Blocker”, “Gateway
+Antivirus”, “WebBlocker”) também não procede. Tais termos descrevem funções genéricas e amplamente
+difundidas — antivírus de borda, filtragem de conteúdo, prevenção de ameaças avançadas — que existem em
+múltiplos fabricantes (Fortinet, Cisco, Palo Alto, Sophos, Juniper, entre outros). O edital não faz referência a
+APIs, configurações proprietárias, séries ou linhas de produto, mantendo-se estritamente funcional e
+compatível com o art. 41 da Lei nº 14.133/2021. Não há direcionamento nem restrição indevida.
+
+Ofício 1166554         SEI 3500303.401.00003495/2025-70 / pg. 3
+
+
+
+DIÁRIO OFICIAL - MUNICÍPIO DE AGUAÍ Sexta-feira, 17 de abril de 2026 Ano VII | Edição nº 1492A | Página 6 de 7
+
+Município de Aguaí - SP
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e integridade.
+
+Assim, as alegações de fragilidade, obsolescência e incoerência não se sustentam. O edital
+especifica requisitos mínimos funcionais condizentes com o nível de criticidade do datacenter municipal e
+remete, corretamente, ao fornecedor a apresentação do projeto executivo detalhado, da arquitetura
+consolidada, dos planos operacionais, dos documentos de continuidade e dos detalhamentos de backup e
+segurança, conforme determina a legislação e a jurisprudência. Não há prejuízo à competitividade, à
+eficiência ou à segurança. A alegação, portanto, deve ser rejeitada.
+ 
+
+ Exequibilidade econômica, competitividade e risco de subavaliação
+ 
+
+A impugnante sustenta que o orçamento estimado para a contratação seria metodologicamente
+frágil, alegando que o ETP teria utilizado item CATSER genérico, amostras heterogêneas e número reduzido
+de cotações válidas para um escopo que envolve múltiplas camadas de tecnologia — compute, storage,
+NGFW, links dedicados, energia, backup, suporte 24x7, migração e serviços especializados. Segundo a
+empresa, tais fatores inviabilizariam a confiabilidade do valor estimado, gerando risco de subavaliação e
+comprometendo a exequibilidade econômica das propostas. Alega também “excesso de aglutinação” no
+objeto, defendendo que a contratação de múltiplos domínios tecnológicos em um único lote reduziria a
+competitividade e afastaria fornecedores especializados.
+
+A crítica não procede. O orçamento foi corretamente classificado como sigiloso, nos termos do
+art. 24 da Lei nº 14.133/2021, medida técnica consagrada para evitar alinhamento artificial de preços e
+proteger o interesse público. Ainda assim, o ETP expõe com clareza a metodologia adotada: pesquisa no
+PNCP, análise de 29 processos públicos, depuração manual devido a inconsistências de cadastro, consulta
+direta a 18 fornecedores especializados, retorno de 3 propostas válidas e comparação com valores praticados
+no mercado de data center. A legislação não exige número mínimo de cotações, mas diversidade de fontes e
+fundamentação — ambos atendidos. O uso de CATSER não define, isola ou limita o método, servindo
+apenas como ponto de referência para identificação de contratações correlatas; a efetiva validação foi feita
+por meio das propostas obtidas e da análise técnica contextualizada, conforme art. 23 da Lei nº 14.133/2021.
+
+A alegação de que o orçamento seria “contaminado” por suposições incorretas de licenciamento
+Windows Datacenter e pelo dimensionamento dos BladeSystems ignora que o valor estimado é construído
+com base no conjunto da solução, não em itens isolados. O edital estabelece que as empresas podem utilizar
+modelos, tecnologias, licenças e arquiteturas equivalentes ou superiores, permitindo liberdade competitiva
+para ofertar a composição técnica mais adequada, desde que atendidos os requisitos mínimos. Dessa forma,
+uma eventual variação interna entre fabricantes, modelos ou frequências de memória não impacta a
+exequibilidade global do orçamento, pois a formação de preços recai sobre a solução completa, e não sobre
+um hardware específico pré-determinado. Ademais, o dimensionamento da infraestrutura foi baseado no
+contrato anterior e no crescimento histórico da demanda municipal, metodologia expressamente autorizada
+pelo art. 40, III, da Lei nº 14.133/2021, que prevê o uso de técnicas quantitativas vinculadas ao consumo e às
+necessidades institucionais.
+
+No tocante à acusação de “excesso de aglutinação”, o argumento contraria frontalmente não
+apenas o ETP, mas também a legislação e o entendimento consolidado pelo Tribunal de Contas da União. O
+art. 40, §3º, I e II, da Lei nº 14.133/2021 autoriza a não fragmentação quando o objeto configuraria sistema
+único e integrado ou quando a divisão poderia comprometer a economia de escala ou a vantajosidade. É
+exatamente o caso desta contratação. A solução proposta — infraestrutura de data center em comodato com
+serviços gerenciados, storage corporativo, switches, NGFW, backup, virtualização, operação 24x7, migração,
+suporte e monitoramento — é intrinsecamente interdependente. Fragmentar um ambiente crítico dessa
+natureza criaria sobreposições de responsabilidades, dificultaria a gestão de SLAs, aumentaria
+exponencialmente a complexidade operacional, elevaria custos administrativos e comprometeria a segurança
+e a continuidade dos serviços municipais essenciais, como saúde, educação, arrecadação e sistemas
+corporativos.
+
+O TCU, na 5ª edição do “Licitações & Contratos: Orientações e Jurisprudência”, afirma
+expressamente que não se recomenda parcelar objetos cuja indivisibilidade técnica seja clara, sob pena de
+descontinuidade, falhas de integração e aumento de custos. A contratação integrada, além de prevista no ETP
+e no TR, é prática comum no setor público e privado para ambientes de data center, sendo o modelo que
+melhor atende ao interesse público ao garantir interoperabilidade, responsabilização unificada, continuidade
+operacional e economia de escala.
+
+Por fim, o fato de alguns fornecedores atuarem apenas em segmentos específicos do mercado não
+caracteriza restrição indevida. O edital não exige que a empresa seja fabricante, apenas que entregue uma
+
+Ofício 1166554         SEI 3500303.401.00003495/2025-70 / pg. 4
+
+
+
+DIÁRIO OFICIAL - MUNICÍPIO DE AGUAÍ Sexta-feira, 17 de abril de 2026 Ano VII | Edição nº 1492A | Página 7 de 7
+
+Município de Aguaí - SP
+Diário Oficial assinado digitalmente conforme MP nº 2.200-2, de 2001, e Lei 14.063, de 2020, garantindo autenticidade, validade jurídica e integridade.
+
+solução completa, funcional e integrada, o que preserva a competição e alinha-se ao art. 11 da Lei nº
+14.133/2021 (vantajosidade, eficiência e interesse público). O universo competitivo permanece amplo e
+diversificado, contemplando integradores, fabricantes, distribuidores e empresas especializadas em serviços
+gerenciados.
+
+Diante disso, não há indicação técnica ou jurídica de subavaliação, exequibilidade comprometida
+ou restrição competitiva. A metodologia adotada para pesquisa de preços é válida, suficiente e fundamentada,
+e o modelo integrado do objeto é plenamente justificável sob os aspectos técnico-operacional e econômico.
+A alegação, portanto, deve ser rejeitada.
+
+Por fim, considerando os pontos da impugnação que foram deferidos e considerando que tais
+pontos ensejaram uma nova analise do edital, que por sua vez resultou na necessidade de adequação no
+instrumento convocatório, determino a revogação do certame para a realização das adequações necessárias e
+posterior  republicação do edital, conforme o item  21.12 do edital.
+
+Aguaí, na data da assinatura digital.
+
+ 
+ALAN DOS SANTOS
+
+Secretário Municipal de Administração
+ 
+
+Documento assinado eletronicamente por Alan dos Santos, Secretaria, em 17/04/2026, às 12:32,
+conforme horário oficial de Brasília, com fundamento no Decreto Estadual nº 67.641, de 10 de abril
+de 2023 e Decreto Municipal de regulamentação do processo eletrônico.
+
+A autenticidade deste documento pode ser conferida no site
+https://cidades.sei.sp.gov.br/campinas/sei/controlador_externo.php?
+acao=documento_conferir&id_orgao_acesso_externo=0 , informando o código verificador 1166554 e o
+código CRC 1763792F.
+
+Referência: Processo nº 3500303.401.00003495/2025-70 SEI nº 1166554
+
+Ofício 1166554         SEI 3500303.401.00003495/2025-70 / pg. 5
+
+https://www.al.sp.gov.br/repositorio/legislacao/decreto/2023/decreto-67641-10.04.2023.html
+file:///opt/sei/temp/%0Ahttps://cidades.sei.sp.gov.br/campinas/sei/controlador_externo.php?acao=documento_conferir&id_orgao_acesso_externo=0
+
+	Sumário
+	Poder Executivo
+	Licitações e Contratos
+	Despachos
+
+
+
+		2026-04-17T15:28:53-0300
+	CLEBER AUGUSTO DE MELO MARTINS:28327963899 1
+
+
+
+
+

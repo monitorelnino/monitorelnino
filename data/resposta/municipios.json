@@ -4447,17 +4447,30 @@
    "ibge": "5201108",
    "nome": "Anápolis",
    "uf": "GO",
-   "decreto": false,
-   "primeiro_decreto": null,
-   "primeiro_reconhecimento": null,
-   "tipos": [],
-   "reconhecido": false,
+   "decreto": true,
+   "primeiro_decreto": "28/09/2026",
+   "primeiro_reconhecimento": "05/11/2026",
+   "tipos": [
+    "reconhecimento_federal"
+   ],
+   "reconhecido": true,
    "decretado": false,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
-   "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
+   "evento_declarado": [
+    "outro_declarado"
+   ],
+   "dias_ate_reconhecimento": 38,
+   "fontes": [
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.847-de-5-de-novembro-de-2026-742129656",
+     "data": "05/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.847",
+     "hash": "0b35779a1432d6342cd2d5e7e166e45456ca37bf90f717dc2930c073363ebbd5"
+    }
+   ],
+   "n_eventos": 1,
    "dias_sem_reconhecimento": null
   },
   "1500859": {
@@ -8285,18 +8298,31 @@
    "ibge": "4102109",
    "nome": "Astorga",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17433",
+     "data": "05/11/2026",
+     "decreto": "Decreto municipal nº 231",
+     "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "4102208": {
    "ibge": "4102208",
@@ -9548,18 +9574,31 @@
    "ibge": "4102406",
    "nome": "Bandeirantes",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17433",
+     "data": "05/11/2026",
+     "decreto": "Decreto municipal nº 3.980",
+     "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "1703057": {
    "ibge": "1703057",
@@ -14730,9 +14769,17 @@
      "data": "22/10/2026",
      "decreto": "Decreto nº 0950/2026",
      "hash": "9abc49f8355048d93743966a8584a1c89e2e3a7d19a556ed3953aca07af96457"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Amazonas (AAM))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=251&i=publicado_118981_2026-11-05_cb9b97fc891a3d465187f23bd15b3b69.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto nº 0960/2026",
+     "hash": "ee561fb32c319eceef6a68a24b74707eae88c19ecf7bead41818848f2af8511b"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 16
   },
   "2502706": {
@@ -28587,9 +28634,17 @@
      "data": "22/10/2026",
      "decreto": "Portaria SEDEC/MIDR nº 3.656",
      "hash": "d6a0f49fbf239d8f1fd05e47b8e3d4f1764ff122ee8cc7f0280465668509bfc6"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17433",
+     "data": "05/11/2026",
+     "decreto": "Decreto municipal nº 095",
+     "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "2402808": {
@@ -36794,18 +36849,31 @@
    "ibge": "4108007",
    "nome": "Florestópolis",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17433",
+     "data": "05/11/2026",
+     "decreto": "Decreto municipal nº 88",
+     "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "2203909": {
    "ibge": "2203909",
@@ -39537,9 +39605,17 @@
      "data": "08/10/2026",
      "decreto": "Decreto nº 49",
      "hash": "742c4fe9af2167a973ac1a95a06f3c1672fd7498110227cf2767fad266f32f06"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118219_2026-11-05_3f1339769fc6654a515fb9b39bf5c210.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto nº 60",
+     "hash": "05525623d7a5839d94730ba4eb1efc001f354de1672dc3171b0863204af2651b"
     }
    ],
-   "n_eventos": 3,
+   "n_eventos": 4,
    "dias_sem_reconhecimento": null
   },
   "3127404": {
@@ -52057,18 +52133,31 @@
    "ibge": "3135803",
    "nome": "Jequitinhonha",
    "uf": "MG",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "06/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Mineiros (AMM-MG))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118473_2026-11-05_7beef265648795c128456819057791d4.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto nº 241",
+     "hash": "84c45761708fc4baf336ac64babb8b8d02bfd7a386fb65ede03b939eaf70dcd3"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "2918100": {
    "ibge": "2918100",
@@ -55487,9 +55576,17 @@
      "data": "23/10/2026",
      "decreto": "Decreto municipal nº 66",
      "hash": "d45386d72b0e802cc9c47e8558a522dd4a20505fc6357e168b9c91269bab7df4"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17433",
+     "data": "05/11/2026",
+     "decreto": "Decreto municipal nº 70",
+     "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "dias_sem_reconhecimento": 15
   },
   "1600279": {
@@ -69350,7 +69447,8 @@
    "decretado": true,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
-    "chuva"
+    "chuva",
+    "fogo"
    ],
    "dias_ate_reconhecimento": 3,
    "fontes": [
@@ -69369,9 +69467,17 @@
      "data": "19/10/2026",
      "decreto": "Portaria SEDEC/MIDR (lote: nº 3.591, nº 3.592, nº 3.593, nº 3.593, nº 3.594, nº 3.595)",
      "hash": "049796b5bd6f472cd28e74bf7b6f98177d68e3e3e1dc827305a942cd8df75da2"
+    },
+    {
+     "canal": "DOU",
+     "fonte": "DOU (portaria SEDEC/MIDR)",
+     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.847-de-5-de-novembro-de-2026-742145017",
+     "data": "05/11/2026",
+     "decreto": "Portaria SEDEC/MIDR nº 3.847",
+     "hash": "0b35779a1432d6342cd2d5e7e166e45456ca37bf90f717dc2930c073363ebbd5"
     }
    ],
-   "n_eventos": 2,
+   "n_eventos": 3,
    "dias_sem_reconhecimento": null
   },
   "3145406": {
@@ -79572,18 +79678,31 @@
    "ibge": "4120002",
    "nome": "Porecatu",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "06/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118219_2026-11-05_3f1339769fc6654a515fb9b39bf5c210.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto nº 008/2025",
+     "hash": "05525623d7a5839d94730ba4eb1efc001f354de1672dc3171b0863204af2651b"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "2410207": {
    "ibge": "2410207",
@@ -84750,18 +84869,31 @@
    "ibge": "4122008",
    "nome": "Rio Azul",
    "uf": "PR",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "05/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17433",
+     "data": "05/11/2026",
+     "decreto": "Decreto municipal nº 205",
+     "hash": "787b711572fcff091ff350248d877535b1b171e557eb03fb2b622e1cbe2dec0d"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 2
   },
   "3204351": {
    "ibge": "3204351",
@@ -99555,18 +99687,31 @@
    "ibge": "4319711",
    "nome": "São Valentim do Sul",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "06/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117965_2026-11-05_a75c6798c04fdc3f9c903310ddfc285f.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto nº 061/2026",
+     "hash": "cc9adab6b6e9bf59e17cc91ca810ef33a1f9e5eef68a9d08ef15b13996947069"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "1720499": {
    "ibge": "1720499",
@@ -104407,18 +104552,31 @@
    "ibge": "4321006",
    "nome": "Tapera",
    "uf": "RS",
-   "decreto": false,
-   "primeiro_decreto": null,
+   "decreto": true,
+   "primeiro_decreto": "06/11/2026",
    "primeiro_reconhecimento": null,
-   "tipos": [],
+   "tipos": [
+    "SE"
+   ],
    "reconhecido": false,
-   "decretado": false,
+   "decretado": true,
    "evento_observado": "em_classificacao",
-   "evento_declarado": [],
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
    "dias_ate_reconhecimento": null,
-   "fontes": [],
-   "n_eventos": 0,
-   "dias_sem_reconhecimento": null
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117965_2026-11-05_a75c6798c04fdc3f9c903310ddfc285f.pdf",
+     "data": "06/11/2026",
+     "decreto": "Decreto nº 090/2026",
+     "hash": "cc9adab6b6e9bf59e17cc91ca810ef33a1f9e5eef68a9d08ef15b13996947069"
+    }
+   ],
+   "n_eventos": 1,
+   "dias_sem_reconhecimento": 1
   },
   "2931202": {
    "ibge": "2931202",

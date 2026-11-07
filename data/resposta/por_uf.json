@@ -4,23 +4,23 @@
  "frase_c18": "Entre 04/07 e 25/10/2026 o decreto de emergência é a única porta de recurso federal e estadual que a lei deixa aberta (art. 73, VI, a).",
  "inicio_ciclo": "29/06/2026",
  "nacional": {
-  "n_municipios": 1123,
+  "n_municipios": 1132,
   "total_municipios": 5571,
-  "fracao_municipios": 0.2016,
-  "pop_sob_decreto": 39793916,
+  "fracao_municipios": 0.2032,
+  "pop_sob_decreto": 40323377,
   "pop_total": 203062512,
-  "fracao_populacao": 0.196,
-  "indice": 19.6,
+  "fracao_populacao": 0.1986,
+  "indice": 19.9,
   "primeiro_decreto": "29/06/2026",
   "prazo_reconhecimento": {
-   "n": 993,
-   "mediana": 15,
+   "n": 994,
+   "mediana": 15.0,
    "p25": 9.0,
    "p75": 22.0,
    "p90": 29.0
   },
-  "reconhecidos": 993,
-  "decretados_sem_reconhecimento": 130
+  "reconhecidos": 994,
+  "decretados_sem_reconhecimento": 138
  },
  "uf": {
   "AC": {
@@ -122,7 +122,7 @@
     "fogo": 1,
     "outro_declarado": 1,
     "seca": 28,
-    "sem_tipo_informado": 49,
+    "sem_tipo_informado": 50,
     "vendaval": 2
    },
    "evento_mais_declarado": [
@@ -157,6 +157,7 @@
    },
    "eventos_declarados": {
     "chuva": 2,
+    "fogo": 1,
     "seca": 2,
     "sem_tipo_informado": 14
    },
@@ -299,34 +300,35 @@
    "evento_mais_declarado": null
   },
   "GO": {
-   "n_municipios": 11,
+   "n_municipios": 12,
    "total_municipios": 246,
-   "fracao_municipios": 0.0447,
-   "pop_sob_decreto": 274345,
+   "fracao_municipios": 0.0488,
+   "pop_sob_decreto": 673162,
    "pop_uf": 7055228,
-   "fracao_populacao": 0.0389,
-   "indice": 3.9,
+   "fracao_populacao": 0.0954,
+   "indice": 9.5,
    "primeiro_decreto": "25/02/2025",
    "primeiro_reconhecimento": "28/08/2026",
    "prazo_reconhecimento": {
-    "n": 9,
-    "mediana": 17,
-    "p25": 12.0,
-    "p75": 17.0,
-    "p90": 23.6
+    "n": 10,
+    "mediana": 17.0,
+    "p25": 12.5,
+    "p75": 20.8,
+    "p90": 30.8
    },
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 11
+    "em_classificacao": 12
    },
    "tons": {
-    "reconhecido": 9,
+    "reconhecido": 10,
     "decretado_sem_reconhecimento": 2
    },
    "eventos_declarados": {
     "chuva": 5,
     "fogo": 2,
+    "outro_declarado": 1,
     "seca": 7,
     "sem_tipo_informado": 1
    },
@@ -369,13 +371,13 @@
    ]
   },
   "MG": {
-   "n_municipios": 77,
+   "n_municipios": 78,
    "total_municipios": 853,
-   "fracao_municipios": 0.0903,
-   "pop_sob_decreto": 3181351,
+   "fracao_municipios": 0.0914,
+   "pop_sob_decreto": 3205353,
    "pop_uf": 20538718,
-   "fracao_populacao": 0.1549,
-   "indice": 15.5,
+   "fracao_populacao": 0.1561,
+   "indice": 15.6,
    "primeiro_decreto": "14/01/2026",
    "primeiro_reconhecimento": "30/06/2026",
    "prazo_reconhecimento": {
@@ -388,17 +390,17 @@
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 77
+    "em_classificacao": 78
    },
    "tons": {
     "reconhecido": 66,
-    "decretado_sem_reconhecimento": 11
+    "decretado_sem_reconhecimento": 12
    },
    "eventos_declarados": {
     "chuva": 11,
     "outro_declarado": 2,
     "seca": 44,
-    "sem_tipo_informado": 16,
+    "sem_tipo_informado": 17,
     "vendaval": 14
    },
    "evento_mais_declarado": [
@@ -619,13 +621,13 @@
    ]
   },
   "PR": {
-   "n_municipios": 118,
+   "n_municipios": 123,
    "total_municipios": 399,
-   "fracao_municipios": 0.2957,
-   "pop_sob_decreto": 2807113,
+   "fracao_municipios": 0.3083,
+   "pop_sob_decreto": 2900956,
    "pop_uf": 11443208,
-   "fracao_populacao": 0.2453,
-   "indice": 24.5,
+   "fracao_populacao": 0.2535,
+   "indice": 25.4,
    "primeiro_decreto": "19/06/2026",
    "primeiro_reconhecimento": "30/06/2026",
    "prazo_reconhecimento": {
@@ -638,15 +640,15 @@
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 118
+    "em_classificacao": 123
    },
    "tons": {
     "reconhecido": 80,
-    "decretado_sem_reconhecimento": 38
+    "decretado_sem_reconhecimento": 43
    },
    "eventos_declarados": {
     "chuva": 16,
-    "sem_tipo_informado": 166,
+    "sem_tipo_informado": 174,
     "vendaval": 74
    },
    "evento_mais_declarado": [
@@ -793,13 +795,13 @@
    ]
   },
   "RS": {
-   "n_municipios": 235,
+   "n_municipios": 237,
    "total_municipios": 497,
-   "fracao_municipios": 0.4728,
-   "pop_sob_decreto": 6441673,
+   "fracao_municipios": 0.4769,
+   "pop_sob_decreto": 6454472,
    "pop_uf": 10880506,
-   "fracao_populacao": 0.592,
-   "indice": 59.2,
+   "fracao_populacao": 0.5932,
+   "indice": 59.3,
    "primeiro_decreto": "26/01/2026",
    "primeiro_reconhecimento": "06/07/2026",
    "prazo_reconhecimento": {
@@ -812,16 +814,16 @@
    "fatias": {
     "apos_evento": 0,
     "antes_com_previsao": 0,
-    "em_classificacao": 235
+    "em_classificacao": 237
    },
    "tons": {
     "reconhecido": 221,
-    "decretado_sem_reconhecimento": 14
+    "decretado_sem_reconhecimento": 16
    },
    "eventos_declarados": {
     "chuva": 191,
     "seca": 2,
-    "sem_tipo_informado": 47,
+    "sem_tipo_informado": 49,
     "vendaval": 116
    },
    "evento_mais_declarado": [
