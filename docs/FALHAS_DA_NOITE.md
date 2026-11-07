@@ -256,7 +256,7 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Causa:** A coleta de alertas roda uma vez por noite e passa das 24 horas antes do elo de sinais; a página entra no modo "Sem atualização desde" e três verificações de `verificar_runtime_mapas.js` (cruzamento, busca, contagem de mapas) e a coerência da Imprensa (que lia a data da parada como número e não tinha a tolerância do relógio para "sem dado") não conheciam esse modo; o cartão de tipos de alerta não declarava a parada (id morto).
 - **Prova:** run 38012291473; run 38012410116; run 38494501765 (5c6d1448, reproduzido local); run 38494711100 (8a87e861, reproduzido local)
 - **Correção:** Verificadores julgam o modo vencido com a regra que já existia (`contadorDeAlerta`, `mapasCobrados`, `SEM_ATUALIZACAO`); a coerência não lê data como número e aplica o retrato datado também a "sem dado"; o cartão de tipos declara a parada pelo seu subtítulo. O portão de robustez passa a envelhecer os alertas (perturbação 7) e reprova a regressão.
-- **Caso de teste:** `scripts/verificar_imprensa_coerencia.py --autoteste: F28: coleta vencida nas duas páginas`
+- **Caso de teste:** `scripts/verificar_imprensa_coerencia.py --autoteste: F28: coleta vencida nas duas páginas; F28: Imprensa com o número da consulta da parada, página em 'Sem atualização' — retrato datado`
 
 ## F29 · Descoberta e evidências sem `.feito`
 
