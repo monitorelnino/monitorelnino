@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-07 · O coletor reutilizável instala o Chromium quando pede Node · O canal renderizado da descoberta de planos (`scripts/renderizar_pagina.js`) precisa do Chromium, e `npm ci` não o traz; desde que a descoberta saiu do `atualizar.yml` ele caía calado na noite (último achado: setembro). `_coletor.yml` passa a instalar o navegador com `precisa_node`, com cache por versão, e `noturno_descoberta.yml` pede Node.
+
 ## 2026-11-07 · Resolvedor conhece o registro de edições do diário · A união das seis válvulas de diário de 07/11 recusou `data/doe_edicoes/PB.json` (duas válvulas de datas diferentes da mesma UF). O resolvedor passa a tratar `data/doe_edicoes/<UF>.json` como índice por data, na mesma classe de `data/planos_busca/`: cada data é uma entrada, e a mesma data relida nos dois lados vence pela leitura mais recente (é o que o produtor faz); `canal2` e o carimbo vêm do lado mais recente. O portão de escritores conhece o prefixo.
 
 ## 2026-11-07 · Funil do dia: o resolvedor une a seção do verificador · Causa: `funil.registrar` reescrevia o arquivo só com `etapas` e apagava `verificador_imprensa`; quando os dois lados a gravavam, o resolvedor recusava. `registrar` preserva a seção; o resolvedor cede ao lado que mudou ou fica com o `gravado_em` mais novo. Código +24/−5.
