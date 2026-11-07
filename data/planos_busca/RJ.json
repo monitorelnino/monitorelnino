@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-29",
+ "gerado_em": "2026-11-07",
  "municipios": {
   "3304557": {
    "S16": {
@@ -48,6 +48,34 @@
     "consultado_em": "2026-10-28",
     "situacao": "lido",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=3304557&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
+    "motivo": null,
+    "dominio": null
+   },
+   "S17": {
+    "consultado_em": "2026-11-07",
+    "situacao": "lido",
+    "consulta": "\"Rio de Janeiro\" RJ (CREPDEC OR REDEC OR \"coordenadoria regional\" OR \"defesa civil estadual\") \"plano de contingência\" site:gov.br",
+    "motivo": null,
+    "dominio": null
+   },
+   "S19": {
+    "consultado_em": "2026-11-07",
+    "situacao": "sem_resultado",
+    "consulta": "\"Rio de Janeiro\" RJ (decreto OR portaria OR \"lei municipal\") \"plano de contingência\" (site:famurs.com.br OR site:appm.org.br OR site:amupe.org.br OR site:femurn.org.br OR site:amm.org.br OR site:amm-mt.org.br OR site:fecam.org.br OR site:famem.org.br OR site:diariomunicipal.com.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S26": {
+    "consultado_em": "2026-11-07",
+    "situacao": "lido",
+    "consulta": "\"Rio de Janeiro\" RJ (tese OR dissertação OR TCC OR monografia) \"plano de contingência\" \"defesa civil\" (site:edu.br OR site:ibict.br OR site:scielo.br OR site:usp.br OR site:unesp.br OR site:unicamp.br)",
+    "motivo": null,
+    "dominio": null
+   },
+   "S30": {
+    "consultado_em": "2026-11-07",
+    "situacao": "lido",
+    "consulta": "\"Rio de Janeiro\" RJ (\"Operação Verão\" OR \"Operação Chuvas\" OR \"plano preventivo\" OR adesão) \"plano de contingência\" site:gov.br",
     "motivo": null,
     "dominio": null
    }
