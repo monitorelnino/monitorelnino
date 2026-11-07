@@ -6,11 +6,11 @@
    "unidade": "focos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": "2026-11-06",
-   "n": 50,
+   "n": 51,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 50668,
+   "valor_parcial": 52928,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,57 +505,61 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 452,
+   "valor": 408,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "05/11/2026",
+   "consultado_em": "06/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261106.csv",
+   "nota": "Focos do dia — focos_diario_br_20261107.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 304
+     "valor": 200
     },
     {
      "uf": "MA",
-     "valor": 73
-    },
-    {
-     "uf": "GO",
-     "valor": 35
-    },
-    {
-     "uf": "TO",
-     "valor": 12
-    },
-    {
-     "uf": "PI",
-     "valor": 8
-    },
-    {
-     "uf": "AL",
-     "valor": 7
-    },
-    {
-     "uf": "MT",
-     "valor": 7
-    },
-    {
-     "uf": "BA",
-     "valor": 3
+     "valor": 112
     },
     {
      "uf": "AP",
-     "valor": 2
+     "valor": 30
+    },
+    {
+     "uf": "MT",
+     "valor": 18
+    },
+    {
+     "uf": "RR",
+     "valor": 16
+    },
+    {
+     "uf": "BA",
+     "valor": 10
     },
     {
      "uf": "AM",
-     "valor": 1
+     "valor": 8
+    },
+    {
+     "uf": "TO",
+     "valor": 6
+    },
+    {
+     "uf": "MG",
+     "valor": 3
+    },
+    {
+     "uf": "RO",
+     "valor": 3
+    },
+    {
+     "uf": "AL",
+     "valor": 2
     }
    ],
    "pagina_de_origem": null,
