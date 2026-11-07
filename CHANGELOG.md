@@ -11,6 +11,8 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-07 · Resolvedor aceita binário derivado · A união dos quatro lotes do cadastro caiu no PDF do índice: `estagio` decodificava tudo como UTF-8 e o resolvedor inteiro morria com `UnicodeDecodeError`. Binário só se aceita como derivado regenerável (`MARE_Indice_Documentacao.pdf`, `METODOLOGIA.pdf`: versão de cima e regenerar); binário sem política é recusa, não adivinhação.
 
+## 2026-11-07 · Sítio da prefeitura: href de molde não derruba o lote · No lote 2 do cadastro, um `href` de molde (`//[facebook_entidade]/…`) fez `urljoin` levantar `ValueError` dentro de um worker, e a exceção subiu pelo laço principal: o lote parou e o registro da rodada não foi gravado. O link inválido passa a ser pulado, e defeito num município vira registro dele (`nao_verificado`, motivo `defeito do coletor: …`), nunca a queda do lote.
+
 ## 2026-11-07 · Sítio da prefeitura: o cadastro inteiro em fatias paralelas · 3.476 municípios fora da lista prioritária nunca passaram pelo canal do sítio, e não cabem num run. `--municipios` aceita a lista do IBGE sem invólucro e `--fatia k/n` reparte a fila por posição; o resolvedor une `data/s2id_busca_dirigida.json` (um registro por município) para que lotes paralelos não se anulem.
 
 ## 2026-11-07 · Sítio da prefeitura: `--refazer-parados` · A válvula só refazia no mesmo dia o município cuja lista de endereços mudou; o parado por porta que não serviu (render sem navegador, #1599) ficava até o dia seguinte. Com `--refazer-parados`, `portal_nao_verificado` e `nao_verificado` de hoje se refazem; lido e recusa nunca se repetem.
