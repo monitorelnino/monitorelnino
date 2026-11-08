@@ -167,11 +167,14 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         "nome": v["municipio"], "uf": v["uf"], "categoria": v["categoria"],
         "documento": documento_do_veredito(v),
         "data": v.get("data"),
-        "fonte": f"{fonte_base} — ato lido e classificado pelo juiz automático em {hoje} "
-                 f"(codebook {v.get('codebook')}); critérios em promocoes_automaticas.json",
+        # 08/11/2026: `fonte` é texto PÚBLICO (o cartão do município o exibe em "Onde o documento foi
+        # localizado"). A proveniência interna — juiz, codebook, arquivo de critérios — vive nos campos
+        # estruturados ao lado (`julgado_em`, `codebook`, `criterios`), nunca na frase.
+        "fonte": f"{fonte_base} — ato lido em {hoje}",
         "url": v.get("url"), "lat": lat, "lon": lon, "canal": canal,
         "hash_evidencia": v.get("hash_evidencia"),
         "pista_id": v.get("pista_id"), "codebook": v.get("codebook"),
+        "julgado_em": hoje, "criterios": "promocoes_automaticas.json",
     }
     # DECISÃO DA EDITORIA, 03/10/2026: o plano publicado sem ato de aprovação localizado conta no
     # degrau da leitura, **com a marca visível na ficha**. A marca é do REGISTRO, e não do texto da
@@ -180,11 +183,20 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
     if v.get("sem_ato_de_aprovacao"):
         registro["sem_ato_de_aprovacao"] = True
         registro["marca_na_ficha"] = "sem ato de aprovação localizado"
-        registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido e "
-                             f"classificado pelo juiz automático em {hoje} (codebook "
-                             f"{v.get('codebook')}); ato de aprovação não localizado até o corte; "
-                             "critérios em promocoes_automaticas.json")
+        registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido em {hoje}; "
+                             "ato de aprovação não localizado até o corte")
     return registro
+
+
+RE_PROVENIENCIA_NA_FONTE = re.compile(
+    r"lido e classificado pelo juiz automático em (\d{2}/\d{2}/\d{4}) \(codebook [^)]*\)+"
+    r"|;?\s*critérios em promocoes_automaticas\.json")
+
+
+def fonte_publica(fonte: str) -> str:
+    """A frase pública de um registro antigo, sem a proveniência interna que o cartão exibia
+    (08/11/2026: 207 registros diziam 'juiz automático', 'codebook' e um nome de arquivo). Função pura."""
+    return RE_PROVENIENCIA_NA_FONTE.sub(lambda m: f"lido em {m.group(1)}" if m.group(1) else "", fonte or "").strip()
 
 
 RE_SUJEIRA = re.compile(r"P[áa]gina\s+\d+\s+de\s+\d+|o documento [ÉE] o instrumento|\.\.\.\.|……", re.IGNORECASE)
@@ -247,7 +259,21 @@ def documento_do_veredito(v: dict) -> str:
         ano = str(v.get("data") or "")[-4:]
         cauda = f", {ano}" if ano.isdigit() else ""
         return f"Plano de contingência municipal — Prefeitura de {v['municipio']}{cauda}"
-    return f"Ato classificado como {v.get('categoria')} pelo juiz automático"
+    return documento_generico(v.get("categoria"))
+
+
+# 08/11/2026: `documento` também é texto público do cartão ("Localizamos …"). O rótulo da categoria é o
+# mesmo da página inicial (CAT_ROTULO em assets/js/index.js); "juiz automático" e a chave interna da
+# categoria não entram.
+ROTULO_PUBLICO = {"plano": "plano de contingência", "plano_novo": "plano de contingência do ciclo",
+                  "plano_readaptado": "plano de contingência readaptado", "plano_recorrente": "plano recorrente",
+                  "plano_antigo": "plano de contingência vigente de ciclo anterior",
+                  "plano_elaboracao": "plano em elaboração", "estrutura": "estrutura de coordenação"}
+
+
+def documento_generico(categoria) -> str:
+    """A frase pública quando o documento não tem título legível: diz o que foi localizado. Função pura."""
+    return f"Ato oficial localizado: {ROTULO_PUBLICO.get(str(categoria), 'documento de preparação')}"
 
 
 def autoteste() -> int:
@@ -338,8 +364,21 @@ def autoteste() -> int:
                   preservar_o_documento("") is None))
     casos.append(("plano COM ato não ganha a marca",
                   "sem_ato_de_aprovacao" not in r and "marca_na_ficha" not in r))
-    casos.append(("a fonte diz que foi o juiz, com a versão",
-                  "juiz automático" in r["fonte"] and "1.1" in r["fonte"]))
+    # 08/11/2026: `fonte` é texto público do cartão; a proveniência fica nos campos estruturados.
+    casos.append(("a fonte é pública: sem juiz, codebook ou nome de arquivo; a proveniência vai nos campos",
+                  "juiz" not in r["fonte"] and ".json" not in r["fonte"] and "codebook" not in r["fonte"]
+                  and r["julgado_em"] == "28/09/2026" and r["codebook"] == V and r["criterios"].endswith(".json")))
+    casos.append(("fonte_publica limpa o registro antigo e mantém a data e a lacuna do ato",
+                  fonte_publica("P (h) — plano publicado em domínio oficial do ente, lido e classificado pelo juiz "
+                                "automático em 04/11/2026 (codebook 1.8 (30/10/2026)); ato de aprovação não "
+                                "localizado até o corte; critérios em promocoes_automaticas.json")
+                  == "P (h) — plano publicado em domínio oficial do ente, lido em 04/11/2026; ato de aprovação não localizado até o corte"
+                  and fonte_publica("D (x) — ato lido e classificado pelo juiz automático em 03/10/2026 (codebook 1.3 (03/10/2026)); "
+                                    "critérios em promocoes_automaticas.json") == "D (x) — ato lido em 03/10/2026"
+                  and fonte_publica("Portal oficial (a) — plano") == "Portal oficial (a) — plano"))
+    casos.append(("sem título legível, o documento diz o que foi localizado, sem jargão nem chave interna",
+                  documento_generico("plano_antigo") == "Ato oficial localizado: plano de contingência vigente de ciclo anterior"
+                  and "juiz" not in documento_generico("plano") and "_" not in documento_generico("plano_novo")))
     casos.append(("a ementa sai do objeto ex-ante",
                   r["documento"].startswith("Fica instituído o Plano Municipal")))
     sem_objeto = registro_do_veredito(dict(base, criterios={}), 0, 0, "DOM", "x", "28/09/2026")
@@ -359,7 +398,7 @@ def autoteste() -> int:
                   "return True," in inspect.getsource(_rp)
                   and "return False," in inspect.getsource(_rp)))
     casos.append(("sem objeto, a ementa diz o que é sem inventar texto",
-                  "classificado como plano_antigo" in sem_objeto["documento"]))
+                  sem_objeto["documento"] == "Ato oficial localizado: plano de contingência vigente de ciclo anterior"))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
