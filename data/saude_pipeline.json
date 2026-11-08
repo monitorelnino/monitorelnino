@@ -3163,7 +3163,26 @@
   {"data": "2026-11-07", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-08T01:18:39", "duracao_s": 2468.9, "itens": 27, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "coletar_doe.py", "inicio": "2026-11-08T01:59:47", "duracao_s": 3016.9, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "coletar_s2id.py", "inicio": "2026-11-08T02:50:03", "duracao_s": 44.2, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-07", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-08T02:50:47", "duracao_s": 86.9, "itens": null, "status": "erro", "erro": "TimeoutError: The read operation timed out"}
+  {"data": "2026-11-07", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-08T02:50:47", "duracao_s": 86.9, "itens": null, "status": "erro", "erro": "TimeoutError: The read operation timed out"},
+  {"data": "2026-11-07", "script": "atualizar_populacao.py", "inicio": "2026-11-08T01:15:32", "duracao_s": 0.6, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "processar_contribuicoes.py", "inicio": "2026-11-08T01:15:32", "duracao_s": 1.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_sinais_federais.py", "inicio": "2026-11-08T01:15:33", "duracao_s": 4.7, "itens": 10, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-08T01:15:37", "duracao_s": 350.1, "itens": 10, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "scripts/verificar_funil.py", "inicio": "2026-11-08T01:21:27", "duracao_s": 0.2, "itens": null, "status": "erro", "erro": "✗ FUNIL: a contagem da rodada se contradiz ou a etapa não funcionou:"},
+  {"data": "2026-11-07", "script": "monitorar_imprensa_regional.py", "inicio": "2026-11-08T01:21:27", "duracao_s": 249.5, "itens": 40, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_imprensa_saude.py", "inicio": "2026-11-08T01:25:36", "duracao_s": 103.9, "itens": 27, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "descobrir_planos.py", "inicio": "2026-11-08T01:27:19", "duracao_s": 503.9, "itens": 42, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "detectar_marcos_federais.py", "inicio": "2026-11-08T01:35:42", "duracao_s": 3.3, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_atos_resposta.py", "inicio": "2026-11-08T01:35:45", "duracao_s": 248.4, "itens": 18659, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_politica_por_inteiro.py", "inicio": "2026-11-08T01:39:53", "duracao_s": 3.1, "itens": 18659, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "julgar_e_aplicar_descobertas.py", "inicio": "2026-11-08T01:39:56", "duracao_s": 210.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "coletar_sinais_risco.py", "inicio": "2026-11-08T01:43:26", "duracao_s": 103.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "gerar_monitor_saude.py", "inicio": "2026-11-08T01:45:09", "duracao_s": 0.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "atualizar.py", "inicio": "2026-11-08T01:43:26", "duracao_s": 103.6, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "preservar_evidencias.py", "inicio": "2026-11-08T01:45:09", "duracao_s": 75.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "preservar_evidencias.py", "inicio": "2026-11-08T01:46:24", "duracao_s": 78.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "preservar_evidencias.py", "inicio": "2026-11-08T01:47:42", "duracao_s": 51.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "scripts/preservar_textos_integrais.py", "inicio": "2026-11-08T01:48:33", "duracao_s": 2.5, "itens": null, "status": "ok", "erro": ""}
  ],
  "atualizado_em": "2026-11-08T02:50:47"
 }
