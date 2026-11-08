@@ -10,7 +10,7 @@
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 53881,
+   "valor_parcial": 53982,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -505,12 +505,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 529,
+   "valor": 9653,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "07/11/2026",
+   "consultado_em": "08/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -519,38 +519,82 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 356
-    },
-    {
-     "uf": "BA",
-     "valor": 66
+     "valor": 6959
     },
     {
      "uf": "MA",
-     "valor": 54
+     "valor": 773
     },
     {
-     "uf": "AM",
-     "valor": 15
-    },
-    {
-     "uf": "RR",
-     "valor": 14
+     "uf": "BA",
+     "valor": 412
     },
     {
      "uf": "AP",
-     "valor": 10
+     "valor": 358
+    },
+    {
+     "uf": "AM",
+     "valor": 295
+    },
+    {
+     "uf": "PI",
+     "valor": 196
     },
     {
      "uf": "TO",
-     "valor": 10
+     "valor": 183
+    },
+    {
+     "uf": "RR",
+     "valor": 177
+    },
+    {
+     "uf": "MT",
+     "valor": 139
+    },
+    {
+     "uf": "CE",
+     "valor": 46
+    },
+    {
+     "uf": "PE",
+     "valor": 41
+    },
+    {
+     "uf": "SE",
+     "valor": 16
+    },
+    {
+     "uf": "MG",
+     "valor": 13
     },
     {
      "uf": "RO",
-     "valor": 3
+     "valor": 13
     },
     {
      "uf": "AL",
+     "valor": 10
+    },
+    {
+     "uf": "PB",
+     "valor": 9
+    },
+    {
+     "uf": "GO",
+     "valor": 8
+    },
+    {
+     "uf": "ES",
+     "valor": 2
+    },
+    {
+     "uf": "MS",
+     "valor": 2
+    },
+    {
+     "uf": "RN",
      "valor": 1
     }
    ],
