@@ -1131,6 +1131,20 @@
    ],
    "correcao": "`saude_pipeline.py --terminou-pulando <epoch>` diz se o último comando do elo foi pulado; o marcador soma 1 ao restante e grava `.parcial`, que a reserva refaz na janela. `nome_do_script` registra o `.py` do comando.",
    "caso_de_teste": "scripts/saude_pipeline.py --autoteste: terminou_pulando"
+  },
+  {
+   "id": "F83",
+   "noite": "2026-11-07",
+   "titulo": "Créditos do Netlify esgotados: 35 h de domínio congelado, publicador vermelho sem nomear a causa",
+   "sintoma": "De 07/11 ~13:00 a 08/11 21:01 UTC o site no ar ficou na foto de 07/11 10:21 (Inmet e Cemaden 'Sem atualização desde 07/11 05:44', cartões municipais velhos, #1625 invisível). Todo `Repor o site no domínio` do publicador saiu vermelho; o vigia abriu as Issues #397, #400 e #401 sem a causa no corpo.",
+   "causa": "O Netlify cobra 15 créditos por deploy de produção (prévia e falha custam zero) e o publicador repunha o domínio a cada rodada com dado novo — 26 deploys em 05/11 e 25 em 06/11, 375 créditos/dia contra 300/mês (Free) ou 1.000/mês (Personal). Resposta da API: 'Account credit usage exceeded - new deploys are blocked until credits are added'.",
+   "prova": [
+    "runs 42389755567 (07/11 16:12) e 42470034368 (08/11 10:12) de verificar_publicado.yml: 'credit usage exceeded'",
+    "passo Repor com conclusion=failure em todo publicar_dados.yml de 07/11 16:xx a 08/11 19:xx",
+    "último 'Deploy is live' antes do bloqueio: run 42362761178, 07/11 10:21 UTC"
+   ],
+   "correcao": "#1626: `repor_dominio.sh` decide por `scripts/janela_de_deploy.py` (último deploy de produção no ar via listSiteDeploys; só deploya se `manifesto=<hash>` mudou e a janela de 12 h fechou); vigia trata ADIADO como aviso e põe o relatório do deploy no corpo da Issue; reposição manual usa --forcar. Créditos repostos pela editoria em 08/11 ~20:50 UTC; domínio reposto às 21:01.",
+   "caso_de_teste": "scripts/janela_de_deploy.py --autoteste (10 casos)"
   }
  ]
 }
