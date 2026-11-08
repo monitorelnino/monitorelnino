@@ -578765,6 +578765,459 @@
    "origem": "busca_web",
    "leu_documento": true,
    "hash_evidencia": "3fd08eb2c406829d9194feaba76d050ad212b88e731b6ad8de104ca3ebcce460"
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "75529 caracteres de fonte oficial"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "detalhe": "ato do excerto não localizado na edição com vários atos"
+     }
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4311130",
+   "municipio": "Jari",
+   "uf": "RS",
+   "url": "https://www.jari.rs.gov.br/arqs/33105.pdf",
+   "regras_18": [
+    "J5"
+   ],
+   "pista_id": "6aad6f336a",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "2cb141a0b1d289797a587ab6010d483488fabcde6bfd4b2d469254547afeb920",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial"
+    ],
+    "encontrou": "https://www.jari.rs.gov.br/arqs/33105.pdf",
+    "recusa_original": "citacao_incompleta"
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "402600 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4319737",
+   "municipio": "São Valério do Sul",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202006/12094203-doe-2020-06-12.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "efb63c04de",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "20bf0ff4c20de33b090736e8f5b6d8fa8dc283039e9f2f7def27c014df03e3f4"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306353",
+   "municipio": "Dezesseis de Novembro",
+   "uf": "RS",
+   "url": "https://www.dezesseisdenovembro.rs.gov.br/site/conteudosdiversos",
+   "regras_18": [],
+   "pista_id": "48e1345eab",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306353",
+   "municipio": "Dezesseis de Novembro",
+   "uf": "RS",
+   "url": "https://www.dezesseisdenovembro.rs.gov.br/site/ConteudosDiversos?pagina=1&tipo=101",
+   "regras_18": [],
+   "pista_id": "3c814787f4",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318499",
+   "municipio": "São José do Inhacorá",
+   "uf": "RS",
+   "url": "https://www.saojosedoinhacora.rs.gov.br/",
+   "regras_18": [],
+   "pista_id": "aba253d15f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "texto_nao_extraivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "0 caracteres extraídos"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4306767",
+   "municipio": "Eldorado do Sul",
+   "uf": "RS",
+   "url": "https://www.eldorado.rs.gov.br/portal/servicos/1015/secretaria-municipal-da-reconstrucao-resiliencia-climatica-e-defesa-civil/",
+   "regras_18": [],
+   "pista_id": "f175ad603e",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305157",
+   "municipio": "Cerro Grande",
+   "uf": "RS",
+   "url": "https://admin.atencaoprimaria.rs.gov.br/upload/arquivos/202609/15142425-cartilha-mudancas-climaticas-e-saude-das-comunidades-quilombolas-no-rs-gestores.pdf",
+   "regras_18": [],
+   "pista_id": "b35cff1012",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "337459 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318457",
+   "municipio": "São José das Missões",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202201/31085206-doe-2022-01-31.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "926239d40f",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "fd540e4509f1db807feab88c2852e61810e85df408f45ff27e613dc1bca9138a"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305108",
+   "municipio": "Caxias do Sul",
+   "uf": "RS",
+   "url": "https://gcpstorage.caxias.rs.gov.br/documents/2026/05/971f44db-bc1d-42a1-bb76-f7c1990a74e8.pdf",
+   "regras_18": [],
+   "pista_id": "3c84732084",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "600000 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4318614",
+   "municipio": "São José do Sul",
+   "uf": "RS",
+   "url": "https://pge.rs.gov.br/upload/arquivos/202005/20094407-doe-ultimo-20052020.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "565b0a5dca",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "42b855701d5249afb4b9e7e581081c72e08653ced802eaa54dbdd6c498294cf6"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4302238",
+   "municipio": "Boa Vista do Incra",
+   "uf": "RS",
+   "url": "https://boavistadoincra.rs.gov.br/uploads/licitacao/20341/dQ9Y-ZBmx-6KIFsnqo_cW7lEbcpeKuUF.pdf",
+   "regras_18": [],
+   "pista_id": "19888fc3cc",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4302238",
+   "municipio": "Boa Vista do Incra",
+   "uf": "RS",
+   "url": "https://boavistadoincra.rs.gov.br/uploads/documento/19558/Sq26RI_93UFz7_zO4b6ULPQZKRYNnDbK.pdf",
+   "regras_18": [],
+   "pista_id": "17fa44792f",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "5002 caracteres de fonte oficial"
+    },
+    "1_identidade": {
+     "ok": true,
+     "trecho": "lerta para risco muito alto de destelhamento em &aacute;reas pr&oacute;ximas de Pinhal da Serra - Portal do Estado do Rio Grande do Sul Conte&uacute;do [1] Menu"
+    },
+    "2_citacao": {
+     "ok": false,
+     "trecho": "",
+     "dados": {
+      "tipo": null,
+      "numero": null,
+      "data": "30/08/2026",
+      "detalhe": "sem tipo e número de ato"
+     }
+    }
+   },
+   "categoria": null,
+   "data": "30/08/2026",
+   "natureza": null,
+   "ibge": "4314464",
+   "municipio": "Pinhal da Serra",
+   "uf": "RS",
+   "url": "https://www3.estado.rs.gov.br/defesa-civil-estadual-alerta-para-risco-muito-alto-de-destelhamento-em-areas-proximas-de-pinhal-da-serra",
+   "regras_18": [],
+   "pista_id": "259f28fc8b",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "8d839ede4a306f85688057d901bc6bb009ded7e6afcc8b388f8c678c75160695",
+   "busca_dirigida": {
+    "fontes": [
+     "querido_diario",
+     "sitio_oficial",
+     "busca_web"
+    ],
+    "encontrou": null
+   }
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4302220",
+   "municipio": "Boa Vista do Cadeado",
+   "uf": "RS",
+   "url": "https://planejamento.rs.gov.br/upload/arquivos/201512/29082213-mensagem2010.pdf",
+   "regras_18": [],
+   "pista_id": "db9404c25a",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4305850",
+   "municipio": "Coqueiros do Sul",
+   "uf": "RS",
+   "url": "https://www.pge.rs.gov.br/upload/arquivos/202106/16083743-doe-2021-06-16.pdf",
+   "regras_18": [],
+   "pista_id": "96164d7b92",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_estadual",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": true,
+     "trecho": "384432 caracteres de fonte oficial"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4314753",
+   "municipio": "Poço das Antas",
+   "uf": "RS",
+   "url": "https://www.sedur.rs.gov.br/upload/arquivos/202507/21124146-2b-1-diagno-stico-te-cnico-e-leitura-te-cnica-estrela-com-anexos-compactado.pdf",
+   "regras_18": [
+    "J14"
+   ],
+   "encaminhar": "instrumento_estadual",
+   "pista_id": "8a16b74ffe",
+   "origem": "busca_web",
+   "leu_documento": true,
+   "hash_evidencia": "ba05428b311c9b8049734f2f4b129c73a29b4ae1a1caa85feb8f9d7434a0e41c"
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4321626",
+   "municipio": "Travesseiro",
+   "uf": "RS",
+   "url": "https://www.sedur.rs.gov.br/upload/arquivos/202504/02152515-1a-zoneamento-de-risco-arroio-do-meio-com-anexos-compressed.pdf",
+   "regras_18": [],
+   "pista_id": "dd9fb7eda3",
+   "origem": "busca_web",
+   "leu_documento": false
+  },
+  {
+   "promove": false,
+   "motivo": "documento_inacessivel",
+   "codebook": "1.8 (30/10/2026)",
+   "criterios": {
+    "0_documento_primario": {
+     "ok": false,
+     "trecho": "documento não obtido nesta tentativa"
+    }
+   },
+   "categoria": null,
+   "data": null,
+   "natureza": null,
+   "ibge": "4320651",
+   "municipio": "Silveira Martins",
+   "uf": "RS",
+   "url": "https://www.silveiramartins.rs.gov.br/public/admin/globalarq/uploads/files/Foto%20(1)(1).pdf",
+   "regras_18": [],
+   "pista_id": "23798c5e9b",
+   "origem": "busca_web",
+   "leu_documento": false
   }
  ]
 }
