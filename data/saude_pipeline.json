@@ -3157,7 +3157,13 @@
   {"data": "2026-11-07", "script": "coletar_espin.py", "inicio": "2026-11-08T01:14:04", "duracao_s": 878.4, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "buscar_protocolo_calor.py", "inicio": "2026-11-08T01:28:42", "duracao_s": 91.1, "itens": 4, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "scripts/reavaliar_fontes_suspensas.py", "inicio": "2026-11-08T01:30:13", "duracao_s": 859.1, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
-  {"data": "2026-11-07", "script": "verificar_links.py", "inicio": "2026-11-08T01:44:32", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
+  {"data": "2026-11-07", "script": "verificar_links.py", "inicio": "2026-11-08T01:44:32", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-07", "script": "consultar_querido_diario.py", "inicio": "2026-11-08T01:17:35", "duracao_s": 62.5, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-07", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-08T01:18:37", "duracao_s": 2.3, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-08T01:18:39", "duracao_s": 2468.9, "itens": 27, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "coletar_doe.py", "inicio": "2026-11-08T01:59:47", "duracao_s": 3016.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "coletar_s2id.py", "inicio": "2026-11-08T02:50:03", "duracao_s": 44.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-08T02:50:47", "duracao_s": 86.9, "itens": null, "status": "erro", "erro": "TimeoutError: The read operation timed out"}
  ],
- "atualizado_em": "2026-11-08T01:44:32"
+ "atualizado_em": "2026-11-08T02:50:47"
 }
