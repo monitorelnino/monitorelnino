@@ -4,22 +4,22 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 5.1,
-   "referencia": "07/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em São Paulo",
-   "capital": "São Paulo",
-   "uf": "SP",
+   "valor": 3.6,
+   "referencia": "08/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Teresina",
+   "capital": "Teresina",
+   "uf": "PI",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 32.0 °C contra a média de 26.9 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 40.0 °C contra a média de 36.4 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 4.0,
-    "referencia": "06/11/2026"
+    "valor": 5.1,
+    "referencia": "07/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 529,
+   "valor": 9653,
    "referencia": "Focos do dia — focos_diario_br_20261108.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 4,
+   "valor": 6,
    "perigo_ou_maior": 2,
-   "referencia": "07/11/2026 22:15",
+   "referencia": "08/11/2026 05:26",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 6,
-    "referencia": "07/11/2026 05:44"
+    "valor": 4,
+    "referencia": "07/11/2026 22:15"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "07/11/2026",
+   "referencia": "08/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "06/11/2026"
+    "referencia": "07/11/2026"
    }
   }
  ]
