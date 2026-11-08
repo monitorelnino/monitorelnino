@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-06. 82 falhas; 75 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-06. 83 falhas; 76 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -743,3 +743,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** linhas `pulado` de `data/saude_pipeline.json` em 06/11 08:xx, 07/11 08:xx e 08/11 08:xx; `.feito` do `doe-incremental` de 04/11 gravado depois do pulo; LOTES: blocos da central de 04/11 (item c) e da J18 de 07/11 10:3x
 - **Correção:** `saude_pipeline.py --terminou-pulando <epoch>` diz se o último comando do elo foi pulado; o marcador soma 1 ao restante e grava `.parcial`, que a reserva refaz na janela. `nome_do_script` registra o `.py` do comando.
 - **Caso de teste:** `scripts/saude_pipeline.py --autoteste: terminou_pulando`
+
+## F83 · Créditos do Netlify esgotados: 35 h de domínio congelado, publicador vermelho sem nomear a causa
+
+- **Noite:** 2026-11-07
+- **Sintoma:** De 07/11 ~13:00 a 08/11 21:01 UTC o site no ar ficou na foto de 07/11 10:21 (Inmet e Cemaden 'Sem atualização desde 07/11 05:44', cartões municipais velhos, #1625 invisível). Todo `Repor o site no domínio` do publicador saiu vermelho; o vigia abriu as Issues #397, #400 e #401 sem a causa no corpo.
+- **Causa:** O Netlify cobra 15 créditos por deploy de produção (prévia e falha custam zero) e o publicador repunha o domínio a cada rodada com dado novo — 26 deploys em 05/11 e 25 em 06/11, 375 créditos/dia contra 300/mês (Free) ou 1.000/mês (Personal). Resposta da API: 'Account credit usage exceeded - new deploys are blocked until credits are added'.
+- **Prova:** runs 42389755567 (07/11 16:12) e 42470034368 (08/11 10:12) de verificar_publicado.yml: 'credit usage exceeded'; passo Repor com conclusion=failure em todo publicar_dados.yml de 07/11 16:xx a 08/11 19:xx; último 'Deploy is live' antes do bloqueio: run 42362761178, 07/11 10:21 UTC
+- **Correção:** #1626: `repor_dominio.sh` decide por `scripts/janela_de_deploy.py` (último deploy de produção no ar via listSiteDeploys; só deploya se `manifesto=<hash>` mudou e a janela de 12 h fechou); vigia trata ADIADO como aviso e põe o relatório do deploy no corpo da Issue; reposição manual usa --forcar. Créditos repostos pela editoria em 08/11 ~20:50 UTC; domínio reposto às 21:01.
+- **Caso de teste:** `scripts/janela_de_deploy.py --autoteste (10 casos)`
