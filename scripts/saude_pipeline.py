@@ -198,6 +198,18 @@ def _restaurar_json_quebrado() -> list:
     return ruins
 
 
+def nome_do_script(argv: list) -> str:
+    """O `.py` do comando (`python3 x.py` na válvula não pode virar o script `python3`)."""
+    return next((a for a in argv if a.endswith(".py")), argv[0])
+
+
+def terminou_pulando(execucoes: list, epoch: float) -> str:
+    """O script do último comando deste elo (início de `epoch` em diante), se o prazo o pulou; senão ''."""
+    meus = [e for e in execucoes
+            if datetime.datetime.fromisoformat(e["inicio"]).timestamp() >= epoch]
+    return meus[-1]["script"] if meus and meus[-1].get("status") == "pulado" else ""
+
+
 def rodar(argv: list, prazo=None, minimo: float = MINIMO_PARA_COMECAR_S,
           restaurar: bool = True) -> int:
     """Invólucro: cronometra, registra e devolve o MESMO código de saída do comando.
@@ -207,9 +219,9 @@ def rodar(argv: list, prazo=None, minimo: float = MINIMO_PARA_COMECAR_S,
     inicio_dt = datetime.datetime.now().replace(microsecond=0)
     decisao, resta = decidir_prazo(prazo, time.time(), minimo)
     if decisao == "pular":
-        registrar(script=argv[0], inicio=inicio_dt.isoformat(), duracao_s=0, itens=None,
+        registrar(script=nome_do_script(argv), inicio=inicio_dt.isoformat(), duracao_s=0, itens=None,
                   status="pulado", erro="prazo do elo esgotado antes de começar")
-        print(f"[saude] {argv[0]}: pulado — prazo do elo esgotado antes de começar", flush=True)
+        print(f"[saude] {nome_do_script(argv)}: pulado — prazo do elo esgotado antes de começar", flush=True)
         return 0
     # script .py roda com o mesmo interpretador; qualquer outro comando roda como está
     comando = ([sys.executable] + argv) if argv[0].endswith(".py") else list(argv)
@@ -233,11 +245,11 @@ def rodar(argv: list, prazo=None, minimo: float = MINIMO_PARA_COMECAR_S,
     codigo = CODIGO_PRAZO if interrompido else proc.returncode
     if interrompido and restaurar:
         _restaurar_json_quebrado()
-    registrar(script=argv[0], inicio=inicio_dt.isoformat(), duracao_s=duracao,
+    registrar(script=nome_do_script(argv), inicio=inicio_dt.isoformat(), duracao_s=duracao,
               itens=contar_itens(saida), status="ok" if codigo == 0 else "erro",
               erro=("interrompido pelo prazo do elo" if interrompido
                     else "" if codigo == 0 else resumir_erro(saida)))
-    print(f"[saude] {argv[0]}: {duracao:.0f}s, status "
+    print(f"[saude] {nome_do_script(argv)}: {duracao:.0f}s, status "
           f"{'ok' if codigo == 0 else ('interrompido pelo prazo' if interrompido else 'erro')}",
           flush=True)
     return codigo
@@ -318,6 +330,15 @@ def autoteste() -> int:
                   prazo_proprio(["prazo=12min", "x.py", "-a"], None, 100.0) == (820.0, ["x.py", "-a"])))
     casos.append(("prazo próprio nunca passa do prazo do elo",
                   prazo_proprio(["prazo=12min", "x.py"], 500.0, 100.0) == (500.0, ["x.py"])))
+    casos.append(("`python3 x.py` registra o script, não o interpretador",
+                  nome_do_script(["python3", "x.py", "-a"]) == "x.py" and nome_do_script(["ls"]) == "ls"))
+    execs = [{"script": "a.py", "inicio": "2026-11-08T08:00:00", "status": "ok"},
+             {"script": "b.py", "inicio": "2026-11-08T08:01:00", "status": "pulado"}]
+    corte = datetime.datetime(2026, 11, 8, 7, 30).timestamp()
+    casos.append(("elo que termina pulando é achado; pulado no meio ou de outro elo não",
+                  terminou_pulando(execs, corte) == "b.py"
+                  and terminou_pulando(execs[::-1], corte) == ""
+                  and terminou_pulando(execs, corte + 7200) == ""))
     casos.append(("linha sem prazo=Nmin fica como está",
                   prazo_proprio(["x.py", "prazo=1min"], 9.0, 0.0) == (9.0, ["x.py", "prazo=1min"])))
     textos = {"data/a.json": '{"x": 1}', "data/b.json": '{"x": ', "data/c.txt": "{"}
@@ -359,6 +380,9 @@ def main() -> int:
         return autoteste()
     if "--listar" in sys.argv:
         return listar()
+    if "--terminou-pulando" in sys.argv:
+        print(terminou_pulando(ler()["execucoes"], float(sys.argv[sys.argv.index("--terminou-pulando") + 1])))
+        return 0
     if "--rodar" in sys.argv:
         i = sys.argv.index("--rodar")
         alvo = sys.argv[i + 1:]
