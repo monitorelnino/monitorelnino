@@ -189,14 +189,25 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
 
 
 RE_PROVENIENCIA_NA_FONTE = re.compile(
-    r"lido e classificado pelo juiz automático em (\d{2}/\d{2}/\d{4}) \(codebook [^)]*\)+"
-    r"|;?\s*critérios em promocoes_automaticas\.json")
+    r"lido e classificado (?:pelo juiz automático|automaticamente) em (\d{2}/\d{2}/\d{4}) \((?:codebook|§)[^)]*\)+"
+    r"|;?\s*critérios em promocoes_automaticas\.json"
+    r"|\s*—\s*revisar\b"
+    r"|;\s*achado pela bateria negativa[^—]*?(\d{2}/\d{2}/\d{4})\s*—\s*julgamento.*$")
+RE_FONTE_DE_PROCESSO = re.compile(r"^classificado automaticamente \((\d{2}/\d{2}/\d{4})\) a partir de (\S+)$")
 
 
 def fonte_publica(fonte: str) -> str:
-    """A frase pública de um registro antigo, sem a proveniência interna que o cartão exibia
-    (08/11/2026: 207 registros diziam 'juiz automático', 'codebook' e um nome de arquivo). Função pura."""
-    return RE_PROVENIENCIA_NA_FONTE.sub(lambda m: f"lido em {m.group(1)}" if m.group(1) else "", fonte or "").strip()
+    """A frase pública de um registro antigo, sem a proveniência interna que o cartão e o PDF exibiam
+    (08/11/2026: 'juiz automático', 'codebook', '§158', nome de arquivo, 'revisar'; e em
+    atos_resposta.json 'classificado automaticamente (data) a partir de <url>'). Função pura."""
+    m = RE_FONTE_DE_PROCESSO.match(fonte or "")
+    if m:
+        from julgar_e_aplicar_descobertas import canal_e_fonte
+        return f"{canal_e_fonte(m.group(2))[1]} — lido em {m.group(1)}"
+    def _troca(m):
+        data = m.group(1) or m.group(2)
+        return (f"lido em {data}" if m.group(1) else f", lido em {data}") if data else ""
+    return RE_PROVENIENCIA_NA_FONTE.sub(_troca, fonte or "").strip()
 
 
 RE_SUJEIRA = re.compile(r"P[áa]gina\s+\d+\s+de\s+\d+|o documento [ÉE] o instrumento|\.\.\.\.|……", re.IGNORECASE)
@@ -375,7 +386,16 @@ def autoteste() -> int:
                   == "P (h) — plano publicado em domínio oficial do ente, lido em 04/11/2026; ato de aprovação não localizado até o corte"
                   and fonte_publica("D (x) — ato lido e classificado pelo juiz automático em 03/10/2026 (codebook 1.3 (03/10/2026)); "
                                     "critérios em promocoes_automaticas.json") == "D (x) — ato lido em 03/10/2026"
-                  and fonte_publica("Portal oficial (a) — plano") == "Portal oficial (a) — plano"))
+                  and fonte_publica("Portal oficial (a) — plano") == "Portal oficial (a) — plano"
+                  and fonte_publica("D (via Querido Diário) — ato lido e classificado automaticamente em 22/09/2026 (§158)")
+                  == "D (via Querido Diário) — ato lido em 22/09/2026"
+                  and fonte_publica("classificado automaticamente (13/10/2026) a partir de https://www.gov.br/mdr/x")
+                  == "Portal oficial (www.gov.br) — lido em 13/10/2026"
+                  and fonte_publica("Fonte não oficial (g1.globo.com) — revisar") == "Fonte não oficial (g1.globo.com)"
+                  and fonte_publica("Fonte não oficial (x.sharepoint.com) — revisar — plano publicado em domínio oficial do ente, lido em 01/11/2026")
+                  == "Fonte não oficial (x.sharepoint.com) — plano publicado em domínio oficial do ente, lido em 01/11/2026"
+                  and fonte_publica("Agência Belém reproduzida por O Liberal; achado pela bateria negativa padronizada (§4.1.2) em 27/08/2026 — julgamento humano (R7) da editora")
+                  == "Agência Belém reproduzida por O Liberal, lido em 27/08/2026"))
     casos.append(("sem título legível, o documento diz o que foi localizado, sem jargão nem chave interna",
                   documento_generico("plano_antigo") == "Ato oficial localizado: plano de contingência vigente de ciclo anterior"
                   and "juiz" not in documento_generico("plano") and "_" not in documento_generico("plano_novo")))

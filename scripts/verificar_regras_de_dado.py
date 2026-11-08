@@ -1245,8 +1245,10 @@ CASOS_LOG = [
 # arquivo. O verificador de texto público só vê o que está na página no carregamento, e o cartão é montado
 # depois, na consulta; por isso o jargão interno de layout/regras.json é cobrado aqui, no dado.
 CAMPOS_EXIBIDOS = {"data/municipios.json": ("documento", "fonte", "marca_na_ficha"),
-                   "data/estados.json": ("documento", "fonte", "marca_na_ficha", "titulo", "ementa")}
-JARGAO_EXTRA = [(r"\bjuiz automático\b|\bcodebook\b|\bcategoria\s+\w+_\w+", "proveniência interna do julgamento")]
+                   "data/estados.json": ("documento", "fonte", "marca_na_ficha", "titulo", "ementa"),
+                   "data/atos_resposta.json": ("fonte", "decreto", "causa")}   # o PDF do município imprime "Fonte: …"
+JARGAO_EXTRA = [(r"\bjuiz automático\b|\bcodebook\b|\bcategoria\s+\w+_\w+", "proveniência interna do julgamento"),
+                (r"classificad[oa] automaticamente|§\s*\d|—\s*revisar\b", "frase sobre o processo, não sobre a fonte")]
 
 
 def problemas_jargao_no_dado(nome: str, registros, regras: list) -> list:
@@ -1273,7 +1275,7 @@ def real_jargao():
     for nome in CAMPOS_EXIBIDOS:
         if (RAIZ / nome).exists():
             d = _json(nome)
-            regs = d if isinstance(d, list) else d.get("municipios") or [i for u in d.get("ufs", []) for i in u.get("instrumentos") or []]
+            regs = d if isinstance(d, list) else d.get("municipios") or d.get("eventos") or [i for u in d.get("ufs", []) for i in u.get("instrumentos") or []]
             falhas += problemas_jargao_no_dado(nome, regs, regras)
     return falhas, "nenhum campo exibido pelo cartão carrega jargão interno (juiz, codebook, nome de arquivo)"
 
@@ -1286,6 +1288,8 @@ CASOS_JARGAO = [
      len(problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "documento": "Ato classificado como categoria plano_antigo"}], _JR)) == 1),
     ("fonte pública passa",
      problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "fonte": "Portal oficial (h) — plano publicado em domínio oficial do ente, lido em 04/11/2026; ato de aprovação não localizado até o corte", "documento": "Ato oficial localizado: plano de contingência vigente de ciclo anterior"}], _JR) == []),
+    ("fonte de ato de resposta que descreve o processo reprova",
+     len(problemas_jargao_no_dado("data/atos_resposta.json", [{"nome": "X", "uf": "PA", "fonte": "classificado automaticamente (13/10/2026) a partir de https://x"}], _JR)) == 1),
     ("campo não exibido não é deste portão",
      problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "criterios": "promocoes_automaticas.json"}], _JR) == []),
 ]
