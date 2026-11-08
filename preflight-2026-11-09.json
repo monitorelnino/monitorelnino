@@ -1,0 +1,47 @@
+{
+ "noite": "2026-11-09",
+ "conferido_em": "2026-11-08T22:01:43Z",
+ "verde": false,
+ "perguntas": [
+  {
+   "pergunta": "main verde",
+   "ok": true,
+   "detalhe": "último Portões no push: success (16548a23)"
+  },
+  {
+   "pergunta": "nenhum PR mesclado depois das 23:30 UTC",
+   "ok": true,
+   "detalhe": "nenhuma mesclagem depois do corte"
+  },
+  {
+   "pergunta": "fila de runs vazia",
+   "ok": false,
+   "detalhe": "publicar_dados.yml (queued), publicar_dados.yml (in_progress), ensaio_real_da_noite.yml (in_progress), publicar_dados.yml (pending)"
+  },
+  {
+   "pergunta": "despachante vivo (último run há menos de 70 min)",
+   "ok": true,
+   "detalhe": "último run há 53 min"
+  },
+  {
+   "pergunta": "relógio vivo (último run há menos de 70 min)",
+   "ok": true,
+   "detalhe": "último run há 53 min"
+  },
+  {
+   "pergunta": "segredos da noite presentes",
+   "ok": false,
+   "detalhe": "faltam: ROBO_TOKEN, ROBO_DEPLOY_KEY, NETLIFY_AUTH_TOKEN, NETLIFY_SITE_ID"
+  },
+  {
+   "pergunta": "ensaio real do dia verde",
+   "ok": false,
+   "detalhe": "último: em curso em 2026-11-08T21:15:53Z"
+  },
+  {
+   "pergunta": "as consultas ao GitHub responderam",
+   "ok": true,
+   "detalhe": "todas responderam"
+  }
+ ]
+}

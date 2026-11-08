@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-08 · #PR · Niño 3.4 mensal desde 1950, na forma do RONI · Pedido da editoria. O coletor guarda a série inteira da anomalia mensal da Niño 3.4 (com a temperatura absoluta) em vez de 48 meses; o Monitor de riscos ganha a terceira série larga: ciclo em curso sobre os episódios de El Niño que o RONI define, mesma função de desenho (`figuraDeEpisodios`, parametrizada — nada copiado), escala alargada pelo dado. Contrato, regra (três séries) e catálogo atualizados. A série completa entra na coleta da noite.
+
 ## 2026-11-08 · #PR · Catálogo de falhas da noite: F83 · Créditos do Netlify esgotados em 07/11 (15 créditos por deploy × ~25 deploys/dia): 35 h de domínio congelado e Issues do vigia sem a causa. Corrigido no #1626 (janela de deploy); créditos repostos pela editoria. Só catálogo; sem código. +0 linhas de código.
 
 ## 2026-11-08 · #PR · Janela de deploy: o domínio é reposto no máximo a cada 12 h e só se o manifesto mudou · O Netlify cobra 15 créditos por deploy de produção e o publicador fazia ~25 por dia; em 07/11 os créditos acabaram e o domínio congelou 35 h. `repor_dominio.sh` consulta `scripts/janela_de_deploy.py` (lê a lista de deploys do Netlify, autoteste); o vigia aceita atraso dentro da janela e nomeia a causa na Issue; reposição manual força. +~70 linhas (regra nova).
