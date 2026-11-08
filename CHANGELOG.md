@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-08 · #PR · Catálogo de falhas da noite: F81 · Registra a falha da rodada completa de domingo (`atualizar` e `noturno_sinais` gravando os mesmos caminhos), corrigida no #1616, com o ensaio real verde como prova. Só catálogo; sem código. +0 linhas de código.
+
 ## 2026-11-08 · #PR · `atualizar` não coleta mais os sinais de risco · No domingo a rodada completa (01:10 UTC) coletava `coletar_sinais_risco.py`, dono do elo `noturno_sinais` (01:17), e perdia o commit com 33 caminhos recusados (25/10, 01/11, 08/11). A chamada sai de `atualizar.py`; o elo segue diário. −8 linhas.
 
 ## 2026-11-07 · Resolvedor une o CHANGELOG pela base comum · Todo PR do dia conflitou no `CHANGELOG.md` (oito vezes) e a resolução à mão era sempre a mesma. O resolvedor passa a unir: entradas novas dos dois lados (as de cima primeiro), depois as da base que os dois mantêm; entrada editada nos dois lados é recusa. Conferido contra três uniões manuais de hoje: o mesmo texto, a menos de linha em branco.

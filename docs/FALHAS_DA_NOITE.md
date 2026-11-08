@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-06. 80 falhas; 74 com caso de teste que as reproduz; 6 sem, com o que falta dito.
+Atualizado em 2026-11-06. 81 falhas; 74 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -725,3 +725,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** run 42196031171: passo de disparo com 502 nos três `gh workflow run`, `elos_sem_marcador` com os seis elos, `pushes_perdidos` e `cancelados_sem_refazer` vazios; o #1548 não entra no job: o ensaio não chama scripts/empurrar.py
 - **Correção:** O passo repete cada disparo até 5 vezes com espera crescente e falha na hora, nomeando o GitHub, se todas recusarem.
 - **Caso de teste:** `scripts/ensaio_da_noite.py::ensaio_ensaio_real_fixa_a_noite`
+
+## F81 · Rodada completa de domingo perde o commit: `atualizar` coletava os sinais de risco que são do elo `noturno_sinais`
+
+- **Noite:** 2026-11-08
+- **Sintoma:** `atualizar / coletar` (run 42433051903, dispatch 01:10 UTC) coletou 39 min e perdeu o commit com 33 caminhos `RECUSADO … sem resolução conhecida` (`data/riscos_municipio/*.json`, `alertas/vigentes.json`, `ar_medido.json`, `focos_referencia.json`, `sinais_risco*.json`) e `pistas_imprensa.json`; igual em 25/10 (40149551634) e 01/11 (41259903124). A reaplicação das 02:59 recuperou o artefato.
+- **Causa:** `atualizar.py` chamava `coletar_sinais_risco.py`, cujos arquivos têm dono único em `config/escritores.json` (`noturno_sinais.yml`, elo das 01:17): no domingo as duas coletas gravavam os mesmos caminhos na mesma madrugada e o resolvedor recusava.
+- **Prova:** `atualizar.py` linha 165 (antes do #1616) rodava `coletar_sinais_risco.py`; `config/escritores.json` declara `data/riscos_municipio/` de `noturno_sinais.yml`; logs do run 42433051903, linhas 2324–2368, 33 caminhos RECUSADO; mesma assinatura nos dois domingos anteriores; ensaio real 42468692596 (main e2731670, depois do #1616) verde
+- **Correção:** A chamada saiu de `atualizar.py` (#1616, −8 linhas): o elo `noturno_sinais` segue como único coletor, todo dia.
+- **Caso de teste:** nenhum — falta: O ensaio simulado não roda `atualizar.py` com a coleta de sinais do elo na mesma noite; a prova é o ensaio real verde e a ausência da chamada no código.
