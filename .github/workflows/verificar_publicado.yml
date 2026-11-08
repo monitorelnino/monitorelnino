@@ -54,11 +54,19 @@ jobs:
           if ! verificar && grep -q '✗ integridade' /tmp/verificar_publicado.txt; then
             echo "::warning::domínio atrás da main: repondo"
             if ! bash scripts/repor_dominio.sh "Vigia ${GITHUB_SHA::7}" --estrito; then
-              gh issue create --repo monitorelnino/robo-registro --title "Domínio atrás da main e a reposição do vigia falhou" \
-                --body "O vigia achou o domínio diferente da main em ${GITHUB_SHA::7} e repor_dominio.sh falhou: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" || true
+              # 08/11/2026: a causa vai no corpo — "Account credit usage exceeded" ficou 35 h sem nome nas Issues #397/#400/#401.
+              CORPO="O vigia achou o domínio diferente da main em ${GITHUB_SHA::7} e repor_dominio.sh falhou: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+              CORPO="$CORPO"$'\n\n'"Relatório do deploy: $(head -c 800 /tmp/repor_relatorio.txt 2>/dev/null)"
+              gh issue create --repo monitorelnino/robo-registro --title "Domínio atrás da main e a reposição do vigia falhou" --body "$CORPO" || true
               exit 1
             fi
-            verificar
+            # 08/11/2026: dentro da janela de deploy (scripts/janela_de_deploy.py) o domínio pode estar
+            # atrás da main de propósito — não é falha, e o próximo publicador repõe.
+            if grep -q '^ADIADO' /tmp/repor_relatorio.txt 2>/dev/null; then
+              echo "::warning::domínio atrás da main dentro da janela de deploy ($(cat /tmp/repor_relatorio.txt))"
+            else
+              verificar
+            fi
           fi
       # 14/09/2026: o verificador vê um script /.netlify/scripts/hud injetado em toda página. A editoria não acha o interruptor
       # ("Collaboration tools" pode não existir num projeto sem Git ligado). Pergunta ao Netlify, pela API, quais campos do
