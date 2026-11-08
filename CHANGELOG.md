@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-08 · #PR · `atualizar` não coleta mais os sinais de risco · No domingo a rodada completa (01:10 UTC) coletava `coletar_sinais_risco.py`, dono do elo `noturno_sinais` (01:17), e perdia o commit com 33 caminhos recusados (25/10, 01/11, 08/11). A chamada sai de `atualizar.py`; o elo segue diário. −8 linhas.
+
 ## 2026-11-07 · Resolvedor une o CHANGELOG pela base comum · Todo PR do dia conflitou no `CHANGELOG.md` (oito vezes) e a resolução à mão era sempre a mesma. O resolvedor passa a unir: entradas novas dos dois lados (as de cima primeiro), depois as da base que os dois mantêm; entrada editada nos dois lados é recusa. Conferido contra três uniões manuais de hoje: o mesmo texto, a menos de linha em branco.
 
 ## 2026-11-07 · Resolvedor: a cópia do Wayback vence a tentativa falhada · Dois lotes do cadastro preservaram o mesmo documento no mesmo dia: um conseguiu a cópia no Wayback, o outro não, e o resolvedor recusava `data/evidencias.json` pelo campo `wayback`. Política escrita: a cópia aceita existe e vence; duas falhas, lado de cima.
