@@ -3136,7 +3136,12 @@
   {"data": "2026-11-07", "script": "coletar_sinais_risco.py", "inicio": "2026-11-08T01:13:59", "duracao_s": 92.7, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "coletar_transferencias_municipais.py", "inicio": "2026-11-08T01:15:31", "duracao_s": 77.9, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "scripts/sondar_credenciais.py", "inicio": "2026-11-08T01:16:48", "duracao_s": 2.4, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-07", "script": "recalcular_mare.py", "inicio": "2026-11-08T01:14:57", "duracao_s": 4.2, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-07", "script": "recalcular_mare.py", "inicio": "2026-11-08T01:14:57", "duracao_s": 4.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-08T01:14:47", "duracao_s": 360.0, "itens": 10, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-08T01:20:47", "duracao_s": 315.9, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-08T01:26:03", "duracao_s": 314.4, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-08T01:31:17", "duracao_s": 315.1, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-07", "script": "monitorar_busca_web.py", "inicio": "2026-11-08T01:36:32", "duracao_s": 314.4, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"}
  ],
- "atualizado_em": "2026-11-08T01:16:48"
+ "atualizado_em": "2026-11-08T01:36:32"
 }
