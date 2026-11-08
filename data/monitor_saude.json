@@ -127,10 +127,10 @@
   ],
   "pop_sob_emergencia": null,
   "faltam": [
-   "estadual: BA, CE, DF, MA, MG, PB, PE, PI, RJ, RS, SE, TO"
+   "estadual: BA, CE, DF, MA, MG, PB, PE, PI, RJ, RS, TO"
   ],
   "consultado_em": {
-   "federal": "06/11/2026",
+   "federal": "07/11/2026",
    "estadual": {
     "AC": "05/11/2026",
     "AL": "06/11/2026",
@@ -146,21 +146,21 @@
     "RO": "06/11/2026",
     "RR": "06/11/2026",
     "SC": "05/11/2026",
+    "SE": "06/11/2026",
     "SP": "05/11/2026"
    }
   },
   "lacunas_estaduais": {
    "BA": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML",
-   "CE": "15 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-08#2)",
+   "CE": "17 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-06)",
    "DF": "8 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)",
    "MA": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML",
    "MG": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada",
-   "PB": "73 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
+   "PB": "74 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
    "PE": "4 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-17)",
    "PI": "1 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-02#2)",
    "RJ": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-08-07#2)",
-   "RS": "13 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-20)",
-   "SE": "recusa da fonte, respeitada: HTTP 403 em https://iose.se.gov.br/apifront/portal/edicoes/edicoes_from_data/2026-09-10.json, /busca e /diario-oficial — recusa respeitada (run 39021988900)",
+   "RS": "edição com declaração não lida pelo juiz",
    "TO": "busca do diário falhou em 06/11/2026: URLError: <urlopen error timed out>"
   }
  },

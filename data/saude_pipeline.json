@@ -3153,7 +3153,11 @@
   {"data": "2026-11-07", "script": "coletar_arboviroses_sinan.py", "inicio": "2026-11-08T01:41:35", "duracao_s": 61.5, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "coletar_obitos_registro_civil.py", "inicio": "2026-11-08T01:42:36", "duracao_s": 37.0, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-07", "script": "classificar_saude_no_plano.py", "inicio": "2026-11-08T01:43:13", "duracao_s": 0.7, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-07", "script": "gerar_saude_municipio.py", "inicio": "2026-11-08T01:43:13", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-07", "script": "gerar_saude_municipio.py", "inicio": "2026-11-08T01:43:13", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "coletar_espin.py", "inicio": "2026-11-08T01:14:04", "duracao_s": 878.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "buscar_protocolo_calor.py", "inicio": "2026-11-08T01:28:42", "duracao_s": 91.1, "itens": 4, "status": "ok", "erro": ""},
+  {"data": "2026-11-07", "script": "scripts/reavaliar_fontes_suspensas.py", "inicio": "2026-11-08T01:30:13", "duracao_s": 859.1, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-07", "script": "verificar_links.py", "inicio": "2026-11-08T01:44:32", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
  ],
- "atualizado_em": "2026-11-08T01:43:13"
+ "atualizado_em": "2026-11-08T01:44:32"
 }
