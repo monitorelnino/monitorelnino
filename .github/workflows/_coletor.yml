@@ -380,6 +380,12 @@ jobs:
           if [ -n "$RESTANTE_CMD" ] && [[ "${RAMO}" != ensaio-real/* ]]; then
             RESTANTE="$(python3 $RESTANTE_CMD 2>/dev/null | tail -1)" || RESTANTE=0
           fi
+          # 08/11/2026 (F82, comando pulado por prazo): se o prazo pulou o ÚLTIMO comando do elo, ele
+          # grava `.parcial` (a reserva o refaz na janela) e não `.feito` sobre comando que não rodou.
+          if [[ "${RAMO}" != ensaio-real/* ]]; then
+            PULOU="$(python3 scripts/saude_pipeline.py --terminou-pulando "${JOB_INICIO_EPOCH:-0}" 2>/dev/null)" || PULOU=""
+            if [ -n "$PULOU" ]; then echo "último comando pulado por prazo: $PULOU"; RESTANTE=$(( ${RESTANTE:-0} + 1 )); fi
+          fi
           MARCADOR="$(python3 scripts/marcador_de_elo.py --elo "${{ inputs.nome }}" --noite "$NOITE" \
             --restante "${RESTANTE:-0}" --marcar "${{ inputs.nome }} · $(date -u +%FT%TZ) · run ${{ github.run_id }}")"
           echo "trabalhou=1" >> "$GITHUB_OUTPUT"

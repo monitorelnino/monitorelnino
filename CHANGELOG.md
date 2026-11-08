@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-08 · #PR · F82: elo que o prazo deixou sem o último comando grava `.parcial` · `saude_pipeline.py --terminou-pulando` e o marcador do `_coletor.yml`: a reserva refaz o elo na janela em vez de `.feito` sobre comando que não rodou. A válvula registra o `.py` do comando, não `python3`. Autoteste com casos. +30 linhas de código (recurso pedido pela central em 04/11).
+
 ## 2026-11-08 · #PR · Catálogo de falhas da noite: F81 · Registra a falha da rodada completa de domingo (`atualizar` e `noturno_sinais` gravando os mesmos caminhos), corrigida no #1616, com o ensaio real verde como prova. Só catálogo; sem código. +0 linhas de código.
 
 ## 2026-11-08 · #PR · `atualizar` não coleta mais os sinais de risco · No domingo a rodada completa (01:10 UTC) coletava `coletar_sinais_risco.py`, dono do elo `noturno_sinais` (01:17), e perdia o commit com 33 caminhos recusados (25/10, 01/11, 08/11). A chamada sai de `atualizar.py`; o elo segue diário. −8 linhas.

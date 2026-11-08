@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-06. 81 falhas; 74 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 2026-11-06. 82 falhas; 75 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -734,3 +734,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** `atualizar.py` linha 165 (antes do #1616) rodava `coletar_sinais_risco.py`; `config/escritores.json` declara `data/riscos_municipio/` de `noturno_sinais.yml`; logs do run 42433051903, linhas 2324–2368, 33 caminhos RECUSADO; mesma assinatura nos dois domingos anteriores; ensaio real 42468692596 (main e2731670, depois do #1616) verde
 - **Correção:** A chamada saiu de `atualizar.py` (#1616, −8 linhas): o elo `noturno_sinais` segue como único coletor, todo dia.
 - **Caso de teste:** nenhum — falta: O ensaio simulado não roda `atualizar.py` com a coleta de sinais do elo na mesma noite; a prova é o ensaio real verde e a ausência da chamada no código.
+
+## F82 · Elo grava `.feito` mesmo quando o prazo pulou o último comando; a válvula registra `python3 x.py` como o script `python3`
+
+- **Noite:** 2026-11-07
+- **Sintoma:** Noite 06→07: `julgar_e_aplicar_descobertas.py`, `aplicar_promocoes_do_juiz.py` e `scripts/amostra_auditoria_semanal.py` pulados por prazo às 08:57 no elo `juiz`; noite 03→04: `proveniencia_estadual.py` pulado no `doe-incremental`, que gravou `.feito`. Na válvula `coleta-dia/*` a linha de saúde saía com o script `python3`.
+- **Causa:** O marcador só olhava a fila declarada em `restante`; comando pulado por prazo não entrava em lugar nenhum, e `saude_pipeline.rodar` registrava `argv[0]` (o interpretador) quando o comando vinha como `python3 x.py`.
+- **Prova:** linhas `pulado` de `data/saude_pipeline.json` em 06/11 08:xx, 07/11 08:xx e 08/11 08:xx; `.feito` do `doe-incremental` de 04/11 gravado depois do pulo; LOTES: blocos da central de 04/11 (item c) e da J18 de 07/11 10:3x
+- **Correção:** `saude_pipeline.py --terminou-pulando <epoch>` diz se o último comando do elo foi pulado; o marcador soma 1 ao restante e grava `.parcial`, que a reserva refaz na janela. `nome_do_script` registra o `.py` do comando.
+- **Caso de teste:** `scripts/saude_pipeline.py --autoteste: terminou_pulando`
