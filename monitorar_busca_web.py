@@ -109,7 +109,7 @@ motivo_da_mudez = [""]
 
 
 def marcar_mudez(razao: str, caminho: Path = MARCA_MUDEZ, agora: float = None) -> None:
-    caminho.write_text(f"{agora or time.time()}\n{razao}", encoding="utf-8")   # texto: o marcador não é dado de data/
+    caminho.write_text(f"{agora or time.time()}\n{razao}", encoding="utf-8", newline="\n")   # texto: o marcador não é dado de data/
 
 
 def mudez_vigente(caminho: Path = MARCA_MUDEZ, agora: float = None) -> str | None:
@@ -662,7 +662,7 @@ def autoteste():
             marcar_mudez("google cse: CAPTCHA", m, 1000.0)
             return (vazio and mudez_vigente(m, 1000.0 + MUDEZ_VALE_S - 1) == "google cse: CAPTCHA"
                     and mudez_vigente(m, 1000.0 + MUDEZ_VALE_S) is None
-                    and (m.write_text("{") or mudez_vigente(m, 1000.0) is None))
+                    and (m.write_text("{", newline="\n") or mudez_vigente(m, 1000.0) is None))
 
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}
