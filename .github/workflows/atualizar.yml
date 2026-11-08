@@ -52,7 +52,7 @@ jobs:
           PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
           ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}
         run: |
-          bash scripts/repor_dominio.sh "Reposição manual do site no domínio — commit ${GITHUB_SHA::7}" --estrito
+          bash scripts/repor_dominio.sh "Reposição manual do site no domínio — commit ${GITHUB_SHA::7}" --estrito --forcar
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
           mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio_manual.txt"
           cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio manual ${GITHUB_SHA::7}" && git push -q
