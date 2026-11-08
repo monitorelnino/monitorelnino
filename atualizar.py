@@ -20,9 +20,7 @@ Etapas:
   9. preencher_fallback_estatico.py — medidor de resposta e datas de corte no HTML estático
      (sem JavaScript) de index.html, saude.html e financiamento.html (16/09/2026)
 
-Nota (17/09/2026): coletar_sinais_risco.py (ONI, avisos do INMET, focos do INPE, alertas do
-CEMADEN) roda TODO DIA, incondicional — está fora do portão de cadência semanal do índice
-(peso zero, nunca pontua; sempre foi independente do índice, só não tinha frequência própria).
+Nota (08/11/2026): coletar_sinais_risco.py roda todo dia no elo `noturno_sinais.yml`, não aqui.
 
 Quando o passo 2 gerar propostas: revise data/instrumentos_revisar.json, apague o que
 não deve entrar, e rode `python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json`
@@ -154,15 +152,9 @@ def main():
     dia_semana = hoje_editorial().weekday()  # no fuso da redação, nunca no do runner (ver topo)
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
 
-    # Sinais oficiais de risco (01/09/2026, METODOLOGIA §23): coleta as três camadas
-    # para monitor-de-riscos.html. NÃO é bloqueante e NÃO toca no índice — fonte fora do
-    # ar permanece como lacuna declarada na página, nunca como valor estimado.
-    # 17/09/2026 (achado ao checar a frequência da página, pedido da editoria): esta coleta é
-    # independente do índice desde a origem (peso zero, nunca pontua) — mas vivia PRESA à mesma
-    # cadência semanal do índice, então "o que está acontecendo agora" só se atualizava às
-    # segundas. Sinais como ONI, avisos do INMET e focos do INPE mudam todo dia na fonte; a
-    # chamada sai daqui de dentro do portão semanal e roda incondicionalmente, todo dia.
-    rodar([sys.executable, "coletar_sinais_risco.py"], teto_s=TETO_ETAPA_DIARIA_S)
+    # Sinais oficiais de risco (METODOLOGIA §23): coletados todo dia pelo elo `noturno_sinais.yml`
+    # (dono único dos arquivos, `config/escritores.json`). Esta rodada não os coleta mais: no
+    # domingo ela corria 7 min antes do elo e perdia o commit com 33 caminhos RECUSADO (F81, 08/11/2026).
 
     # 18/09/2026 (rotina diária, portão 12 vermelho na main): gerar_monitor_saude.py copia
     # sinais.uf[UF].fogo.focos_24h de data/sinais_risco.json para data/monitor_saude.json

@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **99.959 linhas** em **299 arquivos** .py/.js; **37 workflows**.
+- **100.445 linhas** em **299 arquivos** .py/.js; **37 workflows**.
 - **67 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 46.
 - **156 nomes de função** definidos em mais de um arquivo.
 
@@ -10,8 +10,8 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 57178 |
-| `scripts` | 35675 |
+| `(raiz)` | 57380 |
+| `scripts` | 35959 |
 | `assets` | 6534 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
@@ -23,19 +23,19 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `coletar_sinais_risco.py` | 3260 |
 | `coletores_base.py` | 2288 |
 | `juiz.py` | 1972 |
-| `verificar_pista_imprensa.py` | 1704 |
+| `verificar_pista_imprensa.py` | 1705 |
 | `coletar_doe.py` | 1632 |
 | `julgar_saude.py` | 1518 |
 | `assets/js/monitor-de-riscos.js` | 1317 |
+| `scripts/unir_conflito_de_rodada.py` | 1316 |
 | `scripts/verificar_regras_de_dado.py` | 1294 |
 | `scripts/ensaio_da_noite.py` | 1274 |
+| `coletar_edicoes_doe.py` | 1264 |
 | `assets/js/index.js` | 1230 |
-| `coletar_edicoes_doe.py` | 1188 |
-| `scripts/unir_conflito_de_rodada.py` | 1137 |
+| `descobrir_planos.py` | 1177 |
 | `coletar_painel_am.py` | 1135 |
 | `julgar_e_aplicar_descobertas.py` | 1067 |
 | `recalcular_mare.py` | 1064 |
-| `descobrir_planos.py` | 1052 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `gerar_imprensa_semana.py` | 1032 |
 | `gerar_pacote_blog.py` | 913 |
@@ -43,7 +43,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `scripts/pistas.py` | 782 |
 | `scripts/verificar_repositorio.py` | 770 |
 | `coletar_s2id.py` | 762 |
-| `buscar_planos_fontes_abertas.py` | 750 |
+| `buscar_planos_fontes_abertas.py` | 753 |
 | `gerar_financiamento_semana.py` | 725 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
