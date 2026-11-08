@@ -1239,13 +1239,70 @@ CASOS_LOG = [
 
 # ───────────────────────────── executor ─────────────────────────────
 # (nome, barra a publicação, confere o disco)
+# ─────────────────────────── texto de dado exibido ───────────────────────────
+# 08/11/2026: o cartão do município mostra `documento`, `fonte` e `marca_na_ficha` de data/municipios.json
+# em "Onde o documento foi localizado" — e 207 registros diziam "juiz automático", "codebook" e o nome de um
+# arquivo. O verificador de texto público só vê o que está na página no carregamento, e o cartão é montado
+# depois, na consulta; por isso o jargão interno de layout/regras.json é cobrado aqui, no dado.
+CAMPOS_EXIBIDOS = {"data/municipios.json": ("documento", "fonte", "marca_na_ficha"),
+                   "data/estados.json": ("documento", "fonte", "marca_na_ficha", "titulo", "ementa"),
+                   "data/atos_resposta.json": ("fonte", "decreto", "causa")}   # o PDF do município imprime "Fonte: …"
+JARGAO_EXTRA = [(r"\bjuiz automático\b|\bcodebook\b|\bcategoria\s+\w+_\w+", "proveniência interna do julgamento"),
+                (r"classificad[oa] automaticamente|§\s*\d|—\s*revisar\b", "frase sobre o processo, não sobre a fonte")]
+
+
+def problemas_jargao_no_dado(nome: str, registros, regras: list) -> list:
+    """Campo exibido com jargão interno (função pura). `regras` = [(padrao, flags, motivo)]."""
+    rx = [(re.compile(p, re.I if "i" in (f or "") else 0), m) for p, f, m in regras]
+    fora = []
+    for r in registros:
+        for campo in CAMPOS_EXIBIDOS.get(nome, ()):
+            v = str(r.get(campo) or "")
+            for cre, motivo in rx:
+                if cre.search(v):
+                    fora.append(f"{nome}: {r.get('nome') or r.get('uf') or '?'} ({r.get('uf', '?')}) · {campo}: {motivo} — {v[:90]!r}")
+                    break
+    return fora
+
+
+def _regras_de_jargao() -> list:
+    j = (_json("layout/regras.json").get("texto_publico") or {}).get("jargao_interno") or []
+    return [(x["padrao"], x.get("flags", ""), x["motivo"]) for x in j] + [(p, "i", m) for p, m in JARGAO_EXTRA]
+
+
+def real_jargao():
+    falhas, regras = [], _regras_de_jargao()
+    for nome in CAMPOS_EXIBIDOS:
+        if (RAIZ / nome).exists():
+            d = _json(nome)
+            regs = d if isinstance(d, list) else d.get("municipios") or d.get("eventos") or [i for u in d.get("ufs", []) for i in u.get("instrumentos") or []]
+            falhas += problemas_jargao_no_dado(nome, regs, regras)
+    return falhas, "nenhum campo exibido pelo cartão carrega jargão interno (juiz, codebook, nome de arquivo)"
+
+
+_JR = [(r"\b[\w-]+\.(py|json|js)\b", "", "nome de arquivo")] + [(p, "i", m) for p, m in JARGAO_EXTRA]
+CASOS_JARGAO = [
+    ("fonte com nome de arquivo e juiz reprova",
+     len(problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "fonte": "Portal (h) — lido pelo juiz automático; critérios em promocoes_automaticas.json"}], _JR)) == 1),
+    ("documento com chave interna de categoria reprova",
+     len(problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "documento": "Ato classificado como categoria plano_antigo"}], _JR)) == 1),
+    ("fonte pública passa",
+     problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "fonte": "Portal oficial (h) — plano publicado em domínio oficial do ente, lido em 04/11/2026; ato de aprovação não localizado até o corte", "documento": "Ato oficial localizado: plano de contingência vigente de ciclo anterior"}], _JR) == []),
+    ("fonte de ato de resposta que descreve o processo reprova",
+     len(problemas_jargao_no_dado("data/atos_resposta.json", [{"nome": "X", "uf": "PA", "fonte": "classificado automaticamente (13/10/2026) a partir de https://x"}], _JR)) == 1),
+    ("campo não exibido não é deste portão",
+     problemas_jargao_no_dado("data/municipios.json", [{"nome": "X", "uf": "ES", "criterios": "promocoes_automaticas.json"}], _JR) == []),
+]
+
+
 REGRAS = [("ausencia", False, real_ausencia), ("rotulo", False, real_rotulo),
           ("camada", True, real_camada), ("esquema", True, real_esquema),
           ("proveniencia", False, real_proveniencia), ("redes", False, real_redes),
           ("imprensa", False, real_imprensa), ("financiamento", False, real_financiamento),
           ("versao", False, real_versao), ("pdf", False, real_pdf),
           ("semana", False, real_semana), ("ancoras", False, real_ancoras),
-          ("paridade_qd", False, real_paridade), ("log", False, real_log)]
+          ("paridade_qd", False, real_paridade), ("log", False, real_log),
+          ("jargao", True, real_jargao)]
 
 
 def autoteste() -> int:
@@ -1257,7 +1314,8 @@ def autoteste() -> int:
                                              ("versao", CASOS_VERSAO), ("pdf", CASOS_PDF),
                                              ("semana", _casos_semana()),
                                              ("ancoras", _casos_ancoras()),
-                                             ("paridade_qd", CASOS_PARIDADE), ("log", CASOS_LOG))
+                                             ("paridade_qd", CASOS_PARIDADE), ("log", CASOS_LOG),
+                                             ("jargao", CASOS_JARGAO))
              for r, ok in cs]
     for n, ok in casos:
         print(f"  {'OK  ' if ok else 'FALHA'} {n}")

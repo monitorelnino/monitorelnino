@@ -489,7 +489,7 @@ def canal_e_fonte(url):
         return "DOM", f"Diário Oficial do Município ({h})"
     if h.endswith(".gov.br") or h.endswith(".leg.br"):
         return "site_municipal", f"Portal oficial ({h})"
-    return "imprensa", f"Fonte não oficial ({h}) — revisar"
+    return "imprensa", f"Fonte não oficial ({h})"
 
 
 def ementa(texto, numero, data):
@@ -527,21 +527,19 @@ def aplicar_municipal(nome, uf, texto, numero, data, url, hoje, veredito):
     if any(m["nome"] == nome and m["uf"] == uf for m in municipios):
         return False, f"{nome}/{uf} já consta na base — não duplicar (abstenção registrada: atualização não se presume)"
     canal, fonte_base = canal_e_fonte(url)
-    doc = ementa(texto, numero, data)
-    from aplicar_promocoes_do_juiz import preservar_o_documento
+    from aplicar_promocoes_do_juiz import preservar_o_documento, registro_do_veredito
     hash_evidencia = preservar_o_documento(url, "julgar_e_aplicar_descobertas")
     if not hash_evidencia:
         return False, (f"{nome}/{uf}: documento não pôde ser preservado — registro pontuável "
                        f"exige evidência guardada (portão 26)")
-    municipios.append({
-        "nome": nome, "uf": uf, "categoria": categoria, "documento": doc, "data": data,
-        "fonte": f"{fonte_base} — ato lido e classificado automaticamente em {hoje} "
-                 f"(codebook {(veredito or {}).get('codebook')})",
-        "url": url, "lat": lat, "lon": lon, "canal": canal,
-        "hash_evidencia": hash_evidencia,
-        "pista_id": (veredito or {}).get("pista_id"),
-        "codebook": (veredito or {}).get("codebook"),
-    })
+    # 08/11/2026: UM construtor de registro (`registro_do_veredito`), o mesmo do aplicador do juiz. Este
+    # caminho montava o seu à mão e escrevia "(codebook …)" em `fonte`, que o cartão exibe — a frase
+    # pública e a proveniência estruturada nascem num lugar só. Aqui o ato foi lido: a ementa é dele.
+    registro = registro_do_veredito({**(veredito or {}), "municipio": nome, "uf": uf, "categoria": categoria,
+                                     "data": data, "url": url, "hash_evidencia": hash_evidencia},
+                                    lat, lon, canal, fonte_base, hoje)
+    registro["documento"] = ementa(texto, numero, data)
+    municipios.append(registro)
     gravar_em(mun_path, municipios)
 
     pontos_path = RAIZ / "data" / "pontos_mapa.json"
@@ -653,11 +651,15 @@ def aplicar_resposta(uf, texto, numero, data, url, hoje):
     if any((e["nome"], e["uf"], e["data"], e["causa"]) == chave for e in atos["eventos"]):
         return False, f"{municipio['nome']}/{uf} já tem esse evento registrado (mesma data e causa) — não duplicar"
 
+    # 08/11/2026: `fonte` sai no PDF do município ("Fonte: …") — é texto público, a mesma frase que os
+    # outros caminhos gravam (`canal_e_fonte` + data da leitura); dano não localizado é ausência (null),
+    # como nos demais eventos, não uma frase sobre o processo.
+    _, fonte_base = canal_e_fonte(url)
     atos["eventos"].append({
         "nome": municipio["nome"], "uf": uf, "data": data, "causa": causa,
         "decreto": f"ato de resposta — {numero}" if numero else "situação de emergência (número não localizado no texto)",
-        "danos": "não extraído automaticamente — ver fonte",
-        "fonte": f"classificado automaticamente ({hoje}) a partir de {url}",
+        "danos": None,
+        "fonte": f"{fonte_base} — lido em {hoje}",
         "url": url, "lat": municipio["lat"], "lon": municipio["lon"], "canal": "imprensa",
     })
     from coletores_base import carimbar_atos   # a porta do carimbo e do tipo de evento (17/10/2026)
