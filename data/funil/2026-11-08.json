@@ -2,38 +2,38 @@
  "data": "2026-11-08",
  "formato_versao": 1,
  "etapas": {
-  "juiz": {
-   "pistas_recebidas": 227,
-   "com_documento": 53,
-   "promovidas": 0,
-   "recusa_documento_inacessivel": 172,
-   "recusa_texto_nao_extraivel": 2,
-   "recusa_ente_nao_confirmado": 7,
-   "recusa_citacao_incompleta": 2,
-   "recusa_autoridade_nao_confirmada": 2
-  },
   "descobrir_planos": {
-   "alvos_consultados": 40,
-   "alvos_verificados": 4,
    "achados_novos": 0,
-   "fila_acumulada": 84
+   "alvos_consultados": 60,
+   "alvos_verificados": 6,
+   "fila_acumulada": 126
+  },
+  "juiz": {
+   "com_documento": 53,
+   "pistas_recebidas": 227,
+   "promovidas": 0,
+   "recusa_autoridade_nao_confirmada": 2,
+   "recusa_citacao_incompleta": 2,
+   "recusa_documento_inacessivel": 172,
+   "recusa_ente_nao_confirmado": 7,
+   "recusa_texto_nao_extraivel": 2
   }
  },
  "verificador_imprensa": {
-  "na_fila": 3537,
+  "na_fila": 3720,
   "lidas": 0,
   "exibiveis": 0,
   "inacessiveis": 0,
   "nao_lidas_por_orcamento": 0,
   "resolucoes": 20,
-  "nao_resolvidas_por_orcamento": 122,
+  "nao_resolvidas_por_orcamento": 153,
   "por_motivo": {
-   "veiculo_nao_listado": 3299,
+   "veiculo_nao_listado": 3451,
    "sem_https": 96,
    "redirecionamento_nao_resolvido": 20
   },
   "crescimento_da_lista": {
-   "candidatos": 17,
+   "candidatos": 21,
    "avaliados_por_noite": 15,
    "entraram": [],
    "recusas": {
@@ -53,7 +53,7 @@
    "teto_global": 600
   },
   "versao": "1.0 (29/09/2026)",
-  "gravado_em": "2026-11-08T04:42:11"
+  "gravado_em": "2026-11-08T06:31:55"
  },
- "atualizado_em": "2026-11-08T06:11:53"
+ "atualizado_em": "2026-11-08T06:18:45"
 }
