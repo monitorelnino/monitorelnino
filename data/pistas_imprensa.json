@@ -16203,7 +16203,7 @@
     "regra": "C.1 do handover de 03/10/2026"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 3,
+   "repeticoes": 5,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -57344,7 +57344,7 @@
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 3,
    "ultima_busca_em": "2026-10-18",
-   "repeticoes": 2,
+   "repeticoes": 3,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -57402,7 +57402,7 @@
     "hash_evidencia": "930ad7d220a56305f621bf29455906146f094c9a92ccecbdb91053565647168f"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 2,
+   "repeticoes": 8,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -57646,7 +57646,8 @@
     "lido_em": "2026-11-08",
     "criterios": {}
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "repeticoes": 1
   },
   {
    "municipio": "São Mateus",
@@ -57681,7 +57682,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "São Mateus",
@@ -57721,7 +57723,7 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "cb0551f0169c620770d9a2623dbfe68b11188780eebede842883fd381f1d71ee"
    },
-   "repeticoes": 3,
+   "repeticoes": 4,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -69812,7 +69814,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "f939ffb799739f835d87a1a0d756d43f5e0ba0d3a6899bc997d2aaba5b399573"
    },
-   "repeticoes": 3,
+   "repeticoes": 6,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -69849,7 +69851,7 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "9d661454368f49f57674b17d869dd3f9a45b7bf2194b6aba84104f672d35268b"
    },
-   "repeticoes": 1,
+   "repeticoes": 2,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -233300,7 +233302,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Coqueiral",
@@ -401435,7 +401438,7 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "8a760ca5618f650c3cd3671f70d8b014e432e1ea86e303081c4969315455852a"
    },
-   "repeticoes": 5,
+   "repeticoes": 12,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -401912,7 +401915,7 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-08",
-   "repeticoes": 1
+   "repeticoes": 5
   },
   {
    "municipio": "Vila Velha",
@@ -402238,7 +402241,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Cariacica",
@@ -402466,7 +402470,7 @@
    "tipo": "plano",
    "id": "d009e9fa14",
    "nivel_confianca": "C",
-   "repeticoes": 4,
+   "repeticoes": 6,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -403107,7 +403111,7 @@
     }
    ],
    "proxima_tentativa_em": "2026-11-08",
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "municipio": "Linhares",
@@ -403164,7 +403168,8 @@
     "data": "2025",
     "julgado_em": "2026-11-04",
     "hash_evidencia": "3d5c829772deab47e911e4fc356f9fe38ce1e36f8871669732f899f7213ec078"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Linhares",
@@ -403211,7 +403216,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Linhares",
@@ -403509,7 +403515,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 4
   },
   {
    "municipio": "Guarapari",
@@ -403603,7 +403610,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 1
   },
   {
    "municipio": "Guarapari",
@@ -403688,7 +403696,8 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "repeticoes": 1
   },
   {
    "municipio": "Guarapari",
@@ -403877,7 +403886,7 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "4b268370c971ddaa2f8272e7ff44ce0547c7498c43c7c766d2a52418aa6322ba"
    },
-   "repeticoes": 2,
+   "repeticoes": 3,
    "pontos_confianca": 2,
    "sinais": [
     "fonte_oficial"
@@ -403938,7 +403947,8 @@
     "data": "2025",
     "julgado_em": "2026-11-04",
     "hash_evidencia": "f14127e9789b33a1d81260391ec27694147e3974592678151bccde8d397e67d6"
-   }
+   },
+   "repeticoes": 2
   },
   {
    "municipio": "São Mateus",
@@ -404182,7 +404192,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Colatina",
@@ -404571,7 +404582,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Aracruz",
@@ -404721,7 +404733,7 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "0abdbf065c94370d2aaeab6dcc5635960471e6bfcd3744cac5258de82cec2cf5"
    },
-   "repeticoes": 2,
+   "repeticoes": 3,
    "pontos_confianca": 3,
    "sinais": [
     "fonte_oficial",
@@ -405055,7 +405067,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 1
   },
   {
    "municipio": "Viana",
@@ -405121,7 +405134,8 @@
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Viana",
@@ -405254,7 +405268,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Nova Venécia",
@@ -405292,7 +405307,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Nova Venécia",
@@ -405366,7 +405382,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Nova Venécia",
@@ -405578,7 +405595,8 @@
     "data": "2022",
     "julgado_em": "2026-11-04",
     "hash_evidencia": "4e7efe02aae209e5980de204902dbf30bec160cced96c4ca282e09781c26abd2"
-   }
+   },
+   "repeticoes": 2
   },
   {
    "municipio": "Barra de São Francisco",
@@ -405622,7 +405640,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Barra de São Francisco",
@@ -405740,7 +405759,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Barra de São Francisco",
@@ -407855,7 +407875,7 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "b0b441f82f8d71009ac8383b3dd3364f3d12e53dfd3e591dfca18e17ed3c0736"
    },
-   "repeticoes": 1
+   "repeticoes": 2
   },
   {
    "municipio": "São Gabriel da Palha",
@@ -408957,7 +408977,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 1
   },
   {
    "municipio": "Anchieta",
@@ -412118,7 +412139,8 @@
    "sinais": [
     "fonte_oficial"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "municipio": "Mimoso do Sul",
@@ -416473,7 +416495,7 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "d279ab806b9751d80ad8c90e30e9f857f909169db1708fa8bd50f1911a454fcb"
    },
-   "repeticoes": 1
+   "repeticoes": 3
   },
   {
    "municipio": "Fundão",
@@ -420848,7 +420870,8 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-08"
+   "proxima_tentativa_em": "2026-11-08",
+   "repeticoes": 1
   },
   {
    "municipio": "Mantenópolis",
@@ -421631,7 +421654,8 @@
     "data": "2025",
     "julgado_em": "2026-11-04",
     "hash_evidencia": "00b8a3f7fdf02a77f33f838946afd3515da1eb05f35a133069fda6d45a1a9c11"
-   }
+   },
+   "repeticoes": 1
   },
   {
    "municipio": "Marilândia",
@@ -424306,7 +424330,8 @@
     "data": "2026",
     "julgado_em": "2026-11-05",
     "hash_evidencia": "7d7a66a2b0ef7199a898dc2d5a26331e516270ab53ce4358acd3a9faeb306658"
-   }
+   },
+   "repeticoes": 2
   },
   {
    "municipio": "Governador Lindenberg",
@@ -425896,7 +425921,8 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "repeticoes": 5
   },
   {
    "municipio": "Atilio Vivacqua",
@@ -426431,7 +426457,8 @@
     "data": "2025",
     "julgado_em": "2026-11-05",
     "hash_evidencia": "bc3a394b587f4f5b65e301357ef7f32f47760bf39c270f3f871d4b7a588c4369"
-   }
+   },
+   "repeticoes": 2
   },
   {
    "municipio": "Águia Branca",
@@ -857295,6 +857322,29 @@
     "lido_em": "2026-11-08",
     "criterios": {}
    }
+  },
+  {
+   "municipio": "Guarapari",
+   "uf": "ES",
+   "ibge": "3202405",
+   "origem": "busca_web",
+   "data": "2026-11-08",
+   "url": "https://www.guarapari.es.gov.br/noticia/ler/628/prefeitura-de-guarapari-abre-processo-seletivo-para-tcnico-operacional-em-sade",
+   "trecho": "Guarapari é um ... O objetivo é ampliar a prestação dos serviços na rede municipal de enfrentamento à Covid-19, atendendo ao Plano de Contingência ...",
+   "titulo": "Prefeitura de Guarapari abre processo seletivo para técnico ...",
+   "registrado_em": "2026-11-08",
+   "triagem": "indefinido",
+   "autoridade": "indefinido",
+   "objeto": "fora_do_objeto",
+   "destino": "fora_do_objeto",
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "origem_do_coletor": "busca_web",
+   "id": "0cbf98d5d1",
+   "url_final": "https://www.guarapari.es.gov.br/noticia/ler/628/prefeitura-de-guarapari-abre-processo-seletivo-para-tcnico-operacional-em-sade",
+   "alvo": "3202405",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "municipio"
   }
  ],
  "quarentena": {
