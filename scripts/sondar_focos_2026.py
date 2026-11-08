@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
-"""Sonda pontual (08/11/2026): focos do satélite de referência por mês em 2026, do arquivo anual do INPE.
-Só imprime; não grava em data/."""
-import csv, io, sys, zipfile, pathlib, urllib.request, collections
+"""Sonda pontual (08/11/2026): que arquivos mensais/anuais de focos o INPE publica para 2026, e os totais
+jun–set do satélite de referência. Só imprime; não grava em data/."""
+import csv, io, re, sys, pathlib, urllib.request, collections, time
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from coletores_base import ua_de
-u = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/anual/Brasil_sat_ref/focos_br_ref_2026.zip"
-b = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": ua_de("sonda de focos 2026")}), timeout=120).read()
-print("bytes", len(b))
-z = zipfile.ZipFile(io.BytesIO(b)); print(z.namelist())
-por_mes = collections.Counter(); sat = collections.Counter(); n = 0
-for nome in z.namelist():
-    if not nome.endswith(".csv"): continue
-    txt = z.read(nome).decode("utf-8", "replace")
-    r = csv.DictReader(io.StringIO(txt)); cab = r.fieldnames; print("colunas", cab)
-    for row in r:
-        n += 1; d = row.get("data_pas") or row.get("data_hora_gmt") or row.get("data") or ""
-        por_mes[d[:7]] += 1; sat[row.get("satelite", "?")] += 1
-print("linhas", n, "satelites", sat.most_common(3)); [print(m, c) for m, c in sorted(por_mes.items())]
-print("jun-set:", sum(c for m, c in por_mes.items() if m in ("2026-06", "2026-07", "2026-08", "2026-09")))
+UA = ua_de("sonda de focos 2026"); B = "https://dataserver-coids.inpe.br/queimadas/queimadas/focos/csv/"
+def get(u, t=120):
+    return urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": UA}), timeout=t).read()
+for d in ["", "mensal/", "anual/", "mensal/Brasil/", "mensal/Brasil_sat_ref/", "anual/Brasil_sat_ref/"]:
+    try:
+        h = get(B + d, 60).decode("utf-8", "replace"); print("DIR", d, re.findall(r'href="([^"?/][^"]*)"', h)[-12:])
+    except Exception as e: print("DIR", d, type(e).__name__, getattr(e, "code", ""))
+    time.sleep(1)
+tot = {}
+for m in ["202606", "202607", "202608", "202609"]:
+    for cand in [f"mensal/Brasil_sat_ref/focos_mensal_br_ref_{m}.csv", f"mensal/Brasil/focos_mensal_br_{m}.csv"]:
+        try:
+            txt = get(B + cand).decode("utf-8", "replace"); r = list(csv.DictReader(io.StringIO(txt)))
+            sat = collections.Counter(x.get("satelite", "?") for x in r)
+            ref = sum(1 for x in r if (x.get("satelite") or "").upper().startswith("AQUA_M-T"))
+            print("OK", cand, "linhas", len(r), "colunas", r[0].keys() if r else None, "sat", sat.most_common(4), "AQUA_M-T", ref)
+            tot[m] = (len(r), ref); break
+        except Exception as e: print("ERRO", cand, type(e).__name__, getattr(e, "code", ""))
+        time.sleep(1)
+print("TOTAIS jun-set (todos, ref):", sum(v[0] for v in tot.values()), sum(v[1] for v in tot.values()), tot)
