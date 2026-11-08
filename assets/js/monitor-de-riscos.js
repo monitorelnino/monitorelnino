@@ -1115,6 +1115,12 @@ if (cfg.serie.length) {
       };
       // Posições calculadas ANTES de desenhar, na ordem de prioridade: o ciclo em curso, depois
       // os picos maiores — é o que garante que o deslocamento recai sobre os menores.
+      // O ponto final do ciclo em curso também ocupa lugar: rótulo de episódio não cai sobre ele
+      // (visto em 08/11/2026 com a Niño 3.4 mensal: "1965–66" em cima do ponto de 2026).
+      linhas.filter(l => l.agora).forEach(l => {
+        const fim = PAC.janela(serie, l.ano).slice(-1)[0];
+        if (fim) ocupados.push({x0: xs(fim.k) - 10, x1: xs(fim.k) + 10, y0: y(fim.p.anomalia) - 10, y1: y(fim.p.anomalia) + 10});
+      });
       const posicoes = new Map();
       linhas.filter(l => l.pico).slice()
         .sort((a, b) => (b.agora - a.agora) || (b.pico.p.anomalia - a.pico.p.anomalia))
