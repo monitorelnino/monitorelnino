@@ -394,7 +394,7 @@ def autoteste() -> int:
                   and fonte_publica("Fonte não oficial (g1.globo.com) — revisar") == "Fonte não oficial (g1.globo.com)"
                   and fonte_publica("Fonte não oficial (x.sharepoint.com) — revisar — plano publicado em domínio oficial do ente, lido em 01/11/2026")
                   == "Fonte não oficial (x.sharepoint.com) — plano publicado em domínio oficial do ente, lido em 01/11/2026"
-                  and fonte_publica("Agência Belém reproduzida por O Liberal; achado pela bateria negativa padronizada (§4.1.2) em 27/08/2026 — julgamento humano (R7) da editora")
+                  and fonte_publica("Agência Belém reproduzida por O Liberal; achado pela bateria negativa padronizada (§4.1.2) em 27/08/2026 — julgamento pelas regras (R7)")
                   == "Agência Belém reproduzida por O Liberal, lido em 27/08/2026"))
     casos.append(("sem título legível, o documento diz o que foi localizado, sem jargão nem chave interna",
                   documento_generico("plano_antigo") == "Ato oficial localizado: plano de contingência vigente de ciclo anterior"
