@@ -148,7 +148,7 @@ def tabela(doc: dict) -> str:
         u = execs[-1]
         itens = "—" if u.get("itens") is None else u["itens"]
         dur = f"{u.get('duracao_s', 0):.0f} s"
-        estado = {"ok": "ok", "erro": "**erro**", "pulado": "pulado"}.get(str(u.get("status")), "?")
+        estado = {"ok": "ok", "erro": "**erro**", "pulado": "pulado", "sem_novidade": "sem novidade"}.get(str(u.get("status")), "?")
         seguidos = erros_seguidos(execs)
         if seguidos >= ERROS_SEGUIDOS_PARA_ALERTAR:
             estado += f" ({seguidos} seguidas)"
