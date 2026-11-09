@@ -559,6 +559,30 @@
     "Defesa civil"
    ],
    "gravidade": "media"
+  },
+  {
+   "id": "alertas_diurnos",
+   "workflow": "diurno_alertas.yml",
+   "finalidade": "recoleta só os alertas do Inmet e do Cemaden de dia, duas vezes, para a tabela não passar de ~6 h (editoria, 09/11/2026)",
+   "cron_primario": "10 12,18 * * *",
+   "cron_reserva": "40 12,18 * * *",
+   "janela": {
+    "inicio_utc": "12:00",
+    "fim_utc": "20:00"
+   },
+   "devido_quando": "não há execução concluída na meia-janela corrente (12:00–15:00 ou 18:00–20:00 UTC) de hoje",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "reescreve os alertas vigentes a partir da fonte; mesma resposta dá o mesmo arquivo",
+   "orcamento_min": 15,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "defesa-civil.html",
+    "monitor-de-riscos.html"
+   ],
+   "gravidade": "media"
   }
  ]
 }

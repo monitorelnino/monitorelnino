@@ -34,8 +34,12 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ / "scripts"))
 
-# O publicador é a exceção única, e ela é da editoria: publicar é o que ela pede quando pede.
-ELOS_SEM_JANELA = ("publicar", "publicar-dados")
+# O publicador é a exceção, e ela é da editoria: publicar é o que ela pede quando pede.
+# 09/11/2026 (editoria, opção 2): `alertas-dia` também — os alertas do Inmet e do Cemaden mudam de
+# hora em hora, e uma foto por noite deixava a tabela com até 24 h; o elo diurno grava na `main` às
+# 12:10 e 18:10 UTC, só esses dois arquivos de fonte, e o publicador repõe o domínio (janela de deploy
+# com o critério de alertas novos).
+ELOS_SEM_JANELA = ("publicar", "publicar-dados", "alertas-dia")
 
 
 def deve_parar(ramo: str, elo: str, agora: dt.datetime, dentro_da_janela,
@@ -78,6 +82,7 @@ def _autoteste() -> int:
     ok("coletor na `main` de dia PARA", deve_parar("main", "diarios", dia, real) is not None)
     ok("coletor na `main` de noite segue", deve_parar("main", "diarios", noite, real) is None)
     ok("coletor no `ensaio` de dia segue", deve_parar("ensaio", "diarios", dia, real) is None)
+    ok("`alertas-dia` na `main` de dia segue (exceção da editoria, 09/11/2026)", deve_parar("main", "alertas-dia", dia, real) is None)
     ok("coletor em ramo de edição de dia segue",
        deve_parar("edicao/x", "diarios", dia, real) is None)
     ok("o publicador na `main` de dia segue", deve_parar("main", "publicar", dia, real) is None)

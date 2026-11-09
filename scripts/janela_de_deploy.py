@@ -8,7 +8,7 @@ deploy custam zero; só a produção conta. Daqui em diante o domínio é repost
 janela** (JANELA_HORAS) e **só se o manifesto mudou** desde o último deploy que chegou ao ar.
 
 Uso:
-  python3 scripts/janela_de_deploy.py --manifesto <12 hex> [--agora <ISO 8601>] [--janela-horas 12] < deploys.json
+  python3 scripts/janela_de_deploy.py --manifesto <12 hex> [--alertas <12 hex>] [--agora <ISO 8601>] [--janela-horas 12] < deploys.json
   python3 scripts/janela_de_deploy.py --autoteste
 
 Saída (uma linha, sempre exit 0 — quem decide o que fazer é repor_dominio.sh):
@@ -29,6 +29,7 @@ from datetime import datetime, timedelta, timezone
 
 JANELA_HORAS = 12
 RE_MANIFESTO = re.compile(r"manifesto=([0-9a-f]{12})")
+RE_ALERTAS = re.compile(r"alertas=([0-9a-f]{12})")
 
 
 def _data(s):
@@ -59,13 +60,20 @@ def resumo(deploys) -> str:
     return f"{len(deploys)} deploy(s) na lista: " + ", ".join(f"{k}={v}" for k, v in sorted(por.items()))
 
 
-def decidir(deploys, manifesto, agora, janela_horas=JANELA_HORAS):
+def decidir(deploys, manifesto, agora, janela_horas=JANELA_HORAS, alertas=None):
+    """`alertas` (09/11/2026, editoria): o hash de `data/alertas/vigentes.json`. Alerta do Inmet ou do
+    Cemaden mudou desde o último deploy → DEPLOYAR mesmo dentro da janela — é para isso que o elo
+    diurno existe. Sem hash de alertas no título do último deploy, só o manifesto decide."""
     u = ultimo_deploy_no_ar(deploys)
     if u is None:
         return "DEPLOYAR"
-    m = RE_MANIFESTO.search(str(u.get("title") or ""))
+    titulo = str(u.get("title") or "")
+    m = RE_MANIFESTO.search(titulo)
     if m and m.group(1) == manifesto:
         return f"IGUAL {manifesto}"
+    al = RE_ALERTAS.search(titulo)
+    if alertas and al and al.group(1) != alertas:
+        return "DEPLOYAR"
     abre = _data(u.get("published_at") or u.get("created_at")) + timedelta(hours=janela_horas)
     if agora < abre:
         return "ADIADO " + abre.strftime("%Y-%m-%dT%H:%MZ")
@@ -89,6 +97,12 @@ def autoteste() -> int:
          decidir([d("2026-11-08T07:00:00Z", "manifesto=000000000000"), d("2026-11-08T19:30:00Z", "manifesto=abc123abc123")], "abc123abc123", agora) == "IGUAL abc123abc123"),
         ("janela configurável", decidir([d("2026-11-08T19:00:00Z", "manifesto=000000000000")], "abc123abc123", agora, janela_horas=0.5) == "DEPLOYAR"),
         ("prévia (context deploy-preview) não conta", decidir([{"state": "ready", "context": "deploy-preview", "published_at": "2026-11-08T19:00:00Z", "title": "manifesto=000000000000"}], "abc123abc123", agora) == "DEPLOYAR"),
+        ("alertas novos dentro da janela → DEPLOYAR",
+         decidir([d("2026-11-08T19:00:00Z", "Publicação · manifesto=000000000000 · alertas=aaaaaaaaaaaa")], "abc123abc123", agora, alertas="bbbbbbbbbbbb") == "DEPLOYAR"),
+        ("alertas iguais dentro da janela → ADIADO",
+         decidir([d("2026-11-08T19:00:00Z", "Publicação · manifesto=000000000000 · alertas=aaaaaaaaaaaa")], "abc123abc123", agora, alertas="aaaaaaaaaaaa").startswith("ADIADO")),
+        ("último deploy sem hash de alertas → só o manifesto decide (ADIADO)",
+         decidir([d("2026-11-08T19:00:00Z", "Publicação · manifesto=000000000000")], "abc123abc123", agora, alertas="bbbbbbbbbbbb").startswith("ADIADO")),
         ("resumo conta por contexto", resumo([{"state": "ready", "context": "deploy-preview"}, {"state": "ready", "context": "production"}, {"state": "ready", "context": "deploy-preview"}]) == "3 deploy(s) na lista: deploy-preview/ready=2, production/ready=1"),
     ]
     falhas = [n for n, ok in casos if not ok]
@@ -104,12 +118,13 @@ def main(argv) -> int:
     manifesto = argv[argv.index("--manifesto") + 1] if "--manifesto" in argv else ""
     agora = _data(argv[argv.index("--agora") + 1]) if "--agora" in argv else datetime.now(timezone.utc)
     janela = float(argv[argv.index("--janela-horas") + 1]) if "--janela-horas" in argv else JANELA_HORAS
+    alertas = argv[argv.index("--alertas") + 1] if "--alertas" in argv else None
     try:
         deploys = json.load(sys.stdin)
     except (json.JSONDecodeError, ValueError):
         deploys = []
     print(resumo(deploys), file=sys.stderr)
-    print(decidir(deploys, manifesto, agora, janela))
+    print(decidir(deploys, manifesto, agora, janela, alertas))
     return 0
 
 
