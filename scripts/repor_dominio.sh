@@ -26,7 +26,9 @@ echo "modo declarado em data/publicacao.json: '${MODO}'"
 
 MANIFESTO=$(sha256sum docs/MANIFEST_SHA256.txt | cut -c1-12)
 if [ "$FORCAR" != "--forcar" ]; then
-  npx --yes netlify-cli@17 api listSiteDeploys --data "{\"site_id\":\"${NETLIFY_SITE_ID:-}\",\"per_page\":20}" > /tmp/deploys.json 2>/dev/null || echo "[]" > /tmp/deploys.json
+  # 09/11/2026: só produção (`production: true`), página de 100 — a página de 20 sem filtro vinha só com
+  # prévias (uma por commit automático na main) e a janela não via o último deploy de produção.
+  npx --yes netlify-cli@17 api listSiteDeploys --data "{\"site_id\":\"${NETLIFY_SITE_ID:-}\",\"production\":true,\"per_page\":100}" > /tmp/deploys.json 2>/dev/null || echo "[]" > /tmp/deploys.json
   DECISAO=$(python3 scripts/janela_de_deploy.py --manifesto "$MANIFESTO" --janela-horas "${JANELA_DEPLOY_HORAS:-12}" < /tmp/deploys.json)
   echo "janela de deploy: $DECISAO (manifesto da main: $MANIFESTO)" | tee /tmp/repor_relatorio.txt
   case "$DECISAO" in

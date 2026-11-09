@@ -11,6 +11,8 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-09 · #PR · Painel da noite: o elo `publicar` volta a aparecer · O publicador gravava a linha do painel depois do push, numa árvore que nunca era commitada; o painel não tem `publicar` desde 15/10. A linha agora é gravada antes do commit, como em todo elo; a conclusão de run reprovado segue vindo da API. Só workflow, −0 linhas líquidas.
 
+## 2026-11-09 · #PR · Janela de deploy lê só deploys de produção · Na noite 08→09 a lista de 20 deploys veio só com prévias (uma por commit automático na `main`), a janela não viu o deploy de produção das 21:10 UTC e repôs o domínio às 06:06 com 9 h de intervalo. `listSiteDeploys` passa a pedir `production: true` em página de 100; o script imprime quantos deploys vieram e de que contexto. +12 linhas (diagnóstico).
+
 ## 2026-11-09 · #PR · SIM e SIH: "nada novo na fonte" deixa de ser erro · Fila vazia e nenhuma falha agora devolve `sem_novidade` (saída 79), que o invólucro grava como status próprio em `saude_pipeline`; falha real segue `erro`. Cadência trata `sem_novidade` como fonte consultada. Código +50/−13.
 
 ## 2026-11-08 · #PR · Niño 3.4 mensal desde 1950, na forma do RONI · Pedido da editoria. O coletor guarda a série inteira da anomalia mensal da Niño 3.4 (com a temperatura absoluta) em vez de 48 meses; o Monitor de riscos ganha a terceira série larga: ciclo em curso sobre os episódios de El Niño que o RONI define, mesma função de desenho (`figuraDeEpisodios`, parametrizada — nada copiado), escala alargada pelo dado. Contrato, regra (três séries) e catálogo atualizados. A série completa entra na coleta da noite.
