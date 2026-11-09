@@ -18,5 +18,5 @@ PISTAS = [
      "tipo": "plano", "alvo": "2800308", "nivel": "B", "data": "2026-11-09",
      "trecho": "PDF de plano de contingência no domínio da Prefeitura de Aracaju (título e ano não confirmados)"},
 ]
-res = gravar_lote([dict(p, origem="central") for p in PISTAS], origem="central")
+res = gravar_lote([dict(p, origem="descoberta") for p in PISTAS], origem="descoberta")
 print(json.dumps(res, ensure_ascii=False))
