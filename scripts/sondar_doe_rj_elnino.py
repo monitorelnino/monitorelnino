@@ -4,7 +4,7 @@ import json, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from coletores_base import buscar
 from coletar_doe import edicoes_rj, paginas_com_termo
-base = json.load(open("data/fontes_doe.json"))["RJ"]["url"]
+base = json.load(open("data/fontes_doe.json"))["ufs"]["RJ"]["url"]
 fn = edicoes_rj(lambda u, **k: buscar(u, **k), base)
 for dia in ["2026-07-03", "2026-07-06", "2026-07-07", "2026-07-08", "2026-07-09", "2026-07-10"]:
     try:
