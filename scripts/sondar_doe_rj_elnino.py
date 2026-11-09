@@ -6,7 +6,7 @@ from coletores_base import buscar
 from coletar_doe import edicoes_rj, paginas_com_termo
 base = json.load(open("data/fontes_doe.json"))["ufs"]["RJ"]["url"]
 fn = edicoes_rj(lambda u, **k: buscar(u, **k), base)
-for dia in ["2026-07-03"]:
+for dia in ["2026-07-03", "2026-07-06", "2026-07-07"]:
     try:
         eds = fn(dia)
     except Exception as e:
@@ -15,7 +15,18 @@ for dia in ["2026-07-03"]:
         try:
             pdf = buscar(ed["url"], timeout=180, origem="sonda")
             from preservar_evidencias import extrair_texto_por_pagina
-            print(f"   início dos bytes: {pdf[:120]!r}")
+            print(f"   fim dos bytes: {pdf[-200:]!r}; tem %%EOF: {b'%%EOF' in pdf[-2048:]}; tem startxref: {b'startxref' in pdf}")
+            for nome, fn in (("pypdfium2", lambda b: __import__("pypdfium2").PdfDocument(b)), ):
+                try:
+                    doc = fn(pdf); t = doc[0].get_textpage().get_text_range()
+                    print(f"   {nome}: {len(doc)} páginas; p1: {t[:200]!r}")
+                    hits = [i+1 for i in range(len(doc)) if any(k in doc[i].get_textpage().get_text_range().lower() for k in ("el niño", "el nino", "50.357"))]
+                    print(f"   {nome}: páginas com o termo: {hits}")
+                    for i in hits[:3]:
+                        tx = doc[i-1].get_textpage().get_text_range(); j = max(0, tx.lower().find("ni") - 1200)
+                        print(f"--- p. {i}\n{tx[j:j+3000]}\n")
+                except Exception as e:
+                    print(f"   {nome} falhou: {type(e).__name__}: {e}")
             try:
                 import io; from pypdf import PdfReader; rd = PdfReader(io.BytesIO(pdf)); print(f"   pypdf: {len(rd.pages)} páginas; p1: {(rd.pages[0].extract_text() or '')[:200]!r}")
             except Exception as e:
