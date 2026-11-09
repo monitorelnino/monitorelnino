@@ -181,6 +181,23 @@ def slugs_por_uf() -> dict:
     return _SLUGS
 
 
+def diarios_estaduais() -> dict:
+    """{host: UF} das imprensas oficiais estaduais, lido de `data/fontes_doe.json` — a mesma lista que o
+    coletor do DOE usa. 09/11/2026: três DOEs são servidos fora de `.gov.br` (IOERJ, IOEPA, CEPE) e a porta
+    os recusava como "domínio não oficial"; a pista do Decreto RJ 50.357/2026 cairia aí. Só leitura."""
+    global _DOES
+    if _DOES is None:
+        try:
+            ufs = json.loads((RAIZ / "data" / "fontes_doe.json").read_text(encoding="utf-8")).get("ufs") or {}
+        except (OSError, ValueError):
+            ufs = {}
+        _DOES = {h: uf for uf, f in ufs.items() if (h := host_de(str((f or {}).get("url") or "")))}
+    return _DOES
+
+
+_DOES = None
+
+
 def ente_do_rotulo(rotulo: str, uf: str, slugs: dict) -> str:
     """O município que o rótulo de host nomeia ("pmtaio" → "Taió"), ou "". Função pura."""
     s = slug(rotulo)
@@ -219,6 +236,9 @@ def classe_de_entrada(url: str, ibge: str = "", uf: str = "", nome: str = "", sl
             return "federal", ""
     if any(host == d or host.endswith("." + d) for d in PLATAFORMAS_DE_DIARIO):
         return "diario_oficial", ""
+    uf_doe = diarios_estaduais().get(host)
+    if uf_doe:
+        return ("", f"diário oficial de outra UF ({uf_doe}: {host})") if uf and uf != uf_doe else ("diario_oficial", "")
     alvo_bruto = (host + caminho).lower()
     for uf_rep, padroes in REPOSITORIOS_ESTADUAIS.items():
         if any(p.lower() in alvo_bruto for p in padroes):
@@ -494,6 +514,9 @@ def autoteste() -> int:
     ok("B2: o redirecionamento seguido guarda a URL final",
        resolver(gn, abrir=lambda u: "https://taio.sc.gov.br/plano.pdf")[0] == "https://taio.sc.gov.br/plano.pdf")
 
+    ok("B3: imprensa oficial estadual fora de .gov.br entra pela lista do DOE (IOERJ para o RJ, não para SP)",
+       classe_de_entrada("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=X", uf="RJ")[0] == "diario_oficial"
+       and classe_de_entrada("https://www.ioerj.com.br/x", uf="SP")[0] == "")
     ok("B3: rótulo de órgão estadual não vira município (saude.ba.gov.br × Saúde/BA)",
        classe_de_entrada("https://www5.saude.ba.gov.br/x.pdf", "", "BA", "", {"BA": {"saude": "Saúde"}})[0] == "uf")
     # B3 — só domínio do município, da UF, federal fechado, diário oficial, QD certo (2.031 não oficiais)
