@@ -11,6 +11,8 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-09 · #PR · Imprensa: todo cartão lê o seu número · 13 dos 20 cartões mostravam "sem coleta" com número no motor: o script preenchia 7 e o catálogo reescrevia os outros; dois liam nomes antigos do Financiamento. Cada cartão declara de qual número vem e o portão reprova cartão calado. Como ler, Onde está cada dado e Glossário viram cartões em grade; a busca do glossário, que chamava função inexistente, passa a filtrar.
 
+## 2026-11-09 · #PR · Resposta só conta atos do ciclo; rota 3 lida das portarias; PIB per capita sem falha mascarada · Atos com decreto e reconhecimento anteriores a 29/06/2026 saíam no contador do ciclo (1.136 → 1.116 municípios; RJ 3 → 1). A rota de defesa civil obrigatória passa a somar as portarias da SEDEC já lidas no DOU. O coletor do PIB per capita pedia variável inexistente no SIDRA e saía "ok": agora erra de verdade e, quando valida, grava até a página.
+
 ## 2026-11-09 · #PR · CODEMAP e página arquivada contam só o que o Git rastreia · O gerador do CODEMAP e o portão de página arquivada andavam o disco e contavam cópias de trabalho locais; o mapa gerado fora da CI saía diferente e o portão reprovava a máquina. Os dois passam a ler a lista do Git, e o teste do portão monta um repositório Git.
 
 ## 2026-11-09 · #PR · DOE passa a ver ato estadual sobre o El Niño · Três defeitos escondiam o Decreto RJ 50.357/2026: o leitor de PDF devolvia vazio quando o pypdf falhava (o DOE-RJ era lido sem texto desde 19/10), a busca só procurava emergência e a porta recusava imprensa oficial fora de .gov.br. Agora o pdfium lê, "El Niño" entra nos termos, ato de comitê ou plano vira pista da UF e há releitura retroativa por data (`--ate`).

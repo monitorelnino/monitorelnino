@@ -1481,4 +1481,4 @@ input.busca{display:block; box-sizing:border-box; width:100%; max-width:100%; mi
 .cartao-mapa > details{border-top:1px solid var(--line);}
 .cartao-mapa > details > summary{font-size:var(--fs-small); line-height:var(--lh-small);}
 .cartao-mapa > details > p{font-size:var(--fs-small); line-height:var(--lh-small); margin:0 0 var(--sp-3);}
-.cartao-mapa > h3.titulo-bloco > a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px;}
+.cartao-mapa > h3.titulo-bloco > a{display:inline-flex; align-items:center; min-height:var(--alvo-toque); color:inherit; text-decoration-thickness:1px; text-underline-offset:3px;}
