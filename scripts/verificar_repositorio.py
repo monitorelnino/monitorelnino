@@ -241,12 +241,12 @@ def referencia_em_atributo(nome: str) -> str:
 
 def html_publicado():
     """Todo HTML que o deploy serve, menos `arquivo/` e `evidencias/` (4 GB: a poda é antes de descer)."""
-    achados = []
-    for raiz, dirs, arquivos in os.walk(RAIZ):
-        na_raiz = pathlib.Path(raiz) == RAIZ
-        dirs[:] = sorted(d for d in dirs if d not in {".git", "node_modules"}
-                         and not (na_raiz and d in {"evidencias", "arquivo"}))
-        achados += [pathlib.Path(raiz) / n for n in arquivos if n.endswith(".html")]
+    # 09/11/2026: o deploy sai do checkout da CI, que só tem o que o Git rastreia; andar o disco contava as
+    # cópias de trabalho locais (.claude/worktrees/…) e reprovava a máquina, não o repositório.
+    import subprocess
+    rastreados = subprocess.run(["git", "ls-files", "--", "*.html"], cwd=RAIZ, capture_output=True, text=True, check=True).stdout
+    achados = [RAIZ / r for r in rastreados.splitlines()
+               if r.split("/", 1)[0] not in {"evidencias", "arquivo", "node_modules"} and (RAIZ / r).is_file()]
     for p in sorted(achados):
         yield p.relative_to(RAIZ).as_posix(), p
 
@@ -320,6 +320,10 @@ def _com_repo(monta) -> tuple:
         _escrever(r / "netlify.toml", 'publish = "."\n[[redirects]]\n  from = "/arquivo/*"\n  status = 404\n')
         _escrever(r / "CHANGELOG.md", "# nada\n")
         monta(r)
+        # o portão lê a lista do Git (09/11/2026): o repositório de mentira também é um repositório
+        import subprocess
+        subprocess.run(["git", "init", "-q"], cwd=r, check=True)
+        subprocess.run(["git", "add", "-A"], cwd=r, check=True)
         RAIZ = r
         try:
             return problemas_arquivada()
