@@ -48,7 +48,10 @@ TERMOS = ["situação de emergência", "estado de calamidade pública",
 # Termos usados na busca da plataforma comum: os dois primeiros bastam para o que interessa e
 # custam duas consultas por UF em vez de seis. "situação de emergência" já casa as homologações
 # com e sem número de decreto.
-TERMOS_APIFRONT = ("situação de emergência", "estado de calamidade pública")
+# 09/11/2026: o docstring promete "atos estaduais sobre o ciclo" e os termos só viam emergência — o
+# Decreto RJ nº 50.357/2026 (Comitê Estadual de Enfrentamento aos Efeitos do El Niño) nunca foi lido.
+# As duas grafias: a leitura de página do PDF compara texto, e "nino" não casa "niño".
+TERMOS_APIFRONT = ("situação de emergência", "estado de calamidade pública", "El Niño", "El Nino")
 # 24/09/2026 (§194): host migrado — o antigo responde 302 a cada chamada desde 21/09 (§ do coletor
 # municipal). E fica registrado o que foi MEDIDO em 24/09: o Querido Diário **não indexa diário
 # ESTADUAL**. Consultados os territórios de SE, ES, SP, RJ e MG (códigos IBGE de dois dígitos), todos
@@ -338,6 +341,37 @@ def homologacoes_no_texto(texto: str) -> list:
     for m in PADRAO_HOMOLOGA.finditer(texto):
         juntar(m.group(2), m.group(1), m.start())
     return list(por_municipio.values())
+
+
+# 09/11/2026: ato estadual sobre o El Niño — o decreto até 400 caracteres antes da menção, e o que ele
+# institui entre o número e a menção. Sem decreto estadual antes, não é ato; sem estrutura nem plano,
+# a porta recusaria (`decreto` não entra na fila) e não se grava.
+PAD_EL_NINO = re.compile(r"el\s+ni[ñn]o", re.I)
+TIPOS_DO_ATO = (("estrutura", re.compile(r"comit[êe]|sala\s+de\s+situa[çc][ãa]o|gabinete|grupo\s+de\s+trabalho"
+                                         r"|for[çc]a[\s-]+tarefa", re.I)),
+                ("plano", re.compile(r"\bplano\b", re.I)))
+
+
+def atos_el_nino(itens: list, uf: str, hash_evidencia: str, hoje: str) -> list:
+    """Pistas estaduais (alvo = UF) dos atos que citam o El Niño, uma por decreto e edição. Função pura."""
+    saida = {}
+    for it in itens:
+        for tr in it["trechos"]:
+            for m in PAD_EL_NINO.finditer(tr):
+                base = max(0, m.start() - 400)
+                dec = list(PAD_DECRETO_ESTADUAL.finditer(tr, base, m.start()))
+                tipo = dec and next((t for t, p in TIPOS_DO_ATO if p.search(tr, dec[-1].start(), m.end())), None)
+                if not tipo:
+                    continue
+                numero = dec[-1].group(1).strip(".")
+                saida.setdefault((numero, it["url"]), {
+                    "url_final": it["url"], "tipo": tipo, "alvo": uf.upper(), "uf": uf.upper(), "nivel": "A",
+                    "data": it.get("data") or hoje, "origem": "doe", "registrado_em": hoje,
+                    "decreto_estadual": numero, "pagina": it.get("pagina"), "paginas": it.get("paginas"),
+                    "trecho": " ".join(tr[dec[-1].start():m.end() + 300].split()),
+                    "hash_evidencia": hash_evidencia,
+                    "documento_oficial_confirmado": None, "promovivel": False})
+    return list(saida.values())
 
 
 def parse_dodf(bruto: bytes) -> tuple:
@@ -1115,6 +1149,8 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
                                 "fonte": f"Diário Oficial do Estado ({hm['uf']})", "url": hm["url"],
                                 "lat": ref["lat"], "lon": ref["lon"], "canal": "repositorio_estadual", "hash_evidencia": h})
         marcar_fato_municipal(cod, "decreto_homologado", True); vistos.add(chave); novos += 1
+    el_nino = atos_el_nino(itens, uf, h, hoje)
+    pistas["itens"] += el_nino; pist += len(el_nino)
     gravar("atos_resposta.json", carimbar_atos(atos)); sincronizar_pistas("pistas_doe.json", pistas, origem="doe", ler_fn=ler, gravar_fn=gravar)
     ibges_uf = [c for c, r in por_cod.items() if r["uf"] == uf]
     marcar_fonte_consultada(ibges_uf, f"DOE/{uf}", "estadual", resultado=f"{len(itens)} edição(ões)/trecho(s)")
@@ -1422,6 +1458,26 @@ def autoteste() -> int:
                 and all(cfg[uf]["adaptador"] is None for uf in APIFRONT_SEM_BUSCA)
                 and all(v.get("medido") and v.get("caminho") for v in APIFRONT_SEM_BUSCA.values()))
 
+    def t13():
+        """09/11/2026: ato estadual sobre o El Niño vira pista da UF, pela porta; menção sem ato, não."""
+        url = "https://www.dioe.pr.gov.br/portal/edicoes/download/17314"
+        it = lambda t: [{"data": "2026-07-03", "pagina": 2, "paginas": 40, "url": url, "trechos": [t]}]
+        sim = atos_el_nino(it("PODER EXECUTIVO DECRETO Nº 50.357 DE 03 DE JULHO DE 2026 — INSTITUI O COMITÊ "
+                              "ESTADUAL DE ENFRENTAMENTO AOS EFEITOS DO EL NIÑO E DÁ OUTRAS PROVIDÊNCIAS."),
+                           "pr", "h0", "2026-11-09")
+        nao = atos_el_nino(it("Boletim agroclimático: o El Niño deve reduzir as chuvas no Norte. Decreto "
+                              "Municipal nº 12 homologado."), "PR", "h0", "2026-11-09")
+        disco = {"pistas_doe.json": {"itens": []}}
+        res = sincronizar_pistas("pistas_doe.json", {"itens": [dict(p) for p in sim]}, origem="doe",
+                                 ler_fn=lambda n, padrao=None: disco.get(n, padrao),
+                                 gravar_fn=lambda n, obj, compacto=False: disco.__setitem__(n, obj))
+        p = sim[0] if len(sim) == 1 else {}
+        return (p.get("decreto_estadual") == "50.357" and p["tipo"] == "estrutura" and p["alvo"] == "PR"
+                and p["url_final"] == url and p["pagina"] == 2 and p["origem"] == "doe"
+                and p["documento_oficial_confirmado"] is None and p["promovivel"] is False
+                and nao == [] and res["gravadas"] == 1
+                and disco["pistas_doe.json"]["itens"][0]["decreto_estadual"] == "50.357")
+
     return rodar_autoteste({"parser Querido Diário": t1, "extrai homologação com nº e município": t2,
                             "negativo: resposta vazia/nula": t3, "config nasce a_verificar nas 27 UFs": t4,
                             "§231 parser da busca da plataforma comum (recorte real)": t5,
@@ -1432,6 +1488,7 @@ def autoteste() -> int:
                             "§231 negativo: estrutura ausente levanta em toda forma": t9,
                             "§231 as seis UFs nascem com adaptador e host": t10,
                             "§231 o termo não volta a ter o artigo a mais": t11,
+                            "ato estadual sobre o El Niño vira pista da UF; menção sem ato, não": t13,
                             # DF — a API própria do DODF, lida da rota que o JS do sítio chama.
         "DODF: total e lista saem da resposta real":
             lambda: parse_dodf(FIXTURE_DODF)[0] == 7 and len(parse_dodf(FIXTURE_DODF)[1]) == 1,

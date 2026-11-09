@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · DOE passa a ver ato estadual sobre o El Niño · O coletor dos diários estaduais só buscava emergência e homologação; o Decreto RJ nº 50.357/2026 (comitê estadual do El Niño) nunca foi visto. "El Niño" e "El Nino" entram na busca e na leitura por edição; decreto estadual que institui comitê, sala de situação ou plano citando o El Niño vira pista da UF pela porta única, sem confirmação nem promoção. Autoteste positivo e negativo.
+
 ## 2026-11-09 · #PR · Alertas do Inmet e do Cemaden recoletados de dia · Decisão da editoria (opção 2): a foto única da noite deixava a tabela com até 24 h. Elo `alertas-dia` (`diurno_alertas.yml`, 12:10 e 18:10 UTC, reserva +30 min) recoleta só as duas fontes (`--fontes` no coletor) na `main`, exceção nomeada na guarda da janela; o publicador o segue e a janela de deploy ganha o critério "alertas mudaram → deploya" (hash no título do deploy). Até dois deploys a mais por dia, custo aceito. +~60 linhas.
 
 ## 2026-11-09 · #PR · Redução: segundo escritor de pista, sem chamador, sai · `coletores_base.gravar_pista` (24 linhas) gravava pista fora de `scripts/pistas.py`; nenhum coletor, workflow ou teste a chama (varredura por AST de todo o repositório). A porta única segue sendo `pistas.gravar`; `validar_pista` fica, pois ela a usa. Sem mudança de comportamento. Linhas líquidas: −26.
