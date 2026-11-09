@@ -1,9 +1,10 @@
 {
  "_governanca": "Canal 2 desta unidade. Quando a rota de edição não foi achada em duas tentativas, o canal 2 fica como rota sem acesso automático, com o motivo medido — lacuna declarada, que não conta como consultado (A5-08, 10/10/2026).",
  "canal2": {
-  "modo": "padrao_por_data",
-  "em": "07/11/2026",
-  "conta_como_consultado": true,
+  "modo": "sem_acesso_automatico",
+  "motivo": "HTTP 403 em https://cepebr-prod.s3.amazonaws.com/1/cadernos/2026/20260908/1-PoderExecutivo/PoderExecut — recusa respeitada",
+  "em": "09/11/2026",
+  "conta_como_consultado": false,
   "ultima_edicao_lida": "2026-11-07"
  },
  "edicoes": {
@@ -47,8 +48,8 @@
    "termos_achados": []
   },
   "2026-11-03": {
-   "decisao": "recusa",
-   "em": "06/11/2026",
+   "decisao": "sem_edicao_na_data",
+   "em": "09/11/2026",
    "motivo": "HTTPError: HTTP Error 403: Forbidden"
   },
   "2026-11-02": {
@@ -213,8 +214,8 @@
    "termos_achados": []
   },
   "2026-10-13": {
-   "decisao": "recusa",
-   "em": "06/11/2026",
+   "decisao": "sem_edicao_na_data",
+   "em": "09/11/2026",
    "motivo": "HTTPError: HTTP Error 403: Forbidden"
   },
   "2026-10-12": {
@@ -1304,5 +1305,5 @@
    "termos_achados": []
   }
  },
- "atualizado_em": "07/11/2026"
+ "atualizado_em": "09/11/2026"
 }

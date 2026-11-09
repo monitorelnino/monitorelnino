@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · SIM e SIH: "nada novo na fonte" deixa de ser erro · Fila vazia e nenhuma falha agora devolve `sem_novidade` (saída 79), que o invólucro grava como status próprio em `saude_pipeline`; falha real segue `erro`. Cadência trata `sem_novidade` como fonte consultada. Código +50/−13.
+
+## 2026-11-08 · #PR · Niño 3.4 mensal desde 1950, na forma do RONI · Pedido da editoria. O coletor guarda a série inteira da anomalia mensal da Niño 3.4 (com a temperatura absoluta) em vez de 48 meses; o Monitor de riscos ganha a terceira série larga: ciclo em curso sobre os episódios de El Niño que o RONI define, mesma função de desenho (`figuraDeEpisodios`, parametrizada — nada copiado), escala alargada pelo dado. Contrato, regra (três séries) e catálogo atualizados. A série completa entra na coleta da noite.
+
 ## 2026-11-08 · #PR · Busca web: motor mudo vale pelo runner inteiro · Desde 01/11 o `google cse` calava após ~10 municípios e os 4 comandos seguintes do elo gastavam ~5 min cada em 100% sem resposta. `monitorar_busca_web.py` marca a mudez no disco do runner e o comando seguinte sai na hora, sem consultar nem gravar; a causa informada pelo SearXNG (`unresponsive_engines`) passa a sair no log. +42 linhas (recurso novo: marca e motivo).
 
 ## 2026-11-08 · #PR · Catálogo de falhas da noite: F83 · Créditos do Netlify esgotados em 07/11 (15 créditos por deploy × ~25 deploys/dia): 35 h de domínio congelado e Issues do vigia sem a causa. Corrigido no #1626 (janela de deploy); créditos repostos pela editoria. Só catálogo; sem código. +0 linhas de código.

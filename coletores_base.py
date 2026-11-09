@@ -117,6 +117,16 @@ CANAIS_ATO = ("DOM", "DOM-consorciado", "DOU", "repositorio_estadual", "orgao_es
 # defeito de escopo do §213, do §222 e do §226: a lição aplicada num lugar só.
 FUSO_EDITORIAL = ZoneInfo("America/Sao_Paulo")
 
+# 08/11/2026 (PARA A E1): "nada novo na fonte" não é falha. `coletar()` devolve SEM_NOVIDADE (verdadeiro)
+# quando a fila está vazia e nada falhou; a saída 79 chega ao invólucro, que grava o status `sem_novidade`.
+SEM_NOVIDADE = "sem_novidade"
+CODIGO_SEM_NOVIDADE = 79
+
+
+def codigo_de_saida(resultado) -> int:
+    """0 coletou · 79 sem novidade · 1 falhou. Função pura."""
+    return CODIGO_SEM_NOVIDADE if resultado == SEM_NOVIDADE else 0 if resultado else 1
+
 
 def hoje_editorial(agora=None) -> date:
     """Data de hoje no fuso da redação (America/Sao_Paulo), não no do runner.

@@ -234,7 +234,7 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     """Lê o que falta no FTP e grava os nove arquivos comuns. Sem nenhum arquivo lido, nada é regravado."""
     import desfechos_sus as ds
     from coletar_datasus_dbc import PAUSA, baixar_ftp, ler_dbc, listar_ftp
-    from coletores_base import gravar, hoje_editorial, ler
+    from coletores_base import SEM_NOVIDADE, gravar, hoje_editorial, ler
     listar = listar or listar_ftp; baixar = baixar or baixar_ftp; decodificar = decodificar or ler_dbc
     ler_fn = ler_fn or ler; gravar_fn = gravar_fn or gravar; relogio = relogio or time.monotonic
     hoje = hoje or hoje_editorial()
@@ -271,6 +271,9 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
                 feitos.add((uf, comp)); seguidas = 0
             except Exception as e:  # noqa: BLE001
                 falhas.append(f"{nome}: {type(e).__name__}"); seguidas += 1
+    if not feitos and not fila and not falhas:
+        print("SIH: nenhum arquivo novo na fonte; os arquivos anteriores ficam")
+        return SEM_NOVIDADE
     if not feitos:
         print(f"SIH: nenhum arquivo lido ({len(fila)} na fila, {len(falhas)} falha(s)); os arquivos anteriores ficam")
         return False
@@ -365,6 +368,7 @@ def sondar() -> int:
 # Autoteste (sem rede, sem escrita)
 # ============================================================================================
 def autoteste() -> int:
+    from coletores_base import CODIGO_SEM_NOVIDADE, SEM_NOVIDADE, codigo_de_saida
     casos = []
     casos.append(("J18 é respiratória", grupo_do_cid("J189") == ["respiratorias"]))
     casos.append(("I21 e I63 são cardio", grupo_do_cid("I219") == ["cardio"] and grupo_do_cid("I64") == ["cardio", "icsap"]))
@@ -474,6 +478,10 @@ def autoteste() -> int:
             pausa=0)
     casos.append(("grupo novo força a releitura do histórico e passa a existir",
                   len(lidos_n) == len(listagem) and gravados["saude_desfechos/internacoes_icsap.json"]["serie"]["SP"]["2025-07"] == 1))
+    lidos_n.clear()
+    parada = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 22), fake_decod, pausa=0)
+    casos.append(("nada novo na fonte: devolve SEM_NOVIDADE (saída 79), não erro, e nada é baixado",
+                  parada == SEM_NOVIDADE and not lidos_n and codigo_de_saida(parada) == CODIGO_SEM_NOVIDADE))
     gravados.clear(); lidos_n.clear()
     caiu = coletar(lambda c: listagem, fake_baixar, fake_ler, fake_gravar, datetime.date(2026, 10, 19),
                    lambda d, c: (_ for _ in ()).throw(OSError("fora")), pausa=0)
@@ -508,7 +516,8 @@ def main() -> int:
     if "--sondar" in sys.argv:
         return sondar()
     orcamento = int(sys.argv[sys.argv.index("--orcamento") + 1]) if "--orcamento" in sys.argv else ORCAMENTO_S
-    return 0 if coletar(orcamento_s=orcamento) else 1
+    from coletores_base import codigo_de_saida
+    return codigo_de_saida(coletar(orcamento_s=orcamento))
 
 
 if __name__ == "__main__":

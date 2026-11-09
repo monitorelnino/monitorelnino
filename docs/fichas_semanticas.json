@@ -215,6 +215,31 @@
       "funcao_narrativa": "o ciclo em curso lido contra os episódios que o próprio dado define",
       "acao_relacionada": null
     },
+    "monitor-de-riscos.html#boxNino34Mensal": {
+      "tipo": "série temporal",
+      "pergunta_que_responde": "Como a anomalia mensal da temperatura do mar na região Niño 3.4 do ciclo em curso se compara à dos episódios de El Niño anteriores, mês a mês do início do ciclo?",
+      "dimensao_da_preparacao": null,
+      "universo": "os mesmos episódios de El Niño que a figura do RONI identifica (critério da NOAA/CPC), mais o ciclo em curso, desenhados com a série mensal da Niño 3.4 desde 1950",
+      "unidade_de_analise": "mês, alinhado pelo mês desde janeiro do ano de início",
+      "territorio": "região Niño 3.4",
+      "periodo": "de janeiro do ano de início de cada episódio a junho do ano seguinte",
+      "variavel_principal": "anomalia mensal da temperatura da superfície do mar (°C), sem o desconto do aquecimento tropical",
+      "denominador": "média de referência 1991–2020, declarada pelo próprio arquivo do CPC/NOAA",
+      "fonte": "NOAA/CPC — anomalia mensal da região Niño 3.4 (arquivo detrend.nino34)",
+      "metodologia": "A lista de episódios é a da figura do RONI (cinco ou mais médias trimestrais consecutivas acima de +0,5 °C na série do RONI); esta figura não define episódio e só desenha, para cada um, a anomalia mensal da Niño 3.4 na mesma janela. Contam só os episódios que a série mensal registrada alcança. A escala vertical é a do RONI, alargada em passos de 0,5 °C quando o dado passa dela.",
+      "conclusoes_permitidas": [
+        "em que mês cada episódio teve a anomalia mensal mais alta",
+        "qual é a anomalia mensal do ciclo em curso e em que faixa o mesmo mês ficou nos episódios anteriores"
+      ],
+      "conclusoes_nao_permitidas": [
+        "ordenar os episódios por intensidade, que é comparação construída",
+        "prever o desfecho do ciclo em curso a partir da forma das linhas anteriores",
+        "classificar episódio pela anomalia mensal, que é papel do RONI",
+        "ler a anomalia mensal e o RONI como se medissem a mesma coisa"
+      ],
+      "funcao_narrativa": "a temperatura do Pacífico central, sem desconto, lida contra os mesmos episódios da figura do RONI",
+      "acao_relacionada": null
+    },
     "monitor-de-riscos.html#boxNino34Semanal": {
       "tipo": "série temporal",
       "pergunta_que_responde": "Como a anomalia semanal da temperatura do mar na região Niño 3.4 variou desde o início da série publicada?",
