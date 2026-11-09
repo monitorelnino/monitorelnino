@@ -304,7 +304,14 @@ def _carta(lista, ident):
 
 
 def acumulado_do_topo_financeiro(ident, fin, id_topo, motivo_vazio):
-    c = _carta(fin.get("topo"), id_topo) or {}
+    # 09/11/2026: o Financiamento renomeou dois cartões do topo (autorizado_defesa_civil → defesa_civil_ciclo,
+    # repasses_sus → sus_emergencia) e aqui eles viraram "sem coleta" calados, com o número publicado na
+    # outra página. Cartão que não existe no topo é erro de nome, não lacuna: levanta.
+    topo = fin.get("topo") or []
+    if topo and not _carta(topo, id_topo):
+        raise KeyError(f"cartão '{id_topo}' não existe no topo de financiamento/semana.json "
+                       f"({', '.join(str(c.get('id')) for c in topo)})")
+    c = _carta(topo, id_topo) or {}
     return _do_arquivo(ident, c.get("valor"), "reais", c.get("n_atos"), c.get("fonte") or "Portal da Transparência",
                        motivo_vazio, periodo=c.get("periodo"))
 
@@ -334,9 +341,9 @@ def acumulados(corte, focos_ref, municipios, fin, por_uf, cartoes) -> list:
                                           "o texto das medidas não traz valor anunciado"),
              acumulado_do_topo_financeiro("desembolsado", fin, "pago_ate_agora",
                                           "a execução da despesa não traz o acumulado"),
-             acumulado_do_topo_financeiro("autorizado_defesa_civil", fin, "autorizado_defesa_civil",
+             acumulado_do_topo_financeiro("autorizado_defesa_civil", fin, "defesa_civil_ciclo",
                                           "a soma por município ainda não fechou com o total publicado"),
-             acumulado_do_topo_financeiro("repasses_sus_emergencia", fin, "repasses_sus",
+             acumulado_do_topo_financeiro("repasses_sus_emergencia", fin, "sus_emergencia",
                                           "os repasses de emergência do SUS não estão no derivado")]
     for ident, (arq, unid, fonte) in saude_fontes.items():
         lista.append(acumulado_saude(ident, arq, corte, unid, fonte))
@@ -862,6 +869,16 @@ def autoteste() -> int:
     checar("data_do_ato devolve None em lixo", data_do_ato("setembro") is None)
 
     corte = date(2026, 9, 27)
+
+    # 09/11/2026: cartão do topo do Financiamento com nome que não existe é erro, não "sem coleta".
+    _fin = {"topo": [{"id": "defesa_civil_ciclo", "valor": 215714033.42, "unidade": "reais"}]}
+    checar("cartão do topo financeiro pelo nome atual traz o valor",
+           acumulado_do_topo_financeiro("autorizado_defesa_civil", _fin, "defesa_civil_ciclo", "x")["valor"] == 215714033.42)
+    try:
+        acumulado_do_topo_financeiro("autorizado_defesa_civil", _fin, "autorizado_defesa_civil", "x"); _levantou = False
+    except KeyError:
+        _levantou = True
+    checar("nome de cartão que não existe no topo levanta (não vira sem coleta calado)", _levantou)
 
     # Zero não é sem coleta, e sem coleta não é zero.
     c = cartao_focos({"uf": {}})
