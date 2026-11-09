@@ -58,6 +58,14 @@ def _nrm(nome) -> str:
     return "".join(c for c in s if unicodedata.category(c) != "Mn").lower().strip()
 
 
+def fora_do_ciclo_(ev: dict) -> bool:
+    """Ato com decreto E reconhecimento anteriores a 29/06/2026 (ou sem data): não entra em contador do ciclo.
+    Uma função para os dois contadores — municípios e tipos de evento —, que antes divergiam. Função pura."""
+    d = data_br(ev.get("data_decreto_municipal") or ev.get("data"))
+    d_rec = data_br(ev.get("data_reconhecimento") or ev.get("data"))
+    return (d is None or d < INICIO_CICLO) and (d_rec is None or d_rec < INICIO_CICLO)
+
+
 def consolidar_municipios(eventos: list, verificacao: list) -> dict:
     """{ibge: {decreto, primeiro_decreto, tipos, reconhecido, decretado, evento_observado, evento_declarado,
     dias_ate_reconhecimento, fontes}} para os 5.571. Reconhecido = DOU/SEDEC ou decreto_reconhecido em
@@ -114,7 +122,7 @@ def consolidar_municipios(eventos: list, verificacao: list) -> dict:
         # decretado depois" — 45 municípios de fevereiro–maio estavam somados ao ciclo (RJ dizia 3
         # sob decreto com 1; o primeiro decreto do RJ aparecia como 13/02/2026), e os sem portaria
         # saíam como "decretado sem reconhecimento" quando o DOU lido começa em 30/06.
-        if (d is None or d < INICIO_CICLO) and (d_rec is None or d_rec < INICIO_CICLO):
+        if fora_do_ciclo_(ev):
             fora_do_ciclo += 1
             continue
         t = tipo_do_evento(ev)
@@ -167,7 +175,7 @@ def eventos_por_uf(municipios: dict, eventos: list) -> dict:
     por_nome = {(_nrm(m.get("nome")), str(m.get("uf") or "").upper()): k for k, m in municipios.items()}
     cont = {uf: defaultdict(int) for uf in UFS}
     for ev in eventos:
-        if ev.get("atribuicao_nao_conferida"): continue
+        if ev.get("atribuicao_nao_conferida") or fora_do_ciclo_(ev): continue
         ib = str(ev.get("ibge") or "").zfill(7)
         if ib not in ib_uf: ib = por_nome.get((_nrm(ev.get("nome") or ev.get("municipio")), str(ev.get("uf") or "").upper()))
         if ib in ib_uf and ib_uf[ib] in cont: cont[ib_uf[ib]][tipo_ou_sem_informacao(ev)] += 1
@@ -293,7 +301,8 @@ def autoteste() -> int:
                    "causa": "reconhecimento federal", "canal": "DOU"}]
         m3 = consolidar_municipios(E3, V3); a = agregar_uf(m3, {**P, "0000007": 10, "0000008": 10})["RJ"]
         return (not m3["0000007"]["decreto"] and m3["0000008"]["decreto"] and m3["0000008"]["reconhecido"]
-                and a["n_municipios"] == 1 and a["primeiro_decreto"] == "20/06/2026" and a["tons"]["decretado_sem_reconhecimento"] == 0)
+                and a["n_municipios"] == 1 and a["primeiro_decreto"] == "20/06/2026" and a["tons"]["decretado_sem_reconhecimento"] == 0
+                and sum(eventos_por_uf(m3, E3)["RJ"]["eventos_declarados"].values()) == 1)
     def t12():
         """PARA A A2: dias de decreto até a portaria só para reconhecidos com as duas datas."""
         V2 = V + [{"ibge": "6", "nome": "F", "uf": "PR", "decreto_reconhecido": None}]
