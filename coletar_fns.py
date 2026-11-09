@@ -30,6 +30,7 @@ O QUE GRAVA (peso zero; nunca lido pelo índice)
 USO
     python3 coletar_fns.py --autoteste
     python3 coletar_fns.py --de-arquivo evidencias/<hash>.zip 202608   # lê uma cópia preservada
+    python3 coletar_fns.py --reler-preservados   # relê todos os meses já baixados, das cópias preservadas
     (na rotina, quem chama é coletar_transferencias_municipais.py, sobre o ZIP que já baixou)
 """
 from __future__ import annotations
@@ -55,6 +56,7 @@ RE_EMERGENCIA = re.compile(
     r"EMERG[EÊ]NCI|CALAMIDADE|DESASTRE|EL\s*NI[NÑ]O|\bESPIN\b|ESTIAGEM|\bSECA\b|CALOR|"
     r"CR[EÉ]DITO EXTRAORDIN|FOR[CÇ]A NACIONAL DO S", re.I)
 RE_MUNICIPAL = re.compile(r"MUNICIP", re.I)
+RE_VIGILANCIA = re.compile(r"VIGIL[AÂ]NCIA EM SA[UÚ]DE", re.I)
 RE_ESTADUAL = re.compile(r"ESTAD|DISTRITO FEDERAL", re.I)
 COLUNAS = ("CÓDIGO FUNÇÃO", "NOME UNIDADE GESTORA", "UF", "NOME MUNICÍPIO", "NOME FAVORECIDO",
            "NOME PROGRAMA", "NOME AÇÃO", "NOME PLANO ORÇAMENTÁRIO", "VALOR TRANSFERIDO")
@@ -103,9 +105,16 @@ def ler_fns(corpo: bytes, chave: dict, normalizar, valor_br, re_sufixo) -> dict:
             esf = esfera(l[col["NOME FAVORECIDO"]])
             prog = l[col["NOME PROGRAMA"]].strip() or "sem programa na fonte"
             u = por_uf.setdefault(uf, {"municipal": 0.0, "estadual": 0.0, "outros": 0.0,
-                                       "programas": {}, "emergencia": 0.0})
+                                       "programas": {}, "emergencia": 0.0, "vigilancia": {}})
             u[esf] += v
             u["programas"][prog] = u["programas"].get(prog, 0.0) + v
+            vig = RE_VIGILANCIA.search(prog)
+            if vig:
+                # 09/11/2026 (editoria): o programa "Vigilância em Saúde e Ambiente" junta o piso de
+                # vigilância, vetores e arboviroses, imunização e outras; a ação e o plano orçamentário,
+                # como a fonte os escreve, é o que permite dizer quanto foi para cada coisa.
+                k = f"{l[col['NOME AÇÃO']].strip()} · {l[col['NOME PLANO ORÇAMENTÁRIO']].strip()}"
+                u["vigilancia"][k] = u["vigilancia"].get(k, 0.0) + v
             emerg = ligado_a_emergencia(l[col["NOME AÇÃO"]], l[col["NOME PLANO ORÇAMENTÁRIO"]])
             if emerg:
                 u["emergencia"] += v
@@ -127,7 +136,8 @@ def ler_fns(corpo: bytes, chave: dict, normalizar, valor_br, re_sufixo) -> dict:
         "linhas": linhas, "soma": r2(soma),
         "por_uf": {uf: {"municipal": r2(u["municipal"]), "estadual": r2(u["estadual"]),
                         "outros": r2(u["outros"]), "emergencia": r2(u["emergencia"]),
-                        "programas": {p: r2(x) for p, x in sorted(u["programas"].items())}}
+                        "programas": {p: r2(x) for p, x in sorted(u["programas"].items())},
+                        "vigilancia_por_acao": {k: r2(x) for k, x in sorted(u["vigilancia"].items())}}
                    for uf, u in sorted(por_uf.items())},
         "emergencia": [{"uf": k[0], "acao": k[1], "plano_orcamentario": k[2], "valor": r2(x)}
                        for k, x in sorted(emergencia.items())],
@@ -155,7 +165,8 @@ def fundir_municipios(anterior: dict, mes: str, ag: dict) -> dict:
     munis = {}
     for i, reg in (saida.get("municipios") or {}).items():
         munis[i] = {"meses": {m: x for m, x in (reg.get("meses") or {}).items() if m != mes}}
-    # Mês a mês como par [total, ligado a emergência]: o arquivo tem 5,5 mil fundos e doze meses.
+    # Mês a mês como par [total, ligado a emergência]: o arquivo tem 5,5 mil fundos e doze meses. A vigilância
+    # por ação fica no agregado por UF (um terceiro valor por município cresceria o arquivo 35%).
     for i, x in ag["por_ibge"].items():
         munis.setdefault(i, {"meses": {}})["meses"][mes] = [x["total"], x["emergencia"]]
     for i, reg in munis.items():
@@ -173,7 +184,9 @@ def cabecalho(dados: dict, hoje_br: str) -> dict:
         "programa orçamentário, do download de dados abertos do Portal da Transparência. "
         "`emergencia` lista só as linhas cujo nome de ação ou de plano orçamentário, tal como a "
         "fonte o escreve, cita emergência, calamidade, desastre, El Niño, ESPIN, seca, estiagem, "
-        "calor, crédito extraordinário ou a Força Nacional do SUS. PESO ZERO: nunca lido pelo índice.")
+        "calor, crédito extraordinário ou a Força Nacional do SUS. `vigilancia_por_acao` (por UF) abre o "
+        "programa Vigilância em Saúde e Ambiente por ação e plano orçamentário, como a fonte os escreve. "
+        "PESO ZERO: nunca lido pelo índice.")
     dados["fonte"] = "https://portaldatransparencia.gov.br/download-de-dados/transferencias/"
     dados["atualizado_em"] = hoje_br
     return dados
@@ -240,19 +253,23 @@ def autoteste() -> int:
          "MAC", "MAC", "3.000,00"],
         ["10", fns, "PE", "CIDADE INEXISTENTE", "FUNDO MUNICIPAL DE SAUDE", "ATENCAO PRIMARIA A SAUDE",
          "PISO", "PISO", "50,00"],
+        ["10", fns, "PE", "RECIFE", "FUNDO MUNICIPAL DE SAUDE DE RECIFE", "VIGILANCIA EM SAUDE E AMBIENTE",
+         "PISO FIXO DE VIGILANCIA EM SAUDE", "PFVS", "300,00"],
         ["10", "CEF-PROGRAMAS DO MINISTERIO DA SAUDE", "PE", "RECIFE", "PREFEITURA", "X", "X", "X", "999,00"],
         ["12", fns, "PE", "RECIFE", "FUNDO MUNICIPAL DE SAUDE DE RECIFE", "EDUCACAO", "X", "X", "777,00"],
     ])
     ag = ler_fns(corpo, {("PE", "RECIFE"): "2611606"}, norm, vbr, suf)
-    ok("só função Saúde e unidade gestora do FNS entram", ag["linhas"] == 4 and ag["soma"] == 4250.5)
+    ok("só função Saúde e unidade gestora do FNS entram", ag["linhas"] == 5 and ag["soma"] == 4550.5)
     ok("esfera pelo nome do fundo: municipal, estadual",
-       ag["por_uf"]["PE"]["municipal"] == 1250.5 and ag["por_uf"]["PE"]["estadual"] == 3000.0)
+       ag["por_uf"]["PE"]["municipal"] == 1550.5 and ag["por_uf"]["PE"]["estadual"] == 3000.0)
+    ok("vigilância em saúde aberta por ação e plano orçamentário, e somada no município",
+       ag["por_uf"]["PE"]["vigilancia_por_acao"] == {"PISO FIXO DE VIGILANCIA EM SAUDE · PFVS": 300.0})
     ok("emergência só pelo texto do plano/ação",
        ag["por_uf"]["PE"]["emergencia"] == 200.0 and len(ag["emergencia"]) == 1)
     ok("fundo municipal casado vai ao município; o que não casa fica em nao_casados com o valor",
-       ag["por_ibge"]["2611606"] == {"total": 1200.5, "emergencia": 200.0}
+       ag["por_ibge"]["2611606"] == {"total": 1500.5, "emergencia": 200.0}
        and ag["nao_casados"] == {"PE/CIDADE INEXISTENTE": 50.0})
-    ok("programa sem nome não some", sum(ag["por_uf"]["PE"]["programas"].values()) == 4250.5)
+    ok("programa sem nome não some", sum(ag["por_uf"]["PE"]["programas"].values()) == 4550.5)
     ok("dúvida não marca: nome sem termo de emergência",
        not ligado_a_emergencia("PISO DE ATENCAO PRIMARIA", "INCENTIVO FINANCEIRO DA APS"))
     ok("Força Nacional do SUS e crédito extraordinário marcam",
@@ -261,9 +278,9 @@ def autoteste() -> int:
     d1 = fundir_municipios({}, "202608", ag)
     d2 = fundir_municipios(d1, "202608", ag)
     ok("fundir é idempotente: reler o mês não soma duas vezes",
-       d1 == d2 and d2["municipios"]["2611606"]["total"] == 1200.5)
+       d1 == d2 and d2["municipios"]["2611606"]["total"] == 1500.5)
     d3 = fundir_municipios(d2, "202607", ag)
-    ok("dois meses somam no total do município", d3["municipios"]["2611606"]["total"] == 2401.0)
+    ok("dois meses somam no total do município", d3["municipios"]["2611606"]["total"] == 3001.0)
     a1 = fundir_fns({}, "202608", ag)
     ok("o agregado da página não carrega o detalhe por município",
        "municipios" not in a1 and a1 == fundir_fns(a1, "202608", ag))
@@ -285,6 +302,19 @@ def main() -> int:
         corpo = pathlib.Path(caminho).read_bytes()
         import hashlib
         processar(corpo, mes, hashlib.sha256(corpo).hexdigest())
+        return 0
+    if "--reler-preservados" in sys.argv:
+        # 09/11/2026: quando o coletor passa a guardar um campo novo, os meses já lidos ficam sem ele. A
+        # cópia de cada ZIP mensal está preservada (o hash está no livro do download de transferências);
+        # reler é ler de novo a MESMA fonte, sem ir à rede.
+        from coletores_base import ler
+        lidos = (ler("financiamento/municipios/transferencias_uniao.json", {}) or {}).get("meses_lidos") or {}
+        for mes, info in sorted(lidos.items()):
+            arq = RAIZ / "evidencias" / f"{info.get('hash_evidencia')}.zip"
+            if not arq.exists():
+                print(f"{mes}: cópia preservada ausente ({arq.name}) — mês não relido"); continue
+            processar(arq.read_bytes(), mes, info["hash_evidencia"])
+            print(f"{mes}: relido da cópia preservada")
         return 0
     print(__doc__.strip().split("USO")[-1].strip())
     return 0
