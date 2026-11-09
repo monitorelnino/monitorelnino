@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Juiz lê a pista no esquema canônico · O juiz só lia `url` e `municipio`/`uf`/`ibge`; a pista que entra só com `url_final` e `alvo` (o esquema da porta desde 03/10) seria recusada sem o documento ser baixado — caso do PMGRD 2026/2027 de Belo Horizonte e do plano de Aracaju (#1656). Recusa sem leitura de URL oficial volta à fila.
+
 ## 2026-11-09 · #PR · SUS: vigilância em saúde por ação, mês e município · O repasse do FNS guardava só o programa; agora o programa Vigilância em Saúde e Ambiente vem aberto por ação e plano orçamentário, como a fonte os escreve (agentes de combate às endemias, piso de vigilância, arboviroses), por UF e mês. Os meses já baixados foram relidos das cópias preservadas; maio e setembro, sem cópia, foram baixados de novo.
 
 ## 2026-11-09 · #PR · Plano citado leva o link da citação · O ladrilho da capital e o cartão do município tinham duas cópias da frase, sem o endereço da fonte. Agora é uma função só, do catálogo, com o link, dizendo que o documento não foi lido e que não contornamos regras de acesso automático (editoria, 09/11). O portão de proveniência põe teto que só desce nos 41 registros de plano citado sem endereço.
