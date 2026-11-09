@@ -242,10 +242,30 @@ def agregar_download(transf: dict, uf_de: dict) -> tuple:
     return por_uf, por_mes, sem, ultimo, parcial
 
 
+def rota3_por_uf(recursos_liberados: dict) -> dict:
+    """Rota 3 por UF a partir das portarias da SEDEC/MIDR lidas no DOU (`valor_autorizado`, nunca "pago").
+    UF sem ato nas portarias lidas fica `sem_ato_localizado` com valor nulo — não é zero: a leitura cobre só
+    o período declarado em `cobertura`. Função pura."""
+    soma, atos, datas = {}, {}, []
+    for m in (recursos_liberados.get("municipios") or {}).values():
+        for a in m.get("atos") or []:
+            uf = a.get("uf") or m.get("uf")
+            if not uf or a.get("valor_autorizado") is None: continue
+            soma[uf] = round(soma.get(uf, 0.0) + float(a["valor_autorizado"]), 2); atos[uf] = atos.get(uf, 0) + 1
+            if a.get("data"): datas.append(a["data"])
+    cobertura = f"portarias de {min(datas)} a {max(datas)}" if datas else "nenhuma portaria lida"
+    fonte = "DOU — portarias da Secretaria Nacional de Proteção e Defesa Civil (valor autorizado)"
+    return {uf: ({"valor_2026": soma[uf], "status": "coletado", "atos": atos[uf], "fonte": fonte, "cobertura": cobertura} if uf in soma
+                 else {"valor_2026": None, "status": "sem_ato_localizado", "atos": 0, "fonte": fonte, "cobertura": cobertura})
+            for uf in UFS}
+
+
 def consolidar_download(consultado_em: str | None = None) -> int:
-    """Escreve em `por_uf.json` (`transferencias_download` por UF) e `serie_nacional.json` (`serie_mensal_download`)
-    o que o download mensal já trouxe. Peso zero; nenhuma rota r1..r7 é preenchida aqui: a fonte classifica por
-    função e subfunção, não por instrumento, e a correspondência com as rotas não é exata."""
+    """Escreve em `por_uf.json` (`transferencias_download` e rota 3 por UF) e `serie_nacional.json`
+    (`serie_mensal_download`) o que o download mensal já trouxe. Peso zero. O download não preenche rota
+    r1..r7: a fonte classifica por função e subfunção, não por instrumento. A rota 3 (defesa civil
+    obrigatória) vem de outra leitura já feita — as portarias da SEDEC/MIDR no DOU, em
+    `resposta/recursos_liberados.json` (09/11/2026: o dado dormia lá enquanto a rota dizia "aguardando coleta")."""
     transf = _l("municipios/transferencias_uniao.json")
     if not transf:
         registrar_lacuna("Portal da Transparência", "transferencias_uniao.json ausente: nada a consolidar", canal="DOU", camada=1); return 0
@@ -260,6 +280,8 @@ def consolidar_download(consultado_em: str | None = None) -> int:
         d["transferencias_download"] = {"consultado_em": quando, "fonte": fonte, "ultimo_mes": ultimo, "meses_parciais": parcial,
                                         "por_rota_no_ano": rotas, "total_no_ano": round(sum(rotas.values()), 2) if rotas else None,
                                         "sem_municipio_na_fonte": sem.get(uf, {}), "por_mes": meses}
+    for uf, r3 in rota3_por_uf(ler("resposta/recursos_liberados.json", {}) or {}).items():
+        pu["uf"].setdefault(uf, {}).setdefault("rotas", {})["r3"] = r3
     _g("por_uf.json", pu)
     sn = _l("serie_nacional.json"); sn["consultado_em"] = quando
     sn["serie_mensal_download"] = {"fonte": fonte, "ultimo_mes": ultimo, "meses_parciais": parcial,
@@ -321,12 +343,18 @@ def autoteste():
         return (u["AC"]["202601"] == {"constitucional": 10.0, "saude": 1.0} and n["202601"] == u["AC"]["202601"] and "outras" not in n["202601"]
                 and sem == {"AC": {"202601": 3.0}} and ult == "202602" and par == ["202602"])
     def t7(): return (FIN / "consultas.json").read_bytes() == _SNAP if _SNAP else True
+    def t9():
+        r = rota3_por_uf({"municipios": {"3303807": {"uf": "RJ", "atos": [{"uf": "RJ", "data": "2026-08-03", "valor_autorizado": 3131707.84},
+                                                                          {"uf": "RJ", "data": "2026-09-01", "valor_autorizado": None}]}}})
+        return r["RJ"]["valor_2026"] == 3131707.84 and r["RJ"]["atos"] == 1 and r["SP"]["valor_2026"] is None \
+            and r["SP"]["status"] == "sem_ato_localizado" and len(r) == 27 and "2026-08-03" in r["RJ"]["cobertura"]
     _SNAP = (FIN / "consultas.json").read_bytes() if (FIN / "consultas.json").exists() else b""
     return rodar_autoteste({"semear cria os 6 registros, sem tocar dados reais": t1, "8 rotas em ordem, cores únicas": t2, "parser transferências descarta autor (E10)": t3,
                             "§219 valor ausente não é zero": t3b,
                             "parser emendas descarta autor (E10)": t4, "negativo: resposta nula": t5, "emenda sem valor é ausência (A6-22)": t5b, "por_uf: 27 UFs, Prepara RS como precedente": t6,
                             "negativo: autoteste não altera dados reais": t7,
-                            "download: soma por UF e mês, município fora da referência não entra, parcial marcado": t8})
+                            "download: soma por UF e mês, município fora da referência não entra, parcial marcado": t8,
+                            "rota 3 das portarias do DOU: soma por UF, ato sem valor não entra, UF sem ato é ausência (não zero)": t9})
 
 
 if __name__ == "__main__":
