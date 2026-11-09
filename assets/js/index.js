@@ -434,16 +434,22 @@ function fraseDeVarredura(s, doLivro) {
   return v && C ? C.texto('index.municipio.varredura.molde', v) || '' : '';
 }
 
+/* Plano citado, documento não localizado: UMA frase para o ladrilho da capital e o cartão do município
+   (eram duas cópias), e a fonte da citação vai junto como link — sem ele, "citado em fonte oficial" não
+   se confere (editoria, 09/11/2026). A URL já chega saneada (só https). */
+function fraseDoCitado(reg){
+  const q = reg.fonte ? esc(reg.fonte) : 'fonte oficial';
+  const fonte = reg.url ? `<a href="${esc(reg.url)}" target="_blank" rel="noopener">${q}</a>` : q;
+  const dd = reg.data ? ', ' + esc(dataBR(reg.data) || reg.data) : '';
+  return 'Plano de contingência citado em fonte oficial (' + fonte + dd + '); documento não localizado até o corte.';
+}
+
 function textoDaCapital(reg){
   if (!reg) return naoVerificadaCapital();
   const st = ConsultaMunicipio.situacaoDoPlano(reg).estado;
   if (st === 'encontrado') return 'Plano de contingência localizado.';
   if (st === 'estadual') return 'Plano de contingência localizado, no âmbito estadual.';
-  if (st === 'nomeado'){
-    const q = reg.fonte ? esc(reg.fonte) : 'fonte oficial';
-    const dd = reg.data ? ', ' + esc(dataBR(reg.data) || reg.data) : '';
-    return 'Plano de contingência citado em fonte oficial (' + q + dd + '); documento não localizado até o corte.';
-  }
+  if (st === 'nomeado') return fraseDoCitado(reg);
   if (reg.categoria === 'plano_elaboracao') return 'Plano de contingência em elaboração; o documento final não foi localizado até o corte.';
   if (reg.categoria === 'estrutura') return 'Estrutura de coordenação localizada; não é plano de contingência para os riscos deste ciclo.';
   if (reg.categoria === 'nao_localizado')
@@ -798,9 +804,7 @@ function renderMinha(uf, nome, card){
       html += `<p class="note">Sem ato de aprovação localizado: o plano está publicado em domínio oficial do município; o decreto ou portaria que o aprova não foi localizado até a data de corte.</p>`;
     }
   } else if (status === 'nomeado'){
-    const q1 = m.fonte ? esc(m.fonte) : 'fonte oficial';
-    const d1 = m.data ? ', ' + esc(dataBR(m.data) || m.data) : '';
-    html += `<p class="fv"><strong>Plano de contingência citado em fonte oficial (${q1}${d1}); documento não localizado até o corte.</strong></p>`;
+    html += `<p class="fv"><strong>${fraseDoCitado(m)}</strong></p>`;
   } else if (status === 'nao_localizado'){
     // "Não localizamos" só onde a busca DE FATO ocorreu e não achou. É o teto público de ausência
     // do projeto: nunca "não existe", e nunca sobre município que ninguém procurou. E, desde
