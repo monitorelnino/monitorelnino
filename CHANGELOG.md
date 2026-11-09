@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · DOE: o número do ato vem do cabeçalho do decreto · Na releitura do DOE-RJ de 03/07, o leitor intercalou a coluna vizinha e um decreto citado caiu entre o cabeçalho do 50.357 e a menção ao El Niño; a pista saiu como 40.013. O extrator passa a preferir o cabeçalho (número seguido da data por extenso) e só usa citação quando não há cabeçalho. Autoteste com o texto intercalado.
+
 ## 2026-11-09 · #PR · Resposta só conta atos do ciclo; rota 3 lida das portarias; PIB per capita sem falha mascarada · Atos com decreto e reconhecimento anteriores a 29/06/2026 saíam no contador do ciclo (1.136 → 1.116 municípios; RJ 3 → 1). A rota de defesa civil obrigatória passa a somar as portarias da SEDEC já lidas no DOU. O coletor do PIB per capita pedia variável inexistente no SIDRA e saía "ok": agora erra de verdade e, quando valida, grava até a página.
 
 ## 2026-11-09 · #PR · CODEMAP e página arquivada contam só o que o Git rastreia · O gerador do CODEMAP e o portão de página arquivada andavam o disco e contavam cópias de trabalho locais; o mapa gerado fora da CI saía diferente e o portão reprovava a máquina. Os dois passam a ler a lista do Git, e o teste do portão monta um repositório Git.
