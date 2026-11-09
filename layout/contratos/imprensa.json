@@ -122,7 +122,9 @@
   {
    "id": "como-ler",
    "h2": "Como ler os dados",
-   "tipo": "lista_simples",
+   "tipo": "cartoes",
+   "grade": ".grade-figuras--2",
+   "_nota": "09/11/2026: um cartão por grupo, perguntas em sanfona dentro dele (antes, blocos soltos sem cartão).",
    "grupos": [
     "preparacao",
     "emergencias",
@@ -133,12 +135,16 @@
   {
    "id": "onde",
    "h2": "Onde está cada dado",
-   "tipo": "tabela"
+   "tipo": "cartoes",
+   "grade": ".grade-figuras--3",
+   "_nota": "09/11/2026: tabela de quatro colunas vira um cartão por página (título com link, o que se encontra, fonte e atualização no crédito da figura); tabela não é componente de conteúdo do site."
   },
   {
    "id": "glossario",
    "h2": "Glossário",
    "tipo": "glossario",
+   "grade": ".grade-figuras--3",
+   "_nota": "09/11/2026: um cartão por grupo de termos; a busca filtra termos e esconde o grupo vazio.",
    "busca": true
   },
   {

@@ -712,7 +712,7 @@ function animarGauges(root){
 }
 const STATUS_ROTULO = {NOVO:'plano estadual novo, específico para o El Niño', READ:'plano recorrente readaptado para o ciclo',
   VIG:'instrumento recorrente, sem menção nominal ao El Niño', ELAB:'plano estadual ainda em elaboração', LAC:'sem plano estadual nominal para o El Niño'};
-const nrm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+const nrm = MonitorMapas.nrm;   // um só, em assets/mapas.js
 
 // Decretos de emergência do município (data/atos_resposta.json — registro, nunca
 // pontua). 31/08/2026: cartão e PDF diziam "nenhum decreto localizado" para Biguaçu
