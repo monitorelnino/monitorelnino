@@ -225,6 +225,25 @@ def divergencias(cartoes: dict, indices: dict, numeros: dict, textos: dict,
     return ruins
 
 
+def cartoes_calados(html: str, numeros: dict, acumulado: list, lacuna: str = "sem coleta até o corte") -> list:
+    """(d) 09/11/2026: cartão da Imprensa que mostra lacuna com número no acumulado do próprio motor.
+    13 dos 20 cartões estavam assim: o script só preenchia 7, e o catálogo reescrevia os outros com o
+    texto de espera. Cada cartão declara no HTML `data-acumulado`; o valor renderizado (`numeros`,
+    {valor_id: texto}) tem de ser número quando todos os ids que ele declara têm valor. Função pura."""
+    ac = {a.get("id"): a for a in acumulado or []}
+    ruins = []
+    for ids, vid in re.findall(r'data-acumulado="([^"]+)".*?id="(numValor_[a-z_0-9]+)"', html, re.S):
+        faltam = [i for i in ids.split() if i not in ac]
+        if faltam:
+            ruins.append(f"{vid}: declara {', '.join(faltam)}, que não existe em imprensa/semana.json")
+            continue
+        tem = all(not ac[i].get("sem_coleta") and ac[i].get("valor") is not None for i in ids.split())
+        texto = str(numeros.get(vid) or "")
+        if tem and (not texto or lacuna in texto):
+            ruins.append(f"{vid}: o acumulado tem número ({ids}) e a página mostra '{texto or 'vazio'}'")
+    return ruins
+
+
 def _autoteste() -> int:
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
@@ -234,6 +253,14 @@ def _autoteste() -> int:
     from _casos import ok_de
     ok = ok_de(falhas, _casos_contados)
 
+    _h = ('<div data-cartao="dengue" data-acumulado="dengue"><p id="numValor_dengue">x</p></div>'
+          '<div data-cartao="focos" data-acumulado="focos_desde_29_06"><p id="numValor_focos">x</p></div>')
+    _ac = [{"id": "dengue", "valor": 78630, "sem_coleta": False}, {"id": "focos_desde_29_06", "valor": None, "sem_coleta": True}]
+    ok("(d) cartão com número no acumulado e lacuna na tela reprova; lacuna verdadeira passa",
+       len(cartoes_calados(_h, {"numValor_dengue": "sem coleta até o corte", "numValor_focos": "sem coleta até o corte"}, _ac)) == 1
+       and cartoes_calados(_h, {"numValor_dengue": "78.630", "numValor_focos": "sem coleta até o corte"}, _ac) == [])
+    ok("(d) cartão que declara id inexistente no acumulado reprova",
+       len(cartoes_calados(_h.replace('data-acumulado="dengue"', 'data-acumulado="dengue_x"'), {"numValor_dengue": "1"}, _ac)) == 1)
     ok("lê inteiro com separador de milhar", numero_do_texto("8.146")[0] == 8146)
     ok("lê decimal brasileiro", numero_do_texto("31,8")[0] == 31.8)
     ok("lê escala de milhão", numero_do_texto("R$ 150,9 mi")[0] == 150900000.0)
@@ -351,6 +378,9 @@ def main() -> int:
     instantaneo = json.loads((RAIZ / "data" / "resposta" / "topo_defesa_civil.json")
                              .read_text(encoding="utf-8"))
     ruins = divergencias(cartoes, indices, numeros, textos)
+    d = verificar_layout.despejar("imprensa.html")
+    num_imp = {n.get("valor_id"): n.get("valor") for n in ((d.get("larguras") or {}).get("1280") or {}).get("numeros") or []}
+    ruins += cartoes_calados((RAIZ / "imprensa.html").read_text(encoding="utf-8"), num_imp, semana.get("acumulado") or [])
     ruins += divergencias_de_variacao(cartoes, instantaneo)
     if ruins:
         print(f"✗ COERÊNCIA DA IMPRENSA: {len(ruins)} divergência(s) com a página de origem:")

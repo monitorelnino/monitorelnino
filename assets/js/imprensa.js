@@ -24,6 +24,10 @@
   fetch('data/imprensa/semana.json').then(r => r.ok ? r.json() : {}).catch(() => ({})).then(S => {
     // Atualização de cada cartão: a data que o gerador grava em gerado_em (ausente = lacuna).
     const atualizado = S && S.gerado_em ? S.gerado_em.split('-').reverse().join('/') : lacuna();
+    // "Como citar": a edição é a data do motor; o acesso, o dia de quem lê. Os dois ficavam com o texto
+    // de espera desde o redesenho de 26/10 — nenhum script os preenchia (09/11/2026).
+    ponha('relData2', atualizado);
+    ponha('citarAcesso', new Date().toLocaleDateString('pt-BR'));
     const tpl = document.getElementById('tplAtualizacao');
     // O catálogo reescreve o texto da fonte ao chegar: a linha entra depois dele.
     const cat = window.MonitorCatalogo;
@@ -34,14 +38,23 @@
         e.append(' · ', linha);
       });
     });
+    // 09/11/2026: só 7 dos 20 cartões eram preenchidos — os outros 13 tinham número em
+    // data/imprensa/semana.json e mostravam "sem coleta até o corte". Agora cada cartão declara no HTML
+    // (`data-acumulado`) de qual número do acumulado ele vem, e TODO cartão é preenchido daqui; o portão
+    // verificar_imprensa_coerencia.py reprova cartão com número no acumulado e lacuna na tela.
+    // Depois do catálogo: ele escreve o texto de espera ("sem coleta até o corte") no próprio valor, e
+    // quem escrevesse antes dele seria apagado — era assim que até os cartões com número sumiam.
+    (cat ? cat.pronto : Promise.resolve()).then(() => document.querySelectorAll('.cartao-numero[data-acumulado]').forEach(c => {
+      const el = c.querySelector('.cartao-numero-valor');
+      const vs = c.dataset.acumulado.split(/\s+/).map(id => acum(S, id));
+      if (!el) return;
+      if (vs.some(v => !v)) { el.textContent = lacuna(); return; }
+      el.textContent = vs.map(v => v.unidade === 'reais' ? M.reais(v.valor)
+        : v.unidade === 'pessoas' ? M.numBR(v.valor / 1e6, 1) + ' mi' : fmt(v.valor)).join(' · ');
+    }));
     fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : {}).catch(() => ({})).then(P => {
       const N = (P && P.nacional) || {};
       const pr = N.prazo_reconhecimento || null;
-
-      // Emergências
-      ponha('numValor_decretaram', N.n_municipios != null ? fmt(N.n_municipios) : lacuna());
-      if (N.reconhecidos != null) ponha('numValor_reconhecidos', fmt(N.reconhecidos));
-      else ponha('numValor_reconhecidos', lacuna());
       // A resposta do prazo de reconhecimento traz os números de hoje, do derivado de data/resposta.
       if (cat && pr && pr.p25 != null) cat.pronto.then(() => {
         const el = document.querySelector('[data-conteudo="imprensa.ler.emergencias.4.resposta"]');
@@ -51,21 +64,10 @@
         ponha('numPer_reconhecidos', preenche(txtDoCatalogo('imprensa.numeros.reconhecidos.periodo', ''),
           { p25: fmt(pr.p25), p75: fmt(pr.p75) }));
       } else ponha('numPer_reconhecidos', txtDoCatalogo('imprensa.numeros.reconhecidos.sem_prazo', ''));
-      ponha('numValor_pessoas_sob_decreto', N.pop_sob_decreto != null
-        ? M.numBR(N.pop_sob_decreto / 1e6, 1) + ' mi' : lacuna());
-      const pl = acum(S, 'municipios_plano_localizado');
-      ponha('numValor_plano_localizado', pl ? fmt(pl.valor) : lacuna());
+    });
 
-      // Sinais físicos
-      const foc = acum(S, 'focos_desde_29_06');
-      ponha('numValor_focos', foc ? fmt(foc.valor) : lacuna());
-
-      // Saúde: o que o acumulado traz como lacuna declarada fica em lacuna
-      const uf = acum(S, 'estados_acima_da_faixa_por_doenca');
-      ponha('numValor_ufs_acima_faixa', uf ? fmt(uf.valor) : lacuna());
-
-      // Índices
-      const I = (S && S.indices) || {};
+    // Índices
+    const I = (S && S.indices) || {};
       [['legal', I.mare_legal], ['saude', I.mare_saude]].forEach(([k, v]) => {
         if (v == null) return;
         ponha('indice_' + k + '_valor', fmt(v));
@@ -76,13 +78,21 @@
           marca.style.left = pos + '%';
         }
       });
-    });
   });
 
-  // Glossário: busca enquanto se digita (função comum BuscaLista)
+  // Glossário: busca enquanto se digita. 09/11/2026: chamava `window.BuscaLista`, que não existe no
+  // site — o campo nunca filtrou nada. Agora filtra aqui: termo ou explicação que contenha o que se
+  // digitou (sem acento, sem caixa), abre o que casou e esconde o grupo que ficou vazio.
   const campo = document.getElementById('glossarioBusca');
-  if (campo && window.BuscaLista) {
-    const itens = Array.from(document.querySelectorAll('#glossario details'));
-    window.BuscaLista.montar(campo, itens);
-  }
+  if (campo) campo.addEventListener('input', () => {
+    const q = M.nrm(campo.value);
+    document.querySelectorAll('#glossarioGrupos > .cartao').forEach(g => {
+      let algum = false;
+      g.querySelectorAll('details').forEach(d => {
+        const casa = !q || M.nrm(d.textContent).includes(q);
+        d.hidden = !casa; d.open = !!q && casa; algum = algum || casa;
+      });
+      g.hidden = !algum;
+    });
+  });
 })();
