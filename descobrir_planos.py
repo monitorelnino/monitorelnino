@@ -332,6 +332,10 @@ def autoteste() -> int:
         pref = "<title>Prefeitura Municipal de Santana do Ipanema</title><body>Gabinete</body>"
         return (d[:3] == ["saojoaodalianca.go.gov.br", "www.saojoaodalianca.go.gov.br",
                           "prefeiturade" + "saojoaodalianca.go.gov.br"] and len(d) == 5
+                and all(dominios_do_municipio(n, u) == dominios_do_municipio(n, u, o) for n, u, o in
+                        (("Campo Grande", "MS", "campogrande.rn.gov.br"), ("Rio de Janeiro", "RJ", "riotur.rio")))
+                and host_admissivel("campogrande.ms.gov.br", "MS") and host_admissivel("prefeitura.rio", "RJ")
+                and host_admissivel("x.com.br", "MS") and not host_admissivel("altoparaiso.go.gov.br", "PR")
                 and _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": 1})
                 and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": 2})
                 and not _lista_de_endereco_mudou({"situacao": "portal_nao_verificado", "candidatos": CANDIDATOS_V})
@@ -808,6 +812,17 @@ def enderecos_oficiais(buscar=None) -> dict:
     return achados
 
 
+_UFS = frozenset("ac al ap am ba ce df es go ma mt ms mg pa pb pr pe pi rj rn rs ro rr sc sp se to".split())
+
+
+def host_admissivel(host: str, uf: str) -> bool:
+    """09/11/2026: o endereço do cadastro ou da busca só é candidato a prefeitura de `uf` se não for de outro
+    estado (`.rn.gov.br` para município do MS) nem de turismo (`riotur.rio`). Pura."""
+    h = str(host or "").lower()
+    m = re.search(r"\.([a-z]{2})\.gov\.br$", h)
+    return not (m and m.group(1) in _UFS and m.group(1) != uf.lower()) and not re.search(r"tur(ismo)?(\.|-|$)", h.split(".")[0] + ".")
+
+
 def hosts_por_busca(nome: str, uf: str, busca, ja_tentados=()) -> tuple:
     """(hosts, respondeu): endereços `.gov.br` que a busca aponta para a prefeitura, sem os já tentados.
     `busca(consulta)` é o metabuscador do site. Candidato, não prova: `identifica_prefeitura` decide.
@@ -820,7 +835,7 @@ def hosts_por_busca(nome: str, uf: str, busca, ja_tentados=()) -> tuple:
     for r in resultados:
         h = urllib.parse.urlparse(str(r.get("url") or "")).netloc.lower()
         if (h.endswith(".gov.br") and h.count(".") >= 3 and h not in hosts and h not in ja_tentados
-                and not any(x in h for x in _REDES)):
+                and host_admissivel(h, uf) and not any(x in h for x in _REDES)):
             hosts.append(h)
     return hosts[:3], True
 
@@ -841,7 +856,7 @@ def dominios_do_municipio(nome: str, uf: str, oficial: str = None) -> list:
     sobe quando a lista muda). Função pura."""
     n, sufixo = _so_letras(nome), f".{uf.lower()}.gov.br"
     padrao = [n + sufixo, f"www.{n}{sufixo}", f"prefeiturade{n}{sufixo}", f"prefeitura{n}{sufixo}", f"pm{n}{sufixo}"]
-    return ([oficial] if oficial and oficial not in padrao else []) + padrao
+    return ([oficial] if oficial and oficial not in padrao and host_admissivel(oficial, uf) else []) + padrao
 
 
 def nome_da_falha(e: Exception) -> str:
