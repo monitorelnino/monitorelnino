@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Sítio da prefeitura: recusa é do host, fila começa por quem falta · Os 1.530 municípios fora de `municipal_completo` têm diário e busca web; falta-lhes só o sítio. Em 83, o 403 de um host do Wikidata (IBGE, câmara, bombeiros) encerrava a leitura antes do endereço padrão. A recusa passa a valer para aquele host e o seu `www.`, sem novo pedido; os demais candidatos seguem. A fila do sítio põe primeiro quem não está completo: capitais, depois população.
+
 ## 2026-11-09 · #PR · DOE passa a ver ato estadual sobre o El Niño · Três defeitos escondiam o Decreto RJ 50.357/2026: o leitor de PDF devolvia vazio quando o pypdf falhava (o DOE-RJ era lido sem texto desde 19/10), a busca só procurava emergência e a porta recusava imprensa oficial fora de .gov.br. Agora o pdfium lê, "El Niño" entra nos termos, ato de comitê ou plano vira pista da UF e há releitura retroativa por data (`--ate`).
 
 ## 2026-11-09 · #PR · Fogo: um dia só, o último completo, em todo o site · `inpe_fogo` lia o arquivo do dia corrente do INPE, que enche ao longo do dia: à 01:16 UTC tinha 369 focos e 20 estados em zero, e o mapa (pontos do último dia completo) dizia "0 focos" sobre estados com fogo; o número do topo oscilava de 9.653 para 369. Agora `inpe_fogo` lê o último dia completo, como os pontos e a série, e o rótulo do estado no mapa lê o mesmo conjunto dos pontos (satélite de referência, com a data). Sai a queda "uma vez para o dia anterior". −8 linhas.

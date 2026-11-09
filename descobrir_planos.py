@@ -368,8 +368,36 @@ def autoteste() -> int:
             recusa = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
         with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=OSError("dns")):
             mudo = descobrir_no_portal("Bonito", "MS", "5002209", "2026-10-22")
+        # 09/11/2026: o 403 do host do cadastro (www.ibge.gov.br) é dele; o padrão segue, e o host recusado e o seu
+        # `www.` nunca são pedidos de novo
+        pedidos = []
+
+        def ibge_recusa(url, timeout=0):
+            pedidos.append(url)
+            if "ibge.gov.br" in url:
+                raise e403
+            return b"<title>Prefeitura Municipal de Bonito</title><a href='/plano-de-contingencia.pdf'>Plano de contingencia</a>"
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=ibge_recusa), mock.patch(f"{__name__}.registrar_lacuna"), \
+             mock.patch(f"{__name__}.consultar_wp_json", return_value=([], False)), mock.patch(f"{__name__}.time.sleep"):
+            segue = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-09", oficial="www.ibge.gov.br")
+        n_ibge, pedidos[:] = sum("ibge.gov.br" in u for u in pedidos), []
+        with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=lambda u, timeout=0: pedidos.append(u) or (_ for _ in ()).throw(e403)), \
+             mock.patch(f"{__name__}.registrar_lacuna"), mock.patch(f"{__name__}.time.sleep"):
+            so_recusa = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-09", oficial="www.ibge.gov.br",
+                                            busca=lambda q: {"results": [{"url": "https://ibge.gov.br.ms.gov.br/"}]})
         return (recusa["situacao"] == "recusa_de_fonte" and recusa["pistas"] == []
-                and mudo["situacao"] == "portal_nao_verificado" and mudo["pistas"] == [])
+                and mudo["situacao"] == "portal_nao_verificado" and mudo["pistas"] == []
+                and segue["situacao"] == "lido" and segue["dominio"] == "bonito.ms.gov.br" and n_ibge == 1
+                and so_recusa == {"dominio": "www.ibge.gov.br", "situacao": "recusa_de_fonte", "motivo": "HTTP 403", "pistas": []}
+                and "https://www.bonito.ms.gov.br/" not in pedidos)
+
+    def t_ordem_da_bateria():
+        """09/11/2026: fora de `municipal_completo` primeiro; em cada grupo, capital e depois população."""
+        por_cod = {"3106200": {"nome": "Belo Horizonte", "uf": "MG"}, "3170206": {"nome": "Uberlândia", "uf": "MG"},
+                   "3118601": {"nome": "Contagem", "uf": "MG"}, "3550308": {"nome": "São Paulo", "uf": "SP"}}
+        pop = {"3106200": 2315560, "3170206": 713224, "3118601": 621863, "3550308": 11451999}
+        ordem = ordem_da_bateria(list(por_cod), por_cod, {"3550308": "municipal_completo", "3170206": "municipal_completo"}, pop)
+        return ordem == ["3106200", "3118601", "3550308", "3170206"]
 
     def t_portal_le_wp_json_e_links_sem_escrever():
         import unittest.mock as mock
@@ -586,6 +614,7 @@ def autoteste() -> int:
         "portal da prefeitura: wp-json e links, sem escrever em data/": t_portal_le_wp_json_e_links_sem_escrever,
         "pausa por host em paralelo: nunca dois pedidos ao mesmo host sem a pausa": t_pausa_por_host_em_paralelo,
         "rodada de municípios: retoma no dia e grava o lido no prazo": t_rodada_de_municipios_retoma_e_grava_no_prazo,
+        "bateria: fora de municipal_completo primeiro, capital e depois população": t_ordem_da_bateria,
     })
 
 
@@ -890,14 +919,21 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
     render = None       # a home que só monta por JavaScript, como o navegador a vê (uma vez por município)
 
     def ler_home(dominios):
-        """(dominio, home, recusa): o primeiro endereço que responde como a prefeitura, ou a recusa que parou a leitura.
+        """(dominio, home): o primeiro endereço que responde como a prefeitura; recusa vai a `recusados`.
 
         07/11/2026 (697 prioritários parados em `portal_nao_verificado`): tenta `https` e depois `http`
         (prefeitura pequena sem TLS), e a home que não se identifica no HTML estático é renderizada antes
-        de ser descartada (SPA). Falha de rede recebe nome em `falhas` em vez de ser engolida."""
+        de ser descartada (SPA). Falha de rede recebe nome em `falhas` em vez de ser engolida.
+
+        09/11/2026: a recusa é do HOST que recusou, ainda não identificado como a prefeitura (83 dos 1.530
+        fora de `municipal_completo` pararam no 403 de www.ibge.gov.br, câmara ou bombeiros vindos do
+        Wikidata, sem tentar o endereço padrão). Respeita-se: o host e o seu `www.` não são pedidos de novo;
+        os outros candidatos seguem, e só sem prefeitura identificada a recusa é o veredito."""
         nonlocal render
         for d in dominios:
-            corpo = None
+            if d.removeprefix("www.") in recusados:
+                continue
+            corpo = recusa = None
             for esquema in ("https", "http"):
                 try:
                     with _pedido_ao_host(d):
@@ -905,39 +941,41 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                     break
                 except urllib.error.HTTPError as e:
                     if e.code in RECUSAS_DE_FONTE:
-                        registrar_lacuna(f"portal de {nome}/{uf}", f"recusa HTTP {e.code} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
-                        return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"HTTP {e.code}", "pistas": []}
-                    falhas.append(f"{d}: HTTP {e.code}")
+                        recusa = f"HTTP {e.code}"
+                    else:
+                        falhas.append(f"{d}: HTTP {e.code}")
                     break   # resposta do servidor: o outro esquema não muda o veredito
                 except MuroDeRobo as e:
-                    registrar_lacuna(f"portal de {nome}/{uf}", f"muro de robô em {d}", canal="portal da prefeitura", camada=1, uf=uf)
-                    return None, None, {"dominio": d, "situacao": "recusa_de_fonte", "motivo": f"muro de robô ({e})", "pistas": []}
+                    recusa = f"muro de robô ({e})"
+                    break
                 except Exception as e:  # noqa: BLE001 — DNS, timeout e TLS: o endereço não serve neste esquema
                     falhas.append(f"{esquema}://{d}: {nome_da_falha(e)}")
+            if recusa:
+                registrar_lacuna(f"portal de {nome}/{uf}", f"recusa {recusa} em {d}", canal="portal da prefeitura", camada=1, uf=uf)
+                recusados.setdefault(d.removeprefix("www."), {"dominio": d, "situacao": "recusa_de_fonte", "motivo": recusa, "pistas": []})
             if corpo is None:
                 continue
             texto = corpo[:300000].decode("utf-8", "replace")
             if identifica_prefeitura(texto, nome):
-                return d, texto, None
+                return d, texto
             if render is None and parece_montar_por_javascript(texto):
                 with _pedido_ao_host(d):
                     render = _renderizar(f"https://{d}/", "descobrir_planos/portal")
                 if render.get("ok") and identifica_prefeitura(render.get("texto"), nome):
-                    return d, "", None   # sem HTML estático: os links vêm do render, abaixo
+                    return d, ""   # sem HTML estático: os links vêm do render, abaixo
                 render = None
             falhas.append(f"{d}: respondeu, mas não se identifica como a prefeitura de {nome}")
-        return None, None, None
+        return None, None
 
+    recusados = {}      # 09/11/2026: host (sem `www.`) que recusou -> o veredito; nunca pedido de novo
     tentados = dominios_do_municipio(nome, uf, oficial)
-    dominio, home, recusa = ler_home(tentados)
-    if recusa:
-        return recusa
+    dominio, home = ler_home(tentados)
     if not dominio and busca:   # rota 1b: o endereço que a busca aponta só vale se a home se identificar
         achados, ok = hosts_por_busca(nome, uf, busca, tentados)
         nao_serve = not ok
-        dominio, home, recusa = ler_home(achados)
-        if recusa:
-            return recusa
+        dominio, home = ler_home(achados)
+    if not dominio and recusados:
+        return next(iter(recusados.values()))
     if not dominio:
         return {"dominio": None, "situacao": "portal_nao_verificado", "pistas": [],
                 "motivo": "a busca não respondeu" if nao_serve else "; ".join(falhas)[:400] or None}
@@ -1014,6 +1052,15 @@ def fatia(fila: list, k: int, n: int) -> list:
     return fila[k - 1::n] if 1 <= k <= n else fila
 
 
+def ordem_da_bateria(codigos: list, por_cod: dict, niveis: dict, pop: dict) -> list:
+    """09/11/2026: quem ainda não é `municipal_completo` vem antes (o sítio é o canal que falta aos 1.530); dentro
+    de cada grupo, capitais e depois população, por `ordem_de_busca` (a mesma ordem, sem cópia). Função pura."""
+    from coletar_planos_arboviroses import ordem_de_busca
+    ref = [{**por_cod[c], "codigo_ibge": int(c)} for c in codigos if c in por_cod]
+    rank = {i: n for n, (i, _, _) in enumerate(ordem_de_busca(ref, pop, {}))}
+    return sorted(codigos, key=lambda c: (niveis.get(c) == "municipal_completo", rank.get(c, len(rank))))
+
+
 def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parados: bool = False,
                      fatia_k_n: tuple = (1, 1)) -> int:
     """A fila da relação do S2iD pelo portal da prefeitura. Retomável no mesmo dia; o prazo do elo
@@ -1027,8 +1074,11 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
     # `fila` (códigos), `municipios` (cadastro: municipios_prioritarios.json) ou a lista inteira
     # (municipios_ibge_referencia.json), como em buscar_planos_fontes_abertas
     cadastro = doc if isinstance(doc, list) else doc.get("municipios", [])
-    fila = [c for c in fatia(doc.get("fila") if isinstance(doc, dict) and doc.get("fila")
-                             else [str(m["codigo_ibge"]).zfill(7) for m in cadastro], *fatia_k_n)
+    niveis = ler("verificacao_municipal.json", [])
+    niveis = {str(v["ibge"]).zfill(7): v["nivel_verificacao"] for v in niveis} if isinstance(niveis, list) else {}
+    fila = [c for c in fatia(ordem_da_bateria(doc.get("fila") if isinstance(doc, dict) and doc.get("fila")
+                                              else [str(m["codigo_ibge"]).zfill(7) for m in cadastro],
+                                              por_cod, niveis, ler("populacao_censo2022.json", {}) or {}), *fatia_k_n)
             if c in por_cod and (feitos["municipios"].get(c, {}).get("consultado_em") != hoje
                                  or _lista_de_endereco_mudou(feitos["municipios"][c], refazer_parados))]
     pistas, lidos, gravados = [], 0, set()
