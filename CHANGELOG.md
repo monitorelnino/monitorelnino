@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · DOE: só o cabeçalho do decreto identifica o ato · A releitura do DOE-RJ ainda gerou pista com o número 40.013: com as colunas intercaladas, uma menção ao El Niño no corpo do decreto caía perto de um decreto citado de outro ato, e o extrator recuava para a citação. O recuo sai: menção sem cabeçalho na janela não vira pista. Autoteste com o caso.
+
 ## 2026-11-09 · #PR · Imprensa: todo cartão lê o seu número · 13 dos 20 cartões mostravam "sem coleta" com número no motor: o script preenchia 7 e o catálogo reescrevia os outros; dois liam nomes antigos do Financiamento. Cada cartão declara de qual número vem e o portão reprova cartão calado. Como ler, Onde está cada dado e Glossário viram cartões em grade; a busca do glossário, que chamava função inexistente, passa a filtrar.
 
 ## 2026-11-09 · #PR · DOE: o número do ato vem do cabeçalho do decreto · Na releitura do DOE-RJ de 03/07, o leitor intercalou a coluna vizinha e um decreto citado caiu entre o cabeçalho do 50.357 e a menção ao El Niño; a pista saiu como 40.013. O extrator passa a preferir o cabeçalho (número seguido da data por extenso) e só usa citação quando não há cabeçalho. Autoteste com o texto intercalado.
