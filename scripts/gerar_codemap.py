@@ -295,12 +295,21 @@ def ler_tudo() -> tuple:
                                + list((RAIZ / "scripts").glob("verificar_*.py")))}
     # A contagem de importadores sai de TODOS os .py versionados, não só dos que o mapa
     # lista: quem importa `coletores_base` conta mesmo que não tenha linha própria.
-    todos_py = {q.relative_to(RAIZ).as_posix(): q.read_text(encoding="utf-8",
-                                                            errors="replace")
-                for q in sorted(RAIZ.rglob("*.py"))
-                if not any(x in q.parts for x in ("arquivo", "node_modules", ".git"))}
+    # 09/11/2026: "versionados" era promessa do comentário, não do código — `rglob` contava também as
+    # cópias de trabalho locais (.claude/worktrees/…) e dependências fora do Git, e o mapa gerado numa
+    # máquina com elas saía diferente do da CI. Agora é a lista do próprio Git.
+    todos_py = {r: (RAIZ / r).read_text(encoding="utf-8", errors="replace")
+                for r in versionados("*.py")
+                if not any(x in pathlib.PurePosixPath(r).parts for x in ("arquivo", "node_modules"))}
     quem_importa = importadores(todos_py)
     return paginas, scripts, pythons, portoes, caminhos_js, quem_importa
+
+
+def versionados(padrao: str) -> list:
+    """Caminhos relativos dos arquivos que o Git rastreia e casam com `padrao` (presentes no disco)."""
+    import subprocess
+    saida = subprocess.run(["git", "ls-files", "--", padrao], cwd=RAIZ, capture_output=True, text=True, check=True).stdout
+    return sorted(r for r in saida.splitlines() if (RAIZ / r).is_file())
 
 
 def autoteste() -> int:
