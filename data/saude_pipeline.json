@@ -3400,7 +3400,19 @@
   {"data": "2026-11-09", "script": "julgar_filas.py", "inicio": "2026-11-09T06:18:23", "duracao_s": 4501.3, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
   {"data": "2026-11-09", "script": "julgar_e_aplicar_descobertas.py", "inicio": "2026-11-09T07:33:24", "duracao_s": 320.8, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-09", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-09T07:38:44", "duracao_s": 1.2, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-09", "script": "scripts/amostra_auditoria_semanal.py", "inicio": "2026-11-09T07:38:45", "duracao_s": 0.5, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-09", "script": "scripts/amostra_auditoria_semanal.py", "inicio": "2026-11-09T07:38:45", "duracao_s": 0.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "coletar_datasus_dbc.py", "inicio": "2026-11-09T07:14:10", "duracao_s": 57.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "coletar_datasus_dbc.py", "inicio": "2026-11-09T07:15:07", "duracao_s": 41.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "coletar_sisab.py", "inicio": "2026-11-09T07:15:48", "duracao_s": 111.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "desfechos_sus.py", "inicio": "2026-11-09T07:17:39", "duracao_s": 1.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "coletar_obitos.py", "inicio": "2026-11-09T07:17:40", "duracao_s": 4.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "coletar_sim.py", "inicio": "2026-11-09T07:17:44", "duracao_s": 8.5, "itens": null, "status": "erro", "erro": "SIM: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam"},
+  {"data": "2026-11-09", "script": "coletar_projecao_cil.py", "inicio": "2026-11-09T07:17:52", "duracao_s": 2.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "gerar_mortalidade_comparada.py", "inicio": "2026-11-09T07:17:54", "duracao_s": 0.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "coletar_sih.py", "inicio": "2026-11-09T07:17:54", "duracao_s": 5.5, "itens": null, "status": "erro", "erro": "SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam"},
+  {"data": "2026-11-09", "script": "coletar_planos_arboviroses.py", "inicio": "2026-11-09T07:17:59", "duracao_s": 1512.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "ler_planos_arboviroses.py", "inicio": "2026-11-09T07:43:11", "duracao_s": 3.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "reconferir_instrumentos_federais.py", "inicio": "2026-11-09T07:43:14", "duracao_s": 0.9, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-09T07:38:45"
+ "atualizado_em": "2026-11-09T07:43:14"
 }
