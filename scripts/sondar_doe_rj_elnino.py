@@ -1,42 +1,14 @@
 #!/usr/bin/env python3
-"""Sonda (só no ramo coleta-dia): lê a Parte I do DOE-RJ de 03 a 10/07/2026 e imprime as páginas que citam El Niño."""
-import json, sys, pathlib
+"""Sonda (só no ramo coleta-dia): texto da p. 3 do DOE-RJ de 03/07/2026 pelo extrator de produção, em volta do 50.357."""
+import json, sys, pathlib, re
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from coletores_base import buscar
-from coletar_doe import edicoes_rj, paginas_com_termo
+from coletar_doe import edicoes_rj
+from preservar_evidencias import extrair_texto_por_pagina
 base = json.load(open("data/fontes_doe.json"))["ufs"]["RJ"]["url"]
-fn = edicoes_rj(lambda u, **k: buscar(u, **k), base)
-for dia in ["2026-07-03", "2026-07-06", "2026-07-07"]:
-    try:
-        eds = fn(dia)
-    except Exception as e:
-        print(f"== {dia}: {type(e).__name__}: {e}"); continue
-    for ed in eds:
-        try:
-            pdf = buscar(ed["url"], timeout=180, origem="sonda")
-            from preservar_evidencias import extrair_texto_por_pagina
-            print(f"   fim dos bytes: {pdf[-200:]!r}; tem %%EOF: {b'%%EOF' in pdf[-2048:]}; tem startxref: {b'startxref' in pdf}")
-            for nome, fn in (("pypdfium2", lambda b: __import__("pypdfium2").PdfDocument(b)), ):
-                try:
-                    doc = fn(pdf); t = doc[0].get_textpage().get_text_range()
-                    print(f"   {nome}: {len(doc)} páginas; p1: {t[:200]!r}")
-                    hits = [i+1 for i in range(len(doc)) if any(k in doc[i].get_textpage().get_text_range().lower() for k in ("el niño", "el nino", "50.357"))]
-                    print(f"   {nome}: páginas com o termo: {hits}")
-                    for i in hits[:3]:
-                        tx = doc[i-1].get_textpage().get_text_range(); j = max(0, tx.lower().find("ni") - 1200)
-                        print(f"--- p. {i}\n{tx[j:j+3000]}\n")
-                except Exception as e:
-                    print(f"   {nome} falhou: {type(e).__name__}: {e}")
-            try:
-                import io; from pypdf import PdfReader; rd = PdfReader(io.BytesIO(pdf)); print(f"   pypdf: {len(rd.pages)} páginas; p1: {(rd.pages[0].extract_text() or '')[:200]!r}")
-            except Exception as e:
-                print(f"   pypdf falhou: {type(e).__name__}: {e}")
-            tx = extrair_texto_por_pagina(pdf) or []
-            print(f"   {len(tx)} páginas extraídas, {sum(len(t or '') for t in tx)} caracteres; amostra: {(tx[0] if tx else '')[:300]!r}")
-            pags = [(i, t) for i, t in enumerate(tx, 1) if any(k in (t or '').lower() for k in ("el niño", "el nino", "50.357", "niño"))]
-            print(f"== {dia} {ed['edicao']}: {len(pdf)} bytes, {len(pags)} página(s) com o termo")
-            for p, t in pags[:4]:
-                i = max(0, t.lower().find("el ni") - 1500)
-                print(f"--- p. {p}\n{t[i:i+3500]}\n")
-        except Exception as e:
-            print(f"== {dia} {ed.get('edicao')}: {type(e).__name__}: {e}")
+for ed in edicoes_rj(lambda u, **k: buscar(u, **k), base)("2026-07-03"):
+    pags = extrair_texto_por_pagina(buscar(ed["url"], timeout=240, origem="sonda"))
+    t = pags[2]
+    for m in re.finditer(r"50\.357|El Ni|EL NI|40\.013", t):
+        print(f"--- {m.group(0)} @ {m.start()}: {t[max(0,m.start()-300):m.start()+300]!r}")
+    break
