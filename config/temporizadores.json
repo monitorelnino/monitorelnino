@@ -1,588 +1,588 @@
 {
-  "_governanca": "REGISTRO DOS TEMPORIZADORES (item 1 do handover de 04/10/2026). Uma entrada por workflow com `schedule:`. O portão `scripts/verificar_temporizadores.py` reprova workflow agendado que falte aqui, e entrada sem `devido_quando` ou `idempotencia`. O princípio da editoria, em letra de forma: NADA roda 'às 22h07'; tudo roda QUANDO ESTÁ DEVIDO, e quem confere são vários observadores independentes — o cron do GitHub, o relógio da nuvem do Claude, todo workflow que rode (oportunista) e o vigia. O cron do GitHub é de melhor esforço: a abertura da noite falhou três vezes em cinco dias (30/09 com 5h30 de atraso, 03/10 com 4h05, 04/10 sem disparar).",
-  "atualizado_em": "2026-10-04",
-  "temporizadores": [
-    {
-      "id": "abertura_da_noite",
-      "workflow": "noturno_diarios.yml",
-      "finalidade": "abre a corrente noturna: diários oficiais, e os elos seguintes pelo término",
-      "cron_primario": "7 1 * * *",
-      "cron_reserva": "37 1 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução iniciada nesta janela noturna",
-      "tolerancia_atraso_min": 60,
-      "idempotencia": "job `abertura` consulta a API por execuções desta janela e não trabalha se já houve",
-      "orcamento_min": 240,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "descoberta",
-        "evidencias",
-        "juiz",
-        "sinais",
-        "triagem",
-        "publicar"
-      ],
-      "gravidade": "alta"
-    },
-    {
-      "id": "busca_web",
-      "workflow": "busca_web_cadencia.yml",
-      "finalidade": "cinco rodadas de busca web distribuídas na janela noturna",
-      "cron_primario": "23 1 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "menos de cinco execuções concluídas nesta janela",
-      "tolerancia_atraso_min": 120,
-      "idempotencia": "disjuntor e cascata próprios; o cursor da fila não reprocessa município lido",
-      "orcamento_min": 120,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "pistas_imprensa",
-        "juiz"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "publicacao_da_manha",
-      "workflow": "publicar_dados.yml",
-      "finalidade": "fecha a noite: recalcula, commita o dado novo e repõe o domínio",
-      "cron_primario": "5 9 * * *",
-      "janela": {
-        "inicio_utc": "09:00",
-        "fim_utc": "11:00"
-      },
-      "devido_quando": "não há publicação concluída com sucesso hoje depois das 09:00 UTC",
-      "tolerancia_atraso_min": 60,
-      "idempotencia": "sem alterações na árvore, o passo de commit sai sem publicar",
-      "orcamento_min": 25,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "site publicado"
-      ],
-      "gravidade": "alta"
-    },
-    {
-      "id": "publicacao_da_noite",
-      "workflow": "publicar_dados.yml",
-      "finalidade": "abre a noite publicando o que a editoria mesclou de dia",
-      "cron_primario": "5 1 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "03:00"
-      },
-      "devido_quando": "não há publicação concluída com sucesso nesta janela",
-      "tolerancia_atraso_min": 60,
-      "idempotencia": "a mesma do publicador: árvore limpa não gera commit",
-      "orcamento_min": 25,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "site publicado"
-      ],
-      "gravidade": "alta"
-    },
-    {
-      "id": "sinais_fisicos",
-      "workflow": "noturno_sinais.yml",
-      "finalidade": "alertas do Cemaden e avisos do Inmet, antes do publicador da manhã",
-      "cron_primario": "0 8 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "o arquivo data/alertas/vigentes.json tem mais de 24 horas",
-      "tolerancia_atraso_min": 90,
-      "idempotencia": "reescreve o instantâneo inteiro; rodar duas vezes dá o mesmo arquivo",
-      "orcamento_min": 45,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "defesa-civil.html",
-        "pacote do blog"
-      ],
-      "gravidade": "alta"
-    },
-    {
-      "id": "saude_diaria",
-      "workflow": "noturno_saude.yml",
-      "finalidade": "camada observada de saúde (InfoDengue, painel de calor do MS, desfechos, DDA, boletins das SES), uma vez por noite",
-      "cron_primario": "50 5 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução da saúde nesta janela",
-      "tolerancia_atraso_min": 120,
-      "idempotencia": "cada coletor reescreve o instantâneo da sua fonte; rodar duas vezes dá o mesmo arquivo",
-      "orcamento_min": 60,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "saude.html",
-        "pacote do blog (saúde)"
-      ],
-      "gravidade": "alta",
-      "_nota": "11/10/2026 (F40): saiu do monólito semanal, que não coletava nada desde 08/10; saude_sinais.json estava em 26/09."
-    },
-    {
-      "id": "desfechos_sus",
-      "workflow": "noturno_desfechos.yml",
-      "finalidade": "desfechos do SUS por UF (SINAN lepto/malária, SISAB diarreias, dengue/chik/SRAG derivados, óbitos, SIH), uma vez por noite, depois da saúde",
-      "cron_primario": "5 7 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução dos desfechos nesta janela",
-      "nao_antes_do_cron": true,
-      "_nota_nao_antes_do_cron": "31/10/2026: a derivação de dengue/chikungunya lê a série SINAN que o elo da saúde grava; devido na abertura, o despachante disparava os dois juntos (01:10 × 01:37) e a derivação saía esparsa. Só depois das 07:05, com a saúde (05:50, teto 60 min) já encerrada.",
-      "tolerancia_atraso_min": 90,
-      "idempotencia": "cada coletor regrava só o seu arquivo e só se o hash da fonte mudou; o SIH retoma do que já leu; rodar duas vezes dá o mesmo arquivo",
-      "orcamento_min": 100,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "saude.html (seção de desfechos)"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "triagem_da_fila",
-      "workflow": "noturno_triagem.yml",
-      "finalidade": "tria a fila de pistas antes do publicador",
-      "cron_primario": "30 8 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há triagem concluída nesta janela",
-      "tolerancia_atraso_min": 90,
-      "idempotencia": "desfecho por prazo é função do dado, não da execução",
-      "orcamento_min": 30,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "fila de pistas"
-      ],
-      "gravidade": "media",
-      "nao_antes_do_cron": true,
-      "_nota_nao_antes_do_cron": "11/10/2026 (F27): a triagem também nasce do fim dos sinais (workflow_run). O despachante não a dispara antes das 08:30 — antes disso, quem a chama é a corrente."
-    },
-    {
-      "id": "vigia_da_abertura",
-      "workflow": "vigia_da_abertura.yml",
-      "finalidade": "confere se a noite abriu e a dispara se não",
-      "cron_primario": "7 2 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução do vigia nesta janela",
-      "tolerancia_atraso_min": 120,
-      "idempotencia": "pergunta o estado da janela antes de disparar; não dispara se já abriu",
-      "orcamento_min": 10,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "abertura_da_noite"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "pacote_legal",
-      "workflow": "pacote_do_blog.yml",
-      "finalidade": "pacote de dados da linha Legal e financiamento, para a central escrever",
-      "cron_primario": "17 9 * * 0",
-      "cron_reserva": "47 9 * * 0",
-      "janela": {
-        "inicio_utc": "09:00",
-        "fim_utc": "23:00"
-      },
-      "devido_quando": "não existe pacote legal com a data do sábado que encerrou a semana",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "o nome do arquivo é a data de fim da semana; reescrever dá o mesmo conteúdo",
-      "orcamento_min": 15,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {
-          "linha": "legal"
-        }
-      },
-      "quem_depende": [
-        "texto do blog de segunda"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "pacote_saude",
-      "workflow": "pacote_do_blog.yml",
-      "finalidade": "pacote de dados da linha Saúde",
-      "cron_primario": "17 9 * * 3",
-      "cron_reserva": "47 9 * * 3",
-      "janela": {
-        "inicio_utc": "09:00",
-        "fim_utc": "23:00"
-      },
-      "devido_quando": "não existe pacote saude com a data do sábado que encerrou a semana",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "a mesma do pacote legal",
-      "orcamento_min": 15,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {
-          "linha": "saude"
-        }
-      },
-      "quem_depende": [
-        "texto do blog de quinta"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "rodada_semanal",
-      "workflow": "atualizar.yml",
-      "finalidade": "rodada completa de coleta, domingo de madrugada",
-      "cron_primario": "10 3 * * 0",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há rodada completa concluída neste domingo",
-      "tolerancia_atraso_min": 180,
-      "idempotencia": "cada coletor tem cursor e dedupe próprios",
-      "orcamento_min": 300,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "índice",
-        "verificação municipal"
-      ],
-      "gravidade": "alta"
-    },
-    {
-      "id": "semanal_respiratorias",
-      "workflow": "semanal_respiratorias.yml",
-      "finalidade": "série de síndrome respiratória da semana",
-      "cron_primario": "15 8 * * *",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução concluída nesta janela",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "reescreve a série inteira a partir da fonte",
-      "orcamento_min": 45,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "saude.html"
-      ],
-      "gravidade": "media",
-      "_nota_janela": "Fechado em 09:00 na campanha de 06/10/2026 (causa F): ia ate 12:00 e podia disparar coleta na `main` depois de a janela da noite fechar. A janela da noite e 01:00-09:00 UTC, e temporizador de COLETA nao a atravessa."
-    },
-    {
-      "id": "semanal_sinais_e_links",
-      "workflow": "semanal_sinais_e_links.yml",
-      "finalidade": "confere links e sinais, domingo de madrugada",
-      "cron_primario": "30 7 * * 0",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução concluída neste domingo",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "conferência não escreve dado do índice",
-      "orcamento_min": 45,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "relatório de links"
-      ],
-      "gravidade": "baixa",
-      "_nota_janela": "Fechado em 09:00 na campanha de 06/10/2026 (causa F): ia ate 12:00 e podia disparar coleta na `main` depois de a janela da noite fechar. A janela da noite e 01:00-09:00 UTC, e temporizador de COLETA nao a atravessa."
-    },
-    {
-      "id": "reavaliacao_defeso",
-      "workflow": "reavaliacao_defeso.yml",
-      "finalidade": "reavalia as fontes suspensas por defeso todo dia até 25/11/2026 (fim do período eleitoral em 25/10); depois sai e a cadência volta a semanal",
-      "cron_primario": "20 5 * * *",
-      "cron_reserva": "26 6 * * *",
-      "janela": {
-        "inicio_utc": "05:00",
-        "fim_utc": "08:00"
-      },
-      "devido_quando": "não há execução concluída hoje",
-      "tolerancia_atraso_min": 120,
-      "idempotencia": "reavaliação grava só a procedência da decisão por fonte; mesma decisão no mesmo dia não muda o registro",
-      "orcamento_min": 60,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "semanal_espin_e_links"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "semanal_espin_e_links",
-      "workflow": "semanal_espin_e_links.yml",
-      "finalidade": "reconfere ESPIN e verifica links, domingo e quarta de madrugada",
-      "cron_primario": "15 6 * * 0,3",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução concluída neste domingo ou quarta",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "ESPIN reescreve o estado da fonte; links não escrevem dado",
-      "orcamento_min": 30,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "saude.html",
-        "relatório de links"
-      ],
-      "gravidade": "media",
-      "_nota": "Separado de semanal_sinais_e_links em 09/10/2026: as duas últimas execuções daquela rotina foram canceladas no teto de 150 min antes de chegar a estes dois comandos."
-    },
-    {
-      "id": "saude_estadual",
-      "workflow": "noturno_saude_estadual.yml",
-      "finalidade": "planos e estruturas de saúde estaduais, toda semana (central, 13/10/2026)",
-      "cron_primario": "40 3 * * 3",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução concluída nesta quarta",
-      "tolerancia_atraso_min": 1440,
-      "idempotencia": "o juiz não promove duas vezes o mesmo documento",
-      "orcamento_min": 60,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "MARÉ Saúde"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "conformidade_diaria",
-      "workflow": "conformidade_diaria.yml",
-      "finalidade": "passa as regras de conformidade sobre o site publicado",
-      "cron_primario": "0 11 * * *",
-      "janela": {
-        "inicio_utc": "11:00",
-        "fim_utc": "23:00"
-      },
-      "devido_quando": "não há execução concluída hoje",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "só verifica; não escreve",
-      "orcamento_min": 20,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "relatório de conformidade"
-      ],
-      "gravidade": "baixa"
-    },
-    {
-      "id": "verificar_publicado",
-      "workflow": "verificar_publicado.yml",
-      "finalidade": "confere o site publicado contra o manifesto e o canário de navegador",
-      "cron_primario": "0 10 * * *",
-      "janela": {
-        "inicio_utc": "10:00",
-        "fim_utc": "23:00"
-      },
-      "devido_quando": "não há execução concluída hoje",
-      "tolerancia_atraso_min": 240,
-      "idempotencia": "só verifica; não escreve",
-      "orcamento_min": 20,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "confirmação da publicação"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "auditoria_seguranca",
-      "workflow": "auditoria_seguranca.yml",
-      "finalidade": "auditoria de segurança semanal, antes da rodada de segunda",
-      "cron_primario": "0 8 * * 1",
-      "janela": {
-        "inicio_utc": "08:00",
-        "fim_utc": "20:00"
-      },
-      "devido_quando": "não há execução concluída nesta segunda",
-      "tolerancia_atraso_min": 480,
-      "idempotencia": "só verifica; não escreve",
-      "orcamento_min": 20,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "relatório de segurança"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "despachante",
-      "workflow": "despachante.yml",
-      "finalidade": "o observador (a): confere o registro a cada 20 min e dispara o devido",
-      "cron_primario": "7,27,47 * * * *",
-      "janela": {
-        "inicio_utc": "00:00",
-        "fim_utc": "23:59"
-      },
-      "devido_quando": "nunca por si: ele é o observador, não o observado. Entra no registro porque o portão cobra toda entrada com `schedule:`, e porque o seu próprio silêncio tem de ser visível — se ele parar, nada é despachado",
-      "tolerancia_atraso_min": 40,
-      "idempotencia": "só dispara o que não tem execução na janela; `concurrency` próprio",
-      "orcamento_min": 5,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {
-          "origem": "manual"
-        }
-      },
-      "quem_depende": [
-        "todos os temporizadores"
-      ],
-      "gravidade": "alta"
-    },
-    {
-      "id": "checagem-pre-noite",
-      "workflow": "checagem_pre_noite.yml",
-      "finalidade": "confere, antes da abertura, main verde, mesclagem tardia, fila de runs, despachante/relógio vivos, segredos e ensaio real",
-      "cron_primario": "53 22 * * *",
-      "janela": {
-        "inicio_utc": "22:40",
-        "fim_utc": "23:59"
-      },
-      "devido_quando": "uma vez por noite, antes da abertura das 01:07 UTC",
-      "tolerancia_atraso_min": 60,
-      "idempotencia": "só lê a API e sobe artefato; repetir não muda nada",
-      "orcamento_min": 10,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "a editoria (Issue antes da noite)"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "ensaio-real-da-noite",
-      "workflow": "ensaio_real_da_noite.yml",
-      "finalidade": "roda a corrente de verdade no GitHub, num ramo ensaio-real/, sem rede, e provoca dois pendentes e um empurrão concorrente",
-      "cron_primario": "13 18 * * *",
-      "janela": {
-        "inicio_utc": "18:00",
-        "fim_utc": "21:00"
-      },
-      "devido_quando": "uma vez por dia, antes da checagem pré-noite (22:53 UTC)",
-      "tolerancia_atraso_min": 90,
-      "idempotencia": "cada execução cria o próprio ramo ensaio-real/<data>-<run> e o apaga no fim; nada vai à main",
-      "orcamento_min": 150,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "a checagem pré-noite",
-        "a editoria (Issue no vermelho)"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "doe_incremental",
-      "workflow": "noturno_doe_incremental.yml",
-      "finalidade": "leitura incremental dos DOE das 27 UFs e conferência de decreto estadual de emergência, segunda, quarta e sexta (editoria, 30/10/2026)",
-      "cron_primario": "17 2 * * 1,3,5",
-      "janela": {
-        "inicio_utc": "01:00",
-        "fim_utc": "09:00"
-      },
-      "devido_quando": "não há execução concluída nesta segunda, quarta ou sexta",
-      "tolerancia_atraso_min": 1440,
-      "idempotencia": "edição preservada por hash não se repete; a janela de 4 dias cobre o intervalo entre conferências",
-      "orcamento_min": 120,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "MARÉ Saúde",
-        "Defesa civil"
-      ],
-      "gravidade": "media"
-    },
-    {
-      "id": "alertas_diurnos",
-      "workflow": "diurno_alertas.yml",
-      "finalidade": "recoleta só os alertas do Inmet e do Cemaden de dia, duas vezes, para a tabela não passar de ~6 h (editoria, 09/11/2026)",
-      "cron_primario": "10 12,18 * * *",
-      "cron_reserva": "40 12,18 * * *",
-      "janela": {
-        "inicio_utc": "12:00",
-        "fim_utc": "20:00"
-      },
-      "devido_quando": "não há execução concluída na meia-janela corrente (12:00–15:00 ou 18:00–20:00 UTC) de hoje",
-      "tolerancia_atraso_min": 60,
-      "idempotencia": "reescreve os alertas vigentes a partir da fonte; mesma resposta dá o mesmo arquivo",
-      "orcamento_min": 15,
-      "recuperacao": {
-        "workflow_dispatch": true,
-        "entradas": {}
-      },
-      "quem_depende": [
-        "defesa-civil.html",
-        "monitor-de-riscos.html"
-      ],
-      "gravidade": "media"
+ "_governanca": "REGISTRO DOS TEMPORIZADORES (item 1 do handover de 04/10/2026). Uma entrada por workflow com `schedule:`. O portão `scripts/verificar_temporizadores.py` reprova workflow agendado que falte aqui, e entrada sem `devido_quando` ou `idempotencia`. O princípio da editoria, em letra de forma: NADA roda 'às 22h07'; tudo roda QUANDO ESTÁ DEVIDO, e quem confere são vários observadores independentes — o cron do GitHub, o relógio da nuvem do Claude, todo workflow que rode (oportunista) e o vigia. O cron do GitHub é de melhor esforço: a abertura da noite falhou três vezes em cinco dias (30/09 com 5h30 de atraso, 03/10 com 4h05, 04/10 sem disparar).",
+ "atualizado_em": "2026-10-04",
+ "temporizadores": [
+  {
+   "id": "abertura_da_noite",
+   "workflow": "noturno_diarios.yml",
+   "finalidade": "abre a corrente noturna: diários oficiais, e os elos seguintes pelo término",
+   "cron_primario": "7 1 * * *",
+   "cron_reserva": "37 1 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução iniciada nesta janela noturna",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "job `abertura` consulta a API por execuções desta janela e não trabalha se já houve",
+   "orcamento_min": 240,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "descoberta",
+    "evidencias",
+    "juiz",
+    "sinais",
+    "triagem",
+    "publicar"
+   ],
+   "gravidade": "alta"
+  },
+  {
+   "id": "busca_web",
+   "workflow": "busca_web_cadencia.yml",
+   "finalidade": "cinco rodadas de busca web distribuídas na janela noturna",
+   "cron_primario": "23 1 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "menos de cinco execuções concluídas nesta janela",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "disjuntor e cascata próprios; o cursor da fila não reprocessa município lido",
+   "orcamento_min": 120,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "pistas_imprensa",
+    "juiz"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "publicacao_da_manha",
+   "workflow": "publicar_dados.yml",
+   "finalidade": "fecha a noite: recalcula, commita o dado novo e repõe o domínio",
+   "cron_primario": "5 9 * * *",
+   "janela": {
+    "inicio_utc": "09:00",
+    "fim_utc": "11:00"
+   },
+   "devido_quando": "não há publicação concluída com sucesso hoje depois das 09:00 UTC",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "sem alterações na árvore, o passo de commit sai sem publicar",
+   "orcamento_min": 25,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "site publicado"
+   ],
+   "gravidade": "alta"
+  },
+  {
+   "id": "publicacao_da_noite",
+   "workflow": "publicar_dados.yml",
+   "finalidade": "abre a noite publicando o que a editoria mesclou de dia",
+   "cron_primario": "5 1 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "03:00"
+   },
+   "devido_quando": "não há publicação concluída com sucesso nesta janela",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "a mesma do publicador: árvore limpa não gera commit",
+   "orcamento_min": 25,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "site publicado"
+   ],
+   "gravidade": "alta"
+  },
+  {
+   "id": "sinais_fisicos",
+   "workflow": "noturno_sinais.yml",
+   "finalidade": "alertas do Cemaden e avisos do Inmet, antes do publicador da manhã",
+   "cron_primario": "0 8 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "o arquivo data/alertas/vigentes.json tem mais de 24 horas",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "reescreve o instantâneo inteiro; rodar duas vezes dá o mesmo arquivo",
+   "orcamento_min": 45,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "defesa-civil.html",
+    "pacote do blog"
+   ],
+   "gravidade": "alta"
+  },
+  {
+   "id": "saude_diaria",
+   "workflow": "noturno_saude.yml",
+   "finalidade": "camada observada de saúde (InfoDengue, painel de calor do MS, desfechos, DDA, boletins das SES), uma vez por noite",
+   "cron_primario": "50 5 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução da saúde nesta janela",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "cada coletor reescreve o instantâneo da sua fonte; rodar duas vezes dá o mesmo arquivo",
+   "orcamento_min": 60,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html",
+    "pacote do blog (saúde)"
+   ],
+   "gravidade": "alta",
+   "_nota": "11/10/2026 (F40): saiu do monólito semanal, que não coletava nada desde 08/10; saude_sinais.json estava em 26/09."
+  },
+  {
+   "id": "desfechos_sus",
+   "workflow": "noturno_desfechos.yml",
+   "finalidade": "desfechos do SUS por UF (SINAN lepto/malária, SISAB diarreias, dengue/chik/SRAG derivados, óbitos, SIH), uma vez por noite, depois da saúde",
+   "cron_primario": "5 7 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução dos desfechos nesta janela",
+   "nao_antes_do_cron": true,
+   "_nota_nao_antes_do_cron": "31/10/2026: a derivação de dengue/chikungunya lê a série SINAN que o elo da saúde grava; devido na abertura, o despachante disparava os dois juntos (01:10 × 01:37) e a derivação saía esparsa. Só depois das 07:05, com a saúde (05:50, teto 60 min) já encerrada.",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "cada coletor regrava só o seu arquivo e só se o hash da fonte mudou; o SIH retoma do que já leu; rodar duas vezes dá o mesmo arquivo",
+   "orcamento_min": 100,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html (seção de desfechos)"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "triagem_da_fila",
+   "workflow": "noturno_triagem.yml",
+   "finalidade": "tria a fila de pistas antes do publicador",
+   "cron_primario": "30 8 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há triagem concluída nesta janela",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "desfecho por prazo é função do dado, não da execução",
+   "orcamento_min": 30,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "fila de pistas"
+   ],
+   "gravidade": "media",
+   "nao_antes_do_cron": true,
+   "_nota_nao_antes_do_cron": "11/10/2026 (F27): a triagem também nasce do fim dos sinais (workflow_run). O despachante não a dispara antes das 08:30 — antes disso, quem a chama é a corrente."
+  },
+  {
+   "id": "vigia_da_abertura",
+   "workflow": "vigia_da_abertura.yml",
+   "finalidade": "confere se a noite abriu e a dispara se não",
+   "cron_primario": "7 2 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução do vigia nesta janela",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "pergunta o estado da janela antes de disparar; não dispara se já abriu",
+   "orcamento_min": 10,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "abertura_da_noite"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "pacote_legal",
+   "workflow": "pacote_do_blog.yml",
+   "finalidade": "pacote de dados da linha Legal e financiamento, para a central escrever",
+   "cron_primario": "17 9 * * 0",
+   "cron_reserva": "47 9 * * 0",
+   "janela": {
+    "inicio_utc": "09:00",
+    "fim_utc": "23:00"
+   },
+   "devido_quando": "não existe pacote legal com a data do sábado que encerrou a semana",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "o nome do arquivo é a data de fim da semana; reescrever dá o mesmo conteúdo",
+   "orcamento_min": 15,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {
+     "linha": "legal"
     }
-  ]
+   },
+   "quem_depende": [
+    "texto do blog de segunda"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "pacote_saude",
+   "workflow": "pacote_do_blog.yml",
+   "finalidade": "pacote de dados da linha Saúde",
+   "cron_primario": "17 9 * * 3",
+   "cron_reserva": "47 9 * * 3",
+   "janela": {
+    "inicio_utc": "09:00",
+    "fim_utc": "23:00"
+   },
+   "devido_quando": "não existe pacote saude com a data do sábado que encerrou a semana",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "a mesma do pacote legal",
+   "orcamento_min": 15,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {
+     "linha": "saude"
+    }
+   },
+   "quem_depende": [
+    "texto do blog de quinta"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "rodada_semanal",
+   "workflow": "atualizar.yml",
+   "finalidade": "rodada completa de coleta, domingo de madrugada",
+   "cron_primario": "10 3 * * 0",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há rodada completa concluída neste domingo",
+   "tolerancia_atraso_min": 180,
+   "idempotencia": "cada coletor tem cursor e dedupe próprios",
+   "orcamento_min": 300,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "índice",
+    "verificação municipal"
+   ],
+   "gravidade": "alta"
+  },
+  {
+   "id": "semanal_respiratorias",
+   "workflow": "semanal_respiratorias.yml",
+   "finalidade": "série de síndrome respiratória da semana",
+   "cron_primario": "15 8 * * *",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída nesta janela",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "reescreve a série inteira a partir da fonte",
+   "orcamento_min": 45,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html"
+   ],
+   "gravidade": "media",
+   "_nota_janela": "Fechado em 09:00 na campanha de 06/10/2026 (causa F): ia ate 12:00 e podia disparar coleta na `main` depois de a janela da noite fechar. A janela da noite e 01:00-09:00 UTC, e temporizador de COLETA nao a atravessa."
+  },
+  {
+   "id": "semanal_sinais_e_links",
+   "workflow": "semanal_sinais_e_links.yml",
+   "finalidade": "confere links e sinais, domingo de madrugada",
+   "cron_primario": "30 7 * * 0",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída neste domingo",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "conferência não escreve dado do índice",
+   "orcamento_min": 45,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "relatório de links"
+   ],
+   "gravidade": "baixa",
+   "_nota_janela": "Fechado em 09:00 na campanha de 06/10/2026 (causa F): ia ate 12:00 e podia disparar coleta na `main` depois de a janela da noite fechar. A janela da noite e 01:00-09:00 UTC, e temporizador de COLETA nao a atravessa."
+  },
+  {
+   "id": "reavaliacao_defeso",
+   "workflow": "reavaliacao_defeso.yml",
+   "finalidade": "reavalia as fontes suspensas por defeso todo dia até 25/11/2026 (fim do período eleitoral em 25/10); depois sai e a cadência volta a semanal",
+   "cron_primario": "20 5 * * *",
+   "cron_reserva": "26 6 * * *",
+   "janela": {
+    "inicio_utc": "05:00",
+    "fim_utc": "08:00"
+   },
+   "devido_quando": "não há execução concluída hoje",
+   "tolerancia_atraso_min": 120,
+   "idempotencia": "reavaliação grava só a procedência da decisão por fonte; mesma decisão no mesmo dia não muda o registro",
+   "orcamento_min": 60,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "semanal_espin_e_links"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "semanal_espin_e_links",
+   "workflow": "semanal_espin_e_links.yml",
+   "finalidade": "reconfere ESPIN e verifica links, domingo e quarta de madrugada",
+   "cron_primario": "15 6 * * 0,3",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída neste domingo ou quarta",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "ESPIN reescreve o estado da fonte; links não escrevem dado",
+   "orcamento_min": 30,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "saude.html",
+    "relatório de links"
+   ],
+   "gravidade": "media",
+   "_nota": "Separado de semanal_sinais_e_links em 09/10/2026: as duas últimas execuções daquela rotina foram canceladas no teto de 150 min antes de chegar a estes dois comandos."
+  },
+  {
+   "id": "saude_estadual",
+   "workflow": "noturno_saude_estadual.yml",
+   "finalidade": "planos e estruturas de saúde estaduais, toda semana (central, 13/10/2026)",
+   "cron_primario": "40 3 * * 3",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída nesta quarta",
+   "tolerancia_atraso_min": 1440,
+   "idempotencia": "o juiz não promove duas vezes o mesmo documento",
+   "orcamento_min": 60,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "MARÉ Saúde"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "conformidade_diaria",
+   "workflow": "conformidade_diaria.yml",
+   "finalidade": "passa as regras de conformidade sobre o site publicado",
+   "cron_primario": "0 11 * * *",
+   "janela": {
+    "inicio_utc": "11:00",
+    "fim_utc": "23:00"
+   },
+   "devido_quando": "não há execução concluída hoje",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "só verifica; não escreve",
+   "orcamento_min": 20,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "relatório de conformidade"
+   ],
+   "gravidade": "baixa"
+  },
+  {
+   "id": "verificar_publicado",
+   "workflow": "verificar_publicado.yml",
+   "finalidade": "confere o site publicado contra o manifesto e o canário de navegador",
+   "cron_primario": "0 10 * * *",
+   "janela": {
+    "inicio_utc": "10:00",
+    "fim_utc": "23:00"
+   },
+   "devido_quando": "não há execução concluída hoje",
+   "tolerancia_atraso_min": 240,
+   "idempotencia": "só verifica; não escreve",
+   "orcamento_min": 20,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "confirmação da publicação"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "auditoria_seguranca",
+   "workflow": "auditoria_seguranca.yml",
+   "finalidade": "auditoria de segurança semanal, antes da rodada de segunda",
+   "cron_primario": "0 8 * * 1",
+   "janela": {
+    "inicio_utc": "08:00",
+    "fim_utc": "20:00"
+   },
+   "devido_quando": "não há execução concluída nesta segunda",
+   "tolerancia_atraso_min": 480,
+   "idempotencia": "só verifica; não escreve",
+   "orcamento_min": 20,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "relatório de segurança"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "despachante",
+   "workflow": "despachante.yml",
+   "finalidade": "o observador (a): confere o registro a cada 20 min e dispara o devido",
+   "cron_primario": "7,27,47 * * * *",
+   "janela": {
+    "inicio_utc": "00:00",
+    "fim_utc": "23:59"
+   },
+   "devido_quando": "nunca por si: ele é o observador, não o observado. Entra no registro porque o portão cobra toda entrada com `schedule:`, e porque o seu próprio silêncio tem de ser visível — se ele parar, nada é despachado",
+   "tolerancia_atraso_min": 40,
+   "idempotencia": "só dispara o que não tem execução na janela; `concurrency` próprio",
+   "orcamento_min": 5,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {
+     "origem": "manual"
+    }
+   },
+   "quem_depende": [
+    "todos os temporizadores"
+   ],
+   "gravidade": "alta"
+  },
+  {
+   "id": "checagem-pre-noite",
+   "workflow": "checagem_pre_noite.yml",
+   "finalidade": "confere, antes da abertura, main verde, mesclagem tardia, fila de runs, despachante/relógio vivos, segredos e ensaio real",
+   "cron_primario": "53 22 * * *",
+   "janela": {
+    "inicio_utc": "22:40",
+    "fim_utc": "23:59"
+   },
+   "devido_quando": "uma vez por noite, antes da abertura das 01:07 UTC",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "só lê a API e sobe artefato; repetir não muda nada",
+   "orcamento_min": 10,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "a editoria (Issue antes da noite)"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "ensaio-real-da-noite",
+   "workflow": "ensaio_real_da_noite.yml",
+   "finalidade": "roda a corrente de verdade no GitHub, num ramo ensaio-real/, sem rede, e provoca dois pendentes e um empurrão concorrente",
+   "cron_primario": "13 18 * * *",
+   "janela": {
+    "inicio_utc": "18:00",
+    "fim_utc": "21:00"
+   },
+   "devido_quando": "uma vez por dia, antes da checagem pré-noite (22:53 UTC)",
+   "tolerancia_atraso_min": 90,
+   "idempotencia": "cada execução cria o próprio ramo ensaio-real/<data>-<run> e o apaga no fim; nada vai à main",
+   "orcamento_min": 150,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "a checagem pré-noite",
+    "a editoria (Issue no vermelho)"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "doe_incremental",
+   "workflow": "noturno_doe_incremental.yml",
+   "finalidade": "leitura incremental dos DOE das 27 UFs e conferência de decreto estadual de emergência, segunda, quarta e sexta (editoria, 30/10/2026)",
+   "cron_primario": "17 2 * * 1,3,5",
+   "janela": {
+    "inicio_utc": "01:00",
+    "fim_utc": "09:00"
+   },
+   "devido_quando": "não há execução concluída nesta segunda, quarta ou sexta",
+   "tolerancia_atraso_min": 1440,
+   "idempotencia": "edição preservada por hash não se repete; a janela de 4 dias cobre o intervalo entre conferências",
+   "orcamento_min": 120,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "MARÉ Saúde",
+    "Defesa civil"
+   ],
+   "gravidade": "media"
+  },
+  {
+   "id": "alertas_diurnos",
+   "workflow": "diurno_alertas.yml",
+   "finalidade": "recoleta só os alertas do Inmet e do Cemaden de dia, duas vezes, para a tabela não passar de ~6 h (editoria, 09/11/2026)",
+   "cron_primario": "10 12,18 * * *",
+   "cron_reserva": "40 12,18 * * *",
+   "janela": {
+    "inicio_utc": "12:00",
+    "fim_utc": "20:00"
+   },
+   "devido_quando": "não há execução concluída na meia-janela corrente (12:00–15:00 ou 18:00–20:00 UTC) de hoje",
+   "tolerancia_atraso_min": 60,
+   "idempotencia": "reescreve os alertas vigentes a partir da fonte; mesma resposta dá o mesmo arquivo",
+   "orcamento_min": 15,
+   "recuperacao": {
+    "workflow_dispatch": true,
+    "entradas": {}
+   },
+   "quem_depende": [
+    "defesa-civil.html",
+    "monitor-de-riscos.html"
+   ],
+   "gravidade": "media"
+  }
+ ]
 }
