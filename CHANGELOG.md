@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Sítio da prefeitura: recusa é do host, fila começa por quem falta · Os 1.530 municípios fora de `municipal_completo` têm diário e busca web; falta-lhes só o sítio. Em 83, o 403 de um host do Wikidata (IBGE, câmara, bombeiros) encerrava a leitura antes do endereço padrão. A recusa passa a valer para aquele host e o seu `www.`, sem novo pedido; os demais candidatos seguem. A fila do sítio põe primeiro quem não está completo: capitais, depois população.
+
 ## 2026-11-09 · #PR · DOE: só o cabeçalho do decreto identifica o ato · A releitura do DOE-RJ ainda gerou pista com o número 40.013: com as colunas intercaladas, uma menção ao El Niño no corpo do decreto caía perto de um decreto citado de outro ato, e o extrator recuava para a citação. O recuo sai: menção sem cabeçalho na janela não vira pista. Autoteste com o caso.
 
 ## 2026-11-09 · #PR · Imprensa: todo cartão lê o seu número · 13 dos 20 cartões mostravam "sem coleta" com número no motor: o script preenchia 7 e o catálogo reescrevia os outros; dois liam nomes antigos do Financiamento. Cada cartão declara de qual número vem e o portão reprova cartão calado. Como ler, Onde está cada dado e Glossário viram cartões em grade; a busca do glossário, que chamava função inexistente, passa a filtrar.
