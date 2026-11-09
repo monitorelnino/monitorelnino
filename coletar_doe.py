@@ -20,6 +20,7 @@ USO
   python coletar_doe.py --autoteste
   python coletar_doe.py --regiao NE            # lote por região (§13: NE, N, CO, SE, S)
   python coletar_doe.py --uf SC --desde 2026-06-29
+  python coletar_doe.py --uf RJ --desde 2026-07-02 --ate 2026-07-03   # releitura retroativa (fora da janela)
 """
 import base64, json, re, sys, time, urllib.parse
 from datetime import date, timedelta
@@ -48,7 +49,10 @@ TERMOS = ["situação de emergência", "estado de calamidade pública",
 # Termos usados na busca da plataforma comum: os dois primeiros bastam para o que interessa e
 # custam duas consultas por UF em vez de seis. "situação de emergência" já casa as homologações
 # com e sem número de decreto.
-TERMOS_APIFRONT = ("situação de emergência", "estado de calamidade pública")
+# 09/11/2026: o docstring promete "atos estaduais sobre o ciclo" e os termos só viam emergência — o
+# Decreto RJ nº 50.357/2026 (Comitê Estadual de Enfrentamento aos Efeitos do El Niño) nunca foi lido.
+# As duas grafias: a leitura de página do PDF compara texto, e "nino" não casa "niño".
+TERMOS_APIFRONT = ("situação de emergência", "estado de calamidade pública", "El Niño", "El Nino")
 # 24/09/2026 (§194): host migrado — o antigo responde 302 a cada chamada desde 21/09 (§ do coletor
 # municipal). E fica registrado o que foi MEDIDO em 24/09: o Querido Diário **não indexa diário
 # ESTADUAL**. Consultados os territórios de SE, ES, SP, RJ e MG (códigos IBGE de dois dígitos), todos
@@ -338,6 +342,37 @@ def homologacoes_no_texto(texto: str) -> list:
     for m in PADRAO_HOMOLOGA.finditer(texto):
         juntar(m.group(2), m.group(1), m.start())
     return list(por_municipio.values())
+
+
+# 09/11/2026: ato estadual sobre o El Niño — o decreto até 400 caracteres antes da menção, e o que ele
+# institui entre o número e a menção. Sem decreto estadual antes, não é ato; sem estrutura nem plano,
+# a porta recusaria (`decreto` não entra na fila) e não se grava.
+PAD_EL_NINO = re.compile(r"el\s+ni[ñn]o", re.I)
+TIPOS_DO_ATO = (("estrutura", re.compile(r"comit[êe]|sala\s+de\s+situa[çc][ãa]o|gabinete|grupo\s+de\s+trabalho"
+                                         r"|for[çc]a[\s-]+tarefa", re.I)),
+                ("plano", re.compile(r"\bplano\b", re.I)))
+
+
+def atos_el_nino(itens: list, uf: str, hash_evidencia: str, hoje: str) -> list:
+    """Pistas estaduais (alvo = UF) dos atos que citam o El Niño, uma por decreto e edição. Função pura."""
+    saida = {}
+    for it in itens:
+        for tr in it["trechos"]:
+            for m in PAD_EL_NINO.finditer(tr):
+                base = max(0, m.start() - 400)
+                dec = list(PAD_DECRETO_ESTADUAL.finditer(tr, base, m.start()))
+                tipo = dec and next((t for t, p in TIPOS_DO_ATO if p.search(tr, dec[-1].start(), m.end())), None)
+                if not tipo:
+                    continue
+                numero = dec[-1].group(1).strip(".")
+                saida.setdefault((numero, it["url"]), {
+                    "url_final": it["url"], "tipo": tipo, "alvo": uf.upper(), "uf": uf.upper(), "nivel": "A",
+                    "data": it.get("data") or hoje, "origem": "doe", "registrado_em": hoje,
+                    "decreto_estadual": numero, "pagina": it.get("pagina"), "paginas": it.get("paginas"),
+                    "trecho": " ".join(tr[dec[-1].start():m.end() + 300].split()),
+                    "hash_evidencia": hash_evidencia,
+                    "documento_oficial_confirmado": None, "promovivel": False})
+    return list(saida.values())
 
 
 def parse_dodf(bruto: bytes) -> tuple:
@@ -896,7 +931,8 @@ EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_ap
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
-                     buscar_fn=None, pausa: float = RITMO_APIFRONT_S, dormir=None, extrair_fn=None) -> tuple:
+                     buscar_fn=None, pausa: float = RITMO_APIFRONT_S, dormir=None, extrair_fn=None,
+                     janela_dias=JANELA_EDICOES_DIAS) -> tuple:
     """(itens, totais) das edições por data ainda não lidas na janela.
 
     `edicoes_fn(data)` devolve [{edicao, url, pdf?}] — vazio quando não há edição na data. Só a
@@ -905,7 +941,7 @@ def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, ter
     pequeno demais para ser uma edição, é mudança de contrato e LEVANTA (§210)."""
     _buscar = buscar_fn or buscar
     _dormir = dormir or time.sleep
-    inicio = max(desde, (date.fromisoformat(ate) - timedelta(days=JANELA_EDICOES_DIAS)).isoformat())
+    inicio = desde if janela_dias is None else max(desde, (date.fromisoformat(ate) - timedelta(days=janela_dias)).isoformat())
     itens, totais = [], {"edicoes_lidas": 0, "datas_sem_edicao": 0, "edicoes_nao_baixadas": 0}
     for data in (d for d in datas_do_periodo(inicio, ate) if d not in lidas):
         lidas_na_data = 0
@@ -1016,7 +1052,10 @@ def sobra_de_homologacao(hm: dict, hash_evidencia: str, hoje: str, cod_ibge=None
     }
 
 
-def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
+def coletar_uf(uf: str, desde: str, cfg: dict, ate: str = "") -> str:
+    """`ate` (releitura retroativa, 09/11/2026): lê as edições de `desde` a `ate` de novo, fora da janela de
+    8 dias e sem pular as já lidas — para quando o leitor ou os termos mudam (o DOE-RJ foi lido vazio
+    até esta data). Sem `ate`, a rotina de sempre."""
     por_cod, por_nome = referencia_ibge()
     f = cfg["ufs"][uf]
     hoje = hoje_editorial().isoformat()
@@ -1040,8 +1079,9 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         url = f["url"]
         try:
             if f["adaptador"] in EDICOES_POR_DATA:
-                itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
-                                                 f.setdefault("lidas", {}))
+                itens, totais = itens_por_edicao(uf, desde, ate or hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
+                                                 {} if ate else f.setdefault("lidas", {}),
+                                                 janela_dias=None if ate else JANELA_EDICOES_DIAS)
             else:
                 # §231: a busca da plataforma comum entrega o TEXTO INTEGRAL da página que casou.
                 itens, totais = itens_da_busca(uf, f["adaptador"], url, desde, hoje)
@@ -1115,6 +1155,8 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
                                 "fonte": f"Diário Oficial do Estado ({hm['uf']})", "url": hm["url"],
                                 "lat": ref["lat"], "lon": ref["lon"], "canal": "repositorio_estadual", "hash_evidencia": h})
         marcar_fato_municipal(cod, "decreto_homologado", True); vistos.add(chave); novos += 1
+    el_nino = atos_el_nino(itens, uf, h, hoje)
+    pistas["itens"] += el_nino; pist += len(el_nino)
     gravar("atos_resposta.json", carimbar_atos(atos)); sincronizar_pistas("pistas_doe.json", pistas, origem="doe", ler_fn=ler, gravar_fn=gravar)
     ibges_uf = [c for c, r in por_cod.items() if r["uf"] == uf]
     marcar_fonte_consultada(ibges_uf, f"DOE/{uf}", "estadual", resultado=f"{len(itens)} edição(ões)/trecho(s)")
@@ -1422,6 +1464,26 @@ def autoteste() -> int:
                 and all(cfg[uf]["adaptador"] is None for uf in APIFRONT_SEM_BUSCA)
                 and all(v.get("medido") and v.get("caminho") for v in APIFRONT_SEM_BUSCA.values()))
 
+    def t13():
+        """09/11/2026: ato estadual sobre o El Niño vira pista da UF, pela porta; menção sem ato, não."""
+        url = "https://www.dioe.pr.gov.br/portal/edicoes/download/17314"
+        it = lambda t: [{"data": "2026-07-03", "pagina": 2, "paginas": 40, "url": url, "trechos": [t]}]
+        sim = atos_el_nino(it("PODER EXECUTIVO DECRETO Nº 50.357 DE 03 DE JULHO DE 2026 — INSTITUI O COMITÊ "
+                              "ESTADUAL DE ENFRENTAMENTO AOS EFEITOS DO EL NIÑO E DÁ OUTRAS PROVIDÊNCIAS."),
+                           "pr", "h0", "2026-11-09")
+        nao = atos_el_nino(it("Boletim agroclimático: o El Niño deve reduzir as chuvas no Norte. Decreto "
+                              "Municipal nº 12 homologado."), "PR", "h0", "2026-11-09")
+        disco = {"pistas_doe.json": {"itens": []}}
+        res = sincronizar_pistas("pistas_doe.json", {"itens": [dict(p) for p in sim]}, origem="doe",
+                                 ler_fn=lambda n, padrao=None: disco.get(n, padrao),
+                                 gravar_fn=lambda n, obj, compacto=False: disco.__setitem__(n, obj))
+        p = sim[0] if len(sim) == 1 else {}
+        return (p.get("decreto_estadual") == "50.357" and p["tipo"] == "estrutura" and p["alvo"] == "PR"
+                and p["url_final"] == url and p["pagina"] == 2 and p["origem"] == "doe"
+                and p["documento_oficial_confirmado"] is None and p["promovivel"] is False
+                and nao == [] and res["gravadas"] == 1
+                and disco["pistas_doe.json"]["itens"][0]["decreto_estadual"] == "50.357")
+
     return rodar_autoteste({"parser Querido Diário": t1, "extrai homologação com nº e município": t2,
                             "negativo: resposta vazia/nula": t3, "config nasce a_verificar nas 27 UFs": t4,
                             "§231 parser da busca da plataforma comum (recorte real)": t5,
@@ -1432,6 +1494,7 @@ def autoteste() -> int:
                             "§231 negativo: estrutura ausente levanta em toda forma": t9,
                             "§231 as seis UFs nascem com adaptador e host": t10,
                             "§231 o termo não volta a ter o artigo a mais": t11,
+                            "ato estadual sobre o El Niño vira pista da UF; menção sem ato, não": t13,
                             # DF — a API própria do DODF, lida da rota que o JS do sítio chama.
         "DODF: total e lista saem da resposta real":
             lambda: parse_dodf(FIXTURE_DODF)[0] == 7 and len(parse_dodf(FIXTURE_DODF)[1]) == 1,
@@ -1489,6 +1552,12 @@ def autoteste() -> int:
         "edição por data: só a data da janela ainda não lida desce ao PDF; 404 é data sem edição; "
         "data lida não se relê e a antiga sai de `lidas`": _t_edicao_por_data,
         "DOE-CE: os cadernos do dia vão até o primeiro 300/404": _t_cadernos_ce,
+        "releitura retroativa (janela_dias=None) lê data de julho fora da janela de 8 dias, sem tocar no `lidas` da rotina":
+            lambda: (lambda lid: (len(itens_por_edicao("RJ", "2026-07-03", "2026-07-03", lambda d: [{"edicao": "I", "url": "u", "pdf": b"%PDF-" + b"0" * MINIMO_BYTES_DE_EDICAO}],
+                                                       lid, buscar_fn=lambda u, **k: b"", dormir=lambda s: None, janela_dias=None,
+                                                       extrair_fn=lambda _: ["DECRETO Nº 50.357 ... EL NIÑO"])[0]) == 1)
+                     and len(itens_por_edicao("RJ", "2026-07-03", "2026-11-09", lambda d: [{"edicao": "I", "url": "u", "pdf": b"%PDF-" + b"0" * MINIMO_BYTES_DE_EDICAO}],
+                                              {}, dormir=lambda s: None, extrair_fn=lambda _: ["EL NIÑO"])[0]) <= 8)({}),
         "edição por data: arquivo que não é uma edição em PDF LEVANTA (§210)":
             lambda: levanta(lambda: itens_por_edicao(
                 "PB", "2026-10-14", "2026-10-14", lambda d: [{"edicao": None, "url": "u"}], {},
@@ -1620,7 +1689,8 @@ if __name__ == "__main__":
     # não descubra o problema com 27 UFs de municípios na fila.
     abrir_lote_log(); abrir_lote_livro()
     try:
-        res = {u: coletar_uf(u, desde, cfg) for u in ufs}
+        ate = sys.argv[sys.argv.index("--ate") + 1] if "--ate" in sys.argv else ""
+        res = {u: coletar_uf(u, desde, cfg, ate) for u in ufs}
     finally:
         fechar_lote_log(); fechar_lote_livro()
     gravar("fontes_doe.json", cfg)
