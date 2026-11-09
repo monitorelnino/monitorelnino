@@ -9,9 +9,17 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · A anomalia semanal da Niño 3.4 sai do Monitor de riscos · Decisão da editoria: a série mensal com história (desde 1950, na forma do RONI) a substitui; dois gráficos do mesmo dado não se justificam. Saem a figura `boxNino34Semanal`, o bloco de desenho, os textos do catálogo e a ficha; contrato e regra voltam a duas séries largas. O coletor semanal segue (apoio técnico, citado na metodologia). −60 linhas.
+
+## 2026-11-09 · #PR · Rótulo ao passar o mouse nas linhas do Pacífico · Pedido da editoria: nas figuras do RONI e da Niño 3.4 mensal, tocar ou passar o mouse em qualquer trecho de uma linha mostra episódio · mês: valor do ponto mais próximo (antes só os alvos redondos de cada ponto respondiam ao mouse, e a linha só acendia). Alvos dos pontos ficam só com o título acessível. −3 linhas líquidas.
+
+## 2026-11-09 · #PR · Janela de deploy lê só deploys de produção · Na noite 08→09 a lista de 20 deploys veio só com prévias (uma por commit automático na `main`), a janela não viu o deploy de produção das 21:10 UTC e repôs o domínio às 06:06 com 9 h de intervalo. `listSiteDeploys` passa a pedir `production: true` em página de 100; o script imprime quantos deploys vieram e de que contexto. +12 linhas (diagnóstico).
+
 ## 2026-11-09 · #PR · SIM e SIH: "nada novo na fonte" deixa de ser erro · Fila vazia e nenhuma falha agora devolve `sem_novidade` (saída 79), que o invólucro grava como status próprio em `saude_pipeline`; falha real segue `erro`. Cadência trata `sem_novidade` como fonte consultada. Código +50/−13.
 
 ## 2026-11-08 · #PR · Niño 3.4 mensal desde 1950, na forma do RONI · Pedido da editoria. O coletor guarda a série inteira da anomalia mensal da Niño 3.4 (com a temperatura absoluta) em vez de 48 meses; o Monitor de riscos ganha a terceira série larga: ciclo em curso sobre os episódios de El Niño que o RONI define, mesma função de desenho (`figuraDeEpisodios`, parametrizada — nada copiado), escala alargada pelo dado. Contrato, regra (três séries) e catálogo atualizados. A série completa entra na coleta da noite.
+
+## 2026-11-08 · #PR · Busca web: motor mudo vale pelo runner inteiro · Desde 01/11 o `google cse` calava após ~10 municípios e os 4 comandos seguintes do elo gastavam ~5 min cada em 100% sem resposta. `monitorar_busca_web.py` marca a mudez no disco do runner e o comando seguinte sai na hora, sem consultar nem gravar; a causa informada pelo SearXNG (`unresponsive_engines`) passa a sair no log. +42 linhas (recurso novo: marca e motivo).
 
 ## 2026-11-08 · #PR · Catálogo de falhas da noite: F83 · Créditos do Netlify esgotados em 07/11 (15 créditos por deploy × ~25 deploys/dia): 35 h de domínio congelado e Issues do vigia sem a causa. Corrigido no #1626 (janela de deploy); créditos repostos pela editoria. Só catálogo; sem código. +0 linhas de código.
 
