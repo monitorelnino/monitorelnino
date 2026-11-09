@@ -16,6 +16,9 @@ Saída (uma linha, sempre exit 0 — quem decide o que fazer é repor_dominio.sh
   IGUAL <hash>                   o domínio já serve este manifesto
   ADIADO <ISO da abertura>       manifesto novo, mas a janela do último deploy ainda não fechou
 
+09/11/2026: a lista tem de vir FILTRADA a produção (`production: true`, página de 100). Na noite 08→09 a
+página de 20 veio só com prévias (uma por commit automático na `main`), nenhum deploy de produção
+apareceu, a decisão foi DEPLOYAR às 06:06 UTC com 9 h de janela — e o publicador gastou um deploy.
 Deploy sem `manifesto=<hash>` no título (anteriores a esta regra) conta como manifesto diferente.
 Lista vazia, inválida ou sem deploy `ready` de produção → DEPLOYAR (é o comportamento antigo, e o
 próprio deploy dirá se o Netlify está fora)."""
@@ -42,6 +45,18 @@ def ultimo_deploy_no_ar(deploys):
     no_ar = [d for d in deploys if isinstance(d, dict) and d.get("state") == "ready"
              and d.get("context", "production") == "production" and _data(d.get("published_at") or d.get("created_at"))]
     return max(no_ar, key=lambda d: _data(d.get("published_at") or d.get("created_at")), default=None)
+
+
+def resumo(deploys) -> str:
+    """Uma linha de diagnóstico: quantos deploys vieram e de que contexto (prévia × produção)."""
+    if not isinstance(deploys, list):
+        return "lista inválida"
+    por = {}
+    for d in deploys:
+        if isinstance(d, dict):
+            k = f"{d.get('context', '?')}/{d.get('state', '?')}"
+            por[k] = por.get(k, 0) + 1
+    return f"{len(deploys)} deploy(s) na lista: " + ", ".join(f"{k}={v}" for k, v in sorted(por.items()))
 
 
 def decidir(deploys, manifesto, agora, janela_horas=JANELA_HORAS):
@@ -74,6 +89,7 @@ def autoteste() -> int:
          decidir([d("2026-11-08T07:00:00Z", "manifesto=000000000000"), d("2026-11-08T19:30:00Z", "manifesto=abc123abc123")], "abc123abc123", agora) == "IGUAL abc123abc123"),
         ("janela configurável", decidir([d("2026-11-08T19:00:00Z", "manifesto=000000000000")], "abc123abc123", agora, janela_horas=0.5) == "DEPLOYAR"),
         ("prévia (context deploy-preview) não conta", decidir([{"state": "ready", "context": "deploy-preview", "published_at": "2026-11-08T19:00:00Z", "title": "manifesto=000000000000"}], "abc123abc123", agora) == "DEPLOYAR"),
+        ("resumo conta por contexto", resumo([{"state": "ready", "context": "deploy-preview"}, {"state": "ready", "context": "production"}, {"state": "ready", "context": "deploy-preview"}]) == "3 deploy(s) na lista: deploy-preview/ready=2, production/ready=1"),
     ]
     falhas = [n for n, ok in casos if not ok]
     for n, ok in casos:
@@ -92,6 +108,7 @@ def main(argv) -> int:
         deploys = json.load(sys.stdin)
     except (json.JSONDecodeError, ValueError):
         deploys = []
+    print(resumo(deploys), file=sys.stderr)
     print(decidir(deploys, manifesto, agora, janela))
     return 0
 

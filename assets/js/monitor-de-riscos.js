@@ -1133,15 +1133,31 @@ if (cfg.serie.length) {
         // Faixa larga e invisível sobre a linha: é o alvo do mouse e do toque para a linha inteira.
         grupo.appendChild(svgEl('polyline', {class: 'hit-linha',
           points: pts.map(x => xs(x.k).toFixed(1) + ',' + y(x.p.anomalia).toFixed(1)).join(' ')}));
+        const textoDe = x => linha.rotulo + ' · ' + PAC.periodoCurto(x.p) + ': ' + PAC.num(x.p.anomalia) + ' °C';
         pts.forEach(x => {
           const alvo = svgEl('circle', {cx: xs(x.k).toFixed(1), cy: y(x.p.anomalia).toFixed(1),
                                         r: 7, class: 'hit', tabindex: '-1'});
-          grupo.appendChild(comValor(alvo, linha.rotulo + ' · ' + PAC.periodoCurto(x.p)
-                                       + ': ' + PAC.num(x.p.anomalia) + ' °C'));
+          // Só o título acessível: o rótulo visível é o da linha inteira (mousemove acima), para
+          // não piscar entre o alvo do ponto e a linha.
+          alvo.appendChild(svgEl('title', null, textoDe(x)));
+          grupo.appendChild(alvo);
         });
+        // 09/11/2026 (editoria): ao passar o mouse ou tocar em QUALQUER ponto da linha, o rótulo diz
+        // o episódio e o valor do mês mais próximo do cursor — "1997–98 · set: +2,3 °C" —, não só nos
+        // alvos redondos de cada ponto. A posição vem do próprio SVG (viewBox = largura real).
+        const maisProximo = evt => {
+          const r = g.getBoundingClientRect();
+          const sx = (evt.clientX - r.left) * (geo.W / (r.width || geo.W));
+          return pts.reduce((a, b) => Math.abs(xs(b.k) - sx) < Math.abs(xs(a.k) - sx) ? b : a, pts[0]);
+        };
+        const dica = evt => {
+          const t = evt && evt.touches && evt.touches[0] ? evt.touches[0] : evt;
+          return t && t.clientX != null ? textoDe(maisProximo(t)) : (linha.agora ? linha.rotulo : descreveEpisodio(linha));
+        };
         const acende = evt => { g.classList.add('foco'); grupo.classList.add('acesa');
-          if (!linha.agora && evt && evt.type !== 'mouseover') MonitorMapas.showTip(esc(descreveEpisodio(linha)), evt); };
+          if (evt) MonitorMapas.showTip(esc(dica(evt)), (evt.touches && evt.touches[0]) || evt); };
         const apaga = () => { g.classList.remove('foco'); grupo.classList.remove('acesa'); MonitorMapas.hideTip(); };
+        grupo.addEventListener('mousemove', acende);
         grupo.addEventListener('mouseover', acende);
         grupo.addEventListener('mouseout', apaga);
         grupo.addEventListener('focus', acende);
