@@ -776,9 +776,17 @@ def agregar_focos_em_grade(texto: str, passo: float = PASSO_GRADE_FOCOS, satelit
 
 
 def escolher_csv_focos(html_indice: str) -> str:
-    """Nome do CSV diário mais recente listado no diretório do INPE (focos_diario_br_AAAAMMDD.csv). Função pura."""
-    nomes = re.findall(r'focos_diario_br_(\d{8})\.csv', html_indice or "")
-    return f"focos_diario_br_{max(nomes)}.csv" if nomes else ""
+    """Nome do CSV do ÚLTIMO DIA COMPLETO listado no diretório do INPE (focos_diario_br_AAAAMMDD.csv) —
+    o penúltimo da lista, como `coletar_focos_referencia` já escolhia. Função pura.
+
+    09/11/2026 (editoria, correção pela raiz): escolhia o mais recente, que é o arquivo do dia corrente
+    e enche ao longo do dia; na coleta da 01:16 UTC ele tinha uma hora de dados (369 focos, 20 UFs em
+    zero), e o mapa mostrava pontos de 08/11 com rótulo "0 focos" por estado, o número do topo oscilava
+    de 9.653 para 369 e `monitor_saude.json` herdava o zero. Um dia só, o mesmo dos pontos e da série."""
+    nomes = sorted(set(re.findall(r'focos_diario_br_(\d{8})\.csv', html_indice or "")))
+    if not nomes:
+        return ""
+    return f"focos_diario_br_{nomes[-2] if len(nomes) >= 2 else nomes[-1]}.csv"
 
 
 # ---------------------------------------------------------------------------
@@ -1810,19 +1818,10 @@ def coletar_fonte(chave: str):
         nome = escolher_csv_focos(bruto)   # `bruto` é o ÍNDICE do diretório
         if not nome:
             raise ValueError("índice do INPE sem arquivo focos_diario_br_*.csv — recusado")
+        # 09/11/2026: `nome` já é o último dia completo (o do dia corrente enche ao longo do dia e
+        # em 29/09 nasceu só com cabeçalho); a queda "uma vez para o dia anterior" saiu com a causa.
         csv_focos = _buscar(fonte["endpoint"] + nome)
         focos = parse_focos_inpe(csv_focos)
-        if not focos:
-            # 29/09/2026: o arquivo do dia corrente nasce **só com cabeçalho** e é preenchido ao
-            # longo do dia — medido: 29/09 com 0 focos às 9h, 28/09 com 26.873. Tratar isso como
-            # recusa daria falha declarada toda manhã, e tratar como zero seria pior ainda: diria
-            # "nenhum foco no Brasil" onde só faltava o arquivo encher. Cai para o dia anterior,
-            # UMA vez, e o nome do arquivo (que vai para a figura) diz de que dia é o dado.
-            dias = sorted(set(re.findall(r"focos_diario_br_(\d{8})\.csv", bruto or "")))
-            if len(dias) >= 2:
-                nome = f"focos_diario_br_{dias[-2]}.csv"
-                csv_focos = _buscar(fonte["endpoint"] + nome)
-                focos = parse_focos_inpe(csv_focos)
         if not focos:
             raise ValueError("CSV de focos sem coluna de UF reconhecível — recusado")
         return {"focos_por_uf": focos, "arquivo": nome}, f"Focos do dia — {nome}"
@@ -2796,8 +2795,9 @@ def autoteste() -> int:
            (len(componentes_de_risco("Incêndios; seca em intensificação (IIS-3)")) > 1) == (classificar_tipo("Incêndios; seca em intensificação (IIS-3)") == "misto"))
 
     # --- endpoints reais (04/09/2026) ---
-    checar("INPE: escolhe o CSV diário mais recente",
-           escolher_csv_focos('<a href="focos_diario_br_20260902.csv">x</a><a href="focos_diario_br_20260904.csv">y</a><a href="focos_diario_br_20260903.csv">z</a>') == "focos_diario_br_20260904.csv")
+    checar("INPE: escolhe o CSV do último dia completo (penúltimo da lista)",
+           escolher_csv_focos('<a href="focos_diario_br_20260902.csv">x</a><a href="focos_diario_br_20260904.csv">y</a><a href="focos_diario_br_20260903.csv">z</a>') == "focos_diario_br_20260903.csv"
+           and escolher_csv_focos('<a href="focos_diario_br_20260904.csv">só um</a>') == "focos_diario_br_20260904.csv")
     checar("INPE negativo: índice sem CSV não quebra",
            escolher_csv_focos("<html>vazio</html>") == "" and escolher_csv_focos("") == "")
     _gj = {"features": [{"properties": {"uf": "SP", "municipio": "Santos", "nivel": "Moderado"}},

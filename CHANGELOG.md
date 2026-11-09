@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Fogo: um dia só, o último completo, em todo o site · `inpe_fogo` lia o arquivo do dia corrente do INPE, que enche ao longo do dia: à 01:16 UTC tinha 369 focos e 20 estados em zero, e o mapa (pontos do último dia completo) dizia "0 focos" sobre estados com fogo; o número do topo oscilava de 9.653 para 369. Agora `inpe_fogo` lê o último dia completo, como os pontos e a série, e o rótulo do estado no mapa lê o mesmo conjunto dos pontos (satélite de referência, com a data). Sai a queda "uma vez para o dia anterior". −8 linhas.
+
 ## 2026-11-09 · #PR · Janela de deploy lê só deploys de produção · Na noite 08→09 a lista de 20 deploys veio só com prévias (uma por commit automático na `main`), a janela não viu o deploy de produção das 21:10 UTC e repôs o domínio às 06:06 com 9 h de intervalo. `listSiteDeploys` passa a pedir `production: true` em página de 100; o script imprime quantos deploys vieram e de que contexto. +12 linhas (diagnóstico).
 
 ## 2026-11-09 · #PR · SIM e SIH: "nada novo na fonte" deixa de ser erro · Fila vazia e nenhuma falha agora devolve `sem_novidade` (saída 79), que o invólucro grava como status próprio em `saude_pipeline`; falha real segue `erro`. Cadência trata `sem_novidade` como fonte consultada. Código +50/−13.
