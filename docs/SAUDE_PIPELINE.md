@@ -9,13 +9,14 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-01 a 2026-11-08 (1434 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-01 a 2026-11-08 (1441 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
 - coletar_cobertura_qd.py: erro em 2 rodadas seguidas — interrompido pelo prazo do elo
 - coletar_sih.py: erro em 8 rodadas seguidas — SIH: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
 - coletar_sim.py: erro em 4 rodadas seguidas — SIM: nenhum arquivo lido (0 na fila, 0 falha(s)); os arquivos anteriores ficam
+- consultar_querido_diario.py: erro em 2 rodadas seguidas — portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail
 - julgar_filas.py: erro em 3 rodadas seguidas — interrompido pelo prazo do elo
 - monitorar_busca_web.py: erro em 4 rodadas seguidas — ✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4
 
@@ -30,7 +31,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-08 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-07 01:45 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-08 07:16 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-08 01:39 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-08 01:55 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-08 02:47 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-08 08:45 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-07 01:43 | 104 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-07 01:15 | 1 s | — | ok | — |
@@ -48,9 +49,9 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-08 · por canal: we
 | `coletar_datasus_dbc.py` | coletor | 2026-11-08 07:14 | 38 s | — | ok | — |
 | `coletar_dda.py` | coletor | 2026-11-08 01:31 | 56 s | — | ok | — |
 | `coletar_desfechos_saude.py` | coletor | 2026-11-08 01:23 | 454 s | — | ok | — |
-| `coletar_diarios_consorciados.py` | coletor | 2026-11-07 01:18 | 2469 s | 27 | ok | — |
-| `coletar_diarios_municipais.py` | coletor | 2026-11-07 01:18 | 2 s | 0 | ok | — |
-| `coletar_doe.py` | coletor | 2026-11-07 01:59 | 3017 s | — | ok | — |
+| `coletar_diarios_consorciados.py` | coletor | 2026-11-08 01:18 | 1578 s | 24 | ok | — |
+| `coletar_diarios_municipais.py` | coletor | 2026-11-08 01:18 | 2 s | 0 | ok | — |
+| `coletar_doe.py` | coletor | 2026-11-08 01:45 | 2441 s | — | ok | — |
 | `coletar_edicoes_doe.py` | coletor | 2026-11-06 02:22 | 3032 s | — | ok | — |
 | `coletar_espin.py` | coletor | 2026-11-07 01:14 | 878 s | — | ok | — |
 | `coletar_normais_inmet.py` | coletor | 2026-11-07 01:15 | 18 s | — | ok | — |
@@ -59,8 +60,8 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-08 · por canal: we
 | `coletar_planos_arboviroses.py` | coletor | 2026-11-08 07:17 | 1517 s | — | ok | — |
 | `coletar_prioritarios_mma.py` | coletor | 2026-11-07 01:15 | 2 s | — | ok | — |
 | `coletar_projecao_cil.py` | coletor | 2026-11-08 07:16 | 2 s | — | ok | — |
-| `coletar_recursos_resposta.py` | coletor | 2026-11-07 02:50 | 87 s | — | **erro** | TimeoutError: The read operation timed out |
-| `coletar_s2id.py` | coletor | 2026-11-07 02:50 | 44 s | — | ok | — |
+| `coletar_recursos_resposta.py` | coletor | 2026-11-08 02:40 | 34 s | — | ok | — |
+| `coletar_s2id.py` | coletor | 2026-11-08 02:25 | 892 s | — | ok | — |
 | `coletar_saude.py` | coletor | 2026-11-08 01:14 | 73 s | — | ok | — |
 | `coletar_saude_estadual.py` | coletor | 2026-11-03 02:26 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_semiarido_sudene.py` | coletor | 2026-11-07 01:15 | 3 s | — | ok | — |
@@ -72,7 +73,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-08 · por canal: we
 | `coletar_srag_gripe.py` | coletor | 2026-11-07 01:17 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-08 02:59 | 37 s | — | ok | — |
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-08 01:16 | 68 s | — | ok | — |
-| `consultar_querido_diario.py` | coletor | 2026-11-07 01:17 | 62 s | — | **erro** | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
+| `consultar_querido_diario.py` | coletor | 2026-11-08 01:17 | 64 s | — | **erro** (2 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-08 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `descobrir_planos.py` | coletor | 2026-11-08 08:57 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `desfechos_sus.py` | coletor | 2026-11-08 07:16 | 1 s | — | ok | — |
