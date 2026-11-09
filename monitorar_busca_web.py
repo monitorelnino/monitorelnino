@@ -46,7 +46,8 @@ USO
   python monitorar_busca_web.py --lote 1 --tamanho 60    # recorte manual
   python monitorar_busca_web.py --ufs                     # rodada estadual (B1, Buscador 2)
 """
-import json, random, re, sys, time, urllib.parse, urllib.request
+import json, os, random, re, sys, tempfile, time, urllib.parse, urllib.request
+from pathlib import Path
 from datetime import date, timedelta
 import funil
 import motores_busca
@@ -98,6 +99,28 @@ INTERVALO_MINIMO = 3.0
 JITTER = 1.0
 BACKOFF = (10, 30, 90)
 # Recusa depois da escada inteira encerra a rodada (14/10/2026; saiu a sonda dos 20 primeiros).
+# 08/11/2026 (PARA A Buscador 2, central): o motor ficava mudo no runner depois de ~10 municípios e as
+# repetições do mesmo comando no elo gastavam 5 min cada (10+30+90 s de escada) em 100% sem resposta.
+# Mudez depois da escada vale para o runner inteiro: a marca fica no disco do runner (some com ele) e
+# o próximo comando do elo sai na hora, sem consultar nem gravar. Motivo = o que o SearXNG informa.
+MUDEZ_VALE_S = 1800
+MARCA_MUDEZ = Path(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir()) / "busca_web_motor_mudo.json"
+motivo_da_mudez = [""]
+
+
+def marcar_mudez(razao: str, caminho: Path = MARCA_MUDEZ, agora: float = None) -> None:
+    caminho.write_text(f"{agora or time.time()}\n{razao}", encoding="utf-8", newline="\n")   # texto: o marcador não é dado de data/
+
+
+def mudez_vigente(caminho: Path = MARCA_MUDEZ, agora: float = None) -> str | None:
+    """A razão da mudez marcada neste runner há menos de MUDEZ_VALE_S, ou None."""
+    try:
+        em, _, razao = caminho.read_text(encoding="utf-8").partition("\n")
+        return (razao or "sem motivo informado") if (agora or time.time()) - float(em) < MUDEZ_VALE_S else None
+    except (OSError, ValueError):
+        return None
+
+
 JANELA_DO_CICLO = 15   # dias: todo município com resposta real da busca web a cada 15 dias (editoria)
 
 
@@ -243,6 +266,11 @@ def alvos_primeiro(ordem: list, alvos: list) -> list:
 
 
 def rodar(lote: str | None, tamanho: int, alvos: list | None = None) -> int:
+    razao = mudez_vigente()
+    if razao:
+        print(f"motor mudo neste runner (há menos de {MUDEZ_VALE_S // 60} min: {razao}) — rodada não repetida; "
+              "nada consultado, nada gravado", flush=True)
+        return 0
     por_cod, _ = referencia_ibge()
     cadastro = ler("cadastro_prioritarios.json") or {}
     pop = ler("populacao_censo2022.json") or {}
@@ -302,8 +330,9 @@ def rodar(lote: str | None, tamanho: int, alvos: list | None = None) -> int:
             # por consulta até o prazo do elo — 133 min para ~60 municípios na noite 13→14, e as
             # outras rodadas da noite perdidas na fila. Para aqui; os não consultados não ficam
             # marcados no livro e são os primeiros da próxima rodada, num runner novo.
-            print(f"  motor mudo depois da escada de espera — rodada encerrada em {n_ok + n_lac} "
-                  f"de {len(alvo)} municípios", flush=True)
+            print(f"  motor mudo depois da escada de espera ({motivo_da_mudez[0] or 'motivo não informado pelo SearXNG'})"
+                  f" — rodada encerrada em {n_ok + n_lac} de {len(alvo)} municípios", flush=True)
+            marcar_mudez(motivo_da_mudez[0] or "motivo não informado pelo SearXNG")
             break
         ref_mun = por_cod[cod]
         nome, uf = ref_mun["nome"], ref_mun["uf"]
@@ -327,6 +356,8 @@ def rodar(lote: str | None, tamanho: int, alvos: list | None = None) -> int:
             brutos_por_consulta[ident] += len(crus)
             if sinal_de_limite_de_taxa(dados=dados):
                 backoff[0] += 1       # corpo vazio é recusa servida com 200 (§186)
+                motivo_da_mudez[0] = "; ".join(f"{e[0]}: {e[1]}" for e in (dados.get("unresponsive_engines") or [])
+                                               if isinstance(e, (list, tuple)) and len(e) > 1)[:200]
             else:
                 backoff[0] = 0        # o motor respondeu: volta ao intervalo mínimo
             for r in crus:
@@ -623,6 +654,16 @@ def autoteste():
                 and all("site:sc.gov.br" in q for _, q in buscador2.consultas_da_uf("SC"))
                 and all("site:sc.gov.br" in q for _, q in consultas_de("Taió", "SC")))
 
+    def t22_mudez_vale_pelo_runner():
+        """A mudez marcada faz o comando seguinte do mesmo runner sair; expira; marca ilegível não trava."""
+        with tempfile.TemporaryDirectory() as d:
+            m = Path(d) / "mudo.json"
+            vazio = mudez_vigente(m, 1000.0) is None
+            marcar_mudez("google cse: CAPTCHA", m, 1000.0)
+            return (vazio and mudez_vigente(m, 1000.0 + MUDEZ_VALE_S - 1) == "google cse: CAPTCHA"
+                    and mudez_vigente(m, 1000.0 + MUDEZ_VALE_S) is None
+                    and (m.write_text("{", newline="\n") or mudez_vigente(m, 1000.0) is None))
+
     def t5_dedup_mesma_chave():
         vistos = {("0000001", "https://x.gov.br/a", "trecho x")}
         chave = ("0000001", "https://x.gov.br/a", "trecho x")
@@ -684,6 +725,7 @@ def autoteste():
         "429, CAPTCHA e corpo vazio são lidos como limite de taxa": t16_sinais_de_limite,
         "a escada de espera é em segundos e o ciclo em dias": t17_valores_do_ritmo,
         "B1: rodada por UF com site:<uf>.gov.br e sem rótulo no município": t21_rodada_por_uf,
+        "mudez do motor vale pelo runner: o comando seguinte sai, expira, marca ilegível não trava": t22_mudez_vale_pelo_runner,
         "dedup: mesma chave (ibge,url,trecho) é reconhecida como vista": t5_dedup_mesma_chave,
         "fila pela resposta real: respondido na janela sai, mudo e antigo voltam": t6_fila_pela_resposta_real,
         "prioritários vêm primeiro, cobertura total preservada (nada some)": t7_prioritarios_vem_primeiro_e_ninguem_some,

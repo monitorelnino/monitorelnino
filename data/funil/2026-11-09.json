@@ -2,14 +2,68 @@
  "data": "2026-11-09",
  "formato_versao": 1,
  "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 160,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 18,
+   "lacunas": 0,
+   "motor_sem_resposta": 10,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 1
+  },
+  "descobrir_planos": {
+   "achados_novos": 6,
+   "alvos_consultados": 60,
+   "alvos_verificados": 12,
+   "fila_acumulada": 126
+  },
   "juiz": {
-   "pistas_recebidas": 80,
-   "com_documento": 7,
+   "com_documento": 16,
+   "pistas_recebidas": 470,
    "promovidas": 0,
-   "recusa_documento_inacessivel": 72,
-   "recusa_texto_nao_extraivel": 1,
-   "recusa_ente_nao_confirmado": 1
+   "recusa_documento_inacessivel": 442,
+   "recusa_ente_nao_confirmado": 2,
+   "recusa_noticia_institucional_nao_e_o_plano": 1,
+   "recusa_texto_nao_extraivel": 12
   }
  },
- "atualizado_em": "2026-11-09T04:46:00"
+ "verificador_imprensa": {
+  "na_fila": 2647,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 5,
+  "por_motivo": {
+   "veiculo_nao_listado": 2531,
+   "sem_https": 91,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 8,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 2,
+    "sem_pagina_de_expediente": 1,
+    "nao_avaliado_por_orcamento": 5
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-09T08:23:05"
+ },
+ "atualizado_em": "2026-11-09T08:45:00"
 }
