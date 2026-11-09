@@ -27,6 +27,15 @@ def _paginas_pdfplumber(pdf_bytes: bytes) -> list:
         return []
 
 
+def _paginas_pdfium(pdf_bytes: bytes) -> list:
+    try:
+        import pypdfium2
+        doc = pypdfium2.PdfDocument(pdf_bytes)
+        return [(doc[i].get_textpage().get_text_range() or "").replace("\r\n", "\n").strip() for i in range(len(doc))]
+    except Exception:  # noqa: BLE001
+        return []
+
+
 def extrair_texto_por_pagina(pdf_bytes: bytes, pdfplumber_primeiro: bool = False) -> list:
     """Lista de textos, um por página (pypdf; pdfplumber como reserva na página vazia). Função pura.
 
@@ -44,7 +53,10 @@ def extrair_texto_por_pagina(pdf_bytes: bytes, pdfplumber_primeiro: bool = False
             try: paginas.append((pg.extract_text() or "").strip())
             except Exception: paginas.append("")  # noqa: BLE001
     except Exception:  # noqa: BLE001
-        return []
+        # 09/11/2026: o DOE-RJ (IOERJ) sai com o xref que o pypdf não acha ("startxref not found") e aqui se
+        # devolvia [] — a Parte I era baixada todo dia e lida como vazia desde 19/10; o Decreto 50.357/2026
+        # (comitê estadual do El Niño, p. 3 de 03/07) nunca foi visto. O pdfium lê o mesmo arquivo.
+        return _paginas_pdfplumber(pdf_bytes) or _paginas_pdfium(pdf_bytes)
     if paginas and sum(len(t) for t in paginas) < 200:
         paginas = _paginas_pdfplumber(pdf_bytes) or paginas
     return paginas
@@ -412,6 +424,14 @@ def autoteste_ocr() -> int:
                                           ("u", {"ocr_tentativas": 2, "ocr_ultima_falha": "2026-10-11"})],
                                          "2026-10-12")] != []:
         falhas.append("OCR: a quinta falha não tirou o item da fila, ou o back-off de 3 dias não esperou")
+    # 1d. (09/11/2026) PDF que o pypdf recusa não é lido como vazio: o DOE-RJ chega com o xref fora do lugar
+    try:
+        from reportlab.pdfgen import canvas as _cv
+        _b = io.BytesIO(); _c = _cv.Canvas(_b); _c.drawString(72, 720, "DECRETO 50.357 COMITE EL NINO"); _c.showPage(); _c.save()
+        if "50.357" not in " ".join(extrair_texto_por_pagina(_b.getvalue().replace(b"startxref", b"startxrex"))):
+            falhas.append("PDF recusado pelo pypdf voltou vazio — o DOE-RJ seria lido como edição sem texto")
+    except ImportError:
+        pass
     # 1c. (A3-22) o instrumento estadual pontuado com endereço entra na fila de preservação
     _regs = registros_a_preservar([], {"ufs": [{"uf": "AC", "instrumentos": [
         {"status": "READ", "url": "https://ac.gov.br/x", "tipo": "plano"},

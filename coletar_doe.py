@@ -20,6 +20,7 @@ USO
   python coletar_doe.py --autoteste
   python coletar_doe.py --regiao NE            # lote por região (§13: NE, N, CO, SE, S)
   python coletar_doe.py --uf SC --desde 2026-06-29
+  python coletar_doe.py --uf RJ --desde 2026-07-02 --ate 2026-07-03   # releitura retroativa (fora da janela)
 """
 import base64, json, re, sys, time, urllib.parse
 from datetime import date, timedelta
@@ -930,7 +931,8 @@ EDICOES_POR_DATA = {"edicao_ce": edicoes_ce, "edicao_pb": edicoes_pb, "edicao_ap
 
 
 def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, termos=None,
-                     buscar_fn=None, pausa: float = RITMO_APIFRONT_S, dormir=None, extrair_fn=None) -> tuple:
+                     buscar_fn=None, pausa: float = RITMO_APIFRONT_S, dormir=None, extrair_fn=None,
+                     janela_dias=JANELA_EDICOES_DIAS) -> tuple:
     """(itens, totais) das edições por data ainda não lidas na janela.
 
     `edicoes_fn(data)` devolve [{edicao, url, pdf?}] — vazio quando não há edição na data. Só a
@@ -939,7 +941,7 @@ def itens_por_edicao(uf: str, desde: str, ate: str, edicoes_fn, lidas: dict, ter
     pequeno demais para ser uma edição, é mudança de contrato e LEVANTA (§210)."""
     _buscar = buscar_fn or buscar
     _dormir = dormir or time.sleep
-    inicio = max(desde, (date.fromisoformat(ate) - timedelta(days=JANELA_EDICOES_DIAS)).isoformat())
+    inicio = desde if janela_dias is None else max(desde, (date.fromisoformat(ate) - timedelta(days=janela_dias)).isoformat())
     itens, totais = [], {"edicoes_lidas": 0, "datas_sem_edicao": 0, "edicoes_nao_baixadas": 0}
     for data in (d for d in datas_do_periodo(inicio, ate) if d not in lidas):
         lidas_na_data = 0
@@ -1050,7 +1052,10 @@ def sobra_de_homologacao(hm: dict, hash_evidencia: str, hoje: str, cod_ibge=None
     }
 
 
-def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
+def coletar_uf(uf: str, desde: str, cfg: dict, ate: str = "") -> str:
+    """`ate` (releitura retroativa, 09/11/2026): lê as edições de `desde` a `ate` de novo, fora da janela de
+    8 dias e sem pular as já lidas — para quando o leitor ou os termos mudam (o DOE-RJ foi lido vazio
+    até esta data). Sem `ate`, a rotina de sempre."""
     por_cod, por_nome = referencia_ibge()
     f = cfg["ufs"][uf]
     hoje = hoje_editorial().isoformat()
@@ -1074,8 +1079,9 @@ def coletar_uf(uf: str, desde: str, cfg: dict) -> str:
         url = f["url"]
         try:
             if f["adaptador"] in EDICOES_POR_DATA:
-                itens, totais = itens_por_edicao(uf, desde, hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
-                                                 f.setdefault("lidas", {}))
+                itens, totais = itens_por_edicao(uf, desde, ate or hoje, EDICOES_POR_DATA[f["adaptador"]](buscar, url),
+                                                 {} if ate else f.setdefault("lidas", {}),
+                                                 janela_dias=None if ate else JANELA_EDICOES_DIAS)
             else:
                 # §231: a busca da plataforma comum entrega o TEXTO INTEGRAL da página que casou.
                 itens, totais = itens_da_busca(uf, f["adaptador"], url, desde, hoje)
@@ -1546,6 +1552,12 @@ def autoteste() -> int:
         "edição por data: só a data da janela ainda não lida desce ao PDF; 404 é data sem edição; "
         "data lida não se relê e a antiga sai de `lidas`": _t_edicao_por_data,
         "DOE-CE: os cadernos do dia vão até o primeiro 300/404": _t_cadernos_ce,
+        "releitura retroativa (janela_dias=None) lê data de julho fora da janela de 8 dias, sem tocar no `lidas` da rotina":
+            lambda: (lambda lid: (len(itens_por_edicao("RJ", "2026-07-03", "2026-07-03", lambda d: [{"edicao": "I", "url": "u", "pdf": b"%PDF-" + b"0" * MINIMO_BYTES_DE_EDICAO}],
+                                                       lid, buscar_fn=lambda u, **k: b"", dormir=lambda s: None, janela_dias=None,
+                                                       extrair_fn=lambda _: ["DECRETO Nº 50.357 ... EL NIÑO"])[0]) == 1)
+                     and len(itens_por_edicao("RJ", "2026-07-03", "2026-11-09", lambda d: [{"edicao": "I", "url": "u", "pdf": b"%PDF-" + b"0" * MINIMO_BYTES_DE_EDICAO}],
+                                              {}, dormir=lambda s: None, extrair_fn=lambda _: ["EL NIÑO"])[0]) <= 8)({}),
         "edição por data: arquivo que não é uma edição em PDF LEVANTA (§210)":
             lambda: levanta(lambda: itens_por_edicao(
                 "PB", "2026-10-14", "2026-10-14", lambda d: [{"edicao": None, "url": "u"}], {},
@@ -1677,7 +1689,8 @@ if __name__ == "__main__":
     # não descubra o problema com 27 UFs de municípios na fila.
     abrir_lote_log(); abrir_lote_livro()
     try:
-        res = {u: coletar_uf(u, desde, cfg) for u in ufs}
+        ate = sys.argv[sys.argv.index("--ate") + 1] if "--ate" in sys.argv else ""
+        res = {u: coletar_uf(u, desde, cfg, ate) for u in ufs}
     finally:
         fechar_lote_log(); fechar_lote_livro()
     gravar("fontes_doe.json", cfg)
