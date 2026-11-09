@@ -1,7 +1,7 @@
 {
  "_governanca": "MARÉ · Saúde v0.7: prontidão sanitária estadual para o ciclo, separada do MARÉ (peso zero no índice; nunca lida por recalcular_mare.py). A nota de cada UF é o instrumento estadual; nenhum componente depende de data (o tempo é publicado à parte, de peso zero) e a coordenação na saúde entra na nota, metade com o instrumento, quando as 27 UFs a tiverem verificada. Índice nacional = Σ(nota × população × c_uf) ÷ Σ população, com as 27 UFs no denominador; c_uf é a cobertura do dever de plano (1 nas 27) e pesa o nacional, não a nota. A UF sem documento lido entra com nota 0 e o estatuto dela viaja junto. A saúde no plano municipal de defesa civil é camada de peso zero, publicada ao lado. UF não verificada não recebe número próprio. Metodologia §31, §115 e §123.",
  "versao": "0.7",
- "gerado_em": "08/11/2026",
+ "gerado_em": "09/11/2026",
  "corte": "01/11/2026",
  "metodo": {
   "pesos": {
@@ -127,41 +127,41 @@
   ],
   "pop_sob_emergencia": null,
   "faltam": [
-   "estadual: BA, CE, DF, MA, MG, PB, PE, PI, RJ, RS, TO"
+   "estadual: AC, AP, BA, CE, DF, MA, MG, PB, PE, PI, RJ, RS"
   ],
   "consultado_em": {
-   "federal": "07/11/2026",
+   "federal": "09/11/2026",
    "estadual": {
-    "AC": "05/11/2026",
     "AL": "06/11/2026",
-    "AM": "06/11/2026",
-    "AP": "05/11/2026",
-    "ES": "05/11/2026",
-    "GO": "05/11/2026",
+    "AM": "09/11/2026",
+    "ES": "08/11/2026",
+    "GO": "08/11/2026",
     "MS": "06/11/2026",
-    "MT": "05/11/2026",
-    "PA": "05/11/2026",
-    "PR": "05/11/2026",
+    "MT": "08/11/2026",
+    "PA": "09/11/2026",
+    "PR": "08/11/2026",
     "RN": "05/11/2026",
     "RO": "06/11/2026",
     "RR": "06/11/2026",
-    "SC": "05/11/2026",
-    "SE": "06/11/2026",
-    "SP": "05/11/2026"
+    "SC": "09/11/2026",
+    "SE": "08/11/2026",
+    "SP": "08/11/2026",
+    "TO": "08/11/2026"
    }
   },
   "lacunas_estaduais": {
+   "AC": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo",
+   "AP": "a busca do diário ainda não rodou com os termos de declaração desde o início do ciclo",
    "BA": "rota do diário não descoberta (nenhuma recusa medida): /edicoes: HTTPError · /diarios: HTTPError · listagem sem data e número de edição no HTML",
    "CE": "17 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-11-06)",
    "DF": "8 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-06)",
    "MA": "rota do diário não descoberta (nenhuma recusa medida): https://diariooficial.ma.gov.br/diario/20260910.pdf: nao_e_edicao · listagem sem data e número de edição no HTML",
    "MG": "recusa da fonte, respeitada: HTTP 401 em https://www.jornalminasgerais.mg.gov.br — recusa respeitada",
-   "PB": "74 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
-   "PE": "4 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-17)",
+   "PB": "30 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-06-30)",
+   "PE": "2 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-17)",
    "PI": "1 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-02#2)",
    "RJ": "3 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-08-07#2)",
-   "RS": "edição com declaração não lida pelo juiz",
-   "TO": "busca do diário falhou em 06/11/2026: URLError: <urlopen error timed out>"
+   "RS": "11 data(s) útil(eis) do ciclo sem edição lida com os termos de declaração (a primeira: 2026-07-01#2)"
   }
  },
  "resumo": {

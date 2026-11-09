@@ -117,7 +117,7 @@
     "ultima_linha_pode_ser_incompleta": true,
     "figura_larga": {
       "classe": "cartao-mapa--largo",
-      "quando": "Para DIAGRAMA (no máximo um por página) e para a FIGURA PRINCIPAL que o contrato da página declara em `figura_principal` ({\"mapa\": \"<id>\"} ou {\"serie\": \"<id>\"}): no máximo uma por página, mapa ou série, escolhida por ser a leitura central da página; em monitor-de-riscos.html, um mapa e até três séries (RONI, Niño 3.4 mensal desde 1950 na forma do RONI, e Niño 3.4 semanal; central, 17/10/2026 12:05 UTC; a terceira a pedido da editoria em 08/11/2026), porque foi o desenho aprovado; o contrato declara cada tipo com um id ou uma lista de ids. Um diagrama de 960 de largura num cartão de um terço não é um diagrama menor: é um diagrama ilegível. Toda outra figura (mapa, série, cartão de número) se lê na grade de três; figura larga não declarada reprova.",
+      "quando": "Para DIAGRAMA (no máximo um por página) e para a FIGURA PRINCIPAL que o contrato da página declara em `figura_principal` ({\"mapa\": \"<id>\"} ou {\"serie\": \"<id>\"}): no máximo uma por página, mapa ou série, escolhida por ser a leitura central da página; em monitor-de-riscos.html, um mapa e até duas séries (RONI e Niño 3.4 mensal desde 1950 na forma do RONI; a semanal saiu em 09/11/2026 por decisão da editoria), porque foi o desenho aprovado; o contrato declara cada tipo com um id ou uma lista de ids. Um diagrama de 960 de largura num cartão de um terço não é um diagrama menor: é um diagrama ilegível. Toda outra figura (mapa, série, cartão de número) se lê na grade de três; figura larga não declarada reprova.",
       "exige": [
         "grid-column: 1 / -1",
         "svg com width:100% e height:auto",
@@ -133,7 +133,7 @@
         "por_pagina_aprovada": {
           "monitor-de-riscos.html": {
             "mapa": 1,
-            "serie": 3
+            "serie": 2
           },
           "saude.html": {
             "mapa": 1,

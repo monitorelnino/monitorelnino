@@ -75,11 +75,11 @@ def cadencias_declaradas(texto: str) -> dict:
 def ultima_execucao_ok(execucoes) -> dict:
     """{script: datetime da última execução com status ok}. Função pura.
 
-    Só `ok` conta: execução que terminou em erro não renova o frescor, e é exatamente o caso que
+    Só `ok` e `sem_novidade` (a fonte foi consultada e nada mudou) contam: execução que terminou em erro não renova o frescor, e é exatamente o caso que
     o painel precisava distinguir de 'não rodou'."""
     fora = {}
     for x in execucoes or []:
-        if not isinstance(x, dict) or x.get("status") != "ok":
+        if not isinstance(x, dict) or x.get("status") not in ("ok", "sem_novidade"):
             continue
         quando = str(x.get("inicio") or x.get("data") or "")
         try:

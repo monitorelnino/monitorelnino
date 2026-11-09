@@ -123,7 +123,7 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
     import desfechos_sus as ds
     from coletar_datasus_dbc import PAUSA, baixar_ftp, ler_dbc, listar_ftp
     from coletar_sih import espacar
-    from coletores_base import gravar, hoje_editorial, ler
+    from coletores_base import SEM_NOVIDADE, gravar, hoje_editorial, ler
     listar = listar or listar_ftp; baixar = baixar or baixar_ftp; decodificar = decodificar or ler_dbc
     ler_fn = ler_fn or ler; gravar_fn = gravar_fn or gravar; relogio = relogio or time.monotonic
     hoje = hoje or hoje_editorial()
@@ -152,6 +152,9 @@ def coletar(listar=None, baixar=None, ler_fn=None, gravar_fn=None, hoje=None, de
             novos.setdefault("_anos", set()).add((uf, ano))
         except Exception as e:  # noqa: BLE001
             falhas.append(f"{cam.rsplit('/', 1)[1]}: {type(e).__name__}"); seguidas += 1
+    if not feitos and not fila and not falhas:
+        print("SIM: nenhum arquivo novo na fonte; os arquivos anteriores ficam")
+        return SEM_NOVIDADE
     if not feitos:
         print(f"SIM: nenhum arquivo lido ({len(fila)} na fila, {len(falhas)} falha(s)); os arquivos anteriores ficam")
         return False
@@ -225,6 +228,7 @@ def sondar() -> int:
 # ============================================================================================
 def autoteste() -> int:
     from coletar_sih import UFS
+    from coletores_base import CODIGO_SEM_NOVIDADE, SEM_NOVIDADE, codigo_de_saida
     casos = []
     lf = {"DOAC2024.dbc": 10, "DOAC2019.DBC": 10, "DOAC2018.dbc": 10, "DOBR2024.dbc": 10, "LEIAME.txt": 1}
     lp = {"DOAC2024.dbc": 11, "DOAC2025.dbc": 5, "DOAC2026.dbc": 7}
@@ -312,6 +316,13 @@ def autoteste() -> int:
     coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, pausa=0)
     casos.append(("rótulo do critério mudou: relê todos os arquivos e regrava com o critério novo",
                   len(baixados) == len(fin) + len(pre) and "X30" in gravados["saude_desfechos/obitos_calor.json"]["rotulo"]))
+    bom = lambda d, c: (None, iter([{"DTOBITO": f"1507{d[-8:-4]}", "CAUSABAS": "J180"}]))  # noqa: E731
+    coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, bom, pausa=0)   # completa o que faltava
+    baixados.clear()
+    parada = coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, bom, pausa=0)
+    casos.append(("nada novo na fonte: devolve SEM_NOVIDADE (saída 79), não erro, e nada é baixado",
+                  parada == SEM_NOVIDADE and not baixados and codigo_de_saida(parada) == CODIGO_SEM_NOVIDADE
+                  and codigo_de_saida(True) == 0 and codigo_de_saida(False) == 1))
     gravados.clear(); baixados.clear(); r = iter(range(0, 10 ** 6, 100))
     coletar(lista, fake_baixar, fake_ler, fake_gravar, hoje, fake_decod, orcamento_s=350, relogio=lambda: next(r), pausa=0)
     casos.append(("orçamento acaba: lê o ano mais recente primeiro e declara os pendentes",
@@ -341,7 +352,8 @@ def main() -> int:
     if "--sondar" in sys.argv:
         return sondar()
     orcamento = int(sys.argv[sys.argv.index("--orcamento") + 1]) if "--orcamento" in sys.argv else ORCAMENTO_S
-    return 0 if coletar(orcamento_s=orcamento) else 1
+    from coletores_base import codigo_de_saida
+    return codigo_de_saida(coletar(orcamento_s=orcamento))
 
 
 if __name__ == "__main__":
