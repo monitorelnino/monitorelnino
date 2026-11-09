@@ -285,6 +285,7 @@ PAD_HOMOLOGA_NO_MUNICIPIO = re.compile(
 # ("DECRETO Nº 15.155 / Homologa situação de emergência no Município de Cafezal do Sul"). É o ato
 # que o estado praticou, e entra no registro ao lado do decreto municipal que ele homologa.
 PAD_DECRETO_ESTADUAL = re.compile(r"DECRETO\s+N[ºo°\.]?\s*([\d\.]{3,12})", re.I)
+PAD_CABECALHO_DECRETO = re.compile(r"DECRETO\s+N[ºo°\.]?\s*([\d\.]{3,12}),?\s+DE\s+\d{1,2}º?\s+DE\s+[^\W\d_]+\s+DE\s+\d{4}", re.I)
 
 
 def homologacoes_no_texto(texto: str) -> list:
@@ -360,7 +361,15 @@ def atos_el_nino(itens: list, uf: str, hash_evidencia: str, hoje: str) -> list:
         for tr in it["trechos"]:
             for m in PAD_EL_NINO.finditer(tr):
                 base = max(0, m.start() - 400)
-                dec = list(PAD_DECRETO_ESTADUAL.finditer(tr, base, m.start()))
+                # 09/11/2026: na Parte I do DOE-RJ de 03/07, o leitor intercalou a coluna vizinha e um decreto
+                # CITADO ("Decreto nº 40.013/06.") caiu entre o cabeçalho do 50.357 e a menção; a pista saiu com
+                # o número errado. O ato é o do CABEÇALHO (número seguido da data por extenso); citação só
+                # serve quando não há cabeçalho na janela.
+                # 09/11/2026 (2ª prova, mesma edição lida pelo extrator de produção): com as colunas
+                # intercaladas, menções do corpo do decreto caem perto de decretos CITADOS de outros atos
+                # ("Decreto nº 40.013/06"), e o recuo para a citação gerava pista com número alheio. Só o
+                # cabeçalho identifica o ato; menção sem cabeçalho na janela não vira pista.
+                dec = list(PAD_CABECALHO_DECRETO.finditer(tr, base, m.start()))
                 tipo = dec and next((t for t, p in TIPOS_DO_ATO if p.search(tr, dec[-1].start(), m.end())), None)
                 if not tipo:
                     continue
@@ -1473,6 +1482,12 @@ def autoteste() -> int:
                            "pr", "h0", "2026-11-09")
         nao = atos_el_nino(it("Boletim agroclimático: o El Niño deve reduzir as chuvas no Norte. Decreto "
                               "Municipal nº 12 homologado."), "PR", "h0", "2026-11-09")
+        # a coluna vizinha intercalada pelo leitor (DOE-RJ, 03/07/2026): decreto citado entre o cabeçalho e a menção
+        intercalado = atos_el_nino(it("DECRETO Nº 50.357 DE 02 DE JULHO DE 2026 Decreto nº 40.013/06. "
+                                      "INSTITUI O COMITÊ ESTADUAL DE ENFRENTAMENTO AOS EFEITOS DO EL NIÑO"), "RJ", "h0", "2026-11-09")
+        corpo = atos_el_nino(it("Decreto nº 40.013/06. DE 02 DE JULHO Art. 6º - O Comitê El Niño contará com câmaras"), "RJ", "h0", "2026-11-09")
+        if [x["decreto_estadual"] for x in intercalado] != ["50.357"] or corpo != []:
+            return False
         disco = {"pistas_doe.json": {"itens": []}}
         res = sincronizar_pistas("pistas_doe.json", {"itens": [dict(p) for p in sim]}, origem="doe",
                                  ler_fn=lambda n, padrao=None: disco.get(n, padrao),

@@ -30,16 +30,7 @@ const PREPOSICAO = {AC: 'No', AL: 'Em', AM: 'No', AP: 'No', BA: 'Na', CE: 'No', 
   GO: 'Em', MA: 'No', MG: 'Em', MS: 'No', MT: 'No', PA: 'No', PB: 'Na', PE: 'Em', PI: 'No', PR: 'No',
   RJ: 'No', RN: 'No', RO: 'Em', RR: 'Em', RS: 'No', SC: 'Em', SE: 'Em', SP: 'Em', TO: 'No'};
 
-/* Reais no formato do site: bilhão e milhão abreviados, mil por extenso, nunca zero para o que existe. */
-function reais(v){
-  if (v == null || !isFinite(v)) return null;
-  const f = (x, c) => x.toLocaleString('pt-BR', {minimumFractionDigits: c, maximumFractionDigits: c});
-  if (v > 0 && v < 0.01) return 'menos de R$ 0,01';
-  if (v >= 1e9) return 'R$ ' + f(v / 1e9, 2) + ' bi';
-  if (v >= 1e6) return 'R$ ' + f(v / 1e6, v >= 1e8 ? 0 : 1) + ' mi';
-  if (v >= 1e3) return 'R$ ' + f(v / 1e3, 0) + ' mil';
-  return 'R$ ' + f(v, 2);
-}
+const reais = MonitorMapas.reais;   /* um formatador para o site inteiro (assets/mapas.js) */
 const mesDe = aaaamm => MESES[Number(String(aaaamm).slice(4, 6)) - 1];
 
 async function __load(){
