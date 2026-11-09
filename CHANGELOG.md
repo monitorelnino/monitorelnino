@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Fogo: um dia só, o último completo, em todo o site · `inpe_fogo` lia o arquivo do dia corrente do INPE, que enche ao longo do dia: à 01:16 UTC tinha 369 focos e 20 estados em zero, e o mapa (pontos do último dia completo) dizia "0 focos" sobre estados com fogo; o número do topo oscilava de 9.653 para 369. Agora `inpe_fogo` lê o último dia completo, como os pontos e a série, e o rótulo do estado no mapa lê o mesmo conjunto dos pontos (satélite de referência, com a data). Sai a queda "uma vez para o dia anterior". −8 linhas.
+
 ## 2026-11-09 · #PR · Alertas do Inmet e do Cemaden recoletados de dia · Decisão da editoria (opção 2): a foto única da noite deixava a tabela com até 24 h. Elo `alertas-dia` (`diurno_alertas.yml`, 12:10 e 18:10 UTC, reserva +30 min) recoleta só as duas fontes (`--fontes` no coletor) na `main`, exceção nomeada na guarda da janela; o publicador o segue e a janela de deploy ganha o critério "alertas mudaram → deploya" (hash no título do deploy). Até dois deploys a mais por dia, custo aceito. +~60 linhas.
 
 ## 2026-11-09 · #PR · Redução: segundo escritor de pista, sem chamador, sai · `coletores_base.gravar_pista` (24 linhas) gravava pista fora de `scripts/pistas.py`; nenhum coletor, workflow ou teste a chama (varredura por AST de todo o repositório). A porta única segue sendo `pistas.gravar`; `validar_pista` fica, pois ela a usa. Sem mudança de comportamento. Linhas líquidas: −26.
