@@ -6,7 +6,7 @@ from coletores_base import buscar
 from coletar_doe import edicoes_rj, paginas_com_termo
 base = json.load(open("data/fontes_doe.json"))["ufs"]["RJ"]["url"]
 fn = edicoes_rj(lambda u, **k: buscar(u, **k), base)
-for dia in ["2026-07-03", "2026-07-06"]:
+for dia in ["2026-07-03"]:
     try:
         eds = fn(dia)
     except Exception as e:
@@ -15,6 +15,11 @@ for dia in ["2026-07-03", "2026-07-06"]:
         try:
             pdf = buscar(ed["url"], timeout=180, origem="sonda")
             from preservar_evidencias import extrair_texto_por_pagina
+            print(f"   início dos bytes: {pdf[:120]!r}")
+            try:
+                import io; from pypdf import PdfReader; rd = PdfReader(io.BytesIO(pdf)); print(f"   pypdf: {len(rd.pages)} páginas; p1: {(rd.pages[0].extract_text() or '')[:200]!r}")
+            except Exception as e:
+                print(f"   pypdf falhou: {type(e).__name__}: {e}")
             tx = extrair_texto_por_pagina(pdf) or []
             print(f"   {len(tx)} páginas extraídas, {sum(len(t or '') for t in tx)} caracteres; amostra: {(tx[0] if tx else '')[:300]!r}")
             pags = [(i, t) for i, t in enumerate(tx, 1) if any(k in (t or '').lower() for k in ("el niño", "el nino", "50.357", "niño"))]
