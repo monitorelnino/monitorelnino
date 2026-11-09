@@ -25,11 +25,14 @@ echo "modo declarado em data/publicacao.json: '${MODO}'"
 { [ -n "${PREVIA_BASIC_AUTH:-}" ] && [ -n "${NETLIFY_AUTH_TOKEN:-}" ]; } || nada "Segredo ausente (PREVIA_BASIC_AUTH ou NETLIFY_AUTH_TOKEN) — domínio fica como está."
 
 MANIFESTO=$(sha256sum docs/MANIFEST_SHA256.txt | cut -c1-12)
+# 09/11/2026 (editoria): alerta novo do Inmet/Cemaden deploya dentro da janela — é o que o elo diurno
+# `alertas-dia` pede; o hash vai no título do deploy para a decisão seguinte.
+ALERTAS=$(sha256sum data/alertas/vigentes.json 2>/dev/null | cut -c1-12)
 if [ "$FORCAR" != "--forcar" ]; then
   # 09/11/2026: só produção (`production: true`), página de 100 — a página de 20 sem filtro vinha só com
   # prévias (uma por commit automático na main) e a janela não via o último deploy de produção.
   npx --yes netlify-cli@17 api listSiteDeploys --data "{\"site_id\":\"${NETLIFY_SITE_ID:-}\",\"production\":true,\"per_page\":100}" > /tmp/deploys.json 2>/dev/null || echo "[]" > /tmp/deploys.json
-  DECISAO=$(python3 scripts/janela_de_deploy.py --manifesto "$MANIFESTO" --janela-horas "${JANELA_DEPLOY_HORAS:-12}" < /tmp/deploys.json)
+  DECISAO=$(python3 scripts/janela_de_deploy.py --manifesto "$MANIFESTO" --alertas "${ALERTAS:-}" --janela-horas "${JANELA_DEPLOY_HORAS:-12}" < /tmp/deploys.json)
   echo "janela de deploy: $DECISAO (manifesto da main: $MANIFESTO)" | tee /tmp/repor_relatorio.txt
   case "$DECISAO" in
     IGUAL*)  echo "Domínio já serve este manifesto — nada a repor."; exit 0;;
@@ -39,7 +42,7 @@ fi
 
 printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers
 printf 'User-agent: *\nDisallow: /\n' > robots.txt
-npx --yes netlify-cli@17 deploy --prod --dir=. --message "$MSG · manifesto=$MANIFESTO" > /tmp/repor_out.txt 2>&1
+npx --yes netlify-cli@17 deploy --prod --dir=. --message "$MSG · manifesto=$MANIFESTO · alertas=$ALERTAS" > /tmp/repor_out.txt 2>&1
 CODIGO=$?
 rm -f _headers; git checkout -- robots.txt 2>/dev/null
 RELATORIO=$(echo "codigo_saida=$CODIGO"; grep -vE "npm warn" /tmp/repor_out.txt | grep -E "Error|error|422|Deploy is live|Website URL" | head -c 1200)

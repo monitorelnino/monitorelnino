@@ -1,0 +1,32 @@
+# 09/11/2026 (editoria, opção 2 — "escolho 2"): os alertas do Inmet e do Cemaden mudam de hora em
+# hora, e a foto única da noite (01:14 UTC) deixava a tabela da Defesa civil e do Monitor de riscos com
+# até 24 h de idade. Este elo recoleta SÓ as duas fontes de alerta, de dia, na `main`, duas vezes
+# (12:10 e 18:10 UTC); a guarda da janela o conhece por nome (`alertas-dia`) e o publicador que o
+# segue repõe o domínio porque os alertas mudaram (segundo critério da janela de deploy). Custo
+# aceito pela editoria: até dois deploys de produção a mais por dia. Nunca coincide com a noite
+# (01:00–09:00 UTC), então não disputa a `main` com os elos noturnos.
+name: Diurno — alertas
+
+on:
+  schedule:
+    - cron: "10 12,18 * * *"    # 09h10 e 15h10 de Brasília
+    - cron: "40 12,18 * * *"    # reserva, meia hora depois (idempotente: reescreve a partir da fonte)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read        # o job `vez` do coletor pede `actions: read`; sem ela o run nem começa (F35)
+
+jobs:
+  alertas:
+    uses: ./.github/workflows/_coletor.yml
+    with:
+      nome: alertas-dia
+      timeout_minutos: 15
+      comandos: |
+        prazo=10min coletar_sinais_risco.py --fontes inmet_avisos,cemaden_alertas
+    secrets:
+      ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
+      INMET_API_TOKEN: ${{ secrets.INMET_API_TOKEN }}
+      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}    # o script a lê ao carregar; a fonte não é consultada aqui (F67)
+      ROBO_TOKEN: ${{ secrets.ROBO_TOKEN }}

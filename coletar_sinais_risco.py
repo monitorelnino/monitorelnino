@@ -1982,9 +1982,15 @@ def semear(registro: dict) -> dict:
     return registro
 
 
-def coletar(registro: dict, camadas) -> dict:
-    """Percorre as fontes das camadas pedidas, atualiza as que responderem e deixa as demais como lacuna declarada; nenhuma falha de rede interrompe o pipeline."""
+def coletar(registro: dict, camadas, fontes=None) -> dict:
+    """Percorre as fontes das camadas pedidas, atualiza as que responderem e deixa as demais como lacuna declarada; nenhuma falha de rede interrompe o pipeline.
+
+    `fontes` (09/11/2026, elo diurno de alertas): quando dado, só estas chaves são consultadas — as
+    demais ficam como estão no registro, com o seu `consultado_em`. Não é lacuna: é "não perguntamos
+    agora"."""
     for chave, fonte in FONTES.items():
+        if fontes is not None and chave not in fontes:
+            continue
         if fonte.get("lacuna") and fonte["camada"] in camadas:
             vigente = json.loads(BOLETINS.read_text(encoding="utf-8"))
             registro["fontes"][chave].update({
@@ -3253,11 +3259,18 @@ def main() -> None:
     camadas = {"ciclo", "observado", "enos", "apoio_tecnico"}
     if "--camada" in args:
         camadas = {args[args.index("--camada") + 1]}
-    print(f"Coletando sinais oficiais de risco · camadas: {', '.join(sorted(camadas))}")
-    registro = coletar(registro, camadas)
+    # 09/11/2026 (editoria): o elo diurno de alertas pede só `--fontes inmet_avisos,cemaden_alertas`;
+    # os arquivos derivados da camada observada (ar, secas, focos, riscos do município) não se refazem.
+    fontes = set(args[args.index("--fontes") + 1].split(",")) if "--fontes" in args else None
+    desconhecidas = (fontes or set()) - set(FONTES)
+    if desconhecidas:
+        sys.exit(f"--fontes desconhecida(s): {', '.join(sorted(desconhecidas))}")
+    print(f"Coletando sinais oficiais de risco · camadas: {', '.join(sorted(camadas))}"
+          + (f" · fontes: {', '.join(sorted(fontes))}" if fontes else ""))
+    registro = coletar(registro, camadas, fontes)
     gravar(registro)
     gravar_alertas_vigentes()
-    if "observado" in camadas:
+    if "observado" in camadas and fontes is None:
         gravar_ar_medido()
         gravar_secas_manchas()
         gravar_focos_referencia()
