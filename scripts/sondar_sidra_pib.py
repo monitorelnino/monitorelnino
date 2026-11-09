@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Sonda (só no ramo coleta-dia): que parâmetro do SIDRA recusa o pedido do PIB per capita 2023?
 Imprime o status e o começo da resposta de variantes da consulta e a descrição da tabela."""
-import urllib.request, urllib.error
+import sys, pathlib, urllib.request, urllib.error
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from coletores_base import ua_de
 URLS = [
     "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/6323/p/2023?formato=json",
