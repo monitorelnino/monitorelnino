@@ -240,30 +240,6 @@
       "funcao_narrativa": "a temperatura do Pacífico central, sem desconto, lida contra os mesmos episódios da figura do RONI",
       "acao_relacionada": null
     },
-    "monitor-de-riscos.html#boxNino34Semanal": {
-      "tipo": "série temporal",
-      "pergunta_que_responde": "Como a anomalia semanal da temperatura do mar na região Niño 3.4 variou desde o início da série publicada?",
-      "dimensao_da_preparacao": null,
-      "universo": "todas as semanas do arquivo semanal vigente do CPC/NOAA, de janeiro de 2025 em diante",
-      "unidade_de_analise": "semana",
-      "territorio": "região Niño 3.4",
-      "periodo": "da primeira semana da série ao último valor publicado",
-      "variavel_principal": "anomalia da temperatura da superfície do mar (°C)",
-      "denominador": "média de referência 1991–2020, declarada pelo próprio arquivo",
-      "fonte": "NOAA/CPC — índices semanais de temperatura da superfície do mar",
-      "metodologia": "Leitura direta do arquivo semanal do CPC/NOAA, sem cálculo nosso. A escala vertical cobre a faixa do próprio dado, em passos de 0,5 °C, e traz os limiares de +0,5 °C e −0,5 °C da NOAA/CPC.",
-      "conclusoes_permitidas": [
-        "dizer qual foi a anomalia de cada semana publicada",
-        "dizer há quantas semanas a série está acima do limiar de +0,5 °C"
-      ],
-      "conclusoes_nao_permitidas": [
-        "tratar o valor semanal como classificação de episódio, que é do RONI",
-        "projetar as semanas seguintes a partir da forma da linha",
-        "ler o semanal e o RONI como se medissem a mesma coisa"
-      ],
-      "funcao_narrativa": "a leitura semanal mais recente do Pacífico, ao lado do índice que classifica o episódio",
-      "acao_relacionada": null
-    },
     "monitor-de-riscos.html#boxListas": {
       "tipo": "mapa de pontos",
       "pergunta_que_responde": "Que municípios constam da lista federal de deslizamento e enchente (Lei 12.340, art. 3º-A), da lista de prioritários do fogo na Amazônia, ou das duas?",

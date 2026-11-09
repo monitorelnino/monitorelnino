@@ -78,7 +78,6 @@ function lacuna(alvoId, texto){
   alvo.appendChild(d);
 }
 
-
 /* ---------- desenho genérico de mapa coroplético por UF (motor único em assets/mapas.js) ---------- */
 const desenharMapa = (svgId, legendaId, corDe, rotuloDe, itensLegenda, familia) =>
   MonitorMapas.desenharMapa(__ctx(), svgId, legendaId, corDe, rotuloDe, itensLegenda, familia);
@@ -217,8 +216,6 @@ const ufsCom = teste => UFS.filter(uf => SINAIS.uf[uf] && teste(componentesDe(uf
   // título com os anos é composto no bloco do Pacífico, que é quem tem a série em mão.
 
   // 09/10/2026 (ajustes 5 e 6): o TÍTULO diz o que é e quando; o subtítulo diz o critério e a fonte.
-
-
 
   const fTemp = fonte('inmet_previsao_capitais');
   const diaPrev = (SINAIS.uf.SP && SINAIS.uf.SP.temperatura && SINAIS.uf.SP.temperatura.data) || fTemp.consultado_em;
@@ -426,7 +423,6 @@ if (AR) {
     'sensores: IPAM/RedeAr'], url: fm.url_publica, data: AR ? (fm.consultado_em || AR.gerado_em) : null});
   const d = document.querySelector('#boxAr .fonte-figura'); if (d) d.dataset.credito = 'monitorar';
 })();
-
 
 // ---- Mapa 4: focos ativos, por POSIÇÃO (29/09/2026) ----
 /* Era coroplético por UF: o estado inteiro pintado pela contagem. O CSV do INPE traz latitude e
@@ -1244,63 +1240,10 @@ figuraDeEpisodios({
     rotuloAcessivel: txtCat(IP + 'nino34_mensal.rotulo_acessivel', null, 'Linhas da anomalia mensal da Niño 3.4 por episódio')});
 })();
 
-// ---- Niño 3.4 semanal, logo abaixo (17/10/2026, HANDOVER_NINO34_SEMANAL §2) ----
-/* Mesmo componente, mesma moldura (zero e os dois limiares da NOAA/CPC), mesmos tokens e a mesma
-   função de desenho do gráfico do RONI. O que muda é o passo do dado — semana, não trimestre — e a
-   escala vertical, que a faixa do próprio dado define: o semanal passa de +3 °C, e o teto do RONI
-   cortaria o dado. Eixo em meses, pela regra do site. Sem série coletada, lacuna declarada. */
-(function nino34Semanal(){
-  const IN = IP + 'nino34.';
-  const dataBR = s => String(s).slice(8, 10) + '/' + String(s).slice(5, 7) + '/' + String(s).slice(0, 4);
-  const pts = ((SINAIS.enos.nino34_semanal || {}).serie || []).map(p => {
-    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(p.semana || ''));
-    return m && p.anomalia != null
-      ? {t: +m[1] * 12 + (+m[2] - 1) + (+m[3] - 1) / 31, anomalia: p.anomalia, semana: p.semana} : null;
-  }).filter(Boolean).sort((a, b) => a.t - b.t);
-  creditoPacifico('boxNino34Semanal', 'noaa_nino34_semanal',
-    pts.length ? 'semana de ' + dataBR(pts[pts.length - 1].semana) : null);
-  if (!pts.length) {
-    lacuna('wrapNino34', txtCat(IN + 'lacuna', null, 'Sem coleta até o corte.'));
-    return;
-  }
-  const ultimo = pts[pts.length - 1], primeiro = pts[0];
-  const vals = pts.map(p => p.anomalia);
-  // A escala sai do dado, em passos de 0,5 °C, com meio grau de respiro de cada lado, e nunca
-  // menor que ±1,0 °C — assim os limiares de ±0,5 °C aparecem sempre.
-  const faixa = [Math.min(-1, Math.floor(Math.min.apply(null, vals) * 2) / 2 - 0.5),
-                 Math.max(1, Math.ceil(Math.max.apply(null, vals) * 2) / 2 + 0.5)];
-  const t0 = Math.floor(primeiro.t), t1 = Math.ceil(ultimo.t);
-  põeCat('nino34Leitura', IN + 'molde_leitura',
-    {data: dataBR(ultimo.semana), valor: PAC.num(ultimo.anomalia)});
-  desenharNaLargura('wrapNino34', 14,
-    txtCat(IN + 'rotulo_acessivel', null, 'Anomalia semanal da região Niño 3.4, em graus Celsius'),
-    function (g, geo) {
-      const {L, T, pw, ph, y, estreito} = geo;
-      const x = t => L + (t - t0) / (t1 - t0) * pw;
-      const passo = estreito ? 3 : 2;
-      for (let t = t0; t <= t1; t++) {
-        const mes = ((t % 12) + 12) % 12;
-        if (mes === 0 && t > t0) g.appendChild(svgEl('line', {x1: x(t).toFixed(1), x2: x(t).toFixed(1),
-          y1: T, y2: T + ph + 10, class: 'div'}));
-        if (mes === 0 || t === t0) g.appendChild(svgEl('text', {x: x(t).toFixed(1), y: T + ph + 32,
-          class: 'tk2', 'text-anchor': t === t0 ? 'start' : 'middle'}, String((t - mes) / 12)));
-        if ((t - t0) % passo === 0) g.appendChild(svgEl('text', {x: x(t).toFixed(1), y: T + ph + 18,
-          class: 'tk', 'text-anchor': 'middle'}, PAC.MES[mes]));
-      }
-      const traco = pts.map((p, i) => (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.anomalia).toFixed(1)).join(' ');
-      g.appendChild(svgEl('path', {d: traco, class: 'l-agora'}));
-      g.appendChild(svgEl('circle', {cx: x(ultimo.t).toFixed(1), cy: y(ultimo.anomalia).toFixed(1),
-        r: 4, class: 'agora'}));
-    }, faixa);
-  // Sem "Ver em lista" aqui: o §7 do handover do Monitor de riscos tirou essas listas da página. O
-  // que a figura mostra se lê pelo `aria-label` do desenho e pela linha de leitura abaixo dele.
-})();
-
 // O gráfico de estados por tipo de risco (#cTipos) saiu da página em 27/09/2026 com o risco projetado;
 // a montagem que sobrou aqui mirava um canvas inexistente e foi retirada (A4-21, 10/10/2026).
 // 15/09/2026: a contagem por família mora na figura dupla boxTipoRisco (mapa + gráfico, uma legenda) — o crédito é o da figura.
 // 17/09/2026: o cruzamento "tipo de risco × estágio" (que morava na home, #cCruz) saiu do site — pedido da editoria.
-
 
 // ---- Consulta do município (16/10/2026, HANDOVER_MONITOR_DE_RISCOS §5) ----
 /* Estado → município, como na inicial; o arquivo `data/riscos_municipio/<UF>.json` é carregado só ao
