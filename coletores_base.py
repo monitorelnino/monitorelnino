@@ -441,32 +441,6 @@ def validar_pista(pista: dict, existentes: list = None) -> tuple:
     return True, ""
 
 
-def gravar_pista(nome_da_fila: str, pista: dict) -> tuple:
-    """Grava a pista na fila se ela passar pelo esquema. Devolve (gravada, motivo).
-
-    Pista repetida NAO entra de novo: incrementa `repeticoes` na existente, para que a frequencia
-    com que uma fonte repete o mesmo achado continue medida sem inflar a fila.
-    """
-    doc = ler(nome_da_fila) or {"pistas": []}
-    lista = doc.get("pistas") if isinstance(doc.get("pistas"), list) else doc.setdefault("pistas", [])
-    ok, motivo = validar_pista(pista, lista)
-    if not ok:
-        if motivo.startswith("repetida"):
-            url = str(pista.get("url_final") or "")
-            for p in lista:
-                if str(p.get("url_final") or p.get("url") or "") == url:
-                    p["repeticoes"] = int(p.get("repeticoes") or 0) + 1
-                    break
-            gravar(nome_da_fila, doc)
-        return False, motivo
-    nova = dict(pista)
-    nova.setdefault("registrado_em", hoje_editorial().isoformat())
-    nova.setdefault("status", "pista — na fila, aguardando busca dirigida e juiz")
-    lista.append(nova)
-    gravar(nome_da_fila, doc)
-    return True, ""
-
-
 def carimbar_atos(atos: dict) -> dict:
     """Devolve `atos_resposta.json` com o carimbo do dia. PURA: não escreve nada.
 
