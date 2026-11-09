@@ -3349,7 +3349,13 @@
   {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:26:46", "duracao_s": 316.4, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
   {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:32:02", "duracao_s": 315.4, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
   {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:37:17", "duracao_s": 315.6, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
-  {"data": "2026-11-08", "script": "recalcular_mare.py", "inicio": "2026-11-09T01:55:47", "duracao_s": 3.9, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-08", "script": "recalcular_mare.py", "inicio": "2026-11-09T01:55:47", "duracao_s": 3.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "consultar_querido_diario.py", "inicio": "2026-11-09T01:17:43", "duracao_s": 63.8, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-08", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-09T01:18:46", "duracao_s": 2.4, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-09T01:18:48", "duracao_s": 1578.4, "itens": 24, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "coletar_doe.py", "inicio": "2026-11-09T01:45:06", "duracao_s": 2441.3, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "coletar_s2id.py", "inicio": "2026-11-09T02:25:47", "duracao_s": 891.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-09T02:40:38", "duracao_s": 34.3, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-09T01:55:47"
+ "atualizado_em": "2026-11-09T02:40:38"
 }
