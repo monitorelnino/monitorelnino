@@ -4,29 +4,29 @@
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 3.6,
-   "referencia": "08/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Teresina",
-   "capital": "Teresina",
-   "uf": "PI",
+   "valor": 4.2,
+   "referencia": "09/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Maceió",
+   "capital": "Maceió",
+   "uf": "AL",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 40.0 °C contra a média de 36.4 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 35.0 °C contra a média de 30.8 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 5.1,
-    "referencia": "07/11/2026"
+    "valor": 3.6,
+    "referencia": "08/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 369,
-   "referencia": "Focos do dia — focos_diario_br_20261109.csv",
+   "valor": 23978,
+   "referencia": "Focos do dia — focos_diario_br_20261108.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 9653,
-    "referencia": "Focos do dia — focos_diario_br_20261108.csv"
+    "valor": 369,
+    "referencia": "Focos do dia — focos_diario_br_20261109.csv"
    }
   },
   {
@@ -42,14 +42,14 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 5,
-   "perigo_ou_maior": 2,
-   "referencia": "08/11/2026 22:16",
+   "valor": 2,
+   "perigo_ou_maior": 0,
+   "referencia": "09/11/2026 09:07",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 6,
-    "referencia": "08/11/2026 05:52"
+    "valor": 5,
+    "referencia": "08/11/2026 22:16"
    }
   },
   {
