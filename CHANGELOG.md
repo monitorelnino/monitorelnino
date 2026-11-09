@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Painel da noite: o elo `publicar` volta a aparecer · O publicador gravava a linha do painel depois do push, numa árvore que nunca era commitada; o painel não tem `publicar` desde 15/10. A linha agora é gravada antes do commit, como em todo elo; a conclusão de run reprovado segue vindo da API. Só workflow, −0 linhas líquidas.
+
 ## 2026-11-09 · #PR · A anomalia semanal da Niño 3.4 sai do Monitor de riscos · Decisão da editoria: a série mensal com história (desde 1950, na forma do RONI) a substitui; dois gráficos do mesmo dado não se justificam. Saem a figura `boxNino34Semanal`, o bloco de desenho, os textos do catálogo e a ficha; contrato e regra voltam a duas séries largas. O coletor semanal segue (apoio técnico, citado na metodologia). −60 linhas.
 
 ## 2026-11-09 · #PR · Rótulo ao passar o mouse nas linhas do Pacífico · Pedido da editoria: nas figuras do RONI e da Niño 3.4 mensal, tocar ou passar o mouse em qualquer trecho de uma linha mostra episódio · mês: valor do ponto mais próximo (antes só os alvos redondos de cada ponto respondiam ao mouse, e a linha só acendia). Alvos dos pontos ficam só com o título acessível. −3 linhas líquidas.
