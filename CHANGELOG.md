@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-09 · #PR · Plano citado leva o link da citação · O ladrilho da capital e o cartão do município tinham duas cópias da frase de plano citado, nenhuma com o endereço da fonte. Agora é uma função só, com o link quando o registro o tem; e o portão de proveniência põe teto que só desce nos 41 registros de plano citado sem endereço.
+## 2026-11-09 · #PR · Plano citado leva o link da citação · O ladrilho da capital e o cartão do município tinham duas cópias da frase, sem o endereço da fonte. Agora é uma função só, do catálogo, com o link, dizendo que o documento não foi lido e que não contornamos regras de acesso automático (editoria, 09/11). O portão de proveniência põe teto que só desce nos 41 registros de plano citado sem endereço.
 
 ## 2026-11-09 · #PR · CODEMAP e página arquivada contam só o que o Git rastreia · O gerador do CODEMAP e o portão de página arquivada andavam o disco e contavam cópias de trabalho locais; o mapa gerado fora da CI saía diferente e o portão reprovava a máquina. Os dois passam a ler a lista do Git, e o teste do portão monta um repositório Git.
 
