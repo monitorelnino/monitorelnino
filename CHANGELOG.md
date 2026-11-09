@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · SUS: vigilância em saúde por ação, mês e município · O repasse do FNS guardava só o programa; agora o programa Vigilância em Saúde e Ambiente vem aberto por ação e plano orçamentário, como a fonte os escreve (agentes de combate às endemias, piso de vigilância, arboviroses), e por município. Os meses já baixados foram relidos das cópias preservadas; maio e setembro, sem cópia, foram baixados de novo.
+
+## 2026-11-09 · #PR · Plano citado leva o link da citação · O ladrilho da capital e o cartão do município tinham duas cópias da frase, sem o endereço da fonte. Agora é uma função só, do catálogo, com o link, dizendo que o documento não foi lido e que não contornamos regras de acesso automático (editoria, 09/11). O portão de proveniência põe teto que só desce nos 41 registros de plano citado sem endereço.
+
 ## 2026-11-09 · #PR · Sítio da prefeitura: recusa é do host, fila começa por quem falta · Os 1.530 municípios fora de `municipal_completo` têm diário e busca web; falta-lhes só o sítio. Em 83, o 403 de um host do Wikidata (IBGE, câmara, bombeiros) encerrava a leitura antes do endereço padrão. A recusa passa a valer para aquele host e o seu `www.`, sem novo pedido; os demais candidatos seguem. A fila do sítio põe primeiro quem não está completo: capitais, depois população.
 
 ## 2026-11-09 · #PR · DOE: só o cabeçalho do decreto identifica o ato · A releitura do DOE-RJ ainda gerou pista com o número 40.013: com as colunas intercaladas, uma menção ao El Niño no corpo do decreto caía perto de um decreto citado de outro ato, e o extrator recuava para a citação. O recuo sai: menção sem cabeçalho na janela não vira pista. Autoteste com o caso.
