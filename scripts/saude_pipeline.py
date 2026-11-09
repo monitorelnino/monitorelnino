@@ -56,6 +56,7 @@ import time
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
+from coletores_base import CODIGO_SEM_NOVIDADE  # noqa: E402
 
 ARQUIVO = RAIZ / "data" / "saude_pipeline.json"
 DIAS_DE_HISTORICO = 7
@@ -117,7 +118,7 @@ def podar(execucoes: list, hoje: datetime.date) -> list:
 
 def registrar(script: str, inicio: str, duracao_s: float, itens, status: str, erro: str = "",
               hoje: datetime.date = None, gravar=True) -> dict:
-    """Acrescenta a linha e devolve o documento. `status`: ok | erro | pulado."""
+    """Acrescenta a linha e devolve o documento. `status`: ok | erro | pulado | sem_novidade."""
     from coletores_base import hoje_editorial
     hoje = hoje or hoje_editorial()
     doc = ler()
@@ -210,6 +211,12 @@ def terminou_pulando(execucoes: list, epoch: float) -> str:
     return meus[-1]["script"] if meus and meus[-1].get("status") == "pulado" else ""
 
 
+def status_de(codigo: int, interrompido: bool = False) -> str:
+    """ok | sem_novidade (saída 79: a fonte foi consultada e nada mudou) | erro. Função pura."""
+    return ("ok" if codigo == 0 else "sem_novidade" if codigo == CODIGO_SEM_NOVIDADE and not interrompido
+            else "erro")
+
+
 def rodar(argv: list, prazo=None, minimo: float = MINIMO_PARA_COMECAR_S,
           restaurar: bool = True) -> int:
     """Invólucro: cronometra, registra e devolve o MESMO código de saída do comando.
@@ -245,14 +252,14 @@ def rodar(argv: list, prazo=None, minimo: float = MINIMO_PARA_COMECAR_S,
     codigo = CODIGO_PRAZO if interrompido else proc.returncode
     if interrompido and restaurar:
         _restaurar_json_quebrado()
+    status = status_de(codigo, interrompido)
     registrar(script=nome_do_script(argv), inicio=inicio_dt.isoformat(), duracao_s=duracao,
-              itens=contar_itens(saida), status="ok" if codigo == 0 else "erro",
+              itens=contar_itens(saida), status=status,
               erro=("interrompido pelo prazo do elo" if interrompido
-                    else "" if codigo == 0 else resumir_erro(saida)))
+                    else "" if status != "erro" else resumir_erro(saida)))
     print(f"[saude] {nome_do_script(argv)}: {duracao:.0f}s, status "
-          f"{'ok' if codigo == 0 else ('interrompido pelo prazo' if interrompido else 'erro')}",
-          flush=True)
-    return codigo
+          f"{'interrompido pelo prazo' if interrompido else status}", flush=True)
+    return 0 if status == "sem_novidade" else codigo
 
 
 def listar() -> int:
@@ -318,6 +325,10 @@ def autoteste() -> int:
     casos.append(("o autoteste não escreveu em data/",
                   not (ARQUIVO.exists() and json.loads(ARQUIVO.read_text(encoding="utf-8"))
                        .get("execucoes", [{}])[-1].get("script") == "x.py")))
+
+    casos.append(("saída 79 é sem_novidade, não erro; 1 e prazo seguem erro",
+                  [status_de(0), status_de(CODIGO_SEM_NOVIDADE), status_de(1), status_de(CODIGO_SEM_NOVIDADE, True)]
+                  == ["ok", "sem_novidade", "erro", "erro"]))
 
     # prazo do elo (F38)
     casos.append(("sem prazo, roda sem teto", decidir_prazo(None, 100.0) == ("rodar", None)))
