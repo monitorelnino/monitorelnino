@@ -21,7 +21,7 @@
   'use strict';
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const T = (id, v) => (global.MonitorCatalogo && global.MonitorCatalogo.texto('consulta.cartao.' + id, v)) || '';
-  const nrm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const nrm = MonitorMapas.nrm;   // um só, em assets/mapas.js
 
   function montar(o) {
     const $ = id => document.getElementById(id);
