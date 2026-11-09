@@ -3434,7 +3434,13 @@
   {"data": "2026-11-09", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T08:23:57", "duracao_s": 315.1, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
   {"data": "2026-11-09", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T08:29:12", "duracao_s": 314.9, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
   {"data": "2026-11-09", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T08:34:26", "duracao_s": 316.3, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
-  {"data": "2026-11-09", "script": "recalcular_mare.py", "inicio": "2026-11-09T08:38:20", "duracao_s": 4.2, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-09", "script": "recalcular_mare.py", "inicio": "2026-11-09T08:38:20", "duracao_s": 4.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "scripts/corrigir_atribuicao_por_dominio.py", "inicio": "2026-11-09T08:30:48", "duracao_s": 88.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "revisar_pistas.py", "inicio": "2026-11-09T08:32:16", "duracao_s": 670.6, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-09", "script": "julgar_filas.py", "inicio": "2026-11-09T08:43:26", "duracao_s": 95.7, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-09", "script": "julgar_e_aplicar_descobertas.py", "inicio": "2026-11-09T08:45:02", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-09", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-09T08:45:02", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-09", "script": "scripts/amostra_auditoria_semanal.py", "inicio": "2026-11-09T08:45:02", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
  ],
- "atualizado_em": "2026-11-09T08:38:20"
+ "atualizado_em": "2026-11-09T08:45:02"
 }
