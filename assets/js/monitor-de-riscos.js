@@ -448,11 +448,15 @@ const fogo = uf => (SINAIS.uf[uf] || {}).fogo;
      o dado: o traço passa do contorno claro para o próprio tom da UF um degrau acima, de modo que
      ela se lê de perto e o foco é o que salta. */
   const HACHURA_FOGO = MonitorMapas.hachura('mapaFogo', ATM.fogo.uf, ATM.fogo.contorno, .45);
+  /* 09/11/2026 (editoria, correção pela raiz): o rótulo do estado lê o MESMO conjunto dos pontos —
+     `focos_pontos.por_uf`, satélite de referência, último dia completo. Lia `fogo.focos_24h` (todos
+     os satélites, arquivo do dia corrente), e um estado com pontos no mapa dizia "0 focos". */
+  const diaBR = FOCOS.dia ? FOCOS.dia.split('-').reverse().join('/') : null;
   desenharMapa('mapaFogo', 'legFogo', uf => previstoFogo(uf) ? HACHURA_FOGO : ATM.fogo.uf,
-    uf => { const f = fogo(uf); const n = f ? f.focos_24h : null; const [d, o] = fonteLinha('inpe_fogo');
-            return MonitorMapas.dica({semTitulo: true, linhas: [n == null
-              ? 'Sem dado do INPE para o estado na consulta'
-              : plural(n, 'foco', 'focos') + ' nas últimas 24 horas'], data: d, fonte: o}); },
+    uf => { const n = (FOCOS.por_uf || {})[uf] || 0;
+            return MonitorMapas.dica({semTitulo: true,
+              linhas: [plural(n, 'foco', 'focos') + (diaBR ? ' em ' + diaBR : '') + ' · satélite de referência'],
+              data: null, fonte: 'INPE'}); },
     [], 'fogo');
   const itens = base.map(p => ({lat: p[0], lon: p[1], n: p[2]}));
   const maxCel = Math.max(...itens.map(p => p.n));
