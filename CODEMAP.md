@@ -53,7 +53,7 @@ Atualizado em 09/11/2026.
 | `atualizar_instrumentos_estaduais.py` | — | — | — | 2 | não |
 | `atualizar_marcos_severidade.py` | — | — | — | — | não |
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
-| `atualizar_recursos.py` | — | — | — | — | não |
+| `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
 | `atualizar_transferencias.py` | — | `transferencias_api_raw.json`, `transferencias_revisar.json` | — | — | não |
 | `buscador2.py` | — | — | — | 3 | não |
 | `buscar_financiamento_preventivo.py` | — | — | — | — | não |
