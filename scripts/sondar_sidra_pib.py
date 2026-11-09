@@ -5,18 +5,15 @@ import sys, pathlib, urllib.request, urllib.error
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 from coletores_base import ua_de
 URLS = [
-    "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/6323/p/2023?formato=json",
-    "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/6323/p/last?formato=json",
-    "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/37/p/last?formato=json",
-    "https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/all/p/last/d/v6323%202?formato=json",
-    "https://apisidra.ibge.gov.br/desctabapi.aspx?c=5938",
+    "https://apisidra.ibge.gov.br/values/t/5938/n3/33/v/all/p/last?formato=json",
+    "https://apisidra.ibge.gov.br/values/t/5938/n3/33/v/allxp/p/all?formato=json",
 ]
 for u in URLS:
     try:
         req = urllib.request.Request(u, headers={"User-Agent": ua_de("sonda SIDRA PIB per capita")})
         with urllib.request.urlopen(req, timeout=60) as r:
-            corpo = r.read(3000).decode("utf-8", "replace")
-            print(f"\n== {u}\n   HTTP {r.status}\n   {corpo[:1500]}")
+            corpo = r.read(60000).decode("utf-8", "replace")
+            print(f"\n== {u}\n   HTTP {r.status}\n   {corpo[:12000]}")
     except urllib.error.HTTPError as e:
         print(f"\n== {u}\n   HTTP {e.code} {e.reason}\n   {e.read(800).decode('utf-8','replace')}")
     except Exception as e:
