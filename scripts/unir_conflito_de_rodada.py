@@ -120,6 +120,7 @@ REGENERAVEIS = (
     "data/resposta/serie_semanal.json", "data/robustez_mc.json", "data/snapshot_feed.json",
     "data/verificacao_municipal.json", "data/verificacao_resumo.json",
     "MARE_Indice_Documentacao.pdf", "METODOLOGIA.pdf",   # 07/11/2026: binários da cadeia (gerar_pdf_*.py)
+    "indice-de-conteudo.html",   # 09/11/2026: gerado do catálogo (gerar_indice_de_conteudo.py); dois PRs de texto conflitavam nele
 )
 
 # 11/10/2026: derivados que NÃO estão na cadeia canônica (§273) e têm gerador próprio. Resolvem-se

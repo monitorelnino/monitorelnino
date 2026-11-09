@@ -298,6 +298,8 @@ CASOS_ESQUEMA = [
 
 # ───────────────────────────── proveniencia ─────────────────────────────
 PONTUADAS = ("plano", "plano_antigo", "estrutura")
+CITADAS = ("plano_nomeado",)
+TETO_CITADO_SEM_ENDERECO = 41   # 09/11/2026; só desce
 PONTUADOS_UF = ("NOVO", "READ", "VIG")
 TETO_DE_DEFEITOS = 10   # 10/10/2026: 31 de 41 pontuados com endereço; 10 defeitos de prova
 
@@ -326,6 +328,12 @@ def problemas_proveniencia(estados: dict, municipios: list, js: str) -> list:
     for m in municipios or []:
         if m.get("categoria") in PONTUADAS and not m.get("url"):
             out.append(f"{m.get('nome')}/{m.get('uf')} · {m.get('categoria')}: pontuado sem endereço")
+    # 09/11/2026 (editoria): "plano citado em fonte oficial" não pontua, mas a ficha AFIRMA a citação — e
+    # sem o endereço ninguém a confere. 41 registros nasceram assim; o teto só desce.
+    citados = [m for m in municipios or [] if m.get("categoria") in CITADAS and not m.get("url")]
+    if len(citados) > TETO_CITADO_SEM_ENDERECO:
+        out.append(f"{len(citados)} registros de plano citado sem o endereço da citação, acima do teto de "
+                   f"{TETO_CITADO_SEM_ENDERECO} (o teto só desce: endereço achado sai, registro novo sem endereço não entra)")
     if "docComEndereco(d)" not in js or "docComEndereco(d.estrutura)" not in js:
         out.append("assets/js/index.js: o cartão do estado não liga o documento ao endereço")
     if "endereço do documento não localizado até o corte" not in js:
@@ -359,6 +367,11 @@ def _go(**inst):
 
 CASOS_PROVENIENCIA = [
     ("endereço ou lacuna declarada passa", problemas_proveniencia(_UF_BOM, [], _JS) == []),
+    ("plano citado sem endereço acima do teto reprova; no teto passa",
+     len(problemas_proveniencia(_UF_BOM, [{"nome": f"M{i}", "uf": "SE", "categoria": "plano_nomeado"}
+                                          for i in range(TETO_CITADO_SEM_ENDERECO + 1)], _JS)) == 1
+     and problemas_proveniencia(_UF_BOM, [{"nome": f"M{i}", "uf": "SE", "categoria": "plano_nomeado"}
+                                          for i in range(TETO_CITADO_SEM_ENDERECO)], _JS) == []),
     ("instrumento sem endereço e sem lacuna reprova",
      len(problemas_proveniencia({"ufs": [{"uf": "SC", "instrumentos": [{"tipo": "x", "status": "NOVO"}]}]}, [], _JS)) >= 1),
     ("plano municipal sem endereço reprova",
