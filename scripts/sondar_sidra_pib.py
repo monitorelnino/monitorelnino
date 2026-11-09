@@ -10,13 +10,10 @@ def pega(u):
     with urllib.request.urlopen(req, timeout=120) as r:
         return json.loads(r.read().decode("utf-8", "replace"))
 
-for t in [str(i) for i in range(5938, 5951)] + ["6784", "7358", "7359", "7360", "7361"]:
+for u in ["https://apisidra.ibge.gov.br/values/t/5938/n3/all/v/37/p/2023?formato=json",
+          "https://apisidra.ibge.gov.br/values/t/6579/n3/all/v/9324/p/2023?formato=json",
+          "https://apisidra.ibge.gov.br/values/t/6579/n3/all/v/all/p/last?formato=json"]:
     try:
-        m = pega(f"https://servicodados.ibge.gov.br/api/v3/agregados/{t}/metadados")
-        print(f"\n== t/{t}: {m.get('nome')} · níveis {m.get('nivelTerritorial')} · periodicidade {m.get('periodicidade',{}).get('fim')}")
-        for v in m.get("variaveis", []):
-            if "per capita" in v.get("nome", "").lower():
-                print(f"   v/{v['id']}: {v['nome']} ({v.get('unidade')})")
-        print("   variaveis:", [v["id"] for v in m.get("variaveis", [])][:20])
+        d = pega(u); print(f"\n== {u}\n   {len(d)} linhas\n   {json.dumps(d[:3], ensure_ascii=False)[:1200]}")
     except Exception as e:
-        print(f"\n== t/{t}: {type(e).__name__}: {e}")
+        print(f"\n== {u}\n   {type(e).__name__}: {e}")
