@@ -274,7 +274,9 @@ FONTES = {
         # passou a usar o RONI como índice de referência. Ela continua coletada e passou a
         # viver na METODOLOGIA (§58) — a camada declara isso, e o portão de sinais cobra a
         # citação lá, em vez de cobrar um crédito numa página onde ela não aparece.
-        "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "apoio_tecnico",
+        # 08/11/2026 (editoria): volta à página — o Monitor de riscos desenha a série desde 1950 na mesma
+        # forma do RONI (ciclo em curso × episódios). Camada de exibição de novo.
+        "nome": "Anomalia mensal da temperatura do mar, região Niño 3.4", "orgao": "NOAA/CPC", "camada": "enos",
         "url_publica": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "endpoint": "https://www.cpc.ncep.noaa.gov/data/indices/detrend.nino34.ascii.txt",
         "papel": "Leitura mensal, sem a suavização de três meses que o ONI e o RONI aplicam.",
@@ -525,18 +527,21 @@ def parse_roni(texto: str) -> list:
 def parse_nino34_mensal(texto: str) -> list:
     """17/09/2026: leitura mensal, não suavizada em três meses, da anomalia de temperatura na região
     Niño 3.4 (arquivo 'detrend.nino34.ascii.txt' do CPC, colunas YR MON TOTAL ClimAdjust ANOM) — a
-    matéria-prima mensal da qual tanto o ONI quanto o RONI derivam a média móvel trimestral. Só os
-    últimos ~48 meses interessam à página (tendência recente), não a série inteira desde 1949."""
+    matéria-prima mensal da qual tanto o ONI quanto o RONI derivam a média móvel trimestral.
+    08/11/2026 (editoria): a série INTEIRA, desde 1950, com a temperatura absoluta (TOTAL) ao lado da
+    anomalia — a página passa a comparar o ciclo em curso aos episódios anteriores, como faz com o RONI.
+    Até aqui guardava só os últimos 48 meses."""
     serie = []
     for linha in texto.splitlines():
         partes = linha.split()
         if len(partes) != 5 or partes[0] == "YR":
             continue
         try:
-            serie.append({"ano": int(partes[0]), "mes": int(partes[1]), "anomalia": float(partes[4])})
+            serie.append({"ano": int(partes[0]), "mes": int(partes[1]),
+                          "temperatura": float(partes[2]), "anomalia": float(partes[4])})
         except ValueError:
             continue
-    return serie[-48:]
+    return serie
 
 
 MESES_CPC = ("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC")
@@ -2775,8 +2780,12 @@ def autoteste() -> int:
                                 " 08OCT2026     21.9 1.2     26.3 1.4     28.5 1.9     29.6 0.9\n"
                                 " 15OCT2026     21.0-0.1     25.1-0.3     26.6-0.4     28.6 0.1\n x\n")
            == [{"semana": "2026-10-08", "anomalia": 1.9}, {"semana": "2026-10-15", "anomalia": -0.4}])
-    checar("Niño 3.4 mensal: lê a 5ª coluna (ANOM), não a 3ª (TOTAL)", _mensal_teste == [
-        {"ano": 2026, "mes": 7, "anomalia": 1.78}, {"ano": 2026, "mes": 8, "anomalia": 2.17}])
+    checar("Niño 3.4 mensal: anomalia da 5ª coluna (ANOM) e temperatura da 3ª (TOTAL), série inteira", _mensal_teste == [
+        {"ano": 2026, "mes": 7, "temperatura": 29.07, "anomalia": 1.78},
+        {"ano": 2026, "mes": 8, "temperatura": 29.04, "anomalia": 2.17}])
+    _mensal_longa = parse_nino34_mensal("\n".join(f"{1950 + i // 12} {i % 12 + 1} 27.0 27.0 0.0" for i in range(924)))
+    checar("Niño 3.4 mensal: a série desde 1950 inteira, sem corte de 48 meses, e leve",
+           len(_mensal_longa) == 924 and len(json.dumps(_mensal_longa)) < 120_000)
 
     # 17/09/2026: componentes_de_risco() é a mesma detecção de classificar_tipo(), sem colapsar em
     # "misto" — todo "misto" precisa render pelo menos 2 componentes; todo tipo único, exatamente 1.

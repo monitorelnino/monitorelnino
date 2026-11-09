@@ -685,7 +685,9 @@ const PAC = (function pacificoComum(){
   // Centro do trimestre, em mês do ANO que o dado declara: DJF/2015 é dez/2014–fev/2015, centro
   // jan/2015. É esta convenção que faz a série de 160 médias móveis mensais se ordenar sozinha.
   const CENTRO = {DJF:0, JFM:1, FMA:2, MAM:3, AMJ:4, MJJ:5, JJA:6, JAS:7, ASO:8, SON:9, OND:10, NDJ:11};
-  const centro = p => CENTRO[String(p.trimestre || '').toUpperCase()];
+  // 08/11/2026: ponto MENSAL (ano, mes) entra pelo mesmo caminho — o centro é o próprio mês.
+  const centro = p => p.trimestre ? CENTRO[String(p.trimestre).toUpperCase()]
+    : (Number.isInteger(p.mes) && p.mes >= 1 && p.mes <= 12 ? p.mes - 1 : undefined);
   const temCentro = p => centro(p) !== undefined;
   // Ordem absoluta em meses, para varrer a série sem depender da ordem do arquivo.
   const ordem = p => p.ano * 12 + centro(p);
@@ -695,6 +697,7 @@ const PAC = (function pacificoComum(){
   function periodo(p){
     const c = centro(p);
     if (c === undefined) return String(p.trimestre || '');
+    if (!p.trimestre) return MES[c] + ' ' + p.ano;
     const ini = (c + 11) % 12, fim = (c + 1) % 12;
     const anoIni = c === 0 ? p.ano - 1 : p.ano, anoFim = c === 11 ? p.ano + 1 : p.ano;
     return anoIni === anoFim ? MES[ini] + '–' + MES[fim] + ' ' + p.ano
@@ -704,6 +707,7 @@ const PAC = (function pacificoComum(){
   function periodoCurto(p){
     const c = centro(p);
     if (c === undefined) return String(p.trimestre || '');
+    if (!p.trimestre) return MES[c];
     return MES[(c + 11) % 12] + '–' + MES[(c + 1) % 12];
   }
   // Episódio de El Niño pelo critério da NOAA/CPC: cinco ou mais médias trimestrais CONSECUTIVAS
@@ -991,9 +995,21 @@ function creditoPacifico(caixaId, fonteId, ultimoDado){
   if (d) d.dataset.credito = fonteId;
 }
 
-if (PACIFICO.serie.length) {
-  const serie = PACIFICO.serie;
-  const primeiro = serie[0], ultimo = PACIFICO.ultimo;
+/* A figura de episódios, parametrizada (08/11/2026, editoria): a mesma forma — ciclo em curso
+   destacado sobre os episódios anteriores de El Niño, janela de janeiro do ano de início a junho do
+   seguinte — serve ao RONI (trimestral) e à anomalia mensal da Niño 3.4. `cfg.base` diz QUAIS são os
+   episódios (sempre os do RONI, critério da NOAA/CPC); `cfg.serie` é o que se desenha; `cfg.contagem`
+   só vale quando base e série são o mesmo índice. Uma função, dois desenhos: nada se copia. */
+function figuraDeEpisodios(cfg){
+const ids = cfg.ids, C = IP + cfg.cat;
+if (cfg.serie.length) {
+  const serie = cfg.serie;
+  const primeiro = serie[0], ultimo = serie[serie.length - 1];
+  // Os episódios vêm de `cfg.base` (os do RONI); contam só os que a série desenhada alcança — a
+  // Niño 3.4 mensal entra com 48 meses no registro e só ganha 1950 na coleta seguinte, e um título
+  // que dissesse "22 episódios" sobre uma linha seria afirmar o que a figura não mostra.
+  const base = {emCurso: cfg.base.emCurso,
+                episodios: cfg.base.episodios.filter(e => PAC.janela(serie, e.ano).length)};
   // O título traz os anos DO DADO: quando a série passar a começar em 1950, ele diz 1950 sozinho.
   // ANO É RÓTULO, NÃO QUANTIDADE: o catálogo formata número em pt-BR, e `2026` chegaria à tela
   // como "2.026". Tudo o que é ano entra no molde já como texto.
@@ -1008,8 +1024,8 @@ if (PACIFICO.serie.length) {
   // em curso se vê —, e só ele é destacado e rotulado, porque é o assunto da página. Nada é
   // omitido: cada linha diz o seu episódio e o seu valor ao passar o mouse ou tocar.
   const linhas = [];
-  if (PACIFICO.emCurso) linhas.push({ano: PACIFICO.emCurso.ano, rotulo: PACIFICO.emCurso.rotulo, classe: 'l-agora', agora: true});
-  PACIFICO.episodios.forEach(e => linhas.push({ano: e.ano, rotulo: e.rotulo, classe: 'l-contexto', agora: false}));
+  if (base.emCurso) linhas.push({ano: base.emCurso.ano, rotulo: base.emCurso.rotulo, classe: 'l-agora', agora: true});
+  base.episodios.forEach(e => linhas.push({ano: e.ano, rotulo: e.rotulo, classe: 'l-contexto', agora: false}));
   // 09/10/2026 (ajuste 4, editoria): cada episódio com o seu pico na janela desenhada. Rótulo
   // direto só nos de pico de +1,5 °C ou mais — o critério de "forte" da NOAA/CPC, regra fixa e
   // declarada na nota da figura, não escolha nossa. Na coluna estreita (celular), só os três
@@ -1023,7 +1039,7 @@ if (PACIFICO.serie.length) {
   const tresMaiores = fortes.slice().sort((a, b) => b.pico.p.anomalia - a.pico.p.anomalia).slice(0, 3);
   const descreveEpisodio = l => l.rotulo + ' · pico ' + PAC.num(l.pico.p.anomalia) + ' °C em '
     + PAC.periodoCurto(l.pico.p);
-  const episodiosRotulos = PACIFICO.episodios.map(e => e.rotulo);
+  const episodiosRotulos = base.episodios.map(e => e.rotulo);
   // O TÍTULO NÃO LISTA OS EPISÓDIOS, e a lista vai para a nota. O handover pediu a lista no
   // título; a regra de componente vence, e por duas razões que o próprio dado impõe. A primeira é
   // medida: numa coluna da grade de dois, "RONI nos episódios de El Niño de 2015–16, 2018–19 e
@@ -1032,18 +1048,25 @@ if (PACIFICO.serie.length) {
   // consistência visual reprovava, com razão. A segunda é de trajetória: com a série desde 1950 a
   // lista passa de três episódios para dezenas, e um título que cresce com o dado não é título.
   // A nota é onde a lista cabe, e a legenda do gráfico nomeia cada linha de qualquer modo.
-  põeCat('episodiosTitulo',
-    IP + (episodiosRotulos.length ? 'episodios.molde_titulo' : 'episodios.molde_titulo_sem_episodio'),
-    {ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano),
+  põeCat(ids.titulo,
+    C + (episodiosRotulos.length ? 'molde_titulo' : 'molde_titulo_sem_episodio'),
+    {ano: String(base.emCurso ? base.emCurso.ano : ultimo.ano),
      n: episodiosRotulos.length,
-     inicio: String(PACIFICO.episodios.length ? PACIFICO.episodios[0].ano : primeiro.ano)});
+     inicio: String(base.episodios.length ? base.episodios[0].ano : primeiro.ano)});
   // A lista dos episódios NÃO entra na nota: ela cresce com o dado, e nota que cresce desalinha a
   // dupla do mesmo jeito que o título desalinhava. Quem os nomeia é a legenda do gráfico, item a
   // item, e a frase de leitura logo abaixo, com o valor de cada um.
-  põeCat('episodiosNota', IP + 'episodios.molde_nota', anos);
+  põeCat(ids.nota, C + 'molde_nota', anos);
 
-  desenharNaLargura('wrapEpisodios', 20,
-    txtCat(IP + 'episodios.rotulo_acessivel', null, 'Linhas do RONI por episódio'),
+  // A escala: a do RONI, alargada quando o dado desenhado passa dela — a anomalia mensal da Niño
+  // 3.4 vai a +2,7 °C em 2026 (e a +2,9 em 1997), e o teto do RONI cortaria a linha. Passo de 0,5.
+  const naJanela = linhas.flatMap(l => PAC.janela(serie, l.ano).map(x => x.p.anomalia));
+  const faixa = naJanela.length
+    ? [Math.min(RONI_MIN, Math.floor(Math.min.apply(null, naJanela) * 2) / 2),
+       Math.max(RONI_MAX, Math.ceil(Math.max.apply(null, naJanela) * 2) / 2)]
+    : null;
+  desenharNaLargura(ids.wrap, 20,
+    txtCat(C + 'rotulo_acessivel', null, cfg.rotuloAcessivel),
     function (g, geo) {
       const {L, T, pw, ph, y, estreito} = geo;
       const xs = k => L + k * (pw / 17);
@@ -1055,12 +1078,12 @@ if (PACIFICO.serie.length) {
       g.appendChild(svgEl('line', {x1: xs(11.5).toFixed(1), x2: xs(11.5).toFixed(1),
                                    y1: T, y2: T + ph + 30, class: 'div'}));
       g.appendChild(svgEl('text', {x: xs(5.5).toFixed(1), y: T + ph + 34, class: 'tk2',
-        'text-anchor': 'middle'}, txtCat(IP + 'episodios.eixo_ano_inicio', null, '')));
+        'text-anchor': 'middle'}, txtCat(C + 'eixo_ano_inicio', null, '')));
       g.appendChild(svgEl('text', {x: xs(14.5).toFixed(1), y: T + ph + 34, class: 'tk2',
-        'text-anchor': 'middle'}, txtCat(IP + 'episodios.eixo_ano_seguinte', null, '')));
+        'text-anchor': 'middle'}, txtCat(C + 'eixo_ano_seguinte', null, '')));
       // Rótulo da linha vertical: o mês que ela marca. Ele entra na lista de ocupados antes dos
       // rótulos dos episódios, para que nenhum caia em cima dele.
-      const txtDiv = txtCat(IP + 'episodios.rotulo_divisoria', null, 'janeiro do ano seguinte');
+      const txtDiv = txtCat(C + 'rotulo_divisoria', null, 'janeiro do ano seguinte');
       // Na coluna estreita o rótulo não cabe à direita da linha: vai para a esquerda dela.
       g.appendChild(svgEl('text', {x: (xs(11.5) + (estreito ? -4 : 4)).toFixed(1), y: (T + 10).toFixed(1),
         class: 'tk2', 'text-anchor': estreito ? 'end' : 'start'}, txtDiv));
@@ -1092,6 +1115,12 @@ if (PACIFICO.serie.length) {
       };
       // Posições calculadas ANTES de desenhar, na ordem de prioridade: o ciclo em curso, depois
       // os picos maiores — é o que garante que o deslocamento recai sobre os menores.
+      // O ponto final do ciclo em curso também ocupa lugar: rótulo de episódio não cai sobre ele
+      // (visto em 08/11/2026 com a Niño 3.4 mensal: "1965–66" em cima do ponto de 2026).
+      linhas.filter(l => l.agora).forEach(l => {
+        const fim = PAC.janela(serie, l.ano).slice(-1)[0];
+        if (fim) ocupados.push({x0: xs(fim.k) - 10, x1: xs(fim.k) + 10, y0: y(fim.p.anomalia) - 10, y1: y(fim.p.anomalia) + 10});
+      });
       const posicoes = new Map();
       linhas.filter(l => l.pico).slice()
         .sort((a, b) => (b.agora - a.agora) || (b.pico.p.anomalia - a.pico.p.anomalia))
@@ -1133,20 +1162,20 @@ if (PACIFICO.serie.length) {
         if (linha.agora) g.appendChild(svgEl('circle', {cx: xs(fimDaLinha.k).toFixed(1),
           cy: y(fimDaLinha.p.anomalia).toFixed(1), r: 4, class: 'agora'}));
       });
-    });
+    }, faixa);
 
   // A legenda mostra o traço de cada linha: cor nunca é o único portador da informação.
   // A legenda tem DOIS itens, não 23: o ciclo em curso e a família de contexto, com a contagem
   // e o intervalo de anos. Quem quer saber qual linha é qual toca nela.
   (function legendaEpisodios(){
-    const alvo = document.getElementById('legEpisodios'); if (!alvo) return;
+    const alvo = document.getElementById(ids.leg); if (!alvo) return;
     const itens = [];
-    if (PACIFICO.emCurso) itens.push(['t-agora', txtCat(IP + 'episodios.legenda_atual',
-      {ano: String(PACIFICO.emCurso.ano)}, String(PACIFICO.emCurso.ano))]);
-    if (PACIFICO.episodios.length) itens.push(['t-contexto', txtCat(IP + 'episodios.legenda_contexto',
-      {n: PACIFICO.episodios.length,
-       inicio: String(PACIFICO.episodios[0].ano),
-       fim: String(PACIFICO.episodios[PACIFICO.episodios.length - 1].ano)}, null)]);
+    if (base.emCurso) itens.push(['t-agora', txtCat(C + 'legenda_atual',
+      {ano: String(base.emCurso.ano)}, String(base.emCurso.ano))]);
+    if (base.episodios.length) itens.push(['t-contexto', txtCat(C + 'legenda_contexto',
+      {n: base.episodios.length,
+       inicio: String(base.episodios[0].ano),
+       fim: String(base.episodios[base.episodios.length - 1].ano)}, null)]);
     alvo.innerHTML = itens.filter(i => i[1])
       .map(i => '<span><i class="' + i[0] + '"></i>' + esc(i[1]) + '</span>').join('');
     // 09/10/2026 (ajuste 4): a alternativa acessível — os episódios em lista, na ordem do
@@ -1156,9 +1185,9 @@ if (PACIFICO.serie.length) {
         .map(l => '<tr><td>' + esc(l.rotulo) + '</td> <td>' + esc(PAC.num(l.pico.p.anomalia)) + ' °C</td><td>'
           + esc(PAC.periodoCurto(l.pico.p)) + '</td></tr>').join('');
       alvo.insertAdjacentHTML('beforeend', '<details class="cartao-mapa-dados lista-episodios"><summary>'
-        + esc(txtCat(IP + 'episodios.ver_em_lista', null, 'Ver em lista')) + '</summary>'
+        + esc(txtCat(C + 'ver_em_lista', null, 'Ver em lista')) + '</summary>'
         + '<div class="tbl-wrap" tabindex="0" role="region" aria-label="Tabela rolável horizontalmente">'
-        + '<table class="mun-table"><thead><tr><th>Episódio</th><th>Pico do RONI</th><th>Trimestre do pico</th></tr></thead><tbody>'
+        + '<table class="mun-table"><thead><tr><th>' + esc(txtCat(C + 'cabecalho_episodio', null, 'Episódio')) + '</th><th>' + esc(txtCat(C + 'cabecalho_pico', null, 'Pico')) + '</th><th>' + esc(txtCat(C + 'cabecalho_periodo_do_pico', null, 'Período do pico')) + '</th></tr></thead><tbody>'
         + lin + '</tbody></table></div></details>');
     }
   })();
@@ -1166,34 +1195,56 @@ if (PACIFICO.serie.length) {
   // A leitura sob o gráfico: o MESMO trimestre em cada linha, na ordem do calendário. Não há
   // ordenação por valor aqui — ranking é comparação nossa, e a página mostra as etapas.
   (function leituraEpisodios(){
-    const alvoK = (ultimo.ano - (PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano)) * 12 + PAC.centro(ultimo);
+    const alvoK = (ultimo.ano - (base.emCurso ? base.emCurso.ano : ultimo.ano)) * 12 + PAC.centro(ultimo);
     // A leitura dá o valor do ciclo em curso e a FAIXA dos demais no mesmo ponto do calendário —
     // mínimo e máximo. Listar 22 valores não se lê, e ordená-los seria ranking. A faixa descreve
     // a nuvem sem ordenar nada, e é o leitor quem conclui onde o ciclo em curso cai dentro dela.
-    const noAlvo = PACIFICO.episodios
+    const noAlvo = base.episodios
       .map(e => (PAC.janela(serie, e.ano).find(x => x.k === alvoK) || {}).p)
       .filter(Boolean).map(p => p.anomalia);
-    let texto = noAlvo.length ? txtCat(IP + 'episodios.molde_leitura', {
-      trimestre: PAC.periodoCurto(ultimo),
+    let texto = noAlvo.length ? txtCat(C + 'molde_leitura', {
+      trimestre: PAC.periodoCurto(ultimo), periodo: PAC.periodoCurto(ultimo),
       atual: PAC.num(ultimo.anomalia),
-      ano: String(PACIFICO.emCurso ? PACIFICO.emCurso.ano : ultimo.ano),
+      ano: String(base.emCurso ? base.emCurso.ano : ultimo.ano),
       n: noAlvo.length,
       minimo: PAC.num(Math.min.apply(null, noAlvo)),
       maximo: PAC.num(Math.max.apply(null, noAlvo))}, null) : null;
-    if (PACIFICO.emCurso) {
-      const c = txtCat(IP + 'episodios.molde_contagem', {ano: String(PACIFICO.emCurso.ano),
-        n: PACIFICO.emCurso.pontos.length, trimestre: PAC.periodoCurto(ultimo)}, null);
+    if (base.emCurso && cfg.contagem) {
+      const c = txtCat(C + 'molde_contagem', {ano: String(base.emCurso.ano),
+        n: base.emCurso.pontos.length, trimestre: PAC.periodoCurto(ultimo)}, null);
       if (c) texto = (texto ? texto + ' ' : '') + c;
     }
-    const el = document.getElementById('episodiosLeitura');
+    const el = document.getElementById(ids.leitura);
     if (el && texto) { el.textContent = texto; el.setAttribute('data-conteudo-fixado', '1'); }
   })();
 } else {
-  lacuna('wrapEpisodios', txtCat(IP + 'episodios.lacuna', null, 'Sem coleta até o corte.'));
+  lacuna(ids.wrap, txtCat(C + 'lacuna', null, 'Sem coleta até o corte.'));
 }
-creditoPacifico('boxEpisodios', 'noaa_roni', PACIFICO.ultimo ? PAC.periodo(PACIFICO.ultimo) : null);
+creditoPacifico(ids.box, cfg.fonteId, cfg.serie.length ? PAC.periodo(cfg.serie[cfg.serie.length - 1]) : null);
+}
 
-// ---- Niño 3.4 semanal, logo abaixo do RONI (17/10/2026, HANDOVER_NINO34_SEMANAL §2) ----
+figuraDeEpisodios({
+  serie: PACIFICO.serie, base: PACIFICO, contagem: true, fonteId: 'noaa_roni', cat: 'episodios.',
+  ids: {box: 'boxEpisodios', titulo: 'episodiosTitulo', nota: 'episodiosNota', wrap: 'wrapEpisodios',
+        leg: 'legEpisodios', leitura: 'episodiosLeitura'},
+  rotuloAcessivel: txtCat(IP + 'episodios.rotulo_acessivel', null, 'Linhas do RONI por episódio')});
+
+// ---- Niño 3.4 mensal desde 1950, na forma do RONI (08/11/2026, editoria) ----
+/* A anomalia mensal sem o desconto do aquecimento tropical, comparada do mesmo jeito: o ciclo em
+   curso sobre os episódios que o RONI define. Ela não decide episódio nenhum — o critério é o do
+   RONI — e não entra em índice. Com a série desde 1950 no registro, cada episódio ganha a sua
+   linha; até lá, o que o dado tiver. */
+(function nino34Mensal(){
+  const serie = ((SINAIS.enos.nino34_mensal || {}).serie || []).filter(PAC.temCentro)
+    .slice().sort((a, b) => PAC.ordem(a) - PAC.ordem(b));
+  figuraDeEpisodios({
+    serie: serie, base: PACIFICO, contagem: false, fonteId: 'noaa_nino34_mensal', cat: 'nino34_mensal.',
+    ids: {box: 'boxNino34Mensal', titulo: 'nino34MensalTitulo', nota: 'nino34MensalNota', wrap: 'wrapNino34Mensal',
+          leg: 'legNino34Mensal', leitura: 'nino34MensalLeitura'},
+    rotuloAcessivel: txtCat(IP + 'nino34_mensal.rotulo_acessivel', null, 'Linhas da anomalia mensal da Niño 3.4 por episódio')});
+})();
+
+// ---- Niño 3.4 semanal, logo abaixo (17/10/2026, HANDOVER_NINO34_SEMANAL §2) ----
 /* Mesmo componente, mesma moldura (zero e os dois limiares da NOAA/CPC), mesmos tokens e a mesma
    função de desenho do gráfico do RONI. O que muda é o passo do dado — semana, não trimestre — e a
    escala vertical, que a faixa do próprio dado define: o semanal passa de +3 °C, e o teto do RONI
