@@ -20,6 +20,8 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-09 · #PR · SIM e SIH: "nada novo na fonte" deixa de ser erro · Fila vazia e nenhuma falha agora devolve `sem_novidade` (saída 79), que o invólucro grava como status próprio em `saude_pipeline`; falha real segue `erro`. Cadência trata `sem_novidade` como fonte consultada. Código +50/−13.
 
+## 2026-11-08 · #1631 · Painel da noite: elo de sinais com o nome do workflow · O painel previa `sinais` e o workflow registra `sinais-fisicos`, então a saída imprimia "não iniciou" todas as noites. `ELOS`, previsto e mapa de workflow passam a usar `sinais-fisicos` (−4 linhas líquidas). Elo `publicar` segue sem linha na `main` por causa do passo do workflow (pedido à A1).
+
 ## 2026-11-08 · #PR · Niño 3.4 mensal desde 1950, na forma do RONI · Pedido da editoria. O coletor guarda a série inteira da anomalia mensal da Niño 3.4 (com a temperatura absoluta) em vez de 48 meses; o Monitor de riscos ganha a terceira série larga: ciclo em curso sobre os episódios de El Niño que o RONI define, mesma função de desenho (`figuraDeEpisodios`, parametrizada — nada copiado), escala alargada pelo dado. Contrato, regra (três séries) e catálogo atualizados. A série completa entra na coleta da noite.
 
 ## 2026-11-08 · #PR · Busca web: motor mudo vale pelo runner inteiro · Desde 01/11 o `google cse` calava após ~10 municípios e os 4 comandos seguintes do elo gastavam ~5 min cada em 100% sem resposta. `monitorar_busca_web.py` marca a mudez no disco do runner e o comando seguinte sai na hora, sem consultar nem gravar; a causa informada pelo SearXNG (`unresponsive_engines`) passa a sair no log. +42 linhas (recurso novo: marca e motivo).
