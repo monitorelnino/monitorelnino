@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>08/11/2026 · Painel da noite: elo de sinais com o nome do workflow · O painel previa `sinais` e o workflow registra `sinais-fisicos`, então a saída imprimia &quot;não iniciou&quot; todas as noites. `ELOS`, previsto e mapa de workflow passam a usar `sinais-fisicos` (−4 linhas líquidas). Elo `publicar` segue sem linha na `main` por causa do passo do workflow (pedido à A1).</dt>
+      <dd></dd>
       <dt>08/11/2026 · Cartão e PDF do município sem proveniência interna · `fonte` e `documento` exibidos traziam &quot;juiz automático&quot;, &quot;codebook&quot;, &quot;§158&quot;, &quot;revisar&quot;, nome de arquivo e &quot;classificado automaticamente … a partir de &lt;url&gt;&quot; (atos de resposta, no PDF). Três caminhos gravavam o registro à mão; agora um construtor só (`registro_do_veredito`) e `fonte` pública por `canal_e_fonte`. 493 registros limpos pelo mesmo critério; portão `jargao` cobra os campos exibidos de municípios, estados e atos de resposta.</dt>
       <dd></dd>
       <dt>06/11/2026 · Sondas de uma vez saem do repositório · O workflow manual `diagnostico_sinais.yml` (04/09) e nove sondas sem outro chamador foram removidos: −1.488 linhas líquidas. Sem mudança em página ou dado.</dt>
@@ -165,8 +167,6 @@
       <dd>Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.</dd>
       <dt>26/10/2026 · Fim do defeso: fontes suspensas são reavaliadas todo dia até 25/11</dt>
       <dd>Com o fim do período eleitoral (25/10), as 41 fontes suspensas por defeso passam a ser reavaliadas todos os dias, pela mesma régua de procedência de antes. Um workflow diário (`reavaliacao_defeso.yml`) entra no registro de temporizadores; a cadência volta a ser semanal depois de 25/11. Fonte que não responde mantém o estado registrado.</dd>
-      <dt>26/10/2026 · Rodapé: só LinkedIn e Instagram</dt>
-      <dd>Pedido da editoria: o rodapé mostra só LinkedIn e Instagram; saem X, BlueSky e Medium. Aplicado nas páginas com rodapé (imprensa fica para a B2) e nos blogs regenerados. Nenhum dado, regra ou texto editorial muda.</dd>
     </dl>
   </section>
 </main>
