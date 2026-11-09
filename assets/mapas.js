@@ -74,6 +74,18 @@
       : {minimumFractionDigits: c, maximumFractionDigits: c});
   }
 
+  /** Reais no formato do site: bilhão e milhão abreviados, mil por extenso, nunca zero para o que existe.
+   *  09/11/2026: morava só em financiamento.js; a Imprensa mostra o mesmo dinheiro e passa a usar este. */
+  function reais(v) {
+    if (v == null || !isFinite(v)) return null;
+    const f = (x, c) => x.toLocaleString('pt-BR', {minimumFractionDigits: c, maximumFractionDigits: c});
+    if (v > 0 && v < 0.01) return 'menos de R$ 0,01';
+    if (v >= 1e9) return 'R$ ' + f(v / 1e9, 2) + ' bi';
+    if (v >= 1e6) return 'R$ ' + f(v / 1e6, v >= 1e8 ? 0 : 1) + ' mi';
+    if (v >= 1e3) return 'R$ ' + f(v / 1e3, 0) + ' mil';
+    return 'R$ ' + f(v, 2);
+  }
+
   /** Contexto de projeção compartilhado por todos os mapas de uma página. */
   function contexto(geo, w, h) {
     const projection = d3.geoMercator().fitSize([w || 480, h || 460], geo);
@@ -497,5 +509,5 @@
       + esc(rotulo) + ' <span class="faixa-previsto__n">' + ufs.length + '</span></dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, reais, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);

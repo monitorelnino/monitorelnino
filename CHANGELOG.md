@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-09 · #PR · Imprensa: todo cartão lê o seu número · Só 7 dos 20 cartões eram preenchidos, e o catálogo reescrevia os outros com "sem coleta até o corte"; dois cartões do dinheiro liam nomes antigos do Financiamento. Cada cartão declara no HTML de qual número vem, o preenchimento é um só, depois do catálogo, nome inexistente levanta e o portão de coerência reprova cartão em lacuna com número no motor. Formatador de reais passa a ser um só.
+
 ## 2026-11-09 · #PR · DOE passa a ver ato estadual sobre o El Niño · Três defeitos escondiam o Decreto RJ 50.357/2026: o leitor de PDF devolvia vazio quando o pypdf falhava (o DOE-RJ era lido sem texto desde 19/10), a busca só procurava emergência e a porta recusava imprensa oficial fora de .gov.br. Agora o pdfium lê, "El Niño" entra nos termos, ato de comitê ou plano vira pista da UF e há releitura retroativa por data (`--ate`).
 
 ## 2026-11-09 · #PR · Fogo: um dia só, o último completo, em todo o site · `inpe_fogo` lia o arquivo do dia corrente do INPE, que enche ao longo do dia: à 01:16 UTC tinha 369 focos e 20 estados em zero, e o mapa (pontos do último dia completo) dizia "0 focos" sobre estados com fogo; o número do topo oscilava de 9.653 para 369. Agora `inpe_fogo` lê o último dia completo, como os pontos e a série, e o rótulo do estado no mapa lê o mesmo conjunto dos pontos (satélite de referência, com a data). Sai a queda "uma vez para o dia anterior". −8 linhas.
