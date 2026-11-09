@@ -80,10 +80,19 @@
       });
   });
 
-  // Glossário: busca enquanto se digita (função comum BuscaLista)
+  // Glossário: busca enquanto se digita. 09/11/2026: chamava `window.BuscaLista`, que não existe no
+  // site — o campo nunca filtrou nada. Agora filtra aqui: termo ou explicação que contenha o que se
+  // digitou (sem acento, sem caixa), abre o que casou e esconde o grupo que ficou vazio.
   const campo = document.getElementById('glossarioBusca');
-  if (campo && window.BuscaLista) {
-    const itens = Array.from(document.querySelectorAll('#glossario details'));
-    window.BuscaLista.montar(campo, itens);
-  }
+  if (campo) campo.addEventListener('input', () => {
+    const q = M.nrm(campo.value);
+    document.querySelectorAll('#glossarioGrupos > .cartao').forEach(g => {
+      let algum = false;
+      g.querySelectorAll('details').forEach(d => {
+        const casa = !q || M.nrm(d.textContent).includes(q);
+        d.hidden = !casa; d.open = !!q && casa; algum = algum || casa;
+      });
+      g.hidden = !algum;
+    });
+  });
 })();

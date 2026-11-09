@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-09 · #PR · Imprensa: todo cartão lê o seu número · Só 7 dos 20 cartões eram preenchidos, e o catálogo reescrevia os outros com "sem coleta até o corte"; dois cartões do dinheiro liam nomes antigos do Financiamento. Cada cartão declara no HTML de qual número vem, o preenchimento é um só, depois do catálogo, nome inexistente levanta e o portão de coerência reprova cartão em lacuna com número no motor. Formatador de reais passa a ser um só.
+## 2026-11-09 · #PR · Imprensa: todo cartão lê o seu número · 13 dos 20 cartões mostravam "sem coleta" com número no motor: o script preenchia 7 e o catálogo reescrevia os outros; dois liam nomes antigos do Financiamento. Cada cartão declara de qual número vem e o portão reprova cartão calado. Como ler, Onde está cada dado e Glossário viram cartões em grade; a busca do glossário, que chamava função inexistente, passa a filtrar.
 
 ## 2026-11-09 · #PR · DOE passa a ver ato estadual sobre o El Niño · Três defeitos escondiam o Decreto RJ 50.357/2026: o leitor de PDF devolvia vazio quando o pypdf falhava (o DOE-RJ era lido sem texto desde 19/10), a busca só procurava emergência e a porta recusava imprensa oficial fora de .gov.br. Agora o pdfium lê, "El Niño" entra nos termos, ato de comitê ou plano vira pista da UF e há releitura retroativa por data (`--ate`).
 

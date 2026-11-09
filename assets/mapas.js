@@ -74,6 +74,10 @@
       : {minimumFractionDigits: c, maximumFractionDigits: c});
   }
 
+  /** Texto para comparar em busca: sem acento, minúsculo, sem espaço nas pontas. Um só para o site
+   *  (09/11/2026: havia uma cópia em index.js e outra em consulta-municipio.js). */
+  function nrm(s) { return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); }
+
   /** Reais no formato do site: bilhão e milhão abreviados, mil por extenso, nunca zero para o que existe.
    *  09/11/2026: morava só em financiamento.js; a Imprensa mostra o mesmo dinheiro e passa a usar este. */
   function reais(v) {
@@ -509,5 +513,5 @@
       + esc(rotulo) + ' <span class="faixa-previsto__n">' + ufs.length + '</span></dt><dd class="chips">' + chipsDeUF(ufs) + '</dd></div>').join('');
   }
 
-  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, reais, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };
+  global.MonitorMapas = { padraoGraficos, PALETA, NEUTRA, COR, cor, relogio, esc, showTip, hideTip, dica, numBR, reais, nrm, contexto, ufs, siglas, pontos, pontosDensos, legenda, legendaContinua, desenharMapa, mapaDeContagem, pilulaDaFaixa, chipsDeUF, faixaPrevista, atmosfera, hachura, credito, dataBR, animarGauges };
 })(window);
