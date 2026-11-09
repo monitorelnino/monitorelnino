@@ -38,7 +38,7 @@ ARQUIVO = "painel_da_noite.json"
 # Os elos da corrente, na ordem do handover. A busca web não é elo: ela roda em paralelo, com os
 # seus cinco horários próprios — e por isso entra no painel como rotina à parte, sem exigência de
 # estar na corrente.
-ELOS = ("diarios", "descoberta", "evidencias", "juiz", "sinais", "triagem", "publicar")
+ELOS = ("diarios", "descoberta", "evidencias", "juiz", "sinais-fisicos", "triagem", "publicar")
 JANELA_UTC = (1, 9)   # 01:00 às 09:00 UTC = 22h às 06h de Brasília
 GOV = ("Painel da noite (item A.5 do handover de 03/10/2026): uma linha por elo por noite, com "
        "início, fim e se terminou dentro da janela de 22h às 06h. Append-only. Serve para que elo "
@@ -113,7 +113,7 @@ def linha(elo: str, noite: str, inicio: str, fim: str, conclusao: str,
 # Está aqui para o painel poder dizer "previsto × iniciado", que é o que mostra a noite ESCORREGANDO
 # antes de ela acabar — um elo que começa 3h depois do previsto ainda roda, e ninguém via.
 PREVISTO_UTC = {"diarios": "01:07", "descoberta": "05:00", "evidencias": "06:00",
-                "juiz": "07:00", "sinais": "08:00", "triagem": "08:30", "publicar": "09:05"}
+                "juiz": "07:00", "sinais-fisicos": "08:00", "triagem": "08:30", "publicar": "09:05"}
 
 
 def previsto_x_iniciado(linhas: list, noite: str, elos=ELOS) -> list:
@@ -419,12 +419,8 @@ def _execucoes_da_api(noite: str = "") -> list:
     import subprocess
     fora = []
     for elo in ELOS:
-        if elo == "publicar":
-            wf = "publicar_dados.yml"
-        elif elo == "sinais":
-            wf = "noturno_sinais.yml"
-        else:
-            wf = f"noturno_{elo}.yml"
+        wf = {"publicar": "publicar_dados.yml",
+              "sinais-fisicos": "noturno_sinais.yml"}.get(elo, f"noturno_{elo}.yml")
         try:
             saida = subprocess.run(
                 ["gh", "run", "list", "--workflow", wf, "--branch", "main", "--limit", "12",

@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-02 a 2026-11-09 (1350 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-02 a 2026-11-09 (1353 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -28,7 +28,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-09 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-07 01:45 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-09 07:17 | 0 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-08 01:39 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-09 11:58 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-09 13:27 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-09 08:51 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-07 01:43 | 104 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-07 01:15 | 1 s | — | ok | — |
@@ -102,7 +102,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-09 · por canal: we
 | `scripts/triar_fila.py` | coletor | 2026-11-09 04:27 | 1 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-09 04:46 | 2 s | — | ok | — |
 | `scripts/verificar_funil.py` | coletor | 2026-11-07 01:21 | 0 s | — | **erro** | ✗ FUNIL: a contagem da rodada se contradiz ou a etapa não funcionou: |
-| `seguir_pistas.py` | coletor | 2026-11-09 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `seguir_pistas.py` | coletor | 2026-11-09 11:58 | 28 s | — | ok | — |
 | `triar_confianca_pistas.py` | coletor | 2026-11-09 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_links.py` | coletor | 2026-11-07 01:44 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `verificar_pista_imprensa.py` | coletor | 2026-11-09 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |

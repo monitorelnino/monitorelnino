@@ -255,6 +255,15 @@ jobs:
         # REGENERAR; quem compara é a suíte, depois do commit.
         run: bash scripts/verificar_derivados.sh --regenerar-para-commit
 
+      # 09/11/2026 (F-publicar-no-painel): a linha do elo `publicar` era gravada DEPOIS do push,
+      # numa árvore que nunca mais era commitada; por isso o painel não tem `publicar` desde 15/10.
+      # Grava-se antes do commit, como todo elo (`_coletor.yml`); a conclusão final de um run
+      # reprovado vem da API (`painel_da_noite.recuperar_da_api`), não de um passo pós-push.
+      - name: Registrar no painel da noite
+        run: |
+          python3 scripts/painel_da_noite.py --registrar publicar \
+            --inicio "${ELO_INICIO:-}" --conclusao in_progress || true
+
       # §273: o painel é gerado AQUI, depois dos portões e antes do commit, porque ele resume a
       # execução em curso — inclusive a linha de saúde que o passo de recalcular acabou de gravar.
       # Na cadeia canônica ele reprovava o portão 12, com razão.
@@ -409,15 +418,6 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
         run: bash scripts/repor_dominio.sh "Publicação ${GITHUB_SHA::7}"
-
-      # A linha do elo `publicar` no painel da noite, com a conclusão do job. Falha aqui é
-      # diferente de ausência: "publicou e reprovou no portão" tem conserto (o portão diz qual) e
-      # "não rodou" tem outro (o vigia da abertura). O painel passa a distinguir os dois.
-      - name: Registrar no painel da noite
-        if: always()
-        run: |
-          python3 scripts/painel_da_noite.py --registrar publicar \
-            --inicio "${ELO_INICIO:-}" --conclusao "${{ job.status }}" || true
 
       - name: Resumo no job
         if: always()
