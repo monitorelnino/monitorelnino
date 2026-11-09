@@ -3343,7 +3343,12 @@
   {"data": "2026-11-08", "script": "coletar_arboviroses_sinan.py", "inicio": "2026-11-09T01:38:37", "duracao_s": 38.3, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-08", "script": "coletar_obitos_registro_civil.py", "inicio": "2026-11-09T01:39:15", "duracao_s": 20.4, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-08", "script": "classificar_saude_no_plano.py", "inicio": "2026-11-09T01:39:35", "duracao_s": 0.8, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-08", "script": "gerar_saude_municipio.py", "inicio": "2026-11-09T01:39:35", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-08", "script": "gerar_saude_municipio.py", "inicio": "2026-11-09T01:39:35", "duracao_s": 1.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:15:34", "duracao_s": 357.1, "itens": 10, "status": "ok", "erro": ""},
+  {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:21:31", "duracao_s": 315.5, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:26:46", "duracao_s": 316.4, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:32:02", "duracao_s": 315.4, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"},
+  {"data": "2026-11-08", "script": "monitorar_busca_web.py", "inicio": "2026-11-09T01:37:17", "duracao_s": 315.6, "itens": 2, "status": "erro", "erro": "✗ busca web: 100% sem resposta do motor, acima do teto de 25% — esta rodada NÃO conta como verificação da camada 4"}
  ],
  "atualizado_em": "2026-11-09T01:39:35"
 }
