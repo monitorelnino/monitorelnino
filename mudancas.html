@@ -30,7 +30,7 @@
 <script src="assets/acesso.js?v=d6581579"></script>
 <script src="assets/mapas.js?v=4878b9ee"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=f6c444a4">
+<link rel="stylesheet" href="assets/base.css?v=28c927ea">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -49,6 +49,8 @@
     <dl class="mudancas-lista">
       <dt>10/11/2026 · Um resolvedor de domínio só: o Buscador 2 deixa o seu</dt>
       <dd>O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.</dd>
+      <dt>10/11/2026 · Saúde: legenda do mapa do desfecho sob o mapa, com a contagem, e nota afastada da legenda</dt>
+      <dd>A chave da contagem de estados saiu do catálogo no #1214 e o mapa seguiu pedindo-a pelo JS: a legenda publicava &quot;acima da faixa habitual para a época ·&quot; sem número. O portão do catálogo passa a ler os identificadores pedidos pelo JS. A legenda do mapa fica em coluna, centrada sob ele, e a nota de figura ganha o espaço de mídia → legenda.</dd>
       <dt>10/11/2026 · Juiz: o domínio do ente inclui os subdomínios, e o diário estadual fora de .gov.br é fonte oficial</dt>
       <dd>O resolvedor de domínio passa a ler o rótulo colado à UF (`codesal.salvador.ba.gov.br` é de Salvador) e a lista sem UF (`pbh.gov.br`); a lista das imprensas oficiais estaduais (IOERJ) fica nele, e o juiz e o Buscador 2 a usam. Recusa por autoridade decidida antes da correção, em domínio do próprio ente, volta ao juiz uma vez, como numa troca de codebook (210 pistas; entre elas os planos de Salvador, Fortaleza e Goiânia e o Decreto RJ 50.357/2026).</dd>
       <dt>09/11/2026 · Juiz lê a pista no esquema canônico · O juiz só lia `url` e `municipio`/`uf`/`ibge`; a pista que entra só com `url_final` e `alvo` (o esquema da porta desde 03/10) seria recusada sem o documento ser baixado — caso do PMGRD 2026/2027 de Belo Horizonte e do plano de Aracaju (#1656). Recusa sem leitura de URL oficial volta à fila.</dt>
@@ -165,8 +167,6 @@
       <dd>No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.</dd>
       <dt>26/10/2026 · Retirada de confirmações e links que passaram por engano</dt>
       <dd>Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.</dd>
-      <dt>26/10/2026 · Portões: o contador de resposta passa a morar no runtime da inicial</dt>
-      <dd>`verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.</dd>
     </dl>
   </section>
 </main>
