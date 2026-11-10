@@ -25,10 +25,8 @@ O campo não entra em conta nenhuma do índice — ato de resposta não pontua. 
 
 USO
   python3 scripts/tipo_de_evento_dos_atos.py --autoteste
-  python3 scripts/tipo_de_evento_dos_atos.py --relatorio
-  python3 scripts/tipo_de_evento_dos_atos.py
+  (biblioteca: `coletores_base.carimbar_atos` grava `tipo_evento` por `tipo_ou_sem_informacao`)
 """
-import collections
 import pathlib
 import re
 import sys
@@ -97,13 +95,6 @@ def tipo_ou_sem_informacao(evento) -> str:
     return tipo_de_evento(evento) or "sem_tipo_informado"
 
 
-def contagem(eventos: list) -> dict:
-    """Quantos eventos por tipo, incluindo os não classificados. Função pura."""
-    c = collections.Counter(tipo_ou_sem_informacao(e) for e in eventos)
-    return {k: v for k, v in sorted(
-        c.items(), key=lambda kv: (kv[0] is None, str(kv[0])))}
-
-
 def _autoteste() -> int:
     falhas = []
     # O total era um literal e envelhecia calado: dizia cobrir mais casos do que
@@ -156,17 +147,13 @@ def _autoteste() -> int:
 
     eventos = [{"causa": "chuva intensa"}, {"causa": "estiagem"}, {"causa": ""},
                {"causa": "chuva e vendaval"}]
-    c = contagem(eventos)
-    ok("a contagem separa quem a fonte não informou",
-       c.get("sem_tipo_informado") == 2)
-    ok("a contagem não perde evento", sum(c.values()) == len(eventos))
     ok("todo tipo devolvido está na lista declarada",
        all(t in TIPOS for t in (tipo_de_evento(x) for x in eventos) if t))
 
     import dis
     nomes = set()
     for nome_obj, obj in list(globals().items()):
-        if nome_obj in ("_autoteste", "aplicar", "main"):
+        if nome_obj in ("_autoteste", "main"):
             continue
         codigo = getattr(obj, "__code__", None)
         if codigo is not None:
@@ -179,29 +166,8 @@ def _autoteste() -> int:
     return 1 if falhas else 0
 
 
-def aplicar(relatorio: bool = False) -> int:
-    from coletores_base import gravar, ler
-    atos = ler("atos_resposta.json", {"eventos": []})
-    eventos = atos.get("eventos", [])
-    print("  " + " · ".join(f"{k}: {v}" for k, v in contagem(eventos).items()))
-    if relatorio:
-        return 0
-    for e in eventos:
-        # 04/10/2026: era `tipo_de_evento(e.get("causa"))` — a gravação passava só a CAUSA, de modo
-        # que a COBRADE do campo `desastre` nunca era lida e 923 dos 929 eventos ficavam
-        # "outro_declarado", exatamente o defeito que a editoria mediu. O relatório, que já passava
-        # o evento inteiro, mostrava os números certos; a gravação, não. Função certa, argumento
-        # errado — e a diferença só apareceu ao conferir o arquivo depois de gravar.
-        e["tipo_evento"] = tipo_ou_sem_informacao(e)
-    gravar("atos_resposta.json", atos)
-    print(f"  {len(eventos)} evento(s) com `tipo_evento` gravado")
-    return 0
-
-
 def main() -> int:
-    if "--autoteste" in sys.argv[1:]:
-        return _autoteste()
-    return aplicar(relatorio="--relatorio" in sys.argv[1:])
+    return _autoteste()
 
 
 if __name__ == "__main__":

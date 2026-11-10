@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Redução: CLI morto de tipo_de_evento_dos_atos (−34 líquidas)
+
+`scripts/tipo_de_evento_dos_atos.py` virou biblioteca em 13/10 (`carimbar_atos` grava `tipo_evento`); `aplicar`, `main --relatorio` e `contagem` ficaram sem chamador e saíram, com a doc de uso. Autoteste, `coletores_base` e `gerar_resposta` inalterados.
+
 ## 2026-11-10 · #PR · Início: decretos em % da população e municípios à parte
 
 No cartão de decretos da página inicial, o número grande passa a dizer "% da população" e a pílula, "municípios com decreto · % dos municípios do país"; os dois textos vêm do catálogo. A reserva estática da pílula estava presa em "280 municípios · 5,0%" porque o padrão que a regravava não casava com o `<span>` interno; agora casa. O cartão de decretos em saúde segue a mesma forma: "% da população" e a pílula só com a contagem. (+18)
