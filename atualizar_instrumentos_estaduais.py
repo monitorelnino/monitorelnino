@@ -118,10 +118,11 @@ def parse_rs(texto: str):
     (`listar_sharepoint`): [{name, webUrl}]. O nome do arquivo não tem padrão (535 arquivos: 'PLANCON - X.pdf',
     'PlanCon_X_2025.pdf', 'Plano de Contingência Municipal 2025_X.pdf', só 'X.pdf'): tira-se o ruído e o
     resto é o candidato a município, que `casar_com_ibge` confirma ou devolve como órfão. Sem ano no nome,
-    a categoria é `plano_nomeado` (existe, edição não lida); o juiz lê o documento. Por município vale o ano
-    mais recente; PDF antes de DOCX."""
+    a categoria é `plano_nomeado` (existe, edição não lida); o juiz lê o documento. 10/11/2026: TODOS os
+    arquivos vão ao juiz (HIDRO/METEOR, P2, versões: o mais recente podia ser escaneado e o outro, legível),
+    do ano mais recente ao mais antigo, PDF antes de DOCX — o primeiro promovido vale, os outros se abstêm."""
     ruido = re.compile(r"PLANO DE CONTING\w*(?: DE\b)?|PLAN ?CON\b|DEFESA CIVIL|MUNICIPAL|VERSAO\s*[\d.]+|\bRASCUNHO\b|\bCOMDEC\b|\bATUALIZAD[OA]\b|\bOUTUBRO\b")
-    melhor = {}
+    todos = []
     for it in json.loads(texto):
         nome_arq, ext = it["name"].rsplit(".", 1) if "." in it["name"] else (it["name"], "")
         if ext.lower() not in ("pdf", "doc", "docx", "url") or re.search(r"laudo|parecer|anexo", nome_arq, re.I):
@@ -134,10 +135,8 @@ def parse_rs(texto: str):
         a = {"nome": nome.title(), "url": it["webUrl"],
              **({"ano_edicao": int(ano.group(0))} if ano else
                 {"ano_edicao": 0, "rotulo_ano": "s/d", "categoria": "plano_nomeado"})}
-        k, peso = norm(nome), (a["ano_edicao"], ext.lower() == "pdf")
-        if k not in melhor or peso > melhor[k][0]:
-            melhor[k] = (peso, a)
-    return [a for _, a in melhor.values()]
+        todos.append(((a["ano_edicao"], ext.lower() == "pdf"), a))
+    return [a for _, a in sorted(todos, key=lambda x: x[0], reverse=True)]
 
 
 def listar_sharepoint(link: str, pausa: float = 2.0):
@@ -179,7 +178,16 @@ REPOSITORIOS = {
     },
     "RS": {
         "url": "https://rsgovbr-my.sharepoint.com/:f:/g/personal/casa-militar_casamilitar_rs_gov_br/IgDtPUo8By2jT7gAi9XGU-uQAeJRsR-iSsJyprJYV8Wb-mo?e=crxaoy",
-        "fonte": "Defesa Civil RS (Casa Militar/SUBPDEC) — pasta pública de PLANCONs recebidos, via Prepara RS (22/10/2026)",
+        # 10/11/2026: a pasta é a que a página oficial do Prepara RS publica (botão "Acesse os Planos de
+        # Contingência"); o nome público é o do órgão e da página, sem data de consulta.
+        "fonte": "Defesa Civil do Rio Grande do Sul — Prepara RS",
+        "pagina": "https://prepara.rs.gov.br/planos-de-contingencia-de-protecao-e-defesa-civil",
+        # SINAL DECLARADO (central, 10/11/2026): o juiz lê e julga a pasta, mas a promoção não vai ao banco até a
+        # editoria decidir a idade máxima do plano (`aplicar_promocoes_do_juiz.aplicaveis`). Virar para True aplica.
+        "aplicar_no_banco": False,
+        # nome de arquivo que só a editoria resolve, conferido no documento: "17 - Plano de Contingência de MAC.pdf"
+        # é Monte Alegre dos Campos (capa lida, 10/11/2026). Sigla sem conferência fica órfã.
+        "apelidos": {"MAC": "Monte Alegre dos Campos"},
         "canal": "repositorio_estadual",
         "parser": parse_rs,
         "origens": ("casamilitar-rs.com.br/pdfs/",),  # destino dos atalhos .url da pasta
@@ -231,7 +239,7 @@ def documento_do_repositorio(url: str, uf: str = None) -> bool:
     domínio do município. RS: só a pasta da Casa Militar (e seus atalhos), nunca um SharePoint qualquer."""
     from urllib.parse import unquote, urlparse
     if not uf:   # sem UF (etapa 2 do juiz): qualquer repositório declarado
-        return any(documento_do_repositorio(url, u) for u in REPOSITORIOS)
+        return repositorio_do_documento(url) is not None
     cfg = REPOSITORIOS.get(uf) or {}
     if cfg.get("canal") != "repositorio_estadual" or not url:
         return False
@@ -242,7 +250,12 @@ def documento_do_repositorio(url: str, uf: str = None) -> bool:
     return p.netloc == host
 
 
-def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
+def repositorio_do_documento(url: str):
+    """A UF do repositório estadual declarado que guarda o documento, ou None. Função pura."""
+    return next((u for u in REPOSITORIOS if documento_do_repositorio(url, u)), None)
+
+
+def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict], um_por_municipio: bool = True):
     """Valida cada nome achado contra a malha IBGE da UF, devolve o nome oficial
     e anexa as coordenadas da referência (que traz lat/lon desde 26/08/2026, o
     que dispensa geocodificação externa no pipeline).
@@ -260,6 +273,10 @@ def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
             junto = chave.replace(" ", "")   # 'TRESPALMEIRAS': espaço comido; só nomes longos, para não casar por acaso
             dentro = dentro or [k for k in oficiais if len(k) > 9 and k.replace(" ", "") in junto]
             oficial = oficiais[max(dentro, key=len)] if dentro else None
+        if oficial is None:   # 10/11/2026: o órgão omite o conector ('São Jose Inhacorá', 'Boa Vista Buricá')
+            sem = lambda k: " ".join(w for w in k.split() if w not in ("DE", "DA", "DO", "DAS", "DOS"))  # noqa: E731
+            dentro = [k for k in oficiais if re.search(rf"\b{re.escape(sem(k))}\b", sem(chave))]
+            oficial = oficiais[max(dentro, key=len)] if dentro else None
         if oficial is None:
             # tolerância a erro de grafia do órgão: similaridade alta e ÚNICA
             import difflib
@@ -274,6 +291,8 @@ def casar_com_ibge(achados: list[dict], uf: str, ref: list[dict]):
         if "lat" in oficial and "lon" in oficial:
             a["lat"], a["lon"] = oficial["lat"], oficial["lon"]
         casados.append(a)
+    if not um_por_municipio:   # RS (pasta de arquivos): cada arquivo vai ao juiz
+        return casados, orfaos
     melhor = {}   # dois arquivos do mesmo município: fica o de edição mais recente
     for a in casados:
         if a["nome"] not in melhor or a["ano_edicao"] > melhor[a["nome"]]["ano_edicao"]:
@@ -346,6 +365,26 @@ def diagnosticar(uf: str, achados: list[dict], municipios: list[dict]) -> list[d
     return propostas
 
 
+def ler_cada_arquivo(listagem: str, ler_bytes, texto_de) -> dict:
+    """`--ler`: cada arquivo da listagem passa pelo leitor do juiz; conta o desfecho e imprime o que não
+    deu texto. Não grava nada. `ler_bytes(url)` e `texto_de(bytes, url)` são injetados (autoteste sem rede)."""
+    import collections
+    from juiz import TEXTO_MINIMO
+    conta = collections.Counter()
+    for it in json.loads(listagem):
+        ext = it["name"].rsplit(".", 1)[-1].lower() if "." in it["name"] else "?"
+        try:
+            n = len((texto_de(ler_bytes(it["webUrl"]), it["webUrl"]) or "").strip())
+        except Exception as e:  # noqa: BLE001
+            conta[f"{ext}: não obtido"] += 1
+            print(f"    ✗ não obtido · {type(e).__name__}: {str(e)[:100]} · {it['name']}")
+            continue
+        conta[f"{ext}: {'com texto' if n >= TEXTO_MINIMO else 'sem texto'}"] += 1
+        if n < TEXTO_MINIMO:
+            print(f"    · sem texto ({n} car.) · {it['name']}")
+    return dict(sorted(conta.items()))
+
+
 def pistas_das_propostas(propostas: list[dict], ref: list[dict]) -> list[dict]:
     """Cada instrumento listado por repositório estadual vira PISTA na porta única: o documento só pontua
     depois que o juiz o lê e o preserva (D1, hash); `aplicar_revisao` põe `plano` sem hash e o portão de
@@ -397,21 +436,30 @@ def autoteste() -> int:
              "Plano de Contingência - Defesa Civil Farroupilha.docx", "anexo.xlsx"]
     rs = parse_rs(json.dumps([{"name": n, "webUrl": "https://x/" + n} for n in nomes]))
     por = {a["nome"]: a for a in rs}
-    casos.append(("RS: xlsx não é plano; um achado por município", len(rs) == 10))
+    casos.append(("RS: xlsx não é plano; cada arquivo vai ao juiz", len(rs) == 11))
     casos.append(("RS: ruído do nome sai (PLANCON, plano de contingência, versão, defesa civil)",
                   {"Cerro Grande Do Sul", "Nova Roma Do Sul", "Farroupilha", "Braga"} <= set(por)))
     casos.append(("RS: camelCase e underscore viram nome", "Cachoeira Do Sul" in por and "Mormaco" in por))
     casos.append(("RS: ano do nome vale; sem ano é plano nomeado, edição não lida",
                   por["Itati"]["ano_edicao"] == 2025 and por["Braga"]["categoria"] == "plano_nomeado"
                   and por["Braga"]["rotulo_ano"] == "s/d"))
-    casos.append(("RS: PDF vence DOCX do mesmo município", por["Dois Irmaos"]["url"].endswith(".pdf")))
+    dois = [a["url"] for a in rs if a["nome"] == "Dois Irmaos"]
+    casos.append(("RS: ano mais recente primeiro; PDF antes do DOCX do mesmo município",
+                  rs[0]["ano_edicao"] == 2025 and len(dois) == 2 and dois[0].endswith(".pdf")))
     ok_ibge, orf = casar_com_ibge([dict(a) for a in rs], "RS", [{"nome": n, "uf": "RS"} for n in
                                   ["Mormaço", "Cerro Grande do Sul", "Itati"]])
-    casos.append(("RS: nome não casado na malha IBGE volta como órfão, não entra", len(ok_ibge) == 3 and len(orf) == 7))
+    casos.append(("RS: nome não casado na malha IBGE volta como órfão, não entra", len(ok_ibge) == 3 and len(orf) == 8))
+    todos_rs, _ = casar_com_ibge([dict(a) for a in rs], "RS", [{"nome": "Dois Irmãos", "uf": "RS"}], um_por_municipio=False)
+    casos.append(("RS: com um_por_municipio=False os dois arquivos do município seguem", len(todos_rs) == 2))
     rs2 = parse_rs(json.dumps([{"name": n, "webUrl": "https://x/" + n} for n in
                                ["Plano de Contingência Municipal 2025_NãoMeToque.pdf", "plano_de_contingencia_Santana do Livramento_atualizado_.pdf"]]))
     ok2, _ = casar_com_ibge(rs2, "RS", [{"nome": n, "uf": "RS"} for n in ["Não-Me-Toque", "Santana do Livramento"]])
     casos.append(("RS: hífen do nome oficial e 'atualizado' no arquivo não geram órfão", len(ok2) == 2))
+    ok3, orf3 = casar_com_ibge(parse_rs(json.dumps([{"name": n, "webUrl": "https://x/" + n} for n in
+                                                    ["PLANCON São Jose Inhacorá.pdf", "Plancon_SaltoDoJacuí_2025.pdf", "PLANCON SJN.pdf"]])),
+                               "RS", [{"nome": n, "uf": "RS"} for n in ["São José do Inhacorá", "Salto do Jacuí", "São José do Norte"]])
+    casos.append(("RS: conector omitido e CamelCase casam; sigla não se adivinha (órfão)",
+                  sorted(a["nome"] for a in ok3) == ["Salto do Jacuí", "São José do Inhacorá"] and len(orf3) == 1))
     es_html = html_para_texto('<table><tr><td><a href="/media/p.pdf">LINHARES - PLANO DE CONTINGÊNCIA - 2025</a></td></tr></table>',
                               "https://defesacivil.es.gov.br/planos")
     se_html = html_para_texto('<li>PLANO DE CONTINGÊNCIA MUNICIPAL DE POÇO REDONDO – EDIÇÃO 2026 <a href="https://s/p.pdf"><b>Clique</b> aqui</a></li>',
@@ -425,6 +473,14 @@ def autoteste() -> int:
     casos.append(("proposta vira pista na porta única, sem hash e sem confirmação de documento",
                   len(pi) == 1 and pi[0]["ibge"] == "3201234" and pi[0]["hash_evidencia"] is None
                   and pi[0]["documento_oficial_confirmado"] is None and pi[0]["origem"] == "descoberta"))
+    def _bytes(u):
+        if u.endswith("x.pdf"):
+            raise OSError("403")
+        return b"t" * (500 if u.endswith("a.pdf") else 5)
+    lido = ler_cada_arquivo(json.dumps([{"name": n, "webUrl": "https://r/" + n} for n in ("a.pdf", "b.pdf", "x.pdf")]),
+                            _bytes, lambda b, u: b.decode())
+    casos.append(("--ler conta com texto, sem texto e não obtido sem gravar nada",
+                  lido == {"pdf: com texto": 1, "pdf: não obtido": 1, "pdf: sem texto": 1}))
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
         print(f"  {'✓' if ok else '✗'} {n}")
@@ -439,13 +495,14 @@ def main():
     ap.add_argument("--uf", help="Rodar só esta UF (padrão: todas as implementadas)")
     ap.add_argument("--fixture", help="Arquivo local para testar sem rede (uso com --uf)")
     ap.add_argument("--pistas", action="store_true", help="Grava as propostas como pistas (porta única) para o juiz ler, em vez de gravar data/instrumentos_revisar.json")
+    ap.add_argument("--ler", action="store_true", help="Só lista, casa e lê cada arquivo da pasta (RS) pelo leitor do juiz; não grava nada")
     args = ap.parse_args()
 
     ufs = [args.uf] if args.uf else [u for u, c in REPOSITORIOS.items() if c["parser"]]
     municipios = json.load(open(DATA / "municipios.json", encoding="utf-8"))
 
     ref = json.load(open(DATA / "municipios_ibge_referencia.json", encoding="utf-8"))
-    todas_propostas, falhas = [], []
+    todas_propostas, falhas, orfas = [], [], []
     for uf in ufs:
         cfg = REPOSITORIOS.get(uf)
         if not cfg:
@@ -462,9 +519,16 @@ def main():
             continue
         achados = cfg["parser"](texto)
         print(f"  {len(achados)} instrumento(s) listado(s) no repositório")
-        achados, orfaos = casar_com_ibge(achados, uf, ref)
+        if args.ler and "carregar" in cfg:
+            from julgar_e_aplicar_descobertas import _ler_sharepoint_rs, texto_do_documento
+            print(f"  leitura: {ler_cada_arquivo(texto, lambda u: _ler_sharepoint_rs(u, 60), texto_do_documento)}")
+        for a in achados:
+            a["nome"] = cfg.get("apelidos", {}).get(norm(a["nome"]), a["nome"])
+        achados, orfaos = casar_com_ibge(achados, uf, ref, um_por_municipio="carregar" not in cfg)
+        print(f"  {len(achados)} arquivo(s) casado(s) com {len({a['nome'] for a in achados})} município(s)")
+        orfas += [{**o, "fonte": cfg["fonte"]} for o in orfaos]
         if orfaos:
-            print(f"  [atenção] {len(orfaos)} nome(s) não casaram com a malha IBGE — NÃO entram, conferir à mão:")
+            print(f"  [atenção] {len(orfaos)} nome(s) não casaram com a malha IBGE — NÃO entram (recusa com motivo na porta):")
             for o in orfaos: print(f"      · '{o['nome']}' ({o['url'][:80]})")
         renomeados = [a for a in achados if "nome_no_repositorio" in a]
         if renomeados:
@@ -478,10 +542,19 @@ def main():
         else:
             print(f"  ✓ nenhuma diferença — base já reflete o repositório")
 
+    if args.ler:
+        return 1 if falhas else 0
     if args.pistas:
         from scripts.pistas import gravar_lote
         from coletores_base import ler, gravar
-        balanco = gravar_lote(pistas_das_propostas(todas_propostas, ref), origem="descoberta", ler_fn=ler, gravar_fn=gravar)
+        # 10/11/2026: arquivo sem município casado vai à porta SEM alvo — ela o recusa com motivo em
+        # `pistas_rejeitadas.json`; nome adivinhado nunca vira pista.
+        sem_alvo = [{"municipio": o["nome"], "ibge": None, "uf": None, "url": o["url"], "tipo": "plano", "nivel": "A",
+                     "titulo": f"{o['fonte']} · arquivo sem município casado na malha IBGE: {o['nome']}"[:300],
+                     "documento_oficial_confirmado": None, "promovivel": False, "origem": "descoberta",
+                     "data": hoje_editorial().isoformat()} for o in orfas]
+        balanco = gravar_lote(pistas_das_propostas(todas_propostas, ref) + sem_alvo, origem="descoberta",
+                              ler_fn=ler, gravar_fn=gravar)
         print(f"\n[pistas] {balanco['gravadas']} gravada(s), {balanco['recusadas']} recusada(s): {balanco['motivos']}")
         return 1 if falhas else 0
     saida = DATA / "instrumentos_revisar.json"

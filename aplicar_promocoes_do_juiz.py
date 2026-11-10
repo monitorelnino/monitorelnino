@@ -76,26 +76,71 @@ def dominio_divergente(veredito: dict, dono) -> bool:
             or str(dono.get("nome") or "").strip().lower() != nome)
 
 
-def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
+def data_da_edicao(data):
+    """A data da edição do plano: dd/mm/aaaa exata; mm/aaaa, último dia do mês (convenção de
+    `verificar_vigencia.parse_data_br`); só o ano, 31/12 desse ano. None se não há data. Função pura."""
+    import datetime
+    from verificar_vigencia import parse_data_br
+    texto = str(data or "")
+    iso = re.fullmatch(r"\s*(\d{4})-(\d{2})-(\d{2})\s*", texto)
+    if iso:
+        return datetime.date(*map(int, iso.groups()))
+    d = parse_data_br(texto)
+    anos = re.findall(r"(?<!\d)((?:19|20)\d{2})(?!\d)", texto) if d is None else []
+    return d or (datetime.date(int(max(anos)), 12, 31) if anos else None)
+
+
+def fora_da_atualizacao_anual(data, corte) -> bool:
+    """Lei 12.340/2010, art. 3º-A, §6º (redação da Lei 14.750/2023): o plano se atualiza todo ano. Edição
+    com mais de 12 meses na data do corte, ou sem data, está fora da regra e não entra (editoria, 10/11/2026,
+    para o repositório estadual). Função pura."""
+    d = data_da_edicao(data)
+    if d is None:
+        return True
+    try:
+        limite = d.replace(year=d.year + 1)
+    except ValueError:   # 29/02
+        limite = d.replace(year=d.year + 1, day=28)
+    return corte > limite
+
+
+def aplicaveis(decisoes: list, versao: str, resolver=None, corte=None) -> list:
     """Vereditos que promovem, na versão em vigor, ainda não aplicados nem superados.
 
     09/10/2026 (A1-29): `nao_aplicado` também exclui — a marca existe para dizer que a decisão
     não vai ao banco, e sem o filtro Taió tinha três decisões vivas para a mesma URL.
     09/10/2026 (A1-01): veredito cujo domínio aponta outro município não é aplicável.
+    10/11/2026: repositório estadual com `aplicar_no_banco: False` (RS, à espera da idade máxima do plano)
+    fica RETIDO: julgado e registrado, sem marca, e vai ao banco quando a editoria virar o sinal; e edição do
+    repositório fora da atualização anual na data do `corte` não entra (`fora_da_atualizacao_anual`).
     """
     if resolver is None:
         from scripts.municipio_do_dominio import municipio_de as resolver
-    fora = []
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
+    if corte is None:
+        from coletores_base import hoje_editorial
+        corte = hoje_editorial()
+    fora, retidos, vencidos = [], 0, 0
     for v in decisoes:
         if not (v.get("promove") and v.get("codebook") == versao):
             continue
         if v.get("superada_por") or v.get("aplicado_em") or v.get("nao_aplicado"):
+            continue
+        repo = repositorio_do_documento(v.get("url") or "")
+        if repo and fora_da_atualizacao_anual(v.get("data"), corte):
+            vencidos += 1
+            continue
+        if REPOSITORIOS.get(repo, {}).get("aplicar_no_banco") is False:
+            retidos += 1
             continue
         if dominio_divergente(v, resolver(v.get("url") or "")):
             print(f"   ! nao aplicado: {v.get('municipio')}/{v.get('uf')} — o documento esta em "
                   f"dominio oficial de outro municipio")
             continue
         fora.append(v)
+    if retidos or vencidos:
+        print(f"   repositório estadual: {vencidos} edição(ões) com mais de 12 meses no corte (fora da atualização "
+              f"anual, não entram); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
     return fora
 
 
@@ -133,7 +178,8 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
         # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
         corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
-        ext = (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
+        # o atalho `.url` do RS entrega o PDF de destino: a extensão vem dos bytes, não do nome
+        ext = "pdf" if corpo[:5] == b"%PDF-" else (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
             ext = "html"
         return preservar_evidencia(corpo, url, ext, origem)
@@ -347,6 +393,26 @@ def autoteste() -> int:
                   aplicaveis([dict(base, superada_por={"codebook": V})], V) == []))
     casos.append(("veredito já aplicado NÃO volta",
                   aplicaveis([dict(base, aplicado_em="2026-09-28")], V) == []))
+    import atualizar_instrumentos_estaduais as _aie
+    import datetime as _dt
+    _rs = dict(base, data="05/2026",
+               url="https://rsgovbr-my.sharepoint.com" + _aie.REPOSITORIOS["RS"]["pasta"] + "/CREPDEC 01/P.pdf")
+    _c = _dt.date(2026, 11, 10)
+    _sinal = _aie.REPOSITORIOS["RS"].get("aplicar_no_banco")
+    try:
+        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
+        _retido = aplicaveis([_rs], V, resolver=sem_dono, corte=_c) == []
+        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = True
+        _solto = len(aplicaveis([_rs], V, resolver=sem_dono, corte=_c)) == 1
+        _vencido = aplicaveis([dict(_rs, data="2024")], V, resolver=sem_dono, corte=_c) == []
+    finally:
+        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = _sinal
+    casos.append(("repositório com o sinal desligado fica retido, sem marca; ligado, aplica", _retido and _solto))
+    casos.append(("repositório: edição de 2025 (31/12/2025) no corte de 10/11/2026 cabe; de 2024, não; sem data, não",
+                  not fora_da_atualizacao_anual("2025", _c) and fora_da_atualizacao_anual("2024", _c)
+                  and fora_da_atualizacao_anual(None, _c) and fora_da_atualizacao_anual("10/2025", _c)
+                  and not fora_da_atualizacao_anual("11/2025", _c) and not fora_da_atualizacao_anual("2026-05-13", _c)))
+    casos.append(("repositório: edição vencida não entra mesmo com o sinal ligado", _vencido))
     casos.append(("recusa nunca é aplicável",
                   aplicaveis([dict(base, promove=False)], V) == []))
 
@@ -442,7 +508,7 @@ def main() -> int:
 
     doc = json.loads(REGISTRO.read_text(encoding="utf-8"))
     decisoes = doc.get("decisoes") or []
-    alvo = aplicaveis(decisoes, CODEBOOK_VERSAO)
+    alvo = aplicaveis(decisoes, CODEBOOK_VERSAO, corte=hoje_editorial())
     print(f"{len(alvo)} promoção(ões) na versão em vigor do codebook ({CODEBOOK_VERSAO}), "
           f"de {len(decisoes)} decisão(ões) no registro")
     for v in alvo:

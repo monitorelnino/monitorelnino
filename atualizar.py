@@ -5,7 +5,7 @@ Etapas:
   1. atualizar_boletins.py  — vigia de novos boletins do Painel El Niño (rede tolerante a falha)
   2. atualizar_instrumentos_estaduais.py — Camada 1 do Protocolo de Busca v2 (Metodologia
      §4.1.1): verifica repositórios estaduais estruturados por município novo/atualizado.
-     NUNCA escreve na base; só gera data/instrumentos_revisar.json para aprovação humana
+     NUNCA escreve na base; o que lista vira pista (porta única) e o juiz lê o documento
      (rede tolerante a falha — um repositório fora do ar não interrompe a atualização).
   3. atualizar_transferencias.py — transferências municipais via API do Portal da Transparência
      (requer a variável de ambiente PORTAL_TRANSPARENCIA_API_KEY; sem ela, a etapa é pulada com aviso)
@@ -21,10 +21,6 @@ Etapas:
      (sem JavaScript) de index.html, saude.html e financiamento.html (16/09/2026)
 
 Nota (08/11/2026): coletar_sinais_risco.py roda todo dia no elo `noturno_sinais.yml`, não aqui.
-
-Quando o passo 2 gerar propostas: revise data/instrumentos_revisar.json, apague o que
-não deve entrar, e rode `python3 aplicar_revisao.py --arquivo data/instrumentos_revisar.json`
-— esse script mescla a revisão aprovada, recalcula o índice e roda os três portões.
 
 Uso: python atualizar.py
 """
@@ -239,17 +235,14 @@ def main():
 
     rodar([sys.executable, "verificar_contribuicoes.py"])
 
-    revisar_p = RAIZ / "data" / "instrumentos_revisar.json"
-    if revisar_p.exists(): revisar_p.unlink()  # descarta proposta não aplicada de rodada anterior
     # Etapa não-bloqueante por design (um repositório estadual fora do ar não deve
     # impedir a atualização), mas o retorno != 0 significa VERIFICAÇÃO INCOMPLETA —
     # nunca 'sem novidades'. O aviso abaixo torna isso visível no log da Action.
-    if not rodar([sys.executable, "atualizar_instrumentos_estaduais.py"]):
+    # 10/11/2026: o que o repositório lista vira pista na porta única e vai ao juiz (§106); antes ia a
+    # `data/instrumentos_revisar.json`, que esta rotina apagava na rodada seguinte sem ninguém ler.
+    if not rodar([sys.executable, "atualizar_instrumentos_estaduais.py", "--pistas"]):
         print("\n[aviso] a varredura de repositórios estaduais ficou INCOMPLETA (ver mensagens acima).")
         print("        Os dados publicados seguem válidos, mas esta rodada não confirma ausência de novidades.")
-    if revisar_p.exists():
-        print(f"\n[aviso] {revisar_p.relative_to(RAIZ)} tem proposta(s) não aplicada(s) — abstenção registrada;")
-        print("        nada entra no banco sem o juiz automático (§106).")
 
     # 03/09/2026 (achado do ensaio): coletores legados que rodavam DEPOIS dos portões, no workflow,
     # passam para cá — antes dos derivados e dos portões (nunca mais dado gravado sem portão).
