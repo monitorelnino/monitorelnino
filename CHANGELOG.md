@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #1673 · Saúde: legenda do mapa do desfecho sob o mapa, com a contagem, e nota afastada da legenda
+A chave da contagem de estados saiu do catálogo no #1214 e o mapa seguiu pedindo-a pelo JS: a legenda publicava "acima da faixa habitual para a época ·" sem número. O portão do catálogo passa a ler os identificadores pedidos pelo JS. A legenda do mapa fica em coluna, centrada sob ele, e a nota de figura ganha o espaço de mídia → legenda.
+
 ## 2026-11-10 · #1672 · Juiz: o domínio do ente inclui os subdomínios, e o diário estadual fora de .gov.br é fonte oficial
 O resolvedor de domínio passa a ler o rótulo colado à UF (`codesal.salvador.ba.gov.br` é de Salvador) e a lista sem UF (`pbh.gov.br`); a lista das imprensas oficiais estaduais (IOERJ) fica nele, e o juiz e o Buscador 2 a usam. Recusa por autoridade decidida antes da correção, em domínio do próprio ente, volta ao juiz uma vez, como numa troca de codebook (210 pistas; entre elas os planos de Salvador, Fortaleza e Goiânia e o Decreto RJ 50.357/2026).
 
