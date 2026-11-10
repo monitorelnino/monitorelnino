@@ -139,7 +139,7 @@ Atualizado em 10/11/2026.
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
 | `migrar_saude_instrumentos.py` | — | — | — | 4 | não |
 | `monitorar_atos_resposta.py` | — | — | — | — | não |
-| `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 4 | não |
+| `monitorar_busca_web.py` | — | `busca_web_espera.json` | — | 5 | não |
 | `monitorar_imprensa_regional.py` | — | — | — | 6 | não |
 | `monitorar_imprensa_saude.py` | — | — | — | — | não |
 | `monitorar_politica_por_inteiro.py` | — | — | — | — | não |
