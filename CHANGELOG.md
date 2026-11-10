@@ -10,7 +10,7 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-10 · #1680 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX
-O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar "Defesa Civil do Rio Grande do Sul — Prepara RS". Edição, indicação ao cadastro do art. 3º-A e atualização anual ficam registradas; dois sinais retêm o RS até a editoria.
+O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar "Defesa Civil do Rio Grande do Sul — Prepara RS". Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).
 
 ## 2026-11-10 · #1677 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag
 `scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.

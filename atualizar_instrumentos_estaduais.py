@@ -185,9 +185,9 @@ REPOSITORIOS = {
         # SINAL DECLARADO (central, 10/11/2026): o juiz lê e julga a pasta, mas a promoção não vai ao banco até a
         # editoria decidir a idade máxima do plano (`aplicar_promocoes_do_juiz.aplicaveis`). Virar para True aplica.
         "aplicar_no_banco": False,
-        # SINAL DECLARADO (editoria, 10/11/2026), desligado até confirmação: ligado, plano de município indicado
-        # ao cadastro do art. 3º-A sem atualização anual localizada (edição < 29/06/2025) fica fora da contagem.
-        "contar_so_com_atualizacao_anual": False,
+        # SINAL DECLARADO (editoria, 10/11/2026, 15:02, ligado): plano de município indicado ao cadastro do
+        # art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA, mesma data).
+        "contar_so_com_atualizacao_anual": True,
         # nome de arquivo que só a editoria resolve, conferido no documento: "17 - Plano de Contingência de MAC.pdf"
         # é Monte Alegre dos Campos (capa lida, 10/11/2026). Sigla sem conferência fica órfã.
         "apelidos": {"MAC": "Monte Alegre dos Campos"},

@@ -100,6 +100,9 @@ def atualizacao_anual_localizada(data):
     return None if d is None else d >= inicio.replace(year=inicio.year - 1)
 
 
+ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
+
+
 def municipios_do_cadastro() -> set:
     """IBGE dos municípios INDICADOS pela União ao cadastro do art. 3º-A (`cadastro_casa_civil_2086`); a lista
     de inscritos não tem fonte pública (`cadastro_nacional_art3A` é null em todos)."""
@@ -136,8 +139,10 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> lis
             v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "") or None
             v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
             v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
+            # sem data identificável não rebaixa (data insuficiente para o cômputo): só `False` exclui
             if (cfg.get("contar_so_com_atualizacao_anual") and v["indicado_ao_cadastro_art3A"]
-                    and not v["atualizacao_anual_localizada"]):
+                    and v["atualizacao_anual_localizada"] is False):
+                v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO
                 sem_atualizacao += 1
                 continue
             if cfg.get("aplicar_no_banco") is False:
@@ -416,7 +421,7 @@ def autoteste() -> int:
     try:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
         _retido = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad) == []
-        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = True
+        _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=False)
         _velho = dict(_rs, data="05/2025")
         _conta_hoje = len(aplicaveis([_velho], V, resolver=sem_dono, cadastro=_cad)) == 1
         _aie.REPOSITORIOS["RS"]["contar_so_com_atualizacao_anual"] = True
@@ -437,6 +442,15 @@ def autoteste() -> int:
                   _conta_hoje and _velho.get("indicado_ao_cadastro_art3A") is True
                   and _velho.get("atualizacao_anual_localizada") is False and _velho.get("data_da_edicao") == "2025-05-31"
                   and _fora_da_conta and _livre and "vencido" not in json.dumps(_velho)))
+    _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=True)
+    try:
+        _x = dict(_rs, data="2024")
+        _sem_data = len(aplicaveis([dict(_rs, data=None)], V, resolver=sem_dono, cadastro=_cad)) == 1
+        aplicaveis([_x], V, resolver=sem_dono, cadastro=_cad)
+    finally:
+        _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
+    casos.append(("sem data identificável não rebaixa; fora da contagem leva o rótulo descritivo",
+                  _sem_data and _x.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO))
     _reg = registro_do_veredito(_ok[0], 0, 0, "orgao_estadual", "F", "10/11/2026") if _ok else {}
     casos.append(("o registro leva os três campos descritivos (só no repositório)",
                   _reg.get("data_da_edicao") == "2026-05-31" and _reg.get("indicado_ao_cadastro_art3A") is True
@@ -544,7 +558,7 @@ def main() -> int:
         print(f"  {v['municipio']}/{v['uf']} · {v['categoria']} · {v.get('data')} · {v.get('url')}")
     if not alvo:
         print("nada a aplicar")
-        if "--aplicar" in sys.argv and any("indicado_ao_cadastro_art3A" in v for v in decisoes):
+        if "--aplicar" in sys.argv and any("indicado_ao_cadastro_art3A" in v for v in decisoes):  # e o rótulo
             gravar_em(REGISTRO, doc)   # os campos descritivos ficam registrados no veredito
         return 0
 
