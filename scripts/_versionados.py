@@ -38,10 +38,10 @@ def _autoteste() -> int:
     import tempfile
     with tempfile.TemporaryDirectory() as t:
         (pathlib.Path(t) / ".github" / "workflows").mkdir(parents=True)
-        (pathlib.Path(t) / ".github" / "workflows" / "a.yml").write_text("x", encoding="utf-8")
+        (pathlib.Path(t) / ".github" / "workflows" / "a.yml").write_text("x", encoding="utf-8", newline="\n")
         (pathlib.Path(t) / ".claude").mkdir()
-        (pathlib.Path(t) / ".claude" / "b.py").write_text("x", encoding="utf-8")
-        (pathlib.Path(t) / "c.py").write_text("x", encoding="utf-8")
+        (pathlib.Path(t) / ".claude" / "b.py").write_text("x", encoding="utf-8", newline="\n")
+        (pathlib.Path(t) / "c.py").write_text("x", encoding="utf-8", newline="\n")
         casos.append(("sem Git: a árvore, com .github e sem outras pastas ocultas",
                       versionados(".github/workflows/*.yml", "*.py", raiz=pathlib.Path(t)) == [".github/workflows/a.yml", "c.py"]))
     for nome, ok in casos:
