@@ -187,7 +187,6 @@ Atualizado em 10/11/2026.
 | `scripts/sondar_rotas_doe.py` | — | `fontes_doe.json` | — | — | não |
 | `scripts/testar_escrita_atomica.py` | — | `w.json`, `x.json`, `y.json`, `z.json` | — | — | não |
 | `scripts/testar_reposicao_dominio.py` | — | `publicacao.json` | — | — | não |
-| `scripts/tipo_de_evento_dos_atos.py` | — | `atos_resposta.json` | — | 3 | não |
 | `scripts/triar_fila.py` | — | `pistas_imprensa.json` | — | — | não |
 | `scripts/unir_conflito_de_rodada.py` | — | `blog/posts.json`, `cadencia_publicacao.json`, `citacao_incompleta.json`, `cobertura_declarada_uf.json`, `doe_edicoes/PB.json`, `doe_ocorrencias.json` (+37) | — | 3 | não |
 | `seguir_pistas.py` | — | `arquivo/limpeza_26-10-2026/pistas_imprensa_retiradas.json` | — | — | não |

@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Redução: CLI morto de tipo_de_evento_dos_atos (−34 líquidas)
+
+`scripts/tipo_de_evento_dos_atos.py` virou biblioteca em 13/10 (`carimbar_atos` grava `tipo_evento`); `aplicar`, `main --relatorio` e `contagem` ficaram sem chamador e saíram, com a doc de uso. Autoteste, `coletores_base` e `gerar_resposta` inalterados.
 ## 2026-11-10 · #PR · Verificação do site: atributos reordenados pelo Netlify
 
 Ao reescrever links pelo "Pretty URLs", o Netlify também reordena os atributos da tag `<a>`; a imprensa.html saía como "diferente da main" e o vigia pedia nova reposição. A comparação passa a desfazer a ordem dos atributos de `<a>` nos dois lados, sem mudar nome, valor nem quantidade. (+16)

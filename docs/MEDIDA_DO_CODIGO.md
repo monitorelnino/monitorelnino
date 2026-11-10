@@ -2,17 +2,17 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **101.528 linhas** em **299 arquivos** .py/.js; **38 workflows**.
+- **101.523 linhas** em **299 arquivos** .py/.js; **38 workflows**.
 - **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
-- **157 nomes de função** definidos em mais de um arquivo.
+- **156 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 58034 |
-| `scripts` | 36374 |
-| `assets` | 6548 |
+| `(raiz)` | 58041 |
+| `scripts` | 36355 |
+| `assets` | 6555 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
 
@@ -32,7 +32,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `scripts/ensaio_da_noite.py` | 1274 |
 | `coletar_edicoes_doe.py` | 1264 |
 | `descobrir_planos.py` | 1251 |
-| `assets/js/index.js` | 1236 |
+| `assets/js/index.js` | 1242 |
 | `coletar_painel_am.py` | 1135 |
 | `gerar_imprensa_semana.py` | 1116 |
 | `julgar_e_aplicar_descobertas.py` | 1069 |
@@ -75,7 +75,6 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `_git` | 4 | `scripts/commit_do_elo.py`, `scripts/verificar_idempotencia_dos_derivados.py`, `scripts/verificar_repositorio.py`, `scripts/verificar_tamanho_dos_dados.py` |
 | `_host` | 4 | `buscar_planos_fontes_abertas.py`, `gerar_card_municipios.py`, `scripts/municipio_do_dominio.py`, `triar_confianca_pistas.py` |
 | `_sem_acento` | 4 | `revisar_pistas.py`, `scripts/pistas.py`, `scripts/validar_dicionario.py`, `scripts/vocabulario.py` |
-| `aplicar` | 4 | `julgar_saude.py`, `scripts/aplicar_edicoes.py`, `scripts/provar_mutacoes_dos_portoes.py`, `scripts/tipo_de_evento_dos_atos.py` |
 | `conferir` | 4 | `reconferir_instrumentos_federais.py`, `scripts/gerar_saude_pipeline.py`, `scripts/verificar_funil.py`, `scripts/verificar_texto_blog.py` |
 | `data_br` | 4 | `coletar_transferegov.py`, `gerar_resposta.py`, `scripts/cruzar_ocp_com_atos.py`, `scripts/gerar_mudancas.py` |
 | `faixa` | 4 | `gerar_dados_abertos.py`, `gerar_monitor_saude.py`, `gerar_selos.py`, `robustez_saude.py` |
@@ -88,5 +87,6 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `_iso` | 3 | `coletar_sinais_risco.py`, `gerar_dados_abertos.py`, `scripts/checagem_pre_noite.py` |
 | `_levanta` | 3 | `buscar_planos_fontes_abertas.py`, `coletar_transferencias_municipais.py`, `scripts/testar_busca_dou.py` |
 | `_n` | 3 | `coletar_boletim_df_arboviroses.py`, `coletar_boletim_pb_arboviroses.py`, `coletar_boletim_pe_arboviroses.py` |
+| `aplicar` | 3 | `julgar_saude.py`, `scripts/aplicar_edicoes.py`, `scripts/provar_mutacoes_dos_portoes.py` |
 | `checar` | 3 | `verificar_financiamento.py`, `verificar_painel.py`, `verificar_saude.py` |
 | `classificar_tipo` | 3 | `coletar_sinais_risco.py`, `migrar_saude_instrumentos.py`, `scripts/pistas.py` |
