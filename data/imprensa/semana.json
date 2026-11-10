@@ -15,11 +15,11 @@
   },
   {
    "id": "municipios_plano_localizado",
-   "valor": 114,
+   "valor": 121,
    "unidade": "municípios",
    "periodo_inicio": null,
    "periodo_fim": "2026-11-10",
-   "n": 114,
+   "n": 121,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
    "motivo": null
@@ -307,7 +307,7 @@
    "id": "planos_na_semana",
    "grupo": "preparacao",
    "rotulo": "Planos publicados na semana, pela data do ato",
-   "valor": 0,
+   "valor": 1,
    "sem_coleta": false,
    "periodo": {
     "ini": "2026-11-03",
@@ -321,7 +321,15 @@
    "variacao": null,
    "nota": "a data é a do ato, não a da localização pelo MARÉ; plano antigo localizado agora não aparece aqui",
    "secundaria": null,
-   "lista": [],
+   "lista": [
+    {
+     "uf": "PR",
+     "municipio": "Iporã",
+     "data": "2026-11-05",
+     "documento": "Ato oficial localizado: plano de contingência",
+     "url": "https://www.ipora.pr.gov.br/documentos/arquivos/200509plano-de-contingencia-da-defesa-civil.pdf"
+    }
+   ],
    "pagina_de_origem": null,
    "referencia": null,
    "unidade": null
@@ -786,5 +794,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 10/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, nenhum município publicou plano para o El Niño e 31 municípios decretaram situação de emergência ou calamidade; 668.495 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1129 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 10/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, 1 município publicou plano para o El Niño e 31 municípios decretaram situação de emergência ou calamidade; 668.495 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1129 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }

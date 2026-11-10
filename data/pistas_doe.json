@@ -1120,7 +1120,25 @@
    "origem_do_coletor": "doe",
    "id": "1736bae6ed",
    "entrada": "diario_oficial",
-   "status": "pista — na fila, aguardando busca dirigida e juiz"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-10",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-10",
+    "hash_evidencia": null
+   }
   }
  ]
 }
