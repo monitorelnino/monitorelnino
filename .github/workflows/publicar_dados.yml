@@ -409,7 +409,7 @@ jobs:
       #
       # Repõe quando o push deu certo, ou quando não havia o que empurrar (`houve=0`) e os portões
       # que barram passaram — este segundo é o único caso em que `always()` era desejado.
-      - name: Repor o site no domínio, atrás de senha
+      - name: Repor o site no domínio
         if: |
           success() && (steps.push.outcome == 'success'
           || (steps.commit.outputs.houve == '0' && steps.portoes.outcome == 'success'))

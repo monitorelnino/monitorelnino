@@ -45,7 +45,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - name: Repor o site completo no domínio (main atual), atrás de senha
+      - name: Repor o site completo no domínio (main atual)
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
