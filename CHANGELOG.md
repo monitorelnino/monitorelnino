@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #1671 · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).
+
 ## 2026-11-10 · consolidação · Busca de prefeitura só aceita endereço `.<uf>.gov.br` do próprio estado
 
 `hosts_por_busca` aceitava qualquer `.gov.br` com três pontos: o portal do IBGE, que cita "Boa Vista" e a palavra "município", passava como prefeitura. Agora só `.<uf>.gov.br` da UF. Caso de teste no autoteste. +1 linha líquida.
