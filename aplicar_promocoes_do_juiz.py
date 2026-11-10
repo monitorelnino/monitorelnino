@@ -90,21 +90,21 @@ def data_da_edicao(data):
     return d or (datetime.date(int(max(anos)), 12, 31) if anos else None)
 
 
-def fora_da_atualizacao_anual(data, corte) -> bool:
+OBSERVACAO_DA_VIGENCIA = ("vigência contada em 12 meses até o início do ciclo (29/06/2026); "
+                          "Lei 12.340, art. 3º-A, §6º, atualização anual")
+
+
+def fora_da_atualizacao_anual(data) -> bool:
     """Lei 12.340/2010, art. 3º-A, §6º (redação da Lei 14.750/2023): o plano se atualiza todo ano. Edição
-    com mais de 12 meses na data do corte, ou sem data, está fora da regra e não entra (editoria, 10/11/2026,
-    para o repositório estadual). Função pura."""
-    d = data_da_edicao(data)
-    if d is None:
-        return True
-    try:
-        limite = d.replace(year=d.year + 1)
-    except ValueError:   # 29/02
-        limite = d.replace(year=d.year + 1, day=28)
-    return corte > limite
+    anterior a 12 meses antes do início do ciclo (Boletim nº 1, `juiz.BOLETIM_1`), ou sem data, está fora e
+    não entra, nem como plano anterior (editoria, 10/11/2026, para o repositório estadual). Função pura."""
+    import datetime
+    from juiz import BOLETIM_1
+    d, inicio = data_da_edicao(data), datetime.datetime.strptime(BOLETIM_1, "%d/%m/%Y").date()
+    return d is None or d < inicio.replace(year=inicio.year - 1)
 
 
-def aplicaveis(decisoes: list, versao: str, resolver=None, corte=None) -> list:
+def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
     """Vereditos que promovem, na versão em vigor, ainda não aplicados nem superados.
 
     09/10/2026 (A1-29): `nao_aplicado` também exclui — a marca existe para dizer que a decisão
@@ -112,14 +112,11 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, corte=None) -> list:
     09/10/2026 (A1-01): veredito cujo domínio aponta outro município não é aplicável.
     10/11/2026: repositório estadual com `aplicar_no_banco: False` (RS, à espera da idade máxima do plano)
     fica RETIDO: julgado e registrado, sem marca, e vai ao banco quando a editoria virar o sinal; e edição do
-    repositório fora da atualização anual na data do `corte` não entra (`fora_da_atualizacao_anual`).
+    repositório fora da atualização anual não entra (`fora_da_atualizacao_anual`).
     """
     if resolver is None:
         from scripts.municipio_do_dominio import municipio_de as resolver
     from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
-    if corte is None:
-        from coletores_base import hoje_editorial
-        corte = hoje_editorial()
     fora, retidos, vencidos = [], 0, 0
     for v in decisoes:
         if not (v.get("promove") and v.get("codebook") == versao):
@@ -127,7 +124,7 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, corte=None) -> list:
         if v.get("superada_por") or v.get("aplicado_em") or v.get("nao_aplicado"):
             continue
         repo = repositorio_do_documento(v.get("url") or "")
-        if repo and fora_da_atualizacao_anual(v.get("data"), corte):
+        if repo and fora_da_atualizacao_anual(v.get("data")):
             vencidos += 1
             continue
         if REPOSITORIOS.get(repo, {}).get("aplicar_no_banco") is False:
@@ -139,8 +136,8 @@ def aplicaveis(decisoes: list, versao: str, resolver=None, corte=None) -> list:
             continue
         fora.append(v)
     if retidos or vencidos:
-        print(f"   repositório estadual: {vencidos} edição(ões) com mais de 12 meses no corte (fora da atualização "
-              f"anual, não entram); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
+        print(f"   repositório estadual: {vencidos} edição(ões) anterior(es) a 12 meses do início do "
+              f"ciclo (fora da atualização anual, não entram); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
     return fora
 
 
@@ -231,6 +228,12 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         registro["marca_na_ficha"] = "sem ato de aprovação localizado"
         registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido em {hoje}; "
                              "ato de aprovação não localizado até o corte")
+    # 10/11/2026 (editoria): documento de repositório estadual só entra dentro da atualização anual, e o
+    # registro diz por quê, com a edição datada que a regra leu.
+    from atualizar_instrumentos_estaduais import repositorio_do_documento
+    if repositorio_do_documento(v.get("url") or ""):
+        registro["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "")
+        registro["observacao_vigencia"] = OBSERVACAO_DA_VIGENCIA
     return registro
 
 
@@ -394,25 +397,28 @@ def autoteste() -> int:
     casos.append(("veredito já aplicado NÃO volta",
                   aplicaveis([dict(base, aplicado_em="2026-09-28")], V) == []))
     import atualizar_instrumentos_estaduais as _aie
-    import datetime as _dt
     _rs = dict(base, data="05/2026",
                url="https://rsgovbr-my.sharepoint.com" + _aie.REPOSITORIOS["RS"]["pasta"] + "/CREPDEC 01/P.pdf")
-    _c = _dt.date(2026, 11, 10)
     _sinal = _aie.REPOSITORIOS["RS"].get("aplicar_no_banco")
     try:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
-        _retido = aplicaveis([_rs], V, resolver=sem_dono, corte=_c) == []
+        _retido = aplicaveis([_rs], V, resolver=sem_dono) == []
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = True
-        _solto = len(aplicaveis([_rs], V, resolver=sem_dono, corte=_c)) == 1
-        _vencido = aplicaveis([dict(_rs, data="2024")], V, resolver=sem_dono, corte=_c) == []
+        _solto = len(aplicaveis([_rs], V, resolver=sem_dono)) == 1
+        _vencido = aplicaveis([dict(_rs, data="05/2025")], V, resolver=sem_dono) == []
     finally:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = _sinal
     casos.append(("repositório com o sinal desligado fica retido, sem marca; ligado, aplica", _retido and _solto))
-    casos.append(("repositório: edição de 2025 (31/12/2025) no corte de 10/11/2026 cabe; de 2024, não; sem data, não",
-                  not fora_da_atualizacao_anual("2025", _c) and fora_da_atualizacao_anual("2024", _c)
-                  and fora_da_atualizacao_anual(None, _c) and fora_da_atualizacao_anual("10/2025", _c)
-                  and not fora_da_atualizacao_anual("11/2025", _c) and not fora_da_atualizacao_anual("2026-05-13", _c)))
+    casos.append(("repositório: válida de 29/06/2025 em diante (só ano = 31/12; mm/aaaa = último dia); sem data, fora",
+                  not fora_da_atualizacao_anual("2025") and fora_da_atualizacao_anual("2024")
+                  and fora_da_atualizacao_anual(None) and fora_da_atualizacao_anual("28/06/2025")
+                  and not fora_da_atualizacao_anual("29/06/2025") and not fora_da_atualizacao_anual("06/2025")
+                  and fora_da_atualizacao_anual("05/2025") and not fora_da_atualizacao_anual("2026-05-13")))
     casos.append(("repositório: edição vencida não entra mesmo com o sinal ligado", _vencido))
+    _reg = registro_do_veredito(dict(_rs, data="2025"), 0, 0, "orgao_estadual", "F", "10/11/2026")
+    casos.append(("repositório: o registro leva a edição datada e a observação da vigência",
+                  _reg.get("data_da_edicao") == "2025-12-31" and _reg.get("observacao_vigencia") == OBSERVACAO_DA_VIGENCIA
+                  and "observacao_vigencia" not in registro_do_veredito(base, 0, 0, "x", "F", "10/11/2026")))
     casos.append(("recusa nunca é aplicável",
                   aplicaveis([dict(base, promove=False)], V) == []))
 
@@ -508,7 +514,7 @@ def main() -> int:
 
     doc = json.loads(REGISTRO.read_text(encoding="utf-8"))
     decisoes = doc.get("decisoes") or []
-    alvo = aplicaveis(decisoes, CODEBOOK_VERSAO, corte=hoje_editorial())
+    alvo = aplicaveis(decisoes, CODEBOOK_VERSAO)
     print(f"{len(alvo)} promoção(ões) na versão em vigor do codebook ({CODEBOOK_VERSAO}), "
           f"de {len(decisoes)} decisão(ões) no registro")
     for v in alvo:
