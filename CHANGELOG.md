@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-10 · #1677 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag
 `scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.
 
+## 2026-11-10 · #1678 · Imprensa: todo cartão mostra o dado já coletado, com o período real
+Focos, dias com alerta laranja ou vermelho, capitais acima do limite da OMS e leptospirose apareciam “sem coleta” com o dado no arquivo: a regra jogava fora o que não cobria o ciclo inteiro. O cartão passa a mostrar o coletado e diz desde quando. Os avisos do Inmet ganham histórico diário (semeado com as coletas guardadas desde 15/09); os focos completam os dias que saíram da janela.
+
 ## 2026-11-10 · #1676 · Lançamento: domínio aberto, sem senha e indexável
 Decisão da editoria de 10/11: `data/publicacao.json` passa a `dominio: aberto` e `indexar: true`. Saem o véu de senha do navegador (`assets/acesso.js`, senhas de editoria e imprensa), o Basic-Auth do domínio e da prévia, e o `noindex` das páginas e do molde do blog. A reposição do domínio (`repor_dominio.sh`) serve o modo aberto. A prévia segue `noindex`; o índice de conteúdo interno também.
 
