@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-10 · #PR · Um resolvedor de domínio só: o Buscador 2 deixa o seu
+## 2026-11-10 · #1674 · Um resolvedor de domínio só: o Buscador 2 deixa o seu
 O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.
 
 ## 2026-11-10 · #1672 · Juiz: o domínio do ente inclui os subdomínios, e o diário estadual fora de .gov.br é fonte oficial
