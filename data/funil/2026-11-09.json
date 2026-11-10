@@ -4,15 +4,15 @@
  "etapas": {
   "busca_web": {
    "brutos_periodo_ou_seca": 0,
-   "brutos_plancon": 160,
+   "brutos_plancon": 320,
    "brutos_siglas_e_variantes": 0,
    "coberto_sem_mencao": 0,
-   "com_resultado_bruto": 8,
-   "consultas": 18,
+   "com_resultado_bruto": 16,
+   "consultas": 28,
    "lacunas": 0,
-   "motor_sem_resposta": 10,
+   "motor_sem_resposta": 12,
    "nao_localizado_ate_o_momento": 0,
-   "pistas": 1
+   "pistas": 3
   },
   "descobrir_planos": {
    "achados_novos": 6,
@@ -20,9 +20,22 @@
    "alvos_verificados": 12,
    "fila_acumulada": 126
   },
+  "diario_consorciado": {
+   "bloqueadas": 0,
+   "decretos_novos": 9,
+   "fontes": 16,
+   "fora_do_ar": 0,
+   "pistas": 28
+  },
+  "diario_municipal": {
+   "consultados": 0,
+   "decretos_novos": 0,
+   "lacunas": 0,
+   "pistas": 0
+  },
   "doe": {
-   "ufs_com_resultado": 1,
-   "ufs_consultadas": 1
+   "ufs_com_resultado": 28,
+   "ufs_consultadas": 28
   },
   "juiz": {
    "com_documento": 26,
@@ -36,9 +49,9 @@
    "recusa_texto_nao_extraivel": 91
   },
   "transferencias_municipais": {
-   "com_resultado_bruto": 2,
-   "consultas": 2,
-   "municipios": 11138
+   "com_resultado_bruto": 12,
+   "consultas": 12,
+   "municipios": 66786
   }
  },
  "verificador_imprensa": {
@@ -76,5 +89,5 @@
   "versao": "1.0 (29/09/2026)",
   "gravado_em": "2026-11-09T08:23:05"
  },
- "atualizado_em": "2026-11-09T21:03:14"
+ "atualizado_em": "2026-11-10T02:52:44"
 }
