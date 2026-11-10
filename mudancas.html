@@ -45,6 +45,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>10/11/2026 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag</dt>
+      <dd>`scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.</dd>
       <dt>10/11/2026 · Lançamento: domínio aberto, sem senha e indexável</dt>
       <dd>Decisão da editoria de 10/11: `data/publicacao.json` passa a `dominio: aberto` e `indexar: true`. Saem o véu de senha do navegador (`assets/acesso.js`, senhas de editoria e imprensa), o Basic-Auth do domínio e da prévia, e o `noindex` das páginas e do molde do blog. A reposição do domínio (`repor_dominio.sh`) serve o modo aberto. A prévia segue `noindex`; o índice de conteúdo interno também.</dd>
       <dt>10/11/2026 · Um resolvedor de domínio só: o Buscador 2 deixa o seu</dt>
@@ -163,8 +165,6 @@
       <dd>Sai o mapa dos planos estaduais de saúde, a lista de tipos com siglas e a contagem &quot;zero estados&quot;. Fica a tabela dos estados, aberta; a UF abre a ficha. Contrato e textos (catálogo) atualizados; órfãos removidos. Saldo de código e conteúdo −42 linhas. Parte B (VIGIAR) segue aguardando o dado.</dd>
       <dt>26/10/2026 · Limpeza: resíduo da retirada de 26/10</dt>
       <dd>Na página de Saúde, Cubatão/SP e Toledo/PR deixam de mostrar a leitura de saúde no plano de documento retirado pelo #1203; sai também a proposta de Toledo na escada de planos. Em `mudancas.html`, entrada sem número deixa de aparecer dentro da anterior (`gerar_mudancas.py`, com caso de teste). Código +5/−3.</dd>
-      <dt>26/10/2026 · Rodada paralela 1.8: B2 depois dos agregadores das decisões</dt>
-      <dd>No lote 1, a resolução dos links de agregador (B2) rodou antes de reunir os 4.268 links das decisões e não achou nenhum. Agora roda depois. Refazer a triagem da fila paralela também deixou de apagar as pistas já achadas por B2 e B4 e as tentativas de B2. Só a rodada paralela muda.</dd>
     </dl>
   </section>
 </main>
