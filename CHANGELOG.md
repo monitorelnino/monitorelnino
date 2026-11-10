@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Portão: texto do mouse dos mapas e figuras de contagem num verificador só · `verificar_dicas_dos_mapas.js` e `verificar_figuras_de_contagem.js` viraram `verificar_figuras.js`: um Chromium, duas páginas, as mesmas regras e os onze casos de teste. Um comando de portão a menos.
+
 ## 2026-11-09 · #1664 · Juiz lê a pista no esquema canônico · O juiz só lia `url` e `municipio`/`uf`/`ibge`; a pista que entra só com `url_final` e `alvo` (o esquema da porta desde 03/10) seria recusada sem o documento ser baixado — caso do PMGRD 2026/2027 de Belo Horizonte e do plano de Aracaju (#1656). Recusa sem leitura de URL oficial volta à fila.
 
 ## 2026-11-09 · #PR · Sítio da prefeitura: endereço de outro estado ou de turismo não vale · Campo Grande/MS lia `campogrande.rn.gov.br` e o Rio de Janeiro lia `riotur.rio`, e a página dizia "prefeitura" e o nome: contava como lido. O endereço do cadastro e o da busca só entram se não forem de outra UF nem de turismo. Autoteste com os quatro casos.
