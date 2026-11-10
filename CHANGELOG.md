@@ -9,6 +9,16 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Reposição manual: relatório chega ao registro mesmo com corrida
+
+A reposição manual do domínio publicava o site e falhava no fim, ao gravar o relatório no registro privado, quando outro elo tinha gravado lá entre o clone e o push. Agora faz rebase e usa o mesmo empurrão dos elos, com três tentativas. (+7)
+
+## 2026-11-10 · #PR · Início: decretos em % da população e municípios à parte
+
+No cartão de decretos da página inicial, o número grande passa a dizer "% da população" e a pílula, "municípios com decreto · % dos municípios do país"; os dois textos vêm do catálogo. A reserva estática da pílula estava presa em "280 municípios · 5,0%" porque o padrão que a regravava não casava com o `<span>` interno; agora casa. O cartão de decretos em saúde segue a mesma forma: "% da população" e a pílula só com a contagem. (+18)
+
+## 2026-11-10 · #1671 · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).
+
 ## 2026-11-10 · consolidação · Busca de prefeitura só aceita endereço `.<uf>.gov.br` do próprio estado
 
 `hosts_por_busca` aceitava qualquer `.gov.br` com três pontos: o portal do IBGE, que cita "Boa Vista" e a palavra "município", passava como prefeitura. Agora só `.<uf>.gov.br` da UF. Caso de teste no autoteste. +1 linha líquida.
