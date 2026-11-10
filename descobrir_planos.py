@@ -346,7 +346,12 @@ def autoteste() -> int:
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
                 and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
-                and not identifica_prefeitura("Prefeitura de Careirodoce", "Careiro"))
+                and not identifica_prefeitura("Prefeitura de Careirodoce", "Careiro")
+                and dominios_do_municipio("Brasília", "DF")[:2] == ["df.gov.br", "brasilia.df.gov.br"]
+                and dominios_do_municipio("Brasília", "DF", "df.gov.br").count("df.gov.br") == 1
+                and identifica_prefeitura("<title>GDF - Governo do Distrito Federal</title>", "Brasília")
+                and not identifica_prefeitura("<title>Prefeitura de Brasília de Minas</title>", "Brasília")
+                and "df.gov.br" not in dominios_do_municipio("Goiânia", "GO"))
 
     def t_links_da_home_so_candidatos_e_absolutos():
         html = ('<a href="/uploads/plano-de-contingencia.pdf">Plano de Contingência 2024</a>'
@@ -789,7 +794,7 @@ def _so_letras(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
 
 
-CANDIDATOS_V = 5   # 07/11/2026: + `http` quando `https` falha e home SPA identificada pelo render (antes: 4 = Wikidata P856, render e busca 1b em 05/11)
+CANDIDATOS_V = 6   # 10/11/2026: + sítio do GDF para Brasília (antes: 5 = `http` quando `https` falha e home SPA identificada pelo render, 07/11; 4 = Wikidata P856, render e busca 1b, 05/11)
 
 _SPARQL = ("SELECT ?c ?u WHERE { ?m wdt:P1585 ?c ; wdt:P856 ?u . }")
 _REDES = ("facebook.", "instagram.", "twitter.", "x.com", "youtube.", "wikipedia.", "linktr.ee")
@@ -855,8 +860,9 @@ def dominios_do_municipio(nome: str, uf: str, oficial: str = None) -> list:
     """Os endereços a tentar, em ordem: o oficial do cadastro, se houver, e os padrão (`CANDIDATOS_V`
     sobe quando a lista muda). Função pura."""
     n, sufixo = _so_letras(nome), f".{uf.lower()}.gov.br"
+    ente = ["df.gov.br"] if uf.upper() == "DF" else []   # 10/11/2026: o DF acumula as competências municipais (METODOLOGIA §14): o sítio do GDF é o do ente
     padrao = [n + sufixo, f"www.{n}{sufixo}", f"prefeiturade{n}{sufixo}", f"prefeitura{n}{sufixo}", f"pm{n}{sufixo}"]
-    return ([oficial] if oficial and oficial not in padrao and host_admissivel(oficial, uf) else []) + padrao
+    return ente + ([oficial] if oficial and oficial not in padrao + ente and host_admissivel(oficial, uf) else []) + padrao
 
 
 def nome_da_falha(e: Exception) -> str:
@@ -888,6 +894,8 @@ def identifica_prefeitura(html: str, nome: str) -> bool:
     palavras = re.sub(r"[^a-z0-9]+", " ", "".join(c for c in unicodedata.normalize("NFKD", nome.lower())
                                                   if not unicodedata.combining(c))).split()
     nome_inteiro = bool(palavras) and re.search(r"\b" + r"\s".join(palavras) + r"\b", t)
+    if _so_letras(nome) == "brasilia":   # 10/11/2026: o ente de Brasília é o GDF
+        return "governo do distrito federal" in t
     return bool(nome_inteiro) and ("prefeitura" in t or "municipio" in t)
 
 
