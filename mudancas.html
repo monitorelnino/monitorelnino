@@ -28,7 +28,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="assets/mapas.js?v=4878b9ee"></script>
 <link rel="stylesheet" href="assets/tokens.css?v=6e7ed9c6">
-<link rel="stylesheet" href="assets/base.css?v=28c927ea">
+<link rel="stylesheet" href="assets/base.css?v=0e46606b">
 </head>
 <body class="pagina-dados">
 <a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
@@ -47,6 +47,8 @@
     <dl class="mudancas-lista">
       <dt>10/11/2026 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX</dt>
       <dd>O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar &quot;Defesa Civil do Rio Grande do Sul — Prepara RS&quot;. Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).</dd>
+      <dt>10/11/2026 · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).</dt>
+      <dd></dd>
       <dt>10/11/2026 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag</dt>
       <dd>`scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.</dd>
       <dt>10/11/2026 · Imprensa: todo cartão mostra o dado já coletado, com o período real</dt>
@@ -163,8 +165,6 @@
       <dd>`monitorar_imprensa_regional.py`, `monitorar_imprensa_saude.py`, `monitorar_sinais_federais.py` e `detectar_marcos_federais.py` tinham cada um a sua cópia do GET que devolve o texto ou `None` com aviso. Passam a usar `coletores_base.texto_tolerante`, com o mesmo cliente identificado. Sem mudança de comportamento; código −17 linhas.</dd>
       <dt>26/10/2026 · Financiamento: isolamento do crédito das MPs (vias 1 e 2)</dt>
       <dd>Execução das MPs 1.367 e 1.384: o coletor passa a ler plano orçamentário e fonte de recursos. Um código que aparece com empenho só depois da publicação é isolado como crédito; sem isolamento, o método é teto e nada é rateado. Vias de empenho e de dotação ficam declaradas como lacuna em `mps_2026.json` (`isolamento`). METODOLOGIA §33.2. Texto público inalterado.</dd>
-      <dt>26/10/2026 · Busca de planos: Ministério Público, Judiciário, Saúde e Transferegov por consulta mecânica</dt>
-      <dd>As fontes S20, S21, S23 e S31 entram em `buscar_planos_fontes_abertas.py` como linhas da tabela `FONTES_WEB`, junto de S27 e S24: o metabuscador da válvula, filtrado por endereço e por texto, sem agente por município. Saldo de código +22 linhas (quatro fontes novas e um caso de teste). Nenhum texto público muda.</dd>
     </dl>
   </section>
 </main>

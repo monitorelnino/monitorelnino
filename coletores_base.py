@@ -128,6 +128,13 @@ def codigo_de_saida(resultado) -> int:
     return CODIGO_SEM_NOVIDADE if resultado == SEM_NOVIDADE else 0 if resultado else 1
 
 
+def iso_para_br(s: str) -> str:
+    try:
+        y, m, d = s[:10].split("-"); return f"{d}/{m}/{y}"
+    except ValueError:
+        return s
+
+
 def hoje_editorial(agora=None) -> date:
     """Data de hoje no fuso da redação (America/Sao_Paulo), não no do runner.
 

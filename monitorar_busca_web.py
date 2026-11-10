@@ -239,6 +239,15 @@ def buscar_searxng(query: str, timeout: int = 20, motores: list = None) -> dict:
         return json.loads(r.read().decode("utf-8", "replace"))
 
 
+def web_do_metabuscador():
+    """`consulta -> resposta do SearXNG`, no ritmo do projeto; None se a instância não responde."""
+    try:
+        buscar_searxng("teste", timeout=5)
+    except Exception:  # noqa: BLE001
+        return None
+    return lambda q: (time.sleep(espera_do_ritmo()), buscar_searxng(q))[1]
+
+
 def relevante(resultado: dict, nome_municipio: str) -> bool:
     """Peneira local, sem inferência: nome do município no título, na URL OU no trecho,
     E algum termo de plano no título ou no trecho. Ambas as condições são literais

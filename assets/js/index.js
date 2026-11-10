@@ -83,13 +83,19 @@ function renderContadorResposta(){
   const fm = 100 * N.fracao_municipios, ir = indiceResposta(N);
   el('respNum').textContent = ir.toFixed(1).replace('.', ',');
   el('respNum').setAttribute('data-contar', ir);
-  el('respDen').textContent = '/ 100';
-  el('respBadge').innerHTML = '<span class="gfaixa-pill">' + esc(N.n_municipios.toLocaleString('pt-BR')) + ' municípios · ' + esc(fm.toFixed(1).replace('.', ',')) + '% dos municípios</span>';
+  /* 10/11/2026 (editoria): o número grande é % da POPULAÇÃO e a pílula é a contagem de MUNICÍPIOS —
+     "/ 100" ao lado de "20,3% dos municípios" fazia os dois parecerem a mesma medida. Agora cada um
+     diz a sua unidade, e os dois textos vêm do catálogo. */
+  if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
+    el('respDen').textContent = T('index.resposta.unidade');
+    el('respBadge').innerHTML = '<span class="gfaixa-pill">' + esc(T('index.resposta.pilula',
+      {n: N.n_municipios.toLocaleString('pt-BR'), pct: fm.toFixed(1).replace('.', ',')})) + '</span>';
+  });
   const fill = el('respFill'); fill.dataset.alvo = Math.max(ir, N.n_municipios ? 0.6 : 0).toFixed(2); fill.style.setProperty('--galvo', String(Math.max(ir, 0.1)));
   fill.style.width = fill.dataset.alvo + '%';
   // O rótulo acessível diz o MESMO número exibido, não o do HTML de reserva (A4-27).
   const trilho = fill.closest('.gauge-track');
-  if (trilho) trilho.setAttribute('aria-label', 'Barra de progresso: índice de resposta em ' + el('respNum').textContent + ' de 100 (população em municípios sob decreto)');
+  if (trilho) trilho.setAttribute('aria-label', 'Barra de progresso: população em municípios sob decreto, ' + el('respNum').textContent + '%');
   MonitorMapas.credito('respFonte', {fontes: ['DOU/SEDEC (S2iD)', 'diários oficiais estaduais e municipais'], data: RESP.gerado_em});
   /* 22/10/2026 (§7.2 do handover da metodologia): o número grande é a parcela da POPULAÇÃO e a
      pílula ao lado é a parcela dos MUNICÍPIOS — 17,0 e 17,7% são quase iguais e diziam coisas

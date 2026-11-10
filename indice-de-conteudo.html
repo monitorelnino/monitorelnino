@@ -1638,7 +1638,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>imprensa.numeros.num_valor_focos.texto</code></td><td>sem coleta até o corte</td></tr>
 </table>
-<h2>index <small>(59 trechos)</small></h2>
+<h2>index <small>(61 trechos)</small></h2>
 <h3>intro</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.intro</code></td><td>O MARÉ reúne dados e documentos oficiais sobre os riscos, a preparação dos governos e as respostas ao El Niño 2026/2027. Uma publicação do &lt;a href=&quot;https://www.futuraevidencelab.com.br/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Futura Evidence Lab&lt;/a&gt;, atualizada todos os dias.</td></tr>
@@ -1676,6 +1676,14 @@ font-size:12px}th:first-child{width:4rem}}
 <h3>resposta · linha_reserva</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>index.resposta.linha_reserva</code></td><td>sem coleta até o corte</td></tr>
+</table>
+<h3>resposta · unidade</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.resposta.unidade</code></td><td>% da população</td></tr>
+</table>
+<h3>resposta · pilula</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>index.resposta.pilula</code></td><td><span class="molde">{n} municípios com decreto · {pct}% do total</span><br><span class="ex">exemplo: 3 municípios com decreto · 3% do total</span></td></tr>
 </table>
 <h3>como_ler</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3054,7 +3062,7 @@ font-size:12px}th:first-child{width:4rem}}
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>proteja-se.guia-dengue.alerta</code></td><td>&lt;b&gt;Quando procurar atendimento&lt;/b&gt;Febre de 39 °C a 40 °C de início repentino com pelo menos duas destas manifestações (dor de cabeça, prostração, dores musculares ou articulares, dor atrás dos olhos): procure imediatamente um serviço de saúde. Não se automedique e procure o serviço de urgência em caso de sangramento ou de pelo menos um sinal de alerta.</td></tr>
 </table>
-<h2>saude <small>(162 trechos)</small></h2>
+<h2>saude <small>(163 trechos)</small></h2>
 <h3>página</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
 <tr><td>texto</td><td><code>saude.texto</code></td><td>MARÉ · Saúde · planos estaduais e registros de saúde no El Niño 2026/2027</td></tr>
@@ -3439,7 +3447,11 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · resposta.ponta</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.resposta.ponta</code></td><td>0 · nenhum decreto</td></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.ponta</code></td><td>0% · nenhum decreto</td></tr>
+</table>
+<h3>topo · resposta.unidade</h3>
+<table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.unidade</code></td><td>% da população</td></tr>
 </table>
 <h3>topo · resposta.linha</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
@@ -3455,7 +3467,7 @@ font-size:12px}th:first-child{width:4rem}}
 </table>
 <h3>topo · resposta.pilula</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>
-<tr><td>texto</td><td><code>saude.topo.resposta.pilula</code></td><td><span class="molde">{n|nenhum decreto|um decreto · {pct}% da população|{n} decretos · {pct}% da população}</span><br><span class="ex">exemplo: {n|nenhum decreto|um decreto · 3% da população|3 decretos · 3% da população}</span></td></tr>
+<tr><td>texto</td><td><code>saude.topo.resposta.pilula</code></td><td><span class="molde">{n|nenhum decreto|um decreto|{n} decretos}</span><br><span class="ex">exemplo: 3 decretos</span></td></tr>
 </table>
 <h3>observado · registram.detalhe.subtitulo_semana</h3>
 <table><tr><th>função</th><th>identificador</th><th>texto atual</th></tr>

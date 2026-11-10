@@ -277,7 +277,6 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
     }
     if (rp.indice != null) {
       el('respNumSaude').textContent = umaCasa(rp.indice); el('respNumSaude').dataset.contar = rp.indice;
-      el('respDenSaude').textContent = '/ 100';
       fixa('respFillSaude', rp.indice, 'decretos de emergência em saúde');
     }
     if (window.MonitorCatalogo) MonitorCatalogo.pronto.then(() => {
@@ -287,8 +286,10 @@ window.addEventListener('load', function(){ if (window.VLibras && window.VLibras
           {quando: (MS || {}).gerado_em || (MS || {}).corte || '', lidas: total - sem.length, total, siglas: sem.join(', ')});
         return;
       }
-      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {
-        n: rp.emergencias || 0, pct: umaCasa(100 * (rp.pop_sob_emergencia || 0) / (rp.pop_total || 1))})) + '</span>';
+      // 10/11/2026: mesma forma do cartão de decretos da página inicial — o número grande é % da população
+      // e a pílula só conta os decretos (o percentual repetia o número grande).
+      el('respDenSaude').textContent = T('saude.topo.resposta.unidade');
+      el('respBadgeSaude').innerHTML = '<span class="gfaixa-pill">' + esc(T('saude.topo.resposta.pilula', {n: rp.emergencias || 0})) + '</span>';
       escreve('linhaRespostaSaude', 'saude.topo.resposta.linha', {quando: (MS || {}).gerado_em || (MS || {}).corte || ''});
     });
     MonitorMapas.animarGauges(el('topoSaude'));

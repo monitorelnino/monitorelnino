@@ -12,6 +12,27 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-10 · #1680 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX
 O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar "Defesa Civil do Rio Grande do Sul — Prepara RS". Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).
 
+## 2026-11-10 · #PR · Redução: CLI morto de tipo_de_evento_dos_atos (−34 líquidas)
+
+`scripts/tipo_de_evento_dos_atos.py` virou biblioteca em 13/10 (`carimbar_atos` grava `tipo_evento`); `aplicar`, `main --relatorio` e `contagem` ficaram sem chamador e saíram, com a doc de uso. Autoteste, `coletores_base` e `gerar_resposta` inalterados.
+## 2026-11-10 · #PR · Verificação do site: atributos reordenados pelo Netlify
+
+Ao reescrever links pelo "Pretty URLs", o Netlify também reordena os atributos da tag `<a>`; a imprensa.html saía como "diferente da main" e o vigia pedia nova reposição. A comparação passa a desfazer a ordem dos atributos de `<a>` nos dois lados, sem mudar nome, valor nem quantidade. (+16)
+
+## 2026-11-10 · #PR · Reposição manual: relatório chega ao registro mesmo com corrida
+
+A reposição manual do domínio publicava o site e falhava no fim, ao gravar o relatório no registro privado, quando outro elo tinha gravado lá entre o clone e o push. Agora faz rebase e usa o mesmo empurrão dos elos, com três tentativas. (+7)
+
+## 2026-11-10 · #PR · Início: decretos em % da população e municípios à parte
+
+No cartão de decretos da página inicial, o número grande passa a dizer "% da população" e a pílula, "municípios com decreto · % dos municípios do país"; os dois textos vêm do catálogo. A reserva estática da pílula estava presa em "280 municípios · 5,0%" porque o padrão que a regravava não casava com o `<span>` interno; agora casa. O cartão de decretos em saúde segue a mesma forma: "% da população" e a pílula só com a contagem. (+18)
+
+## 2026-11-10 · #1671 · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).
+
+## 2026-11-10 · consolidação · Busca de prefeitura só aceita endereço `.<uf>.gov.br` do próprio estado
+
+`hosts_por_busca` aceitava qualquer `.gov.br` com três pontos: o portal do IBGE, que cita "Boa Vista" e a palavra "município", passava como prefeitura. Agora só `.<uf>.gov.br` da UF. Caso de teste no autoteste. +1 linha líquida.
+
 ## 2026-11-10 · #1677 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag
 `scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.
 
@@ -20,6 +41,10 @@ Focos, dias com alerta laranja ou vermelho, capitais acima do limite da OMS e le
 
 ## 2026-11-10 · #1676 · Lançamento: domínio aberto, sem senha e indexável
 Decisão da editoria de 10/11: `data/publicacao.json` passa a `dominio: aberto` e `indexar: true`. Saem o véu de senha do navegador (`assets/acesso.js`, senhas de editoria e imprensa), o Basic-Auth do domínio e da prévia, e o `noindex` das páginas e do molde do blog. A reposição do domínio (`repor_dominio.sh`) serve o modo aberto. A prévia segue `noindex`; o índice de conteúdo interno também.
+
+## 2026-11-10 · Link de agregador que não se resolve não vira pista (Buscador 2) · +21 líquidas
+
+O coletor de imprensa regional gravava a pista com o endereço opaco do Google Notícias quando o link não resolvia; o Buscador 2 a recusava depois (928 de 928 em 10/11). Agora os três degraus rodam na coleta, com veículo e título do feed, e o que não resolve não é gravado. Ajudante único `web_do_metabuscador`, usado também por `seguir_pistas.py`. Código +36/−15.
 
 ## 2026-11-10 · #1674 · Um resolvedor de domínio só: o Buscador 2 deixa o seu
 O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.
