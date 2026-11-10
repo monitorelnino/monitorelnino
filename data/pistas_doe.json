@@ -1120,24 +1120,30 @@
    "origem_do_coletor": "doe",
    "id": "1736bae6ed",
    "entrada": "diario_oficial",
-   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "juiz_tentativas": [
     {
      "em": "2026-11-10",
      "classe": "criterio",
      "motivo": "sem_documento_primario",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-10",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "sem_documento_primario",
-    "leu_documento": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-10",
-    "hash_evidencia": null
+    "hash_evidencia": "cdecc4cdc340dfe005d32c139bdc7f491e434ca9a90feb5dbe62087759352bc7"
    }
   }
  ]

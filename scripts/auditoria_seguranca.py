@@ -72,8 +72,8 @@ def varrer_dados_pessoais() -> list:
 
 def varrer_segredos() -> list:
     achados = []
-    saida = subprocess.run(["git", "ls-files"], cwd=RAIZ, capture_output=True, text=True, check=False)
-    arquivos = [RAIZ / f for f in saida.stdout.splitlines() if f]
+    from _versionados import versionados
+    arquivos = [RAIZ / f for f in versionados(fora=(), raiz=RAIZ)]
     for p in arquivos:
         if not p.is_file() or p.suffix in {".pdf", ".png", ".jpg", ".jpeg"}:
             continue

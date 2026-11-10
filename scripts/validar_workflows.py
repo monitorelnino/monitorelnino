@@ -253,9 +253,9 @@ _PADROES_DE_CANCELAMENTO = (
 _RAIZ_CANCEL = _pl.Path(__file__).resolve().parent.parent
 _CANCEL_IGNORA = ("arquivo/", "node_modules/", ".git/", "scripts/validar_workflows.py")
 
-for _alvo in sorted(list(_RAIZ_CANCEL.glob(".github/workflows/*.yml"))
-                    + list(_RAIZ_CANCEL.rglob("*.py"))
-                    + list(_RAIZ_CANCEL.glob("scripts/*.sh"))):
+sys.path.insert(0, str(_RAIZ_CANCEL / "scripts"))
+from _versionados import versionados  # noqa: E402 — o que o Git rastreia, não as cópias locais de trabalho
+for _alvo in [_RAIZ_CANCEL / r for r in versionados(".github/workflows/*.yml", "*.py", "scripts/*.sh", fora=("arquivo", "node_modules"))]:
     _rel = _alvo.relative_to(_RAIZ_CANCEL).as_posix()
     if _rel.startswith(_CANCEL_IGNORA) or _rel in _CANCEL_IGNORA:
         continue

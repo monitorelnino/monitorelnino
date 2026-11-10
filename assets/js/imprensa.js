@@ -49,8 +49,13 @@
       const vs = c.dataset.acumulado.split(/\s+/).map(id => acum(S, id));
       if (!el) return;
       if (vs.some(v => !v)) { el.textContent = lacuna(); return; }
+      const n = x => (x === 0 ? 'zero' : fmt(x));
       el.textContent = vs.map(v => v.unidade === 'reais' ? M.reais(v.valor)
-        : v.unidade === 'pessoas' ? M.numBR(v.valor / 1e6, 1) + ' mi' : fmt(v.valor)).join(' · ');
+        : v.unidade === 'pessoas' ? M.numBR(v.valor / 1e6, 1) + ' mi' : n(v.valor)).join(' · ');
+      // 10/11/2026: o número é do que foi coletado, e o período REAL vem com ele (início da série, dias com
+      // dado, registro incompleto) — o texto fixo do HTML dizia "Desde 29/06" para uma soma que começa depois.
+      const per = c.querySelector('.cartao-numero-variacao');
+      if (per && vs.length === 1 && vs[0].periodo_molde && cat) per.textContent = cat.texto(vs[0].periodo_molde, vs[0].periodo_vars || {});
     }));
     fetch('data/resposta/por_uf.json').then(r => r.ok ? r.json() : {}).catch(() => ({})).then(P => {
       const N = (P && P.nacional) || {};

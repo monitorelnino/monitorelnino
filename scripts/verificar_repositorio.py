@@ -243,10 +243,8 @@ def html_publicado():
     """Todo HTML que o deploy serve, menos `arquivo/` e `evidencias/` (4 GB: a poda é antes de descer)."""
     # 09/11/2026: o deploy sai do checkout da CI, que só tem o que o Git rastreia; andar o disco contava as
     # cópias de trabalho locais (.claude/worktrees/…) e reprovava a máquina, não o repositório.
-    import subprocess
-    rastreados = subprocess.run(["git", "ls-files", "--", "*.html"], cwd=RAIZ, capture_output=True, text=True, check=True).stdout
-    achados = [RAIZ / r for r in rastreados.splitlines()
-               if r.split("/", 1)[0] not in {"evidencias", "arquivo", "node_modules"} and (RAIZ / r).is_file()]
+    from _versionados import versionados
+    achados = [RAIZ / r for r in versionados("*.html", raiz=RAIZ)]
     for p in sorted(achados):
         yield p.relative_to(RAIZ).as_posix(), p
 

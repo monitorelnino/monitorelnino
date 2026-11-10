@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-03 a 2026-11-10 (1385 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-03 a 2026-11-10 (1387 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -26,7 +26,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-10 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-07 01:45 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-10 07:40 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-09 01:34 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-10 15:40 | 5 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-10 16:52 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-10 08:59 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-07 01:43 | 104 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-07 01:15 | 1 s | — | ok | — |
