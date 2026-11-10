@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-10 · #1673 · Saúde: legenda do mapa do desfecho sob o mapa, com a contagem, e nota afastada da legenda
 A chave da contagem de estados saiu do catálogo no #1214 e o mapa seguiu pedindo-a pelo JS: a legenda publicava "acima da faixa habitual para a época ·" sem número. O portão do catálogo passa a ler os identificadores pedidos pelo JS. A legenda do mapa fica em coluna, centrada sob ele, e a nota de figura ganha o espaço de mídia → legenda.
 
+## 2026-11-10 · #1672 · Juiz: o domínio do ente inclui os subdomínios, e o diário estadual fora de .gov.br é fonte oficial
+O resolvedor de domínio passa a ler o rótulo colado à UF (`codesal.salvador.ba.gov.br` é de Salvador) e a lista sem UF (`pbh.gov.br`); a lista das imprensas oficiais estaduais (IOERJ) fica nele, e o juiz e o Buscador 2 a usam. Recusa por autoridade decidida antes da correção, em domínio do próprio ente, volta ao juiz uma vez, como numa troca de codebook (210 pistas; entre elas os planos de Salvador, Fortaleza e Goiânia e o Decreto RJ 50.357/2026).
+
 ## 2026-11-10 · #PR · Portão: texto do mouse dos mapas e figuras de contagem num verificador só · `verificar_dicas_dos_mapas.js` e `verificar_figuras_de_contagem.js` viraram `verificar_figuras.js`: um Chromium, duas páginas, as mesmas regras e os onze casos de teste. Um comando de portão a menos.
 
 ## 2026-11-10 · #PR · Redução: a linha de comando dos coletores SIH e SIM é uma só · `coletar_sim.main` repetia, linha a linha, o `main` do `coletar_sih` (autoteste, sondagem, orçamento); passa a chamá-lo. Mesmo comportamento, autotestes verdes. Código −8/+4 (−4 líquidas).

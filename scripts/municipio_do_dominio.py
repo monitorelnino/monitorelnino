@@ -77,9 +77,12 @@ def _norm(texto: str) -> str:
 def partes_do_host(host: str):
     """(candidato_a_municipio, uf) a partir do host. Função pura; (None, None) quando não serve.
 
-    O padrão municipal brasileiro é `<nome>.<uf>.gov.br`, com rótulos de serviço à frente. Host de
-    dois níveis (`gov.br`), de câmara (`.leg.br`) ou de estado (`<uf>.gov.br`, sem nome) não
-    resolve município.
+    O padrão municipal brasileiro é `<nome>.<uf>.gov.br`: o ente recebe a delegação desse nome, e todo
+    rótulo à esquerda é subdomínio DELE (`codesal.salvador.ba.gov.br`, `transp-arquivos.portovelho.ro.gov.br`).
+    O candidato é, portanto, o rótulo colado à UF. 10/11/2026: a regra antiga descartava rótulos de serviço
+    de uma lista e recusava quando sobrava mais de um, e o juiz recusou o plano de Salvador e a portaria de
+    Porto Velho como "fora do domínio do ente". Rótulo de serviço colado à UF (`saude.ba.gov.br`,
+    `www.sc.gov.br`) é sítio de estado; câmara (`camara.<nome>`) não é Executivo.
     """
     h = (host or "").lower().strip().rstrip(".")
     if not h or "." not in h:
@@ -87,17 +90,52 @@ def partes_do_host(host: str):
     rotulos = h.split(".")
     if len(rotulos) < 4 or ".".join(rotulos[-2:]) != "gov.br":
         return None, None     # só o padrão municipal `<nome>.<uf>.gov.br`
-    uf = rotulos[-3]
-    if uf not in UFS:
+    uf, nome = rotulos[-3], rotulos[-4]
+    if uf not in UFS or not nome or nome in PREFIXOS:
         return None, None
-    nome = [r for r in rotulos[:-3] if r not in PREFIXOS]
-    if len(nome) != 1 or not nome[0]:
-        return None, None     # nada sobrou, ou sobrou mais de um rótulo: não adivinhar
-    return nome[0], uf.upper()
+    if any(r.startswith("camara") for r in rotulos[:-4]):
+        return None, None
+    return nome, uf.upper()
+
+
+# Versão do resolvedor, como a do codebook: muda a cada correção dele. Recusa por autoridade julgada antes
+# dela, em domínio que o resolvedor em vigor dá ao próprio ente, volta ao juiz uma vez
+# (`julgar_filas.recusa_desmentida_pelo_dominio`). Sobe-se a data; nada de regra antiga guardada.
+RESOLVEDOR_DESDE = "2026-11-10"
+
+# Domínio municipal fora do padrão `<nome>.<uf>.gov.br`. Lista fechada, só de domínio conferido (a página
+# inicial se identifica como a prefeitura). Era cópia em `buscador2.py` (30/10/2026); uma lista só.
+MUNICIPAIS_SEM_UF = {"pbh.gov.br": ("Belo Horizonte", "MG")}
+
+
+def diarios_estaduais() -> dict:
+    """{host: UF} das imprensas oficiais estaduais, de `data/fontes_doe.json` (a lista do coletor do DOE).
+    Três são servidas fora de `.gov.br` (IOERJ, IOEPA, CEPE). Era cópia em `buscador2.py`; o juiz não a via
+    e recusou o Decreto RJ 50.357/2026 sem baixá-lo (10/11/2026)."""
+    global _DOES
+    if _DOES is None:
+        try:
+            ufs = json.loads((RAIZ / "data" / "fontes_doe.json").read_text(encoding="utf-8")).get("ufs") or {}
+        except (OSError, ValueError):
+            ufs = {}
+        _DOES = {h: uf for uf, f in ufs.items() if (h := _host(str((f or {}).get("url") or "")))}
+    return _DOES
+
+
+_DOES = None
+
+
+def _host(url: str) -> str:
+    h = (urllib.parse.urlsplit(str(url or "").strip()).hostname or "").lower().rstrip(".")
+    return h[4:] if h.startswith("www.") else h
 
 
 def _indice(referencia=None):
-    ref = referencia if referencia is not None else json.loads(REFERENCIA.read_text(encoding="utf-8"))
+    if referencia is None:
+        if not _INDICE_REAL:
+            _INDICE_REAL.append(_indice(json.loads(REFERENCIA.read_text(encoding="utf-8"))))
+        return _INDICE_REAL[0]
+    ref = referencia
     indice = {}
     for m in ref:
         indice[(_norm(m["nome"]), str(m["uf"]).upper())] = {
@@ -106,13 +144,20 @@ def _indice(referencia=None):
     return indice
 
 
+_INDICE_REAL = []   # a malha do IBGE, lida uma vez por processo
+
+
 def municipio_de(url: str, referencia=None):
     """O município dono do domínio desta URL, ou None. Função pura dada a referência."""
     host = urllib.parse.urlparse(str(url or "")).netloc or str(url or "")
-    candidato, uf = partes_do_host(host.split("@")[-1].split(":")[0])
+    host = host.split("@")[-1].split(":")[0].lower()
+    indice = _indice(referencia)
+    for d, (nome, uf_d) in MUNICIPAIS_SEM_UF.items():
+        if host == d or host.endswith("." + d):
+            return indice.get((_norm(nome), uf_d))
+    candidato, uf = partes_do_host(host)
     if not candidato or not uf:
         return None
-    indice = _indice(referencia)
     achado = indice.get((_norm(candidato), uf))
     if achado:
         return achado
@@ -121,7 +166,9 @@ def municipio_de(url: str, referencia=None):
     # pelo candidato. Em RS, "caxias" só casa com Caxias do Sul; em MA existe Caxias, mas é outra
     # UF, e a UF vem do próprio host. Sem unicidade, não se adivinha.
     alvo = _norm(candidato)
-    if len(alvo) < 5:
+    # Com rótulo à esquerda, o host é de órgão: nome curto não se adivinha (`tesouro.fazenda.rs.gov.br`
+    # não é Fazenda Vilanova).
+    if len(alvo) < 5 or any(r not in PREFIXOS for r in host.split(".")[:-4]):
         return None
     casam = [v for (n, u), v in indice.items() if u == uf and n.startswith(alvo)]
     return casam[0] if len(casam) == 1 else None
@@ -183,8 +230,26 @@ def _autoteste() -> int:
        municipio_de("https://www.gov.br/mdr/pt-br", REF) is None)
     ok("veículo privado não resolve município",
        municipio_de("https://g1.globo.com/sc/noticia.html", REF) is None)
-    ok("dois rótulos sobrando não viram adivinhação",
-       municipio_de("https://a.b.taio.sc.gov.br/x", REF) is None)
+    ok("todo rótulo à esquerda de <nome>.<uf>.gov.br é subdomínio do ente",
+       (municipio_de("https://a.b.taio.sc.gov.br/x", REF) or {}).get("nome") == "Taió")
+    ok("órgão do município em subdomínio (codesal.salvador.ba.gov.br)",
+       (municipio_de("https://codesal.salvador.ba.gov.br/wp/PLANO.pdf",
+                     REF + [{"nome": "Salvador", "uf": "BA", "codigo_ibge": 2927408}]) or {}).get("ibge") == "2927408")
+    ok("subdomínio de arquivos (transp-arquivos.portovelho.ro.gov.br)",
+       (municipio_de("https://transp-arquivos.portovelho.ro.gov.br/u/p.pdf",
+                     REF + [{"nome": "Porto Velho", "uf": "RO", "codigo_ibge": 1100205}]) or {}).get("nome") == "Porto Velho")
+    ok("domínio municipal sem UF da lista fechada (prefeitura.pbh.gov.br)",
+       (municipio_de("https://prefeitura.pbh.gov.br/plano.pdf",
+                     REF + [{"nome": "Belo Horizonte", "uf": "MG", "codigo_ibge": 3106200}]) or {}).get("ibge") == "3106200")
+    ok("órgão de estado colado à UF segue sem município (vigilancia.saude.sc.gov.br)",
+       municipio_de("https://vigilanciasanitaria.saude.sc.gov.br/x", REF) is None)
+    ok("subdomínio de órgão de estado não vira município por prefixo (tesouro.fazenda.rs.gov.br)",
+       municipio_de("https://tesouro.fazenda.rs.gov.br/x.pdf",
+                     REF + [{"nome": "Fazenda Vilanova", "uf": "RS", "codigo_ibge": 4307815}]) is None)
+    ok("câmara em subdomínio do ente não é Executivo",
+       municipio_de("https://camara.taio.sc.gov.br/x", REF) is None)
+    ok("imprensa oficial estadual fora de .gov.br vem da lista do DOE",
+       diarios_estaduais().get("ioerj.com.br") == "RJ" or not (RAIZ / "data" / "fontes_doe.json").exists())
     ok("município fora da referência devolve None",
        municipio_de("https://cidadeinexistente.sc.gov.br/x", REF) is None)
     ok("url vazia devolve None", municipio_de("", REF) is None and municipio_de(None, REF) is None)
