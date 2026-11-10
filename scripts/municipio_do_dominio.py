@@ -98,18 +98,10 @@ def partes_do_host(host: str):
     return nome, uf.upper()
 
 
-# Data da última correção do resolvedor. Recusa por autoridade julgada antes dela, em domínio que o
-# resolvedor de hoje dá ao próprio ente, volta ao juiz uma vez (`julgar_filas.recusa_desmentida_pelo_dominio`).
+# Versão do resolvedor, como a do codebook: muda a cada correção dele. Recusa por autoridade julgada antes
+# dela, em domínio que o resolvedor em vigor dá ao próprio ente, volta ao juiz uma vez
+# (`julgar_filas.recusa_desmentida_pelo_dominio`). Sobe-se a data; nada de regra antiga guardada.
 RESOLVEDOR_DESDE = "2026-11-10"
-
-def resolvido_so_desde_a_correcao(url: str) -> bool:
-    """O host é dos que a regra anterior a `RESOLVEDOR_DESDE` não resolvia: domínio da lista sem UF, ou
-    rótulo à esquerda de `<nome>.<uf>.gov.br` fora dos rótulos de serviço. Função pura."""
-    h = (urllib.parse.urlparse(str(url or "")).netloc or "").split("@")[-1].split(":")[0].lower()
-    if any(h == d or h.endswith("." + d) for d in MUNICIPAIS_SEM_UF):
-        return True
-    return any(r not in PREFIXOS for r in h.split(".")[:-4])
-
 
 # Domínio municipal fora do padrão `<nome>.<uf>.gov.br`. Lista fechada, só de domínio conferido (a página
 # inicial se identifica como a prefeitura). Era cópia em `buscador2.py` (30/10/2026); uma lista só.
@@ -258,11 +250,6 @@ def _autoteste() -> int:
        municipio_de("https://camara.taio.sc.gov.br/x", REF) is None)
     ok("imprensa oficial estadual fora de .gov.br vem da lista do DOE",
        diarios_estaduais().get("ioerj.com.br") == "RJ" or not (RAIZ / "data" / "fontes_doe.json").exists())
-    ok("subdomínio de órgão e domínio sem UF são o que a correção de 10/11 passou a ver",
-       resolvido_so_desde_a_correcao("https://codesal.salvador.ba.gov.br/x")
-       and resolvido_so_desde_a_correcao("https://prefeitura.pbh.gov.br/x")
-       and not resolvido_so_desde_a_correcao("https://www.defesacivil.taio.sc.gov.br/x")
-       and not resolvido_so_desde_a_correcao("https://almeirim.pa.gov.br/x"))
     ok("município fora da referência devolve None",
        municipio_de("https://cidadeinexistente.sc.gov.br/x", REF) is None)
     ok("url vazia devolve None", municipio_de("", REF) is None and municipio_de(None, REF) is None)

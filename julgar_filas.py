@@ -143,9 +143,8 @@ def recusa_desmentida_pelo_dominio(p: dict, juiz: dict) -> bool:
     servido no domínio do próprio ente: volta uma vez. 10/11/2026: o resolvedor não via subdomínio do ente
     (`codesal.salvador.ba.gov.br`) nem `prefeitura.pbh.gov.br`, e a etapa 3 recusava o plano como "fora do
     domínio do ente". Rejulgada, a pista ganha `julgado_em` novo e não volta de novo. Pura dada a malha."""
-    from municipio_do_dominio import RESOLVEDOR_DESDE, municipio_de, resolvido_so_desde_a_correcao
-    if (juiz.get("motivo") != "autoridade_nao_confirmada" or str(juiz.get("julgado_em") or "") >= RESOLVEDOR_DESDE
-            or not resolvido_so_desde_a_correcao(url_da_pista(p))):
+    from municipio_do_dominio import RESOLVEDOR_DESDE, municipio_de
+    if juiz.get("motivo") != "autoridade_nao_confirmada" or str(juiz.get("julgado_em") or "") >= RESOLVEDOR_DESDE:
         return False
     dono = municipio_de(url_da_pista(p)) or {}
     nome, uf, ibge = ente_da_pista(p)
@@ -676,8 +675,6 @@ def autoteste() -> int:
                   not pendente({**salvador, "juiz": {**salvador["juiz"], "julgado_em": "2026-11-10"}})))
     casos.append(("recusa por autoridade em domínio de outro ente não volta",
                   not pendente({**salvador, "alvo": "2800308"})))
-    casos.append(("recusa por autoridade em domínio que o resolvedor já via não volta",
-                  not pendente({**salvador, "url_final": "https://salvador.ba.gov.br/p/PLANO.pdf"})))
     casos.append(("recusa por outro motivo não volta",
                   not pendente({**salvador, "juiz": {**salvador["juiz"], "motivo": "natureza_duvidosa"}})))
     # e o caminho sem preservador devolve veredito sem hash
