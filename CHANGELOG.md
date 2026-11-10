@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 Ao reescrever links pelo "Pretty URLs", o Netlify também reordena os atributos da tag `<a>`; a imprensa.html saía como "diferente da main" e o vigia pedia nova reposição. A comparação passa a desfazer a ordem dos atributos de `<a>` nos dois lados, sem mudar nome, valor nem quantidade. (+16)
 
+## 2026-11-10 · #PR · Reposição manual: relatório chega ao registro mesmo com corrida
+
+A reposição manual do domínio publicava o site e falhava no fim, ao gravar o relatório no registro privado, quando outro elo tinha gravado lá entre o clone e o push. Agora faz rebase e usa o mesmo empurrão dos elos, com três tentativas. (+7)
+
 ## 2026-11-10 · #PR · Início: decretos em % da população e municípios à parte
 
 No cartão de decretos da página inicial, o número grande passa a dizer "% da população" e a pílula, "municípios com decreto · % dos municípios do país"; os dois textos vêm do catálogo. A reserva estática da pílula estava presa em "280 municípios · 5,0%" porque o padrão que a regravava não casava com o `<span>` interno; agora casa. O cartão de decretos em saúde segue a mesma forma: "% da população" e a pílula só com a contagem. (+18)
