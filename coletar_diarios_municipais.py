@@ -29,7 +29,7 @@ from coletores_base import (carimbar_atos, buscar, preservar_evidencia, preserva
                             DECISOES_LOG,
                             abrir_lote_log, fechar_lote_log, descarregar_lote_log,
                             abrir_lote_livro, fechar_lote_livro, descarregar_lote_livro,
-                            rodar_autoteste, hoje_editorial, pendentes_na_janela)
+                            rodar_autoteste, hoje_editorial, pendentes_na_janela, iso_para_br)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 from classificar_pista_civil import triagem_completa
 
@@ -220,13 +220,6 @@ def classificar_trechos(itens: list) -> tuple:
             if PAD_PLANO.search(tr):
                 pistas.append({"data": it["data"], "url": it["url"], "trecho": tr[:300]})
     return decretos, pistas
-
-
-def iso_para_br(s):
-    try:
-        y, m, d = s[:10].split("-"); return f"{d}/{m}/{y}"
-    except ValueError:
-        return s
 
 
 def coletar_lote(lote: int, tamanho: int, desde: str, pendentes_desde: str = "", ate: str = "", tudo: bool = False) -> int:

@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).
+
 ## 2026-11-10 · #PR · Portão: texto do mouse dos mapas e figuras de contagem num verificador só · `verificar_dicas_dos_mapas.js` e `verificar_figuras_de_contagem.js` viraram `verificar_figuras.js`: um Chromium, duas páginas, as mesmas regras e os onze casos de teste. Um comando de portão a menos.
 
 ## 2026-11-10 · #PR · Redução: a linha de comando dos coletores SIH e SIM é uma só · `coletar_sim.main` repetia, linha a linha, o `main` do `coletar_sih` (autoteste, sondagem, orçamento); passa a chamá-lo. Mesmo comportamento, autotestes verdes. Código −8/+4 (−4 líquidas).
