@@ -39,7 +39,6 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_SITE_NAME: ${{ secrets.NETLIFY_SITE_NAME }}
-          PREVIA_BASIC_AUTH: ${{ secrets.PREVIA_BASIC_AUTH }}
         run: |
           set +e
           {
@@ -49,9 +48,9 @@ jobs:
               echo "rename_codigo=$? $(grep -oE '"name": *"[^"]+"' /tmp/rename.txt | head -1)"
             fi
             ALIAS=$(echo "${GITHUB_REF_NAME}" | tr '/_.' '---' | tr -cd 'a-zA-Z0-9-' | cut -c1-37 | sed 's/-*$//')
-            # senha da prévia (03/09/2026): Basic-Auth via _headers gerado no deploy, a partir de segredo — nunca no repositório
-            # 07/09/2026 (SEO): a prévia nunca é indexada — noindex por cabeçalho e robots.txt de bloqueio só neste deploy
-            if [ -n "$PREVIA_BASIC_AUTH" ]; then printf '/*\n  Basic-Auth: %s\n  X-Robots-Tag: noindex, nofollow\n' "$PREVIA_BASIC_AUTH" > _headers; else printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers; fi
+            # 10/11/2026 (editoria, lançamento): a prévia deixa de pedir senha. 07/09/2026 (SEO): a prévia nunca é
+            # indexada — noindex por cabeçalho e robots.txt de bloqueio só neste deploy
+            printf '/*\n  X-Robots-Tag: noindex, nofollow\n' > _headers
             printf 'User-agent: *\nDisallow: /\n' > robots.txt
             npx --yes netlify-cli@17 deploy --alias="$ALIAS" --dir=. --message "Prévia de ${GITHUB_REF_NAME} ${GITHUB_SHA::7}"
             rm -f _headers > /tmp/deploy_out.txt 2>&1

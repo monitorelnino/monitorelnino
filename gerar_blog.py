@@ -208,7 +208,6 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
 <meta name="description" content="{desc}"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- seo -->
 <link rel="canonical" href="{url}">
-<meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="{SITE}">
 <meta property="og:locale" content="pt_BR">
@@ -348,7 +347,7 @@ def postos_aprovados() -> list:
 def gerar() -> dict[Path, str]:
     """Devolve {caminho: conteúdo} de todos os derivados, sem escrever nada."""
     pagina = PAGINA_INDICE.read_text(encoding="utf-8")
-    # cabeçalho: do <link preconnect> até o fim do <header> (fontes, acesso.js, folhas, body, skip, .wrap, masthead)
+    # cabeçalho: do <link preconnect> até o fim do <header> (fontes, folhas, body, skip, .wrap, masthead)
     cabecalho = _para_subpasta(_bloco(pagina, '<link rel="preconnect"', "</header>"))
     rodape = _para_subpasta(_bloco(pagina, '<footer class="site-footer">', "</footer>"))
     scripts = _para_subpasta(_bloco(pagina, '<script src="assets/colunas.js', "</html>")).rsplit("</body>", 1)[0]
