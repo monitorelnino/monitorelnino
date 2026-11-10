@@ -19,7 +19,7 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 WF = RAIZ / ".github" / "workflows" / "publicar_dados.yml"
-PASSO = "Repor o site no domínio, atrás de senha"
+PASSO = "Repor o site no domínio"
 PUBLICACAO = RAIZ / "data" / "publicacao.json"
 
 MODOS_VALIDOS = {"cortina", "senha", "aberto"}

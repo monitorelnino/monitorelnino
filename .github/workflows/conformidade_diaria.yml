@@ -8,7 +8,7 @@ name: Conformidade do site inteiro (diária)
 # O que ele roda é o mesmo julgamento dos PRs, sobre as páginas do repositório na `main`, que é o
 # conteúdo que o Netlify publica, com os dados da rodada mais recente.
 #
-# DIVERGÊNCIA DECLARADA: o handover diz "sobre o site publicado". O domínio está atrás de senha
+# DIVERGÊNCIA DECLARADA: o handover diz "sobre o site publicado". Até o lançamento (10/11/2026) o domínio esteve atrás de senha
 # (regime de cortina, decisão da editoria), e a credencial não é manejada pelo Code — nenhum
 # segredo de cortina entra aqui. Rodar sobre a `main` publicada mede o mesmo conteúdo e os mesmos
 # dados; o que ele não pega é diferença introduzida pelo próprio deploy, e disso cuida o workflow

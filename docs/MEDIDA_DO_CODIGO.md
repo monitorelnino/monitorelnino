@@ -2,7 +2,7 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **101.362 linhas** em **299 arquivos** .py/.js; **38 workflows**.
+- **101.528 linhas** em **299 arquivos** .py/.js; **38 workflows**.
 - **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
 - **157 nomes de função** definidos em mais de um arquivo.
 
@@ -10,9 +10,9 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 57884 |
-| `scripts` | 36335 |
-| `assets` | 6571 |
+| `(raiz)` | 58034 |
+| `scripts` | 36374 |
+| `assets` | 6548 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
 
@@ -20,7 +20,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 
 | arquivo | linhas |
 |---|---:|
-| `coletar_sinais_risco.py` | 3282 |
+| `coletar_sinais_risco.py` | 3344 |
 | `coletores_base.py` | 2283 |
 | `juiz.py` | 1976 |
 | `coletar_doe.py` | 1710 |
@@ -31,20 +31,20 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `scripts/unir_conflito_de_rodada.py` | 1318 |
 | `scripts/ensaio_da_noite.py` | 1274 |
 | `coletar_edicoes_doe.py` | 1264 |
-| `descobrir_planos.py` | 1250 |
+| `descobrir_planos.py` | 1251 |
 | `assets/js/index.js` | 1236 |
 | `coletar_painel_am.py` | 1135 |
+| `gerar_imprensa_semana.py` | 1116 |
 | `julgar_e_aplicar_descobertas.py` | 1069 |
 | `recalcular_mare.py` | 1064 |
-| `gerar_imprensa_semana.py` | 1049 |
 | `coletar_diarios_consorciados.py` | 1040 |
 | `gerar_pacote_blog.py` | 913 |
 | `julgar_filas.py` | 857 |
 | `scripts/pistas.py` | 782 |
-| `scripts/verificar_repositorio.py` | 774 |
+| `scripts/verificar_repositorio.py` | 772 |
 | `coletar_s2id.py` | 762 |
+| `monitorar_busca_web.py` | 755 |
 | `buscar_planos_fontes_abertas.py` | 753 |
-| `monitorar_busca_web.py` | 746 |
 
 ## Funções de mesmo nome em arquivos distintos (as 40 mais repetidas)
 

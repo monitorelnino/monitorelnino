@@ -44,8 +44,12 @@ jobs:
       cancel-in-progress: false
     steps:
 
+      # 10/11/2026: disparado num ramo, o checkout pegava o ramo e o domínio passava a servir algo que não é
+      # a `main` (a verificação de integridade acusou `imprensa.html`). O nome do job sempre disse "main atual".
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - name: Repor o site completo no domínio (main atual), atrás de senha
+        with:
+          ref: main
+      - name: Repor o site completo no domínio (main atual)
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

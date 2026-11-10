@@ -34,6 +34,8 @@ import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
+sys.path.insert(0, str(RAIZ / "scripts"))
+from _versionados import versionados  # noqa: E402
 MAPA = RAIZ / "CODEMAP.md"
 
 RE_FETCH = re.compile(r"""fetch\(\s*['"]([^'"]+)['"]""")
@@ -299,17 +301,9 @@ def ler_tudo() -> tuple:
     # cópias de trabalho locais (.claude/worktrees/…) e dependências fora do Git, e o mapa gerado numa
     # máquina com elas saía diferente do da CI. Agora é a lista do próprio Git.
     todos_py = {r: (RAIZ / r).read_text(encoding="utf-8", errors="replace")
-                for r in versionados("*.py")
-                if not any(x in pathlib.PurePosixPath(r).parts for x in ("arquivo", "node_modules"))}
+                for r in versionados("*.py", fora=("arquivo", "node_modules"), raiz=RAIZ)}
     quem_importa = importadores(todos_py)
     return paginas, scripts, pythons, portoes, caminhos_js, quem_importa
-
-
-def versionados(padrao: str) -> list:
-    """Caminhos relativos dos arquivos que o Git rastreia e casam com `padrao` (presentes no disco)."""
-    import subprocess
-    saida = subprocess.run(["git", "ls-files", "--", padrao], cwd=RAIZ, capture_output=True, text=True, check=True).stdout
-    return sorted(r for r in saida.splitlines() if (RAIZ / r).is_file())
 
 
 def autoteste() -> int:
