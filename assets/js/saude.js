@@ -558,9 +558,9 @@ function pintarMapaDoDesfecho(d, pos) {
           {datas: periodoEmPalavras(c.periodo, d.periodo), mes: periodoEmPalavras(c.periodo, d.periodo)}));
   });
   MonitorMapas.legenda('legMapaDesfecho', ['acima', 'dentro', 'abaixo'].map(k => ({cor: cor[k],
-      rotulo: textoSaude('saude.posicao.' + k) + ' · ' + textoSaude('saude.estadual.lista.contagem', {n: pos[k].length})}))
+      rotulo: textoSaude('saude.posicao.' + k) + ' · ' + textoSaude('saude.observado.registram.detalhe.contagem', {n: pos[k].length})}))
     .concat([{cor: MonitorMapas.NEUTRA, rotulo: textoSaude('saude.observado.registram.detalhe.sem_periodo') + ' · '
-      + textoSaude('saude.estadual.lista.contagem', {n: pos.sem.length})}]));
+      + textoSaude('saude.observado.registram.detalhe.contagem', {n: pos.sem.length})}]));
   /* A lista recolhida é a alternativa acessível do mapa: os estados acima primeiro. */
   const lista = document.getElementById('dlDesfechoUF');
   if (lista) lista.innerHTML = ['acima', 'dentro', 'abaixo', 'sem'].map(k => pos[k].map(u => {
