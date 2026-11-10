@@ -138,6 +138,20 @@ def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> l
     return fora
 
 
+def recusa_desmentida_pelo_dominio(p: dict, juiz: dict) -> bool:
+    """Recusa por autoridade, julgada antes da versão em vigor do resolvedor de domínio, num documento
+    servido no domínio do próprio ente: volta uma vez. 10/11/2026: o resolvedor não via subdomínio do ente
+    (`codesal.salvador.ba.gov.br`) nem `prefeitura.pbh.gov.br`, e a etapa 3 recusava o plano como "fora do
+    domínio do ente". Rejulgada, a pista ganha `julgado_em` novo e não volta de novo. Pura dada a malha."""
+    from municipio_do_dominio import RESOLVEDOR_DESDE, municipio_de
+    if juiz.get("motivo") != "autoridade_nao_confirmada" or str(juiz.get("julgado_em") or "") >= RESOLVEDOR_DESDE:
+        return False
+    dono = municipio_de(url_da_pista(p)) or {}
+    nome, uf, ibge = ente_da_pista(p)
+    return bool(dono) and (str(dono.get("ibge")) == str(ibge or "") or
+                           (dono.get("nome"), dono.get("uf")) == (nome, str(uf).upper()))
+
+
 PREFIXO_FECHADA_POR_PRAZO = "fechada — sem documento oficial localizado"
 
 
@@ -164,7 +178,9 @@ def pendente(p: dict, hoje=None) -> bool:
         # a URL oficial que traz só acontece quando o juiz não achou a URL: volta.
         from juiz import fonte_oficial
         url = url_da_pista(p)
-        return bool(not juiz.get("leu_documento") and url and fonte_oficial(url))
+        if not juiz.get("leu_documento"):
+            return bool(url and fonte_oficial(url))
+        return recusa_desmentida_pelo_dominio(p, juiz)
     if "inacessivel_persistente" in status:
         return False
     prox = p.get("proxima_tentativa_em")
@@ -648,6 +664,19 @@ def autoteste() -> int:
     casos.append(("recusada sem ler a URL oficial que traz volta à fila", pendente(sem_ler)))
     casos.append(("recusada sem ler notícia de veículo privado não volta",
                   not pendente({**sem_ler, "url_final": "https://g1.globo.com/x.html"})))
+    casos.append(("recusada sem ler o diário estadual fora de .gov.br volta (IOERJ)",
+                  pendente({**sem_ler, "alvo": "RJ", "url_final": "https://www.ioerj.com.br/portal/x"})))
+    # 10/11/2026: recusa por autoridade em subdomínio do próprio ente, julgada antes da correção do resolvedor
+    salvador = {"id": "s", "alvo": "2927408", "url_final": "https://codesal.salvador.ba.gov.br/p/PLANO.pdf",
+                "juiz": {"codebook": CODEBOOK_VERSAO, "leu_documento": True,
+                         "motivo": "autoridade_nao_confirmada", "julgado_em": "2026-11-01"}}
+    casos.append(("recusa por autoridade no domínio do próprio ente volta uma vez", pendente(salvador)))
+    casos.append(("rejulgada depois da correção, não volta de novo",
+                  not pendente({**salvador, "juiz": {**salvador["juiz"], "julgado_em": "2026-11-10"}})))
+    casos.append(("recusa por autoridade em domínio de outro ente não volta",
+                  not pendente({**salvador, "alvo": "2800308"})))
+    casos.append(("recusa por outro motivo não volta",
+                  not pendente({**salvador, "juiz": {**salvador["juiz"], "motivo": "natureza_duvidosa"}})))
     # e o caminho sem preservador devolve veredito sem hash
     v_sem = julgar_uma({"id": "z", "municipio": "Bonito", "uf": "MS",
                         "url": CANARIOS["plano_novo"]["url"]}, buscar, None)
