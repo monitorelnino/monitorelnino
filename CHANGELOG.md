@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Portão: texto do mouse dos mapas e figuras de contagem num verificador só · `verificar_dicas_dos_mapas.js` e `verificar_figuras_de_contagem.js` viraram `verificar_figuras.js`: um Chromium, duas páginas, as mesmas regras e os onze casos de teste. Um comando de portão a menos.
+
 ## 2026-11-10 · #PR · Redução: a linha de comando dos coletores SIH e SIM é uma só · `coletar_sim.main` repetia, linha a linha, o `main` do `coletar_sih` (autoteste, sondagem, orçamento); passa a chamá-lo. Mesmo comportamento, autotestes verdes. Código −8/+4 (−4 líquidas).
 
 ## 2026-11-10 · #PR · Brasília: o sítio do GDF é o do ente · O DF acumula as competências municipais (METODOLOGIA §14): `df.gov.br` entra primeiro na lista de endereços do DF e a home vale se disser "Governo do Distrito Federal". A lista subiu (CANDIDATOS_V 6): Brasília é relida. A duplicata em `buscar_planos_fontes_abertas.py` saiu.
