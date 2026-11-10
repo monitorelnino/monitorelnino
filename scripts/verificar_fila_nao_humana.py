@@ -29,7 +29,6 @@ import io
 import json
 import pathlib
 import re
-import subprocess
 import sys
 import tokenize
 from email.utils import parsedate_to_datetime
@@ -125,14 +124,9 @@ def ocorrencias_no_codigo(caminho: str, fonte: str) -> list:
 
 def arquivos_de_codigo() -> list:
     """Os *.py, *.js e *.yml versionados, fora de arquivo/ e das exceções."""
-    try:
-        saida = subprocess.run(["git", "ls-files", "--", *[f"*{e}" for e in EXTENSOES_DE_CODIGO]],
-                               cwd=RAIZ, capture_output=True, text=True, check=True).stdout.splitlines()
-    except Exception:  # noqa: BLE001 — sem git, varre a árvore
-        saida = [str(p.relative_to(RAIZ)) for e in EXTENSOES_DE_CODIGO for p in RAIZ.rglob(f"*{e}")]
-    return sorted(c for c in saida if c.endswith(EXTENSOES_DE_CODIGO)
-                  and not c.startswith(("arquivo/", "node_modules/")) and "/node_modules/" not in c
-                  and c not in EXCECOES_DE_CODIGO)
+    from _versionados import versionados
+    return [c for c in versionados(*[f"*{e}" for e in EXTENSOES_DE_CODIGO], fora=("arquivo", "node_modules"), raiz=RAIZ)
+            if c not in EXCECOES_DE_CODIGO]
 
 
 def codigo_ativo_humano(arquivos=None) -> list:

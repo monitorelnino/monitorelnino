@@ -10,7 +10,6 @@ distintos (candidatas a um lugar só) e os portões por perfil. Informação, n�
 import collections
 import pathlib
 import re
-import subprocess
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
@@ -21,9 +20,8 @@ COMUNS = {"main", "autoteste", "_autoteste", "t", "ok", "ler", "gravar", "rodar"
 
 
 def arquivos() -> list:
-    saida = subprocess.run(["git", "ls-files", "*.py", "*.js"], cwd=RAIZ, capture_output=True,
-                           text=True, check=True).stdout.split()
-    return sorted(p for p in saida if not p.startswith(("node_modules/", "evidencias/")))
+    from _versionados import versionados
+    return versionados("*.py", "*.js", fora=("node_modules", "evidencias"), raiz=RAIZ)
 
 
 def medir(caminhos: list, ler) -> dict:

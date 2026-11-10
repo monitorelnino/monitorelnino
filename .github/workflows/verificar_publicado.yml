@@ -1,7 +1,7 @@
 name: Verificar o site publicado (domínio real)
 
-# 14/09/2026: camada pós-deploy. Roda por botão (modo escolhido) e todo dia às 10h UTC
-# em modo neutro (sem exigir robots): páginas do sitemap em 200, cabeçalhos, integridade
+# 14/09/2026: camada pós-deploy. Roda por botão e todo dia às 10h UTC, no modo de robots que
+# `data/publicacao.json` declara (10/11/2026; antes o botão vinha em "neutro"): páginas do sitemap em 200, cabeçalhos, integridade
 # SHA-256 contra o manifesto da main, canários. 21/10/2026 (editoria: o domínio não pode ficar dias
 # parado, como ficou de 07 a 20/10): divergência de integridade é o sinal de domínio atrás da `main`;
 # o vigia repõe pelo script único (`repor_dominio.sh`, o do publicador), confere de novo e, se a
@@ -12,17 +12,21 @@ on:
       modo:
         description: 'flag (padrão: data/publicacao.json) · noindex · index · neutro'
         type: choice
-        options: [noindex, index, neutro]
-        default: neutro
+        options: [flag, noindex, index, neutro]
+        default: flag
   schedule:
     - cron: "0 10 * * *"
 
 permissions:
   contents: read
 
-# Mesmo grupo do publicador: reposição do vigia e publicação nunca fazem deploy ao mesmo tempo.
+# 10/11/2026: era o grupo do publicador (`publicar-dados`), para que reposição e publicação não fizessem
+# deploy juntas. O GitHub guarda UM pendente por grupo e descarta o anterior: cada publicação enfileirada
+# cancelava a verificação que esperava — 52 das últimas 100 terminaram `cancelled`, sem verificar nada.
+# Grupo próprio; deploy simultâneo não corrompe o domínio (o Netlify publica um de cada vez, o último vence)
+# e a verificação seguinte confere a integridade de novo.
 concurrency:
-  group: publicar-dados
+  group: verificar-publicado
   cancel-in-progress: false
 
 jobs:
