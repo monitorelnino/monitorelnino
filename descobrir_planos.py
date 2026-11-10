@@ -525,7 +525,8 @@ def autoteste() -> int:
         return (r["dominio"] == "portal.bonito.ms.gov.br" and r["situacao"] == "lido"
                 and [p["url"] for p in r["pistas"]] == ["https://portal.bonito.ms.gov.br/plancon.pdf"]
                 and sem["situacao"] == "portal_nao_verificado" and cai["situacao"] == "portal_nao_verificado"
-                and cai["motivo"] == "a busca não respondeu" and hosts == ["portal.bonito.ms.gov.br"] and ok)
+                and cai["motivo"] == "a busca não respondeu" and hosts == ["portal.bonito.ms.gov.br"] and ok
+                and hosts_por_busca("Boa Vista", "RR", lambda _q: {"results": [{"url": "https://cidades.ibge.gov.br/brasil/rr/boa-vista"}]})[0] == [])
 
     def t_portal_http_render_e_motivo():
         """07/11/2026: prefeitura só em http abre; home SPA se identifica pelo render; sem portal, a lacuna
@@ -839,7 +840,7 @@ def hosts_por_busca(nome: str, uf: str, busca, ja_tentados=()) -> tuple:
     hosts = []
     for r in resultados:
         h = urllib.parse.urlparse(str(r.get("url") or "")).netloc.lower()
-        if (h.endswith(".gov.br") and h.count(".") >= 3 and h not in hosts and h not in ja_tentados
+        if (h.endswith(f".{uf.lower()}.gov.br") and h not in hosts and h not in ja_tentados   # 10/11/2026: só `.<uf>.gov.br` (o portal do IBGE citava "Boa Vista" e se identificava como prefeitura)
                 and host_admissivel(h, uf) and not any(x in h for x in _REDES)):
             hosts.append(h)
     return hosts[:3], True

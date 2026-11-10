@@ -9,6 +9,23 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · consolidação · Busca de prefeitura só aceita endereço `.<uf>.gov.br` do próprio estado
+
+`hosts_por_busca` aceitava qualquer `.gov.br` com três pontos: o portal do IBGE, que cita "Boa Vista" e a palavra "município", passava como prefeitura. Agora só `.<uf>.gov.br` da UF. Caso de teste no autoteste. +1 linha líquida.
+
+## 2026-11-10 · #1677 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag
+`scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.
+
+## 2026-11-10 · #1678 · Imprensa: todo cartão mostra o dado já coletado, com o período real
+Focos, dias com alerta laranja ou vermelho, capitais acima do limite da OMS e leptospirose apareciam “sem coleta” com o dado no arquivo: a regra jogava fora o que não cobria o ciclo inteiro. O cartão passa a mostrar o coletado e diz desde quando. Os avisos do Inmet ganham histórico diário (semeado com as coletas guardadas desde 15/09); os focos completam os dias que saíram da janela.
+
+## 2026-11-10 · #1676 · Lançamento: domínio aberto, sem senha e indexável
+Decisão da editoria de 10/11: `data/publicacao.json` passa a `dominio: aberto` e `indexar: true`. Saem o véu de senha do navegador (`assets/acesso.js`, senhas de editoria e imprensa), o Basic-Auth do domínio e da prévia, e o `noindex` das páginas e do molde do blog. A reposição do domínio (`repor_dominio.sh`) serve o modo aberto. A prévia segue `noindex`; o índice de conteúdo interno também.
+
+## 2026-11-10 · Link de agregador que não se resolve não vira pista (Buscador 2) · +21 líquidas
+
+O coletor de imprensa regional gravava a pista com o endereço opaco do Google Notícias quando o link não resolvia; o Buscador 2 a recusava depois (928 de 928 em 10/11). Agora os três degraus rodam na coleta, com veículo e título do feed, e o que não resolve não é gravado. Ajudante único `web_do_metabuscador`, usado também por `seguir_pistas.py`. Código +36/−15.
+
 ## 2026-11-10 · #1674 · Um resolvedor de domínio só: o Buscador 2 deixa o seu
 O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.
 
