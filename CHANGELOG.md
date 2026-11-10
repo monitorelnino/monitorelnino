@@ -12,6 +12,9 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-10 · #PR · Redução: CLI morto de tipo_de_evento_dos_atos (−34 líquidas)
 
 `scripts/tipo_de_evento_dos_atos.py` virou biblioteca em 13/10 (`carimbar_atos` grava `tipo_evento`); `aplicar`, `main --relatorio` e `contagem` ficaram sem chamador e saíram, com a doc de uso. Autoteste, `coletores_base` e `gerar_resposta` inalterados.
+## 2026-11-10 · #PR · Reposição manual: relatório chega ao registro mesmo com corrida
+
+A reposição manual do domínio publicava o site e falhava no fim, ao gravar o relatório no registro privado, quando outro elo tinha gravado lá entre o clone e o push. Agora faz rebase e usa o mesmo empurrão dos elos, com três tentativas. (+7)
 
 ## 2026-11-10 · #PR · Início: decretos em % da população e municípios à parte
 
