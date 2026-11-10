@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Verificação do site: atributos reordenados pelo Netlify
+
+Ao reescrever links pelo "Pretty URLs", o Netlify também reordena os atributos da tag `<a>`; a imprensa.html saía como "diferente da main" e o vigia pedia nova reposição. A comparação passa a desfazer a ordem dos atributos de `<a>` nos dois lados, sem mudar nome, valor nem quantidade. (+16)
+
 ## 2026-11-10 · #PR · Início: decretos em % da população e municípios à parte
 
 No cartão de decretos da página inicial, o número grande passa a dizer "% da população" e a pílula, "municípios com decreto · % dos municípios do país"; os dois textos vêm do catálogo. A reserva estática da pílula estava presa em "280 municípios · 5,0%" porque o padrão que a regravava não casava com o `<span>` interno; agora casa. O cartão de decretos em saúde segue a mesma forma: "% da população" e a pílula só com a contagem. (+18)
