@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Um resolvedor de domínio só: o Buscador 2 deixa o seu
+O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.
+
 ## 2026-11-10 · #1672 · Juiz: o domínio do ente inclui os subdomínios, e o diário estadual fora de .gov.br é fonte oficial
 O resolvedor de domínio passa a ler o rótulo colado à UF (`codesal.salvador.ba.gov.br` é de Salvador) e a lista sem UF (`pbh.gov.br`); a lista das imprensas oficiais estaduais (IOERJ) fica nele, e o juiz e o Buscador 2 a usam. Recusa por autoridade decidida antes da correção, em domínio do próprio ente, volta ao juiz uma vez, como numa troca de codebook (210 pistas; entre elas os planos de Salvador, Fortaleza e Goiânia e o Decreto RJ 50.357/2026).
 
