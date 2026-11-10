@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-10 · #PR · Imprensa: todo cartão mostra o dado já coletado, com o período real
+## 2026-11-10 · #1678 · Imprensa: todo cartão mostra o dado já coletado, com o período real
 Focos, dias com alerta laranja ou vermelho, capitais acima do limite da OMS e leptospirose apareciam “sem coleta” com o dado no arquivo: a regra jogava fora o que não cobria o ciclo inteiro. O cartão passa a mostrar o coletado e diz desde quando. Os avisos do Inmet ganham histórico diário (semeado com as coletas guardadas desde 15/09); os focos completam os dias que saíram da janela.
 
 ## 2026-11-10 · #1676 · Lançamento: domínio aberto, sem senha e indexável
