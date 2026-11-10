@@ -10,7 +10,7 @@
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": true,
    "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 55852,
+   "valor_parcial": 55853,
    "periodo_parcial_inicio": "2026-09-17"
   },
   {
@@ -515,12 +515,12 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 9625,
+   "valor": 10294,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "09/11/2026",
+   "consultado_em": "10/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -529,55 +529,59 @@
    "lista": [
     {
      "uf": "PA",
-     "valor": 5820
+     "valor": 6279
     },
     {
      "uf": "MA",
-     "valor": 1263
+     "valor": 1304
     },
     {
      "uf": "AP",
-     "valor": 917
+     "valor": 938
     },
     {
      "uf": "RR",
-     "valor": 498
+     "valor": 575
     },
     {
      "uf": "BA",
-     "valor": 283
+     "valor": 287
     },
     {
      "uf": "AM",
      "valor": 135
     },
     {
+     "uf": "PE",
+     "valor": 125
+    },
+    {
+     "uf": "PI",
+     "valor": 114
+    },
+    {
      "uf": "TO",
      "valor": 112
     },
     {
-     "uf": "PI",
-     "valor": 111
-    },
-    {
      "uf": "CE",
-     "valor": 107
-    },
-    {
-     "uf": "PE",
-     "valor": 105
+     "valor": 108
     },
     {
      "uf": "PB",
-     "valor": 62
+     "valor": 76
     },
     {
      "uf": "AL",
-     "valor": 58
+     "valor": 65
     },
     {
      "uf": "RN",
-     "valor": 24
+     "valor": 30
+    },
+    {
+     "uf": "SE",
+     "valor": 28
     },
     {
      "uf": "MT",
@@ -589,11 +593,7 @@
     },
     {
      "uf": "MS",
-     "valor": 17
-    },
-    {
-     "uf": "SE",
-     "valor": 17
+     "valor": 18
     },
     {
      "uf": "RS",
@@ -608,16 +608,20 @@
      "valor": 10
     },
     {
+     "uf": "PR",
+     "valor": 9
+    },
+    {
      "uf": "RO",
      "valor": 9
     },
     {
-     "uf": "PR",
-     "valor": 6
-    },
-    {
      "uf": "SP",
      "valor": 4
+    },
+    {
+     "uf": "AC",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
