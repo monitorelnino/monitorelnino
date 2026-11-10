@@ -1,0 +1,88 @@
+{
+ "data": "2026-11-10",
+ "formato_versao": 1,
+ "etapas": {
+  "busca_web": {
+   "brutos_periodo_ou_seca": 0,
+   "brutos_plancon": 160,
+   "brutos_siglas_e_variantes": 0,
+   "coberto_sem_mencao": 0,
+   "com_resultado_bruto": 8,
+   "consultas": 10,
+   "lacunas": 0,
+   "motor_sem_resposta": 2,
+   "nao_localizado_ate_o_momento": 0,
+   "pistas": 1
+  },
+  "descobrir_planos": {
+   "achados_novos": 9,
+   "alvos_consultados": 60,
+   "alvos_verificados": 8,
+   "fila_acumulada": 126
+  },
+  "funil_recursos_resposta": {
+   "com_resultado_bruto": 1,
+   "consultas": 1,
+   "pistas": 20
+  },
+  "juiz": {
+   "com_documento": 182,
+   "pistas_recebidas": 1529,
+   "promovidas": 29,
+   "recusa_autoridade_nao_confirmada": 19,
+   "recusa_citacao_incompleta": 30,
+   "recusa_documento_inacessivel": 637,
+   "recusa_ente_nao_confirmado": 37,
+   "recusa_executivo_pendente": 2,
+   "recusa_familia_de_risco_nao_identificada": 1,
+   "recusa_fora_do_objeto": 7,
+   "recusa_minuta_ou_rascunho": 2,
+   "recusa_natureza_duvidosa": 9,
+   "recusa_plano_sem_identificacao": 4,
+   "recusa_resposta": 1,
+   "recusa_sem_documento_primario": 684,
+   "recusa_texto_nao_extraivel": 26
+  },
+  "transferencias_municipais": {
+   "com_resultado_bruto": 20,
+   "consultas": 20,
+   "municipios": 111296
+  }
+ },
+ "verificador_imprensa": {
+  "na_fila": 2877,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 20,
+  "nao_resolvidas_por_orcamento": 36,
+  "por_motivo": {
+   "veiculo_nao_listado": 2731,
+   "sem_https": 90,
+   "redirecionamento_nao_resolvido": 20
+  },
+  "crescimento_da_lista": {
+   "candidatos": 15,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 2,
+    "sem_pagina_de_expediente": 1,
+    "nao_avaliado_por_orcamento": 12
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-10T07:14:36"
+ },
+ "atualizado_em": "2026-11-10T08:43:38"
+}
