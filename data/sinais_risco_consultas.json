@@ -4,21 +4,21 @@
   "efeito_no_indice": "NENHUM — peso zero, como todo sinal de risco.",
   "escrito_por": "coletar_sinais_risco.py"
  },
- "gerado_em": "09/11/2026 22:31",
+ "gerado_em": "09/11/2026 22:48",
  "consultas": [
   {
    "fonte": "inmet_avisos",
    "url": "https://apiprevmet3.inmet.gov.br/avisos/ativos",
-   "consultado_em": "09/11/2026 22:31",
+   "consultado_em": "09/11/2026 22:48",
    "bytes": 146603,
    "sha256": "24417e24681e3e34d5c13011a0bd3880e141b3dcb1b8e1f74a3e0ae12784907b"
   },
   {
    "fonte": "cemaden_alertas",
    "url": "https://gsc.cemaden.gov.br/geoserver/cemaden_dev/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=cemaden_dev:alertas_vigentes_siaden&outputFormat=application/json&count=3000",
-   "consultado_em": "09/11/2026 22:31",
+   "consultado_em": "09/11/2026 22:48",
    "bytes": 1492814,
-   "sha256": "9f3cba3e53a28d18dfd6f258cb1a30e5ef27be78ad185d6eb6ef55010fc3458d"
+   "sha256": "458af4f5e2f8de38e8d252841b30e1001c22221740f74aa8fc2f9a9f84b9f37b"
   }
  ]
 }
