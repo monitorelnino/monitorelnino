@@ -838,6 +838,13 @@ def _ano_antes(dia: date) -> date:
         return dia.replace(year=dia.year - 1, day=28)
 
 
+def anos_a_completar(guardados: set, fim: date) -> list:
+    """Anos com algum dia faltando na janela de FOCOS_DIAS_SERIE, fora dos últimos FOCOS_DIAS_MUNICIPIO (que o
+    arquivo diário cobre). Função pura."""
+    faltam = {(fim - timedelta(days=i)) for i in range(FOCOS_DIAS_MUNICIPIO, FOCOS_DIAS_SERIE)}
+    return sorted({d.year for d in faltam if d.isoformat() not in guardados})
+
+
 def atualizar_focos_ref(anterior: dict, novos: dict, ultimo_dia: str) -> dict:
     """Junta os dias novos à série guardada, apara as janelas e calcula o resumo do último dia
     completo. Somas e contagens só; dia sem arquivo fica fora da soma e o número de dias com dado
@@ -1394,6 +1401,29 @@ def parse_municipios_do_aviso(texto: str) -> list:
         vistos.add(cod)
         achados.append({"nome": nome, "uf": uf, "geocode": cod})
     return achados
+
+
+# 10/11/2026 (editoria): o aviso do Inmet era consultado todo dia e só o vigente ficava — cada coleta apagava a
+# anterior, e "dias com alerta laranja ou vermelho" não tinha de onde sair. O dia consultado fica guardado aqui:
+# as UFs com aviso laranja ("Perigo") e vermelho ("Grande Perigo"), e o dia sem nenhum fica como dia observado
+# sem aviso (zero medido, não lacuna). Semeado em 10/11 com as coletas preservadas no histórico do Git (desde 01/09).
+HISTORICO_AVISOS = RAIZ / "data" / "alertas" / "historico_avisos.json"
+COR_DO_GRAU = {"Perigo": "laranja", "Grande Perigo": "vermelho"}
+
+
+def anotar_dia_de_avisos(historico: dict, por_uf: dict, dia: str) -> dict:
+    """Junta ao histórico as UFs com aviso laranja ou vermelho em `dia` (AAAA-MM-DD); mais de uma consulta no
+    mesmo dia soma, nunca substitui. Função pura."""
+    h = {**(historico or {}), "dias": dict((historico or {}).get("dias") or {})}
+    d = {cor: set((h["dias"].get(dia) or {}).get(cor) or []) for cor in COR_DO_GRAU.values()}
+    for uf, reg in (por_uf or {}).items():
+        for grau, n in ((reg or {}).get("graus") or {}).items():
+            cor = COR_DO_GRAU.get(str(grau).strip())
+            if cor and n:
+                d[cor].add(uf)
+    h["dias"][dia] = {cor: sorted(v) for cor, v in d.items()}
+    h["dias"] = dict(sorted(h["dias"].items()))
+    return h
 
 
 def parse_avisos_inmet_detalhado(dados, agora=None) -> list:
@@ -2065,6 +2095,12 @@ def coletar(registro: dict, camadas, fontes=None) -> dict:
                                               "documento": documento, "consultado_em": hoje()}
         elif chave == "inmet_avisos":
             _DETALHE_ALERTAS["inmet"] = payload.get("detalhe") or []
+            anterior = json.loads(HISTORICO_AVISOS.read_text(encoding="utf-8")) if HISTORICO_AVISOS.exists() else {}
+            escrever_json(HISTORICO_AVISOS, {
+                "_governanca": ("Dias consultados dos avisos do Inmet: UFs com aviso laranja (Perigo) e vermelho "
+                                "(Grande Perigo). Dia sem UF é dia observado sem aviso; dia ausente não foi consultado. "
+                                "Só cresce. Peso zero, sinal físico."),
+                **anotar_dia_de_avisos(anterior, payload["por_uf"], hoje_editorial().isoformat())})
             for uf in UFS:
                 dados = payload["por_uf"].get(uf) or {"total": 0, "graus": {}, "exemplos": []}
                 registro["uf"][uf]["avisos_inmet"] = {**dados, "fonte": chave,
@@ -2285,14 +2321,21 @@ def gravar_focos_referencia() -> None:
                 texto = _buscar_registrado("inpe_fogo", f"{base}focos_diario_br_{d}.csv")
                 csv_ultimo = texto if iso == ultimo else csv_ultimo
                 novos.update(resumo_focos_ref(texto))
-        ano_antes = _ano_antes(fim)
-        if ano_antes.isoformat() not in guardados:
-            url = FOCOS_ANUAL_REF.format(ano=ano_antes.year)
-            bruto = _buscar(url, binario=True)
+        # 10/11/2026: só o dia de um ano antes buscava o arquivo anual; o dia que saía da janela de 30 sem ter
+        # sido lido nunca mais entrava, e a série do ciclo começava em 17/09. Todo ano com dia faltando na
+        # janela de 400, fora dos 30 que o diário cobre, busca o anual daquele ano — uma vez, e cada ano falha sozinho.
+        for ano in anos_a_completar(guardados | set(novos), fim):
+            url = FOCOS_ANUAL_REF.format(ano=ano)
+            try:
+                bruto = _buscar(url, binario=True)
+            except Exception as e:  # noqa: BLE001 — o ano fica com a lacuna, os outros seguem
+                print(f"[aviso] focos de referência: anual de {ano} indisponível ({type(e).__name__}).")
+                continue
             registrar_consulta("inpe_fogo", url, bruto)
             z = zipfile.ZipFile(io.BytesIO(bruto))
             anual = resumo_focos_ref(z.read(z.infolist()[0]).decode("utf-8", "replace"), filtrar_satelite=False)
-            novos.update({d: v for d, v in anual.items() if 0 <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_SERIE})
+            novos.update({d: v for d, v in anual.items() if d not in novos and d not in guardados
+                          and FOCOS_DIAS_MUNICIPIO <= (fim - date.fromisoformat(d)).days < FOCOS_DIAS_SERIE})
     except Exception as e:  # noqa: BLE001 — fonte externa: o arquivo anterior fica, com a data dele
         print(f"[aviso] focos de referência: {type(e).__name__}: {str(e)[:160]} — data/focos_referencia.json mantido.")
         return
@@ -2630,6 +2673,25 @@ def autoteste() -> int:
         print(("  ✓ " if condicao else "  ✗ ") + nome)
         if not condicao:
             falhas.append(nome)
+
+    # ── Focos: anos com dia faltando na janela (10/11/2026) ─────
+    _fim = date(2026, 11, 9)
+    _cheio = {(_fim - timedelta(days=i)).isoformat() for i in range(FOCOS_DIAS_SERIE)}
+    checar("focos: série completa não busca anual nenhum", anos_a_completar(_cheio, _fim) == [])
+    checar("focos: buraco de julho busca só o anual de 2026",
+           anos_a_completar(_cheio - {"2026-07-15"}, _fim) == [2026])
+    checar("focos: buraco nos últimos 30 dias fica com o diário",
+           anos_a_completar(_cheio - {"2026-11-01"}, _fim) == [])
+
+    # ── Histórico dos avisos do Inmet (10/11/2026) ─────
+    _h = anotar_dia_de_avisos({}, {"RS": {"graus": {"Perigo": 2}}, "SC": {"graus": {"Perigo Potencial": 3}}}, "2026-11-10")
+    checar("avisos: laranja é 'Perigo'; amarelo ('Perigo Potencial') não conta",
+           _h["dias"]["2026-11-10"] == {"laranja": ["RS"], "vermelho": []})
+    _h = anotar_dia_de_avisos(_h, {"PR": {"graus": {"Grande Perigo": 1}}}, "2026-11-10")
+    checar("avisos: segunda consulta no mesmo dia soma, não substitui",
+           _h["dias"]["2026-11-10"] == {"laranja": ["RS"], "vermelho": ["PR"]})
+    checar("avisos: dia consultado sem aviso fica guardado como observado",
+           anotar_dia_de_avisos({}, {}, "2026-11-11")["dias"]["2026-11-11"] == {"laranja": [], "vermelho": []})
 
     # ── Previsão do INMET (27/09/2026): órgão competente no lugar de modelo estrangeiro ─────
     _prev = {"Bras\u00edlia": {"27/09/2026": {
