@@ -59,7 +59,14 @@ jobs:
           bash scripts/repor_dominio.sh "Reposição manual do site no domínio — commit ${GITHUB_SHA::7}" --estrito --forcar
           git clone -q "https://x-access-token:${ROBO_TOKEN}@github.com/monitorelnino/robo-registro.git" /tmp/reg_repor 2>/dev/null
           mkdir -p /tmp/reg_repor/relatorios && cp /tmp/repor_relatorio.txt "/tmp/reg_repor/relatorios/$(date -u +%Y-%m-%d_%H%M%S)_repor_dominio_manual.txt"
-          cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio manual ${GITHUB_SHA::7}" && git push -q
+          cd /tmp/reg_repor && git config user.name "monitor-el-nino-bot" && git config user.email "bot@users.noreply.github.com" && git add -A && git commit -q -m "repor dominio manual ${GITHUB_SHA::7}"
+          # 10/11/2026: o relatório é arquivo novo; se o robo-registro andou entre o clone e o push
+          # (corrida comum: outro elo grava lá), rebase e o mesmo empurrão dos elos — o deploy já está no ar.
+          for TENTATIVA in 1 2 3; do
+            git pull -q --rebase origin main || true
+            if EMPURRAR_REMOTO=origin python3 "$GITHUB_WORKSPACE/scripts/empurrar.py" main "$TENTATIVA"; then break; fi
+            [ "$TENTATIVA" = 3 ] && { echo "::error::relatório da reposição não chegou ao robo-registro"; exit 1; }
+          done
 
 
   atualizar:
