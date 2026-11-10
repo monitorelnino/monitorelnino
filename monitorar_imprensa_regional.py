@@ -235,7 +235,7 @@ def carregar_fila():
         "pistas": []}
 
 
-def registrar(fila, novas):
+def registrar(fila, novas, buscar_web=None, abrir=None):
     """Deduplica por hash e anexa pistas inéditas com os campos de trava absoluta.
 
     27/09/2026: `data/pistas_imprensa.json` tem DOIS produtores. Este monitor grava pistas de
@@ -265,19 +265,24 @@ def registrar(fila, novas):
         # JavaScript do agregador, que não prova matéria nenhuma. Resolve-se DEPOIS do hash, de
         # propósito: o hash continua calculado sobre o link do feed, que é estável, e trocar a base
         # do hash faria toda pista já coletada voltar como inédita.
+        # 10/11/2026 (PARA A Buscador 2): o link do agregador que não se resolve NÃO vira pista.
+        # Antes entrava como `news.google.com/rss/articles/…` e o Buscador 2 o recusava depois
+        # (928 de 928 em 10/11). Os três degraus rodam aqui, com veículo e título do feed na mão.
         try:
             from verificar_pista_imprensa import (abrir_seguindo_redirecionamento,
                                                   resolver_redirecionamento)
             final, degrau = resolver_redirecionamento(
-                p["url"], abrir=lambda u: abrir_seguindo_redirecionamento(u, timeout=30))
+                p["url"], abrir=abrir or (lambda u: abrir_seguindo_redirecionamento(u, timeout=30)),
+                veiculo=p.get("veiculo_dominio"), titulo=p.get("titulo"), buscar_web=buscar_web)
         except Exception:  # noqa: BLE001
-            final, degrau = p["url"], "nao_tentado"
-        if final and final != p["url"]:
+            final, degrau = None, "nao_tentado"
+        if not final:
+            print(f"[nota] link do agregador não resolvido, pista não gravada ({degrau}): {p['url'][:80]}")
+            continue
+        if final != p["url"]:
             p["url_do_agregador"] = p["url"]
             p["url"] = final
             p["degrau_do_redirecionamento"] = degrau
-        elif final is None:
-            p["degrau_do_redirecionamento"] = "redirecionamento_nao_resolvido"
 
         p["fonte_provavel_oficial"] = parece_fonte_oficial(p["url"])
         # 10/09/2026: preserva a própria página no ato do registro (proteção contra
@@ -329,6 +334,16 @@ def self_test():
         assert p["promovivel"] is False, "TRAVA VIOLADA: pista nasceu promovível"
         assert p["status"] == "pendente_confirmacao_documento"
     print("✓ dedup e trava absoluta (campos de nascença) OK")
+
+    gn = lambda n, titulo: {"alvo": "T/UF", "titulo": titulo, "veiculo_dominio": "https://jornal.example.com",
+                            "url": f"https://news.google.com/rss/articles/CBMi{n}", "data_publicacao": ""}
+    f2 = {"pistas": []}
+    sem = registrar(f2, [gn("A", "Plano de contingência - Jornal")], abrir=lambda u: u)
+    assert not sem and not f2["pistas"], "link de agregador não resolvido virou pista"
+    com = registrar(f2, [gn("B", "Plano de contingência - Jornal")], abrir=lambda u: u,
+                    buscar_web=lambda q: [{"url": "https://jornal.example.com/n/plano-2026"}])
+    assert [p["url"] for p in com] == ["https://jornal.example.com/n/plano-2026"], "busca no veículo não resolveu"
+    print("✓ agregador não resolvido não vira pista; resolvido pelo veículo, sim")
 
     universo_fx = {"ufs": [
         {"uf": "SE", "nome": "Sergipe", "status": "LAC", "capital": {"nome": "Aracaju"}},
@@ -386,6 +401,9 @@ def main():
     pos = carregar_cursor(len(universo))
     fila = carregar_fila()
     total_novas = 0
+    from monitorar_busca_web import web_do_metabuscador
+    bruta = web_do_metabuscador()
+    web = bruta and (lambda q: (bruta(q) or {}).get("results"))
 
     for i in range(limite):
         idx = (pos + i) % len(universo)
@@ -395,7 +413,7 @@ def main():
             if not xml:
                 continue
             itens = [{"alvo": f"{rotulo}/{uf}", "query": q, **it} for it in extrair_itens_rss(xml)]
-            novas = registrar(fila, itens)
+            novas = registrar(fila, itens, web)
             total_novas += len(novas)
             time.sleep(1.0)  # cortesia de taxa, mesmo padrão das outras rotinas do pipeline
 

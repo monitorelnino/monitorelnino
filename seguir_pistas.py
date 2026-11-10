@@ -446,14 +446,8 @@ if __name__ == "__main__":
         qd = lambda params: consultar_qd(params, timeout=40)
     except Exception:  # noqa: BLE001
         qd = None
-    try:
-        from monitorar_busca_web import buscar_searxng
-        buscar_searxng("teste", timeout=5)
-        from monitorar_busca_web import espera_do_ritmo
-        import time
-        web = lambda q: (time.sleep(espera_do_ritmo()), buscar_searxng(q))[1]
-    except Exception:  # noqa: BLE001
-        web = None
+    from monitorar_busca_web import web_do_metabuscador
+    web = web_do_metabuscador()
     # Sem o degrau HTTP no redirecionador: o link opaco do Google News responde 200 com uma casca de
     # JavaScript e nunca redireciona (A1-08). Resolve-se pela URL embutida e pela busca no veículo.
     # Em blocos de até BLOCO URLs, cada um gravado ao fim: o lote de 2.000 da válvula leva horas, e o
