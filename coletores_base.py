@@ -624,7 +624,11 @@ def _dominio_publico(url: str) -> bool:
     h = (urllib.parse.urlparse(url).netloc or "").lower()
     if any(h.startswith(x) or x in h for x in ("api.", "apimsbr", "queridodiario", "dataserver", "geoserver", "gsc.cemaden", "info.dengue", "portaldatransparencia.gov.br", "repositorio.dados.gov.br", "transferegov", "s3.", "amazonaws")):
         return False
-    return h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h
+    if h.endswith((".gov.br", ".leg.br", ".jus.br", ".def.br", ".mp.br")) or "prefeitura" in h:
+        return True
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "scripts"))
+    from municipio_do_dominio import _host, diarios_estaduais   # imprensa oficial fora de .gov.br (IOERJ)
+    return _host(url) in diarios_estaduais()
 
 
 def setor_da_url(url: str) -> str:

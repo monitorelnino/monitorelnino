@@ -928,9 +928,13 @@ PLATAFORMAS_OFICIAIS_DE_DIARIO = (("voxtecnologia.com.br", "sigpub.publicacao"),
 
 
 def fonte_oficial(url) -> bool:
+    # 10/11/2026: imprensa oficial estadual fora de `.gov.br` (ioerj.com.br) é fonte oficial; sem ela o
+    # Decreto RJ 50.357/2026 foi recusado como `sem_documento_primario` sem ser baixado.
+    from municipio_do_dominio import _host, diarios_estaduais
     u = str(url or "").lower()
     return (any(p in u for p in PADROES_FONTE_PROVAVEL_OFICIAL)
-            or any(h in u and marca in u for h, marca in PLATAFORMAS_OFICIAIS_DE_DIARIO))
+            or any(h in u and marca in u for h, marca in PLATAFORMAS_OFICIAIS_DE_DIARIO)
+            or _host(u) in diarios_estaduais())
 
 
 # J2. Página de notícia (caminho de notícia ou com data) não é documento, mesmo em domínio oficial.

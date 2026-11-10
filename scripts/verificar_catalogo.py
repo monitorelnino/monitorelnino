@@ -62,6 +62,21 @@ def identificadores_da_pagina(html: str) -> set:
     return set(re.findall(r'data-conteudo(?:-html)?="([^"]+)"', html or ""))
 
 
+def identificadores_do_js(js: str, pagina: str) -> set:
+    """Os identificadores `<pagina>.…` que o JS pede por literal inteiro. Função pura.
+
+    10/11/2026: o #1214 tirou `saude.estadual.lista.contagem` do catálogo com a lista de estados, e o
+    mapa do desfecho continuou a pedi-lo pelo JS; o leitor devolvia vazio e a legenda publicou
+    "acima da faixa habitual para a época ·" sem a contagem. O portão só lia o `data-conteudo` do
+    HTML. Fica de fora o prefixo que se completa em tempo de execução (`'saude.posicao.' + k`) e o
+    nome de arquivo (`saude.js`)."""
+    achados = set()
+    for m in re.finditer(r"""(['"`])(%s\.[\w.-]*\w)\1(?!\s*\+)""" % re.escape(pagina), js or ""):
+        if not m.group(2).endswith((".html", ".js", ".json", ".css")):
+            achados.add(m.group(2))
+    return achados
+
+
 def sem_o_leitor(html: str, pedidos: set) -> list:
     """Página que pede identificador e não carrega `assets/catalogo.js`. Função pura.
 
@@ -158,6 +173,12 @@ def _autoteste() -> int:
     ok("identificador pedido e ausente é acusado",
        ausentes({"a", "b"}, {"a": "x"}) == ["b"])
     ok("o comum conta como declarado", ausentes({"a"}, {}, {"a": "x"}) == [])
+    ok("(a) identificador pedido pelo JS por literal é lido",
+       identificadores_do_js("textoSaude('saude.x.contagem', {n: 1})", "saude") == {"saude.x.contagem"})
+    ok("(a) prefixo completado em execução e nome de arquivo não contam",
+       identificadores_do_js("t('saude.posicao.' + k); fetch('saude.js'); x('saude.a' +b)", "saude") == set())
+    ok("(a) identificador de outra página não conta",
+       identificadores_do_js("t('index.x.y')", "saude") == set())
 
     ok("palavra proibida é acusada",
        any("dados abertos" in x for x in
@@ -271,6 +292,10 @@ def main() -> int:
             problemas += [f"{nome}: {x} — texto público fora do catálogo (migrar_para_catalogo.py "
                           f"--pagina {nome} --aplicar)" for x in sorted(extrair(
                               html, nome, ids_escritos_pelo_js(), frozenset(textos))[0])]
+        problemas += [f"{nome}: {x} pedido pelo JS ({js.relative_to(RAIZ)}) e ausente do catálogo"
+                      for js in sorted((RAIZ / "assets").rglob("*.js"))
+                      for x in ausentes(identificadores_do_js(js.read_text(encoding="utf-8"), nome),
+                                        textos, comum)]
 
         problemas += [f"{nome}: {x}" for x in vocabulario_proibido_em(
             textos, vocab.get("global") or [], vocab.get("por_pagina") or {},

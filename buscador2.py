@@ -148,18 +148,9 @@ QUERIDO_DIARIO = ("queridodiario.ok.org.br", "data.queridodiario.ok.org.br")
 REPOSITORIOS_ESTADUAIS = {
     "RS": ("rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br", "casamilitar-rs.com.br/pdfs/"),
 }
-PREFIXOS_DE_ENTE = ("prefeiturademunicipalde", "prefeituramunicipalde", "prefeiturade", "prefeitura",
-                    "camaramunicipalde", "camarade", "camara", "pm", "cm")
-# Rótulo de órgão estadual que coincide com nome de município ("saude.ba.gov.br" × Saúde/BA): nunca
-# identifica o ente. Lista fechada; o que não está nela é lido como possível nome de município.
-ROTULOS_DE_ORGAO = {"saude", "educacao", "defesacivil", "sedec", "cultura", "turismo", "fazenda",
-                    "agricultura", "seguranca", "transparencia", "portal", "casacivil", "meioambiente",
-                    "planejamento", "governo", "esporte", "trabalho", "justica", "agua", "agenersa"}
-# Município com domínio `.gov.br` sem UF no host (30/10/2026, preprint §1): `prefeitura.pbh.gov.br` é
-# a Prefeitura de Belo Horizonte e a regra `<nome>.<uf>.gov.br` não o reconhecia. Lista fechada, só de
-# domínio conferido; `goias.gov.br` e `amapa.gov.br` ficam fora de propósito (portal de estado que
-# hospeda planos de outros entes: a recusa deles está certa).
-MUNICIPAIS_SEM_UF = {"pbh.gov.br": ("Belo Horizonte", "MG")}
+# De quem é o domínio (município, câmara, `pbh.gov.br`) e as imprensas oficiais estaduais: o resolvedor único.
+sys.path.insert(0, str(RAIZ / "scripts"))
+from municipio_do_dominio import diarios_estaduais, municipio_de  # noqa: E402
 
 RE_DOMINIO_DE_UF = re.compile(r"^(?:(?P<sub>.+)\.)?(?P<uf>[a-z]{2})\.(?:gov|leg)\.br$")
 
@@ -181,43 +172,12 @@ def slugs_por_uf() -> dict:
     return _SLUGS
 
 
-def diarios_estaduais() -> dict:
-    """{host: UF} das imprensas oficiais estaduais, lido de `data/fontes_doe.json` — a mesma lista que o
-    coletor do DOE usa. 09/11/2026: três DOEs são servidos fora de `.gov.br` (IOERJ, IOEPA, CEPE) e a porta
-    os recusava como "domínio não oficial"; a pista do Decreto RJ 50.357/2026 cairia aí. Só leitura."""
-    global _DOES
-    if _DOES is None:
-        try:
-            ufs = json.loads((RAIZ / "data" / "fontes_doe.json").read_text(encoding="utf-8")).get("ufs") or {}
-        except (OSError, ValueError):
-            ufs = {}
-        _DOES = {h: uf for uf, f in ufs.items() if (h := host_de(str((f or {}).get("url") or "")))}
-    return _DOES
 
-
-_DOES = None
-
-
-def ente_do_rotulo(rotulo: str, uf: str, slugs: dict) -> str:
-    """O município que o rótulo de host nomeia ("pmtaio" → "Taió"), ou "". Função pura."""
-    s = slug(rotulo)
-    if s in ROTULOS_DE_ORGAO:
-        return ""
-    for pre in PREFIXOS_DE_ENTE:
-        if s.startswith(pre) and len(s) > len(pre) + 2:
-            s = s[len(pre):]
-            break
-    if s.endswith(str(uf).lower()) and s[:-2] in slugs:
-        s = s[:-2]
-    return slugs.get(s, "")
-
-
-def classe_de_entrada(url: str, ibge: str = "", uf: str = "", nome: str = "", slugs: dict = None) -> tuple:
+def classe_de_entrada(url: str, ibge: str = "", uf: str = "", nome: str = "") -> tuple:
     """(classe, motivo). Classe "" é recusa, e o motivo diz por quê (B3, B8). Função pura.
 
     Classes admitidas: municipio · uf · federal · diario_oficial · querido_diario. O par
     município–URL é conferido: domínio de outro município ou de outra UF cai antes de baixar."""
-    slugs = slugs if slugs is not None else slugs_por_uf()
     bruto = str(url or "").strip()
     host = host_de(bruto)
     uf = str(uf or "").upper()
@@ -246,28 +206,16 @@ def classe_de_entrada(url: str, ibge: str = "", uf: str = "", nome: str = "", sl
                 return "", f"repositório estadual de outra UF ({uf_rep})"
             return "uf", ""
     m = RE_DOMINIO_DE_UF.match(host)
-    if m:
-        uf_host = m.group("uf").upper()
+    dono = municipio_de(bruto, camara=True)
+    if m or dono:
+        uf_host = dono["uf"] if dono else m.group("uf").upper()
         if uf and uf_host != uf:
             return "", f"domínio de outra UF ({uf_host}: {host})"
-        rotulos = [r for r in (m.group("sub") or "").split(".") if r]
-        do_uf = slugs.get(uf_host, {})
-        meu = slug(nome) if nome else ""
-        for r in reversed(rotulos):
-            ente = ente_do_rotulo(r, uf_host, do_uf)
-            if not ente:
-                continue
-            if meu and slug(ente) == meu:
-                return "municipio", ""
-            return "", f"domínio de outro ente ({ente}/{uf_host}: {host})"
-        return "uf", ""
-    for d, (ente, uf_ente) in MUNICIPAIS_SEM_UF.items():
-        if host == d or host.endswith("." + d):
-            if uf and uf != uf_ente:
-                return "", f"domínio de outra UF ({uf_ente}: {host})"
-            if nome and slug(nome) != slug(ente):
-                return "", f"domínio de outro ente ({ente}/{uf_ente}: {host})"
+        if not dono:
+            return "uf", ""
+        if nome and slug(dono["nome"]) == slug(nome):
             return "municipio", ""
+        return "", f"domínio de outro ente ({dono['nome']}/{dono['uf']}: {host})"
     if host.endswith((".gov.br", ".leg.br")):
         return "", f"domínio público fora da lista fechada ({host})"
     return "", f"domínio não oficial ({host})"
@@ -284,7 +232,7 @@ def classe_da_pista(pista: dict, slugs: dict = None) -> tuple:
     elif len(alvo) == 2 and alvo.isalpha():
         nome, uf = "", alvo
     return classe_de_entrada(p.get("url_final") or p.get("url"), alvo if len(alvo) == 7 else "",
-                             uf, nome, slugs)
+                             uf, nome)
 
 
 # ------------------------------------------------------------------------------------------- B2
@@ -510,7 +458,7 @@ def autoteste() -> int:
     gn = "https://news.google.com/rss/articles/CBMiAU_yqLopaco?oc=5"
     ok("B2: link do Google News que não resolve é recusa nomeada",
        resolver(gn, abrir=lambda u: gn) == (None, "redirecionamento_nao_resolvido")
-       and classe_de_entrada(gn, slugs=S) == ("", "redirecionamento não resolvido"))
+       and classe_de_entrada(gn) == ("", "redirecionamento não resolvido"))
     ok("B2: o redirecionamento seguido guarda a URL final",
        resolver(gn, abrir=lambda u: "https://taio.sc.gov.br/plano.pdf")[0] == "https://taio.sc.gov.br/plano.pdf")
 
@@ -518,28 +466,28 @@ def autoteste() -> int:
        classe_de_entrada("https://www.ioerj.com.br/portal/modules/conteudoonline/mostra_edicao.php?k=X", uf="RJ")[0] == "diario_oficial"
        and classe_de_entrada("https://www.ioerj.com.br/x", uf="SP")[0] == "")
     ok("B3: rótulo de órgão estadual não vira município (saude.ba.gov.br × Saúde/BA)",
-       classe_de_entrada("https://www5.saude.ba.gov.br/x.pdf", "", "BA", "", {"BA": {"saude": "Saúde"}})[0] == "uf")
+       classe_de_entrada("https://www5.saude.ba.gov.br/x.pdf", "", "BA", "")[0] == "uf")
     # B3 — só domínio do município, da UF, federal fechado, diário oficial, QD certo (2.031 não oficiais)
     ok("B3: empresa (cristalconsult) cai com motivo",
-       classe_de_entrada("https://www.cristalconsult.com.br/plano.pdf", "4217808", "SC", "Taió", S)[1]
+       classe_de_entrada("https://www.cristalconsult.com.br/plano.pdf", "4217808", "SC", "Taió")[1]
        == "domínio não oficial (cristalconsult.com.br)")
     ok("B3: rede social cai (canal de descoberta, nunca documento)",
-       classe_de_entrada("https://www.instagram.com/p/x", "4217808", "SC", "Taió", S)[0] == "")
+       classe_de_entrada("https://www.instagram.com/p/x", "4217808", "SC", "Taió")[0] == "")
     ok("B3: domínio federal fora da lista (anvisa) cai; MIDR e DOU entram",
-       classe_de_entrada("https://pesquisa.anvisa.gov.br/x", "", "SC", "", S)[0] == ""
-       and classe_de_entrada("https://www.gov.br/mdr/pt-br/x.pdf", "", "SC", "", S)[0] == "federal"
-       and classe_de_entrada("https://www.in.gov.br/web/dou/-/x", "", "SC", "", S)[0] == "federal")
+       classe_de_entrada("https://pesquisa.anvisa.gov.br/x", "", "SC", "")[0] == ""
+       and classe_de_entrada("https://www.gov.br/mdr/pt-br/x.pdf", "", "SC", "")[0] == "federal"
+       and classe_de_entrada("https://www.in.gov.br/web/dou/-/x", "", "SC", "")[0] == "federal")
     ok("B3: domínio do município, da UF e diário oficial entram",
-       classe_de_entrada("https://taio.sc.gov.br/plano.pdf", "4217808", "SC", "Taió", S)[0] == "municipio"
-       and classe_de_entrada("https://www.pmtaio.sc.gov.br/a", "4217808", "SC", "Taió", S)[0] == "municipio"
-       and classe_de_entrada("https://defesacivil.sc.gov.br/a.pdf", "4217808", "SC", "Taió", S)[0] == "uf"
-       and classe_de_entrada("https://www.diariomunicipal.com.br/fecam/x", "4217808", "SC", "Taió", S)[0]
+       classe_de_entrada("https://taio.sc.gov.br/plano.pdf", "4217808", "SC", "Taió")[0] == "municipio"
+       and classe_de_entrada("https://www.pmtaio.sc.gov.br/a", "4217808", "SC", "Taió")[0] == "municipio"
+       and classe_de_entrada("https://defesacivil.sc.gov.br/a.pdf", "4217808", "SC", "Taió")[0] == "uf"
+       and classe_de_entrada("https://www.diariomunicipal.com.br/fecam/x", "4217808", "SC", "Taió")[0]
        == "diario_oficial")
     ok("B3: Querido Diário só do código IBGE certo",
-       classe_de_entrada("https://data.queridodiario.ok.org.br/4217808/2026/x.pdf", "4217808", "SC", "Taió", S)[0]
+       classe_de_entrada("https://data.queridodiario.ok.org.br/4217808/2026/x.pdf", "4217808", "SC", "Taió")[0]
        == "querido_diario"
        and "4205902" in classe_de_entrada("https://data.queridodiario.ok.org.br/4205902/x.pdf",
-                                           "4217808", "SC", "Taió", S)[1])
+                                           "4217808", "SC", "Taió")[1])
 
     # B4 — um nível no mesmo domínio, só PDF/ato com termo de plano (3.119 listas)
     html = ('<a href="/arquivos/plano-de-contingencia-2026.pdf">Baixar</a>'
@@ -576,7 +524,7 @@ def autoteste() -> int:
         # B7 — notícia oficial que nomeia plano: site:<domínio> + título
         corpo = ("<html><body><h1>Cubatão</h1><p>A prefeitura aprovou o Plano de Contingência para o El Niño "
                  "2026, com comissão própria. " + "texto " * 60 + "</p></body></html>").encode()
-        pista = {"url": "https://cubatao.sp.gov.br/noticia/el-nino", "alvo": "SP", "uf": "SP"}
+        pista = {"url": "https://cubatao.sp.gov.br/noticia/el-nino", "alvo": "3513504", "uf": "SP", "municipio": "Cubatão"}
         visto = []
         r = candidatos_da_pagina(pista, corpo, buscar_web=lambda q: (visto.append(q), {"results": [
             {"url": "https://cubatao.sp.gov.br/arquivos/plancon.pdf", "title": "PLANCON"},
@@ -588,7 +536,7 @@ def autoteste() -> int:
         curta = b"<html><body>Carregando...</body></html>"
         mapa = (b"<urlset><url><loc>https://riodosul.sc.gov.br/docs/plano-de-contingencia.pdf</loc></url>"
                 b"<url><loc>https://riodosul.sc.gov.br/turismo</loc></url></urlset>")
-        p9 = {"url": "https://riodosul.sc.gov.br/defesa", "alvo": "SC", "uf": "SC"}
+        p9 = {"url": "https://riodosul.sc.gov.br/defesa", "alvo": "4214805", "uf": "SC", "municipio": "Rio do Sul"}
         r9 = candidatos_da_pagina(p9, curta, abrir=lambda u: mapa)
         r9b = candidatos_da_pagina(p9, curta, abrir=lambda u: b"", hoje_iso="2026-10-26")
         ok("B9: página ilegível tenta o mapa do site; sem nada, lacuna datada",
@@ -612,19 +560,19 @@ def autoteste() -> int:
 
     # B8 — par município–URL conferido (964 de outro ente ou UF)
     ok("B8: domínio de outro município da mesma UF cai, nomeando o ente",
-       classe_de_entrada("https://celsoramos.sc.gov.br/plano.pdf", "4217808", "SC", "Taió", S)[1]
+       classe_de_entrada("https://celsoramos.sc.gov.br/plano.pdf", "4217808", "SC", "Taió")[1]
        == "domínio de outro ente (Celso Ramos/SC: celsoramos.sc.gov.br)")
     ok("B8: prefeitura.pbh.gov.br é de Belo Horizonte (domínio sem UF, lista fechada)",
-       classe_de_entrada("https://prefeitura.pbh.gov.br/plano", "", "MG", "Belo Horizonte", S)[0] == "municipio")
+       classe_de_entrada("https://prefeitura.pbh.gov.br/plano", "", "MG", "Belo Horizonte")[0] == "municipio")
     ok("B8: pbh.gov.br para outro município cai",
-       "outro ente" in classe_de_entrada("https://prefeitura.pbh.gov.br/p", "", "MG", "Contagem", S)[1])
+       "outro ente" in classe_de_entrada("https://prefeitura.pbh.gov.br/p", "", "MG", "Contagem")[1])
     ok("B8: goias.gov.br segue fora da lista (portal de estado com planos alheios)",
-       classe_de_entrada("https://goias.gov.br/saude/x.pdf", "", "BA", "Jussara", S)[0] == "")
+       classe_de_entrada("https://goias.gov.br/saude/x.pdf", "", "BA", "Jussara")[0] == "")
     ok("B8: domínio de outra UF cai (Porto Velho para Palmas/TO)",
-       classe_de_entrada("https://www.portovelho.ro.gov.br/x.pdf", "1721000", "TO", "Palmas", S)[1]
+       classe_de_entrada("https://www.portovelho.ro.gov.br/x.pdf", "1721000", "TO", "Palmas")[1]
        .startswith("domínio de outra UF (RO"))
     ok("B8: repositório estadual de outra UF cai",
-       classe_de_entrada(sp["url"], "", "SC", "", S)[0] == "")
+       classe_de_entrada(sp["url"], "", "SC", "")[0] == "")
 
     # B11 — uma pista por URL normalizada (anvisa ×5, Taió ×10)
     ok("B11: www, http/https, barra final, fragmento e utm não fazem outra URL",
