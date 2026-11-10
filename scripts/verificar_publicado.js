@@ -120,6 +120,19 @@ async function get(url, tentativas = 3) {
     // DECISÃO DA EDITORIA (07/10/2026): ela autorizou tirar o bloco, sabendo que isso reduz o que
     // o portão prova naquele trecho. Hoje é UM formulário em UMA página (index.html, a
     // contribuição pública); se aparecer um segundo, a contagem do relatório o mostra.
+    // A QUARTA (10/11/2026, imprensa.html): ao reescrever um link pelo "Pretty URLs", o Netlify também
+    // REORDENA os atributos da tag (`<a href="x.html" data-conteudo="k">` sai `<a data-conteudo='k' href='/x'>`).
+    // Ordem de atributo não muda o documento; só a ordem e a aspa são desfeitas, e só nas tags <a>,
+    // nos DOIS lados — nome, valor e quantidade de atributos continuam conferidos.
+    const atributosEmOrdem = (txt) => {
+      const fora = txt.replace(/<a(\s[^>]*)>/g, (m, at) => {
+        const pares = [...at.matchAll(/\s([a-z][a-z0-9-]*)(?:=(?:"([^"]*)"|'([^']*)'))?/g)]
+          .map(p => [p[1], p[2] !== undefined ? p[2] : (p[3] !== undefined ? p[3] : null)]);
+        pares.sort((x, y) => (x[0] < y[0] ? -1 : x[0] > y[0] ? 1 : 0));
+        return "<a" + pares.map(([k, v]) => v === null ? " " + k : ` ${k}="${v}"`).join("") + ">";
+      });
+      return [fora, fora !== txt];
+    };
     const semFormNetlify = (txt) => {
       const fora = txt.replace(/<form\b[^>]*>[\s\S]*?<\/form>/gi, "<!-- form -->");
       return [fora, fora !== txt];
@@ -148,10 +161,12 @@ async function get(url, tentativas = 3) {
           const localBruto = fs.existsSync(path.join(raiz, e.arq))
             ? fs.readFileSync(path.join(raiz, e.arq), "utf8") : "";
           const temFormNetlify = /<form\b[^>]*\sdata-netlify=/i.test(localBruto);
-          const [txtLimpo, tirouForm] = temFormNetlify ? semFormNetlify(txtAspa) : [txtAspa, false];
+          const [txtForm, tirouForm] = temFormNetlify ? semFormNetlify(txtAspa) : [txtAspa, false];
+          const [txtLimpo, reordenou] = atributosEmOrdem(txtForm);
           if (tinhaHud || tinhaAspa || tirouForm) {
-            const alvo = tirouForm
-              ? crypto.createHash("sha256").update(Buffer.from(semFormNetlify(localBruto)[0], "utf8")).digest("hex")
+            const localNorm = atributosEmOrdem(tirouForm ? semFormNetlify(localBruto)[0] : localBruto)[0];
+            const alvo = (tirouForm || reordenou)
+              ? crypto.createHash("sha256").update(Buffer.from(localNorm, "utf8")).digest("hex")
               : e.hash;
             const h2 = crypto.createHash("sha256").update(Buffer.from(txtLimpo, "utf8")).digest("hex");
             // `comparado` recebe o texto normalizado mesmo quando ele NÃO volta a bater: é esse o
