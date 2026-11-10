@@ -9,6 +9,8 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-10 · #PR · Brasília: o sítio do GDF é o do ente · O DF acumula as competências municipais (METODOLOGIA §14): `df.gov.br` entra primeiro na lista de endereços do DF e a home vale se disser "Governo do Distrito Federal". A lista subiu (CANDIDATOS_V 6): Brasília é relida. A duplicata em `buscar_planos_fontes_abertas.py` saiu.
+
 ## 2026-11-09 · #PR · Sítio da prefeitura: endereço de outro estado ou de turismo não vale · Campo Grande/MS lia `campogrande.rn.gov.br` e o Rio de Janeiro lia `riotur.rio`, e a página dizia "prefeitura" e o nome: contava como lido. O endereço do cadastro e o da busca só entram se não forem de outra UF nem de turismo. Autoteste com os quatro casos.
 ## 2026-11-09 · #PR · SUS: vigilância em saúde por ação, mês e município · O repasse do FNS guardava só o programa; agora o programa Vigilância em Saúde e Ambiente vem aberto por ação e plano orçamentário, como a fonte os escreve (agentes de combate às endemias, piso de vigilância, arboviroses), por UF e mês. Os meses já baixados foram relidos das cópias preservadas; maio e setembro, sem cópia, foram baixados de novo.
 
