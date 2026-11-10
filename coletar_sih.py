@@ -510,14 +510,15 @@ def autoteste() -> int:
     return 0
 
 
-def main() -> int:
+def main(auto=None, sond=None, colh=None, padrao: int = ORCAMENTO_S) -> int:
+    """Linha de comando também do `coletar_sim.py`: --autoteste, --sondar, --orcamento S."""
     if "--autoteste" in sys.argv:
-        return autoteste()
+        return (auto or autoteste)()
     if "--sondar" in sys.argv:
-        return sondar()
-    orcamento = int(sys.argv[sys.argv.index("--orcamento") + 1]) if "--orcamento" in sys.argv else ORCAMENTO_S
+        return (sond or sondar)()
+    orcamento = int(sys.argv[sys.argv.index("--orcamento") + 1]) if "--orcamento" in sys.argv else padrao
     from coletores_base import codigo_de_saida
-    return codigo_de_saida(coletar(orcamento_s=orcamento))
+    return codigo_de_saida((colh or coletar)(orcamento_s=orcamento))
 
 
 if __name__ == "__main__":

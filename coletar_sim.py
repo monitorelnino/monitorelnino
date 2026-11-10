@@ -347,13 +347,8 @@ def autoteste() -> int:
 
 
 def main() -> int:
-    if "--autoteste" in sys.argv:
-        return autoteste()
-    if "--sondar" in sys.argv:
-        return sondar()
-    orcamento = int(sys.argv[sys.argv.index("--orcamento") + 1]) if "--orcamento" in sys.argv else ORCAMENTO_S
-    from coletores_base import codigo_de_saida
-    return codigo_de_saida(coletar(orcamento_s=orcamento))
+    from coletar_sih import main as main_sih
+    return main_sih(autoteste, sondar, coletar, ORCAMENTO_S)
 
 
 if __name__ == "__main__":
