@@ -2,16 +2,16 @@
 
 Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolidação (meta: ≤ 50 mil linhas de .py/.js, mesma proteção).
 
-- **101.116 linhas** em **298 arquivos** .py/.js; **38 workflows**.
+- **101.268 linhas** em **299 arquivos** .py/.js; **38 workflows**.
 - **66 comandos de portão**: dados/portão 19, paginas/autoteste 2, paginas/portão 45.
-- **156 nomes de função** definidos em mais de um arquivo.
+- **158 nomes de função** definidos em mais de um arquivo.
 
 ## Por pasta
 
 | pasta | linhas |
 |---|---:|
-| `(raiz)` | 57902 |
-| `scripts` | 36071 |
+| `(raiz)` | 57906 |
+| `scripts` | 36219 |
 | `assets` | 6571 |
 | `arquivo` | 304 |
 | `.claude` | 268 |
@@ -31,7 +31,7 @@ Gerado por `python3 scripts/medir_codigo.py --gravar`. Linha de base da consolid
 | `scripts/unir_conflito_de_rodada.py` | 1317 |
 | `scripts/ensaio_da_noite.py` | 1274 |
 | `coletar_edicoes_doe.py` | 1264 |
-| `descobrir_planos.py` | 1242 |
+| `descobrir_planos.py` | 1250 |
 | `assets/js/index.js` | 1236 |
 | `coletar_painel_am.py` | 1135 |
 | `julgar_e_aplicar_descobertas.py` | 1069 |
