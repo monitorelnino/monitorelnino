@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>10/11/2026 · Saúde: legenda do mapa do desfecho sob o mapa, com a contagem, e nota afastada da legenda</dt>
+      <dd>A chave da contagem de estados saiu do catálogo no #1214 e o mapa seguiu pedindo-a pelo JS: a legenda publicava &quot;acima da faixa habitual para a época ·&quot; sem número. O portão do catálogo passa a ler os identificadores pedidos pelo JS. A legenda do mapa fica em coluna, centrada sob ele, e a nota de figura ganha o espaço de mídia → legenda.</dd>
       <dt>09/11/2026 · Juiz lê a pista no esquema canônico · O juiz só lia `url` e `municipio`/`uf`/`ibge`; a pista que entra só com `url_final` e `alvo` (o esquema da porta desde 03/10) seria recusada sem o documento ser baixado — caso do PMGRD 2026/2027 de Belo Horizonte e do plano de Aracaju (#1656). Recusa sem leitura de URL oficial volta à fila.</dt>
       <dd></dd>
       <dt>08/11/2026 · Painel da noite: elo de sinais com o nome do workflow · O painel previa `sinais` e o workflow registra `sinais-fisicos`, então a saída imprimia &quot;não iniciou&quot; todas as noites. `ELOS`, previsto e mapa de workflow passam a usar `sinais-fisicos` (−4 linhas líquidas). Elo `publicar` segue sem linha na `main` por causa do passo do workflow (pedido à A1).</dt>
@@ -165,8 +167,6 @@
       <dd>`verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.</dd>
       <dt>26/10/2026 · Juiz: modo paralelo do codebook 1.8</dt>
       <dd>O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.</dd>
-      <dt>26/10/2026 · Cadastro prioritários: sai o portal do MDR como rota</dt>
-      <dd>Decisão da editoria (26/10, 15:52 UTC): o portal de serviços do MIDR (login gov.br) deixa de ser rota de acesso. `data/cadastro_prioritarios.json` diz só que a lista nominal não está no canal público consultado. A lista pelo Cadastro Nacional (art. 3º-A) e o pedido de acesso à informação seguem como caminhos. Dado: uma frase trocada, sem código.</dd>
     </dl>
   </section>
 </main>
