@@ -94,25 +94,38 @@ OBSERVACAO_DA_VIGENCIA = ("vigência contada em 12 meses até o início do ciclo
                           "Lei 12.340, art. 3º-A, §6º, atualização anual")
 
 
-def fora_da_atualizacao_anual(data) -> bool:
-    """Lei 12.340/2010, art. 3º-A, §6º (redação da Lei 14.750/2023): o plano se atualiza todo ano. Edição
-    anterior a 12 meses antes do início do ciclo (Boletim nº 1, `juiz.BOLETIM_1`), ou sem data, está fora e
-    não entra, nem como plano anterior (editoria, 10/11/2026, para o repositório estadual). Função pura."""
+def vigencia_legal(data, no_cadastro: bool):
+    """Regra final da editoria (10/11/2026, 14:58): o que diz a lei. Município do Cadastro Nacional
+    (`cadastro_casa_civil_2086`) está sujeito à atualização anual (Lei 12.340/2010, art. 3º-A, §6º, redação
+    da Lei 14.750/2023): edição anterior a 12 meses do início do ciclo (Boletim nº 1, `juiz.BOLETIM_1`) é
+    `vencido_art3A_par6` — não conta, fica registrada; sem data, `sem_data_art3A_par6` (não se presume em
+    dia). Fora do cadastro a lei não fixa prazo: None, vale qualquer data. Função pura."""
     import datetime
     from juiz import BOLETIM_1
+    if not no_cadastro:
+        return None
     d, inicio = data_da_edicao(data), datetime.datetime.strptime(BOLETIM_1, "%d/%m/%Y").date()
-    return d is None or d < inicio.replace(year=inicio.year - 1)
+    if d is None:
+        return "sem_data_art3A_par6"
+    return "vencido_art3A_par6" if d < inicio.replace(year=inicio.year - 1) else None
 
 
-def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
+def municipios_do_cadastro() -> set:
+    """IBGE dos municípios do Cadastro Nacional (`data/cadastro_prioritarios_federal.json`)."""
+    from coletores_base import ler
+    return {str(m.get("codigo_ibge")) for m in ((ler("cadastro_prioritarios_federal.json") or {}).get("municipios")
+                                                or {}).values() if m.get("cadastro_casa_civil_2086")}
+
+
+def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> list:
     """Vereditos que promovem, na versão em vigor, ainda não aplicados nem superados.
 
     09/10/2026 (A1-29): `nao_aplicado` também exclui — a marca existe para dizer que a decisão
     não vai ao banco, e sem o filtro Taió tinha três decisões vivas para a mesma URL.
     09/10/2026 (A1-01): veredito cujo domínio aponta outro município não é aplicável.
-    10/11/2026: repositório estadual com `aplicar_no_banco: False` (RS, à espera da idade máxima do plano)
-    fica RETIDO: julgado e registrado, sem marca, e vai ao banco quando a editoria virar o sinal; e edição do
-    repositório fora da atualização anual não entra (`fora_da_atualizacao_anual`).
+    10/11/2026: no repositório estadual, o veredito de município do cadastro ganha a observação da lei e,
+    vencido ou sem data (`vigencia_legal`), não entra — a marca fica no próprio veredito; e repositório com
+    `aplicar_no_banco: False` (RS, até a editoria ver a simulação) fica RETIDO, sem marca.
     """
     if resolver is None:
         from scripts.municipio_do_dominio import municipio_de as resolver
@@ -124,20 +137,27 @@ def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
         if v.get("superada_por") or v.get("aplicado_em") or v.get("nao_aplicado"):
             continue
         repo = repositorio_do_documento(v.get("url") or "")
-        if repo and fora_da_atualizacao_anual(v.get("data")):
-            vencidos += 1
-            continue
-        if REPOSITORIOS.get(repo, {}).get("aplicar_no_banco") is False:
-            retidos += 1
-            continue
+        if repo:
+            if cadastro is None:
+                cadastro = municipios_do_cadastro()
+            v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "")
+            if str(v.get("ibge")) in cadastro:
+                v["observacao_vigencia"] = OBSERVACAO_DA_VIGENCIA
+                if (vl := vigencia_legal(v.get("data"), True)):
+                    v["vigencia_legal"] = vl
+                    vencidos += 1
+                    continue
+            if REPOSITORIOS.get(repo, {}).get("aplicar_no_banco") is False:
+                retidos += 1
+                continue
         if dominio_divergente(v, resolver(v.get("url") or "")):
             print(f"   ! nao aplicado: {v.get('municipio')}/{v.get('uf')} — o documento esta em "
                   f"dominio oficial de outro municipio")
             continue
         fora.append(v)
     if retidos or vencidos:
-        print(f"   repositório estadual: {vencidos} edição(ões) anterior(es) a 12 meses do início do "
-              f"ciclo (fora da atualização anual, não entram); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
+        print(f"   repositório estadual: {vencidos} vencida(s) ou sem data no Cadastro Nacional (art. 3º-A, §6º; "
+              f"registradas, não entram); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
     return fora
 
 
@@ -230,10 +250,9 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
                              "ato de aprovação não localizado até o corte")
     # 10/11/2026 (editoria): documento de repositório estadual só entra dentro da atualização anual, e o
     # registro diz por quê, com a edição datada que a regra leu.
-    from atualizar_instrumentos_estaduais import repositorio_do_documento
-    if repositorio_do_documento(v.get("url") or ""):
-        registro["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "")
-        registro["observacao_vigencia"] = OBSERVACAO_DA_VIGENCIA
+    for campo in ("data_da_edicao", "observacao_vigencia"):   # anotados por `aplicaveis` no repositório
+        if v.get(campo):
+            registro[campo] = v[campo]
     return registro
 
 
@@ -397,27 +416,36 @@ def autoteste() -> int:
     casos.append(("veredito já aplicado NÃO volta",
                   aplicaveis([dict(base, aplicado_em="2026-09-28")], V) == []))
     import atualizar_instrumentos_estaduais as _aie
-    _rs = dict(base, data="05/2026",
+    _rs = dict(base, data="05/2026", ibge="4300001",
                url="https://rsgovbr-my.sharepoint.com" + _aie.REPOSITORIOS["RS"]["pasta"] + "/CREPDEC 01/P.pdf")
+    _cad, _fora = {"4300001"}, set()
     _sinal = _aie.REPOSITORIOS["RS"].get("aplicar_no_banco")
     try:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
-        _retido = aplicaveis([_rs], V, resolver=sem_dono) == []
+        _retido = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad) == []
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = True
-        _solto = len(aplicaveis([_rs], V, resolver=sem_dono)) == 1
-        _vencido = aplicaveis([dict(_rs, data="05/2025")], V, resolver=sem_dono) == []
+        _ok = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad)
+        _venc = dict(_rs, data="05/2025")
+        _vencido = aplicaveis([_venc], V, resolver=sem_dono, cadastro=_cad) == []
+        _livre = len(aplicaveis([dict(_rs, data="2012")], V, resolver=sem_dono, cadastro=_fora)) == 1
     finally:
         _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = _sinal
-    casos.append(("repositório com o sinal desligado fica retido, sem marca; ligado, aplica", _retido and _solto))
-    casos.append(("repositório: válida de 29/06/2025 em diante (só ano = 31/12; mm/aaaa = último dia); sem data, fora",
-                  not fora_da_atualizacao_anual("2025") and fora_da_atualizacao_anual("2024")
-                  and fora_da_atualizacao_anual(None) and fora_da_atualizacao_anual("28/06/2025")
-                  and not fora_da_atualizacao_anual("29/06/2025") and not fora_da_atualizacao_anual("06/2025")
-                  and fora_da_atualizacao_anual("05/2025") and not fora_da_atualizacao_anual("2026-05-13")))
-    casos.append(("repositório: edição vencida não entra mesmo com o sinal ligado", _vencido))
-    _reg = registro_do_veredito(dict(_rs, data="2025"), 0, 0, "orgao_estadual", "F", "10/11/2026")
-    casos.append(("repositório: o registro leva a edição datada e a observação da vigência",
-                  _reg.get("data_da_edicao") == "2025-12-31" and _reg.get("observacao_vigencia") == OBSERVACAO_DA_VIGENCIA
+    casos.append(("repositório com o sinal desligado fica retido, sem marca; ligado, aplica",
+                  _retido and len(_ok) == 1))
+    casos.append(("lei: no cadastro, válida de 29/06/2025 em diante (só ano = 31/12; mm/aaaa = último dia); "
+                  "fora do cadastro não há prazo",
+                  vigencia_legal("2025", True) is None and vigencia_legal("2024", True) == "vencido_art3A_par6"
+                  and vigencia_legal(None, True) == "sem_data_art3A_par6"
+                  and vigencia_legal("28/06/2025", True) == "vencido_art3A_par6"
+                  and vigencia_legal("29/06/2025", True) is None and vigencia_legal("06/2025", True) is None
+                  and vigencia_legal("05/2025", True) == "vencido_art3A_par6"
+                  and vigencia_legal("2026-05-13", True) is None and vigencia_legal("2004", False) is None))
+    casos.append(("lei: vencida do cadastro não entra e fica marcada no veredito; fora do cadastro, 2012 entra",
+                  _vencido and _venc.get("vigencia_legal") == "vencido_art3A_par6"
+                  and _venc.get("observacao_vigencia") == OBSERVACAO_DA_VIGENCIA and _livre))
+    _reg = registro_do_veredito(_ok[0], 0, 0, "orgao_estadual", "F", "10/11/2026") if _ok else {}
+    casos.append(("o registro leva a edição datada e a observação da lei (só no repositório)",
+                  _reg.get("data_da_edicao") == "2026-05-31" and _reg.get("observacao_vigencia") == OBSERVACAO_DA_VIGENCIA
                   and "observacao_vigencia" not in registro_do_veredito(base, 0, 0, "x", "F", "10/11/2026")))
     casos.append(("recusa nunca é aplicável",
                   aplicaveis([dict(base, promove=False)], V) == []))
@@ -521,6 +549,8 @@ def main() -> int:
         print(f"  {v['municipio']}/{v['uf']} · {v['categoria']} · {v.get('data')} · {v.get('url')}")
     if not alvo:
         print("nada a aplicar")
+        if "--aplicar" in sys.argv and any(v.get("vigencia_legal") for v in decisoes):
+            gravar_em(REGISTRO, doc)   # a marca da lei fica registrada no veredito
         return 0
 
     if "--aplicar" not in sys.argv:
