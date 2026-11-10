@@ -530,6 +530,8 @@ select.seletor{margin:0 0 var(--sp-2); font-family:var(--font-corpo); font-size:
 .gfaixa-pill{font-family:var(--font-corpo); font-size:var(--fs-caption); line-height:var(--lh-caption); font-weight:var(--peso-semibold); color:var(--gauge-osso); padding:var(--sp-1) var(--sp-3); border-radius:var(--radius-pill); white-space:nowrap;}
 .gauge-zone--resposta .gnum{color:var(--rust);}
 .gauge-zone--resposta .gfaixa-badge .gfaixa-pill{background:var(--rust);}
+/* 10/11/2026: pílula longa não vaza da tela no celular — quebra a linha em vez de cortar. */
+@media (max-width:640px){ .gfaixa-pill{white-space:normal;} }
 /* 16/09/2026 (handover de identidade, §4.4): variante compacta do medidor "Depois" — mesma
    família visual e largura do medidor "Antes", corpo tipográfico menor, menos destaque de leitura. */
 .gauge-zone--compacta{gap:var(--sp-1);}

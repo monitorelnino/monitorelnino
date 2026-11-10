@@ -137,7 +137,7 @@ def preencher_index():
         # Unidade e pílula vêm do catálogo, os mesmos textos que o index.js escreve.
         cat = (ler_catalogo("index") or {})
         h = sub_id(h, "respDen", cat.get("index.resposta.unidade", "% da população"), n)
-        pilula = cat.get("index.resposta.pilula", "{n} municípios com decreto · {pct}% dos municípios do país")
+        pilula = cat.get("index.resposta.pilula", "{n} municípios com decreto · {pct}% do total")
         badge = '<span class="gfaixa-pill">' + pilula.replace("{n}", n_mun_fmt).replace("{pct}", fmt(fm)) + '</span>'
         h, k = re.subn(r'(<span class="gfaixa-badge" id="respBadge">)[\s\S]*?(</span>\s*</div>)',
                        lambda m: m.group(1) + badge + m.group(2), h, count=1)
