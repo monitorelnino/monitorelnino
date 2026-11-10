@@ -132,11 +132,18 @@ def preencher_index():
         alvo = max(ir, 0.6 if n_mun else 0)
 
         h = sub_id(h, "respNum", ir_fmt, n)
-        badge = f'<span class="gfaixa-pill">{n_mun_fmt} municípios · {fmt(fm)}% dos municípios</span>'
-        h = re.sub(r'(<span class="gfaixa-badge" id="respBadge">)[^<]*(</span>)', lambda m: m.group(1) + badge + m.group(2), h, count=1)
-        h = medidor(h, "respFill", "índice de resposta",
-                    f"Barra de progresso: índice de resposta em {ir_fmt} de 100 "
-                    "(população em municípios sob decreto)", alvo, max(ir, 0.1), n)
+        # 10/11/2026: a pílula tem um <span> dentro, e o padrão antigo `[^<]*` nunca casava — a reserva
+        # ficou presa em "280 municípios · 5,0%" desde setembro e foi parar numa planilha de imprensa.
+        # Unidade e pílula vêm do catálogo, os mesmos textos que o index.js escreve.
+        cat = (ler_catalogo("index") or {})
+        h = sub_id(h, "respDen", cat.get("index.resposta.unidade", "% da população"), n)
+        pilula = cat.get("index.resposta.pilula", "{n} municípios com decreto · {pct}% dos municípios do país")
+        badge = '<span class="gfaixa-pill">' + pilula.replace("{n}", n_mun_fmt).replace("{pct}", fmt(fm)) + '</span>'
+        h, k = re.subn(r'(<span class="gfaixa-badge" id="respBadge">)[\s\S]*?(</span>\s*</div>)',
+                       lambda m: m.group(1) + badge + m.group(2), h, count=1)
+        n[0] += k
+        h = medidor(h, "respFill", "população em municípios sob decreto",
+                    f"Barra de progresso: população em municípios sob decreto, {ir_fmt}%", alvo, max(ir, 0.1), n)
 
     if h != h0:
         p.write_text(h, encoding="utf-8", newline="\n")
