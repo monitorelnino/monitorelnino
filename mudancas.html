@@ -47,6 +47,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>10/11/2026 · Um resolvedor de domínio só: o Buscador 2 deixa o seu</dt>
+      <dd>O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.</dd>
       <dt>10/11/2026 · Juiz: o domínio do ente inclui os subdomínios, e o diário estadual fora de .gov.br é fonte oficial</dt>
       <dd>O resolvedor de domínio passa a ler o rótulo colado à UF (`codesal.salvador.ba.gov.br` é de Salvador) e a lista sem UF (`pbh.gov.br`); a lista das imprensas oficiais estaduais (IOERJ) fica nele, e o juiz e o Buscador 2 a usam. Recusa por autoridade decidida antes da correção, em domínio do próprio ente, volta ao juiz uma vez, como numa troca de codebook (210 pistas; entre elas os planos de Salvador, Fortaleza e Goiânia e o Decreto RJ 50.357/2026).</dd>
       <dt>09/11/2026 · Juiz lê a pista no esquema canônico · O juiz só lia `url` e `municipio`/`uf`/`ibge`; a pista que entra só com `url_final` e `alvo` (o esquema da porta desde 03/10) seria recusada sem o documento ser baixado — caso do PMGRD 2026/2027 de Belo Horizonte e do plano de Aracaju (#1656). Recusa sem leitura de URL oficial volta à fila.</dt>
@@ -165,8 +167,6 @@
       <dd>Errata em 18 decisões do juiz automático, de 14 municípios: o documento era de outro município, notícia, relatório federal, ato de calendário ou plano setorial. Saem do banco Birigui/SP, Cubatão/SP, Duque de Caxias/RJ e Toledo/PR; MARÉ Legal: PR 63,7 → 63,3, RJ 47,1 → 45,4, SP 35,4 → 35,3, média 40,3 → 40,2. Saem também 14.201 pistas e 24.884 decisões com endereço sem relação com o tema, de outra UF ou redirecionamento não resolvido.</dd>
       <dt>26/10/2026 · Portões: o contador de resposta passa a morar no runtime da inicial</dt>
       <dd>`verificar_runtime_resposta.js` sai; as dez verificações viram o bloco `resposta` de `verificar_runtime.js`, que já renderiza a inicial (uma renderização e um comando a menos). Mutação nova no registro (`medidor_de_resposta_fora_da_arte_unica`) prova que o `verificar_runtime.js` reprova o defeito. Código −3 linhas líquidas.</dd>
-      <dt>26/10/2026 · Juiz: modo paralelo do codebook 1.8</dt>
-      <dd>O juiz e o buscador ganham o modo `--codebook 1.8` (regras J1–J7, J10, J11 e B1–B6, um caso de teste por regra; J8 e J9 como propostas medidas à parte). O 1.7 segue em produção sem mudança. O rejulgamento grava só em `data/paralelo_juiz18.json` e `data/paralelo_fila18.json`, que nenhuma página lê; a troca é decisão da editoria depois do efeito por UF.</dd>
     </dl>
   </section>
 </main>
