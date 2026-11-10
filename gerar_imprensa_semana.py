@@ -137,6 +137,19 @@ def acumulado(ident, valor, unidade, inicio, fim, n, fonte, motivo=None, **extra
             **extra}
 
 
+# 10/11/2026 (editoria): "os dados já estão coletados". Três cartões e a leptospirose mostravam "sem coleta"
+# com o dado no arquivo, porque a regra só aceitava a soma do ciclo inteiro e jogava fora o que havia. A regra
+# é outra: o cartão mostra o que foi coletado, com o PERÍODO REAL dito na própria linha do cartão (o molde
+# do catálogo em `periodo_molde`). Lacuna fica só para o que não tem dado nenhum.
+def br(iso: str) -> str:
+    return f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}"
+
+
+def com_periodo(a: dict, molde: str, **vars_) -> dict:
+    a["periodo_molde"], a["periodo_vars"] = molde, vars_
+    return a
+
+
 def acumulado_focos(focos_ref, corte):
     """Focos de calor do INPE, somados dia a dia desde 29/06 até o corte, na série publicada."""
     fonte = "INPE — Programa Queimadas (série diária, satélite de referência)"
@@ -147,12 +160,12 @@ def acumulado_focos(focos_ref, corte):
     if not dias:
         return acumulado("focos_desde_29_06", None, "focos", ini, fim, 0, fonte,
                          "a série diária do INPE não cobre o período até o corte")
-    if min(dias) > ini:
-        # Soma parcial não vira "desde 29/06": o trecho anterior ao primeiro dia publicado é lacuna declarada.
-        return acumulado("focos_desde_29_06", None, "focos", ini, fim, len(dias), fonte,
-                         f"a série diária do INPE publicada começa em {min(dias)}; {ini} a {min(dias)} não está no arquivo",
-                         valor_parcial=sum(dias.values()), periodo_parcial_inicio=min(dias))
-    return acumulado("focos_desde_29_06", sum(dias.values()), "focos", min(dias), max(dias), len(dias), fonte)
+    # A soma é do que está no arquivo, e o cartão diz desde quando (e quantos dias, se faltar algum).
+    esperados = (date.fromisoformat(max(dias)) - date.fromisoformat(min(dias))).days + 1
+    a = acumulado("focos_desde_29_06", sum(dias.values()), "focos", min(dias), max(dias), len(dias), fonte)
+    if len(dias) < esperados:
+        return com_periodo(a, "imprensa.numeros.periodo.desde_dias", data=br(min(dias)), n=len(dias))
+    return com_periodo(a, "imprensa.numeros.periodo.desde", data=br(min(dias)))
 
 
 def acumulado_planos(municipios, corte):
@@ -162,10 +175,19 @@ def acumulado_planos(municipios, corte):
                      "MARÉ Legal (planos municipais localizados)")
 
 
-def acumulado_inmet(corte):
-    return acumulado("dias_alerta_laranja_vermelho", None, "dias", INICIO_CICLO_IMP.isoformat(), corte.isoformat(),
-                     0, "Inmet (avisos meteorológicos)",
-                     "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes")
+def acumulado_inmet(corte, historico):
+    """Dias com aviso laranja ("Perigo") ou vermelho ("Grande Perigo") do Inmet em alguma UF, desde 29/06, no
+    histórico diário que a coleta guarda (`data/alertas/historico_avisos.json`). Dia sem consulta não conta
+    nem como dia sem aviso: o cartão diz desde quando e quantos dias foram observados."""
+    fonte = "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)"
+    ini, fim = INICIO_CICLO_IMP.isoformat(), corte.isoformat()
+    dias = {d: v for d, v in ((historico or {}).get("dias") or {}).items() if ini <= d <= fim}
+    if not dias:
+        return acumulado("dias_alerta_laranja_vermelho", None, "dias", ini, fim, 0, fonte,
+                         "nenhuma consulta diária aos avisos guardada no período")
+    n = sum(1 for v in dias.values() if v.get("laranja") or v.get("vermelho"))
+    a = acumulado("dias_alerta_laranja_vermelho", n, "dias", min(dias), max(dias), len(dias), fonte)
+    return com_periodo(a, "imprensa.numeros.periodo.dias_observados", data=br(min(dias)), n=len(dias))
 
 
 def planos_novos_do_ciclo(ufs: dict) -> tuple:
@@ -187,10 +209,21 @@ def acumulado_estados_plano_saude(corte, ufs):
                      denominador=total)
 
 
-def acumulado_cidades_oms(corte):
-    return acumulado("cidades_acima_limite_oms", None, "cidades", INICIO_CICLO_IMP.isoformat(), corte.isoformat(),
-                     0, "Série diária de temperatura por município",
-                     "a série diária por município não está publicada no arquivo até o corte")
+def acumulado_cidades_oms(ar_medido):
+    """Capitais com a média de 24 h de PM2,5 ou PM10 acima do limite da OMS (2021) no último dia medido, entre
+    as capitais com monitor de referência e série diária (`data/ar_medido.json`, `cidades_pm_diaria`)."""
+    fonte = "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS"
+    medidas = {uf: [l.get(p) for p in ("pm25", "pm10") if (l.get(p) or {}).get("status") == "coletado"]
+               for uf, l in ((ar_medido or {}).get("cidades_pm_diaria") or {}).items()}
+    medidas = {uf: v for uf, v in medidas.items() if v}
+    if not medidas:
+        return acumulado("cidades_acima_limite_oms", None, "cidades", None, None, 0, fonte,
+                         "nenhuma capital com série diária de material particulado no arquivo")
+    acima = sum(1 for v in medidas.values() if any((x.get("dias_seguidos") or 0) > 0 for x in v))
+    ultimo = max(x["ultimo_dia"] for v in medidas.values() for x in v if x.get("ultimo_dia"))
+    a = acumulado("cidades_acima_limite_oms", acima, "cidades", None, ultimo, len(medidas), fonte,
+                  denominador=len(medidas))
+    return com_periodo(a, "imprensa.numeros.periodo.capitais_medidas", data=br(ultimo), n=len(medidas))
 
 
 def _intervalo_do_periodo(p: str, tipo: str):
@@ -226,9 +259,17 @@ def acumulado_saude(ident, arquivo, corte, unidade, fonte):
     ini = jan[0][1].isoformat() if jan else INICIO_CICLO_IMP.isoformat()
     fim = jan[-1][2].isoformat() if jan else corte.isoformat()
     if not jan:
-        tipo = "semana" if d.get("periodo") == "semana" else "mês"
-        return acumulado(ident, None, unidade, ini, fim, 0, fonte,
-                         f"nenhum {tipo} fechado desde 29/06; o último período com valor é parcial")
+        # Só períodos ainda em registro: a soma vai, dita como parcial, com o período (nunca a lacuna
+        # escondendo o dado coletado).
+        tipo = d.get("periodo")
+        serie = (d.get("serie") or {}).get("BR") or {}
+        abertos = [(p, *_intervalo_do_periodo(p, tipo)) for p in serie if serie.get(p) is not None]
+        abertos = sorted(x for x in abertos if x[2] <= corte and (x[2] if tipo == "semana" else x[1]) >= INICIO_CICLO_IMP)
+        if not abertos:
+            return acumulado(ident, None, unidade, ini, fim, 0, fonte, "nenhum período com valor desde 29/06")
+        a = acumulado(ident, sum(serie[p] for p, _, _ in abertos), unidade, abertos[0][1].isoformat(),
+                      abertos[-1][2].isoformat(), len(abertos), fonte, parcial=True)
+        return com_periodo(a, "imprensa.numeros.periodo.desde_parcial", data=br(abertos[0][1].isoformat()))
     serie = d["serie"]["BR"]
     faltam = [p for p, _, _ in jan if serie.get(p) is None]
     if faltam:
@@ -332,9 +373,9 @@ def acumulados(corte, focos_ref, municipios, fin, por_uf, cartoes) -> list:
         "leptospirose": ("leptospirose.json", "casos", "Ministério da Saúde (SINAN), meses fechados"),
     }
     lista = [acumulado_focos(focos_ref, corte), acumulado_planos(municipios, corte),
-             acumulado_inmet(corte),
+             acumulado_inmet(corte, ler("alertas/historico_avisos.json", {})),
              acumulado_estados_plano_saude(corte, (ler("monitor_saude.json", {}) or {}).get("ufs")),
-             acumulado_cidades_oms(corte),
+             acumulado_cidades_oms(ler("ar_medido.json", {})),
              acumulado_decretos(por_uf), acumulado_reconhecidos(por_uf), acumulado_pessoas(por_uf),
              acumulado_atos_por_evento(por_uf), acumulado_capitais(cartoes),
              acumulado_do_topo_financeiro("anunciado_em_atos", fin, "anunciado_atos",
@@ -991,7 +1032,24 @@ def autoteste() -> int:
     _f = acumulado_focos(_ref, date(2026, 7, 1))
     checar("acumulado de focos soma só desde 29/06 e declara os dias", _f["valor"] == 10 and _f["n"] == 2 and _f["periodo_inicio"] == "2026-06-29")
     _gap = acumulado_focos({"serie": {"2026-09-17": {"total": 5}}}, date(2026, 10, 25))
-    checar("acumulado de focos com trecho sem série é lacuna declarada, nunca soma parcial como desde 29/06", _gap["sem_coleta"] is True and _gap["valor_parcial"] == 5 and "2026-06-29" not in (_gap["motivo"] or "")[:0] and "17" in _gap["motivo"])
+    checar("série que começa depois de 29/06: soma o que há e o cartão diz desde quando",
+           _gap["valor"] == 5 and _gap["periodo_inicio"] == "2026-09-17" and _gap["periodo_vars"] == {"data": "17/09/2026"})
+    _buraco = acumulado_focos({"serie": {"2026-07-01": {"total": 2}, "2026-07-03": {"total": 3}}}, date(2026, 7, 5))
+    checar("dia faltando no meio: o cartão diz quantos dias têm dado",
+           _buraco["valor"] == 5 and _buraco["periodo_molde"].endswith("desde_dias") and _buraco["periodo_vars"]["n"] == 2)
+    _h = {"dias": {"2026-09-01": {"laranja": ["RS"], "vermelho": []}, "2026-09-02": {"laranja": [], "vermelho": []},
+                   "2026-09-03": {"laranja": [], "vermelho": ["SC"]}}}
+    _i = acumulado_inmet(date(2026, 9, 30), _h)
+    checar("dias com aviso laranja ou vermelho contam no histórico guardado, com os dias observados",
+           _i["valor"] == 2 and _i["n"] == 3 and _i["periodo_inicio"] == "2026-09-01")
+    checar("sem histórico de avisos é lacuna, nunca zero", acumulado_inmet(date(2026, 9, 30), {})["sem_coleta"] is True)
+    _ar = {"cidades_pm_diaria": {"RJ": {"pm25": {"status": "coletado", "dias_seguidos": 0, "ultimo_dia": "2026-11-09"}},
+                                 "SP": {"pm25": {"status": "sem_medicao_na_janela"}},
+                                 "MG": {"pm10": {"status": "coletado", "dias_seguidos": 2, "ultimo_dia": "2026-11-08"}}}}
+    _o = acumulado_cidades_oms(_ar)
+    checar("capitais acima do limite da OMS: só as com série, com denominador e o último dia medido",
+           _o["valor"] == 1 and _o["denominador"] == 2 and _o["periodo_fim"] == "2026-11-09")
+    checar("zero medido é zero, não lacuna", acumulado_cidades_oms({"cidades_pm_diaria": {"RJ": {"pm25": {"status": "coletado", "dias_seguidos": 0, "ultimo_dia": "2026-11-09"}}}})["valor"] == 0)
     checar("acumulado sem série é lacuna, nunca zero", acumulado_focos({}, date(2026, 7, 1))["sem_coleta"] is True)
     checar("acumulado de planos conta só 'plano'", acumulado_planos([{"categoria": "plano"}, {"categoria": "nao_verificado"}], date(2026, 7, 1))["valor"] == 1)
     _ufs = {"AM": {"instrumento": {"status": "NOVO"}}, "SP": {"instrumento": {"status": "NOVO"}},
@@ -1001,13 +1059,22 @@ def autoteste() -> int:
     checar("estados com plano para o ciclo sem monitor é lacuna, nunca zero",
            acumulado_estados_plano_saude(date(2026, 10, 25), None)["sem_coleta"] is True)
     checar("cidades acima do limite da OMS sem série diária é lacuna declarada",
-           acumulado_cidades_oms(date(2026, 10, 25))["sem_coleta"] is True)
+           acumulado_cidades_oms({})["sem_coleta"] is True)
     _sem = {"periodo": "semana", "parcial": ["2026-29"], "serie": {"BR": {"2026-26": 9, "2026-27": 5, "2026-28": 6, "2026-29": 7}}}
     checar("janela de semanas: a que contém 29/06 entra, a parcial fica fora",
            [p for p, _, _ in _janela_fechada(_sem, date(2026, 7, 20))] == ["2026-26", "2026-27", "2026-28"])
     _mes = {"periodo": "mes", "parcial": ["2026-08"], "serie": {"BR": {"2026-06": 1, "2026-07": 2, "2026-08": 3}}}
     checar("janela de meses: junho não é mês fechado desde 29/06",
            [p for p, _, _ in _janela_fechada(_mes, date(2026, 9, 1))] == ["2026-07"])
+    global ler
+    _ler_real, ler = ler, (lambda nome, padrao=None: {"periodo": "mes", "parcial": ["2026-07", "2026-08"],
+                                                       "serie": {"BR": {"2026-06": 9, "2026-07": 2, "2026-08": 3}}})
+    try:
+        _p = acumulado_saude("lepto", "x.json", date(2026, 9, 5), "casos", "f")
+    finally:
+        ler = _ler_real
+    checar("só meses ainda em registro: soma o que há, marcada parcial, desde o primeiro mês do ciclo",
+           _p["valor"] == 5 and _p.get("parcial") is True and _p["periodo_vars"] == {"data": "01/07/2026"})
     checar("número sem fonte no arquivo é lacuna declarada, nunca zero",
            _do_arquivo("x", None, "u", None, "f", "motivo")["sem_coleta"] is True
            and _do_arquivo("x", None, "u", None, "f", "motivo")["motivo"] == "motivo")

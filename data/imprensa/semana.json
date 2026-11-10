@@ -2,16 +2,18 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": null,
+   "valor": 55853,
    "unidade": "focos",
-   "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-11-10",
+   "periodo_inicio": "2026-09-17",
+   "periodo_fim": "2026-11-09",
    "n": 54,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
-   "sem_coleta": true,
-   "motivo": "a série diária do INPE publicada começa em 2026-09-17; 2026-06-29 a 2026-09-17 não está no arquivo",
-   "valor_parcial": 55853,
-   "periodo_parcial_inicio": "2026-09-17"
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo_molde": "imprensa.numeros.periodo.desde",
+   "periodo_vars": {
+    "data": "17/09/2026"
+   }
   },
   {
    "id": "municipios_plano_localizado",
@@ -26,14 +28,19 @@
   },
   {
    "id": "dias_alerta_laranja_vermelho",
-   "valor": null,
+   "valor": 39,
    "unidade": "dias",
-   "periodo_inicio": "2026-06-29",
+   "periodo_inicio": "2026-09-15",
    "periodo_fim": "2026-11-10",
-   "n": 0,
-   "fonte": "Inmet (avisos meteorológicos)",
-   "sem_coleta": true,
-   "motivo": "o histórico diário de avisos não está guardado; o arquivo do Inmet traz só os vigentes"
+   "n": 53,
+   "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
+   "sem_coleta": false,
+   "motivo": null,
+   "periodo_molde": "imprensa.numeros.periodo.dias_observados",
+   "periodo_vars": {
+    "data": "15/09/2026",
+    "n": 53
+   }
   },
   {
    "id": "estados_plano_saude",
@@ -49,14 +56,20 @@
   },
   {
    "id": "cidades_acima_limite_oms",
-   "valor": null,
+   "valor": 0,
    "unidade": "cidades",
-   "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-11-10",
-   "n": 0,
-   "fonte": "Série diária de temperatura por município",
-   "sem_coleta": true,
-   "motivo": "a série diária por município não está publicada no arquivo até o corte"
+   "periodo_inicio": null,
+   "periodo_fim": "2026-11-09",
+   "n": 1,
+   "fonte": "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS",
+   "sem_coleta": false,
+   "motivo": null,
+   "denominador": 1,
+   "periodo_molde": "imprensa.numeros.periodo.capitais_medidas",
+   "periodo_vars": {
+    "data": "09/11/2026",
+    "n": 1
+   }
   },
   {
    "id": "municipios_decretaram",
@@ -222,14 +235,19 @@
   },
   {
    "id": "leptospirose",
-   "valor": null,
+   "valor": 505,
    "unidade": "casos",
-   "periodo_inicio": "2026-06-29",
-   "periodo_fim": "2026-11-10",
-   "n": 0,
+   "periodo_inicio": "2026-07-01",
+   "periodo_fim": "2026-09-30",
+   "n": 3,
    "fonte": "Ministério da Saúde (SINAN), meses fechados",
-   "sem_coleta": true,
-   "motivo": "nenhum mês fechado desde 29/06; o último período com valor é parcial"
+   "sem_coleta": false,
+   "motivo": null,
+   "parcial": true,
+   "periodo_molde": "imprensa.numeros.periodo.desde_parcial",
+   "periodo_vars": {
+    "data": "01/07/2026"
+   }
   },
   {
    "id": "estados_acima_da_faixa_dengue",
