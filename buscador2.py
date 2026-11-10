@@ -155,11 +155,9 @@ PREFIXOS_DE_ENTE = ("prefeiturademunicipalde", "prefeituramunicipalde", "prefeit
 ROTULOS_DE_ORGAO = {"saude", "educacao", "defesacivil", "sedec", "cultura", "turismo", "fazenda",
                     "agricultura", "seguranca", "transparencia", "portal", "casacivil", "meioambiente",
                     "planejamento", "governo", "esporte", "trabalho", "justica", "agua", "agenersa"}
-# Município com domínio `.gov.br` sem UF no host (30/10/2026, preprint §1): `prefeitura.pbh.gov.br` é
-# a Prefeitura de Belo Horizonte e a regra `<nome>.<uf>.gov.br` não o reconhecia. Lista fechada, só de
-# domínio conferido; `goias.gov.br` e `amapa.gov.br` ficam fora de propósito (portal de estado que
-# hospeda planos de outros entes: a recusa deles está certa).
-MUNICIPAIS_SEM_UF = {"pbh.gov.br": ("Belo Horizonte", "MG")}
+# Domínio municipal sem UF (`pbh.gov.br`) e imprensas oficiais estaduais: uma lista só, no resolvedor de domínio.
+sys.path.insert(0, str(RAIZ / "scripts"))
+from municipio_do_dominio import MUNICIPAIS_SEM_UF, diarios_estaduais  # noqa: E402
 
 RE_DOMINIO_DE_UF = re.compile(r"^(?:(?P<sub>.+)\.)?(?P<uf>[a-z]{2})\.(?:gov|leg)\.br$")
 
@@ -179,23 +177,6 @@ def slugs_por_uf() -> dict:
             _SLUGS.setdefault(m["uf"], {})[slug(m["nome"])] = m["nome"]
         _SLUGS["_por_ibge"] = {str(m["codigo_ibge"]).zfill(7): (m["nome"], m["uf"]) for m in ref}
     return _SLUGS
-
-
-def diarios_estaduais() -> dict:
-    """{host: UF} das imprensas oficiais estaduais, lido de `data/fontes_doe.json` — a mesma lista que o
-    coletor do DOE usa. 09/11/2026: três DOEs são servidos fora de `.gov.br` (IOERJ, IOEPA, CEPE) e a porta
-    os recusava como "domínio não oficial"; a pista do Decreto RJ 50.357/2026 cairia aí. Só leitura."""
-    global _DOES
-    if _DOES is None:
-        try:
-            ufs = json.loads((RAIZ / "data" / "fontes_doe.json").read_text(encoding="utf-8")).get("ufs") or {}
-        except (OSError, ValueError):
-            ufs = {}
-        _DOES = {h: uf for uf, f in ufs.items() if (h := host_de(str((f or {}).get("url") or "")))}
-    return _DOES
-
-
-_DOES = None
 
 
 def ente_do_rotulo(rotulo: str, uf: str, slugs: dict) -> str:
