@@ -13,6 +13,10 @@ não pontuados permanecem na versão corrente.
 
 No cartão de decretos da página inicial, o número grande passa a dizer "% da população" e a pílula, "municípios com decreto · % dos municípios do país"; os dois textos vêm do catálogo. A reserva estática da pílula estava presa em "280 municípios · 5,0%" porque o padrão que a regravava não casava com o `<span>` interno; agora casa. O cartão de decretos em saúde segue a mesma forma: "% da população" e a pílula só com a contagem. (+18)
 
+## 2026-11-10 · consolidação · Busca de prefeitura só aceita endereço `.<uf>.gov.br` do próprio estado
+
+`hosts_por_busca` aceitava qualquer `.gov.br` com três pontos: o portal do IBGE, que cita "Boa Vista" e a palavra "município", passava como prefeitura. Agora só `.<uf>.gov.br` da UF. Caso de teste no autoteste. +1 linha líquida.
+
 ## 2026-11-10 · #1677 · Uma lista de arquivos versionados; verificação do domínio sem cancelamento e pela flag
 `scripts/_versionados.py` substitui seis cópias de `git ls-files` e o `rglob` de `validar_workflows.py`, que contava cópias locais. A verificação do domínio sai do grupo do publicador (52 de 100 runs cancelados na fila) e o botão segue `data/publicacao.json`. A reposição manual do domínio sempre faz checkout da `main`.
 
