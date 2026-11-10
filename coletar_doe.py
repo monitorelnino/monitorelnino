@@ -33,7 +33,7 @@ from coletores_base import (NUM_ATO, carimbar_atos, buscar, enviar, preservar_ev
                             marcar_fonte_consultada, marcar_fato_municipal, referencia_ibge,
                             abrir_lote_log, fechar_lote_log, abrir_lote_livro, fechar_lote_livro,
                             ler, gravar, rodar_autoteste, eh_suspensao_defeso, hoje_editorial,
-                            BANCO_PROIBIDO, fonte_do_coletor, grava_no_banco, levanta)
+                            BANCO_PROIBIDO, fonte_do_coletor, grava_no_banco, levanta, iso_para_br)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 REGIOES = {"N": "AC AM AP PA RO RR TO", "NE": "AL BA CE MA PB PE PI RN SE", "CO": "DF GO MS MT",
@@ -1008,13 +1008,6 @@ def itens_da_busca(uf: str, adaptador: str, url: str, desde: str, ate: str, term
     if adaptador in EDICOES_POR_BUSCA:
         return itens_por_busca(uf, desde, EDICOES_POR_BUSCA[adaptador](desde, ate), termos=termos)
     raise ValueError(f"{adaptador}: não é rota de busca")
-
-
-def iso_para_br(s: str) -> str:
-    try:
-        y, m, d = s[:10].split("-"); return f"{d}/{m}/{y}"
-    except ValueError:
-        return s
 
 
 # 04/10/2026 — A SOBRA DO DOE NASCE NO ESQUEMA.
