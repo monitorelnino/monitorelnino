@@ -9,7 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+<<<<<<< HEAD
 ## 2026-11-10 · #PR · Redução: `iso_para_br` mora em `coletores_base` · os coletores de diários municipais e de DOE tinham cada um a sua cópia idêntica; agora importam a única. Sem mudança de comportamento. −7 linhas líquidas (+9/−16).
+=======
+## 2026-11-10 · #1674 · Um resolvedor de domínio só: o Buscador 2 deixa o seu
+O `buscador2.py` tinha regra própria para dizer de que município é um domínio (`ente_do_rotulo`, rótulos de órgão, prefixos de ente), e ela discordava do resolvedor do juiz. As regras dele passam para `municipio_do_dominio.py` (câmara só com `camara=True`, que a porta de pistas usa e o juiz não), e a porta chama o resolvedor. Medido sobre as 24.516 pistas das filas: nenhuma muda de classe.
+>>>>>>> origin/main
 
 ## 2026-11-10 · #1673 · Saúde: legenda do mapa do desfecho sob o mapa, com a contagem, e nota afastada da legenda
 A chave da contagem de estados saiu do catálogo no #1214 e o mapa seguiu pedindo-a pelo JS: a legenda publicava "acima da faixa habitual para a época ·" sem número. O portão do catálogo passa a ler os identificadores pedidos pelo JS. A legenda do mapa fica em coluna, centrada sob ele, e a nota de figura ganha o espaço de mídia → legenda.

@@ -63,7 +63,14 @@ PREFIXOS = ("www", "www2", "www3", "web", "portal", "novoportal", "site", "trans
             # o corretor de atribuição não resolvia nenhum deles. "prefeitura" é rótulo de
             # serviço, como "portal": o nome do município é o outro.
             "prefeitura", "prefeituramunicipal", "pref", "municipio", "governo",
-            "cidadao", "servicos", "atendimento")
+            "cidadao", "servicos", "atendimento",
+            # Rótulos de órgão estadual que coincidem com nome de município (`fazenda.rs.gov.br` ×
+            # Fazenda Vilanova): eram a lista `ROTULOS_DE_ORGAO` do `buscador2.py`; uma lista só.
+            "sedec", "cultura", "turismo", "fazenda", "agricultura", "seguranca", "casacivil",
+            "meioambiente", "planejamento", "esporte", "trabalho", "justica", "agua", "agenersa")
+# Prefixo colado ao nome no próprio rótulo (`pmtaio`, `prefeituradeigarapeacu`). Era do `buscador2.py`.
+PREFIXOS_DE_ENTE = ("prefeiturademunicipalde", "prefeituramunicipalde", "prefeiturade", "prefeitura",
+                    "camaramunicipalde", "camarade", "camara", "pm", "cm")
 
 
 
@@ -74,7 +81,7 @@ def _norm(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", n)
 
 
-def partes_do_host(host: str):
+def partes_do_host(host: str, camara: bool = False):
     """(candidato_a_municipio, uf) a partir do host. Função pura; (None, None) quando não serve.
 
     O padrão municipal brasileiro é `<nome>.<uf>.gov.br`: o ente recebe a delegação desse nome, e todo
@@ -82,18 +89,19 @@ def partes_do_host(host: str):
     O candidato é, portanto, o rótulo colado à UF. 10/11/2026: a regra antiga descartava rótulos de serviço
     de uma lista e recusava quando sobrava mais de um, e o juiz recusou o plano de Salvador e a portaria de
     Porto Velho como "fora do domínio do ente". Rótulo de serviço colado à UF (`saude.ba.gov.br`,
-    `www.sc.gov.br`) é sítio de estado; câmara (`camara.<nome>`) não é Executivo.
+    `www.sc.gov.br`) é sítio de estado; câmara (`camara.<nome>`, `.leg.br`) não é Executivo, e só entra
+    com `camara=True` — a porta de pistas admite o sítio da câmara como do município; o juiz, não.
     """
     h = (host or "").lower().strip().rstrip(".")
     if not h or "." not in h:
         return None, None
     rotulos = h.split(".")
-    if len(rotulos) < 4 or ".".join(rotulos[-2:]) != "gov.br":
+    if len(rotulos) < 4 or ".".join(rotulos[-2:]) not in (("gov.br", "leg.br") if camara else ("gov.br",)):
         return None, None     # só o padrão municipal `<nome>.<uf>.gov.br`
     uf, nome = rotulos[-3], rotulos[-4]
     if uf not in UFS or not nome or nome in PREFIXOS:
         return None, None
-    if any(r.startswith("camara") for r in rotulos[:-4]):
+    if not camara and (nome.startswith(("camara", "cm")) or any(r.startswith("camara") for r in rotulos[:-4])):
         return None, None
     return nome, uf.upper()
 
@@ -147,20 +155,29 @@ def _indice(referencia=None):
 _INDICE_REAL = []   # a malha do IBGE, lida uma vez por processo
 
 
-def municipio_de(url: str, referencia=None):
-    """O município dono do domínio desta URL, ou None. Função pura dada a referência."""
+def municipio_de(url: str, referencia=None, camara: bool = False):
+    """O município dono do domínio desta URL, ou None. Função pura dada a referência.
+
+    O único resolvedor de domínio do repositório (10/11/2026: o `buscador2.py` tinha o seu, e os dois
+    davam respostas diferentes para `codesal.salvador.ba.gov.br`)."""
     host = urllib.parse.urlparse(str(url or "")).netloc or str(url or "")
     host = host.split("@")[-1].split(":")[0].lower()
     indice = _indice(referencia)
     for d, (nome, uf_d) in MUNICIPAIS_SEM_UF.items():
         if host == d or host.endswith("." + d):
             return indice.get((_norm(nome), uf_d))
-    candidato, uf = partes_do_host(host)
+    candidato, uf = partes_do_host(host, camara)
     if not candidato or not uf:
         return None
     achado = indice.get((_norm(candidato), uf))
     if achado:
         return achado
+    # Prefixo de ente colado ao nome (`pmtaio`) e UF colada ao fim (`taiosc`): só por nome exato.
+    s = _norm(candidato)
+    pre = next((x for x in PREFIXOS_DE_ENTE if s.startswith(x) and len(s) > len(x) + 2), "")
+    for v in (s[len(pre):], s[len(pre):][:-2] if s.endswith(uf.lower()) else ""):
+        if v and (v, uf) in indice and (camara or not pre.startswith(("camara", "cm"))):
+            return indice[(v, uf)]
     # O host às vezes traz o nome CURTO: `caxias.rs.gov.br` é Caxias do Sul, `santamaria.rs.gov.br`
     # é Santa Maria. Resolver isso exige unicidade: só vale quando UM município daquela UF começa
     # pelo candidato. Em RS, "caxias" só casa com Caxias do Sul; em MA existe Caxias, mas é outra
@@ -246,6 +263,14 @@ def _autoteste() -> int:
     ok("subdomínio de órgão de estado não vira município por prefixo (tesouro.fazenda.rs.gov.br)",
        municipio_de("https://tesouro.fazenda.rs.gov.br/x.pdf",
                      REF + [{"nome": "Fazenda Vilanova", "uf": "RS", "codigo_ibge": 4307815}]) is None)
+    ok("prefixo de ente colado ao nome (pmtaio) resolve por nome exato",
+       (municipio_de("https://pmtaio.sc.gov.br/x", REF) or {}).get("nome") == "Taió")
+    ok("UF colada ao fim (taiosc) resolve por nome exato",
+       (municipio_de("https://taiosc.sc.gov.br/x", REF) or {}).get("nome") == "Taió")
+    ok("câmara só entra com camara=True (porta de pistas), nunca para o juiz",
+       municipio_de("https://cmtaio.sc.gov.br/x", REF) is None
+       and municipio_de("https://taio.sc.leg.br/x", REF) is None
+       and (municipio_de("https://taio.sc.leg.br/x", REF, camara=True) or {}).get("nome") == "Taió")
     ok("câmara em subdomínio do ente não é Executivo",
        municipio_de("https://camara.taio.sc.gov.br/x", REF) is None)
     ok("imprensa oficial estadual fora de .gov.br vem da lista do DOE",
