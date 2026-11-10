@@ -58,7 +58,7 @@ PADRAO_PLANO = re.compile(r"plancon|placon|conting[eê]nc|plano[-_ /]*municipal[
 # Capitais cujo endereço padrão `<município>.<uf>.gov.br` não é o da prefeitura: candidatos a VERIFICAR
 # (só valem se a home se identifica como a prefeitura, como em `descobrir_no_portal`).
 CANDIDATOS_EXTRA = {
-    "3106200": ["prefeitura.pbh.gov.br"], "5300108": ["df.gov.br"], "1501402": ["belem.pa.gov.br"],
+    "3106200": ["prefeitura.pbh.gov.br"], "1501402": ["belem.pa.gov.br"],
     "2611606": ["recife.pe.gov.br"], "2211001": ["pmt.pi.gov.br"], "3304557": ["prefeitura.rio"],
     "2408102": ["natal.rn.gov.br"], "4314902": ["prefeitura.poa.br"], "4205407": ["pmf.sc.gov.br"],
 }
