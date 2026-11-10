@@ -10,8 +10,10 @@ documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
 ## 2026-11-10 · #PR · Redução: a linha de comando dos coletores SIH e SIM é uma só · `coletar_sim.main` repetia, linha a linha, o `main` do `coletar_sih` (autoteste, sondagem, orçamento); passa a chamá-lo. Mesmo comportamento, autotestes verdes. Código −8/+4 (−4 líquidas).
+## 2026-11-09 · #1664 · Juiz lê a pista no esquema canônico · O juiz só lia `url` e `municipio`/`uf`/`ibge`; a pista que entra só com `url_final` e `alvo` (o esquema da porta desde 03/10) seria recusada sem o documento ser baixado — caso do PMGRD 2026/2027 de Belo Horizonte e do plano de Aracaju (#1656). Recusa sem leitura de URL oficial volta à fila.
 
 ## 2026-11-09 · #PR · Sítio da prefeitura: endereço de outro estado ou de turismo não vale · Campo Grande/MS lia `campogrande.rn.gov.br` e o Rio de Janeiro lia `riotur.rio`, e a página dizia "prefeitura" e o nome: contava como lido. O endereço do cadastro e o da busca só entram se não forem de outra UF nem de turismo. Autoteste com os quatro casos.
+
 ## 2026-11-09 · #PR · SUS: vigilância em saúde por ação, mês e município · O repasse do FNS guardava só o programa; agora o programa Vigilância em Saúde e Ambiente vem aberto por ação e plano orçamentário, como a fonte os escreve (agentes de combate às endemias, piso de vigilância, arboviroses), por UF e mês. Os meses já baixados foram relidos das cópias preservadas; maio e setembro, sem cópia, foram baixados de novo.
 
 ## 2026-11-09 · #PR · Plano citado leva o link da citação · O ladrilho da capital e o cartão do município tinham duas cópias da frase, sem o endereço da fonte. Agora é uma função só, do catálogo, com o link, dizendo que o documento não foi lido e que não contornamos regras de acesso automático (editoria, 09/11). O portão de proveniência põe teto que só desce nos 41 registros de plano citado sem endereço.

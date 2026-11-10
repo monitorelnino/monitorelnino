@@ -36,6 +36,7 @@ USO
 """
 import json
 import pathlib
+import re
 import sys
 
 RAIZ = pathlib.Path(__file__).resolve().parent
@@ -98,6 +99,27 @@ def url_em_dominio_oficial(url: str) -> bool:
     return _dominio_publico(str(url))
 
 
+# 09/11/2026 (J18): a pista no esquema canônico (`schemas/pista.json`, 03/10/2026) traz o documento em
+# `url_final` e o ente em `alvo` (IBGE ou UF); o juiz só lia `url`, `municipio`, `uf` e `ibge`. A pista
+# do PMGRD de Belo Horizonte (#1656) entrou só com os campos canônicos e seria recusada como
+# `sem_documento_primario` sem que o PDF fosse baixado.
+def url_da_pista(p: dict):
+    return p.get("url") or p.get("url_final")
+
+
+def ente_da_pista(p: dict) -> tuple:
+    """(nome, uf, ibge) da pista; o que faltar sai do `alvo` e da referência do IBGE."""
+    alvo = str(p.get("alvo") or "")
+    ibge = p.get("ibge") or (alvo if re.fullmatch(r"\d{7}", alvo) else None)
+    nome, uf = p.get("municipio") or "", p.get("uf") or (alvo if re.fullmatch(r"[A-Z]{2}", alvo) else "")
+    if ibge and not (nome and uf):
+        ref = next((m for m in json.loads((RAIZ / "data" / "municipios_ibge_referencia.json")
+                                          .read_text(encoding="utf-8"))
+                    if str(m.get("codigo_ibge")) == str(ibge)), {})
+        nome, uf = nome or ref.get("nome", ""), uf or ref.get("uf", "")
+    return nome, uf, ibge
+
+
 def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> list:
     """As pistas que esta rodada julga. Função pura.
 
@@ -108,9 +130,9 @@ def selecionar(pistas: list, ids=None, so_oficial: bool = False, urls=None) -> l
     for p in pistas:
         if ids and not any(str(p.get("id") or "").startswith(x) for x in ids):
             continue
-        if urls and not any(x in str(p.get("url") or "") for x in urls):
+        if urls and not any(x in str(url_da_pista(p) or "") for x in urls):
             continue
-        if so_oficial and not url_em_dominio_oficial(p.get("url")):
+        if so_oficial and not url_em_dominio_oficial(url_da_pista(p)):
             continue
         fora.append(p)
     return fora
@@ -135,8 +157,14 @@ def pendente(p: dict, hoje=None) -> bool:
     o histórico do que se tentou."""
     from juiz import CODEBOOK_VERSAO
     status = str(p.get("status") or "")
-    if (p.get("juiz") or {}).get("codebook") == CODEBOOK_VERSAO:
-        return False    # já julgada por esta versão do codebook
+    juiz = p.get("juiz") or {}
+    if juiz.get("codebook") == CODEBOOK_VERSAO:
+        # 09/11/2026 (J18): recusa por critério sobre documento oficial exige tê-lo lido (sem leitura,
+        # `julgar_uma` dá `documento_inacessivel`, que é técnica e não grava `juiz`). Julgada sem ler
+        # a URL oficial que traz só acontece quando o juiz não achou a URL: volta.
+        from juiz import fonte_oficial
+        url = url_da_pista(p)
+        return bool(not juiz.get("leu_documento") and url and fonte_oficial(url))
     if "inacessivel_persistente" in status:
         return False
     prox = p.get("proxima_tentativa_em")
@@ -169,7 +197,8 @@ def julgar_uma(p: dict, buscar, preservar=None, propostas: tuple = ()) -> dict:
     permite ao autoteste rodar sem rede e sem escrever em `evidencias/`."""
     from juiz import fonte_oficial, julgar
 
-    url = p.get("url")
+    url = url_da_pista(p)
+    nome, uf, ibge = ente_da_pista(p)
     # 09/10/2026 (lote 2.5, A1-19): a URL fora do padrão de fonte oficial é recusada pela etapa 0
     # sem precisar do texto. Baixá-la antes custava 3.245 downloads de imprensa por versão de
     # codebook — o runner do GitHub lendo página de jornal para descartá-la.
@@ -177,8 +206,7 @@ def julgar_uma(p: dict, buscar, preservar=None, propostas: tuple = ()) -> dict:
     texto = buscar(url) if oficial else None
     # 28/09/2026 (item 1): o `trecho` da pista é o que permite recortar o ATO de dentro da edição do
     # diário. Sem ele, o juiz lê vinte mil caracteres com dezenas de atos e cai em dúvida, corretamente.
-    veredito = julgar(texto, nome=p.get("municipio") or "", uf=p.get("uf") or "",
-                      ibge=p.get("ibge"), url=url, trecho=p.get("trecho"), propostas=propostas)
+    veredito = julgar(texto, nome=nome, uf=uf, ibge=ibge, url=url, trecho=p.get("trecho"), propostas=propostas)
     veredito["pista_id"] = p.get("id")
     veredito["origem"] = p.get("origem")
     # 28/09/2026: separar "não pudemos ler" de "lemos e não serve". Sem esta marca, `--aplicar`
@@ -607,6 +635,19 @@ def autoteste() -> int:
     casos.append(("os filtros se combinam",
                   selecionar(amostra, ids=["bbb"], so_oficial=True) == []))
     casos.append(("url vazia não é domínio oficial", not url_em_dominio_oficial("")))
+    # 09/11/2026 (J18): pista só com os campos canônicos (`url_final`, `alvo`) é julgada sobre o documento
+    canonica = {"id": "c1", "url_final": CANARIOS["plano_novo"]["url"], "alvo": "5002209",
+                "status": "pista — na fila, aguardando busca dirigida e juiz"}
+    lidas = []
+    julgar_uma(canonica, lambda u: (lidas.append(u), textos.get(u))[1], None)
+    casos.append(("pista canônica: o juiz baixa a url_final", lidas == [CANARIOS["plano_novo"]["url"]]))
+    casos.append(("pista canônica: o ente sai do alvo IBGE", ente_da_pista(canonica)[1:] == ("MS", "5002209")))
+    casos.append(("--dominio-oficial enxerga a url_final", selecionar([canonica], so_oficial=True) == [canonica]))
+    sem_ler = {**canonica, "juiz": {"codebook": CODEBOOK_VERSAO, "leu_documento": False,
+                                    "motivo": "sem_documento_primario"}}
+    casos.append(("recusada sem ler a URL oficial que traz volta à fila", pendente(sem_ler)))
+    casos.append(("recusada sem ler notícia de veículo privado não volta",
+                  not pendente({**sem_ler, "url_final": "https://g1.globo.com/x.html"})))
     # e o caminho sem preservador devolve veredito sem hash
     v_sem = julgar_uma({"id": "z", "municipio": "Bonito", "uf": "MS",
                         "url": CANARIOS["plano_novo"]["url"]}, buscar, None)
