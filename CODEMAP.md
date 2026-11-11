@@ -147,7 +147,7 @@ Atualizado em 11/11/2026.
 | `motores_busca.py` | — | — | — | 4 | não |
 | `pagina_completa.py` | — | — | — | 6 | não |
 | `preencher_fallback_estatico.py` | — | — | — | — | não |
-| `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 7 | não |
+| `preservar_evidencias.py` | — | `estados.json`, `evidencias.json`, `municipios.json` | — | 8 | não |
 | `processar_contribuicoes.py` | — | — | — | — | não |
 | `recalcular_mare.py` | — | — | — | 6 | SIM |
 | `reconferir_instrumentos_federais.py` | — | `saude_desfechos/instrumentos.json` | — | — | não |
