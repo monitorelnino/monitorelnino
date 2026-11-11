@@ -1,6 +1,6 @@
 {
  "_governanca": "Rota do dinheiro das MPs do ciclo 2026/2027 (créditos extraordinários). Dotações por órgão/ação vêm das notas oficiais (Agência Gov, Câmara, Conab) e do texto das MPs no Congresso; execução (empenhado/liquidado/pago) vem do Portal da Transparência (despesas) quando coletada — 'sem coleta' declarado até lá. Crédito extraordinário é executado por órgão federal: não é transferência a município; o 'destino' é onde a execução chega (brigadas, estoques, cestas). Peso zero.",
- "gerado_em": "01/11/2026",
+ "gerado_em": "11/11/2026",
  "mps": [
   {
    "id": "mp1367",
@@ -36,8 +36,8 @@
        "valor": 45000000
       }
      ],
-     "execucao_empenhado": 213038632.65,
-     "execucao_pago": 190436275.78,
+     "execucao_empenhado": 212638621.4,
+     "execucao_pago": 205346744.64,
      "acoes": [
       "214M",
       "214N"
@@ -53,8 +53,8 @@
        "detalhe": "capacitação e estruturação de equipes, contratação, equipamentos, sistemas de monitoramento"
       }
      ],
-     "execucao_empenhado": 168779002.44,
-     "execucao_pago": 164974613.43,
+     "execucao_empenhado": 175801622.81,
+     "execucao_pago": 186361084.85,
      "acoes": [
       "214P"
      ]
@@ -63,18 +63,21 @@
    "execucao": {
     "status": "coletado",
     "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
-    "empenhado": 381817635.09,
-    "liquidado": 366579492.87,
-    "pago": 355410889.21,
+    "empenhado": 388440244.21,
+    "liquidado": 400911607.98,
+    "pago": 391707829.49,
     "meses": [
      "202606",
      "202607",
      "202608",
      "202609",
-     "202610"
+     "202610",
+     "202611"
     ],
-    "atualizado_em": "01/11/2026",
-    "meses_parciais": [],
+    "atualizado_em": "11/11/2026",
+    "meses_parciais": [
+     "202611"
+    ],
     "por_mes": {
      "202606": {
       "empenhado": 207202279.38,
@@ -111,12 +114,21 @@
       }
      },
      "202610": {
-      "empenhado": 20983568.45,
-      "liquidado": 79882813.59,
-      "pago": 80963159.38,
+      "empenhado": 18173232.81,
+      "liquidado": 83102769.07,
+      "pago": 86740060.52,
       "por_modalidade_pago": {
-       "aplicados diretamente pela União": 80963159.38
+       "aplicados diretamente pela União": 86740060.52
       }
+     },
+     "202611": {
+      "empenhado": 9432944.76,
+      "liquidado": 31112159.63,
+      "pago": 30520039.14,
+      "por_modalidade_pago": {
+       "aplicados diretamente pela União": 30520039.14
+      },
+      "parcial": true
      }
     },
     "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito",
@@ -126,35 +138,35 @@
     "status": "coletado",
     "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
     "por_uf_pago": {
-     "BR": 337424237.6,
-     "PA": 2674529.63,
-     "RO": 2300540.08,
-     "MT": 1721116.4,
-     "MA": 1434276.18,
-     "AM": 1266554.45,
-     "TO": 1098404.58,
-     "GO": 948166.12,
-     "CE": 754573.66,
+     "BR": 372529427.43,
+     "PA": 2826962.48,
+     "RO": 2615712.16,
+     "MT": 1819030.36,
+     "MA": 1551618.66,
+     "AM": 1343213.07,
+     "TO": 1168452.56,
+     "GO": 961133.18,
+     "CE": 767618.34,
      "PE": 692956.75,
-     "RJ": 585810.22,
-     "BA": 578247.86,
-     "RR": 567725.91,
-     "MS": 541392.57,
-     "AC": 498029.83,
-     "PR": 378843.04,
-     "SP": 246749.46,
-     "PI": 246716.79,
-     "AP": 244296.96,
-     "MG": 200437.2,
-     "SC": 195394.58,
+     "RJ": 673454.76,
+     "RR": 653414.52,
+     "BA": 585850.94,
+     "MS": 576494.38,
+     "AC": 498704.79,
+     "PR": 407035.4,
+     "PI": 271230.09,
+     "AP": 262584.6,
+     "SP": 258687.96,
+     "SC": 214166.4,
+     "MG": 206058.56,
      "PB": 188755.01,
-     "RN": 159650.74,
-     "AL": 149637.38,
-     "RS": 148008.61,
-     "ES": 99301.16,
+     "RN": 161779.02,
+     "AL": 151395.66,
+     "RS": 149401.81,
+     "ES": 106154.16,
      "SE": 66536.44
     },
-    "atualizado_em": "01/11/2026"
+    "atualizado_em": "11/11/2026"
    },
    "assinada_em": "12/06/2026",
    "conferido_em": "01/10/2026",
@@ -163,16 +175,16 @@
     "status": "coletado",
     "medida": "valor desembolsado por modalidade de aplicação do orçamento federal",
     "por_modalidade": {
-     "aplicados diretamente pela União": 353590786.7,
+     "aplicados diretamente pela União": 389887726.98,
      "transferidos a entidades sem fins lucrativos": 1820102.51
     },
-    "atualizado_em": "01/11/2026"
+    "atualizado_em": "11/11/2026"
    },
    "risco_declarado": {
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor do Ministério do Meio Ambiente e Mudança do Clima, no valor de R$ 337.483.432,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
-    "lido_em": "01/11/2026"
+    "lido_em": "11/11/2026"
    },
    "isolamento": {
     "metodo": "plano_orcamentario",
@@ -183,14 +195,15 @@
      "202607",
      "202608",
      "202609",
-     "202610"
+     "202610",
+     "202611"
     ],
     "via_1_plano_orcamentario": {
      "status": "isolado",
      "novos": {
       "MP11": {
        "empenhado": 336802768.89,
-       "pago": 88096974.25
+       "pago": 89410593.52
       }
      }
     },
@@ -205,7 +218,7 @@
     "via_4_dotacao": {
      "fonte": "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/2026",
      "exercicio": "2026",
-     "hash": "842c1e339e5f609a6c123f4ee8f4f4085abde0c5a34d5619d26dcc0599d1ab39",
+     "hash": "72ba4bc43361d50a9c53d3778a2b87560eeb07e358bfeb9cae4f913b1a4b1a22",
      "por_acao": {
       "214M": {
        "inicial": 66600000.0,
@@ -259,8 +272,8 @@
        "detalhe": "arroz: +106% sobre o estoque atual (~20 dias de consumo); milho para a estiagem prevista no Nordeste"
       }
      ],
-     "execucao_empenhado": 328077607.25,
-     "execucao_pago": 87467765.33,
+     "execucao_empenhado": 326417650.0,
+     "execucao_pago": 101045485.55,
      "acoes": [
       "2130"
      ]
@@ -275,8 +288,8 @@
        "detalhe": "valor por diferença (925 − 849); a confirmar no anexo da MP"
       }
      ],
-     "execucao_empenhado": 57064587.69,
-     "execucao_pago": 55540946.45,
+     "execucao_empenhado": 60428438.75,
+     "execucao_pago": 61141439.67,
      "acoes": [
       "2792",
       "2798"
@@ -286,16 +299,19 @@
    "execucao": {
     "status": "coletado",
     "fonte": "Portal da Transparência — Execução da Despesa (arquivos mensais abertos)",
-    "empenhado": 385142194.94,
-    "liquidado": 129663486.34,
-    "pago": 143008711.78,
+    "empenhado": 386846088.75,
+    "liquidado": 150137328.34,
+    "pago": 162186925.22,
     "meses": [
      "202608",
      "202609",
-     "202610"
+     "202610",
+     "202611"
     ],
-    "atualizado_em": "01/11/2026",
-    "meses_parciais": [],
+    "atualizado_em": "11/11/2026",
+    "meses_parciais": [
+     "202611"
+    ],
     "por_mes": {
      "202608": {
       "empenhado": 22667749.84,
@@ -316,13 +332,22 @@
       }
      },
      "202610": {
-      "empenhado": 188172607.4,
-      "liquidado": 46860416.56,
-      "pago": 51887539.98,
+      "empenhado": 186407400.84,
+      "liquidado": 60037619.19,
+      "pago": 52879582.36,
       "por_modalidade_pago": {
-       "aplicados diretamente pela União": 49887539.98,
+       "aplicados diretamente pela União": 50879582.36,
        "transferidos aos estados": 2000000.0
       }
+     },
+     "202611": {
+      "empenhado": 3469100.37,
+      "liquidado": 7296639.37,
+      "pago": 18186171.06,
+      "por_modalidade_pago": {
+       "aplicados diretamente pela União": 18186171.06
+      },
+      "parcial": true
      }
     },
     "limite": "execução das AÇÕES reforçadas pela MP desde o mês de publicação — inclui a dotação ordinária da ação; teto, não a execução do crédito",
@@ -332,15 +357,15 @@
     "status": "coletado",
     "medida": "valor pago por UF da unidade gestora (BR = unidade nacional)",
     "por_uf_pago": {
-     "BR": 142095616.89,
-     "MG": 464640.11,
-     "GO": 213979.51,
-     "BA": 112499.51,
-     "SP": 68828.3,
-     "PA": 37019.85,
-     "RS": 16127.61
+     "BR": 161034633.82,
+     "MG": 605646.66,
+     "BA": 299059.69,
+     "GO": 135848.24,
+     "SP": 91914.19,
+     "RS": 14542.63,
+     "PA": 5279.99
     },
-    "atualizado_em": "01/11/2026"
+    "atualizado_em": "11/11/2026"
    },
    "assinada_em": "12/08/2026",
    "conferido_em": "01/10/2026",
@@ -349,17 +374,17 @@
     "status": "coletado",
     "medida": "valor desembolsado por modalidade de aplicação do orçamento federal",
     "por_modalidade": {
-     "aplicados diretamente pela União": 115711096.78,
+     "aplicados diretamente pela União": 134889310.22,
      "transferidos aos estados": 25800000.0,
      "transferidos ao exterior": 1497615.0
     },
-    "atualizado_em": "01/11/2026"
+    "atualizado_em": "11/11/2026"
    },
    "risco_declarado": {
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor dos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do Desenvolvimento e Assistência Social, Família e Combate à Fome, no valor de R$ 924.985.960,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455",
-    "lido_em": "01/11/2026"
+    "lido_em": "11/11/2026"
    },
    "isolamento": {
     "metodo": "plano_orcamentario",
@@ -368,14 +393,15 @@
      "202607",
      "202608",
      "202609",
-     "202610"
+     "202610",
+     "202611"
     ],
     "via_1_plano_orcamentario": {
      "status": "isolado",
      "novos": {
       "MP10": {
-       "empenhado": 29936758.43,
-       "pago": 6160264.8
+       "empenhado": 33300609.49,
+       "pago": 6816182.36
       },
       "MP30": {
        "empenhado": 2300000.0,
@@ -398,7 +424,7 @@
     "via_4_dotacao": {
      "fonte": "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/2026",
      "exercicio": "2026",
-     "hash": "842c1e339e5f609a6c123f4ee8f4f4085abde0c5a34d5619d26dcc0599d1ab39",
+     "hash": "72ba4bc43361d50a9c53d3778a2b87560eeb07e358bfeb9cae4f913b1a4b1a22",
      "por_acao": {
       "2130": {
        "inicial": 201503465.0,
@@ -431,6 +457,7 @@
   "202607": "df90f945215e3080d54f8c5bfa18c75d3ab6ea2ca5f7239e11a0a26bd5806e0e",
   "202608": "2229bd249a0abc333c63b65e679df9a315d992e2c941e2daca5a60c49ff328fa",
   "202609": "20e2939f624f2efaaf56337c338bd1002b02f611f8b34da7c06e277bc6811c29",
-  "202610": "308d31fa2e9215109fe62fd9b01a9c01a533a3616b0e996a59eb729f4d702331"
+  "202610": "3b76a04403cd3b9b9a28537862f634657b7ef4d459151ec099e06db6aae7e9a0",
+  "202611": "801104de35c84a8a0f46dab2b896699893183ea10b6e0f065baaea04928b0575"
  }
 }
