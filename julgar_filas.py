@@ -206,6 +206,14 @@ def pendente(p: dict, hoje=None) -> bool:
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
 
+def na_vez(p: dict, nomeada: bool = False, hoje=None) -> bool:
+    """A pista entra nesta rodada? Função pura. Pista NOMEADA pela rodada (`--urls`, `--ids`) entra mesmo
+    dentro do back-off: quem a nomeia sabe que a causa técnica mudou (11/11/2026: 203 pistas do Prepara RS
+    esperavam até 15 e 17/11 por uma falha do leitor antigo já corrigida no #1680). O resto de `pendente` vale."""
+    import datetime as _d
+    return pendente(p, hoje=_d.date.max if nomeada else hoje)
+
+
 def restantes(ler, hoje=None) -> int:
     """O que o elo do juiz deixou para a rodada seguinte: as filas do codebook e as pendentes de
     documento não julgadas hoje. Maior que zero, o elo grava `.parcial` em vez de `.feito` e a
@@ -487,6 +495,10 @@ def autoteste() -> int:
     casos.append(("fechada por prazo e já julgada por este codebook não volta",
                   not pendente({**fechada_lida, "juiz": {**fechada_lida["juiz"],
                                                          "codebook": CODEBOOK_VERSAO}})))
+    em_espera = {"status": "pista — na fila", "proxima_tentativa_em": "2999-01-01"}
+    casos.append(("pista em back-off não está na vez da rodada comum, e está quando nomeada (--urls/--ids)",
+                  not na_vez(em_espera, nomeada=False) and na_vez(em_espera, nomeada=True)
+                  and not na_vez({"status": "inacessivel_persistente"}, nomeada=True)))
     casos.append(("fechada por prazo sem leitura não volta pelo codebook",
                   not pendente({"status": fechada_lida["status"],
                                 "juiz": {"codebook": "1.3 (03/10/2026)", "leu_documento": False}})))
@@ -818,8 +830,8 @@ def main() -> int:
         if not doc:
             continue
         lista = pistas_da_fila(doc)
-        alvo = selecionar([p for p in lista if pendente(p)], ids=ids, so_oficial=so_oficial,
-                          urls=urls)
+        alvo = selecionar([p for p in lista if na_vez(p, nomeada=bool(ids or urls))], ids=ids,
+                          so_oficial=so_oficial, urls=urls)
         if limite is not None:
             alvo = alvo[:max(0, limite - len(vereditos))]
         por_fila[nome_fila] = len(alvo)

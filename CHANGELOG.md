@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Juiz: pista nomeada entra mesmo dentro do back-off
+Pista apontada pela rodada (`--urls`, `--ids`) passa a ser julgada mesmo na espera de 1, 3 ou 7 dias. As 203 pistas do Prepara RS que falharam no leitor antigo esperavam até 15 e 17/11, embora a causa já estivesse corrigida no #1680. A rodada comum segue com o back-off. (+13)
+
 ## 2026-11-11 · #PR · Releitura que falha não troca o município lido
 
 `rodar_municipios` (descobrir_planos.py) gravava por cima do `lido` a tentativa seguinte que expirava no runner (S14, 11/11: seis capitais regrediram a `portal_nao_verificado`). Agora o `lido` fica e a última tentativa vai em `ultima_tentativa`. Autoteste novo. Sem mudança de dado.
