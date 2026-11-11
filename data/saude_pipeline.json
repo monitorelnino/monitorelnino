@@ -3692,7 +3692,14 @@
   {"data": "2026-11-10", "script": "scripts/triar_fila.py", "inicio": "2026-11-11T01:58:49", "duracao_s": 1.6, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-10", "script": "julgar_filas.py", "inicio": "2026-11-11T01:58:50", "duracao_s": 201.2, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-10", "script": "aplicar_promocoes_do_juiz.py", "inicio": "2026-11-11T02:02:11", "duracao_s": 2.0, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-10", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-11T02:02:13", "duracao_s": 2.2, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-10", "script": "scripts/verificar_esquema_de_pista.py", "inicio": "2026-11-11T02:02:13", "duracao_s": 2.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "julgar_saude.py", "inicio": "2026-11-11T01:59:19", "duracao_s": 4184.1, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-11", "script": "coletar_saude_estadual.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "coletar_saude_estadual.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "coletar_saude_estadual.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "coletar_saude_estadual.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "coletar_edicoes_doe.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "scripts/fechar_saude.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
  ],
- "atualizado_em": "2026-11-11T02:02:13"
+ "atualizado_em": "2026-11-11T03:09:03"
 }
