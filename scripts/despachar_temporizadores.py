@@ -508,6 +508,12 @@ def _autoteste() -> int:
        not esta_devido(des, [], dt.datetime(2026, 10, 31, 1, 10)))
     ok("desfechos são devidos às 07:10, depois da saúde",
        esta_devido(des, [], dt.datetime(2026, 10, 31, 7, 10)))
+    sem = next(t for t in json.loads(REGISTRO.read_text(encoding="utf-8"))["temporizadores"]
+               if t.get("id") == "rodada_semanal")
+    ok("rodada semanal não é devida às 01:10 UTC de domingo, sábado em Brasília (F84)",
+       not esta_devido(sem, [], dt.datetime(2026, 11, 8, 1, 10)))
+    ok("rodada semanal é devida às 03:20 UTC de domingo, já domingo em Brasília (F84)",
+       esta_devido(sem, [], dt.datetime(2026, 11, 8, 3, 20)))
     ok("sem a declaração, o comportamento antigo fica (devido na abertura)",
        esta_devido(dict(tri, nao_antes_do_cron=False), [], dt.datetime(2026, 10, 11, 1, 10)))
     ok("pendente cancelado pela fila é refeito pela reserva (abertura de 10/10)",

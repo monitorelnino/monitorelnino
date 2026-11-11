@@ -2,7 +2,7 @@
 
 Gerado por `scripts/catalogo_de_falhas.py --gerar-doc` a partir de `config/falhas_da_noite.json`. Não editar à mão.
 
-Atualizado em 2026-11-06. 83 falhas; 76 com caso de teste que as reproduz; 7 sem, com o que falta dito.
+Atualizado em 11/11/2026. 84 falhas; 77 com caso de teste que as reproduz; 7 sem, com o que falta dito.
 
 Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 
@@ -752,3 +752,12 @@ Falha nova vira linha nova no JSON, com causa, prova e caso de teste.
 - **Prova:** runs 42389755567 (07/11 16:12) e 42470034368 (08/11 10:12) de verificar_publicado.yml: 'credit usage exceeded'; passo Repor com conclusion=failure em todo publicar_dados.yml de 07/11 16:xx a 08/11 19:xx; último 'Deploy is live' antes do bloqueio: run 42362761178, 07/11 10:21 UTC
 - **Correção:** #1626: `repor_dominio.sh` decide por `scripts/janela_de_deploy.py` (último deploy de produção no ar via listSiteDeploys; só deploya se `manifesto=<hash>` mudou e a janela de 12 h fechou); vigia trata ADIADO como aviso e põe o relatório do deploy no corpo da Issue; reposição manual usa --forcar. Créditos repostos pela editoria em 08/11 ~20:50 UTC; domínio reposto às 21:01.
 - **Caso de teste:** `scripts/janela_de_deploy.py --autoteste (10 casos)`
+
+## F84 · Rodada semanal disparada no sábado de Brasília: financiamento sem coleta desde 01/11
+
+- **Noite:** 2026-11-08
+- **Sintoma:** Portão de frescor vermelho na main em 11/11: mps_2026, despesa_182 e programas_faf_2026 com gerado_em 01/11; por_uf e serie_nacional com corte 22/10. Todo PR reprovado.
+- **Causa:** O temporizador `rodada_semanal` é devido no domingo UTC a partir das 01:00, e o despachante o disparou às 01:10 UTC de 08/11 (22:10 de sábado em Brasília). `atualizar.py` decide a cadência no fuso da redação, viu sábado e encerrou sem coletar. O cron das 03:10 UTC chegou às 10:10 e a guarda da janela o adiou. Nenhuma rodada coletou no domingo.
+- **Prova:** run 42433051903 (08/11 01:10 UTC): atualizar.py sem etapas de coleta; run 42470261402 (08/11 10:10 UTC): COLETA ADIADA pela guarda da janela; run 42977418722 (11/11 07:09 UTC): '[cadência] ... não é domingo ... encerra sem coletar'
+- **Correção:** `nao_antes_do_cron: true` em `rodada_semanal`: o despachante só a julga devida a partir das 03:10 UTC de domingo (00:10 de Brasília), quando `atualizar.py` já vê domingo. Recoleta de 11/11 pela válvula `coleta_de_dia` (financiamento-semanal).
+- **Caso de teste:** `scripts/despachar_temporizadores.py --autoteste (dois casos F84: 01:10 UTC de domingo não devido; 03:20 devido)`

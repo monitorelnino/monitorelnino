@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Rodada semanal só no domingo de Brasília
+O despachante julgava a rodada semanal devida desde 01:00 UTC de domingo, que ainda é sábado em Brasília; `atualizar.py` via sábado e saía sem coletar, e o financiamento ficou sem coleta desde 01/11. O temporizador passa a não ser devido antes do próprio cron (03:10 UTC, 00:10 de Brasília). Falha F84 no catálogo. (+19)
+
 ## 2026-11-11 · #PR · Cartão de compartilhamento sem números
 A imagem que aparece quando o link do site é compartilhado mostrava a média do índice com dados até 10/09/2026 e a expressão "dados abertos". Imagem fixa com número envelhece; o novo cartão (`assets/social/card-mare.png`) descreve o que o site cobre e diz que a metodologia é pública. O nome novo faz os aplicativos buscarem a imagem de novo.
 
