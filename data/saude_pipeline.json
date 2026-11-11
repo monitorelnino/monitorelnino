@@ -3699,7 +3699,13 @@
   {"data": "2026-11-11", "script": "coletar_saude_estadual.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
   {"data": "2026-11-11", "script": "coletar_saude_estadual.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
   {"data": "2026-11-11", "script": "coletar_edicoes_doe.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
-  {"data": "2026-11-11", "script": "scripts/fechar_saude.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
+  {"data": "2026-11-11", "script": "scripts/fechar_saude.py", "inicio": "2026-11-11T03:09:03", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-10", "script": "consultar_querido_diario.py", "inicio": "2026-11-11T01:16:56", "duracao_s": 64.2, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> | queridodiario.ok.org.br: HTTPError HTTP Error 520: <none> | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-10", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-11T01:18:00", "duracao_s": 2.5, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-10", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-11T01:18:02", "duracao_s": 2777.4, "itens": 34, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_doe.py", "inicio": "2026-11-11T02:04:19", "duracao_s": 3534.8, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_s2id.py", "inicio": "2026-11-11T03:03:13", "duracao_s": 1167.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-11T03:22:40", "duracao_s": 79.6, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-11T03:09:03"
+ "atualizado_em": "2026-11-11T03:22:40"
 }
