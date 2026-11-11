@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-04 a 2026-11-11 (1423 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-04 a 2026-11-11 (1429 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,8 +27,8 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-11 07:18 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-10 01:35 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-11 18:11 | 4 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-11 17:34 | 58 s | 8 | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-11 20:03 | 5 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-11 18:31 | 497 s | 39 | ok | — |
 | `atualizar.py` | coletor | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-11 07:15 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-11-10 01:21 | 19 s | 13 | ok | — |
@@ -67,7 +67,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `coletar_siconfi_182.py` | coletor | 2026-11-11 07:53 | 1 s | 5571 | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-11 07:18 | 476 s | — | ok | — |
 | `coletar_sim.py` | coletor | 2026-11-11 07:18 | 10 s | — | sem novidade | — |
-| `coletar_sinais_risco.py` | coletor | 2026-11-11 12:05 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `coletar_sinais_risco.py` | coletor | 2026-11-11 19:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-11 07:16 | 124 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-07 01:17 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-10 01:59 | 35 s | — | ok | — |
@@ -79,7 +79,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `desfechos_sus.py` | coletor | 2026-11-11 07:18 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-11 08:34 | 32 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-11 07:39 | 22 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-11-11 17:26 | 471 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-11-11 18:12 | 1154 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-11-11 01:59 | 4184 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-11 07:51 | 4 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-11 08:32 | 105 s | 24572 | ok | — |
