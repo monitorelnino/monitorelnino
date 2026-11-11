@@ -60,6 +60,7 @@ RAIZ = pathlib.Path(__file__).parent
 # Aqui fica o nome importado — duas definições do fuso da redação são a cópia que envelhece
 # (§213, §222, §226).
 from coletores_base import FUSO_EDITORIAL, hoje_editorial, gravar_em  # noqa: E402,F401
+from scripts.janela_da_noite import noite_de  # noqa: E402
 DIA_PUBLICACAO = 6            # weekday(): 0 = segunda … 5 = sábado, 6 = domingo
 NOME_DIA_PUBLICACAO = "domingo"
 
@@ -149,7 +150,10 @@ def main():
     intensivo = os.environ.get("INTENSIVO_ATE", "")
     intensivo_de = os.environ.get("INTENSIVO_DE", "") or intensivo  # sem início declarado, vale só o fim
     hoje_iso = hoje_editorial().isoformat()
-    dia_semana = hoje_editorial().weekday()  # no fuso da redação, nunca no do runner (ver topo)
+    # A cadência é da NOITE (a janela que abre às 01:00 UTC), não do relógio de Brasília: o elo das 01:10 UTC
+    # é sábado 22h lá, e a rodada completa "de domingo de madrugada" (`rodada_semanal` em temporizadores) saía
+    # sem coletar; Financiamento ficou 10 dias sem recarimbar (frescor vermelho na main, 11/11/2026).
+    dia_semana = datetime.date.fromisoformat(noite_de(datetime.datetime.now(datetime.timezone.utc))).weekday()
     em_intensivo = bool(intensivo) and intensivo_de <= hoje_iso <= intensivo
 
     # Sinais oficiais de risco (METODOLOGIA §23): coletados todo dia pelo elo `noturno_sinais.yml`

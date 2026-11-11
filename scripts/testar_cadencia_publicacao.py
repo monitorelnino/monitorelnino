@@ -75,12 +75,19 @@ def main():
     if esperado and esperado not in nome_dia.lower():
         falhas.append(f"DIA_PUBLICACAO={dia} é {esperado}, mas NOME_DIA_PUBLICACAO diz {nome_dia!r}")
 
-    # 5. A cadência é medida no fuso da redação, nunca no do runner (UTC).
-    if "hoje_editorial()" not in fonte:
-        falhas.append("o portão de cadência não usa hoje_editorial() — medir o dia em UTC faz a "
-                      "rodada noturna de sábado cair na sexta para o leitor brasileiro")
+    # 5. A cadência é medida pela NOITE (`janela_da_noite.noite_de`), nem em UTC puro nem no relógio de
+    #    Brasília: o elo das 01:10 UTC é sábado 22h lá e a rodada de domingo de madrugada saía sem coletar
+    #    (08/11/2026). Prova com o instante que importa.
+    if not re.search(r"dia_semana\s*=.*noite_de\(", fonte):
+        falhas.append("dia_semana não vem de noite_de() — pelo relógio de Brasília a rodada das 01:10 UTC "
+                      "de domingo é sábado e a semanal não coleta")
     if re.search(r"dia_semana\s*=\s*datetime\.date\.today\(\)", fonte):
-        falhas.append("dia_semana ainda vem de datetime.date.today() (UTC no runner) — use hoje_editorial()")
+        falhas.append("dia_semana ainda vem de datetime.date.today() (UTC no runner) — use noite_de()")
+    from scripts.janela_da_noite import noite_de
+    for hora, noite in ((1, "2026-11-08"), (3, "2026-11-08"), (0, "2026-11-07")):
+        obtida = noite_de(datetime.datetime(2026, 11, 8, hora, 10, tzinfo=datetime.timezone.utc))
+        if obtida != noite:
+            falhas.append(f"noite_de(08/11 {hora:02d}:10 UTC) = {obtida}, esperado {noite}")
 
     # 5b. Nenhuma data do pipeline pode vir de UTC: a rodada de sábado 22h40 começa
     #     no domingo em UTC e cruza a meia-noite, então date.today() erra dia em dois
@@ -174,7 +181,7 @@ def main():
             print(f"✗ {f}")
         return 1
 
-    print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido no fuso da redação; "
+    print(f"✓ cadência coerente: DIA_PUBLICACAO={dia} ({nome_dia}) medido pela noite da janela; "
           f"portão usa a constante; cron semanal cai no dia certo em Brasília; "
           f"nenhuma página promete dia ao leitor")
     return 0
