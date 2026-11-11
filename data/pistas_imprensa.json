@@ -29888,7 +29888,7 @@
    "destino": "indefinido",
    "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "id": "42458062c0",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "status_anterior": "pista — recusada pelo juiz: ente_nao_confirmado",
    "limpeza": {
     "em": "2026-10-03",
@@ -29897,9 +29897,10 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "repeticoes": 2,
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -43379,7 +43380,7 @@
    "destino": "indefinido",
    "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "id": "1c3e37bc42",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "status_anterior": "pista — recusada pelo juiz: ente_nao_confirmado",
    "limpeza": {
     "em": "2026-10-03",
@@ -43387,9 +43388,10 @@
     "regra": "C.1 do handover de 03/10/2026"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -66122,15 +66124,16 @@
    "nivel": "C",
    "tipo": "plano",
    "registrado_em": "2026-10-07",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "quarentena": true,
    "destino": "quarentena",
    "motivo_da_quarentena": "fora do esquema de schemas/pista.json",
    "quarentenada_em": "2026-10-07",
    "reaplicada_em": "reaplicacao da noite",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -120213,14 +120216,15 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "e53c2ccbdf",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "reaplicada_em": "reaplicacao da noite",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -120239,7 +120243,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Bonfinópolis de Minas",
@@ -126333,14 +126344,15 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "8c7b8c0ba6",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "reaplicada_em": "reaplicacao da noite",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -176065,13 +176077,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "d1820e4b36",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -188012,13 +188025,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "6d65f0c0a1",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -192866,13 +192880,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "b8ac12accc",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -193117,13 +193132,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "18464ba6c9",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -194217,13 +194233,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "ea9e753ea6",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -194728,13 +194745,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "4ac7840573",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -197323,13 +197341,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "d6c7904a87",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -210734,13 +210753,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "e78334e3a4",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -233787,13 +233807,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "91eaee8cd2",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -249872,13 +249893,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "e1566eb69d",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -261502,13 +261524,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "3d7602a8a4",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -275672,13 +275695,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "ef026de504",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -309147,13 +309171,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "754714d812",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -309451,13 +309476,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "70e4ce7f17",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -310066,13 +310092,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "ea22b01443",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -370045,13 +370072,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "618a25c29e",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -371493,13 +371521,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "a82c796e8e",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -373131,13 +373160,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "82d965ac7f",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -376811,13 +376841,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "84851c31cf",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-26",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-26",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -376845,6 +376876,13 @@
     "data": "05/04/2013",
     "julgado_em": "2026-11-11",
     "hash_evidencia": "93ac3ebfe36bafc81ea9db956ee63bdce0fc2cd89e0016281da62a00d6d7e819"
+   },
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
    }
   },
   {
@@ -395949,14 +395987,15 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "1f9e60ea2d",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
    "repeticoes": 2,
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -395975,7 +396014,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Anori",
@@ -402057,14 +402103,15 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "8cd2760336",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
    "repeticoes": 5,
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -402092,6 +402139,13 @@
     "data": "2024",
     "julgado_em": "2026-11-11",
     "hash_evidencia": "704f4de611ebca0ceaa1a1f93531ef3693b50e35b7c3b23fa5f446ff4acb2baa"
+   },
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
    }
   },
   {
@@ -431814,7 +431868,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Porto Acre",
@@ -432185,7 +432246,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Plácido de Castro",
@@ -434074,7 +434142,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Capixaba",
@@ -463861,9 +463936,10 @@
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
    "repeticoes": 2,
-   "pontos_confianca": 4,
+   "pontos_confianca": 5,
    "sinais": [
     "fonte_oficial",
+    "municipio_na_url",
     "texto_candidato_forte"
    ],
    "alertas": [
@@ -464669,9 +464745,10 @@
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 4,
+   "pontos_confianca": 5,
    "sinais": [
     "fonte_oficial",
+    "municipio_na_url",
     "texto_candidato_forte"
    ],
    "alertas": [
@@ -477690,13 +477767,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "7c00f721e4",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -485529,13 +485607,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "1f25f3b1ea",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -502482,13 +502561,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "7277af411d",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -502509,7 +502589,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Jaboatão dos Guararapes",
@@ -503527,13 +503614,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "24befc54ec",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -503554,7 +503642,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Olinda",
@@ -504535,13 +504630,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "3653e4bc10",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -504562,7 +504658,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Camaragibe",
@@ -572712,13 +572815,14 @@
    "nivel": "C",
    "tipo": "plano",
    "id": "ff2f49e8f7",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "buscador2_em": "2026-10-27",
    "status_anterior": "pista — na fila, aguardando busca dirigida e juiz",
    "fechada_em": "2026-10-27",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
@@ -572739,7 +572843,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Parnamirim",
@@ -605512,7 +605623,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Corupá",
@@ -610530,7 +610648,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "municipio": "Joinville",
@@ -629547,10 +629672,11 @@
    "promovivel": false,
    "status": "pista — recusada pelo juiz: citacao_incompleta",
    "id": "9aa14e41fd",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
+   "nivel_confianca": "B",
+   "pontos_confianca": 4,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_no_titulo"
    ],
    "alertas": [],
    "verificacao_fonte": {
@@ -859483,7 +859609,7 @@
    "promovivel": false,
    "status": "pista — atribuição corrigida pelo domínio oficial do documento; volta ao juiz com o ente dono do domínio",
    "id": "5939c2f42e",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "noites_sem_resolver_agregador": [
     "2026-11-10"
    ],
@@ -859496,9 +859622,10 @@
    "buscador2_em": "2026-11-10",
    "status_anterior": "pendente_confirmacao_documento",
    "fechada_em": "2026-11-10",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -859520,7 +859647,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-12"
+   "proxima_tentativa_em": "2026-11-12",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
   },
   {
    "alvo": "resposta/PR",
@@ -865154,10 +865288,10 @@
    "promovivel": false,
    "status": "aplicada_automaticamente",
    "id": "1e5610995f",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_imprensa",
+    "fonte_oficial",
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
@@ -865383,10 +865517,10 @@
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
    "id": "d38794a1d1",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_imprensa",
+    "fonte_oficial",
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
@@ -866928,10 +867062,10 @@
    "promovivel": false,
    "status": "pendente_confirmacao_documento",
    "id": "1dc78bcb93",
-   "nivel_confianca": "C",
-   "pontos_confianca": 2,
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_imprensa",
+    "fonte_oficial",
     "familia_de_risco_do_ciclo"
    ],
    "alertas": [],
@@ -867751,9 +867885,9 @@
    "status": "pendente_confirmacao_documento",
    "id": "ecb836cb55",
    "nivel_confianca": "C",
-   "pontos_confianca": 1,
+   "pontos_confianca": 2,
    "sinais": [
-    "fonte_imprensa"
+    "fonte_oficial"
    ],
    "alertas": [],
    "verificacao_fonte": {
@@ -870702,7 +870836,7 @@
    "promovivel": false,
    "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "id": "ce0cad4ec1",
-   "nivel_confianca": "C",
+   "nivel_confianca": "B",
    "noites_sem_resolver_agregador": [
     "2026-11-10"
    ],
@@ -870715,9 +870849,10 @@
    "buscador2_em": "2026-11-10",
    "status_anterior": "pendente_confirmacao_documento",
    "fechada_em": "2026-11-10",
-   "pontos_confianca": 2,
+   "pontos_confianca": 3,
    "sinais": [
-    "fonte_oficial"
+    "fonte_oficial",
+    "municipio_na_url"
    ],
    "alertas": [],
    "municipio_atribuido_antes": {
@@ -880810,6 +880945,229 @@
     "motivo": "sinalizador 'situação de emergência' + recital de dano ocorrido",
     "natureza": "resposta"
    }
+  },
+  {
+   "alvo": "D-municipio-prioritario/Barra dos Coqueiros/SE",
+   "query": "\"plano de contingência\" Barra dos Coqueiros SE 2026 El Niño estiagem defesa civil",
+   "titulo": "Governo de Sergipe - Portal de Serviços de Sergipe",
+   "url": "https://www.se.gov.br/agencia/noticias",
+   "data_publicacao": "Mon, 09 Nov 2026 15:30:00 GMT",
+   "fonte_veiculo": "Portal de Serviços de Sergipe",
+   "veiculo_dominio": "https://www.se.gov.br",
+   "hash": "ac529648801dfb95",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQLU1PT2V5WFBKeHVJU1FKZmpMRDdFUmR6VmJUby05RHZ0cmlhYVFfYllUeUdSWGV0clNaZmxyUUdQY1VzQ1JNT0hqdHVEaG5BUTFTSVVWREtFMGNSN3FtWFo0bjN6SGxzbDY1bFRNeU5JaWZXWGd0ZEROdzZrZjFoR1RwMFcxM1lZSlk5aEJwUVFLX0o4c2pMY3VpeUZsYVBVOUpHVHlTQklyRzZ4UGhUNmQyUzU1ODBuWVh0ZHNLM0lWV3dJSTJF?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": true,
+   "hash_evidencia": null,
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "pendente_confirmacao_documento",
+   "id": "6257ca1b38",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_oficial"
+   ],
+   "alertas": [],
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-11",
+    "criterios": {}
+   }
+  },
+  {
+   "alvo": "D-municipio-prioritario/Capela/SE",
+   "query": "\"plano de contingência\" Capela SE 2026 El Niño estiagem defesa civil",
+   "titulo": "Bahia tem 81 cidades em emergência e só uma com plano - Bahia Notícias",
+   "url": "https://www.bahianoticias.com.br/municipios/noticia/53311-bahia-tem-81-municipios-em-emergencia-mas-so-feira-de-santana-possui-plano-contra-el-nino",
+   "data_publicacao": "Wed, 11 Nov 2026 03:00:00 GMT",
+   "fonte_veiculo": "Bahia Notícias",
+   "veiculo_dominio": "https://www.bahianoticias.com.br",
+   "hash": "ee64e5757a564175",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPZ3lHNlNhRU9NVzhhQkg5NmdSZVI3Sllzdl9wV0N6aWJZNUR3dWtlOV9mU2pWV050LXE5LW5oRV9ESGtnRkNkamVjQ3lOUXNKYTNSQmhBY0thNTZzMDhnMmI0Z1Bmci1jTmtUS1lGbUhXRFowRVRUeWdKOU9LZTc3ZVk3enhtbkRCUjZhWGhPMmlqSTJOME1ZV0gyaEhueF9kVV80c3NtOUNrWnJMSHEzSXFiWjRwRk9KNkdnQlhqMlBuUEFjZHR4c2FQT1NTeG1TQ0RMZmx6aXpZamVrbHVycXdMbXVHUQ?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "0991494319b707b1a69a841341ba47dd161653390f56df731edaf50f51db432e",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (bahianoticias.com.br)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "248ee2b608",
+   "nivel_confianca": "C",
+   "pontos_confianca": 1,
+   "sinais": [
+    "fonte_imprensa"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "D-municipio-prioritario/Araguaína/TO",
+   "query": "\"plano de contingência\" Araguaína TO 2026 El Niño estiagem defesa civil",
+   "titulo": "Expansão do sistema de abastecimento de Senador Canedo garante água para até 90 dias de estiagem - Daqui",
+   "url": "https://daqui.opopular.com.br/geral/expans-o-do-sistema-de-abastecimento-de-senador-canedo-garante-agua-para-ate-90-dias-de-estiagem-1.2791056",
+   "data_publicacao": "Thu, 07 Nov 2024 02:42:10 GMT",
+   "fonte_veiculo": "Daqui",
+   "veiculo_dominio": "https://daqui.opopular.com.br",
+   "hash": "fddbb2bd10133c30",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPSHA0bWljNl9oeHdTTk13T2Vfd3pHdG9id3B4MVZ6VjJ3TzhlWFl5V24ybDZxc2NhdEVZUXFOVmZyRTBQQkRZT2VFd1ppaVp0enZoNWlnOVlBOVlOdEk1dDhaNkhTSXUwTVJKcmZlSGpXcW8wUDF2ZUR2Z1BfSkpjdmtwVl8zaHlnMkJDWExDM28tUnVMNFNIOUQ0X2JmbGlrVDNjSHVQRGpCZHdYNzFVVEVsZEdjempDdlk0U3FfRFFkYXk2OGp4REZJS0U3bnNOa2ZXODQ5WXpZdw?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": null,
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (daqui.opopular.com.br)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "9198d145f2",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "D-municipio-prioritario/Porto Nacional/TO",
+   "query": "\"plano de contingência\" Porto Nacional TO 2026 El Niño estiagem defesa civil",
+   "titulo": "Bahia tem 81 cidades em emergência e só uma com plano - Bahia Notícias",
+   "url": "https://www.bahianoticias.com.br/municipios/noticia/53311-bahia-tem-81-municipios-em-emergencia-mas-so-feira-de-santana-possui-plano-contra-el-nino",
+   "data_publicacao": "Wed, 11 Nov 2026 03:00:00 GMT",
+   "fonte_veiculo": "Bahia Notícias",
+   "veiculo_dominio": "https://www.bahianoticias.com.br",
+   "hash": "b643a0247db29ae8",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPZ3lHNlNhRU9NVzhhQkg5NmdSZVI3Sllzdl9wV0N6aWJZNUR3dWtlOV9mU2pWV050LXE5LW5oRV9ESGtnRkNkamVjQ3lOUXNKYTNSQmhBY0thNTZzMDhnMmI0Z1Bmci1jTmtUS1lGbUhXRFowRVRUeWdKOU9LZTc3ZVk3enhtbkRCUjZhWGhPMmlqSTJOME1ZV0gyaEhueF9kVV80c3NtOUNrWnJMSHEzSXFiWjRwRk9KNkdnQlhqMlBuUEFjZHR4c2FQT1NTeG1TQ0RMZmx6aXpZamVrbHVycXdMbXVHUQ?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "0991494319b707b1a69a841341ba47dd161653390f56df731edaf50f51db432e",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (bahianoticias.com.br)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "248ee2b608",
+   "nivel_confianca": "C",
+   "pontos_confianca": 1,
+   "sinais": [
+    "fonte_imprensa"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "D-municipio-prioritario/Aparecida de Goiânia/GO",
+   "query": "\"plano de contingência\" Aparecida de Goiânia GO 2026 El Niño estiagem defesa civil",
+   "titulo": "Cidade no Tocantins terá rodízio no abastecimento de água após reservatório secar - Daqui",
+   "url": "https://daqui.opopular.com.br/geral/cidade-no-tocantins-tera-rodizio-no-abastecimento-de-agua-apos-reservatorio-secar-1.3467413",
+   "data_publicacao": "Mon, 12 Oct 2026 19:53:14 GMT",
+   "fonte_veiculo": "Daqui",
+   "veiculo_dominio": "https://daqui.opopular.com.br",
+   "hash": "cf5441b6cfa55403",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPeDN6cTc5Y1d0aEluN1VneEVpU1dxbVJWQlh1UnpJY3NzSjR3eG9DOG9IeUc4RWszemhRbDRTTDZYQ1hJblZUYnA1dTNmZVhCRjV4RnlXUFQwV3ZrSDR3ZmpYQjFONmZ1eGRqTDNrVkw4bHNMZ2REbk5ZS2pETzhxV25yQVg3RHdJWFU3Z1BTUGtPTDIzSHhVS0tCQ2FDQ0YxRHV2UkUtMmdKT1ZxM29ic21TVUYwMEk4b1JfRDF0NTA2QlVfRnc?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": null,
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (daqui.opopular.com.br)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "7762274e7a",
+   "nivel_confianca": "C",
+   "pontos_confianca": 1,
+   "sinais": [
+    "fonte_imprensa"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "A-lac/PB",
+   "query": "\"plano de contingência\" Paraíba 2026 El Niño",
+   "titulo": "Francis Juliano - Bahia Notícias",
+   "url": "https://www.bahianoticias.com.br/quem-somos/64-francis-juliano",
+   "data_publicacao": "Sat, 12 Nov 2022 01:49:56 GMT",
+   "fonte_veiculo": "Bahia Notícias",
+   "veiculo_dominio": "https://www.bahianoticias.com.br",
+   "hash": "7726f794c07cc2f6",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9xdGxHR1loZEFtYkJ5SDc2M0hhOG1ia0x4Q2hxTE40cGMzQnpBajExa1hzdXFpbkxfeEptc3lVTHR4am9Udm9NaE9BakZzRnFSWWh3YXMyMXNqeURZN0I2NElSRHFVSWE2WmlqeElvOA?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "289bceab9ac53a6801c95f143b7fb0967343ef3f7e589566d15b6eb22d4e7d29",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (bahianoticias.com.br)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "b768d2bda0",
+   "nivel_confianca": "C",
+   "pontos_confianca": 1,
+   "sinais": [
+    "fonte_imprensa"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "A-lac/RN",
+   "query": "\"plano de contingência\" Rio Grande do Norte 2026 El Niño",
+   "titulo": "O Governo de Alagoas está fortalecendo as estratégias de prevenção e enfrentamento aos possíveis impactos do fenômeno El Niño, com ações integradas entre diferentes secretarias e órgãos estaduais. Entre as iniciativas, está a criação de um Grupo de Tr - Instagram",
+   "url": "https://www.instagram.com/governodealagoas/",
+   "data_publicacao": "Tue, 10 Nov 2026 13:24:11 GMT",
+   "fonte_veiculo": "Instagram",
+   "veiculo_dominio": "https://www.instagram.com",
+   "hash": "c13c183d03461195",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5lX3k3MkF2YlVnWUpkQjJobDJNeEV5QTY4elJTNUhUV3hPY3BGWXE1YlNXdVIxTWRFd1pVSHJpZnZjSVdZSks1Y3dHUXQtSENtSWc?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "da3e46741fef045315e30fd5922e5052744f7dc3d7954c0015bfbb7f9ebe35ab",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (instagram.com)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "6d104b3b6c",
+   "nivel_confianca": "C",
+   "pontos_confianca": 1,
+   "sinais": [
+    "fonte_desconhecida",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "A-lac/RN",
+   "query": "\"plano de enfrentamento\" Rio Grande do Norte 2026 El Niño",
+   "titulo": "Governo vai comprar 490 mil toneladas de milho e arroz por causa do El Niño - Times Brasil | CNBC",
+   "url": "https://timesbrasil.com.br/brasil/governo-vai-comprar-490-mil-toneladas-de-milho-e-arroz-por-causa-do-el-nino/",
+   "data_publicacao": "Wed, 29 Jul 2026 07:00:00 GMT",
+   "fonte_veiculo": "Times Brasil | CNBC",
+   "veiculo_dominio": "https://timesbrasil.com.br",
+   "hash": "db3126c2a9f9243d",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNVXp4SV9GTXV3aWg4OV84aHlSM25kTUJKMG8wcFZoN25TM1hXM0RZa2YxRjNzQkFFQkdpZkVVN01kYzkzZnh0cGx2YUtoUU1ueGJzLUgyWEFnWXZRMXUwN2F6TDlFZjRIX0Vwdl95amJSV1c1Y2RPb3g4dzBZanlhNnBHT056b2p1NndRa2JjR2I4VUZnYXNOTF8yaW8zOGU5Rjg5WHBXQTVtZ25QQmlr?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "01ff73f4e977587239c8820c4c5472454e4223ff416b74d0205653dd31f47e56",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (timesbrasil.com.br)",
+   "buscador2_em": "2026-11-11",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-11",
+   "id": "46353f2ef7",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
   }
  ],
  "quarentena": {
