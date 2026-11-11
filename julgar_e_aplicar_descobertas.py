@@ -146,7 +146,7 @@ def buscar_texto(url, timeout=20):
 
 
 LETRAS_SEM_OCR = 200      # abaixo disto o PDF é tratado como escaneado
-PAGINAS_DE_OCR = 4        # capa e abertura: onde estão o ente, o título e a data
+PAGINAS_DE_OCR = 10       # capa, sumário e primeiras seções: ente, título, data e as seções do plano (J1)
 
 
 def texto_por_ocr(raw):

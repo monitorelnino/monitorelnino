@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Juiz: rejulgar o que foi recusado por leitura curta
+`julgar_filas.py --rejulgar` devolve à rodada as pistas nomeadas (`--urls`, `--ids`) que o juiz recusou, mesmo na versão em vigor: o leitor mudou, não o critério. O OCR passa de 4 para 10 páginas: com 4, a capa não mostrava as seções que provam o plano (J1), e 76 planos do Prepara RS saíram como natureza duvidosa. (+18)
+
 ## 2026-11-11 · #PR · Juiz lê PDF escaneado por OCR
 PDF sem camada de texto passa pelo OCR das quatro primeiras páginas, com o mesmo motor da preservação de evidências (§177), antes de o juiz decidir. 185 dos 209 planos da pasta do Prepara RS são digitalizações e saíam como texto não extraível. O elo do juiz e a coleta de dia instalam o Tesseract. (+33)
 
