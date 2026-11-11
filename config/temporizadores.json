@@ -269,6 +269,7 @@
    "workflow": "atualizar.yml",
    "finalidade": "rodada completa de coleta, domingo de madrugada",
    "cron_primario": "10 3 * * 0",
+   "nao_antes_do_cron": true,
    "janela": {
     "inicio_utc": "01:00",
     "fim_utc": "09:00"

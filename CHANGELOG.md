@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Rodada semanal só no domingo de Brasília
+O despachante julgava a rodada semanal devida desde 01:00 UTC de domingo, que ainda é sábado em Brasília; `atualizar.py` via sábado e saía sem coletar, e o financiamento ficou sem coleta desde 01/11. O temporizador passa a não ser devido antes do próprio cron (03:10 UTC, 00:10 de Brasília). Falha F84 no catálogo. (+19)
+
 ## 2026-11-11 · #PR · Busca de prefeitura recusa sítio de tributos (+1 líquida)
 
 `host_admissivel` passa a recusar `daminternet`, `tribut*`, `nfse` e `fazenda` como candidato a prefeitura (Rio de Janeiro caía em `daminternet.rio.rj.gov.br`). Só código de descoberta; nenhum dado nem texto público.
