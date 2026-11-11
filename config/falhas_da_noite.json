@@ -1158,7 +1158,7 @@
     "run 42977418722 (11/11 07:09 UTC): '[cadência] ... não é domingo ... encerra sem coletar'"
    ],
    "correcao": "`nao_antes_do_cron: true` em `rodada_semanal`: o despachante só a julga devida a partir das 03:10 UTC de domingo (00:10 de Brasília), quando `atualizar.py` já vê domingo. Recoleta de 11/11 pela válvula `coleta_de_dia` (financiamento-semanal).",
-   "caso_de_teste": "scripts/despachar_temporizadores.py --autoteste: rodada semanal não é devida às 01:10 UTC de domingo e é às 03:20"
+   "caso_de_teste": "scripts/despachar_temporizadores.py --autoteste (dois casos F84: 01:10 UTC de domingo não devido; 03:20 devido)"
   }
  ]
 }
