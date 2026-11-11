@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Planos do RS (Prepara RS) passam a entrar no banco
+Com o ensaio real verde depois do #1680, o sinal que retinha as promoções do juiz vindas da pasta do Prepara RS é ligado. Vale a regra de contagem da METODOLOGIA §129: município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem. (+0)
+
 ## 2026-11-11 · #PR · Rodada semanal só no domingo de Brasília
 O despachante julgava a rodada semanal devida desde 01:00 UTC de domingo, que ainda é sábado em Brasília; `atualizar.py` via sábado e saía sem coletar, e o financiamento ficou sem coleta desde 01/11. O temporizador passa a não ser devido antes do próprio cron (03:10 UTC, 00:10 de Brasília). Falha F84 no catálogo. (+19)
 
