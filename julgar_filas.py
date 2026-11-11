@@ -206,11 +206,18 @@ def pendente(p: dict, hoje=None) -> bool:
     return status.startswith("pista") or status.startswith("rebaixado") or status.startswith("revertida")
 
 
-def na_vez(p: dict, nomeada: bool = False, hoje=None) -> bool:
+def na_vez(p: dict, nomeada: bool = False, hoje=None, rejulgar: bool = False) -> bool:
     """A pista entra nesta rodada? Função pura. Pista NOMEADA pela rodada (`--urls`, `--ids`) entra mesmo
     dentro do back-off: quem a nomeia sabe que a causa técnica mudou (11/11/2026: 203 pistas do Prepara RS
-    esperavam até 15 e 17/11 por uma falha do leitor antigo já corrigida no #1680). O resto de `pendente` vale."""
+    esperavam até 15 e 17/11 por uma falha do leitor antigo já corrigida no #1680). O resto de `pendente` vale.
+    Com `rejulgar`, a pista nomeada e RECUSADA volta mesmo julgada pela versão em vigor: o leitor mudou, não o
+    critério (11/11/2026: OCR de quatro páginas não alcançava as seções que provam o plano, J1). Promovida e
+    `inacessivel_persistente` não voltam."""
     import datetime as _d
+    juiz = p.get("juiz") or {}
+    if nomeada and rejulgar and juiz and not juiz.get("promove") \
+            and "inacessivel_persistente" not in str(p.get("status") or ""):
+        return True
     return pendente(p, hoje=_d.date.max if nomeada else hoje)
 
 
@@ -495,6 +502,12 @@ def autoteste() -> int:
     casos.append(("fechada por prazo e já julgada por este codebook não volta",
                   not pendente({**fechada_lida, "juiz": {**fechada_lida["juiz"],
                                                          "codebook": CODEBOOK_VERSAO}})))
+    recusada = {"status": "pista — recusada pelo juiz: natureza_duvidosa",
+                "juiz": {"codebook": CODEBOOK_VERSAO, "promove": False, "leu_documento": True}}
+    casos.append(("recusada pela versão em vigor só volta nomeada E com --rejulgar; promovida nunca",
+                  not na_vez(recusada, nomeada=True) and na_vez(recusada, nomeada=True, rejulgar=True)
+                  and not na_vez(recusada, nomeada=False, rejulgar=True)
+                  and not na_vez({**recusada, "juiz": {**recusada["juiz"], "promove": True}}, nomeada=True, rejulgar=True)))
     em_espera = {"status": "pista — na fila", "proxima_tentativa_em": "2999-01-01"}
     casos.append(("pista em back-off não está na vez da rodada comum, e está quando nomeada (--urls/--ids)",
                   not na_vez(em_espera, nomeada=False) and na_vez(em_espera, nomeada=True)
@@ -794,6 +807,7 @@ def main() -> int:
     ids = (sys.argv[sys.argv.index("--ids") + 1].split(",") if "--ids" in sys.argv else None)
     urls = (sys.argv[sys.argv.index("--urls") + 1].split(",") if "--urls" in sys.argv else None)
     so_oficial = "--dominio-oficial" in sys.argv
+    rejulgar = "--rejulgar" in sys.argv
     if "--urls-de" in sys.argv:
         alvo = pathlib.Path(sys.argv[sys.argv.index("--urls-de") + 1])
         urls = [l.strip() for l in alvo.read_text(encoding="utf-8").splitlines() if l.strip()]
@@ -830,7 +844,7 @@ def main() -> int:
         if not doc:
             continue
         lista = pistas_da_fila(doc)
-        alvo = selecionar([p for p in lista if na_vez(p, nomeada=bool(ids or urls))], ids=ids,
+        alvo = selecionar([p for p in lista if na_vez(p, nomeada=bool(ids or urls), rejulgar=rejulgar)], ids=ids,
                           so_oficial=so_oficial, urls=urls)
         if limite is not None:
             alvo = alvo[:max(0, limite - len(vereditos))]
