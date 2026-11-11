@@ -8,7 +8,7 @@ Serve a uma pergunta só: **por onde começar a ler** quando um pedido chega. An
 
 **Regra de página: contrato + componentes** (editoria, 02/10/2026). A forma de uma página não vive no HTML: vive em `layout/contratos/<pagina>.json`, que declara seções, ordem, cartões, grades e texto proibido. O HTML e o JavaScript se conformam ao contrato, e `scripts/verificar_conformidade.py` reprova a divergência — nenhum PR de página com contrato é mesclado com ele vermelho. Cartão de número é `.cartao-numero` em `.grade-numeros--3`; figura é `.cartao-mapa` em `.grade-figuras--3`; nada de ajuste de pixel por cartão.
 
-Atualizado em 10/11/2026.
+Atualizado em 11/11/2026.
 
 **A coluna `importado por`** (05/10/2026) diz quantos arquivos do repositório importam aquele — é a resposta curta para "o que a minha mudança alcança". Ela não substitui o portão de runtime, mas evita a surpresa: `coletores_base.py` tem 169 importadores, e os dois acidentes de isolamento de 02 e 05/10 custaram 907 atos e seis execuções de log por mexer ali sem ver esse número.
 
@@ -49,7 +49,7 @@ Atualizado em 10/11/2026.
 | `aplicar_revisao.py` | — | — | — | — | não |
 | `atualizar.py` | — | — | — | — | não |
 | `atualizar_boletins.py` | — | `boletins.json` | — | — | não |
-| `atualizar_instrumentos_estaduais.py` | — | — | — | 2 | não |
+| `atualizar_instrumentos_estaduais.py` | — | — | — | 3 | não |
 | `atualizar_marcos_severidade.py` | — | — | — | — | não |
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
 | `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
@@ -132,8 +132,8 @@ Atualizado em 10/11/2026.
 | `gerar_resposta.py` | — | `resposta/municipios.json`, `resposta/municipios_decretados.json`, `resposta/por_uf.json`, `resposta/serie_semanal.json` | — | 1 | SIM |
 | `gerar_saude_municipio.py` | — | — | — | — | não |
 | `gerar_selos.py` | — | — | — | 1 | não |
-| `juiz.py` | — | — | — | 7 | SIM |
-| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
+| `juiz.py` | — | — | — | 8 | SIM |
+| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 5 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
@@ -203,4 +203,4 @@ Atualizado em 10/11/2026.
 | `verificar_resposta.py` | — | — | — | — | não |
 | `verificar_saude.py` | — | — | — | — | não |
 | `verificar_sinais.py` | — | — | — | — | não |
-| `verificar_vigencia.py` | — | `municipios.json` | — | 1 | não |
+| `verificar_vigencia.py` | — | `municipios.json` | — | 2 | não |

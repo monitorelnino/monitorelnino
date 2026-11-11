@@ -78,23 +78,49 @@ PAGINAS_DA_LEITURA = 300
 
 HOST_SHAREPOINT_RS = "//rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/"
 _SESSAO_RS = []
+_IDS_RS = {}   # pasta -> {nome do arquivo: UniqueId}, uma listagem por pasta e por rodada
+ASSINATURAS_DE_DOCUMENTO = (b"%PDF", b"PK\x03\x04", b"\xd0\xcf\x11\xe0")
 
 
 def _ler_sharepoint_rs(url, timeout):
     """Bytes de um arquivo da pasta pública da Casa Militar/RS. O endereço do arquivo não abre sem a
     sessão do link de compartilhamento (23/10/2026: 20 de 20 pistas do RS saíam `documento_inacessivel`);
-    com ela, a REST do SharePoint entrega o conteúdo, como já entrega a listagem. 401/403 levanta."""
+    com ela, a REST do SharePoint entrega o conteúdo, como já entrega a listagem. 401/403 levanta.
+    10/11/2026: pelo CAMINHO, nome longo estoura o `maxUrlLength` do SharePoint e a resposta é um texto de
+    81 bytes ("The length of the URL ... exceeds ...") com 200, que o leitor tomava por PDF sem texto (170
+    `documento_inacessivel` em três rodadas). Agora: UniqueId pela listagem da pasta e `GetFileById`; e
+    resposta que não é PDF, DOCX nem DOC é erro, nunca documento."""
     from urllib.parse import quote, unquote, urlparse
     from atualizar_instrumentos_estaduais import REPOSITORIOS
     if not _SESSAO_RS:
         _SESSAO_RS.append(sessao_sharepoint(REPOSITORIOS["RS"]["url"], "julgamento de descobertas"))
     p = urlparse(url)
-    caminho = unquote(p.path).replace("'", "''")
-    site = "/".join(p.path.split("/")[:3])
-    r = _SESSAO_RS[0].get(f"{p.scheme}://{p.netloc}{site}/_api/web/GetFileByServerRelativeUrl('{quote(caminho)}')/$value",
-                          timeout=timeout)
+    api = f"{p.scheme}://{p.netloc}{'/'.join(p.path.split('/')[:3])}/_api/web"
+    pasta, nome = unquote(p.path).rsplit("/", 1)
+    if pasta not in _IDS_RS:
+        r = _SESSAO_RS[0].get(f"{api}/GetFolderByServerRelativeUrl('{quote(pasta.replace(chr(39), chr(39) * 2))}')/Files",
+                              params={"$select": "Name,UniqueId"},
+                              headers={"Accept": "application/json;odata=nometadata"}, timeout=timeout)
+        r.raise_for_status()
+        _IDS_RS[pasta] = {f["Name"]: f["UniqueId"] for f in r.json()["value"]}
+    if nome not in _IDS_RS[pasta]:
+        raise FileNotFoundError(f"arquivo fora da listagem da pasta: {nome}")
+    r = _SESSAO_RS[0].get(f"{api}/GetFileById('{_IDS_RS[pasta][nome]}')/$value", timeout=timeout)
     r.raise_for_status()
-    return r.content
+    if nome.lower().endswith(".url"):
+        # 10/11/2026: na CREPDEC 07 o plano é um atalho para o PDF no sítio da Casa Militar (mesma fonte); o
+        # juiz lia as linhas do atalho (30 `texto_nao_extraivel`). Destino fora da origem declarada não se segue.
+        alvo = re.search(rb"(?im)^URL=(\S+)", r.content)
+        destino = alvo.group(1).decode("latin-1") if alvo else ""
+        if not any(o in destino for o in REPOSITORIOS["RS"].get("origens", ())):
+            raise ValueError(f"atalho sem destino na origem declarada: {destino[:90]!r}")
+        from coletores_base import buscar
+        corpo = buscar(destino, timeout=timeout)
+    else:
+        corpo = r.content
+    if not corpo.startswith(ASSINATURAS_DE_DOCUMENTO):
+        raise ValueError(f"resposta não é documento ({len(corpo)} bytes): {corpo[:90]!r}")
+    return corpo
 
 
 def buscar_texto(url, timeout=20):
@@ -109,26 +135,46 @@ def buscar_texto(url, timeout=20):
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 raw = resp.read()
                 tipo = (resp.headers.get("Content-Type") or "").lower()
-        # 22/09/2026 (§154): diário oficial é PDF — 41/41 pistas do Querido Diário e 24 da busca web eram
-        # invisíveis ao juiz, que só lia HTML. pdfplumber já é dependência (coletores de boletim); detecta
-        # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
-        if raw[:5] == b"%PDF-" or "application/pdf" in tipo or url.lower().split("?")[0].endswith(".pdf"):
-            texto = extrair_texto_pdf(raw)
-            return texto[:TETO_DA_LEITURA] if texto else None
-        try:
-            html = raw.decode("utf-8")
-        except UnicodeDecodeError:
-            html = raw.decode("latin-1", errors="ignore")
-        texto = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S | re.I)
-        texto = re.sub(r"<[^>]+>", " ", texto)
-        texto = re.sub(r"\s+", " ", texto).strip()
-        # 09/10/2026 (lote 2.2, A1-20): o corte de 20.000 saiu daqui. Ele vinha ANTES do recorte do
-        # ato, e o ato além do corte nunca era lido. O juiz corta o que julga (`juiz.TETO_DO_JULGAMENTO`).
-        return texto[:TETO_DA_LEITURA]
+        return texto_do_documento(raw, url, tipo)
     except Exception as e:
         # 24/10/2026: 170 de 481 PDFs do RS saíram `documento_inacessivel` sem a causa em lugar nenhum.
         print(f"  [buscar_texto] {type(e).__name__}: {str(e)[:140]} · {url[-70:]}", file=sys.stderr)
         return None
+
+
+def texto_do_documento(raw, url, tipo=""):
+    """Texto dos bytes já baixados. Função pura. Documento obtido que não dá texto devolve "" (o juiz o
+    recusa como `texto_nao_extraivel`); None fica só para "não obtido" (`documento_inacessivel`).
+    10/11/2026: os 170 PDFs do RS chegavam inteiros e saíam como inacessíveis, e o DOCX/DOC da pasta
+    era lido como bytes decodificados e julgado como se fosse texto (13 `ente_nao_confirmado`)."""
+    caminho = url.lower().split("?")[0]
+    # 22/09/2026 (§154): diário oficial é PDF — 41/41 pistas do Querido Diário e 24 da busca web eram
+    # invisíveis ao juiz, que só lia HTML. pdfplumber já é dependência (coletores de boletim); detecta
+    # por magic bytes (%PDF), não só pelo Content-Type/.pdf, porque servidores municipais mentem no tipo.
+    if raw[:5] == b"%PDF-" or "application/pdf" in tipo or caminho.endswith(".pdf"):
+        return (extrair_texto_pdf(raw) or "")[:TETO_DA_LEITURA]
+    if raw[:4] == b"PK\x03\x04":   # DOCX/ODT: o texto é o XML do corpo; outro zip não é documento
+        import io, zipfile
+        try:
+            z = zipfile.ZipFile(io.BytesIO(raw))
+            corpo = next((z.read(n) for n in ("word/document.xml", "content.xml") if n in z.namelist()), b"")
+        except Exception:  # noqa: BLE001 — zip corrompido: obtido e sem texto
+            corpo = b""
+        xml = re.sub(r"</w:p>|</text:p>", " ", corpo.decode("utf-8", errors="ignore"))
+        from html import unescape
+        return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", "", xml))).strip()[:TETO_DA_LEITURA]
+    if raw[:8] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":   # DOC binário (OLE): sem extrator no projeto
+        return ""
+    try:
+        html = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        html = raw.decode("latin-1", errors="ignore")
+    texto = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S | re.I)
+    texto = re.sub(r"<[^>]+>", " ", texto)
+    texto = re.sub(r"\s+", " ", texto).strip()
+    # 09/10/2026 (lote 2.2, A1-20): o corte de 20.000 saiu daqui. Ele vinha ANTES do recorte do
+    # ato, e o ato além do corte nunca era lido. O juiz corta o que julga (`juiz.TETO_DO_JULGAMENTO`).
+    return texto[:TETO_DA_LEITURA]
 
 
 def extrair_texto_pdf(raw):
@@ -478,8 +524,14 @@ def buscar_lat_lon(nome, uf):
 def canal_e_fonte(url):
     """22/09/2026 (§158): o canal era gravado fixo como "imprensa" — no teste real de Feira de Santana/BA o ato
     veio do DIÁRIO OFICIAL (Querido Diário), e o site diria que veio de jornal, o oposto da regra de 22/09
-    (imprensa nunca pontua). Vocabulário do banco: DOM, site_municipal, DOU, orgao_estadual, imprensa."""
+    (imprensa nunca pontua). Vocabulário do banco: DOM, site_municipal, DOU, orgao_estadual, imprensa.
+    10/11/2026: documento do repositório estadual declarado é do órgão estadual; o PLANCON da pasta do RS
+    (SharePoint do governo) saía "Fonte não oficial (rsgovbr-my.sharepoint.com)", canal imprensa, em 161 fichas."""
     from urllib.parse import urlparse as _up
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
+    uf = repositorio_do_documento(url or "")
+    if uf:
+        return "orgao_estadual", REPOSITORIOS[uf]["fonte"]
     h = (_up(url or "").hostname or "").lower()
     if "queridodiario" in h:
         return "DOM", "Diário Oficial do Município (via Querido Diário)"
@@ -927,21 +979,66 @@ def self_test():
     print(f"✓ self-test OK — cadeia de derivados lida do portão 12 ({len(do_portao)} passos)")
 
     # 23/10/2026: arquivo da pasta do RS lê-se pela REST com a sessão do link, nunca pelo endereço cru.
+    # 10/11/2026: pelo UniqueId da listagem da pasta (o caminho longo estoura o maxUrlLength); resposta que
+    # não é documento é erro; o atalho `.url` segue só para a origem declarada.
     class _R:
-        content = b"%PDF-"
+        def __init__(self, content=b"", dados=None):
+            self.content, self._dados = content, dados
         def raise_for_status(self): pass
+        def json(self): return self._dados
     class _S:
-        urls = []
-        def get(self, u, timeout=0):
-            self.urls.append(u); return _R()
-    _SESSAO_RS[:] = [_S()]
-    assert _ler_sharepoint_rs("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/"
-                              "Documents/Casa%20Militar/PLANCON%20-%20D'%C3%81VILA.pdf", 5) == b"%PDF-"
-    assert _S.urls[0].startswith("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/_api/web/"
-                                 "GetFileByServerRelativeUrl('/personal/casa-militar_casamilitar_rs_gov_br/Documents/"), _S.urls
-    assert _S.urls[0].endswith(")/$value") and "%27%27" in _S.urls[0], "aspa simples dobra na REST"
-    _SESSAO_RS.clear()
-    print("✓ self-test OK — arquivo do RS lido pela REST com a sessão do link")
+        def __init__(self, corpo):
+            self.urls, self.corpo = [], corpo
+        def get(self, u, timeout=0, params=None, headers=None):
+            self.urls.append(u)
+            if "/Files" in u:
+                return _R(dados={"value": [{"Name": "PLANCON - D'ÁVILA.pdf", "UniqueId": "u-1"},
+                                           {"Name": "PLANO Aratiba.url", "UniqueId": "u-2"}]})
+            return _R(self.corpo)
+    pasta = "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/CREPDEC%2007/"
+    import coletores_base as _cb
+    _buscar_real, _vistos = _cb.buscar, []
+    _cb.buscar = lambda u, timeout=40: (_vistos.append(u), b"%PDF-destino")[1]
+    def _ler(nome, corpo):
+        _SESSAO_RS[:] = [_S(corpo)]
+        _IDS_RS.clear()
+        try:
+            return _ler_sharepoint_rs(pasta + nome, 5)
+        except (ValueError, FileNotFoundError) as e:
+            return type(e).__name__
+    try:
+        assert _ler("PLANCON%20-%20D'%C3%81VILA.pdf", b"%PDF-1.7") == b"%PDF-1.7"
+        _s = _SESSAO_RS[0]
+        assert _s.urls[0].endswith("GetFolderByServerRelativeUrl('/personal/casa-militar_casamilitar_rs_gov_br/"
+                                   "Documents/CREPDEC%2007')/Files"), _s.urls
+        assert _s.urls[1].endswith("/_api/web/GetFileById('u-1')/$value"), _s.urls
+        assert _ler("PLANCON%20-%20D'%C3%81VILA.pdf", b"The length of the URL exceeds") == "ValueError"
+        assert _ler("OUTRO.pdf", b"%PDF") == "FileNotFoundError"
+        atalho = lambda d: b"[InternetShortcut]\r\nURL=" + d.encode() + b"\r\n"
+        assert _ler("PLANO%20Aratiba.url", atalho("https://casamilitar-rs.com.br/pdfs/9.pdf")) == b"%PDF-destino"
+        assert _ler("PLANO%20Aratiba.url", atalho("https://outro.com/p.pdf")) == "ValueError"
+        assert _vistos == ["https://casamilitar-rs.com.br/pdfs/9.pdf"], _vistos
+    finally:
+        _cb.buscar = _buscar_real
+        _SESSAO_RS.clear(); _IDS_RS.clear()
+    print("✓ self-test OK — arquivo do RS lido por UniqueId; resposta que não é documento é erro; atalho .url "
+          "segue só para a origem declarada")
+
+    # 10/11/2026: obtido sem texto é "" (texto_nao_extraivel), nunca None (inacessível); DOCX lê o corpo.
+    import io as _io, zipfile as _zf
+    _b = _io.BytesIO()
+    with _zf.ZipFile(_b, "w") as z:
+        z.writestr("word/document.xml", "<w:p><w:t>PLANO DE CONTING&#202;NCIA</w:t></w:p><w:p><w:t>Itati</w:t></w:p>")
+    assert texto_do_documento(_b.getvalue(), "https://x/p.docx") == "PLANO DE CONTINGÊNCIA Itati"
+    assert texto_do_documento(b"%PDF-1.4 sem texto", "https://x/p.pdf") == ""
+    assert texto_do_documento(b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1" + b"x" * 900, "https://x/p.doc") == ""
+    assert canal_e_fonte("https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/"
+                         "Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/"
+                         "3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/"
+                         "Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2006/a.pdf") \
+        == ("orgao_estadual", "Defesa Civil do Rio Grande do Sul — Prepara RS")
+    assert canal_e_fonte("https://x.sharepoint.com/a.pdf")[0] == "imprensa", "SharePoint qualquer não é o repositório"
+    print("✓ self-test OK — documento sem texto não é inacessível; DOCX lido; pasta do RS é órgão estadual")
 
     # 28/09/2026: o log do aplicador. As 150 linhas da primeira noite saíram sem `strings` e sem
     # `executor` e reprovaram `verificar_consistencia.py`; estas travas provam o esquema e o

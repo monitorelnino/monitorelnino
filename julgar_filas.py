@@ -152,6 +152,17 @@ def recusa_desmentida_pelo_dominio(p: dict, juiz: dict) -> bool:
                            (dono.get("nome"), dono.get("uf")) == (nome, str(uf).upper()))
 
 
+# 10/11/2026: até aqui o leitor decodificava DOCX/DOC como bytes, e o juiz julgava o lixo (13 PLANCONs do RS
+# recusados como `ente_nao_confirmado`). Recusa julgada antes do leitor novo, num desses formatos, volta uma vez.
+LEITOR_DE_ESCRITORIO_DESDE = "2026-11-11"
+
+
+def recusa_de_leitura_ilegivel(p: dict, juiz: dict) -> bool:
+    """Recusa por critério sobre DOCX/DOC/ODT lido pelo leitor antigo: volta uma vez. Função pura."""
+    return (not juiz.get("promove") and str(juiz.get("julgado_em") or "") < LEITOR_DE_ESCRITORIO_DESDE
+            and str(url_da_pista(p) or "").lower().split("?")[0].endswith((".docx", ".doc", ".odt")))
+
+
 PREFIXO_FECHADA_POR_PRAZO = "fechada — sem documento oficial localizado"
 
 
@@ -180,7 +191,7 @@ def pendente(p: dict, hoje=None) -> bool:
         url = url_da_pista(p)
         if not juiz.get("leu_documento"):
             return bool(url and fonte_oficial(url))
-        return recusa_desmentida_pelo_dominio(p, juiz)
+        return recusa_desmentida_pelo_dominio(p, juiz) or recusa_de_leitura_ilegivel(p, juiz)
     if "inacessivel_persistente" in status:
         return False
     prox = p.get("proxima_tentativa_em")
@@ -735,6 +746,13 @@ def autoteste() -> int:
         {"status": "pendente_confirmacao_documento", "julgamento_automatico": {"data": "17/10/2026"}}]}}
     casos.append(("o restante conta fila do codebook e pendente de documento não julgada hoje",
                   restantes(_filas.get, _dt.date(2026, 10, 17)) == 2))
+
+    _docx = {"url": "https://rsgovbr-my.sharepoint.com/personal/x/PLANCON.docx"}
+    _velho = {"promove": False, "motivo": "ente_nao_confirmado", "julgado_em": "2026-11-05"}
+    casos.append(("recusa de DOCX lido pelo leitor antigo volta uma vez; a do leitor novo e a de PDF não",
+                  recusa_de_leitura_ilegivel(_docx, _velho)
+                  and not recusa_de_leitura_ilegivel(_docx, {**_velho, "julgado_em": LEITOR_DE_ESCRITORIO_DESDE})
+                  and not recusa_de_leitura_ilegivel({"url": "https://x/p.pdf"}, _velho)))
 
     ruins = [n for n, ok in casos if not ok]
     for n, ok in casos:
