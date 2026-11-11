@@ -428,6 +428,16 @@
     "financiamento/serie_nacional.json",
     "financiamento/por_uf.json"
    ]
+  },
+  {
+   "coletor": "coletar_transferegov",
+   "em": "2026-11-11",
+   "resultado": "falhou",
+   "motivo": "HTTPError: HTTP Error 404: Not Found",
+   "arquivos": [
+    "financiamento/serie_nacional.json",
+    "financiamento/por_uf.json"
+   ]
   }
  ]
 }
