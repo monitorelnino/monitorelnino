@@ -47289,7 +47289,7 @@
     "hash_evidencia": "4349ff31bc571697a1808f01bf34018d43ea11f9ffd7e3453a603041d8633686"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 21
+   "repeticoes": 22
   },
   {
    "municipio": "Manaus",
@@ -797259,7 +797259,7 @@
     "julgado_em": "2026-11-10",
     "hash_evidencia": "45ea5bdfede195da7268d0794b607e2be951d0391c254427ce0de38a7224e762"
    },
-   "repeticoes": 1,
+   "repeticoes": 2,
    "pontos_confianca": 3,
    "sinais": [
     "fonte_oficial",
@@ -808674,7 +808674,8 @@
     "candidatos": 0,
     "pistas_novas": 0,
     "falhas": []
-   }
+   },
+   "repeticoes": 1
   },
   {
    "alvo": "B-capital/CE",
@@ -862121,7 +862122,8 @@
     "municipio_no_titulo",
     "plano_no_titulo"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -862178,7 +862180,8 @@
     "municipio_no_titulo",
     "plano_no_titulo"
    ],
-   "alertas": []
+   "alertas": [],
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -862255,7 +862258,8 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-11",
     "criterios": {}
-   }
+   },
+   "repeticoes": 1
   },
   {
    "documento_oficial_confirmado": null,
@@ -862327,7 +862331,8 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
-   ]
+   ],
+   "repeticoes": 1
   },
   {
    "municipio": "Boa Esperança",
@@ -863953,6 +863958,75 @@
     "familia_de_risco_do_ciclo"
    ],
    "alertas": []
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "ibge": "3550308",
+   "url": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/vigilancia_em_saude/Plano_Municipal_Enfrentamento_Arboviroses_24_25.pdf",
+   "titulo": "Portal da prefeitura de São Paulo/SP (www.prefeitura.sp.gov.br): PLANO MUNICIPAL DE ENFRETAMENTO DA DENGUE E DEMAIS ...",
+   "trecho": "PLANO MUNICIPAL DE ENFRETAMENTO DA DENGUE E DEMAIS ...",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-11",
+   "registrado_em": "2026-11-11",
+   "origem_do_coletor": "descoberta",
+   "id": "0ce635b749",
+   "url_final": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/vigilancia_em_saude/Plano_Municipal_Enfrentamento_Arboviroses_24_25.pdf",
+   "alvo": "3550308",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "ibge": "3550308",
+   "url": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/plano-de-acao-dengue.pdf",
+   "titulo": "Portal da prefeitura de São Paulo/SP (www.prefeitura.sp.gov.br): PLANO DE AÇÃO",
+   "trecho": "PLANO DE AÇÃO",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-11",
+   "registrado_em": "2026-11-11",
+   "origem_do_coletor": "descoberta",
+   "id": "f7f28064e7",
+   "url_final": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/plano-de-acao-dengue.pdf",
+   "alvo": "3550308",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
+  },
+  {
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "ibge": "3550308",
+   "url": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/governo/secretaria_executiva_de_mudancas_climaticas/arquivos/planclimasp/PlanClimaSP_BaixaResolucao.pdf",
+   "titulo": "Portal da prefeitura de São Paulo/SP (www.prefeitura.sp.gov.br): Plano de Ação Climática do Município de São Paulo 2020-2050",
+   "trecho": "Plano de Ação Climática do Município de São Paulo 2020-2050",
+   "data_publicacao": null,
+   "origem": "descoberta",
+   "hash_evidencia": null,
+   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "data": "2026-11-11",
+   "registrado_em": "2026-11-11",
+   "origem_do_coletor": "descoberta",
+   "id": "309d5c3320",
+   "url_final": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/governo/secretaria_executiva_de_mudancas_climaticas/arquivos/planclimasp/PlanClimaSP_BaixaResolucao.pdf",
+   "alvo": "3550308",
+   "nivel": "C",
+   "tipo": "plano",
+   "entrada": "uf"
   }
  ],
  "quarentena": {
