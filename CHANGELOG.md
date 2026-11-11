@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Releitura que falha não troca o município lido
+
+`rodar_municipios` (descobrir_planos.py) gravava por cima do `lido` a tentativa seguinte que expirava no runner (S14, 11/11: seis capitais regrediram a `portal_nao_verificado`). Agora o `lido` fica e a última tentativa vai em `ultima_tentativa`. Autoteste novo. Sem mudança de dado.
+
 ## 2026-11-11 · #PR · Planos do RS (Prepara RS) passam a entrar no banco
 Com o ensaio real verde depois do #1680, o sinal que retinha as promoções do juiz vindas da pasta do Prepara RS é ligado. Vale a regra de contagem da METODOLOGIA §129: município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem. (+0)
 

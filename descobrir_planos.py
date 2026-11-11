@@ -603,10 +603,32 @@ def autoteste() -> int:
         return (len(por) == 4 and por["1200013"] == ("site_municipal", "consultado sem achado", "M1200013", "AC")
                 and por["1200054"][1] == "erro" and por["1200104"][1] == "pista" and por["1200138"][1] == "erro")
 
+    def t_lido_nao_regride_por_falha():
+        """11/11/2026: a releitura que falha (timeout, DNS) não troca o `lido` de antes; registra a tentativa à parte."""
+        import unittest.mock as mock
+        import tempfile
+        import os
+        gravado = {}
+        antes = {"municipios": {"1200013": {"consultado_em": "2026-11-10", "dominio": "a.ac.gov.br", "situacao": "lido", "pistas": 3}}}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
+            json.dump([{"codigo_ibge": 1200013}], f)
+        with mock.patch(f"{__name__}.referencia_ibge", return_value=({"1200013": {"nome": "M", "uf": "AC"}}, None)), \
+             mock.patch(f"{__name__}.hoje_editorial", return_value=__import__("datetime").date(2026, 11, 11)), \
+             mock.patch(f"{__name__}.ler", return_value=antes), \
+             mock.patch(f"{__name__}.gravar", side_effect=lambda _, d: gravado.update(d)), \
+             mock.patch(f"{__name__}.log_busca"), mock.patch(f"{__name__}.enderecos_oficiais", return_value={}), \
+             mock.patch(f"{__name__}.descobrir_no_portal", return_value={"dominio": None, "situacao": "portal_nao_verificado", "pistas": [], "motivo": "timeout"}), \
+             mock.patch("scripts.pistas.gravar_lote", return_value={"gravadas": 0, "recusadas": 0}):
+            rodar_municipios(f.name)
+        os.unlink(f.name)
+        v = gravado["municipios"]["1200013"]
+        return v["situacao"] == "lido" and v["pistas"] == 3 and v["ultima_tentativa"]["situacao"] == "portal_nao_verificado"
+
     return rodar_autoteste({
         "rota 1b: busca no domínio acha o portal e o link; busca fora do ar não vira ausência": t_rota_1b_busca_no_dominio,
         "portal: http quando https falha, SPA pelo render, e a lacuna nomeia cada falha": t_portal_http_render_e_motivo,
         "§25 sítio da prefeitura: uma linha do log por município, fila do cadastro": t_sitio_uma_linha_por_municipio,
+        "releitura que falha não troca o lido de antes": t_lido_nao_regride_por_falha,
         "portal: endereço oficial do cadastro primeiro; home que só monta por JavaScript é renderizada": t_endereco_oficial_e_home_renderizada,
         "§186 filtro de link aceita documento e recusa navegação": t_filtro_de_link_aceita_documento_e_recusa_navegacao,
         "§186 purga tira o ruído e preserva página e canal 1": t_purga_tira_ruido_e_preserva_pagina_e_canal_1,
@@ -1113,9 +1135,13 @@ def rodar_municipios(caminho: str, limite: int = None, busca=None, refazer_parad
     def _registrar(cod, r):   # na thread principal: uma escrita por vez, sem perder linha
         nonlocal lidos
         pistas.extend(r["pistas"])
-        feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
-                                     "motivo": r.get("motivo"), "pistas": len(r["pistas"]),
-                                     "candidatos": CANDIDATOS_V}
+        antes = feitos["municipios"].get(cod, {})
+        if r["situacao"] in PARADOS and antes.get("situacao") == "lido":   # 11/11/2026: timeout do runner não apaga o lido (S14: 6 capitais regrediram)
+            antes["ultima_tentativa"] = {"consultado_em": hoje, "situacao": r["situacao"], "motivo": r.get("motivo")}
+        else:
+            feitos["municipios"][cod] = {"consultado_em": hoje, "dominio": r["dominio"], "situacao": r["situacao"],
+                                         "motivo": r.get("motivo"), "pistas": len(r["pistas"]),
+                                         "candidatos": CANDIDATOS_V}
         gravados.add(cod)
         lidos += 1
         registrar_consulta_do_sitio(por_cod[cod]["nome"], por_cod[cod]["uf"], cod, r)
