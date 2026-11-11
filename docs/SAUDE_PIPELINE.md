@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-04 a 2026-11-11 (1306 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-04 a 2026-11-11 (1318 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -26,7 +26,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-07 01:45 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-10 07:40 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-10 01:35 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-11 06:08 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-11 06:36 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-11 05:44 | 2 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-11-07 01:43 | 104 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-07 01:15 | 1 s | — | ok | — |
@@ -70,19 +70,19 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-10 01:15 | 80 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-11-10 01:16 | 64 s | — | **erro** (4 seguidas) | portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 520: <none> \| queridodiario.ok.org.br: HTTPError HTTP E |
 | `descobrir_dominios.py` | coletor | 2026-11-08 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `descobrir_planos.py` | coletor | 2026-11-11 04:35 | 541 s | 42 | ok | — |
+| `descobrir_planos.py` | coletor | 2026-11-11 06:15 | 542 s | 42 | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-10 07:39 | 0 s | — | ok | — |
-| `detectar_marcos_federais.py` | coletor | 2026-11-11 04:35 | 2 s | 0 | ok | — |
+| `detectar_marcos_federais.py` | coletor | 2026-11-11 06:15 | 2 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-11 05:38 | 342 s | — | ok | — |
 | `julgar_filas.py` | coletor | 2026-11-11 05:02 | 2157 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-11-11 01:59 | 4184 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-10 07:51 | 3 s | — | ok | — |
-| `monitorar_atos_resposta.py` | coletor | 2026-11-11 04:34 | 49 s | 25399 | ok | — |
-| `monitorar_busca_web.py` | coletor | 2026-11-11 04:44 | 239 s | — | ok | — |
-| `monitorar_imprensa_regional.py` | coletor | 2026-11-11 04:27 | 356 s | 40 | ok | — |
-| `monitorar_imprensa_saude.py` | coletor | 2026-11-11 04:33 | 105 s | 27 | ok | — |
-| `monitorar_politica_por_inteiro.py` | coletor | 2026-11-11 04:35 | 4 s | 18676 | ok | — |
-| `monitorar_sinais_federais.py` | coletor | 2026-11-11 04:35 | 4 s | 10 | ok | — |
+| `monitorar_atos_resposta.py` | coletor | 2026-11-11 06:14 | 55 s | 25407 | ok | — |
+| `monitorar_busca_web.py` | coletor | 2026-11-11 06:24 | 245 s | — | ok | — |
+| `monitorar_imprensa_regional.py` | coletor | 2026-11-11 06:08 | 254 s | 40 | ok | — |
+| `monitorar_imprensa_saude.py` | coletor | 2026-11-11 06:13 | 102 s | 27 | ok | — |
+| `monitorar_politica_por_inteiro.py` | coletor | 2026-11-11 06:15 | 4 s | 18676 | ok | — |
+| `monitorar_sinais_federais.py` | coletor | 2026-11-11 06:15 | 4 s | 10 | ok | — |
 | `preservar_evidencias.py` | coletor | 2026-11-11 05:54 | 47 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-11-07 01:15 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-11-08 13:24 | 152 s | — | ok | — |
@@ -101,7 +101,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `scripts/triar_fila.py` | coletor | 2026-11-10 01:58 | 2 s | — | ok | — |
 | `scripts/verificar_esquema_de_pista.py` | coletor | 2026-11-10 02:02 | 2 s | — | ok | — |
 | `scripts/verificar_funil.py` | coletor | 2026-11-07 01:21 | 0 s | — | **erro** | ✗ FUNIL: a contagem da rodada se contradiz ou a etapa não funcionou: |
-| `seguir_pistas.py` | coletor | 2026-11-11 04:48 | 100 s | — | ok | — |
-| `triar_confianca_pistas.py` | coletor | 2026-11-11 04:50 | 3 s | — | ok | — |
+| `seguir_pistas.py` | coletor | 2026-11-11 06:28 | 95 s | — | ok | — |
+| `triar_confianca_pistas.py` | coletor | 2026-11-11 06:30 | 3 s | — | ok | — |
 | `verificar_links.py` | coletor | 2026-11-10 01:39 | 180 s | — | **erro** | interrompido pelo prazo do elo |
-| `verificar_pista_imprensa.py` | coletor | 2026-11-11 04:50 | 3 s | — | ok | — |
+| `verificar_pista_imprensa.py` | coletor | 2026-11-11 06:30 | 4 s | — | ok | — |
