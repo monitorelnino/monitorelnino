@@ -535519,7 +535519,16 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "documento_oficial_confirmado": null,
@@ -535727,18 +535736,18 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/Plano%20de%20Conting%C3%AAncia%20-%20Defesa%20Civil%20Farroupilha.docx",
    "alvo": "4307906",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "pista — recusada pelo juiz: resposta",
    "id": "89b7b1ff04",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "43c06990ffb184f6229c71a3b5805864ac9b2377cca940f5ca2e39d20ef714be"
+    "data": "2024",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "33f6c4564ab90f7ebe78d19845922f169d17f3b8d3a958b6b9001604b166d8d7"
    },
    "repeticoes": 1,
    "pontos_confianca": 1,
@@ -535746,7 +535755,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -535894,20 +535911,28 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "e7fd49e22c19efef4484b92b96b3b6df40bb06f6a14e9366fabd35d943ba8653"
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "15c35fb750e9423ca044b4099ce685a690f8376f761ed60e3738d187af16cb01"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -536342,25 +536367,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/PLANO%20DE%20CONTING%C3%8ANCIA%202025%20S%C3%A3o%20Jorge.docx",
    "alvo": "4318440",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "id": "2665bab1cc",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "motivo": "natureza_duvidosa",
     "leu_documento": true,
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "20329ef693982849c55ea18051f69f5b20e659bcc802cdaa144c8bf44dffd622"
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "de5c2b7bb270e10785ed2e563178eeefe9e394407ecdebc24d390bc219f1b430"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538094,20 +538127,28 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "ebb920bd4caeb6f582bd7d6610266b82a14896a10af7a6b6ff4c2bd61b3be37e"
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "2e58b88ca066143f403c60f1640b98371b525b174108cce2a37c18cbc188e60f"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538691,20 +538732,28 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "13f26438c546dfb134f2c5beafa2ab86178863aee2556dce5480d76546f729b3"
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "605d4d3d61c1899c2fd6e2acbf5b4a074704c80f610b8e50536c86c5b2fe1707"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -539357,25 +539406,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2002/PlanCon%20LAGOA%20VERMELHA_2025.docx",
    "alvo": "4311304",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "f123218eb1",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "3bf1fd9579971de47237d89ff6f449855930106b7082406ad7cbbd717e011de5"
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "a232db03ac9e6f7c5a8b7f2027e8072c0a2b7810535ac0f21243837b71c93659"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -540088,13 +540145,13 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "0ffe2e37ac85b338e5166188a6651f253cbe06d5b6913a1ffc7326a3346e3b4f"
+    "categoria": "plano_antigo",
+    "data": "2021",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "37a0a7499b5c83602d5b05ff61429d0deeabada2044298eb97df3d65e43d93c5"
    },
    "repeticoes": 1,
    "pontos_confianca": 1,
@@ -540102,7 +540159,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -554669,7 +554734,16 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "documento_oficial_confirmado": null,
@@ -555637,7 +555711,16 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "documento_oficial_confirmado": null,
@@ -556760,25 +556843,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2004/Plano%20de%20Conting%C3%AAncia%20Cap%C3%A3o%20do%20Le%C3%A3o.docx",
    "alvo": "4304663",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "id": "9aff459757",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "motivo": "natureza_duvidosa",
     "leu_documento": true,
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "1ec32231d0894d6e848b8c090b389f5180d64fe2cd986361eb3db8b6d5836604"
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "d2993997539a5419ee3c4f91b1a7f0e172dce23cb11dc3c2a8f5c1f8bcaba7ad"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557766,13 +557857,13 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "7d02ba03fc62ab60bd968e221bb298aa38054fbca3f269f0934a097fee4bfb88"
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "1f84edf3e93f442f34712b4602185ed91307db7edce37c295da94d3e2cc2b126"
    },
    "repeticoes": 1,
    "pontos_confianca": 1,
@@ -557780,7 +557871,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558091,7 +558190,16 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "documento_oficial_confirmado": null,
@@ -558147,25 +558255,33 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20BOM%20PRINC%C3%8DPIO.docx",
    "alvo": "4302352",
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "id": "c00c10817f",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "motivo": "natureza_duvidosa",
     "leu_documento": true,
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "a7fc4ed980399b19630acee84501902f1d157322bb2a592807f8cb56d4eb9fcd"
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "8c071237c84a618199856aac15fad261dfe2eb4903590ffe5ce0bb05f302c15e"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558476,20 +558592,28 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "317679746c53994cf440eb18601471a6900a90aeffc412659d73f72fabeebead"
+    "categoria": "plano",
+    "data": "2026",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "5f9556f59edc7fadaf210199bbd32aae4803ef96a95200e0b047f12d9780c71c"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558566,7 +558690,16 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "documento_oficial_confirmado": null,
@@ -558639,7 +558772,16 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "documento_oficial_confirmado": null,
@@ -559387,20 +559529,28 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "557bae99fd42b09654f18feabd119e6af366648cd07a96ca72cee81f0a085771"
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "43fb4ba09adee55527a59b885db7e8af79cdce12368cad1b82b6b2368a8e0f76"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -559796,20 +559946,28 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "9913812ada7118216640328fa41f823dfd9463f59dc675d11a95f774ec7a46d4"
+    "categoria": "plano",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "5561d2a8efa8bb9cdc607250344c8dca8e20cf6bb63305b96bdb04b1f4eeaf0b"
    },
    "repeticoes": 1,
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -562863,8 +563021,8 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
-    "hash_evidencia": "75d6f5527748fb37d1a6a5a181cdef7d0667c7a12a1c6fc4f6bd8aa7a1951a05"
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "f70a1924195499669f6d7929a91fbaad9b8e9bf95a816807bdae522ed84ec3c2"
    },
    "id": "4d8343056f",
    "nivel_confianca": "C",
@@ -562872,7 +563030,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -827378,7 +827544,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "data": "2026-11-07",
    "registrado_em": "2026-11-07",
    "origem_do_coletor": "descoberta",
@@ -827392,19 +827558,27 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "ente_nao_confirmado",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-10",
-    "hash_evidencia": "a7bd1b8876763038909920562ddb48e27b713e578a61e428aa9502db0955e676"
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "2f5c751ea62fef8f3213082b40fc3f2e20b2631318776c977eef69864a1c8422"
    },
    "pontos_confianca": 3,
    "sinais": [
     "fonte_oficial",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -858970,7 +859144,7 @@
    "autoridade": "indefinido",
    "objeto": "misto",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "origem_do_coletor": "busca_web",
    "id": "9d683087e8",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Cursos%20CEPDEC/NPDC%20-%20Dia%203%20-%20Compilado%20-%203%20aulas.pdf",
@@ -858995,6 +859169,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-11",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "727928316dfd9261fa50811cfb2db589225cf7b28aaeb483c1ad0eebd65ddf9d"
    }
   },
   {
@@ -859034,7 +859226,16 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-11",
     "criterios": {}
-   }
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-12"
   },
   {
    "municipio": "Marilândia",
@@ -859050,7 +859251,7 @@
    "autoridade": "indefinido",
    "objeto": "indefinido",
    "destino": "indefinido",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: municipio_nao_identificado",
    "origem_do_coletor": "busca_web",
    "id": "ae2e0266c4",
    "url_final": "https://defesacivil.es.gov.br/Media/DefesaCivil/Plano%20de%20Conting%C3%AAncia/PMPDEC%20Jul%202021%20Publicado.pdf",
@@ -859073,6 +859274,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-11",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "municipio_nao_identificado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "155f81ca6bb5f12fd6d6486a9f6f7753ec92a5de9a1f3a176247dceec84e8b52"
    }
   },
   {
@@ -859089,7 +859308,7 @@
    "autoridade": "indefinido",
    "objeto": "fora_do_objeto",
    "destino": "fora_do_objeto",
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "origem_do_coletor": "busca_web",
    "id": "73fccc70a9",
    "url_final": "https://saude.es.gov.br/Media/sesa/CIB/RELATORIO%20GERAL%20DAS%20RESOLU%C3%87OES%20CIB-2.pdf",
@@ -859114,6 +859333,24 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-11",
     "criterios": {}
+   },
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": "fd3ad088f6b93b87a976abbad2b6b202c8384cfa3bff9be13deaed87cc91afc1"
    }
   },
   {
@@ -859131,7 +859368,25 @@
    "hash_evidencia": "47587c4b6aee8262b9cda3ea4cce41d5173b6274ca6b9bb86e7045e00929798c",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — promover a registro exige documento primário"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": null
+   }
   },
   {
    "alvo": "B-capital/PA",
@@ -859148,7 +859403,25 @@
    "hash_evidencia": "c17bc9489a03b80b92efd967f4cf8a07266f392bf505318fe343228e616439e2",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — promover a registro exige documento primário"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": null
+   }
   },
   {
    "alvo": "B-capital/PA",
@@ -859165,7 +859438,25 @@
    "hash_evidencia": "51ccefd8c811b297a462dd2ca21a6a39985229a84782c207be5fbca307822a2c",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — promover a registro exige documento primário"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": null
+   }
   },
   {
    "alvo": "C-estado-amplo/MA",
@@ -859182,7 +859473,25 @@
    "hash_evidencia": "43d8a5abc0748cd325b24401ec7874f187fb80d55f6db3ac107a98e2954b5e44",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — promover a registro exige documento primário"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": null
+   }
   },
   {
    "alvo": "C-estado-amplo/PE",
@@ -859199,7 +859508,25 @@
    "hash_evidencia": "809272706439902240d8464923b27a27ad5a051f5a77ebc2dcc34ace29a26b1e",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — promover a registro exige documento primário"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": null
+   }
   },
   {
    "alvo": "C-estado-amplo/PI",
@@ -859216,7 +859543,25 @@
    "hash_evidencia": "43d8a5abc0748cd325b24401ec7874f187fb80d55f6db3ac107a98e2954b5e44",
    "documento_oficial_confirmado": null,
    "promovivel": false,
-   "status": "pista — promover a registro exige documento primário"
+   "status": "pista — recusada pelo juiz: sem_documento_primario",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "sem_documento_primario",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "sem_documento_primario",
+    "leu_documento": false,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-11",
+    "hash_evidencia": null
+   }
   },
   {
    "alvo": "C-estado-amplo/SE",
