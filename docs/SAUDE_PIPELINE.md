@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-03 a 2026-11-10 (1398 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-03 a 2026-11-10 (1400 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -26,7 +26,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-10 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-07 01:45 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-10 07:40 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-09 01:34 | 1 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-10 23:01 | 3 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-10 01:08 | 3 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-10 16:19 | 2 s | — | ok | — |
 | `atualizar.py` | coletor | 2026-11-07 01:43 | 104 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-07 01:15 | 1 s | — | ok | — |
@@ -70,7 +70,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-10 · por canal: we
 | `coletar_transferencias_municipais.py` | coletor | 2026-11-10 08:42 | 80 s | — | ok | — |
 | `consultar_querido_diario.py` | coletor | 2026-11-09 01:18 | 251 s | — | **erro** (3 seguidas) | portas tentadas: api.queridodiario.org.br: TimeoutError The read operation timed out \| queridodiario.ok.org.br: Timeout |
 | `descobrir_dominios.py` | coletor | 2026-11-08 03:25 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `descobrir_planos.py` | coletor | 2026-11-10 07:00 | 440 s | — | ok | — |
+| `descobrir_planos.py` | coletor | 2026-11-10 12:44 | 640 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-10 07:39 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-10 07:00 | 3 s | 0 | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-10 08:26 | 487 s | — | ok | — |
