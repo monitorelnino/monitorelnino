@@ -33,6 +33,8 @@ jobs:
       timeout_minutos: 135
       restante: julgar_filas.py --restante
       precisa_node: true
+      # 11/11/2026: PDF escaneado sem camada de texto é lido por OCR (julgar_e_aplicar_descobertas.buscar_texto).
+      precisa_tesseract: true
       # A busca dirigida do ato consulta o metabuscador (28/09/2026, §278).
       precisa_searxng: true
       # Ordem: corrige a atribuição por domínio, prepara, codebook, aplicador (28/09 e 09/10/2026).

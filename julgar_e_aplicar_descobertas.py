@@ -135,11 +135,35 @@ def buscar_texto(url, timeout=20):
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 raw = resp.read()
                 tipo = (resp.headers.get("Content-Type") or "").lower()
-        return texto_do_documento(raw, url, tipo)
+        texto = texto_do_documento(raw, url, tipo)
+        if raw[:5] == b"%PDF-" and len(re.findall(r"[A-Za-zÀ-ú]", texto or "")) < LETRAS_SEM_OCR:
+            texto = texto_por_ocr(raw) or texto
+        return texto
     except Exception as e:
         # 24/10/2026: 170 de 481 PDFs do RS saíram `documento_inacessivel` sem a causa em lugar nenhum.
         print(f"  [buscar_texto] {type(e).__name__}: {str(e)[:140]} · {url[-70:]}", file=sys.stderr)
         return None
+
+
+LETRAS_SEM_OCR = 200      # abaixo disto o PDF é tratado como escaneado
+PAGINAS_DE_OCR = 4        # capa e abertura: onde estão o ente, o título e a data
+
+
+def texto_por_ocr(raw):
+    """PDF escaneado: OCR das primeiras páginas pelo mesmo motor da preservação (§177), sem gravar nada.
+    11/11/2026: 185 dos 209 planos da pasta do Prepara RS são digitalizações sem camada de texto e saíam
+    `texto_nao_extraivel`. Sem Tesseract, ou com falha, devolve "" e o juiz segue recusando como antes."""
+    from preservar_evidencias import motor_ocr, ocr_pagina, rasterizar, tesseract_disponivel
+    exe = tesseract_disponivel()
+    if not exe:
+        return ""
+    try:
+        _, idioma = motor_ocr(exe)
+        paginas = rasterizar(raw, limite_paginas=PAGINAS_DE_OCR)
+        return "\n".join(ocr_pagina(p, exe, idioma) for p in paginas)[:TETO_DA_LEITURA]
+    except Exception as e:  # noqa: BLE001
+        print(f"  [ocr] {type(e).__name__}: {str(e)[:120]}", file=sys.stderr)
+        return ""
 
 
 def texto_do_documento(raw, url, tipo=""):

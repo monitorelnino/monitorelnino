@@ -39,6 +39,11 @@ on:
         required: false
         default: false
         type: boolean
+      precisa_tesseract:
+        description: "true quando o juiz pode ler PDF escaneado (OCR)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -55,6 +60,7 @@ jobs:
       timeout_minutos: ${{ fromJSON(inputs.timeout_minutos) }}
       precisa_searxng: ${{ inputs.precisa_searxng }}
       precisa_node: ${{ inputs.precisa_node }}
+      precisa_tesseract: ${{ inputs.precisa_tesseract }}
       comandos: ${{ inputs.comandos }}
     secrets:
       ROBO_DEPLOY_KEY: ${{ secrets.ROBO_DEPLOY_KEY }}
