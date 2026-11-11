@@ -76,26 +76,86 @@ def dominio_divergente(veredito: dict, dono) -> bool:
             or str(dono.get("nome") or "").strip().lower() != nome)
 
 
-def aplicaveis(decisoes: list, versao: str, resolver=None) -> list:
+def data_da_edicao(data):
+    """A data da edição do plano: dd/mm/aaaa exata; mm/aaaa, último dia do mês (convenção de
+    `verificar_vigencia.parse_data_br`); só o ano, 31/12 desse ano. None se não há data. Função pura."""
+    import datetime
+    from verificar_vigencia import parse_data_br
+    texto = str(data or "")
+    iso = re.fullmatch(r"\s*(\d{4})-(\d{2})-(\d{2})\s*", texto)
+    if iso:
+        return datetime.date(*map(int, iso.groups()))
+    d = parse_data_br(texto)
+    anos = re.findall(r"(?<!\d)((?:19|20)\d{2})(?!\d)", texto) if d is None else []
+    return d or (datetime.date(int(max(anos)), 12, 31) if anos else None)
+
+
+def atualizacao_anual_localizada(data):
+    """A edição datada é de 29/06/2025 em diante (12 meses antes do Boletim nº 1, `juiz.BOLETIM_1`)? True/False;
+    None sem data. Campo DESCRITIVO (editoria, 10/11/2026): a Lei 12.340/2010, art. 3º-A, §6º, pede atualização
+    anual, mas não diz que o plano perde validade — nada aqui grava "vencido". Função pura."""
+    import datetime
+    from juiz import BOLETIM_1
+    d, inicio = data_da_edicao(data), datetime.datetime.strptime(BOLETIM_1, "%d/%m/%Y").date()
+    return None if d is None else d >= inicio.replace(year=inicio.year - 1)
+
+
+ROTULO_SEM_ATUALIZACAO = "sem atualização anual localizada (Lei 12.340, art. 3º-A, § 6º)"
+
+
+def municipios_do_cadastro() -> set:
+    """IBGE dos municípios INDICADOS pela União ao cadastro do art. 3º-A (`cadastro_casa_civil_2086`); a lista
+    de inscritos não tem fonte pública (`cadastro_nacional_art3A` é null em todos)."""
+    from coletores_base import ler
+    return {str(m.get("codigo_ibge")) for m in ((ler("cadastro_prioritarios_federal.json") or {}).get("municipios")
+                                                or {}).values() if m.get("cadastro_casa_civil_2086")}
+
+
+def aplicaveis(decisoes: list, versao: str, resolver=None, cadastro=None) -> list:
     """Vereditos que promovem, na versão em vigor, ainda não aplicados nem superados.
 
     09/10/2026 (A1-29): `nao_aplicado` também exclui — a marca existe para dizer que a decisão
     não vai ao banco, e sem o filtro Taió tinha três decisões vivas para a mesma URL.
     09/10/2026 (A1-01): veredito cujo domínio aponta outro município não é aplicável.
+    10/11/2026: no repositório estadual o veredito ganha três campos descritivos — `data_da_edicao`,
+    `indicado_ao_cadastro_art3A`, `atualizacao_anual_localizada`. Dois sinais da editoria, desligados:
+    `contar_so_com_atualizacao_anual` (indicado sem atualização anual localizada fica fora da contagem) e
+    `aplicar_no_banco` (False retém o repositório inteiro, sem marca, até a editoria ver a simulação).
     """
     if resolver is None:
         from scripts.municipio_do_dominio import municipio_de as resolver
-    fora = []
+    from atualizar_instrumentos_estaduais import REPOSITORIOS, repositorio_do_documento
+    fora, retidos, sem_atualizacao = [], 0, 0
     for v in decisoes:
         if not (v.get("promove") and v.get("codebook") == versao):
             continue
         if v.get("superada_por") or v.get("aplicado_em") or v.get("nao_aplicado"):
             continue
+        repo = repositorio_do_documento(v.get("url") or "")
+        if repo:
+            if cadastro is None:
+                cadastro = municipios_do_cadastro()
+            cfg = REPOSITORIOS[repo]
+            v["data_da_edicao"] = str(data_da_edicao(v.get("data")) or "") or None
+            v["indicado_ao_cadastro_art3A"] = str(v.get("ibge")) in cadastro
+            v["atualizacao_anual_localizada"] = atualizacao_anual_localizada(v.get("data"))
+            # sem data identificável não rebaixa (data insuficiente para o cômputo): só `False` exclui
+            if (cfg.get("contar_so_com_atualizacao_anual") and v["indicado_ao_cadastro_art3A"]
+                    and v["atualizacao_anual_localizada"] is False):
+                v["rotulo_contagem"] = ROTULO_SEM_ATUALIZACAO
+                sem_atualizacao += 1
+                continue
+            if cfg.get("aplicar_no_banco") is False:
+                retidos += 1
+                continue
         if dominio_divergente(v, resolver(v.get("url") or "")):
             print(f"   ! nao aplicado: {v.get('municipio')}/{v.get('uf')} — o documento esta em "
                   f"dominio oficial de outro municipio")
             continue
         fora.append(v)
+    if retidos or sem_atualizacao:
+        print(f"   repositório estadual: {sem_atualizacao} de município indicado ao cadastro sem atualização anual "
+              f"localizada (fora da contagem pelo sinal); {retidos} retida(s) pelo sinal `aplicar_no_banco`")
     return fora
 
 
@@ -133,7 +193,8 @@ def preservar_o_documento(url: str, origem: str = "juiz_automatico"):
         # 24/10/2026: a pasta do RS só abre com a sessão do link de compartilhamento (o juiz já a usa); sem ela
         # o `buscar` leva 403 e as 75 promoções do RS ficavam sem evidência, logo sem aplicar.
         corpo = _ler_sharepoint_rs(url, 60) if HOST_SHAREPOINT_RS in url else buscar(url)
-        ext = (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
+        # o atalho `.url` do RS entrega o PDF de destino: a extensão vem dos bytes, não do nome
+        ext = "pdf" if corpo[:5] == b"%PDF-" else (str(url).lower().split("?")[0].rsplit(".", 1)[-1] or "html")[:5]
         if ext not in ("pdf", "doc", "docx", "odt", "rtf", "html", "htm", "txt"):
             ext = "html"
         return preservar_evidencia(corpo, url, ext, origem)
@@ -185,6 +246,11 @@ def registro_do_veredito(v: dict, lat, lon, canal: str, fonte_base: str, hoje: s
         registro["marca_na_ficha"] = "sem ato de aprovação localizado"
         registro["fonte"] = (f"{fonte_base} — plano publicado em domínio oficial do ente, lido em {hoje}; "
                              "ato de aprovação não localizado até o corte")
+    # 10/11/2026 (editoria): documento de repositório estadual só entra dentro da atualização anual, e o
+    # registro diz por quê, com a edição datada que a regra leu.
+    for campo in ("data_da_edicao", "indicado_ao_cadastro_art3A", "atualizacao_anual_localizada"):
+        if campo in v:   # anotados por `aplicaveis` no repositório estadual
+            registro[campo] = v[campo]
     return registro
 
 
@@ -347,6 +413,49 @@ def autoteste() -> int:
                   aplicaveis([dict(base, superada_por={"codebook": V})], V) == []))
     casos.append(("veredito já aplicado NÃO volta",
                   aplicaveis([dict(base, aplicado_em="2026-09-28")], V) == []))
+    import atualizar_instrumentos_estaduais as _aie
+    _rs = dict(base, data="05/2026", ibge="4300001",
+               url="https://rsgovbr-my.sharepoint.com" + _aie.REPOSITORIOS["RS"]["pasta"] + "/CREPDEC 01/P.pdf")
+    _cad, _fora = {"4300001"}, set()
+    _sinais = dict(_aie.REPOSITORIOS["RS"])
+    try:
+        _aie.REPOSITORIOS["RS"]["aplicar_no_banco"] = False
+        _retido = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad) == []
+        _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=False)
+        _velho = dict(_rs, data="05/2025")
+        _conta_hoje = len(aplicaveis([_velho], V, resolver=sem_dono, cadastro=_cad)) == 1
+        _aie.REPOSITORIOS["RS"]["contar_so_com_atualizacao_anual"] = True
+        _fora_da_conta = aplicaveis([dict(_velho)], V, resolver=sem_dono, cadastro=_cad) == []
+        _livre = len(aplicaveis([dict(_rs, data="2012")], V, resolver=sem_dono, cadastro=_fora)) == 1
+        _ok = aplicaveis([dict(_rs)], V, resolver=sem_dono, cadastro=_cad)
+    finally:
+        _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
+    casos.append(("repositório com aplicar_no_banco desligado fica retido, sem marca", _retido))
+    casos.append(("atualização anual localizada: de 29/06/2025 em diante (só ano = 31/12; mm/aaaa = último dia); "
+                  "sem data, None",
+                  atualizacao_anual_localizada("2025") is True and atualizacao_anual_localizada("2024") is False
+                  and atualizacao_anual_localizada(None) is None and atualizacao_anual_localizada("28/06/2025") is False
+                  and atualizacao_anual_localizada("29/06/2025") and atualizacao_anual_localizada("06/2025")
+                  and atualizacao_anual_localizada("05/2025") is False and atualizacao_anual_localizada("2026-05-13")))
+    casos.append(("campos descritivos no veredito; sinal desligado conta como hoje; ligado, indicado sem atualização "
+                  "fica fora; não indicado conta com qualquer data",
+                  _conta_hoje and _velho.get("indicado_ao_cadastro_art3A") is True
+                  and _velho.get("atualizacao_anual_localizada") is False and _velho.get("data_da_edicao") == "2025-05-31"
+                  and _fora_da_conta and _livre and "vencido" not in json.dumps(_velho)))
+    _aie.REPOSITORIOS["RS"].update(aplicar_no_banco=True, contar_so_com_atualizacao_anual=True)
+    try:
+        _x = dict(_rs, data="2024")
+        _sem_data = len(aplicaveis([dict(_rs, data=None)], V, resolver=sem_dono, cadastro=_cad)) == 1
+        aplicaveis([_x], V, resolver=sem_dono, cadastro=_cad)
+    finally:
+        _aie.REPOSITORIOS["RS"].clear(); _aie.REPOSITORIOS["RS"].update(_sinais)
+    casos.append(("sem data identificável não rebaixa; fora da contagem leva o rótulo descritivo",
+                  _sem_data and _x.get("rotulo_contagem") == ROTULO_SEM_ATUALIZACAO))
+    _reg = registro_do_veredito(_ok[0], 0, 0, "orgao_estadual", "F", "10/11/2026") if _ok else {}
+    casos.append(("o registro leva os três campos descritivos (só no repositório)",
+                  _reg.get("data_da_edicao") == "2026-05-31" and _reg.get("indicado_ao_cadastro_art3A") is True
+                  and _reg.get("atualizacao_anual_localizada") is True
+                  and "indicado_ao_cadastro_art3A" not in registro_do_veredito(base, 0, 0, "x", "F", "10/11/2026")))
     casos.append(("recusa nunca é aplicável",
                   aplicaveis([dict(base, promove=False)], V) == []))
 
@@ -449,6 +558,8 @@ def main() -> int:
         print(f"  {v['municipio']}/{v['uf']} · {v['categoria']} · {v.get('data')} · {v.get('url')}")
     if not alvo:
         print("nada a aplicar")
+        if "--aplicar" in sys.argv and any("indicado_ao_cadastro_art3A" in v for v in decisoes):  # e o rótulo
+            gravar_em(REGISTRO, doc)   # os campos descritivos ficam registrados no veredito
         return 0
 
     if "--aplicar" not in sys.argv:

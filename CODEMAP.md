@@ -49,7 +49,7 @@ Atualizado em 11/11/2026.
 | `aplicar_revisao.py` | — | — | — | — | não |
 | `atualizar.py` | — | — | — | — | não |
 | `atualizar_boletins.py` | — | `boletins.json` | — | — | não |
-| `atualizar_instrumentos_estaduais.py` | — | — | — | 2 | não |
+| `atualizar_instrumentos_estaduais.py` | — | — | — | 3 | não |
 | `atualizar_marcos_severidade.py` | — | — | — | — | não |
 | `atualizar_populacao.py` | — | `populacao_censo2022.json` | — | — | não |
 | `atualizar_recursos.py` | — | `financiamento/por_uf.json`, `recursos_uf.json` | — | — | não |
@@ -132,8 +132,8 @@ Atualizado em 11/11/2026.
 | `gerar_resposta.py` | — | `resposta/municipios.json`, `resposta/municipios_decretados.json`, `resposta/por_uf.json`, `resposta/serie_semanal.json` | — | 1 | SIM |
 | `gerar_saude_municipio.py` | — | — | — | — | não |
 | `gerar_selos.py` | — | — | — | 1 | não |
-| `juiz.py` | — | — | — | 7 | SIM |
-| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 4 | não |
+| `juiz.py` | — | — | — | 8 | SIM |
+| `julgar_e_aplicar_descobertas.py` | — | `atos_resposta.json`, `consist.json`, `decretos_historico_uf.json`, `estados.json`, `indice.json`, `municipios.json` (+2) | — | 5 | não |
 | `julgar_filas.py` | — | `pistas_descobertas.json`, `pistas_doe.json`, `pistas_imprensa.json`, `pistas_querido_diario.json`, `promocoes_automaticas.json` | — | 4 | não |
 | `julgar_saude.py` | — | `pistas_imprensa_saude.json`, `saude_uf.json` | — | 1 | não |
 | `ler_planos_arboviroses.py` | — | `planos_arboviroses.json`, `planos_arboviroses_leitura.json` | — | — | não |
@@ -203,4 +203,4 @@ Atualizado em 11/11/2026.
 | `verificar_resposta.py` | — | — | — | — | não |
 | `verificar_saude.py` | — | — | — | — | não |
 | `verificar_sinais.py` | — | — | — | — | não |
-| `verificar_vigencia.py` | — | `municipios.json` | — | 1 | não |
+| `verificar_vigencia.py` | — | `municipios.json` | — | 2 | não |
