@@ -12,9 +12,14 @@ não pontuados permanecem na versão corrente.
 ## 2026-11-10 · #1680 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX
 O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar "Defesa Civil do Rio Grande do Sul — Prepara RS". Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).
 
+## 2026-11-11 · #PR · Busca de prefeitura recusa sítio de tributos (+1 líquida)
+
+`host_admissivel` passa a recusar `daminternet`, `tribut*`, `nfse` e `fazenda` como candidato a prefeitura (Rio de Janeiro caía em `daminternet.rio.rj.gov.br`). Só código de descoberta; nenhum dado nem texto público.
+
 ## 2026-11-10 · #PR · Redução: CLI morto de tipo_de_evento_dos_atos (−34 líquidas)
 
 `scripts/tipo_de_evento_dos_atos.py` virou biblioteca em 13/10 (`carimbar_atos` grava `tipo_evento`); `aplicar`, `main --relatorio` e `contagem` ficaram sem chamador e saíram, com a doc de uso. Autoteste, `coletores_base` e `gerar_resposta` inalterados.
+
 ## 2026-11-10 · #PR · Verificação do site: atributos reordenados pelo Netlify
 
 Ao reescrever links pelo "Pretty URLs", o Netlify também reordena os atributos da tag `<a>`; a imprensa.html saía como "diferente da main" e o vigia pedia nova reposição. A comparação passa a desfazer a ordem dos atributos de `<a>` nos dois lados, sem mudar nome, valor nem quantidade. (+16)
