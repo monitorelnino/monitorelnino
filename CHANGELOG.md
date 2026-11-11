@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Cartão de compartilhamento sem números
+A imagem que aparece quando o link do site é compartilhado mostrava a média do índice com dados até 10/09/2026 e a expressão "dados abertos". Imagem fixa com número envelhece; o novo cartão (`assets/social/card-mare.png`) descreve o que o site cobre e diz que a metodologia é pública. O nome novo faz os aplicativos buscarem a imagem de novo.
+
 ## 2026-11-11 · #PR · Busca de prefeitura recusa sítio de tributos (+1 líquida)
 
 `host_admissivel` passa a recusar `daminternet`, `tribut*`, `nfse` e `fazenda` como candidato a prefeitura (Rio de Janeiro caía em `daminternet.rio.rj.gov.br`). Só código de descoberta; nenhum dado nem texto público.
