@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-04 a 2026-11-11 (1417 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-04 a 2026-11-11 (1423 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,8 +27,8 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-11 07:18 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-10 01:35 | 0 s | — | ok | — |
-| `recalcular_mare.py` | essencial | 2026-11-11 13:06 | 3 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-11 10:22 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-11 18:11 | 4 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-11 17:34 | 58 s | 8 | ok | — |
 | `atualizar.py` | coletor | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-11 07:15 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-11-10 01:21 | 19 s | 13 | ok | — |
@@ -79,7 +79,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-11 · por canal: we
 | `desfechos_sus.py` | coletor | 2026-11-11 07:18 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-11 08:34 | 32 s | — | ok | — |
 | `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-11 07:39 | 22 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-11-11 10:21 | 52 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-11-11 17:26 | 471 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-11-11 01:59 | 4184 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-11 07:51 | 4 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-11 08:32 | 105 s | 24572 | ok | — |
