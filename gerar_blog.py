@@ -214,7 +214,7 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
 <meta property="og:title" content="{t} · Blog do MARÉ">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE_URL}assets/social/card-monitor-el-nino.png">
+<meta property="og:image" content="{BASE_URL}assets/social/card-mare.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{SITE} — como o país se prepara para o ciclo 2026/2027">
@@ -222,7 +222,7 @@ def render_post(post: dict, cabecalho: str, rodape: str, scripts: str) -> str:
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t} · Blog do MARÉ">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="{BASE_URL}assets/social/card-monitor-el-nino.png">
+<meta name="twitter:image" content="{BASE_URL}assets/social/card-mare.png">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 <!-- /seo -->
 <link rel="alternate" type="application/atom+xml" title="Blog do MARÉ" href="../feeds/blog.xml">

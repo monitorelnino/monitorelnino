@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Cartão de compartilhamento sem números
+A imagem que aparece quando o link do site é compartilhado mostrava a média do índice com dados até 10/09/2026 e a expressão "dados abertos". Imagem fixa com número envelhece; o novo cartão (`assets/social/card-mare.png`) descreve o que o site cobre e diz que a metodologia é pública. O nome novo faz os aplicativos buscarem a imagem de novo.
+
 ## 2026-11-10 · #1680 · Pasta de PLANCONs do RS: leitura por identificador, atalhos e DOCX
 O leitor pedia cada arquivo pelo caminho; nome longo estourava o limite do SharePoint e 170 planos saíam inacessíveis. Agora lê pelo identificador, segue os atalhos `.url`, lê DOCX e manda todos os arquivos ao juiz. As fichas da pasta passam a citar "Defesa Civil do Rio Grande do Sul — Prepara RS". Município indicado ao cadastro do art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA §129).
 

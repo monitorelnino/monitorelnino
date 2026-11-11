@@ -51,6 +51,6 @@ for (const pg of paginas) {
   if (!pub.indexar && !temNoindex) falhas.push(`${pg}: sem <meta name="robots" content="noindex"> (publicacao.json: indexar=false)`);
   if (pub.indexar && temNoindex) falhas.push(`${pg}: ainda com noindex (publicacao.json: indexar=true)`);
 }
-if (!fs.existsSync(path.join(RAIZ, "assets", "social", "card-monitor-el-nino.png"))) falhas.push("cartão social ausente");
+if (!fs.existsSync(path.join(RAIZ, "assets", "social", "card-mare.png"))) falhas.push("cartão social ausente");
 if (falhas.length) { console.log("✗ SEO:"); falhas.forEach(f => console.log("   -", f)); process.exit(1); }
 console.log(`✓ SEO OK — ${paginas.length} páginas com título e descrição únicos, canônica, Open Graph, Twitter, JSON-LD, um h1; sitemap e robots.`);
