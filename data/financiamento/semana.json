@@ -5,7 +5,7 @@
  "cartoes": [
   {
    "id": "pago_periodo_mp",
-   "valor": 132850699.36,
+   "valor": 139619642.88,
    "unidade": "reais",
    "periodo": "mês de outubro de 2026",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -67,17 +67,20 @@
   },
   {
    "id": "pago_ate_agora",
-   "valor": 498419600.99,
+   "valor": 553894754.71,
    "unidade": "reais",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
    "url_fonte": null,
    "detalhe": null,
-   "sem_coleta": false
+   "sem_coleta": false,
+   "variacao_mes": 48706210.2,
+   "mes_variacao": "202611",
+   "mes_variacao_parcial": true
   },
   {
    "id": "gasto_direto_uniao",
-   "valor": 94.2,
+   "valor": 94.7,
    "unidade": "% do valor pago",
    "periodo": "desde o mês de publicação de cada medida",
    "fonte": "Portal da Transparência, Execução da Despesa (arquivos mensais abertos)",
@@ -123,17 +126,17 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor do Ministério do Meio Ambiente e Mudança do Clima, no valor de R$ 337.483.432,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/174624",
-    "lido_em": "01/11/2026"
+    "lido_em": "11/11/2026"
    },
    "pct_gasto_direto": 99.5,
    "acao": {
     "dotacao_atualizada": 1021814781.0,
     "valor_do_ato": 337483432,
-    "empenhado": 381817635.09,
-    "pago": 355410889.21,
+    "empenhado": 388440244.21,
+    "pago": 391707829.49,
     "periodo_execucao": [
      "202606",
-     "202610"
+     "202611"
     ],
     "fonte_dotacao": "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/2026",
     "exercicio_dotacao": "2026",
@@ -162,8 +165,13 @@
     },
     {
      "mes": "202610",
-     "pago": 80963159.38,
+     "pago": 86740060.52,
      "parcial": false
+    },
+    {
+     "mes": "202611",
+     "pago": 30520039.14,
+     "parcial": true
     }
    ]
   },
@@ -175,17 +183,17 @@
     "risco": null,
     "trecho": "Abre crédito extraordinário, em favor dos Ministérios do Desenvolvimento Agrário e Agricultura Familiar e do Desenvolvimento e Assistência Social, Família e Combate à Fome, no valor de R$ 924.985.960,00, para os fins que especifica.",
     "url": "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/175455",
-    "lido_em": "01/11/2026"
+    "lido_em": "11/11/2026"
    },
-   "pct_gasto_direto": 80.9,
+   "pct_gasto_direto": 83.2,
    "acao": {
     "dotacao_atualizada": 2197781135.0,
     "valor_do_ato": 924985960,
-    "empenhado": 385142194.94,
-    "pago": 143008711.78,
+    "empenhado": 386846088.75,
+    "pago": 162186925.22,
     "periodo_execucao": [
      "202608",
-     "202610"
+     "202611"
     ],
     "fonte_dotacao": "https://portaldatransparencia.gov.br/download-de-dados/orcamento-despesa/2026",
     "exercicio_dotacao": "2026",
@@ -204,8 +212,13 @@
     },
     {
      "mes": "202610",
-     "pago": 51887539.98,
+     "pago": 52879582.36,
      "parcial": false
+    },
+    {
+     "mes": "202611",
+     "pago": 18186171.06,
+     "parcial": true
     }
    ]
   }
