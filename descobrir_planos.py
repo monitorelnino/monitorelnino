@@ -526,7 +526,8 @@ def autoteste() -> int:
                 and [p["url"] for p in r["pistas"]] == ["https://portal.bonito.ms.gov.br/plancon.pdf"]
                 and sem["situacao"] == "portal_nao_verificado" and cai["situacao"] == "portal_nao_verificado"
                 and cai["motivo"] == "a busca não respondeu" and hosts == ["portal.bonito.ms.gov.br"] and ok
-                and hosts_por_busca("Boa Vista", "RR", lambda _q: {"results": [{"url": "https://cidades.ibge.gov.br/brasil/rr/boa-vista"}]})[0] == [])
+                and hosts_por_busca("Boa Vista", "RR", lambda _q: {"results": [{"url": "https://cidades.ibge.gov.br/brasil/rr/boa-vista"}]})[0] == []
+                and not host_admissivel("daminternet.rio.rj.gov.br", "RJ") and host_admissivel("prefeitura.rio.rj.gov.br", "RJ"))
 
     def t_portal_http_render_e_motivo():
         """07/11/2026: prefeitura só em http abre; home SPA se identifica pelo render; sem portal, a lacuna
@@ -823,10 +824,10 @@ _UFS = frozenset("ac al ap am ba ce df es go ma mt ms mg pa pb pr pe pi rj rn rs
 
 def host_admissivel(host: str, uf: str) -> bool:
     """09/11/2026: o endereço do cadastro ou da busca só é candidato a prefeitura de `uf` se não for de outro
-    estado (`.rn.gov.br` para município do MS) nem de turismo (`riotur.rio`). Pura."""
+    estado (`.rn.gov.br` para município do MS) nem de turismo (`riotur.rio`) ou de tributos (`daminternet.rio.rj.gov.br`). Pura."""
     h = str(host or "").lower()
     m = re.search(r"\.([a-z]{2})\.gov\.br$", h)
-    return not (m and m.group(1) in _UFS and m.group(1) != uf.lower()) and not re.search(r"tur(ismo)?(\.|-|$)", h.split(".")[0] + ".")
+    return not (m and m.group(1) in _UFS and m.group(1) != uf.lower()) and not re.search(r"(tur(ismo)?|tribut\w*|daminternet|nfse|fazenda)(\.|-|$)", h.split(".")[0] + ".")
 
 
 def hosts_por_busca(nome: str, uf: str, busca, ja_tentados=()) -> tuple:

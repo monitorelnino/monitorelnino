@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-11 · #PR · Busca de prefeitura recusa sítio de tributos (+1 líquida)
+
+`host_admissivel` passa a recusar `daminternet`, `tribut*`, `nfse` e `fazenda` como candidato a prefeitura (Rio de Janeiro caía em `daminternet.rio.rj.gov.br`). Só código de descoberta; nenhum dado nem texto público.
+
 ## 2026-11-10 · #PR · Redução: CLI morto de tipo_de_evento_dos_atos (−34 líquidas)
 
 `scripts/tipo_de_evento_dos_atos.py` virou biblioteca em 13/10 (`carimbar_atos` grava `tipo_evento`); `aplicar`, `main --relatorio` e `contagem` ficaram sem chamador e saíram, com a doc de uso. Autoteste, `coletores_base` e `gerar_resposta` inalterados.
