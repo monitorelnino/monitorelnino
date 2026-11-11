@@ -182,9 +182,9 @@ REPOSITORIOS = {
         # Contingência"); o nome público é o do órgão e da página, sem data de consulta.
         "fonte": "Defesa Civil do Rio Grande do Sul — Prepara RS",
         "pagina": "https://prepara.rs.gov.br/planos-de-contingencia-de-protecao-e-defesa-civil",
-        # SINAL DECLARADO (central, 10/11/2026): o juiz lê e julga a pasta, mas a promoção não vai ao banco até a
-        # editoria decidir a idade máxima do plano (`aplicar_promocoes_do_juiz.aplicaveis`). Virar para True aplica.
-        "aplicar_no_banco": False,
+        # SINAL DECLARADO (editoria, 11/11/2026, ligado depois do ensaio real 42986259132): a promoção do juiz
+        # vai ao banco (`aplicar_promocoes_do_juiz.aplicaveis`), com a regra de contagem abaixo.
+        "aplicar_no_banco": True,
         # SINAL DECLARADO (editoria, 10/11/2026, 15:02, ligado): plano de município indicado ao cadastro do
         # art. 3º-A com edição anterior a 29/06/2025 fica fora da contagem (METODOLOGIA, mesma data).
         "contar_so_com_atualizacao_anual": True,
