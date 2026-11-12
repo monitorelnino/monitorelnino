@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-12 · #PR · Redução: sai a página Pesquisadores arquivada e o motor de zonas não usado
+
+Por decisão da editoria, saem `arquivo/pesquisadores/` (arquivada desde 27/09, §258) e
+`atualizar_marcos_severidade.py` (protótipo nunca consumido pelo índice). O portão da página
+arquivada vira só a conferência do 404 de `/arquivo/*`. O histórico do Git guarda tudo.
+
 ## 2026-11-12 · #PR · Sítio municipal: página em latin-1 e com entidade HTML se identifica
 
 A verificação do sítio da prefeitura descartava 261 municípios como "não se identifica": a home

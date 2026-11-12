@@ -57,7 +57,6 @@ Linguagens: Python 3.12 (pipeline; única dependência de cálculo é NumPy), Ja
 | `atualizar_boletins.py` | Vigia de novos boletins (tolerante a falha de rede). | sim (boletins.json) |
 | `buscar_querido_diario.py` | Descoberta (camada 2) via API do Querido Diário/OKBR: varre capitais (ou `--uf XX`) × dicionário de recuperação e deposita candidatos com trecho+URL do diário na fila humana; três salvaguardas na docstring; falha-suave. | sim (instrumentos_revisar.json, log_querido_diario.json) |
 | `atualizar_populacao.py` | Censo 2022 IBGE com validação dual-apuração (5.570 exatos; 5 sentinelas casando TODAS com uma mesma apuração oficial; total EXATO dessa apuração). Arquivo vigente: 1ª apuração (CD2022, planilha oficial IBGE), ingerida por `--de-arquivo` em 27/08/2026; em produção o SIDRA serve a 2ª apuração e o arquivo se atualiza sob o mesmo contrato. `--check` revalida. | sim (data/populacao_censo2022.json — NO PACOTE, validado) |
-| `atualizar_marcos_severidade.py` | Motor das 3 zonas (§12.3 da Metodologia) + descoberta CKAN/ANA. `marcos_severidade.json` **ainda não é consumido pelo índice** (integração §12.5 é futura). Self-test embutido: 24 casos. | não (arquivo ainda não consumido) |
 | `analise_sensibilidade.py` | Bateria reproduzível da auditoria de robustez do índice (§5 do PDF do índice): agregação, piso, descontos, esquemas de peso, contribuição efetiva, camadas, Monte Carlo, bordas. Primeira execução: auditoria de 27/08/2026. | não |
 | `consultar_querido_diario.py` | Camada 2 automatizada: API pública do Querido Diário (OKBR) → pistas p/ fila humana; testa cobertura antes de interpretar; nunca escreve no banco (R7) | sim (data/pistas_querido_diario.json) |
 | `verificar_vigencia.py` | Ciclo de vida dos atos: sinaliza decretos acima de 180d e datas ilegíveis p/ julgamento humano; nunca expira sozinho (melhoria PPI 27/08) | sim (data/vigencia_revisar.json) |
@@ -186,7 +185,6 @@ Consequência estrutural da R7: **o caminho automático fica restrito, por const
 ## 9. Testes adversariais e self-tests
 
 - **Teste de estresse §12.1 (critério de aceitação da Correção B):** 27 decretos simulados, um por UF, devem deslocar o MARÉ em **exatamente zero décimos**. A primeira execução real deste teste (26/08/2026) expôs o termo cruzado residual em `excedente_agregado()`; corrigido, o teste passa com Δ = 0 em todas as casas decimais. Reexecutado de forma independente na auditoria de 27/08/2026 (implementação própria do auditor): mesmo resultado.
-- **Self-test do motor de zonas** (`atualizar_marcos_severidade.py`): 24 casos — as três zonas, a guarda legal "decreto é SEMPRE resposta, independentemente de datas" (IN MDR nº 2/2016; casos adversariais: decreto anterior ao monitor; decreto sem marco algum), as quatro escalas de patamar, a navegação CKAN contra fixture local, e a guarda de contrato "não-decreto sem data levanta `ValueError` nomeado".
 - **Teste funcional R1–R7** (auditoria 27/08/2026): quatro submissões sintéticas com Netlify e rede simulados — plano→reservada; capital→reservada; decreto não-capital→aprovada com índice provadamente idêntico e portões verdes na base mutada; domínio não-oficial→recusada R4.
 - **Validações-sentinela de população** (`atualizar_populacao.py`): contagem exata de municípios, total nacional ±0,1%, cinco municípios nominais conferidos valor a valor — o desenho existe porque a primeira fonte candidata (projeções RIPSA rotuladas "2022") foi **rejeitada** por essas mesmas sentinelas.
 
@@ -212,14 +210,7 @@ python3 verificar_consistencia.py
 node scripts/verificar_estrutura.js     # esperado: "✓ ESTRUTURA OK ... 4 página(s)"
 node scripts/verificar_runtime.js       # esperado: "✓ RUNTIME OK" com 12 checagens
 
-# 4. Self-test do motor de zonas (24 casos)
-python3 - <<'PY'
-import importlib.util, sys
-s = importlib.util.spec_from_file_location("ms", "atualizar_marcos_severidade.py")
-m = importlib.util.module_from_spec(s); s.loader.exec_module(m); sys.exit(m.self_test())
-PY
-
-# 5. Teste de estresse §12.1 — recomenda-se REIMPLEMENTAR de forma independente:
+# 4. Teste de estresse §12.1 — recomenda-se REIMPLEMENTAR de forma independente:
 #    injete 1 registro {"uf": UF, "nome": "<sintético>", "categoria": "decreto"} por UF
 #    numa cópia de data/municipios.json, rode calcular() antes e depois, e verifique
 #    Δ = 0 em TODOS os campos de TODAS as UFs. (Reproduzir o teste com código próprio,
@@ -250,7 +241,6 @@ Nenhum segredo aparece no código ou no repositório; em CI vivem em GitHub Secr
 ## 12. Limitações conhecidas e estado das pendências (27/08/2026)
 
 1. **`METODOLOGIA.pdf` defasado e sem gerador no repositório:** o script `gerar_pdf_puro.py` não está incluído; o PDF distribuído neste pacote reflete a versão anterior do texto (média 46,2) e **não deve ser publicado** até regeneração a partir do MD corrigido. O MD é a versão normativa. *Contraste deliberado:* o PDF do **índice** (`MARE_Indice_Documentacao.pdf`) já nasce com gerador versionado no repositório (`gerar_pdf_indice.py`) e é computado ao vivo dos dados — regenerá-lo é um comando, e ele não pode envelhecer como o METODOLOGIA.pdf envelheceu.
-2. **`marcos_severidade.json` ainda não é consumido pelo índice** — o motor das 3 zonas está construído e testado, mas a integração ao cálculo (§12.5 da Metodologia) é etapa futura, condicionada a simulação e autorização editorial.
 3. **Componente populacional pendente de primeira execução** — `atualizar_populacao.py` roda no primeiro deploy; o componente só entra no índice publicado após simulação before/after autorizada.
 4. **Fontes declaradas** (`declarado_*` em `percentual_uf.json`) vêm de levantamentos externos de TCEs/sistemas estaduais e não são deriváveis do banco — a atualização delas é editorial, com fonte nomeada.
 5. **Auto-relato residual:** o componente `antecipacao` e o `status` estadual são julgamentos de verificação documental externa (não auto-relato dos entes), mas escala e cortes são escolhas normativas declaradas — ver METODOLOGIA §5 e a revisão v2.1→v2.2 em curso.
