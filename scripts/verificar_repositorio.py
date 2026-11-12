@@ -15,10 +15,7 @@ AS REGRAS
               bater; e caractere de controle no fonte (05/10/2026: o `\\b` de regex que virou
               backspace e matou a alternativa sem erro). Lê o código com `ast`. Exceção na própria
               linha: `# escrita-nao-portavel-ok: <motivo>`. `assets/vendor/` fica fora.
-  arquivada   página arquivada não volta ao ar por descuido (§258, 27/09/2026): nenhum HTML publicado a
-              linka (`previa/` é exceção declarada, contada como nota; nome em prosa também é nota),
-              os arquivos estão guardados, `netlify.toml` devolve 404 para `/arquivo/*`, e voltar
-              exige a linha no CHANGELOG.
+  arquivo     `netlify.toml` devolve 404 para `/arquivo/*`: o que foi retirado do ar não volta por URL.
   changelog   entrada nova de CHANGELOG tem chave `AAAA-MM-DD · #PR · título` e no máximo 80
               palavras (30/09/2026); as antigas ficam como estão.
   carimbo     o corte é a data da rodada (`corte` == `atualizado_em`, 30/09/2026) e é escrito em
@@ -45,10 +42,8 @@ import json
 import os
 import pathlib
 import re
-import shutil
 import subprocess
 import sys
-import tempfile
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
@@ -59,10 +54,6 @@ def _git(*args) -> list:
     if saida.returncode != 0:
         raise RuntimeError(f"git {' '.join(args[:2])} falhou: " + (saida.stderr or "").strip()[:200])
     return [c for c in saida.stdout.split("\0") if c]
-
-
-def _escrever(caminho: pathlib.Path, texto: str):
-    caminho.write_text(texto, encoding="utf-8", newline="\n")
 
 
 # ───────────────────────────── marcadores ─────────────────────────────
@@ -221,149 +212,28 @@ def _casos_escrita() -> list:
                      not caracteres_de_controle(chr(8), "assets/vendor/x.js"))]
 
 
-# ───────────────────────────── página arquivada ─────────────────────────────
-ARQUIVADAS = {"pesquisadores.html": {"arquivo_em": "arquivo/pesquisadores/pesquisadores.html",
-                                     "nao_pode_estar_em": ["pesquisadores.html"]},
-              "pesquisadores.js": {"arquivo_em": "arquivo/pesquisadores/pesquisadores.js",
-                                   "nao_pode_estar_em": ["assets/js/pesquisadores.js"]}}
-DECISAO_NO_CHANGELOG = "§258"
-# `previa/` é servido por `publish = "."` mas fica atrás de Basic-Auth próprio: pode citar a página
-# arquivada, e o portão diz quantos citam, para a conta nunca virar zero por esquecimento.
-EXCECAO_DECLARADA = "previa/"
-ATRIBUTOS_QUE_LEVAM = ("href", "src", "action", "content")   # o que o navegador SEGUE; nome em prosa é nota
+# ───────────────────────────── pasta de arquivo ─────────────────────────────
+# `publish = "."` serve a raiz inteira: sem a regra de 404 para `/arquivo/*`, o que foi retirado do ar
+# continuaria acessível por URL. 12/11/2026: a página "Pesquisadores" saiu do repositório (editoria);
+# a regra segue valendo para o resto da pasta.
+
+def problemas_arquivo(conf: str) -> list:
+    """Falta a regra de 404 para `/arquivo/*` no `netlify.toml`? Pura."""
+    if re.search(r'from\s*=\s*"/arquivo/\*"', conf) and re.search(r'status\s*=\s*404', conf):
+        return []
+    return ['netlify.toml sem a regra que devolve 404 para "/arquivo/*": a pasta de arquivo seria servida']
 
 
-def referencia_em_atributo(nome: str) -> str:
-    n = re.escape(nome)
-    return (r"(?:" + "|".join(ATRIBUTOS_QUE_LEVAM) + r"|data-[a-z-]+)\s*=\s*[\"'][^\"']*" + n
-            + r"|url\(\s*[\"']?[^)]*" + n)
-
-
-def html_publicado():
-    """Todo HTML que o deploy serve, menos `arquivo/` e `evidencias/` (4 GB: a poda é antes de descer)."""
-    # 09/11/2026: o deploy sai do checkout da CI, que só tem o que o Git rastreia; andar o disco contava as
-    # cópias de trabalho locais (.claude/worktrees/…) e reprovava a máquina, não o repositório.
-    from _versionados import versionados
-    achados = [RAIZ / r for r in versionados("*.html", raiz=RAIZ)]
-    for p in sorted(achados):
-        yield p.relative_to(RAIZ).as_posix(), p
-
-
-def problemas_arquivada() -> tuple:
-    p, notas = [], []
-    cl = RAIZ / "CHANGELOG.md"
-    changelog = cl.read_text(encoding="utf-8", errors="replace") if cl.exists() else ""
-    for nome, regra in ARQUIVADAS.items():
-        for caminho in regra["nao_pode_estar_em"]:     # voltou para a raiz?
-            if (RAIZ / caminho).exists():
-                if f"{nome} volta ao ar".lower() not in changelog.lower():
-                    p.append(f"{caminho} reapareceu, e o CHANGELOG não registra a decisão de trazê-lo de "
-                             f"volta. Arquivar foi decisão da editoria ({DECISAO_NO_CHANGELOG}); "
-                             f"desarquivar também tem de ser, com a linha no CHANGELOG — o arquivo de "
-                             f"volta, sozinho, não basta.")
-                else:
-                    notas.append(f"{caminho} está de volta, e o CHANGELOG registra a decisão")
-        citam, citam_previa, mencionam = [], [], []
-        for rel, arq in html_publicado():              # algum HTML publicado ainda linka?
-            texto = re.sub(r"<!--.*?-->", "", arq.read_text(encoding="utf-8", errors="replace"), flags=re.S)
-            if re.search(referencia_em_atributo(nome), texto):
-                (citam_previa if rel.startswith(EXCECAO_DECLARADA) else citam).append(rel)
-            elif nome in texto:
-                mencionam.append(rel)
-        if citam:
-            p.append(f"{len(citam)} HTML publicado ainda menciona {nome}: "
-                     f"{', '.join(citam[:6])}{'…' if len(citam) > 6 else ''}")
-        if mencionam:
-            notas.append(f"{len(mencionam)} HTML publicado nomeia {nome} em prosa, sem linkar: "
-                         f"{', '.join(mencionam[:6])} — registro histórico, não link")
-        if citam_previa:
-            notas.append(f"{len(citam_previa)} protótipo(s) em {EXCECAO_DECLARADA} menciona(m) {nome} — "
-                         f"exceção declarada (atrás de senha própria, fora da navegação pública), e a "
-                         f"contagem fica visível de propósito")
-        if not (RAIZ / regra["arquivo_em"]).exists():
-            p.append(f"{regra['arquivo_em']} não existe: o arquivamento diz que o arquivo está guardado, "
-                     f"e ele não está")
+def real_arquivo():
     nt = RAIZ / "netlify.toml"
-    if not nt.exists():
-        p.append("netlify.toml não existe")
-    else:
-        conf = nt.read_text(encoding="utf-8", errors="replace")
-        if not (re.search(r'from\s*=\s*"/arquivo/\*"', conf) and re.search(r'status\s*=\s*404', conf)):
-            p.append('netlify.toml sem a regra que devolve 404 para "/arquivo/*". Sem ela, `publish = "."` '
-                     'serve a pasta de arquivo, e a página que a editoria mandou suprimir continua '
-                     'acessível por URL — só sem link, que é pior.')
-    if not (RAIZ / "arquivo" / "pesquisadores" / "LEIA-ME.md").exists():
-        p.append("arquivo/pesquisadores/LEIA-ME.md não existe: sem ele, quem abrir a pasta não sabe por "
-                 "que a página saiu, para onde foram as seções, nem como reativá-la")
-    return p, notas
+    return (problemas_arquivo(nt.read_text(encoding="utf-8")) if nt.exists() else ["netlify.toml não existe"],
+            "`/arquivo/*` devolve 404")
 
 
-def real_arquivada():
-    p, notas = problemas_arquivada()
-    for n in notas:
-        print(f"  [nota] {n}")
-    return p, ("nenhum HTML publicado linka a página, os arquivos estão guardados, `/arquivo/*` devolve "
-               "404 e o LEIA-ME explica como reativar")
-
-
-def _com_repo(monta) -> tuple:
-    """`problemas_arquivada()` num repositório de mentira, montado em diretório temporário."""
-    global RAIZ
-    anterior = RAIZ
-    with tempfile.TemporaryDirectory() as t:
-        r = pathlib.Path(t)
-        (r / "arquivo" / "pesquisadores").mkdir(parents=True)
-        for n in ("pesquisadores.html", "pesquisadores.js", "LEIA-ME.md"):
-            _escrever(r / "arquivo" / "pesquisadores" / n, "x")
-        _escrever(r / "netlify.toml", 'publish = "."\n[[redirects]]\n  from = "/arquivo/*"\n  status = 404\n')
-        _escrever(r / "CHANGELOG.md", "# nada\n")
-        monta(r)
-        # o portão lê a lista do Git (09/11/2026): o repositório de mentira também é um repositório
-        import subprocess
-        subprocess.run(["git", "init", "-q"], cwd=r, check=True)
-        subprocess.run(["git", "add", "-A"], cwd=r, check=True)
-        RAIZ = r
-        try:
-            return problemas_arquivada()
-        finally:
-            RAIZ = anterior
-
-
-def _casos_arquivada() -> list:
-    def pagina(nome, texto):
-        return lambda r: _escrever(r / nome, texto)
-    pr_limpo, _ = _com_repo(lambda r: None)
-    pr_link, _ = _com_repo(pagina("index.html", '<a href="pesquisadores.html">x</a>'))
-
-    def previa(r):
-        (r / "previa").mkdir()
-        _escrever(r / "previa" / "p.html", '<a href="pesquisadores.html">x</a>')
-    pr_previa, notas_previa = _com_repo(previa)
-    pr_prosa, notas_prosa = _com_repo(pagina("mudancas.html", "<dd>A página pesquisadores.html saiu do ar em 27/09/2026.</dd>"))
-    pr_src, _ = _com_repo(pagina("index.html", '<script src="assets/js/pesquisadores.js"></script>'))
-    pr_volta, _ = _com_repo(pagina("pesquisadores.html", "x"))
-
-    def volta_registrada(r):
-        _escrever(r / "pesquisadores.html", "x")
-        _escrever(r / "CHANGELOG.md", "## §300 pesquisadores.html volta ao ar por decisão da editoria\n")
-    pr_registrada, notas_registrada = _com_repo(volta_registrada)
-    pr_404, _ = _com_repo(pagina("netlify.toml", 'publish = "."\n'))
-    pr_leia, _ = _com_repo(lambda r: (r / "arquivo" / "pesquisadores" / "LEIA-ME.md").unlink())
-    pr_guardado, _ = _com_repo(lambda r: shutil.rmtree(r / "arquivo" / "pesquisadores"))
-    achou = lambda lista, texto: any(texto in x for x in lista)  # noqa: E731
-    return [("o estado atual do repositório passa", problemas_arquivada()[0] == []),
-            ("repositório limpo e arquivado passa", pr_limpo == []),
-            ("HTML publicado que linka a página arquivada REPROVA",
-             achou(pr_link, "ainda menciona pesquisadores.html")),
-            ("protótipo em previa/ é NOTA, não falha", pr_previa == [] and achou(notas_previa, "protótipo")),
-            ("nome em PROSA, sem link, é nota e não falha", pr_prosa == [] and achou(notas_prosa, "em prosa")),
-            ("src apontando para o script arquivado REPROVA", achou(pr_src, "ainda menciona pesquisadores.js")),
-            ("arquivo de volta na raiz SEM linha no CHANGELOG reprova", achou(pr_volta, "não registra a decisão")),
-            ("arquivo de volta COM linha no CHANGELOG passa, e vira nota",
-             pr_registrada == [] and achou(notas_registrada, "está de volta")),
-            ("sem a regra de 404 para /arquivo/* REPROVA", achou(pr_404, "404")),
-            ("sem o LEIA-ME REPROVA", achou(pr_leia, "LEIA-ME")),
-            ("arquivo que não está guardado onde se disse REPROVA", achou(pr_guardado, "não existe: o arquivamento diz"))]
+def _casos_arquivo() -> list:
+    return [("o estado atual do repositório passa", real_arquivo()[0] == []),
+            ("com a regra de 404 passa", problemas_arquivo('[[redirects]]\n  from = "/arquivo/*"\n  status = 404\n') == []),
+            ("sem a regra de 404 REPROVA", problemas_arquivo('publish = "."\n') != [])]
 
 
 # ───────────────────────────── CHANGELOG curto ─────────────────────────────
@@ -716,7 +586,7 @@ def _casos_cliente() -> list:
 # (nome, barra a publicação, confere o disco, casos do autoteste, roda o autoteste antes da conferência)
 REGRAS = [("marcadores", True, real_marcadores, _casos_marcadores, False),
           ("escrita", True, real_escrita, _casos_escrita, True),
-          ("arquivada", False, real_arquivada, _casos_arquivada, True),
+          ("arquivo", False, real_arquivo, _casos_arquivo, False),
           ("changelog", False, real_changelog, _casos_changelog, False),
           ("carimbo", False, real_carimbo, _casos_carimbo, True),
           ("scripts", False, real_scripts, _casos_scripts, False),
