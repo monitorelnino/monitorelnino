@@ -14,6 +14,7 @@ não pontuados permanecem na versão corrente.
 Por decisão da editoria, saem `arquivo/pesquisadores/` (arquivada desde 27/09, §258) e
 `atualizar_marcos_severidade.py` (protótipo nunca consumido pelo índice). O portão da página
 arquivada vira só a conferência do 404 de `/arquivo/*`. O histórico do Git guarda tudo.
+
 ## 2026-11-12 · #PR · Saúde: estados acima da faixa contados nos números que a página mostra
 
 O topo contava 12 estados acima da faixa habitual da dengue e o mapa pintava 11: o Ceará (3,503
