@@ -15,6 +15,13 @@ Por decisão da editoria, saem `arquivo/pesquisadores/` (arquivada desde 27/09, 
 `atualizar_marcos_severidade.py` (protótipo nunca consumido pelo índice). O portão da página
 arquivada vira só a conferência do 404 de `/arquivo/*`. O histórico do Git guarda tudo.
 
+## 2026-11-12 · #PR · Sítio municipal: página em latin-1 e com entidade HTML se identifica
+
+A verificação do sítio da prefeitura descartava 261 municípios como "não se identifica": a home
+em ISO-8859-1 era lida como utf-8 ("Ten�rio") e `S&atilde;o` não era desfeito. Agora um só
+decodificador (`coletores_base.decodificar_pagina`, também usado na preservação) e entidade
+desfeita antes da comparação. Autoteste com os dois casos.
+
 ## 2026-11-12 · #PR · Saúde: estados acima da faixa contados nos números que a página mostra
 
 O topo contava 12 estados acima da faixa habitual da dengue e o mapa pintava 11: o Ceará (3,503
