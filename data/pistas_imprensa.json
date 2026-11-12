@@ -858094,7 +858094,14 @@
      "codebook": "1.8 (30/10/2026)"
     }
    ],
-   "proxima_tentativa_em": "2026-11-13"
+   "proxima_tentativa_em": "2026-11-13",
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-12",
+    "criterios": {}
+   }
   },
   {
    "alvo": "D-municipio-prioritario/Duque de Caxias/RJ",
@@ -861061,7 +861068,14 @@
     "fonte_imprensa",
     "familia_de_risco_do_ciclo"
    ],
-   "alertas": []
+   "alertas": [],
+   "verificacao_fonte": {
+    "versao": "1.0 (29/09/2026)",
+    "exibivel": false,
+    "motivo": "veiculo_nao_listado",
+    "lido_em": "2026-11-12",
+    "criterios": {}
+   }
   },
   {
    "alvo": "D-municipio-prioritario/Aparecida de Goiânia/GO",
@@ -861452,10 +861466,11 @@
    "status_anterior": "pendente_confirmacao_documento",
    "fechada_em": "2026-11-12",
    "id": "036ec5e17d",
-   "nivel_confianca": "B",
-   "pontos_confianca": 5,
+   "nivel_confianca": "A",
+   "pontos_confianca": 7,
    "sinais": [
     "fonte_oficial",
+    "municipio_no_titulo",
     "plano_no_titulo",
     "familia_de_risco_do_ciclo"
    ],
@@ -861488,7 +861503,211 @@
     "data": null,
     "julgado_em": "2026-11-12",
     "hash_evidencia": "fbbc72e3232fae79cca288e0c8e5330cd26a18526bbaaa41eb810ac0d8a9ea06"
+   },
+   "seguimento": {
+    "data": "12/11/2026",
+    "via": "B4",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": []
    }
+  },
+  {
+   "alvo": "C-estado-amplo/PA",
+   "query": "governo Pará \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Governo do Pará decreta alerta climático preventivo ao El Niño para enfrentar seca e queimadas - G1",
+   "url": "https://g1.globo.com/pa/para/noticia/2026/08/25/governo-do-para-decreta-alerta-climatico-preventivo-ao-el-nino-para-enfrentar-seca-e-queimadas.ghtml",
+   "data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT",
+   "fonte_veiculo": "G1",
+   "veiculo_dominio": "https://g1.globo.com",
+   "hash": "0a7b7f01bb96e53d",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQU0FlTi1EZDJFS1YtTkNhOEs4UmFXc05BcjFmSi0zRXBWc2NiZGFidWxVci1LdzBoTDZFRU52QmxxdGVuZWZvM3kxNTVKXzcwNkI5bUxWd0p5bEUwT0RBN1hzYTNKYzFYdVhGclBHa3hTY1VlcXdoeTRpT2RMQ2lfdkZ4QlAtenpIR3QzSXpwa1RBZW5QaGNxS0ZCaDFKODRST3ZILVNsM3U1VHQ2Qmxma29qN2dKeEI2cW54SEhPR0JYdXZTUEZJcTd4NmFWTWI3LWdISm4yaHBsWlBvMEY3VE1R0gHwAUFVX3lxTE1XdVFDNjR1UURFeENNM3dLR01JX0lESWNlTEFXQk4tUWxZZGotbEl6cmt4NV9fRU5aSGo4T2IwaEJBY2tGMkY0ZWFfdDVNNk5WVno2WUhYT1laM09VY1FicllfRGNOYmFwOU1kRWYyODZfTERXTlk0T01KNExaTVo3LTM1TVNlbnMwZXhSaC02cWF0cVdCTnRZYzBybVppV1VUaVUtNzdmdGZsU3ppbFg0Yk9GNk4td2hVMFAxQVhoWnRzbXRoTUtwNkNuZGthLWhxVjJjaXoxcHZHaG5HUlRUQ1lKd25tWU9aTEVNUk5jTA?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "338705fb96208f171fdc229769773e46159e2eec49efffec6ead8a553cd4fb28",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (g1.globo.com)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "d64c5c3a4b",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "C-estado-amplo/PA",
+   "query": "governo Pará \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Plano preventivo tenta blindar rios da Amazônia contra nova seca em 2026 - Pará Terra Boa",
+   "url": "https://www.paraterraboa.com/meio-ambiente/ibama-combate-o-garimpo-ilegal-na-floresta-das-arvores-gigantes-entre-o-amapa-e-o-para/",
+   "data_publicacao": "Tue, 19 May 2026 07:00:00 GMT",
+   "fonte_veiculo": "Pará Terra Boa",
+   "veiculo_dominio": "https://www.paraterraboa.com",
+   "hash": "192583d0c66c4694",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPUWxLbWgtcjNhRFVmaklPN0VlZWJfS1pZNDR4Z2cyRXJ6dkNFYURBZGdDc2otTnlFREluYkFfdFZGMmVYRGpSOEpnNU0yYzNoQmlvV01GZ29Hd2ZuR3hwQzlyX0hhaTZtVUlDSVlvZnVEUkxtUXNrdHc0VjRDS2kzdmFpUzl0MmdzbDE4S3YybUpqTDdyQjhBeFRqVUhpbEM5SjkydzYxaW03dzVLVUdtZU9LZ28tT1k?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "06cf59d7d3359d1a5ab278511fb80198c57ed8691ed40aff6765da1db6aee37c",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (paraterraboa.com)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "9ba8061abc",
+   "nivel_confianca": "B",
+   "pontos_confianca": 3,
+   "sinais": [
+    "fonte_desconhecida",
+    "plano_no_titulo",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "C-estado-amplo/PA",
+   "query": "governo Pará \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Governo do Pará foca em ações preventivas contra efeitos do El Niño - Agência Pará de Notícias",
+   "url": "https://agenciapara.com.br/noticia/80055/governo-do-para-foca-em-acoes-preventivas-contra-efeitos-do-el-nio",
+   "data_publicacao": "Thu, 15 Oct 2026 13:02:59 GMT",
+   "fonte_veiculo": "Agência Pará de Notícias",
+   "veiculo_dominio": "https://agenciapara.com.br",
+   "hash": "1588d6746e22c646",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNSmZBc3RIdWRkMkVCS1U1Nk1qUnpDQU9wS1VUdlFxbDdoX3lRQ2g2bTFqaDZjcldnMm5mbF84N3hHd1dnV2paZ3JhM3Bxbm1iZFdycjcwaXpCRUVZRVlMX3JqeHFELUhDaENEMlNNYXJzVXBUZG05aHdrNlV3Q1o4cEx5SzVoVEFCbDlzOXJNSktjX3N5MDNEMDZkcFc2M2paOEdkTGpkcExNblU?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "cf6e5f97893dcc52ac82ddd83e3b427062d7a0766996f3fc6b628600535d7345",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (agenciapara.com.br)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "853808f3f6",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "C-estado-amplo/PA",
+   "query": "governo Pará \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Pará declara alerta climático preventivo diante de projeções do El Niño - CNN Brasil",
+   "url": "https://www.cnnbrasil.com.br/nacional/norte/pa/para-declara-alerta-climatico-preventivo-diante-de-projecoes-do-el-nino/",
+   "data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT",
+   "fonte_veiculo": "CNN Brasil",
+   "veiculo_dominio": "https://www.cnnbrasil.com.br",
+   "hash": "241f4543733d4264",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPWDJDOHhsZkk1dU9KVmFFMl9JT3FoUkVyc3prUGdfRm5EQzlXdVh2T2FsV1R1Zzc5RjlESDhSc0VscDgtUmtleVJ3Tm9KTWdhQ09Bc3FuOXBTdVl3LTdtclpBUk1SZWFCcVkxQk9iREtJLWh4Y3g5M0VUb3BNMl9GaWp1ZVlVV1RrNTF1NGhEcTZSWW1UbXhzRjFpN0xaRWY5S0oybFE5WXYtbEhZbi0zTWFUejZHRkRUWGpr?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "04010a58000ffcf6b5c59795c3c0e92fac3e9b0d8af04c2b553a7be280845c38",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (cnnbrasil.com.br)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "5648976c34",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "C-estado-amplo/PA",
+   "query": "governo Pará \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Pará entra em alerta climático preventivo diante de possíveis efeitos do El Niño - O Liberal",
+   "url": "https://www.oliberal.com/para/para-entra-em-alerta-climatico-preventivo-diante-de-possiveis-efeitos-do-el-nino-1.1160935",
+   "data_publicacao": "Tue, 25 Aug 2026 07:00:00 GMT",
+   "fonte_veiculo": "O Liberal",
+   "veiculo_dominio": "https://www.oliberal.com",
+   "hash": "c79c52914cb2447b",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcXphbDBEaEVpazBCRWVnb2ZzWGY5bjg5VjRaRWR0ZDkwZlBvbnI2c1VkOUw1ZW5Hb3VKOUxxeWM2a25taUdodXVXc2daMGw2ZFpqWDhLYk1ULTl4TVpMVnJDcEtSNTdjU0Y4ck1yMVZweWt4WDNlcllETElyY1NSX1F6cHNmbllIWmlKQ2JfQ2RJaVR0YlpZeXpjS1RTNWVTVzAzNlM2WnptUmt6MUtCcTV0N2dxNlgydnlicA?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "26b38235092dff9244f48a328be7e44ea49b6b626af4cf8d9ad9a9984e9a3279",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (oliberal.com)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "f31477c3f3",
+   "nivel_confianca": "C",
+   "pontos_confianca": 1,
+   "sinais": [
+    "fonte_desconhecida",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "C-estado-amplo/RO",
+   "query": "governo Rondônia \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Adoção de medidas preventivas para eventual El Niño 26/27. - Aprosoja Brasil",
+   "url": "https://aprosojabrasil.com.br/comunicacao/blog/destaques/2026/09/04/adocao-de-medidas-preventivas-para-eventual-el-nino-26-27/",
+   "data_publicacao": "Fri, 04 Sep 2026 07:00:00 GMT",
+   "fonte_veiculo": "Aprosoja Brasil",
+   "veiculo_dominio": "https://aprosojabrasil.com.br",
+   "hash": "e90342d7f05b026d",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQZkZCaXBIZDdOMlA1XzlRaHVPNjBGakFMbnF4eml0aEdlUDFfQUp4SjRpNC16dTE2Q1B3Mi0tOUpwVk9nSkRuaXZXdlJBVS00cmhON0UyZUxTWU0xYjVHUDZNbHZ5X0lEWkVyZ25LMjlXWHFaUUhlTW5oVFZ4N3c1VXY1Z29LUU52TjZIZjY0bUVCajV4LUhOYnlzRG5ZMGRXU2RfTHpMbVJQYnVUSm0xVXBWTG9TdFY3OTBhbG5CZUVObEpm?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "83469e4c65d01171a7d7dfc911b3b7d35dccf289aef80d62f032f302e97ca8c5",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (aprosojabrasil.com.br)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "899e38c24a",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
+  },
+  {
+   "alvo": "C-estado-amplo/RO",
+   "query": "governo Rondônia \"plano\" El Niño estiagem 2026 preventivo",
+   "titulo": "Governo do Pará foca em ações preventivas contra efeitos do El Niño - REDE BRASIL DE TELEVISÃO",
+   "url": "https://rbtv.com.br/noticia/21507/governo-do-para-foca-em-acoes-preventivas-contra-efeitos-do-el-nino",
+   "data_publicacao": "Thu, 15 Oct 2026 07:00:00 GMT",
+   "fonte_veiculo": "REDE BRASIL DE TELEVISÃO",
+   "veiculo_dominio": "https://rbtv.com.br",
+   "hash": "74b6cc6c18c608a5",
+   "url_do_agregador": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNTUxpUTQ1T042Vlo0a2VKOEZMNEl4N1Z2VUxYdmZ6ZzN1NnZVaENzdk9xN1lYNzVzTXBOSHF1bnMtdmJpYjNPcHVJRE43dVh5V1BjWE9tU0hnN2ttYjBtaDlHYVpOYVFrVDRBOHJ2ejd5YUdGaDJlVHJ4WEVlanVQTDBOR1JsZFVQZjNxVHNBbFRTaTFDRXNMVXZEMjRTaWwzeXQ4?oc=5",
+   "degrau_do_redirecionamento": "busca_no_veiculo",
+   "fonte_provavel_oficial": false,
+   "hash_evidencia": "bf0086a9a005b70d95a7cd2ddd384c00cec5e9ac37457d259b0b74758f105710",
+   "documento_oficial_confirmado": null,
+   "promovivel": false,
+   "status": "fechada — Buscador 2: fora da entrada (B3/B8): domínio não oficial (rbtv.com.br)",
+   "buscador2_em": "2026-11-12",
+   "status_anterior": "pendente_confirmacao_documento",
+   "fechada_em": "2026-11-12",
+   "id": "6d7b1276cb",
+   "nivel_confianca": "C",
+   "pontos_confianca": 2,
+   "sinais": [
+    "fonte_imprensa",
+    "familia_de_risco_do_ciclo"
+   ],
+   "alertas": []
   }
  ],
  "quarentena": {
