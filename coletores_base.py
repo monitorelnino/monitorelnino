@@ -557,6 +557,22 @@ def decodificar_pagina(conteudo: bytes) -> tuple:
         return conteudo.decode("latin-1"), "latin-1"
 
 
+def copia_arquivada(url: str, buscar=None) -> tuple:
+    """(bytes, "AAAA-MM-DD") da captura mais recente do endereço no Internet Archive, sem pedido ao host
+    de origem; (None, None) sem captura ou sem resposta (tentativa, nunca ausência). 12/11/2026
+    (editoria): site que recusa ou saiu do ar se lê por alternativa antes de desistir."""
+    buscar = buscar or buscar_uma_vez
+    try:
+        s = (json.loads(buscar("https://archive.org/wayback/available?url=" + urllib.parse.quote(url, safe=""), timeout=30))
+             .get("archived_snapshots") or {}).get("closest") or {}
+        if not s.get("available") or str(s.get("status")) != "200":
+            return None, None
+        ts = s["timestamp"]
+        return buscar(f"https://web.archive.org/web/{ts}id_/{url}", timeout=40), f"{ts[:4]}-{ts[4:6]}-{ts[6:8]}"
+    except Exception:  # noqa: BLE001
+        return None, None
+
+
 def texto_declarativo(html: str) -> str:
     """O que a página DIZ ao leitor: texto visível, mais <title> e <meta name="description">.
 
