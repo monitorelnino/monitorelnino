@@ -61,7 +61,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).parent
 sys.path.insert(0, str(RAIZ))
-from coletores_base import ua_de, hoje_editorial, gravar_em, log_busca, sessao_sharepoint
+from coletores_base import ua_de, copia_arquivada, hoje_editorial, gravar_em, log_busca, sessao_sharepoint
 import juiz
 from classificador_natureza import classificar, citacao_completa, extrair_data, RE_NUMERO_ATO
 from verificar_recorrencia_uf import checar_recorrencia, registrar_no_historico, REGUA_ANTECIPACAO_RECORRENTE
@@ -123,12 +123,14 @@ def _ler_sharepoint_rs(url, timeout):
     return corpo
 
 
-def buscar_texto(url, timeout=20):
+def buscar_texto(url, timeout=20, arquivada=None):
     """Busca o conteúdo textual da URL. Tolerante a falha (retorna None, nunca lança).
     Extração crua (regex, sem parser HTML completo) — mesmo padrão de tolerância a
     falha já usado no resto do pipeline (perda de recall, nunca invenção de texto)."""
     try:
-        if HOST_SHAREPOINT_RS in url:
+        if arquivada:
+            raw, tipo = arquivada, ""
+        elif HOST_SHAREPOINT_RS in url:
             raw, tipo = _ler_sharepoint_rs(url, timeout), ""
         else:
             req = urllib.request.Request(url, headers={"User-Agent": ua_de("julgamento de descobertas")})
@@ -142,7 +144,10 @@ def buscar_texto(url, timeout=20):
     except Exception as e:
         # 24/10/2026: 170 de 481 PDFs do RS saíram `documento_inacessivel` sem a causa em lugar nenhum.
         print(f"  [buscar_texto] {type(e).__name__}: {str(e)[:140]} · {url[-70:]}", file=sys.stderr)
-        return None
+        if arquivada or "archive.org" in url:
+            return None
+        raw, _ = copia_arquivada(url)   # 12/11/2026 (editoria): o site recusou ou caiu; lê-se a cópia pública antes de desistir
+        return buscar_texto(url, timeout, arquivada=raw) if raw else None
 
 
 LETRAS_SEM_OCR = 200      # abaixo disto o PDF é tratado como escaneado
@@ -1123,6 +1128,15 @@ def self_test():
     assert [_quando(o) for o in ordem] == ["2026-10-01", "2026-08-25", ""], ordem
     ja = {"status": "pendente_confirmacao_documento", "julgamento_automatico": {"data": "17/10/2026"}}
     assert not a_julgar_nesta_noite(ja, "17/10/2026") and a_julgar_nesta_noite(ja, "18/10/2026")
+
+    # 12/11/2026: o site recusa; o texto vem da cópia arquivada, e sem cópia segue "não obtido"
+    import unittest.mock as _mk
+    with _mk.patch("urllib.request.urlopen", side_effect=OSError("403")), \
+         _mk.patch(f"{__name__}.copia_arquivada", return_value=(b"<p>Plano de contingencia de Bonito</p>", "2026-09-01")):
+        assert "Plano de contingencia" in (buscar_texto("https://x.ms.gov.br/p.html") or ""), "cópia arquivada não lida"
+    with _mk.patch("urllib.request.urlopen", side_effect=OSError("403")), \
+         _mk.patch(f"{__name__}.copia_arquivada", return_value=(None, None)):
+        assert buscar_texto("https://x.ms.gov.br/p.html") is None
 
     print("\n✓ self-test do orquestrador OK — 6 cenários cobertos (aplicar exigiria banco real; "
           "ver classificador_natureza.py e verificar_recorrencia_uf.py para os self-tests de aplicação).")
