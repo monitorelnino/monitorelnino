@@ -548,6 +548,15 @@ def _plano(t: str) -> str:
     return "".join(c for c in _ud.normalize("NFD", str(t or "").lower()) if _ud.category(c) != "Mn")
 
 
+def decodificar_pagina(conteudo: bytes) -> tuple:
+    """(texto, codificação) de uma página: utf-8, senão latin-1 — sítio municipal antigo ainda serve
+    ISO-8859-1, e o utf-8 com `replace` trocava "Tenório" por "Ten\ufffdrio" (12/11/2026). Pura."""
+    try:
+        return conteudo.decode("utf-8"), "utf-8"
+    except UnicodeDecodeError:
+        return conteudo.decode("latin-1"), "latin-1"
+
+
 def texto_declarativo(html: str) -> str:
     """O que a página DIZ ao leitor: texto visível, mais <title> e <meta name="description">.
 
@@ -1664,12 +1673,7 @@ def preservar_evidencia(conteudo: bytes, url: str, ext: str, origem: str) -> str
         # porque a decodificação estrita falhava e o texto ficava None; e o CPF não era redigido
         # aqui, só em `gravar_texto`. Agora: utf-8, senão latin-1 (re-codificado no mesmo
         # encoding), e CPF redigido junto com a credencial.
-        codificacao = "utf-8"
-        try:
-            texto = conteudo.decode("utf-8")
-        except UnicodeDecodeError:
-            codificacao = "latin-1"
-            texto = conteudo.decode("latin-1")
+        texto, codificacao = decodificar_pagina(conteudo)
         limpo, redigidos = redigir_segredos(texto)
         limpo, cpfs = redigir_dados_pessoais(limpo)
         if redigidos or cpfs:

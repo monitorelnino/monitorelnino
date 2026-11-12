@@ -56,7 +56,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed, wait as _espera
 import funil
 from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
-                             rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo)
+                             rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo,
+                             decodificar_pagina)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
@@ -347,6 +348,8 @@ def autoteste() -> int:
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
                 and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
                 and not identifica_prefeitura("Prefeitura de Careirodoce", "Careiro")
+                and identifica_prefeitura("<title>Prefeitura de S&atilde;o Martinho</title>", "São Martinho")
+                and identifica_prefeitura(decodificar_pagina("Prefeitura de Tenório".encode("latin-1"))[0], "Tenório")
                 and dominios_do_municipio("Brasília", "DF")[:2] == ["df.gov.br", "brasilia.df.gov.br"]
                 and dominios_do_municipio("Brasília", "DF", "df.gov.br").count("df.gov.br") == 1
                 and identifica_prefeitura("<title>GDF - Governo do Distrito Federal</title>", "Brasília")
@@ -911,9 +914,11 @@ def parece_montar_por_javascript(html: str) -> bool:
 
 
 def identifica_prefeitura(html: str, nome: str) -> bool:
-    """A página diz ser a prefeitura do município (nome e a palavra "prefeitura" ou "município"). Pura."""
-    import unicodedata
-    base = unicodedata.normalize("NFKD", re.sub(r"<[^>]+>", " ", str(html or "")[:300000]).lower())
+    """A página diz ser a prefeitura do município (nome e a palavra "prefeitura" ou "município"). Pura.
+
+    12/11/2026: entidade HTML (`S&atilde;o`) é texto, não marcação — 261 municípios caíam aqui."""
+    import html as _html, unicodedata
+    base = unicodedata.normalize("NFKD", _html.unescape(re.sub(r"<[^>]+>", " ", str(html or "")[:300000])).lower())
     t = " ".join(re.sub(r"[^a-z0-9]+", " ", "".join(c for c in base if not unicodedata.combining(c))).split())
     palavras = re.sub(r"[^a-z0-9]+", " ", "".join(c for c in unicodedata.normalize("NFKD", nome.lower())
                                                   if not unicodedata.combining(c))).split()
@@ -1002,7 +1007,7 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
                 recusados.setdefault(d.removeprefix("www."), {"dominio": d, "situacao": "recusa_de_fonte", "motivo": recusa, "pistas": []})
             if corpo is None:
                 continue
-            texto = corpo[:300000].decode("utf-8", "replace")
+            texto = decodificar_pagina(corpo[:300000])[0]
             if identifica_prefeitura(texto, nome):
                 return d, texto
             if render is None and parece_montar_por_javascript(texto):
