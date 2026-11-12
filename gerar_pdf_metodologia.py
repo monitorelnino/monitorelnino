@@ -75,7 +75,7 @@ def _eh_titulo(linha):
 
 
 def construir():
-    """Monta o PDF da metodologia a partir do texto vivo de METODOLOGIA.md, preservando a estrutura de seções e o versionamento."""
+    """Monta o PDF da metodologia a partir do texto vivo de METODOLOGIA.md, preservando a estrutura de seções."""
     md = (RAIZ / "METODOLOGIA.md").read_text(encoding="utf-8")
     linhas = md.split("\n")
 
@@ -117,8 +117,6 @@ def construir():
         else:
             E.append(Paragraph(_inline(s.strip()), S_P))
 
-    versao = re.search(r"Metodologia (v[\d.]+)", md)
-    versao = versao.group(1) if versao else ""
 
     def rodape(canvas, doc):
         """Escreve o rodapé padrão (numeração de página, versão do documento) em cada página do PDF."""
@@ -126,7 +124,7 @@ def construir():
         canvas.setFont("Helvetica", 7.5)
         canvas.setFillColor(CINZA)
         canvas.drawString(18 * mm, 12 * mm,
-                          f"MARÉ · Futura Evidence Lab — Documento Técnico-Metodológico ({versao}, renderizado do METODOLOGIA.md vigente)")
+                          f"MARÉ · Futura Evidence Lab — Documento Técnico-Metodológico (renderizado do METODOLOGIA.md vigente)")
         canvas.drawRightString(A4[0] - 18 * mm, 12 * mm, f"página {doc.page}")
         canvas.setStrokeColor(colors.HexColor("#D8CFC2"))
         canvas.line(18 * mm, 16 * mm, A4[0] - 18 * mm, 16 * mm)
@@ -135,7 +133,7 @@ def construir():
     doc = SimpleDocTemplate(str(RAIZ / "METODOLOGIA.pdf"), pagesize=A4,
                             leftMargin=18 * mm, rightMargin=18 * mm,
                             topMargin=16 * mm, bottomMargin=22 * mm,
-                            title=f"MARÉ — Metodologia {versao}",
+                            title="MARÉ — Metodologia",
                             author="Futura Evidence Lab · MARÉ",
                             # 10/09/2026: build reprodutível de verdade — pageCompression=0 tira a dependência da
                             # versão do zlib do sistema (comprimir o mesmo conteúdo pode gerar bytes diferentes
@@ -144,7 +142,7 @@ def construir():
                             pageCompression=0, invariant=1)
     n_blocos = len(E)  # doc.build consome a lista — capturar antes
     doc.build(E, onFirstPage=rodape, onLaterPages=rodape)
-    print(f"METODOLOGIA.pdf gerado ({versao}) — renderizado de METODOLOGIA.md, {n_blocos} blocos")
+    print(f"METODOLOGIA.pdf gerado — renderizado de METODOLOGIA.md, {n_blocos} blocos")
 
 
 if __name__ == "__main__":

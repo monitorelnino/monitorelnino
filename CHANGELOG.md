@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-12 · #PR · Metodologia sem números de versão e sem o nome do Instituto Talanoa
+
+Por decisão da editoria, a metodologia deixa de numerar versões: cada régua passa a ser nomeada
+pela data em que entrou (ex.: "régua de 30/09/2026"), e o cabeçalho traz só a régua em vigor. O
+painel de terceiros segue citado como Política por Inteiro. Nenhuma regra do índice muda.
+
 ## 2026-11-12 · #PR · Sítio municipal: página em latin-1 e com entidade HTML se identifica
 
 A verificação do sítio da prefeitura descartava 261 municípios como "não se identifica": a home
