@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-12 · #PR · Site da prefeitura que recusa ou saiu do ar: lê-se a cópia arquivada antes de desistir
+
+Por decisão da editoria, quando o site oficial recusa o acesso, expirou ou não responde, o Monitor
+lê a cópia pública mais recente no Internet Archive, sem novo pedido ao site. Cópia feita no ciclo
+(desde 29/06/2026) conta como consulta, com a data registrada; cópia anterior só gera pista. O juiz
+lê o documento pela mesma via.
+
 ## 2026-11-12 · #PR · Metodologia pública só com o método em vigor
 
 Por decisão da editoria, o PDF da metodologia passa a sair de `docs/METODOLOGIA_PUBLICA.md`: o

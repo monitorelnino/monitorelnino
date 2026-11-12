@@ -275,6 +275,8 @@ Cada município tem um nível público de verificação:
 
 O Monitor se identifica em todo acesso, respeita o intervalo entre pedidos que cada sítio declara e registra os acessos. Recusa de acesso (bloqueio, limite de pedidos, verificação humana, exigência de login) é respeitada sempre e registrada como recusa, nunca como ausência de documento. Página de bloqueio servida como se fosse conteúdo é tratada como recusa.
 
+Quando o site oficial recusa o acesso ou está fora do ar, o Monitor procura outro endereço oficial do mesmo ente e lê a cópia pública mais recente do site no Internet Archive, sem novo pedido ao site. A cópia feita durante o ciclo conta como consulta, com a data da cópia registrada; cópia anterior serve só como pista.
+
 **12. Ausência de dado**
 
 Zero, ausência de dado, dado indisponível e dado não coletado são quatro coisas diferentes, e o site nunca mostra uma no lugar da outra.

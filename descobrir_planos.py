@@ -57,7 +57,7 @@ import funil
 from coletores_base import (RAIZ, buscar, buscar_uma_vez, preservar_evidencia, ler, gravar,
                              log_busca, registrar_lacuna, registrar_acesso_contra_robots, robots_permite,
                              rodar_autoteste, hoje_editorial, referencia_ibge, MuroDeRobo,
-                             decodificar_pagina)
+                             decodificar_pagina, copia_arquivada)
 from scripts.pistas import sincronizar as sincronizar_pistas  # 05/10/2026: a fila tem UMA porta
 
 FILA = RAIZ / "data" / "pistas_descobertas.json"
@@ -343,7 +343,8 @@ def autoteste() -> int:
                 and _lista_de_endereco_mudou({"situacao": "nao_verificado", "candidatos": CANDIDATOS_V}, True)
                 and fatia(list("abcdefg"), 2, 3) == ["b", "e"] and fatia(list("abc"), 1, 1) == ["a", "b", "c"]
                 and sorted(x for k in (1, 2, 3) for x in fatia(list("abcdefg"), k, 3)) == list("abcdefg")
-                and not _lista_de_endereco_mudou({"situacao": "lido"}) and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte"}, True)
+                and not _lista_de_endereco_mudou({"situacao": "lido"}) and not _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V}, True)
+                and _lista_de_endereco_mudou({"situacao": "recusa_de_fonte", "candidatos": CANDIDATOS_V - 1})
                 and identifica_prefeitura(pref, "Santana do Ipanema")
                 and not identifica_prefeitura(pref, "Palmeira dos Índios")
                 and not identifica_prefeitura("<title>Santana do Ipanema, turismo</title>", "Santana do Ipanema")
@@ -397,6 +398,24 @@ def autoteste() -> int:
              mock.patch(f"{__name__}.registrar_lacuna"), mock.patch(f"{__name__}.time.sleep"):
             so_recusa = descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-09", oficial="www.ibge.gov.br",
                                             busca=lambda q: {"results": [{"url": "https://ibge.gov.br.ms.gov.br/"}]})
+        # 12/11/2026: o site recusa, a cópia arquivada do ciclo é lida e o site não é pedido de novo; cópia antiga não é consulta
+        def com_arquivo(ts):
+            vistos = []
+
+            def f(url, timeout=0):
+                vistos.append(url)
+                if "wayback/available" in url:
+                    return json.dumps({"archived_snapshots": {"closest": {"available": True, "status": "200", "timestamp": ts}}}).encode()
+                if "web.archive.org/web/" in url:
+                    return b"<title>Prefeitura de Bonito</title><a href='/plancon.pdf'>Plano de contingencia</a>"
+                raise e403
+            with mock.patch(f"{__name__}.buscar_uma_vez", side_effect=f), mock.patch(f"{__name__}.registrar_lacuna"), mock.patch(f"{__name__}.time.sleep"):
+                return descobrir_no_portal("Bonito", "MS", "5002209", "2026-11-12"), vistos
+        (arq, vistos), (velha, _) = com_arquivo("20260901120000"), com_arquivo("20240101000000")
+        if not (arq["situacao"] == "lido" and arq["motivo"] == "cópia arquivada de 2026-09-01" and len(arq["pistas"]) == 1
+                and sum(u.startswith("https://bonito.ms.gov.br") for u in vistos) == 1
+                and velha["situacao"] == "portal_nao_verificado" and "anterior ao ciclo" in velha["motivo"] and len(velha["pistas"]) == 1):
+            return False
         return (recusa["situacao"] == "recusa_de_fonte" and recusa["pistas"] == []
                 and mudo["situacao"] == "portal_nao_verificado" and mudo["pistas"] == []
                 and segue["situacao"] == "lido" and segue["dominio"] == "bonito.ms.gov.br" and n_ibge == 1
@@ -821,7 +840,8 @@ def _so_letras(texto: str) -> str:
     return re.sub(r"[^a-z0-9]", "", "".join(c for c in base if not unicodedata.combining(c)))
 
 
-CANDIDATOS_V = 6   # 10/11/2026: + sítio do GDF para Brasília (antes: 5 = `http` quando `https` falha e home SPA identificada pelo render, 07/11; 4 = Wikidata P856, render e busca 1b, 05/11)
+INICIO_DO_CICLO = "2026-06-29"   # Boletim nº 1: cópia arquivada do site só vale como consulta se for do ciclo
+CANDIDATOS_V = 7   # 12/11/2026: + cópia arquivada quando o site recusa ou não responde (6 = sítio do GDF para Brasília, 10/11; 5 = `http` e home SPA pelo render, 07/11; 4 = Wikidata P856, render e busca 1b, 05/11)
 
 _SPARQL = ("SELECT ?c ?u WHERE { ?m wdt:P1585 ?c ; wdt:P856 ?u . }")
 _REDES = ("facebook.", "instagram.", "twitter.", "x.com", "youtube.", "wikipedia.", "linktr.ee")
@@ -1026,6 +1046,17 @@ def descobrir_no_portal(nome: str, uf: str, ibge: str, hoje: str, oficial: str =
         achados, ok = hosts_por_busca(nome, uf, busca, tentados)
         nao_serve = not ok
         dominio, home = ler_home(achados)
+    if not dominio:   # 12/11/2026 (editoria): antes de desistir, a cópia pública do site no Internet Archive
+        for d in (list(recusados) + tentados)[:2]:
+            with _pedido_ao_host("web.archive.org"):
+                corpo, captura = copia_arquivada(f"https://{d}/", buscar_uma_vez)
+            texto = decodificar_pagina(corpo[:300000])[0] if corpo else ""
+            if identifica_prefeitura(texto, nome):   # o site não é pedido de novo: os links saem da cópia
+                no_ciclo = captura >= INICIO_DO_CICLO
+                itens = [(h, t, None, None) for h, t in links_da_pagina(texto, f"https://{d}/")]
+                return {"dominio": d, "situacao": "lido" if no_ciclo else "portal_nao_verificado",
+                        "pistas": pistas_do_portal(nome, uf, ibge, d, itens, hoje),
+                        "motivo": f"cópia arquivada de {captura}" + ("" if no_ciclo else ", anterior ao ciclo")}
     if not dominio and recusados:
         return next(iter(recusados.values()))
     if not dominio:
@@ -1095,7 +1126,8 @@ def _lista_de_endereco_mudou(v: dict, refazer_parados: bool = False) -> bool:
     """O município sem portal achado ou sem página lida hoje, com a lista de antes de `CANDIDATOS_V`: refaz-se
     no mesmo dia (só esse caso; o que foi lido ou recusado não se repete). Com `refazer_parados`, todo parado
     de hoje se refaz (07/11/2026: a válvula que mede o canal renderizado depois do #1599). Função pura."""
-    return v.get("situacao") in PARADOS and (refazer_parados or v.get("candidatos") != CANDIDATOS_V)
+    mudou = v.get("candidatos") != CANDIDATOS_V   # 12/11/2026: a recusa também se refaz quando há alternativa nova
+    return (v.get("situacao") in PARADOS and (refazer_parados or mudou)) or (v.get("situacao") == "recusa_de_fonte" and mudou)
 
 
 def fatia(fila: list, k: int, n: int) -> list:
