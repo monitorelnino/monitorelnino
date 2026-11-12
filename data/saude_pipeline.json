@@ -3897,7 +3897,13 @@
   {"data": "2026-11-11", "script": "coletar_arboviroses_sinan.py", "inicio": "2026-11-12T01:38:37", "duracao_s": 39.9, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-11", "script": "coletar_obitos_registro_civil.py", "inicio": "2026-11-12T01:39:16", "duracao_s": 922.1, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
   {"data": "2026-11-11", "script": "classificar_saude_no_plano.py", "inicio": "2026-11-12T01:54:38", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
-  {"data": "2026-11-11", "script": "gerar_saude_municipio.py", "inicio": "2026-11-12T01:54:38", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
+  {"data": "2026-11-11", "script": "gerar_saude_municipio.py", "inicio": "2026-11-12T01:54:38", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "consultar_querido_diario.py", "inicio": "2026-11-12T01:19:56", "duracao_s": 3.1, "itens": null, "status": "erro", "erro": "portas tentadas: api.queridodiario.org.br: HTTPError HTTP Error 503: Service Unavailable | queridodiario.ok.org.br: HTTPError HTTP Error 503: Service Unavailable | api.queridodiario.ok.org.br: URLError <urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake fail"},
+  {"data": "2026-11-11", "script": "coletar_diarios_municipais.py", "inicio": "2026-11-12T01:19:59", "duracao_s": 2.2, "itens": 0, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_diarios_consorciados.py", "inicio": "2026-11-12T01:20:01", "duracao_s": 3395.8, "itens": 42, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_doe.py", "inicio": "2026-11-12T02:16:36", "duracao_s": 3702.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_s2id.py", "inicio": "2026-11-12T03:18:18", "duracao_s": 1119.2, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-12", "script": "coletar_recursos_resposta.py", "inicio": "2026-11-12T03:36:57", "duracao_s": 52.2, "itens": null, "status": "ok", "erro": ""}
  ],
- "atualizado_em": "2026-11-12T01:54:38"
+ "atualizado_em": "2026-11-12T03:36:57"
 }

@@ -73,28 +73,28 @@
   },
   {
    "id": "municipios_decretaram",
-   "valor": 1153,
+   "valor": 1165,
    "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1153,
+   "n": 1165,
    "fonte": "Defesa Civil nacional (decretos no Diário Oficial da União)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "municipios_reconhecidos",
-   "valor": 1024,
+   "valor": 1037,
    "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1024,
+   "n": 1037,
    "fonte": "Defesa Civil nacional (portarias de reconhecimento, DOU)",
    "sem_coleta": false,
    "motivo": null,
    "prazo_reconhecimento": {
-    "n": 1024,
-    "mediana": 15.0,
+    "n": 1037,
+    "mediana": 15,
     "p25": 9.0,
     "p75": 22.0,
     "p90": 29.0
@@ -102,32 +102,32 @@
   },
   {
    "id": "pessoas_municipios_decretados",
-   "valor": 38002730,
+   "valor": 38135488,
    "unidade": "pessoas",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1153,
+   "n": 1165,
    "fonte": "IBGE, Censo 2022 (população dos municípios que decretaram)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "atos_por_evento",
-   "valor": 1595,
+   "valor": 1621,
    "unidade": "atos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1595,
+   "n": 1621,
    "fonte": "Defesa Civil nacional (atos de emergência)",
    "sem_coleta": false,
    "motivo": null,
    "por_evento": {
-    "sem_tipo_informado": 525,
-    "seca": 452,
-    "chuva": 337,
-    "fogo": 35,
+    "sem_tipo_informado": 534,
+    "seca": 458,
+    "chuva": 340,
+    "fogo": 38,
     "outro_declarado": 7,
-    "vendaval": 239
+    "vendaval": 244
    }
   },
   {
@@ -318,7 +318,7 @@
   "mare_legal": 40.8,
   "mare_saude": 62.4,
   "saude_verificadas": 21,
-  "decretaram_no_ciclo": 1153
+  "decretaram_no_ciclo": 1165
  },
  "cartoes": [
   {
@@ -697,7 +697,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "desde 29 de junho, 95 município(s) com ato de portaria",
+   "nota": "desde 29 de junho, 100 município(s) com ato de portaria",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "financiamento.html"
@@ -812,5 +812,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 12/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, nenhum município publicou plano para o El Niño e 34 municípios decretaram situação de emergência ou calamidade; 757.635 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1153 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 12/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, nenhum município publicou plano para o El Niño e 34 municípios decretaram situação de emergência ou calamidade; 757.635 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1165 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
