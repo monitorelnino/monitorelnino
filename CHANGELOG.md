@@ -9,6 +9,13 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-12 · #PR · Metodologia pública só com o método em vigor
+
+Por decisão da editoria, o PDF da metodologia passa a sair de `docs/METODOLOGIA_PUBLICA.md`: o
+método em vigor, em quinze seções, sem histórico de versões, réguas anteriores ou datas de
+decisão. `METODOLOGIA.md` segue como registro datado de cada decisão. Nenhuma regra, peso ou
+crédito muda.
+
 ## 2026-11-12 · #PR · Sítio municipal: página em latin-1 e com entidade HTML se identifica
 
 A verificação do sítio da prefeitura descartava 261 municípios como "não se identifica": a home
