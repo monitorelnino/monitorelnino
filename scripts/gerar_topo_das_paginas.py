@@ -85,12 +85,26 @@ def _na_semana(referencia) -> str:
     return f" na semana {quando}" if quando else ""
 
 
+def como_exibido(x: float) -> float:
+    """O número como a página o escreve (`decBR`/`numBR` de assets): inteiro sem casa, abaixo de
+    0,05 um dígito significativo, o resto com uma casa, arredondando a metade para cima. Pura."""
+    from decimal import Decimal, ROUND_HALF_UP
+    if float(x).is_integer():
+        return float(x)
+    d = Decimal(repr(float(x)))
+    passo = Decimal(1).scaleb(d.adjusted()) if x and abs(x) < 0.05 else Decimal("0.1")
+    return float(d.quantize(passo, rounding=ROUND_HALF_UP))
+
+
 def posicao_na_faixa(valor, faixa) -> str | None:
     """'acima' | 'dentro' | 'abaixo' do valor na faixa habitual da MESMA semana; None sem os dois.
-    Mesma regra de `assets/js/saude.js` (acima do p90 de 2019 a 2025). Função pura."""
+    Mesma regra de `assets/js/saude.js` (acima do p90 de 2019 a 2025), nos números que o leitor lê:
+    12/11/2026, CE com 3,503 e p90 3,492 era "acima" no topo e "dentro" no mapa (ambos "3,5"). Pura."""
     if not isinstance(valor, (int, float)) or not isinstance(faixa, dict) or faixa.get("p90") is None:
         return None
-    return "acima" if valor > faixa["p90"] else ("dentro" if valor >= faixa.get("mediana", valor) else "abaixo")
+    v, p90 = como_exibido(valor), como_exibido(faixa["p90"])
+    med = como_exibido(faixa["mediana"]) if faixa.get("mediana") is not None else v
+    return "acima" if v > p90 else ("dentro" if v >= med else "abaixo")
 
 
 def posicoes_das_ufs(desfecho: dict) -> dict:
@@ -452,6 +466,10 @@ def _autoteste() -> int:
     r = resumo_do_desfecho(D)
     ok("estados acima da faixa: acima do p90 da semana do valor, dentro e abaixo não contam",
        posicoes_das_ufs(D) == {"AC": "acima", "AL": "dentro", "AM": "abaixo"} and r["ufs_acima_faixa"] == 1 and r["ufs_comparadas"] == 3)
+    ok("posição na faixa: compara o número como a página o escreve (3,503 contra p90 3,492 é dentro)",
+       posicao_na_faixa(3.503, {"mediana": 3.0025, "p90": 3.492}) == "dentro"
+       and posicao_na_faixa(3.56, {"mediana": 3.0, "p90": 3.492}) == "acima"
+       and como_exibido(0.0123) == 0.01 and como_exibido(7) == 7)
     ok("semana consolidada em datas ISO (domingo a sábado) e BR só se for da mesma semana",
        (r["semana_inicio"], r["semana_fim"]) == ("2026-08-30", "2026-09-05") and r["valor_br"] == 99)
     D["ultimo"]["BR"]["consolidado"]["periodo"] = "2026-09"

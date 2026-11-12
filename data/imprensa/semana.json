@@ -2,11 +2,11 @@
  "acumulado": [
   {
    "id": "focos_desde_29_06",
-   "valor": 56186,
+   "valor": 57224,
    "unidade": "focos",
    "periodo_inicio": "2026-09-17",
-   "periodo_fim": "2026-11-10",
-   "n": 55,
+   "periodo_fim": "2026-11-11",
+   "n": 56,
    "fonte": "INPE — Programa Queimadas (série diária, satélite de referência)",
    "sem_coleta": false,
    "motivo": null,
@@ -20,7 +20,7 @@
    "valor": 127,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-11",
+   "periodo_fim": "2026-11-12",
    "n": 127,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
@@ -31,15 +31,15 @@
    "valor": 40,
    "unidade": "dias",
    "periodo_inicio": "2026-09-15",
-   "periodo_fim": "2026-11-11",
-   "n": 54,
+   "periodo_fim": "2026-11-12",
+   "n": 55,
    "fonte": "Inmet (avisos meteorológicos, consulta diária guardada pelo MARÉ)",
    "sem_coleta": false,
    "motivo": null,
    "periodo_molde": "imprensa.numeros.periodo.dias_observados",
    "periodo_vars": {
     "data": "15/09/2026",
-    "n": 54
+    "n": 55
    }
   },
   {
@@ -47,7 +47,7 @@
    "valor": 5,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-11",
+   "periodo_fim": "2026-11-12",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -59,7 +59,7 @@
    "valor": 0,
    "unidade": "cidades",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-10",
+   "periodo_fim": "2026-11-11",
    "n": 1,
    "fonte": "OpenAQ (monitores de referência das capitais), limite de 24 h da OMS",
    "sem_coleta": false,
@@ -67,34 +67,34 @@
    "denominador": 1,
    "periodo_molde": "imprensa.numeros.periodo.capitais_medidas",
    "periodo_vars": {
-    "data": "10/11/2026",
+    "data": "11/11/2026",
     "n": 1
    }
   },
   {
    "id": "municipios_decretaram",
-   "valor": 1153,
+   "valor": 1165,
    "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1153,
+   "n": 1165,
    "fonte": "Defesa Civil nacional (decretos no Diário Oficial da União)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "municipios_reconhecidos",
-   "valor": 1024,
+   "valor": 1037,
    "unidade": "municípios",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1024,
+   "n": 1037,
    "fonte": "Defesa Civil nacional (portarias de reconhecimento, DOU)",
    "sem_coleta": false,
    "motivo": null,
    "prazo_reconhecimento": {
-    "n": 1024,
-    "mediana": 15.0,
+    "n": 1037,
+    "mediana": 15,
     "p25": 9.0,
     "p75": 22.0,
     "p90": 29.0
@@ -102,32 +102,32 @@
   },
   {
    "id": "pessoas_municipios_decretados",
-   "valor": 38002730,
+   "valor": 38135488,
    "unidade": "pessoas",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1153,
+   "n": 1165,
    "fonte": "IBGE, Censo 2022 (população dos municípios que decretaram)",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "atos_por_evento",
-   "valor": 1595,
+   "valor": 1621,
    "unidade": "atos",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
-   "n": 1595,
+   "n": 1621,
    "fonte": "Defesa Civil nacional (atos de emergência)",
    "sem_coleta": false,
    "motivo": null,
    "por_evento": {
-    "sem_tipo_informado": 525,
-    "seca": 452,
-    "chuva": 337,
-    "fogo": 35,
+    "sem_tipo_informado": 534,
+    "seca": 458,
+    "chuva": 340,
+    "fogo": 38,
     "outro_declarado": 7,
-    "vendaval": 239
+    "vendaval": 244
    }
   },
   {
@@ -167,7 +167,7 @@
   },
   {
    "id": "autorizado_defesa_civil",
-   "valor": 224705731.46,
+   "valor": 246927946.11,
    "unidade": "reais",
    "periodo_inicio": "2026-06-29",
    "periodo_fim": null,
@@ -191,22 +191,22 @@
   },
   {
    "id": "dengue",
-   "valor": 78630,
+   "valor": 99337,
    "unidade": "notificações",
    "periodo_inicio": "2026-06-28",
-   "periodo_fim": "2026-09-05",
-   "n": 10,
+   "periodo_fim": "2026-10-03",
+   "n": 14,
    "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
    "sem_coleta": false,
    "motivo": null
   },
   {
    "id": "chikungunya",
-   "valor": 22404,
+   "valor": 29698,
    "unidade": "notificações",
    "periodo_inicio": "2026-06-28",
-   "periodo_fim": "2026-09-05",
-   "n": 10,
+   "periodo_fim": "2026-10-03",
+   "n": 14,
    "fonte": "Ministério da Saúde (Sinan), semanas fechadas",
    "sem_coleta": false,
    "motivo": null
@@ -253,13 +253,13 @@
    "id": "estados_acima_da_faixa_dengue",
    "valor": 11,
    "unidade": "estados",
-   "periodo_inicio": "2026-08-30",
-   "periodo_fim": "2026-09-05",
+   "periodo_inicio": "2026-09-27",
+   "periodo_fim": "2026-10-03",
    "n": 27,
    "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
    "sem_coleta": false,
    "motivo": null,
-   "periodo": "2026-35"
+   "periodo": "2026-39"
   },
   {
    "id": "estados_acima_da_faixa_srag",
@@ -277,13 +277,13 @@
    "id": "estados_acima_da_faixa_chikungunya",
    "valor": 9,
    "unidade": "estados",
-   "periodo_inicio": "2026-08-30",
-   "periodo_fim": "2026-09-05",
+   "periodo_inicio": "2026-09-27",
+   "periodo_fim": "2026-10-03",
    "n": 27,
    "fonte": "MARÉ Saúde (última semana fechada de cada UF, contra a faixa habitual da própria UF)",
    "sem_coleta": false,
    "motivo": null,
-   "periodo": "2026-35"
+   "periodo": "2026-39"
   },
   {
    "id": "estados_acima_da_faixa_diarreia",
@@ -299,7 +299,7 @@
   },
   {
    "id": "estados_acima_da_faixa_leptospirose",
-   "valor": 7,
+   "valor": 3,
    "unidade": "estados",
    "periodo_inicio": "2026-06-01",
    "periodo_fim": "2026-06-30",
@@ -311,25 +311,25 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-11-11",
+ "gerado_em": "2026-11-12",
  "janela_dias": 7,
  "indices": {
-  "edicao": "11/11/2026",
+  "edicao": "12/11/2026",
   "mare_legal": 40.8,
   "mare_saude": 62.4,
   "saude_verificadas": 21,
-  "decretaram_no_ciclo": 1153
+  "decretaram_no_ciclo": 1165
  },
  "cartoes": [
   {
    "id": "planos_na_semana",
    "grupo": "preparacao",
    "rotulo": "Planos publicados na semana, pela data do ato",
-   "valor": 1,
+   "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-11-04",
-    "fim": "2026-11-11"
+    "ini": "2026-11-05",
+    "fim": "2026-11-12"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -339,15 +339,7 @@
    "variacao": null,
    "nota": "a data é a do ato, não a da localização pelo MARÉ; plano antigo localizado agora não aparece aqui",
    "secundaria": null,
-   "lista": [
-    {
-     "uf": "PR",
-     "municipio": "Iporã",
-     "data": "2026-11-05",
-     "documento": "Ato oficial localizado: plano de contingência",
-     "url": "https://www.ipora.pr.gov.br/documentos/arquivos/200509plano-de-contingencia-da-defesa-civil.pdf"
-    }
-   ],
+   "lista": [],
    "pagina_de_origem": null,
    "referencia": null,
    "unidade": null
@@ -365,7 +357,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "entre as edições de 2026-11-10 e 2026-11-11, nos dois índices",
+   "nota": "entre as edições de 2026-11-11 e 2026-11-12, nos dois índices",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": null,
@@ -453,7 +445,7 @@
    "id": "populacao_decretos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Pessoas que vivem nos municípios que decretaram na semana",
-   "valor": 757635,
+   "valor": 721627,
    "unidade": "pessoas",
    "sem_coleta": false,
    "periodo": null,
@@ -473,7 +465,7 @@
    "id": "reconhecimentos_na_semana",
    "grupo": "emergencias",
    "rotulo": "Municípios que tiveram a emergência reconhecida pelo governo federal na semana",
-   "valor": 35,
+   "valor": 29,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
@@ -493,14 +485,14 @@
    "id": "municipios_alerta_cemaden",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob alerta do Cemaden",
-   "valor": 2,
+   "valor": 4,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/11/2026 04:28",
+   "referencia": "12/11/2026 04:55",
    "fonte": "Cemaden",
    "url_fonte": "https://www.gov.br/cemaden/pt-br",
-   "consultado_em": "11/11/2026 04:28",
+   "consultado_em": "12/11/2026 04:55",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -513,14 +505,14 @@
    "id": "municipios_aviso_inmet",
    "grupo": "risco_agora",
    "rotulo": "Municípios sob aviso do Inmet",
-   "valor": 996,
+   "valor": 2535,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/11/2026 04:28",
+   "referencia": "12/11/2026 04:55",
    "fonte": "Inmet",
    "url_fonte": "https://portal.inmet.gov.br/",
-   "consultado_em": "11/11/2026 04:28",
+   "consultado_em": "12/11/2026 04:55",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -533,113 +525,117 @@
    "id": "focos_24h",
    "grupo": "risco_agora",
    "rotulo": "Focos de calor detectados nas últimas 24 horas",
-   "valor": 8276,
+   "valor": 11208,
    "sem_coleta": false,
    "periodo": null,
    "fonte": "Programa Queimadas (INPE)",
    "url_fonte": "https://terrabrasilis.dpi.inpe.br/queimadas/portal/",
-   "consultado_em": "11/11/2026",
+   "consultado_em": "12/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "Focos do dia — focos_diario_br_20261110.csv",
+   "nota": "Focos do dia — focos_diario_br_20261111.csv",
    "secundaria": null,
    "lista": [
     {
      "uf": "PA",
-     "valor": 4346
-    },
-    {
-     "uf": "AP",
-     "valor": 770
+     "valor": 4999
     },
     {
      "uf": "MA",
-     "valor": 700
+     "valor": 1821
     },
     {
-     "uf": "RR",
-     "valor": 453
-    },
-    {
-     "uf": "MT",
-     "valor": 425
-    },
-    {
-     "uf": "CE",
-     "valor": 282
-    },
-    {
-     "uf": "AM",
-     "valor": 189
-    },
-    {
-     "uf": "RO",
-     "valor": 177
+     "uf": "AP",
+     "valor": 1470
     },
     {
      "uf": "PI",
-     "valor": 174
+     "valor": 491
     },
     {
-     "uf": "PE",
-     "valor": 122
+     "uf": "AM",
+     "valor": 406
     },
     {
      "uf": "BA",
-     "valor": 95
+     "valor": 279
+    },
+    {
+     "uf": "CE",
+     "valor": 258
+    },
+    {
+     "uf": "MT",
+     "valor": 255
     },
     {
      "uf": "TO",
-     "valor": 87
+     "valor": 225
     },
     {
-     "uf": "GO",
-     "valor": 67
+     "uf": "PE",
+     "valor": 128
     },
     {
-     "uf": "PB",
-     "valor": 66
+     "uf": "RO",
+     "valor": 125
     },
     {
-     "uf": "AL",
-     "valor": 59
-    },
-    {
-     "uf": "SP",
-     "valor": 57
-    },
-    {
-     "uf": "RS",
-     "valor": 46
+     "uf": "RR",
+     "valor": 124
     },
     {
      "uf": "AC",
-     "valor": 39
-    },
-    {
-     "uf": "PR",
-     "valor": 34
-    },
-    {
-     "uf": "RN",
-     "valor": 34
+     "valor": 105
     },
     {
      "uf": "MS",
-     "valor": 24
+     "valor": 95
     },
     {
-     "uf": "SE",
-     "valor": 16
+     "uf": "PB",
+     "valor": 85
     },
     {
-     "uf": "SC",
-     "valor": 11
+     "uf": "SP",
+     "valor": 80
+    },
+    {
+     "uf": "AL",
+     "valor": 65
+    },
+    {
+     "uf": "PR",
+     "valor": 39
+    },
+    {
+     "uf": "GO",
+     "valor": 38
+    },
+    {
+     "uf": "RN",
+     "valor": 35
     },
     {
      "uf": "MG",
-     "valor": 3
+     "valor": 34
+    },
+    {
+     "uf": "SE",
+     "valor": 23
+    },
+    {
+     "uf": "SC",
+     "valor": 15
+    },
+    {
+     "uf": "RS",
+     "valor": 12
+    },
+    {
+     "uf": "RJ",
+     "valor": 1
     }
    ],
    "pagina_de_origem": null,
@@ -650,18 +646,18 @@
    "id": "temperatura_desvio_capital",
    "grupo": "risco_agora",
    "rotulo": "A maior diferença de temperatura máxima em relação ao normal, em grau Celsius",
-   "valor": 2.7,
+   "valor": 3.3,
    "unidade": "°C",
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "11/11/2026",
+   "referencia": "12/11/2026",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "url_fonte": null,
-   "consultado_em": "11/11/2026",
+   "consultado_em": "12/11/2026",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "máxima prevista de 38.0 °C contra a média de 35.3 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 35.0 °C contra a média de 31.7 °C do mês; 24 capital(is) com normal publicada",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "monitor-de-riscos.html"
@@ -690,7 +686,7 @@
    "id": "resposta_autorizado_semana",
    "grupo": "dinheiro",
    "rotulo": "Autorizados pela defesa civil federal nos últimos 7 dias",
-   "valor": 4302966.16,
+   "valor": 909537.21,
    "unidade": "reais",
    "sem_coleta": false,
    "periodo": null,
@@ -701,7 +697,7 @@
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
-   "nota": "desde 29 de junho, 95 município(s) com ato de portaria",
+   "nota": "desde 29 de junho, 100 município(s) com ato de portaria",
    "secundaria": null,
    "lista": [],
    "pagina_de_origem": "financiamento.html"
@@ -729,15 +725,15 @@
   {
    "id": "dengue_casos_se",
    "grupo": "saude",
-   "rotulo": "Casos prováveis de dengue na semana de 30 de agosto a 5 de setembro de 2026",
-   "valor": 7013,
+   "rotulo": "Casos prováveis de dengue na semana de 27 de setembro a 3 de outubro de 2026",
+   "valor": 6677,
    "unidade": null,
    "sem_coleta": false,
    "periodo": null,
-   "referencia": "2026-35",
+   "referencia": "2026-39",
    "fonte": "Ministério da Saúde (Sinan)",
    "url_fonte": null,
-   "consultado_em": "2026-35",
+   "consultado_em": "2026-39",
    "primeira_medicao": true,
    "valor_semana_anterior": null,
    "variacao": null,
@@ -816,5 +812,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 11/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, 1 município publicou plano para o El Niño e 34 municípios decretaram situação de emergência ou calamidade; 757.635 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1153 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 12/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, nenhum município publicou plano para o El Niño e 34 municípios decretaram situação de emergência ou calamidade; 721.627 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1165 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
