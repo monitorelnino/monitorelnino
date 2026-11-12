@@ -1,6 +1,6 @@
 {
  "_governanca": "Gerado por gerar_financiamento_semana.py. Cada cartão traz o recorte que a fonte permite: mês fechado onde a fonte publica por mês, sete dias onde o ato tem data. Lacuna é declarada, nunca zero.",
- "corte": "11/11/2026",
+ "corte": "12/11/2026",
  "janela_dias": 7,
  "cartoes": [
   {
@@ -25,20 +25,20 @@
   },
   {
    "id": "resposta_liberado_semana",
-   "valor": 4302966.16,
+   "valor": 909537.21,
    "unidade": "reais",
    "periodo": "últimos 7 dias",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "9 município(s) em 9 portaria(s)",
+   "detalhe": "2 município(s) em 2 portaria(s)",
    "sem_coleta": false,
-   "municipios_semana": 9,
-   "valor_ciclo": 224705731.46,
-   "municipios_ciclo": 91,
+   "municipios_semana": 2,
+   "valor_ciclo": 246927946.11,
+   "municipios_ciclo": 96,
    "por_acao_ciclo": {
     "outra": 13878788.0,
-    "recuperacao": 193308951.68,
-    "resposta": 17517991.78
+    "recuperacao": 214960866.33,
+    "resposta": 18088291.78
    },
    "desde": "29/06/2026"
   },
@@ -90,18 +90,18 @@
   },
   {
    "id": "defesa_civil_ciclo",
-   "valor": 224705731.46,
+   "valor": 246927946.11,
    "unidade": "reais",
    "periodo": "desde 29/06/2026",
    "fonte": "Portarias da SEDEC no Diário Oficial da União",
    "url_fonte": null,
-   "detalhe": "91 municípios",
+   "detalhe": "96 municípios",
    "sem_coleta": false,
-   "municipios": 91,
+   "municipios": 96,
    "por_acao": {
     "outra": 13878788.0,
-    "recuperacao": 193308951.68,
-    "resposta": 17517991.78
+    "recuperacao": 214960866.33,
+    "resposta": 18088291.78
    }
   },
   {
@@ -1998,10 +1998,10 @@
    "cod_ibge": "3128808",
    "origem": "defesa_civil",
    "repassado": 2596159.65,
-   "autorizado": 3269382.21,
-   "ato": "Portaria 3.509",
-   "data": "2026-10-13",
-   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.509-de-13-de-outubro-de-2026-738571993",
+   "autorizado": 5854722.21,
+   "ato": "Portaria 3.811",
+   "data": "2026-11-04",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.811-de-4-de-novembro-de-2026-743571457",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Guidoval",
@@ -2073,10 +2073,10 @@
    "cod_ibge": "3136702",
    "origem": "defesa_civil",
    "repassado": 35152864.13,
-   "autorizado": 7591591.36,
-   "ato": "Portaria 3.190",
-   "data": "2026-09-23",
-   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.190-de-23-de-setembro-de-2026-733739613",
+   "autorizado": 11050814.61,
+   "ato": "Portaria 3.826",
+   "data": "2026-11-04",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.826-de-4-de-novembro-de-2026-743577091",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Juiz de Fora",
@@ -3948,10 +3948,10 @@
    "cod_ibge": "4315321",
    "origem": "defesa_civil",
    "repassado": 109053.52,
-   "autorizado": null,
-   "ato": null,
-   "data": null,
-   "url": null,
+   "autorizado": 4420000.0,
+   "ato": "Portaria 3.824",
+   "data": "2026-11-04",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.824-de-4-de-novembro-de-2026-743561975",
    "periodo": "29/06/2026 (competências de julho de 2026 a setembro de 2026)",
    "fonte": "Portal da Transparência, Transferências de Recursos (rota defesa civil)",
    "nome": "Quevedos",
@@ -4743,10 +4743,10 @@
   "sem_sede": 0
  },
  "autorizado_sem_repasse": {
-  "corte": "11/11/2026",
+  "corte": "12/11/2026",
   "ultimo_mes_lido": "202609",
-  "n": 58,
-  "autorizado_total": 138665156.24,
+  "n": 62,
+  "autorizado_total": 150422807.64,
   "municipios": [
    {
     "cod_ibge": "1300300",
@@ -4788,10 +4788,10 @@
     "cod_ibge": "1301803",
     "nome": "Ipixuna",
     "uf": "AM",
-    "autorizado": 550530.0,
-    "ato": "Portaria 3.731",
-    "data": "2026-10-26",
-    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.731-de-26-de-outubro-de-2026-741207495"
+    "autorizado": 1120830.0,
+    "ato": "Portaria 3.892",
+    "data": "2026-11-09",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.892-de-9-de-novembro-de-2026-743578423"
    },
    {
     "cod_ibge": "1302009",
@@ -4846,6 +4846,15 @@
     "ato": "Portaria 3.832",
     "data": "2026-11-04",
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.832-de-4-de-novembro-de-2026-742436345"
+   },
+   {
+    "cod_ibge": "1505635",
+    "nome": "Piçarra",
+    "uf": "PA",
+    "autorizado": 1315500.0,
+    "ato": "Portaria 3.799",
+    "data": "2026-11-03",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.799-de-3-de-novembro-de-2026-743566527"
    },
    {
     "cod_ibge": "1505650",
@@ -5037,6 +5046,15 @@
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.195-de-3-de-julho-de-2026-716867138"
    },
    {
+    "cod_ibge": "3204351",
+    "nome": "Rio Bananal",
+    "uf": "ES",
+    "autorizado": 1029893.71,
+    "ato": "Portaria 3.825",
+    "data": "2026-11-04",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.825-de-4-de-novembro-de-2026-743570102"
+   },
+   {
     "cod_ibge": "3303807",
     "nome": "Paraty",
     "uf": "RJ",
@@ -5091,6 +5109,15 @@
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-2.499-de-4-de-agosto-de-2026-724038782"
    },
    {
+    "cod_ibge": "4301404",
+    "nome": "Arvorezinha",
+    "uf": "RS",
+    "autorizado": 3232408.56,
+    "ato": "Portaria 3.774",
+    "data": "2026-11-03",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.774-de-3-de-novembro-de-2026-743560527"
+   },
+   {
     "cod_ibge": "4301602",
     "nome": "Bagé",
     "uf": "RS",
@@ -5100,13 +5127,22 @@
     "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.871-de-6-de-novembro-de-2026-742420225"
    },
    {
+    "cod_ibge": "4302352",
+    "nome": "Bom Princípio",
+    "uf": "RS",
+    "autorizado": 4390749.13,
+    "ato": "Portaria 3.810",
+    "data": "2026-11-04",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.810-de-4-de-novembro-de-2026-743560437"
+   },
+   {
     "cod_ibge": "4302808",
     "nome": "Caçapava do Sul",
     "uf": "RS",
-    "autorizado": 780000.0,
-    "ato": "Portaria 3.283",
-    "data": "2026-09-29",
-    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.283-de-29-de-setembro-de-2026-735398169"
+    "autorizado": 1998800.0,
+    "ato": "Portaria 3.796",
+    "data": "2026-11-03",
+    "url": "https://www.in.gov.br/web/dou/-/portaria-n-3.796-de-3-de-novembro-de-2026-743596537"
    },
    {
     "cod_ibge": "4304200",
@@ -5306,21 +5342,21 @@
    },
    {
     "mes": "202611",
-    "defesa_civil": 8991698.04,
+    "defesa_civil": 31213912.69,
     "saude": null,
     "parcial": true
    }
   ],
   "saude_desde": "202607",
   "saude_ultimo_mes": "202610",
-  "total_defesa_civil": 224705731.46,
+  "total_defesa_civil": 246927946.11,
   "total_saude": 9552011.72
  },
  "funil_defesa_civil": {
-  "referencia": "11/11/2026",
-  "n_decretaram": 1153,
-  "n_reconhecidos": 1024,
-  "n_com_recurso": 91,
-  "n_com_recurso_e_decretaram": 56
+  "referencia": "12/11/2026",
+  "n_decretaram": 1165,
+  "n_reconhecidos": 1037,
+  "n_com_recurso": 96,
+  "n_com_recurso_e_decretaram": 59
  }
 }

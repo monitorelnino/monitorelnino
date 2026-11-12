@@ -47,17 +47,9 @@
 # de navegador do domínio confere isso a cada publicação: "injeção do Netlify é a única
 # bloqueada". A tag fica no HTML, e o verificador a relata em vez de escondê-la.
 
-# --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---# --- Pasta de arquivo: guardada no repositório, NUNCA servida (§258, 27/09/2026) ---
-# `publish = "."` serve a raiz inteira, então arquivar um arquivo dentro do repositório não o
-# retira do ar por si: sem esta regra, `arquivo/pesquisadores/pesquisadores.html` continuaria
-# acessível por URL, e a página que a editoria mandou suprimir seguiria publicada — só sem link
-# apontando para ela, o que é pior, porque ninguém veria.
-# 404 e não 301: redirecionar sugeriria que o conteúdo mudou de lugar, e ele não mudou — foi
-# retirado. O portão `scripts/verificar_pagina_arquivada.py` confere que esta regra existe.
-# O site não tem `404.html`, e isso está certo aqui: sem o arquivo, o Netlify devolve a própria
-# página de 404 dele com o status 404, que é exatamente o que se quer. Criar um `404.html` só
-# para esta regra obrigaria a página nova a passar pelos portões de estrutura e navegação, o que
-# é escopo que o handover não pediu.
+# --- Pasta de arquivo: guardada no repositório, NUNCA servida ---
+# `publish = "."` serve a raiz inteira; sem esta regra, o que está em `arquivo/` seria acessível por
+# URL. 404, não 301: o conteúdo não mudou de lugar, foi retirado. Portão: `verificar_repositorio.py`.
 [[redirects]]
   from = "/arquivo/*"
   to = "/404.html"

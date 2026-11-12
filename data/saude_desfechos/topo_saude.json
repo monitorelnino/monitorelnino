@@ -1,12 +1,12 @@
 {
  "_governanca": "INSTANTÂNEO dos cartões do topo do MARÉ Saúde, para a Imprensa ler em vez de recalcular (handover de 02/10/2026, item 1). Não é fonte de nada: nasce das mesmas séries que a página lê. A semana fechada é a última com valor na série — nunca a última do calendário, porque semana recente existe no arquivo com valor nulo e tratar nulo como zero publicaria uma queda que é só atraso de notificação.",
- "gerado_em": "11/11/2026",
+ "gerado_em": "12/11/2026",
  "cartoes": [
   {
    "id": "dengue_casos_se",
-   "valor": 7013,
-   "referencia": "2026-35",
-   "rotulo": "notificações de dengue na semana de 30 de agosto a 5 de setembro de 2026",
+   "valor": 6677,
+   "referencia": "2026-39",
+   "rotulo": "notificações de dengue na semana de 27 de setembro a 3 de outubro de 2026",
    "fonte": "Ministério da Saúde (Sinan)",
    "sem_coleta": false,
    "nota": "notificações, não casos confirmados; as últimas semanas são parciais e sobem com as notificações atrasadas; este número não indica relação com o El Niño"
@@ -36,8 +36,8 @@
   },
   {
    "id": "calor_municipios_severo",
-   "valor": 172,
-   "referencia": "2026-11-10",
+   "valor": 29,
+   "referencia": "2026-11-11",
    "rotulo": "municípios em nível severo ou extremo de calor",
    "fonte": "Ministério da Saúde (Painel Nacional de Excesso de Calor)",
    "sem_coleta": false
@@ -53,7 +53,7 @@
   {
    "id": "mare_saude_indice",
    "valor": 62.4,
-   "referencia": "11/11/2026",
+   "referencia": "12/11/2026",
    "rotulo": "MARÉ Saúde",
    "unidades_verificadas": 21,
    "fonte": "MARÉ (verificação própria)",
@@ -65,20 +65,20 @@
   "dengue": {
    "ufs_acima_faixa": 11,
    "ufs_comparadas": 27,
-   "periodo": "2026-35",
-   "semana_inicio": "2026-08-30",
-   "semana_fim": "2026-09-05",
-   "valor_br": 7013,
-   "consultado_em": "2026-11-10"
+   "periodo": "2026-39",
+   "semana_inicio": "2026-09-27",
+   "semana_fim": "2026-10-03",
+   "valor_br": 6677,
+   "consultado_em": "2026-11-11"
   },
   "chikungunya": {
    "ufs_acima_faixa": 9,
    "ufs_comparadas": 27,
-   "periodo": "2026-35",
-   "semana_inicio": "2026-08-30",
-   "semana_fim": "2026-09-05",
-   "valor_br": 1592,
-   "consultado_em": "2026-11-10"
+   "periodo": "2026-39",
+   "semana_inicio": "2026-09-27",
+   "semana_fim": "2026-10-03",
+   "valor_br": 1389,
+   "consultado_em": "2026-11-11"
   },
   "srag": {
    "ufs_acima_faixa": 1,
@@ -87,7 +87,7 @@
    "semana_inicio": "2026-10-18",
    "semana_fim": "2026-10-24",
    "valor_br": 3465,
-   "consultado_em": "2026-11-10"
+   "consultado_em": "2026-11-12"
   }
  },
  "definicao_dos_indices": {
