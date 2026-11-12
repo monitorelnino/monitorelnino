@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-05 a 2026-11-12 (1396 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-05 a 2026-11-12 (1398 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,7 +27,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-12 07:19 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-11 01:54 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `recalcular_mare.py` | essencial | 2026-11-12 17:41 | 4 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-12 20:02 | 4 s | — | ok | — |
 | `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-12 08:52 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `atualizar.py` | coletor | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-11 07:15 | 0 s | — | ok | — |
@@ -67,7 +67,7 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `coletar_siconfi_182.py` | coletor | 2026-11-11 07:53 | 1 s | 5571 | ok | — |
 | `coletar_sih.py` | coletor | 2026-11-12 07:19 | 5 s | — | sem novidade | — |
 | `coletar_sim.py` | coletor | 2026-11-12 07:19 | 8 s | — | sem novidade | — |
-| `coletar_sinais_risco.py` | coletor | 2026-11-12 12:05 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
+| `coletar_sinais_risco.py` | coletor | 2026-11-12 19:55 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `coletar_sisab.py` | coletor | 2026-11-12 07:15 | 205 s | — | ok | — |
 | `coletar_srag_gripe.py` | coletor | 2026-11-07 01:17 | 144 s | — | ok | — |
 | `coletar_srag_sivep.py` | coletor | 2026-11-12 03:44 | 38 s | — | ok | — |
