@@ -20,7 +20,7 @@
    "valor": 127,
    "unidade": "municípios",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-11",
+   "periodo_fim": "2026-11-12",
    "n": 127,
    "fonte": "MARÉ Legal (planos municipais localizados)",
    "sem_coleta": false,
@@ -47,7 +47,7 @@
    "valor": 5,
    "unidade": "estados",
    "periodo_inicio": null,
-   "periodo_fim": "2026-11-11",
+   "periodo_fim": "2026-11-12",
    "n": 27,
    "fonte": "MARÉ Saúde (instrumento estadual novo para o ciclo, por UF)",
    "sem_coleta": false,
@@ -311,10 +311,10 @@
   }
  ],
  "_governanca": "Cartões 'Esta semana em números' da página Imprensa. Peso ZERO nos índices. 02/10/2026 (handover do redesenho): a Imprensa NÃO recalcula número que outra página publica — ela lê o instantâneo do topo de cada página (Financiamento, MARÉ Saúde, Defesa civil, Monitor de riscos), e cada cartão declara a sua `pagina_de_origem`. Zero só quando a coleta rodou; sem coleta é `sem_coleta: true`, o cartão SAI da grade e o rótulo entra na linha 'Sem dado nesta edição'. Derivado de gerar_imprensa_semana.py — não se edita à mão.",
- "gerado_em": "2026-11-11",
+ "gerado_em": "2026-11-12",
  "janela_dias": 7,
  "indices": {
-  "edicao": "11/11/2026",
+  "edicao": "12/11/2026",
   "mare_legal": 40.8,
   "mare_saude": 62.4,
   "saude_verificadas": 21,
@@ -325,11 +325,11 @@
    "id": "planos_na_semana",
    "grupo": "preparacao",
    "rotulo": "Planos publicados na semana, pela data do ato",
-   "valor": 1,
+   "valor": 0,
    "sem_coleta": false,
    "periodo": {
-    "ini": "2026-11-04",
-    "fim": "2026-11-11"
+    "ini": "2026-11-05",
+    "fim": "2026-11-12"
    },
    "fonte": "Diários oficiais municipais e sítios das prefeituras (via MARÉ)",
    "url_fonte": null,
@@ -339,15 +339,7 @@
    "variacao": null,
    "nota": "a data é a do ato, não a da localização pelo MARÉ; plano antigo localizado agora não aparece aqui",
    "secundaria": null,
-   "lista": [
-    {
-     "uf": "PR",
-     "municipio": "Iporã",
-     "data": "2026-11-05",
-     "documento": "Ato oficial localizado: plano de contingência",
-     "url": "https://www.ipora.pr.gov.br/documentos/arquivos/200509plano-de-contingencia-da-defesa-civil.pdf"
-    }
-   ],
+   "lista": [],
    "pagina_de_origem": null,
    "referencia": null,
    "unidade": null
@@ -690,7 +682,7 @@
    "id": "resposta_autorizado_semana",
    "grupo": "dinheiro",
    "rotulo": "Autorizados pela defesa civil federal nos últimos 7 dias",
-   "valor": 4302966.16,
+   "valor": 339237.21,
    "unidade": "reais",
    "sem_coleta": false,
    "periodo": null,
@@ -816,5 +808,5 @@
    "o plano para os riscos deste El Niño (arboviroses, calor, água, fumaça)"
   ]
  },
- "texto_pronto": "Edição de 11/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, 1 município publicou plano para o El Niño e 34 municípios decretaram situação de emergência ou calamidade; 757.635 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1153 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
+ "texto_pronto": "Edição de 12/11/2026. O MARÉ Legal, índice que acompanha a preparação publicada por estados e municípios para o El Niño 2026/2027, está em 40,8 de 100; o MARÉ Saúde, em 62,4 de 100. Na semana, nenhum município publicou plano para o El Niño e 34 municípios decretaram situação de emergência ou calamidade; 757.635 pessoas vivem nos municípios que decretaram. Nenhum estado mudou de faixa.\n\nDesde 29 de junho, 6 de 27 capitais têm plano localizado e 1153 municípios decretaram emergência ou calamidade. Cada registro, com documento, data e fonte, está em monitorelnino.com.br. O MARÉ é uma criação do Futura Evidence Lab."
 }
