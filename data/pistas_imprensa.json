@@ -533487,6 +533487,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -533499,13 +533505,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "7a4f965954522b386938c6535f6e03a7894b6292110bb2b71950fa6b4a955346"
+    "hash_evidencia": "cc55268e0ac3887bd4fcd9e87fcdf0251993e3a35872999394eaecfbc2515da1"
    }
   },
   {
@@ -533530,12 +533536,12 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "categoria": "plano_antigo",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "5bef838796adbdf61ace113d72c0b00b1e71cdef472ba76d13cabf8db3fb7e32"
    },
    "repeticoes": 1,
@@ -533546,7 +533552,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -533575,7 +533589,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "0dd3599e259e6c398ceb54ba5c2be7ec4d6bd9e882e55ca3866eda7d987bf1e6"
    },
    "repeticoes": 1,
@@ -533583,7 +533597,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -533646,6 +533668,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -533664,7 +533692,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "bc79d53a0110beb6b44ec47cd100186368a18d7c1804c6c6412575e829e19a7f"
+    "hash_evidencia": "0c06f8f915113250cfdbf38a59dd869d446814b9fe6b0c22b785ef1f686261cb"
    }
   },
   {
@@ -533728,6 +533756,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -533746,7 +533780,7 @@
     "categoria": null,
     "data": "01/04/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "308fe85a734e1291e0764b43b9bdc6d8f24d066cf322aa9e0a2a7b28787a862d"
+    "hash_evidencia": "22ffba2a12e5d9b2305cf0a6dbd3fbb88a05abecedf70eae0981541fe3399803"
    }
   },
   {
@@ -533903,7 +533937,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "89c05c83ee686bcca66ebbec733dd4e4a62e8d6c78a9a4c6a5223130e11a61d5"
    },
    "repeticoes": 1,
@@ -533911,7 +533945,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -534101,6 +534143,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -534119,7 +534167,7 @@
     "categoria": null,
     "data": "2026",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "61472106159b8679bf70a2c8cb46a13974be450aaa2bea4b000344dfcebb2bcb"
+    "hash_evidencia": "9e3f96b4e335276340b6fa117b291513514dac473d2bc5694604ad84255c6958"
    }
   },
   {
@@ -534149,7 +534197,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4a55b0d6ff8e26ca10cce24395c69c9caab03e4ba6d78dd3e7061c65efefbdc5"
    },
    "repeticoes": 1,
@@ -534157,7 +534205,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -534347,6 +534403,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -534365,7 +534427,7 @@
     "categoria": null,
     "data": "2026",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "2452a131377aeb9e03ca952fa19e265e5e1785ceae2598f316379b650451b30b"
+    "hash_evidencia": "35226cdfe7007500e2946f086e370130cc4f2f3f0a20954a2ca47da61f1479a1"
    }
   },
   {
@@ -534395,7 +534457,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "56e244bc0f3c3b598c32bf6eb1580efb93bab3796733fe7510ff4025cccedb4c"
    },
    "repeticoes": 1,
@@ -534403,7 +534465,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -534466,6 +534536,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -534478,13 +534554,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "13/12/2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "0778297d87980aa3dd792de24ea00aa5b3d59073194dd16c67df0ebfb6138fcd"
+    "hash_evidencia": "0ac084392f0af9801b8a28f5f8728d12afba107daedbede95e2901584f665375"
    }
   },
   {
@@ -534514,7 +534590,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "0a930208f162a54ad8339521dc84adc24bb2baf1c8625804f7cf6fcf8b520c71"
    },
    "repeticoes": 1,
@@ -534522,7 +534598,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -534607,7 +534691,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2009/Plano%20de%20Conting%C3%AAncia%20Para%C3%AD.pdf",
    "alvo": "4314001",
-   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "1cd021d7e2",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -534649,6 +534733,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -534662,12 +534752,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "plano_sem_identificacao",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "edb8fb5bc72e2e0dbf4b5cec2510187b0c5cdf822f530f1957c7ee0a81c18466"
+    "hash_evidencia": "59ab2e77a1e8b22e75d1ba936e51d6c3271d526f733511a70025790c7417def2"
    }
   },
   {
@@ -534779,7 +534869,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "7497c6cb8ec8d7bbc06c824b575db87351ca0d468d3030e90f886494334c0bd8"
    },
    "repeticoes": 1,
@@ -534788,7 +534878,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -534851,6 +534949,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -534863,13 +534967,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "f7746f120c8a244389e3baa37b85be56ad22009059c385047d3816b2fa0135a2"
+    "hash_evidencia": "522329d661c3a073dea44a317f80af44ad04549d89480da2b83aed1900dda813"
    }
   },
   {
@@ -535090,7 +535194,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "9c41e1a9f97aa9ff1b3a78a65e84fe0c40d4f2a85f9abbfb94c2c5008c361bab"
    },
    "repeticoes": 1,
@@ -535098,7 +535202,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -535127,7 +535239,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "6fb4307b15d9c689a60824730fcad757d8b3ba498b29defeac38a23ffdad119b"
    },
    "repeticoes": 1,
@@ -535135,7 +535247,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -535291,7 +535411,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "3d231c6eefacf7a25f40c36d0eb25d2b05f486dca2ab22b96153aeb29c9e8283"
    },
    "repeticoes": 1,
@@ -535300,7 +535420,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -535363,6 +535491,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -535381,7 +535515,7 @@
     "categoria": null,
     "data": "2021",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "a4f68bb70b1ce23ea4626fd9b7f727b30fb1279ee472801d579c7aae53573e66"
+    "hash_evidencia": "e5cde6c9dcf77114dcd5045d7413219860fd1045066ae84d0be54003ece36ec9"
    }
   },
   {
@@ -535801,6 +535935,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-18"
@@ -535866,6 +536006,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -535884,7 +536030,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "14e27889e299ba03551f8ebfc6f09af51a123bd79ea5e8d51efc9a1fdbf15976"
+    "hash_evidencia": "f1281c06929e0217fb5bc2789c403a6adb9a700e951aca7c05f637fb48d45a4c"
    }
   },
   {
@@ -536058,6 +536204,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -536122,6 +536274,12 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -536140,7 +536298,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "68566bb0571f72f949577d00a3e9b828fc429be61fc2d15e715ea6e7306f36a0"
+    "hash_evidencia": "fe755ee40997d6869f5bd7b7200e6c1a799f9469d18665c8c40d2b3d7e11e5cd"
    }
   },
   {
@@ -536522,6 +536680,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -536540,7 +536704,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "a4f0114e452c913029a7ced11a5e574abbb9956ce9aba5e80d8ec1a38ddd7dd1"
+    "hash_evidencia": "803d6a57e7a00184a6de04a07a5399720a06eab97485d937b39fc798bbe69de9"
    }
   },
   {
@@ -536698,7 +536862,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "03/05/23",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "35673dba6baa80bbcd54b16d083912f84c3fc220a6a633f7462511f3babfa230"
    },
    "repeticoes": 1,
@@ -536707,7 +536871,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -536746,6 +536918,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "criterio",
@@ -536927,7 +537105,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "b39ffa052bd7d0b6049d6e44e1a345d3d3e9a27d6f957776eb662d9354591ee2"
    },
    "repeticoes": 1,
@@ -536935,7 +537113,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537091,7 +537277,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "300fd830d4851f4f7a08342dcbe358b0ec12055820cbaf91b50c84eb560d2ac9"
    },
    "repeticoes": 1,
@@ -537099,7 +537285,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537162,6 +537356,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -537180,7 +537380,7 @@
     "categoria": null,
     "data": "2024",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b294d158f31dd4ed5493d9bc7c0f4a6fd172a3ea9d8e38b9ec69431674d96615"
+    "hash_evidencia": "91206ba3c39527b68b822925a77af77c5d9f9b4e93ab21dc95cac50aa7cbbae3"
    }
   },
   {
@@ -537274,7 +537474,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4a516ae338bd457bf6860dd5ab8f8c40df7a8a13f940745868d6d57451c66e5a"
    },
    "repeticoes": 1,
@@ -537282,7 +537482,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537311,7 +537519,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "21/10/2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e1b7487cfcfcea0f7c7c7bc5d56845bf1b949a9e37b0b66eaaee693cb0e03777"
    },
    "repeticoes": 1,
@@ -537319,7 +537527,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537348,7 +537564,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e9e701a197779453f9ead9200296133c9e16a2ce0ce78947f970cd3d02137208"
    },
    "repeticoes": 1,
@@ -537356,7 +537572,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537419,6 +537643,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -537437,7 +537667,7 @@
     "categoria": null,
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "ac36609f2ae2259752ffcdd9508de92dbbc07d2c26d84f043e2ca6f4487bcf79"
+    "hash_evidencia": "dce26275173df0d3d83d82055a7a30c7b0d0ce6e7cc67dca3ad9c8916b3011e2"
    }
   },
   {
@@ -537467,7 +537697,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "0cf59987a3fafc110d1525c27a1c8fda5366e0b87f9c2fabea6b692bc57b45eb"
    },
    "repeticoes": 1,
@@ -537476,7 +537706,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537581,7 +537819,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2002/PlanCon_SANTO%20ANT%C3%94NIO%20DO%20PLANALTO_2025.pdf",
    "alvo": "4317756",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
    "id": "26046aae2f",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -537623,6 +537861,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -537636,12 +537880,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "plano_sem_identificacao",
     "leu_documento": true,
     "categoria": null,
     "data": "1992",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "5b4a8eadb6c996eeafadfaf8c4a3d86cda86bd02b5fcc6f9d376972ecf3b3847"
+    "hash_evidencia": "93e97b874fc076343bcfa3913cbdb860fddd810e78402b2e62055b7d2b13afb4"
    }
   },
   {
@@ -537671,7 +537915,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2024",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "cff0a205153222f4c309442c67afae97782f8e6b13254198ebb7060aaf7bf8c6"
    },
    "repeticoes": 1,
@@ -537680,7 +537924,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -537709,7 +537961,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "499b691bda88d153c9c489c55bf779c816663af459ef5d84ce9257ffd7775ea9"
    },
    "repeticoes": 1,
@@ -537718,7 +537970,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538247,7 +538507,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e672a6edf9eb084e1ba1eb932eaf000e957c468cbf11a8e0addf4657175b2b68"
    },
    "repeticoes": 1,
@@ -538255,7 +538515,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538284,7 +538552,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "8fd8891581ab254cdec69c8adfbae345ef35a1d5c7becb03182f9f971e3c2e0c"
    },
    "repeticoes": 1,
@@ -538293,7 +538561,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538322,7 +538598,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "07/01/2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "b6d897e115074c40e947c546a00a6970836825029a76f139ca617ecdabf90739"
    },
    "repeticoes": 1,
@@ -538331,7 +538607,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538521,6 +538805,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -538539,7 +538829,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "18183b472fb9787b15c26b2cf8c619785e4995c6489f29f42ec60b7681b1b890"
+    "hash_evidencia": "718da693d3acf9575a1560d014358ada86a44fa1b0910e954559d133d0d95d33"
    }
   },
   {
@@ -538569,7 +538859,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "5d1901507cacae8034b3c873ed6b18dccf021eca73bf0351fb40d14c0add94f5"
    },
    "repeticoes": 1,
@@ -538577,7 +538867,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538606,7 +538904,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "06d20be3d510a0b24942dbce1461decc0fb98e0a89b6743b1339205800e8485c"
    },
    "repeticoes": 1,
@@ -538614,7 +538912,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538643,7 +538949,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2010",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "3e15cc53ff883f4ff83b8d4e599f1ca56b4ddf661b348a3f9c45f0686d100a61"
    },
    "repeticoes": 1,
@@ -538651,7 +538957,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -538968,6 +539282,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -538980,13 +539300,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "0edaa074d10eeab531f6662692b5f167316f5b8900448c98616daa571a335564"
+    "hash_evidencia": "a9d83cf5228a4edb254a48a303ac36718bd270ae8229c6accdfa4774a835749f"
    }
   },
   {
@@ -539196,6 +539516,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -539214,7 +539540,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "d4958615a62acdca2efb663c35d218f683e0e2055b17561617a17e17b53eb4ed"
+    "hash_evidencia": "c92aa33c2b8657d4aa33b6616f47b8e003dc7b816c6c02a51630e05b429c9570"
    }
   },
   {
@@ -539278,6 +539604,12 @@
      "classe": "criterio",
      "motivo": "citacao_incompleta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -539296,7 +539628,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "f6577ac0a82e16218ea1b6ef9a14aa30cf2ca2b1416725b32548b5791693d570"
+    "hash_evidencia": "cf878322874426f23cb3f66ee08ffce43d10ec1ae3ef11a79776576cdf6f7dd3"
    }
   },
   {
@@ -539469,6 +539801,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -539481,13 +539819,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "be586cbdbbdfbdc8b1083c23d9dab74ca066dfb39715ea10e6581a0fc088cb96"
+    "hash_evidencia": "125f927f1d18651877c996439668d5cb10f2977d114d6a3152d7a830f67d4be8"
    }
   },
   {
@@ -539581,7 +539919,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "09726f71a122abe77499cc5ec548ea0022385278a59fd362c8c745427eff9f13"
    },
    "repeticoes": 1,
@@ -539589,7 +539927,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -539860,6 +540206,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -539872,13 +540224,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "6ee7375f4c713c24bb2d6ebf177c035094f37fea8bd956566d662519e086a54f"
+    "hash_evidencia": "ab85f023e6b4601caba66cbc5562cb3dc4af90255110fe8976c4566862b4fb14"
    }
   },
   {
@@ -540048,12 +540400,12 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "categoria": "plano",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "0e39c4bdb73d9c2484344f291e9ef6c6c1069d744d58d7b2b1174314fc151549"
    },
    "repeticoes": 1,
@@ -540063,7 +540415,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -540126,6 +540486,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -540144,7 +540510,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "84111c201b9368d2b336d8236f067b7e2792e11a56024469d6c3e1f4fb7ad42b"
+    "hash_evidencia": "67db25804e1143f38b306d9c3830c80e77b95e0b27633ebfeefc2c9a2b80bd3b"
    }
   },
   {
@@ -540189,6 +540555,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ]
   },
@@ -540219,7 +540591,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e71849d0683406e1c2f9125b4b47add3e229aadc73d4ab51fb00a0bc844e43d0"
    },
    "pontos_confianca": 1,
@@ -540227,7 +540599,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -540256,7 +540636,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2010",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "6487bd74f5891e0a5a444e45e6b6c2efee112104b2d8ba7302922be8cd37574b"
    },
    "repeticoes": 1,
@@ -540264,7 +540644,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -540644,6 +541032,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -540656,13 +541050,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "a1963540dc05cd5331d32b8586d9efb72e0d3368018af0cbdd96d93c3c1e92ad"
+    "hash_evidencia": "e36f2dfd6189ff46b3921213b9d050018e6cc2c10ad465e22a929b5bf4209350"
    }
   },
   {
@@ -540692,7 +541086,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4a87cc5976c2653e8fec672524060d7d9490d066922fd7688ced58debe7e4ab5"
    },
    "repeticoes": 1,
@@ -540700,7 +541094,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -540763,6 +541165,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -540811,7 +541219,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "505880454715a0516a395ef7369eec249f7ebf20e0cb6951bc9d2799194a54b1"
    },
    "repeticoes": 1,
@@ -540819,7 +541227,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -540912,7 +541328,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "889c5c69f970b5d69863128242642c0e892097ba6941491ca817f0322c9ff020"
    },
    "repeticoes": 1,
@@ -540921,7 +541337,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541078,7 +541502,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4839416c267322899b747e36005eda7dba86a75d9e0e88b21296c783e6a2c4df"
    },
    "repeticoes": 1,
@@ -541086,7 +541510,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541212,6 +541644,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -541224,13 +541662,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "bcf2efedf032d8dfbee54a7ae7929c62b588617b720af2074b4ee7476795c234"
+    "hash_evidencia": "6ce20dd00e8d354333860d7cfbc177e08b8b5b6e6c89792046daf7cfe1536321"
    }
   },
   {
@@ -541294,6 +541732,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -541312,7 +541756,7 @@
     "categoria": null,
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "3229911467a40cbe388954b850d0569e92c068a28b48b623bcd0b0244154d701"
+    "hash_evidencia": "65fcd267c00d66d2d2335538a42901b0d15ecf4bb896ac62c0a17bee7e35293e"
    }
   },
   {
@@ -541552,14 +541996,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "20628687b3e48b67284b3207541655b0d739346a59473079834b96a803fc7ae2"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541588,7 +542040,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "51bf5ce86c8b6bd7bcb707013f6ba3a8677b0402b30ea7c8ff6115e1b717c6ce"
    },
    "pontos_confianca": 1,
@@ -541596,7 +542048,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541625,7 +542085,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "456a2bed5404cceb8a76e677221b088e7bafa064f4b0e2593ce9d3fdaec1fce3"
    },
    "repeticoes": 1,
@@ -541633,7 +542093,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -541696,6 +542164,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -541714,7 +542188,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "db97c7d6bb0bd92a28e97ced77967999d78fae19b3bd53ab6713a59641b3342c"
+    "hash_evidencia": "34b1f8ecd79906a38b557c013a81673b91d03d2867ed0010c1b65cf2224dee84"
    }
   },
   {
@@ -541987,6 +542461,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -542005,7 +542485,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "73bc07f50b0e170d54b87af2b06fc1bf8a02cb982e8c795ef1f0847be76a60d7"
+    "hash_evidencia": "f87bed09475b98d1534a314b62440f311a7b58f29591d5b215731c8e6a3b37cd"
    }
   },
   {
@@ -542098,7 +542578,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "c041b811becc047fe3c4a58bfd8a1be5e5740b86456729ce2978cbb5c26dedba"
    },
    "repeticoes": 1,
@@ -542106,7 +542586,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -542198,14 +542686,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "c40635415e20372eefb9d4e86d639aea38327f3e5dfd8612342980ed2733899c"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -542268,6 +542764,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -542286,7 +542788,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "28d69d9a8895deeb56876c3932565f5bfd37cdaf38d68f3b29979b7fa52e5090"
+    "hash_evidencia": "ff9656e3b0b0fddccbecf17de2becc2001cc33ed91b1fbe940bd5844b09b7851"
    }
   },
   {
@@ -542343,6 +542845,12 @@
      "em": "2026-11-11",
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
     },
     {
@@ -542641,6 +543149,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -542659,7 +543173,7 @@
     "categoria": null,
     "data": "03/07/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "551c70d3256d6408d31dbbbd91616129af2afd99c0ceae94db45e6a0799e85ee"
+    "hash_evidencia": "c9b25cdaabb7eb6e2efc662d4cd7c3b5ae1b72a95d53f5c0f0f99fc7244b9519"
    }
   },
   {
@@ -543089,7 +543603,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "fbaa6d36f7e828c10ac5cf574650a9ad7be04bb2e46d0c2bed4a2d36be2f56f3"
    },
    "repeticoes": 1,
@@ -543097,7 +543611,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -543223,6 +543745,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -543241,7 +543769,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "ed9cb54c12bc2dcc8a59e17bc28fc99571275a975ef02767e2d1f9a6e1c91169"
+    "hash_evidencia": "5b6c2432f2872d503047206961844b37e477e12333ca6f885ade41d3f072c639"
    }
   },
   {
@@ -543305,6 +543833,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -543323,7 +543857,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "d1987d608e924a800e9e091c1d767573e88833ee62c9338fb34aa1a53d6783c5"
+    "hash_evidencia": "616f38b088c27618e06b9f9aa3078132afa7b800fe818f1b8fe364cb357194ff"
    }
   },
   {
@@ -543353,7 +543887,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "9a3410bb879028a3f464d1d92d0a2a3dbf90bba75ad2f9cbebf82a592a58aba0"
    },
    "repeticoes": 1,
@@ -543362,7 +543896,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -543489,6 +544031,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -543507,7 +544055,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "574c0310f310f15842b9094ca452a7949901a182f503ec4020dba9a7119392df"
+    "hash_evidencia": "f3b06b6369636ccf975c2a43d843be35f7f560ba242e07f6f59c6cb28bdc4321"
    }
   },
   {
@@ -543527,17 +544075,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/SINIMBU%20-%20PLANCON.pdf",
    "alvo": "4320677",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "0300fcd42a",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "citacao_incompleta",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "ac1e3802ea97accc7bf4399aecf8b555b9911f5bc1b9934363b172d0ad4b6388"
    },
    "repeticoes": 1,
@@ -543548,7 +544096,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -543895,7 +544451,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "430f1ccd728daffbf6da22e6f9bc1dde78d581bb863aca6dd1a03a4f3cc62b25"
    },
    "repeticoes": 1,
@@ -543904,7 +544460,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -543933,7 +544497,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e00a595bdb69a3f0f54d515f80a26497f3e622a3864a77acc8c1128fa6141ebb"
    },
    "repeticoes": 1,
@@ -543942,7 +544506,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -544045,7 +544617,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2008/VALE%20DO%20SOL%20-%20PLANCON.pdf",
    "alvo": "4322533",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: resposta",
    "id": "2c11c6dfb8",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -544087,6 +544659,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -544100,12 +544678,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "fe5802f894acc558a31c5dffc63661188015603104ecc69e932d6c5bab2f2089"
+    "hash_evidencia": "21730adeb03e3da804fc144ba38869fa62ab664bfd938c6c371a47ce0c476c91"
    }
   },
   {
@@ -544251,6 +544829,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -544363,7 +544947,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "dbe2870a2903e16709dc300995f472991aa2842857e5fcefae5c83baf39fa2b6"
    },
    "repeticoes": 1,
@@ -544371,7 +544955,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -544497,6 +545089,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -544515,7 +545113,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "f979c90787c634deef01c88c8f2c8d8e6f7c061c00bca2218697ca28b584d7d3"
+    "hash_evidencia": "6db03e48e9c7a0c68bf2c22dbf5bfda15ea2fee303c8eba12de5dcdacd5b740d"
    }
   },
   {
@@ -544545,7 +545143,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "115c9ea18c4fc70616e61e5cec0e71ff8bf9c7eaebf6cb5e792ab1ae411d78d1"
    },
    "repeticoes": 1,
@@ -544554,7 +545152,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -544583,7 +545189,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "6bc5f784f7fea1fb63ac9bd22a1b4edd904e4b35915e8e302f3582f33750729d"
    },
    "repeticoes": 1,
@@ -544591,7 +545197,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -544684,14 +545298,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "f7b27e7da405d12acb3e9f75ff202b41cd2a32ce8aadfeb5f8be348dfe50a7b9"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -544882,6 +545504,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -544900,7 +545528,7 @@
     "categoria": null,
     "data": "2024",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "fe0fe3ab4867a7beede3028f34874423bfe2c1725961edc2e06f0c6bae6b16c7"
+    "hash_evidencia": "f8efd5e0c0e5609c082465f5f2e9f3795d24379188875b3a9b0c24895da0e7f9"
    }
   },
   {
@@ -545027,6 +545655,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -545075,7 +545709,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "934ff7750358e6a05a52a8843cf72f327d65398c391fd3a7312a75708176d957"
    },
    "repeticoes": 1,
@@ -545083,7 +545717,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -545194,7 +545836,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "02/01/2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "f7dab166585644cfad8567d1a2bd15e094f1996975d350480faa6432fb17d7e5"
    },
    "repeticoes": 1,
@@ -545202,7 +545844,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -545265,6 +545915,12 @@
      "classe": "criterio",
      "motivo": "fora_do_objeto",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "fora_do_objeto",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -545283,7 +545939,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e45128c1a6d49a99b1e0cb2917d0986840064f3a80e2e6c56946db23592f9908"
+    "hash_evidencia": "6f68888eb152cbc0eec8922dd2957a851a50a71e61d9c1517b2fa6ea50ff8987"
    }
   },
   {
@@ -545440,7 +546096,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "6b845ba8b1af6498edfac80399177500bb9d2a7e529e65f19ffda62860aa42a8"
    },
    "repeticoes": 1,
@@ -545451,6 +546107,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -545514,6 +546178,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -545532,7 +546202,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "dea61f56b10f3727082b717da23935932e65262cf3ad350b8b70d474770c28bb"
+    "hash_evidencia": "f4c6be66af9ef3a27a01effaef1f355b1e7ce02c02a812de408816271b07f634"
    }
   },
   {
@@ -545562,7 +546232,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4a520b14de04819a2224e539c5dc4ea24f9450729c85cd89f3188bb1f5e11e9b"
    },
    "repeticoes": 1,
@@ -545573,6 +546243,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -545602,7 +546280,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "490bfbfea8d5f35d8fd5c348c982b8e952642619cef54fe2c7860939b6a696b4"
    },
    "repeticoes": 1,
@@ -545613,6 +546291,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -545676,6 +546362,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -545694,7 +546386,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b0228c81937d2afb749827ebd5e8f6f311bfdd30af04e0f3135e7446dd4ab7f5"
+    "hash_evidencia": "c687a6459a52038774c97733550e26a84a50e1af522031f7a5f99f000a0e8f4c"
    }
   },
   {
@@ -545870,7 +546562,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "12/08/2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "9cca49ff26b89cc3e15b871b7fa6b8319629ff94167fc15732fff0876678cf1e"
    },
    "repeticoes": 1,
@@ -545881,6 +546573,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -545910,7 +546610,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "214e5739e57c25c5e5faf5dd1923a3cc3c3df7ba4c82030e10312f07bd36a826"
    },
    "repeticoes": 1,
@@ -545921,6 +546621,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -545984,6 +546692,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -546002,7 +546716,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "0f930f9f19a4e6c343a1c9fca06480392528feaeb9000c8924126d21f2c48c37"
+    "hash_evidencia": "79fd670ba7d0c8a52a4771a979d7c8c86487d039e4968dc67dca9091a4df1713"
    }
   },
   {
@@ -546194,6 +546908,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -546212,7 +546932,7 @@
     "categoria": null,
     "data": "2020",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b8d12305641d74e333a502b5071f679f927e95052862d23471b5fb3cae0e9dd5"
+    "hash_evidencia": "1dd7c4eb20cde9a1de3e6e4bfffd426961da0b877e5506da71ecba32365d7abf"
    }
   },
   {
@@ -546242,7 +546962,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2024",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "417e4faf63a1f9949fc323435e6dcf08a5902aa0ddb886cb6257060e140283d0"
    },
    "repeticoes": 1,
@@ -546252,6 +546972,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -546344,7 +547072,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "d8025c3cef7dc2ef1de8d76ee0ebd0f8424400546bf9ef32cb0c9929fd7d2bcc"
    },
    "repeticoes": 1,
@@ -546354,6 +547082,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -546373,17 +547109,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2010/OS%C3%93RIO%20-%20PLANCON%202025%20RASCUNHO.pdf",
    "alvo": "4313508",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "76a1c6c46e",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "citacao_incompleta",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "88a06abd852c4c2c945743e0609669fcc5cd9bbf9697bc5509faae9da84e2aca"
    },
    "repeticoes": 1,
@@ -546395,6 +547131,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -546458,6 +547202,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -546470,13 +547220,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "9d4232c7d0bd8e7b61761c496f811b5f65430c9c3527a5e9f4057408add14272"
+    "hash_evidencia": "126c674d0218d0095bd7c12f9f455a00c229e0d40a9e7288bd384d84837919be"
    }
   },
   {
@@ -546506,7 +547256,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "69164ac538e6fa2722f0d362bc64261c0eb6b83f226f016e0121b161ee9d145a"
    },
    "repeticoes": 1,
@@ -546516,6 +547266,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -546545,7 +547303,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4b8ee9b886c370f93beec69ec5800bf07b1bf54c2255992848b082cf82effe95"
    },
    "repeticoes": 1,
@@ -546556,6 +547314,14 @@
    ],
    "alertas": [
     "ano_anterior_ao_ciclo"
+   ],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
    ]
   },
   {
@@ -546764,6 +547530,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -546782,7 +547554,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "2eb72f79ae1db3cafec3086786d50cf3ee9ad63406c8614e7cd1ddce543963aa"
+    "hash_evidencia": "8e219919ae83f1ec508f89246c2fc7afa316d696e6e24929c4ca6177ee0fc9eb"
    }
   },
   {
@@ -546938,7 +547710,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "cb96fadc6f7410da743f7b9b812422bc39c40456d1248d5ac5d3e6d2da03dc92"
    },
    "repeticoes": 1,
@@ -546946,7 +547718,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -547039,7 +547819,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "29/12/1960",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "453ebd167c74b53ed76139e4fcd95041aad9b3031ba24fddd5898b29ef73b4ec"
    },
    "repeticoes": 1,
@@ -547048,7 +547828,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -547357,6 +548145,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -547375,7 +548169,7 @@
     "categoria": null,
     "data": "03/02/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "6d5ca454abf13d9c87552739867afca7f2dd4229de8f80d4ee259e7b6482424d"
+    "hash_evidencia": "42d5cd5662a1b05853b949c3cd0413c15c9c77331ddf1915377f63e8eca5a89b"
    }
   },
   {
@@ -547629,6 +548423,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -547641,13 +548441,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2024",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "07dc300cdea23444e61f95a5b996b4498790fcb1f63c6fee26b63b6dde6edfbd"
+    "hash_evidencia": "0bce4c0d298622aafd26ad502dd6989fbea883b4ff86e9a1252aeef8535983c8"
    }
   },
   {
@@ -547711,6 +548511,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -547729,7 +548535,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "80994b10922ae61eb4e7f51b3febf7ba3b00ef0ee83c301d8a7d509c9c103d67"
+    "hash_evidencia": "5d35990971fc7e88540f6f691846ca38f5c9d81c700f78b3a14d6c874e9c2549"
    }
   },
   {
@@ -547822,7 +548628,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2011",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "698ea61171a2e3ff7c015efb6316e0c3e207d2b1c49907031955a218a13a1035"
    },
    "repeticoes": 1,
@@ -547831,7 +548637,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -547860,14 +548674,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "13c9362e603400118ad9a5d87d412ca411d3a6d0d4bdf8fbef55d9315913bebc"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -547994,6 +548816,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548006,13 +548834,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2024",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "a4481cd81cc99cb3f9aaa12d3dd488c02015ec474683e1cf36ff25606fe0558a"
+    "hash_evidencia": "f877e2d7534ad42978399e8732ad7f44f69a1d39d1db00b1f14bca45fdcf2c88"
    }
   },
   {
@@ -548076,6 +548904,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548094,7 +548928,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "44a63f703db483ce252c21c936c595c8f042c7a351ae6f200e048367d4142ff2"
+    "hash_evidencia": "689baebf5d566933ce39571977862c697bf4c244f18c2132dd1ea020a3be3db1"
    }
   },
   {
@@ -548158,6 +548992,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548176,7 +549016,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "dbe143b8a78e8a08d3993a39ec8a2a02f3206293ad31ab71767d7474140386c9"
+    "hash_evidencia": "b08479cb38548eef7148a56cd17e8c4fe8ab46759a25470952c00e2e925453dc"
    }
   },
   {
@@ -548468,6 +549308,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548486,7 +549332,7 @@
     "categoria": null,
     "data": "2020",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "34292aa9de0cb2cdc7df8508fe7bdbe72bae9c005c51830b547dc10be6ecef3d"
+    "hash_evidencia": "7fb21f6b4f529b6b331c6bfff5f1db6be287ccaa1bb2179e3ff6ea6f094258f8"
    }
   },
   {
@@ -548550,6 +549396,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548562,13 +549414,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "10/09/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "7602acde9ddb7eeaace715b9256a2be605772a18d0ea8693077de40244802cbf"
+    "hash_evidencia": "3af22fc5ca56848496313d466807b69134b46adce734262bddbb08730d17d200"
    }
   },
   {
@@ -548878,6 +549730,12 @@
      "classe": "criterio",
      "motivo": "ente_nao_confirmado",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548896,7 +549754,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e0feef279335833f6e8a587770e16829f92ef5a31433f275399b8f05dc2b3fd3"
+    "hash_evidencia": "3e384e69dda8aa730e82e98e8ce8325933b0037dec9b08fd0b9d401019c736cd"
    }
   },
   {
@@ -548960,6 +549818,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -548978,7 +549842,7 @@
     "categoria": null,
     "data": "20/03/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "2045540e300e9355300a6483d457b13cbbb2aee09eeed3d1fc7a3c7ddc466251"
+    "hash_evidencia": "421dfaee152df577516898923d7a7bb40cdb5968c66c0bc49b9d26c5a7dc95b5"
    }
   },
   {
@@ -549106,6 +549970,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -549118,13 +549988,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "3f84a476afdf70b87f29fda1bd7c1e2a515433eae8914f00dbe0563cb06a4285"
+    "hash_evidencia": "b5ed39884c0362b2ff99d409da0f3f30ba55cd121699cc54606fe73cd526bc8f"
    }
   },
   {
@@ -549154,7 +550024,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "7a2ba8d4138678d7624c3889f879e5b4c20d0e0eb949829d90d233cb0aaf97b5"
    },
    "repeticoes": 1,
@@ -549162,7 +550032,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -549371,6 +550249,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -549389,7 +550273,7 @@
     "categoria": null,
     "data": "05/09/1988",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "ca810b789e31d6774148510620d44dac3f29386031600eef2a92fc80c8b88d6a"
+    "hash_evidencia": "6bf1bb66ffd9bb02ba2b4e3c8fe2f7327f6f1af295193a2a2657c2ccfc944dd4"
    }
   },
   {
@@ -549453,6 +550337,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -549471,7 +550361,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "bfa5b5417134e867800cc8669ba0dd9cc9fcdf02d04ea3a76040f88a471d6a59"
+    "hash_evidencia": "eac68b9b10ee1236213b7e420599591dea8bc9810ac4705c6259fbd914c2b471"
    }
   },
   {
@@ -549710,7 +550600,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "865b0ac419b03d65acaa4d9771b1e64a85b503beed0078477899c4d0a06ebb12"
    },
    "repeticoes": 1,
@@ -549719,7 +550609,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -549782,6 +550680,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -549800,7 +550704,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e2a54743197ffc48908fda087d4730462963e5ae02eddadf8925e7db84fa6550"
+    "hash_evidencia": "5710204016da4f227c403d55e4969ee0e3ed14a7d16122fcf9d677fb5d0b2d47"
    }
   },
   {
@@ -550236,6 +551140,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -550254,7 +551164,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b1398b7d46bceac712c7e2a5bb147268c671db773800101f30e2d1d5f1b100b8"
+    "hash_evidencia": "98c6cfcb04ec6c32cc5fa80d659658fb3a05f60b574eeb552eefe0f16cd1d003"
    }
   },
   {
@@ -550445,6 +551355,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -550463,7 +551379,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "04c5fc8c0ddfa48413859598969c2a0ac9c134fda94c95f47bff49011ae95540"
+    "hash_evidencia": "c2baaf2bfcc2f60490be7e6efdabda2a9ce7194f51dfa3c7e33de88044f2d430"
    }
   },
   {
@@ -550493,7 +551409,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "48dc3ab70c58da0e9d51ffa901314f1cec666f7b6c10079ee51ae2b580846dad"
    },
    "repeticoes": 1,
@@ -550502,7 +551418,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -550565,6 +551489,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -550583,7 +551513,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "a1b4703a250b2fcc5ac658616ae50b8d3fcbcb4cfbd7540f4078febc0e99ca8f"
+    "hash_evidencia": "ba6c56b142905a0ee0ca9cf7f2d2ea6a4de4bcbad0012ffefd5416f082ee92b0"
    }
   },
   {
@@ -550613,7 +551543,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "24/06/24",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "5611013945cd2a692f8f506f46a922d946ce468e4dc40e6b7616f1371f9fe30c"
    },
    "repeticoes": 1,
@@ -550621,7 +551551,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -550766,6 +551704,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -550778,13 +551722,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "d4bb30b4d054fd0f8a556b5358bf90cdb444964d0ba54e21af1e8d259c4cf7ab"
+    "hash_evidencia": "8ba54138d8171b128b7fbed9cc558a3374dedb34dd0ea79620e213e9328d6600"
    }
   },
   {
@@ -550848,6 +551792,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -550866,7 +551816,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "58cf0f7b160b8dc3eba08c76986fac721e8b43f731beda430728e41b513c4404"
+    "hash_evidencia": "a18ede83dd974a01daa8af45c93d03545c8d8c20ccfae5a52e5a219e73523efc"
    }
   },
   {
@@ -550930,6 +551880,12 @@
      "classe": "criterio",
      "motivo": "municipio_nao_identificado",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -550948,7 +551904,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e235c8e662b479a1dfc505cc7eb92399dedf43850c9c4674b40f12aef0feefb4"
+    "hash_evidencia": "a1971bfa5ae9da10d0ef1dd5a89e11c385351a96711a1722ef49c8357b0cf297"
    }
   },
   {
@@ -551012,6 +551968,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551024,13 +551986,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "plano_sem_identificacao",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
+    "categoria": "plano",
+    "data": "2009",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e6eef26a6682b78902c731855bd4b79453b69d654c103affa1fcd893dc77164b"
+    "hash_evidencia": "a5cc1f2b67814c142f1683d14d278ea038c370f3f896a7e1d6a3cb24a573c2f1"
    }
   },
   {
@@ -551094,6 +552056,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551112,7 +552080,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "7bed2749b5af778f9568e992fde15f847c5d466c3a47d2e8c440ca8ee0c897a2"
+    "hash_evidencia": "b225b9ce5f13531af7eccb8a262d7ac498d21ceb12ffb097d18f78fe7f6f5568"
    }
   },
   {
@@ -551321,6 +552289,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551339,7 +552313,7 @@
     "categoria": null,
     "data": "1992",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b60dcc5790908d4d09aeb33304608c0c82c863089178f5afbf1b4d4baa31f684"
+    "hash_evidencia": "4f5381c69815d8a7c780ae4ce7bfb72dddd0a5e06e9a80c1b786a2f4072be0b5"
    }
   },
   {
@@ -551369,7 +552343,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "f22b4878671542e3e1a6f0504392ed0dbc6e1dbcf4a6ef9f51a951f319a7cbc6"
    },
    "repeticoes": 1,
@@ -551377,7 +552351,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -551522,6 +552504,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551534,13 +552522,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "7325538b5595fb3d489c00901c69f908da48d73538b6379134de7b47fab507c3"
+    "hash_evidencia": "fac7664b38a3f7e6dd84657f66469670ce0b0a4e1823e7c30d86ef1b0c60bab8"
    }
   },
   {
@@ -551570,7 +552558,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "f448e386922f8639dd29fbb94e482f90b9371d017c68d39ad84be4df798cef7f"
    },
    "repeticoes": 1,
@@ -551579,7 +552567,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -551600,7 +552596,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/Santa%20Rosa.pdf",
    "alvo": "4317202",
-   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
+   "status": "pista — recusada pelo juiz: natureza_duvidosa",
    "id": "532d4e43a6",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -551642,6 +552638,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551655,12 +552657,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "plano_sem_identificacao",
+    "motivo": "natureza_duvidosa",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "2bc5e8cb5b5617d043d8d6bd65d64c0e238d8b6cb3414c6e75076627ca9c19c9"
+    "hash_evidencia": "353983221f289aee0447fe458b69449fe8f72ff4761b01ab0d86126afa6c2453"
    }
   },
   {
@@ -551788,6 +552790,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551806,7 +552814,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "a02436359b14a1ba67d86c110d1a2c4ae3bfafb2134ec30800f9380390660804"
+    "hash_evidencia": "e1a03c33cd9650e4bba2ad5288c73325e17b4ec98de3cee5e2302a0ba4abe83a"
    }
   },
   {
@@ -551870,6 +552878,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551888,7 +552902,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "3272e2745d41e174969faf1170d5919d1031afd1d3c4db7d54fbf3c3a65cdd21"
+    "hash_evidencia": "d09b3d91ba80b8f73767319022af904c90477039e3814b48d3e2fa619f8b18a9"
    }
   },
   {
@@ -551910,7 +552924,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2005/S%C3%83O%20MIGUEL%20DAS%20MISS%C3%95ES%20PLANCON.pdf",
    "alvo": "4319158",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: resposta",
    "id": "8d39bbb82c",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -551952,6 +552966,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -551965,12 +552985,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "fb7331e6c7b7677f3eeb687bd8d1098ef2ff600762e7c138b7f0889569854865"
+    "hash_evidencia": "a41f6b8e76a81cb6bdb7a79e05e7a839d87382001992c13f9e8eafa6d92c1c7a"
    }
   },
   {
@@ -552034,6 +553054,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -552052,7 +553078,7 @@
     "categoria": null,
     "data": "25/03/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "defa363f4d850f7e8634a649d92e8c790e8c9c24b8779721dcaa46305cf30af1"
+    "hash_evidencia": "39f7b0c4a1facfdeae2ab61d1e3baed99f5ecfabdbd4ab83b43b32caa7c6caf6"
    }
   },
   {
@@ -552179,6 +553205,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -552197,7 +553229,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "0cb77c06911009eea0d6661550c544fbaa886e066d2730a08f220ff4bc62a275"
+    "hash_evidencia": "bb24fef8482e79cb768fcff121243885cacd7ec1a0687af7a2e9074e912e45d8"
    }
   },
   {
@@ -552406,6 +553438,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -552418,13 +553456,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "890963bfd059278a32c5a932cfc1ce86d1f1104feb4e33f694e98a5b87812a65"
+    "hash_evidencia": "c29be97bb3cca9b1c42162eb88bbd2d34608b1bbd3714acf6d5718f5d1f5cd59"
    }
   },
   {
@@ -552581,7 +553619,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "6b91a853eec6332155737c457737728265e3768e73a7989e646cd0b4ea6e01f2"
    },
    "repeticoes": 1,
@@ -552589,7 +553627,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -552734,6 +553780,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -552746,13 +553798,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b39feaa27c73d8ef28fcf6baab630a2ff5f29a403c0a8b2cdc708bf2e0bd3ae0"
+    "hash_evidencia": "47a36631725d12b4c46319a87486a00f51bd66506243af77e9bcc1266fdc26d1"
    }
   },
   {
@@ -552816,6 +553868,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -552834,7 +553892,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "d2962613f83a56daff69685e4b5df297795a4f48165a2d420f6326eb6909f2d5"
+    "hash_evidencia": "d3389d5df5e02d2df714a6f6a90cc065201fa9bd8b646256a98d76efd24e827d"
    }
   },
   {
@@ -552864,7 +553922,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "fcb6409873c2a7613078519f7fd1349b4b6cbdfb1de898f1db383a3daaf2c016"
    },
    "repeticoes": 1,
@@ -552873,7 +553931,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -553018,6 +554084,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -553030,13 +554102,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "71776c7e5bfabeefa5d295aac81c1243d71c80e67dc5392e0b38cf5d8bf0daf9"
+    "hash_evidencia": "a0c2c2fe6e867e78333648512a8d81ed359ee5b163c1f9d6a4c64e1e11a72fb5"
    }
   },
   {
@@ -553129,14 +554201,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "bc7a40e963ab0a9f70888e6a252cbdfd52cb038388300bf373816fa3636f4f9e"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -554145,6 +555225,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -554157,13 +555243,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "237ba362cbd4d51725fbd945804e62051f3edc9ae6bd22ea8f077c665eb92bfd"
+    "hash_evidencia": "4b4dc26842f120e946306acf81233b781efaa2d0bb1a473584ee85725014a404"
    }
   },
   {
@@ -554357,7 +555443,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "c20798736fdb703e4ebd7e5f939a230a29b6f1af62cb129504ee79ecabf72f15"
    },
    "repeticoes": 1,
@@ -554365,7 +555451,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -554786,7 +555880,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e9adf649d48664a57e23adde32cee52c4df11c776020e2dd126a55f9e579f2b3"
    },
    "repeticoes": 1,
@@ -554794,7 +555888,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -555212,6 +556314,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -555224,13 +556332,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e42dedfadfec2794863cd27f56b0259f6159fa94a515f1b00d86c1b665c23e23"
+    "hash_evidencia": "e49ebe3ac877807ac5de6125479d288137e43709d649a253768e35f9abac398d"
    }
   },
   {
@@ -556208,7 +557316,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "111179301303cbf7d781a3fe8abef1da164cb060a6cc6940a8850ea813828521"
    },
    "repeticoes": 1,
@@ -556216,7 +557324,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -556237,7 +557353,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_Para%C3%ADsoDoSul.pdf",
    "alvo": "4314027",
-   "status": "pista — recusada pelo juiz: plano_sem_identificacao",
+   "status": "pista — recusada pelo juiz: data_nao_confirmada",
    "id": "2c64ce8c2f",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -556279,6 +557395,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -556292,12 +557414,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "plano_sem_identificacao",
+    "motivo": "data_nao_confirmada",
     "leu_documento": true,
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "0023b9db31a1b7a05bcfd48341ed865509f82fd8511ef434da59c66ab391655f"
+    "hash_evidencia": "319b097b79ff80874fd77e3f0c7f6b59f099e99b867874f339c104fc127f6e88"
    }
   },
   {
@@ -556354,6 +557476,12 @@
      "em": "2026-11-11",
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
     },
     {
@@ -556465,7 +557593,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_SaltoDoJacu%C3%AD.pdf",
    "alvo": "4316451",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: resposta",
    "id": "58b4f4ef6c",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -556507,6 +557635,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -556520,12 +557654,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "74eac92dc1201227da5ed6d11893b0c906fb0dd77ca3b9aadeb1e35a8ff6ea52"
+    "hash_evidencia": "df622f2caea46faaa4b7eac9659c025fbb8e187ec7cd1f0ccd1959184df71459"
    }
   },
   {
@@ -556611,7 +557745,7 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2003/Plano%20de%20Conting%C3%AAncia%20Municipal%202025_NovaPalma1.pdf",
    "alvo": "4313102",
-   "status": "pista — recusada pelo juiz: natureza_duvidosa",
+   "status": "pista — recusada pelo juiz: resposta",
    "id": "ce87592c2e",
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -556653,6 +557787,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -556666,12 +557806,12 @@
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "natureza_duvidosa",
+    "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "d352c99d8985eedcf22e41afe793252a85dadc8e2c45f33d60c5394d13e2c1fc"
+    "hash_evidencia": "721c31c04e490189176b30d7b36786c88a3be87502daff0475ce52282201ebd4"
    }
   },
   {
@@ -556701,7 +557841,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "23/05/2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "25c2412896f2940fa5b3c9396937d5e1fb9dae18aef1e47b3d25cd0034a1f1fa"
    },
    "repeticoes": 1,
@@ -556709,7 +557849,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557127,6 +558275,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -557145,7 +558299,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "73c5e4d21eb9fbe6b75a3475f5a1e8512018d0e4d800c34610e7838bd0c67b86"
+    "hash_evidencia": "a465235fa182b734c9451f73d96028e95e1e86b9b36e96f7620590d878f60f80"
    }
   },
   {
@@ -557528,6 +558682,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -557546,7 +558706,7 @@
     "categoria": null,
     "data": "10/07/2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "061e09d4637649aabd79286ec908c288da3788770c10032fcc8c3c8c8c23e8a6"
+    "hash_evidencia": "5525b98a022e7480124371f622e12024068619c0dc4265a271abf10dcdf5e27a"
    }
   },
   {
@@ -557576,7 +558736,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "35fa6ecae40a11204c7e5279c2e2e690ece23d1235857dcc78670ccb87ff2f8d"
    },
    "repeticoes": 1,
@@ -557584,7 +558744,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557613,7 +558781,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4f220a857db8ad49228aa4321a675b5a6e509bd5bb563440f06930b45f91af23"
    },
    "repeticoes": 1,
@@ -557621,7 +558789,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557684,6 +558860,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -557702,7 +558884,7 @@
     "categoria": null,
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "1e45011d48d97b01995720fc93eecb530a1fc015138c9ca5a3c9ee84456a5361"
+    "hash_evidencia": "6cac8b81ff4c922d13141a5766ae0b7a0c8d6a555b31318e6cae40ef4a30e181"
    }
   },
   {
@@ -557814,7 +558996,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4f6b29243d694eae8852fdfe72a0c48bc086b0caaef5e28f77334af160dd1127"
    },
    "repeticoes": 1,
@@ -557822,7 +559004,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -557861,6 +559051,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "tecnica",
@@ -557973,7 +559169,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "b6666c4ebf604b6b69d4e0eaaca0a95aed72bf20d3163740f9b80c9a6f5dbd63"
    },
    "repeticoes": 1,
@@ -557981,7 +559177,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558092,7 +559296,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "5be771822479e9c140028532a2142001f1e34e6fbe5bf4a9d9062a31f1302624"
    },
    "repeticoes": 1,
@@ -558101,7 +559305,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558253,12 +559465,12 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "categoria": "plano_antigo",
+    "data": "2024",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "d03711eab9c9598ee429cf6e6e0bf6f119b12bbeb0f4d03d82dd6e4a9c696ac8"
    },
    "repeticoes": 1,
@@ -558268,7 +559480,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558331,6 +559551,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -558349,7 +559575,7 @@
     "categoria": null,
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "94ab8977017a043bf8cde1de29a5a29567aa70cf8eec6af935cae91397947bf0"
+    "hash_evidencia": "be0359bbefbc53f931f2296cd63abf9065bd78d1e049c1402e38b6ffb1ee7185"
    }
   },
   {
@@ -558495,6 +559721,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -558513,7 +559745,7 @@
     "categoria": null,
     "data": "2017",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "e1a4855fa3f657e3be2233f46fba0996f20c2a86f7453c0022e682c242f01262"
+    "hash_evidencia": "bfcb663f906a67448b5186f4a9aaea2c2347aca089edd181176f8d34a020eeb3"
    }
   },
   {
@@ -558543,7 +559775,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "f82f40fa2f03094ae78209285cb1278dceaf90b30d7b93b03832cdceda5cb5b8"
    },
    "repeticoes": 1,
@@ -558552,7 +559784,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558745,7 +559985,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "407b709aca75179c5660943ac69fd9c0d37fe588623d0db1fc81bc4d2cbba5e1"
    },
    "repeticoes": 1,
@@ -558754,7 +559994,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -558817,6 +560065,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -558829,13 +560083,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2021",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b9541c15701e3194d9fe56ee33823f657346cad54a6ada6ee0a469ffdfba365e"
+    "hash_evidencia": "9efe5e8286d810ea0d0944aead4bb27362948d6a7702db32d4a9266426fcabac"
    }
   },
   {
@@ -558899,6 +560153,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -558917,7 +560177,7 @@
     "categoria": null,
     "data": "04/07/2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "11c5b13751abbfdb60c4d77869932ba5fe9087e6d11f94bb299d3c20835fb6b8"
+    "hash_evidencia": "f146a70b6936c3e71de55c3d0e761f58f30857781eeb92b01d96e282ac3bb718"
    }
   },
   {
@@ -558981,6 +560241,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -558999,7 +560265,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "b06b0259d50460d6f57f31edde908580214c6f7b2d3214ab0afe13ad0ad4fa9c"
+    "hash_evidencia": "e7197048c95ae7de9af6839b0faa0527ffa15b52bca1a9fba9a7566fc4b611b1"
    }
   },
   {
@@ -559039,6 +560305,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "tecnica",
@@ -559121,6 +560393,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -559139,7 +560417,7 @@
     "categoria": null,
     "data": "16/04/1996",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "3783e7e921949274d7239cca555892017a0a32984666cbd0a6a8a320cc3c93ff"
+    "hash_evidencia": "9041fbc2a59de06f2f65fa49f51ab81915548a776d49acaf89062e439eac25f4"
    }
   },
   {
@@ -559267,6 +560545,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -559285,7 +560569,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "584778fdec728790b7c1e409fa81ac380b644ae01350a629a6db9bd3e373f87c"
+    "hash_evidencia": "e25341cb40446632be04b96a7f4a7ae7ab87ac149ec03a4d3701ad527508e751"
    }
   },
   {
@@ -559349,6 +560633,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -559367,7 +560657,7 @@
     "categoria": null,
     "data": "2021",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "857d628b97d5944afa01f5d9b332e4c6a3b5eb4e20fd229303c329deb1b1acc3"
+    "hash_evidencia": "857709d9e8f0a351d8729af09da41e886039618dfe01d8fac0d318c8467fa7e1"
    }
   },
   {
@@ -559479,7 +560769,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "e703879816bae11c4dbb464f1ef9c0e3f9f0d32635660a55759b3de2c4b6e40f"
    },
    "repeticoes": 1,
@@ -559488,7 +560778,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -559615,6 +560913,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -559633,7 +560937,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "1a4ccb906cd349af2b90a44bda4041c790b8aff6fd7322b290e02a93784545da"
+    "hash_evidencia": "3a8e72b07e4e05400f811724988cc0486301781dccd134b9f35c95fe68402143"
    }
   },
   {
@@ -559697,6 +561001,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -559709,13 +561019,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "bdaebd11f70d87a7f520040ccd036898c96e82a506204d0407cff6bd5738a192"
+    "hash_evidencia": "eb07fece05310c21bfca29717adb84155465840ab86a4474c3f3154b86ec490b"
    }
   },
   {
@@ -559779,6 +561089,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -559797,7 +561113,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "3b9e2cc7ab2795acc470efcac6d88ca243c2182fb6692316fbb7f7cf146e48e5"
+    "hash_evidencia": "9cf1df30154a234356f920461b399311bc383df4bf58bff03d282251361a8edd"
    }
   },
   {
@@ -559972,7 +561288,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "5c8f4cfa4244419d5544aa7671fdb9514f5ba34d2bc150e0089da258907a8f06"
    },
    "repeticoes": 1,
@@ -559981,7 +561297,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -560107,6 +561431,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -560125,7 +561455,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "42850b84133b6d551753e5151d6ef5891109317c1d2d13b194f08224d1cb5c03"
+    "hash_evidencia": "cb0a9e6b518d0f6bd818b92921bf582e144ab6900980df716ffcae1ee5129365"
    }
   },
   {
@@ -560364,7 +561694,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "82ef0d2f6ec115e2f75931998c9098ce70be624ff3f69677a27eb42577f9d67c"
    },
    "repeticoes": 1,
@@ -560372,7 +561702,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -560411,6 +561749,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "criterio",
@@ -560480,6 +561824,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -560492,13 +561842,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano",
     "data": "2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "166d426a7c9adf83315c379f821634679da6c89cf95fa727c26b9823b01a55d9"
+    "hash_evidencia": "ffb35210e75d86ea2c76e540ae3d1cca6fe7ed993a7b0676e9e1a953b8195a35"
    }
   },
   {
@@ -560771,6 +562121,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -560783,13 +562139,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2024",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "f78a4cab8210d2620ffe33f29d623158d960e4d4ad1d93e931bbfabfa09198cf"
+    "hash_evidencia": "4a90ba280701f59798e7c7d2c53c4d1ad92dec152abda6260fc472e58c48613b"
    }
   },
   {
@@ -560999,6 +562355,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -561017,7 +562379,7 @@
     "categoria": null,
     "data": "12/09/2023",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "1e2e965ed638a79c927a6ce736fc1bf19cb35f9283f3c50ae8f3e1209e366769"
+    "hash_evidencia": "c267b4063d8cab89e94c91e4805d6e3b3befa8587f31892fb0b9c5b1a88b5cfb"
    }
   },
   {
@@ -561110,7 +562472,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "b151815f8a91b189ed1717b24be1d0735c082e4ffa5e9f1bcde340e0db7df401"
    },
    "repeticoes": 1,
@@ -561118,7 +562480,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561211,7 +562581,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2024",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "86a59390f2690e1383b0e187b1775b432af589ab4638ef87c8b47388e87259d5"
    },
    "repeticoes": 1,
@@ -561219,7 +562589,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561312,7 +562690,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "079566258a825013515bdbcbfd4865376b3cc6f0edac31381b9ed3895172749f"
    },
    "repeticoes": 1,
@@ -561320,7 +562698,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561413,7 +562799,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "11/08/2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "a826f6fd315e5541328bdebe1ba68999a0a2d1567b27968e5670128c40bc9b79"
    },
    "repeticoes": 1,
@@ -561422,7 +562808,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561561,7 +562955,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "57f22a973d8605758b032a92d2dc863781d63d68a791507d7e54d47cfede30ba"
    },
    "repeticoes": 1,
@@ -561570,7 +562964,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561697,6 +563099,12 @@
      "classe": "criterio",
      "motivo": "data_nao_confirmada",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -561715,7 +563123,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "31e60467fe05a9b193e868f705a16a194a8c022eb9fc64049d37ac12f4112a67"
+    "hash_evidencia": "5a8f5a35c72f355dcc93c4036566921f338929198c7d35b6bf515608691e229f"
    }
   },
   {
@@ -561745,7 +563153,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "c4aff967b5567476b63051d39bf77437e575dcc24284052cbe449a9408bed2d6"
    },
    "repeticoes": 1,
@@ -561753,7 +563161,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "minuta_ou_rascunho",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561782,14 +563198,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "7e2f72fce6ac884c661d6a03f8d416127144c167fdab8b6485df52c50a11d351"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561818,7 +563242,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2023",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "84aa0efa4d126f5152180ebd75ba2216d01e2fe319c0866b1d774db75e951f28"
    },
    "repeticoes": 1,
@@ -561826,7 +563250,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561883,6 +563315,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-18"
@@ -561914,7 +563352,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "d59a41d0ee545bc2228c0236e23c9b3b3b0cbc9aa40c262c2c6fd948562eff4e"
    },
    "repeticoes": 1,
@@ -561922,7 +563360,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -561961,6 +563407,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "criterio",
@@ -562030,6 +563482,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -562048,7 +563506,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "0f4f714a6bd2fab5f300783d4f3e0f5497196f0ddf4b25a9490af6d4006f6edb"
+    "hash_evidencia": "d253977e3bc4201e72b0dd556522b591c0fefac7c69df69dea704b3048470642"
    }
   },
   {
@@ -562078,7 +563536,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "eecf2d6149d9dd5a04bd0ad67e136bc047de41ea07286fde0c6f259f1516c52c"
    },
    "repeticoes": 1,
@@ -562087,7 +563545,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -562150,6 +563616,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "plano_sem_identificacao",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -562168,7 +563640,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "22d09452980baf93c7180186c4d01c1fe936f2d9deb9e59b2ae4c7ad0321aa12"
+    "hash_evidencia": "157ba851615d9ec97dc294597b9fc0d50d5bac0343d628f033ec17c3323961dd"
    }
   },
   {
@@ -562360,17 +563832,17 @@
    "origem_do_coletor": "descoberta",
    "url_final": "https://rsgovbr-my.sharepoint.com/personal/casa-militar_casamilitar_rs_gov_br/Documents/Casa%20Militar/SUBCHEFIAS/SUBCHEFIA%20DE%20PROTE%C3%87%C3%83O%20E%20DEFESA%20CIVIL/3.%20Departamento%20de%20Gest%C3%A3o%20de%20Riscos/Divis%C3%A3o%20T%C3%A9cnica%20de%20Riscos/Planos%20de%20conting%C3%AAncia/TODOS%20PLANCONS%20RECEBIDOS/CREPDEC%2001/PLANCON%20-%20CRISTAL.pdf",
    "alvo": "4306056",
-   "status": "pista — recusada pelo juiz: citacao_incompleta",
+   "status": "pista — recusada pelo juiz: resposta",
    "id": "b53122899d",
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
-    "motivo": "citacao_incompleta",
+    "motivo": "resposta",
     "leu_documento": true,
     "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "data": "2025",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "ef3fd75a7ce20cbb74cee0fd00fd282dd0392dbc58d402d737726ab619243ed9"
    },
    "repeticoes": 1,
@@ -562381,7 +563853,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -562437,6 +563917,12 @@
      "classe": "tecnica",
      "motivo": "texto_nao_extraivel",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "proxima_tentativa_em": "2026-11-18"
@@ -562468,14 +563954,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "606fc8ec1acb793adebbb0bd296edd1589a409699e6261938f0e219d2d735149"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -562514,6 +564008,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "tecnica",
@@ -562869,6 +564369,12 @@
      "classe": "criterio",
      "motivo": "plano_sem_identificacao",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -562881,13 +564387,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "plano_sem_identificacao",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
+    "categoria": "plano",
+    "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "16965c3a60fb43c2e26ee35bee6c907d1dcf50c42cfd5262491a431eda00c98d"
+    "hash_evidencia": "89ad4f3bc0b9c22d12641c287e574fbbfba80a9a5adabc923267c2a36b46f4f1"
    }
   },
   {
@@ -562951,6 +564457,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -562969,7 +564481,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "ce5a32f7055b4dd30efb3c7abfba1bfb60ec8b0b3c0a694ed7f7d952f9c42b5a"
+    "hash_evidencia": "6434def02631c70748f3369caf9c69b86071e4cdaef08f4503b8d2f77c5379c7"
    }
   },
   {
@@ -563058,12 +564570,12 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "categoria": "plano_antigo",
+    "data": "2023",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "ac15b3324ccb42ca05d055ec7071d2f599f60e529a583cf7d2f0d25b197392a2"
    },
    "repeticoes": 1,
@@ -563074,7 +564586,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -563219,6 +564739,12 @@
      "classe": "criterio",
      "motivo": "resposta",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -563237,7 +564763,7 @@
     "categoria": null,
     "data": "05/11/2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "15a64833b973b1af9f45fcc9326f289212043044af9c6cebefcd21f71b542a58"
+    "hash_evidencia": "ffc99a34b6f28acea3301c26f28274cfad65a587c5d3854cce8d657dfe0b038b"
    }
   },
   {
@@ -563364,6 +564890,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -563382,7 +564914,7 @@
     "categoria": null,
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "9d6f52423938ca90805841aa9fc31918a55bec019b7820a5f289d5ffc497ba8b"
+    "hash_evidencia": "de011c2b81480b85f228f72d4fefde04f290d20a90a6af47a5b1833ec3a83326"
    }
   },
   {
@@ -563491,6 +565023,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -563509,7 +565047,7 @@
     "categoria": null,
     "data": null,
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "6872638c6775b46a6a2850bcd90c7671dce236c8e4f7480c46fc8e7bd2a131d7"
+    "hash_evidencia": "2337165106b31f1fbcfa24f3132a01f8fddfe0d3a478d35eade1b1a811172aa8"
    }
   },
   {
@@ -563655,6 +565193,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -563673,7 +565217,7 @@
     "categoria": null,
     "data": "2024",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "709dcb7e8ece7b3d7a722824491fc0cdefb66911b94dc3eedb02788b725a8088"
+    "hash_evidencia": "949c090facff1945d4153a2a3d8527f5e61a400044d5639c2aadd551a3ee1c27"
    }
   },
   {
@@ -564040,7 +565584,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": "2025",
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "ce9c016e585c79cf183be6a8ad39e6577e0c75d85450cad942310e979aa23aa1"
    },
    "repeticoes": 1,
@@ -564049,7 +565593,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "natureza_duvidosa",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -564268,7 +565820,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "3a83faebc4b059b83d97f9ccd2e4af4b25e408ade74cee41d39330b53ec028c1"
    },
    "repeticoes": 1,
@@ -564277,7 +565829,15 @@
     "fonte_desconhecida",
     "municipio_na_url"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "resposta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -564306,7 +565866,7 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "1b5ff8af3ae157f0e7600fd2417ef3b48b59e310f01686e74e1351ba356aee93"
    },
    "repeticoes": 1,
@@ -564314,7 +565874,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -564464,12 +566032,12 @@
    "nivel_confianca": "C",
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "citacao_incompleta",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
-    "data": null,
-    "julgado_em": "2026-11-05",
+    "categoria": "plano_antigo",
+    "data": "2013",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "4a762bc0821dae74d843c63a4fd56d705be4ff0dd9ac81f715d4a687d0fded76"
    },
    "repeticoes": 1,
@@ -564479,7 +566047,15 @@
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -564624,6 +566200,12 @@
      "classe": "criterio",
      "motivo": "natureza_duvidosa",
      "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-11",
+     "classe": "promocao",
+     "motivo": null,
+     "codebook": "1.8 (30/10/2026)"
     }
    ],
    "repeticoes": 1,
@@ -564636,13 +566218,13 @@
    },
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
-    "promove": false,
-    "motivo": "natureza_duvidosa",
+    "promove": true,
+    "motivo": null,
     "leu_documento": true,
-    "categoria": null,
+    "categoria": "plano_antigo",
     "data": "2025",
     "julgado_em": "2026-11-11",
-    "hash_evidencia": "6e459ef3fdec527910c9171d76dbc814967cc2d1cab794e17fbfd5eb565bf442"
+    "hash_evidencia": "b700181a8a4f43940cf2e69eca5fc5105467e1e639b703b59275091eacec863d"
    }
   },
   {
@@ -566976,14 +568558,22 @@
     "leu_documento": true,
     "categoria": null,
     "data": null,
-    "julgado_em": "2026-11-05",
+    "julgado_em": "2026-11-11",
     "hash_evidencia": "2e57c8dedf399bfd42f9494d3f24d74fb66d9988f0e3f34cb21b52bd4a6bae22"
    },
    "pontos_confianca": 0,
    "sinais": [
     "fonte_desconhecida"
    ],
-   "alertas": []
+   "alertas": [],
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "data_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ]
   },
   {
    "documento_oficial_confirmado": null,
@@ -567057,6 +568647,12 @@
    ],
    "alertas": [],
    "juiz_tentativas": [
+    {
+     "em": "2026-11-11",
+     "classe": "criterio",
+     "motivo": "municipio_nao_identificado",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-11",
      "classe": "criterio",
