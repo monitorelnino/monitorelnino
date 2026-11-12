@@ -64,7 +64,6 @@ só é habilitado no domínio publicado, nunca em prévia local).
 | `atualizar_recursos.py` | PIB per capita, API SIDRA/IBGE | sim, sob 4 sentinelas; falha-segura |
 | `atualizar_transferencias.py` | Portal da Transparência (requer `PORTAL_TRANSPARENCIA_API_KEY`) | sim, com limitador de taxa |
 | `atualizar_instrumentos_estaduais.py` | Repositórios estaduais estruturados (parser por UF) | **não** — só `data/instrumentos_revisar.json`, para aprovação humana via `aplicar_revisao.py` |
-| `atualizar_marcos_severidade.py` | Monitor de Secas, catálogo aberto CKAN/ANA (descoberta dinâmica de recurso) | não — motor de classificação testável por `self_test`, sem depender de rede |
 | `consultar_querido_diario.py` | API do Querido Diário (Open Knowledge Brasil) | não — só pistas para fila humana |
 | `buscar_financiamento_preventivo.py` | Valida `data/financiamento_uf.json` e imprime gabaritos de busca por UF | não (ferramenta de apoio à sessão de verificação) |
 

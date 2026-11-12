@@ -9,6 +9,12 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-12 · #PR · Redução: sai a página Pesquisadores arquivada e o motor de zonas não usado
+
+Por decisão da editoria, saem `arquivo/pesquisadores/` (arquivada desde 27/09, §258) e
+`atualizar_marcos_severidade.py` (protótipo nunca consumido pelo índice). O portão da página
+arquivada vira só a conferência do 404 de `/arquivo/*`. O histórico do Git guarda tudo.
+
 ## 2026-11-11 · #PR · Juiz: rejulgar o que foi recusado por leitura curta
 `julgar_filas.py --rejulgar` devolve à rodada as pistas nomeadas (`--urls`, `--ids`) que o juiz recusou, mesmo na versão em vigor: o leitor mudou, não o critério. O OCR passa de 4 para 10 páginas: com 4, a capa não mostrava as seções que provam o plano (J1), e 76 planos do Prepara RS saíram como natureza duvidosa. (+18)
 
