@@ -1,32 +1,32 @@
 {
  "_governanca": "INSTANTÂNEO dos números de agora do Monitor de riscos, para a Imprensa e a página lerem em vez de recalcular (handover de 02/10/2026, item 1; HANDOVER_TEXTOS_B §10.3). Não é fonte de nada. Cada cartão guarda em `anterior` o valor e a referência da leitura anterior; sem leitura anterior, o campo não existe. Avisos: avisos distintos no país. O de temperatura é o maior DESVIO em relação à normal 1991–2020 do Inmet, e não a máxima absoluta: 35 °C é normal em Cuiabá e muito quente em Porto Alegre, e publicar a máxima absoluta era publicar geografia como se fosse notícia — mesma régua do mapa de calor da página.",
- "gerado_em": "11/11/2026",
+ "gerado_em": "12/11/2026",
  "cartoes": [
   {
    "id": "temperatura_desvio_capital",
-   "valor": 2.7,
-   "referencia": "11/11/2026",
-   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Boa Vista",
-   "capital": "Boa Vista",
-   "uf": "RR",
+   "valor": 3.3,
+   "referencia": "12/11/2026",
+   "rotulo": "a maior diferença de temperatura máxima em relação ao normal, em Fortaleza",
+   "capital": "Fortaleza",
+   "uf": "CE",
    "fonte": "Inmet (previsão para as capitais e normal de 1991 a 2020)",
    "sem_coleta": false,
-   "nota": "máxima prevista de 38.0 °C contra a média de 35.3 °C do mês; 24 capital(is) com normal publicada",
+   "nota": "máxima prevista de 35.0 °C contra a média de 31.7 °C do mês; 24 capital(is) com normal publicada",
    "anterior": {
-    "valor": 2.7,
-    "referencia": "10/11/2026"
+    "valor": 2.9,
+    "referencia": "11/11/2026"
    }
   },
   {
    "id": "fogo_focos_24h",
-   "valor": 8276,
-   "referencia": "Focos do dia — focos_diario_br_20261110.csv",
+   "valor": 11208,
+   "referencia": "Focos do dia — focos_diario_br_20261111.csv",
    "uf_com_mais_focos": "PA",
    "fonte": "Inpe",
    "sem_coleta": false,
    "anterior": {
-    "valor": 10294,
-    "referencia": "Focos do dia — focos_diario_br_20261109.csv"
+    "valor": 8276,
+    "referencia": "Focos do dia — focos_diario_br_20261110.csv"
    }
   },
   {
@@ -42,26 +42,26 @@
   },
   {
    "id": "avisos_inmet_distintos",
-   "valor": 5,
-   "perigo_ou_maior": 1,
-   "referencia": "11/11/2026 04:28",
+   "valor": 3,
+   "perigo_ou_maior": 0,
+   "referencia": "12/11/2026 04:55",
    "fonte": "Inmet",
    "sem_coleta": false,
    "anterior": {
-    "valor": 5,
-    "referencia": "11/11/2026 03:53"
+    "valor": 3,
+    "referencia": "12/11/2026 04:40"
    }
   },
   {
    "id": "probabilidade_el_nino",
    "valor": 100,
    "trimestre": "OND 2026",
-   "referencia": "11/11/2026",
+   "referencia": "12/11/2026",
    "fonte": "IRI/CPC",
    "sem_coleta": false,
    "anterior": {
     "valor": 100,
-    "referencia": "10/11/2026"
+    "referencia": "11/11/2026"
    }
   }
  ]

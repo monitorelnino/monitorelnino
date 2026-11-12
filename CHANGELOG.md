@@ -16,6 +16,12 @@ em ISO-8859-1 era lida como utf-8 ("Ten�rio") e `S&atilde;o` não era desfeito
 decodificador (`coletores_base.decodificar_pagina`, também usado na preservação) e entidade
 desfeita antes da comparação. Autoteste com os dois casos.
 
+## 2026-11-12 · #PR · Saúde: estados acima da faixa contados nos números que a página mostra
+
+O topo contava 12 estados acima da faixa habitual da dengue e o mapa pintava 11: o Ceará (3,503
+contra p90 de 3,492, ambos "3,5" na página) era "acima" num e "dentro" no outro. O gerador do topo
+passa a comparar o número como exibido, a mesma regra do mapa.
+
 ## 2026-11-11 · #PR · Juiz: rejulgar o que foi recusado por leitura curta
 `julgar_filas.py --rejulgar` devolve à rodada as pistas nomeadas (`--urls`, `--ids`) que o juiz recusou, mesmo na versão em vigor: o leitor mudou, não o critério. O OCR passa de 4 para 10 páginas: com 4, a capa não mostrava as seções que provam o plano (J1), e 76 planos do Prepara RS saíram como natureza duvidosa. (+18)
 
