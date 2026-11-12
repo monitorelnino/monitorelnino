@@ -3885,7 +3885,19 @@
   {"data": "2026-11-11", "script": "monitorar_busca_web.py", "inicio": "2026-11-12T01:20:39", "duracao_s": 0.1, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-11", "script": "monitorar_busca_web.py", "inicio": "2026-11-12T01:20:39", "duracao_s": 0.3, "itens": null, "status": "ok", "erro": ""},
   {"data": "2026-11-11", "script": "monitorar_busca_web.py", "inicio": "2026-11-12T01:20:39", "duracao_s": 0.4, "itens": null, "status": "ok", "erro": ""},
-  {"data": "2026-11-11", "script": "monitorar_busca_web.py", "inicio": "2026-11-12T01:20:39", "duracao_s": 0.5, "itens": null, "status": "ok", "erro": ""}
+  {"data": "2026-11-11", "script": "monitorar_busca_web.py", "inicio": "2026-11-12T01:20:39", "duracao_s": 0.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_saude.py", "inicio": "2026-11-12T01:15:21", "duracao_s": 76.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_desfechos_saude.py", "inicio": "2026-11-12T01:16:37", "duracao_s": 475.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_desfechos_saude.py", "inicio": "2026-11-12T01:24:32", "duracao_s": 475.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_dda.py", "inicio": "2026-11-12T01:32:27", "duracao_s": 58.5, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_boletim_ms_dengue.py", "inicio": "2026-11-12T01:33:25", "duracao_s": 18.7, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_boletim_df_arboviroses.py", "inicio": "2026-11-12T01:33:43", "duracao_s": 284.1, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_boletim_pe_arboviroses.py", "inicio": "2026-11-12T01:38:27", "duracao_s": 6.4, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_boletim_pb_arboviroses.py", "inicio": "2026-11-12T01:38:33", "duracao_s": 4.0, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_arboviroses_sinan.py", "inicio": "2026-11-12T01:38:37", "duracao_s": 39.9, "itens": null, "status": "ok", "erro": ""},
+  {"data": "2026-11-11", "script": "coletar_obitos_registro_civil.py", "inicio": "2026-11-12T01:39:16", "duracao_s": 922.1, "itens": null, "status": "erro", "erro": "interrompido pelo prazo do elo"},
+  {"data": "2026-11-11", "script": "classificar_saude_no_plano.py", "inicio": "2026-11-12T01:54:38", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"},
+  {"data": "2026-11-11", "script": "gerar_saude_municipio.py", "inicio": "2026-11-12T01:54:38", "duracao_s": 0.0, "itens": null, "status": "pulado", "erro": "prazo do elo esgotado antes de começar"}
  ],
- "atualizado_em": "2026-11-12T01:20:39"
+ "atualizado_em": "2026-11-12T01:54:38"
 }
