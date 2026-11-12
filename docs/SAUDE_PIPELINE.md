@@ -9,7 +9,7 @@ erra, o site publica um estado que não corresponde ao dado — reprova o portã
 fonte fora do ar é rotina, e uma falha isolada não é defeito do pipeline; erro em duas
 rodadas seguidas vira alerta, porque aí não é a fonte, é o coletor.
 
-Janela: 2026-11-05 a 2026-11-12 (1295 execução(ões) registrada(s), 7 dias de histórico).
+Janela: 2026-11-05 a 2026-11-12 (1306 execução(ões) registrada(s), 7 dias de histórico).
 
 ## Alertas
 
@@ -27,8 +27,8 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `gerar_monitor_saude.py` | essencial | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `gerar_mortalidade_comparada.py` | essencial | 2026-11-11 07:18 | 1 s | — | ok | — |
 | `gerar_saude_municipio.py` | essencial | 2026-11-11 01:54 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
-| `recalcular_mare.py` | essencial | 2026-11-12 05:42 | 5 s | — | ok | — |
-| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-12 04:02 | 2 s | — | ok | — |
+| `recalcular_mare.py` | essencial | 2026-11-12 06:42 | 4 s | — | ok | — |
+| `aplicar_promocoes_do_juiz.py` | coletor | 2026-11-12 06:13 | 50 s | 1 | ok | — |
 | `atualizar.py` | coletor | 2026-11-11 07:39 | 0 s | — | ok | — |
 | `atualizar_populacao.py` | coletor | 2026-11-11 07:15 | 0 s | — | ok | — |
 | `buscar_protocolo_calor.py` | coletor | 2026-11-10 01:21 | 19 s | 13 | ok | — |
@@ -78,8 +78,8 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `descobrir_planos.py` | coletor | 2026-11-12 05:21 | 473 s | — | ok | — |
 | `desfechos_sus.py` | coletor | 2026-11-11 07:18 | 0 s | — | ok | — |
 | `detectar_marcos_federais.py` | coletor | 2026-11-12 05:21 | 31 s | — | ok | — |
-| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-11 07:39 | 22 s | — | ok | — |
-| `julgar_filas.py` | coletor | 2026-11-12 03:51 | 679 s | — | ok | — |
+| `julgar_e_aplicar_descobertas.py` | coletor | 2026-11-12 06:10 | 210 s | — | ok | — |
+| `julgar_filas.py` | coletor | 2026-11-12 05:51 | 1147 s | — | ok | — |
 | `julgar_saude.py` | coletor | 2026-11-11 01:59 | 4184 s | — | **erro** | interrompido pelo prazo do elo |
 | `ler_planos_arboviroses.py` | coletor | 2026-11-11 07:51 | 4 s | — | ok | — |
 | `monitorar_atos_resposta.py` | coletor | 2026-11-12 05:19 | 92 s | 24645 | ok | — |
@@ -88,17 +88,17 @@ cobertura 15d: 5031/5571 com verificação real até 2026-11-12 · por canal: we
 | `monitorar_imprensa_saude.py` | coletor | 2026-11-12 05:17 | 104 s | 27 | ok | — |
 | `monitorar_politica_por_inteiro.py` | coletor | 2026-11-12 05:21 | 4 s | 18721 | ok | — |
 | `monitorar_sinais_federais.py` | coletor | 2026-11-12 05:21 | 4 s | 10 | ok | — |
-| `preservar_evidencias.py` | coletor | 2026-11-12 04:47 | 8 s | — | ok | — |
+| `preservar_evidencias.py` | coletor | 2026-11-12 06:25 | 60 s | — | ok | — |
 | `processar_contribuicoes.py` | coletor | 2026-11-11 07:15 | 1 s | — | ok | — |
 | `python3` | coletor | 2026-11-08 13:24 | 152 s | — | ok | — |
 | `reconferir_instrumentos_federais.py` | coletor | 2026-11-11 07:51 | 0 s | — | ok | — |
-| `revisar_pistas.py` | coletor | 2026-11-11 07:14 | 430 s | — | ok | — |
-| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-11 07:22 | 1 s | — | ok | — |
-| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-11 07:14 | 2 s | — | ok | — |
+| `revisar_pistas.py` | coletor | 2026-11-12 05:44 | 411 s | — | ok | — |
+| `scripts/amostra_auditoria_semanal.py` | coletor | 2026-11-12 06:14 | 1 s | — | ok | — |
+| `scripts/corrigir_atribuicao_por_dominio.py` | coletor | 2026-11-12 05:44 | 2 s | — | ok | — |
 | `scripts/diagnostico_fontes_saude.py` | coletor | 2026-11-07 19:03 | 372 s | — | ok | — |
 | `scripts/fechar_saude.py` | coletor | 2026-11-11 03:09 | 0 s | — | pulado | prazo do elo esgotado antes de começar |
 | `scripts/pistas_capitais_09_11.py` | coletor | 2026-11-09 19:06 | 2 s | — | ok | — |
-| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-12 04:48 | 2 s | — | ok | — |
+| `scripts/preservar_textos_integrais.py` | coletor | 2026-11-12 06:26 | 3 s | — | ok | — |
 | `scripts/proveniencia_estadual.py` | coletor | 2026-11-11 03:29 | 1 s | — | ok | — |
 | `scripts/reavaliar_fontes_suspensas.py` | coletor | 2026-11-12 05:07 | 1092 s | — | ok | — |
 | `scripts/sondar_boletim_infogripe.py` | coletor | 2026-11-07 01:15 | 97 s | — | ok | — |
