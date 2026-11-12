@@ -17,7 +17,45 @@
    "promovidas": 0,
    "recusa_documento_inacessivel": 75,
    "recusa_texto_nao_extraivel": 5
+  },
+  "descobrir_planos": {
+   "alvos_consultados": 20,
+   "alvos_verificados": 3,
+   "achados_novos": 2,
+   "fila_acumulada": 42
   }
  },
- "atualizado_em": "2026-11-12T04:02:51"
+ "atualizado_em": "2026-11-12T04:30:01",
+ "verificador_imprensa": {
+  "na_fila": 2267,
+  "lidas": 0,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "veiculo_nao_listado": 2177,
+   "sem_https": 90
+  },
+  "crescimento_da_lista": {
+   "candidatos": 1,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 1
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 0,
+   "por_host": {},
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-12T04:37:41"
+ }
 }
