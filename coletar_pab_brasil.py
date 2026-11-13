@@ -29,9 +29,16 @@ INSTRUMENTO = ("Plano de Ação Brasileiro de Combate à Desertificação e Miti
                "Suscetíveis à Desertificação e Entorno (índice de aridez: Cemaden/MCTI, 1990–2020)")
 TOTAIS = {"ASD": 1389, "Entorno": 260}
 UFS_ESPERADAS = {"AL", "BA", "CE", "ES", "MA", "MG", "MS", "PB", "PE", "PI", "RJ", "RN", "SE"}
-CLIMAS = {"arido": "Árido", "semiarido": "Semiárido", "subumido seco": "Subúmido seco", "umido": "Úmido"}
-LINHA = re.compile(r"\b(\d{7})\s+([A-Z]{2})\s+([^\d]{2,60}?)\s+(Sub[úu]mido\s+Seco|Semi[áa]rido|[ÁA]rido|[ÚU]mido)\s+"
-                   r"(ASD|Entorno\s*\(([^)]{2,30})\))", re.I)
+# O texto do PDF quebra a célula em duas linhas ("Subúmido / Seco", "CIRCUNS- / CRITO") e nem sempre traz a
+# letra acentuada inteira: o clima casa pelo radical e a classificação pelo começo.
+LINHA = re.compile(r"\b(\d{7})\s+([A-Z]{2})\s+([^\d]{2,60}?)\s+(?<!\S)(Sub\S{1,2}mido(?:\s+Seco)?|Semi\S{1,2}rido|\S{1,2}rido|\S{1,2}mido)"
+                   r"(?!\S)\s+(ASD|Entorno\s*\((SAB;\s*PAN|SAB|PAN|CIRCUNS))", re.I)
+CODIGO = re.compile(r"\b(\d{7})\s+([A-Z]{2})\s")
+
+
+def _clima(s: str) -> str:
+    c = _chave(s)
+    return "Subúmido seco" if c.startswith("sub") else "Semiárido" if c.startswith("semi") else "Árido" if c.endswith("rido") else "Úmido"
 
 
 def _chave(s: str) -> str:
@@ -44,9 +51,9 @@ def linhas_da_tabela(texto: str) -> dict:
     fora = {}
     for m in LINHA.finditer(" ".join(str(texto or "").split())):
         r = {"codigo_ibge": m.group(1), "uf": m.group(2).upper(), "pab_brasil": "Entorno" if m.group(6) else "ASD",
-             "pab_clima": CLIMAS[_chave(m.group(4))]}
+             "pab_clima": _clima(m.group(4))}
         if m.group(6):
-            r["pab_criterio_entorno"] = "; ".join(x.strip().upper() for x in m.group(6).split(";"))
+            r["pab_criterio_entorno"] = "; ".join(x.strip().upper() for x in m.group(6).split(";")).replace("CIRCUNS", "CIRCUNSCRITO")
         if fora.setdefault(r["codigo_ibge"], r) != r:
             raise ValueError(f"{r['codigo_ibge']} aparece duas vezes com leituras diferentes")
     return fora
@@ -89,10 +96,11 @@ def autoteste() -> int:
     from coletores_base import rodar_autoteste
     texto = ("2100154 MA Água Doce do Maranhão Úmido Entorno (SAB; PAN)\n2100907 MA Araioses Subúmido Seco ASD "
              "2304202 CE Crato Semiárido ASD\n3160207 MG Santo Antônio do\nItambé Úmido Entorno (CIRCUNSCRITO) "
-             "Tabela 1 – 1.649 municípios 2611101 PE Petrolina Árido ASD")
+             "Tabela 1 – 1.649 municípios 2611101 PE Petrolina A´rido ASD 2101509 MA Barão de Grajaú Subúmido ASD Seco "
+             "3116803 MG Coluna Úmido Entorno (CIRCUNS- CRITO)")
     regs = linhas_da_tabela(texto)
     base = {"2100154": {"uf": "MA", "nome": "Água Doce do Maranhão"}, "2100907": {"uf": "MA", "nome": "Araioses"},
-            "2304202": {"uf": "CE", "nome": "Crato"}, "3160207": {"uf": "MG", "nome": "Santo Antônio do Itambé"},
+            "2304202": {"uf": "CE", "nome": "Crato"}, "3160207": {"uf": "MG", "nome": "Santo Antônio do Itambé"}, "2101509": {"uf": "MA", "nome": "Barão de Grajaú"}, "3116803": {"uf": "MG", "nome": "Coluna"},
             "2611101": {"uf": "PE", "nome": "Petrolina"}}
     antes = {"municipios": {"2304202": {"codigo_ibge": "2304202", "uf": "CE", "municipio": "Crato", "semiarido": True},
                             "1100205": {"codigo_ibge": "1100205", "mma_prioritario_desmatamento": True, "pab_brasil": "ASD"}},
@@ -100,8 +108,11 @@ def autoteste() -> int:
     junto = fundir(antes, regs, base)
     cheio = {str(2300000 + i): {"uf": "CE", "pab_brasil": "ASD" if i < 1389 else "Entorno"} for i in range(1649)}
     return rodar_autoteste({
-        "lê cinco linhas, com nome quebrado em duas e texto solto no meio":
-            lambda: len(regs) == 5 and regs["3160207"]["pab_criterio_entorno"] == "CIRCUNSCRITO",
+        "célula quebrada em duas linhas e acento solto são lidos: subúmido seco, árido e circunscrito":
+            lambda: regs["2101509"]["pab_clima"] == "Subúmido seco" and regs["2611101"]["pab_clima"] == "Árido"
+            and regs["3116803"]["pab_criterio_entorno"] == "CIRCUNSCRITO",
+        "lê sete linhas, com nome quebrado em duas e texto solto no meio":
+            lambda: len(regs) == 7 and regs["3160207"]["pab_criterio_entorno"] == "CIRCUNSCRITO",
         "ASD e Entorno ficam separados, com o clima e o critério do Entorno como a tabela escreve":
             lambda: regs["2100907"] == {"codigo_ibge": "2100907", "uf": "MA", "pab_brasil": "ASD", "pab_clima": "Subúmido seco"}
             and regs["2100154"]["pab_brasil"] == "Entorno" and regs["2100154"]["pab_criterio_entorno"] == "SAB; PAN"
@@ -144,7 +155,8 @@ def main() -> int:
         return 0
     base = {str(m["ibge"]).zfill(7): {"uf": m.get("uf"), "nome": m.get("nome")}
             for m in json.loads(MUNICIPIOS.read_text(encoding="utf-8")) if m.get("ibge")}
-    registros = linhas_da_tabela(texto_das_paginas(corpo))
+    texto = texto_das_paginas(corpo)
+    registros = linhas_da_tabela(texto)
     conta = lambda campo: {v: sum(1 for r in registros.values() if r.get(campo) == v)
                            for v in sorted({r.get(campo) for r in registros.values()} - {None})}
     print(f"tabela: {len(registros)} municípios · {conta('pab_brasil')} · clima {conta('pab_clima')} · "
@@ -154,6 +166,9 @@ def main() -> int:
         print("X VALIDAÇÃO — nada foi gravado:")
         for r in ruins:
             print("   -", r)
+        plano = " ".join(texto.split())
+        soltas = [plano[m.start():m.start() + 90] for m in CODIGO.finditer(plano) if m.group(1) not in registros]
+        print(f"   linhas com código e sem leitura: {len(soltas)}; primeiras: {soltas[:12]}")
         return 1
     preservar_evidencia(corpo, FONTE, "pdf", "coletar_pab_brasil")
     saida = fundir(anterior, registros, base)
